@@ -1,0 +1,69 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { bsVariables } from '@/utils/metadata';
+import IconographyList from '@/content/iconography/IconographyList.vue';
+
+<Meta
+    title="Documentation/Iconography"
+    parameters={{
+        viewMode: 'docs',
+        previewTabs: {
+            canvas: { hidden: true },
+        },
+    }}
+    argTypes={{
+        color: {
+            options: ['body', ...Object.keys(bsVariables.themeColors)],
+            table: {
+                type: {
+                    summary: 'Icon Color',
+                    // eslint-disable-next-line max-len
+                    detail: "Applies one of the Bootstrap theme color variants to the icon's fill. You can also use color names",
+                },
+            },
+            control: { type: 'radio' },
+        },
+    }}
+/>
+
+export const Template = (args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: { IconographyList },
+    template: `<div class="text-${args.color}">
+        <IconographyList v-bind="$props" />
+    </div>`,
+});
+
+# Iconography
+
+<Canvas>
+    <Story
+        height="100vh"
+        name="Available Icons"
+        args={{
+            color: 'body',
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Example Usage
+
+```javascript
+<template>
+    <div class="text-danger">
+        <arrow-clockwise
+            width="16px"
+            height="16px" />
+    </div>
+</template>
+<script lang="js">
+import { ArrowClockwiseIcon } from '@energysage/es-vue-base';
+
+export default {
+    name: 'MyComp',
+    components: {
+        ArrowClockwiseIcon,
+    },
+};
+</script>
+```

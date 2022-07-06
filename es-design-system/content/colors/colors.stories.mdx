@@ -1,0 +1,61 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import { bsVariables } from '@/utils/metadata';
+import { kebabCase } from '@/utils/case';
+
+<Meta
+    title="Documentation/Colors"
+    parameters={{
+        viewMode: 'docs',
+        previewTabs: {
+            canvas: { hidden: true },
+        },
+    }}
+/>
+
+# Variants
+
+<ColorPalette>
+    {Object.keys(bsVariables.themeColors).map((key) => {
+        if (typeof bsVariables.themeColors[key] === 'string') {
+            return (
+                <ColorItem
+                    title={kebabCase(key)}
+                    colors={[bsVariables.themeColors[key]]}
+                />
+            );
+        }
+        return false;
+    })}
+</ColorPalette>
+
+# Colors
+
+<ColorPalette>
+    {Object.keys(bsVariables.colors).map((key) => {
+        if (typeof bsVariables.colors[key] === 'string') {
+            return (
+                <ColorItem
+                    title={kebabCase(key)}
+                    colors={[bsVariables.colors[key]]}
+                />
+            );
+        }
+        return false;
+    })}
+</ColorPalette>
+
+# Grays
+
+<ColorPalette>
+    {Object.keys(bsVariables.grays).map((key) => {
+        if (typeof bsVariables.grays[key] === 'string') {
+            return (
+                <ColorItem
+                    title={`gray-${kebabCase(key)}`}
+                    colors={[bsVariables.grays[key]]}
+                />
+            );
+        }
+        return false;
+    })}
+</ColorPalette>

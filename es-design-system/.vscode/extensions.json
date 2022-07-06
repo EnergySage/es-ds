@@ -1,0 +1,26 @@
+{
+    "recommendations": [
+        // "Required"
+        "ms-python.python",
+        "davidanson.vscode-markdownlint",
+        "stylelint.vscode-stylelint",
+        "redhat.vscode-yaml",
+        "batisteo.vscode-django",
+        "octref.vetur",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "mikestead.dotenv",
+        "silvenon.mdx",
+
+        // Recommended
+        "esbenp.prettier-vscode",
+        "lokalise.i18n-ally",
+        "eamodio.gitlens",
+        "Zignd.html-css-class-completion",
+        "reduckted.vscode-gitweblinks",
+        "Zignd.html-css-class-completion",
+        "christian-kohler.path-intellisense",
+        "SimonSiefke.svg-preview",
+        "wayou.vscode-todo-highlight"
+    ]
+}

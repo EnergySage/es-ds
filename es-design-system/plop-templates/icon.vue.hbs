@@ -1,0 +1,35 @@
+<template>
+    <svg
+        :style="{
+            height: height,
+            width: width,
+        }"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        SVG HTML GOES HERE
+    </svg>
+</template>
+<script>
+export default {
+    name: '{{properCase name}}Icon',
+    props: {
+        /**
+         * Width
+         */
+        width: {
+            type: String,
+            default: '24px',
+            required: false,
+        },
+        /**
+         * Height
+         */
+        height: {
+            type: String,
+            default: '24px',
+            required: false,
+        },
+    },
+};
+</script>

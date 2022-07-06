@@ -1,0 +1,9 @@
+{
+  "packages": [
+    "es-bs-base",
+    "es-bs-extends",
+    "es-vue-base",
+    "es-design-system"
+  ],
+  "version": "independent"
+}
