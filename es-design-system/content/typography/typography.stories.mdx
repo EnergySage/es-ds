@@ -1,0 +1,75 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { bsVariables } from '@/utils/metadata';
+import sassFontFamily from '@energysage/es-bs-extends/scss/variables/_font-family.scss';
+
+<Meta
+    title="Documentation/Typography"
+    parameters={{
+        viewMode: 'docs',
+        previewTabs: {
+            canvas: { hidden: true },
+        },
+    }}
+/>
+
+# Typography
+
+## Font Families
+
+export const HeadersTemplate = () => ({
+    template: `<div>
+        <p>${bsVariables.fontFamilyBase}</p>
+        <p class="text-monospace">${bsVariables.fontFamilyMonospace}</p>
+    </div>`,
+});
+
+<Canvas>
+    <Story
+        name="Font Families"
+        height="150px">
+        {HeadersTemplate.bind({})}
+    </Story>
+</Canvas>
+
+## Font Weight
+
+export const FaceTemplate = () => ({
+    template: `<div>
+        <p class="font-weight-light">Light</p>
+        <p class="font-weight-base">Normal</p>
+        <p class="font-weight-bold">Bold</p>
+        <p class="font-weight-bolder">Bolder</p>
+    </div>`,
+});
+
+<Canvas>
+    <Story
+        name="Font Face"
+        height="150px">
+        {FaceTemplate.bind({})}
+    </Story>
+</Canvas>
+
+## Headers
+
+Header style can be set using the corrisponding HTML tag `<h1>` or as a class on another element.
+`<p class="h1">H1 style</p>`.
+
+export const SizesTemplate = () => ({
+    template: `<div>
+        <h1>H1 Header</h1>
+        <h2>H2 Header</h2>
+        <h3>H3 Header</h3>
+        <h4>H4 Header</h4>
+        <h5>H5 Header</h5>
+        <h6>H6 Header</h6>
+    </div>`,
+});
+
+<Canvas>
+    <Story
+        name="Headers"
+        height="150px">
+        {SizesTemplate.bind({})}
+    </Story>
+</Canvas>

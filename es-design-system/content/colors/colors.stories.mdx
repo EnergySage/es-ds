@@ -1,0 +1,64 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import { bsVariables, testImports } from '@/utils/metadata';
+import sassColors from '@energysage/es-bs-extends/scss/variables/_colors.scss';
+import sassThemeColors from '@energysage/es-bs-extends/scss/variables/_theme-colors.scss';
+import sassGrays from '@energysage/es-bs-extends/scss/variables/_grays.scss';
+import { kebabCase } from '@/utils/case';
+
+<Meta
+    title="Documentation/Colors"
+    parameters={{
+        viewMode: 'docs',
+        previewTabs: {
+            canvas: { hidden: true },
+        },
+    }}
+/>
+
+# Variants
+
+<ColorPalette>
+    {Object.keys(sassThemeColors).map((key) => {
+        if (typeof sassThemeColors[key] === 'string') {
+            return (
+                <ColorItem
+                    title={kebabCase(key)}
+                    colors={[sassThemeColors[key]]}
+                />
+            );
+        }
+        return false;
+    })}
+</ColorPalette>
+
+# Colors
+
+<ColorPalette>
+    {Object.keys(sassColors).map((key) => {
+        if (typeof sassColors[key] === 'string') {
+            return (
+                <ColorItem
+                    title={kebabCase(key)}
+                    colors={[sassColors[key]]}
+                />
+            );
+        }
+        return false;
+    })}
+</ColorPalette>
+
+# Grays
+
+<ColorPalette>
+    {Object.keys(sassGrays).map((key) => {
+        if (typeof sassGrays[key] === 'string') {
+            return (
+                <ColorItem
+                    title={`gray-${kebabCase(key)}`}
+                    colors={[sassGrays[key]]}
+                />
+            );
+        }
+        return false;
+    })}
+</ColorPalette>

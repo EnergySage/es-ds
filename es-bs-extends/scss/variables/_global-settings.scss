@@ -1,0 +1,18 @@
+@import '~@energysage/es-bs-base/scss/bootstrap.scss';
+@import "~@energysage/es-bs-base/scss/variables";
+
+:export {
+    enable-caret: $enable-caret;
+    enable-rounded: $enable-rounded;
+    enable-shadows: $enable-shadows;
+    enable-gradients: $enable-gradients;
+    enable-transitions: $enable-transitions;
+    enable-prefers-reduced-motion-media-query: $enable-prefers-reduced-motion-media-query;
+    enable-hover-media-query: $enable-hover-media-query;
+    enable-grid-classes: $enable-grid-classes;
+    enable-pointer-cursor-for-buttons: $enable-pointer-cursor-for-buttons;
+    enable-print-styles: $enable-print-styles;
+    enable-responsive-font-sizes: $enable-responsive-font-sizes;
+    enable-validation-icons: $enable-validation-icons;
+    enable-deprecation-messages: $enable-deprecation-messages;
+}
