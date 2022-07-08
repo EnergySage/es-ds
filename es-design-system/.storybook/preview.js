@@ -2,7 +2,7 @@
 import { parameters as globalParameters, decorators as globalDecorators } from '~/.nuxt-storybook/storybook/preview';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { themes } from '@storybook/theming';
-import { designStages, bsVariables } from '@/utils/metadata';
+import { designStages } from '@/utils/metadata';
 
 import theme from './theme';
 import './style.css';
@@ -25,15 +25,15 @@ export const parameters = {
             ...theme,
         },
     },
-    backgrounds: {
-        default: 'default',
-        values: [
-            {
-                name: 'default',
-                value: bsVariables.bodyBg,
-            },
-        ],
-    },
+    // backgrounds: {
+    //     default: 'default',
+    //     values: [
+    //         {
+    //             name: 'default',
+    //             value: bsVariables.bodyBg,
+    //         },
+    //     ],
+    // },
     // https://storybook.js.org/addons/@whitespace/storybook-addon-html/
     html: {
         prettier: {

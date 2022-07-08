@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-import { bsVariables } from '@/utils/metadata';
+import sassThemeColors from '@energysage/es-bs-extends/scss/variables/_theme-colors.scss';
 import IconographyList from '@/content/iconography/IconographyList.vue';
 
 <Meta
@@ -12,7 +12,7 @@ import IconographyList from '@/content/iconography/IconographyList.vue';
     }}
     argTypes={{
         color: {
-            options: ['body', ...Object.keys(bsVariables.themeColors)],
+            options: ['body', ...Object.keys(sassThemeColors)],
             table: {
                 type: {
                     summary: 'Icon Color',

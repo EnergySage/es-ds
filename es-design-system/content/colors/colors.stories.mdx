@@ -1,5 +1,8 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
-import { bsVariables } from '@/utils/metadata';
+import { bsVariables, testImports } from '@/utils/metadata';
+import sassColors from '@energysage/es-bs-extends/scss/variables/_colors.scss';
+import sassThemeColors from '@energysage/es-bs-extends/scss/variables/_theme-colors.scss';
+import sassGrays from '@energysage/es-bs-extends/scss/variables/_grays.scss';
 import { kebabCase } from '@/utils/case';
 
 <Meta
@@ -15,12 +18,12 @@ import { kebabCase } from '@/utils/case';
 # Variants
 
 <ColorPalette>
-    {Object.keys(bsVariables.themeColors).map((key) => {
-        if (typeof bsVariables.themeColors[key] === 'string') {
+    {Object.keys(sassThemeColors).map((key) => {
+        if (typeof sassThemeColors[key] === 'string') {
             return (
                 <ColorItem
                     title={kebabCase(key)}
-                    colors={[bsVariables.themeColors[key]]}
+                    colors={[sassThemeColors[key]]}
                 />
             );
         }
@@ -31,12 +34,12 @@ import { kebabCase } from '@/utils/case';
 # Colors
 
 <ColorPalette>
-    {Object.keys(bsVariables.colors).map((key) => {
-        if (typeof bsVariables.colors[key] === 'string') {
+    {Object.keys(sassColors).map((key) => {
+        if (typeof sassColors[key] === 'string') {
             return (
                 <ColorItem
                     title={kebabCase(key)}
-                    colors={[bsVariables.colors[key]]}
+                    colors={[sassColors[key]]}
                 />
             );
         }
@@ -47,12 +50,12 @@ import { kebabCase } from '@/utils/case';
 # Grays
 
 <ColorPalette>
-    {Object.keys(bsVariables.grays).map((key) => {
-        if (typeof bsVariables.grays[key] === 'string') {
+    {Object.keys(sassGrays).map((key) => {
+        if (typeof sassGrays[key] === 'string') {
             return (
                 <ColorItem
                     title={`gray-${kebabCase(key)}`}
-                    colors={[bsVariables.grays[key]]}
+                    colors={[sassGrays[key]]}
                 />
             );
         }

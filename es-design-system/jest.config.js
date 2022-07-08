@@ -12,8 +12,9 @@ module.exports = {
         '.*\\.(vue)$': 'vue-jest',
         // Pass svg as raw html in our tests
         '^.+\\.svg$': './jest/jest.transform.raw.js',
+        '^.+\\.scss$': 'jest-scss-transform',
     },
     collectCoverage: true,
-    collectCoverageFrom: ['<rootDir>/components/**/*.vue'],
+    collectCoverageFrom: ['<rootDir>/components/**/*.vue', '<rootDir>/utils/*'],
     testEnvironment: 'jsdom',
 };
