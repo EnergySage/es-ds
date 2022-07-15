@@ -10,3 +10,15 @@ export const Template = () => ({
     components: { EsButton },
     template: `<EsButton>Example</EsButton>`,
 });
+
+<Canvas>
+    <Story
+        name="Default"
+        args={{
+            default: 'My Button',
+            variant: 'primary',
+            size: 'md',
+        }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>

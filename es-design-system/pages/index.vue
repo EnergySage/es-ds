@@ -14,6 +14,11 @@
                     Atoms
                 </nuxt-link>
             </li>
+            <li>
+                <nuxt-link :to="{name: 'icons___en'}">
+                    Icons
+                </nuxt-link>
+            </li>
         </ul>
     </div>
 </template>
