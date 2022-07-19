@@ -53,7 +53,7 @@ export default {
     computed: {
         /**
          * Compute the Variant
-         * used for when you want to `outline` something but dont know the
+         * used for when you want to `outline` something but don't know the
          * themes default variant
          *
          * @returns { string } computed variant based on outline prop

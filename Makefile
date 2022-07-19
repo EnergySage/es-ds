@@ -6,8 +6,8 @@ dev:
 update:
 	lerna bootstrap
 
-.PHONY: build-vue
-build-vue:
+.PHONY: build
+build:
 	npm --prefix es-vue-base run build
 
 .PHONY: storybook

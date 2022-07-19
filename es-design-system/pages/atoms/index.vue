@@ -1,15 +1,8 @@
 <template>
     <div>
         <h1>
-            EnergySage Design System
+            Atoms
         </h1>
-        <ul>
-            <li>
-                <nuxt-link :to="{name: 'atoms-es-button___en'}">
-                    EsButton
-                </nuxt-link>
-            </li>
-        </ul>
     </div>
 </template>
 
