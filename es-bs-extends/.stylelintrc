@@ -20,5 +20,6 @@
     ],
     "color-hex-length": null,
     "number-leading-zero": null
-  }
+  },
+  "ignoreFiles": ["scss/variables/*.scss"]
 }
