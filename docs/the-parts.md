@@ -2,6 +2,8 @@
 
 The EnergySage Design System is made up of 3 core npm packages `@energysage/es-bs-base`, `@energysage/es-bs-extends`, and `@energysage/es-vue-base`.
 
+The packages are published to npm, see [https://www.npmjs.com/org/energysage](https://www.npmjs.com/org/energysage)
+
 ### es-bs-base
 
 [es-bs-base](./es-bs-base/) is our baseline CSS for all verticals. It is a drop-in replacement for bootstrap 4.

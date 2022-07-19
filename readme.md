@@ -15,13 +15,13 @@ This repository `es-ds` **is public** and the contents are licensed under the
 For that reason discussion and documentation specific to EnergySage should probably be kept
 within private org channels.
 
-## EnergySage specific channels & information
+## EnergySage specific channels
 
 - [Design System Engineering](https://energysage.atlassian.net/wiki/spaces/DSE/overview) confluence page
 - [UX + Design](https://energysage.atlassian.net/wiki/spaces/UX/overview)
 
-For EnergySage specific questions and information 
-please use email, slack, confluence, or jira regarding these repositories.
+For EnergySage specific questions and information
+please use email, slack, confluence, or jira.
 
 ## Design System Inspiration
 
