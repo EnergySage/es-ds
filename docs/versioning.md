@@ -13,15 +13,18 @@ All design-system packages follow [semantic versioning](https://semver.org/).
     - adding an additional "prop" to a core-component, but otherwise not chancing the default behavior
 3. PATCH version changes are backwards compatible bug-fixes and should have no impact on functionality aside from fixing a bug
 
-## Commands
+## Publishing a new version of a package
 
-### Lerna
+Assuming changes are approved
 
-`npx lerna publish --no-private`
+1. Merge changes
+2. Increment the package version appropriately following [Semantic Versioning](#semantic-versioning)
+3. Publish package to npm
 
-This will:
+### Publish Guides
 
-1. determine the current version of the packages
-2. detect which packages has changed since the last publishing & then update its version in package.json accordingly
-3. create a commit of the changed package.json files, tag the commit and push the tag & commit to the remote
-4. publish the packages to NPM
+Lerna does provide a solution for versioning packages together, we are opting for publishing changes independently. See the links below for information on thee specific package in question.
+
+- [es-bs-base](../es-bs-base/README.md#publishing-a-new-version)
+- es-bs-extends
+- es-design-system
