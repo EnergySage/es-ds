@@ -39,3 +39,11 @@ Or you can split the dependencies for JavaScript
   integrity="sha384-GsH/Mph6Qam9aL9saQZovjWdPJ8zV4wJUp093sGem578iwcgsgHSS8i0muB6VWn5"
   crossorigin="anonymous"></script>
 ```
+
+## Publishing a new version
+
+1. Test changes via `npm run test`
+2. Build CSS & JS via `npm run dist`
+3. Update the package version via `npm run release-version`
+4. Generate new zipped files for distribution via `npm run release-zip`
+5. `npm publish`
