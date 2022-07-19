@@ -2,6 +2,7 @@
 
 - [The Parts](./docs/the-parts.md)
 - [Versioning](./docs/versioning.md)
+- [Publishing](./docs/publishing.md)
 - [es-bs-base Docs](./es-bs-base/README.md)
 - [es-bs-extends Docs](./es-bs-extends/readme.md)
 - [es-vue-base Docs](./es-vue-base/README.md)

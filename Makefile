@@ -17,3 +17,7 @@ storybook:
 .PHONY: test
 test:
 	npm --prefix es-design-system run test
+
+.PHONY
+publish:
+	npx lerna publish
