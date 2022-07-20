@@ -52,6 +52,7 @@
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "release": "npm-run-all dist",
     "dist": "npm-run-all --aggregate-output --parallel css js",
+    "build": "npm-run-all dist",
     "test": "npm-run-all lint dist"
   },
   "peerDependencies": {

@@ -9,9 +9,10 @@ This will allow for easier maintenance of our [CHANGELOG](../CHANGELOG.md) and s
 
 *Assuming changes are approved*
 
-1. Test changes (will vary based on package)
-2. Build & Compile (will vary based on package)
-3. Merge locally
+1. Run tests `make test`
+2. Build & Compile `make build`
+3. Merge in Changes
 4. Run `make publish`
-5. Update changelog
-6. Merge local (`origin`) changes into `upstream`
+5. `make update`
+6. Update changelog
+7. Merge `origin` changes into `upstream`

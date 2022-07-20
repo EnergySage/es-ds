@@ -5,6 +5,7 @@
     "scripts": {
         "storybook": "env-cmd -f .env.local nuxt storybook --ci --quiet",
         "dev": "env-cmd -f .env.local nuxt",
+        "build": "nuxt generate",
         "build:dev": "npm run generate:dev && npm run deploy:dev",
         "build:prod": "npm run generate:prod && npm run deploy:prod",
         "generate:dev": "env-cmd -f .env.dev npm run generate",

@@ -9,7 +9,7 @@ $ git clone git@github.com:EnergySage/es-design-system.git && cd es-design-syste
 [es-design-system]$ echo -e 'eval "$(nodenv init -)"' >> ~/.zshrc # If you have never installed nodenv before
 [es-design-system]$ source ~/.zshrc # If you have never installed nodenv before
 [es-design-system]$ nodenv update-version-defs
-[es-design-system]$ nodenv install 14.19.3 && nodenv local 14.19.3
+[es-design-system]$ nodenv install 14.19.3
 [es-design-system]$ npm install
 [es-design-system]$ npm run dev
 ```
