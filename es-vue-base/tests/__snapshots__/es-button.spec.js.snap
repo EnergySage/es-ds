@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsButton <EsButton size="sm" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-primary btn-sm  text-uppercase text-nowrap\\" size=\\"sm\\">Main Content</button>"`;
+
+exports[`EsButton <EsButton uppercase="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-primary  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="danger" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-danger  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="danger" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-danger  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="dark" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-dark  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="dark" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-dark  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="info" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-info  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="info" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-info  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="light" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-light  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="light" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-light  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="link" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-link  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="link" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-link  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="primary" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-primary  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="primary" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-primary  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="secondary" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-secondary  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="secondary" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-secondary  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="warning" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-warning  text-uppercase text-nowrap\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="warning" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-warning  text-uppercase text-nowrap\\">Main Content</button>"`;
