@@ -1,8 +1,5 @@
 # The EnergySage Design System
 
-The EnergySage design system is build off of [Bootstrap v4](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
-and [bootstrap-vue v2](https://bootstrap-vue.org/)
-
 ## Documentation
 
 To get started working with the design system locally see [getting-started.md](./docs/es-design-system/getting-started.md).
@@ -14,3 +11,14 @@ To get started using the design system packages in a separate repo read the main
 `es-design-system` is a statically generated project. The content is published
 to an unlisted, but **publicly facing URL**. Therefore be mindful of what you
 put into this repo.
+
+### Design System Inspiration
+
+Our hope is to aspire to a beautiful, flexible, and well engineered
+design system. Some inspiration of where we can take this system:
+
+- [Spectrum](https://spectrum.adobe.com/) by Adobe
+- [Flame](https://bancosantander.invisionapp.com/dsm/santander-group/flame-ds-santander?mode=preview) by InvisionApp
+- [Polaris](https://polaris.shopify.com/) by Shopify
+- [Photon](https://design.firefox.com/photon/) by FireFox
+- [Material](https://material.io/design) by Google
