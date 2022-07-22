@@ -70,9 +70,4 @@ export default {
             fallbackLocale: 'en',
         },
     },
-    storybook: {
-        modules: {
-            exclude: ['svg-sprite'],
-        },
-    },
 };
