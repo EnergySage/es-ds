@@ -43,6 +43,20 @@ const baseConfig = {
         },
         vue: {
             css: true,
+            style: {
+                preprocessOptions: {
+                    scss: {
+                        importer: [
+                            function scssImporter(url) {
+                                return {
+                                    file: url
+                                        .replace(/^~/, `${path.resolve(projectRoot)}/node_modules/`),
+                                };
+                            },
+                        ],
+                    },
+                },
+            },
             template: {
                 isProduction: true,
             },
