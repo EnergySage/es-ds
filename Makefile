@@ -1,7 +1,11 @@
+.PHONY: install
+install:
+	npm install
+	npx lerna bootstrap
+	npm --prefix es-vue-base run build
 .PHONY: dev
 dev:
-	npm --prefix es-design-system run dev
-
+	overmind s
 .PHONY: test
 test:
 	npx lerna run test
@@ -16,4 +20,5 @@ publish:
 
 .PHONY: update
 update:
-	lerna bootstrap
+	npm --prefix es-vue-base run build
+	npx lerna bootstrap

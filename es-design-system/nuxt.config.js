@@ -14,7 +14,10 @@ export default {
             },
         ],
     },
-
+    ssr: false,
+    server: {
+        port: 8500,
+    },
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
         '@/assets/scss/main.scss',
@@ -34,7 +37,6 @@ export default {
         '@nuxtjs/stylelint-module',
         // https://github.com/nuxt-community/svg-module
         '@nuxtjs/svg',
-        '@nuxtjs/style-resources',
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
@@ -72,9 +74,5 @@ export default {
         modules: {
             exclude: ['svg-sprite'],
         },
-    },
-
-    styleResources: {
-        sass: './assets/scss/variables.scss',
     },
 };
