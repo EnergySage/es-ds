@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-vue-base",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "description": "",
   "scripts": {
@@ -83,5 +83,6 @@
   },
   "license": "MIT",
   "npmClient": "npm",
-  "sideEffects": false
+  "sideEffects": false,
+  "gitHead": "ecdf4227390ec1ed9b6b2363a0c8fa4323b62a5b"
 }
