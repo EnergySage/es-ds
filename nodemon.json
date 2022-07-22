@@ -1,0 +1,12 @@
+{
+    "watch": [
+      "es-vue-base/"
+    ],
+    "ignore": [
+        "dist/"
+      ],
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "ext": "js,json,vue"
+}

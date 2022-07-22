@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils';
 import EsButton from '../src/lib-components/es-button.vue';
 import jestVue from './jest.vue.config';
 
-
 describe('EsButton', () => {
     const variantOptions = ['primary', 'secondary', 'danger', 'warning', 'info', 'light', 'dark', 'link'];
     const outlineOptions = [true, false];

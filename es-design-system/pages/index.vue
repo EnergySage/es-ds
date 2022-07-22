@@ -5,17 +5,17 @@
         </h1>
         <ul>
             <li>
-                <nuxt-link :to="{name: 'bootstrap-4___en'}">
+                <nuxt-link to="'/bootstrap-4'">
                     Bootstrap 4
                 </nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="{name: 'atoms___en'}">
+                <nuxt-link to="/atoms">
                     Atoms
                 </nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="{name: 'icons___en'}">
+                <nuxt-link to="/atoms/icons">
                     Icons
                 </nuxt-link>
             </li>

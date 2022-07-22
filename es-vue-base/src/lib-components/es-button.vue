@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { BButton } from 'bootstrap-vue'
+import { BButton } from 'bootstrap-vue';
 
 export default {
     name: 'EsButton',
@@ -76,5 +76,5 @@ export default {
             return `${this.cssClass}${this.uppercase ? ' text-uppercase text-nowrap' : ''}`;
         },
     },
-}
+};
 </script>
