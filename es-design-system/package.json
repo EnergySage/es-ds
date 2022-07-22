@@ -30,8 +30,7 @@
         "test:update": "jest --updateSnapshot",
         "test:watch": "npm run test -- --watchAll",
         "plop": "plop",
-        "svgo": "svgo -f ./assets/svg/",
-        "postinstall": "npm --prefix aws install"
+        "svgo": "svgo -f ./assets/svg/"
     },
     "lint-staged": {
         "*.{js,vue}": "eslint --cache",
