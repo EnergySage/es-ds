@@ -47,6 +47,8 @@ const baseConfig = {
                 preprocessOptions: {
                     scss: {
                         importer: [
+                            // TODO: There has to be a better way to do this
+                            // We are trying to get '~' to resolve to the relative node_modules directory
                             function scssImporter(url) {
                                 return {
                                     file: url
