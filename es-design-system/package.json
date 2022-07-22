@@ -19,7 +19,8 @@
         "deploy": " npm --prefix aws run cdk deploy",
         "lint": "npm run lint:js && npm run lint:style",
         "lint:js": "eslint --ext \".js,.vue,.mdx\" --ignore-path ../.gitignore .",
-        "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path ../.gitignore"
+        "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path ../.gitignore",
+        "lintfix": "npm run lint:js -- --fix && npm run lint:style -- --fix"
     },
     "prettier": "eslint-config-energysage/prettier",
     "dependencies": {
