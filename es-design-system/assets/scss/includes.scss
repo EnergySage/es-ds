@@ -2,7 +2,6 @@
 *  Used to convert SCSS variables into JSON
 */
 
-@import './variables';
-@import '../../node_modules/@energysage/es-bs-base/scss/_functions.scss';
-@import '../../node_modules/@energysage/es-bs-base/scss/_variables.scss';
-@import '../../node_modules/@energysage/es-bs-extends/scss/_variables.scss';
+@import '@energysage/es-bs-base/scss/_functions.scss';
+@import '@energysage/es-bs-base/scss/_variables.scss';
+@import '@energysage/es-bs-extends/scss/_variables.scss';

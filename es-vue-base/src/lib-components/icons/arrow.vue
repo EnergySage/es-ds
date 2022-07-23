@@ -52,12 +52,15 @@ export default {
 .orientation-down {
     transform: rotate(0deg);
 }
+
 .orientation-left {
     transform: rotate(90deg);
 }
+
 .orientation-top {
     transform: rotate(180deg);
 }
+
 .orientation-right {
     transform: rotate(270deg);
 }

@@ -332,8 +332,8 @@ export default {
 <style lang="scss" scoped>
 .ds-icon-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     list-style: none;
 }
 </style>

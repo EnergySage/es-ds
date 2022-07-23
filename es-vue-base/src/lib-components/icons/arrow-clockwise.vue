@@ -37,7 +37,7 @@ export default {
             type: String,
             default: 'clockwise',
             required: false,
-        }
+        },
     },
 };
 </script>
