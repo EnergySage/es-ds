@@ -83,6 +83,12 @@ const external = [
     // list external dependencies, exactly the way it is written in the import statement.
     // eg. 'jquery'
     'vue',
+    'bootstrap-vue',
+    'vue-slick-carousel',
+    'vue-slider-component',
+    'truncate-html',
+    '@energysage/es-bs-base',
+    '@energysage/es-bs-extends',
 ];
 
 // UMD/IIFE shared settings: output.globals
