@@ -1,2 +1,0 @@
-brew "nodenv"
-brew "nodenv/nodenv/node-build-update-defs"

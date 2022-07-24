@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsFormInput <EsFormInput /> 1`] = `
+"<div><label for=\\"myID\\" class=\\"label font-weight-bold\\">Account Number
+    <!----></label>
+  <div><input id=\\"myID\\" type=\\"text\\" class=\\"form-control\\"> <small class=\\"form-text text-muted\\"></small>
+    <div class=\\"invalid-feedback\\"></div>
+    <div class=\\"valid-feedback\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`EsFormInput <EsFormInput <label /> /> 1`] = `
+"<div required=\\"required\\"><label for=\\"myID\\" class=\\"label font-weight-bold\\"> <span class=\\"text-danger\\">
+            *
+        </span></label>
+  <div><input id=\\"myID\\" type=\\"text\\" class=\\"form-control\\"> <small class=\\"form-text text-muted\\"></small>
+    <div class=\\"invalid-feedback\\"></div>
+    <div class=\\"valid-feedback\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`EsFormInput <EsFormInput props /> 1`] = `
+"<div><label for=\\"myID\\" class=\\"label font-weight-bold\\">
+    <!----></label>
+  <div><input id=\\"myID\\" type=\\"text\\" class=\\"form-control\\"> <small class=\\"form-text text-muted\\"></small>
+    <div class=\\"invalid-feedback\\"></div>
+    <div class=\\"valid-feedback\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`EsFormInput <EsFormInput>slots</EsFormInput> 1`] = `
+"<div><label for=\\"myID\\" class=\\"label font-weight-bold\\">Account Number
+    <!----></label>
+  <div><input id=\\"myID\\" type=\\"text\\" class=\\"form-control\\"> <small class=\\"form-text text-muted\\">Please enter your account number.</small>
+    <div class=\\"invalid-feedback\\">Please enter a valid account number.</div>
+    <div class=\\"valid-feedback\\">Your account number has been submitted successfully.</div>
+  </div>
+</div>"
+`;

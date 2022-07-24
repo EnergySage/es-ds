@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsPopover <EsPopover /> 1`] = `"<span target=\\"target\\" show=\\"true\\"><button id=\\"myTarget\\" type=\\"button\\" class=\\"btn btn-primary btn-md\\">Button</button><!----></span>"`;
+
+exports[`EsPopover Close button exists 1`] = `"<span target=\\"target\\"><button id=\\"myTarget\\" type=\\"button\\" class=\\"btn btn-primary btn-md\\">Button</button><!----></span>"`;
+
+exports[`EsPopover Content slot exists 1`] = `"<span target=\\"target\\"><button id=\\"myTarget\\" type=\\"button\\" class=\\"btn btn-primary btn-md\\">Button</button><!----></span>"`;
+
+exports[`EsPopover Title slot exists 1`] = `"<span target=\\"target\\"><button id=\\"myTarget\\" type=\\"button\\" class=\\"btn btn-primary btn-md\\">Button</button><!----></span>"`;

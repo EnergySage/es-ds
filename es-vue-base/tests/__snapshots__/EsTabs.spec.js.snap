@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsTabs <EsTabs /> 1`] = `
+"<div class=\\"tabs\\" style=\\"--border-bottom: 0; --border-color: null;\\" id=\\"__BVID__4\\">
+  <!---->
+  <div class=\\"\\">
+    <ul role=\\"tablist\\" class=\\"nav\\" id=\\"__BVID__4__BV_tab_controls_\\">
+      <!---->
+      <!---->
+    </ul>
+  </div>
+  <div class=\\"tab-content\\" id=\\"__BVID__4__BV_tab_container_\\">
+    <div class=\\"tab-pane active\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`EsTabs <EsTabs border=false /> 1`] = `
+"<div class=\\"tabs\\" style=\\"--border-bottom: 0; --border-color: null;\\">
+  <!---->
+  <div class=\\"\\">
+    <ul role=\\"tablist\\" class=\\"nav\\">
+      <!---->
+      <!---->
+    </ul>
+  </div>
+  <div class=\\"tab-content\\">
+    <div class=\\"tab-pane active\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`EsTabs <EsTabs>My Content</EsTabs> 1`] = `
+"<div class=\\"tabs\\" style=\\"--border-bottom: 0; --border-color: null;\\">
+  <!---->
+  <div class=\\"\\">
+    <ul role=\\"tablist\\" class=\\"nav\\">
+      <!---->
+      <!---->
+    </ul>
+  </div>
+  <div class=\\"tab-content\\">My Content
+    <!---->
+  </div>
+</div>"
+`;

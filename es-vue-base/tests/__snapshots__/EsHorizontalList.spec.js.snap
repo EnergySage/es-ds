@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
+"<div data-v-3d1a4f76=\\"\\" class=\\"slick-slider slick-initialized\\">
+  <div data-v-3d1a4f76=\\"\\" class=\\"slick-list\\" style=\\"height: 0px;\\">
+    <div data-v-e4caeaf8=\\"\\" data-v-3d1a4f76=\\"\\" class=\\"slick-track\\" style=\\"opacity: 1; transform: translate3d(0px, 0px, 0px);\\">
+      <div data-v-e4caeaf8=\\"\\" tabindex=\\"-1\\" data-index=\\"0\\" aria-hidden=\\"false\\" class=\\"slick-slide slick-active slick-current\\" style=\\"outline: none;\\">
+        <div data-v-e4caeaf8=\\"\\">
+          <div data-v-e4caeaf8=\\"\\" tabindex=\\"-1\\" style=\\"width: 100%; display: inline-block;\\">Test</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

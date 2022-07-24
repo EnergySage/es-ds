@@ -1,7 +1,12 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "watch": "nodemon --exec make update"
+  },
   "devDependencies": {
-    "lerna": "^5.0.0"
+    "env-cmd": "^10.1.0",
+    "lerna": "^5.0.0",
+    "nodemon": "^2.0.19"
   }
 }

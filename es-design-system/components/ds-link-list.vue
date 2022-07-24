@@ -53,6 +53,11 @@
                         EsButton
                     </b-link>
                 </li>
+                <li :class="{'nav-item-active': currentRouteName === 'molecules-es-badge___en'}">
+                    <b-link :to="{name: 'molecules-es-badge___en'}">
+                        EsBadge
+                    </b-link>
+                </li>
             </ul>
         </li>
     </ul>
