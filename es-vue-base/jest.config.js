@@ -8,6 +8,7 @@ module.exports = {
     modulePathIgnorePatterns: ['node_modules'],
     setupFilesAfterEnv: ['./tests/jest.setup.js'],
     transform: {
+        '^.+\\.(css|styl|less|sass|scss|png|svg|jpg|ttf|woff|woff2|webm|vtt|mp4)$': 'jest-transform-stub',
         '^.+\\.js$': 'babel-jest',
         '.*\\.(vue)$': 'vue-jest',
     },
