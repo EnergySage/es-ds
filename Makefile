@@ -1,6 +1,6 @@
 .PHONY: install
 install:
-	npm install
+	npx lerna exec -- npm install
 	npx lerna bootstrap
 	npm --prefix es-vue-base run build
 .PHONY: dev

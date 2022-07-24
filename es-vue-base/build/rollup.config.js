@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
+import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
@@ -36,6 +37,7 @@ const baseConfig = {
                     },
                 ],
             }),
+            image(),
         ],
         replace: {
             preventAssignment: true,
