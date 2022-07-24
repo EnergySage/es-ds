@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/scss/includes';
+@import '~@energysage/es-bs-extends/scss/includes';
 
 .es-form-textarea {
     height: 8.125rem;

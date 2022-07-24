@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/scss/includes';
+@import '~@energysage/es-bs-extends/scss/includes';
 @import '~vue-slick-carousel/dist/vue-slick-carousel';
 @import '~vue-slick-carousel/dist/vue-slick-carousel-theme';
 

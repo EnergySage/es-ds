@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/scss/includes';
+@import '~@energysage/es-bs-extends/scss/includes';
 
 .b-rating {
     background: transparent;
