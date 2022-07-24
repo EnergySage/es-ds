@@ -6,7 +6,7 @@
         <div class="image-holder mr-3">
             <b-img
                 class="image h-100"
-                :src="require(`@/src/assets/imgs/${imgName}.png`)"
+                :src="repImage"
                 :alt="repName" />
         </div>
         <div class="text-holder d-flex flex-column">
@@ -28,6 +28,7 @@
 
 <script lang="js">
 import { BImg } from 'bootstrap-vue';
+import benr from '@/src/assets/imgs/benr.png';
 
 export default {
     name: 'EsSupport',
@@ -44,18 +45,17 @@ export default {
             required: true,
         },
         /**
-         * EA image Name
-         */
-        imgName: {
-            type: String,
-            required: true,
-        },
-        /**
          * EA Name
          */
         repName: {
             type: String,
             required: true,
+        },
+    },
+    computed: {
+        repImage() {
+            // TODO: switch/case for other reps
+            return benr;
         },
     },
 };

@@ -15,7 +15,7 @@
 <script lang="js">
 
 import EsButton from '@/src/lib-components/EsButton.vue';
-import truncate from 'truncate-html';
+import truncate from 'html-truncate';
 
 export default {
     name: 'EsViewMore',

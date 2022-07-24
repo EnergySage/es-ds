@@ -4,6 +4,7 @@ import path from 'path';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
+import image from '@rollup/plugin-image';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
@@ -36,6 +37,7 @@ const baseConfig = {
                     },
                 ],
             }),
+            image(),
         ],
         replace: {
             preventAssignment: true,
@@ -83,12 +85,6 @@ const external = [
     // list external dependencies, exactly the way it is written in the import statement.
     // eg. 'jquery'
     'vue',
-    'bootstrap-vue',
-    'vue-slick-carousel',
-    'vue-slider-component',
-    'truncate-html',
-    '@energysage/es-bs-base',
-    '@energysage/es-bs-extends',
 ];
 
 // UMD/IIFE shared settings: output.globals

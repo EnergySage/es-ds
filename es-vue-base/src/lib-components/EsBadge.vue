@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~@energysage/es-bs-extends/scss/includes';
 
 .badge {
