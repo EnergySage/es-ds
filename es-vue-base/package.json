@@ -21,7 +21,8 @@
   "browser": "dist/es-vue-base.esm.js",
   "unpkg": "dist/es-vue-base.min.js",
   "files": [
-    "dist/**"
+    "dist/*",
+    "src/**/*"
   ],
   "prettier": "eslint-config-energysage/prettier",
   "devDependencies": {
