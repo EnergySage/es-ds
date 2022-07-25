@@ -17,6 +17,7 @@
             </div>
             <div class="link">
                 <a
+                    target="_blank"
                     class="supportLink"
                     :href="link">
                     Schedule a free call with {{ repName }}, your EnergySage specialist.

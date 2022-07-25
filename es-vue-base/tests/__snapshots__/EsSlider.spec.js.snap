@@ -17,12 +17,6 @@ exports[`EsSlider <EsSlider
           100
         </div>
       </div>
-      <div class=\\"vue-slider-mark vue-slider-mark-active\\" style=\\"height: 100%; width: 4px; left: 50%;\\">
-        <div class=\\"vue-slider-mark-step vue-slider-mark-step-active\\" style=\\"display: none;\\"></div>
-        <div class=\\"slider-label vue-slider-mark-label active\\">
-          300
-        </div>
-      </div>
       <div class=\\"vue-slider-mark\\" style=\\"height: 100%; width: 4px; left: 100%;\\">
         <div class=\\"vue-slider-mark-step\\" style=\\"display: none;\\"></div>
         <div class=\\"slider-label vue-slider-mark-label\\">

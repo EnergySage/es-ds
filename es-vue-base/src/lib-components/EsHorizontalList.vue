@@ -55,6 +55,10 @@ export default {
 @import '~vue-slick-carousel/dist/vue-slick-carousel';
 @import '~vue-slick-carousel/dist/vue-slick-carousel-theme';
 
+.slick-track {
+    position: absolute !important;
+}
+
 .slick-dots li button::before {
     color: $gray-400 !important;
     font-size: 12px;

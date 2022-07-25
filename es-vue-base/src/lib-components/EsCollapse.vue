@@ -1,23 +1,22 @@
 <template>
-    <div
-        v-bind="$attrs"
-        v-on="$listeners">
+    <div>
         <EsButton
+            :href="`#${id}`"
             block
             :aria-label="id"
             class="collapse-holder text-left p-0 font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             variant="link"
-            @click="toggleCollapsed">
+            @click="isCollapsed = !isCollapsed">
             <div>
                 <slot name="title" />
             </div>
             <div>
-                <ArrowExpandIcon
+                <IconChevronDown
                     v-if="isCollapsed"
                     width="30px"
                     height="30px" />
 
-                <ArrowCollapseIcon
+                <IconChevronUp
                     v-else
                     width="30px"
                     height="30px" />
@@ -26,10 +25,12 @@
 
         <b-collapse
             :id="id"
+            :visible="isCollapsed"
             :aria-labelledby="id"
             role="tabpanel"
-            :visible="isCollapsed">
-            <div class="pb-5">
+            data-testid="collapse">
+            <div
+                class="pb-5">
                 <slot />
             </div>
         </b-collapse>
@@ -39,17 +40,15 @@
 </template>
 
 <script lang="js">
-import {
-    BCollapse,
-} from 'bootstrap-vue';
+import { BCollapse } from 'bootstrap-vue';
 import EsButton from '@/src/lib-components/EsButton.vue';
-import ArrowCollapseIcon from '@/src/lib-components/icons/chevron-down.vue';
-import ArrowExpandIcon from '@/src/lib-components/icons/chevron-up.vue';
+import IconChevronUp from '@/src/lib-components/icons/chevron-down.vue';
+import IconChevronDown from '@/src/lib-components/icons/chevron-up.vue';
 
 export default {
     name: 'EsCollapse',
     components: {
-        EsButton, BCollapse, ArrowCollapseIcon, ArrowExpandIcon,
+        EsButton, BCollapse, IconChevronUp, IconChevronDown,
     },
     props: {
         /**
@@ -61,10 +60,10 @@ export default {
             required: true,
         },
         /**
-         * Open
+         * Visible
          * Start open/closed
          */
-        open: {
+        visible: {
             type: Boolean,
             required: false,
             default: false,
@@ -72,13 +71,8 @@ export default {
     },
     data() {
         return {
-            isCollapsed: this.open,
+            isCollapsed: this.visible,
         };
-    },
-    methods: {
-        toggleCollapsed() {
-            this.isCollapsed = !this.isCollapsed;
-        },
     },
 };
 </script>

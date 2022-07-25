@@ -42,50 +42,8 @@ exports[`EsViewMore character truncation with HTML tags only truncates text cont
   </button></div>"
 `;
 
-exports[`EsViewMore clicking "Show Less" button hides text to the break point 1`] = `
-"<div><span>Hello...</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
-    Show More
-  </button></div>"
-`;
-
-exports[`EsViewMore clicking "Show More" button reveals more text 1`] = `
-"<div><span>Hello world!</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
-    Show Less
-  </button></div>"
-`;
-
 exports[`EsViewMore text shorter than length is not truncated 1`] = `
 "<div><span>Hello world!</span>
-  <!---->
-</div>"
-`;
-
-exports[`EsViewMore wordCount truncation with HTML tags only truncates text content 1`] = `
-"<div><span><h1>Hello...</h1></span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
-    Show More
-  </button></div>"
-`;
-
-exports[`EsViewMore wordFit truncation breaks at correct spot 1`] = `
-"<div><span>Hello...</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
-    Show More
-  </button></div>"
-`;
-
-exports[`EsViewMore wordFit truncation with HTML tags only truncates text content 1`] = `
-"<div><span><h1>Hello...</h1></span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
-    Show More
-  </button></div>"
-`;
-
-exports[`EsViewMore wordFit truncation with only one word that is longer than length will render word 1`] = `
-"<div><span>Hello</span>
-  <!---->
-</div>"
-`;
-
-exports[`EsViewMore wordFit truncation works with one character 1`] = `
-"<div><span>H</span>
   <!---->
 </div>"
 `;

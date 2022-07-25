@@ -30,6 +30,8 @@ const baseConfig = {
     plugins: {
         preVue: [
             alias({
+                // This prevents vue duplication when imported
+                vue: require.resolve('vue/dist/vue.esm.js'),
                 entries: [
                     {
                         find: '@',
@@ -84,7 +86,6 @@ const baseConfig = {
 const external = [
     // list external dependencies, exactly the way it is written in the import statement.
     // eg. 'jquery'
-    'vue',
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -92,7 +93,6 @@ const external = [
 const globals = {
     // Provide global variable names to replace your external imports
     // eg. jquery: '$'
-    vue: 'Vue',
 };
 
 // Customize configs for individual targets

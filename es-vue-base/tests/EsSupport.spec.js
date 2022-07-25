@@ -51,13 +51,11 @@ describe('EsSupport', () => {
             slots,
             propsData: {
                 link: 'https://www.google.com/',
-                imgName: 'benr',
                 repName: 'Ben',
             },
         });
 
         expect(wrapper.props('link')).toBe('https://www.google.com/');
-        expect(wrapper.props('imgName')).toBe('benr');
         expect(wrapper.props('repName')).toBe('Ben');
         expect(wrapper.vm).toBeTruthy();
         expect(wrapper.html()).toMatchSnapshot();
@@ -70,7 +68,6 @@ describe('EsSupport', () => {
             slots,
             propsData: {
                 link: 'https://www.google.com/',
-                imgName: 'benr',
                 repName: 'Ben',
             },
         });
@@ -88,7 +85,6 @@ describe('EsSupport', () => {
             slots,
             propsData: {
                 link: 'https://www.google.com/',
-                imgName: 'benr',
                 repName: 'Ben',
             },
         });

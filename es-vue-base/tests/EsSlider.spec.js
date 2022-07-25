@@ -16,7 +16,7 @@ describe('EsSlider', () => {
             propsData: {
                 startingValue: 300,
                 data: [100, 300, 500],
-                marks: () => [100, 500],
+                marks: [100, 500],
                 min: 100,
                 max: 500,
                 ariaLabel: 'Select a number',
@@ -35,7 +35,7 @@ describe('EsSlider', () => {
             propsData: {
                 startingValue: 50,
                 data: [],
-                marks: () => [],
+                marks: [],
                 min: 0,
                 max: 100,
                 ariaLabel: 'Select a number',
@@ -55,7 +55,7 @@ describe('EsSlider', () => {
             propsData: {
                 startingValue: 50,
                 data: [],
-                marks: () => [],
+                marks: [],
                 min: 0,
                 max: 100,
                 ariaLabel: 'Select a number',
@@ -71,7 +71,7 @@ describe('EsSlider', () => {
             propsData: {
                 startingValue: 50,
                 data: [],
-                marks: () => [],
+                marks: [],
                 min: 0,
                 max: 100,
                 ariaLabel: 'Select a number',

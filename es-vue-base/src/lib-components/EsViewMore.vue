@@ -53,15 +53,6 @@ export default {
             required: false,
             default: 'Show Less',
         },
-        /**
-         * Choose whether to break on word or character
-         */
-        break: {
-            type: String,
-            required: false,
-            default: 'character',
-            validator: (val) => ['wordCount', 'wordFit', 'character'].includes(val),
-        },
     },
     data() {
         return {
@@ -76,46 +67,13 @@ export default {
             return this.content;
         },
         truncatedContent() {
-            switch (this.break) {
-            case 'character':
-                return truncate(this.content, this.length);
-            case 'wordCount':
-                return truncate(this.content, this.length, { byWords: true });
-            case 'wordFit':
-                return truncate(this.content, this.wordBreakIndex, { byWords: true });
-            default:
-                return this.content;
-            }
+            return truncate(this.content, this.length);
         },
         isTruncated() {
             return this.truncatedContent !== this.content;
         },
         buttonText() {
             return this.isClamped ? this.clamp : this.less;
-        },
-        // Calculates the amount of words that can fit within this.length
-        wordBreakIndex() {
-            let wordCount = 0;
-            let totalWordLength = 0;
-            const words = this.content.split(' ');
-            // Iterate through word list until we hit a value that would overflow
-            // our desired character count
-            words.every((word) => {
-                if (word.length + totalWordLength <= this.length) {
-                    totalWordLength += word.length;
-                    wordCount += 1;
-
-                    // Accounts for the space between the previous word and new word
-                    if (wordCount > 1) {
-                        totalWordLength += 1;
-                    }
-                    return true;
-                }
-                return false;
-            });
-
-            // Must return at least 1 word for truncation to work properly
-            return Math.max(1, wordCount);
         },
     },
     methods: {

@@ -91,7 +91,7 @@ export default {
          * Function that chooses where to add marks to the track
          */
         marks: {
-            type: Function,
+            type: Array,
             required: true,
         },
         /**

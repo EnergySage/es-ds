@@ -1,25 +1,25 @@
 <template>
     <b-form-rating
-        v-model="localRating"
-        :aria-valuenow="localRating"
         v-bind="$attrs"
+        :value="localRating"
         :readonly="readOnly"
         no-border
         inline
+        :aria-valuenow="localRating"
         data-testid="rating-test"
         v-on="$listeners">
         <template #icon-empty>
-            <StarEmptyIcon
+            <IconStarEmpty
                 :width="width"
                 :height="height" />
         </template>
         <template #icon-half>
-            <StarHalfIcon
+            <IconStarHalf
                 :width="width"
                 :height="height" />
         </template>
         <template #icon-full>
-            <StarFullIcon
+            <IconStarFull
                 :width="width"
                 :height="height" />
         </template>
@@ -28,17 +28,17 @@
 
 <script lang="js">
 import { BFormRating } from 'bootstrap-vue';
-import StarFullIcon from '@/src/lib-components/icons/star-full.vue';
-import StarEmptyIcon from '@/src/lib-components/icons/star-empty.vue';
-import StarHalfIcon from '@/src/lib-components/icons/star-half.vue';
+import IconStarFull from '@/src/lib-components/icons/star-full.vue';
+import IconStarEmpty from '@/src/lib-components/icons/star-empty.vue';
+import IconStarHalf from '@/src/lib-components/icons/star-half.vue';
 
 export default {
     name: 'EsRating',
     components: {
         BFormRating,
-        StarFullIcon,
-        StarEmptyIcon,
-        StarHalfIcon,
+        IconStarFull,
+        IconStarEmpty,
+        IconStarHalf,
     },
     props: {
         /**
@@ -83,13 +83,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@energysage/es-bs-extends/scss/includes';
-
 .b-rating {
     background: transparent;
-    box-shadow: none;
+    box-shadow: none !important;
     height: auto;
     padding: 0;
+    max-width: 150px;
 
     .b-rating-star:first-child {
         padding-left: 0;
