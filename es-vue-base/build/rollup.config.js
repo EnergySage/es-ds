@@ -5,8 +5,10 @@ import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import minimist from 'minimist';
@@ -30,8 +32,6 @@ const baseConfig = {
     plugins: {
         preVue: [
             alias({
-                // This prevents vue duplication when imported
-                vue: require.resolve('vue/dist/vue.esm.js'),
                 entries: [
                     {
                         find: '@',
@@ -108,6 +108,7 @@ if (!argv.format || argv.format === 'es') {
             exports: 'named',
         },
         plugins: [
+            peerDepsExternal(),
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
@@ -142,6 +143,7 @@ if (!argv.format || argv.format === 'cjs') {
             globals,
         },
         plugins: [
+            peerDepsExternal(),
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue({
@@ -171,6 +173,7 @@ if (!argv.format || argv.format === 'iife') {
             globals,
         },
         plugins: [
+            peerDepsExternal(),
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
