@@ -1,2 +1,0 @@
-# eslint ignores dot folders by default; make it look in storybook
-!/.storybook
