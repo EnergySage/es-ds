@@ -31,7 +31,7 @@ graph TB
 
 ### es-bs-base
 
-[es-bs-base](./es-bs-base/) is our baseline CSS for all verticals. It is a drop-in replacement for bootstrap 4.
+[es-bs-base](./es-bs-base/) is our baseline CSS for all verticals. It is a drop-in replacement for **bootstrap 4**.
 
 This package overrides the `_variables.scss` file in bootstrap to the ones use defaults required by the energysage design system.
 
