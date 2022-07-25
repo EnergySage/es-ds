@@ -24,7 +24,7 @@
 import { EsBadge } from '@energysage/es-vue-base';
 
 export default {
-    name: 'ComponentEsBadge',
+    name: 'EsBadgeDocs',
     components: {
         EsBadge,
     },

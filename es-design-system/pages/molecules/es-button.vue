@@ -186,8 +186,7 @@
 import { EsButton } from '@energysage/es-vue-base';
 
 export default {
-    // eslint-disable-next-line vue/component-definition-name-casing
-    name: 'ComponentEsButton',
+    name: 'EsButtonDocs',
     components: {
         EsButton,
     },
