@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-vue-base",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": false,
   "description": "",
   "scripts": {
@@ -26,8 +26,8 @@
   ],
   "prettier": "eslint-config-energysage/prettier",
   "dependencies": {
-    "@energysage/es-bs-base": "^0.3.2",
-    "@energysage/es-bs-extends": "^0.3.2",
+    "@energysage/es-bs-base": "^0.3.3",
+    "@energysage/es-bs-extends": "^0.3.3",
     "bootstrap-vue": "^2.22.0",
     "html-truncate": "^1.2.2",
     "vue-slick-carousel": "^1.0.6",
