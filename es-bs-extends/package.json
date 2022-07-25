@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EnergySage/es-bs-extends.git"
+    "url": "git@github.com:EnergySage/es-ds.git"
   },
   "keywords": [
     "css"
@@ -13,9 +13,9 @@
   "author": "EnergySage",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EnergySage/es-bs-extends/issues"
+    "url": "https://github.com/EnergySage/es-ds/issues"
   },
-  "homepage": "https://github.com/EnergySage/es-bs-extends#readme",
+  "homepage": "https://github.com/EnergySage/es-ds",
   "sass": "scss/extends.scss",
   "style": "dist/css/extends.css",
   "scripts": {

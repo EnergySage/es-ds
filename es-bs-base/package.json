@@ -21,10 +21,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EnergySage/es-bs-base.git"
+    "url": "git@github.com:EnergySage/es-ds.git"
   },
   "bugs": {
-    "url": "https://github.com/EnergySage/es-bs-base/issues"
+    "url": "https://github.com/EnergySage/es-ds/issues"
   },
   "main": "dist/js/bootstrap.js",
   "sass": "scss/bootstrap.scss",

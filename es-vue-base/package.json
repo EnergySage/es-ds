@@ -92,5 +92,13 @@
   "license": "MIT",
   "npmClient": "npm",
   "sideEffects": false,
-  "gitHead": "17a863caabd29fe909d857450c3918567aecfe83"
+  "gitHead": "ecdf4227390ec1ed9b6b2363a0c8fa4323b62a5b",
+  "bugs": {
+    "url": "https://github.com/EnergySage/es-ds/issues"
+  },
+  "homepage": "https://github.com/EnergySage/es-ds",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:EnergySage/es-ds.git"
+  }
 }
