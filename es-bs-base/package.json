@@ -1,7 +1,7 @@
 {
   "name": "@energysage/es-bs-base",
   "description": "Base CSS for EnergySage design system based on Bootstrap",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "config": {
     "version_short": "0.1"
   },
@@ -115,5 +115,5 @@
   },
   "license": "MIT",
   "private": false,
-  "gitHead": "e78f01d34525c29af3963ca2c0dcdd17ab2a75ec"
+  "gitHead": "b95d610107f58e9efdf9312b90214d2b87caba72"
 }
