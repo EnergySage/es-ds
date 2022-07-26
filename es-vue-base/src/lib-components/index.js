@@ -77,4 +77,7 @@ export { default as IconChatApprove } from './icons/chat-approve.vue';
 export { default as IconChatAdd } from './icons/chat-add.vue';
 export { default as IconCart } from './icons/cart.vue';
 export { default as IconCalendar } from './icons/calendar.vue';
-export { default as IconBlock } from './icons/block.vue';
+export { default as IconStarFull } from './icons/star-full.vue';
+export { default as IconStarHalf } from './icons/star-half.vue';
+export { default as IconStarEmpty } from './icons/star-empty.vue';
+export { default as IconVerified } from './icons/verified.vue';

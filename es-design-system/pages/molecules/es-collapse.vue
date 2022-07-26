@@ -4,7 +4,7 @@
         visible
         class="p-5">
         <template #title>
-            <h2>
+            <h2 class="mb-0">
                 My Title
             </h2>
         </template>

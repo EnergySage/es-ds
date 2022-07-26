@@ -13,7 +13,7 @@
                 v-if="certified"
                 class="d-flex d-lg-none text-gray-800 align-items-center">
                 Verified
-                <VerifiedIcon
+                <IconVerified
                     class="text-gray-900 ml-1"
                     width="20px"
                     height="20px" />
@@ -47,7 +47,7 @@
             <div
                 v-if="certified"
                 class="d-none d-lg-block flex-grow-2 text-right ml-3">
-                <VerifiedIcon
+                <IconVerified
                     class="text-gray-900"
                     width="16px"
                     height="16px" />
@@ -59,13 +59,13 @@
 
 <script lang="js">
 import EsRating from '@/src/lib-components/EsRating.vue';
-import VerifiedIcon from '@/src/lib-components/icons/verified.vue';
+import IconVerified from '@/src/lib-components/icons/verified.vue';
 import EsViewMore from '@/src/lib-components/EsViewMore.vue';
 
 export default {
     name: 'EsReview',
     components: {
-        EsRating, EsViewMore, VerifiedIcon,
+        EsRating, EsViewMore, IconVerified,
     },
     props: {
         /**

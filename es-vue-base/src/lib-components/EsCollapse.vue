@@ -1,10 +1,9 @@
 <template>
     <div>
         <EsButton
-            :href="`#${id}`"
             block
             :aria-label="id"
-            class="collapse-holder text-left p-0 font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
+            class="collapse-holder text-left p-0 mb-3 font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             variant="link"
             @click="isCollapsed = !isCollapsed">
             <div>

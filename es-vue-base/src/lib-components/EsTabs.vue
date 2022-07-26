@@ -66,6 +66,7 @@ export default {
 .active-tab {
     border-bottom: 2px solid;
     border-color: $primary;
+    color: $primary;
 
     &:hover,&:focus {
         color: $primary;

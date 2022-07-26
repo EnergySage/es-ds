@@ -36,10 +36,6 @@ export default {
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-extends/scss/includes';
 
-.badge {
-    line-height: 1rem;
-}
-
 .badge-primary {
     /* hard-coded background-color due to no satisfactory variation of defined colors */
     background: #CCE5EF;

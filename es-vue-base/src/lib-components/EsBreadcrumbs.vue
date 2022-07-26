@@ -18,6 +18,9 @@ export default {
 @import '~@energysage/es-bs-extends/scss/includes';
 
 .breadcrumb {
+    padding: 0;
+    margin: 0;
+
     .active {
         font-weight: $font-weight-bold;
         margin-right: 0;

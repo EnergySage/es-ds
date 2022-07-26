@@ -90,8 +90,11 @@ export default {
     padding: 0;
     max-width: 150px;
 
-    .b-rating-star:first-child {
-        padding-left: 0;
+    .b-rating-star {
+        padding: 0 0.1em;
+        &:first-child {
+            padding-left: 0;
+        }
     }
 
     :focus {
