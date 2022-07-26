@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-vue-base",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "private": false,
   "description": "",
   "scripts": {
@@ -21,15 +21,15 @@
   "browser": "dist/es-vue-base.esm.js",
   "unpkg": "dist/es-vue-base.min.js",
   "files": [
-    "dist/{css,js}/*.{css,js,map}"
+    "dist"
   ],
   "prettier": "eslint-config-energysage/prettier",
   "devDependencies": {
     "@babel/core": "^7.18.9",
     "@babel/eslint-parser": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
-    "@energysage/es-bs-base": "^0.4.10",
-    "@energysage/es-bs-extends": "^0.4.10",
+    "@energysage/es-bs-base": "^0.4.11",
+    "@energysage/es-bs-extends": "^0.4.11",
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^14.0.0",
