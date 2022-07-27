@@ -75,6 +75,7 @@ export { default as IconChatDots } from './icons/chat-dots.vue';
 export { default as IconChatBubble } from './icons/chat-bubble.vue';
 export { default as IconChatApprove } from './icons/chat-approve.vue';
 export { default as IconChatAdd } from './icons/chat-add.vue';
+export { default as IconBlock } from './icons/block.vue';
 export { default as IconCart } from './icons/cart.vue';
 export { default as IconCalendar } from './icons/calendar.vue';
 export { default as IconStarFull } from './icons/star-full.vue';
