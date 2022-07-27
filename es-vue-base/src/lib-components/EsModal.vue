@@ -8,7 +8,8 @@
         :hide-footer="hideFooter"
         centered
         static
-        class="modal-lightbox">
+        class="modal-lightbox"
+        v-on="$listeners">
         <template #modal-title>
             <slot name="modal-title" />
         </template>
