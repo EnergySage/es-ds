@@ -7,6 +7,9 @@ describe('EsHorizontalList', () => {
     test('<EsHorizontalList />', async () => {
         const wrapper = mount(EsHorizontalList, {
             ...jestVue,
+            propsData: {
+                id: 'testId',
+            },
             slots: {
                 default: '<div>Test</div>',
             },

@@ -12,6 +12,7 @@ module.exports = {
         '^.+\\.js$': 'babel-jest',
         '.*\\.(vue)$': 'vue-jest',
     },
+    transformIgnorePatterns: ['node_modules/(?!(vue-flickity)/)'],
     collectCoverage: true,
     collectCoverageFrom: ['<rootDir>/src/**/*.vue'],
     testEnvironment: 'jsdom',

@@ -86,12 +86,13 @@ export default {
 .b-rating {
     background: transparent;
     box-shadow: none !important;
-    height: auto;
-    padding: 0;
+    height: auto !important;
     max-width: 150px;
+    padding: 0 !important;
 
     .b-rating-star {
         padding: 0 0.1em;
+
         &:first-child {
             padding-left: 0;
         }

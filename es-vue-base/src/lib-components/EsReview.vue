@@ -1,7 +1,7 @@
 <template>
     <div
         :id="id"
-        class="review-holder"
+        class="review-holder mr-3 mr-lg-5 p-3 p-lg-0"
         v-bind="$attrs">
         <div class="d-flex mb-2">
             <div class="d-flex flex-grow-1">
@@ -20,17 +20,18 @@
             </div>
         </div>
         <div class="mb-2">
-            <div>
+            <div class="title-holder">
                 <h4
                     v-if="title"
                     class="font-weight-bold text-truncate mb-2"
                     data-testid="title-test">
                     {{ title }}
                 </h4>
-                <EsViewMore
-                    :content="comment"
-                    :length="commentLimit" />
             </div>
+            <EsViewMore
+                class="comment-holder"
+                :content="comment"
+                :length="commentLimit" />
         </div>
         <small class="d-flex align-items-center text-gray-800 text-nowrap">
             <div class="flex-grow-1 overflow-hidden">
@@ -122,7 +123,7 @@ export default {
          * Review Comment Truncation Limit
          */
         commentLimit: {
-            default: 300,
+            default: 225,
             type: Number,
         },
         /**
@@ -143,11 +144,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@energysage/es-bs-extends/scss/includes';
+
 .review-holder {
-    min-width: 350px;
+    width: 460px;
 
     .name-holder {
         max-width: 90%;
+    }
+
+    .title-holder {
+        height: 20px;
+    }
+
+    .comment-holder {
+        height: 105px;
+    }
+
+}
+
+@include media-breakpoint-down(md) {
+    .review-holder {
+        border: 1px solid $border-color;
+        border-radius: 0.75rem;
+        width: 80%;
+
+        .comment-holder {
+            height: 190px;
+        }
     }
 }
  </style>
