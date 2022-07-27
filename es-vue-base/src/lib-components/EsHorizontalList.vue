@@ -1,18 +1,13 @@
 <template>
-    <VueSlickCarousel
-        v-bind="settings">
-        <slot />
-    </VueSlickCarousel>
+    <div>
+        Nothing
+    </div>
 </template>
 
 <script lang="js">
-import VueSlickCarousel from 'vue-slick-carousel';
 
 export default {
     name: 'EsHorizontalList',
-    components: {
-        VueSlickCarousel,
-    },
     props: {
         /**
          * Show dots under or not
@@ -33,17 +28,7 @@ export default {
     },
     data() {
         return {
-            // https://gs-shop.github.io/vue-slick-carousel/#/api
             settings: {
-                dots: this.dots,
-                centerMode: this.centered,
-                // These are intentionally not props as they define specific design behavior
-                arrows: false,
-                swipeToSlide: true,
-                focusOnSelect: true,
-                variableWidth: true,
-                adaptiveHeight: true,
-                infinite: false,
             },
         };
     },
@@ -52,19 +37,5 @@ export default {
 
 <style lang="scss">
 @import '~@energysage/es-bs-extends/scss/includes';
-@import '~vue-slick-carousel/dist/vue-slick-carousel';
-@import '~vue-slick-carousel/dist/vue-slick-carousel-theme';
 
-.slick-track {
-    position: absolute !important;
-}
-
-.slick-dots li button::before {
-    color: $gray-400 !important;
-    font-size: 12px;
-}
-
-.slick-dots .slick-active button::before {
-    color: $primary !important;
-}
 </style>
