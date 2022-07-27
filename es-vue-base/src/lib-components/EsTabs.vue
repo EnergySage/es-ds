@@ -1,5 +1,6 @@
 <template>
     <b-tabs
+        class="es-tabs"
         v-bind="$attrs"
         :active-nav-item-class="['font-weight-bold', 'active-tab']"
         :vertical="vertical"
@@ -50,26 +51,34 @@ export default {
 <style lang="scss">
 @import '~@energysage/es-bs-extends/scss/includes';
 
-.nav-item {
-    border-bottom: var(--border-bottom);
-    border-color: var(--border-color);
-}
-
-.nav-link {
-    color: $gray-900;
-
-    &:hover,&:focus {
-        color: $primary;
+.es-tabs {
+    .nav-item {
+        border-bottom: var(--border-bottom);
+        border-color: var(--border-color);
     }
-}
 
-.active-tab {
-    border-bottom: 2px solid;
-    border-color: $primary;
-    color: $primary;
+    .nav-link {
+        color: $gray-900;
+        margin: 0 2rem;
+        padding: 0.25rem 0 0;
 
-    &:hover,&:focus {
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:hover,&:focus {
+            color: $primary;
+        }
+    }
+
+    .active-tab {
+        border-bottom: 2px solid;
+        border-color: $primary;
         color: $primary;
+
+        &:hover,&:focus {
+            color: $primary;
+        }
     }
 }
 </style>

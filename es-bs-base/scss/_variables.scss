@@ -68,7 +68,7 @@ $primary:       $cyan !default;
 $secondary:     $cyan !default;
 $success:       $green !default;
 $info:          $indigo !default;
-$warning:       $orange !default;
+$warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-200 !default;
 $dark:          $gray-700 !default;
@@ -953,7 +953,7 @@ $modal-footer-margin-between:       .5rem !default;
 $modal-dialog-margin:               .5rem !default;
 $modal-dialog-margin-y-sm-up:       1.75rem !default;
 
-$modal-title-line-height:           1.5 !default;
+$modal-title-line-height:           1.2 !default;
 
 $modal-content-color:               null !default;
 $modal-content-bg:                  $white !default;
@@ -970,7 +970,7 @@ $modal-header-border-color:         null !default;
 $modal-footer-border-color:         $modal-header-border-color !default;
 $modal-header-border-width:         0 !default;
 $modal-footer-border-width:         $modal-header-border-width !default;
-$modal-header-padding-y:            2rem !default;
+$modal-header-padding-y:            1.15rem !default;
 $modal-header-padding-x:            2.15rem !default;
 $modal-header-padding:              $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
 
