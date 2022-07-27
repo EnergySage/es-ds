@@ -1,25 +1,45 @@
+# Ignore docs files
+/_site/
+# Hugo folders
+/resources/
+
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*.zip
+*~
+
+# OS or Editor folders
+._*
+.cache
 .DS_Store
-node_modules
+.idea
+.project
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
+Thumbs.db
+/.vscode/
+# Local Netlify folder
+.netlify
+
+# Komodo
+.komodotools
+*.komodoproject
+
+# Folders to ignore
+/js/coverage/
+/node_modules/
+/.hugo_build.lock
+
 dist
 coverage
-storybook-static
-
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
