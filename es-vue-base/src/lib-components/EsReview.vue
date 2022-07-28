@@ -20,16 +20,16 @@
             </div>
         </div>
         <div class="mb-2">
-            <div class="title-holder">
+            <div class="title-holder mb-2">
                 <h4
                     v-if="title"
-                    class="font-weight-bold text-truncate mb-2"
+                    class="font-weight-bold text-truncate"
                     data-testid="title-test">
                     {{ title }}
                 </h4>
             </div>
             <EsViewMore
-                class="comment-holder"
+                class="comment-holder overflow-auto"
                 :content="comment"
                 :length="commentLimit" />
         </div>

@@ -7,7 +7,7 @@ exports[`EsSlider <EsSlider
             :min="100"
             :max="500"
             ariaLabel="Select a number" /> 1`] = `
-"<div class=\\"vue-slider vue-slider-ltr\\" style=\\"padding: 14px 14px; width: auto; height: 4px;\\">
+"<div class=\\"vue-slider vue-slider-ltr\\" style=\\"padding: 14px 14px; width: auto; height: 4px;\\" min=\\"100\\" max=\\"500\\">
   <div class=\\"vue-slider-rail\\" style=\\"height: 10px; border-radius: 9px;\\">
     <div class=\\"vue-slider-process\\" style=\\"height: 10px; top: 0px; left: 0%; width: 50%; transition-property: width,left; transition-duration: 0.5s; border-radius: 9px;\\"></div>
     <div class=\\"vue-slider-marks\\">
@@ -27,7 +27,7 @@ exports[`EsSlider <EsSlider
     <div aria-valuetext=\\"300\\" class=\\"vue-slider-dot\\" role=\\"slider\\" aria-valuenow=\\"300\\" aria-valuemin=\\"100\\" aria-valuemax=\\"500\\" aria-orientation=\\"horizontal\\" tabindex=\\"0\\" aria-label=\\"Select a number\\" style=\\"width: 28px; height: 28px; transform: translate(-50%, -50%); top: 50%; left: 50%; transition: left 0.5s;\\">
       <div class=\\"vue-slider-dot-handle\\" style=\\"border: 5px solid #007eb0; background: rgb(255, 255, 255);\\"></div>
       <div class=\\"vue-slider-dot-tooltip vue-slider-dot-tooltip-top vue-slider-dot-tooltip-show\\">
-        <div class=\\"slider-tooltip h5 d-flex align-items-center text-white justify-content-center m-0\\" style=\\"background-color: rgb(0, 126, 176);\\">
+        <div class=\\"slider-tooltip h4 d-flex align-items-center text-white justify-content-center m-0\\" style=\\"background-color: rgb(0, 126, 176);\\">
           300
         </div>
       </div>
@@ -37,14 +37,14 @@ exports[`EsSlider <EsSlider
 `;
 
 exports[`EsSlider <EsSlider /> tooltipFormatter works 1`] = `
-"<div class=\\"vue-slider vue-slider-ltr\\" style=\\"padding: 14px 14px; width: auto; height: 4px;\\">
+"<div class=\\"vue-slider vue-slider-ltr\\" style=\\"padding: 14px 14px; width: auto; height: 4px;\\" min=\\"0\\" max=\\"100\\">
   <div class=\\"vue-slider-rail\\" style=\\"height: 10px; border-radius: 9px;\\">
     <div class=\\"vue-slider-process\\" style=\\"height: 10px; top: 0px; left: 0%; width: 100%; transition-property: width,left; transition-duration: 0.5s; border-radius: 9px;\\"></div>
     <div class=\\"vue-slider-marks\\"></div>
     <div aria-valuetext=\\"50\\" class=\\"vue-slider-dot\\" role=\\"slider\\" aria-valuenow=\\"50\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-orientation=\\"horizontal\\" tabindex=\\"0\\" aria-label=\\"Select a number\\" style=\\"width: 28px; height: 28px; transform: translate(-50%, -50%); top: 50%; left: 100%; transition: left 0.5s;\\">
       <div class=\\"vue-slider-dot-handle\\" style=\\"border: 5px solid #007eb0; background: rgb(255, 255, 255);\\"></div>
       <div class=\\"vue-slider-dot-tooltip vue-slider-dot-tooltip-top vue-slider-dot-tooltip-show\\">
-        <div class=\\"slider-tooltip h5 d-flex align-items-center text-white justify-content-center m-0\\" style=\\"background-color: rgb(0, 126, 176);\\">
+        <div class=\\"slider-tooltip h4 d-flex align-items-center text-white justify-content-center m-0\\" style=\\"background-color: rgb(0, 126, 176);\\">
           $50
         </div>
       </div>
@@ -54,14 +54,14 @@ exports[`EsSlider <EsSlider /> tooltipFormatter works 1`] = `
 `;
 
 exports[`EsSlider <EsSlider :startingValue="50" /> 1`] = `
-"<div class=\\"vue-slider vue-slider-ltr\\" style=\\"padding: 14px 14px; width: auto; height: 4px;\\">
+"<div class=\\"vue-slider vue-slider-ltr\\" style=\\"padding: 14px 14px; width: auto; height: 4px;\\" min=\\"0\\" max=\\"100\\">
   <div class=\\"vue-slider-rail\\" style=\\"height: 10px; border-radius: 9px;\\">
     <div class=\\"vue-slider-process\\" style=\\"height: 10px; top: 0px; left: 0%; width: 100%; transition-property: width,left; transition-duration: 0.5s; border-radius: 9px;\\"></div>
     <div class=\\"vue-slider-marks\\"></div>
     <div aria-valuetext=\\"50\\" class=\\"vue-slider-dot\\" role=\\"slider\\" aria-valuenow=\\"50\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-orientation=\\"horizontal\\" tabindex=\\"0\\" aria-label=\\"Select a number\\" style=\\"width: 28px; height: 28px; transform: translate(-50%, -50%); top: 50%; left: 100%; transition: left 0.5s;\\">
       <div class=\\"vue-slider-dot-handle\\" style=\\"border: 5px solid #007eb0; background: rgb(255, 255, 255);\\"></div>
       <div class=\\"vue-slider-dot-tooltip vue-slider-dot-tooltip-top vue-slider-dot-tooltip-show\\">
-        <div class=\\"slider-tooltip h5 d-flex align-items-center text-white justify-content-center m-0\\" style=\\"background-color: rgb(0, 126, 176);\\">
+        <div class=\\"slider-tooltip h4 d-flex align-items-center text-white justify-content-center m-0\\" style=\\"background-color: rgb(0, 126, 176);\\">
           50
         </div>
       </div>
@@ -71,14 +71,14 @@ exports[`EsSlider <EsSlider :startingValue="50" /> 1`] = `
 `;
 
 exports[`EsSlider <EsSlider variant="secondary" /> 1`] = `
-"<div class=\\"vue-slider vue-slider-ltr\\" style=\\"padding: 14px 14px; width: auto; height: 4px;\\">
+"<div class=\\"vue-slider vue-slider-ltr\\" style=\\"padding: 14px 14px; width: auto; height: 4px;\\" min=\\"0\\" max=\\"100\\">
   <div class=\\"vue-slider-rail\\" style=\\"height: 10px; border-radius: 9px;\\">
     <div class=\\"vue-slider-process\\" style=\\"height: 10px; top: 0px; left: 0%; width: 100%; transition-property: width,left; transition-duration: 0.5s; border-radius: 9px;\\"></div>
     <div class=\\"vue-slider-marks\\"></div>
     <div aria-valuetext=\\"50\\" class=\\"vue-slider-dot\\" role=\\"slider\\" aria-valuenow=\\"50\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\" aria-orientation=\\"horizontal\\" tabindex=\\"0\\" aria-label=\\"Select a number\\" style=\\"width: 28px; height: 28px; transform: translate(-50%, -50%); top: 50%; left: 100%; transition: left 0.5s;\\">
       <div class=\\"vue-slider-dot-handle\\" style=\\"border: 5px solid #292929; background: rgb(255, 255, 255);\\"></div>
       <div class=\\"vue-slider-dot-tooltip vue-slider-dot-tooltip-top vue-slider-dot-tooltip-show\\">
-        <div class=\\"slider-tooltip h5 d-flex align-items-center text-white justify-content-center m-0\\" style=\\"background-color: rgb(41, 41, 41);\\">
+        <div class=\\"slider-tooltip h4 d-flex align-items-center text-white justify-content-center m-0\\" style=\\"background-color: rgb(41, 41, 41);\\">
           50
         </div>
       </div>

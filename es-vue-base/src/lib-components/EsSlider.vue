@@ -18,7 +18,7 @@
         <!-- Tooltip above the slider thumb -->
         <template #tooltip="{ value, focus }">
             <div
-                class="slider-tooltip h5 d-flex align-items-center text-white justify-content-center m-0"
+                class="slider-tooltip h4 d-flex align-items-center text-white justify-content-center m-0"
                 :class="[{ focus }]"
                 :style="{ 'background-color': colorComputed }">
                 {{ tooltipFormatter(value) }}
@@ -95,20 +95,6 @@ export default {
             required: true,
         },
         /**
-         * Minimum slider value
-         */
-        min: {
-            type: Number,
-            required: true,
-        },
-        /**
-         * Maximum slider value
-         */
-        max: {
-            type: Number,
-            required: true,
-        },
-        /**
          * Aria Label for Dot
          */
         ariaLabel: {
@@ -144,6 +130,8 @@ export default {
     data() {
         return {
             sliderValue: this.startingValue,
+            min: this.data[0],
+            max: this.data[this.data.length - 1],
             colorComputed: variants[this.variant],
             styles: {
                 dot: {
@@ -191,15 +179,19 @@ export default {
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-extends/scss/includes';
 
+.vue-slider {
+    padding: 0 !important;
+}
+
 .slider-tooltip {
     border-radius: 50%;
-    height: 52px;
-    width: 52px;
+    height: 54px;
+    width: 54px;
 }
 
 .slider-label {
     color: $gray-600;
-    font-size: $h5-font-size;
+    font-size: $h4-font-size;
     margin-top: $spacer;
 }
 </style>
