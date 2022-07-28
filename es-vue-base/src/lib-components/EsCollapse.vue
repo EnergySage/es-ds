@@ -27,7 +27,8 @@
             :visible="isCollapsed"
             :aria-labelledby="id"
             role="tabpanel"
-            data-testid="collapse">
+            data-testid="collapse"
+            v-on="$listeners">
             <div
                 class="pb-5">
                 <slot />

@@ -147,7 +147,7 @@ export default {
 @import '~@energysage/es-bs-extends/scss/includes';
 
 .review-holder {
-    width: 460px;
+    width: 450px;
 
     .name-holder {
         max-width: 90%;
@@ -158,7 +158,7 @@ export default {
     }
 
     .comment-holder {
-        height: 105px;
+        height: 115px;
     }
 
 }
@@ -170,7 +170,7 @@ export default {
         width: 80%;
 
         .comment-holder {
-            height: 190px;
+            height: 195px;
         }
     }
 }

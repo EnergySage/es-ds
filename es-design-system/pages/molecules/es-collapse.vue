@@ -2,7 +2,8 @@
     <EsCollapse
         id="myId"
         visible
-        class="p-5">
+        class="p-5"
+        @shown="shownEvent">
         <template #title>
             <h2 class="mb-0">
                 My Title
@@ -27,6 +28,11 @@ export default {
     name: 'EsCollapseDocs',
     components: {
         EsCollapse,
+    },
+    methods: {
+        shownEvent() {
+            alert('shown');
+        },
     },
 };
 </script>
