@@ -1,8 +1,6 @@
 import { mount } from '@vue/test-utils';
 import EsCollapse from '@/src/lib-components/EsCollapse.vue';
 import EsButton from '@/src/lib-components/EsButton.vue';
-import IconChevronDown from '@/src/lib-components/icons/chevron-down.vue';
-import IconChevronUp from '@/src/lib-components/icons/chevron-up.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsCollapse', () => {
@@ -73,14 +71,10 @@ describe('EsCollapse', () => {
         const content = wrapper.find('.collapse');
 
         expect(content.isVisible()).toBe(false);
-        expect(wrapper.findComponent(IconChevronDown).exists()).toBe(true);
-        expect(wrapper.findComponent(IconChevronUp).exists()).toBe(false);
+
         await box.trigger('click');
-
+        // TODO: Check SVG changed class
         expect(content.isVisible()).toBe(true);
-
-        expect(wrapper.findComponent(IconChevronUp).exists()).toBe(true);
-        expect(wrapper.findComponent(IconChevronDown).exists()).toBe(false);
         expect(wrapper.html()).toMatchSnapshot();
     });
 });

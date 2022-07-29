@@ -10,7 +10,7 @@
                 <slot name="title" />
             </div>
             <div>
-                <IconChevronUp
+                <IconChevronDown
                     :class="{
                         svg: true,
                         collapsed: isCollapsed,
@@ -40,12 +40,12 @@
 <script lang="js">
 import { BCollapse } from 'bootstrap-vue';
 import EsButton from '@/src/lib-components/EsButton.vue';
-import IconChevronUp from '@/src/lib-components/icons/chevron-down.vue';
+import IconChevronDown from '@/src/lib-components/icons/chevron-down.vue';
 
 export default {
     name: 'EsCollapse',
     components: {
-        EsButton, BCollapse, IconChevronUp,
+        EsButton, BCollapse, IconChevronDown,
     },
     props: {
         /**
