@@ -10,13 +10,11 @@
                 <slot name="title" />
             </div>
             <div>
-                <IconChevronDown
-                    v-if="isCollapsed"
-                    width="30px"
-                    height="30px" />
-
                 <IconChevronUp
-                    v-else
+                    :class="{
+                        svg: true,
+                        collapsed: isCollapsed,
+                    }"
                     width="30px"
                     height="30px" />
             </div>
@@ -43,12 +41,11 @@
 import { BCollapse } from 'bootstrap-vue';
 import EsButton from '@/src/lib-components/EsButton.vue';
 import IconChevronUp from '@/src/lib-components/icons/chevron-down.vue';
-import IconChevronDown from '@/src/lib-components/icons/chevron-up.vue';
 
 export default {
     name: 'EsCollapse',
     components: {
-        EsButton, BCollapse, IconChevronUp, IconChevronDown,
+        EsButton, BCollapse, IconChevronUp,
     },
     props: {
         /**
@@ -76,3 +73,12 @@ export default {
     },
 };
 </script>
+<style lang="scss" scoped>
+.svg {
+    transition: transform .5s ease;
+}
+
+.collapsed {
+    transform: rotate(180deg);
+}
+</style>
