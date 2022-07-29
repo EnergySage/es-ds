@@ -1060,11 +1060,11 @@ $figure-caption-color:              $gray-600 !default;
 
 $breadcrumb-font-size:              $font-size-sm !default;
 
-$breadcrumb-padding-y:              .75rem !default;
-$breadcrumb-padding-x:              1rem !default;
-$breadcrumb-item-padding:           .3rem !default;
+$breadcrumb-padding-y:              0 !default;
+$breadcrumb-padding-x:              0 !default;
+$breadcrumb-item-padding:           0.5rem !default;
 
-$breadcrumb-margin-bottom:          1rem !default;
+$breadcrumb-margin-bottom:          0 !default;
 
 $breadcrumb-bg:                     $body-bg !default;
 $breadcrumb-divider-color:          $gray-900 !default;
