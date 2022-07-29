@@ -5,7 +5,6 @@ import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 
@@ -86,6 +85,11 @@ const baseConfig = {
 const external = [
     // list external dependencies, exactly the way it is written in the import statement.
     // eg. 'jquery'
+    'vue',
+    'bootstrap-vue',
+    'vue-flickity',
+    'html-truncate',
+    'vue-slider-component',
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -93,6 +97,11 @@ const external = [
 const globals = {
     // Provide global variable names to replace your external imports
     // eg. jquery: '$'
+    vue: 'Vue',
+    'bootstrap-vue': 'bootstrapVue',
+    'vue-flickity': 'Flickity',
+    'html-truncate': 'truncate',
+    'vue-slider-component': 'vueSlider',
 };
 
 // Customize configs for individual targets
@@ -108,7 +117,6 @@ if (!argv.format || argv.format === 'es') {
             exports: 'named',
         },
         plugins: [
-            peerDepsExternal(),
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
@@ -143,14 +151,12 @@ if (!argv.format || argv.format === 'cjs') {
             globals,
         },
         plugins: [
-            peerDepsExternal(),
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue({
                 ...baseConfig.plugins.vue,
                 template: {
                     ...baseConfig.plugins.vue.template,
-                    optimizeSSR: true,
                 },
             }),
             ...baseConfig.plugins.postVue,
@@ -173,7 +179,6 @@ if (!argv.format || argv.format === 'iife') {
             globals,
         },
         plugins: [
-            peerDepsExternal(),
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
