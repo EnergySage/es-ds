@@ -86,6 +86,6 @@ export default {
 @import '~@energysage/es-bs-extends/scss/includes';
 
 .es-form-textarea {
-    height: 8.125rem;
+    min-height: 8.125rem;
 }
 </style>
