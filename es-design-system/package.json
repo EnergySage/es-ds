@@ -1,6 +1,6 @@
 {
     "name": "es-design-system",
-    "version": "0.4.28",
+    "version": "0.4.29",
     "private": true,
     "scripts": {
         "dev": "env-cmd -f .env.local nuxt",
