@@ -1,13 +1,18 @@
 <template>
     <div>
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-        <label
-            id="myTarget">
+        <label>
             Click Me
-            <IconInfo
-                width="16px"
-                height="16px"
-                class="ml-1 text-gray-700" />
+            <es-button
+                id="myTarget"
+                class="p-0 text-gray-700 align-text-bottom"
+                tabindex="0"
+                variant="link">
+                <IconInfo
+                    id="myTarget"
+                    width="16px"
+                    height="16px" />
+            </es-button>
         </label>
         <EsPopover target="myTarget">
             <template #title>
@@ -24,13 +29,23 @@
     </div>
 </template>
 <script>
-import { EsPopover, IconInfo } from '@energysage/es-vue-base';
+import { EsPopover, IconInfo, EsButton } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsPopoverDocs',
     components: {
         EsPopover,
+        EsButton,
         IconInfo,
     },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '~@energysage/es-bs-extends/scss/includes';
+
+// TODO: Remove when gray scale is added to es-bs-base
+.text-gray-700 {
+    color: $gray-700;
+}
+</style>

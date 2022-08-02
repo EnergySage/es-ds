@@ -4,15 +4,22 @@
         v-bind="$attrs"
         v-on="$listeners">
         <div class="image-holder mr-3">
-            <b-img
-                class="image h-100"
-                :src="repImage"
-                :alt="repName" />
+            <a
+                target="_blank"
+                :aria-label="repName"
+                :href="link">
+                <b-img
+                    class="image h-100"
+                    :src="repImage"
+                    :alt="repName" />
+            </a>
         </div>
         <div class="text-holder d-flex flex-column">
             <div class="title">
                 <h5 class="mb-1 font-size-base font-weight-bold">
-                    <slot />
+                    <slot>
+                        Need help signing up?
+                    </slot>
                 </h5>
             </div>
             <div class="link">

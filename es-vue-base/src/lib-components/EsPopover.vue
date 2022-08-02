@@ -24,6 +24,7 @@
         @slot Popover Content
         @binding {string} text or html of the popover content
         -->
+
         <slot />
     </b-popover>
 </template>
@@ -51,12 +52,12 @@ export default {
         },
         /**
          * Triggers
-         * (optional, defaults to 'click')
+         * (optional, defaults to 'click blur')
          */
         triggers: {
             type: [String, Object],
             required: false,
-            default: 'click',
+            default: 'focus',
         },
         /**
          * Placement

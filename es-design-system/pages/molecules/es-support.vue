@@ -2,9 +2,7 @@
     <div>
         <es-support
             link="https://www.energysage.com"
-            rep-name="Ben">
-            Need help signing up?
-        </es-support>
+            rep-name="Ben" />
     </div>
 </template>
 <script>

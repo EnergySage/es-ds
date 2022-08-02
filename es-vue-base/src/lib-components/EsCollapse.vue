@@ -28,12 +28,14 @@
             data-testid="collapse"
             v-on="$listeners">
             <div
-                class="pb-5">
+                class="pb-3 pb-lg-4 mb-lg-2">
                 <slot />
             </div>
         </b-collapse>
 
-        <div class="border-bottom" />
+        <div
+            v-if="border"
+            class="border-bottom" />
     </div>
 </template>
 
@@ -64,6 +66,15 @@ export default {
             type: Boolean,
             required: false,
             default: false,
+        },
+        /**
+         * Border
+         * Show the border or not
+         */
+        border: {
+            type: Boolean,
+            required: false,
+            default: true,
         },
     },
     data() {
