@@ -52,7 +52,6 @@ export default {
     props: {
         /**
          * ID
-         * (optional, defaults to 'myId')
          */
         id: {
             type: String,
