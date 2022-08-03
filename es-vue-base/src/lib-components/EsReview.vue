@@ -170,7 +170,7 @@ export default {
         width: 80%;
 
         .comment-holder {
-            height: 195px;
+            height: 200px;
         }
     }
 }
