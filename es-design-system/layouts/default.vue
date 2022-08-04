@@ -8,15 +8,15 @@
         </b-navbar>
         <b-row>
             <b-col
-                xl="2"
-                lg="2"
                 md="3"
                 sm="4"
-                cols="12"
-                class="mr-sm-4 mb-1">
+                cols="12">
                 <DsLinkList />
             </b-col>
-            <b-col>
+            <b-col
+                md="9"
+                sm="8"
+                cols="12">
                 <Nuxt />
             </b-col>
         </b-row>

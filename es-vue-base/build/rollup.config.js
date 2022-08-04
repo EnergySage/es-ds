@@ -87,7 +87,6 @@ const external = [
     // eg. 'jquery'
     'vue',
     'bootstrap-vue',
-    'vue-flickity',
     'html-truncate',
     'vue-slider-component',
 ];
@@ -99,7 +98,6 @@ const globals = {
     // eg. jquery: '$'
     vue: 'Vue',
     'bootstrap-vue': 'bootstrapVue',
-    'vue-flickity': 'Flickity',
     'html-truncate': 'truncate',
     'vue-slider-component': 'vueSlider',
 };

@@ -16,8 +16,7 @@
         </h2>
         <es-horizontal-list
             id="docs-2"
-            class="center-holder"
-            align="center"
+            class="center-holder overflow-hidden"
             dots>
             <div
                 v-for="index in 3"

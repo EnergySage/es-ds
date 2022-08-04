@@ -167,7 +167,7 @@ export default {
     .review-holder {
         border: 1px solid $border-color;
         border-radius: 0.75rem;
-        width: 80%;
+        width: 80vw;
 
         .comment-holder {
             height: 200px;

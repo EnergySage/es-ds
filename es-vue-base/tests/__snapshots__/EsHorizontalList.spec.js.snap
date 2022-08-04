@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
-"<div class=\\"flickity-enabled\\" tabindex=\\"0\\">
-  <div class=\\"flickity-viewport\\" style=\\"height: 0px;\\">
-    <div class=\\"flickity-slider\\" style=\\"left: 0px; transform: translateX(NaN%);\\">
-      <div style=\\"position: absolute; left: 0px; transform: translateX(NaN%);\\" class=\\"is-selected\\">Test</div>
-    </div>
+"<div>
+  <div id=\\"testId\\" class=\\"horizontal-scroll-container d-flex overflow-hidden\\">
+    <div>Test</div>
   </div>
+  <!---->
 </div>"
 `;
