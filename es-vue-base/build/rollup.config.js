@@ -5,6 +5,7 @@ import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
+import autoprefixer from 'autoprefixer';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 
@@ -47,6 +48,7 @@ const baseConfig = {
         vue: {
             css: true,
             style: {
+                postcssPlugins: [autoprefixer()],
                 preprocessOptions: {
                     scss: {
                         importer: [
