@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-bs-extends",
-  "version": "0.4.30",
+  "version": "0.4.31",
   "description": "Extension to bootstrap SCSS",
   "main": "index.js",
   "repository": {
