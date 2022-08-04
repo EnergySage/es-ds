@@ -5,7 +5,9 @@
         :target="target"
         :placement="placement"
         :triggers="triggers">
-        <template #title>
+        <template
+            v-if="hasTitle"
+            #title>
             <!--
             @slot Title
             @binding {string} text or html of the title content
@@ -24,8 +26,21 @@
         @slot Popover Content
         @binding {string} text or html of the popover content
         -->
-
-        <slot />
+        <template #default>
+            <div class="d-flex">
+                <slot />
+                <div v-if="!hasTitle">
+                    <EsButton
+                        variant="link"
+                        class="p-0 text-white"
+                        @click="onClose">
+                        <XIcon
+                            height="20px"
+                            width="20px" />
+                    </EsButton>
+                </div>
+            </div>
+        </template>
     </b-popover>
 </template>
 
@@ -52,7 +67,7 @@ export default {
         },
         /**
          * Triggers
-         * (optional, defaults to 'click blur')
+         * (optional, defaults to 'focus')
          */
         triggers: {
             type: [String, Object],
@@ -78,6 +93,11 @@ export default {
             type: Boolean,
             required: false,
             default: false,
+        },
+    },
+    computed: {
+        hasTitle() {
+            return !!this.$slots.title;
         },
     },
     methods: {
