@@ -1,6 +1,6 @@
 {
     "name": "es-design-system",
-    "version": "0.4.31",
+    "version": "0.4.32",
     "private": true,
     "scripts": {
         "dev": "env-cmd -f .env.local nuxt",
@@ -24,9 +24,9 @@
     },
     "prettier": "eslint-config-energysage/prettier",
     "dependencies": {
-        "@energysage/es-bs-base": "^0.4.30",
-        "@energysage/es-bs-extends": "^0.4.31",
-        "@energysage/es-vue-base": "^0.4.31",
+        "@energysage/es-bs-base": "^0.4.32",
+        "@energysage/es-bs-extends": "^0.4.32",
+        "@energysage/es-vue-base": "^0.4.32",
         "@nuxt/content": "^1.15.1",
         "@nuxtjs/axios": "^5.13.6",
         "@nuxtjs/i18n": "^7.2.2",
