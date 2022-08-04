@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
-"<div>
+"<div class=\\"horizontal-scroll-wrapper overflow-hidden\\">
   <div id=\\"testId\\" class=\\"horizontal-scroll-container d-flex overflow-hidden\\">
     <div>Test</div>
   </div>
