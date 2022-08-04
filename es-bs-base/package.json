@@ -1,7 +1,7 @@
 {
   "name": "@energysage/es-bs-base",
   "description": "Base CSS for EnergySage design system based on Bootstrap",
-  "version": "0.4.32",
+  "version": "0.4.33",
   "config": {
     "version_short": "0.1"
   },
