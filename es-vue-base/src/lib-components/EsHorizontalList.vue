@@ -159,9 +159,6 @@ export default {
     scroll-snap-stop: always;
     scroll-snap-type: x mandatory;
 
-    transform: scale(0.98);
-    transition: all 0.2s;
-
     user-select: none;
     will-change: transform;
 
@@ -179,7 +176,6 @@ export default {
 
     &.active {
         cursor: grabbing;
-        transform: scale(1);
     }
 
     > * {

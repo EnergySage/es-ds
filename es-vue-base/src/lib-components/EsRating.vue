@@ -87,7 +87,6 @@ export default {
     background: transparent;
     box-shadow: none !important;
     height: auto !important;
-    max-width: 150px;
     padding: 0 !important;
 
     .b-rating-star {

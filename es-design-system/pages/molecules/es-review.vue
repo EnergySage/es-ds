@@ -1,30 +1,53 @@
 <template>
-    <es-horizontal-list
-        id="reviews"
-        class="mb-5">
-        <es-review
-            v-for="review in reviews"
-            :id="review.id"
-            :key="review.id"
-            :reviewer-name="review.reviewer_name"
-            :certified="review.certified"
-            :created="new Date(review.created)"
-            :rating="review.rating"
-            :title="review.title"
-            :comment="review.comment" />
-    </es-horizontal-list>
+    <div>
+        <es-button
+            size="sm"
+            class="mb-3"
+            variant="dark"
+            @click="reviewsModalVisible = true">
+            View All Reviews
+        </es-button>
+        <es-review-modal
+            :reviews="reviews"
+            :avg-rating="3.5"
+            :visible="reviewsModalVisible"
+            developer-name="Test Dev"
+            @hidden="reviewsModalVisible = false"
+            @createReview="createReview" />
+        <es-horizontal-list
+            id="reviews"
+            class="mb-5">
+            <es-review
+                v-for="review in reviews"
+                :id="review.id"
+                :key="review.id"
+                class="review-wrapper"
+                :reviewer-name="review.reviewer_name"
+                :certified="review.certified"
+                :created="new Date(review.created)"
+                :rating="review.rating"
+                :title="review.title"
+                :comment="review.comment"
+                @showMore="reviewsModalVisible = true" />
+        </es-horizontal-list>
+    </div>
 </template>
 <script>
-import { EsReview, EsHorizontalList } from '@energysage/es-vue-base';
+import {
+    EsReview, EsHorizontalList, EsButton, EsReviewModal,
+} from '@energysage/es-vue-base';
 
 export default {
     name: 'EsReviewDocs',
     components: {
         EsReview,
         EsHorizontalList,
+        EsButton,
+        EsReviewModal,
     },
     data() {
         return {
+            reviewsModalVisible: false,
             reviews: [
                 {
                     id: 16,
@@ -41,6 +64,21 @@ export default {
                     created: '2022-06-03T18:27:41.718753Z',
                     rating: 3,
                     title: 'testers',
+                    comment: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
+                Nullam vestibulum ex mi, ut suscipit libero condimentum id. Pellentesque eu diam vel nisi
+                molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum.
+                Mauris vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus
+                et magnis dis parturient montes, nascetur ridiculus mus. Nulla ullamcorper elit sed viverra finibus.
+                Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare. Maecenas quis turpis sit amet
+                sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
+                Donec eleifend elit quam.`,
+                }, {
+                    id: 12,
+                    reviewer_name: 'Ryan Smith',
+                    certified: true,
+                    created: '2022-06-03T18:27:41.718753Z',
+                    rating: 5,
+                    title: 'My Title',
                     comment: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
                 Nullam vestibulum ex mi, ut suscipit libero condimentum id. Pellentesque eu diam vel nisi
                 molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum.
@@ -77,6 +115,25 @@ export default {
             ],
         };
     },
-
+    methods: {
+        createReview() {
+            // eslint-disable-next-line no-alert
+            alert('create review triggered');
+        },
+    },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '~@energysage/es-bs-extends/scss/includes';
+
+.review-wrapper {
+    width: 450px;
+}
+
+@include media-breakpoint-down(md) {
+    .review-wrapper {
+        width: 325px;
+    }
+}
+</style>

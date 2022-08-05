@@ -29,9 +29,14 @@
                 </h4>
             </div>
             <EsViewMore
+                v-if="commentLimit"
                 class="comment-holder overflow-auto"
                 :content="comment"
-                :length="commentLimit" />
+                :length="commentLimit"
+                @click="$emit('showMore')" />
+            <template v-else>
+                {{ comment }}
+            </template>
         </div>
         <small class="d-flex align-items-center text-gray-800 text-nowrap">
             <div class="flex-grow-1 overflow-hidden">
@@ -124,7 +129,7 @@ export default {
          */
         commentLimit: {
             default: 225,
-            type: Number,
+            type: [Number, Boolean],
         },
         /**
          * Disable changing the rating
@@ -147,8 +152,6 @@ export default {
 @import '~@energysage/es-bs-extends/scss/includes';
 
 .review-holder {
-    width: 450px;
-
     .name-holder {
         max-width: 90%;
     }
@@ -167,10 +170,9 @@ export default {
     .review-holder {
         border: 1px solid $border-color;
         border-radius: 0.75rem;
-        width: 80vw;
 
         .comment-holder {
-            height: 200px;
+            height: 165px;
         }
     }
 }
