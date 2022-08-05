@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
-"<div id=\\"reviewsModal___BV_modal_outer_\\" style=\\"position: absolute; z-index: 1040;\\" class=\\"modal-lightbox\\">
+"<div id=\\"reviewsModal___BV_modal_outer_\\" style=\\"position: absolute; z-index: 1040;\\" class=\\"modal-lightbox\\" body-class=\\"pt-0 pt-lg-4\\">
   <transition-stub enterclass=\\"\\" leaveclass=\\"\\" entertoclass=\\"\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
     <div id=\\"reviewsModal\\" role=\\"dialog\\" aria-labelledby=\\"reviewsModal___BV_modal_title_\\" aria-describedby=\\"reviewsModal___BV_modal_body_\\" class=\\"modal fade\\" style=\\"\\" aria-modal=\\"true\\">
       <div class=\\"modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable\\"><span tabindex=\\"0\\"></span>
@@ -13,7 +13,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                 <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z\\"></path>
               </svg></button>
           </header>
-          <div id=\\"reviewsModal___BV_modal_body_\\" class=\\"modal-body\\">
+          <div id=\\"reviewsModal___BV_modal_body_\\" class=\\"modal-body pt-0 pt-lg-4\\">
             <div class=\\"modal-container container-fluid\\">
               <div class=\\"row\\">
                 <div class=\\"p-0 col-md-8 order-lg-1 col-12 order-2\\">
@@ -180,7 +180,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                     </small>
                   </div>
                 </div>
-                <div class=\\"p-0 position-sticky sticky-mobile-col bg-body col-md-4 order-lg-2 col-12 order-1\\">
+                <div class=\\"p-0 position-sticky sticky-mobile-col top-0 col-md-4 order-lg-2 col-12 order-1\\">
                   <div class=\\"position-sticky top-0\\">
                     <h2 class=\\"d-flex align-items-end\\">
                       3.5

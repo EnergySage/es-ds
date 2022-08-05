@@ -3,6 +3,7 @@
         id="reviewsModal"
         hide-footer
         :visible="visible"
+        body-class="pt-0 pt-lg-4"
         size="xl"
         @hidden="$emit('hidden')">
         <template #modal-title>
@@ -32,7 +33,7 @@
                         :created="new Date(review.created)" />
                 </b-col>
                 <b-col
-                    class="p-0 position-sticky sticky-mobile-col bg-body"
+                    class="p-0 position-sticky sticky-mobile-col top-0"
                     cols="12"
                     md="4"
                     order="1"
@@ -123,13 +124,17 @@ export default {
     top: 0;
 }
 
+.modal-container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
 .font-size-base {
     font-size: $font-size-base;
 }
 
 .sticky-mobile-col {
     background: $body-bg;
-    top: 32px;
     z-index: $zindex-sticky;
 }
 </style>

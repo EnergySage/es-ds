@@ -9,6 +9,7 @@
         centered
         static
         class="modal-lightbox"
+        v-bind="$attrs"
         v-on="$listeners">
         <template #modal-title>
             <slot name="modal-title" />
