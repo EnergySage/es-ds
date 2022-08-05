@@ -9,18 +9,20 @@
                 :aria-label="repName"
                 :href="link">
                 <b-img
-                    class="image h-100"
+                    width="64px"
+                    height="64px"
+                    class="image"
                     :src="repImage"
                     :alt="repName" />
             </a>
         </div>
         <div class="text-holder d-flex flex-column">
             <div class="title">
-                <h5 class="mb-1 font-size-base font-weight-bold">
+                <div class="h5 mb-1 font-size-base font-weight-bold">
                     <slot>
                         Need help signing up?
                     </slot>
-                </h5>
+                </div>
             </div>
             <div class="link">
                 <a
