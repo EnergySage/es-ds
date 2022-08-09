@@ -99,11 +99,6 @@
                         EsRating
                     </b-link>
                 </li>
-                <li :class="{'nav-item-active': currentRouteName === 'molecules-es-review___en'}">
-                    <b-link :to="{name: 'molecules-es-review___en'}">
-                        EsReview
-                    </b-link>
-                </li>
                 <li :class="{'nav-item-active': currentRouteName === 'molecules-es-slider___en'}">
                     <b-link :to="{name: 'molecules-es-slider___en'}">
                         EsSlider
@@ -122,6 +117,25 @@
                 <li :class="{'nav-item-active': currentRouteName === 'molecules-es-view-more___en'}">
                     <b-link :to="{name: 'molecules-es-view-more___en'}">
                         EsViewMore
+                    </b-link>
+                </li>
+            </ul>
+        </li>
+        <li :class="{'nav-item-active': currentRouteName === 'organisms___en'}">
+            <div class="h4">
+                <b-link :to="{name: 'organisms___en'}">
+                    Organisms
+                </b-link>
+            </div>
+            <ul>
+                <li :class="{'nav-item-active': currentRouteName === 'organisms-es-review___en'}">
+                    <b-link :to="{name: 'organisms-es-review___en'}">
+                        EsReview
+                    </b-link>
+                </li>
+                <li :class="{'nav-item-active': currentRouteName === 'organisms-es-form___en'}">
+                    <b-link :to="{name: 'organisms-es-form___en'}">
+                        EsForm
                     </b-link>
                 </li>
             </ul>
