@@ -20,11 +20,16 @@
                 :disabled="disabled"
                 :state="state"
                 v-on="$listeners" />
-            <b-form-text v-if="state == null">
+            <b-form-text v-if="(!hasSuccess && state) || state == null">
                 <slot name="message" />
             </b-form-text>
             <b-form-invalid-feedback>
-                <slot name="errorMessage" />
+                <slot
+                    v-if="hasError"
+                    name="errorMessage" />
+                <template v-else>
+                    This field is required.
+                </template>
             </b-form-invalid-feedback>
             <b-form-valid-feedback>
                 <slot name="successMessage" />
@@ -88,5 +93,21 @@ export default {
             default: null,
         },
     },
+    computed: {
+        hasSuccess() {
+            return !!this.$slots.successMessage;
+        },
+        hasError() {
+            return !!this.$slots.errorMessage;
+        },
+    },
 };
 </script>
+<style lang="scss" scoped>
+@import '~@energysage/es-bs-extends/scss/includes';
+
+// TODO: Move to es-bs-extends
+.is-invalid {
+    color: $danger;
+}
+</style>

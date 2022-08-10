@@ -5,6 +5,7 @@ export { default as EsButton } from './EsButton.vue';
 export { default as EsCollapse } from './EsCollapse.vue';
 export { default as EsFormInput } from './EsFormInput.vue';
 export { default as EsFormTextarea } from './EsFormTextarea.vue';
+export { default as EsFormMsg } from './EsFormMsg.vue';
 export { default as EsHorizontalList } from './EsHorizontalList.vue';
 export { default as EsModal } from './EsModal.vue';
 export { default as EsPopover } from './EsPopover.vue';

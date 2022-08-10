@@ -16,14 +16,21 @@
         <div>
             <b-form-textarea
                 :id="id"
+                v-bind="$attrs"
                 class="es-form-textarea"
                 :disabled="disabled"
-                :state="state" />
-            <b-form-text v-if="state == null">
+                :state="state"
+                v-on="$listeners" />
+            <b-form-text v-if="(!hasSuccess && state) || state == null">
                 <slot name="message" />
             </b-form-text>
             <b-form-invalid-feedback>
-                <slot name="errorMessage" />
+                <slot
+                    v-if="hasError"
+                    name="errorMessage" />
+                <template v-else>
+                    This field is required.
+                </template>
             </b-form-invalid-feedback>
             <b-form-valid-feedback>
                 <slot name="successMessage" />
@@ -79,6 +86,14 @@ export default {
             default: null,
         },
     },
+    computed: {
+        hasSuccess() {
+            return !!this.$slots.successMessage;
+        },
+        hasError() {
+            return !!this.$slots.errorMessage;
+        },
+    },
 };
 </script>
 
@@ -87,5 +102,10 @@ export default {
 
 .es-form-textarea {
     min-height: 8.125rem;
+}
+
+// TODO: Move to es-bs-extends
+.is-invalid {
+    color: $danger;
 }
 </style>

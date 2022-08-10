@@ -76,7 +76,8 @@
     "vue": "^2.7.8",
     "vue-jest": "^3.0.7",
     "vue-slider-component": "^3.2.18",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "vuelidate": "^0.7.7"
   },
   "peerDependencies": {
     "@energysage/es-bs-base": "^0.3.5",
@@ -84,7 +85,8 @@
     "bootstrap-vue": "^2.22.0",
     "html-truncate": "^1.2.2",
     "vue": "^2.7.8",
-    "vue-slider-component": "^3.2.18"
+    "vue-slider-component": "^3.2.18",
+    "vuelidate": "^0.7.7"
   },
   "engines": {
     "node": ">=12"

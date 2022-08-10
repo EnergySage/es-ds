@@ -1,4 +1,5 @@
 // iife/cjs usage extends esm default export - so import it all
+// TODO: How to make this work for utils
 import plugin, * as components from '@/src/entry.esm';
 
 // Attach named exports directly to plugin. IIFE/CJS will
