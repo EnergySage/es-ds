@@ -42,7 +42,7 @@ $orange:  #ffbf57 !default;
 $yellow:  #f6b140 !default;
 $green:   #008445 !default;
 $teal:    #37b6aa !default;
-$cyan:    #007eb0 !default;
+$cyan:    #007aab !default;
 
 $colors: () !default;
 $colors: map-merge(
@@ -989,8 +989,8 @@ $modal-scale-transform:             scale(1.02) !default;
 //
 // Define alert colors, border radius, and padding.
 
-$alert-padding-y:                   .75rem !default;
-$alert-padding-x:                   1.25rem !default;
+$alert-padding-y:                   1rem !default;
+$alert-padding-x:                   1rem !default;
 $alert-margin-bottom:               1rem !default;
 $alert-border-radius:               $border-radius !default;
 $alert-link-font-weight:            $font-weight-bold !default;
