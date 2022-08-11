@@ -21,8 +21,8 @@
 import {
     BAlert,
 } from 'bootstrap-vue';
-import IconCircleAlert from '@/src/lib-components/icons/circle-alert.vue';
-import IconCircleCheck from '@/src/lib-components/icons/circle-check.vue';
+import IconCircleAlert from '@/src/lib-icons/circle-alert.vue';
+import IconCircleCheck from '@/src/lib-icons/circle-check.vue';
 
 export default {
     name: 'EsFormMsg',
@@ -39,7 +39,7 @@ export default {
         },
         timeout: {
             type: Number,
-            default: 5000,
+            default: 5,
             required: false,
         },
         variant: {

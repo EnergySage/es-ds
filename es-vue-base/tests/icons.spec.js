@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import jestVue from './jest.vue.config';
-import * as icons from '../src/lib-components/icons';
+import * as icons from '../src/lib-icons';
 
 describe('icons', () => {
     const cases = Object.keys(icons).map((iconName) => [

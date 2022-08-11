@@ -13,4 +13,4 @@ Object.entries(exports).forEach(([componentName, component]) => {
 
 export default plugin;
 
-export * from '@/src/lib-utils/index';
+export * from '@/src/entry.esm';

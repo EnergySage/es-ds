@@ -67,7 +67,17 @@
                             class="w-100 w-lg-auto"
                             :loading="isSubmitInProgress"
                             :disabled="isSubmitInProgress">
-                            Submit
+                            <span class="position-relative d-inline-block w-100">
+                                <span
+                                    v-if="isSubmitInProgress"
+                                    class="button-spinner position-absolute d-inline-block h-100 w-100">
+                                    <b-spinner
+                                        role="status"
+                                        aria-hidden="true"
+                                        label="Loading" />
+                                </span>
+                                Submit
+                            </span>
                         </es-button>
                     </div>
                 </b-form>
@@ -84,7 +94,7 @@
 </template>
 <script>
 import {
-    BForm, BContainer, BRow, BCol, BFormCheckbox,
+    BForm, BContainer, BRow, BCol, BFormCheckbox, BSpinner,
 } from 'bootstrap-vue';
 import {
     EsFormInput, EsFormTextarea, EsButton, EsFormMsg, formMixins, validators,
@@ -98,6 +108,7 @@ export default {
         BRow,
         BFormCheckbox,
         BCol,
+        BSpinner,
         EsFormMsg,
         EsFormInput,
         EsFormTextarea,
@@ -160,5 +171,10 @@ export default {
     .w-lg-auto {
         width: auto !important;
     }
+}
+
+.button-spinner {
+  right: 0;
+  top: -28%;
 }
 </style>

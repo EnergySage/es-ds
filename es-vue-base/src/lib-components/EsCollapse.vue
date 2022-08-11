@@ -42,7 +42,7 @@
 <script lang="js">
 import { BCollapse } from 'bootstrap-vue';
 import EsButton from '@/src/lib-components/EsButton.vue';
-import IconChevronDown from '@/src/lib-components/icons/chevron-down.vue';
+import IconChevronDown from '@/src/lib-icons/chevron-down.vue';
 
 export default {
     name: 'EsCollapse',

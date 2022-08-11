@@ -30,6 +30,7 @@ export default {
             this.formMsg = text;
         },
         startSubmit() {
+            this.formMsg = '';
             this.submitInProgress = true;
             this.showFooterMsg = false;
         },
