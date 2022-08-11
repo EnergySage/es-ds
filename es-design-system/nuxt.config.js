@@ -1,3 +1,5 @@
+import { version } from './package.json';
+
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
@@ -17,6 +19,9 @@ export default {
     ssr: false,
     server: {
         port: 8500,
+    },
+    router: {
+        base: `/${version}/`,
     },
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
