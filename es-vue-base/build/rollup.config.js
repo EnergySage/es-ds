@@ -147,7 +147,7 @@ if (!argv.format || argv.format === 'cjs') {
             file: 'dist/es-vue-base.ssr.js',
             format: 'cjs',
             name: 'EsVueBase',
-            exports: 'auto',
+            exports: 'named',
             globals,
         },
         plugins: [
@@ -175,7 +175,7 @@ if (!argv.format || argv.format === 'iife') {
             file: 'dist/es-vue-base.min.js',
             format: 'iife',
             name: 'EsVueBase',
-            exports: 'auto',
+            exports: 'named',
             globals,
         },
         plugins: [

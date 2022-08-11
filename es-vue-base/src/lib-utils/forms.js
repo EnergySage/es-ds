@@ -5,7 +5,6 @@ export default {
     data() {
         return {
             submitInProgress: false,
-            showFooterMsg: false,
             formMsg: '',
             formMsgVariant: 'danger',
         };
@@ -32,7 +31,6 @@ export default {
         startSubmit() {
             this.formMsg = '';
             this.submitInProgress = true;
-            this.showFooterMsg = false;
         },
         stopSubmit() {
             this.submitInProgress = false;

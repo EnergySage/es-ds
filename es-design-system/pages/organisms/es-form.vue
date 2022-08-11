@@ -86,15 +86,38 @@
         <b-row class="my-5 border-top pt-5">
             <b-col>
                 <h2>
-                    Documentation
+                    Data Mixins
                 </h2>
+                <b-table
+                    striped
+                    :items="dataMixins" />
+            </b-col>
+        </b-row>
+        <b-row>
+            <b-col>
+                <h2>
+                    Method Mixins
+                </h2>
+                <b-table
+                    striped
+                    :items="methodMixins" />
+            </b-col>
+        </b-row>
+        <b-row>
+            <b-col>
+                <h2>
+                    Validators
+                </h2>
+                <b-table
+                    striped
+                    :items="validatorMixins" />
             </b-col>
         </b-row>
     </b-container>
 </template>
 <script>
 import {
-    BForm, BContainer, BRow, BCol, BFormCheckbox, BSpinner,
+    BForm, BContainer, BRow, BCol, BFormCheckbox, BSpinner, BTable,
 } from 'bootstrap-vue';
 import {
     EsFormInput, EsFormTextarea, EsButton, EsFormMsg, formMixins, validators,
@@ -109,6 +132,7 @@ export default {
         BFormCheckbox,
         BCol,
         BSpinner,
+        BTable,
         EsFormMsg,
         EsFormInput,
         EsFormTextarea,
@@ -118,6 +142,89 @@ export default {
     data() {
         return {
             inline: false,
+            validatorMixins: [
+                {
+                    name: 'required',
+                    arguments: '',
+                    description: 'check if the field has a value',
+                },
+                {
+                    name: 'RequiredIf',
+                    arguments: 'function',
+                    description: 'a function with access to string; expected to return a boolean',
+                },
+                {
+                    name: 'minValue',
+                    arguments: 'minimum',
+                    description: 'check if number is greater than minimum',
+                },
+                {
+                    name: 'maxValue',
+                    arguments: 'maximum',
+                    description: 'check if number is less than maximum',
+                },
+                {
+                    name: 'minLength',
+                    arguments: 'minimum',
+                    description: 'check if string has at least the mimimum characters count',
+                },
+                {
+                    name: 'maxValue',
+                    arguments: 'maximum',
+                    description: 'check if string has less than the maximum characters count',
+                },
+                {
+                    name: 'numeric',
+                    arguments: '',
+                    description: 'check if the value is a number',
+                },
+                {
+                    name: 'email',
+                    arguments: '',
+                    description: 'check if the string is a valid email address',
+                },
+                {
+                    name: 'phone',
+                    arguments: '',
+                    description: 'check if the string is a valid US phone number',
+                },
+            ],
+            dataMixins: [
+                {
+                    name: 'isSubmitInProgress',
+                    type: 'Boolean',
+                    description: 'Is true when startSubmit is called; false when endSubmit is called',
+                },
+                { name: 'formMsg', type: 'String', description: 'Text to display in EsFormMsg' },
+                { name: 'formMsgVariant', type: 'enum [success,danger]', description: 'Variant to use in EsFormMsg' },
+            ],
+            methodMixins: [
+                {
+                    name: 'validateState',
+                    arguments: 'v-model',
+                    description: 'checks if the current v-model value is valid; return boolean',
+                },
+                {
+                    name: 'showFormError',
+                    arguments: 'text',
+                    description: 'Text to display in EsFormMsg with danger variant',
+                },
+                {
+                    name: 'showFormSuccess',
+                    arguments: 'text',
+                    description: 'Text to display in EsFormMsg with success variant',
+                },
+                {
+                    name: 'startSubmit',
+                    arguments: '',
+                    description: 'Starts submit process; updates state and sets isSubmitInProgress to true',
+                },
+                {
+                    name: 'endSubmit',
+                    arguments: '',
+                    description: 'Ends submit process; updates state and sets isSubmitInProgress to false',
+                },
+            ],
             form: {
                 phone: null,
                 email: null,
