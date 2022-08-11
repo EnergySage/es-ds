@@ -73,6 +73,7 @@ export default {
 @import '~@energysage/es-bs-extends/scss/includes';
 
 .form-msg {
+  flex: 0 0 100%;
   padding-right: 2.5rem;
 }
 </style>

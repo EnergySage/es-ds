@@ -21,7 +21,7 @@ export default {
             return $dirty ? !$error : null;
         },
         // eslint-disable-next-line max-len
-        showFormError(text = 'We were unable to complete your request. Please fix the errors highlighted above and try again.') {
+        showFormError(text = 'The server responded with an error and we were unable to complete your request. Please try again') {
             this.formMsgVariant = 'danger';
             this.formMsg = text;
         },

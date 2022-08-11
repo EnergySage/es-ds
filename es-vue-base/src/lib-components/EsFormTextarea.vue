@@ -1,10 +1,12 @@
 <template>
     <div
+        class="input-wrapper justify-content-end mb-2"
+        v-bind="$attrs"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="id"
-            class="label font-weight-bold">
+            class="label font-weight-bold justify-content-start">
             <slot name="label" />
 
             <span
@@ -13,26 +15,27 @@
                 *
             </span>
         </label>
-        <div>
+
+        <div class="input-holder">
             <b-form-textarea
                 :id="id"
                 v-bind="$attrs"
-                class="es-form-textarea"
+                class="es-form-textarea w-100"
                 :disabled="disabled"
                 :state="state"
                 v-on="$listeners" />
-            <b-form-text v-if="(!hasSuccess && state) || state == null">
+            <b-form-text v-if="hasMessage && ((!hasSuccess && state) || state == null)">
                 <slot name="message" />
             </b-form-text>
-            <b-form-invalid-feedback>
+            <b-form-invalid-feedback v-if="hasError || required">
                 <slot
                     v-if="hasError"
                     name="errorMessage" />
-                <template v-else>
+                <template v-else-if="required">
                     This field is required.
                 </template>
             </b-form-invalid-feedback>
-            <b-form-valid-feedback>
+            <b-form-valid-feedback v-if="hasSuccess">
                 <slot name="successMessage" />
             </b-form-valid-feedback>
         </div>
@@ -104,8 +107,25 @@ export default {
     min-height: 8.125rem;
 }
 
+.es-form-textarea:disabled, .es-form-textarea[readonly] {
+    border: 0;
+}
+
 // TODO: Move to es-bs-extends
 .is-invalid {
     color: $danger;
+}
+
+.form-inline .input-wrapper {
+    display: flex;
+    flex: 0 0 100%;
+
+    label {
+        flex: 0 0 30%;
+    }
+
+    .input-holder {
+        flex: 0 0 70%;
+    }
 }
 </style>
