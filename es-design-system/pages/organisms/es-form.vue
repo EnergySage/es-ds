@@ -1,10 +1,25 @@
 <template>
     <b-container>
         <b-row>
+            <b-col>
+                <h1>
+                    Forms
+                </h1>
+                <b-form-checkbox
+                    id="inline-form"
+                    v-model="inline"
+                    name="inline-form">
+                    Inline Form
+                </b-form-checkbox>
+            </b-col>
+        </b-row>
+        <b-row class="my-5 border-top pt-5">
             <b-col
                 cols="12"
                 lg="8">
-                <b-form @submit.stop.prevent="onSubmit">
+                <b-form
+                    :inline="inline"
+                    @submit.stop.prevent="onSubmit">
                     <es-form-input
                         id="email"
                         v-model="$v.form.email.$model"
@@ -46,27 +61,30 @@
                         :variant="formMsgVariant"
                         :message="formMsg"
                         @hidden="formMsg = ''" />
-                    <b-row class="justify-content-end my-3">
-                        <b-col
-                            cols="12"
-                            lg="4">
-                            <es-button
-                                type="submit"
-                                class="w-100"
-                                :loading="isSubmitInProgress"
-                                :disabled="isSubmitInProgress">
-                                Submit
-                            </es-button>
-                        </b-col>
-                    </b-row>
+                    <div class="d-flex flex-grow-1 justify-content-end mt-3">
+                        <es-button
+                            type="submit"
+                            class="w-100 w-lg-auto"
+                            :loading="isSubmitInProgress"
+                            :disabled="isSubmitInProgress">
+                            Submit
+                        </es-button>
+                    </div>
                 </b-form>
+            </b-col>
+        </b-row>
+        <b-row class="my-5 border-top pt-5">
+            <b-col>
+                <h2>
+                    Documentation
+                </h2>
             </b-col>
         </b-row>
     </b-container>
 </template>
 <script>
 import {
-    BForm, BContainer, BRow, BCol,
+    BForm, BContainer, BRow, BCol, BFormCheckbox,
 } from 'bootstrap-vue';
 import {
     EsFormInput, EsFormTextarea, EsButton, EsFormMsg, formMixins, validators,
@@ -78,6 +96,7 @@ export default {
         BForm,
         BContainer,
         BRow,
+        BFormCheckbox,
         BCol,
         EsFormMsg,
         EsFormInput,
@@ -87,6 +106,7 @@ export default {
     mixins: [formMixins],
     data() {
         return {
+            inline: false,
             form: {
                 phone: null,
                 email: null,
@@ -116,16 +136,29 @@ export default {
             this.$v.form.$touch();
             if (this.$v.form.$anyError) {
                 this.stopSubmit();
-                this.showFormError();
                 return;
             }
 
             // Fake Server Transaction Time
             setTimeout(() => {
                 this.stopSubmit();
-                this.showFormSuccess();
+                if (Math.random() < 0.5) {
+                    this.showFormSuccess();
+                } else {
+                    this.showFormError();
+                }
             }, 5000);
         },
     },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '~@energysage/es-bs-extends/scss/includes';
+
+@include media-breakpoint-up(md) {
+    .w-lg-auto {
+        width: auto !important;
+    }
+}
+</style>
