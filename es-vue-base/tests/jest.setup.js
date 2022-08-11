@@ -1,5 +1,6 @@
 import * as matchers from 'jest-extended';
 import { toHaveNoViolations } from 'jest-axe';
+import '@testing-library/jest-dom';
 
 // Add all matchers from jest-extended
 // https://github.com/jest-community/jest-extended

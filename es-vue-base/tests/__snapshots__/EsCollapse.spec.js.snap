@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsCollapse <EsCollapse /> 1`] = `
+"<div><button aria-label=\\"myId\\" type=\\"button\\" class=\\"btn collapse-holder text-left p-0 mb-3 font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block\\" block=\\"\\">
+    <div>My Title</div>
+    <div><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" fill=\\"currentColor\\" style=\\"height: 30px; width: 30px;\\" class=\\"svg\\">
+        <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z\\"></path>
+      </svg></div>
+  </button>
+  <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" aria-labelledby=\\"myId\\" role=\\"tabpanel\\" data-testid=\\"collapse\\">
+    <div id=\\"myId\\" class=\\"collapse\\" style=\\"display: none;\\">
+      <div class=\\"pb-3 pb-lg-4 mb-lg-2\\">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
+    </div>
+  </transition-stub>
+  <div class=\\"border-bottom\\"></div>
+</div>"
+`;
+
+exports[`EsCollapse EsButton exists 1`] = `
+"<div><button aria-label=\\"myId\\" type=\\"button\\" class=\\"btn collapse-holder text-left p-0 mb-3 font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block\\" block=\\"\\">
+    <div>My Title</div>
+    <div><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" fill=\\"currentColor\\" style=\\"height: 30px; width: 30px;\\" class=\\"svg\\">
+        <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z\\"></path>
+      </svg></div>
+  </button>
+  <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" aria-labelledby=\\"myId\\" role=\\"tabpanel\\" data-testid=\\"collapse\\">
+    <div id=\\"myId\\" class=\\"collapse\\" style=\\"display: none;\\">
+      <div class=\\"pb-3 pb-lg-4 mb-lg-2\\">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
+    </div>
+  </transition-stub>
+  <div class=\\"border-bottom\\"></div>
+</div>"
+`;
+
+exports[`EsCollapse Icons switch upon button click 1`] = `
+"<div><button aria-label=\\"myId\\" type=\\"button\\" class=\\"btn collapse-holder text-left p-0 mb-3 font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block\\" block=\\"\\">
+    <div>My Title</div>
+    <div><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" fill=\\"currentColor\\" style=\\"height: 30px; width: 30px;\\" class=\\"svg collapsed\\">
+        <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z\\"></path>
+      </svg></div>
+  </button>
+  <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" aria-labelledby=\\"myId\\" role=\\"tabpanel\\" data-testid=\\"collapse\\">
+    <div id=\\"myId\\" class=\\"collapse show\\" style=\\"\\">
+      <div class=\\"pb-3 pb-lg-4 mb-lg-2\\">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
+    </div>
+  </transition-stub>
+  <div class=\\"border-bottom\\"></div>
+</div>"
+`;
+
+exports[`EsCollapse Title and default slot exist inside EsButton 1`] = `
+"<div><button aria-label=\\"myId\\" type=\\"button\\" class=\\"btn collapse-holder text-left p-0 mb-3 font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block\\" block=\\"\\">
+    <div>My Title</div>
+    <div><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" fill=\\"currentColor\\" style=\\"height: 30px; width: 30px;\\" class=\\"svg collapsed\\">
+        <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z\\"></path>
+      </svg></div>
+  </button>
+  <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" aria-labelledby=\\"myId\\" role=\\"tabpanel\\" data-testid=\\"collapse\\">
+    <div id=\\"myId\\" class=\\"collapse show\\" style=\\"\\">
+      <div class=\\"pb-3 pb-lg-4 mb-lg-2\\">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
+    </div>
+  </transition-stub>
+  <div class=\\"border-bottom\\"></div>
+</div>"
+`;

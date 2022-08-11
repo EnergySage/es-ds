@@ -3,7 +3,7 @@
       "es-vue-base/"
     ],
     "ignore": [
-        "dist/"
+        "es-vue-base/dist/"
       ],
     "env": {
       "NODE_ENV": "production"

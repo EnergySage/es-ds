@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsButton <EsButton size="sm" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-primary btn-sm\\">Main Content</button>"`;
+
+exports[`EsButton <EsButton uppercase="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-primary btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="danger" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-danger btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="danger" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-danger btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="dark" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-dark btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="dark" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-dark btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="info" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-info btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="info" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-info btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="light" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-light btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="light" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-light btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="link" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-link btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="link" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-link btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="primary" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-primary btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="primary" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-primary btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="secondary" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-secondary btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="secondary" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-secondary btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="warning" outline="false" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-warning btn-md\\">Main Content</button>"`;
+
+exports[`EsButton <es-button variant="warning" outline="true" /> 1`] = `"<button type=\\"button\\" class=\\"btn btn-outline-warning btn-md\\">Main Content</button>"`;

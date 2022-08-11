@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsFormTextarea <EsFormTextarea /> 1`] = `
+"<div><label for=\\"myID\\" class=\\"label font-weight-bold\\">Notes
+    <!----></label>
+  <div><textarea id=\\"myID\\" rows=\\"2\\" wrap=\\"soft\\" class=\\"es-form-textarea form-control\\"></textarea> <small class=\\"form-text text-muted\\"></small>
+    <div class=\\"invalid-feedback\\"></div>
+    <div class=\\"valid-feedback\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`EsFormTextarea <EsFormTextarea <label /> /> 1`] = `
+"<div required=\\"required\\"><label for=\\"myID\\" class=\\"label font-weight-bold\\"> <span class=\\"text-danger\\">
+            *
+        </span></label>
+  <div><textarea id=\\"myID\\" rows=\\"2\\" wrap=\\"soft\\" class=\\"es-form-textarea form-control\\"></textarea> <small class=\\"form-text text-muted\\"></small>
+    <div class=\\"invalid-feedback\\"></div>
+    <div class=\\"valid-feedback\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`EsFormTextarea <EsFormTextarea props /> 1`] = `
+"<div required=\\"required\\"><label for=\\"myID\\" class=\\"label font-weight-bold\\"> <span class=\\"text-danger\\">
+            *
+        </span></label>
+  <div><textarea id=\\"myID\\" rows=\\"2\\" wrap=\\"soft\\" class=\\"es-form-textarea form-control\\"></textarea> <small class=\\"form-text text-muted\\"></small>
+    <div class=\\"invalid-feedback\\"></div>
+    <div class=\\"valid-feedback\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`EsFormTextarea <EsFormTextarea>slots</EsFormTextarea> 1`] = `
+"<div><label for=\\"myID\\" class=\\"label font-weight-bold\\">Notes
+    <!----></label>
+  <div><textarea id=\\"myID\\" rows=\\"2\\" wrap=\\"soft\\" class=\\"es-form-textarea form-control\\"></textarea> <small class=\\"form-text text-muted\\">Enter your notes here.</small>
+    <div class=\\"invalid-feedback\\">Please enter a valid value.</div>
+    <div class=\\"valid-feedback\\">Your response has been submitted successfully.</div>
+  </div>
+</div>"
+`;

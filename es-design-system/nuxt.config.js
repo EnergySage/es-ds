@@ -27,7 +27,6 @@ export default {
     plugins: [
         { src: '@/plugins/api.js' },
     ],
-
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [
         '@nuxt/postcss8',

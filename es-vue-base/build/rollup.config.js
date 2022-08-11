@@ -3,9 +3,12 @@ import fs from 'fs';
 import path from 'path';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
+import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
+import autoprefixer from 'autoprefixer';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import minimist from 'minimist';
@@ -36,6 +39,7 @@ const baseConfig = {
                     },
                 ],
             }),
+            image(),
         ],
         replace: {
             preventAssignment: true,
@@ -43,6 +47,23 @@ const baseConfig = {
         },
         vue: {
             css: true,
+            style: {
+                postcssPlugins: [autoprefixer()],
+                preprocessOptions: {
+                    scss: {
+                        importer: [
+                            // TODO: There has to be a better way to do this
+                            // We are trying to get '~' to resolve to the relative node_modules directory
+                            function scssImporter(url) {
+                                return {
+                                    file: url
+                                        .replace(/^~/, `${path.resolve(projectRoot)}/node_modules/`),
+                                };
+                            },
+                        ],
+                    },
+                },
+            },
             template: {
                 isProduction: true,
             },
@@ -67,6 +88,9 @@ const external = [
     // list external dependencies, exactly the way it is written in the import statement.
     // eg. 'jquery'
     'vue',
+    'bootstrap-vue',
+    'html-truncate',
+    'vue-slider-component',
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -75,6 +99,9 @@ const globals = {
     // Provide global variable names to replace your external imports
     // eg. jquery: '$'
     vue: 'Vue',
+    'bootstrap-vue': 'bootstrapVue',
+    'html-truncate': 'truncate',
+    'vue-slider-component': 'vueSlider',
 };
 
 // Customize configs for individual targets
@@ -130,7 +157,6 @@ if (!argv.format || argv.format === 'cjs') {
                 ...baseConfig.plugins.vue,
                 template: {
                     ...baseConfig.plugins.vue.template,
-                    optimizeSSR: true,
                 },
             }),
             ...baseConfig.plugins.postVue,

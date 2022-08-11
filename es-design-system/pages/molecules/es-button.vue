@@ -33,7 +33,7 @@
                     </td>
                     <td>
                         <es-button>
-                            Small Button
+                            Medium Button
                         </es-button>
                     </td>
                     <td>
@@ -55,7 +55,7 @@
                     </td>
                     <td>
                         <es-button disabled>
-                            Small Button
+                            Medium Button
                         </es-button>
                     </td>
                     <td>
@@ -79,7 +79,7 @@
                     </td>
                     <td>
                         <es-button :outline="true">
-                            Small Button
+                            Medium Button
                         </es-button>
                     </td>
                     <td>
@@ -106,7 +106,7 @@
                         <es-button
                             variant="secondary"
                             :outline="false">
-                            Small Button
+                            Medium Button
                         </es-button>
                     </td>
                     <td>
@@ -136,7 +136,7 @@
                             disabled
                             variant="secondary"
                             :outline="false">
-                            Small Button
+                            Medium Button
                         </es-button>
                     </td>
                     <td>
@@ -165,7 +165,7 @@
                         <es-button
                             variant="secondary"
                             :outline="true">
-                            Small Button
+                            Medium Button
                         </es-button>
                     </td>
                     <td>
@@ -186,8 +186,7 @@
 import { EsButton } from '@energysage/es-vue-base';
 
 export default {
-    // eslint-disable-next-line vue/component-definition-name-casing
-    name: 'ComponentEsButton',
+    name: 'EsButtonDocs',
     components: {
         EsButton,
     },

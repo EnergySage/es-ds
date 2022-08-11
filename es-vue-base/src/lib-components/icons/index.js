@@ -59,3 +59,7 @@ export { default as IconChatAdd } from './chat-add.vue';
 export { default as IconCart } from './cart.vue';
 export { default as IconCalendar } from './calendar.vue';
 export { default as IconBlock } from './block.vue';
+export { default as IconStarFull } from './star-full.vue';
+export { default as IconStarHalf } from './star-half.vue';
+export { default as IconStarEmpty } from './star-empty.vue';
+export { default as IconVerified } from './verified.vue';

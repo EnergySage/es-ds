@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-bs-extends",
-  "version": "0.3.0",
+  "version": "0.4.33",
   "description": "Extension to bootstrap SCSS",
   "main": "index.js",
   "repository": {
@@ -25,13 +25,14 @@
     "scss/**/*.scss"
   ],
   "private": false,
-  "dependencies": {
-    "@energysage/es-bs-base": "^0.3.0"
-  },
   "devDependencies": {
+    "@energysage/es-bs-base": "^0.4.33",
     "npm-run-all": "^4.1.5",
     "stylelint": "^14.8.5",
     "stylelint-config-twbs-bootstrap": "^3.1.0"
   },
-  "gitHead": "ecdf4227390ec1ed9b6b2363a0c8fa4323b62a5b"
+  "peerDependencies": {
+    "@energysage/es-bs-base": "^0.3.5"
+  },
+  "gitHead": "bce04be980ab56747d198c2af6b2b1f5668d988a"
 }

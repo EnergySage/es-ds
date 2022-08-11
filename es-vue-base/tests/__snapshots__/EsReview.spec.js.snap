@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsReview <EsReview /> 1`] = `
+"<div id=\\"1\\" class=\\"review-holder mr-3 mr-lg-5 p-3 p-lg-0\\">
+  <div class=\\"d-flex mb-2\\">
+    <div class=\\"d-flex flex-grow-1\\"><output dir=\\"ltr\\" tabindex=\\"0\\" role=\\"slider\\" aria-readonly=\\"true\\" aria-live=\\"off\\" aria-valuemin=\\"1\\" aria-valuemax=\\"5\\" aria-valuenow=\\"5\\" class=\\"b-rating form-control align-items-center d-inline-flex border-0 readonly\\" data-testid=\\"rating-test\\" id=\\"__BVID__5\\"><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span></output></div>
+    <!---->
+  </div>
+  <div class=\\"mb-2\\">
+    <div class=\\"title-holder mb-2\\">
+      <!---->
+    </div>
+    <div class=\\"comment-holder overflow-auto\\"><span>Nice Proj</span>
+      <!---->
+    </div>
+  </div> <small class=\\"d-flex align-items-center text-gray-800 text-nowrap\\">
+    <div class=\\"flex-grow-1 overflow-hidden\\">
+      <div data-testid=\\"subtext-test\\" class=\\"d-flex align-items-center\\"><span class=\\"name-holder d-inline-block text-truncate pr-1\\"><span class=\\"d-none d-lg-inline-block\\">Posted by</span>
+        My Name
+        </span> <span class=\\"date-holder d-inline-block\\">on 8/5/2022</span></div>
+    </div>
+    <!---->
+  </small>
+</div>"
+`;
+
+exports[`EsReview Imported components exist 1`] = `
+"<div id=\\"1\\" class=\\"review-holder mr-3 mr-lg-5 p-3 p-lg-0\\">
+  <div class=\\"d-flex mb-2\\">
+    <div class=\\"d-flex flex-grow-1\\"><output dir=\\"ltr\\" tabindex=\\"0\\" role=\\"slider\\" aria-readonly=\\"true\\" aria-live=\\"off\\" aria-valuemin=\\"1\\" aria-valuemax=\\"5\\" aria-valuenow=\\"5\\" class=\\"b-rating form-control align-items-center d-inline-flex border-0 readonly\\" data-testid=\\"rating-test\\"><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span></output></div>
+    <div class=\\"d-flex d-lg-none text-gray-800 align-items-center\\">
+      Verified
+      <svg fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" style=\\"height: 20px; width: 20px;\\" class=\\"text-gray-900 ml-1\\">
+        <path d=\\"M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\"></path>
+      </svg></div>
+  </div>
+  <div class=\\"mb-2\\">
+    <div class=\\"title-holder mb-2\\">
+      <h4 data-testid=\\"title-test\\" class=\\"font-weight-bold text-truncate\\">
+        Proj Bob
+      </h4>
+    </div>
+    <div class=\\"comment-holder overflow-auto\\"><span>Nice Proj</span>
+      <!---->
+    </div>
+  </div> <small class=\\"d-flex align-items-center text-gray-800 text-nowrap\\">
+    <div class=\\"flex-grow-1 overflow-hidden\\">
+      <div data-testid=\\"subtext-test\\" class=\\"d-flex align-items-center\\"><span class=\\"name-holder d-inline-block text-truncate pr-1\\"><span class=\\"d-none d-lg-inline-block\\">Posted by</span>
+        My Name
+        </span> <span class=\\"date-holder d-inline-block\\">on 8/5/2022</span></div>
+    </div>
+    <div class=\\"d-none d-lg-block flex-grow-2 text-right ml-3\\"><svg fill=\\"none\\" xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" style=\\"height: 16px; width: 16px;\\" class=\\"text-gray-900\\">
+        <path d=\\"M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\"></path>
+      </svg>
+      Verified Shopper
+    </div>
+  </small>
+</div>"
+`;
+
+exports[`EsReview Title and subtext exist 1`] = `
+"<div id=\\"1\\" class=\\"review-holder mr-3 mr-lg-5 p-3 p-lg-0\\">
+  <div class=\\"d-flex mb-2\\">
+    <div class=\\"d-flex flex-grow-1\\"><output dir=\\"ltr\\" tabindex=\\"0\\" role=\\"slider\\" aria-readonly=\\"true\\" aria-live=\\"off\\" aria-valuemin=\\"1\\" aria-valuemax=\\"5\\" aria-valuenow=\\"5\\" class=\\"b-rating form-control align-items-center d-inline-flex border-0 readonly\\" data-testid=\\"rating-test\\"><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span><span class=\\"b-rating-star flex-grow-1 b-rating-star-full\\"><span class=\\"b-rating-icon\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 20 20\\" fill=\\"currentColor\\" style=\\"height: 20px; width: 20px;\\"><path d=\\"M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z\\"></path></svg></span></span></output></div>
+    <!---->
+  </div>
+  <div class=\\"mb-2\\">
+    <div class=\\"title-holder mb-2\\">
+      <h4 data-testid=\\"title-test\\" class=\\"font-weight-bold text-truncate\\">
+        Proj Bob
+      </h4>
+    </div>
+    <div class=\\"comment-holder overflow-auto\\"><span>Nice Proj</span>
+      <!---->
+    </div>
+  </div> <small class=\\"d-flex align-items-center text-gray-800 text-nowrap\\">
+    <div class=\\"flex-grow-1 overflow-hidden\\">
+      <div data-testid=\\"subtext-test\\" class=\\"d-flex align-items-center\\"><span class=\\"name-holder d-inline-block text-truncate pr-1\\"><span class=\\"d-none d-lg-inline-block\\">Posted by</span>
+        Test Bob
+        </span> <span class=\\"date-holder d-inline-block\\">on 8/5/2022</span></div>
+    </div>
+    <!---->
+  </small>
+</div>"
+`;

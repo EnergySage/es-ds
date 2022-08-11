@@ -186,6 +186,18 @@
         <li>
             <IconBell :style="{color}" />
         </li>
+        <li>
+            <IconVerified :style="{color}" />
+        </li>
+        <li>
+            <IconStarFull :style="{color}" />
+        </li>
+        <li>
+            <IconStarHalf :style="{color}" />
+        </li>
+        <li>
+            <IconStarEmpty :style="{color}" />
+        </li>
     </ul>
 </template>
 
@@ -252,6 +264,10 @@ import {
     IconCart,
     IconCalendar,
     IconBlock,
+    IconVerified,
+    IconStarFull,
+    IconStarHalf,
+    IconStarEmpty,
 } from '@energysage/es-vue-base';
 
 export default {
@@ -318,6 +334,10 @@ export default {
         IconCart,
         IconCalendar,
         IconBlock,
+        IconVerified,
+        IconStarFull,
+        IconStarHalf,
+        IconStarEmpty,
     },
     props: {
         // eslint-disable-next-line strict-vue/require-jsdoc

@@ -1,6 +1,21 @@
 /* eslint-disable import/prefer-default-export */
-export { default as EsDsVueSample } from './es-ds-vue-sample.vue';
-export { default as EsButton } from './es-button.vue';
+export { default as EsBadge } from './EsBadge.vue';
+export { default as EsBreadcrumbs } from './EsBreadcrumbs.vue';
+export { default as EsButton } from './EsButton.vue';
+export { default as EsCollapse } from './EsCollapse.vue';
+export { default as EsFormInput } from './EsFormInput.vue';
+export { default as EsFormTextarea } from './EsFormTextarea.vue';
+export { default as EsHorizontalList } from './EsHorizontalList.vue';
+export { default as EsModal } from './EsModal.vue';
+export { default as EsPopover } from './EsPopover.vue';
+export { default as EsRating } from './EsRating.vue';
+export { default as EsReview } from './EsReview.vue';
+export { default as EsReviewModal } from './EsReviewModal.vue';
+export { default as EsSlider } from './EsSlider.vue';
+export { default as EsSupport } from './EsSupport.vue';
+export { default as EsTab } from './EsTab.vue';
+export { default as EsTabs } from './EsTabs.vue';
+export { default as EsViewMore } from './EsViewMore.vue';
 
 // Icons
 export { default as IconArrowClockwise } from './icons/arrow-clockwise.vue';
@@ -61,6 +76,10 @@ export { default as IconChatDots } from './icons/chat-dots.vue';
 export { default as IconChatBubble } from './icons/chat-bubble.vue';
 export { default as IconChatApprove } from './icons/chat-approve.vue';
 export { default as IconChatAdd } from './icons/chat-add.vue';
+export { default as IconBlock } from './icons/block.vue';
 export { default as IconCart } from './icons/cart.vue';
 export { default as IconCalendar } from './icons/calendar.vue';
-export { default as IconBlock } from './icons/block.vue';
+export { default as IconStarFull } from './icons/star-full.vue';
+export { default as IconStarHalf } from './icons/star-half.vue';
+export { default as IconStarEmpty } from './icons/star-empty.vue';
+export { default as IconVerified } from './icons/verified.vue';

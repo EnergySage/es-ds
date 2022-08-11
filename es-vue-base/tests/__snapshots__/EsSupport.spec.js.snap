@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsSupport <EsSupport /> 1`] = `
+"<div imgname=\\"benr\\" class=\\"d-flex support-holder align-items-center\\">
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"text-holder d-flex flex-column\\">
+    <div class=\\"title\\">
+      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+    </div>
+    <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
+        Schedule a free call with Ben, your EnergySage specialist.
+      </a></div>
+  </div>
+</div>"
+`;
+
+exports[`EsSupport Image exists 1`] = `
+"<div class=\\"d-flex support-holder align-items-center\\">
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"text-holder d-flex flex-column\\">
+    <div class=\\"title\\">
+      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+    </div>
+    <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
+        Schedule a free call with Ben, your EnergySage specialist.
+      </a></div>
+  </div>
+</div>"
+`;
+
+exports[`EsSupport Support text exists 1`] = `
+"<div class=\\"d-flex support-holder align-items-center\\">
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"text-holder d-flex flex-column\\">
+    <div class=\\"title\\">
+      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+    </div>
+    <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
+        Schedule a free call with Ben, your EnergySage specialist.
+      </a></div>
+  </div>
+</div>"
+`;
+
+exports[`EsSupport Support title slot exists 1`] = `
+"<div imgname=\\"benr\\" class=\\"d-flex support-holder align-items-center\\">
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"text-holder d-flex flex-column\\">
+    <div class=\\"title\\">
+      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+    </div>
+    <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
+        Schedule a free call with Ben, your EnergySage specialist.
+      </a></div>
+  </div>
+</div>"
+`;
+
+exports[`EsSupport props exist 1`] = `
+"<div class=\\"d-flex support-holder align-items-center\\">
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"text-holder d-flex flex-column\\">
+    <div class=\\"title\\">
+      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+    </div>
+    <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
+        Schedule a free call with Ben, your EnergySage specialist.
+      </a></div>
+  </div>
+</div>"
+`;
