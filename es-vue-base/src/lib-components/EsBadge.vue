@@ -35,6 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-extends/scss/includes';
+/* stylelint-disable scss/no-global-function-names */
 
 .badge-primary {
     /* hard-coded background-color due to no satisfactory variation of defined colors */
