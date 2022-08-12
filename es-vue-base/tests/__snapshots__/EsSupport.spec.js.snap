@@ -2,10 +2,10 @@
 
 exports[`EsSupport <EsSupport /> 1`] = `
 "<div imgname=\\"benr\\" class=\\"d-flex support-holder align-items-center\\">
-  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" width=\\"64\\" height=\\"64\\" class=\\"image\\"></a></div>
   <div class=\\"text-holder d-flex flex-column\\">
     <div class=\\"title\\">
-      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+      <div class=\\"h5 mb-1 font-size-base font-weight-bold\\">Need help signing up?</div>
     </div>
     <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
         Schedule a free call with Ben, your EnergySage specialist.
@@ -16,10 +16,10 @@ exports[`EsSupport <EsSupport /> 1`] = `
 
 exports[`EsSupport Image exists 1`] = `
 "<div class=\\"d-flex support-holder align-items-center\\">
-  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" width=\\"64\\" height=\\"64\\" class=\\"image\\"></a></div>
   <div class=\\"text-holder d-flex flex-column\\">
     <div class=\\"title\\">
-      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+      <div class=\\"h5 mb-1 font-size-base font-weight-bold\\">Need help signing up?</div>
     </div>
     <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
         Schedule a free call with Ben, your EnergySage specialist.
@@ -30,10 +30,10 @@ exports[`EsSupport Image exists 1`] = `
 
 exports[`EsSupport Support text exists 1`] = `
 "<div class=\\"d-flex support-holder align-items-center\\">
-  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" width=\\"64\\" height=\\"64\\" class=\\"image\\"></a></div>
   <div class=\\"text-holder d-flex flex-column\\">
     <div class=\\"title\\">
-      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+      <div class=\\"h5 mb-1 font-size-base font-weight-bold\\">Need help signing up?</div>
     </div>
     <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
         Schedule a free call with Ben, your EnergySage specialist.
@@ -44,10 +44,10 @@ exports[`EsSupport Support text exists 1`] = `
 
 exports[`EsSupport Support title slot exists 1`] = `
 "<div imgname=\\"benr\\" class=\\"d-flex support-holder align-items-center\\">
-  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" width=\\"64\\" height=\\"64\\" class=\\"image\\"></a></div>
   <div class=\\"text-holder d-flex flex-column\\">
     <div class=\\"title\\">
-      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+      <div class=\\"h5 mb-1 font-size-base font-weight-bold\\">Need help signing up?</div>
     </div>
     <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
         Schedule a free call with Ben, your EnergySage specialist.
@@ -58,10 +58,10 @@ exports[`EsSupport Support title slot exists 1`] = `
 
 exports[`EsSupport props exist 1`] = `
 "<div class=\\"d-flex support-holder align-items-center\\">
-  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" class=\\"image h-100\\"></a></div>
+  <div class=\\"image-holder mr-3\\"><a target=\\"_blank\\" aria-label=\\"Ben\\" href=\\"https://www.google.com/\\"><img src=\\"\\" alt=\\"Ben\\" width=\\"64\\" height=\\"64\\" class=\\"image\\"></a></div>
   <div class=\\"text-holder d-flex flex-column\\">
     <div class=\\"title\\">
-      <h5 class=\\"mb-1 font-size-base font-weight-bold\\">Need help signing up?</h5>
+      <div class=\\"h5 mb-1 font-size-base font-weight-bold\\">Need help signing up?</div>
     </div>
     <div class=\\"link\\"><a target=\\"_blank\\" href=\\"https://www.google.com/\\" class=\\"supportLink\\">
         Schedule a free call with Ben, your EnergySage specialist.
