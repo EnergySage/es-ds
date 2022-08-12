@@ -386,7 +386,7 @@ $table-border-level:          -6 !default;
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y:         0.9rem !default;
+$input-btn-padding-y:         0.85rem !default;
 $input-btn-padding-x:         1rem !default;
 $input-btn-font-family:       $font-family-sans-serif !default;
 $input-btn-font-size:         $font-size-base !default;
@@ -455,7 +455,7 @@ $btn-transition:              color .15s ease-in-out, background-color .15s ease
 
 $label-margin-bottom:                   .5rem !default;
 
-$input-padding-y:                       $input-btn-padding-y !default;
+$input-padding-y:                       0.9rem !default;
 $input-padding-x:                       $input-btn-padding-x !default;
 $input-font-family:                     $input-btn-font-family !default;
 $input-font-size:                       $input-btn-font-size !default;
