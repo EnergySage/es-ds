@@ -1,6 +1,5 @@
 <template>
-    <div
-        :required="required">
+    <div :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="id"
@@ -83,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 .es-form-textarea {
     min-height: 8.125rem;

@@ -148,10 +148,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 .horizontal-scroll-container {
-
     cursor: grab;
     // Hack to allow last item in list to snap to the left
     padding-right: 100vw;
@@ -164,8 +163,8 @@ export default {
 
     // TODO: Safari Desktop does not support scroll-behavior: smooth currently
     // Also has very strange behavior with the padding-right hack
-    @media not all and (min-resolution:.001dpcm) {
-        @supports (-webkit-appearance:none) {
+    @media not all and (min-resolution: 0.001dpcm) {
+        @supports (-webkit-appearance: none) {
             /* stylelint-disable-next-line scss/selector-no-redundant-nesting-selector */
             & {
                 padding-right: 0;
@@ -200,7 +199,7 @@ export default {
         width: 14px;
 
         &:hover {
-            opacity: .8;
+            opacity: 0.8;
         }
 
         &.active {

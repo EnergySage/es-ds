@@ -177,7 +177,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 .vue-slider {
     padding: 0 !important;

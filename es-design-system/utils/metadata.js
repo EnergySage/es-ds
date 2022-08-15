@@ -1,9 +1,9 @@
-import sassThemeColors from '@energysage/es-bs-extends/scss/variables/_theme-colors.scss';
+import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
 
 // Possible Component Sizes
 export const designStages = ['Atom', 'Molecule', 'Organism', 'Template', 'Page'];
 
-// TODO: font-family values should come from: '@energysage/es-bs-extends/scss/variables/_font-family.scss';
+// TODO: font-family values should come from: '@energysage/es-bs-base/scss/variables/_font-family.scss';
 const fontFamilies = {
     // eslint-disable-next-line max-len
     fontFamilySansSerif: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',

@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import sassColors from '@energysage/es-bs-extends/scss/variables/_colors.scss';
-import sassGrays from '@energysage/es-bs-extends/scss/variables/_grays.scss';
-import sassThemeColors from '@energysage/es-bs-extends/scss/variables/_theme-colors.scss';
-import sassGlobalSettings from '@energysage/es-bs-extends/scss/variables/_global-settings.scss';
-import sassSpacers from '@energysage/es-bs-extends/scss/variables/_spacers.scss';
+import sassColors from '@energysage/es-bs-base/scss/variables/_colors.scss';
+import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.scss';
+import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
+import sassGlobalSettings from '@energysage/es-bs-base/scss/variables/_global-settings.scss';
+import sassSpacers from '@energysage/es-bs-base/scss/variables/_spacers.scss';
 import {
     BLink,
 } from 'bootstrap-vue';
