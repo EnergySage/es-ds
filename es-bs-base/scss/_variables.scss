@@ -34,6 +34,8 @@ $grays: map-merge(
 );
 
 $blue:    #275ba9 !default;
+$lightblue: #8cd1ff;
+$grayblue:  #c9e9f6;
 $indigo:  #152f87 !default;
 $purple:  #822a85 !default;
 $pink:    #c84486 !default;
@@ -44,10 +46,13 @@ $green:   #008445 !default;
 $teal:    #37b6aa !default;
 $cyan:    #007eb0 !default;
 
+
 $colors: () !default;
 $colors: map-merge(
   (
     "blue":       $blue,
+    "light-blue": $lightblue,
+    "gray-blue":  $grayblue,
     "indigo":     $indigo,
     "purple":     $purple,
     "pink":       $pink,
@@ -72,6 +77,10 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-200 !default;
 $dark:          $gray-900 !default;
+$mid:           $gray-300 !default;
+$mid-dark:      $gray-600 !default;
+$highlight:     $indigo;
+$highlight-dark: $blue;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(
@@ -83,7 +92,11 @@ $theme-colors: map-merge(
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+    "dark":       $dark,
+    "mid":        $mid,
+    "mid-dark":   $mid-dark,
+    "highlight":  $highlight,
+    "highlight-dark": $highlight-dark,
   ),
   $theme-colors
 );
@@ -282,14 +295,28 @@ $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:                $font-size-base * 1.125 !default;
-$font-size-sm:                $font-size-base * 0.875 !default;
 
+// fusv-disable
+$font-size-xs:                $font-size-base * 0.75;
+// fusv-enable
+$font-size-sm:                $font-size-base * 0.875 !default;
+$font-size-lg:                $font-size-base * 1.125 !default;
+// fusv-disable
+$font-size-xl:                $font-size-base * 1.375;
+$font-size-xxl:               $font-size-base * 3;
+// fusv-enable
+
+// fusv-disable
+$font-weight-lightest:        lighter;
+// fusv-enable
 $font-weight-lighter:         200 !default;
 $font-weight-light:           300 !default;
 $font-weight-normal:          400 !default;
 $font-weight-bold:            600 !default;
 $font-weight-bolder:          800 !default;
+// fusv-disable
+$font-weight-boldest:         700 !default;
+// fusv-enable
 
 $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
@@ -306,6 +333,9 @@ $headings-font-family:        $font-family-sans-serif !default;
 $headings-font-weight:        600 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              $gray-900 !default;
+// fusv-disable
+$headings-font-family-higher: null;
+// fusv-enable
 
 $display1-size:               5rem !default;
 $display2-size:               4.5rem !default;
@@ -476,6 +506,9 @@ $input-bg:                              $white !default;
 $input-disabled-bg:                     $gray-200 !default;
 
 $input-color:                           $gray-900 !default;
+// fusv-disable
+$input-color-placeholder:               $gray-700 !default;
+// fusv-enable
 $input-border-color:                    $gray-900 !default;
 $input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      inset 0 1px 1px rgba($black, .075) !default;
@@ -1148,3 +1181,13 @@ $user-selects: all, auto, none !default;
 
 $print-page-size:                   a3 !default;
 $print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
+
+
+// Further ES Atoms
+
+// fusv-disable
+$b-table-stacked-gap: 2rem;
+$b-table-sort-icon-bg-not-sorted: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='white' opacity='.3' d='M51 1l25 23 24 22H1l25-22zM51 101l25-23 24-22H1l25 22z'/></svg>");
+$b-table-sort-icon-bg-ascending: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='white' d='M51 1l25 23 24 22H1l25-22z'/><path fill='white' opacity='.3' d='M51 101l25-23 24-22H1l25 22z'/></svg>");
+$b-table-sort-icon-bg-descending: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='white' opacity='.3' d='M51 1l25 23 24 22H1l25-22z'/><path fill='white' d='M51 101l25-23 24-22H1l25 22z'/></svg>");
+// fusv-enable
