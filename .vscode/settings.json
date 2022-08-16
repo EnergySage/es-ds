@@ -1,15 +1,15 @@
 {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
         "source.fixAll.stylelint": true,
         "source.fixAll.markdownlint": true
     },
-    "eslint.validate": ["mdx", "javascript", "vue", "javascriptreact", "typescript", "typescriptreact"],
+
     "eslint.debug": true,
     "eslint.alwaysShowStatus": true,
     "eslint.options": {
-        "extensions": [".html", ".js", ".vue", ".jsx", ".mdx"]
+        "extensions": [".html", ".js", ".vue", ".jsx", ".md"]
     },
 
     "eslint.workingDirectories": [
@@ -17,6 +17,11 @@
             "mode": "auto"
         }
     ],
+
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length=119"],
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--config=backend/.flake8"],
 
     "css.validate": false,
     "scss.validate": false,
@@ -30,8 +35,10 @@
     "files.associations": {
         ".env.dev": "dotenv",
         ".env.prod": "dotenv",
-        ".env.local": "dotenv",
-        "*.json.example": "json"
+        ".env.example": "dotenv",
+        ".env.stage": "dotenv",
+        "*.json.example": "json",
+        "**/.ebextensions/*.config": "yaml"
     },
-    "i18n-ally.localesPaths": ["locales"]
+    "stylelint.snippet": ["css", "less", "postcss", "scss"]
 }

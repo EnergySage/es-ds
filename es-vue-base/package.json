@@ -13,7 +13,7 @@
     "test:update": "jest --updateSnapshot",
     "lint": "npm run lint:js && npm run lint:style",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path ../.gitignore .",
-    "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path ../.gitignore",
+    "lint:style": "stylelint \"**/*.{scss,sass,vue}\" --ignore-path ../.gitignore",
     "lintfix": "npm run lint:js -- --fix && npm run lint:style -- --fix"
   },
   "main": "dist/es-vue-base.ssr.js",
@@ -46,7 +46,7 @@
     "bootstrap-vue": "^2.22.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.20.0",
-    "eslint-config-energysage": "^2.2.1",
+    "eslint-config-energysage": "^2.2.2",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-import": "^2.26.0",
