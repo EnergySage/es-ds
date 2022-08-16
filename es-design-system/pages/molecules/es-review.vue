@@ -125,7 +125,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 .review-wrapper {
     width: 450px;

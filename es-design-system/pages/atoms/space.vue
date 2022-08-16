@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import sassSpacers from '@energysage/es-bs-extends/scss/variables/_spacers.scss';
+import sassSpacers from '@energysage/es-bs-base/scss/variables/_spacers.scss';
 import {
     BRow,
     BCol,

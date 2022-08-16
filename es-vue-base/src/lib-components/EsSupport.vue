@@ -19,9 +19,7 @@
         <div class="text-holder d-flex flex-column">
             <div class="title">
                 <div class="h5 mb-1 font-size-base font-weight-bold">
-                    <slot>
-                        Need help signing up?
-                    </slot>
+                    <slot> Need help signing up? </slot>
                 </div>
             </div>
             <div class="link">
@@ -72,7 +70,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 .support-holder {
     max-width: 325px;
@@ -83,11 +81,10 @@ export default {
 
         .image {
             // TODO: Move into es-bs-extends
-            background: linear-gradient(141.22deg, #F6B140 8.76%, #CA4A89 100%);
+            background: linear-gradient(141.22deg, #f6b140 8.76%, #ca4a89 100%);
             border-radius: 2rem;
             object-fit: contain;
         }
     }
 }
-
 </style>

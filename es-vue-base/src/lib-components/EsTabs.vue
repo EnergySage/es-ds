@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 .es-tabs {
     .nav-item {
@@ -66,7 +66,8 @@ export default {
             margin-left: 0;
         }
 
-        &:hover,&:focus {
+        &:hover,
+        &:focus {
             color: $primary;
         }
     }
@@ -76,7 +77,8 @@ export default {
         border-color: $primary;
         color: $primary;
 
-        &:hover,&:focus {
+        &:hover,
+        &:focus {
             color: $primary;
         }
     }

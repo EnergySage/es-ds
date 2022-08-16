@@ -28,7 +28,7 @@
 
 <script>
 import DsIconList from '@/components/ds-icon-list.vue';
-import sassThemeColors from '@energysage/es-bs-extends/scss/variables/_theme-colors.scss';
+import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
 import {
     BRow,
     BCol,
