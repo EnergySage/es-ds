@@ -70,7 +70,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 .form-msg {
   flex: 0 0 100%;

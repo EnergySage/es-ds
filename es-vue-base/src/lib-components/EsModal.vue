@@ -82,7 +82,7 @@ export default {
 <style lang="scss">
 @import '~@energysage/es-bs-base/scss/includes';
 
-// TODO: Move this into es-bs-extends ?
+// TODO: Move this into es-bs-base ?
 .modal-lightbox {
     @include media-breakpoint-down(md) {
         .modal-dialog {

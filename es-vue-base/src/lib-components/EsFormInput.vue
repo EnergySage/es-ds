@@ -118,9 +118,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
-// TODO: Move to es-bs-extends
+// TODO: Move to es-bs-base
 .is-invalid {
     color: $danger;
 }

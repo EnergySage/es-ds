@@ -111,7 +111,7 @@ export default {
     border: 0;
 }
 
-// TODO: Move to es-bs-extends
+// TODO: Move to es-bs-base
 .is-invalid {
     color: $danger;
 }
