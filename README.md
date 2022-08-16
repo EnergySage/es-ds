@@ -8,8 +8,10 @@ This is a **monorepo** containing the elements required for building experiences
 
 ## The Parts
 
-The EnergySage Design System is composed of 2 core npm packages [@energysage/es-bs-base](https://www.npmjs.com/package/@energysage/es-bs-base), and [@energysage/es-vue-base
-](https://www.npmjs.com/package/@energysage/es-vue-base)
+The EnergySage Design System is composed of 2 core npm packages:
+
+- [@energysage/es-bs-base](https://www.npmjs.com/package/@energysage/es-bs-base)
+- [@energysage/es-vue-base](https://www.npmjs.com/package/@energysage/es-vue-base)
 
 ```mermaid
 graph TB
