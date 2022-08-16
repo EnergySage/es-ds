@@ -2,9 +2,7 @@
 
 ## Documentation
 
-To get started working with the design system locally see [getting-started.md](./docs/es-design-system/getting-started.md).
-
-To get started using the design system packages in a separate repo read the main [introduction story](./content/introduction/introduction.stories.mdx).
+To get started working with the design system locally see the [root README.md](../README.md)
 
 ### The es-design-system Documentation
 

@@ -80,11 +80,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 // TODO: Move this into es-bs-extends ?
 .modal-lightbox {
-
     @include media-breakpoint-down(md) {
         .modal-dialog {
             margin: 0;
@@ -97,5 +96,4 @@ export default {
         }
     }
 }
-
 </style>

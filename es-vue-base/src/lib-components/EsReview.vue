@@ -149,7 +149,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 .review-holder {
     .name-holder {
@@ -163,7 +163,6 @@ export default {
     .comment-holder {
         height: 115px;
     }
-
 }
 
 @include media-breakpoint-down(md) {
@@ -176,4 +175,4 @@ export default {
         }
     }
 }
- </style>
+</style>

@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 
 // TODO: Remove when gray scale is added to es-bs-base
 .text-gray-700 {

@@ -34,12 +34,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-extends/scss/includes';
+@import '~@energysage/es-bs-base/scss/includes';
 /* stylelint-disable scss/no-global-function-names */
 
 .badge-primary {
     /* hard-coded background-color due to no satisfactory variation of defined colors */
-    background: #CCE5EF;
+    background: #cce5ef;
     color: darken($primary, 15%);
 }
 
@@ -50,7 +50,7 @@ export default {
 
 .badge-success {
     /* hard-coded background-color due to no satisfactory variation of defined colors */
-    background: #CCE6DA;
+    background: #cce6da;
     color: darken($success, 14%);
 }
 
@@ -106,5 +106,4 @@ export default {
     background: $dark;
     color: $white;
 }
-
 </style>

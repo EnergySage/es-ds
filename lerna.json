@@ -1,9 +1,8 @@
 {
-  "packages": [
-    "es-bs-base",
-    "es-bs-extends",
-    "es-vue-base",
-    "es-design-system"
-  ],
-  "version": "0.4.38"
+    "packages": [
+        "es-bs-base",
+        "es-vue-base",
+        "es-design-system"
+    ],
+    "version": "0.5.0"
 }

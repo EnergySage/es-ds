@@ -15,6 +15,7 @@ describe('EsReview', () => {
                 reviewerName: 'My Name',
                 rating: 5,
                 comment: 'Nice Proj',
+                created: new Date(2022, 2, 2),
             },
         });
         const a11y = await axe(wrapper.element);
@@ -34,6 +35,7 @@ describe('EsReview', () => {
                 comment: 'Nice Proj',
                 title: 'Proj Bob',
                 certified: true,
+                created: new Date(2022, 2, 2),
             },
         });
         expect(wrapper.findComponent(EsRating).exists()).toBe(true);
@@ -57,6 +59,7 @@ describe('EsReview', () => {
                 rating: 5,
                 comment: 'Nice Proj',
                 title: 'Proj Bob',
+                created: new Date(2022, 2, 2),
             },
         });
         expect(wrapper.find('[data-testid="title-test"]').exists()).toBe(true);

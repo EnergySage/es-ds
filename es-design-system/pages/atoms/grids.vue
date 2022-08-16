@@ -246,7 +246,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-extends/scss/variables";
+@import "~@energysage/es-bs-base/scss/variables";
 
 .bg-gray-light {
     background: $gray-400;

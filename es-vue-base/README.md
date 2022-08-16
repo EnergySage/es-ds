@@ -1,18 +1,11 @@
 # es-vue-base
 
-- repo layout via https://github.com/team-innovation/vue-sfc-rollup
+Initial layout was set-up following <https://github.com/team-innovation/vue-sfc-rollup>
 
 ## Dependencies
 
-- `es-bs-base` & `es-bs-extends` the core CSS dependencies for all components
+- `es-bs-base` is a peer-dependency for CSS styling
 
-## Structure
+## Contributing
 
-[commitizen](https://commitizen-tools.github.io/commitizen/) is a tool that handles Changelog, Commits, and Versioning.
-It can be added via `brew install commitizen` and called via `cz`
-
-- [Changelog](https://keepachangelog.com/en/1.0.0/)
-- [Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-- [Versioning](https://semver.org/)
-
-This will trigger a change?
+See [root README.md](../README.md#contributing)

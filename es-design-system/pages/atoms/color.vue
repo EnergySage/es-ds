@@ -38,9 +38,9 @@ import {
     BRow,
     BCol,
 } from 'bootstrap-vue';
-import sassColors from '@energysage/es-bs-extends/scss/variables/_colors.scss';
-import sassGrays from '@energysage/es-bs-extends/scss/variables/_grays.scss';
-import sassThemeColors from '@energysage/es-bs-extends/scss/variables/_theme-colors.scss';
+import sassColors from '@energysage/es-bs-base/scss/variables/_colors.scss';
+import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.scss';
+import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
 
 export default {
     name: 'AtomsColor',
