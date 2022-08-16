@@ -1,3 +1,4 @@
+import path from 'path';
 import { version } from './package.json';
 
 export default {
@@ -22,6 +23,13 @@ export default {
     },
     router: {
         base: `/${version}/`,
+    },
+    // TODO: Prevents dupe vue instance but not sure where its actually coming from
+    build: {
+        extend(config) {
+            // eslint-disable-next-line no-param-reassign
+            config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue');
+        },
     },
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
