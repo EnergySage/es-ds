@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.2] - 2022-08-17
+
+- Fixed an issue with EsReview showing horizontal scroll on desktop
+- Updated eslint-config-energysage
+- Added back dupe vue check to es-design-system
+- Removed remaining es-bs-base references
+- Removed border radius from bs4 dropdown menus
+
 ## [0.5.0] - 2022-08-16
 
 ### Added
