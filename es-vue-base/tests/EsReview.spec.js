@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
-import EsReview from '@/src/lib-components/EsReview.vue';
-import EsRating from '@/src/lib-components/EsRating.vue';
-import EsViewMore from '@/src/lib-components/EsViewMore.vue';
-import VerifiedIcon from '@/src/lib-components/icons/verified.vue';
+import EsReview from '@/src/lib-components/molecules/EsReview.vue';
+import EsRating from '@/src/lib-components/molecules/EsRating.vue';
+import EsViewMore from '@/src/lib-components/molecules/EsViewMore.vue';
+import VerifiedIcon from '@/src/lib-components/atoms/icons/verified.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsReview', () => {

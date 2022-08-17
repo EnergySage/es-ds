@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsReviewModal from '@/src/lib-components/EsReviewModal.vue';
+import EsReviewModal from '@/src/lib-components/molecules/EsReviewModal.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsHorizontalList', () => {

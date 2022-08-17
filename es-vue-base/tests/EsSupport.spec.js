@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsSupport from '@/src/lib-components/EsSupport.vue';
+import EsSupport from '@/src/lib-components/molecules/EsSupport.vue';
 import jestVue from '@/tests/jest.vue.config';
 import { BImg } from 'bootstrap-vue';
 

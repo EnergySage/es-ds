@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsButton from '@/src/lib-components/EsButton.vue';
+import EsButton from '@/src/lib-components/molecules/EsButton.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsButton', () => {

@@ -6,7 +6,9 @@
         body-class="pt-0 pt-lg-4"
         size="xl"
         @hidden="$emit('hidden')">
-        <template #modal-title> {{ developerName }} Reviews </template>
+        <template #modal-title>
+            {{ developerName }} Reviews
+        </template>
         <b-container
             fluid
             class="modal-container">
@@ -44,9 +46,7 @@
                                 height="32px"
                                 class="mx-2"
                                 :rating="avgRating" />
-                            <span class="font-size-base font-weight-normal align-self-center"
-                                >({{ reviews.length }})</span
-                            >
+                            <span class="font-size-base font-weight-normal align-self-center">({{ reviews.length }})</span>
                         </h2>
                         <es-button
                             class="mt-lg-3 mb-3"
@@ -61,10 +61,10 @@
     </es-modal>
 </template>
 <script>
-import EsButton from '@/src/lib-components/EsButton.vue';
-import EsModal from '@/src/lib-components/EsModal.vue';
-import EsRating from '@/src/lib-components/EsRating.vue';
-import EsReview from '@/src/lib-components/EsReview.vue';
+import EsButton from '@/src/lib-components/molecules/EsButton.vue';
+import EsModal from '@/src/lib-components/molecules/EsModal.vue';
+import EsRating from '@/src/lib-components/molecules/EsRating.vue';
+import EsReview from '@/src/lib-components/molecules/EsReview.vue';
 import { BContainer, BRow, BCol } from 'bootstrap-vue';
 
 export default {

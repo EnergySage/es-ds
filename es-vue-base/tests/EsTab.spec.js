@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsTab from '@/src/lib-components/EsTab.vue';
+import EsTab from '@/src/lib-components/molecules/EsTab.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsTab', () => {

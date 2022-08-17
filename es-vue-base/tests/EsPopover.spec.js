@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
-import EsPopover from '@/src/lib-components/EsPopover.vue';
-import EsButton from '@/src/lib-components/EsButton.vue';
+import EsPopover from '@/src/lib-components/molecules/EsPopover.vue';
+import EsButton from '@/src/lib-components/molecules/EsButton.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsPopover', () => {

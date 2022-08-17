@@ -14,7 +14,7 @@
 
 <script lang="js">
 
-import EsButton from '@/src/lib-components/EsButton.vue';
+import EsButton from '@/src/lib-components/molecules/EsButton.vue';
 import truncate from 'html-truncate';
 
 export default {

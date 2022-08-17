@@ -46,8 +46,8 @@
 
 <script lang="js">
 import { BPopover } from 'bootstrap-vue';
-import EsButton from '@/src/lib-components/EsButton.vue';
-import XIcon from '@/src/lib-components/icons/x.vue';
+import EsButton from '@/src/lib-components/molecules/EsButton.vue';
+import XIcon from '@/src/lib-components/atoms/icons/x.vue';
 
 export default {
     name: 'EsPopover',

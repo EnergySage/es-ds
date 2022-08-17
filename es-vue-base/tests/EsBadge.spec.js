@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
-import EsBadge from '@/src/lib-components/EsBadge.vue';
-import jestVue from '@/tests/jest.vue.config';
+import EsBadge from '../src/lib-components/molecules/EsBadge.vue';
+import jestVue from './jest.vue.config';
 
 describe('EsBadge', () => {
     // Basic test; should exist for most components

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsModal from '@/src/lib-components/EsModal.vue';
+import EsModal from '@/src/lib-components/molecules/EsModal.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 const slots = {

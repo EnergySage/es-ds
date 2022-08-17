@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsFormTextarea from '@/src/lib-components/EsFormTextarea.vue';
+import EsFormTextarea from '@/src/lib-components/molecules/EsFormTextarea.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsFormTextarea', () => {

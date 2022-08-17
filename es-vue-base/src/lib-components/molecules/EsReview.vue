@@ -64,9 +64,9 @@
 </template>
 
 <script lang="js">
-import EsRating from '@/src/lib-components/EsRating.vue';
-import IconVerified from '@/src/lib-components/icons/verified.vue';
-import EsViewMore from '@/src/lib-components/EsViewMore.vue';
+import EsRating from '@/src/lib-components/molecules/EsRating.vue';
+import IconVerified from '@/src/lib-components/atoms/icons/verified.vue';
+import EsViewMore from '@/src/lib-components/molecules/EsViewMore.vue';
 
 export default {
     name: 'EsReview',

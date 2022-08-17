@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
-import EsCollapse from '@/src/lib-components/EsCollapse.vue';
-import EsButton from '@/src/lib-components/EsButton.vue';
+import EsCollapse from '@/src/lib-components/molecules/EsCollapse.vue';
+import EsButton from '@/src/lib-components/molecules/EsButton.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsCollapse', () => {

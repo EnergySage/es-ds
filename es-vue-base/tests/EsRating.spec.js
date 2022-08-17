@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsRating from '@/src/lib-components/EsRating.vue';
+import EsRating from '@/src/lib-components/molecules/EsRating.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsRating', () => {

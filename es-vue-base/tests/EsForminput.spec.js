@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsFormInput from '@/src/lib-components/EsFormInput.vue';
+import EsFormInput from '@/src/lib-components/molecules/EsFormInput.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsFormInput', () => {

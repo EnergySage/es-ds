@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsHorizontalList from '@/src/lib-components/EsHorizontalList.vue';
+import EsHorizontalList from '@/src/lib-components/molecules/EsHorizontalList.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsHorizontalList', () => {

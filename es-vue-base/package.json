@@ -78,7 +78,7 @@
     "vue-template-compiler": "^2.6.14"
   },
   "peerDependencies": {
-    "@energysage/es-bs-base": "^0.3.5",
+    "@energysage/es-bs-base": "*",
     "bootstrap-vue": "^2.22.0",
     "html-truncate": "^1.2.2",
     "vue": "^2.7.8",

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsSlider from '@/src/lib-components/EsSlider.vue';
+import EsSlider from '@/src/lib-components/molecules/EsSlider.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsSlider', () => {

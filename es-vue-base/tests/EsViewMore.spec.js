@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsViewMore from '@/src/lib-components/EsViewMore.vue';
+import EsViewMore from '@/src/lib-components/molecules/EsViewMore.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsViewMore', () => {

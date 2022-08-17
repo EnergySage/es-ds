@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import EsBreadcrumbs from '@/src/lib-components/EsBreadcrumbs.vue';
+import EsBreadcrumbs from '@/src/lib-components/molecules/EsBreadcrumbs.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsBreadcrumb', () => {
