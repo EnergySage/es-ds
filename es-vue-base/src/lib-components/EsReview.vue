@@ -30,7 +30,7 @@
             </div>
             <EsViewMore
                 v-if="commentLimit"
-                class="comment-holder overflow-auto"
+                class="comment-holder overflow-hidden"
                 :content="comment"
                 :length="commentLimit"
                 @click="$emit('showMore')" />
@@ -161,7 +161,7 @@ export default {
     }
 
     .comment-holder {
-        height: 115px;
+        height: 121px;
     }
 }
 

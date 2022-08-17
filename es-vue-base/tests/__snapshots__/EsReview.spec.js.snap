@@ -10,7 +10,7 @@ exports[`EsReview <EsReview /> 1`] = `
     <div class=\\"title-holder mb-2\\">
       <!---->
     </div>
-    <div class=\\"comment-holder overflow-auto\\"><span>Nice Proj</span>
+    <div class=\\"comment-holder overflow-hidden\\"><span>Nice Proj</span>
       <!---->
     </div>
   </div> <small class=\\"d-flex align-items-center text-gray-800 text-nowrap\\">
@@ -40,7 +40,7 @@ exports[`EsReview Imported components exist 1`] = `
         Proj Bob
       </h4>
     </div>
-    <div class=\\"comment-holder overflow-auto\\"><span>Nice Proj</span>
+    <div class=\\"comment-holder overflow-hidden\\"><span>Nice Proj</span>
       <!---->
     </div>
   </div> <small class=\\"d-flex align-items-center text-gray-800 text-nowrap\\">
@@ -70,7 +70,7 @@ exports[`EsReview Title and subtext exist 1`] = `
         Proj Bob
       </h4>
     </div>
-    <div class=\\"comment-holder overflow-auto\\"><span>Nice Proj</span>
+    <div class=\\"comment-holder overflow-hidden\\"><span>Nice Proj</span>
       <!---->
     </div>
   </div> <small class=\\"d-flex align-items-center text-gray-800 text-nowrap\\">
