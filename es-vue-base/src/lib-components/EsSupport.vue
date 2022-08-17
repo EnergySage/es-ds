@@ -29,7 +29,7 @@
                     target="_blank"
                     class="supportLink"
                     :href="link">
-                    Schedule a free call with {{ repName }}, your EnergySage specialist.
+                    Schedule a free call with {{ repName }}, your EnergySage Advisor.
                 </a>
             </div>
         </div>
