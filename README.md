@@ -60,7 +60,13 @@ origin  git@github.com:EnergySage/es-ds.git (fetch)
 origin  git@github.com:EnergySage/es-ds.git (push)
 ```
 
-Next you should run `make install`. This will kick-off installing requirements for the repo.
+### Installing Dependencies and Linking packages
+
+1. `make update` (this will run `npm install` on each package within the monorepo)
+2. `make update-peer-deps` (will update peer dependencies)
+3. `make build-scss-pkg` (will build *es-bs-base*, which must happen before building *es-vue-base* because there's lines like `@import '~@energysage/es-bs-base/scss/includes';` in *es-vue-base* that will not compile without having the *es-bs-base* package built first)
+4. `make update` (will relink packages)
+5. `make build` (will build all packages)
 
 #### Vue Component Process
 
@@ -78,7 +84,7 @@ Once tests are passing, you'll need to rebuild the _es-vue-base_ package. This c
 
 Next you'll want to move back to the root of the monorepo, and run `make update`. This will ensure the new package is _sym-linked_ to the other projects in the monorepo.
 
-### Documenting the change
+### Documenting change
 
 Once your changes have been made, you'll want to ensure they're documented somewhere in `es-design-system`. If the change is a new component, it's expected you'll create a new page to display the component.
 

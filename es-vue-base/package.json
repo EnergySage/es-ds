@@ -74,7 +74,7 @@
     "stylelint": "^14.9.1",
     "vue": "^2.7.8",
     "vue-jest": "^3.0.7",
-    "vue-slider-component": "^3.2.18",
+    "vue-slider-component": "^3.2.20",
     "vue-template-compiler": "^2.6.14",
     "vuelidate": "^0.7.7"
   },

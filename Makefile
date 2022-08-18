@@ -1,9 +1,3 @@
-.PHONY: install
-install:
-	npx lerna exec -- npm install
-	npx lerna bootstrap
-	npm --prefix es-vue-base run build
-
 .PHONY: dev
 dev:
 	overmind s
@@ -23,3 +17,17 @@ publish:
 .PHONY: update
 update:
 	npx lerna bootstrap
+
+# Bootstraping Commands (not reguarly called)
+
+.PHONY: build-scss-pkg
+build-scss-pkg:
+	npm --prefix es-bs-base build
+
+.PHONY: update-peer-deps
+update-peer-deps:
+	npm --prefix es-vue-base install bootstrap-vue@^2.22.0 \
+		html-truncate@^1.2.2 \
+		vue@^2.7.8 \
+		vue-slider-component@^3.2.18 \
+		vuelidate@^0.7.7

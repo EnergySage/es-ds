@@ -8,5 +8,6 @@
     "env-cmd": "^10.1.0",
     "lerna": "^5.0.0",
     "nodemon": "^2.0.19"
-  }
+  },
+  "dependencies": {}
 }
