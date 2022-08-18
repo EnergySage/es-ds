@@ -89,8 +89,6 @@ const external = [
     // eg. 'jquery'
     'vue',
     'bootstrap-vue',
-    'html-truncate',
-    'vue-slider-component',
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -100,8 +98,6 @@ const globals = {
     // eg. jquery: '$'
     vue: 'Vue',
     'bootstrap-vue': 'bootstrapVue',
-    'html-truncate': 'truncate',
-    'vue-slider-component': 'vueSlider',
 };
 
 // Customize configs for individual targets

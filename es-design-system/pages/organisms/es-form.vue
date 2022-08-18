@@ -120,7 +120,7 @@ import {
     BForm, BContainer, BRow, BCol, BFormCheckbox, BSpinner, BTable,
 } from 'bootstrap-vue';
 import {
-    EsFormInput, EsFormTextarea, EsButton, EsFormMsg, formMixins, validators,
+    EsFormInput, EsFormTextarea, EsButton, EsFormMsg, formMixins, vuelidateRequired, vuelidatePhone, vuelidateEmail,
 } from '@energysage/es-vue-base';
 
 export default {
@@ -144,47 +144,47 @@ export default {
             inline: false,
             validatorMixins: [
                 {
-                    name: 'required',
+                    name: 'vuelidateRequired',
                     arguments: '',
                     description: 'check if the field has a value',
                 },
                 {
-                    name: 'RequiredIf',
+                    name: 'vuelidateRequiredIf',
                     arguments: 'function',
                     description: 'a function with access to string; expected to return a boolean',
                 },
                 {
-                    name: 'minValue',
+                    name: 'vuelidateMinValue',
                     arguments: 'minimum',
                     description: 'check if number is greater than minimum',
                 },
                 {
-                    name: 'maxValue',
+                    name: 'vuelidateMaxValue',
                     arguments: 'maximum',
                     description: 'check if number is less than maximum',
                 },
                 {
-                    name: 'minLength',
+                    name: 'vuelidateMinLength',
                     arguments: 'minimum',
                     description: 'check if string has at least the mimimum characters count',
                 },
                 {
-                    name: 'maxValue',
+                    name: 'vuelidateMaxValue',
                     arguments: 'maximum',
                     description: 'check if string has less than the maximum characters count',
                 },
                 {
-                    name: 'numeric',
+                    name: 'vuelidateNumeric',
                     arguments: '',
                     description: 'check if the value is a number',
                 },
                 {
-                    name: 'email',
+                    name: 'vuelidateEmail',
                     arguments: '',
                     description: 'check if the string is a valid email address',
                 },
                 {
-                    name: 'phone',
+                    name: 'vuelidatePhone',
                     arguments: '',
                     description: 'check if the string is a valid US phone number',
                 },
@@ -235,15 +235,15 @@ export default {
     validations: {
         form: {
             phone: {
-                required: validators.required,
-                phone: validators.phone,
+                required: vuelidateRequired,
+                phone: vuelidatePhone,
             },
             email: {
-                required: validators.required,
-                email: validators.email,
+                required: vuelidateRequired,
+                email: vuelidateEmail,
             },
             notes: {
-                required: validators.required,
+                required: vuelidateRequired,
             },
         },
     },
