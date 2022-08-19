@@ -10,6 +10,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 
 import babel from '@rollup/plugin-babel';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { terser } from 'rollup-plugin-terser';
 import minimist from 'minimist';
 
@@ -113,6 +114,7 @@ if (!argv.format || argv.format === 'es') {
             exports: 'named',
         },
         plugins: [
+            visualizer(), // Outputs bundle info to ./stats.html
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
