@@ -62,11 +62,12 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 
 ### Installing Dependencies and Linking packages
 
-1. `make update` (this will run `npm install` on each package within the monorepo)
-2. `make update-peer-deps` (will update peer dependencies)
-3. `make build-scss-pkg` (will build *es-bs-base*, which must happen before building *es-vue-base* because there's lines like `@import '~@energysage/es-bs-base/scss/includes';` in *es-vue-base* that will not compile without having the *es-bs-base* package built first)
-4. `make update` (will relink packages)
+1. `npm install` (this will install packages used by `overmind`)
+2. `make update` (this will run `npm install` on each package within the monorepo)
+3. `make update-peer-deps` (will update peer dependencies)
+4. `make build-scss-pkg` (will build *es-bs-base*, which must happen before building *es-vue-base* because there's lines like `@import '~@energysage/es-bs-base/scss/includes';` in *es-vue-base* that will not compile without having the *es-bs-base* package built first)
 5. `make build` (will build all packages)
+6. `make update` (will relink packages)
 
 #### Vue Component Process
 

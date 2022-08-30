@@ -22,12 +22,9 @@ update:
 
 .PHONY: build-scss-pkg
 build-scss-pkg:
-	npm --prefix es-bs-base build
+	npm run --prefix es-bs-base build
 
 .PHONY: update-peer-deps
 update-peer-deps:
 	npm --prefix es-vue-base install bootstrap-vue@^2.22.0 \
-		html-truncate@^1.2.2 \
 		vue@^2.7.8 \
-		vue-slider-component@^3.2.18 \
-		vuelidate@^0.7.7
