@@ -73,7 +73,7 @@ describe('EsSupport', () => {
         });
 
         const supportLink = wrapper.find('.supportLink');
-        expect(supportLink.text()).toBe('Schedule a free call with Ben, your EnergySage specialist.');
+        expect(supportLink.text()).toBe('Schedule a free call with Ben, your EnergySage Advisor.');
         expect(wrapper.vm).toBeTruthy();
         expect(wrapper.html()).toMatchSnapshot();
     });

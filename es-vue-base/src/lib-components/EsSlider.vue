@@ -36,37 +36,6 @@
 <script lang="js">
 import vueSlider from 'vue-slider-component';
 
-// TODO: Replace this with sass variables when available
-const colors = {
-    white: '#fff',
-    indigo: '#152f87',
-    red: '#b93737',
-    yellow: '#ffbf57',
-    green: '#008445',
-    teal: '#35b6aa',
-    cyan: '#007eb0',
-    gray: {
-        100: '#fafafa',
-        700: '#565656',
-        900: '#292929',
-    },
-};
-
-// TODO: Replace this with sass variables when available
-const variants = {
-    primary: colors.cyan,
-    secondary: colors.gray['900'],
-    success: colors.green,
-    info: colors.indigo,
-    warning: colors.yellow,
-    danger: colors.red,
-    light: colors.gray['100'],
-    dark: colors.gray['700'],
-};
-
-// TODO: Replace this with sass variable when available
-const gradient = `linear-gradient(104.98deg, ${colors.teal} -0.03%, ${colors.cyan} 50.02%, ${colors.indigo} 99.93%)`;
-
 export default {
     name: 'EsSlider',
     components: {
@@ -128,6 +97,36 @@ export default {
         },
     },
     data() {
+        // TODO: Replace this with sass variables when available
+        const colors = {
+            white: '#fff',
+            indigo: '#152f87',
+            red: '#b93737',
+            yellow: '#ffbf57',
+            green: '#008445',
+            teal: '#35b6aa',
+            cyan: '#007eb0',
+            gray: {
+                100: '#fafafa',
+                700: '#565656',
+                900: '#292929',
+            },
+        };
+
+        // TODO: Replace this with sass variables when available
+        const variants = {
+            primary: colors.cyan,
+            secondary: colors.gray['900'],
+            success: colors.green,
+            info: colors.indigo,
+            warning: colors.yellow,
+            danger: colors.red,
+            light: colors.gray['100'],
+            dark: colors.gray['700'],
+        };
+        // eslint-disable-next-line max-len
+        const gradient = `linear-gradient(104.98deg, ${colors.teal} -0.03%, ${colors.cyan} 50.02%, ${colors.indigo} 99.93%)`;
+
         return {
             sliderValue: this.startingValue,
             min: this.data[0],

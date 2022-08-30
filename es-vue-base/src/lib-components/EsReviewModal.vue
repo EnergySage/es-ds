@@ -6,7 +6,9 @@
         body-class="pt-0 pt-lg-4"
         size="xl"
         @hidden="$emit('hidden')">
-        <template #modal-title> {{ developerName }} Reviews </template>
+        <template #modal-title>
+            {{ developerName }} Reviews
+        </template>
         <b-container
             fluid
             class="modal-container">
@@ -44,9 +46,7 @@
                                 height="32px"
                                 class="mx-2"
                                 :rating="avgRating" />
-                            <span class="font-size-base font-weight-normal align-self-center"
-                                >({{ reviews.length }})</span
-                            >
+                            <span class="font-size-base font-weight-normal align-self-center">({{ reviews.length }})</span>
                         </h2>
                         <es-button
                             class="mt-lg-3 mb-3"
@@ -119,7 +119,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
-// TODO: Should be in es-bs-extends
+// TODO: Should be in es-bs-base
 .top-0 {
     top: 0;
 }

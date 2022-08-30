@@ -1,6 +1,6 @@
 {
     "name": "es-design-system",
-    "version": "0.5.0",
+    "version": "0.5.4",
     "private": true,
     "scripts": {
         "dev": "env-cmd -f .env.local nuxt",
@@ -9,7 +9,7 @@
         "build:prod": "npm run generate:prod && npm run deploy:prod",
         "generate:dev": "env-cmd -f .env.dev npm run generate",
         "generate:prod": "env-cmd -f .env.prod npm run generate",
-        "generate": "nuxt storybook build -o ./dist",
+        "generate": "nuxt build",
         "bootstrap": "env-cmd -f .env.prod npm --prefix aws run cdk bootstrap",
         "synth:dev": "env-cmd -f .env.dev npm run synth",
         "synth:prod": "env-cmd -f .env.prod npm run synth",
@@ -24,8 +24,8 @@
     },
     "prettier": "eslint-config-energysage/prettier",
     "dependencies": {
-        "@energysage/es-bs-base": "^0.5.0",
-        "@energysage/es-vue-base": "^0.5.0",
+        "@energysage/es-bs-base": "^0.5.3",
+        "@energysage/es-vue-base": "^0.5.4",
         "@nuxt/content": "^1.15.1",
         "@nuxtjs/axios": "^5.13.6",
         "@nuxtjs/i18n": "^7.2.2",
@@ -35,7 +35,8 @@
         "html-truncate": "^1.2.2",
         "nuxt": "^2.15.8",
         "vue": "^2.7.8",
-        "vue-slider-component": "^3.2.18"
+        "vue-slider-component": "^3.2.18",
+        "vuelidate": "^0.7.7"
     },
     "devDependencies": {
         "@babel/core": "^7.18.5",
@@ -55,7 +56,7 @@
         "babel-jest": "^28.1.1",
         "env-cmd": "^10.1.0",
         "eslint": "^8.18.0",
-        "eslint-config-energysage": "^2.2.1",
+        "eslint-config-energysage": "^2.2.2",
         "eslint-config-prettier": "^8.5.0",
         "eslint-import-resolver-nuxt": "^1.0.1",
         "eslint-import-resolver-webpack": "^0.13.2",
@@ -63,7 +64,6 @@
         "eslint-plugin-jest": "^26.5.3",
         "eslint-plugin-mdx": "^1.17.0",
         "eslint-plugin-nuxt": "^3.1.0",
-        "eslint-plugin-storybook": "^0.5.13",
         "eslint-plugin-strict-vue": "^1.0.0",
         "eslint-plugin-vue": "^8.7.1",
         "eslint-plugin-vue-a11y": "0.0.31",

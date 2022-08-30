@@ -10,6 +10,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 
 import babel from '@rollup/plugin-babel';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { terser } from 'rollup-plugin-terser';
 import minimist from 'minimist';
 
@@ -89,8 +90,6 @@ const external = [
     // eg. 'jquery'
     'vue',
     'bootstrap-vue',
-    'html-truncate',
-    'vue-slider-component',
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -100,8 +99,6 @@ const globals = {
     // eg. jquery: '$'
     vue: 'Vue',
     'bootstrap-vue': 'bootstrapVue',
-    'html-truncate': 'truncate',
-    'vue-slider-component': 'vueSlider',
 };
 
 // Customize configs for individual targets
@@ -117,6 +114,7 @@ if (!argv.format || argv.format === 'es') {
             exports: 'named',
         },
         plugins: [
+            visualizer(), // Outputs bundle info to ./stats.html
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
@@ -147,7 +145,7 @@ if (!argv.format || argv.format === 'cjs') {
             file: 'dist/es-vue-base.ssr.js',
             format: 'cjs',
             name: 'EsVueBase',
-            exports: 'auto',
+            exports: 'named',
             globals,
         },
         plugins: [
@@ -175,7 +173,7 @@ if (!argv.format || argv.format === 'iife') {
             file: 'dist/es-vue-base.min.js',
             format: 'iife',
             name: 'EsVueBase',
-            exports: 'auto',
+            exports: 'named',
             globals,
         },
         plugins: [

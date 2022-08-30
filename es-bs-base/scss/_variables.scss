@@ -38,13 +38,13 @@ $lightblue: #8cd1ff;
 $grayblue:  #c9e9f6;
 $indigo:  #152f87 !default;
 $purple:  #822a85 !default;
-$pink:    #c84486 !default;
+$pink:    #c24282 !default;
 $red:     #b93737 !default;
 $orange:  #ffbf57 !default;
 $yellow:  #f6b140 !default;
 $green:   #008445 !default;
 $teal:    #37b6aa !default;
-$cyan:    #007eb0 !default;
+$cyan:    #007aab !default;
 
 
 $colors: () !default;
@@ -252,9 +252,9 @@ $line-height-sm:              1.5 !default;
 $border-width:                1px !default;
 $border-color:                $gray-300 !default;
 
-$border-radius:               .25rem !default;
-$border-radius-lg:            .3rem !default;
-$border-radius-sm:            .2rem !default;
+$border-radius:               .5rem !default;
+$border-radius-lg:            .75rem !default;
+$border-radius-sm:            .25rem !default;
 
 $rounded-pill:                50rem !default;
 
@@ -416,7 +416,7 @@ $table-border-level:          -6 !default;
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y:         0.9rem !default;
+$input-btn-padding-y:         0.85rem !default;
 $input-btn-padding-x:         1rem !default;
 $input-btn-font-family:       $font-family-sans-serif !default;
 $input-btn-font-size:         $font-size-base !default;
@@ -485,7 +485,7 @@ $btn-transition:              color .15s ease-in-out, background-color .15s ease
 
 $label-margin-bottom:                   .5rem !default;
 
-$input-padding-y:                       $input-btn-padding-y !default;
+$input-padding-y:                       0.9rem !default;
 $input-padding-x:                       $input-btn-padding-x !default;
 $input-font-family:                     $input-btn-font-family !default;
 $input-font-size:                       $input-btn-font-size !default;
@@ -800,7 +800,7 @@ $dropdown-font-size:                $font-size-base !default;
 $dropdown-color:                    $body-color !default;
 $dropdown-bg:                       $white !default;
 $dropdown-border-color:             rgba($black, .15) !default;
-$dropdown-border-radius:            $border-radius !default;
+$dropdown-border-radius:            0 !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-bg:               $gray-200 !default;
@@ -1022,8 +1022,8 @@ $modal-scale-transform:             scale(1.02) !default;
 //
 // Define alert colors, border radius, and padding.
 
-$alert-padding-y:                   .75rem !default;
-$alert-padding-x:                   1.25rem !default;
+$alert-padding-y:                   1rem !default;
+$alert-padding-x:                   1rem !default;
 $alert-margin-bottom:               1rem !default;
 $alert-border-radius:               $border-radius !default;
 $alert-link-font-weight:            $font-weight-bold !default;

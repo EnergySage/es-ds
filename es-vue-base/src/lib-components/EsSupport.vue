@@ -19,7 +19,9 @@
         <div class="text-holder d-flex flex-column">
             <div class="title">
                 <div class="h5 mb-1 font-size-base font-weight-bold">
-                    <slot> Need help signing up? </slot>
+                    <slot>
+                        Need help signing up?
+                    </slot>
                 </div>
             </div>
             <div class="link">
@@ -27,7 +29,7 @@
                     target="_blank"
                     class="supportLink"
                     :href="link">
-                    Schedule a free call with {{ repName }}, your EnergySage specialist.
+                    Schedule a free call with {{ repName }}, your EnergySage Advisor.
                 </a>
             </div>
         </div>
@@ -80,7 +82,7 @@ export default {
         width: 64px;
 
         .image {
-            // TODO: Move into es-bs-extends
+            // TODO: Move into es-bs-base
             background: linear-gradient(141.22deg, #f6b140 8.76%, #ca4a89 100%);
             border-radius: 2rem;
             object-fit: contain;

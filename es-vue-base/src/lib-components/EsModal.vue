@@ -29,7 +29,7 @@
 
 <script lang="js">
 import { BModal } from 'bootstrap-vue';
-import XIcon from '@/src/lib-components/icons/x.vue';
+import XIcon from '@/src/lib-icons/x.vue';
 
 export default {
     name: 'EsModal',
@@ -82,7 +82,7 @@ export default {
 <style lang="scss">
 @import '~@energysage/es-bs-base/scss/includes';
 
-// TODO: Move this into es-bs-extends ?
+// TODO: Move this into es-bs-base ?
 .modal-lightbox {
     @include media-breakpoint-down(md) {
         .modal-dialog {

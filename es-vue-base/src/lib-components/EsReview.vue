@@ -30,7 +30,7 @@
             </div>
             <EsViewMore
                 v-if="commentLimit"
-                class="comment-holder overflow-auto"
+                class="comment-holder overflow-hidden"
                 :content="comment"
                 :length="commentLimit"
                 @click="$emit('showMore')" />
@@ -65,7 +65,7 @@
 
 <script lang="js">
 import EsRating from '@/src/lib-components/EsRating.vue';
-import IconVerified from '@/src/lib-components/icons/verified.vue';
+import IconVerified from '@/src/lib-icons/verified.vue';
 import EsViewMore from '@/src/lib-components/EsViewMore.vue';
 
 export default {
@@ -161,7 +161,7 @@ export default {
     }
 
     .comment-holder {
-        height: 115px;
+        height: 121px;
     }
 }
 

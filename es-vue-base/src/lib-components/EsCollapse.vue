@@ -3,7 +3,7 @@
         <EsButton
             block
             :aria-label="id"
-            class="collapse-holder text-left p-0 mb-3 font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
+            class="collapse-holder pb-3 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             variant="link"
             @click="isCollapsed = !isCollapsed">
             <div>
@@ -27,22 +27,19 @@
             role="tabpanel"
             data-testid="collapse"
             v-on="$listeners">
-            <div
-                class="pb-3 pb-lg-4 mb-lg-2">
-                <slot />
-            </div>
+            <slot />
         </b-collapse>
 
         <div
             v-if="border"
-            class="border-bottom" />
+            class="border-bottom pt-4" />
     </div>
 </template>
 
 <script lang="js">
 import { BCollapse } from 'bootstrap-vue';
 import EsButton from '@/src/lib-components/EsButton.vue';
-import IconChevronDown from '@/src/lib-components/icons/chevron-down.vue';
+import IconChevronDown from '@/src/lib-icons/chevron-down.vue';
 
 export default {
     name: 'EsCollapse',
