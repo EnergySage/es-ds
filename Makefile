@@ -18,6 +18,10 @@ publish:
 update:
 	npx lerna bootstrap
 
+.PHONE: reload
+reload:
+	npm --prefix es-vue-base run build
+
 # Bootstraping Commands (not reguarly called)
 
 .PHONY: build-scss-pkg

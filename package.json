@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "watch": "nodemon --exec make update"
+    "watch": "nodemon --exec make reload"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
