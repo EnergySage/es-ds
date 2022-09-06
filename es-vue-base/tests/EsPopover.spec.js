@@ -4,7 +4,6 @@ import EsPopover from '@/src/lib-components/EsPopover.vue';
 import EsButton from '@/src/lib-components/EsButton.vue';
 import XIcon from '@/src/lib-icons/x.vue';
 import { waitRAF, waitNT } from './utils';
-// import jestVue from '@/tests/jest.vue.config';
 
 // https://github.com/bootstrap-vue/bootstrap-vue/blob/dev/src/components/popover/popover.spec.js
 
@@ -14,6 +13,8 @@ const App = {
         'triggers',
         'show',
         'target',
+        'titleAttr',
+        'btnDisabled',
     ],
     render(h) {
         return h('article', { attrs: { id: 'wrapper' } }, [
@@ -21,8 +22,10 @@ const App = {
                 'button',
                 {
                     attrs: {
-                        id: 'foo',
+                        id: 'triggerButton',
                         type: 'button',
+                        disabled: this.btnDisabled || null,
+                        title: this.titleAttr || null,
                     },
                 },
                 'text',
@@ -31,10 +34,10 @@ const App = {
                 EsPopover,
                 {
                     attrs: {
-                        id: 'bar',
+                        id: 'esPopover',
                     },
                     props: {
-                        target: 'foo',
+                        target: 'triggerButton',
                         triggers: this.triggers,
                         show: this.show,
                     },
@@ -51,8 +54,8 @@ describe('EsPopover', () => {
 
     beforeEach(() => {
         // https://github.com/FezVrasta/popper.js/issues/478#issuecomment-407422016
-        // Hack to make Popper not bork out during tests
-        // Note popper still does not do any positioning calculation in JSDOM though
+        // Hack to make Popover not bork out during tests
+        // Note popover still does not do any positioning calculation in JSDOM though
         // So we cannot test actual positioning, just detect when it is open
         document.createRange = () => ({
             setStart: () => {},
@@ -105,7 +108,7 @@ describe('EsPopover', () => {
         const $button = wrapper.find('button');
         expect($button.exists()).toBe(true);
         expect($button.attributes('id')).toBeDefined();
-        expect($button.attributes('id')).toBe('foo');
+        expect($button.attributes('id')).toBe('triggerButton');
         expect($button.attributes('aria-describedby')).toBeUndefined();
 
         // <es-popover> wrapper
@@ -115,7 +118,7 @@ describe('EsPopover', () => {
         expect($popover.selector.props.show.default).toBe(false);
         expect($popover.selector.props.placement.default).toBe('auto');
         expect($popover.selector.props.triggers.default).toBe('focus');
-        expect($popover.props().target).toBe('foo');
+        expect($popover.props().target).toBe('triggerButton');
 
         // Close button on popover
         const $closeButton = $popover.findComponent(EsButton);
@@ -151,7 +154,6 @@ describe('EsPopover', () => {
             jest.runOnlyPendingTimers();
             waitNT(wrapper.vm);
         }, 10000);
-        // console.log(document.body);
 
         expect(wrapper.element.tagName).toBe('ARTICLE');
         expect(wrapper.attributes('id')).toBeDefined();
@@ -161,12 +163,14 @@ describe('EsPopover', () => {
         const $button = wrapper.find('button');
         expect($button.exists()).toBe(true);
         expect($button.attributes('id')).toBeDefined();
-        expect($button.attributes('id')).toBe('foo');
+        expect($button.attributes('id')).toBe('triggerButton');
 
         // <es-popover> wrapper
         const $popover = wrapper.findComponent(EsPopover);
+        expect($popover.props().show).toBe(true);
         expect($popover.exists()).toBe(true);
         expect($popover.element.nodeType).toEqual(Node.COMMENT_NODE);
+        expect($popover.props().show).toBe(true);
 
         // Hide the Popover
         await wrapper.setProps({
@@ -181,8 +185,8 @@ describe('EsPopover', () => {
         }, 10000);
 
         // Popover element should not be in the document
-        // expect($popover).toBeNull();
-        // expect(document.getElementById($adb)).toBeNull();
+        expect($popover.props().show).toBe(false);
+
         wrapper.destroy();
     });
 });
