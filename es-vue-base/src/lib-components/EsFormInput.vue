@@ -78,7 +78,13 @@ export default {
         type: {
             type: String,
             default: 'text',
-            validator: (val) => ['text', 'number'].includes(val),
+            validator: (val) => [
+                'text',
+                'number',
+                'email',
+                'number',
+                'password',
+            ].includes(val),
         },
         /**
          * ID
