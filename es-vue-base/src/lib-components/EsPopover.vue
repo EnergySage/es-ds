@@ -4,7 +4,8 @@
         :show="show"
         :target="target"
         :placement="placement"
-        :triggers="triggers">
+        :triggers="triggers"
+        :custom-class="customClass">
         <template
             v-if="hasTitle"
             #title>
@@ -15,7 +16,7 @@
             <slot name="title" />
             <EsButton
                 variant="link"
-                class="p-0 text-white float-right"
+                class="p-0 float-right"
                 @click="onClose">
                 <XIcon
                     height="20px"
@@ -32,7 +33,7 @@
                 <div v-if="!hasTitle">
                     <EsButton
                         variant="link"
-                        class="p-0 text-white"
+                        class="p-0 float-right"
                         @click="onClose">
                         <XIcon
                             height="20px"
@@ -72,7 +73,7 @@ export default {
         triggers: {
             type: [String, Object],
             required: false,
-            default: 'focus',
+            default: 'click',
         },
         /**
          * Placement
@@ -94,6 +95,15 @@ export default {
             required: false,
             default: false,
         },
+        /**
+         * Variant
+         */
+        customClass: {
+            type: String,
+            required: false,
+            default: 'es-popover-light',
+            validator: (val) => ['es-popover-light', 'es-popover-dark'].includes(val),
+        },
     },
     computed: {
         hasTitle() {
@@ -107,3 +117,90 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+@import '~@energysage/es-bs-base/scss/includes';
+
+.es-popover-light {
+    &.popover {
+        background-color: $white !important;
+        border: 1px solid !important;
+        border-color: $primary;
+    }
+    .arrow::after {
+        border-bottom-color: $white !important;
+    }
+    .popover-header {
+        color: $black;
+        background-color: $white;
+        border-bottom-color: $white;
+        &::before {
+            border-bottom-color: $white;
+        }
+        .btn, .btn:hover, .btn:active {
+            color: $black;
+        }
+    }
+    .popover-body {
+        // background-color: white;
+
+        color: $black;
+        .btn, .btn:hover, .btn:active {
+            color: $black;
+        }
+    }
+}
+
+    // .bs-popover-top {
+    //     > .arrow {
+    //         &::before {
+    //             border-top-color: $pink;
+    //         }
+    //         &::after {
+    //             border-top-color: $pink;
+    //         }
+    //     }
+    // }
+    // .bs-popover-left {
+    //     > .arrow {
+    //         &::before {
+    //             border-left-color: $pink;
+    //         }
+    //         &::after {
+    //             border-left-color: $pink;
+    //         }
+    //     }
+    // }
+    // .bs-popover-right {
+    //     > .arrow {
+    //         &::before {
+    //             border-right-color: $pink;
+    //         }
+    //         &::after {
+    //             border-right-color: $pink;
+    //         }
+    //     }
+    // }
+.es-popover-dark {
+    &.popover {
+        background-color: $gray-900 !important;
+    }
+    .popover-header {
+        color: $white;
+        background-color: $gray-900;
+        border-bottom-color: $gray-900;
+        &::before {
+            border-bottom-color: $gray-900;
+        }
+        .btn, .btn:hover, .btn:active {
+            color: $white;
+        }
+    }
+    .popover-body {
+        color: $white;
+        .btn, .btn:hover, .btn:active {
+            color: $white;
+        }
+    }
+}
+</style>
