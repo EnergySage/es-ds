@@ -33,7 +33,7 @@
                 <div v-if="!hasTitle">
                     <EsButton
                         variant="link"
-                        class="p-0 float-right"
+                        class="p-0"
                         @click="onClose">
                         <XIcon
                             height="20px"
@@ -84,7 +84,7 @@ export default {
             required: false,
             // eslint-disable-next-line max-len
             validator: (val) => ['auto', 'top', 'bottom', 'right', 'left', 'topleft', 'topright', 'bottomleft', 'bottomright', 'lefttop', 'leftbottom', 'righttop', 'rightbottom'].includes(val),
-            default: 'topleft',
+            default: 'auto',
         },
         /**
          * Show
