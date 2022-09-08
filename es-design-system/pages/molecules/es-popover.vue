@@ -18,10 +18,10 @@
                 <template #title>
                     My Title
                 </template>
-                <p>
+                <p class="mb-0">
                     Install solar panels through this program and get $250 cash back.
                     <a
-                        class="mt-3 d-block"
+                        class="mt-2 d-block"
                         href="https://communitysolar.energysage.com/"
                         target="_blank">Learn more.</a>
                 </p>
@@ -41,10 +41,10 @@
                 </es-button>
             </label>
             <EsPopover target="noTitleTarget">
-                <p>
+                <p class="mb-0">
                     Install solar panels through this program and get $250 cash back.
                     <a
-                        class="mt-3 d-block"
+                        class="mt-2 d-block"
                         href="https://communitysolar.energysage.com/"
                         target="_blank">Learn more.</a>
                 </p>

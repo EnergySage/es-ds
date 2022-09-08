@@ -28,7 +28,7 @@
         @binding {string} text or html of the popover content
         -->
         <template #default>
-            <div class="d-flex">
+            <div class="d-flex popover-content-wrapper">
                 <slot />
                 <div v-if="!hasTitle">
                     <EsButton
@@ -201,6 +201,12 @@ export default {
         .btn, .btn:hover, .btn:active {
             color: $white;
         }
+    }
+}
+.popover-content-wrapper {
+    a {
+        color: #e0eff5;
+        font-weight: $font-weight-bold;
     }
 }
 </style>
