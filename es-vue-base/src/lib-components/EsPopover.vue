@@ -73,7 +73,7 @@ export default {
         triggers: {
             type: [String, Object],
             required: false,
-            default: 'click',
+            default: 'focus',
         },
         /**
          * Placement
