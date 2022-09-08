@@ -101,7 +101,7 @@ export default {
         customClass: {
             type: String,
             required: false,
-            default: 'es-popover-light',
+            default: 'es-popover-dark',
             validator: (val) => ['es-popover-light', 'es-popover-dark'].includes(val),
         },
     },
@@ -191,23 +191,13 @@ export default {
 }
 
 .es-popover-dark {
-    &.popover {
-        background-color: $gray-900 !important;
-    }
-    // styling for all arrow backgrounds will need to be added if $popover-bg is changed from $gray-900
+    // styling for this color scheme will need to be added as default values for popovers are updated
     .popover-header {
-        color: $white;
-        background-color: $gray-900;
-        border-bottom-color: $gray-900;
-        &::before {
-            border-bottom-color: $gray-900;
-        }
         .btn, .btn:hover, .btn:active {
             color: $white;
         }
     }
     .popover-body {
-        color: $white;
         .btn, .btn:hover, .btn:active {
             color: $white;
         }
