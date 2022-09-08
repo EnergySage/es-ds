@@ -84,7 +84,7 @@ export default {
             required: false,
             // eslint-disable-next-line max-len
             validator: (val) => ['auto', 'top', 'bottom', 'right', 'left', 'topleft', 'topright', 'bottomleft', 'bottomright', 'lefttop', 'leftbottom', 'righttop', 'rightbottom'].includes(val),
-            default: 'auto',
+            default: 'topleft',
         },
         /**
          * Show
@@ -123,12 +123,53 @@ export default {
 
 .es-popover-light {
     &.popover {
-        background-color: $white !important;
-        border: 1px solid !important;
-        border-color: $primary;
+        background-color: $white;
+        border: 1px solid $primary;
     }
-    .arrow::after {
-        border-bottom-color: $white !important;
+    // styling for all arrow backgrounds
+    &.bs-popover-bottom, &.bs-popover-auto[x-placement^=bottom] {
+        > .arrow {
+            &::before {
+                border-bottom-color: $primary;
+            }
+            &::after {
+                top: 1px;
+                border-bottom-color: $white;
+            }
+        }
+    }
+    &.bs-popover-top, &.bs-popover-auto[x-placement^=top] {
+        > .arrow {
+            &::before {
+                border-top-color: $primary;
+            }
+            &::after {
+                bottom: 1px;
+                border-top-color: $white;
+            }
+        }
+    }
+    &.bs-popover-right, &.bs-popover-auto[x-placement^=right] {
+        > .arrow {
+            &::before {
+                border-right-color: $primary;
+            }
+            &::after {
+                left: 1px;
+                border-right-color: $white;
+            }
+        }
+    }
+    &.bs-popover-left, &.bs-popover-auto[x-placement^=left] {
+        > .arrow {
+            &::before {
+                border-left-color: $primary;
+            }
+            &::after {
+                right: 1px;
+                border-left-color: $white;
+            }
+        }
     }
     .popover-header {
         color: $black;
@@ -142,8 +183,6 @@ export default {
         }
     }
     .popover-body {
-        // background-color: white;
-
         color: $black;
         .btn, .btn:hover, .btn:active {
             color: $black;
@@ -151,40 +190,11 @@ export default {
     }
 }
 
-    // .bs-popover-top {
-    //     > .arrow {
-    //         &::before {
-    //             border-top-color: $pink;
-    //         }
-    //         &::after {
-    //             border-top-color: $pink;
-    //         }
-    //     }
-    // }
-    // .bs-popover-left {
-    //     > .arrow {
-    //         &::before {
-    //             border-left-color: $pink;
-    //         }
-    //         &::after {
-    //             border-left-color: $pink;
-    //         }
-    //     }
-    // }
-    // .bs-popover-right {
-    //     > .arrow {
-    //         &::before {
-    //             border-right-color: $pink;
-    //         }
-    //         &::after {
-    //             border-right-color: $pink;
-    //         }
-    //     }
-    // }
 .es-popover-dark {
     &.popover {
         background-color: $gray-900 !important;
     }
+    // styling for all arrow backgrounds will need to be added if $popover-bg is changed from $gray-900
     .popover-header {
         color: $white;
         background-color: $gray-900;
