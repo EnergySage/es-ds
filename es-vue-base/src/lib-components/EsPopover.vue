@@ -5,7 +5,7 @@
         :target="target"
         :placement="placement"
         :triggers="triggers"
-        :custom-class="customClass">
+        :custom-class="`es-popover-${variant}`">
         <template
             v-if="hasTitle"
             #title>
@@ -98,11 +98,11 @@ export default {
         /**
          * Variant
          */
-        customClass: {
+        variant: {
             type: String,
             required: false,
-            default: 'es-popover-dark',
-            validator: (val) => ['es-popover-light', 'es-popover-dark'].includes(val),
+            default: 'dark',
+            validator: (val) => ['light', 'dark'].includes(val),
         },
     },
     computed: {
@@ -201,12 +201,10 @@ export default {
         .btn, .btn:hover, .btn:active {
             color: $white;
         }
-    }
-}
-.popover-content-wrapper {
-    a {
-        color: #e0eff5;
+        a {
+        color: #99CBDF;
         font-weight: $font-weight-bold;
+    }
     }
 }
 </style>
