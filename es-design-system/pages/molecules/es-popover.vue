@@ -63,6 +63,10 @@
             <h2>
                 Light Variant
             </h2>
+            <p>
+                This popover is only to be used in a wizard like userflow. If you have long content on a page;
+                outside of a wizard, we recommend that you utilize a drawer instead.
+            </p>
             <div>
                 <!-- eslint-disable vuejs-accessibility/label-has-for -->
                 <label>
