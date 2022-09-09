@@ -6,22 +6,25 @@
         <div class="image-holder mr-3">
             <a
                 target="_blank"
-                :aria-label="repName"
+                aria-label="Help"
                 :href="link">
                 <b-img
                     width="64px"
                     height="64px"
                     class="image"
-                    :src="repImage"
-                    :alt="repName" />
+                    :src="src"
+                    alt="Help Image" />
             </a>
         </div>
         <div class="text-holder d-flex flex-column">
             <div class="title">
                 <div class="h5 mb-1 font-size-base font-weight-bold">
-                    <slot>
+                    <slot
+                        v-if="hasTitle"
+                        name="title" />
+                    <template v-else>
                         Need help signing up?
-                    </slot>
+                    </template>
                 </div>
             </div>
             <div class="link">
@@ -29,7 +32,12 @@
                     target="_blank"
                     class="supportLink"
                     :href="link">
-                    Schedule a free call with {{ repName }}, your EnergySage Advisor.
+                    <slot
+                        v-if="hasLinkCopy"
+                        name="linkCopy" />
+                    <template v-else>
+                        Schedule a free call with your EnergySage Advisor.
+                    </template>
                 </a>
             </div>
         </div>
@@ -38,7 +46,6 @@
 
 <script lang="js">
 import { BImg } from 'bootstrap-vue';
-import benr from '@/src/assets/imgs/benr.png';
 
 export default {
     name: 'EsSupport',
@@ -55,17 +62,20 @@ export default {
             required: true,
         },
         /**
-         * EA Name
+         * Image src
+         *
          */
-        repName: {
+        src: {
             type: String,
             required: true,
         },
     },
     computed: {
-        repImage() {
-            // TODO: switch/case for other reps
-            return benr;
+        hasTitle() {
+            return !!this.$slots.title;
+        },
+        hasLinkCopy() {
+            return !!this.$slots.linkCopy;
         },
     },
 };
@@ -82,8 +92,7 @@ export default {
         width: 64px;
 
         .image {
-            // TODO: Move into es-bs-base
-            background: linear-gradient(141.22deg, #f6b140 8.76%, #ca4a89 100%);
+            background: linear-gradient(141.22deg, $yellow 8.76%, $pink 100%);
             border-radius: 2rem;
             object-fit: contain;
         }

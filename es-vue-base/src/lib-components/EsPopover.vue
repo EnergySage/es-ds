@@ -120,7 +120,7 @@ export default {
 
 <style lang="scss">
 @import '~@energysage/es-bs-base/scss/includes';
-
+/* stylelint-disable no-descending-specificity */
 .es-popover-light {
     &.popover {
         background-color: $white;
@@ -132,58 +132,70 @@ export default {
             &::before {
                 border-bottom-color: $primary;
             }
+
             &::after {
-                top: 1px;
                 border-bottom-color: $white;
+                top: 1px;
             }
         }
     }
+
     &.bs-popover-top, &.bs-popover-auto[x-placement^=top] {
         > .arrow {
             &::before {
                 border-top-color: $primary;
             }
+
             &::after {
-                bottom: 1px;
                 border-top-color: $white;
+                bottom: 1px;
             }
         }
     }
+
     &.bs-popover-right, &.bs-popover-auto[x-placement^=right] {
         > .arrow {
             &::before {
                 border-right-color: $primary;
             }
+
             &::after {
-                left: 1px;
                 border-right-color: $white;
+                left: 1px;
             }
         }
     }
+
     &.bs-popover-left, &.bs-popover-auto[x-placement^=left] {
         > .arrow {
             &::before {
                 border-left-color: $primary;
             }
+
             &::after {
-                right: 1px;
                 border-left-color: $white;
+                right: 1px;
             }
         }
     }
+
     .popover-header {
-        color: $black;
         background-color: $white;
         border-bottom-color: $white;
+        color: $black;
+
         &::before {
             border-bottom-color: $white;
         }
+
         .btn, .btn:hover, .btn:active {
             color: $black;
         }
     }
+
     .popover-body {
         color: $black;
+
         .btn, .btn:hover, .btn:active {
             color: $black;
         }
@@ -197,14 +209,16 @@ export default {
             color: $white;
         }
     }
+
     .popover-body {
         .btn, .btn:hover, .btn:active {
             color: $white;
         }
+
         a {
-        color: #99CBDF;
-        font-weight: $font-weight-bold;
-    }
+            color: $lightblue;
+            font-weight: $font-weight-bold;
+        }
     }
 }
 </style>
