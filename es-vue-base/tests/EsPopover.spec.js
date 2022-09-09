@@ -13,6 +13,7 @@ const App = {
         'triggers',
         'show',
         'target',
+        'variant',
         'titleAttr',
         'btnDisabled',
     ],
@@ -40,6 +41,7 @@ const App = {
                         target: 'triggerButton',
                         triggers: this.triggers,
                         show: this.show,
+                        variant: this.variant,
                     },
                 },
                 [h('template', { slot: 'title' }, this.$slots.title), this.$slots.default || ''],
@@ -91,6 +93,7 @@ describe('EsPopover', () => {
             attachTo: document.body,
             propsData: {
                 triggers: 'click',
+                variant: 'light',
             },
             slots: {
                 title: 'title',
@@ -118,7 +121,9 @@ describe('EsPopover', () => {
         expect($popover.selector.props.show.default).toBe(false);
         expect($popover.selector.props.placement.default).toBe('auto');
         expect($popover.selector.props.triggers.default).toBe('focus');
+        expect($popover.selector.props.variant.default).toBe('dark');
         expect($popover.props().target).toBe('triggerButton');
+        expect($popover.props().variant).toBe('light');
 
         // Close button on popover
         const $closeButton = $popover.findComponent(EsButton);
