@@ -34,8 +34,6 @@
 </template>
 
 <script lang="js">
-import sassColors from '@energysage/es-bs-base/scss/variables/_colors.scss';
-import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
 import vueSlider from 'vue-slider-component';
 
 export default {
@@ -89,25 +87,26 @@ export default {
             required: false,
             default: 'always',
         },
-        /**
-         * Color variant
-         */
-        variant: {
-            type: String,
-            required: false,
-            default: 'primary',
-        },
     },
     data() {
+        // TODO: Replace this with sass variables when available
+        const colors = {
+            white: '#fff',
+            indigo: '#152f87',
+            cyan: '#007eb0',
+        };
+        // eslint-disable-next-line max-len
+        const gradient = `linear-gradient(112.58deg, ${colors.cyan} 28%, ${colors.indigo} 100%)`;
+
         return {
             sliderValue: this.startingValue,
             min: this.data[0],
             max: this.data[this.data.length - 1],
-            colorComputed: sassThemeColors[this.variant],
+            colorComputed: colors.cyan,
             styles: {
                 dot: {
-                    border: `5px solid ${sassThemeColors[this.variant]}`,
-                    background: sassColors.white,
+                    border: `5px solid ${colors.cyan}`,
+                    background: colors.white,
                 },
                 rail: {
                     height: '10px',
@@ -115,7 +114,7 @@ export default {
                 },
                 process: {
                     height: '10px',
-                    background: `linear-gradient(112.58deg, ${sassColors.cyan} 28%, ${sassColors.darkblue} 100%)`,
+                    background: gradient,
                     'border-radius': '9px',
                 },
                 step: {
