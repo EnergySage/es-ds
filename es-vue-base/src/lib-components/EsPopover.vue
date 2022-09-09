@@ -28,7 +28,7 @@
         @binding {string} text or html of the popover content
         -->
         <template #default>
-            <div class="d-flex popover-content-wrapper">
+            <div class="d-flex">
                 <slot />
                 <div v-if="!hasTitle">
                     <EsButton
