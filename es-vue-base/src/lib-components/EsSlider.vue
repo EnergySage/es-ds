@@ -34,6 +34,8 @@
 </template>
 
 <script lang="js">
+import sassColors from '@energysage/es-bs-base/scss/variables/_colors.scss';
+import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
 import vueSlider from 'vue-slider-component';
 
 export default {
@@ -97,45 +99,15 @@ export default {
         },
     },
     data() {
-        // TODO: Replace this with sass variables when available
-        const colors = {
-            white: '#fff',
-            indigo: '#152f87',
-            red: '#b93737',
-            yellow: '#ffbf57',
-            green: '#008445',
-            teal: '#35b6aa',
-            cyan: '#007eb0',
-            gray: {
-                100: '#fafafa',
-                700: '#565656',
-                900: '#292929',
-            },
-        };
-
-        // TODO: Replace this with sass variables when available
-        const variants = {
-            primary: colors.cyan,
-            secondary: colors.gray['900'],
-            success: colors.green,
-            info: colors.indigo,
-            warning: colors.yellow,
-            danger: colors.red,
-            light: colors.gray['100'],
-            dark: colors.gray['700'],
-        };
-        // eslint-disable-next-line max-len
-        const gradient = `linear-gradient(104.98deg, ${colors.teal} -0.03%, ${colors.cyan} 50.02%, ${colors.indigo} 99.93%)`;
-
         return {
             sliderValue: this.startingValue,
             min: this.data[0],
             max: this.data[this.data.length - 1],
-            colorComputed: variants[this.variant],
+            colorComputed: sassThemeColors[this.variant],
             styles: {
                 dot: {
-                    border: `5px solid ${variants[this.variant]}`,
-                    background: colors.white,
+                    border: `5px solid ${sassThemeColors[this.variant]}`,
+                    background: sassColors.white,
                 },
                 rail: {
                     height: '10px',
@@ -143,7 +115,7 @@ export default {
                 },
                 process: {
                     height: '10px',
-                    background: gradient,
+                    background: `linear-gradient(112.58deg, ${sassColors.cyan} 28%, ${sassColors.darkblue} 100%)`,
                     'border-radius': '9px',
                 },
                 step: {
