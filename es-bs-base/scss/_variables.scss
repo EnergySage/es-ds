@@ -962,9 +962,9 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 
 $badge-font-size:                   $font-size-sm !default;
 $badge-font-weight:                 $font-weight-bold !default;
-$badge-padding-y:                   1rem * 0.125 !default;
-$badge-padding-x:                   1rem * 0.25 !default;
-$badge-border-radius:               1rem * 0.625 !default;
+$badge-padding-y:                   1rem * 0.3 !default;
+$badge-padding-x:                   1rem * 0.35 !default;
+$badge-border-radius:               1rem * 0.7 !default;
 
 $badge-transition:                  $btn-transition !default;
 $badge-focus-width:                 $input-btn-focus-width !default;
