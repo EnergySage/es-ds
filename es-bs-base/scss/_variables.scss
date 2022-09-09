@@ -466,10 +466,11 @@ $btn-font-weight:             $font-weight-bold !default;
 $btn-box-shadow:              none !default;
 $btn-focus-width:             $input-btn-focus-width !default;
 $btn-focus-box-shadow:        0 !default;
-$btn-disabled-opacity:        .65 !default;
+$btn-disabled-opacity:        1 !default;
 $btn-active-box-shadow:       0 !default;
 
-$btn-link-disabled-color:     $gray-600 !default;
+$btn-disabled-bg-color:       $gray-300 !default;
+$btn-link-disabled-color:     $gray-700 !default;
 
 $btn-block-spacing-y:         .5rem !default;
 
