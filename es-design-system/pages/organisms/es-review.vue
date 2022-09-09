@@ -28,6 +28,7 @@
                 :rating="review.rating"
                 :title="review.title"
                 :comment="review.comment"
+                :updated-comment="review.updated_comment"
                 @showMore="reviewsModalVisible = true" />
         </es-horizontal-list>
     </div>
@@ -79,7 +80,8 @@ export default {
                     created: '2022-06-03T18:27:41.718753Z',
                     rating: 5,
                     title: 'My Title',
-                    comment: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
+                    comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum.',
+                    updated_comment: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
                 Nullam vestibulum ex mi, ut suscipit libero condimentum id. Pellentesque eu diam vel nisi
                 molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum.
                 Mauris vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus
@@ -95,6 +97,7 @@ export default {
                     rating: 4,
                     title: 'Test',
                     comment: '123',
+                    updated_comment: '',
                 }, {
                     id: 15,
                     reviewer_name: 'test',
@@ -102,7 +105,8 @@ export default {
                     created: '2022-06-09T14:10:30.290508Z',
                     rating: 5,
                     title: 'test',
-                    comment: '',
+                    comment: 'Comment',
+                    updated_comment: 'Updated comment',
                 }, {
                     id: 13,
                     reviewer_name: 'testers',
