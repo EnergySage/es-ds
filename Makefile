@@ -2,6 +2,15 @@
 dev:
 	overmind s
 
+.PHONY: install
+install:
+	npm install
+	npx lerna exec -- npm install
+
+.PHONY: lint
+lint:
+	npx lerna run lint
+
 .PHONY: test
 test:
 	npx lerna run test
