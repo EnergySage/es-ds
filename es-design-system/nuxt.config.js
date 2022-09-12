@@ -61,6 +61,8 @@ export default {
         '@nuxt/content',
         // https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt
         'cookie-universal-nuxt',
+        // https://bootstrap-vue.org/docs/#nuxtjs-module
+        'bootstrap-vue/nuxt',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -81,5 +83,14 @@ export default {
         vueI18n: {
             fallbackLocale: 'en',
         },
+    },
+    // https://bootstrap-vue.org/docs/#nuxtjs-module
+    bootstrapVue: {
+        bootstrapCSS: false,
+        bootstrapVueCSS: false,
+        directivePlugins: ['VBTogglePlugin'],
+    },
+    publicRuntimeConfig: {
+        version,
     },
 };
