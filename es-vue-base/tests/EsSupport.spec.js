@@ -15,8 +15,7 @@ describe('EsSupport', () => {
             slots,
             propsData: {
                 link: 'https://www.google.com/',
-                imgName: 'benr',
-                repName: 'Ben',
+                src: 'https://via.placeholder.com/200x100',
             },
         });
         const a11y = await axe(wrapper.element);
@@ -33,30 +32,12 @@ describe('EsSupport', () => {
             slots,
             propsData: {
                 link: 'https://www.google.com/',
-                imgName: 'benr',
-                repName: 'Ben',
+                src: 'https://via.placeholder.com/200x100',
             },
         });
 
         const titleSlot = wrapper.vm.$slots.default;
         expect(titleSlot[0].text).toBe('Need help signing up?');
-        expect(wrapper.vm).toBeTruthy();
-        expect(wrapper.html()).toMatchSnapshot();
-    });
-
-    // Test props exist
-    test('props exist', async () => {
-        const wrapper = mount(EsSupport, {
-            ...jestVue,
-            slots,
-            propsData: {
-                link: 'https://www.google.com/',
-                repName: 'Ben',
-            },
-        });
-
-        expect(wrapper.props('link')).toBe('https://www.google.com/');
-        expect(wrapper.props('repName')).toBe('Ben');
         expect(wrapper.vm).toBeTruthy();
         expect(wrapper.html()).toMatchSnapshot();
     });
@@ -68,12 +49,12 @@ describe('EsSupport', () => {
             slots,
             propsData: {
                 link: 'https://www.google.com/',
-                repName: 'Ben',
+                src: 'https://via.placeholder.com/200x100',
             },
         });
 
         const supportLink = wrapper.find('.supportLink');
-        expect(supportLink.text()).toBe('Schedule a free call with Ben, your EnergySage Advisor.');
+        expect(supportLink.text()).toBe('Schedule a free call with your EnergySage Advisor.');
         expect(wrapper.vm).toBeTruthy();
         expect(wrapper.html()).toMatchSnapshot();
     });
@@ -85,7 +66,7 @@ describe('EsSupport', () => {
             slots,
             propsData: {
                 link: 'https://www.google.com/',
-                repName: 'Ben',
+                src: 'https://via.placeholder.com/200x100',
             },
         });
 
