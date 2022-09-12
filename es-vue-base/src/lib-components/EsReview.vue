@@ -126,6 +126,11 @@ export default {
         },
         /**
          * Updated Comment
+         * 
+         * Used in es-cdgm when a user changes 
+         * their original comment this field reflects
+         * the updated comment and comment
+         * retains the original.
          */
         updatedComment: {
             required: false,
