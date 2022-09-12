@@ -66,6 +66,7 @@ class Button {
           } else {
             const activeElement = rootElement.querySelector(SELECTOR_ACTIVE)
 
+            // eslint-disable-next-line max-depth
             if (activeElement) {
               $(activeElement).removeClass(CLASS_NAME_ACTIVE)
             }

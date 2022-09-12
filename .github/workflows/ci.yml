@@ -1,0 +1,47 @@
+name: ci
+
+on:
+    push:
+        branches:
+            - main
+            - master
+    pull_request:
+        branches:
+            - main
+            - master
+
+jobs:
+    ci:
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            matrix:
+                os: [ubuntu-latest]
+                node: [16]
+
+        steps:
+            - name: Checkout 🛎
+              uses: actions/checkout@master
+
+            - name: Setup node env 🏗
+              uses: actions/setup-node@v3.4.1
+              with:
+                  node-version: ${{ matrix.node }}
+                  check-latest: true
+
+            - name: Cache node_modules 📦
+              uses: actions/cache@v3.0.5
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: Install dependencies 👨🏻‍💻
+              run: make install
+
+            - name: Run linter 👀
+              run: make lint
+
+            - name: Run tests 🧪
+              run: make test

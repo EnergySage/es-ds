@@ -22,7 +22,7 @@ module.exports = {
     overrides: [
         {
             files: [
-                '**/icons/**',
+                '**/lib-icons/**',
             ],
             // Disable max length to allow for long paths in svg components
             rules: {

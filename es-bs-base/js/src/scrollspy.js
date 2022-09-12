@@ -112,7 +112,8 @@ class ScrollSpy {
         if (target) {
           const targetBCR = target.getBoundingClientRect()
           if (targetBCR.width || targetBCR.height) {
-            // TODO (fat): remove sketch reliance on jQuery position/offset
+            // eslint-disable-next-line no-warning-comments
+            // TODO: remove sketch reliance on jQuery position/offset
             return [
               $(target)[offsetMethod]().top + offsetBase,
               targetSelector
