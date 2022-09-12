@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsTabs <EsTabs /> 1`] = `
-"<div class=\\"tabs es-tabs\\" style=\\"--border-bottom: 0; --border-color: null;\\" id=\\"__BVID__4\\">
+"<div class=\\"tabs es-tabs\\" style=\\"--border-bottom: 1px solid;\\" id=\\"__BVID__4\\">
   <!---->
   <div class=\\"\\">
     <ul role=\\"tablist\\" class=\\"nav\\" id=\\"__BVID__4__BV_tab_controls_\\">
@@ -16,7 +16,7 @@ exports[`EsTabs <EsTabs /> 1`] = `
 `;
 
 exports[`EsTabs <EsTabs border=false /> 1`] = `
-"<div class=\\"tabs es-tabs\\" style=\\"--border-bottom: 0; --border-color: null;\\">
+"<div class=\\"tabs es-tabs\\" style=\\"--border-bottom: 0;\\">
   <!---->
   <div class=\\"\\">
     <ul role=\\"tablist\\" class=\\"nav\\">
@@ -31,7 +31,7 @@ exports[`EsTabs <EsTabs border=false /> 1`] = `
 `;
 
 exports[`EsTabs <EsTabs>My Content</EsTabs> 1`] = `
-"<div class=\\"tabs es-tabs\\" style=\\"--border-bottom: 0; --border-color: null;\\">
+"<div class=\\"tabs es-tabs\\" style=\\"--border-bottom: 1px solid;\\">
   <!---->
   <div class=\\"\\">
     <ul role=\\"tablist\\" class=\\"nav\\">
