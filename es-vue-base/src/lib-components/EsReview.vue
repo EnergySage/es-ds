@@ -31,11 +31,11 @@
             <EsViewMore
                 v-if="commentLimit"
                 class="comment-holder overflow-hidden"
-                :content="comment"
+                :content="updatedComment || comment"
                 :length="commentLimit"
                 @click="$emit('showMore')" />
             <template v-else>
-                {{ comment }}
+                {{ updatedComment || comment }}
             </template>
         </div>
         <small class="d-flex align-items-center text-gray-800 text-nowrap">
@@ -123,6 +123,19 @@ export default {
         comment: {
             required: true,
             type: String,
+        },
+        /**
+         * Updated Comment
+         * 
+         * Used in es-cdgm when a user changes 
+         * their original comment this field reflects
+         * the updated comment and comment
+         * retains the original.
+         */
+        updatedComment: {
+            required: false,
+            type: String,
+            default: '',
         },
         /**
          * Review Comment Truncation Limit

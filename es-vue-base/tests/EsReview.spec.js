@@ -33,6 +33,7 @@ describe('EsReview', () => {
                 reviewerName: 'My Name',
                 rating: 5,
                 comment: 'Nice Proj',
+                updatedComment: 'Not a nice proj',
                 title: 'Proj Bob',
                 certified: true,
                 created: new Date(2022, 2, 2),
@@ -46,7 +47,7 @@ describe('EsReview', () => {
 
         const comment = esViewMore.find('span');
         expect(comment.exists()).toBe(true);
-        expect(comment.text()).toContain('Nice Proj');
+        expect(comment.text()).toContain('Not a nice proj');
         expect(wrapper.html()).toMatchSnapshot();
     });
 
