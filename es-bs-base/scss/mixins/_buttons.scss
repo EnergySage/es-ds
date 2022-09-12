@@ -31,9 +31,9 @@
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
-    color: color-yiq($background);
-    background-color: $background;
-    border-color: $border;
+    color: color-yiq($btn-disabled-bg-color);
+    background-color: $btn-disabled-bg-color;
+    border-color: $btn-disabled-bg-color;
     // Remove CSS gradients if they're enabled
     @if $enable-gradients {
       background-image: none;

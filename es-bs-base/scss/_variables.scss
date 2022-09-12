@@ -33,18 +33,18 @@ $grays: map-merge(
   $grays
 );
 
-$blue:    #275ba9 !default;
-$lightblue: #8cd1ff;
-$grayblue:  #c9e9f6;
-$indigo:  #152f87 !default;
-$purple:  #822a85 !default;
-$pink:    #c24282 !default;
-$red:     #b93737 !default;
-$orange:  #ffbf57 !default;
-$yellow:  #f6b140 !default;
-$green:   #008445 !default;
-$teal:    #37b6aa !default;
-$cyan:    #007aab !default;
+$blue:      #275ba9 !default;
+$lightblue: #8cd1ff !default;
+$grayblue:  #c9e9f6 !default;
+$indigo:    #152f87 !default;
+$purple:    #822a85 !default;
+$pink:      #ca4a89 !default;
+$red:       #b93737 !default;
+$orange:    #ffbf57 !default;
+$yellow:    #f6b140 !default;
+$green:     #008445 !default;
+$teal:      #37b6aa !default;
+$cyan:      #007aab !default;
 
 
 $colors: () !default;
@@ -466,10 +466,11 @@ $btn-font-weight:             $font-weight-bold !default;
 $btn-box-shadow:              none !default;
 $btn-focus-width:             $input-btn-focus-width !default;
 $btn-focus-box-shadow:        0 !default;
-$btn-disabled-opacity:        .65 !default;
+$btn-disabled-opacity:        1 !default;
 $btn-active-box-shadow:       0 !default;
 
-$btn-link-disabled-color:     $gray-600 !default;
+$btn-disabled-bg-color:       $gray-300 !default;
+$btn-link-disabled-color:     $gray-700 !default;
 
 $btn-block-spacing-y:         .5rem !default;
 
@@ -962,9 +963,9 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 
 $badge-font-size:                   $font-size-sm !default;
 $badge-font-weight:                 $font-weight-bold !default;
-$badge-padding-y:                   1rem * 0.125 !default;
-$badge-padding-x:                   1rem * 0.25 !default;
-$badge-border-radius:               1rem * 0.625 !default;
+$badge-padding-y:                   1rem * 0.3 !default;
+$badge-padding-x:                   1rem * 0.35 !default;
+$badge-border-radius:               1rem * 0.7 !default;
 
 $badge-transition:                  $btn-transition !default;
 $badge-focus-width:                 $input-btn-focus-width !default;

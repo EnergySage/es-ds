@@ -4,6 +4,15 @@
             EsButton
         </h1>
 
+        <p>
+            When using a button, please ensure that the copy style is
+            <b-link
+                href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case"
+                target="_blank">
+                Sentence case.
+            </b-link>
+        </p>
+
         <table class="table">
             <thead>
                 <tr>
@@ -28,17 +37,17 @@
                     </td>
                     <td>
                         <es-button size="sm">
-                            Small Button
+                            Small button
                         </es-button>
                     </td>
                     <td>
                         <es-button>
-                            Medium Button
+                            Medium button
                         </es-button>
                     </td>
                     <td>
                         <es-button size="lg">
-                            Large Button
+                            Large button
                         </es-button>
                     </td>
                 </tr>
@@ -50,19 +59,19 @@
                         <es-button
                             disabled
                             size="sm">
-                            Small Button
+                            Small button
                         </es-button>
                     </td>
                     <td>
                         <es-button disabled>
-                            Medium Button
+                            Medium button
                         </es-button>
                     </td>
                     <td>
                         <es-button
                             disabled
                             size="lg">
-                            Large Button
+                            Large button
                         </es-button>
                     </td>
                 </tr>
@@ -74,106 +83,106 @@
                         <es-button
                             :outline="true"
                             size="sm">
-                            Small Button
+                            Small button
                         </es-button>
                     </td>
                     <td>
                         <es-button :outline="true">
-                            Medium Button
+                            Medium button
                         </es-button>
                     </td>
                     <td>
                         <es-button
                             :outline="true"
                             size="lg">
-                            Large Button
+                            Large button
                         </es-button>
                     </td>
                 </tr>
                 <tr>
                     <td scope="row">
-                        Secondary
+                        Dark (Secondary)
                     </td>
                     <td>
                         <es-button
-                            variant="secondary"
+                            variant="dark"
                             :outline="false"
                             size="sm">
-                            Small Button
+                            Small button
                         </es-button>
                     </td>
                     <td>
                         <es-button
-                            variant="secondary"
+                            variant="dark"
                             :outline="false">
-                            Medium Button
+                            Medium button
                         </es-button>
                     </td>
                     <td>
                         <es-button
-                            variant="secondary"
+                            variant="dark"
                             :outline="false"
                             size="lg">
-                            Large Button
+                            Large button
                         </es-button>
                     </td>
                 </tr>
                 <tr>
                     <td scope="row">
-                        Secondary (disabled)
+                        Dark (disabled)
                     </td>
                     <td>
                         <es-button
                             disabled
-                            variant="secondary"
+                            variant="dark"
                             :outline="false"
                             size="sm">
-                            Small Button
+                            Small button
                         </es-button>
                     </td>
                     <td>
                         <es-button
                             disabled
-                            variant="secondary"
+                            variant="dark"
                             :outline="false">
-                            Medium Button
+                            Medium button
                         </es-button>
                     </td>
                     <td>
                         <es-button
                             disabled
-                            variant="secondary"
+                            variant="dark"
                             :outline="false"
                             size="lg">
-                            Large Button
+                            Large button
                         </es-button>
                     </td>
                 </tr>
                 <tr>
                     <td scope="row">
-                        Secondary Outline
+                        Dark Outline
                     </td>
                     <td>
                         <es-button
-                            variant="secondary"
+                            variant="dark"
                             :outline="true"
                             size="sm">
-                            Small Button
+                            Small button
                         </es-button>
                     </td>
                     <td>
                         <es-button
-                            variant="secondary"
+                            variant="dark"
                             :outline="true">
-                            Medium Button
+                            Medium button
                         </es-button>
                     </td>
                     <td>
                         <es-button
-                            variant="secondary"
+                            variant="dark"
                             :outline="true"
                             size="lg">
-                            Large Button
+                            Large button
                         </es-button>
                     </td>
                 </tr>
@@ -183,11 +192,13 @@
 </template>
 
 <script>
+import { BLink } from 'bootstrap-vue';
 import { EsButton } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsButtonDocs',
     components: {
+        BLink,
         EsButton,
     },
 };

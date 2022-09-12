@@ -33,15 +33,15 @@ export default {
          */
         border: {
             type: Boolean,
-            default: false,
+            default: true,
         },
     },
     computed: {
         cssProps() {
             return (
                 this.border
-                    ? { '--border-bottom': '1px solid', '--border-color': 'gray-300' }
-                    : { '--border-bottom': '0', '--border-color': 'null' }
+                    ? { '--border-bottom': '1px solid' }
+                    : { '--border-bottom': '0' }
             );
         },
     },
@@ -52,14 +52,14 @@ export default {
 @import '~@energysage/es-bs-base/scss/includes';
 
 .es-tabs {
-    .nav-item {
+    .nav {
         border-bottom: var(--border-bottom);
-        border-color: var(--border-color);
+        border-color: $gray-300;
     }
 
     .nav-link {
         color: $gray-900;
-        margin: 0 2rem;
+        margin: 0 2rem -2px;
         padding: 0.25rem 0 0;
 
         &:first-child {
