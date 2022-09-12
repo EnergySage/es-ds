@@ -53,20 +53,6 @@
                     Example Link
                 </b-link>
             </li>
-            <li>
-                <b-link
-                    :active="true"
-                    href="#foo">
-                    Example Link (active)
-                </b-link>
-            </li>
-            <li>
-                <b-link
-                    :disabled="true"
-                    href="#foo">
-                    Example Link (disabled)
-                </b-link>
-            </li>
         </ul>
     </div>
 </template>

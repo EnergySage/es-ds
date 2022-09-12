@@ -190,13 +190,22 @@
             <IconVerified :style="{color}" />
         </li>
         <li>
-            <IconStarFull :style="{color}" />
+            <IconStarFull
+                height="24px"
+                width="24px"
+                :style="{color}" />
         </li>
         <li>
-            <IconStarHalf :style="{color}" />
+            <IconStarHalf
+                height="24px"
+                width="24px"
+                :style="{color}" />
         </li>
         <li>
-            <IconStarEmpty :style="{color}" />
+            <IconStarEmpty
+                height="24px"
+                width="24px"
+                :style="{color}" />
         </li>
     </ul>
 </template>

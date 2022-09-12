@@ -1,36 +1,41 @@
 <template>
-    <b-container>
-        <b-navbar>
-            <b-navbar-brand
-                :to="{ name: 'index___en' }">
-                EnergySage Design System
-            </b-navbar-brand>
+    <div>
+        <b-navbar
+            class="mb-3"
+            type="dark"
+            variant="primary">
+            <b-navbar-nav>
+                <b-nav-item v-b-toggle.sidebar-1>
+                    Menu
+                </b-nav-item>
+            </b-navbar-nav>
         </b-navbar>
-        <b-row>
-            <b-col
-                md="3"
-                sm="4"
-                cols="12">
-                <DsLinkList />
-            </b-col>
-            <b-col
-                md="9"
-                sm="8"
-                cols="12">
-                <Nuxt />
-            </b-col>
-        </b-row>
-    </b-container>
+        <b-sidebar
+            id="sidebar-1"
+            :title="`ES DS ${$config.version}`"
+            shadow>
+            <DsLinkList />
+        </b-sidebar>
+        <b-container>
+            <b-row>
+                <b-col
+                    cols="12">
+                    <Nuxt />
+                </b-col>
+            </b-row>
+        </b-container>
+    </div>
 </template>
 
 <script>
 import {
-    // BLink,
     BContainer,
+    BNavbar,
+    BNavbarNav,
+    BNavItem,
     BRow,
     BCol,
-    BNavbar,
-    BNavbarBrand,
+    BSidebar,
 } from 'bootstrap-vue';
 import DsLinkList from '@/components/ds-link-list.vue';
 
@@ -38,12 +43,13 @@ import DsLinkList from '@/components/ds-link-list.vue';
 export default {
     name: 'default',
     components: {
-        // BLink,
         BContainer,
         BRow,
         BCol,
         BNavbar,
-        BNavbarBrand,
+        BSidebar,
+        BNavbarNav,
+        BNavItem,
         DsLinkList,
     },
 };
