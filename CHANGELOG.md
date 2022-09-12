@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.6] - 2022-08-17
+
+- Remove image from EsSupport; BREAKING CHANGE
+- Make tabs default to border true & fix wrong border color
+- Added updated comment to EsReview
+- EsButton design updates based on feedback
+- Increase badge padding
+
 ## [0.5.2] - 2022-08-17
 
 - Fixed an issue with EsReview showing horizontal scroll on desktop
