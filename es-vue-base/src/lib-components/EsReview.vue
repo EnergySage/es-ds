@@ -7,6 +7,7 @@
             <div class="d-flex flex-grow-1">
                 <template v-if="isReviewOwner">
                     <b-link
+                        data-testid="edit-review"
                         class="d-flex"
                         @click="$emit('editReview', id)">
                         <EsRating
@@ -189,6 +190,9 @@ export default {
             return new Date(this.created).toLocaleDateString();
         },
         isReviewOwner() {
+            if (!this.userId || !this.reviewerId) {
+                return false;
+            }
             return this.userId.toString() === this.reviewerId.toString();
         },
     },

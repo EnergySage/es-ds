@@ -13,6 +13,8 @@ describe('EsReview', () => {
             propsData: {
                 id: 1,
                 reviewerName: 'My Name',
+                reviewerId: 2,
+                userId: 1,
                 rating: 5,
                 comment: 'Nice Proj',
                 created: new Date(2022, 2, 2),
@@ -31,6 +33,8 @@ describe('EsReview', () => {
             propsData: {
                 id: 1,
                 reviewerName: 'My Name',
+                reviewerId: 2,
+                userId: 1,
                 rating: 5,
                 comment: 'Nice Proj',
                 updatedComment: 'Not a nice proj',
@@ -57,6 +61,8 @@ describe('EsReview', () => {
             propsData: {
                 id: 1,
                 reviewerName: 'Test Bob',
+                reviewerId: 2,
+                userId: 1,
                 rating: 5,
                 comment: 'Nice Proj',
                 title: 'Proj Bob',
@@ -66,6 +72,42 @@ describe('EsReview', () => {
         expect(wrapper.find('[data-testid="title-test"]').exists()).toBe(true);
         const subtextTest = wrapper.find('[data-testid="subtext-test"]');
         expect(subtextTest.exists()).toBe(true);
+        expect(wrapper.html()).toMatchSnapshot();
+    });
+
+    test('Does not show edit link to non review owner', () => {
+        const wrapper = mount(EsReview, {
+            ...jestVue,
+            propsData: {
+                id: 1,
+                reviewerName: 'Test Bob',
+                reviewerId: 2,
+                userId: 1,
+                rating: 5,
+                comment: 'Nice Proj',
+                title: 'Proj Bob',
+                created: new Date(2022, 2, 2),
+            },
+        });
+        expect(wrapper.find('[data-testid="edit-review"]').exists()).toBe(false);
+        expect(wrapper.html()).toMatchSnapshot();
+    });
+
+    test('Shows edit link to review owner', () => {
+        const wrapper = mount(EsReview, {
+            ...jestVue,
+            propsData: {
+                id: 1,
+                reviewerName: 'Test Bob',
+                reviewerId: 1,
+                userId: 1,
+                rating: 5,
+                comment: 'Nice Proj',
+                title: 'Proj Bob',
+                created: new Date(2022, 2, 2),
+            },
+        });
+        expect(wrapper.find('[data-testid="edit-review"]').exists()).toBe(true);
         expect(wrapper.html()).toMatchSnapshot();
     });
 });

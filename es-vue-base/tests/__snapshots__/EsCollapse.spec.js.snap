@@ -10,7 +10,7 @@ exports[`EsCollapse <EsCollapse /> 1`] = `
   <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" aria-labelledby=\\"myId\\" role=\\"tabpanel\\" data-testid=\\"collapse\\">
     <div id=\\"myId\\" class=\\"collapse\\" style=\\"display: none;\\">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
   </transition-stub>
-  <div class=\\"border-bottom pt-4\\"></div>
+  <div class=\\"border-bottom bottom-spacer\\"></div>
 </div>"
 `;
 
@@ -24,7 +24,7 @@ exports[`EsCollapse EsButton exists 1`] = `
   <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" aria-labelledby=\\"myId\\" role=\\"tabpanel\\" data-testid=\\"collapse\\">
     <div id=\\"myId\\" class=\\"collapse\\" style=\\"display: none;\\">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
   </transition-stub>
-  <div class=\\"border-bottom pt-4\\"></div>
+  <div class=\\"border-bottom bottom-spacer\\"></div>
 </div>"
 `;
 
@@ -38,7 +38,7 @@ exports[`EsCollapse Icons switch upon button click 1`] = `
   <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" aria-labelledby=\\"myId\\" role=\\"tabpanel\\" data-testid=\\"collapse\\">
     <div id=\\"myId\\" class=\\"collapse show\\" style=\\"\\">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
   </transition-stub>
-  <div class=\\"border-bottom pt-4\\"></div>
+  <div class=\\"border-bottom bottom-spacer expanded\\"></div>
 </div>"
 `;
 
@@ -52,6 +52,6 @@ exports[`EsCollapse Title and default slot exist inside EsButton 1`] = `
   <transition-stub css=\\"true\\" enterclass=\\"\\" leaveclass=\\"collapse show\\" entertoclass=\\"collapse show\\" leavetoclass=\\"collapse\\" enteractiveclass=\\"collapsing\\" leaveactiveclass=\\"collapsing\\" aria-labelledby=\\"myId\\" role=\\"tabpanel\\" data-testid=\\"collapse\\">
     <div id=\\"myId\\" class=\\"collapse show\\" style=\\"\\">Lorem ipsum dolor sit amet, consectetur adipiscing.</div>
   </transition-stub>
-  <div class=\\"border-bottom pt-4\\"></div>
+  <div class=\\"border-bottom bottom-spacer expanded\\"></div>
 </div>"
 `;

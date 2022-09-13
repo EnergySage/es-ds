@@ -15,6 +15,8 @@ describe('EsHorizontalList', () => {
                     {
                         id: 16,
                         reviewer_name: 'Ryan Dev',
+                        reviewer_id: 2,
+                        userId: 1,
                         certified: false,
                         created: '2022-06-10T14:48:56.604194Z',
                         rating: 5,
@@ -23,6 +25,8 @@ describe('EsHorizontalList', () => {
                     }, {
                         id: 11,
                         reviewer_name: 'Ryan Residential Really Long Name',
+                        reviewer_id: 2,
+                        userId: 1,
                         certified: true,
                         created: '2022-06-03T18:27:41.718753Z',
                         rating: 3,
@@ -38,6 +42,8 @@ describe('EsHorizontalList', () => {
                     }, {
                         id: 12,
                         reviewer_name: 'Ryan Smith',
+                        reviewer_id: 2,
+                        userId: 1,
                         certified: true,
                         created: '2022-06-03T18:27:41.718753Z',
                         rating: 5,
@@ -53,6 +59,8 @@ describe('EsHorizontalList', () => {
                     }, {
                         id: 10,
                         reviewer_name: 'shrt',
+                        reviewer_id: 2,
+                        userId: 1,
                         certified: true,
                         created: '2022-06-03T18:26:46.588897Z',
                         rating: 4,
@@ -61,6 +69,8 @@ describe('EsHorizontalList', () => {
                     }, {
                         id: 15,
                         reviewer_name: 'test',
+                        reviewer_id: 2,
+                        userId: 1,
                         certified: false,
                         created: '2022-06-09T14:10:30.290508Z',
                         rating: 5,
@@ -69,6 +79,8 @@ describe('EsHorizontalList', () => {
                     }, {
                         id: 13,
                         reviewer_name: 'testers',
+                        reviewer_id: 2,
+                        userId: 1,
                         certified: false,
                         created: '2022-06-09T14:05:08.901091Z',
                         rating: 5,
