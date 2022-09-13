@@ -31,8 +31,8 @@ export default {
     },
     methods: {
         shownEvent() {
-            // eslint-disable-next-line no-alert
-            alert('shown');
+            // eslint-disable-next-line no-console
+            console.log('shown');
         },
     },
 };

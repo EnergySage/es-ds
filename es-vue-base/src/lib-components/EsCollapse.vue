@@ -5,7 +5,7 @@
             :aria-label="id"
             class="collapse-holder pb-3 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             variant="link"
-            @click="isCollapsed = !isCollapsed">
+            @click="isExpanded = !isExpanded">
             <div>
                 <slot name="title" />
             </div>
@@ -13,7 +13,7 @@
                 <IconChevronDown
                     :class="{
                         svg: true,
-                        collapsed: isCollapsed,
+                        collapsed: isExpanded,
                     }"
                     width="30px"
                     height="30px" />
@@ -22,7 +22,7 @@
 
         <b-collapse
             :id="id"
-            :visible="isCollapsed"
+            :visible="isExpanded"
             :aria-labelledby="id"
             role="tabpanel"
             data-testid="collapse"
@@ -32,7 +32,11 @@
 
         <div
             v-if="border"
-            class="border-bottom pt-4" />
+            :class="{
+                'border-bottom': true,
+                'bottom-spacer': true,
+                expanded: isExpanded,
+            }" />
     </div>
 </template>
 
@@ -75,7 +79,7 @@ export default {
     },
     data() {
         return {
-            isCollapsed: this.visible,
+            isExpanded: this.visible,
         };
     },
 };
@@ -87,5 +91,13 @@ export default {
 
 .collapsed {
     transform: rotate(180deg);
+}
+
+.bottom-spacer {
+    padding-top: 2rem;
+
+    &.expanded {
+        padding-top: 3rem;
+    }
 }
 </style>
