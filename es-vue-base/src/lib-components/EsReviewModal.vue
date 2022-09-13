@@ -23,6 +23,8 @@
                         v-for="review in reviews"
                         :id="review.id"
                         :key="review.id"
+                        :reviewer-id="review.reviewer_id"
+                        :user-id="1"
                         class="mb-4"
                         :comment-limit="false"
                         :reviewer-name="review.reviewer_name"
@@ -30,7 +32,8 @@
                         :rating="review.rating"
                         :title="review.title"
                         :comment="review.comment"
-                        :created="new Date(review.created)" />
+                        :created="new Date(review.created)"
+                        @editReview="$emit('editReview', review.id)" />
                 </b-col>
                 <b-col
                     class="p-0 position-sticky sticky-mobile-col top-0"
@@ -52,7 +55,7 @@
                             class="mt-lg-3 mb-3"
                             variant="dark"
                             @click="$emit('createReview')">
-                            Create Review
+                            Write a review
                         </es-button>
                     </div>
                 </b-col>
