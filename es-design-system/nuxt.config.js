@@ -24,6 +24,7 @@ export default {
     router: {
         base: `/${version}/`,
     },
+    target: 'static',
     // TODO: Prevents dupe vue instance but not sure where its actually coming from
     build: {
         extend(config) {
@@ -79,12 +80,6 @@ export default {
         vueI18n: {
             fallbackLocale: 'en',
         },
-    },
-    // https://bootstrap-vue.org/docs/#nuxtjs-module
-    bootstrapVue: {
-        bootstrapCSS: false,
-        bootstrapVueCSS: false,
-        directivePlugins: ['VBTogglePlugin'],
     },
     publicRuntimeConfig: {
         version,
