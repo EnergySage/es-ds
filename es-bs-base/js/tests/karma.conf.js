@@ -2,7 +2,7 @@
 
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const ip = require('ip')
 const { browsers, browsersKeys } = require('./browsers')
 

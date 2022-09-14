@@ -511,6 +511,7 @@ class Modal {
     $(fixedContent).each((index, element) => {
       const padding = $(element).data('padding-right')
       $(element).removeData('padding-right')
+      // eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary
       element.style.paddingRight = padding ? padding : ''
     })
 
@@ -526,6 +527,7 @@ class Modal {
     // Restore body padding
     const padding = $(document.body).data('padding-right')
     $(document.body).removeData('padding-right')
+    // eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary
     document.body.style.paddingRight = padding ? padding : ''
   }
 

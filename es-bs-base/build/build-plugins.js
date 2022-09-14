@@ -9,7 +9,7 @@
 
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const rollup = require('rollup')
 const { babel } = require('@rollup/plugin-babel')
 const banner = require('./banner.js')
@@ -89,4 +89,5 @@ const main = async () => {
   }
 }
 
+// eslint-disable-next-line unicorn/prefer-top-level-await
 main()
