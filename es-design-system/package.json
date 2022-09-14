@@ -37,7 +37,7 @@
         "vuelidate": "^0.7.7"
     },
     "devDependencies": {
-        "@babel/core": "^7.18.5",
+        "@babel/core": "^7.19.1",
         "@babel/eslint-parser": "^7.18.2",
         "@babel/preset-env": "^7.17.10",
         "@nuxt/postcss8": "^1.1.3",
