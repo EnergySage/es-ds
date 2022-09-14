@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.2] - 2022-09-14
+
+- Fixed an issue where babel was not transpiling esm package correctly
+- Specified `*` for peer dependency `es-bs-base` in `es-vue-base`
+
 ## [0.6.0] - 2022-09-14
 
 - Update all dependencies to highest possible versions
