@@ -2,20 +2,12 @@ version: 2
 updates:
     # Fetch and update latest `npm` packages
     - package-ecosystem: npm
-      directory: '/'
-      schedule:
-          interval: daily
-          time: '00:00'
-      open-pull-requests-limit: 10
-      commit-message:
-          prefix: fix
-          prefix-development: chore
-          include: scope
-    - package-ecosystem: npm
       directory: '/es-vue-base'
       ignore:
         - dependency-name: "vue"
           versions: ["3.x"]
+        - dependency-name: "autoprefixer"
+          versions: ["10.x"]
       schedule:
           interval: daily
           time: '00:00'
@@ -26,6 +18,9 @@ updates:
           include: scope
     - package-ecosystem: npm
       directory: '/es-bs-base'
+      ignore:
+        - dependency-name: "autoprefixer"
+          versions: ["10.x"]
       schedule:
           interval: daily
           time: '00:00'
@@ -36,6 +31,13 @@ updates:
           include: scope
     - package-ecosystem: npm
       directory: '/es-design-system'
+      ignore:
+        - dependency-name: "vue"
+          versions: ["3.x"]
+        - dependency-name: "autoprefixer"
+          versions: ["10.x"]
+        - dependency-name: "sass-loader"
+          versions: ["13.x"]
       schedule:
           interval: daily
           time: '00:00'
