@@ -1,77 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsModal <EsModal /> 1`] = `
-"<div id=\\"es-modal___BV_modal_outer_\\" style=\\"position: absolute; z-index: 1040;\\" class=\\"modal-lightbox\\">
-  <transition-stub enterclass=\\"\\" leaveclass=\\"\\" entertoclass=\\"\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-    <div id=\\"es-modal\\" role=\\"dialog\\" aria-hidden=\\"true\\" aria-labelledby=\\"es-modal___BV_modal_title_\\" aria-describedby=\\"es-modal___BV_modal_body_\\" class=\\"modal fade\\" style=\\"display: none;\\">
-      <div class=\\"modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable\\">
+"<div id="es-modal___BV_modal_outer_" style="position: absolute; z-index: 1040;" class="modal-lightbox">
+  <transition-stub enterclass="" leaveclass="" entertoclass="" leavetoclass="" enteractiveclass="" leaveactiveclass="">
+    <div id="es-modal" role="dialog" aria-hidden="true" aria-labelledby="es-modal___BV_modal_title_" aria-describedby="es-modal___BV_modal_body_" class="modal fade" style="display: none;">
+      <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
         <!---->
-        <div id=\\"es-modal___BV_modal_content_\\" tabindex=\\"-1\\" class=\\"modal-content\\">
-          <header id=\\"es-modal___BV_modal_header_\\" class=\\"modal-header\\">
-            <h5 id=\\"es-modal___BV_modal_title_\\" class=\\"modal-title h2\\"></h5><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" fill=\\"currentColor\\" style=\\"height: 26px; width: 26px;\\" class=\\"text-gray-900\\">
-                <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z\\"></path>
+        <div id="es-modal___BV_modal_content_" tabindex="-1" class="modal-content">
+          <header id="es-modal___BV_modal_header_" class="modal-header">
+            <h5 id="es-modal___BV_modal_title_" class="modal-title h2"></h5><button type="button" aria-label="Close" class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 26px; width: 26px;" class="text-gray-900">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z"></path>
               </svg></button>
           </header>
-          <div id=\\"es-modal___BV_modal_body_\\" class=\\"modal-body\\"> </div>
-          <footer id=\\"es-modal___BV_modal_footer_\\" class=\\"modal-footer\\"><button type=\\"button\\" class=\\"btn btn-secondary\\">Cancel</button><button type=\\"button\\" class=\\"btn btn-primary\\">OK</button></footer>
+          <div id="es-modal___BV_modal_body_" class="modal-body"> </div>
+          <footer id="es-modal___BV_modal_footer_" class="modal-footer"><button type="button" class="btn btn-secondary">Cancel</button><button type="button" class="btn btn-primary">OK</button></footer>
         </div>
         <!---->
       </div>
     </div>
   </transition-stub>
-  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+  <transition-stub name="" css="true" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="fade" leaveactiveclass="fade">
     <!---->
   </transition-stub>
 </div>"
 `;
 
 exports[`EsModal <EsModal hideFooter /> 1`] = `
-"<div id=\\"es-modal___BV_modal_outer_\\" style=\\"position: absolute; z-index: 1040;\\" class=\\"modal-lightbox\\">
-  <transition-stub enterclass=\\"\\" leaveclass=\\"\\" entertoclass=\\"\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-    <div id=\\"es-modal\\" role=\\"dialog\\" aria-hidden=\\"true\\" aria-labelledby=\\"es-modal___BV_modal_title_\\" aria-describedby=\\"es-modal___BV_modal_body_\\" class=\\"modal fade\\" style=\\"display: none;\\">
-      <div class=\\"modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable\\">
+"<div id="es-modal___BV_modal_outer_" style="position: absolute; z-index: 1040;" class="modal-lightbox">
+  <transition-stub enterclass="" leaveclass="" entertoclass="" leavetoclass="" enteractiveclass="" leaveactiveclass="">
+    <div id="es-modal" role="dialog" aria-hidden="true" aria-labelledby="es-modal___BV_modal_title_" aria-describedby="es-modal___BV_modal_body_" class="modal fade" style="display: none;">
+      <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
         <!---->
-        <div id=\\"es-modal___BV_modal_content_\\" tabindex=\\"-1\\" class=\\"modal-content\\">
-          <header id=\\"es-modal___BV_modal_header_\\" class=\\"modal-header\\">
-            <h5 id=\\"es-modal___BV_modal_title_\\" class=\\"modal-title h2\\"></h5><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" fill=\\"currentColor\\" style=\\"height: 26px; width: 26px;\\" class=\\"text-gray-900\\">
-                <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z\\"></path>
+        <div id="es-modal___BV_modal_content_" tabindex="-1" class="modal-content">
+          <header id="es-modal___BV_modal_header_" class="modal-header">
+            <h5 id="es-modal___BV_modal_title_" class="modal-title h2"></h5><button type="button" aria-label="Close" class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 26px; width: 26px;" class="text-gray-900">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z"></path>
               </svg></button>
           </header>
-          <div id=\\"es-modal___BV_modal_body_\\" class=\\"modal-body\\"> </div>
-          <footer id=\\"es-modal___BV_modal_footer_\\" class=\\"modal-footer\\"><button type=\\"button\\" class=\\"btn btn-secondary\\">Cancel</button><button type=\\"button\\" class=\\"btn btn-primary\\">OK</button></footer>
+          <div id="es-modal___BV_modal_body_" class="modal-body"> </div>
+          <footer id="es-modal___BV_modal_footer_" class="modal-footer"><button type="button" class="btn btn-secondary">Cancel</button><button type="button" class="btn btn-primary">OK</button></footer>
         </div>
         <!---->
       </div>
     </div>
   </transition-stub>
-  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+  <transition-stub name="" css="true" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="fade" leaveactiveclass="fade">
     <!---->
   </transition-stub>
 </div>"
 `;
 
 exports[`EsModal <EsModal><title><body><footer></EsModal> 1`] = `
-"<div id=\\"es-modal___BV_modal_outer_\\" style=\\"position: absolute; z-index: 1040;\\" class=\\"modal-lightbox\\">
-  <transition-stub enterclass=\\"\\" leaveclass=\\"\\" entertoclass=\\"\\" leavetoclass=\\"\\" enteractiveclass=\\"\\" leaveactiveclass=\\"\\">
-    <div id=\\"es-modal\\" role=\\"dialog\\" aria-hidden=\\"true\\" aria-labelledby=\\"es-modal___BV_modal_title_\\" aria-describedby=\\"es-modal___BV_modal_body_\\" class=\\"modal fade\\" style=\\"display: none;\\">
-      <div class=\\"modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable\\">
+"<div id="es-modal___BV_modal_outer_" style="position: absolute; z-index: 1040;" class="modal-lightbox">
+  <transition-stub enterclass="" leaveclass="" entertoclass="" leavetoclass="" enteractiveclass="" leaveactiveclass="">
+    <div id="es-modal" role="dialog" aria-hidden="true" aria-labelledby="es-modal___BV_modal_title_" aria-describedby="es-modal___BV_modal_body_" class="modal fade" style="display: none;">
+      <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
         <!---->
-        <div id=\\"es-modal___BV_modal_content_\\" tabindex=\\"-1\\" class=\\"modal-content\\">
-          <header id=\\"es-modal___BV_modal_header_\\" class=\\"modal-header\\">
-            <h5 id=\\"es-modal___BV_modal_title_\\" class=\\"modal-title h2\\">Reviews</h5><button type=\\"button\\" aria-label=\\"Close\\" class=\\"close\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 24 24\\" fill=\\"currentColor\\" style=\\"height: 26px; width: 26px;\\" class=\\"text-gray-900\\">
-                <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z\\"></path>
+        <div id="es-modal___BV_modal_content_" tabindex="-1" class="modal-content">
+          <header id="es-modal___BV_modal_header_" class="modal-header">
+            <h5 id="es-modal___BV_modal_title_" class="modal-title h2">Reviews</h5><button type="button" aria-label="Close" class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 26px; width: 26px;" class="text-gray-900">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z"></path>
               </svg></button>
           </header>
-          <div id=\\"es-modal___BV_modal_body_\\" class=\\"modal-body\\">
+          <div id="es-modal___BV_modal_body_" class="modal-body">
             <h3>Great experience!</h3>
           </div>
-          <footer id=\\"es-modal___BV_modal_footer_\\" class=\\"modal-footer\\">Close</footer>
+          <footer id="es-modal___BV_modal_footer_" class="modal-footer">Close</footer>
         </div>
         <!---->
       </div>
     </div>
   </transition-stub>
-  <transition-stub name=\\"\\" css=\\"true\\" enterclass=\\"\\" leaveclass=\\"show\\" entertoclass=\\"show\\" leavetoclass=\\"\\" enteractiveclass=\\"fade\\" leaveactiveclass=\\"fade\\">
+  <transition-stub name="" css="true" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="fade" leaveactiveclass="fade">
     <!---->
   </transition-stub>
 </div>"

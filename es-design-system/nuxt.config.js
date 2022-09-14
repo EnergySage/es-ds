@@ -57,10 +57,6 @@ export default {
         '@nuxtjs/i18n',
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
-        // https://go.nuxtjs.dev/content
-        '@nuxt/content',
-        // https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt
-        'cookie-universal-nuxt',
         // https://bootstrap-vue.org/docs/#nuxtjs-module
         'bootstrap-vue/nuxt',
     ],

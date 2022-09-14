@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.5.6] - 2022-08-17
+## [0.6.0] - 2022-09-14
+
+- Update all dependencies to highest possible versions
+
+## [0.5.6] - 2022-09-12
 
 - Remove image from EsSupport; BREAKING CHANGE
 - Make tabs default to border true & fix wrong border color

@@ -3,12 +3,17 @@
         <h1>
             Atoms
         </h1>
+        <DsAtomsList />
     </div>
 </template>
 
 <script>
-/* eslint-disable vue/multi-word-component-names, vue/component-definition-name-casing */
+import DsAtomsList from '@/components/ds-atoms-list.vue';
+
 export default {
-    name: 'atoms-index',
+    name: 'AtomsIndex',
+    components: {
+        DsAtomsList,
+    },
 };
 </script>
