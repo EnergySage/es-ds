@@ -13,33 +13,7 @@
                     Atoms
                 </b-link>
             </div>
-            <ul>
-                <li>
-                    <b-link to="/atoms/color">
-                        Color
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/atoms/typography">
-                        Typography
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/atoms/grid">
-                        Grids
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/atoms/space">
-                        Space
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/atoms/icons">
-                        Icons
-                    </b-link>
-                </li>
-            </ul>
+            <DsAtomsList />
         </li>
         <li>
             <div class="h4">
@@ -47,78 +21,7 @@
                     Molecules
                 </b-link>
             </div>
-            <ul>
-                <li>
-                    <b-link to="/molecules/es-badge">
-                        EsBadge
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-breadcrumbs">
-                        EsBreadcrumbs
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-button">
-                        EsButton
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-collapse">
-                        EsCollapse
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-form-input">
-                        EsFormInput
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-form-textarea">
-                        EsFormTextarea
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-horizontal-list">
-                        EsHorizontalList
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-modal">
-                        EsModal
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-popover">
-                        EsPopover
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-rating">
-                        EsRating
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-slider">
-                        EsSlider
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-support">
-                        EsSupport
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-tabs">
-                        EsTabs
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/molecules/es-view-more">
-                        EsViewMore
-                    </b-link>
-                </li>
-            </ul>
+            <DsMoleculesList />
         </li>
         <li>
             <div class="h4">
@@ -126,44 +29,24 @@
                     Organisms
                 </b-link>
             </div>
-            <ul>
-                <li>
-                    <b-link to="/organisms/es-review">
-                        EsReview
-                    </b-link>
-                </li>
-                <li>
-                    <b-link to="/organisms/es-form">
-                        EsForm
-                    </b-link>
-                </li>
-            </ul>
+            <DsOrganismsList />
         </li>
     </ul>
 </template>
 
 <script>
-import {
-    BLink,
-} from 'bootstrap-vue';
+import { BLink } from 'bootstrap-vue';
+import DsAtomsList from '@/components/ds-atoms-list.vue';
+import DsOrganismsList from '@/components/ds-organisms-list.vue';
+import DsMoleculesList from '@/components/ds-molecules-list.vue';
 
 export default {
     name: 'DsLinkList',
     components: {
         BLink,
-    },
-    computed: {
-        currentRouteName() {
-            return this.$route.name;
-        },
+        DsAtomsList,
+        DsOrganismsList,
+        DsMoleculesList,
     },
 };
 </script>
-
-<style lang="scss" scoped>
-.nav-item-active {
-    .nuxt-link-active {
-        text-decoration: underline;
-    }
-}
-</style>
