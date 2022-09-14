@@ -1,43 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsViewMore "Show more" button emits on click 1`] = `
-"<div><span>Hello worl...</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
+"<div><span>Hello worl...</span> <button type="button" class="btn p-0 btn-link btn-md">
     Show More
   </button></div>"
 `;
 
 exports[`EsViewMore "Show more" does not emit if not listening for it 1`] = `
-"<div><span>Hello world!</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
+"<div><span>Hello world!</span> <button type="button" class="btn p-0 btn-link btn-md">
     Show Less
   </button></div>"
 `;
 
 exports[`EsViewMore <EsViewMore /> 1`] = `
-"<div><span>Lorem ipsum dolor am...</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
+"<div><span>Lorem ipsum dolor am...</span> <button type="button" class="btn p-0 btn-link btn-md">
     Show More
   </button></div>"
 `;
 
 exports[`EsViewMore <EsViewMore clamp="testMore" 1`] = `
-"<div><span>Hello ...</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
+"<div><span>Hello ...</span> <button type="button" class="btn p-0 btn-link btn-md">
     testMore
   </button></div>"
 `;
 
 exports[`EsViewMore <EsViewMore less="testLess 1`] = `
-"<div><span>Hello world!</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
+"<div><span>Hello world!</span> <button type="button" class="btn p-0 btn-link btn-md">
     testLess
   </button></div>"
 `;
 
 exports[`EsViewMore character truncation breaks at correct spot 1`] = `
-"<div><span>Hello wo...</span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
+"<div><span>Hello wo...</span> <button type="button" class="btn p-0 btn-link btn-md">
     Show More
   </button></div>"
 `;
 
 exports[`EsViewMore character truncation with HTML tags only truncates text content 1`] = `
-"<div><span><h1>H...</h1></span> <button type=\\"button\\" class=\\"btn p-0 btn-link btn-md\\">
+"<div><span><h1>H...</h1></span> <button type="button" class="btn p-0 btn-link btn-md">
     Show More
   </button></div>"
 `;

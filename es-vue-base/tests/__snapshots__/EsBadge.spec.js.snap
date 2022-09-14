@@ -1,35 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EsBadge <EsBadge /> 1`] = `"<span class=\\"badge badge-primary\\"></span>"`;
+exports[`EsBadge <EsBadge /> 1`] = `"<span class="badge badge-primary"></span>"`;
 
-exports[`EsBadge <es-badge variant="danger" outline="false" /> 1`] = `"<span class=\\"badge badge-danger\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="danger" outline="false" /> 1`] = `"<span class="badge badge-danger">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="danger" outline="true" /> 1`] = `"<span outline=\\"true\\" class=\\"badge badge-danger\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="danger" outline="true" /> 1`] = `"<span outline="true" class="badge badge-danger">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="dark" outline="false" /> 1`] = `"<span class=\\"badge badge-dark\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="dark" outline="false" /> 1`] = `"<span class="badge badge-dark">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="dark" outline="true" /> 1`] = `"<span outline=\\"true\\" class=\\"badge badge-dark\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="dark" outline="true" /> 1`] = `"<span outline="true" class="badge badge-dark">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="info" outline="false" /> 1`] = `"<span class=\\"badge badge-info\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="info" outline="false" /> 1`] = `"<span class="badge badge-info">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="info" outline="true" /> 1`] = `"<span outline=\\"true\\" class=\\"badge badge-info\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="info" outline="true" /> 1`] = `"<span outline="true" class="badge badge-info">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="light" outline="false" /> 1`] = `"<span class=\\"badge badge-light\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="light" outline="false" /> 1`] = `"<span class="badge badge-light">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="light" outline="true" /> 1`] = `"<span outline=\\"true\\" class=\\"badge badge-light\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="light" outline="true" /> 1`] = `"<span outline="true" class="badge badge-light">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="link" outline="false" /> 1`] = `"<span class=\\"badge badge-link\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="link" outline="false" /> 1`] = `"<span class="badge badge-link">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="link" outline="true" /> 1`] = `"<span outline=\\"true\\" class=\\"badge badge-link\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="link" outline="true" /> 1`] = `"<span outline="true" class="badge badge-link">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="primary" outline="false" /> 1`] = `"<span class=\\"badge badge-primary\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="primary" outline="false" /> 1`] = `"<span class="badge badge-primary">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="primary" outline="true" /> 1`] = `"<span outline=\\"true\\" class=\\"badge badge-primary\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="primary" outline="true" /> 1`] = `"<span outline="true" class="badge badge-primary">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="secondary" outline="false" /> 1`] = `"<span class=\\"badge badge-secondary\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="secondary" outline="false" /> 1`] = `"<span class="badge badge-secondary">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="secondary" outline="true" /> 1`] = `"<span outline=\\"true\\" class=\\"badge badge-secondary\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="secondary" outline="true" /> 1`] = `"<span outline="true" class="badge badge-secondary">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="warning" outline="false" /> 1`] = `"<span class=\\"badge badge-warning\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="warning" outline="false" /> 1`] = `"<span class="badge badge-warning">Main Content</span>"`;
 
-exports[`EsBadge <es-badge variant="warning" outline="true" /> 1`] = `"<span outline=\\"true\\" class=\\"badge badge-warning\\">Main Content</span>"`;
+exports[`EsBadge <es-badge variant="warning" outline="true" /> 1`] = `"<span outline="true" class="badge badge-warning">Main Content</span>"`;
