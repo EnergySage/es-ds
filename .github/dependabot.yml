@@ -15,7 +15,7 @@ updates:
       directory: '/es-vue-base'
       ignore:
         - dependency-name: "vue"
-            versions: ["3.x"]
+          versions: ["3.x"]
       schedule:
           interval: daily
           time: '00:00'
