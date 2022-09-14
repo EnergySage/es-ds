@@ -45,3 +45,6 @@ jobs:
 
             - name: Run tests 🧪
               run: make test
+
+            - name: Run builds 🚧
+              run: make build
