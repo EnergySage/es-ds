@@ -76,7 +76,7 @@
     "eslint-plugin-qunit": "^7.2.0",
     "eslint-plugin-unicorn": "^42.0.0",
     "find-unused-sass-variables": "^4.0.4",
-    "globby": "^11.1.0",
+    "globby": "^13.1.2",
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.89.0",
     "ip": "^1.1.5",
