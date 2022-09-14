@@ -4,6 +4,7 @@ import path from 'path';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
 import image from '@rollup/plugin-image';
+// eslint-disable-next-line import/no-unresolved
 import commonjs from '@rollup/plugin-commonjs';
 import autoprefixer from 'autoprefixer';
 import resolve from '@rollup/plugin-node-resolve';
@@ -17,8 +18,7 @@ import minimist from 'minimist';
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
     .toString()
-    .split('\n')
-    .filter((entry) => entry && entry.substring(0, 2) !== 'ie');
+    .split('\n');
 
 // Extract babel preset-env config, to combine with esbrowserslist
 const babelPresetEnvConfig = require('../babel.config')
