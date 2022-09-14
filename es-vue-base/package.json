@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-vue-base",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "private": false,
   "description": "",
   "scripts": {
@@ -77,7 +77,7 @@
     "vuelidate": "^0.7.7"
   },
   "peerDependencies": {
-    "@energysage/es-bs-base": "^0.6.0",
+    "@energysage/es-bs-base": "*",
     "bootstrap-vue": "^2.22.0",
     "html-truncate": "^1.2.2",
     "vue": "^2.7.8",
