@@ -99,7 +99,7 @@
     "qunit": "^2.18.2",
     "rollup": "^2.70.2",
     "shelljs": "^0.8.5",
-    "sinon": "^7.5.0",
+    "sinon": "^14.0.0",
     "stylelint": "^14.7.1",
     "stylelint-config-twbs-bootstrap": "^6.0.0",
     "terser": "^5.12.1",
