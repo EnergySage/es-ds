@@ -6,6 +6,7 @@ dev:
 install:
 	npm install
 	npx lerna exec -- npm install
+	npx lerna bootstrap
 
 .PHONY: lint
 lint:
