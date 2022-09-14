@@ -37,7 +37,7 @@ updates:
         - dependency-name: "autoprefixer"
           versions: ["10.x"]
         - dependency-name: "sass-loader"
-          versions: ["13.x"]
+          versions: ["12.x", "13.x"]
       schedule:
           interval: daily
           time: '00:00'
