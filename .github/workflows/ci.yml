@@ -38,7 +38,9 @@ jobs:
                       ${{ runner.os }}-node-
 
             - name: Install dependencies 👨🏻‍💻
-              run: make install
+              run: |
+                npx lerna exec -- npm install
+                npx lerna bootstrap
 
             - name: Run linter 👀
               run: make lint
