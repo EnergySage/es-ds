@@ -13,13 +13,12 @@ exports[`EsReview <EsReview /> 1`] = `
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap">
-    <div class="flex-grow-1 overflow-hidden">
-      <div data-testid="subtext-test" class="d-flex align-items-center"><span class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-        My Name
-        </span> <span class="date-holder d-inline-block">on 3/2/2022</span></div>
-    </div>
-    <!---->
+  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+    My Name
+    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
+      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    Verified Shopper
   </small>
 </div>"
 `;
@@ -39,13 +38,12 @@ exports[`EsReview Does not show edit link to non review owner 1`] = `
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap">
-    <div class="flex-grow-1 overflow-hidden">
-      <div data-testid="subtext-test" class="d-flex align-items-center"><span class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-        Test Bob
-        </span> <span class="date-holder d-inline-block">on 3/2/2022</span></div>
-    </div>
-    <!---->
+  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+    Test Bob
+    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
+      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    Verified Shopper
   </small>
 </div>"
 `;
@@ -69,17 +67,12 @@ exports[`EsReview Imported components exist 1`] = `
     <div class="comment-holder overflow-hidden"><span>Not a nice proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap">
-    <div class="flex-grow-1 overflow-hidden">
-      <div data-testid="subtext-test" class="d-flex align-items-center"><span class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-        My Name
-        </span> <span class="date-holder d-inline-block">on 3/2/2022</span></div>
-    </div>
-    <div class="d-none d-lg-block flex-grow-2 text-right ml-3"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900">
-        <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-      Verified Shopper
-    </div>
+  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+    My Name
+    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
+      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    Verified Shopper
   </small>
 </div>"
 `;
@@ -103,13 +96,12 @@ exports[`EsReview Shows edit link to review owner 1`] = `
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap">
-    <div class="flex-grow-1 overflow-hidden">
-      <div data-testid="subtext-test" class="d-flex align-items-center"><span class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-        Test Bob
-        </span> <span class="date-holder d-inline-block">on 3/2/2022</span></div>
-    </div>
-    <!---->
+  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+    Test Bob
+    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
+      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    Verified Shopper
   </small>
 </div>"
 `;
@@ -129,13 +121,12 @@ exports[`EsReview Title and subtext exist 1`] = `
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap">
-    <div class="flex-grow-1 overflow-hidden">
-      <div data-testid="subtext-test" class="d-flex align-items-center"><span class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-        Test Bob
-        </span> <span class="date-holder d-inline-block">on 3/2/2022</span></div>
-    </div>
-    <!---->
+  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+    Test Bob
+    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
+      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    Verified Shopper
   </small>
 </div>"
 `;

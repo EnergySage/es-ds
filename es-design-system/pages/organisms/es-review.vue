@@ -19,10 +19,10 @@
             id="reviews"
             class="mb-5">
             <es-review
-                v-for="review in reviews"
+                v-for="(review, index) in reviews"
                 :id="review.id"
                 :key="review.id"
-                :user-id="1"
+                :user-id="userIds[index]"
                 class="review-wrapper"
                 :reviewer-name="review.reviewer_name"
                 :reviewer-id="review.reviewer_id"
@@ -53,6 +53,7 @@ export default {
     data() {
         return {
             reviewsModalVisible: false,
+            userIds: ['1', 1, null, undefined, 33, '55'],
             reviews: [
                 {
                     id: 16,
@@ -65,7 +66,7 @@ export default {
                     comment: 'shrt',
                 }, {
                     id: 11,
-                    reviewer_name: 'Ryan Residential Really Long Name',
+                    reviewer_name: 'Ryan Residential Super Duper Really Long Name',
                     reviewer_id: 2,
                     certified: true,
                     created: '2022-06-03T18:27:41.718753Z',

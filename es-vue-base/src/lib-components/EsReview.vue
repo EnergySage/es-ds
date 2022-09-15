@@ -55,26 +55,20 @@
             </template>
         </div>
         <small class="d-flex align-items-center text-gray-800 text-nowrap">
-            <div class="flex-grow-1 overflow-hidden">
-                <div
-                    class="d-flex align-items-center"
-                    data-testid="subtext-test">
-                    <span class="name-holder d-inline-block text-truncate pr-1">
-                        <span class="d-none d-lg-inline-block">Posted by</span>
-                        {{ reviewerName }}
-                    </span>
-                    <span class="date-holder d-inline-block">on {{ formattedDate }}</span>
-                </div>
-            </div>
-            <div
-                v-if="certified"
-                class="d-none d-lg-block flex-grow-2 text-right ml-3">
-                <IconVerified
-                    class="text-gray-900"
-                    width="16px"
-                    height="16px" />
-                Verified Shopper
-            </div>
+            <span
+                class="name-holder d-inline-block text-truncate pr-1"
+                data-testid="subtext-test">
+                <span class="d-none d-lg-inline-block">Posted by</span>
+                {{ reviewerName }}
+            </span>
+            <span class="date-holder d-inline-block">on {{ formattedDate }}</span>
+        </small>
+        <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2">
+            <IconVerified
+                class="text-gray-900 mr-1"
+                width="16px"
+                height="16px" />
+            Verified Shopper
         </small>
     </div>
 </template>
@@ -103,8 +97,9 @@ export default {
          * Current user id
          */
         userId: {
-            type: [String, Number],
-            required: true,
+            type: [String, Number, null],
+            required: false,
+            default: null,
         },
         /**
          * Reviewer Name
@@ -117,8 +112,9 @@ export default {
          * User id of user left the review
          */
         reviewerId: {
-            required: true,
-            type: [String, Number],
+            required: false,
+            type: [String, Number, null],
+            default: null,
         },
         /**
          * Certified
