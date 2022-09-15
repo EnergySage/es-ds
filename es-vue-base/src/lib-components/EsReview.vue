@@ -5,9 +5,25 @@
         v-bind="$attrs">
         <div class="d-flex mb-2">
             <div class="d-flex flex-grow-1">
-                <EsRating
-                    :rating="rating"
-                    :read-only="readOnly" />
+                <template v-if="isReviewOwner">
+                    <b-link
+                        data-testid="edit-review"
+                        class="d-flex"
+                        @click="$emit('editReview', id)">
+                        <EsRating
+                            :rating="rating"
+                            :read-only="readOnly" />
+                        <IconPencil
+                            class="ml-1"
+                            width="20px"
+                            height="20px" />
+                    </b-link>
+                </template>
+                <template v-else>
+                    <EsRating
+                        :rating="rating"
+                        :read-only="readOnly" />
+                </template>
             </div>
             <div
                 v-if="certified"
@@ -19,7 +35,7 @@
                     height="20px" />
             </div>
         </div>
-        <div class="mb-2">
+        <div class="mb-3">
             <div class="title-holder mb-2">
                 <h4
                     v-if="title"
@@ -66,12 +82,14 @@
 <script lang="js">
 import EsRating from '@/src/lib-components/EsRating.vue';
 import IconVerified from '@/src/lib-icons/verified.vue';
+import IconPencil from '@/src/lib-icons/pencil.vue';
 import EsViewMore from '@/src/lib-components/EsViewMore.vue';
+import { BLink } from 'bootstrap-vue';
 
 export default {
     name: 'EsReview',
     components: {
-        EsRating, EsViewMore, IconVerified,
+        EsRating, EsViewMore, IconVerified, IconPencil, BLink,
     },
     props: {
         /**
@@ -82,11 +100,25 @@ export default {
             required: true,
         },
         /**
+         * Current user id
+         */
+        userId: {
+            type: [String, Number],
+            required: true,
+        },
+        /**
          * Reviewer Name
          */
         reviewerName: {
             required: true,
             type: String,
+        },
+        /**
+         * User id of user left the review
+         */
+        reviewerId: {
+            required: true,
+            type: [String, Number],
         },
         /**
          * Certified
@@ -157,6 +189,12 @@ export default {
             // Displays DD/MM/YYYY
             return new Date(this.created).toLocaleDateString();
         },
+        isReviewOwner() {
+            if (!this.userId || !this.reviewerId) {
+                return false;
+            }
+            return this.userId.toString() === this.reviewerId.toString();
+        },
     },
 };
 </script>
@@ -174,7 +212,7 @@ export default {
     }
 
     .comment-holder {
-        height: 121px;
+        height: auto;
     }
 }
 

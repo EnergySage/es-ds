@@ -13,7 +13,8 @@
             :visible="reviewsModalVisible"
             developer-name="Test Dev"
             @hidden="reviewsModalVisible = false"
-            @createReview="createReview" />
+            @createReview="createReview"
+            @editReview="editReview" />
         <es-horizontal-list
             id="reviews"
             class="mb-5">
@@ -21,15 +22,18 @@
                 v-for="review in reviews"
                 :id="review.id"
                 :key="review.id"
+                :user-id="1"
                 class="review-wrapper"
                 :reviewer-name="review.reviewer_name"
+                :reviewer-id="review.reviewer_id"
                 :certified="review.certified"
                 :created="new Date(review.created)"
                 :rating="review.rating"
                 :title="review.title"
                 :comment="review.comment"
                 :updated-comment="review.updated_comment"
-                @showMore="reviewsModalVisible = true" />
+                @showMore="reviewsModalVisible = true"
+                @editReview="editReview" />
         </es-horizontal-list>
     </div>
 </template>
@@ -53,6 +57,7 @@ export default {
                 {
                     id: 16,
                     reviewer_name: 'Ryan Dev',
+                    reviewer_id: 1,
                     certified: false,
                     created: '2022-06-10T14:48:56.604194Z',
                     rating: 5,
@@ -61,6 +66,7 @@ export default {
                 }, {
                     id: 11,
                     reviewer_name: 'Ryan Residential Really Long Name',
+                    reviewer_id: 2,
                     certified: true,
                     created: '2022-06-03T18:27:41.718753Z',
                     rating: 3,
@@ -76,6 +82,7 @@ export default {
                 }, {
                     id: 12,
                     reviewer_name: 'Ryan Smith',
+                    reviewer_id: 3,
                     certified: true,
                     created: '2022-06-03T18:27:41.718753Z',
                     rating: 5,
@@ -92,6 +99,7 @@ export default {
                 }, {
                     id: 10,
                     reviewer_name: 'shrt',
+                    reviewer_id: 4,
                     certified: true,
                     created: '2022-06-03T18:26:46.588897Z',
                     rating: 4,
@@ -101,6 +109,7 @@ export default {
                 }, {
                     id: 15,
                     reviewer_name: 'test',
+                    reviewer_id: 5,
                     certified: false,
                     created: '2022-06-09T14:10:30.290508Z',
                     rating: 5,
@@ -110,6 +119,7 @@ export default {
                 }, {
                     id: 13,
                     reviewer_name: 'testers',
+                    reviewer_id: 6,
                     certified: false,
                     created: '2022-06-09T14:05:08.901091Z',
                     rating: 5,
@@ -123,6 +133,10 @@ export default {
         createReview() {
             // eslint-disable-next-line no-alert
             alert('create review triggered');
+        },
+        editReview() {
+            // eslint-disable-next-line no-alert
+            alert('owner clicked edit!');
         },
     },
 };

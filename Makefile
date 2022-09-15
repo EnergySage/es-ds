@@ -30,6 +30,7 @@ update:
 .PHONE: reload
 reload:
 	npm --prefix es-vue-base run build
+	npx lerna bootstrap
 
 # Bootstraping Commands (not reguarly called)
 
