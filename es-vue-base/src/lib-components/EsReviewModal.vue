@@ -24,13 +24,14 @@
                         :id="review.id"
                         :key="review.id"
                         :reviewer-id="review.reviewer_id"
-                        :user-id="1"
+                        :user-id="userId"
                         class="mb-4"
                         :comment-limit="false"
                         :reviewer-name="review.reviewer_name"
                         :certified="review.certified"
                         :rating="review.rating"
                         :title="review.title"
+                        :updated-comment="review.updated_comment"
                         :comment="review.comment"
                         :created="new Date(review.created)"
                         @editReview="$emit('editReview', review.id)" />
@@ -89,6 +90,14 @@ export default {
         reviews: {
             type: Array,
             required: true,
+        },
+        /**
+         * Current user id
+         */
+        userId: {
+            type: [String, Number, null],
+            required: false,
+            default: null,
         },
         /**
          * Average review score
