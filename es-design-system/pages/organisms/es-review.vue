@@ -10,6 +10,7 @@
         <es-review-modal
             :reviews="reviews"
             :avg-rating="3.5"
+            :user-id="1"
             :visible="reviewsModalVisible"
             developer-name="Test Dev"
             @hidden="reviewsModalVisible = false"
