@@ -77,4 +77,28 @@ describe('EsFormInput', () => {
         expect(wrapper.props('id')).toBe('myID');
         expect(wrapper.props('state')).toBeNull();
     });
+
+    // Test v-model
+    test('<EsFormInput v-model />', async () => {
+        const wrapper = mount({
+            ...jestVue,
+            data() {
+                return {
+                    textValue: '',
+                };
+            },
+            template: '<div> <EsFormInput data-testid="testInput" id="testId" v-model="textValue" /> </div>',
+            components: {
+                EsFormInput,
+            },
+        });
+
+        const testString = 'Test String';
+        const testInput = wrapper.find('[data-testid="testInput"]');
+        await testInput.setValue(testString);
+
+        expect(wrapper.vm).toBeTruthy();
+        expect(wrapper.html()).toMatchSnapshot();
+        expect(wrapper.vm.textValue).toBe(testString);
+    });
 });

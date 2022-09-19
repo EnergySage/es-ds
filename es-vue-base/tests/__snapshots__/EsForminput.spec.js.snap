@@ -36,6 +36,19 @@ exports[`EsFormInput <EsFormInput props /> 1`] = `
 </div>"
 `;
 
+exports[`EsFormInput <EsFormInput v-model /> 1`] = `
+"<div>
+  <div class="input-wrapper justify-content-end mb-2"><label for="testId" class="label font-weight-bold justify-content-start">
+      <!----></label>
+    <div class="input-holder"><input id="testId" type="text" class="es-form-input w-100 form-control" data-testid="testInput">
+      <!---->
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`EsFormInput <EsFormInput>slots</EsFormInput> 1`] = `
 "<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-bold justify-content-start">Account Number
     <!----></label>
