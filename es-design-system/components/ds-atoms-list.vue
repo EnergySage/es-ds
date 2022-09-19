@@ -29,14 +29,7 @@
 </template>
 
 <script>
-import {
-    BLink,
-} from 'bootstrap-vue';
-
 export default {
     name: 'DsAtomsList',
-    components: {
-        BLink,
-    },
 };
 </script>

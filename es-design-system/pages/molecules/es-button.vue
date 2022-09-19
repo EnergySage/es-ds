@@ -192,13 +192,11 @@
 </template>
 
 <script>
-import { BLink } from 'bootstrap-vue';
 import { EsButton } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsButtonDocs',
     components: {
-        BLink,
         EsButton,
     },
 };

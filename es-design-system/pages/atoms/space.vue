@@ -40,17 +40,9 @@
 
 <script>
 import sassSpacers from '@energysage/es-bs-base/scss/variables/_spacers.scss';
-import {
-    BRow,
-    BCol,
-} from 'bootstrap-vue';
 
 export default {
     name: 'AtomsSpace',
-    components: {
-        BRow,
-        BCol,
-    },
     data() {
         const spacers = Object.keys(sassSpacers)
             .map((key) => ({ key, value: sassSpacers[key] }))

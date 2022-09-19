@@ -23,14 +23,11 @@
 </template>
 <script>
 // TODO: Add input state/msg validation example
-import { BCol, BRow } from 'bootstrap-vue';
 import { EsFormTextarea } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsFormTextareaDocs',
     components: {
-        BCol,
-        BRow,
         EsFormTextarea,
     },
 };

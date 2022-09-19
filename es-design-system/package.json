@@ -64,6 +64,7 @@
         "eslint-plugin-vue": "^9.5.1",
         "eslint-plugin-vuejs-accessibility": "^1.2.0",
         "node-sass": "^7.0.1",
+        "null-loader": "^4.0.1",
         "postcss": "^8.4.13",
         "postcss-html": "^1.4.1",
         "postcss-preset-env": "7.8.2",

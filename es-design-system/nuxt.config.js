@@ -25,12 +25,23 @@ export default {
         base: `/${version}/`,
     },
     target: 'static',
-    // TODO: Prevents dupe vue instance but not sure where its actually coming from
     build: {
+        analyze: true,
         extend(config) {
-            // eslint-disable-next-line no-param-reassign
+            /* eslint-disable no-param-reassign */
+            // TODO: Prevents dupe vue instance but not sure where its actually coming from
             config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue');
+            // Prevents bootstrap-vue icons from being unitentionally included
+            config.module.rules.push({
+                test: /bootstrap-vue\/src\/icons\/icons/,
+                use: 'null-loader',
+            });
+
+            /* eslint-enable no-param-reassign */
         },
+    },
+    publicRuntimeConfig: {
+        version,
     },
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
@@ -50,6 +61,8 @@ export default {
         '@nuxtjs/stylelint-module',
         // https://github.com/nuxt-community/svg-module
         '@nuxtjs/svg',
+        // https://bootstrap-vue.org/docs/#nuxtjs-module
+        'bootstrap-vue/nuxt',
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,8 +71,6 @@ export default {
         '@nuxtjs/i18n',
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
-        // https://bootstrap-vue.org/docs/#nuxtjs-module
-        'bootstrap-vue/nuxt',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -81,7 +92,31 @@ export default {
             fallbackLocale: 'en',
         },
     },
-    publicRuntimeConfig: {
-        version,
+
+    // https://bootstrap-vue.org/docs/#nuxtjs-module
+    bootstrapVue: {
+        bootstrapCSS: false,
+        bootstrapVueCSS: false,
+        icons: false,
+        config: {
+            breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'],
+        },
+        components: [
+            'BLink',
+            'BContainer',
+            'BNavbar',
+            'BNavbarNav',
+            'BNavItem',
+            'BRow',
+            'BCol',
+            'BSidebar',
+            'BForm',
+            'BFormGroup',
+            'BFormRadioGroup',
+            'BFormCheckbox',
+            'BSpinner',
+            'BTable',
+        ],
+        componentPlugins: ['VBTogglePlugin'],
     },
 };

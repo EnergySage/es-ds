@@ -74,14 +74,7 @@
 </template>
 
 <script>
-import {
-    BLink,
-} from 'bootstrap-vue';
-
 export default {
     name: 'DsMoleculesList',
-    components: {
-        BLink,
-    },
 };
 </script>
