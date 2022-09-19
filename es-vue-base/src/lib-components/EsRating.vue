@@ -84,8 +84,6 @@ export default {
 
 <style lang="scss">
 .b-rating {
-    background: transparent;
-    box-shadow: none !important;
     height: auto !important;
     padding: 0 !important;
 
@@ -95,10 +93,6 @@ export default {
         &:first-child {
             padding-left: 0;
         }
-    }
-
-    :focus {
-        background: transparent !important;
     }
 }
 </style>
