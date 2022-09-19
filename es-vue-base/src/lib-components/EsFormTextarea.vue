@@ -1,7 +1,6 @@
 <template>
     <div
         class="input-wrapper justify-content-end mb-2"
-        v-bind="$attrs"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
@@ -58,6 +57,9 @@ export default {
         BFormInvalidFeedback,
         BFormValidFeedback,
     },
+    // Prevents attributes from being applied to first <div>
+    // v-bind="$attr" is on the textarea instead
+    inheritAttrs: false,
     props: {
         /**
          * Required

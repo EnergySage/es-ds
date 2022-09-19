@@ -39,6 +39,19 @@ exports[`EsFormTextarea <EsFormTextarea props /> 1`] = `
 </div>"
 `;
 
+exports[`EsFormTextarea <EsFormTextarea v-model /> 1`] = `
+"<div>
+  <div class="input-wrapper justify-content-end mb-2"><label for="testId" class="label font-weight-bold justify-content-start">
+      <!----></label>
+    <div class="input-holder"><textarea id="testId" rows="2" wrap="soft" class="es-form-textarea w-100 form-control" data-testid="testTextarea"></textarea>
+      <!---->
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`EsFormTextarea <EsFormTextarea>slots</EsFormTextarea> 1`] = `
 "<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-bold justify-content-start">Notes
     <!----></label>
