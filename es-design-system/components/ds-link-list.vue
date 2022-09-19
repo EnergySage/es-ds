@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import { BLink } from 'bootstrap-vue';
 import DsAtomsList from '@/components/ds-atoms-list.vue';
 import DsOrganismsList from '@/components/ds-organisms-list.vue';
 import DsMoleculesList from '@/components/ds-molecules-list.vue';
@@ -43,7 +42,6 @@ import DsMoleculesList from '@/components/ds-molecules-list.vue';
 export default {
     name: 'DsLinkList',
     components: {
-        BLink,
         DsAtomsList,
         DsOrganismsList,
         DsMoleculesList,

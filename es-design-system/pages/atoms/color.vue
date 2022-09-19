@@ -34,10 +34,6 @@
 
 <script>
 import DsColorTable from '@/components/ds-color-table.vue';
-import {
-    BRow,
-    BCol,
-} from 'bootstrap-vue';
 import sassColors from '@energysage/es-bs-base/scss/variables/_colors.scss';
 import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.scss';
 import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
@@ -45,8 +41,6 @@ import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors
 export default {
     name: 'AtomsColor',
     components: {
-        BRow,
-        BCol,
         DsColorTable,
     },
     data() {

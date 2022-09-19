@@ -223,17 +223,9 @@
 </template>
 
 <script>
-import {
-    BRow,
-    BCol,
-} from 'bootstrap-vue';
 
 export default {
     name: 'AtomsGrids',
-    components: {
-        BRow,
-        BCol,
-    },
 };
 </script>
 

@@ -16,11 +16,11 @@ export default {
             items: [
                 {
                     text: 'Home',
-                    href: '#',
+                    to: '#',
                 },
                 {
                     text: 'Details',
-                    href: '#',
+                    to: '#',
                 },
                 {
                     text: 'Search',

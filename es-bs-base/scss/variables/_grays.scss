@@ -1,6 +1,7 @@
 /* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
 
-@import "../bootstrap";
+@import "../functions";
+@import "../mixins";
 @import "../variables";
 
 :export {

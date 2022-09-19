@@ -27,16 +27,10 @@ import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.scss';
 import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
 import sassGlobalSettings from '@energysage/es-bs-base/scss/variables/_global-settings.scss';
 import sassSpacers from '@energysage/es-bs-base/scss/variables/_spacers.scss';
-import {
-    BLink,
-} from 'bootstrap-vue';
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Bootstrap4',
-    components: {
-        BLink,
-    },
     data() {
         return {
             colors: sassColors,

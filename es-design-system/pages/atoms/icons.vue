@@ -29,20 +29,10 @@
 <script>
 import DsIconList from '@/components/ds-icon-list.vue';
 import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
-import {
-    BRow,
-    BCol,
-    BFormGroup,
-    BFormRadioGroup,
-} from 'bootstrap-vue';
 
 export default {
     name: 'AtomsIcons',
     components: {
-        BRow,
-        BCol,
-        BFormGroup,
-        BFormRadioGroup,
         DsIconList,
     },
     asyncData() {

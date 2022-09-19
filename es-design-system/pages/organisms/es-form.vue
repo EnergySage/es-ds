@@ -117,22 +117,12 @@
 </template>
 <script>
 import {
-    BForm, BContainer, BRow, BCol, BFormCheckbox, BSpinner, BTable,
-} from 'bootstrap-vue';
-import {
     EsFormInput, EsFormTextarea, EsButton, EsFormMsg, formMixins, vuelidateRequired, vuelidatePhone, vuelidateEmail,
 } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsFormDocs',
     components: {
-        BForm,
-        BContainer,
-        BRow,
-        BFormCheckbox,
-        BCol,
-        BSpinner,
-        BTable,
         EsFormMsg,
         EsFormInput,
         EsFormTextarea,
