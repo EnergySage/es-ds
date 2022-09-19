@@ -5,7 +5,7 @@
         </h1>
         <ul>
             <li>
-                <nuxt-link to="'/bootstrap-4'">
+                <nuxt-link to="/bootstrap-4">
                     Bootstrap 4
                 </nuxt-link>
             </li>
