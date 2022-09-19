@@ -26,7 +26,7 @@ export default {
     },
     target: 'static',
     build: {
-        analyze: true,
+        // analyze: true,
         extend(config) {
             /* eslint-disable no-param-reassign */
             // TODO: Prevents dupe vue instance but not sure where its actually coming from
