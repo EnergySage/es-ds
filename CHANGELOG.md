@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.6] - 2022-09-19
+
+- Fixed import issues in `es-design-system` with `bootstrap-vue`
+- Added sidebar and breadcrumbs to `es-design-system`
+- Disabled `box-shadow` in `es-bs-base`
+- Bug fixes and improvements to `EsReview` and `EsReviewModal`
+- Upgraded to `node@16`
+
 ## [0.6.2] - 2022-09-14
 
 - Fixed an issue where babel was not transpiling esm package correctly
