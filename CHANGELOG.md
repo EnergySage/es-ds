@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.7] - 2022-09-20
+
+- Fixed an issue with `v-model` in `EsFormInput` && `EsFormTextarea`
+
 ## [0.6.6] - 2022-09-19
 
 - Fixed import issues in `es-design-system` with `bootstrap-vue`
