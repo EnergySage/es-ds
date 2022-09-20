@@ -4,7 +4,8 @@
             cols="12"
             lg="6">
             <es-form-input
-                id="myId">
+                id="myId"
+                v-model="docInput">
                 <template #label>
                     Account Number
                 </template>
@@ -29,6 +30,11 @@ export default {
     name: 'EsFormInputDocs',
     components: {
         EsFormInput,
+    },
+    data() {
+        return {
+            docInput: 'Example text',
+        };
     },
 };
 </script>

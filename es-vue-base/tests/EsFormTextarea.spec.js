@@ -78,4 +78,28 @@ describe('EsFormTextarea', () => {
         expect(wrapper.props('id')).toBe('myID');
         expect(wrapper.props('state')).toBeNull();
     });
+
+    // Test v-model
+    test('<EsFormTextarea v-model />', async () => {
+        const wrapper = mount({
+            ...jestVue,
+            data() {
+                return {
+                    textValue: '',
+                };
+            },
+            template: '<div> <EsFormTextarea data-testid="testTextarea" id="testId" v-model="textValue" /> </div>',
+            components: {
+                EsFormTextarea,
+            },
+        });
+
+        const testString = 'Test String';
+        const testTextarea = wrapper.find('[data-testid="testTextarea"]');
+        await testTextarea.setValue(testString);
+
+        expect(wrapper.vm).toBeTruthy();
+        expect(wrapper.html()).toMatchSnapshot();
+        expect(wrapper.vm.textValue).toBe(testString);
+    });
 });

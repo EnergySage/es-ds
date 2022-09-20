@@ -1,7 +1,6 @@
 <template>
     <div
         class="input-wrapper justify-content-end mb-2"
-        v-bind="$attrs"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
@@ -22,6 +21,7 @@
                 class="es-form-input w-100"
                 :disabled="disabled"
                 :state="state"
+                v-bind="$attrs"
                 v-on="$listeners" />
             <b-form-text v-if="hasMessage && ((!hasSuccess && state) || state == null)">
                 <slot name="message" />
@@ -57,6 +57,9 @@ export default {
         BFormInvalidFeedback,
         BFormValidFeedback,
     },
+    // Prevents attributes from being applied to first <div>
+    // v-bind="$attr" is on the input instead
+    inheritAttrs: false,
     props: {
         /**
          * Required

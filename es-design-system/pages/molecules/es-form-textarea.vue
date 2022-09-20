@@ -4,7 +4,8 @@
             cols="12"
             lg="6">
             <es-form-textarea
-                id="myId">
+                id="myId"
+                v-model="docTextarea">
                 <template #label>
                     Notes
                 </template>
@@ -29,6 +30,11 @@ export default {
     name: 'EsFormTextareaDocs',
     components: {
         EsFormTextarea,
+    },
+    data() {
+        return {
+            docTextarea: 'Example text',
+        };
     },
 };
 </script>
