@@ -5,6 +5,7 @@
 
 // Color system
 
+// Gray Scale
 $white:    #fff !default;
 $gray-100: #fafafa !default;
 $gray-200: #ececec !default;
@@ -15,8 +16,12 @@ $gray-600: #7e7e7e !default;
 $gray-700: #565656 !default;
 $gray-800: #404040 !default;
 $gray-900: #292929 !default;
+$gray-1000: #1f1f1f !default;
+$gray-1100: #151515 !default;
+$gray-1200: #0a0a0a !default;
 $black:    #000 !default;
 
+// TODO: What is this useful for? Should we add it for other scales?
 $grays: () !default;
 $grays: map-merge(
   (
@@ -28,23 +33,68 @@ $grays: map-merge(
     "600": $gray-600,
     "700": $gray-700,
     "800": $gray-800,
-    "900": $gray-900
+    "900": $gray-900,
+    "1000": $gray-1000,
+    "1100": $gray-1100,
+    "1200": $gray-1200
   ),
   $grays
 );
 
+// teal scale
+$teal-100: #d7f0ee !default;
+$teal-200: #aee2dd !default;
+$teal-300: #86d3cc !default;
+$teal-400: #5dc5bb !default;
+$teal-500: #35b6aa !default;
+$teal-600: #288980 !default;
+$teal-700: #1b5b55 !default;
+$teal-800: #0d2e2a !default;
+
+// cyan scale
+$cyan-100: #e0eff5 !default;
+$cyan-200: #cce5ef !default;
+$cyan-300: #99cbdf !default;
+$cyan-400: #3398c0 !default;
+$cyan-500: #007aab !default;
+$cyan-600: #005f84 !default;
+$cyan-700: #003f58 !default;
+$cyan-800: #00202c !default;
+
+// pink scale
+$pink-100: #f4dae7 !default;
+$pink-200: #e9b4cf !default;
+$pink-300: #de8fb6 !default;
+$pink-400: #d3699e !default;
+$pink-500: #c24282 !default;
+$pink-600: #963365 !default;
+$pink-700: #642243 !default;
+$pink-800: #321121 !default;
+
+// yellow scale
+$yellow-100: #fdefd9 !default;
+$yellow-200: #fbe0b3 !default;
+$yellow-300: #fad08c !default;
+$yellow-400: #f8c166 !default;
+$yellow-500: #f6b140 !default;
+$yellow-600: #b98530 !default;
+$yellow-700: #7b5920 !default;
+$yellow-800: #3e2c10 !default;
+
+// Base Colors
 $blue:      #275ba9 !default;
 $lightblue: #8cd1ff !default;
 $grayblue:  #c9e9f6 !default;
 $indigo:    #152f87 !default;
 $purple:    #822a85 !default;
-$pink:      #ca4a89 !default;
 $red:       #b93737 !default;
 $orange:    #ffbf57 !default;
-$yellow:    #f6b140 !default;
 $green:     #008445 !default;
-$teal:      #37b6aa !default;
-$cyan:      #007aab !default;
+
+$pink:      $pink-500 !default;
+$yellow:  $yellow-500 !default;
+$cyan:      $cyan-500 !default;
+$teal:      $teal-500 !default;
 
 
 $colors: () !default;
