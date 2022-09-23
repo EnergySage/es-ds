@@ -3,6 +3,11 @@
         <h1>
             Colors
         </h1>
+        <p>
+            Below you will find our named color and variant definitions. They are meant
+            to convey the meaning color using a defined naming convention. When working please
+            use these color definitions and try to avoid introducing new unamed colors.
+        </p>
         <b-row>
             <b-col cols="3">
                 <h2>
