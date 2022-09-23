@@ -42,9 +42,9 @@ jobs:
                 make install
                 make update-peer-deps
                 make build-scss-pkg
-                make update
+                make symlink
                 make build-vue-pkg
-                make update
+                make symlink
 
             - name: Run linter 👀
               run: make lint

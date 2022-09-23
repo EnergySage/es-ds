@@ -23,8 +23,8 @@ build:
 publish:
 	npx lerna publish
 
-.PHONY: update
-update:
+.PHONY: symlink
+symlink:
 	npx lerna bootstrap
 
 .PHONE: reload
