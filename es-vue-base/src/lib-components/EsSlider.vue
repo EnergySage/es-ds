@@ -35,6 +35,7 @@
 
 <script lang="js">
 import vueSlider from 'vue-slider-component';
+import sassColors from '@energysage/es-bs-base/scss/variables/_colors.scss';
 
 export default {
     name: 'EsSlider',
@@ -89,24 +90,18 @@ export default {
         },
     },
     data() {
-        // TODO: Replace this with sass variables when available
-        const colors = {
-            white: '#fff',
-            indigo: '#152f87',
-            cyan: '#007eb0',
-        };
         // eslint-disable-next-line max-len
-        const gradient = `linear-gradient(112.58deg, ${colors.cyan} 28%, ${colors.indigo} 100%)`;
+        const gradient = `linear-gradient(112.58deg, ${sassColors.cyan} 28%, ${sassColors.indigo} 100%)`;
 
         return {
             sliderValue: this.startingValue,
             min: this.data[0],
             max: this.data[this.data.length - 1],
-            colorComputed: colors.cyan,
+            colorComputed: sassColors.cyan,
             styles: {
                 dot: {
-                    border: `5px solid ${colors.cyan}`,
-                    background: colors.white,
+                    border: `5px solid ${sassColors.cyan}`,
+                    background: sassColors.white,
                 },
                 rail: {
                     height: '10px',
