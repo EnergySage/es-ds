@@ -11,7 +11,7 @@
                 <b-img
                     width="64px"
                     height="64px"
-                    class="image"
+                    :class="`image image-bg-${variant}`"
                     :src="src"
                     alt="Help Image" />
             </a>
@@ -69,6 +69,15 @@ export default {
             type: String,
             required: true,
         },
+        /**
+         * Support Variant
+         */
+        variant: {
+            type: String,
+            required: false,
+            default: 'warm',
+            validator: (val) => ['warm', 'cool'].includes(val),
+        },
     },
     computed: {
         hasTitle() {
@@ -92,9 +101,16 @@ export default {
         width: 64px;
 
         .image {
-            background: linear-gradient(141.22deg, $yellow 8.76%, $pink 100%);
             border-radius: 2rem;
             object-fit: contain;
+
+            &.image-bg-warm {
+                background: linear-gradient(141.22deg, $yellow 8.76%, $pink 100%);
+            }
+
+            &.image-bg-cool {
+                background: $teal-300;
+            }
         }
     }
 }
