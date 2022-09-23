@@ -38,8 +38,9 @@ jobs:
                       ${{ runner.os }}-node-
 
             - name: Install dependencies 👨🏻‍💻
-              run: make install
-              run: make update
+              run: |
+                make install
+                make update
 
             - name: Run linter 👀
               run: make lint
