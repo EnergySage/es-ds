@@ -38,6 +38,10 @@ reload:
 build-scss-pkg:
 	npm run --prefix es-bs-base build
 
+.PHONY: build-vue-pkg
+build-vue-pkg:
+	npm run --prefix es-bs-vue build
+
 .PHONY: update-peer-deps
 update-peer-deps:
 	npm --prefix es-vue-base install bootstrap-vue@^2.22.0 \

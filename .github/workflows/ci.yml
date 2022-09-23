@@ -42,7 +42,8 @@ jobs:
                 make install
                 make update-peer-deps
                 make build-scss-pkg
-                make build
+                make update
+                make build-vue-pkg
                 make update
 
             - name: Run linter 👀
