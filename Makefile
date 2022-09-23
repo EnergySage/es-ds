@@ -40,7 +40,7 @@ build-scss-pkg:
 
 .PHONY: build-vue-pkg
 build-vue-pkg:
-	npm run --prefix es-bs-vue build
+	npm run --prefix es-vue-base build
 
 .PHONY: update-peer-deps
 update-peer-deps:
