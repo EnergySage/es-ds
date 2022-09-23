@@ -26,7 +26,7 @@
                 <td>
                     <div
                         :style="{ color: value }"
-                        class="swatch ml-4" />
+                        class="swatch ml-4 border" />
                 </td>
             </tr>
         </tbody>

@@ -1,4 +1,4 @@
-import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
+import sassVariants from '@energysage/es-bs-base/scss/variables/_variants.scss';
 
 // Possible Component Sizes
 export const designStages = ['Atom', 'Molecule', 'Organism', 'Template', 'Page'];
@@ -13,7 +13,7 @@ fontFamilies.fontFamilyBase = fontFamilies.fontFamilySansSerif;
 
 export const bsVariables = {
     ...fontFamilies,
-    themeColors: sassThemeColors,
+    variants: sassVariants,
 };
 
 export default {

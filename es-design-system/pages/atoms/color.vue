@@ -4,29 +4,61 @@
             Colors
         </h1>
         <b-row>
-            <b-col>
+            <b-col cols="3">
                 <h2>
-                    Base Colors
+                    Variants
+                </h2>
+                <DsColorTable
+                    class="mb-4"
+                    :colors="variants" />
+            </b-col>
+            <b-col cols="3">
+                <h2>
+                    Colors
                 </h2>
                 <DsColorTable
                     class="mb-4"
                     :colors="colors" />
             </b-col>
-            <b-col>
+            <b-col cols="3">
                 <h2>
-                    Base Grays
+                    Grays
                 </h2>
                 <DsColorTable
                     class="mb-4"
                     :colors="grays" />
             </b-col>
-            <b-col>
+            <b-col cols="3">
                 <h2>
-                    Theme Aliases
+                    Cyans
                 </h2>
                 <DsColorTable
                     class="mb-4"
-                    :colors="themeColors" />
+                    :colors="cyans" />
+            </b-col>
+            <b-col cols="3">
+                <h2>
+                    Pinks
+                </h2>
+                <DsColorTable
+                    class="mb-4"
+                    :colors="pinks" />
+            </b-col>
+            <b-col cols="3">
+                <h2>
+                    Teals
+                </h2>
+                <DsColorTable
+                    class="mb-4"
+                    :colors="teals" />
+            </b-col>
+            <b-col cols="3">
+                <h2>
+                    Yellows
+                </h2>
+                <DsColorTable
+                    class="mb-4"
+                    :colors="yellows" />
             </b-col>
         </b-row>
     </div>
@@ -36,7 +68,11 @@
 import DsColorTable from '@/components/ds-color-table.vue';
 import sassColors from '@energysage/es-bs-base/scss/variables/_colors.scss';
 import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.scss';
-import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
+import sassCyans from '@energysage/es-bs-base/scss/variables/_cyans.scss';
+import sassPinks from '@energysage/es-bs-base/scss/variables/_pinks.scss';
+import sassTeals from '@energysage/es-bs-base/scss/variables/_teals.scss';
+import sassYellows from '@energysage/es-bs-base/scss/variables/_yellows.scss';
+import sassVariants from '@energysage/es-bs-base/scss/variables/_variants.scss';
 
 export default {
     name: 'AtomsColor',
@@ -45,9 +81,13 @@ export default {
     },
     data() {
         return {
-            colors: sassColors,
+            variants: sassVariants,
             grays: sassGrays,
-            themeColors: sassThemeColors,
+            cyans: sassCyans,
+            pinks: sassPinks,
+            teals: sassTeals,
+            yellows: sassYellows,
+            colors: sassColors,
         };
     },
 };

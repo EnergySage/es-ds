@@ -12,12 +12,12 @@
                 <hr class="mt-4 pt-4">
 
                 <h2>
-                    Theme Colors
+                    Variants
                 </h2>
                 <b-form-group label="Radios using options">
                     <b-form-radio-group
                         id="radio-group-1"
-                        v-model="themeColorSelected"
+                        v-model="variantselected"
                         :options="themeColorOptions"
                         name="radio-theme-color" />
                 </b-form-group>
@@ -28,7 +28,7 @@
 
 <script>
 import DsIconList from '@/components/ds-icon-list.vue';
-import sassThemeColors from '@energysage/es-bs-base/scss/variables/_theme-colors.scss';
+import sassVariants from '@energysage/es-bs-base/scss/variables/_variants.scss';
 
 export default {
     name: 'AtomsIcons',
@@ -37,7 +37,7 @@ export default {
     },
     asyncData() {
         // Theme Colors
-        const themeNames = Object.keys(sassThemeColors)
+        const themeNames = Object.keys(sassVariants)
             .map((k) => k)
             .reduce((prev, cur) => {
                 // eslint-disable-next-line no-param-reassign
@@ -48,23 +48,23 @@ export default {
             text: k,
             value: k,
         }));
-        const themeColors = Object.keys(themeNames)
+        const variants = Object.keys(themeNames)
             .map((k) => k)
             .reduce((prev, cur) => {
                 // eslint-disable-next-line no-param-reassign
-                prev[cur] = sassThemeColors[cur];
+                prev[cur] = sassVariants[cur];
                 return prev;
             }, {});
         return {
-            themeColorSelected: themeNames.primary,
+            variantselected: themeNames.primary,
             themeColorOptions,
-            themeColors,
+            variants,
             themeNames,
         };
     },
     computed: {
         themeHexVal() {
-            return this.themeColors[this.themeColorSelected];
+            return this.variants[this.variantselected];
         },
     },
 };
