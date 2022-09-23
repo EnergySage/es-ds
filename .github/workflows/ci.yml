@@ -39,6 +39,7 @@ jobs:
 
             - name: Install dependencies 👨🏻‍💻
               run: make install
+              run: make update
 
             - name: Run linter 👀
               run: make lint
