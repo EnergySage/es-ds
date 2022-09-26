@@ -9,7 +9,6 @@
         "build:prod": "npm run generate:prod && npm run deploy:prod",
         "generate:dev": "env-cmd -f .env.dev npm run generate",
         "generate:prod": "env-cmd -f .env.prod npm run generate",
-        "generate": "nuxt build",
         "bootstrap": "env-cmd -f .env.prod npm --prefix aws run cdk bootstrap",
         "synth:dev": "env-cmd -f .env.dev npm run synth",
         "synth:prod": "env-cmd -f .env.prod npm run synth",
