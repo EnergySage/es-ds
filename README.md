@@ -63,11 +63,11 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 ### Installing Dependencies and Linking packages
 
 1. `make install` - installs all packages from npm
-2. `make update-peer-deps` - installs necessary peer deps for `es-vue-base` use in `es-design-system`
+2. `make update-peer-deps` - installs necessary peer deps for `es-vue-base` used in `es-design-system`
 3. `make build-scss-pkg` - build `es-bs-base/dist` locally; we do this first since `es-vue-base` imports it `@import '~@energysage/es-bs-base/scss/includes'`
-4. `make symlink` - [symlink](https://en.wikipedia.org/wiki/Symbolic_link) `es-bs-base/dist`
+4. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap) `es-bs-base/dist`
 5. `make build-vue-pkg` - build `es-vue-base/dist` locally
-6. `make symlink` - [symlink](https://en.wikipedia.org/wiki/Symbolic_link) `es-bs-base/dist` and `es-vue-base/dist` for use in `es-design-system`
+6. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap) `es-bs-base/dist` and `es-vue-base/dist` for use in `es-design-system`
 
 #### Vue Component Process
 
@@ -102,7 +102,7 @@ Assuming changes are approved, the process of publishing a new version is...
 0. Ensure your local environment is [setup](./README.md#installing-dependencies-and-linking-packages) and you are on the `main` branch
 1. `make lint && make test` - Run tests and linting to ensure they pass
 2. `make build` - Build all packages to `*/dist` folders locally
-3. `make publish` - Publish updated pckages to [npmjs.com](https://www.npmjs.com)
+3. `make publish` - Publish updated packages to [npmjs.com](https://www.npmjs.com/org/energysage)
 4. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
 5. `make install && make symlink` - Install the new published versions locally and symlink them
 6. `git commit -m "X.X.X Changelog" && git push` - Commit and push the changelog
