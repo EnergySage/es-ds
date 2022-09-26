@@ -105,7 +105,8 @@ Assuming changes are approved, the process of publishing a new version is...
 3. `make publish` - Publish updated packages to [npmjs.com](https://www.npmjs.com/org/energysage)
 4. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
 5. `make install && make symlink` - Install the new published versions locally and symlink them
-6. `git commit -m "X.X.X Changelog" && git push` - Commit and push the changelog
+6. `git commit -m "X.X.X Changelog" && git push` - Commit and push the changelog and `package-lock.json` updates
+7. `npm run --prefix es-design-system build:dev` - Builds `es-design-system` with updated versions and deploys to [https://dev.design.energysage.dev/](https://dev.design.energysage.dev/)
 
 Running `make publish` will trigger the following prompt:
 
