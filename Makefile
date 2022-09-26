@@ -23,8 +23,8 @@ build:
 publish:
 	npx lerna publish
 
-.PHONY: update
-update:
+.PHONY: symlink
+symlink:
 	npx lerna bootstrap
 
 .PHONE: reload
@@ -37,6 +37,10 @@ reload:
 .PHONY: build-scss-pkg
 build-scss-pkg:
 	npm run --prefix es-bs-base build
+
+.PHONY: build-vue-pkg
+build-vue-pkg:
+	npm run --prefix es-vue-base build
 
 .PHONY: update-peer-deps
 update-peer-deps:

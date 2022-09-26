@@ -1,16 +1,23 @@
 <template>
     <div>
         <h1>
-            Default Copy
+            Default(Warm)
         </h1>
         <es-support
-            link="https://www.energysage.com"
+            :link="link"
+            :src="benr" />
+        <h1 class="mt-5">
+            Cool Variant
+        </h1>
+        <es-support
+            variant="cool"
+            :link="link"
             :src="benr" />
         <h1 class="mt-5">
             Custom Copy
         </h1>
         <es-support
-            link="https://www.energysage.com"
+            :link="link"
             :src="benr">
             <template #title>
                 Custom title
@@ -32,6 +39,7 @@ export default {
     },
     data() {
         return {
+            link: 'https://www.energysage.com',
             benr,
         };
     },

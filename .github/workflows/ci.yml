@@ -38,7 +38,13 @@ jobs:
                       ${{ runner.os }}-node-
 
             - name: Install dependencies 👨🏻‍💻
-              run: make install
+              run: |
+                make install
+                make update-peer-deps
+                make build-scss-pkg
+                make symlink
+                make build-vue-pkg
+                make symlink
 
             - name: Run linter 👀
               run: make lint

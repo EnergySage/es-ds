@@ -25,6 +25,23 @@ describe('EsSupport', () => {
         expect(a11y).toHaveNoViolations();
     });
 
+    test('<EsSupport variant="cool" />', async () => {
+        const wrapper = mount(EsSupport, {
+            ...jestVue,
+            slots,
+            propsData: {
+                link: 'https://www.google.com/',
+                src: 'https://via.placeholder.com/200x100',
+                variant: 'cool',
+            },
+        });
+        const a11y = await axe(wrapper.element);
+
+        expect(wrapper.vm).toBeTruthy();
+        expect(wrapper.html()).toMatchSnapshot();
+        expect(a11y).toHaveNoViolations();
+    });
+
     // Test Support Title works
     test('Support title slot exists', async () => {
         const wrapper = mount(EsSupport, {

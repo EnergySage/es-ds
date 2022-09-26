@@ -5,15 +5,18 @@
 @import "../variables";
 
 :export {
-  white: #fff;
-  gray-100: #fafafa;
-  gray-200: #ececec;
-  gray-300: #dddddd;
-  gray-400: #bababa;
-  gray-500: #999999;
-  gray-600: #7e7e7e;
-  gray-700: #565656;
-  gray-800: #404040;
-  gray-900: #292929;
-  black: #000;
+  white: $white;
+  gray-100: $gray-100;
+  gray-200: $gray-200;
+  gray-300: $gray-300;
+  gray-400: $gray-400;
+  gray-500: $gray-500;
+  gray-600: $gray-600;
+  gray-700: $gray-700;
+  gray-800: $gray-800;
+  gray-900: $gray-900;
+  gray-1000: $gray-1000;
+  gray-1100: $gray-1100;
+  gray-1200: $gray-1200;
+  black: $black;
 }

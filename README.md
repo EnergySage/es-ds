@@ -62,12 +62,12 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 
 ### Installing Dependencies and Linking packages
 
-1. `npm install` (this will install packages used by `overmind`)
-2. `make update` (this will run `npm install` on each package within the monorepo)
-3. `make update-peer-deps` (will update peer dependencies)
-4. `make build-scss-pkg` (will build _es-bs-base_, which must happen before building _es-vue-base_ because there's lines like `@import '~@energysage/es-bs-base/scss/includes';` in _es-vue-base_ that will not compile without having the _es-bs-base_ package built first)
-5. `make update` (will relink packages)
-6. `make build` (will build all packages)
+1. `make install` - installs all packages from npm
+2. `make update-peer-deps` - installs necessary peer deps for `es-vue-base` used in `es-design-system`
+3. `make build-scss-pkg` - build `es-bs-base/dist` locally; we do this first since `es-vue-base` imports it `@import '~@energysage/es-bs-base/scss/includes'`
+4. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap) `es-bs-base/dist`
+5. `make build-vue-pkg` - build `es-vue-base/dist` locally
+6. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap) `es-bs-base/dist` and `es-vue-base/dist` for use in `es-design-system`
 
 #### Vue Component Process
 
@@ -83,7 +83,7 @@ Tests can be run via `make test`, but this will run tests for all packages in th
 
 Once tests are passing, you'll need to rebuild the _es-vue-base_ package. This can be done via `npm run build`.
 
-Next you'll want to move back to the root of the monorepo, and run `make update`. This will ensure the new package is _sym-linked_ to the other projects in the monorepo.
+Next you'll want to move back to the root of the monorepo, and run `make symlink`. This will ensure the new package is _sym-linked_ to the other projects in the monorepo.
 
 ### Documenting change
 
@@ -99,16 +99,17 @@ For simplicity of deployment, versioning of packages are fixed and updated toget
 
 Assuming changes are approved, the process of publishing a new version is...
 
-1. Run tests `make test`
-2. Build & Compile `make build`
-3. Merge in Changes
-4. Run `make publish`
-5. `make update`
-6. Update changelog
+0. Ensure your local environment is [setup](./README.md#installing-dependencies-and-linking-packages) and you are on the `main` branch
+1. `make lint && make test` - Run tests and linting to ensure they pass
+2. `make build` - Build all packages to `*/dist` folders locally
+3. `make publish` - Publish updated packages to [npmjs.com](https://www.npmjs.com/org/energysage)
+4. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
+5. `make install && make symlink` - Install the new published versions locally and symlink them
+6. `git commit -m "X.X.X Changelog" && git push` - Commit and push the changelog
 
 Running `make publish` will trigger the following prompt:
 
-```
+```shell
 lerna info Looking for changed packages since v0.1.9
 ? Select a new version (currently 0.1.9)
 ❯ Patch (0.1.10)

@@ -93,7 +93,7 @@ export default {
         const colors = {
             white: '#fff',
             indigo: '#152f87',
-            cyan: '#007eb0',
+            cyan: '#007aab',
         };
         // eslint-disable-next-line max-len
         const gradient = `linear-gradient(112.58deg, ${colors.cyan} 28%, ${colors.indigo} 100%)`;
