@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2022-09-26
+
+- Added color scales for `yellow|teal|pink|cyan` to `es-bs-base`
+- Updated color docs to support above to `es-design-system`
+- Updated documentation around getting started and publishing
+- Updated `ci.yml` to include build and symlink steps
+- Added `cool|warm` variants to `EsSupport`
+
 ## [0.6.7] - 2022-09-20
 
 - Fixed an issue with `v-model` in `EsFormInput` && `EsFormTextarea`
