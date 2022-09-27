@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.1] - 2022-09-27
+
+- Added prop(default `true` to round to nearest `0.5` to `EsRating`
+
 ## [0.7.0] - 2022-09-26
 
 - Added color scales for `yellow|teal|pink|cyan` to `es-bs-base`
