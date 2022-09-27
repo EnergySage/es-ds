@@ -1,11 +1,11 @@
 <template>
     <b-form-rating
         v-bind="$attrs"
-        :value="localRating"
+        :value="roundedRating"
         :readonly="readOnly"
         no-border
         inline
-        :aria-valuenow="localRating"
+        :aria-valuenow="roundedRating"
         data-testid="rating-test"
         v-on="$listeners">
         <template #icon-empty>
@@ -73,11 +73,28 @@ export default {
             default: '20px',
             required: false,
         },
+        /**
+         * Round rating to nearest .5
+         */
+        rounded: {
+            type: Boolean,
+            default: true,
+            required: false,
+        },
     },
     data() {
         return {
             localRating: this.rating,
         };
+    },
+    computed: {
+        roundedRating() {
+            if (!this.rounded) {
+                return this.localRating;
+            }
+            // Rounds to nearest .5
+            return Math.round(this.localRating * 2) / 2;
+        },
     },
 };
 </script>
