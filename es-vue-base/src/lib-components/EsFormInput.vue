@@ -5,7 +5,7 @@
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="id"
-            class="label font-weight-bold justify-content-start">
+            class="label font-weight-semibold justify-content-start">
             <slot name="label" />
             <span
                 v-if="required"
