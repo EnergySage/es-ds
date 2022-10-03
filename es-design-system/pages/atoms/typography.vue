@@ -54,11 +54,61 @@
                 </b-link>
             </li>
         </ul>
+        <b-row class="my-5 border-top pt-5">
+            <b-col>
+                <h2>
+                    Font Weight Utility Classes
+                </h2>
+                <b-table
+                    :fields="fontWeightFields"
+                    :items="fontWeightItems"
+                    striped>
+                    <template #cell(example)="data">
+                        <span :class="data.item.name">sample text at {{ data.item.weight }} weight</span>
+                    </template>
+                </b-table>
+            </b-col>
+        </b-row>
     </div>
 </template>
 
 <script>
 export default {
     name: 'AtomsTypography',
+    data() {
+        return {
+            fontWeightFields: [
+                'name',
+                // virtual column that can reference two fields
+                { key: 'example', label: 'Example' },
+            ],
+            fontWeightItems: [
+                {
+                    name: 'font-weight-lighter',
+                    weight: '200',
+                },
+                {
+                    name: 'font-weight-light',
+                    weight: '300',
+                },
+                {
+                    name: 'font-weight-normal',
+                    weight: '400',
+                },
+                {
+                    name: 'font-weight-semibold',
+                    weight: '500',
+                },
+                {
+                    name: 'font-weight-bold',
+                    weight: '600',
+                },
+                {
+                    name: 'font-weight-bolder',
+                    weight: '800',
+                },
+            ],
+        };
+    },
 };
 </script>
