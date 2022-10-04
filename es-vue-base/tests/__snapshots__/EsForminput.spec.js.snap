@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsFormInput <EsFormInput /> 1`] = `
-"<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-bold justify-content-start">Account Number
+"<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-semibold justify-content-start">Account Number
     <!----></label>
   <div class="input-holder"><input id="myID" type="text" class="es-form-input w-100 form-control">
     <!---->
@@ -12,7 +12,7 @@ exports[`EsFormInput <EsFormInput /> 1`] = `
 `;
 
 exports[`EsFormInput <EsFormInput <label /> /> 1`] = `
-"<div required="required" class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-bold justify-content-start"> <span class="text-danger">
+"<div required="required" class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-semibold justify-content-start"> <span class="text-danger">
             *
         </span></label>
   <div class="input-holder"><input id="myID" type="text" class="es-form-input w-100 form-control">
@@ -26,7 +26,7 @@ exports[`EsFormInput <EsFormInput <label /> /> 1`] = `
 `;
 
 exports[`EsFormInput <EsFormInput props /> 1`] = `
-"<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-bold justify-content-start">
+"<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-semibold justify-content-start">
     <!----></label>
   <div class="input-holder"><input id="myID" type="text" class="es-form-input w-100 form-control">
     <!---->
@@ -38,7 +38,7 @@ exports[`EsFormInput <EsFormInput props /> 1`] = `
 
 exports[`EsFormInput <EsFormInput v-model /> 1`] = `
 "<div>
-  <div class="input-wrapper justify-content-end mb-2"><label for="testId" class="label font-weight-bold justify-content-start">
+  <div class="input-wrapper justify-content-end mb-2"><label for="testId" class="label font-weight-semibold justify-content-start">
       <!----></label>
     <div class="input-holder"><input id="testId" type="text" class="es-form-input w-100 form-control" data-testid="testInput">
       <!---->
@@ -50,7 +50,7 @@ exports[`EsFormInput <EsFormInput v-model /> 1`] = `
 `;
 
 exports[`EsFormInput <EsFormInput>slots</EsFormInput> 1`] = `
-"<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-bold justify-content-start">Account Number
+"<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-semibold justify-content-start">Account Number
     <!----></label>
   <div class="input-holder"><input id="myID" type="text" class="es-form-input w-100 form-control"> <small class="form-text text-muted">Please enter your account number.</small>
     <div class="invalid-feedback">Please enter a valid account number.</div>
