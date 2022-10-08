@@ -70,6 +70,11 @@
                 EsViewMore
             </b-link>
         </li>
+        <li>
+            <b-link to="/molecules/es-verification-code">
+                EsVerificationCode
+            </b-link>
+        </li>
     </ul>
 </template>
 
