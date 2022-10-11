@@ -1,6 +1,6 @@
 {
     "name": "es-design-system",
-    "version": "0.7.4",
+    "version": "0.7.5",
     "private": true,
     "scripts": {
         "dev": "env-cmd -f .env.local nuxt",
@@ -24,7 +24,7 @@
     "prettier": "eslint-config-energysage/prettier",
     "dependencies": {
         "@energysage/es-bs-base": "^0.7.3",
-        "@energysage/es-vue-base": "^0.7.4",
+        "@energysage/es-vue-base": "^0.7.5",
         "@nuxtjs/axios": "^5.13.6",
         "@nuxtjs/i18n": "^7.2.2",
         "bootstrap-vue": "^2.22.0",
