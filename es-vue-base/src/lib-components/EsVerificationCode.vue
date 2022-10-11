@@ -47,7 +47,7 @@ export default {
          */
         allowedChars: {
             type: Array,
-            default: () => Array(9).fill(0).map((e, i) => `${i + 1}`),
+            default: () => Array(10).fill(0).map((e, i) => `${i}`),
         },
         /**
          * Input Type
