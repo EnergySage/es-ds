@@ -1,6 +1,19 @@
 <template>
     <div>
         <div class="mb-3">
+            <h1>
+                EsPopover
+            </h1>
+            <p>
+                The default trigger prop is <code>focus</code>.
+                When using the default please ensure you use a <code>href</code> not a <code>button</code>.
+                See <b-link
+                    target="_blank"
+                    href="https://bootstrap-vue.org/docs/components/popover#caveats-with-focus-trigger-on-button-elements">
+                    bootstrap-vue documentation
+                </b-link>
+                for more details.
+            </p>
             <h2>
                 Dark Variant
             </h2>
@@ -8,15 +21,14 @@
                 <!-- eslint-disable vuejs-accessibility/label-has-for -->
                 <label>
                     With Title
-                    <es-button
+                    <b-link
                         id="darkTitleTarget"
-                        class="p-0 text-gray-700 align-text-bottom"
-                        tabindex="0"
-                        variant="link">
+                        class="p-0 text-gray-700"
+                        tabindex="0">
                         <IconInfo
                             width="16px"
                             height="16px" />
-                    </es-button>
+                    </b-link>
                 </label>
                 <EsPopover
                     target="darkTitleTarget"
@@ -36,15 +48,14 @@
             <div>
                 <label>
                     No Title
-                    <es-button
+                    <b-link
                         id="darkNoTitleTarget"
-                        class="p-0 text-gray-700 align-text-bottom"
-                        tabindex="0"
-                        variant="link">
+                        class="p-0 text-gray-700"
+                        tabindex="0">
                         <IconInfo
                             width="16px"
                             height="16px" />
-                    </es-button>
+                    </b-link>
                 </label>
                 <EsPopover
                     target="darkNoTitleTarget"
@@ -71,15 +82,14 @@
                 <!-- eslint-disable vuejs-accessibility/label-has-for -->
                 <label>
                     With Title
-                    <es-button
+                    <b-link
                         id="lightTitleTarget"
-                        class="p-0 text-gray-700 align-text-bottom"
-                        tabindex="0"
-                        variant="link">
+                        class="p-0 text-gray-700"
+                        tabindex="0">
                         <IconInfo
                             width="16px"
                             height="16px" />
-                    </es-button>
+                    </b-link>
                 </label>
                 <EsPopover
                     target="lightTitleTarget"
@@ -99,15 +109,14 @@
             <div>
                 <label>
                     No Title
-                    <es-button
+                    <b-link
                         id="lightNoTitleTarget"
-                        class="p-0 text-gray-700 align-text-bottom"
-                        tabindex="0"
-                        variant="link">
+                        class="p-0 text-gray-700"
+                        tabindex="0">
                         <IconInfo
                             width="16px"
                             height="16px" />
-                    </es-button>
+                    </b-link>
                 </label>
                 <EsPopover
                     target="lightNoTitleTarget"
@@ -125,13 +134,12 @@
     </div>
 </template>
 <script>
-import { EsPopover, IconInfo, EsButton } from '@energysage/es-vue-base';
+import { EsPopover, IconInfo } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsPopoverDocs',
     components: {
         EsPopover,
-        EsButton,
         IconInfo,
     },
 };
