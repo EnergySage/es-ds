@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-vue-base",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "private": false,
   "description": "",
   "scripts": {
@@ -29,7 +29,7 @@
     "@babel/core": "^7.18.9",
     "@babel/eslint-parser": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
-    "@energysage/es-bs-base": "^0.7.3",
+    "@energysage/es-bs-base": "^0.7.6",
     "@rollup/plugin-alias": "^4.0.0",
     "@rollup/plugin-babel": "^6.0.0",
     "@rollup/plugin-commonjs": "^23.0.0",
@@ -82,8 +82,8 @@
     "bootstrap-vue": "^2.22.0",
     "html-truncate": "^1.2.2",
     "vue": "^2.7.13",
-    "vue-template-compiler": "^2.7.13",
     "vue-slider-component": "^3.2.18",
+    "vue-template-compiler": "^2.7.13",
     "vuelidate": "^0.7.7"
   },
   "engines": {
