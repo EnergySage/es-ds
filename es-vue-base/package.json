@@ -81,7 +81,8 @@
     "@energysage/es-bs-base": "*",
     "bootstrap-vue": "^2.22.0",
     "html-truncate": "^1.2.2",
-    "vue": "^2.7.8",
+    "vue": "^2.7.13",
+    "vue-template-compiler": "^2.7.13",
     "vue-slider-component": "^3.2.18",
     "vuelidate": "^0.7.7"
   },
