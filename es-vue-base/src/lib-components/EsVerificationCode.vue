@@ -17,8 +17,8 @@
             v-on="$listeners"
             @input.native="handleInput"
             @keypress="handleKeys"
-            @keydown.delete="handleDelete"
             @keyup.enter="checkCodeValidity(code)"
+            @keydown.delete="handleDelete"
             @keydown.left="handleLeft"
             @keydown.right="handleRight"
             @paste="handlePaste" />
@@ -43,7 +43,7 @@ export default {
             default: 5,
         },
         /**
-         * Allowed characters
+         * Allowed characters to type
          */
         allowedChars: {
             type: Array,
@@ -74,8 +74,8 @@ export default {
             const { value } = event.target;
             const keyPressed = event.key;
 
-            // Do not allow for non numeric keys or more than one character per input
-            if (!this.allowedChars.includes(keyPressed) || value.length >= 1) {
+            // Do not allow for keys not in allowed except ctrl + cmd
+            if (!event.ctrlKey && !event.metaKey && (!this.allowedChars.includes(keyPressed) || value.length >= 1)) {
                 event.preventDefault();
             }
         },
@@ -145,6 +145,9 @@ export default {
                     // If the paste is equal or larger than this.charCount we move focus to the last input
                     if (currentActiveElement.nextElementSibling) {
                         currentActiveElement = currentActiveElement.nextElementSibling;
+
+                        // TODO: Why does chromium require setting the value directly?
+                        currentActiveElement.value = char;
                         currentActiveElement?.focus();
                     }
                 });
@@ -171,6 +174,10 @@ export default {
             }
         },
         checkCodeValidity(code) {
+            if (!code) {
+                return false;
+            }
+
             const cleanCode = code.join('').trim();
             const codeArray = cleanCode.split('');
 
@@ -209,7 +216,7 @@ export default {
 
     .code-input {
         appearance: textfield;
-        font-size: 3.5rem;
+        font-size: 3rem;
         height: 6rem;
 
         &::-webkit-outer-spin-button,
