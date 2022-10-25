@@ -42,7 +42,7 @@
     "autoprefixer": "^9.8.8",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^29.0.3",
-    "bootstrap-vue": "^2.22.0",
+    "bootstrap-vue": "^2.23.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.20.0",
     "eslint-config-energysage": "^2.2.2",
