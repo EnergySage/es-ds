@@ -1,6 +1,10 @@
 export { default as IconArrowClockwise } from './arrow-clockwise.vue';
+export { default as IconArrowCounterClockwise } from './arrow-counter-clockwise.vue';
 export { default as IconArrowCycle } from './arrow-cycle.vue';
 export { default as IconArrow } from './arrow.vue';
+export { default as IconArrowLeft } from './arrow-left.vue';
+export { default as IconArrowRight } from './arrow-right.vue';
+export { default as IconArrowUp } from './arrow-up.vue';
 export { default as IconWifi } from './wifi.vue';
 export { default as IconBell } from './bell.vue';
 export { default as IconTrashCan } from './trash-can.vue';
@@ -63,3 +67,4 @@ export { default as IconStarFull } from './star-full.vue';
 export { default as IconStarHalf } from './star-half.vue';
 export { default as IconStarEmpty } from './star-empty.vue';
 export { default as IconVerified } from './verified.vue';
+export { default as IconX } from './x.vue';
