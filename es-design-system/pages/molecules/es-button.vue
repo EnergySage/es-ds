@@ -101,6 +101,34 @@
                 </tr>
                 <tr>
                     <td scope="row">
+                        Primary Outline (Disabled)
+                    </td>
+                    <td>
+                        <es-button
+                            disabled
+                            :outline="true"
+                            size="sm">
+                            Small button
+                        </es-button>
+                    </td>
+                    <td>
+                        <es-button
+                            disabled
+                            :outline="true">
+                            Medium button
+                        </es-button>
+                    </td>
+                    <td>
+                        <es-button
+                            disabled
+                            :outline="true"
+                            size="lg">
+                            Large button
+                        </es-button>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">
                         Dark (Secondary)
                     </td>
                     <td>
@@ -120,37 +148,6 @@
                     </td>
                     <td>
                         <es-button
-                            variant="dark"
-                            :outline="false"
-                            size="lg">
-                            Large button
-                        </es-button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        Dark (disabled)
-                    </td>
-                    <td>
-                        <es-button
-                            disabled
-                            variant="dark"
-                            :outline="false"
-                            size="sm">
-                            Small button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            disabled
-                            variant="dark"
-                            :outline="false">
-                            Medium button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            disabled
                             variant="dark"
                             :outline="false"
                             size="lg">

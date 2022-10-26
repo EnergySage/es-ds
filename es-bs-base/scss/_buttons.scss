@@ -71,6 +71,18 @@ fieldset:disabled a.btn {
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
     @include button-outline-variant($value);
+
+    &:disabled,
+    &.disabled {
+      color: color-yiq($btn-disabled-bg-color);
+      pointer-events: none;
+      background-color: $btn-disabled-bg-color;
+      border-color: $btn-disabled-bg-color;
+      // Remove CSS gradients if they're enabled
+      @if $enable-gradients {
+        background-image: none;
+      }
+    }
   }
 }
 
