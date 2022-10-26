@@ -2,11 +2,20 @@
 
 An EnergySage branded Bootstrap
 
-## Publishing a new version
+## Getting Started
 
-1. Test changes via `npm run test`
-2. Build CSS & JS via `npm run dist`
-3. Follow documentation from [es-ds README.md](../README.md#publishing-a-new-version-of-a-package)
+`npm install @energysage/es-bs-base`
 
-*NOTE* you'll need to create an npm account with authorization to publish to `@energysage` prior to running `make publish`.
-To create an account head on over to [npmjs.com](https://www.npmjs.com/).
+### Basic Example Usage
+
+main.scss:
+
+```scss
+@import '~@energysage/es-bs-base/scss/bootstrap';
+```
+
+test.html:
+
+```html
+<h1>Hello World</h1>
+```

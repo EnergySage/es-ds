@@ -144,10 +144,10 @@ export default {
                     // If the paste is less than this.charCount; move the focus to the first empty input
                     // If the paste is equal or larger than this.charCount we move focus to the last input
                     if (currentActiveElement.nextElementSibling) {
-                        currentActiveElement = currentActiveElement.nextElementSibling;
-
                         // TODO: Why does chromium require setting the value directly?
                         currentActiveElement.value = char;
+
+                        currentActiveElement = currentActiveElement.nextElementSibling;
                         currentActiveElement?.focus();
                     }
                 });
