@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.7] - 2022-10-26
+
+- Fixed an issue with `EsVerificationCode` and pasting order characters showed up
+- Added new slot `extraContext` to `EsFormInput`
+- Added missing icons to package and docs
+- Fixed an issue where outlined buttons didn't show disabled state
+- Fixed an issue where breadcrumb bg was always `$white`
+
 ## [0.7.6] - 2022-10-10
 
 - Fixed an issue with `EsVerificationCode` and pasting in Safari + Chrome
