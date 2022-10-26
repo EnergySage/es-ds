@@ -97,7 +97,7 @@
     "postcss": "^8.4.12",
     "postcss-cli": "^10.0.0",
     "qunit": "^2.18.2",
-    "rollup": "^2.70.2",
+    "rollup": "^3.2.3",
     "shelljs": "^0.8.5",
     "sinon": "^14.0.0",
     "stylelint": "^14.7.1",
