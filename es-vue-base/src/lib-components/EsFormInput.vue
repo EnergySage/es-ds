@@ -13,7 +13,11 @@
                 *
             </span>
         </label>
-
+        <p
+            v-if="hasExtraContext"
+            class="mb-1">
+            <slot name="extraContext" />
+        </p>
         <div class="input-holder">
             <b-form-input
                 :id="id"
@@ -122,6 +126,9 @@ export default {
         },
         hasError() {
             return !!this.$slots.errorMessage;
+        },
+        hasExtraContext() {
+            return !!this.$slots.extraContext;
         },
     },
 };
