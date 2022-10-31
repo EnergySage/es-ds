@@ -33,7 +33,7 @@
         "nuxt": "^2.15.8",
         "vue": "^2.7.13",
         "vue-server-renderer": "^2.7.13",
-        "vue-slider-component": "^3.2.18",
+        "vue-slider-component": "^3.2.22",
         "vue-template-compiler": "^2.7.13",
         "vuelidate": "^0.7.7"
     },
