@@ -38,7 +38,8 @@
                         v-model="$v.form.phone.$model"
                         :state="validateState('phone')"
                         :disabled="isSubmitInProgress"
-                        required>
+                        required
+                        type="tel">
                         <template #label>
                             Phone Number
                         </template>

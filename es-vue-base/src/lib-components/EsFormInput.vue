@@ -91,6 +91,7 @@ export default {
                 'email',
                 'number',
                 'password',
+                'tel',
             ].includes(val),
         },
         /**
