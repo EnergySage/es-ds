@@ -105,7 +105,7 @@ export default {
                 },
                 {
                     name: 'font-weight-bolder',
-                    weight: '800',
+                    weight: '700',
                 },
             ],
         };
