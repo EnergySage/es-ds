@@ -34,3 +34,24 @@ export function vuelidateEmail(emailAddress) {
 export function vuelidatePhone(number) {
     return !helpers.req(number) || /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(number);
 }
+
+export const hasNumber = (param) => /[0-9]/.test(param);
+export const hasSpecialCharacter = (param) => /\W|_/.test(param);
+export const hasUppercaseLetter = (param) => /[A-Z]/.test(param);
+export const hasLowercaseLetter = (param) => /[a-z]/.test(param);
+
+export function vuelidateHasNumber(param) {
+    return !helpers.req(param) || hasNumber(param);
+}
+
+export function vuelidateHasSpecialCharacter(param) {
+    return !helpers.req(param) || hasSpecialCharacter(param);
+}
+
+export function vuelidateHasUppercaseLetter(param) {
+    return !helpers.req(param) || hasUppercaseLetter(param);
+}
+
+export function vuelidateHasLowercaseLetter(param) {
+    return !helpers.req(param) || hasLowercaseLetter(param);
+}
