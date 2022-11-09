@@ -13,6 +13,17 @@ export default {
         isSubmitInProgress() {
             return this.submitInProgress;
         },
+        formErrors() {
+            const formFields = this.getFields(this.$v.form);
+            const formFieldErrors = formFields.reduce((formObj, item) => {
+                // eslint-disable-next-line no-param-reassign
+                formObj[item.name] = this.getFields(item.obj, 'isValid')
+                    .filter((i) => !i.isValid)
+                    .map((j) => j.name);
+                return formObj;
+            }, {});
+            return formFieldErrors;
+        },
     },
     methods: {
         validateState(name) {
@@ -34,6 +45,11 @@ export default {
         },
         stopSubmit() {
             this.submitInProgress = false;
+        },
+        getFields(obj, valueKey = 'obj') {
+            return Object.keys(obj)
+                .filter((name) => !name.startsWith('$'))
+                .map((name) => ({ name, [valueKey]: obj[name] }));
         },
     },
 };
