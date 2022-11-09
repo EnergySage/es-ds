@@ -35,23 +35,58 @@ export function vuelidatePhone(number) {
     return !helpers.req(number) || /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(number);
 }
 
+/**
+ * @param { string } param
+ * @returns { boolean } if string contains a number
+ */
 export const hasNumber = (param) => /[0-9]/.test(param);
+
+/**
+ * @param { string } param
+ * @returns { boolean } if string contains a special character (i.e. non-word or underscore)
+ */
 export const hasSpecialCharacter = (param) => /\W|_/.test(param);
+
+/**
+ * @param { string } param
+ * @returns { boolean } if string contains a uppercase letter
+ */
 export const hasUppercaseLetter = (param) => /[A-Z]/.test(param);
+
+/**
+ * @param { string } param
+ * @returns { boolean } if string contains a lowercase letter
+ */
 export const hasLowercaseLetter = (param) => /[a-z]/.test(param);
 
+/**
+ * @param { string } param
+ * @returns { boolean } if not required or string contains a number
+ */
 export function vuelidateHasNumber(param) {
     return !helpers.req(param) || hasNumber(param);
 }
 
+/**
+ * @param { string } param
+ * @returns { boolean } if not required or string contains a special character
+ */
 export function vuelidateHasSpecialCharacter(param) {
     return !helpers.req(param) || hasSpecialCharacter(param);
 }
 
+/**
+ * @param { string } param
+ * @returns { boolean } if not required or string contains an uppercase letter
+ */
 export function vuelidateHasUppercaseLetter(param) {
     return !helpers.req(param) || hasUppercaseLetter(param);
 }
 
+/**
+ * @param { string } param
+ * @returns { boolean } if not required or string contains an lowercase letter
+ */
 export function vuelidateHasLowercaseLetter(param) {
     return !helpers.req(param) || hasLowercaseLetter(param);
 }
