@@ -13,6 +13,45 @@ export default {
         isSubmitInProgress() {
             return this.submitInProgress;
         },
+        /**
+        * @returns { Object } structure that's easy to use for form validation
+        *
+        * Shape of output will match validators defined in the validations
+        * attribute of a component. For example if your validations object looks like:
+        *
+        * validations: {
+        *     form: {
+        *         password: {
+        *             [vuelidateKeys.REQUIRED]: vuelidateRequired,
+        *             [vuelidateKeys.MIN_LENGTH]: vuelidateMinLength(8),
+        *             [vuelidateKeys.HAS_NUMBER]: vuelidateHasNumber,
+        *             [vuelidateKeys.HAS_SPECIAL_CHARACTER]: vuelidateHasSpecialCharacter,
+        *             [vuelidateKeys.HAS_UPPERCASE_LETTER]: vuelidateHasUppercaseLetter,
+        *             [vuelidateKeys.HAS_LOWERCASE_LETTER]: vuelidateHasLowercaseLetter,
+        *         },
+        *     },
+        * },
+        *
+        * Then the resulting formErrors (if the field is invalid) will look something like:
+        *
+        * {
+        *     password: [
+        *         'required',
+        *         'minLength',
+        *         'hasNumber',
+        *         'hasSpecialCharacter',
+        *         'hasUppercaseLetter',
+        *         'hasLowercaseLetter',
+        *     ]
+        * }
+        *
+        * Only validators returning "false" will show up in the resulting list.
+        * So if the field is valid, the result would be:
+        *
+        * {
+        *     password: [],
+        * }
+        */
         formErrors() {
             const formFields = this.getFields(this.$v.form);
             const formFieldErrors = formFields.reduce((formObj, item) => {
