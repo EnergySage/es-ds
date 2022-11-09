@@ -62,6 +62,24 @@
                         :variant="formMsgVariant"
                         :message="formMsg"
                         @hidden="formMsg = ''" />
+                    <es-form-input
+                        id="password"
+                        v-model="$v.form.password.$model"
+                        :state="validateState('password')"
+                        :disabled="isSubmitInProgress"
+                        required
+                        type="tel">
+                        <template #label>
+                            password
+                        </template>
+                        <template #errorMessage>
+                            <div
+                                v-for="error in formErrors.password"
+                                :key="error">
+                                {{ getErrorMessage(error) }}
+                            </div>
+                        </template>
+                    </es-form-input>
                     <div class="d-flex flex-grow-1 justify-content-end mt-3">
                         <es-button
                             type="submit"
@@ -118,7 +136,20 @@
 </template>
 <script>
 import {
-    EsFormInput, EsFormTextarea, EsButton, EsFormMsg, formMixins, vuelidateRequired, vuelidatePhone, vuelidateEmail,
+    EsFormInput,
+    EsFormTextarea,
+    EsButton,
+    EsFormMsg,
+    formMixins,
+    vuelidateKeys,
+    vuelidateRequired,
+    vuelidatePhone,
+    vuelidateEmail,
+    vuelidateMinLength,
+    vuelidateHasNumber,
+    vuelidateHasSpecialCharacter,
+    vuelidateHasUppercaseLetter,
+    vuelidateHasLowercaseLetter,
 } from '@energysage/es-vue-base';
 
 export default {
@@ -135,49 +166,69 @@ export default {
             inline: false,
             validatorMixins: [
                 {
-                    name: 'vuelidateRequired',
+                    name: vuelidateKeys.REQUIRED,
                     arguments: '',
                     description: 'check if the field has a value',
                 },
                 {
-                    name: 'vuelidateRequiredIf',
+                    name: vuelidateKeys.REQUIRED_IF,
                     arguments: 'function',
                     description: 'a function with access to string; expected to return a boolean',
                 },
                 {
-                    name: 'vuelidateMinValue',
+                    name: vuelidateKeys.MIN_VALUE,
                     arguments: 'minimum',
                     description: 'check if number is greater than minimum',
                 },
                 {
-                    name: 'vuelidateMaxValue',
+                    name: vuelidateKeys.MAX_VALUE,
                     arguments: 'maximum',
                     description: 'check if number is less than maximum',
                 },
                 {
-                    name: 'vuelidateMinLength',
-                    arguments: 'minimum',
-                    description: 'check if string has at least the mimimum characters count',
+                    name: vuelidateKeys.MIN_LENGTH,
+                    arguments: '',
+                    description: 'This field must be at least 8 characters',
                 },
                 {
-                    name: 'vuelidateMaxValue',
+                    name: vuelidateKeys.MAX_LENGTH,
                     arguments: 'maximum',
                     description: 'check if string has less than the maximum characters count',
                 },
                 {
-                    name: 'vuelidateNumeric',
+                    name: vuelidateKeys.NUMERIC,
                     arguments: '',
                     description: 'check if the value is a number',
                 },
                 {
-                    name: 'vuelidateEmail',
+                    name: vuelidateKeys.EMAIL,
                     arguments: '',
                     description: 'check if the string is a valid email address',
                 },
                 {
-                    name: 'vuelidatePhone',
+                    name: vuelidateKeys.PHONE,
                     arguments: '',
                     description: 'check if the string is a valid US phone number',
+                },
+                {
+                    name: vuelidateKeys.HAS_NUMBER,
+                    arguments: '',
+                    description: 'check if the string contains a number',
+                },
+                {
+                    name: vuelidateKeys.HAS_SPECIAL_CHARACTER,
+                    arguments: '',
+                    description: 'check if the string contains a special character',
+                },
+                {
+                    name: vuelidateKeys.HAS_UPPERCASE_LETTER,
+                    arguments: '',
+                    description: 'check if the string contains an uppercase character',
+                },
+                {
+                    name: vuelidateKeys.HAS_LOWERCASE_LETTER,
+                    arguments: '',
+                    description: 'check if the string contains a lowercase character',
                 },
             ],
             dataMixins: [
@@ -220,21 +271,30 @@ export default {
                 phone: null,
                 email: null,
                 notes: null,
+                password: null,
             },
         };
     },
     validations: {
         form: {
             phone: {
-                required: vuelidateRequired,
-                phone: vuelidatePhone,
+                [vuelidateKeys.REQUIRED]: vuelidateRequired,
+                [vuelidateKeys.PHONE]: vuelidatePhone,
             },
             email: {
                 required: vuelidateRequired,
-                email: vuelidateEmail,
+                [vuelidateKeys.EMAIL]: vuelidateEmail,
             },
             notes: {
-                required: vuelidateRequired,
+                [vuelidateKeys.REQUIRED]: vuelidateRequired,
+            },
+            password: {
+                [vuelidateKeys.REQUIRED]: vuelidateRequired,
+                [vuelidateKeys.MIN_LENGTH]: vuelidateMinLength(8),
+                [vuelidateKeys.HAS_NUMBER]: vuelidateHasNumber,
+                [vuelidateKeys.HAS_SPECIAL_CHARACTER]: vuelidateHasSpecialCharacter,
+                [vuelidateKeys.HAS_UPPERCASE_LETTER]: vuelidateHasUppercaseLetter,
+                [vuelidateKeys.HAS_LOWERCASE_LETTER]: vuelidateHasLowercaseLetter,
             },
         },
     },
@@ -257,6 +317,21 @@ export default {
                     this.showFormError();
                 }
             }, 5000);
+        },
+        getErrorMessage(validatorName) {
+            const ERROR_MESSAGES = {
+                [vuelidateKeys.REQUIRED]: () => 'This field is required',
+                [vuelidateKeys.MIN_LENGTH]: (min = 8) => `This field must be at least ${min} characters`,
+                [vuelidateKeys.HAS_NUMBER]: () => 'This field must include a number',
+                [vuelidateKeys.HAS_SPECIAL_CHARACTER]: () => 'This field must include a special character',
+                [vuelidateKeys.HAS_UPPERCASE_LETTER]: () => 'This field must include an uppercase letter',
+                [vuelidateKeys.HAS_LOWERCASE_LETTER]: () => 'This field must include a lowercase letter',
+            };
+            const msgFunc = ERROR_MESSAGES[validatorName];
+            if (msgFunc) {
+                return msgFunc();
+            }
+            return '';
         },
     },
 };
