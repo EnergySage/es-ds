@@ -44,5 +44,5 @@ build-vue-pkg:
 
 .PHONY: update-peer-deps
 update-peer-deps:
-	npm --prefix es-vue-base install bootstrap-vue@^2.22.0 \
-		vue@^2.7.8 \
+	npm --prefix es-vue-base install bootstrap-vue@latest \
+		vue@latest \
