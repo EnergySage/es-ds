@@ -31,10 +31,10 @@
         "core-js": "^3.26.0",
         "html-truncate": "^1.2.2",
         "nuxt": "^2.15.8",
-        "vue": "^2.7.13",
-        "vue-server-renderer": "^2.7.13",
+        "vue": "^2.7.14",
+        "vue-server-renderer": "^2.7.14",
         "vue-slider-component": "^3.2.23",
-        "vue-template-compiler": "^2.7.13",
+        "vue-template-compiler": "^2.7.14",
         "vuelidate": "^0.7.7"
     },
     "devDependencies": {
