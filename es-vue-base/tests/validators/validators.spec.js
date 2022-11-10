@@ -2,80 +2,7 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import EsFormInput from '@/src/lib-components/EsFormInput.vue';
 import BootstrapVue from 'bootstrap-vue';
 import Vuelidate from 'vuelidate';
-import * as validators from '../src/lib-validators';
-
-describe('hasNumber', () => {
-    test.concurrent.each([
-        ['asdf', false],
-        ['', false],
-        [123, true],
-        ['123', true],
-        [1, true],
-        ['1', true],
-        ['asdf1', true],
-        ['1asdf', true],
-        ['as1df', true],
-    ])('for %s is %s', async (value, expected) => {
-        expect(validators.hasNumber(value)).toBe(expected);
-    });
-});
-
-describe('hasSpecialCharacter', () => {
-    test.concurrent.each([
-        ['asdf', false],
-        ['', false],
-        [123, false],
-        ['123', false],
-        [1, false],
-        ['1', false],
-        ['asdf1', false],
-        ['1asdf', false],
-        ['as1df', false],
-        ['a$sdf', true],
-        ['@', true],
-        ['12!3', true],
-    ])('for %s is %s', async (value, expected) => {
-        expect(validators.hasSpecialCharacter(value)).toBe(expected);
-    });
-});
-
-describe('hasUppercaseLetter', () => {
-    test.concurrent.each([
-        ['asdf', false],
-        ['', false],
-        [123, false],
-        ['123', false],
-        [1, false],
-        ['1', false],
-        ['asdf1', false],
-        ['1asdf', false],
-        ['as1df', false],
-        ['a$sdf', false],
-        ['@', false],
-        ['12!3', false],
-        ['aSdf1', true],
-        ['1asDf', true],
-        ['ASDF', true],
-        ['a$sdF', true],
-    ])('for %s is %s', async (value, expected) => {
-        expect(validators.hasUppercaseLetter(value)).toBe(expected);
-    });
-});
-
-describe('hasLowercaseLetter', () => {
-    test.concurrent.each([
-        ['asdf', true],
-        ['', false],
-        [123, false],
-        ['a$sdF', true],
-        ['', false],
-        [123, false],
-        ['a$sdF', true],
-        ['d', true],
-    ])('for %s is %s', async (value, expected) => {
-        expect(validators.hasLowercaseLetter(value)).toBe(expected);
-    });
-});
+import * as validators from '../../src/lib-validators';
 
 const vueWithVuelidate = createLocalVue();
 vueWithVuelidate.use(BootstrapVue);
@@ -88,7 +15,7 @@ describe('vuelidateHasNumber', () => {
             'asdf',
             {
                 required: validators.vuelidateRequired,
-                vuelidateHasNumber: validators.vuelidateHasNumber,
+                vuelidateHasNumber: validators.vuelidateHasNumber(1),
             },
             true,
         ],
@@ -97,7 +24,7 @@ describe('vuelidateHasNumber', () => {
             'as1df',
             {
                 required: validators.vuelidateRequired,
-                vuelidateHasNumber: validators.vuelidateHasNumber,
+                vuelidateHasNumber: validators.vuelidateHasNumber(1),
             },
             false,
         ],
@@ -106,7 +33,7 @@ describe('vuelidateHasNumber', () => {
             'as1df',
             {
                 required: validators.vuelidateRequired,
-                vuelidateHasSpecialCharacter: validators.vuelidateHasSpecialCharacter,
+                vuelidateHasSpecialCharacter: validators.vuelidateHasSpecialCharacter(1),
             },
             true,
         ],
@@ -115,7 +42,7 @@ describe('vuelidateHasNumber', () => {
             'as@df',
             {
                 required: validators.vuelidateRequired,
-                vuelidateHasSpecialCharacter: validators.vuelidateHasSpecialCharacter,
+                vuelidateHasSpecialCharacter: validators.vuelidateHasSpecialCharacter(1),
             },
             false,
         ],
@@ -124,7 +51,7 @@ describe('vuelidateHasNumber', () => {
             'as@df',
             {
                 required: validators.vuelidateRequired,
-                vuelidateHasUppercaseLetter: validators.vuelidateHasUppercaseLetter,
+                vuelidateHasUppercaseLetter: validators.vuelidateHasUppercaseLetter(1),
             },
             true,
         ],
@@ -133,7 +60,7 @@ describe('vuelidateHasNumber', () => {
             'as@Df',
             {
                 required: validators.vuelidateRequired,
-                vuelidateHasUppercaseLetter: validators.vuelidateHasUppercaseLetter,
+                vuelidateHasUppercaseLetter: validators.vuelidateHasUppercaseLetter(1),
             },
             false,
         ],
@@ -142,7 +69,7 @@ describe('vuelidateHasNumber', () => {
             'ASDF',
             {
                 required: validators.vuelidateRequired,
-                vuelidateHasLowercaseLetter: validators.vuelidateHasLowercaseLetter,
+                vuelidateHasLowercaseLetter: validators.vuelidateHasLowercaseLetter(1),
             },
             true,
         ],
@@ -151,7 +78,7 @@ describe('vuelidateHasNumber', () => {
             'ASDf',
             {
                 required: validators.vuelidateRequired,
-                vuelidateHasLowercaseLetter: validators.vuelidateHasLowercaseLetter,
+                vuelidateHasLowercaseLetter: validators.vuelidateHasLowercaseLetter(1),
             },
             false,
         ],
