@@ -1,0 +1,14 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@import "../functions";
+@import "../mixins";
+@import "../variables";
+
+:export {
+  xxl: $font-size-xxl;
+  xl: $font-size-xl;
+  lg: $font-size-lg;
+  base: $font-size-base;
+  sm: $font-size-sm;
+  xs: $font-size-xs;
+}

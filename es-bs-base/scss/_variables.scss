@@ -356,6 +356,16 @@ $font-size-xl:                $font-size-base * 1.375;
 $font-size-xxl:               $font-size-base * 3;
 // fusv-enable
 
+// used in font-size-* utility classes
+$font-sizes: (
+  "xxl": $font-size-xxl,
+  "xl": $font-size-xl,
+  "lg": $font-size-lg,
+  "base": $font-size-base,
+  "sm": $font-size-sm,
+  "xs": $font-size-xs,
+);
+
 // fusv-disable
 $font-weight-lightest:        lighter;
 // fusv-enable
