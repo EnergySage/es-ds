@@ -5,9 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0] - 2022-11-11
+
+- ***BREAKING CHANGE: Updated header font sizes and added mobile responsiveness***
+  - Applications will need to update and regression test headers in desktop and mobile
+- Added validations to `formMixins` to support password validation requirements in flash
+- Updated all major npm dependencies
+  
 ## [0.8.0] - 2022-11-3
 
-- BREAKING CHANGE: `font-weight-bolder` is now `700`
+- ***BREAKING CHANGE: `font-weight-bolder` is now `700`***
   - Applications will need to update their google font import to include this new font weight
 - Updated `$body-color` to `$gray-800`
 - Added `tel` type to `EsFormInput`
