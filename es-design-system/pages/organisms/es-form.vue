@@ -27,10 +27,28 @@
                         :disabled="isSubmitInProgress"
                         required>
                         <template #label>
-                            Email Address
+                            Email address
                         </template>
                         <template #errorMessage>
                             Please enter a valid email address.
+                        </template>
+                    </es-form-input>
+                    <es-form-input
+                        id="password"
+                        v-model="$v.form.password.$model"
+                        :state="validateState('password')"
+                        :disabled="isSubmitInProgress"
+                        required
+                        type="tel">
+                        <template #label>
+                            Password
+                        </template>
+                        <template #errorMessage>
+                            <div
+                                v-for="error in formErrors.password"
+                                :key="error">
+                                {{ error }}
+                            </div>
                         </template>
                     </es-form-input>
                     <es-form-input
@@ -41,7 +59,7 @@
                         required
                         type="tel">
                         <template #label>
-                            Phone Number
+                            Phone number
                         </template>
                         <template #errorMessage>
                             Please enter a valid phone number.
@@ -62,24 +80,6 @@
                         :variant="formMsgVariant"
                         :message="formMsg"
                         @hidden="formMsg = ''" />
-                    <es-form-input
-                        id="password"
-                        v-model="$v.form.password.$model"
-                        :state="validateState('password')"
-                        :disabled="isSubmitInProgress"
-                        required
-                        type="tel">
-                        <template #label>
-                            password
-                        </template>
-                        <template #errorMessage>
-                            <div
-                                v-for="error in formErrors.password"
-                                :key="error">
-                                {{ error }}
-                            </div>
-                        </template>
-                    </es-form-input>
                     <div class="d-flex flex-grow-1 justify-content-end mt-3">
                         <es-button
                             type="submit"
