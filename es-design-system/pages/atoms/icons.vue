@@ -1,10 +1,10 @@
 <template>
     <div>
+        <h1>
+            Icons
+        </h1>
         <b-row>
             <b-col>
-                <h1>
-                    Icons
-                </h1>
                 <DsIconList
                     class="mb-4 pt-4"
                     :color="themeHexVal" />

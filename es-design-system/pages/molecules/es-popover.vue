@@ -2,8 +2,13 @@
     <div>
         <div class="mb-3">
             <h1>
-                EsPopover
+                Popover
             </h1>
+            <p>
+                Extended from <b-link href="https://bootstrap-vue.org/docs/components/popover">
+                    bootstrap-vue popover
+                </b-link>
+            </p>
             <p>
                 The default trigger prop is <code>focus</code>.
                 When using the default please ensure you use a <code>href</code> not a <code>button</code>.

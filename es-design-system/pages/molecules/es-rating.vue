@@ -1,14 +1,22 @@
 <template>
     <div>
         <h1>
-            Form Input
+            Rating
         </h1>
+        <p>
+            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-rating">
+                bootstrap-vue form-rating
+            </b-link>
+        </p>
+        <h2>
+            Form Input
+        </h2>
         <es-rating
             :read-only="false"
             @change="changeEvent" />
-        <h1 class="mt-5">
+        <h2 class="mt-5">
             Static Display
-        </h1>
+        </h2>
         <es-rating
             :rating="3.9" />
     </div>

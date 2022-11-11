@@ -11,13 +11,13 @@
             </b-link>
         </li>
         <li>
-            <b-link to="/atoms/grids">
-                Grids
+            <b-link to="/atoms/layout">
+                Layout
             </b-link>
         </li>
         <li>
-            <b-link to="/atoms/space">
-                Space
+            <b-link to="/atoms/spacing">
+                Spacing
             </b-link>
         </li>
         <li>

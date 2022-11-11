@@ -15,7 +15,7 @@
         </label>
         <p
             v-if="hasExtraContext"
-            class="mb-1">
+            class="mb-1 font-size-sm">
             <slot name="extraContext" />
         </p>
         <div class="input-holder">
@@ -140,6 +140,11 @@ export default {
 // TODO: Move to es-bs-base
 .is-invalid {
     color: $danger;
+}
+
+// TODO: Move to its own utils in es-bs-base
+.font-size-sm {
+    font-size: $font-size-sm;
 }
 
 .es-form-input:disabled, .es-form-input[readonly] {

@@ -3,7 +3,7 @@
         novalidate
         @submit.prevent="submitLogin">
         <h1>
-            EsVerificationCode
+            Verification Code
         </h1>
         <es-verification-code
             @update-code="updateCode"

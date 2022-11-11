@@ -1,5 +1,13 @@
 <template>
     <div>
+        <h1>
+            Modal
+        </h1>
+        <p>
+            Extended from <b-link href="https://bootstrap-vue.org/docs/components/modal">
+                bootstrap-vue modal
+            </b-link>
+        </p>
         <es-button @click="visible = true">
             Show modal
         </es-button>

@@ -1,5 +1,8 @@
 <template>
     <div class="position-relative">
+        <h1>
+            Horizontal List
+        </h1>
         <h2>
             Left Aligned No Dots
         </h2>

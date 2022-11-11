@@ -1,5 +1,13 @@
 <template>
     <div>
+        <h1>
+            Slider
+        </h1>
+        <p class="pb-5">
+            Extended from <b-link href="https://nightcatsama.github.io/vue-slider-component/">
+                vue-slider-component
+            </b-link>
+        </p>
         <es-slider
             class="mt-5"
             :starting-value="startingValue"

@@ -1,5 +1,8 @@
 <template>
     <div>
+        <h1>
+            View More
+        </h1>
         <es-view-more
             :length="100"
             :content="`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.

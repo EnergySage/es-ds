@@ -1,5 +1,13 @@
 <template>
     <div>
+        <h1>
+            Breadcrumbs
+        </h1>
+        <p>
+            Extended from <b-link href="https://bootstrap-vue.org/docs/components/breadcrumb">
+                bootstrap-vue breadcrumbs
+            </b-link>
+        </p>
         <es-breadcrumbs :items="items" />
     </div>
 </template>

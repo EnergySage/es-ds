@@ -1,5 +1,21 @@
 <template>
     <div>
+        <h1>
+            Input
+        </h1>
+        <p>
+            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-input">
+                bootstrap-vue form-input
+            </b-link>
+        </p>
+        <p>
+            When using a form input, please ensure that the label style is
+            <b-link
+                href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case"
+                target="_blank">
+                Sentence case.
+            </b-link>
+        </p>
         <b-row>
             <b-col
                 cols="12"
@@ -8,7 +24,7 @@
                     id="myId"
                     v-model="docInput">
                     <template #label>
-                        Account Number
+                        Account number
                     </template>
                     <template #message>
                         Please enter your account number.

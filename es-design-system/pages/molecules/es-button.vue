@@ -1,8 +1,13 @@
 <template>
     <div>
         <h1>
-            EsButton
+            Button
         </h1>
+        <p>
+            Extended from <b-link href="https://bootstrap-vue.org/docs/components/button">
+                bootstrap-vue button
+            </b-link>
+        </p>
 
         <p>
             When using a button, please ensure that the copy style is

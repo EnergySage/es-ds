@@ -3,6 +3,11 @@
         <h1>
             Typography
         </h1>
+        <p>
+            Extended from <b-link href="https://getbootstrap.com/docs/4.6/content/typography/">
+                bootstrap typography
+            </b-link>
+        </p>
         <ul class="list-unstyled">
             <li>
                 <h1>

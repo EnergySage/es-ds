@@ -1,21 +1,24 @@
 <template>
     <div>
         <h1>
-            Default(Warm)
+            Support
         </h1>
+        <h2>
+            Default(Warm)
+        </h2>
         <es-support
             :link="link"
             :src="benr" />
-        <h1 class="mt-5">
+        <h2 class="mt-5">
             Cool Variant
-        </h1>
+        </h2>
         <es-support
             variant="cool"
             :link="link"
             :src="benr" />
-        <h1 class="mt-5">
+        <h2 class="mt-5">
             Custom Copy
-        </h1>
+        </h2>
         <es-support
             :link="link"
             :src="benr">

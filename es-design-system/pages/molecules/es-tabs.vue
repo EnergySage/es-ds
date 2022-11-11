@@ -1,5 +1,13 @@
 <template>
     <div>
+        <h1>
+            Tabs
+        </h1>
+        <p>
+            Extended from <b-link href="https://bootstrap-vue.org/docs/components/tabs">
+                bootstrap-vue tabs
+            </b-link>
+        </p>
         <es-tabs>
             <es-tab title="Tab 1">
                 <p>

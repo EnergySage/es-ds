@@ -1,5 +1,13 @@
 <template>
     <div>
+        <h1>
+            Badges
+        </h1>
+        <p>
+            Extended from <b-link href="https://bootstrap-vue.org/docs/components/badge">
+                bootstrap-vue badge
+            </b-link>
+        </p>
         <es-badge>
             Primary
         </es-badge>
