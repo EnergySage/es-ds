@@ -2,11 +2,6 @@
 dev:
 	overmind s
 
-.PHONY: install
-install:
-	npm install
-	npx lerna exec -- npm install
-
 .PHONY: lint
 lint:
 	npx lerna run lint
@@ -31,6 +26,13 @@ symlink:
 reload:
 	npm --prefix es-vue-base run build
 	npx lerna bootstrap
+
+# Sometimes Called
+
+.PHONY: install
+install:
+	npm install
+	npx lerna exec -- npm install
 
 # Bootstraping Commands (not reguarly called)
 

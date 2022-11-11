@@ -8,8 +8,16 @@ import {
     numeric,
     helpers,
 } from 'vuelidate/lib/validators';
+import {
+    hasNumber,
+    hasSpecialCharacter,
+    hasUppercaseLetter,
+    hasLowercaseLetter,
+} from './generics';
 
-// Only some vuelidate validators can be reused; others dont work well
+export { default as vuelidateKeys } from './constants';
+
+// Only some vuelidate validators can be reused; others don't work well
 export const vuelidateRequired = required;
 export const vuelidateMinValue = minValue;
 export const vuelidateMaxValue = maxValue;
@@ -34,3 +42,39 @@ export function vuelidateEmail(emailAddress) {
 export function vuelidatePhone(number) {
     return !helpers.req(number) || /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/.test(number);
 }
+
+/**
+ * @param { string } param
+ * @returns { boolean } if not required or string contains a number
+ */
+export const vuelidateHasNumber = (X) => helpers.withParams(
+    { type: 'xTimes', value: X },
+    (value) => !helpers.req(value) || hasNumber(X)(value),
+);
+
+/**
+ * @param { string } param
+ * @returns { boolean } if not required or string contains a special character
+ */
+export const vuelidateHasSpecialCharacter = (X) => helpers.withParams(
+    { type: 'xTimes', value: X },
+    (value) => !helpers.req(value) || hasSpecialCharacter(X)(value),
+);
+
+/**
+ * @param { string } param
+ * @returns { boolean } if not required or string contains an uppercase letter
+ */
+export const vuelidateHasUppercaseLetter = (X) => helpers.withParams(
+    { type: 'xTimes', value: X },
+    (value) => !helpers.req(value) || hasUppercaseLetter(X)(value),
+);
+
+/**
+ * @param { string } param
+ * @returns { boolean } if not required or string contains an lowercase letter
+ */
+export const vuelidateHasLowercaseLetter = (X) => helpers.withParams(
+    { type: 'xTimes', value: X },
+    (value) => !helpers.req(value) || hasLowercaseLetter(X)(value),
+);
