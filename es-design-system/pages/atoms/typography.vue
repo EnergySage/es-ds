@@ -139,7 +139,7 @@ export default {
                     size: sassType.xs,
                 },
                 {
-                    name: 'font-size-xs',
+                    name: 'font-size-sm',
                     size: sassType.sm,
                 },
                 {

@@ -345,16 +345,11 @@ $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-
-// fusv-disable
 $font-size-xs:                $font-size-base * 0.75;
-// fusv-enable
 $font-size-sm:                $font-size-base * 0.875 !default;
-$font-size-lg:                $font-size-base * 1.125 !default;
-// fusv-disable
-$font-size-xl:                $font-size-base * 1.375;
-$font-size-xxl:               $font-size-base * 3;
-// fusv-enable
+$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-xl:                $font-size-base * 1.35 !default;
+$font-size-xxl:               $font-size-base * 1.85 !default;
 
 // used in font-size-* utility classes
 $font-sizes: (
