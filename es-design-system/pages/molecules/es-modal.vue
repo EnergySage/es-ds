@@ -21,7 +21,9 @@
                 Arcadia Reviews
             </template>
             <template #default>
-                <p id="lorem-ipsum">
+                <p
+                    id="lorem-ipsum"
+                    class="mb-0">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis lacus
                     quis turpis commodo tempus. Donec sodales enim in dolor blandit aliquet. Sed ac lectus ipsum.
                     Curabitur et nisi dapibus, ultricies lacus a, congue turpis. Nullam viverra velit nisi, sed
