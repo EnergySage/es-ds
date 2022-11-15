@@ -5,8 +5,16 @@
         </h1>
         <p>
             Extended from <b-link href="https://getbootstrap.com/docs/4.6/content/typography/">
-                bootstrap typography
+                bootstrap typography.
             </b-link>
+            Please
+            <b-link
+                target="_blank"
+                href="https://a11y-style-guide.com/style-guide/section-general.html#kssref-general-typography">
+                do not
+            </b-link>
+            rely only on the appearance of the font (color, shape, font variation, placement, etc.)
+            to convey meaning.
         </p>
         <ul class="list-unstyled">
             <li>
@@ -65,7 +73,8 @@
                     Font Weight Utility Classes
                 </h2>
                 <b-table
-                    :fields="fontWeightFields"
+                    fixed
+                    :fields="fontFields"
                     :items="fontWeightItems"
                     striped>
                     <template #cell(example)="data">
@@ -74,15 +83,34 @@
                 </b-table>
             </b-col>
         </b-row>
+        <b-row class="my-5 border-top pt-5">
+            <b-col>
+                <h2>
+                    Font Size Utility Classes
+                </h2>
+                <b-table
+                    fixed
+                    :fields="fontFields"
+                    :items="fontSizeItems"
+                    striped>
+                    <template #cell(example)="data">
+                        <span :class="data.item.name">sample text at {{ data.item.size }} size</span>
+                    </template>
+                </b-table>
+            </b-col>
+        </b-row>
     </div>
 </template>
 
 <script>
+import sassType from '@energysage/es-bs-base/scss/variables/_type.scss';
+
 export default {
     name: 'AtomsTypography',
     data() {
         return {
-            fontWeightFields: [
+            sassType,
+            fontFields: [
                 'name',
                 // virtual column that can reference two fields
                 { key: 'example', label: 'Example' },
@@ -111,6 +139,32 @@ export default {
                 {
                     name: 'font-weight-bolder',
                     weight: '700',
+                },
+            ],
+            fontSizeItems: [
+                {
+                    name: 'font-size-xs',
+                    size: sassType.xs,
+                },
+                {
+                    name: 'font-size-sm',
+                    size: sassType.sm,
+                },
+                {
+                    name: 'font-size-base',
+                    size: sassType.base,
+                },
+                {
+                    name: 'font-size-lg',
+                    size: sassType.lg,
+                },
+                {
+                    name: 'font-size-xl',
+                    size: sassType.xl,
+                },
+                {
+                    name: 'font-size-xxl',
+                    size: sassType.xxl,
                 },
             ],
         };
