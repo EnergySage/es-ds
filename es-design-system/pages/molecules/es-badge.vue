@@ -26,15 +26,56 @@
         <es-badge variant="dark">
             Dark
         </es-badge>
+        <EsCollapse
+            id="docsource"
+            class="mt-5">
+            <template #title>
+                <h2 class="mb-0">
+                    Component Source
+                </h2>
+            </template>
+            <CodeBlock
+                :code="compcode"
+                source="es-vue-base/src/lib-components/EsBadge.vue" />
+        </EsCollapse>
+        <EsCollapse
+            id="docsource"
+            class="mt-5">
+            <template #title>
+                <h2 class="mb-0">
+                    Documentation Source
+                </h2>
+            </template>
+            <CodeBlock
+                :code="doccode"
+                source="es-design-system/pages/molecules/es-badge.vue" />
+        </EsCollapse>
     </div>
 </template>
 <script>
-import { EsBadge } from '@energysage/es-vue-base';
+import { EsBadge, EsCollapse } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsBadgeDocs',
     components: {
         EsBadge,
+        EsCollapse,
+    },
+    data() {
+        return {
+            doccode: null,
+            compcode: null,
+        };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docsource = await import('!raw-loader!./es-badge.vue');
+        const compsource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsBadge.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.doccode = this.$prism.normalizeCode(docsource.default);
+        this.compcode = this.$prism.normalizeCode(compsource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>
