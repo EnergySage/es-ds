@@ -5,8 +5,16 @@
         </h1>
         <p>
             Extended from <b-link href="https://getbootstrap.com/docs/4.6/content/typography/">
-                bootstrap typography
+                bootstrap typography.
             </b-link>
+            Please
+            <b-link
+                target="_blank"
+                href="https://a11y-style-guide.com/style-guide/section-general.html#kssref-general-typography">
+                do not
+            </b-link>
+            rely only on the appearance of the font (color, shape, font variation, placement, etc.)
+            to convey meaning.
         </p>
         <ul class="list-unstyled">
             <li>
