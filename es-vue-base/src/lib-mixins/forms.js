@@ -66,6 +66,10 @@ export default {
     },
     methods: {
         validateState(name) {
+            // Check that given field has key in validators object
+            if (!this.$v.form[name]) {
+                return null;
+            }
             const { $dirty, $error } = this.$v.form[name];
             return $dirty ? !$error : null;
         },
