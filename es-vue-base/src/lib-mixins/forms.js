@@ -67,7 +67,8 @@ export default {
     methods: {
         validateState(name) {
             // Check that given field has key in validators object
-            if (!this.$v.form[name]) {
+            const fieldHasValidators = this.$v.form && this.$v.form[name];
+            if (!fieldHasValidators) {
                 return null;
             }
             const { $dirty, $error } = this.$v.form[name];
