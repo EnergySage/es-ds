@@ -5,7 +5,7 @@
             :id="`codeInput_${index}`"
             :ref="`codeInput_${index}`"
             :key="index"
-            v-model="code[index]"
+            :value="code[index]"
             :name="'codeInput_' + index"
             :type="type"
             class="code-input text-center"
@@ -14,10 +14,9 @@
             aria-autocomplete="none"
             :aria-label="`digit ${index} of ${code.length}`"
             v-bind="$attrs"
-            v-on="$listeners"
             @input.native="handleInput"
             @keypress="handleKeys"
-            @keyup.enter="checkCodeValidity(code)"
+            @keyup.enter="emitCodeUpdate"
             @keydown.delete="handleDelete"
             @keydown.left="handleLeft"
             @keydown.right="handleRight"
@@ -57,15 +56,41 @@ export default {
             // tel causes mobile to show numeric keyboard
             default: 'tel',
         },
+        /**
+         * Code Value
+         */
+        value: {
+            type: String,
+            default: '',
+        },
     },
     data() {
         return {
             dataFromPaste: '',
-            code: Array(this.charCount),
+            code: Array(this.charCount).fill(''),
         };
     },
+    watch: {
+        // Watch for parent component changes to value
+        value: {
+            deep: true,
+            handler(newVal, oldVal) {
+                // On value update from parent make sure it is not the result of emit('input')
+                // noramlize arrays/strings and check for differences
+                if (this.stringToArray(newVal).toString() !== this.stringToArray(oldVal).toString()) {
+                    this.valuePropChange(newVal);
+                }
+            },
+        },
+    },
+    created() {
+        if (this.value) {
+            // On first create if a value is set update this.code
+            this.valuePropChange(this.value);
+        }
+    },
     methods: {
-        // Hacky could likely be replaced with $refs
+        // Returns the correct this.code index based on DOM element
         getElementIndex(element) {
             return parseInt(element?.id?.split('_')?.[1], 10);
         },
@@ -119,89 +144,81 @@ export default {
             } else {
                 this.code[currentIndex] = '';
             }
-            this.checkCodeValidity(this.code);
+
+            this.emitCodeUpdate();
         },
         handleInput(event) {
             const { inputType } = event;
-            let currentActiveElement = event.target;
+            const currentActiveElement = event.target;
+            // Getting the current index handles case where user pastes into an input other than input[0]
+            const curIndex = this.getElementIndex(currentActiveElement);
 
             // Triggered on a normal input that passes handleKeys bubble
             if (!inputType || inputType === 'insertText') {
-                this.checkCodeValidity(this.code);
-
+                this.code[curIndex] = event.target.value;
                 // Move to next input if possible
                 currentActiveElement.nextElementSibling?.focus();
             }
 
-            // If this is a paste and we stored the data parse it
-            if (inputType === 'insertFromPaste' && this.dataFromPaste) {
-                // Loop over each character in our paste
-                this.dataFromPaste.forEach((char) => {
-                    // Getting the current index handles case where user pastes into an input other than input[0]
-                    const curIndex = this.getElementIndex(currentActiveElement);
-                    this.code[curIndex] = char;
-
-                    // If the paste is less than this.charCount; move the focus to the first empty input
-                    // If the paste is equal or larger than this.charCount we move focus to the last input
-                    if (currentActiveElement.nextElementSibling) {
-                        // TODO: Why does chromium require setting the value directly?
-                        currentActiveElement.value = char;
-
-                        currentActiveElement = currentActiveElement.nextElementSibling;
-                        currentActiveElement?.focus();
-                    }
-                });
-            }
+            this.emitCodeUpdate();
         },
-        // Test pasting content
         handlePaste(event) {
-            const currentActiveElement = event.target;
-            const prevIndex = this.getElementIndex(currentActiveElement);
-
-            // TODO: Clearing this is not ideal but pasting over existing data doesn't work
-            this.code = Array(this.charCount);
-
             // Get the paste from clipboard; truncate it if its too long
             this.dataFromPaste = event.clipboardData?.getData('text')
-                .trim().split('').splice(0, this.charCount - prevIndex);
+                .trim().split('').splice(0, this.charCount);
 
-            // Check the data only contains accepted characters
-            const checkPasteValidity = this.checkCodeValidity(this.dataFromPaste);
+            // Reset the code to allow new paste
+            this.code = Array(this.charCount).fill('');
+            this.dataFromPaste.forEach((char, index) => {
+                this.code[index] = char;
+            });
 
-            // If the data doesn't pass validation don't update
-            if (!checkPasteValidity) {
-                event.preventDefault();
+            let focusIndex = this.dataFromPaste.length;
+            if (focusIndex > this.code.length - 1) {
+                focusIndex = this.code.length - 1;
             }
+
+            // Move focus to the next empty spot or last input
+            this.$refs[`codeInput_${focusIndex}`]?.[0]?.focus();
+
+            this.emitCodeUpdate();
         },
-        checkCodeValidity(code) {
-            if (!code) {
-                return false;
+        // Normalize strings into a valid array
+        stringToArray(value) {
+            let arrayedValue = value;
+
+            if (arrayedValue === '') {
+                arrayedValue = Array(this.charCount).fill('');
+            } else if (typeof value === 'string') {
+                arrayedValue = value.split('');
             }
 
-            const cleanCode = code.join('').trim();
-            const codeArray = cleanCode.split('');
-
-            // Test all characters in the code one final time
-            // If a single bad character is found this will short circuit
-            const allValidChars = codeArray.every((num) => {
+            return arrayedValue;
+        },
+        // Normalizes array into a valid string
+        arrayToString(value) {
+            // TODO: Does not represent '' indices. Probably ok?
+            return value.join('');
+        },
+        // If parent value changes normalize it and trigger updates
+        valuePropChange(value) {
+            // eslint-disable-next-line no-return-assign
+            this.stringToArray(value).forEach((char, index) => this.code[index] = char);
+            this.emitCodeUpdate(false);
+        },
+        // Emit this.code changes to keep this.value in sync
+        emitCodeUpdate(emitInput = true) {
+            const codeIsValid = this.code.every((num) => {
                 if (!this.allowedChars.includes(num)) {
                     return false;
                 }
                 return true;
-            });
+            }) && this.code.length === this.charCount;
 
-            if (allValidChars) {
-                // Always emit valid code changes
-                this.$emit('update-code', cleanCode);
-
-                if (cleanCode.length === this.charCount) {
-                    // If the length is correct emit a valid code event
-                    // This normally triggers a form submit on our parent
-                    this.$emit('valid-code', cleanCode);
-                }
+            if (emitInput) {
+                this.$emit('input', this.arrayToString(this.code));
             }
-
-            return allValidChars;
+            this.$emit('valid-code', codeIsValid);
         },
     },
 };

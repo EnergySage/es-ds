@@ -35,7 +35,7 @@ describe('EsVerificationCode', () => {
         expect(a11y).toHaveNoViolations();
     });
 
-    test('<EsVerificationCode emits update-code />', async () => {
+    test('<EsVerificationCode emits input />', async () => {
         const wrapper = mount(EsVerificationCode, {
             ...jestVue,
         });
@@ -45,28 +45,31 @@ describe('EsVerificationCode', () => {
         fisrtInput.element.value = 1;
         fisrtInput.trigger('input');
 
-        expect(wrapper.emitted()['update-code']).toEqual([['1']]);
+        expect(wrapper.emitted().input).toEqual([['1']]);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
     });
 
-    const chars = ['a', '/', '+', 'B', '?'];
-    test.each([chars])('<EsVerificationCode does not accept non numeric: $char />', async (char) => {
+    test('<EsVerificationCode emits valid-code false when invalid />', async () => {
         const wrapper = mount(EsVerificationCode, {
             ...jestVue,
         });
         const a11y = await axe(wrapper.element);
-        const fisrtInput = wrapper.find('.code-input');
+        const codeInputs = wrapper.findAll('.code-input');
+        const chars = ['a', '/', '+', 'B', '?'];
 
-        fisrtInput.element.value = char;
-        fisrtInput.trigger('input');
+        codeInputs.wrappers.forEach((input, index) => {
+            // eslint-disable-next-line no-param-reassign
+            input.element.value = chars[index];
+            input.trigger('input');
+        });
 
-        expect(wrapper.emitted()['update-code']).toBeUndefined();
+        expect(wrapper.emitted()['valid-code']).toEqual([[false], [false], [false], [false], [false]]);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
     });
 
-    test('<EsVerificationCode emits valid-code />', async () => {
+    test('<EsVerificationCode emits valid-code true when valid />', async () => {
         const wrapper = mount(EsVerificationCode, {
             ...jestVue,
         });
@@ -79,7 +82,7 @@ describe('EsVerificationCode', () => {
             input.trigger('input');
         });
 
-        expect(wrapper.emitted()['valid-code']).toEqual([['11111']]);
+        expect(wrapper.emitted()['valid-code']).toEqual([[false], [false], [false], [false], [true]]);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
     });
