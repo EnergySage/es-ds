@@ -3,7 +3,6 @@
         <h1>
             EnergySage Design System
         </h1>
-        {{ EsButton }}
         <p>
             Our designs system is based upon the
             <b-link href="https://getbootstrap.com/docs/4.6/getting-started/introduction/">
@@ -39,14 +38,7 @@
 </template>
 
 <script>
-import EsButton from '@/pages/atoms/color.vue';
-/* eslint-disable vue/multi-word-component-names, vue/component-definition-name-casing */
 export default {
-    name: 'index',
-    data() {
-        return {
-            EsButton,
-        };
-    },
+    name: 'HomePage',
 };
 </script>
