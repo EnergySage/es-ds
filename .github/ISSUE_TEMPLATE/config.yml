@@ -1,0 +1,7 @@
+contact_links:
+  - name: 📚 Documentation
+    url: https://energysage.atlassian.net/wiki/spaces/DSE/overview?homepageId=31588809
+    about: Check documentation for usage
+  - name: 💬 Discussions
+    url: https://energysage.atlassian.net/jira/software/projects/ESDS/boards/58
+    about: Use discussions if you have an idea for improvement and asking questions
