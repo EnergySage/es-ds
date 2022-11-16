@@ -45,7 +45,7 @@ describe('EsVerificationCode', () => {
         fisrtInput.element.value = 1;
         fisrtInput.trigger('input');
 
-        expect(wrapper.emitted().input).toEqual([['1']]);
+        expect(wrapper.emitted().input).toEqual([[['1', '', '', '', '']]]);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
     });

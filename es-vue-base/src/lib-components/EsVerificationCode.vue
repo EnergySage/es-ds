@@ -137,14 +137,14 @@ export default {
         },
         // On delete in an empty input remove previous input value if possible
         handleDelete(event) {
-            const { value } = event.target;
+            const currentValue = event.target.value;
             const currentInput = event.target;
             const previousInput = currentInput.previousElementSibling;
             const currentIndex = this.getElementIndex(currentInput);
             const prevIndex = this.getElementIndex(previousInput);
 
             // If delete is pressed on an empty input
-            if (!value) {
+            if (!currentValue) {
                 // Delete the previous inputs value if possible
                 if (prevIndex >= 0) {
                     // We use $set because replacing by index can remove reactivity
@@ -165,7 +165,7 @@ export default {
             const curIndex = this.getElementIndex(currentActiveElement);
 
             // Triggers when a character is added only
-            if (inputType === 'insertText') {
+            if (!inputType || inputType === 'insertText') {
                 // We use $set because replacing by index can remove reactivity
                 this.$set(this.code, curIndex, event.target.value);
                 // Move to next input if possible
@@ -199,8 +199,8 @@ export default {
             this.emitCodeUpdate();
         },
         // If parent value changes normalize it and trigger updates
-        valuePropChange(value) {
-            this.code = [...this.emptyArray].map((cur, index) => value[index] || '');
+        valuePropChange(propValue) {
+            this.code = [...this.emptyArray].map((cur, index) => propValue[index] || '');
 
             this.emitCodeUpdate(false);
         },
