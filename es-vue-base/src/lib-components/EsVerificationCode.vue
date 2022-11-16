@@ -5,9 +5,11 @@
             :id="`codeInput_${index}`"
             :ref="`codeInput_${index}`"
             :key="index"
+            novalidate
             :value="code[index]"
             :name="'codeInput_' + index"
             :type="type"
+            :pattern="pattern"
             class="code-input text-center"
             maxlength="1"
             autocomplete="off"
@@ -43,6 +45,7 @@ export default {
         },
         /**
          * Allowed characters to type
+         * Defaults to 0-9
          */
         allowedChars: {
             type: Array,
@@ -57,16 +60,24 @@ export default {
             default: 'tel',
         },
         /**
-         * Code Value
+         * Input Pattern
+         */
+        pattern: {
+            type: String,
+            default: '[0-9]*',
+        },
+        /**
+         * Code Value From Parent
          */
         value: {
-            type: String,
-            default: '',
+            type: Array,
+            required: true,
         },
     },
     data() {
         return {
             dataFromPaste: '',
+            emptyArray: Array(this.charCount).fill(''),
             code: Array(this.charCount).fill(''),
         };
     },
@@ -76,8 +87,7 @@ export default {
             deep: true,
             handler(newVal, oldVal) {
                 // On value update from parent make sure it is not the result of emit('input')
-                // noramlize arrays/strings and check for differences
-                if (this.stringToArray(newVal).toString() !== this.stringToArray(oldVal).toString()) {
+                if (newVal.toString() !== oldVal.toString()) {
                     this.valuePropChange(newVal);
                 }
             },
@@ -92,15 +102,12 @@ export default {
     methods: {
         // Returns the correct this.code index based on DOM element
         getElementIndex(element) {
-            return parseInt(element?.id?.split('_')?.[1], 10);
+            return parseInt(element?.id?.split('_')?.[1] || -1, 10);
         },
         // Triggers on keypress outside of [left, right, delete, enter]
         handleKeys(event) {
-            const { value } = event.target;
-            const keyPressed = event.key;
-
             // Do not allow for keys not in allowed except ctrl + cmd
-            if (!event.ctrlKey && !event.metaKey && (!this.allowedChars.includes(keyPressed) || value.length >= 1)) {
+            if (!event.ctrlKey && !event.metaKey && !this.allowedChars.includes(event.key)) {
                 event.preventDefault();
             }
         },
@@ -138,11 +145,15 @@ export default {
 
             // If delete is pressed on an empty input
             if (!value) {
-                this.code[prevIndex] = '';
-                previousInput?.focus();
+                // Delete the previous inputs value if possible
+                if (prevIndex >= 0) {
+                    // We use $set because replacing by index can remove reactivity
+                    this.$set(this.code, prevIndex, '');
+                    previousInput?.focus();
+                }
             // If not clear the current input
             } else {
-                this.code[currentIndex] = '';
+                this.$set(this.code, currentIndex, '');
             }
 
             this.emitCodeUpdate();
@@ -153,57 +164,44 @@ export default {
             // Getting the current index handles case where user pastes into an input other than input[0]
             const curIndex = this.getElementIndex(currentActiveElement);
 
-            // Triggered on a normal input that passes handleKeys bubble
-            if (!inputType || inputType === 'insertText') {
-                this.code[curIndex] = event.target.value;
+            // Triggers when a character is added only
+            if (inputType === 'insertText') {
+                // We use $set because replacing by index can remove reactivity
+                this.$set(this.code, curIndex, event.target.value);
                 // Move to next input if possible
                 currentActiveElement.nextElementSibling?.focus();
             }
 
+            // Always emit input events; even if nothing changes
             this.emitCodeUpdate();
         },
         handlePaste(event) {
             // Get the paste from clipboard; truncate it if its too long
             this.dataFromPaste = event.clipboardData?.getData('text')
-                .trim().split('').splice(0, this.charCount);
+                ?.trim()?.split('')?.splice(0, this.charCount);
 
-            // Reset the code to allow new paste
-            this.code = Array(this.charCount).fill('');
-            this.dataFromPaste.forEach((char, index) => {
-                this.code[index] = char;
-            });
+            // If no data is found or clipboard api is not supported stop
+            if (!this.dataFromPaste) {
+                return;
+            }
 
+            // Empty existing code and fill it with pasted data
+            this.code = [...this.emptyArray].map((cur, index) => this.dataFromPaste[index] || '');
+
+            // Move focus to the next empty spot or last input
             let focusIndex = this.dataFromPaste.length;
             if (focusIndex > this.code.length - 1) {
                 focusIndex = this.code.length - 1;
             }
-
-            // Move focus to the next empty spot or last input
             this.$refs[`codeInput_${focusIndex}`]?.[0]?.focus();
 
+            event.preventDefault();
             this.emitCodeUpdate();
-        },
-        // Normalize strings into a valid array
-        stringToArray(value) {
-            let arrayedValue = value;
-
-            if (arrayedValue === '') {
-                arrayedValue = Array(this.charCount).fill('');
-            } else if (typeof value === 'string') {
-                arrayedValue = value.split('');
-            }
-
-            return arrayedValue;
-        },
-        // Normalizes array into a valid string
-        arrayToString(value) {
-            // TODO: Does not represent '' indices. Probably ok?
-            return value.join('');
         },
         // If parent value changes normalize it and trigger updates
         valuePropChange(value) {
-            // eslint-disable-next-line no-return-assign
-            this.stringToArray(value).forEach((char, index) => this.code[index] = char);
+            this.code = [...this.emptyArray].map((cur, index) => value[index] || '');
+
             this.emitCodeUpdate(false);
         },
         // Emit this.code changes to keep this.value in sync
@@ -216,7 +214,7 @@ export default {
             }) && this.code.length === this.charCount;
 
             if (emitInput) {
-                this.$emit('input', this.arrayToString(this.code));
+                this.$emit('input', this.code);
             }
             this.$emit('valid-code', codeIsValid);
         },

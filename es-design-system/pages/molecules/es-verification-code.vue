@@ -1,12 +1,11 @@
 <template>
-    <b-form
-        novalidate
-        @submit.prevent="submitLogin">
+    <b-form novalidate>
         <h1>
             Verification Code
         </h1>
         <es-verification-code
             v-model="code"
+            :char-count="charCount"
             @valid-code="isValid = $event" />
         <b-row class="mt-4 align-items-center">
             <b-col
@@ -19,6 +18,12 @@
                     </dd>
                     <dt class="col-9">
                         {{ code }}
+                    </dt>
+                    <dd class="col-3">
+                        Code(string):
+                    </dd>
+                    <dt class="col-9">
+                        {{ code.join('') }}
                     </dt>
                     <dd class="col-3">
                         Valid:
@@ -37,7 +42,7 @@
                 </es-button>
                 <es-button
                     outline
-                    @click="code = ''">
+                    @click="code = Array(charCount).fill('')">
                     clear code
                 </es-button>
             </b-col>
@@ -47,6 +52,8 @@
 <script>
 import { EsVerificationCode, EsButton } from '@energysage/es-vue-base';
 
+const CHARACTER_COUNT = 5;
+
 export default {
     name: 'EsBreadcrumbsDocs',
     components: {
@@ -55,13 +62,22 @@ export default {
     },
     data() {
         return {
-            code: '',
+            code: Array(CHARACTER_COUNT).fill(''),
+            charCount: CHARACTER_COUNT,
             isValid: false,
         };
     },
     methods: {
         randomCode() {
-            return `${Math.random()}`.substring(2, 7);
+            // Randomly generates an array of numbers 0-9
+            const rand = Array.from(
+                { length: this.charCount },
+                () => Math.floor(Math.random() * this.charCount).toString(),
+            );
+
+            // eslint-disable-next-line no-console
+            console.log('Generated', rand);
+            return rand;
         },
     },
 };
