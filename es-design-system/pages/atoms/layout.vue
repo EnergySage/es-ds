@@ -222,13 +222,29 @@
                 </b-col>
             </b-row>
         </b-container>
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-design-system/atoms/layout.vue" />
     </div>
 </template>
 
 <script>
 
 export default {
-    name: 'AtomsGrids',
+    name: 'AtomsLayout',
+    data() {
+        return {
+            docCode: '',
+        };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./layout.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.$prism.highlight(this);
+    },
 };
 </script>
 

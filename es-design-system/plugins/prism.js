@@ -1,6 +1,7 @@
 import 'clipboard'; // For the copy to clipboard plugin
 import Prism from 'prismjs';
 import Vue from 'vue';
+import DsDocSource from '@/components/ds-doc-source.vue';
 
 import 'prismjs/themes/prism-okaidia.css';
 import 'prismjs/components/prism-scss';
@@ -21,10 +22,11 @@ import 'prismjs/plugins/autolinker/prism-autolinker';
 import 'prismjs/plugins/match-braces/prism-match-braces';
 import 'prismjs/plugins/highlight-keywords/prism-highlight-keywords';
 
-// eslint-disable-next-line no-unused-vars
 const SOURCE_LINK_PREFIX = 'https://github.com/EnergySage/es-ds/blob/main/';
+
+// Register custom view source button; seen on hover of code block
 Prism.plugins.toolbar.registerButton('source', {
-    text: 'Open Source',
+    text: 'View Source',
     onClick(env) {
         const linkSuffix = env.element.dataset?.source;
         if (linkSuffix) {
@@ -36,6 +38,7 @@ Prism.plugins.toolbar.registerButton('source', {
     },
 });
 
+// Set defaults for normalizer to handle raw .vue files
 Prism.plugins.NormalizeWhitespace.setDefaults({
     'remove-trailing': true,
     'remove-indent': true,
@@ -43,26 +46,7 @@ Prism.plugins.NormalizeWhitespace.setDefaults({
     'right-trim': true,
 });
 
-Vue.component('CodeBlock', {
-    props: {
-        lang: {
-            type: String,
-            default: 'javascript',
-        },
-        code: {
-            type: String,
-            required: false,
-            default: '',
-        },
-        source: {
-            type: String,
-            required: false,
-            default: '',
-        },
-    },
-    // eslint-disable-next-line no-template-curly-in-string
-    template: '<div class="prism"><pre class="line-numbers" :class="`language-${lang}`"><code class="match-braces" :data-source="source" v-html="code" /></pre></div>',
-});
+Vue.component('DsDocSource', DsDocSource);
 
 export default async (ctx, inject) => {
     const normalizer = Prism.plugins.NormalizeWhitespace;
