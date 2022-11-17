@@ -6,28 +6,35 @@
         <h2>
             Left Aligned No Dots
         </h2>
-        <es-horizontal-list id="docs-1">
-            <div
-                v-for="index in 10"
-                :key="index"
-                class="large-block-holder bg-primary mr-4 text-center text-white py-5">
-                {{ index }}
-            </div>
-        </es-horizontal-list>
-        <h2 class="mt-5">
-            Center Aligned With Dots
-        </h2>
-        <es-horizontal-list
-            id="docs-2"
-            class="center-holder overflow-hidden"
-            dots>
-            <div
-                v-for="index in 3"
-                :key="index"
-                class="center-block-holder bg-primary mr-2 text-center text-white py-5">
-                {{ index }}
-            </div>
-        </es-horizontal-list>
+        <div class="my-5">
+            <es-horizontal-list id="docs-1">
+                <div
+                    v-for="index in 10"
+                    :key="index"
+                    class="large-block-holder bg-primary mr-4 text-center text-white py-5">
+                    {{ index }}
+                </div>
+            </es-horizontal-list>
+            <h2 class="mt-5">
+                Center Aligned With Dots
+            </h2>
+            <es-horizontal-list
+                id="docs-2"
+                class="center-holder overflow-hidden"
+                dots>
+                <div
+                    v-for="index in 3"
+                    :key="index"
+                    class="center-block-holder bg-primary mr-2 text-center text-white py-5">
+                    {{ index }}
+                </div>
+            </es-horizontal-list>
+        </div>
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-vue-base/src/lib-components/EsHorizontalList.vue"
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/molecules/es-horizontal-list.vue" />
     </div>
 </template>
 <script>
@@ -38,6 +45,22 @@ export default {
     name: 'EsHorizontalListDocs',
     components: {
         EsHorizontalList,
+    },
+    data() {
+        return {
+            compCode: '',
+            docCode: '',
+        };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-horizontal-list.vue');
+        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsHorizontalList.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.compCode = this.$prism.normalizeCode(compSource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>

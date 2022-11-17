@@ -132,6 +132,9 @@
                     :items="validatorMixins" />
             </b-col>
         </b-row>
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/organisms/es-form.vue" />
     </b-container>
 </template>
 <script>
@@ -273,7 +276,16 @@ export default {
                 notes: null,
                 password: null,
             },
+            docCode: '',
         };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-form.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.$prism.highlight(this);
     },
     validations: {
         form: {

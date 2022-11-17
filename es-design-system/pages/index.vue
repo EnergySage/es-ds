@@ -38,8 +38,7 @@
 </template>
 
 <script>
-/* eslint-disable vue/multi-word-component-names, vue/component-definition-name-casing */
 export default {
-    name: 'index',
+    name: 'HomePage',
 };
 </script>

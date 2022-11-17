@@ -8,7 +8,7 @@
             to convey the meaning color using a defined naming convention. When working please
             use these color definitions and try to avoid introducing new unamed colors.
         </p>
-        <b-row>
+        <b-row class="my-5">
             <b-col cols="3">
                 <h2>
                     Variants
@@ -66,6 +66,9 @@
                     :colors="yellows" />
             </b-col>
         </b-row>
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-design-system/atoms/color.vue" />
     </div>
 </template>
 
@@ -93,7 +96,17 @@ export default {
             teals: sassTeals,
             yellows: sassYellows,
             colors: sassColors,
+            compCode: '',
+            docCode: '',
         };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./color.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>

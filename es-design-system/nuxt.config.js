@@ -30,7 +30,7 @@ export default {
         extend(config) {
             /* eslint-disable no-param-reassign */
             // TODO: Prevents dupe vue instance but not sure where its actually coming from
-            config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue');
+            config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue/dist/vue.common');
             // Prevents bootstrap-vue icons from being unitentionally included
             config.module.rules.push({
                 test: /bootstrap-vue\/src\/icons\/icons/,
@@ -51,6 +51,7 @@ export default {
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         { src: '@/plugins/api.js' },
+        { src: '~/plugins/prism', mode: 'client' },
     ],
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [

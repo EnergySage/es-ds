@@ -71,13 +71,13 @@
             </b-link>
         </li>
         <li>
-            <b-link to="/molecules/es-view-more">
-                EsViewMore
+            <b-link to="/molecules/es-verification-code">
+                EsVerificationCode
             </b-link>
         </li>
         <li>
-            <b-link to="/molecules/es-verification-code">
-                EsVerificationCode
+            <b-link to="/molecules/es-view-more">
+                EsViewMore
             </b-link>
         </li>
     </ul>

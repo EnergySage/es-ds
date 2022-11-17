@@ -16,7 +16,7 @@
                 Sentence case.
             </b-link>
         </p>
-        <b-row>
+        <b-row class="my-5">
             <b-col
                 cols="12"
                 lg="6">
@@ -63,6 +63,11 @@
                 </es-form-input>
             </b-col>
         </b-row>
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-vue-base/src/lib-components/EsFormInput.vue"
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/molecules/es-form-input.vue" />
     </div>
 </template>
 <script>
@@ -78,7 +83,19 @@ export default {
         return {
             docInput: 'Example text',
             example2: 'Example two',
+            compCode: '',
+            docCode: '',
         };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-form-input.vue');
+        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsFormInput.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.compCode = this.$prism.normalizeCode(compSource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>
