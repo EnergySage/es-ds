@@ -39,7 +39,7 @@ export default {
         },
         timeout: {
             type: Number,
-            default: 5,
+            default: 20,
             required: false,
         },
         variant: {
