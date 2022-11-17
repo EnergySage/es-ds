@@ -5,100 +5,185 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0] - 2022-11-16
+
+### Added
+
+- Add `fort-size-*` utility classes
+- Exposing vuelidate `helpers` utility as `vuelidateHelpers`
+
+### Changed
+
+- ***BREAKING:*** `validateState` no longer assumes data is nested within a `form` object.
+- Update github templates for pull-requests and issues
+- Updates to documentation
+
 ## [0.9.0] - 2022-11-11
+
+### Added
+
+- validations to `formMixins` to support password validation requirements in flash
+
+### Changed
 
 - ***BREAKING CHANGE: Updated header font sizes and added mobile responsiveness***
   - Applications will need to update and regression test headers in desktop and mobile
-- Added validations to `formMixins` to support password validation requirements in flash
 - Updated all major npm dependencies
-  
+
 ## [0.8.0] - 2022-11-3
+
+### Added
+
+- `tel` type to `EsFormInput`
+
+### Changed
 
 - ***BREAKING CHANGE: `font-weight-bolder` is now `700`***
   - Applications will need to update their google font import to include this new font weight
-- Updated `$body-color` to `$gray-800`
-- Added `tel` type to `EsFormInput`
+- `$body-color` to `$gray-800`
+
 
 ## [0.7.7] - 2022-10-26
 
-- Fixed an issue with `EsVerificationCode` and pasting order characters showed up
-- Added new slot `extraContext` to `EsFormInput`
-- Added missing icons to package and docs
-- Fixed an issue where outlined buttons didn't show disabled state
-- Fixed an issue where breadcrumb bg was always `$white`
+### Fixed
+
+- Issue with `EsVerificationCode` and pasting order characters showed up
+- Issue where outlined buttons didn't show disabled state
+- Issue where breadcrumb bg was always `$white`
+
+### Added
+
+- new slot `extraContext` to `EsFormInput`
+- missing icons to package and docs
 
 ## [0.7.6] - 2022-10-10
 
-- Fixed an issue with `EsVerificationCode` and pasting in Safari + Chrome
-- Updated all major npm dependencies
+### Fixed
+
+- Issue with `EsVerificationCode` and pasting in Safari + Chrome
+
+### Changed
+
+- all major npm dependencies
 
 ## [0.7.5] - 2022-10-10
 
-- Patched `EsVerificationCode` to allow `0`
+### Changed
+
+- `EsVerificationCode` to allow `0`
 
 ## [0.7.4] - 2022-10-10
 
-- Added `EsVerificationCode` component
+### Added
+
+- `EsVerificationCode` component
 
 ## [0.7.3] - 2022-10-04
+
+### Changed
 
 - Replace `color-adjust` with `print-color-adjust`
 
 ## [0.7.2] - 2022-10-04
 
-- Added `semibold` scss variable
-- Added font weight documentation to Typography
+### Fixed
+
 - Fixed issue where all font weights weren't pulled into `es-design-system`
+
+### Added
+
+- `semibold` scss variable
+- font weight documentation to Typography
+
+### Changed
+
 - Updated npm packages to latest versions
 
 ## [0.7.1] - 2022-09-27
 
-- Added prop(default `true` to round to nearest `0.5` to `EsRating`
+### Added
+
+- prop(default `true` to round to nearest `0.5` to `EsRating`
 
 ## [0.7.0] - 2022-09-26
 
-- Added color scales for `yellow|teal|pink|cyan` to `es-bs-base`
-- Updated color docs to support above to `es-design-system`
-- Updated documentation around getting started and publishing
-- Updated `ci.yml` to include build and symlink steps
-- Added `cool|warm` variants to `EsSupport`
+### Added
+
+- color scales for `yellow|teal|pink|cyan` to `es-bs-base`
+- `cool|warm` variants to `EsSupport`
+
+### Changed
+
+- color docs to support above to `es-design-system`
+- documentation around getting started and publishing
+- `ci.yml` to include build and symlink steps
 
 ## [0.6.7] - 2022-09-20
 
-- Fixed an issue with `v-model` in `EsFormInput` && `EsFormTextarea`
+### Fixed
+
+- issue with `v-model` in `EsFormInput` && `EsFormTextarea`
 
 ## [0.6.6] - 2022-09-19
 
-- Fixed import issues in `es-design-system` with `bootstrap-vue`
-- Added sidebar and breadcrumbs to `es-design-system`
-- Disabled `box-shadow` in `es-bs-base`
+### Fixed
+
+- import issues in `es-design-system` with `bootstrap-vue`
 - Bug fixes and improvements to `EsReview` and `EsReviewModal`
+
+### Added
+
+- Added sidebar and breadcrumbs to `es-design-system`
+
+### Changed
+
+- Disabled `box-shadow` in `es-bs-base`
 - Upgraded to `node@16`
 
 ## [0.6.2] - 2022-09-14
 
-- Fixed an issue where babel was not transpiling esm package correctly
+### Fixed
+
+- issue where babel was not transpiling esm package correctly
+
+### Changed
+
 - Specified `*` for peer dependency `es-bs-base` in `es-vue-base`
 
 ## [0.6.0] - 2022-09-14
+
+### Changed
 
 - Update all dependencies to highest possible versions
 
 ## [0.5.6] - 2022-09-12
 
+### Added
+
+- updated comment to EsReview
+
+### Changed
+
 - Remove image from EsSupport; BREAKING CHANGE
 - Make tabs default to border true & fix wrong border color
-- Added updated comment to EsReview
 - EsButton design updates based on feedback
 - Increase badge padding
 
 ## [0.5.2] - 2022-08-17
 
-- Fixed an issue with EsReview showing horizontal scroll on desktop
+### Fixed
+
+- issue with EsReview showing horizontal scroll on desktop
+
+### Changed
+
 - Updated eslint-config-energysage
 - Added back dupe vue check to es-design-system
-- Removed remaining es-bs-base references
-- Removed border radius from bs4 dropdown menus
+
+### Removed
+
+- remaining es-bs-base references
+- border radius from bs4 dropdown menus
 
 ## [0.5.0] - 2022-08-16
 
@@ -132,7 +217,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove `EsReview` *molecule* component
 
-## Changed
+### Changed
 
 - Tweaks to some variables, mainly typography in consultation with design team
 - Fix package.json files to point to mono-repo
@@ -153,4 +238,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.10.0]: https://github.com/EnergySage/es-ds/compare/v0.9.0...v0.10.0
+[0.9.0]: https://github.com/EnergySage/es-ds/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/EnergySage/es-ds/compare/v0.7.7...v0.8.0
+[0.7.7]: https://github.com/EnergySage/es-ds/compare/v0.7.6...v0.7.7
+[0.7.6]: https://github.com/EnergySage/es-ds/compare/v0.7.5...v0.7.6
+[0.7.5]: https://github.com/EnergySage/es-ds/compare/v0.7.4...v0.7.5
+[0.7.4]: https://github.com/EnergySage/es-ds/compare/v0.7.3...v0.7.4
+[0.7.3]: https://github.com/EnergySage/es-ds/compare/v0.7.2...v0.7.3
+[0.7.2]: https://github.com/EnergySage/es-ds/compare/v0.7.1...v0.7.2
+[0.7.1]: https://github.com/EnergySage/es-ds/compare/v0.7.0...v0.7.1
+[0.7.0]: https://github.com/EnergySage/es-ds/compare/v0.6.7...v0.7.0
+[0.6.7]: https://github.com/EnergySage/es-ds/compare/v0.6.6...v0.6.7
+[0.6.6]: https://github.com/EnergySage/es-ds/compare/v0.6.2...v0.6.6
+[0.6.2]: https://github.com/EnergySage/es-ds/compare/v0.6.0...v0.6.2
+[0.6.0]: https://github.com/EnergySage/es-ds/compare/v0.5.6...v0.6.0
+[0.5.6]: https://github.com/EnergySage/es-ds/compare/v0.5.2...v0.5.6
+[0.5.2]: https://github.com/EnergySage/es-ds/compare/v0.5.0...v0.5.2
 [0.5.0]: https://github.com/EnergySage/es-ds/compare/v0.4.38...v0.5.0

@@ -26,6 +26,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-form-msg">
+                EsFormMsg
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-form-textarea">
                 EsFormTextarea
             </b-link>

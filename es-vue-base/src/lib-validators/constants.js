@@ -17,6 +17,7 @@ const HAS_UPPERCASE_LETTER = 'vuelidateHasUppercaseLetter';
 const HAS_LOWERCASE_LETTER = 'vuelidateHasLowercaseLetter';
 const EMAIL = 'vuelidateEmail';
 const PHONE = 'vuelidatePhone';
+const HELPERS = 'vuelidateHelpers';
 
 const vuelidateKeys = {
     REQUIRED,
@@ -32,6 +33,7 @@ const vuelidateKeys = {
     HAS_SPECIAL_CHARACTER,
     HAS_UPPERCASE_LETTER,
     HAS_LOWERCASE_LETTER,
+    HELPERS,
 };
 
 export default vuelidateKeys;

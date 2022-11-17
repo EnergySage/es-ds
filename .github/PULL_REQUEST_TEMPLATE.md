@@ -1,34 +1,44 @@
-<!-- Add a title with the Jira ticket and purpose, e.g. "ESDS-123 Awesome new feature". -->
+<!--
+    NOTE: THIS IS A PUBLIC REPO, PLEASE USE COMPANY CHANNELS FOR ENERGYSAGE SPECIFIC QUESTIONS
+-->
 
-<!-- Uncomment this if it's relevant. -->
-<!-- **TIME SENSITIVE.** Deploy by: -->
+<!---
+☝️ PR title should follow conventional commits (https://conventionalcommits.org)
 
-# Related Jira Tickets
-<!-- Link to the ticket for this work (e.g. https://energysage.atlassian.net/browse/ESDS-123) and any other related tickets. -->
+Please carefully read the contribution docs before creating a pull request
+ 👉 https://v3.nuxtjs.org/community/contribution
+-->
 
--
+### 🔗 Linked issue
 
-## Changes
-<!-- Describe your work in detail. -->
+<!-- Please ensure there is an open issue and mention its number as #123 -->
 
--
+### ❓ Type of change
 
-### Testing
-<!-- Describe tests that you have written and/or identify existing tests that cover your work. -->
+<!-- What types of changes does your code introduce? Put an `x` in all the boxes that apply. -->
 
--
+- [ ] 📖 Documentation (updates to the documentation or readme)
+- [ ] 🐞 Bug fix (a non-breaking change that fixes an issue)
+- [ ] 👌 Enhancement (improving an existing functionality like performance)
+- [ ] ✨ New feature (a non-breaking change that adds functionality)
+- [ ] ⚠️ Breaking change (fix or feature that would cause existing functionality to change)
 
-## Feedback Requested / Focus Areas
-<!-- Consider @mention-ing specific reviewers to give them guidance, and/or adding your own review comments after submitting the PR. -->
+### 📚 Description
 
--
+<!-- Describe your changes in detail -->
+<!-- Why is this change required? What problem does it solve? -->
+<!-- If it resolves an open issue, please link to the issue here. For example "Resolves #1337" -->
 
-### How to run locally
-<!-- Include any instructions and/or links to docs to help reviewers see your work in their dev environments. -->
+### 🥼 Testing
 
--
+<!-- Describe actions you have taken to test feature, and ensure no regressions are introduced -->
 
-## Remaining TODOs
-<!-- Is there additional work to be done prior to merge/deployment, or in a subsequent PR? -->
+### 📝 Checklist
 
-- [ ]
+<!-- Put an `x` in all the boxes that apply. -->
+<!-- If your change requires a documentation PR, please link it appropriately -->
+<!-- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
+
+- [ ] I have linked an issue or discussion.
+- [ ] I have updated the documentation accordingly.
+- [ ] I have documented testing approach
