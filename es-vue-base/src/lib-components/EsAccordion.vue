@@ -107,6 +107,7 @@ export default {
     .EsAccordion-content {
       border-radius: 0 0 $border-radius $border-radius !important;
     }
+    /* if the last item is expanded, the button is no longer the last visible item */
     .EsAccordion-button--visible {
       border-radius: 0 !important;
     }
