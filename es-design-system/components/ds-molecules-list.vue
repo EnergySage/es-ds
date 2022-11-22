@@ -1,6 +1,11 @@
 <template>
     <ul>
         <li>
+            <b-link to="/molecules/es-accordion">
+                EsAccordion
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-badge">
                 EsBadge
             </b-link>
