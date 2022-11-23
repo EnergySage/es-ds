@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsAccordion <EsAccordionList /> 1`] = `"<div role="tablist" class="rounded"></div>"`;
+
+exports[`EsAccordion EsAccordionList expands one item and collapses another 1`] = `
+"<div role="tablist" class="rounded">
+  <div class="EsAccordion border-bottom border-light rounded-bottom">
+    <header role="tab"><button type="button" class="btn EsAccordion-button align-items-center d-flex font-weight-bold justify-content-between px-3 px-sm-4 py-3 rounded-0 text-body text-left text-decoration-none w-100 btn-link btn-md bg-white">My Title 1 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;" class="EsAccordion-icon flex-shrink-0 ml-4">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
+        </svg></button></header>
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+      <div id="accordion-id-1" class="collapse" style="display: none;">
+        <div class="EsAccordion-content bg-white px-3 px-sm-4 pb-1 pt-3">
+          <p>My content 1.</p>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class="EsAccordion border-bottom border-light rounded-bottom">
+    <header role="tab"><button type="button" class="btn EsAccordion-button align-items-center d-flex font-weight-bold justify-content-between px-3 px-sm-4 py-3 rounded-0 text-body text-left text-decoration-none w-100 btn-link btn-md bg-light EsAccordion-button--visible">My Title 2 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;" class="EsAccordion-icon flex-shrink-0 ml-4">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
+        </svg></button></header>
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+      <div id="accordion-id-2" class="collapse show">
+        <div class="EsAccordion-content bg-white px-3 px-sm-4 pb-1 pt-3">
+          <p>My content 2.</p>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`EsAccordion EsAccordionList mounts with initial expand; collapse also works 1`] = `
+"<div role="tablist" class="rounded">
+  <div class="EsAccordion border-bottom border-light rounded-bottom">
+    <header role="tab"><button type="button" class="btn EsAccordion-button align-items-center d-flex font-weight-bold justify-content-between px-3 px-sm-4 py-3 rounded-0 text-body text-left text-decoration-none w-100 btn-link btn-md bg-light EsAccordion-button--visible">My Title <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;" class="EsAccordion-icon flex-shrink-0 ml-4">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
+        </svg></button></header>
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+      <div id="accordion-id" class="collapse show">
+        <div class="EsAccordion-content bg-white px-3 px-sm-4 pb-1 pt-3">
+          <p>My content.</p>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`EsAccordion EsAccordionList performs multi-expand correctly 1`] = `
+"<div role="tablist" class="rounded">
+  <div class="EsAccordion border-bottom border-light rounded-bottom">
+    <header role="tab"><button type="button" class="btn EsAccordion-button align-items-center d-flex font-weight-bold justify-content-between px-3 px-sm-4 py-3 rounded-0 text-body text-left text-decoration-none w-100 btn-link btn-md bg-light EsAccordion-button--visible">My Title 1 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;" class="EsAccordion-icon flex-shrink-0 ml-4">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
+        </svg></button></header>
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+      <div id="accordion-id-1" class="collapse show">
+        <div class="EsAccordion-content bg-white px-3 px-sm-4 pb-1 pt-3">
+          <p>My content 1.</p>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class="EsAccordion border-bottom border-light rounded-bottom">
+    <header role="tab"><button type="button" class="btn EsAccordion-button align-items-center d-flex font-weight-bold justify-content-between px-3 px-sm-4 py-3 rounded-0 text-body text-left text-decoration-none w-100 btn-link btn-md bg-white">My Title 2 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;" class="EsAccordion-icon flex-shrink-0 ml-4">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
+        </svg></button></header>
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+      <div id="accordion-id-2" class="collapse" style="display: none;">
+        <div class="EsAccordion-content bg-white px-3 px-sm-4 pb-1 pt-3">
+          <p>My content 2.</p>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</div>"
+`;
