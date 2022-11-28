@@ -15,6 +15,7 @@
             :marks="marks"
             :min="min"
             :max="max"
+            :tooltip-formatter="val => `$${val}`"
             @change="changeEvent" />
         <ds-doc-source
             :comp-code="compCode"
@@ -34,10 +35,10 @@ export default {
     data() {
         return {
             startingValue: 0,
-            data: [0, 25, 50, 75, 100],
-            marks: [0, 100],
+            data: [0, 25, 50, 75, 100, 250, 500, 750, 1000],
+            marks: [0, 1000],
             min: 0,
-            max: 100,
+            max: 1000,
             compCode: '',
             docCode: '',
         };

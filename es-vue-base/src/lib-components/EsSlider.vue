@@ -18,7 +18,7 @@
         <!-- Tooltip above the slider thumb -->
         <template #tooltip="{ value, focus }">
             <div
-                class="slider-tooltip h4 d-flex align-items-center text-white justify-content-center m-0"
+                class="slider-tooltip d-flex h5 align-items-center text-white justify-content-center m-0"
                 :class="[{ focus }]"
                 :style="{ 'background-color': colorComputed }">
                 {{ tooltipFormatter(value) }}
@@ -60,7 +60,7 @@ export default {
          * Function that chooses where to add marks to the track
          */
         marks: {
-            type: Array,
+            type: [Array, Function],
             required: true,
         },
         /**
@@ -161,7 +161,7 @@ export default {
 
 .slider-label {
     color: $gray-600;
-    font-size: $h4-font-size;
+    font-size: $font-size-lg;
     margin-top: $spacer;
 }
 </style>
