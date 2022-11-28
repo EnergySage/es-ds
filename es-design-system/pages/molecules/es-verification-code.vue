@@ -1,41 +1,69 @@
 <template>
-    <b-form
-        novalidate
-        @submit.prevent="submitLogin">
+    <b-form novalidate>
         <h1>
             Verification Code
         </h1>
-        <div class="my-5">
-            <es-verification-code
-                @update-code="updateCode"
-                @valid-code="validCode" />
-            <dl class="row mt-4">
-                <dt class="col-6">
-                    Code: {{ localCode }}
-                </dt>
-                <dt class="col-6">
-                    Valid: {{ isValid }}
-                </dt>
-            </dl>
-        </div>
-        <ds-doc-source
-            :comp-code="compCode"
-            comp-source="es-vue-base/src/lib-components/EsVerificationCode.vue"
-            :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-verification-code.vue" />
+        <es-verification-code
+            v-model="code"
+            :char-count="charCount"
+            @valid-code="isValid = $event" />
+        <b-row class="mt-4 align-items-center">
+            <b-col
+                class="mb-3 mb-lg-0"
+                cols="6"
+                lg="4">
+                <dl class="row">
+                    <dd class="col-3">
+                        Code:
+                    </dd>
+                    <dt class="col-9">
+                        {{ code }}
+                    </dt>
+                    <dd class="col-3">
+                        Code(string):
+                    </dd>
+                    <dt class="col-9">
+                        {{ code.join('') }}
+                    </dt>
+                    <dd class="col-3">
+                        Valid:
+                    </dd>
+                    <dt class="col-9">
+                        {{ isValid }}
+                    </dt>
+                </dl>
+            </b-col>
+            <b-col
+                class="text-right"
+                cols="12"
+                lg="4">
+                <es-button @click="code = randomCode()">
+                    random code
+                </es-button>
+                <es-button
+                    outline
+                    @click="code = Array(charCount).fill('')">
+                    clear code
+                </es-button>
+            </b-col>
+        </b-row>
     </b-form>
 </template>
 <script>
-import { EsVerificationCode } from '@energysage/es-vue-base';
+import { EsVerificationCode, EsButton } from '@energysage/es-vue-base';
+
+const CHARACTER_COUNT = 5;
 
 export default {
     name: 'EsVerificationCodeDocs',
     components: {
+        EsButton,
         EsVerificationCode,
     },
     data() {
         return {
-            localCode: '',
+            code: Array(CHARACTER_COUNT).fill(''),
+            charCount: CHARACTER_COUNT,
             isValid: false,
             compCode: '',
             docCode: '',
@@ -53,17 +81,16 @@ export default {
         this.$prism.highlight(this);
     },
     methods: {
-        updateCode(event) {
+        randomCode() {
+            // Randomly generates an array of numbers 0-9
+            const rand = Array.from(
+                { length: this.charCount },
+                () => Math.floor(Math.random() * this.charCount).toString(),
+            );
+
             // eslint-disable-next-line no-console
-            console.log(`Code Update: ${event}`);
-            this.localCode = event;
-            this.isValid = false;
-        },
-        validCode(event) {
-            // eslint-disable-next-line no-console
-            console.log(`Code is Valid: ${event}`);
-            this.localCode = event;
-            this.isValid = true;
+            console.log('Generated', rand);
+            return rand;
         },
     },
 };
