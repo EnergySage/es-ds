@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.11.0] - 2022-11-28
+
+### Changed
+
+- ***BREAKING:*** `EsValidationCode` now expects and returns an array using `v-model`
+
+### Added
+
+- `EsAccordion` and `EsAccordionList` components
+- favicon supporting files
+- Prism code highlighter and source documentation to all components
+
 ## [0.10.0] - 2022-11-16
 
 ### Added
@@ -41,7 +53,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ***BREAKING CHANGE: `font-weight-bolder` is now `700`***
   - Applications will need to update their google font import to include this new font weight
 - `$body-color` to `$gray-800`
-
 
 ## [0.7.7] - 2022-10-26
 
