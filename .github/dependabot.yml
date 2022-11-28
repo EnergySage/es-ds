@@ -34,6 +34,8 @@ updates:
       ignore:
         - dependency-name: "vue"
           versions: ["3.x"]
+        - dependency-name: "nuxt"
+          versions: ["3.x"]
         - dependency-name: "autoprefixer"
           versions: ["10.x"]
         - dependency-name: "sass-loader"
