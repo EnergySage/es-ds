@@ -206,12 +206,8 @@ export default {
         },
         // Emit this.code changes to keep this.value in sync
         emitCodeUpdate(emitInput = true) {
-            const codeIsValid = this.code.every((num) => {
-                if (!this.allowedChars.includes(num)) {
-                    return false;
-                }
-                return true;
-            }) && this.code.length === this.charCount;
+            const codeIsValid = this.code.every((num) => this.allowedChars.includes(num))
+             && this.code.length === this.charCount;
 
             if (emitInput) {
                 this.$emit('input', this.code);
