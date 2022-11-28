@@ -4,6 +4,7 @@
             View More
         </h1>
         <es-view-more
+            class="my-5"
             :length="100"
             :content="`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
                 Nullam vestibulum ex mi, ut suscipit libero condimentum id. Pellentesque eu diam vel nisi
@@ -13,6 +14,11 @@
                 Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare. Maecenas quis turpis sit amet
                 sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                 Donec eleifend elit quam. `" />
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-vue-base/src/lib-components/EsViewMore.vue"
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/molecules/es-view-more.vue" />
     </div>
 </template>
 <script>
@@ -22,6 +28,22 @@ export default {
     name: 'EsViewMoreDocs',
     components: {
         EsViewMore,
+    },
+    data() {
+        return {
+            compCode: '',
+            docCode: '',
+        };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-view-more.vue');
+        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsViewMore.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.compCode = this.$prism.normalizeCode(compSource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>

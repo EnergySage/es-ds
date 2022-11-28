@@ -1,6 +1,11 @@
 <template>
     <ul>
         <li>
+            <b-link to="/molecules/es-accordion">
+                EsAccordion
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-badge">
                 EsBadge
             </b-link>
@@ -23,6 +28,11 @@
         <li>
             <b-link to="/molecules/es-form-input">
                 EsFormInput
+            </b-link>
+        </li>
+        <li>
+            <b-link to="/molecules/es-form-msg">
+                EsFormMsg
             </b-link>
         </li>
         <li>
@@ -66,13 +76,13 @@
             </b-link>
         </li>
         <li>
-            <b-link to="/molecules/es-view-more">
-                EsViewMore
+            <b-link to="/molecules/es-verification-code">
+                EsVerificationCode
             </b-link>
         </li>
         <li>
-            <b-link to="/molecules/es-verification-code">
-                EsVerificationCode
+            <b-link to="/molecules/es-view-more">
+                EsViewMore
             </b-link>
         </li>
     </ul>

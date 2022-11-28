@@ -228,7 +228,7 @@ $sizes: map-merge(
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white !default;
+$body-bg:                   $gray-100 !default;
 $body-color:                $gray-800 !default;
 
 
@@ -345,16 +345,21 @@ $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-
-// fusv-disable
 $font-size-xs:                $font-size-base * 0.75;
-// fusv-enable
 $font-size-sm:                $font-size-base * 0.875 !default;
-$font-size-lg:                $font-size-base * 1.125 !default;
-// fusv-disable
-$font-size-xl:                $font-size-base * 1.375;
-$font-size-xxl:               $font-size-base * 3;
-// fusv-enable
+$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-xl:                $font-size-base * 1.35 !default;
+$font-size-xxl:               $font-size-base * 1.85 !default;
+
+// used in font-size-* utility classes
+$font-sizes: (
+  "xxl": $font-size-xxl,
+  "xl": $font-size-xl,
+  "lg": $font-size-lg,
+  "base": $font-size-base,
+  "sm": $font-size-sm,
+  "xs": $font-size-xs,
+);
 
 // fusv-disable
 $font-weight-lightest:        lighter;
@@ -1037,7 +1042,7 @@ $badge-pill-border-radius:          10rem !default;
 // Modals
 
 // Padding applied to the modal body
-$modal-inner-padding:               2rem !default;
+$modal-inner-padding:               0 2rem 2rem 2rem !default;
 
 // Margin between elements in footer, must be lower than or equal to 2 * $modal-inner-padding
 $modal-footer-margin-between:       .5rem !default;
@@ -1062,8 +1067,8 @@ $modal-header-border-color:         null !default;
 $modal-footer-border-color:         $modal-header-border-color !default;
 $modal-header-border-width:         0 !default;
 $modal-footer-border-width:         $modal-header-border-width !default;
-$modal-header-padding-y:            1.15rem !default;
-$modal-header-padding-x:            2.15rem !default;
+$modal-header-padding-y:            2rem !default;
+$modal-header-padding-x:            2rem !default;
 $modal-header-padding:              $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
 
 $modal-xl:                          1140px !default;

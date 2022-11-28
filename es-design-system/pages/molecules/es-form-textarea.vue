@@ -16,7 +16,7 @@
                 Sentence case.
             </b-link>
         </p>
-        <b-row>
+        <b-row class="my-5">
             <b-col
                 cols="12"
                 lg="6">
@@ -38,6 +38,11 @@
                 </es-form-textarea>
             </b-col>
         </b-row>
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-vue-base/src/lib-components/EsFormTextarea.vue"
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/molecules/es-form-textarea.vue" />
     </div>
 </template>
 <script>
@@ -52,7 +57,19 @@ export default {
     data() {
         return {
             docTextarea: 'Example text',
+            compCode: '',
+            docCode: '',
         };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-form-textarea.vue');
+        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsFormTextarea.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.compCode = this.$prism.normalizeCode(compSource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>

@@ -25,6 +25,7 @@ export const vuelidateRequiredIf = requiredIf;
 export const vuelidateNumeric = numeric;
 export const vuelidateMinLength = minLength;
 export const vuelidateMaxLength = maxLength;
+export const vuelidateHelpers = helpers;
 
 /**
  * @param { string } emailAddress Email Address

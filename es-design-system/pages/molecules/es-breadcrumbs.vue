@@ -8,7 +8,14 @@
                 bootstrap-vue breadcrumbs
             </b-link>
         </p>
-        <es-breadcrumbs :items="items" />
+        <div class="my-5">
+            <es-breadcrumbs :items="items" />
+        </div>
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-vue-base/src/lib-components/EsBreadcrumbs.vue"
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/molecules/es-breadcrumbs.vue" />
     </div>
 </template>
 <script>
@@ -21,6 +28,8 @@ export default {
     },
     data() {
         return {
+            compCode: '',
+            docCode: '',
             items: [
                 {
                     text: 'Home',
@@ -36,6 +45,16 @@ export default {
                 },
             ],
         };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-breadcrumbs.vue');
+        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsBreadcrumbs.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.compCode = this.$prism.normalizeCode(compSource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>

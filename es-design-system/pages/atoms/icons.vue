@@ -23,6 +23,9 @@
                 </b-form-group>
             </b-col>
         </b-row>
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-design-system/atoms/icons.vue" />
     </div>
 </template>
 
@@ -62,10 +65,23 @@ export default {
             themeNames,
         };
     },
+    data() {
+        return {
+            docCode: '',
+        };
+    },
     computed: {
         themeHexVal() {
             return this.variants[this.variantselected];
         },
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./icons.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>
