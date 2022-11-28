@@ -53,6 +53,9 @@ export default {
         * }
         */
         formErrors() {
+            if (!Object.hasOwn(this.$v, 'form')) {
+                return {};
+            }
             const formFields = this.getFields(this.$v.form);
             const formFieldErrors = formFields.reduce((formObj, item) => {
                 // eslint-disable-next-line no-param-reassign
@@ -65,8 +68,23 @@ export default {
         },
     },
     methods: {
-        validateState(name) {
-            const { $dirty, $error } = this.$v.form[name];
+        /**
+        * @param { string } dataPath
+        * @returns { Boolean | null } `true` if field is valid, `false` if field isn't valid, `null` if not "touched"
+        */
+        validateState(dataPath) {
+            const validatorField = dataPath.split('.').reduce((acc, field) => {
+                // eslint-disable-next-line no-param-reassign
+                acc = acc[field];
+                return acc;
+            }, this.$v);
+            if (!validatorField) {
+                return null;
+            }
+            if (!['$dirty', '$error'].map((key) => Object.hasOwn(validatorField, key))) {
+                return null;
+            }
+            const { $dirty, $error } = validatorField;
             return $dirty ? !$error : null;
         },
         // eslint-disable-next-line max-len

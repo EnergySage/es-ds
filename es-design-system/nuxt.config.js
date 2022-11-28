@@ -9,12 +9,24 @@ export default {
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'description', name: 'description', content: '' },
             { name: 'format-detection', content: 'telephone=no' },
+            { name: 'msapplication-TileColor', content: '#b95100' },
+            { name: 'theme-color', content: '#ffffff' },
         ],
         link: [
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
             {
                 rel: 'stylesheet',
                 href: 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap',
             },
+            { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+            {
+                rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png',
+            },
+            {
+                rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png',
+            },
+            { rel: 'manifest', href: '/site.webmanifest' },
+            { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#b95100' },
         ],
     },
     ssr: false,
@@ -30,7 +42,7 @@ export default {
         extend(config) {
             /* eslint-disable no-param-reassign */
             // TODO: Prevents dupe vue instance but not sure where its actually coming from
-            config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue');
+            config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue/dist/vue.common');
             // Prevents bootstrap-vue icons from being unitentionally included
             config.module.rules.push({
                 test: /bootstrap-vue\/src\/icons\/icons/,
@@ -51,6 +63,7 @@ export default {
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         { src: '@/plugins/api.js' },
+        { src: '~/plugins/prism', mode: 'client' },
     ],
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [

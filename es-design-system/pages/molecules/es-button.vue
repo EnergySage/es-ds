@@ -18,7 +18,7 @@
             </b-link>
         </p>
 
-        <table class="table">
+        <table class="table my-5">
             <thead>
                 <tr>
                     <th scope="col">
@@ -190,6 +190,11 @@
                 </tr>
             </tbody>
         </table>
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-vue-base/src/lib-components/EsButton.vue"
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/molecules/es-button.vue" />
     </div>
 </template>
 
@@ -200,6 +205,22 @@ export default {
     name: 'EsButtonDocs',
     components: {
         EsButton,
+    },
+    data() {
+        return {
+            compCode: '',
+            docCode: '',
+        };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-badge.vue');
+        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsBadge.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.compCode = this.$prism.normalizeCode(compSource.default);
+        this.$prism.highlight(this);
     },
 };
 </script>

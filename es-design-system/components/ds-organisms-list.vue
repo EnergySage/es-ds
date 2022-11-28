@@ -6,6 +6,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/organisms/es-reviews-list">
+                EsReviewsList
+            </b-link>
+        </li>
+        <li>
             <b-link to="/organisms/es-form">
                 EsForm
             </b-link>

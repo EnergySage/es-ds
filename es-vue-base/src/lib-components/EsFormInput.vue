@@ -142,11 +142,6 @@ export default {
     color: $danger;
 }
 
-// TODO: Move to its own utils in es-bs-base
-.font-size-sm {
-    font-size: $font-size-sm;
-}
-
 .es-form-input:disabled, .es-form-input[readonly] {
     border: 0;
 }

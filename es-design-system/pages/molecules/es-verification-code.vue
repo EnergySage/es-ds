@@ -55,7 +55,7 @@ import { EsVerificationCode, EsButton } from '@energysage/es-vue-base';
 const CHARACTER_COUNT = 5;
 
 export default {
-    name: 'EsBreadcrumbsDocs',
+    name: 'EsVerificationCodeDocs',
     components: {
         EsButton,
         EsVerificationCode,
@@ -65,7 +65,20 @@ export default {
             code: Array(CHARACTER_COUNT).fill(''),
             charCount: CHARACTER_COUNT,
             isValid: false,
+            compCode: '',
+            docCode: '',
         };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-verification-code.vue');
+        // eslint-disable-next-line max-len
+        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsVerificationCode.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.compCode = this.$prism.normalizeCode(compSource.default);
+        this.$prism.highlight(this);
     },
     methods: {
         randomCode() {

@@ -23,7 +23,7 @@
                     <es-form-input
                         id="email"
                         v-model="$v.form.email.$model"
-                        :state="validateState('email')"
+                        :state="validateState('form.email')"
                         :disabled="isSubmitInProgress"
                         required>
                         <template #label>
@@ -36,7 +36,7 @@
                     <es-form-input
                         id="password"
                         v-model="$v.form.password.$model"
-                        :state="validateState('password')"
+                        :state="validateState('form.password')"
                         :disabled="isSubmitInProgress"
                         required
                         type="tel">
@@ -54,7 +54,7 @@
                     <es-form-input
                         id="phone"
                         v-model="$v.form.phone.$model"
-                        :state="validateState('phone')"
+                        :state="validateState('form.phone')"
                         :disabled="isSubmitInProgress"
                         required
                         type="tel">
@@ -69,7 +69,7 @@
                         id="notes"
                         v-model="$v.form.notes.$model"
                         :disabled="isSubmitInProgress"
-                        :state="validateState('notes')"
+                        :state="validateState('form.notes')"
                         required>
                         <template #label>
                             Notes
@@ -132,6 +132,9 @@
                     :items="validatorMixins" />
             </b-col>
         </b-row>
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/organisms/es-form.vue" />
     </b-container>
 </template>
 <script>
@@ -273,7 +276,16 @@ export default {
                 notes: null,
                 password: null,
             },
+            docCode: '',
         };
+    },
+    async created() {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const docSource = await import('!raw-loader!./es-form.vue');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        this.docCode = this.$prism.normalizeCode(docSource.default);
+        this.$prism.highlight(this);
     },
     validations: {
         form: {
@@ -282,7 +294,7 @@ export default {
                 [vuelidateKeys.PHONE]: vuelidatePhone,
             },
             email: {
-                required: vuelidateRequired,
+                [vuelidateKeys.REQUIRED]: vuelidateRequired,
                 [vuelidateKeys.EMAIL]: vuelidateEmail,
             },
             notes: {
