@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- ***BREAKING:*** `EsValidationCode` now expects and returns an array using `v-model`
+- ***BREAKING:*** `EsVerificationCode` now expects and returns an array using `v-model`
 
 ### Added
 
