@@ -207,13 +207,16 @@ export default {
         },
         // Emit this.code changes to keep this.value in sync
         // Debounce to ensure value prop changes don't trigger duplicate emits
-        emitCodeUpdate: debounce(async function emitCodeUpdate() {
+        emitCodeUpdate: debounce(function emitCodeUpdate() {
             const codeIsValid = this.code.every((num) => this.allowedChars.includes(num))
              && this.code.length === this.charCount;
 
             this.$emit('input', this.code);
             this.$emit('valid-code', codeIsValid);
-        }, 1),
+        }, 1, {
+            leading: true,
+            trailing: false,
+        }),
     },
 };
 </script>
