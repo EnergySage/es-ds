@@ -2,6 +2,9 @@ import { mount } from '@vue/test-utils';
 import EsVerificationCode from '@/src/lib-components/EsVerificationCode.vue';
 import jestVue from '@/tests/jest.vue.config';
 
+// Mock debounce to return immediately
+jest.mock('lodash.debounce', () => jest.fn((fn) => fn));
+
 describe('EsVerificationCode', () => {
     beforeAll(() => {
         // JSDom does not implement this and an error was being

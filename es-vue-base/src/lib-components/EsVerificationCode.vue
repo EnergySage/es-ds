@@ -28,6 +28,7 @@
 
 <script lang="js">
 import { BInputGroup, BFormInput } from 'bootstrap-vue';
+import debounce from 'lodash.debounce';
 
 export default {
     name: 'EsVerificationCode',
@@ -202,18 +203,17 @@ export default {
         valuePropChange(propValue) {
             this.code = [...this.emptyArray].map((cur, index) => propValue[index] || '');
 
-            this.emitCodeUpdate(false);
+            this.emitCodeUpdate();
         },
         // Emit this.code changes to keep this.value in sync
-        emitCodeUpdate(emitInput = true) {
+        // Debounce to ensure value prop changes don't trigger duplicate emits
+        emitCodeUpdate: debounce(async function emitCodeUpdate() {
             const codeIsValid = this.code.every((num) => this.allowedChars.includes(num))
              && this.code.length === this.charCount;
 
-            if (emitInput) {
-                this.$emit('input', this.code);
-            }
+            this.$emit('input', this.code);
             this.$emit('valid-code', codeIsValid);
-        },
+        }, 1),
     },
 };
 </script>
