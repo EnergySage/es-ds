@@ -6,7 +6,7 @@
         <es-verification-code
             v-model="code"
             :char-count="charCount"
-            @valid-code="isValid = $event" />
+            @valid-code="checkValidation" />
         <b-row class="mt-4 align-items-center">
             <b-col
                 class="mb-3 mb-lg-0"
@@ -81,6 +81,11 @@ export default {
         this.$prism.highlight(this);
     },
     methods: {
+        checkValidation(valid) {
+            // eslint-disable-next-line no-console
+            console.log('code is valid', valid);
+            this.isValid = valid;
+        },
         randomCode() {
             // Randomly generates an array of numbers 0-9
             const rand = Array.from(
