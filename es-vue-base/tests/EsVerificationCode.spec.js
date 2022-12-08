@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import EsVerificationCode from '@/src/lib-components/EsVerificationCode.vue';
-import vue from 'Vue';
 import jestVue from '@/tests/jest.vue.config';
 
 // Mock debounce to return immediately
@@ -67,7 +66,7 @@ describe('EsVerificationCode', () => {
             input.element.value = chars[index];
             input.trigger('input');
         });
-        await vue.nextTick();
+        await jestVue.localVue.nextTick();
         expect(wrapper.emitted()['valid-code']).toEqual([[false], [false], [false], [false], [false]]);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
@@ -86,7 +85,7 @@ describe('EsVerificationCode', () => {
             input.trigger('input');
         });
 
-        await vue.nextTick();
+        await jestVue.localVue.nextTick();
         expect(wrapper.emitted()['valid-code']).toEqual([[false], [false], [false], [false], [true]]);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();

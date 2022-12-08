@@ -8,8 +8,13 @@
             to convey the meaning color using a defined naming convention. When working please
             use these color definitions and try to avoid introducing new unamed colors.
         </p>
+        <p>
+            All colors have CSS utility classes associated with them.
+            <code>text-{COLOR_NAME}</code> for text color, and <code>bg-{COLOR_NAME}</code>
+            for background color.
+        </p>
         <b-row class="my-5">
-            <b-col cols="3">
+            <b-col cols="4">
                 <h2>
                     Variants
                 </h2>
@@ -17,7 +22,7 @@
                     class="mb-4"
                     :colors="variants" />
             </b-col>
-            <b-col cols="3">
+            <b-col cols="4">
                 <h2>
                     Colors
                 </h2>
@@ -25,7 +30,7 @@
                     class="mb-4"
                     :colors="colors" />
             </b-col>
-            <b-col cols="3">
+            <b-col cols="4">
                 <h2>
                     Grays
                 </h2>
@@ -33,7 +38,7 @@
                     class="mb-4"
                     :colors="grays" />
             </b-col>
-            <b-col cols="3">
+            <b-col cols="4">
                 <h2>
                     Cyans
                 </h2>
@@ -41,7 +46,7 @@
                     class="mb-4"
                     :colors="cyans" />
             </b-col>
-            <b-col cols="3">
+            <b-col cols="4">
                 <h2>
                     Pinks
                 </h2>
@@ -49,7 +54,7 @@
                     class="mb-4"
                     :colors="pinks" />
             </b-col>
-            <b-col cols="3">
+            <b-col cols="4">
                 <h2>
                     Teals
                 </h2>
@@ -57,7 +62,7 @@
                     class="mb-4"
                     :colors="teals" />
             </b-col>
-            <b-col cols="3">
+            <b-col cols="4">
                 <h2>
                     Yellows
                 </h2>
