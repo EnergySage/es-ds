@@ -10,8 +10,25 @@
   }
 }
 
-.bg-white {
-  background-color: $white !important;
+@mixin bg-colors($color, $value, $relative: true) {
+  .bg-#{$color} {
+    background-color: $value;
+  }
+}
+
+// Add color bg classes
+@each $color, $value in $colors {
+  @include bg-colors($color, $value);
+}
+
+// Add variant bg color classes
+@each $color, $value in $theme-colors {
+  @include bg-colors($color, $value);
+}
+
+// Add gray bg olors classes
+@each $color, $value in $grays {
+  @include bg-colors($color, $value);
 }
 
 .bg-transparent {
