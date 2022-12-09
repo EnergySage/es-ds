@@ -18,11 +18,13 @@
                 @createReview="createReview"
                 @editReview="editReview" />
 
-            <div class="review-list d-lg-flex my-5">
-                <div
+            <b-row>
+                <b-col
                     v-for="(review, index) in reviews"
                     :key="review.id"
-                    class="review-wrapper pr-lg-5 mr-lg-4 mb-3 mb-lg-0">
+                    cols="12"
+                    lg="4"
+                    class="review-col mb-3 mb-lg-0 pl-4">
                     <es-review
                         :id="review.id"
                         :user-id="userIds[index]"
@@ -36,8 +38,8 @@
                         :updated-comment="review.updated_comment"
                         @showMore="reviewsModalVisible = true"
                         @editReview="editReview" />
-                </div>
-            </div>
+                </b-col>
+            </b-row>
         </div>
         <ds-doc-source
             :doc-code="docCode"
@@ -132,19 +134,23 @@ export default {
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
 
-.review-wrapper {
-    border-right: 1px solid $border-color;
-    width: 470px;
+.review-col {
+    border-left: 1px solid $border-color;
 
-    &:last-child {
-        border-right: 0;
+    &:first-child {
+        border-left: 0;
+        padding-left: 1rem !important;
     }
 }
 
 @include media-breakpoint-down(md) {
-    .review-wrapper {
-        border-right: 0;
-        width: 100%;
+    .review-col {
+        border-left: 0;
+        padding-left: 0 !important;
+
+        &:first-child {
+            padding-left: 0 !important;
+        }
     }
 }
 </style>

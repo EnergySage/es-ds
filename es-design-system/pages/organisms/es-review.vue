@@ -93,7 +93,7 @@ export default {
 
 @include media-breakpoint-down(md) {
     .review-wrapper {
-        width: 325px;
+        width: 100%;
     }
 }
 </style>
