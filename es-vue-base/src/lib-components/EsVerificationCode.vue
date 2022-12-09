@@ -76,7 +76,10 @@ export default {
          */
         value: {
             type: Array,
-            required: true,
+            // Must be named function to access `this`
+            default: function emptyArray() {
+                return Array(this.charCount).fill('');
+            },
         },
         /**
          * Size of the input fields
@@ -108,7 +111,7 @@ export default {
         },
     },
     created() {
-        if (this.value) {
+        if (this.value.toString() !== this.code.toString()) {
             // On first create if a value is set update this.code
             this.valuePropChange(this.value);
         }
