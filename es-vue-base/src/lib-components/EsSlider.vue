@@ -1,6 +1,7 @@
 <template>
     <vue-slider
         v-model="sliderValue"
+        class="es-slider"
         :data="data"
         :marks="marks"
         :min="min"
@@ -8,19 +9,14 @@
         :dot-size="28"
         :dot-attrs="{ 'aria-label': ariaLabel }"
         :tooltip="tooltip"
-        :dot-style="styles.dot"
-        :rail-style="styles.rail"
-        :step-style="styles.step"
-        :process-style="styles.process"
         lazy
         :contained="true"
         @change="updateSliderValue">
         <!-- Tooltip above the slider thumb -->
         <template #tooltip="{ value, focus }">
             <div
-                class="slider-tooltip d-flex h5 align-items-center text-white justify-content-center m-0"
-                :class="[{ focus }]"
-                :style="{ 'background-color': colorComputed }">
+                class="slider-tooltip d-flex h5 align-items-center text-white justify-content-center m-0 bg-primary"
+                :class="[{ focus }]">
                 {{ tooltipFormatter(value) }}
             </div>
         </template>
@@ -89,38 +85,10 @@ export default {
         },
     },
     data() {
-        // TODO: Replace this with sass variables when available
-        const colors = {
-            white: '#fff',
-            indigo: '#152f87',
-            cyan: '#007aab',
-        };
-        // eslint-disable-next-line max-len
-        const gradient = `linear-gradient(112.58deg, ${colors.cyan} 28%, ${colors.indigo} 100%)`;
-
         return {
             sliderValue: this.startingValue,
             min: this.data[0],
             max: this.data[this.data.length - 1],
-            colorComputed: colors.cyan,
-            styles: {
-                dot: {
-                    border: `5px solid ${colors.cyan}`,
-                    background: colors.white,
-                },
-                rail: {
-                    height: '10px',
-                    'border-radius': '9px',
-                },
-                process: {
-                    height: '10px',
-                    background: gradient,
-                    'border-radius': '9px',
-                },
-                step: {
-                    display: 'none',
-                },
-            },
         };
     },
     watch: {
@@ -140,28 +108,41 @@ export default {
 </script>
 
 <style lang="scss">
+/* stylelint-disable scss/dollar-variable-pattern */
+@import '~@energysage/es-bs-base/scss/includes';
 @import '~vue-slider-component/lib/theme/default';
+$railBorderRadius: 9px;
+$dotBgColor: $white;
+
 @import '~vue-slider-component/lib/styles/dot';
 @import '~vue-slider-component/lib/styles/mark';
 @import '~vue-slider-component/lib/styles/slider';
-</style>
 
-<style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
-
-.vue-slider {
+.es-slider {
     padding: 0 !important;
-}
 
-.slider-tooltip {
-    border-radius: 50%;
-    height: 54px;
-    width: 54px;
-}
+    .vue-slider-process {
+        background: linear-gradient(112.58deg, $primary 28%, $indigo 100%);
+    }
 
-.slider-label {
-    color: $gray-600;
-    font-size: $font-size-lg;
-    margin-top: $spacer;
+    .vue-slider-rail {
+        height: 10px;
+    }
+
+    .vue-slider-dot-handle {
+        border: 5px solid $primary;
+    }
+
+    .slider-tooltip {
+        border-radius: 50%;
+        height: 54px;
+        width: 54px;
+    }
+
+    .slider-label {
+        color: currentColor;
+        font-size: $font-size-lg;
+        margin-top: $spacer;
+    }
 }
 </style>

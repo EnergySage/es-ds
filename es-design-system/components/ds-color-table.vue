@@ -8,7 +8,9 @@
                 <th scope="col">
                     Code
                 </th>
-                <th scope="col">
+                <th
+                    scope="col"
+                    colspan="2">
                     &nbsp;
                 </th>
             </tr>
@@ -17,16 +19,21 @@
             <tr
                 v-for="(value, alias) in colors"
                 :key="alias">
-                <td>
+                <td class="pr-3">
                     {{ alias }}
                 </td>
-                <td>
+                <td class="pr-3">
                     <code>{{ value }}</code>
+                </td>
+                <td class="pr-3">
+                    <div
+                        :class="`swatch border bg-${alias}`" />
                 </td>
                 <td>
                     <div
-                        :style="{ color: value }"
-                        class="swatch ml-4 border" />
+                        :class="`swatch-text text-${alias}`">
+                        Sample Text
+                    </div>
                 </td>
             </tr>
         </tbody>
@@ -47,7 +54,6 @@ export default {
 
 <style lang="scss" scoped>
 .swatch {
-    background: currentColor;
     height: 3em;
     width: 3em;
 }

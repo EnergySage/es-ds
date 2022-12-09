@@ -71,3 +71,40 @@
 // Reset
 
 .text-reset { color: inherit !important; }
+
+@mixin text-colors($color, $value, $relative: true) {
+  .text-#{$color} {
+    color: $value;
+  }
+}
+
+// theme-colors are in _text-variants.scss
+// Add color text classes
+@each $color, $value in $colors {
+  @include text-colors($color, $value);
+}
+
+// Add gray text colors classes
+@each $color, $value in $grays {
+  @include text-colors($color, $value);
+}
+
+// Add teal text colors classes
+@each $color, $value in $teals {
+  @include text-colors($color, $value);
+}
+
+// Add cyan text colors classes
+@each $color, $value in $cyans {
+  @include text-colors($color, $value);
+}
+
+// Add pink text colors classes
+@each $color, $value in $pinks {
+  @include text-colors($color, $value);
+}
+
+// Add yellow text colors classes
+@each $color, $value in $yellows {
+  @include text-colors($color, $value);
+}

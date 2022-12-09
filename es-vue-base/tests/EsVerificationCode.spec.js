@@ -66,7 +66,7 @@ describe('EsVerificationCode', () => {
             input.element.value = chars[index];
             input.trigger('input');
         });
-
+        await jestVue.localVue.nextTick();
         expect(wrapper.emitted()['valid-code']).toEqual([[false], [false], [false], [false], [false]]);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
@@ -85,6 +85,7 @@ describe('EsVerificationCode', () => {
             input.trigger('input');
         });
 
+        await jestVue.localVue.nextTick();
         expect(wrapper.emitted()['valid-code']).toEqual([[false], [false], [false], [false], [true]]);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();

@@ -11,6 +11,10 @@
             :type="type"
             :pattern="pattern"
             class="code-input text-center"
+            :class="{
+                'lg': size === 'lg',
+                'md': size === 'md',
+            }"
             maxlength="1"
             autocomplete="off"
             aria-autocomplete="none"
@@ -72,7 +76,19 @@ export default {
          */
         value: {
             type: Array,
-            required: true,
+            // Must be named function to access `this`
+            default: function emptyArray() {
+                return Array(this.charCount).fill('');
+            },
+        },
+        /**
+         * Size of the input fields
+         */
+        size: {
+            type: String,
+            required: false,
+            default: 'lg',
+            validator: (val) => ['lg', 'md'].includes(val),
         },
     },
     data() {
@@ -95,7 +111,7 @@ export default {
         },
     },
     created() {
-        if (this.value) {
+        if (this.value.toString() !== this.code.toString()) {
             // On first create if a value is set update this.code
             this.valuePropChange(this.value);
         }
@@ -212,7 +228,8 @@ export default {
              && this.code.length === this.charCount;
 
             this.$emit('input', this.code);
-            this.$emit('valid-code', codeIsValid);
+            // Wait a moment after first emit to ensure DOM updates
+            this.$nextTick(() => this.$emit('valid-code', codeIsValid));
         }, 1, {
             leading: true,
             trailing: false,
@@ -225,13 +242,13 @@ export default {
 @import '~@energysage/es-bs-base/scss/includes';
 
 .code-holder {
-    margin: 0 auto;
-    max-width: 500px;
-
     .code-input {
         appearance: textfield;
-        font-size: 3rem;
-        height: 6rem;
+
+        &.lg {
+            font-size: 3rem;
+            height: 6rem;
+        }
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
