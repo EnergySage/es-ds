@@ -1,7 +1,7 @@
 <template>
     <div
         :id="id"
-        class="review-holder mr-3 mr-lg-5 p-3 p-lg-0"
+        class="review-holder p-3 p-lg-0"
         v-bind="$attrs">
         <div class="d-flex mb-2">
             <div class="d-flex flex-grow-1">
@@ -202,24 +202,12 @@ export default {
     .name-holder {
         max-width: 90%;
     }
-
-    .title-holder {
-        height: 20px;
-    }
-
-    .comment-holder {
-        height: auto;
-    }
 }
 
 @include media-breakpoint-down(md) {
     .review-holder {
         border: 1px solid $border-color;
         border-radius: 0.75rem;
-
-        .comment-holder {
-            height: 165px;
-        }
     }
 }
 </style>
