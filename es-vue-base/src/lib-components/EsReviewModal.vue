@@ -146,7 +146,7 @@ export default {
 }
 
 .sticky-mobile-col {
-    background: $body-bg;
+    background: $modal-content-bg;
     z-index: $zindex-sticky;
 }
 </style>

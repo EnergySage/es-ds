@@ -17,26 +17,29 @@
                 @hidden="reviewsModalVisible = false"
                 @createReview="createReview"
                 @editReview="editReview" />
-            <es-horizontal-list
-                id="reviews"
-                class="mb-5">
-                <es-review
+
+            <b-row>
+                <b-col
                     v-for="(review, index) in reviews"
-                    :id="review.id"
                     :key="review.id"
-                    :user-id="userIds[index]"
-                    class="review-wrapper"
-                    :reviewer-name="review.reviewer_name"
-                    :reviewer-id="review.reviewer_id"
-                    :certified="review.certified"
-                    :created="new Date(review.created)"
-                    :rating="review.rating"
-                    :title="review.title"
-                    :comment="review.comment"
-                    :updated-comment="review.updated_comment"
-                    @showMore="reviewsModalVisible = true"
-                    @editReview="editReview" />
-            </es-horizontal-list>
+                    cols="12"
+                    lg="4"
+                    class="review-col mb-3 mb-lg-0 pl-4">
+                    <es-review
+                        :id="review.id"
+                        :user-id="userIds[index]"
+                        :reviewer-name="review.reviewer_name"
+                        :reviewer-id="review.reviewer_id"
+                        :certified="review.certified"
+                        :created="new Date(review.created)"
+                        :rating="review.rating"
+                        :title="review.title"
+                        :comment="review.comment"
+                        :updated-comment="review.updated_comment"
+                        @showMore="reviewsModalVisible = true"
+                        @editReview="editReview" />
+                </b-col>
+            </b-row>
         </div>
         <ds-doc-source
             :doc-code="docCode"
@@ -45,14 +48,13 @@
 </template>
 <script>
 import {
-    EsReview, EsHorizontalList, EsButton, EsReviewModal,
+    EsReview, EsButton, EsReviewModal,
 } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsReviewDocs',
     components: {
         EsReview,
-        EsHorizontalList,
         EsButton,
         EsReviewModal,
     },
@@ -103,35 +105,6 @@ export default {
                 Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare. Maecenas quis turpis sit amet
                 sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                 Donec eleifend elit quam.`,
-                }, {
-                    id: 10,
-                    reviewer_name: 'shrt',
-                    reviewer_id: 4,
-                    certified: true,
-                    created: '2022-06-03T18:26:46.588897Z',
-                    rating: 4,
-                    title: 'Test',
-                    comment: '123',
-                    updated_comment: '',
-                }, {
-                    id: 15,
-                    reviewer_name: 'test',
-                    reviewer_id: 5,
-                    certified: false,
-                    created: '2022-06-09T14:10:30.290508Z',
-                    rating: 5,
-                    title: 'test',
-                    comment: 'Comment',
-                    updated_comment: 'Updated comment',
-                }, {
-                    id: 13,
-                    reviewer_name: 'testers',
-                    reviewer_id: 6,
-                    certified: false,
-                    created: '2022-06-09T14:05:08.901091Z',
-                    rating: 5,
-                    title: '',
-                    comment: '',
                 },
             ],
             docCode: '',
@@ -161,13 +134,23 @@ export default {
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
 
-.review-wrapper {
-    width: 450px;
+.review-col {
+    border-left: 1px solid $border-color;
+
+    &:first-child {
+        border-left: 0;
+        padding-left: 1rem !important;
+    }
 }
 
 @include media-breakpoint-down(md) {
-    .review-wrapper {
-        width: 325px;
+    .review-col {
+        border-left: 0;
+        padding-left: 0 !important;
+
+        &:first-child {
+            padding-left: 0 !important;
+        }
     }
 }
 </style>

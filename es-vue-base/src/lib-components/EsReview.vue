@@ -1,7 +1,7 @@
 <template>
     <div
         :id="id"
-        class="review-holder mr-3 mr-lg-5 p-3 p-lg-0"
+        class="review-holder p-3 p-lg-0"
         v-bind="$attrs">
         <div class="d-flex mb-2">
             <div class="d-flex flex-grow-1">
@@ -36,14 +36,12 @@
             </div>
         </div>
         <div class="mb-3">
-            <div class="title-holder mb-2">
-                <h4
-                    v-if="title"
-                    class="font-weight-bold text-truncate"
-                    data-testid="title-test">
-                    {{ title }}
-                </h4>
-            </div>
+            <h4
+                v-if="title"
+                class="font-weight-bold text-truncate"
+                data-testid="title-test">
+                {{ title }}
+            </h4>
             <EsViewMore
                 v-if="commentLimit"
                 class="comment-holder overflow-hidden"
@@ -202,24 +200,12 @@ export default {
     .name-holder {
         max-width: 90%;
     }
-
-    .title-holder {
-        height: 20px;
-    }
-
-    .comment-holder {
-        height: auto;
-    }
 }
 
 @include media-breakpoint-down(md) {
     .review-holder {
         border: 1px solid $border-color;
         border-radius: 0.75rem;
-
-        .comment-holder {
-            height: 165px;
-        }
     }
 }
 </style>

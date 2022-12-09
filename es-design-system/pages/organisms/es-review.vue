@@ -3,21 +3,22 @@
         <h1>
             Review
         </h1>
-        <es-review
-            :id="review.id"
-            :key="review.id"
-            user-id="3"
-            class="review-wrapper my-5"
-            :reviewer-name="review.reviewer_name"
-            :reviewer-id="review.reviewer_id"
-            :certified="review.certified"
-            :created="new Date(review.created)"
-            :rating="review.rating"
-            :title="review.title"
-            :comment="review.comment"
-            :updated-comment="review.updated_comment"
-            @showMore="showMore"
-            @editReview="editReview" />
+        <div class="review-wrapper my-5 pr-5 border-right">
+            <es-review
+                :id="review.id"
+                :key="review.id"
+                user-id="3"
+                :reviewer-name="review.reviewer_name"
+                :reviewer-id="review.reviewer_id"
+                :certified="review.certified"
+                :created="new Date(review.created)"
+                :rating="review.rating"
+                :title="review.title"
+                :comment="review.comment"
+                :updated-comment="review.updated_comment"
+                @showMore="showMore"
+                @editReview="editReview" />
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsReview.vue"
@@ -87,12 +88,12 @@ export default {
 @import '~@energysage/es-bs-base/scss/includes';
 
 .review-wrapper {
-    width: 450px;
+    width: 470px;
 }
 
 @include media-breakpoint-down(md) {
     .review-wrapper {
-        width: 325px;
+        width: 100%;
     }
 }
 </style>
