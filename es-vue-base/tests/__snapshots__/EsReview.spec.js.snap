@@ -7,9 +7,7 @@ exports[`EsReview <EsReview /> 1`] = `
     <!---->
   </div>
   <div class="mb-3">
-    <div class="title-holder mb-2">
-      <!---->
-    </div>
+    <!---->
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
@@ -30,11 +28,9 @@ exports[`EsReview Does not show edit link to non review owner 1`] = `
     <!---->
   </div>
   <div class="mb-3">
-    <div class="title-holder mb-2">
-      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-        Proj Bob
-      </h4>
-    </div>
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+      Proj Bob
+    </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
@@ -59,11 +55,9 @@ exports[`EsReview Imported components exist 1`] = `
       </svg></div>
   </div>
   <div class="mb-3">
-    <div class="title-holder mb-2">
-      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-        Proj Bob
-      </h4>
-    </div>
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+      Proj Bob
+    </h4>
     <div class="comment-holder overflow-hidden"><span>Not a nice proj</span>
       <!---->
     </div>
@@ -88,11 +82,9 @@ exports[`EsReview Shows edit link to review owner 1`] = `
     <!---->
   </div>
   <div class="mb-3">
-    <div class="title-holder mb-2">
-      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-        Proj Bob
-      </h4>
-    </div>
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+      Proj Bob
+    </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
@@ -113,11 +105,9 @@ exports[`EsReview Title and subtext exist 1`] = `
     <!---->
   </div>
   <div class="mb-3">
-    <div class="title-holder mb-2">
-      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-        Proj Bob
-      </h4>
-    </div>
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+      Proj Bob
+    </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>

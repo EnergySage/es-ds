@@ -36,14 +36,12 @@
             </div>
         </div>
         <div class="mb-3">
-            <div class="title-holder mb-2">
-                <h4
-                    v-if="title"
-                    class="font-weight-bold text-truncate"
-                    data-testid="title-test">
-                    {{ title }}
-                </h4>
-            </div>
+            <h4
+                v-if="title"
+                class="font-weight-bold text-truncate"
+                data-testid="title-test">
+                {{ title }}
+            </h4>
             <EsViewMore
                 v-if="commentLimit"
                 class="comment-holder overflow-hidden"

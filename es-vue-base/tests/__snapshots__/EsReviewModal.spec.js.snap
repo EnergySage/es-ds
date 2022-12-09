@@ -23,11 +23,9 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       <!---->
                     </div>
                     <div class="mb-3">
-                      <div class="title-holder mb-2">
-                        <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-                          Really Really Long Title Really Really Long Title
-                        </h4>
-                      </div>
+                      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+                        Really Really Long Title Really Really Long Title
+                      </h4>
                       shrt
                     </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
                       Ryan Dev
@@ -47,11 +45,9 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         </svg></div>
                     </div>
                     <div class="mb-3">
-                      <div class="title-holder mb-2">
-                        <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-                          testers
-                        </h4>
-                      </div>
+                      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+                        testers
+                      </h4>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
                       Nullam vestibulum ex mi, ut suscipit libero condimentum id. Pellentesque eu diam vel nisi
                       molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum.
@@ -78,11 +74,9 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         </svg></div>
                     </div>
                     <div class="mb-3">
-                      <div class="title-holder mb-2">
-                        <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-                          My Title
-                        </h4>
-                      </div>
+                      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+                        My Title
+                      </h4>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
                       Nullam vestibulum ex mi, ut suscipit libero condimentum id. Pellentesque eu diam vel nisi
                       molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum.
@@ -109,11 +103,9 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         </svg></div>
                     </div>
                     <div class="mb-3">
-                      <div class="title-holder mb-2">
-                        <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-                          Test
-                        </h4>
-                      </div>
+                      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+                        Test
+                      </h4>
                       123
                     </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
                       shrt
@@ -129,11 +121,9 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       <!---->
                     </div>
                     <div class="mb-3">
-                      <div class="title-holder mb-2">
-                        <h4 data-testid="title-test" class="font-weight-bold text-truncate">
-                          test
-                        </h4>
-                      </div>
+                      <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+                        test
+                      </h4>
 
                     </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
                       test
@@ -149,9 +139,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       <!---->
                     </div>
                     <div class="mb-3">
-                      <div class="title-holder mb-2">
-                        <!---->
-                      </div>
+                      <!---->
 
                     </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
                       testers
