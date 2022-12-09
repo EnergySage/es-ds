@@ -10,8 +10,41 @@
   }
 }
 
-.bg-white {
-  background-color: $white !important;
+@mixin bg-colors($color, $value, $relative: true) {
+  .bg-#{$color} {
+    background-color: $value;
+  }
+}
+
+// theme-colors are in _background-variants.scss
+// Add color bg classes
+@each $color, $value in $colors {
+  @include bg-colors($color, $value);
+}
+
+// Add gray bg colors classes
+@each $color, $value in $grays {
+  @include bg-colors($color, $value);
+}
+
+// Add teal bg colors classes
+@each $color, $value in $teals {
+  @include bg-colors($color, $value);
+}
+
+// Add cyan bg colors classes
+@each $color, $value in $cyans {
+  @include bg-colors($color, $value);
+}
+
+// Add pink bg colors classes
+@each $color, $value in $pinks {
+  @include bg-colors($color, $value);
+}
+
+// Add yellow bg colors classes
+@each $color, $value in $yellows {
+  @include bg-colors($color, $value);
 }
 
 .bg-transparent {
