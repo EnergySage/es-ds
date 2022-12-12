@@ -31,6 +31,14 @@
             </div>
             <DsOrganismsList />
         </li>
+        <li>
+            <div class="h4">
+                <b-link to="/examples">
+                    Examples
+                </b-link>
+            </div>
+            <DsExamplesList />
+        </li>
     </ul>
 </template>
 
@@ -38,6 +46,7 @@
 import DsAtomsList from '@/components/ds-atoms-list.vue';
 import DsOrganismsList from '@/components/ds-organisms-list.vue';
 import DsMoleculesList from '@/components/ds-molecules-list.vue';
+import DsExamplesList from '@/components/ds-examples-list.vue';
 
 export default {
     name: 'DsLinkList',
@@ -45,6 +54,7 @@ export default {
         DsAtomsList,
         DsOrganismsList,
         DsMoleculesList,
+        DsExamplesList,
     },
 };
 </script>

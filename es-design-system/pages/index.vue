@@ -33,6 +33,11 @@
                     Organisms
                 </nuxt-link>
             </li>
+            <li>
+                <nuxt-link to="/examples">
+                    Examples
+                </nuxt-link>
+            </li>
         </ul>
     </div>
 </template>

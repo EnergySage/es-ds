@@ -70,10 +70,11 @@ export default {
     methods: {
         /**
         * @param { string } dataPath
-        * @returns { Boolean | null } `true` if field is valid, `false` if field isn't valid, `null` if not "touched"
+        * @returns { Object | null } either a validation object or null
         */
-        validateState(dataPath) {
-            const validatorField = dataPath.split('.').reduce((acc, field) => {
+        getValidatorField(dotPath) {
+            // Find validators associated with dotted path
+            const validatorField = dotPath.split('.').reduce((acc, field) => {
                 // eslint-disable-next-line no-param-reassign
                 acc = acc[field];
                 return acc;
@@ -84,8 +85,33 @@ export default {
             if (!['$dirty', '$error'].map((key) => Object.hasOwn(validatorField, key))) {
                 return null;
             }
+            return validatorField;
+        },
+        /**
+        * @param { string } dotPath
+        * @returns { Boolean | null } `true` if field is valid, `false` if field isn't valid, `null` if not "touched"
+        */
+        validateState(dotPath) {
+            const validatorField = this.getValidatorField(dotPath);
+            if (!validatorField) {
+                return null;
+            }
             const { $dirty, $error } = validatorField;
             return $dirty ? !$error : null;
+        },
+        /**
+        * @param { string } dotPath
+        *
+        * Trigger "touch" to kick-off vuelidate validation
+        */
+        touchOnChange(dotPath) {
+            const validatorField = this.getValidatorField(dotPath);
+            if (!validatorField) {
+                return;
+            }
+            if (validatorField.$dirty) {
+                validatorField.$touch();
+            }
         },
         // eslint-disable-next-line max-len
         showFormError(text = 'The server responded with an error and we were unable to complete your request. Please try again') {
