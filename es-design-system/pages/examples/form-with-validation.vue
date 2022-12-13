@@ -12,10 +12,10 @@
                     <ul>
                         <li>
                             Validation should initially trigger <em>on-blur</em>.<br>
-                            Subsequent validation should trigger on <em>input-change</em>.
+                            Subsequent validation should trigger <em>on-input-change</em>.
                         </li>
                         <li>
-                            Validation for password fields should always trigger on <em>input-change</em>
+                            Validation for password fields should always trigger <em>on-input-change</em>
                         </li>
                     </ul>
                 </p>
@@ -56,7 +56,7 @@
                             <div
                                 v-for="error in formErrors.password"
                                 :key="error">
-                                {{ error }}
+                                {{ getErrorMessage(error) }}
                             </div>
                         </template>
                     </es-form-input>
@@ -200,6 +200,21 @@ export default {
                 await this.fakeServerRequest();
             }
             this.stopSubmit();
+        },
+        getErrorMessage(validatorName) {
+            const ERROR_MESSAGES = {
+                [vuelidateKeys.REQUIRED]: () => 'This field is required',
+                [vuelidateKeys.MIN_LENGTH]: (min = 8) => `This field must be at least ${min} characters`,
+                [vuelidateKeys.HAS_NUMBER]: () => 'This field must include a number',
+                [vuelidateKeys.HAS_SPECIAL_CHARACTER]: () => 'This field must include a special character',
+                [vuelidateKeys.HAS_UPPERCASE_LETTER]: () => 'This field must include an uppercase letter',
+                [vuelidateKeys.HAS_LOWERCASE_LETTER]: () => 'This field must include a lowercase letter',
+            };
+            const msgFunc = ERROR_MESSAGES[validatorName];
+            if (msgFunc) {
+                return msgFunc();
+            }
+            return '';
         },
     },
 };
