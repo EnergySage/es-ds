@@ -53,7 +53,7 @@ export default {
         * }
         */
         formErrors() {
-            if (!Object.hasOwn(this.$v, 'form')) {
+            if (!Object.prototype.hasOwnProperty.call(this.$v, 'form')) {
                 return {};
             }
             const formFields = this.getFields(this.$v.form);
@@ -82,7 +82,7 @@ export default {
             if (!validatorField) {
                 return null;
             }
-            if (!['$dirty', '$error'].map((key) => Object.hasOwn(validatorField, key))) {
+            if (!['$dirty', '$error'].map((key) => Object.prototype.hasOwnProperty.call(validatorField, key))) {
                 return null;
             }
             return validatorField;
