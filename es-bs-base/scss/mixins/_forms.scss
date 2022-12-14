@@ -82,7 +82,11 @@
 
   .form-control {
     @include form-validation-state-selector($state) {
-      border-color: $color;
+
+      // Don't change border color for valid state
+      @if ($state == "invalid") {
+        border-color: $color;
+      }
 
       @if $enable-validation-icons {
         padding-right: $input-height-inner !important; // stylelint-disable-line declaration-no-important
@@ -93,8 +97,11 @@
       }
 
       &:focus {
-        border-color: $color;
-        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        // Don't change border color for valid state
+        @if ($state == "invalid") {
+          border-color: $color;
+          box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        }
       }
     }
   }
