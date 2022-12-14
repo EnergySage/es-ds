@@ -11,11 +11,11 @@
                 <p>
                     <ul>
                         <li>
-                            Validation should initially trigger <em>on-blur</em>.<br>
-                            Subsequent validation should trigger <em>on-input-change</em>.
+                            Validation should initially trigger <em>on blur</em>.<br>
+                            Subsequent validation should trigger <em>on input-change</em>.
                         </li>
                         <li>
-                            Validation for password fields should always trigger <em>on-input-change</em>
+                            Validation for password fields should always trigger <em>on input-change</em>
                         </li>
                     </ul>
                 </p>
