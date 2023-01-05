@@ -110,4 +110,104 @@ describe('EsReview', () => {
         expect(wrapper.find('[data-testid="edit-review"]').exists()).toBe(true);
         expect(wrapper.html()).toMatchSnapshot();
     });
+
+    test('Shows a review was updated', () => {
+        const wrapper = mount(EsReview, {
+            ...jestVue,
+            propsData: {
+                id: 1,
+                reviewerName: 'Test Bob',
+                reviewerId: 1,
+                userId: 1,
+                rating: 5,
+                comment: 'Nice Proj',
+                updatedComment: 'Really Nice Proj',
+                title: 'Proj Bob',
+                created: new Date(2022, 2, 2),
+                modified: new Date(2022, 3, 2),
+            },
+        });
+
+        const text = wrapper.text();
+
+        expect(text).toContain('4/2/2022');
+        expect(text).toContain('Updated by');
+        expect(wrapper.find('[data-testid="badge-test"]').exists()).toBe(true);
+
+        const esViewMore = wrapper.findComponent(EsViewMore);
+        expect(esViewMore.exists()).toBe(true);
+
+        const comment = esViewMore.find('span');
+        expect(comment.exists()).toBe(true);
+        expect(comment.text()).toContain('Really Nice Proj');
+        expect(wrapper.html()).toMatchSnapshot();
+    });
+
+    test('Shows a review has a response', () => {
+        // check for provider response
+
+        const wrapper = mount(EsReview, {
+            ...jestVue,
+            propsData: {
+                id: 1,
+                reviewerName: 'Test Bob',
+                reviewerId: 1,
+                userId: 1,
+                rating: 5,
+                comment: 'Nice Proj',
+                title: 'Proj Bob',
+                created: new Date(2022, 2, 2),
+                response: {
+                    developer: 1,
+                    developer_logo: 'logo',
+                    response_text: 'Thanks, Bob!',
+                    modified: new Date(2022, 9, 23),
+                },
+            },
+        });
+
+        const text = wrapper.text();
+
+        expect(wrapper.get('[data-testid="view-response"]').exists()).toBe(true);
+        expect(text).toContain('View provider response');
+        expect(wrapper.html()).toMatchSnapshot();
+    });
+
+    test('Shows both comments and response when modal is open', () => {
+        // check for provider response
+
+        const wrapper = mount(EsReview, {
+            ...jestVue,
+            propsData: {
+                id: 1,
+                reviewerName: 'Test Bob',
+                reviewerId: 1,
+                userId: 1,
+                rating: 5,
+                commentLimit: null,
+                comment: 'Nice Proj',
+                updatedComment: 'Very very nice proj',
+                title: 'Proj Bob',
+                created: new Date(2022, 2, 2),
+                modified: new Date(2022, 5, 16),
+                modalView: true,
+                response: {
+                    developer: 1,
+                    developer_logo: 'logo',
+                    response_text: 'Thanks, Bob!',
+                    modified: new Date(2022, 9, 23),
+                },
+            },
+        });
+        const text = wrapper.text();
+        expect(text).toContain('Nice Proj');
+        expect(text).toContain('Very very nice proj');
+        expect(text).toContain('Thanks, Bob!');
+        expect(text).toContain('Responded on 10/23/2022');
+        expect(text).toContain('3/2/2022');
+        expect(text).toContain('6/16/2022');
+        expect(wrapper.get('[data-testid="both-comments"]').exists()).toBe(true);
+        expect(wrapper.get('[data-testid="developer-response"]').exists()).toBe(true);
+        expect(wrapper.html()).toMatchSnapshot();
+    });
 });

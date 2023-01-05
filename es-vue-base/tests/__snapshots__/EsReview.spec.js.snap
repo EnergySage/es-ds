@@ -2,121 +2,274 @@
 
 exports[`EsReview <EsReview /> 1`] = `
 "<div id="1" class="review-holder p-3 p-lg-0">
-  <div class="d-flex mb-2">
-    <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test" id="__BVID__5"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output></div>
-    <!---->
+  <div class="d-flex mb-2 mb-lg-3">
+    <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test" id="__BVID__5"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output>
+      <!---->
+      <!---->
+    </div>
   </div>
   <div class="mb-3">
     <!---->
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-    My Name
-    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
-      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-    Verified Shopper
-  </small>
+  </div>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+      My Name
+      </span> <span class="date-holder">on 3/2/2022</span></small>
+    <!---->
+  </div>
+  <!---->
+  <!---->
+  <!---->
 </div>"
 `;
 
 exports[`EsReview Does not show edit link to non review owner 1`] = `
 "<div id="1" class="review-holder p-3 p-lg-0">
-  <div class="d-flex mb-2">
-    <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output></div>
-    <!---->
+  <div class="d-flex mb-2 mb-lg-3">
+    <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output>
+      <!---->
+      <!---->
+    </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-    Test Bob
-    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
-      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-    Verified Shopper
-  </small>
+  </div>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+      Test Bob
+      </span> <span class="date-holder">on 3/2/2022</span></small>
+    <!---->
+  </div>
+  <!---->
+  <!---->
+  <!---->
 </div>"
 `;
 
 exports[`EsReview Imported components exist 1`] = `
 "<div id="1" class="review-holder p-3 p-lg-0">
-  <div class="d-flex mb-2">
-    <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output></div>
-    <div class="d-flex d-lg-none text-gray-800 align-items-center">
-      Verified
-      <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 20px; width: 20px;" class="text-gray-900 ml-1">
-        <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg></div>
+  <div class="d-flex mb-2 mb-lg-3">
+    <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output>
+      <div class="ml-auto ml-lg-3"><span data-testid="badge-test" class="badge badge-info">
+                    Updated
+                </span></div>
+      <!---->
+    </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Not a nice proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-    My Name
-    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
+  </div>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by</span>
+      My Name
+      </span> <span class="date-holder">on 1/5/2023</span></small>
+    <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+      <div class="mr-2">
+        Verified
+      </div> <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900">
+        <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+  </div>
+  <div class="d-none d-lg-flex text-gray-800 mt-2 align-items-center font-size-sm"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-2">
       <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
     Verified Shopper
-  </small>
+  </div>
+  <!---->
+  <!---->
+</div>"
+`;
+
+exports[`EsReview Shows a review has a response 1`] = `
+"<div id="1" class="review-holder p-3 p-lg-0">
+  <div class="d-flex mb-2 mb-lg-3">
+    <div class="d-flex flex-grow-1"><a data-testid="edit-review" href="#" target="_self" class="d-flex"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 20px; width: 20px;" class="ml-1">
+          <path d="M3.626 15.34 15.863 3.104l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z" fill="none"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M17.268 4.526 5.04 16.756a1 1 0 0 0-.273.51l-.492 2.46 2.458-.493a1 1 0 0 0 .51-.273L19.475 6.73a1.56 1.56 0 0 0-2.206-2.204ZM3.626 15.34 15.863 3.103l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="m16.793 10.207-3-3 1.414-1.414 3 3-1.414 1.414Z"></path>
+        </svg></a>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class="mb-3">
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+      Proj Bob
+    </h4>
+    <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
+      <!---->
+    </div>
+  </div>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+      Test Bob
+      </span> <span class="date-holder">on 3/2/2022</span></small>
+    <!---->
+  </div>
+  <!---->
+  <div class="d-flex flex-nowrap align-items-center font-size-sm mt-2 mt-lg-3"><a data-testid="view-response" href="#" target="_self" class="">
+      View provider response
+    </a>
+    <!---->
+  </div>
+  <!---->
+</div>"
+`;
+
+exports[`EsReview Shows a review was updated 1`] = `
+"<div id="1" class="review-holder p-3 p-lg-0">
+  <div class="d-flex mb-2 mb-lg-3">
+    <div class="d-flex flex-grow-1"><a data-testid="edit-review" href="#" target="_self" class="d-flex"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 20px; width: 20px;" class="ml-1">
+          <path d="M3.626 15.34 15.863 3.104l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z" fill="none"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M17.268 4.526 5.04 16.756a1 1 0 0 0-.273.51l-.492 2.46 2.458-.493a1 1 0 0 0 .51-.273L19.475 6.73a1.56 1.56 0 0 0-2.206-2.204ZM3.626 15.34 15.863 3.103l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="m16.793 10.207-3-3 1.414-1.414 3 3-1.414 1.414Z"></path>
+        </svg></a>
+      <div class="ml-auto ml-lg-3"><span data-testid="badge-test" class="badge badge-info">
+                    Updated
+                </span></div>
+      <!---->
+    </div>
+  </div>
+  <div class="mb-3">
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+      Proj Bob
+    </h4>
+    <div class="comment-holder overflow-hidden"><span>Really Nice Proj</span>
+      <!---->
+    </div>
+  </div>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by</span>
+      Test Bob
+      </span> <span class="date-holder">on 4/2/2022</span></small>
+    <!---->
+  </div>
+  <!---->
+  <!---->
+  <!---->
+</div>"
+`;
+
+exports[`EsReview Shows both comments and response when modal is open 1`] = `
+"<div id="1" class="review-holder p-3 p-lg-0">
+  <div class="d-flex mb-2 mb-lg-3">
+    <div class="d-flex flex-grow-1"><a data-testid="edit-review" href="#" target="_self" class="d-flex"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 20px; width: 20px;" class="ml-1">
+          <path d="M3.626 15.34 15.863 3.104l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z" fill="none"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M17.268 4.526 5.04 16.756a1 1 0 0 0-.273.51l-.492 2.46 2.458-.493a1 1 0 0 0 .51-.273L19.475 6.73a1.56 1.56 0 0 0-2.206-2.204ZM3.626 15.34 15.863 3.103l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="m16.793 10.207-3-3 1.414-1.414 3 3-1.414 1.414Z"></path>
+        </svg></a>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <div class="mb-3">
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+      Proj Bob
+    </h4>
+    <div data-testid="both-comments"><span class="d-inline-block font-weight-bolder">Updated review: </span>
+      Very very nice proj
+      <div class="name-holder font-size-sm text-truncate mt-2"><span class="d-none d-lg-inline-block">Updated on </span>
+        6/16/2022
+      </div>
+      <div class="mt-2"><span class="d-inline-block font-weight-bolder">Previous review: </span>
+        Nice Proj
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+      Test Bob
+      </span> <span class="date-holder">on 3/2/2022</span></small>
+    <!---->
+  </div>
+  <!---->
+  <!---->
+  <div data-testid="developer-response">
+    <div class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center"><img src="logo" alt=" logo" class="logo p-0 mr-2 mr-lg-3">
+      <div>
+        <p class="font-weight-bolder m-0 mb-lg-2"><span class="d-sm-inline-block">Response from </span>
+
+        </p>
+        <div class="d-none d-lg-block">
+          Thanks, Bob!
+          <p class="font-size-sm mt-3">
+            Responded on 10/23/2022
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="d-lg-none mt-2">
+      Thanks, Bob!
+      <p class="font-size-sm mt-2">
+        Responded on 10/23/2022
+      </p>
+    </div>
+  </div>
 </div>"
 `;
 
 exports[`EsReview Shows edit link to review owner 1`] = `
 "<div id="1" class="review-holder p-3 p-lg-0">
-  <div class="d-flex mb-2">
+  <div class="d-flex mb-2 mb-lg-3">
     <div class="d-flex flex-grow-1"><a data-testid="edit-review" href="#" target="_self" class="d-flex"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 20px; width: 20px;" class="ml-1">
           <path d="M3.626 15.34 15.863 3.104l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z" fill="none"></path>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M17.268 4.526 5.04 16.756a1 1 0 0 0-.273.51l-.492 2.46 2.458-.493a1 1 0 0 0 .51-.273L19.475 6.73a1.56 1.56 0 0 0-2.206-2.204ZM3.626 15.34 15.863 3.103l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z"></path>
           <path fill-rule="evenodd" clip-rule="evenodd" d="m16.793 10.207-3-3 1.414-1.414 3 3-1.414 1.414Z"></path>
-        </svg></a></div>
-    <!---->
+        </svg></a>
+      <!---->
+      <!---->
+    </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-    Test Bob
-    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
-      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-    Verified Shopper
-  </small>
+  </div>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+      Test Bob
+      </span> <span class="date-holder">on 3/2/2022</span></small>
+    <!---->
+  </div>
+  <!---->
+  <!---->
+  <!---->
 </div>"
 `;
 
 exports[`EsReview Title and subtext exist 1`] = `
 "<div id="1" class="review-holder p-3 p-lg-0">
-  <div class="d-flex mb-2">
-    <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output></div>
-    <!---->
+  <div class="d-flex mb-2 mb-lg-3">
+    <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output>
+      <!---->
+      <!---->
+    </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate">
+    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
-  </div> <small class="d-flex align-items-center text-gray-800 text-nowrap"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
-    Test Bob
-    </span> <span class="date-holder d-inline-block">on 3/2/2022</span></small> <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-1">
-      <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-    Verified Shopper
-  </small>
+  </div>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+      Test Bob
+      </span> <span class="date-holder">on 3/2/2022</span></small>
+    <!---->
+  </div>
+  <!---->
+  <!---->
+  <!---->
 </div>"
 `;

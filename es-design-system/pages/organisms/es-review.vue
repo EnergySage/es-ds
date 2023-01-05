@@ -12,10 +12,12 @@
                 :reviewer-id="review.reviewer_id"
                 :certified="review.certified"
                 :created="new Date(review.created)"
+                :modified="new Date(review.modified)"
                 :rating="review.rating"
                 :title="review.title"
                 :comment="review.comment"
                 :updated-comment="review.updated_comment"
+                :response="review.response"
                 @showMore="showMore"
                 @editReview="editReview" />
         </div>
@@ -55,6 +57,7 @@ export default {
                 Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare. Maecenas quis turpis sit amet
                 sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                 Donec eleifend elit quam.`,
+                response: 'blah blah',
             },
         };
     },

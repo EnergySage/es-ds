@@ -33,7 +33,11 @@
                         :title="review.title"
                         :updated-comment="review.updated_comment"
                         :comment="review.comment"
+                        :response="review.developer_response"
                         :created="new Date(review.created)"
+                        :modified="new Date(review.modified)"
+                        :developer-name="developerName"
+                        :modal-view="visible"
                         @editReview="$emit('editReview', review.id)" />
                 </b-col>
                 <b-col
