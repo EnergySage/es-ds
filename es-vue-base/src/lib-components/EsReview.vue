@@ -337,15 +337,16 @@ export default {
         max-width: 70%;
     }
 }
+
 .logo {
-    width: 64px;
-    height: 64px;
-    @include media-breakpoint-down(md) {
-        width: 32px;
-        height: 32px;
-    }
     border-radius: 8px;
+    height: 64px;
     object-fit: contain;
+    width: 64px;
+    @include media-breakpoint-down(md) {
+        height: 32px;
+        width: 32px;
+    }
 }
 @include media-breakpoint-down(md) {
     .review-holder {
