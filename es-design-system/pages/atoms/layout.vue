@@ -8,6 +8,24 @@
                 bootstrap-vue layout
             </b-link>
         </p>
+        <h2 class="mt-4">
+            Responsive Breakpoints
+        </h2>
+        <p>
+            At each breakpoint above extra small (xs), the content is constrained to the max width listed below.
+        </p>
+        <b-table
+            fixed
+            :fields="breakpointTableFields"
+            :items="breakpointTableItems"
+            striped>
+            <template #cell(label)="data">
+                <strong>{{ data.item.label }}</strong>
+            </template>
+        </b-table>
+        <h2 class="mt-4">
+            Grid Overview
+        </h2>
         <b-container>
             <b-row>
                 <b-col
@@ -229,12 +247,43 @@
 </template>
 
 <script>
+import sassBreakpoints from '@energysage/es-bs-base/scss/variables/_breakpoints.scss';
+import sassMaxWidths from '@energysage/es-bs-base/scss/variables/_max-widths.scss';
 
 export default {
     name: 'AtomsLayout',
     data() {
         return {
             docCode: '',
+            breakpointTableFields: [
+                { key: 'label', label: '' },
+                { key: 'xs', label: 'Extra small (xs)' },
+                { key: 'sm', label: 'Small (sm)' },
+                { key: 'md', label: 'Medium (md)' },
+                { key: 'lg', label: 'Large (lg)' },
+                { key: 'xl', label: 'Extra large (xl)' },
+                { key: 'xxl', label: 'Extra extra large (xxl)' },
+            ],
+            breakpointTableItems: [
+                {
+                    label: 'Breakpoint',
+                    xs: `< ${sassBreakpoints.sm}`,
+                    sm: `≥ ${sassBreakpoints.sm}`,
+                    md: `≥ ${sassBreakpoints.md}`,
+                    lg: `≥ ${sassBreakpoints.lg}`,
+                    xl: `≥ ${sassBreakpoints.xl}`,
+                    xxl: `≥ ${sassBreakpoints.xxl}`,
+                },
+                {
+                    label: 'Max container width',
+                    xs: 'None',
+                    sm: sassMaxWidths.sm,
+                    md: sassMaxWidths.md,
+                    lg: sassMaxWidths.lg,
+                    xl: sassMaxWidths.xl,
+                    xxl: sassMaxWidths.xxl,
+                },
+            ],
         };
     },
     async created() {

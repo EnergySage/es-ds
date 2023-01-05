@@ -1,0 +1,11 @@
+@import "../functions";
+@import "../mixins";
+@import "../variables";
+
+:export {
+  xxl: map-get($container-max-widths, xxl);
+  xl: map-get($container-max-widths, xl);
+  lg: map-get($container-max-widths, lg);
+  md: map-get($container-max-widths, md);
+  sm: map-get($container-max-widths, sm);
+}
