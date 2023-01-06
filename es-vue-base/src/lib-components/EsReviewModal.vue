@@ -37,7 +37,6 @@
                         :created="new Date(review.created)"
                         :modified="new Date(review.modified)"
                         :developer-name="developerName"
-                        :modal-view="visible"
                         @editReview="$emit('editReview', review.id)" />
                 </b-col>
                 <b-col

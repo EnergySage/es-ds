@@ -190,7 +190,6 @@ describe('EsReview', () => {
                 title: 'Proj Bob',
                 created: new Date(2022, 2, 2),
                 modified: new Date(2022, 5, 16),
-                modalView: true,
                 response: {
                     developer: 1,
                     developer_logo: 'logo',

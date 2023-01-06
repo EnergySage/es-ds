@@ -38,7 +38,6 @@
                         :comment="review.comment"
                         :updated-comment="review.updated_comment"
                         :response="review.developer_response"
-                        :modal-view="reviewsModalVisible"
                         @showMore="reviewsModalVisible = true"
                         @editReview="editReview" />
                 </b-col>
@@ -97,7 +96,7 @@ export default {
                     reviewer_id: 3,
                     certified: true,
                     created: '2022-06-03T18:27:41.718753Z',
-                    updated: '2022-06-03T18:27:41.718753Z',
+                    modified: '2023-01-06T18:27:41.718753Z',
                     rating: 5,
                     title: 'My Title',
                     comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum.',
@@ -115,8 +114,8 @@ export default {
                 ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas
                 accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra
                 diam sit amet nisl suscipit adipiscing bibendum est ultricies integer quis`,
-                        developer_logo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/5b02e2dc11a7aa000198b9fa/0x0.png',
-                        modified: '2022-06-10T14:48:56.604194Z',
+                        developer_logo: 'https://rlv.zcache.com/solar_panel_square_sticker-r15c14698abcb4bedb4728ed3d40d87a1_0ugmc_8byvr_540.jpg',
+                        modified: '2022-08-10T14:48:56.604194Z',
                     },
                 },
             ],

@@ -46,6 +46,7 @@ export default {
                 reviewer_id: 3,
                 certified: true,
                 created: '2022-06-03T18:27:41.718753Z',
+                modified: '2023-01-06T18:27:41.718753Z',
                 rating: 5,
                 title: 'My Title',
                 comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum.',
@@ -57,7 +58,7 @@ export default {
                 Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare. Maecenas quis turpis sit amet
                 sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                 Donec eleifend elit quam.`,
-                response: 'blah blah',
+                response: 'Lorem ipsum',
             },
         };
     },

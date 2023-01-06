@@ -72,7 +72,7 @@ exports[`EsReview Imported components exist 1`] = `
   </div>
   <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by</span>
       My Name
-      </span> <span class="date-holder">on 1/5/2023</span></small>
+      </span> <span class="date-holder">on 1/6/2023</span></small>
     <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
       <div class="mr-2">
         Verified
@@ -177,7 +177,7 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
     </h4>
     <div data-testid="both-comments"><span class="d-inline-block font-weight-bolder">Updated review: </span>
       Very very nice proj
-      <div class="name-holder font-size-sm text-truncate mt-2"><span class="d-none d-lg-inline-block">Updated on </span>
+      <div class="font-size-sm mt-2"><span class="d-none d-lg-inline-block">Updated on </span>
         6/16/2022
       </div>
       <div class="mt-2"><span class="d-inline-block font-weight-bolder">Previous review: </span>

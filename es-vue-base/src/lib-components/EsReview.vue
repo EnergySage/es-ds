@@ -25,7 +25,7 @@
                         :read-only="readOnly" />
                 </template>
                 <div
-                    v-if="updatedComment && !modalView"
+                    v-if="updatedComment && commentLimit"
                     class="ml-auto ml-lg-3">
                     <es-badge
                         data-testid="badge-test"
@@ -35,7 +35,7 @@
                     </es-badge>
                 </div>
                 <div
-                    v-if="certified && modalView"
+                    v-if="certified && !commentLimit"
                     class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
                     <div class="mr-2">
                         Verified
@@ -61,12 +61,12 @@
                 :length="commentLimit"
                 @click="$emit('showMore')" />
             <template v-else>
-                <template v-if="modalView && updatedComment">
+                <template v-if="!commentLimit && updatedComment">
                     <div data-testid="both-comments">
                         <span class="d-inline-block font-weight-bolder">Updated review: </span>
                         {{ updatedComment }}
                         <div
-                            class="name-holder font-size-sm text-truncate mt-2">
+                            class="font-size-sm mt-2">
                             <span class="d-none d-lg-inline-block">Updated on </span>
                             {{ updatedDate }}
                         </div>
@@ -86,13 +86,13 @@
                 <span
                     class="name-holder d-inline-block text-truncate pr-1"
                     data-testid="subtext-test">
-                    <span class="d-none d-lg-inline-block">{{ updatedComment && !modalView ? "Updated by" : "Posted by" }}</span>
+                    <span class="d-none d-lg-inline-block">{{ updatedComment && commentLimit ? "Updated by" : "Posted by" }}</span>
                     {{ reviewerName }}
                 </span>
-                <span class="date-holder">on {{ updatedComment && !modalView ? updatedDate : formattedDate }}</span>
+                <span class="date-holder">on {{ updatedComment && commentLimit ? updatedDate : formattedDate }}</span>
             </small>
             <div
-                v-if="certified && !response && !modalView"
+                v-if="certified && !response && commentLimit"
                 class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
                 <div class="mr-2">
                     Verified
@@ -113,7 +113,7 @@
             Verified Shopper
         </div>
         <div
-            v-if="response && !modalView"
+            v-if="response && commentLimit"
             class="d-flex flex-nowrap align-items-center font-size-sm mt-2 mt-lg-3">
             <b-link
                 data-testid="view-response"
@@ -133,7 +133,7 @@
             </div>
         </div>
         <div
-            v-if="response && modalView"
+            v-if="response && !commentLimit"
             data-testid="developer-response">
             <div
                 class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center">
@@ -269,6 +269,7 @@ export default {
         },
         /**
          * Review Comment Truncation Limit
+         * Also indicates whether to show the modal view of component
          */
         commentLimit: {
             default: 225,
@@ -276,11 +277,15 @@ export default {
         },
         /**
          * Developer Response
-         * Expected structure: developer, response_text, developer_logo, modified
+         * Expected structure:
+         * developer (Number),
+         * response_text (String),
+         * developer_logo (String),
+         * modified (Date)
          */
         response: {
             required: false,
-            type: [Number, String, null],
+            type: [Number, String, Date, null],
             default: null,
         },
         /**
@@ -297,13 +302,6 @@ export default {
         readOnly: {
             type: Boolean,
             default: true,
-        },
-        /**
-         * If the review modal is open
-         */
-        modalView: {
-            type: Boolean,
-            default: false,
         },
     },
     computed: {
