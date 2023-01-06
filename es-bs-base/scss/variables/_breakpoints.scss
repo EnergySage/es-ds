@@ -1,0 +1,14 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@import "../functions";
+@import "../mixins";
+@import "../variables";
+
+:export {
+  xxl: map-get($grid-breakpoints, xxl);
+  xl: map-get($grid-breakpoints, xl);
+  lg: map-get($grid-breakpoints, lg);
+  md: map-get($grid-breakpoints, md);
+  sm: map-get($grid-breakpoints, sm);
+  xs: map-get($grid-breakpoints, xs);
+}
