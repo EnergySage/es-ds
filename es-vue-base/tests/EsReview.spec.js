@@ -157,12 +157,10 @@ describe('EsReview', () => {
                 comment: 'Nice Proj',
                 title: 'Proj Bob',
                 created: new Date(2022, 2, 2),
-                response: {
-                    developer: 1,
-                    developer_logo: 'logo',
-                    response_text: 'Thanks, Bob!',
-                    modified: new Date(2022, 9, 23),
-                },
+                response: 'Thanks, Bob!',
+                developerLogo: 'logo',
+                responseDate: new Date(2022, 9, 23),
+                developerName: 'Test Dev',
             },
         });
 
@@ -190,12 +188,10 @@ describe('EsReview', () => {
                 title: 'Proj Bob',
                 created: new Date(2022, 2, 2),
                 modified: new Date(2022, 5, 16),
-                response: {
-                    developer: 1,
-                    developer_logo: 'logo',
-                    response_text: 'Thanks, Bob!',
-                    modified: new Date(2022, 9, 23),
-                },
+                response: 'Thanks, Bob!',
+                developerLogo: 'logo',
+                responseDate: new Date(2022, 9, 23),
+                developerName: 'Test Dev',
             },
         });
         const text = wrapper.text();

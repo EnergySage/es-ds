@@ -130,9 +130,6 @@ export default {
         avgReviewFormatted() {
             return parseFloat(this.avgRating).toFixed(1);
         },
-        hasDeveloperResponse() {
-            return this.review.developer_response;
-        },
     },
 };
 </script>

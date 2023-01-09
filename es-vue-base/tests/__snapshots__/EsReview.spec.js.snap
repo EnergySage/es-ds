@@ -14,7 +14,7 @@ exports[`EsReview <EsReview /> 1`] = `
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       My Name
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -34,14 +34,14 @@ exports[`EsReview Does not show edit link to non review owner 1`] = `
     </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+    <h4 data-testid="title-test" class="title font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -63,16 +63,16 @@ exports[`EsReview Imported components exist 1`] = `
     </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+    <h4 data-testid="title-test" class="title font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Not a nice proj</span>
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by</span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by </span>
       My Name
-      </span> <span class="date-holder">on 1/6/2023</span></small>
+      </span> <span class="date-holder">on 1/9/2023</span></small>
     <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
       <div class="mr-2">
         Verified
@@ -104,14 +104,14 @@ exports[`EsReview Shows a review has a response 1`] = `
     </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+    <h4 data-testid="title-test" class="title font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -141,14 +141,14 @@ exports[`EsReview Shows a review was updated 1`] = `
     </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+    <h4 data-testid="title-test" class="title font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Really Nice Proj</span>
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by</span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by </span>
       Test Bob
       </span> <span class="date-holder">on 4/2/2022</span></small>
     <!---->
@@ -172,7 +172,7 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
     </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+    <h4 data-testid="title-test" class="title font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div data-testid="both-comments"><span class="d-inline-block font-weight-bolder">Updated review: </span>
@@ -185,7 +185,7 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
       </div>
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -193,10 +193,10 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
   <!---->
   <!---->
   <div data-testid="developer-response">
-    <div class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center"><img src="logo" alt=" logo" class="logo p-0 mr-2 mr-lg-3">
+    <div class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center"><img src="logo" alt="Test Dev logo" class="logo p-0 mr-2 mr-lg-3">
       <div>
         <p class="font-weight-bolder m-0 mb-lg-2"><span class="d-sm-inline-block">Response from </span>
-
+          Test Dev
         </p>
         <div class="d-none d-lg-block">
           Thanks, Bob!
@@ -229,14 +229,14 @@ exports[`EsReview Shows edit link to review owner 1`] = `
     </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+    <h4 data-testid="title-test" class="title font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -256,14 +256,14 @@ exports[`EsReview Title and subtext exist 1`] = `
     </div>
   </div>
   <div class="mb-3">
-    <h4 data-testid="title-test" class="font-weight-bold text-truncate mb-2">
+    <h4 data-testid="title-test" class="title font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
     <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
