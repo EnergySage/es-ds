@@ -33,10 +33,12 @@
                         :title="review.title"
                         :updated-comment="review.updated_comment"
                         :comment="review.comment"
-                        :response="review.developer_response"
                         :created="new Date(review.created)"
                         :modified="new Date(review.modified)"
                         :developer-name="developerName"
+                        :response="review.developer_response ? review.developer_response.response_text : null"
+                        :developer-logo="review.developer_response ? review.developer_response.developer_logo : null"
+                        :response-date="review.developer_response ? review.developer_response.modified : null"
                         @editReview="$emit('editReview', review.id)" />
                 </b-col>
                 <b-col
@@ -127,6 +129,9 @@ export default {
     computed: {
         avgReviewFormatted() {
             return parseFloat(this.avgRating).toFixed(1);
+        },
+        hasDeveloperResponse() {
+            return this.review.developer_response;
         },
     },
 };

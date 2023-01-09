@@ -50,7 +50,7 @@
         <div class="mb-3">
             <h4
                 v-if="title"
-                class="font-weight-bold text-truncate mb-2"
+                class="title font-weight-bold text-truncate mb-2"
                 data-testid="title-test">
                 {{ title }}
             </h4>
@@ -68,7 +68,7 @@
                         <div
                             class="font-size-sm mt-2">
                             <span class="d-none d-lg-inline-block">Updated on </span>
-                            {{ updatedDate }}
+                            {{ localeDate(modified) }}
                         </div>
                         <div class="mt-2">
                             <span class="d-inline-block font-weight-bolder">Previous review: </span>
@@ -86,10 +86,10 @@
                 <span
                     class="name-holder d-inline-block text-truncate pr-1"
                     data-testid="subtext-test">
-                    <span class="d-none d-lg-inline-block">{{ updatedComment && commentLimit ? "Updated by" : "Posted by" }}</span>
+                    <span class="d-none d-lg-inline-block">{{ displayDateText }}</span>
                     {{ reviewerName }}
                 </span>
-                <span class="date-holder">on {{ updatedComment && commentLimit ? updatedDate : formattedDate }}</span>
+                <span class="date-holder">on {{ localeDate(displayDate) }}</span>
             </small>
             <div
                 v-if="certified && !response && commentLimit"
@@ -139,7 +139,7 @@
                 class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center">
                 <b-img
                     class="logo p-0 mr-2 mr-lg-3"
-                    :src="response.developer_logo"
+                    :src="developerLogo"
                     :alt="`${developerName} logo`" />
                 <div>
                     <p class="font-weight-bolder m-0 mb-lg-2">
@@ -148,18 +148,18 @@
                     </p>
                     <div
                         class="d-none d-lg-block">
-                        {{ response.response_text }}
+                        {{ response }}
                         <p class="font-size-sm mt-3">
-                            {{ `Responded on ${responseDate}` }}
+                            Responded on {{ localeDate(responseDate) }}
                         </p>
                     </div>
                 </div>
             </div>
             <div
                 class="d-lg-none mt-2">
-                {{ response.response_text }}
+                {{ response }}
                 <p class="font-size-sm mt-2">
-                    {{ `Responded on ${responseDate}` }}
+                    Responded on {{ localeDate(responseDate) }}
                 </p>
             </div>
         </div>
@@ -277,16 +277,28 @@ export default {
         },
         /**
          * Developer Response
-         * Expected structure:
-         * developer (Number),
-         * response_text (String),
-         * developer_logo (String),
-         * modified (Date)
          */
         response: {
             required: false,
             type: [Number, String, Date, null],
             default: null,
+        },
+        /**
+         * Logo of responding developer
+         */
+        developerLogo: {
+            required: false,
+            type: String,
+            default: '',
+        },
+        /**
+         * Date developer created/updated
+         * their response
+         */
+        responseDate: {
+            required: false,
+            type: String,
+            default: '',
         },
         /**
          * Developer name
@@ -305,23 +317,23 @@ export default {
         },
     },
     computed: {
-        formattedDate() {
-            // Displays DD/MM/YYYY
-            return new Date(this.created).toLocaleDateString();
+        displayDate() {
+            return this.updatedComment && this.commentLimit ? this.modified : this.created;
         },
-        updatedDate() {
-            // Displays DD/MM/YYYY
-            return new Date(this.modified).toLocaleDateString();
-        },
-        responseDate() {
-            // Displays DD/MM/YYYY
-            return new Date(this.response.modified).toLocaleDateString();
+        displayDateText() {
+            return this.updatedComment && this.commentLimit ? 'Updated by ' : 'Posted by ';
         },
         isReviewOwner() {
             if (!this.userId || !this.reviewerId) {
                 return false;
             }
             return this.userId.toString() === this.reviewerId.toString();
+        },
+    },
+    methods: {
+        localeDate(date) {
+            // Displays DD/MM/YYYY
+            return new Date(date).toLocaleDateString();
         },
     },
 };
@@ -333,6 +345,12 @@ export default {
 .review-holder {
     .details-holder {
         max-width: 70%;
+    }
+}
+
+.title {
+    @include media-breakpoint-down(md) {
+        font-size: $font-size-base;
     }
 }
 

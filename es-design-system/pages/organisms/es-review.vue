@@ -58,7 +58,10 @@ export default {
                 Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare. Maecenas quis turpis sit amet
                 sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                 Donec eleifend elit quam.`,
-                response: 'Lorem ipsum',
+                response: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                ut labore et dolore magna aliqua. Donec adipiscing tristique risus nec feugiat in. Est lorem ipsum
+                dolor sit amet consectetur adipiscing. Eu nisl nunc mi ipsum faucibus vitae aliquet. Condimentum
+                vitae sapien pellentesque habitant morbi tristique.`,
             },
         };
     },

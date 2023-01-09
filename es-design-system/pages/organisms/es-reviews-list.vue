@@ -37,7 +37,9 @@
                         :title="review.title"
                         :comment="review.comment"
                         :updated-comment="review.updated_comment"
-                        :response="review.developer_response"
+                        :response="review.developer_response ? review.developer_response.response_text : null"
+                        :developer-logo="review.developer_response ? review.developer_response.developer_logo : null"
+                        :response-date="review.developer_response ? review.developer_response.modified : null"
                         @showMore="reviewsModalVisible = true"
                         @editReview="editReview" />
                 </b-col>
