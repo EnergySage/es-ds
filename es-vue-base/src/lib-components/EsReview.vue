@@ -138,7 +138,9 @@
             <div
                 class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center">
                 <b-img
-                    class="logo p-0 mr-2 mr-lg-3"
+                    class="rounded logo p-0 mr-2 mr-lg-3"
+                    height="64px"
+                    width="64px"
                     :src="developerLogo"
                     :alt="`${developerName} logo`" />
                 <div>
@@ -280,7 +282,7 @@ export default {
          */
         response: {
             required: false,
-            type: [Number, String, Date, null],
+            type: String,
             default: null,
         },
         /**
@@ -354,20 +356,15 @@ export default {
     }
 }
 
-.logo {
-    border-radius: 8px;
-    height: 64px;
-    object-fit: contain;
-    width: 64px;
-    @include media-breakpoint-down(md) {
-        height: 32px;
-        width: 32px;
-    }
-}
 @include media-breakpoint-down(md) {
     .review-holder {
         border: 1px solid $border-color;
         border-radius: 0.75rem;
+    }
+
+    .logo {
+        height: 32px;
+        width: 32px;
     }
 }
 </style>

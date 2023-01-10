@@ -124,7 +124,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                     </div>
                     <!---->
                     <div data-testid="developer-response">
-                      <div class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center"><img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5b02e2dc11a7aa000198b9fa/0x0.png" alt="testDev logo" class="logo p-0 mr-2 mr-lg-3">
+                      <div class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center"><img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5b02e2dc11a7aa000198b9fa/0x0.png" alt="testDev logo" width="64" height="64" class="rounded logo p-0 mr-2 mr-lg-3">
                         <div>
                           <p class="font-weight-bolder m-0 mb-lg-2"><span class="d-sm-inline-block">Response from </span>
                             testDev
