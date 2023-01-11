@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `EsReview` and `EsReviewModal` now account for updates and developer responses to reviews
 - Bumped all out of date `npm` packages
+- Created responsive breakpoint [documentation](https://dev.design.energysage.dev/0.13.1/atoms/layout)
 
 ## [0.13.0] - 2022-12-14
 
