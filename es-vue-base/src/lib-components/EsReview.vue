@@ -3,7 +3,7 @@
         :id="id"
         class="review-holder p-3 p-lg-0"
         v-bind="$attrs">
-        <div class="d-flex mb-2">
+        <div class="d-flex mb-2 mb-lg-3">
             <div class="d-flex flex-grow-1">
                 <template v-if="isReviewOwner">
                     <b-link
@@ -24,21 +24,33 @@
                         :rating="rating"
                         :read-only="readOnly" />
                 </template>
-            </div>
-            <div
-                v-if="certified"
-                class="d-flex d-lg-none text-gray-800 align-items-center">
-                Verified
-                <IconVerified
-                    class="text-gray-900 ml-1"
-                    width="20px"
-                    height="20px" />
+                <div
+                    v-if="updatedComment && commentLimit"
+                    class="ml-auto ml-lg-3">
+                    <es-badge
+                        data-testid="badge-test"
+                        variant="info"
+                        @click="$emit('showMore')">
+                        Updated
+                    </es-badge>
+                </div>
+                <div
+                    v-if="certified && !commentLimit"
+                    class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+                    <div class="mr-2">
+                        Verified
+                    </div>
+                    <IconVerified
+                        class="text-gray-900"
+                        width="16px"
+                        height="16px" />
+                </div>
             </div>
         </div>
         <div class="mb-3">
             <h4
                 v-if="title"
-                class="font-weight-bold text-truncate"
+                class="title font-weight-bold text-truncate mb-2"
                 data-testid="title-test">
                 {{ title }}
             </h4>
@@ -49,25 +61,122 @@
                 :length="commentLimit"
                 @click="$emit('showMore')" />
             <template v-else>
-                {{ updatedComment || comment }}
+                <template v-if="!commentLimit && updatedComment">
+                    <div data-testid="both-comments">
+                        <span class="d-inline-block font-weight-bolder">Updated review: </span>
+                        {{ updatedComment }}
+                        <div
+                            class="font-size-sm text-gray-700 mt-2">
+                            <span class="d-none d-lg-inline-block">Updated on </span>
+                            {{ localeDate(modified) }}
+                        </div>
+                        <div class="mt-2">
+                            <span class="d-inline-block font-weight-bolder">Previous review: </span>
+                            {{ comment }}
+                        </div>
+                    </div>
+                </template>
+                <template v-else>
+                    {{ updatedComment || comment }}
+                </template>
             </template>
         </div>
-        <small class="d-flex align-items-center text-gray-800 text-nowrap">
-            <span
-                class="name-holder d-inline-block text-truncate pr-1"
-                data-testid="subtext-test">
-                <span class="d-none d-lg-inline-block">Posted by</span>
-                {{ reviewerName }}
-            </span>
-            <span class="date-holder d-inline-block">on {{ formattedDate }}</span>
-        </small>
-        <small class="d-none d-lg-flex align-items-center text-gray-800 mt-2">
+        <div class="d-flex flex-nowrap">
+            <small class="d-flex align-items-center text-gray-700 text-nowrap details-holder">
+                <span
+                    class="name-holder d-inline-block text-truncate pr-1"
+                    data-testid="subtext-test">
+                    <span class="d-none d-lg-inline-block">{{ displayDateText }}</span>
+                    {{ reviewerName }}
+                </span>
+                <span class="date-holder">on {{ localeDate(displayDate) }}</span>
+            </small>
+            <div
+                v-if="certified && !response && commentLimit"
+                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+                <div class="mr-2">
+                    Verified
+                </div>
+                <IconVerified
+                    class="text-gray-900"
+                    width="16px"
+                    height="16px" />
+            </div>
+        </div>
+        <div
+            v-if="certified"
+            class="d-none d-lg-flex text-gray-800 mt-2 align-items-center font-size-sm">
             <IconVerified
-                class="text-gray-900 mr-1"
+                class="text-gray-900 mr-2"
                 width="16px"
                 height="16px" />
             Verified Shopper
-        </small>
+        </div>
+        <div
+            v-if="response && commentLimit"
+            class="d-flex flex-nowrap align-items-center font-size-sm mt-2 mt-lg-3">
+            <b-link
+                data-testid="view-response"
+                @click="$emit('showMore')">
+                View provider response
+            </b-link>
+            <div
+                v-if="certified"
+                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto text-gray-800">
+                <div class="mr-2">
+                    Verified
+                </div>
+                <IconVerified
+                    class="text-gray-900"
+                    width="16px"
+                    height="16px" />
+            </div>
+        </div>
+        <div
+            v-if="response && !commentLimit"
+            data-testid="developer-response">
+            <b-row class="mt-3">
+                <b-col
+                    cols="12"
+                    lg="1"
+                    class="dev-logo-holder">
+                    <b-row
+                        align-v="center"
+                        class="">
+                        <b-col
+                            cols="2"
+                            lg="12"
+                            class="pr-0">
+                            <b-img
+                                class="rounded"
+                                fluid
+                                :src="developerLogo"
+                                :alt="`${developerName} logo`" />
+                        </b-col>
+                        <b-col
+                            cols="10"
+                            lg="12"
+                            class="d-lg-none p-0 pl-2">
+                            <span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                                Response from {{ developerName }}
+                            </span>
+                        </b-col>
+                    </b-row>
+                </b-col>
+                <b-col
+                    cols="12"
+                    lg="11"
+                    class="pt-lg-0 pt-2 pl-lg-3">
+                    <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                        Response from {{ developerName }}
+                    </p>
+                    {{ response }}
+                    <p class="font-size-sm text-gray-700 m-0 mt-2 mt-lg-3">
+                        Responded on {{ localeDate(responseDate) }}
+                    </p>
+                </b-col>
+            </b-row>
+        </div>
     </div>
 </template>
 
@@ -76,12 +185,14 @@ import EsRating from '@/src/lib-components/EsRating.vue';
 import IconVerified from '@/src/lib-icons/verified.vue';
 import IconPencil from '@/src/lib-icons/pencil.vue';
 import EsViewMore from '@/src/lib-components/EsViewMore.vue';
-import { BLink } from 'bootstrap-vue';
+import EsBadge from '@/src/lib-components/EsBadge.vue';
+import { BLink, BImg } from 'bootstrap-vue';
 
 export default {
     name: 'EsReview',
     components: {
-        EsRating, EsViewMore, IconVerified, IconPencil, BLink,
+        EsRating, EsViewMore, IconVerified, IconPencil, BLink, EsBadge, BImg,
+
     },
     props: {
         /**
@@ -129,6 +240,13 @@ export default {
             type: Date,
         },
         /**
+         * Modified Date
+         */
+        modified: {
+            default: () => new Date(),
+            type: Date,
+        },
+        /**
          * Rating
          */
         rating: {
@@ -165,10 +283,44 @@ export default {
         },
         /**
          * Review Comment Truncation Limit
+         * Also indicates whether to show the modal view of component
          */
         commentLimit: {
             default: 225,
             type: [Number, Boolean],
+        },
+        /**
+         * Developer Response
+         */
+        response: {
+            required: false,
+            type: String,
+            default: null,
+        },
+        /**
+         * Logo of responding developer
+         */
+        developerLogo: {
+            required: false,
+            type: String,
+            default: '',
+        },
+        /**
+         * Date developer created/updated
+         * their response
+         */
+        responseDate: {
+            required: false,
+            type: String,
+            default: '',
+        },
+        /**
+         * Developer name
+         */
+        developerName: {
+            required: false,
+            type: String,
+            default: '',
         },
         /**
          * Disable changing the rating
@@ -179,15 +331,23 @@ export default {
         },
     },
     computed: {
-        formattedDate() {
-            // Displays DD/MM/YYYY
-            return new Date(this.created).toLocaleDateString();
+        displayDate() {
+            return this.updatedComment && this.commentLimit ? this.modified : this.created;
+        },
+        displayDateText() {
+            return this.updatedComment && this.commentLimit ? 'Updated by ' : 'Posted by ';
         },
         isReviewOwner() {
             if (!this.userId || !this.reviewerId) {
                 return false;
             }
             return this.userId.toString() === this.reviewerId.toString();
+        },
+    },
+    methods: {
+        localeDate(date) {
+            // Displays DD/MM/YYYY
+            return new Date(date).toLocaleDateString();
         },
     },
 };
@@ -197,8 +357,18 @@ export default {
 @import '~@energysage/es-bs-base/scss/includes';
 
 .review-holder {
-    .name-holder {
-        max-width: 90%;
+    .details-holder {
+        max-width: 70%;
+    }
+}
+
+.dev-logo-holder {
+    max-width: 300px;
+}
+
+.title {
+    @include media-breakpoint-down(md) {
+        font-size: $font-size-base;
     }
 }
 
