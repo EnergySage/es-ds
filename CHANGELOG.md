@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.1] - 2023-01-11
+
+### Changed
+
+- `EsReview` and `EsReviewModal` now account for updates and developer responses to reviews
+- Bumped all out of date `npm` packages
+
 ## [0.13.0] - 2022-12-14
 
 ### Added
@@ -297,7 +304,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.12.0]: https://github.com/EnergySage/es-ds/compare/v0.11.3...v0.12.0
 [0.11.3]: https://github.com/EnergySage/es-ds/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/EnergySage/es-ds/compare/v0.11.1...v0.11.2
-[0.11.1]: https://github.com/EnergySage/es-ds/compare/v0.11.0...v0.11.1
 [0.11.1]: https://github.com/EnergySage/es-ds/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/EnergySage/es-ds/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/EnergySage/es-ds/compare/v0.9.0...v0.10.0
