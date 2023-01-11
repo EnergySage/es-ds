@@ -14,7 +14,7 @@ exports[`EsReview <EsReview /> 1`] = `
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       My Name
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -41,7 +41,7 @@ exports[`EsReview Does not show edit link to non review owner 1`] = `
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -70,9 +70,9 @@ exports[`EsReview Imported components exist 1`] = `
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by </span>
       My Name
-      </span> <span class="date-holder">on 1/10/2023</span></small>
+      </span> <span class="date-holder">on 1/11/2023</span></small>
     <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
       <div class="mr-2">
         Verified
@@ -111,7 +111,7 @@ exports[`EsReview Shows a review has a response 1`] = `
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -148,7 +148,7 @@ exports[`EsReview Shows a review was updated 1`] = `
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by </span>
       Test Bob
       </span> <span class="date-holder">on 4/2/2022</span></small>
     <!---->
@@ -177,7 +177,7 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
     </h4>
     <div data-testid="both-comments"><span class="d-inline-block font-weight-bolder">Updated review: </span>
       Very very nice proj
-      <div class="font-size-sm mt-2"><span class="d-none d-lg-inline-block">Updated on </span>
+      <div class="font-size-sm text-gray-700 mt-2"><span class="d-none d-lg-inline-block">Updated on </span>
         6/16/2022
       </div>
       <div class="mt-2"><span class="d-inline-block font-weight-bolder">Previous review: </span>
@@ -185,7 +185,7 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
       </div>
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -193,24 +193,24 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
   <!---->
   <!---->
   <div data-testid="developer-response">
-    <div class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center"><img src="logo" alt="Test Dev logo" width="64" height="64" class="rounded logo p-0 mr-2 mr-lg-3">
-      <div>
-        <p class="font-weight-bolder m-0 mb-lg-2"><span class="d-sm-inline-block">Response from </span>
-          Test Dev
-        </p>
-        <div class="d-none d-lg-block">
-          Thanks, Bob!
-          <p class="font-size-sm mt-3">
-            Responded on 10/23/2022
-          </p>
+    <div class="row mt-3">
+      <div class="dev-logo-holder col-lg-1 col-12">
+        <div class="row align-items-center">
+          <div class="pr-0 col-lg-12 col-2"><img src="logo" alt="Test Dev logo" class="rounded img-fluid"></div>
+          <div class="d-lg-none p-0 pl-2 col-lg-12 col-10"><span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                            Response from Test Dev
+                        </span></div>
         </div>
       </div>
-    </div>
-    <div class="d-lg-none mt-2">
-      Thanks, Bob!
-      <p class="font-size-sm mt-2">
-        Responded on 10/23/2022
-      </p>
+      <div class="pt-lg-0 pt-2 pl-lg-3 col-lg-11 col-12">
+        <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-2">
+          Response from Test Dev
+        </p>
+        Thanks, Bob!
+        <p class="font-size-sm text-gray-700 m-0 mt-2 mt-lg-3">
+          Responded on 10/23/2022
+        </p>
+      </div>
     </div>
   </div>
 </div>"
@@ -236,7 +236,7 @@ exports[`EsReview Shows edit link to review owner 1`] = `
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->
@@ -263,7 +263,7 @@ exports[`EsReview Title and subtext exist 1`] = `
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       Test Bob
       </span> <span class="date-holder">on 3/2/2022</span></small>
     <!---->

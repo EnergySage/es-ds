@@ -30,7 +30,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       </h4>
                       shrt
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         Ryan Dev
                         </span> <span class="date-holder">on 6/10/2022</span></small>
                       <!---->
@@ -65,7 +65,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                       Donec eleifend elit quam.
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         Ryan Residential Super Duper Really Long Name
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
@@ -104,7 +104,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare. Maecenas quis turpis sit
                         sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                         Donec eleifend elit quam.
-                        <div class="font-size-sm mt-2"><span class="d-none d-lg-inline-block">Updated on </span>
+                        <div class="font-size-sm text-gray-700 mt-2"><span class="d-none d-lg-inline-block">Updated on </span>
                           Invalid Date
                         </div>
                         <div class="mt-2"><span class="d-inline-block font-weight-bolder">Previous review: </span>
@@ -112,7 +112,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         </div>
                       </div>
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         Ryan Smith
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
@@ -124,30 +124,27 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                     </div>
                     <!---->
                     <div data-testid="developer-response">
-                      <div class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center"><img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5b02e2dc11a7aa000198b9fa/0x0.png" alt="testDev logo" width="64" height="64" class="rounded logo p-0 mr-2 mr-lg-3">
-                        <div>
-                          <p class="font-weight-bolder m-0 mb-lg-2"><span class="d-sm-inline-block">Response from </span>
-                            testDev
-                          </p>
-                          <div class="d-none d-lg-block">
-                            Lorem impsum natoque penatibus et magnis dis parturient montes nascetur
-                            ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas
-                            accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla
-                            diam sit amet nisl suscipit adipiscing bibendum est ultricies integer quis
-                            <p class="font-size-sm mt-3">
-                              Responded on 6/10/2022
-                            </p>
+                      <div class="row mt-3">
+                        <div class="dev-logo-holder col-lg-1 col-12">
+                          <div class="row align-items-center">
+                            <div class="pr-0 col-lg-12 col-2"><img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5b02e2dc11a7aa000198b9fa/0x0.png" alt="testDev logo" class="rounded img-fluid"></div>
+                            <div class="d-lg-none p-0 pl-2 col-lg-12 col-10"><span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                            Response from testDev
+                        </span></div>
                           </div>
                         </div>
-                      </div>
-                      <div class="d-lg-none mt-2">
-                        Lorem impsum natoque penatibus et magnis dis parturient montes nascetur
-                        ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas
-                        accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla
-                        diam sit amet nisl suscipit adipiscing bibendum est ultricies integer quis
-                        <p class="font-size-sm mt-2">
-                          Responded on 6/10/2022
-                        </p>
+                        <div class="pt-lg-0 pt-2 pl-lg-3 col-lg-11 col-12">
+                          <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                            Response from testDev
+                          </p>
+                          Lorem impsum natoque penatibus et magnis dis parturient montes nascetur
+                          ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas
+                          accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla
+                          diam sit amet nisl suscipit adipiscing bibendum est ultricies integer quis
+                          <p class="font-size-sm text-gray-700 m-0 mt-2 mt-lg-3">
+                            Responded on 6/10/2022
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -170,7 +167,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       </h4>
                       123
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         shrt
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
@@ -196,7 +193,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       </h4>
 
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         test
                         </span> <span class="date-holder">on 6/9/2022</span></small>
                       <!---->
@@ -216,7 +213,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       <!---->
 
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-800 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         testers
                         </span> <span class="date-holder">on 6/9/2022</span></small>
                       <!---->

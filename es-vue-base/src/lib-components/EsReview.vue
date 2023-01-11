@@ -66,7 +66,7 @@
                         <span class="d-inline-block font-weight-bolder">Updated review: </span>
                         {{ updatedComment }}
                         <div
-                            class="font-size-sm mt-2">
+                            class="font-size-sm text-gray-700 mt-2">
                             <span class="d-none d-lg-inline-block">Updated on </span>
                             {{ localeDate(modified) }}
                         </div>
@@ -82,7 +82,7 @@
             </template>
         </div>
         <div class="d-flex flex-nowrap">
-            <small class="d-flex align-items-center text-gray-800 text-nowrap details-holder">
+            <small class="d-flex align-items-center text-gray-700 text-nowrap details-holder">
                 <span
                     class="name-holder d-inline-block text-truncate pr-1"
                     data-testid="subtext-test">
@@ -135,35 +135,47 @@
         <div
             v-if="response && !commentLimit"
             data-testid="developer-response">
-            <div
-                class="mt-3 d-flex flex-nowrap align-items-lg-start align-items-center">
-                <b-img
-                    class="rounded logo p-0 mr-2 mr-lg-3"
-                    height="64px"
-                    width="64px"
-                    :src="developerLogo"
-                    :alt="`${developerName} logo`" />
-                <div>
-                    <p class="font-weight-bolder m-0 mb-lg-2">
-                        <span class="d-sm-inline-block">Response from </span>
-                        {{ developerName }}
+            <b-row class="mt-3">
+                <b-col
+                    cols="12"
+                    lg="1"
+                    class="dev-logo-holder">
+                    <b-row
+                        align-v="center"
+                        class="">
+                        <b-col
+                            cols="2"
+                            lg="12"
+                            class="pr-0">
+                            <b-img
+                                class="rounded"
+                                fluid
+                                :src="developerLogo"
+                                :alt="`${developerName} logo`" />
+                        </b-col>
+                        <b-col
+                            cols="10"
+                            lg="12"
+                            class="d-lg-none p-0 pl-2">
+                            <span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                                Response from {{ developerName }}
+                            </span>
+                        </b-col>
+                    </b-row>
+                </b-col>
+                <b-col
+                    cols="12"
+                    lg="11"
+                    class="pt-lg-0 pt-2 pl-lg-3">
+                    <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                        Response from {{ developerName }}
                     </p>
-                    <div
-                        class="d-none d-lg-block">
-                        {{ response }}
-                        <p class="font-size-sm mt-3">
-                            Responded on {{ localeDate(responseDate) }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="d-lg-none mt-2">
-                {{ response }}
-                <p class="font-size-sm mt-2">
-                    Responded on {{ localeDate(responseDate) }}
-                </p>
-            </div>
+                    {{ response }}
+                    <p class="font-size-sm text-gray-700 m-0 mt-2 mt-lg-3">
+                        Responded on {{ localeDate(responseDate) }}
+                    </p>
+                </b-col>
+            </b-row>
         </div>
     </div>
 </template>
@@ -350,6 +362,10 @@ export default {
     }
 }
 
+.dev-logo-holder {
+    max-width: 300px;
+}
+
 .title {
     @include media-breakpoint-down(md) {
         font-size: $font-size-base;
@@ -360,11 +376,6 @@ export default {
     .review-holder {
         border: 1px solid $border-color;
         border-radius: 0.75rem;
-    }
-
-    .logo {
-        height: 32px;
-        width: 32px;
     }
 }
 </style>
