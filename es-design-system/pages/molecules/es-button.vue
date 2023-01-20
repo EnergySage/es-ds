@@ -60,14 +60,14 @@
                                 Small button
                                 <icon-chevron-right
                                     class="ml-1"
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
 
                             <es-button size="sm">
                                 <icon-chevron-right
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
                         </div>
                     </td>
@@ -110,16 +110,16 @@
                                 Small button
                                 <icon-chevron-right
                                     class="ml-1"
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
 
                             <es-button
                                 disabled
                                 size="sm">
                                 <icon-chevron-right
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
                         </div>
                     </td>
@@ -178,16 +178,16 @@
                                 Small button
                                 <icon-chevron-right
                                     class="ml-1"
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
 
                             <es-button
                                 size="sm"
                                 variant="secondary">
                                 <icon-chevron-right
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
                         </div>
                     </td>
@@ -235,8 +235,8 @@
                                 Small button
                                 <icon-chevron-right
                                     class="ml-1"
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
 
                             <es-button
@@ -244,8 +244,8 @@
                                 size="sm"
                                 variant="secondary">
                                 <icon-chevron-right
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
                         </div>
                     </td>
@@ -304,16 +304,16 @@
                                 Small button
                                 <icon-chevron-right
                                     class="ml-1"
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
 
                             <es-button
                                 outline
                                 size="sm">
                                 <icon-chevron-right
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
                         </div>
                     </td>
@@ -361,8 +361,8 @@
                                 Small button
                                 <icon-chevron-right
                                     class="ml-1"
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
 
                             <es-button
@@ -370,8 +370,8 @@
                                 outline
                                 size="sm">
                                 <icon-chevron-right
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
                         </div>
                     </td>
@@ -435,8 +435,8 @@
                                 Small button
                                 <icon-chevron-right
                                     class="ml-1"
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
 
                             <es-button
@@ -444,8 +444,8 @@
                                 size="sm"
                                 variant="secondary">
                                 <icon-chevron-right
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
                         </div>
                     </td>
@@ -498,8 +498,8 @@
                                 Small button
                                 <icon-chevron-right
                                     class="ml-1"
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
 
                             <es-button
@@ -508,8 +508,8 @@
                                 size="sm"
                                 variant="secondary">
                                 <icon-chevron-right
-                                    height="18"
-                                    width="18" />
+                                    height="18px"
+                                    width="18px" />
                             </es-button>
                         </div>
                     </td>
