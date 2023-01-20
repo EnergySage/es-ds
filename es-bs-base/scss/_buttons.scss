@@ -5,9 +5,8 @@
 //
 
 .btn {
-  /* aligns text and icons vertically by default */
-  align-items: center;
   display: inline-flex;
+  align-items: center; // aligns text and icons vertically by default
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   color: $body-color;
