@@ -3,7 +3,7 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
+@mixin button-variant($background, $border, $hover-background, $hover-border, $active-background, $active-border) {
   color: color-yiq($background);
   @include gradient-bg($background);
   border-color: $border;
@@ -31,7 +31,7 @@
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
-    color: color-yiq($btn-disabled-bg-color);
+    color: $btn-disabled-font-color;
     background-color: $btn-disabled-bg-color;
     border-color: $btn-disabled-bg-color;
     // Remove CSS gradients if they're enabled
@@ -67,8 +67,8 @@
 
   @include hover() {
     color: $color-hover;
-    background-color: $active-background;
-    border-color: $active-border;
+    background-color: $color;
+    border-color: $color;
   }
 
   &:focus,
@@ -76,10 +76,16 @@
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
 
-  &.disabled,
-  &:disabled {
-    color: $color;
-    background-color: transparent;
+  &:disabled,
+  &.disabled {
+    color: $btn-disabled-font-color;
+    pointer-events: none;
+    background-color: $btn-disabled-bg-color;
+    border-color: $btn-disabled-bg-color;
+    // Remove CSS gradients if they're enabled
+    @if $enable-gradients {
+      background-image: none;
+    }
   }
 
   &:not(:disabled):not(.disabled):active,

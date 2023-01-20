@@ -9,7 +9,7 @@
             </b-link>
         </p>
 
-        <p>
+        <p class="mb-4">
             When using a button, please ensure that the copy style is
             <b-link
                 href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case"
@@ -18,178 +18,505 @@
             </b-link>
         </p>
 
-        <table class="table my-5">
+        <h2>
+            Primary Button
+        </h2>
+        <table class="table mb-4">
             <thead>
                 <tr>
                     <th scope="col">
-                        Variant
+                        State
                     </th>
                     <th scope="col">
-                        Small
-                    </th>
-                    <th scope="col">
-                        Default
-                    </th>
-                    <th scope="col">
-                        Large
+                        Examples
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td scope="row">
-                        Primary
+                        Normal
                     </td>
                     <td>
-                        <es-button size="sm">
-                            Small button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button>
-                            Medium button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button size="lg">
-                            Large button
-                        </es-button>
+                        <div class="mb-2">
+                            <es-button
+                                size="lg">
+                                Large button
+                            </es-button>
+                            <es-button size="lg">
+                                Large button
+                                <icon-chevron-right class="ml-2" />
+                            </es-button>
+                            <es-button size="lg">
+                                <icon-chevron-right />
+                            </es-button>
+                        </div>
+                        <div>
+                            <es-button size="sm">
+                                Small button
+                            </es-button>
+
+                            <es-button size="sm">
+                                Small button
+                                <icon-chevron-right
+                                    class="ml-1"
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+
+                            <es-button size="sm">
+                                <icon-chevron-right
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td scope="row">
-                        Primary (Disabled)
+                        Disabled
                     </td>
                     <td>
-                        <es-button
-                            disabled
-                            size="sm">
-                            Small button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button disabled>
-                            Medium button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            disabled
-                            size="lg">
-                            Large button
-                        </es-button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        Primary Outline
-                    </td>
-                    <td>
-                        <es-button
-                            :outline="true"
-                            size="sm">
-                            Small button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button :outline="true">
-                            Medium button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            :outline="true"
-                            size="lg">
-                            Large button
-                        </es-button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        Primary Outline (Disabled)
-                    </td>
-                    <td>
-                        <es-button
-                            disabled
-                            :outline="true"
-                            size="sm">
-                            Small button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            disabled
-                            :outline="true">
-                            Medium button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            disabled
-                            :outline="true"
-                            size="lg">
-                            Large button
-                        </es-button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        Dark (Secondary)
-                    </td>
-                    <td>
-                        <es-button
-                            variant="dark"
-                            :outline="false"
-                            size="sm">
-                            Small button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            variant="dark"
-                            :outline="false">
-                            Medium button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            variant="dark"
-                            :outline="false"
-                            size="lg">
-                            Large button
-                        </es-button>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        Dark Outline
-                    </td>
-                    <td>
-                        <es-button
-                            variant="dark"
-                            :outline="true"
-                            size="sm">
-                            Small button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            variant="dark"
-                            :outline="true">
-                            Medium button
-                        </es-button>
-                    </td>
-                    <td>
-                        <es-button
-                            variant="dark"
-                            :outline="true"
-                            size="lg">
-                            Large button
-                        </es-button>
+                        <div class="mb-2">
+                            <es-button
+                                disabled
+                                size="lg">
+                                Large button
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                size="lg">
+                                Large button
+                                <icon-chevron-right class="ml-2" />
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                size="lg">
+                                <icon-chevron-right />
+                            </es-button>
+                        </div>
+                        <div>
+                            <es-button
+                                disabled
+                                size="sm">
+                                Small button
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                size="sm">
+                                Small button
+                                <icon-chevron-right
+                                    class="ml-1"
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                size="sm">
+                                <icon-chevron-right
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+
+        <h2>
+            Secondary Button
+        </h2>
+        <table class="table mb-4">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        State
+                    </th>
+                    <th scope="col">
+                        Examples
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        Normal
+                    </td>
+                    <td>
+                        <div class="mb-2">
+                            <es-button
+                                size="lg"
+                                variant="secondary">
+                                Large button
+                            </es-button>
+                            <es-button
+                                size="lg"
+                                variant="secondary">
+                                Large button
+                                <icon-chevron-right class="ml-2" />
+                            </es-button>
+                            <es-button
+                                size="lg"
+                                variant="secondary">
+                                <icon-chevron-right />
+                            </es-button>
+                        </div>
+                        <div>
+                            <es-button
+                                size="sm"
+                                variant="secondary">
+                                Small button
+                            </es-button>
+
+                            <es-button
+                                size="sm"
+                                variant="secondary">
+                                Small button
+                                <icon-chevron-right
+                                    class="ml-1"
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+
+                            <es-button
+                                size="sm"
+                                variant="secondary">
+                                <icon-chevron-right
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">
+                        Disabled
+                    </td>
+                    <td>
+                        <div class="mb-2">
+                            <es-button
+                                disabled
+                                size="lg"
+                                variant="secondary">
+                                Large button
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                size="lg"
+                                variant="secondary">
+                                Large button
+                                <icon-chevron-right class="ml-2" />
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                size="lg"
+                                variant="secondary">
+                                <icon-chevron-right />
+                            </es-button>
+                        </div>
+                        <div>
+                            <es-button
+                                disabled
+                                size="sm"
+                                variant="secondary">
+                                Small button
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                size="sm"
+                                variant="secondary">
+                                Small button
+                                <icon-chevron-right
+                                    class="ml-1"
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                size="sm"
+                                variant="secondary">
+                                <icon-chevron-right
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>
+            Outline Primary Button
+        </h2>
+        <table class="table mb-4">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        State
+                    </th>
+                    <th scope="col">
+                        Examples
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        Normal
+                    </td>
+                    <td>
+                        <div class="mb-2">
+                            <es-button
+                                outline
+                                size="lg">
+                                Large button
+                            </es-button>
+                            <es-button
+                                outline
+                                size="lg">
+                                Large button
+                                <icon-chevron-right class="ml-2" />
+                            </es-button>
+                            <es-button
+                                outline
+                                size="lg">
+                                <icon-chevron-right />
+                            </es-button>
+                        </div>
+                        <div>
+                            <es-button
+                                outline
+                                size="sm">
+                                Small button
+                            </es-button>
+
+                            <es-button
+                                outline
+                                size="sm">
+                                Small button
+                                <icon-chevron-right
+                                    class="ml-1"
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+
+                            <es-button
+                                outline
+                                size="sm">
+                                <icon-chevron-right
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">
+                        Disabled
+                    </td>
+                    <td>
+                        <div class="mb-2">
+                            <es-button
+                                disabled
+                                outline
+                                size="lg">
+                                Large button
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                outline
+                                size="lg">
+                                Large button
+                                <icon-chevron-right class="ml-2" />
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                outline
+                                size="lg">
+                                <icon-chevron-right />
+                            </es-button>
+                        </div>
+                        <div>
+                            <es-button
+                                disabled
+                                outline
+                                size="sm">
+                                Small button
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                outline
+                                size="sm">
+                                Small button
+                                <icon-chevron-right
+                                    class="ml-1"
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                outline
+                                size="sm">
+                                <icon-chevron-right
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>
+            Outline Secondary Button
+        </h2>
+        <table class="table mb-4">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        State
+                    </th>
+                    <th scope="col">
+                        Examples
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        Normal
+                    </td>
+                    <td>
+                        <div class="mb-2">
+                            <es-button
+                                outline
+                                size="lg"
+                                variant="secondary">
+                                Large button
+                            </es-button>
+                            <es-button
+                                outline
+                                size="lg"
+                                variant="secondary">
+                                Large button
+                                <icon-chevron-right class="ml-2" />
+                            </es-button>
+                            <es-button
+                                outline
+                                size="lg"
+                                variant="secondary">
+                                <icon-chevron-right />
+                            </es-button>
+                        </div>
+                        <div>
+                            <es-button
+                                outline
+                                size="sm"
+                                variant="secondary">
+                                Small button
+                            </es-button>
+
+                            <es-button
+                                outline
+                                size="sm"
+                                variant="secondary">
+                                Small button
+                                <icon-chevron-right
+                                    class="ml-1"
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+
+                            <es-button
+                                outline
+                                size="sm"
+                                variant="secondary">
+                                <icon-chevron-right
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">
+                        Disabled
+                    </td>
+                    <td>
+                        <div class="mb-2">
+                            <es-button
+                                disabled
+                                outline
+                                size="lg"
+                                variant="secondary">
+                                Large button
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                outline
+                                size="lg"
+                                variant="secondary">
+                                Large button
+                                <icon-chevron-right class="ml-2" />
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                outline
+                                size="lg"
+                                variant="secondary">
+                                <icon-chevron-right />
+                            </es-button>
+                        </div>
+                        <div>
+                            <es-button
+                                disabled
+                                outline
+                                size="sm"
+                                variant="secondary">
+                                Small button
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                outline
+                                size="sm"
+                                variant="secondary">
+                                Small button
+                                <icon-chevron-right
+                                    class="ml-1"
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+
+                            <es-button
+                                disabled
+                                outline
+                                size="sm"
+                                variant="secondary">
+                                <icon-chevron-right
+                                    height="18"
+                                    width="18" />
+                            </es-button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsButton.vue"
@@ -199,12 +526,13 @@
 </template>
 
 <script>
-import { EsButton } from '@energysage/es-vue-base';
+import { EsButton, IconChevronRight } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsButtonDocs',
     components: {
         EsButton,
+        IconChevronRight,
     },
     data() {
         return {
@@ -214,8 +542,8 @@ export default {
     },
     async created() {
         /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-        const docSource = await import('!raw-loader!./es-badge.vue');
-        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsBadge.vue');
+        const docSource = await import('!raw-loader!./es-button.vue');
+        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsButton.vue');
         /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
         this.docCode = this.$prism.normalizeCode(docSource.default);
@@ -224,3 +552,20 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '~@energysage/es-bs-base/scss/includes';
+
+/**
+ * ensures buttons are spaced out nicely on mobile and desktop
+ * for the purposes of this documentation page while keeping the
+ * example code patterns simple and easy to copy out.
+ *
+ * normally, one would want to use "mb-2" or "mr-2" utility classes
+ * on the buttons to accomplish this spacing.
+ */
+button {
+    margin-bottom: $spacer * 0.5;
+    margin-right: $spacer * 0.5;
+}
+</style>
