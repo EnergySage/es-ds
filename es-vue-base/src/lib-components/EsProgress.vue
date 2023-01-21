@@ -19,7 +19,7 @@ export default {
     props: {
         height: {
             type: String,
-            default: '5px',
+            default: '0.3125rem', // 5px
         },
         value: {
             type: Number,
