@@ -35,6 +35,7 @@ export default {
     border-radius: 0 0.125rem 0.125rem 0;
   }
 }
+
 .EsProgress--full {
   ::v-deep .progress-bar {
     border-radius: 0;
