@@ -1,5 +1,6 @@
 <template>
     <b-form-rating
+        class="bg-transparent rounded-0"
         v-bind="$attrs"
         :value="roundedRating"
         :readonly="readOnly"
