@@ -56,9 +56,7 @@ exports[`EsReview Imported components exist 1`] = `
 "<div id="1" class="review-holder p-3 p-lg-0">
   <div class="d-flex mb-2 mb-lg-3">
     <div class="d-flex flex-grow-1"><output dir="ltr" tabindex="0" role="slider" aria-readonly="true" aria-live="off" aria-valuemin="1" aria-valuemax="5" aria-valuenow="5" class="b-rating form-control align-items-center d-inline-flex border-0 readonly" data-testid="rating-test"><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span><span class="b-rating-star flex-grow-1 b-rating-star-full"><span class="b-rating-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;"><path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path></svg></span></span></output>
-      <div class="ml-auto ml-lg-3"><span data-testid="badge-test" class="badge badge-info">
-                    Updated
-                </span></div>
+      <!---->
       <!---->
     </div>
   </div>
@@ -66,13 +64,13 @@ exports[`EsReview Imported components exist 1`] = `
     <h4 data-testid="title-test" class="title font-weight-bold text-truncate mb-2">
       Proj Bob
     </h4>
-    <div class="comment-holder overflow-hidden"><span>Not a nice proj</span>
+    <div class="comment-holder overflow-hidden"><span>Nice Proj</span>
       <!---->
     </div>
   </div>
-  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Updated by </span>
+  <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
       My Name
-      </span> <span class="date-holder">on 1/11/2023</span></small>
+      </span> <span class="date-holder">on 3/2/2022</span></small>
     <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
       <div class="mr-2">
         Verified
@@ -197,7 +195,7 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
       <div class="dev-logo-holder col-lg-1 col-12">
         <div class="row align-items-center">
           <div class="pr-0 col-lg-12 col-2"><img src="logo" alt="Test Dev logo" class="rounded img-fluid"></div>
-          <div class="d-lg-none p-0 pl-2 col-lg-12 col-10"><span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
+          <div class="d-lg-none col-lg-12 col-10"><span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
                             Response from Test Dev
                         </span></div>
         </div>

@@ -12,7 +12,7 @@
                 :reviewer-id="review.reviewer_id"
                 :certified="review.certified"
                 :created="new Date(review.created)"
-                :modified="new Date(review.modified)"
+                :modified="review.modified ? new Date(review.modified) : null"
                 :rating="review.rating"
                 :title="review.title"
                 :comment="review.comment"

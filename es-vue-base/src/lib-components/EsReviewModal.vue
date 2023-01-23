@@ -34,11 +34,12 @@
                         :updated-comment="review.updated_comment"
                         :comment="review.comment"
                         :created="new Date(review.created)"
-                        :modified="new Date(review.modified)"
+                        :modified="review.modified ? new Date(review.modified) : null"
                         :developer-name="developerName"
                         :response="review.developer_response ? review.developer_response.response_text : null"
                         :developer-logo="review.developer_response ? review.developer_response.developer_logo : null"
-                        :response-date="review.developer_response ? review.developer_response.modified : null"
+                        :response-date="review.developer_response ?
+                            new Date(review.developer_response.modified) : null"
                         @editReview="$emit('editReview', review.id)" />
                 </b-col>
                 <b-col
