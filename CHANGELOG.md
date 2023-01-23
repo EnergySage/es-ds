@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed an issue where defaulting a date to today's date in `EsReview` caused Jest to fail
 - Fixed `EsReview` display so it only shows dates that get passed in
+- Fixed `EsReview` display to account for no developer logo
+- Fixed a regression in `bg-{color}` classes; should use `!important;`
 
 ## [0.13.1] - 2023-01-11
 
