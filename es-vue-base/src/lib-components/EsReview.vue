@@ -66,6 +66,7 @@
                         <span class="d-inline-block font-weight-bolder">Updated review: </span>
                         {{ updatedComment }}
                         <div
+                            v-if="modified"
                             class="font-size-sm text-gray-700 mt-2">
                             <span class="d-none d-lg-inline-block">Updated on </span>
                             {{ localeDate(modified) }}
@@ -82,7 +83,9 @@
             </template>
         </div>
         <div class="d-flex flex-nowrap">
-            <small class="d-flex align-items-center text-gray-700 text-nowrap details-holder">
+            <small
+                v-if="displayDate"
+                class="d-flex align-items-center text-gray-700 text-nowrap details-holder">
                 <span
                     class="name-holder d-inline-block text-truncate pr-1"
                     data-testid="subtext-test">
@@ -144,6 +147,7 @@
                         align-v="center"
                         class="">
                         <b-col
+                            v-if="developerLogo"
                             cols="2"
                             lg="12"
                             class="pr-0">
@@ -154,9 +158,9 @@
                                 :alt="`${developerName} logo`" />
                         </b-col>
                         <b-col
-                            cols="10"
+                            :cols="developerLogo ? 10 : 12"
                             lg="12"
-                            class="d-lg-none p-0 pl-2">
+                            class="d-lg-none">
                             <span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
                                 Response from {{ developerName }}
                             </span>
@@ -165,7 +169,7 @@
                 </b-col>
                 <b-col
                     cols="12"
-                    lg="11"
+                    :lg="developerLogo ? 11 : 12"
                     class="pt-lg-0 pt-2 pl-lg-3">
                     <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-2">
                         Response from {{ developerName }}
@@ -243,7 +247,7 @@ export default {
          * Modified Date
          */
         modified: {
-            default: () => new Date(),
+            default: null,
             type: Date,
         },
         /**
@@ -311,8 +315,8 @@ export default {
          */
         responseDate: {
             required: false,
-            type: String,
-            default: '',
+            type: Date,
+            default: null,
         },
         /**
          * Developer name
@@ -332,10 +336,16 @@ export default {
     },
     computed: {
         displayDate() {
-            return this.updatedComment && this.commentLimit ? this.modified : this.created;
+            return (this.updatedComment && this.commentLimit) ? this.modified || null : this.created;
         },
         displayDateText() {
-            return this.updatedComment && this.commentLimit ? 'Updated by ' : 'Posted by ';
+            if (this.updatedComment && this.commentLimit) {
+                if (this.modified) {
+                    return 'Updated by ';
+                }
+                return '';
+            }
+            return 'Posted by ';
         },
         isReviewOwner() {
             if (!this.userId || !this.reviewerId) {
@@ -346,8 +356,11 @@ export default {
     },
     methods: {
         localeDate(date) {
-            // Displays DD/MM/YYYY
-            return new Date(date).toLocaleDateString();
+            if (date) {
+                // Displays DD/MM/YYYY
+                return new Date(date).toLocaleDateString();
+            }
+            return '';
         },
     },
 };
