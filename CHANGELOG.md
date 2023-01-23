@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - ***BREAKING:*** `EsReview` now does not contain padding or margins; responsibility of wrapping element
+- ***BREAKING:*** `bg-white` utility class no longer has an `!important` property
 - Fixed an issue where `EsVerificationCode` emits triggered too quickly
 - Removed `EsHorizontalList` from `es-review-list` documentation in favor of row and column display
 
