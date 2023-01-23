@@ -340,11 +340,11 @@ export default {
         displayDateText() {
             if (this.updatedComment && this.commentLimit) {
                 if (this.modified) {
-                    return 'Updated by';
+                    return 'Updated by ';
                 }
                 return '';
             }
-            return 'Posted by';
+            return 'Posted by ';
         },
         isReviewOwner() {
             if (!this.userId || !this.reviewerId) {

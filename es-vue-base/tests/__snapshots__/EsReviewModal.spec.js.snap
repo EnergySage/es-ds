@@ -30,7 +30,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       </h4>
                       shrt
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         Ryan Dev
                         </span> <span class="date-holder">on 6/10/2022</span></small>
                       <!---->
@@ -65,7 +65,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                       Donec eleifend elit quam.
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         Ryan Residential Super Duper Really Long Name
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
@@ -110,7 +110,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         </div>
                       </div>
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         Ryan Smith
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
@@ -165,7 +165,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       </h4>
                       123
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         shrt
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
@@ -191,7 +191,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       </h4>
 
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         test
                         </span> <span class="date-holder">on 6/9/2022</span></small>
                       <!---->
@@ -211,7 +211,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                       <!---->
 
                     </div>
-                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by</span>
+                    <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-1"><span class="d-none d-lg-inline-block">Posted by </span>
                         testers
                         </span> <span class="date-holder">on 6/9/2022</span></small>
                       <!---->
