@@ -126,7 +126,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         <div class="dev-logo-holder col-lg-1 col-12">
                           <div class="row align-items-center">
                             <div class="pr-0 col-lg-12 col-2"><img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5b02e2dc11a7aa000198b9fa/0x0.png" alt="testDev logo" class="rounded img-fluid"></div>
-                            <div class="d-lg-none p-0 pl-2 col-lg-12 col-10"><span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                            <div class="d-lg-none col-lg-12 col-10"><span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
                             Response from testDev
                         </span></div>
                           </div>
