@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.3] - 2023-01-23
+
+### Added
+
+- Added `EsProgress` component and documentation
+
+### Changes
+
+- Updated `eslint-config-energysage` and fixed new rules
+- Fixed an issue where `EsRating` background was always `white`
+
 ## [0.13.2] - 2023-01-23
 
 ### Changed
