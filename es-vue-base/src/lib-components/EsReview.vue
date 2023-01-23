@@ -147,6 +147,7 @@
                         align-v="center"
                         class="">
                         <b-col
+                            v-if="developerLogo"
                             cols="2"
                             lg="12"
                             class="pr-0">
@@ -157,9 +158,9 @@
                                 :alt="`${developerName} logo`" />
                         </b-col>
                         <b-col
-                            cols="10"
+                            :cols="developerLogo ? 10 : 12"
                             lg="12"
-                            class="d-lg-none p-0 pl-2">
+                            class="d-lg-none">
                             <span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
                                 Response from {{ developerName }}
                             </span>
@@ -168,7 +169,7 @@
                 </b-col>
                 <b-col
                     cols="12"
-                    lg="11"
+                    :lg="developerLogo ? 11 : 12"
                     class="pt-lg-0 pt-2 pl-lg-3">
                     <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-2">
                         Response from {{ developerName }}
