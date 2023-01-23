@@ -56,6 +56,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-progress">
+                EsProgress
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-rating">
                 EsRating
             </b-link>
