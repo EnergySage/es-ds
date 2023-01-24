@@ -12,7 +12,7 @@
 
 @mixin bg-colors($color, $value, $relative: true) {
   .bg-#{$color} {
-    background-color: $value;
+    background-color: $value !important;
   }
 }
 

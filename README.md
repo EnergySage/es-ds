@@ -101,8 +101,8 @@ Assuming changes are approved, the process of publishing a new version is...
 
 0. Ensure your local environment is [setup](./README.md#installing-dependencies-and-linking-packages) and you are on the `main` branch
 1. `make install && make symlink` - Install the new published versions locally and symlink them
-2. `make lint && make test` - Run tests and linting to ensure they pass
-3. `make build` - Build all packages to `*/dist` folders locally
+2. `make build` - Build all packages to `*/dist` folders locally
+3. `make lint && make test` - Run tests and linting to ensure they pass
 4. `make publish` - Publish updated packages to [npmjs.com](https://www.npmjs.com/org/energysage)
 5. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
 6. `make install && make symlink` - Install the new published versions locally and symlink them

@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.3] - 2023-01-23
+
+### Added
+
+- Added `EsProgress` component and documentation
+
+### Changes
+
+- Updated `eslint-config-energysage` and fixed new rules
+- Fixed an issue where `EsRating` background was always `white`
+
+## [0.13.2] - 2023-01-23
+
+### Changed
+
+- Fixed an issue where defaulting a date to today's date in `EsReview` caused Jest to fail
+- Fixed `EsReview` display so it only shows dates that get passed in
+- Fixed `EsReview` display to account for no developer logo
+- Fixed a regression in `bg-{color}` classes; should use `!important;`
+
 ## [0.13.1] - 2023-01-11
 
 ### Changed
@@ -29,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - ***BREAKING:*** `EsReview` now does not contain padding or margins; responsibility of wrapping element
+- ***BREAKING:*** `bg-white` utility class no longer has an `!important` property
 - Fixed an issue where `EsVerificationCode` emits triggered too quickly
 - Removed `EsHorizontalList` from `es-review-list` documentation in favor of row and column display
 

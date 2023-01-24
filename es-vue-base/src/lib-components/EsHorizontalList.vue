@@ -10,6 +10,8 @@
                 'no-snap': isClicked,
                 active: isMoving,
             }"
+            role="button"
+            tabIndex="0"
             @mousedown="downEvent"
             @touchstart="downEvent"
             @mousemove="moveEvent"
