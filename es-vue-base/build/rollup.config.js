@@ -161,7 +161,7 @@ if (!argv.format || argv.format === 'umd') {
         ...umdConfig,
         output: {
             ...umdConfig.output,
-            file: browserFileName.browser.replace('min.', ''),
+            file: browserFileName.replace('min.', ''),
         },
     });
 }
@@ -219,7 +219,7 @@ if (!argv.format || argv.format === 'es') {
         ...esConfig,
         output: {
             ...esConfig.output,
-            file: moduleFileName.module.replace('min.', ''),
+            file: moduleFileName.replace('min.', ''),
         },
     });
 }
