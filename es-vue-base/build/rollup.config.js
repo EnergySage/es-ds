@@ -13,7 +13,11 @@ import babel from '@rollup/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
 import terser from '@rollup/plugin-terser';
 import minimist from 'minimist';
-import packageJSON from '../package.json';
+import {
+    main as mainFileName,
+    browser as browserFileName,
+    module as moduleFileName,
+} from '../package.json';
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
@@ -104,7 +108,7 @@ const globals = {
     'bootstrap-vue': 'bootstrapVue',
 };
 
-// Customize configs for individual targets
+// UMD Build: https://github.com/umdjs/umd
 const buildFormats = [];
 if (!argv.format || argv.format === 'umd') {
     const umdConfig = {
@@ -141,7 +145,7 @@ if (!argv.format || argv.format === 'umd') {
         output: {
             ...umdConfig.output,
             compact: true,
-            file: packageJSON.browser,
+            file: browserFileName,
         },
         plugins: [
             ...umdConfig.plugins,
@@ -157,10 +161,12 @@ if (!argv.format || argv.format === 'umd') {
         ...umdConfig,
         output: {
             ...umdConfig.output,
-            file: packageJSON.browser.replace('min.', ''),
+            file: browserFileName.browser.replace('min.', ''),
         },
     });
 }
+
+// ESM Build: https://github.com/standard-things/esm
 if (!argv.format || argv.format === 'es') {
     const esConfig = {
         ...baseConfig,
@@ -197,7 +203,7 @@ if (!argv.format || argv.format === 'es') {
         output: {
             ...esConfig.output,
             compact: true,
-            file: packageJSON.module,
+            file: moduleFileName,
         },
         plugins: [
             ...esConfig.plugins,
@@ -213,18 +219,18 @@ if (!argv.format || argv.format === 'es') {
         ...esConfig,
         output: {
             ...esConfig.output,
-            file: packageJSON.module.replace('min.', ''),
+            file: moduleFileName.module.replace('min.', ''),
         },
     });
 }
 
+// CommonJS Build: https://requirejs.org/docs/commonjs.html
 if (!argv.format || argv.format === 'cjs') {
     const cjsConfig = {
         ...baseConfig,
         external,
         output: {
             ...baseConfig.output,
-            file: packageJSON.main,
             format: 'cjs',
             globals,
         },
@@ -249,7 +255,7 @@ if (!argv.format || argv.format === 'cjs') {
         output: {
             ...cjsConfig.output,
             compact: true,
-            file: packageJSON.main,
+            file: mainFileName,
         },
         plugins: [
             ...cjsConfig.plugins,
@@ -265,7 +271,7 @@ if (!argv.format || argv.format === 'cjs') {
         ...cjsConfig,
         output: {
             ...cjsConfig.output,
-            file: packageJSON.main.replace('min.', ''),
+            file: mainFileName.replace('min.', ''),
         },
     });
 }
