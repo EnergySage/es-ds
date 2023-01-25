@@ -16,8 +16,8 @@
     "lint:style": "stylelint \"**/*.{scss,sass,vue}\" --ignore-path ../.gitignore",
     "lintfix": "npm run lint:js -- --fix && npm run lint:style -- --fix"
   },
-  "main": "dist/es-vue-base.cjs.js",
-  "module": "dist/es-vue-base.esm.js",
+  "main": "dist/es-vue-base.cjs.min.js",
+  "module": "dist/es-vue-base.esm.min.js",
   "browser": "dist/es-vue-base.umd.min.js",
   "unpkg": "dist/es-vue-base.umd.min.js",
   "files": [

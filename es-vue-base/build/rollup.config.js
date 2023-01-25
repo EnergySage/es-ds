@@ -34,7 +34,6 @@ const baseConfig = {
         name: 'EsVueBase',
         sourcemap: true,
         exports: 'named',
-        compact: true,
     },
     plugins: {
         preVue: [
@@ -113,7 +112,6 @@ if (!argv.format || argv.format === 'umd') {
         external,
         output: {
             ...baseConfig.output,
-            file: packageJSON.browser,
             format: 'umd',
             globals,
         },
@@ -134,14 +132,34 @@ if (!argv.format || argv.format === 'umd') {
                     ],
                 ],
             }),
+        ],
+    };
+
+    // Minified build is default
+    buildFormats.push({
+        ...umdConfig,
+        output: {
+            ...umdConfig.output,
+            compact: true,
+            file: packageJSON.browser,
+        },
+        plugins: [
+            ...umdConfig.plugins,
             terser({
                 output: {
                     ecma: 5,
                 },
             }),
         ],
-    };
-    buildFormats.push(umdConfig);
+    });
+
+    buildFormats.push({
+        ...umdConfig,
+        output: {
+            ...umdConfig.output,
+            file: packageJSON.browser.replace('min.', ''),
+        },
+    });
 }
 if (!argv.format || argv.format === 'es') {
     const esConfig = {
@@ -150,7 +168,6 @@ if (!argv.format || argv.format === 'es') {
         external,
         output: {
             ...baseConfig.output,
-            file: packageJSON.module,
             format: 'esm',
         },
         plugins: [
@@ -173,7 +190,32 @@ if (!argv.format || argv.format === 'es') {
             }),
         ],
     };
-    buildFormats.push(esConfig);
+
+    // Minified build is default
+    buildFormats.push({
+        ...esConfig,
+        output: {
+            ...esConfig.output,
+            compact: true,
+            file: packageJSON.module,
+        },
+        plugins: [
+            ...esConfig.plugins,
+            terser({
+                output: {
+                    ecma: 5,
+                },
+            }),
+        ],
+    });
+
+    buildFormats.push({
+        ...esConfig,
+        output: {
+            ...esConfig.output,
+            file: packageJSON.module.replace('min.', ''),
+        },
+    });
 }
 
 if (!argv.format || argv.format === 'cjs') {
@@ -200,7 +242,32 @@ if (!argv.format || argv.format === 'cjs') {
             babel(baseConfig.plugins.babel),
         ],
     };
-    buildFormats.push(cjsConfig);
+
+    // Minified build is default
+    buildFormats.push({
+        ...cjsConfig,
+        output: {
+            ...cjsConfig.output,
+            compact: true,
+            file: packageJSON.main,
+        },
+        plugins: [
+            ...cjsConfig.plugins,
+            terser({
+                output: {
+                    ecma: 5,
+                },
+            }),
+        ],
+    });
+
+    buildFormats.push({
+        ...cjsConfig,
+        output: {
+            ...cjsConfig.output,
+            file: packageJSON.main.replace('min.', ''),
+        },
+    });
 }
 
 // Export config
