@@ -65,25 +65,13 @@ fieldset:disabled a.btn {
 
 @each $color, $value in $button-colors {
   .btn-#{$color} {
-    @include button-variant(
-      $value,                                        // background
-      $value,                                        // border
-      map-get($button-hover-colors, $color),         // hover background
-      map-get($button-hover-colors, $color),         // hover border
-      map-get($button-hover-colors, $color),         // active background
-      map-get($button-active-border-colors, $color)  // active border
-    );
+    @include button-variant($color);
   }
 }
 
 @each $color, $value in $button-colors {
   .btn-outline-#{$color} {
-    @include button-outline-variant(
-      $value,                                        // outline color and hover background
-      $white,                                        // hover text color
-      $value,                                        // active background
-      map-get($button-active-border-colors, $color)  // active border
-    );
+    @include button-outline-variant($color);
   }
 }
 

@@ -3,7 +3,19 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($background, $border, $hover-background, $hover-border, $active-background, $active-border) {
+@mixin button-variant($variant) {
+  $background: map-get($button-colors, $variant);
+  $border: $background;
+
+  $hover-background: map-get($button-hover-colors, $variant);
+  $hover-border: map-get($button-hover-colors, $variant);
+
+  $active-background: map-get($button-active-colors, $variant);
+  $active-border: map-get($button-active-colors, $variant);
+
+  $focus-background: map-get($button-hover-colors, $variant);
+  $focus-border: map-get($button-focus-border-colors, $variant);
+
   color: color-yiq($background);
   @include gradient-bg($background);
   border-color: $border;
@@ -17,9 +29,9 @@
 
   &:focus,
   &.focus {
-    color: color-yiq($hover-background);
-    @include gradient-bg($hover-background);
-    border-color: $hover-border;
+    color: color-yiq($focus-background);
+    @include gradient-bg($focus-background);
+    border-color: $focus-border;
     @if $enable-shadows {
       @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5));
     } @else {
@@ -61,19 +73,33 @@
   }
 }
 
-@mixin button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
+@mixin button-outline-variant($variant) {
+  $color: map-get($button-colors, $variant);
+  $color-hover: color-yiq($color);
+
+  $hover-background: map-get($button-colors, $variant);
+  $hover-border: map-get($button-colors, $variant);
+
+  $active-background: map-get($button-hover-colors, $variant);
+  $active-border: map-get($button-hover-colors, $variant);
+
+  $focus-background: map-get($button-colors, $variant);
+  $focus-border: map-get($button-focus-border-colors, $variant);
+
   color: $color;
   border-color: $color;
 
   @include hover() {
-    color: $color-hover;
-    background-color: $color;
-    border-color: $color;
+    color: color-yiq($hover-background);
+    @include gradient-bg($hover-background);
+    border-color: $hover-border;
   }
 
   &:focus,
   &.focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+    color: color-yiq($focus-background);
+    @include gradient-bg($focus-background);
+    border-color: $focus-border;
   }
 
   &:disabled,
