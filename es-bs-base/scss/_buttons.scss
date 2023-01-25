@@ -142,8 +142,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-sm {
-  /* prevents buttons with text, text+icon, and icon from rendering at different heights when next to each other */
-  height: $font-size-base * 1.75;
+  height: $font-size-base * 1.75; // ensures consistent button height, matching the design, regardless of content
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius);
 }
 
