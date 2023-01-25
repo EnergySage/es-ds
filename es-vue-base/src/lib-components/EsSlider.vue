@@ -1,36 +1,38 @@
 <template>
-    <vue-slider
-        v-model="sliderValue"
-        class="es-slider"
-        :data="data"
-        :marks="marks"
-        :min="min"
-        :max="max"
-        :dot-size="28"
-        :dot-attrs="{ 'aria-label': ariaLabel }"
-        :tooltip="tooltip"
-        lazy
-        :contained="true"
-        @change="updateSliderValue">
-        <!-- Tooltip above the slider thumb -->
-        <template #tooltip="{ value, focus }">
-            <div
-                class="slider-tooltip d-flex h5 align-items-center text-white justify-content-center m-0 bg-primary"
-                :class="[{ focus }]">
-                {{ tooltipFormatter(value) }}
-            </div>
-        </template>
-        <!-- Labels below the process bar -->
-        <template #label="{ label, active }">
-            <div :class="['slider-label', 'vue-slider-mark-label', { active }]">
-                {{ label }}
-            </div>
-        </template>
-    </vue-slider>
+    <client-only>
+        <vue-slider
+            v-model="sliderValue"
+            class="es-slider"
+            :data="data"
+            :marks="marks"
+            :min="min"
+            :max="max"
+            :dot-size="28"
+            :dot-attrs="{ 'aria-label': ariaLabel }"
+            :tooltip="tooltip"
+            lazy
+            :contained="true"
+            @change="updateSliderValue">
+            <!-- Tooltip above the slider thumb -->
+            <template #tooltip="{ value, focus }">
+                <div
+                    class="slider-tooltip d-flex h5 align-items-center text-white justify-content-center m-0 bg-primary"
+                    :class="[{ focus }]">
+                    {{ tooltipFormatter(value) }}
+                </div>
+            </template>
+            <!-- Labels below the process bar -->
+            <template #label="{ label, active }">
+                <div :class="['slider-label', 'vue-slider-mark-label', { active }]">
+                    {{ label }}
+                </div>
+            </template>
+        </vue-slider>
+    </client-only>
 </template>
 
 <script lang="js">
-import vueSlider from 'vue-slider-component';
+import vueSlider from 'vue-slider-component/dist-css/vue-slider-component.common';
 
 export default {
     name: 'EsSlider',

@@ -4,7 +4,6 @@ import path from 'path';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
 import image from '@rollup/plugin-image';
-// eslint-disable-next-line import/no-unresolved
 import commonjs from '@rollup/plugin-commonjs';
 import autoprefixer from 'autoprefixer';
 import resolve from '@rollup/plugin-node-resolve';
@@ -12,8 +11,9 @@ import replace from '@rollup/plugin-replace';
 
 import babel from '@rollup/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import minimist from 'minimist';
+import packageJSON from '../package.json';
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
@@ -103,13 +103,49 @@ const globals = {
 
 // Customize configs for individual targets
 const buildFormats = [];
+if (!argv.format || argv.format === 'umd') {
+    const umdConfig = {
+        ...baseConfig,
+        input: 'src/entry.js',
+        external,
+        output: {
+            file: packageJSON.browser,
+            name: 'EsDsVue',
+            sourcemap: true,
+            format: 'umd',
+            exports: 'named',
+            globals,
+        },
+        plugins: [
+            visualizer(), // Outputs bundle info to ./stats.html
+            replace(baseConfig.plugins.replace),
+            ...baseConfig.plugins.preVue,
+            vue(baseConfig.plugins.vue),
+            ...baseConfig.plugins.postVue,
+            babel({
+                ...baseConfig.plugins.babel,
+                presets: [
+                    [
+                        '@babel/preset-env',
+                        {
+                            ...babelPresetEnvConfig,
+                            targets: esbrowserslist,
+                        },
+                    ],
+                ],
+            }),
+        ],
+    };
+    buildFormats.push(umdConfig);
+}
 if (!argv.format || argv.format === 'es') {
     const esConfig = {
         ...baseConfig,
         input: 'src/entry.esm.js',
         external,
         output: {
-            file: 'dist/es-vue-base.esm.js',
+            sourcemap: true,
+            file: packageJSON.module,
             format: 'esm',
             exports: 'named',
         },
@@ -137,15 +173,16 @@ if (!argv.format || argv.format === 'es') {
 }
 
 if (!argv.format || argv.format === 'cjs') {
-    const umdConfig = {
+    const cjsConfig = {
         ...baseConfig,
         external,
         output: {
             compact: true,
-            file: 'dist/es-vue-base.ssr.js',
+            file: packageJSON.main,
             format: 'cjs',
             name: 'EsVueBase',
             exports: 'named',
+            sourcemap: true,
             globals,
         },
         plugins: [
@@ -154,6 +191,7 @@ if (!argv.format || argv.format === 'cjs') {
             vue({
                 ...baseConfig.plugins.vue,
                 template: {
+                    optimizeSSR: true,
                     ...baseConfig.plugins.vue.template,
                 },
             }),
@@ -161,7 +199,7 @@ if (!argv.format || argv.format === 'cjs') {
             babel(baseConfig.plugins.babel),
         ],
     };
-    buildFormats.push(umdConfig);
+    buildFormats.push(cjsConfig);
 }
 
 if (!argv.format || argv.format === 'iife') {
@@ -170,10 +208,11 @@ if (!argv.format || argv.format === 'iife') {
         external,
         output: {
             compact: true,
-            file: 'dist/es-vue-base.min.js',
+            file: packageJSON.unpkg,
             format: 'iife',
             name: 'EsVueBase',
             exports: 'named',
+            sourcemap: true,
             globals,
         },
         plugins: [
