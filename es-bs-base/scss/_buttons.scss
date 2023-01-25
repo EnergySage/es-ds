@@ -7,11 +7,10 @@
 .btn {
   display: inline-flex;
   align-items: center; // aligns text and icons vertically by default
+  height: $font-size-base * 3; // ensures consistent button height, matching the design, regardless of content
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   color: $body-color;
-  /* prevents buttons with text, text+icon, and icon from rendering at different heights when next to each other */
-  height: $font-size-base * 3;
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
