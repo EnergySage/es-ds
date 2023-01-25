@@ -18,8 +18,8 @@
   },
   "main": "dist/es-vue-base.cjs.js",
   "module": "dist/es-vue-base.esm.js",
-  "browser": "dist/es-vue-base.umd.js",
-  "unpkg": "dist/es-vue-base.min.js",
+  "browser": "dist/es-vue-base.umd.min.js",
+  "unpkg": "dist/es-vue-base.umd.min.js",
   "files": [
     "dist",
     "src"

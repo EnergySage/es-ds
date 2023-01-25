@@ -30,6 +30,12 @@ const projectRoot = path.resolve(__dirname, '..');
 
 const baseConfig = {
     input: 'src/entry.js',
+    output: {
+        name: 'EsVueBase',
+        sourcemap: true,
+        exports: 'named',
+        compact: true,
+    },
     plugins: {
         preVue: [
             alias({
@@ -83,7 +89,6 @@ const baseConfig = {
     },
 };
 
-// ESM/UMD/IIFE shared settings: externals
 // Refer to https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency
 const external = [
     // list external dependencies, exactly the way it is written in the import statement.
@@ -92,7 +97,6 @@ const external = [
     'bootstrap-vue',
 ];
 
-// UMD/IIFE shared settings: output.globals
 // Refer to https://rollupjs.org/guide/en#output-globals for details
 const globals = {
     // Provide global variable names to replace your external imports
@@ -106,18 +110,14 @@ const buildFormats = [];
 if (!argv.format || argv.format === 'umd') {
     const umdConfig = {
         ...baseConfig,
-        input: 'src/entry.js',
         external,
         output: {
+            ...baseConfig.output,
             file: packageJSON.browser,
-            name: 'EsDsVue',
-            sourcemap: true,
             format: 'umd',
-            exports: 'named',
             globals,
         },
         plugins: [
-            visualizer(), // Outputs bundle info to ./stats.html
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
@@ -134,6 +134,11 @@ if (!argv.format || argv.format === 'umd') {
                     ],
                 ],
             }),
+            terser({
+                output: {
+                    ecma: 5,
+                },
+            }),
         ],
     };
     buildFormats.push(umdConfig);
@@ -144,10 +149,9 @@ if (!argv.format || argv.format === 'es') {
         input: 'src/entry.esm.js',
         external,
         output: {
-            sourcemap: true,
+            ...baseConfig.output,
             file: packageJSON.module,
             format: 'esm',
-            exports: 'named',
         },
         plugins: [
             visualizer(), // Outputs bundle info to ./stats.html
@@ -177,12 +181,9 @@ if (!argv.format || argv.format === 'cjs') {
         ...baseConfig,
         external,
         output: {
-            compact: true,
+            ...baseConfig.output,
             file: packageJSON.main,
             format: 'cjs',
-            name: 'EsVueBase',
-            exports: 'named',
-            sourcemap: true,
             globals,
         },
         plugins: [
@@ -200,35 +201,6 @@ if (!argv.format || argv.format === 'cjs') {
         ],
     };
     buildFormats.push(cjsConfig);
-}
-
-if (!argv.format || argv.format === 'iife') {
-    const unpkgConfig = {
-        ...baseConfig,
-        external,
-        output: {
-            compact: true,
-            file: packageJSON.unpkg,
-            format: 'iife',
-            name: 'EsVueBase',
-            exports: 'named',
-            sourcemap: true,
-            globals,
-        },
-        plugins: [
-            replace(baseConfig.plugins.replace),
-            ...baseConfig.plugins.preVue,
-            vue(baseConfig.plugins.vue),
-            ...baseConfig.plugins.postVue,
-            babel(baseConfig.plugins.babel),
-            terser({
-                output: {
-                    ecma: 5,
-                },
-            }),
-        ],
-    };
-    buildFormats.push(unpkgConfig);
 }
 
 // Export config
