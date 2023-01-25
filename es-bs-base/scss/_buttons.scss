@@ -10,6 +10,8 @@
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   color: $body-color;
+  /* prevents buttons with text, text+icon, and icon from rendering at different heights when next to each other */
+  height: $font-size-base * 3;
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
@@ -63,6 +65,32 @@ fieldset:disabled a.btn {
 // Alternate buttons
 //
 
+// DEPRECATED BUTTON STYLES
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+// DEPRECATED OUTLINE BUTTON STYLES
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+
+    &:disabled,
+    &.disabled {
+      color: color-yiq($btn-disabled-bg-color);
+      pointer-events: none;
+      background-color: $btn-disabled-bg-color;
+      border-color: $btn-disabled-bg-color;
+      // Remove CSS gradients if they're enabled
+      @if $enable-gradients {
+        background-image: none;
+      }
+    }
+  }
+}
+
 @each $color, $value in $button-colors {
   .btn-#{$color} {
     @include button-v2-variant($color);
@@ -111,15 +139,13 @@ fieldset:disabled a.btn {
 //
 
 .btn-lg {
-  /* prevents buttons with text, text+icon, and icon from rendering at different heights when next to each other */
-  height: $font-size-base * 3;
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius);
 }
 
 .btn-sm {
   /* prevents buttons with text, text+icon, and icon from rendering at different heights when next to each other */
   height: $font-size-base * 1.75;
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius);
 }
 
 

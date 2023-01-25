@@ -39,18 +39,17 @@
                     </td>
                     <td>
                         <div class="mb-2">
-                            <es-button
-                                size="lg">
-                                Large button
+                            <es-button>
+                                Default button
                             </es-button>
-                            <es-button size="lg">
-                                Large button
+                            <es-button>
+                                Default button
                                 <icon-chevron-right
                                     class="ml-1"
                                     height="1.25rem"
                                     width="1.25rem" />
                             </es-button>
-                            <es-button size="lg">
+                            <es-button>
                                 <icon-chevron-right
                                     height="1.25rem"
                                     width="1.25rem" />
@@ -83,25 +82,19 @@
                     </td>
                     <td>
                         <div class="mb-2">
-                            <es-button
-                                disabled
-                                size="lg">
-                                Large button
+                            <es-button disabled>
+                                Default button
                             </es-button>
 
-                            <es-button
-                                disabled
-                                size="lg">
-                                Large button
+                            <es-button disabled>
+                                Default button
                                 <icon-chevron-right
                                     class="ml-1"
                                     height="1.25rem"
                                     width="1.25rem" />
                             </es-button>
 
-                            <es-button
-                                disabled
-                                size="lg">
+                            <es-button disabled>
                                 <icon-chevron-right
                                     height="1.25rem"
                                     width="1.25rem" />
@@ -158,23 +151,17 @@
                     </td>
                     <td>
                         <div class="mb-2">
-                            <es-button
-                                size="lg"
-                                variant="secondary">
-                                Large button
+                            <es-button variant="secondary">
+                                Default button
                             </es-button>
-                            <es-button
-                                size="lg"
-                                variant="secondary">
-                                Large button
+                            <es-button variant="secondary">
+                                Default button
                                 <icon-chevron-right
                                     class="ml-1"
                                     height="1.25rem"
                                     width="1.25rem" />
                             </es-button>
-                            <es-button
-                                size="lg"
-                                variant="secondary">
+                            <es-button variant="secondary">
                                 <icon-chevron-right
                                     height="1.25rem"
                                     width="1.25rem" />
@@ -215,16 +202,14 @@
                         <div class="mb-2">
                             <es-button
                                 disabled
-                                size="lg"
                                 variant="secondary">
-                                Large button
+                                Default button
                             </es-button>
 
                             <es-button
                                 disabled
-                                size="lg"
                                 variant="secondary">
-                                Large button
+                                Default button
                                 <icon-chevron-right
                                     class="ml-1"
                                     height="1.25rem"
@@ -233,7 +218,6 @@
 
                             <es-button
                                 disabled
-                                size="lg"
                                 variant="secondary">
                                 <icon-chevron-right
                                     height="1.25rem"
@@ -294,23 +278,17 @@
                     </td>
                     <td>
                         <div class="mb-2">
-                            <es-button
-                                outline
-                                size="lg">
-                                Large button
+                            <es-button outline>
+                                Default button
                             </es-button>
-                            <es-button
-                                outline
-                                size="lg">
-                                Large button
+                            <es-button outline>
+                                Default button
                                 <icon-chevron-right
                                     class="ml-1"
                                     height="1.25rem"
                                     width="1.25rem" />
                             </es-button>
-                            <es-button
-                                outline
-                                size="lg">
+                            <es-button outline>
                                 <icon-chevron-right
                                     height="1.25rem"
                                     width="1.25rem" />
@@ -351,16 +329,14 @@
                         <div class="mb-2">
                             <es-button
                                 disabled
-                                outline
-                                size="lg">
-                                Large button
+                                outline>
+                                Default button
                             </es-button>
 
                             <es-button
                                 disabled
-                                outline
-                                size="lg">
-                                Large button
+                                outline>
+                                Default button
                                 <icon-chevron-right
                                     class="ml-1"
                                     height="1.25rem"
@@ -369,8 +345,7 @@
 
                             <es-button
                                 disabled
-                                outline
-                                size="lg">
+                                outline>
                                 <icon-chevron-right
                                     height="1.25rem"
                                     width="1.25rem" />
@@ -432,15 +407,13 @@
                         <div class="mb-2">
                             <es-button
                                 outline
-                                size="lg"
                                 variant="secondary">
-                                Large button
+                                Default button
                             </es-button>
                             <es-button
                                 outline
-                                size="lg"
                                 variant="secondary">
-                                Large button
+                                Default button
                                 <icon-chevron-right
                                     class="ml-1"
                                     height="1.25rem"
@@ -448,7 +421,6 @@
                             </es-button>
                             <es-button
                                 outline
-                                size="lg"
                                 variant="secondary">
                                 <icon-chevron-right
                                     height="1.25rem"
@@ -494,17 +466,15 @@
                             <es-button
                                 disabled
                                 outline
-                                size="lg"
                                 variant="secondary">
-                                Large button
+                                Default button
                             </es-button>
 
                             <es-button
                                 disabled
                                 outline
-                                size="lg"
                                 variant="secondary">
-                                Large button
+                                Default button
                                 <icon-chevron-right
                                     class="ml-1"
                                     height="1.25rem"
@@ -514,7 +484,6 @@
                             <es-button
                                 disabled
                                 outline
-                                size="lg"
                                 variant="secondary">
                                 <icon-chevron-right
                                     height="1.25rem"
@@ -556,6 +525,47 @@
                 </tr>
             </tbody>
         </table>
+
+        <h2>
+            Deprecated Buttons (do not use)
+        </h2>
+        <p>
+            It is recommended not to use these variants and to refactor your code to remove instances of them.
+            They are a legacy artifact of Bootstrap, don't match EnergySage branding, and will be removed in a future
+            version of ESDS.
+        </p>
+        <div class="mb-2">
+            <es-button variant="success">
+                Success button
+            </es-button>
+            <es-button variant="info">
+                Info button
+            </es-button>
+            <es-button variant="warning">
+                Warning button
+            </es-button>
+            <es-button variant="danger">
+                Danger button
+            </es-button>
+            <es-button variant="light">
+                Light button
+            </es-button>
+            <es-button variant="dark">
+                Dark button
+            </es-button>
+            <es-button variant="mid">
+                Mid button
+            </es-button>
+            <es-button variant="mid-dark">
+                Mid dark button
+            </es-button>
+            <es-button variant="highlight">
+                Highlight button
+            </es-button>
+            <es-button variant="highlight-dark">
+                Highlight dark button
+            </es-button>
+        </div>
 
         <ds-doc-source
             :comp-code="compCode"
