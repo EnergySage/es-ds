@@ -135,8 +135,8 @@
 /**
  * DEPRECATED
  * Included for backwards compatibility with pre v0.14 versions of ESDS.
- * In the future, we will update this mixin to the functionality of @button-v2-variant
- * or remove it entirely.
+ * In the future, we will update this mixin to the functionality of
+ * @button-v2-variant or remove it entirely.
  */
 @mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
   color: color-yiq($background);
@@ -199,8 +199,8 @@
 /**
  * DEPRECATED
  * Included for backwards compatibility with pre v0.14 versions of ESDS.
- * In the future, we will update this mixin to the functionality of @button-v2-outline-variant
- * or remove it entirely.
+ * In the future, we will update this mixin to the functionality of
+ * @button-v2-outline-variant or remove it entirely.
  */
 @mixin button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
   color: $color;
