@@ -137,8 +137,9 @@ fieldset:disabled a.btn {
 // Button Sizes
 //
 
+// large button should be exactly the same as default button, per design
 .btn-lg {
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius);
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
 }
 
 .btn-sm {
