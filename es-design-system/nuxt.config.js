@@ -35,6 +35,9 @@ export default {
     router: {
         base: `/${version}/`,
     },
+    // Development has SSR turned on to test es-vue-base compatibility
+    // Production build will generate client only SPA
+    ssr: process.env.NODE_ENV === 'development',
     target: 'static',
     build: {
         // analyze: true,
