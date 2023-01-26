@@ -11,7 +11,9 @@
             :dot-attrs="{ 'aria-label': ariaLabel }"
             :tooltip="tooltip"
             lazy
+            v-bind="$attrs"
             :contained="true"
+            v-on="$listeners"
             @change="updateSliderValue">
             <!-- Tooltip above the slider thumb -->
             <template #tooltip="{ value, focus }">
