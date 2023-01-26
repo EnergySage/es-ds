@@ -29,7 +29,6 @@ export default {
             { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#b95100' },
         ],
     },
-    ssr: false,
     server: {
         port: 8500,
     },
@@ -63,6 +62,7 @@ export default {
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         { src: '@/plugins/api.js' },
+        // TODO: Make SSR Compliant
         { src: '~/plugins/prism', mode: 'client' },
     ],
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

@@ -47,14 +47,17 @@ export default {
         };
     },
     async created() {
+        if (this.$prism) {
         /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-        const docSource = await import('!raw-loader!./es-breadcrumbs.vue');
-        const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsBreadcrumbs.vue');
-        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+            const docSource = await import('!raw-loader!./es-breadcrumbs.vue');
+            // eslint-disable-next-line max-len
+            const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsBreadcrumbs.vue');
+            /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
-        this.docCode = this.$prism.normalizeCode(docSource.default);
-        this.compCode = this.$prism.normalizeCode(compSource.default);
-        this.$prism.highlight(this);
+            this.docCode = this.$prism.normalizeCode(docSource.default);
+            this.compCode = this.$prism.normalizeCode(compSource.default);
+            this.$prism.highlight(this);
+        }
     },
 };
 </script>
