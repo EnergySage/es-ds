@@ -9,13 +9,18 @@
             </b-link>
         </p>
 
-        <p class="mb-4">
+        <p>
             When using a button, please ensure that the copy style is
             <b-link
                 href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case"
                 target="_blank">
                 Sentence case.
             </b-link>
+        </p>
+
+        <p class="mb-4">
+            Icons inside of default buttons should be 24px or 1.5rem (the default for ESDS icons).
+            Icons inside of small buttons should be 18px or 1.125rem.
         </p>
 
         <h2>
