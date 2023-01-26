@@ -529,12 +529,12 @@
         <h2>
             Deprecated Buttons (do not use)
         </h2>
-        <p>
+        <p class="mb-4">
             It is recommended not to use these variants and to refactor your code to remove instances of them.
             They are a legacy artifact of Bootstrap, don't match EnergySage branding, and will be removed in a future
             version of ESDS.
         </p>
-        <div class="mb-2">
+        <div class="mb-4">
             <es-button variant="success">
                 Success button
             </es-button>
@@ -563,6 +563,58 @@
                 Highlight button
             </es-button>
             <es-button variant="highlight-dark">
+                Highlight dark button
+            </es-button>
+        </div>
+        <div class="mb-2">
+            <es-button
+                outline
+                variant="success">
+                Success button
+            </es-button>
+            <es-button
+                outline
+                variant="info">
+                Info button
+            </es-button>
+            <es-button
+                outline
+                variant="warning">
+                Warning button
+            </es-button>
+            <es-button
+                outline
+                variant="danger">
+                Danger button
+            </es-button>
+            <es-button
+                outline
+                variant="light">
+                Light button
+            </es-button>
+            <es-button
+                outline
+                variant="dark">
+                Dark button
+            </es-button>
+            <es-button
+                outline
+                variant="mid">
+                Mid button
+            </es-button>
+            <es-button
+                outline
+                variant="mid-dark">
+                Mid dark button
+            </es-button>
+            <es-button
+                outline
+                variant="highlight">
+                Highlight button
+            </es-button>
+            <es-button
+                outline
+                variant="highlight-dark">
                 Highlight dark button
             </es-button>
         </div>
