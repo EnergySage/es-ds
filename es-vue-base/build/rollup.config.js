@@ -4,7 +4,6 @@ import path from 'path';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
 import image from '@rollup/plugin-image';
-// eslint-disable-next-line import/no-unresolved
 import commonjs from '@rollup/plugin-commonjs';
 import autoprefixer from 'autoprefixer';
 import resolve from '@rollup/plugin-node-resolve';
@@ -12,8 +11,13 @@ import replace from '@rollup/plugin-replace';
 
 import babel from '@rollup/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import minimist from 'minimist';
+import {
+    main as mainFileName,
+    browser as browserFileName,
+    module as moduleFileName,
+} from '../package.json';
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
@@ -30,6 +34,11 @@ const projectRoot = path.resolve(__dirname, '..');
 
 const baseConfig = {
     input: 'src/entry.js',
+    output: {
+        name: 'EsVueBase',
+        sourcemap: true,
+        exports: 'named',
+    },
     plugins: {
         preVue: [
             alias({
@@ -83,7 +92,6 @@ const baseConfig = {
     },
 };
 
-// ESM/UMD/IIFE shared settings: externals
 // Refer to https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency
 const external = [
     // list external dependencies, exactly the way it is written in the import statement.
@@ -92,7 +100,6 @@ const external = [
     'bootstrap-vue',
 ];
 
-// UMD/IIFE shared settings: output.globals
 // Refer to https://rollupjs.org/guide/en#output-globals for details
 const globals = {
     // Provide global variable names to replace your external imports
@@ -101,17 +108,73 @@ const globals = {
     'bootstrap-vue': 'bootstrapVue',
 };
 
-// Customize configs for individual targets
+// UMD Build: https://github.com/umdjs/umd
 const buildFormats = [];
+if (!argv.format || argv.format === 'umd') {
+    const umdConfig = {
+        ...baseConfig,
+        external,
+        output: {
+            ...baseConfig.output,
+            format: 'umd',
+            globals,
+        },
+        plugins: [
+            replace(baseConfig.plugins.replace),
+            ...baseConfig.plugins.preVue,
+            vue(baseConfig.plugins.vue),
+            ...baseConfig.plugins.postVue,
+            babel({
+                ...baseConfig.plugins.babel,
+                presets: [
+                    [
+                        '@babel/preset-env',
+                        {
+                            ...babelPresetEnvConfig,
+                            targets: esbrowserslist,
+                        },
+                    ],
+                ],
+            }),
+        ],
+    };
+
+    // Minified build is default
+    buildFormats.push({
+        ...umdConfig,
+        output: {
+            ...umdConfig.output,
+            compact: true,
+            file: browserFileName,
+        },
+        plugins: [
+            ...umdConfig.plugins,
+            terser({
+                output: {
+                    ecma: 5,
+                },
+            }),
+        ],
+    });
+
+    buildFormats.push({
+        ...umdConfig,
+        output: {
+            ...umdConfig.output,
+            file: browserFileName.replace('min.', ''),
+        },
+    });
+}
+
+// ESM Build: https://github.com/standard-things/esm
 if (!argv.format || argv.format === 'es') {
     const esConfig = {
         ...baseConfig,
         input: 'src/entry.esm.js',
         external,
         output: {
-            file: 'dist/es-vue-base.esm.js',
+            ...baseConfig.output,
             format: 'esm',
-            exports: 'named',
         },
         plugins: [
             visualizer(), // Outputs bundle info to ./stats.html
@@ -133,19 +196,42 @@ if (!argv.format || argv.format === 'es') {
             }),
         ],
     };
-    buildFormats.push(esConfig);
+
+    // Minified build is default
+    buildFormats.push({
+        ...esConfig,
+        output: {
+            ...esConfig.output,
+            compact: true,
+            file: moduleFileName,
+        },
+        plugins: [
+            ...esConfig.plugins,
+            terser({
+                output: {
+                    ecma: 5,
+                },
+            }),
+        ],
+    });
+
+    buildFormats.push({
+        ...esConfig,
+        output: {
+            ...esConfig.output,
+            file: moduleFileName.replace('min.', ''),
+        },
+    });
 }
 
+// CommonJS Build: https://requirejs.org/docs/commonjs.html
 if (!argv.format || argv.format === 'cjs') {
-    const umdConfig = {
+    const cjsConfig = {
         ...baseConfig,
         external,
         output: {
-            compact: true,
-            file: 'dist/es-vue-base.ssr.js',
+            ...baseConfig.output,
             format: 'cjs',
-            name: 'EsVueBase',
-            exports: 'named',
             globals,
         },
         plugins: [
@@ -154,6 +240,7 @@ if (!argv.format || argv.format === 'cjs') {
             vue({
                 ...baseConfig.plugins.vue,
                 template: {
+                    optimizeSSR: true,
                     ...baseConfig.plugins.vue.template,
                 },
             }),
@@ -161,35 +248,32 @@ if (!argv.format || argv.format === 'cjs') {
             babel(baseConfig.plugins.babel),
         ],
     };
-    buildFormats.push(umdConfig);
-}
 
-if (!argv.format || argv.format === 'iife') {
-    const unpkgConfig = {
-        ...baseConfig,
-        external,
+    // Minified build is default
+    buildFormats.push({
+        ...cjsConfig,
         output: {
+            ...cjsConfig.output,
             compact: true,
-            file: 'dist/es-vue-base.min.js',
-            format: 'iife',
-            name: 'EsVueBase',
-            exports: 'named',
-            globals,
+            file: mainFileName,
         },
         plugins: [
-            replace(baseConfig.plugins.replace),
-            ...baseConfig.plugins.preVue,
-            vue(baseConfig.plugins.vue),
-            ...baseConfig.plugins.postVue,
-            babel(baseConfig.plugins.babel),
+            ...cjsConfig.plugins,
             terser({
                 output: {
                     ecma: 5,
                 },
             }),
         ],
-    };
-    buildFormats.push(unpkgConfig);
+    });
+
+    buildFormats.push({
+        ...cjsConfig,
+        output: {
+            ...cjsConfig.output,
+            file: mainFileName.replace('min.', ''),
+        },
+    });
 }
 
 // Export config

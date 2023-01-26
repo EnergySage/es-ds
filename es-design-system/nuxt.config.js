@@ -29,13 +29,15 @@ export default {
             { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#b95100' },
         ],
     },
-    ssr: false,
     server: {
         port: 8500,
     },
     router: {
         base: `/${version}/`,
     },
+    // Development has SSR turned on to test es-vue-base compatibility
+    // Production build will generate client only SPA
+    ssr: process.env.NODE_ENV === 'development',
     target: 'static',
     build: {
         // analyze: true,
@@ -63,6 +65,7 @@ export default {
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         { src: '@/plugins/api.js' },
+        // TODO: Make SSR Compliant
         { src: '~/plugins/prism', mode: 'client' },
     ],
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

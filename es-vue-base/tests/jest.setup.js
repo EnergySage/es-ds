@@ -1,4 +1,5 @@
 import * as matchers from 'jest-extended';
+import { config } from '@vue/test-utils';
 import { toHaveNoViolations } from 'jest-axe';
 import '@testing-library/jest-dom';
 
@@ -19,3 +20,7 @@ window.matchMedia = jest.fn().mockImplementation((query) => ({
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
 }));
+
+config.stubs['client-only'] = {
+    template: '<div><slot /></div>',
+};
