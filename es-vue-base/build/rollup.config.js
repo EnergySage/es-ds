@@ -180,7 +180,13 @@ if (!argv.format || argv.format === 'es') {
             visualizer(), // Outputs bundle info to ./stats.html
             replace(baseConfig.plugins.replace),
             ...baseConfig.plugins.preVue,
-            vue(baseConfig.plugins.vue),
+            vue({
+                ...baseConfig.plugins.vue,
+                template: {
+                    optimizeSSR: true,
+                    ...baseConfig.plugins.vue.template,
+                },
+            }),
             ...baseConfig.plugins.postVue,
             babel({
                 ...baseConfig.plugins.babel,
