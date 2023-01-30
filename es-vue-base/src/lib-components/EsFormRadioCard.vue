@@ -25,6 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "sass:map";
 @import '~@energysage/es-bs-base/scss/includes';
 
 .EsFormRadioCard {
@@ -36,11 +37,11 @@ export default {
      */
     @include font-size($h2-font-size);
     font-weight: $font-weight-bolder;
-    margin-bottom: map-get($spacers, 3);
-    padding-left: map-get($spacers, 3);
-    padding-right: map-get($spacers, 3);
-    padding-top: map-get($spacers, 4);
-    padding-bottom: map-get($spacers, 4);
+    margin-bottom: map.get($spacers, 3);
+    padding-bottom: map.get($spacers, 4);
+    padding-left: map.get($spacers, 3);
+    padding-right: map.get($spacers, 3);
+    padding-top: map.get($spacers, 4);
     text-align: left;
 
     ::v-deep input {
@@ -50,15 +51,17 @@ export default {
          * to enable users to put any elements (e.g. <b-col> and <b-row>) between the EsFormRadioCards and
          * EsFormRadioCard elements.
          */
-        position: absolute;
         clip: rect(0, 0, 0, 0);
         pointer-events: none;
+        position: absolute;
     }
+
     &:hover {
         /* needed to override the default background/text color switch for outline button hover state */
         background-color: $white;
         color: $dark;
     }
+
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
     .show > &.dropdown-toggle {
@@ -78,8 +81,8 @@ export default {
         * will win, leaving the user unable to override the desired style)
         */
         @include font-size($h2-font-size-desktop);
-        padding-left: map-get($spacers, 4);
-        padding-right: map-get($spacers, 4);
+        padding-left: map.get($spacers, 4);
+        padding-right: map.get($spacers, 4);
     }
 }
 </style>
