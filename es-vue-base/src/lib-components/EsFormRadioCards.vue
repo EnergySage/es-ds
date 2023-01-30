@@ -13,7 +13,7 @@
             :name="label"
             stacked
             v-bind="$attrs"
-            @input="$emit('input', $event)">
+            v-on="$listeners">
             <slot />
         </b-form-radio-group>
     </b-form-group>
