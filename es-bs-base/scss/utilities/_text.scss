@@ -39,20 +39,20 @@
 // and the sm/md/lg/xl/xxl font sizes. Perhaps normalize font size token names
 // to numbers (e.g. 100, 200) like Adobe.
 
-.font-size-h1 { @include font-size($h1-font-size); }
-.font-size-h2 { @include font-size($h2-font-size); }
-.font-size-h3 { @include font-size($h3-font-size); }
-.font-size-h4 { @include font-size($h4-font-size); }
-.font-size-h5 { @include font-size($h5-font-size); }
-.font-size-h6 { @include font-size($h6-font-size); }
+.font-size-h1 { @include font-size($h1-font-size, true); }
+.font-size-h2 { @include font-size($h2-font-size, true); }
+.font-size-h3 { @include font-size($h3-font-size, true); }
+.font-size-h4 { @include font-size($h4-font-size, true); }
+.font-size-h5 { @include font-size($h5-font-size, true); }
+.font-size-h6 { @include font-size($h6-font-size, true); }
 
 @include media-breakpoint-up(lg) {
-  .font-size-h1 { @include font-size($h1-font-size-desktop); }
-  .font-size-h2 { @include font-size($h2-font-size-desktop); }
-  .font-size-h3 { @include font-size($h3-font-size-desktop); }
-  .font-size-h4 { @include font-size($h4-font-size-desktop); }
-  .font-size-h5 { @include font-size($h5-font-size-desktop); }
-  .font-size-h6 { @include font-size($h6-font-size-desktop); }
+  .font-size-h1 { @include font-size($h1-font-size-desktop, true); }
+  .font-size-h2 { @include font-size($h2-font-size-desktop, true); }
+  .font-size-h3 { @include font-size($h3-font-size-desktop, true); }
+  .font-size-h4 { @include font-size($h4-font-size-desktop, true); }
+  .font-size-h5 { @include font-size($h5-font-size-desktop, true); }
+  .font-size-h6 { @include font-size($h6-font-size-desktop, true); }
 }
 
 // Transformation
