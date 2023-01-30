@@ -4,7 +4,7 @@
             Radio Cards
         </h1>
         <p class="mb-4 mb-lg-5">
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-radio">
+            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-radio#button-style-radios">
                 bootstrap-vue form-radio
             </b-link>
         </p>
