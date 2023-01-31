@@ -5,7 +5,9 @@
 //
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center; // aligns text and icons vertically by default
+  height: $font-size-base * 3; // ensures consistent button height, matching the design, regardless of content
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   color: $body-color;
@@ -62,12 +64,14 @@ fieldset:disabled a.btn {
 // Alternate buttons
 //
 
+// DEPRECATED BUTTON STYLES
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
     @include button-variant($value, $value);
   }
 }
 
+// DEPRECATED OUTLINE BUTTON STYLES
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
     @include button-outline-variant($value);
@@ -83,6 +87,18 @@ fieldset:disabled a.btn {
         background-image: none;
       }
     }
+  }
+}
+
+@each $color, $value in $button-colors {
+  .btn-#{$color} {
+    @include button-v2-variant($color);
+  }
+}
+
+@each $color, $value in $button-colors {
+  .btn-outline-#{$color} {
+    @include button-v2-outline-variant($color);
   }
 }
 
@@ -121,12 +137,14 @@ fieldset:disabled a.btn {
 // Button Sizes
 //
 
+// large button should be exactly the same as default button, per design
 .btn-lg {
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
 }
 
 .btn-sm {
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+  height: $font-size-base * 1.75; // ensures consistent button height, matching the design, regardless of content
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius);
 }
 
 

@@ -180,7 +180,7 @@ $colors: map-merge(
 );
 
 $primary:       $cyan !default;
-$secondary:     $cyan !default;
+$secondary:     $gray-900 !default;
 $success:       $green !default;
 $info:          $indigo !default;
 $warning:       $yellow !default;
@@ -555,8 +555,8 @@ $input-btn-font-size-sm:      $font-size-base !default;
 $input-btn-line-height-sm:    1.2 !default;
 
 $input-btn-padding-y-lg:      .5rem !default;
-$input-btn-padding-x-lg:      1rem !default;
-$input-btn-font-size-lg:      $font-size-lg !default;
+$input-btn-padding-x-lg:      1.5rem !default;
+$input-btn-font-size-lg:      $font-size-base !default;
 $input-btn-line-height-lg:    $line-height-lg !default;
 
 $input-btn-border-width:      1px !default;
@@ -566,8 +566,44 @@ $input-btn-border-width:      1px !default;
 //
 // For each of Bootstrap's buttons, define text, background, and border color.
 
+$button-colors: () !default;
+$button-colors: map-merge(
+  (
+    "primary":   $cyan,
+    "secondary": $gray-900
+  ),
+  $button-colors
+);
+
+$button-hover-colors: () !default;
+$button-hover-colors: map-merge(
+  (
+    "primary":   $cyan-600,
+    "secondary": $gray-700
+  ),
+  $button-hover-colors
+);
+
+$button-active-colors: () !default;
+$button-active-colors: map-merge(
+  (
+    "primary":   $cyan-700,
+    "secondary": $gray-800
+  ),
+  $button-active-colors
+);
+
+$button-focus-border-colors: () !default;
+$button-focus-border-colors: map-merge(
+  (
+    "primary":   $cyan-200,
+    "secondary": $gray-500
+  ),
+  $button-focus-border-colors
+);
+
 $btn-padding-y:               $input-btn-padding-y !default;
-$btn-padding-x:               $input-btn-padding-x !default;
+$btn-padding-x:               1.5rem !default; // default button x padding is different from inputs
 $btn-font-family:             $input-btn-font-family !default;
 $btn-font-size:               $input-btn-font-size !default;
 $btn-line-height:             $input-btn-line-height !default;
@@ -578,10 +614,14 @@ $btn-padding-x-sm:            $input-btn-padding-x-sm !default;
 $btn-font-size-sm:            $input-btn-font-size-sm !default;
 $btn-line-height-sm:          $input-btn-line-height-sm !default;
 
+// fusv-disable
 $btn-padding-y-lg:            $input-btn-padding-y-lg !default;
+// fusv-enable
 $btn-padding-x-lg:            $input-btn-padding-x-lg !default;
+// fusv-disable
 $btn-font-size-lg:            $input-btn-font-size-lg !default;
 $btn-line-height-lg:          $input-btn-line-height-lg !default;
+// fusv-enable
 
 $btn-border-width:            2px !default;
 
@@ -593,14 +633,17 @@ $btn-disabled-opacity:        1 !default;
 $btn-active-box-shadow:       0 !default;
 
 $btn-disabled-bg-color:       $gray-300 !default;
+$btn-disabled-font-color:     $gray-700 !default;
 $btn-link-disabled-color:     $gray-700 !default;
 
 $btn-block-spacing-y:         .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           $border-radius !default;
-$btn-border-radius-lg:        $border-radius-lg !default;
-$btn-border-radius-sm:        $border-radius-sm !default;
+// fusv-disable
+$btn-border-radius-lg:        $border-radius-lg !default; // not currently used
+$btn-border-radius-sm:        $border-radius-sm !default; // not currently used
+// fusv-enable
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
