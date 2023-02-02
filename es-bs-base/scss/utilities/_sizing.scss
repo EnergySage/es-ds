@@ -33,7 +33,7 @@
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
     // Add min-width (in rem) utilities, especially useful for buttons
     @for $i from 4 through 7 {
-      .min-width#{$infix}-#{$i} { width: #{$i}em !important; }
+      .min-width#{$infix}-#{$i} { width: $i * 1em !important; }
     }
   }
 }

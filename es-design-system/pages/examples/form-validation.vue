@@ -34,9 +34,6 @@
             <b-col
                 cols="12"
                 lg="8">
-                <pre>
-                    isSubmitInProgress: {{ isSubmitInProgress }}
-                </pre>
                 <b-form
                     @submit.stop.prevent="onSubmit">
                     <es-form-msg
