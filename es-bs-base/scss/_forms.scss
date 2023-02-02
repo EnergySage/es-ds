@@ -345,3 +345,9 @@ textarea.form-control {
     }
   }
 }
+
+// NOTE: this loading UI is subject to change
+.form-actions__button-spinner {
+  right: 0;
+  top: -1.4em;
+}

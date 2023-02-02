@@ -3,7 +3,7 @@
         <b-row>
             <b-col>
                 <h1>
-                    Form with Validation
+                    Form with Field Validation
                 </h1>
                 <h2>
                     UX Guidelines
@@ -16,6 +16,13 @@
                         </li>
                         <li>
                             Validation for password fields should always trigger <em>on input-change</em>
+                        </li>
+                        <li>
+                            In practice you'll likely also want to include form-level validation,
+                            and provide feedback from a server response. In this case see the
+                            <b-link :to="{ name: 'examples-form-validation___en' }">
+                                Form with (form level) Validation
+                            </b-link> example.
                         </li>
                     </ul>
                 </p>
@@ -88,11 +95,6 @@
                             Notes
                         </template>
                     </es-form-textarea>
-                    <es-form-msg
-                        class="mt-3"
-                        :variant="formMsgVariant"
-                        :message="formMsg"
-                        @hidden="formMsg = ''" />
                     <div class="d-flex flex-grow-1 justify-content-end mt-3">
                         <es-button
                             type="submit"
@@ -102,13 +104,16 @@
                             <span class="position-relative d-inline-block w-100">
                                 <span
                                     v-if="isSubmitInProgress"
-                                    class="button-spinner position-absolute d-inline-block h-100 w-100">
+                                    class="form-actions__button-spinner position-absolute d-inline-block h-100 w-100">
                                     <b-spinner
                                         role="status"
                                         aria-hidden="true"
                                         label="Loading" />
                                 </span>
-                                Submit
+                                <span
+                                    :class="{'sr-only': isSubmitInProgress }">
+                                    Submit
+                                </span>
                             </span>
                         </es-button>
                     </div>
@@ -123,7 +128,6 @@ import {
     EsFormInput,
     EsFormTextarea,
     EsButton,
-    EsFormMsg,
     formMixins,
     vuelidateKeys,
     vuelidateRequired,
@@ -139,7 +143,6 @@ import {
 export default {
     name: 'EsFormDocs',
     components: {
-        EsFormMsg,
         EsFormInput,
         EsFormTextarea,
         EsButton,
@@ -182,16 +185,10 @@ export default {
         },
     },
     methods: {
-        async fakeServerRequest(isSuccess = false) {
+        async fakeServerRequest() {
             const threeSecondTimeout = async (func) => setTimeout(func, 3000);
-            await threeSecondTimeout(() => {
-                if (isSuccess) {
-                    this.showFormSuccess();
-                } else {
-                    this.showFormError();
-                }
-            });
-            this.startSubmit();
+            // eslint-disable-next-line no-console
+            await threeSecondTimeout(() => console.log('Submit Complete'));
         },
         async onSubmit() {
             this.startSubmit();
