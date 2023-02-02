@@ -56,10 +56,9 @@
                             class="w-100 w-lg-auto"
                             :loading="isSubmitInProgress"
                             :disabled="isSubmitInProgress">
-                            <span class="position-relative d-inline-block w-100 min-width-6">
+                            <span class="w-100 min-width-6">
                                 <span
-                                    v-if="isSubmitInProgress"
-                                    class="form-actions__button-spinner position-absolute d-inline-block h-100 w-100">
+                                    v-if="isSubmitInProgress">
                                     <b-spinner
                                         role="status"
                                         aria-hidden="true"
