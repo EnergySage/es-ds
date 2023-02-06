@@ -55,6 +55,10 @@ export default {
         pointer-events: none;
         position: absolute;
     }
+    &.btn {
+        /* override the fixed height of normal buttons */
+        height: auto;
+    }
 
     &:hover {
         /* needed to override the default background/text color switch for outline button hover state */
