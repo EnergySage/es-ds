@@ -9,31 +9,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- utility classes and example for loading button state on form submission
+- Min width utility class based on `em` units have been added (e.g. `min-width-6`).
+- Auto width utility classes for each breakpoint have been added (e.g. `w-lg-auto`).
+- A new example page for Form Level Validation (including a loading spinner) has been added.
 
 ### Changed
 
-- ***Breaking:*** The `$secondary` color variable is now `#292929` (`$gray-900`) instead of `#007AAB` (`$cyan`). This will cascade through to various styles.
-- ***Breaking:*** Large buttons now exactly match the style of default buttons and have been removed from the example documentation. Their font size is now `16px` instead of `20px`, border radius is `8px` instead of `12px`, height is `48px` instead of variable based on content, and horizontal padding is `24px` instead of `16px`.
-- ***Breaking:*** Default and small buttons now have a fixed height (`48px` and `28px`, respectively) that will remain consistent independent of button content, per the design.
-- ***Breaking:*** Default button horizontal padding is now `24px` instead of `16px`, per the design.
-- Primary and secondary buttons will now vertically center their content by default.
-- Primary and secondary buttons have updated hover, active, and focus states, per the design.
-- Small button border radius is now `8px` instead of `4px`, per the design.
-- The text color of disabled buttons is now `#565656` instead of `#292929`, per the design.
-- The following updates have been made to the EsButton docs page:
-    - Guidance on icon sizing is now provided at the top of the page.
-    - Button examples are now grouped by variant (e.g. primary, secondary, outline primary, outline secondary).
-    - Button examples now show buttons containing text, text with an icon, and icon only.
-    - A section has been added to show the Deprecated Buttons, to make it clear for anyone using those variants that they will be removed in a future version.
-    - The Component Source and Documentation Source now show the code for EsButton rather than EsBadge
-- reduce number of vs-code recommendations
+- ***BREAKING:*** Changed the `secondary` color/variant to `#292929` (from `#007AAB`) to distinguish from primary and better match designs.
+- ***BREAKING:*** `EsButton` now has a fixed height; default/large buttons are `48px` tall, small buttons are `28px` tall.
+- ***BREAKING:*** `EsButton` default/large button horizontal padding has increased to `24px` from `16px`
+- `EsButton` also received a number of non-breaking updates:
+  - *Large and default sizes are now the same:* The `lg` button size is now no different from the default size. `lg` is not deprecated, but we recommend using the default size instead (fewer props to pass in).
+  - *Automatic vertical centering:* Text, icons, and other button content will now automatically be vertically centered relative to each other.
+  - *Text size:* Button font size is now `16px` regardless of button size (small, default, large). Previously, depending on ESDS version, large button font size was either `18px` or `20px`.
+  - *Border radius:* All buttons now have a border radius of `8px`.
+  - *Hover, active, and focus states:* Background colors of both primary and secondary buttons in these states have been updated. Buttons will also now have a slight border when given focus in supporting browsers.
+  - *Disabled text color:* The text color of disabled buttons has changed to `#565656` instead of `#292929`.
+- The `EsButton` documentation page no longer includes a large button example.
+- The `EsButton` documentation page now has examples of buttons with text, text and an icon, and icon only.
+- The `EsButton` documentation page now displays a list of deprecated button styles for reference.
 
 ### Deprecated
 
-- The dark button variant is now deprecated and is replaced by the secondary button variant.
-- The following button variants are now also deprecated: success, info, warning, danger, light, mid, mid-dark, highlight, and highlight-dark.
+- The `dark` variant of `EsButton` is now deprecated in favor of `secondary` and will be removed in a future version.
+- The following variants of `EsButton` are also deprecated and will be removed in a future version: `success`, `info`, `warning`, `danger`, `light`, `mid`, `mid-dark`, `highlight`, and `highlight-dark`.
 
+### Removed
+
+- Removed some unnecessary VS Code recommendations for Django and Python.
 
 ## [0.14.1] - 2023-01-27
 
