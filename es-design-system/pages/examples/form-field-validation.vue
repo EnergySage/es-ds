@@ -106,7 +106,6 @@
                                     class="form-actions__button-spinner position-absolute d-inline-block h-100 w-100">
                                     <b-spinner
                                         role="status"
-                                        aria-hidden="true"
                                         label="Loading" />
                                 </span>
                                 <span

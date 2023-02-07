@@ -60,7 +60,6 @@
                                     v-if="isSubmitInProgress">
                                     <b-spinner
                                         role="status"
-                                        aria-hidden="true"
                                         label="Loading" />
                                 </span>
                                 <span
