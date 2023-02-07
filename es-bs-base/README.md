@@ -4,7 +4,7 @@ An EnergySage branded Bootstrap
 
 ## Getting Started
 
-`npm install --save @energysage/es-bs-base`
+`npm install @energysage/es-bs-base`
 
 ### Basic Example Usage
 
