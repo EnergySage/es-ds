@@ -99,7 +99,6 @@
                         <es-button
                             type="submit"
                             class="w-100 w-lg-auto"
-                            :loading="isSubmitInProgress"
                             :disabled="isSubmitInProgress">
                             <span class="position-relative d-inline-block w-100">
                                 <span
