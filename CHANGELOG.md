@@ -5,15 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.0] - 2023-02-06
+
+### Added
+
+- utility classes and example for loading button state on form submission
+
+### Changed
+
+- ***Breaking:*** The `$secondary` color variable is now `#292929` (`$gray-900`) instead of `#007AAB` (`$cyan`). This will cascade through to various styles.
+- ***Breaking:*** Large buttons now exactly match the style of default buttons and have been removed from the example documentation. Their font size is now `16px` instead of `20px`, border radius is `8px` instead of `12px`, height is `48px` instead of variable based on content, and horizontal padding is `24px` instead of `16px`.
+- ***Breaking:*** Default and small buttons now have a fixed height (`48px` and `28px`, respectively) that will remain consistent independent of button content, per the design.
+- ***Breaking:*** Default button horizontal padding is now `24px` instead of `16px`, per the design.
+- Primary and secondary buttons will now vertically center their content by default.
+- Primary and secondary buttons have updated hover, active, and focus states, per the design.
+- Small button border radius is now `8px` instead of `4px`, per the design.
+- The text color of disabled buttons is now `#565656` instead of `#292929`, per the design.
+- The following updates have been made to the EsButton docs page:
+    - Guidance on icon sizing is now provided at the top of the page.
+    - Button examples are now grouped by variant (e.g. primary, secondary, outline primary, outline secondary).
+    - Button examples now show buttons containing text, text with an icon, and icon only.
+    - A section has been added to show the Deprecated Buttons, to make it clear for anyone using those variants that they will be removed in a future version.
+    - The Component Source and Documentation Source now show the code for EsButton rather than EsBadge
+- reduce number of vs-code recommendations
+
+### Deprecated
+
+- The dark button variant is now deprecated and is replaced by the secondary button variant.
+- The following button variants are now also deprecated: success, info, warning, danger, light, mid, mid-dark, highlight, and highlight-dark.
+
+
 ## [0.14.1] - 2023-01-27
 
-### Changes
+### Changed
 
 - Added `optimizeSSR` to `es-vue-base` `esm` bundle
 
 ## [0.14.0] - 2023-01-26
 
-### Changes
+### Changed
 
 - ***BREAKING:*** Updated `es-vue-base/build/rollup.config.js` to optimize for SSR
 - ***BREAKING:*** Updated `EsSlider.vue` to be client only; does not support SSR
@@ -24,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `EsProgress` component and documentation
 
-### Changes
+### Changed
 
 - Updated `eslint-config-energysage` and fixed new rules
 - Fixed an issue where `EsRating` background was always `white`
@@ -298,7 +328,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix snapshot test by passing in date as a argument
 - Turn off formatOnSave setting, until formatting issues are resolved
 
-## [0.4.38]
+## 0.4.38
 
 ### Added
 
@@ -335,6 +365,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.15.0]: https://github.com/EnergySage/es-ds/compare/v0.14.1...v0.15.0
+[0.14.1]: https://github.com/EnergySage/es-ds/compare/v0.14.0...v0.14.1
+[0.14.0]: https://github.com/EnergySage/es-ds/compare/v0.13.3...v0.14.0
+[0.13.3]: https://github.com/EnergySage/es-ds/compare/v0.13.2...v0.13.3
+[0.13.2]: https://github.com/EnergySage/es-ds/compare/v0.13.1...v0.13.2
+[0.13.1]: https://github.com/EnergySage/es-ds/compare/v0.13.0...v0.13.1
 [0.13.0]: https://github.com/EnergySage/es-ds/compare/v0.12.0...v0.13.0
 [0.12.0]: https://github.com/EnergySage/es-ds/compare/v0.11.3...v0.12.0
 [0.11.3]: https://github.com/EnergySage/es-ds/compare/v0.11.2...v0.11.3
