@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.0] - 2023-02-07
+
+- ***BREAKING:*** Changed the `secondary` color/variant to `#292929` (from `#007AAB`) to distinguish from primary and better match designs.
+- ***BREAKING:*** `EsButton` now has a fixed height; default/large buttons are `48px` tall, small buttons are `28px` tall.
+- ***BREAKING:*** `EsButton` default/large button horizontal padding has increased to `24px` from `16px`
+- ***DEPRECATED:*** The `dark` variant of `EsButton` is now deprecated in favor of `secondary` and will be removed in a future version.
+- ***DEPRECATED:*** The following variants of `EsButton` are also deprecated and will be removed in a future version: `success`, `info`, `warning`, `danger`, `light`, `mid`, `mid-dark`, `highlight`, and `highlight-dark`.
+- `EsButton` also received a number of non-breaking updates:
+   - _Large and default sizes are now the same:_ The `lg` button size is now no different from the default size. `lg` is not deprecated, but we recommend using the default size instead (fewer props to pass in).
+   - _Automatic vertical centering:_ Text, icons, and other button content will now automatically be vertically centered relative to each other.
+   - _Text size:_ Button font size is now `16px` regardless of button size (small, default, large). Previously, depending on ESDS version, large button font size was either `18px` or `20px`.
+   - _Border radius:_ All buttons now have a border radius of `8px`.
+   - _Hover, active, and focus states:_ Background colors of both primary and secondary buttons in these states have been updated. Buttons will also now have a slight border when given focus in supporting browsers.
+   - _Disabled text color:_ The text color of disabled buttons has changed to `#565656` instead of `#292929`.
+ - The `EsButton` documentation page no longer includes a large button example.
+ - The `EsButton` documentation page now has examples of buttons with text, text and an icon, and icon only.
+ - The `EsButton` documentation page now displays a list of deprecated button styles for reference.
+ - A new example page for Form Level Validation (including a loading spinner) has been added.
+ - Auto width utility classes for each breakpoint have been added (e.g. `w-lg-auto`).
+ - Min width utility class based on `em` units have been added (e.g. `min-width-6`).
+ - Removed some unnecessary VS Code recommendations for Django and Python.
+
 ## [0.14.1] - 2023-01-27
 
 ### Changes
