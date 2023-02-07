@@ -84,7 +84,6 @@
                         <es-button
                             type="submit"
                             class="w-100 w-lg-auto"
-                            :loading="isSubmitInProgress"
                             :disabled="isSubmitInProgress">
                             <span class="position-relative d-inline-block w-100">
                                 <span
@@ -92,7 +91,6 @@
                                     class="button-spinner position-absolute d-inline-block h-100 w-100">
                                     <b-spinner
                                         role="status"
-                                        aria-hidden="true"
                                         label="Loading" />
                                 </span>
                                 Submit

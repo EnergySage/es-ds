@@ -53,10 +53,19 @@ export default {
         * }
         */
         formErrors() {
-            if (!Object.prototype.hasOwnProperty.call(this.$v, 'form')) {
+            let hasFormAttribute = false;
+            try {
+                hasFormAttribute = Object.prototype.hasOwnProperty.call(this.$v, 'form');
+            } catch (e) {
+                return {};
+            }
+            if (!hasFormAttribute) {
                 return {};
             }
             const formFields = this.getFields(this.$v.form);
+            if (!formFields.length) {
+                return {};
+            }
             const formFieldErrors = formFields.reduce((formObj, item) => {
                 // eslint-disable-next-line no-param-reassign
                 formObj[item.name] = this.getFields(item.obj, 'isValid')
@@ -130,7 +139,13 @@ export default {
             this.submitInProgress = false;
         },
         getFields(obj, valueKey = 'obj') {
-            return Object.keys(obj)
+            let objKeys = null;
+            try {
+                objKeys = Object.keys(obj);
+            } catch (e) {
+                return [];
+            }
+            return objKeys
                 .filter((name) => !name.startsWith('$'))
                 .map((name) => ({ name, [valueKey]: obj[name] }));
         },
