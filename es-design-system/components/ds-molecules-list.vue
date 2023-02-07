@@ -36,6 +36,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-form-radio-cards">
+                EsFormRadioCards
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-form-textarea">
                 EsFormTextarea
             </b-link>

@@ -25,6 +25,36 @@
   }
 }
 
+// Size
+
+@each $size, $value in $font-sizes {
+  .font-size-#{$size} {
+    font-size: $value !important;
+  }
+}
+
+// Responsive size
+
+// TODO: Align the design system guild on font sizing, responsive font sizing,
+// and the sm/md/lg/xl/xxl font sizes. Perhaps normalize font size token names
+// to numbers (e.g. 100, 200) like Adobe.
+
+.font-size-h1 { @include font-size($h1-font-size, true); }
+.font-size-h2 { @include font-size($h2-font-size, true); }
+.font-size-h3 { @include font-size($h3-font-size, true); }
+.font-size-h4 { @include font-size($h4-font-size, true); }
+.font-size-h5 { @include font-size($h5-font-size, true); }
+.font-size-h6 { @include font-size($h6-font-size, true); }
+
+@include media-breakpoint-up(lg) {
+  .font-size-h1 { @include font-size($h1-font-size-desktop, true); }
+  .font-size-h2 { @include font-size($h2-font-size-desktop, true); }
+  .font-size-h3 { @include font-size($h3-font-size-desktop, true); }
+  .font-size-h4 { @include font-size($h4-font-size-desktop, true); }
+  .font-size-h5 { @include font-size($h5-font-size-desktop, true); }
+  .font-size-h6 { @include font-size($h6-font-size-desktop, true); }
+}
+
 // Transformation
 
 .text-lowercase  { text-transform: lowercase !important; }
@@ -40,6 +70,9 @@
 .font-weight-bold     { font-weight: $font-weight-bold !important; }
 .font-weight-bolder   { font-weight: $font-weight-bolder !important; }
 .font-italic          { font-style: italic !important; }
+
+// Line height
+.line-height-base { line-height: $line-height-base !important; }
 
 // Contextual colors
 
