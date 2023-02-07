@@ -4,7 +4,7 @@ An EnergySage Vue component library
 
 ## Getting Started
 
-`npm install @energysage/es-bs-base @energysage/es-vue-base bootstrap-vue`
+`npm install --save @energysage/es-bs-base @energysage/es-vue-base bootstrap-vue`
 
 ### Basic Example Usage
 
