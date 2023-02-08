@@ -2,9 +2,21 @@
 
 This is a **monorepo** containing the elements required for building experiences following the EnergySage Design System of _es-ds_ for short.
 
+- [Public Works](#public-works)
 - [The parts](#the-parts)
 - [Contributing](#contributing)
-- [Public Works](#public-works)
+
+## Public Works
+
+This repository `es-ds` **is public** and the contents are licensed under the
+[MIT](https://tldrlegal.com/license/mit-license#summary)
+
+For that reason discussion and documentation specific to EnergySage should probably be kept
+within private org channels.
+
+### EnergySage specific channels
+
+For EnergySage specific resources & channels see the [Quick Links section of the Design System confluence page](https://energysage.atlassian.net/wiki/spaces/DS/overview#%F0%9F%96%B1%EF%B8%8F-Quick-Links)
 
 ## The Parts
 
@@ -136,18 +148,6 @@ This project follows [semantic versioning](https://semver.org/). Please make sur
     - adding an additional "prop" to a core-component, but otherwise not chancing the default behavior
 3. PATCH version changes are backwards compatible bug-fixes and should have no impact on functionality aside from fixing a bug
 
-## Public Works
+#### Publishing documentation
 
-This repository `es-ds` **is public** and the contents are licensed under the
-[MIT](https://tldrlegal.com/license/mit-license#summary)
-
-For that reason discussion and documentation specific to EnergySage should probably be kept
-within private org channels.
-
-### EnergySage specific channels
-
-- [Design System Engineering](https://energysage.atlassian.net/wiki/spaces/DSE/overview) confluence page
-- [UX + Design](https://energysage.atlassian.net/wiki/spaces/UX/overview)
-
-For EnergySage specific questions and information
-please use email, slack, confluence, or jira.
+See https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation
