@@ -118,8 +118,8 @@ Assuming changes are approved, the process of publishing a new version is...
 4. `make publish` - Publish updated packages to [npmjs.com](https://www.npmjs.com/org/energysage)
 5. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
 6. `make install && make symlink` - Install the new published versions locally and symlink them
-7. `git commit -m "X.X.X Changelog" && git push` - Commit and push the changelog and `package-lock.json` updates
-8. `npm run --prefix es-design-system build:dev` - Builds `es-design-system` with updated versions and deploys to [https://dev.design.energysage.dev/](https://dev.design.energysage.dev/)
+7. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` - Commit and push the changelog and `package-lock.json` updates
+8. For updating the design-system documentation see [Deploy Design System](https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation)
 
 Running `make publish` will trigger the following prompt:
 
@@ -147,7 +147,3 @@ This project follows [semantic versioning](https://semver.org/). Please make sur
     - changing the hex value represented by the variable `$white` in `es-bs-base`
     - adding an additional "prop" to a core-component, but otherwise not chancing the default behavior
 3. PATCH version changes are backwards compatible bug-fixes and should have no impact on functionality aside from fixing a bug
-
-#### Publishing documentation
-
-See https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation
