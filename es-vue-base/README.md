@@ -37,3 +37,14 @@ export default {
 };
 </script>
 ```
+
+jest.config.js:
+
+```javascript
+    // TODO: Why can't jest support SSR?
+    module.exports = {
+        moduleNameMapper: {
+            '^@energysage/es-vue-base$': '@energysage/es-vue-base/dist/es-vue-base.umd.js',
+        }
+    };
+```
