@@ -64,6 +64,9 @@ export default {
     &:hover {
         /* needed to override the default background/text color switch for outline button hover state */
         background-color: $white;
+        /* match design border color on hover, override utility class */
+        border-color: $gray-400 !important;
+        /* needed to override the default background/text color switch for outline button hover state */
         color: $dark;
     }
 
