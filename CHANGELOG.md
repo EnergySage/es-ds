@@ -42,14 +42,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Added `optimizeSSR` to `es-vue-base` `esm` bundle
+- ***BREAKING:*** Added `optimizeSSR` to `es-vue-base` `esm` bundle
 
 ## [0.14.0] - 2023-01-26
 
 ### Changed
 
-- ***BREAKING:*** Updated `es-vue-base/build/rollup.config.js` to optimize for SSR
 - ***BREAKING:*** Updated `EsSlider.vue` to be client only; does not support SSR
+- ***BREAKING:*** Updated `es-vue-base/build/rollup.config.js` to optimize for SSR
+  - This will break jest unit tests if you are using `mount` and not `shallowMount`. To fix it update your `jest.config.js` with the following:
+
+  ```javascript
+        module.exports = {
+            moduleNameMapper: {
+                '^@energysage/es-vue-base$': '@energysage/es-vue-base/dist/es-vue-base.umd.js',
+            }
+        };
+  ```
 
 ## [0.13.3] - 2023-01-23
 
