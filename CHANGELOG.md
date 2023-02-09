@@ -7,9 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.15.1] - 2023-02-08
 
+### Added
+
+- `EsFormRadioCards` and `EsFormRadioCard` components
+- `font-size-h{1-6}` utility classes that match responsive header font sizing for mobile and desktop.
+- `line-height-base` utility class
+
 ### Fixed
 
-- add hover state to EsFormRadioCard
+- ***BREAKING:*** The `font-size-{xx}` utility classes now use `!important` and may therefore override local styles where they weren't before.
 
 ## [0.15.0] - 2023-02-06
 
