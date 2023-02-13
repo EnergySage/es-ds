@@ -12,7 +12,7 @@
             Show Success
         </es-button>
         <es-button @click="fakeFormMsg(false)">
-            Show Success
+            Show Error
         </es-button>
         <es-form-msg
             class="my-5"
@@ -27,14 +27,10 @@
     </div>
 </template>
 <script>
-import { EsFormMsg, EsButton, formMixins } from '@energysage/es-vue-base';
+import { formMixins } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsFormMsgDocs',
-    components: {
-        EsFormMsg,
-        EsButton,
-    },
     mixins: [formMixins],
     data() {
         return {

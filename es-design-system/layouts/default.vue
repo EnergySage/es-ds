@@ -33,16 +33,10 @@
 </template>
 
 <script>
-import DsLinkList from '@/components/ds-link-list.vue';
-import { EsBreadcrumbs } from '@energysage/es-vue-base';
 
 /* eslint-disable vue/multi-word-component-names, vue/component-definition-name-casing */
 export default {
     name: 'default',
-    components: {
-        DsLinkList,
-        EsBreadcrumbs,
-    },
     computed: {
         breadcrumbs() {
             const paths = this.$route.path.split('/');

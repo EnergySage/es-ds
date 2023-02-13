@@ -8,12 +8,8 @@
 </template>
 
 <script>
-import DsAtomsList from '@/components/ds-atoms-list.vue';
 
 export default {
     name: 'AtomsIndex',
-    components: {
-        DsAtomsList,
-    },
 };
 </script>

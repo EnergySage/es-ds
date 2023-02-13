@@ -146,14 +146,9 @@
     </div>
 </template>
 <script>
-import { EsPopover, IconInfo } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsPopoverDocs',
-    components: {
-        EsPopover,
-        IconInfo,
-    },
     data() {
         return {
             compCode: '',

@@ -52,17 +52,8 @@
     </div>
 </template>
 <script>
-import {
-    EsReview, EsButton, EsReviewModal,
-} from '@energysage/es-vue-base';
-
 export default {
     name: 'EsReviewDocs',
-    components: {
-        EsReview,
-        EsButton,
-        EsReviewModal,
-    },
     data() {
         return {
             reviewsModalVisible: false,

@@ -123,9 +123,6 @@
 
 <script>
 import {
-    EsFormInput,
-    EsFormTextarea,
-    EsButton,
     formMixins,
     vuelidateKeys,
     vuelidateRequired,
@@ -140,11 +137,6 @@ import {
 
 export default {
     name: 'EsFormDocs',
-    components: {
-        EsFormInput,
-        EsFormTextarea,
-        EsButton,
-    },
     mixins: [formMixins],
     data() {
         return {

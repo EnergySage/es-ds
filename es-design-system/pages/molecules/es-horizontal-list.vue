@@ -39,13 +39,8 @@
 </template>
 <script>
 
-import { EsHorizontalList } from '@energysage/es-vue-base';
-
 export default {
     name: 'EsHorizontalListDocs',
-    components: {
-        EsHorizontalList,
-    },
     data() {
         return {
             compCode: '',

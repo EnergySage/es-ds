@@ -30,14 +30,10 @@
 </template>
 
 <script>
-import DsIconList from '@/components/ds-icon-list.vue';
 import sassVariants from '@energysage/es-bs-base/scss/variables/_variants.scss';
 
 export default {
     name: 'AtomsIcons',
-    components: {
-        DsIconList,
-    },
     asyncData() {
         // Theme Colors
         const themeNames = Object.keys(sassVariants)

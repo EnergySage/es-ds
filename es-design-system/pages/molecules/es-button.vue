@@ -593,14 +593,9 @@
 </template>
 
 <script>
-import { EsButton, IconChevronRight } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsButtonDocs',
-    components: {
-        EsButton,
-        IconChevronRight,
-    },
     data() {
         return {
             compCode: '',

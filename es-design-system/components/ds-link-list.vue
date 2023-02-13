@@ -43,18 +43,7 @@
 </template>
 
 <script>
-import DsAtomsList from '@/components/ds-atoms-list.vue';
-import DsOrganismsList from '@/components/ds-organisms-list.vue';
-import DsMoleculesList from '@/components/ds-molecules-list.vue';
-import DsExamplesList from '@/components/ds-examples-list.vue';
-
 export default {
     name: 'DsLinkList',
-    components: {
-        DsAtomsList,
-        DsOrganismsList,
-        DsMoleculesList,
-        DsExamplesList,
-    },
 };
 </script>

@@ -37,13 +37,9 @@
     </div>
 </template>
 <script>
-import { EsCollapse } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsCollapseDocs',
-    components: {
-        EsCollapse,
-    },
     data() {
         return {
             compCode: '',

@@ -25,13 +25,9 @@
     </div>
 </template>
 <script>
-import { EsSlider } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsSliderDocs',
-    components: {
-        EsSlider,
-    },
     data() {
         return {
             startingValue: 0,

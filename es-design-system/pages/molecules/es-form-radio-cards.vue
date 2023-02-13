@@ -22,8 +22,8 @@
                     v-model="form.propertyType"
                     label="What type of property do you want quotes for?">
                     <es-form-radio-card
-                        v-for="option in propertyTypeOptions"
-                        :key="option.value"
+                        v-for="(option, index) in propertyTypeOptions"
+                        :key="index"
                         :value="option.value">
                         {{ option.label }}
                     </es-form-radio-card>
@@ -49,8 +49,8 @@
                     label="What’s the main reason you want a battery?">
                     <b-row>
                         <b-col
-                            v-for="option in storageReasonOptions"
-                            :key="option.value"
+                            v-for="(option, index) in storageReasonOptions"
+                            :key="index"
                             cols="12"
                             lg="4">
                             <es-form-radio-card
@@ -148,19 +148,9 @@
 </template>
 
 <script>
-import {
-    EsFormRadioCard, EsFormRadioCards, IconPersonCheck, IconSettingsVertical, IconShoppingBag,
-} from '@energysage/es-vue-base';
 
 export default {
     name: 'EsFormRadioCardsDocs',
-    components: {
-        EsFormRadioCard,
-        EsFormRadioCards,
-        IconPersonCheck,
-        IconSettingsVertical,
-        IconShoppingBag,
-    },
     data() {
         return {
             form: {
@@ -184,19 +174,19 @@ export default {
                 {
                     title: 'Back up power',
                     description: 'Run appliances during a power outage',
-                    icon: IconSettingsVertical,
+                    icon: 'IconSettingsVertical',
                     value: 'Back up power',
                 },
                 {
                     title: 'Maximize savings',
                     description: 'Avoid paying for energy during peak hours',
-                    icon: IconShoppingBag,
+                    icon: 'IconShoppingBag',
                     value: 'Maximize savings',
                 },
                 {
                     title: 'Self supply',
                     description: 'Limit how much energy you pull from the grid',
-                    icon: IconPersonCheck,
+                    icon: 'IconPersonCheck',
                     value: 'Self supply',
                 },
             ],

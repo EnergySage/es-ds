@@ -71,14 +71,8 @@
     </div>
 </template>
 <script>
-// TODO: Add input state/msg validation example
-import { EsFormInput } from '@energysage/es-vue-base';
-
 export default {
     name: 'EsFormInputDocs',
-    components: {
-        EsFormInput,
-    },
     data() {
         return {
             docInput: 'Example text',

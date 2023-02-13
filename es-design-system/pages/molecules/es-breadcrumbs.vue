@@ -19,13 +19,9 @@
     </div>
 </template>
 <script>
-import { EsBreadcrumbs } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsBreadcrumbsDocs',
-    components: {
-        EsBreadcrumbs,
-    },
     data() {
         return {
             compCode: '',

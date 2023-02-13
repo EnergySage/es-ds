@@ -204,14 +204,9 @@
 </template>
 
 <script>
-import { EsAccordion, EsAccordionList } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsAccordionDocs',
-    components: {
-        EsAccordion,
-        EsAccordionList,
-    },
     data() {
         return {
             accordionFields: [

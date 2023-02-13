@@ -28,15 +28,9 @@
     </div>
 </template>
 <script>
-import { EsCollapse } from '@energysage/es-vue-base';
-import DsCodeBlock from '@/components/ds-code-block.vue';
 
 export default {
     name: 'DsDocSource',
-    components: {
-        DsCodeBlock,
-        EsCollapse,
-    },
     props: {
         compCode: {
             type: String,

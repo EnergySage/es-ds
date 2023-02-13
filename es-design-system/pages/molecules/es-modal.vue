@@ -56,13 +56,9 @@
     </div>
 </template>
 <script>
-import { EsModal, EsButton } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsModalDocs',
-    components: {
-        EsModal, EsButton,
-    },
     data() {
         return {
             visible: false,

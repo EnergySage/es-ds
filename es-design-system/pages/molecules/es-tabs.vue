@@ -33,13 +33,9 @@
     </div>
 </template>
 <script>
-import { EsTab, EsTabs } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsTabsDocs',
-    components: {
-        EsTab, EsTabs,
-    },
     data() {
         return {
             compCode: '',
