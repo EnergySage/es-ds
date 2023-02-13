@@ -27,6 +27,7 @@ App.vue:
 </template>
 
 <script>
+// Imports are only necessary if you are not using nuxt plugin
 import { EsButton } from '@energysage/es-vue-base';
 
 export default {
@@ -36,6 +37,19 @@ export default {
     },
 };
 </script>
+```
+
+nuxt.config.js:
+
+```javascript
+    modules: [
+        ['@energysage/es-vue-base/nuxt', {
+            // Auto import components
+            components: true,
+            // Auto import icon components
+            icons: true,
+        }]
+    ],
 ```
 
 jest.config.js:

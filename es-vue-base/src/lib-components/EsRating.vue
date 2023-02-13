@@ -29,9 +29,9 @@
 
 <script lang="js">
 import { BFormRating } from 'bootstrap-vue';
-import IconStarFull from '@/src/lib-icons/star-full.vue';
-import IconStarEmpty from '@/src/lib-icons/star-empty.vue';
-import IconStarHalf from '@/src/lib-icons/star-half.vue';
+import IconStarFull from '../lib-icons/icon-star-full.vue';
+import IconStarEmpty from '../lib-icons/icon-star-empty.vue';
+import IconStarHalf from '../lib-icons/icon-star-half.vue';
 
 export default {
     name: 'EsRating',

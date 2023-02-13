@@ -2,7 +2,7 @@
 import { mount } from '@vue/test-utils';
 import EsPopover from '@/src/lib-components/EsPopover.vue';
 import EsButton from '@/src/lib-components/EsButton.vue';
-import XIcon from '@/src/lib-icons/x.vue';
+import XIcon from '@/src/lib-icons/icon-x.vue';
 import { waitRAF, waitNT } from './utils';
 
 // https://github.com/bootstrap-vue/bootstrap-vue/blob/dev/src/components/popover/popover.spec.js

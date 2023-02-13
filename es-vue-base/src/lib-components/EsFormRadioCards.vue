@@ -29,6 +29,11 @@ export default {
         BFormRadioGroup,
     },
     props: {
+        value: {
+            type: String,
+            required: false,
+            default: '',
+        },
         label: {
             type: String,
             required: true,

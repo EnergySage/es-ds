@@ -2,7 +2,6 @@
 import fs from 'fs';
 import path from 'path';
 import vue from 'rollup-plugin-vue';
-import alias from '@rollup/plugin-alias';
 import image from '@rollup/plugin-image';
 import commonjs from '@rollup/plugin-commonjs';
 import autoprefixer from 'autoprefixer';
@@ -41,14 +40,6 @@ const baseConfig = {
     },
     plugins: {
         preVue: [
-            alias({
-                entries: [
-                    {
-                        find: '@',
-                        replacement: `${path.resolve(projectRoot)}`,
-                    },
-                ],
-            }),
             image(),
         ],
         replace: {

@@ -71,11 +71,11 @@
     </es-modal>
 </template>
 <script>
-import EsButton from '@/src/lib-components/EsButton.vue';
-import EsModal from '@/src/lib-components/EsModal.vue';
-import EsRating from '@/src/lib-components/EsRating.vue';
-import EsReview from '@/src/lib-components/EsReview.vue';
 import { BContainer, BRow, BCol } from 'bootstrap-vue';
+import EsButton from './EsButton.vue';
+import EsModal from './EsModal.vue';
+import EsRating from './EsRating.vue';
+import EsReview from './EsReview.vue';
 
 export default {
     name: 'EsReviewModal',

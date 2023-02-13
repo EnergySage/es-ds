@@ -29,7 +29,7 @@
 
 <script lang="js">
 import { BModal } from 'bootstrap-vue';
-import XIcon from '@/src/lib-icons/x.vue';
+import XIcon from '../lib-icons/icon-x.vue';
 
 export default {
     name: 'EsModal',
