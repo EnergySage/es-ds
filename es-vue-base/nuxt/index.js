@@ -12,7 +12,6 @@ export default function autoExport(customOptions) {
         if (options.components) {
             dirs.push({
                 path: join(__dirname, '../src/lib-components'),
-                global: true,
                 extensions: ['vue'],
             });
         }
@@ -21,7 +20,6 @@ export default function autoExport(customOptions) {
         if (options.icons) {
             dirs.push({
                 path: join(__dirname, '../src/lib-icons'),
-                global: true,
                 extensions: ['vue'],
             });
         }

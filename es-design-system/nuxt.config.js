@@ -80,7 +80,7 @@ export default {
         // https://bootstrap-vue.org/docs/#nuxtjs-module
         'bootstrap-vue/nuxt',
     ],
-    components: [{ path: '~/components', global: true, extensions: ['vue'] }],
+    components: [{ path: '~/components', extensions: ['vue'] }],
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         // https://i18n.nuxtjs.org

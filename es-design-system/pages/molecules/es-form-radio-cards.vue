@@ -23,7 +23,7 @@
                     label="What type of property do you want quotes for?">
                     <es-form-radio-card
                         v-for="(option, index) in propertyTypeOptions"
-                        :key="index"
+                        :key="`property-${index}`"
                         :value="option.value">
                         {{ option.label }}
                     </es-form-radio-card>
@@ -50,7 +50,7 @@
                     <b-row>
                         <b-col
                             v-for="(option, index) in storageReasonOptions"
-                            :key="index"
+                            :key="`storage-${index}`"
                             cols="12"
                             lg="4">
                             <es-form-radio-card
