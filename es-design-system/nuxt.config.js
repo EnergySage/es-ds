@@ -13,20 +13,21 @@ export default {
             { name: 'theme-color', content: '#ffffff' },
         ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            // Fonts
             {
                 rel: 'stylesheet',
                 href: 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap',
             },
+            // Icon
+            {
+                rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any',
+            },
+            { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+            // Apple devices will use apple-touch-icon
+            // if you add the webpage as a shortcut to your home screen on an iPhone or iPad
             { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-            {
-                rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png',
-            },
-            {
-                rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png',
-            },
+            // Android devices will use this for PWAs
             { rel: 'manifest', href: '/site.webmanifest' },
-            { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#b95100' },
         ],
     },
     server: {

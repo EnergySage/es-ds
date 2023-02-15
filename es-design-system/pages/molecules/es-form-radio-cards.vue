@@ -54,7 +54,7 @@
                             cols="12"
                             lg="4">
                             <es-form-radio-card
-                                class="align-items-center d-lg-flex flex-column font-size-base font-weight-normal line-height-base p-3 p-lg-4 text-lg-center"
+                                class="align-items-center d-block d-lg-flex flex-column font-size-base font-weight-normal line-height-base p-3 p-lg-4 text-lg-center"
                                 :value="option.value">
                                 <component
                                     :is="option.icon"
