@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.16.0] - 2023-02-20
+
+### Added
+
+- `@energysage/es-vue-base/nuxt` module is now availble for opt-in use; [usage docs](./es-design-system/pages/examples/nuxt-components.vue)
+
+### Fixed
+
+- `EsSlider` where change event triggered twice; introduced in `0.14.0`
+- `EsFormRadioCards` where value was not defined as a prop; introduced in `0.15.0`
+- `EsFormTextArea` where hasMessage was undefined; introduced in `0.13.0`
+- `es-form-radio-cards` documentation updated to fix mobile layout
+- `es-form-msg` documentation updated to fix typo
+
+### Changed
+
+- ***BREAKING:*** All icon files and exports have been renamed to include `icon-` prefix
+- Updated favicon files and configurations
+- Removed aliases in `es-vue-base`, bundles work better with relative paths
+
 ## [0.15.1] - 2023-02-08
 
 ### Added
