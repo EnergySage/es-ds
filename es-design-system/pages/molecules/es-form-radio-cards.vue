@@ -22,8 +22,8 @@
                     v-model="form.propertyType"
                     label="What type of property do you want quotes for?">
                     <es-form-radio-card
-                        v-for="(option, index) in propertyTypeOptions"
-                        :key="`property-${index}`"
+                        v-for="option in propertyTypeOptions"
+                        :key="option.value"
                         :value="option.value">
                         {{ option.label }}
                     </es-form-radio-card>
@@ -49,8 +49,8 @@
                     label="What’s the main reason you want a battery?">
                     <b-row>
                         <b-col
-                            v-for="(option, index) in storageReasonOptions"
-                            :key="`storage-${index}`"
+                            v-for="option in storageReasonOptions"
+                            :key="option.value"
                             cols="12"
                             lg="4">
                             <es-form-radio-card
