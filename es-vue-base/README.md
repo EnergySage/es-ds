@@ -42,12 +42,30 @@ export default {
 nuxt.config.js:
 
 ```javascript
+    /** 
+     * Default; import all icons and components
+     * The resulting build will include bundles for all components even if they are not used
+     * Unused bundles should not impact page speed performance as they are never loaded but does
+     * result in longer build times
+     */
     modules: [
         ['@energysage/es-vue-base/nuxt', {
             // Auto import components
             components: true,
             // Auto import icon components
             icons: true,
+        }]
+    ],
+
+    /** 
+     * Specify; import only icons and components specified
+     * The resulting build will only include specified bundles
+     */
+    modules: [
+        ['@energysage/es-vue-base/nuxt', {
+            // Import names are case sensitive
+            components: ['EsAccordion', 'EsAccordionList'],
+            icons: ['icon-arrow-clockwise', 'icon-arrow-cycle'],
         }]
     ],
 ```
