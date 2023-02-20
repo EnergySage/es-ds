@@ -14,8 +14,14 @@
                 href="https://nuxtjs.org/docs/directory-structure/components/#components-discovery">
                 component discovery
             </b-link>
-            as the preferred method of importing components into your application. With the use
-            of our included nuxt module you can turn on this feature for our design system components.
+            as the preferred method of importing components into your application. Doing so allows webpack to
+            <b-link
+                target="_blank"
+                href="https://webpack.js.org/guides/tree-shaking/">
+                tree shake
+            </b-link>
+            components the way it determines is most performant. With the use of our included nuxt module you
+            can turn on this feature for our design system components.
         </p>
         <h3>
             Auto Include Everything
@@ -33,13 +39,13 @@
             <code>
 nuxt.config.js:
 modules: [
-        ['@energysage/es-vue-base/nuxt', {
-            // Auto import components
-            components: true,
-            // Auto import icon components
-            icons: true,
-        }]
-    ],
+    ['@energysage/es-vue-base/nuxt', {
+        // Auto import components
+        components: true,
+        // Auto import icon components
+        icons: true,
+    }]
+],
             </code>
         </pre>
         <h3>
@@ -55,12 +61,12 @@ modules: [
             <code>
 nuxt.config.js:
 modules: [
-        ['@energysage/es-vue-base/nuxt', {
-            // Import names are case sensitive
-            components: ['EsAccordion', 'EsAccordionList'],
-            icons: ['icon-arrow-clockwise', 'icon-arrow-cycle'],
-        }]
-    ],
+    ['@energysage/es-vue-base/nuxt', {
+        // Import names are case sensitive
+        components: ['EsAccordion', 'EsAccordionList'],
+        icons: ['icon-arrow-clockwise', 'icon-arrow-cycle'],
+    }]
+],
             </code>
         </pre>
 
