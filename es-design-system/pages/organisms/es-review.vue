@@ -29,13 +29,9 @@
     </div>
 </template>
 <script>
-import { EsReview } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsReviewDocs',
-    components: {
-        EsReview,
-    },
     data() {
         return {
             compCode: '',

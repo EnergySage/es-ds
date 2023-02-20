@@ -78,7 +78,6 @@
 </template>
 
 <script>
-import DsColorTable from '@/components/ds-color-table.vue';
 import sassColors from '@energysage/es-bs-base/scss/variables/_colors.scss';
 import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.scss';
 import sassCyans from '@energysage/es-bs-base/scss/variables/_cyans.scss';
@@ -89,9 +88,6 @@ import sassVariants from '@energysage/es-bs-base/scss/variables/_variants.scss';
 
 export default {
     name: 'AtomsColor',
-    components: {
-        DsColorTable,
-    },
     data() {
         return {
             variants: sassVariants,

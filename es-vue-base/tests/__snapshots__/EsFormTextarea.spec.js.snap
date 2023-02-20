@@ -55,8 +55,7 @@ exports[`EsFormTextarea <EsFormTextarea v-model /> 1`] = `
 exports[`EsFormTextarea <EsFormTextarea>slots</EsFormTextarea> 1`] = `
 "<div class="input-wrapper justify-content-end mb-2"><label for="myID" class="label font-weight-semibold justify-content-start">Notes
     <!----></label>
-  <div class="input-holder"><textarea id="myID" rows="2" wrap="soft" class="es-form-textarea w-100 form-control"></textarea>
-    <!---->
+  <div class="input-holder"><textarea id="myID" rows="2" wrap="soft" class="es-form-textarea w-100 form-control"></textarea> <small class="form-text text-muted">Enter your notes here.</small>
     <div class="invalid-feedback">Please enter a valid value.</div>
     <div class="valid-feedback">Your response has been submitted successfully.</div>
   </div>

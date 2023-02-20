@@ -13,8 +13,7 @@
             lazy
             v-bind="$attrs"
             :contained="true"
-            v-on="$listeners"
-            @change="updateSliderValue">
+            v-on="$listeners">
             <!-- Tooltip above the slider thumb -->
             <template #tooltip="{ value, focus }">
                 <div
@@ -101,11 +100,6 @@ export default {
             handler(newVal) {
                 this.sliderValue = newVal > 0 ? newVal : this.startingValue;
             },
-        },
-    },
-    methods: {
-        updateSliderValue(value) {
-            this.$emit('change', value);
         },
     },
 };

@@ -21,8 +21,8 @@
 import {
     BAlert,
 } from 'bootstrap-vue';
-import IconCircleAlert from '@/src/lib-icons/circle-alert.vue';
-import IconCircleCheck from '@/src/lib-icons/circle-check.vue';
+import IconCircleAlert from '../lib-icons/icon-circle-alert.vue';
+import IconCircleCheck from '../lib-icons/icon-circle-check.vue';
 
 export default {
     name: 'EsFormMsg',

@@ -36,13 +36,9 @@
     </div>
 </template>
 <script>
-import { EsBadge } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsBadgeDocs',
-    components: {
-        EsBadge,
-    },
     data() {
         return {
             compCode: '',

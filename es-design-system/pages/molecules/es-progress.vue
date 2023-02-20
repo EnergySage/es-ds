@@ -62,18 +62,9 @@
     </div>
 </template>
 <script>
-import {
-    EsButton, EsProgress, IconMinus, IconPlus,
-} from '@energysage/es-vue-base';
 
 export default {
     name: 'EsProgressDocs',
-    components: {
-        EsButton,
-        EsProgress,
-        IconMinus,
-        IconPlus,
-    },
     data() {
         return {
             compCode: '',

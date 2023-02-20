@@ -39,14 +39,10 @@
     </div>
 </template>
 <script>
-import { EsSupport } from '@energysage/es-vue-base';
 import benr from '@/assets/imgs/benr.png';
 
 export default {
     name: 'EsSupportDocs',
-    components: {
-        EsSupport,
-    },
     data() {
         return {
             link: 'https://www.energysage.com',

@@ -83,16 +83,11 @@
     </div>
 </template>
 <script>
-import { EsVerificationCode, EsButton } from '@energysage/es-vue-base';
 
 const CHARACTER_COUNT = 5;
 
 export default {
     name: 'EsVerificationCodeDocs',
-    components: {
-        EsButton,
-        EsVerificationCode,
-    },
     data() {
         return {
             code: Array(CHARACTER_COUNT).fill(''),

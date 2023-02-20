@@ -29,13 +29,8 @@
     </div>
 </template>
 <script>
-import { EsRating } from '@energysage/es-vue-base';
-
 export default {
     name: 'EsRatingDocs',
-    components: {
-        EsRating,
-    },
     data() {
         return {
             compCode: '',

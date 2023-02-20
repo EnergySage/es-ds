@@ -185,12 +185,12 @@
 </template>
 
 <script lang="js">
-import EsRating from '@/src/lib-components/EsRating.vue';
-import IconVerified from '@/src/lib-icons/verified.vue';
-import IconPencil from '@/src/lib-icons/pencil.vue';
-import EsViewMore from '@/src/lib-components/EsViewMore.vue';
-import EsBadge from '@/src/lib-components/EsBadge.vue';
 import { BLink, BImg } from 'bootstrap-vue';
+import IconVerified from '../lib-icons/icon-verified.vue';
+import IconPencil from '../lib-icons/icon-pencil.vue';
+import EsRating from './EsRating.vue';
+import EsViewMore from './EsViewMore.vue';
+import EsBadge from './EsBadge.vue';
 
 export default {
     name: 'EsReview',

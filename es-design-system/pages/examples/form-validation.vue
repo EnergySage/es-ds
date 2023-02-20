@@ -76,20 +76,10 @@
 </template>
 
 <script>
-import {
-    EsFormInput,
-    EsButton,
-    EsFormMsg,
-    formMixins,
-} from '@energysage/es-vue-base';
+import { formMixins } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsFormDocs',
-    components: {
-        EsFormMsg,
-        EsFormInput,
-        EsButton,
-    },
     mixins: [formMixins],
     data() {
         return {

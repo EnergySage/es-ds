@@ -46,14 +46,9 @@
     </div>
 </template>
 <script>
-// TODO: Add input state/msg validation example
-import { EsFormTextarea } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsFormTextareaDocs',
-    components: {
-        EsFormTextarea,
-    },
     data() {
         return {
             docTextarea: 'Example text',

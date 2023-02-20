@@ -148,19 +148,9 @@
 </template>
 
 <script>
-import {
-    EsFormRadioCard, EsFormRadioCards, IconPersonCheck, IconSettingsVertical, IconShoppingBag,
-} from '@energysage/es-vue-base';
 
 export default {
     name: 'EsFormRadioCardsDocs',
-    components: {
-        EsFormRadioCard,
-        EsFormRadioCards,
-        IconPersonCheck,
-        IconSettingsVertical,
-        IconShoppingBag,
-    },
     data() {
         return {
             form: {
@@ -184,19 +174,19 @@ export default {
                 {
                     title: 'Back up power',
                     description: 'Run appliances during a power outage',
-                    icon: IconSettingsVertical,
+                    icon: 'IconSettingsVertical',
                     value: 'Back up power',
                 },
                 {
                     title: 'Maximize savings',
                     description: 'Avoid paying for energy during peak hours',
-                    icon: IconShoppingBag,
+                    icon: 'IconShoppingBag',
                     value: 'Maximize savings',
                 },
                 {
                     title: 'Self supply',
                     description: 'Limit how much energy you pull from the grid',
-                    icon: IconPersonCheck,
+                    icon: 'IconPersonCheck',
                     value: 'Self supply',
                 },
             ],

@@ -15,10 +15,10 @@ exports[`EsFormRadioCards <EsFormRadioCards /> 1`] = `
 `;
 
 exports[`EsFormRadioCards EsFormRadioCards card click updates value 1`] = `
-"<fieldset class="form-group" value="">
+"<fieldset class="form-group">
   <legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0 font-size-h1 font-weight-bolder mb-4 pb-0 text-dark">What is one plus one?</legend>
   <div>
-    <div value="" role="radiogroup" tabindex="-1" class="EsFormRadioCards d-flex justify-content-center btn-group-toggle btn-group-vertical bv-no-focus-ring"><label class="EsFormRadioCard bg-white border-light rounded-lg w-100 btn btn-outline-dark"><input type="radio" name="What is one plus one?" class="" value="1">
+    <div role="radiogroup" tabindex="-1" class="EsFormRadioCards d-flex justify-content-center btn-group-toggle btn-group-vertical bv-no-focus-ring"><label class="EsFormRadioCard bg-white border-light rounded-lg w-100 btn btn-outline-dark"><input type="radio" name="What is one plus one?" class="" value="1">
         One
       </label> <label class="EsFormRadioCard bg-white border-light rounded-lg w-100 btn btn-outline-dark" data-testid="radioCardTwo"><input type="radio" name="What is one plus one?" class="" value="2">
         Two

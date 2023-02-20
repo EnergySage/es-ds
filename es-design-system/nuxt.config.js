@@ -40,6 +40,8 @@ export default {
     // Production build will generate client only SPA
     ssr: process.env.NODE_ENV === 'development',
     target: 'static',
+    modern: true,
+    spa: false,
     build: {
         // analyze: true,
         extend(config) {
@@ -79,13 +81,14 @@ export default {
         // https://bootstrap-vue.org/docs/#nuxtjs-module
         'bootstrap-vue/nuxt',
     ],
-
+    components: [{ path: '~/components', extensions: ['vue'] }],
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         // https://i18n.nuxtjs.org
         '@nuxtjs/i18n',
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
+        '@energysage/es-vue-base/nuxt',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios

@@ -1,6 +1,11 @@
 <template>
     <ul>
         <li>
+            <b-link :to="{ name: 'examples-nuxt-components___en' }">
+                Nuxt Components
+            </b-link>
+        </li>
+        <li>
             <b-link :to="{ name: 'examples-form-field-validation___en' }">
                 Form with Field Validation
             </b-link>

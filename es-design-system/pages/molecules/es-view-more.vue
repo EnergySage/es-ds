@@ -22,13 +22,9 @@
     </div>
 </template>
 <script>
-import { EsViewMore } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsViewMoreDocs',
-    components: {
-        EsViewMore,
-    },
     data() {
         return {
             compCode: '',

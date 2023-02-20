@@ -95,8 +95,14 @@ export default {
         hasSuccess() {
             return !!this.$slots.successMessage;
         },
+        hasMessage() {
+            return !!this.$slots.message;
+        },
         hasError() {
             return !!this.$slots.errorMessage;
+        },
+        hasExtraContext() {
+            return !!this.$slots.extraContext;
         },
     },
 };

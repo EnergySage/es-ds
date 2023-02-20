@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import EsReview from '@/src/lib-components/EsReview.vue';
 import EsRating from '@/src/lib-components/EsRating.vue';
 import EsViewMore from '@/src/lib-components/EsViewMore.vue';
-import VerifiedIcon from '@/src/lib-icons/verified.vue';
+import VerifiedIcon from '@/src/lib-icons/icon-verified.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsReview', () => {

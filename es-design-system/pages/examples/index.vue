@@ -8,12 +8,8 @@
 </template>
 
 <script>
-import DsExamplesList from '@/components/ds-examples-list.vue';
 
 export default {
     name: 'OrganismsIndex',
-    components: {
-        DsExamplesList,
-    },
 };
 </script>
