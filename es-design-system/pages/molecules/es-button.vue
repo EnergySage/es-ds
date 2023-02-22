@@ -492,6 +492,19 @@
         </table>
 
         <h2>
+            Width change across breakpoints
+        </h2>
+        <p>
+            Often, designs will specify buttons to be full width on mobile and content width on desktop.
+            Below is an example of how to easily accomplish this.
+        </p>
+        <div class="mb-4">
+            <es-button class="w-100 w-lg-auto">
+                Responsive button
+            </es-button>
+        </div>
+
+        <h2>
             Deprecated Buttons (do not use)
         </h2>
         <p class="mb-4">

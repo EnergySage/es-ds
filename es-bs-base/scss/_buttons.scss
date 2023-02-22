@@ -11,6 +11,7 @@
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   color: $body-color;
+  justify-content: center;
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
