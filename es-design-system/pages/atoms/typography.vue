@@ -108,11 +108,11 @@
             </h2>
             <p>
                 Occasionally, an eyebrow will be used in a situation where is not appropriate to use a heading element,
-                like in the case of a
+                like on a customer name below a
                 <b-link
                     href="https://css-tricks.com/quoting-in-html-quotations-citations-and-blockquotes/"
                     target="_blank">
-                    quote from a customer review.
+                    quote from their review.
                 </b-link>
                 Below is an example of how to accomplish this.
             </p>
