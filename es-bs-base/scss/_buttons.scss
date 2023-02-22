@@ -7,6 +7,7 @@
 .btn {
   display: inline-flex;
   align-items: center; // aligns text and icons vertically by default
+  justify-content: center;
   height: $font-size-base * 3; // ensures consistent button height, matching the design, regardless of content
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
