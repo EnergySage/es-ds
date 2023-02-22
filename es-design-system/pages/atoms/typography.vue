@@ -119,7 +119,7 @@
             <div class="border pb-lg-3 px-3 px-lg-4 pt-3 pt-lg-4 rounded">
                 <figure>
                     <blockquote class="font-size-lg">
-                        &quot;Working with this company was a breeze. They were so friendly and helpful.&quot;
+                        “Working with this company was a breeze. They were so friendly and helpful.”
                     </blockquote>
                     <figcaption>
                         <p class="eyebrow mb-0">
