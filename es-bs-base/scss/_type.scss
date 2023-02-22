@@ -29,6 +29,12 @@ h6, .h6 { @include font-size($h6-font-size); }
   h6, .h6 { @include font-size($h6-font-size-desktop); }
 }
 
+.eyebrow {
+  font-weight: $headings-font-weight;
+  letter-spacing: $eyebrow-letter-spacing;
+  text-transform: uppercase;
+}
+
 .lead {
   @include font-size($lead-font-size);
   font-weight: $lead-font-weight;

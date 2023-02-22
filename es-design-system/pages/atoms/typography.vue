@@ -49,6 +49,11 @@
                     </h6>
                 </li>
                 <li>
+                    <p class="eyebrow">
+                        Eyebrow
+                    </p>
+                </li>
+                <li>
                     <p>
                         Paragraph: Mint lime taco salsa lemon lime minty tabasco
                         pepper apple vinaigrette chai tea portobello mushrooms
