@@ -112,7 +112,7 @@
                 <b-link
                     href="https://css-tricks.com/quoting-in-html-quotations-citations-and-blockquotes/"
                     target="_blank">
-                    customer review.
+                    quote from a customer review.
                 </b-link>
                 Below is an example of how to accomplish this.
             </p>
