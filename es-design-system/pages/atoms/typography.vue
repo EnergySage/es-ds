@@ -110,7 +110,7 @@
                 Occasionally, an eyebrow will be used in a situation where is not appropriate to use a heading element,
                 like on a customer name below a
                 <b-link
-                    href="https://css-tricks.com/quoting-in-html-quotations-citations-and-blockquotes/"
+                    href="https://css-tricks.com/quoting-in-html-quotations-citations-and-blockquotes/#aa-hey-what-about-the-figure-element"
                     target="_blank">
                     quote from their review.
                 </b-link>
