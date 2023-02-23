@@ -116,7 +116,7 @@
                     md="6"
                     lg="4">
                     <es-form-input
-                        id="successExample"
+                        id="successMessageExample"
                         v-model="form.emailCorrect"
                         :state="true">
                         <template #label>
