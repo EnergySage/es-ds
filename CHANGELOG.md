@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.16.1] - 2023-02-23
+
+### Added
+
+- Added `eyebrow` class and updated typography documentation
+
+### Fixed
+
+- Fixed an issue where using nuxt module did not include `style` blocks from components
+
+### Changed
+
+- ***BREAKING CHANGE***: Text is now centered in buttons by default
+- ***BREAKING CHANGE***: `h4` and `h5` font size is now 1rem(16px)
+
 ## [0.16.0] - 2023-02-20
 
 ### Added
