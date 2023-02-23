@@ -122,7 +122,7 @@
                         “Working with this company was a breeze. They were so friendly and helpful.”
                     </blockquote>
                     <figcaption>
-                        <p class="eyebrow mb-0">
+                        <p class="eyebrow mb-0 text-body">
                             Sofia
                         </p>
                         <p>
