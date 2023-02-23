@@ -247,10 +247,8 @@ export default {
     data() {
         return {
             form: {
-                docInput: 'Example text',
                 emailCorrect: 'hello@energysage.com',
                 emailWrong: 'hello@energy',
-                example2: 'Example two',
                 firstName: '',
                 password: '',
                 phoneNumber: '',
