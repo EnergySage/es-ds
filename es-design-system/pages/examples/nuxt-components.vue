@@ -38,34 +38,8 @@
         <pre>
             <code>
 nuxt.config.js:
-modules: [
-    ['@energysage/es-vue-base/nuxt', {
-        // Auto import components
-        components: true,
-        // Auto import icon components
-        icons: true,
-    }]
-],
-            </code>
-        </pre>
-        <h3>
-            Specify what is included
-        </h3>
-        <p>
-            The alternative approach is to specify what components should be auto imported. The result is shorter build
-            times but more necessary maintanance going forward. Each time you want to include a new component you will
-            need to remember to add it to your nuxt.config file. Modifying your nuxt.config file will often require
-            restarting your local development server.
-        </p>
-        <pre>
-            <code>
-nuxt.config.js:
-modules: [
-    ['@energysage/es-vue-base/nuxt', {
-        // Import names are case sensitive
-        components: ['EsAccordion', 'EsAccordionList'],
-        icons: ['icon-arrow-clockwise', 'icon-arrow-cycle'],
-    }]
+buildModules: [
+    '@energysage/es-vue-base/nuxt'
 ],
             </code>
         </pre>

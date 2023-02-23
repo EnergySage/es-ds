@@ -80,6 +80,7 @@ export default {
         '@nuxtjs/svg',
         // https://bootstrap-vue.org/docs/#nuxtjs-module
         'bootstrap-vue/nuxt',
+        '@energysage/es-vue-base/nuxt',
     ],
     components: [{ path: '~/components', extensions: ['vue'] }],
     // Modules: https://go.nuxtjs.dev/config-modules
@@ -88,7 +89,6 @@ export default {
         '@nuxtjs/i18n',
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
-        '@energysage/es-vue-base/nuxt',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
