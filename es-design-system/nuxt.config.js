@@ -80,7 +80,8 @@ export default {
         '@nuxtjs/svg',
         // https://bootstrap-vue.org/docs/#nuxtjs-module
         'bootstrap-vue/nuxt',
-        '@energysage/es-vue-base/nuxt',
+        // https://dev.design.energysage.dev/0.17.0/examples/nuxt-components
+        ['@energysage/es-vue-base/nuxt'],
     ],
     components: [{ path: '~/components', extensions: ['vue'] }],
     // Modules: https://go.nuxtjs.dev/config-modules
