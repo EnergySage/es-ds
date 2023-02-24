@@ -12,10 +12,11 @@ import babel from '@rollup/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
 import terser from '@rollup/plugin-terser';
 import minimist from 'minimist';
-
-const mainFileName = 'dist/cjs/index.min.js';
-const moduleFileName = 'dist/esm/index.min.js';
-const browserFileName = 'dist/umd/index.min.js';
+import {
+    main as mainFileName,
+    browser as browserFileName,
+    module as moduleFileName,
+} from '../package.json';
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
@@ -31,7 +32,7 @@ const argv = minimist(process.argv.slice(2));
 const projectRoot = path.resolve(__dirname, '..');
 
 const baseConfig = {
-    input: 'index.js',
+    input: 'src/index.js',
     output: {
         name: 'EsVueBase',
         sourcemap: true,
@@ -87,6 +88,7 @@ const external = [
     // list external dependencies, exactly the way it is written in the import statement.
     // eg. 'jquery'
     'vue',
+    'bootstrap-vue',
 ];
 
 // Refer to https://rollupjs.org/guide/en#output-globals for details
@@ -95,9 +97,6 @@ const globals = {
     // eg. jquery: '$'
     vue: 'Vue',
     'bootstrap-vue': 'bootstrapVue',
-    'html-truncate': 'htmlTruncate',
-    'vue-slider-component': 'vueSliderComponent',
-    vuelidate: 'vuelidate',
 };
 
 // UMD Build: https://github.com/umdjs/umd
@@ -149,7 +148,6 @@ if (!argv.format || argv.format === 'umd') {
         ],
     });
 
-    // Non minified build
     buildFormats.push({
         ...umdConfig,
         output: {
@@ -163,7 +161,7 @@ if (!argv.format || argv.format === 'umd') {
 if (!argv.format || argv.format === 'es') {
     const esConfig = {
         ...baseConfig,
-        input: 'index.esm.js',
+        input: 'src/index.esm.js',
         external,
         output: {
             ...baseConfig.output,
@@ -214,22 +212,11 @@ if (!argv.format || argv.format === 'es') {
         ],
     });
 
-    // Non minified build
     buildFormats.push({
         ...esConfig,
         output: {
             ...esConfig.output,
             file: moduleFileName.replace('min.', ''),
-        },
-    });
-
-    // Tree shaking build
-    buildFormats.push({
-        ...esConfig,
-        output: {
-            ...esConfig.output,
-            preserveModules: true,
-            dir: 'dist/esm/',
         },
     });
 }
@@ -282,16 +269,6 @@ if (!argv.format || argv.format === 'cjs') {
         output: {
             ...cjsConfig.output,
             file: mainFileName.replace('min.', ''),
-        },
-    });
-
-    // Tree shaking build
-    buildFormats.push({
-        ...cjsConfig,
-        output: {
-            ...cjsConfig.output,
-            preserveModules: true,
-            dir: 'dist/cjs/',
         },
     });
 }
