@@ -1,6 +1,6 @@
 // iife/cjs usage extends esm default export - so import it all
 // TODO: How to make this work for utils
-import plugin, * as exports from './entry.esm';
+import plugin, * as exports from './index.esm';
 
 // Attach named exports directly to plugin. IIFE/CJS will
 // only expose one global var, with component exports exposed as properties of
@@ -13,4 +13,4 @@ Object.entries(exports).forEach(([componentName, component]) => {
 
 export default plugin;
 
-export * from './entry.esm';
+export * from './index.esm';

@@ -12,11 +12,10 @@ import babel from '@rollup/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
 import terser from '@rollup/plugin-terser';
 import minimist from 'minimist';
-import {
-    main as mainFileName,
-    browser as browserFileName,
-    module as moduleFileName,
-} from '../package.json';
+
+const mainFileName = 'dist/cjs/index.min.js';
+const moduleFileName = 'dist/esm/index.min.js';
+const browserFileName = 'dist/umd/index.min.js';
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
@@ -32,7 +31,7 @@ const argv = minimist(process.argv.slice(2));
 const projectRoot = path.resolve(__dirname, '..');
 
 const baseConfig = {
-    input: 'src/entry.js',
+    input: 'index.js',
     output: {
         name: 'EsVueBase',
         sourcemap: true,
@@ -150,6 +149,7 @@ if (!argv.format || argv.format === 'umd') {
         ],
     });
 
+    // Non minified build
     buildFormats.push({
         ...umdConfig,
         output: {
@@ -163,7 +163,7 @@ if (!argv.format || argv.format === 'umd') {
 if (!argv.format || argv.format === 'es') {
     const esConfig = {
         ...baseConfig,
-        input: 'src/entry.esm.js',
+        input: 'index.esm.js',
         external,
         output: {
             ...baseConfig.output,
@@ -214,11 +214,22 @@ if (!argv.format || argv.format === 'es') {
         ],
     });
 
+    // Non minified build
     buildFormats.push({
         ...esConfig,
         output: {
             ...esConfig.output,
             file: moduleFileName.replace('min.', ''),
+        },
+    });
+
+    // Tree shaking build
+    buildFormats.push({
+        ...esConfig,
+        output: {
+            ...esConfig.output,
+            preserveModules: true,
+            dir: 'dist/esm/',
         },
     });
 }
@@ -271,6 +282,16 @@ if (!argv.format || argv.format === 'cjs') {
         output: {
             ...cjsConfig.output,
             file: mainFileName.replace('min.', ''),
+        },
+    });
+
+    // Tree shaking build
+    buildFormats.push({
+        ...cjsConfig,
+        output: {
+            ...cjsConfig.output,
+            preserveModules: true,
+            dir: 'dist/cjs/',
         },
     });
 }
