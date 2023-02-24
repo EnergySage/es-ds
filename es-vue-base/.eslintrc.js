@@ -17,6 +17,8 @@ module.exports = {
     extends: [
         'eslint-config-energysage',
     ],
+    // TODO: How are these template files suppose to be linted?
+    ignorePatterns: ['**/*template.js'],
     // Using one eslint file and overrides definition to handle sub directories
     // https://eslint.org/docs/user-guide/configuring/configuration-files#how-do-overrides-work
     overrides: [
