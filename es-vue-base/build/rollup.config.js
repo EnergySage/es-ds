@@ -89,6 +89,9 @@ const external = [
     // eg. 'jquery'
     'vue',
     'bootstrap-vue',
+    'html-truncate',
+    'vue-slider-component',
+    'vuelidate',
 ];
 
 // Refer to https://rollupjs.org/guide/en#output-globals for details
@@ -97,6 +100,9 @@ const globals = {
     // eg. jquery: '$'
     vue: 'Vue',
     'bootstrap-vue': 'bootstrapVue',
+    'html-truncate': 'htmlTruncate',
+    'vue-slider-component': 'vueSliderComponent',
+    vuelidate: 'vuelidate',
 };
 
 // UMD Build: https://github.com/umdjs/umd

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
-    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
+    "build:cjs": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
     "prebuild": "rimraf ./dist",
     "test": "jest",
@@ -79,14 +79,8 @@
     "vuelidate": "^0.7.7"
   },
   "peerDependencies": {
-    "@energysage/es-bs-base": "*",
-    "bootstrap-vue": "^2.22.0",
-    "html-truncate": "^1.2.2",
-    "lodash.debounce": "^4.0.8",
     "vue": "^2.7.14",
-    "vue-slider-component": "^3.2.18",
-    "vue-template-compiler": "^2.7.14",
-    "vuelidate": "^0.7.7"
+    "vue-template-compiler": "^2.7.14"
   },
   "engines": {
     "node": ">=12"
