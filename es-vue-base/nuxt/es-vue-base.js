@@ -1,6 +1,6 @@
 import Vue from 'vue';
 // eslint-disable-next-line import/no-unresolved
-import install from '@energysage/es-vue-base';
+import install, * as exports from '@energysage/es-vue-base';
 
 export default function autoExport(customOptions) {
     const options = {
@@ -16,5 +16,18 @@ export default function autoExport(customOptions) {
      */
     if (typeof options.components === 'boolean' && options.components) {
         install(Vue);
+    }
+
+    /**
+     *  Auto import defined components only
+     *  Imports are case sensitive and should not include an extension
+     *
+     *  components: ['EsAccordion', 'EsAccordionList']
+     *
+     */
+    if (Array.isArray(options.components) && options.components.length) {
+        options.components.forEach((componentName) => {
+            Vue.component(componentName, exports[componentName]);
+        });
     }
 }
