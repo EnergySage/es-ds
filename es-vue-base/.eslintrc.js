@@ -59,15 +59,6 @@ module.exports = {
     ],
     rules: {
         // Disable/Enable any custom rules for your project
-        'import/no-extraneous-dependencies': [
-            'error',
-            {
-                devDependencies: [
-                    '**/*rollup*',
-                    '**/*jest*',
-                    '**/*spec*',
-                ],
-            },
-        ],
+        'import/no-extraneous-dependencies': 'off',
     },
 };
