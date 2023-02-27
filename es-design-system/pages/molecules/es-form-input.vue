@@ -16,53 +16,224 @@
                 Sentence case.
             </b-link>
         </p>
-        <b-row class="my-5">
-            <b-col
-                cols="12"
-                lg="6">
-                <es-form-input
-                    id="myId"
-                    v-model="docInput">
-                    <template #label>
-                        Account number
-                    </template>
-                    <template #message>
-                        Please enter your account number.
-                    </template>
-                    <template #errorMessage>
-                        Please enter a valid account number.
-                    </template>
-                    <template #successMessage>
-                        Your account number has been submitted successfully.
-                    </template>
-                </es-form-input>
-            </b-col>
-        </b-row>
-        <b-row class="mt-4">
-            <b-col
-                cols="12"
-                lg="6">
-                <es-form-input
-                    id="myId2"
-                    v-model="example2">
-                    <template #label>
-                        Account Number
-                    </template>
-                    <template #extraContext>
-                        Extra Context Goes Here
-                    </template>
-                    <template #message>
-                        Please enter your account number.
-                    </template>
-                    <template #errorMessage>
-                        Please enter a valid account number.
-                    </template>
-                    <template #successMessage>
-                        Your account number has been submitted successfully.
-                    </template>
-                </es-form-input>
-            </b-col>
-        </b-row>
+
+        <div class="my-5">
+            <h2>
+                Basic example
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="basicExample"
+                        v-model="form.firstName">
+                        <template #label>
+                            First name
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Required
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="requiredExample"
+                        v-model="form.firstName"
+                        required>
+                        <template #label>
+                            First name
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Error state
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="errorExample"
+                        v-model="form.emailWrong"
+                        :state="false">
+                        <template #label>
+                            Email address
+                        </template>
+                        <template #errorMessage>
+                            Please enter a valid email address.
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Success state
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="successExample"
+                        v-model="form.emailCorrect"
+                        :state="true">
+                        <template #label>
+                            Email address
+                        </template>
+                        <template #errorMessage>
+                            Please enter a valid email address.
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Success state with message
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="successMessageExample"
+                        v-model="form.emailCorrect"
+                        :state="true">
+                        <template #label>
+                            Email address
+                        </template>
+                        <template #errorMessage>
+                            Please enter a valid email address.
+                        </template>
+                        <template #successMessage>
+                            Your email address has been entered successfully.
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Placeholder
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="placeholderExample"
+                        v-model="form.phoneNumber"
+                        placeholder="(XXX) XXX-XXXX">
+                        <template #label>
+                            Phone number
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Hidden label
+            </h2>
+            <p>
+                In rare cases (e.g. a call-to-action banner on a marketing page), it is desirable
+                to visually hide the input label and use the placeholder text to label the input.
+                Below is an example of how to accomplish this.
+            </p>
+            <b-row>
+                <b-col
+                    class="d-lg-flex"
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="hiddenLabelExample"
+                        v-model="form.zipCode"
+                        class="flex-grow-1"
+                        placeholder="ZIP code"
+                        label-sr-only>
+                        <template #label>
+                            ZIP code
+                        </template>
+                    </es-form-input>
+                    <es-button class="ml-lg-2 w-100 w-lg-auto">
+                        Submit
+                    </es-button>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Context message above the field
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="contextAboveExample"
+                        v-model="form.password"
+                        type="password">
+                        <template #extraContext>
+                            Your password should be hard to guess.
+                        </template>
+                        <template #label>
+                            Password
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Context message below the field
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="contextBelowExample"
+                        v-model="form.password"
+                        type="password">
+                        <template #message>
+                            Your password should be hard to guess.
+                        </template>
+                        <template #label>
+                            Password
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFormInput.vue"
@@ -75,8 +246,14 @@ export default {
     name: 'EsFormInputDocs',
     data() {
         return {
-            docInput: 'Example text',
-            example2: 'Example two',
+            form: {
+                emailCorrect: 'hello@energysage.com',
+                emailWrong: 'hello@energy',
+                firstName: '',
+                password: '',
+                phoneNumber: '',
+                zipCode: '',
+            },
             compCode: '',
             docCode: '',
         };

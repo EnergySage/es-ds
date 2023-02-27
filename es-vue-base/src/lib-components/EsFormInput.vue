@@ -5,7 +5,8 @@
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="id"
-            class="label font-weight-semibold justify-content-start">
+            class="label font-weight-semibold justify-content-start"
+            :class="{ 'sr-only': labelSrOnly }">
             <slot name="label" />
             <span
                 v-if="required"
@@ -116,6 +117,10 @@ export default {
             type: Boolean,
             default: false,
             required: false,
+        },
+        labelSrOnly: {
+            type: Boolean,
+            default: false,
         },
     },
     computed: {
