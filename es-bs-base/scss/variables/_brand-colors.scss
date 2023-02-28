@@ -1,0 +1,14 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@import "../functions";
+@import "../mixins";
+@import "../variables";
+
+:export {
+  cyan:      $cyan;
+  gray:      $gray;
+  pink:      $pink;
+  teal:      $teal;
+  yellow:    $yellow;
+  orange:    $orange;
+}
