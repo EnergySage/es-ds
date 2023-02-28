@@ -73,9 +73,9 @@ export default {
 <style lang="scss" scoped>
 .btn-link.inline {
     /* use normal CSS here so users can override with utility classes as necessary */
-    border: none;
-    line-height: inherit;
+    border: 0;
     height: auto;
+    line-height: inherit;
     margin: 0;
     padding: 0;
     vertical-align: baseline;
