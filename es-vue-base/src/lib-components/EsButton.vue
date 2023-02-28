@@ -1,5 +1,6 @@
 <template>
     <b-button
+        :class="{ 'inline': inline }"
         :variant="computedVariant"
         :size="size"
         v-bind="$attrs"
@@ -45,6 +46,14 @@ export default {
             validator: (val) => ['lg', 'md', 'sm'].includes(val),
             default: 'md',
         },
+        /**
+         * Only works for 'link' variant buttons.
+         * Removes the fixed height and padding so the button can fit nicely within a block of text.
+         */
+        inline: {
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
         /**
@@ -60,3 +69,15 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+.btn-link.inline {
+    /* use normal CSS here so users can override with utility classes as necessary */
+    border: none;
+    line-height: inherit;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+</style>

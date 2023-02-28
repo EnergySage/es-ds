@@ -4,6 +4,7 @@
         <span v-html="bodyContent" />
         <EsButton
             v-if="isTruncated"
+            inline
             variant="link"
             class="p-0"
             @click="click">
