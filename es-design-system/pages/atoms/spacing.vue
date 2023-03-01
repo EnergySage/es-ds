@@ -1,47 +1,105 @@
 <template>
     <div>
-        <b-row>
-            <b-col>
-                <h1>
-                    Spacing
-                </h1>
-                <p>
-                    Extended from <b-link href="https://getbootstrap.com/docs/4.6/utilities/spacing/">
-                        bootstrap spacing
-                    </b-link>
-                </p>
-                <table class="table table-bordered my-5">
-                    <thead>
-                        <tr>
-                            <th scope="col">
-                                Class Name
-                            </th>
-                            <th scope="col">
-                                EM Value
-                            </th>
-                            <th scope="col">
-                                Approximate PX Value
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            v-for="space in spacers"
-                            :key="space.alias">
-                            <td>
-                                <code>{{ space.alias }}</code>
-                            </td>
-                            <td>
-                                {{ space.em }}
-                            </td>
-                            <td>
-                                {{ space.px }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </b-col>
-        </b-row>
+        <h1>
+            Spacing
+        </h1>
+        <p>
+            Extended from <b-link href="https://getbootstrap.com/docs/4.6/utilities/spacing/">
+                bootstrap spacing
+            </b-link>
+        </p>
+
+        <div class="mb-5">
+            <p>
+                Each spacing class is named for the multiple of four that generates the associated pixel value.
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Class Name
+                        </th>
+                        <th scope="col">
+                            REM Value
+                        </th>
+                        <th scope="col">
+                            PX Value
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        v-for="space in spacers"
+                        :key="space.alias">
+                        <td>
+                            <code>{{ space.alias }}</code>
+                        </td>
+                        <td>
+                            {{ space.em }}
+                        </td>
+                        <td>
+                            {{ space.px }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="my-5">
+            <h2>
+                Deprecated Spacing
+            </h2>
+            <p>
+                When the above naming scheme was adopted:
+            </p>
+            <ul>
+                <li>
+                    <code>p-0 m-0</code>, <code>p-1 m-1</code>, and <code>p-2 m-2</code> did not change
+                </li>
+                <li>
+                    <code>p-4 m-4</code> changed from <code>32px</code> to <code>16px</code>
+                </li>
+                <li>
+                    <code>p-6 m-6</code> was not documented, but was present in the CSS for use, and changed
+                    from <code>128px</code> to <code>24px</code>
+                </li>
+            </ul>
+            <p>
+                The following remain for backward compatibility but should not be used. Please refactor any code
+                that does use them, as they will be removed in a future version of ESDS.
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Class Name
+                        </th>
+                        <th scope="col">
+                            REM Value
+                        </th>
+                        <th scope="col">
+                            PX Value
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        v-for="space in deprecatedSpacers"
+                        :key="space.alias">
+                        <td>
+                            <code>{{ space.alias }}</code>
+                        </td>
+                        <td>
+                            {{ space.em }}
+                        </td>
+                        <td>
+                            {{ space.px }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-design-system/atoms/spacing.vue" />
@@ -49,27 +107,19 @@
 </template>
 
 <script>
+import sassDeprecatedSpacers from '@energysage/es-bs-base/scss/variables/_deprecated-spacers.scss';
 import sassSpacers from '@energysage/es-bs-base/scss/variables/_spacers.scss';
 
 export default {
     name: 'AtomsSpace',
     data() {
-        const spacers = Object.keys(sassSpacers)
-            .map((key) => ({ key, value: sassSpacers[key] }))
-            .map((item) => {
-                const alias = `p-${item.key.replace(/s/, '')} m-${item.key.replace(/s/, '')}`;
-                const em = Number(item.value.replace(/rem/, ''));
-                const px = em * 16; // Assuming we'll never change base font-size
-                return {
-                    alias,
-                    em,
-                    px,
-                };
-            });
+        const deprecatedSpacers = this.convertSpacerVariablesToTableEntries(sassDeprecatedSpacers);
+        const spacers = this.convertSpacerVariablesToTableEntries(sassSpacers);
 
         // eslint-disable-next-line no-debugger
         // debugger;
         return {
+            deprecatedSpacers,
             spacers,
             compCode: '',
             docCode: '',
@@ -84,6 +134,22 @@ export default {
             this.docCode = this.$prism.normalizeCode(docSource.default);
             this.$prism.highlight(this);
         }
+    },
+    methods: {
+        convertSpacerVariablesToTableEntries(vars) {
+            return Object.keys(vars)
+                .map((key) => ({ key, value: vars[key] }))
+                .map((item) => {
+                    const alias = `p-${item.key.replace(/s/, '')} m-${item.key.replace(/s/, '')}`;
+                    const em = Number(item.value.replace(/rem/, ''));
+                    const px = em * 16; // Assuming we'll never change base font-size
+                    return {
+                        alias,
+                        em,
+                        px,
+                    };
+                });
+        },
     },
 };
 </script>

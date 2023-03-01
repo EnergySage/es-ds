@@ -5,10 +5,13 @@
 @import "../variables";
 
 :export {
-  s0: map-get($spacers, 0);
-  s1: map-get($spacers, 1);
-  s2: map-get($spacers, 2);
-  s3: map-get($spacers, 3);
-  s4: map-get($spacers, 4);
-  s5: map-get($spacers, 5);
+  s0:  map-get($spacers, 0);
+  s1:  map-get($spacers, 1);
+  s2:  map-get($spacers, 2);
+  s4:  map-get($spacers, 4);
+  s6:  map-get($spacers, 6);
+  s8:  map-get($spacers, 8);
+  s12: map-get($spacers, 12);
+  s18: map-get($spacers, 18);
+  s32: map-get($spacers, 32);
 }
