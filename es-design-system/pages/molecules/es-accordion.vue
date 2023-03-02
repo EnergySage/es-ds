@@ -9,7 +9,7 @@
             </b-link>
         </p>
 
-        <h2 class="mt-5">
+        <h2 class="mt-450">
             Single expand (default)
         </h2>
         <p>
@@ -66,7 +66,7 @@
             </es-accordion>
         </es-accordion-list>
 
-        <h2 class="mt-5">
+        <h2 class="mt-450">
             Single expand, starts collapsed
         </h2>
         <p>
@@ -122,7 +122,7 @@
             </es-accordion>
         </es-accordion-list>
 
-        <h2 class="mt-5">
+        <h2 class="mt-450">
             Multiple expand
         </h2>
         <p>
@@ -180,7 +180,7 @@
             </es-accordion>
         </es-accordion-list>
 
-        <h2 class="mt-5">
+        <h2 class="mt-450">
             EsAccordionList props
         </h2>
         <b-table
@@ -188,7 +188,7 @@
             :items="accordionListProps"
             striped />
 
-        <h2 class="mt-5">
+        <h2 class="mt-450">
             EsAccordion props
         </h2>
         <b-table

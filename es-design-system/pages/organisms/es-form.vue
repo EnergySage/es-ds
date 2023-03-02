@@ -13,7 +13,7 @@
                 </b-form-checkbox>
             </b-col>
         </b-row>
-        <b-row class="my-5 border-top pt-5">
+        <b-row class="my-450 border-top pt-450">
             <b-col
                 cols="12"
                 lg="8">
@@ -76,11 +76,11 @@
                         </template>
                     </es-form-textarea>
                     <es-form-msg
-                        class="mt-3"
+                        class="mt-100"
                         :variant="formMsgVariant"
                         :message="formMsg"
                         @hidden="formMsg = ''" />
-                    <div class="d-flex flex-grow-1 justify-content-end mt-3">
+                    <div class="d-flex flex-grow-1 justify-content-end mt-100">
                         <es-button
                             type="submit"
                             class="w-100 w-lg-auto"
@@ -100,7 +100,7 @@
                 </b-form>
             </b-col>
         </b-row>
-        <b-row class="my-5 border-top pt-5">
+        <b-row class="my-450 border-top pt-450">
             <b-col>
                 <h2>
                     Data Mixins

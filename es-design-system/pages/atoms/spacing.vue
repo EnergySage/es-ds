@@ -9,7 +9,7 @@
             </b-link>
         </p>
 
-        <div class="mb-5">
+        <div class="mb-450">
             <p>
                 Each spacing class is named for the percentage of the base size (16px) that generates the associated
                 pixel value.
@@ -49,7 +49,7 @@
             </table>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Deprecated Spacing
             </h2>

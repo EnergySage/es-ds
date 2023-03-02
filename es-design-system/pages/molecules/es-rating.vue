@@ -8,14 +8,14 @@
                 bootstrap-vue form-rating
             </b-link>
         </p>
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Form Input
             </h2>
             <es-rating
                 :read-only="false"
                 @change="changeEvent" />
-            <h2 class="mt-5">
+            <h2 class="mt-450">
                 Static Display
             </h2>
             <es-rating

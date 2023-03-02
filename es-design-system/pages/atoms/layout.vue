@@ -8,7 +8,7 @@
                 bootstrap-vue layout
             </b-link>
         </p>
-        <h2 class="mt-4">
+        <h2 class="mt-200">
             Responsive Breakpoints
         </h2>
         <p>
@@ -23,7 +23,7 @@
                 <strong>{{ data.item.label }}</strong>
             </template>
         </b-table>
-        <h2 class="mt-4">
+        <h2 class="mt-200">
             Grid Overview
         </h2>
         <b-container>

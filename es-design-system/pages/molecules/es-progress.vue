@@ -3,7 +3,7 @@
         <h1>
             Progress
         </h1>
-        <p class="pb-4">
+        <p class="pb-200">
             Extended from <b-link href="https://bootstrap-vue.org/docs/components/progress">
                 bootstrap-vue progress
             </b-link>
@@ -11,27 +11,27 @@
         <h2>
             Three Steps
         </h2>
-        <div class="mb-3">
+        <div class="mb-100">
             <es-progress :value="0" />
         </div>
-        <div class="mb-3">
+        <div class="mb-100">
             <es-progress :value="33" />
         </div>
-        <div class="mb-3">
+        <div class="mb-100">
             <es-progress :value="67" />
         </div>
-        <div class="mb-5">
+        <div class="mb-100">
             <es-progress :value="100" />
         </div>
         <h2>
             Animated Transition
         </h2>
-        <div class="mb-3">
+        <div class="mb-100">
             <es-progress :value="value" />
         </div>
-        <div class="mb-3">
+        <div class="mb-100">
             <es-button
-                class="px-2"
+                class="px-50"
                 size="sm"
                 @click="value = Math.max(value - 20, 0)">
                 <icon-minus
@@ -41,7 +41,7 @@
                 20%
             </es-button>
             <es-button
-                class="px-2"
+                class="px-50"
                 size="sm"
                 @click="value = Math.min(value + 20, 100)">
                 <icon-plus
@@ -51,7 +51,7 @@
                 20%
             </es-button>
         </div>
-        <p class="mb-4">
+        <p class="mb-200">
             value: {{ value }}
         </p>
         <ds-doc-source

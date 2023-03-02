@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="my-5">
+        <div class="my-450">
             <es-button
                 size="sm"
-                class="mb-3"
+                class="mb-100"
                 variant="dark"
                 @click="reviewsModalVisible = true">
                 View All Reviews
@@ -24,7 +24,7 @@
                     :key="review.id"
                     cols="12"
                     lg="4"
-                    class="review-col mb-3 mb-lg-0 pl-4">
+                    class="review-col mb-100 mb-lg-0 pl-200">
                     <es-review
                         :id="review.id"
                         :user-id="userIds[index]"
