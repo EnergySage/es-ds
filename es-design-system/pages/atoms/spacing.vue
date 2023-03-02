@@ -11,7 +11,11 @@
 
         <div class="mb-5">
             <p>
-                Each spacing class is named for the multiple of four that generates the associated pixel value.
+                Each spacing class is named for the percentage of the base size (16px) that generates the associated
+                pixel value.
+            </p>
+            <p>
+                For example, 32px is 200% of 16px, so the classes are named <code>p-200 m-200</code>.
             </p>
             <table class="table table-bordered">
                 <thead>
@@ -49,21 +53,6 @@
             <h2>
                 Deprecated Spacing
             </h2>
-            <p>
-                When the above naming scheme was adopted:
-            </p>
-            <ul>
-                <li>
-                    <code>p-0 m-0</code>, <code>p-1 m-1</code>, and <code>p-2 m-2</code> did not change
-                </li>
-                <li>
-                    <code>p-4 m-4</code> changed from <code>32px</code> to <code>16px</code>
-                </li>
-                <li>
-                    <code>p-6 m-6</code> was not documented, but was present in the CSS for use, and changed
-                    from <code>128px</code> to <code>24px</code>
-                </li>
-            </ul>
             <p>
                 The following remain for backward compatibility but should not be used. Please refactor any code
                 that does use them, as they will be removed in a future version of ESDS.

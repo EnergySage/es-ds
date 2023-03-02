@@ -275,15 +275,15 @@ $deprecated-spacers: map-merge(
 $spacers: () !default;
 $spacers: map-merge(
   (
-    0:  0,
-    1:  ($spacer * .25), // 4
-    2:  ($spacer * .5),  // 8
-    4:  $spacer,         // 16
-    6:  ($spacer * 1.5), // 24
-    8:  ($spacer * 2),   // 32
-    12: ($spacer * 3),   // 48
-    18: ($spacer * 4.5), // 72
-    32: ($spacer * 8)    // 128
+    0:    0,
+    25:  ($spacer * .25), // 4
+    50:  ($spacer * .5),  // 8
+    100:  $spacer,        // 16
+    150: ($spacer * 1.5), // 24
+    200: ($spacer * 2),   // 32
+    300: ($spacer * 3),   // 48
+    450: ($spacer * 4.5), // 72
+    800: ($spacer * 8)    // 128
   ),
   $spacers
 );
