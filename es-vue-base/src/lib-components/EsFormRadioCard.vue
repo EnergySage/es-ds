@@ -37,11 +37,11 @@ export default {
      */
     @include font-size($h2-font-size);
     font-weight: $font-weight-bolder;
-    margin-bottom: map.get($spacers, 3);
-    padding-bottom: map.get($spacers, 4);
-    padding-left: map.get($spacers, 3);
-    padding-right: map.get($spacers, 3);
-    padding-top: map.get($spacers, 4);
+    margin-bottom: map.get($spacers, 100);
+    padding-bottom: map.get($spacers, 200);
+    padding-left: map.get($spacers, 100);
+    padding-right: map.get($spacers, 100);
+    padding-top: map.get($spacers, 200);
     text-align: left;
 
     ::v-deep input {
@@ -89,8 +89,8 @@ export default {
         * will win, leaving the user unable to override the desired style)
         */
         @include font-size($h2-font-size-desktop);
-        padding-left: map.get($spacers, 4);
-        padding-right: map.get($spacers, 4);
+        padding-left: map.get($spacers, 200);
+        padding-right: map.get($spacers, 200);
     }
 }
 </style>

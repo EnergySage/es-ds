@@ -24,12 +24,12 @@
         </div>
         <div
             v-if="dots"
-            class="dots-holder list-unstyled w-100 mt-3 text-center">
+            class="dots-holder list-unstyled w-100 mt-100 text-center">
             <b-link
                 v-for="index in children.length"
                 :key="index"
                 :class="{
-                    'mx-2': true,
+                    'mx-50': true,
                     'd-inline-block': true,
                     dot: true,
                     active: index === activeIndex,
