@@ -24,6 +24,17 @@
                         :rating="rating"
                         :read-only="readOnly" />
                 </template>
+                <template v-if="reportFlagVisible">
+                    <b-link
+                        data-testid="report-review"
+                        class="d-flex"
+                        @click="$emit('reportReview', id)">
+                        <IconEye
+                            class="ml-1"
+                            width="20px"
+                            height="20px" />
+                    </b-link>
+                </template>
                 <div
                     v-if="updatedComment && commentLimit"
                     class="ml-auto ml-lg-3">
@@ -188,6 +199,7 @@
 import { BLink, BImg } from 'bootstrap-vue';
 import IconVerified from '../lib-icons/icon-verified.vue';
 import IconPencil from '../lib-icons/icon-pencil.vue';
+import IconEye from '../lib-icons/icon-eye.vue';
 import EsRating from './EsRating.vue';
 import EsViewMore from './EsViewMore.vue';
 import EsBadge from './EsBadge.vue';
@@ -195,7 +207,7 @@ import EsBadge from './EsBadge.vue';
 export default {
     name: 'EsReview',
     components: {
-        EsRating, EsViewMore, IconVerified, IconPencil, BLink, EsBadge, BImg,
+        EsRating, EsViewMore, IconVerified, IconPencil, IconEye, BLink, EsBadge, BImg,
 
     },
     props: {
@@ -325,6 +337,14 @@ export default {
             required: false,
             type: String,
             default: '',
+        },
+        /**
+         * Whether we want to show the report flag
+         */
+        reportFlagVisible: {
+            required: false,
+            type: Boolean,
+            default: false,
         },
         /**
          * Disable changing the rating
