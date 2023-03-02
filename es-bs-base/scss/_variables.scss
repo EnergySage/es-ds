@@ -141,6 +141,25 @@ $yellows: map-merge(
   $yellows
 );
 
+// orange scale
+$orange-100: #e9c7ad !default;
+$orange-200: #ddac85 !default;
+$orange-300: #d2905c !default;
+$orange-400: #ca6f20 !default;
+$orange-500: #b95100 !default;
+
+$oranges: () !default;
+$oranges: map-merge(
+  (
+    "orange-100": $orange-100,
+    "orange-200": $orange-200,
+    "orange-300": $orange-300,
+    "orange-400": $orange-400,
+    "orange-500": $orange-500
+  ),
+  $oranges
+);
+
 // Base Colors
 $blue:      #275ba9 !default;
 $lightblue: #8cd1ff !default;
@@ -148,14 +167,26 @@ $grayblue:  #c9e9f6 !default;
 $indigo:    #152f87 !default;
 $purple:    #822a85 !default;
 $red:       #b93737 !default;
-$orange:    #ffbf57 !default;
+$orange:    $orange-500 !default;
 $green:     #008445 !default;
-
 $pink:      $pink-500 !default;
-$yellow:  $yellow-500 !default;
+$yellow:    $yellow-500 !default;
 $cyan:      $cyan-500 !default;
 $teal:      $teal-500 !default;
+$gray:      $gray-900 !default;
 
+$brand-colors: () !default;
+$brand-colors: map-merge(
+  (
+    "cyan":      $cyan,
+    "gray":      $gray,
+    "pink":      $pink,
+    "teal":      $teal,
+    "yellow":    $yellow,
+    "orange":    $orange
+  ),
+  $brand-colors
+);
 
 $colors: () !default;
 $colors: map-merge(
@@ -173,14 +204,14 @@ $colors: map-merge(
     "teal":       $teal,
     "cyan":       $cyan,
     "white":      $white,
-    "gray":       $gray-600,
-    "gray-dark":  $gray-800
+    "gray":       $gray,
+    "gray-dark":  $gray-800,
   ),
   $colors
 );
 
 $primary:       $cyan !default;
-$secondary:     $gray-900 !default;
+$secondary:     $gray !default;
 $success:       $green !default;
 $info:          $indigo !default;
 $warning:       $yellow !default;
