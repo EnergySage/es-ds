@@ -296,9 +296,9 @@ $deprecated-spacers: map-merge(
     1: ($spacer * .25), // 4
     2: ($spacer * .5),  // 8
     3: $spacer,         // 16
-    4: ($spacer * 2),   // 32 (overridden by new spacers)
+    4: ($spacer * 2),   // 32
     5: ($spacer * 4.5), // 72
-    6: ($spacer * 8)    // 128 (overridden by new spacers)
+    6: ($spacer * 8)    // 128
   ),
   $deprecated-spacers
 );
