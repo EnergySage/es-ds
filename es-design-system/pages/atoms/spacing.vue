@@ -24,10 +24,10 @@
                             Class Name
                         </th>
                         <th scope="col">
-                            REM Value
+                            Multiplier (rem)
                         </th>
                         <th scope="col">
-                            PX Value
+                            Spacing (px)
                         </th>
                     </tr>
                 </thead>
@@ -64,10 +64,10 @@
                             Class Name
                         </th>
                         <th scope="col">
-                            REM Value
+                            Multiplier (rem)
                         </th>
                         <th scope="col">
-                            PX Value
+                            Spacing (px)
                         </th>
                     </tr>
                 </thead>
