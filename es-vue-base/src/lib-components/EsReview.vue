@@ -30,7 +30,7 @@
                         class="d-flex"
                         @click="$emit('reportReview', id)">
                         <IconFlag
-                            class="text-primary"
+                            class="ml-1"
                             width="20px"
                             height="20px" />
                     </b-link>

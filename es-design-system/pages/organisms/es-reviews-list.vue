@@ -41,8 +41,10 @@
                         :developer-logo="review.developer_response ? review.developer_response.developer_logo : null"
                         :response-date="review.developer_response ?
                             new Date(review.developer_response.modified) : null"
+                        :report-flag-visible="index==0 || index==2"
                         @showMore="reviewsModalVisible = true"
-                        @editReview="editReview" />
+                        @editReview="editReview"
+                        @reportReview="reportReview" />
                 </b-col>
             </b-row>
         </div>
@@ -134,6 +136,10 @@ export default {
         editReview() {
             // eslint-disable-next-line no-alert
             alert('owner clicked edit!');
+        },
+        reportReview() {
+            // eslint-disable-next-line no-alert
+            alert('user clicked report!');
         },
     },
 };
