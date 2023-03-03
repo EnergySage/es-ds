@@ -29,8 +29,8 @@
                         data-testid="report-review"
                         class="d-flex"
                         @click="$emit('reportReview', id)">
-                        <IconEye
-                            class="ml-1"
+                        <IconFlag
+                            class="text-primary"
                             width="20px"
                             height="20px" />
                     </b-link>
@@ -199,7 +199,7 @@
 import { BLink, BImg } from 'bootstrap-vue';
 import IconVerified from '../lib-icons/icon-verified.vue';
 import IconPencil from '../lib-icons/icon-pencil.vue';
-import IconEye from '../lib-icons/icon-eye.vue';
+import IconFlag from '../lib-icons/icon-flag.vue';
 import EsRating from './EsRating.vue';
 import EsViewMore from './EsViewMore.vue';
 import EsBadge from './EsBadge.vue';
@@ -207,7 +207,7 @@ import EsBadge from './EsBadge.vue';
 export default {
     name: 'EsReview',
     components: {
-        EsRating, EsViewMore, IconVerified, IconPencil, IconEye, BLink, EsBadge, BImg,
+        EsRating, EsViewMore, IconVerified, IconPencil, IconFlag, BLink, EsBadge, BImg,
 
     },
     props: {

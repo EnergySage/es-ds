@@ -8,6 +8,7 @@
                 :id="review.id"
                 :key="review.id"
                 user-id="3"
+                report-flag-visible
                 :reviewer-name="review.reviewer_name"
                 :reviewer-id="review.reviewer_id"
                 :certified="review.certified"
@@ -19,7 +20,8 @@
                 :updated-comment="review.updated_comment"
                 :response="review.response"
                 @showMore="showMore"
-                @editReview="editReview" />
+                @editReview="editReview"
+                @reportReview="reportReview" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -81,6 +83,10 @@ export default {
         editReview() {
             // eslint-disable-next-line no-alert
             alert('owner clicked edit!');
+        },
+        reportReview() {
+            // eslint-disable-next-line no-alert
+            alert('user clicked report!');
         },
         showMore() {
             // eslint-disable-next-line no-alert
