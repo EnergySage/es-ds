@@ -141,3 +141,8 @@
 @each $color, $value in $yellows {
   @include text-colors($color, $value);
 }
+
+// Add orange text colors classes
+@each $color, $value in $oranges {
+  @include text-colors($color, $value);
+}

@@ -47,6 +47,11 @@
   @include bg-colors($color, $value);
 }
 
+// Add orange bg colors classes
+@each $color, $value in $oranges {
+  @include bg-colors($color, $value);
+}
+
 .bg-transparent {
   background-color: transparent !important;
 }
