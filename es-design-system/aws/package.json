@@ -8,11 +8,10 @@
     "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
     "cdk": "cdk"
   },
-  "devDependencies": {
-    "aws-cdk": "2.22.0"
-  },
   "dependencies": {
-    "aws-cdk-lib": "2.22.0",
-    "constructs": "^10.0.0"
+    "aws-cdk": "^2.66.1",
+    "aws-cdk-lib": "^2.64.0",
+    "constructs": "^10.0.0",
+    "es-cdk": "^1.19.0-alpha.8"
   }
 }
