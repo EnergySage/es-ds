@@ -5,24 +5,19 @@
         v-bind="$attrs">
         <div class="d-flex mb-2 mb-lg-3">
             <div class="d-flex flex-grow-1">
+                <EsRating
+                    :rating="rating"
+                    :read-only="readOnly" />
                 <template v-if="isReviewOwner">
                     <b-link
                         data-testid="edit-review"
                         class="d-flex"
                         @click="$emit('editReview', id)">
-                        <EsRating
-                            :rating="rating"
-                            :read-only="readOnly" />
                         <IconPencil
                             class="ml-1"
                             width="20px"
                             height="20px" />
                     </b-link>
-                </template>
-                <template v-else>
-                    <EsRating
-                        :rating="rating"
-                        :read-only="readOnly" />
                 </template>
                 <template v-if="reportFlagVisible">
                     <b-link

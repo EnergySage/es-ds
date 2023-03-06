@@ -8,7 +8,7 @@
                 :id="review.id"
                 :key="review.id"
                 user-id="3"
-                report-flag-visible
+                :report-flag-visible="review.report_flag_visible"
                 :reviewer-name="review.reviewer_name"
                 :reviewer-id="review.reviewer_id"
                 :certified="review.certified"
@@ -45,6 +45,7 @@ export default {
                 certified: true,
                 created: '2022-06-03T18:27:41.718753Z',
                 modified: '2023-01-06T18:27:41.718753Z',
+                report_flag_visible: true,
                 rating: 5,
                 title: 'My Title',
                 comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum.',

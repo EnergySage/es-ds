@@ -41,7 +41,7 @@
                         :developer-logo="review.developer_response ? review.developer_response.developer_logo : null"
                         :response-date="review.developer_response ?
                             new Date(review.developer_response.modified) : null"
-                        :report-flag-visible="index==0 || index==2"
+                        :report-flag-visible="review.report_flag_visible"
                         @showMore="reviewsModalVisible = true"
                         @editReview="editReview"
                         @reportReview="reportReview" />
@@ -65,6 +65,7 @@ export default {
                     id: 16,
                     reviewer_name: 'Ryan Dev',
                     reviewer_id: 1,
+                    report_flag_visible: true,
                     certified: false,
                     created: '2022-06-10T14:48:56.604194Z',
                     rating: 5,
@@ -74,6 +75,7 @@ export default {
                     id: 11,
                     reviewer_name: 'Ryan Residential Super Duper Really Long Name',
                     reviewer_id: 2,
+                    report_flag_visible: false,
                     certified: true,
                     created: '2022-06-03T18:27:41.718753Z',
                     rating: 3,
@@ -90,6 +92,7 @@ export default {
                     id: 12,
                     reviewer_name: 'Ryan Smith',
                     reviewer_id: 3,
+                    report_flag_visible: true,
                     certified: true,
                     created: '2022-06-03T18:27:41.718753Z',
                     modified: '2023-01-06T18:27:41.718753Z',
