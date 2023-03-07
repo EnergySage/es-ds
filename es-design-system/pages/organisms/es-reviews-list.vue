@@ -16,7 +16,8 @@
                 developer-name="Test Dev"
                 @hidden="reviewsModalVisible = false"
                 @createReview="createReview"
-                @editReview="editReview" />
+                @editReview="editReview"
+                @reportReview="reportReview" />
 
             <b-row>
                 <b-col

@@ -26,7 +26,7 @@
                         :reviewer-id="review.reviewer_id"
                         :user-id="userId"
                         class="mb-4"
-                        :report-flag-visible="review.reportFlagVisible"
+                        :report-flag-visible="review.report_flag_visible"
                         :comment-limit="false"
                         :reviewer-name="review.reviewer_name"
                         :certified="review.certified"
