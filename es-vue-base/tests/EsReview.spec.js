@@ -170,6 +170,25 @@ describe('EsReview', () => {
         expect(wrapper.html()).toMatchSnapshot();
     });
 
+    test('Shows report flag properly', () => {
+        const wrapper = mount(EsReview, {
+            ...jestVue,
+            propsData: {
+                id: 1,
+                reviewerName: 'Test Bob',
+                reviewerId: 1,
+                userId: 2,
+                rating: 5,
+                comment: 'Nice Proj',
+                title: 'Proj Bob',
+                created: new Date(2022, 2, 2),
+                reportFlagVisible: true,
+            },
+        });
+        expect(wrapper.find('[data-testid="report-review"]').exists()).toBe(true);
+        expect(wrapper.html()).toMatchSnapshot();
+    });
+
     test('Shows both comments and response when modal is open', () => {
         // check for provider response
 
