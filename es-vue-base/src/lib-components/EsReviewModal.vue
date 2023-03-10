@@ -26,6 +26,7 @@
                         :reviewer-id="review.reviewer_id"
                         :user-id="userId"
                         class="mb-4"
+                        :report-flag-visible="review.report_flag_visible"
                         :comment-limit="false"
                         :reviewer-name="review.reviewer_name"
                         :certified="review.certified"
@@ -40,7 +41,8 @@
                         :developer-logo="review.developer_response ? review.developer_response.developer_logo : null"
                         :response-date="review.developer_response ?
                             new Date(review.developer_response.modified) : null"
-                        @editReview="$emit('editReview', review.id)" />
+                        @editReview="$emit('editReview', review.id)"
+                        @reportReview="$emit('reportReview', review.id)" />
                 </b-col>
                 <b-col
                     class="p-0 position-sticky sticky-mobile-col top-0"
