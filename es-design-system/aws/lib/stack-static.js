@@ -20,6 +20,22 @@ class NuxtStaticStack extends cdk.Stack {
                 server: false,
                 distDir: path.join(__dirname, '../../dist'),
             },
+            csp: {
+                directives: {
+                    scriptSrc: ["'unsafe-eval'"],
+                },
+                sites: {
+                    vwo: false,
+                    gtag: false,
+                    hubspot: false,
+                    heap: false,
+                    sentry: false,
+                    datadog: false,
+                    gfonts: true,
+                    gmaps: false,
+                    facebook: false,
+                },
+            },
         });
     }
 }
