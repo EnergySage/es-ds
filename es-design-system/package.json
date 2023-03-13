@@ -10,7 +10,7 @@
         "bootstrap": "npm --prefix aws run cdk bootstrap",
         "synth:dev": "npm run synth",
         "synth": "npm --prefix aws run cdk synth",
-        "deploy:dev": "AWS_ACCOUNT_ID=453321834875 npm run deploy",
+        "deploy:dev": "npm run deploy",
         "deploy": " npm --prefix aws run cdk deploy",
         "lint": "npm run lint:js && npm run lint:style",
         "lint:js": "eslint --ext \".js,.vue,.mdx\" --ignore-path .gitignore .",

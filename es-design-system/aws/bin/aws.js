@@ -11,7 +11,7 @@ new NuxtStaticStack(app, 'DesignSystemStack', {
     stackName: 'es-design-system-test',
     env: {
         // The ID of your AWS account on which to deploy the stack.
-        account: process.env.AWS_ACCOUNT_ID,
+        account: '453321834875',
         // The AWS region where to deploy the Nuxt app.
         region: 'us-east-1',
     },
