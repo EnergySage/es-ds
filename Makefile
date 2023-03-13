@@ -32,7 +32,6 @@ reload:
 .PHONY: install
 install:
 	npm install
-	npm install --prefix es-design-system/aws
 	npx lerna exec -- npm install
 
 # Bootstraping Commands (not reguarly called)
