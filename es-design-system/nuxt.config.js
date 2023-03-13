@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import path from 'path';
 import { version } from './package.json';
 
@@ -47,7 +46,6 @@ export default {
             /* eslint-disable no-param-reassign */
             // TODO: Prevents dupe vue instance but not sure where its actually coming from
             config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue/dist/vue.common');
-
             // Prevents bootstrap-vue icons from being unitentionally included
             config.module.rules.push({
                 test: /bootstrap-vue\/src\/icons\/icons/,

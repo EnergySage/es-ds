@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 const { esNuxt } = require('es-cdk');
 const path = require('path');
 
