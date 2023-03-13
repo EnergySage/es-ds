@@ -1,5 +1,4 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import webpack from 'webpack';
 import path from 'path';
 import { version } from './package.json';
 
@@ -44,27 +43,10 @@ export default {
     spa: false,
     build: {
         // analyze: true,
-        extend(config, { isClient }) {
+        extend(config) {
             /* eslint-disable no-param-reassign */
-
-            // Allows CSP to pass `script-src eval` check
-            if (isClient) {
-                config.node = {
-                    ...config.node,
-                    setImmediate: false,
-                    global: false,
-                };
-
-                config.plugins.push(
-                    new webpack.DefinePlugin({
-                        // Placeholder for global used in any node_modules
-                        global: 'window',
-                    }),
-                );
-            }
-
-            // Prevent duplication of vue from es-vue-base and bootstrap-vue
-            config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue/dist/vue.runtime.common');
+            // TODO: Prevents dupe vue instance but not sure where its actually coming from
+            config.resolve.alias.vue$ = path.resolve(__dirname, 'node_modules/vue/dist/vue.common');
 
             // Prevents bootstrap-vue icons from being unitentionally included
             config.module.rules.push({

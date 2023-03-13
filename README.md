@@ -111,15 +111,19 @@ For simplicity of deployment, versioning of packages are fixed and updated toget
 
 Assuming changes are approved, the process of publishing a new version is...
 
-0. Ensure your local environment is [setup](./README.md#installing-dependencies-and-linking-packages) and you are on the `main` branch
-1. `make install && make symlink` - Install the new published versions locally and symlink them
-2. `make build` - Build all packages to `*/dist` folders locally
-3. `make lint && make test` - Run tests and linting to ensure they pass
-4. `make publish` - Publish updated packages to [npmjs.com](https://www.npmjs.com/org/energysage)
-5. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
-6. `make install && make symlink` - Install the new published versions locally and symlink them
-7. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` - Commit and push the changelog and `package-lock.json` updates
-8. For updating the design-system documentation see [Deploy Design System](https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation)
+0A. Ensure your local environment is [setup](./README.md#installing-dependencies-and-linking-packages) and you are on the `main` branch
+0B. Ensure you have [es-dev-utils](https://github.com/energysage/es-dev-utils) cloned
+
+1. `source ~/Dev/es-dev-utils/aws_login.sh es-ds-dev` - If you do not have to the `es-ds-dev` profile ask for it in the slack channel `#tier2-platform-support`
+2. `~/Code/es-dev-utils/npm_config.sh cloud-engineering` - Login to the CodeArtifact repo
+3. `make install && make symlink` - Install the new published versions locally and symlink them
+4. `make build` - Build all packages to `*/dist` folders locally
+5. `make lint && make test` - Run tests and linting to ensure they pass
+6. `make publish` - Publish updated packages to [npmjs.com](https://www.npmjs.com/org/energysage)
+7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
+8. `make install && make symlink` - Install the new published versions locally and symlink them
+9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` - Commit and push the changelog and `package-lock.json` updates
+10. For updating the design-system website see [Deploy Design System](https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation)
 
 Running `make publish` will trigger the following prompt:
 
