@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.18.0] - 2023-03-08
+
+### Added
+
+- Added new icon `IconFlag`
+- Added `report-flag-visible` prop and `reportReview` event to `EsReview`
+- Added `inline` prop to `EsButton`
+
+### Changed
+
+- Bumped minor dependency versions
+- ***BREAKING CHANGE:*** updated definition of `$orange` to `#B95100`
+- ***BREAKING CHANGE:*** updated definition of `$gray` to `#292929`
+- Updated color docs to reflect changes and improve UX
+
+### Fixed
+
+- Fixed issues in `EsCollapse` and `EsViewMore` button spacing. Both now use new `inline` prop.
+
 ## [0.17.2] - 2023-02-27
 
 ### Added
@@ -434,6 +453,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.18.0]: https://github.com/EnergySage/es-ds/compare/v0.17.2...v0.18.0
+[0.17.2]: https://github.com/EnergySage/es-ds/compare/v0.17.0...v0.17.2
+[0.17.0]: https://github.com/EnergySage/es-ds/compare/v0.16.0...v0.17.0
+[0.16.0]: https://github.com/EnergySage/es-ds/compare/v0.15.1...v0.16.0
 [0.15.1]: https://github.com/EnergySage/es-ds/compare/v0.15.0...v0.15.1
 [0.15.0]: https://github.com/EnergySage/es-ds/compare/v0.14.1...v0.15.0
 [0.14.1]: https://github.com/EnergySage/es-ds/compare/v0.14.0...v0.14.1

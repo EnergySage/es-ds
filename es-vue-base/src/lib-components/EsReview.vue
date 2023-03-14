@@ -5,24 +5,30 @@
         v-bind="$attrs">
         <div class="d-flex mb-50 mb-lg-100">
             <div class="d-flex flex-grow-1">
+                <EsRating
+                    :rating="rating"
+                    :read-only="readOnly" />
                 <template v-if="isReviewOwner">
                     <b-link
                         data-testid="edit-review"
                         class="d-flex"
                         @click="$emit('editReview', id)">
-                        <EsRating
-                            :rating="rating"
-                            :read-only="readOnly" />
                         <IconPencil
                             class="ml-25"
                             width="20px"
                             height="20px" />
                     </b-link>
                 </template>
-                <template v-else>
-                    <EsRating
-                        :rating="rating"
-                        :read-only="readOnly" />
+                <template v-if="reportFlagVisible">
+                    <b-link
+                        data-testid="report-review"
+                        class="d-flex"
+                        @click="$emit('reportReview', id)">
+                        <IconFlag
+                            class="ml-1"
+                            width="20px"
+                            height="20px" />
+                    </b-link>
                 </template>
                 <div
                     v-if="updatedComment && commentLimit"
@@ -188,6 +194,7 @@
 import { BLink, BImg } from 'bootstrap-vue';
 import IconVerified from '../lib-icons/icon-verified.vue';
 import IconPencil from '../lib-icons/icon-pencil.vue';
+import IconFlag from '../lib-icons/icon-flag.vue';
 import EsRating from './EsRating.vue';
 import EsViewMore from './EsViewMore.vue';
 import EsBadge from './EsBadge.vue';
@@ -195,7 +202,7 @@ import EsBadge from './EsBadge.vue';
 export default {
     name: 'EsReview',
     components: {
-        EsRating, EsViewMore, IconVerified, IconPencil, BLink, EsBadge, BImg,
+        EsRating, EsViewMore, IconVerified, IconPencil, IconFlag, BLink, EsBadge, BImg,
 
     },
     props: {
@@ -325,6 +332,14 @@ export default {
             required: false,
             type: String,
             default: '',
+        },
+        /**
+         * Whether we want to show the report flag
+         */
+        reportFlagVisible: {
+            required: false,
+            type: Boolean,
+            default: false,
         },
         /**
          * Disable changing the rating

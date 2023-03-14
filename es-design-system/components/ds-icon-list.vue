@@ -146,6 +146,10 @@
             <code class="d-block pt-100">IconEye</code>
         </li>
         <li>
+            <IconFlag :style="{color}" />
+            <code class="d-block pt-3">IconFlag</code>
+        </li>
+        <li>
             <IconHeart :style="{color}" />
             <code class="d-block pt-100">IconHeart</code>
         </li>

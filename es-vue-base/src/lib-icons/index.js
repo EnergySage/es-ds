@@ -37,6 +37,7 @@ export { default as IconImage } from './icon-image.vue';
 export { default as IconHeart } from './icon-heart.vue';
 export { default as IconFolder } from './icon-folder.vue';
 export { default as IconEye } from './icon-eye.vue';
+export { default as IconFlag } from './icon-flag.vue';
 export { default as IconEnvelope } from './icon-envelope.vue';
 export { default as IconCopy } from './icon-copy.vue';
 export { default as IconClock } from './icon-clock.vue';

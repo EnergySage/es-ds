@@ -8,6 +8,7 @@
                 :id="review.id"
                 :key="review.id"
                 user-id="3"
+                :report-flag-visible="review.report_flag_visible"
                 :reviewer-name="review.reviewer_name"
                 :reviewer-id="review.reviewer_id"
                 :certified="review.certified"
@@ -19,7 +20,8 @@
                 :updated-comment="review.updated_comment"
                 :response="review.response"
                 @showMore="showMore"
-                @editReview="editReview" />
+                @editReview="editReview"
+                @reportReview="reportReview" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -43,6 +45,7 @@ export default {
                 certified: true,
                 created: '2022-06-03T18:27:41.718753Z',
                 modified: '2023-01-06T18:27:41.718753Z',
+                report_flag_visible: true,
                 rating: 5,
                 title: 'My Title',
                 comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum.',
@@ -81,6 +84,10 @@ export default {
         editReview() {
             // eslint-disable-next-line no-alert
             alert('owner clicked edit!');
+        },
+        reportReview() {
+            // eslint-disable-next-line no-alert
+            alert('user clicked report!');
         },
         showMore() {
             // eslint-disable-next-line no-alert
