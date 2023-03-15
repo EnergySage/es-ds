@@ -3,7 +3,7 @@
         <h1>
             Verification Code
         </h1>
-        <b-row class="justify-content-center my-5">
+        <b-row class="justify-content-center my-450">
             <b-col
                 cols="12"
                 lg="6">
@@ -17,7 +17,7 @@
                     @valid-code="checkValidation" />
             </b-col>
         </b-row>
-        <b-row class="my-5">
+        <b-row class="my-450">
             <b-col
                 cols="12"
                 lg="3">
@@ -32,9 +32,9 @@
                     @valid-code="checkValidation" />
             </b-col>
         </b-row>
-        <b-row class="mt-4 align-items-center">
+        <b-row class="mt-200 align-items-center">
             <b-col
-                class="mb-3 mb-lg-0"
+                class="mb-100 mb-lg-0"
                 cols="6"
                 lg="4">
                 <dl class="row">

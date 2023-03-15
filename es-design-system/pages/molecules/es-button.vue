@@ -18,16 +18,16 @@
             </b-link>
         </p>
 
-        <p class="mb-4">
+        <p class="mb-200">
             Icons inside of default buttons should be 24px or 1.5rem (the default for ESDS icons).
             Icons inside of small buttons should be 18px or 1.125rem.
         </p>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Primary Button
             </h2>
-            <table class="table mb-4">
+            <table class="table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -44,13 +44,13 @@
                             Normal
                         </td>
                         <td>
-                            <div class="mb-2">
+                            <div class="mb-50">
                                 <es-button>
                                     Default button
                                 </es-button>
                                 <es-button>
                                     Default button
-                                    <icon-chevron-right class="ml-1" />
+                                    <icon-chevron-right class="ml-25" />
                                 </es-button>
                                 <es-button>
                                     <icon-chevron-right />
@@ -64,7 +64,7 @@
                                 <es-button size="sm">
                                     Small button
                                     <icon-chevron-right
-                                        class="ml-2"
+                                        class="ml-50"
                                         height="1.125rem"
                                         width="1.125rem" />
                                 </es-button>
@@ -82,14 +82,14 @@
                             Disabled
                         </td>
                         <td>
-                            <div class="mb-2">
+                            <div class="mb-50">
                                 <es-button disabled>
                                     Default button
                                 </es-button>
 
                                 <es-button disabled>
                                     Default button
-                                    <icon-chevron-right class="ml-1" />
+                                    <icon-chevron-right class="ml-25" />
                                 </es-button>
 
                                 <es-button disabled>
@@ -108,7 +108,7 @@
                                     size="sm">
                                     Small button
                                     <icon-chevron-right
-                                        class="ml-2"
+                                        class="ml-50"
                                         height="1.125rem"
                                         width="1.125rem" />
                                 </es-button>
@@ -127,11 +127,11 @@
             </table>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Secondary Button
             </h2>
-            <table class="table mb-4">
+            <table class="table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -148,13 +148,13 @@
                             Normal
                         </td>
                         <td>
-                            <div class="mb-2">
+                            <div class="mb-50">
                                 <es-button variant="secondary">
                                     Default button
                                 </es-button>
                                 <es-button variant="secondary">
                                     Default button
-                                    <icon-chevron-right class="ml-1" />
+                                    <icon-chevron-right class="ml-25" />
                                 </es-button>
                                 <es-button variant="secondary">
                                     <icon-chevron-right />
@@ -172,7 +172,7 @@
                                     variant="secondary">
                                     Small button
                                     <icon-chevron-right
-                                        class="ml-2"
+                                        class="ml-50"
                                         height="1.125rem"
                                         width="1.125rem" />
                                 </es-button>
@@ -192,7 +192,7 @@
                             Disabled
                         </td>
                         <td>
-                            <div class="mb-2">
+                            <div class="mb-50">
                                 <es-button
                                     disabled
                                     variant="secondary">
@@ -203,7 +203,7 @@
                                     disabled
                                     variant="secondary">
                                     Default button
-                                    <icon-chevron-right class="ml-1" />
+                                    <icon-chevron-right class="ml-25" />
                                 </es-button>
 
                                 <es-button
@@ -226,7 +226,7 @@
                                     variant="secondary">
                                     Small button
                                     <icon-chevron-right
-                                        class="ml-2"
+                                        class="ml-50"
                                         height="1.125rem"
                                         width="1.125rem" />
                                 </es-button>
@@ -246,11 +246,11 @@
             </table>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Outline Primary Button
             </h2>
-            <table class="table mb-4">
+            <table class="table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -267,13 +267,13 @@
                             Normal
                         </td>
                         <td>
-                            <div class="mb-2">
+                            <div class="mb-50">
                                 <es-button outline>
                                     Default button
                                 </es-button>
                                 <es-button outline>
                                     Default button
-                                    <icon-chevron-right class="ml-1" />
+                                    <icon-chevron-right class="ml-25" />
                                 </es-button>
                                 <es-button outline>
                                     <icon-chevron-right />
@@ -291,7 +291,7 @@
                                     size="sm">
                                     Small button
                                     <icon-chevron-right
-                                        class="ml-2"
+                                        class="ml-50"
                                         height="1.125rem"
                                         width="1.125rem" />
                                 </es-button>
@@ -311,7 +311,7 @@
                             Disabled
                         </td>
                         <td>
-                            <div class="mb-2">
+                            <div class="mb-50">
                                 <es-button
                                     disabled
                                     outline>
@@ -322,7 +322,7 @@
                                     disabled
                                     outline>
                                     Default button
-                                    <icon-chevron-right class="ml-1" />
+                                    <icon-chevron-right class="ml-25" />
                                 </es-button>
 
                                 <es-button
@@ -345,7 +345,7 @@
                                     size="sm">
                                     Small button
                                     <icon-chevron-right
-                                        class="ml-2"
+                                        class="ml-50"
                                         height="1.125rem"
                                         width="1.125rem" />
                                 </es-button>
@@ -365,11 +365,11 @@
             </table>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Outline Secondary Button
             </h2>
-            <table class="table mb-4">
+            <table class="table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -386,7 +386,7 @@
                             Normal
                         </td>
                         <td>
-                            <div class="mb-2">
+                            <div class="mb-50">
                                 <es-button
                                     outline
                                     variant="secondary">
@@ -396,7 +396,7 @@
                                     outline
                                     variant="secondary">
                                     Default button
-                                    <icon-chevron-right class="ml-1" />
+                                    <icon-chevron-right class="ml-25" />
                                 </es-button>
                                 <es-button
                                     outline
@@ -418,7 +418,7 @@
                                     variant="secondary">
                                     Small button
                                     <icon-chevron-right
-                                        class="ml-2"
+                                        class="ml-50"
                                         height="1.125rem"
                                         width="1.125rem" />
                                 </es-button>
@@ -439,7 +439,7 @@
                             Disabled
                         </td>
                         <td>
-                            <div class="mb-2">
+                            <div class="mb-50">
                                 <es-button
                                     disabled
                                     outline
@@ -452,7 +452,7 @@
                                     outline
                                     variant="secondary">
                                     Default button
-                                    <icon-chevron-right class="ml-1" />
+                                    <icon-chevron-right class="ml-25" />
                                 </es-button>
 
                                 <es-button
@@ -478,7 +478,7 @@
                                     variant="secondary">
                                     Small button
                                     <icon-chevron-right
-                                        class="ml-2"
+                                        class="ml-50"
                                         height="1.125rem"
                                         width="1.125rem" />
                                 </es-button>
@@ -499,7 +499,7 @@
             </table>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Link button
             </h2>
@@ -509,7 +509,7 @@
                 will appear next to another button (e.g. within a modal), as they will remain vertically
                 aligned relative to each other.
             </p>
-            <table class="table mb-4">
+            <table class="table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -577,7 +577,7 @@
             </table>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Width change across breakpoints
             </h2>
@@ -585,23 +585,23 @@
                 Often, designs will specify buttons to be full width on mobile and content width on desktop.
                 Below is an example of how to easily accomplish this.
             </p>
-            <div class="mb-4">
+            <div class="mb-200">
                 <es-button class="w-100 w-lg-auto">
                     Responsive button
                 </es-button>
             </div>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Deprecated Buttons (do not use)
             </h2>
-            <p class="mb-4">
+            <p class="mb-200">
                 It is recommended not to use these variants and to refactor your code to remove instances of them.
                 They are a legacy artifact of Bootstrap, don't match EnergySage branding, and will be removed in a
                 future version of ESDS.
             </p>
-            <div class="mb-4">
+            <div class="mb-200">
                 <es-button variant="success">
                     Success button
                 </es-button>
@@ -633,7 +633,7 @@
                     Highlight dark button
                 </es-button>
             </div>
-            <div class="mb-2">
+            <div class="mb-50">
                 <es-button
                     outline
                     variant="success">
@@ -687,7 +687,7 @@
             </div>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 EsButton props
             </h2>

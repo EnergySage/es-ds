@@ -8,7 +8,7 @@
                 bootstrap-vue badge
             </b-link>
         </p>
-        <div class="my-5">
+        <div class="my-450">
             <es-badge>
                 Primary
             </es-badge>

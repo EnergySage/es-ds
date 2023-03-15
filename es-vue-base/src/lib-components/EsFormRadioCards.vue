@@ -40,7 +40,7 @@ export default {
         },
         labelClass: {
             type: String,
-            default: 'font-size-h1 font-weight-bolder mb-4 pb-0 text-dark',
+            default: 'font-size-h1 font-weight-bolder mb-200 pb-0 text-dark',
         },
         labelSrOnly: {
             type: Boolean,

@@ -6,10 +6,10 @@
         <b-row>
             <b-col>
                 <DsIconList
-                    class="mb-4 pt-4"
+                    class="mb-200 pt-200"
                     :color="themeHexVal" />
 
-                <hr class="mt-4 pt-4">
+                <hr class="mt-200 pt-200">
 
                 <h2>
                     Variants

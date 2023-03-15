@@ -24,7 +24,7 @@
                 Sentence case.
             </b-link>
         </p>
-        <div class="my-5">
+        <div class="my-450">
             <ul class="list-unstyled">
                 <li>
                     <h1>
@@ -83,7 +83,7 @@
             </ul>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Eyebrow with heading
             </h2>
@@ -92,8 +92,8 @@
                 accomplish this while meeting accessibility guidelines regarding heading order, but still achieving a
                 Heading 1 font size for the question.
             </p>
-            <div class="border pb-lg-3 px-3 px-lg-4 pt-3 pt-lg-4 rounded">
-                <h3 class="eyebrow mb-1">
+            <div class="border pb-lg-100 px-100 px-lg-200 pt-100 pt-lg-200 rounded">
+                <h3 class="eyebrow mb-25">
                     Property details
                 </h3>
                 <h4 class="h1">
@@ -102,7 +102,7 @@
             </div>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Eyebrow as visual treatment only
             </h2>
@@ -116,7 +116,7 @@
                 </b-link>
                 Below is an example of how to accomplish this.
             </p>
-            <div class="border pb-lg-3 px-3 px-lg-4 pt-3 pt-lg-4 rounded">
+            <div class="border pb-lg-100 px-100 px-lg-200 pt-100 pt-lg-200 rounded">
                 <figure>
                     <blockquote class="font-size-lg">
                         “Working with this company was a breeze. They were so friendly and helpful.”
@@ -133,7 +133,7 @@
             </div>
         </div>
 
-        <b-row class="my-5">
+        <b-row class="my-450">
             <b-col>
                 <h2>
                     Font weight utility classes
@@ -150,7 +150,7 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-5">
+        <b-row class="my-450">
             <b-col>
                 <h2>
                     Font size utility classes

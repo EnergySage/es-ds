@@ -6,9 +6,22 @@
 
 :export {
   s0: map-get($spacers, 0);
+
+  // deprecated
   s1: map-get($spacers, 1);
   s2: map-get($spacers, 2);
   s3: map-get($spacers, 3);
   s4: map-get($spacers, 4);
   s5: map-get($spacers, 5);
+  s6: map-get($spacers, 6);
+
+  // standard
+  s25: map-get($spacers, 25);
+  s50: map-get($spacers, 50);
+  s100: map-get($spacers, 100);
+  s150: map-get($spacers, 150);
+  s200: map-get($spacers, 200);
+  s300: map-get($spacers, 300);
+  s450: map-get($spacers, 450);
+  s800: map-get($spacers, 800);
 }

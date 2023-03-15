@@ -11,7 +11,7 @@
         <EsCollapse
             id="testId"
             visible
-            class="p-5 my-5"
+            class="p-450 my-450"
             @shown="shownEvent">
             <template #title>
                 <h2 class="mb-0">

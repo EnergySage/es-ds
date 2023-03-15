@@ -8,7 +8,7 @@
                 bootstrap-vue modal
             </b-link>
         </p>
-        <div class="my-5">
+        <div class="my-450">
             <es-button @click="visible = true">
                 Show modal
             </es-button>

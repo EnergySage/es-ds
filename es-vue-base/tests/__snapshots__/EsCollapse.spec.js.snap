@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsCollapse <EsCollapse /> 1`] = `
-"<div><button aria-label="myId" type="button" class="btn collapse-holder pb-3 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block inline" block="">
+"<div><button aria-label="myId" type="button" class="btn collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block inline" block="">
     <div>My Title</div>
     <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 30px; width: 30px;" class="svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
@@ -15,7 +15,7 @@ exports[`EsCollapse <EsCollapse /> 1`] = `
 `;
 
 exports[`EsCollapse EsButton exists 1`] = `
-"<div><button aria-label="myId" type="button" class="btn collapse-holder pb-3 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block inline" block="">
+"<div><button aria-label="myId" type="button" class="btn collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block inline" block="">
     <div>My Title</div>
     <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 30px; width: 30px;" class="svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
@@ -29,7 +29,7 @@ exports[`EsCollapse EsButton exists 1`] = `
 `;
 
 exports[`EsCollapse Icons switch upon button click 1`] = `
-"<div><button aria-label="myId" type="button" class="btn collapse-holder pb-3 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block inline" block="">
+"<div><button aria-label="myId" type="button" class="btn collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block inline" block="">
     <div>My Title</div>
     <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 30px; width: 30px;" class="svg collapsed">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
@@ -43,7 +43,7 @@ exports[`EsCollapse Icons switch upon button click 1`] = `
 `;
 
 exports[`EsCollapse Title and default slot exist inside EsButton 1`] = `
-"<div><button aria-label="myId" type="button" class="btn collapse-holder pb-3 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block inline" block="">
+"<div><button aria-label="myId" type="button" class="btn collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body btn-link btn-md btn-block inline" block="">
     <div>My Title</div>
     <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 30px; width: 30px;" class="svg collapsed">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>

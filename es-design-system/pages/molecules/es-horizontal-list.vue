@@ -6,12 +6,12 @@
         <h2>
             Left Aligned No Dots
         </h2>
-        <div class="my-5">
+        <div class="my-450">
             <es-horizontal-list id="docs-1">
                 <div
                     v-for="index in 10"
                     :key="index"
-                    class="large-block-holder bg-primary mr-4 text-center text-white py-5">
+                    class="large-block-holder bg-primary mr-200 text-center text-white py-450">
                     {{ index }}
                 </div>
             </es-horizontal-list>
@@ -25,7 +25,7 @@
                 <div
                     v-for="index in 3"
                     :key="index"
-                    class="center-block-holder bg-primary mr-2 text-center text-white py-5">
+                    class="center-block-holder bg-primary mr-50 text-center text-white py-450">
                     {{ index }}
                 </div>
             </es-horizontal-list>

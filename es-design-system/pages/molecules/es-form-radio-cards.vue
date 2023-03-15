@@ -3,7 +3,7 @@
         <h1>
             Radio Cards
         </h1>
-        <p class="mb-4 mb-lg-5">
+        <p class="mb-200 mb-lg-450">
             Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-radio#button-style-radios">
                 bootstrap-vue form-radio
             </b-link>
@@ -16,7 +16,7 @@
             Responsive font sizing is applied by default; the label matches Heading 1 and the card content
             matches Heading 2. This means the text will be smaller on mobile and larger on desktop.
         </p>
-        <div class="border mb-4 mb-lg-5 p-3 p-lg-4 rounded">
+        <div class="border mb-200 mb-lg-450 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.propertyType"
@@ -42,7 +42,7 @@
             This example demonstrates customizing the content, spacing, and typography of the cards,
             as well as changing the layout based on the breakpoint.
         </p>
-        <div class="border mb-5 p-3 p-lg-4 rounded">
+        <div class="border mb-450 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.storageReason"
@@ -54,14 +54,14 @@
                             cols="12"
                             lg="4">
                             <es-form-radio-card
-                                class="align-items-center d-block d-lg-flex flex-column font-size-base font-weight-normal line-height-base p-3 p-lg-4 text-lg-center"
+                                class="align-items-center d-block d-lg-flex flex-column font-size-base font-weight-normal line-height-base p-100 p-lg-200 text-lg-center"
                                 :value="option.value">
                                 <component
                                     :is="option.icon"
-                                    class="d-none d-lg-block mb-2"
+                                    class="d-none d-lg-block mb-50"
                                     height="48px"
                                     width="48px" />
-                                <span class="font-weight-bolder mb-lg-3">
+                                <span class="font-weight-bolder mb-lg-100">
                                     {{ option.title }}
                                 </span>
                                 <span class="d-lg-none">
@@ -90,7 +90,7 @@
             We do still need to pass the label text into the radio cards component for accessibility
             purposes, but hide it visually by passing in a prop.
         </p>
-        <div class="border mb-5 p-3 p-lg-4 rounded">
+        <div class="border mb-450 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
                 <b-row>
                     <b-col
@@ -123,7 +123,7 @@
             </p>
         </div>
 
-        <h2 class="mt-5">
+        <h2 class="mt-450">
             EsFormRadioCards props
         </h2>
         <b-table
@@ -131,7 +131,7 @@
             :items="radioCardsPropDocumentation"
             striped />
 
-        <h2 class="mt-5">
+        <h2 class="mt-450">
             EsFormRadioCard props
         </h2>
         <b-table

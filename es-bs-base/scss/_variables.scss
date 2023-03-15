@@ -288,19 +288,31 @@ $enable-deprecation-messages:                 false !default;
 // You can add more entries to the $spacers map, should you need more variation.
 
 $spacer: 1rem !default;
+
 $spacers: () !default;
 $spacers: map-merge(
   (
-    0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
-    3: $spacer,
-    4: ($spacer * 2),
-    5: ($spacer * 4.5),
-    6: ($spacer * 8)
+    0:    0,
+    // deprecated
+    1:   ($spacer * .25), // 4
+    2:   ($spacer * .5),  // 8
+    3:    $spacer,        // 16
+    4:   ($spacer * 2),   // 32
+    5:   ($spacer * 4.5), // 72
+    6:   ($spacer * 8),   // 128
+    // standard
+    25:  ($spacer * .25), // 4
+    50:  ($spacer * .5),  // 8
+    100:  $spacer,        // 16
+    150: ($spacer * 1.5), // 24
+    200: ($spacer * 2),   // 32
+    300: ($spacer * 3),   // 48
+    450: ($spacer * 4.5), // 72
+    800: ($spacer * 8)    // 128
   ),
   $spacers
 );
+
 // This variable affects the `.h-*` and `.w-*` classes.
 $sizes: () !default;
 $sizes: map-merge(
