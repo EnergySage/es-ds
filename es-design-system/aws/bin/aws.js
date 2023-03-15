@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-// Must be logged into aws cli and have a named profile defined in ../.env.ENV
 
 const cdk = require('aws-cdk-lib');
 const { NuxtStaticStack } = require('../lib/stack-static');
