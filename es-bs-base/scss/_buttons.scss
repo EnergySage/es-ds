@@ -113,6 +113,7 @@ fieldset:disabled a.btn {
   font-weight: $font-weight-normal;
   color: $link-color;
   text-decoration: $link-decoration;
+  font-weight: $link-weight;
 
   @include hover() {
     color: $link-hover-color;
