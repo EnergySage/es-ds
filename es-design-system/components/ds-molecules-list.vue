@@ -95,6 +95,11 @@
                 EsViewMore
             </b-link>
         </li>
+        <li>
+            <b-link to="/molecules/hello-world">
+                HelloWorld
+            </b-link>
+        </li>
     </ul>
 </template>
 
