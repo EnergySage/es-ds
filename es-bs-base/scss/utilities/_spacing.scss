@@ -7,27 +7,6 @@
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     @each $prop, $abbrev in (margin: m, padding: p) {
-      // print out the deprecated spacing classes first so conflicts can be overridden
-      @each $size, $length in $deprecated-spacers {
-        .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
-        .#{$abbrev}t#{$infix}-#{$size},
-        .#{$abbrev}y#{$infix}-#{$size} {
-          #{$prop}-top: $length !important;
-        }
-        .#{$abbrev}r#{$infix}-#{$size},
-        .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-right: $length !important;
-        }
-        .#{$abbrev}b#{$infix}-#{$size},
-        .#{$abbrev}y#{$infix}-#{$size} {
-          #{$prop}-bottom: $length !important;
-        }
-        .#{$abbrev}l#{$infix}-#{$size},
-        .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-left: $length !important;
-        }
-      }
-      // print out the spacing classes
       @each $size, $length in $spacers {
         .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
         .#{$abbrev}t#{$infix}-#{$size},

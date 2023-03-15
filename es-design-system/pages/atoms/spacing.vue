@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th scope="col">
-                            Class Name
+                            Class name
                         </th>
                         <th scope="col">
                             Multiplier (rem)
@@ -54,14 +54,17 @@
                 Deprecated Spacing
             </h2>
             <p>
-                The following remain for backward compatibility but should not be used. Please refactor any code
-                that does use them, as they will be removed in a future version of ESDS.
+                The following class names remain for backward compatibility but should not be used.
+                Please refactor any code that does use them, as they will be removed in a future version of ESDS.
             </p>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">
-                            Class Name
+                            Class name
+                        </th>
+                        <th scope="col">
+                            Updated name
                         </th>
                         <th scope="col">
                             Multiplier (rem)
@@ -77,6 +80,9 @@
                         :key="space.alias">
                         <td>
                             <code>{{ space.alias }}</code>
+                        </td>
+                        <td>
+                            <code>{{ space.newAlias }}</code>
                         </td>
                         <td>
                             {{ space.em }}
@@ -96,23 +102,38 @@
 </template>
 
 <script>
-import sassDeprecatedSpacers from '@energysage/es-bs-base/scss/variables/_deprecated-spacers.scss';
 import sassSpacers from '@energysage/es-bs-base/scss/variables/_spacers.scss';
 
 export default {
-    name: 'AtomsSpace',
+    name: 'AtomsSpacing',
     data() {
-        const deprecatedSpacers = this.convertSpacerVariablesToTableEntries(sassDeprecatedSpacers);
-        const spacers = this.convertSpacerVariablesToTableEntries(sassSpacers);
-
-        // eslint-disable-next-line no-debugger
-        // debugger;
         return {
-            deprecatedSpacers,
-            spacers,
             compCode: '',
             docCode: '',
         };
+    },
+    computed: {
+        deprecatedSpacers() {
+            return this.tableEntries
+                // filter out updated spacers
+                .filter((spacer) => spacer.key > 0 && spacer.key < 10)
+                // find the equivalent spacer from the updated naming scheme
+                .map((entry) => {
+                    const newKey = this.spacers.find((spacer) => spacer.px === entry.px).key;
+                    return {
+                        ...entry,
+                        newKey,
+                        newAlias: this.generateAlias(newKey),
+                    };
+                });
+        },
+        spacers() {
+            // filter out deprecated spacers
+            return this.tableEntries.filter((spacer) => spacer.key < 1 || spacer.key > 6);
+        },
+        tableEntries() {
+            return this.convertSpacerVariablesToTableEntries(sassSpacers);
+        },
     },
     async created() {
         if (this.$prism) {
@@ -129,15 +150,20 @@ export default {
             return Object.keys(vars)
                 .map((key) => ({ key, value: vars[key] }))
                 .map((item) => {
-                    const alias = `p-${item.key.replace(/s/, '')} m-${item.key.replace(/s/, '')}`;
+                    const key = parseInt(item.key.replace(/s/, ''), 10);
+                    const alias = this.generateAlias(key);
                     const em = Number(item.value.replace(/rem/, ''));
                     const px = em * 16; // Assuming we'll never change base font-size
                     return {
                         alias,
                         em,
+                        key,
                         px,
                     };
                 });
+        },
+        generateAlias(key) {
+            return `p-${key} m-${key}`;
         },
     },
 };

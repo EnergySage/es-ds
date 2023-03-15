@@ -289,24 +289,20 @@ $enable-deprecation-messages:                 false !default;
 
 $spacer: 1rem !default;
 
-$deprecated-spacers: () !default;
-$deprecated-spacers: map-merge(
-  (
-    0: 0,
-    1: ($spacer * .25), // 4
-    2: ($spacer * .5),  // 8
-    3: $spacer,         // 16
-    4: ($spacer * 2),   // 32
-    5: ($spacer * 4.5), // 72
-    6: ($spacer * 8)    // 128
-  ),
-  $deprecated-spacers
-);
-
 $spacers: () !default;
 $spacers: map-merge(
   (
     0:    0,
+
+    // deprecated
+    1:   ($spacer * .25), // 4
+    2:   ($spacer * .5),  // 8
+    3:    $spacer,        // 16
+    4:   ($spacer * 2),   // 32
+    5:   ($spacer * 4.5), // 72
+    6:   ($spacer * 8),   // 128
+
+    // standard
     25:  ($spacer * .25), // 4
     50:  ($spacer * .5),  // 8
     100:  $spacer,        // 16
