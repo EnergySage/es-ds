@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsTab <EsTab /> 1`] = `
-"<transition-stub name="" css="true" mode="out-in" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="" leaveactiveclass="" class="mt-3">
+"<transition-stub name="" css="true" mode="out-in" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="" leaveactiveclass="" class="mt-100">
   <div role="tabpanel" aria-hidden="true" class="tab-pane" style="display: none;" id="__BVID__4" aria-labelledby="__BVID__4___BV_tab_button__"></div>
 </transition-stub>"
 `;
 
 exports[`EsTab <EsTab title="Title"/> 1`] = `
-"<transition-stub name="" css="true" mode="out-in" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="" leaveactiveclass="" class="mt-3">
+"<transition-stub name="" css="true" mode="out-in" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="" leaveactiveclass="" class="mt-100">
   <div role="tabpanel" aria-hidden="true" class="tab-pane" style="display: none;"></div>
 </transition-stub>"
 `;
 
 exports[`EsTab <EsTab>My Content</EsTab> 1`] = `
-"<transition-stub name="" css="true" mode="out-in" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="" leaveactiveclass="" class="mt-3">
+"<transition-stub name="" css="true" mode="out-in" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="" leaveactiveclass="" class="mt-100">
   <div role="tabpanel" aria-hidden="true" class="tab-pane" style="display: none;">My Content</div>
 </transition-stub>"
 `;

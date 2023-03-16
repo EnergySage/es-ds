@@ -1,13 +1,13 @@
 <template>
     <div
-        class="font-size-sm px-2 py-4 rounded text-center"
+        class="font-size-sm px-50 py-200 rounded text-center"
         :class="{
             [`bg-${token}`]: true,
             'border': showBorder,
             'text-white': !isLight,
             'text-dark': isLight
         }">
-        <p class="mb-2">
+        <p class="mb-50">
             {{ uppercaseHex }}
         </p>
         <p class="m-0">

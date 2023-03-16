@@ -3,21 +3,21 @@
         <h1>
             Support
         </h1>
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Default(Warm)
             </h2>
             <es-support
                 :link="link"
                 :src="benr" />
-            <h2 class="mt-5">
+            <h2 class="mt-450">
                 Cool Variant
             </h2>
             <es-support
                 variant="cool"
                 :link="link"
                 :src="benr" />
-            <h2 class="mt-5">
+            <h2 class="mt-450">
                 Custom Copy
             </h2>
             <es-support

@@ -16,7 +16,7 @@
                 Sentence case.
             </b-link>
         </p>
-        <b-row class="my-5">
+        <b-row class="my-450">
             <b-col
                 cols="12"
                 lg="6">

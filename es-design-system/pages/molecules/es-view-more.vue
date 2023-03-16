@@ -4,7 +4,7 @@
             View More
         </h1>
         <es-view-more
-            class="my-5"
+            class="my-450"
             :length="100"
             :content="`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
                 Nullam vestibulum ex mi, ut suscipit libero condimentum id. Pellentesque eu diam vel nisi

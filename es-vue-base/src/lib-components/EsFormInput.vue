@@ -1,6 +1,6 @@
 <template>
     <div
-        class="input-wrapper justify-content-end mb-2"
+        class="input-wrapper justify-content-end mb-50"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
@@ -16,7 +16,7 @@
         </label>
         <p
             v-if="hasExtraContext"
-            class="mb-1 font-size-sm">
+            class="mb-25 font-size-sm">
             <slot name="extraContext" />
         </p>
         <div class="input-holder">

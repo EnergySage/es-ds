@@ -9,7 +9,7 @@
         @dismissed="dismissCountDown=0"
         @dismiss-count-down="countDownChanged">
         <div class="d-flex">
-            <div class="pr-2">
+            <div class="pr-50">
                 <IconCircleAlert v-if="variant === 'danger'" />
                 <IconCircleCheck v-if="variant === 'success'" />
             </div>

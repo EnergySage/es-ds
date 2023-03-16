@@ -1,6 +1,6 @@
 <template>
     <div
-        class="input-wrapper justify-content-end mb-2"
+        class="input-wrapper justify-content-end mb-50"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label

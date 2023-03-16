@@ -8,7 +8,7 @@
                 bootstrap-vue tabs
             </b-link>
         </p>
-        <es-tabs class="my-5">
+        <es-tabs class="my-450">
             <es-tab title="Tab 1">
                 <p>
                     Content 1

@@ -30,14 +30,14 @@
                 </p>
             </b-col>
         </b-row>
-        <b-row class="border-top pt-4 my-2">
+        <b-row class="border-top pt-200 my-50">
             <b-col
                 cols="12"
                 lg="8">
                 <b-form
                     @submit.stop.prevent="onSubmit">
                     <es-form-msg
-                        class="mt-3"
+                        class="mt-100"
                         :variant="formMsgVariant"
                         :message="formMsg"
                         @hidden="formMsg = ''" />
@@ -50,7 +50,7 @@
                             Name
                         </template>
                     </es-form-input>
-                    <div class="d-flex flex-grow-1 justify-content-end mt-3">
+                    <div class="d-flex flex-grow-1 justify-content-end mt-100">
                         <es-button
                             type="submit"
                             class="w-100 w-lg-auto"

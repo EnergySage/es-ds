@@ -14,7 +14,7 @@
             for background color.
         </p>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Brand Colors
             </h2>
@@ -26,23 +26,23 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-3 text-center">
+                    class="mb-100 text-center">
                     <ds-color-swatch
                         :is-light="['teal', 'yellow'].includes(alias)"
                         :hex="value"
                         :token="alias" />
-                    <p class="font-weight-semibold mb-0 mt-2">
+                    <p class="font-weight-semibold mb-0 mt-50">
                         {{ brandColorNames[alias] || alias }}
                     </p>
                 </b-col>
             </b-row>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Tints
             </h2>
-            <p class="mb-4">
+            <p class="mb-200">
                 Tints are to be used as background colors for tables, badges, tags, labels, hovers, and notifications.
                 They may also be used in graphics and charts as needed.
             </p>
@@ -57,14 +57,14 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         is-light
                         :hex="value"
                         :token="alias" />
                 </b-col>
             </b-row>
-            <b-row class="mb-4">
+            <b-row class="mb-200">
                 <b-col
                     v-for="(value, alias) in grayTints"
                     :key="alias"
@@ -72,7 +72,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         :is-light="['gray-600', 'gray-500'].includes(alias)"
                         :hex="value"
@@ -90,7 +90,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         is-light
                         :hex="value"
@@ -105,7 +105,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         is-light
                         :hex="value"
@@ -120,7 +120,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         is-light
                         :hex="value"
@@ -135,7 +135,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         is-light
                         :hex="value"
@@ -144,11 +144,11 @@
             </b-row>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Shades
             </h2>
-            <p class="mb-4">
+            <p class="mb-200">
                 Shades are to only be used if additional contrast is needed to comply to WCAG AA accessibility
                 standards. Avoid using shades as background colors.
             </p>
@@ -163,13 +163,13 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         :hex="value"
                         :token="alias" />
                 </b-col>
             </b-row>
-            <b-row class="mb-4">
+            <b-row class="mb-200">
                 <b-col
                     v-for="(value, alias) in grayShades"
                     :key="alias"
@@ -177,7 +177,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         :hex="value"
                         :token="alias" />
@@ -194,7 +194,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         :hex="value"
                         :token="alias" />
@@ -208,7 +208,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         :hex="value"
                         :token="alias" />
@@ -222,7 +222,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         :hex="value"
                         :token="alias" />
@@ -230,7 +230,7 @@
             </b-row>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Grayscale
             </h2>
@@ -242,7 +242,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         :hex="value"
                         :is-light="[
@@ -254,7 +254,7 @@
             </b-row>
         </div>
 
-        <div class="my-5">
+        <div class="my-450">
             <h2>
                 Product Colors
             </h2>
@@ -276,7 +276,7 @@
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-4">
+                    class="mb-200">
                     <ds-color-swatch
                         :hex="value"
                         :is-light="alias === 'light'"

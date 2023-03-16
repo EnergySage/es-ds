@@ -2,7 +2,7 @@
     <div class="EsAccordion border-bottom border-light rounded-bottom">
         <header role="tab">
             <es-button
-                class="EsAccordion-button align-items-center d-flex font-weight-bold justify-content-between px-3 px-sm-4 py-3 rounded-0 text-body text-left text-decoration-none w-100"
+                class="EsAccordion-button align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 rounded-0 text-body text-left text-decoration-none w-100"
                 :class="{
                     'bg-light': isVisible,
                     'bg-white': !isVisible,
@@ -11,14 +11,14 @@
                 variant="link"
                 @click="handleClick">
                 <slot name="title" />
-                <icon-chevron-down class="EsAccordion-icon flex-shrink-0 ml-4" />
+                <icon-chevron-down class="EsAccordion-icon flex-shrink-0 ml-200" />
             </es-button>
         </header>
         <b-collapse
             :id="id"
             :visible="isVisible"
             role="tabpanel">
-            <div class="EsAccordion-content bg-white px-3 px-sm-4 pb-1 pt-3">
+            <div class="EsAccordion-content bg-white px-100 px-sm-200 pb-25 pt-100">
                 <slot />
             </div>
         </b-collapse>

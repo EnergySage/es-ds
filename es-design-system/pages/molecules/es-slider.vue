@@ -3,13 +3,13 @@
         <h1>
             Slider
         </h1>
-        <p class="pb-5">
+        <p class="pb-450">
             Extended from <b-link href="https://nightcatsama.github.io/vue-slider-component/">
                 vue-slider-component
             </b-link>
         </p>
         <es-slider
-            class="my-5"
+            class="my-450"
             :starting-value="startingValue"
             :data="data"
             :marks="marks"
