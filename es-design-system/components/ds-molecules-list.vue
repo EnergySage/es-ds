@@ -96,8 +96,8 @@
             </b-link>
         </li>
         <li>
-            <b-link to="/molecules/hello-world">
-                HelloWorld
+            <b-link to="/molecules/global-nav-skeleton">
+                GlobalNavSkeleton
             </b-link>
         </li>
     </ul>

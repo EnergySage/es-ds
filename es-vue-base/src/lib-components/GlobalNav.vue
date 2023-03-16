@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            Hello World.
+            Placeholder for GlobalNav
         </h1>
         <p>
             <slot />
@@ -12,6 +12,6 @@
 <script lang="js">
 
 export default {
-    name: 'HelloWorld',
+    name: 'GlobalNav',
 };
 </script>
