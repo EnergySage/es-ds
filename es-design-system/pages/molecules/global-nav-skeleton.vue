@@ -12,7 +12,31 @@
         </div>
         <div class="border-top border-bottom py-3">
             <!-- Global Navigation Skeleton development takes place in this div -->
-            Navigation Skeleton will be developed here
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <!-- Placeholder for Hamburger button-->
+                <!-- Collapsable Product Navigation Bar-->
+                <div id="navbarSupportedContent"
+                     class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li
+                            v-for="productHeader in productHeaders"
+                            :id="`${header}-nav`"
+                            :key="productHeader"
+                            class="nav-item dropdown">
+                            <a
+                                id="`${menu}-dropdown`"
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                                {{ productHeader }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -30,6 +54,14 @@ export default {
             visible: false,
             compCode: '',
             docCode: '',
+            productHeaders: [
+                'Home Solar',
+                'Community Solar',
+                'Heating & Cooling',
+                'Back Up Power',
+                'EV Charging',
+                'For Businesses',
+            ],
         };
     },
     async created() {
@@ -46,3 +78,11 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+/* All styles will eventually be refactored into GlobalNav.vue */
+.dropdown-toggle::after {
+    content: none;
+}
+
+</style>
