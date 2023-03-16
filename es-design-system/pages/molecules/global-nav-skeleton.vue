@@ -15,16 +15,18 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <!-- Placeholder for Hamburger button-->
                 <!-- Collapsable Product Navigation Bar-->
-                <div id="navbarSupportedContent"
-                     class="collapse navbar-collapse">
+                <div
+                    id="navbarSupportedContent"
+                    class="collapse navbar-collapse">
                     <ul class="navbar-nav mr-auto">
+                        <!-- Product Header -->
                         <li
                             v-for="productHeader in productHeaders"
-                            :id="`${header}-nav`"
+                            :id="`${productHeader}-nav`"
                             :key="productHeader"
                             class="nav-item dropdown">
                             <a
-                                id="`${menu}-dropdown`"
+                                id="`${productHeader}-dropdown`"
                                 class="nav-link dropdown-toggle"
                                 href="#"
                                 role="button"
@@ -33,6 +35,26 @@
                                 aria-expanded="false">
                                 {{ productHeader }}
                             </a>
+
+                            <!-- Dropdown Panel-->
+                            <div
+                                class="dropdown-menu"
+                                aria-labelledby="`${productHeader}-dropdown`">
+                                <ul
+                                    class="list-unstyled">
+                                    <li
+                                        v-for="productSubHeader in productSubHeaders"
+                                        :id="`${productSubHeader}-nav`"
+                                        :key="productSubHeader"
+                                        class="nav-item">
+                                        <a
+                                            class="dropdown-item"
+                                            href="#">
+                                            {{ productSubHeader }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -62,6 +84,10 @@ export default {
                 'EV Charging',
                 'For Businesses',
             ],
+            productSubHeaders: [
+                'Solar Guide',
+                'Solar Calculator',
+            ],
         };
     },
     async created() {
@@ -81,8 +107,19 @@ export default {
 
 <style lang="scss" scoped>
 /* All styles will eventually be refactored into GlobalNav.vue */
+// .dropdown-toggle::after {
+//     content: none;
+// }
+
+@media all and (min-width: 992px) {
 .dropdown-toggle::after {
     content: none;
+}
+
+.navbar .nav-item .dropdown-menu{ display: none; }
+
+.navbar .nav-item:hover .dropdown-menu{ display: block; }
+
 }
 
 </style>
