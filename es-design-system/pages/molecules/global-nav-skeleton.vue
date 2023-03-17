@@ -13,11 +13,24 @@
         <div class="border-top border-bottom py-3">
             <!-- Global Navigation Skeleton development takes place in this div -->
             <nav class="navbar navbar-expand-lg navbar-light">
-                <!-- Placeholder for Hamburger button-->
+                <button
+                    v-show="!isExpanded"
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    @click="$event => isExpanded =!isExpanded">
+                    <span
+                        class="navbar-toggler-icon" />
+                </button>
                 <!-- Collapsable Product Navigation Bar-->
                 <div
                     id="navbarSupportedContent"
-                    class="collapse navbar-collapse">
+                    class="collapse navbar-collapse"
+                    :class="{ show: isExpanded }">
                     <ul class="navbar-nav mr-auto">
                         <!-- Product Header -->
                         <li
@@ -42,6 +55,7 @@
                                 aria-labelledby="`${productHeader}-dropdown`">
                                 <ul
                                     class="list-unstyled">
+                                    <!-- Product Subheader -->
                                     <li
                                         v-for="productSubHeader in productSubHeaders"
                                         :id="`${productSubHeader}-nav`"
@@ -88,6 +102,7 @@ export default {
                 'Solar Guide',
                 'Solar Calculator',
             ],
+            isExpanded: false,
         };
     },
     async created() {
@@ -112,14 +127,14 @@ export default {
 // }
 
 @media all and (min-width: 992px) {
-.dropdown-toggle::after {
-    content: none;
-}
 
 .navbar .nav-item .dropdown-menu{ display: none; }
 
 .navbar .nav-item:hover .dropdown-menu{ display: block; }
+}
 
+.dropdown-toggle::after {
+    content: none;
 }
 
 </style>
