@@ -13,8 +13,9 @@
         <div class="border-top border-bottom py-3">
             <!-- Global Navigation Skeleton development takes place in this div -->
             <nav class="navbar navbar-expand-lg navbar-light">
+                <!-- Mobile Hamburger Menu -->
                 <button
-                    v-show="!isExpanded"
+                    v-show="level == 0"
                     class="navbar-toggler"
                     type="button"
                     data-toggle="collapse"
@@ -22,61 +23,93 @@
                     aria-controls="navbarSupportedContent"
                     aria-expanded="false"
                     aria-label="Toggle navigation"
-                    @click="$event => isExpanded =!isExpanded">
+                    @click="$event => level = 1">
                     <span
                         class="navbar-toggler-icon" />
                 </button>
-                <!-- Collapsable Product Navigation Bar-->
+                <!-- Collapsable Product Navigation Bar -->
                 <div
                     id="navbarSupportedContent"
                     class="collapse navbar-collapse"
-                    :class="{ show: isExpanded }">
+                    :class="{ show: level != 0 }">
+                    <!-- Mobile Back to Home Button -->
                     <button
-                        v-show="isExpanded && !activeHeader"
-                        class="d-lg-none"
+                        v-show="level == 1"
+                        class="d-lg-none mb-3"
                         type="button"
-                        @click="$event => isExpanded = false">
+                        @click="$event => level = 0">
                         X
                     </button>
+                    <!-- Mobile Back to Headers -->
                     <button
-                        v-show="activeHeader"
-                        class="d-lg-none"
+                        v-show="level == 2"
+                        class="d-lg-none mb-3"
                         type="button"
-                        @click="$event => activeHeader = ''">
+                        @click="$event => {activeHeader = ''
+                                           level = 1}">
                         Back
                     </button>
+                    <!-- Mobile Active Header and See All Banner -->
+                    <span
+                        v-show="level == 2"
+                        class="d-lg-none mb-3">
+                        <h3>
+                            {{ activeHeader }}
+                            <a
+                                class="float-right"
+                                :href="productHeaders[activeHeader]?.link">
+                                See All
+                            </a>
+                        </h3>
+                    </span>
+                    <!-- Product Headers -->
                     <ul class="navbar-nav mr-auto">
-                        <!-- Product Header -->
                         <li
                             v-for="header in Object.keys(productHeaders)"
                             :id="`${header}-nav`"
                             :key="header"
                             class="nav-item dropdown">
-                            <!--Mobile Button Headers -->
+                            <!-- Mobile Header Buttons -->
                             <button
-                                v-show="header == activeHeader || !activeHeader"
-                                id="`${header}-dropdown`"
-                                class="d-lg-none btn btn-light w-100 dropdown-toggle"
+                                v-show="!activeHeader"
+                                id="`${header}-mobile`"
+                                class="d-lg-none btn btn-outline-dark w-100"
                                 aria-haspopup="true"
                                 aria-expanded="false"
-                                @click="$event => activeHeader = header">
+                                @click="$event => {activeHeader = header
+                                                   level = 2}">
                                 {{ header }}
                             </button>
-                            <!--Desktop Dropdown Headers-->
+                            <ul
+                                class="d-lg-none list-unstyled">
+                                <!-- Mobile Sub-Header Links -->
+                                <li
+                                    v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
+                                    :id="`${subHeader}-mobile`"
+                                    :key="subHeader"
+                                    class="nav-item">
+                                    <a
+                                        v-show="header == activeHeader"
+                                        :href="productHeaders[header].subHeaders[subHeader].link">
+                                        {{ subHeader }}
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Desktop Header Dropdowns -->
                             <div
-                                id="`${header}-dropdown`"
+                                id="`${header}-desktop`"
                                 class="d-none d-lg-block nav-link dropdown-toggle"
                                 aria-haspopup="true"
                                 aria-expanded="false">
                                 {{ header }}
                             </div>
-                            <!-- Dropdown Panel-->
+                            <!-- Desktop Dropdown Panel-->
                             <div
                                 class="dropdown-menu"
-                                aria-labelledby="`${header}-dropdown`">
+                                aria-labelledby="`${header}-desktop`">
                                 <ul
                                     class="list-unstyled">
-                                    <!-- Product Subheader -->
+                                    <!-- Desktop Sub-Header Links -->
                                     <li
                                         v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
                                         :id="`${subHeader}-nav`"
@@ -113,6 +146,7 @@ export default {
             docCode: '',
             productHeaders: {
                 'Home Solar': {
+                    link: 'https://www.energysage.com/',
                     subHeaders: {
                         'Home Solar 1': {
                             link: 'https://www.energysage.com/',
@@ -123,6 +157,7 @@ export default {
                     },
                 },
                 'Community Solar': {
+                    link: 'https://communitysolar.energysage.com/',
                     subHeaders: {
                         'Community Solar 1': {
                             link: 'https://communitysolar.energysage.com/',
@@ -133,6 +168,7 @@ export default {
                     },
                 },
                 'Heating & Cooling': {
+                    link: 'https://heatpumps.energysage.com/',
                     subHeaders: {
                         'Heating & Cooling 1': {
                             link: 'https://heatpumps.energysage.com/',
@@ -143,6 +179,7 @@ export default {
                     },
                 },
                 'Back Up Power': {
+                    link: 'https://www.energysage.com/energy-storage/',
                     subHeaders: {
                         'Back Up Power 1': {
                             link: 'https://www.energysage.com/energy-storage/',
@@ -153,6 +190,7 @@ export default {
                     },
                 },
                 'EV Charging': {
+                    link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
                     subHeaders: {
                         'EV Charging 1': {
                             link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
@@ -163,6 +201,7 @@ export default {
                     },
                 },
                 'For Businesses': {
+                    link: 'https://www.energysage.com/businesses/',
                     subHeaders: {
                         'For Businesses 1': {
                             link: 'https://www.energysage.com/businesses/',
@@ -173,7 +212,8 @@ export default {
                     },
                 },
             },
-            isExpanded: false,
+            /* levels 0, 1, 2 correspond to home, header, and subheader levels */
+            level: 0,
             activeHeader: '',
         };
     },
@@ -194,18 +234,8 @@ export default {
 
 <style lang="scss" scoped>
 /* All styles will eventually be refactored into GlobalNav.vue */
-// .dropdown-toggle::after {
-//     content: none;
-// }
-@media all and (max-width: 992px) {
-    .navbar .nav-item .dropdown-menu{ display: none; }
-
-}
 
 @media all and (min-width: 992px) {
-
-.navbar .nav-item .dropdown-menu{ display: none; }
-
 .navbar .nav-item:hover .dropdown-menu{ display: block; }
 }
 
