@@ -31,40 +31,61 @@
                     id="navbarSupportedContent"
                     class="collapse navbar-collapse"
                     :class="{ show: isExpanded }">
+                    <button
+                        v-show="isExpanded && !activeHeader"
+                        class="d-lg-none"
+                        type="button"
+                        @click="$event => isExpanded = false">
+                        X
+                    </button>
+                    <button
+                        v-show="activeHeader"
+                        class="d-lg-none"
+                        type="button"
+                        @click="$event => activeHeader = ''">
+                        Back
+                    </button>
                     <ul class="navbar-nav mr-auto">
                         <!-- Product Header -->
                         <li
-                            v-for="productHeader in productHeaders"
-                            :id="`${productHeader}-nav`"
-                            :key="productHeader"
+                            v-for="header in Object.keys(productHeaders)"
+                            :id="`${header}-nav`"
+                            :key="header"
                             class="nav-item dropdown">
-                            <a
-                                id="`${productHeader}-dropdown`"
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                role="button"
-                                data-toggle="dropdown"
+                            <!--Mobile Button Headers -->
+                            <button
+                                v-show="header == activeHeader || !activeHeader"
+                                id="`${header}-dropdown`"
+                                class="d-lg-none btn btn-light w-100 dropdown-toggle"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                @click="$event => activeHeader = header">
+                                {{ header }}
+                            </button>
+                            <!--Desktop Dropdown Headers-->
+                            <div
+                                id="`${header}-dropdown`"
+                                class="d-none d-lg-block nav-link dropdown-toggle"
                                 aria-haspopup="true"
                                 aria-expanded="false">
-                                {{ productHeader }}
-                            </a>
-
+                                {{ header }}
+                            </div>
                             <!-- Dropdown Panel-->
                             <div
                                 class="dropdown-menu"
-                                aria-labelledby="`${productHeader}-dropdown`">
+                                aria-labelledby="`${header}-dropdown`">
                                 <ul
                                     class="list-unstyled">
                                     <!-- Product Subheader -->
                                     <li
-                                        v-for="productSubHeader in productSubHeaders"
-                                        :id="`${productSubHeader}-nav`"
-                                        :key="productSubHeader"
+                                        v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
+                                        :id="`${subHeader}-nav`"
+                                        :key="subHeader"
                                         class="nav-item">
                                         <a
                                             class="dropdown-item"
-                                            href="#">
-                                            {{ productSubHeader }}
+                                            :href="productHeaders[header].subHeaders[subHeader].link">
+                                            {{ subHeader }}
                                         </a>
                                     </li>
                                 </ul>
@@ -90,19 +111,70 @@ export default {
             visible: false,
             compCode: '',
             docCode: '',
-            productHeaders: [
-                'Home Solar',
-                'Community Solar',
-                'Heating & Cooling',
-                'Back Up Power',
-                'EV Charging',
-                'For Businesses',
-            ],
-            productSubHeaders: [
-                'Solar Guide',
-                'Solar Calculator',
-            ],
+            productHeaders: {
+                'Home Solar': {
+                    subHeaders: {
+                        'Home Solar 1': {
+                            link: 'https://www.energysage.com/',
+                        },
+                        'Home Solar 2': {
+                            link: 'https://www.energysage.com/',
+                        },
+                    },
+                },
+                'Community Solar': {
+                    subHeaders: {
+                        'Community Solar 1': {
+                            link: 'https://communitysolar.energysage.com/',
+                        },
+                        'Community Solar 2': {
+                            link: 'https://communitysolar.energysage.com/',
+                        },
+                    },
+                },
+                'Heating & Cooling': {
+                    subHeaders: {
+                        'Heating & Cooling 1': {
+                            link: 'https://heatpumps.energysage.com/',
+                        },
+                        'Heating & Cooling 2': {
+                            link: 'https://heatpumps.energysage.com/',
+                        },
+                    },
+                },
+                'Back Up Power': {
+                    subHeaders: {
+                        'Back Up Power 1': {
+                            link: 'https://www.energysage.com/energy-storage/',
+                        },
+                        'Back Up Power 2': {
+                            link: 'https://www.energysage.com/energy-storage/',
+                        },
+                    },
+                },
+                'EV Charging': {
+                    subHeaders: {
+                        'EV Charging 1': {
+                            link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
+                        },
+                        'EV Charging 2': {
+                            link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
+                        },
+                    },
+                },
+                'For Businesses': {
+                    subHeaders: {
+                        'For Businesses 1': {
+                            link: 'https://www.energysage.com/businesses/',
+                        },
+                        'For Businesses 2': {
+                            link: 'https://www.energysage.com/businesses/',
+                        },
+                    },
+                },
+            },
             isExpanded: false,
+            activeHeader: '',
         };
     },
     async created() {
@@ -125,6 +197,10 @@ export default {
 // .dropdown-toggle::after {
 //     content: none;
 // }
+@media all and (max-width: 992px) {
+    .navbar .nav-item .dropdown-menu{ display: none; }
+
+}
 
 @media all and (min-width: 992px) {
 
