@@ -34,59 +34,39 @@
 
         <div class="mb-450">
             <h2>
-                Selecting the active tab programmatically
+                Using v-model
             </h2>
-            <es-tabs
-                v-model="tabIndexButtons"
-                class="mb-200">
-                <es-tab title="Tab 1">
-                    <p>
-                        Content 1
-                    </p>
-                </es-tab>
-                <es-tab title="Tab 2">
-                    <p>
-                        Content 2
-                    </p>
-                </es-tab>
-                <es-tab title="Tab 3">
-                    <p>
-                        Content 3
-                    </p>
-                </es-tab>
-            </es-tabs>
+            <p>
+                If you need to select tabs programmatically or trigger a UI change elsewhere when a
+                tab is selected, you can use the <code>v-model</code> directive to bind the
+                active index to a data value.
+            </p>
             <div class="mb-100">
                 <es-button
                     class="mb-50"
-                    size="sm"
-                    @click="tabIndexButtons = 0">
+                    :disabled="tabIndexProgrammatic === 0"
+                    @click="tabIndexProgrammatic = 0">
                     Select tab 1
                 </es-button>
                 <es-button
                     class="mb-50"
-                    size="sm"
-                    @click="tabIndexButtons = 1">
+                    :disabled="tabIndexProgrammatic === 1"
+                    @click="tabIndexProgrammatic = 1">
                     Select tab 2
                 </es-button>
                 <es-button
                     class="mb-50"
-                    size="sm"
-                    @click="tabIndexButtons = 2">
+                    :disabled="tabIndexProgrammatic === 2"
+                    @click="tabIndexProgrammatic = 2">
                     Select tab 3
                 </es-button>
             </div>
-        </div>
-
-        <div class="mb-450">
-            <h2>
-                Showing separate content based on the active tab
-            </h2>
             <b-row>
                 <b-col
                     cols="12"
-                    lg="6">
+                    lg="8">
                     <es-tabs
-                        v-model="tabIndexContent"
+                        v-model="tabIndexProgrammatic"
                         class="mb-200">
                         <es-tab title="Tab 1">
                             <p>
@@ -107,19 +87,19 @@
                 </b-col>
                 <b-col
                     cols="12"
-                    lg="6">
+                    lg="4">
                     <div
-                        v-if="tabIndexContent === 0"
+                        v-if="tabIndexProgrammatic === 0"
                         class="bg-gray-300 p-200 rounded-lg text-center">
                         Content associated with tab 1
                     </div>
                     <div
-                        v-if="tabIndexContent === 1"
+                        v-if="tabIndexProgrammatic === 1"
                         class="bg-gray-300 p-200 rounded-lg text-center">
                         Content associated with tab 2
                     </div>
                     <div
-                        v-if="tabIndexContent === 2"
+                        v-if="tabIndexProgrammatic === 2"
                         class="bg-gray-300 p-200 rounded-lg text-center">
                         Content associated with tab 3
                     </div>
@@ -140,8 +120,7 @@ export default {
     name: 'EsTabsDocs',
     data() {
         return {
-            tabIndexButtons: 0,
-            tabIndexContent: 0,
+            tabIndexProgrammatic: 0,
             compCode: '',
             docCode: '',
         };
