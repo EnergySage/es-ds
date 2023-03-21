@@ -133,7 +133,7 @@
             <p>
                 If you want to control the accordion programmatically or trigger a UI change elsewhere
                 when a specific item is expanded, you can use the <code>v-model</code> directive to bind the
-                active id to a data value.
+                active id to a data value. The initial state of the data value must be a valid accordion id.
             </p>
             <div class="mb-200">
                 <es-button
