@@ -11,112 +11,67 @@
             </global-nav>
         </div>
         <div class="border-top border-bottom py-3">
-            <!-- Global Navigation Skeleton development takes place in this div -->
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <!-- Mobile Hamburger Menu -->
-                <button
-                    v-show="level == 0"
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    @click="$event => level = 1">
-                    <span
-                        class="navbar-toggler-icon" />
-                </button>
-                <!-- Collapsable Product Navigation Bar -->
+            <!-- active development of global nav lives in this div-->
+            <nav
+                class="navbar navbar-expand navbar-light bg-light">
+                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                <label
+                    for="data--main-menu"
+                    class="menu-toggle" />
+                <input
+                    id="data--main-menu"
+                    class="menu-checkbox"
+                    aria-labelledby="data--main-menu"
+                    type="checkbox">
                 <div
-                    id="navbarSupportedContent"
-                    class="collapse navbar-collapse"
-                    :class="{ show: level != 0 }">
-                    <!-- Mobile Back to Home Button -->
-                    <button
-                        v-show="level == 1"
-                        class="d-lg-none mb-3"
-                        type="button"
-                        @click="$event => level = 0">
-                        X
-                    </button>
-                    <!-- Mobile Back to Headers -->
-                    <button
-                        v-show="level == 2"
-                        class="d-lg-none mb-3"
-                        type="button"
-                        @click="$event => {activeHeader = ''
-                                           level = 1}">
-                        Back
-                    </button>
-                    <!-- Mobile Active Header and See All Banner -->
-                    <span
-                        v-show="level == 2"
-                        class="d-lg-none mb-3">
-                        <h3>
-                            {{ activeHeader }}
-                            <a
-                                class="float-right"
-                                :href="productHeaders[activeHeader]?.link">
-                                See All
-                            </a>
-                        </h3>
-                    </span>
-                    <!-- Product Headers -->
-                    <ul class="navbar-nav mr-auto">
+                    id="navbarNavDropdown"
+                    class="collapse navbar-collapse menu">
+                    <div class="menu-header">
+                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                        <label
+                            for="data--main-menu"
+                            class="menu-toggle" />
+                    </div>
+                    MENU
+                    <ul class="navbar-nav">
                         <li
                             v-for="header in Object.keys(productHeaders)"
-                            :id="`${header}-nav`"
                             :key="header"
                             class="nav-item dropdown">
-                            <!-- Mobile Header Buttons -->
-                            <button
-                                v-show="!activeHeader"
-                                id="`${header}-mobile`"
-                                class="d-lg-none btn btn-outline-dark w-100"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                @click="$event => {activeHeader = header
-                                                   level = 2}">
-                                {{ header }}
-                            </button>
-                            <ul
-                                class="d-lg-none list-unstyled">
-                                <!-- Mobile Sub-Header Links -->
-                                <li
-                                    v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
-                                    :id="`${subHeader}-mobile`"
-                                    :key="subHeader"
-                                    class="nav-item">
-                                    <a
-                                        v-show="header == activeHeader"
-                                        :href="productHeaders[header].subHeaders[subHeader].link">
-                                        {{ subHeader }}
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- Desktop Header Dropdowns -->
-                            <div
-                                id="`${header}-desktop`"
-                                class="d-none d-lg-block nav-link dropdown-toggle"
+                            <a
+                                class="nav-link dropdown-toggle"
+                                data-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false">
                                 {{ header }}
-                            </div>
-                            <!-- Desktop Dropdown Panel-->
-                            <div
-                                class="dropdown-menu"
-                                aria-labelledby="`${header}-desktop`">
+                            </a>
+                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                            <label
+                                :for="`menu-${header}`"
+                                class="dropdown-label nav-link">
+                                {{ header }}
+                            </label>
+                            <input
+                                :id="`menu-${header}`"
+                                :name="`menu-${header}`"
+                                type="checkbox"
+                                class="menu-checkbox">
+                            <div class="menu">
+                                <div class="menu-header">
+                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                    <label
+                                        :for="`menu-${header}`"
+                                        class="menu-toggle" />
+                                    {{ header }}
+                                </div>
                                 <ul
-                                    class="list-unstyled">
-                                    <!-- Desktop Sub-Header Links -->
+                                    class="dropdown-menu"
+                                    :aria-labelledby="`menu-${header}`">
                                     <li
                                         v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
-                                        :id="`${subHeader}-nav`"
-                                        :key="subHeader"
-                                        class="nav-item">
+                                        :key="subHeader">
                                         <a
-                                            class="dropdown-item"
+                                            class="dropdown-item nav-item nav-link"
                                             :href="productHeaders[header].subHeaders[subHeader].link">
                                             {{ subHeader }}
                                         </a>
@@ -212,9 +167,6 @@ export default {
                     },
                 },
             },
-            /* levels 0, 1, 2 correspond to home, header, and subheader levels */
-            level: 0,
-            activeHeader: '',
         };
     },
     async created() {
@@ -235,12 +187,97 @@ export default {
 <style lang="scss" scoped>
 /* All styles will eventually be refactored into GlobalNav.vue */
 
-@media all and (min-width: 992px) {
-.navbar .nav-item:hover .dropdown-menu{ display: block; }
+@media only screen and (min-width: 992px) {
+    .navbar .nav-item:hover .dropdown-menu{ display: block; }
 }
 
 .dropdown-toggle::after {
     content: none;
+}
+
+.menu-checkbox {
+    display: none;
+}
+
+.menu-header {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.dropdown-label {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .navbar-collapse {
+        align-items: start;
+    }
+
+    .dropdown {
+        position: unset;
+    }
+
+    .dropdown-menu {
+        top: 50px;
+    }
+
+    .dropdown-toggle {
+        display: none;
+    }
+
+    .dropdown-label {
+        cursor: pointer;
+        display: block;
+    }
+
+    .dropdown-label::after {
+        content: "▶️";
+    }
+
+    .menu {
+        background: #fff;
+        flex-direction: column;
+        height: 100%;
+        left: 0;
+        min-height: 100vh;
+        position: absolute;
+        top: 0;
+        transform: translate3d(-100%, 0, 0);
+        transition: transform 0.2s;
+        width: 100%;
+    }
+
+    .menu-checkbox:checked + .menu {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .menu-header {
+        background-color: #ccc;
+        display: flex;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        background-color: #098312;
+        cursor: pointer;
+        display: block;
+        height: 40px;
+        width: 40px;
+    }
+
+    .menu ul {
+        display: block;
+        width: 100%;
+    }
+
+    .menu ul li {
+        display: block;
+        width: 100%;
+    }
+
 }
 
 </style>
