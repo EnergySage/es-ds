@@ -9,7 +9,7 @@ exports[`EsSupport <EsSupport /> 1`] = `
         Need help signing up?
       </div>
     </div>
-    <div class="link"><a target="_blank" href="https://www.google.com/" class="supportLink">
+    <div class="link"><a target="_blank" href="https://www.google.com/" class="font-size-sm supportLink">
         Schedule a free call with your EnergySage Advisor.
       </a></div>
   </div>
@@ -25,7 +25,7 @@ exports[`EsSupport <EsSupport variant="cool" /> 1`] = `
         Need help signing up?
       </div>
     </div>
-    <div class="link"><a target="_blank" href="https://www.google.com/" class="supportLink">
+    <div class="link"><a target="_blank" href="https://www.google.com/" class="font-size-sm supportLink">
         Schedule a free call with your EnergySage Advisor.
       </a></div>
   </div>
@@ -41,7 +41,7 @@ exports[`EsSupport Image exists 1`] = `
         Need help signing up?
       </div>
     </div>
-    <div class="link"><a target="_blank" href="https://www.google.com/" class="supportLink">
+    <div class="link"><a target="_blank" href="https://www.google.com/" class="font-size-sm supportLink">
         Schedule a free call with your EnergySage Advisor.
       </a></div>
   </div>
@@ -57,7 +57,7 @@ exports[`EsSupport Support text exists 1`] = `
         Need help signing up?
       </div>
     </div>
-    <div class="link"><a target="_blank" href="https://www.google.com/" class="supportLink">
+    <div class="link"><a target="_blank" href="https://www.google.com/" class="font-size-sm supportLink">
         Schedule a free call with your EnergySage Advisor.
       </a></div>
   </div>
@@ -73,7 +73,7 @@ exports[`EsSupport Support title slot exists 1`] = `
         Need help signing up?
       </div>
     </div>
-    <div class="link"><a target="_blank" href="https://www.google.com/" class="supportLink">
+    <div class="link"><a target="_blank" href="https://www.google.com/" class="font-size-sm supportLink">
         Schedule a free call with your EnergySage Advisor.
       </a></div>
   </div>
