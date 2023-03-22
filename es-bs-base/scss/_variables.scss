@@ -337,6 +337,20 @@ $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+
+$font-size-50:                $font-size-base * 0.75 !default;
+$font-size-75:                $font-size-base * 0.875 !default;
+$font-size-100:               $font-size-base !default;
+$font-size-200:               $font-size-base * 1.125 !default;
+$font-size-300:               $font-size-base * 1.25 !default;
+$font-size-400:               $font-size-base * 1.5 !default;
+$font-size-500:               $font-size-base * 1.875 !default;
+$font-size-600:               $font-size-base * 2.375 !default;
+$font-size-700:               $font-size-base * 3 !default;
+$font-size-800:               $font-size-base * 3.375 !default;
+$font-size-900:               $font-size-base * 3.875 !default;
+
+// deprecated
 $font-size-xs:                $font-size-base * 0.75;
 $font-size-sm:                $font-size-base * 0.875 !default;
 $font-size-lg:                $font-size-base * 1.25 !default;
@@ -345,6 +359,19 @@ $font-size-xxl:               $font-size-base * 1.85 !default;
 
 // used in font-size-* utility classes
 $font-sizes: (
+  "50": $font-size-50,
+  "75": $font-size-75,
+  "100": $font-size-100,
+  "200": $font-size-200,
+  "300": $font-size-300,
+  "400": $font-size-400,
+  "500": $font-size-500,
+  "600": $font-size-600,
+  "700": $font-size-700,
+  "800": $font-size-800,
+  "900": $font-size-900,
+
+  // deprecated
   "xxl": $font-size-xxl,
   "xl": $font-size-xl,
   "lg": $font-size-lg,
