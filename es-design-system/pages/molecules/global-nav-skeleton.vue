@@ -13,7 +13,7 @@
         <div class="border-top border-bottom py-3">
             <!-- active development of global nav lives in this div-->
             <nav
-                class="navbar navbar-expand navbar-light bg-light">
+                class="navbar navbar-expand navbar-light bg-light py-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
                     for="data--main-menu"
@@ -32,53 +32,152 @@
                             for="data--main-menu"
                             class="menu-toggle" />
                     </div>
-                    MENU
-                    <ul class="navbar-nav">
-                        <li
-                            v-for="header in Object.keys(productHeaders)"
-                            :key="header"
-                            class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                                {{ header }}
-                            </a>
-                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                            <label
-                                :for="`menu-${header}`"
-                                class="dropdown-label nav-link">
-                                {{ header }}
-                            </label>
-                            <input
-                                :id="`menu-${header}`"
-                                :name="`menu-${header}`"
-                                type="checkbox"
-                                class="menu-checkbox">
-                            <div class="menu">
-                                <div class="menu-header">
-                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                    <label
-                                        :for="`menu-${header}`"
-                                        class="menu-toggle" />
-                                    {{ header }}
-                                </div>
-                                <ul
-                                    class="dropdown-menu"
-                                    :aria-labelledby="`menu-${header}`">
-                                    <li
-                                        v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
-                                        :key="subHeader">
-                                        <a
-                                            class="dropdown-item nav-item nav-link"
-                                            :href="productHeaders[header].subHeaders[subHeader].link">
-                                            {{ subHeader }}
-                                        </a>
-                                    </li>
-                                </ul>
+                    <ul class="navbar-nav d-flex flex-column w-100">
+                        <div class="row mx-0 d-flex justify-content-around align-items-center">
+                            <div class="navbar-brand">
+                                EnergySage
                             </div>
-                        </li>
+                            <li
+                                v-for="header in Object.keys(topHeaders)"
+                                :key="header"
+                                class="nav-item dropdown dropdown-full-page">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                    {{ header }}
+                                </a>
+                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                <label
+                                    :for="`menu-${header}`"
+                                    class="dropdown-label nav-link">
+                                    {{ header }}
+                                </label>
+                                <input
+                                    :id="`menu-${header}`"
+                                    :name="`menu-${header}`"
+                                    type="checkbox"
+                                    class="menu-checkbox">
+                                <div class="menu">
+                                    <div class="menu-header">
+                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                        <label
+                                            :for="`menu-${header}`"
+                                            class="menu-toggle" />
+                                        {{ header }}
+                                    </div>
+                                    <ul
+                                        class="dropdown-menu dropdown-menu-full-page"
+                                        :aria-labelledby="`menu-${header}`">
+                                        <li
+                                            v-for="topic in Object.keys(topHeaders[header].topics)"
+                                            :key="topic"
+                                            class="nav-item topic-group col-lg-4">
+                                            <a
+                                                class="nav-link dropdown-toggle font-weight-bold"
+                                                :class="(topHeaders[header].topics[topic].link ? 'dropdown-item' : '')"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
+                                                :href="topHeaders[header].topics[topic].link ?
+                                                    topHeaders[header].topics[topic].link : null">
+                                                {{ topic }}
+                                            </a>
+                                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                            <label
+                                                :for="`menu-${topic}`"
+                                                class="dropdown-label nav-link">
+                                                {{ topic }}
+                                            </label>
+                                            <input
+                                                :id="`menu-${topic}`"
+                                                :name="`menu-${topic}`"
+                                                type="checkbox"
+                                                class="menu-checkbox">
+                                            <div
+                                                class="menu submenu">
+                                                <div class="menu-header">
+                                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                                    <label
+                                                        :for="`menu-${topic}`"
+                                                        class="menu-toggle" />
+                                                    <a
+                                                        :class="topHeaders[header].topics[topic].link ?
+                                                            'nav-link': 'nav-link disabled'"
+                                                        :href="topHeaders[header].topics[topic].link ?
+                                                            topHeaders[header].topics[topic].link : null">
+                                                        {{ topic }}
+                                                    </a>
+                                                </div>
+                                                <ul
+                                                    class="visible-lg"
+                                                    style="list-style: none; padding-left: 0; top: 0;">
+                                                    <li
+                                                        v-for="subtopic in
+                                                            Object.keys(topHeaders[header].topics[topic].subtopics)"
+                                                        :key="subtopic">
+                                                        <a
+                                                            class="dropdown-item nav-item nav-link"
+                                                            :href="topHeaders[header].topics[topic]
+                                                                .subtopics[subtopic].link">
+                                                            {{ subtopic }}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </div>
+                        <div class="row mx-0 d-flex justify-content-around">
+                            <li
+                                v-for="header in Object.keys(productHeaders)"
+                                :key="header"
+                                class="nav-item dropdown">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                    {{ header }}
+                                </a>
+                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                <label
+                                    :for="`menu-${header}`"
+                                    class="dropdown-label nav-link">
+                                    {{ header }}
+                                </label>
+                                <input
+                                    :id="`menu-${header}`"
+                                    :name="`menu-${header}`"
+                                    type="checkbox"
+                                    class="menu-checkbox">
+                                <div class="menu">
+                                    <div class="menu-header">
+                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                        <label
+                                            :for="`menu-${header}`"
+                                            class="menu-toggle" />
+                                        {{ header }}
+                                    </div>
+                                    <ul
+                                        class="dropdown-menu"
+                                        :aria-labelledby="`menu-${header}`">
+                                        <li
+                                            v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
+                                            :key="subHeader">
+                                            <a
+                                                class="dropdown-item nav-item nav-link"
+                                                :href="productHeaders[header].subHeaders[subHeader].link">
+                                                {{ subHeader }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </nav>
@@ -99,6 +198,45 @@ export default {
             visible: false,
             compCode: '',
             docCode: '',
+            topHeaders: {
+                'Energy Tips': {
+                    topics: {
+                        'Solar Energy': {
+                            subtopics: {
+                                'Solar Panels Buyers Guide': {
+                                    link: 'https://www.energysage.com/solar-panels/',
+                                },
+                                'Solar Calculator': {
+                                    link: 'https://www.energysage.com/solar/calculator/',
+                                },
+                                'Best Solar Panels': {
+                                    link: 'https://www.energysage.com/',
+                                },
+                                'Financing & Rebates': {
+                                    link: 'https://www.energysage.com/',
+                                },
+                            },
+                            link: 'https://www.energysage.com/',
+                        },
+                        'Back Up Power': {
+                            subtopics: {
+                                'Battery Storage Guide': {
+                                    link: 'https://www.energysage.com/',
+                                },
+                                'Solar Incentives': {
+                                    link: 'https://www.energysage.com/',
+                                },
+                                'Solar Rebates': {
+                                    link: 'https://www.energysage.com/',
+                                },
+                                'Guide to Loans': {
+                                    link: 'https://www.energysage.com/',
+                                },
+                            },
+                        },
+                    },
+                },
+            },
             productHeaders: {
                 'Home Solar': {
                     link: 'https://www.energysage.com/',
@@ -188,7 +326,24 @@ export default {
 /* All styles will eventually be refactored into GlobalNav.vue */
 
 @media only screen and (min-width: 992px) {
-    .navbar .nav-item:hover .dropdown-menu{ display: block; }
+        .dropdown-full-page {
+            position: static;
+        }
+
+        .dropdown-menu-full-page {
+            height: 100%;
+            min-height: 100vh;
+            top: 45%;
+            width: 100%;
+        }
+
+    .navbar .nav-item:hover .dropdown-menu{
+        display: block;
+    }
+
+    .topic-group {
+        float: left;
+    }
 }
 
 .dropdown-toggle::after {
@@ -212,6 +367,10 @@ export default {
 }
 
 @media only screen and (max-width: 992px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+
     .navbar-collapse {
         align-items: start;
     }
@@ -248,6 +407,11 @@ export default {
         transform: translate3d(-100%, 0, 0);
         transition: transform 0.2s;
         width: 100%;
+    }
+
+    .submenu {
+        position: fixed;
+        z-index: 2;
     }
 
     .menu-checkbox:checked + .menu {
