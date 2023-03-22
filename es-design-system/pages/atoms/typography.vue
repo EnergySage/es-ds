@@ -403,6 +403,7 @@ export default {
 
 /* pilot implementation of a responsive table */
 /* TODO: extract this to a reusable component within es-design-system docs site */
+
 .responsive-table {
     border-top: $border-width solid $border-color;
 
@@ -414,6 +415,7 @@ export default {
             background-color: $gray-200;
         }
     }
+
     dl {
         display: flex;
         margin: 0;
@@ -421,11 +423,13 @@ export default {
         dt {
             width: 30%;
         }
+
         dd {
             width: 70%;
         }
     }
 }
+
 .responsive-table-font-size {
     dl {
         dd {
@@ -434,28 +438,40 @@ export default {
         }
     }
 }
+
 @include media-breakpoint-up(sm) {
     .responsive-table {
         dl {
             dt {
                 width: 24%;
             }
+
             dd {
                 width: 76%;
             }
         }
     }
 }
+
 @include media-breakpoint-up(md) {
     .responsive-table {
+        /* undo mobile styles */
+        border-top-style: none;
+
         dl,
         dt,
         dd {
             margin: 0;
             padding: 0;
         }
+
+        /* ensure background is full height of row */
+        dd {
+            height: 100%;
+            padding: 0.5rem 0;
+        }
+
         /* undo mobile styles */
-        border-top-style: none;
         dl {
             display: block;
 
@@ -464,41 +480,26 @@ export default {
                 width: auto;
             }
         }
-        /* side padding on left-most cells */
-        dl:first-child {
-            dd,
-            dt {
-                padding-left: 0.5rem;
-            }
-        }
-        /* side padding on right-most cells */
-        dl:last-child {
-            dd,
-            dt {
-                padding-right: 0.5rem;
-            }
-        }
+
         /* column widths */
         dl:nth-child(1) {
             width: 26%;
         }
+
         dl:nth-child(2) {
             width: 12%;
         }
+
         dl:nth-child(3) {
             width: 62%;
         }
-        /* ensure background is full height of row */
-        dd {
-            height: 100%;
-            padding: 0.5rem 0;
-        }
-        &-row {
-            display: flex;
 
+        &-row {
             /* undo mobile styles */
             border-bottom-style: none;
+            display: flex;
             padding: 0;
+
             &:nth-child(even) {
                 background-color: transparent;
             }
@@ -509,10 +510,12 @@ export default {
                     border-top: $border-width solid $border-color;
                     padding: 0.5rem 0;
                 }
+
                 dd {
                     height: auto;
                 }
             }
+
             /* visually hide table columns within all rows except the first */
             &:not(:first-child) {
                 dt {
@@ -521,6 +524,7 @@ export default {
                     position: absolute;
                 }
             }
+
             /* zebra-stripe every odd row */
             &:nth-child(odd) {
                 dd {
@@ -528,21 +532,26 @@ export default {
                 }
             }
         }
+
+        /* side padding on left-most cells */
+        dl:first-child {
+            dd,
+            dt {
+                padding-left: 0.5rem;
+            }
+        }
+
+        /* side padding on right-most cells */
+        dl:last-child {
+            dd,
+            dt {
+                padding-right: 0.5rem;
+            }
+        }
     }
 }
+
 @include media-breakpoint-up(xl) {
-    .responsive-table {
-        /* column widths */
-        dl:nth-child(1) {
-            width: 20%;
-        }
-        dl:nth-child(2) {
-            width: 10%;
-        }
-        dl:nth-child(3) {
-            width: 70%;
-        }
-    }
     .responsive-table-font-size {
         dl {
             dd {
@@ -551,16 +560,34 @@ export default {
             }
         }
     }
+
+    .responsive-table {
+        /* column widths */
+        dl:nth-child(1) {
+            width: 20%;
+        }
+
+        dl:nth-child(2) {
+            width: 10%;
+        }
+
+        dl:nth-child(3) {
+            width: 70%;
+        }
+    }
 }
+
 @include media-breakpoint-up(xxl) {
     .responsive-table {
         /* column widths */
         dl:nth-child(1) {
             width: 16%;
         }
+
         dl:nth-child(2) {
             width: 10%;
         }
+
         dl:nth-child(3) {
             width: 74%;
         }
