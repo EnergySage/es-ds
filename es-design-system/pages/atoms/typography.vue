@@ -404,6 +404,8 @@ export default {
 /* pilot implementation of a responsive table */
 /* TODO: extract this to a reusable component within es-design-system docs site */
 
+/* stylelint-disable order/order */
+
 .responsive-table {
     border-top: $border-width solid $border-color;
 
@@ -593,4 +595,6 @@ export default {
         }
     }
 }
+
+/* stylelint-enable order/order */
 </style>
