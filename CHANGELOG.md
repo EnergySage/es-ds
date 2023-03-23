@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.19.0] - 2023-03-23
+
+### Added
+
+- New spacing options: 24px, 48px, and 128px
+- New naming scheme for spacing utility classes (25, 50, 100, 150, etc.)
+- New `v-model` functionality for `EsAccordionList`
+- Added `v-model` examples to `EsTabs` docs page
+
+### Changed
+
+- ***BREAKING CHANGE:*** All links are now semibold by default
+- Reduced font size of `EsSupport` link
+- Increased font weight of active tab in `EsTabs`
+
+### Deprecated
+
+- Old naming scheme for spacing utility classes (1, 2, 3, 4, etc.)
+
 ## [0.18.0] - 2023-03-08
 
 ### Added
@@ -453,6 +472,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.19.0]: https://github.com/EnergySage/es-ds/compare/v0.18.0...v0.19.0
 [0.18.0]: https://github.com/EnergySage/es-ds/compare/v0.17.2...v0.18.0
 [0.17.2]: https://github.com/EnergySage/es-ds/compare/v0.17.0...v0.17.2
 [0.17.0]: https://github.com/EnergySage/es-ds/compare/v0.16.0...v0.17.0
