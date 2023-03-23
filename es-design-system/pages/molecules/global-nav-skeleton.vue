@@ -42,14 +42,22 @@
                                 :key="header"
                                 class="nav-item dropdown dropdown-full-page">
                                 <a
+                                    v-if="!topHeaders[header].link"
                                     class="nav-link dropdown-toggle"
                                     data-toggle="dropdown"
                                     aria-haspopup="true"
                                     aria-expanded="false">
                                     {{ header }}
                                 </a>
+                                <a
+                                    v-else
+                                    class="nav-link"
+                                    :href="topHeaders[header].link">
+                                    {{ header }}
+                                </a>
                                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                 <label
+                                    v-if="!topHeaders[header].link"
                                     :for="`menu-${header}`"
                                     class="dropdown-label nav-link">
                                     {{ header }}
@@ -59,7 +67,9 @@
                                     :name="`menu-${header}`"
                                     type="checkbox"
                                     class="menu-checkbox">
-                                <div class="menu">
+                                <div
+                                    v-if="!topHeaders[header].link"
+                                    class="menu">
                                     <div class="menu-header">
                                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                         <label
@@ -236,6 +246,13 @@ export default {
                         },
                     },
                 },
+                'Solar Calculator': {
+                    topics: {},
+                    link: 'https://www.energysage.com/solar/calculator',
+                },
+                'About Us': {
+                    topics: {},
+                },
             },
             productHeaders: {
                 'Home Solar': {
@@ -331,8 +348,6 @@ export default {
         }
 
         .dropdown-menu-full-page {
-            height: 100%;
-            min-height: 100vh;
             top: 45%;
             width: 100%;
         }
