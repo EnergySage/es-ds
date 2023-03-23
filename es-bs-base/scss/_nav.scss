@@ -118,3 +118,98 @@
     display: block;
   }
 }
+
+//
+// EnergySage Global Navigation
+//
+
+.nav-es-global {
+  // Hide the default BS4 expansion indicator
+  .dropdown-toggle::after {
+    content: none;
+  }
+
+  // Hide elements only needed for the mobile navigation
+  .dropdown-label, .menu-checkbox, .menu-header, .menu-toggle {
+    display: none;
+  }
+
+  // On Desktop a hovers display the dropdowns
+  @media only screen and (min-width: 992px) {
+    .nav-item:hover .dropdown-menu{ display: block; }
+  }
+
+  // A lot of custom styles for the mobile navigation menu
+  @media only screen and (max-width: 992px) {
+    // Force navigation items to align to the top
+    .navbar-collapse {
+      align-items: start;
+    }
+    // Allow the dropdowns to overlap each other
+    .dropdown {
+      position: unset;
+    }
+    // Position the menu at the top (leave some room for the header -- this seems hacky, could we set this to top:0?)
+    .dropdown-menu {
+        top: 50px;
+    }
+    // Hide the desktop dropdown toggle because mobile uses the labels as toggles
+    .dropdown-toggle {
+        display: none;
+    }
+    // Style the label as a proper tappable block target
+    .dropdown-label {
+        cursor: pointer;
+        display: block;
+    }
+    // Add an indicator that a submenu exists (this is a place holder)
+    .dropdown-label::after {
+        content: "▶️";
+    }
+
+    // Style the menu for mobile navigation bit but use translate to keep it off screen
+    .menu {
+        background: #fff;
+        flex-direction: column;
+        height: 100%;
+        left: 0;
+        min-height: 100vh;
+        position: absolute;
+        top: 0;
+        transform: translate3d(-100%, 0, 0);
+        transition: transform 0.2s;
+        width: 100%;
+    }
+
+    // The menu after any checked checkboxes is translated on screen
+    .menu-checkbox:checked + .menu {
+        transform: translate3d(0, 0, 0);
+    }
+
+    // The menu header
+    .menu-header {
+        background-color: #ccc;
+        display: flex;
+        height: 40px;
+        width: 100%;
+    }
+
+    // This is a generic placeholder button for open/close/back in the mobile menu
+    .menu-toggle {
+        background-color: #098312;
+        cursor: pointer;
+        display: block;
+        height: 40px;
+        width: 40px;
+    }
+
+    // Override BS4 defaults for consistency
+    .menu {
+      ul, li {
+        border: none;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
