@@ -136,14 +136,34 @@
 
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: 992px) {
-    .nav-item:hover .dropdown-menu{ display: block; }
+    // Allow dropdown content to take up the full width of the page
+    .dropdown-full-page {
+      position: static;
+    }
+
+    // Full expand top level nav's topics section
+    .dropdown-menu-full-page {
+      top: 45%;
+      width: 100%;
+    }
+
+    // Show dropdown on nav-item hover in desktop view
+    .nav-item:hover .dropdown-menu{
+      display: block;
+    }
+
+    // Place EnergyTips topic in a row instead of a column on desktop dropdown
+    .topic-group {
+      float: left;
+    }
   }
 
   // A lot of custom styles for the mobile navigation menu
   @media only screen and (max-width: 992px) {
-    // Force navigation items to align to the top
+    // Force navigation items to align to the top and avoid conflict with other components on the page
     .navbar-collapse {
       align-items: start;
+      z-index: 1;
     }
     // Allow the dropdowns to overlap each other
     .dropdown {
@@ -179,6 +199,12 @@
         transform: translate3d(-100%, 0, 0);
         transition: transform 0.2s;
         width: 100%;
+    }
+
+    // Avoid top level nav's subtopics level menu from laying on its topic level menu
+    .submenu {
+      position: fixed;
+      z-index: 2;
     }
 
     // The menu after any checked checkboxes is translated on screen
