@@ -136,7 +136,7 @@
 
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: 992px) {
-    // Statically position dropdown for top level nav's topics section
+    // Allow dropdown content to take up the full width of the page
     .dropdown-full-page {
       position: static;
     }
@@ -152,7 +152,7 @@
       display: block;
     }
 
-    // Place EnergyTips topic and subtopic links on the left of the container
+    // Place EnergyTips topic in a row instead of a column on desktop dropdown
     .topic-group {
       float: left;
     }
