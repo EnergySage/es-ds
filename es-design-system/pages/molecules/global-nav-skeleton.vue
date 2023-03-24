@@ -96,13 +96,13 @@
                                             </a>
                                             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                             <label
-                                                :for="`menu-${topic}`"
+                                                :for="`topMenu-${topic}`"
                                                 class="dropdown-label nav-link">
                                                 {{ topic }}
                                             </label>
                                             <input
-                                                :id="`menu-${topic}`"
-                                                :name="`menu-${topic}`"
+                                                :id="`topMenu-${topic}`"
+                                                :name="`topMenu-${topic}`"
                                                 type="checkbox"
                                                 class="menu-checkbox">
                                             <div
@@ -110,7 +110,7 @@
                                                 <div class="menu-header">
                                                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                                     <label
-                                                        :for="`menu-${topic}`"
+                                                        :for="`topMenu-${topic}`"
                                                         class="menu-toggle" />
                                                     <a
                                                         :class="topHeaders[header].topics[topic].link ?
@@ -155,20 +155,20 @@
                                 </a>
                                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                 <label
-                                    :for="`menu-${header}`"
+                                    :for="`productMenu-${header}`"
                                     class="dropdown-label nav-link">
                                     {{ header }}
                                 </label>
                                 <input
-                                    :id="`menu-${header}`"
-                                    :name="`menu-${header}`"
+                                    :id="`productMenu-${header}`"
+                                    :name="`productMenu-${header}`"
                                     type="checkbox"
                                     class="menu-checkbox">
                                 <div class="menu">
                                     <div class="menu-header">
                                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                         <label
-                                            :for="`menu-${header}`"
+                                            :for="`productMenu-${header}`"
                                             class="menu-toggle" />
                                         {{ header }}
                                     </div>
