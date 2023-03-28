@@ -118,7 +118,7 @@
             </p>
             <div class="border pb-lg-100 px-100 px-lg-200 pt-100 pt-lg-200 rounded">
                 <figure>
-                    <blockquote class="font-size-lg">
+                    <blockquote class="font-size-300">
                         “Working with this company was a breeze. They were so friendly and helpful.”
                     </blockquote>
                     <figcaption>
@@ -136,34 +136,130 @@
         <b-row class="my-450">
             <b-col>
                 <h2>
-                    Font weight utility classes
+                    Font weight
                 </h2>
-                <b-table
-                    fixed
-                    :fields="fontFields"
-                    :items="fontWeightItems"
-                    striped>
-                    <template #cell(example)="data">
-                        <span :class="data.item.name">sample text at {{ data.item.weight }} weight</span>
-                    </template>
-                </b-table>
+                <p>
+                    These utility classes will apply the associated font weight to text.
+                </p>
+                <div class="responsive-table">
+                    <div
+                        v-for="data in fontWeightItems"
+                        :key="data.name"
+                        class="responsive-table-row">
+                        <dl>
+                            <dt>
+                                Name
+                            </dt>
+                            <dd>
+                                {{ data.name }}
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                Weight
+                            </dt>
+                            <dd>
+                                {{ data.weight }}
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                Example
+                            </dt>
+                            <dd>
+                                <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
             </b-col>
         </b-row>
 
         <b-row class="my-450">
             <b-col>
                 <h2>
-                    Font size utility classes
+                    Font size
                 </h2>
-                <b-table
-                    fixed
-                    :fields="fontFields"
-                    :items="fontSizeItems"
-                    striped>
-                    <template #cell(example)="data">
-                        <span :class="data.item.name">sample text at {{ data.item.size }} size</span>
-                    </template>
-                </b-table>
+                <p>
+                    These utility classes will apply the associated font size to text. Responsive versions for
+                    each breakpoint are also available (e.g. <code>font-size-sm-400</code>,
+                    <code>font-size-md-400</code>, <code>font-size-lg-400</code>, <code>font-size-xl-400</code>,
+                    <code>font-size-xxl-400</code>).
+                </p>
+                <div class="responsive-table responsive-table-font-size">
+                    <div
+                        v-for="data in fontSizeItems"
+                        :key="data.name"
+                        class="responsive-table-row">
+                        <dl>
+                            <dt>
+                                Name
+                            </dt>
+                            <dd>
+                                {{ data.name }}
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                Size
+                            </dt>
+                            <dd>
+                                {{ calculateActualFontSize(data.size) }}
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                Example
+                            </dt>
+                            <dd>
+                                <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </b-col>
+        </b-row>
+
+        <b-row class="my-450">
+            <b-col>
+                <h2>
+                    Font size (deprecated)
+                </h2>
+                <p>
+                    These utility classes are deprecated. Avoid using them and refactor your code to remove instances
+                    of them. They will be removed in a future version of ESDS.
+                </p>
+                <div class="responsive-table responsive-table-font-size">
+                    <div
+                        v-for="data in deprecatedFontSizeItems"
+                        :key="data.name"
+                        class="responsive-table-row">
+                        <dl>
+                            <dt>
+                                Name
+                            </dt>
+                            <dd>
+                                {{ data.name }}
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                Size
+                            </dt>
+                            <dd>
+                                {{ calculateActualFontSize(data.size) }}
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                Example
+                            </dt>
+                            <dd>
+                                <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
             </b-col>
         </b-row>
 
@@ -181,10 +277,77 @@ export default {
     data() {
         return {
             sassType,
-            fontFields: [
-                'name',
-                // virtual column that can reference two fields
-                { key: 'example', label: 'Example' },
+            deprecatedFontSizeItems: [
+                {
+                    name: 'font-size-xs',
+                    size: sassType.xs,
+                },
+                {
+                    name: 'font-size-sm',
+                    size: sassType.sm,
+                },
+                {
+                    name: 'font-size-base',
+                    size: sassType.base,
+                },
+                {
+                    name: 'font-size-lg',
+                    size: sassType.lg,
+                },
+                {
+                    name: 'font-size-xl',
+                    size: sassType.xl,
+                },
+                {
+                    name: 'font-size-xxl',
+                    size: sassType.xxl,
+                },
+            ],
+            fontSizeItems: [
+                {
+                    name: 'font-size-50',
+                    size: sassType.s50,
+                },
+                {
+                    name: 'font-size-75',
+                    size: sassType.s75,
+                },
+                {
+                    name: 'font-size-100',
+                    size: sassType.s100,
+                },
+                {
+                    name: 'font-size-200',
+                    size: sassType.s200,
+                },
+                {
+                    name: 'font-size-300',
+                    size: sassType.s300,
+                },
+                {
+                    name: 'font-size-400',
+                    size: sassType.s400,
+                },
+                {
+                    name: 'font-size-500',
+                    size: sassType.s500,
+                },
+                {
+                    name: 'font-size-600',
+                    size: sassType.s600,
+                },
+                {
+                    name: 'font-size-700',
+                    size: sassType.s700,
+                },
+                {
+                    name: 'font-size-800',
+                    size: sassType.s800,
+                },
+                {
+                    name: 'font-size-900',
+                    size: sassType.s900,
+                },
             ],
             fontWeightItems: [
                 {
@@ -212,32 +375,6 @@ export default {
                     weight: '700',
                 },
             ],
-            fontSizeItems: [
-                {
-                    name: 'font-size-xs',
-                    size: sassType.xs,
-                },
-                {
-                    name: 'font-size-sm',
-                    size: sassType.sm,
-                },
-                {
-                    name: 'font-size-base',
-                    size: sassType.base,
-                },
-                {
-                    name: 'font-size-lg',
-                    size: sassType.lg,
-                },
-                {
-                    name: 'font-size-xl',
-                    size: sassType.xl,
-                },
-                {
-                    name: 'font-size-xxl',
-                    size: sassType.xxl,
-                },
-            ],
             docCode: '',
         };
     },
@@ -251,5 +388,213 @@ export default {
             this.$prism.highlight(this);
         }
     },
+    methods: {
+        calculateActualFontSize(remStr) {
+            const multiplier = parseFloat(remStr.replace('rem', ''));
+            return `${multiplier * 16}px`;
+        },
+    },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '~@energysage/es-bs-base/scss/bootstrap';
+@import "~@energysage/es-bs-base/scss/variables";
+
+/* pilot implementation of a responsive table */
+/* TODO: extract this to a reusable component within es-design-system docs site */
+
+/* stylelint-disable order/order */
+
+.responsive-table {
+    border-top: $border-width solid $border-color;
+
+    &-row {
+        border-bottom: $border-width solid $border-color;
+        padding: 0.5rem 0.5rem 0;
+
+        &:nth-child(even) {
+            background-color: $gray-200;
+        }
+    }
+
+    dl {
+        display: flex;
+        margin: 0;
+
+        dt {
+            width: 30%;
+        }
+
+        dd {
+            width: 70%;
+        }
+    }
+}
+
+.responsive-table-font-size {
+    dl {
+        dd {
+            max-height: 180px;
+            overflow: hidden;
+        }
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .responsive-table {
+        dl {
+            dt {
+                width: 24%;
+            }
+
+            dd {
+                width: 76%;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .responsive-table {
+        /* undo mobile styles */
+        border-top-style: none;
+
+        dl,
+        dt,
+        dd {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ensure background is full height of row */
+        dd {
+            height: 100%;
+            padding: 0.5rem 0;
+        }
+
+        /* undo mobile styles */
+        dl {
+            display: block;
+
+            dt,
+            dd {
+                width: auto;
+            }
+        }
+
+        /* column widths */
+        dl:nth-child(1) {
+            width: 26%;
+        }
+
+        dl:nth-child(2) {
+            width: 12%;
+        }
+
+        dl:nth-child(3) {
+            width: 62%;
+        }
+
+        &-row {
+            /* undo mobile styles */
+            border-bottom-style: none;
+            display: flex;
+            padding: 0;
+
+            &:nth-child(even) {
+                background-color: transparent;
+            }
+
+            &:first-child {
+                dt {
+                    border-bottom: $border-width solid $border-color;
+                    border-top: $border-width solid $border-color;
+                    padding: 0.5rem 0;
+                }
+
+                dd {
+                    height: auto;
+                }
+            }
+
+            /* visually hide table columns within all rows except the first */
+            &:not(:first-child) {
+                dt {
+                    /* don't use display none because then screen readers won't read out the label */
+                    left: -9999em;
+                    position: absolute;
+                }
+            }
+
+            /* zebra-stripe every odd row */
+            &:nth-child(odd) {
+                dd {
+                    background-color: $gray-200;
+                }
+            }
+        }
+
+        /* side padding on left-most cells */
+        dl:first-child {
+            dd,
+            dt {
+                padding-left: 0.5rem;
+            }
+        }
+
+        /* side padding on right-most cells */
+        dl:last-child {
+            dd,
+            dt {
+                padding-right: 0.5rem;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .responsive-table-font-size {
+        dl {
+            dd {
+                max-height: none;
+                overflow: visible;
+            }
+        }
+    }
+
+    .responsive-table {
+        /* column widths */
+        dl:nth-child(1) {
+            width: 20%;
+        }
+
+        dl:nth-child(2) {
+            width: 10%;
+        }
+
+        dl:nth-child(3) {
+            width: 70%;
+        }
+    }
+}
+
+@include media-breakpoint-up(xxl) {
+    .responsive-table {
+        /* column widths */
+        dl:nth-child(1) {
+            width: 16%;
+        }
+
+        dl:nth-child(2) {
+            width: 10%;
+        }
+
+        dl:nth-child(3) {
+            width: 74%;
+        }
+    }
+}
+
+/* stylelint-enable order/order */
+</style>

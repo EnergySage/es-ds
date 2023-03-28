@@ -30,7 +30,7 @@
             <div class="link">
                 <a
                     target="_blank"
-                    class="font-size-sm supportLink"
+                    class="font-size-75 supportLink"
                     :href="link">
                     <slot
                         v-if="hasLinkCopy"

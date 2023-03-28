@@ -16,7 +16,7 @@
         </label>
         <p
             v-if="hasExtraContext"
-            class="mb-25 font-size-sm">
+            class="mb-25 font-size-75">
             <slot name="extraContext" />
         </p>
         <div class="input-holder">
