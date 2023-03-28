@@ -56,6 +56,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-pagination">
+                EsPagination
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-popover">
                 EsPopover
             </b-link>
