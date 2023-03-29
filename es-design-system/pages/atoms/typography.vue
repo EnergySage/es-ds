@@ -390,6 +390,9 @@ export default {
     },
     methods: {
         calculateActualFontSize(remStr) {
+            if (!remStr) {
+                return '';
+            }
             const multiplier = parseFloat(remStr.replace('rem', ''));
             return `${multiplier * 16}px`;
         },
