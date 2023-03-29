@@ -3,7 +3,7 @@
 exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
 "<div id="reviewsModal___BV_modal_outer_" style="position: absolute; z-index: 1040;" class="modal-lightbox" body-class="pt-0 pt-lg-200">
   <transition-stub enterclass="" leaveclass="" entertoclass="" leavetoclass="" enteractiveclass="" leaveactiveclass="">
-    <div id="reviewsModal" role="dialog" aria-labelledby="reviewsModal___BV_modal_title_" aria-describedby="reviewsModal___BV_modal_body_" class="modal fade" style="" aria-modal="true">
+    <div id="reviewsModal" role="dialog" aria-labelledby="reviewsModal___BV_modal_title_" aria-describedby="reviewsModal___BV_modal_body_" class="modal fade" style="padding-right: 0px;" aria-modal="true">
       <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"><span tabindex="0"></span>
         <div id="reviewsModal___BV_modal_content_" tabindex="-1" class="modal-content">
           <header id="reviewsModal___BV_modal_header_" class="modal-header">
@@ -47,7 +47,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         <!---->
                         <!---->
                         <!---->
-                        <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+                        <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
                           <div class="mr-50">
                             Verified
                           </div> <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900">
@@ -74,7 +74,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
                     </div>
-                    <div class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-sm"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-50">
+                    <div class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-75"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-50">
                         <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                       </svg>
                       Verified Shopper
@@ -88,7 +88,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         <!---->
                         <!---->
                         <!---->
-                        <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+                        <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
                           <div class="mr-50">
                             Verified
                           </div> <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900">
@@ -121,7 +121,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
                     </div>
-                    <div class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-sm"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-50">
+                    <div class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-75"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-50">
                         <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                       </svg>
                       Verified Shopper
@@ -145,7 +145,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                           ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel risus commodo viverra maecenas
                           accumsan lacus vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla
                           diam sit amet nisl suscipit adipiscing bibendum est ultricies integer quis
-                          <p class="font-size-sm text-gray-700 m-0 mt-50 mt-lg-100">
+                          <p class="font-size-75 text-gray-700 m-0 mt-50 mt-lg-100">
                             Responded on 6/10/2022
                           </p>
                         </div>
@@ -158,7 +158,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         <!---->
                         <!---->
                         <!---->
-                        <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+                        <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
                           <div class="mr-50">
                             Verified
                           </div> <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900">
@@ -178,7 +178,7 @@ exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
                         </span> <span class="date-holder">on 6/3/2022</span></small>
                       <!---->
                     </div>
-                    <div class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-sm"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-50">
+                    <div class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-75"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-50">
                         <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                       </svg>
                       Verified Shopper

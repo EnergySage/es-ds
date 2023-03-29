@@ -1,6 +1,6 @@
 <template>
     <div
-        class="font-size-sm px-50 py-200 rounded text-center"
+        class="font-size-75 px-50 py-200 rounded text-center"
         :class="{
             [`bg-${token}`]: true,
             'border': showBorder,

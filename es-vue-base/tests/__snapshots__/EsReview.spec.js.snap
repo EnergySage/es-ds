@@ -77,7 +77,7 @@ exports[`EsReview Imported components exist 1`] = `
   <div class="d-flex flex-nowrap"><small class="d-flex align-items-center text-gray-700 text-nowrap details-holder"><span data-testid="subtext-test" class="name-holder d-inline-block text-truncate pr-25"><span class="d-none d-lg-inline-block">Posted by </span>
       My Name
       </span> <span class="date-holder">on 3/2/2022</span></small>
-    <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+    <div class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
       <div class="mr-50">
         Verified
       </div> <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900">
@@ -85,7 +85,7 @@ exports[`EsReview Imported components exist 1`] = `
       </svg>
     </div>
   </div>
-  <div class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-sm"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-50">
+  <div class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-75"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 16px; width: 16px;" class="text-gray-900 mr-50">
       <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
     Verified Shopper
@@ -122,7 +122,7 @@ exports[`EsReview Shows a review has a response 1`] = `
     <!---->
   </div>
   <!---->
-  <div class="d-flex flex-nowrap align-items-center font-size-sm mt-50 mt-lg-100"><a data-testid="view-response" href="#" target="_self" class="">
+  <div class="d-flex flex-nowrap align-items-center font-size-75 mt-50 mt-lg-100"><a data-testid="view-response" href="#" target="_self" class="">
       View provider response
     </a>
     <!---->
@@ -184,7 +184,7 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
     </h4>
     <div data-testid="both-comments"><span class="d-inline-block font-weight-bolder">Updated review: </span>
       Very very nice proj
-      <div class="font-size-sm text-gray-700 mt-50"><span class="d-none d-lg-inline-block">Updated on </span>
+      <div class="font-size-75 text-gray-700 mt-50"><span class="d-none d-lg-inline-block">Updated on </span>
         6/16/2022
       </div>
       <div class="mt-50"><span class="d-inline-block font-weight-bolder">Previous review: </span>
@@ -214,7 +214,7 @@ exports[`EsReview Shows both comments and response when modal is open 1`] = `
           Response from Test Dev
         </p>
         Thanks, Bob!
-        <p class="font-size-sm text-gray-700 m-0 mt-50 mt-lg-100">
+        <p class="font-size-75 text-gray-700 m-0 mt-50 mt-lg-100">
           Responded on 10/23/2022
         </p>
       </div>

@@ -42,7 +42,7 @@
                 </div>
                 <div
                     v-if="certified && !commentLimit"
-                    class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+                    class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
                     <div class="mr-50">
                         Verified
                     </div>
@@ -73,7 +73,7 @@
                         {{ updatedComment }}
                         <div
                             v-if="modified"
-                            class="font-size-sm text-gray-700 mt-50">
+                            class="font-size-75 text-gray-700 mt-50">
                             <span class="d-none d-lg-inline-block">Updated on </span>
                             {{ localeDate(modified) }}
                         </div>
@@ -102,7 +102,7 @@
             </small>
             <div
                 v-if="certified && !response && commentLimit"
-                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
+                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
                 <div class="mr-50">
                     Verified
                 </div>
@@ -114,7 +114,7 @@
         </div>
         <div
             v-if="certified"
-            class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-sm">
+            class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-75">
             <IconVerified
                 class="text-gray-900 mr-50"
                 width="16px"
@@ -123,7 +123,7 @@
         </div>
         <div
             v-if="response && commentLimit"
-            class="d-flex flex-nowrap align-items-center font-size-sm mt-50 mt-lg-100">
+            class="d-flex flex-nowrap align-items-center font-size-75 mt-50 mt-lg-100">
             <b-link
                 data-testid="view-response"
                 @click="$emit('showMore')">
@@ -181,7 +181,7 @@
                         Response from {{ developerName }}
                     </p>
                     {{ response }}
-                    <p class="font-size-sm text-gray-700 m-0 mt-50 mt-lg-100">
+                    <p class="font-size-75 text-gray-700 m-0 mt-50 mt-lg-100">
                         Responded on {{ localeDate(responseDate) }}
                     </p>
                 </b-col>

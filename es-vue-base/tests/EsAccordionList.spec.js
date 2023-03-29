@@ -134,6 +134,104 @@ describe('EsAccordion', () => {
         expect(secondItemContent.isVisible()).toBe(false);
     });
 
+    test('EsAccordionList v-model test', async () => {
+        const accordions = [
+            {
+                id: 'accordion-id-1',
+                title: 'My Title 1',
+                content: 'My content 1.',
+            },
+            {
+                id: 'accordion-id-2',
+                title: 'My Title 2',
+                content: 'My content 2.',
+            },
+        ];
+
+        const wrapper = mount({
+            ...jestVue,
+            data() {
+                return {
+                    expandedId: accordions[0].id,
+                };
+            },
+            methods: {
+                expandFirstAccordion() {
+                    this.expandedId = accordions[0].id;
+                },
+            },
+            template: `
+                <es-accordion-list data-testid="testInput" id="testId" v-model="expandedId">
+                    <es-accordion id="${accordions[0].id}">
+                        <template #title>
+                            ${accordions[0].title}
+                        </template>
+                        <p>${accordions[0].content}</p>
+                    </es-accordion>
+                    <es-accordion id="${accordions[1].id}">
+                        <template #title>
+                            ${accordions[1].title}
+                        </template>
+                        <p>${accordions[1].content}</p>
+                    </es-accordion>
+                </es-accordion-list>
+            `,
+            components: {
+                EsAccordion,
+                EsAccordionList,
+            },
+            stubs: {
+                'es-accordion': EsAccordion,
+                'es-accordion-list': EsAccordionList,
+            },
+        });
+
+        // verify snapshot is correct
+        expect(wrapper.html()).toMatchSnapshot();
+
+        // verify the first item is expanded
+        const firstItem = wrapper.find(`#${accordions[0].id}`);
+        expect(firstItem.exists()).toBe(true);
+        const firstItemContent = firstItem.find('p');
+        expect(firstItemContent.exists()).toBe(true);
+        expect(firstItemContent.isVisible()).toBe(true);
+
+        // verify the second item is collapsed
+        const secondItem = wrapper.find(`#${accordions[1].id}`);
+        expect(secondItem.exists()).toBe(true);
+        const secondItemContent = secondItem.find('p');
+        expect(secondItemContent.exists()).toBe(true);
+        expect(secondItemContent.isVisible()).toBe(false);
+
+        // find and click the second item's button to expand it
+        const secondAccordion = wrapper.findAllComponents(EsAccordion).at(1);
+        expect(secondAccordion.exists()).toBe(true);
+        const secondButton = secondAccordion.findComponent(EsButton);
+        expect(secondButton.exists()).toBe(true);
+        await secondButton.trigger('click');
+
+        // verify the v-model data is now set to the second accordion's id
+        expect(wrapper.vm.expandedId).toBe(accordions[1].id);
+
+        // verify the first item is collapsed
+        expect(firstItemContent.isVisible()).toBe(false);
+
+        // verify the second item is expanded
+        expect(secondItemContent.isVisible()).toBe(true);
+
+        // programmatically set the v-model data to the id of the first accordion
+        await wrapper.vm.expandFirstAccordion();
+
+        // verify the data value is now set to the first accordion's id
+        expect(wrapper.vm.expandedId).toBe(accordions[0].id);
+
+        // verify the first item is expanded
+        expect(firstItemContent.isVisible()).toBe(true);
+
+        // verify the second item is collapsed
+        expect(secondItemContent.isVisible()).toBe(false);
+    });
+
     test('EsAccordionList performs multi-expand correctly', async () => {
         const accordions = [
             {
