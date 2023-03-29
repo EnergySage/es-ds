@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.20.0] - 2023-03-29
+
+### Added
+
+- Added new font size classes to `es-bs-base` and updated `typography` documentation
+
+### Changed
+
+- ***BREAKING CHANGE:*** Older documentation links are no longer available
+- Bumped all minor dependency versions
+
 ## [0.19.0] - 2023-03-23
 
 ### Added
@@ -181,7 +192,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `EsReview` and `EsReviewModal` now account for updates and developer responses to reviews
 - Bumped all out of date `npm` packages
-- Created responsive breakpoint [documentation](https://dev.design.energysage.dev/0.13.1/atoms/layout)
+- Created responsive breakpoint [documentation](https://design.energysage.dev/atoms/layout)
 
 ## [0.13.0] - 2022-12-14
 
