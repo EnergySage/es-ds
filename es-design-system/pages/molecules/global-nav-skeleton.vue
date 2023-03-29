@@ -12,185 +12,188 @@
         </div>
         <div class="border-top border-bottom py-3">
             <!-- active development of global nav lives in this div-->
-            <nav
-                class="navbar navbar-expand navbar-light bg-light nav-es-global py-0">
-                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                <label
-                    for="data--main-menu"
-                    class="menu-toggle" />
-                <input
-                    id="data--main-menu"
-                    class="menu-checkbox"
-                    aria-labelledby="data--main-menu"
-                    type="checkbox">
-                <div
-                    id="navbarNavDropdown"
-                    class="collapse navbar-collapse menu">
-                    <div class="menu-header">
-                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                        <label
-                            for="data--main-menu"
-                            class="menu-toggle" />
-                    </div>
-                    <ul class="navbar-nav d-flex flex-column w-100">
-                        <div class="row mx-0 d-flex justify-content-around align-items-center">
-                            <div class="navbar-brand">
-                                EnergySage
-                            </div>
-                            <li
-                                v-for="header in Object.keys(topHeaders)"
-                                :key="header"
-                                class="nav-item dropdown dropdown-full-page">
-                                <a
-                                    v-if="!topHeaders[header].link"
-                                    class="nav-link dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false">
-                                    {{ header }}
-                                </a>
-                                <a
-                                    v-else
-                                    class="nav-link"
-                                    :href="topHeaders[header].link">
-                                    {{ header }}
-                                </a>
-                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                <label
-                                    v-if="!topHeaders[header].link"
-                                    :for="`menu-${header}`"
-                                    class="dropdown-label nav-link">
-                                    {{ header }}
-                                </label>
-                                <input
-                                    :id="`menu-${header}`"
-                                    :name="`menu-${header}`"
-                                    type="checkbox"
-                                    class="menu-checkbox">
-                                <div
-                                    v-if="!topHeaders[header].link"
-                                    class="menu">
-                                    <div class="menu-header">
-                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                        <label
-                                            :for="`menu-${header}`"
-                                            class="menu-toggle" />
+            <div id="nav-main">
+                <div class="content-overlay" />
+                <nav
+                    class="navbar navbar-expand navbar-light bg-light nav-es-global py-0">
+                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                    <label
+                        for="data--main-menu"
+                        class="menu-toggle" />
+                    <input
+                        id="data--main-menu"
+                        class="menu-checkbox"
+                        aria-labelledby="data--main-menu"
+                        type="checkbox">
+                    <div
+                        id="navbarNavDropdown"
+                        class="collapse navbar-collapse menu">
+                        <div class="menu-header">
+                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                            <label
+                                for="data--main-menu"
+                                class="menu-toggle" />
+                        </div>
+                        <ul class="navbar-nav d-flex flex-column w-100">
+                            <div class="row mx-0 d-flex justify-content-around align-items-center">
+                                <div class="navbar-brand">
+                                    EnergySage
+                                </div>
+                                <li
+                                    v-for="header in Object.keys(topHeaders)"
+                                    :key="header"
+                                    class="nav-item">
+                                    <a
+                                        v-if="!topHeaders[header].link"
+                                        class="nav-link dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
                                         {{ header }}
-                                    </div>
-                                    <ul
-                                        class="dropdown-menu dropdown-menu-full-page"
-                                        :aria-labelledby="`menu-${header}`">
-                                        <li
-                                            v-for="topic in Object.keys(topHeaders[header].topics)"
-                                            :key="topic"
-                                            class="nav-item topic-group col-lg-4">
-                                            <a
-                                                class="nav-link dropdown-toggle font-weight-bold"
-                                                :class="(topHeaders[header].topics[topic].link ? 'dropdown-item' : '')"
-                                                data-toggle="dropdown"
-                                                aria-haspopup="true"
-                                                aria-expanded="false"
-                                                :href="topHeaders[header].topics[topic].link ?
-                                                    topHeaders[header].topics[topic].link : null">
-                                                {{ topic }}
-                                            </a>
+                                    </a>
+                                    <a
+                                        v-else
+                                        class="nav-link"
+                                        :href="topHeaders[header].link">
+                                        {{ header }}
+                                    </a>
+                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                    <label
+                                        v-if="!topHeaders[header].link"
+                                        :for="`menu-${header}`"
+                                        class="dropdown-label nav-link">
+                                        {{ header }}
+                                    </label>
+                                    <input
+                                        :id="`menu-${header}`"
+                                        :name="`menu-${header}`"
+                                        type="checkbox"
+                                        class="menu-checkbox">
+                                    <div
+                                        v-if="!topHeaders[header].link"
+                                        class="menu">
+                                        <div class="menu-header">
                                             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                             <label
-                                                :for="`topMenu-${topic}`"
-                                                class="dropdown-label nav-link">
-                                                {{ topic }}
-                                            </label>
-                                            <input
-                                                :id="`topMenu-${topic}`"
-                                                :name="`topMenu-${topic}`"
-                                                type="checkbox"
-                                                class="menu-checkbox">
-                                            <div
-                                                class="menu submenu">
-                                                <div class="menu-header">
-                                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                                    <label
-                                                        :for="`topMenu-${topic}`"
-                                                        class="menu-toggle" />
-                                                    <a
-                                                        :class="topHeaders[header].topics[topic].link ?
-                                                            'nav-link': 'nav-link disabled'"
-                                                        :href="topHeaders[header].topics[topic].link ?
-                                                            topHeaders[header].topics[topic].link : null">
-                                                        {{ topic }}
-                                                    </a>
-                                                </div>
-                                                <ul
-                                                    class="visible-lg"
-                                                    style="list-style: none; padding-left: 0; top: 0;">
-                                                    <li
-                                                        v-for="subtopic in
-                                                            Object.keys(topHeaders[header].topics[topic].subtopics)"
-                                                        :key="subtopic">
+                                                :for="`menu-${header}`"
+                                                class="menu-toggle" />
+                                            {{ header }}
+                                        </div>
+                                        <ul
+                                            class="dropdown-menu dropdown-menu-full-page"
+                                            :aria-labelledby="`menu-${header}`">
+                                            <li
+                                                v-for="topic in Object.keys(topHeaders[header].topics)"
+                                                :key="topic"
+                                                class="nav-item topic-group col-lg-4">
+                                                <a
+                                                    class="nav-link dropdown-toggle font-weight-bold"
+                                                    :class="(topHeaders[header].topics[topic].link ? 'dropdown-item' : '')"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"
+                                                    :href="topHeaders[header].topics[topic].link ?
+                                                        topHeaders[header].topics[topic].link : null">
+                                                    {{ topic }}
+                                                </a>
+                                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                                <label
+                                                    :for="`topMenu-${topic}`"
+                                                    class="dropdown-label nav-link">
+                                                    {{ topic }}
+                                                </label>
+                                                <input
+                                                    :id="`topMenu-${topic}`"
+                                                    :name="`topMenu-${topic}`"
+                                                    type="checkbox"
+                                                    class="menu-checkbox">
+                                                <div
+                                                    class="menu submenu">
+                                                    <div class="menu-header">
+                                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                                        <label
+                                                            :for="`topMenu-${topic}`"
+                                                            class="menu-toggle" />
                                                         <a
-                                                            class="dropdown-item nav-item nav-link"
-                                                            :href="topHeaders[header].topics[topic]
-                                                                .subtopics[subtopic].link">
-                                                            {{ subtopic }}
+                                                            :class="topHeaders[header].topics[topic].link ?
+                                                                'nav-link': 'nav-link disabled'"
+                                                            :href="topHeaders[header].topics[topic].link ?
+                                                                topHeaders[header].topics[topic].link : null">
+                                                            {{ topic }}
                                                         </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </div>
-                        <div class="row mx-0 d-flex justify-content-around">
-                            <li
-                                v-for="header in Object.keys(productHeaders)"
-                                :key="header"
-                                class="nav-item dropdown">
-                                <a
-                                    class="nav-link dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false">
-                                    {{ header }}
-                                </a>
-                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                <label
-                                    :for="`productMenu-${header}`"
-                                    class="dropdown-label nav-link">
-                                    {{ header }}
-                                </label>
-                                <input
-                                    :id="`productMenu-${header}`"
-                                    :name="`productMenu-${header}`"
-                                    type="checkbox"
-                                    class="menu-checkbox">
-                                <div class="menu">
-                                    <div class="menu-header">
-                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                        <label
-                                            :for="`productMenu-${header}`"
-                                            class="menu-toggle" />
-                                        {{ header }}
+                                                    </div>
+                                                    <ul
+                                                        class="visible-lg"
+                                                        style="list-style: none; padding-left: 0; top: 0;">
+                                                        <li
+                                                            v-for="subtopic in
+                                                                Object.keys(topHeaders[header].topics[topic].subtopics)"
+                                                            :key="subtopic">
+                                                            <a
+                                                                class="dropdown-item nav-item nav-link"
+                                                                :href="topHeaders[header].topics[topic]
+                                                                    .subtopics[subtopic].link">
+                                                                {{ subtopic }}
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <ul
-                                        class="dropdown-menu"
-                                        :aria-labelledby="`menu-${header}`">
-                                        <li
-                                            v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
-                                            :key="subHeader">
-                                            <a
-                                                class="dropdown-item nav-item nav-link"
-                                                :href="productHeaders[header].subHeaders[subHeader].link">
-                                                {{ subHeader }}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </div>
-                    </ul>
-                </div>
-            </nav>
+                                </li>
+                            </div>
+                            <div class="row mx-0 d-flex justify-content-around">
+                                <li
+                                    v-for="header in Object.keys(productHeaders)"
+                                    :key="header"
+                                    class="nav-item dropdown">
+                                    <a
+                                        class="nav-link dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                        {{ header }}
+                                    </a>
+                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                    <label
+                                        :for="`productMenu-${header}`"
+                                        class="dropdown-label nav-link">
+                                        {{ header }}
+                                    </label>
+                                    <input
+                                        :id="`productMenu-${header}`"
+                                        :name="`productMenu-${header}`"
+                                        type="checkbox"
+                                        class="menu-checkbox">
+                                    <div class="menu">
+                                        <div class="menu-header">
+                                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                            <label
+                                                :for="`productMenu-${header}`"
+                                                class="menu-toggle" />
+                                            {{ header }}
+                                        </div>
+                                        <ul
+                                            class="dropdown-menu"
+                                            :aria-labelledby="`menu-${header}`">
+                                            <li
+                                                v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
+                                                :key="subHeader">
+                                                <a
+                                                    class="dropdown-item nav-item nav-link"
+                                                    :href="productHeaders[header].subHeaders[subHeader].link">
+                                                    {{ subHeader }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </nav>
+            </div> <!-- nav-main -->
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -323,6 +326,15 @@ export default {
                 },
             },
         };
+    },
+    mounted() {
+        // overlay script starts
+        const overlay = document.querySelector('.content-overlay');
+        document.querySelectorAll('.nav-item').forEach((element) => {
+            element.addEventListener('mouseover', () => { overlay.style.display = 'block'; });
+            element.addEventListener('mouseout', () => { overlay.style.display = 'none'; });
+        });
+        // overlay script ends
     },
     async created() {
         if (this.$prism) {

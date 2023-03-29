@@ -122,6 +122,18 @@
 //
 // EnergySage Global Navigation
 //
+@media only screen and (min-width: 992px) {
+  // Desktop overlay that is displayed on navbar hovers
+  .content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(64, 64, 64, .45);
+    display: none;
+}
+}
 
 .nav-es-global {
   // Hide the default BS4 expansion indicator
