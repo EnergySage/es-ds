@@ -43,7 +43,7 @@
         "@nuxtjs/svg": "^0.4.0",
         "autoprefixer": "^9.8.8",
         "aws-cdk": "^2.70.0",
-        "aws-cdk-lib": "^2.70.0",
+        "aws-cdk-lib": "^2.72.0",
         "babel-core": "7.0.0-bridge.0",
         "babel-jest": "^29.5.0",
         "env-cmd": "^10.1.0",
