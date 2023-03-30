@@ -46,6 +46,7 @@
                                     <a
                                         v-if="!topHeaders[header].link"
                                         class="nav-link dropdown-toggle"
+                                        href="#"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
                                         aria-expanded="false">
@@ -150,6 +151,7 @@
                                     class="nav-item dropdown">
                                     <a
                                         class="nav-link dropdown-toggle"
+                                        href="#"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
                                         aria-expanded="false">
@@ -175,7 +177,7 @@
                                             {{ header }}
                                         </div>
                                         <ul
-                                            class="dropdown-menu"
+                                            class="dropdown-menu mt-0"
                                             :aria-labelledby="`menu-${header}`">
                                             <li
                                                 v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
@@ -330,7 +332,7 @@ export default {
     mounted() {
         // overlay script starts
         const overlay = document.querySelector('.content-overlay');
-        document.querySelectorAll('.nav-item').forEach((element) => {
+        document.querySelectorAll('.nav-es-global .nav-item .dropdown-toggle').forEach((element) => {
             element.addEventListener('mouseover', () => { overlay.style.display = 'block'; });
             element.addEventListener('mouseout', () => { overlay.style.display = 'none'; });
         });

@@ -124,6 +124,7 @@
 //
 @media only screen and (min-width: 992px) {
   // Desktop overlay that is displayed on navbar hovers
+  // pull overlay up to avoid it from getting covered by other DOM elements
   .content-overlay {
     position: fixed;
     top: 0;
@@ -132,10 +133,15 @@
     height: 100%;
     background: rgba(64, 64, 64, .45);
     display: none;
+    z-index: 1000;
 }
 }
 
 .nav-es-global {
+
+  // pull navbar up to avoid overlay from getting covered by other DOM elements
+  z-index: 1000;
+
   // Hide the default BS4 expansion indicator
   .dropdown-toggle::after {
     content: none;
