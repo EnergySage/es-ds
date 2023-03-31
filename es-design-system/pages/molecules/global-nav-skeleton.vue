@@ -332,7 +332,8 @@ export default {
     mounted() {
         // overlay script starts
         const overlay = document.querySelector('.content-overlay');
-        document.querySelectorAll('.nav-es-global .nav-item .dropdown-toggle').forEach((element) => {
+        // eslint-disable-next-line max-len
+        document.querySelectorAll('.nav-es-global .nav-item .dropdown-toggle, .nav-es-global .nav-item .dropdown-menu').forEach((element) => {
             element.addEventListener('mouseover', () => { overlay.style.display = 'block'; });
             element.addEventListener('mouseout', () => { overlay.style.display = 'none'; });
         });
