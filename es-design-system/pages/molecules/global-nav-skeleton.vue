@@ -354,7 +354,7 @@
                                                 v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
                                                 :key="subHeader">
                                                 <a
-                                                    class="dropdown-item nav-item nav-link"
+                                                    class="dropdown-item nav-item nav-link d-flex align-items-center"
                                                     :href="productHeaders[header].subHeaders[subHeader].link">
                                                     {{ subHeader }}
                                                 </a>
