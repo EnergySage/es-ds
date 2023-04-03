@@ -201,7 +201,7 @@
                                             </label>
                                         </div>
                                         <ul
-                                            class="row dropdown-menu dropdown-menu-full-page"
+                                            class="row dropdown-menu dropdown-menu-full-page p-lg-4"
                                             :aria-labelledby="`menu-${header}`">
                                             <li
                                                 class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center">
@@ -419,7 +419,36 @@ export default {
                     link: 'https://www.energysage.com/solar/calculator',
                 },
                 'About Us': {
-                    topics: {},
+                    topics: {
+                        'Our Company': {
+                            subtopics: {
+                                'Mission & Values': {
+                                    link: 'https://www.energysage.com/about-us/company/',
+                                },
+                                'How it works': {
+                                    link: '',
+                                },
+                                'Editorial Team': {
+                                    link: '',
+                                },
+                                'Partner with us': {
+                                    link: 'https://www.energysage.com/partners/',
+                                },
+                                Careers: {
+                                    link: 'https://www.energysage.com/about-us/careers/',
+                                },
+                                'Market research': {
+                                    link: 'https://www.energysage.com/data/',
+                                },
+                                'Editorial guidelines': {
+                                    link: 'https://www.energysage.com/editorial-guidelines/',
+                                },
+                                Press: {
+                                    link: 'https://www.energysage.com/press/',
+                                },
+                            },
+                        },
+                    },
                 },
             },
             productHeaders: {
