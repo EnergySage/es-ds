@@ -335,7 +335,7 @@
                                             </label>
                                         </div>
                                         <ul
-                                            class="dropdown-menu mt-0"
+                                            class="row dropdown-menu mt-0"
                                             :aria-labelledby="`menu-${header}`">
                                             <li
                                                 class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center">

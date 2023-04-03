@@ -193,11 +193,13 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
 
     // Position the menu at the top (leave some room for the header -- this seems hacky, could we set this to top:0?)
     // Make menu scrollable, prevent it from making the page longer
+    // Prevent horizontal scrolling on menu
     .dropdown-menu {
         top: 64px;
         max-height: 100%;
         overflow: scroll;
         padding: 0;
+        display: flex !important;
     }
 
     // Prevent horizontal scrolling on menu
