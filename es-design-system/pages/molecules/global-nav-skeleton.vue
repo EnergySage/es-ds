@@ -16,12 +16,13 @@
                 <div class="content-overlay" />
                 <nav
                     class="navbar navbar-expand navbar-light bg-light nav-es-global py-0">
-                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                    <label
-                        for="data--main-menu"
-                        class="d-lg-none d-flex mb-0 col-3">
-                        <IconHamburger class="menu-toggle align-self-center" />
-                    </label>
+                    <div class="d-lg-none d-flex mb-0 col-3">
+                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                        <label
+                            for="data--main-menu">
+                            <IconHamburger class="menu-toggle align-self-center" />
+                        </label>
+                    </div>
                     <div class="d-flex d-lg-none col-6 align-self-center justify-content-center py-3">
                         <!-- eslint-disable -->
                         <svg width="128"
@@ -111,12 +112,14 @@
                                 </svg>
                                 <!-- eslint-enable -->
                             </div>
-                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                            <label
-                                for="data--main-menu"
-                                class="col-3 menu-toggle justify-content-end">
-                                <IconX class="align-self-center" />
-                            </label>
+                            <div class="d-flex col-3 justify-content-end">
+                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                <label
+                                    for="data--main-menu"
+                                    class="mb-0">
+                                    <IconX class="menu-toggle align-self-center" />
+                                </label>
+                            </div>
                         </div>
                         <div class="container px-3 pt-3 d-lg-none text-center justify-content-center">
                             Create an account to compare and see quotes from our verified installers.
@@ -193,12 +196,14 @@
                                                 <IconChevronLeft height="18px" />
                                                 MAIN MENU
                                             </label>
-                                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                            <label
-                                                for="data--main-menu"
-                                                class="col-3 menu-toggle justify-content-end">
-                                                <IconX class="align-self-center" />
-                                            </label>
+                                            <div class="d-flex col-3 justify-content-end">
+                                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                                <label
+                                                    for="data--main-menu"
+                                                    class="mb-0">
+                                                    <IconX class="menu-toggle align-self-center" />
+                                                </label>
+                                            </div>
                                         </div>
                                         <ul
                                             class="row dropdown-menu dropdown-menu-full-page p-lg-4"
@@ -248,12 +253,14 @@
                                                                 {{ topic }}
                                                             </div>
                                                         </label>
+                                                        <div class="d-flex col-3 justify-content-end">
                                                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                                        <label
-                                                            for="data--main-menu"
-                                                            class="col-3 menu-toggle justify-content-end">
-                                                            <IconX class="align-self-center" />
-                                                        </label>
+                                                            <label
+                                                                for="data--main-menu"
+                                                                class="mb-0">
+                                                                <IconX class="menu-toggle align-self-center" />
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                     <ul
                                                         class="visible-lg"
@@ -327,12 +334,14 @@
                                                 <IconChevronLeft height="18px" />
                                                 MAIN MENU
                                             </label>
-                                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                            <label
-                                                for="data--main-menu"
-                                                class="col-3 menu-toggle justify-content-end">
-                                                <IconX class="align-self-center" />
-                                            </label>
+                                            <div class="d-flex col-3 justify-content-end">
+                                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                                <label
+                                                    for="data--main-menu"
+                                                    class="mb-0">
+                                                    <IconX class="menu-toggle align-self-center" />
+                                                </label>
+                                            </div>
                                         </div>
                                         <ul
                                             class="row dropdown-menu mt-0"
