@@ -166,7 +166,7 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
 
     // Full expand top level nav's topics section
     .dropdown-menu-full-page {
-      top: 60%;
+      top: 65%;
       width: 100%;
     }
 
@@ -194,13 +194,14 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
         background: rgba(236, 236, 236, 1);
       }
 
-      .nav-link.dropdown-toggle.top-header {
-        background: rgba(236, 236, 236, 1);
-      }
 
       .top-header-icon {
         transform: rotate(180deg);
       }
+    }
+
+    .nav-item.top-header-item:hover {
+      background: rgba(236, 236, 236, 1);
     }
 
     // Place EnergyTips topic in a row instead of a column on desktop dropdown

@@ -173,10 +173,10 @@
                                 <li
                                     v-for="header in Object.keys(topHeaders)"
                                     :key="header"
-                                    class="nav-item">
+                                    class="nav-item top-header-item">
                                     <a
                                         v-if="!topHeaders[header].link"
-                                        class="nav-link dropdown-toggle top-header py-3"
+                                        class="nav-link top-header dropdown-toggle py-3 my-1"
                                         href="#"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
@@ -195,7 +195,7 @@
                                     </a>
                                     <a
                                         v-else
-                                        class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-3"
+                                        class="nav-link top-header d-flex align-items-center w-100 h-100 px-0 py-lg-3 px-lg-2 my-lg-1"
                                         :href="topHeaders[header].link">
                                         <div class="d-flex d-lg-block">
                                             <div
@@ -203,7 +203,8 @@
                                                 class="d-lg-none pr-2">
                                                 <IconCalculator />
                                             </div>
-                                            <div class="eyebrow-lg">
+                                            <div
+                                                class="d-lg-flex align-items-center eyebrow-lg">
                                                 {{ header }}
                                             </div>
                                             <div class="font-weight-light font-size-sm d-none d-lg-block">
