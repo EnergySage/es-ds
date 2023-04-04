@@ -174,8 +174,8 @@
             <code class="d-block pt-100">IconInfo</code>
         </li>
         <li>
-            <IconLightbulb :style="{color}" />
-            <code class="d-block pt-100">IconLightbulb</code>
+            <IconLightBulb :style="{color}" />
+            <code class="d-block pt-100">IconLightBulb</code>
         </li>
         <li>
             <IconLinkOut :style="{color}" />
