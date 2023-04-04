@@ -32,7 +32,7 @@ export { default as IconLockOn } from './icon-lock-on.vue';
 export { default as IconLockOff } from './icon-lock-off.vue';
 export { default as IconLocation } from './icon-location.vue';
 export { default as IconLinkOut } from './icon-link-out.vue';
-export { default as IconLightbulb } from './icon-lightbulb.vue';
+export { default as IconLightBulb } from './icon-light-bulb.vue';
 export { default as IconInfo } from './icon-info.vue';
 export { default as IconImage } from './icon-image.vue';
 export { default as IconHeart } from './icon-heart.vue';

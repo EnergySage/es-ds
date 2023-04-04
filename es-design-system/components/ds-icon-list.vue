@@ -158,7 +158,7 @@
             <code class="d-block pt-3">IconFlag</code>
         </li>
         <li>
-            <IconMenu :style="{color}" />
+            <IconHamburger :style="{color}" />
             <code class="d-block pt-3">IconHamburger</code>
         </li>
         <li>
@@ -174,8 +174,8 @@
             <code class="d-block pt-3">IconInfo</code>
         </li>
         <li>
-            <IconLightbulb :style="{color}" />
-            <code class="d-block pt-3">IconLightbulb</code>
+            <IconLightBulb :style="{color}" />
+            <code class="d-block pt-3">IconLightBulb</code>
         </li>
         <li>
             <IconLinkOut :style="{color}" />
