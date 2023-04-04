@@ -1,6 +1,6 @@
 <template>
     <b-tab
-        class="mt-3"
+        class="mt-100"
         :title="title">
         <slot />
     </b-tab>

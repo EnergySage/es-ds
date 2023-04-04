@@ -32,23 +32,63 @@ export default {
         },
         /**
          * The id of the accordion that should be expanded initially, if any.
+         * Do not use at the same time as v-model.
          */
         initialExpandedId: {
+            type: String,
+            default: '',
+        },
+        /**
+         * If v-model is used, this will contain a two-way binding to the id of the accordion that is expanded, if any.
+         */
+        value: {
             type: String,
             default: '',
         },
     },
     data() {
         return {
-            expandedIds: this.initialExpandedId ? [this.initialExpandedId] : [],
+            // will take either prop as initial value, but value (from v-model) will supersede if present
+            expandedIds: (this.value || this.initialExpandedId) ? [this.value || this.initialExpandedId] : [],
         };
+    },
+    watch: {
+        /**
+         * If the v-model value changes, update the internal state.
+         */
+        value(newValue) {
+            this.toggleId(newValue);
+        },
+        /**
+         * If the list of expanded ids changes, fire the input event in case v-model is present.
+         * Assume only one id can be expanded at a time.
+         * @emits input
+         */
+        expandedIds(newValue) {
+            this.$emit('input', newValue.length ? newValue[0] : '');
+        },
     },
     /**
      * Listen for @accordion-toggle event from children EsAccordion components.
      * They will inject the 'parent' object this component provides and call this.parent.$emit('accordion-toggle').
+     * @emits input
      */
     created() {
         this.$on('accordion-toggle', (id) => {
+            if (this.value) {
+                // if we're using v-model, fire the input event and
+                // have the change come via the value watch function
+                this.$emit('input', id);
+            } else {
+                // if we're not using v-model, toggle the id directly
+                this.toggleId(id);
+            }
+        });
+    },
+    methods: {
+        toggleId(id) {
+            if (!id) return;
+
             const indexOfId = this.expandedIds.indexOf(id);
             if (indexOfId > -1) {
                 // if id is expanded, remove it from array
@@ -60,7 +100,7 @@ export default {
                     ? [...this.expandedIds, id]
                     : [id];
             }
-        });
+        },
     },
 };
 </script>

@@ -5,10 +5,24 @@
 @import "../variables";
 
 :export {
+  base: $font-size-base;
+
+  s50: $font-size-50;
+  s75: $font-size-75;
+  s100: $font-size-100;
+  s200: $font-size-200;
+  s300: $font-size-300;
+  s400: $font-size-400;
+  s500: $font-size-500;
+  s600: $font-size-600;
+  s700: $font-size-700;
+  s800: $font-size-800;
+  s900: $font-size-900;
+
+  // deprecated
   xxl: $font-size-xxl;
   xl: $font-size-xl;
   lg: $font-size-lg;
-  base: $font-size-base;
   sm: $font-size-sm;
   xs: $font-size-xs;
 }

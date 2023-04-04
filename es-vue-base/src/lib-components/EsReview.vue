@@ -1,9 +1,9 @@
 <template>
     <div
         :id="id"
-        class="review-holder p-3 p-lg-0"
+        class="review-holder p-100 p-lg-0"
         v-bind="$attrs">
-        <div class="d-flex mb-2 mb-lg-3">
+        <div class="d-flex mb-50 mb-lg-100">
             <div class="d-flex flex-grow-1">
                 <EsRating
                     :rating="rating"
@@ -14,7 +14,7 @@
                         class="d-flex"
                         @click="$emit('editReview', id)">
                         <IconPencil
-                            class="ml-1"
+                            class="ml-25"
                             width="20px"
                             height="20px" />
                     </b-link>
@@ -32,7 +32,7 @@
                 </template>
                 <div
                     v-if="updatedComment && commentLimit"
-                    class="ml-auto ml-lg-3">
+                    class="ml-auto ml-lg-100">
                     <es-badge
                         data-testid="badge-test"
                         variant="info"
@@ -42,8 +42,8 @@
                 </div>
                 <div
                     v-if="certified && !commentLimit"
-                    class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
-                    <div class="mr-2">
+                    class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
+                    <div class="mr-50">
                         Verified
                     </div>
                     <IconVerified
@@ -53,10 +53,10 @@
                 </div>
             </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-100">
             <h4
                 v-if="title"
-                class="title font-weight-bold text-truncate mb-2"
+                class="title font-weight-bold text-truncate mb-50"
                 data-testid="title-test">
                 {{ title }}
             </h4>
@@ -73,11 +73,11 @@
                         {{ updatedComment }}
                         <div
                             v-if="modified"
-                            class="font-size-sm text-gray-700 mt-2">
+                            class="font-size-75 text-gray-700 mt-50">
                             <span class="d-none d-lg-inline-block">Updated on </span>
                             {{ localeDate(modified) }}
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-50">
                             <span class="d-inline-block font-weight-bolder">Previous review: </span>
                             {{ comment }}
                         </div>
@@ -93,7 +93,7 @@
                 v-if="displayDate"
                 class="d-flex align-items-center text-gray-700 text-nowrap details-holder">
                 <span
-                    class="name-holder d-inline-block text-truncate pr-1"
+                    class="name-holder d-inline-block text-truncate pr-25"
                     data-testid="subtext-test">
                     <span class="d-none d-lg-inline-block">{{ displayDateText }}</span>
                     {{ reviewerName }}
@@ -102,8 +102,8 @@
             </small>
             <div
                 v-if="certified && !response && commentLimit"
-                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-sm">
-                <div class="mr-2">
+                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
+                <div class="mr-50">
                     Verified
                 </div>
                 <IconVerified
@@ -114,16 +114,16 @@
         </div>
         <div
             v-if="certified"
-            class="d-none d-lg-flex text-gray-800 mt-2 align-items-center font-size-sm">
+            class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-75">
             <IconVerified
-                class="text-gray-900 mr-2"
+                class="text-gray-900 mr-50"
                 width="16px"
                 height="16px" />
             Verified Shopper
         </div>
         <div
             v-if="response && commentLimit"
-            class="d-flex flex-nowrap align-items-center font-size-sm mt-2 mt-lg-3">
+            class="d-flex flex-nowrap align-items-center font-size-75 mt-50 mt-lg-100">
             <b-link
                 data-testid="view-response"
                 @click="$emit('showMore')">
@@ -132,7 +132,7 @@
             <div
                 v-if="certified"
                 class="d-lg-none d-flex flex-nowrap align-items-center ml-auto text-gray-800">
-                <div class="mr-2">
+                <div class="mr-50">
                     Verified
                 </div>
                 <IconVerified
@@ -144,7 +144,7 @@
         <div
             v-if="response && !commentLimit"
             data-testid="developer-response">
-            <b-row class="mt-3">
+            <b-row class="mt-100">
                 <b-col
                     cols="12"
                     lg="1"
@@ -167,7 +167,7 @@
                             :cols="developerLogo ? 10 : 12"
                             lg="12"
                             class="d-lg-none">
-                            <span class="font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                            <span class="font-weight-bolder text-gray-900 m-0 mb-lg-50">
                                 Response from {{ developerName }}
                             </span>
                         </b-col>
@@ -176,12 +176,12 @@
                 <b-col
                     cols="12"
                     :lg="developerLogo ? 11 : 12"
-                    class="pt-lg-0 pt-2 pl-lg-3">
-                    <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-2">
+                    class="pt-lg-0 pt-50 pl-lg-100">
+                    <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-50">
                         Response from {{ developerName }}
                     </p>
                     {{ response }}
-                    <p class="font-size-sm text-gray-700 m-0 mt-2 mt-lg-3">
+                    <p class="font-size-75 text-gray-700 m-0 mt-50 mt-lg-100">
                         Responded on {{ localeDate(responseDate) }}
                     </p>
                 </b-col>

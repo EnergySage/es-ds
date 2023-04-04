@@ -2,7 +2,7 @@
     <b-tabs
         class="es-tabs"
         v-bind="$attrs"
-        :active-nav-item-class="['font-weight-bold', 'active-tab']"
+        :active-nav-item-class="['font-weight-bolder', 'active-tab']"
         :vertical="vertical"
         :style="cssProps"
         no-nav-style
@@ -59,6 +59,7 @@ export default {
 
     .nav-link {
         color: $gray-900;
+        font-weight: $font-weight-normal;
         margin: 0 2rem -2px;
         padding: 0.25rem 0 0;
 

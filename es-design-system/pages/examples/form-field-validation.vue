@@ -28,7 +28,7 @@
                 </p>
             </b-col>
         </b-row>
-        <b-row class="border-top pt-4 my-2">
+        <b-row class="border-top pt-200 my-50">
             <b-col
                 cols="12"
                 lg="8">
@@ -95,7 +95,7 @@
                             Notes
                         </template>
                     </es-form-textarea>
-                    <div class="d-flex flex-grow-1 justify-content-end mt-3">
+                    <div class="d-flex flex-grow-1 justify-content-end mt-100">
                         <es-button
                             type="submit"
                             class="w-100 w-lg-auto"

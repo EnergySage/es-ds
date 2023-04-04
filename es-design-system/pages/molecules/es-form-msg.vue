@@ -15,7 +15,7 @@
             Show Error
         </es-button>
         <es-form-msg
-            class="my-5"
+            class="my-450"
             :variant="formMsgVariant"
             :message="formMsg"
             @hidden="formMsg = ''" />

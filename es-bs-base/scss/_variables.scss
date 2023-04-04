@@ -288,19 +288,31 @@ $enable-deprecation-messages:                 false !default;
 // You can add more entries to the $spacers map, should you need more variation.
 
 $spacer: 1rem !default;
+
 $spacers: () !default;
 $spacers: map-merge(
   (
-    0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
-    3: $spacer,
-    4: ($spacer * 2),
-    5: ($spacer * 4.5),
-    6: ($spacer * 8)
+    0:    0,
+    // deprecated
+    1:   ($spacer * .25), // 4
+    2:   ($spacer * .5),  // 8
+    3:    $spacer,        // 16
+    4:   ($spacer * 2),   // 32
+    5:   ($spacer * 4.5), // 72
+    6:   ($spacer * 8),   // 128
+    // standard
+    25:  ($spacer * .25), // 4
+    50:  ($spacer * .5),  // 8
+    100:  $spacer,        // 16
+    150: ($spacer * 1.5), // 24
+    200: ($spacer * 2),   // 32
+    300: ($spacer * 3),   // 48
+    450: ($spacer * 4.5), // 72
+    800: ($spacer * 8)    // 128
   ),
   $spacers
 );
+
 // This variable affects the `.h-*` and `.w-*` classes.
 $sizes: () !default;
 $sizes: map-merge(
@@ -314,6 +326,74 @@ $sizes: map-merge(
   $sizes
 );
 
+// Typography base
+//
+// Foundational variables relating to typography.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      "Inter", "Helvetica Neue", Roboto, "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:            $font-family-sans-serif !default;
+// stylelint-enable value-keyword-case
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+
+$font-size-50:                $font-size-base * 0.75 !default;
+$font-size-75:                $font-size-base * 0.875 !default;
+$font-size-100:               $font-size-base !default;
+$font-size-200:               $font-size-base * 1.125 !default;
+$font-size-300:               $font-size-base * 1.25 !default;
+$font-size-400:               $font-size-base * 1.5 !default;
+$font-size-500:               $font-size-base * 1.875 !default;
+$font-size-600:               $font-size-base * 2.375 !default;
+$font-size-700:               $font-size-base * 3 !default;
+$font-size-800:               $font-size-base * 3.375 !default;
+$font-size-900:               $font-size-base * 3.875 !default;
+
+// deprecated
+$font-size-xs:                $font-size-base * 0.75;
+$font-size-sm:                $font-size-base * 0.875 !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-xl:                $font-size-base * 1.35 !default;
+$font-size-xxl:               $font-size-base * 1.85 !default;
+
+// used in font-size-* utility classes
+$font-sizes: (
+  "50": $font-size-50,
+  "75": $font-size-75,
+  "100": $font-size-100,
+  "200": $font-size-200,
+  "300": $font-size-300,
+  "400": $font-size-400,
+  "500": $font-size-500,
+  "600": $font-size-600,
+  "700": $font-size-700,
+  "800": $font-size-800,
+  "900": $font-size-900,
+  // deprecated
+  "xxl": $font-size-xxl,
+  "xl": $font-size-xl,
+  "lg": $font-size-lg,
+  "base": $font-size-base,
+  "sm": $font-size-sm,
+  "xs": $font-size-xs,
+);
+
+// fusv-disable
+$font-weight-lightest:        lighter;
+// fusv-enable
+$font-weight-lighter:         200 !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-semibold:        500 !default;
+$font-weight-bold:            600 !default;
+$font-weight-bolder:          700 !default;
+// fusv-disable
+$font-weight-boldest:         800 !default;
+// fusv-enable
+
+$font-weight-base:            $font-weight-normal !default;
+$line-height-base:            1.5 !default;
 
 // Body
 //
@@ -331,6 +411,7 @@ $link-color:                              theme-color("primary") !default;
 $link-decoration:                         none !default;
 $link-hover-color:                        darken($link-color, 15%) !default;
 $link-hover-decoration:                   underline !default;
+$link-weight:                             $font-weight-semibold !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 $emphasized-link-hover-darken-percentage: 15% !default;
 
@@ -425,48 +506,9 @@ $embed-responsive-aspect-ratios: join(
   $embed-responsive-aspect-ratios
 );
 
-// Typography
+// Typography elements
 //
 // Font, line-height, and color for body text, headings, and more.
-
-// stylelint-disable value-keyword-case
-$font-family-sans-serif:      "Inter", "Helvetica Neue", Roboto, "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
-$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:            $font-family-sans-serif !default;
-// stylelint-enable value-keyword-case
-
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-$font-size-xs:                $font-size-base * 0.75;
-$font-size-sm:                $font-size-base * 0.875 !default;
-$font-size-lg:                $font-size-base * 1.25 !default;
-$font-size-xl:                $font-size-base * 1.35 !default;
-$font-size-xxl:               $font-size-base * 1.85 !default;
-
-// used in font-size-* utility classes
-$font-sizes: (
-  "xxl": $font-size-xxl,
-  "xl": $font-size-xl,
-  "lg": $font-size-lg,
-  "base": $font-size-base,
-  "sm": $font-size-sm,
-  "xs": $font-size-xs,
-);
-
-// fusv-disable
-$font-weight-lightest:        lighter;
-// fusv-enable
-$font-weight-lighter:         200 !default;
-$font-weight-light:           300 !default;
-$font-weight-normal:          400 !default;
-$font-weight-semibold:        500 !default;
-$font-weight-bold:            600 !default;
-$font-weight-bolder:          700 !default;
-// fusv-disable
-$font-weight-boldest:         800 !default;
-// fusv-enable
-
-$font-weight-base:            $font-weight-normal !default;
-$line-height-base:            1.5 !default;
 
 $h1-font-size:                $font-size-base * 1.5 !default;
 $h2-font-size:                $font-size-base * 1.25 !default;

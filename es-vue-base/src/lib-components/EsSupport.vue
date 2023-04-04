@@ -3,7 +3,7 @@
         class="d-flex support-holder align-items-center"
         v-bind="$attrs"
         v-on="$listeners">
-        <div class="image-holder mr-3">
+        <div class="image-holder mr-100">
             <a
                 target="_blank"
                 aria-label="Help"
@@ -18,7 +18,7 @@
         </div>
         <div class="text-holder d-flex flex-column">
             <div class="title">
-                <div class="h5 mb-1 font-size-base font-weight-bold">
+                <div class="h5 mb-25 font-size-base font-weight-bold">
                     <slot
                         v-if="hasTitle"
                         name="title" />
@@ -30,7 +30,7 @@
             <div class="link">
                 <a
                     target="_blank"
-                    class="supportLink"
+                    class="font-size-75 supportLink"
                     :href="link">
                     <slot
                         v-if="hasLinkCopy"

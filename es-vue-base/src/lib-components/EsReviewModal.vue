@@ -3,7 +3,7 @@
         id="reviewsModal"
         hide-footer
         :visible="visible"
-        body-class="pt-0 pt-lg-4"
+        body-class="pt-0 pt-lg-200"
         size="xl"
         @hidden="$emit('hidden')">
         <template #modal-title>
@@ -25,7 +25,7 @@
                         :key="review.id"
                         :reviewer-id="review.reviewer_id"
                         :user-id="userId"
-                        class="mb-4"
+                        class="mb-200"
                         :report-flag-visible="review.report_flag_visible"
                         :comment-limit="false"
                         :reviewer-name="review.reviewer_name"
@@ -56,12 +56,12 @@
                             <es-rating
                                 width="32px"
                                 height="32px"
-                                class="mx-2"
+                                class="mx-50"
                                 :rating="avgRating" />
                             <span class="font-size-base font-weight-normal align-self-center">({{ reviews.length }})</span>
                         </h2>
                         <es-button
-                            class="mt-lg-3 mb-3"
+                            class="mt-lg-100 mb-100"
                             variant="dark"
                             @click="$emit('createReview')">
                             Write a review

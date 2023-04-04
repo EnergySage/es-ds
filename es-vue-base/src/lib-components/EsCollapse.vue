@@ -3,7 +3,7 @@
         <EsButton
             block
             :aria-label="id"
-            class="collapse-holder pb-3 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
+            class="collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             inline
             variant="link"
             @click="isExpanded = !isExpanded">

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="mb-3">
+        <div class="mb-100">
             <h1>
                 Popover
             </h1>
@@ -19,7 +19,7 @@
                 </b-link>
                 for more details.
             </p>
-            <div class="my-5">
+            <div class="my-450">
                 <h2>
                     Dark Variant
                 </h2>
@@ -45,7 +45,7 @@
                         <p class="mb-0">
                             Install solar panels through this program and get $250 cash back.
                             <a
-                                class="mt-2 d-block"
+                                class="mt-50 d-block"
                                 href="https://communitysolar.energysage.com/"
                                 target="_blank">Learn More</a>
                         </p>
@@ -69,7 +69,7 @@
                         <p class="mb-0">
                             Install solar panels through this program and get $250 cash back.
                             <a
-                                class="mt-2 d-block"
+                                class="mt-50 d-block"
                                 href="https://communitysolar.energysage.com/"
                                 target="_blank">Learn More</a>
                         </p>
@@ -106,7 +106,7 @@
                         <p class="mb-0">
                             Install solar panels through this program and get $250 cash back.
                             <a
-                                class="mt-2 d-block"
+                                class="mt-50 d-block"
                                 href="https://communitysolar.energysage.com/"
                                 target="_blank">Learn More</a>
                         </p>
@@ -130,7 +130,7 @@
                         <p class="mb-0">
                             Install solar panels through this program and get $250 cash back.
                             <a
-                                class="mt-2 d-block"
+                                class="mt-50 d-block"
                                 href="https://communitysolar.energysage.com/"
                                 target="_blank">Learn More</a>
                         </p>

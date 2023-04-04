@@ -184,6 +184,7 @@ sup { top: -.5em; }
 //
 
 a {
+  font-weight: $link-weight;
   color: $link-color;
   text-decoration: $link-decoration;
   background-color: transparent; // Remove the gray background on active links in IE 10.
