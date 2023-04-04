@@ -144,6 +144,11 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
   // pull navbar up to avoid overlay from getting covered by other DOM elements
   z-index: 1000;
 
+  // All links should have font-weight-normal (weight 400)
+  a {
+    font-weight: 400;
+  }
+
   // add a background so veil goes under the nav
   background-color: white;
 
