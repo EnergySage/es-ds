@@ -66,7 +66,7 @@
                     </div>
                     <input
                         id="data--main-menu"
-                        class="menu-checkbox"
+                        class="menu-checkbox main-menu-checkbox"
                         aria-labelledby="data--main-menu"
                         type="checkbox">
                     <div
@@ -167,7 +167,7 @@
                                             <div
                                                 v-if="header=='Energy Tips'"
                                                 class="pr-2">
-                                                <IconLightbulb />
+                                                <IconLightBulb />
                                             </div>
                                             <div
                                                 v-else-if="header=='About Us'"
@@ -421,7 +421,6 @@ export default {
                             },
                         },
                     },
-                    icon: '<IconLightbulb />',
                 },
                 'Solar Calculator': {
                     topics: {},
@@ -581,6 +580,17 @@ export default {
             element.addEventListener('mouseout', () => { overlay.style.display = 'none'; });
         });
         // overlay script ends
+        // checkbox script starts
+        document.querySelector('.main-menu-checkbox').addEventListener('click', (event) => {
+            if (event.target.checked === false) {
+                document.querySelectorAll('.menu-checkbox').forEach((element) => {
+                    if (element.checked) {
+                        element.click();
+                    }
+                });
+            }
+        });
+        // checkbox script ends
     },
     async created() {
         if (this.$prism) {

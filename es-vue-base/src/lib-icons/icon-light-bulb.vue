@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-    name: 'IconLightbulb',
+    name: 'IconLightBulb',
     props: {
         /**
          * Width
