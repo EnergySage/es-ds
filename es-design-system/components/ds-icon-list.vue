@@ -37,6 +37,10 @@
             <code class="d-block pt-100">IconBlock</code>
         </li>
         <li>
+            <IconCalculator :style="{color}" />
+            <code class="d-block pt-100">IconCalculator</code>
+        </li>
+        <li>
             <IconCalendar :style="{color}" />
             <code class="d-block pt-100">IconCalendar</code>
         </li>
@@ -138,6 +142,10 @@
             <code class="d-block pt-100">IconEnvelope</code>
         </li>
         <li>
+            <IconESLeaf :style="{color}" />
+            <code class="d-block pt-100">IconESLeaf</code>
+        </li>
+        <li>
             <IconEye :style="{color}" />
             <code class="d-block pt-100">IconEye</code>
         </li>
@@ -150,6 +158,10 @@
             <code class="d-block pt-3">IconFlag</code>
         </li>
         <li>
+            <IconHamburger :style="{color}" />
+            <code class="d-block pt-100">IconHamburger</code>
+        </li>
+        <li>
             <IconHeart :style="{color}" />
             <code class="d-block pt-100">IconHeart</code>
         </li>
@@ -160,6 +172,10 @@
         <li>
             <IconInfo :style="{color}" />
             <code class="d-block pt-100">IconInfo</code>
+        </li>
+        <li>
+            <IconLightBulb :style="{color}" />
+            <code class="d-block pt-100">IconLightBulb</code>
         </li>
         <li>
             <IconLinkOut :style="{color}" />
