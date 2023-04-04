@@ -4,7 +4,7 @@
         <h1>
             GlobalNav component
         </h1>
-        <div class="border-top py-3">
+        <div class="border-top py-100">
             <!-- this is the normal usage of a component and changes to GlobalNav.vue
                  will require the es-vue-base to get rebuilt -->
             <global-nav>
@@ -24,7 +24,7 @@
                             <IconHamburger class="menu-toggle align-self-center" />
                         </label>
                     </div>
-                    <div class="d-flex d-lg-none col-6 align-self-center justify-content-center py-3">
+                    <div class="d-flex d-lg-none col-6 align-self-center justify-content-center py-100">
                         <!-- eslint-disable -->
                         <svg width="128"
                             height="28"
@@ -75,7 +75,7 @@
                         class="collapse navbar-collapse menu">
                         <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
                             <div class="col-3" />
-                            <div class="col-6 align-self-center text-center py-3">
+                            <div class="col-6 align-self-center text-center py-100">
                                 <!-- eslint-disable -->
                                 <svg width="128"
                                     height="28"
@@ -122,9 +122,9 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="container px-3 pt-3 d-lg-none text-center justify-content-center">
+                        <div class="container px-100 pt-100 d-lg-none text-center justify-content-center">
                             Create an account to compare and see quotes from our verified installers.
-                            <EsButton class="btn btn-secondary btn-md my-3 w-100">
+                            <EsButton class="btn btn-secondary btn-md my-100 w-100">
                                 Compare quotes
                             </EsButton>
                         </div>
@@ -176,26 +176,26 @@
                                     class="nav-item top-header-item">
                                     <a
                                         v-if="!topHeaders[header].link"
-                                        class="nav-link top-header dropdown-toggle py-3 my-1"
+                                        class="nav-link top-header dropdown-toggle py-150"
                                         href="#"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
                                         aria-expanded="false">
                                         <div class="d-lg-flex align-items-center eyebrow-lg">
-                                            <span class="mr-2">
+                                            <span class="mr-50">
                                                 <IconCircleChevronDown
                                                     class="top-header-icon"
                                                     style="height: 16px; width: 16px;" />
                                             </span>
                                             {{ header }}
                                         </div>
-                                        <div class="font-weight-light font-size-sm ml-3 pl-2">
+                                        <div class="font-weight-light font-size-sm pl-150">
                                             {{ topHeaders[header].subHeading }}
                                         </div>
                                     </a>
                                     <a
                                         v-else
-                                        class="nav-link top-header d-flex align-items-center w-100 h-100 px-0 py-lg-3 px-lg-2 my-lg-1"
+                                        class="nav-link top-header d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
                                         :href="topHeaders[header].link">
                                         <div class="d-flex d-lg-block">
                                             <div
@@ -220,12 +220,12 @@
                                         <div class="d-flex align-items-center">
                                             <div
                                                 v-if="header=='Energy Tips'"
-                                                class="pr-2">
+                                                class="pr-50">
                                                 <IconLightBulb />
                                             </div>
                                             <div
                                                 v-else-if="header=='About Us'"
-                                                class="pr-2">
+                                                class="pr-50">
                                                 <IconESLeaf />
                                             </div>
                                             {{ header }}
@@ -260,7 +260,7 @@
                                             </div>
                                         </div>
                                         <ul
-                                            class="row dropdown-menu dropdown-menu-full-page p-lg-4"
+                                            class="row dropdown-menu dropdown-menu-full-page p-lg-200"
                                             :aria-labelledby="`menu-${header}`">
                                             <li
                                                 class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center">
@@ -355,7 +355,7 @@
                                     <IconPerson class="align-self-center" />
                                     <a
                                         href="https://www.energysage.com/market/start/1">
-                                        <EsButton class="btn btn-secondary ml-3 my-3">
+                                        <EsButton class="btn btn-secondary ml-100 my-100">
                                             Compare quotes
                                         </EsButton>
                                     </a>
