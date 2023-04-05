@@ -217,6 +217,9 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
 
   // A lot of custom styles for the mobile navigation menu
   @media only screen and (max-width: 992px) {
+    // Set collapsed navbar height
+    height: 56px;
+
     // Force navigation items to align to the top and avoid conflict with other components on the page
     .navbar-collapse {
       align-items: start;
@@ -281,7 +284,7 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
     .menu {
         max-height: 100%;
         overflow: scroll;
-        min-width: 260px;
+        min-width: 300px;
         background: #fff;
         flex-direction: column;
         height: 100%;

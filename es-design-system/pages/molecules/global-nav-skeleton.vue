@@ -17,14 +17,15 @@
                 <div class="content-overlay" />
                 <nav
                     class="navbar navbar-expand navbar-light nav-es-global py-0">
-                    <div class="d-lg-none d-flex mb-0 col-3">
+                    <div class="d-flex d-lg-none col-2 px-0">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                         <label
-                            for="data--main-menu">
+                            for="data--main-menu"
+                            class="mb-0">
                             <IconHamburger class="menu-toggle align-self-center" />
                         </label>
                     </div>
-                    <div class="d-flex d-lg-none col-6 align-self-center justify-content-center py-100">
+                    <div class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0">
                         <!-- eslint-disable -->
                         <svg width="128"
                             height="28"
@@ -62,7 +63,7 @@
                         </svg>
                         <!-- eslint-enable -->
                     </div>
-                    <div class="d-flex d-lg-none col-3 justify-content-end">
+                    <div class="d-flex d-lg-none justify-content-end col-2 px-0">
                         <IconPerson class="align-self-center" />
                     </div>
                     <input
@@ -189,7 +190,7 @@
                                             </span>
                                             {{ header }}
                                         </div>
-                                        <div class="font-weight-light font-size-sm pl-150">
+                                        <div class="font-weight-light font-size-xs pl-150">
                                             {{ topHeaders[header].subHeading }}
                                         </div>
                                     </a>
@@ -200,14 +201,14 @@
                                         <div class="d-flex d-lg-block">
                                             <div
                                                 v-if="header=='Solar Calculator'"
-                                                class="d-lg-none pr-2">
+                                                class="d-lg-none pr-50">
                                                 <IconCalculator />
                                             </div>
                                             <div
                                                 class="d-lg-flex align-items-center eyebrow-lg">
                                                 {{ header }}
                                             </div>
-                                            <div class="font-weight-light font-size-sm d-none d-lg-block">
+                                            <div class="font-weight-light font-size-xs d-none d-lg-block">
                                                 {{ topHeaders[header].subHeading }}
                                             </div>
                                         </div>
