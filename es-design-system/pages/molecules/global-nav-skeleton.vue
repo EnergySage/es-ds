@@ -174,10 +174,10 @@
                                 <li
                                     v-for="header in Object.keys(topHeaders)"
                                     :key="header"
-                                    class="nav-item top-header-item">
+                                    class="nav-item top-header">
                                     <a
                                         v-if="!topHeaders[header].link"
-                                        class="nav-link top-header dropdown-toggle py-150"
+                                        class="nav-link dropdown-toggle py-150"
                                         href="#"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
@@ -196,7 +196,7 @@
                                     </a>
                                     <a
                                         v-else
-                                        class="nav-link top-header d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
+                                        class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
                                         :href="topHeaders[header].link">
                                         <div class="d-flex d-lg-block">
                                             <div
