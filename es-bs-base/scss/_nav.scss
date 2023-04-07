@@ -122,7 +122,11 @@
 //
 // EnergySage Global Navigation
 //
-@media only screen and (min-width: 992px) {
+
+$desktop-min-width: 992px;
+$mobile-max-width: $desktop-min-width - 1;
+
+@media only screen and (min-width: $desktop-min-width) {
   // Desktop overlay that is displayed on navbar hovers
   // pull overlay up to avoid it from getting covered by other DOM elements
   .content-overlay {
@@ -136,9 +140,6 @@
     z-index: 1000;
 }
 }
-
-$energy-tips-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M19.6413 8.0574C19.3505 4.47835 16.5544 1.53681 13.0089 1.06706C10.772 0.765078 8.53505 1.44734 6.86856 2.91251C5.19087 4.37769 4.229 6.49157 4.229 8.71729C4.229 11.4351 5.68299 13.9852 8.02056 15.3721C8.52387 15.6741 8.52387 15.7859 8.52387 15.9537V17.0162C8.52387 17.4748 8.90414 17.8551 9.36271 17.8551C9.82128 17.8551 10.2016 17.4748 10.2016 17.0162V15.9537C10.2016 14.8576 9.53048 14.3207 8.87059 13.9293C7.03632 12.8444 5.8955 10.8535 5.8955 8.71729C5.8955 6.9725 6.64487 5.31719 7.95346 4.16518C9.28442 3.00199 10.9957 2.49868 12.7628 2.72237C15.4918 3.08028 17.7176 5.42903 17.9524 8.18043C18.1538 10.6075 16.9235 12.8108 14.7537 13.9293C14.3286 14.153 13.3444 14.6563 13.3109 15.9649V16.9939C13.3109 17.4524 13.6911 17.8327 14.1497 17.8327C14.6083 17.8327 14.9885 17.4524 14.9885 16.9939V15.9872C14.9885 15.8195 14.9885 15.6964 15.5254 15.4168C18.3215 13.974 19.8874 11.1443 19.6301 8.03503L19.6413 8.0574Z' fill='#292929'/><path d='M14.4516 18.7499H9.45212C8.99356 18.7499 8.61328 19.1302 8.61328 19.5887C8.61328 20.0473 8.99356 20.4276 9.45212 20.4276H14.4516C14.9102 20.4276 15.2905 20.0473 15.2905 19.5887C15.2905 19.1302 14.9102 18.7499 14.4516 18.7499Z' fill='#292929'/><path d='M14.4516 21.3223H9.45212C8.99356 21.3223 8.61328 21.7025 8.61328 22.1611C8.61328 22.6197 8.99356 22.9999 9.45212 22.9999H14.4516C14.9102 22.9999 15.2905 22.6197 15.2905 22.1611C15.2905 21.7025 14.9102 21.3223 14.4516 21.3223Z' fill='#292929'/></svg>") !default;
-$menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'><path fill-rule='evenodd' clip-rule='evenodd' d='M0 1C0 0.447715 0.447715 0 1 0L19 0C19.5523 0 20 0.447715 20 1C20 1.55228 19.5523 2 19 2H1C0.447715 2 0 1.55228 0 1ZM0 8C0 7.44772 0.447715 7 1 7H19C19.5523 7 20 7.44772 20 8C20 8.55229 19.5523 9 19 9H1C0.447715 9 0 8.55229 0 8ZM0 15C0 14.4477 0.447715 14 1 14H19C19.5523 14 20 14.4477 20 15C20 15.5523 19.5523 16 19 16H1C0.447715 16 0 15.5523 0 15Z' fill='#292929'/></svg>") !default;
 
 .nav-es-global {
   // pull navbar up to avoid overlay from getting covered by other DOM elements
@@ -163,7 +164,7 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
   }
 
   // On Desktop a hovers display the dropdowns
-  @media only screen and (min-width: 992px) {
+  @media only screen and (min-width: $desktop-min-width) {
     // Allow dropdown content to take up the full width of the page
     .dropdown-full-page {
       position: static;
@@ -216,7 +217,7 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
   }
 
   // A lot of custom styles for the mobile navigation menu
-  @media only screen and (max-width: 992px) {
+  @media only screen and (max-width: $mobile-max-width) {
     // Set collapsed navbar height
     height: 56px;
 
