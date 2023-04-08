@@ -543,36 +543,115 @@ export default {
             topHeaders: {
                 'Energy Tips': {
                     topics: {
-                        'Solar Energy': {
+                        Solar: {
                             subtopics: {
-                                'Solar Panels Buyers Guide': {
-                                    link: 'https://www.energysage.com/solar-panels/',
+                                'Home solar guide': {
+                                    link: 'https://www.energysage.com/solar/',
                                 },
-                                'Solar Calculator': {
-                                    link: 'https://www.energysage.com/solar/calculator/',
+                                'Community solar guide': {
+                                    link: 'https://www.energysage.com/solar/solar-101/what-is-community-solar/',
                                 },
-                                'Best Solar Panels': {
-                                    link: 'https://www.energysage.com/',
+                                'Best solar panels': {
+                                    link: 'https://news.energysage.com/best-solar-panels-complete-ranking/',
                                 },
-                                'Financing & Rebates': {
-                                    link: 'https://www.energysage.com/',
+                                'What do solar panels cost? ': {
+                                    link: 'https://www.energysage.com/local-data/solar-panel-cost/',
                                 },
                             },
-                            link: 'https://www.energysage.com/',
                         },
-                        'Back Up Power': {
+                        'Backup Power': {
                             subtopics: {
-                                'Battery Storage Guide': {
+                                'Backup power guide': {
+                                    link: 'https://www.energysage.com/energy-storage/',
+                                },
+                                'Best home batteries': {
+                                    link: 'https://news.energysage.com/best-solar-batteries/',
+                                },
+                                'Home batteries vs. generators': {
+                                    link: 'https://news.energysage.com/battery-backup-power-vs-generators-which-is-right-for-you/',
+                                },
+                            },
+                        },
+                        'Heating & Cooling': {
+                            subtopics: {
+                                'Heat pump guide': {
+                                    link: 'https://www.energysage.com/clean-heating-cooling/air-source-heat-pumps/',
+                                },
+                                'Best heat pumps': {
                                     link: 'https://www.energysage.com/',
                                 },
-                                'Solar Incentives': {
+                                'How do heat pumps work?': {
+                                    link: 'https://news.energysage.com/how-do-heat-pumps-work/',
+                                },
+                            },
+                        },
+                        'Electric Vehicles': {
+                            subtopics: {
+                                'EV charging guide': {
+                                    link: 'https://www.energysage.com/electric-vehicles/charging-your-ev/',
+                                },
+                                'Electric vehicle guide': {
+                                    link: 'https://www.energysage.com/electric-vehicles/',
+                                },
+                                'Best EV chargers': {
                                     link: 'https://www.energysage.com/',
                                 },
-                                'Solar Rebates': {
-                                    link: 'https://www.energysage.com/',
+                                'What does it cost to charge an EV?': {
+                                    link: 'https://news.energysage.com/electric-vehicle-charging-cost-vs-gas/',
                                 },
-                                'Guide to Loans': {
-                                    link: 'https://www.energysage.com/',
+                            },
+                        },
+                        'Smart Home': {
+                            subtopics: {
+                                'Home electricity guide': {
+                                    link: 'http://www.energysage.com/electricity/',
+                                },
+                                'Home energy management guide': {
+                                    link: 'http://www.energysage.com/energy-management/',
+                                },
+                                'Energy efficiency': {
+                                    link: 'http://www.energysage.com/energy-efficiency/',
+                                },
+                                'Best smart home gadgets': {
+                                    link: 'http://www.energysage.com/energy-products/',
+                                },
+                            },
+                        },
+                        'For Your Business': {
+                            subtopics: {
+                                'Clean energy guide for businesses': {
+                                    link: 'http://www.energysage.com/',
+                                },
+                                'Solar for businesses': {
+                                    link: 'https://news.energysage.com/commercial-solar-benefits-for-business/',
+                                },
+                                'Solar for nonprofit organizations': {
+                                    link: 'https://news.energysage.com/solar-nonprofit-benefits-financing/',
+                                },
+                                'Energy storage for businesses': {
+                                    link: 'https://news.energysage.com/energy-storage-for-businesses/',
+                                },
+                            },
+                        },
+
+                        'Clean Energy Financing': {
+                            subtopics: {
+                                'Guide to financing': {
+                                    link: 'http://www.energysage.com/',
+                                },
+                                'How to pay for solar': {
+                                    link: 'https://www.energysage.com/solar/how-to-go-solar/how-to-pay-for-solar/',
+                                },
+                                'What to know about solar loans': {
+                                    link: 'https://news.energysage.com/solar-loans-overview/',
+                                },
+                            },
+                        },
+
+                        'EnergySage News': {
+                            subtopics: {
+                                Blog: {
+                                    link: 'http://news.energysage.com/',
                                 },
                             },
                         },
