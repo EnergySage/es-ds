@@ -215,6 +215,13 @@ $mobile-max-width: $desktop-min-width - 1;
         display: block;
       }
 
+      .top-header-dropdown {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding-left: 0;
+      }
+
       .top-header-icon {
         transform: rotate(180deg);
       }
@@ -255,9 +262,8 @@ $mobile-max-width: $desktop-min-width - 1;
       text-overflow: ellipsis;
     }
 
-    // Place EnergyTips topic in a row instead of a column on desktop dropdown
     .topic-group {
-      float: left;
+      margin-bottom: 2rem;
     }
   }
 

@@ -269,7 +269,7 @@
                                             </div>
                                         </div>
                                         <ul
-                                            class="row dropdown-menu dropdown-menu-full-page p-lg-200"
+                                            class="row dropdown-menu dropdown-menu-full-page top-header-dropdown p-lg-200"
                                             :aria-labelledby="`menu-${header}`">
                                             <li
                                                 class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center">
