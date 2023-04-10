@@ -3,7 +3,7 @@
 exports[`EsHorizontalList <EsHorizontalList /> 1`] = `
 "<div id="reviewsModal___BV_modal_outer_" style="position: absolute; z-index: 1040;" class="modal-lightbox" body-class="pt-0 pt-lg-200">
   <transition-stub enterclass="" leaveclass="" entertoclass="" leavetoclass="" enteractiveclass="" leaveactiveclass="">
-    <div id="reviewsModal" role="dialog" aria-labelledby="reviewsModal___BV_modal_title_" aria-describedby="reviewsModal___BV_modal_body_" class="modal fade" style="padding-right: 0px;" aria-modal="true">
+    <div id="reviewsModal" role="dialog" aria-labelledby="reviewsModal___BV_modal_title_" aria-describedby="reviewsModal___BV_modal_body_" class="modal fade" style="" aria-modal="true">
       <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"><span tabindex="0"></span>
         <div id="reviewsModal___BV_modal_content_" tabindex="-1" class="modal-content">
           <header id="reviewsModal___BV_modal_header_" class="modal-header">
