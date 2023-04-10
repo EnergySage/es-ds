@@ -24,7 +24,7 @@
             <span
                 v-if="$slots.prefixIcon"
                 aria-hidden
-                class="prefix-icon">
+                class="prefix-icon position-absolute">
                 <slot name="prefixIcon" />
             </span>
             <b-form-input
@@ -182,7 +182,6 @@ export default {
     left: $input-padding-x;
     /* allow clicks to pass through and give the input focus */
     pointer-events: none;
-    position: absolute;
     /* vertically center within the input container */
     top: calc($input-height * 0.5);
     transform: translateY(-50%);
