@@ -19,11 +19,19 @@
             class="mb-25 font-size-75">
             <slot name="extraContext" />
         </p>
-        <div class="input-holder">
+        <div class="input-holder position-relative">
+            <!-- prefix icons are decorative only so are aria-hidden -->
+            <span
+                v-if="$slots.prefixIcon"
+                aria-hidden
+                class="prefix-icon">
+                <slot name="prefixIcon" />
+            </span>
             <b-form-input
                 :id="id"
                 :type="type"
                 class="es-form-input w-100"
+                :class="{ 'has-prefix-icon': $slots.prefixIcon }"
                 :disabled="disabled"
                 :state="state"
                 v-bind="$attrs"
@@ -162,6 +170,22 @@ export default {
     .input-holder {
         flex: 0 0 70%;
     }
+}
+
+.has-prefix-icon {
+    /* match the padding right of valid/invalid state icons */
+    padding-left: $input-height-inner !important;
+}
+
+.prefix-icon {
+    /* match the padding left of normal inputs */
+    left: $input-padding-x;
+    /* allow clicks to pass through and give the input focus */
+    pointer-events: none;
+    position: absolute;
+    /* vertically center within the input container */
+    top: calc($input-height * 0.5);
+    transform: translateY(-50%);
 }
 
 </style>
