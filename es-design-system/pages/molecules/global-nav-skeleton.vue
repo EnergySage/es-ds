@@ -364,9 +364,9 @@
                                             <div class="dropdown-cta">
                                                 <div class="font-size-50 p-lg-100">
                                                     <a
-                                                        class="cta-link"
-                                                        href="#"
-                                                        title="">
+                                                        class="d-block cta-link"
+                                                        href="https://www.energysage.com/solar/solar-101/what-is-community-solar/"
+                                                        title="What is community solar?">
                                                         <!-- eslint-disable -->
                                                         <svg class="mb-100" xmlns="http://www.w3.org/2000/svg" width="253" height="190" fill="none" viewBox="0 0 253 190">
                                                             <g clip-path="url(#a)">
