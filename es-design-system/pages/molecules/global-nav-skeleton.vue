@@ -718,16 +718,21 @@ export default {
         };
     },
     mounted() {
-        // overlay script starts
+        // CUSTOM GLOBAL-NAV SCRIPT STARTS
+
+        // Create an overlay to obscure page contents
         const overlay = document.querySelector('.content-overlay');
         // eslint-disable-next-line max-len
         document.querySelectorAll('.nav-es-global .nav-item .dropdown-toggle, .nav-es-global .nav-item .dropdown-menu').forEach((element) => {
             element.addEventListener('mouseover', () => { overlay.style.display = 'block'; });
             element.addEventListener('mouseout', () => { overlay.style.display = 'none'; });
         });
-        // overlay script ends
-        // checkbox script starts
+
         document.querySelector('.main-menu-checkbox').addEventListener('click', (event) => {
+            // Lock scrolling on body when menu is open
+            document.body.style.overflow = event.target.checked ? 'hidden' : 'visible';
+
+            // Close all submenus when primary is closed
             if (event.target.checked === false) {
                 document.querySelectorAll('.menu-checkbox').forEach((element) => {
                     if (element.checked) {
@@ -736,8 +741,8 @@ export default {
                 });
             }
         });
-        // checkbox script ends
-        // api script starts
+
+        // get logged in/out state and display appropriate menu
         fetch('http://localhost:8000/api/account-first-name/?format=json', { method: 'GET' })
             .then((response) => response.json())
             .then((data) => {
@@ -755,7 +760,8 @@ export default {
             .catch(
                 (error) => console.log('error:', error),
             );
-        // api script ends
+
+        // CUSTOM GLOBAL-NAV SCRIPT ENDS
     },
     async created() {
         if (this.$prism) {
