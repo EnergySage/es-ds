@@ -352,11 +352,61 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <div class="d-none d-lg-block ">
-                                    <IconPerson class="align-self-center" />
+                                <div class="d-none d-lg-block">
+                                    <li class="nav-item icon-dropdown">
+                                        <span
+                                            class="nav-link dropdown-toggle py-100">
+                                            <IconPerson class="align-self-center" />
+                                            <span
+                                                class="first-name align-items-center pl-50" />
+                                        </span>
+                                        <div class="menu">
+                                            <ul
+                                                id="loggedIn"
+                                                class="dropdown-menu rounded mt-0 py-100">
+                                                <li
+                                                    v-for="item in Object.keys(profileIconDropdown.loggedIn)"
+                                                    :key="item">
+                                                    <a
+                                                        class="dropdown-item nav-link"
+                                                        :href="profileIconDropdown.loggedIn[item].link"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        <span class="mx-50"> {{ item }} </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <ul
+                                                id="loggedOut"
+                                                class="dropdown-menu rounded mt-0">
+                                                <a
+                                                    class="d-flex justify-content-around text-decoration-none"
+                                                    :href="profileIconDropdown.loggedOut['Sign in'].link">
+                                                    <EsButton
+                                                        :outline="true"
+                                                        variant="secondary"
+                                                        class="m-100 w-75">
+                                                        Sign in
+                                                    </EsButton>
+                                                </a>
+                                                <li>
+                                                    <a
+                                                        class="d-flex justify-content-around"
+                                                        :href="profileIconDropdown.loggedOut['Create an account'].link">
+                                                        <EsButton
+                                                            variant="link">
+                                                            Create an account
+                                                        </EsButton>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                     <a
+                                        id="compareButton"
                                         href="https://www.energysage.com/market/start/1">
-                                        <EsButton class="btn btn-secondary ml-100 my-100">
+                                        <EsButton class="btn btn-secondary my-100">
                                             Compare quotes
                                         </EsButton>
                                     </a>
@@ -448,6 +498,33 @@ export default {
             visible: false,
             compCode: '',
             docCode: '',
+            profileIconDropdown: {
+                loggedIn: {
+                    'My Account': {
+                        link: 'https://www.energysage.com/profile/',
+                    },
+                    'Share Your Experience': {
+                        link: 'https://www.energysage.com/share-your-experience/',
+                    },
+                    Settings: {
+                        link: 'https://www.energysage.com/account-settings/router/',
+                    },
+                    'Refer a Friend': {
+                        link: 'https://www.energysage.com/refer-a-friend/',
+                    },
+                    'Sign Out': {
+                        link: 'https://www.energysage.com/logout/',
+                    },
+                },
+                loggedOut: {
+                    'Sign in': {
+                        link: 'https://www.energysage.com/login/',
+                    },
+                    'Create an account': {
+                        link: 'https://www.energysage.com/register/',
+                    },
+                },
+            },
             topHeaders: {
                 'Energy Tips': {
                     topics: {
@@ -660,6 +737,25 @@ export default {
             }
         });
         // checkbox script ends
+        // api script starts
+        fetch('http://localhost:8000/api/account-first-name/?format=json', { method: 'GET' })
+            .then((response) => response.json())
+            .then((data) => {
+                const name = data?.first_name || null;
+                document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').innerHTML = name;
+                if (name) {
+                    document.querySelector('.nav-es-global #compareButton').style.display = 'none';
+                    document.querySelector('.nav-es-global #loggedOut').style.display = 'none';
+                    document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').style.display = 'block';
+                    document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle').style.display = 'flex';
+                } else {
+                    document.querySelector('.nav-es-global #loggedIn').style.display = 'none';
+                }
+            })
+            .catch(
+                (error) => console.log('error:', error),
+            );
+        // api script ends
     },
     async created() {
         if (this.$prism) {

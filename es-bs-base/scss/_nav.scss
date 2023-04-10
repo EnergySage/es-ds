@@ -141,16 +141,22 @@ $energy-tips-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/sv
 $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'><path fill-rule='evenodd' clip-rule='evenodd' d='M0 1C0 0.447715 0.447715 0 1 0L19 0C19.5523 0 20 0.447715 20 1C20 1.55228 19.5523 2 19 2H1C0.447715 2 0 1.55228 0 1ZM0 8C0 7.44772 0.447715 7 1 7H19C19.5523 7 20 7.44772 20 8C20 8.55229 19.5523 9 19 9H1C0.447715 9 0 8.55229 0 8ZM0 15C0 14.4477 0.447715 14 1 14H19C19.5523 14 20 14.4477 20 15C20 15.5523 19.5523 16 19 16H1C0.447715 16 0 15.5523 0 15Z' fill='#292929'/></svg>") !default;
 
 .nav-es-global {
+
+  // add a background so veil goes under the nav
+  background-color: white;
+
   // pull navbar up to avoid overlay from getting covered by other DOM elements
   z-index: 1000;
+
+  // override es-ds default
+  .btn-link {
+    color: black;
+  }
 
   // All links should have font-weight-normal (weight 400)
   a {
     font-weight: 400;
   }
-
-  // add a background so veil goes under the nav
-  background-color: white;
 
   // Hide the default BS4 expansion indicator
   .dropdown-toggle::after {
@@ -160,6 +166,11 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
   // Hide elements only needed for the mobile navigation
   .dropdown-label, .menu-checkbox, .menu-header, .menu-toggle, .expand-icon {
     display: none;
+  }
+
+  // Override default blue background on hover and click
+  .dropdown-item:hover, .dropdown-item:active {
+    background: none;
   }
 
   // On Desktop a hovers display the dropdowns
@@ -191,22 +202,45 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
       }
     }
 
-    // Show dropdown and hover colors on nav-item hover in desktop view
-    // Show top headers up chevron icon on nav-item hover
+    // Show menu and up chevron icon nav-item hover
     .nav-item:hover {
       .dropdown-menu {
         display: block;
-        background: rgba(236, 236, 236, 1);
       }
-
 
       .top-header-icon {
         transform: rotate(180deg);
       }
     }
 
+    // Top header hover should be gray
     .nav-item.top-header:hover {
       background: rgba(236, 236, 236, 1);
+
+      // Top header menu background should be gray
+      .dropdown-menu {
+        background: rgba(236, 236, 236, 1);
+      }
+    }
+
+    // Position person icon and dropdown menu
+    .icon-dropdown {
+      display: inline-block;
+      position: relative;
+    }
+
+    // Fix width of the dropdown menu on person icon hover
+    .icon-dropdown .dropdown-menu {
+      width: 250px;
+    };
+
+    // Style first name with truncation and default not shown
+    .icon-dropdown .dropdown-toggle .first-name {
+      display: none;
+      width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     // Place EnergyTips topic in a row instead of a column on desktop dropdown
@@ -255,11 +289,6 @@ $menu-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' widt
     .dropdown-label {
         cursor: pointer;
         display: block;
-    }
-
-    // Override default blue background on hover and click
-    .dropdown-item:hover, .dropdown-item:active {
-      background: none;
     }
 
     // Show chevrons on mobile
