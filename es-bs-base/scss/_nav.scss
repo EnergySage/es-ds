@@ -321,7 +321,6 @@ $mobile-max-width: $desktop-min-width - 1;
     // Style the menu for mobile navigation bit but use translate to keep it off screen
     .menu {
         max-height: 100%;
-        overflow: scroll;
         min-width: 300px;
         background: #fff;
         flex-direction: column;
@@ -333,6 +332,10 @@ $mobile-max-width: $desktop-min-width - 1;
         transform: translate3d(-100%, 0, 0);
         transition: transform 0.2s;
         width: 100%;
+
+        ul {
+          overflow: scroll;
+        }
     }
 
     // Avoid top level nav's subtopics level menu from laying on its topic level menu
