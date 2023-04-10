@@ -126,19 +126,17 @@
 $desktop-min-width: 992px;
 $mobile-max-width: $desktop-min-width - 1;
 
-@media only screen and (min-width: $desktop-min-width) {
-  // Desktop overlay that is displayed on navbar hovers
-  // pull overlay up to avoid it from getting covered by other DOM elements
-  .content-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(64, 64, 64, .45);
-    display: none;
-    z-index: 1000;
-}
+// Overlay that is displayed on navbar hovers on desktop, menu open on mobile
+// pull overlay up to avoid it from getting covered by other DOM elements
+.content-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(64, 64, 64, .45);
+  display: none;
+  z-index: 1000;
 }
 
 .nav-es-global {
@@ -263,6 +261,13 @@ $mobile-max-width: $desktop-min-width - 1;
     // Set collapsed navbar height
     height: 56px;
 
+    // Make full-width header match overlay color when menu is expanded
+    &.navbar {
+      &.menu-expanded {
+        background-color: #A9A9A9;
+      }
+    }
+
     // Force navigation items to align to the top and avoid conflict with other components on the page
     .navbar-collapse {
       align-items: start;
@@ -321,6 +326,7 @@ $mobile-max-width: $desktop-min-width - 1;
     // Style the menu for mobile navigation bit but use translate to keep it off screen
     .menu {
         max-height: 100%;
+        max-width: 540px;
         min-width: 300px;
         background: #fff;
         flex-direction: column;

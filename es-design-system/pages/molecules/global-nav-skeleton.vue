@@ -16,7 +16,7 @@
             <div id="nav-main">
                 <div class="content-overlay" />
                 <nav
-                    class="navbar navbar-expand navbar-light nav-es-global py-0">
+                    class="nav-es-global navbar navbar-expand navbar-light py-0">
                     <div class="d-flex d-lg-none col-2 px-0">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                         <label
@@ -720,25 +720,57 @@ export default {
     mounted() {
         // CUSTOM GLOBAL-NAV SCRIPT STARTS
 
+        // Function to collapse all open menus
+        function uncheck_menus() {
+            document.querySelectorAll('.menu-checkbox').forEach((element) => {
+                if (element.checked) {
+                    element.click();
+                }
+            });
+            document.querySelector('.nav-es-global.navbar').classList.remove('menu-expanded');
+        }
+
         // Create an overlay to obscure page contents
         const overlay = document.querySelector('.content-overlay');
+
+        // Create a media query used to close all submenus and remove overlay at breakpoint
+        const mediaQuery = window.matchMedia('(min-width: 992px)');
+        mediaQuery.addEventListener('change', (e) => {
+            if (e.matches) {
+                uncheck_menus();
+                overlay.style.display = 'none';
+            }
+        });
+
+        // Show overlay on hovers for desktop only
         // eslint-disable-next-line max-len
         document.querySelectorAll('.nav-es-global .nav-item .dropdown-toggle, .nav-es-global .nav-item .dropdown-menu').forEach((element) => {
-            element.addEventListener('mouseover', () => { overlay.style.display = 'block'; });
-            element.addEventListener('mouseout', () => { overlay.style.display = 'none'; });
+            element.addEventListener('mouseover', () => {
+                if (mediaQuery.matches) {
+                    overlay.style.display = 'block';
+                }
+            });
+            element.addEventListener('mouseout', () => {
+                if (mediaQuery.matches) {
+                    overlay.style.display = 'none';
+                }
+            });
         });
 
         document.querySelector('.main-menu-checkbox').addEventListener('click', (event) => {
             // Lock scrolling on body when menu is open
             document.body.style.overflow = event.target.checked ? 'hidden' : 'visible';
 
+            // Add class to make mobile nav header match overlay color when menu is open
+            document.querySelector('.nav-es-global.navbar').classList.toggle('menu-expanded');
+
             // Close all submenus when primary is closed
+            // Make overlay visible when menu is open
             if (event.target.checked === false) {
-                document.querySelectorAll('.menu-checkbox').forEach((element) => {
-                    if (element.checked) {
-                        element.click();
-                    }
-                });
+                uncheck_menus();
+                overlay.style.display = 'none';
+            } else {
+                overlay.style.display = 'block';
             }
         });
 
