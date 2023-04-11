@@ -268,10 +268,10 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="dropdown-menu dropdown-menu-full-page">
-                                            <div class="mb-3 mb-lg-0 dropdown-menus">
+                                        <div class="dropdown-menu dropdown-menu-full-page dropdown-menu-primary">
+                                            <div class="mb-3 mb-lg-0 dropdown-topics">
                                                 <ul
-                                                    class="top-header-dropdown p-lg-100"
+                                                    class="dropdown-list p-lg-100"
                                                     :aria-labelledby="`menu-${header}`">
                                                     <li
                                                         class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center">

@@ -241,12 +241,16 @@ $xl-width: 1200px;
     // Show top headers up chevron icon on nav-item hover
     .nav-item:hover {
       .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-menu-primary {
         display: flex;
         justify-content: space-between;
         background: rgba(236, 236, 236, 1);
       }
 
-      .top-header-dropdown {
+      .dropdown-list {
         display: flex;
         flex-wrap: wrap;
         list-style: none;
@@ -293,7 +297,7 @@ $xl-width: 1200px;
       text-overflow: ellipsis;
     }
 
-    .dropdown-menus {
+    .dropdown-topics {
       flex-basis: 630px;
     }
 
@@ -317,7 +321,7 @@ $xl-width: 1200px;
   }
 
   @media only screen and (min-width: $xl-width) {
-    .dropdown-menus {
+    .dropdown-topics {
       flex-basis: 860px;
     }
 
@@ -347,26 +351,30 @@ $xl-width: 1200px;
     // Make menu scrollable, prevent it from making the page longer
     // Prevent horizontal scrolling on menu
     .dropdown-menu {
-        top: 64px;
-        max-height: calc(100% - 64px);
-        overflow: scroll;
-        padding: 0;
+      top: 64px;
+      max-height: 100%;
+      overflow: scroll;
+      padding: 0;
+      display: flex !important;
+    }
+
+    .dropdown-menu-primary {
+        flex-direction: column;
         width: 100%;
         border: none;
 
-        .nav-item {
-          margin: 0;
-        }
+      .nav-item {
+        margin: 0;
+      }
     }
 
-    .top-header-dropdown {
+    .dropdown-list {
       padding: 0;
     }
 
     // Prevent horizontal scrolling on menu
     .dropdown-menu-full-page {
       display: flex !important;
-      flex-direction: column;
     }
 
     // Hide the desktop dropdown toggle because mobile uses the labels as toggles
