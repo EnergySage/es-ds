@@ -401,19 +401,10 @@ export default {
             value: k,
         }));
 
-        const variants = Object.keys(colorNames)
-            .map((k) => k)
-            .reduce((prev, cur) => {
-                // eslint-disable-next-line no-param-reassign
-                prev[cur] = sassIconColors[cur];
-                return prev;
-            }, {});
-
         return {
             activeColor: colorNames.body,
             colorOptions,
             colorNames,
-            variants,
         };
     },
     data() {
@@ -422,9 +413,6 @@ export default {
         };
     },
     computed: {
-        themeHexVal() {
-            return this.variants[this.variantselected];
-        },
         textColorClass() {
             return `text-${this.activeColor}`;
         },
