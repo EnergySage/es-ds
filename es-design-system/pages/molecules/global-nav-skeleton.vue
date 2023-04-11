@@ -365,8 +365,8 @@
                                                 <div class="font-size-50 p-lg-100">
                                                     <a
                                                         class="d-block cta-link"
-                                                        href="https://www.energysage.com/solar/solar-101/what-is-community-solar/"
-                                                        title="What is community solar?">
+                                                        :href="topHeaders[header].dropdownCta.linkUrl"
+                                                        :title="topHeaders[header].dropdownCta.linkName">
                                                         <!-- eslint-disable -->
                                                         <svg class="mb-100" xmlns="http://www.w3.org/2000/svg" width="253" height="190" fill="none" viewBox="0 0 253 190">
                                                             <g clip-path="url(#a)">
@@ -504,12 +504,9 @@
                                                                 </clipPath>
                                                             </defs>
                                                         </svg>
-                                                        <div class="eyebrow mb-50 text-orange">Editor's Recommendation</div>
+                                                        <div class="eyebrow mb-50">{{ topHeaders[header].dropdownCta.linkName }}</div>
 
-                                                        <p class="font-weight-bold">
-                                                            Everything you need to know about community solar:
-                                                            projects, costs, savings, and more
-                                                        </p>
+                                                        <p class="font-weight-bold">{{ topHeaders[header].dropdownCta.lede }}</p>
                                                     </a>
                                                 </div>
                                             </div>
@@ -790,7 +787,6 @@ export default {
                                 },
                             },
                         },
-
                         'Clean Energy Financing': {
                             subtopics: {
                                 'Guide to financing': {
@@ -804,7 +800,6 @@ export default {
                                 },
                             },
                         },
-
                         'EnergySage News': {
                             subtopics: {
                                 Blog: {
@@ -814,6 +809,11 @@ export default {
                         },
                     },
                     subHeading: 'Learn from experts',
+                    dropdownCta: {
+                        linkName: "Editor's Recommendation",
+                        linkUrl: 'https://news.energysage.com/are-solar-panels-worth-it/',
+                        lede: 'Everything you need to know about community solar: projects, costs, savings, and more',
+                    },
                 },
                 'Solar Calculator': {
                     topics: {},
@@ -825,13 +825,13 @@ export default {
                     topics: {
                         'Our Company': {
                             subtopics: {
-                                'Mission & Values': {
+                                'Mission & values': {
                                     link: 'https://www.energysage.com/about-us/company/',
                                 },
                                 'How it works': {
                                     link: '',
                                 },
-                                'Editorial Team': {
+                                'Editorial team': {
                                     link: '',
                                 },
                                 'Partner with us': {
@@ -853,7 +853,11 @@ export default {
                         },
                     },
                     subHeading: 'Why choose EnergySage',
-
+                    dropdownCta: {
+                        linkName: 'Recent Press',
+                        linkUrl: 'https://www.energysage.com/press/energysage-marketplace-intel-report-16',
+                        lede: 'EnergySage Releases Its 16th Solar & Storage Marketplace Report',
+                    },
                 },
             },
             productHeaders: {
