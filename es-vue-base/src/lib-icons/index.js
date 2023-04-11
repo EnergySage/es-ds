@@ -73,3 +73,11 @@ export { default as IconStarHalf } from './icon-star-half.vue';
 export { default as IconStarEmpty } from './icon-star-empty.vue';
 export { default as IconVerified } from './icon-verified.vue';
 export { default as IconX } from './icon-x.vue';
+
+// marketing icons
+export { default as IconBattery } from './icon-battery.vue';
+export { default as IconBusiness } from './icon-business.vue';
+export { default as IconCommunitySolar } from './icon-community-solar.vue';
+export { default as IconElectricVehicle } from './icon-electric-vehicle.vue';
+export { default as IconHeatPump } from './icon-heat-pump.vue';
+export { default as IconRooftopSolar } from './icon-rooftop-solar.vue';
