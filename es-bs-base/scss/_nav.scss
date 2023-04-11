@@ -182,6 +182,10 @@ $xl-width: 1200px;
   .dropdown-cta {
     line-height: 1.3;
 
+    .eyebrow {
+      color: #b95100 !important; // temp
+    }
+
     .cta-link {
       color: $gray-900;
       font-size: 14px;
@@ -210,12 +214,20 @@ $xl-width: 1200px;
     }
 
     // eyebrow copied from es-ds class, but override for letter spacing and only display on lg+ viewports
+    .eyebrow,
+    .eyebrow-lg {
+        font-weight: 700;
+        color: #292929;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .eyebrow {
+        font-size: 0.75rem;
+    }
+
     .eyebrow-lg {
       font-size: 1rem;
-      font-weight: 700;
-      color: #292929;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
     // Show top headers down chevron icon
@@ -306,11 +318,11 @@ $xl-width: 1200px;
 
   @media only screen and (min-width: $xl-width) {
     .dropdown-menus {
-      flex-basis: 830px;
+      flex-basis: 860px;
     }
 
     .topic-group {
-      flex-basis: 245px;
+      flex-basis: 260px;
     }
   }
 

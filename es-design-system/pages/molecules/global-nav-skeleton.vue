@@ -504,7 +504,7 @@
                                                                 </clipPath>
                                                             </defs>
                                                         </svg>
-                                                        <div class="eyebrow font-size-50 mb-50 text-orange">Editor's Recommendation</div>
+                                                        <div class="eyebrow mb-50 text-orange">Editor's Recommendation</div>
 
                                                         <p class="font-weight-bold">
                                                             Everything you need to know about community solar:
