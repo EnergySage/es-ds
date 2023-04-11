@@ -244,7 +244,7 @@ $mobile-max-width: $desktop-min-width - 1;
     // Style first name with truncation and default not shown
     .icon-dropdown .dropdown-toggle .first-name {
       display: none;
-      width: 200px;
+      max-width: 200px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

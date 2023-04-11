@@ -354,12 +354,14 @@
                                 </li>
                                 <div class="d-none d-lg-block">
                                     <li class="nav-item icon-dropdown">
-                                        <span
-                                            class="nav-link dropdown-toggle py-100">
-                                            <IconPerson class="align-self-center" />
-                                            <span
-                                                class="first-name align-items-center pl-50" />
-                                        </span>
+                                        <div class="container justify-content-center px-0">
+                                            <div
+                                                class="nav-link dropdown-toggle py-100">
+                                                <IconPerson class="align-self-center" />
+                                                <div
+                                                    class="first-name align-items-center pl-50" />
+                                            </div>
+                                        </div>
                                         <div class="menu">
                                             <ul
                                                 id="loggedIn"
@@ -775,23 +777,30 @@ export default {
         });
 
         // get logged in/out state and display appropriate menu
+        const menuDisplay = ({ loggedOut }) => {
+            if (loggedOut) {
+                // logged out so hide logged in dropdown
+                document.querySelector('.nav-es-global #loggedIn').style.display = 'none';
+            } else {
+                // logged in so hide logged out dropdown, compare button, and show name with spacing
+                document.querySelector('.nav-es-global #compareButton').style.display = 'none';
+                document.querySelector('.nav-es-global #loggedOut').style.display = 'none';
+                document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').style.display = 'block';
+                document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle').style.display = 'flex';
+                document.querySelector('.nav-es-global .icon-dropdown .container').style.width = '225px';
+            }
+        };
+
         fetch('http://localhost:8000/api/account-first-name/?format=json', { method: 'GET' })
             .then((response) => response.json())
             .then((data) => {
                 const name = data?.first_name || null;
                 document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').innerHTML = name;
-                if (name) {
-                    document.querySelector('.nav-es-global #compareButton').style.display = 'none';
-                    document.querySelector('.nav-es-global #loggedOut').style.display = 'none';
-                    document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').style.display = 'block';
-                    document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle').style.display = 'flex';
-                } else {
-                    document.querySelector('.nav-es-global #loggedIn').style.display = 'none';
-                }
-            })
-            .catch(
-                (error) => console.log('error:', error),
-            );
+                menuDisplay({ loggedOut: (name === null) });
+            }).catch((e) => {
+                console.log('error', e);
+                menuDisplay({ loggedOut: true });
+            });
 
         // CUSTOM GLOBAL-NAV SCRIPT ENDS
     },
