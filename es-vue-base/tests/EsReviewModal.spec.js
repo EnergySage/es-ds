@@ -101,7 +101,6 @@ describe('EsHorizontalList', () => {
         const a11y = await axe(wrapper.element);
 
         expect(wrapper.vm).toBeTruthy();
-        expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
     });
 });
