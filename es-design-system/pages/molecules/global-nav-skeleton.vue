@@ -64,7 +64,12 @@
                         <!-- eslint-enable -->
                     </div>
                     <div class="d-flex d-lg-none justify-content-end col-2 px-0">
-                        <IconPerson class="align-self-center" />
+                        <a
+                            class="text-dark text-decoration-none"
+                            :href="profileIconDropdown.loggedIn['My Account'].link"
+                            aria-label="Link to profile">
+                            <IconPerson class="align-self-center" />
+                        </a>
                     </div>
                     <input
                         id="data--main-menu"
@@ -123,7 +128,9 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="container px-100 pt-100 d-lg-none text-center justify-content-center">
+                        <div
+                            id="compareButton_mobile"
+                            class="container px-100 pt-100 d-lg-none text-center justify-content-center">
                             Create an account to compare and see quotes from our verified installers.
                             <EsButton class="btn btn-secondary btn-md my-100 w-100">
                                 Compare quotes
@@ -406,7 +413,7 @@
                                         </div>
                                     </li>
                                     <a
-                                        id="compareButton"
+                                        id="compareButton_desktop"
                                         href="https://www.energysage.com/market/start/1">
                                         <EsButton class="btn btn-secondary my-100">
                                             Compare quotes
@@ -782,8 +789,8 @@ export default {
                 // logged out so hide logged in dropdown
                 document.querySelector('.nav-es-global #loggedIn').style.display = 'none';
             } else {
-                // logged in so hide logged out dropdown, compare button, and show name with spacing
-                document.querySelector('.nav-es-global #compareButton').style.display = 'none';
+                // logged in so hide logged out dropdown, compare buttons, and show name with spacing
+                document.querySelectorAll('.nav-es-global [id^="compareButton"]').forEach((e) => { e.style.display = 'none'; });
                 document.querySelector('.nav-es-global #loggedOut').style.display = 'none';
                 document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').style.display = 'block';
                 document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle').style.display = 'flex';
