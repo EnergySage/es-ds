@@ -736,18 +736,30 @@ export default {
                     element.click();
                 }
             });
-            document.querySelector('.nav-es-global.navbar').classList.remove('menu-expanded');
         }
+
+        // Create a checkbox used to determine if any mobile menus are open
+        const mainMenuCheckbox = document.querySelector('.main-menu-checkbox');
+
+        // Collapse all open menus on window resize
+        window.addEventListener('resize', () => {
+            if (mainMenuCheckbox.checked) {
+                uncheck_menus();
+            }
+        });
 
         // Create an overlay to obscure page contents
         const overlay = document.querySelector('.content-overlay');
 
-        // Create a media query used to close all submenus and remove overlay at breakpoint
-        const mediaQuery = window.matchMedia('(min-width: 992px)');
-        mediaQuery.addEventListener('change', (e) => {
-            if (e.matches) {
+        // Function to show/hide overlay
+        function show_overlay(overlay_visible) {
+            overlay.style.display = overlay_visible ? 'block' : 'none';
+        }
+
+        // Collapse all open menus on overlay click
+        overlay.addEventListener('click', () => {
+            if (mainMenuCheckbox.checked) {
                 uncheck_menus();
-                overlay.style.display = 'none';
             }
         });
 
@@ -755,31 +767,28 @@ export default {
         // eslint-disable-next-line max-len
         document.querySelectorAll('.nav-es-global .nav-item .dropdown-toggle, .nav-es-global .nav-item .dropdown-menu').forEach((element) => {
             element.addEventListener('mouseover', () => {
-                if (mediaQuery.matches) {
-                    overlay.style.display = 'block';
+                if (!mainMenuCheckbox.checked) {
+                    show_overlay(true);
                 }
             });
             element.addEventListener('mouseout', () => {
-                if (mediaQuery.matches) {
-                    overlay.style.display = 'none';
+                if (!mainMenuCheckbox.checked) {
+                    show_overlay(false);
                 }
             });
         });
 
-        document.querySelector('.main-menu-checkbox').addEventListener('click', (event) => {
+        mainMenuCheckbox.addEventListener('click', (event) => {
             // Lock scrolling on body when menu is open
             document.body.style.overflow = event.target.checked ? 'hidden' : 'visible';
 
-            // Add class to make mobile nav header match overlay color when menu is open
-            document.querySelector('.nav-es-global.navbar').classList.toggle('menu-expanded');
-
             // Close all submenus when primary is closed
-            // Make overlay visible when menu is open
+            // Show overlay when any menu is open
             if (event.target.checked === false) {
                 uncheck_menus();
-                overlay.style.display = 'none';
+                show_overlay(false);
             } else {
-                overlay.style.display = 'block';
+                show_overlay(true);
             }
         });
 

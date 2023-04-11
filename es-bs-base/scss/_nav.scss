@@ -147,9 +147,6 @@ $mobile-max-width: $desktop-min-width - 1;
   // default should be size 14px according to figma
   font-size: 14px;
 
-  // pull navbar up to avoid overlay from getting covered by other DOM elements
-  z-index: 1000;
-
   // override es-ds default
   .btn-link {
     color: black;
@@ -182,6 +179,9 @@ $mobile-max-width: $desktop-min-width - 1;
 
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: $desktop-min-width) {
+    // pull navbar up to avoid overlay from getting covered by other DOM elements
+    z-index: 1000;
+    
     // Allow dropdown content to take up the full width of the page
     .dropdown-full-page {
       position: static;
@@ -261,17 +261,11 @@ $mobile-max-width: $desktop-min-width - 1;
     // Set collapsed navbar height
     height: 56px;
 
-    // Make full-width header match overlay color when menu is expanded
-    &.navbar {
-      &.menu-expanded {
-        background-color: #A9A9A9;
-      }
-    }
-
     // Force navigation items to align to the top and avoid conflict with other components on the page
+    // Ensure menus are visible above overlay
     .navbar-collapse {
       align-items: start;
-      z-index: 1;
+      z-index: 1000;
     }
 
     // Allow the dropdowns to overlap each other
