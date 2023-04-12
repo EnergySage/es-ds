@@ -736,21 +736,10 @@ export default {
         // Function to collapse all open menus
         function uncheck_menus() {
             document.querySelectorAll('.menu-checkbox').forEach((element) => {
-                if (element.checked) {
-                    element.click();
-                }
+                const checkbox = element;
+                checkbox.checked = false;
             });
         }
-
-        // Create a checkbox used to determine if any mobile menus are open
-        const mainMenuCheckbox = document.querySelector('.main-menu-checkbox');
-
-        // Collapse all open menus on window resize
-        window.addEventListener('resize', () => {
-            if (mainMenuCheckbox.checked) {
-                uncheck_menus();
-            }
-        });
 
         // Create an overlay to obscure page contents
         const overlay = document.querySelector('.content-overlay');
@@ -760,39 +749,52 @@ export default {
             overlay.style.display = overlay_visible ? 'block' : 'none';
         }
 
+        // Show overlay and lock scrolling on body when menu is open
+        function show_mobile_menus() {
+            show_overlay(true);
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close all submenus, hide overlay, and unlock scrolling when menu is closed
+        function collapse_mobile_menus() {
+            uncheck_menus();
+            show_overlay(false);
+            document.body.style.overflow = 'visible';
+        }
+
+        // Create a checkbox used to determine if any mobile menus are open
+        const mainMenuCheckbox = document.querySelector('.main-menu-checkbox');
+
+        // Collapse all open menus on window resize
+        window.addEventListener('resize', () => {
+            if (mainMenuCheckbox.checked) {
+                collapse_mobile_menus();
+            }
+        });
+
         // Collapse all open menus on overlay click
         overlay.addEventListener('click', () => {
-            if (mainMenuCheckbox.checked) {
-                uncheck_menus();
-            }
+            collapse_mobile_menus();
         });
 
         // Show overlay on hovers for desktop only
         // eslint-disable-next-line max-len
         document.querySelectorAll('.nav-es-global .nav-item .dropdown-toggle, .nav-es-global .nav-item .dropdown-menu').forEach((element) => {
             element.addEventListener('mouseover', () => {
-                if (!mainMenuCheckbox.checked) {
-                    show_overlay(true);
-                }
+                show_overlay(true);
             });
             element.addEventListener('mouseout', () => {
-                if (!mainMenuCheckbox.checked) {
-                    show_overlay(false);
-                }
+                // Hide overlay on mouseout on desktop not mobile
+                show_overlay(mainMenuCheckbox.checked);
             });
         });
 
-        mainMenuCheckbox.addEventListener('click', (event) => {
-            // Lock scrolling on body when menu is open
-            document.body.style.overflow = event.target.checked ? 'hidden' : 'visible';
-
-            // Close all submenus when primary is closed
-            // Show overlay when any menu is open
-            if (event.target.checked === false) {
-                uncheck_menus();
-                show_overlay(false);
+        // Toggle menu display on main menu open/close
+        mainMenuCheckbox.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                show_mobile_menus();
             } else {
-                show_overlay(true);
+                collapse_mobile_menus();
             }
         });
 
