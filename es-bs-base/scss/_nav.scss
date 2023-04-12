@@ -125,7 +125,6 @@
 
 $desktop-min-width: 992px;
 $mobile-max-width: $desktop-min-width - 1;
-$xl-width: 1200px;
 
 // Overlay that is displayed on navbar hovers on desktop, menu open on mobile
 // pull overlay up to avoid it from getting covered by other DOM elements
@@ -254,7 +253,6 @@ $xl-width: 1200px;
         display: flex;
         flex-wrap: wrap;
         list-style: none;
-        padding-left: 0;
       }
 
       .top-header-icon {
@@ -297,10 +295,6 @@ $xl-width: 1200px;
       text-overflow: ellipsis;
     }
 
-    .dropdown-topics {
-      flex-basis: 630px;
-    }
-
     .dropdown-cta {
       flex-basis: 270px;
       flex-grow: 0;
@@ -317,16 +311,6 @@ $xl-width: 1200px;
 
     .dropdown-item {
       white-space: normal !important;
-    }
-  }
-
-  @media only screen and (min-width: $xl-width) {
-    .dropdown-topics {
-      flex-basis: 860px;
-    }
-
-    .topic-group {
-      flex-basis: 260px;
     }
   }
 
