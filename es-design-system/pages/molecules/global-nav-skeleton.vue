@@ -268,246 +268,263 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="dropdown-menu dropdown-menu-full-page dropdown-menu-primary">
-                                            <div class="mb-3 mb-lg-0 dropdown-topics">
-                                                <ul
-                                                    class="dropdown-list p-lg-100"
-                                                    :aria-labelledby="`menu-${header}`">
-                                                    <li
-                                                        class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center">
-                                                        {{ header }}
-                                                    </li>
-                                                    <li
-                                                        v-for="topic in Object.keys(topHeaders[header].topics)"
-                                                        :key="topic"
-                                                        class="nav-item topic-group px-0">
-                                                        <a
-                                                            class="nav-link dropdown-toggle eyebrow-lg border-bottom"
-                                                            :class="(topHeaders[header].topics[topic].link ? 'dropdown-item' : '')"
-                                                            data-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                            aria-expanded="false"
-                                                            :href="topHeaders[header].topics[topic].link ?
-                                                                topHeaders[header].topics[topic].link : null">
-                                                            {{ topic }}
-                                                        </a>
-                                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                                        <label
-                                                            :for="`topMenu-${topic}`"
-                                                            class="dropdown-label nav-link d-flex d-lg-none align-items-center justify-content-between w-100 h-100">
-                                                            {{ topic }}
-                                                            <IconChevronRight
-                                                                class="expand-icon"
-                                                                style="height: 18px;" />
-                                                        </label>
-                                                        <input
-                                                            :id="`topMenu-${topic}`"
-                                                            :name="`topMenu-${topic}`"
-                                                            type="checkbox"
-                                                            class="menu-checkbox">
-                                                        <div
-                                                            class="menu submenu">
-                                                            <div class="menu-header">
-                                                                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                                                <label
-                                                                    :for="`topMenu-${topic}`"
-                                                                    class="menu-toggle d-flex w-100 h-100 mb-0 align-items-center font-size-sm">
-                                                                    <div
-                                                                        class="nav-link text-uppercase">
-                                                                        <IconChevronLeft height="18px" />
-                                                                        {{ topic }}
-                                                                    </div>
-                                                                </label>
-                                                                <div class="d-flex col-3 justify-content-end">
+                                        <div class="dropdown-menu dropdown-menu-full-page">
+                                            <div class="py-lg-100 dropdown-menu-primary">
+                                                <div class="mb-3 mb-lg-0 pl-lg-200">
+                                                    <ul
+                                                        class="dropdown-list "
+                                                        :aria-labelledby="`menu-${header}`">
+                                                        <li
+                                                            class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center">
+                                                            {{ header }}
+                                                        </li>
+                                                        <li
+                                                            v-for="topic in Object.keys(topHeaders[header].topics)"
+                                                            :key="topic"
+                                                            class="nav-item topic-group px-0">
+                                                            <a
+                                                                class="nav-link dropdown-toggle eyebrow-lg border-bottom"
+                                                                :class="(topHeaders[header].topics[topic].link ? 'dropdown-item' : '')"
+                                                                data-toggle="dropdown"
+                                                                aria-haspopup="true"
+                                                                aria-expanded="false"
+                                                                :href="topHeaders[header].topics[topic].link ?
+                                                                    topHeaders[header].topics[topic].link : null">
+                                                                {{ topic }}
+                                                            </a>
+                                                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                                            <label
+                                                                :for="`topMenu-${topic}`"
+                                                                class="dropdown-label nav-link d-flex d-lg-none align-items-center justify-content-between w-100 h-100">
+                                                                {{ topic }}
+                                                                <IconChevronRight
+                                                                    class="expand-icon"
+                                                                    style="height: 18px;" />
+                                                            </label>
+                                                            <input
+                                                                :id="`topMenu-${topic}`"
+                                                                :name="`topMenu-${topic}`"
+                                                                type="checkbox"
+                                                                class="menu-checkbox">
+                                                            <div
+                                                                class="menu submenu">
+                                                                <div class="menu-header">
                                                                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                                                     <label
-                                                                        for="data--main-menu"
-                                                                        class="mb-0">
-                                                                        <IconX class="menu-toggle align-self-center" />
+                                                                        :for="`topMenu-${topic}`"
+                                                                        class="menu-toggle d-flex w-100 h-100 mb-0 align-items-center font-size-sm">
+                                                                        <div
+                                                                            class="nav-link text-uppercase">
+                                                                            <IconChevronLeft height="18px" />
+                                                                            {{ topic }}
+                                                                        </div>
                                                                     </label>
-                                                                </div>
-                                                            </div>
-                                                            <ul
-                                                                class="visible-lg"
-                                                                style="list-style: none; padding-left: 0; top: 0;">
-                                                                <li
-                                                                    class="d-lg-none">
-                                                                    <a
-                                                                        v-if="topHeaders[header].topics[topic].link"
-                                                                        class="nav-item nav-link font-weight-bold d-flex w-100 align-items-center"
-                                                                        :href="topHeaders[header].topics[topic].link">
-                                                                        {{ topic }}
-                                                                    </a>
-                                                                    <div
-                                                                        v-else
-                                                                        class="nav-item nav-link font-weight-bold d-flex w-100 align-items-center">
-                                                                        {{ topic }}
+                                                                    <div class="d-flex col-3 justify-content-end">
+                                                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                                                        <label
+                                                                            for="data--main-menu"
+                                                                            class="mb-0">
+                                                                            <IconX class="menu-toggle align-self-center" />
+                                                                        </label>
                                                                     </div>
-                                                                </li>
-                                                                <li
-                                                                    v-for="subtopic in
-                                                                        Object.keys(topHeaders[header].
-                                                                            topics[topic].subtopics)"
-                                                                    :key="subtopic">
-                                                                    <a
-                                                                        class="dropdown-item nav-item nav-link d-flex align-items-center"
-                                                                        :href="topHeaders[header].topics[topic]
-                                                                            .subtopics[subtopic].link">
-                                                                        {{ subtopic }}
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="dropdown-cta">
-                                                <div class="font-size-50 p-lg-100">
-                                                    <a
-                                                        class="d-block cta-link"
-                                                        :href="topHeaders[header].dropdownCta.linkUrl"
-                                                        :title="topHeaders[header].dropdownCta.linkName">
-                                                        <!-- eslint-disable -->
-                                                        <svg class="mb-100" xmlns="http://www.w3.org/2000/svg" width="253" height="190" fill="none" viewBox="0 0 253 190">
-                                                            <g clip-path="url(#a)">
-                                                                <path fill="url(#b)" d="M252.755 0H0v121.664h252.755V0Z" />
-                                                                <path fill="#34B5A9"
-                                                                    d="M252.755 189.696H0v-68.032l20.262-4.144c25.458-5.204 57.493 2.469 83.479 2.375l149.014-10.943v80.744Z" />
-                                                                <path fill="#3398C0"
-                                                                    d="M162.259 161.97a3.342 3.342 0 1 0 0-6.683 3.342 3.342 0 0 0 0 6.683Z" />
-                                                                <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".57"
-                                                                    d="M252.754 108.952s-114.806 28.144-150.774 14.819c-38.192-14.147-98.039-3.84-98.039-3.84" />
-                                                                <path fill="#FBD9A3" d="m40.718 111.002-4.569-9.968-22.853.115 4.562 9.962 22.86-.109Z" />
-                                                                <path fill="#F3D3E2" d="m96.674 111.002-4.569-9.968-22.853.115 4.57 9.962 22.852-.109Z" />
-                                                                <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
-                                                                    d="m38.38 109.833-4.563-9.968-22.852.115 4.561 9.969 22.853-.116ZM35.925 104.961h-22.39M30.375 109.696l-4.41-9.658M23.38 109.696l-4.41-9.658M26.635 114.951v-5.046M66.552 109.833l-4.569-9.968-22.853.115 4.562 9.969 22.86-.116ZM64.09 104.961H41.7M47.431 100.103l4.288 9.802M58.54 109.696l-4.41-9.658M54.801 114.951v-5.046M94.718 109.833l-4.57-9.968-22.852.115 4.569 9.969 22.853-.116ZM92.257 104.961H69.865M75.597 100.103l4.287 9.802M86.706 109.696l-4.41-9.658M82.967 114.951v-5.046" />
-                                                                <path fill="#fff" d="M198.04 97.1h-18.406v75.243h18.406V97.1Z" />
-                                                                <path fill="#F2F2F2"
-                                                                    d="M185.791 115.55s-.838-10.669 4.338-10.669c5.175 0 4.338 11.925 4.338 11.925h-8.684m-4.446-19.9v4.323l16.999-.975v-4.33l-16.999.981Z" />
-                                                                <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
-                                                                    d="M179.634 110.447v-10.272m13.057 14.191s.838-10.668-4.338-10.668c-5.175 0-4.338 11.924-4.338 11.924h8.684" />
-                                                                <path fill="#C8C8C8" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".81" d="M177.006 95.75v3.241l21.337-1.624v-3.92l-21.337 2.303Z" />
-                                                                <path fill="#fff" d="M246.561 55.371h-48.362v117.001h48.362v-117Z" />
-                                                                <path fill="#F3DAE6"
-                                                                    d="M220.778 112.518h-14.942V91.831h14.942v19.085m20.824 0V91.831H226.66v20.687h14.942m-20.824-29.19V64.243h-14.942V84.93h14.942m20.824-1.602V64.243H226.66V84.93h14.942m0 52.903v-19.085H226.66v20.687h14.942m0 24.398v-19.085H226.66v20.687h14.942m-20.824-27.602v-19.085h-14.942v20.687h14.942m0 24.398v-19.085h-14.942v20.687h14.942" />
-                                                                <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
-                                                                    d="M219.522 109.66V90.575H204.58v20.687h14.942M240.339 109.66V90.575h-14.942v20.687h14.942M219.522 82.072V62.986H204.58v20.688h14.942M240.339 82.072V62.986h-14.942v20.688h14.942M240.339 136.577v-19.085h-14.942v20.687h14.942M240.339 162.577v-19.085h-14.942v20.687h14.942M219.522 136.577v-19.085H204.58v20.687h14.942M219.522 162.577v-19.085H204.58v20.687h14.942M198.047 61.897v110.446" />
-                                                                <path fill="#C94687" d="M196.358 50.665v6.937l52.455-1.04-.166-6.272-52.289.375Z" />
-                                                                <path stroke="#292929" stroke-linejoin="round" stroke-width=".81"
-                                                                    d="M196.358 50.665v6.93l52.455-1.033-.166-6.272-52.289.375Z" />
-                                                                <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
-                                                                    d="M236.939 174.537v-5.435" />
-                                                                <path fill="#283982" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".81"
-                                                                    d="M235.561 169.102c-3.999 0-6.937-3.761-5.97-7.644l1.603-6.424a6.175 6.175 0 0 1 1.061-2.216l.065-.094c2.461-3.256 7.348-3.256 9.809 0l.065.094a6.175 6.175 0 0 1 1.061 2.216l1.603 6.424c.974 3.883-1.964 7.644-5.97 7.644h-3.349.022Z" />
-                                                                <path fill="#fff" d="m184.665 118.127-34.301-27.199-38.495 27.199v54.339h72.796v-54.339Z" />
-                                                                <path fill="#F2F2F2" d="m145.809 96.48 37.217 27.291v-7.543l-32.662-23.206-4.555 3.457Z" />
-                                                                <path fill="#FBD9A3"
-                                                                    d="M158.484 115.983a7.125 7.125 0 1 1-14.25-.001 7.125 7.125 0 0 1 14.25.001Zm19.41 44.457v-30.02h-53.718v32.547h53.718" />
-                                                                <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
-                                                                    d="M111.869 171.08v-50.485m-6.814 44.494v13.7m-6.555-6.828h13.419m45.259-58.006a6.862 6.862 0 0 0-6.814-6.028 6.867 6.867 0 0 0-6.865 6.865 6.867 6.867 0 0 0 13.592 1.379c.094-.448.137-.91.137-1.386 0-.282-.014-.563-.05-.838v.008Z" />
-                                                                <path fill="#F6B141"
-                                                                    d="m195.261 121.62-44.573-31.875-46.947 30.15 4.006 3.876 42.718-28.331 41.959 29.638 2.837-3.458Z" />
-                                                                <path stroke="#292929" stroke-linejoin="round" stroke-width=".81"
-                                                                    d="m195.261 121.62-44.573-31.875-46.947 30.15 4.006 3.876 42.718-28.331 41.959 29.638 2.837-3.458Z" />
-                                                                <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
-                                                                    d="M120.299 174.537v-8.358M104.159 174.537v-5.435M185.74 123.771v47.309" />
-                                                                <path stroke="#282929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".83"
-                                                                    d="M171.029 160.224v-8.973h-39v8.973M167.76 149.44l3.63-5.443-4.988-5.443" />
-                                                                <path fill="#fff" stroke="#282929" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".83" d="m165.851 137.33-1.305 1.257.947.983 1.305-1.257-.947-.983Z" />
-                                                                <path fill="#fff" stroke="#282929" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".83"
-                                                                    d="M171.845 144.221a.677.677 0 1 1-1.357 0 .678.678 0 1 1 1.357 0Zm-1.978 7.03c0-1.126-.96-2.042-2.144-2.042-1.183 0-2.143.909-2.143 2.042h4.287Zm-4.656-8.712c.989-.953.982-2.577-.021-3.616-1.003-1.04-2.62-1.112-3.617-.159l3.638 3.775Z" />
-                                                                <path fill="#fff"
-                                                                    d="M153.309 145.816h-15.65a1.246 1.246 0 0 1-1.241-1.242v-9.658c0-.685.563-1.241 1.241-1.241h15.65c.685 0 1.241.563 1.241 1.241v9.658c0 .686-.563 1.242-1.241 1.242Z" />
-                                                                <path stroke="#282929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".83"
-                                                                    d="M145.484 149.266v-3.45M141.586 151.158v-1.682h7.579v1.775" />
-                                                                <path fill="url(#c)"
-                                                                    d="M150.58 135.646h-10.488a.296.296 0 0 0-.296.295v7.854c0 .163.133.296.296.296h10.488a.296.296 0 0 0 .296-.296v-7.854a.295.295 0 0 0-.296-.295Z" />
-                                                                <path fill="#FBD9A3"
-                                                                    d="M150.667 135.646h-10.662a.2.2 0 0 0-.209.209v.924h11.08v-.924a.2.2 0 0 0-.209-.209Zm-10.127 2.295h7.651c.058 0 .123-.058.123-.123v-.296c0-.057-.058-.122-.123-.122h-7.651c-.058 0-.123.057-.123.122v.296c0 .058.058.123.123.123Zm9.441 0h-1.4c-.058 0-.123-.058-.123-.123v-.296c0-.057.058-.122.087-.122h1.4c.058 0 .123.057.123.122v.296c.028.058-.029.123-.087.123Zm-9.441 1.01h7.651c.058 0 .123-.028.123-.122v-.296c0-.058-.058-.123-.123-.123h-7.651c-.058 0-.123.058-.123.123v.296c0 .058.058.122.123.122Zm9.441 0h-1.4c-.058 0-.123-.057-.123-.122v-.296c0-.058.058-.123.087-.123h1.4c.058 0 .123.058.123.123v.296c.028.086-.029.122-.087.122Zm-9.47 3.126h9.47c.087-.029.123-.058.123-.123v-.296c0-.057-.058-.122-.123-.122h-9.47c-.058 0-.123.057-.123.122v.296c0 .058.058.123.123.123Zm6.344-2.086h-6.315c-.058 0-.123-.058-.123-.123v-.296c0-.058.058-.122.123-.122h6.315c.058 0 .123.057.123.122v.296c0 .058-.058.123-.123.123Zm.448 0h2.678c.087 0 .123-.058.123-.123v-.296c0-.058-.058-.122-.123-.122h-2.678c-.058 0-.123.057-.123.122v.296c0 .058.058.123.123.123Zm-.448 1.039h-6.315c-.058 0-.123-.057-.123-.122v-.296c0-.058.058-.123.123-.123h6.315c.058 0 .123.058.123.123v.296c0 .057-.058.122-.123.122Zm.448 0h2.678c.087 0 .123-.057.123-.122v-.296c0-.058-.058-.123-.123-.123h-2.678c-.058 0-.123.058-.123.123v.296c0 .057.058.122.123.122Z" />
-                                                                <path stroke="#282929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".83"
-                                                                    d="M153.309 145.816h-15.65a1.246 1.246 0 0 1-1.241-1.242v-9.658c0-.685.563-1.241 1.241-1.241h15.65c.685 0 1.241.563 1.241 1.241v9.658c0 .686-.563 1.242-1.241 1.242Z" />
-                                                                <path fill="#FDC694" stroke="#282929" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".83"
-                                                                    d="M142.582 151.504c.015 1.032-2.562 2.433-3.746 2.584-1.184.152-.318-2.396-.318-2.396s4.05-1.22 4.064-.188v0Zm6.15.368c.13 1.025 2.887 2.043 4.078 2.021 1.191-.021-.028-2.418-.028-2.418s-4.18-.628-4.05.397v0Zm-2.245-7.016h-1.79l-.245 3.024h2.194l-.166-3.024h.007Z" />
-                                                                <path fill="#292929"
-                                                                    d="M148.061 138.706s-.751-.31-2.635-.318c-1.884-.007-2.317 2.982-2.317 2.982h.015a4.398 4.398 0 0 0-.051.628c0 1.761 1.105 3.19 2.469 3.19 1.364 0 2.468-1.429 2.468-3.19 0-.729-.194-1.401-.512-1.942l.556-1.35h.007Z" />
-                                                                <path fill="#292929"
-                                                                    d="M148.039 138.713c-.779-.216-1.66-.267-2.483-.26-1.508-.05-2.1 1.704-2.31 2.931l-.166-.152h.015l.202-.057c-.274 1.371.216 3.111 1.588 3.674.844.332 1.783-.101 2.274-.823.801-1.112.88-2.693.245-3.92l-.029-.057.022-.044c.18-.368.455-.924.642-1.299v.007Zm.044-.014c-.145.426-.318.982-.477 1.4v-.101c.549.845.715 1.913.52 2.902-.217 1.256-1.234 2.541-2.606 2.497-1.934-.101-2.851-2.36-2.526-4.049l.166.152h-.015l-.202.05.036-.202c.231-1.097.643-2.36 1.718-2.887.542-.246 1.141-.116 1.704-.094.541.05 1.097.122 1.617.296.028.014.036 0 .065.036Z" />
-                                                                <path fill="#3397C1" stroke="#282929" stroke-miterlimit="10" stroke-width=".83"
-                                                                    d="m152.876 150.811-1.596-2.887c0-.469-.772-1.069-1.631-1.069h-6.634c-.967 0-1.876.448-2.461 1.213-.888 1.162-2.072 2.736-2.072 2.736a.972.972 0 0 0 .123 1.119l.967 1.104c.275.31.78.217.91-.173l1.436-2.231 8.157-.057.808 2.281a.536.536 0 0 0 .91.173l.967-1.105a.994.994 0 0 0 .123-1.118l-.007.014Z" />
-                                                                <path fill="#fff"
-                                                                    d="m151.475 160.152 1.4-10.041s.369-2.462-2.288-2.462h-8.286s-1.718-.086-1.235 2.549c.484 2.634.758 9.954.758 9.954h9.658-.007Z" />
-                                                                <path stroke="#282929" stroke-miterlimit="1" stroke-width=".83"
-                                                                    d="M149.346 146.848c2.656 0 2.288 2.62 2.288 2.62l-1.4 10.684h-8.236l-1.401-10.684s-.368-2.62 2.288-2.62h6.461Z" />
-                                                                <path fill="#283982" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".81"
-                                                                    d="M117.723 166.179c-6.15 0-10.669-5.782-9.175-11.752l2.469-9.881a9.565 9.565 0 0 1 1.631-3.415l.108-.137c3.783-5.002 11.304-5.002 15.087 0l.108.137a9.565 9.565 0 0 1 1.631 3.415l2.469 9.881c1.494 5.97-3.025 11.752-9.175 11.752h-5.153v0Z" />
-                                                                <path fill="#455AA0" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".81"
-                                                                    d="M102.774 169.102c-4 0-6.937-3.761-5.97-7.644l1.602-6.424a6.175 6.175 0 0 1 1.062-2.216l.064-.094c2.462-3.256 7.349-3.256 9.81 0l.065.094a6.175 6.175 0 0 1 1.061 2.216l1.603 6.424c.974 3.883-1.964 7.644-5.97 7.644h-3.349.022Z" />
-                                                                <path fill="#F9D08C" stroke="#F6B141" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".54"
-                                                                    d="m152.067 70.948-4.735 8.25 1.119-6.496-2.931.506 4.114-9.644-.404 7.875 2.837-.49v0Z" />
-                                                                <path fill="#F3DAE6" stroke="#C94687" stroke-linecap="round" stroke-linejoin="round"
-                                                                    stroke-width=".54"
-                                                                    d="m215.876 34.128-4.735 8.25 1.119-6.496-2.931.505 4.115-9.643-.404 7.875 2.836-.491v0Z" />
-                                                                <path fill="#C94687"
-                                                                    d="M202.804 36.344c-12.899 1.45-25.776-.809-38.322-3.696-6.33-1.458-12.624-3.082-18.962-4.504-5.544-1.241-11.145-2.324-16.826-2.627-5.68-.304-11.13.144-16.335 2.042-4.713 1.726-8.748 4.656-12.198 8.258-6.793 7.081-11.42 16.126-19.114 22.362-1.877 1.516-3.884 2.743-5.234 4.807-1.14 1.74-1.645 3.797-1.53 5.876.159 2.707 1.48 5.075 1.949 7.71.57 3.182.26 6.445-.188 9.621-.223 1.56-.476 3.104-.7 4.663-.05.34.47.484.52.145.844-5.811 2.187-11.882.058-17.584-.852-2.288-1.444-4.706-.917-7.146.527-2.44 2.043-4.346 3.934-5.833 1.891-1.486 3.826-2.923 5.558-4.663 1.732-1.74 3.248-3.53 4.742-5.406 3.032-3.818 5.797-7.839 8.95-11.564 3.155-3.724 6.75-7.11 11.124-9.34 5.039-2.57 10.734-3.5 16.35-3.494 5.615.008 11.289.895 16.818 2.058 6.193 1.306 12.336 2.88 18.493 4.345 12.127 2.887 24.528 5.479 37.059 4.887a70.551 70.551 0 0 0 4.764-.383c.339-.036.346-.577 0-.534h.007Z" />
-                                                                <path fill="#F7C167"
-                                                                    d="M24.997 82.18c.346-7.738 5.226-14.574 11.657-18.616 7.608-4.786 17.093-5.277 25.69-3.407 4.67 1.018 9.045 2.808 13.397 4.757 3.782 1.696 7.587 3.436 11.65 4.33 7.637 1.683 15.642 1.278 23.402 1.026 9.413-.303 19.035-.801 28.303 1.22.339.072.483-.448.144-.52-8.431-1.834-17.165-1.595-25.74-1.328-8.575.267-16.624.844-24.737-.671-4.367-.816-8.41-2.585-12.437-4.39-4.244-1.898-8.503-3.702-13.043-4.77-8.525-2.007-17.988-1.79-25.763 2.605-7.153 4.043-12.675 11.369-13.05 19.757-.014.346.52.346.534 0l-.007.007Z" />
-                                                                <path fill="url(#d)"
-                                                                    d="M22.391 30.1h42.624c-.982-1.61-3.63-3.804-5.991-3.804-.874 0-1.747.116-2.592.347v-.347c0-3.342-2.938-4.093-5.01-3.92a7.905 7.905 0 0 0-2.013.347c-1.04-3.457-4.894-6.049-9.449-6.049-4.554 0-8.12 2.36-9.333 5.645-.65-.116-1.3-.173-1.956-.173-4.324 0-7.832 2.822-7.832 6.337 0 .549.101 1.097.289 1.61" />
-                                                                <path fill="url(#e)"
-                                                                    d="M39.975 36.806h42.623c-.981-1.61-3.63-3.804-5.99-3.804a9.83 9.83 0 0 0-2.592.346v-.346c0-3.342-2.938-4.093-5.01-3.92a7.901 7.901 0 0 0-2.013.347c-1.04-3.458-4.894-6.05-9.45-6.05-4.554 0-8.12 2.361-9.332 5.646-.65-.116-1.3-.174-1.956-.174-4.324 0-7.832 2.823-7.832 6.338a4.7 4.7 0 0 0 .288 1.61" />
-                                                                <path fill="url(#f)"
-                                                                    d="M141.723 60.655h42.624c-.982-1.61-3.631-3.804-5.991-3.804-.873 0-1.747.116-2.591.346v-.346c0-3.342-2.938-4.093-5.01-3.92a7.907 7.907 0 0 0-2.014.347c-1.039-3.458-4.894-6.049-9.448-6.049-4.555 0-8.121 2.36-9.334 5.645a11.135 11.135 0 0 0-1.956-.174c-4.324 0-7.832 2.823-7.832 6.338 0 .549.101 1.097.289 1.61" />
-                                                                <path fill="url(#g)"
-                                                                    d="M214.202 18.84h25.863c-.592-.982-2.202-2.31-3.638-2.31-.534 0-1.061.072-1.574.21v-.21c0-2.029-1.783-2.483-3.039-2.375a4.651 4.651 0 0 0-1.22.21c-.628-2.094-2.973-3.668-5.731-3.668-2.757 0-4.93 1.43-5.659 3.422a7.235 7.235 0 0 0-1.191-.108c-2.62 0-4.75 1.71-4.75 3.847 0 .332.065.664.174.982" />
-                                                            </g>
-                                                            <defs>
-                                                                <linearGradient id="b" x1="126.377" x2="126.377" y1="172.949" y2="13.014"
-                                                                    gradientUnits="userSpaceOnUse">
-                                                                    <stop stop-color="#fff" />
-                                                                    <stop offset="1" stop-color="#66B2D0" />
-                                                                </linearGradient>
-                                                                <linearGradient id="c" x1="154.658" x2="154.745" y1="139.868" y2="139.868"
-                                                                    gradientUnits="userSpaceOnUse">
-                                                                    <stop stop-color="#F9D08C" stop-opacity=".15" />
-                                                                    <stop offset="1" stop-color="#fff" />
-                                                                </linearGradient>
-                                                                <linearGradient id="d" x1="42.927" x2="42.927" y1="16.681" y2="30.1"
-                                                                    gradientUnits="userSpaceOnUse">
-                                                                    <stop stop-color="#fff" />
-                                                                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
-                                                                </linearGradient>
-                                                                <linearGradient id="e" x1="60.511" x2="60.511" y1="23.387" y2="36.813"
-                                                                    gradientUnits="userSpaceOnUse">
-                                                                    <stop stop-color="#fff" />
-                                                                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
-                                                                </linearGradient>
-                                                                <linearGradient id="f" x1="162.259" x2="162.259" y1="47.236" y2="60.655"
-                                                                    gradientUnits="userSpaceOnUse">
-                                                                    <stop stop-color="#fff" />
-                                                                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
-                                                                </linearGradient>
-                                                                <linearGradient id="g" x1="226.661" x2="226.661" y1="10.697" y2="18.84"
-                                                                    gradientUnits="userSpaceOnUse">
-                                                                    <stop stop-color="#fff" />
-                                                                    <stop offset="1" stop-color="#fff" stop-opacity="0" />
-                                                                </linearGradient>
-                                                                <clipPath id="a">
-                                                                    <path fill="#fff" d="M0 0h252.964v189.696H0z" />
-                                                                </clipPath>
-                                                            </defs>
-                                                        </svg>
-                                                        <div class="eyebrow mb-50">{{ topHeaders[header].dropdownCta.linkName }}</div>
+                                                                </div>
+                                                                <ul
+                                                                    class="visible-lg"
+                                                                    style="list-style: none; padding-left: 0; top: 0;">
+                                                                    <li
+                                                                        class="d-lg-none">
+                                                                        <a
+                                                                            v-if="topHeaders[header].topics[topic].link"
+                                                                            class="nav-item nav-link font-weight-bold d-flex w-100 align-items-center"
+                                                                            :href="topHeaders[header].topics[topic].link">
+                                                                            {{ topic }}
+                                                                        </a>
+                                                                        <div
+                                                                            v-else
+                                                                            class="nav-item nav-link font-weight-bold d-flex w-100 align-items-center">
+                                                                            {{ topic }}
+                                                                        </div>
+                                                                    </li>
+                                                                    <li
+                                                                        v-for="subtopic in
+                                                                            Object.keys(topHeaders[header].
+                                                                                topics[topic].subtopics)"
+                                                                        :key="subtopic">
+                                                                        <a
+                                                                            class="dropdown-item nav-item nav-link d-flex align-items-center"
+                                                                            :href="topHeaders[header].topics[topic]
+                                                                                .subtopics[subtopic].link">
+                                                                            {{ subtopic }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="pr-lg-200 dropdown-cta-right">
+                                                    <div class="font-size-50 p-lg-100">
+                                                        <a
+                                                            class="d-block cta-link"
+                                                            :href="topHeaders[header].dropdownCta.linkUrl"
+                                                            :title="topHeaders[header].dropdownCta.linkName">
+                                                            <!-- eslint-disable -->
+                                                            <svg class="mb-100" xmlns="http://www.w3.org/2000/svg" width="253" height="190" fill="none" viewBox="0 0 253 190">
+                                                                <g clip-path="url(#a)">
+                                                                    <path fill="url(#b)" d="M252.755 0H0v121.664h252.755V0Z" />
+                                                                    <path fill="#34B5A9"
+                                                                        d="M252.755 189.696H0v-68.032l20.262-4.144c25.458-5.204 57.493 2.469 83.479 2.375l149.014-10.943v80.744Z" />
+                                                                    <path fill="#3398C0"
+                                                                        d="M162.259 161.97a3.342 3.342 0 1 0 0-6.683 3.342 3.342 0 0 0 0 6.683Z" />
+                                                                    <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".57"
+                                                                        d="M252.754 108.952s-114.806 28.144-150.774 14.819c-38.192-14.147-98.039-3.84-98.039-3.84" />
+                                                                    <path fill="#FBD9A3" d="m40.718 111.002-4.569-9.968-22.853.115 4.562 9.962 22.86-.109Z" />
+                                                                    <path fill="#F3D3E2" d="m96.674 111.002-4.569-9.968-22.853.115 4.57 9.962 22.852-.109Z" />
+                                                                    <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
+                                                                        d="m38.38 109.833-4.563-9.968-22.852.115 4.561 9.969 22.853-.116ZM35.925 104.961h-22.39M30.375 109.696l-4.41-9.658M23.38 109.696l-4.41-9.658M26.635 114.951v-5.046M66.552 109.833l-4.569-9.968-22.853.115 4.562 9.969 22.86-.116ZM64.09 104.961H41.7M47.431 100.103l4.288 9.802M58.54 109.696l-4.41-9.658M54.801 114.951v-5.046M94.718 109.833l-4.57-9.968-22.852.115 4.569 9.969 22.853-.116ZM92.257 104.961H69.865M75.597 100.103l4.287 9.802M86.706 109.696l-4.41-9.658M82.967 114.951v-5.046" />
+                                                                    <path fill="#fff" d="M198.04 97.1h-18.406v75.243h18.406V97.1Z" />
+                                                                    <path fill="#F2F2F2"
+                                                                        d="M185.791 115.55s-.838-10.669 4.338-10.669c5.175 0 4.338 11.925 4.338 11.925h-8.684m-4.446-19.9v4.323l16.999-.975v-4.33l-16.999.981Z" />
+                                                                    <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
+                                                                        d="M179.634 110.447v-10.272m13.057 14.191s.838-10.668-4.338-10.668c-5.175 0-4.338 11.924-4.338 11.924h8.684" />
+                                                                    <path fill="#C8C8C8" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".81" d="M177.006 95.75v3.241l21.337-1.624v-3.92l-21.337 2.303Z" />
+                                                                    <path fill="#fff" d="M246.561 55.371h-48.362v117.001h48.362v-117Z" />
+                                                                    <path fill="#F3DAE6"
+                                                                        d="M220.778 112.518h-14.942V91.831h14.942v19.085m20.824 0V91.831H226.66v20.687h14.942m-20.824-29.19V64.243h-14.942V84.93h14.942m20.824-1.602V64.243H226.66V84.93h14.942m0 52.903v-19.085H226.66v20.687h14.942m0 24.398v-19.085H226.66v20.687h14.942m-20.824-27.602v-19.085h-14.942v20.687h14.942m0 24.398v-19.085h-14.942v20.687h14.942" />
+                                                                    <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
+                                                                        d="M219.522 109.66V90.575H204.58v20.687h14.942M240.339 109.66V90.575h-14.942v20.687h14.942M219.522 82.072V62.986H204.58v20.688h14.942M240.339 82.072V62.986h-14.942v20.688h14.942M240.339 136.577v-19.085h-14.942v20.687h14.942M240.339 162.577v-19.085h-14.942v20.687h14.942M219.522 136.577v-19.085H204.58v20.687h14.942M219.522 162.577v-19.085H204.58v20.687h14.942M198.047 61.897v110.446" />
+                                                                    <path fill="#C94687" d="M196.358 50.665v6.937l52.455-1.04-.166-6.272-52.289.375Z" />
+                                                                    <path stroke="#292929" stroke-linejoin="round" stroke-width=".81"
+                                                                        d="M196.358 50.665v6.93l52.455-1.033-.166-6.272-52.289.375Z" />
+                                                                    <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
+                                                                        d="M236.939 174.537v-5.435" />
+                                                                    <path fill="#283982" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".81"
+                                                                        d="M235.561 169.102c-3.999 0-6.937-3.761-5.97-7.644l1.603-6.424a6.175 6.175 0 0 1 1.061-2.216l.065-.094c2.461-3.256 7.348-3.256 9.809 0l.065.094a6.175 6.175 0 0 1 1.061 2.216l1.603 6.424c.974 3.883-1.964 7.644-5.97 7.644h-3.349.022Z" />
+                                                                    <path fill="#fff" d="m184.665 118.127-34.301-27.199-38.495 27.199v54.339h72.796v-54.339Z" />
+                                                                    <path fill="#F2F2F2" d="m145.809 96.48 37.217 27.291v-7.543l-32.662-23.206-4.555 3.457Z" />
+                                                                    <path fill="#FBD9A3"
+                                                                        d="M158.484 115.983a7.125 7.125 0 1 1-14.25-.001 7.125 7.125 0 0 1 14.25.001Zm19.41 44.457v-30.02h-53.718v32.547h53.718" />
+                                                                    <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
+                                                                        d="M111.869 171.08v-50.485m-6.814 44.494v13.7m-6.555-6.828h13.419m45.259-58.006a6.862 6.862 0 0 0-6.814-6.028 6.867 6.867 0 0 0-6.865 6.865 6.867 6.867 0 0 0 13.592 1.379c.094-.448.137-.91.137-1.386 0-.282-.014-.563-.05-.838v.008Z" />
+                                                                    <path fill="#F6B141"
+                                                                        d="m195.261 121.62-44.573-31.875-46.947 30.15 4.006 3.876 42.718-28.331 41.959 29.638 2.837-3.458Z" />
+                                                                    <path stroke="#292929" stroke-linejoin="round" stroke-width=".81"
+                                                                        d="m195.261 121.62-44.573-31.875-46.947 30.15 4.006 3.876 42.718-28.331 41.959 29.638 2.837-3.458Z" />
+                                                                    <path stroke="#292929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".81"
+                                                                        d="M120.299 174.537v-8.358M104.159 174.537v-5.435M185.74 123.771v47.309" />
+                                                                    <path stroke="#282929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".83"
+                                                                        d="M171.029 160.224v-8.973h-39v8.973M167.76 149.44l3.63-5.443-4.988-5.443" />
+                                                                    <path fill="#fff" stroke="#282929" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".83" d="m165.851 137.33-1.305 1.257.947.983 1.305-1.257-.947-.983Z" />
+                                                                    <path fill="#fff" stroke="#282929" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".83"
+                                                                        d="M171.845 144.221a.677.677 0 1 1-1.357 0 .678.678 0 1 1 1.357 0Zm-1.978 7.03c0-1.126-.96-2.042-2.144-2.042-1.183 0-2.143.909-2.143 2.042h4.287Zm-4.656-8.712c.989-.953.982-2.577-.021-3.616-1.003-1.04-2.62-1.112-3.617-.159l3.638 3.775Z" />
+                                                                    <path fill="#fff"
+                                                                        d="M153.309 145.816h-15.65a1.246 1.246 0 0 1-1.241-1.242v-9.658c0-.685.563-1.241 1.241-1.241h15.65c.685 0 1.241.563 1.241 1.241v9.658c0 .686-.563 1.242-1.241 1.242Z" />
+                                                                    <path stroke="#282929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".83"
+                                                                        d="M145.484 149.266v-3.45M141.586 151.158v-1.682h7.579v1.775" />
+                                                                    <path fill="url(#c)"
+                                                                        d="M150.58 135.646h-10.488a.296.296 0 0 0-.296.295v7.854c0 .163.133.296.296.296h10.488a.296.296 0 0 0 .296-.296v-7.854a.295.295 0 0 0-.296-.295Z" />
+                                                                    <path fill="#FBD9A3"
+                                                                        d="M150.667 135.646h-10.662a.2.2 0 0 0-.209.209v.924h11.08v-.924a.2.2 0 0 0-.209-.209Zm-10.127 2.295h7.651c.058 0 .123-.058.123-.123v-.296c0-.057-.058-.122-.123-.122h-7.651c-.058 0-.123.057-.123.122v.296c0 .058.058.123.123.123Zm9.441 0h-1.4c-.058 0-.123-.058-.123-.123v-.296c0-.057.058-.122.087-.122h1.4c.058 0 .123.057.123.122v.296c.028.058-.029.123-.087.123Zm-9.441 1.01h7.651c.058 0 .123-.028.123-.122v-.296c0-.058-.058-.123-.123-.123h-7.651c-.058 0-.123.058-.123.123v.296c0 .058.058.122.123.122Zm9.441 0h-1.4c-.058 0-.123-.057-.123-.122v-.296c0-.058.058-.123.087-.123h1.4c.058 0 .123.058.123.123v.296c.028.086-.029.122-.087.122Zm-9.47 3.126h9.47c.087-.029.123-.058.123-.123v-.296c0-.057-.058-.122-.123-.122h-9.47c-.058 0-.123.057-.123.122v.296c0 .058.058.123.123.123Zm6.344-2.086h-6.315c-.058 0-.123-.058-.123-.123v-.296c0-.058.058-.122.123-.122h6.315c.058 0 .123.057.123.122v.296c0 .058-.058.123-.123.123Zm.448 0h2.678c.087 0 .123-.058.123-.123v-.296c0-.058-.058-.122-.123-.122h-2.678c-.058 0-.123.057-.123.122v.296c0 .058.058.123.123.123Zm-.448 1.039h-6.315c-.058 0-.123-.057-.123-.122v-.296c0-.058.058-.123.123-.123h6.315c.058 0 .123.058.123.123v.296c0 .057-.058.122-.123.122Zm.448 0h2.678c.087 0 .123-.057.123-.122v-.296c0-.058-.058-.123-.123-.123h-2.678c-.058 0-.123.058-.123.123v.296c0 .057.058.122.123.122Z" />
+                                                                    <path stroke="#282929" stroke-linecap="round" stroke-linejoin="round" stroke-width=".83"
+                                                                        d="M153.309 145.816h-15.65a1.246 1.246 0 0 1-1.241-1.242v-9.658c0-.685.563-1.241 1.241-1.241h15.65c.685 0 1.241.563 1.241 1.241v9.658c0 .686-.563 1.242-1.241 1.242Z" />
+                                                                    <path fill="#FDC694" stroke="#282929" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".83"
+                                                                        d="M142.582 151.504c.015 1.032-2.562 2.433-3.746 2.584-1.184.152-.318-2.396-.318-2.396s4.05-1.22 4.064-.188v0Zm6.15.368c.13 1.025 2.887 2.043 4.078 2.021 1.191-.021-.028-2.418-.028-2.418s-4.18-.628-4.05.397v0Zm-2.245-7.016h-1.79l-.245 3.024h2.194l-.166-3.024h.007Z" />
+                                                                    <path fill="#292929"
+                                                                        d="M148.061 138.706s-.751-.31-2.635-.318c-1.884-.007-2.317 2.982-2.317 2.982h.015a4.398 4.398 0 0 0-.051.628c0 1.761 1.105 3.19 2.469 3.19 1.364 0 2.468-1.429 2.468-3.19 0-.729-.194-1.401-.512-1.942l.556-1.35h.007Z" />
+                                                                    <path fill="#292929"
+                                                                        d="M148.039 138.713c-.779-.216-1.66-.267-2.483-.26-1.508-.05-2.1 1.704-2.31 2.931l-.166-.152h.015l.202-.057c-.274 1.371.216 3.111 1.588 3.674.844.332 1.783-.101 2.274-.823.801-1.112.88-2.693.245-3.92l-.029-.057.022-.044c.18-.368.455-.924.642-1.299v.007Zm.044-.014c-.145.426-.318.982-.477 1.4v-.101c.549.845.715 1.913.52 2.902-.217 1.256-1.234 2.541-2.606 2.497-1.934-.101-2.851-2.36-2.526-4.049l.166.152h-.015l-.202.05.036-.202c.231-1.097.643-2.36 1.718-2.887.542-.246 1.141-.116 1.704-.094.541.05 1.097.122 1.617.296.028.014.036 0 .065.036Z" />
+                                                                    <path fill="#3397C1" stroke="#282929" stroke-miterlimit="10" stroke-width=".83"
+                                                                        d="m152.876 150.811-1.596-2.887c0-.469-.772-1.069-1.631-1.069h-6.634c-.967 0-1.876.448-2.461 1.213-.888 1.162-2.072 2.736-2.072 2.736a.972.972 0 0 0 .123 1.119l.967 1.104c.275.31.78.217.91-.173l1.436-2.231 8.157-.057.808 2.281a.536.536 0 0 0 .91.173l.967-1.105a.994.994 0 0 0 .123-1.118l-.007.014Z" />
+                                                                    <path fill="#fff"
+                                                                        d="m151.475 160.152 1.4-10.041s.369-2.462-2.288-2.462h-8.286s-1.718-.086-1.235 2.549c.484 2.634.758 9.954.758 9.954h9.658-.007Z" />
+                                                                    <path stroke="#282929" stroke-miterlimit="1" stroke-width=".83"
+                                                                        d="M149.346 146.848c2.656 0 2.288 2.62 2.288 2.62l-1.4 10.684h-8.236l-1.401-10.684s-.368-2.62 2.288-2.62h6.461Z" />
+                                                                    <path fill="#283982" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".81"
+                                                                        d="M117.723 166.179c-6.15 0-10.669-5.782-9.175-11.752l2.469-9.881a9.565 9.565 0 0 1 1.631-3.415l.108-.137c3.783-5.002 11.304-5.002 15.087 0l.108.137a9.565 9.565 0 0 1 1.631 3.415l2.469 9.881c1.494 5.97-3.025 11.752-9.175 11.752h-5.153v0Z" />
+                                                                    <path fill="#455AA0" stroke="#292929" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".81"
+                                                                        d="M102.774 169.102c-4 0-6.937-3.761-5.97-7.644l1.602-6.424a6.175 6.175 0 0 1 1.062-2.216l.064-.094c2.462-3.256 7.349-3.256 9.81 0l.065.094a6.175 6.175 0 0 1 1.061 2.216l1.603 6.424c.974 3.883-1.964 7.644-5.97 7.644h-3.349.022Z" />
+                                                                    <path fill="#F9D08C" stroke="#F6B141" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".54"
+                                                                        d="m152.067 70.948-4.735 8.25 1.119-6.496-2.931.506 4.114-9.644-.404 7.875 2.837-.49v0Z" />
+                                                                    <path fill="#F3DAE6" stroke="#C94687" stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width=".54"
+                                                                        d="m215.876 34.128-4.735 8.25 1.119-6.496-2.931.505 4.115-9.643-.404 7.875 2.836-.491v0Z" />
+                                                                    <path fill="#C94687"
+                                                                        d="M202.804 36.344c-12.899 1.45-25.776-.809-38.322-3.696-6.33-1.458-12.624-3.082-18.962-4.504-5.544-1.241-11.145-2.324-16.826-2.627-5.68-.304-11.13.144-16.335 2.042-4.713 1.726-8.748 4.656-12.198 8.258-6.793 7.081-11.42 16.126-19.114 22.362-1.877 1.516-3.884 2.743-5.234 4.807-1.14 1.74-1.645 3.797-1.53 5.876.159 2.707 1.48 5.075 1.949 7.71.57 3.182.26 6.445-.188 9.621-.223 1.56-.476 3.104-.7 4.663-.05.34.47.484.52.145.844-5.811 2.187-11.882.058-17.584-.852-2.288-1.444-4.706-.917-7.146.527-2.44 2.043-4.346 3.934-5.833 1.891-1.486 3.826-2.923 5.558-4.663 1.732-1.74 3.248-3.53 4.742-5.406 3.032-3.818 5.797-7.839 8.95-11.564 3.155-3.724 6.75-7.11 11.124-9.34 5.039-2.57 10.734-3.5 16.35-3.494 5.615.008 11.289.895 16.818 2.058 6.193 1.306 12.336 2.88 18.493 4.345 12.127 2.887 24.528 5.479 37.059 4.887a70.551 70.551 0 0 0 4.764-.383c.339-.036.346-.577 0-.534h.007Z" />
+                                                                    <path fill="#F7C167"
+                                                                        d="M24.997 82.18c.346-7.738 5.226-14.574 11.657-18.616 7.608-4.786 17.093-5.277 25.69-3.407 4.67 1.018 9.045 2.808 13.397 4.757 3.782 1.696 7.587 3.436 11.65 4.33 7.637 1.683 15.642 1.278 23.402 1.026 9.413-.303 19.035-.801 28.303 1.22.339.072.483-.448.144-.52-8.431-1.834-17.165-1.595-25.74-1.328-8.575.267-16.624.844-24.737-.671-4.367-.816-8.41-2.585-12.437-4.39-4.244-1.898-8.503-3.702-13.043-4.77-8.525-2.007-17.988-1.79-25.763 2.605-7.153 4.043-12.675 11.369-13.05 19.757-.014.346.52.346.534 0l-.007.007Z" />
+                                                                    <path fill="url(#d)"
+                                                                        d="M22.391 30.1h42.624c-.982-1.61-3.63-3.804-5.991-3.804-.874 0-1.747.116-2.592.347v-.347c0-3.342-2.938-4.093-5.01-3.92a7.905 7.905 0 0 0-2.013.347c-1.04-3.457-4.894-6.049-9.449-6.049-4.554 0-8.12 2.36-9.333 5.645-.65-.116-1.3-.173-1.956-.173-4.324 0-7.832 2.822-7.832 6.337 0 .549.101 1.097.289 1.61" />
+                                                                    <path fill="url(#e)"
+                                                                        d="M39.975 36.806h42.623c-.981-1.61-3.63-3.804-5.99-3.804a9.83 9.83 0 0 0-2.592.346v-.346c0-3.342-2.938-4.093-5.01-3.92a7.901 7.901 0 0 0-2.013.347c-1.04-3.458-4.894-6.05-9.45-6.05-4.554 0-8.12 2.361-9.332 5.646-.65-.116-1.3-.174-1.956-.174-4.324 0-7.832 2.823-7.832 6.338a4.7 4.7 0 0 0 .288 1.61" />
+                                                                    <path fill="url(#f)"
+                                                                        d="M141.723 60.655h42.624c-.982-1.61-3.631-3.804-5.991-3.804-.873 0-1.747.116-2.591.346v-.346c0-3.342-2.938-4.093-5.01-3.92a7.907 7.907 0 0 0-2.014.347c-1.039-3.458-4.894-6.049-9.448-6.049-4.555 0-8.121 2.36-9.334 5.645a11.135 11.135 0 0 0-1.956-.174c-4.324 0-7.832 2.823-7.832 6.338 0 .549.101 1.097.289 1.61" />
+                                                                    <path fill="url(#g)"
+                                                                        d="M214.202 18.84h25.863c-.592-.982-2.202-2.31-3.638-2.31-.534 0-1.061.072-1.574.21v-.21c0-2.029-1.783-2.483-3.039-2.375a4.651 4.651 0 0 0-1.22.21c-.628-2.094-2.973-3.668-5.731-3.668-2.757 0-4.93 1.43-5.659 3.422a7.235 7.235 0 0 0-1.191-.108c-2.62 0-4.75 1.71-4.75 3.847 0 .332.065.664.174.982" />
+                                                                </g>
+                                                                <defs>
+                                                                    <linearGradient id="b" x1="126.377" x2="126.377" y1="172.949" y2="13.014"
+                                                                        gradientUnits="userSpaceOnUse">
+                                                                        <stop stop-color="#fff" />
+                                                                        <stop offset="1" stop-color="#66B2D0" />
+                                                                    </linearGradient>
+                                                                    <linearGradient id="c" x1="154.658" x2="154.745" y1="139.868" y2="139.868"
+                                                                        gradientUnits="userSpaceOnUse">
+                                                                        <stop stop-color="#F9D08C" stop-opacity=".15" />
+                                                                        <stop offset="1" stop-color="#fff" />
+                                                                    </linearGradient>
+                                                                    <linearGradient id="d" x1="42.927" x2="42.927" y1="16.681" y2="30.1"
+                                                                        gradientUnits="userSpaceOnUse">
+                                                                        <stop stop-color="#fff" />
+                                                                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                                                    </linearGradient>
+                                                                    <linearGradient id="e" x1="60.511" x2="60.511" y1="23.387" y2="36.813"
+                                                                        gradientUnits="userSpaceOnUse">
+                                                                        <stop stop-color="#fff" />
+                                                                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                                                    </linearGradient>
+                                                                    <linearGradient id="f" x1="162.259" x2="162.259" y1="47.236" y2="60.655"
+                                                                        gradientUnits="userSpaceOnUse">
+                                                                        <stop stop-color="#fff" />
+                                                                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                                                    </linearGradient>
+                                                                    <linearGradient id="g" x1="226.661" x2="226.661" y1="10.697" y2="18.84"
+                                                                        gradientUnits="userSpaceOnUse">
+                                                                        <stop stop-color="#fff" />
+                                                                        <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                                                                    </linearGradient>
+                                                                    <clipPath id="a">
+                                                                        <path fill="#fff" d="M0 0h252.964v189.696H0z" />
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                            <div class="eyebrow mb-50">{{ topHeaders[header].dropdownCta.linkName }}</div>
 
-                                                        <p class="font-weight-bold">{{ topHeaders[header].dropdownCta.lede }}</p>
-                                                    </a>
+                                                            <p class="font-weight-bold">{{ topHeaders[header].dropdownCta.lede }}</p>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-none d-lg-flex dropdown-cta-bottom">
+                                                <div class="dropdown-cta-bottom--inner">
+                                                    <div class="text-white mr-450">
+                                                        <div class="font-size-300 font-weight-bold">Compare quotes from our top installers.</div>
+                                                        <div>Create an account to compare and shop for the best details.</div>
+                                                    </div>
+
+                                                    <div>
+                                                        <EsButton outline size="lg" variant="secondary">
+                                                            Compare quotes
+                                                        </EsButton>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
