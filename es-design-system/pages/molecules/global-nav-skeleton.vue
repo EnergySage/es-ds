@@ -361,66 +361,68 @@
                                     </div>
                                 </li>
                                 <div class="d-none d-lg-block">
-                                    <li class="nav-item icon-dropdown">
+                                    <li class="icon-dropdown">
                                         <div class="container justify-content-center px-0">
-                                            <div
-                                                class="nav-link dropdown-toggle py-100">
-                                                <IconPerson class="align-self-center" />
+                                            <span class="nav-item">
                                                 <div
-                                                    class="first-name align-items-center pl-50" />
-                                            </div>
+                                                    class="nav-link dropdown-toggle py-100">
+                                                    <IconPerson class="align-self-center" />
+                                                    <div
+                                                        class="first-name align-self-center pl-50" />
+                                                </div>
+                                                <div class="menu">
+                                                    <ul
+                                                        id="loggedIn"
+                                                        class="dropdown-menu rounded mt-0 py-100"
+                                                        style="display: none">
+                                                        <li
+                                                            v-for="item in Object.keys(profileIconDropdown.loggedIn)"
+                                                            :key="item">
+                                                            <a
+                                                                class="dropdown-item nav-link"
+                                                                :href="profileIconDropdown.loggedIn[item].link"
+                                                                data-toggle="dropdown"
+                                                                aria-haspopup="true"
+                                                                aria-expanded="false">
+                                                                <span class="mx-50"> {{ item }} </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul
+                                                        id="loggedOut"
+                                                        class="dropdown-menu rounded mt-0"
+                                                        style="display: none">
+                                                        <a
+                                                            class="d-flex justify-content-around text-decoration-none"
+                                                            :href="profileIconDropdown.loggedOut['Sign in'].link">
+                                                            <EsButton
+                                                                :outline="true"
+                                                                variant="secondary"
+                                                                class="m-100 w-75">
+                                                                Sign in
+                                                            </EsButton>
+                                                        </a>
+                                                        <li>
+                                                            <a
+                                                                class="d-flex justify-content-around"
+                                                                :href="profileIconDropdown.loggedOut['Create an account'].link">
+                                                                <EsButton
+                                                                    variant="link">
+                                                                    Create an account
+                                                                </EsButton>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </span>
                                             <a
                                                 id="compareButton_desktop"
                                                 style="display: none"
                                                 href="https://www.energysage.com/market/start/1">
-                                                <EsButton class="btn btn-secondary my-100">
+                                                <EsButton class="btn btn-secondary my-25">
                                                     Compare quotes
                                                 </EsButton>
                                             </a>
-                                        </div>
-                                        <div class="menu">
-                                            <ul
-                                                id="loggedIn"
-                                                class="dropdown-menu rounded mt-0 py-100"
-                                                style="display: none">
-                                                <li
-                                                    v-for="item in Object.keys(profileIconDropdown.loggedIn)"
-                                                    :key="item">
-                                                    <a
-                                                        class="dropdown-item nav-link"
-                                                        :href="profileIconDropdown.loggedIn[item].link"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <span class="mx-50"> {{ item }} </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <ul
-                                                id="loggedOut"
-                                                class="dropdown-menu rounded mt-0"
-                                                style="display: none">
-                                                <a
-                                                    class="d-flex justify-content-around text-decoration-none"
-                                                    :href="profileIconDropdown.loggedOut['Sign in'].link">
-                                                    <EsButton
-                                                        :outline="true"
-                                                        variant="secondary"
-                                                        class="m-100 w-75">
-                                                        Sign in
-                                                    </EsButton>
-                                                </a>
-                                                <li>
-                                                    <a
-                                                        class="d-flex justify-content-around"
-                                                        :href="profileIconDropdown.loggedOut['Create an account'].link">
-                                                        <EsButton
-                                                            variant="link">
-                                                            Create an account
-                                                        </EsButton>
-                                                    </a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </li>
                                 </div>
@@ -812,7 +814,7 @@ export default {
             }
         };
 
-        fetch('http://localhost:8000/api/account-first-name/', {
+        fetch('/api/account-first-name/', {
             headers: { Accept: 'application/json' },
             method: 'GET',
         })
