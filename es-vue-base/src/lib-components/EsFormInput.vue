@@ -23,7 +23,7 @@
             <!-- prefix icons are decorative only so are aria-hidden -->
             <span
                 v-if="$slots.prefixIcon"
-                aria-hidden
+                aria-hidden="true"
                 class="prefix-icon position-absolute">
                 <slot name="prefixIcon" />
             </span>
