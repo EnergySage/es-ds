@@ -282,11 +282,12 @@ $mobile-max-width: $desktop-min-width - 1;
     // Make menu scrollable, prevent it from making the page longer
     // Prevent horizontal scrolling on menu
     .dropdown-menu {
-        top: 64px;
+        top: 0;
         max-height: 100%;
         overflow: scroll;
-        padding: 0;
+        padding: 64px 0 0 0;
         display: flex !important;
+        z-index: -1;
     }
 
     // Prevent horizontal scrolling on menu
@@ -340,6 +341,10 @@ $mobile-max-width: $desktop-min-width - 1;
 
         ul {
           overflow: scroll;
+
+          li:last-child {
+            margin-bottom: 33%;
+          }
         }
     }
 
@@ -356,6 +361,7 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // The menu header
     .menu-header {
+        background: #fff;
         border-bottom: solid #DBDBDB 1px;
         display: flex;
         height: 64px;
