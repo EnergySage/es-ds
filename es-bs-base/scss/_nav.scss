@@ -181,7 +181,7 @@ $mobile-max-width: $desktop-min-width - 1;
   @media only screen and (min-width: $desktop-min-width) {
     // pull navbar up to avoid overlay from getting covered by other DOM elements
     z-index: 1000;
-    
+
     // Allow dropdown content to take up the full width of the page
     .dropdown-full-page {
       position: static;
@@ -235,6 +235,12 @@ $mobile-max-width: $desktop-min-width - 1;
       display: inline-block;
       position: relative;
     }
+
+    // Fix top header logged in/logged out state section with a fixed width
+    .icon-dropdown .container {
+      width: 225px;
+    }
+
 
     // Fix width of the dropdown menu on person icon hover
     .icon-dropdown .dropdown-menu {

@@ -130,7 +130,8 @@
                         </div>
                         <div
                             id="compareButton_mobile"
-                            class="container px-100 pt-100 d-lg-none text-center justify-content-center">
+                            class="container px-100 pt-100 d-lg-none text-center justify-content-center"
+                            style="display: none">
                             Create an account to compare and see quotes from our verified installers.
                             <EsButton class="btn btn-secondary btn-md my-100 w-100">
                                 Compare quotes
@@ -368,11 +369,20 @@
                                                 <div
                                                     class="first-name align-items-center pl-50" />
                                             </div>
+                                            <a
+                                                id="compareButton_desktop"
+                                                style="display: none"
+                                                href="https://www.energysage.com/market/start/1">
+                                                <EsButton class="btn btn-secondary my-100">
+                                                    Compare quotes
+                                                </EsButton>
+                                            </a>
                                         </div>
                                         <div class="menu">
                                             <ul
                                                 id="loggedIn"
-                                                class="dropdown-menu rounded mt-0 py-100">
+                                                class="dropdown-menu rounded mt-0 py-100"
+                                                style="display: none">
                                                 <li
                                                     v-for="item in Object.keys(profileIconDropdown.loggedIn)"
                                                     :key="item">
@@ -388,7 +398,8 @@
                                             </ul>
                                             <ul
                                                 id="loggedOut"
-                                                class="dropdown-menu rounded mt-0">
+                                                class="dropdown-menu rounded mt-0"
+                                                style="display: none">
                                                 <a
                                                     class="d-flex justify-content-around text-decoration-none"
                                                     :href="profileIconDropdown.loggedOut['Sign in'].link">
@@ -412,13 +423,6 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <a
-                                        id="compareButton_desktop"
-                                        href="https://www.energysage.com/market/start/1">
-                                        <EsButton class="btn btn-secondary my-100">
-                                            Compare quotes
-                                        </EsButton>
-                                    </a>
                                 </div>
                             </div>
                             <div class="row mx-0 d-flex justify-content-around">
@@ -795,19 +799,21 @@ export default {
         // get logged in/out state and display appropriate menu
         const menuDisplay = ({ loggedOut }) => {
             if (loggedOut) {
-                // logged out so hide logged in dropdown
-                document.querySelector('.nav-es-global #loggedIn').style.display = 'none';
+                // logged out so allow loggedOut menu and the compare buttons to be visible
+                document.querySelector('.nav-es-global #loggedOut').style.display = null;
+                document.querySelectorAll('.nav-es-global [id^="compareButton"]').forEach((e) => { e.style.display = null; });
             } else {
-                // logged in so hide logged out dropdown, compare buttons, and show name with spacing
-                document.querySelectorAll('.nav-es-global [id^="compareButton"]').forEach((e) => { e.style.display = 'none'; });
-                document.querySelector('.nav-es-global #loggedOut').style.display = 'none';
-                document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').style.display = 'block';
+                // logged in so allow logged in menu to be visible, and show name with appropriate layout
+                document.querySelector('.nav-es-global #loggedIn').style.display = null;
                 document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle').style.display = 'flex';
-                document.querySelector('.nav-es-global .icon-dropdown .container').style.width = '225px';
+                document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').style.display = 'block';
             }
         };
 
-        fetch('http://localhost:8000/api/account-first-name/?format=json', { method: 'GET' })
+        fetch('http://localhost:8000/api/account-first-name/', {
+            headers: { Accept: 'application/json' },
+            method: 'GET',
+        })
             .then((response) => response.json())
             .then((data) => {
                 const name = data?.first_name || null;
