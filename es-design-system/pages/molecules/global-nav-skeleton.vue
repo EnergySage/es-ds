@@ -291,6 +291,10 @@
                                                                 :href="topHeaders[header].topics[topic].link ?
                                                                     topHeaders[header].topics[topic].link : null">
                                                                 {{ topic }}
+                                                                <IconArrowRight
+                                                                    v-if="topHeaders[header].topics[topic].link"
+                                                                    class="d-none d-lg-inline ml-n1"
+                                                                    height="16px" />
                                                             </a>
                                                             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                                             <label
