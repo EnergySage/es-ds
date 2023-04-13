@@ -425,21 +425,33 @@ $mobile-max-width: $desktop-min-width - 1;
       z-index: 1000;
     }
 
+    // Make primary menu scrollable
+    // Add padding to account for iOS menus
+    .navbar-nav {
+      overflow-y: scroll;
+      padding-bottom: 120px;
+    }
+
     // Allow the dropdowns to overlap each other
     .dropdown {
       position: unset;
     }
 
-    // Position the menu at the top (leave some room for the header -- this seems hacky, could we set this to top:0?)
     // Make menu scrollable, prevent it from making the page longer
     // Prevent horizontal scrolling on menu
     .dropdown-menu {
-      top: 64px;
       // stylelint-disable-next-line declaration-no-important
       display: flex !important;
-      max-height: 100%;
+      // stylelint-disable-next-line declaration-no-important
+      position: static !important;
+      max-height: calc(100% - 64px);
       padding: 0;
       overflow-y: scroll;
+
+      // Add padding below last menu element (not full page drop-downs) to account for iOS menus
+      &:not(.dropdown-menu-full-page) li:last-child {
+        margin-bottom: 120px;
+      }
     }
 
     .dropdown-menu-primary {
@@ -467,6 +479,11 @@ $mobile-max-width: $desktop-min-width - 1;
     .dropdown-label {
       display: block;
       cursor: pointer;
+    }
+
+    // Add padding below featured article to account for iOS menus
+    .dropdown-cta-right {
+      padding-bottom: 120px;
     }
 
     // Show chevrons on mobile
@@ -507,14 +524,6 @@ $mobile-max-width: $desktop-min-width - 1;
       transition: transform 0.2s;
       transform: translate3d(-100%, 0, 0);
 
-      ul {
-        overflow-y: scroll;
-
-        li:last-child {
-          margin-bottom: 120px;
-        }
-      }
-
       // Override BS4 defaults for consistency
       ul,
       li {
@@ -532,6 +541,15 @@ $mobile-max-width: $desktop-min-width - 1;
     .submenu {
       position: fixed;
       z-index: 2;
+
+      ul {
+        max-height: calc(100% - 64px);
+        overflow-y: scroll;
+
+        li:last-child {
+          margin-bottom: 120px;
+        }
+      }
     }
 
     // The menu after any checked checkboxes is translated on screen

@@ -96,8 +96,8 @@
                                 class="dropdown-list row w-auto"
                                 :aria-labelledby="checkboxId">
                                 <!-- name of top-level menu (won't ever be a link) -->
-                                <li class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold ml-50 w-100">
-                                    {{ name }}
+                                <li class="nav-item col-lg-12 d-lg-none">
+                                    <span class="nav-link align-items-center border-bottom d-flex font-weight-bold w-100 h-100">{{ name }}</span>
                                 </li>
                                 <es-nav-bar-topic-menu
                                     v-for="topic in topics"
