@@ -27,7 +27,7 @@
             <h2>
                 Primary Button
             </h2>
-            <table class="table mb-200">
+            <table class="table button-table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -131,7 +131,7 @@
             <h2>
                 Secondary Button
             </h2>
-            <table class="table mb-200">
+            <table class="table button-table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -250,7 +250,7 @@
             <h2>
                 Outline Primary Button
             </h2>
-            <table class="table mb-200">
+            <table class="table button-table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -369,7 +369,7 @@
             <h2>
                 Outline Secondary Button
             </h2>
-            <table class="table mb-200">
+            <table class="table button-table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -501,6 +501,33 @@
 
         <div class="my-450">
             <h2>
+                Dark Background
+            </h2>
+            <div class="bg-gray pb-100 px-200 pt-200 rounded-lg">
+                <es-button class="mb-100 mr-50">
+                    Primary button
+                </es-button>
+                <es-button
+                    class="mb-100 mr-50"
+                    variant="secondary">
+                    Secondary button
+                </es-button>
+                <es-button
+                    class="mb-100 mr-50"
+                    outline>
+                    Outline primary button
+                </es-button>
+                <es-button
+                    class="mb-100 mr-50"
+                    outline
+                    variant="secondary">
+                    Outline secondary button
+                </es-button>
+            </div>
+        </div>
+
+        <div class="my-450">
+            <h2>
                 Link button
             </h2>
             <p>
@@ -509,7 +536,7 @@
                 will appear next to another button (e.g. within a modal), as they will remain vertically
                 aligned relative to each other.
             </p>
-            <table class="table mb-200">
+            <table class="table button-table mb-200">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -601,7 +628,7 @@
                 They are a legacy artifact of Bootstrap, don't match EnergySage branding, and will be removed in a
                 future version of ESDS.
             </p>
-            <div class="mb-200">
+            <div class="button-table mb-200">
                 <es-button variant="success">
                     Success button
                 </es-button>
@@ -633,7 +660,7 @@
                     Highlight dark button
                 </es-button>
             </div>
-            <div class="mb-50">
+            <div class="button-table mb-50">
                 <es-button
                     outline
                     variant="success">
@@ -776,11 +803,13 @@ export default {
  * for the purposes of this documentation page while keeping the
  * example code patterns simple and easy to copy out.
  *
- * normally, one would want to use "mb-2" or "mr-2" utility classes
+ * normally, one would want to use "mb-50" or "mr-50" utility classes
  * on the buttons to accomplish this spacing.
  */
-button {
-    margin-bottom: $spacer * 0.5;
-    margin-right: $spacer * 0.5;
+.button-table {
+    button {
+        margin-bottom: $spacer * 0.5;
+        margin-right: $spacer * 0.5;
+    }
 }
 </style>

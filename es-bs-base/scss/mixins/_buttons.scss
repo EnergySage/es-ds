@@ -88,6 +88,7 @@
   $focus-border: map-get($button-focus-border-colors, $variant);
 
   color: $color;
+  background: $white;
   border-color: $color;
 
   @include hover() {
