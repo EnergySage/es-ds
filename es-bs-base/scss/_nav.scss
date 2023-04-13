@@ -376,6 +376,7 @@ $mobile-max-width: $desktop-min-width - 1;
     // Prevent horizontal scrolling on menu
     .dropdown-menu-full-page {
       display: flex !important;
+      border: none;
     }
 
     // Hide the desktop dropdown toggle because mobile uses the labels as toggles
