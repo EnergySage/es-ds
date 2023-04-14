@@ -26,6 +26,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-footer">
+                EsFooter
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-form-input">
                 EsFormInput
             </b-link>
