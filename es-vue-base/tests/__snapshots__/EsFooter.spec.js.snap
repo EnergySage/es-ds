@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsFormMsg <EsFormMsg /> 1`] = `
+"<div class="footer clearfix">
+  <h1>
+    Placeholder for EsFooter
+  </h1>
+</div>"
+`;
