@@ -289,7 +289,7 @@
                                                                 aria-haspopup="true"
                                                                 aria-expanded="false"
                                                                 :href="topHeaders[header].topics[topic].link ?
-                                                                    topHeaders[header].topics[topic].link : null">
+                                                                    topHeaders[header].topics[topic].link : '#'">
                                                                 {{ topic }}
                                                                 <IconArrowRight
                                                                     v-if="topHeaders[header].topics[topic].link"
