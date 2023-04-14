@@ -275,7 +275,7 @@
                                                         class="dropdown-list "
                                                         :aria-labelledby="`menu-${header}`">
                                                         <li
-                                                            class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center">
+                                                            class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100 align-items-center ml-50 ml-50">
                                                             {{ header }}
                                                         </li>
                                                         <li
@@ -299,7 +299,7 @@
                                                             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                                             <label
                                                                 :for="`topMenu-${topic}`"
-                                                                class="dropdown-label nav-link d-flex d-lg-none align-items-center justify-content-between w-100 h-100">
+                                                                class="dropdown-label nav-link d-flex d-lg-none align-items-center justify-content-between w-100 h-100 ml-50">
                                                                 {{ topic }}
                                                                 <IconChevronRight
                                                                     class="expand-icon"
@@ -339,7 +339,7 @@
                                                                         class="d-lg-none">
                                                                         <a
                                                                             v-if="topHeaders[header].topics[topic].link"
-                                                                            class="nav-item nav-link font-weight-bold d-flex w-100 align-items-center"
+                                                                            class="nav-item nav-link font-weight-bold d-flex w-100 align-items-center ml-50"
                                                                             :href="topHeaders[header].topics[topic].link">
                                                                             {{ topic }}
                                                                         </a>
@@ -355,7 +355,7 @@
                                                                                 topics[topic].subtopics)"
                                                                         :key="subtopic">
                                                                         <a
-                                                                            class="dropdown-item nav-item nav-link d-flex align-items-center"
+                                                                            class="dropdown-item nav-item nav-link d-flex align-items-center ml-50 ml-lg-0"
                                                                             :href="topHeaders[header].topics[topic]
                                                                                 .subtopics[subtopic].link">
                                                                             {{ subtopic }}
