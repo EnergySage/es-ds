@@ -61,6 +61,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-navbar">
+                EsNavbar
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-popover">
                 EsPopover
             </b-link>
