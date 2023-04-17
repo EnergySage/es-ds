@@ -25,4 +25,3 @@ export { default as EsTab } from './EsTab.vue';
 export { default as EsTabs } from './EsTabs.vue';
 export { default as EsViewMore } from './EsViewMore.vue';
 export { default as EsVerificationCode } from './EsVerificationCode.vue';
-export { default as GlobalNav } from './GlobalNav.vue';
