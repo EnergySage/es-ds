@@ -162,6 +162,20 @@ $mobile-max-width: $desktop-min-width - 1;
     font-weight: 400;
   }
 
+  // Adjust default nav-link styling
+  &.navbar-light {
+    .navbar-nav {
+        .nav-item.nav-link {
+            color: $gray-900;
+
+            &:hover {
+                color: $black;
+                text-decoration: underline;
+            }
+        }
+    }
+  }
+
   // Hide the default BS4 expansion indicator
   .dropdown-toggle::after {
     content: none;
@@ -247,11 +261,11 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // Top header hover should be gray
     .nav-item.top-header:hover {
-      background: rgba(236, 236, 236, 1);
+      background: $gray-150;
 
       // Top header menu background should be gray
       .dropdown-menu {
-        background: rgba(236, 236, 236, 1);
+        background: $gray-150;
       }
     }
 
@@ -284,7 +298,6 @@ $mobile-max-width: $desktop-min-width - 1;
       position: relative;
       display: flex;
       justify-content: space-between;
-      background: rgba(236, 236, 236, 1);
     }
 
     .dropdown-list {
