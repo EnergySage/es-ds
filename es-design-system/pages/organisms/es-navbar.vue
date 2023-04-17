@@ -17,7 +17,7 @@
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsNavbar.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-navbar.vue" />
+            doc-source="es-design-system/pages/organisms/es-navbar.vue" />
     </div>
 </template>
 <script>
