@@ -4,7 +4,7 @@
         <h1>
             EsFooter component
         </h1>
-        <es-footer />
+        <EsFooter />
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFooter.vue"
