@@ -6,8 +6,8 @@
             </b-link>
         </li>
         <li>
-            <b-link to="/organisms/es-navbar">
-                EsNavbar
+            <b-link to="/organisms/es-nav-bar">
+                EsNavBar
             </b-link>
         </li>
         <li>

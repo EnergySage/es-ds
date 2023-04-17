@@ -457,7 +457,7 @@ import EsLogo from '../lib-assets/es-logo.vue';
 import NavEnergyTips from '../lib-assets/nav-energy-tips.vue';
 
 export default {
-    name: 'EsNavbar',
+    name: 'EsNavBar',
     components: {
         EsButton,
         EsLogo,
