@@ -775,6 +775,8 @@ export default {
         };
     },
     mounted() {
+        // CUSTOM GLOBAL-NAV SCRIPT STARTS
+
         // Function to collapse all open menus
         function uncheck_menus() {
             document.querySelectorAll('.menu-checkbox').forEach((element) => {
@@ -874,6 +876,8 @@ export default {
                 console.log('error', e);
                 menuDisplay({ loggedOut: true });
             });
+
+        // CUSTOM GLOBAL-NAV SCRIPT ENDS
     },
 };
 </script>
