@@ -3,15 +3,10 @@
         <h1>
             EsNavBar
         </h1>
-        <!--
-        <p class="pb-200">
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/navbar">
-                bootstrap-vue navbar
-            </b-link>
+        <p>
+            The nav bar is a specialized component intended for use outside the normal content
+            container. See above.
         </p>
-        -->
-
-        <es-nav-bar />
 
         <!-- print out EsNavBar's mounted() script here so the rip-the-nav utility can access it -->
         <!-- eslint-disable vue/no-v-html -->
@@ -31,6 +26,8 @@
 
 export default {
     name: 'EsNavBarDocs',
+    // use a custom layout so the nav can be full-width at the top of the page
+    layout: 'nav',
     async asyncData() {
         /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
         const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsNavBar.vue');
