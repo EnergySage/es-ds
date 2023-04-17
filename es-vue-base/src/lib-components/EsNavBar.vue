@@ -3,19 +3,23 @@
         <div class="content-overlay" />
         <nav
             class="nav-es-global navbar navbar-expand navbar-light py-0">
+            <!-- mobile hamburger menu button -->
             <div class="d-flex d-lg-none col-2 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
                     for="data--main-menu"
                     class="mb-0">
                     <IconHamburger class="menu-toggle align-self-center" />
+                    <span class="sr-only">Open navigation menu</span>
                 </label>
             </div>
+            <!-- mobile logo -->
             <div class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0">
                 <es-logo
                     width="128px"
                     height="28px" />
             </div>
+            <!-- mobile account menu -->
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
                 <a
                     class="text-dark text-decoration-none"
@@ -29,9 +33,11 @@
                 class="menu-checkbox main-menu-checkbox"
                 aria-labelledby="data--main-menu"
                 type="checkbox">
+            <!-- first-level menu on mobile, the whole nav on desktop-->
             <div
                 id="navbarNavDropdown"
                 class="collapse navbar-collapse menu">
+                <!-- mobile menu header -->
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
@@ -59,17 +65,18 @@
                 </div>
                 <ul class="navbar-nav d-flex flex-column w-100">
                     <div class="row mx-0 d-flex justify-content-around align-items-center">
+                        <!-- desktop logo -->
                         <div class="navbar-brand d-none d-lg-block">
                             <es-logo
                                 width="200px"
                                 height="42px" />
                         </div>
                         <li
-                            v-for="header in Object.keys(items.topHeaders)"
-                            :key="header"
+                            v-for="brandItem in items.brandMenuItems"
+                            :key="brandItem.name"
                             class="nav-item top-header">
                             <a
-                                v-if="!items.topHeaders[header].link"
+                                v-if="!brandItem.link"
                                 class="nav-link dropdown-toggle py-150"
                                 href="#"
                                 data-toggle="dropdown"
@@ -81,66 +88,66 @@
                                             class="top-header-icon"
                                             style="height: 16px; width: 16px;" />
                                     </span>
-                                    {{ header }}
+                                    {{ brandItem.name }}
                                 </div>
                                 <div class="font-weight-light font-size-xs pl-150">
-                                    {{ items.topHeaders[header].subHeading }}
+                                    {{ brandItem.subHeading }}
                                 </div>
                             </a>
                             <a
                                 v-else
                                 class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
-                                :href="items.topHeaders[header].link">
+                                :href="brandItem.link">
                                 <div class="d-flex d-lg-block">
                                     <div
-                                        v-if="header=='Solar Calculator'"
+                                        v-if="brandItem.name=='Solar Calculator'"
                                         class="d-lg-none pr-50">
                                         <IconCalculator />
                                     </div>
                                     <div
                                         class="d-lg-flex align-items-center eyebrow-lg">
-                                        {{ header }}
+                                        {{ brandItem.name }}
                                     </div>
                                     <div class="font-weight-light font-size-xs d-none d-lg-block">
-                                        {{ items.topHeaders[header].subHeading }}
+                                        {{ brandItem.subHeading }}
                                     </div>
                                 </div>
                             </a>
                             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                             <label
-                                v-if="!items.topHeaders[header].link"
-                                :for="`menu-${header}`"
+                                v-if="!brandItem.link"
+                                :for="`menu-${brandItem.name}`"
                                 class="dropdown-label nav-link d-flex d-lg-none px-0 w-100 h-100 align-items-center
                                     justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <div
-                                        v-if="header=='Energy Tips'"
+                                        v-if="brandItem.name=='Energy Tips'"
                                         class="pr-50">
                                         <IconLightBulb />
                                     </div>
                                     <div
-                                        v-else-if="header=='About Us'"
+                                        v-else-if="brandItem.name=='About Us'"
                                         class="pr-50">
                                         <IconESLeaf />
                                     </div>
-                                    {{ header }}
+                                    {{ brandItem.name }}
                                 </div>
                                 <IconChevronRight
                                     class="expand-icon"
                                     style="height: 18px;" />
                             </label>
                             <input
-                                :id="`menu-${header}`"
-                                :name="`menu-${header}`"
+                                :id="`menu-${brandItem.name}`"
+                                :name="`menu-${brandItem.name}`"
                                 type="checkbox"
                                 class="menu-checkbox">
                             <div
-                                v-if="!items.topHeaders[header].link"
+                                v-if="!brandItem.link"
                                 class="menu">
                                 <div class="menu-header">
                                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                     <label
-                                        :for="`menu-${header}`"
+                                        :for="`menu-${brandItem.name}`"
                                         class="menu-toggle nav-link d-flex w-100 h-100 mb-0 align-items-center
                                             font-size-sm">
                                         <IconChevronLeft height="18px" />
@@ -160,45 +167,45 @@
                                         <div class="mb-3 mb-lg-0 pl-lg-200">
                                             <ul
                                                 class="dropdown-list "
-                                                :aria-labelledby="`menu-${header}`">
+                                                :aria-labelledby="`menu-${brandItem.name}`">
                                                 <li
                                                     class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100
                                                         align-items-center ml-50 ml-50">
-                                                    {{ header }}
+                                                    {{ brandItem.name }}
                                                 </li>
                                                 <li
-                                                    v-for="topic in Object.keys(items.topHeaders[header].topics)"
-                                                    :key="topic"
+                                                    v-for="topic in brandItem.topics"
+                                                    :key="topic.name"
                                                     class="nav-item topic-group px-0">
                                                     <a
                                                         class="nav-link dropdown-toggle eyebrow-lg border-bottom"
-                                                        :class="(items.topHeaders[header].topics[topic].link
+                                                        :class="(topic.link
                                                             ? 'dropdown-item' : '')"
                                                         data-toggle="dropdown"
                                                         aria-haspopup="true"
                                                         aria-expanded="false"
-                                                        :href="items.topHeaders[header].topics[topic].link ?
-                                                            items.topHeaders[header].topics[topic].link : '#'">
-                                                        {{ topic }}
+                                                        :href="topic.link ?
+                                                            topic.link : '#'">
+                                                        {{ topic.name }}
                                                         <IconArrowRight
-                                                            v-if="items.topHeaders[header].topics[topic].link"
+                                                            v-if="topic.link"
                                                             class="d-none d-lg-inline ml-n1"
                                                             height="16px" />
                                                     </a>
                                                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                                     <label
-                                                        :for="`topMenu-${topic}`"
+                                                        :for="`topMenu-${topic.name}`"
                                                         class="dropdown-label nav-link d-flex d-lg-none
                                                             align-items-center justify-content-between w-100 h-100
                                                             ml-50">
-                                                        {{ topic }}
+                                                        {{ topic.name }}
                                                         <IconChevronRight
                                                             class="expand-icon"
                                                             style="height: 18px;" />
                                                     </label>
                                                     <input
-                                                        :id="`topMenu-${topic}`"
-                                                        :name="`topMenu-${topic}`"
+                                                        :id="`topMenu-${topic.name}`"
+                                                        :name="`topMenu-${topic.name}`"
                                                         type="checkbox"
                                                         class="menu-checkbox">
                                                     <div
@@ -207,13 +214,13 @@
                                                             <!-- vuejs-accessibility/label-has-for -->
                                                             <!-- eslint-disable-next-line -->
                                                             <label
-                                                                :for="`topMenu-${topic}`"
+                                                                :for="`topMenu-${topic.name}`"
                                                                 class="menu-toggle d-flex w-100 h-100 mb-0
                                                                     align-items-center font-size-sm">
                                                                 <div
                                                                     class="nav-link text-uppercase">
                                                                     <IconChevronLeft height="18px" />
-                                                                    {{ topic }}
+                                                                    {{ topic.name }}
                                                                 </div>
                                                             </label>
                                                             <div class="d-flex col-3 justify-content-end">
@@ -232,32 +239,27 @@
                                                             <li
                                                                 class="d-lg-none">
                                                                 <a
-                                                                    v-if="items.topHeaders[header].topics[topic].link"
+                                                                    v-if="topic.link"
                                                                     class="nav-item nav-link font-weight-bold d-flex
                                                                         w-100 align-items-center ml-50"
-                                                                    :href="
-                                                                        items.topHeaders[header].topics[topic].link
-                                                                    ">
-                                                                    {{ topic }}
+                                                                    :href="topic.link">
+                                                                    {{ topic.name }}
                                                                 </a>
                                                                 <div
                                                                     v-else
                                                                     class="nav-item nav-link font-weight-bold d-flex
                                                                         w-100 align-items-center">
-                                                                    {{ topic }}
+                                                                    {{ topic.name }}
                                                                 </div>
                                                             </li>
                                                             <li
-                                                                v-for="subtopic in
-                                                                    Object.keys(items.topHeaders[header].
-                                                                        topics[topic].subtopics)"
-                                                                :key="subtopic">
+                                                                v-for="subtopic in topic.subtopics"
+                                                                :key="subtopic.name">
                                                                 <a
                                                                     class="dropdown-item nav-item nav-link d-flex
                                                                         align-items-center ml-50 ml-lg-0"
-                                                                    :href="items.topHeaders[header].topics[topic]
-                                                                        .subtopics[subtopic].link">
-                                                                    {{ subtopic }}
+                                                                    :href="subtopic.link">
+                                                                    {{ subtopic.name }}
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -269,18 +271,18 @@
                                             <div class="font-size-50 p-lg-100">
                                                 <a
                                                     class="d-block cta-link"
-                                                    :href="items.topHeaders[header].dropdownCta.linkUrl"
-                                                    :title="items.topHeaders[header].dropdownCta.linkName">
+                                                    :href="brandItem.dropdownCta.linkUrl"
+                                                    :title="brandItem.dropdownCta.linkName">
                                                     <nav-energy-tips
                                                         width="253px"
                                                         height="190px"
                                                         class="mb-100" />
                                                     <div class="eyebrow mb-50">
-                                                        {{ items.topHeaders[header].dropdownCta.linkName }}
+                                                        {{ brandItem.dropdownCta.linkName }}
                                                     </div>
 
                                                     <p class="font-weight-bold">
-                                                        {{ items.topHeaders[header].dropdownCta.lede }}
+                                                        {{ brandItem.dropdownCta.lede }}
                                                     </p>
                                                 </a>
                                             </div>
