@@ -140,7 +140,6 @@ $mobile-max-width: $desktop-min-width - 1;
 }
 
 .nav-es-global {
-
   // add a background so veil goes under the nav
   background-color: white;
 
@@ -158,8 +157,23 @@ $mobile-max-width: $desktop-min-width - 1;
   }
 
   // All links should have font-weight-normal (weight 400)
+  // TODO: This overrides styles for `eyebrow`
   a {
     font-weight: 400;
+  }
+
+  // Adjust default nav-link styling
+  &.navbar-light {
+    .navbar-nav {
+        .nav-item.nav-link {
+            color: $gray-900;
+
+            &:hover {
+                color: $black;
+                text-decoration: underline;
+            }
+        }
+    }
   }
 
   // Hide the default BS4 expansion indicator
@@ -177,6 +191,25 @@ $mobile-max-width: $desktop-min-width - 1;
     background: none;
   }
 
+  .dropdown-cta-right {
+    line-height: 1.3;
+
+    .eyebrow {
+      color: #b95100 !important;
+      font-size: 12px;
+    }
+
+    .cta-link {
+      color: $gray-900;
+      font-size: 14px;
+      text-decoration: none;
+
+      &:hover {
+        color: $gray-1200;
+      }
+    }
+  }
+
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: $desktop-min-width) {
     // pull navbar up to avoid overlay from getting covered by other DOM elements
@@ -191,6 +224,7 @@ $mobile-max-width: $desktop-min-width - 1;
     .dropdown-menu-full-page {
       top: 65%;
       width: 100%;
+      padding-bottom: 0;
     }
 
     // eyebrow copied from es-ds class, but override for letter spacing and only display on lg+ viewports
@@ -209,7 +243,8 @@ $mobile-max-width: $desktop-min-width - 1;
       }
     }
 
-    // Show menu and up chevron icon nav-item hover
+    // Show dropdown and hover colors on nav-item hover in desktop view
+    // Show top headers up chevron icon on nav-item hover
     .nav-item:hover {
       .dropdown-menu {
         display: block;
@@ -220,13 +255,17 @@ $mobile-max-width: $desktop-min-width - 1;
       }
     }
 
+    .nav-item.top-header {
+      user-select: none;
+    }
+
     // Top header hover should be gray
     .nav-item.top-header:hover {
-      background: rgba(236, 236, 236, 1);
+      background: $gray-150;
 
       // Top header menu background should be gray
       .dropdown-menu {
-        background: rgba(236, 236, 236, 1);
+        background: $gray-150;
       }
     }
 
@@ -255,9 +294,52 @@ $mobile-max-width: $desktop-min-width - 1;
       text-overflow: ellipsis;
     }
 
-    // Place EnergyTips topic in a row instead of a column on desktop dropdown
+    .dropdown-menu-primary {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .dropdown-list {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .dropdown-cta-right {
+      flex-basis: 270px;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
     .topic-group {
-      float: left;
+      flex-basis: 277px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      margin-right: 15px;
+      margin-bottom: 2rem;
+    }
+
+    .dropdown-item {
+      white-space: normal !important;
+    }
+
+    .dropdown-cta-bottom {
+      height: 78px;
+      background-color: #292929;
+      color: white;
+      align-items: center;
+
+      .dropdown-cta-bottom--inner {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+      }
+
+      .btn-lg {
+        width: 250px;
+      }
     }
   }
 
@@ -282,16 +364,31 @@ $mobile-max-width: $desktop-min-width - 1;
     // Make menu scrollable, prevent it from making the page longer
     // Prevent horizontal scrolling on menu
     .dropdown-menu {
-        top: 64px;
-        max-height: calc(100% - 64px);
-        overflow: scroll;
-        padding: 0;
-        display: flex !important;
+      top: 64px;
+      max-height: 100%;
+      overflow: scroll;
+      padding: 0;
+      display: flex !important;
+    }
+
+    .dropdown-menu-primary {
+        flex-direction: column;
+        width: 100%;
+        border: none;
+
+      .nav-item {
+        margin: 0;
+      }
+    }
+
+    .dropdown-list {
+      padding: 0;
     }
 
     // Prevent horizontal scrolling on menu
     .dropdown-menu-full-page {
       display: flex !important;
+      border: none;
     }
 
     // Hide the desktop dropdown toggle because mobile uses the labels as toggles

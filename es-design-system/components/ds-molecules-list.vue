@@ -100,11 +100,6 @@
                 EsViewMore
             </b-link>
         </li>
-        <li>
-            <b-link to="/molecules/global-nav-skeleton">
-                GlobalNavSkeleton
-            </b-link>
-        </li>
     </ul>
 </template>
 
