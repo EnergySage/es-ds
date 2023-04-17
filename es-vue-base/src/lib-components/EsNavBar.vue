@@ -19,7 +19,7 @@
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
                 <a
                     class="text-dark text-decoration-none"
-                    :href="profileIconDropdown.loggedIn['My Account'].link"
+                    :href="items.profileIconDropdown.loggedIn['My Account'].link"
                     aria-label="Link to profile">
                     <IconPerson class="align-self-center" />
                 </a>
@@ -65,11 +65,11 @@
                                 height="42px" />
                         </div>
                         <li
-                            v-for="header in Object.keys(topHeaders)"
+                            v-for="header in Object.keys(items.topHeaders)"
                             :key="header"
                             class="nav-item top-header">
                             <a
-                                v-if="!topHeaders[header].link"
+                                v-if="!items.topHeaders[header].link"
                                 class="nav-link dropdown-toggle py-150"
                                 href="#"
                                 data-toggle="dropdown"
@@ -84,13 +84,13 @@
                                     {{ header }}
                                 </div>
                                 <div class="font-weight-light font-size-xs pl-150">
-                                    {{ topHeaders[header].subHeading }}
+                                    {{ items.topHeaders[header].subHeading }}
                                 </div>
                             </a>
                             <a
                                 v-else
                                 class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
-                                :href="topHeaders[header].link">
+                                :href="items.topHeaders[header].link">
                                 <div class="d-flex d-lg-block">
                                     <div
                                         v-if="header=='Solar Calculator'"
@@ -102,13 +102,13 @@
                                         {{ header }}
                                     </div>
                                     <div class="font-weight-light font-size-xs d-none d-lg-block">
-                                        {{ topHeaders[header].subHeading }}
+                                        {{ items.topHeaders[header].subHeading }}
                                     </div>
                                 </div>
                             </a>
                             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                             <label
-                                v-if="!topHeaders[header].link"
+                                v-if="!items.topHeaders[header].link"
                                 :for="`menu-${header}`"
                                 class="dropdown-label nav-link d-flex d-lg-none px-0 w-100 h-100 align-items-center
                                     justify-content-between">
@@ -135,7 +135,7 @@
                                 type="checkbox"
                                 class="menu-checkbox">
                             <div
-                                v-if="!topHeaders[header].link"
+                                v-if="!items.topHeaders[header].link"
                                 class="menu">
                                 <div class="menu-header">
                                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -167,21 +167,21 @@
                                                     {{ header }}
                                                 </li>
                                                 <li
-                                                    v-for="topic in Object.keys(topHeaders[header].topics)"
+                                                    v-for="topic in Object.keys(items.topHeaders[header].topics)"
                                                     :key="topic"
                                                     class="nav-item topic-group px-0">
                                                     <a
                                                         class="nav-link dropdown-toggle eyebrow-lg border-bottom"
-                                                        :class="(topHeaders[header].topics[topic].link
+                                                        :class="(items.topHeaders[header].topics[topic].link
                                                             ? 'dropdown-item' : '')"
                                                         data-toggle="dropdown"
                                                         aria-haspopup="true"
                                                         aria-expanded="false"
-                                                        :href="topHeaders[header].topics[topic].link ?
-                                                            topHeaders[header].topics[topic].link : '#'">
+                                                        :href="items.topHeaders[header].topics[topic].link ?
+                                                            items.topHeaders[header].topics[topic].link : '#'">
                                                         {{ topic }}
                                                         <IconArrowRight
-                                                            v-if="topHeaders[header].topics[topic].link"
+                                                            v-if="items.topHeaders[header].topics[topic].link"
                                                             class="d-none d-lg-inline ml-n1"
                                                             height="16px" />
                                                     </a>
@@ -232,10 +232,12 @@
                                                             <li
                                                                 class="d-lg-none">
                                                                 <a
-                                                                    v-if="topHeaders[header].topics[topic].link"
+                                                                    v-if="items.topHeaders[header].topics[topic].link"
                                                                     class="nav-item nav-link font-weight-bold d-flex
                                                                         w-100 align-items-center ml-50"
-                                                                    :href="topHeaders[header].topics[topic].link">
+                                                                    :href="
+                                                                        items.topHeaders[header].topics[topic].link
+                                                                    ">
                                                                     {{ topic }}
                                                                 </a>
                                                                 <div
@@ -247,13 +249,13 @@
                                                             </li>
                                                             <li
                                                                 v-for="subtopic in
-                                                                    Object.keys(topHeaders[header].
+                                                                    Object.keys(items.topHeaders[header].
                                                                         topics[topic].subtopics)"
                                                                 :key="subtopic">
                                                                 <a
                                                                     class="dropdown-item nav-item nav-link d-flex
                                                                         align-items-center ml-50 ml-lg-0"
-                                                                    :href="topHeaders[header].topics[topic]
+                                                                    :href="items.topHeaders[header].topics[topic]
                                                                         .subtopics[subtopic].link">
                                                                     {{ subtopic }}
                                                                 </a>
@@ -267,18 +269,18 @@
                                             <div class="font-size-50 p-lg-100">
                                                 <a
                                                     class="d-block cta-link"
-                                                    :href="topHeaders[header].dropdownCta.linkUrl"
-                                                    :title="topHeaders[header].dropdownCta.linkName">
+                                                    :href="items.topHeaders[header].dropdownCta.linkUrl"
+                                                    :title="items.topHeaders[header].dropdownCta.linkName">
                                                     <nav-energy-tips
                                                         width="253px"
                                                         height="190px"
                                                         class="mb-100" />
                                                     <div class="eyebrow mb-50">
-                                                        {{ topHeaders[header].dropdownCta.linkName }}
+                                                        {{ items.topHeaders[header].dropdownCta.linkName }}
                                                     </div>
 
                                                     <p class="font-weight-bold">
-                                                        {{ topHeaders[header].dropdownCta.lede }}
+                                                        {{ items.topHeaders[header].dropdownCta.lede }}
                                                     </p>
                                                 </a>
                                             </div>
@@ -325,11 +327,11 @@
                                                 class="dropdown-menu rounded mt-0 py-100"
                                                 style="display: none">
                                                 <li
-                                                    v-for="item in Object.keys(profileIconDropdown.loggedIn)"
+                                                    v-for="item in Object.keys(items.profileIconDropdown.loggedIn)"
                                                     :key="item">
                                                     <a
                                                         class="dropdown-item nav-link"
-                                                        :href="profileIconDropdown.loggedIn[item].link"
+                                                        :href="items.profileIconDropdown.loggedIn[item].link"
                                                         data-toggle="dropdown"
                                                         aria-haspopup="true"
                                                         aria-expanded="false">
@@ -343,7 +345,7 @@
                                                 style="display: none">
                                                 <a
                                                     class="d-flex justify-content-around text-decoration-none"
-                                                    :href="profileIconDropdown.loggedOut['Sign in'].link">
+                                                    :href="items.profileIconDropdown.loggedOut['Sign in'].link">
                                                     <EsButton
                                                         :outline="true"
                                                         variant="secondary"
@@ -354,7 +356,7 @@
                                                 <li>
                                                     <a
                                                         class="d-flex justify-content-around"
-                                                        :href="profileIconDropdown
+                                                        :href="items.profileIconDropdown
                                                             .loggedOut['Create an account'].link">
                                                         <EsButton
                                                             variant="link">
@@ -379,7 +381,7 @@
                     </div>
                     <div class="row mx-0 d-flex justify-content-around">
                         <li
-                            v-for="header in Object.keys(productHeaders)"
+                            v-for="header in Object.keys(items.productHeaders)"
                             :key="header"
                             class="nav-item dropdown">
                             <a
@@ -433,11 +435,11 @@
                                         {{ header }}
                                     </li>
                                     <li
-                                        v-for="subHeader in Object.keys(productHeaders[header].subHeaders)"
+                                        v-for="subHeader in Object.keys(items.productHeaders[header].subHeaders)"
                                         :key="subHeader">
                                         <a
                                             class="dropdown-item nav-item nav-link d-flex align-items-center"
-                                            :href="productHeaders[header].subHeaders[subHeader].link">
+                                            :href="items.productHeaders[header].subHeaders[subHeader].link">
                                             {{ subHeader }}
                                         </a>
                                     </li>
@@ -453,6 +455,8 @@
 
 <script lang="js">
 import EsButton from './EsButton.vue';
+import NAV_BAR_CONTENT from '../lib-data/es-nav-bar-content';
+
 import EsLogo from '../lib-assets/es-logo.vue';
 import NavEnergyTips from '../lib-assets/nav-energy-tips.vue';
 
@@ -465,313 +469,7 @@ export default {
     },
     data() {
         return {
-            visible: false,
-            compCode: '',
-            docCode: '',
-            profileIconDropdown: {
-                loggedIn: {
-                    'My Account': {
-                        link: 'https://www.energysage.com/profile/',
-                    },
-                    'Share Your Experience': {
-                        link: 'https://www.energysage.com/share-your-experience/',
-                    },
-                    Settings: {
-                        link: 'https://www.energysage.com/account-settings/router/',
-                    },
-                    'Refer a Friend': {
-                        link: 'https://www.energysage.com/refer-a-friend/',
-                    },
-                    'Sign Out': {
-                        link: 'https://www.energysage.com/logout/',
-                    },
-                },
-                loggedOut: {
-                    'Sign in': {
-                        link: 'https://www.energysage.com/login/',
-                    },
-                    'Create an account': {
-                        link: 'https://www.energysage.com/register/',
-                    },
-                },
-            },
-            topHeaders: {
-                'Energy Tips': {
-                    topics: {
-                        Solar: {
-                            subtopics: {
-                                'Home solar guide': {
-                                    link: 'https://www.energysage.com/solar/',
-                                },
-                                'Community solar guide': {
-                                    link: 'https://www.energysage.com/solar/solar-101/what-is-community-solar/',
-                                },
-                                'Best solar panels': {
-                                    link: 'https://news.energysage.com/best-solar-panels-complete-ranking/',
-                                },
-                                'What do solar panels cost? ': {
-                                    link: 'https://www.energysage.com/local-data/solar-panel-cost/',
-                                },
-                            },
-                            link: 'https://www.energysage.com/solar/',
-                        },
-                        'Backup Power': {
-                            subtopics: {
-                                'Backup power guide': {
-                                    link: 'https://www.energysage.com/energy-storage/',
-                                },
-                                'Best home batteries': {
-                                    link: 'https://news.energysage.com/best-solar-batteries/',
-                                },
-                                'Home batteries vs. generators': {
-                                    link: 'https://news.energysage.com/battery-backup-power-vs-generators-which-is-right-for-you/',
-                                },
-                            },
-                        },
-                        'Heating & Cooling': {
-                            subtopics: {
-                                'Heat pump guide': {
-                                    link: 'https://www.energysage.com/clean-heating-cooling/air-source-heat-pumps/',
-                                },
-                                'Best heat pumps': {
-                                    link: 'https://www.energysage.com/',
-                                },
-                                'How do heat pumps work?': {
-                                    link: 'https://news.energysage.com/how-do-heat-pumps-work/',
-                                },
-                            },
-                        },
-                        'Electric Vehicles': {
-                            subtopics: {
-                                'EV charging guide': {
-                                    link: 'https://www.energysage.com/electric-vehicles/charging-your-ev/',
-                                },
-                                'Electric vehicle guide': {
-                                    link: 'https://www.energysage.com/electric-vehicles/',
-                                },
-                                'Best EV chargers': {
-                                    link: 'https://www.energysage.com/',
-                                },
-                                'What does it cost to charge an EV?': {
-                                    link: 'https://news.energysage.com/electric-vehicle-charging-cost-vs-gas/',
-                                },
-                            },
-                        },
-                        'Smart Home': {
-                            subtopics: {
-                                'Home electricity guide': {
-                                    link: 'http://www.energysage.com/electricity/',
-                                },
-                                'Home energy management guide': {
-                                    link: 'http://www.energysage.com/energy-management/',
-                                },
-                                'Energy efficiency': {
-                                    link: 'http://www.energysage.com/energy-efficiency/',
-                                },
-                                'Best smart home gadgets': {
-                                    link: 'http://www.energysage.com/energy-products/',
-                                },
-                            },
-                        },
-                        'For Your Business': {
-                            subtopics: {
-                                'Clean energy guide for businesses': {
-                                    link: 'http://www.energysage.com/',
-                                },
-                                'Solar for businesses': {
-                                    link: 'https://news.energysage.com/commercial-solar-benefits-for-business/',
-                                },
-                                'Solar for nonprofit organizations': {
-                                    link: 'https://news.energysage.com/solar-nonprofit-benefits-financing/',
-                                },
-                                'Energy storage for businesses': {
-                                    link: 'https://news.energysage.com/energy-storage-for-businesses/',
-                                },
-                            },
-                        },
-                        'Clean Energy Financing': {
-                            subtopics: {
-                                'Guide to financing': {
-                                    link: 'http://www.energysage.com/',
-                                },
-                                'How to pay for solar': {
-                                    link: 'https://www.energysage.com/solar/how-to-go-solar/how-to-pay-for-solar/',
-                                },
-                                'What to know about solar loans': {
-                                    link: 'https://news.energysage.com/solar-loans-overview/',
-                                },
-                            },
-                        },
-                        'EnergySage News': {
-                            subtopics: {
-                                Blog: {
-                                    link: 'http://news.energysage.com/',
-                                },
-                            },
-                        },
-                    },
-                    subHeading: 'Learn from experts',
-                    dropdownCta: {
-                        linkName: "Editor's Recommendation",
-                        linkUrl: 'https://news.energysage.com/are-solar-panels-worth-it/',
-                        lede: 'Everything you need to know about community solar: projects, costs, savings, and more',
-                    },
-                },
-                'Solar Calculator': {
-                    topics: {},
-                    link: 'https://www.energysage.com/solar/calculator',
-                    subHeading: 'Check your savings',
-
-                },
-                'About Us': {
-                    topics: {
-                        'Our Company': {
-                            subtopics: {
-                                'Mission & values': {
-                                    link: 'https://www.energysage.com/about-us/company/',
-                                },
-                                'How it works': {
-                                    link: '',
-                                },
-                                'Editorial team': {
-                                    link: '',
-                                },
-                                'Partner with us': {
-                                    link: 'https://www.energysage.com/partners/',
-                                },
-                                Careers: {
-                                    link: 'https://www.energysage.com/about-us/careers/',
-                                },
-                                'Market research': {
-                                    link: 'https://www.energysage.com/data/',
-                                },
-                                'Editorial guidelines': {
-                                    link: 'https://www.energysage.com/editorial-guidelines/',
-                                },
-                                Press: {
-                                    link: 'https://www.energysage.com/press/',
-                                },
-                            },
-                        },
-                    },
-                    subHeading: 'Why choose EnergySage',
-                    dropdownCta: {
-                        linkName: 'Recent Press',
-                        linkUrl: 'https://www.energysage.com/press/energysage-marketplace-intel-report-16',
-                        lede: 'EnergySage Releases Its 16th Solar & Storage Marketplace Report',
-                    },
-                },
-            },
-            productHeaders: {
-                'Home Solar': {
-                    link: 'https://www.energysage.com/',
-                    subHeaders: {
-                        'Home Solar 1': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 2': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 3': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 4': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 5': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 6': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 7': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 8': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 9': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 10': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 11': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 12': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 13': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 14': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 15': {
-                            link: 'https://www.energysage.com/',
-                        },
-                        'Home Solar 16': {
-                            link: 'https://www.energysage.com/',
-                        },
-                    },
-                },
-                'Community Solar': {
-                    link: 'https://communitysolar.energysage.com/',
-                    subHeaders: {
-                        'Community Solar 1': {
-                            link: 'https://communitysolar.energysage.com/',
-                        },
-                        'Community Solar 2': {
-                            link: 'https://communitysolar.energysage.com/',
-                        },
-                    },
-                },
-                'Heating & Cooling': {
-                    link: 'https://heatpumps.energysage.com/',
-                    subHeaders: {
-                        'Heating & Cooling 1': {
-                            link: 'https://heatpumps.energysage.com/',
-                        },
-                        'Heating & Cooling 2': {
-                            link: 'https://heatpumps.energysage.com/',
-                        },
-                    },
-                },
-                'Back Up Power': {
-                    link: 'https://www.energysage.com/energy-storage/',
-                    subHeaders: {
-                        'Back Up Power 1': {
-                            link: 'https://www.energysage.com/energy-storage/',
-                        },
-                        'Back Up Power 2': {
-                            link: 'https://www.energysage.com/energy-storage/',
-                        },
-                    },
-                },
-                'EV Charging': {
-                    link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
-                    subHeaders: {
-                        'EV Charging 1': {
-                            link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
-                        },
-                        'EV Charging 2': {
-                            link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
-                        },
-                    },
-                },
-                'For Businesses': {
-                    link: 'https://www.energysage.com/businesses/',
-                    subHeaders: {
-                        'For Businesses 1': {
-                            link: 'https://www.energysage.com/businesses/',
-                        },
-                        'For Businesses 2': {
-                            link: 'https://www.energysage.com/businesses/',
-                        },
-                    },
-                },
-            },
+            items: NAV_BAR_CONTENT,
         };
     },
     mounted() {
