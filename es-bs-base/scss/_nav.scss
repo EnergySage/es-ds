@@ -132,23 +132,23 @@ $mobile-max-width: $desktop-min-width - 1;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
+  display: none;
   width: 100%;
   height: 100%;
   background: rgba(64, 64, 64, .45);
-  display: none;
-  z-index: 1000;
 }
 
 .nav-es-global {
-  // add a background so veil goes under the nav
-  background-color: white;
-
   // default should be size 14px according to figma
   font-size: 14px;
 
+  // add a background so veil goes under the nav
+  background-color: $white;
+
   // override es-ds default
   .btn-link {
-    color: black;
+    color: $body-color;
   }
 
   // dropdown-menu items should be default size 14px
@@ -165,14 +165,14 @@ $mobile-max-width: $desktop-min-width - 1;
   // Adjust default nav-link styling
   &.navbar-light {
     .navbar-nav {
-        .nav-item.nav-link {
-            color: $gray-900;
+      .nav-item.nav-link {
+        color: $gray-900;
 
-            &:hover {
-                color: $black;
-                text-decoration: underline;
-            }
+        &:hover {
+          color: $black;
+          text-decoration: underline;
         }
+      }
     }
   }
 
@@ -182,12 +182,17 @@ $mobile-max-width: $desktop-min-width - 1;
   }
 
   // Hide elements only needed for the mobile navigation
-  .dropdown-label, .menu-checkbox, .menu-header, .menu-toggle, .expand-icon {
+  .dropdown-label,
+  .menu-checkbox,
+  .menu-header,
+  .menu-toggle,
+  .expand-icon {
     display: none;
   }
 
   // Override default blue background on hover and click
-  .dropdown-item:hover, .dropdown-item:active {
+  .dropdown-item:hover,
+  .dropdown-item:active {
     background: none;
   }
 
@@ -195,13 +200,13 @@ $mobile-max-width: $desktop-min-width - 1;
     line-height: 1.3;
 
     .eyebrow {
-      color: #b95100 !important;
       font-size: 12px;
+      color: #b95100 !important;
     }
 
     .cta-link {
-      color: $gray-900;
       font-size: 14px;
+      color: $gray-900;
       text-decoration: none;
 
       &:hover {
@@ -271,8 +276,8 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // Position person icon and dropdown menu
     .icon-dropdown {
-      display: inline-block;
       position: relative;
+      display: inline-block;
     }
 
     // Fix top header logged in/logged out state section with a fixed width
@@ -283,15 +288,15 @@ $mobile-max-width: $desktop-min-width - 1;
     // Fix width of the dropdown menu on person icon hover
     .icon-dropdown .dropdown-menu {
       width: 250px;
-    };
+    }
 
     // Style first name with truncation and default not shown
     .icon-dropdown .dropdown-toggle .first-name {
       display: none;
       max-width: 200px;
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .dropdown-menu-primary {
@@ -303,8 +308,8 @@ $mobile-max-width: $desktop-min-width - 1;
     .dropdown-list {
       display: flex;
       flex-wrap: wrap;
-      list-style: none;
       padding-left: 0;
+      list-style: none;
     }
 
     .dropdown-cta-right {
@@ -326,10 +331,10 @@ $mobile-max-width: $desktop-min-width - 1;
     }
 
     .dropdown-cta-bottom {
-      height: 78px;
-      background-color: #292929;
-      color: white;
       align-items: center;
+      height: 78px;
+      color: $white;
+      background-color: $gray-900;
 
       .dropdown-cta-bottom--inner {
         display: flex;
@@ -351,8 +356,8 @@ $mobile-max-width: $desktop-min-width - 1;
     // Force navigation items to align to the top and avoid conflict with other components on the page
     // Ensure menus are visible above overlay
     .navbar-collapse {
-      align-items: start;
       z-index: 1000;
+      align-items: start;
     }
 
     // Allow the dropdowns to overlap each other
@@ -365,16 +370,16 @@ $mobile-max-width: $desktop-min-width - 1;
     // Prevent horizontal scrolling on menu
     .dropdown-menu {
       top: 64px;
-      max-height: 100%;
-      overflow: scroll;
-      padding: 0;
       display: flex !important;
+      max-height: 100%;
+      padding: 0;
+      overflow: scroll;
     }
 
     .dropdown-menu-primary {
-        flex-direction: column;
-        width: 100%;
-        border: none;
+      flex-direction: column;
+      width: 100%;
+      border-style: none;
 
       .nav-item {
         margin: 0;
@@ -388,17 +393,17 @@ $mobile-max-width: $desktop-min-width - 1;
     // Prevent horizontal scrolling on menu
     .dropdown-menu-full-page {
       display: flex !important;
-      border: none;
+      border-style: none;
     }
 
     // Hide the desktop dropdown toggle because mobile uses the labels as toggles
     .dropdown-toggle {
-        display: none;
+      display: none;
     }
     // Style the label as a proper tappable block target
     .dropdown-label {
-        cursor: pointer;
-        display: block;
+      display: block;
+      cursor: pointer;
     }
 
     // Show chevrons on mobile
@@ -408,10 +413,10 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // Style rows in hamburger, add bottom border
     .nav-item {
-      height: 64px;
-      margin: 0px 15px;
-      border-bottom: solid #DBDBDB 1px !important;
       align-items: center;
+      height: 64px;
+      margin: 0 15px;
+      border-bottom: 1px solid $gray-300 !important;
     }
 
     // Override default margin to allow centered titles
@@ -421,27 +426,27 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // Style the menu for mobile navigation bit but use translate to keep it off screen
     .menu {
-        max-height: 100%;
-        max-width: 540px;
-        min-width: 300px;
-        background: #fff;
-        flex-direction: column;
-        height: 100%;
-        left: 0;
-        min-height: 100vh;
-        position: absolute;
-        top: 0;
-        transform: translate3d(-100%, 0, 0);
-        transition: transform 0.2s;
-        width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      min-width: 300px;
+      max-width: 540px;
+      height: 100%;
+      min-height: 100vh;
+      max-height: 100%;
+      background: #fff;
+      transition: transform 0.2s;
+      transform: translate3d(-100%, 0, 0);
 
-        ul {
-          overflow: scroll;
+      ul {
+        overflow: scroll;
 
-          li:last-child {
-            margin-bottom: 120px;
-          }
+        li:last-child {
+          margin-bottom: 120px;
         }
+      }
     }
 
     // Avoid top level nav's subtopics level menu from laying on its topic level menu
@@ -452,33 +457,34 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // The menu after any checked checkboxes is translated on screen
     .menu-checkbox:checked + .menu {
-        transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
     }
 
     // The menu header
     .menu-header {
-        border-bottom: solid #DBDBDB 1px;
-        display: flex;
-        height: 64px;
-        width: 100%;
-        font-weight: bolder;
-        align-items: center;
-        max-height: 64px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 64px;
+      max-height: 64px;
+      font-weight: bolder;
+      border-bottom: 1px solid $gray-300;
     }
 
     // This is a generic placeholder button for open/close/back in the mobile menu
     .menu-toggle {
-        vertical-align: center;
-        cursor: pointer;
-        display: flex;
+      display: flex;
+      vertical-align: center;
+      cursor: pointer;
     }
 
     // Override BS4 defaults for consistency
     .menu {
-      ul, li {
-        border: none;
-        width: 100%;
+      ul,
+      li {
         display: block;
+        width: 100%;
+        border-style: none;
       }
       li {
         display: flex;
