@@ -1,27 +1,36 @@
 export default {
-    profileIconDropdown: {
+    accountMenu: {
         loggedIn: {
-            'My Account': {
-                link: 'https://www.energysage.com/profile/',
-            },
-            'Share Your Experience': {
-                link: 'https://www.energysage.com/share-your-experience/',
-            },
-            Settings: {
-                link: 'https://www.energysage.com/account-settings/router/',
-            },
-            'Refer a Friend': {
-                link: 'https://www.energysage.com/refer-a-friend/',
-            },
-            'Sign Out': {
-                link: 'https://www.energysage.com/logout/',
-            },
+            items: [
+                {
+                    name: 'My Account',
+                    link: 'https://www.energysage.com/profile/',
+                },
+                {
+                    name: 'Share Your Experience',
+                    link: 'https://www.energysage.com/share-your-experience/',
+                },
+                {
+                    name: 'Settings',
+                    link: 'https://www.energysage.com/account-settings/router/',
+                },
+                {
+                    name: 'Refer a Friend',
+                    link: 'https://www.energysage.com/refer-a-friend/',
+                },
+                {
+                    name: 'Sign Out',
+                    link: 'https://www.energysage.com/logout/',
+                },
+            ],
         },
         loggedOut: {
-            'Sign in': {
+            signIn: {
+                name: 'Sign in',
                 link: 'https://www.energysage.com/login/',
             },
-            'Create an account': {
+            createAccount: {
+                name: 'Create an account',
                 link: 'https://www.energysage.com/register/',
             },
         },

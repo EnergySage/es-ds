@@ -20,10 +20,11 @@
                     height="28px" />
             </div>
             <!-- mobile account menu -->
+            <!-- TODO: link to login if logged out, otherwise profile -->
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
                 <a
                     class="text-dark text-decoration-none"
-                    :href="items.profileIconDropdown.loggedIn['My Account'].link"
+                    :href="items.accountMenu.loggedIn.items[0].link"
                     aria-label="Link to profile">
                     <IconPerson class="align-self-center" />
                 </a>
@@ -329,15 +330,15 @@
                                                 class="dropdown-menu rounded mt-0 py-100"
                                                 style="display: none">
                                                 <li
-                                                    v-for="item in Object.keys(items.profileIconDropdown.loggedIn)"
-                                                    :key="item">
+                                                    v-for="item in items.accountMenu.loggedIn.items"
+                                                    :key="item.name">
                                                     <a
                                                         class="dropdown-item nav-link"
-                                                        :href="items.profileIconDropdown.loggedIn[item].link"
+                                                        :href="item.link"
                                                         data-toggle="dropdown"
                                                         aria-haspopup="true"
                                                         aria-expanded="false">
-                                                        <span class="mx-50"> {{ item }} </span>
+                                                        <span class="mx-50"> {{ item.name }} </span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -347,22 +348,21 @@
                                                 style="display: none">
                                                 <a
                                                     class="d-flex justify-content-around text-decoration-none"
-                                                    :href="items.profileIconDropdown.loggedOut['Sign in'].link">
+                                                    :href="items.accountMenu.loggedOut.signIn.link">
                                                     <EsButton
                                                         :outline="true"
                                                         variant="secondary"
                                                         class="m-100 w-75">
-                                                        Sign in
+                                                        {{ items.accountMenu.loggedOut.signIn.name }}
                                                     </EsButton>
                                                 </a>
                                                 <li>
                                                     <a
                                                         class="d-flex justify-content-around"
-                                                        :href="items.profileIconDropdown
-                                                            .loggedOut['Create an account'].link">
+                                                        :href="items.accountMenu.loggedOut.createAccount.link">
                                                         <EsButton
                                                             variant="link">
-                                                            Create an account
+                                                            {{ items.accountMenu.loggedOut.createAccount.name }}
                                                         </EsButton>
                                                     </a>
                                                 </li>
