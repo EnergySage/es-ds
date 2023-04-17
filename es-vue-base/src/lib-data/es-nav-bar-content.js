@@ -26,7 +26,7 @@ export default {
             },
         },
     },
-    brandMenuItems: [
+    topLevelMenus: [
         {
             name: 'Energy Tips',
             topics: [
@@ -238,114 +238,146 @@ export default {
             },
         },
     ],
-    productHeaders: {
-        'Home Solar': {
+    products: [
+        {
+            name: 'Home Solar',
             link: 'https://www.energysage.com/',
-            subHeaders: {
-                'Home Solar 1': {
+            items: [
+                {
+                    name: 'Home Solar 1',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 2': {
+                {
+                    name: 'Home Solar 2',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 3': {
+                {
+                    name: 'Home Solar 3',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 4': {
+                {
+                    name: 'Home Solar 4',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 5': {
+                {
+                    name: 'Home Solar 5',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 6': {
+                {
+                    name: 'Home Solar 6',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 7': {
+                {
+                    name: 'Home Solar 7',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 8': {
+                {
+                    name: 'Home Solar 8',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 9': {
+                {
+                    name: 'Home Solar 9',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 10': {
+                {
+                    name: 'Home Solar 10',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 11': {
+                {
+                    name: 'Home Solar 11',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 12': {
+                {
+                    name: 'Home Solar 12',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 13': {
+                {
+                    name: 'Home Solar 13',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 14': {
+                {
+                    name: 'Home Solar 14',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 15': {
+                {
+                    name: 'Home Solar 15',
                     link: 'https://www.energysage.com/',
                 },
-                'Home Solar 16': {
+                {
+                    name: 'Home Solar 16',
                     link: 'https://www.energysage.com/',
                 },
-            },
+            ],
         },
-        'Community Solar': {
+        {
+            name: 'Community Solar',
             link: 'https://communitysolar.energysage.com/',
-            subHeaders: {
-                'Community Solar 1': {
+            items: [
+                {
+                    name: 'Community Solar 1',
                     link: 'https://communitysolar.energysage.com/',
                 },
-                'Community Solar 2': {
+                {
+                    name: 'Community Solar 2',
                     link: 'https://communitysolar.energysage.com/',
                 },
-            },
+            ],
         },
-        'Heating & Cooling': {
+        {
+            name: 'Heating & Cooling',
             link: 'https://heatpumps.energysage.com/',
-            subHeaders: {
-                'Heating & Cooling 1': {
+            items: [
+                {
+                    name: 'Heating & Cooling 1',
                     link: 'https://heatpumps.energysage.com/',
                 },
-                'Heating & Cooling 2': {
+                {
+                    name: 'Heating & Cooling 2',
                     link: 'https://heatpumps.energysage.com/',
                 },
-            },
+            ],
         },
-        'Back Up Power': {
+        {
+            name: 'Back Up Power',
             link: 'https://www.energysage.com/energy-storage/',
-            subHeaders: {
-                'Back Up Power 1': {
+            items: [
+                {
+                    name: 'Back Up Power 1',
                     link: 'https://www.energysage.com/energy-storage/',
                 },
-                'Back Up Power 2': {
+                {
+                    name: 'Back Up Power 2',
                     link: 'https://www.energysage.com/energy-storage/',
                 },
-            },
+            ],
         },
-        'EV Charging': {
+        {
+            name: 'EV Charging',
             link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
-            subHeaders: {
-                'EV Charging 1': {
+            items: [
+                {
+                    name: 'EV Charging 1',
                     link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
                 },
-                'EV Charging 2': {
+                {
+                    name: 'EV Charging 2',
                     link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
                 },
-            },
+            ],
         },
-        'For Businesses': {
+        {
+            name: 'For Businesses',
             link: 'https://www.energysage.com/businesses/',
-            subHeaders: {
-                'For Businesses 1': {
+            items: [
+                {
+                    name: 'For Businesses 1',
                     link: 'https://www.energysage.com/businesses/',
                 },
-                'For Businesses 2': {
+                {
+                    name: 'For Businesses 2',
                     link: 'https://www.energysage.com/businesses/',
                 },
-            },
+            ],
         },
-    },
+    ],
 };
