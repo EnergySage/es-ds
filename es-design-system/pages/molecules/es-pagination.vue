@@ -38,7 +38,7 @@ export default {
         return {
             perPage: 3,
             currentPage: 1,
-            items: Array.from({ length: 24 }, (v, i) => `Item ${i}`),
+            items: Array.from({ length: 36 }, (v, i) => `Item ${i}`),
             compCode: '',
             docCode: '',
         };
