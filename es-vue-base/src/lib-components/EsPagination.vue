@@ -53,7 +53,6 @@ export default {
     }
 
     .page-number {
-        display: block !important; // override number limit on mobile
         .page-link {
             height: 2.25rem;
             width: 2.25rem;
@@ -109,9 +108,14 @@ export default {
     }
 
     .ellipses {
-        display: block !important; // override hide ellipses on mobile
         .page-link {
             text-align: center;
+        }
+    }
+
+    .page-number, .ellipses {
+        @media only screen and (min-width: 370px) {
+            display: block !important; // override number limit on most mobile viewports
         }
     }
 }
