@@ -170,6 +170,7 @@ $mobile-max-width: $desktop-min-width - 1;
 
         &:hover {
           color: $black;
+          font-weight: $font-weight-semibold;
           text-decoration: underline;
         }
       }

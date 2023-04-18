@@ -254,142 +254,134 @@ export default {
     ],
     products: [
         {
-            name: 'Home Solar',
-            link: 'https://www.energysage.com/',
+            name: 'Home solar',
+            link: 'https://www.energysage.com/market-intro/',
             items: [
                 {
-                    name: 'Home Solar 1',
-                    link: 'https://www.energysage.com/',
+                    name: 'Home solar guide',
+                    link: 'https://www.energysage.com/solar/',
                 },
                 {
-                    name: 'Home Solar 2',
-                    link: 'https://www.energysage.com/',
+                    name: 'Solar calculator',
+                    link: 'https://www.energysage.com/solar/calculator/',
                 },
                 {
-                    name: 'Home Solar 3',
-                    link: 'https://www.energysage.com/',
+                    name: 'Equipment rebates',
+                    link: 'https://www.energysage.com/market/equipment-rebates/739870/',
                 },
                 {
-                    name: 'Home Solar 4',
-                    link: 'https://www.energysage.com/',
+                    name: 'Financing',
+                    link: 'https://www.energysage.com/solar/financing/loan-providers/',
                 },
                 {
-                    name: 'Home Solar 5',
-                    link: 'https://www.energysage.com/',
+                    name: 'Installer reviews',
+                    link: 'https://www.energysage.com/supplier/search?selected_facets=services:installers&selected_facets=technology_types:Solar%20PV',
                 },
                 {
-                    name: 'Home Solar 6',
-                    link: 'https://www.energysage.com/',
+                    name: 'Compare solar panels',
+                    link: 'https://www.energysage.com/solar-panels/',
                 },
                 {
-                    name: 'Home Solar 7',
-                    link: 'https://www.energysage.com/',
+                    name: 'Compare inverters',
+                    link: 'https://www.energysage.com/solar-inverters/',
                 },
                 {
-                    name: 'Home Solar 8',
-                    link: 'https://www.energysage.com/',
+                    name: 'Solar incentives',
+                    link: 'https://www.energysage.com/local-data/solar-rebates-incentives/',
                 },
                 {
-                    name: 'Home Solar 9',
-                    link: 'https://www.energysage.com/',
+                    name: 'Solar storage & batteries',
+                    link: 'https://www.energysage.com/energy-storage//',
                 },
                 {
-                    name: 'Home Solar 10',
-                    link: 'https://www.energysage.com/',
-                },
-                {
-                    name: 'Home Solar 11',
-                    link: 'https://www.energysage.com/',
-                },
-                {
-                    name: 'Home Solar 12',
-                    link: 'https://www.energysage.com/',
-                },
-                {
-                    name: 'Home Solar 13',
-                    link: 'https://www.energysage.com/',
-                },
-                {
-                    name: 'Home Solar 14',
-                    link: 'https://www.energysage.com/',
-                },
-                {
-                    name: 'Home Solar 15',
-                    link: 'https://www.energysage.com/',
-                },
-                {
-                    name: 'Home Solar 16',
-                    link: 'https://www.energysage.com/',
+                    name: 'Get personalized quotes',
+                    link: 'https://www.energysage.com/market/start/',
                 },
             ],
         },
         {
-            name: 'Community Solar',
+            name: 'Community solar',
             link: 'https://communitysolar.energysage.com/',
             items: [
                 {
-                    name: 'Community Solar 1',
-                    link: 'https://communitysolar.energysage.com/',
+                    name: 'Community solar guide',
+                    link: 'https://www.energysage.com/solar/solar-101/what-is-community-solar/',
                 },
                 {
-                    name: 'Community Solar 2',
-                    link: 'https://communitysolar.energysage.com/',
+                    name: 'Search solar farms ',
+                    link: 'https://communitysolar.energysage.com/projects',
                 },
             ],
         },
         {
-            name: 'Heating & Cooling',
+            name: 'Heating & cooling',
             link: 'https://heatpumps.energysage.com/',
             items: [
                 {
-                    name: 'Heating & Cooling 1',
-                    link: 'https://heatpumps.energysage.com/',
+                    name: 'Heat pump guide',
+                    link: 'https://www.energysage.com/clean-heating-cooling/air-source-heat-pumps/',
                 },
                 {
-                    name: 'Heating & Cooling 2',
-                    link: 'https://heatpumps.energysage.com/',
+                    name: 'Installer reviews',
+                    link: 'https://www.energysage.com/supplier/search?selected_facets=services:installers&selected_facets=technology_types:High%20Efficiency%20HVAC',
+                },
+                {
+                    name: 'Get personalized quotes',
+                    link: 'https://heatpumps.energysage.com/welcome',
                 },
             ],
         },
         {
-            name: 'Back Up Power',
+            name: 'Backup power',
             link: 'https://www.energysage.com/energy-storage/',
             items: [
                 {
-                    name: 'Back Up Power 1',
+                    name: 'Backup power guide',
                     link: 'https://www.energysage.com/energy-storage/',
                 },
                 {
-                    name: 'Back Up Power 2',
-                    link: 'https://www.energysage.com/energy-storage/',
+                    name: 'Installer reviews',
+                    link: 'https://www.energysage.com/supplier/search?selected_facets=services:installers&selected_facets=technology_types:Energy%20Storage',
+                },
+                {
+                    name: 'Home battery incentives',
+                    link: 'https://www.energysage.com/energy-storage/benefits-of-storage/energy-storage-incentives/',
+                },
+                {
+                    name: 'Compare home batteries',
+                    link: 'https://www.energysage.com/solar-batteries/',
                 },
             ],
         },
         {
-            name: 'EV Charging',
-            link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
+            name: 'EV charging',
+            link: 'https://www.energysage.com/energy-products/ev-charging-stations/',
             items: [
                 {
-                    name: 'EV Charging 1',
-                    link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
+                    name: 'Compare EV chargers',
+                    link: 'https://www.energysage.com/energy-products/ev-charging-stations/',
                 },
                 {
-                    name: 'EV Charging 2',
-                    link: 'https://news.energysage.com/electric-vehicle-chargers-overview/',
+                    name: 'Explore electric vehicles',
+                    link: 'https://electricvehicles.energysage.com/',
                 },
             ],
         },
         {
-            name: 'For Businesses',
+            name: 'For your business',
             link: 'https://www.energysage.com/businesses/',
             items: [
                 {
-                    name: 'For Businesses 1',
-                    link: 'https://www.energysage.com/businesses/',
+                    name: 'Solar for businesses',
+                    link: 'https://news.energysage.com/commercial-solar-benefits-for-business/',
                 },
                 {
-                    name: 'For Businesses 2',
-                    link: 'https://www.energysage.com/businesses/',
+                    name: 'Solar for nonprofit organizations',
+                    link: 'https://news.energysage.com/solar-nonprofit-benefits-financing/',
+                },
+                {
+                    name: 'Energy storage for businesses',
+                    link: 'https://news.energysage.com/energy-storage-for-businesses/',
                 },
             ],
         },

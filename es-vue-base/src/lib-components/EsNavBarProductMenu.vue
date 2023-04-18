@@ -51,7 +51,7 @@
             <!-- mobile+desktop flyout menu -->
             <!-- TODO: does anything match this aria-labelledby id? -->
             <ul
-                class="product-menu-flyout dropdown-menu row border-0 mt-0"
+                class="product-menu-flyout dropdown-menu row border-0 mt-0 py-lg-100"
                 :aria-labelledby="`menu-${name}`">
                 <li
                     class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100
@@ -62,7 +62,7 @@
                     v-for="item in items"
                     :key="item.name">
                     <a
-                        class="dropdown-item nav-item nav-link d-flex align-items-center"
+                        class="dropdown-item nav-item nav-link align-items-center d-flex px-lg-100 py-lg-50"
                         :href="item.link">
                         {{ item.name }}
                     </a>
