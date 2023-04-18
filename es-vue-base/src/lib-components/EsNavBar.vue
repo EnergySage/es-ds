@@ -37,7 +37,7 @@
             <!-- first-level menu on mobile, the whole nav on desktop-->
             <div
                 id="navbarNavDropdown"
-                class="collapse navbar-collapse menu">
+                class="menu top-level-menu align-items-start d-flex flex-grow-1">
                 <!-- mobile menu header -->
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
                     <div class="col-3" />
@@ -72,13 +72,14 @@
                                 width="200px"
                                 height="42px" />
                         </div>
+                        <!-- top level menus -->
                         <li
                             v-for="topLevelMenu in items.topLevelMenus"
                             :key="topLevelMenu.name"
                             class="nav-item top-header">
                             <a
                                 v-if="!topLevelMenu.link"
-                                class="nav-link dropdown-toggle py-150"
+                                class="nav-link dropdown-toggle d-none d-lg-block py-150"
                                 href="#"
                                 data-toggle="dropdown"
                                 aria-haspopup="true"
@@ -179,7 +180,7 @@
                                                     :key="topic.name"
                                                     class="nav-item topic-group px-0">
                                                     <a
-                                                        class="nav-link dropdown-toggle eyebrow-lg border-bottom"
+                                                        class="nav-link dropdown-toggle d-none d-lg-block eyebrow-lg border-bottom"
                                                         :class="(topic.link
                                                             ? 'dropdown-item' : '')"
                                                         data-toggle="dropdown"
@@ -319,7 +320,7 @@
                                 <div class="container justify-content-center px-0">
                                     <span class="nav-item">
                                         <div
-                                            class="nav-link dropdown-toggle py-100">
+                                            class="nav-link dropdown-toggle d-none d-lg-block py-100">
                                             <IconPerson class="align-self-center" />
                                             <div
                                                 class="first-name align-self-center pl-50" />
@@ -382,72 +383,11 @@
                         </div>
                     </div>
                     <div class="row mx-0 d-flex justify-content-around">
-                        <li
+                        <es-nav-bar-product-menu
                             v-for="product in items.products"
                             :key="product.name"
-                            class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                                {{ product.name }}
-                            </a>
-                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                            <label
-                                :for="`productMenu-${product.name}`"
-                                class="dropdown-label nav-link d-flex d-lg-none align-items-center
-                                    justify-content-between w-100 h-100 px-0 font-weight-bold">
-                                {{ product.name }}
-                                <IconChevronRight
-                                    class="expand-icon"
-                                    style="height: 18px;" />
-                            </label>
-                            <input
-                                :id="`productMenu-${product.name}`"
-                                :name="`productMenu-${product.name}`"
-                                type="checkbox"
-                                class="menu-checkbox">
-                            <div class="menu">
-                                <div class="menu-header">
-                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                    <label
-                                        :for="`productMenu-${product.name}`"
-                                        class="menu-toggle nav-link d-flex w-100 h-100 mb-0 align-items-center
-                                            font-size-sm">
-                                        <IconChevronLeft height="18px" />
-                                        MAIN MENU
-                                    </label>
-                                    <div class="d-flex col-3 justify-content-end">
-                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                        <label
-                                            for="data--main-menu"
-                                            class="mb-0">
-                                            <IconX class="menu-toggle align-self-center" />
-                                        </label>
-                                    </div>
-                                </div>
-                                <ul
-                                    class="row dropdown-menu mt-0"
-                                    :aria-labelledby="`menu-${product.name}`">
-                                    <li
-                                        class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100
-                                            align-items-center">
-                                        {{ product.name }}
-                                    </li>
-                                    <li
-                                        v-for="item in product.items"
-                                        :key="item.name">
-                                        <a
-                                            class="dropdown-item nav-item nav-link d-flex align-items-center"
-                                            :href="item.link">
-                                            {{ item.name }}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                            :items="product.items"
+                            :name="product.name" />
                     </div>
                 </ul>
             </div>
@@ -457,6 +397,7 @@
 
 <script lang="js">
 import EsButton from './EsButton.vue';
+import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import NAV_BAR_CONTENT from '../lib-data/es-nav-bar-content';
 
 import EsLogo from '../lib-assets/es-logo.vue';
@@ -467,6 +408,7 @@ export default {
     components: {
         EsButton,
         EsLogo,
+        EsNavBarProductMenu,
         NavEnergyTips,
     },
     data() {

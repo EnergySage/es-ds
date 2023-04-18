@@ -355,9 +355,8 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // Force navigation items to align to the top and avoid conflict with other components on the page
     // Ensure menus are visible above overlay
-    .navbar-collapse {
+    .top-level-menu {
       z-index: 1000;
-      align-items: start;
     }
 
     // Allow the dropdowns to overlap each other
@@ -396,10 +395,6 @@ $mobile-max-width: $desktop-min-width - 1;
       border-style: none;
     }
 
-    // Hide the desktop dropdown toggle because mobile uses the labels as toggles
-    .dropdown-toggle {
-      display: none;
-    }
     // Style the label as a proper tappable block target
     .dropdown-label {
       display: block;
