@@ -141,7 +141,7 @@ $mobile-max-width: $desktop-min-width - 1;
 
 .nav-es-global {
   // default should be size 14px according to figma
-  font-size: 14px;
+  font-size: $font-size-75;
 
   // add a background so veil goes under the nav
   background-color: $white;
@@ -153,13 +153,13 @@ $mobile-max-width: $desktop-min-width - 1;
 
   // dropdown-menu items should be default size 14px
   .dropdown-menu {
-    font-size: 14px;
+    font-size: $font-size-75;
   }
 
   // All links should have font-weight-normal (weight 400)
   // TODO: This overrides styles for `eyebrow`
   a {
-    font-weight: 400;
+    font-weight: $font-weight-normal;
   }
 
   // Adjust default nav-link styling
@@ -200,12 +200,12 @@ $mobile-max-width: $desktop-min-width - 1;
     line-height: 1.3;
 
     .eyebrow {
-      font-size: 12px;
-      color: #b95100 !important;
+      font-size: $font-size-50;
+      color: $orange !important;
     }
 
     .cta-link {
-      font-size: 14px;
+      font-size: $font-size-75;
       color: $gray-900;
       text-decoration: none;
 
@@ -234,9 +234,9 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // eyebrow copied from es-ds class, but override for letter spacing and only display on lg+ viewports
     .eyebrow-lg {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #292929;
+      font-size: $font-size-100;
+      font-weight: $font-weight-bolder;
+      color: $gray;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }

@@ -77,6 +77,7 @@
                             v-for="topLevelMenu in items.topLevelMenus"
                             :key="topLevelMenu.name"
                             class="nav-item top-header">
+                            <!-- desktop fly-out menu trigger -->
                             <a
                                 v-if="!topLevelMenu.link"
                                 class="nav-link dropdown-toggle d-none d-lg-block py-150"
@@ -96,6 +97,7 @@
                                     {{ topLevelMenu.subHeading }}
                                 </div>
                             </a>
+                            <!-- mobile+desktop top-level link -->
                             <a
                                 v-else
                                 class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
@@ -113,6 +115,7 @@
                                     </div>
                                 </div>
                             </a>
+                            <!-- mobile fly-out menu trigger -->
                             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                             <label
                                 v-if="!topLevelMenu.link"
