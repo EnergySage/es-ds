@@ -248,11 +248,43 @@ $mobile-max-width: $desktop-min-width - 1;
       }
     }
 
+    .product-menu-header-link:hover {
+      // fix for text-gray utility class not being !important
+      color: $gray;
+    }
+    .product-menu-flyout {
+      left: 50%;
+      width: 310px; // approx width of four columns at 992px breakpoint / 960px max width
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+      transform: translateX(-50%);
+    }
+
+    // ensure the first and last flyouts on small desktop don't go off the screen
+    .nav-item:first-child .product-menu-flyout {
+      transform: translateX(-25%);
+    }
+    .nav-item:last-child .product-menu-flyout {
+      transform: translateX(-75%);
+    }
+
     // Show dropdown and hover colors on nav-item hover in desktop view
     // Show top headers up chevron icon on nav-item hover
     .nav-item:hover {
       .dropdown-menu {
         display: block;
+      }
+
+      // black bar at bottom of header link when product menu is up
+      .product-menu-header-text::after {
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        z-index: 1001;
+        height: 2px;
+        content: "";
+        background: $gray;
+        border-style: none;
       }
 
       .top-header-icon {
@@ -345,6 +377,28 @@ $mobile-max-width: $desktop-min-width - 1;
       .btn-lg {
         width: 250px;
       }
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    .product-menu-flyout {
+      width: 370px;  // approx width of four columns at 1200px breakpoint / 1140px max width
+    }
+
+    // ensure the first and last flyouts on small desktop don't go off the screen
+    .nav-item:first-child .product-menu-flyout {
+      transform: translateX(-40%);
+    }
+    .nav-item:last-child .product-menu-flyout {
+      transform: translateX(-60%);
+    }
+  }
+
+  @include media-breakpoint-up(xxl) {
+    // reset the first and last children back to normal
+    .nav-item:first-child .product-menu-flyout,
+    .nav-item:last-child .product-menu-flyout {
+      transform: translateX(-50%);
     }
   }
 

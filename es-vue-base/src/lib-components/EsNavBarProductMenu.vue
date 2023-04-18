@@ -1,14 +1,17 @@
 <template>
-    <li
-        class="nav-item dropdown">
+    <li class="dropdown nav-item">
+        <!-- desktop product link / hover menu trigger -->
         <a
-            class="nav-link dropdown-toggle d-none d-lg-block"
-            href="#"
+            class="product-menu-header-link dropdown-toggle d-none d-lg-block px-lg-100 px-xl-200 py-lg-0 text-decoration-none text-gray"
+            :href="link"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false">
-            {{ name }}
+            <span class="product-menu-header-text d-block position-relative py-lg-50">
+                {{ name }}
+            </span>
         </a>
+        <!-- mobile flyout menu trigger -->
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="checkboxId"
@@ -25,7 +28,8 @@
             type="checkbox"
             class="menu-checkbox">
         <div class="menu">
-            <div class="menu-header">
+            <div class="menu-header d-flex d-lg-none">
+                <!-- closes this menu level -->
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
                     :for="checkboxId"
@@ -34,6 +38,7 @@
                     <IconChevronLeft height="18px" />
                     MAIN MENU
                 </label>
+                <!-- closes the entire mobile nav menu -->
                 <div class="d-flex col-3 justify-content-end">
                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                     <label
@@ -43,8 +48,10 @@
                     </label>
                 </div>
             </div>
+            <!-- mobile+desktop flyout menu -->
+            <!-- TODO: does anything match this aria-labelledby id? -->
             <ul
-                class="row dropdown-menu mt-0"
+                class="product-menu-flyout dropdown-menu row border-0 mt-0"
                 :aria-labelledby="`menu-${name}`">
                 <li
                     class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100
@@ -69,12 +76,16 @@
 export default {
     name: 'EsNavBarProductMenu',
     props: {
-        name: {
+        items: {
+            type: Array,
+            required: true,
+        },
+        link: {
             type: String,
             required: true,
         },
-        items: {
-            type: Array,
+        name: {
+            type: String,
             required: true,
         },
     },

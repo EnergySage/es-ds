@@ -138,9 +138,11 @@
                                 :name="`menu-${topLevelMenu.name}`"
                                 type="checkbox"
                                 class="menu-checkbox">
+                            <!-- fly-out menu -->
                             <div
                                 v-if="!topLevelMenu.link"
                                 class="menu">
+                                <!-- mobile menu header -->
                                 <div class="menu-header">
                                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                     <label
@@ -165,6 +167,7 @@
                                             <ul
                                                 class="dropdown-list "
                                                 :aria-labelledby="`menu-${topLevelMenu.name}`">
+                                                <!-- name of top-level menu (won't ever be a link) -->
                                                 <li
                                                     class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100
                                                         align-items-center ml-50 ml-50">
@@ -286,6 +289,7 @@
                                         </div>
                                     </div>
 
+                                    <!-- CTA banner at bottom of the nav for logged-out users -->
                                     <div class="d-none d-lg-flex dropdown-cta-bottom">
                                         <div class="dropdown-cta-bottom--inner">
                                             <div class="text-white mr-450">
@@ -377,11 +381,12 @@
                             </li>
                         </div>
                     </div>
-                    <div class="row mx-0 d-flex justify-content-around">
+                    <div class="row mx-0 d-flex justify-content-lg-center">
                         <es-nav-bar-product-menu
                             v-for="product in items.products"
                             :key="product.name"
                             :items="product.items"
+                            :link="product.link"
                             :name="product.name" />
                     </div>
                 </ul>
