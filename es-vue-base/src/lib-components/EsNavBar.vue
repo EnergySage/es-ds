@@ -101,11 +101,9 @@
                                 class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
                                 :href="topLevelMenu.link">
                                 <div class="d-flex d-lg-block">
-                                    <div
-                                        v-if="topLevelMenu.name=='Solar Calculator'"
-                                        class="d-lg-none pr-50">
-                                        <IconCalculator />
-                                    </div>
+                                    <icon-calculator
+                                        v-if="topLevelMenu.icon === NAV_BAR_ICONS.CALCULATOR"
+                                        class="d-lg-none mr-50" />
                                     <div
                                         class="d-lg-flex align-items-center eyebrow-lg">
                                         {{ topLevelMenu.name }}
@@ -121,16 +119,10 @@
                                 :for="`menu-${topLevelMenu.name}`"
                                 class="dropdown-label nav-link d-flex d-lg-none px-0 w-100 h-100 align-items-center
                                     justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <div
-                                        v-if="topLevelMenu.name=='Energy Tips'"
-                                        class="pr-50">
-                                        <IconLightBulb />
-                                    </div>
-                                    <div
-                                        v-else-if="topLevelMenu.name=='About Us'"
-                                        class="pr-50">
-                                        <IconESLeaf />
+                                <div class="align-items-center d-flex">
+                                    <div class="mr-50">
+                                        <icon-light-bulb v-if="topLevelMenu.icon === NAV_BAR_ICONS.LIGHT_BULB" />
+                                        <icon-e-s-leaf v-if="topLevelMenu.icon === NAV_BAR_ICONS.ES_LEAF" />
                                     </div>
                                     {{ topLevelMenu.name }}
                                 </div>
@@ -399,6 +391,7 @@
 import EsButton from './EsButton.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import NAV_BAR_CONTENT from '../lib-data/es-nav-bar-content';
+import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
 
 import EsLogo from '../lib-assets/es-logo.vue';
 import NavEnergyTips from '../lib-assets/nav-energy-tips.vue';
@@ -414,6 +407,7 @@ export default {
     data() {
         return {
             items: NAV_BAR_CONTENT,
+            NAV_BAR_ICONS,
         };
     },
     mounted() {

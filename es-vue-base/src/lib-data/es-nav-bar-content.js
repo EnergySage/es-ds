@@ -1,3 +1,5 @@
+import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
+
 export default {
     accountMenu: {
         loggedIn: {
@@ -38,6 +40,7 @@ export default {
     topLevelMenus: [
         {
             name: 'Energy Tips',
+            icon: NAV_BAR_ICONS.LIGHT_BULB,
             topics: [
                 {
                     name: 'Solar',
@@ -194,12 +197,14 @@ export default {
         },
         {
             name: 'Solar Calculator',
+            icon: NAV_BAR_ICONS.CALCULATOR,
             topics: [],
             link: 'https://www.energysage.com/solar/calculator',
             subHeading: 'Check your savings',
         },
         {
             name: 'About Us',
+            icon: NAV_BAR_ICONS.ES_LEAF,
             topics: [
                 {
                     name: 'Our Company',
