@@ -24,25 +24,25 @@ exports[`EsFooter <EsFooter /> 1`] = `
               Our Topics
             </li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/" class="text-reset">
-                Home Solar
+                Home solar
               </a></li>
             <li class="mt-25 mb-50"><a href="https://communitysolar.energysage.com/" class="text-reset">
-                Community Solar
+                Community solar
               </a></li>
-            <li class="mt-25 mb-50"><a href="" class="text-reset">
-                For Your Business
+            <li class="mt-25 mb-50"><a href="https://www.energysage.com/businesses/" class="text-reset">
+                For your business
               </a></li>
             <li class="mt-25 mb-50"><a href="https://heatpumps.energysage.com/" class="text-reset">
-                Heating &amp; Cooling
+                Heating &amp; cooling
               </a></li>
             <li class="mt-25 mb-50"><a href="" class="text-reset">
-                Backup Power
+                Backup power
               </a></li>
             <li class="mt-25 mb-50"><a href="" class="text-reset">
-                EV Charging
+                EV charging
               </a></li>
             <li class="mt-25 mb-50"><a href="" class="text-reset">
-                Other Energy Options
+                Other energy options
               </a></li>
           </ul>
           <ul class="list-unstyled col col-6 col-md-3 mb-150">
@@ -50,19 +50,19 @@ exports[`EsFooter <EsFooter /> 1`] = `
               Resources
             </li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/solar/calculator/" class="text-reset">
-                Solar Calculator
-              </a></li>
-            <li class="mt-25 mb-50"><a href="" class="text-reset">
-                Learn About Solar
+                Solar calculator
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/market/equipment-rebates/" class="text-reset">
-                Solar Rebates
+                Solar rebates
               </a></li>
             <li class="mt-25 mb-50"><a href="https://news.energysage.com/" class="text-reset">
-                Our Blog
+                EnergySage news
               </a></li>
             <li class="mt-25 mb-50"><a href="https://help.energysage.com/" class="text-reset">
-                Help Center
+                Help center
+              </a></li>
+            <li class="mt-25 mb-50"><a href="https://www.energysage.com/solar/" class="text-reset">
+                Learn about solar
               </a></li>
           </ul>
           <ul class="list-unstyled col col-6 col-md-3 mb-150">
@@ -70,22 +70,22 @@ exports[`EsFooter <EsFooter /> 1`] = `
               Company
             </li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/about-us/company/" class="text-reset">
-                Mission &amp; Values
+                Mission &amp; values
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/market-intro/" class="text-reset">
-                How It Works
+                How it works
               </a></li>
             <li class="mt-25 mb-50"><a href="" class="text-reset">
-                Editorial Team
+                Editorial team
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/about-us/careers/" class="text-reset">
                 Careers
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/contact/" class="text-reset">
-                Contact Us
+                Contact us
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/editorial-guidelines/" class="text-reset">
-                Editorial Guidelines
+                Editorial guidelines
               </a></li>
           </ul>
           <ul class="list-unstyled col col-6 col-md-3 mb-150">
@@ -93,13 +93,13 @@ exports[`EsFooter <EsFooter /> 1`] = `
               Work with us
             </li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/installers/" class="text-reset">
-                Solar Companies
+                Solar companies
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/partners/" class="text-reset">
-                Corporate Partners
+                Corporate partners
               </a></li>
-            <li class="mt-25 mb-50"><a href="Community Programs" class="text-reset">
-                Community Programs
+            <li class="mt-25 mb-50"><a href="https://www.energysage.com/partners/" class="text-reset">
+                Community programs
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/data/" class="text-reset">
                 Market research
@@ -187,19 +187,19 @@ exports[`EsFooter <EsFooter /> 1`] = `
     </p>
     <div class="row justify-content-between mb-150">
       <div class="col col-6 col-lg font-size-50 mt-25 mb-50"><a href="https://www.energysage.com/terms-of-use/" class="text-reset font-weight-normal">
-          Terms of Use
+          Terms of use
         </a></div>
       <div class="col col-6 col-lg font-size-50 mt-25 mb-50"><a href="https://www.energysage.com/privacy-policy/" class="text-reset font-weight-normal">
-          Privacy Policy
+          Privacy policy
         </a></div>
       <div class="col col-6 col-lg font-size-50 mt-25 mb-50"><a href="https://www.energysage.com/mobile-terms-of-use/" class="text-reset font-weight-normal">
-          Mobile Terms of Use
+          Mobile terms of use
         </a></div>
       <div class="col col-6 col-lg font-size-50 mt-25 mb-50"><a href="https://www.energysage.com/nondiscrimination/" class="text-reset font-weight-normal">
-          Non-Discrimination Policy
+          Non-discrimination policy
         </a></div>
       <div class="col col-6 col-lg font-size-50 mt-25 mb-50"><a href="" class="text-reset font-weight-normal">
-          Site Map
+          Site map
         </a></div>
     </div>
     <div class="d-lg-flex align-items-end"><img src="https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png" aria-hidden="true" width="99" height="25" class="mr-100 mb-100 mb-lg-0">
