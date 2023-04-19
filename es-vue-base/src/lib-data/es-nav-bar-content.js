@@ -40,6 +40,7 @@ export default {
     topLevelMenus: [
         {
             name: 'Energy tips',
+            subHeading: 'Learn from experts',
             icon: NAV_BAR_ICONS.LIGHT_BULB,
             topics: [
                 {
@@ -188,8 +189,7 @@ export default {
                     ],
                 },
             ],
-            subHeading: 'Learn from experts',
-            dropdownCta: {
+            featuredArticle: {
                 linkName: "Editor's Recommendation",
                 linkUrl: 'https://news.energysage.com/are-solar-panels-worth-it/',
                 lede: 'Everything you need to know about community solar: projects, costs, savings, and more',
@@ -197,13 +197,14 @@ export default {
         },
         {
             name: 'Solar calculator',
-            icon: NAV_BAR_ICONS.CALCULATOR,
-            topics: [],
-            link: 'https://www.energysage.com/solar/calculator',
             subHeading: 'Check your savings',
+            icon: NAV_BAR_ICONS.CALCULATOR,
+            link: 'https://www.energysage.com/solar/calculator',
+            topics: [],
         },
         {
             name: 'About us',
+            subHeading: 'Why choose EnergySage',
             icon: NAV_BAR_ICONS.ES_LEAF,
             topics: [
                 {
@@ -244,8 +245,7 @@ export default {
                     ],
                 },
             ],
-            subHeading: 'Why choose EnergySage',
-            dropdownCta: {
+            featuredArticle: {
                 linkName: 'Recent Press',
                 linkUrl: 'https://www.energysage.com/press/energysage-marketplace-intel-report-16',
                 lede: 'EnergySage Releases Its 16th Solar & Storage Marketplace Report',

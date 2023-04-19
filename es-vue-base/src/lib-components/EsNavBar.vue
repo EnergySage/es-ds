@@ -73,171 +73,15 @@
                                 height="42px" />
                         </div>
                         <!-- top level menus -->
-                        <li
+                        <es-nav-bar-top-level-menu
                             v-for="topLevelMenu in items.topLevelMenus"
                             :key="topLevelMenu.name"
-                            class="nav-item nav-item-border-mobile top-header">
-                            <!-- desktop fly-out menu trigger -->
-                            <a
-                                v-if="!topLevelMenu.link"
-                                class="nav-link dropdown-toggle d-none d-lg-block py-150"
-                                href="#"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                                <div class="d-lg-flex align-items-center eyebrow-lg">
-                                    <span class="mr-50">
-                                        <IconCircleChevronDown
-                                            class="top-header-icon"
-                                            style="height: 16px; width: 16px;" />
-                                    </span>
-                                    {{ topLevelMenu.name }}
-                                </div>
-                                <div class="font-weight-light font-size-xs pl-150">
-                                    {{ topLevelMenu.subHeading }}
-                                </div>
-                            </a>
-                            <!-- mobile+desktop top-level link -->
-                            <a
-                                v-else
-                                class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
-                                :href="topLevelMenu.link">
-                                <div class="d-flex d-lg-block">
-                                    <icon-calculator
-                                        v-if="topLevelMenu.icon === NAV_BAR_ICONS.CALCULATOR"
-                                        class="d-lg-none mr-50" />
-                                    <div
-                                        class="d-lg-flex align-items-center eyebrow-lg">
-                                        {{ topLevelMenu.name }}
-                                    </div>
-                                    <div class="font-weight-light font-size-xs d-none d-lg-block">
-                                        {{ topLevelMenu.subHeading }}
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- mobile fly-out menu trigger -->
-                            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                            <label
-                                v-if="!topLevelMenu.link"
-                                :for="`menu-${topLevelMenu.name}`"
-                                class="dropdown-label nav-link d-flex d-lg-none px-0 w-100 h-100 align-items-center
-                                    justify-content-between">
-                                <div class="align-items-center d-flex">
-                                    <div class="mr-50">
-                                        <icon-light-bulb v-if="topLevelMenu.icon === NAV_BAR_ICONS.LIGHT_BULB" />
-                                        <icon-e-s-leaf v-if="topLevelMenu.icon === NAV_BAR_ICONS.ES_LEAF" />
-                                    </div>
-                                    {{ topLevelMenu.name }}
-                                </div>
-                                <IconChevronRight
-                                    class="expand-icon"
-                                    style="height: 18px;" />
-                            </label>
-                            <input
-                                :id="`menu-${topLevelMenu.name}`"
-                                :name="`menu-${topLevelMenu.name}`"
-                                type="checkbox"
-                                class="menu-checkbox">
-                            <!-- fly-out menu -->
-                            <div
-                                v-if="!topLevelMenu.link"
-                                class="menu">
-                                <!-- mobile menu header -->
-                                <div class="menu-header">
-                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                    <label
-                                        :for="`menu-${topLevelMenu.name}`"
-                                        class="menu-toggle nav-link d-flex w-100 h-100 mb-0 align-items-center
-                                            font-size-sm">
-                                        <IconChevronLeft height="18px" />
-                                        MAIN MENU
-                                    </label>
-                                    <div class="d-flex col-3 justify-content-end">
-                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                        <label
-                                            for="data--main-menu"
-                                            class="mb-0">
-                                            <IconX class="menu-toggle align-self-center" />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-full-page">
-                                    <b-container class="dropdown-menu-primary justify-content-lg-center py-lg-100">
-                                        <b-row class="flex-grow-1 justify-content-lg-center">
-                                            <div
-                                                class="mb-3 mb-lg-0"
-                                                :class="{
-                                                    'col-lg-9': topLevelMenu.topics.length > 3,
-                                                    'col-lg-4': topLevelMenu.topics.length <= 3
-                                                }">
-                                                <ul
-                                                    class="dropdown-list row w-auto"
-                                                    :aria-labelledby="`menu-${topLevelMenu.name}`">
-                                                    <!-- name of top-level menu (won't ever be a link) -->
-                                                    <li class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold ml-50 w-100">
-                                                        {{ topLevelMenu.name }}
-                                                    </li>
-                                                    <es-nav-bar-topic-menu
-                                                        v-for="topic in topLevelMenu.topics"
-                                                        :key="topic.name"
-                                                        :class="{
-                                                            'col-lg-6 col-xl-4': topLevelMenu.topics.length > 3,
-                                                            'col-lg-12': topLevelMenu.topics.length <= 3
-                                                        }"
-                                                        :items="topic.subtopics"
-                                                        :link="topic.link"
-                                                        :name="topic.name" />
-                                                </ul>
-                                            </div>
-                                            <!-- article link with image within menu -->
-                                            <div class="col-lg-3 dropdown-cta-right">
-                                                <div class="font-size-50 p-lg-100">
-                                                    <a
-                                                        class="d-block cta-link"
-                                                        :href="topLevelMenu.dropdownCta.linkUrl"
-                                                        :title="topLevelMenu.dropdownCta.linkName">
-                                                        <nav-energy-tips
-                                                            width="253px"
-                                                            height="190px"
-                                                            class="mb-100" />
-                                                        <div class="eyebrow mb-50">
-                                                            {{ topLevelMenu.dropdownCta.linkName }}
-                                                        </div>
-
-                                                        <p class="font-weight-bold">
-                                                            {{ topLevelMenu.dropdownCta.lede }}
-                                                        </p>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </b-row>
-                                    </b-container>
-
-                                    <!-- CTA banner at bottom of the nav for logged-out users -->
-                                    <div class="d-none d-lg-flex dropdown-cta-bottom">
-                                        <div class="dropdown-cta-bottom--inner">
-                                            <div class="text-white mr-450">
-                                                <div class="font-size-300 font-weight-bold">
-                                                    Compare quotes from our top installers.
-                                                </div>
-                                                <div>
-                                                    Create an account to compare and shop for the best details.
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <EsButton
-                                                    outline
-                                                    size="lg"
-                                                    variant="secondary">
-                                                    Compare quotes
-                                                </EsButton>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                            :featured-article="topLevelMenu.featuredArticle"
+                            :icon="topLevelMenu.icon"
+                            :link="topLevelMenu.link"
+                            :name="topLevelMenu.name"
+                            :sub-heading="topLevelMenu.subHeading"
+                            :topics="topLevelMenu.topics" />
                         <!-- desktop account menu -->
                         <div class="d-none d-lg-block">
                             <li class="icon-dropdown">
@@ -324,12 +168,10 @@
 <script lang="js">
 import EsButton from './EsButton.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
-import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
+import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
 import NAV_BAR_CONTENT from '../lib-data/es-nav-bar-content';
-import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
 
 import EsLogo from '../lib-assets/es-logo.vue';
-import NavEnergyTips from '../lib-assets/nav-energy-tips.vue';
 
 export default {
     name: 'EsNavBar',
@@ -337,13 +179,11 @@ export default {
         EsButton,
         EsLogo,
         EsNavBarProductMenu,
-        EsNavBarTopicMenu,
-        NavEnergyTips,
+        EsNavBarTopLevelMenu,
     },
     data() {
         return {
             items: NAV_BAR_CONTENT,
-            NAV_BAR_ICONS,
         };
     },
     mounted() {
