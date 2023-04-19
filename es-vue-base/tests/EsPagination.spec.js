@@ -17,7 +17,7 @@ describe('EsPagination', () => {
                 :total-rows="2"
                 :per-page="1"
                 align="center"
-                list-id="paginated-list" />
+                listId="paginated-list" />
             `,
             components: {
                 EsPagination,
