@@ -4,8 +4,8 @@
         class="mb-0"
         first-number
         last-number
-        page-class="page-number font-size-sm mx-25 mx-sm-50"
-        ellipsis-class="ellipses mx-25 mx-sm-50"
+        page-class="page-number font-size-sm mx-sm-50"
+        ellipsis-class="ellipses mx-sm-50"
         prev-class="prev-next"
         next-class="prev-next"
         :aria-controls="listID"
@@ -53,8 +53,11 @@ export default {
     }
 
     .page-number, .ellipses {
-        @media only screen and (min-width: 370px) {
-            display: block !important; // override number limit on most mobile viewports
+        display: block !important; // override number limit on mobile viewports
+
+        @media only screen and (min-width: 370px) {  // mid-xs breakpoint; only compressed further below 370px
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
         }
     }
 

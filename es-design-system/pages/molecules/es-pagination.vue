@@ -21,6 +21,7 @@
             v-model="currentPage"
             :total-rows="rows"
             :per-page="perPage"
+            align="center"
             list-id="paginated-list" />
         <ds-doc-source
             :comp-code="compCode"
