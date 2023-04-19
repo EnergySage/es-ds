@@ -73,7 +73,7 @@
             and are used with permission.
         </p>
         <p class="mb-200">
-            © Copyright 2009-2022 EnergySage, Inc. All rights reserved.
+            © Copyright 2009-{{ new Date().getFullYear() }} EnergySage, Inc. All rights reserved.
         </p>
         <!-- Trademark Info -->
         <!-- Legal -->
