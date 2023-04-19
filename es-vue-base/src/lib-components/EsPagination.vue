@@ -47,8 +47,20 @@ export default {
     .page-number, .prev-next, .ellipses {
         .page-link {
             background-color: transparent;
-            color: $dark;
             border: 0;
+            color: $dark;
+        }
+    }
+
+    .page-number, .ellipses {
+        @media only screen and (min-width: 370px) {
+            display: block !important; // override number limit on most mobile viewports
+        }
+    }
+
+    .ellipses {
+        .page-link {
+            text-align: center;
         }
     }
 
@@ -78,6 +90,17 @@ export default {
     }
 
     .prev-next {
+        /* stylelint-disable-next-line no-descending-specificity */
+        .page-link {
+            padding-left: 0;
+            padding-right: 0;
+
+            @include media-breakpoint-up(sm) {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+        }
+
         &.disabled {
             .page-link {
                 svg {
@@ -94,28 +117,6 @@ export default {
                     stroke-width: 1;
                 }
             }
-        }
-
-        .page-link {
-            padding-left: 0;
-            padding-right: 0;
-
-            @include media-breakpoint-up(sm) {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-            }
-        }
-    }
-
-    .ellipses {
-        .page-link {
-            text-align: center;
-        }
-    }
-
-    .page-number, .ellipses {
-        @media only screen and (min-width: 370px) {
-            display: block !important; // override number limit on most mobile viewports
         }
     }
 }
