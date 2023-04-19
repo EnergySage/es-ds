@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EsFormMsg <EsFormMsg /> 1`] = `
+exports[`EsFormMsg <EsFooter /> 1`] = `
 "<div class="es-footer clearfix text-gray font-size-75 pt-200 pb-300 px-100 px-md-300">
   <div class="row justify-content-between">
     <div class="col col-12 col-lg-8 order-lg-1">

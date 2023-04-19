@@ -2,9 +2,9 @@ import { mount } from '@vue/test-utils';
 import EsFooter from '@/src/lib-components/EsFooter.vue';
 import jestVue from '@/tests/jest.vue.config';
 
-describe('EsFormMsg', () => {
+describe('EsFooter', () => {
     // Basic test; should exist for most components
-    test('<EsFormMsg />', async () => {
+    test('<EsFooter />', async () => {
         const wrapper = mount(EsFooter, {
             ...jestVue,
         });
