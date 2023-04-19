@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EsFormMsg <EsFooter /> 1`] = `
+exports[`EsFooter <EsFooter /> 1`] = `
 "<div class="es-footer clearfix text-gray font-size-75 pt-200 pb-300 px-100 px-md-300">
   <div class="row justify-content-between">
     <div class="col col-12 col-lg-8 order-lg-1">
@@ -98,7 +98,7 @@ exports[`EsFormMsg <EsFooter /> 1`] = `
     </div>
     <div class="col col-12 col-sm-5 col-lg-3 order-lg-0 mb-200">
       <div class="mb-150"><svg xmlns="http://www.w3.org/2000/svg" width="160" height="36" fill="none" viewBox="0 0 160 36">
-          <g clip-path="url(#a)">
+          <g clip-path="url(#footer-a)">
             <path fill="#616161" d="M2.3 19.2c0 3.7 1 4.5 2.8 4.5 1.4 0 2.2-1.2 2.3-2.6h2.4c0 3-1.9 4.4-4.7 4.4-2.8 0-5.1-.9-5.1-6.8 0-4 .5-7.2 5.1-7.2 3.8 0 4.8 2 4.8 6.5v1.2H2.3Zm5.3-1.7c0-3.9-1.1-4.4-2.7-4.4-1.4 0-2.5.7-2.6 4.4h5.3ZM20.8 25.2v-9.3c0-1.5-.5-2.6-2.4-2.6-2.4 0-2.7 2-2.7 4v7.9h-2.2V14.5l-.1-2.8h2.3v1.8c1-1.5 2-2 3.7-2 2.8 0 3.6 1.7 3.6 4.4v9.3h-2.2ZM29 19.2c0 3.7 1 4.5 2.6 4.5 1.5 0 2.3-1.2 2.4-2.6h2.4c0 3-1.9 4.4-4.7 4.4-2.8 0-5.1-.9-5.1-6.8 0-4 .4-7.2 5-7.2 4 0 4.9 2 4.9 6.5v1.2h-7.6Zm5.2-1.7c0-3.9-1.1-4.4-2.7-4.4-1.4 0-2.6.7-2.6 4.4h5.3ZM42.3 13.8c1-2 2.1-2.3 4.2-2.3v2.2h-1.1c-2.5 0-3 1.7-3 3.6v7.9h-2.2V11.7h2.1v2ZM56 11.7h2.2v14.8c0 3-2 3.8-5 3.8-2.2 0-4.2-1.2-4-3.6h2.4c0 1.2.9 2 2 2 1.6 0 2.4-1 2.4-2.4v-2.8c-.6 1-1.8 1.7-3 1.7-3.7 0-4.4-3.2-4.4-7.2 0-6.1 3.1-6.5 4.2-6.5 1.4 0 2.5.6 3.2 1.9v-1.7m-2.5 1.6c-2.5 0-2.6 3-2.6 4.7 0 4.4 1 5.4 2.6 5.4 2.7 0 2.6-3.1 2.6-5 0-2 .1-5.1-2.6-5.1ZM66.2 22.7l3.3-11H72l-6.1 18.6h-2.3l1.5-5.1-4.5-13.5H63l3.2 11Z"></path>
             <path fill="#CA6F20" d="M78 25.5c-3 0-4.8-1.3-4.7-4.4h2.5c0 .8 0 2.6 2.2 2.6 1.3 0 2.3-.7 2.3-2 0-2.5-6.7-2.5-6.7-6.6 0-1.4.9-3.6 4.7-3.6 2.4 0 4.4 1.1 4.2 3.8h-2.4c0-1.4-.7-2.2-2-2.2s-2.2.7-2.2 1.8c0 2.4 6.7 2.4 6.7 6.5 0 3-2 4-4.6 4ZM92.7 23.2c-.7 1.6-1.8 2.3-3.4 2.3-2.9 0-3.7-1.9-3.7-4.5 0-4 4-4.2 7-4.1.1-1.8.1-3.8-2.2-3.8-1.5 0-2.2 1-2.1 2.4h-2.4c.1-3 1.7-4 4.6-4 3.4 0 4.3 1.8 4.3 4V22c0 1 .1 2.2.3 3.2h-2.4v-2Zm-5-2c0 1.3.7 2.5 2.2 2.5 1.3 0 3-.9 2.7-5.2-2 0-4.8-.2-4.8 2.7ZM106.2 11.7h2.1v14.8c0 3-2 3.8-4.9 3.8-2.2 0-4.2-1.2-4-3.6h2.4c0 1.2.8 2 2 2 1.5 0 2.4-1 2.4-2.4v-2.8h-.1c-.6 1-1.8 1.7-3 1.7-3.6 0-4.3-3.2-4.3-7.2 0-6.1 3-6.5 4.2-6.5 1.4 0 2.5.6 3.1 1.9v-1.7m-2.5 1.6c-2.5 0-2.5 3-2.5 4.7 0 4.4 1 5.4 2.6 5.4 2.6 0 2.5-3.1 2.5-5 0-2 .2-5.1-2.6-5.1ZM114.5 19.2c0 3.7 1 4.5 2.7 4.5 1.5 0 2.3-1.2 2.3-2.6h2.4c0 3-1.8 4.4-4.6 4.4-2.9 0-5.2-.9-5.2-6.8 0-4 .5-7.2 5.2-7.2 3.8 0 4.7 2 4.7 6.5v1.2h-7.5Zm5.2-1.7c0-3.9-1-4.4-2.7-4.4-1.3 0-2.5.7-2.5 4.4h5.2Z"></path>
             <path fill="#616161" d="M154 12c-.9-1.7-2.3-3.5-4-5.4-2.8-3.2-5.6-5.6-5.7-5.7a2.2 2.2 0 0 0-2.8 0 62.2 62.2 0 0 0-9.8 11c-1.4 2.4-2 4.4-2 6.2 0 7 5.3 12.6 12 13.2v3.3c0 .7.6 1.2 1.2 1.2s1-.5 1-1.2v-3.3c6.8-.6 12.2-6.3 12.2-13.2 0-1.8-.7-3.8-2-6.1ZM143.5 29h-1a11 11 0 0 1-10.5-11c0-6 11-15.5 11-15.5s11 9.4 11 15.5a11 11 0 0 1-10.5 11Z"></path>
@@ -106,56 +106,56 @@ exports[`EsFormMsg <EsFooter /> 1`] = `
             <path fill="#616161" d="m159 23.8-.1-.3-.4-.1h-.4v1.3h.2v-.5h.2l.4.5h.2l-.4-.6c.2 0 .3-.1.3-.3Zm-.5.2h-.2v-.4h.4v.4h-.2Z"></path>
           </g>
           <defs>
-            <clipPath id="a">
+            <clipPath id="footer-a">
               <path fill="#fff" d="M0 .4h160v35.3H0z"></path>
             </clipPath>
           </defs>
         </svg></div>
       <div class="d-flex justify-content-between mb-200"><a href="https://www.facebook.com/EnergySage"><span class="sr-only">Facebook</span> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" fill="none" viewBox="0 0 31 32">
-            <g clip-path="url(#b)">
+            <g clip-path="url(#footer-b)">
               <path fill="#565656" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm5.7 8.1h-2a2 2 0 0 0-1.6.5c-.3.4-.4 1-.4 1.4V13h3.9l-.5 4h-3.4v10h-4V17H9.8v-4h3.4v-2.8a5.1 5.1 0 0 1 1.3-3.9A5 5 0 0 1 18.2 5l3 .1v3.5Z"></path>
             </g>
             <defs>
-              <clipPath id="b">
+              <clipPath id="footer-b">
                 <path fill="#fff" d="M0 .4h31v31H0z"></path>
               </clipPath>
             </defs>
           </svg></a> <a href="https://www.linkedin.com/company/energysage/"><span class="sr-only">LinkedIn</span> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" fill="none" viewBox="0 0 31 32">
-            <g clip-path="url(#c)">
+            <g clip-path="url(#footer-c)">
               <path fill="#565656" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm-4.74 23.8H7.04V13.02h3.72V24.2ZM8.9 11.47a1.93 1.93 0 1 1 .05-3.86 1.94 1.94 0 1 1 0 3.86H8.9Zm15.28 12.71h-3.72v-5.98c0-1.5-.53-2.53-1.86-2.53a2.03 2.03 0 0 0-1.9 1.36c-.1.3-.14.6-.13.9v6.25h-3.72s.05-10.13 0-11.16h3.72v1.59a3.72 3.72 0 0 1 3.36-1.86c2.39-.02 4.25 1.58 4.25 5v6.43Z"></path>
             </g>
             <defs>
-              <clipPath id="c">
+              <clipPath id="footer-c">
                 <path fill="#fff" d="M0 .4h31v31H0z"></path>
               </clipPath>
             </defs>
           </svg></a> <a href="https://www.instagram.com/energysage_official/?hl=en"><span class="sr-only">Instagram</span> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" fill="none" viewBox="0 0 31 32">
-            <g fill="#565656" clip-path="url(#d)">
+            <g fill="#565656" clip-path="url(#footer-d)">
               <path d="M22.98 10.16a2.93 2.93 0 0 0-.73-1.07c-.3-.32-.66-.57-1.07-.74a5.58 5.58 0 0 0-1.8-.4H15.5c-2.58 0-2.89 0-3.92.08a5.5 5.5 0 0 0-1.8.34c-.41.15-.79.4-1.1.72-.32.3-.57.66-.73 1.07-.2.58-.32 1.2-.32 1.8v7.84c0 .61.12 1.22.33 1.8.16.4.4.77.72 1.07.3.32.67.57 1.07.73.58.2 1.2.32 1.81.32 1.02.06 1.33.06 3.9.06 2.59 0 2.85-.06 3.92-.06a5.58 5.58 0 0 0 1.8-.33c.8-.35 1.45-1 1.8-1.8.21-.58.32-1.2.33-1.81.05-1.02.05-1.33.05-3.91s-.05-2.9-.05-3.91a5.5 5.5 0 0 0-.33-1.8Zm-7.48 10.7a4.96 4.96 0 1 1 0-9.92 4.96 4.96 0 0 1 0 9.93Zm5.28-8.84a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 1.2 1.14v.03A1.18 1.18 0 0 1 20.75 12l.03.01Z"></path>
               <path d="M15.5 12.65a3.23 3.23 0 1 0-.06 6.46 3.23 3.23 0 0 0 .06-6.46Z"></path>
               <path d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm9.65 19.47c-.04.82-.2 1.63-.51 2.4a4.96 4.96 0 0 1-2.82 2.83c-.76.28-1.55.43-2.36.45-1.03.05-1.36.05-3.98.05-2.63 0-2.92-.05-4-.05a7.44 7.44 0 0 1-2.4-.55 4.51 4.51 0 0 1-2.77-2.78 7.56 7.56 0 0 1-.46-2.35c-.05-1.04-.05-1.36-.05-3.99s0-2.96.05-3.99c.03-.82.2-1.63.5-2.4a4.51 4.51 0 0 1 2.78-2.78 7.44 7.44 0 0 1 2.36-.45c1.03-.05 1.36-.05 3.99-.05 2.62 0 2.95 0 3.98.05.85.02 1.69.19 2.48.5a4.76 4.76 0 0 1 2.75 2.8c.28.75.43 1.55.46 2.35 0 1.03.05 1.37.05 3.99s-.05 2.89-.05 3.97Z"></path>
             </g>
             <defs>
-              <clipPath id="d">
+              <clipPath id="footer-d">
                 <path fill="#fff" d="M0 .4h31v31H0z"></path>
               </clipPath>
             </defs>
           </svg></a> <a href="https://twitter.com/energysage"><span class="sr-only">Twitter</span> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" fill="none" viewBox="0 0 31 32">
-            <g clip-path="url(#e)">
+            <g clip-path="url(#footer-e)">
               <path fill="#565656" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm8.6 11v.7A12.6 12.6 0 0 1 4.7 22.7h1c2 0 4-.6 5.5-1.8a4.5 4.5 0 0 1-4.1-3.1 4.2 4.2 0 0 0 2-.1 4.5 4.5 0 0 1-3.6-4.3v-.1c.6.3 1.3.5 2 .6a4.5 4.5 0 0 1-1.3-6 12.6 12.6 0 0 0 9.2 4.7l-.2-1A4.5 4.5 0 0 1 23 8.5c1-.2 2-.6 2.9-1-.4 1-1 1.8-2 2.4.9-.1 1.8-.3 2.6-.7-.6.9-1.4 1.7-2.3 2.3Z"></path>
             </g>
             <defs>
-              <clipPath id="e">
+              <clipPath id="footer-e">
                 <path fill="#fff" d="M0 .4h31v31H0z"></path>
               </clipPath>
             </defs>
           </svg></a> <a href="https://www.youtube.com/c/EnergySage"><span class="sr-only">YouTube</span> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" fill="none" viewBox="0 0 31 32">
-            <g fill="#565656" clip-path="url(#f)">
+            <g fill="#565656" clip-path="url(#footer-f)">
               <path d="m13.4 19 5.5-3-5.5-3.3v6.4Z"></path>
               <path d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31ZM26.1 15V16.9a18 18 0 0 1-.4 4c0 .5-.3.9-.6 1.2-.4.4-.9.6-1.4.7-1 .3-2.7.5-6.3.5h-1.6c-8.6 0-8.7-.3-9.6-1l-.2-.2-.7-1a17.5 17.5 0 0 1-.4-4.3V14.9c0-1.4.1-2.7.4-4 .1-.5.3-.9.7-1.2.3-.4.8-.6 1.3-.7 1-.3 2.8-.5 6.3-.5h1.6c8.6 0 8.7.3 9.6 1l.2.2c.3.3.6.7.7 1.1A17.5 17.5 0 0 1 26 15Z"></path>
             </g>
             <defs>
-              <clipPath id="f">
+              <clipPath id="footer-f">
                 <path fill="#fff" d="M0 .4h31v31H0z"></path>
               </clipPath>
             </defs>
@@ -172,7 +172,7 @@ exports[`EsFormMsg <EsFooter /> 1`] = `
     and are used with permission.
   </p>
   <p class="mb-200">
-    © Copyright 2009-2022 EnergySage, Inc. All rights reserved.
+    © Copyright 2009-2023 EnergySage, Inc. All rights reserved.
   </p>
   <div class="row justify-content-between mb-150">
     <div class="col col-6 col-lg font-size-50 mt-25 mb-50"><a href="https://www.energysage.com/terms-of-use/" class="text-reset font-weight-normal">
