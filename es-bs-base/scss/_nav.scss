@@ -242,6 +242,20 @@ $mobile-max-width: $desktop-min-width - 1;
       letter-spacing: 0.05em;
     }
 
+    // line below topic header in desktop top-level flyout
+    .topic-menu-header::after {
+      background-color: $gray-400;
+      border-style: none;  // override .dropdown-toggle::after style
+      border-radius: 1px;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      margin: 0; // override .dropdown-toggle::after style
+      position: absolute;
+      width: 64px;
+    }
+
     // Show top headers down chevron icon
     .nav-item {
       .top-header-icon {
@@ -351,14 +365,6 @@ $mobile-max-width: $desktop-min-width - 1;
       flex-shrink: 0;
     }
 
-    .topic-group {
-      flex-basis: 277px;
-      flex-grow: 0;
-      flex-shrink: 0;
-      margin-right: 15px;
-      margin-bottom: 2rem;
-    }
-
     .dropdown-item {
       white-space: normal !important;
     }
@@ -427,7 +433,7 @@ $mobile-max-width: $desktop-min-width - 1;
       display: flex !important;
       max-height: 100%;
       padding: 0;
-      overflow: scroll;
+      overflow-y: scroll;
     }
 
     .dropdown-menu-primary {
@@ -466,6 +472,8 @@ $mobile-max-width: $desktop-min-width - 1;
       align-items: center;
       height: 64px;
       margin: 0 15px;
+    }
+    .nav-item-border-mobile {
       border-bottom: 1px solid $gray-300 !important;
     }
 
@@ -491,7 +499,7 @@ $mobile-max-width: $desktop-min-width - 1;
       transform: translate3d(-100%, 0, 0);
 
       ul {
-        overflow: scroll;
+        overflow-y: scroll;
 
         li:last-child {
           margin-bottom: 120px;

@@ -76,7 +76,7 @@
                         <li
                             v-for="topLevelMenu in items.topLevelMenus"
                             :key="topLevelMenu.name"
-                            class="nav-item top-header">
+                            class="nav-item nav-item-border-mobile top-header">
                             <!-- desktop fly-out menu trigger -->
                             <a
                                 v-if="!topLevelMenu.link"
@@ -162,132 +162,56 @@
                                     </div>
                                 </div>
                                 <div class="dropdown-menu dropdown-menu-full-page">
-                                    <div class="py-lg-100 dropdown-menu-primary">
-                                        <div class="mb-3 mb-lg-0 pl-lg-200">
-                                            <ul
-                                                class="dropdown-list "
-                                                :aria-labelledby="`menu-${topLevelMenu.name}`">
-                                                <!-- name of top-level menu (won't ever be a link) -->
-                                                <li
-                                                    class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100
-                                                        align-items-center ml-50 ml-50">
-                                                    {{ topLevelMenu.name }}
-                                                </li>
-                                                <li
-                                                    v-for="topic in topLevelMenu.topics"
-                                                    :key="topic.name"
-                                                    class="nav-item topic-group px-0">
-                                                    <a
-                                                        class="nav-link dropdown-toggle d-none d-lg-block eyebrow-lg border-bottom"
-                                                        :class="(topic.link
-                                                            ? 'dropdown-item' : '')"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                        :href="topic.link ?
-                                                            topic.link : '#'">
-                                                        {{ topic.name }}
-                                                        <IconArrowRight
-                                                            v-if="topic.link"
-                                                            class="d-none d-lg-inline ml-n1"
-                                                            height="16px" />
-                                                    </a>
-                                                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                                                    <label
-                                                        :for="`topMenu-${topic.name}`"
-                                                        class="dropdown-label nav-link d-flex d-lg-none
-                                                            align-items-center justify-content-between w-100 h-100
-                                                            ml-50">
-                                                        {{ topic.name }}
-                                                        <IconChevronRight
-                                                            class="expand-icon"
-                                                            style="height: 18px;" />
-                                                    </label>
-                                                    <input
-                                                        :id="`topMenu-${topic.name}`"
-                                                        :name="`topMenu-${topic.name}`"
-                                                        type="checkbox"
-                                                        class="menu-checkbox">
-                                                    <div
-                                                        class="menu submenu">
-                                                        <div class="menu-header">
-                                                            <!-- vuejs-accessibility/label-has-for -->
-                                                            <!-- eslint-disable-next-line -->
-                                                            <label
-                                                                :for="`topMenu-${topic.name}`"
-                                                                class="menu-toggle d-flex w-100 h-100 mb-0
-                                                                    align-items-center font-size-sm">
-                                                                <div
-                                                                    class="nav-link text-uppercase">
-                                                                    <IconChevronLeft height="18px" />
-                                                                    {{ topic.name }}
-                                                                </div>
-                                                            </label>
-                                                            <div class="d-flex col-3 justify-content-end">
-                                                                <!-- vuejs-accessibility/label-has-for -->
-                                                                <!-- eslint-disable-next-line -->
-                                                                <label
-                                                                    for="data--main-menu"
-                                                                    class="mb-0">
-                                                                    <IconX class="menu-toggle align-self-center" />
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <ul
-                                                            class="visible-lg"
-                                                            style="list-style: none; padding-left: 0; top: 0;">
-                                                            <li
-                                                                class="d-lg-none">
-                                                                <a
-                                                                    v-if="topic.link"
-                                                                    class="nav-item nav-link font-weight-bold d-flex
-                                                                        w-100 align-items-center ml-50"
-                                                                    :href="topic.link">
-                                                                    {{ topic.name }}
-                                                                </a>
-                                                                <div
-                                                                    v-else
-                                                                    class="nav-item nav-link font-weight-bold d-flex
-                                                                        w-100 align-items-center">
-                                                                    {{ topic.name }}
-                                                                </div>
-                                                            </li>
-                                                            <li
-                                                                v-for="subtopic in topic.subtopics"
-                                                                :key="subtopic.name">
-                                                                <a
-                                                                    class="dropdown-item nav-item nav-link d-flex
-                                                                        align-items-center ml-50 ml-lg-0"
-                                                                    :href="subtopic.link">
-                                                                    {{ subtopic.name }}
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="pr-lg-200 dropdown-cta-right">
-                                            <div class="font-size-50 p-lg-100">
-                                                <a
-                                                    class="d-block cta-link"
-                                                    :href="topLevelMenu.dropdownCta.linkUrl"
-                                                    :title="topLevelMenu.dropdownCta.linkName">
-                                                    <nav-energy-tips
-                                                        width="253px"
-                                                        height="190px"
-                                                        class="mb-100" />
-                                                    <div class="eyebrow mb-50">
-                                                        {{ topLevelMenu.dropdownCta.linkName }}
-                                                    </div>
-
-                                                    <p class="font-weight-bold">
-                                                        {{ topLevelMenu.dropdownCta.lede }}
-                                                    </p>
-                                                </a>
+                                    <b-container class="dropdown-menu-primary justify-content-lg-center py-lg-100">
+                                        <b-row class="flex-grow-1 justify-content-lg-center">
+                                            <div
+                                                class="mb-3 mb-lg-0"
+                                                :class="{
+                                                    'col-lg-9': topLevelMenu.topics.length > 3,
+                                                    'col-lg-4': topLevelMenu.topics.length <= 3
+                                                }">
+                                                <ul
+                                                    class="dropdown-list row w-auto"
+                                                    :aria-labelledby="`menu-${topLevelMenu.name}`">
+                                                    <!-- name of top-level menu (won't ever be a link) -->
+                                                    <li class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold ml-50 w-100">
+                                                        {{ topLevelMenu.name }}
+                                                    </li>
+                                                    <es-nav-bar-topic-menu
+                                                        v-for="topic in topLevelMenu.topics"
+                                                        :key="topic.name"
+                                                        :class="{
+                                                            'col-lg-6 col-xl-4': topLevelMenu.topics.length > 3,
+                                                            'col-lg-12': topLevelMenu.topics.length <= 3
+                                                        }"
+                                                        :items="topic.subtopics"
+                                                        :link="topic.link"
+                                                        :name="topic.name" />
+                                                </ul>
                                             </div>
-                                        </div>
-                                    </div>
+                                            <!-- article link with image within menu -->
+                                            <div class="col-lg-3 dropdown-cta-right">
+                                                <div class="font-size-50 p-lg-100">
+                                                    <a
+                                                        class="d-block cta-link"
+                                                        :href="topLevelMenu.dropdownCta.linkUrl"
+                                                        :title="topLevelMenu.dropdownCta.linkName">
+                                                        <nav-energy-tips
+                                                            width="253px"
+                                                            height="190px"
+                                                            class="mb-100" />
+                                                        <div class="eyebrow mb-50">
+                                                            {{ topLevelMenu.dropdownCta.linkName }}
+                                                        </div>
+
+                                                        <p class="font-weight-bold">
+                                                            {{ topLevelMenu.dropdownCta.lede }}
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </b-row>
+                                    </b-container>
 
                                     <!-- CTA banner at bottom of the nav for logged-out users -->
                                     <div class="d-none d-lg-flex dropdown-cta-bottom">
@@ -314,6 +238,7 @@
                                 </div>
                             </div>
                         </li>
+                        <!-- desktop account menu -->
                         <div class="d-none d-lg-block">
                             <li class="icon-dropdown">
                                 <div class="container justify-content-center px-0">
@@ -381,6 +306,7 @@
                             </li>
                         </div>
                     </div>
+                    <!-- mobile+desktop product menus -->
                     <div class="row mx-0 d-flex justify-content-lg-center">
                         <es-nav-bar-product-menu
                             v-for="product in items.products"
@@ -398,6 +324,7 @@
 <script lang="js">
 import EsButton from './EsButton.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
+import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
 import NAV_BAR_CONTENT from '../lib-data/es-nav-bar-content';
 import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
 
@@ -410,6 +337,7 @@ export default {
         EsButton,
         EsLogo,
         EsNavBarProductMenu,
+        EsNavBarTopicMenu,
         NavEnergyTips,
     },
     data() {

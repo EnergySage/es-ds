@@ -1,5 +1,5 @@
 <template>
-    <li class="dropdown nav-item">
+    <li class="dropdown nav-item nav-item-border-mobile">
         <!-- desktop product link / hover menu trigger -->
         <a
             class="product-menu-header-link dropdown-toggle d-none d-lg-block px-lg-100 px-xl-200 py-lg-0 text-decoration-none text-gray"
@@ -54,15 +54,14 @@
                 class="product-menu-flyout dropdown-menu row border-0 mt-0 py-lg-100"
                 :aria-labelledby="`menu-${name}`">
                 <li
-                    class="d-lg-none nav-item nav-link font-weight-bold d-flex w-100
-                                            align-items-center">
+                    class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold w-100">
                     {{ name }}
                 </li>
                 <li
                     v-for="item in items"
                     :key="item.name">
                     <a
-                        class="dropdown-item nav-item nav-link align-items-center d-flex px-lg-100 py-lg-50"
+                        class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
                         :href="item.link">
                         {{ item.name }}
                     </a>

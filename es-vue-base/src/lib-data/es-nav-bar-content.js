@@ -39,7 +39,7 @@ export default {
     },
     topLevelMenus: [
         {
-            name: 'Energy Tips',
+            name: 'Energy tips',
             icon: NAV_BAR_ICONS.LIGHT_BULB,
             topics: [
                 {
@@ -58,14 +58,14 @@ export default {
                             link: 'https://news.energysage.com/best-solar-panels-complete-ranking/',
                         },
                         {
-                            name: 'What do solar panels cost? ',
+                            name: 'What do solar panels cost?',
                             link: 'https://www.energysage.com/local-data/solar-panel-cost/',
                         },
                     ],
                     link: 'https://www.energysage.com/solar/',
                 },
                 {
-                    name: 'Backup Power',
+                    name: 'Backup power',
                     subtopics: [
                         {
                             name: 'Backup power guide',
@@ -82,7 +82,7 @@ export default {
                     ],
                 },
                 {
-                    name: 'Heating & Cooling',
+                    name: 'Heating & cooling',
                     subtopics: [
                         {
                             name: 'Heat pump guide',
@@ -99,7 +99,7 @@ export default {
                     ],
                 },
                 {
-                    name: 'Electric Vehicles',
+                    name: 'Electric vehicles',
                     subtopics: [
                         {
                             name: 'EV charging guide',
@@ -120,7 +120,7 @@ export default {
                     ],
                 },
                 {
-                    name: 'Smart Home',
+                    name: 'Smart home',
                     subtopics: [
                         {
                             name: 'Home electricity guide',
@@ -141,7 +141,7 @@ export default {
                     ],
                 },
                 {
-                    name: 'For Your Business',
+                    name: 'For your business',
                     subtopics: [
                         {
                             name: 'Clean energy guide for businesses',
@@ -162,7 +162,7 @@ export default {
                     ],
                 },
                 {
-                    name: 'Clean Energy Financing',
+                    name: 'Clean energy financing',
                     subtopics: [
                         {
                             name: 'Guide to financing',
@@ -179,7 +179,7 @@ export default {
                     ],
                 },
                 {
-                    name: 'EnergySage News',
+                    name: 'EnergySage news',
                     subtopics: [
                         {
                             name: 'Blog',
@@ -196,18 +196,18 @@ export default {
             },
         },
         {
-            name: 'Solar Calculator',
+            name: 'Solar calculator',
             icon: NAV_BAR_ICONS.CALCULATOR,
             topics: [],
             link: 'https://www.energysage.com/solar/calculator',
             subHeading: 'Check your savings',
         },
         {
-            name: 'About Us',
+            name: 'About us',
             icon: NAV_BAR_ICONS.ES_LEAF,
             topics: [
                 {
-                    name: 'Our Company',
+                    name: 'Our company',
                     subtopics: [
                         {
                             name: 'Mission & values',
