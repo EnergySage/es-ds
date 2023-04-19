@@ -7,8 +7,20 @@ describe('EsPagination', () => {
     test('<EsPagination />', async () => {
         const wrapper = mount(EsPagination, {
             ...jestVue,
-            propsData: {
-                listId: '#test',
+            template: `
+                <ul id="paginated-list">
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                </ul>
+                <EsPagination
+                v-model="1"
+                :total-rows="2"
+                :per-page="1"
+                align="center"
+                list-id="paginated-list" />
+            `,
+            components: {
+                EsPagination,
             },
         });
         const a11y = await axe(wrapper.element);

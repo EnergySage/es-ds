@@ -82,7 +82,7 @@ export default {
         &.active {
             .page-link {
                 background: linear-gradient($white, $white) padding-box,
-                    linear-gradient(to bottom right, #f6b140, #c84486) border-box;
+                    linear-gradient(to bottom right, $yellow-500, $pink-500) border-box;
                 border: 2px solid transparent;
                 border-radius: 50em;
                 color: $black;
