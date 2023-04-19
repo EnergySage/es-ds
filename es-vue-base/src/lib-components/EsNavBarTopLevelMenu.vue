@@ -134,36 +134,12 @@
                         </div>
                     </b-row>
                 </b-container>
-
-                <!-- CTA banner at bottom of the nav for logged-out users -->
-                <div class="d-none d-lg-flex dropdown-cta-bottom">
-                    <div class="dropdown-cta-bottom--inner">
-                        <div class="text-white mr-450">
-                            <div class="font-size-300 font-weight-bold">
-                                Compare quotes from our top installers.
-                            </div>
-                            <div>
-                                Create an account to compare and shop for the best details.
-                            </div>
-                        </div>
-
-                        <div>
-                            <EsButton
-                                outline
-                                size="lg"
-                                variant="secondary">
-                                Compare quotes
-                            </EsButton>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </li>
 </template>
 
 <script lang="js">
-import EsButton from './EsButton.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
 import NavEnergyTips from '../lib-assets/nav-energy-tips.vue';
 import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
@@ -171,7 +147,6 @@ import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
 export default {
     name: 'EsNavBarTopLevelMenu',
     components: {
-        EsButton,
         EsNavBarTopicMenu,
         NavEnergyTips,
     },

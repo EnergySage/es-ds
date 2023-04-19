@@ -55,15 +55,6 @@
                         </label>
                     </div>
                 </div>
-                <div
-                    id="compareButton_mobile"
-                    class="container px-100 pt-100 d-lg-none text-center justify-content-center"
-                    style="display: none">
-                    Create an account to compare and see quotes from our verified installers.
-                    <EsButton class="btn btn-secondary btn-md my-100 w-100">
-                        Compare quotes
-                    </EsButton>
-                </div>
                 <ul class="navbar-nav d-flex flex-column w-100">
                     <!-- top-level items on mobile, full top bar on desktop -->
                     <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between">
@@ -259,9 +250,6 @@ export default {
             if (loggedOut) {
                 // logged out so allow loggedOut menu and the compare buttons to be visible
                 document.querySelector('.nav-es-global #loggedOut').style.display = null;
-                document.querySelectorAll(
-                    '.nav-es-global [id^="compareButton"]',
-                ).forEach((e) => { e.style.display = null; });
             } else {
                 // logged in so allow logged in menu to be visible, and show name with appropriate layout
                 document.querySelector('.nav-es-global #loggedIn').style.display = null;
