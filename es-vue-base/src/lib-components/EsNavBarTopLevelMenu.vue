@@ -122,7 +122,7 @@
                                         width="253px"
                                         height="190px"
                                         class="mb-100" />
-                                    <div class="eyebrow mb-50">
+                                    <div class="eyebrow font-size-50 mb-50 text-orange">
                                         {{ featuredArticle.linkName }}
                                     </div>
 

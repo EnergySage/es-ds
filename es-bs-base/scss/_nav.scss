@@ -165,12 +165,14 @@ $mobile-max-width: $desktop-min-width - 1;
   // Adjust default nav-link styling
   &.navbar-light {
     .navbar-nav {
+      // stylelint-disable-next-line selector-max-class
       .nav-item.nav-link {
         color: $gray-900;
 
+        // stylelint-disable-next-line selector-max-class
         &:hover {
-          color: $black;
           font-weight: $font-weight-semibold;
+          color: $black;
           text-decoration: underline;
         }
       }
@@ -199,11 +201,6 @@ $mobile-max-width: $desktop-min-width - 1;
 
   .dropdown-cta-right {
     line-height: 1.3;
-
-    .eyebrow {
-      font-size: $font-size-50;
-      color: $orange !important;
-    }
 
     .cta-link {
       font-size: $font-size-75;
@@ -244,16 +241,17 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // line below topic header in desktop top-level flyout
     .topic-menu-header::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 64px;
+      height: 1px;
+      margin: 0; // override .dropdown-toggle::after style
+      content: "";
       background-color: $gray-400;
       border-style: none;  // override .dropdown-toggle::after style
+      // stylelint-disable-next-line property-disallowed-list
       border-radius: 1px;
-      bottom: 0;
-      content: '';
-      height: 1px;
-      left: 0;
-      margin: 0; // override .dropdown-toggle::after style
-      position: absolute;
-      width: 64px;
     }
 
     // Show top headers down chevron icon
@@ -283,8 +281,8 @@ $mobile-max-width: $desktop-min-width - 1;
     }
 
     .account-menu {
-      left: auto;
       right: 50%;
+      left: auto;
       transform: translateX(25%);
     }
 
@@ -371,6 +369,7 @@ $mobile-max-width: $desktop-min-width - 1;
     }
 
     .dropdown-item {
+      // stylelint-disable-next-line declaration-no-important
       white-space: normal !important;
     }
 
@@ -380,6 +379,7 @@ $mobile-max-width: $desktop-min-width - 1;
       color: $white;
       background-color: $gray-900;
 
+      // stylelint-disable-next-line selector-class-pattern
       .dropdown-cta-bottom--inner {
         display: flex;
         justify-content: space-between;
@@ -435,6 +435,7 @@ $mobile-max-width: $desktop-min-width - 1;
     // Prevent horizontal scrolling on menu
     .dropdown-menu {
       top: 64px;
+      // stylelint-disable-next-line declaration-no-important
       display: flex !important;
       max-height: 100%;
       padding: 0;
@@ -457,6 +458,7 @@ $mobile-max-width: $desktop-min-width - 1;
 
     // Prevent horizontal scrolling on menu
     .dropdown-menu-full-page {
+      // stylelint-disable-next-line declaration-no-important
       display: flex !important;
       border-style: none;
     }
@@ -479,6 +481,7 @@ $mobile-max-width: $desktop-min-width - 1;
       margin: 0 15px;
     }
     .nav-item-border-mobile {
+      // stylelint-disable-next-line declaration-no-important
       border-bottom: 1px solid $gray-300 !important;
     }
 
@@ -500,6 +503,7 @@ $mobile-max-width: $desktop-min-width - 1;
       min-height: 100vh;
       max-height: 100%;
       background: #fff;
+      // stylelint-disable-next-line property-disallowed-list
       transition: transform 0.2s;
       transform: translate3d(-100%, 0, 0);
 
@@ -509,6 +513,18 @@ $mobile-max-width: $desktop-min-width - 1;
         li:last-child {
           margin-bottom: 120px;
         }
+      }
+
+      // Override BS4 defaults for consistency
+      ul,
+      li {
+        display: block;
+        width: 100%;
+        border-style: none;
+      }
+      li {
+        display: flex;
+        justify-content: space-between;
       }
     }
 
@@ -539,20 +555,6 @@ $mobile-max-width: $desktop-min-width - 1;
       display: flex;
       vertical-align: center;
       cursor: pointer;
-    }
-
-    // Override BS4 defaults for consistency
-    .menu {
-      ul,
-      li {
-        display: block;
-        width: 100%;
-        border-style: none;
-      }
-      li {
-        display: flex;
-        justify-content: space-between;
-      }
     }
   }
 }
