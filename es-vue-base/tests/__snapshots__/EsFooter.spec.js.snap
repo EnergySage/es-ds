@@ -23,25 +23,25 @@ exports[`EsFooter <EsFooter /> 1`] = `
             <li class="font-weight-bolder font-size-100 mb-50">
               Our Topics
             </li>
-            <li class="mt-25 mb-50"><a href="https://www.energysage.com/" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://www.energysage.com/solar/" class="text-reset">
                 Home solar
               </a></li>
-            <li class="mt-25 mb-50"><a href="https://communitysolar.energysage.com/" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://communitysolar.energysage.com" class="text-reset">
                 Community solar
+              </a></li>
+            <li class="mt-25 mb-50"><a href="https://heatpumps.energysage.com" class="text-reset">
+                Heating &amp; cooling
+              </a></li>
+            <li class="mt-25 mb-50"><a href="https://www.energysage.com/energy-storage/" class="text-reset">
+                Backup power
+              </a></li>
+            <li class="mt-25 mb-50"><a href="https://www.energysage.com/ev-charging/" class="text-reset">
+                EV charging
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/businesses/" class="text-reset">
                 For your business
               </a></li>
-            <li class="mt-25 mb-50"><a href="https://heatpumps.energysage.com/" class="text-reset">
-                Heating &amp; cooling
-              </a></li>
-            <li class="mt-25 mb-50"><a href="" class="text-reset">
-                Backup power
-              </a></li>
-            <li class="mt-25 mb-50"><a href="" class="text-reset">
-                EV charging
-              </a></li>
-            <li class="mt-25 mb-50"><a href="" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://www.energysage.com/other-clean-options/" class="text-reset">
                 Other energy options
               </a></li>
           </ul>
@@ -55,14 +55,11 @@ exports[`EsFooter <EsFooter /> 1`] = `
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/market/equipment-rebates/" class="text-reset">
                 Solar rebates
               </a></li>
-            <li class="mt-25 mb-50"><a href="https://news.energysage.com/" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://news.energysage.com" class="text-reset">
                 EnergySage news
               </a></li>
-            <li class="mt-25 mb-50"><a href="https://help.energysage.com/" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://help.energysage.com" class="text-reset">
                 Help center
-              </a></li>
-            <li class="mt-25 mb-50"><a href="https://www.energysage.com/solar/" class="text-reset">
-                Learn about solar
               </a></li>
           </ul>
           <ul class="list-unstyled col col-6 col-md-3 mb-150">
@@ -74,9 +71,6 @@ exports[`EsFooter <EsFooter /> 1`] = `
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/market-intro/" class="text-reset">
                 How it works
-              </a></li>
-            <li class="mt-25 mb-50"><a href="" class="text-reset">
-                Editorial team
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/about-us/careers/" class="text-reset">
                 Careers
@@ -96,10 +90,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
                 Solar companies
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/partners/" class="text-reset">
-                Corporate partners
-              </a></li>
-            <li class="mt-25 mb-50"><a href="https://www.energysage.com/partners/" class="text-reset">
-                Community programs
+                Partner with us
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/data/" class="text-reset">
                 Market research
@@ -127,7 +118,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
           </svg></div>
         <div class="d-flex text-gray-700"><a href="https://www.facebook.com/EnergySage" class="text-reset pr-150"><span class="sr-only">Facebook</span>
             <icon-facebook></icon-facebook></a><a href="https://www.linkedin.com/company/energysage/" class="text-reset pr-150"><span class="sr-only">LinkedIn</span>
-            <icon-linkedin></icon-linkedin></a><a href="https://www.instagram.com/energysage_official/?hl=en" class="text-reset pr-150"><span class="sr-only">Instagram</span>
+            <icon-linkedin></icon-linkedin></a><a href="https://www.instagram.com/energysage_official/" class="text-reset pr-150"><span class="sr-only">Instagram</span>
             <icon-instagram></icon-instagram></a><a href="https://twitter.com/energysage" class="text-reset pr-150"><span class="sr-only">Twitter</span>
             <icon-twitter></icon-twitter></a><a href="https://www.youtube.com/c/EnergySage" class="text-reset pr-150"><span class="sr-only">YouTube</span>
             <icon-youtube></icon-youtube></a></div>
@@ -154,9 +145,6 @@ exports[`EsFooter <EsFooter /> 1`] = `
         </a></div>
       <div class="col col-6 col-lg font-size-50 mt-25 mb-50"><a href="https://www.energysage.com/nondiscrimination/" class="text-reset font-weight-normal">
           Non-discrimination policy
-        </a></div>
-      <div class="col col-6 col-lg font-size-50 mt-25 mb-50"><a href="" class="text-reset font-weight-normal">
-          Site map
         </a></div>
     </div>
     <div class="d-lg-flex align-items-end"><img src="https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png" aria-hidden="true" width="99" height="25" class="mr-100 mb-100 mb-lg-0">
