@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsFooter <EsFooter /> 1`] = `
-"<div class="es-footer clearfix text-gray font-size-75 pt-200 pb-300 px-100 px-md-300">
+"<div class="es-footer clearfix text-gray font-size-75 pt-200 pb-300 px-100 px-sm-200 px-md-300">
   <div class="row justify-content-between">
     <div class="col col-12 col-lg-8 order-lg-1">
       <div class="row">
@@ -111,7 +111,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
             </clipPath>
           </defs>
         </svg></div>
-      <div class="d-flex justify-content-between mb-200"><a href="https://www.facebook.com/EnergySage"><span class="sr-only">Facebook</span> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" fill="none" viewBox="0 0 31 32">
+      <div class="social-icons d-flex justify-content-between mb-200"><a href="https://www.facebook.com/EnergySage"><span class="sr-only">Facebook</span> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="32" fill="none" viewBox="0 0 31 32">
             <g clip-path="url(#footer-b)">
               <path fill="#565656" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm5.7 8.1h-2a2 2 0 0 0-1.6.5c-.3.4-.4 1-.4 1.4V13h3.9l-.5 4h-3.4v10h-4V17H9.8v-4h3.4v-2.8a5.1 5.1 0 0 1 1.3-3.9A5 5 0 0 1 18.2 5l3 .1v3.5Z"></path>
             </g>
