@@ -282,6 +282,12 @@ $mobile-max-width: $desktop-min-width - 1;
       transform: translateX(-75%);
     }
 
+    .account-menu {
+      left: auto;
+      right: 50%;
+      transform: translateX(25%);
+    }
+
     // Show dropdown and hover colors on nav-item hover in desktop view
     // Show top headers up chevron icon on nav-item hover
     .nav-item:hover {
@@ -337,10 +343,9 @@ $mobile-max-width: $desktop-min-width - 1;
       width: 250px;
     }
 
-    // Style first name with truncation and default not shown
+    // style account menu name with truncation
     .icon-dropdown .dropdown-toggle .first-name {
-      display: none;
-      max-width: 200px;
+      max-width: 180px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

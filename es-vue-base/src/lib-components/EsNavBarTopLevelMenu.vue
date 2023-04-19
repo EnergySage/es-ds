@@ -1,5 +1,5 @@
 <template>
-    <li class="nav-item nav-item-border-mobile top-header">
+    <li class="nav-item nav-item-border-mobile top-header mx-0">
         <!-- desktop fly-out menu trigger -->
         <a
             v-if="!link"

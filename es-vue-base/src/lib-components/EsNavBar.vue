@@ -65,9 +65,16 @@
                     </EsButton>
                 </div>
                 <ul class="navbar-nav d-flex flex-column w-100">
-                    <div class="row mx-0 d-flex justify-content-around align-items-center">
-                        <!-- desktop logo -->
-                        <div class="navbar-brand d-none d-lg-block">
+                    <!-- top-level items on mobile, full top bar on desktop -->
+                    <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between">
+                        <!-- small desktop logo -->
+                        <div class="navbar-brand d-none d-lg-block d-xl-none">
+                            <es-logo
+                                width="150px"
+                                height="42px" />
+                        </div>
+                        <!-- large desktop logo-->
+                        <div class="navbar-brand d-none d-xl-block">
                             <es-logo
                                 width="200px"
                                 height="42px" />
@@ -85,71 +92,61 @@
                         <!-- desktop account menu -->
                         <div class="d-none d-lg-block">
                             <li class="icon-dropdown">
-                                <div class="container justify-content-center px-0">
-                                    <span class="nav-item">
-                                        <div
-                                            class="nav-link dropdown-toggle d-none d-lg-block py-100">
-                                            <IconPerson class="align-self-center" />
-                                            <div
-                                                class="first-name align-self-center pl-50" />
+                                <div class="nav-item">
+                                    <div class="nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100">
+                                        <IconPerson class="align-self-center" />
+                                        <div class="first-name align-self-center pl-50">
+                                            Sign in
                                         </div>
-                                        <div class="menu">
-                                            <ul
-                                                id="loggedIn"
-                                                class="dropdown-menu rounded mt-0 py-100"
-                                                style="display: none">
-                                                <li
-                                                    v-for="item in items.accountMenu.loggedIn.items"
-                                                    :key="item.name">
-                                                    <a
-                                                        class="dropdown-item nav-link"
-                                                        :href="item.link"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <span class="mx-50"> {{ item.name }} </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <ul
-                                                id="loggedOut"
-                                                class="dropdown-menu rounded mt-0"
-                                                style="display: none">
+                                    </div>
+                                    <div class="menu">
+                                        <ul
+                                            id="loggedIn"
+                                            class="dropdown-menu account-menu rounded mt-0 py-100"
+                                            style="display: none">
+                                            <li
+                                                v-for="item in items.accountMenu.loggedIn.items"
+                                                :key="item.name">
                                                 <a
-                                                    class="d-flex justify-content-around text-decoration-none"
-                                                    :href="items.accountMenu.loggedOut.signIn.link">
+                                                    class="dropdown-item nav-link"
+                                                    :href="item.link"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    <span class="mx-50"> {{ item.name }} </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul
+                                            id="loggedOut"
+                                            class="dropdown-menu account-menu rounded mt-0"
+                                            style="display: none">
+                                            <a
+                                                class="d-flex justify-content-around text-decoration-none"
+                                                :href="items.accountMenu.loggedOut.signIn.link">
+                                                <EsButton
+                                                    :outline="true"
+                                                    variant="secondary"
+                                                    class="m-100 w-75">
+                                                    {{ items.accountMenu.loggedOut.signIn.name }}
+                                                </EsButton>
+                                            </a>
+                                            <li>
+                                                <a
+                                                    class="d-flex justify-content-around"
+                                                    :href="items.accountMenu.loggedOut.createAccount.link">
                                                     <EsButton
-                                                        :outline="true"
-                                                        variant="secondary"
-                                                        class="m-100 w-75">
-                                                        {{ items.accountMenu.loggedOut.signIn.name }}
+                                                        variant="link">
+                                                        {{ items.accountMenu.loggedOut.createAccount.name }}
                                                     </EsButton>
                                                 </a>
-                                                <li>
-                                                    <a
-                                                        class="d-flex justify-content-around"
-                                                        :href="items.accountMenu.loggedOut.createAccount.link">
-                                                        <EsButton
-                                                            variant="link">
-                                                            {{ items.accountMenu.loggedOut.createAccount.name }}
-                                                        </EsButton>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </span>
-                                    <a
-                                        id="compareButton_desktop"
-                                        style="display: none"
-                                        href="https://www.energysage.com/market/start/1">
-                                        <EsButton class="btn btn-secondary my-25">
-                                            Compare quotes
-                                        </EsButton>
-                                    </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </li>
                         </div>
-                    </div>
+                    </b-container>
                     <!-- mobile+desktop product menus -->
                     <div class="row mx-0 d-flex justify-content-lg-center">
                         <es-nav-bar-product-menu
