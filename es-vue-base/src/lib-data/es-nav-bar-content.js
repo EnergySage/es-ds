@@ -39,7 +39,7 @@ export default {
     },
     topLevelMenus: [
         {
-            name: 'Energy tips',
+            name: 'Tips & guides',
             subHeading: 'Learn from experts',
             icon: NAV_BAR_ICONS.LIGHT_BULB,
             topics: [
@@ -57,13 +57,13 @@ export default {
                         {
                             name: 'Best solar panels',
                             link: 'https://news.energysage.com/best-solar-panels-complete-ranking/',
+                            newTab: true,
                         },
                         {
-                            name: 'What do solar panels cost?',
+                            name: 'How much do solar panels cost?',
                             link: 'https://www.energysage.com/local-data/solar-panel-cost/',
                         },
                     ],
-                    link: 'https://www.energysage.com/solar/',
                 },
                 {
                     name: 'Backup power',
@@ -75,10 +75,12 @@ export default {
                         {
                             name: 'Best home batteries',
                             link: 'https://news.energysage.com/best-solar-batteries/',
+                            newTab: true,
                         },
                         {
                             name: 'Home batteries vs. generators',
                             link: 'https://news.energysage.com/battery-backup-power-vs-generators-which-is-right-for-you/',
+                            newTab: true,
                         },
                     ],
                 },
@@ -91,11 +93,12 @@ export default {
                         },
                         {
                             name: 'Best heat pumps',
-                            link: 'https://www.energysage.com/',
+                            link: 'https://www.energysage.com/clean-heating-cooling/air-source-heat-pumps/costs-and-benefits-air-source-heat-pumps/',
                         },
                         {
                             name: 'How do heat pumps work?',
                             link: 'https://news.energysage.com/how-do-heat-pumps-work/',
+                            newTab: true,
                         },
                     ],
                 },
@@ -104,19 +107,20 @@ export default {
                     subtopics: [
                         {
                             name: 'EV charging guide',
-                            link: 'https://www.energysage.com/electric-vehicles/charging-your-ev/',
+                            link: 'https://www.energysage.com/ev-charging/',
                         },
                         {
-                            name: 'Electric vehicle guide',
+                            name: 'Electric vehicles guide',
                             link: 'https://www.energysage.com/electric-vehicles/',
                         },
                         {
                             name: 'Best EV chargers',
-                            link: 'https://www.energysage.com/',
+                            link: 'https://www.energysage.com/energy-products/ev-charging-stations/',
                         },
                         {
-                            name: 'What does it cost to charge an EV?',
+                            name: 'How much does it cost to charge an EV?',
                             link: 'https://news.energysage.com/electric-vehicle-charging-cost-vs-gas/',
+                            newTab: true,
                         },
                     ],
                 },
@@ -145,20 +149,19 @@ export default {
                     name: 'For your business',
                     subtopics: [
                         {
-                            name: 'Clean energy guide for businesses',
-                            link: 'http://www.energysage.com/',
-                        },
-                        {
                             name: 'Solar for businesses',
                             link: 'https://news.energysage.com/commercial-solar-benefits-for-business/',
+                            newTab: true,
                         },
                         {
                             name: 'Solar for nonprofit organizations',
                             link: 'https://news.energysage.com/solar-nonprofit-benefits-financing/',
+                            newTab: true,
                         },
                         {
-                            name: 'Energy storage for businesses',
+                            name: 'Backup power for businesses',
                             link: 'https://news.energysage.com/energy-storage-for-businesses/',
+                            newTab: true,
                         },
                     ],
                 },
@@ -166,16 +169,18 @@ export default {
                     name: 'Clean energy financing',
                     subtopics: [
                         {
-                            name: 'Guide to financing',
-                            link: 'http://www.energysage.com/',
-                        },
-                        {
                             name: 'How to pay for solar',
                             link: 'https://www.energysage.com/solar/how-to-go-solar/how-to-pay-for-solar/',
                         },
                         {
-                            name: 'What to know about solar loans',
+                            name: 'How to choose a solar loan',
                             link: 'https://news.energysage.com/solar-loans-overview/',
+                            newTab: true,
+                        },
+                        {
+                            name: 'What to know about solar leases',
+                            link: 'https://news.energysage.com/solar-leases/',
+                            newTab: true,
                         },
                     ],
                 },
@@ -183,16 +188,25 @@ export default {
                     name: 'EnergySage news',
                     subtopics: [
                         {
-                            name: 'Blog',
-                            link: 'http://news.energysage.com/',
+                            name: 'How long can you run your house on a Tesla Powerwall?',
+                            link: 'https://news.energysage.com/tesla-powerwall-how-much-home-can-you-run-on-it-for-how-long/',
+                            newTab: true,
+                        },
+                        {
+                            name: 'How have solar panel cost and efficiency changed over time?',
+                            link: 'https://news.energysage.com/solar-panel-efficiency-cost-over-time/',
+                            newTab: true,
                         },
                     ],
+                    link: 'http://news.energysage.com/',
+                    newTab: true,
                 },
             ],
             featuredArticle: {
-                linkName: "Editor's Recommendation",
+                linkName: "Editors' pick",
                 linkUrl: 'https://news.energysage.com/are-solar-panels-worth-it/',
-                lede: 'Everything you need to know about community solar: projects, costs, savings, and more',
+                lede: 'Are solar panels worth it?',
+                newTab: true,
             },
         },
         {
@@ -204,7 +218,7 @@ export default {
         },
         {
             name: 'About us',
-            subHeading: 'Why choose EnergySage',
+            subHeading: 'Why EnergySage',
             icon: NAV_BAR_ICONS.ES_LEAF,
             topics: [
                 {
@@ -216,11 +230,7 @@ export default {
                         },
                         {
                             name: 'How it works',
-                            link: '',
-                        },
-                        {
-                            name: 'Editorial team',
-                            link: '',
+                            link: 'https://www.energysage.com/market-intro/',
                         },
                         {
                             name: 'Partner with us',
@@ -231,7 +241,7 @@ export default {
                             link: 'https://www.energysage.com/about-us/careers/',
                         },
                         {
-                            name: 'Market research',
+                            name: 'Market intel',
                             link: 'https://www.energysage.com/data/',
                         },
                         {
@@ -246,9 +256,9 @@ export default {
                 },
             ],
             featuredArticle: {
-                linkName: 'Recent Press',
+                linkName: 'New research',
                 linkUrl: 'https://www.energysage.com/press/energysage-marketplace-intel-report-16',
-                lede: 'EnergySage Releases Its 16th Solar & Storage Marketplace Report',
+                lede: 'EnergySage Intel\'s latest Solar & Storage Marketplace Report',
             },
         },
     ],
@@ -316,6 +326,7 @@ export default {
                         {
                             name: 'Search solar farms',
                             link: 'https://communitysolar.energysage.com/projects',
+                            newTab: true,
                         },
                     ],
                 },
@@ -329,6 +340,7 @@ export default {
         {
             name: 'Community solar',
             link: 'https://communitysolar.energysage.com/',
+            newTab: true,
             items: [
                 {
                     name: 'Community solar guide',
@@ -337,24 +349,27 @@ export default {
                 {
                     name: 'Search solar farms ',
                     link: 'https://communitysolar.energysage.com/projects',
+                    newTab: true,
                 },
             ],
         },
         {
             name: 'Heating & cooling',
             link: 'https://heatpumps.energysage.com/',
+            newTab: true,
             items: [
                 {
                     name: 'Heat pump guide',
                     link: 'https://www.energysage.com/clean-heating-cooling/air-source-heat-pumps/',
                 },
                 {
-                    name: 'Installer reviews',
-                    link: 'https://www.energysage.com/supplier/search?selected_facets=services:installers&selected_facets=technology_types:High%20Efficiency%20HVAC',
+                    name: 'Heat pump incentives',
+                    link: 'https://www.energysage.com/clean-heating-cooling/air-source-heat-pumps/heat-pump-incentives/',
                 },
                 {
                     name: 'Get personalized quotes',
                     link: 'https://heatpumps.energysage.com/welcome',
+                    newTab: true,
                 },
             ],
         },
@@ -367,10 +382,6 @@ export default {
                     link: 'https://www.energysage.com/energy-storage/',
                 },
                 {
-                    name: 'Installer reviews',
-                    link: 'https://www.energysage.com/supplier/search?selected_facets=services:installers&selected_facets=technology_types:Energy%20Storage',
-                },
-                {
                     name: 'Home battery incentives',
                     link: 'https://www.energysage.com/energy-storage/benefits-of-storage/energy-storage-incentives/',
                 },
@@ -378,19 +389,27 @@ export default {
                     name: 'Compare home batteries',
                     link: 'https://www.energysage.com/solar-batteries/',
                 },
+                {
+                    name: 'Get personalized quotes for home solar + batteries',
+                    link: 'https://www.energysage.com/market/start/',
+                },
             ],
         },
         {
             name: 'EV charging',
-            link: 'https://www.energysage.com/energy-products/ev-charging-stations/',
+            link: 'https://www.energysage.com/ev-charging/',
             items: [
+                {
+                    name: 'EV charging guide',
+                    link: 'https://www.energysage.com/ev-charging/',
+                },
                 {
                     name: 'Compare EV chargers',
                     link: 'https://www.energysage.com/energy-products/ev-charging-stations/',
                 },
                 {
-                    name: 'Explore electric vehicles',
-                    link: 'https://electricvehicles.energysage.com/',
+                    name: 'Electric vehicle guide',
+                    link: 'https://www.energysage.com/electric-vehicles/',
                 },
             ],
         },
@@ -401,14 +420,17 @@ export default {
                 {
                     name: 'Solar for businesses',
                     link: 'https://news.energysage.com/commercial-solar-benefits-for-business/',
+                    newTab: true,
                 },
                 {
                     name: 'Solar for nonprofit organizations',
                     link: 'https://news.energysage.com/solar-nonprofit-benefits-financing/',
+                    newTab: true,
                 },
                 {
                     name: 'Energy storage for businesses',
                     link: 'https://news.energysage.com/energy-storage-for-businesses/',
+                    newTab: true,
                 },
             ],
         },
