@@ -107,6 +107,10 @@ export default {
             type: Boolean,
             default: true,
         },
+        subHeading: {
+            type: String,
+            default: '',
+        },
     },
     computed: {
         checkboxId() {

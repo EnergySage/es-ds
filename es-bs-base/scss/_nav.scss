@@ -213,6 +213,11 @@ $mobile-max-width: $desktop-min-width - 1;
     }
   }
 
+  .featured-article-image {
+    /* override local style attribute on image */
+    height: auto !important;
+  }
+
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: $desktop-min-width) {
     // pull navbar up to avoid overlay from getting covered by other DOM elements
@@ -271,11 +276,13 @@ $mobile-max-width: $desktop-min-width - 1;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
       transform: translateX(-50%);
     }
-
-    // ensure the first and last flyouts on small desktop don't go off the screen
-    .nav-item:first-child .product-menu-flyout {
-      transform: translateX(-25%);
+    .product-menu-flyout--large {
+      left: 0;
+      transform: none;
+      width: 775px; // approx width of ten columns at 992px breakpoint / 960px max width
     }
+
+    // ensure the last flyout on small desktop doesn't go off the screen
     .nav-item:last-child .product-menu-flyout {
       transform: translateX(-75%);
     }
@@ -362,12 +369,6 @@ $mobile-max-width: $desktop-min-width - 1;
       list-style: none;
     }
 
-    .dropdown-cta-right {
-      flex-basis: 270px;
-      flex-grow: 0;
-      flex-shrink: 0;
-    }
-
     .dropdown-item {
       // stylelint-disable-next-line declaration-no-important
       white-space: normal !important;
@@ -396,21 +397,24 @@ $mobile-max-width: $desktop-min-width - 1;
     .product-menu-flyout {
       width: 370px;  // approx width of four columns at 1200px breakpoint / 1140px max width
     }
-
-    // ensure the first and last flyouts on small desktop don't go off the screen
-    .nav-item:first-child .product-menu-flyout {
-      transform: translateX(-40%);
+    .product-menu-flyout--large {
+      width: 832px; // approx width of nine columns at 1200px breakpoint / 1140px max width
     }
+
+    // ensure the last flyout on small desktop doesn't go off the screen
     .nav-item:last-child .product-menu-flyout {
       transform: translateX(-60%);
     }
   }
 
   @include media-breakpoint-up(xxl) {
-    // reset the first and last children back to normal
-    .nav-item:first-child .product-menu-flyout,
+    // reset the last child back to normal
     .nav-item:last-child .product-menu-flyout {
       transform: translateX(-50%);
+    }
+    // allow the large flyout to be slightly more centered on its trigger link
+    .product-menu-flyout--large {
+      transform: translateX(-25%);
     }
   }
 

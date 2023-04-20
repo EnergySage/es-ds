@@ -143,9 +143,11 @@
                         <es-nav-bar-product-menu
                             v-for="product in items.products"
                             :key="product.name"
+                            :featured-article="product.featuredArticle"
                             :items="product.items"
                             :link="product.link"
-                            :name="product.name" />
+                            :name="product.name"
+                            :topics="product.topics" />
                     </div>
                 </ul>
             </div>

@@ -51,6 +51,7 @@
             <!-- mobile+desktop flyout menu -->
             <!-- TODO: does anything match this aria-labelledby id? -->
             <ul
+                v-if="items && items.length"
                 class="product-menu-flyout dropdown-menu row border-0 mt-0 py-lg-100"
                 :aria-labelledby="`menu-${name}`">
                 <li
@@ -67,17 +68,47 @@
                     </a>
                 </li>
             </ul>
+            <div
+                v-if="topics && topics.length"
+                class="product-menu-flyout product-menu-flyout--large dropdown-menu border-0 mt-0 p-lg-100">
+                <b-row>
+                    <es-nav-bar-topic-menu
+                        v-for="topic in topics"
+                        :key="topic.name"
+                        class="col-lg-4"
+                        :items="topic.subtopics"
+                        :link="topic.link"
+                        :name="topic.name"
+                        :sub-heading="topic.subHeading" />
+                    <es-nav-bar-featured-article
+                        class="col-lg-4 m-100 m-lg-0"
+                        :eyebrow="featuredArticle.eyebrow"
+                        :link="featuredArticle.link"
+                        :name="featuredArticle.name" />
+                </b-row>
+            </div>
         </div>
     </li>
 </template>
 
 <script lang="js">
+import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
+import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
+
 export default {
     name: 'EsNavBarProductMenu',
+    components: {
+        EsNavBarFeaturedArticle,
+        EsNavBarTopicMenu,
+    },
     props: {
+        featuredArticle: {
+            type: Object,
+            default: () => ({}),
+        },
         items: {
             type: Array,
-            required: true,
+            default: () => [],
         },
         link: {
             type: String,
@@ -86,6 +117,10 @@ export default {
         name: {
             type: String,
             required: true,
+        },
+        topics: {
+            type: Array,
+            default: () => [],
         },
     },
     computed: {

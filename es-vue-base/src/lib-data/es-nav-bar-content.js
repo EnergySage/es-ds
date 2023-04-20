@@ -256,48 +256,75 @@ export default {
         {
             name: 'Home solar',
             link: 'https://www.energysage.com/market-intro/',
-            items: [
+            topics: [
                 {
-                    name: 'Home solar guide',
-                    link: 'https://www.energysage.com/solar/',
+                    name: 'Rooftop solar',
+                    subHeading: 'Install solar on your property',
+                    link: 'https://www.energysage.com/market-intro/',
+                    subtopics: [
+                        {
+                            name: 'Home solar guide',
+                            link: 'https://www.energysage.com/solar/',
+                        },
+                        {
+                            name: 'Solar calculator',
+                            link: 'https://www.energysage.com/solar/calculator/',
+                        },
+                        {
+                            name: 'Search local installers',
+                            link: 'https://www.energysage.com/market/equipment-rebates/',
+                        },
+                        {
+                            name: 'Financing',
+                            link: 'https://www.energysage.com/solar/financing/loan-providers/',
+                        },
+                        {
+                            name: 'Installer reviews',
+                            link: 'https://www.energysage.com/installers/',
+                        },
+                        {
+                            name: 'Compare solar panels',
+                            link: 'https://www.energysage.com/solar-panels/',
+                        },
+                        {
+                            name: 'Compare inverters',
+                            link: 'https://www.energysage.com/solar-inverters/',
+                        },
+                        {
+                            name: 'Solar incentives',
+                            link: 'https://www.energysage.com/local-data/solar-rebates-incentives/',
+                        },
+                        {
+                            name: 'Backup power guide',
+                            link: 'https://www.energysage.com/energy-storage//',
+                        },
+                        {
+                            name: 'Get personalized quotes',
+                            link: 'https://www.energysage.com/market/start/',
+                        },
+                    ],
                 },
                 {
-                    name: 'Solar calculator',
-                    link: 'https://www.energysage.com/solar/calculator/',
-                },
-                {
-                    name: 'Equipment rebates',
-                    link: 'https://www.energysage.com/market/equipment-rebates/739870/',
-                },
-                {
-                    name: 'Financing',
-                    link: 'https://www.energysage.com/solar/financing/loan-providers/',
-                },
-                {
-                    name: 'Installer reviews',
-                    link: 'https://www.energysage.com/supplier/search?selected_facets=services:installers&selected_facets=technology_types:Solar%20PV',
-                },
-                {
-                    name: 'Compare solar panels',
-                    link: 'https://www.energysage.com/solar-panels/',
-                },
-                {
-                    name: 'Compare inverters',
-                    link: 'https://www.energysage.com/solar-inverters/',
-                },
-                {
-                    name: 'Solar incentives',
-                    link: 'https://www.energysage.com/local-data/solar-rebates-incentives/',
-                },
-                {
-                    name: 'Solar storage & batteries',
-                    link: 'https://www.energysage.com/energy-storage//',
-                },
-                {
-                    name: 'Get personalized quotes',
-                    link: 'https://www.energysage.com/market/start/',
+                    name: 'Community solar',
+                    subHeading: 'Go solar with no equipment',
+                    link: 'https://communitysolar.energysage.com/',
+                    subtopics: [
+                        {
+                            name: 'Community solar guide',
+                            link: 'https://www.energysage.com/solar/solar-101/what-is-community-solar/',
+                        },
+                        {
+                            name: 'Search solar farms',
+                            link: 'https://communitysolar.energysage.com/projects',
+                        },
+                    ],
                 },
             ],
+            featuredArticle: {
+                eyebrow: "Editor's Recommendation",
+                link: 'https://www.energysage.com/local-data/solar-panel-cost/',
+                name: 'What do solar panels cost? ',
+            },
         },
         {
             name: 'Community solar',

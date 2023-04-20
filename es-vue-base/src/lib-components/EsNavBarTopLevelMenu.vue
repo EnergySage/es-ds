@@ -112,26 +112,11 @@
                             </ul>
                         </div>
                         <!-- article link with image within menu -->
-                        <div class="col-lg-3 dropdown-cta-right">
-                            <div class="font-size-50 p-lg-100">
-                                <a
-                                    class="d-block cta-link"
-                                    :href="featuredArticle.linkUrl"
-                                    :title="featuredArticle.linkName">
-                                    <nav-energy-tips
-                                        width="253px"
-                                        height="190px"
-                                        class="mb-100" />
-                                    <div class="eyebrow font-size-50 mb-50 text-orange">
-                                        {{ featuredArticle.linkName }}
-                                    </div>
-
-                                    <p class="font-weight-bold">
-                                        {{ featuredArticle.lede }}
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
+                        <es-nav-bar-featured-article
+                            class="col-lg-3"
+                            :eyebrow="featuredArticle.linkName"
+                            :link="featuredArticle.linkUrl"
+                            :name="featuredArticle.lede" />
                     </b-row>
                 </b-container>
             </div>
@@ -140,15 +125,15 @@
 </template>
 
 <script lang="js">
+import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
-import NavEnergyTips from '../lib-assets/nav-energy-tips.vue';
 import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
 
 export default {
     name: 'EsNavBarTopLevelMenu',
     components: {
+        EsNavBarFeaturedArticle,
         EsNavBarTopicMenu,
-        NavEnergyTips,
     },
     props: {
         featuredArticle: {
