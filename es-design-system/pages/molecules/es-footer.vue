@@ -4,7 +4,10 @@
         <h1>
             EsFooter component
         </h1>
-        <es-footer />
+        <p>
+            The footer is a specialized component intended for use outside the normal content
+            container. See below.
+        </p>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFooter.vue"
@@ -16,6 +19,8 @@
 
 export default {
     name: 'EsFooterDocs',
+    // use a custom layout so the footer can be full-width at the bottom of the page
+    layout: 'footer',
     data() {
         return {
             compCode: '',
