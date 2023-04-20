@@ -5,13 +5,13 @@
 @import "../variables";
 
 :export {
-  lightest: $font-weight-lightest;
-  lighter: $font-weight-lighter;
-  light: $font-weight-light;
-  base: $font-weight-base;
-  normal: $font-weight-normal;
-  semibold: $font-weight-semibold;
-  bold: $font-weight-bold;
-  bolder: $font-weight-bolder;
-  boldest: $font-weight-boldest;
+  font-weight-lightest: $font-weight-lightest;
+  font-weight-lighter: $font-weight-lighter;
+  font-weight-light: $font-weight-light;
+  font-weight-base: $font-weight-base;
+  font-weight-normal: $font-weight-normal;
+  font-weight-semibold: $font-weight-semibold;
+  font-weight-bold: $font-weight-bold;
+  font-weight-bolder: $font-weight-bolder;
+  font-weight-boldest: $font-weight-boldest;
 }

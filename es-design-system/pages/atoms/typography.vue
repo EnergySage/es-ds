@@ -290,9 +290,9 @@ export default {
                     .map(([name, size]) => ({ name, size })),
             ],
             fontWeightItems: [
-                ...Object.keys(sassFontWeights).map((key) => ({
-                    name: `font-weight-${key}`,
-                    weight: sassFontWeights[key],
+                ...Object.entries(sassFontWeights).map(([name, weight]) => ({
+                    name,
+                    weight,
                 })),
             ],
             docCode: '',
