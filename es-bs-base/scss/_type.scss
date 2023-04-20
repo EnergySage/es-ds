@@ -36,7 +36,7 @@ h6, .h6 { @include font-size($h6-font-size); }
  */
 .eyebrow {
   font-size: $font-size-base;
-  font-weight: $headings-font-weight;
+  font-weight: $font-weight-bolder;
   color: $headings-color;
   text-transform: uppercase;
   letter-spacing: $eyebrow-letter-spacing;
