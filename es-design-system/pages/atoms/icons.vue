@@ -376,6 +376,37 @@
             </li>
         </ul>
 
+        <h2>
+            Social Icons
+        </h2>
+        <p>
+            Default size for social icons is 31px wide by 32px tall.
+        </p>
+        <ul
+            class="ds-icon-list m-0 mb-300 p-0"
+            :class="{ [textColorClass]: true }">
+            <li>
+                <icon-facebook />
+                <code>IconFacebook</code>
+            </li>
+            <li>
+                <icon-instagram />
+                <code>IconInstagram</code>
+            </li>
+            <li>
+                <icon-linkedin />
+                <code>IconLinkedin</code>
+            </li>
+            <li>
+                <icon-twitter />
+                <code>IconTwitter</code>
+            </li>
+            <li>
+                <icon-youtube />
+                <code>IconYoutube</code>
+            </li>
+        </ul>
+
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-design-system/atoms/icons.vue" />
