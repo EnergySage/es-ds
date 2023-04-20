@@ -293,32 +293,39 @@ exports[`icons IconArrow renders correctly 26`] = `
 `;
 
 exports[`icons IconArrow renders correctly 27`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 32" fill="currentColor" style="height: 32px; width: 31px;">
+  <path fill="none" d="M0 .4h31v31H0z"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm5.7 8.1h-2a2 2 0 0 0-1.6.5c-.3.4-.4 1-.4 1.4V13h3.9l-.5 4h-3.4v10h-4V17H9.8v-4h3.4v-2.8a5.1 5.1 0 0 1 1.3-3.9A5 5 0 0 1 18.2 5l3 .1v3.5Z"></path>
+</svg>"
+`;
+
+exports[`icons IconArrow renders correctly 28`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M15.6369 8.87295L18.7994 5.19737C19.0191 4.94421 19.0669 4.5879 18.9236 4.27848C18.7803 3.97843 18.4745 3.78153 18.1306 3.78153H5.91083V2.93765C5.91083 2.42194 5.48089 2 4.95541 2C4.42994 2 4 2.42194 4 2.93765V21.0624C4 21.5781 4.42994 22 4.95541 22C5.48089 22 5.91083 21.5781 5.91083 21.0624V13.9644H18.1306C18.4745 13.9644 18.7803 13.7675 18.9236 13.4674C19.0669 13.1674 19.0191 12.8111 18.7994 12.5485L15.6369 8.87295ZM5.91083 12.2391V5.49742H16.2484L13.8217 8.31974C13.5446 8.63854 13.5446 9.10736 13.8217 9.42616L16.2484 12.2485H5.91083V12.2391Z" fill-rule="evenodd"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 28`] = `
+exports[`icons IconArrow renders correctly 29`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M8.763 2a3 3 0 0 1 2.684 1.659l.894 1.788a1.001 1.001 0 0 0 .895.553H20a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h4.763Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M8.763 2a3 3 0 0 1 2.684 1.659l.894 1.788a1.001 1.001 0 0 0 .895.553H20a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h4.763Zm.527 2.15A1 1 0 0 0 8.763 4H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-6.764a3 3 0 0 1-2.684-1.659L9.66 4.553a1 1 0 0 0-.37-.404Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 29`] = `
+exports[`icons IconArrow renders correctly 30`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M2 5c0-.55228.44772-1 1-1h18c.5523 0 1 .44772 1 1s-.4477 1-1 1H3c-.55228 0-1-.44772-1-1Zm0 7c0-.5523.44772-1 1-1h18c.5523 0 1 .4477 1 1s-.4477 1-1 1H3c-.55228 0-1-.4477-1-1Zm0 7c0-.5523.44772-1 1-1h18c.5523 0 1 .4477 1 1s-.4477 1-1 1H3c-.55228 0-1-.4477-1-1Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 30`] = `
+exports[`icons IconArrow renders correctly 31`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M12 4.5c1-1 2.8-2.5 5-2.5 3.3 0 6 2.7 6 6 0 2.8-1.3 8.3-10 13.6-.3.2-.6.3-1 .3-.3 0-.7-.1-1-.3C2.3 16.3 1 10.8 1 8c0-3.3 2.7-6 6-6 2.2 0 4 1.5 5 2.5Z" fill="none"></path>
   <path d="M17 2c-2.2 0-4 1.5-5 2.5C11 3.5 9.2 2 7 2 3.7 2 1 4.7 1 8c0 2.8 1.3 8.3 10 13.6.3.2.7.3 1 .3.4 0 .7-.1 1-.3C21.7 16.3 23 10.8 23 8c0-3.3-2.7-6-6-6Zm-5 17.9C4.2 15.1 3 10.4 3 8c0-2.2 1.8-4 4-4s4.2 2.6 4.2 2.6c.2.3.5.4.8.4.3 0 .6-.1.8-.4 0 0 2-2.6 4.2-2.6s4 1.8 4 4c0 2.4-1.2 7.1-9 11.9Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 31`] = `
+exports[`icons IconArrow renders correctly 32`] = `
 "<svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 32px; width: 32px;">
   <path d="M28.285 4H3.715C1.668 4 0 5.632 0 7.636v15.728C0 25.368 1.668 27 3.715 27h24.57C30.332 27 32 25.368 32 23.364V7.636C32 5.632 30.332 4 28.285 4Zm2.62 19.364c0 1.412-1.178 2.565-2.62 2.565H3.715c-1.442 0-2.62-1.153-2.62-2.565V7.636c0-1.412 1.178-2.565 2.62-2.565h24.57c1.442 0 2.62 1.153 2.62 2.565v15.728Z"></path>
   <path d="M11.557 7.314h-.218c-4.72 0-8.48 3.498-8.596 8.047-.058 2.099.798 4.21 2.35 5.804 1.52 1.556 3.58 2.476 5.66 2.52h.212c4.778 0 8.441-3.446 8.55-8.09.052-2.074-.785-4.16-2.291-5.728-1.507-1.576-3.574-2.502-5.66-2.553h-.007Zm-.785 15.3c-1.79-.038-3.573-.838-4.893-2.193-1.346-1.386-2.093-3.22-2.048-5.034.11-4.027 3.316-7.008 7.495-7.008h.206c1.796.044 3.58.851 4.887 2.212 1.313 1.368 2.04 3.182 1.996 4.972-.103 4.102-3.393 7.127-7.643 7.039v.012Z"></path>
@@ -326,7 +333,7 @@ exports[`icons IconArrow renders correctly 31`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 32`] = `
+exports[`icons IconArrow renders correctly 33`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M2.464 2.464A5 5 0 0 1 6 1h12a5 5 0 0 1 5 5v12a5 5 0 0 1-5 5H6a5 5 0 0 1-5-5V6a5 5 0 0 1 1.464-3.536Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H6Zm-3.536-.536A5 5 0 0 1 6 1h12a5 5 0 0 1 5 5v12a5 5 0 0 1-5 5H6a5 5 0 0 1-5-5V6a5 5 0 0 1 1.464-3.536Z"></path>
@@ -334,7 +341,7 @@ exports[`icons IconArrow renders correctly 32`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 33`] = `
+exports[`icons IconArrow renders correctly 34`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Z"></path>
@@ -342,19 +349,35 @@ exports[`icons IconArrow renders correctly 33`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 34`] = `
+exports[`icons IconArrow renders correctly 35`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 32" fill="currentColor" style="height: 32px; width: 31px;">
+  <path fill="none" d="M0 .4h31v31H0z"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm9.65 19.47c-.04.82-.2 1.63-.51 2.4a4.96 4.96 0 0 1-2.82 2.83c-.76.28-1.55.43-2.36.45-1.03.05-1.36.05-3.98.05-2.63 0-2.92-.05-4-.05a7.44 7.44 0 0 1-2.4-.55 4.51 4.51 0 0 1-2.77-2.78 7.56 7.56 0 0 1-.46-2.35c-.05-1.04-.05-1.36-.05-3.99s0-2.96.05-3.99c.03-.82.2-1.63.5-2.4a4.51 4.51 0 0 1 2.78-2.78 7.44 7.44 0 0 1 2.36-.45c1.03-.05 1.36-.05 3.99-.05 2.62 0 2.95 0 3.98.05.85.02 1.69.19 2.48.5a4.76 4.76 0 0 1 2.75 2.8c.28.75.43 1.55.46 2.35 0 1.03.05 1.37.05 3.99s-.05 2.89-.05 3.97Z"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M22.98 10.16a2.93 2.93 0 0 0-.73-1.07c-.3-.32-.66-.57-1.07-.74a5.58 5.58 0 0 0-1.8-.4H15.5c-2.58 0-2.89 0-3.92.08a5.5 5.5 0 0 0-1.8.34c-.41.15-.79.4-1.1.72-.32.3-.57.66-.73 1.07-.2.58-.32 1.2-.32 1.8v7.84c0 .61.12 1.22.33 1.8.16.4.4.77.72 1.07.3.32.67.57 1.07.73.58.2 1.2.32 1.81.32 1.02.06 1.33.06 3.9.06 2.59 0 2.85-.06 3.92-.06a5.58 5.58 0 0 0 1.8-.33c.8-.35 1.45-1 1.8-1.8.21-.58.32-1.2.33-1.81.05-1.02.05-1.33.05-3.91s-.05-2.9-.05-3.91a5.5 5.5 0 0 0-.33-1.8Zm-7.48 10.7a4.96 4.96 0 1 1 0-9.92 4.96 4.96 0 0 1 0 9.93Zm5.28-8.84a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 1.2 1.14v.03A1.18 1.18 0 0 1 20.75 12l.03.01Z"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 12.65a3.23 3.23 0 1 0-.06 6.46 3.23 3.23 0 0 0 .06-6.46Z"></path>
+</svg>"
+`;
+
+exports[`icons IconArrow renders correctly 36`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M19.6413 8.0574c-.2908-3.57905-3.0869-6.52059-6.6324-6.99034-2.2369-.301982-4.47385.38028-6.14034 1.84545C5.19087 4.37769 4.229 6.49157 4.229 8.71729c0 2.71781 1.45399 5.26791 3.79156 6.65481.50331.302.50331.4138.50331.5816v1.0625c0 .4586.38027.8389.83884.8389.45857 0 .83889-.3803.83889-.8389v-1.0625c0-1.0961-.67112-1.633-1.33101-2.0244-1.83427-1.0849-2.97509-3.0758-2.97509-5.21201 0-1.74479.74937-3.4001 2.05796-4.55211 1.33096-1.16319 3.04224-1.6665 4.80934-1.44281 2.729.35791 4.9548 2.70666 5.1896 5.45806.2014 2.42707-1.0289 4.63037-3.1987 5.74887-.4251.2237-1.4093.727-1.4428 2.0356v1.029c0 .4585.3802.8388.8388.8388s.8388-.3803.8388-.8388v-1.0067c0-.1677 0-.2908.5369-.5704 2.7961-1.4428 4.362-4.2725 4.1047-7.38177l.0112.02237ZM14.4516 18.7499H9.45212c-.45856 0-.83884.3803-.83884.8388 0 .4586.38028.8389.83884.8389h4.99948c.4586 0 .8389-.3803.8389-.8389 0-.4585-.3803-.8388-.8389-.8388ZM14.4516 21.3223H9.45212c-.45856 0-.83884.3802-.83884.8388s.38028.8388.83884.8388h4.99948c.4586 0 .8389-.3802.8389-.8388s-.3803-.8388-.8389-.8388Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 35`] = `
+exports[`icons IconArrow renders correctly 37`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5a1 1 0 1 1 2 0v5a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h5a1 1 0 1 1 0 2H5Zm10.076-1.383A1 1 0 0 1 16 2h5a.997.997 0 0 1 1 1v5a1 1 0 0 1-1.707.707L18.5 6.914l-4.293 4.293a1 1 0 0 1-1.414-1.414L17.086 5.5l-1.793-1.793a1 1 0 0 1-.217-1.09ZM19.914 5.5l.086.086v-.172l-.086.086ZM18.586 4l-.086.086L18.414 4h.172Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 36`] = `
+exports[`icons IconArrow renders correctly 38`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 32" fill="currentColor" style="height: 32px; width: 31px;">
+  <path fill="none" d="M0 .4h31v31H0z"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm-4.74 23.8H7.04V13.02h3.72V24.2ZM8.9 11.47a1.93 1.93 0 1 1 .05-3.86 1.94 1.94 0 1 1 0 3.86H8.9Zm15.28 12.71h-3.72v-5.98c0-1.5-.53-2.53-1.86-2.53a2.03 2.03 0 0 0-1.9 1.36c-.1.3-.14.6-.13.9v6.25h-3.72s.05-10.13 0-11.16h3.72v1.59a3.72 3.72 0 0 1 3.36-1.86c2.39-.02 4.25 1.58 4.25 5v6.43Z"></path>
+</svg>"
+`;
+
+exports[`icons IconArrow renders correctly 39`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M5.636 3.636A9 9 0 0 1 21 10c0 1.017-.108 1.912-.389 2.76-.283.853-.724 1.608-1.33 2.365a.985.985 0 0 1-.025.03l-6.5 7.5a1 1 0 0 1-1.512 0l-6.5-7.5a1.017 1.017 0 0 1-.024-.03c-.607-.757-1.048-1.512-1.331-2.365C3.108 11.912 3 11.017 3 10a9 9 0 0 1 2.636-6.364Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-4 2a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"></path>
@@ -362,7 +385,7 @@ exports[`icons IconArrow renders correctly 36`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 37`] = `
+exports[`icons IconArrow renders correctly 40`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M2 12a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-8Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M5 11a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1H5Zm-3 1a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-8Z"></path>
@@ -370,7 +393,7 @@ exports[`icons IconArrow renders correctly 37`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 38`] = `
+exports[`icons IconArrow renders correctly 41`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M2 12a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-8Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M5 11a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1H5Zm-3 1a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-8Z"></path>
@@ -379,13 +402,13 @@ exports[`icons IconArrow renders correctly 38`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 39`] = `
+exports[`icons IconArrow renders correctly 42`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M3 12a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 40`] = `
+exports[`icons IconArrow renders correctly 43`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M9.133 2.787a5 5 0 0 1 5.735 0l6 4.2A5 5 0 0 1 23 11.083V19a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3v-7.917a5 5 0 0 1 2.132-4.096l6-4.2Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.883a3 3 0 0 0-1.72.542l-6 4.2A3 3 0 0 0 3 11.083V19a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-7.917a3 3 0 0 0-1.28-2.458l-6-4.2A3 3 0 0 0 12 3.883ZM9.133 2.787a5 5 0 0 1 5.735 0l6 4.2A5 5 0 0 1 23 11.083V19a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3v-7.917a5 5 0 0 1 2.132-4.096l6-4.2Z"></path>
@@ -393,7 +416,7 @@ exports[`icons IconArrow renders correctly 40`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 41`] = `
+exports[`icons IconArrow renders correctly 44`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M3.879 1.879A3 3 0 0 1 6 1h7.56a3 3 0 0 1 2.097.855l4.44 4.342A3.003 3.003 0 0 1 21 8.342V20a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V4a3 3 0 0 1 .879-2.121Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M3.879 1.879A3 3 0 0 1 6 1h7.56a3 3 0 0 1 2.097.855l4.44 4.342A3.003 3.003 0 0 1 21 8.342V20a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V4a3 3 0 0 1 .879-2.121ZM6 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.342a1.001 1.001 0 0 0-.301-.715l-4.44-4.342A1 1 0 0 0 13.56 3H6Z"></path>
@@ -401,7 +424,7 @@ exports[`icons IconArrow renders correctly 41`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 42`] = `
+exports[`icons IconArrow renders correctly 45`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M3.626 15.34 15.863 3.104l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M17.268 4.526 5.04 16.756a1 1 0 0 0-.273.51l-.492 2.46 2.458-.493a1 1 0 0 0 .51-.273L19.475 6.73a1.56 1.56 0 0 0-2.206-2.204ZM3.626 15.34 15.863 3.103l.016-.015a3.56 3.56 0 0 1 5.034 5.032l-.016.016L8.658 20.374a3 3 0 0 1-1.533.82l-3.929.787a1 1 0 0 1-1.177-1.177l.786-3.93a3 3 0 0 1 .82-1.533Z"></path>
@@ -409,7 +432,7 @@ exports[`icons IconArrow renders correctly 42`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 43`] = `
+exports[`icons IconArrow renders correctly 46`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M17.982 7.027c0 3.315-2.712 6.028-6.027 6.028s-6.027-2.713-6.027-6.028C5.928 3.712 8.64 1 11.955 1s6.027 2.712 6.027 6.027Z" fill="none"></path>
   <path d="M11.955 13.055c3.315 0 6.027-2.713 6.027-6.028C17.982 3.712 15.27 1 11.955 1S5.928 3.712 5.928 7.027s2.712 6.028 6.027 6.028Zm0-10.046a4.03 4.03 0 0 1 4.018 4.018 4.03 4.03 0 0 1-4.018 4.019 4.03 4.03 0 0 1-4.018-4.019 4.03 4.03 0 0 1 4.018-4.018Z"></path>
@@ -417,54 +440,54 @@ exports[`icons IconArrow renders correctly 43`] = `
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 44`] = `
+exports[`icons IconArrow renders correctly 47`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M17 7c0 2.75-2.25 5-5 5S7 9.75 7 7s2.25-5 5-5 5 2.25 5 5Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM6 7a6 6 0 1 1 12 0A6 6 0 0 1 6 7Zm13 5a1 1 0 0 1 1 1v2h2a1 1 0 1 1 0 2h-2v2a1 1 0 1 1-2 0v-2h-2a1 1 0 1 1 0-2h2v-2a1 1 0 0 1 1-1ZM6.649 15a2 2 0 0 0-1.986 1.752l-.39 3.124A1 1 0 0 0 5.266 21H17a1 1 0 1 1 0 2H5.266a3 3 0 0 1-2.977-3.372l.39-3.124A4 4 0 0 1 6.649 13a1 1 0 1 1 0 2Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 45`] = `
+exports[`icons IconArrow renders correctly 48`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M17 7c0 2.75-2.25 5-5 5S7 9.75 7 7s2.25-5 5-5 5 2.25 5 5Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM6 7a6 6 0 1 1 12 0A6 6 0 0 1 6 7Zm16.684 6.27a1 1 0 0 1 .046 1.414l-3.75 4a1 1 0 0 1-1.394.063l-2.25-2a1 1 0 0 1 1.328-1.494l1.522 1.353 3.084-3.29a1 1 0 0 1 1.414-.046ZM6.649 15a2 2 0 0 0-1.986 1.752l-.39 3.124A1 1 0 0 0 5.266 21H17a1 1 0 1 1 0 2H5.266a3 3 0 0 1-2.977-3.372l.39-3.124A4 4 0 0 1 6.649 13a1 1 0 1 1 0 2Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 46`] = `
+exports[`icons IconArrow renders correctly 49`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M17 7c0 2.75-2.25 5-5 5S7 9.75 7 7s2.25-5 5-5 5 2.25 5 5Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM6 7a6 6 0 1 1 12 0A6 6 0 0 1 6 7Zm.649 8a2 2 0 0 0-1.986 1.752l-.39 3.124A1 1 0 0 0 5.266 21H17a1 1 0 1 1 0 2H5.266a3 3 0 0 1-2.977-3.372l.39-3.124A4 4 0 0 1 6.649 13H7a1 1 0 1 1 0 2h-.351Zm9.644-1.707a1 1 0 0 1 1.414 0l1.793 1.793 1.793-1.793a1 1 0 0 1 1.414 1.414L20.914 16.5l1.793 1.793a1 1 0 0 1-1.414 1.414L19.5 17.914l-1.793 1.793a1 1 0 0 1-1.414-1.414l1.793-1.793-1.793-1.793a1 1 0 0 1 0-1.414Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 47`] = `
+exports[`icons IconArrow renders correctly 50`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M4.906 1.635c.808-.811 2.202-.9 3.021.045l3.359 3.877a.83.83 0 0 1 .024.027c.74.854.588 2.086-.148 2.825l-.001.002-1.073 1.073a13.558 13.558 0 0 0 4.412 4.418l1.074-1.076c.737-.738 1.965-.89 2.818-.159l3.92 3.365c.952.819.865 2.219.053 3.03l-2.807 2.813c-1.102 1.102-2.785 1.461-4.188.78A30.207 30.207 0 0 1 1.345 8.61c-.68-1.404-.322-3.086.779-4.188l2.782-2.787Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M4.905 1.635c.81-.811 2.203-.9 3.022.045l3.359 3.877.024.027c.74.854.588 2.086-.148 2.825l-.001.002-1.073 1.073a13.558 13.558 0 0 0 4.412 4.418l1.074-1.076c.737-.738 1.965-.89 2.818-.159l3.92 3.365c.952.819.865 2.219.053 3.03l-2.807 2.813c-1.102 1.102-2.785 1.461-4.188.78A30.207 30.207 0 0 1 1.345 8.61c-.68-1.404-.322-3.086.778-4.188m0 0 2.782-2.787m9.29 12.573.008-.009-.008.009Zm-4.411-4.42.009-.009a.524.524 0 0 1-.009.01Zm.01-2.903v.002-.002Zm0 .005L6.424 3l-.005-.001a.146.146 0 0 0-.098.048L3.54 5.835c-.555.555-.67 1.334-.394 1.903v.002a28.208 28.208 0 0 0 13.097 13.115c.569.276 1.346.161 1.9-.393l2.809-2.813a.151.151 0 0 0 .049-.107l-3.905-3.352h-.011a.153.153 0 0 0-.094.048l-1.358 1.36a1.461 1.461 0 0 1-1.74.269l-.014-.008-.012-.006a15.557 15.557 0 0 1-5.742-5.76 1.463 1.463 0 0 1 .268-1.74l1.352-1.354a.161.161 0 0 0 .05-.098V6.89Zm7.305 7.3h-.002.002Zm-.01-.005Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 48`] = `
+exports[`icons IconArrowClockwise renders correctly 1`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M6.257 3.033c.09.024.176.06.254.107l14.196 8.153a1.004 1.004 0 0 1 .205 1.117.996.996 0 0 1-.43.467l-13.97 7.982a.993.993 0 0 1-.614.136.995.995 0 0 1-.711-.413.996.996 0 0 1-.187-.6V4.018a.994.994 0 0 1 .498-.883.994.994 0 0 1 .759-.102Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M6.511 3.14a.994.994 0 0 0-1.013-.005.994.994 0 0 0-.498.883v15.964a.994.994 0 0 0 .498.883.994.994 0 0 0 1.013-.005l13.97-7.983a.997.997 0 0 0 .387-1.373c-.045-.08-.1-.15-.16-.211M17.983 12 7 18.277V5.723L17.984 12Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 49`] = `
+exports[`icons IconArrowClockwise renders correctly 2`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 3a1 1 0 0 1 1 1v7h7a1 1 0 1 1 0 2h-7v7a1 1 0 1 1-2 0v-7H4a1 1 0 1 1 0-2h7V4a1 1 0 0 1 1-1Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrow renders correctly 50`] = `
+exports[`icons IconArrowClockwise renders correctly 3`] = `
 "<svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 32px; width: 32px;">
   <path d="M31.958 14.517 27.787 4.364A.577.577 0 0 0 27.249 4l-20.89.112a.596.596 0 0 0-.414.196c-.014.007-.02.02-.035.035-.013.014-.027.02-.034.035v.014c-.028.035-.07.063-.09.105L.078 14.51a.609.609 0 0 0 0 .595.583.583 0 0 0 .51.293h2.868v11.007a.59.59 0 0 0 .586.595h23.165a.59.59 0 0 0 .587-.595V15.364l3.626-.021c.193 0 .38-.098.483-.266a.62.62 0 0 0 .055-.56Zm-3.461-5.332h-5.212l-1.628-3.967 5.192-.028 1.64 3.995h.008Zm-10.294 5.038-1.51-3.849h5.813l1.564 3.814-5.867.035Zm-1.261 0-6.02.035-1.599-3.883h6.102l1.51 3.855.007-.007Zm-.718-5.045L14.68 5.253l5.709-.028 1.62 3.96h-5.791l.006-.007Zm-2.799-3.912 1.538 3.919H8.84l-1.6-3.884 6.184-.035ZM26.622 25.81H4.628V14.805a.59.59 0 0 0-.586-.595h-2.44l4.667-8.187 3.723 9.069c.09.224.303.364.538.364l7.26-.043 8.81-.048v10.44l.021.007Zm-1.29-11.622-1.558-3.806h5.212l1.552 3.778-5.206.028Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 1`] = `
+exports[`icons IconArrowClockwise renders correctly 4`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <circle cx="9" cy="5" r="2" fill="none"></circle>
   <circle cx="17" cy="12" r="2" fill="none"></circle>
@@ -474,7 +497,7 @@ exports[`icons IconArrowClockwise renders correctly 1`] = `
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 2`] = `
+exports[`icons IconArrowClockwise renders correctly 5`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M5 2a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1Zm7 0a1 1 0 0 1 1 1v12a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm7 0a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1ZM5 8a1 1 0 0 1 1 1v12a1 1 0 1 1-2 0V9a1 1 0 0 1 1-1Zm14 2a1 1 0 0 1 1 1v10a1 1 0 1 1-2 0V11a1 1 0 0 1 1-1Zm-7 8a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1Z"></path>
   <circle cx="5" cy="7" r="3" fill="none"></circle>
@@ -484,21 +507,21 @@ exports[`icons IconArrowClockwise renders correctly 2`] = `
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 3`] = `
+exports[`icons IconArrowClockwise renders correctly 6`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M11.56 1.102a1 1 0 0 1 .88 0l7.81 3.818a1.837 1.837 0 0 1 .994 1.287 14.395 14.395 0 0 1-5.854 14.641l-1.67 1.168a3 3 0 0 1-3.44 0L8.61 20.85A14.394 14.394 0 0 1 2.757 6.207v-.001A1.837 1.837 0 0 1 3.75 4.92h.001l7.809-3.818Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M11.56 1.102a1 1 0 0 1 .88 0l7.81 3.818a1.837 1.837 0 0 1 .994 1.287 14.395 14.395 0 0 1-5.854 14.641l-1.67 1.168a3 3 0 0 1-3.44 0L8.61 20.85A14.394 14.394 0 0 1 2.757 6.207v-.001A1.837 1.837 0 0 1 3.75 4.92h.001l7.809-3.818Zm1.014 19.276 1.67-1.168a12.395 12.395 0 0 0 5.055-12.528L12 3.113l-7.3 3.57a12.393 12.393 0 0 0 5.057 12.526l1.67 1.169a1 1 0 0 0 1.147 0Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 4`] = `
+exports[`icons IconArrowClockwise renders correctly 7`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M19.934 7.8c.599.5.898 1.2.998 2l.898 9.9c0 .4-.1.8-.2 1.2-.1.4-.299.8-.598 1.1-.3.3-.6.5-.998.7-.4.2-.799.3-1.198.3H5.164c-.4 0-.798 0-1.198-.2-.399-.2-.698-.4-.998-.7-.2-.3-.499-.7-.598-1.1-.2-.4-.2-.8-.2-1.2l.699-10c.1-.8.399-1.5.998-2 .598-.5 1.297-.8 2.095-.8h.998V6c0-1.3.5-2.6 1.497-3.5.898-1 2.196-1.5 3.493-1.5 1.297 0 2.595.6 3.493 1.5.998.9 1.497 2.2 1.497 3.5v1h.998c.699 0 1.397.3 1.996.8Z" fill="none"></path>
   <path d="M20.932 9.8c-.1-.8-.4-1.5-.998-2-.599-.5-1.297-.8-1.996-.8h-.998V6c0-1.3-.499-2.6-1.497-3.5-.898-.9-2.195-1.5-3.493-1.5-1.297 0-2.595.5-3.493 1.5C7.46 3.4 6.96 4.7 6.96 6v1h-.998c-.798 0-1.497.3-2.095.8-.6.5-.899 1.2-.998 2l-.699 10c0 .4 0 .8.2 1.2.1.4.399.8.598 1.1.3.3.6.5.998.7.4.2.799.2 1.198.2h13.672c.4 0 .799-.1 1.198-.3.399-.2.698-.4.998-.7.299-.3.499-.7.598-1.1.1-.4.2-.8.2-1.2l-.898-9.9ZM8.956 6c0-.8.3-1.6.898-2.1 1.098-1.1 3.094-1.1 4.192 0 .599.6.898 1.3.898 2.1v1H8.956V6Zm10.778 14.4c0 .1-.1.3-.2.4-.1.1-.199.2-.299.2H5.164c-.1 0-.3 0-.4-.1-.1-.1-.199-.1-.299-.2-.1-.1-.2-.2-.2-.3-.1-.2-.1-.3-.1-.4l.8-10c0-.3.1-.5.299-.7.2-.2.399-.3.698-.3h.998v2c0 .6.4 1 .998 1 .599 0 .998-.4.998-1V9h5.988v2c0 .6.4 1 .998 1 .599 0 .998-.4.998-1V9h.998c.3 0 .499.1.699.3.2.2.299.4.299.7l.798 10v.4Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 5`] = `
+exports[`icons IconArrowClockwise renders correctly 8`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M15 12a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-6a1 1 0 0 1-1-1Z"></path>
   <path d="M9.572 3.614C10.886 2.245 13 3.304 13 5.043v13.914c0 1.753-2.141 2.804-3.446 1.41a1.15 1.15 0 0 1-.018-.02L6.566 17H3c-1.142 0-2-.952-2-2.041V9.04C1 7.951 1.86 7 3 7h3.573l2.971-3.356a.988.988 0 0 1 .028-.03Z" fill="none"></path>
@@ -506,40 +529,40 @@ exports[`icons IconArrowClockwise renders correctly 5`] = `
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 6`] = `
+exports[`icons IconArrowClockwise renders correctly 9`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M9.572 3.614C10.886 2.245 13 3.304 13 5.043v13.914c0 1.753-2.141 2.804-3.446 1.41a1.15 1.15 0 0 1-.018-.02L6.566 17H3c-1.142 0-2-.952-2-2.041V9.04C1 7.951 1.86 7 3 7h3.573l2.971-3.356a.988.988 0 0 1 .028-.03Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M15.293 8.293a1 1 0 0 1 1.414 0L19 10.586l2.293-2.293a1 1 0 1 1 1.414 1.414L20.414 12l2.293 2.293a1 1 0 0 1-1.414 1.414L19 13.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L17.586 12l-2.293-2.293a1 1 0 0 1 0-1.414ZM10.998 5.02l.002.023v13.914c0 .01 0 .019-.002.024l-2.956-3.33-.014-.017A1.98 1.98 0 0 0 6.58 15H3.012A.064.064 0 0 1 3 14.959V9.04c0-.02.007-.033.012-.04H6.59a1.98 1.98 0 0 0 1.452-.642l2.956-3.339ZM9.572 3.613C10.886 2.245 13 3.304 13 5.043v13.914c0 1.753-2.141 2.804-3.446 1.41l-.018-.02L6.566 17H3c-1.142 0-2-.952-2-2.041V9.04C1 7.951 1.86 7 3 7h3.573l2.971-3.356.028-.03Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 7`] = `
+exports[`icons IconArrowClockwise renders correctly 10`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M9.572 3.614C10.886 2.245 13 3.304 13 5.043v13.914c0 1.753-2.141 2.804-3.446 1.41a1.15 1.15 0 0 1-.018-.02L6.566 17H3c-1.142 0-2-.952-2-2.041V9.04C1 7.951 1.86 7 3 7h3.573l2.971-3.356a.988.988 0 0 1 .028-.03Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="m10.998 5.02.002.023v13.914c0 .01 0 .019-.002.024l-2.956-3.33-.014-.017A1.98 1.98 0 0 0 6.58 15H3.012A.064.064 0 0 1 3 14.959V9.04c0-.02.007-.033.012-.04H6.59a1.98 1.98 0 0 0 1.452-.642l2.956-3.339ZM9.572 3.613C10.886 2.245 13 3.304 13 5.043v13.914c0 1.753-2.141 2.804-3.446 1.41l-.018-.02L6.566 17H3c-1.142 0-2-.952-2-2.041V9.04C1 7.951 1.86 7 3 7h3.573l2.971-3.356.028-.03Zm8.705.695a1 1 0 0 1 1.414-.032c4.396 4.198 4.43 11.269-.005 15.45a1 1 0 1 1-1.372-1.455c3.59-3.384 3.575-9.13-.005-12.549a1 1 0 0 1-.032-1.414ZM15.4 7.7a1 1 0 0 1 1.4.201c.836 1.115 1.2 2.655 1.2 4.1 0 1.445-.364 2.985-1.2 4.1a1 1 0 0 1-1.6-1.2c.497-.663.8-1.734.8-2.9s-.303-2.237-.8-2.9a1 1 0 0 1 .2-1.4Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 8`] = `
+exports[`icons IconArrowClockwise renders correctly 11`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M9.572 3.614C10.886 2.245 13 3.304 13 5.043v13.914c0 1.753-2.141 2.804-3.446 1.41a1.15 1.15 0 0 1-.018-.02L6.566 17H3c-1.142 0-2-.952-2-2.041V9.04C1 7.951 1.86 7 3 7h3.573l2.971-3.356a.988.988 0 0 1 .028-.03Z" fill="none"></path>
   <path fill-rule="evenodd" clip-rule="evenodd" d="M19 8a1 1 0 0 1 1 1v2h2a1 1 0 1 1 0 2h-2v2a1 1 0 1 1-2 0v-2h-2a1 1 0 1 1 0-2h2V9a1 1 0 0 1 1-1Zm-8.002-2.98.002.023v13.914c0 .01 0 .019-.002.024l-2.956-3.33-.014-.017A1.98 1.98 0 0 0 6.58 15H3.012A.064.064 0 0 1 3 14.959V9.04c0-.02.007-.033.012-.04H6.59a1.98 1.98 0 0 0 1.452-.642l2.956-3.339ZM9.572 3.613C10.886 2.245 13 3.304 13 5.043v13.914c0 1.753-2.141 2.804-3.446 1.41l-.018-.02L6.566 17H3c-1.142 0-2-.952-2-2.041V9.04C1 7.951 1.86 7 3 7h3.573l2.971-3.356.028-.03Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 9`] = `
+exports[`icons IconArrowClockwise renders correctly 12`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" style="height: 20px; width: 20px;">
   <path d="m10 1.302 2.066 4.967a1 1 0 0 0 .843.613l5.363.43-4.086 3.5a1 1 0 0 0-.322.992l1.249 5.233-4.592-2.804a1 1 0 0 0-1.042 0l-4.592 2.804 1.249-5.233a1 1 0 0 0-.322-.992l-4.086-3.5 5.362-.43a1 1 0 0 0 .844-.613L10 1.302Z" stroke="currentColor"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 10`] = `
+exports[`icons IconArrowClockwise renders correctly 13`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="height: 20px; width: 20px;">
   <path d="M9.538 1.11a.5.5 0 0 1 .924 0l2.066 4.967a.5.5 0 0 0 .421.307l5.363.43a.5.5 0 0 1 .286.878l-4.086 3.5a.5.5 0 0 0-.161.496l1.248 5.233a.5.5 0 0 1-.747.543l-4.591-2.805a.5.5 0 0 0-.522 0l-4.59 2.804a.5.5 0 0 1-.748-.542l1.248-5.233a.5.5 0 0 0-.16-.496l-4.087-3.5a.5.5 0 0 1 .286-.878l5.363-.43a.5.5 0 0 0 .421-.307L9.538 1.11Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 11`] = `
+exports[`icons IconArrowClockwise renders correctly 14`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="height: 20px; width: 20px;">
   <mask id="halfFull" maskUnits="userSpaceOnUse" x="0" y="0" width="20px" height="20px" style="mask-type: alpha;">
     <path d="m10 0 2.645 6.36 6.866.55-5.231 4.48 1.598 6.7L10 14.5l-5.878 3.59 1.598-6.7L.49 6.91l6.865-.55L10 0Z" fill="currentColor"></path>
@@ -551,14 +574,14 @@ exports[`icons IconArrowClockwise renders correctly 11`] = `
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 12`] = `
+exports[`icons IconArrowClockwise renders correctly 15`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M21.746 9.487c.601.4 1.002 1.1 1.203 1.802.2 1-.2 1.901-1.003 3.703l-.3.8c-.201.301-.201.702-.201 1.002.2 1.601-.401 3.303-1.605 4.504C18.838 22.4 17.434 23 15.93 23h-.301L5.2 22.5c-1.203-.1-2.005-.1-2.808-.801-.702-.701-.902-1.402-1.103-2.403-.4-2.202-.4-4.404.1-6.506.402-1.702 2.006-2.703 3.811-2.502 1.203.2 2.507-.2 3.51-1.001 1.103-.901 1.805-2.102 1.905-3.504l.2-2.402c.1-.801.502-1.502 1.104-1.902.601-.4 1.303-.6 2.005-.4 1.705.5 3.008 2.102 3.008 4.003v3.804h1.103c1.906 0 2.908 0 3.71.6Z" fill="none"></path>
   <path d="M22.949 11.289c-.2-.701-.602-1.402-1.203-1.802-.803-.6-1.805-.6-3.71-.6h-1.104V5.081c0-1.901-1.303-3.503-3.008-4.003-.702-.2-1.404 0-2.005.4-.602.4-1.003 1.101-1.104 1.902l-.2 2.402c-.1 1.402-.802 2.603-1.905 3.504-1.003.8-2.307 1.2-3.51 1-1.805-.2-3.41.801-3.81 2.503-.502 2.102-.502 4.304-.1 6.506.2 1.001.4 1.702 1.102 2.403.803.7 1.605.7 2.808.8L15.63 23h.3c1.505 0 2.909-.6 3.911-1.702 1.204-1.2 1.805-2.902 1.605-4.504 0-.3 0-.7.2-1.001l.301-.8c.802-1.803 1.203-2.704 1.003-3.704ZM3.696 20.096c-.2-.2-.3-.4-.501-1.301-.402-1.902-.402-3.804.1-5.606.2-.7.802-1 1.404-1H5.7a16.26 16.26 0 0 0 0 8.208h-.4c-1.104 0-1.404-.1-1.605-.3Zm16.445-5.906-.3.801a6.26 6.26 0 0 0-.302 1.902c.1 1.101-.3 2.202-1.103 3.003-.701.7-1.704 1.101-2.707 1.101l-7.922-.5c-.902-2.703-.902-5.606-.1-8.309l.1-.4c.702-.2 1.404-.6 2.006-1.101 1.504-1.201 2.406-2.903 2.607-4.905l.2-2.402c0-.2.201-.4.201-.4.1 0 .2-.1.401-.1.903.2 1.605 1.1 1.605 2.101v3.003c0 .801 0 1.302.3 1.802.2.3.401.5.702.7.502.301 1.003.301 1.805.301h.401c1.204 0 2.206 0 2.507.2.2.1.301.4.401.6.1.501-.3 1.402-.802 2.603Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 13`] = `
+exports[`icons IconArrowClockwise renders correctly 16`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M18.62 5.081h3.384c.598 0 .996.399.996.996s-.398.995-.995.995H20.91l-1.494 13.24c-.1.697-.398 1.394-.995 1.892-.598.497-1.294.796-2.09.796H7.57c-.698 0-1.395-.299-1.992-.796-.597-.498-.896-1.195-.995-1.892L3.09 7.072H1.994c-.597 0-.995-.398-.995-.995s.398-.996.995-.996H5.38l1.095-2.29c.2-.497.597-.995 1.095-1.293C8.068 1.199 8.566 1 9.163 1h5.674c.597 0 1.095.2 1.593.498s.896.697 1.095 1.294l1.095 2.29Z" fill="none"></path>
   <path d="M22.005 5.081H18.62l-1.095-2.29c-.2-.596-.597-.995-1.095-1.293-.498-.299-.996-.498-1.593-.498H9.163c-.597 0-1.095.2-1.593.498a2.752 2.752 0 0 0-1.095 1.294L5.38 5.082H1.995c-.597 0-.995.398-.995.995s.398.995.995.995H3.09l1.494 13.24c.1.697.398 1.394.995 1.892.597.497 1.294.796 1.991.796h8.76c.797 0 1.494-.299 2.09-.796.598-.498.897-1.195.996-1.892l1.494-13.24h1.095c.597 0 .995-.398.995-.995s-.398-.996-.995-.996ZM8.267 3.588c0-.1.2-.298.398-.298.1-.1.299-.2.498-.2h5.575c.199 0 .298.1.497.2.2.1.299.199.399.398l.696 1.393H7.57l.697-1.493Zm9.158 16.525c0 .2-.1.398-.298.597-.2.2-.498.3-.697.3H7.57c-.299 0-.498-.1-.697-.3-.199-.1-.298-.398-.298-.597L5.08 7.073h13.84l-1.494 13.04Z"></path>
@@ -566,20 +589,35 @@ exports[`icons IconArrowClockwise renders correctly 13`] = `
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 14`] = `
+exports[`icons IconArrowClockwise renders correctly 17`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 32" fill="currentColor" style="height: 32px; width: 31px;">
+  <path fill="none" d="M0 .4h31v31H0z"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm8.6 11v.7A12.6 12.6 0 0 1 4.7 22.7h1c2 0 4-.6 5.5-1.8a4.5 4.5 0 0 1-4.1-3.1 4.2 4.2 0 0 0 2-.1 4.5 4.5 0 0 1-3.6-4.3v-.1c.6.3 1.3.5 2 .6a4.5 4.5 0 0 1-1.3-6 12.6 12.6 0 0 0 9.2 4.7l-.2-1A4.5 4.5 0 0 1 23 8.5c1-.2 2-.6 2.9-1-.4 1-1 1.8-2 2.4.9-.1 1.8-.3 2.6-.7-.6.9-1.4 1.7-2.3 2.3Z"></path>
+</svg>"
+`;
+
+exports[`icons IconArrowClockwise renders correctly 18`] = `
 "<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="height: 24px; width: 24px;">
   <path d="M21.231 11.156v.85a9.231 9.231 0 1 1-5.474-8.438m5.474 1.053-9.23 9.24-2.77-2.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 15`] = `
+exports[`icons IconArrowClockwise renders correctly 19`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6c-3.161 0-6.406 1.5-9.257 4.669A1 1 0 1 1 1.257 9.33C4.406 5.831 8.16 4 12 4c3.839 0 7.594 1.832 10.743 5.331a1 1 0 1 1-1.486 1.338C18.406 7.5 15.16 5.999 12 5.999Zm0 6c-1.761 0-3.606.835-5.257 2.669a1 1 0 1 1-1.486-1.338C7.206 11.165 9.56 10 12 10s4.794 1.165 6.743 3.331a1 1 0 1 1-1.486 1.338C15.606 12.835 13.76 12 12 12Zm-2 6a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z"></path>
 </svg>"
 `;
 
-exports[`icons IconArrowClockwise renders correctly 16`] = `
+exports[`icons IconArrowClockwise renders correctly 20`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z"></path>
+</svg>"
+`;
+
+exports[`icons IconArrowClockwise renders correctly 21`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 32" fill="currentColor" style="height: 32px; width: 31px;">
+  <path fill="none" d="M0 .4h31v31H0z"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="m13.4 19 5.5-3-5.5-3.3v6.4Z"></path>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31ZM26.1 15V16.9a18 18 0 0 1-.4 4c0 .5-.3.9-.6 1.2-.4.4-.9.6-1.4.7-1 .3-2.7.5-6.3.5h-1.6c-8.6 0-8.7-.3-9.6-1l-.2-.2-.7-1a17.5 17.5 0 0 1-.4-4.3V14.9c0-1.4.1-2.7.4-4 .1-.5.3-.9.7-1.2.3-.4.8-.6 1.3-.7 1-.3 2.8-.5 6.3-.5h1.6c8.6 0 8.7.3 9.6 1l.2.2c.3.3.6.7.7 1.1A17.5 17.5 0 0 1 26 15Z"></path>
 </svg>"
 `;
