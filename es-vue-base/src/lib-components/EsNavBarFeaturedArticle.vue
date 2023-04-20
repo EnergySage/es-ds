@@ -4,6 +4,7 @@
             <a
                 class="d-block cta-link"
                 :href="link"
+                :target="newTab ? '_blank' : null"
                 :title="name">
                 <nav-energy-tips
                     width="253px"
@@ -37,6 +38,10 @@ export default {
         link: {
             type: String,
             required: true,
+        },
+        newTab: {
+            type: Boolean,
+            default: false,
         },
         name: {
             type: String,

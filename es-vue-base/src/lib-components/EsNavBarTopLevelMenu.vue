@@ -116,6 +116,7 @@
                             class="col-lg-3"
                             :eyebrow="featuredArticle.linkName"
                             :link="featuredArticle.linkUrl"
+                            :new-tab="featuredArticle.newTab"
                             :name="featuredArticle.lede" />
                     </b-row>
                 </b-container>
