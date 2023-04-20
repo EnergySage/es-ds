@@ -32,7 +32,7 @@
                                 class="mt-25 mb-50">
                                 <a
                                     :href="link.url"
-                                    :target="link.newtab ? '__blank' : null"
+                                    :target="link.newTab ? '_blank' : null"
                                     class="text-reset">
                                     {{ link.text }}
                                 </a>
@@ -114,8 +114,8 @@ export default {
                     title: 'Our topics',
                     links: [
                         { text: 'Home solar', url: 'https://www.energysage.com/market-intro/' },
-                        { text: 'Community solar', url: 'https://communitysolar.energysage.com', newtab: true },
-                        { text: 'Heating & cooling', url: 'https://heatpumps.energysage.com', newtab: true },
+                        { text: 'Community solar', url: 'https://communitysolar.energysage.com', newTab: true },
+                        { text: 'Heating & cooling', url: 'https://heatpumps.energysage.com', newTab: true },
                         { text: 'Backup power', url: 'https://www.energysage.com/energy-storage/' },
                         { text: 'EV charging', url: 'https://www.energysage.com/ev-charging/' },
                         { text: 'For your business', url: 'https://www.energysage.com/businesses/' },
@@ -127,8 +127,8 @@ export default {
                     links: [
                         { text: 'Solar calculator', url: 'https://www.energysage.com/solar/calculator/' },
                         { text: 'Solar rebates', url: 'https://www.energysage.com/market/equipment-rebates/' },
-                        { text: 'News', url: 'https://news.energysage.com', newtab: true },
-                        { text: 'Help center', url: 'https://help.energysage.com', newtab: true },
+                        { text: 'News', url: 'https://news.energysage.com', newTab: true },
+                        { text: 'Help center', url: 'https://help.energysage.com', newTab: true },
                         { text: 'Home solar guide', url: 'https://www.energysage.com/market-intro/' },
                     ],
                 },

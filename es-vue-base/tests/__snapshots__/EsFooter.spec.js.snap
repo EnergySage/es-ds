@@ -26,10 +26,10 @@ exports[`EsFooter <EsFooter /> 1`] = `
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/market-intro/" class="text-reset">
                 Home solar
               </a></li>
-            <li class="mt-25 mb-50"><a href="https://communitysolar.energysage.com" target="__blank" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://communitysolar.energysage.com" target="_blank" class="text-reset">
                 Community solar
               </a></li>
-            <li class="mt-25 mb-50"><a href="https://heatpumps.energysage.com" target="__blank" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://heatpumps.energysage.com" target="_blank" class="text-reset">
                 Heating &amp; cooling
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/energy-storage/" class="text-reset">
@@ -55,10 +55,10 @@ exports[`EsFooter <EsFooter /> 1`] = `
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/market/equipment-rebates/" class="text-reset">
                 Solar rebates
               </a></li>
-            <li class="mt-25 mb-50"><a href="https://news.energysage.com" target="__blank" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://news.energysage.com" target="_blank" class="text-reset">
                 News
               </a></li>
-            <li class="mt-25 mb-50"><a href="https://help.energysage.com" target="__blank" class="text-reset">
+            <li class="mt-25 mb-50"><a href="https://help.energysage.com" target="_blank" class="text-reset">
                 Help center
               </a></li>
             <li class="mt-25 mb-50"><a href="https://www.energysage.com/market-intro/" class="text-reset">
