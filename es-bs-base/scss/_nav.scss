@@ -214,7 +214,8 @@ $mobile-max-width: $desktop-min-width - 1;
   }
 
   .featured-article-image {
-    /* override local style attribute on image */
+    // override local style attribute on image
+    // stylelint-disable-next-line declaration-no-important
     height: auto !important;
   }
 
@@ -276,10 +277,11 @@ $mobile-max-width: $desktop-min-width - 1;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
       transform: translateX(-50%);
     }
+    // stylelint-disable-next-line selector-class-pattern
     .product-menu-flyout--large {
       left: 0;
-      transform: none;
       width: 775px; // approx width of ten columns at 992px breakpoint / 960px max width
+      transform: none;
     }
 
     // ensure the last flyout on small desktop doesn't go off the screen
@@ -397,6 +399,7 @@ $mobile-max-width: $desktop-min-width - 1;
     .product-menu-flyout {
       width: 370px;  // approx width of four columns at 1200px breakpoint / 1140px max width
     }
+    // stylelint-disable-next-line selector-class-pattern
     .product-menu-flyout--large {
       width: 832px; // approx width of nine columns at 1200px breakpoint / 1140px max width
     }
@@ -413,6 +416,7 @@ $mobile-max-width: $desktop-min-width - 1;
       transform: translateX(-50%);
     }
     // allow the large flyout to be slightly more centered on its trigger link
+    // stylelint-disable-next-line selector-class-pattern
     .product-menu-flyout--large {
       transform: translateX(-25%);
     }
@@ -432,8 +436,8 @@ $mobile-max-width: $desktop-min-width - 1;
     // Make primary menu scrollable
     // Add padding to account for iOS menus
     .navbar-nav {
-      overflow-y: scroll;
       padding-bottom: 120px;
+      overflow-y: scroll;
     }
 
     // Allow the dropdowns to overlap each other
@@ -445,9 +449,10 @@ $mobile-max-width: $desktop-min-width - 1;
     // Prevent horizontal scrolling on menu
     .dropdown-menu {
       // stylelint-disable-next-line declaration-no-important
-      display: flex !important;
-      // stylelint-disable-next-line declaration-no-important
       position: static !important;
+      // stylelint-disable-next-line declaration-no-important
+      display: flex !important;
+      // stylelint-disable-next-line function-disallowed-list
       max-height: calc(100% - 64px);
       padding: 0;
       overflow-y: scroll;
@@ -547,6 +552,7 @@ $mobile-max-width: $desktop-min-width - 1;
       z-index: 2;
 
       ul {
+        // stylelint-disable-next-line function-disallowed-list
         max-height: calc(100% - 64px);
         overflow-y: scroll;
 
