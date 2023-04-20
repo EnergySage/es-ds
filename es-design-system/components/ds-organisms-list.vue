@@ -15,6 +15,11 @@
                 EsForm
             </b-link>
         </li>
+        <li>
+            <b-link to="/organisms/es-footer">
+                EsFooter
+            </b-link>
+        </li>
     </ul>
 </template>
 
