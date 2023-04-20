@@ -261,6 +261,7 @@ export default {
                     name: 'Rooftop solar',
                     subHeading: 'Install solar on your property',
                     link: 'https://www.energysage.com/market-intro/',
+                    showItemsOnMobile: false,
                     subtopics: [
                         {
                             name: 'Home solar guide',
@@ -308,6 +309,7 @@ export default {
                     name: 'Community solar',
                     subHeading: 'Go solar with no equipment',
                     link: 'https://communitysolar.energysage.com/',
+                    showItemsOnMobile: false,
                     subtopics: [
                         {
                             name: 'Community solar guide',

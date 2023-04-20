@@ -172,7 +172,7 @@ $mobile-max-width: $desktop-min-width - 1;
         // stylelint-disable-next-line selector-max-class
         &:hover {
           font-weight: $font-weight-semibold;
-          color: $black;
+          color: $gray-900;
           text-decoration: underline;
         }
       }

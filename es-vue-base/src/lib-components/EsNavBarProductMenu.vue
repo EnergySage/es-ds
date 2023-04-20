@@ -18,7 +18,7 @@
             class="dropdown-label nav-link d-flex d-lg-none align-items-center
                                     justify-content-between w-100 h-100 px-0 font-weight-bold">
             {{ name }}
-            <IconChevronRight
+            <icon-chevron-right
                 class="expand-icon"
                 style="height: 18px;" />
         </label>
@@ -70,7 +70,11 @@
             </ul>
             <div
                 v-if="topics && topics.length"
-                class="product-menu-flyout product-menu-flyout--large dropdown-menu border-0 mt-0 p-lg-100">
+                class="product-menu-flyout product-menu-flyout--large dropdown-menu row border-0 mt-0 p-lg-100">
+                <p
+                    class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold mb-0 w-100">
+                    {{ name }}
+                </p>
                 <b-row>
                     <es-nav-bar-topic-menu
                         v-for="topic in topics"
@@ -79,6 +83,7 @@
                         :items="topic.subtopics"
                         :link="topic.link"
                         :name="topic.name"
+                        :show-items-on-mobile="topic.showItemsOnMobile"
                         :sub-heading="topic.subHeading" />
                     <es-nav-bar-featured-article
                         class="col-lg-4 m-100 m-lg-0"

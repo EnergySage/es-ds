@@ -1,29 +1,52 @@
 <template>
-    <li class="nav-item topic-group border-0 mb-lg-200">
+    <li
+        class="topic-group border-0 mb-lg-200"
+        :class="{ 'nav-item': showItemsOnMobile }">
+        <!-- desktop header, if it's a link -->
         <a
             v-if="link"
-            class="dropdown-item dropdown-toggle nav-link topic-menu-header eyebrow align-items-center d-none d-lg-flex font-size-50 font-weight-bolder mb-lg-50 position-relative px-lg-0 py-lg-100 text-gray"
+            class="dropdown-item dropdown-toggle nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-100 text-gray"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
             :href="link">
-            {{ name }}
-            <icon-arrow-right
-                class="d-none d-lg-inline-block ml-25"
-                height="14px"
-                width="14px" />
+            <span class="align-items-center eyebrow d-flex font-size-50 font-weight-bolder text-gray">
+                {{ name }}
+                <icon-arrow-right
+                    class="d-none d-lg-inline-block ml-25"
+                    height="14px"
+                    width="14px" />
+            </span>
+            <span
+                v-if="subHeading"
+                class="d-block font-italic">
+                {{ subHeading }}
+            </span>
         </a>
+        <!-- desktop header, if it's not a link -->
         <p
             v-else
             class="dropdown-toggle topic-menu-header eyebrow align-items-center d-none d-lg-block font-size-50 font-weight-bolder mb-lg-50 position-relative px-lg-0 py-lg-100 text-gray">
-            {{ name }}
+            <span class="d-block">
+                {{ name }}
+            </span>
+            <span
+                v-if="subHeading"
+                class="d-block font-italic">
+                {{ subHeading }}
+            </span>
         </p>
+        <!-- mobile nav item, tapping which drills down to submenu -->
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="checkboxId"
-            class="dropdown-label nav-link align-items-center border-bottom d-flex d-lg-none justify-content-between w-100 h-100">
+            class="dropdown-label nav-link align-items-center border-bottom d-lg-none justify-content-between w-100 h-100"
+            :class="{
+                'd-flex': showItemsOnMobile,
+                'd-none': !showItemsOnMobile
+            }">
             {{ name }}
-            <IconChevronRight
+            <icon-chevron-right
                 class="expand-icon"
                 style="height: 18px;" />
         </label>
@@ -84,6 +107,23 @@
                 </li>
             </ul>
         </div>
+        <!-- mobile link, shown only if we don't want to show child items on mobile -->
+        <a
+            class="nav-item nav-item-border-mobile nav-link d-lg-none ml-50 w-100"
+            :class="{
+                'd-none': showItemsOnMobile,
+                'd-block': !showItemsOnMobile
+            }"
+            :href="link">
+            <span class="d-block">
+                {{ name }}
+            </span>
+            <span
+                v-if="subHeading"
+                class="d-block font-italic">
+                {{ subHeading }}
+            </span>
+        </a>
     </li>
 </template>
 
