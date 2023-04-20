@@ -390,11 +390,9 @@ $font-weight-normal:          400 !default;
 $font-weight-semibold:        500 !default;
 $font-weight-bold:            600 !default;
 $font-weight-bolder:          700 !default;
-// fusv-disable
 $font-weight-boldest:         800 !default;
-// fusv-enable
 
-$font-weight-base:            $font-weight-normal !default;
+$font-weight-base:            $font-weight-light !default;
 $line-height-base:            1.5 !default;
 
 // Body
@@ -528,7 +526,7 @@ $h6-font-size-desktop:        $font-size-base * 0.875;
 
 $headings-margin-bottom:      1rem !default;
 $headings-font-family:        $font-family-sans-serif !default;
-$headings-font-weight:        700 !default;
+$headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              $gray-900 !default;
 // fusv-disable

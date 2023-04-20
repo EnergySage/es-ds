@@ -270,110 +270,30 @@
 </template>
 
 <script>
-import sassType from '@energysage/es-bs-base/scss/variables/_type.scss';
+import sassFontSizes from '@energysage/es-bs-base/scss/variables/_font-sizes.scss';
+import sassFontWeights from '@energysage/es-bs-base/scss/variables/_font-weights.scss';
+
+const deprecatedFontSizes = ['xxl', 'xl', 'lg', 'sm', 'xs'];
 
 export default {
     name: 'AtomsTypography',
     data() {
         return {
-            sassType,
             deprecatedFontSizeItems: [
-                {
-                    name: 'font-size-xs',
-                    size: sassType.xs,
-                },
-                {
-                    name: 'font-size-sm',
-                    size: sassType.sm,
-                },
-                {
-                    name: 'font-size-base',
-                    size: sassType.base,
-                },
-                {
-                    name: 'font-size-lg',
-                    size: sassType.lg,
-                },
-                {
-                    name: 'font-size-xl',
-                    size: sassType.xl,
-                },
-                {
-                    name: 'font-size-xxl',
-                    size: sassType.xxl,
-                },
+                ...Object.entries(sassFontSizes)
+                    .filter(([key]) => deprecatedFontSizes.some((suffix) => key.endsWith(suffix)))
+                    .map(([name, size]) => ({ name, size })),
             ],
             fontSizeItems: [
-                {
-                    name: 'font-size-50',
-                    size: sassType.s50,
-                },
-                {
-                    name: 'font-size-75',
-                    size: sassType.s75,
-                },
-                {
-                    name: 'font-size-100',
-                    size: sassType.s100,
-                },
-                {
-                    name: 'font-size-200',
-                    size: sassType.s200,
-                },
-                {
-                    name: 'font-size-300',
-                    size: sassType.s300,
-                },
-                {
-                    name: 'font-size-400',
-                    size: sassType.s400,
-                },
-                {
-                    name: 'font-size-500',
-                    size: sassType.s500,
-                },
-                {
-                    name: 'font-size-600',
-                    size: sassType.s600,
-                },
-                {
-                    name: 'font-size-700',
-                    size: sassType.s700,
-                },
-                {
-                    name: 'font-size-800',
-                    size: sassType.s800,
-                },
-                {
-                    name: 'font-size-900',
-                    size: sassType.s900,
-                },
+                ...Object.entries(sassFontSizes)
+                    .filter(([key]) => !deprecatedFontSizes.some((suffix) => key.endsWith(suffix)))
+                    .map(([name, size]) => ({ name, size })),
             ],
             fontWeightItems: [
-                {
-                    name: 'font-weight-lighter',
-                    weight: '200',
-                },
-                {
-                    name: 'font-weight-light',
-                    weight: '300',
-                },
-                {
-                    name: 'font-weight-normal',
-                    weight: '400',
-                },
-                {
-                    name: 'font-weight-semibold',
-                    weight: '500',
-                },
-                {
-                    name: 'font-weight-bold',
-                    weight: '600',
-                },
-                {
-                    name: 'font-weight-bolder',
-                    weight: '700',
-                },
+                ...Object.keys(sassFontWeights).map((key) => ({
+                    name: `font-weight-${key}`,
+                    weight: sassFontWeights[key],
+                })),
             ],
             docCode: '',
         };

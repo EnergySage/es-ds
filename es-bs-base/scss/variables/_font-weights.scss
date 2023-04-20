@@ -1,0 +1,17 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@import "../functions";
+@import "../mixins";
+@import "../variables";
+
+:export {
+  lightest: $font-weight-lightest;
+  lighter: $font-weight-lighter;
+  light: $font-weight-light;
+  base: $font-weight-base;
+  normal: $font-weight-normal;
+  semibold: $font-weight-semibold;
+  bold: $font-weight-bold;
+  bolder: $font-weight-bolder;
+  boldest: $font-weight-boldest;
+}
