@@ -20,18 +20,19 @@
                 <div class="col col-12 col-lg-8 order-lg-1">
                     <div class="row">
                         <ul
-                            v-for="columnHeader in Object.keys(columns)"
-                            :key="columnHeader"
+                            v-for="column in columns"
+                            :key="column"
                             class="list-unstyled col col-6 col-md-3 mb-150">
                             <li class="font-weight-bolder font-size-100 mb-50">
-                                {{ columnHeader }}
+                                {{ column.title }}
                             </li>
                             <li
-                                v-for="link in columns[columnHeader]"
+                                v-for="link in column.links"
                                 :key="link"
                                 class="mt-25 mb-50">
                                 <a
                                     :href="link.url"
+                                    :target="link.newtab ? '__blank' : null"
                                     class="text-reset">
                                     {{ link.text }}
                                 </a>
@@ -107,36 +108,50 @@ export default {
     name: 'EsFooter',
     data() {
         return {
-            columns: {
-                'Our Topics': [
-                    { text: 'Home solar', url: 'https://www.energysage.com/solar/' },
-                    { text: 'Community solar', url: 'https://communitysolar.energysage.com' },
-                    { text: 'Heating & cooling', url: 'https://heatpumps.energysage.com' },
-                    { text: 'Backup power', url: 'https://www.energysage.com/energy-storage/' },
-                    { text: 'EV charging', url: 'https://www.energysage.com/ev-charging/' },
-                    { text: 'For your business', url: 'https://www.energysage.com/businesses/' },
-                    { text: 'Other energy options', url: 'https://www.energysage.com/other-clean-options/' },
-                ],
-                Resources: [
-                    { text: 'Solar calculator', url: 'https://www.energysage.com/solar/calculator/' },
-                    { text: 'Solar rebates', url: 'https://www.energysage.com/market/equipment-rebates/' },
-                    { text: 'EnergySage news', url: 'https://news.energysage.com' },
-                    { text: 'Help center', url: 'https://help.energysage.com' },
-                ],
-                Company: [
-                    { text: 'Mission & values', url: 'https://www.energysage.com/about-us/company/' },
-                    { text: 'How it works', url: 'https://www.energysage.com/market-intro/' },
-                    { text: 'Careers', url: 'https://www.energysage.com/about-us/careers/' },
-                    { text: 'Contact us', url: 'https://www.energysage.com/contact/' },
-                    { text: 'Editorial guidelines', url: 'https://www.energysage.com/editorial-guidelines/' },
-                ],
-                'Work with us': [
-                    { text: 'Solar companies', url: 'https://www.energysage.com/installers/' },
-                    { text: 'Partner with us', url: 'https://www.energysage.com/partners/' },
-                    { text: 'Market research', url: 'https://www.energysage.com/data/' },
-                    { text: 'Refer a friend', url: 'https://www.energysage.com/refer-a-friend/' },
-                ],
-            },
+            columns: [
+                // TODO: remove new tab option once other verticals adopt global nav
+                {
+                    title: 'Our topics',
+                    links: [
+                        { text: 'Home solar', url: 'https://www.energysage.com/market-intro/' },
+                        { text: 'Community solar', url: 'https://communitysolar.energysage.com', newtab: true },
+                        { text: 'Heating & cooling', url: 'https://heatpumps.energysage.com', newtab: true },
+                        { text: 'Backup power', url: 'https://www.energysage.com/energy-storage/' },
+                        { text: 'EV charging', url: 'https://www.energysage.com/ev-charging/' },
+                        { text: 'For your business', url: 'https://www.energysage.com/businesses/' },
+                        { text: 'Other energy options', url: 'https://www.energysage.com/other-clean-options/' },
+                    ],
+                },
+                {
+                    title: 'Resources',
+                    links: [
+                        { text: 'Solar calculator', url: 'https://www.energysage.com/solar/calculator/' },
+                        { text: 'Solar rebates', url: 'https://www.energysage.com/market/equipment-rebates/' },
+                        { text: 'News', url: 'https://news.energysage.com', newtab: true },
+                        { text: 'Help center', url: 'https://help.energysage.com', newtab: true },
+                        { text: 'Home solar guide', url: 'https://www.energysage.com/market-intro/' },
+                    ],
+                },
+                {
+                    title: 'About us',
+                    links: [
+                        { text: 'Mission & values', url: 'https://www.energysage.com/about-us/company/' },
+                        { text: 'How it works', url: 'https://www.energysage.com/market-intro/' },
+                        { text: 'Careers', url: 'https://www.energysage.com/about-us/careers/' },
+                        { text: 'Contact us', url: 'https://www.energysage.com/contact/' },
+                        { text: 'Editorial guidelines', url: 'https://www.energysage.com/editorial-guidelines/' },
+                    ],
+                },
+                {
+                    title: 'Work with us',
+                    links: [
+                        { text: 'Solar companies', url: 'https://www.energysage.com/installers/' },
+                        { text: 'Partner with us', url: 'https://www.energysage.com/partners/' },
+                        { text: 'Market intel', url: 'https://www.energysage.com/data/' },
+                        { text: 'Refer a friend', url: 'https://www.energysage.com/refer-a-friend/' },
+                    ],
+                },
+            ],
             socialLinks: [
                 { text: 'Facebook', url: 'https://www.facebook.com/EnergySage', icon: 'icon-facebook' },
                 { text: 'LinkedIn', url: 'https://www.linkedin.com/company/energysage/', icon: 'icon-linkedin' },
