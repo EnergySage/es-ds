@@ -24,7 +24,8 @@
         <a
             v-else
             class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
-            :href="link">
+            :href="link"
+            :target="newTab ? '_blank' : null">
             <div class="d-flex d-lg-block">
                 <icon-calculator
                     v-if="icon === NAV_BAR_ICONS.CALCULATOR"
@@ -108,6 +109,7 @@
                                     }"
                                     :items="topic.subtopics"
                                     :link="topic.link"
+                                    :new-tab="topic.newTab"
                                     :name="topic.name" />
                             </ul>
                         </div>
@@ -152,6 +154,10 @@ export default {
         link: {
             type: String,
             default: '',
+        },
+        newTab: {
+            type: Boolean,
+            default: false,
         },
         name: {
             type: String,
