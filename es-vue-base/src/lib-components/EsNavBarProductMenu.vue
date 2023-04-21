@@ -77,7 +77,9 @@
                     class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold mb-0 w-100">
                     {{ name }}
                 </p>
-                <b-row>
+                <b-row
+                    tag="ul"
+                    class="list-unstyled">
                     <es-nav-bar-topic-menu
                         v-for="topic in topics"
                         :key="topic.name"
@@ -88,11 +90,12 @@
                         :name="topic.name"
                         :show-items-on-mobile="topic.showItemsOnMobile"
                         :sub-heading="topic.subHeading" />
-                    <es-nav-bar-featured-article
-                        class="col-lg-4 m-100 m-lg-0"
-                        :eyebrow="featuredArticle.eyebrow"
-                        :link="featuredArticle.link"
-                        :name="featuredArticle.name" />
+                    <li class="col-lg-4 m-100 m-lg-0">
+                        <es-nav-bar-featured-article
+                            :eyebrow="featuredArticle.eyebrow"
+                            :link="featuredArticle.link"
+                            :name="featuredArticle.name" />
+                    </li>
                 </b-row>
             </div>
         </div>
