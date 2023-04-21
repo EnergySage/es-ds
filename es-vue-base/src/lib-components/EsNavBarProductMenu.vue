@@ -4,6 +4,7 @@
         <a
             class="product-menu-header-link dropdown-toggle d-none d-lg-block px-lg-100 px-xl-200 py-lg-0 text-decoration-none text-gray"
             :href="link"
+            :target="newTab ? '_blank' : null"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false">
@@ -63,7 +64,8 @@
                     :key="item.name">
                     <a
                         class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
-                        :href="item.link">
+                        :href="item.link"
+                        :target="item.newTab ? '_blank' : null">
                         {{ item.name }}
                     </a>
                 </li>
@@ -82,6 +84,7 @@
                         class="col-lg-4"
                         :items="topic.subtopics"
                         :link="topic.link"
+                        :new-tab="topic.newTab"
                         :name="topic.name"
                         :show-items-on-mobile="topic.showItemsOnMobile"
                         :sub-heading="topic.subHeading" />
@@ -118,6 +121,10 @@ export default {
         link: {
             type: String,
             required: true,
+        },
+        newTab: {
+            type: Boolean,
+            default: false,
         },
         name: {
             type: String,

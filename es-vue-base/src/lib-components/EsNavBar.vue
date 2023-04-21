@@ -146,6 +146,7 @@
                             :featured-article="product.featuredArticle"
                             :items="product.items"
                             :link="product.link"
+                            :new-tab="product.newTab"
                             :name="product.name"
                             :topics="product.topics" />
                     </div>

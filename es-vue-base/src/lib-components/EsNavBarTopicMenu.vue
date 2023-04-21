@@ -9,7 +9,8 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            :href="link">
+            :href="link"
+            :target="newTab ? '_blank' : null">
             <span class="align-items-center eyebrow d-flex font-size-50 font-weight-bolder text-gray">
                 {{ name }}
                 <icon-arrow-right
@@ -87,7 +88,8 @@
                     <a
                         v-if="link"
                         class="nav-item nav-item-border-mobile nav-link font-weight-bold d-flex w-100 align-items-center ml-50"
-                        :href="link">
+                        :href="link"
+                        :target="newTab ? '_blank' : null">
                         {{ name }}
                     </a>
                     <div
@@ -101,7 +103,8 @@
                     :key="item.name">
                     <a
                         class="dropdown-item nav-item nav-item-border-mobile nav-link d-flex align-items-center ml-50 ml-lg-0 px-lg-0 py-lg-50"
-                        :href="item.link">
+                        :href="item.link"
+                        :target="newTab ? '_blank' : null">
                         {{ item.name }}
                     </a>
                 </li>
@@ -114,7 +117,8 @@
                 'd-none': showItemsOnMobile,
                 'd-block': !showItemsOnMobile
             }"
-            :href="link">
+            :href="link"
+            :target="newTab ? '_blank' : null">
             <span class="d-block">
                 {{ name }}
             </span>
@@ -138,6 +142,10 @@ export default {
         link: {
             type: String,
             default: '',
+        },
+        newTab: {
+            type: Boolean,
+            default: false,
         },
         name: {
             type: String,

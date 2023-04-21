@@ -319,6 +319,7 @@ export default {
                     name: 'Community solar',
                     subHeading: 'Go solar with no equipment',
                     link: 'https://communitysolar.energysage.com/',
+                    newTab: true,
                     showItemsOnMobile: false,
                     subtopics: [
                         {
