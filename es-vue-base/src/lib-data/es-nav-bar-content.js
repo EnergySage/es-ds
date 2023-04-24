@@ -96,7 +96,7 @@ export default {
                             link: 'https://www.energysage.com/clean-heating-cooling/air-source-heat-pumps/',
                         },
                         {
-                            name: 'Best heat pumps',
+                            name: 'How much do heat pumps cost?',
                             link: 'https://www.energysage.com/clean-heating-cooling/air-source-heat-pumps/costs-and-benefits-air-source-heat-pumps/',
                         },
                         {
@@ -189,7 +189,7 @@ export default {
                     ],
                 },
                 {
-                    name: 'EnergySage news',
+                    name: 'News',
                     subtopics: [
                         {
                             name: 'How long can you run your house on a Tesla Powerwall?',
@@ -287,15 +287,15 @@ export default {
                         },
                         {
                             name: 'Search local installers',
-                            link: 'https://www.energysage.com/market/equipment-rebates/',
+                            link: 'https://www.energysage.com/installers/',
                         },
                         {
                             name: 'Financing',
                             link: 'https://www.energysage.com/solar/financing/loan-providers/',
                         },
                         {
-                            name: 'Installer reviews',
-                            link: 'https://www.energysage.com/installers/',
+                            name: 'Equipment rebates',
+                            link: 'https://www.energysage.com/market/equipment-rebates/',
                         },
                         {
                             name: 'Compare solar panels',
@@ -311,7 +311,7 @@ export default {
                         },
                         {
                             name: 'Backup power guide',
-                            link: 'https://www.energysage.com/energy-storage//',
+                            link: 'https://www.energysage.com/energy-storage/',
                         },
                         {
                             name: 'Get personalized quotes',
@@ -341,9 +341,9 @@ export default {
                 },
             ],
             featuredArticle: {
-                eyebrow: "Editor's Recommendation",
+                eyebrow: "Editors' pick",
                 link: 'https://www.energysage.com/local-data/solar-panel-cost/',
-                name: 'What do solar panels cost? ',
+                name: 'How much do solar panels cost?',
             },
         },
         {
@@ -399,7 +399,7 @@ export default {
                     link: 'https://www.energysage.com/solar-batteries/',
                 },
                 {
-                    name: 'Get personalized quotes for home solar + batteries',
+                    name: 'Get quotes for solar + batteries',
                     link: 'https://www.energysage.com/market/start/',
                 },
             ],
