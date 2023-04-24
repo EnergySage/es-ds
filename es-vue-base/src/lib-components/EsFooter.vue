@@ -23,7 +23,7 @@
                     <div class="row">
                         <div
                             v-for="column in columns"
-                            :key="column"
+                            :key="column.title"
                             class="col col-6 col-md-3 mb-150">
                             <ul class="list-unstyled">
                                 <li class="font-weight-bolder font-size-100 mb-50">
@@ -31,7 +31,7 @@
                                 </li>
                                 <li
                                     v-for="link in column.links"
-                                    :key="link"
+                                    :key="link.text"
                                     class="mt-25 mb-50">
                                     <a
                                         :href="link.url"
@@ -58,7 +58,7 @@
                     <div class="d-flex text-gray-700">
                         <a
                             v-for="iconLink in socialLinks"
-                            :key="iconLink"
+                            :key="iconLink.text"
                             class="text-reset pr-150"
                             :href="iconLink.url">
                             <span class="sr-only">{{ iconLink.text }}</span>
@@ -82,7 +82,7 @@
             <div class="row justify-content-between mb-150">
                 <div
                     v-for="link in legalLinks"
-                    :key="link"
+                    :key="link.text"
                     class="col col-6 col-lg font-size-50 mt-25 mb-50">
                     <a
                         :href="link.url"
