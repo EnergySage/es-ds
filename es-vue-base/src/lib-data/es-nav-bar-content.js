@@ -316,6 +316,7 @@ export default {
                         {
                             name: 'Get personalized quotes',
                             link: 'https://www.energysage.com/market/start/',
+                            emphasize: true,
                         },
                     ],
                 },
@@ -334,6 +335,7 @@ export default {
                             name: 'Search solar farms',
                             link: 'https://communitysolar.energysage.com/projects',
                             newTab: true,
+                            emphasize: true,
                         },
                     ],
                 },

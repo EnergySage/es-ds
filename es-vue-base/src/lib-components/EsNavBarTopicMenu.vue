@@ -103,6 +103,7 @@
                     :key="item.name">
                     <a
                         class="dropdown-item nav-item nav-item-border-mobile nav-link d-flex align-items-center ml-50 ml-lg-0 px-lg-0 py-lg-50"
+                        :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="newTab ? '_blank' : null">
                         {{ item.name }}
