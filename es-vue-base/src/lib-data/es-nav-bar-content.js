@@ -1,6 +1,10 @@
 import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
 
 export default {
+    home: {
+        name: 'EnergySage',
+        link: 'https://www.energysage.com/',
+    },
     accountMenu: {
         loggedIn: {
             items: [

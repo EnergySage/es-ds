@@ -14,11 +14,16 @@
                 </label>
             </div>
             <!-- mobile logo -->
-            <div class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0">
+            <a
+                class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
+                :href="items.home.link">
                 <es-logo
                     width="128px"
                     height="28px" />
-            </div>
+                <span class="sr-only">
+                    {{ items.home.name }}
+                </span>
+            </a>
             <!-- mobile account menu -->
             <!-- TODO: link to login if logged out, otherwise profile -->
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
@@ -58,18 +63,23 @@
                 <ul class="navbar-nav d-flex flex-column w-100">
                     <!-- top-level items on mobile, full top bar on desktop -->
                     <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between">
-                        <!-- small desktop logo -->
-                        <div class="navbar-brand d-none d-lg-block d-xl-none">
+                        <a
+                            class="navbar-brand d-none d-lg-block"
+                            :href="items.home.link">
+                            <!-- small desktop logo -->
                             <es-logo
+                                class="d-none d-lg-block d-xl-none"
                                 width="150px"
                                 height="42px" />
-                        </div>
-                        <!-- large desktop logo-->
-                        <div class="navbar-brand d-none d-xl-block">
+                            <!-- large desktop logo-->
                             <es-logo
+                                class="d-none d-xl-block"
                                 width="200px"
                                 height="42px" />
-                        </div>
+                            <span class="sr-only">
+                                {{ items.home.name }}
+                            </span>
+                        </a>
                         <!-- top level menus -->
                         <es-nav-bar-top-level-menu
                             v-for="topLevelMenu in items.topLevelMenus"
