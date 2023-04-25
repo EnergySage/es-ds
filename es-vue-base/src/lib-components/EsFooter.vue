@@ -60,7 +60,8 @@
                             v-for="iconLink in socialLinks"
                             :key="iconLink.text"
                             class="text-reset pr-150"
-                            :href="iconLink.url">
+                            :href="iconLink.url"
+                            target="_blank">
                             <span class="sr-only">{{ iconLink.text }}</span>
                             <component :is="iconLink.icon" />
                         </a>
