@@ -121,7 +121,8 @@
                             :eyebrow="featuredArticle.linkName"
                             :link="featuredArticle.linkUrl"
                             :new-tab="featuredArticle.newTab"
-                            :name="featuredArticle.lede" />
+                            :name="featuredArticle.lede"
+                            :image500="featuredArticle.image500" />
                     </b-row>
                 </b-container>
             </div>

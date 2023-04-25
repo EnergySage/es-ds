@@ -6,11 +6,12 @@
                 :href="link"
                 :target="newTab ? '_blank' : null"
                 :title="name">
-                <nav-energy-tips
+                <img
                     :id="graphicId"
                     class="featured-article-image mb-100 w-100"
-                    width="253px"
-                    height="190px" />
+                    alt=""
+                    loading="lazy"
+                    :src="image500">
                 <div class="eyebrow font-size-50 mb-50 text-orange">
                     {{ eyebrow }}
                 </div>
@@ -24,13 +25,9 @@
 </template>
 
 <script lang="js">
-import NavEnergyTips from '../lib-assets/nav-energy-tips.vue';
 
 export default {
     name: 'EsNavBarFeaturedArticle',
-    components: {
-        NavEnergyTips,
-    },
     props: {
         eyebrow: {
             type: String,
@@ -45,6 +42,10 @@ export default {
             default: false,
         },
         name: {
+            type: String,
+            required: true,
+        },
+        image500: {
             type: String,
             required: true,
         },

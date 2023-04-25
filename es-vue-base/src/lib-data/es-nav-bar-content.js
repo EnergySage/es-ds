@@ -211,6 +211,7 @@ export default {
                 linkUrl: 'https://news.energysage.com/are-solar-panels-worth-it/',
                 lede: 'Are solar panels worth it?',
                 newTab: true,
+                image500: 'https://www.energysage.com/static/img/navbar/articles/are-solar-panels-worth-it-500w.png',
             },
         },
         {
@@ -272,6 +273,7 @@ export default {
                 linkName: 'New research',
                 linkUrl: 'https://www.energysage.com/press/energysage-marketplace-intel-report-16',
                 lede: 'EnergySage Intel\'s latest Solar & Storage Marketplace Report',
+                image500: 'https://www.energysage.com/static/img/navbar/articles/latest-market-intel-500w.png',
             },
         },
     ],
@@ -353,6 +355,7 @@ export default {
                 eyebrow: "Editors' pick",
                 link: 'https://www.energysage.com/local-data/solar-panel-cost/',
                 name: 'How much do solar panels cost?',
+                image500: 'https://www.energysage.com/static/img/navbar/articles/solar-panel-cost-500w.png',
             },
         },
         {

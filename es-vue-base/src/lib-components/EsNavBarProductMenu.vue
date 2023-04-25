@@ -107,7 +107,8 @@
                         <es-nav-bar-featured-article
                             :eyebrow="featuredArticle.eyebrow"
                             :link="featuredArticle.link"
-                            :name="featuredArticle.name" />
+                            :name="featuredArticle.name"
+                            :image500="featuredArticle.image500" />
                     </li>
                 </b-row>
             </div>
