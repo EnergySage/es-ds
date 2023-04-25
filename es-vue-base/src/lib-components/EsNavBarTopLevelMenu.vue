@@ -90,8 +90,9 @@
                         <div
                             class="mb-3 mb-lg-0"
                             :class="{
-                                'col-lg-9': topics.length > 3,
-                                'col-lg-4': topics.length <= 3
+                                'col-lg-9': topics.length >= 3,
+                                'col-lg-7': topics.length == 2,
+                                'col-lg-4': topics.length == 1
                             }">
                             <ul
                                 class="dropdown-list row w-auto"
@@ -104,8 +105,9 @@
                                     v-for="topic in topics"
                                     :key="topic.name"
                                     :class="{
-                                        'col-lg-6 col-xl-4': topics.length > 3,
-                                        'col-lg-12': topics.length <= 3
+                                        'col-xl-4': topics.length > 2,
+                                        'col-lg-6': topics.length > 1,
+                                        'col-lg-12': topics.length == 1
                                     }"
                                     :items="topic.subtopics"
                                     :link="topic.link"
