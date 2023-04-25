@@ -110,10 +110,7 @@
                                                 :key="item.name">
                                                 <a
                                                     class="dropdown-item nav-link"
-                                                    :href="item.link"
-                                                    data-toggle="dropdown"
-                                                    aria-haspopup="true"
-                                                    aria-expanded="false">
+                                                    :href="item.link">
                                                     <span class="mx-50"> {{ item.name }} </span>
                                                 </a>
                                             </li>
