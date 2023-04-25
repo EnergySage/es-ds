@@ -200,7 +200,11 @@ export default {
 
         // Function to show/hide overlay
         function show_overlay(overlay_visible) {
-            overlay.style.display = overlay_visible ? 'block' : 'none';
+            if (overlay_visible) {
+                overlay.classList.add('show');
+            } else {
+                overlay.classList.remove('show');
+            }
         }
 
         // Show overlay and lock scrolling on body when menu is open
