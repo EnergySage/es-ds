@@ -585,5 +585,10 @@ $mobile-max-width: $desktop-min-width - 1;
       vertical-align: center;
       cursor: pointer;
     }
+
+    .product-menu-flyout-see-all {
+      letter-spacing: 0.08em;
+      text-decoration: underline;
+    }
   }
 }

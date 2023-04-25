@@ -55,10 +55,17 @@
                 v-if="items && items.length"
                 class="product-menu-flyout dropdown-menu row border-0 mt-0 py-lg-100"
                 :aria-labelledby="`menu-${name}`">
+                <!-- mobile subnav header -->
                 <li
-                    class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold w-100">
+                    class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold justify-content-between text-decoration-none w-100">
                     {{ name }}
+                    <a
+                        class="product-menu-flyout-see-all font-size-50 font-weight-bolder text-uppercase"
+                        :href="link">
+                        See All
+                    </a>
                 </li>
+                <!-- subnav items -->
                 <li
                     v-for="item in items"
                     :key="item.name">
@@ -73,9 +80,15 @@
             <div
                 v-if="topics && topics.length"
                 class="product-menu-flyout product-menu-flyout--large dropdown-menu row border-0 mt-0 p-lg-100">
+                <!-- mobile subnav header -->
                 <p
-                    class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold mb-0 w-100">
+                    class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold justify-content-between mb-0 text-decoration-none w-100">
                     {{ name }}
+                    <a
+                        class="product-menu-flyout-see-all font-size-50 font-weight-bolder text-uppercase"
+                        :href="link">
+                        See All
+                    </a>
                 </p>
                 <b-row
                     tag="ul"
