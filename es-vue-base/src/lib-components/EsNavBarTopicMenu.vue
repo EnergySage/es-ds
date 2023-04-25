@@ -5,10 +5,7 @@
         <!-- desktop header, if it's a link -->
         <a
             v-if="link"
-            class="dropdown-item dropdown-toggle nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-100 text-gray"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
+            class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-100 text-gray"
             :href="link"
             :target="newTab ? '_blank' : null">
             <span class="align-items-center eyebrow d-flex font-size-50 font-weight-bolder text-gray">
