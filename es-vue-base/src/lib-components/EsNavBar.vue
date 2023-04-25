@@ -9,7 +9,7 @@
                 <label
                     for="data--main-menu"
                     class="mb-0">
-                    <IconHamburger class="menu-toggle align-self-center" />
+                    <icon-hamburger class="menu-toggle align-self-center" />
                     <span class="sr-only">Open navigation menu</span>
                 </label>
             </div>
@@ -24,15 +24,15 @@
                     {{ items.home.name }}
                 </span>
             </a>
-            <!-- mobile account menu -->
-            <!-- TODO: link to login if logged out, otherwise profile -->
+            <!-- mobile account menu trigger -->
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
-                <a
+                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                <label
                     class="text-dark text-decoration-none"
-                    :href="items.accountMenu.loggedIn.items[0].link"
-                    aria-label="Link to profile">
-                    <IconPerson class="align-self-center" />
-                </a>
+                    for="data--account-menu">
+                    <icon-person class="align-self-center" />
+                    <span class="sr-only">Open account menu</span>
+                </label>
             </div>
             <input
                 id="data--main-menu"
@@ -56,7 +56,8 @@
                         <label
                             for="data--main-menu"
                             class="mb-0">
-                            <IconX class="menu-toggle align-self-center" />
+                            <icon-x class="menu-toggle align-self-center" />
+                            <span class="sr-only">Close</span>
                         </label>
                     </div>
                 </div>
@@ -102,8 +103,7 @@
                                     </div>
                                     <div class="menu">
                                         <ul
-                                            id="loggedIn"
-                                            class="dropdown-menu account-menu rounded mt-0 py-100"
+                                            class="loggedIn dropdown-menu account-menu rounded mt-0 py-100"
                                             style="display: none">
                                             <li
                                                 v-for="item in items.accountMenu.loggedIn.items"
@@ -116,8 +116,7 @@
                                             </li>
                                         </ul>
                                         <ul
-                                            id="loggedOut"
-                                            class="dropdown-menu account-menu rounded mt-0"
+                                            class="loggedOut dropdown-menu account-menu rounded mt-0"
                                             style="display: none">
                                             <a
                                                 class="d-flex justify-content-around text-decoration-none"
@@ -157,6 +156,68 @@
                             :name="product.name"
                             :topics="product.topics" />
                     </div>
+                </ul>
+            </div>
+            <!-- mobile account menu checkbox -->
+            <input
+                id="data--account-menu"
+                class="menu-checkbox account-menu-checkbox"
+                aria-labelledby="data--account-menu"
+                type="checkbox">
+            <!-- mobile account menu -->
+            <div class="menu top-level-menu align-items-start d-flex d-lg-none flex-grow-1">
+                <!-- menu header -->
+                <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
+                    <div class="col-3" />
+                    <div class="col-6 align-self-center text-center py-100">
+                        <es-logo
+                            width="128px"
+                            height="28px" />
+                    </div>
+                    <div class="d-flex col-3 justify-content-end">
+                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                        <label
+                            for="data--account-menu"
+                            class="mb-0">
+                            <icon-x class="menu-toggle align-self-center" />
+                            <span class="sr-only">Close</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- logged in menu -->
+                <ul
+                    class="loggedIn navbar-nav w-100"
+                    style="display: none">
+                    <li
+                        v-for="item in items.accountMenu.loggedIn.items"
+                        :key="item.name">
+                        <a
+                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
+                            :href="item.link">
+                            <span class="mx-50"> {{ item.name }} </span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- logged out menu -->
+                <ul
+                    class="loggedOut navbar-nav w-100"
+                    style="display: none">
+                    <li>
+                        <EsButton
+                            :href="items.accountMenu.loggedOut.signIn.link"
+                            :outline="true"
+                            variant="secondary"
+                            class="m-100 w-100">
+                            {{ items.accountMenu.loggedOut.signIn.name }}
+                        </EsButton>
+                    </li>
+                    <li class="d-flex justify-content-center">
+                        <EsButton
+                            :href="items.accountMenu.loggedOut.createAccount.link"
+                            variant="link">
+                            {{ items.accountMenu.loggedOut.createAccount.name }}
+                        </EsButton>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -222,10 +283,11 @@ export default {
 
         // Create a checkbox used to determine if any mobile menus are open
         const mainMenuCheckbox = document.querySelector('.main-menu-checkbox');
+        const accountMenuCheckbox = document.querySelector('.account-menu-checkbox');
 
         // Collapse all open menus on window resize
         window.addEventListener('resize', () => {
-            if (mainMenuCheckbox.checked) {
+            if (mainMenuCheckbox.checked || accountMenuCheckbox.checked) {
                 collapse_mobile_menus();
             }
         });
@@ -246,7 +308,7 @@ export default {
                 });
                 element.addEventListener('mouseout', () => {
                 // Hide overlay on mouseout on desktop not mobile
-                    show_overlay(mainMenuCheckbox.checked);
+                    show_overlay(mainMenuCheckbox.checked || accountMenuCheckbox.checked);
                 });
             });
 
@@ -259,14 +321,29 @@ export default {
             }
         });
 
+        // Toggle menu display on account menu open/close
+        accountMenuCheckbox.addEventListener('change', (event) => {
+            if (event.target.checked) {
+                show_mobile_menus();
+            } else {
+                collapse_mobile_menus();
+            }
+        });
+
         // get logged in/out state and display appropriate menu
         const menuDisplay = ({ loggedOut }) => {
             if (loggedOut) {
                 // logged out so allow loggedOut menu and the compare buttons to be visible
-                document.querySelector('.nav-es-global #loggedOut').style.display = null;
+                document.querySelectorAll('.nav-es-global .loggedOut').forEach((element) => {
+                    // eslint-disable-next-line no-param-reassign
+                    element.style.display = null;
+                });
             } else {
                 // logged in so allow logged in menu to be visible, and show name with appropriate layout
-                document.querySelector('.nav-es-global #loggedIn').style.display = null;
+                document.querySelectorAll('.nav-es-global .loggedIn').forEach((element) => {
+                    // eslint-disable-next-line no-param-reassign
+                    element.style.display = null;
+                });
                 document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle').style.display = 'flex';
                 document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name')
                     .style.display = 'block';
