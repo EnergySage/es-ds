@@ -91,7 +91,7 @@
                             class="mb-3 mb-lg-0"
                             :class="{
                                 'col-lg-9': topics.length >= 3,
-                                'col-lg-7': topics.length == 2,
+                                'col-lg-9 col-xl-6 col-xxl-5': topics.length == 2,
                                 'col-lg-4': topics.length == 1
                             }">
                             <ul
@@ -105,8 +105,8 @@
                                     v-for="topic in topics"
                                     :key="topic.name"
                                     :class="{
-                                        'col-xl-4': topics.length > 2,
-                                        'col-lg-6': topics.length > 1,
+                                        'col-xl-4': topics.length >= 3,
+                                        'col-lg-6': topics.length >= 2,
                                         'col-lg-12': topics.length == 1
                                     }"
                                     :items="topic.subtopics"
