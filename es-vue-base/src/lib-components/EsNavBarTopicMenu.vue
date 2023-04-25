@@ -110,7 +110,7 @@
         </div>
         <!-- mobile link, shown only if we don't want to show child items on mobile -->
         <a
-            class="nav-item nav-item-border-mobile nav-link d-lg-none ml-50 w-100"
+            class="nav-item nav-item-border-mobile nav-link d-lg-none w-100"
             :class="{
                 'd-none': showItemsOnMobile,
                 'd-block': !showItemsOnMobile
