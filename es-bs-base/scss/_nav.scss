@@ -125,6 +125,7 @@
 
 $desktop-min-width: 992px;
 $mobile-max-width: $desktop-min-width - 1;
+$nav-hover-delay: 300ms;
 
 // Overlay that is displayed on navbar hovers on desktop, menu open on mobile
 // pull overlay up to avoid it from getting covered by other DOM elements
@@ -133,10 +134,23 @@ $mobile-max-width: $desktop-min-width - 1;
   top: 0;
   left: 0;
   z-index: 1000;
-  display: none;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 0;
+  pointer-events: none;
+  visibility: hidden;
   background: rgba(64, 64, 64, .45);
+  opacity: 0;
+  // stylelint-disable-next-line property-disallowed-list
+  transition: height 0s, opacity 0s, visibility 0s;
+
+  &.show {
+    height: 100%;
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+    transition-delay: $nav-hover-delay;
+  }
 }
 
 .nav-es-global {
@@ -264,7 +278,20 @@ $mobile-max-width: $desktop-min-width - 1;
     // Show top headers down chevron icon
     .nav-item {
       .top-header-icon {
+        // stylelint-disable-next-line property-disallowed-list
+        transition: transform 0s;
         transform: rotate(0deg);
+      }
+      .dropdown-menu {
+        // prepare menu for delayed hover showing
+        display: block;
+        height: 0;
+        overflow: hidden;
+        pointer-events: none;
+        visibility: hidden;
+        opacity: 0;
+        // stylelint-disable-next-line property-disallowed-list
+        transition: height 0s, opacity 0s, visibility 0s;
       }
     }
 
@@ -300,7 +327,11 @@ $mobile-max-width: $desktop-min-width - 1;
     // Show top headers up chevron icon on nav-item hover
     .nav-item:hover {
       .dropdown-menu {
-        display: block;
+        height: auto;
+        pointer-events: auto;
+        visibility: visible;
+        opacity: 1;
+        transition-delay: $nav-hover-delay;
       }
 
       // black bar at bottom of header link when product menu is up
@@ -317,6 +348,7 @@ $mobile-max-width: $desktop-min-width - 1;
       }
 
       .top-header-icon {
+        transition-delay: $nav-hover-delay;
         transform: rotate(180deg);
       }
     }
@@ -536,7 +568,7 @@ $mobile-max-width: $desktop-min-width - 1;
       max-height: 100%;
       background: #fff;
       // stylelint-disable-next-line property-disallowed-list
-      transition: transform 0.2s;
+      transition: transform 0.3s;
       transform: translate3d(-100%, 0, 0);
 
       // Override BS4 defaults for consistency
