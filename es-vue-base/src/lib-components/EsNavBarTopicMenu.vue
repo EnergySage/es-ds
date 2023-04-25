@@ -91,7 +91,7 @@
                     </a>
                     <div
                         v-else
-                        class="nav-item nav-item-border-mobile nav-link font-weight-bold d-flex w-100 align-items-center">
+                        class="nav-item nav-item-border-mobile nav-link text-decoration-none font-weight-bold d-flex w-100 align-items-center">
                         {{ name }}
                     </div>
                 </li>
