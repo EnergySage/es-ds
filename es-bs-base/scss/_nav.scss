@@ -193,9 +193,10 @@ $mobile-max-width: $desktop-min-width - 1;
     display: none;
   }
 
-  // Override default blue background on hover and click
+  // Override default blue background
   .dropdown-item:hover,
-  .dropdown-item:active {
+  .dropdown-item:active,
+  .dropdown-item:focus {
     background: none;
   }
 
