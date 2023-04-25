@@ -491,6 +491,11 @@ $mobile-max-width: $desktop-min-width - 1;
       cursor: pointer;
     }
 
+    // allow longer items (e.g. news article titles) to wrap on mobile
+    .dropdown-item {
+      white-space: normal;
+    }
+
     // Add padding below featured article to account for iOS menus
     .dropdown-cta-right {
       padding-bottom: 120px;
