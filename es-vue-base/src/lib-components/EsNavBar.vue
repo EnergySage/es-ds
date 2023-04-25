@@ -287,6 +287,12 @@ export default {
                 menuDisplay({ loggedOut: true });
             });
 
+        // closes mobile menus upon navigating 'back' to the site
+        // https://developer.mozilla.org/en-US/docs/Web/API/Window/pageshow_event
+        window.addEventListener('pageshow', () => {
+            collapse_mobile_menus();
+        });
+
         // CUSTOM GLOBAL-NAV SCRIPT ENDS
     },
 };
