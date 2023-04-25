@@ -7,9 +7,10 @@
                 :target="newTab ? '_blank' : null"
                 :title="name">
                 <nav-energy-tips
+                    :id="graphicId"
+                    class="featured-article-image mb-100 w-100"
                     width="253px"
-                    height="190px"
-                    class="featured-article-image mb-100 w-100" />
+                    height="190px" />
                 <div class="eyebrow font-size-50 mb-50 text-orange">
                     {{ eyebrow }}
                 </div>
@@ -46,6 +47,11 @@ export default {
         name: {
             type: String,
             required: true,
+        },
+    },
+    computed: {
+        graphicId() {
+            return this.name.replace(/\s/g, '-').replace(/[^a-zA-Z]/g, '');
         },
     },
 };
