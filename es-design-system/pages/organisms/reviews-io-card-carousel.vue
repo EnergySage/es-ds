@@ -1,7 +1,7 @@
 <template>
     <div
         id="reviewsio-carousel-widget"
-        class="ReviewsIoCardCarousel"></div>
+        class="ReviewsIoCardCarousel" />
 </template>
 
 <script>
@@ -65,14 +65,16 @@ export default {
                     /* Widget settings: */
                     options: {
                         general: {
-                            /* What reviews should the widget display? Available options: company, product, third_party. You can choose one type or multiple separated by comma. */
+                            /* What reviews should the widget display? Available options: company, product,
+                            third_party. You can choose one type or multiple separated by comma. */
                             review_type: 'company',
                             /* Minimum number of reviews required for widget to be displayed */
                             min_reviews: '1',
                             /* Maximum number of reviews to include in the carousel widget. */
                             max_reviews: '20',
                             address_format: 'CITY, COUNTRY',
-                            /* Carousel auto-scrolling speed. 3000 = 3 seconds. If you want to disable auto-scroll, set this value to false. */
+                            /* Carousel auto-scrolling speed. 3000 = 3 seconds. If you want to disable auto-scroll,
+                            set this value to false. */
                             enable_auto_scroll: false,
                         },
                         header: {
@@ -97,7 +99,8 @@ export default {
                             enable_videos: false,
                             /* Show when review was written */
                             enable_review_date: true,
-                            /* Hide reviews written by the same customer (This may occur when customer reviews multiple products) */
+                            /* Hide reviews written by the same customer
+                            (This may occur when customer reviews multiple products) */
                             disable_same_customer: true,
                             /* Minimum star rating */
                             min_review_percent: 4,
@@ -107,14 +110,16 @@ export default {
                             hide_empty_reviews: true,
                             /* Show product name */
                             enable_product_name: true,
-                            /* Show only reviews which have specific tags (multiple semicolon separated tags allowed i.e tag1;tag2) */
+                            /* Show only reviews which have specific tags (multiple semicolon
+                            separated tags allowed i.e tag1;tag2) */
                             tags: '',
                             /* Show branch, only one input */
                             branch: '',
                             enable_branch_name: false,
                         },
                         popups: {
-                            /* Make review items clickable (When they are clicked, a popup appears with more information about a customer and review) */
+                            /* Make review items clickable (When they are clicked, a popup appears
+                            with more information about a customer and review) */
                             enable_review_popups: true,
                             /* Show "was this review helpful" buttons */
                             enable_helpful_buttons: false,
@@ -134,7 +139,8 @@ export default {
                      * This list is preserved here for reference, in case more customization is needed.
                      */
                     /* styles: {
-                        // Base font size is a reference size for all text elements. When base value gets changed, all TextHeading and TexBody elements get proportionally adjusted.
+                        // Base font size is a reference size for all text elements. When base value gets changed,
+                        all TextHeading and TexBody elements get proportionally adjusted.
                         '--base-font-size': '16px',
                         '--base-maxwidth': '100%',
 
