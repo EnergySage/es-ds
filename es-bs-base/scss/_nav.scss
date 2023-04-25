@@ -166,7 +166,8 @@ $mobile-max-width: $desktop-min-width - 1;
   &.navbar-light {
     .navbar-nav {
       // stylelint-disable-next-line selector-max-class
-      .nav-item.nav-link {
+      .nav-item.nav-link,
+      .dropdown-item.nav-link {
         color: $gray-900;
 
         // stylelint-disable-next-line selector-max-class
