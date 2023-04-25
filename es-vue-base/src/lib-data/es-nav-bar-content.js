@@ -237,6 +237,10 @@ export default {
                             link: 'https://www.energysage.com/market-intro/',
                         },
                         {
+                            name: 'Our team',
+                            link: 'https://www.energysage.com/about-us/team/',
+                        },
+                        {
                             name: 'Partner with us',
                             link: 'https://www.energysage.com/partners/',
                         },
@@ -244,6 +248,11 @@ export default {
                             name: 'Careers',
                             link: 'https://www.energysage.com/about-us/careers/',
                         },
+                    ],
+                },
+                {
+                    name: 'Our work',
+                    subtopics: [
                         {
                             name: 'Market intel',
                             link: 'https://www.energysage.com/data/',
