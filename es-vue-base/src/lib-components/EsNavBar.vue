@@ -28,7 +28,7 @@
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
-                    class="text-dark text-decoration-none"
+                    class="mb-0 text-dark text-decoration-none"
                     for="data--account-menu">
                     <icon-person class="align-self-center" />
                     <span class="sr-only">Open account menu</span>
