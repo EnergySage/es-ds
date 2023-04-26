@@ -161,7 +161,7 @@ $nav-hover-delay: 300ms;
   background-color: $white;
 
   // shadow for additional visual separation between nav and more plain pages
-  box-shadow: 0px 4px 4px rgba(221, 221, 221, 0.25);
+  box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
 
   // override es-ds default
   .btn-link {
@@ -244,8 +244,8 @@ $nav-hover-delay: 300ms;
     z-index: 1000;
 
     // shadow for additional visual separation between nav and more plain pages
+    filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
     box-shadow: none;
-    filter: drop-shadow(0px 1px 10px rgba(0, 0, 0, 0.1));
 
     // Allow dropdown content to take up the full width of the page
     .dropdown-full-page {
