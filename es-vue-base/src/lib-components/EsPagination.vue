@@ -40,10 +40,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import '~@energysage/es-bs-base/scss/includes';
 
-.pagination {
+.pagination::v-deep {
     .page-number, .prev-next, .ellipses {
         .page-link {
             background-color: transparent;
@@ -56,8 +56,8 @@ export default {
         display: block !important; // override number limit on mobile viewports
 
         @media only screen and (min-width: 370px) {  // mid-xs breakpoint; only compressed further below 370px
-            margin-left: 0.25rem;
-            margin-right: 0.25rem;
+            margin-left: $pagination-margin-x-sm;
+            margin-right: $pagination-margin-x-sm;
         }
     }
 
@@ -69,8 +69,8 @@ export default {
 
     .page-number {
         .page-link {
-            height: 2.25rem;
-            width: 2.25rem;
+            height: $pagination-button-height;
+            width: $pagination-button-height;
 
             &:hover {
                 background-color: transparent;
@@ -99,8 +99,8 @@ export default {
             padding-right: 0;
 
             @include media-breakpoint-up(sm) {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
+                padding-left: $pagination-padding-x;
+                padding-right: $pagination-padding-x;
             }
         }
 
