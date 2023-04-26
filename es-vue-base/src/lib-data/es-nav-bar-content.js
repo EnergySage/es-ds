@@ -298,7 +298,7 @@ export default {
                         },
                         {
                             name: 'Search local installers',
-                            link: 'https://www.energysage.com/installers/',
+                            link: 'https://www.energysage.com/supplier/search?selected_facets=services:installers&selected_facets=technology_types:Solar%20PV',
                         },
                         {
                             name: 'Financing',
