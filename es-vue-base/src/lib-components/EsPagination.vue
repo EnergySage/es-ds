@@ -56,8 +56,8 @@ export default {
         display: block !important; // override number limit on mobile viewports
 
         @media only screen and (min-width: 370px) {  // mid-xs breakpoint; only compressed further below 370px
-            margin-left: $pagination-margin-x-sm;
-            margin-right: $pagination-margin-x-sm;
+            margin-left: $pagination-padding-y-sm;
+            margin-right: $pagination-padding-y-sm;
         }
     }
 
@@ -69,8 +69,8 @@ export default {
 
     .page-number {
         .page-link {
-            height: $pagination-button-height;
-            width: $pagination-button-height;
+            height: 2.25rem;
+            width: 2.25rem;
 
             &:hover {
                 background-color: transparent;
