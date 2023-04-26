@@ -81,7 +81,8 @@
                     <label
                         for="data--main-menu"
                         class="mb-0">
-                        <IconX class="menu-toggle align-self-center" />
+                        <icon-x class="menu-toggle align-self-center" />
+                        <span class="sr-only">Close</span>
                     </label>
                 </div>
             </div>
