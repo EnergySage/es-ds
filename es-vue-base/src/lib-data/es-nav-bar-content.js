@@ -306,7 +306,7 @@ export default {
                         },
                         {
                             name: 'Equipment rebates',
-                            link: 'https://www.energysage.com/market/equipment-rebates/',
+                            link: 'https://www.energysage.com/promotions/',
                         },
                         {
                             name: 'Compare solar panels',
