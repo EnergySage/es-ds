@@ -108,8 +108,9 @@
                 </li>
             </ul>
         </div>
-        <!-- mobile link, shown only if we don't want to show child items on mobile -->
+        <!-- mobile link, shown only if we have a link and don't want to show child items on mobile -->
         <a
+            v-if="link"
             class="nav-item nav-item-border-mobile nav-link d-lg-none w-100"
             :class="{
                 'd-none': showItemsOnMobile,
