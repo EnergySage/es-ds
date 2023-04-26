@@ -58,6 +58,7 @@
                 style="height: 18px;" />
         </label>
         <input
+            v-if="!link"
             :id="checkboxId"
             :name="checkboxId"
             type="checkbox"
