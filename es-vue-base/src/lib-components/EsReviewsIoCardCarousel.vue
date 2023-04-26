@@ -7,11 +7,6 @@
 <script>
 export default {
     name: 'EsReviewsIoCardCarousel',
-    beforeRouteLeave(to, from, next) {
-        const widgetPrefixes = document.querySelectorAll('.CarouselWidget-prefix');
-        widgetPrefixes.forEach((prefix) => { prefix.remove(); });
-        next();
-    },
     head() {
         return {
             link: [
@@ -38,6 +33,10 @@ export default {
                 },
             ],
         };
+    },
+    beforeDestroy() {
+        const widgetPrefixes = document.querySelectorAll('.CarouselWidget-prefix');
+        widgetPrefixes.forEach((prefix) => { prefix.remove(); });
     },
     mounted() {
         // if we're server-side, get out
