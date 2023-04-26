@@ -11,8 +11,8 @@
             </b-link>
         </li>
         <li>
-            <b-link to="/organisms/reviews-io-card-carousel">
-                ReviewsIoCardCarousel
+            <b-link to="/organisms/es-reviews-io-card-carousel">
+                EsReviewsIoCardCarousel
             </b-link>
         </li>
         <li>

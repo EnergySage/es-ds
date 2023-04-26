@@ -1,13 +1,13 @@
 <template>
     <div
         id="reviewsio-carousel-widget"
-        class="ReviewsIoCardCarousel" />
+        class="EsReviewsIoCardCarousel" />
 </template>
 
 <script>
 
 export default {
-    name: 'ReviewsIoCardCarousel',
+    name: 'EsReviewsIoCardCarousel',
     beforeRouteLeave(to, from, next) {
         const widgetPrefixes = document.querySelectorAll('.CarouselWidget-prefix');
         widgetPrefixes.forEach((prefix) => { prefix.remove(); });
@@ -278,7 +278,7 @@ export default {
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
 
-.ReviewsIoCardCarousel {
+.EsReviewsIoCardCarousel {
     ::v-deep .CarouselWidget-prefix .CarouselWidget {
         /* style overrides for the widget; can't use sass variables with css variables */
         --item-border-color: #ececec;
@@ -301,7 +301,7 @@ export default {
 }
 
 @include media-breakpoint-up(sm) {
-    .ReviewsIoCardCarousel {
+    .EsReviewsIoCardCarousel {
         /* keep the clickable arrow width at 43px for accessibility. align the card edges with the standard
         /* content container edge as soon as we have room, but when the gutter is less than 43px, we do need to
         /* squash the width of the review card the minimum amount so the arrows have room to show on the sides.
@@ -317,7 +317,7 @@ export default {
 }
 
 @include media-breakpoint-up(md) {
-    .ReviewsIoCardCarousel {
+    .EsReviewsIoCardCarousel {
         /* account for the extra -10px margin applied internal to the widget at this breakpoint */
         margin-left: max(calc(-1 * ((100vw - 720px) / 2) - 5px), -43px);
         margin-right: max(calc(-1 * ((100vw - 720px) / 2) - 5px), -43px);
@@ -325,7 +325,7 @@ export default {
 }
 
 @include media-breakpoint-up(lg) {
-    .ReviewsIoCardCarousel {
+    .EsReviewsIoCardCarousel {
         /* account for the extra -10px margin applied internal to the widget at this breakpoint */
         margin-left: max(calc(-1 * ((100vw - 960px) / 2) - 5px), -43px);
         margin-right: max(calc(-1 * ((100vw - 960px) / 2) - 5px), -43px);
@@ -333,7 +333,7 @@ export default {
 }
 
 @include media-breakpoint-up(xl) {
-    .ReviewsIoCardCarousel {
+    .EsReviewsIoCardCarousel {
         /* account for the extra -10px margin applied internal to the widget at this breakpoint */
         margin-left: max(calc(-1 * ((100vw - 1140px) / 2) - 5px), -43px);
         margin-right: max(calc(-1 * ((100vw - 1140px) / 2) - 5px), -43px);
@@ -341,7 +341,7 @@ export default {
 }
 
 @include media-breakpoint-up(xxl) {
-    .ReviewsIoCardCarousel {
+    .EsReviewsIoCardCarousel {
         /* plenty of space on the sides, so just use the fixed value */
         margin-left: -43px;
         margin-right: -43px;
