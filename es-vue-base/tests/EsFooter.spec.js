@@ -14,5 +14,4 @@ describe('EsFooter', () => {
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
     });
-    // TODO: Additional testing as footer is built
 });
