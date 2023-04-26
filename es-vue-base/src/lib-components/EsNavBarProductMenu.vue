@@ -54,8 +54,7 @@
             <!-- TODO: does anything match this aria-labelledby id? -->
             <ul
                 v-if="items && items.length"
-                class="product-menu-flyout dropdown-menu row border-0 mt-0 py-lg-100"
-                :aria-labelledby="`menu-${name}`">
+                class="product-menu-flyout dropdown-menu row border-0 mt-0 py-lg-100">
                 <!-- mobile subnav header -->
                 <li
                     class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold justify-content-between text-decoration-none w-100">

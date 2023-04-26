@@ -96,9 +96,7 @@
                                 'col-lg-9 col-xl-6 col-xxl-5': topics.length == 2,
                                 'col-lg-4': topics.length == 1
                             }">
-                            <ul
-                                class="dropdown-list row w-auto"
-                                :aria-labelledby="checkboxId">
+                            <ul class="dropdown-list row w-auto">
                                 <!-- name of top-level menu (won't ever be a link) -->
                                 <li class="nav-item col-lg-12 d-lg-none">
                                     <span class="nav-link align-items-center border-bottom d-flex font-weight-bold w-100 h-100">{{ name }}</span>
