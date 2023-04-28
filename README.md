@@ -81,6 +81,14 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 5. `make build-vue-pkg` - build `es-vue-base/dist` locally
 6. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap) `es-bs-base/dist` and `es-vue-base/dist` for use in `es-design-system`
 
+### Development Workflow
+
+To develop with hot reloading for all packages you'll want to run `make dev` in the `es-ds` directory. This will build and package
+`es-bs-base` and `es-vue-base` and symlink them to `es-design-system` for use in the nuxt app. It will then start a dev instance
+for `es-design-system` that will be available at `http://localhost:8500`.
+
+Hot reloading will take longer than a typical nuxt app, as it will need to rebuild the packages and re-link them. This is expected.
+
 #### Vue Component Process
 
 ##### Unit Tests
