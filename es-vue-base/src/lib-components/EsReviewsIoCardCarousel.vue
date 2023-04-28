@@ -74,7 +74,7 @@ export default {
                             /* Minimum number of reviews required for widget to be displayed */
                             min_reviews: '1',
                             /* Maximum number of reviews to include in the carousel widget. */
-                            max_reviews: '20',
+                            max_reviews: '10',
                             address_format: 'CITY, COUNTRY',
                             /* Carousel auto-scrolling speed. 3000 = 3 seconds. If you want to disable auto-scroll,
                             set this value to false. */
@@ -115,7 +115,7 @@ export default {
                             enable_product_name: true,
                             /* Show only reviews which have specific tags (multiple semicolon
                             separated tags allowed i.e tag1;tag2) */
-                            tags: '',
+                            tags: 'es-featured',
                             /* Show branch, only one input */
                             branch: '',
                             enable_branch_name: false,
