@@ -11,6 +11,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/organisms/es-reviews-io-card-carousel">
+                EsReviewsIoCardCarousel
+            </b-link>
+        </li>
+        <li>
             <b-link to="/organisms/es-form">
                 EsForm
             </b-link>
