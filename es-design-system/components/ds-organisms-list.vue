@@ -1,19 +1,29 @@
 <template>
     <ul>
         <li>
-            <b-link to="/organisms/es-form"> EsForm </b-link>
+            <b-link to="/organisms/es-form">
+                EsForm
+            </b-link>
         </li>
         <li>
-            <b-link to="/organisms/es-nav-bar"> EsNavBar </b-link>
+            <b-link to="/organisms/es-nav-bar">
+                EsNavBar
+            </b-link>
         </li>
         <li>
-            <b-link to="/organisms/es-review"> EsReview </b-link>
+            <b-link to="/organisms/es-review">
+                EsReview
+            </b-link>
         </li>
         <li>
-            <b-link to="/organisms/es-reviews-list"> EsReviewsList </b-link>
+            <b-link to="/organisms/es-reviews-list">
+                EsReviewsList
+            </b-link>
         </li>
         <li>
-            <b-link to="/organisms/es-reviews-io-card-carousel"> EsReviewsIoCardCarousel </b-link>
+            <b-link to="/organisms/es-reviews-io-card-carousel">
+                EsReviewsIoCardCarousel
+            </b-link>
         </li>
     </ul>
 </template>
