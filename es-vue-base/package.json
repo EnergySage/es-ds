@@ -71,7 +71,7 @@
     "rollup": "^2.52.8",
     "rollup-plugin-visualizer": "^5.7.1",
     "rollup-plugin-vue": "^5.1.9",
-    "stylelint": "^14.16.1",
+    "stylelint": "^15.6.0",
     "vue": "^2.7.14",
     "vue-jest": "^3.0.7",
     "vue-slider-component": "^3.2.20",
