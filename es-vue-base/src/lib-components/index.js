@@ -13,6 +13,7 @@ export { default as EsFormRadioCards } from './EsFormRadioCards.vue';
 export { default as EsFormTextarea } from './EsFormTextarea.vue';
 export { default as EsHorizontalList } from './EsHorizontalList.vue';
 export { default as EsModal } from './EsModal.vue';
+export { default as EsNavBar } from './EsNavBar.vue';
 export { default as EsPopover } from './EsPopover.vue';
 export { default as EsProgress } from './EsProgress.vue';
 export { default as EsRating } from './EsRating.vue';
