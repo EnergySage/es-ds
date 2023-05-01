@@ -13,8 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New `EsPagination` molecule component
 - New `EsNavBar` organism component
 - New `EsReviewsIoCardCarousel` organism component
-- A new `$gray-150` color of `#F8F8F8` has been added
-- New utility classes `font-weight-lightest` and `font-weight-boldest` have been added
+- New social icons `IconFacebook`, `IconInstagram`, `IconLinkedIn`, `IconTwitter`, `IconYoutube`
+- New `$gray-150` color of `#F8F8F8`
+- New utility classes `font-weight-lightest` and `font-weight-boldest`
 
 ### Changed
 
