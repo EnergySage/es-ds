@@ -8,3 +8,7 @@ cdk.out
 .vscode/*
 !.vscode/settings.json.example
 !.vscode/extensions.json
+
+# Optional npm cache directory and config
+.npm
+.npmrc

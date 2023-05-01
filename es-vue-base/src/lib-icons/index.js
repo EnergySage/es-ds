@@ -32,12 +32,15 @@ export { default as IconLockOn } from './icon-lock-on.vue';
 export { default as IconLockOff } from './icon-lock-off.vue';
 export { default as IconLocation } from './icon-location.vue';
 export { default as IconLinkOut } from './icon-link-out.vue';
+export { default as IconLightBulb } from './icon-light-bulb.vue';
 export { default as IconInfo } from './icon-info.vue';
 export { default as IconImage } from './icon-image.vue';
 export { default as IconHeart } from './icon-heart.vue';
+export { default as IconHamburger } from './icon-hamburger.vue';
 export { default as IconFolder } from './icon-folder.vue';
 export { default as IconEye } from './icon-eye.vue';
 export { default as IconFlag } from './icon-flag.vue';
+export { default as IconESLeaf } from './icon-es-leaf.vue';
 export { default as IconEnvelope } from './icon-envelope.vue';
 export { default as IconCopy } from './icon-copy.vue';
 export { default as IconClock } from './icon-clock.vue';
@@ -63,9 +66,25 @@ export { default as IconChatApprove } from './icon-chat-approve.vue';
 export { default as IconChatAdd } from './icon-chat-add.vue';
 export { default as IconCart } from './icon-cart.vue';
 export { default as IconCalendar } from './icon-calendar.vue';
+export { default as IconCalculator } from './icon-calculator.vue';
 export { default as IconBlock } from './icon-block.vue';
 export { default as IconStarFull } from './icon-star-full.vue';
 export { default as IconStarHalf } from './icon-star-half.vue';
 export { default as IconStarEmpty } from './icon-star-empty.vue';
 export { default as IconVerified } from './icon-verified.vue';
 export { default as IconX } from './icon-x.vue';
+
+// marketing icons
+export { default as IconBattery } from './icon-battery.vue';
+export { default as IconBusiness } from './icon-business.vue';
+export { default as IconCommunitySolar } from './icon-community-solar.vue';
+export { default as IconElectricVehicle } from './icon-electric-vehicle.vue';
+export { default as IconHeatPump } from './icon-heat-pump.vue';
+export { default as IconRooftopSolar } from './icon-rooftop-solar.vue';
+
+// Social icons
+export { default as IconFacebook } from './icon-facebook.vue';
+export { default as IconInstagram } from './icon-instagram.vue';
+export { default as IconLinkedin } from './icon-linkedin.vue';
+export { default as IconTwitter } from './icon-twitter.vue';
+export { default as IconYoutube } from './icon-youtube.vue';

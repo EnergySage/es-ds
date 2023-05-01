@@ -8,6 +8,7 @@
 // Gray Scale
 $white:    #fff !default;
 $gray-100: #fafafa !default;
+$gray-150: #f8f8f8 !default;
 $gray-200: #ececec !default;
 $gray-300: #dddddd !default;
 $gray-400: #bababa !default;
@@ -25,6 +26,7 @@ $grays: () !default;
 $grays: map-merge(
   (
     "gray-100": $gray-100,
+    "gray-150": $gray-150,
     "gray-200": $gray-200,
     "gray-300": $gray-300,
     "gray-400": $gray-400,
@@ -337,6 +339,20 @@ $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+
+$font-size-50:                $font-size-base * 0.75 !default;
+$font-size-75:                $font-size-base * 0.875 !default;
+$font-size-100:               $font-size-base !default;
+$font-size-200:               $font-size-base * 1.125 !default;
+$font-size-300:               $font-size-base * 1.25 !default;
+$font-size-400:               $font-size-base * 1.5 !default;
+$font-size-500:               $font-size-base * 1.875 !default;
+$font-size-600:               $font-size-base * 2.375 !default;
+$font-size-700:               $font-size-base * 3 !default;
+$font-size-800:               $font-size-base * 3.375 !default;
+$font-size-900:               $font-size-base * 3.875 !default;
+
+// deprecated
 $font-size-xs:                $font-size-base * 0.75;
 $font-size-sm:                $font-size-base * 0.875 !default;
 $font-size-lg:                $font-size-base * 1.25 !default;
@@ -345,6 +361,18 @@ $font-size-xxl:               $font-size-base * 1.85 !default;
 
 // used in font-size-* utility classes
 $font-sizes: (
+  "50": $font-size-50,
+  "75": $font-size-75,
+  "100": $font-size-100,
+  "200": $font-size-200,
+  "300": $font-size-300,
+  "400": $font-size-400,
+  "500": $font-size-500,
+  "600": $font-size-600,
+  "700": $font-size-700,
+  "800": $font-size-800,
+  "900": $font-size-900,
+  // deprecated
   "xxl": $font-size-xxl,
   "xl": $font-size-xl,
   "lg": $font-size-lg,
@@ -362,11 +390,9 @@ $font-weight-normal:          400 !default;
 $font-weight-semibold:        500 !default;
 $font-weight-bold:            600 !default;
 $font-weight-bolder:          700 !default;
-// fusv-disable
 $font-weight-boldest:         800 !default;
-// fusv-enable
 
-$font-weight-base:            $font-weight-normal !default;
+$font-weight-base:            $font-weight-light !default;
 $line-height-base:            1.5 !default;
 
 // Body
@@ -423,7 +449,7 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   xl: 1140px,
-  xxl: 1610px
+  xxl: 1440px
 ) !default;
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
@@ -500,7 +526,7 @@ $h6-font-size-desktop:        $font-size-base * 0.875;
 
 $headings-margin-bottom:      1rem !default;
 $headings-font-family:        $font-family-sans-serif !default;
-$headings-font-weight:        700 !default;
+$headings-font-weight:        $font-weight-semibold !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              $gray-900 !default;
 // fusv-disable
@@ -990,9 +1016,9 @@ $navbar-dark-disabled-color:        rgba($white, .25) !default;
 $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-dark-toggler-border-color:  rgba($white, .1) !default;
 
-$navbar-light-color:                $black !default;
-$navbar-light-hover-color:          rgba($black, .7) !default;
-$navbar-light-active-color:         rgba($black, .9) !default;
+$navbar-light-color:                $gray !default;
+$navbar-light-hover-color:          $gray !default;
+$navbar-light-active-color:         $gray !default;
 $navbar-light-disabled-color:       rgba($black, .3) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-light-toggler-border-color: rgba($black, .1) !default;

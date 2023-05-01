@@ -246,9 +246,9 @@
                     <ds-color-swatch
                         :hex="value"
                         :is-light="[
-                            'white', 'gray-100', 'gray-200', 'gray-300', 'gray-400', 'gray-500'
+                            'white', 'gray-100', 'gray-150', 'gray-200', 'gray-300', 'gray-400', 'gray-500'
                         ].includes(alias)"
-                        :show-border="['white', 'gray-100'].includes(alias)"
+                        :show-border="['white', 'gray-100', 'gray-150'].includes(alias)"
                         :token="alias" />
                 </b-col>
             </b-row>

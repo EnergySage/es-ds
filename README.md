@@ -81,6 +81,14 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 5. `make build-vue-pkg` - build `es-vue-base/dist` locally
 6. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap) `es-bs-base/dist` and `es-vue-base/dist` for use in `es-design-system`
 
+### Development Workflow
+
+To develop with hot reloading for all packages you'll want to run `make dev` in the `es-ds` directory. This will build and package
+`es-bs-base` and `es-vue-base` and symlink them to `es-design-system` for use in the nuxt app. It will then start a dev instance
+for `es-design-system` that will be available at `http://localhost:8500`.
+
+Hot reloading will take longer than a typical nuxt app, as it will need to rebuild the packages and re-link them. This is expected.
+
 #### Vue Component Process
 
 ##### Unit Tests
@@ -119,7 +127,7 @@ Assuming changes are approved, the process of publishing a new version is...
 5. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
 6. `make install && make symlink` - Install the new published versions locally and symlink them
 7. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` - Commit and push the changelog and `package-lock.json` updates
-8. For updating the design-system documentation see [Deploy Design System](https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation)
+8. For updating the design-system website see [Deploy Design System](https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation)
 
 Running `make publish` will trigger the following prompt:
 

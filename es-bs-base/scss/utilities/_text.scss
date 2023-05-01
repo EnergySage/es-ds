@@ -35,9 +35,16 @@
 
 // Responsive size
 
-// TODO: Align the design system guild on font sizing, responsive font sizing,
-// and the sm/md/lg/xl/xxl font sizes. Perhaps normalize font size token names
-// to numbers (e.g. 100, 200) like Adobe.
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $size, $value in $font-sizes {
+      .font-size#{$infix}-#{$size} {
+        font-size: $value !important;
+      }
+    }
+  }
+}
 
 .font-size-h1 { @include font-size($h1-font-size, true); }
 .font-size-h2 { @include font-size($h2-font-size, true); }
@@ -63,12 +70,14 @@
 
 // Weight and italics
 
+.font-weight-lightest { font-weight: $font-weight-lightest !important; }
 .font-weight-light    { font-weight: $font-weight-light !important; }
 .font-weight-lighter  { font-weight: $font-weight-lighter !important; }
 .font-weight-normal   { font-weight: $font-weight-normal !important; }
 .font-weight-semibold { font-weight: $font-weight-semibold !important; }
 .font-weight-bold     { font-weight: $font-weight-bold !important; }
 .font-weight-bolder   { font-weight: $font-weight-bolder !important; }
+.font-weight-boldest   { font-weight: $font-weight-boldest !important; }
 .font-italic          { font-style: italic !important; }
 
 // Line height

@@ -172,9 +172,13 @@
                     <es-form-input
                         id="hiddenLabelExample"
                         v-model="form.zipCode"
+                        autocomplete="postal-code"
                         class="flex-grow-1"
-                        placeholder="ZIP code"
-                        label-sr-only>
+                        inputmode="numeric"
+                        label-sr-only
+                        maxlength="5"
+                        pattern="\d*"
+                        placeholder="ZIP code">
                         <template #label>
                             ZIP code
                         </template>
@@ -182,6 +186,35 @@
                     <es-button class="ml-lg-50 w-100 w-lg-auto">
                         Submit
                     </es-button>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-450">
+            <h2>
+                Prefix icon
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="prefixIconExample"
+                        v-model="form.zipCode"
+                        autocomplete="postal-code"
+                        inputmode="numeric"
+                        label-sr-only
+                        maxlength="5"
+                        pattern="\d*"
+                        placeholder="ZIP code">
+                        <template #prefixIcon>
+                            <icon-location />
+                        </template>
+                        <template #label>
+                            ZIP code
+                        </template>
+                    </es-form-input>
                 </b-col>
             </b-row>
         </div>

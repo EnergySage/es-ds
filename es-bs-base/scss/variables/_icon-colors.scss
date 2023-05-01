@@ -5,10 +5,11 @@
 @import "../variables";
 
 :export {
-  xxl: $font-size-xxl;
-  xl: $font-size-xl;
-  lg: $font-size-lg;
-  base: $font-size-base;
-  sm: $font-size-sm;
-  xs: $font-size-xs;
+  body: $body-color;
+  primary: $primary;
+  gray: $gray;
+  pink: $pink;
+  teal: $teal;
+  yellow: $yellow;
+  orange: $orange;
 }
