@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsPagination <EsPagination /> 1`] = `
+"<div>
+  <ul id="paginated-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+  <ul role="menubar" aria-disabled="false" aria-label="Pagination" class="pagination mb-0 b-pagination" total-rows="2" per-page="1" value="1">
+    <!---->
+    <li role="presentation" aria-hidden="true" class="page-item disabled prev-next"><span role="menuitem" aria-label="Go to previous page" aria-disabled="true" class="page-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.707 3.293a1 1 0 0 1 0 1.414L8.414 12l7.293 7.293a1 1 0 0 1-1.414 1.414l-8-8a1 1 0 0 1 0-1.414l8-8a1 1 0 0 1 1.414 0Z"></path></svg></span></li>
+    <!---->
+    <!---->
+    <li role="presentation" class="page-item active page-number font-size-sm mx-sm-50"><button role="menuitemradio" type="button" aria-label="Go to page 1" aria-checked="true" aria-posinset="1" aria-setsize="2" tabindex="0" class="page-link">1</button></li>
+    <li role="presentation" class="page-item page-number font-size-sm mx-sm-50"><button role="menuitemradio" type="button" aria-label="Go to page 2" aria-checked="false" aria-posinset="2" aria-setsize="2" tabindex="-1" class="page-link">2</button></li>
+    <!---->
+    <!---->
+    <li role="presentation" class="page-item prev-next"><button role="menuitem" type="button" tabindex="-1" aria-label="Go to next page" class="page-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L14.586 12 7.293 4.707a1 1 0 0 1 0-1.414Z"></path>
+        </svg></button></li>
+    <!---->
+  </ul>
+</div>"
+`;
