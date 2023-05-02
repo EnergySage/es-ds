@@ -540,7 +540,7 @@ $nav-hover-delay: 300ms;
       width: 100%;
       border-style: none;
 
-      .nav-item {
+      .nav-item:not(.nav-link) {
         margin: 0;
       }
     }
