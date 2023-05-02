@@ -92,15 +92,18 @@
                     </a>
                     <div
                         v-else
-                        class="nav-item nav-item-border-mobile nav-link text-decoration-none font-weight-bold d-flex w-100 align-items-center">
-                        {{ name }}
+                        class="nav-item col-12">
+                        <span
+                            class="nav-link align-items-center border-bottom d-flex font-weight-bold h-100 text-decoration-none w-100">
+                            {{ name }}
+                        </span>
                     </div>
                 </li>
                 <li
                     v-for="item in items"
                     :key="item.name">
                     <a
-                        class="dropdown-item nav-item nav-item-border-mobile nav-link d-flex align-items-center ml-50 ml-lg-0 px-lg-0 py-lg-50"
+                        class="dropdown-item nav-item nav-item-border-mobile nav-link d-flex align-items-center ml-lg-0 px-lg-0 py-lg-50"
                         :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="newTab ? '_blank' : null">

@@ -149,7 +149,7 @@
                         <a
                             class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
                             :href="item.link">
-                            <span class="mx-50"> {{ item.name }} </span>
+                            {{ item.name }}
                         </a>
                     </li>
                 </ul>
