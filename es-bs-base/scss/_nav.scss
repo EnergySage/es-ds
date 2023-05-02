@@ -181,7 +181,8 @@ $nav-hover-delay: 300ms;
 
   // All links and labels in the navigation should start at a font-weight-normal (weight 400)
   // TODO: This overrides styles for `eyebrow`
-  a, label {
+  a,
+  label {
     font-weight: $font-weight-normal;
   }
 
