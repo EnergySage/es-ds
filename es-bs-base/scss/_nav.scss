@@ -153,15 +153,21 @@ $nav-hover-delay: 300ms;
   }
 }
 
-.nav-es-global {
-  // default should be size 14px according to figma
-  font-size: $font-size-75;
+.nav-es-container {
 
-  // add a background so veil goes under the nav and nav stands out against page bg
-  background-color: $white;
+  .nav-es-global,
+  .nav-es-sticky {
+    // default should be size 14px according to figma
+    font-size: $font-size-75;
+  }
 
-  // shadow for additional visual separation between nav and more plain pages
-  box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
+  .nav-es-global {
+    // add a background so veil goes under the nav and nav stands out against page bg
+    background-color: $white;
+
+    // shadow for additional visual separation between nav and more plain pages
+    box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
+  }
 
   // override es-ds default
   .btn-link {
@@ -180,19 +186,18 @@ $nav-hover-delay: 300ms;
   }
 
   // Adjust default nav-link styling
-  &.navbar-light {
-    .navbar-nav {
-      // stylelint-disable-next-line selector-max-class
-      .nav-item.nav-link,
-      .dropdown-item.nav-link {
-        color: $gray-900;
+  .nav-es-sticky,
+  .navbar-light .navbar-nav {
+    // stylelint-disable-next-line selector-max-class
+    .nav-item.nav-link,
+    .dropdown-item.nav-link {
+      color: $gray-900;
 
-        // stylelint-disable-next-line selector-max-class
-        &:hover {
-          font-weight: $font-weight-semibold;
-          color: $gray-900;
-          text-decoration: underline;
-        }
+      // stylelint-disable-next-line selector-max-class
+      &:hover {
+        font-weight: $font-weight-semibold;
+        color: $gray-900;
+        text-decoration: underline;
       }
     }
   }
@@ -240,12 +245,33 @@ $nav-hover-delay: 300ms;
 
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: $desktop-min-width) {
-    // pull navbar up to avoid overlay from getting covered by other DOM elements
-    z-index: 1000;
+    .nav-es-global,
+    .nav-es-sticky {
+      // pull navbar up to avoid overlay from getting covered by other DOM elements
+      z-index: 1000;
 
-    // shadow for additional visual separation between nav and more plain pages
-    filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
-    box-shadow: none;
+      // shadow for additional visual separation between nav and more plain pages
+      filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
+      box-shadow: none;
+    }
+
+    // sticky nav bar, initially positioned out of viewport
+    .nav-es-sticky {
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+      // stylelint-disable-next-line property-disallowed-list
+      transition: $transition-base;
+      transform: translateY(-100%);
+    }
+
+    // when scrolled down, animate sticky nav bar into viewport
+    &.scrolled {
+      .nav-es-sticky {
+        transform: translateY(0%);
+      }
+    }
 
     // Allow dropdown content to take up the full width of the page
     .dropdown-full-page {
@@ -285,6 +311,8 @@ $nav-hover-delay: 300ms;
 
     // Show top headers down chevron icon
     .nav-item {
+      cursor: pointer;
+
       .top-header-icon {
         // stylelint-disable-next-line property-disallowed-list
         transition: transform 0s;
@@ -465,8 +493,10 @@ $nav-hover-delay: 300ms;
 
   // A lot of custom styles for the mobile navigation menu
   @media only screen and (max-width: $mobile-max-width) {
-    // Set collapsed navbar height
-    height: 56px;
+    .nav-es-global {
+      // Set collapsed navbar height
+      height: 56px;
+    }
 
     // Force navigation items to align to the top and avoid conflict with other components on the page
     // Ensure menus are visible above overlay

@@ -8,6 +8,13 @@
             container. See above.
         </p>
 
+        <p
+            v-for="index in 10"
+            :key="index"
+            class="my-800">
+            Sample content to increase page length; for testing the sticky nav bar.
+        </p>
+
         <!-- print out EsNavBar's mounted() script here so the rip-the-nav utility can access it -->
         <!-- eslint-disable vue/no-v-html -->
         <pre

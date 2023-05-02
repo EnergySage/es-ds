@@ -1,5 +1,7 @@
 <template>
-    <div id="nav-main">
+    <div
+        id="nav-main"
+        class="nav-es-container">
         <div class="content-overlay" />
         <nav
             class="nav-es-global navbar navbar-expand navbar-light py-0">
@@ -92,57 +94,10 @@
                             :sub-heading="topLevelMenu.subHeading"
                             :topics="topLevelMenu.topics" />
                         <!-- desktop account menu -->
-                        <div class="d-none d-lg-block">
-                            <li class="icon-dropdown">
-                                <div class="nav-item">
-                                    <div class="nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100">
-                                        <IconPerson class="align-self-center" />
-                                        <div class="first-name align-self-center pl-50">
-                                            Sign in
-                                        </div>
-                                    </div>
-                                    <div class="menu">
-                                        <ul
-                                            class="loggedIn dropdown-menu account-menu rounded mt-0 py-100"
-                                            style="display: none">
-                                            <li
-                                                v-for="item in items.accountMenu.loggedIn.items"
-                                                :key="item.name">
-                                                <a
-                                                    class="dropdown-item nav-link"
-                                                    :href="item.link">
-                                                    <span class="mx-50"> {{ item.name }} </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <ul
-                                            class="loggedOut dropdown-menu account-menu rounded mt-0"
-                                            style="display: none">
-                                            <a
-                                                class="d-flex justify-content-around text-decoration-none"
-                                                :href="items.accountMenu.loggedOut.signIn.link">
-                                                <EsButton
-                                                    :outline="true"
-                                                    variant="secondary"
-                                                    class="m-100 w-75">
-                                                    {{ items.accountMenu.loggedOut.signIn.name }}
-                                                </EsButton>
-                                            </a>
-                                            <li>
-                                                <a
-                                                    class="d-flex justify-content-around"
-                                                    :href="items.accountMenu.loggedOut.createAccount.link">
-                                                    <EsButton
-                                                        variant="link">
-                                                        {{ items.accountMenu.loggedOut.createAccount.name }}
-                                                    </EsButton>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </div>
+                        <es-nav-bar-account-menu
+                            :auth-items="items.accountMenu.loggedIn.items"
+                            class="d-none d-lg-block"
+                            :logged-out="items.accountMenu.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
                     <div class="row mx-0 d-flex justify-content-lg-center">
@@ -221,11 +176,34 @@
                 </ul>
             </div>
         </nav>
+        <!-- sticky nav bar -->
+        <nav class="nav-es-sticky bg-white d-none d-lg-block position-fixed py-25">
+            <b-container class="align-items-center d-flex justify-content-between">
+                <!-- EnergySage logo -->
+                <a
+                    class="navbar-brand d-none d-lg-block"
+                    :href="items.home.link">
+                    <!-- small desktop logo -->
+                    <es-logo
+                        width="128px"
+                        height="28px" />
+                    <span class="sr-only">
+                        {{ items.home.name }}
+                    </span>
+                </a>
+                <!-- desktop account menu -->
+                <es-nav-bar-account-menu
+                    :auth-items="items.accountMenu.loggedIn.items"
+                    class="d-none d-lg-block"
+                    :logged-out="items.accountMenu.loggedOut" />
+            </b-container>
+        </nav>
     </div>
 </template>
 
 <script lang="js">
 import EsButton from './EsButton.vue';
+import EsNavBarAccountMenu from './EsNavBarAccountMenu.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
 import NAV_BAR_CONTENT from '../lib-data/es-nav-bar-content';
@@ -237,6 +215,7 @@ export default {
     components: {
         EsButton,
         EsLogo,
+        EsNavBarAccountMenu,
         EsNavBarProductMenu,
         EsNavBarTopLevelMenu,
     },
@@ -300,7 +279,7 @@ export default {
         // Show overlay on hovers for desktop only
         // eslint-disable-next-line max-len
         document.querySelectorAll(
-            '.nav-es-global .nav-item .dropdown-toggle, .nav-es-global .nav-item .dropdown-menu',
+            '.nav-es-container .nav-item .dropdown-toggle, .nav-es-container .nav-item .dropdown-menu',
         )
             .forEach((element) => {
                 element.addEventListener('mouseover', () => {
@@ -334,18 +313,18 @@ export default {
         const menuDisplay = ({ loggedOut }) => {
             if (loggedOut) {
                 // logged out so allow loggedOut menu and the compare buttons to be visible
-                document.querySelectorAll('.nav-es-global .loggedOut').forEach((element) => {
+                document.querySelectorAll('.nav-es-container .loggedOut').forEach((element) => {
                     // eslint-disable-next-line no-param-reassign
                     element.style.display = null;
                 });
             } else {
                 // logged in so allow logged in menu to be visible, and show name with appropriate layout
-                document.querySelectorAll('.nav-es-global .loggedIn').forEach((element) => {
+                document.querySelectorAll('.nav-es-container .loggedIn').forEach((element) => {
                     // eslint-disable-next-line no-param-reassign
                     element.style.display = null;
                 });
-                document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle').style.display = 'flex';
-                document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name')
+                document.querySelector('.nav-es-container .icon-dropdown .dropdown-toggle').style.display = 'flex';
+                document.querySelector('.nav-es-container .icon-dropdown .dropdown-toggle .first-name')
                     .style.display = 'block';
             }
         };
@@ -357,7 +336,9 @@ export default {
             .then((response) => response.json())
             .then((data) => {
                 const name = data?.first_name || null;
-                document.querySelector('.nav-es-global .icon-dropdown .dropdown-toggle .first-name').innerHTML = name;
+                document.querySelector(
+                    '.nav-es-container .icon-dropdown .dropdown-toggle .first-name',
+                ).innerHTML = name;
                 menuDisplay({ loggedOut: (name === null) });
             }).catch((e) => {
                 // eslint-disable-next-line no-console
@@ -370,6 +351,29 @@ export default {
         window.addEventListener('pageshow', () => {
             collapse_mobile_menus();
         });
+
+        // set up options for sticky nav intersection observer
+        const intersectionOptions = {
+            rootMargin: '0px',
+            threshold: 0.0,
+        };
+
+        // set up callback for sticky nav intersection observer
+        const intersectionCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('scrolled');
+                } else {
+                    entry.target.classList.add('scrolled');
+                }
+            });
+        };
+
+        // initialize intersection observer to detect when nav scrolls out of viewport
+        // https://www.smashingmagazine.com/2021/07/dynamic-header-intersection-observer/
+        const observer = new IntersectionObserver(intersectionCallback, intersectionOptions);
+        const targetEl = document.querySelector('#nav-main');
+        observer.observe(targetEl);
 
         // CUSTOM GLOBAL-NAV SCRIPT ENDS
     },
