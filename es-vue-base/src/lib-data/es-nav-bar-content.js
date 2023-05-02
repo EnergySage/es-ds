@@ -13,6 +13,10 @@ export default {
                     link: 'https://www.energysage.com/profile/',
                 },
                 {
+                    name: 'My Marketplace',
+                    link: 'https://www.energysage.com/your-marketplace/',
+                },
+                {
                     name: 'Share Your Experience',
                     link: 'https://www.energysage.com/share-your-experience/',
                 },
@@ -371,6 +375,7 @@ export default {
                     name: 'Search solar farms ',
                     link: 'https://communitysolar.energysage.com/projects',
                     newTab: true,
+                    emphasize: true,
                 },
             ],
         },
@@ -391,6 +396,7 @@ export default {
                     name: 'Get personalized quotes',
                     link: 'https://heatpumps.energysage.com/welcome',
                     newTab: true,
+                    emphasize: true,
                 },
             ],
         },
@@ -413,6 +419,7 @@ export default {
                 {
                     name: 'Get quotes for solar + batteries',
                     link: 'https://www.energysage.com/market/start/',
+                    emphasize: true,
                 },
             ],
         },

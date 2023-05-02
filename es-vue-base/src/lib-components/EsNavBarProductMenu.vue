@@ -71,6 +71,7 @@
                     :key="item.name">
                     <a
                         class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
+                        :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="item.newTab ? '_blank' : null">
                         {{ item.name }}
