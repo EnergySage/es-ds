@@ -104,7 +104,7 @@
                         :name="topic.name"
                         :show-items-on-mobile="topic.showItemsOnMobile"
                         :sub-heading="topic.subHeading" />
-                    <li class="nav-item col-lg-4 d-block h-100 my-100 my-lg-0">
+                    <li class="nav-item col-lg-4 d-block h-auto my-100 my-lg-0">
                         <es-nav-bar-featured-article
                             :eyebrow="featuredArticle.eyebrow"
                             :link="featuredArticle.link"
