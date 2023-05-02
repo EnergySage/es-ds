@@ -257,12 +257,13 @@ $nav-hover-delay: 300ms;
 
     // sticky nav bar, initially positioned out of viewport
     .nav-es-sticky {
-      left: 0;
-      right: 0;
       top: 0;
-      transform: translateY(-100%);
-      transition: $transition-base;
+      right: 0;
+      left: 0;
       z-index: 1000;
+      // stylelint-disable-next-line property-disallowed-list
+      transition: $transition-base;
+      transform: translateY(-100%);
     }
 
     // when scrolled down, animate sticky nav bar into viewport
