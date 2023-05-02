@@ -79,7 +79,7 @@
             </ul>
             <div
                 v-if="topics && topics.length"
-                class="product-menu-flyout product-menu-flyout--large dropdown-menu row border-0 mt-0 p-lg-100">
+                class="product-menu-flyout product-menu-flyout--large dropdown-menu border-0 flex-wrap mt-0 p-lg-100">
                 <!-- mobile subnav header -->
                 <p
                     class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold justify-content-between mb-0 text-decoration-none w-100">
@@ -92,18 +92,18 @@
                 </p>
                 <b-row
                     tag="ul"
-                    class="list-unstyled">
+                    class="d-block d-lg-flex list-unstyled">
                     <es-nav-bar-topic-menu
                         v-for="topic in topics"
                         :key="topic.name"
-                        class="col-lg-4"
+                        class="col-lg-4 d-block"
                         :items="topic.subtopics"
                         :link="topic.link"
                         :new-tab="topic.newTab"
                         :name="topic.name"
                         :show-items-on-mobile="topic.showItemsOnMobile"
                         :sub-heading="topic.subHeading" />
-                    <li class="col-lg-4 m-100 m-lg-0">
+                    <li class="col-lg-4 d-block m-100 m-lg-0">
                         <es-nav-bar-featured-article
                             :eyebrow="featuredArticle.eyebrow"
                             :link="featuredArticle.link"
