@@ -23,7 +23,10 @@ class NuxtStaticStack extends cdk.Stack {
             },
             csp: {
                 directives: {
-                    scriptSrc: ["'unsafe-eval'"],
+                    connectSrc: ['api.reviews.io'],
+                    fontSrc: ['assets.reviews.io'],
+                    scriptSrc: ["'unsafe-eval'", 'widget.reviews.io'],
+                    styleSrc: ['data:', 'assets.reviews.io'],
                 },
                 sites: {
                     vwo: false,
