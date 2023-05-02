@@ -5,7 +5,7 @@
         <!-- desktop header, if it's a link -->
         <a
             v-if="link"
-            class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-100 text-gray"
+            class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray"
             :href="link"
             :target="newTab ? '_blank' : null">
             <span class="align-items-center eyebrow d-flex font-size-50 font-weight-bolder text-gray">
@@ -24,7 +24,7 @@
         <!-- desktop header, if it's not a link -->
         <p
             v-else
-            class="dropdown-toggle topic-menu-header eyebrow align-items-center d-none d-lg-block font-size-50 font-weight-bolder mb-lg-50 position-relative px-lg-0 py-lg-100 text-gray">
+            class="dropdown-toggle topic-menu-header eyebrow align-items-center d-none d-lg-block font-size-50 font-weight-bolder mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray">
             <span class="d-block">
                 {{ name }}
             </span>
