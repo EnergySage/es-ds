@@ -324,8 +324,11 @@ export default {
                     element.style.display = null;
                 });
                 document.querySelector('.nav-es-container .icon-dropdown .dropdown-toggle').style.display = 'flex';
-                document.querySelector('.nav-es-container .icon-dropdown .dropdown-toggle .first-name')
-                    .style.display = 'block';
+                const selector = '.nav-es-container .icon-dropdown .dropdown-toggle .first-name';
+                document.querySelectorAll(selector).forEach((element) => {
+                    // eslint-disable-next-line no-param-reassign
+                    element.style.display = 'block';
+                });
             }
         };
 
@@ -336,9 +339,11 @@ export default {
             .then((response) => response.json())
             .then((data) => {
                 const name = data?.first_name || null;
-                document.querySelector(
-                    '.nav-es-container .icon-dropdown .dropdown-toggle .first-name',
-                ).innerHTML = name;
+                const selector = '.nav-es-container .icon-dropdown .dropdown-toggle .first-name';
+                document.querySelectorAll(selector).forEach((element) => {
+                    // eslint-disable-next-line no-param-reassign
+                    element.innerHTML = name;
+                });
                 menuDisplay({ loggedOut: (name === null) });
             }).catch((e) => {
                 // eslint-disable-next-line no-console
