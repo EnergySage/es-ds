@@ -13,7 +13,7 @@ export default {
                     link: 'https://www.energysage.com/profile/',
                 },
                 {
-                    name: 'My Marketplace',
+                    name: 'My Quotes',
                     link: 'https://www.energysage.com/your-marketplace/',
                 },
                 {
