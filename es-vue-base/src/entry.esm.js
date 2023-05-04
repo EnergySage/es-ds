@@ -22,4 +22,5 @@ export * from './lib-icons/index';
 
 // To allow individual utils/mixin use
 export * from './lib-mixins/index';
+export * from './lib-utils/index';
 export * from './lib-validators/index';

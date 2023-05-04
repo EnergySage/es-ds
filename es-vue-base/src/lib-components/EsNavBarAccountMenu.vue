@@ -5,7 +5,7 @@
                 <div class="nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100">
                     <IconPerson class="align-self-center" />
                     <div class="first-name align-self-center pl-50">
-                        Sign in
+                        {{ loggedOut.menuButtonText }}
                     </div>
                 </div>
                 <div class="menu">
@@ -18,7 +18,9 @@
                             <a
                                 class="dropdown-item nav-link"
                                 :href="item.link">
-                                <span class="mx-50"> {{ item.name }} </span>
+                                <span class="mx-50">
+                                    {{ item.name }}
+                                </span>
                             </a>
                         </li>
                     </ul>

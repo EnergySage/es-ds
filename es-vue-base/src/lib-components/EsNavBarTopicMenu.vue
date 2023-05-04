@@ -75,7 +75,9 @@
                         for="data--main-menu"
                         class="mb-0">
                         <icon-x class="menu-toggle align-self-center" />
-                        <span class="sr-only">Close</span>
+                        <span class="sr-only">
+                            {{ closeButtonText }}
+                        </span>
                     </label>
                 </div>
             </div>
@@ -138,6 +140,10 @@
 export default {
     name: 'EsNavBarTopicMenu',
     props: {
+        closeButtonText: {
+            type: String,
+            required: true,
+        },
         items: {
             type: Array,
             required: true,
