@@ -29,8 +29,8 @@
             doc-source="es-design-system/pages/organisms/es-nav-bar.vue" />
     </div>
 </template>
-
 <script>
+
 export default {
     name: 'EsNavBarDocs',
     // use a custom layout so the nav can be full-width at the top of the page
