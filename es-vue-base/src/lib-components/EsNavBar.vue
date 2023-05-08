@@ -213,8 +213,8 @@
         </nav>
     </div>
 </template>
-
 <script lang="js">
+
 import EsButton from './EsButton.vue';
 import EsNavBarAccountMenu from './EsNavBarAccountMenu.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
