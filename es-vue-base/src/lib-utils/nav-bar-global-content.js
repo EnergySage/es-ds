@@ -71,7 +71,9 @@ export default (
                         },
                         {
                             name: 'How much do heat pumps cost?',
-                            link: `${ES_DOMAIN}/clean-heating-cooling/air-source-heat-pumps/costs-and-benefits-air-source-heat-pumps/`,
+                            link: `${
+                                ES_DOMAIN
+                            }/clean-heating-cooling/air-source-heat-pumps/costs-and-benefits-air-source-heat-pumps/`,
                         },
                         {
                             name: 'How do heat pumps work?',
@@ -272,6 +274,7 @@ export default (
                         },
                         {
                             name: 'Search local installers',
+                            // eslint-disable-next-line max-len
                             link: `${ES_DOMAIN}/supplier/search?selected_facets=services:installers&selected_facets=technology_types:Solar%20PV`,
                         },
                         {
