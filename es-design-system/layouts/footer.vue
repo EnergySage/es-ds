@@ -30,11 +30,12 @@
             </b-row>
         </b-container>
 
-        <es-footer />
+        <es-footer :content="footerContent" />
     </div>
 </template>
 
 <script>
+import { getEsFooterContent } from '@energysage/es-vue-base';
 
 /* eslint-disable vue/multi-word-component-names, vue/component-definition-name-casing */
 export default {
@@ -56,6 +57,9 @@ export default {
                     to: `/${path}`,
                 };
             });
+        },
+        footerContent() {
+            return getEsFooterContent();
         },
     },
 };
