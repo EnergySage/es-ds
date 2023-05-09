@@ -34,10 +34,9 @@
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
                     :for="checkboxId"
-                    class="menu-toggle nav-link d-flex w-100 h-100 mb-0 align-items-center
-                                            font-size-sm">
+                    class="menu-toggle nav-link align-items-center d-flex font-size-sm h-100 mb-0 text-uppercase w-100">
                     <IconChevronLeft height="18px" />
-                    MAIN MENU
+                    {{ mainMenuText }}
                 </label>
                 <!-- closes the entire mobile nav menu -->
                 <div class="d-flex col-3 justify-content-end">
@@ -46,7 +45,9 @@
                         for="data--main-menu"
                         class="mb-0">
                         <icon-x class="menu-toggle align-self-center" />
-                        <span class="sr-only">Close</span>
+                        <span class="sr-only">
+                            {{ closeButtonText }}
+                        </span>
                     </label>
                 </div>
             </div>
@@ -62,7 +63,7 @@
                     <a
                         class="product-menu-flyout-see-all font-size-50 font-weight-bolder text-uppercase"
                         :href="link">
-                        See All
+                        {{ seeAllText }}
                     </a>
                 </li>
                 <!-- subnav items -->
@@ -88,7 +89,7 @@
                     <a
                         class="product-menu-flyout-see-all font-size-50 font-weight-bolder text-uppercase"
                         :href="link">
-                        See All
+                        {{ seeAllText }}
                     </a>
                 </p>
                 <b-row
@@ -98,6 +99,7 @@
                         v-for="topic in topics"
                         :key="topic.name"
                         class="col-lg-4 d-block"
+                        :close-button-text="closeButtonText"
                         :items="topic.subtopics"
                         :link="topic.link"
                         :new-tab="topic.newTab"
@@ -128,6 +130,10 @@ export default {
         EsNavBarTopicMenu,
     },
     props: {
+        closeButtonText: {
+            type: String,
+            required: true,
+        },
         featuredArticle: {
             type: Object,
             default: () => ({}),
@@ -140,11 +146,19 @@ export default {
             type: String,
             required: true,
         },
+        mainMenuText: {
+            type: String,
+            required: true,
+        },
         newTab: {
             type: Boolean,
             default: false,
         },
         name: {
+            type: String,
+            required: true,
+        },
+        seeAllText: {
             type: String,
             required: true,
         },

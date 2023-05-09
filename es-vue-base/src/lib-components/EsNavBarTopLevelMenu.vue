@@ -72,9 +72,9 @@
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
                     :for="checkboxId"
-                    class="menu-toggle nav-link align-items-center d-flex font-size-sm mb-0 w-100 h-100">
+                    class="menu-toggle nav-link align-items-center d-flex font-size-sm h-100 mb-0 text-uppercase w-100">
                     <IconChevronLeft height="18px" />
-                    MAIN MENU
+                    {{ mainMenuText }}
                 </label>
                 <div class="d-flex col-3 justify-content-end">
                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -82,7 +82,9 @@
                         for="data--main-menu"
                         class="mb-0">
                         <icon-x class="menu-toggle align-self-center" />
-                        <span class="sr-only">Close</span>
+                        <span class="sr-only">
+                            {{ closeButtonText }}
+                        </span>
                     </label>
                 </div>
             </div>
@@ -109,6 +111,7 @@
                                         'col-lg-6': topics.length >= 2,
                                         'col-lg-12': topics.length == 1
                                     }"
+                                    :close-button-text="closeButtonText"
                                     :items="topic.subtopics"
                                     :link="topic.link"
                                     :new-tab="topic.newTab"
@@ -133,7 +136,7 @@
 <script lang="js">
 import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
-import { NAV_BAR_ICONS } from '../lib-utils/es-nav-bar-constants';
+import { NAV_BAR_ICONS } from '../lib-utils/nav-bar-constants';
 
 export default {
     name: 'EsNavBarTopLevelMenu',
@@ -142,6 +145,10 @@ export default {
         EsNavBarTopicMenu,
     },
     props: {
+        closeButtonText: {
+            type: String,
+            required: true,
+        },
         featuredArticle: {
             type: Object,
             default: () => ({}),
@@ -157,6 +164,10 @@ export default {
         link: {
             type: String,
             default: '',
+        },
+        mainMenuText: {
+            type: String,
+            required: true,
         },
         newTab: {
             type: Boolean,

@@ -1,6 +1,8 @@
 <template>
     <div>
-        <es-nav-bar />
+        <es-nav-bar
+            :account-content="accountContent"
+            :global-content="globalContent" />
 
         <b-navbar
             class="mb-3"
@@ -35,11 +37,15 @@
 </template>
 
 <script>
+import { getEsNavBarAccountContent, getEsNavBarGlobalContent } from '@energysage/es-vue-base';
 
 /* eslint-disable vue/multi-word-component-names, vue/component-definition-name-casing */
 export default {
     name: 'NavLayout',
     computed: {
+        accountContent() {
+            return getEsNavBarAccountContent();
+        },
         breadcrumbs() {
             const paths = this.$route.path.split('/');
 
@@ -56,6 +62,9 @@ export default {
                     to: `/${path}`,
                 };
             });
+        },
+        globalContent() {
+            return getEsNavBarGlobalContent();
         },
     },
 };

@@ -12,18 +12,20 @@
                     for="data--main-menu"
                     class="mb-0">
                     <icon-hamburger class="menu-toggle align-self-center" />
-                    <span class="sr-only">Open navigation menu</span>
+                    <span class="sr-only">
+                        {{ globalContent.mobileNavButtonAltText }}
+                    </span>
                 </label>
             </div>
             <!-- mobile logo -->
             <a
                 class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
-                :href="items.home.link">
+                :href="globalContent.home.link">
                 <es-logo
                     width="128px"
                     height="28px" />
                 <span class="sr-only">
-                    {{ items.home.name }}
+                    {{ globalContent.home.name }}
                 </span>
             </a>
             <!-- mobile account menu trigger -->
@@ -33,7 +35,9 @@
                     class="mb-0 text-dark text-decoration-none"
                     for="data--account-menu">
                     <icon-person class="align-self-center" />
-                    <span class="sr-only">Open account menu</span>
+                    <span class="sr-only">
+                        {{ accountContent.mobileAccountButtonAltText }}
+                    </span>
                 </label>
             </div>
             <input
@@ -59,7 +63,9 @@
                             for="data--main-menu"
                             class="mb-0">
                             <icon-x class="menu-toggle align-self-center" />
-                            <span class="sr-only">Close</span>
+                            <span class="sr-only">
+                                {{ globalContent.mobileCloseButtonAltText }}
+                            </span>
                         </label>
                     </div>
                 </div>
@@ -68,7 +74,7 @@
                     <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between">
                         <a
                             class="navbar-brand d-none d-lg-block"
-                            :href="items.home.link">
+                            :href="globalContent.home.link">
                             <!-- small desktop logo -->
                             <es-logo
                                 class="d-none d-lg-block d-xl-none"
@@ -80,35 +86,40 @@
                                 width="200px"
                                 height="42px" />
                             <span class="sr-only">
-                                {{ items.home.name }}
+                                {{ globalContent.home.name }}
                             </span>
                         </a>
                         <!-- top level menus -->
                         <es-nav-bar-top-level-menu
-                            v-for="topLevelMenu in items.topLevelMenus"
+                            v-for="topLevelMenu in globalContent.topLevelMenus"
                             :key="topLevelMenu.name"
+                            :close-button-text="globalContent.mobileCloseButtonAltText"
                             :featured-article="topLevelMenu.featuredArticle"
                             :icon="topLevelMenu.icon"
                             :link="topLevelMenu.link"
+                            :main-menu-text="globalContent.mainMenuText"
                             :name="topLevelMenu.name"
                             :sub-heading="topLevelMenu.subHeading"
                             :topics="topLevelMenu.topics" />
                         <!-- desktop account menu -->
                         <es-nav-bar-account-menu
-                            :auth-items="items.accountMenu.loggedIn.items"
+                            :auth-items="accountContent.loggedIn.items"
                             class="d-none d-lg-block"
-                            :logged-out="items.accountMenu.loggedOut" />
+                            :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
                     <div class="row mx-0 d-flex justify-content-lg-center">
                         <es-nav-bar-product-menu
-                            v-for="product in items.products"
+                            v-for="product in globalContent.products"
                             :key="product.name"
+                            :close-button-text="globalContent.mobileCloseButtonAltText"
                             :featured-article="product.featuredArticle"
                             :items="product.items"
                             :link="product.link"
+                            :main-menu-text="globalContent.mainMenuText"
                             :new-tab="product.newTab"
                             :name="product.name"
+                            :see-all-text="globalContent.seeAllText"
                             :topics="product.topics" />
                     </div>
                 </ul>
@@ -135,7 +146,9 @@
                             for="data--account-menu"
                             class="mb-0">
                             <icon-x class="menu-toggle align-self-center" />
-                            <span class="sr-only">Close</span>
+                            <span class="sr-only">
+                                {{ globalContent.mobileCloseButtonAltText }}
+                            </span>
                         </label>
                     </div>
                 </div>
@@ -144,7 +157,7 @@
                     class="loggedIn navbar-nav w-100"
                     style="display: none">
                     <li
-                        v-for="item in items.accountMenu.loggedIn.items"
+                        v-for="item in accountContent.loggedIn.items"
                         :key="item.name">
                         <a
                             class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
@@ -159,18 +172,18 @@
                     style="display: none">
                     <li>
                         <EsButton
-                            :href="items.accountMenu.loggedOut.signIn.link"
+                            :href="accountContent.loggedOut.signIn.link"
                             :outline="true"
                             variant="secondary"
                             class="m-100 w-100">
-                            {{ items.accountMenu.loggedOut.signIn.name }}
+                            {{ accountContent.loggedOut.signIn.name }}
                         </EsButton>
                     </li>
                     <li class="d-flex justify-content-center">
                         <EsButton
-                            :href="items.accountMenu.loggedOut.createAccount.link"
+                            :href="accountContent.loggedOut.createAccount.link"
                             variant="link">
-                            {{ items.accountMenu.loggedOut.createAccount.name }}
+                            {{ accountContent.loggedOut.createAccount.name }}
                         </EsButton>
                     </li>
                 </ul>
@@ -182,20 +195,20 @@
                 <!-- EnergySage logo -->
                 <a
                     class="navbar-brand d-none d-lg-block"
-                    :href="items.home.link">
+                    :href="globalContent.home.link">
                     <!-- small desktop logo -->
                     <es-logo
                         width="128px"
                         height="28px" />
                     <span class="sr-only">
-                        {{ items.home.name }}
+                        {{ globalContent.home.name }}
                     </span>
                 </a>
                 <!-- desktop account menu -->
                 <es-nav-bar-account-menu
-                    :auth-items="items.accountMenu.loggedIn.items"
+                    :auth-items="accountContent.loggedIn.items"
                     class="d-none d-lg-block"
-                    :logged-out="items.accountMenu.loggedOut" />
+                    :logged-out="accountContent.loggedOut" />
             </b-container>
         </nav>
     </div>
@@ -206,7 +219,6 @@ import EsButton from './EsButton.vue';
 import EsNavBarAccountMenu from './EsNavBarAccountMenu.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
-import NAV_BAR_CONTENT from '../lib-data/es-nav-bar-content';
 
 import EsLogo from '../lib-assets/es-logo.vue';
 
@@ -219,10 +231,15 @@ export default {
         EsNavBarProductMenu,
         EsNavBarTopLevelMenu,
     },
-    data() {
-        return {
-            items: NAV_BAR_CONTENT,
-        };
+    props: {
+        accountContent: {
+            type: Object,
+            required: true,
+        },
+        globalContent: {
+            type: Object,
+            required: true,
+        },
     },
     mounted() {
         // CUSTOM GLOBAL-NAV SCRIPT STARTS
