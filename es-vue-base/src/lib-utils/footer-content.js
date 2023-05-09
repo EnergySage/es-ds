@@ -1,9 +1,9 @@
 export default (
-    ES_DOMAIN = 'https://www.energysage.com',
-    NEWS_DOMAIN = 'https://news.energysage.com',
-    COMMUNITY_SOLAR_DOMAIN = 'https://communitysolar.energysage.com',
-    HEAT_PUMPS_DOMAIN = 'https://heatpumps.energysage.com',
-    HELP_DOMAIN = 'https://help.energysage.com',
+    ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
+    NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://news.energysage.com',
+    COMMUNITY_SOLAR_DOMAIN = process.env.COMMUNITY_SOLAR_DOMAIN || 'https://communitysolar.energysage.com',
+    HEAT_PUMPS_DOMAIN = process.env.HEAT_PUMPS_DOMAIN || 'https://heatpumps.energysage.com',
+    HELP_DOMAIN = process.env.HELP_DOMAIN || 'https://help.energysage.com',
 ) => ({
     columns: [
         // TODO: remove new tab option once other verticals adopt global nav

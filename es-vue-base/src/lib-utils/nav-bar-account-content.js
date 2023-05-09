@@ -1,6 +1,6 @@
 // rooftop account links
 export default (
-    ES_DOMAIN = 'https://www.energysage.com',
+    ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
 ) => ({
     mobileAccountButtonAltText: 'Open account menu',
     loggedIn: {
