@@ -11,8 +11,8 @@ exports[`EsFooter <EsFooter /> 1`] = `
           It's never been easier.
         </div>
         <div class="col col-12 col-md-7 col-lg-8">
-          We developed our one-of-a-kind marketplace with funding from the U.S. Department of Energy
-          to make clean home energy solutions affordable and accessible to all.
+          We developed our one-of-a-kind marketplace with funding from the U.S. Department of Energy to make
+          clean home energy solutions affordable and accessible to all.
         </div>
       </div>
     </div>
@@ -114,7 +114,9 @@ exports[`EsFooter <EsFooter /> 1`] = `
           </div>
         </div>
       </div>
-      <div class="col col-12 col-lg-4 order-lg-0 mb-200"><a href="https://www.energysage.com/" class="d-block mb-150"><span class="sr-only">EnergySage</span> <svg viewBox="0 0 128 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 36px; width: 160px;">
+      <div class="col col-12 col-lg-4 order-lg-0 mb-200"><a href="https://www.energysage.com" class="d-block mb-150"><span class="sr-only">
+                        EnergySage
+                    </span> <svg viewBox="0 0 128 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 36px; width: 160px;">
             <path d="M3.14213 14.8032C3.14213 17.7722 3.93937 18.3618 5.28209 18.3618C6.45696 18.3618 7.06538 17.4143 7.12832 16.3403H9.00952C9.00952 18.6988 7.54092 19.7727 5.31705 19.7727C3.09318 19.7727 1.2959 19.0708 1.2959 14.4101C1.2959 11.2936 1.64556 8.72461 5.31705 8.72461C8.33816 8.72461 9.09344 10.3881 9.09344 13.8977V14.8032H3.14213ZM7.26819 13.4976C7.26819 10.4092 6.40801 10.0302 5.17019 10.0302C4.07924 10.0302 3.1771 10.5566 3.14913 13.4976H7.26819Z" fill="#616161"></path>
             <path d="M17.6882 19.562V12.1989C17.6882 11.0548 17.2966 10.0932 15.821 10.0932C13.9398 10.0932 13.6671 11.7778 13.6671 13.2378V19.555H11.9467V11.1391C11.9467 10.402 11.9047 9.66504 11.8418 8.92804H13.6671V10.2968H13.751C14.0014 9.77108 14.4086 9.33662 14.9161 9.05364C15.4236 8.77066 16.0063 8.65317 16.5833 8.71746C18.8421 8.71746 19.3806 10.1213 19.3806 12.227V19.562H17.6882Z" fill="#616161"></path>
             <path d="M24.1083 14.8032C24.1083 17.7722 24.9055 18.3618 26.2482 18.3618C27.4231 18.3618 28.0315 17.4143 28.0945 16.3403H29.9827C29.9827 18.6988 28.5141 19.7727 26.2902 19.7727C24.0663 19.7727 22.269 19.0708 22.269 14.4101C22.269 11.2936 22.6257 8.72461 26.2902 8.72461C29.3113 8.72461 30.0666 10.3881 30.0666 13.8977V14.8032H24.1083ZM28.2413 13.4976C28.2413 10.4092 27.3812 10.0302 26.1433 10.0302C25.0524 10.0302 24.1502 10.5566 24.1293 13.4976H28.2413Z" fill="#616161"></path>
@@ -141,8 +143,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
     <hr class="border-top border-dark m-0">
     <p class="mt-150 mt-lg-200">
       ENERGYSAGE is a registered trademark and the EnergySage logo is a trademark of EnergySage, Inc.
-      Other trademarks are the property of either EnergySage, Inc. or our licensors
-      and are used with permission.
+      Other trademarks are the property of either EnergySage, Inc. or our licensors and are used with permission.
     </p>
     <p class="mb-200">
       © Copyright 2009-2023 EnergySage, Inc. All rights reserved.
@@ -162,7 +163,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
         </a></div>
     </div>
     <div class="d-lg-flex align-items-end"><img src="https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png" aria-hidden="true" width="99" height="25" class="mr-100 mb-100 mb-lg-0">
-      <p class="mb-0"><a href="https://www.energy.gov/eere/solar/articles/eere-success-story-doe-funding-helps-build-one-stop-shop-rooftop-pv-systems">
+      <p class="mb-0"><a href="https://www.energy.gov/eere/solar/articles/eere-success-story-doe-funding-helps-build-one-stop-shop-rooftop-pv-systems" target="_blank">
           Learn more about our success working with the US. Department of Energy.
         </a></p>
     </div>
