@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.21.3] - 2023-05-09
 
+### Added
+
+- New utility functions for `EsFooter` and `EsNavBar` that provide a default set of content, the domain names for which are customizable
+
 ### Changed
 
-- `EsFooter` and `EsNavBar` links are now fully customizable but come with a default set of content, the domain names for which are also customizable
+- ***BREAKING CHANGE:*** `EsFooter` and `EsNavBar` links are now fully customizable and require their content be passed in as props
 - `EsNavBar` logged-in account link has changed from "My Marketplace" to "My Quotes"
 - Fixed five `EsNavBar` links that were `http` instead of `https`
 - All `EsFooter` and `EsNavBar` links to a non-www domain will now open in a new tab
