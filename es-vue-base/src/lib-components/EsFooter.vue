@@ -101,7 +101,9 @@
                     width="99"
                     height="25">
                 <p class="mb-0">
-                    <a :href="content.departmentOfEnergy.learnMore.link">
+                    <a
+                        :href="content.departmentOfEnergy.learnMore.link"
+                        target="_blank">
                         {{ content.departmentOfEnergy.learnMore.text }}
                     </a>
                 </p>
