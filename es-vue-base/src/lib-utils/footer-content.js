@@ -5,6 +5,16 @@ export default (
     HEAT_PUMPS_DOMAIN = process.env.HEAT_PUMPS_DOMAIN || 'https://heatpumps.energysage.com',
     HELP_DOMAIN = process.env.HELP_DOMAIN || 'https://help.energysage.com',
 ) => ({
+    banner: {
+        headline: 'Make an impact.',
+        subHeadline: 'It\'s never been easier.',
+        body: `We developed our one-of-a-kind marketplace with funding from the U.S. Department of Energy to make
+            clean home energy solutions affordable and accessible to all.`,
+    },
+    home: {
+        name: 'EnergySage',
+        link: ES_DOMAIN,
+    },
     columns: [
         // TODO: remove new tab option once other verticals adopt global nav
         {
@@ -62,4 +72,14 @@ export default (
         { text: 'Mobile terms of use', url: `${ES_DOMAIN}/mobile-terms-of-use/` },
         { text: 'Non-discrimination policy', url: `${ES_DOMAIN}/nondiscrimination/` },
     ],
+    copyrightText: '© Copyright 2009-{currentYear} EnergySage, Inc. All rights reserved.',
+    trademarkText: `ENERGYSAGE is a registered trademark and the EnergySage logo is a trademark of EnergySage, Inc.
+        Other trademarks are the property of either EnergySage, Inc. or our licensors and are used with permission.`,
+    departmentOfEnergy: {
+        learnMore: {
+            link: 'https://www.energy.gov/eere/solar/articles/eere-success-story-doe-funding-helps-build-one-stop-shop-rooftop-pv-systems',
+            text: 'Learn more about our success working with the US. Department of Energy.',
+        },
+        logoUrl: 'https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png',
+    },
 });

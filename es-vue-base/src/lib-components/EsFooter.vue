@@ -5,13 +5,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-12 col-md-5 col-lg-4 font-size-300 font-weight-bolder mb-150 mb-md-0">
-                        Make an impact.
+                        {{ content.banner.headline }}
                         <br class="d-none d-md-block">
-                        It's never been easier.
+                        {{ content.banner.subHeadline }}
                     </div>
                     <div class="col col-12 col-md-7 col-lg-8">
-                        We developed our one-of-a-kind marketplace with funding from the U.S. Department of Energy
-                        to make clean home energy solutions affordable and accessible to all.
+                        {{ content.banner.body }}
                     </div>
                 </div>
             </div>
@@ -48,8 +47,10 @@
                 <div class="col col-12 col-lg-4 order-lg-0 mb-200">
                     <a
                         class="d-block mb-150"
-                        href="https://www.energysage.com/">
-                        <span class="sr-only">EnergySage</span>
+                        :href="content.home.link">
+                        <span class="sr-only">
+                            {{ content.home.name }}
+                        </span>
                         <es-logo
                             height="36px"
                             width="160px" />
@@ -71,12 +72,10 @@
             <hr class="border-top border-dark m-0">
             <!-- Trademark Info -->
             <p class="mt-150 mt-lg-200">
-                ENERGYSAGE is a registered trademark and the EnergySage logo is a trademark of EnergySage, Inc.
-                Other trademarks are the property of either EnergySage, Inc. or our licensors
-                and are used with permission.
+                {{ content.trademarkText }}
             </p>
             <p class="mb-200">
-                © Copyright 2009-{{ new Date().getFullYear() }} EnergySage, Inc. All rights reserved.
+                {{ copyrightText }}
             </p>
             <!-- Trademark Info -->
             <!-- Legal -->
@@ -96,14 +95,14 @@
             <div class="d-lg-flex align-items-end">
                 <!-- eslint-disable-next-line -->
                 <img
-                    src="https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png"
+                    :src="content.departmentOfEnergy.logoUrl"
                     aria-hidden="true"
                     class="mr-100 mb-100 mb-lg-0"
                     width="99"
                     height="25">
                 <p class="mb-0">
-                    <a href="https://www.energy.gov/eere/solar/articles/eere-success-story-doe-funding-helps-build-one-stop-shop-rooftop-pv-systems">
-                        Learn more about our success working with the US. Department of Energy.
+                    <a :href="content.departmentOfEnergy.learnMore.link">
+                        {{ content.departmentOfEnergy.learnMore.text }}
                     </a>
                 </p>
             </div>  <!-- DOE -->
@@ -123,6 +122,11 @@ export default {
         content: {
             type: Object,
             required: true,
+        },
+    },
+    computed: {
+        copyrightText() {
+            return this.content.copyrightText.replace('{currentYear}', new Date().getFullYear());
         },
     },
 };
