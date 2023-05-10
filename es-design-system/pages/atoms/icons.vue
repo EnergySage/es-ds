@@ -65,6 +65,10 @@
                 <code>IconBlock</code>
             </li>
             <li>
+                <icon-bolt />
+                <code>IconBolt</code>
+            </li>
+            <li>
                 <icon-calculator />
                 <code>IconCalculator</code>
             </li>
@@ -185,6 +189,10 @@
                 <code>IconFlag</code>
             </li>
             <li>
+                <icon-gear />
+                <code>IconGear</code>
+            </li>
+            <li>
                 <icon-hamburger />
                 <code>IconHamburger</code>
             </li>
@@ -223,6 +231,10 @@
             <li>
                 <icon-minus />
                 <code>IconMinus</code>
+            </li>
+            <li>
+                <icon-money-bag />
+                <code>IconMoneyBag</code>
             </li>
             <li>
                 <icon-open-envelope />
@@ -265,6 +277,14 @@
                 <code>IconPlus</code>
             </li>
             <li>
+                <icon-roof />
+                <code>IconRoof</code>
+            </li>
+            <li>
+                <icon-search />
+                <code>IconSearch</code>
+            </li>
+            <li>
                 <icon-settings-horizontal />
                 <code>IconSettingsHorizontal</code>
             </li>
@@ -279,6 +299,10 @@
             <li>
                 <icon-shopping-bag />
                 <code>IconShoppingBag</code>
+            </li>
+            <li>
+                <icon-solar />
+                <code>IconSolar</code>
             </li>
             <li>
                 <icon-sound-down />
@@ -303,6 +327,10 @@
             <li>
                 <icon-trash-can />
                 <code>IconTrashCan</code>
+            </li>
+            <li>
+                <icon-tree />
+                <code>IconTree</code>
             </li>
             <li>
                 <icon-verified />
