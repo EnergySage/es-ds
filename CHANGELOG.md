@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.4] - 2023-05-09
+
+### Changed
+
+- Remaining hardcoded `EsFooter` links and content have been moved out to its associated utility function
+
+## [0.21.3] - 2023-05-09
+
+### Added
+
+- New utility functions for `EsFooter` and `EsNavBar` that provide a default set of content, the domain names for which are customizable
+
+### Changed
+
+- ***BREAKING CHANGE:*** `EsFooter` and `EsNavBar` links are now fully customizable and require their content be passed in as props
+- `EsNavBar` logged-in account link has changed from "My Marketplace" to "My Quotes"
+- Fixed five `EsNavBar` links that were `http` instead of `https`
+- All `EsFooter` and `EsNavBar` links to a non-www domain will now open in a new tab
+- All hardcoded text within `EsNavBar` has been moved out to the content objects it takes as props
+
 ## [0.21.2] - 2023-05-03
 
 ### Changed
@@ -534,6 +554,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.21.4]: https://github.com/EnergySage/es-ds/compare/v0.21.3...v0.21.4
+[0.21.3]: https://github.com/EnergySage/es-ds/compare/v0.21.2...v0.21.3
 [0.21.2]: https://github.com/EnergySage/es-ds/compare/v0.21.1...v0.21.2
 [0.21.1]: https://github.com/EnergySage/es-ds/compare/v0.21.0...v0.21.1
 [0.21.0]: https://github.com/EnergySage/es-ds/compare/v0.20.1...v0.21.0
