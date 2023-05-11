@@ -9,20 +9,20 @@
             </h2>
             <es-support
                 :link="link"
-                :src="benr" />
+                :src="placeholderPersonImage" />
             <h2 class="mt-450">
                 Cool Variant
             </h2>
             <es-support
                 variant="cool"
                 :link="link"
-                :src="benr" />
+                :src="placeholderPersonImage" />
             <h2 class="mt-450">
                 Custom Copy
             </h2>
             <es-support
                 :link="link"
-                :src="benr">
+                :src="placeholderPersonImage">
                 <template #title>
                     Custom title
                 </template>
@@ -39,16 +39,16 @@
     </div>
 </template>
 <script>
-import benr from '@/assets/img/benr.png';
+import placeholderPersonImage from '@/assets/placeholder/icon-person.svg';
 
 export default {
     name: 'EsSupportDocs',
     data() {
         return {
             link: 'https://www.energysage.com',
-            benr,
             compCode: '',
             docCode: '',
+            placeholderPersonImage,
         };
     },
     async created() {

@@ -8,9 +8,9 @@
                 Default
             </h2>
             <es-support-card
-                image-alt-text="Energy advisor team"
-                :image-src="eaMultiple"
-                primary-cta-text="Schedule a call"
+                image-alt-text="Donec consequat auctor"
+                :image-src="placeholderPersonImage"
+                primary-cta-text="Lorem ipsum"
                 primary-cta-url="https://www.energysage.com">
                 <template #headline>
                     <span class="align-items-center d-flex text-success">
@@ -19,12 +19,12 @@
                             height="22px"
                             width="22px" />
                     </span>
-                    We're here to help
+                    Lorem ipsum dolor sit
                 </template>
                 <template #description>
-                    Our Energy Advisors provide expert, unbiased energy advice at no cost to you.
+                    Praesent hendrerit lacus eu eros varius, quis tempor eros varius.
                     <span class="font-weight-bold">
-                        No annoying sales pitches, and no spam calls.
+                        Sed efficitur gravida odio id posuere.
                     </span>
                 </template>
             </es-support-card>
@@ -34,12 +34,12 @@
                 With secondary CTA
             </h2>
             <es-support-card
-                image-alt-text="Energy advisor team"
-                :image-src="eaMultiple"
-                primary-cta-text="Schedule a call"
+                image-alt-text="Donec consequat auctor"
+                :image-src="placeholderPersonImage"
+                primary-cta-text="Lorem ipsum"
                 primary-cta-url="https://www.energysage.com"
-                secondary-cta-text="Send an email"
-                secondary-cta-url="mailto:help@energysage.com">
+                secondary-cta-text="Orci varius natoque"
+                secondary-cta-url="mailto:media@energysage.com">
                 <template #headline>
                     <span class="align-items-center d-flex text-success">
                         <icon-verified
@@ -47,12 +47,12 @@
                             height="22px"
                             width="22px" />
                     </span>
-                    We're here to help
+                    Lorem ipsum dolor sit
                 </template>
                 <template #description>
-                    Our Energy Advisors provide expert, unbiased energy advice at no cost to you.
+                    Praesent hendrerit lacus eu eros varius, quis tempor eros varius.
                     <span class="font-weight-bold">
-                        No annoying sales pitches, and no spam calls.
+                        Sed efficitur gravida odio id posuere.
                     </span>
                 </template>
             </es-support-card>
@@ -342,7 +342,7 @@
 </template>
 
 <script>
-import eaMultiple from '@/assets/img/ea-multiple.png';
+import placeholderPersonImage from '@/assets/placeholder/icon-person.svg';
 
 export default {
     name: 'EsSupportCardDocs',
@@ -350,7 +350,7 @@ export default {
         return {
             compCode: '',
             docCode: '',
-            eaMultiple,
+            placeholderPersonImage,
         };
     },
     async created() {
