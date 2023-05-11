@@ -39,7 +39,7 @@
     </div>
 </template>
 <script>
-import benr from '@/assets/imgs/benr.png';
+import benr from '@/assets/img/benr.png';
 
 export default {
     name: 'EsSupportDocs',

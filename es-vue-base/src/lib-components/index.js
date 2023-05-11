@@ -24,6 +24,7 @@ export { default as EsReviewModal } from './EsReviewModal.vue';
 export { default as EsReviewsIoCardCarousel } from './EsReviewsIoCardCarousel.vue';
 export { default as EsSlider } from './EsSlider.vue';
 export { default as EsSupport } from './EsSupport.vue';
+export { default as EsSupportCard } from './EsSupportCard.vue';
 export { default as EsTab } from './EsTab.vue';
 export { default as EsTabs } from './EsTabs.vue';
 export { default as EsViewMore } from './EsViewMore.vue';
