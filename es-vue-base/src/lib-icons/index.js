@@ -73,6 +73,13 @@ export { default as IconStarHalf } from './icon-star-half.vue';
 export { default as IconStarEmpty } from './icon-star-empty.vue';
 export { default as IconVerified } from './icon-verified.vue';
 export { default as IconX } from './icon-x.vue';
+export { default as IconBolt } from './icon-bolt.vue';
+export { default as IconGear } from './icon-gear.vue';
+export { default as IconMoneyBag } from './icon-money-bag.vue';
+export { default as IconRoof } from './icon-roof.vue';
+export { default as IconSearch } from './icon-search.vue';
+export { default as IconSolar } from './icon-solar.vue';
+export { default as IconTree } from './icon-tree.vue';
 
 // marketing icons
 export { default as IconBattery } from './icon-battery.vue';
