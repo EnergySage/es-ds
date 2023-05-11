@@ -37,6 +37,66 @@
                 </p>
             </es-card>
         </div>
+        <div class="mb-450">
+            <h2>
+                EsCard props
+            </h2>
+            <ds-responsive-table>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>tag</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>'div'</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            The name of the tag or component the card should render as.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>variant</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>'display'</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            The styling variant to use. Possible values are <code>'display'</code> and
+                            <code>'interactive'</code>.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsCard.vue"

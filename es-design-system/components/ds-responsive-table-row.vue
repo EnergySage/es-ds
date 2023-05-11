@@ -1,4 +1,5 @@
 <template>
+    <!-- TODO: make responsive table more flexible with columns -->
     <div class="responsive-table-row">
         <slot />
     </div>
