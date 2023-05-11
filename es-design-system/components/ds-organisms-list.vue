@@ -25,6 +25,11 @@
                 EsReviewsIoCardCarousel
             </b-link>
         </li>
+        <li>
+            <b-link to="/organisms/es-support-card">
+                EsSupportCard
+            </b-link>
+        </li>
     </ul>
 </template>
 

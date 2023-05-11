@@ -141,11 +141,10 @@
                 <p>
                     These utility classes will apply the associated font weight to text.
                 </p>
-                <div class="responsive-table">
-                    <div
+                <ds-responsive-table class="responsive-table-typography">
+                    <ds-responsive-table-row
                         v-for="data in fontWeightItems"
-                        :key="data.name"
-                        class="responsive-table-row">
+                        :key="data.name">
                         <dl>
                             <dt>
                                 Name
@@ -170,8 +169,8 @@
                                 <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
                             </dd>
                         </dl>
-                    </div>
-                </div>
+                    </ds-responsive-table-row>
+                </ds-responsive-table>
             </b-col>
         </b-row>
 
@@ -186,11 +185,10 @@
                     <code>font-size-md-400</code>, <code>font-size-lg-400</code>, <code>font-size-xl-400</code>,
                     <code>font-size-xxl-400</code>).
                 </p>
-                <div class="responsive-table responsive-table-font-size">
-                    <div
+                <ds-responsive-table class="responsive-table-typography">
+                    <ds-responsive-table-row
                         v-for="data in fontSizeItems"
-                        :key="data.name"
-                        class="responsive-table-row">
+                        :key="data.name">
                         <dl>
                             <dt>
                                 Name
@@ -215,8 +213,8 @@
                                 <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
                             </dd>
                         </dl>
-                    </div>
-                </div>
+                    </ds-responsive-table-row>
+                </ds-responsive-table>
             </b-col>
         </b-row>
 
@@ -229,11 +227,10 @@
                     These utility classes are deprecated. Avoid using them and refactor your code to remove instances
                     of them. They will be removed in a future version of ESDS.
                 </p>
-                <div class="responsive-table responsive-table-font-size">
-                    <div
+                <ds-responsive-table class="responsive-table-typography">
+                    <ds-responsive-table-row
                         v-for="data in deprecatedFontSizeItems"
-                        :key="data.name"
-                        class="responsive-table-row">
+                        :key="data.name">
                         <dl>
                             <dt>
                                 Name
@@ -258,8 +255,8 @@
                                 <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
                             </dd>
                         </dl>
-                    </div>
-                </div>
+                    </ds-responsive-table-row>
+                </ds-responsive-table>
             </b-col>
         </b-row>
 
@@ -324,39 +321,8 @@ export default {
 @import '~@energysage/es-bs-base/scss/bootstrap';
 @import "~@energysage/es-bs-base/scss/variables";
 
-/* pilot implementation of a responsive table */
-/* TODO: extract this to a reusable component within es-design-system docs site */
-
-/* stylelint-disable order/order */
-
-.responsive-table {
-    border-top: $border-width solid $border-color;
-
-    &-row {
-        border-bottom: $border-width solid $border-color;
-        padding: 0.5rem 0.5rem 0;
-
-        &:nth-child(even) {
-            background-color: $gray-200;
-        }
-    }
-
-    dl {
-        display: flex;
-        margin: 0;
-
-        dt {
-            width: 30%;
-        }
-
-        dd {
-            width: 70%;
-        }
-    }
-}
-
-.responsive-table-font-size {
-    dl {
+.responsive-table-typography {
+    ::v-deep dl {
         dd {
             max-height: 180px;
             overflow: hidden;
@@ -364,160 +330,14 @@ export default {
     }
 }
 
-@include media-breakpoint-up(sm) {
-    .responsive-table {
-        dl {
-            dt {
-                width: 24%;
-            }
-
-            dd {
-                width: 76%;
-            }
-        }
-    }
-}
-
-@include media-breakpoint-up(md) {
-    .responsive-table {
-        /* undo mobile styles */
-        border-top-style: none;
-
-        dl,
-        dt,
-        dd {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* ensure background is full height of row */
-        dd {
-            height: 100%;
-            padding: 0.5rem 0;
-        }
-
-        /* undo mobile styles */
-        dl {
-            display: block;
-
-            dt,
-            dd {
-                width: auto;
-            }
-        }
-
-        /* column widths */
-        dl:nth-child(1) {
-            width: 26%;
-        }
-
-        dl:nth-child(2) {
-            width: 12%;
-        }
-
-        dl:nth-child(3) {
-            width: 62%;
-        }
-
-        &-row {
-            /* undo mobile styles */
-            border-bottom-style: none;
-            display: flex;
-            padding: 0;
-
-            &:nth-child(even) {
-                background-color: transparent;
-            }
-
-            &:first-child {
-                dt {
-                    border-bottom: $border-width solid $border-color;
-                    border-top: $border-width solid $border-color;
-                    padding: 0.5rem 0;
-                }
-
-                dd {
-                    height: auto;
-                }
-            }
-
-            /* visually hide table columns within all rows except the first */
-            &:not(:first-child) {
-                dt {
-                    /* don't use display none because then screen readers won't read out the label */
-                    left: -9999em;
-                    position: absolute;
-                }
-            }
-
-            /* zebra-stripe every odd row */
-            &:nth-child(odd) {
-                dd {
-                    background-color: $gray-200;
-                }
-            }
-        }
-
-        /* side padding on left-most cells */
-        dl:first-child {
-            dd,
-            dt {
-                padding-left: 0.5rem;
-            }
-        }
-
-        /* side padding on right-most cells */
-        dl:last-child {
-            dd,
-            dt {
-                padding-right: 0.5rem;
-            }
-        }
-    }
-}
-
 @include media-breakpoint-up(xl) {
-    .responsive-table-font-size {
-        dl {
+    .responsive-table-typography {
+        ::v-deep dl {
             dd {
                 max-height: none;
                 overflow: visible;
             }
         }
     }
-
-    .responsive-table {
-        /* column widths */
-        dl:nth-child(1) {
-            width: 20%;
-        }
-
-        dl:nth-child(2) {
-            width: 10%;
-        }
-
-        dl:nth-child(3) {
-            width: 70%;
-        }
-    }
 }
-
-@include media-breakpoint-up(xxl) {
-    .responsive-table {
-        /* column widths */
-        dl:nth-child(1) {
-            width: 16%;
-        }
-
-        dl:nth-child(2) {
-            width: 10%;
-        }
-
-        dl:nth-child(3) {
-            width: 74%;
-        }
-    }
-}
-
-/* stylelint-enable order/order */
 </style>

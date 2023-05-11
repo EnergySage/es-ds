@@ -258,6 +258,38 @@
   }
 }
 
+//
+// EsCard
+//
+
+.es-card {
+  padding: $spacer * 2;
+  background-color: $white;
+  /* stylelint-disable-next-line property-disallowed-list */
+  border-radius: $border-radius-lg;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
+
+  &.interactive {
+    /* account for the tag likely being an anchor or button */
+    display: block;
+    font-weight: $font-weight-base;
+    color: $body-color;
+    cursor: pointer;
+    border: $border-width solid $gray-200;
+    box-shadow: none;
+
+    /* stylelint-disable-next-line property-disallowed-list */
+    transition: $transition-base;
+
+    /* fix safari issue with drop-shadow buggy behavior */
+    transform: translateZ(0);
+
+    &:hover {
+      text-decoration: none;
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+    }
+  }
+}
 
 //
 // Accordion
