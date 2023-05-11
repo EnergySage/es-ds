@@ -106,11 +106,12 @@ export default {
 @include media-breakpoint-up(lg) {
     .EsSupportCard {
         &-contentColumn {
-            /* 15px standard column padding + 100px image width */
-            padding-left: 115px;
             /* account for the size of the image */
             min-height: 100px;
+            /* 15px standard column padding + 100px image width */
+            padding-left: 115px;
         }
+
         &-image {
             /* account for 15px standard column padding */
             left: 15px;
