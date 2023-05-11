@@ -21,6 +21,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-card">
+                EsCard
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-collapse">
                 EsCollapse
             </b-link>

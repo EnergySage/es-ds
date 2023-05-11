@@ -258,6 +258,34 @@
   }
 }
 
+//
+// EsCard
+//
+
+.es-card {
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.13);
+  padding: $spacer * 2;
+
+  &.interactive {
+    border: $border-width solid $gray-200;
+    box-shadow: none;
+    color: $body-color;
+    cursor: pointer;
+    /* account for the tag likely being an anchor or button */
+    display: block;
+    font-weight: $font-weight-base;
+    /* fix safari issue with drop-shadow buggy behavior */
+    transform: translateZ(0);
+    transition: $transition-base;
+
+    &:hover {
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+      text-decoration: none;
+    }
+  }
+}
 
 //
 // Accordion

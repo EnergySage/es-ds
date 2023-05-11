@@ -4,6 +4,7 @@ export { default as EsAccordionList } from './EsAccordionList.vue';
 export { default as EsBadge } from './EsBadge.vue';
 export { default as EsBreadcrumbs } from './EsBreadcrumbs.vue';
 export { default as EsButton } from './EsButton.vue';
+export { default as EsCard } from './EsCard.vue';
 export { default as EsCollapse } from './EsCollapse.vue';
 export { default as EsFooter } from './EsFooter.vue';
 export { default as EsFormInput } from './EsFormInput.vue';
