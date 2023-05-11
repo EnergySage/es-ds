@@ -10,7 +10,7 @@
                 </h2>
                 <b-img
                     :alt="imageAltText"
-                    class="EsSupportCard-image mb-150 mb-lg-0"
+                    class="EsSupportCard-image bg-teal-200 mb-150 mb-lg-0 rounded-circle"
                     height="100px"
                     :src="imageSrc"
                     width="100px" />
