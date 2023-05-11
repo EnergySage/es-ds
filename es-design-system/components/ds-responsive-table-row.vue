@@ -1,5 +1,6 @@
 <template>
-    <!-- TODO: make responsive table more flexible with columns -->
+    <!-- TODO: make responsive table column width more flexible -->
+    <!-- TODO: allow column headers and items to be passed in somehow to avoid lots of repetition -->
     <div class="responsive-table-row">
         <slot />
     </div>

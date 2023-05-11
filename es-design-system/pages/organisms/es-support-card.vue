@@ -61,7 +61,6 @@
             <h2>
                 Props
             </h2>
-            <!-- TODO: make responsive table more flexible with columns -->
             <ds-responsive-table>
                 <ds-responsive-table-row>
                     <dl>
