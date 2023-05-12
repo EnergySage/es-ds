@@ -3,7 +3,7 @@
         class="topic-group border-0 mb-lg-200"
         :class="{ 'nav-item': showItemsOnMobile }">
         <!-- desktop header, if it's a link -->
-        <a
+        <es-nav-bar-link
             v-if="link"
             class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray"
             :href="link"
@@ -20,7 +20,7 @@
                 class="d-block font-italic">
                 {{ subHeading }}
             </span>
-        </a>
+        </es-nav-bar-link>
         <!-- desktop header, if it's not a link -->
         <p
             v-else
@@ -85,13 +85,13 @@
                 class="visible-lg"
                 style="list-style: none; padding-left: 0; top: 0;">
                 <li class="d-lg-none">
-                    <a
+                    <es-nav-bar-link
                         v-if="link"
                         class="nav-item nav-item-border-mobile nav-link font-weight-bold d-flex w-100 align-items-center ml-50"
                         :href="link"
                         :target="newTab ? '_blank' : null">
                         {{ name }}
-                    </a>
+                    </es-nav-bar-link>
                     <div
                         v-else
                         class="nav-item col-12">
@@ -104,18 +104,18 @@
                 <li
                     v-for="item in items"
                     :key="item.name">
-                    <a
+                    <es-nav-bar-link
                         class="dropdown-item nav-item nav-item-border-mobile nav-link d-flex align-items-center ml-lg-0 px-lg-0 py-lg-50"
                         :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="item.newTab ? '_blank' : null">
                         {{ item.name }}
-                    </a>
+                    </es-nav-bar-link>
                 </li>
             </ul>
         </div>
         <!-- mobile link, shown only if we have a link and don't want to show child items on mobile -->
-        <a
+        <es-nav-bar-link
             v-if="link"
             class="nav-item nav-item-border-mobile nav-link d-lg-none w-100"
             :class="{
@@ -132,13 +132,18 @@
                 class="d-block font-italic">
                 {{ subHeading }}
             </span>
-        </a>
+        </es-nav-bar-link>
     </li>
 </template>
 
 <script lang="js">
+import EsNavBarLink from './EsNavBarLink.vue';
+
 export default {
     name: 'EsNavBarTopicMenu',
+    components: {
+        EsNavBarLink,
+    },
     props: {
         closeButtonText: {
             type: String,

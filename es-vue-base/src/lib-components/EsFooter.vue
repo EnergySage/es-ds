@@ -32,12 +32,12 @@
                                     v-for="link in column.links"
                                     :key="link.text"
                                     class="mt-25 mb-50">
-                                    <a
+                                    <es-nav-bar-link
                                         :href="link.url"
                                         :target="link.newTab ? '_blank' : null"
                                         class="text-reset">
                                         {{ link.text }}
-                                    </a>
+                                    </es-nav-bar-link>
                                 </li>
                             </ul>
                         </div>
@@ -45,7 +45,7 @@
                 </div>  <!-- Link columns -->
                 <!-- Logo and Social-->
                 <div class="col col-12 col-lg-4 order-lg-0 mb-200">
-                    <a
+                    <es-nav-bar-link
                         class="d-block mb-150"
                         :href="content.home.link">
                         <span class="sr-only">
@@ -54,10 +54,10 @@
                         <es-logo
                             height="36px"
                             width="160px" />
-                    </a>
+                    </es-nav-bar-link>
                     <!-- Social icons -->
                     <div class="d-flex text-gray-700">
-                        <a
+                        <es-nav-bar-link
                             v-for="iconLink in content.socialLinks"
                             :key="iconLink.text"
                             class="text-reset pr-150"
@@ -65,7 +65,7 @@
                             target="_blank">
                             <span class="sr-only">{{ iconLink.text }}</span>
                             <component :is="iconLink.icon" />
-                        </a>
+                        </es-nav-bar-link>
                     </div>  <!-- Social icons -->
                 </div>  <!-- Logo and Social -->
             </div>
@@ -84,11 +84,11 @@
                     v-for="link in content.legalLinks"
                     :key="link.text"
                     class="col col-6 col-lg font-size-50 mt-25 mb-50">
-                    <a
+                    <es-nav-bar-link
                         :href="link.url"
                         class="text-reset font-weight-normal">
                         {{ link.text }}
-                    </a>
+                    </es-nav-bar-link>
                 </div>
             </div>  <!-- Legal -->
             <!-- DOE -->
@@ -101,11 +101,11 @@
                     width="99"
                     height="25">
                 <p class="mb-0">
-                    <a
+                    <es-nav-bar-link
                         :href="content.departmentOfEnergy.learnMore.link"
                         target="_blank">
                         {{ content.departmentOfEnergy.learnMore.text }}
-                    </a>
+                    </es-nav-bar-link>
                 </p>
             </div>  <!-- DOE -->
         </div>
@@ -113,12 +113,14 @@
 </template>
 
 <script lang="js">
+import EsNavBarLink from './EsNavBarLink.vue';
 import EsLogo from '../lib-assets/es-logo.vue';
 
 export default {
     name: 'EsFooter',
     components: {
         EsLogo,
+        EsNavBarLink,
     },
     props: {
         content: {

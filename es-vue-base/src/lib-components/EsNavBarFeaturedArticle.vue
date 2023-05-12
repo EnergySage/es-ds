@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown-cta-right">
         <div class="font-size-50">
-            <a
+            <es-nav-bar-link
                 class="d-block cta-link"
                 :href="link"
                 :target="newTab ? '_blank' : null"
@@ -19,15 +19,19 @@
                 <p class="font-weight-bold">
                     {{ name }}
                 </p>
-            </a>
+            </es-nav-bar-link>
         </div>
     </div>
 </template>
 
 <script lang="js">
+import EsNavBarLink from './EsNavBarLink.vue';
 
 export default {
     name: 'EsNavBarFeaturedArticle',
+    components: {
+        EsNavBarLink,
+    },
     props: {
         eyebrow: {
             type: String,

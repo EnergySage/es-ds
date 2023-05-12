@@ -18,7 +18,7 @@
                 </label>
             </div>
             <!-- mobile logo -->
-            <a
+            <es-nav-bar-link
                 class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
                 :href="globalContent.home.link">
                 <es-logo
@@ -27,7 +27,7 @@
                 <span class="sr-only">
                     {{ globalContent.home.name }}
                 </span>
-            </a>
+            </es-nav-bar-link>
             <!-- mobile account menu trigger -->
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -72,7 +72,7 @@
                 <ul class="navbar-nav d-flex flex-column w-100">
                     <!-- top-level items on mobile, full top bar on desktop -->
                     <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between">
-                        <a
+                        <es-nav-bar-link
                             class="navbar-brand d-none d-lg-block"
                             :href="globalContent.home.link">
                             <!-- small desktop logo -->
@@ -88,7 +88,7 @@
                             <span class="sr-only">
                                 {{ globalContent.home.name }}
                             </span>
-                        </a>
+                        </es-nav-bar-link>
                         <!-- top level menus -->
                         <es-nav-bar-top-level-menu
                             v-for="topLevelMenu in globalContent.topLevelMenus"
@@ -159,11 +159,11 @@
                     <li
                         v-for="item in accountContent.loggedIn.items"
                         :key="item.name">
-                        <a
+                        <es-nav-bar-link
                             class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
                             :href="item.link">
                             {{ item.name }}
-                        </a>
+                        </es-nav-bar-link>
                     </li>
                 </ul>
                 <!-- logged out menu -->
@@ -193,7 +193,7 @@
         <nav class="nav-es-sticky bg-white d-none d-lg-block position-fixed py-25">
             <b-container class="align-items-center d-flex justify-content-between">
                 <!-- EnergySage logo -->
-                <a
+                <es-nav-bar-link
                     class="navbar-brand d-none d-lg-block"
                     :href="globalContent.home.link">
                     <!-- small desktop logo -->
@@ -203,7 +203,7 @@
                     <span class="sr-only">
                         {{ globalContent.home.name }}
                     </span>
-                </a>
+                </es-nav-bar-link>
                 <!-- desktop account menu -->
                 <es-nav-bar-account-menu
                     :auth-items="accountContent.loggedIn.items"
