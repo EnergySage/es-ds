@@ -76,7 +76,7 @@
                             Default
                         </dt>
                         <dd>
-                            n/a
+                            <code>''</code>
                         </dd>
                     </dl>
                     <dl>
@@ -84,7 +84,8 @@
                             Description
                         </dt>
                         <dd>
-                            Required. The alternate text for the image.
+                            The alternate text for the image. Used by default unless content is supplied to the
+                            <code>image</code> slot.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>
@@ -102,7 +103,7 @@
                             Default
                         </dt>
                         <dd>
-                            n/a
+                            <code>''</code>
                         </dd>
                     </dl>
                     <dl>
@@ -110,7 +111,8 @@
                             Description
                         </dt>
                         <dd>
-                            Required. The URL of the image to display.
+                            The URL of the image to display. Used by default unless content is supplied to the
+                            <code>image</code> slot.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>
@@ -302,6 +304,34 @@
                         </dt>
                         <dd>
                             The content to insert into the card's heading.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>image</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>&lt;b-img&gt;</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Optional. Replaces the default <code>&lt;b-img&gt;</code> tag that uses the
+                            <code>imageSrc</code> and <code>imageAltText</code> props. Allows full customization
+                            of the image component used, for example if a <code>&lt;nuxt-img&gt;</code> is desired.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>

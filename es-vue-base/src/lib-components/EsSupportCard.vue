@@ -8,15 +8,30 @@
                 <h2 class="align-items-center d-flex font-size-300 justify-content-center justify-content-lg-start mb-150 mb-lg-100 pl-lg-200">
                     <slot name="headline" />
                 </h2>
-                <b-img
-                    :alt="imageAltText"
-                    class="EsSupportCard-image bg-teal-200 mb-150 mb-lg-0 rounded-circle"
-                    height="100px"
-                    :src="imageSrc"
-                    width="100px" />
-                <p class="font-size-75 font-size-lg-100 mb-150 mb-lg-0 pl-lg-200">
+                <div class="EsSupportCard-imageContainer mb-150 mb-lg-0">
+                    <slot name="image">
+                        <b-img
+                            v-if="imageAltText && imageSrc"
+                            :alt="imageAltText"
+                            class="bg-teal-200 rounded-circle"
+                            height="100px"
+                            :src="imageSrc"
+                            width="100px" />
+                    </slot>
+                </div>
+                <!--
+                    we are giving 'EsSupportCard-description' a unique class (that we don't use directly in this
+                    component) for consuming applications to use in targeting ::v-deep styles on <p> tags to remove
+                    the natural <p> bottom margin, for example.
+
+                    e.g. a CMS rich text component may generate a <p> tag within this that automatically
+                    gets a bottom margin, which throws off the vertical centering. we are intentionally leaving
+                    the removal of that bottom margin up to consuming applications rather than removing it on all
+                    <p> tags within this element, in case they may want two <p> tags or any other markup in here.
+                -->
+                <div class="EsSupportCard-description font-size-75 font-size-lg-100 mb-150 mb-lg-0 pl-lg-200">
                     <slot name="description" />
-                </p>
+                </div>
             </b-col>
             <b-col
                 cols="12"
@@ -61,11 +76,11 @@ export default {
     props: {
         imageAltText: {
             type: String,
-            required: true,
+            default: '',
         },
         imageSrc: {
             type: String,
-            required: true,
+            default: '',
         },
         primaryCtaTarget: {
             type: String,
@@ -112,7 +127,7 @@ export default {
             padding-left: 115px;
         }
 
-        &-image {
+        &-imageContainer {
             /* account for 15px standard column padding */
             left: 15px;
             position: absolute;
