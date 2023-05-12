@@ -217,6 +217,7 @@
 <script lang="js">
 import EsButton from './EsButton.vue';
 import EsNavBarAccountMenu from './EsNavBarAccountMenu.vue';
+import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
 
@@ -228,6 +229,7 @@ export default {
         EsButton,
         EsLogo,
         EsNavBarAccountMenu,
+        EsNavBarLink,
         EsNavBarProductMenu,
         EsNavBarTopLevelMenu,
     },
