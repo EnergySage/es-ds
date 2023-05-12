@@ -24,7 +24,7 @@
                     component) for consuming applications to use in targeting ::v-deep styles on <p> tags to remove
                     the natural <p> bottom margin, for example.
 
-                    e.g. the Storyblok Richtext component generates a <p> tag within this that automatically
+                    e.g. a CMS rich text component may generate a <p> tag within this that automatically
                     gets a bottom margin, which throws off the vertical centering. we are intentionally leaving
                     the removal of that bottom margin up to consuming applications rather than removing it on all
                     <p> tags within this element, in case they may want two <p> tags or any other markup in here.
