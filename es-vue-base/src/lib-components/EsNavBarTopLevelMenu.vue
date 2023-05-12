@@ -1,7 +1,7 @@
 <template>
     <li class="nav-item nav-item-border-mobile top-header mx-0">
         <!-- desktop fly-out menu trigger -->
-        <a
+        <es-nav-bar-link
             v-if="!link"
             class="nav-link dropdown-toggle d-none d-lg-block py-150"
             href="#"
@@ -19,9 +19,9 @@
             <div class="font-weight-light font-size-xs pl-150">
                 {{ subHeading }}
             </div>
-        </a>
+        </es-nav-bar-link>
         <!-- mobile+desktop top-level link -->
-        <a
+        <es-nav-bar-link
             v-else
             class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
             :href="link"
@@ -38,7 +38,7 @@
                     {{ subHeading }}
                 </div>
             </div>
-        </a>
+        </es-nav-bar-link>
         <!-- mobile fly-out menu trigger -->
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
@@ -135,6 +135,7 @@
 
 <script lang="js">
 import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
+import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
 import { NAV_BAR_ICONS } from '../lib-utils/nav-bar-constants';
 
@@ -142,6 +143,7 @@ export default {
     name: 'EsNavBarTopLevelMenu',
     components: {
         EsNavBarFeaturedArticle,
+        EsNavBarLink,
         EsNavBarTopicMenu,
     },
     props: {

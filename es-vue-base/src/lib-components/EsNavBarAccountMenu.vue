@@ -15,19 +15,19 @@
                         <li
                             v-for="item in authItems"
                             :key="item.name">
-                            <a
+                            <es-nav-bar-link
                                 class="dropdown-item nav-link"
                                 :href="item.link">
                                 <span class="mx-50">
                                     {{ item.name }}
                                 </span>
-                            </a>
+                            </es-nav-bar-link>
                         </li>
                     </ul>
                     <ul
                         class="loggedOut dropdown-menu account-menu rounded mt-0"
                         style="display: none">
-                        <a
+                        <es-nav-bar-link
                             class="d-flex justify-content-around text-decoration-none"
                             :href="loggedOut.signIn.link">
                             <EsButton
@@ -36,16 +36,16 @@
                                 class="m-100 w-75">
                                 {{ loggedOut.signIn.name }}
                             </EsButton>
-                        </a>
+                        </es-nav-bar-link>
                         <li>
-                            <a
+                            <es-nav-bar-link
                                 class="d-flex justify-content-around"
                                 :href="loggedOut.createAccount.link">
                                 <EsButton
                                     variant="link">
                                     {{ loggedOut.createAccount.name }}
                                 </EsButton>
-                            </a>
+                            </es-nav-bar-link>
                         </li>
                     </ul>
                 </div>
@@ -55,8 +55,13 @@
 </template>
 
 <script lang="js">
+import EsNavBarLink from './EsNavBarLink.vue';
+
 export default {
     name: 'EsNavBarAccountMenu',
+    components: {
+        EsNavBarLink,
+    },
     props: {
         authItems: {
             type: Array,

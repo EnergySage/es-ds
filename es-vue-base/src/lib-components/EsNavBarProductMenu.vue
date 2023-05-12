@@ -1,7 +1,7 @@
 <template>
     <li class="dropdown nav-item nav-item-border-mobile">
         <!-- desktop product link / hover menu trigger -->
-        <a
+        <es-nav-bar-link
             class="product-menu-header-link dropdown-toggle d-none d-lg-block px-lg-100 px-xl-200 py-lg-0 text-decoration-none text-gray"
             :href="link"
             :target="newTab ? '_blank' : null"
@@ -11,7 +11,7 @@
             <span class="product-menu-header-text d-block position-relative py-lg-50">
                 {{ name }}
             </span>
-        </a>
+        </es-nav-bar-link>
         <!-- mobile flyout menu trigger -->
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
@@ -60,23 +60,23 @@
                 <li
                     class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold justify-content-between text-decoration-none w-100">
                     {{ name }}
-                    <a
+                    <es-nav-bar-link
                         class="product-menu-flyout-see-all font-size-50 font-weight-bolder text-uppercase"
                         :href="link">
                         {{ seeAllText }}
-                    </a>
+                    </es-nav-bar-link>
                 </li>
                 <!-- subnav items -->
                 <li
                     v-for="item in items"
                     :key="item.name">
-                    <a
+                    <es-nav-bar-link
                         class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
                         :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="item.newTab ? '_blank' : null">
                         {{ item.name }}
-                    </a>
+                    </es-nav-bar-link>
                 </li>
             </ul>
             <div
@@ -86,11 +86,11 @@
                 <p
                     class="nav-item nav-item-border-mobile nav-link align-items-center d-flex d-lg-none font-weight-bold justify-content-between mb-0 text-decoration-none w-100">
                     {{ name }}
-                    <a
+                    <es-nav-bar-link
                         class="product-menu-flyout-see-all font-size-50 font-weight-bolder text-uppercase"
                         :href="link">
                         {{ seeAllText }}
-                    </a>
+                    </es-nav-bar-link>
                 </p>
                 <b-row
                     tag="ul"
@@ -121,12 +121,14 @@
 
 <script lang="js">
 import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
+import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
 
 export default {
     name: 'EsNavBarProductMenu',
     components: {
         EsNavBarFeaturedArticle,
+        EsNavBarLink,
         EsNavBarTopicMenu,
     },
     props: {
