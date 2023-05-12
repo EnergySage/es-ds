@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.8] - 2023-05-12
+
+### Changed
+
+- Fixed an issue with `EsNavBar` where some links were not rendering as links due to a missing import
+
 ## [0.21.7] - 2023-05-12
 
 ### Changed
@@ -571,6 +577,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.21.8]: https://github.com/EnergySage/es-ds/compare/v0.21.7...v0.21.8
 [0.21.7]: https://github.com/EnergySage/es-ds/compare/v0.21.6...v0.21.7
 [0.21.6]: https://github.com/EnergySage/es-ds/compare/v0.21.4...v0.21.6
 [0.21.4]: https://github.com/EnergySage/es-ds/compare/v0.21.3...v0.21.4
