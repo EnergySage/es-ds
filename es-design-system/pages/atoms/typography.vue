@@ -66,11 +66,13 @@
                         Paragraph: Mint lime taco salsa lemon lime minty tabasco
                         pepper apple vinaigrette chai tea portobello mushrooms
                         couscous eating together green bowl tahini drizzle mint
-                        crispy iceberg lettuce orange dill lentils lime Southern
-                        Italian mediterranean vegetables pasta lemon. Hummus
-                        falafel bowl red grapes plums peppermint artichoke hearts
-                        ultimate crunchy seaweed lemonade zest walnut mushroom tart
-                        macadamia nut cookies apples hearts of palm cherries Thai
+                        crispy iceberg lettuce orange dill lentils lime.
+                        <b>
+                            Southern Italian mediterranean vegetables pasta lemon.
+                        </b>
+                        Hummus falafel bowl red grapes plums peppermint artichoke hearts.
+                        Ultimate crunchy seaweed lemonade zest walnut mushroom tart
+                        macadamia nut cookies apples hearts of palm cherries. Thai
                         super chili lemon tahini dressing seeds sweet potato dragon
                         fruit smoked tofu.
                     </p>
