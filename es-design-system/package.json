@@ -42,7 +42,7 @@
         "@nuxtjs/stylelint-module": "^4.2.1",
         "@nuxtjs/svg": "^0.4.0",
         "autoprefixer": "^9.8.8",
-        "aws-cdk": "^2.79.1",
+        "aws-cdk": "^2.80.0",
         "aws-cdk-lib": "^2.79.1",
         "babel-core": "7.0.0-bridge.0",
         "babel-jest": "^29.5.0",
