@@ -527,6 +527,7 @@ $nav-hover-delay: 300ms;
       // stylelint-disable-next-line function-disallowed-list
       max-height: calc(100% - 64px);
       padding: 0;
+      overflow-x: hidden;
       overflow-y: scroll;
 
       // Add padding below last menu element (not full page drop-downs) to account for iOS menus
@@ -610,6 +611,14 @@ $nav-hover-delay: 300ms;
       transition: transform 0.3s;
       transform: translate3d(-100%, 0, 0);
 
+      // Override BS4 defaults for consistency
+      ul,
+      li {
+        display: block;
+        width: 100%;
+        border-style: none;
+      }
+      li,
       .nav-item {
         display: flex;
         justify-content: space-between;
