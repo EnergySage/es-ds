@@ -95,3 +95,8 @@ export { default as IconInstagram } from './icon-instagram.vue';
 export { default as IconLinkedin } from './icon-linkedin.vue';
 export { default as IconTwitter } from './icon-twitter.vue';
 export { default as IconYoutube } from './icon-youtube.vue';
+
+// File icons
+export { default as IconDocFile } from './icon-doc-file.vue';
+export { default as IconPdfFile } from './icon-pdf-file.vue';
+export { default as IconDocxFile } from './icon-docx-file.vue';

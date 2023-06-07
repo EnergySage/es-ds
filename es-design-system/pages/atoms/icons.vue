@@ -435,6 +435,29 @@
             </li>
         </ul>
 
+        <h2>
+            File Icons
+        </h2>
+        <p>
+            Default size for rating star icons is 56px by 73px.
+        </p>
+        <ul
+            class="ds-icon-list m-0 mb-300 p-0"
+            :class="{ [textColorClass]: true }">
+            <li>
+                <icon-doc-file />
+                <code>IconDocFile</code>
+            </li>
+            <li>
+                <icon-docx-file />
+                <code>IconDocxFile</code>
+            </li>
+            <li>
+                <icon-pdf-file />
+                <code>IconPdfFile</code>
+            </li>
+        </ul>
+
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-design-system/atoms/icons.vue" />
