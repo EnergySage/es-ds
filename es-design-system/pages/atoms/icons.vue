@@ -297,6 +297,10 @@
                 <code>IconShield</code>
             </li>
             <li>
+                <icon-shield-with-check />
+                <code>IconShieldWithCheck</code>
+            </li>
+            <li>
                 <icon-shopping-bag />
                 <code>IconShoppingBag</code>
             </li>
