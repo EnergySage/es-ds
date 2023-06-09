@@ -1,12 +1,12 @@
 <template>
+    <!-- 0.001 is a hacky fix because aria-valuenow="0" does not work. -->
     <b-form-rating
         class="bg-transparent rounded-0"
         v-bind="$attrs"
-        :value="roundedRating"
+        :value="roundedRating || 0.001"
         :readonly="readOnly"
         no-border
         inline
-        :aria-valuenow="roundedRating"
         data-testid="rating-test"
         v-on="$listeners">
         <template #icon-empty>
