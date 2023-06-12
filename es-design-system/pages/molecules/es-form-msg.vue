@@ -24,6 +24,9 @@
             comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
             :doc-code="docCode"
             doc-source="es-design-system/pages/molecules/es-form-msg.vue" />
+            <template #message>
+
+            </template>
     </div>
 </template>
 <script>

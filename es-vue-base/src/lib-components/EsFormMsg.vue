@@ -1,19 +1,12 @@
 <template>
-    <b-alert
-        v-if="message"
-        :show="dismissCountDown"
-        :variant="variant"
-        dismissible
-        class="form-msg"
-        fade
-        @dismissed="dismissCountDown=0"
-        @dismiss-count-down="countDownChanged">
+    <b-alert v-if="message" :show="dismissCountDown" :variant="variant" dismissible class="form-msg" fade
+        @dismissed="dismissCountDown = 0" @dismiss-count-down="countDownChanged">
         <div class="d-flex">
             <div class="pr-50">
                 <IconCircleAlert v-if="variant === 'danger'" />
                 <IconCircleCheck v-if="variant === 'success'" />
             </div>
-            {{ message }}
+            <slot name="message"/>
         </div>
     </b-alert>
 </template>
@@ -73,7 +66,7 @@ export default {
 @import '~@energysage/es-bs-base/scss/includes';
 
 .form-msg {
-  flex: 0 0 100%;
-  padding-right: 2.5rem;
+    flex: 0 0 100%;
+    padding-right: 2.5rem;
 }
 </style>
