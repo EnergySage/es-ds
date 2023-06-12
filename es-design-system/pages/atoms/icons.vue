@@ -333,6 +333,10 @@
                 <code>IconTree</code>
             </li>
             <li>
+                <icon-upload />
+                <code>IconUpload</code>
+            </li>
+            <li>
                 <icon-verified />
                 <code>IconVerified</code>
             </li>
