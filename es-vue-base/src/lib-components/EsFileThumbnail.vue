@@ -9,8 +9,19 @@
                     class="p-3">
                     <b-col
                         cols="2">
-                        <div class="text-success p-0">
+                        <div
+                            v-if="success"
+                            class="text-success p-2">
                             <icon-circle-check />
+                        </div>
+                        <div
+                            v-if="!success && percentLoaded"
+                            class="pr-1">
+                            <es-progress
+                                :value="percentLoaded"
+                                circle
+                                :show-percentage="false"
+                                height="50px" />
                         </div>
                     </b-col>
                     <b-col
@@ -37,6 +48,7 @@
                         cols="10"
                         class="pl-0">
                         <b-link
+                            v-if="success"
                             @click="$emit('showPreview')">
                             {{ previewText }}
                         </b-link>
@@ -50,33 +62,53 @@
             <div class="thumbnail-outer-wrapper">
                 <div class="float-right d-flex">
                     <b-link
+                        v-if="success"
                         class="text-gray-800 text-decoration-none icon-button"
                         @click="$emit('removeFile')">
                         <icon-circle-x />
                         <div class="svg-fill-wrapper bg-white" />
                     </b-link>
+                    <div
+                        v-if="!success"
+                        class="pt-2" />
                 </div>
 
                 <b-link
                     class="text-decoration-none text-gray-800"
+                    :disabled="!success"
                     @click="$emit('showPreview')">
-                    <div class="card thumbnail-inner-wrapper">
-                        <div
-                            v-if="mimeType.includes('image') && fileSource"
-                            class="h-100 w-100">
-                            <b-img
-                                fluid
-                                class="image-preview"
-                                :src="fileSource"
-                                :alt="fileName" />
-                        </div>
-                        <div
-                            v-else
-                            class="h-100 d-flex align-items-center justify-content-center">
-                            <icon-pdf-file v-if="mimeType.includes('pdf')" />
-                            <icon-doc-file v-if="mimeType.includes('doc') && !(mimeType.includes('docx'))" />
-                            <icon-docx-file v-if="mimeType.includes('docx')" />
-                        </div>
+                    <div
+                        :class="{
+                            'card': true,
+                            'thumbnail-inner-wrapper-x': success,
+                            'thumbnail-inner-wrapper': !success,
+                        }">
+                        <template v-if="success">
+                            <div
+                                v-if="mimeType.includes('image') && fileSource"
+                                class="h-100 w-100">
+                                <b-img
+                                    fluid
+                                    class="image-preview"
+                                    :src="fileSource"
+                                    :alt="fileName" />
+                            </div>
+                            <div
+                                v-else
+                                class="h-100 d-flex align-items-center justify-content-center">
+                                <icon-pdf-file v-if="mimeType.includes('pdf')" />
+                                <icon-doc-file v-if="mimeType.includes('doc') && !(mimeType.includes('docx'))" />
+                                <icon-docx-file v-if="mimeType.includes('docx')" />
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="h-100 d-flex align-items-center justify-content-center">
+                                <es-progress
+                                    :value="percentLoaded"
+                                    circle
+                                    height="85px" />
+                            </div>
+                        </template>
                     </div>
                 </b-link>
             </div>
@@ -163,6 +195,20 @@ export default {
             default: 'View preview',
             required: false,
         },
+        /**
+         * If the upload was successful
+         */
+        success: {
+            type: Boolean,
+            default: false,
+        },
+        /**
+         * The progress of the upload, out of 100
+         */
+        percentLoaded: {
+            type: Number,
+            default: 0,
+        },
     },
 };
 </script>
@@ -189,7 +235,7 @@ export default {
     }
 }
 
-.thumbnail-inner-wrapper {
+.thumbnail-inner-wrapper-x {
     border: 2px solid $card-border-color;
     height: 160px;
     overflow: hidden;
@@ -204,6 +250,20 @@ export default {
 
     &:hover {
         border: 2px solid $gray-900;
+    }
+}
+
+.thumbnail-inner-wrapper {
+    border: 2px solid $card-border-color;
+    height: 160px;
+    overflow: hidden;
+    top: 8px;
+    width: 160px;
+    z-index: -1; // dragons
+
+    @include media-breakpoint-down(md) {
+        height: 105px;
+        width: 95px;
     }
 }
 

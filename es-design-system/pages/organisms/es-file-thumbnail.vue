@@ -5,6 +5,7 @@
                 file-name="bill.jpg"
                 mime-type="image/jpg"
                 file-source="https://www.eversource.com/content/images/default-source/bills/ct-sample-bill-electric-front.jpg?sfvrsn=495ad262_4"
+                success
                 @removeFile="removeFileAlert"
                 @showPreview="showPreviewAlert" />
         </div>
@@ -13,6 +14,7 @@
                 file-name="bill_front.pdf"
                 file-size="2.4 MB"
                 mime-type="application/pdf"
+                success
                 @removeFile="removeFileAlert"
                 @showPreview="showPreviewAlert" />
         </div>
@@ -21,6 +23,7 @@
                 file-name="bill_back.doc"
                 file-size="2.4 MB"
                 mime-type="application/doc"
+                success
                 @removeFile="removeFileAlert"
                 @showPreview="showPreviewAlert" />
         </div>
@@ -29,6 +32,17 @@
                 file-name="bill.docx"
                 file-size="2.4 MB"
                 mime-type="application/docx"
+                success
+                @removeFile="removeFileAlert"
+                @showPreview="showPreviewAlert" />
+        </div>
+        <div class="mt-3 mt-md-0 mr-md-4">
+            <es-file-thumbnail
+                file-name="bill.png"
+                file-size="2.4 MB"
+                mime-type="image/png"
+                :success="false"
+                :percent-loaded="35"
                 @removeFile="removeFileAlert"
                 @showPreview="showPreviewAlert" />
         </div>
