@@ -31,6 +31,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-error-page">
+                EsErrorPage
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-footer">
                 EsFooter
             </b-link>
