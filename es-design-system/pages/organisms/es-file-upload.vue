@@ -3,9 +3,6 @@
         <h1>
             File Upload
         </h1>
-        <p class="mb-450">
-            Description and mention of variables
-        </p>
 
         <div class="mb-450">
             <h2 class="mb-200">
@@ -86,7 +83,7 @@
                     id="basicExample"
                     v-model="rawUrls">
                     <template #label>
-                        URLs
+                        URLs (comma separated)
                     </template>
                 </es-form-input>
                 <div class="d-flex flex-grow-1 justify-content-end mt-100">
@@ -99,8 +96,20 @@
                     </es-button>
                 </div>
             </b-form>
+            <div
+                v-for="progress in uploadProgresses"
+                :key="progress.name"
+                class="mb-100">
+                <h3>
+                    {{ progress.name }}
+                </h3>
+                <es-progress :value="progress.percent" />
+                <p>
+                    {{ progress.percent }}%
+                </p>
+            </div>
         </div>
-        <div>
+        <div v-if="events.length">
             <h2 class="mb-200">
                 Emitted Events
             </h2>
@@ -198,6 +207,7 @@ export default {
             urls: [],
             rawUrls: '',
             events: [],
+            uploadProgresses: [],
             fileUploadProps: [{
                 name: 'uploadUrls',
                 default: 'None',
@@ -285,6 +295,7 @@ export default {
             this.events.push({ msg: `fileTypeError for file(s): ${fileNames.join(', ')}`, variant: 'danger' });
         },
         onSubmit() {
+            this.uploadProgresses = [];
             this.urls = this.rawUrls.replace(' ', '').split(',').filter((url) => url !== '');
         },
         readyToUpload(numberOfFiles) {
@@ -303,10 +314,14 @@ export default {
             });
         },
         uploadProgress(progressData) {
-            this.events.push({
-                msg: `uploadProgress for file: ${progressData.fileName} percentCompleted: `
-            + `${progressData.percentCompleted}`,
-                variant: 'success',
+            const progress = this.uploadProgresses.find((_progress) => _progress.name === progressData.fileName);
+            if (progress) {
+                progress.percent = progressData.percentCompleted;
+                return;
+            }
+            this.uploadProgresses.push({
+                name: progressData.fileName,
+                percent: progressData.percentCompleted,
             });
         },
         fileSizeError() {
