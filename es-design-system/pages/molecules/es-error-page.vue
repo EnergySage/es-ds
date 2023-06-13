@@ -56,7 +56,7 @@
                 </template>
             </es-error-page>
             <h2>
-                503 Error
+                Error 503
             </h2>
             <es-error-page>
                 <template #errorType>

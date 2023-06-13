@@ -395,12 +395,28 @@
                 <code>IconCommunitySolar</code>
             </li>
             <li>
+                <icon-contact-us />
+                <code>IconContactUs</code>
+            </li>
+            <li>
                 <icon-electric-vehicle />
                 <code>IconElectricVehicle</code>
             </li>
             <li>
                 <icon-heat-pump />
                 <code>IconHeatPump</code>
+            </li>
+            <li>
+                <icon-info-blog-post />
+                <code>IconInfoBlogPost</code>
+            </li>
+            <li>
+                <icon-learn-solar />
+                <code>IconLearnSolar</code>
+            </li>
+            <li>
+                <icon-marketplace />
+                <code>IconMarketplace</code>
             </li>
             <li>
                 <icon-rooftop-solar />
