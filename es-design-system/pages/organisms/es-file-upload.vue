@@ -111,6 +111,76 @@
                 :message="event.msg"
                 :timeout="60" />
         </div>
+        <div class="mb-450">
+            <h2>
+                EsFileUpload props
+            </h2>
+            <ds-responsive-table>
+                <ds-responsive-table-row
+                    v-for="prop in fileUploadProps"
+                    :key="prop.name">
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>{{ prop.name }}</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>{{ prop.default }}</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            {{ prop.description }}
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+        </div>
+        <div class="mb-450">
+            <h2>
+                EsFileUpload event listeners
+            </h2>
+            <ds-responsive-table>
+                <ds-responsive-table-row
+                    v-for="eventListener in fileUploadEventListeners"
+                    :key="eventListener.name">
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>{{ eventListener.name }}</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Payload
+                        </dt>
+                        <dd>
+                            <code>{{ eventListener.payload }}</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            {{ eventListener.description }}
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFileUpload.vue"
@@ -128,6 +198,76 @@ export default {
             urls: [],
             rawUrls: '',
             events: [],
+            fileUploadProps: [{
+                name: 'uploadUrls',
+                default: 'None',
+                description: 'An array of URLs to upload files to. Must be the same length as the number of files '
+                + 'uploaded.',
+            }, {
+                name: 'fileTypes',
+                default: 'None',
+                description: 'An array of accepted mime types for a file. If no argument passed, all file types are '
+                + 'accepted.',
+            }, {
+                name: 'maxFileSize',
+                default: '100',
+                description: 'Total max file size in MB. If multiple files are uploaded, the total size of all files '
+                + 'must be less than this value.',
+            }, {
+                name: 'uploadSuccessStatusCode',
+                default: '200',
+                description: 'The expected status code for a successful upload. If the status code is not this value, '
+                + 'the upload is considered a failure.',
+            }, {
+                name: 'collapsed',
+                default: 'false',
+                description: 'In desktop view, determines whether the upload box is horizontally collapsed.',
+            },
+            ],
+            fileUploadEventListeners: [{
+                name: '@fileSizeError',
+                payload: 'None',
+                description: 'If the files picked exceed the max file size defined as a prop, this event is '
+                + 'emitted.',
+            },
+            {
+                name: '@fileTypeError',
+                payload: 'Array',
+                description: 'If the file type of a file picked is not in the fileTypes array defined as a '
+                + 'prop, this event is emitted. The payload is an array of the file names that were not accepted.',
+            },
+            {
+                name: '@readyToUpload',
+                payload: 'Number',
+                description: 'If the files picked do not exceed the max file size defined as a prop, this '
+                + 'event is emitted. The payload is the number of files that are ready to be uploaded.',
+            },
+            {
+                name: '@uploadSuccess',
+                payload: 'String',
+                description: 'If the upload for a given file is successful, this event is emitted. The payload is the '
+                + 'name of the file that was successfully uploaded.',
+            },
+            {
+                name: '@uploadFailure',
+                payload: 'String',
+                description: 'If the upload for a given file fails, this event is emitted. The payload is the name '
+                + 'of the file that failed to upload.',
+            },
+            {
+                name: '@fileDataRead',
+                payload: 'Object',
+                description: 'Used for a file thumbnail preview. This is the callback for the FileReader onload '
+                + 'event (a file has finished being read locally into the browser as an encoded string). The payload '
+                + 'is an object with the file name, type, size, and the base64 encoded string (to be used as a '
+                + 'thumbnail). The fields are called: name, size, type, and data.',
+            },
+            {
+                name: '@uploadProgress',
+                payload: 'Number',
+                description: 'The callback for the Axios onUploadProgress event. The payload is the percentage of '
+                + 'the file that has been uploaded so far.',
+            }],
         };
     },
     async created() {
