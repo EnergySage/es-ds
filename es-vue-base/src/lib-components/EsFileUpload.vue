@@ -1,11 +1,11 @@
 <!-- eslint-disable vuejs-accessibility/no-static-element-interactions -->
 <template>
     <div
-        class="es-file-upload"
+        class="es-file-upload align-items-center rounded d-flex flex-column justify-content-center"
         :class="{ 'active': active, 'inactive': !active}"
-        @dragenter.stop.prevent="setActive"
-        @dragover.stop.prevent="setActive"
-        @dragleave.stop.prevent="setInActive"
+        @dragenter.stop.prevent="active = true"
+        @dragover.stop.prevent="active = true"
+        @dragleave.stop.prevent="active = false"
         @dragend.stop.prevent="onDrop"
         @drop.stop.prevent="onDrop">
         <div
@@ -41,7 +41,7 @@
             <slot name="helpText" />
         </div>
         <b-form-file
-            id="fileInput"
+            ref="fileInput"
             v-model="pickedItems"
             :state="Boolean(pickedItems)"
             :accept="fileTypesAsString"
@@ -103,14 +103,12 @@ export default {
     watch: {
         uploadUrls: {
             handler(newUrls) {
-                console.log('uploadUrls changed');
                 if (newUrls.length > 0 && newUrls.length === this.files.length) this.upload();
             },
             deep: true,
         },
         files: {
             handler(newFiles) {
-                console.log('files changed');
                 if (newFiles.length > 0 && newFiles.length === this.uploadUrls.length) this.upload();
             },
             deep: true,
@@ -132,12 +130,6 @@ export default {
                 return false;
             }
             return true;
-        },
-        setActive() {
-            this.active = true;
-        },
-        setInActive() {
-            this.active = false;
         },
         readFilesIntoUrl(files) {
             this.fileUrls = [];
@@ -182,7 +174,7 @@ export default {
                 this.readFilesIntoUrl(validFiles);
             }
         },
-        openFilePicker() { document.getElementById('fileInput').click(); },
+        openFilePicker() { this.$refs.fileInput.$el.childNodes[0].click(); },
         upload() {
             this.files.forEach((file, index) => {
                 this.uploadSingleFile(file, index);
@@ -223,13 +215,10 @@ export default {
 @import "~@energysage/es-bs-base/scss/variables";
 
 .es-file-upload {
-    align-items: center;
-    background-color: $gray-200;
-    border-radius: $border-radius;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2.5rem;
+    background-color: $white;
+    @include media-breakpoint-up(md) {
+        background-color: $gray-200;
+    }
 
     &.active {
         @media only screen and (min-width: 768px) {
@@ -242,12 +231,6 @@ export default {
             border: $btn-border-width dotted $border-color;
 
         }
-    }
-    @media only screen and (max-width: 767px) {
-        background-color: $white;
-        border: $btn-border-width solid $border-color;
-        padding: 1rem;
-        text-align: center;
     }
 }
 
