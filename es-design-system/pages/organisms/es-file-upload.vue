@@ -207,7 +207,7 @@ export default {
                 name: 'fileTypes',
                 default: 'None',
                 description: 'An array of accepted mime types for a file. If no argument passed, all file types are '
-                + 'accepted.',
+                + 'accepted. These mime types follow the IANA Media Types.',
             }, {
                 name: 'maxFileSize',
                 default: '100',
@@ -259,8 +259,7 @@ export default {
                 payload: 'Object',
                 description: 'Used for a file thumbnail preview. This is the callback for the FileReader onload '
                 + 'event (a file has finished being read locally into the browser as an encoded string). The payload '
-                + 'is an object with the file name, type, size, and the base64 encoded string (to be used as a '
-                + 'thumbnail). The fields are called: name, size, type, and data.',
+                + 'is an object with the fields name, size, type, and data.',
             },
             {
                 name: '@uploadProgress',
