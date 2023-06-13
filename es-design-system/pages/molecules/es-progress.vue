@@ -3,14 +3,22 @@
         <h1>
             Progress
         </h1>
-        <p class="pb-200">
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/progress">
+        <p>
+            Default variant extended from <b-link href="https://bootstrap-vue.org/docs/components/progress">
                 bootstrap-vue progress
             </b-link>
         </p>
+        <p class="pb-200">
+            Circle variant extended from <b-link href="https://github.com/EnergySage/es-cdgm/blob/main/frontend/components/CircularProgress.vue">
+                <code>es-cdgm</code> codebase
+            </b-link>
+        </p>
         <h2>
-            Three Steps
+            Default Variant
         </h2>
+        <h3>
+            Three Steps
+        </h3>
         <div class="mb-100">
             <es-progress :value="0" />
         </div>
@@ -23,9 +31,9 @@
         <div class="mb-100">
             <es-progress :value="100" />
         </div>
-        <h2>
+        <h3>
             Animated Transition
-        </h2>
+        </h3>
         <div class="mb-100">
             <es-progress :value="value" />
         </div>
@@ -51,9 +59,65 @@
                 20%
             </es-button>
         </div>
-        <p class="mb-200">
+        <p class="mb-300">
             value: {{ value }}
         </p>
+        <h2>
+            Circular Variant
+        </h2>
+        <p>
+            Height is a required property for the circular variant. The height range for best results is 70px-100px.
+        </p>
+        <p>
+            Height: 70px
+        </p>
+        <div class="mb-100 d-flex flex-nowrap">
+            <es-progress
+                :value="0"
+                circle
+                height="70px" />
+            <es-progress
+                :value="5"
+                circle
+                height="70px" />
+            <es-progress
+                :value="36"
+                circle
+                height="70px" />
+            <es-progress
+                :value="96"
+                circle
+                height="70px" />
+            <es-progress
+                :value="100"
+                circle
+                height="70px" />
+        </div>
+        <p>
+            Height: 100px
+        </p>
+        <div class="mb-100 d-flex flex-nowrap">
+            <es-progress
+                :value="0"
+                circle
+                height="100px" />
+            <es-progress
+                :value="5"
+                circle
+                height="100px" />
+            <es-progress
+                :value="36"
+                circle
+                height="100px" />
+            <es-progress
+                :value="87"
+                circle
+                height="100px" />
+            <es-progress
+                :value="87"
+                circle
+                height="100px" />
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsProgress.vue"
