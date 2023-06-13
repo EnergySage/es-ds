@@ -11,17 +11,16 @@
                         cols="2">
                         <div
                             v-if="success"
-                            class="text-success p-2">
+                            class="text-success p-0">
                             <icon-circle-check />
                         </div>
                         <div
-                            v-if="!success && percentLoaded"
-                            class="pr-1">
+                            v-if="!success && percentLoaded">
                             <es-progress
                                 :value="percentLoaded"
                                 circle
                                 :show-percentage="false"
-                                height="50px" />
+                                height="24px" />
                         </div>
                     </b-col>
                     <b-col
@@ -106,7 +105,7 @@
                                 <es-progress
                                     :value="percentLoaded"
                                     circle
-                                    height="85px" />
+                                    height="65px" />
                             </div>
                         </template>
                     </div>

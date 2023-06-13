@@ -20,7 +20,7 @@
                     :cx="50"
                     :cy="50"
                     stroke-width="5"
-                    :r="computedRadius" />
+                    r="45%" />
                 <!-- The first argument in `stoke-dasharray` is the amount of the circle we want colored
                     The second is the gap before the next stroke starts
                     Since we don't want another stroke to start, we use a number greater than the
@@ -31,7 +31,7 @@
                         :stroke-dasharray="`${fillLength} 300`"
                         :cx="50"
                         :cy="50"
-                        :r="computedRadius"
+                        r="45%"
                         stroke-width="5"
                         stroke-linecap="round"
                         transform="rotate(-90, 50, 50)" />
@@ -84,11 +84,11 @@ export default {
          * that is proportional to the value passed in.
          */
         fillLength() {
-            return (this.value / 100.0) * Math.PI * 2 * this.computedRadius;
+            return this.computedHeight * Math.PI * (this.value / 100) * (90 / this.computedHeight);
         },
-        computedRadius() {
+        computedHeight() {
             const height = this.height.replace(/[^0-9]/g, '');
-            return (parseInt((height * 0.45), 10));
+            return parseInt(height, 10);
         },
     },
 };
@@ -110,11 +110,13 @@ export default {
 }
 
 .inner-circle {
+    // position: relative;
     fill: transparent;
     stroke: $gray-200;
 }
 
 .progress-circle {
+    // position: relative;
     fill: transparent;
     stroke: $primary;
 }

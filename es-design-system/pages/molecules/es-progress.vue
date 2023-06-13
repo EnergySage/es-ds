@@ -66,55 +66,46 @@
             Circular Variant
         </h2>
         <p>
-            Height is a required property for the circular variant. The height range for best results is 70px-100px.
+            Height is a required property for the circular variant.
         </p>
         <p>
-            Height: 70px
+            Height ranges from 20px-100px
         </p>
-        <div class="mb-100 d-flex flex-nowrap">
+        <div class="mb-100 d-flex flex-nowrap align-content-start">
             <es-progress
                 :value="0"
                 circle
-                height="70px" />
+                height="20px" />
             <es-progress
-                :value="5"
+                :value="10"
+                circle
+                height="30px" />
+            <es-progress
+                :value="20"
+                circle
+                height="40px" />
+            <es-progress
+                :value="34"
+                circle
+                height="50px" />
+            <es-progress
+                :value="45"
+                circle
+                height="60px" />
+            <es-progress
+                :value="59"
                 circle
                 height="70px" />
             <es-progress
-                :value="36"
+                :value="72"
                 circle
-                height="70px" />
+                height="80px" />
             <es-progress
-                :value="96"
+                :value="84"
                 circle
-                height="70px" />
+                height="90px" />
             <es-progress
                 :value="100"
-                circle
-                height="70px" />
-        </div>
-        <p>
-            Height: 100px
-        </p>
-        <div class="mb-100 d-flex flex-nowrap">
-            <es-progress
-                :value="0"
-                circle
-                height="100px" />
-            <es-progress
-                :value="5"
-                circle
-                height="100px" />
-            <es-progress
-                :value="36"
-                circle
-                height="100px" />
-            <es-progress
-                :value="87"
-                circle
-                height="100px" />
-            <es-progress
-                :value="87"
                 circle
                 height="100px" />
         </div>
