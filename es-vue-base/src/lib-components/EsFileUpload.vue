@@ -1,8 +1,8 @@
 <!-- eslint-disable vuejs-accessibility/no-static-element-interactions -->
 <template>
     <div
-        class="es-file-upload align-items-center rounded d-flex flex-column justify-content-center"
-        :class="{ 'active': active, 'inactive': !active}"
+        class="es-file-upload align-items-center rounded d-flex flex-column justify-content-center p-2"
+        :class="{ 'active': active }"
         @dragenter.stop.prevent="active = true"
         @dragover.stop.prevent="active = true"
         @dragleave.stop.prevent="active = false"
@@ -215,22 +215,15 @@ export default {
 @import "~@energysage/es-bs-base/scss/variables";
 
 .es-file-upload {
-    background-color: $white;
-    @include media-breakpoint-up(md) {
-        background-color: $gray-200;
+    background-color: $gray-200;
+    border: $btn-border-width dotted $border-color;
+    @include media-breakpoint-down(sm) {
+        background-color: $white;
+        border: $btn-border-width solid $border-color;
     }
 
     &.active {
-        @media only screen and (min-width: 768px) {
-            border: $btn-border-width dotted $cyan-500;
-        }
-    }
-
-    &.inactive {
-        @media only screen and (min-width: 768px) {
-            border: $btn-border-width dotted $border-color;
-
-        }
+        border: $btn-border-width dotted $cyan-500;
     }
 }
 
