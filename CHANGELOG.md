@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.22.1] - 2023-06-12
+
+### Changed
+
+- Updated all major and minor dependencies
+- Fixes a11y issues in `EsNavBar` and `EsRating`
+
+## [0.22.0] - 2023-06-07
+
+### Added
+
+- New `IconShieldWithCheck` component
+
 ## [0.21.9] - 2023-05-19
 
 ### Changed
@@ -583,6 +596,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.22.0]: https://github.com/EnergySage/es-ds/compare/v0.21.9...v0.22.0
 [0.21.8]: https://github.com/EnergySage/es-ds/compare/v0.21.7...v0.21.8
 [0.21.7]: https://github.com/EnergySage/es-ds/compare/v0.21.6...v0.21.7
 [0.21.6]: https://github.com/EnergySage/es-ds/compare/v0.21.4...v0.21.6

@@ -15,6 +15,7 @@ export { default as IconSoundOff } from './icon-sound-off.vue';
 export { default as IconSoundDown } from './icon-sound-down.vue';
 export { default as IconShoppingBag } from './icon-shopping-bag.vue';
 export { default as IconShield } from './icon-shield.vue';
+export { default as IconShieldWithCheck } from './icon-shield-with-check.vue';
 export { default as IconSettingsVertical } from './icon-settings-vertical.vue';
 export { default as IconSettingsHorizontal } from './icon-settings-horizontal.vue';
 export { default as IconPlus } from './icon-plus.vue';

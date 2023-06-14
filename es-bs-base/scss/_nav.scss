@@ -527,6 +527,7 @@ $nav-hover-delay: 300ms;
       // stylelint-disable-next-line function-disallowed-list
       max-height: calc(100% - 64px);
       padding: 0;
+      overflow-x: hidden;
       overflow-y: scroll;
 
       // Add padding below last menu element (not full page drop-downs) to account for iOS menus
@@ -617,9 +618,11 @@ $nav-hover-delay: 300ms;
         width: 100%;
         border-style: none;
       }
-      li {
+      li,
+      .nav-item {
         display: flex;
         justify-content: space-between;
+        width: 100%;
       }
     }
 
@@ -631,6 +634,7 @@ $nav-hover-delay: 300ms;
       ul {
         // stylelint-disable-next-line function-disallowed-list
         max-height: calc(100% - 64px);
+        overflow-x: hidden;
         overflow-y: scroll;
 
         li:last-child {
