@@ -68,7 +68,7 @@ export default {
         fileName: {
             type: String,
             default: 'test.png',
-            required: true,
+            required: false,
         },
         /**
          * File Source

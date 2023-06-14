@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsFilePreviewModal <EsFilePreviewModal /> 1`] = `
+"<div id="preview-modal-test.png___BV_modal_outer_" style="position: absolute; z-index: 1040;" class="modal-lightbox" body-class="border-top p-0">
+  <transition-stub enterclass="" leaveclass="" entertoclass="" leavetoclass="" enteractiveclass="" leaveactiveclass="">
+    <div id="preview-modal-test.png" role="dialog" aria-hidden="true" aria-labelledby="preview-modal-test.png___BV_modal_title_" aria-describedby="preview-modal-test.png___BV_modal_body_" class="modal fade" style="display: none;">
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <!---->
+        <div id="preview-modal-test.png___BV_modal_content_" tabindex="-1" class="modal-content">
+          <header id="preview-modal-test.png___BV_modal_header_" class="modal-header">
+            <h5 id="preview-modal-test.png___BV_modal_title_" class="modal-title h2">
+              <div class="d-none d-md-block"></div>
+              <div class="d-md-none d-lock">
+                test.png
+              </div>
+            </h5><button type="button" aria-label="Close" class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 26px; width: 26px;" class="text-gray-900">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z"></path>
+              </svg></button>
+          </header>
+          <div id="preview-modal-test.png___BV_modal_body_" class="modal-body border-top p-0">
+            <div class="d-md-none d-block file-preview text-center"><img src="" alt="test.png" class="file-preview img-fluid rounded-bottom"></div>
+            <div class="d-none d-md-block">
+              <div class="px-450 py-200 bg-gray-200">
+                <div class="card bg-white file-preview">
+                  <div class="font-weight-bolder border-bottom p-100">
+                    test.png
+                  </div> <img src="" alt="test.png" class="file-preview img-fluid rounded-bottom">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!---->
+        </div>
+        <!---->
+      </div>
+    </div>
+  </transition-stub>
+  <transition-stub name="" css="true" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="fade" leaveactiveclass="fade">
+    <!---->
+  </transition-stub>
+</div>"
+`;

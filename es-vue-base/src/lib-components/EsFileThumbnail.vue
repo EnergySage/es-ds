@@ -34,6 +34,7 @@
                         cols="2">
                         <b-link
                             class="text-gray-900 float-right icon-button"
+                            aria-label="close-file-mobile"
                             @click="$emit('removeFile')">
                             <icon-trash-can />
                         </b-link>
@@ -48,6 +49,7 @@
                         class="pl-0">
                         <b-link
                             v-if="success"
+                            aria-label="show-preview-mobile"
                             @click="$emit('showPreview')">
                             {{ previewText }}
                         </b-link>
@@ -62,6 +64,7 @@
                 <div class="float-right d-flex">
                     <b-link
                         v-if="success"
+                        aria-label="close-file-desktop"
                         class="text-gray-800 text-decoration-none icon-button"
                         @click="$emit('removeFile')">
                         <icon-circle-x />
@@ -74,6 +77,7 @@
 
                 <b-link
                     class="text-decoration-none text-gray-800"
+                    aria-label="show-preview-desktop"
                     :disabled="!success"
                     @click="$emit('showPreview')">
                     <div
@@ -132,6 +136,7 @@ import IconDocFile from '../lib-icons/icon-doc-file.vue';
 import IconDocxFile from '../lib-icons/icon-docx-file.vue';
 import IconPdfFile from '../lib-icons/icon-pdf-file.vue';
 import IconTrashCan from '../lib-icons/icon-trash-can.vue';
+import EsProgress from './EsProgress.vue';
 
 export default {
     name: 'EsFileThumbnail',
@@ -144,6 +149,7 @@ export default {
         IconPdfFile,
         IconDocxFile,
         IconDocFile,
+        EsProgress,
     },
     props: {
         /**
@@ -154,7 +160,7 @@ export default {
         fileName: {
             type: String,
             default: 'test.png',
-            required: true,
+            required: false,
         },
         /**
          * Mime Type
@@ -163,7 +169,7 @@ export default {
         mimeType: {
             type: String,
             default: 'application/pdf',
-            required: true,
+            required: false,
         },
         /**
          * File Source
