@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsErrorPage <EsErrorPage /> 1`] = `
+"<div class="container my-5">
+  <div class="mb-5 mx-auto col-md-7 text-center">
+    <h1>404</h1>
+    <h2>Oops!</h2>
+  </div>
+  <div class="row"><a href="mailto:hello@energysage.com" class="col-6 col-md-3 text-center">
+      <iconcommunitysolar width="72px" height="72px" class="mb-2"></iconcommunitysolar>
+      <p class="font-weight-bolder mb-4 mb-md-0">Contact Us</p>
+    </a> <a href="https://www.energysage.com/solar/" class="col-6 col-md-3 text-center">
+      <iconcommunitysolar width="72px" height="72px" class="mb-2"></iconcommunitysolar>
+      <p class="font-weight-bolder mb-4 mb-md-0">Learn About Solar</p>
+    </a> <a href="https://news.energysage.com/" class="col-6 col-md-3 text-center">
+      <iconcommunitysolar width="72px" height="72px" class="mb-2"></iconcommunitysolar>
+      <p class="font-weight-bolder mb-4 mb-md-0">Informative Blog Posts</p>
+    </a> <a href="https://www.energysage.com/market-intro/" class="col-6 col-md-3 text-center">
+      <iconcommunitysolar width="72px" height="72px" class="mb-2"></iconcommunitysolar>
+      <p class="font-weight-bolder mb-4 mb-md-0">EnergySage Marketplace</p>
+    </a></div>
+</div>"
+`;
