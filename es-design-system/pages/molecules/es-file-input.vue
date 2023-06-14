@@ -67,7 +67,9 @@
                 </template>
             </es-file-input>
         </div>
-        <div class="mb-450">
+        <div
+            v-if="numberOfFiles"
+            class="mb-450">
             <h2 class="mb-200">
                 Upload Links
             </h2>
@@ -77,7 +79,7 @@
                     id="basicExample"
                     v-model="rawUrls">
                     <template #label>
-                        URLs (comma separated)
+                        I need {{ numberOfFiles }} URL{{ numberOfFiles > 1 ? 's  (comma separated)': '' }}
                     </template>
                 </es-form-input>
                 <div class="d-flex flex-grow-1 justify-content-end mt-100">
@@ -199,6 +201,7 @@ export default {
             compCode: '',
             docCode: '',
             urls: [],
+            numberOfFiles: 0,
             rawUrls: '',
             events: [],
             uploadProgresses: [],
@@ -293,6 +296,8 @@ export default {
             this.urls = this.rawUrls.replaceAll(' ', '').split(',').filter((url) => url !== '');
         },
         readyToUpload(numberOfFiles) {
+            this.numberOfFiles = numberOfFiles;
+            this.uploadProgresses = [];
             this.events.push({ msg: `readyToUpload for ${numberOfFiles} file(s)`, variant: 'success' });
         },
         uploadSuccess(fileName) {
