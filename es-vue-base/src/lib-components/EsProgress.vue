@@ -20,7 +20,7 @@
                     class="inner-circle"
                     :cx="50"
                     :cy="50"
-                    stroke-width="5"
+                    stroke-width="8"
                     r="45%" />
                 <!-- The first argument in `stoke-dasharray` is the amount of the circle we want colored
                     The second is the gap before the next stroke starts
@@ -33,7 +33,7 @@
                         :cx="50"
                         :cy="50"
                         r="45%"
-                        stroke-width="5"
+                        stroke-width="8"
                         stroke-linecap="round"
                         transform="rotate(-90, 50, 50)" />
                 </template>

@@ -8,7 +8,7 @@
             file-name="bill.png"
             :visible="visible">
             <template #desktop-header>
-                Preview you image uploads.
+                Preview your image uploads.
                 <div class="font-size-base font-weight-normal pt-3">
                     Make sure that your images are clear and readable.
                 </div>
