@@ -1,14 +1,11 @@
 <template>
     <div>
         <h1>
-            File Upload
+            File Input
         </h1>
 
         <div class="mb-450">
-            <h2 class="mb-200">
-                File Upload
-            </h2>
-            <es-file-upload
+            <es-file-input
                 :upload-urls="urls"
                 :max-file-size="20"
                 :file-types="['image/png', 'application/pdf']"
@@ -35,16 +32,16 @@
                         File types: PDF or JPG
                     </p>
                 </template>
-            </es-file-upload>
+            </es-file-input>
         </div>
         <div class="mb-450">
             <h2 class="mb-200">
-                File Upload Collapsed
+                File Input Collapsed
             </h2>
             <p>
                 Not intended for mobile use
             </p>
-            <es-file-upload
+            <es-file-input
                 :upload-urls="urls"
                 :file-types="['image/png', 'application/pdf']"
                 :collapsed="true"
@@ -71,7 +68,7 @@
                         File types: PDF or JPG
                     </p>
                 </template>
-            </es-file-upload>
+            </es-file-input>
         </div>
         <div class="mb-450">
             <h2 class="mb-200">
@@ -122,7 +119,7 @@
         </div>
         <div class="mb-450">
             <h2>
-                EsFileUpload props
+                EsFileInput props
             </h2>
             <ds-responsive-table>
                 <ds-responsive-table-row
@@ -157,7 +154,7 @@
         </div>
         <div class="mb-450">
             <h2>
-                EsFileUpload event listeners
+                EsFileInput event listeners
             </h2>
             <ds-responsive-table>
                 <ds-responsive-table-row
@@ -192,14 +189,14 @@
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-vue-base/src/lib-components/EsFileUpload.vue"
+            comp-source="es-vue-base/src/lib-components/EsFileInput.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-file-upload.vue" />
+            doc-source="es-design-system/pages/molecules/es-file-input.vue" />
     </div>
 </template>
 <script>
 export default {
-    name: 'EsFileUploadDocs',
+    name: 'EsFileInputDocs',
     data() {
         return {
             compCode: '',
@@ -282,7 +279,7 @@ export default {
     async created() {
         if (this.$prism) {
         /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-            const docSource = await import('!raw-loader!./es-file-upload.vue');
+            const docSource = await import('!raw-loader!./es-file-input.vue');
             const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsCard.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
             this.docCode = this.$prism.normalizeCode(docSource.default);

@@ -6,7 +6,7 @@ export { default as EsBreadcrumbs } from './EsBreadcrumbs.vue';
 export { default as EsButton } from './EsButton.vue';
 export { default as EsCard } from './EsCard.vue';
 export { default as EsCollapse } from './EsCollapse.vue';
-export { default as EsFileUpload } from './EsFileUpload.vue';
+export { default as EsFileInput } from './EsFileInput.vue';
 export { default as EsFooter } from './EsFooter.vue';
 export { default as EsFormInput } from './EsFormInput.vue';
 export { default as EsFormMsg } from './EsFormMsg.vue';
