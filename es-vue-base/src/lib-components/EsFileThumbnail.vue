@@ -47,12 +47,23 @@
                     <b-col
                         cols="10"
                         class="pl-0">
-                        <b-link
-                            v-if="success"
-                            aria-label="show-preview-mobile"
-                            @click="$emit('showPreview')">
-                            {{ previewText }}
-                        </b-link>
+                        <template v-if="mimeType && mimeType.includes('image') && fileSource">
+                            <b-link
+                                v-if="success"
+                                aria-label="show-preview-mobile-image"
+                                @click="$emit('showPreview')">
+                                {{ previewText }}
+                            </b-link>
+                        </template>
+                        <template v-else>
+                            <b-link
+                                v-if="success"
+                                aria-label="show-preview-mobile-file"
+                                :href="fileSource"
+                                target="_blank">
+                                {{ previewText }}
+                            </b-link>
+                        </template>
                     </b-col>
                 </b-row>
             </div>
@@ -76,8 +87,9 @@
                 </div>
 
                 <b-link
+                    v-if="mimeType.includes('image')"
                     class="text-decoration-none text-gray-800"
-                    aria-label="show-preview-desktop"
+                    aria-label="show-preview-desktop-image"
                     :disabled="!success"
                     @click="$emit('showPreview')">
                     <div
@@ -87,17 +99,39 @@
                             'thumbnail-inner-wrapper': !success,
                         }">
                         <template v-if="success">
-                            <div
-                                v-if="mimeType.includes('image') && fileSource"
-                                class="h-100 w-100">
+                            <div class="h-100 w-100">
                                 <b-img
                                     fluid
                                     class="image-preview"
                                     :src="fileSource"
                                     :alt="fileName" />
                             </div>
+                        </template>
+                        <template v-else>
+                            <div class="h-100 d-flex align-items-center justify-content-center">
+                                <es-progress
+                                    :value="percentLoaded"
+                                    circle
+                                    height="65px" />
+                            </div>
+                        </template>
+                    </div>
+                </b-link>
+                <b-link
+                    v-if="mimeType.includes('application')"
+                    class="text-decoration-none text-gray-800"
+                    aria-label="show-preview-desktop-file"
+                    :disabled="!success"
+                    :href="fileSource"
+                    target="_blank">
+                    <div
+                        :class="{
+                            'card': true,
+                            'thumbnail-inner-wrapper-x': success,
+                            'thumbnail-inner-wrapper': !success,
+                        }">
+                        <template v-if="success">
                             <div
-                                v-else
                                 class="h-100 d-flex align-items-center justify-content-center">
                                 <icon-pdf-file v-if="mimeType.includes('pdf')" />
                                 <icon-doc-file v-if="mimeType.includes('doc') && !(mimeType.includes('docx'))" />
