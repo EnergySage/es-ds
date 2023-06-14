@@ -3,6 +3,7 @@
         <div class="mr-md-4">
             <es-file-thumbnail
                 file-name="bill.jpg"
+                file-size="1.3 MB"
                 mime-type="image/jpg"
                 file-source="https://www.eversource.com/content/images/default-source/bills/ct-sample-bill-electric-front.jpg?sfvrsn=495ad262_4"
                 success
@@ -39,7 +40,6 @@
         <div class="mt-3 mt-md-0 mr-md-4">
             <es-file-thumbnail
                 file-name="bill.png"
-                file-size="2.4 MB"
                 mime-type="image/png"
                 :success="false"
                 :percent-loaded="35"
