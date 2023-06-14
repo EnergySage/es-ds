@@ -11,9 +11,12 @@
                 :style="linkStyle"
                 href="mailto:hello@energysage.com">
                 <div class="circle mb-2">
-                    <IconContactUs
-                        :width="width"
-                        :height="height" />
+                    <div
+                        class="m-3 text-orange">
+                        <IconContactUs
+                            :width="iconFill"
+                            :height="iconFill" />
+                    </div>
                 </div>
 
                 <p :class="linkTextClass">Contact Us</p>
@@ -23,9 +26,12 @@
                 :style="linkStyle"
                 href="https://www.energysage.com/solar/">
                 <div class="circle mb-2">
-                    <IconLearnSolar
-                        :width="width"
-                        :height="height" />
+                    <div
+                        class="m-3 text-orange">
+                        <IconCommunitySolar
+                            :width="iconFill"
+                            :height="iconFill" />
+                    </div>
                 </div>
                 <p :class="linkTextClass">Learn About Solar</p>
             </a>
@@ -34,9 +40,12 @@
                 :style="linkStyle"
                 href="https://news.energysage.com/">
                 <div class="circle mb-2">
-                    <IconInfoBlogPost
-                        :width="width"
-                        :height="height" />
+                    <div
+                        class="m-3 text-orange">
+                        <IconInfoBlogPost
+                            :width="iconFill"
+                            :height="iconFill" />
+                    </div>
                 </div>
                 <p :class="linkTextClass">Informative Blog Posts</p>
 
@@ -46,9 +55,12 @@
                 :style="linkStyle"
                 href="https://www.energysage.com/market-intro/">
                 <div class="circle mb-2">
-                    <IconMarketplace
-                        :width="width"
-                        :height="height" />
+                    <div
+                        class="m-3 text-orange">
+                        <IconMarketplace
+                            :width="iconFill"
+                            :height="iconFill" />
+                    </div>
                 </div>
                 <p :class="linkTextClass">EnergySage Marketplace</p>
             </a>
@@ -60,29 +72,12 @@
 
 export default {
     name: 'EsErrorPage',
-    props: {
-        /**
-         * Icon Width
-         */
-        width: {
-            type: String,
-            default: '46px',
-            required: false,
-        },
-        /**
-         * Icon Height
-         */
-        height: {
-            type: String,
-            default: '46px',
-            required: false,
-        },
-    },
     data() {
         return {
             linkClass: 'col-6 col-md-3 text-center',
             linkTextClass: 'font-weight-bolder mb-4 mb-md-0',
             linkStyle: 'display:flex; align-items: center; flex-direction:column',
+            iconFill: '100%',
         };
     },
 };
@@ -98,6 +93,5 @@ export default {
     height:72px;
     justify-content: center;
     width:72px;
-
 }
 </style>

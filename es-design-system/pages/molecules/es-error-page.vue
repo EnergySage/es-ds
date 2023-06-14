@@ -86,6 +86,7 @@ export default {
         return {
             compCode: '',
             docCode: '',
+            errorTitle: 'font-weight-boldest display-3',
         };
     },
     async created() {

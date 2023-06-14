@@ -411,10 +411,6 @@
                 <code>IconInfoBlogPost</code>
             </li>
             <li>
-                <icon-learn-solar />
-                <code>IconLearnSolar</code>
-            </li>
-            <li>
                 <icon-marketplace />
                 <code>IconMarketplace</code>
             </li>
