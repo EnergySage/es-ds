@@ -7,7 +7,7 @@
         <div class="mb-450">
             <es-file-input
                 :upload-urls="urls"
-                :max-file-size="20"
+                :max-file-size-mb="10"
                 :file-types="['image/png', 'application/pdf']"
                 @fileSizeError="fileSizeError"
                 @fileTypeError="fileTypeError"
@@ -38,9 +38,6 @@
             <h2 class="mb-200">
                 File Input Collapsed
             </h2>
-            <p>
-                Not intended for mobile use
-            </p>
             <es-file-input
                 :upload-urls="urls"
                 :file-types="['image/png', 'application/pdf']"
@@ -53,18 +50,18 @@
                 @fileDataRead="fileDataRead"
                 @uploadProgress="uploadProgress">
                 <template #cta>
-                    <h3 class="d-none d-md-inline-block mb-4 text-center">
+                    <h3 class="d-none d-md-block mb-4 text-center">
                         Drag and drop your files or
                     </h3>
-                    <p class="d-inline-block d-md-none">
+                    <p class="d-block d-md-none text-center">
                         <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
                     </p>
                 </template>
                 <template #helpText>
-                    <p class="d-none d-md-inline-block">
+                    <p class="d-none d-md-block">
                         Please upload your file as a PDF or JPG.
                     </p>
-                    <p class="d-inline-block d-md-none mb-0">
+                    <p class="d-md-none mb-0">
                         File types: PDF or JPG
                     </p>
                 </template>
@@ -217,12 +214,12 @@ export default {
                 + 'accepted. These mime types follow the IANA Media Types.',
             }, {
                 name: 'maxFileSize',
-                default: '100',
-                description: 'Total max file size in MB. If multiple files are uploaded, the total size of all files '
-                + 'must be less than this value.',
+                default: '25',
+                description: 'Max file size in MB. This is per file. Any file that exceeds this size will not be '
+                + 'uploaded.',
             }, {
-                name: 'uploadSuccessStatusCode',
-                default: '200',
+                name: 'successCode',
+                default: '201',
                 description: 'The expected status code for a successful upload. If the status code is not this value, '
                 + 'the upload is considered a failure.',
             }, {
@@ -233,9 +230,9 @@ export default {
             ],
             fileUploadEventListeners: [{
                 name: '@fileSizeError',
-                payload: 'None',
-                description: 'If the files picked exceed the max file size defined as a prop, this event is '
-                + 'emitted.',
+                payload: 'String',
+                description: 'If a file picked exceeds the max file size defined as a prop, this event is '
+                + 'emitted. The payload is the name of the file.',
             },
             {
                 name: '@fileTypeError',
@@ -293,7 +290,7 @@ export default {
         },
         onSubmit() {
             this.uploadProgresses = [];
-            this.urls = this.rawUrls.replace(' ', '').split(',').filter((url) => url !== '');
+            this.urls = this.rawUrls.replaceAll(' ', '').split(',').filter((url) => url !== '');
         },
         readyToUpload(numberOfFiles) {
             this.events.push({ msg: `readyToUpload for ${numberOfFiles} file(s)`, variant: 'success' });
@@ -321,8 +318,8 @@ export default {
                 percent: progressData.percentCompleted,
             });
         },
-        fileSizeError() {
-            this.events.push({ msg: 'fileSizeError: exceeded max file size', variant: 'danger' });
+        fileSizeError(fileName) {
+            this.events.push({ msg: `fileSizeError: exceeded max file size for file ${fileName}`, variant: 'danger' });
         },
     },
 };

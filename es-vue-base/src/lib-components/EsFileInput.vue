@@ -1,6 +1,7 @@
-<!-- eslint-disable vuejs-accessibility/no-static-element-interactions -->
 <template>
     <div
+        role="button"
+        tabindex="0"
         class="es-file-upload align-items-center rounded d-flex flex-column justify-content-center p-2"
         :class="{ 'active': active }"
         @dragenter.stop.prevent="active = true"
@@ -29,7 +30,7 @@
                     Browse Files
                 </es-button>
                 <es-button
-                    class="d-inline-block d-md-none w-100 mb-2"
+                    class="d-md-none w-100 mb-2"
                     variant="secondary"
                     outline
                     @click="openFilePicker">
@@ -44,7 +45,7 @@
             ref="fileInput"
             v-model="pickedItems"
             :state="Boolean(pickedItems)"
-            :accept="fileTypesAsString"
+            :accept="fileTypes.join(', ')"
             style="display: none"
             multiple />
     </div>
@@ -63,22 +64,55 @@ export default {
         IconUpload,
     },
     props: {
+        /**
+         * An array of URLs as strings. Once the number of URLs matches the number of files, the component will upload
+         * the files to the URLs.
+         */
         uploadUrls: {
             type: Array,
             default: () => [],
         },
+        /**
+         * The file types that are allowed to be uploaded. This is a list of MIME types as strings. If the array is
+         * empty, all file types are allowed. A list of acceptable MIME types can be found here in the template column:
+         * https://www.iana.org/assignments/media-types/media-types.xhtml
+         */
         fileTypes: {
             type: Array,
             default: () => [],
+            required: true,
+            validator(fileTypes) {
+                // There are 9 valid types, but there are there are about ~1500 subtypes. We'll just check that the
+                // type is valid and the subtype is not empty.
+                const validTypes = ['application',
+                    'audio',
+                    'font',
+                    'example',
+                    'image',
+                    'message',
+                    'model',
+                    'multipart',
+                    'text',
+                    'video'];
+                return fileTypes.every((fileType) => {
+                    const mimeTypeParts = fileType.split('/');
+                    if (mimeTypeParts.length !== 2) return false;
+                    const [type, subtype] = mimeTypeParts;
+                    return validTypes.includes(type) && subtype.length > 0;
+                });
+            },
         },
-        maxFileSize: {
+        /**
+         * The maximum file size in MB. This is per file, not the total size of all files.
+         */
+        maxFileSizeMb: {
             type: Number,
-            default: 100,
+            default: 25,
             required: false,
         },
-        uploadSuccessStatusCode: {
+        successCode: {
             type: Number,
-            default: 200,
+            default: 201,
             required: false,
         },
         collapsed: {
@@ -95,11 +129,6 @@ export default {
             active: false,
         };
     },
-    computed: {
-        fileTypesAsString() {
-            return this.fileTypes.join(', ');
-        },
-    },
     watch: {
         uploadUrls: {
             handler(newUrls) {
@@ -114,22 +143,28 @@ export default {
             deep: true,
         },
         pickedItems(newVal) {
-            this.files = newVal;
-            if (newVal.length > 0 && this.fileSizeValid()) {
+            // The user has selected files from the file picker. We have to filter out any files that exceed the
+            // maxFileSizeMb prop.
+            this.files = this.filterLargeFiles(newVal);
+            if (this.files.length > 0) {
                 this.$emit('readyToUpload', this.files.length);
                 this.readFilesIntoUrl(newVal);
             }
         },
     },
     methods: {
-        fileSizeValid() {
-            // Check if the combined file sizes exceed the maxFileSize prop
-            const totalFileSize = this.files.reduce((acc, file) => acc + file.size, 0);
-            if (totalFileSize > this.maxFileSize * 1000000) {
-                this.$emit('fileSizeError');
-                return false;
-            }
-            return true;
+        filterLargeFiles(files) {
+            // Takes an array of files, and filters out any files that exceed the maxFileSizeMb prop. Emits a
+            // fileSizeError event for each file that exceeds the maxFileSizeMb prop. The File API uses bytes, so
+            // we have to convert the maxFileSizeMb prop to bytes.
+            const maxFileSizeBytes = this.maxFileSizeMb * 1000000;
+            return files.filter((file) => {
+                if (file.size > maxFileSizeBytes) {
+                    this.$emit('fileSizeError', file.name);
+                    return false;
+                }
+                return true;
+            });
         },
         readFilesIntoUrl(files) {
             this.fileUrls = [];
@@ -152,35 +187,38 @@ export default {
             this.files = [];
 
             // Use DataTransferItemList interface to access the file(s)
-            const invalidFiles = [...event.dataTransfer.items].filter((item) => item.kind !== 'file');
+            const invavlidItems = [...event.dataTransfer.items].filter((item) => item.kind !== 'file');
 
             const dataTransfersAsFiles = [...event.dataTransfer.items]
                 .filter((item) => item.kind === 'file')
                 .map((item) => item.getAsFile());
 
-            const validFiles = dataTransfersAsFiles
+            const validFileTypes = dataTransfersAsFiles
                 .filter((file) => this.fileTypes.includes(file.type));
+            const validFiles = this.filterLargeFiles(validFileTypes);
+
             const fileErrors = dataTransfersAsFiles
                 .filter((file) => !this.fileTypes.includes(file.type))
-                .concat(invalidFiles)
+                .concat(invavlidItems)
                 .map((item) => item.name);
+
             if (fileErrors.length > 0) {
                 this.$emit('fileTypeError', fileErrors);
             }
 
             this.files = validFiles;
-            if (this.files.length > 0 && this.fileSizeValid()) {
+            if (this.files.length > 0) {
                 this.$emit('readyToUpload', this.files.length);
-                this.readFilesIntoUrl(validFiles);
+                this.readFilesIntoUrl(this.files);
             }
         },
         openFilePicker() { this.$refs.fileInput.$el.childNodes[0].click(); },
-        upload() {
-            this.files.forEach((file, index) => {
-                this.uploadSingleFile(file, index);
-            });
+        async upload() {
+            await Promise.all(this.files.map(async (file, index) => {
+                await this.uploadSingleFile(file, index);
+            }));
         },
-        uploadSingleFile(file, index) {
+        async uploadSingleFile(file, index) {
             const config = {
                 headers: {
                     'Content-Type': file.type,
@@ -191,13 +229,13 @@ export default {
                     return percentCompleted;
                 },
             };
-            this.$axios.post(
+            await this.$axios.post(
                 this.uploadUrls[index],
                 file,
                 config,
             )
                 .then((response) => {
-                    if (response.status === this.uploadSuccessStatusCode) {
+                    if (response.status === this.successCode) {
                         this.$emit('uploadSuccess', file.name);
                     } else {
                         this.$emit('uploadFailure', file.name);
