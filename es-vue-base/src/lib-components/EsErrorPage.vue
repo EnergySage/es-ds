@@ -69,9 +69,19 @@
 </template>
 
 <script lang="js">
+import IconCommunitySolar from '../lib-icons/icon-community-solar.vue';
+import IconContactUs from '../lib-icons/icon-contact-us.vue';
+import IconMarketplace from '../lib-icons/icon-marketplace.vue';
+import IconInfoBlogPost from '../lib-icons/icon-info-blog-post.vue';
 
 export default {
     name: 'EsErrorPage',
+    components: {
+        IconCommunitySolar,
+        IconContactUs,
+        IconMarketplace,
+        IconInfoBlogPost,
+    },
     data() {
         return {
             linkClass: 'col-6 col-md-3 text-center',
