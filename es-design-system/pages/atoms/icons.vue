@@ -443,7 +443,7 @@
             File Icons
         </h2>
         <p>
-            Default size for rating star icons is 56px by 73px.
+            Default size for file icons is 56px by 73px.
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
