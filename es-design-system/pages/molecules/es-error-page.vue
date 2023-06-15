@@ -9,21 +9,6 @@
         </p>
         <div class="my-450">
             <h2>
-                Error 404
-            </h2>
-            <es-error-page>
-                <template #errorType>
-                    <h1 class="font-weight-boldest display-3">
-                        404
-                    </h1>
-                </template>
-                <template #errorMsg>
-                    <h2>
-                        Oops! We are terribly sorry, but there is nothing bright to see here.
-                    </h2>
-                </template>
-            </es-error-page>
-            <h2>
                 Error 403
             </h2>
             <es-error-page>
@@ -40,12 +25,27 @@
                 </template>
             </es-error-page>
             <h2>
-                Error 500
+                Error 404
             </h2>
             <es-error-page>
                 <template #errorType>
                     <h1 class="font-weight-boldest display-3">
                         404
+                    </h1>
+                </template>
+                <template #errorMsg>
+                    <h2>
+                        Oops! We are terribly sorry, but there is nothing bright to see here.
+                    </h2>
+                </template>
+            </es-error-page>
+            <h2>
+                Error 500
+            </h2>
+            <es-error-page>
+                <template #errorType>
+                    <h1 class="font-weight-boldest display-3">
+                        500
                     </h1>
                 </template>
                 <template #errorMsg>
