@@ -10,12 +10,11 @@
                     <b-col
                         cols="2">
                         <div
-                            v-if="success"
+                            v-if="!loading"
                             class="text-success p-0">
                             <icon-circle-check />
                         </div>
-                        <div
-                            v-if="!success && percentLoaded">
+                        <div v-else>
                             <es-progress
                                 :value="percentLoaded"
                                 circle
@@ -49,7 +48,7 @@
                         class="pl-0">
                         <template v-if="mimeType && mimeType.includes('image') && fileSource">
                             <b-link
-                                v-if="success"
+                                v-if="!loading"
                                 aria-label="show-preview-mobile-image"
                                 @click="$emit('showPreview')">
                                 {{ previewText }}
@@ -57,7 +56,7 @@
                         </template>
                         <template v-else>
                             <b-link
-                                v-if="success"
+                                v-if="!loading"
                                 aria-label="show-preview-mobile-file"
                                 :href="fileSource"
                                 target="_blank">
@@ -74,31 +73,28 @@
             <div class="thumbnail-outer-wrapper">
                 <div class="float-right d-flex">
                     <b-link
-                        v-if="success"
+                        v-if="!loading"
                         aria-label="close-file-desktop"
                         class="text-gray-800 text-decoration-none icon-button"
                         @click="$emit('removeFile')">
                         <icon-circle-x />
                         <div class="svg-fill-wrapper bg-white" />
                     </b-link>
-                    <div
-                        v-if="!success"
-                        class="pt-2" />
                 </div>
 
                 <b-link
                     v-if="mimeType.includes('image')"
                     class="text-decoration-none text-gray-800"
                     aria-label="show-preview-desktop-image"
-                    :disabled="!success"
+                    :disabled="loading"
                     @click="$emit('showPreview')">
                     <div
                         :class="{
                             'card': true,
-                            'thumbnail-inner-wrapper-x': success,
-                            'thumbnail-inner-wrapper': !success,
+                            'thumbnail-inner-wrapper-x': !loading,
+                            'thumbnail-inner-wrapper': loading,
                         }">
-                        <template v-if="success">
+                        <template v-if="!loading">
                             <div class="h-100 w-100">
                                 <b-img
                                     fluid
@@ -121,16 +117,16 @@
                     v-if="mimeType.includes('application')"
                     class="text-decoration-none text-gray-800"
                     aria-label="show-preview-desktop-file"
-                    :disabled="!success"
+                    :disabled="loading"
                     :href="fileSource"
                     target="_blank">
                     <div
                         :class="{
                             'card': true,
-                            'thumbnail-inner-wrapper-x': success,
-                            'thumbnail-inner-wrapper': !success,
+                            'thumbnail-inner-wrapper-x': !loading,
+                            'thumbnail-inner-wrapper': loading,
                         }">
-                        <template v-if="success">
+                        <template v-if="!loading">
                             <div
                                 class="h-100 d-flex align-items-center justify-content-center">
                                 <icon-pdf-file v-if="mimeType.includes('pdf')" />
@@ -235,18 +231,16 @@ export default {
             required: false,
         },
         /**
-         * If the upload was successful
-         */
-        success: {
-            type: Boolean,
-            default: false,
-        },
-        /**
          * The progress of the upload, out of 100
          */
         percentLoaded: {
             type: Number,
             default: 0,
+        },
+    },
+    computed: {
+        loading() {
+            return (this.percentLoaded !== 100);
         },
     },
 };

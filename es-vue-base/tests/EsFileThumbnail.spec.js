@@ -32,7 +32,6 @@ describe('EsFileThumbnail', () => {
         expect(wrapper.html()).toMatchSnapshot();
 
         expect(wrapper.props('percentLoaded')).toBe(0);
-        expect(wrapper.props('success')).toBe(false);
         expect(wrapper.props('previewText')).toBe('View preview');
     });
 });
