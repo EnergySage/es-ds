@@ -1,6 +1,13 @@
 <template>
-    <b-alert v-if="message" :show="dismissCountDown" :variant="variant" dismissible class="form-msg" fade
-        @dismissed="dismissCountDown = 0" @dismiss-count-down="countDownChanged">
+    <b-alert
+        v-if="message"
+        :show="dismissCountDown"
+        :variant="variant"
+        dismissible
+        class="form-msg"
+        fade
+        @dismissed="dismissCountDown = 0"
+        @dismiss-count-down="countDownChanged">
         <div class="d-flex">
             <div class="pr-50">
                 <IconCircleAlert v-if="variant === 'danger'" />
@@ -59,7 +66,7 @@ export default {
                 this.$emit('hidden');
             }
         },
-    }
+    },
 };
 </script>
 <style lang="scss" scoped>
