@@ -49,9 +49,6 @@ export default {
             if (success) {
                 this.showFormSuccess();
             }
-            // if (Link) {
-            //     this.showFormLink();
-            // }
             else {
                 this.showFormError();
             }
