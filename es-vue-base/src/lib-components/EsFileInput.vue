@@ -112,11 +112,6 @@ export default {
             default: 25,
             required: false,
         },
-        successCode: {
-            type: Number,
-            default: 201,
-            required: false,
-        },
         collapsed: {
             type: Boolean,
             default: false,
@@ -174,6 +169,7 @@ export default {
                 .forEach((file) => {
                     const fileReader = new FileReader();
                     fileReader.onload = () => {
+                        // TODO: If pdf/docx, we might not want to read the file...
                         this.$emit('fileDataRead', {
                             name: file.name, type: file.type, size: file.size, data: fileReader.result,
                         });
@@ -231,13 +227,13 @@ export default {
                     return percentCompleted;
                 },
             };
-            await this.$axios.post(
+            await this.$axios.put(
                 this.uploadUrls[index],
                 file,
                 config,
             )
                 .then((response) => {
-                    if (response.status === this.successCode) {
+                    if (response.status >= 200 && response.status < 300) {
                         this.$emit('uploadSuccess', file.name);
                     } else {
                         this.$emit('uploadFailure', file.name);

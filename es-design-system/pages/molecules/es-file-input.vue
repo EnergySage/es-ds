@@ -220,12 +220,8 @@ export default {
                 default: '25',
                 description: 'Max file size in MB. This is per file. Any file that exceeds this size will not be '
                 + 'uploaded.',
-            }, {
-                name: 'successCode',
-                default: '201',
-                description: 'The expected status code for a successful upload. If the status code is not this value, '
-                + 'the upload is considered a failure.',
-            }, {
+            },
+            {
                 name: 'collapsed',
                 default: 'false',
                 description: 'In desktop view, determines whether the upload box is horizontally collapsed.',
