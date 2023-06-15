@@ -79,6 +79,70 @@
         <es-button @click="resetLoadingState">
             Reset loading state
         </es-button>
+        <h2 class="mt-5">
+            Thumbnail in mobile view
+        </h2>
+        <b-row class="mb-3">
+            <b-col
+                cols="12"
+                md="6">
+                <es-file-thumbnail
+                    file-name="bill.jpg"
+                    file-size="1.3 MB"
+                    mime-type="image/jpg"
+                    file-source="https://www.eversource.com/content/images/default-source/bills/ct-sample-bill-electric-front.jpg?sfvrsn=495ad262_4"
+                    :percent-loaded="100"
+                    mobile-view
+                    @removeFile="removeFileAlert"
+                    @showPreview="showPreviewModal=true" />
+            </b-col>
+            <b-col
+                cols="12"
+                md="6">
+                <es-file-thumbnail
+                    file-name="bill_back.doc"
+                    file-size="2.4 MB"
+                    mime-type="application/doc"
+                    :percent-loaded="100"
+                    mobile-view
+                    @removeFile="removeFileAlert" />
+            </b-col>
+        </b-row>
+        <div class="mt-5 mb-450">
+            <h2>
+                EsFileThumbnail props
+            </h2>
+            <ds-responsive-table>
+                <ds-responsive-table-row
+                    v-for="prop in fileUploadProps"
+                    :key="prop.name">
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>{{ prop.name }}</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>{{ prop.default }}</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            {{ prop.description }}
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFileThumbnail.vue"
@@ -97,6 +161,36 @@ export default {
             showPreviewModal: false,
             percentLoaded: 0,
             fileSource: '',
+            fileUploadProps: [{
+                name: 'fileName',
+                default: 'test.png',
+                description: 'Name of the file',
+            }, {
+                name: 'mimeType',
+                default: 'application/pdf',
+                description:
+                    'File type, e.g. application/pdf, image/jpg. These mime types follow the IANA Media Types.',
+            }, {
+                name: 'fileSource',
+                default: '""',
+                description: 'The source of the image or link to a file.',
+            }, {
+                name: 'fileSize',
+                default: '""',
+                description: 'File size, already formatted (e.g. 2.4 MB)',
+            }, {
+                name: 'previewText',
+                default: 'View preview',
+                description: 'Text on mobile to preview the file',
+            }, {
+                name: 'percentLoaded',
+                default: '0',
+                description: 'The progress of the upload, out of 100',
+            }, {
+                name: 'mobileView',
+                default: 'false',
+                description: 'To show the mobile view in desktop',
+            }],
         };
     },
     async created() {

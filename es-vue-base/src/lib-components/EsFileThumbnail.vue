@@ -1,7 +1,9 @@
 <template>
     <div>
         <!-- MOBILE PREVIEW START -->
-        <div class="mobile-preview d-block d-md-none">
+        <div
+            class="mobile-preview"
+            :class="mobileView ? '' : 'd-block d-md-none'">
             <div
                 class="card thumbnail-border">
                 <b-row
@@ -69,7 +71,9 @@
         </div>
         <!-- MOBILE PREVIEW END -->
         <!-- DESKTOP/TABLET PREVIEW START -->
-        <div class="desktop-preview d-none d-md-block">
+        <div
+            class="desktop-preview"
+            :class="mobileView ? 'd-none' : 'd-none d-md-block'">
             <div class="thumbnail-outer-wrapper">
                 <div class="float-right d-flex">
                     <b-link
@@ -236,6 +240,13 @@ export default {
         percentLoaded: {
             type: Number,
             default: 0,
+        },
+        /**
+         * To show the mobile view in desktop
+         */
+        mobileView: {
+            type: Boolean,
+            default: false,
         },
     },
     computed: {
