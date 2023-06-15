@@ -14,19 +14,10 @@
         <es-button @click="fakeFormMsg(false)">
             Show Error
         </es-button>
-        <es-form-msg
-            class="my-450"
-            :variant="formMsgVariant"
-            :message="formMsg"
-            @hidden="formMsg = ''" />
-        <ds-doc-source
-            :comp-code="compCode"
-            comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
-            :doc-code="docCode"
+        <a href="www.google.com">www.google.com</a>
+        <es-form-msg class="my-450" :variant="formMsgVariant" :message="formMsg" @hidden="formMsg = ''"/>
+        <ds-doc-source :comp-code="compCode" comp-source="es-vue-base/src/lib-components/EsFormMsg.vue" :doc-code="docCode"
             doc-source="es-design-system/pages/molecules/es-form-msg.vue" />
-            <template #message>
-
-            </template>
     </div>
 </template>
 <script>
@@ -43,7 +34,7 @@ export default {
     },
     async created() {
         if (this.$prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
             const docSource = await import('!raw-loader!./es-form-msg.vue');
             const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsFormMsg.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
@@ -57,7 +48,11 @@ export default {
         fakeFormMsg(success = true) {
             if (success) {
                 this.showFormSuccess();
-            } else {
+            }
+            // if (Link) {
+            //     this.showFormLink();
+            // }
+            else {
                 this.showFormError();
             }
         },
