@@ -235,9 +235,9 @@ export default {
             },
             {
                 name: '@fileTypeError',
-                payload: 'Array',
+                payload: 'String',
                 description: 'If the file type of a file picked is not in the fileTypes array defined as a '
-                + 'prop, this event is emitted. The payload is an array of the file names that were not accepted.',
+                + 'prop, this event is emitted. The payload is the name of the file that was not accepted.',
             },
             {
                 name: '@readyToUpload',
@@ -284,8 +284,8 @@ export default {
         }
     },
     methods: {
-        fileTypeError(fileNames) {
-            this.events.push({ msg: `fileTypeError for file(s): ${fileNames.join(', ')}`, variant: 'danger' });
+        fileTypeError(fileName) {
+            this.events.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger' });
         },
         onSubmit() {
             this.uploadProgresses = [];

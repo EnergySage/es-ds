@@ -57,6 +57,7 @@
 import { BFormFile } from 'bootstrap-vue';
 import EsButton from './EsButton.vue';
 import IconUpload from '../lib-icons/icon-upload.vue';
+import { mimeTypes, findMimeType } from '../lib-utils';
 
 export default {
     name: 'EsFileUpload',
@@ -84,24 +85,7 @@ export default {
             default: () => [],
             required: true,
             validator(fileTypes) {
-                // There are 9 valid types, but there are there are about ~1500 subtypes. We'll just check that the
-                // type is valid and the subtype is not empty.
-                const validTypes = ['application',
-                    'audio',
-                    'font',
-                    'example',
-                    'image',
-                    'message',
-                    'model',
-                    'multipart',
-                    'text',
-                    'video'];
-                return fileTypes.every((fileType) => {
-                    const mimeTypeParts = fileType.split('/');
-                    if (mimeTypeParts.length !== 2) return false;
-                    const [type, subtype] = mimeTypeParts;
-                    return validTypes.includes(type) && subtype.length > 0;
-                });
+                return fileTypes.every((fileType) => mimeTypes.includes(fileType));
             },
         },
         /**
@@ -139,13 +123,11 @@ export default {
             },
             deep: true,
         },
-        pickedItems(newVal) {
+        async pickedItems(newVal) {
             // The user has selected files from the file picker. We have to filter out any files that exceed the
             // maxFileSizeMb prop.
-            this.files = this.filterLargeFiles(newVal);
-            if (this.files.length > 0) {
-                this.$emit('readyToUpload', this.files.length);
-                this.readFilesIntoUrl(newVal);
+            if (newVal.length > 0) {
+                await this.verifyFiles(newVal);
             }
         },
     },
@@ -177,6 +159,40 @@ export default {
                     fileReader.readAsDataURL(file);
                 });
         },
+        async verifyFiles(files) {
+            const correctlySizedFiles = this.filterLargeFiles(files);
+
+            this.files = await Promise.all(correctlySizedFiles.map(async (file) => this.verifyMimeType(file)));
+            this.files = this.files.filter((file) => file); // filter out undefined
+            if (this.files.length > 0) {
+                this.$emit('readyToUpload', this.files.length);
+                this.readFilesIntoUrl(this.files);
+            }
+        },
+        async verifyMimeType(file) {
+            return new Promise((resolve, reject) => {
+                const filereader = new FileReader();
+                filereader.onload = (evt) => {
+                    const uint = new Uint8Array(evt.target.result);
+                    const bytes = [];
+                    uint.forEach((byte) => {
+                        bytes.push(byte.toString(16));
+                    });
+                    const hex = bytes.join('').toUpperCase();
+                    const mimeType = findMimeType(hex);
+                    if (!mimeType || !this.fileTypes.includes(mimeType)) {
+                        this.$emit('fileTypeError', file.name);
+                        return resolve();
+                    }
+                    return resolve(file);
+                };
+                filereader.onerror = (error) => {
+                    reject(error);
+                };
+                const blob = file.slice(0, 4);
+                filereader.readAsArrayBuffer(blob);
+            });
+        },
         onDrop(event) {
             // The user has dropped files onto the component. We have to apply the same logic as if they had
             // selected the files from the file picker which limits the file types to the ones specified in the
@@ -185,30 +201,15 @@ export default {
             this.files = [];
 
             // Use DataTransferItemList interface to access the file(s)
-            const invavlidItems = [...event.dataTransfer.items].filter((item) => item.kind !== 'file');
+            [...event.dataTransfer.items]
+                .filter((item) => item.kind !== 'file')
+                .map((item) => this.$emit('fileTypeError', item.name));
 
             const dataTransfersAsFiles = [...event.dataTransfer.items]
                 .filter((item) => item.kind === 'file')
                 .map((item) => item.getAsFile());
 
-            const validFileTypes = dataTransfersAsFiles
-                .filter((file) => this.fileTypes.includes(file.type));
-            const validFiles = this.filterLargeFiles(validFileTypes);
-
-            const fileErrors = dataTransfersAsFiles
-                .filter((file) => !this.fileTypes.includes(file.type))
-                .concat(invavlidItems)
-                .map((item) => item.name);
-
-            if (fileErrors.length > 0) {
-                this.$emit('fileTypeError', fileErrors);
-            }
-
-            this.files = validFiles;
-            if (this.files.length > 0) {
-                this.$emit('readyToUpload', this.files.length);
-                this.readFilesIntoUrl(this.files);
-            }
+            this.verifyFiles(dataTransfersAsFiles);
         },
         openFilePicker() { this.$refs.fileInput.$el.childNodes[0].click(); },
         async upload() {
