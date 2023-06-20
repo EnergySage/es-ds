@@ -6,70 +6,13 @@
         </h1>
         <p>
             The Error Page component is intended to be used in error pages across nuxt apps.
+            The four types of error codes explicitly handled include 403, 404, 500 and 503.
         </p>
         <div class="my-450">
             <h2>
                 Error 403
             </h2>
-            <es-error-page>
-                <template #errorType>
-                    <h1 class="font-weight-boldest display-3">
-                        403
-                    </h1>
-                </template>
-                <template #errorMsg>
-                    <h2>
-                        Oops! If you're seeing this message, there's a good chance you have
-                        cookies or referrers turned off in your browser.
-                    </h2>
-                </template>
-            </es-error-page>
-            <h2>
-                Error 404
-            </h2>
-            <es-error-page>
-                <template #errorType>
-                    <h1 class="font-weight-boldest display-3">
-                        404
-                    </h1>
-                </template>
-                <template #errorMsg>
-                    <h2>
-                        Oops! We are terribly sorry, but there is nothing bright to see here.
-                    </h2>
-                </template>
-            </es-error-page>
-            <h2>
-                Error 500
-            </h2>
-            <es-error-page>
-                <template #errorType>
-                    <h1 class="font-weight-boldest display-3">
-                        500
-                    </h1>
-                </template>
-                <template #errorMsg>
-                    <h2>
-                        Oops! We are terribly sorry, but our server is not so bright today.
-                        Please try again.
-                    </h2>
-                </template>
-            </es-error-page>
-            <h2>
-                Error 503
-            </h2>
-            <es-error-page>
-                <template #errorType>
-                    <h1 class="font-weight-boldest display-3">
-                        503
-                    </h1>
-                </template>
-                <template #errorMsg>
-                    <h2>
-                        Service unavailable: The page you are requesting is temporarily unavailable.
-                    </h2>
-                </template>
-            </es-error-page>
+            <es-error-page error-type="403" />
         </div>
         <ds-doc-source
             :comp-code="compCode"

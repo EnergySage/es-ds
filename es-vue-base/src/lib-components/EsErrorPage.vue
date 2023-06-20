@@ -1,71 +1,48 @@
 <template>
-    <div class="my-5 container">
-        <div class="mb-5 mx-auto col-md-7 text-center">
-            <slot name="errorType" />
-            <slot name="errorMsg" />
-        </div>
+    <b-container class="my-450">
+        <b-col
+            md="7"
+            class="my-450 mx-auto text-center">
+            <h1 class="font-weight-boldest display-3">
+                {{ errorType }}
+            </h1>
+            <p
+                v-if="checkValidError"
+                id="msgError">
+                {{ errorMsg }}
+            </p>
+            <p
+                v-else
+                id="msgGeneric">
+                {{ genericMsg }}
+            </p>
+        </b-col>
 
-        <div class="row">
-            <a
-                :class="linkClass"
-                :style="linkStyle"
-                href="mailto:hello@energysage.com">
-                <div class="circle mb-2">
+        <b-row>
+            <b-col
+                v-for="(icon, index) in iconList"
+                :key="index"
+                cols="6"
+                md="3">
+                <a
+                    class="align-items-center d-flex flex-column justify-content-center text-center"
+                    :href="linkList[index]">
                     <div
-                        class="m-3 text-orange">
-                        <IconContactUs
-                            :width="iconFill"
-                            :height="iconFill" />
+                        class="bg-gray-100 d-flex justify-content-center mb-50 rounded-circle"
+                        align-v="center">
+                        <div
+                            class="m-100 text-orange">
+                            <component
+                                :is="icon"
+                                height="46px"
+                                width="46px" />
+                        </div>
                     </div>
-                </div>
-
-                <p :class="linkTextClass">Contact Us</p>
-            </a>
-            <a
-                :class="linkClass"
-                :style="linkStyle"
-                href="https://www.energysage.com/solar/">
-                <div class="circle mb-2">
-                    <div
-                        class="m-3 text-orange">
-                        <IconCommunitySolar
-                            :width="iconFill"
-                            :height="iconFill" />
-                    </div>
-                </div>
-                <p :class="linkTextClass">Learn About Solar</p>
-            </a>
-            <a
-                :class="linkClass"
-                :style="linkStyle"
-                href="https://news.energysage.com/">
-                <div class="circle mb-2">
-                    <div
-                        class="m-3 text-orange">
-                        <IconInfoBlogPost
-                            :width="iconFill"
-                            :height="iconFill" />
-                    </div>
-                </div>
-                <p :class="linkTextClass">Informative Blog Posts</p>
-
-            </a>
-            <a
-                :class="linkClass"
-                :style="linkStyle"
-                href="https://www.energysage.com/market-intro/">
-                <div class="circle mb-2">
-                    <div
-                        class="m-3 text-orange">
-                        <IconMarketplace
-                            :width="iconFill"
-                            :height="iconFill" />
-                    </div>
-                </div>
-                <p :class="linkTextClass">EnergySage Marketplace</p>
-            </a>
-        </div>
-    </div>
+                    <p class="'font-weight-bolder mb-200 mb-md-0'">{{ labelList[index] }}</p>
+                </a>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script lang="js">
@@ -82,26 +59,38 @@ export default {
         IconMarketplace,
         IconInfoBlogPost,
     },
+    props: {
+        errorType: {
+            type: String,
+            required: true,
+        },
+    },
     data() {
         return {
-            linkClass: 'col-6 col-md-3 text-center',
-            linkTextClass: 'font-weight-bolder mb-4 mb-md-0',
-            linkStyle: 'display:flex; align-items: center; flex-direction:column',
-            iconFill: '100%',
+            errorCode: {
+                // eslint-disable-next-line max-len
+                err403: "Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.",
+                err404: 'Oops! We are terribly sorry, but there is nothing bright to see here.',
+                err500: 'Oops! We are terribly sorry, but our server is not so bright today. Please try again.',
+                err503: 'Service unavailable: The page you are requesting is temporarily unavailable.',
+            },
+            genericMsg: 'Oops! Something went wrong!',
+            iconList: ['IconContactUs', 'IconCommunitySolar', 'IconInfoBlogPost', 'IconMarketplace'],
+            linkList: ['mailto:hello@energysage.com', 'https://www.energysage.com/solar/', 'https://news.energysage.com/', 'https://www.energysage.com/market-intro/'],
+            labelList: ['Contact Us', 'Learn About Solar', 'Informative Blog Post', 'EnergySage Marketplace'],
         };
     },
+    computed: {
+        error() {
+            return `err${this.errorType}`;
+        },
+        errorMsg() {
+            return this.errorCode[this.error];
+        },
+        checkValidError() {
+            return Object.keys(this.errorCode).includes(this.error);
+        },
+    },
+
 };
 </script>
-<style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
-
-.circle {
-    align-items: center;
-    background-color: $gray-100;
-    border-radius: 100%;
-    display:flex;
-    height:72px;
-    justify-content: center;
-    width:72px;
-}
-</style>

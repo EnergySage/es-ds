@@ -7,9 +7,9 @@ describe('EsErrorPage', () => {
     test('<EsErrorPage />', async () => {
         const wrapper = mount(EsErrorPage, {
             ...jestVue,
-            slots: {
-                errorType: '<h1>404</h1>',
-                errorMsg: '<h2>Oops!</h2>',
+            propsData: {
+                errorType: '403',
+                required: true,
             },
         });
         const a11y = await axe(wrapper.element);
@@ -19,16 +19,57 @@ describe('EsErrorPage', () => {
         expect(a11y).toHaveNoViolations();
     });
 
-    // Test slots are there
-    test('errorType and errorMsg slots exist inside EsErrorPage', async () => {
+    // Test props exist
+    test('<EsErrorPage props />', async () => {
         const wrapper = mount(EsErrorPage, {
             ...jestVue,
-            slots: {
-                errorType: '<h1>404</h1>',
-                errorMsg: '<h2>Oops!</h2>',
+            propsData: {
+                errorType: '403',
+                required: true,
             },
         });
-        expect(wrapper.html()).toContain('<h1>404</h1>');
-        expect(wrapper.html()).toContain('<h2>Oops!</h2>');
+
+        expect(wrapper.vm).toBeTruthy();
+        expect(wrapper.html()).toMatchSnapshot();
+
+        expect(wrapper.props('errorType')).toBe('403');
+    });
+
+    // Test Error 403
+    test('EsErrorPage 403 error message text', async () => {
+        const wrapper = mount(EsErrorPage, {
+            ...jestVue,
+            propsData: {
+                errorType: '403',
+                required: true,
+            },
+        });
+
+        expect(wrapper.vm).toBeTruthy();
+        expect(wrapper.html()).toMatchSnapshot();
+
+        expect(wrapper.find('#msgGeneric').exists()).toBe(false);
+        expect(wrapper.find('#msgError').exists()).toBe(true);
+    });
+
+    // Test Error Generic
+    test('EsErrorPage Generic error message text', async () => {
+        const wrapper = mount(EsErrorPage, {
+            ...jestVue,
+            propsData: {
+                errorType: '301',
+                required: true,
+            },
+        });
+
+        expect(wrapper.vm).toBeTruthy();
+        expect(wrapper.html()).toMatchSnapshot();
+
+        expect(wrapper.find('#msgError').exists()).toBe(false);
+        expect(wrapper.find('#msgGeneric').exists()).toBe(true);
+        expect(wrapper.find('#msgGeneric').text())
+            .toBe(
+                'Oops! Something went wrong!',
+            );
     });
 });
