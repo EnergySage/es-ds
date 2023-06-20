@@ -28,7 +28,7 @@
                     class="align-items-center d-flex flex-column justify-content-center text-center"
                     :href="linkList[index]">
                     <div
-                        class="bg-gray-100 d-flex justify-content-center mb-50 rounded-circle"
+                        class="bg-white d-flex justify-content-center mb-50 rounded-circle"
                         align-v="center">
                         <div
                             class="m-100 text-orange">
