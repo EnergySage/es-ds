@@ -9,7 +9,7 @@
             <p
                 v-if="checkValidError"
                 id="msgError">
-                {{ errorMsg }}
+                {{ errorCode[error] }}
             </p>
             <p
                 v-else
@@ -83,9 +83,6 @@ export default {
     computed: {
         error() {
             return `err${this.errorType}`;
-        },
-        errorMsg() {
-            return this.errorCode[this.error];
         },
         checkValidError() {
             return Object.keys(this.errorCode).includes(this.error);
