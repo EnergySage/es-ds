@@ -31,7 +31,7 @@ export default {
             default: false,
         },
         stickyHeader: {
-            type: Boolean,
+            type: [Boolean, String],
             default: false,
         },
     },

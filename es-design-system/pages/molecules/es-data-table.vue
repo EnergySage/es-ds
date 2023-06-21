@@ -4,19 +4,38 @@
             Data Table
         </h1>
         <p class="mb-450">
-            Description and variant summary
+            A responsive table using the <a href="https://bootstrap-vue.org/docs/components/table">bootstrap-vue table</a>.
+            For further details about the properties used, refer to the
+            <a href="https://bootstrap-vue.org/docs/components/table">official bootstrap-vue documentation</a>.
+            Familiarity with the capabilities of the base component is <strong>strongly recommended</strong> if
+            expanding the functionality of this table.
         </p>
         <div class="mb-450">
             <h2 class="mb-200">
-                Version 1
+                Basic version, rounded corners, headers inferred from 1st item
             </h2>
             <es-data-table
-                :fields="dataTableFields"
-                :items="dataTableItems"
-                responsive
                 rounded
+                :items="dataTableItems" />
+        </div>
+        <div class="mb-450">
+            <h2 class="mb-200">
+                Height limited to 150px w/sticky header
+            </h2>
+            <es-data-table
+                sticky-header="150px"
+                :fields="dataTableFields"
+                :items="dataTableItems" />
+        </div>
+        <div class="mb-450">
+            <h2 class="mb-200">
+                Height limited to default 300px w/sticky header, sticky first column
+            </h2>
+            <es-data-table
+                sticky-header
                 sticky-first-col
-                sticky-header />
+                :fields="dataTableFields"
+                :items="dataTableItems" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -35,35 +54,52 @@ export default {
                     key: 'name',
                     sortable: true,
                 },
-                {
-                    key: 'default',
-                },
+                'type',
+                'required',
+                'default',
                 'description',
-                'topic',
             ],
             dataTableItems: [
                 {
-                    name: 'items',
-                    default: '1',
-                    topic: 'blue',
-                    description: `
-                        Required. List of dictionaries (1 per row) with keys representing header names and values
-                        representing row data. Missing keys are allowed.
-                    `,
-                },
-                {
                     name: 'fields',
+                    type: 'Array',
+                    default: 'null',
                     description: `
-                        Optional. List of fields to use as header names.
-                        See https://bootstrap-vue.org/docs/components/table#fields-column-definitions for more info.
+                        List of strings to use as column names, or objects with column 'name' and additional
+                        information about each column. Refer to official documentation for more details.
                     `,
                 },
                 {
-                    name: 'other',
-                    default: '0',
+                    name: 'items',
+                    type: 'Array',
+                    required: true,
                     description: `
-                        Required. Used to uniquely identify the item on the page. This value can also be passed to
-                        EsAccordionList to signify that this item should start out expanded.
+                        List of dictionaries (1 per row) with keys representing column names and values representing
+                        row data. Missing keys are allowed. Refer to official documentation for more details.
+                    `,
+                },
+                {
+                    name: 'rounded',
+                    type: 'Boolean',
+                    default: false,
+                    description: 'Display the table with rounded corners.',
+                },
+                {
+                    name: 'stickyFirstCol',
+                    type: 'Boolean',
+                    default: false,
+                    description: `
+                        Make the first column of the data stick on the left side when the table is horizontally
+                        scrolled.
+                    `,
+                },
+                {
+                    name: 'stickyHeader',
+                    type: 'Boolean | String',
+                    default: false,
+                    description: `
+                        When set, makes the table vertically scrollable with a sticky header row. The max height of the
+                        table defaults to 300px, unless a string with a max height is used for this property.
                     `,
                 },
             ],
