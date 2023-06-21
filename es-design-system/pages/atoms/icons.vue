@@ -449,16 +449,16 @@
             class="ds-icon-list m-0 mb-300 p-0"
             :class="{ [textColorClass]: true }">
             <li>
-                <icon-doc-file />
-                <code>IconDocFile</code>
+                <icon-file-doc />
+                <code>IconFileDoc</code>
             </li>
             <li>
-                <icon-docx-file />
-                <code>IconDocxFile</code>
+                <icon-file-docx />
+                <code>IconFileDocx</code>
             </li>
             <li>
-                <icon-pdf-file />
-                <code>IconPdfFile</code>
+                <icon-file-pdf />
+                <code>IconFilePdf</code>
             </li>
         </ul>
 

@@ -133,9 +133,9 @@
                         <template v-if="!loading">
                             <div
                                 class="h-100 d-flex align-items-center justify-content-center">
-                                <icon-pdf-file v-if="mimeType.includes('pdf')" />
-                                <icon-doc-file v-if="mimeType.includes('doc') && !(mimeType.includes('docx'))" />
-                                <icon-docx-file v-if="mimeType.includes('docx')" />
+                                <icon-file-pdf v-if="mimeType.includes('pdf')" />
+                                <icon-file-doc v-if="mimeType.includes('doc') && !(mimeType.includes('docx'))" />
+                                <icon-file-docx v-if="mimeType.includes('docx')" />
                             </div>
                         </template>
                         <template v-else>
@@ -166,9 +166,9 @@
 import { BImg, BLink } from 'bootstrap-vue';
 import IconCircleCheck from '../lib-icons/icon-circle-check.vue';
 import IconCircleX from '../lib-icons/icon-circle-x.vue';
-import IconDocFile from '../lib-icons/icon-doc-file.vue';
-import IconDocxFile from '../lib-icons/icon-docx-file.vue';
-import IconPdfFile from '../lib-icons/icon-pdf-file.vue';
+import IconFileDoc from '../lib-icons/icon-file-doc.vue';
+import IconFileDocx from '../lib-icons/icon-file-docx.vue';
+import IconFilePdf from '../lib-icons/icon-file-pdf.vue';
 import IconTrashCan from '../lib-icons/icon-trash-can.vue';
 import EsProgress from './EsProgress.vue';
 
@@ -180,9 +180,9 @@ export default {
         IconCircleCheck,
         IconCircleX,
         IconTrashCan,
-        IconPdfFile,
-        IconDocxFile,
-        IconDocFile,
+        IconFilePdf,
+        IconFileDocx,
+        IconFileDoc,
         EsProgress,
     },
     props: {

@@ -98,6 +98,6 @@ export { default as IconTwitter } from './icon-twitter.vue';
 export { default as IconYoutube } from './icon-youtube.vue';
 
 // File icons
-export { default as IconDocFile } from './icon-doc-file.vue';
-export { default as IconPdfFile } from './icon-pdf-file.vue';
-export { default as IconDocxFile } from './icon-docx-file.vue';
+export { default as IconFileDoc } from './icon-file-doc.vue';
+export { default as IconFilePdf } from './icon-file-pdf.vue';
+export { default as IconFileDocx } from './icon-file-docx.vue';

@@ -17,6 +17,7 @@
         <div class="d-md-none d-block file-preview text-center">
             <b-img
                 fluid
+                :lazy="true"
                 rounded="bottom"
                 class="file-preview"
                 :src="fileSource"
@@ -30,6 +31,7 @@
                     </div>
                     <b-img
                         fluid
+                        :lazy="true"
                         rounded="bottom"
                         class="file-preview"
                         :src="fileSource"
