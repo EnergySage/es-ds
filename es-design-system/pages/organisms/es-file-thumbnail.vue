@@ -35,28 +35,15 @@
             Thumbnails for file uploads
         </h2>
         <div class="d-md-flex flex-nowrap mb-5">
-            <div class="mt-3 mt-md-0 mr-md-4">
+            <div
+                v-for="file in thumbnails"
+                :key="file.name"
+                class="mt-3 mt-md-0 mr-md-4">
                 <es-file-thumbnail
-                    file-name="bill_front.pdf"
+                    :file-name="file.name"
                     file-size="2.4 MB"
-                    file-source="https://www.crwwd.com/wp-content/uploads/bsk-pdf-manager/2019/09/Sample_Utility_Bill.pdf"
-                    mime-type="application/pdf"
-                    :percent-loaded="100"
-                    @removeFile="removeFileAlert" />
-            </div>
-            <div class="mt-3 mt-md-0 mr-md-4">
-                <es-file-thumbnail
-                    file-name="bill_back.doc"
-                    file-size="2.4 MB"
-                    mime-type="application/doc"
-                    :percent-loaded="100"
-                    @removeFile="removeFileAlert" />
-            </div>
-            <div class="mt-3 mt-md-0 mr-md-4">
-                <es-file-thumbnail
-                    file-name="bill.docx"
-                    file-size="2.4 MB"
-                    mime-type="application/docx"
+                    :file-source="file.source"
+                    :mime-type="file.mimeType"
                     :percent-loaded="100"
                     @removeFile="removeFileAlert" />
             </div>
@@ -86,26 +73,19 @@
             <b-col
                 cols="12"
                 md="6">
-                <es-file-thumbnail
-                    file-name="bill.jpg"
-                    file-size="1.3 MB"
-                    mime-type="image/jpg"
-                    file-source="https://www.eversource.com/content/images/default-source/bills/ct-sample-bill-electric-front.jpg?sfvrsn=495ad262_4"
-                    :percent-loaded="100"
-                    mobile-view
-                    @removeFile="removeFileAlert"
-                    @showPreview="showPreviewModal=true" />
-            </b-col>
-            <b-col
-                cols="12"
-                md="6">
-                <es-file-thumbnail
-                    file-name="bill_back.doc"
-                    file-size="2.4 MB"
-                    mime-type="application/doc"
-                    :percent-loaded="100"
-                    mobile-view
-                    @removeFile="removeFileAlert" />
+                <div
+                    v-for="file in thumbnails"
+                    :key="file.name"
+                    class="mt-100">
+                    <es-file-thumbnail
+                        :file-name="file.name"
+                        file-size="2.4 MB"
+                        :file-source="file.source"
+                        :mime-type="file.mimeType"
+                        :percent-loaded="100"
+                        mobile-view
+                        @removeFile="removeFileAlert" />
+                </div>
             </b-col>
         </b-row>
         <div class="mt-5 mb-450">
@@ -190,6 +170,19 @@ export default {
                 name: 'mobileView',
                 default: 'false',
                 description: 'To show the mobile view in desktop',
+            }],
+            thumbnails: [{
+                name: 'bill_front.pdf',
+                source: 'https://www.crwwd.com/wp-content/uploads/bsk-pdf-manager/2019/09/Sample_Utility_Bill.pdf',
+                mimeType: 'application/pdf',
+            }, {
+                name: 'bill_back.doc',
+                source: '',
+                mimeType: 'application/doc',
+            }, {
+                name: 'bill.docx',
+                source: '',
+                mimeType: 'application/docx',
             }],
         };
     },
