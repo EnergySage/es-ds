@@ -74,7 +74,7 @@ export default {
         },
         /**
          * File Source
-         * Pre-signed URL that leads directly to image
+         * Image or file source for preview
          *
          */
         fileSource: {

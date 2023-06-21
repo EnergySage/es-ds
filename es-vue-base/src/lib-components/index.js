@@ -20,6 +20,7 @@ export { default as EsNavBar } from './EsNavBar.vue';
 export { default as EsPagination } from './EsPagination.vue';
 export { default as EsPopover } from './EsPopover.vue';
 export { default as EsProgress } from './EsProgress.vue';
+export { default as EsProgressCircle } from './EsProgressCircle.vue';
 export { default as EsRating } from './EsRating.vue';
 export { default as EsReview } from './EsReview.vue';
 export { default as EsReviewModal } from './EsReviewModal.vue';

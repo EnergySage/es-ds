@@ -17,9 +17,8 @@
                             <icon-circle-check />
                         </div>
                         <div v-else>
-                            <es-progress
+                            <es-progress-circle
                                 :value="percentLoaded"
-                                circle
                                 :show-percentage="false"
                                 height="24px" />
                         </div>
@@ -109,7 +108,7 @@
                         </template>
                         <template v-else>
                             <div class="h-100 d-flex align-items-center justify-content-center">
-                                <es-progress
+                                <es-progress-circle
                                     :value="percentLoaded"
                                     circle
                                     height="65px" />
@@ -140,9 +139,8 @@
                         </template>
                         <template v-else>
                             <div class="h-100 d-flex align-items-center justify-content-center">
-                                <es-progress
+                                <es-progress-circle
                                     :value="percentLoaded"
-                                    circle
                                     height="65px" />
                             </div>
                         </template>
@@ -170,7 +168,7 @@ import IconFileDoc from '../lib-icons/icon-file-doc.vue';
 import IconFileDocx from '../lib-icons/icon-file-docx.vue';
 import IconFilePdf from '../lib-icons/icon-file-pdf.vue';
 import IconTrashCan from '../lib-icons/icon-trash-can.vue';
-import EsProgress from './EsProgress.vue';
+import EsProgressCircle from './EsProgressCircle.vue';
 
 export default {
     name: 'EsFileThumbnail',
@@ -183,7 +181,7 @@ export default {
         IconFilePdf,
         IconFileDocx,
         IconFileDoc,
-        EsProgress,
+        EsProgressCircle,
     },
     props: {
         /**
