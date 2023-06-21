@@ -253,9 +253,9 @@ export default {
             },
             {
                 name: '@uploadFailure',
-                payload: 'String',
-                description: 'If the upload for a given file fails, this event is emitted. The payload is the name '
-                + 'of the file that failed to upload.',
+                payload: 'Object',
+                description: 'If the upload for a given file fails, this event is emitted. The payload is an object '
+                + 'with the fields fileName and message.',
             },
             {
                 name: '@fileDataRead',
@@ -299,8 +299,12 @@ export default {
         uploadSuccess(fileName) {
             this.events.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success' });
         },
-        uploadFailure(fileName) {
-            this.events.push({ msg: `uploadFailure for file: ${fileName}`, variant: 'danger' });
+        uploadFailure(fileNameAndMessage) {
+            this.events.push({
+                msg: `uploadFailure for file: ${fileNameAndMessage.fileName}. Message: `
+            + `${fileNameAndMessage.message}`,
+                variant: 'danger',
+            });
         },
         fileDataRead(file) {
             this.events.push({

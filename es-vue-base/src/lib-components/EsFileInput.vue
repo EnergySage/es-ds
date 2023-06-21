@@ -10,7 +10,8 @@
         @dragend.stop.prevent="onDrop"
         @drop.stop.prevent="onDrop"
         @click.self="openFilePicker"
-        @keypress.enter="openFilePicker">
+        @keypress.enter="openFilePicker"
+        @keypress.space="openFilePicker">
         <div
             class="d-flex justify-content-center"
             :class="{ 'flex-row': collapsed, 'flex-column': !collapsed }">
@@ -20,7 +21,7 @@
                     height="48px"
                     width="48px" />
             </div>
-            <div class="align-self-center p-2">
+            <div class="align-self-center p-2 text-center">
                 <slot name="cta" />
             </div>
             <div class="align-self-center p-2">
@@ -60,7 +61,7 @@ import IconUpload from '../lib-icons/icon-upload.vue';
 import { mimeTypes, findMimeType } from '../lib-utils';
 
 export default {
-    name: 'EsFileUpload',
+    name: 'EsFileInput',
     components: {
         BFormFile,
         EsButton,
@@ -96,6 +97,10 @@ export default {
             default: 25,
             required: false,
         },
+        /**
+         * When true, the component will be shorter vertically. This is achieved by giving the parent div
+         * flex-direction: row instead of the default flex-direction: column.
+         */
         collapsed: {
             type: Boolean,
             default: false,
@@ -171,8 +176,8 @@ export default {
         },
         async verifyMimeType(file) {
             return new Promise((resolve, reject) => {
-                const filereader = new FileReader();
-                filereader.onload = (evt) => {
+                const fileReader = new FileReader();
+                fileReader.onload = (evt) => {
                     const uint = new Uint8Array(evt.target.result);
                     const bytes = [];
                     uint.forEach((byte) => {
@@ -186,11 +191,11 @@ export default {
                     }
                     return resolve(file);
                 };
-                filereader.onerror = (error) => {
+                fileReader.onerror = (error) => {
                     reject(error);
                 };
                 const blob = file.slice(0, 4);
-                filereader.readAsArrayBuffer(blob);
+                fileReader.readAsArrayBuffer(blob);
             });
         },
         onDrop(event) {
@@ -201,12 +206,14 @@ export default {
             this.files = [];
 
             // Use DataTransferItemList interface to access the file(s)
-            [...event.dataTransfer.items]
-                .filter((item) => item.kind !== 'file')
-                .map((item) => this.$emit('fileTypeError', item.name));
-
             const dataTransfersAsFiles = [...event.dataTransfer.items]
-                .filter((item) => item.kind === 'file')
+                .filter((item) => {
+                    if (item.kind !== 'file') {
+                        this.$emit('fileTypeError', item.name);
+                        return false;
+                    }
+                    return true;
+                })
                 .map((item) => item.getAsFile());
 
             this.verifyFiles(dataTransfersAsFiles);
@@ -237,11 +244,33 @@ export default {
                     if (response.status >= 200 && response.status < 300) {
                         this.$emit('uploadSuccess', file.name);
                     } else {
-                        this.$emit('uploadFailure', file.name);
+                        this.$emit('uploadFailure', {
+                            fileName: file.name,
+                            message: `Received ${response.status} code from server.`,
+                        });
                     }
                 })
-                .catch(() => {
-                    this.$emit('uploadFailure', file.name);
+                .catch((error) => {
+                    // https://axios-http.com/docs/handling_errors
+                    if (error.response) {
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        this.$emit('uploadFailure', {
+                            fileName: file.name,
+                            message: `Received ${error.response.status} code from server.`,
+                        });
+                    } else if (error.request) {
+                        // The request was made but no response was received
+                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        this.$emit('uploadFailure', { fileName: file.name, message: 'The server did not respond.' });
+                    } else {
+                        // Something happened in setting up the request that triggered an Error
+                        this.$emit('uploadFailure', {
+                            fileName: file.name,
+                            message: 'There was an error sending your file to the server.',
+                        });
+                    }
                 });
         },
     },
@@ -262,6 +291,18 @@ export default {
     &.active {
         border: $btn-border-width dotted $cyan-500;
     }
+}
+
+.es-file-upload-button {
+    background-color: $white;
+}
+
+.es-file-upload-button:hover {
+    background-color: $black;
+}
+
+.es-file-upload-button:hover h4 {
+    color: $white;
 }
 
 </style>
