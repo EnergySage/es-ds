@@ -1,10 +1,10 @@
 <template>
     <b-table
         table-class="font-size-75 font-size-md-100"
+        responsive
         class="data-table border"
         :class="{ rounded }"
         :no-border-collapse="stickyFirstCol"
-        :responsive="responsive"
         :sticky-header="stickyHeader"
         :fields="computedFields"
         :items="items" />
@@ -21,10 +21,6 @@ export default {
         items: {
             type: Array,
             required: true,
-        },
-        responsive: {
-            type: Boolean,
-            default: false,
         },
         rounded: {
             type: Boolean,
