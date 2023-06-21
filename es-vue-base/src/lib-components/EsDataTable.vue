@@ -75,6 +75,7 @@ export default {
 
     ::v-deep td {
         border-right: 1px solid $gray-300;
+        padding-block: 8px;
 
         .table-b-table-default {
             color: $black;
@@ -90,8 +91,9 @@ export default {
         border-bottom: 0;
         border-top: 0;
         color: $black;
+        padding-block: 8px;
 
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(md) {
             color: $gray-700;
         }
     }
