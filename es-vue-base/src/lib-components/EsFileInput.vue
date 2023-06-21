@@ -10,8 +10,8 @@
         @dragend.stop.prevent="onDrop"
         @drop.stop.prevent="onDrop"
         @click.self="openFilePicker"
-        @keypress.enter="openFilePicker"
-        @keypress.space="openFilePicker">
+        @keypress.enter.prevent="openFilePicker"
+        @keypress.space.prevent="openFilePicker">
         <div
             class="d-flex justify-content-center"
             :class="{ 'flex-row': collapsed, 'flex-column': !collapsed }">
