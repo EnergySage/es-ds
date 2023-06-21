@@ -41,7 +41,24 @@ export default {
     },
     computed: {
         computedFields() {
-            return null;
+            // Set 1st column as sticky if property set
+            if (!this.fields) {
+                // Leave fields to be interpolated if not provided
+                return null;
+            }
+            return this.fields.map((field, index) => {
+                if (index === 0) {
+                    let fieldObj;
+                    if (typeof field === 'string') {
+                        fieldObj = { key: field };
+                    } else {
+                        fieldObj = { ...field };
+                    }
+                    fieldObj.stickyColumn = this.stickyFirstCol;
+                    return fieldObj;
+                }
+                return field;
+            });
         },
     },
 };
