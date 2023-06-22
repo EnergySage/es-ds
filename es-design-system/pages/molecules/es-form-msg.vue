@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :key="link">
         <h1>
             Form Message
         </h1>
@@ -14,9 +14,27 @@
         <es-button @click="fakeFormMsg(false)">
             Show Error
         </es-button>
-        <a href="www.google.com">www.google.com</a>
-        <es-form-msg class="my-450" :variant="formMsgVariant" :message="formMsg" @hidden="formMsg = ''"/>
-        <ds-doc-source :comp-code="compCode" comp-source="es-vue-base/src/lib-components/EsFormMsg.vue" :doc-code="docCode"
+        <es-button @click="showLink('https://www.energysage.com/')">
+            Show Link
+        </es-button>
+        <es-form-msg
+            class="my-450"
+            :variant="formMsgVariant"
+            :message="formMsg"
+            @hidden="formMsg = ''" />
+        <es-form-msg
+            variant="success"
+            name="slotContent"
+            class="my-450"
+            @hidden="link = ''">
+            <a
+                v-if="link"
+                :href="link">{{ link }}</a>
+        </es-form-msg>
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
+            :doc-code="docCode"
             doc-source="es-design-system/pages/molecules/es-form-msg.vue" />
     </div>
 </template>
@@ -30,6 +48,7 @@ export default {
         return {
             compCode: '',
             docCode: '',
+            link: '',
         };
     },
     async created() {
@@ -48,10 +67,13 @@ export default {
         fakeFormMsg(success = true) {
             if (success) {
                 this.showFormSuccess();
-            }
-            else {
+            } else {
                 this.showFormError();
             }
+        },
+        showLink(link) {
+            this.link = link;
+            this.formMsg = '';
         },
     },
 };

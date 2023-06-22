@@ -126,10 +126,12 @@ export default {
         showFormError(text = 'The server responded with an error and we were unable to complete your request. Please try again') {
             this.formMsgVariant = 'danger';
             this.formMsg = text;
+            this.link = '';
         },
         showFormSuccess(text = 'Saved Successfully') {
             this.formMsgVariant = 'success';
             this.formMsg = text;
+            this.link = '';
         },
         startSubmit() {
             this.formMsg = '';

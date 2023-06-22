@@ -1,6 +1,6 @@
 <template>
     <b-alert
-        v-if="message"
+        v-if="message || hasSlot"
         :show="dismissCountDown"
         :variant="variant"
         dismissible
@@ -13,7 +13,12 @@
                 <IconCircleAlert v-if="variant === 'danger'" />
                 <IconCircleCheck v-if="variant === 'success'" />
             </div>
-            <slot />
+            <template v-if="!hasSlot">
+                {{ message }}
+            </template>
+            <template name="slotContent">
+                <slot />
+            </template>
         </div>
     </b-alert>
 </template>
@@ -54,9 +59,14 @@ export default {
             dismissCountDown: this.timeout,
         };
     },
+    computed: {
+        hasSlot() {
+            return !!this.$slots.default?.[0];
+        },
+    },
     watch: {
         message() {
-            this.dismissCountDown = this.timeout;
+            this.resetCountdown();
         },
     },
     methods: {
@@ -65,6 +75,9 @@ export default {
             if (currentCountDown === 0) {
                 this.$emit('hidden');
             }
+        },
+        resetCountdown() {
+            this.dismissCountDown = this.timeout;
         },
     },
 };
