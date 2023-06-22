@@ -7,18 +7,12 @@
         body-class="border-top p-0"
         @hidden="$emit('hidden')">
         <template #modal-title>
-            <div class="d-none d-md-block">
-                <slot name="desktop-header" />
-            </div>
-            <div class="d-md-none d-lock">
-                {{ fileName }}
-            </div>
+            {{ fileName }}
         </template>
         <div class="d-md-none d-block file-preview text-center">
             <b-img
                 fluid
                 :lazy="true"
-                rounded="bottom"
                 class="file-preview"
                 :src="fileSource"
                 :alt="fileName" />
@@ -26,13 +20,10 @@
         <div class="d-none d-md-block">
             <div class="px-450 py-200 bg-gray-200">
                 <div class="card bg-white file-preview">
-                    <div class="font-weight-bolder border-bottom p-100">
-                        {{ fileName }}
-                    </div>
                     <b-img
                         fluid
                         :lazy="true"
-                        rounded="bottom"
+                        rounded
                         class="file-preview"
                         :src="fileSource"
                         :alt="fileName" />
@@ -89,9 +80,8 @@ export default {
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
 
-.rounded-bottom {
-    border-bottom-left-radius: $card-inner-border-radius !important;
-    border-bottom-right-radius: $card-inner-border-radius !important;
+.rounded {
+    border-radius: $card-inner-border-radius !important;
 }
 
 </style>

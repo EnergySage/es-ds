@@ -10,14 +10,7 @@
             file-source="https://www.eversource.com/content/images/default-source/bills/ct-sample-bill-electric-back.jpg?sfvrsn=e75bd262_4"
             file-name="bill.png"
             :visible="visible"
-            @hidden="visible=false">
-            <template #desktop-header>
-                Preview your image uploads.
-                <div class="font-size-base font-weight-normal pt-3">
-                    Make sure that your images are clear and readable.
-                </div>
-            </template>
-        </es-file-preview-modal>
+            @hidden="visible=false" />
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFileThumbnail.vue"
