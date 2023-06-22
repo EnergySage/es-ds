@@ -30,31 +30,385 @@
                     <h1>
                         h1. Heading
                     </h1>
+                    <div class="mb-200">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Device
+                                    </th>
+                                    <th scope="col">
+                                        Multiplier (rem)
+                                    </th>
+                                    <th scope="col">
+                                        Size (px)
+                                    </th>
+                                    <th scope="col">
+                                        Line height
+                                    </th>
+                                    <th scope="col">
+                                        Weight
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Mobile
+                                    </td>
+                                    <td>
+                                        1.5
+                                    </td>
+                                    <td>
+                                        24
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Desktop
+                                    </td>
+                                    <td>
+                                        2.375
+                                    </td>
+                                    <td>
+                                        38
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
                 <li>
                     <h2>
                         h2. Heading
                     </h2>
+                    <div class="mb-200">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Device
+                                    </th>
+                                    <th scope="col">
+                                        Multiplier (rem)
+                                    </th>
+                                    <th scope="col">
+                                        Size (px)
+                                    </th>
+                                    <th scope="col">
+                                        Line height
+                                    </th>
+                                    <th scope="col">
+                                        Weight
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Mobile
+                                    </td>
+                                    <td>
+                                        1.25
+                                    </td>
+                                    <td>
+                                        20
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Desktop
+                                    </td>
+                                    <td>
+                                        1.875
+                                    </td>
+                                    <td>
+                                        30
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
                 <li>
                     <h3>
                         h3. Heading
                     </h3>
+                    <div class="mb-200">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Device
+                                    </th>
+                                    <th scope="col">
+                                        Multiplier (rem)
+                                    </th>
+                                    <th scope="col">
+                                        Size (px)
+                                    </th>
+                                    <th scope="col">
+                                        Line height
+                                    </th>
+                                    <th scope="col">
+                                        Weight
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Mobile
+                                    </td>
+                                    <td>
+                                        1.125
+                                    </td>
+                                    <td>
+                                        18
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Desktop
+                                    </td>
+                                    <td>
+                                        1.5
+                                    </td>
+                                    <td>
+                                        24
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
                 <li>
                     <h4>
                         h4. Heading
                     </h4>
+                    <div class="mb-200">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Device
+                                    </th>
+                                    <th scope="col">
+                                        Multiplier (rem)
+                                    </th>
+                                    <th scope="col">
+                                        Size (px)
+                                    </th>
+                                    <th scope="col">
+                                        Line height
+                                    </th>
+                                    <th scope="col">
+                                        Weight
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Mobile
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        16
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Desktop
+                                    </td>
+                                    <td>
+                                        1.25
+                                    </td>
+                                    <td>
+                                        20
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
                 <li>
                     <h5>
                         h5. Heading
                     </h5>
+                    <div class="mb-200">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Device
+                                    </th>
+                                    <th scope="col">
+                                        Multiplier (rem)
+                                    </th>
+                                    <th scope="col">
+                                        Size (px)
+                                    </th>
+                                    <th scope="col">
+                                        Line height
+                                    </th>
+                                    <th scope="col">
+                                        Weight
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Mobile
+                                    </td>
+                                    <td>
+                                        0.875
+                                    </td>
+                                    <td>
+                                        14
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Desktop
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        16
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
                 <li>
                     <h6>
                         h6. Heading
                     </h6>
+                    <div class="mb-200">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Device
+                                    </th>
+                                    <th scope="col">
+                                        Multiplier (rem)
+                                    </th>
+                                    <th scope="col">
+                                        Size (px)
+                                    </th>
+                                    <th scope="col">
+                                        Line height
+                                    </th>
+                                    <th scope="col">
+                                        Weight
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Mobile
+                                    </td>
+                                    <td>
+                                        0.75
+                                    </td>
+                                    <td>
+                                        12
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Desktop
+                                    </td>
+                                    <td>
+                                        0.875
+                                    </td>
+                                    <td>
+                                        14
+                                    </td>
+                                    <td>
+                                        1.2
+                                    </td>
+                                    <td>
+                                        500
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
                 <li>
                     <h3 class="eyebrow">
