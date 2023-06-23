@@ -57,6 +57,32 @@ export default {
             });
         },
     },
+    mounted() {
+        // HACK: boostrap-vue applies position-relative to non-sortable columns when sorted.
+        // This can dynamically remove that class when used with a mutation observer.
+        function removeClass(mutations) {
+            // If position-relative class was added in a mutation, remove it
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.target.classList.contains('position-relative')) {
+                    mutation.target.classList.remove('position-relative');
+                }
+            });
+        }
+        if (this.stickyHeader) {
+            // Remove position-relative from headers of sortable columns so they will be sticky
+            const headers = this.$el.querySelector('thead').querySelector('tr').querySelectorAll('th');
+            headers.forEach((element) => {
+                element.classList.remove('position-relative');
+            });
+
+            // Watch header row for changes to attirbutes in its subtree
+            const headerRow = this.$el.querySelector('thead').querySelector('tr');
+            const observeOptions = { attributes: true, subtree: true };
+            // Start watching & reacting to changes on header row
+            const observer = new MutationObserver(removeClass);
+            observer.observe(headerRow, observeOptions);
+        }
+    },
 };
 </script>
 <style lang="scss" scoped>
