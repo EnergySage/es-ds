@@ -65,24 +65,21 @@ export default {
 
 .data-table {
     ::v-deep th {
-        border-right: 1px solid $gray-300;
         font-weight: $font-weight-bold;
-
-        &:last-of-type {
-            border-right: 0;
-        }
     }
 
-    ::v-deep td {
-        border-right: 1px solid $gray-300;
-        padding-block: 8px;
+    ::v-deep {
+        td, th {
+            border-right: 1px solid $gray-300;
+            padding-block: 8px;
 
-        .table-b-table-default {
-            color: $black;
-        }
+            .table-b-table-default {
+                color: $black;
+            }
 
-        &:last-of-type {
-            border-right: 0;
+            &:last-of-type {
+                border-right: 0;
+            }
         }
     }
 
