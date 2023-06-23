@@ -1,7 +1,6 @@
 <template>
     <div
-        role="button"
-        tabindex="0"
+        role="presentation"
         class="es-file-upload align-items-center rounded d-flex flex-column justify-content-center p-2"
         :class="{ 'active': active }"
         @dragenter.stop.prevent="active = true"

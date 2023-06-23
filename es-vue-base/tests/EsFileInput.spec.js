@@ -12,11 +12,12 @@ describe('EsFileInput', () => {
             },
         });
 
-        // We do not check a11y here because the design of the component has nested interactive elements
+        const a11y = await axe(wrapper.element);
 
         expect(wrapper.vm).toBeTruthy();
         expect(wrapper.props('fileTypes')).toStrictEqual(['image/png']);
         expect(wrapper.html()).toMatchSnapshot();
+        expect(a11y).toHaveNoViolations();
     });
 
     // Test slot is there
