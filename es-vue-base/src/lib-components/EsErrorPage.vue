@@ -21,25 +21,25 @@
         </b-row>
         <b-row>
             <b-col
-                v-for="(icon, index) in linkItems.icons"
+                v-for="(item, index) in linkItems"
                 :key="index"
                 cols="6"
                 md="3">
                 <a
                     class="align-items-center d-flex flex-column justify-content-center text-center"
-                    :href="linkItems.links[index]">
+                    :href="item.link">
                     <div
                         class="bg-white d-flex justify-content-center mb-50 rounded-circle"
                         align-v="center">
                         <div
                             class="m-100 text-orange">
                             <component
-                                :is="icon"
+                                :is="item.icon"
                                 height="46px"
                                 width="46px" />
                         </div>
                     </div>
-                    <p class="'font-weight-bolder mb-200 mb-md-0'">{{ linkItems.labels[index] }}</p>
+                    <p class="'font-weight-bolder mb-200 mb-md-0'">{{ item.label }}</p>
                 </a>
             </b-col>
         </b-row>
@@ -79,11 +79,29 @@ export default {
                 '503': 'Service unavailable: The page you are requesting is temporarily unavailable.',
             },
             genericMsg: 'Oops! Something went wrong!',
-            linkItems: {
-                icons: ['IconContactUs', 'IconCommunitySolar', 'IconInfoBlogPost', 'IconMarketplace'],
-                links: ['mailto:hello@energysage.com', 'https://www.energysage.com/solar/', 'https://news.energysage.com/', 'https://www.energysage.com/market-intro/'],
-                labels: ['Contact Us', 'Learn About Solar', 'Informative Blog Post', 'EnergySage Marketplace'],
-            },
+            linkItems: [
+                {
+                    icon: 'IconContactUs',
+                    link: 'mailto:hello@energysage.com',
+                    label: 'Contact Us',
+                },
+                {
+                    icon: 'IconCommunitySolar',
+                    link: 'https://www.energysage.com/solar/',
+                    label: 'Learn About Solar',
+                },
+                {
+                    icon: 'IconInfoBlogPost',
+                    link: 'https://news.energysage.com/',
+                    label: 'Informative Blog Post',
+                },
+                {
+                    icon: 'IconMarketplace',
+                    link: 'https://www.energysage.com/market-intro/',
+                    label: 'EnergySage Marketplace',
+                },
+
+            ],
         };
     },
     computed: {
