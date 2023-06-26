@@ -195,7 +195,7 @@ export default (
             name: 'Solar calculator',
             subHeading: 'Check your savings',
             icon: NAV_BAR_ICONS.CALCULATOR,
-            link: `${ES_DOMAIN}/solar/calculator`,
+            link: `${ES_DOMAIN}/solar/calculator/`,
             topics: [],
         },
         {
