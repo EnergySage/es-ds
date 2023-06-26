@@ -5,29 +5,10 @@
                 <code>es-cdgm</code> codebase
             </b-link>
         </p>
-        <h2>
-            Various Heights
-        </h2>
-        <div class="d-flex flex-nowrap">
-            <div
-                v-for="height in heightRange"
-                :key="height"
-                class="d-flex flex-nowrap align-items-center mr-100">
-                <p class="mr-2">
-                    Height: {{ height }}px
-                </p>
-                <es-progress-circle
-                    :value="height"
-                    :height="`${height}px`" />
-            </div>
-        </div>
-        <h2 class="pt-200">
-            Animated Transition
-        </h2>
         <es-progress-circle
             class="mb-100"
             :value="value"
-            height="80px" />
+            height="100px" />
         <div class="d-flex flex-nowrap">
             <es-button
                 size="sm"
