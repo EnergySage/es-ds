@@ -2,13 +2,15 @@
 
 exports[`EsErrorPage <EsErrorPage /> 1`] = `
 "<div class="my-450 container" required="required">
-  <div class="my-450 mx-auto text-center col-md-7">
-    <h1 class="font-weight-boldest display-3">
-      403
-    </h1>
-    <p id="msgError">
-      Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
-    </p>
+  <div class="row">
+    <div class="my-450 mx-auto text-center col-md-7">
+      <h1 class="font-weight-boldest display-3">
+        403
+      </h1>
+      <h2 id="msgError">
+        Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
+      </h2>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-6"><a href="mailto:hello@energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
@@ -57,13 +59,15 @@ exports[`EsErrorPage <EsErrorPage /> 1`] = `
 
 exports[`EsErrorPage <EsErrorPage props /> 1`] = `
 "<div class="my-450 container" required="required">
-  <div class="my-450 mx-auto text-center col-md-7">
-    <h1 class="font-weight-boldest display-3">
-      403
-    </h1>
-    <p id="msgError">
-      Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
-    </p>
+  <div class="row">
+    <div class="my-450 mx-auto text-center col-md-7">
+      <h1 class="font-weight-boldest display-3">
+        403
+      </h1>
+      <h2 id="msgError">
+        Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
+      </h2>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-6"><a href="mailto:hello@energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
@@ -112,13 +116,15 @@ exports[`EsErrorPage <EsErrorPage props /> 1`] = `
 
 exports[`EsErrorPage EsErrorPage 403 error message text 1`] = `
 "<div class="my-450 container" required="required">
-  <div class="my-450 mx-auto text-center col-md-7">
-    <h1 class="font-weight-boldest display-3">
-      403
-    </h1>
-    <p id="msgError">
-      Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
-    </p>
+  <div class="row">
+    <div class="my-450 mx-auto text-center col-md-7">
+      <h1 class="font-weight-boldest display-3">
+        403
+      </h1>
+      <h2 id="msgError">
+        Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
+      </h2>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-6"><a href="mailto:hello@energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
@@ -167,13 +173,15 @@ exports[`EsErrorPage EsErrorPage 403 error message text 1`] = `
 
 exports[`EsErrorPage EsErrorPage Generic error message text 1`] = `
 "<div class="my-450 container" required="required">
-  <div class="my-450 mx-auto text-center col-md-7">
-    <h1 class="font-weight-boldest display-3">
-      301
-    </h1>
-    <p id="msgGeneric">
-      Oops! Something went wrong!
-    </p>
+  <div class="row">
+    <div class="my-450 mx-auto text-center col-md-7">
+      <h1 class="font-weight-boldest display-3">
+        301
+      </h1>
+      <h2 id="msgGeneric">
+        Oops! Something went wrong!
+      </h2>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-6"><a href="mailto:hello@energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
