@@ -77,7 +77,7 @@ export default {
         dismissAlert() {
             this.dismissCountDown = 0;
             this.$emit('hidden');
-        }
+        },
     },
 };
 </script>
