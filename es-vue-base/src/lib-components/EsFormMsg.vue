@@ -11,9 +11,11 @@
             <div class="pr-50">
                 <IconCircleAlert v-if="variant === 'danger'" />
                 <IconCircleCheck v-if="variant === 'success'" />
-                <IconInfo v-if="variant === 'primary'"/>
+                <IconInfo v-if="variant === 'primary'" />
             </div>
-            <slot>{{ formMsg }}</slot>
+            <slot>
+                {{ formMsg }}
+            </slot>
         </div>
     </b-alert>
 </template>
@@ -25,14 +27,13 @@ import IconCircleAlert from '../lib-icons/icon-circle-alert.vue';
 import IconCircleCheck from '../lib-icons/icon-circle-check.vue';
 import IconInfo from '../lib-icons/icon-info.vue';
 
-
 export default {
     name: 'EsFormMsg',
     components: {
         BAlert,
         IconCircleAlert,
         IconCircleCheck,
-        IconInfo
+        IconInfo,
     },
     props: {
         formMsg: {
@@ -67,12 +68,16 @@ export default {
         countDownChanged(currentCountDown) {
             this.dismissCountDown = currentCountDown;
             if (currentCountDown === 0) {
-                this.$emit('hidden');
+                this.dismissAlert();
             }
         },
         resetCountdown() {
             this.dismissCountDown = this.timeout;
         },
+        dismissAlert() {
+            this.dismissCountDown = 0;
+            this.$emit('hidden');
+        }
     },
 };
 </script>

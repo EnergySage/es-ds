@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <h1>
             Form Message
         </h1>
@@ -20,8 +20,8 @@
         <es-form-msg
             class="my-450"
             :variant="formMsgVariant"
-            :formMsg="formMsg"
-            @hidden="formMsg = ''"/>
+            :form-msg="formMsg"
+            @hidden="formMsg = ''" />
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
