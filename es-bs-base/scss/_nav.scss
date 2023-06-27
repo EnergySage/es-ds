@@ -312,7 +312,9 @@ $nav-hover-delay: 300ms;
 
     // Show top headers down chevron icon
     .nav-item {
-      cursor: pointer;
+      .dropdown-toggle, .nav-link {
+        cursor: pointer;
+      }
 
       .top-header-icon {
         // stylelint-disable-next-line property-disallowed-list
