@@ -94,7 +94,7 @@
                     </es-nav-bar-link>
                     <div
                         v-else
-                        class="nav-item col-12">
+                        class="nav-item pl-100">
                         <span
                             class="nav-link align-items-center border-bottom d-flex font-weight-bold h-100 text-decoration-none w-100">
                             {{ name }}

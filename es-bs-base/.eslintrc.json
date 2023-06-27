@@ -27,6 +27,7 @@
     "operator-linebreak": ["error", "after"],
     "semi": ["error", "never"],
     "unicorn/consistent-function-scoping": "off",
+    "unicorn/expiring-todo-comments": "off",
     "unicorn/explicit-length-check": "off",
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-for-each": "off",

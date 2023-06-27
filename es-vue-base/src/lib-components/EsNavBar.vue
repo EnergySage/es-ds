@@ -69,7 +69,7 @@
                         </label>
                     </div>
                 </div>
-                <ul class="navbar-nav d-flex flex-column w-100">
+                <div class="navbar-nav d-flex flex-column w-100">
                     <!-- top-level items on mobile, full top bar on desktop -->
                     <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between">
                         <es-nav-bar-link
@@ -122,7 +122,7 @@
                             :see-all-text="globalContent.seeAllText"
                             :topics="product.topics" />
                     </div>
-                </ul>
+                </div>
             </div>
             <!-- mobile account menu checkbox -->
             <input

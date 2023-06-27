@@ -1,4 +1,5 @@
 <template>
+    <!-- TODO: Has a11y issue; https://github.com/bootstrap-vue/bootstrap-vue/issues/7147 -->
     <b-pagination
         v-bind="$attrs"
         class="mb-0"
