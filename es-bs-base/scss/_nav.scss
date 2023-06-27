@@ -312,7 +312,8 @@ $nav-hover-delay: 300ms;
 
     // Show top headers down chevron icon
     .nav-item {
-      .dropdown-toggle, .nav-link {
+      .dropdown-toggle,
+      .nav-link {
         cursor: pointer;
       }
 
