@@ -1,7 +1,6 @@
 <template>
     <b-alert
-        v-if="message || hasSlot"
-        :show="dismissCountDown"
+        :show="dismissCountDown "
         :variant="variant"
         dismissible
         class="form-msg"
@@ -12,13 +11,9 @@
             <div class="pr-50">
                 <IconCircleAlert v-if="variant === 'danger'" />
                 <IconCircleCheck v-if="variant === 'success'" />
+                <IconInfo v-if="variant === 'primary'"/>
             </div>
-            <template v-if="!hasSlot">
-                {{ message }}
-            </template>
-            <template name="slotContent">
-                <slot />
-            </template>
+            <slot>{{ formMsg }}</slot>
         </div>
     </b-alert>
 </template>
@@ -28,6 +23,8 @@ import {
 } from 'bootstrap-vue';
 import IconCircleAlert from '../lib-icons/icon-circle-alert.vue';
 import IconCircleCheck from '../lib-icons/icon-circle-check.vue';
+import IconInfo from '../lib-icons/icon-info.vue';
+
 
 export default {
     name: 'EsFormMsg',
@@ -35,9 +32,10 @@ export default {
         BAlert,
         IconCircleAlert,
         IconCircleCheck,
+        IconInfo
     },
     props: {
-        message: {
+        formMsg: {
             type: String,
             default: '',
             required: false,
@@ -51,21 +49,17 @@ export default {
             type: String,
             default: 'danger',
             required: false,
-            validator: (val) => ['danger', 'success'].includes(val),
+            validator: (val) => ['danger', 'success', 'primary'].includes(val),
         },
     },
     data() {
         return {
             dismissCountDown: this.timeout,
+            messageType: '',
         };
     },
-    computed: {
-        hasSlot() {
-            return !!this.$slots.default?.[0];
-        },
-    },
     watch: {
-        message() {
+        formMsg() {
             this.resetCountdown();
         },
     },

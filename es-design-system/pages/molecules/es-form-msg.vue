@@ -1,5 +1,5 @@
 <template>
-    <div :key="link">
+    <div >
         <h1>
             Form Message
         </h1>
@@ -8,29 +8,20 @@
                 bootstrap-vue alert
             </b-link>
         </p>
-        <es-button @click="fakeFormMsg()">
+        <es-button @click="alertFakeFormMsg()">
             Show Success
         </es-button>
-        <es-button @click="fakeFormMsg(false)">
+        <es-button @click="alertFakeFormMsg(false)">
             Show Error
         </es-button>
-        <es-button @click="showLink('https://www.energysage.com/')">
-            Show Link
+        <es-button @click="fakeFormMsg()">
+            Show Default Message
         </es-button>
         <es-form-msg
             class="my-450"
             :variant="formMsgVariant"
-            :message="formMsg"
-            @hidden="formMsg = ''" />
-        <es-form-msg
-            variant="success"
-            name="slotContent"
-            class="my-450"
-            @hidden="link = ''">
-            <a
-                v-if="link"
-                :href="link">{{ link }}</a>
-        </es-form-msg>
+            :formMsg="formMsg"
+            @hidden="formMsg = ''"/>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
@@ -48,7 +39,6 @@ export default {
         return {
             compCode: '',
             docCode: '',
-            link: '',
         };
     },
     async created() {
@@ -64,16 +54,15 @@ export default {
         }
     },
     methods: {
-        fakeFormMsg(success = true) {
+        alertFakeFormMsg(success = true) {
             if (success) {
                 this.showFormSuccess();
             } else {
                 this.showFormError();
             }
         },
-        showLink(link) {
-            this.link = link;
-            this.formMsg = '';
+        fakeFormMsg() {
+            this.showFormDefault();
         },
     },
 };
