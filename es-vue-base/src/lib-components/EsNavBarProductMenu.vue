@@ -1,5 +1,5 @@
 <template>
-    <li class="dropdown nav-item nav-item-border-mobile">
+    <div class="dropdown nav-item nav-item-border-mobile">
         <!-- desktop product link / hover menu trigger -->
         <es-nav-bar-link
             class="product-menu-header-link dropdown-toggle d-none d-lg-block px-lg-100 px-xl-200 py-lg-0 text-decoration-none text-gray"
@@ -116,7 +116,7 @@
                 </b-row>
             </div>
         </div>
-    </li>
+    </div>
 </template>
 
 <script lang="js">

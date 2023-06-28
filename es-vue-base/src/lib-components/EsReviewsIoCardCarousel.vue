@@ -68,6 +68,9 @@ export default {
                     /* Widget settings: */
                     options: {
                         general: {
+                            // UNDOCUMENTED??
+                            // Disables rich snippet injection; ls+json data and what else who knows....
+                            enable_richsnippets_company: false,
                             /* What reviews should the widget display? Available options: company, product,
                             third_party. You can choose one type or multiple separated by comma. */
                             review_type: 'company',
