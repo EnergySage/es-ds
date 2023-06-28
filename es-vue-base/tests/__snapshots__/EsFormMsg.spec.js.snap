@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsFormMsg <EsFormMsg /> 1`] = `
-"<transition-stub name="" css="true" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="fade" leaveactiveclass="fade" class="form-msg">
+"<transition-stub name="" css="true" enterclass="" leaveclass="show" entertoclass="show" leavetoclass="" enteractiveclass="fade" leaveactiveclass="fade" class="form-msg" message="Test form msg">
   <div role="alert" aria-live="polite" aria-atomic="true" class="alert alert-dismissible alert-danger"><button type="button" aria-label="Close" class="close">×</button>
     <div class="d-flex">
       <div class="pr-50"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
@@ -10,8 +10,9 @@ exports[`EsFormMsg <EsFormMsg /> 1`] = `
           <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1Zm0 9.5a1 1 0 0 1 1 1v.5a1 1 0 1 1-2 0v-.5a1 1 0 0 1 1-1Z"></path>
         </svg>
         <!---->
+        <!---->
       </div>
-      Test form msg
+
     </div>
   </div>
 </transition-stub>"
