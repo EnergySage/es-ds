@@ -1,7 +1,7 @@
 {
   "name": "@energysage/es-bs-base",
   "description": "Base CSS for EnergySage design system based on Bootstrap",
-  "version": "0.21.8",
+  "version": "0.22.1",
   "config": {
     "version_short": "0.1"
   },
@@ -64,7 +64,7 @@
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "@rollup/plugin-babel": "^6.0.0",
-    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "autoprefixer": "^9.8.8",
     "babel-plugin-istanbul": "^6.1.1",
@@ -78,9 +78,9 @@
     "find-unused-sass-variables": "^5.0.0",
     "globby": "^13.1.2",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.102.0",
+    "hugo-bin": "^0.108.0",
     "ip": "^1.1.5",
-    "jquery": "3.6.4",
+    "jquery": "3.7.0",
     "karma": "^6.3.18",
     "karma-browserstack-launcher": "1.6.0",
     "karma-chrome-launcher": "^3.1.1",

@@ -1,5 +1,5 @@
 <template>
-    <li class="nav-item nav-item-border-mobile top-header mx-0">
+    <div class="nav-item nav-item-border-mobile top-header mx-0">
         <!-- desktop fly-out menu trigger -->
         <es-nav-bar-link
             v-if="!link"
@@ -130,7 +130,7 @@
                 </b-container>
             </div>
         </div>
-    </li>
+    </div>
 </template>
 
 <script lang="js">
