@@ -34,7 +34,7 @@ exports[`EsFileThumbnail <EsFileThumbnail /> 1`] = `
     </div>
   </div>
   <div class="desktop-preview d-none d-md-block">
-    <div class="thumbnail-outer-wrapper">
+    <div class="thumbnail-outer-wrapper position-relative">
       <div class="float-right d-flex">
         <!---->
       </div>
@@ -93,7 +93,7 @@ exports[`EsFileThumbnail <EsFileThumbnail /> default prop values 1`] = `
     </div>
   </div>
   <div class="desktop-preview d-none d-md-block">
-    <div class="thumbnail-outer-wrapper">
+    <div class="thumbnail-outer-wrapper position-relative">
       <div class="float-right d-flex">
         <!---->
       </div>

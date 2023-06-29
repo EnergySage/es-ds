@@ -306,7 +306,7 @@ exports[`icons IconArrow renders correctly 28`] = `
 `;
 
 exports[`icons IconArrow renders correctly 29`] = `
-"<svg xmlns="http://www.w3.org/2000/svg" fill="none" style="height: 73px; width: 56px;">
+"<svg viewBox="0 0 56 73" xmlns="http://www.w3.org/2000/svg" fill="none" style="height: 73px; width: 56px;">
   <path fill="none" d="M47.133 64.74v3.802c0 1.34-1.11 2.438-2.468 2.438H4.468C3.111 70.98 2 69.883 2 68.542V10.964c0-1.34 1.11-2.438 2.468-2.438h3.825"></path>
   <path fill="currentColor" d="M46.087 64.74v3.802h2.092V64.74h-2.092Zm0 3.802c0 .75-.63 1.391-1.422 1.391v2.093c1.923 0 3.514-1.553 3.514-3.484h-2.092Zm-1.422 1.391H4.468v2.093h40.197v-2.093Zm-40.197 0c-.792 0-1.422-.64-1.422-1.39H.954c0 1.93 1.591 3.483 3.514 3.483v-2.093Zm-1.422-1.39v-57.58H.954v57.58h2.092Zm0-57.58c0-.75.63-1.39 1.422-1.39V7.48C2.545 7.48.954 9.033.954 10.964h2.092Zm1.422-1.39h3.825V7.48H4.468v2.093Z"></path>
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.138" d="M47.133 64.74v3.802c0 1.34-1.11 2.438-2.468 2.438H4.468C3.111 70.98 2 69.883 2 68.542V10.964c0-1.34 1.11-2.438 2.468-2.438h3.825"></path>
@@ -319,7 +319,7 @@ exports[`icons IconArrow renders correctly 29`] = `
 `;
 
 exports[`icons IconArrow renders correctly 30`] = `
-"<svg xmlns="http://www.w3.org/2000/svg" fill="none" style="height: 73px; width: 56px;">
+"<svg viewBox="0 0 56 73" xmlns="http://www.w3.org/2000/svg" fill="none" style="height: 73px; width: 56px;">
   <path fill="none" d="M47.133 64.74v3.802c0 1.34-1.11 2.438-2.468 2.438H4.468C3.111 70.98 2 69.883 2 68.542V10.964c0-1.34 1.11-2.438 2.468-2.438h3.825"></path>
   <path fill="currentColor" d="M46.087 64.74v3.802h2.092V64.74h-2.092Zm0 3.802c0 .75-.63 1.391-1.422 1.391v2.093c1.923 0 3.514-1.553 3.514-3.484h-2.092Zm-1.422 1.391H4.468v2.093h40.197v-2.093Zm-40.197 0c-.792 0-1.422-.64-1.422-1.39H.954c0 1.93 1.591 3.483 3.514 3.483v-2.093Zm-1.422-1.39v-57.58H.954v57.58h2.092Zm0-57.58c0-.75.63-1.39 1.422-1.39V7.48C2.545 7.48.954 9.033.954 10.964h2.092Zm1.422-1.39h3.825V7.48H4.468v2.093Z"></path>
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.138" d="M47.133 64.74v3.802c0 1.34-1.11 2.438-2.468 2.438H4.468C3.111 70.98 2 69.883 2 68.542V10.964c0-1.34 1.11-2.438 2.468-2.438h3.825"></path>
@@ -332,7 +332,7 @@ exports[`icons IconArrow renders correctly 30`] = `
 `;
 
 exports[`icons IconArrow renders correctly 31`] = `
-"<svg xmlns="http://www.w3.org/2000/svg" fill="none" style="height: 73px; width: 56px;">
+"<svg viewBox="0 0 56 73" xmlns="http://www.w3.org/2000/svg" fill="none" style="height: 73px; width: 56px;">
   <path fill="none" d="M47.133 64.74v3.802c0 1.34-1.11 2.438-2.468 2.438H4.468C3.111 70.98 2 69.883 2 68.542V10.964c0-1.34 1.11-2.438 2.468-2.438h3.825"></path>
   <path fill="currentColor" d="M46.087 64.74v3.802h2.092V64.74h-2.092Zm0 3.802c0 .75-.63 1.391-1.422 1.391v2.093c1.923 0 3.514-1.553 3.514-3.484h-2.092Zm-1.422 1.391H4.468v2.093h40.197v-2.093Zm-40.197 0c-.792 0-1.422-.64-1.422-1.39H.954c0 1.93 1.591 3.483 3.514 3.483v-2.093Zm-1.422-1.39v-57.58H.954v57.58h2.092Zm0-57.58c0-.75.63-1.39 1.422-1.39V7.48C2.545 7.48.954 9.033.954 10.964h2.092Zm1.422-1.39h3.825V7.48H4.468v2.093Z"></path>
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3.138" d="M47.133 64.74v3.802c0 1.34-1.11 2.438-2.468 2.438H4.468C3.111 70.98 2 69.883 2 68.542V10.964c0-1.34 1.11-2.438 2.468-2.438h3.825"></path>

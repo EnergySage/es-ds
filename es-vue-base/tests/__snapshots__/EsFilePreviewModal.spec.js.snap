@@ -18,7 +18,7 @@ exports[`EsFilePreviewModal <EsFilePreviewModal /> 1`] = `
             <div class="d-md-none d-block file-preview text-center"><img lazy="true" src="" alt="test.png" class="file-preview img-fluid"></div>
             <div class="d-none d-md-block">
               <div class="px-450 py-200 bg-gray-200">
-                <div class="card bg-white file-preview"><img lazy="true" src="" alt="test.png" class="file-preview img-fluid rounded"></div>
+                <div class="card bg-white file-preview"><img lazy="true" src="" alt="test.png" class="file-preview rounded-img img-fluid"></div>
               </div>
             </div>
           </div>

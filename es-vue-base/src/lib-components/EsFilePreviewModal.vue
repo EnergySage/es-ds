@@ -23,8 +23,7 @@
                     <b-img
                         fluid
                         :lazy="true"
-                        rounded
-                        class="file-preview"
+                        class="file-preview rounded-img"
                         :src="fileSource"
                         :alt="fileName" />
                 </div>
@@ -80,7 +79,7 @@ export default {
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
 
-.rounded {
+.rounded-img {
     border-radius: $card-inner-border-radius !important;
 }
 

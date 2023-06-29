@@ -27,6 +27,9 @@
         <h2>
             Thumbnails for file uploads
         </h2>
+        <p>
+            If the file type is not .pdf, .doc, or .docx, we will display the icon for a .doc file
+        </p>
         <div class="d-md-flex flex-nowrap mb-5">
             <div
                 v-for="file in thumbnails"
@@ -53,10 +56,14 @@
                 @removeFile="removeFileAlert"
                 @showPreview="showPreviewModal=true" />
         </div>
-        <es-button @click="showLoadingState">
+        <es-button
+            :disabled="loadingInProgress"
+            @click="showLoadingState">
             Show loading state
         </es-button>
-        <es-button @click="resetLoadingState">
+        <es-button
+            :disabled="loadingInProgress"
+            @click="resetLoadingState">
             Reset loading state
         </es-button>
         <h2 class="mt-5">
@@ -177,6 +184,7 @@ export default {
                 source: '',
                 mimeType: 'application/docx',
             }],
+            loadingInProgress: false,
         };
     },
     async created() {
@@ -198,6 +206,7 @@ export default {
             alert('remove file triggered');
         },
         async showLoadingState() {
+            this.loadingInProgress = true;
             await this.increment(20);
             await this.increment(35);
             await this.increment(50);
@@ -205,6 +214,7 @@ export default {
             await this.increment(97);
             this.fileSource = 'https://www.eversource.com/content/images/default-source/bills/ct-sample-bill-electric-front.jpg?sfvrsn=495ad262_4';
             await this.increment(100);
+            this.loadingInProgress = false;
         },
         resetLoadingState() {
             this.percentLoaded = 0;

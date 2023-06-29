@@ -73,7 +73,7 @@
         <div
             class="desktop-preview"
             :class="mobileView ? 'd-none' : 'd-none d-md-block'">
-            <div class="thumbnail-outer-wrapper">
+            <div class="thumbnail-outer-wrapper position-relative">
                 <div class="float-right d-flex">
                     <b-link
                         v-if="!loading"
@@ -94,6 +94,7 @@
                     <div
                         :class="{
                             'card': true,
+                            'overflow-hidden': !loading,
                             'thumbnail-inner-wrapper-x': !loading,
                             'thumbnail-inner-wrapper': loading,
                         }">
@@ -126,6 +127,7 @@
                     <div
                         :class="{
                             'card': true,
+                            'overflow-hidden': !loading,
                             'thumbnail-inner-wrapper-x': !loading,
                             'thumbnail-inner-wrapper': loading,
                         }">
@@ -133,8 +135,8 @@
                             <div
                                 class="h-100 d-flex align-items-center justify-content-center">
                                 <icon-file-pdf v-if="mimeType.includes('pdf')" />
-                                <icon-file-doc v-if="mimeType.includes('doc') && !(mimeType.includes('docx'))" />
-                                <icon-file-docx v-if="mimeType.includes('docx')" />
+                                <icon-file-docx v-else-if="mimeType.includes('docx')" />
+                                <icon-file-doc v-else />
                             </div>
                         </template>
                         <template v-else>
@@ -268,7 +270,6 @@ export default {
 
 .thumbnail-outer-wrapper {
     height: 165px;
-    position: relative;
     width: 165px;
     z-index: 2;
     @include media-breakpoint-down(md) {
@@ -280,7 +281,6 @@ export default {
 .thumbnail-inner-wrapper-x {
     border: 2px solid $card-border-color;
     height: 160px;
-    overflow: hidden;
     top: -18px;
     width: 160px;
     z-index: -1; // dragons
