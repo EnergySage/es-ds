@@ -18,11 +18,10 @@
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsErrorPage.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-error-page.vue" />
+            doc-source="es-design-system/pages/organisms/es-error-page.vue" />
     </div>
 </template>
 <script>
-
 export default {
     name: 'EsErrorDocs',
     data() {
@@ -34,7 +33,7 @@ export default {
     },
     async created() {
         if (this.$prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
             const docSource = await import('!raw-loader!./es-error-page.vue');
             const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsErrorPage.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */

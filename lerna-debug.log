@@ -1,0 +1,559 @@
+0 silly argv {
+0 silly argv   _: [ 'bootstrap' ],
+0 silly argv   lernaVersion: '5.5.1',
+0 silly argv   '$0': '/Users/suleiyadanar/Dev/es-ds/node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v5.5.1
+2 verbose rootPath /Users/suleiyadanar/Dev/es-ds
+3 silly npmConfig {
+3 silly npmConfig   registry: undefined,
+3 silly npmConfig   npmClient: 'npm',
+3 silly npmConfig   npmClientArgs: [],
+3 silly npmConfig   mutex: undefined
+3 silly npmConfig }
+4 info Bootstrapping 3 packages
+5 verbose lifecycle preinstall
+6 silly lifecycle No script for "preinstall" in "@energysage/es-bs-base", continuing
+7 silly lifecycle No script for "preinstall" in "@energysage/es-vue-base", continuing
+8 silly lifecycle No script for "preinstall" in "es-design-system", continuing
+9 silly hasDependencyInstalled es-design-system env-cmd
+10 silly hasDependencyInstalled @energysage/es-bs-base nodemon
+11 silly hasDependencyInstalled @energysage/es-bs-base @babel/cli
+12 silly hasDependencyInstalled @energysage/es-bs-base @babel/core
+13 silly hasDependencyInstalled es-design-system @babel/core
+14 silly hasDependencyInstalled @energysage/es-vue-base @babel/core
+15 silly hasDependencyInstalled @energysage/es-bs-base @babel/preset-env
+16 silly hasDependencyInstalled es-design-system @babel/preset-env
+17 silly hasDependencyInstalled @energysage/es-vue-base @babel/preset-env
+18 silly hasDependencyInstalled @energysage/es-bs-base @rollup/plugin-babel
+19 silly hasDependencyInstalled @energysage/es-vue-base @rollup/plugin-babel
+20 silly hasDependencyInstalled @energysage/es-bs-base @rollup/plugin-commonjs
+21 silly hasDependencyInstalled @energysage/es-vue-base @rollup/plugin-commonjs
+22 silly hasDependencyInstalled @energysage/es-bs-base @rollup/plugin-node-resolve
+23 silly hasDependencyInstalled @energysage/es-vue-base @rollup/plugin-node-resolve
+24 silly hasDependencyInstalled @energysage/es-bs-base autoprefixer
+25 silly hasDependencyInstalled es-design-system autoprefixer
+26 silly hasDependencyInstalled @energysage/es-vue-base autoprefixer
+27 silly hasDependencyInstalled @energysage/es-bs-base babel-plugin-istanbul
+28 silly hasDependencyInstalled @energysage/es-bs-base clean-css-cli
+29 silly hasDependencyInstalled @energysage/es-bs-base cross-env
+30 silly hasDependencyInstalled @energysage/es-vue-base cross-env
+31 silly hasDependencyInstalled @energysage/es-bs-base eslint
+32 silly hasDependencyInstalled es-design-system eslint
+33 silly hasDependencyInstalled @energysage/es-vue-base eslint
+34 silly hasDependencyInstalled @energysage/es-bs-base eslint-config-xo
+35 silly hasDependencyInstalled @energysage/es-bs-base eslint-plugin-import
+36 silly hasDependencyInstalled es-design-system eslint-plugin-import
+37 silly hasDependencyInstalled @energysage/es-vue-base eslint-plugin-import
+38 silly hasDependencyInstalled @energysage/es-bs-base eslint-plugin-qunit
+39 silly hasDependencyInstalled @energysage/es-bs-base eslint-plugin-unicorn
+40 silly hasDependencyInstalled @energysage/es-bs-base find-unused-sass-variables
+41 silly hasDependencyInstalled @energysage/es-bs-base globby
+42 silly hasDependencyInstalled @energysage/es-bs-base hammer-simulator
+43 silly hasDependencyInstalled @energysage/es-bs-base hugo-bin
+44 silly hasDependencyInstalled @energysage/es-bs-base ip
+45 silly hasDependencyInstalled @energysage/es-bs-base jquery
+46 silly hasDependencyInstalled @energysage/es-bs-base karma
+47 silly hasDependencyInstalled @energysage/es-bs-base karma-browserstack-launcher
+48 silly hasDependencyInstalled @energysage/es-bs-base karma-chrome-launcher
+49 silly hasDependencyInstalled @energysage/es-bs-base karma-coverage-istanbul-reporter
+50 silly hasDependencyInstalled @energysage/es-bs-base karma-detect-browsers
+51 silly hasDependencyInstalled @energysage/es-bs-base karma-firefox-launcher
+52 silly hasDependencyInstalled @energysage/es-bs-base karma-qunit
+53 silly hasDependencyInstalled @energysage/es-bs-base karma-sinon
+54 silly hasDependencyInstalled @energysage/es-bs-base lockfile-lint
+55 silly hasDependencyInstalled @energysage/es-bs-base node-sass
+56 silly hasDependencyInstalled es-design-system node-sass
+57 silly hasDependencyInstalled @energysage/es-bs-base npm-run-all
+58 silly hasDependencyInstalled @energysage/es-bs-base popper.js
+59 silly hasDependencyInstalled @energysage/es-bs-base postcss
+60 silly hasDependencyInstalled es-design-system postcss
+61 silly hasDependencyInstalled @energysage/es-vue-base postcss
+62 silly hasDependencyInstalled @energysage/es-bs-base postcss-cli
+63 silly hasDependencyInstalled @energysage/es-bs-base qunit
+64 silly hasDependencyInstalled @energysage/es-bs-base rollup
+65 silly hasDependencyInstalled @energysage/es-vue-base rollup
+66 silly hasDependencyInstalled @energysage/es-bs-base shelljs
+67 silly hasDependencyInstalled @energysage/es-bs-base sinon
+68 silly hasDependencyInstalled @energysage/es-bs-base stylelint
+69 silly hasDependencyInstalled es-design-system stylelint
+70 silly hasDependencyInstalled @energysage/es-vue-base stylelint
+71 silly hasDependencyInstalled @energysage/es-bs-base stylelint-config-twbs-bootstrap
+72 silly hasDependencyInstalled @energysage/es-bs-base terser
+73 silly hasDependencyInstalled @energysage/es-bs-base vnu-jar
+74 silly hasDependencyInstalled es-design-system @babel/eslint-parser
+75 silly hasDependencyInstalled @energysage/es-vue-base @babel/eslint-parser
+76 silly hasDependencyInstalled es-design-system @nuxtjs/eslint-config
+77 silly hasDependencyInstalled es-design-system @nuxtjs/eslint-module
+78 silly hasDependencyInstalled es-design-system @nuxtjs/style-resources
+79 silly hasDependencyInstalled es-design-system @nuxtjs/stylelint-module
+80 silly hasDependencyInstalled es-design-system @nuxtjs/svg
+81 silly hasDependencyInstalled es-design-system aws-cdk
+82 silly hasDependencyInstalled es-design-system aws-cdk-lib
+83 silly hasDependencyInstalled es-design-system babel-core
+84 silly hasDependencyInstalled @energysage/es-vue-base babel-core
+85 silly hasDependencyInstalled es-design-system babel-jest
+86 silly hasDependencyInstalled @energysage/es-vue-base babel-jest
+87 silly hasDependencyInstalled es-design-system eslint-config-energysage
+88 silly hasDependencyInstalled @energysage/es-vue-base eslint-config-energysage
+89 silly hasDependencyInstalled es-design-system eslint-config-prettier
+90 silly hasDependencyInstalled @energysage/es-vue-base eslint-config-prettier
+91 silly hasDependencyInstalled es-design-system eslint-import-resolver-nuxt
+92 silly hasDependencyInstalled es-design-system eslint-import-resolver-webpack
+93 silly hasDependencyInstalled @energysage/es-vue-base eslint-import-resolver-webpack
+94 silly hasDependencyInstalled es-design-system eslint-plugin-jest
+95 silly hasDependencyInstalled @energysage/es-vue-base eslint-plugin-jest
+96 silly hasDependencyInstalled es-design-system eslint-plugin-nuxt
+97 silly hasDependencyInstalled es-design-system eslint-plugin-strict-vue
+98 silly hasDependencyInstalled @energysage/es-vue-base eslint-plugin-strict-vue
+99 silly hasDependencyInstalled es-design-system eslint-plugin-vue
+100 silly hasDependencyInstalled @energysage/es-vue-base eslint-plugin-vue
+101 silly hasDependencyInstalled es-design-system eslint-plugin-vuejs-accessibility
+102 silly hasDependencyInstalled @energysage/es-vue-base eslint-plugin-vuejs-accessibility
+103 silly hasDependencyInstalled es-design-system null-loader
+104 silly hasDependencyInstalled es-design-system postcss-html
+105 silly hasDependencyInstalled @energysage/es-vue-base postcss-html
+106 silly hasDependencyInstalled es-design-system postcss-preset-env
+107 silly hasDependencyInstalled es-design-system postcss-scss
+108 silly hasDependencyInstalled @energysage/es-vue-base postcss-scss
+109 silly hasDependencyInstalled es-design-system prettier
+110 silly hasDependencyInstalled @energysage/es-vue-base prettier
+111 silly hasDependencyInstalled es-design-system prettier-eslint
+112 silly hasDependencyInstalled @energysage/es-vue-base prettier-eslint
+113 silly hasDependencyInstalled es-design-system raw-loader
+114 silly hasDependencyInstalled es-design-system sass
+115 silly hasDependencyInstalled es-design-system sass-loader
+116 silly hasDependencyInstalled es-design-system stylelint-config-prettier
+117 silly hasDependencyInstalled es-design-system stylelint-config-recommended-vue
+118 silly hasDependencyInstalled es-design-system stylelint-config-standard
+119 silly hasDependencyInstalled es-design-system @nuxtjs/axios
+120 silly hasDependencyInstalled es-design-system @nuxtjs/i18n
+121 silly hasDependencyInstalled es-design-system bootstrap-vue
+122 silly hasDependencyInstalled @energysage/es-vue-base bootstrap-vue
+123 silly hasDependencyInstalled es-design-system clipboard
+124 silly hasDependencyInstalled es-design-system core-js
+125 silly hasDependencyInstalled es-design-system html-truncate
+126 silly hasDependencyInstalled @energysage/es-vue-base html-truncate
+127 silly hasDependencyInstalled es-design-system nuxt
+128 silly hasDependencyInstalled es-design-system prismjs
+129 silly hasDependencyInstalled es-design-system vue
+130 silly hasDependencyInstalled @energysage/es-vue-base vue
+131 silly hasDependencyInstalled es-design-system vue-server-renderer
+132 silly hasDependencyInstalled es-design-system vue-slider-component
+133 silly hasDependencyInstalled @energysage/es-vue-base vue-slider-component
+134 silly hasDependencyInstalled es-design-system vue-template-compiler
+135 silly hasDependencyInstalled @energysage/es-vue-base vue-template-compiler
+136 silly hasDependencyInstalled es-design-system vuelidate
+137 silly hasDependencyInstalled @energysage/es-vue-base vuelidate
+138 silly hasDependencyInstalled @energysage/es-vue-base @rollup/plugin-image
+139 silly hasDependencyInstalled @energysage/es-vue-base @rollup/plugin-replace
+140 silly hasDependencyInstalled @energysage/es-vue-base @rollup/plugin-terser
+141 silly hasDependencyInstalled @energysage/es-vue-base @testing-library/jest-dom
+142 silly hasDependencyInstalled @energysage/es-vue-base @vue/babel-preset-app
+143 silly hasDependencyInstalled @energysage/es-vue-base @vue/test-utils
+144 silly hasDependencyInstalled @energysage/es-vue-base jest
+145 silly hasDependencyInstalled @energysage/es-vue-base jest-axe
+146 silly hasDependencyInstalled @energysage/es-vue-base jest-environment-jsdom
+147 silly hasDependencyInstalled @energysage/es-vue-base jest-extended
+148 silly hasDependencyInstalled @energysage/es-vue-base jest-transform-stub
+149 silly hasDependencyInstalled @energysage/es-vue-base lodash.debounce
+150 silly hasDependencyInstalled @energysage/es-vue-base minimist
+151 silly hasDependencyInstalled @energysage/es-vue-base rimraf
+152 silly hasDependencyInstalled @energysage/es-vue-base rollup-plugin-visualizer
+153 silly hasDependencyInstalled @energysage/es-vue-base rollup-plugin-vue
+154 silly hasDependencyInstalled @energysage/es-vue-base vue-jest
+155 silly root dependencies {}
+156 silly leaf dependencies {}
+157 info Installing external dependencies
+158 verbose actions 3 actions, concurrency 8
+159 silly npmInstallDependencies es-design-system [
+159 silly npmInstallDependencies   'env-cmd@^10.1.0',
+159 silly npmInstallDependencies   '@babel/core@^7.22.5',
+159 silly npmInstallDependencies   '@babel/preset-env@^7.22.5',
+159 silly npmInstallDependencies   'autoprefixer@^9.8.8',
+159 silly npmInstallDependencies   'eslint@^8.42.0',
+159 silly npmInstallDependencies   'eslint-plugin-import@^2.27.5',
+159 silly npmInstallDependencies   'node-sass@^7.0.1',
+159 silly npmInstallDependencies   'postcss@^8.4.24',
+159 silly npmInstallDependencies   'stylelint@^14.16.1',
+159 silly npmInstallDependencies   '@babel/eslint-parser@^7.22.5',
+159 silly npmInstallDependencies   '@nuxtjs/eslint-config@^12.0.0',
+159 silly npmInstallDependencies   '@nuxtjs/eslint-module@^4.1.0',
+159 silly npmInstallDependencies   '@nuxtjs/style-resources@^1.2.1',
+159 silly npmInstallDependencies   '@nuxtjs/stylelint-module@^4.2.1',
+159 silly npmInstallDependencies   '@nuxtjs/svg@^0.4.0',
+159 silly npmInstallDependencies   'aws-cdk@^2.83.1',
+159 silly npmInstallDependencies   'aws-cdk-lib@^2.83.1',
+159 silly npmInstallDependencies   'babel-core@7.0.0-bridge.0',
+159 silly npmInstallDependencies   'babel-jest@^29.5.0',
+159 silly npmInstallDependencies   'eslint-config-energysage@^2.2.3',
+159 silly npmInstallDependencies   'eslint-config-prettier@^8.8.0',
+159 silly npmInstallDependencies   'eslint-import-resolver-nuxt@^1.0.1',
+159 silly npmInstallDependencies   'eslint-import-resolver-webpack@^0.13.2',
+159 silly npmInstallDependencies   'eslint-plugin-jest@^27.2.1',
+159 silly npmInstallDependencies   'eslint-plugin-nuxt@^4.0.0',
+159 silly npmInstallDependencies   'eslint-plugin-strict-vue@^1.0.0',
+159 silly npmInstallDependencies   'eslint-plugin-vue@^9.14.1',
+159 silly npmInstallDependencies   'eslint-plugin-vuejs-accessibility@^2.1.0',
+159 silly npmInstallDependencies   'null-loader@^4.0.1',
+159 silly npmInstallDependencies   'postcss-html@^1.5.0',
+159 silly npmInstallDependencies   'postcss-preset-env@8.4.2',
+159 silly npmInstallDependencies   'postcss-scss@^4.0.6',
+159 silly npmInstallDependencies   'prettier@^2.8.8',
+159 silly npmInstallDependencies   'prettier-eslint@^15.0.1',
+159 silly npmInstallDependencies   'raw-loader@^4.0.2',
+159 silly npmInstallDependencies   'sass@^1.63.3',
+159 silly npmInstallDependencies   'sass-loader@^10.4.1',
+159 silly npmInstallDependencies   'stylelint-config-prettier@^9.0.5',
+159 silly npmInstallDependencies   'stylelint-config-recommended-vue@^1.1.0',
+159 silly npmInstallDependencies   'stylelint-config-standard@^29.0.0',
+159 silly npmInstallDependencies   '@nuxtjs/axios@^5.13.6',
+159 silly npmInstallDependencies   '@nuxtjs/i18n@^7.3.1',
+159 silly npmInstallDependencies   'bootstrap-vue@^2.23.1',
+159 silly npmInstallDependencies   'clipboard@^2.0.11',
+159 silly npmInstallDependencies   'core-js@^3.31.0',
+159 silly npmInstallDependencies   'html-truncate@^1.2.2',
+159 silly npmInstallDependencies   'nuxt@^2.17.0',
+159 silly npmInstallDependencies   'prismjs@^1.29.0',
+159 silly npmInstallDependencies   'vue@^2.7.14',
+159 silly npmInstallDependencies   'vue-server-renderer@^2.7.14',
+159 silly npmInstallDependencies   'vue-slider-component@^3.2.24',
+159 silly npmInstallDependencies   'vue-template-compiler@^2.7.14',
+159 silly npmInstallDependencies   'vuelidate@^0.7.7'
+159 silly npmInstallDependencies ]
+160 silly npmInstallDependencies backup /Users/suleiyadanar/Dev/es-ds/es-design-system/package.json
+161 silly npmInstallDependencies @energysage/es-bs-base [
+161 silly npmInstallDependencies   'nodemon@^2.0.15',
+161 silly npmInstallDependencies   '@babel/cli@^7.17.6',
+161 silly npmInstallDependencies   '@babel/core@^7.17.9',
+161 silly npmInstallDependencies   '@babel/preset-env@^7.16.11',
+161 silly npmInstallDependencies   '@rollup/plugin-babel@^6.0.0',
+161 silly npmInstallDependencies   '@rollup/plugin-commonjs@^25.0.0',
+161 silly npmInstallDependencies   '@rollup/plugin-node-resolve@^15.0.0',
+161 silly npmInstallDependencies   'autoprefixer@^9.8.8',
+161 silly npmInstallDependencies   'babel-plugin-istanbul@^6.1.1',
+161 silly npmInstallDependencies   'clean-css-cli@^5.6.0',
+161 silly npmInstallDependencies   'cross-env@^7.0.3',
+161 silly npmInstallDependencies   'eslint@^8.13.0',
+161 silly npmInstallDependencies   'eslint-config-xo@^0.43.1',
+161 silly npmInstallDependencies   'eslint-plugin-import@^2.26.0',
+161 silly npmInstallDependencies   'eslint-plugin-qunit@^7.2.0',
+161 silly npmInstallDependencies   'eslint-plugin-unicorn@^46.0.0',
+161 silly npmInstallDependencies   'find-unused-sass-variables@^5.0.0',
+161 silly npmInstallDependencies   'globby@^13.1.2',
+161 silly npmInstallDependencies   'hammer-simulator@0.0.1',
+161 silly npmInstallDependencies   'hugo-bin@^0.108.0',
+161 silly npmInstallDependencies   'ip@^1.1.5',
+161 silly npmInstallDependencies   'jquery@3.7.0',
+161 silly npmInstallDependencies   'karma@^6.3.18',
+161 silly npmInstallDependencies   'karma-browserstack-launcher@1.6.0',
+161 silly npmInstallDependencies   'karma-chrome-launcher@^3.1.1',
+161 silly npmInstallDependencies   'karma-coverage-istanbul-reporter@^3.0.3',
+161 silly npmInstallDependencies   'karma-detect-browsers@^2.3.3',
+161 silly npmInstallDependencies   'karma-firefox-launcher@^2.1.2',
+161 silly npmInstallDependencies   'karma-qunit@^4.1.2',
+161 silly npmInstallDependencies   'karma-sinon@^1.0.5',
+161 silly npmInstallDependencies   'lockfile-lint@^4.7.4',
+161 silly npmInstallDependencies   'node-sass@^7.0.1',
+161 silly npmInstallDependencies   'npm-run-all@^4.1.5',
+161 silly npmInstallDependencies   'popper.js@^1.16.1',
+161 silly npmInstallDependencies   'postcss@^8.4.12',
+161 silly npmInstallDependencies   'postcss-cli@^10.0.0',
+161 silly npmInstallDependencies   'qunit@^2.18.2',
+161 silly npmInstallDependencies   'rollup@^3.2.5',
+161 silly npmInstallDependencies   'shelljs@^0.8.5',
+161 silly npmInstallDependencies   'sinon@^15.0.0',
+161 silly npmInstallDependencies   'stylelint@^14.7.1',
+161 silly npmInstallDependencies   'stylelint-config-twbs-bootstrap@^7.0.0',
+161 silly npmInstallDependencies   'terser@^5.12.1',
+161 silly npmInstallDependencies   'vnu-jar@23.4.11'
+161 silly npmInstallDependencies ]
+162 silly npmInstallDependencies backup /Users/suleiyadanar/Dev/es-ds/es-bs-base/package.json
+163 silly npmInstallDependencies @energysage/es-vue-base [
+163 silly npmInstallDependencies   '@babel/core@^7.20.12',
+163 silly npmInstallDependencies   '@babel/preset-env@^7.20.2',
+163 silly npmInstallDependencies   '@rollup/plugin-babel@^6.0.0',
+163 silly npmInstallDependencies   '@rollup/plugin-commonjs@^25.0.0',
+163 silly npmInstallDependencies   '@rollup/plugin-node-resolve@^15.0.0',
+163 silly npmInstallDependencies   'autoprefixer@^9.8.8',
+163 silly npmInstallDependencies   'cross-env@^7.0.3',
+163 silly npmInstallDependencies   'eslint@^8.32.0',
+163 silly npmInstallDependencies   'eslint-plugin-import@^2.27.5',
+163 silly npmInstallDependencies   'postcss@^8.4.21',
+163 silly npmInstallDependencies   'rollup@^2.52.8',
+163 silly npmInstallDependencies   'stylelint@^14.16.1',
+163 silly npmInstallDependencies   '@babel/eslint-parser@^7.19.1',
+163 silly npmInstallDependencies   'babel-core@^7.0.0-bridge.0',
+163 silly npmInstallDependencies   'babel-jest@^29.0.3',
+163 silly npmInstallDependencies   'eslint-config-energysage@^2.2.3',
+163 silly npmInstallDependencies   'eslint-config-prettier@^8.6.0',
+163 silly npmInstallDependencies   'eslint-import-resolver-webpack@^0.13.2',
+163 silly npmInstallDependencies   'eslint-plugin-jest@^27.2.1',
+163 silly npmInstallDependencies   'eslint-plugin-strict-vue@^1.0.0',
+163 silly npmInstallDependencies   'eslint-plugin-vue@^9.9.0',
+163 silly npmInstallDependencies   'eslint-plugin-vuejs-accessibility@^2.1.0',
+163 silly npmInstallDependencies   'postcss-html@^1.5.0',
+163 silly npmInstallDependencies   'postcss-scss@^4.0.6',
+163 silly npmInstallDependencies   'prettier@^2.8.3',
+163 silly npmInstallDependencies   'prettier-eslint@^15.0.1',
+163 silly npmInstallDependencies   'bootstrap-vue@^2.23.1',
+163 silly npmInstallDependencies   'html-truncate@^1.2.2',
+163 silly npmInstallDependencies   'vue@^2.7.14',
+163 silly npmInstallDependencies   'vue-slider-component@^3.2.20',
+163 silly npmInstallDependencies   'vue-template-compiler@^2.7.14',
+163 silly npmInstallDependencies   'vuelidate@^0.7.7',
+163 silly npmInstallDependencies   '@rollup/plugin-image@^3.0.0',
+163 silly npmInstallDependencies   '@rollup/plugin-replace@^5.0.0',
+163 silly npmInstallDependencies   '@rollup/plugin-terser@^0.4.0',
+163 silly npmInstallDependencies   '@testing-library/jest-dom@^5.16.4',
+163 silly npmInstallDependencies   '@vue/babel-preset-app@^5.0.8',
+163 silly npmInstallDependencies   '@vue/test-utils@^1.3.0',
+163 silly npmInstallDependencies   'jest@^29.0.3',
+163 silly npmInstallDependencies   'jest-axe@^7.0.1',
+163 silly npmInstallDependencies   'jest-environment-jsdom@^29.0.3',
+163 silly npmInstallDependencies   'jest-extended@^4.0.0',
+163 silly npmInstallDependencies   'jest-transform-stub@^2.0.0',
+163 silly npmInstallDependencies   'lodash.debounce@^4.0.8',
+163 silly npmInstallDependencies   'minimist@^1.2.5',
+163 silly npmInstallDependencies   'rimraf@^5.0.0',
+163 silly npmInstallDependencies   'rollup-plugin-visualizer@^5.7.1',
+163 silly npmInstallDependencies   'rollup-plugin-vue@^5.1.9',
+163 silly npmInstallDependencies   'vue-jest@^3.0.7'
+163 silly npmInstallDependencies ]
+164 silly npmInstallDependencies backup /Users/suleiyadanar/Dev/es-ds/es-vue-base/package.json
+165 silly npmInstallDependencies writing tempJson {
+165 silly npmInstallDependencies   name: 'es-design-system',
+165 silly npmInstallDependencies   version: '0.23.0',
+165 silly npmInstallDependencies   private: true,
+165 silly npmInstallDependencies   prettier: 'eslint-config-energysage/prettier',
+165 silly npmInstallDependencies   dependencies: {
+165 silly npmInstallDependencies     '@nuxtjs/axios': '^5.13.6',
+165 silly npmInstallDependencies     '@nuxtjs/i18n': '^7.3.1',
+165 silly npmInstallDependencies     'bootstrap-vue': '^2.23.1',
+165 silly npmInstallDependencies     clipboard: '^2.0.11',
+165 silly npmInstallDependencies     'core-js': '^3.31.0',
+165 silly npmInstallDependencies     'html-truncate': '^1.2.2',
+165 silly npmInstallDependencies     nuxt: '^2.17.0',
+165 silly npmInstallDependencies     prismjs: '^1.29.0',
+165 silly npmInstallDependencies     vue: '^2.7.14',
+165 silly npmInstallDependencies     'vue-server-renderer': '^2.7.14',
+165 silly npmInstallDependencies     'vue-slider-component': '^3.2.24',
+165 silly npmInstallDependencies     'vue-template-compiler': '^2.7.14',
+165 silly npmInstallDependencies     vuelidate: '^0.7.7'
+165 silly npmInstallDependencies   },
+165 silly npmInstallDependencies   devDependencies: {
+165 silly npmInstallDependencies     '@babel/core': '^7.22.5',
+165 silly npmInstallDependencies     '@babel/eslint-parser': '^7.22.5',
+165 silly npmInstallDependencies     '@babel/preset-env': '^7.22.5',
+165 silly npmInstallDependencies     '@nuxtjs/eslint-config': '^12.0.0',
+165 silly npmInstallDependencies     '@nuxtjs/eslint-module': '^4.1.0',
+165 silly npmInstallDependencies     '@nuxtjs/style-resources': '^1.2.1',
+165 silly npmInstallDependencies     '@nuxtjs/stylelint-module': '^4.2.1',
+165 silly npmInstallDependencies     '@nuxtjs/svg': '^0.4.0',
+165 silly npmInstallDependencies     autoprefixer: '^9.8.8',
+165 silly npmInstallDependencies     'aws-cdk': '^2.83.1',
+165 silly npmInstallDependencies     'aws-cdk-lib': '^2.83.1',
+165 silly npmInstallDependencies     'babel-core': '7.0.0-bridge.0',
+165 silly npmInstallDependencies     'babel-jest': '^29.5.0',
+165 silly npmInstallDependencies     'env-cmd': '^10.1.0',
+165 silly npmInstallDependencies     eslint: '^8.42.0',
+165 silly npmInstallDependencies     'eslint-config-energysage': '^2.2.3',
+165 silly npmInstallDependencies     'eslint-config-prettier': '^8.8.0',
+165 silly npmInstallDependencies     'eslint-import-resolver-nuxt': '^1.0.1',
+165 silly npmInstallDependencies     'eslint-import-resolver-webpack': '^0.13.2',
+165 silly npmInstallDependencies     'eslint-plugin-import': '^2.27.5',
+165 silly npmInstallDependencies     'eslint-plugin-jest': '^27.2.1',
+165 silly npmInstallDependencies     'eslint-plugin-nuxt': '^4.0.0',
+165 silly npmInstallDependencies     'eslint-plugin-strict-vue': '^1.0.0',
+165 silly npmInstallDependencies     'eslint-plugin-vue': '^9.14.1',
+165 silly npmInstallDependencies     'eslint-plugin-vuejs-accessibility': '^2.1.0',
+165 silly npmInstallDependencies     'node-sass': '^7.0.1',
+165 silly npmInstallDependencies     'null-loader': '^4.0.1',
+165 silly npmInstallDependencies     postcss: '^8.4.24',
+165 silly npmInstallDependencies     'postcss-html': '^1.5.0',
+165 silly npmInstallDependencies     'postcss-preset-env': '8.4.2',
+165 silly npmInstallDependencies     'postcss-scss': '^4.0.6',
+165 silly npmInstallDependencies     prettier: '^2.8.8',
+165 silly npmInstallDependencies     'prettier-eslint': '^15.0.1',
+165 silly npmInstallDependencies     'raw-loader': '^4.0.2',
+165 silly npmInstallDependencies     sass: '^1.63.3',
+165 silly npmInstallDependencies     'sass-loader': '^10.4.1',
+165 silly npmInstallDependencies     stylelint: '^14.16.1',
+165 silly npmInstallDependencies     'stylelint-config-prettier': '^9.0.5',
+165 silly npmInstallDependencies     'stylelint-config-recommended-vue': '^1.1.0',
+165 silly npmInstallDependencies     'stylelint-config-standard': '^29.0.0'
+165 silly npmInstallDependencies   },
+165 silly npmInstallDependencies   overrides: { autoprefixer: '^9.8.8' }
+165 silly npmInstallDependencies }
+166 silly npmInstallDependencies writing tempJson {
+166 silly npmInstallDependencies   name: '@energysage/es-bs-base',
+166 silly npmInstallDependencies   description: 'Base CSS for EnergySage design system based on Bootstrap',
+166 silly npmInstallDependencies   version: '0.23.0',
+166 silly npmInstallDependencies   config: { version_short: '0.1' },
+166 silly npmInstallDependencies   keywords: [
+166 silly npmInstallDependencies     'css',
+166 silly npmInstallDependencies     'sass',
+166 silly npmInstallDependencies     'mobile-first',
+166 silly npmInstallDependencies     'responsive',
+166 silly npmInstallDependencies     'front-end',
+166 silly npmInstallDependencies     'framework',
+166 silly npmInstallDependencies     'web'
+166 silly npmInstallDependencies   ],
+166 silly npmInstallDependencies   homepage: 'https://energysage.com/',
+166 silly npmInstallDependencies   author: 'EnergySage',
+166 silly npmInstallDependencies   contributors: [ 'EnergySage, Inc.' ],
+166 silly npmInstallDependencies   repository: { type: 'git', url: 'git@github.com:EnergySage/es-ds.git' },
+166 silly npmInstallDependencies   bugs: { url: 'https://github.com/EnergySage/es-ds/issues' },
+166 silly npmInstallDependencies   main: 'dist/js/bootstrap.js',
+166 silly npmInstallDependencies   sass: 'scss/bootstrap.scss',
+166 silly npmInstallDependencies   style: 'dist/css/bootstrap.css',
+166 silly npmInstallDependencies   peerDependencies: { jquery: '1.9.1 - 3', 'popper.js': '^1.16.1' },
+166 silly npmInstallDependencies   devDependencies: {
+166 silly npmInstallDependencies     '@babel/cli': '^7.17.6',
+166 silly npmInstallDependencies     '@babel/core': '^7.17.9',
+166 silly npmInstallDependencies     '@babel/preset-env': '^7.16.11',
+166 silly npmInstallDependencies     '@rollup/plugin-babel': '^6.0.0',
+166 silly npmInstallDependencies     '@rollup/plugin-commonjs': '^25.0.0',
+166 silly npmInstallDependencies     '@rollup/plugin-node-resolve': '^15.0.0',
+166 silly npmInstallDependencies     autoprefixer: '^9.8.8',
+166 silly npmInstallDependencies     'babel-plugin-istanbul': '^6.1.1',
+166 silly npmInstallDependencies     'clean-css-cli': '^5.6.0',
+166 silly npmInstallDependencies     'cross-env': '^7.0.3',
+166 silly npmInstallDependencies     eslint: '^8.13.0',
+166 silly npmInstallDependencies     'eslint-config-xo': '^0.43.1',
+166 silly npmInstallDependencies     'eslint-plugin-import': '^2.26.0',
+166 silly npmInstallDependencies     'eslint-plugin-qunit': '^7.2.0',
+166 silly npmInstallDependencies     'eslint-plugin-unicorn': '^46.0.0',
+166 silly npmInstallDependencies     'find-unused-sass-variables': '^5.0.0',
+166 silly npmInstallDependencies     globby: '^13.1.2',
+166 silly npmInstallDependencies     'hammer-simulator': '0.0.1',
+166 silly npmInstallDependencies     'hugo-bin': '^0.108.0',
+166 silly npmInstallDependencies     ip: '^1.1.5',
+166 silly npmInstallDependencies     jquery: '3.7.0',
+166 silly npmInstallDependencies     karma: '^6.3.18',
+166 silly npmInstallDependencies     'karma-browserstack-launcher': '1.6.0',
+166 silly npmInstallDependencies     'karma-chrome-launcher': '^3.1.1',
+166 silly npmInstallDependencies     'karma-coverage-istanbul-reporter': '^3.0.3',
+166 silly npmInstallDependencies     'karma-detect-browsers': '^2.3.3',
+166 silly npmInstallDependencies     'karma-firefox-launcher': '^2.1.2',
+166 silly npmInstallDependencies     'karma-qunit': '^4.1.2',
+166 silly npmInstallDependencies     'karma-sinon': '^1.0.5',
+166 silly npmInstallDependencies     'lockfile-lint': '^4.7.4',
+166 silly npmInstallDependencies     'node-sass': '^7.0.1',
+166 silly npmInstallDependencies     nodemon: '^2.0.15',
+166 silly npmInstallDependencies     'npm-run-all': '^4.1.5',
+166 silly npmInstallDependencies     'popper.js': '^1.16.1',
+166 silly npmInstallDependencies     postcss: '^8.4.12',
+166 silly npmInstallDependencies     'postcss-cli': '^10.0.0',
+166 silly npmInstallDependencies     qunit: '^2.18.2',
+166 silly npmInstallDependencies     rollup: '^3.2.5',
+166 silly npmInstallDependencies     shelljs: '^0.8.5',
+166 silly npmInstallDependencies     sinon: '^15.0.0',
+166 silly npmInstallDependencies     stylelint: '^14.7.1',
+166 silly npmInstallDependencies     'stylelint-config-twbs-bootstrap': '^7.0.0',
+166 silly npmInstallDependencies     terser: '^5.12.1',
+166 silly npmInstallDependencies     'vnu-jar': '23.4.11'
+166 silly npmInstallDependencies   },
+166 silly npmInstallDependencies   files: [
+166 silly npmInstallDependencies     'dist/{css,js}/*.{css,js,map}',
+166 silly npmInstallDependencies     'js/{src,dist}/**/*.{js,map}',
+166 silly npmInstallDependencies     'scss/**/*.scss'
+166 silly npmInstallDependencies   ],
+166 silly npmInstallDependencies   'hugo-bin': { buildTags: 'extended' },
+166 silly npmInstallDependencies   license: 'MIT',
+166 silly npmInstallDependencies   private: false,
+166 silly npmInstallDependencies   gitHead: 'bce04be980ab56747d198c2af6b2b1f5668d988a'
+166 silly npmInstallDependencies }
+167 silly npmInstallDependencies writing tempJson {
+167 silly npmInstallDependencies   name: '@energysage/es-vue-base',
+167 silly npmInstallDependencies   version: '0.23.0',
+167 silly npmInstallDependencies   private: false,
+167 silly npmInstallDependencies   description: '',
+167 silly npmInstallDependencies   main: 'dist/es-vue-base.cjs.min.js',
+167 silly npmInstallDependencies   module: 'dist/es-vue-base.esm.min.js',
+167 silly npmInstallDependencies   browser: 'dist/es-vue-base.umd.min.js',
+167 silly npmInstallDependencies   unpkg: 'dist/es-vue-base.umd.min.js',
+167 silly npmInstallDependencies   files: [ 'dist', 'nuxt', 'src' ],
+167 silly npmInstallDependencies   prettier: 'eslint-config-energysage/prettier',
+167 silly npmInstallDependencies   devDependencies: {
+167 silly npmInstallDependencies     '@babel/core': '^7.20.12',
+167 silly npmInstallDependencies     '@babel/eslint-parser': '^7.19.1',
+167 silly npmInstallDependencies     '@babel/preset-env': '^7.20.2',
+167 silly npmInstallDependencies     '@rollup/plugin-babel': '^6.0.0',
+167 silly npmInstallDependencies     '@rollup/plugin-commonjs': '^25.0.0',
+167 silly npmInstallDependencies     '@rollup/plugin-image': '^3.0.0',
+167 silly npmInstallDependencies     '@rollup/plugin-node-resolve': '^15.0.0',
+167 silly npmInstallDependencies     '@rollup/plugin-replace': '^5.0.0',
+167 silly npmInstallDependencies     '@rollup/plugin-terser': '^0.4.0',
+167 silly npmInstallDependencies     '@testing-library/jest-dom': '^5.16.4',
+167 silly npmInstallDependencies     '@vue/babel-preset-app': '^5.0.8',
+167 silly npmInstallDependencies     '@vue/test-utils': '^1.3.0',
+167 silly npmInstallDependencies     autoprefixer: '^9.8.8',
+167 silly npmInstallDependencies     'babel-core': '^7.0.0-bridge.0',
+167 silly npmInstallDependencies     'babel-jest': '^29.0.3',
+167 silly npmInstallDependencies     'bootstrap-vue': '^2.23.1',
+167 silly npmInstallDependencies     'cross-env': '^7.0.3',
+167 silly npmInstallDependencies     eslint: '^8.32.0',
+167 silly npmInstallDependencies     'eslint-config-energysage': '^2.2.3',
+167 silly npmInstallDependencies     'eslint-config-prettier': '^8.6.0',
+167 silly npmInstallDependencies     'eslint-import-resolver-webpack': '^0.13.2',
+167 silly npmInstallDependencies     'eslint-plugin-import': '^2.27.5',
+167 silly npmInstallDependencies     'eslint-plugin-jest': '^27.2.1',
+167 silly npmInstallDependencies     'eslint-plugin-strict-vue': '^1.0.0',
+167 silly npmInstallDependencies     'eslint-plugin-vue': '^9.9.0',
+167 silly npmInstallDependencies     'eslint-plugin-vuejs-accessibility': '^2.1.0',
+167 silly npmInstallDependencies     'html-truncate': '^1.2.2',
+167 silly npmInstallDependencies     jest: '^29.0.3',
+167 silly npmInstallDependencies     'jest-axe': '^7.0.1',
+167 silly npmInstallDependencies     'jest-environment-jsdom': '^29.0.3',
+167 silly npmInstallDependencies     'jest-extended': '^4.0.0',
+167 silly npmInstallDependencies     'jest-transform-stub': '^2.0.0',
+167 silly npmInstallDependencies     'lodash.debounce': '^4.0.8',
+167 silly npmInstallDependencies     minimist: '^1.2.5',
+167 silly npmInstallDependencies     postcss: '^8.4.21',
+167 silly npmInstallDependencies     'postcss-html': '^1.5.0',
+167 silly npmInstallDependencies     'postcss-scss': '^4.0.6',
+167 silly npmInstallDependencies     prettier: '^2.8.3',
+167 silly npmInstallDependencies     'prettier-eslint': '^15.0.1',
+167 silly npmInstallDependencies     rimraf: '^5.0.0',
+167 silly npmInstallDependencies     rollup: '^2.52.8',
+167 silly npmInstallDependencies     'rollup-plugin-visualizer': '^5.7.1',
+167 silly npmInstallDependencies     'rollup-plugin-vue': '^5.1.9',
+167 silly npmInstallDependencies     stylelint: '^14.16.1',
+167 silly npmInstallDependencies     vue: '^2.7.14',
+167 silly npmInstallDependencies     'vue-jest': '^3.0.7',
+167 silly npmInstallDependencies     'vue-slider-component': '^3.2.20',
+167 silly npmInstallDependencies     'vue-template-compiler': '^2.7.14',
+167 silly npmInstallDependencies     vuelidate: '^0.7.7'
+167 silly npmInstallDependencies   },
+167 silly npmInstallDependencies   peerDependencies: {
+167 silly npmInstallDependencies     '@energysage/es-bs-base': '*',
+167 silly npmInstallDependencies     'bootstrap-vue': '^2.22.0',
+167 silly npmInstallDependencies     'html-truncate': '^1.2.2',
+167 silly npmInstallDependencies     'lodash.debounce': '^4.0.8',
+167 silly npmInstallDependencies     vue: '^2.7.14',
+167 silly npmInstallDependencies     'vue-slider-component': '^3.2.18',
+167 silly npmInstallDependencies     'vue-template-compiler': '^2.7.14',
+167 silly npmInstallDependencies     vuelidate: '^0.7.7'
+167 silly npmInstallDependencies   },
+167 silly npmInstallDependencies   engines: { node: '>=12' },
+167 silly npmInstallDependencies   license: 'MIT',
+167 silly npmInstallDependencies   npmClient: 'npm',
+167 silly npmInstallDependencies   sideEffects: false,
+167 silly npmInstallDependencies   gitHead: 'bce04be980ab56747d198c2af6b2b1f5668d988a',
+167 silly npmInstallDependencies   bugs: { url: 'https://github.com/EnergySage/es-ds/issues' },
+167 silly npmInstallDependencies   homepage: 'https://github.com/EnergySage/es-ds',
+167 silly npmInstallDependencies   repository: { type: 'git', url: 'git@github.com:EnergySage/es-ds.git' }
+167 silly npmInstallDependencies }
+168 silly getNpmExecOpts /Users/suleiyadanar/Dev/es-ds/es-design-system undefined
+169 silly npmInstall [ 'npm', [ 'install' ] ]
+170 silly getNpmExecOpts /Users/suleiyadanar/Dev/es-ds/es-bs-base undefined
+171 silly npmInstall [ 'npm', [ 'install' ] ]
+172 silly getNpmExecOpts /Users/suleiyadanar/Dev/es-ds/es-vue-base undefined
+173 silly npmInstall [ 'npm', [ 'install' ] ]
+174 silly npmInstallDependencies cleanup /Users/suleiyadanar/Dev/es-ds/es-design-system/package.json
+175 error Error: ENOENT: no such file or directory, rename '/Users/suleiyadanar/Dev/es-ds/es-design-system/package.json.lerna_backup' -> '/Users/suleiyadanar/Dev/es-ds/es-design-system/package.json'
+175 error     at Object.renameSync (node:fs:1030:3)
+175 error     at cleanup (/Users/suleiyadanar/Dev/es-ds/node_modules/@lerna/npm-install/npm-install.js:70:10)
+175 error     at done (/Users/suleiyadanar/Dev/es-ds/node_modules/@lerna/npm-install/npm-install.js:78:7)
+175 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)

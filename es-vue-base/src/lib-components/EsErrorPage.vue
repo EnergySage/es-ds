@@ -21,7 +21,7 @@
         </b-row>
         <b-row>
             <b-col
-                v-for="(item, index) in linkItems"
+                v-for="(item, index) in linkItems.errorLinks"
                 :key="index"
                 cols="6"
                 md="3">
@@ -47,6 +47,7 @@
 </template>
 
 <script lang="js">
+import { getEsErrorPageContent } from '../lib-utils/index';
 import IconCommunitySolar from '../lib-icons/icon-community-solar.vue';
 import IconContactUs from '../lib-icons/icon-contact-us.vue';
 import IconMarketplace from '../lib-icons/icon-marketplace.vue';
@@ -79,29 +80,7 @@ export default {
                 '503': 'Service unavailable: The page you are requesting is temporarily unavailable.',
             },
             genericMsg: 'Oops! Something went wrong!',
-            linkItems: [
-                {
-                    icon: 'IconContactUs',
-                    link: 'mailto:hello@energysage.com',
-                    label: 'Contact Us',
-                },
-                {
-                    icon: 'IconCommunitySolar',
-                    link: 'https://www.energysage.com/solar/',
-                    label: 'Learn About Solar',
-                },
-                {
-                    icon: 'IconInfoBlogPost',
-                    link: 'https://news.energysage.com/',
-                    label: 'Informative Blog Post',
-                },
-                {
-                    icon: 'IconMarketplace',
-                    link: 'https://www.energysage.com/market-intro/',
-                    label: 'EnergySage Marketplace',
-                },
-
-            ],
+            linkItems: getEsErrorPageContent(),
         };
     },
     computed: {

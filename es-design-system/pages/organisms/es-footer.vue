@@ -12,11 +12,10 @@
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFooter.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-footer.vue" />
+            doc-source="es-design-system/pages/organisms/es-footer.vue" />
     </div>
 </template>
 <script>
-
 export default {
     name: 'EsFooterDocs',
     // use a custom layout so the footer can be full-width at the bottom of the page
@@ -29,7 +28,7 @@ export default {
     },
     async created() {
         if (this.$prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
             const docSource = await import('!raw-loader!./es-footer.vue');
             const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsFooter.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
