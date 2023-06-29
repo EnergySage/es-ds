@@ -6,6 +6,7 @@ export { default as EsBreadcrumbs } from './EsBreadcrumbs.vue';
 export { default as EsButton } from './EsButton.vue';
 export { default as EsCard } from './EsCard.vue';
 export { default as EsCollapse } from './EsCollapse.vue';
+export { default as EsDataTable } from './EsDataTable.vue';
 export { default as EsErrorPage } from './EsErrorPage.vue';
 export { default as EsFooter } from './EsFooter.vue';
 export { default as EsFormInput } from './EsFormInput.vue';

@@ -31,6 +31,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-data-table">
+                EsDataTable
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-error-page">
                 EsErrorPage
             </b-link>
@@ -120,6 +125,6 @@
 
 <script>
 export default {
-    name: 'DsMoleculesList',
+  name: 'DsMoleculesList',
 };
 </script>

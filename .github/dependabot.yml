@@ -8,6 +8,8 @@ updates:
           versions: ["3.x"]
         - dependency-name: "autoprefixer"
           versions: ["10.x"]
+        - dependency-name: "stylelint"
+          versions: ["15.x"]
       schedule:
           interval: daily
           time: '00:00'
@@ -41,7 +43,9 @@ updates:
         - dependency-name: "sass-loader"
           versions: ["11.x", "12.x", "13.x"]
         - dependency-name: "node-sass"
-          versions: ["8.x"]
+          versions: ["8.x", "9.x"]
+        - dependency-name: "stylelint"
+          versions: ["15.x"]
       schedule:
           interval: daily
           time: '00:00'

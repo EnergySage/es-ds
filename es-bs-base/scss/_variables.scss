@@ -512,10 +512,10 @@ $embed-responsive-aspect-ratios: join(
 
 $h1-font-size:                $font-size-base * 1.5 !default;
 $h2-font-size:                $font-size-base * 1.25 !default;
-$h3-font-size:                $font-size-base !default;
+$h3-font-size:                $font-size-base * 1.125 !default;
 $h4-font-size:                $font-size-base !default;
-$h5-font-size:                $font-size-base !default;
-$h6-font-size:                $font-size-base * 0.875 !default;
+$h5-font-size:                $font-size-base * 0.875 !default;
+$h6-font-size:                $font-size-base * 0.75 !default;
 
 $h1-font-size-desktop:        $font-size-base * 2.375;
 $h2-font-size-desktop:        $font-size-base * 1.875;
@@ -1428,7 +1428,7 @@ $print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
 
 // fusv-disable
 $b-table-stacked-gap: 2rem;
-$b-table-sort-icon-bg-not-sorted: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='white' opacity='.3' d='M51 1l25 23 24 22H1l25-22zM51 101l25-23 24-22H1l25 22z'/></svg>");
-$b-table-sort-icon-bg-ascending: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='white' d='M51 1l25 23 24 22H1l25-22z'/><path fill='white' opacity='.3' d='M51 101l25-23 24-22H1l25 22z'/></svg>");
-$b-table-sort-icon-bg-descending: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='white' opacity='.3' d='M51 1l25 23 24 22H1l25-22z'/><path fill='white' d='M51 101l25-23 24-22H1l25 22z'/></svg>");
+$b-table-sort-icon-bg-not-sorted: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='black' opacity='.3' d='M51 1l25 23 24 22H1l25-22zM51 101l25-23 24-22H1l25 22z'/></svg>");
+$b-table-sort-icon-bg-ascending: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='black' d='M51 1l25 23 24 22H1l25-22z'/><path fill='black' opacity='.3' d='M51 101l25-23 24-22H1l25 22z'/></svg>");
+$b-table-sort-icon-bg-descending: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='black' opacity='.3' d='M51 1l25 23 24 22H1l25-22z'/><path fill='black' d='M51 101l25-23 24-22H1l25 22z'/></svg>");
 // fusv-enable
