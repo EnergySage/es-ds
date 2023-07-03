@@ -86,8 +86,11 @@ export { default as IconTree } from './icon-tree.vue';
 export { default as IconBattery } from './icon-battery.vue';
 export { default as IconBusiness } from './icon-business.vue';
 export { default as IconCommunitySolar } from './icon-community-solar.vue';
+export { default as IconContactUs } from './icon-contact-us.vue';
 export { default as IconElectricVehicle } from './icon-electric-vehicle.vue';
 export { default as IconHeatPump } from './icon-heat-pump.vue';
+export { default as IconInfoBlogPost } from './icon-info-blog-post.vue';
+export { default as IconMarketplace } from './icon-marketplace.vue';
 export { default as IconRooftopSolar } from './icon-rooftop-solar.vue';
 
 // Social icons
