@@ -1,6 +1,16 @@
 <template>
     <ul>
         <li>
+            <b-link to="/organisms/es-error-page">
+                EsErrorPage
+            </b-link>
+        </li>
+        <li>
+            <b-link to="/organisms/es-footer">
+                EsFooter
+            </b-link>
+        </li>
+        <li>
             <b-link to="/organisms/es-form">
                 EsForm
             </b-link>
