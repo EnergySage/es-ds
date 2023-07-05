@@ -451,6 +451,29 @@
             </li>
         </ul>
 
+        <h2>
+            File Icons
+        </h2>
+        <p>
+            Default size for file icons is 56px by 73px.
+        </p>
+        <ul
+            class="ds-icon-list m-0 mb-300 p-0"
+            :class="{ [textColorClass]: true }">
+            <li>
+                <icon-file-doc />
+                <code>IconFileDoc</code>
+            </li>
+            <li>
+                <icon-file-docx />
+                <code>IconFileDocx</code>
+            </li>
+            <li>
+                <icon-file-pdf />
+                <code>IconFilePdf</code>
+            </li>
+        </ul>
+
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-design-system/atoms/icons.vue" />
