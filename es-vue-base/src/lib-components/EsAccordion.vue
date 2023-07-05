@@ -2,7 +2,7 @@
     <div class="EsAccordion border-bottom border-light rounded-bottom">
         <header role="tab">
             <es-button
-                class="EsAccordion-button align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 rounded-0 text-body text-left text-decoration-none w-100"
+                class="EsAccordion-button h-auto align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 rounded-0 text-body text-left text-decoration-none w-100"
                 :class="{
                     'bg-light': isVisible,
                     'bg-white': !isVisible,

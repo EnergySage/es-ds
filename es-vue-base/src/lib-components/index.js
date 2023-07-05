@@ -7,6 +7,8 @@ export { default as EsButton } from './EsButton.vue';
 export { default as EsCard } from './EsCard.vue';
 export { default as EsCollapse } from './EsCollapse.vue';
 export { default as EsFileInput } from './EsFileInput.vue';
+export { default as EsDataTable } from './EsDataTable.vue';
+export { default as EsErrorPage } from './EsErrorPage.vue';
 export { default as EsFooter } from './EsFooter.vue';
 export { default as EsFormInput } from './EsFormInput.vue';
 export { default as EsFormMsg } from './EsFormMsg.vue';

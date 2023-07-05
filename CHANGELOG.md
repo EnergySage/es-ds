@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.23.0] - 2023-06-29
+
+### Added
+
+ - New `EsDataTable` component
+
+### Changed
+
+ - ***BREAKING CHANGE:*** Heading 3 mobile font size has increased from 16px to 18px
+ - ***BREAKING CHANGE:*** Heading 5 mobile font size has decreased from 16px to 14px
+ - ***BREAKING CHANGE:*** Heading 6 mobile font size has decreased from 14px to 12px
+ - Fixed an issue with `EsNavBar` where product nav links were not clickable on certain www pages
+ - Fixed an issue with `EsNavBar` where the Solar Calculator nav link was missing a trailing slash
+ - Fixed an issue with `EsNavBar` where the cursor changed to a hand pointer even when not over a link
+ - Fixed a padding issue with `EsAccordion` when title text wrapped to the next line
+ - Added tables to Typography page with detailed info about mobile and desktop font sizes
+
 ## [0.22.1] - 2023-06-12
 
 ### Changed
@@ -596,6 +613,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.23.0]: https://github.com/EnergySage/es-ds/compare/v0.22.1...v0.23.0
+[0.22.1]: https://github.com/EnergySage/es-ds/compare/v0.22.0...v0.22.1
 [0.22.0]: https://github.com/EnergySage/es-ds/compare/v0.21.9...v0.22.0
 [0.21.8]: https://github.com/EnergySage/es-ds/compare/v0.21.7...v0.21.8
 [0.21.7]: https://github.com/EnergySage/es-ds/compare/v0.21.6...v0.21.7
