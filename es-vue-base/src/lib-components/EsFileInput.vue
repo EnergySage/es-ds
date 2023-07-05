@@ -25,18 +25,18 @@
             </div>
             <div class="align-self-center p-2">
                 <es-button
-                    class="d-none d-md-inline-block w-35 mb-4"
+                    class="w-100 w-md-auto mb-2 mb-md-4"
                     variant="secondary"
                     outline
                     @click="openFilePicker">
-                    Browse Files
-                </es-button>
-                <es-button
-                    class="d-md-none w-100 mb-2"
-                    variant="secondary"
-                    outline
-                    @click="openFilePicker">
-                    Choose File
+                    <slot name="buttonText">
+                        <p class="d-none d-md-inline m-0">
+                            Browse files
+                        </p>
+                        <p class="d-md-none m-0">
+                            Choose file
+                        </p>
+                    </slot>
                 </es-button>
             </div>
         </div>
@@ -290,18 +290,6 @@ export default {
     &.active {
         border: $btn-border-width dotted $cyan-500;
     }
-}
-
-.es-file-upload-button {
-    background-color: $white;
-}
-
-.es-file-upload-button:hover {
-    background-color: $black;
-}
-
-.es-file-upload-button:hover h4 {
-    color: $white;
 }
 
 </style>
