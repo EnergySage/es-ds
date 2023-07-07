@@ -1,14 +1,18 @@
 <template>
     <b-alert
-    :show="dismissCountDown "  fade  dismissible  :variant="variant" @dismissed="dismissAlert"
-    @dismiss-count-down="countDownChanged">
+        :show="dismissCountDown "
+        fade
+        dismissible
+        :variant="variant"
+        @dismissed="dismissAlert"
+        @dismiss-count-down="countDownChanged">
         <div class="d-flex">
             <div class="pr-50">
                 <IconCircleAlert v-if="variant === 'danger'" />
                 <IconCircleCheck v-if="variant === 'success'" />
                 <IconInfo v-if="variant === 'primary'" />
             </div>
-            <slot/>
+            <slot />
         </div>
     </b-alert>
 </template>
@@ -50,10 +54,6 @@ export default {
     data() {
         return {
             dismissCountDown: this.show ? this.timeout : 0,
-            // isClicked : false,
-            // counter: 3
-            // showvar:false,
-            // sec:1000
         };
     },
     watch: {
@@ -61,29 +61,9 @@ export default {
             if (this.show) {
                 this.dismissCountDown = this.timeout;
             }
-        }
-      
+        },
     },
     methods: {
-        // handleAlertClick() {
-        //     if (this.counter === 0) {
-        //         this.isClicked = false;
-        //     } else {
-        //         this.counter--;
-        //     }
-        // },
-
-        // resetAlert()  {
-        //     this.isClicked = false;
-        //     this.counter = 3;
-        // }
-
-        // test: function() {
-        // console.log("hi")
-        // let self = this;
-        // self.showvar=true
-        // setTimeout(function(){ self.showvar=false; }, self.sec);
-    // },
         countDownChanged(currentCountDown) {
             this.dismissCountDown = currentCountDown;
             if (currentCountDown === 0) {
@@ -91,15 +71,13 @@ export default {
             }
         },
         resetCountdown() {
-           this.dismissCountDown = this.timeout;
-            
+            this.dismissCountDown = this.timeout;
         },
         dismissAlert() {
             this.dismissCountDown = 0;
             this.$emit('hidden');
         },
     },
-  
 };
 </script>
 <style lang="scss" scoped>
