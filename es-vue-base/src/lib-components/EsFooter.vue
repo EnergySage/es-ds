@@ -96,6 +96,7 @@
                 <!-- eslint-disable-next-line -->
                 <img
                     :src="content.departmentOfEnergy.logoUrl"
+                    alt="department of energy logo"
                     aria-hidden="true"
                     class="mr-100 mb-100 mb-lg-0"
                     width="99"

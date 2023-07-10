@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsFileInput <EsFileInput fileTypes={['image/png']} /> 1`] = `
+"<div role="presentation" class="es-file-upload align-items-center rounded d-flex flex-column justify-content-center p-2">
+  <div class="d-flex justify-content-center flex-column">
+    <div class="align-self-center p-2"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 48px; width: 48px;" class="d-none d-md-inline-block mb-4">
+        <path fill="currentColor" d="M1.5 30.734c.398 0 .78.182 1.06.506.282.324.44.763.44 1.22v8.634c0 .916.316 1.794.879 2.441.562.648 1.325 1.012 2.121 1.012h36c.796 0 1.559-.364 2.121-1.012.563-.647.879-1.525.879-2.441V32.46c0-.458.158-.897.44-1.221a1.408 1.408 0 0 1 1.06-.506c.398 0 .78.182 1.06.506.282.324.44.763.44 1.22v8.634c0 1.831-.632 3.588-1.757 4.883C45.117 47.272 43.59 48 42 48H6c-1.591 0-3.117-.728-4.243-2.023C.632 44.682 0 42.925 0 41.094V32.46c0-.458.158-.897.44-1.221a1.408 1.408 0 0 1 1.06-.506Z"></path>
+        <path fill="currentColor" d="M22.94.507c.14-.16.305-.288.487-.375a1.331 1.331 0 0 1 1.15 0c.182.087.348.214.487.375l9 10.36c.282.324.44.764.44 1.222 0 .459-.158.898-.44 1.223a1.41 1.41 0 0 1-1.062.506 1.41 1.41 0 0 1-1.062-.506l-6.438-7.414V36.26c0 .458-.158.897-.44 1.221a1.408 1.408 0 0 1-1.06.506c-.398 0-.78-.182-1.06-.506a1.867 1.867 0 0 1-.44-1.22V5.897l-6.438 7.414c-.14.16-.305.287-.487.374a1.332 1.332 0 0 1-1.15 0 1.507 1.507 0 0 1-.487-.374c-.14-.161-.25-.352-.326-.561a1.958 1.958 0 0 1 0-1.323c.076-.21.186-.4.326-.561l9-10.36Z"></path>
+      </svg></div>
+    <div class="align-self-center p-2 text-center"></div>
+    <div class="align-self-center p-2"><button type="button" class="btn w-100 w-md-auto mb-2 mb-md-4 btn-outline-secondary btn-md">
+        <p class="d-none d-md-inline m-0">
+          Browse files
+        </p>
+        <p class="d-md-none m-0">
+          Choose file
+        </p>
+      </button></div>
+  </div>
+  <div></div>
+  <div class="custom-file b-form-file is-valid" style="display: none;" id="__BVID__6__BV_file_outer_"><input type="file" accept="image/png" multiple="multiple" class="custom-file-input is-valid" style="z-index: -5;" id="__BVID__6"><label data-browse="Browse" class="custom-file-label" for="__BVID__6"><span class="d-block form-file-text" style="pointer-events: none;">No file chosen</span></label></div>
+</div>"
+`;
+
+exports[`EsFileInput <EsFileInput fileTypes={['image/png']}>My Content</EsFileInput> 1`] = `
+"<div role="presentation" class="es-file-upload align-items-center rounded d-flex flex-column justify-content-center p-2">
+  <div class="d-flex justify-content-center flex-column">
+    <div class="align-self-center p-2"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 48px; width: 48px;" class="d-none d-md-inline-block mb-4">
+        <path fill="currentColor" d="M1.5 30.734c.398 0 .78.182 1.06.506.282.324.44.763.44 1.22v8.634c0 .916.316 1.794.879 2.441.562.648 1.325 1.012 2.121 1.012h36c.796 0 1.559-.364 2.121-1.012.563-.647.879-1.525.879-2.441V32.46c0-.458.158-.897.44-1.221a1.408 1.408 0 0 1 1.06-.506c.398 0 .78.182 1.06.506.282.324.44.763.44 1.22v8.634c0 1.831-.632 3.588-1.757 4.883C45.117 47.272 43.59 48 42 48H6c-1.591 0-3.117-.728-4.243-2.023C.632 44.682 0 42.925 0 41.094V32.46c0-.458.158-.897.44-1.221a1.408 1.408 0 0 1 1.06-.506Z"></path>
+        <path fill="currentColor" d="M22.94.507c.14-.16.305-.288.487-.375a1.331 1.331 0 0 1 1.15 0c.182.087.348.214.487.375l9 10.36c.282.324.44.764.44 1.222 0 .459-.158.898-.44 1.223a1.41 1.41 0 0 1-1.062.506 1.41 1.41 0 0 1-1.062-.506l-6.438-7.414V36.26c0 .458-.158.897-.44 1.221a1.408 1.408 0 0 1-1.06.506c-.398 0-.78-.182-1.06-.506a1.867 1.867 0 0 1-.44-1.22V5.897l-6.438 7.414c-.14.16-.305.287-.487.374a1.332 1.332 0 0 1-1.15 0 1.507 1.507 0 0 1-.487-.374c-.14-.161-.25-.352-.326-.561a1.958 1.958 0 0 1 0-1.323c.076-.21.186-.4.326-.561l9-10.36Z"></path>
+      </svg></div>
+    <div class="align-self-center p-2 text-center"></div>
+    <div class="align-self-center p-2"><button type="button" class="btn w-100 w-md-auto mb-2 mb-md-4 btn-outline-secondary btn-md">
+        <p class="d-none d-md-inline m-0">
+          Browse files
+        </p>
+        <p class="d-md-none m-0">
+          Choose file
+        </p>
+      </button></div>
+  </div>
+  <div></div>
+  <div class="custom-file b-form-file is-valid" style="display: none;"><input type="file" accept="image/png" multiple="multiple" class="custom-file-input is-valid" style="z-index: -5;"><label data-browse="Browse" class="custom-file-label"><span class="d-block form-file-text" style="pointer-events: none;">No file chosen</span></label></div>
+</div>"
+`;

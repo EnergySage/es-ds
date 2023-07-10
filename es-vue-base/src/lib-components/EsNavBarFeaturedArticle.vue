@@ -9,7 +9,7 @@
                 <img
                     :id="graphicId"
                     class="featured-article-image mb-100 w-100"
-                    alt=""
+                    :alt="imageAlt"
                     loading="lazy"
                     :src="image500">
                 <div class="eyebrow font-size-50 mb-50 text-orange">
@@ -52,6 +52,10 @@ export default {
         image500: {
             type: String,
             required: true,
+        },
+        imageAlt: {
+            type: String,
+            default: '',
         },
     },
     computed: {
