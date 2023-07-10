@@ -36,6 +36,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-file-input">
+                EsFileInput
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-form-input">
                 EsFormInput
             </b-link>
