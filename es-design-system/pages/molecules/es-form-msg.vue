@@ -10,20 +10,20 @@
         </p>
 
         <es-button
-            @click="showSuccess = true">Show Success
+            @click="showSuccess = true">Show success
         </es-button>
         <es-button
-            @click="showError = true">Show Error
+            @click="showError = true">Show error
         </es-button>
         <es-button
-            @click="showInfo = true">Show Info
+            @click="showInfo = true">Show info
         </es-button>
 
         <es-form-msg
             class="my-450"
             :show="showSuccess"
-            :variant="'success'"
-            @hidden="showSuccess = false">Saved Successfully
+            :variant="success"
+            @hidden="showSuccess = false">Saved successfully
         </es-form-msg>
         <es-form-msg
             class="my-450"
@@ -35,7 +35,7 @@
             class="my-450"
             :show="showInfo"
             :variant="'primary'"
-            @hidden="showInfo = false">Need Expert Advice? &nbsp;<a href="https://www.energysage.com/"> Schedule a free call with our Energy Advisor Team!</a>
+            @hidden="showInfo = false">Need expert advice? &nbsp;<a href="https://www.energysage.com/"> Schedule a free call with our Energy Advisor team!</a>
         </es-form-msg>
         <ds-doc-source
             :comp-code="compCode"

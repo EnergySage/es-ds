@@ -1,6 +1,6 @@
 <template>
     <b-alert
-        :show="dismissCountDown "
+        :show="dismissCountDown"
         fade
         dismissible
         :variant="variant"
@@ -33,15 +33,13 @@ export default {
         IconInfo,
     },
     props: {
-
         show: {
             type: Boolean,
             default: false,
         },
-
         timeout: {
             type: Number,
-            default: 5,
+            default: 20,
             required: false,
         },
         variant: {
@@ -69,9 +67,6 @@ export default {
             if (currentCountDown === 0) {
                 this.dismissAlert();
             }
-        },
-        resetCountdown() {
-            this.dismissCountDown = this.timeout;
         },
         dismissAlert() {
             this.dismissCountDown = 0;

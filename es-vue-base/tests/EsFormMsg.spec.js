@@ -8,7 +8,7 @@ describe('EsFormMsg', () => {
         const wrapper = mount(EsFormMsg, {
             ...jestVue,
             propsData: {
-                message: 'Test form msg',
+                show: true,
             },
         });
         const a11y = await axe(wrapper.element);

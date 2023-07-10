@@ -143,7 +143,7 @@ export default {
             this.formShowSuccess = false;
         },
         startSubmit() {
-            this.formMsg = '';
+            // this.formMsg = '';
             this.submitInProgress = true;
         },
         stopSubmit() {
