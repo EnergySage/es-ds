@@ -110,7 +110,8 @@
                             :eyebrow="featuredArticle.eyebrow"
                             :link="featuredArticle.link"
                             :name="featuredArticle.name"
-                            :image500="featuredArticle.image500" />
+                            :image500="featuredArticle.image500"
+                            :image-alt="featuredArticle.imageAlt" />
                     </li>
                 </b-row>
             </div>

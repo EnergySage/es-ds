@@ -40,6 +40,16 @@
                 EsSupportCard
             </b-link>
         </li>
+        <li>
+            <b-link to="/organisms/es-file-thumbnail">
+                EsFileThumbnail
+            </b-link>
+        </li>
+        <li>
+            <b-link to="/organisms/es-file-preview-modal">
+                EsFilePreviewModal
+            </b-link>
+        </li>
     </ul>
 </template>
 

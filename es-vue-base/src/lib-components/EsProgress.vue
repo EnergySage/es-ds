@@ -1,5 +1,6 @@
 <template>
     <b-progress
+        aria-describedby="es-progress"
         class="EsProgress bg-gray-300 rounded-0"
         :class="{ 'EsProgress--full': value === 100 }"
         :height="height"
