@@ -12,8 +12,8 @@
         @keypress.enter.prevent="openFilePicker"
         @keypress.space.prevent="openFilePicker">
         <div
-            class="d-flex justify-content-center"
-            :class="{ 'flex-row': collapsed, 'flex-column': !collapsed }">
+            class="d-flex justify-content-center flex-column"
+            :class="{ 'flex-md-row': collapsed }">
             <div class="align-self-center p-2">
                 <icon-upload
                     class="d-none d-md-inline-block mb-4"

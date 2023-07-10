@@ -35,9 +35,12 @@
             </es-file-input>
         </div>
         <div class="mb-450">
-            <h2 class="mb-200">
+            <h2 class="mb-50">
                 File Input Collapsed
             </h2>
+            <p class="mb-150">
+                Only applicable on non-mobile devices (medium and up breakpoints).
+            </p>
             <es-file-input
                 :upload-urls="urls"
                 :file-types="['image/png', 'application/pdf']"
