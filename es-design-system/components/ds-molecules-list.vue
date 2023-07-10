@@ -36,11 +36,6 @@
             </b-link>
         </li>
         <li>
-            <b-link to="/molecules/es-footer">
-                EsFooter
-            </b-link>
-        </li>
-        <li>
             <b-link to="/molecules/es-form-input">
                 EsFormInput
             </b-link>
@@ -83,6 +78,11 @@
         <li>
             <b-link to="/molecules/es-progress">
                 EsProgress
+            </b-link>
+        </li>
+        <li>
+            <b-link to="/molecules/es-progress-circle">
+                EsProgressCircle
             </b-link>
         </li>
         <li>

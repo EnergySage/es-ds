@@ -395,12 +395,24 @@
                 <code>IconCommunitySolar</code>
             </li>
             <li>
+                <icon-contact-us />
+                <code>IconContactUs</code>
+            </li>
+            <li>
                 <icon-electric-vehicle />
                 <code>IconElectricVehicle</code>
             </li>
             <li>
                 <icon-heat-pump />
                 <code>IconHeatPump</code>
+            </li>
+            <li>
+                <icon-info-blog-post />
+                <code>IconInfoBlogPost</code>
+            </li>
+            <li>
+                <icon-marketplace />
+                <code>IconMarketplace</code>
             </li>
             <li>
                 <icon-rooftop-solar />
@@ -436,6 +448,29 @@
             <li>
                 <icon-youtube />
                 <code>IconYoutube</code>
+            </li>
+        </ul>
+
+        <h2>
+            File Icons
+        </h2>
+        <p>
+            Default size for file icons is 56px by 73px.
+        </p>
+        <ul
+            class="ds-icon-list m-0 mb-300 p-0"
+            :class="{ [textColorClass]: true }">
+            <li>
+                <icon-file-doc />
+                <code>IconFileDoc</code>
+            </li>
+            <li>
+                <icon-file-docx />
+                <code>IconFileDocx</code>
+            </li>
+            <li>
+                <icon-file-pdf />
+                <code>IconFilePdf</code>
             </li>
         </ul>
 

@@ -51,7 +51,7 @@
                 20%
             </es-button>
         </div>
-        <p class="mb-200">
+        <p class="mb-300">
             value: {{ value }}
         </p>
         <ds-doc-source
