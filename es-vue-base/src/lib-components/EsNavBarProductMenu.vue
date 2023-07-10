@@ -5,7 +5,6 @@
             class="product-menu-header-link dropdown-toggle d-none d-lg-block px-lg-100 px-xl-200 py-lg-0 text-decoration-none text-gray"
             :href="link"
             :target="newTab ? '_blank' : null"
-            data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false">
             <span class="product-menu-header-text d-block position-relative py-lg-50">
@@ -111,7 +110,8 @@
                             :eyebrow="featuredArticle.eyebrow"
                             :link="featuredArticle.link"
                             :name="featuredArticle.name"
-                            :image500="featuredArticle.image500" />
+                            :image500="featuredArticle.image500"
+                            :image-alt="featuredArticle.imageAlt" />
                     </li>
                 </b-row>
             </div>

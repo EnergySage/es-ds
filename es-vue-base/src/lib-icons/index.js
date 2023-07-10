@@ -81,13 +81,17 @@ export { default as IconRoof } from './icon-roof.vue';
 export { default as IconSearch } from './icon-search.vue';
 export { default as IconSolar } from './icon-solar.vue';
 export { default as IconTree } from './icon-tree.vue';
+export { default as IconUpload } from './icon-upload.vue';
 
 // marketing icons
 export { default as IconBattery } from './icon-battery.vue';
 export { default as IconBusiness } from './icon-business.vue';
 export { default as IconCommunitySolar } from './icon-community-solar.vue';
+export { default as IconContactUs } from './icon-contact-us.vue';
 export { default as IconElectricVehicle } from './icon-electric-vehicle.vue';
 export { default as IconHeatPump } from './icon-heat-pump.vue';
+export { default as IconInfoBlogPost } from './icon-info-blog-post.vue';
+export { default as IconMarketplace } from './icon-marketplace.vue';
 export { default as IconRooftopSolar } from './icon-rooftop-solar.vue';
 
 // Social icons
@@ -96,3 +100,8 @@ export { default as IconInstagram } from './icon-instagram.vue';
 export { default as IconLinkedin } from './icon-linkedin.vue';
 export { default as IconTwitter } from './icon-twitter.vue';
 export { default as IconYoutube } from './icon-youtube.vue';
+
+// File icons
+export { default as IconFileDoc } from './icon-file-doc.vue';
+export { default as IconFilePdf } from './icon-file-pdf.vue';
+export { default as IconFileDocx } from './icon-file-docx.vue';

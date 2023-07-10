@@ -175,7 +175,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
           Non-discrimination policy
         </a></div>
     </div>
-    <div class="d-lg-flex align-items-end"><img src="https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png" aria-hidden="true" width="99" height="25" class="mr-100 mb-100 mb-lg-0">
+    <div class="d-lg-flex align-items-end"><img src="https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png" alt="department of energy logo" aria-hidden="true" width="99" height="25" class="mr-100 mb-100 mb-lg-0">
       <p class="mb-0"><a href="https://www.energy.gov/eere/solar/articles/eere-success-story-doe-funding-helps-build-one-stop-shop-rooftop-pv-systems" rel="noopener" target="_blank" class="">
           Learn more about our success working with the US. Department of Energy.
         </a></p>

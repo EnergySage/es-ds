@@ -189,13 +189,14 @@ export default (
                 lede: 'Are solar panels worth it?',
                 newTab: true,
                 image500: `${ES_IMAGE_DOMAIN}/static/img/navbar/articles/are-solar-panels-worth-it-500w.png`,
+                imageAlt: 'home with solar panels',
             },
         },
         {
             name: 'Solar calculator',
             subHeading: 'Check your savings',
             icon: NAV_BAR_ICONS.CALCULATOR,
-            link: `${ES_DOMAIN}/solar/calculator`,
+            link: `${ES_DOMAIN}/solar/calculator/`,
             topics: [],
         },
         {
@@ -251,6 +252,7 @@ export default (
                 linkUrl: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-16`,
                 lede: 'EnergySage Intel\'s latest Solar & Storage Marketplace Report',
                 image500: `${ES_IMAGE_DOMAIN}/static/img/navbar/articles/latest-market-intel-500w.png`,
+                imageAlt: 'market intel report charts',
             },
         },
     ],
@@ -334,6 +336,7 @@ export default (
                 link: `${ES_DOMAIN}/local-data/solar-panel-cost/`,
                 name: 'How much do solar panels cost?',
                 image500: `${ES_IMAGE_DOMAIN}/static/img/navbar/articles/solar-panel-cost-500w.png`,
+                imageAlt: 'home with solar panels and money',
             },
         },
         {

@@ -1,6 +1,16 @@
 <template>
     <ul>
         <li>
+            <b-link to="/organisms/es-error-page">
+                EsErrorPage
+            </b-link>
+        </li>
+        <li>
+            <b-link to="/organisms/es-footer">
+                EsFooter
+            </b-link>
+        </li>
+        <li>
             <b-link to="/organisms/es-form">
                 EsForm
             </b-link>
@@ -28,6 +38,16 @@
         <li>
             <b-link to="/organisms/es-support-card">
                 EsSupportCard
+            </b-link>
+        </li>
+        <li>
+            <b-link to="/organisms/es-file-thumbnail">
+                EsFileThumbnail
+            </b-link>
+        </li>
+        <li>
+            <b-link to="/organisms/es-file-preview-modal">
+                EsFilePreviewModal
             </b-link>
         </li>
     </ul>
