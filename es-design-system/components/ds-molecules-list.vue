@@ -31,6 +31,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-cta">
+                EsCta
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-data-table">
                 EsDataTable
             </b-link>
