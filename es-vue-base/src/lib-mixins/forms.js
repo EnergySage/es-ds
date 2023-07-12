@@ -7,7 +7,7 @@ export default {
             submitInProgress: false,
             formShowSuccess: false,
             formShowError: false,
-            formMsgVariant: 'danger',
+            formMsgVariant: '',
         };
     },
     computed: {
