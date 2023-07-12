@@ -7,7 +7,7 @@ export default {
             submitInProgress: false,
             formShowSuccess: false,
             formShowError: false,
-            formMsgVariant: '',
+            formMsgVariant: 'danger',
         };
     },
     computed: {
@@ -125,7 +125,8 @@ export default {
         },
         // eslint-disable-next-line max-len
         // eslint-disable-next-line no-unused-vars
-        showFormError(text = 'The server responded with an error and we were unable to complete your request. Please try again') {
+        showFormError(text =
+        'The server responded with an error and we were unable to complete your request. Please try again') {
             this.formMsgVariant = 'danger';
             this.formShowError = true;
         },
@@ -143,8 +144,9 @@ export default {
             this.formShowSuccess = false;
         },
         startSubmit() {
-            // this.formMsg = '';
             this.submitInProgress = true;
+            this.formShowSuccess = false;
+            this.formShowError = false;
         },
         stopSubmit() {
             this.submitInProgress = false;

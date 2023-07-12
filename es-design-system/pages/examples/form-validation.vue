@@ -36,12 +36,14 @@
                 lg="8">
                 <b-form
                     @submit.stop.prevent="onSubmit">
-                <es-form-msg
-                    class="my-450"
-                    :show="showError"
-                    :variant="'danger'"
-                    @hidden="showError = false">The server responded with an error and we were unable to complete your request. Please try again
-                </es-form-msg>
+                    <es-form-msg
+                        class="my-450"
+                        :show="formShowError"
+                        :variant="formMsgVariant"
+                        @hidden="formShowError=false">
+                        The server responded with an error and
+                        we were unable to complete your request. Please try again
+                    </es-form-msg>
                     <es-form-input
                         id="form-input-name"
                         v-model="form.name"
@@ -54,7 +56,6 @@
                     <div class="d-flex flex-grow-1 justify-content-end mt-100">
                         <es-button
                             type="submit"
-                            @click="showError = true"
                             class="w-100 w-lg-auto"
                             :disabled="isSubmitInProgress">
                             <span class="w-100 min-width-6">
@@ -88,9 +89,6 @@ export default {
             form: {
                 name: '',
             },
-                showSuccess: false,
-                showError: false,
-                showInfo: false,
         };
     },
     methods: {

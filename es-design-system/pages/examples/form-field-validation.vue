@@ -45,7 +45,9 @@
                         <template #label>
                             Email address
                         </template>
-                        <slot />
+                        <template #errorMessage>
+                            Please enter a valid email address.
+                        </template>
                     </es-form-input>
                     <es-form-input
                         id="password"
