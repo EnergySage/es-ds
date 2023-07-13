@@ -37,7 +37,7 @@
                 <b-form
                     @submit.stop.prevent="onSubmit">
                     <es-form-msg
-                        class="my-450"
+                        class="mt-100"
                         :show="formShowError"
                         :variant="formMsgVariant"
                         @hidden="formShowError=false">
