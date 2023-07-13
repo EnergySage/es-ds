@@ -52,6 +52,7 @@
                         :action="url"
                         method="get"
                         novalidate
+                        :target="cardTarget"
                         @submit.prevent.stop="handleSubmit">
                         <es-form-input
                             v-if="showZipEntry"
@@ -214,13 +215,10 @@ export default {
     },
     computed: {
         newTab() {
-            return !this.url.includes('www.energysage.com');
+            return !this.url.includes(window.location.host);
         },
         cardTarget() {
-            if (!this.showForm) {
-                return this.newTab ? '_blank' : '_self';
-            }
-            return null;
+            return this.newTab ? '_blank' : '_self';
         },
     },
     methods: {
