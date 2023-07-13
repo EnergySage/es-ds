@@ -8,7 +8,7 @@
         </p>
         <div class="mb-450">
             <h2 class="mb-200">
-                Variant 1
+                Component written directly in es-cta.vue
             </h2>
             <EsCard
                 :href="showForm ? null : url"
@@ -112,6 +112,31 @@
                     </div>
                 </div>
             </EsCard>
+        </div>
+        <div class="mb-450">
+            <h2 class="mb-200">
+                Component from EsCta.vue
+            </h2>
+            <es-cta
+                :button-text="buttonText"
+                :dark="dark"
+                :error_description="errorDescription"
+                :heading="heading"
+                :heading_class="headingClass"
+                :heading-first="headingFirst"
+                :image="image"
+                :image-alt-text="imageAltText"
+                :image-height="imageHeight"
+                :image-width="imageWidth"
+                :input-id="inputId"
+                :privacy_policy_link="privacyPolicyLink"
+                :privacy_policy_link_text="privacyPolicyLinkText"
+                :privacy_policy_text="privacyPolicyText"
+                :subtitle="subtitle"
+                :show-form="showForm"
+                :show_privacy_policy="showPrivacyPolicy"
+                :show-zip-entry="showZipEntry"
+                :url="url" />
         </div>
         <div class="mb-450">
             <h2>
