@@ -371,7 +371,7 @@ export default (
                 },
                 {
                     name: 'Get personalized quotes',
-                    link: `${HEAT_PUMPS_DOMAIN}/welcome`,
+                    link: `${HEAT_PUMPS_DOMAIN}/dashboard`,
                     newTab: true,
                     emphasize: true,
                 },
