@@ -104,14 +104,13 @@
 </template>
 
 <script lang="js">
-// import {
-//     formMixins,
-//     vuelidateMinLength,
-//     vuelidateMaxLength,
-//     vuelidateNumeric,
-//     vuelidateRequired,
-// } from '@energysage/es-vue-base';
-// } from '../../';  // This fails at build
+import { formMixins } from '../lib-mixins';
+import {
+    vuelidateMinLength,
+    vuelidateMaxLength,
+    vuelidateNumeric,
+    vuelidateRequired,
+} from '../lib-validators';
 import EsButton from './EsButton.vue';
 import EsCard from './EsCard.vue';
 import EsFormInput from './EsFormInput.vue';
@@ -127,7 +126,7 @@ export default {
         IconLocation,
         IconLockOn,
     },
-    // mixins: [formMixins],
+    mixins: [formMixins],
     props: {
         buttonText: {
             type: String,
@@ -235,10 +234,10 @@ export default {
     },
     validations: {
         zipCode: {
-            // maxLength: vuelidateMaxLength(5),
-            // minLength: vuelidateMinLength(5),
-            // numeric: vuelidateNumeric,
-            // required: vuelidateRequired,
+            maxLength: vuelidateMaxLength(5),
+            minLength: vuelidateMinLength(5),
+            numeric: vuelidateNumeric,
+            required: vuelidateRequired,
         },
     },
 };
