@@ -31,13 +31,14 @@
                         class="image-wrapper"
                         :style="`width:${imageWidth}; height:${imageHeight};`">
                         <img
+                            lazy
                             class="image d-block h-100 w-100"
                             :width="imageWidth"
                             :height="imageHeight"
                             :src="image"
                             :alt="imageAltText">
                     </div>
-                    <div class="flex-layout-inner d-flex w-100">
+                    <div class="flex-layout-inner d-flex justify-content-center w-100">
                         <div class="content-area d-flex flex-column">
                             <div
                                 class="heading-default"
@@ -753,6 +754,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@use 'sass:map';
 @import '~@energysage/es-bs-base/scss/includes';
 @import '~@energysage/es-bs-base/scss/bootstrap';
 
@@ -771,16 +773,15 @@ export default {
 
 .flex-layout-inner {
     flex-direction: column;
-    justify-content: center;
     @container outer (min-width: 700px) {
         flex-direction: row;
     }
 }
 
 .image-wrapper {
-    margin: 0 auto 1rem;
+    margin: 0 auto map.get($spacers, 100);
     @container card (min-width: 600px) {
-        margin: 0 1rem 0 0;
+        margin: 0 map.get($spacers, 100) 0 0;
     }
 }
 
@@ -790,13 +791,13 @@ export default {
 
 .content-area {
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: map.get($spacers, 100);
     text-align: center;
 
     @container outer (min-width: 700px) {
         align-items: start;
         margin-block: auto;
-        margin-right: 0.5rem;
+        margin-right: map.get($spacers, 50);
         text-align: start;
         width: 50%;
     }
@@ -821,7 +822,7 @@ export default {
     @container outer (min-width: 700px) {
         align-items: end;
         margin-block: auto;
-        margin-left: 0.5rem;
+        margin-left: map.get($spacers, 50);
         text-align: end;
         width: 50%;
     }
@@ -844,11 +845,11 @@ export default {
         }
 
         .zip-entry {
-            margin-right: 0.25rem;
+            margin-right: map.get($spacers, 25);
         }
 
         .cta-button {
-            margin-left: 0.25rem;
+            margin-left: map.get($spacers, 25);
         }
     }
 }
