@@ -25,14 +25,14 @@
         <es-form-msg
             class="my-450"
             :show="showSuccess"
-            :variant="success"
+            variant="success"
             @hidden="showSuccess = false">
             Saved successfully
         </es-form-msg>
         <es-form-msg
             class="my-450"
             :show="showError"
-            :variant="danger"
+            variant="danger"
             @hidden="showError = false">
             The server responded with an error
             and we were unable to complete your request. Please try again
@@ -40,7 +40,7 @@
         <es-form-msg
             class="my-450"
             :show="showInfo"
-            :variant="primary"
+            variant="primary"
             @hidden="showInfo = false">
             Need expert advice? &nbsp;<a href="https://www.energysage.com/"> Schedule a free call with our Energy Advisor team!</a>
         </es-form-msg>
