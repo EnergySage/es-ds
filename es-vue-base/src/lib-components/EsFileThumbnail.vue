@@ -27,7 +27,7 @@
                         cols="8"
                         class="p-0">
                         <div class="font-weight-bolder text-gray-800 pl-0">
-                            {{ fileName }}
+                            {{ fileName.length < 18 ? fileName : `${fileName.substring(0, 18)}...` }}
                         </div>
                     </b-col>
                     <b-col
@@ -35,7 +35,7 @@
                         <b-link
                             class="text-gray-900 float-right icon-button"
                             aria-label="close-file-mobile"
-                            @click="$emit('removeFile')">
+                            @click="$emit('removeFile',fileName)">
                             <icon-trash-can />
                         </b-link>
                     </b-col>
@@ -51,7 +51,7 @@
                             <b-link
                                 v-if="!loading"
                                 aria-label="show-preview-mobile-image"
-                                @click="$emit('showPreview')">
+                                @click="$emit('showPreview',fileName)">
                                 {{ previewText }}
                             </b-link>
                         </template>
@@ -79,7 +79,7 @@
                         v-if="!loading"
                         aria-label="close-file-desktop"
                         class="text-gray-800 text-decoration-none icon-button"
-                        @click="$emit('removeFile')">
+                        @click="$emit('removeFile',fileName)">
                         <icon-circle-x />
                         <div class="svg-fill-wrapper bg-white" />
                     </b-link>
@@ -90,7 +90,7 @@
                     class="text-decoration-none text-gray-800"
                     aria-label="show-preview-desktop-image"
                     :disabled="loading"
-                    @click="$emit('showPreview')">
+                    @click="$emit('showPreview',fileName)">
                     <div
                         :class="{
                             'card': true,
@@ -150,7 +150,7 @@
                 </b-link>
             </div>
             <div class="font-weight-bolder pt-2 pt-md-3">
-                {{ fileName }}
+                {{ fileName.length < 18 ? fileName : `${fileName.substring(0, 18)}...` }}
             </div>
             <div
                 v-if="fileSize"

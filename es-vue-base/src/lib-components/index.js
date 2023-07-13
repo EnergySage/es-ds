@@ -11,6 +11,7 @@ export { default as EsDataTable } from './EsDataTable.vue';
 export { default as EsErrorPage } from './EsErrorPage.vue';
 export { default as EsFileThumbnail } from './EsFileThumbnail.vue';
 export { default as EsFilePreviewModal } from './EsFilePreviewModal.vue';
+export { default as EsFileUpload } from './EsFileUpload.vue';
 export { default as EsFooter } from './EsFooter.vue';
 export { default as EsFormInput } from './EsFormInput.vue';
 export { default as EsFormMsg } from './EsFormMsg.vue';

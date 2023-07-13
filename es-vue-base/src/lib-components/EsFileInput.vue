@@ -105,12 +105,16 @@ export default {
             default: false,
             required: false,
         },
+        deleteFileName: {
+            type: String,
+            default: '',
+            required: false,
+        },
     },
     data() {
         return {
             pickedItems: [],
             files: [],
-            fileUrls: [], // For thumbnail preview
             active: false,
         };
     },
@@ -134,6 +138,9 @@ export default {
                 await this.verifyFiles(newVal);
             }
         },
+        deleteFileName(newVal) {
+            this.files = this.files.filter((file) => file.name !== newVal);
+        },
     },
     methods: {
         filterLargeFiles(files) {
@@ -150,14 +157,18 @@ export default {
             });
         },
         readFilesIntoUrl(files) {
-            this.fileUrls = [];
             files
                 .forEach((file) => {
                     const fileReader = new FileReader();
                     fileReader.onload = () => {
-                        // TODO: If pdf/docx, we might not want to read the file...
                         this.$emit('fileDataRead', {
-                            name: file.name, type: file.type, size: file.size, data: fileReader.result,
+                            name: file.name,
+                            type: file.type,
+                            size: file.size,
+                            data: file.type.includes('application')
+                                // For non-image files (pdf, docx, etc.)
+                                ? URL.createObjectURL(new Blob([file], { type: file.type }))
+                                : fileReader.result,
                         });
                     };
                     fileReader.readAsDataURL(file);
@@ -166,12 +177,20 @@ export default {
         async verifyFiles(files) {
             const correctlySizedFiles = this.filterLargeFiles(files);
 
-            this.files = await Promise.all(correctlySizedFiles.map(async (file) => this.verifyMimeType(file)));
-            this.files = this.files.filter((file) => file); // filter out undefined
+            // Make sure the file is the correct mime type
+            let newValidFiles = await Promise.all(correctlySizedFiles.map(async (file) => this.verifyMimeType(file)));
+            // Filter out undefined values
+            newValidFiles = newValidFiles.filter((file) => file);
+
+            // If the new file already exists in the current files, remove it and use the new file
+            this.files = this.files.filter(({ name }) => !newValidFiles.some((file) => file.name === name));
+            this.files = [...this.files, ...newValidFiles];
+
             if (this.files.length > 0) {
                 this.$emit('readyToUpload', this.files.length);
                 this.readFilesIntoUrl(this.files);
             }
+            this.pickedItems = [];
         },
         async verifyMimeType(file) {
             return new Promise((resolve, reject) => {
@@ -202,7 +221,6 @@ export default {
             // selected the files from the file picker which limits the file types to the ones specified in the
             // fileTypes prop.
             this.active = false;
-            this.files = [];
 
             // Use DataTransferItemList interface to access the file(s)
             const dataTransfersAsFiles = [...event.dataTransfer.items]
