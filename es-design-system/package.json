@@ -67,7 +67,7 @@
         "prettier": "^2.8.8",
         "prettier-eslint": "^15.0.1",
         "raw-loader": "^4.0.2",
-        "sass": "^1.63.3",
+        "sass": "^1.63.6",
         "sass-loader": "^10.4.1",
         "stylelint": "^14.16.1",
         "stylelint-config-prettier": "^9.0.5",
