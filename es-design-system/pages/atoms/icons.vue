@@ -345,6 +345,10 @@
                 <code>IconVerified</code>
             </li>
             <li>
+                <icon-video-play />
+                <code>IconVideoPlay</code>
+            </li>
+            <li>
                 <icon-wifi />
                 <code>IconWifi</code>
             </li>

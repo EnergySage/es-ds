@@ -116,6 +116,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/molecules/es-video">
+                EsVideo
+            </b-link>
+        </li>
+        <li>
             <b-link to="/molecules/es-view-more">
                 EsViewMore
             </b-link>
