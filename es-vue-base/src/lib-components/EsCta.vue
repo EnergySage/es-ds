@@ -134,6 +134,10 @@ export default {
             type: String,
             default: '',
         },
+        contextDomain: {
+            type: String,
+            default: '',
+        },
         dark: {
             type: Boolean,
             default: false,
@@ -215,7 +219,11 @@ export default {
     },
     computed: {
         newTab() {
-            return !this.url.includes(window.location.host);
+            if (window?.location) {
+                return !this.url.includes(window?.location?.host);
+            }
+            // Any string includes '', so this defaults to false
+            return !this.url.includes(this.contextDomain);
         },
         cardTarget() {
             return this.newTab ? '_blank' : '_self';

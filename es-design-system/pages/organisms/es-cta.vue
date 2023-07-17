@@ -121,6 +121,7 @@
             </h2>
             <es-cta
                 :button-text="buttonText"
+                :context-domain="contextDomain"
                 :dark="dark"
                 :error_description="errorDescription"
                 :heading="heading"
@@ -168,6 +169,34 @@
                         </dt>
                         <dd>
                             Required if <code>showForm</code> is <code>true</code>.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>contextDomain</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>''</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Domain that this CTA is being used on. Used to determine whether the CTA will trigger
+                            opening in a new tab. Required in SSG/SSR environments, where <code>window</code> is not
+                            available. If not set in an SSG/SSR environment, CTA will always open in the same tab.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>
@@ -690,6 +719,7 @@ export default {
             buttonText: 'Clicky clicky',
             compCode: '',
             docCode: '',
+            contextDomain: '',
             dark: false,
             errorDescription: 'Please enter a 5-digit zip code.',
             heading: 'This is a heading',
@@ -713,7 +743,11 @@ export default {
     },
     computed: {
         newTab() {
-            return !this.url.includes(window.location.host);
+            if (window?.location) {
+                return !this.url.includes(window?.location?.host);
+            }
+            // Any string includes '', so this defaults to false
+            return !this.url.includes(this.contextDomain);
         },
         cardTarget() {
             return this.newTab ? '_blank' : '_self';
