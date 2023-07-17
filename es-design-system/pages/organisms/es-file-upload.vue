@@ -10,10 +10,10 @@
                 :file-types="['image/png', 'application/pdf']"
                 @readyToUpload="readyToUpload">
                 <template #header>
-                    <h2 class="mb-4">
+                    <h2 class="mb-4 d-none d-md-block">
                         Upload a copy of your electric bill.
                     </h2>
-                    <p>
+                    <p class="d-none d-md-block">
                         <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
                     </p>
                 </template>
