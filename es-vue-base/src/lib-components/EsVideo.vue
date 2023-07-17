@@ -69,6 +69,7 @@ export default ({
 
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
+
 .VideoWithCover {
     &-button,
     &-image {
