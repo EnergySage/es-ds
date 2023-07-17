@@ -7,6 +7,7 @@
         <div class="mb-450">
             <es-file-upload
                 :upload-urls="uploadUrls"
+                :file-types="['image/png', 'application/pdf']"
                 @readyToUpload="readyToUpload">
                 <template #header>
                     <h2 class="mb-4">
@@ -18,7 +19,7 @@
                 </template>
                 <template #inputCta>
                     <h2 class="d-none d-md-inline-block mb-4 text-center">
-                        Drag and drop your files<br>or
+                        Drag and drop your files or
                     </h2>
                     <p class="d-inline-block d-md-none">
                         <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
@@ -120,15 +121,17 @@ export default {
             docCode: '',
             uploadUrls: [],
             fileUploadProps: [{
-                name: 'prop',
-                default: 'None',
-                description: 'A prop that the component uses.',
+                name: 'uploadUrls',
+                default: '[]',
+                description: 'A list of URLs to upload files to. When the number of files ready to upload matches '
+                + 'the number of URLs, the component will begin uploading.',
             },
             ],
             fileUploadEventListeners: [{
-                name: '@listener',
-                payload: 'None',
-                description: 'Information on an event that is emitted by the component.',
+                name: '@readyToUpload',
+                payload: 'Number',
+                description: 'Called when the component is ready to upload files. The payload is the number of files '
+                + 'that are ready to upload.',
             }],
         };
     },

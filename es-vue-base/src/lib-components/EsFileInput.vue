@@ -125,12 +125,6 @@ export default {
             },
             deep: true,
         },
-        files: {
-            handler(newFiles) {
-                if (newFiles.length > 0 && newFiles.length === this.uploadUrls.length) this.upload();
-            },
-            deep: true,
-        },
         async pickedItems(newVal) {
             // The user has selected files from the file picker. We have to filter out any files that exceed the
             // maxFileSizeMb prop.
@@ -203,7 +197,7 @@ export default {
                     });
                     const hex = bytes.join('').toUpperCase();
                     const mimeType = findMimeType(hex);
-                    if (!mimeType || !this.fileTypes.includes(mimeType)) {
+                    if (!mimeType || (this.fileTypes.length > 0 && !this.fileTypes.includes(mimeType))) {
                         this.$emit('fileTypeError', file.name);
                         return resolve();
                     }

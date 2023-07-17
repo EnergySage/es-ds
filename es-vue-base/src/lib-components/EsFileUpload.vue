@@ -4,14 +4,13 @@
         <es-file-input
             class="mb-450"
             :upload-urls="uploadUrls"
-            :max-file-size-mb="10"
-            :file-types="['image/png', 'application/pdf']"
+            :max-file-size-mb="maxFileSizeMb"
+            :file-types="fileTypes"
             :collapsed="files.length > 0"
             :delete-file-name="deleteFileName"
             @fileSizeError="fileSizeError"
             @fileTypeError="fileTypeError"
             @readyToUpload="readyToUpload"
-            @uploadSuccess="uploadSuccess"
             @uploadFailure="uploadFailure"
             @fileDataRead="fileDataRead"
             @uploadProgress="uploadProgress">
@@ -58,6 +57,7 @@ import EsFileInput from './EsFileInput.vue';
 import EsFormMsg from './EsFormMsg.vue';
 import EsFileThumbnail from './EsFileThumbnail.vue';
 import EsFilePreviewModal from './EsFilePreviewModal.vue';
+import { mimeTypes, getHumanReadableTypeFromMime } from '../lib-utils';
 
 export default {
     name: 'EsFileUpload',
@@ -75,6 +75,19 @@ export default {
         uploadUrls: {
             type: Array,
             default: () => [],
+        },
+        /**
+         * The file types that are allowed to be uploaded. This is a list of MIME types as strings. If the array is
+         * empty, all file types are allowed. A list of acceptable MIME types can be found here in the template column:
+         * https://www.iana.org/assignments/media-types/media-types.xhtml
+         */
+        fileTypes: {
+            type: Array,
+            default: () => [],
+            required: true,
+            validator(fileTypes) {
+                return fileTypes.every((fileType) => mimeTypes.includes(fileType));
+            },
         },
         /**
          * The maximum file size in MB. This is per file, not the total size of all files.
@@ -117,19 +130,19 @@ export default {
             this.visible = true;
         },
         fileTypeError(fileName) {
-            this.events.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger' });
+            this.events.push({
+                msg: `The file "${fileName}" is not the correct type. Ensure your file is one of the following: `
+                + `${this.fileTypes.map((mimeType) => getHumanReadableTypeFromMime(mimeType)).join(', ')}`,
+                variant: 'danger',
+            });
         },
         readyToUpload(numberOfFiles) {
             this.$emit('readyToUpload', numberOfFiles);
-            this.events.push({ msg: `readyToUpload for ${numberOfFiles} file(s)`, variant: 'success' });
-        },
-        uploadSuccess(fileName) {
-            this.events.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success' });
         },
         uploadFailure(fileNameAndMessage) {
+            this.removeFile(fileNameAndMessage.fileName);
             this.events.push({
-                msg: `uploadFailure for file: ${fileNameAndMessage.fileName}. Message: `
-            + `${fileNameAndMessage.message}`,
+                msg: `Failed to upload the file: ${fileNameAndMessage.fileName}`,
                 variant: 'danger',
             });
         },
@@ -161,7 +174,11 @@ export default {
             });
         },
         fileSizeError(fileName) {
-            this.events.push({ msg: `fileSizeError: exceeded max file size for file ${fileName}`, variant: 'danger' });
+            this.events.push({
+                msg: `The file "${fileName}" is too large. Make sure your file does not exceed `
+                    + `${this.maxFileSizeMb} MB`,
+                variant: 'danger',
+            });
         },
     },
 };
