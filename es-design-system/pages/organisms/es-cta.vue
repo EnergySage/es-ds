@@ -658,7 +658,7 @@
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsCta.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-cta.vue" />
+            doc-source="es-design-system/pages/organisms/es-cta.vue" />
     </div>
 </template>
 <script>

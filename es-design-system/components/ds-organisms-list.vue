@@ -1,6 +1,11 @@
 <template>
     <ul>
         <li>
+            <b-link to="/organisms/es-cta">
+                EsCta
+            </b-link>
+        </li>
+        <li>
             <b-link to="/organisms/es-error-page">
                 EsErrorPage
             </b-link>
