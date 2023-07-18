@@ -5,7 +5,8 @@ export default {
     data() {
         return {
             submitInProgress: false,
-            formMsg: '',
+            formShowSuccess: false,
+            formShowError: false,
             formMsgVariant: 'danger',
         };
     },
@@ -123,17 +124,29 @@ export default {
             }
         },
         // eslint-disable-next-line max-len
-        showFormError(text = 'The server responded with an error and we were unable to complete your request. Please try again') {
+        // eslint-disable-next-line no-unused-vars
+        showFormError(text =
+        'The server responded with an error and we were unable to complete your request. Please try again') {
             this.formMsgVariant = 'danger';
-            this.formMsg = text;
+            this.formShowError = true;
         },
+        // eslint-disable-next-line no-unused-vars
         showFormSuccess(text = 'Saved Successfully') {
             this.formMsgVariant = 'success';
-            this.formMsg = text;
+            this.formShowSuccess = true;
+        },
+
+        hideFormError() {
+            this.formShowError = false;
+        },
+
+        hideFormSuccess() {
+            this.formShowSuccess = false;
         },
         startSubmit() {
-            this.formMsg = '';
             this.submitInProgress = true;
+            this.formShowSuccess = false;
+            this.formShowError = false;
         },
         stopSubmit() {
             this.submitInProgress = false;
