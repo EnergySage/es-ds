@@ -15,7 +15,7 @@
             :action="url"
             method="get"
             novalidate
-            :target="target"
+            :target="newTab ? '_blank' : '_self'"
             @submit.prevent.stop="handleSubmit">
             <es-form-input
                 :id="inputId"
@@ -95,10 +95,6 @@ export default {
             type: String,
             required: true,
         },
-        contextDomain: {
-            type: String,
-            default: '',
-        },
         dark: {
             type: Boolean,
             default: false,
@@ -110,6 +106,26 @@ export default {
         inputId: {
             type: String,
             required: true,
+        },
+        newTab: {
+            type: Boolean,
+            default: false,
+        },
+        privacyPolicyLink: {
+            type: String,
+            required: true,
+        },
+        privacyPolicyLinkText: {
+            type: String,
+            default: 'Privacy Policy',
+        },
+        privacyPolicyNewTab: {
+            type: Boolean,
+            default: false,
+        },
+        privacyPolicyText: {
+            type: String,
+            default: 'Your information is safe with us.',
         },
         showPrivacyPolicy: {
             type: Boolean,
@@ -123,18 +139,6 @@ export default {
             type: String,
             default: 'sm',
         },
-        privacyPolicyLink: {
-            type: String,
-            required: true,
-        },
-        privacyPolicyLinkText: {
-            type: String,
-            default: 'Privacy Policy',
-        },
-        privacyPolicyText: {
-            type: String,
-            default: 'Your information is safe with us.',
-        },
         url: {
             type: String,
             required: true,
@@ -146,16 +150,6 @@ export default {
         };
     },
     computed: {
-        newTab() {
-            if (window?.location) {
-                return !this.url.includes(window?.location?.host);
-            }
-            // Any string includes '', so this defaults to false
-            return !this.url.includes(this.contextDomain);
-        },
-        target() {
-            return this.newTab ? '_blank' : '_self';
-        },
         stackBreak() {
             return this.stackUntil ? `${this.stackUntil}-` : '';
         },

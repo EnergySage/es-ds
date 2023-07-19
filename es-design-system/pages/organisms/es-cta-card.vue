@@ -113,34 +113,6 @@
                             Name
                         </dt>
                         <dd>
-                            <code>contextDomain</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Default
-                        </dt>
-                        <dd>
-                            <code>''</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Description
-                        </dt>
-                        <dd>
-                            Domain that this CTA is being used on. Used to determine whether the CTA will trigger
-                            opening in a new tab. Required in SSG/SSR environments, where <code>window</code> is not
-                            available. If not set in an SSG/SSR environment, CTA will always open in the same tab.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            Name
-                        </dt>
-                        <dd>
                             <code>heading</code>
                         </dd>
                     </dl>
@@ -322,6 +294,33 @@
                         <dd>
                             Whether to lazyload the image specified in the <code>image</code> prop. Not used if the
                             <code>image</code> slot is filled.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>newTab</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>false</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Whether to open the URL (if provided) in the <code>url</code> prop in a new tab. Does not
+                            apply to the contents of the <code>cta</code> slot.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>

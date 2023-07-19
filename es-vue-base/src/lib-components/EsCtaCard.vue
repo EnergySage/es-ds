@@ -2,7 +2,7 @@
     <EsCard
         :href="url || null"
         :tag="url ? 'b-link' : 'div'"
-        :target="cardTarget"
+        :target="newTab ? '_blank' : '_self'"
         :variant="url ? 'interactive' : 'display'"
         class="d-inline-block"
         :class="{'d-lg-inline-flex': !narrow}"
@@ -55,10 +55,6 @@ export default {
         EsCard,
     },
     props: {
-        contextDomain: {
-            type: String,
-            default: '',
-        },
         heading: {
             type: String,
             required: true,
@@ -91,6 +87,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        newTab: {
+            type: Boolean,
+            default: false,
+        },
         subtitle: {
             type: String,
             default: '',
@@ -98,18 +98,6 @@ export default {
         url: {
             type: String,
             default: '',
-        },
-    },
-    computed: {
-        newTab() {
-            if (window?.location) {
-                return !this.url?.includes(window?.location?.host);
-            }
-            // Any string includes '', so this defaults to false
-            return !this.url?.includes(this.contextDomain);
-        },
-        cardTarget() {
-            return this.newTab ? '_blank' : '_self';
         },
     },
 };

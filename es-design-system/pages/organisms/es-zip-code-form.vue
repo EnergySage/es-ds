@@ -30,6 +30,7 @@
                     context-domain="www.energysage.com"
                     dark
                     input-id="CSM-1"
+                    new-tab
                     privacy-policy-link="https://www.energysage.com/privacy-policy/"
                     url="https://communitysolar.energysage.com/projects" />
             </div>
@@ -90,34 +91,6 @@
                         </dt>
                         <dd>
                             Text to display on the submit button.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            Name
-                        </dt>
-                        <dd>
-                            <code>contextDomain</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Default
-                        </dt>
-                        <dd>
-                            <code>''</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Description
-                        </dt>
-                        <dd>
-                            Domain that this form is being used on. Used to determine whether the form will trigger
-                            opening in a new tab. Required in SSG/SSR environments, where <code>window</code> is not
-                            available. If not set in an SSG/SSR environment, submit will always open in the same tab.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>
@@ -205,6 +178,137 @@
                             Name
                         </dt>
                         <dd>
+                            <code>newTab</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>false</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Whether to open the URL in the <code>url</code> prop in a new tab.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>privacyPolicyLink</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            N/A - <strong>required.</strong>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Link to the privacy policy.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>privacyPolicyLinkText</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>'Privacy Policy'</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Text for the privacy policy link.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>privacyPolicyNewTab</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>false</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Whether to open the privacy policy link in a new tab.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>privacyPolicyText</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>'Your information is safe with us.'</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Additional text to show before the privacy policy link. If set to a falsy value, a lock
+                            icon will be displayed before the link instead.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
                             <code>showPrivacyPolicy</code>
                         </dd>
                     </dl>
@@ -277,111 +381,6 @@
                             Breakpoint up to which form should be stacked. Valid values are '', 'sm', 'md', 'lg', 'xl',
                             and 'xxl'. '' (empty string) will cause the component to never stack. An out-of-range value
                             like '*' will cause the component to always stack.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            Name
-                        </dt>
-                        <dd>
-                            <code>showPrivacyPolicy</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Default
-                        </dt>
-                        <dd>
-                            <code>true</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Description
-                        </dt>
-                        <dd>
-                            Whether to show the privacy policy link.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            Name
-                        </dt>
-                        <dd>
-                            <code>privacyPolicyLink</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Default
-                        </dt>
-                        <dd>
-                            N/A - <strong>required.</strong>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Description
-                        </dt>
-                        <dd>
-                            Link to the privacy policy.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            Name
-                        </dt>
-                        <dd>
-                            <code>privacyPolicyLinkText</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Default
-                        </dt>
-                        <dd>
-                            <code>'Privacy Policy'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Description
-                        </dt>
-                        <dd>
-                            Text for the privacy policy link.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            Name
-                        </dt>
-                        <dd>
-                            <code>privacyPolicyText</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Default
-                        </dt>
-                        <dd>
-                            <code>'Your information is safe with us.'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            Description
-                        </dt>
-                        <dd>
-                            Additional text to show before the privacy policy link. If set to a falsy value, a lock
-                            icon will be displayed before the link instead.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>
