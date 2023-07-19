@@ -4,7 +4,7 @@
         :class="[
             { 'text-white': dark },
             defaultStackClasses,
-            `align-items-${stackBreak}${align} text-${stackBreak}${align}`,
+            `align-items-${stackBreak}${align} text-${stackBreak}${textAlign}`,
         ]"
         v-bind="$attrs"
         v-on="$listeners">
@@ -162,6 +162,9 @@ export default {
         defaultStackClasses() {
             // Classes to use on the stacked form, up to the stackUntil breakpoint
             return this.stackUntil ? `align-items-${this.stackAlign} text-${this.stackAlign}` : '';
+        },
+        textAlign() {
+            return { start: 'left', center: 'center', end: 'right' }[this.align];
         },
     },
     methods: {
