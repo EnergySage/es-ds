@@ -55,6 +55,11 @@
                 EsFilePreviewModal
             </b-link>
         </li>
+        <li>
+            <b-link to="/organisms/es-zip-code-form">
+                EsZipCodeForm
+            </b-link>
+        </li>
     </ul>
 </template>
 
