@@ -8,138 +8,61 @@
         </p>
         <div class="mb-450">
             <h2 class="mb-200">
-                Component written directly in es-cta.vue
+                Clickable card CTA
             </h2>
-            <EsCard
-                :href="showForm ? null : url"
-                :tag="showForm ? 'div' : 'b-link'"
-                :target="cardTarget"
-                class="es-cta"
-                :class="{ 'bg-gray text-white': dark }"
-                :variant="showForm ? 'display' : 'interactive'"
-                v-bind="$attrs"
-                v-on="$listeners">
-                <div class="flex-layout-outer">
-                    <div
-                        v-if="headingFirst"
-                        class="heading-first text-center"
-                        :class="[headingClass, { 'text-white': dark }]">
-                        {{ heading }}
-                    </div>
-                    <div
-                        v-if="image"
-                        class="image-wrapper"
-                        :style="`width:${imageWidth}; height:${imageHeight};`">
-                        <img
-                            lazy
-                            class="image d-block h-100 w-100"
-                            :width="imageWidth"
-                            :height="imageHeight"
-                            :src="image"
-                            :alt="imageAltText">
-                    </div>
-                    <div class="flex-layout-inner d-flex justify-content-center w-100">
-                        <div class="content-area d-flex flex-column">
-                            <div
-                                class="heading-default"
-                                :class="[
-                                    headingClass,
-                                    subtitle ? 'mb-50' : 'mb-0',
-                                    { 'text-white': dark, 'd-none': headingFirst },
-                                ]">
-                                {{ heading }}
-                            </div>
-                            <div v-if="subtitle">
-                                {{ subtitle }}
-                            </div>
-                        </div>
-                        <div
-                            v-if="showForm"
-                            class="form-area d-flex flex-column">
-                            <b-form
-                                ref="ctaForm"
-                                class="form-input-area"
-                                :class="{ invalid: $v.$dirty && $v.$invalid }"
-                                :action="url"
-                                method="get"
-                                novalidate
-                                :target="cardTarget"
-                                @submit.prevent.stop="handleSubmit">
-                                <es-form-input
-                                    v-if="showZipEntry"
-                                    :id="inputId"
-                                    v-model="zipCode"
-                                    name="zip_code"
-                                    class="zip-entry"
-                                    autocomplete="postal-code"
-                                    inputmode="numeric"
-                                    label-sr-only
-                                    maxlength="5"
-                                    pattern="\d*"
-                                    placeholder="ZIP code"
-                                    required
-                                    :state="validateState('zipCode')">
-                                    <template #prefixIcon>
-                                        <icon-location class="text-gray-800" />
-                                    </template>
-                                    <template #label>
-                                        ZIP code
-                                    </template>
-                                    <template #errorMessage>
-                                        {{ errorDescription }}
-                                    </template>
-                                </es-form-input>
-                                <es-button
-                                    class="cta-button"
-                                    :class="{ 'mb-50': showPrivacyPolicy & showZipEntry }"
-                                    type="submit">
-                                    {{ buttonText }}
-                                </es-button>
-                            </b-form>
-                            <div v-if="showPrivacyPolicy & showZipEntry">
-                                <span v-if="privacyPolicyText">
-                                    {{ privacyPolicyText }}
-                                </span>
-                                <icon-lock-on
-                                    v-else
-                                    class="privacy-lock-icon mr-25 position-relative"
-                                    height="1.125rem"
-                                    width="1.125rem" />
-                                <a
-                                    :href="privacyPolicyLink"
-                                    class="text-nowrap"
-                                    :class="dark ? 'text-white' : 'text-dark'">{{ privacyPolicyLinkText }}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </EsCard>
-        </div>
-        <div class="mb-450">
-            <h2 class="mb-200">
-                Component from EsCta.vue
-            </h2>
-            <es-cta
-                :button-text="buttonText"
-                :context-domain="contextDomain"
-                :dark="dark"
-                :error_description="errorDescription"
+            <es-cta-card
+                context-domain="www.energysage.com"
                 :heading="heading"
-                :heading_class="headingClass"
                 :heading-first="headingFirst"
                 :image="image"
                 :image-alt-text="imageAltText"
                 :image-height="imageHeight"
                 :image-width="imageWidth"
-                :input-id="inputId"
-                :privacy_policy_link="privacyPolicyLink"
-                :privacy_policy_link_text="privacyPolicyLinkText"
-                :privacy_policy_text="privacyPolicyText"
                 :subtitle="subtitle"
-                :show-form="showForm"
-                :show_privacy_policy="showPrivacyPolicy"
-                :show-zip-entry="showZipEntry"
-                :url="url" />
+                url="https://www.energysage.com/" />
+        </div>
+        <div class="mb-450">
+            <h2 class="mb-200">
+                CTA with button
+            </h2>
+            <es-cta-card
+                dark
+                :heading="heading"
+                :heading-first="headingFirst"
+                :image="image"
+                :image-alt-text="imageAltText"
+                :image-height="imageHeight"
+                :image-width="imageWidth"
+                :subtitle="subtitle">
+                <template #cta>
+                    <es-button>
+                        Get quotes
+                    </es-button>
+                </template>
+            </es-cta-card>
+        </div>
+        <div class="mb-450">
+            <h2 class="mb-200">
+                CTA with zip entry
+            </h2>
+            <es-cta-card
+                :heading="heading"
+                :heading-first="headingFirst"
+                :image="image"
+                :image-alt-text="imageAltText"
+                :image-height="imageHeight"
+                :image-width="imageWidth"
+                :subtitle="subtitle">
+                <template #cta>
+                    <es-zip-code-form
+                        button-text="Get quotes"
+                        context-domain="www.energysage.com"
+                        input-id="RSM-1"
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        privacy-policy-text=""
+                        url="https://www.energysage.com/market/start/" />
+                </template>
+            </es-cta-card>
         </div>
         <div class="mb-450">
             <h2>
@@ -685,79 +608,39 @@
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-vue-base/src/lib-components/EsCta.vue"
+            comp-source="es-vue-base/src/lib-components/EsCtaCard.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/organisms/es-cta.vue" />
+            doc-source="es-design-system/pages/organisms/es-cta-card.vue" />
     </div>
 </template>
 <script>
 import EsButton from '@energysage/es-vue-base/src/lib-components/EsButton.vue';
-import EsCard from '@energysage/es-vue-base/src/lib-components/EsCard.vue';
-import EsFormInput from '@energysage/es-vue-base/src/lib-components/EsFormInput.vue';
-import IconLocation from '@energysage/es-vue-base/src/lib-icons/icon-location.vue';
-import IconLockOn from '@energysage/es-vue-base/src/lib-icons/icon-lock-on.vue';
-import {
-    formMixins,
-    vuelidateMinLength,
-    vuelidateMaxLength,
-    vuelidateNumeric,
-    vuelidateRequired,
-} from '@energysage/es-vue-base';
+import EsZipCodeForm from '@energysage/es-vue-base/src/lib-components/EsZipCodeForm.vue';
 
 export default {
     name: 'EsCtaDocs',
     components: {
         EsButton,
-        EsCard,
-        EsFormInput,
-        IconLocation,
-        IconLockOn,
+        EsZipCodeForm,
     },
-    mixins: [formMixins],
     data() {
         return {
-            buttonText: 'Clicky clicky',
+            heading: 'Check our marketplace',
+            headingFirst: false,
+            image: 'https://news.energysage.com/wp-content/uploads/2023/04/24184120/mfdp-callout.webp',
+            imageAltText: '',
+            imageHeight: '257px',
+            imageWidth: '220px',
+            subtitle: 'Get free quotes.',
             compCode: '',
             docCode: '',
-            contextDomain: '',
-            dark: false,
-            errorDescription: 'Please enter a 5-digit zip code.',
-            heading: 'This is a heading',
-            headingFirst: true,
-            headingClass: 'h2',
-            image: 'https://www.eversource.com/content/images/default-source/bills/ct-sample-bill-electric-front.jpg?sfvrsn=495ad262_4',
-            imageAltText: 'file',
-            imageHeight: '200px',
-            imageWidth: '200px',
-            inputId: 'exampleId',
-            subtitle: "For demonstration purposes, I'll add a subtitle that isn't empty",
-            showForm: true,
-            showZipEntry: true,
-            showPrivacyPolicy: true,
-            privacyPolicyLink: 'https://www.energysage.com/privacy-policy/',
-            privacyPolicyLinkText: 'Privacy Policy',
-            privacyPolicyText: 'Your information is safe with us.',
-            url: 'https://www.energysage.com/market/start/',
-            zipCode: '',
         };
-    },
-    computed: {
-        newTab() {
-            if (window?.location) {
-                return !this.url.includes(window?.location?.host);
-            }
-            // Any string includes '', so this defaults to false
-            return !this.url.includes(this.contextDomain);
-        },
-        cardTarget() {
-            return this.newTab ? '_blank' : '_self';
-        },
     },
     async created() {
         if (this.$prism) {
             /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-            const docSource = await import('!raw-loader!./es-cta.vue');
-            const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsCta.vue');
+            const docSource = await import('!raw-loader!./es-cta-card.vue');
+            const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsCtaCard.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
             this.docCode = this.$prism.normalizeCode(docSource.default);
@@ -765,128 +648,5 @@ export default {
             this.$prism.highlight(this);
         }
     },
-    methods: {
-        handleSubmit() {
-            if (this.showZipEntry && this?.$v?.$invalid) {
-                // if form is invalid, touch to display errors and get out
-                this.$v.$touch();
-            } else {
-                this.$refs.ctaForm.submit();
-            }
-        },
-    },
-    validations: {
-        zipCode: {
-            maxLength: vuelidateMaxLength(5),
-            minLength: vuelidateMinLength(5),
-            numeric: vuelidateNumeric,
-            required: vuelidateRequired,
-        },
-    },
 };
 </script>
-<style lang="scss" scoped>
-@use 'sass:map';
-@import '~@energysage/es-bs-base/scss/includes';
-@import '~@energysage/es-bs-base/scss/bootstrap';
-
-.es-cta {
-    container-name: card;
-    container-type: inline-size;
-}
-
-.flex-layout-outer {
-    container-name: outer;
-    container-type: inline-size;
-    @container card (min-width: 600px) {
-        display: flex;
-    }
-}
-
-.flex-layout-inner {
-    flex-direction: column;
-    @container outer (min-width: 700px) {
-        flex-direction: row;
-    }
-}
-
-.image-wrapper {
-    margin: 0 auto map.get($spacers, 100);
-    @container card (min-width: 600px) {
-        margin: 0 map.get($spacers, 100) 0 0;
-    }
-}
-
-.image {
-    object-fit: contain;
-}
-
-.content-area {
-    align-items: center;
-    margin-bottom: map.get($spacers, 100);
-    text-align: center;
-
-    @container outer (min-width: 700px) {
-        align-items: start;
-        margin-block: auto;
-        margin-right: map.get($spacers, 50);
-        text-align: start;
-        width: 50%;
-    }
-}
-
-@container card (min-width: 600px) {
-    .heading-default {
-        display: block !important;
-    }
-
-    .heading-first {
-        display: none;
-    }
-}
-
-.form-area {
-    align-items: center;
-    container-name: form;
-    container-type: inline-size;
-    text-align: center;
-
-    @container outer (min-width: 700px) {
-        align-items: end;
-        margin-block: auto;
-        margin-left: map.get($spacers, 50);
-        text-align: end;
-        width: 50%;
-    }
-}
-
-.cta-button {
-    @container form (max-width: 389px) {
-        width: 100%;
-    }
-}
-
-.form-input-area {
-    @container form (min-width: 390px) {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-
-        &.invalid {
-            align-items: start;
-        }
-
-        .zip-entry {
-            margin-right: map.get($spacers, 25);
-        }
-
-        .cta-button {
-            margin-left: map.get($spacers, 25);
-        }
-    }
-}
-
-.privacy-lock-icon {
-    top: -0.1em;
-}
-</style>

@@ -1,8 +1,13 @@
 <template>
     <ul>
         <li>
-            <b-link to="/organisms/es-cta">
-                EsCta
+            <b-link to="/organisms/es-cta-banner">
+                EsCtaBanner
+            </b-link>
+        </li>
+        <li>
+            <b-link to="/organisms/es-cta-card">
+                EsCtaCard
             </b-link>
         </li>
         <li>
