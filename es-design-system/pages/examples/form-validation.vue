@@ -38,9 +38,12 @@
                     @submit.stop.prevent="onSubmit">
                     <es-form-msg
                         class="mt-100"
+                        :show="formShowError"
                         :variant="formMsgVariant"
-                        :message="formMsg"
-                        @hidden="formMsg = ''" />
+                        @hidden="formShowError=false">
+                        The server responded with an error and
+                        we were unable to complete your request. Please try again
+                    </es-form-msg>
                     <es-form-input
                         id="form-input-name"
                         v-model="form.name"
