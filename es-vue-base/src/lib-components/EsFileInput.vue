@@ -68,8 +68,11 @@ export default {
     },
     props: {
         /**
-         * An array of URLs as strings. Once the number of URLs matches the number of files, the component will upload
-         * the files to the URLs.
+         * An array of Objects with the following shape:
+         * {
+         *    fileName: String,
+         *    uploadUrl: String,
+         * }
          */
         uploadUrls: {
             type: Array,
@@ -120,8 +123,15 @@ export default {
     },
     watch: {
         uploadUrls: {
-            handler(newUrls) {
-                if (newUrls.length > 0 && newUrls.length === this.files.length) this.upload();
+            handler(newUrls, oldUrls) {
+                // For every file that has an associated upload URL, we start the upload
+                newUrls.forEach((newUrlPair) => {
+                    const oldUrl = oldUrls.find(({ name }) => name === newUrlPair.name);
+                    const fileToUpload = this.files.find((file) => file.name === newUrlPair.name);
+                    if ((!oldUrl || oldUrl.uploadUrl !== newUrlPair.uploadUrl) && fileToUpload) {
+                        this.uploadSingleFile(fileToUpload);
+                    }
+                });
             },
             deep: true,
         },
@@ -181,7 +191,7 @@ export default {
             this.files = [...this.files, ...newValidFiles];
 
             if (this.files.length > 0) {
-                this.$emit('readyToUpload', this.files.length);
+                this.$emit('readyToUpload', this.files);
                 this.readFilesIntoUrl(this.files);
             }
             this.pickedItems = [];
@@ -230,24 +240,19 @@ export default {
             this.verifyFiles(dataTransfersAsFiles);
         },
         openFilePicker() { this.$refs.fileInput.$el.childNodes[0].click(); },
-        async upload() {
-            await Promise.all(this.files.map(async (file, index) => {
-                await this.uploadSingleFile(file, index);
-            }));
-        },
-        async uploadSingleFile(file, index) {
+        async uploadSingleFile(file) {
             const config = {
                 headers: {
                     'Content-Type': file.type,
                 },
                 onUploadProgress: (progressEvent) => {
                     const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                    this.$emit('uploadProgress', { fileName: file.name, percentCompleted });
+                    this.$emit('uploadProgress', { name: file.name, percentCompleted });
                     return percentCompleted;
                 },
             };
             await this.$axios.put(
-                this.uploadUrls[index],
+                this.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name)?.uploadUrl,
                 file,
                 config,
             )
@@ -256,7 +261,7 @@ export default {
                         this.$emit('uploadSuccess', file.name);
                     } else {
                         this.$emit('uploadFailure', {
-                            fileName: file.name,
+                            name: file.name,
                             message: `Received ${response.status} code from server.`,
                         });
                     }
@@ -267,18 +272,18 @@ export default {
                         // The request was made and the server responded with a status code
                         // that falls out of the range of 2xx
                         this.$emit('uploadFailure', {
-                            fileName: file.name,
+                            name: file.name,
                             message: `Received ${error.response.status} code from server.`,
                         });
                     } else if (error.request) {
                         // The request was made but no response was received
                         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                         // http.ClientRequest in node.js
-                        this.$emit('uploadFailure', { fileName: file.name, message: 'The server did not respond.' });
+                        this.$emit('uploadFailure', { name: file.name, message: 'The server did not respond.' });
                     } else {
                         // Something happened in setting up the request that triggered an Error
                         this.$emit('uploadFailure', {
-                            fileName: file.name,
+                            name: file.name,
                             message: 'There was an error sending your file to the server.',
                         });
                     }

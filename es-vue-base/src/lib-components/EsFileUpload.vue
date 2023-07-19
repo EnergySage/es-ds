@@ -69,8 +69,11 @@ export default {
     },
     props: {
         /**
-         * An array of URLs as strings. Once the number of URLs matches the number of files, the component will upload
-         * the files to the URLs.
+         * An array of Objects with the following shape:
+         * {
+         *    name: String,
+         *    uploadUrl: String,
+         * }
          */
         uploadUrls: {
             type: Array,
@@ -121,6 +124,7 @@ export default {
     methods: {
         removeFile(fileName) {
             this.files = this.files.filter((file) => file.name !== fileName);
+            this.$emit('removeFile', fileName);
             this.deleteFileName = fileName;
         },
         showPreview(fileName) {
@@ -136,13 +140,13 @@ export default {
                 variant: 'danger',
             });
         },
-        readyToUpload(numberOfFiles) {
-            this.$emit('readyToUpload', numberOfFiles);
+        readyToUpload(files) {
+            this.$emit('readyToUpload', files);
         },
         uploadFailure(fileNameAndMessage) {
-            this.removeFile(fileNameAndMessage.fileName);
+            this.removeFile(fileNameAndMessage.name);
             this.events.push({
-                msg: `Failed to upload the file: ${fileNameAndMessage.fileName}`,
+                msg: `Failed to upload the file: ${fileNameAndMessage.name}`,
                 variant: 'danger',
             });
         },
@@ -150,21 +154,22 @@ export default {
             return `${(sizeInBytes / 1000000).toFixed(2)} MB`;
         },
         fileDataRead(file) {
-            if (this.files.find(({ name }) => name === file.name)) {
+            const existingFile = this.files.find(({ name }) => name === file.name);
+            if (existingFile) {
                 this.files = this.files.filter(({ name }) => name !== file.name);
             }
             this.files.push({
                 name: file.name,
                 source: file.data,
                 mimeType: file.type,
-                percentLoaded: 0,
+                percentLoaded: existingFile ? existingFile.percentLoaded : 0,
                 size: this.formatFileSizeInMb(file.size),
             });
         },
         uploadProgress(progressData) {
-            // const progress = this.files.find((file) => file.name === progressData.fileName);
+            // const progress = this.files.find((file) => file.name === progressData.name);
             this.files = this.files.map((file) => {
-                if (file.name === progressData.fileName) {
+                if (file.name === progressData.name) {
                     return {
                         ...file,
                         percentLoaded: progressData.percentCompleted,

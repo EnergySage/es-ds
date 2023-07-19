@@ -6,7 +6,7 @@
 
         <div class="mb-450">
             <es-file-input
-                :upload-urls="urls"
+                :upload-urls="uploadUrls"
                 :max-file-size-mb="10"
                 :file-types="['image/png', 'application/pdf']"
                 @fileSizeError="fileSizeError"
@@ -42,7 +42,7 @@
                 Only applicable on non-mobile devices (medium and up breakpoints).
             </p>
             <es-file-input
-                :upload-urls="urls"
+                :upload-urls="uploadUrls"
                 :file-types="['image/png', 'application/pdf']"
                 :collapsed="true"
                 @fileSizeError="fileSizeError"
@@ -71,7 +71,7 @@
             </es-file-input>
         </div>
         <div
-            v-if="numberOfFiles"
+            v-if="fileObjects.length"
             class="mb-450">
             <h2 class="mb-200">
                 Upload Links
@@ -80,9 +80,9 @@
                 @submit.stop.prevent="onSubmit">
                 <es-form-input
                     id="basicExample"
-                    v-model="rawUrls">
+                    v-model="url">
                     <template #label>
-                        I need {{ numberOfFiles }} URL{{ numberOfFiles > 1 ? 's  (comma separated)': '' }}
+                        Where should I upload?
                     </template>
                 </es-form-input>
                 <div class="d-flex flex-grow-1 justify-content-end mt-100">
@@ -203,16 +203,15 @@ export default {
         return {
             compCode: '',
             docCode: '',
-            urls: [],
-            numberOfFiles: 0,
-            rawUrls: '',
+            url: '',
+            uploadUrls: [],
+            fileObjects: [],
             events: [],
             uploadProgresses: [],
             fileUploadProps: [{
                 name: 'uploadUrls',
                 default: 'None',
-                description: 'An array of URLs to upload files to. Must be the same length as the number of files '
-                + 'uploaded.',
+                description: 'An array of objects with name and uploadUrl as fields.',
             }, {
                 name: 'fileTypes',
                 default: 'None',
@@ -244,9 +243,9 @@ export default {
             },
             {
                 name: '@readyToUpload',
-                payload: 'Number',
+                payload: 'Array',
                 description: 'If the files picked do not exceed the max file size defined as a prop, this '
-                + 'event is emitted. The payload is the number of files that are ready to be uploaded.',
+                + 'event is emitted. The payload is an array of file objects ready to be uploaded.',
             },
             {
                 name: '@uploadSuccess',
@@ -258,7 +257,7 @@ export default {
                 name: '@uploadFailure',
                 payload: 'Object',
                 description: 'If the upload for a given file fails, this event is emitted. The payload is an object '
-                + 'with the fields fileName and message.',
+                + 'with the fields name and message.',
             },
             {
                 name: '@fileDataRead',
@@ -291,20 +290,30 @@ export default {
             this.events.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger' });
         },
         onSubmit() {
-            this.uploadProgresses = [];
-            this.urls = this.rawUrls.replaceAll(' ', '').split(',').filter((url) => url !== '');
+            this.uploadUrls = this.fileObjects.map(({ name }) => ({
+                name,
+                uploadUrl: this.url,
+            }));
         },
-        readyToUpload(numberOfFiles) {
-            this.numberOfFiles = numberOfFiles;
-            this.uploadProgresses = [];
-            this.events.push({ msg: `readyToUpload for ${numberOfFiles} file(s)`, variant: 'success' });
+        readyToUpload(fileObjects) {
+            this.uploadProgresses = fileObjects.map((fileObject) => {
+                const originalPercent = this.uploadProgresses.find(({ name }) => name === fileObject.name)?.percent;
+                const originalUrl = this.fileObjects.find(({ name }) => name === fileObject.name)?.uploadUrl;
+                const percent = originalPercent && originalUrl === fileObject.uploadUrl
+                    ? originalPercent
+                    : 0;
+                return { name: fileObject.name, percent };
+            });
+
+            this.fileObjects = fileObjects;
+            this.events.push({ msg: `readyToUpload for ${fileObjects.length} file(s)`, variant: 'success' });
         },
         uploadSuccess(fileName) {
             this.events.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success' });
         },
         uploadFailure(fileNameAndMessage) {
             this.events.push({
-                msg: `uploadFailure for file: ${fileNameAndMessage.fileName}. Message: `
+                msg: `uploadFailure for file: ${fileNameAndMessage.name}. Message: `
             + `${fileNameAndMessage.message}`,
                 variant: 'danger',
             });
@@ -316,13 +325,13 @@ export default {
             });
         },
         uploadProgress(progressData) {
-            const progress = this.uploadProgresses.find((_progress) => _progress.name === progressData.fileName);
+            const progress = this.uploadProgresses.find((_progress) => _progress.name === progressData.name);
             if (progress) {
                 progress.percent = progressData.percentCompleted;
                 return;
             }
             this.uploadProgresses.push({
-                name: progressData.fileName,
+                name: progressData.name,
                 percent: progressData.percentCompleted,
             });
         },

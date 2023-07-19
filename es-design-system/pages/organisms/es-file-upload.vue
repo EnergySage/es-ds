@@ -8,7 +8,8 @@
             <es-file-upload
                 :upload-urls="uploadUrls"
                 :file-types="['image/png', 'application/pdf']"
-                @readyToUpload="readyToUpload">
+                @readyToUpload="readyToUpload"
+                @removeFile="removeFile">
                 <template #header>
                     <h2 class="mb-4 d-none d-md-block">
                         Upload a copy of your electric bill.
@@ -126,12 +127,24 @@ export default {
                 description: 'A list of URLs to upload files to. When the number of files ready to upload matches '
                 + 'the number of URLs, the component will begin uploading.',
             },
+            {
+                name: 'fileTypes',
+                default: 'None',
+                description: 'An array of accepted mime types for a file. If no argument passed, all file types are '
+                + 'accepted. These mime types follow the IANA Media Types.',
+            },
             ],
             fileUploadEventListeners: [{
                 name: '@readyToUpload',
                 payload: 'Number',
                 description: 'Called when the component is ready to upload files. The payload is the number of files '
                 + 'that are ready to upload.',
+            },
+            {
+                name: '@removeFile',
+                payload: 'String',
+                description: 'Called when the user clicks the remove button on a file. The payload is the name of the '
+                + 'file that was removed.',
             }],
         };
     },
@@ -147,8 +160,14 @@ export default {
         }
     },
     methods: {
-        readyToUpload(numberOfFiles) {
-            this.uploadUrls = new Array(numberOfFiles).fill('https://energysage.free.beeceptor.com');
+        readyToUpload(fileObjects) {
+            this.uploadUrls = fileObjects.map(({ name }) => ({
+                name,
+                uploadUrl: `https://energysage.free.beeceptor.com/${name}`,
+            }));
+        },
+        removeFile(fileName) {
+            this.uploadUrls = this.uploadUrls.filter((file) => file.name !== fileName);
         },
     },
 };
