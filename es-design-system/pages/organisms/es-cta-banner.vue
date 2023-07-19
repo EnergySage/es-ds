@@ -146,6 +146,7 @@ export default {
     data() {
         return {
             heading: 'Check our marketplace',
+            subtitle: 'Get free quotes.',
             compCode: '',
             docCode: '',
         };

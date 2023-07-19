@@ -20,13 +20,13 @@
                 class="mx-auto mb-100"
                 :class="{'mr-lg-150 mb-lg-0': !narrow}"
                 :style="`width:${imageWidth}; height:${imageHeight};`">
-                <img
+                <b-img
                     :lazy="lazy"
                     class="image d-block h-100 w-100"
                     :width="imageWidth"
                     :height="imageHeight"
                     :src="image"
-                    :alt="imageAltText">
+                    :alt="imageAltText" />
             </div>
             <slot name="image" />
         </div>
@@ -47,11 +47,13 @@
 </template>
 
 <script lang="js">
+import { BImg } from 'bootstrap-vue';
 import EsCard from './EsCard.vue';
 
 export default {
     name: 'EsCtaCard',
     components: {
+        BImg,
         EsCard,
     },
     props: {

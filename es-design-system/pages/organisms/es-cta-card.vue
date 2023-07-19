@@ -22,7 +22,7 @@
                     </es-button>
                 </template>
                 <template #image>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center mb-100">
                         <b-img
                             :width="imageWidth"
                             :height="imageHeight"
@@ -45,7 +45,7 @@
                 subtitle="Click here to get free quotes."
                 url="https://www.energysage.com/">
                 <template #image>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center mb-100">
                         <b-img
                             fluid
                             :src="image"
