@@ -298,8 +298,33 @@
                             Description
                         </dt>
                         <dd>
-                            Additional text to show before the privacy policy link. If set to a falsy value, a lock
-                            icon will be displayed before the link instead.
+                            Additional text to show before the privacy policy link.
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>showLockIcon</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>true</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            Whether to show the lock icon next to the privacy policy copy.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>
@@ -325,7 +350,7 @@
                             Description
                         </dt>
                         <dd>
-                            Whether to show the privacy policy link.
+                            Whether to show the privacy policy link (and copy and icon, if applicable).
                         </dd>
                     </dl>
                 </ds-responsive-table-row>

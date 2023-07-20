@@ -48,14 +48,14 @@
             </es-button>
         </b-form>
         <div v-if="showPrivacyPolicy">
-            <span v-if="privacyPolicyText">
-                {{ privacyPolicyText }}
-            </span>
             <icon-lock-on
-                v-else
+                v-if="showLockIcon"
                 class="privacy-lock-icon mr-25 position-relative"
                 height="1.125rem"
                 width="1.125rem" />
+            <span v-if="privacyPolicyText">
+                {{ privacyPolicyText }}
+            </span>
             <a
                 :href="privacyPolicyLink"
                 class="text-nowrap"
@@ -126,6 +126,10 @@ export default {
         privacyPolicyText: {
             type: String,
             default: 'Your information is safe with us.',
+        },
+        showLockIcon: {
+            type: Boolean,
+            default: true,
         },
         showPrivacyPolicy: {
             type: Boolean,
