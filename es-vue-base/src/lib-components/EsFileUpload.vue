@@ -167,7 +167,6 @@ export default {
             });
         },
         uploadProgress(progressData) {
-            // const progress = this.files.find((file) => file.name === progressData.name);
             this.files = this.files.map((file) => {
                 if (file.name === progressData.name) {
                     return {
