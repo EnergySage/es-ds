@@ -51,7 +51,7 @@ exports[`EsFileThumbnail <EsFileThumbnail /> 1`] = `
         </div>
       </a>
     </div>
-    <div class="font-weight-bolder pt-2 pt-md-3">
+    <div class="font-weight-bolder text-truncate pt-2 pt-md-3">
       test.png
     </div>
     <!---->
@@ -110,7 +110,7 @@ exports[`EsFileThumbnail <EsFileThumbnail /> default prop values 1`] = `
         </div>
       </a>
     </div>
-    <div class="font-weight-bolder pt-2 pt-md-3">
+    <div class="font-weight-bolder text-truncate pt-2 pt-md-3">
       test.png
     </div>
     <!---->
