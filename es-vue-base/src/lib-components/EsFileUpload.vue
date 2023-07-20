@@ -27,7 +27,7 @@
                 :key="index"
                 :variant="event.variant"
                 :show="true"
-                :timeout="60" >
+                :timeout="60">
                 {{ event.msg }}
             </es-form-msg>
         </div>
