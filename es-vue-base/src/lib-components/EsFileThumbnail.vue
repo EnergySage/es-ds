@@ -27,7 +27,7 @@
                         cols="8"
                         class="p-0">
                         <div class="font-weight-bolder text-gray-800 pl-0">
-                            {{ fileName.length < 18 ? fileName : `${fileName.substring(0, 18)}...` }}
+                            {{ fileName }}
                         </div>
                     </b-col>
                     <b-col
@@ -149,8 +149,8 @@
                     </div>
                 </b-link>
             </div>
-            <div class="font-weight-bolder pt-2 pt-md-3">
-                {{ fileName.length < 18 ? fileName : `${fileName.substring(0, 18)}...` }}
+            <div class="font-weight-bolder text-truncate pt-2 pt-md-3">
+                {{ fileName }}
             </div>
             <div
                 v-if="fileSize"
@@ -259,6 +259,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
+
+.desktop-preview {
+    width: 165px;
+}
 
 .thumbnail-border {
     border: 2px solid $card-border-color;

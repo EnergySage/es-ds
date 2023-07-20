@@ -106,6 +106,33 @@
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
+        <div class="mb-450">
+            <h2>
+                EsFileInput slots
+            </h2>
+            <ds-responsive-table>
+                <ds-responsive-table-row
+                    v-for="slot in fileUploadSlots"
+                    :key="slot.name">
+                    <dl>
+                        <dt>
+                            Name
+                        </dt>
+                        <dd>
+                            <code>{{ slot.name }}</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            Description
+                        </dt>
+                        <dd>
+                            {{ slot.description }}
+                        </dd>
+                    </dl>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFileInput.vue"
@@ -132,6 +159,11 @@ export default {
                 default: 'None',
                 description: 'An array of accepted mime types for a file. If no argument passed, all file types are '
                 + 'accepted. These mime types follow the IANA Media Types.',
+            }, {
+                name: 'maxFileSize',
+                default: '25',
+                description: 'Max file size in MB. This is per file. Any file that exceeds this size will not be '
+                + 'uploaded.',
             },
             ],
             fileUploadEventListeners: [{
@@ -146,6 +178,20 @@ export default {
                 description: 'Called when the user clicks the remove button on a file. The payload is the name of the '
                 + 'file that was removed.',
             }],
+            fileUploadSlots: [
+                {
+                    name: 'header',
+                    description: 'Slot for the header text above the drag and drop.',
+                },
+                {
+                    name: 'inputCta',
+                    description: 'Slot for the text in the center of the component.',
+                },
+                {
+                    name: 'inputHelpText',
+                    description: 'Slot for the text below the "Browse Files" button.',
+                },
+            ],
         };
     },
     async created() {

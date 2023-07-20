@@ -26,8 +26,10 @@
                 v-for="(event, index) in events"
                 :key="index"
                 :variant="event.variant"
-                :message="event.msg"
-                :timeout="60" />
+                :show="true"
+                :timeout="60" >
+                {{ event.msg }}
+            </es-form-msg>
         </div>
         <div class="d-md-flex flex-nowrap mb-5">
             <div
@@ -47,8 +49,8 @@
         <es-file-preview-modal
             :file-source="previewFileSource"
             :file-name="previewFileName"
-            :visible="visible"
-            @hidden="visible=false" />
+            :visible="previewModalVisible"
+            @hidden="previewModalVisible=false" />
     </div>
 </template>
 
@@ -100,15 +102,6 @@ export default {
             default: 25,
             required: false,
         },
-        /**
-         * When true, the component will be shorter vertically. This is achieved by giving the parent div
-         * flex-direction: row instead of the default flex-direction: column.
-         */
-        collapsed: {
-            type: Boolean,
-            default: false,
-            required: false,
-        },
     },
     data() {
         return {
@@ -117,7 +110,7 @@ export default {
             previewFileSource: '',
             previewFileName: '',
             deleteFileName: '',
-            visible: false,
+            previewModalVisible: false,
             active: false,
         };
     },
@@ -131,7 +124,7 @@ export default {
             const file = this.files.find(({ name }) => name === fileName);
             this.previewFileSource = file.source;
             this.previewFileName = file.name;
-            this.visible = true;
+            this.previewModalVisible = true;
         },
         fileTypeError(fileName) {
             this.events.push({
