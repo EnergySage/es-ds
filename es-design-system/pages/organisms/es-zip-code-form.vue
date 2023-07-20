@@ -445,37 +445,14 @@
     </div>
 </template>
 <script>
-import EsButton from '@energysage/es-vue-base/src/lib-components/EsButton.vue';
-import EsFormInput from '@energysage/es-vue-base/src/lib-components/EsFormInput.vue';
-import IconLocation from '@energysage/es-vue-base/src/lib-icons/icon-location.vue';
-import IconLockOn from '@energysage/es-vue-base/src/lib-icons/icon-lock-on.vue';
-import {
-formMixins,
-
-
-} from '@energysage/es-vue-base';
-
 export default {
     name: 'EsZipCodeFormDocs',
-    components: {
-        EsButton,
-        EsFormInput,
-        IconLocation,
-        IconLockOn,
-    },
-    mixins: [formMixins],
     data() {
-return {
-
-
+        return {
             compCode: '',
-docCode: '',
-
-
+            docCode: '',
         };
-},
-
-
+    },
     async created() {
         if (this.$prism) {
             /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
@@ -489,8 +466,6 @@ docCode: '',
             this.compCode = this.$prism.normalizeCode(compSource.default);
             this.$prism.highlight(this);
         }
-},
-
-
+    },
 };
 </script>
