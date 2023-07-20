@@ -9,15 +9,19 @@
             type="iframe" />
         <es-button
             v-else
-            class="VideoWithCover-button border-0 p-0 position-relative text-gray w-100"
+            class="EsVideo-button border-0 p-0 position-relative text-gray w-100"
             @click="showVideo = true">
+            <slot
+                v-if="hasImage"
+                name="image" />
             <b-img
+                v-else-if="altText && coverImageUrl"
                 :alt="altText"
                 sizes="md:530px sm:275px"
-                class="VideoWithCover-image d-block rounded-lg w-100"
+                class="EsVideo-image d-block rounded-lg w-100"
                 :src="coverImageUrl" />
             <icon-video-play
-                class="VideoWithCover-icon position-absolute"
+                class="EsVideo-icon position-absolute"
                 width="74px"
                 height="54px" />
         </es-button>
@@ -37,13 +41,15 @@ export default ({
         IconVideoPlay,
     },
     props: {
+        // eslint-disable-next-line vue/require-default-prop
         altText: {
             type: String,
-            required: true,
+            required: false,
         },
+        // eslint-disable-next-line vue/require-default-prop
         coverImageUrl: {
             type: String,
-            required: true,
+            required: false,
         },
         embedUrl: {
             type: String,
@@ -56,6 +62,9 @@ export default ({
         };
     },
     computed: {
+        hasImage() {
+            return !!this.$slots.image;
+        },
         autoplayUrl() {
             const pieces = this.embedUrl.split('?');
             // "&cc_load_policy=1&cc_lang_pref=en" turns closed captions on by default
@@ -70,7 +79,7 @@ export default ({
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
 
-.VideoWithCover {
+.EsVideo {
     &-button,
     &-image {
         height: auto;
