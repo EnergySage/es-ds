@@ -124,6 +124,14 @@
                     </dl>
                     <dl>
                         <dt>
+                            Default
+                        </dt>
+                        <dd>
+                            <code>{{ slot.default }}</code>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
                             Description
                         </dt>
                         <dd>
@@ -181,14 +189,17 @@ export default {
             fileUploadSlots: [
                 {
                     name: 'header',
+                    default: 'None',
                     description: 'Slot for the header text above the drag and drop.',
                 },
                 {
                     name: 'inputCta',
+                    default: 'None',
                     description: 'Slot for the text in the center of the component.',
                 },
                 {
                     name: 'inputHelpText',
+                    default: 'None',
                     description: 'Slot for the text below the "Browse Files" button.',
                 },
             ],
