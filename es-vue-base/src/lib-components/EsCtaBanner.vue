@@ -9,7 +9,6 @@
                     cols="12"
                     lg="6"
                     class="mb-200 my-lg-auto text-center text-lg-left">
-                    <!-- eslint-disable-next-line vuejs-accessibility/heading-has-content -->
                     <div
                         class="h2"
                         :class="{'text-white': dark, 'mb-0': !subtitle}">

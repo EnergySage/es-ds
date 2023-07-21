@@ -15,7 +15,7 @@
                 :heading="heading"
                 :subtitle="subtitle">
                 <template #cta>
-                    <es-button>
+                    <es-button to="#">
                         Get quotes
                     </es-button>
                 </template>

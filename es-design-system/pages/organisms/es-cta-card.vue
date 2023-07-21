@@ -17,7 +17,7 @@
                 narrow
                 :subtitle="subtitle">
                 <template #cta>
-                    <es-button>
+                    <es-button to="#">
                         Get quotes
                     </es-button>
                 </template>
@@ -400,8 +400,8 @@
                             Description
                         </dt>
                         <dd>
-                            If provided, the whole CTA is clickable and links to the given URL. Should be used if and
-                            only if the <code>cta</code> slot is not used.
+                            If provided, the whole CTA is clickable and links to the given URL. Should be used
+                            <strong>if and only if</strong> the <code>cta</code> slot is <strong>not</strong> used.
                         </dd>
                     </dl>
                 </ds-responsive-table-row>
