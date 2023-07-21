@@ -5,7 +5,7 @@ import { BImg, BEmbed } from 'bootstrap-vue';
 
 describe('EsVideo', () => {
     const slots = {
-        default: 'Test',
+        default: 'Test EsVideo Slot',
     };
     // Basic test; should exist for most components
     test('<EsVideo />', async () => {
@@ -89,7 +89,7 @@ describe('EsVideo', () => {
         });
 
         const imageSlot = wrapper.vm.$slots.default;
-        expect(imageSlot[0].text).toBe('Test');
+        expect(imageSlot[0].text).toBe('Test EsVideo Slot');
         expect(wrapper.vm).toBeTruthy();
         expect(wrapper.html()).toMatchSnapshot();
     });

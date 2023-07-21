@@ -9,7 +9,7 @@
             type="iframe" />
         <es-button
             v-else
-            class="EsVideo-button border-0 p-0 position-relative text-gray w-100"
+            class="EsVideo-button text-gray-900 border-0 p-0 position-relative text-gray w-100"
             @click="showVideo = true">
             <slot
                 v-if="hasImage"
@@ -83,11 +83,6 @@ export default ({
     &-button,
     &-image {
         height: auto;
-    }
-
-    /* fix for ESDS .text-gray utility class not using !important and being overridden on hover */
-    &-button {
-        color: $gray-900 !important;
     }
 
     &-icon {
