@@ -381,7 +381,7 @@ export default {
             compCode: '',
             docCode: '',
             columnWidths: {
-                md: [3, 2, 7],
+                md: ['3', '2', '7'],
             },
             placeholderPersonImage,
         };

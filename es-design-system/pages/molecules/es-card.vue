@@ -113,7 +113,7 @@ export default {
             compCode: '',
             docCode: '',
             columnWidths: {
-                md: [2, 2, 8],
+                md: ['2', '2', '8'],
             },
         };
     },

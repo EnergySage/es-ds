@@ -209,7 +209,7 @@ export default {
             events: [],
             uploadProgresses: [],
             columnWidths: {
-                md: [3, 2, 7],
+                md: ['3', '2', '7'],
             },
             fileUploadProps: [{
                 name: 'uploadUrls',

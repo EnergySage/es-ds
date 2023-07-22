@@ -139,7 +139,7 @@ export default {
             compCode: '',
             docCode: '',
             columnWidths: {
-                md: [3, 3, 6],
+                md: ['3', '3', '6'],
             },
             showPreviewModal: false,
             percentLoaded: 0,
