@@ -63,216 +63,216 @@
             </h2>
             <ds-responsive-table>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>imageAltText</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>''</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             The alternate text for the image. Used by default unless content is supplied to the
                             <code>image</code> slot.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>imageSrc</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>''</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             The URL of the image to display. Used by default unless content is supplied to the
                             <code>image</code> slot.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>primaryCtaTarget</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>'_blank'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             Controls whether or not the link should open in a new window. Defaults to
                             opening in a new window.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>primaryCtaText</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             n/a
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             Required. The text for the primary CTA button.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>primaryCtaUrl</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             n/a
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             Required. The URL to which the primary CTA button should link.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>secondaryCtaTarget</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>'_blank'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             Controls whether or not the link should open in a new window. Defaults to
                             opening in a new window.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>secondaryCtaText</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>''</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             The text for the secondary CTA button, if any.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>secondaryCtaUrl</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>''</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             The URL to which the secondary CTA button (if any) should link.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
@@ -282,84 +282,84 @@
             </h2>
             <ds-responsive-table>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>headline</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             n/a
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             The content to insert into the card's heading.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>image</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>&lt;b-img&gt;</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             Optional. Replaces the default <code>&lt;b-img&gt;</code> tag that uses the
                             <code>imageSrc</code> and <code>imageAltText</code> props. Allows full customization
                             of the image component used, for example if a <code>&lt;nuxt-img&gt;</code> is desired.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>description</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             n/a
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             The content to display in the card's main paragraph.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
@@ -380,6 +380,9 @@ export default {
         return {
             compCode: '',
             docCode: '',
+            columnWidths: {
+                md: [3, 2, 7],
+            },
             placeholderPersonImage,
         };
     },

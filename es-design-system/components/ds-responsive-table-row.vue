@@ -1,6 +1,4 @@
 <template>
-    <!-- TODO: make responsive table column width more flexible -->
-    <!-- TODO: allow column headers and items to be passed in somehow to avoid lots of repetition -->
     <div class="responsive-table-row">
         <slot />
     </div>
@@ -23,33 +21,6 @@ export default {
     &:nth-child(even) {
         background-color: $gray-200;
     }
-
-    ::v-deep dl {
-        display: flex;
-        margin: 0;
-
-        dt {
-            width: 30%;
-        }
-
-        dd {
-            width: 70%;
-        }
-    }
-}
-
-@include media-breakpoint-up(sm) {
-    .responsive-table-row {
-        ::v-deep dl {
-            dt {
-                width: 24%;
-            }
-
-            dd {
-                width: 76%;
-            }
-        }
-    }
 }
 
 @include media-breakpoint-up(md) {
@@ -63,41 +34,6 @@ export default {
             background-color: transparent;
         }
 
-        ::v-deep dl,
-        ::v-deep dt,
-        ::v-deep dd {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* ensure background is full height of row */
-        ::v-deep dd {
-            height: 100%;
-            padding: 0.5rem 0;
-        }
-
-        /* undo mobile styles */
-        ::v-deep dl {
-            display: block;
-
-            dt,
-            dd {
-                width: auto;
-            }
-        }
-
-        /* column widths */
-        ::v-deep dl:nth-child(1) {
-            width: 26%;
-        }
-
-        ::v-deep dl:nth-child(2) {
-            width: 12%;
-        }
-
-        ::v-deep dl:nth-child(3) {
-            width: 62%;
-        }
 
         &:first-child {
             ::v-deep dl {
@@ -131,56 +67,6 @@ export default {
             ::v-deep dd {
                 background-color: $gray-200;
             }
-        }
-
-        /* side padding on left-most cells */
-        ::v-deep dl:first-child {
-            dd,
-            dt {
-                padding-left: 0.5rem;
-            }
-        }
-
-        /* side padding on right-most cells */
-        ::v-deep dl:last-child {
-            dd,
-            dt {
-                padding-right: 0.5rem;
-            }
-        }
-    }
-}
-
-@include media-breakpoint-up(xl) {
-    .responsive-table-row {
-        /* column widths */
-        ::v-deep dl:nth-child(1) {
-            width: 20%;
-        }
-
-        ::v-deep dl:nth-child(2) {
-            width: 10%;
-        }
-
-        ::v-deep dl:nth-child(3) {
-            width: 70%;
-        }
-    }
-}
-
-@include media-breakpoint-up(xxl) {
-    .responsive-table-row {
-        /* column widths */
-        ::v-deep dl:nth-child(1) {
-            width: 16%;
-        }
-
-        ::v-deep dl:nth-child(2) {
-            width: 10%;
-        }
-
-        ::v-deep dl:nth-child(3) {
-            width: 74%;
         }
     }
 }

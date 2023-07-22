@@ -127,30 +127,30 @@
                 <ds-responsive-table-row
                     v-for="prop in fileUploadProps"
                     :key="prop.name">
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>{{ prop.name }}</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>{{ prop.default }}</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             {{ prop.description }}
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
@@ -162,30 +162,30 @@
                 <ds-responsive-table-row
                     v-for="eventListener in fileUploadEventListeners"
                     :key="eventListener.name">
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>{{ eventListener.name }}</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Payload
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>{{ eventListener.payload }}</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             {{ eventListener.description }}
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
@@ -208,6 +208,9 @@ export default {
             rawUrls: '',
             events: [],
             uploadProgresses: [],
+            columnWidths: {
+                md: [3, 2, 7],
+            },
             fileUploadProps: [{
                 name: 'uploadUrls',
                 default: 'None',

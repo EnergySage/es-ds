@@ -501,30 +501,38 @@
                     <ds-responsive-table-row
                         v-for="data in fontWeightItems"
                         :key="data.name">
-                        <dl>
-                            <dt>
+                        <ds-responsive-table-column
+                            md="4"
+                            lg="3"
+                            xxl="2">
+                            <template #name>
                                 Name
-                            </dt>
-                            <dd>
-                                {{ data.name }}
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>
+                            </template>
+                            <template #value>
+                                <code>{{ data.name }}</code>
+                            </template>
+                        </ds-responsive-table-column>
+                        <ds-responsive-table-column
+                            md="2"
+                            lg="1">
+                            <template #name>
                                 Weight
-                            </dt>
-                            <dd>
-                                {{ data.weight }}
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>
+                            </template>
+                            <template #value>
+                                <code>{{ data.weight }}</code>
+                            </template>
+                        </ds-responsive-table-column>
+                        <ds-responsive-table-column
+                            md="6"
+                            lg="8"
+                            xxl="9">
+                            <template #name>
                                 Example
-                            </dt>
-                            <dd>
+                            </template>
+                            <template #value>
                                 <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
-                            </dd>
-                        </dl>
+                            </template>
+                        </ds-responsive-table-column>
                     </ds-responsive-table-row>
                 </ds-responsive-table>
             </b-col>
@@ -545,30 +553,38 @@
                     <ds-responsive-table-row
                         v-for="data in fontSizeItems"
                         :key="data.name">
-                        <dl>
-                            <dt>
+                        <ds-responsive-table-column
+                            md="4"
+                            lg="3"
+                            xxl="2">
+                            <template #name>
                                 Name
-                            </dt>
-                            <dd>
-                                {{ data.name }}
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>
+                            </template>
+                            <template #value>
+                                <code>{{ data.name }}</code>
+                            </template>
+                        </ds-responsive-table-column>
+                        <ds-responsive-table-column
+                            md="2"
+                            lg="1">
+                            <template #name>
                                 Size
-                            </dt>
-                            <dd>
-                                {{ calculateActualFontSize(data.size) }}
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>
+                            </template>
+                            <template #value>
+                                <code>{{ calculateActualFontSize(data.size) }}</code>
+                            </template>
+                        </ds-responsive-table-column>
+                        <ds-responsive-table-column
+                            md="6"
+                            lg="8"
+                            xxl="9">
+                            <template #name>
                                 Example
-                            </dt>
-                            <dd>
+                            </template>
+                            <template #value>
                                 <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
-                            </dd>
-                        </dl>
+                            </template>
+                        </ds-responsive-table-column>
                     </ds-responsive-table-row>
                 </ds-responsive-table>
             </b-col>
@@ -587,30 +603,38 @@
                     <ds-responsive-table-row
                         v-for="data in deprecatedFontSizeItems"
                         :key="data.name">
-                        <dl>
-                            <dt>
+                        <ds-responsive-table-column
+                            md="4"
+                            lg="3"
+                            xxl="2">
+                            <template #name>
                                 Name
-                            </dt>
-                            <dd>
-                                {{ data.name }}
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>
+                            </template>
+                            <template #value>
+                                <code>{{ data.name }}</code>
+                            </template>
+                        </ds-responsive-table-column>
+                        <ds-responsive-table-column
+                            md="2"
+                            lg="1">
+                            <template #name>
                                 Size
-                            </dt>
-                            <dd>
-                                {{ calculateActualFontSize(data.size) }}
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>
+                            </template>
+                            <template #value>
+                                <code>{{ calculateActualFontSize(data.size) }}</code>
+                            </template>
+                        </ds-responsive-table-column>
+                        <ds-responsive-table-column
+                            md="6"
+                            lg="8"
+                            xxl="9">
+                            <template #name>
                                 Example
-                            </dt>
-                            <dd>
+                            </template>
+                            <template #value>
                                 <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
-                            </dd>
-                        </dl>
+                            </template>
+                        </ds-responsive-table-column>
                     </ds-responsive-table-row>
                 </ds-responsive-table>
             </b-col>
