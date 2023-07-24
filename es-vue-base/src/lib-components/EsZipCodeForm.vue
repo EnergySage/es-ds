@@ -1,17 +1,19 @@
 <template>
     <div
-        class="EsZipCodeForm d-flex flex-column"
-        :class="[
-            { 'text-white': dark },
-            defaultStackClasses,
-            `align-items-${stackBreak}${align} text-${stackBreak}${textAlign}`,
-        ]"
+        class="EsZipCodeForm align-items-center d-flex flex-column text-center"
+        :class="{
+            'text-white': dark,
+            'align-items-center text-center': stackUntil,
+        }"
         v-bind="$attrs"
         v-on="$listeners">
         <b-form
             ref="ctaForm"
-            class="align-items-center"
-            :class="[{ invalid: $v.$dirty && $v.$invalid }, `d-${stackBreak}flex`]"
+            class="justify-content-center mb-50 w-100"
+            :class="{
+                invalid: $v.$dirty && $v.$invalid,
+                [`d-${stackBreak}flex`]: stackBreak
+            }"
             :action="url"
             method="get"
             novalidate
@@ -20,46 +22,61 @@
             <es-form-input
                 :id="inputId"
                 v-model="zipCode"
-                :class="`mr-${stackBreak}25`"
-                name="zip_code"
+                :class="{
+                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackBreak
+                }"
+                :name="fieldName"
                 autocomplete="postal-code"
                 inputmode="numeric"
                 label-sr-only
                 maxlength="5"
                 pattern="\d*"
-                placeholder="ZIP code"
+                :placeholder="placeholder"
                 required
                 :state="validateState('zipCode')">
                 <template #prefixIcon>
                     <icon-location class="text-gray-800" />
                 </template>
                 <template #label>
-                    ZIP code
+                    {{ placeholder }}
                 </template>
                 <template #errorMessage>
-                    {{ errorDescription }}
+                    <slot name="errorMessage">
+                        Please enter a 5-digit zip code.
+                    </slot>
                 </template>
             </es-form-input>
             <es-button
                 class="w-100"
-                :class="[{ 'mb-50': showPrivacyPolicy }, `ml-${stackBreak}25 w-${stackBreak}auto`]"
+                :class="{
+                    'mb-50': showPrivacyPolicy,
+                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackBreak
+                }"
                 type="submit">
-                {{ buttonText }}
+                <slot name="buttonText">
+                    Submit
+                </slot>
             </es-button>
         </b-form>
-        <div v-if="showPrivacyPolicy">
+        <div>
             <icon-lock-on
-                v-if="showLockIcon"
                 class="privacy-lock-icon mr-25 position-relative"
                 height="1.125rem"
                 width="1.125rem" />
-            <span v-if="privacyPolicyText">
-                {{ privacyPolicyText }}
+            <span>
+                <slot name="privacyExplanation">
+                    Your information is safe with us.
+                </slot>
             </span>
-            <a
+            <b-link
                 :href="privacyPolicyLink"
                 class="text-nowrap"
-                :class="dark ? 'text-white' : 'text-dark'">{{ privacyPolicyLinkText }}</a>
+                :class="dark ? 'text-white' : 'text-dark'"
+                :target="privacyPolicyNewTab ? '_blank' : '_self'">
+                <slot name="privacyPolicyLinkText">
+                    Privacy Policy
+                </slot>
+            </b-link>
         </div>
     </div>
 </template>
@@ -87,21 +104,13 @@ export default {
     },
     mixins: [formMixins],
     props: {
-        align: {
-            type: String,
-            default: 'center',
-        },
-        buttonText: {
-            type: String,
-            required: true,
-        },
         dark: {
             type: Boolean,
             default: false,
         },
-        errorDescription: {
+        fieldName: {
             type: String,
-            default: 'Please enter a 5-digit zip code.',
+            default: 'zip_code',
         },
         inputId: {
             type: String,
@@ -111,37 +120,21 @@ export default {
             type: Boolean,
             default: false,
         },
+        placeholder: {
+            type: String,
+            default: 'ZIP code',
+        },
         privacyPolicyLink: {
             type: String,
             required: true,
-        },
-        privacyPolicyLinkText: {
-            type: String,
-            default: 'Privacy Policy',
         },
         privacyPolicyNewTab: {
             type: Boolean,
             default: false,
         },
-        privacyPolicyText: {
-            type: String,
-            default: 'Your information is safe with us.',
-        },
-        showLockIcon: {
-            type: Boolean,
-            default: true,
-        },
-        showPrivacyPolicy: {
-            type: Boolean,
-            default: true,
-        },
-        stackAlign: {
-            type: String,
-            default: 'center',
-        },
         stackUntil: {
             type: String,
-            default: 'sm',
+            default: '',
         },
         url: {
             type: String,
@@ -156,13 +149,6 @@ export default {
     computed: {
         stackBreak() {
             return this.stackUntil ? `${this.stackUntil}-` : '';
-        },
-        defaultStackClasses() {
-            // Classes to use on the stacked form, up to the stackUntil breakpoint
-            return this.stackUntil ? `align-items-${this.stackAlign} text-${this.stackAlign}` : '';
-        },
-        textAlign() {
-            return { start: 'left', center: 'center', end: 'right' }[this.align];
         },
     },
     methods: {
