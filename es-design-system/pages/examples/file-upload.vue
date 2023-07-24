@@ -1,6 +1,13 @@
 <template>
     <div>
-        <slot name="header" />
+        <div>
+            <h2 class="mb-4 d-none d-md-block">
+                Upload a copy of your electric bill.
+            </h2>
+            <p class="d-none d-md-block">
+                <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
+            </p>
+        </div>
         <es-file-input
             class="mb-450"
             :upload-urls="uploadUrls"
@@ -15,10 +22,20 @@
             @fileDataRead="fileDataRead"
             @uploadProgress="uploadProgress">
             <template #cta>
-                <slot name="inputCta" />
+                <h2 class="d-none d-md-inline-block mb-4 text-center">
+                    Drag and drop your files or
+                </h2>
+                <p class="d-inline-block d-md-none">
+                    <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
+                </p>
             </template>
             <template #helpText>
-                <slot name="inputHelpText" />
+                <p class="d-none d-md-inline-block">
+                    Please upload your file as a PDF or JPG.
+                </p>
+                <p class="d-inline-block d-md-none mb-0">
+                    File types: PDF or JPG
+                </p>
             </template>
         </es-file-input>
         <div v-if="events.length">
@@ -55,58 +72,17 @@
 </template>
 
 <script lang="js">
-import EsFileInput from './EsFileInput.vue';
-import EsFormMsg from './EsFormMsg.vue';
-import EsFileThumbnail from './EsFileThumbnail.vue';
-import EsFilePreviewModal from './EsFilePreviewModal.vue';
-import { mimeTypes, getHumanReadableTypeFromMime } from '../lib-utils';
+import { getHumanReadableTypeFromMime } from '@energysage/es-vue-base';
 
 export default {
     name: 'EsFileUpload',
-    components: {
-        EsFileInput,
-        EsFormMsg,
-        EsFileThumbnail,
-        EsFilePreviewModal,
-    },
-    props: {
-        /**
-         * An array of Objects with the following shape:
-         * {
-         *    name: String,
-         *    uploadUrl: String,
-         * }
-         */
-        uploadUrls: {
-            type: Array,
-            default: () => [],
-        },
-        /**
-         * The file types that are allowed to be uploaded. This is a list of MIME types as strings. If the array is
-         * empty, all file types are allowed. A list of acceptable MIME types can be found here in the template column:
-         * https://www.iana.org/assignments/media-types/media-types.xhtml
-         */
-        fileTypes: {
-            type: Array,
-            default: () => [],
-            required: true,
-            validator(fileTypes) {
-                return fileTypes.every((fileType) => mimeTypes.includes(fileType));
-            },
-        },
-        /**
-         * The maximum file size in MB. This is per file, not the total size of all files.
-         */
-        maxFileSizeMb: {
-            type: Number,
-            default: 25,
-            required: false,
-        },
-    },
     data() {
         return {
             files: [], // Needs to be an object with: name, source, mimeType, percentLoaded, and size
             events: [],
+            fileTypes: ['image/png', 'application/pdf'],
+            maxFileSizeMb: 25,
+            uploadUrls: [],
             previewFileSource: '',
             previewFileName: '',
             deleteFileName: '',
@@ -117,7 +93,7 @@ export default {
     methods: {
         removeFile(fileName) {
             this.files = this.files.filter((file) => file.name !== fileName);
-            this.$emit('removeFile', fileName);
+            this.uploadUrls = this.uploadUrls.filter((file) => file.name !== fileName);
             this.deleteFileName = fileName;
         },
         showPreview(fileName) {
@@ -133,8 +109,11 @@ export default {
                 variant: 'danger',
             });
         },
-        readyToUpload(files) {
-            this.$emit('readyToUpload', files);
+        readyToUpload(fileObjects) {
+            this.uploadUrls = fileObjects.map(({ name }) => ({
+                name,
+                uploadUrl: `https://energysage.free.beeceptor.com/${name}`,
+            }));
         },
         uploadFailure(fileNameAndMessage) {
             this.removeFile(fileNameAndMessage.name);

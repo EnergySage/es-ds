@@ -161,6 +161,7 @@ export default {
             });
         },
         readFilesIntoUrl(files) {
+            console.log('readFilesIntoUrl', files);
             files
                 .forEach((file) => {
                     const fileReader = new FileReader();
@@ -182,9 +183,12 @@ export default {
             const correctlySizedFiles = this.filterLargeFiles(files);
 
             // Make sure the file is the correct mime type
-            let newValidFiles = await Promise.all(correctlySizedFiles.map(async (file) => this.verifyMimeType(file)));
-            // Filter out undefined values
-            newValidFiles = newValidFiles.filter((file) => file);
+            let newValidFiles = await Promise.allSettled(
+                correctlySizedFiles.map(async (file) => this.verifyMimeType(file)),
+            );
+            // Filter out undefined values and "rejected"
+            newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled')
+                .map((file) => file.value);
 
             // If the new file already exists in the current files, remove it and use the new file
             this.files = this.files.filter(({ name }) => !newValidFiles.some((file) => file.name === name));
@@ -209,7 +213,7 @@ export default {
                     const mimeType = findMimeType(hex);
                     if (!mimeType || (this.fileTypes.length > 0 && !this.fileTypes.includes(mimeType))) {
                         this.$emit('fileTypeError', file.name);
-                        return resolve();
+                        return reject();
                     }
                     return resolve(file);
                 };

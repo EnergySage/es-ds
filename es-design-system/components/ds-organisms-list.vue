@@ -6,11 +6,6 @@
             </b-link>
         </li>
         <li>
-            <b-link to="/organisms/es-file-upload">
-                EsFileUpload
-            </b-link>
-        </li>
-        <li>
             <b-link to="/organisms/es-footer">
                 EsFooter
             </b-link>
