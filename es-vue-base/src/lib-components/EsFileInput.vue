@@ -161,7 +161,6 @@ export default {
             });
         },
         readFilesIntoUrl(files) {
-            console.log('readFilesIntoUrl', files);
             files
                 .forEach((file) => {
                     const fileReader = new FileReader();
