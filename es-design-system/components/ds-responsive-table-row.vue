@@ -34,7 +34,6 @@ export default {
             background-color: transparent;
         }
 
-
         &:first-child {
             ::v-deep dl {
                 display: flex;
