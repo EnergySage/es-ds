@@ -43,57 +43,57 @@
             </h2>
             <ds-responsive-table>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>tag</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>'div'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             The name of the tag or component the card should render as.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>variant</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>'display'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             The styling variant to use. Possible values are <code>'display'</code> and
                             <code>'interactive'</code>.
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
@@ -112,6 +112,9 @@ export default {
         return {
             compCode: '',
             docCode: '',
+            columnWidths: {
+                md: ['2', '2', '8'],
+            },
         };
     },
     async created() {

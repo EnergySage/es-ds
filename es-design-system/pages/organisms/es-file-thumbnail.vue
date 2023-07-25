@@ -96,30 +96,30 @@
                 <ds-responsive-table-row
                     v-for="prop in fileUploadProps"
                     :key="prop.name">
-                    <dl>
-                        <dt>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
                             Name
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>{{ prop.name }}</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
                             Default
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             <code>{{ prop.default }}</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
                             Description
-                        </dt>
-                        <dd>
+                        </template>
+                        <template #value>
                             {{ prop.description }}
-                        </dd>
-                    </dl>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
@@ -138,6 +138,9 @@ export default {
         return {
             compCode: '',
             docCode: '',
+            columnWidths: {
+                md: ['3', '3', '6'],
+            },
             showPreviewModal: false,
             percentLoaded: 0,
             fileSource: '',
