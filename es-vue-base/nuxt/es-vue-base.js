@@ -1,5 +1,5 @@
 import Vue from 'vue';
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 import install from '@energysage/es-vue-base';
 
 export default function autoExport(customOptions) {
