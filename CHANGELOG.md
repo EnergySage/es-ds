@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.24.0] - 2023-07-25
+
+### Added
+
+- A new File Upload example
+
+### Changed
+
+- ***BREAKING CHANGE:*** `EsFormMsg` has changed from using a `message` string prop to passing the message as a slot
+- ***BREAKING CHANGE:*** `EsFormMsg` visibility control has changed from the presence/absence of the `message` to a new `show` prop
+- ***BREAKING CHANGE:*** The `formMixins` functions `showFormError`, `showFormSuccess`, and `startSubmit` have changed to support the above functionality - and new functions `hideFormError` and `hideFormSuccess` have been added
+- `EsFormMsg` now supports displaying any JSX/HTML (e.g. links, text formatting) instead of just a string
+- Updates to `EsFileInput`:
+   - Added a `deleteFileName` prop to delete a file from file list when the value changes
+   - When emitting `fileDataRead`, create a URL for application type files
+   - Changed `verifyFiles` to no longer overwrite the existing list of files but rather add to it
+   - `uploadUrls` is now specific to a file name
+   - When `readyToUpload` is emitted, the list of files (with all their data) is emitted instead of just the number of files
+- Updates to `EsFileThumbnail`:
+   - Truncated display name
+   - Emit the file name as payload for emitted events
+- Added a `humanReadable` field to the `mime-type-finder` utils to support better error handling
+- The internal `DsResponsiveTable` component used to generate slots and props documentation on the `Typography`,`EsCard`, `EsFileInput`, `EsFileThumbnail`, and `EsSupportCard` pages now has the ability to customize its column widths to match the layout grid in the same manner as `<b-col>` by taking breakpoint props for `md` and up
+
 ## [0.23.2] - 2023-07-13
 
 ### Added
@@ -641,6 +665,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.24.0]: https://github.com/EnergySage/es-ds/compare/v0.23.2...v0.24.0
 [0.23.2]: https://github.com/EnergySage/es-ds/compare/v0.23.1...v0.23.2
 [0.23.1]: https://github.com/EnergySage/es-ds/compare/v0.23.0...v0.23.1
 [0.23.0]: https://github.com/EnergySage/es-ds/compare/v0.22.1...v0.23.0
