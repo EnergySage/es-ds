@@ -1,74 +1,103 @@
 <template>
-    <div>
+    <b-container>
         <div>
-            <h2 class="mb-4 d-none d-md-block">
-                Upload a copy of your electric bill.
-            </h2>
-            <p class="d-none d-md-block">
-                <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
-            </p>
-        </div>
-        <es-file-input
-            class="mb-450"
-            :upload-urls="uploadUrls"
-            :max-file-size-mb="maxFileSizeMb"
-            :file-types="fileTypes"
-            :collapsed="files.length > 0"
-            :delete-file-name="deleteFileName"
-            @fileSizeError="fileSizeError"
-            @fileTypeError="fileTypeError"
-            @readyToUpload="readyToUpload"
-            @uploadFailure="uploadFailure"
-            @fileDataRead="fileDataRead"
-            @uploadProgress="uploadProgress">
-            <template #cta>
-                <h2 class="d-none d-md-inline-block mb-4 text-center">
-                    Drag and drop your files or
+            <b-col>
+                <h1>
+                    File Upload
+                </h1>
+                <h2>
+                    Comprised of...
                 </h2>
-                <p class="d-inline-block d-md-none">
+                <p>
+                    <ul>
+                        <li>
+                            <strong>es-file-input</strong> to obtain the files from the user
+                        </li>
+                        <li>
+                            <strong>es-form-msg</strong> to display error messages to the user
+                        </li>
+                        <li>
+                            <strong>es-file-thumbnail</strong> to display the files the user has uploaded
+                        </li>
+                        <li>
+                            <strong>es-file-preview-modal</strong> to display a preview of the file the user has
+                            uploaded
+                        </li>
+                    </ul>
+                </p>
+            </b-col>
+        </div>
+        <div class="border-top pt-200">
+            <div>
+                <h2 class="mb-4 d-none d-md-block">
+                    Upload a copy of your electric bill.
+                </h2>
+                <p class="d-none d-md-block">
                     <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
                 </p>
-            </template>
-            <template #helpText>
-                <p class="d-none d-md-inline-block">
-                    Please upload your file as a PDF or JPG.
-                </p>
-                <p class="d-inline-block d-md-none mb-0">
-                    File types: PDF or JPG
-                </p>
-            </template>
-        </es-file-input>
-        <div v-if="events.length">
-            <es-form-msg
-                v-for="(event, index) in events"
-                :key="index"
-                :variant="event.variant"
-                :show="true"
-                :timeout="60">
-                {{ event.msg }}
-            </es-form-msg>
-        </div>
-        <div class="d-md-flex flex-nowrap mb-5">
-            <div
-                v-for="file in files"
-                :key="file.name"
-                class="mt-3 mt-md-0 mr-md-4">
-                <es-file-thumbnail
-                    :file-name="file.name"
-                    :file-size="file.size"
-                    :file-source="file.source"
-                    :mime-type="file.mimeType"
-                    :percent-loaded="file.percentLoaded"
-                    @removeFile="removeFile"
-                    @showPreview="showPreview" />
             </div>
+            <es-file-input
+                class="mb-450"
+                :upload-urls="uploadUrls"
+                :max-file-size-mb="maxFileSizeMb"
+                :file-types="fileTypes"
+                :collapsed="files.length > 0"
+                :delete-file-name="deleteFileName"
+                @fileSizeError="fileSizeError"
+                @fileTypeError="fileTypeError"
+                @readyToUpload="readyToUpload"
+                @uploadFailure="uploadFailure"
+                @fileDataRead="fileDataRead"
+                @uploadProgress="uploadProgress">
+                <template #cta>
+                    <h2 class="d-none d-md-inline-block mb-4 text-center">
+                        Drag and drop your files or
+                    </h2>
+                    <p class="d-inline-block d-md-none">
+                        <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
+                    </p>
+                </template>
+                <template #helpText>
+                    <p class="d-none d-md-inline-block">
+                        Please upload your file as a PDF or JPG.
+                    </p>
+                    <p class="d-inline-block d-md-none mb-0">
+                        File types: PDF or JPG
+                    </p>
+                </template>
+            </es-file-input>
+            <div v-if="events.length">
+                <es-form-msg
+                    v-for="(event, index) in events"
+                    :key="index"
+                    :variant="event.variant"
+                    :show="true"
+                    :timeout="60">
+                    {{ event.msg }}
+                </es-form-msg>
+            </div>
+            <div class="d-md-flex flex-nowrap mb-5">
+                <div
+                    v-for="file in files"
+                    :key="file.name"
+                    class="mt-3 mt-md-0 mr-md-4">
+                    <es-file-thumbnail
+                        :file-name="file.name"
+                        :file-size="file.size"
+                        :file-source="file.source"
+                        :mime-type="file.mimeType"
+                        :percent-loaded="file.percentLoaded"
+                        @removeFile="removeFile"
+                        @showPreview="showPreview" />
+                </div>
+            </div>
+            <es-file-preview-modal
+                :file-source="previewFileSource"
+                :file-name="previewFileName"
+                :visible="previewModalVisible"
+                @hidden="previewModalVisible=false" />
         </div>
-        <es-file-preview-modal
-            :file-source="previewFileSource"
-            :file-name="previewFileName"
-            :visible="previewModalVisible"
-            @hidden="previewModalVisible=false" />
-    </div>
+    </b-container>
 </template>
 
 <script lang="js">
