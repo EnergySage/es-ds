@@ -35,7 +35,7 @@
                         <b-link
                             class="text-gray-900 float-right icon-button"
                             aria-label="close-file-mobile"
-                            @click="$emit('removeFile')">
+                            @click="$emit('removeFile',fileName)">
                             <icon-trash-can />
                         </b-link>
                     </b-col>
@@ -51,7 +51,7 @@
                             <b-link
                                 v-if="!loading"
                                 aria-label="show-preview-mobile-image"
-                                @click="$emit('showPreview')">
+                                @click="$emit('showPreview',fileName)">
                                 {{ previewText }}
                             </b-link>
                         </template>
@@ -79,7 +79,7 @@
                         v-if="!loading"
                         aria-label="close-file-desktop"
                         class="text-gray-800 text-decoration-none icon-button"
-                        @click="$emit('removeFile')">
+                        @click="$emit('removeFile',fileName)">
                         <icon-circle-x />
                         <div class="svg-fill-wrapper bg-white" />
                     </b-link>
@@ -90,7 +90,7 @@
                     class="text-decoration-none text-gray-800"
                     aria-label="show-preview-desktop-image"
                     :disabled="loading"
-                    @click="$emit('showPreview')">
+                    @click="$emit('showPreview',fileName)">
                     <div
                         :class="{
                             'card': true,
@@ -149,7 +149,7 @@
                     </div>
                 </b-link>
             </div>
-            <div class="font-weight-bolder pt-2 pt-md-3">
+            <div class="font-weight-bolder text-truncate pt-2 pt-md-3">
                 {{ fileName }}
             </div>
             <div
@@ -259,6 +259,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/includes';
+
+.desktop-preview {
+    width: 165px;
+}
 
 .thumbnail-border {
     border: 2px solid $card-border-color;
