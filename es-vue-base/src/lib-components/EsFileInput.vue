@@ -254,7 +254,7 @@ export default {
                     return percentCompleted;
                 },
             };
-            await this.$axios.put(
+            await this.$axios.post(
                 this.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name)?.uploadUrl,
                 file,
                 config,
