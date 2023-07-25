@@ -100,110 +100,26 @@
                 EsZipCodeForm slots
             </h2>
             <ds-responsive-table>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>buttonText</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>'Submit'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            The caption of the submit button.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>errorMessage</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>'Please enter a 5-digit zip code.'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            The error message displayed when form validation fails.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>privacyExplanation</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>'Your information is safe with us.'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            Text that will appear next to the Privacy Policy link. Intended to be a brief
-                            description of our commitment to protecting customer information.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>privacyPolicyLinkText</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>'Privacy Policy'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            The text for the Privacy Policy link.
-                        </dd>
-                    </dl>
+                <ds-responsive-table-row
+                    v-for="row in slotTableRows"
+                    :key="row[0]">
+                    <ds-responsive-table-column
+                        v-for="(column, columnIndex) in tableColumns"
+                        :key="column"
+                        :md="slotTableWidths.md[columnIndex]"
+                        :lg="slotTableWidths.lg[columnIndex]">
+                        <template #name>
+                            {{ column }}
+                        </template>
+                        <template #value>
+                            <code v-if="columnIndex < 2">
+                                {{ row[columnIndex] }}
+                            </code>
+                            <span v-else>
+                                {{ row[columnIndex] }}
+                            </span>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
@@ -213,242 +129,26 @@
                 EsZipCodeForm props
             </h2>
             <ds-responsive-table>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>dark</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>false</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            Renders the CTA with white text (suitable for display on a dark background.)
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>fieldName</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>'zip_code'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            The name to use when submitting the ZIP code to the provided <code>url</code>.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>inputId</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            N/A - <strong>required.</strong>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            <code>id</code> attribute for the zip entry. Must be unique on the page.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>newTab</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>false</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            Whether to open the URL in the <code>url</code> prop in a new tab.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>placeholder</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>'ZIP code'</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            Shown in the input as placeholder text. Also used as the
-                            (visually hidden) label for the input.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>privacyPolicyLink</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            N/A - <strong>required.</strong>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            Link to the privacy policy.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>privacyPolicyNewTab</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>false</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            Whether to open the privacy policy link in a new tab.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>stackUntil</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            <code>''</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            Breakpoint up to which form should be stacked. Valid values are '', 'sm', 'md', 'lg', 'xl',
-                            and 'xxl'. '' (empty string) will cause the component to never stack. An out-of-range value
-                            like '*' will cause the component to always stack.
-                        </dd>
-                    </dl>
-                </ds-responsive-table-row>
-                <ds-responsive-table-row>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[0] }}
-                        </dt>
-                        <dd>
-                            <code>url</code>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[1] }}
-                        </dt>
-                        <dd>
-                            N/A - <strong>required.</strong>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
-                            {{ docTableColumns[2] }}
-                        </dt>
-                        <dd>
-                            URL to submit the form to.
-                        </dd>
-                    </dl>
+                <ds-responsive-table-row
+                    v-for="row in propTableRows"
+                    :key="row[0]">
+                    <ds-responsive-table-column
+                        v-for="(column, columnIndex) in tableColumns"
+                        :key="column"
+                        :md="propTableWidths.md[columnIndex]"
+                        :lg="propTableWidths.lg[columnIndex]">
+                        <template #name>
+                            {{ column }}
+                        </template>
+                        <template #value>
+                            <code v-if="columnIndex < 2 && row[columnIndex] !== 'n/a'">
+                                {{ row[columnIndex] }}
+                            </code>
+                            <span v-else>
+                                {{ row[columnIndex] }}
+                            </span>
+                        </template>
+                    </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
@@ -467,11 +167,87 @@ export default {
         return {
             compCode: '',
             docCode: '',
-            docTableColumns: [
-                'Name',
-                'Default',
-                'Description',
+            propTableRows: [
+                [
+                    'dark',
+                    'false',
+                    'Renders the CTA with white text (suitable for display on a dark background).',
+                ],
+                [
+                    'fieldName',
+                    "'zip_code'",
+                    'The name to use when submitting the ZIP code to the provided url.',
+                ],
+                [
+                    'inputId',
+                    'n/a',
+                    'Required. The id for the zip entry. Must be unique on the page.',
+                ],
+                [
+                    'newTab',
+                    'false',
+                    'Whether to open the URL in the url prop in a new tab.',
+                ],
+                [
+                    'placeholder',
+                    "'ZIP code'",
+                    'Shown in the input as placeholder text. Also used as the (visually hidden) label for the input.',
+                ],
+                [
+                    'privacyPolicyLink',
+                    'n/a',
+                    'Required. Link to the privacy policy.',
+                ],
+                [
+                    'privacyPolicyNewTab',
+                    'false',
+                    'Whether to open the privacy policy link in a new tab.',
+                ],
+                [
+                    'stackUntil',
+                    "''",
+                    `The input will be stacked above the button until the provided breakpoint (e.g. md, lg, xl), at
+                        which point they will appear side by side. If no breakpoint is provided, the form will
+                        remain stacked on all breakpoints.`,
+                ],
+                [
+                    'url',
+                    'n/a',
+                    'URL to which the form will submit the provided zip code value.',
+                ],
             ],
+            propTableWidths: {
+                md: ['4', '2', '6'],
+                lg: ['3', '4', '5'],
+            },
+            slotTableRows: [
+                [
+                    'buttonText',
+                    "'Submit'",
+                    'The caption of the submit button.',
+                ],
+                [
+                    'errorMessage',
+                    "'Please enter a 5-digit zip code.'",
+                    'The error message displayed when form validation fails.',
+                ],
+                [
+                    'privacyExplanation',
+                    "'Your information is safe with us.'",
+                    `Text that will appear next to the Privacy Policy link. Intended to be a brief
+                        description of our commitment to protecting customer information.`,
+                ],
+                [
+                    'privacyPolicyLinkText',
+                    "'Privacy Policy'",
+                    'The text for the Privacy Policy link.',
+                ],
+            ],
+            slotTableWidths: {
+                md: ['4', '3', '5'],
+                lg: ['3', '4', '5'],
+            },
+            tableColumns: ['Name', 'Default', 'Description'],
         };
     },
     async created() {
