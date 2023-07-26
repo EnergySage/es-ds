@@ -99,58 +99,18 @@
             <h2>
                 EsZipCodeForm slots
             </h2>
-            <ds-responsive-table>
-                <ds-responsive-table-row
-                    v-for="row in slotTableRows"
-                    :key="row[0]">
-                    <ds-responsive-table-column
-                        v-for="(column, columnIndex) in tableColumns"
-                        :key="column"
-                        :md="slotTableWidths.md[columnIndex]"
-                        :lg="slotTableWidths.lg[columnIndex]">
-                        <template #name>
-                            {{ column }}
-                        </template>
-                        <template #value>
-                            <code v-if="columnIndex < 2">
-                                {{ row[columnIndex] }}
-                            </code>
-                            <span v-else>
-                                {{ row[columnIndex] }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <ds-prop-table
+                :rows="slotTableRows"
+                :widths="slotTableWidths" />
         </div>
 
         <div class="mb-450">
             <h2>
                 EsZipCodeForm props
             </h2>
-            <ds-responsive-table>
-                <ds-responsive-table-row
-                    v-for="row in propTableRows"
-                    :key="row[0]">
-                    <ds-responsive-table-column
-                        v-for="(column, columnIndex) in tableColumns"
-                        :key="column"
-                        :md="propTableWidths.md[columnIndex]"
-                        :lg="propTableWidths.lg[columnIndex]">
-                        <template #name>
-                            {{ column }}
-                        </template>
-                        <template #value>
-                            <code v-if="columnIndex < 2 && row[columnIndex] !== 'n/a'">
-                                {{ row[columnIndex] }}
-                            </code>
-                            <span v-else>
-                                {{ row[columnIndex] }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <ds-prop-table
+                :rows="propTableRows"
+                :widths="propTableWidths" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -247,7 +207,6 @@ export default {
                 md: ['4', '3', '5'],
                 lg: ['3', '4', '5'],
             },
-            tableColumns: ['Name', 'Default', 'Description'],
         };
     },
     async created() {

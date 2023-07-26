@@ -42,7 +42,7 @@
                         </template>
                         <template #cta>
                             <es-zip-code-form
-                                input-id="card-example-1"
+                                input-id="default-with-zip-form"
                                 privacy-policy-link="https://www.energysage.com/privacy-policy/"
                                 url="https://www.energysage.com/market/start/">
                                 <template #buttonText>
@@ -90,7 +90,7 @@
                         </template>
                         <template #cta>
                             <es-button
-                                class="d-flex w-100"
+                                class="w-100"
                                 href="https://heatpumps.energysage.com/welcome">
                                 Compare quotes
                             </es-button>
@@ -158,7 +158,7 @@
                         </template>
                         <template #cta>
                             <es-zip-code-form
-                                input-id="card-example-1"
+                                input-id="no-image-with-zip-form"
                                 privacy-policy-link="https://www.energysage.com/privacy-policy/"
                                 url="https://www.energysage.com/market/start/">
                                 <template #buttonText>
@@ -175,58 +175,18 @@
             <h2>
                 EsCtaCard slots
             </h2>
-            <ds-responsive-table>
-                <ds-responsive-table-row
-                    v-for="row in slotTableRows"
-                    :key="row[0]">
-                    <ds-responsive-table-column
-                        v-for="(column, columnIndex) in tableColumns"
-                        :key="column"
-                        :md="tableWidths.md[columnIndex]"
-                        :lg="tableWidths.lg[columnIndex]">
-                        <template #name>
-                            {{ column }}
-                        </template>
-                        <template #value>
-                            <code v-if="columnIndex < 2 && row[columnIndex] !== 'n/a'">
-                                {{ row[columnIndex] }}
-                            </code>
-                            <span v-else>
-                                {{ row[columnIndex] }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <ds-prop-table
+                :rows="slotTableRows"
+                :widths="tableWidths" />
         </div>
 
         <div class="mb-450">
             <h2>
                 EsCtaCard props
             </h2>
-            <ds-responsive-table>
-                <ds-responsive-table-row
-                    v-for="row in propTableRows"
-                    :key="row[0]">
-                    <ds-responsive-table-column
-                        v-for="(column, columnIndex) in tableColumns"
-                        :key="column"
-                        :md="tableWidths.md[columnIndex]"
-                        :lg="tableWidths.lg[columnIndex]">
-                        <template #name>
-                            {{ column }}
-                        </template>
-                        <template #value>
-                            <code v-if="columnIndex < 2 && row[columnIndex] !== 'n/a'">
-                                {{ row[columnIndex] }}
-                            </code>
-                            <span v-else>
-                                {{ row[columnIndex] }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <ds-prop-table
+                :rows="propTableRows"
+                :widths="tableWidths" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -286,7 +246,6 @@ export default {
                     'The call to action itself. Meant to be an EsButton, EsZipCodeForm, or a link.',
                 ],
             ],
-            tableColumns: ['Name', 'Default', 'Description'],
             tableWidths: {
                 md: ['3', '4', '5'],
                 lg: ['2', '5', '5'],
