@@ -1,7 +1,7 @@
 <template>
     <es-card
         class="align-items-center d-flex flex-column py-200 text-center"
-        :class="[horizontalPadding]"
+        :class="horizontalPadding"
         v-bind="$attrs"
         v-on="$listeners">
         <h2
@@ -17,7 +17,7 @@
         <div
             v-if="$slots.image"
             class="mx-auto"
-            :class="[verticalSpacing]">
+            :class="verticalSpacing">
             <slot name="image" />
         </div>
         <div
@@ -26,7 +26,7 @@
             <div
                 v-if="$slots.subtitle"
                 class="EsCtaCard-subtitle"
-                :class="[verticalSpacing]">
+                :class="verticalSpacing">
                 <slot name="subtitle" />
             </div>
             <slot name="cta" />
