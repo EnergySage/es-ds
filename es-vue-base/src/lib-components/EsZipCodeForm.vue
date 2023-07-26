@@ -47,7 +47,7 @@
                 </template>
             </es-form-input>
             <es-button
-                class="w-100"
+                class="text-nowrap w-100"
                 :class="{
                     [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackBreak
                 }"
