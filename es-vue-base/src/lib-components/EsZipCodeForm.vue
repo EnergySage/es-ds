@@ -49,7 +49,6 @@
             <es-button
                 class="w-100"
                 :class="{
-                    'mb-50': showPrivacyPolicy,
                     [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackBreak
                 }"
                 type="submit">
