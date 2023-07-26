@@ -41,15 +41,13 @@ export default ({
         IconVideoPlay,
     },
     props: {
-        // eslint-disable-next-line vue/require-default-prop
         altText: {
             type: String,
-            required: false,
+            required: true,
         },
-        // eslint-disable-next-line vue/require-default-prop
         coverImageUrl: {
             type: String,
-            required: false,
+            required: true,
         },
         embedUrl: {
             type: String,

@@ -6,8 +6,8 @@
         <div class="mb-300">
             <p>
                 These icons are designed to work with design system components. Their size can be adjusted by passing
-                in <code>height</code> and <code>width</code> parameters. By default, icons will take the font color
-                of the container in which they're placed. To change their color, simply place the appropriate
+                in <code>height</code> and <code>width</code> parameters. By default, icons will take the font color of
+                the container in which they're placed. To change their color, simply place the appropriate
                 <code>text-{xxx}</code> utility class on their containing element.
             </p>
             <b-form-group label="Select an option to see how the icons look with that color applied.">
@@ -345,10 +345,6 @@
                 <code>IconVerified</code>
             </li>
             <li>
-                <icon-video-play />
-                <code>IconVideoPlay</code>
-            </li>
-            <li>
                 <icon-wifi />
                 <code>IconWifi</code>
             </li>
@@ -481,6 +477,20 @@
                 <code>IconFilePdf</code>
             </li>
         </ul>
+        <h2>
+            Miscellaneous Icons
+        </h2>
+        <p>
+            Default size for file icons is 74px by 54px.
+        </p>
+        <ul
+            class="ds-icon-list m-0 mb-300 p-0"
+            :class="{ [textColorClass]: true }">
+            <li>
+                <icon-video-play />
+                <code>IconVideoPlay</code>
+            </li>
+        </ul>
 
         <ds-doc-source
             :doc-code="docCode"
@@ -525,7 +535,7 @@ export default {
     },
     async created() {
         if (this.$prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
             const docSource = await import('!raw-loader!./icons.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
@@ -538,7 +548,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+@import '~@energysage/es-bs-base/scss/variables';
 
 .ds-icon-list {
     list-style: none;

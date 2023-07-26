@@ -1,18 +1,21 @@
-<!-- eslint-disable vuejs-accessibility/no-static-element-interactions -->
 <template>
     <div>
         <h1>
             Video
         </h1>
         <p>
-            Shows the embed video when the cover is clicked.
+            Shows a YouTube video when the provided cover image is clicked.
         </p>
         <div>
-            <es-video
-                :alt-text="altText"
-                class="my-450 mb-200 mb-lg-0"
-                :cover-image-url="placeholderEsThumbnail"
-                :embed-url="embedUrl" />
+            <b-row class="justify-content-center">
+                <b-col md="8">
+                    <es-video
+                        alt-text="Community solar: Everything you want to know before you join"
+                        class="my-450 mb-200 mb-lg-0"
+                        cover-image-url="https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png"
+                        embed-url="https://www.youtube.com/embed/hgmZG3GLLNg" />
+                </b-col>
+            </b-row>
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -22,17 +25,12 @@
     </div>
 </template>
 <script>
-import placeholderEsThumbnail from '@/assets/placeholder/energysage_thumbnail.png';
-
 export default {
     name: 'EsVideoDocs',
     data() {
         return {
             compCode: '',
             docCode: '',
-            altText: 'Community solar: Everything you want to know before you join',
-            placeholderEsThumbnail,
-            embedUrl: 'https://www.youtube.com/embed/hgmZG3GLLNg',
         };
     },
     async created() {
