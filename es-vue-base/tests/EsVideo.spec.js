@@ -13,7 +13,7 @@ describe('EsVideo', () => {
             ...jestVue,
             propsData: {
                 altText: 'Community solar: Everything you want to know before you join',
-                coverImageUrl: '../es-design-system/assets/placeholder/energysage_thumbnail.png',
+                coverImageUrl: 'https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png',
                 embedUrl: 'https://www.youtube.com/embed/hgmZG3GLLNg',
             },
         });
@@ -29,7 +29,7 @@ describe('EsVideo', () => {
             ...jestVue,
             propsData: {
                 altText: 'Community solar: Everything you want to know before you join',
-                coverImageUrl: '../es-design-system/assets/placeholder/energysage_thumbnail.png',
+                coverImageUrl: 'https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png',
                 embedUrl: 'https://www.youtube.com/embed/hgmZG3GLLNg',
             },
         });
@@ -44,7 +44,7 @@ describe('EsVideo', () => {
             ...jestVue,
             propsData: {
                 altText: 'Community solar: Everything you want to know before you join',
-                coverImageUrl: '../es-design-system/assets/placeholder/energysage_thumbnail.png',
+                coverImageUrl: 'https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png',
                 embedUrl: 'https://www.youtube.com/embed/hgmZG3GLLNg',
             },
             data() {
@@ -64,7 +64,7 @@ describe('EsVideo', () => {
             ...jestVue,
             propsData: {
                 altText: 'Community solar: Everything you want to know before you join',
-                coverImageUrl: '../es-design-system/assets/placeholder/energysage_thumbnail.png',
+                coverImageUrl: 'https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png',
                 embedUrl: 'https://www.youtube.com/embed/hgmZG3GLLNg',
             },
         });
@@ -73,7 +73,9 @@ describe('EsVideo', () => {
         expect(wrapper.html()).toMatchSnapshot();
 
         expect(wrapper.props('altText')).toBe('Community solar: Everything you want to know before you join');
-        expect(wrapper.props('coverImageUrl')).toBe('../es-design-system/assets/placeholder/energysage_thumbnail.png');
+        expect(wrapper.props('coverImageUrl')).toBe(
+            'https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png',
+        );
         expect(wrapper.props('embedUrl')).toBe('https://www.youtube.com/embed/hgmZG3GLLNg');
     });
     // Test slot exists
@@ -83,7 +85,7 @@ describe('EsVideo', () => {
             slots,
             propsData: {
                 altText: 'Community solar: Everything you want to know before you join',
-                coverImageUrl: '../es-design-system/assets/placeholder/energysage_thumbnail.png',
+                coverImageUrl: 'https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png',
                 embedUrl: 'https://www.youtube.com/embed/hgmZG3GLLNg',
             },
         });
