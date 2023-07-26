@@ -1,0 +1,179 @@
+<template>
+    <div
+        class="EsZipCodeForm align-items-center d-flex flex-column text-center"
+        :class="{
+            'text-white': dark,
+            'align-items-center text-center': stackUntil,
+        }"
+        v-bind="$attrs"
+        v-on="$listeners">
+        <b-form
+            ref="ctaForm"
+            class="justify-content-center mb-50 w-100"
+            :class="{
+                invalid: $v.$dirty && $v.$invalid,
+                [`d-${stackBreak}flex`]: stackBreak
+            }"
+            :action="url"
+            method="get"
+            novalidate
+            :target="newTab ? '_blank' : '_self'"
+            @submit.prevent.stop="handleSubmit">
+            <es-form-input
+                :id="inputId"
+                v-model="zipCode"
+                :class="{
+                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackBreak
+                }"
+                :name="fieldName"
+                autocomplete="postal-code"
+                inputmode="numeric"
+                label-sr-only
+                maxlength="5"
+                pattern="\d*"
+                :placeholder="placeholder"
+                required
+                :state="validateState('zipCode')">
+                <template #prefixIcon>
+                    <icon-location class="text-gray-800" />
+                </template>
+                <template #label>
+                    {{ placeholder }}
+                </template>
+                <template #errorMessage>
+                    <slot name="errorMessage">
+                        Please enter a 5-digit zip code.
+                    </slot>
+                </template>
+            </es-form-input>
+            <es-button
+                class="text-nowrap w-100"
+                :class="{
+                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackBreak
+                }"
+                type="submit">
+                <slot name="buttonText">
+                    Submit
+                </slot>
+            </es-button>
+        </b-form>
+        <div>
+            <icon-lock-on
+                class="privacy-lock-icon mr-25 position-relative"
+                height="1.125rem"
+                width="1.125rem" />
+            <span>
+                <slot name="privacyExplanation">
+                    Your information is safe with us.
+                </slot>
+            </span>
+            <b-link
+                :href="privacyPolicyLink"
+                class="text-nowrap"
+                :class="dark ? 'text-white' : 'text-dark'"
+                :target="privacyPolicyNewTab ? '_blank' : '_self'">
+                <slot name="privacyPolicyLinkText">
+                    Privacy Policy
+                </slot>
+            </b-link>
+        </div>
+    </div>
+</template>
+
+<script lang="js">
+import { formMixins } from '../lib-mixins';
+import {
+    vuelidateMinLength,
+    vuelidateMaxLength,
+    vuelidateNumeric,
+    vuelidateRequired,
+} from '../lib-validators';
+import EsButton from './EsButton.vue';
+import EsFormInput from './EsFormInput.vue';
+import IconLocation from '../lib-icons/icon-location.vue';
+import IconLockOn from '../lib-icons/icon-lock-on.vue';
+
+export default {
+    name: 'EsZipCodeForm',
+    components: {
+        EsButton,
+        EsFormInput,
+        IconLocation,
+        IconLockOn,
+    },
+    mixins: [formMixins],
+    props: {
+        dark: {
+            type: Boolean,
+            default: false,
+        },
+        fieldName: {
+            type: String,
+            default: 'zip_code',
+        },
+        inputId: {
+            type: String,
+            required: true,
+        },
+        newTab: {
+            type: Boolean,
+            default: false,
+        },
+        placeholder: {
+            type: String,
+            default: 'ZIP code',
+        },
+        privacyPolicyLink: {
+            type: String,
+            required: true,
+        },
+        privacyPolicyNewTab: {
+            type: Boolean,
+            default: false,
+        },
+        stackUntil: {
+            type: String,
+            default: '',
+        },
+        url: {
+            type: String,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            zipCode: '',
+        };
+    },
+    computed: {
+        stackBreak() {
+            return this.stackUntil ? `${this.stackUntil}-` : '';
+        },
+    },
+    methods: {
+        handleSubmit() {
+            if (this?.$v?.$invalid) {
+                // if form is invalid, touch to display errors and get out
+                this.$v.$touch();
+            } else {
+                this.$refs.ctaForm.submit();
+            }
+        },
+    },
+    validations: {
+        zipCode: {
+            maxLength: vuelidateMaxLength(5),
+            minLength: vuelidateMinLength(5),
+            numeric: vuelidateNumeric,
+            required: vuelidateRequired,
+        },
+    },
+};
+</script>
+<style lang="scss" scoped>
+.EsZipCodeForm {
+    .privacy-lock-icon {
+        top: -0.1em;
+    }
+}
+</style>

@@ -5,3 +5,4 @@ export { default as getEsNavBarAccountContent } from './nav-bar-account-content'
 export { default as getEsNavBarGlobalContent } from './nav-bar-global-content';
 export { default as findMimeType } from './mime-type-finder';
 export { mimeTypes } from './mime-type-finder';
+export { getHumanReadableTypeFromMime } from './mime-type-finder';
