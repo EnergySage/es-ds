@@ -34,7 +34,7 @@ export default {
         },
         rows: {
             type: Array,
-            required: true
+            required: true,
         },
         widths: {
             type: Object,
