@@ -11,11 +11,6 @@
             </b-link>
         </li>
         <li>
-            <b-link :to="{ name: 'examples-form-field-validation___en' }">
-                Form with Field Validation
-            </b-link>
-        </li>
-        <li>
             <b-link :to="{ name: 'examples-form-validation___en' }">
                 Form with (form level) Validation
             </b-link>
