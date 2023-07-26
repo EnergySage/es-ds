@@ -188,6 +188,7 @@
                 :rows="propTableRows"
                 :widths="tableWidths" />
         </div>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsCtaCard.vue"
@@ -195,6 +196,7 @@
             doc-source="es-design-system/pages/organisms/es-cta-card.vue" />
     </div>
 </template>
+
 <script>
 import { BImg } from 'bootstrap-vue';
 

@@ -133,6 +133,7 @@
                 :rows="propTableRows"
                 :widths="tableWidths" />
         </div>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsCtaBanner.vue"
@@ -140,16 +141,10 @@
             doc-source="es-design-system/pages/organisms/es-cta-banner.vue" />
     </div>
 </template>
-<script>
-import EsButton from '@energysage/es-vue-base/src/lib-components/EsButton.vue';
-import EsZipCodeForm from '@energysage/es-vue-base/src/lib-components/EsZipCodeForm.vue';
 
+<script>
 export default {
     name: 'EsCtaDocs',
-    components: {
-        EsButton,
-        EsZipCodeForm,
-    },
     data() {
         return {
             compCode: '',

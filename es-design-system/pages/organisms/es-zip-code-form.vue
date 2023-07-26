@@ -112,6 +112,7 @@
                 :rows="propTableRows"
                 :widths="propTableWidths" />
         </div>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsZipCodeForm.vue"
@@ -120,6 +121,7 @@
     </div>
     <!-- eslint-enable vue/multiline-html-element-content-newline vue/singleline-html-element-content-newline -->
 </template>
+
 <script>
 export default {
     name: 'EsZipCodeFormDocs',
