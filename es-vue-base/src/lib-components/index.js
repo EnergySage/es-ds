@@ -35,6 +35,7 @@ export { default as EsSupport } from './EsSupport.vue';
 export { default as EsSupportCard } from './EsSupportCard.vue';
 export { default as EsTab } from './EsTab.vue';
 export { default as EsTabs } from './EsTabs.vue';
+export { default as EsVideo } from './EsVideo.vue';
 export { default as EsViewMore } from './EsViewMore.vue';
 export { default as EsVerificationCode } from './EsVerificationCode.vue';
 export { default as EsZipCodeForm } from './EsZipCodeForm.vue';

@@ -82,6 +82,7 @@ export { default as IconSearch } from './icon-search.vue';
 export { default as IconSolar } from './icon-solar.vue';
 export { default as IconTree } from './icon-tree.vue';
 export { default as IconUpload } from './icon-upload.vue';
+export { default as IconVideoPlay } from './icon-video-play.vue';
 
 // marketing icons
 export { default as IconBattery } from './icon-battery.vue';

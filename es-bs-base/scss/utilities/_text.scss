@@ -116,7 +116,7 @@
 
 @mixin text-colors($color, $value, $relative: true) {
   .text-#{$color} {
-    color: $value;
+    color: $value !important;
   }
 }
 
