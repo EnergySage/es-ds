@@ -7,11 +7,10 @@
             Shows a YouTube video when the provided cover image is clicked.
         </p>
         <div>
-            <b-row class="justify-content-center">
+            <b-row class="justify-content-center my-200 my-lg-450">
                 <b-col md="8">
                     <es-video
                         alt-text="Community solar: Everything you want to know before you join"
-                        class="my-450 mb-200 mb-lg-0"
                         cover-image-url="https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png"
                         embed-url="https://www.youtube.com/embed/hgmZG3GLLNg" />
                 </b-col>

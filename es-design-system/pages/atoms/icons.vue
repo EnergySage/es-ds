@@ -480,9 +480,6 @@
         <h2>
             Miscellaneous Icons
         </h2>
-        <p>
-            Default size for file icons is 74px by 54px.
-        </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
             :class="{ [textColorClass]: true }">
