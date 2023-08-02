@@ -1,15 +1,20 @@
 <template>
     <es-card
-        class="px-100 px-lg-300"
-        :class="[{ 'bg-gray text-white': dark }]"
+        :class="[{
+            'bg-gray text-white': dark,
+            'px-100 px-lg-200': variant === 'default',
+            'px-100 px-lg-300': variant === 'wide',
+        }]"
         v-bind="$attrs"
         v-on="$listeners">
         <b-row>
             <b-col
                 class="mb-200 my-lg-auto text-center text-lg-left"
-                :lg="lgFirst">
+                :lg="lgFirst"
+                :xxl="xxlFirst">
                 <h2
                     :class="{
+                        'font-size-300': variant === 'default',
                         'mb-50': $slots.subtitle,
                         'mb-0': !$slots.subtitle,
                         'text-white': dark,
@@ -26,7 +31,8 @@
             </b-col>
             <b-col
                 class="d-flex justify-content-center justify-content-lg-end my-auto"
-                :lg="lgSecond">
+                :lg="lgSecond"
+                :xxl="xxlSecond">
                 <slot name="cta" />
             </b-col>
         </b-row>
@@ -46,14 +52,45 @@ export default {
             type: Boolean,
             default: false,
         },
-        lgFirst: {
-            type: String,
-            default: '6',
+        hasButton: {
+            type: Boolean,
+            default: false,
         },
-        lgSecond: {
+        // default or wide
+        variant: {
             type: String,
-            default: '6',
+            default: 'default',
         },
     },
+    computed: {
+        lgFirst() {
+            if (this.variant === 'wide') {
+                return this.hasButton ? '8' : '6';
+            }
+
+            return this.hasButton ? '7' : '4';
+        },
+        lgSecond() {
+            if (this.variant === 'wide') {
+                return this.hasButton ? '4' : '6';
+            }
+
+            return this.hasButton ? '5' : '8';
+        },
+        xxlFirst() {
+            if (this.variant === 'wide') {
+                return this.hasButton ? '8' : '6';
+            }
+
+            return this.hasButton ? '8' : '5';
+        },
+        xxlSecond() {
+            if (this.variant === 'wide') {
+                return this.hasButton ? '4' : '6';
+            }
+
+            return this.hasButton ? '4' : '7';
+        },
+    }
 };
 </script>
