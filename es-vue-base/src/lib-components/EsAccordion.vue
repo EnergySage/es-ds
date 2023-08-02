@@ -1,18 +1,24 @@
 <template>
     <div class="EsAccordion border-bottom border-light rounded-bottom">
-        <header role="tab">
-            <es-button
-                class="EsAccordion-button h-auto align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 rounded-0 text-body text-left text-decoration-none w-100"
+        <header
+            role="tab"
+            class="position-relative d-inline-block w-100">
+            <component
+                :is="headingTag"
+                class="EsAccordion-heading mb-0 h-auto align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 rounded-0 text-body text-left text-decoration-none"
                 :class="{
-                    'bg-light': isVisible,
+                    'bg-gray-200': isVisible,
                     'bg-white': !isVisible,
-                    'EsAccordion-button--visible': isVisible,
-                }"
-                variant="link"
-                @click="handleClick">
+                    'EsAccordion-heading--visible': isVisible,
+                }">
                 <slot name="title" />
                 <icon-chevron-down class="EsAccordion-icon flex-shrink-0 ml-200" />
-            </es-button>
+            </component>
+            <button
+                class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"
+                @click="handleClick">
+                <span class="d-none">{{ isVisible ? 'collapse' : 'expand' }}</span>
+            </button>
         </header>
         <b-collapse
             :id="id"
@@ -28,13 +34,11 @@
 <script>
 import { BCollapse } from 'bootstrap-vue';
 import IconChevronDown from '../lib-icons/icon-chevron-down.vue';
-import EsButton from './EsButton.vue';
 
 export default {
     name: 'EsAccordion',
     components: {
         BCollapse,
-        EsButton,
         IconChevronDown,
     },
     /**
@@ -64,6 +68,10 @@ export default {
             type: String,
             required: true,
         },
+        headingTag: {
+            type: String,
+            default: 'h3',
+        },
     },
     computed: {
         isVisible() {
@@ -87,15 +95,15 @@ export default {
 @import '~@energysage/es-bs-base/scss/includes';
 
 /* rotate the chevron when expanded */
-.EsAccordion-button--visible {
+.EsAccordion-heading--visible {
     .EsAccordion-icon {
-      transform: rotate(180deg);
+        transform: rotate(180deg);
     }
 }
 /* first item needs rounded corners on top */
-  .EsAccordion:first-child {
-    .EsAccordion-button {
-      border-radius: $border-radius $border-radius 0 0 !important;
+.EsAccordion:first-child {
+    .EsAccordion-heading {
+        border-radius: $border-radius $border-radius 0 0 !important;
     }
 }
 /**
@@ -103,19 +111,23 @@ export default {
  * depending which is visible at the bottom of the list
  */
 .EsAccordion:last-child {
-    .EsAccordion-button,
+    .EsAccordion-heading,
     .EsAccordion-content {
-      border-radius: 0 0 $border-radius $border-radius !important;
+        border-radius: 0 0 $border-radius $border-radius !important;
     }
     /* if the last item is expanded, the button is no longer the last visible item */
-    .EsAccordion-button--visible {
-      border-radius: 0 !important;
+    .EsAccordion-heading--visible {
+        border-radius: 0 !important;
     }
+}
+/* align button to cover the heading tag */
+.EsAccordion-button {
+    top: 0;
 }
 /* only animate the chevron if the user doesn't prefer reduced motion */
 @media not prefers-reduced-motion {
     .EsAccordion-icon {
-      transition: $transition-base;
+        transition: $transition-base;
     }
 }
 </style>
