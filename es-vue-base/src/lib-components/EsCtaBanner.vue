@@ -91,6 +91,6 @@ export default {
 
             return this.hasButton ? '4' : '7';
         },
-    }
+    },
 };
 </script>

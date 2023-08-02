@@ -108,7 +108,7 @@ export default {
     props: {
         constrained: {
             type: Boolean,
-            default: false
+            default: false,
         },
         dark: {
             type: Boolean,
