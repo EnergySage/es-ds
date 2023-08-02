@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.1] - 2023-08-01
+
+### Changed
+
+- ***BREAKING CHANGE:*** The `lgFirst` and `lgSecond` props have been removed from `EsCtaBanner`
+- New `constrained` prop for `EsZipCodeForm` to display within constrained-width layouts
+- New `hasButton` and `variant` props for `EsCtaBanner` to control font size, column layout, and side padding
+- Fixed an issue with `EsCtaCard` where images without an inherent width wouldn't display
+- Fixed an issue with `EsZipCodeForm` where error message text was difficult to read in dark mode
+
 ## [0.25.0] - 2023-07-28
 
 ### Added
@@ -690,6 +700,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.25.1]: https://github.com/EnergySage/es-ds/compare/v0.25.0...v0.25.1
 [0.25.0]: https://github.com/EnergySage/es-ds/compare/v0.24.1...v0.25.0
 [0.24.1]: https://github.com/EnergySage/es-ds/compare/v0.24.0...v0.24.1
 [0.24.0]: https://github.com/EnergySage/es-ds/compare/v0.23.2...v0.24.0
