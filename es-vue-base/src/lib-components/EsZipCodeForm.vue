@@ -41,15 +41,18 @@
                     {{ placeholder }}
                 </template>
                 <template #errorMessage>
-                    <slot name="errorMessage">
-                        Please enter a 5-digit zip code.
-                    </slot>
+                    <span :class="{ 'text-white': dark }">
+                        <slot name="errorMessage">
+                            Please enter a 5-digit zip code.
+                        </slot>
+                    </span>
                 </template>
             </es-form-input>
             <es-button
                 class="text-nowrap w-100"
                 :class="{
-                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackBreak
+                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackBreak,
+                    'px-100': constrained,
                 }"
                 type="submit">
                 <slot name="buttonText">
@@ -57,7 +60,7 @@
                 </slot>
             </es-button>
         </b-form>
-        <div>
+        <div :class="{ 'font-size-75': constrained }">
             <icon-lock-on
                 class="privacy-lock-icon mr-25 position-relative"
                 height="1.125rem"
@@ -103,6 +106,10 @@ export default {
     },
     mixins: [formMixins],
     props: {
+        constrained: {
+            type: Boolean,
+            default: false,
+        },
         dark: {
             type: Boolean,
             default: false,

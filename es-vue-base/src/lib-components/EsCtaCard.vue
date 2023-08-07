@@ -16,7 +16,7 @@
         </h2>
         <div
             v-if="$slots.image"
-            class="mx-auto"
+            class="mx-auto w-100"
             :class="verticalSpacing">
             <slot name="image" />
         </div>
