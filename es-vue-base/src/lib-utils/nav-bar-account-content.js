@@ -2,7 +2,7 @@
 export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
     ACCOUNTS_DOMAIN = process.env.ACCOUNTS_DOMAIN || 'https://accounts.energysage.com',
-    REGISTER_LINK = process.env.REGISTER_LINK || `${ACCOUNTS_DOMAIN}/?next=${ES_DOMAIN}/register-thanks/`,
+    REGISTER_LINK = process.env.REGISTER_LINK || `${ACCOUNTS_DOMAIN}/register/?next=${ES_DOMAIN}/register-thanks/`,
 ) => ({
     mobileAccountButtonAltText: 'Open account menu',
     loggedIn: {
