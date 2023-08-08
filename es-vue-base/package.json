@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-vue-base",
-  "version": "0.25.1",
+  "version": "0.25.4",
   "private": false,
   "description": "",
   "scripts": {
@@ -30,7 +30,7 @@
     "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.20.2",
-    "@energysage/es-bs-base": "^0.25.1",
+    "@energysage/es-bs-base": "^0.25.2",
     "@rollup/plugin-babel": "^6.0.0",
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-image": "^3.0.0",

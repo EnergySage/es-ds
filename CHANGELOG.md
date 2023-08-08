@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.4] - 2023-08-07
+
+### Changed
+
+- Fixed broken `REGISTER_LINK` variable
+
+## [0.25.2] - 2023-08-07
+
+### Changed
+
+- Made `Create Account` link an environment variable
+- Removed `:to` attribute from `EsNavLink`
+- Updated all non breaking dependencies
+
 ## [0.25.1] - 2023-08-01
 
 ### Changed
@@ -53,14 +67,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ***BREAKING CHANGE:*** The `formMixins` functions `showFormError`, `showFormSuccess`, and `startSubmit` have changed to support the above functionality - and new functions `hideFormError` and `hideFormSuccess` have been added
 - `EsFormMsg` now supports displaying any JSX/HTML (e.g. links, text formatting) instead of just a string
 - Updates to `EsFileInput`:
-   - Added a `deleteFileName` prop to delete a file from file list when the value changes
-   - When emitting `fileDataRead`, create a URL for application type files
-   - Changed `verifyFiles` to no longer overwrite the existing list of files but rather add to it
-   - `uploadUrls` is now specific to a file name
-   - When `readyToUpload` is emitted, the list of files (with all their data) is emitted instead of just the number of files
+  - Added a `deleteFileName` prop to delete a file from file list when the value changes
+  - When emitting `fileDataRead`, create a URL for application type files
+  - Changed `verifyFiles` to no longer overwrite the existing list of files but rather add to it
+  - `uploadUrls` is now specific to a file name
+  - When `readyToUpload` is emitted, the list of files (with all their data) is emitted instead of just the number of files
 - Updates to `EsFileThumbnail`:
-   - Truncated display name
-   - Emit the file name as payload for emitted events
+  - Truncated display name
+  - Emit the file name as payload for emitted events
 - Added a `humanReadable` field to the `mime-type-finder` utils to support better error handling
 - The internal `DsResponsiveTable` component used to generate slots and props documentation on the `Typography`,`EsCard`, `EsFileInput`, `EsFileThumbnail`, and `EsSupportCard` pages now has the ability to customize its column widths to match the layout grid in the same manner as `<b-col>` by taking breakpoint props for `md` and up
 
@@ -96,18 +110,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
- - New `EsDataTable` component
+- New `EsDataTable` component
 
 ### Changed
 
- - ***BREAKING CHANGE:*** Heading 3 mobile font size has increased from 16px to 18px
- - ***BREAKING CHANGE:*** Heading 5 mobile font size has decreased from 16px to 14px
- - ***BREAKING CHANGE:*** Heading 6 mobile font size has decreased from 14px to 12px
- - Fixed an issue with `EsNavBar` where product nav links were not clickable on certain www pages
- - Fixed an issue with `EsNavBar` where the Solar Calculator nav link was missing a trailing slash
- - Fixed an issue with `EsNavBar` where the cursor changed to a hand pointer even when not over a link
- - Fixed a padding issue with `EsAccordion` when title text wrapped to the next line
- - Added tables to Typography page with detailed info about mobile and desktop font sizes
+- ***BREAKING CHANGE:*** Heading 3 mobile font size has increased from 16px to 18px
+- ***BREAKING CHANGE:*** Heading 5 mobile font size has decreased from 16px to 14px
+- ***BREAKING CHANGE:*** Heading 6 mobile font size has decreased from 14px to 12px
+- Fixed an issue with `EsNavBar` where product nav links were not clickable on certain www pages
+- Fixed an issue with `EsNavBar` where the Solar Calculator nav link was missing a trailing slash
+- Fixed an issue with `EsNavBar` where the cursor changed to a hand pointer even when not over a link
+- Fixed a padding issue with `EsAccordion` when title text wrapped to the next line
+- Added tables to Typography page with detailed info about mobile and desktop font sizes
 
 ## [0.22.1] - 2023-06-12
 
