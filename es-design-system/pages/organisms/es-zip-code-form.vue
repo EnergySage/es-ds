@@ -128,6 +128,32 @@
 
         <div class="mb-450">
             <h2>
+                Hide privacy policy example
+            </h2>
+            <p class="mb-200">
+                <strong>Warning:</strong> this option is meant for specific limited-height designs only.
+                If `hidePrivacyPolicy` is set, please include the privacy policy link elsewhere in the same CTA.
+            </p>
+            <b-row class="justify-content-center">
+                <b-col
+                    sm="10"
+                    md="8">
+                    <es-zip-code-form
+                        hide-privacy-policy
+                        input-id="sticky-cta-example"
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        stack-until="lg"
+                        url="https://www.energysage.com/market/start/">
+                        <template #buttonText>
+                            See local offers
+                        </template>
+                    </es-zip-code-form>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="mb-450">
+            <h2>
                 EsZipCodeForm slots
             </h2>
             <ds-prop-table
@@ -213,6 +239,12 @@ export default {
                     'url',
                     'n/a',
                     'URL to which the form will submit the provided zip code value.',
+                ],
+                [
+                    'hidePrivacyPolicy',
+                    'false',
+                    `Hides privacy policy text & link. For specific limited-height designs only -
+                        when true, please include the privacy policy nearby.`,
                 ],
             ],
             propTableWidths: {
