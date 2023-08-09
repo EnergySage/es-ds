@@ -1,11 +1,20 @@
 <template>
-    <es-card class="p-100 px-sm-200 px-md-300 text-center text-lg-left">
+    <es-card
+        class="p-100 px-sm-200 text-center text-lg-left"
+        :class="{
+            'px-md-100 py-md-200': constrained,
+            'px-md-300': !constrained}">
         <b-row class="align-items-lg-center justify-content-xl-between">
             <b-col
                 class="EsSupportCard-contentColumn d-lg-flex flex-lg-column justify-content-lg-center position-relative"
+                :class="{'pr-lg-0': constrained}"
                 cols="12"
                 lg="8">
-                <h2 class="align-items-center d-flex font-size-300 justify-content-center justify-content-lg-start mb-150 mb-lg-100 pl-lg-200">
+                <h2
+                    class="align-items-center d-flex font-size-300 justify-content-center justify-content-lg-start mb-150 mb-lg-100"
+                    :class="{
+                        'pl-lg-100': constrained,
+                        'pl-lg-200': !constrained}">
                     <slot name="headline" />
                 </h2>
                 <div class="EsSupportCard-imageContainer mb-150 mb-lg-0">
@@ -29,7 +38,11 @@
                     the removal of that bottom margin up to consuming applications rather than removing it on all
                     <p> tags within this element, in case they may want two <p> tags or any other markup in here.
                 -->
-                <div class="EsSupportCard-description font-size-75 font-size-lg-100 mb-150 mb-lg-0 pl-lg-200">
+                <div
+                    class="EsSupportCard-description font-size-75 font-size-lg-100 mb-150 mb-lg-0"
+                    :class="{
+                        'pl-lg-100': constrained,
+                        'pl-lg-200': !constrained}">
                     <slot name="description" />
                 </div>
             </b-col>
@@ -74,6 +87,10 @@ export default {
         EsCard,
     },
     props: {
+        constrained: {
+            type: Boolean,
+            default: false,
+        },
         imageAltText: {
             type: String,
             default: '',
