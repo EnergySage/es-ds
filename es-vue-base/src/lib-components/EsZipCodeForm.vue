@@ -60,7 +60,9 @@
                 </slot>
             </es-button>
         </b-form>
-        <div :class="{ 'font-size-75': constrained }">
+        <div
+            v-if="!hidePrivacyPolicy"
+            :class="{ 'font-size-75': constrained }">
             <icon-lock-on
                 class="privacy-lock-icon mr-25 position-relative"
                 height="1.125rem"
@@ -145,6 +147,11 @@ export default {
         url: {
             type: String,
             required: true,
+        },
+        // For specific limited-height designs only.  When set to true, please include privacy policy nearby in CTA.
+        hidePrivacyPolicy: {
+            type: Boolean,
+            default: false,
         },
     },
     data() {
