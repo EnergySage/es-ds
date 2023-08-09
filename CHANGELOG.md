@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.5] - 2023-08-09
+
+### Changed
+
+- The `EsFileInput` prop `uploadUrls` can now take in an optional `additionalFields` parameter that will be added as form data to the upload
+- `EsFileInput` now sets the content type of a file upload to `multipart/form-data`
+
 ## [0.25.4] - 2023-08-07
 
 ### Changed
@@ -714,6 +721,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.25.5]: https://github.com/EnergySage/es-ds/compare/v0.25.4...v0.25.5
+[0.25.4]: https://github.com/EnergySage/es-ds/compare/v0.25.2...v0.25.4
+[0.25.2]: https://github.com/EnergySage/es-ds/compare/v0.25.1...v0.25.2
 [0.25.1]: https://github.com/EnergySage/es-ds/compare/v0.25.0...v0.25.1
 [0.25.0]: https://github.com/EnergySage/es-ds/compare/v0.24.1...v0.25.0
 [0.24.1]: https://github.com/EnergySage/es-ds/compare/v0.24.0...v0.24.1
