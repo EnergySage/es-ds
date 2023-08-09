@@ -28,7 +28,7 @@ updates:
         - dependency-name: "stylelint-config-twbs-bootstrap"
           versions: ["11.x"]
         - dependency-name: "eslint-plugin-qunit"
-          version: ["8.x"]
+          versions: ["8.x"]
       schedule:
           interval: daily
           time: '00:00'

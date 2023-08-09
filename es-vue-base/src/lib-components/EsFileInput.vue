@@ -72,6 +72,7 @@ export default {
          * {
          *    fileName: String,
          *    uploadUrl: String,
+         *    additionalFields: Object,
          * }
          */
         uploadUrls: {
@@ -246,7 +247,7 @@ export default {
         async uploadSingleFile(file) {
             const config = {
                 headers: {
-                    'Content-Type': file.type,
+                    'Content-Type': 'multipart/form-data',
                 },
                 onUploadProgress: (progressEvent) => {
                     const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
@@ -254,9 +255,24 @@ export default {
                     return percentCompleted;
                 },
             };
+            const uploadInfo = this.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name);
+            if (!uploadInfo) {
+                this.$emit('uploadFailure', {
+                    name: file.name,
+                    message: 'No upload URL found for this file.',
+                });
+                return;
+            }
+            const form = new FormData();
+            if (uploadInfo.additionalFields) {
+                Object.entries(uploadInfo.additionalFields).forEach(([key, value]) => {
+                    form.append(key, value);
+                });
+            }
+            form.append('file', file);
             await this.$axios.post(
-                this.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name)?.uploadUrl,
-                file,
+                uploadInfo.uploadUrl,
+                form,
                 config,
             )
                 .then((response) => {
