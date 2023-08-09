@@ -9,7 +9,7 @@
             type="iframe" />
         <es-button
             v-else
-            class="EsVideo-button text-gray-900 border-0 p-0 position-relative text-gray w-100"
+            class="EsVideo-button text-gray-900 border-0 p-0 position-relative text-gray w-100 bg-transparent"
             @click="showVideo = true">
             <slot
                 v-if="hasImage"
