@@ -1,28 +1,20 @@
 <template>
     <div>
-        <h1>
-            Accordion
-        </h1>
+        <h1>Accordion</h1>
         <p class="mb-450">
             Makes use of
-            <b-link href="https://bootstrap-vue.org/docs/components/collapse">
-                bootstrap-vue collapse
-            </b-link>
+            <b-link href="https://bootstrap-vue.org/docs/components/collapse"> bootstrap-vue collapse </b-link>
         </p>
 
         <div class="mb-450">
-            <h2>
-                Single expand (default)
-            </h2>
+            <h2>Single expand (default)</h2>
             <p>
                 By default, accordions will only allow one item to be expanded at a time. Upon expanding a second item,
                 the open item will collapse.
             </p>
             <es-accordion-list initial-expanded-id="single-question-1">
                 <es-accordion id="single-question-1">
-                    <template #title>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit?
-                    </template>
+                    <template #title> Lorem ipsum dolor sit amet, consectetur adipiscing elit? </template>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. In tellus integer feugiat scelerisque varius. Risus in hendrerit
@@ -31,9 +23,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="single-question-2">
-                    <template #title>
-                        Faucibus purus in massa tempor nec feugiat?
-                    </template>
+                    <template #title> Faucibus purus in massa tempor nec feugiat? </template>
                     <p>
                         Faucibus purus in massa tempor nec feugiat. In hac habitasse platea dictumst. Leo duis ut diam
                         quam nulla porttitor. Diam vel quam elementum pulvinar etiam non quam. Elementum curabitur
@@ -42,9 +32,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="single-question-3">
-                    <template #title>
-                        Duis convallis convallis tellus id interdum velit laoreet id?
-                    </template>
+                    <template #title> Duis convallis convallis tellus id interdum velit laoreet id? </template>
                     <p>
                         Duis convallis convallis tellus id interdum velit laoreet id. Condimentum mattis pellentesque
                         id nibh tortor id aliquet lectus proin. Nunc sed blandit libero volutpat sed cras ornare.
@@ -54,9 +42,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="single-question-4">
-                    <template #title>
-                        Ipsum a arcu cursus vitae congue mauris rhoncus?
-                    </template>
+                    <template #title> Ipsum a arcu cursus vitae congue mauris rhoncus? </template>
                     <p>
                         Ipsum a arcu cursus vitae congue mauris rhoncus. Tortor dignissim convallis aenean et tortor at
                         risus viverra. Aliquet enim tortor at auctor urna. Placerat orci nulla pellentesque dignissim
@@ -70,17 +56,11 @@
         </div>
 
         <div class="mb-450">
-            <h2>
-                Single expand, starts collapsed
-            </h2>
-            <p>
-                If no initial expanded id is provided, each item will start collapsed.
-            </p>
+            <h2>Single expand, starts collapsed</h2>
+            <p>If no initial expanded id is provided, each item will start collapsed.</p>
             <es-accordion-list>
                 <es-accordion id="collapsed-question-1">
-                    <template #title>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit?
-                    </template>
+                    <template #title> Lorem ipsum dolor sit amet, consectetur adipiscing elit? </template>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. In tellus integer feugiat scelerisque varius. Risus in hendrerit
@@ -89,9 +69,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="collapsed-question-2">
-                    <template #title>
-                        Faucibus purus in massa tempor nec feugiat?
-                    </template>
+                    <template #title> Faucibus purus in massa tempor nec feugiat? </template>
                     <p>
                         Faucibus purus in massa tempor nec feugiat. In hac habitasse platea dictumst. Leo duis ut diam
                         quam nulla porttitor. Diam vel quam elementum pulvinar etiam non quam. Elementum curabitur
@@ -100,9 +78,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="collapsed-question-3">
-                    <template #title>
-                        Duis convallis convallis tellus id interdum velit laoreet id?
-                    </template>
+                    <template #title> Duis convallis convallis tellus id interdum velit laoreet id? </template>
                     <p>
                         Duis convallis convallis tellus id interdum velit laoreet id. Condimentum mattis pellentesque
                         id nibh tortor id aliquet lectus proin. Nunc sed blandit libero volutpat sed cras ornare.
@@ -112,9 +88,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="collapsed-question-4">
-                    <template #title>
-                        Ipsum a arcu cursus vitae congue mauris rhoncus?
-                    </template>
+                    <template #title> Ipsum a arcu cursus vitae congue mauris rhoncus? </template>
                     <p>
                         Ipsum a arcu cursus vitae congue mauris rhoncus. Tortor dignissim convallis aenean et tortor at
                         risus viverra. Aliquet enim tortor at auctor urna. Placerat orci nulla pellentesque dignissim
@@ -128,9 +102,7 @@
         </div>
 
         <div class="mb-450">
-            <h2>
-                Single expand with v-model
-            </h2>
+            <h2>Single expand with v-model</h2>
             <p>
                 If you want to control the accordion programmatically or trigger a UI change elsewhere when a specific
                 item is expanded, you can use the <code>v-model</code> directive to bind the active id to a data value.
@@ -170,9 +142,7 @@
                         v-model="programmaticExpandedId"
                         class="mb-4 mb-lg-0">
                         <es-accordion id="programmatic-question-1">
-                            <template #title>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit?
-                            </template>
+                            <template #title> Lorem ipsum dolor sit amet, consectetur adipiscing elit? </template>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. In tellus integer feugiat scelerisque
@@ -181,9 +151,7 @@
                             </p>
                         </es-accordion>
                         <es-accordion id="programmatic-question-2">
-                            <template #title>
-                                Faucibus purus in massa tempor nec feugiat?
-                            </template>
+                            <template #title> Faucibus purus in massa tempor nec feugiat? </template>
                             <p>
                                 Faucibus purus in massa tempor nec feugiat. In hac habitasse platea dictumst. Leo duis
                                 ut diam quam nulla porttitor. Diam vel quam elementum pulvinar etiam non quam.
@@ -193,9 +161,7 @@
                             </p>
                         </es-accordion>
                         <es-accordion id="programmatic-question-3">
-                            <template #title>
-                                Duis convallis convallis tellus id interdum velit laoreet id?
-                            </template>
+                            <template #title> Duis convallis convallis tellus id interdum velit laoreet id? </template>
                             <p>
                                 Duis convallis convallis tellus id interdum velit laoreet id. Condimentum mattis
                                 pellentesque id nibh tortor id aliquet lectus proin. Nunc sed blandit libero volutpat
@@ -206,9 +172,7 @@
                             </p>
                         </es-accordion>
                         <es-accordion id="programmatic-question-4">
-                            <template #title>
-                                Ipsum a arcu cursus vitae congue mauris rhoncus?
-                            </template>
+                            <template #title> Ipsum a arcu cursus vitae congue mauris rhoncus? </template>
                             <p>
                                 Ipsum a arcu cursus vitae congue mauris rhoncus. Tortor dignissim convallis aenean et
                                 tortor at risus viverra. Aliquet enim tortor at auctor urna. Placerat orci nulla
@@ -248,9 +212,7 @@
         </div>
 
         <div class="mb-450">
-            <h2>
-                Multiple expand
-            </h2>
+            <h2>Multiple expand</h2>
             <p>
                 This variant allows more than one item to be expanded at a time. Do not use in conjunction with
                 <code>v-model</code>.
@@ -259,9 +221,7 @@
                 allow-multiple-expand
                 initial-expanded-id="multiple-question-1">
                 <es-accordion id="multiple-question-1">
-                    <template #title>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit?
-                    </template>
+                    <template #title> Lorem ipsum dolor sit amet, consectetur adipiscing elit? </template>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. In tellus integer feugiat scelerisque varius. Risus in hendrerit
@@ -270,9 +230,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="multiple-question-2">
-                    <template #title>
-                        Faucibus purus in massa tempor nec feugiat?
-                    </template>
+                    <template #title> Faucibus purus in massa tempor nec feugiat? </template>
                     <p>
                         Faucibus purus in massa tempor nec feugiat. In hac habitasse platea dictumst. Leo duis ut diam
                         quam nulla porttitor. Diam vel quam elementum pulvinar etiam non quam. Elementum curabitur
@@ -281,9 +239,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="multiple-question-3">
-                    <template #title>
-                        Duis convallis convallis tellus id interdum velit laoreet id?
-                    </template>
+                    <template #title> Duis convallis convallis tellus id interdum velit laoreet id? </template>
                     <p>
                         Duis convallis convallis tellus id interdum velit laoreet id. Condimentum mattis pellentesque
                         id nibh tortor id aliquet lectus proin. Nunc sed blandit libero volutpat sed cras ornare.
@@ -293,9 +249,7 @@
                     </p>
                 </es-accordion>
                 <es-accordion id="multiple-question-4">
-                    <template #title>
-                        Ipsum a arcu cursus vitae congue mauris rhoncus?
-                    </template>
+                    <template #title> Ipsum a arcu cursus vitae congue mauris rhoncus? </template>
                     <p>
                         Ipsum a arcu cursus vitae congue mauris rhoncus. Tortor dignissim convallis aenean et tortor at
                         risus viverra. Aliquet enim tortor at auctor urna. Placerat orci nulla pellentesque dignissim
@@ -309,9 +263,7 @@
         </div>
 
         <div class="mb-450">
-            <h2>
-                EsAccordionList props
-            </h2>
+            <h2>EsAccordionList props</h2>
             <b-table
                 :fields="accordionListFields"
                 :items="accordionListProps"
@@ -319,9 +271,7 @@
         </div>
 
         <div class="mb-450">
-            <h2>
-                EsAccordion props
-            </h2>
+            <h2>EsAccordion props</h2>
             <b-table
                 :fields="accordionFields"
                 :items="accordionProps" />
@@ -353,7 +303,8 @@ export default {
                     name: 'headingTag',
                     description: `
                         Defaults to h3. The tag used can be customized as needed.
-                        For example, if the accordion is used within a section that is already under an <h3>, it may need to be an h4.
+                        For example, if the accordion is used within a section that is already under an <h3>, 
+                        it may need to be an h4.
                     `,
                 },
             ],

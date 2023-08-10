@@ -2,10 +2,10 @@
     <div class="EsAccordion border-bottom border-light rounded-bottom">
         <header
             role="tab"
-            class="position-relative d-inline-block w-100">
+            class="position-relative">
             <component
                 :is="headingTag"
-                class="EsAccordion-heading mb-0 h-auto align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 rounded-0 text-body text-left text-decoration-none"
+                class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 text-body font-size-100"
                 :class="{
                     'bg-gray-200': isVisible,
                     'bg-white': !isVisible,
@@ -17,7 +17,7 @@
             <button
                 class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"
                 @click="handleClick">
-                <span class="d-none">{{ isVisible ? 'collapse' : 'expand' }}</span>
+                <span class="sr-only">{{ isVisible ? 'collapse' : 'expand' }}</span>
             </button>
         </header>
         <b-collapse
@@ -124,6 +124,10 @@ export default {
 .EsAccordion-button {
     top: 0;
 }
+.EsAccordion-heading {
+    transition: $transition-base;
+}
+
 /* only animate the chevron if the user doesn't prefer reduced motion */
 @media not prefers-reduced-motion {
     .EsAccordion-icon {
