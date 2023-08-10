@@ -100,6 +100,12 @@ export default {
         transform: rotate(180deg);
     }
 }
+
+/* for smooth background color transition */
+.EsAccordion-heading {
+    transition: $transition-base;
+}
+
 /* first item needs rounded corners on top */
 .EsAccordion:first-child {
     .EsAccordion-heading {
@@ -123,9 +129,6 @@ export default {
 /* align button to cover the heading tag */
 .EsAccordion-button {
     top: 0;
-}
-.EsAccordion-heading {
-    transition: $transition-base;
 }
 
 /* only animate the chevron if the user doesn't prefer reduced motion */
