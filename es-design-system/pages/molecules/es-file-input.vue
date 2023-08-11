@@ -116,8 +116,10 @@
                 v-for="(event, index) in events"
                 :key="index"
                 :variant="event.variant"
-                :message="event.msg"
-                :timeout="60" />
+                :show="true"
+                :timeout="60">
+                {{ event.msg }}
+            </es-form-msg>
         </div>
         <div class="mb-450">
             <h2>
@@ -214,7 +216,7 @@ export default {
             fileUploadProps: [{
                 name: 'uploadUrls',
                 default: 'None',
-                description: 'An array of objects with name and uploadUrl as fields.',
+                description: 'An array of objects with name, uploadUrl, and additionalFields (optional) as fields.',
             }, {
                 name: 'fileTypes',
                 default: 'None',

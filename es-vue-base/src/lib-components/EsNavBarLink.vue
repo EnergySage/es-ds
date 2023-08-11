@@ -1,8 +1,7 @@
 <template>
     <component
         :is="tag"
-        :href="isRootRelative ? '' : href"
-        :to="isRootRelative ? href : ''"
+        :href="href"
         v-bind="$attrs"
         v-on="$listeners">
         <slot />
@@ -20,11 +19,6 @@ export default {
         tag: {
             type: String,
             default: 'b-link',
-        },
-    },
-    computed: {
-        isRootRelative() {
-            return this.href.startsWith('/');
         },
     },
 };

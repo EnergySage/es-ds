@@ -23,6 +23,12 @@ updates:
       ignore:
         - dependency-name: "autoprefixer"
           versions: ["10.x"]
+        - dependency-name: "stylelint"
+          versions: ["15.x"]
+        - dependency-name: "stylelint-config-twbs-bootstrap"
+          versions: ["11.x"]
+        - dependency-name: "eslint-plugin-qunit"
+          versions: ["8.x"]
       schedule:
           interval: daily
           time: '00:00'
