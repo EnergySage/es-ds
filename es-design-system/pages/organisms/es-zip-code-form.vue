@@ -69,28 +69,59 @@
 
         <div class="mb-450">
             <h2>
-                Narrow card example
+                Constrained responsive example
             </h2>
             <p class="mb-200">
-                This example remains stacked at every breakpoint. It shows how the form renders in a card
-                kept at a smaller width by a specific grid column layout.
+                This form has <code>stackUntil</code> set to <code>sm</code> and appears within a
+                smaller-width container. It has <code>constrained</code> set to <code>true</code>
+                in order to make better use of the limited space. This reduces the horizontal padding
+                on the submit button and reduces the size of the privacy text.
             </p>
-            <b-row class="justify-content-center justify-content-lg-start">
+            <b-row class="justify-content-center">
                 <b-col
-                    sm="10"
-                    md="8"
+                    sm="8"
+                    md="6"
+                    lg="5"
+                    xl="4"
+                    xxl="3">
+                    <es-zip-code-form
+                        constrained
+                        input-id="hero-example"
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        stack-until="sm"
+                        url="https://www.energysage.com/market/start/">
+                        <template #buttonText>
+                            See local offers
+                        </template>
+                    </es-zip-code-form>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="mb-450">
+            <h2>
+                Constrained stacked example
+            </h2>
+            <p class="mb-200">
+                This example remains stacked at every breakpoint, in a limited-width container. This shows how
+                the form would display within a card on the sidebar of a page.
+            </p>
+            <b-row class="justify-content-center">
+                <b-col
+                    sm="8"
+                    md="6"
                     lg="4"
-                    xl="3">
-                    <es-card class="px-100">
-                        <es-zip-code-form
-                            input-id="narrow-card-example"
-                            privacy-policy-link="https://www.energysage.com/privacy-policy/"
-                            url="https://www.energysage.com/market/start/">
-                            <template #buttonText>
-                                See local offers
-                            </template>
-                        </es-zip-code-form>
-                    </es-card>
+                    xl="3"
+                    xxl="2">
+                    <es-zip-code-form
+                        constrained
+                        input-id="narrow-card-example"
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        url="https://www.energysage.com/market/start/">
+                        <template #buttonText>
+                            See local offers
+                        </template>
+                    </es-zip-code-form>
                 </b-col>
             </b-row>
         </div>
@@ -130,6 +161,12 @@ export default {
             compCode: '',
             docCode: '',
             propTableRows: [
+                [
+                    'constrained',
+                    'false',
+                    `Reduces the button padding and privacy text font size to better accommodate
+                        limited-width layouts.`,
+                ],
                 [
                     'dark',
                     'false',
