@@ -306,7 +306,7 @@ export default (
                         },
                         {
                             name: 'Get personalized quotes',
-                            link: `${ES_DOMAIN}/market/start/`,
+                            link: `${ES_DOMAIN}/shop/home-solar/`,
                             emphasize: true,
                         },
                     ],
@@ -314,7 +314,7 @@ export default (
                 {
                     name: 'Community solar',
                     subHeading: 'Go solar with no equipment',
-                    link: COMMUNITY_SOLAR_DOMAIN,
+                    link: `${ES_DOMAIN}/shop/community-solar/`,
                     newTab: true,
                     showItemsOnMobile: false,
                     subtopics: [
@@ -341,7 +341,7 @@ export default (
         },
         {
             name: 'Community solar',
-            link: COMMUNITY_SOLAR_DOMAIN,
+            link: `${ES_DOMAIN}/shop/community-solar/`,
             newTab: true,
             items: [
                 {
@@ -358,7 +358,7 @@ export default (
         },
         {
             name: 'Heating & cooling',
-            link: HEAT_PUMPS_DOMAIN,
+            link: `${ES_DOMAIN}/shop/heat-pumps/`,
             newTab: true,
             items: [
                 {
@@ -395,7 +395,7 @@ export default (
                 },
                 {
                     name: 'Get quotes for solar + batteries',
-                    link: `${ES_DOMAIN}/market/start/`,
+                    link: `${ES_DOMAIN}/shop/home-solar/`,
                     emphasize: true,
                 },
             ],
