@@ -306,7 +306,7 @@ export default (
                         },
                         {
                             name: 'Get personalized quotes',
-                            link: `${ES_DOMAIN}/shop/home-solar/`,
+                            link: `${ES_DOMAIN}/market/start/`,
                             emphasize: true,
                         },
                     ],
@@ -395,7 +395,7 @@ export default (
                 },
                 {
                     name: 'Get quotes for solar + batteries',
-                    link: `${ES_DOMAIN}/shop/home-solar/`,
+                    link: `${ES_DOMAIN}/market/start/`,
                     emphasize: true,
                 },
             ],
