@@ -43,12 +43,10 @@ export default ({
     props: {
         altText: {
             type: String,
-            required: false,
-            default: '',
+            required: true,
         },
         coverImageUrl: {
             type: String,
-            required: false,
             default: '',
         },
         embedUrl: {
