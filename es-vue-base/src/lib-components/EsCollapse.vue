@@ -1,11 +1,13 @@
 <template>
     <div>
         <EsButton
-            v-b-toggle="id"
             block
+            :aria-expanded="expanded.toString()"
+            :aria-controls="id"
             class="collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             inline
-            variant="link">
+            variant="link"
+            @click="userSpecifiedIsExpanded = !expanded">
             <div>
                 <slot name="title" />
             </div>
@@ -22,7 +24,7 @@
 
         <b-collapse
             :id="id"
-            :visible="visible"
+            v-model="expanded"
             data-testid="collapse"
             v-on="$listeners">
             <slot />
@@ -39,7 +41,7 @@
 </template>
 
 <script lang="js">
-import { BCollapse, VBToggle } from 'bootstrap-vue';
+import { BCollapse } from 'bootstrap-vue';
 import IconChevronDown from '../lib-icons/icon-chevron-down.vue';
 import EsButton from './EsButton.vue';
 
@@ -47,9 +49,6 @@ export default {
     name: 'EsCollapse',
     components: {
         EsButton, BCollapse, IconChevronDown,
-    },
-    directives: {
-        'b-toggle': VBToggle,
     },
     props: {
         /**
@@ -80,36 +79,16 @@ export default {
     },
     data() {
         return {
-            userMutatedCollapse: false,
-            expanded: this.visible,
+            userSpecifiedIsExpanded: null,
         };
     },
-    watch: {
-        visible: {
-            handler(newValue, oldValue) {
-                console.log(`viiiisible changed to ${newValue}`);
-                if (!this.userMutatedCollapse) {
-                    console.log('User did not mutate collapse');
-                    if (newValue !== this.expanded) {
-                        console.log('Toggling');
-                        this.$root.$emit('bv::toggle::collapse', this.id);
-                    }
-                }
-            },
-            immediate: true,
-        },
-    },
-    mounted() {
-        this.$root.$on('bv::collapse::state', (collapseId, isExpanded) => {
-            if (collapseId === this.id) {
-                console.log(`Matching collapse event: collapseId=${collapseId}, isExpanded=${isExpanded}`);
-                if (isExpanded !== this.visible) {
-                    console.log('Setting userMutatedCollapse to true');
-                    this.userMutatedCollapse = true;
-                }
-                this.expanded = isExpanded;
+    computed: {
+        expanded() {
+            if (this.userSpecifiedIsExpanded !== null) {
+                return this.userSpecifiedIsExpanded;
             }
-        });
+            return this.visible;
+        },
     },
 };
 </script>
