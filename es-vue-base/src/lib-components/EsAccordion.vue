@@ -102,8 +102,10 @@ export default {
 }
 
 /* for smooth background color transition */
-.EsAccordion-heading {
-    transition: $transition-base;
+@media not prefers-reduced-motion {
+    .EsAccordion-heading {
+        transition: $transition-base;
+    }
 }
 
 /* first item needs rounded corners on top */
