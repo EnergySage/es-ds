@@ -83,11 +83,16 @@ export default {
         };
     },
     computed: {
-        expanded() {
-            if (this.userSpecifiedIsExpanded !== null) {
-                return this.userSpecifiedIsExpanded;
-            }
-            return this.visible;
+        expanded: {
+            get() {
+                if (this.userSpecifiedIsExpanded !== null) {
+                    return this.userSpecifiedIsExpanded;
+                }
+                return this.visible;
+            },
+            set() {
+                // noop
+            },
         },
     },
 };
