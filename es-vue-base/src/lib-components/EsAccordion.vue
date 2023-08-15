@@ -1,12 +1,19 @@
 <template>
-    <div class="EsAccordion border-bottom border-light rounded-bottom">
+    <div
+        class="EsAccordion border-bottom border-light"
+        :class="{
+            ['EsAccordion--' + variant]: true,
+            'rounded-bottom': variant === 'default',
+            'border-top': variant === 'minimal',
+        }">
         <header role="tab">
             <es-button
                 class="EsAccordion-button h-auto align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 rounded-0 text-body text-left text-decoration-none w-100"
                 :class="{
-                    'bg-light': isVisible,
-                    'bg-white': !isVisible,
+                    'bg-light': isVisible && variant === 'default',
+                    'bg-white': !isVisible && variant === 'default',
                     'EsAccordion-button--visible': isVisible,
+                    'h4 mb-0': variant === 'minimal',
                 }"
                 variant="link"
                 @click="handleClick">
@@ -18,7 +25,11 @@
             :id="id"
             :visible="isVisible"
             role="tabpanel">
-            <div class="EsAccordion-content bg-white px-100 px-sm-200 pb-25 pt-100">
+            <div
+                class="EsAccordion-content px-100 px-sm-200 pb-25 pt-100"
+                :class="{
+                    'bg-white': variant === 'default',
+                }">
                 <slot />
             </div>
         </b-collapse>
@@ -64,6 +75,14 @@ export default {
             type: String,
             required: true,
         },
+        /**
+         * Used for styling purposes. At this time only two options are allowed.
+         */
+        variant: {
+            type: String,
+            validator: (value) => ['default', 'minimal'].includes(value),
+            default: 'default',
+        },
     },
     computed: {
         isVisible() {
@@ -89,14 +108,19 @@ export default {
 /* rotate the chevron when expanded */
 .EsAccordion-button--visible {
     .EsAccordion-icon {
-      transform: rotate(180deg);
+        transform: rotate(180deg);
     }
 }
 /* first item needs rounded corners on top */
-  .EsAccordion:first-child {
+.EsAccordion--default:first-child {
     .EsAccordion-button {
-      border-radius: $border-radius $border-radius 0 0 !important;
+        border-radius: $border-radius $border-radius 0 0 !important;
     }
+}
+/* removing the background color for the button when it is clicked */
+.EsAccordion--minimal .EsAccordion-button:active,
+.EsAccordion--minimal .EsAccordion-button:focus {
+    background-color: transparent;
 }
 /**
  * last item needs rounded corners on bottom of the button or content,
@@ -105,17 +129,17 @@ export default {
 .EsAccordion:last-child {
     .EsAccordion-button,
     .EsAccordion-content {
-      border-radius: 0 0 $border-radius $border-radius !important;
+        border-radius: 0 0 $border-radius $border-radius !important;
     }
     /* if the last item is expanded, the button is no longer the last visible item */
     .EsAccordion-button--visible {
-      border-radius: 0 !important;
+        border-radius: 0 !important;
     }
 }
 /* only animate the chevron if the user doesn't prefer reduced motion */
 @media not prefers-reduced-motion {
     .EsAccordion-icon {
-      transition: $transition-base;
+        transition: $transition-base;
     }
 }
 </style>

@@ -11,14 +11,19 @@
 
         <div class="mb-450">
             <h2>
-                Single expand (default)
+                Single expand (default) with default styling
             </h2>
             <p>
                 By default, accordions will only allow one item to be expanded at a time. Upon expanding a second
                 item, the open item will collapse.
             </p>
-            <es-accordion-list initial-expanded-id="single-question-1">
-                <es-accordion id="single-question-1">
+            <p>
+                Also, this is default styling. Variant props accepts two different values with different styling.
+                If the prop doesn't match string value of default (which is set by default and can be omitted)
+                or minimal, will revert to default styling.
+            </p>
+            <es-accordion-list initial-expanded-id="single-question-11">
+                <es-accordion id="single-question-11">
                     <template #title>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit?
                     </template>
@@ -29,7 +34,7 @@
                         Mi tempus imperdiet nulla malesuada pellentesque elit.
                     </p>
                 </es-accordion>
-                <es-accordion id="single-question-2">
+                <es-accordion id="single-question-12">
                     <template #title>
                         Faucibus purus in massa tempor nec feugiat?
                     </template>
@@ -40,7 +45,7 @@
                         arcu dui vivamus arcu felis bibendum. Vel pharetra vel turpis nunc eget lorem.
                     </p>
                 </es-accordion>
-                <es-accordion id="single-question-3">
+                <es-accordion id="single-question-13">
                     <template #title>
                         Duis convallis convallis tellus id interdum velit laoreet id?
                     </template>
@@ -52,7 +57,67 @@
                         Est velit egestas dui id ornare arcu odio ut sem.
                     </p>
                 </es-accordion>
-                <es-accordion id="single-question-4">
+                <es-accordion id="single-question-14">
+                    <template #title>
+                        Ipsum a arcu cursus vitae congue mauris rhoncus?
+                    </template>
+                    <p>
+                        Ipsum a arcu cursus vitae congue mauris rhoncus. Tortor dignissim convallis aenean et tortor at
+                        risus viverra. Aliquet enim tortor at auctor urna. Placerat orci nulla pellentesque dignissim
+                        enim sit amet venenatis urna. Duis convallis convallis tellus id interdum velit laoreet. A arcu
+                        cursus vitae congue mauris rhoncus aenean vel elit. In aliquam sem fringilla ut morbi
+                        tincidunt. Semper auctor neque vitae tempus quam pellentesque nec. Sit amet nisl purus in
+                        mollis nunc sed id semper.
+                    </p>
+                </es-accordion>
+            </es-accordion-list>
+        </div>
+
+        <div class="mb-450">
+            <h2>
+                Single expand (default) with minimal styling
+            </h2>
+            <p>
+                Accordion with default functionality (one expandible item) and minimal styling.
+            </p>
+            <es-accordion-list initial-expanded-id="single-question-21">
+                <es-accordion
+                    id="single-question-21"
+                    variant="minimal">
+                    <template #title>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+                    </template>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. In tellus integer feugiat scelerisque varius. Risus in hendrerit
+                        gravida rutrum. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur adipiscing.
+                        Mi tempus imperdiet nulla malesuada pellentesque elit.
+                    </p>
+                </es-accordion>
+                <es-accordion id="single-question-22">
+                    <template #title>
+                        Faucibus purus in massa tempor nec feugiat?
+                    </template>
+                    <p>
+                        Faucibus purus in massa tempor nec feugiat. In hac habitasse platea dictumst. Leo duis ut diam
+                        quam nulla porttitor. Diam vel quam elementum pulvinar etiam non quam. Elementum curabitur
+                        vitae nunc sed velit dignissim. Velit sed ullamcorper morbi tincidunt ornare. Sed cras ornare
+                        arcu dui vivamus arcu felis bibendum. Vel pharetra vel turpis nunc eget lorem.
+                    </p>
+                </es-accordion>
+                <es-accordion id="single-question-23">
+                    <template #title>
+                        Duis convallis convallis tellus id interdum velit laoreet id?
+                    </template>
+                    <p>
+                        Duis convallis convallis tellus id interdum velit laoreet id. Condimentum mattis pellentesque
+                        id nibh tortor id aliquet lectus proin. Nunc sed blandit libero volutpat sed cras ornare.
+                        Turpis egestas pretium aenean pharetra magna ac. Pellentesque dignissim enim sit amet. Placerat
+                        vestibulum lectus mauris ultrices eros. Amet nisl suscipit adipiscing bibendum est ultricies.
+                        Est velit egestas dui id ornare arcu odio ut sem.
+                    </p>
+                </es-accordion>
+                <es-accordion id="single-question-24">
                     <template #title>
                         Ipsum a arcu cursus vitae congue mauris rhoncus?
                     </template>
@@ -351,6 +416,14 @@ export default {
                     description: `
                         Required. Used to uniquely identify the item on the page. This value can also be passed to
                         EsAccordionList to signify that this item should start out expanded.
+                    `,
+                },
+                {
+                    name: 'variant',
+                    description: `
+                        The name of the desired accordion style variant: 'default' or 'minimal'.
+                        Default is the rounded white background, minimal is the no-background simpler one with
+                        the border top.
                     `,
                 },
             ],
