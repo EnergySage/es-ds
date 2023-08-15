@@ -2,7 +2,8 @@
     <div>
         <EsButton
             block
-            :aria-label="id"
+            :aria-expanded="expanded.toString()"
+            :aria-controls="id"
             class="collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             inline
             variant="link"
@@ -23,9 +24,7 @@
 
         <b-collapse
             :id="id"
-            :visible="expanded"
-            :aria-labelledby="id"
-            role="tabpanel"
+            v-model="expanded"
             data-testid="collapse"
             v-on="$listeners">
             <slot />
