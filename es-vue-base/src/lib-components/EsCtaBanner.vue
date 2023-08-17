@@ -14,6 +14,8 @@
                 class="mb-200 my-lg-auto text-center text-lg-left"
                 :lg="lgFirst"
                 :xxl="xxlFirst">
+                <!-- avoiding use of an <h2> tag here for long-form content SEO reasons,
+                    but preserving heading semantics for screen readers" -->
                 <div
                     role="heading"
                     aria-level="2"
@@ -23,6 +25,7 @@
                         'mb-50': $slots.subtitle,
                         'mb-0': !$slots.subtitle,
                         'text-white': dark,
+                        'h2': variant === 'wide'
                     }">
                     <slot name="heading">
                         Easily find what solar costs in your area

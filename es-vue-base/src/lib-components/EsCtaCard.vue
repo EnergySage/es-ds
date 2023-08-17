@@ -4,6 +4,8 @@
         :class="horizontalPadding"
         v-bind="$attrs"
         v-on="$listeners">
+        <!-- avoiding use of an <h2> tag here for long-form content SEO reasons,
+            but preserving heading semantics for screen readers" -->
         <div
             role="heading"
             aria-level="2"
