@@ -80,6 +80,7 @@ export default {
     data() {
         return {
             userSpecifiedIsExpanded: null,
+            visibleCopied: this.visible,
         };
     },
     computed: {
@@ -88,7 +89,7 @@ export default {
                 if (this.userSpecifiedIsExpanded !== null) {
                     return this.userSpecifiedIsExpanded;
                 }
-                return this.visible;
+                return this.visibleCopied;
             },
             set() {
                 // noop
