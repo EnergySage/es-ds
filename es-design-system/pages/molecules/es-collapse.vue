@@ -8,9 +8,18 @@
                 bootstrap-vue collapse
             </b-link>
         </p>
+        <form>
+            <input
+                id="suggestedVisibleInput"
+                v-model="suggestedVisible"
+                type="checkbox">
+            <label for="suggestedVisibleInput">
+                Suggested Visible (will be ignored if/when the user interacts with the Collapse)
+            </label>
+        </form>
         <EsCollapse
             id="testId"
-            visible
+            :visible="suggestedVisible"
             class="p-450 my-450"
             @shown="shownEvent">
             <template #title>
@@ -44,6 +53,7 @@ export default {
         return {
             compCode: '',
             docCode: '',
+            suggestedVisible: true,
         };
     },
     async created() {
