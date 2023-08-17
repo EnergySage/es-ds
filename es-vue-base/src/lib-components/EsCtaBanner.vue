@@ -1,10 +1,12 @@
 <template>
     <es-card
-        :class="[{
-            'bg-gray text-white': dark,
-            'px-100 px-lg-200': variant === 'default',
-            'px-100 px-lg-300': variant === 'wide',
-        }]"
+        :class="[
+            {
+                'bg-gray text-white': dark,
+                'px-100 px-lg-200': variant === 'default',
+                'px-100 px-lg-300': variant === 'wide',
+            },
+        ]"
         v-bind="$attrs"
         v-on="$listeners">
         <b-row>
@@ -12,7 +14,10 @@
                 class="mb-200 my-lg-auto text-center text-lg-left"
                 :lg="lgFirst"
                 :xxl="xxlFirst">
-                <h2
+                <div
+                    role="heading"
+                    aria-level="2"
+                    class="font-weight-semibold"
                     :class="{
                         'font-size-300': variant === 'default',
                         'mb-50': $slots.subtitle,
@@ -22,7 +27,7 @@
                     <slot name="heading">
                         Easily find what solar costs in your area
                     </slot>
-                </h2>
+                </div>
                 <p
                     v-if="$slots.subtitle"
                     class="mb-0">
