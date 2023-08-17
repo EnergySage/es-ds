@@ -9,11 +9,11 @@
             </b-link>
         </p>
         <form>
-            <input
-                id="suggestedVisibleInput"
-                v-model="suggestedVisible"
-                type="checkbox">
             <label for="suggestedVisibleInput">
+                <input
+                    id="suggestedVisibleInput"
+                    v-model="suggestedVisible"
+                    type="checkbox">
                 Suggested Visible (will be ignored if/when the user interacts with the Collapse)
             </label>
         </form>
