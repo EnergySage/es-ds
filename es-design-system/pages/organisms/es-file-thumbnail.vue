@@ -59,7 +59,7 @@
         <es-button
             :disabled="loadingInProgress"
             @click="showLoadingState">
-            Show loading state
+            Start file upload
         </es-button>
         <es-button
             :disabled="loadingInProgress"
