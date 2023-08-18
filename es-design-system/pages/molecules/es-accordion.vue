@@ -79,7 +79,7 @@
             </p>
             <es-accordion-list
                 initial-expanded-id="single-question-21"
-                :variant="'minimal'">
+                variant="minimal">
                 <es-accordion id="single-question-21">
                     <template #title>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit?
