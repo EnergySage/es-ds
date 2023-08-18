@@ -71,7 +71,7 @@ export default {
             required: true,
         },
         /**
-         * A reference to the parent EsAccordionList so we can set styling variant directly in all children.
+         * The styling variant to use.
          */
         variant: {
             type: String,
