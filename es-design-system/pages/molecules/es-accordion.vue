@@ -12,16 +12,11 @@
 
         <div class="mb-450">
             <h2>
-                Single expand (default) with default styling
+                Single expand
             </h2>
             <p>
                 By default, accordions will only allow one item to be expanded at a time. Upon expanding a second item,
                 the open item will collapse.
-            </p>
-            <p>
-                Also, this is default styling. Variant props accepts two different values with different styling.
-                If the prop doesn't match string value of default (which is set by default and can be omitted)
-                or minimal, will revert to default styling.
             </p>
             <es-accordion-list initial-expanded-id="single-question-11">
                 <es-accordion id="single-question-11">
@@ -76,10 +71,11 @@
 
         <div class="mb-450">
             <h2>
-                Single expand (default) with minimal styling
+                Single expand, minimal variant
             </h2>
             <p>
-                Accordion with default functionality (one expandible item) and minimal styling.
+                The minimal variant is designed to be used within a block of long-form content to better match
+                headings and text alignment.
             </p>
             <es-accordion-list
                 initial-expanded-id="single-question-21"
@@ -442,9 +438,9 @@ export default {
                 {
                     name: 'variant',
                     description: `
-                        The name of the desired accordion style variant: 'default' or 'minimal'.
-                        Default is the rounded white background, minimal is the no-background simpler one with
-                        the border top.
+                        Defaults to 'default'; also accepts 'minimal'. Default has a rounded white background,
+                        minimal has no background, Heading 3 text style, reduced padding, and a horizontal border
+                        separating accordions.
                     `,
                 },
             ],
