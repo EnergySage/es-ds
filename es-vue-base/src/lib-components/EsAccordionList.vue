@@ -19,8 +19,7 @@ export default {
         return {
             expandedIds: computed(() => this.expandedIds),
             parent: this,
-            /* Injecting object in to EsAccordion for the style variant */
-            accordionVariant: this.variant,
+            variant: this.variant,
         };
     },
     props: {

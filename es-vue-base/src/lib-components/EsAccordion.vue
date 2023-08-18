@@ -2,8 +2,8 @@
     <div
         class="EsAccordion border-bottom border-light"
         :class="{
-            ['EsAccordion--' + accordionVariant]: true,
-            'rounded-bottom': accordionVariant === 'default',
+            ['EsAccordion--' + variant]: true,
+            'rounded-bottom': variant !== 'minimal',
         }">
         <header
             role="tab"
@@ -12,11 +12,11 @@
                 :is="headingTag"
                 class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0 text-body text-body"
                 :class="{
-                    'bg-gray-200': isVisible && accordionVariant === 'default',
-                    'bg-white': !isVisible && accordionVariant === 'default',
+                    'bg-gray-200': isVisible && variant !== 'minimal',
+                    'bg-white': !isVisible && variant !== 'minimal',
                     'EsAccordion-heading--visible': isVisible,
-                    'font-size-100 font-size-lg-300 px-100 px-sm-200': accordionVariant === 'default',
-                    'font-size-200 font-size-lg-400 px-0': accordionVariant === 'minimal',
+                    'font-size-100 px-100 px-sm-200': variant !== 'minimal',
+                    'h3 px-0': variant === 'minimal',
                 }">
                 <slot name="title" />
                 <icon-chevron-down class="EsAccordion-icon flex-shrink-0 ml-200" />
@@ -32,9 +32,9 @@
             :visible="isVisible"
             role="tabpanel">
             <div
-                class="EsAccordion-content pb-25 pt-100"
+                class="EsAccordion-content pb-25"
                 :class="{
-                    'bg-white px-100 px-sm-200': accordionVariant === 'default',
+                    'bg-white pt-100 px-100 px-sm-200': variant !== 'minimal',
                 }">
                 <slot />
             </div>
@@ -73,7 +73,7 @@ export default {
         /**
          * A reference to the parent EsAccordionList so we can set styling variant directly in all children.
          */
-        accordionVariant: {
+        variant: {
             type: String,
             required: true,
         },
