@@ -9,13 +9,13 @@
             type="iframe" />
         <es-button
             v-else
-            class="EsVideo-button text-gray-900 border-0 p-0 position-relative text-gray w-100"
+            class="EsVideo-button text-gray-900 border-0 p-0 position-relative text-gray w-100 bg-transparent"
             @click="showVideo = true">
             <slot
                 v-if="hasImage"
                 name="image" />
             <b-img
-                v-else-if="altText && coverImageUrl"
+                v-else-if="coverImageUrl"
                 :alt="altText"
                 sizes="md:530px sm:275px"
                 class="EsVideo-image d-block rounded-lg w-100"
@@ -47,7 +47,7 @@ export default ({
         },
         coverImageUrl: {
             type: String,
-            required: true,
+            default: '',
         },
         embedUrl: {
             type: String,

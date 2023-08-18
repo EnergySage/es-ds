@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils';
 import EsAccordionList from '@/src/lib-components/EsAccordionList.vue';
 import EsAccordion from '@/src/lib-components/EsAccordion.vue';
-import EsButton from '@/src/lib-components/EsButton.vue';
 import jestVue from '@/tests/jest.vue.config';
 
 describe('EsAccordion', () => {
@@ -50,22 +49,49 @@ describe('EsAccordion', () => {
         expect(wrapper.html()).toMatchSnapshot();
 
         // verify title slot
-        const button = wrapper.findComponent(EsButton);
-        expect(button.text()).toContain(title);
+        const heading = wrapper.find('h3');
+        expect(heading.text()).toContain(title);
 
         // verify title and content slots together
-        expect(wrapper.text()).toBe(`${title}   ${content}`);
+        expect(wrapper.text()).toBe(`${title}  collapse  ${content}`);
 
         // verify that the content is visible
         const paragraph = wrapper.find('p');
         expect(paragraph.exists()).toBe(true);
         expect(paragraph.isVisible()).toBe(true);
 
+        const button = wrapper.find('button');
         // collapse the accordion
         await button.trigger('click');
 
         // verify that the content is not visible anymore
         expect(paragraph.isVisible()).toBe(false);
+    });
+
+    test('EsAccordionList items has the correct heading tag', async () => {
+        const id = 'accordion-id';
+        const title = 'My Title';
+        const content = 'My content.';
+        const headingTag = 'h4';
+        const wrapper = mount(EsAccordionList, {
+            ...jestVue,
+            propsData: {
+                initialExpandedId: id,
+            },
+            slots: {
+                default: `
+                    <es-accordion id="${id}" headingTag="${headingTag}">
+                        <template #title>${title}</template>
+                        <p>${content}</p>
+                    </es-accordion>
+                `,
+            },
+            stubs: {
+                'es-accordion': EsAccordion,
+            },
+        });
+        const heading = wrapper.find('h4');
+        expect(heading.exists()).toBe(true);
     });
 
     test('EsAccordionList expands one item and collapses another', async () => {
@@ -88,12 +114,16 @@ describe('EsAccordion', () => {
                 initialExpandedId: accordions[1].id,
             },
             slots: {
-                default: accordions.map((accordion) => `
+                default: accordions
+                    .map(
+                        (accordion) => `
                     <es-accordion id="${accordion.id}">
                         <template #title>${accordion.title}</template>
                         <p>${accordion.content}</p>
                     </es-accordion>
-                `).join(''),
+                `,
+                    )
+                    .join(''),
             },
             stubs: {
                 'es-accordion': EsAccordion,
@@ -123,7 +153,7 @@ describe('EsAccordion', () => {
         // find and click the first item's button to expand it
         const firstAccordion = wrapper.findAllComponents(EsAccordion).at(0);
         expect(firstAccordion.exists()).toBe(true);
-        const firstButton = firstAccordion.findComponent(EsButton);
+        const firstButton = firstAccordion.find('button');
         expect(firstButton.exists()).toBe(true);
         await firstButton.trigger('click');
 
@@ -206,7 +236,7 @@ describe('EsAccordion', () => {
         // find and click the second item's button to expand it
         const secondAccordion = wrapper.findAllComponents(EsAccordion).at(1);
         expect(secondAccordion.exists()).toBe(true);
-        const secondButton = secondAccordion.findComponent(EsButton);
+        const secondButton = secondAccordion.find('button');
         expect(secondButton.exists()).toBe(true);
         await secondButton.trigger('click');
 
@@ -253,12 +283,16 @@ describe('EsAccordion', () => {
                 initialExpandedId: accordions[0].id,
             },
             slots: {
-                default: accordions.map((accordion) => `
+                default: accordions
+                    .map(
+                        (accordion) => `
                     <es-accordion id="${accordion.id}">
                         <template #title>${accordion.title}</template>
                         <p>${accordion.content}</p>
                     </es-accordion>
-                `).join(''),
+                `,
+                    )
+                    .join(''),
             },
             stubs: {
                 'es-accordion': EsAccordion,
@@ -289,7 +323,7 @@ describe('EsAccordion', () => {
         // find and click the second item's button to expand it
         const secondAccordion = wrapper.findAllComponents(EsAccordion).at(1);
         expect(secondAccordion.exists()).toBe(true);
-        const secondButton = secondAccordion.findComponent(EsButton);
+        const secondButton = secondAccordion.findComponent('button');
         expect(secondButton.exists()).toBe(true);
         await secondButton.trigger('click');
 

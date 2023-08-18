@@ -72,6 +72,7 @@ export default {
          * {
          *    fileName: String,
          *    uploadUrl: String,
+         *    additionalFields: Object,
          * }
          */
         uploadUrls: {
@@ -244,21 +245,25 @@ export default {
         },
         openFilePicker() { this.$refs.fileInput.$el.childNodes[0].click(); },
         async uploadSingleFile(file) {
-            const config = {
-                headers: {
-                    'Content-Type': file.type,
-                },
-                onUploadProgress: (progressEvent) => {
-                    const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                    this.$emit('uploadProgress', { name: file.name, percentCompleted });
-                    return percentCompleted;
-                },
-            };
-            await this.$axios.post(
-                this.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name)?.uploadUrl,
-                file,
-                config,
-            )
+            const uploadInfo = this.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name);
+            if (!uploadInfo) {
+                this.$emit('uploadFailure', {
+                    name: file.name,
+                    message: 'No upload URL found for this file.',
+                });
+                return;
+            }
+            const form = new FormData();
+            if (uploadInfo.additionalFields) {
+                Object.entries(uploadInfo.additionalFields).forEach(([key, value]) => {
+                    form.append(key, value);
+                });
+            }
+            form.append('file', file);
+            fetch(uploadInfo.uploadUrl, {
+                method: 'POST',
+                body: form,
+            })
                 .then((response) => {
                     if (response.status >= 200 && response.status < 300) {
                         this.$emit('uploadSuccess', file.name);
@@ -270,7 +275,6 @@ export default {
                     }
                 })
                 .catch((error) => {
-                    // https://axios-http.com/docs/handling_errors
                     if (error.response) {
                         // The request was made and the server responded with a status code
                         // that falls out of the range of 2xx

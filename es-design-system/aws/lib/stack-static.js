@@ -23,6 +23,7 @@ class NuxtStaticStack extends cdk.Stack {
             },
             csp: {
                 directives: {
+                    frameSrc: ['www.youtube.com'],
                     connectSrc: ['api.reviews.io'],
                     fontSrc: ['assets.reviews.io'],
                     scriptSrc: ["'unsafe-eval'", 'widget.reviews.io'],

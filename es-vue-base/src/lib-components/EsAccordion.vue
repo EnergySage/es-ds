@@ -1,35 +1,30 @@
 <template>
-    <div
-        class="EsAccordion border-bottom border-light"
-        :class="{
-            ['EsAccordion--' + accordionVariant]: true,
-            'rounded-bottom': accordionVariant === 'default',
-        }">
-        <header role="tab">
-            <es-button
-                class="EsAccordion-button h-auto align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0 text-body text-left text-decoration-none w-100"
+    <div class="EsAccordion border-bottom border-light rounded-bottom">
+        <header
+            role="tab"
+            class="position-relative">
+            <component
+                :is="headingTag"
+                class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 text-body font-size-100"
                 :class="{
-                    'bg-light': isVisible && accordionVariant === 'default',
-                    'bg-white': !isVisible && accordionVariant === 'default',
-                    'EsAccordion-button--visible': isVisible,
-                    'px-100 px-sm-200': accordionVariant === 'default',
-                    'h4 mb-0 px-0': accordionVariant === 'minimal',
-                }"
-                variant="link"
-                @click="handleClick">
+                    'bg-gray-200': isVisible,
+                    'bg-white': !isVisible,
+                    'EsAccordion-heading--visible': isVisible,
+                }">
                 <slot name="title" />
                 <icon-chevron-down class="EsAccordion-icon flex-shrink-0 ml-200" />
-            </es-button>
+            </component>
+            <button
+                class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"
+                @click="handleClick">
+                <span class="sr-only">{{ isVisible ? 'collapse' : 'expand' }}</span>
+            </button>
         </header>
         <b-collapse
             :id="id"
             :visible="isVisible"
             role="tabpanel">
-            <div
-                class="EsAccordion-content pb-25 pt-100"
-                :class="{
-                    'bg-white px-100 px-sm-200': accordionVariant === 'default',
-                }">
+            <div class="EsAccordion-content bg-white px-100 px-sm-200 pb-25 pt-100">
                 <slot />
             </div>
         </b-collapse>
@@ -39,13 +34,11 @@
 <script>
 import { BCollapse } from 'bootstrap-vue';
 import IconChevronDown from '../lib-icons/icon-chevron-down.vue';
-import EsButton from './EsButton.vue';
 
 export default {
     name: 'EsAccordion',
     components: {
         BCollapse,
-        EsButton,
         IconChevronDown,
     },
     /**
@@ -66,10 +59,6 @@ export default {
             type: Object,
             required: true,
         },
-        accordionVariant: {
-            type: String,
-            required: true,
-        },
     },
     props: {
         /**
@@ -78,6 +67,10 @@ export default {
         id: {
             type: String,
             required: true,
+        },
+        headingTag: {
+            type: String,
+            default: 'h3',
         },
     },
     computed: {
@@ -102,41 +95,44 @@ export default {
 @import '~@energysage/es-bs-base/scss/includes';
 
 /* rotate the chevron when expanded */
-.EsAccordion-button--visible {
+.EsAccordion-heading--visible {
     .EsAccordion-icon {
         transform: rotate(180deg);
     }
 }
-/* first item needs rounded corners on top */
-.EsAccordion--default:first-child {
-    .EsAccordion-button {
-        border-radius: $border-radius $border-radius 0 0 !important;
+
+/* for smooth background color transition */
+@media not prefers-reduced-motion {
+    .EsAccordion-heading {
+        transition: $transition-base;
     }
 }
-/* first item has border top */
-.EsAccordion--minimal:first-child {
-    border-top-width: 1px;
-    border-top-style: solid;
-}
-/* removing the background color for the button when it is clicked */
-.EsAccordion--minimal .EsAccordion-button:active,
-.EsAccordion--minimal .EsAccordion-button:focus {
-    background-color: transparent;
+
+/* first item needs rounded corners on top */
+.EsAccordion:first-child {
+    .EsAccordion-heading {
+        border-radius: $border-radius $border-radius 0 0 !important;
+    }
 }
 /**
  * last item needs rounded corners on bottom of the button or content,
  * depending which is visible at the bottom of the list
  */
 .EsAccordion:last-child {
-    .EsAccordion-button,
+    .EsAccordion-heading,
     .EsAccordion-content {
         border-radius: 0 0 $border-radius $border-radius !important;
     }
     /* if the last item is expanded, the button is no longer the last visible item */
-    .EsAccordion-button--visible {
+    .EsAccordion-heading--visible {
         border-radius: 0 !important;
     }
 }
+/* align button to cover the heading tag */
+.EsAccordion-button {
+    top: 0;
+}
+
 /* only animate the chevron if the user doesn't prefer reduced motion */
 @media not prefers-reduced-motion {
     .EsAccordion-icon {

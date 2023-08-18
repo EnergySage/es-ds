@@ -59,9 +59,74 @@
         </div>
         <div class="mb-450">
             <h2>
+                Constrained
+            </h2>
+            <p class="mb-200">
+                The <code>constrained</code> prop is set to demonstrate a limited-width container.
+                There are no differences on mobile viewports from the default example.
+            </p>
+            <b-row class="justify-content-center">
+                <b-col
+                    cols="12"
+                    lg="8"
+                    xl="7">
+                    <es-support-card
+                        constrained
+                        image-alt-text="Donec consequat auctor"
+                        :image-src="placeholderPersonImage"
+                        primary-cta-text="Lorem ipsum"
+                        primary-cta-url="https://www.energysage.com">
+                        <template #headline>
+                            <span class="align-items-center d-flex text-success">
+                                <icon-verified
+                                    class="mr-50"
+                                    height="22px"
+                                    width="22px" />
+                            </span>
+                            Lorem ipsum dolor sit
+                        </template>
+                        <template #description>
+                            Praesent hendrerit lacus eu eros varius, quis tempor eros varius.
+                            <span class="font-weight-bold">
+                                Sed efficitur gravida odio id posuere.
+                            </span>
+                        </template>
+                    </es-support-card>
+                </b-col>
+            </b-row>
+        </div>
+        <div class="mb-450">
+            <h2>
                 Props
             </h2>
             <ds-responsive-table>
+                <ds-responsive-table-row>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name>
+                            Name
+                        </template>
+                        <template #value>
+                            <code>constrained</code>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name>
+                            Default
+                        </template>
+                        <template #value>
+                            <code>false</code>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name>
+                            Description
+                        </template>
+                        <template #value>
+                            When set to <code>true</code>, reduces padding on desktop viewports
+                            to better accommodate a limited-width layout.
+                        </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
                 <ds-responsive-table-row>
                     <ds-responsive-table-column :md="columnWidths.md[0]">
                         <template #name>

@@ -4,19 +4,20 @@
         :class="horizontalPadding"
         v-bind="$attrs"
         v-on="$listeners">
-        <h2
-            class="font-size-300"
-            :class="[
-                { 'order-1': imageFirst },
-                verticalSpacing
-            ]">
+        <!-- avoiding use of an <h2> tag here for long-form content SEO reasons,
+            but preserving heading semantics for screen readers -->
+        <div
+            role="heading"
+            aria-level="2"
+            class="font-weight-semibold font-size-300"
+            :class="[{ 'order-1': imageFirst }, verticalSpacing]">
             <slot name="heading">
                 Easily find what solar costs in your area
             </slot>
-        </h2>
+        </div>
         <div
             v-if="$slots.image"
-            class="mx-auto"
+            class="mx-auto w-100"
             :class="verticalSpacing">
             <slot name="image" />
         </div>
