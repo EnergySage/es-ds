@@ -2,18 +2,18 @@
     <div
         class="EsAccordion border-bottom border-light"
         :class="{
-            ['EsAccordion--' + variant]: true,
-            'rounded-bottom': variant === 'default',
-            'border-top': variant === 'minimal',
+            ['EsAccordion--' + accordionVariant]: true,
+            'rounded-bottom': accordionVariant === 'default',
         }">
         <header role="tab">
             <es-button
-                class="EsAccordion-button h-auto align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 rounded-0 text-body text-left text-decoration-none w-100"
+                class="EsAccordion-button h-auto align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0 text-body text-left text-decoration-none w-100"
                 :class="{
-                    'bg-light': isVisible && variant === 'default',
-                    'bg-white': !isVisible && variant === 'default',
+                    'bg-light': isVisible && accordionVariant === 'default',
+                    'bg-white': !isVisible && accordionVariant === 'default',
                     'EsAccordion-button--visible': isVisible,
-                    'h4 mb-0': variant === 'minimal',
+                    'px-100 px-sm-200': accordionVariant === 'default',
+                    'h4 mb-0 px-0': accordionVariant === 'minimal',
                 }"
                 variant="link"
                 @click="handleClick">
@@ -26,9 +26,9 @@
             :visible="isVisible"
             role="tabpanel">
             <div
-                class="EsAccordion-content px-100 px-sm-200 pb-25 pt-100"
+                class="EsAccordion-content pb-25 pt-100"
                 :class="{
-                    'bg-white': variant === 'default',
+                    'bg-white px-100 px-sm-200': accordionVariant === 'default',
                 }">
                 <slot />
             </div>
@@ -66,6 +66,10 @@ export default {
             type: Object,
             required: true,
         },
+        accordionVariant: {
+            type: String,
+            required: true,
+        },
     },
     props: {
         /**
@@ -74,14 +78,6 @@ export default {
         id: {
             type: String,
             required: true,
-        },
-        /**
-         * Used for styling purposes. At this time only two options are allowed.
-         */
-        variant: {
-            type: String,
-            validator: (value) => ['default', 'minimal'].includes(value),
-            default: 'default',
         },
     },
     computed: {
@@ -116,6 +112,11 @@ export default {
     .EsAccordion-button {
         border-radius: $border-radius $border-radius 0 0 !important;
     }
+}
+/* first item has border top */
+.EsAccordion--minimal:first-child {
+    border-top-width: 1px;
+    border-top-style: solid;
 }
 /* removing the background color for the button when it is clicked */
 .EsAccordion--minimal .EsAccordion-button:active,

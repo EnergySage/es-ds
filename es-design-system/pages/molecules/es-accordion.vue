@@ -80,10 +80,10 @@
             <p>
                 Accordion with default functionality (one expandible item) and minimal styling.
             </p>
-            <es-accordion-list initial-expanded-id="single-question-21">
-                <es-accordion
-                    id="single-question-21"
-                    variant="minimal">
+            <es-accordion-list
+                initial-expanded-id="single-question-21"
+                :variant="'minimal'">
+                <es-accordion id="single-question-21">
                     <template #title>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit?
                     </template>
@@ -418,14 +418,6 @@ export default {
                         EsAccordionList to signify that this item should start out expanded.
                     `,
                 },
-                {
-                    name: 'variant',
-                    description: `
-                        The name of the desired accordion style variant: 'default' or 'minimal'.
-                        Default is the rounded white background, minimal is the no-background simpler one with
-                        the border top.
-                    `,
-                },
             ],
             accordionListFields: [
                 'name',
@@ -444,6 +436,14 @@ export default {
                     description: `
                         The id of the item that should begin expanded when the component mounts. If omitted, all
                         items will start out collapsed. Do not use at the same time as v-model.
+                    `,
+                },
+                {
+                    name: 'variant',
+                    description: `
+                        The name of the desired accordion style variant: 'default' or 'minimal'.
+                        Default is the rounded white background, minimal is the no-background simpler one with
+                        the border top.
                     `,
                 },
             ],
