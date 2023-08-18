@@ -14,7 +14,7 @@
                     id="suggestedVisibleInput"
                     v-model="suggestedVisible"
                     type="checkbox">
-                Suggested Visible (will be ignored if/when the user interacts with the Collapse)
+                Toggle collapse programmatically (will be honored until a manual expand or collapse)
             </label>
         </form>
         <EsCollapse
@@ -38,6 +38,14 @@
             </p>
         <!-- eslint-enable max-len -->
         </EsCollapse>
+        <div class="mb-450">
+            <h2>
+                EsCollapse props
+            </h2>
+            <ds-prop-table
+                :rows="propTableRows"
+                :widths="tableWidths" />
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsCollapse.vue"
@@ -54,6 +62,18 @@ export default {
             compCode: '',
             docCode: '',
             suggestedVisible: true,
+            propTableRows: [
+                [
+                    'visible',
+                    'false',
+                    'Suggested visibility state. Will be ignored if and when the user ' +
+                    'interacts with the collapse.',
+                ],
+            ],
+            tableWidths: {
+                md: ['3', '4', '5'],
+                lg: ['2', '5', '5'],
+            },
         };
     },
     async created() {
