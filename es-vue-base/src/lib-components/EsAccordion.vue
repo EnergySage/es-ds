@@ -122,7 +122,8 @@ export default {
 /* for smooth background color transition */
 @media not prefers-reduced-motion {
     .EsAccordion-heading {
-        transition: $transition-base;
+        /* use this instead of $transition-base so font size and padding don't animate weirdly on breakpoint change */
+        transition: background-color .2s ease-in-out;
     }
 }
 
