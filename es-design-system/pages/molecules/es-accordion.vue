@@ -418,7 +418,7 @@ export default {
                     name: 'headingTag',
                     description: `
                         Defaults to h3. The tag used can be customized as needed.
-                        For example, if the accordion is used within a section that is already under an <h3>, 
+                        For example, if the accordion is used within a section that is already under an <h3>,
                         it may need to be an h4.
                     `,
                 },

@@ -19,6 +19,7 @@ export default {
         return {
             expandedIds: computed(() => this.expandedIds),
             parent: this,
+            /* Injecting object in to EsAccordion for the style variant */
             accordionVariant: this.variant,
         };
     },
@@ -40,19 +41,19 @@ export default {
             default: '',
         },
         /**
-         * Used for styling purposes. At this time only two options are allowed.
-         */
-        variant: {
-            type: String,
-            validator: (value) => ['default', 'minimal'].includes(value),
-            default: 'default',
-        },
-        /**
          * If v-model is used, this will contain a two-way binding to the id of the accordion that is expanded, if any.
          */
         value: {
             type: String,
             default: '',
+        },
+        /**
+         * Used for styling purposes. At this time only two options are allowed: default and minimal.
+         */
+        variant: {
+            type: String,
+            validator: (value) => ['default', 'minimal'].includes(value),
+            default: 'default',
         },
     },
     data() {
