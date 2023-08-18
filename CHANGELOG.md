@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.7] - 2023-08-18
+
+### Changed
+
+- `EsFileInput` no longer shows file upload progress and uses the fetch API instead of the axios library
+- `EsAccordion` has a new `variant` prop to support a new `minimal` variant
+- `EsAccordion` now uses heading tags under the hood and defaults to `<h3>`
+- `EsCtaBanner` and `EsCtaCard` no longer use an `<h2>` tag under the hood
+- The `coverImageUrl` prop is no longer required in `EsVideo`
+
 ## [0.25.6] - 2023-08-14
 
 ### Changed
@@ -728,6 +738,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.25.7]: https://github.com/EnergySage/es-ds/compare/v0.25.6...v0.25.7
 [0.25.6]: https://github.com/EnergySage/es-ds/compare/v0.25.5...v0.25.6
 [0.25.5]: https://github.com/EnergySage/es-ds/compare/v0.25.4...v0.25.5
 [0.25.4]: https://github.com/EnergySage/es-ds/compare/v0.25.2...v0.25.4
