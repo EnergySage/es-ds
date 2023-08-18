@@ -2,7 +2,7 @@
     <div
         class="rounded"
         role="tablist">
-        <slot :variant="variant" />
+        <slot />
     </div>
 </template>
 
