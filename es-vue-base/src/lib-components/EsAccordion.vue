@@ -1,15 +1,22 @@
 <template>
-    <div class="EsAccordion border-bottom border-light rounded-bottom">
+    <div
+        class="EsAccordion border-bottom border-light"
+        :class="{
+            ['EsAccordion--' + variant]: true,
+            'rounded-bottom': variant !== 'minimal',
+        }">
         <header
             role="tab"
             class="position-relative">
             <component
                 :is="headingTag"
-                class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between px-100 px-sm-200 py-100 text-body font-size-100"
+                class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0 text-body text-body"
                 :class="{
-                    'bg-gray-200': isVisible,
-                    'bg-white': !isVisible,
+                    'bg-gray-200': isVisible && variant !== 'minimal',
+                    'bg-white': !isVisible && variant !== 'minimal',
                     'EsAccordion-heading--visible': isVisible,
+                    'font-size-100 px-100 px-sm-200': variant !== 'minimal',
+                    'h3 px-0': variant === 'minimal',
                 }">
                 <slot name="title" />
                 <icon-chevron-down class="EsAccordion-icon flex-shrink-0 ml-200" />
@@ -24,7 +31,11 @@
             :id="id"
             :visible="isVisible"
             role="tabpanel">
-            <div class="EsAccordion-content bg-white px-100 px-sm-200 pb-25 pt-100">
+            <div
+                class="EsAccordion-content pb-25"
+                :class="{
+                    'bg-white pt-100 px-100 px-sm-200': variant !== 'minimal',
+                }">
                 <slot />
             </div>
         </b-collapse>
@@ -57,6 +68,13 @@ export default {
          */
         parent: {
             type: Object,
+            required: true,
+        },
+        /**
+         * The styling variant to use.
+         */
+        variant: {
+            type: String,
             required: true,
         },
     },
@@ -104,16 +122,24 @@ export default {
 /* for smooth background color transition */
 @media not prefers-reduced-motion {
     .EsAccordion-heading {
-        transition: $transition-base;
+        /* use this instead of $transition-base so font size and padding don't animate weirdly on breakpoint change */
+        transition: background-color .2s ease-in-out;
     }
 }
 
 /* first item needs rounded corners on top */
-.EsAccordion:first-child {
+.EsAccordion--default:first-child {
     .EsAccordion-heading {
         border-radius: $border-radius $border-radius 0 0 !important;
     }
 }
+
+/* first item has border top */
+.EsAccordion--minimal:first-child {
+    border-top-style: solid;
+    border-top-width: 1px;
+}
+
 /**
  * last item needs rounded corners on bottom of the button or content,
  * depending which is visible at the bottom of the list
@@ -128,6 +154,7 @@ export default {
         border-radius: 0 !important;
     }
 }
+
 /* align button to cover the heading tag */
 .EsAccordion-button {
     top: 0;
