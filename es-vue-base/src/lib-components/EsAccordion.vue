@@ -10,13 +10,13 @@
             class="position-relative">
             <component
                 :is="headingTag"
-                class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0 text-body text-body font-size-100 font-size-lg-300"
+                class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0 text-body text-body"
                 :class="{
                     'bg-gray-200': isVisible && accordionVariant === 'default',
                     'bg-white': !isVisible && accordionVariant === 'default',
                     'EsAccordion-heading--visible': isVisible,
-                    'px-100 px-sm-200': accordionVariant === 'default',
-                    'px-0': accordionVariant === 'minimal',
+                    'font-size-100 font-size-lg-300 px-100 px-sm-200': accordionVariant === 'default',
+                    'font-size-200 font-size-lg-400 px-0': accordionVariant === 'minimal',
                 }">
                 <slot name="title" />
                 <icon-chevron-down class="EsAccordion-icon flex-shrink-0 ml-200" />
