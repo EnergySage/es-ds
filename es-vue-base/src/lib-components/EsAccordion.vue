@@ -135,8 +135,8 @@ export default {
 
 /* first item has border top */
 .EsAccordion--minimal:first-child {
-    border-top-width: 1px;
     border-top-style: solid;
+    border-top-width: 1px;
 }
 
 /**
