@@ -66,8 +66,8 @@ export default {
                 [
                     'visible',
                     'false',
-                    'Suggested visibility state. Will be ignored if and when the user ' +
-                    'interacts with the collapse.',
+                    'Suggested visibility state. Will be ignored if and when the user '
+                    + 'interacts with the collapse.',
                 ],
             ],
             tableWidths: {
