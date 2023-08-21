@@ -21,7 +21,8 @@
             id="testId"
             :visible="suggestedVisible"
             class="p-450 my-450"
-            @shown="shownEvent">
+            @shown="shownEvent"
+            @toggled="toggledEvent">
             <template #title>
                 <h2 class="mb-0">
                     My Title
@@ -92,6 +93,10 @@ export default {
         shownEvent() {
             // eslint-disable-next-line no-console
             console.log('shown');
+        },
+        toggledEvent(newValue) {
+            // eslint-disable-next-line no-console
+            console.log(`toggled to ${newValue}`);
         },
     },
 };

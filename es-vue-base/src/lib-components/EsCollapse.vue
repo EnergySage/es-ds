@@ -95,6 +95,11 @@ export default {
             },
         },
     },
+    watch: {
+        userSpecifiedIsExpanded(newValue) {
+            this.$emit('toggled', newValue);
+        },
+    },
 };
 </script>
 <style lang="scss" scoped>
