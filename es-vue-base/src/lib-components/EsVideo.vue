@@ -15,7 +15,7 @@
                 v-if="hasImage"
                 name="image" />
             <b-img
-                v-else-if="altText && coverImageUrl"
+                v-else-if="coverImageUrl"
                 :alt="altText"
                 sizes="md:530px sm:275px"
                 class="EsVideo-image d-block rounded-lg w-100"
@@ -47,7 +47,7 @@ export default ({
         },
         coverImageUrl: {
             type: String,
-            required: true,
+            default: '',
         },
         embedUrl: {
             type: String,
