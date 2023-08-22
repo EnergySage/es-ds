@@ -9,6 +9,9 @@ cdk.out
 !.vscode/settings.json.example
 !.vscode/extensions.json
 
+# JetBrains IDEs
+.idea/
+
 # Optional npm cache directory and config
 .npm
 .npmrc
