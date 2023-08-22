@@ -8,11 +8,21 @@
                 bootstrap-vue collapse
             </b-link>
         </p>
+        <form>
+            <label for="suggestedVisibleInput">
+                <input
+                    id="suggestedVisibleInput"
+                    v-model="suggestedVisible"
+                    type="checkbox">
+                Toggle collapse programmatically (will be honored until a manual expand or collapse)
+            </label>
+        </form>
         <EsCollapse
             id="testId"
-            visible
+            :visible="suggestedVisible"
             class="p-450 my-450"
-            @shown="shownEvent">
+            @shown="shownEvent"
+            @toggled="toggledEvent">
             <template #title>
                 <h2 class="mb-0">
                     My Title
@@ -29,6 +39,14 @@
             </p>
         <!-- eslint-enable max-len -->
         </EsCollapse>
+        <div class="mb-450">
+            <h2>
+                EsCollapse props
+            </h2>
+            <ds-prop-table
+                :rows="propTableRows"
+                :widths="tableWidths" />
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsCollapse.vue"
@@ -44,6 +62,19 @@ export default {
         return {
             compCode: '',
             docCode: '',
+            suggestedVisible: true,
+            propTableRows: [
+                [
+                    'visible',
+                    'false',
+                    'Suggested visibility state. Will be ignored if and when the user '
+                    + 'interacts with the collapse.',
+                ],
+            ],
+            tableWidths: {
+                md: ['3', '4', '5'],
+                lg: ['2', '5', '5'],
+            },
         };
     },
     async created() {
@@ -62,6 +93,10 @@ export default {
         shownEvent() {
             // eslint-disable-next-line no-console
             console.log('shown');
+        },
+        toggledEvent(newValue) {
+            // eslint-disable-next-line no-console
+            console.log(`toggled to ${newValue}`);
         },
     },
 };
