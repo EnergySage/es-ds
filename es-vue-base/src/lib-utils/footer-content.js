@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+// keeping COMMUNITY_SOLAR_DOMAIN and HEAT_PUMPS_DOMAIN for now to keep function argument order intact
+// and to minimize breaking change to consuming applications, but they are now deprecated in this function
 export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
     NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://news.energysage.com',
@@ -83,3 +86,4 @@ export default (
         logoUrl: 'https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png',
     },
 });
+/* eslint-enable no-unused-vars */
