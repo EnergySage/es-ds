@@ -14,8 +14,7 @@
                 @readyToUpload="readyToUpload"
                 @uploadSuccess="uploadSuccess"
                 @uploadFailure="uploadFailure"
-                @fileDataRead="fileDataRead"
-                @uploadProgress="uploadProgress">
+                @fileDataRead="fileDataRead">
                 <template #cta>
                     <h2 class="d-none d-md-inline-block mb-4 text-center">
                         Drag and drop your files<br>or
@@ -50,8 +49,7 @@
                 @readyToUpload="readyToUpload"
                 @uploadSuccess="uploadSuccess"
                 @uploadFailure="uploadFailure"
-                @fileDataRead="fileDataRead"
-                @uploadProgress="uploadProgress">
+                @fileDataRead="fileDataRead">
                 <template #cta>
                     <h3 class="d-none d-md-block mb-4 text-center">
                         Drag and drop your files or
@@ -95,18 +93,6 @@
                     </es-button>
                 </div>
             </b-form>
-            <div
-                v-for="progress in uploadProgresses"
-                :key="progress.name"
-                class="mb-100">
-                <h3>
-                    {{ progress.name }}
-                </h3>
-                <es-progress :value="progress.percent" />
-                <p>
-                    {{ progress.percent }}%
-                </p>
-            </div>
         </div>
         <div v-if="events.length">
             <h2 class="mb-200">
@@ -209,7 +195,6 @@ export default {
             uploadUrls: [],
             fileObjects: [],
             events: [],
-            uploadProgresses: [],
             columnWidths: {
                 md: ['3', '2', '7'],
             },
@@ -270,12 +255,6 @@ export default {
                 description: 'Used for a file thumbnail preview. This is the callback for the FileReader onload '
                 + 'event (a file has finished being read locally into the browser as an encoded string). The payload '
                 + 'is an object with the fields name, size, type, and data.',
-            },
-            {
-                name: '@uploadProgress',
-                payload: 'Number',
-                description: 'The callback for the Axios onUploadProgress event. The payload is the percentage of '
-                + 'the file that has been uploaded so far.',
             }],
         };
     },
@@ -301,15 +280,6 @@ export default {
             }));
         },
         readyToUpload(fileObjects) {
-            this.uploadProgresses = fileObjects.map((fileObject) => {
-                const originalPercent = this.uploadProgresses.find(({ name }) => name === fileObject.name)?.percent;
-                const originalUrl = this.fileObjects.find(({ name }) => name === fileObject.name)?.uploadUrl;
-                const percent = originalPercent && originalUrl === fileObject.uploadUrl
-                    ? originalPercent
-                    : 0;
-                return { name: fileObject.name, percent };
-            });
-
             this.fileObjects = fileObjects;
             this.events.push({ msg: `readyToUpload for ${fileObjects.length} file(s)`, variant: 'success' });
         },
@@ -327,17 +297,6 @@ export default {
             this.events.push({
                 msg: `fileDataRead for file: ${file.name} type: ${file.type} size: ${file.size}`,
                 variant: 'success',
-            });
-        },
-        uploadProgress(progressData) {
-            const progress = this.uploadProgresses.find((_progress) => _progress.name === progressData.name);
-            if (progress) {
-                progress.percent = progressData.percentCompleted;
-                return;
-            }
-            this.uploadProgresses.push({
-                name: progressData.name,
-                percent: progressData.percentCompleted,
             });
         },
         fileSizeError(fileName) {

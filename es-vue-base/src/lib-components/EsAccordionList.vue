@@ -19,6 +19,7 @@ export default {
         return {
             expandedIds: computed(() => this.expandedIds),
             parent: this,
+            variant: this.variant,
         };
     },
     props: {
@@ -44,6 +45,14 @@ export default {
         value: {
             type: String,
             default: '',
+        },
+        /**
+         * Used for styling purposes. At this time only two options are allowed: default and minimal.
+         */
+        variant: {
+            type: String,
+            validator: (value) => ['default', 'minimal'].includes(value),
+            default: 'default',
         },
     },
     data() {

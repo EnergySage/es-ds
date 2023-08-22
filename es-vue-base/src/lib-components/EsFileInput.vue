@@ -245,16 +245,6 @@ export default {
         },
         openFilePicker() { this.$refs.fileInput.$el.childNodes[0].click(); },
         async uploadSingleFile(file) {
-            const config = {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-                onUploadProgress: (progressEvent) => {
-                    const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                    this.$emit('uploadProgress', { name: file.name, percentCompleted });
-                    return percentCompleted;
-                },
-            };
             const uploadInfo = this.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name);
             if (!uploadInfo) {
                 this.$emit('uploadFailure', {
@@ -270,11 +260,10 @@ export default {
                 });
             }
             form.append('file', file);
-            await this.$axios.post(
-                uploadInfo.uploadUrl,
-                form,
-                config,
-            )
+            fetch(uploadInfo.uploadUrl, {
+                method: 'POST',
+                body: form,
+            })
                 .then((response) => {
                     if (response.status >= 200 && response.status < 300) {
                         this.$emit('uploadSuccess', file.name);
@@ -286,7 +275,6 @@ export default {
                     }
                 })
                 .catch((error) => {
-                    // https://axios-http.com/docs/handling_errors
                     if (error.response) {
                         // The request was made and the server responded with a status code
                         // that falls out of the range of 2xx
