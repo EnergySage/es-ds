@@ -26,13 +26,13 @@ exports[`EsFooter <EsFooter /> 1`] = `
               <li class="font-weight-bolder font-size-100 mb-50">
                 Our offerings
               </li>
-              <li class="mt-25 mb-50"><a href="https://www.energysage.com/market-intro/" class="text-reset">
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/shop/home-solar/" class="text-reset">
                   Home solar
                 </a></li>
-              <li class="mt-25 mb-50"><a href="https://communitysolar.energysage.com" rel="noopener" target="_blank" class="text-reset">
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/shop/community-solar/" class="text-reset">
                   Community solar
                 </a></li>
-              <li class="mt-25 mb-50"><a href="https://heatpumps.energysage.com" rel="noopener" target="_blank" class="text-reset">
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/shop/heat-pumps/" class="text-reset">
                   Heating &amp; cooling
                 </a></li>
               <li class="mt-25 mb-50"><a href="https://www.energysage.com/energy-storage/" class="text-reset">
@@ -66,7 +66,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
               <li class="mt-25 mb-50"><a href="https://help.energysage.com" rel="noopener" target="_blank" class="text-reset">
                   Help center
                 </a></li>
-              <li class="mt-25 mb-50"><a href="https://www.energysage.com/market-intro/" class="text-reset">
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/shop/home-solar/" class="text-reset">
                   Home solar guide
                 </a></li>
             </ul>
@@ -79,7 +79,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
               <li class="mt-25 mb-50"><a href="https://www.energysage.com/about-us/company/" class="text-reset">
                   Mission &amp; values
                 </a></li>
-              <li class="mt-25 mb-50"><a href="https://www.energysage.com/market-intro/" class="text-reset">
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/shop/home-solar/" class="text-reset">
                   How it works
                 </a></li>
               <li class="mt-25 mb-50"><a href="https://www.energysage.com/about-us/careers/" class="text-reset">
