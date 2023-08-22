@@ -20,9 +20,9 @@ export default (
         {
             title: 'Our offerings',
             links: [
-                { text: 'Home solar', url: `${ES_DOMAIN}/market-intro/` },
-                { text: 'Community solar', url: COMMUNITY_SOLAR_DOMAIN, newTab: true },
-                { text: 'Heating & cooling', url: HEAT_PUMPS_DOMAIN, newTab: true },
+                { text: 'Home solar', url: `${ES_DOMAIN}/shop/home-solar/` },
+                { text: 'Community solar', url: `${ES_DOMAIN}/shop/community-solar/` },
+                { text: 'Heating & cooling', url: `${ES_DOMAIN}/shop/heat-pumps/` },
                 { text: 'Backup power', url: `${ES_DOMAIN}/energy-storage/` },
                 { text: 'EV charging', url: `${ES_DOMAIN}/ev-charging/` },
                 { text: 'For your business', url: `${ES_DOMAIN}/businesses/` },
@@ -36,14 +36,14 @@ export default (
                 { text: 'Solar rebates', url: `${ES_DOMAIN}/market/equipment-rebates/` },
                 { text: 'News', url: NEWS_DOMAIN, newTab: true },
                 { text: 'Help center', url: HELP_DOMAIN, newTab: true },
-                { text: 'Home solar guide', url: `${ES_DOMAIN}/market-intro/` },
+                { text: 'Home solar guide', url: `${ES_DOMAIN}/shop/home-solar/` },
             ],
         },
         {
             title: 'About us',
             links: [
                 { text: 'Mission & values', url: `${ES_DOMAIN}/about-us/company/` },
-                { text: 'How it works', url: `${ES_DOMAIN}/market-intro/` },
+                { text: 'How it works', url: `${ES_DOMAIN}/shop/home-solar/` },
                 { text: 'Careers', url: `${ES_DOMAIN}/about-us/careers/` },
                 { text: 'Contact us', url: `${ES_DOMAIN}/contact/` },
                 { text: 'Editorial guidelines', url: `${ES_DOMAIN}/editorial-guidelines/` },
