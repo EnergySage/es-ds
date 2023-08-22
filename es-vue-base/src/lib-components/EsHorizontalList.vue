@@ -24,7 +24,14 @@
         </div>
         <div
             v-if="dots"
-            class="dots-holder list-unstyled w-100 mt-100 text-center">
+            class="dots-holder list-unstyled w-100 mt-100 text-center d-flex align-items-center justify-content-center">
+            <es-button
+                v-if="arrows"
+                variant="link"
+                class="text-black d-none d-lg-block p-0 mr-200"
+                @click="arrowClick('left')">
+                <icon-chevron-left />
+            </es-button>
             <b-link
                 v-for="index in children.length"
                 :key="index"
@@ -35,6 +42,13 @@
                     active: index === activeIndex,
                 }"
                 @click="dotClick(index)" />
+            <es-button
+                v-if="arrows"
+                variant="link"
+                class="text-black d-none d-lg-block p-0 ml-200"
+                @click="arrowClick('right')">
+                <icon-chevron-right />
+            </es-button>
         </div>
     </div>
 </template>
@@ -59,6 +73,14 @@ export default {
          * Show dots under or not
          */
         dots: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+        /**
+         * Show arrows in desktop or not
+         */
+        arrows: {
             type: Boolean,
             required: false,
             default: false,
@@ -101,6 +123,17 @@ export default {
 
             this.activeIndex = index;
             scroller.scrollLeft = element.offsetLeft;
+        },
+
+        arrowClick(direction) {
+            const scroller = this.$refs[this.id];
+            const indexChange = direction === 'left' ? -1 : 1;
+
+            if (this.activeIndex + indexChange >= 1 && this.activeIndex + indexChange <= this.children.length) {
+                const element = this.children.item(this.activeIndex + indexChange - 1);
+                scroller.scrollLeft = element.offsetLeft;
+                this.activeIndex += indexChange;
+            }
         },
         moveEvent(event) {
             // If the mouse/touch event is not down dont scroll on mouse move
