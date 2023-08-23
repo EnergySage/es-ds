@@ -128,9 +128,9 @@ export default {
         arrowClick(direction) {
             const scroller = this.$refs[this.id];
             const indexChange = direction === 'left' ? -1 : 1;
-
-            if (this.activeIndex + indexChange >= 1 && this.activeIndex + indexChange <= this.children.length) {
-                const element = this.children.item(this.activeIndex + indexChange - 1);
+            const newIndex = this.activeIndex + indexChange;
+            if (newIndex >= 1 && newIndex <= this.children.length) {
+                const element = this.children.item(newIndex - 1);
                 scroller.scrollLeft = element.offsetLeft;
                 this.activeIndex += indexChange;
             }
