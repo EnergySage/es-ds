@@ -315,7 +315,6 @@ export default (
                     name: 'Community solar',
                     subHeading: 'Go solar with no equipment',
                     link: `${ES_DOMAIN}/shop/community-solar/`,
-                    newTab: true,
                     showItemsOnMobile: false,
                     subtopics: [
                         {
@@ -342,7 +341,6 @@ export default (
         {
             name: 'Community solar',
             link: `${ES_DOMAIN}/shop/community-solar/`,
-            newTab: true,
             items: [
                 {
                     name: 'Community solar guide',
@@ -359,7 +357,6 @@ export default (
         {
             name: 'Heating & cooling',
             link: `${ES_DOMAIN}/shop/heat-pumps/`,
-            newTab: true,
             items: [
                 {
                     name: 'Heat pump guide',
