@@ -16,10 +16,19 @@
                     type="checkbox">
                 Toggle collapse programmatically (will be honored until a manual expand or collapse)
             </label>
+            <br>
+            <label for="prioritizeSuggestedVisibleInput">
+                <input
+                    id="prioritizeSuggestedVisibleInput"
+                    v-model="prioritizeSuggestedVisible"
+                    type="checkbox">
+                Toggle prioritizing programmatic collapse over user interaction
+            </label>
         </form>
         <EsCollapse
             id="testId"
             :visible="suggestedVisible"
+            :prioritize-suggested-visible="prioritizeSuggestedVisible"
             class="p-450 my-450"
             @shown="shownEvent"
             @toggled="toggledEvent">
@@ -63,6 +72,7 @@ export default {
             compCode: '',
             docCode: '',
             suggestedVisible: true,
+            prioritizeSuggestedVisible: false,
             propTableRows: [
                 [
                     'visible',

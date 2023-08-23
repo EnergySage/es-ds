@@ -68,6 +68,15 @@ export default {
             default: false,
         },
         /**
+         * prioritizeSuggestedVisible
+         * Prioritize the visible prop over the user's interaction with the collapse.
+         */
+        prioritizeSuggestedVisible: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+        /**
          * Border
          * Show the border or not
          */
@@ -98,6 +107,11 @@ export default {
     watch: {
         userSpecifiedIsExpanded(newValue) {
             this.$emit('toggled', newValue);
+        },
+        visible(newValue) {
+            if (this.prioritizeSuggestedVisible) {
+                this.userSpecifiedIsExpanded = newValue;
+            }
         },
     },
 };
