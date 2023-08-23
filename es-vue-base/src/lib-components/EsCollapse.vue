@@ -89,13 +89,15 @@ export default {
     data() {
         return {
             userSpecifiedIsExpanded: null,
+            isExpanded: null, // We use a second variable to track the expanded state so that we only emit the toggled
+            // event when the user interacts with the collapse.
         };
     },
     computed: {
         expanded: {
             get() {
                 if (this.userSpecifiedIsExpanded !== null) {
-                    return this.userSpecifiedIsExpanded;
+                    return this.isExpanded;
                 }
                 return this.visible;
             },
@@ -106,11 +108,12 @@ export default {
     },
     watch: {
         userSpecifiedIsExpanded(newValue) {
+            this.isExpanded = newValue;
             this.$emit('toggled', newValue);
         },
         visible(newValue) {
             if (this.prioritizeSuggestedVisible) {
-                this.userSpecifiedIsExpanded = newValue;
+                this.isExpanded = newValue;
             }
         },
     },
