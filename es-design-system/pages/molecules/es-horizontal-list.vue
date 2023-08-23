@@ -40,7 +40,7 @@
                 <div
                     v-for="index in 5"
                     :key="index"
-                    class="center-block-holder bg-primary mr-200 text-center text-white py-450">
+                    class="center-block-holder bg-primary mr-50 text-center text-white py-450">
                     {{ index }}
                 </div>
             </es-horizontal-list>
