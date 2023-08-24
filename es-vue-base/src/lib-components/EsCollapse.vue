@@ -2,11 +2,12 @@
     <div>
         <EsButton
             block
-            :aria-label="id"
+            :aria-expanded="expanded.toString()"
+            :aria-controls="id"
             class="collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             inline
             variant="link"
-            @click="isExpanded = !isExpanded">
+            @click="userSpecifiedIsExpanded = !expanded">
             <div>
                 <slot name="title" />
             </div>
@@ -14,7 +15,7 @@
                 <IconChevronDown
                     :class="{
                         svg: true,
-                        collapsed: isExpanded,
+                        chevronExpanded: expanded,
                     }"
                     width="30px"
                     height="30px" />
@@ -23,9 +24,7 @@
 
         <b-collapse
             :id="id"
-            :visible="isExpanded"
-            :aria-labelledby="id"
-            role="tabpanel"
+            v-model="expanded"
             data-testid="collapse"
             v-on="$listeners">
             <slot />
@@ -36,7 +35,7 @@
             :class="{
                 'border-bottom': true,
                 'bottom-spacer': true,
-                expanded: isExpanded,
+                expanded: expanded,
             }" />
     </div>
 </template>
@@ -61,7 +60,7 @@ export default {
         },
         /**
          * Visible
-         * Start open/closed
+         * Suggested open/closed state. Will be ignored if and when the user interacts with the collapse.
          */
         visible: {
             type: Boolean,
@@ -80,8 +79,26 @@ export default {
     },
     data() {
         return {
-            isExpanded: this.visible,
+            userSpecifiedIsExpanded: null,
         };
+    },
+    computed: {
+        expanded: {
+            get() {
+                if (this.userSpecifiedIsExpanded !== null) {
+                    return this.userSpecifiedIsExpanded;
+                }
+                return this.visible;
+            },
+            set() {
+                // noop
+            },
+        },
+    },
+    watch: {
+        userSpecifiedIsExpanded(newValue) {
+            this.$emit('toggled', newValue);
+        },
     },
 };
 </script>
@@ -90,7 +107,7 @@ export default {
     transition: transform .5s ease;
 }
 
-.collapsed {
+.chevronExpanded {
     transform: rotate(180deg);
 }
 

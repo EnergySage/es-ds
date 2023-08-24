@@ -213,7 +213,7 @@ export default (
                         },
                         {
                             name: 'How it works',
-                            link: `${ES_DOMAIN}/market-intro/`,
+                            link: `${ES_DOMAIN}/shop/home-solar/`,
                         },
                         {
                             name: 'Our team',
@@ -259,12 +259,12 @@ export default (
     products: [
         {
             name: 'Home solar',
-            link: `${ES_DOMAIN}/market-intro/`,
+            link: `${ES_DOMAIN}/shop/home-solar/`,
             topics: [
                 {
                     name: 'Rooftop solar',
                     subHeading: 'Install solar on your property',
-                    link: `${ES_DOMAIN}/market-intro/`,
+                    link: `${ES_DOMAIN}/shop/home-solar/`,
                     showItemsOnMobile: false,
                     subtopics: [
                         {
@@ -314,8 +314,7 @@ export default (
                 {
                     name: 'Community solar',
                     subHeading: 'Go solar with no equipment',
-                    link: COMMUNITY_SOLAR_DOMAIN,
-                    newTab: true,
+                    link: `${ES_DOMAIN}/shop/community-solar/`,
                     showItemsOnMobile: false,
                     subtopics: [
                         {
@@ -341,8 +340,7 @@ export default (
         },
         {
             name: 'Community solar',
-            link: COMMUNITY_SOLAR_DOMAIN,
-            newTab: true,
+            link: `${ES_DOMAIN}/shop/community-solar/`,
             items: [
                 {
                     name: 'Community solar guide',
@@ -358,8 +356,7 @@ export default (
         },
         {
             name: 'Heating & cooling',
-            link: HEAT_PUMPS_DOMAIN,
-            newTab: true,
+            link: `${ES_DOMAIN}/shop/heat-pumps/`,
             items: [
                 {
                     name: 'Heat pump guide',
