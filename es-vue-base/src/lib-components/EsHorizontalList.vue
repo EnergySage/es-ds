@@ -31,6 +31,7 @@
                 class="text-black d-none d-lg-block p-0 mr-200"
                 @click="arrowClick('left')">
                 <icon-chevron-left />
+                <span class="sr-only">Previous</span>
             </es-button>
             <b-link
                 v-for="index in children.length"
@@ -48,6 +49,7 @@
                 class="text-black d-none d-lg-block p-0 ml-200"
                 @click="arrowClick('right')">
                 <icon-chevron-right />
+                <span class="sr-only">Next</span>
             </es-button>
         </div>
     </div>
