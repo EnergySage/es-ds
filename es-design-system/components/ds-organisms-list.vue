@@ -6,6 +6,11 @@
             </b-link>
         </li>
         <li>
+            <b-link to="/organisms/es-fixed-banner">
+                EsFixedBanner
+            </b-link>
+        </li>
+        <li>
             <b-link to="/organisms/es-cta-card">
                 EsCtaCard
             </b-link>
