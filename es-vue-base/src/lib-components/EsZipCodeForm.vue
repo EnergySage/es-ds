@@ -9,10 +9,10 @@
         v-on="$listeners">
         <b-form
             ref="ctaForm"
-            class="justify-content-center mb-50 w-100"
+            class="justify-content-center mb-100 w-100"
             :class="{
                 invalid: $v.$dirty && $v.$invalid,
-                [`d-${stackBreak}flex`]: stackBreak
+                [`d-${stackBreak}flex`]: stackBreak,
             }"
             :action="url"
             method="get"
@@ -23,7 +23,7 @@
                 :id="inputId"
                 v-model="zipCode"
                 :class="{
-                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackBreak
+                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackBreak,
                 }"
                 :name="fieldName"
                 autocomplete="postal-code"
@@ -42,9 +42,7 @@
                 </template>
                 <template #errorMessage>
                     <span :class="{ 'text-white': dark }">
-                        <slot name="errorMessage">
-                            Please enter a 5-digit zip code.
-                        </slot>
+                        <slot name="errorMessage"> Please enter a 5-digit zip code. </slot>
                     </span>
                 </template>
             </es-form-input>
@@ -66,9 +64,7 @@
                 height="1.125rem"
                 width="1.125rem" />
             <span>
-                <slot name="privacyExplanation">
-                    Your information is safe with us.
-                </slot>
+                <slot name="privacyExplanation"> Your information is safe with us. </slot>
             </span>
             <b-link
                 :href="privacyPolicyLink"
