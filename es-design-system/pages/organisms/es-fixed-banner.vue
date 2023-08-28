@@ -4,7 +4,7 @@
             Es Fixed Banner
         </h1>
         <es-fixed-banner
-            banner-should-be-hidden-user-prefs-attribute-name="dsDocsBannerShouldBeHidden">
+            banner-should-be-hidden-cookie-name="dsDocsBannerShouldBeHidden">
         </es-fixed-banner>
     </div>
 </template>

@@ -12,20 +12,11 @@ function getCookieValue(cookieName) {
     }
     return null;
 }
-try {
-    const userPrefsCookie = JSON.parse(getCookieValue('userPreferences'));
-    const bannerShouldBeHidden = userPrefsCookie['${bannerShouldBeHiddenUserPrefsAttributeName}'];
-    if (bannerShouldBeHidden) {
-        const style = document.createElement('style');
-        document.head.appendChild(style);
-        style.sheet.insertRule('.EsFixedBanner { display: none !important }');
-    }
-} catch (e) {
-    if (e instanceof SyntaxError) {
-        // ignore invalid/nonexistent JSON
-    } else {
-        throw e;
-    }
+const bannerShouldBeHidden = getCookieValue('${bannerShouldBeHiddenCookieName}');
+if (bannerShouldBeHidden) {
+    const style = document.createElement('style');
+    document.head.appendChild(style);
+    style.sheet.insertRule('.EsFixedBanner { display: none !important }');
 }
 </script>`" />
         <div
@@ -68,7 +59,7 @@ function setCookie(name, value, days) {
 export default {
     name: 'EsFixedBanner',
     props: {
-        bannerShouldBeHiddenUserPrefsAttributeName: {
+        bannerShouldBeHiddenCookieName: {
             type: String,
             required: true,
         },
