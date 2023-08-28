@@ -33,6 +33,15 @@ try {
             ref="banner"
             class="fixed-bottom bg-white EsFixedBanner">
             CTA text will go here
+            <div
+                role="button"
+                aria-label="Close banner"
+                tabindex="0"
+                class="DismissButton"
+                @click="dismiss"
+                @keyup="dismiss">
+                <icon-x />
+            </div>
         </div>
     </div>
 </template>
@@ -46,5 +55,17 @@ export default {
             required: true,
         },
     },
+    methods: {
+        dismiss() {
+            this.$refs.banner.classList.add('d-none');
+            // To Do: add cookie handling
+        },
+    },
 };
 </script>
+
+<style lang="scss" scoped>
+.EsFixedBanner .DismissButton {
+    cursor: pointer;
+}
+</style>
