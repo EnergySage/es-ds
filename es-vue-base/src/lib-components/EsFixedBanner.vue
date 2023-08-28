@@ -47,6 +47,24 @@ try {
 </template>
 
 <script lang="js">
+function getCookieValue(cookieName) {
+    const cookies = document.cookie.split('; ');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].split('=');
+        if (cookie[0] === cookieName) {
+            return decodeURIComponent(cookie[1]);
+        }
+    }
+    return null;
+}
+
+function setCookie(name, value, days) {
+    const expirationDate = new Date();
+    expirationDate.setTime(expirationDate.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = `expires=${expirationDate.toUTCString()}`;
+    document.cookie = `${name}=${encodeURIComponent(value)}; ${expires}; path=/`;
+}
+
 export default {
     name: 'EsFixedBanner',
     props: {
@@ -58,7 +76,6 @@ export default {
     methods: {
         dismiss() {
             this.$refs.banner.classList.add('d-none');
-            // To Do: add cookie handling
         },
     },
 };
