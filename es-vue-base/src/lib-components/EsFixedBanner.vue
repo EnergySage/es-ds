@@ -12,11 +12,20 @@ function getCookieValue(cookieName) {
     }
     return null;
 }
-const bannerShouldBeHidden = getCookieValue('bannerShouldBeHidden');
-if (bannerShouldBeHidden) {
-    const style = document.createElement('style');
-    document.head.appendChild(style);
-    style.sheet.insertRule('.EsFixedBanner { display: none !important }');
+try {
+    const userPrefsCookie = JSON.parse(getCookieValue('userPreferences'));
+    const bannerShouldBeHidden = userPrefsCookie['${bannerShouldBeHiddenUserPrefsAttributeName}'];
+    if (bannerShouldBeHidden) {
+        const style = document.createElement('style');
+        document.head.appendChild(style);
+        style.sheet.insertRule('.EsFixedBanner { display: none !important }');
+    }
+} catch (e) {
+    if (e instanceof SyntaxError) {
+        // ignore invalid/nonexistent JSON
+    } else {
+        throw e;
+    }
 }
 </script>`" />
         <div
@@ -31,5 +40,11 @@ if (bannerShouldBeHidden) {
 <script lang="js">
 export default {
     name: 'EsFixedBanner',
+    props: {
+        bannerShouldBeHiddenUserPrefsAttributeName: {
+            type: String,
+            required: true,
+        },
+    },
 };
 </script>
