@@ -7,7 +7,7 @@
             class="collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             inline
             variant="link"
-            @click="userSpecifiedIsExpanded = !expanded">
+            @click="userClick">
             <div>
                 <slot name="title" />
             </div>
@@ -50,6 +50,10 @@ export default {
     components: {
         EsButton, BCollapse, IconChevronDown,
     },
+    model: {
+        prop: 'visible',
+        event: 'userClick',
+    },
     props: {
         /**
          * ID
@@ -68,13 +72,13 @@ export default {
             default: false,
         },
         /**
-         * prioritizeSuggestedVisible
+         * isProgrammaticUntilUserInput
          * Prioritize the visible prop over the user's interaction with the collapse.
          */
-        prioritizeSuggestedVisible: {
+        isProgrammaticUntilUserInput: {
             type: Boolean,
             required: false,
-            default: false,
+            default: true,
         },
         /**
          * Border
@@ -96,8 +100,8 @@ export default {
     computed: {
         expanded: {
             get() {
-                if (this.userSpecifiedIsExpanded !== null) {
-                    return this.isExpanded;
+                if (this.isProgrammaticUntilUserInput && this.userSpecifiedIsExpanded !== null) {
+                    return this.userSpecifiedIsExpanded;
                 }
                 return this.visible;
             },
@@ -112,9 +116,15 @@ export default {
             this.$emit('toggled', newValue);
         },
         visible(newValue) {
-            if (this.prioritizeSuggestedVisible) {
+            if (!this.isProgrammaticUntilUserInput) {
                 this.isExpanded = newValue;
             }
+        },
+    },
+    methods: {
+        userClick() {
+            this.userSpecifiedIsExpanded = !this.expanded;
+            this.$emit('userClick', !this.expanded);
         },
     },
 };

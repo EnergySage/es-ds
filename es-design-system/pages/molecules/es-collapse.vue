@@ -82,26 +82,26 @@
                 Programmatic EsCollapse with Priority
             </h2>
             <p>
-                An EsCollapse component that takes a "visible" prop with "prioritize-suggested-visible" true. Click the
-                checkbox to toggle showing it's contents! Unlike the previous example, if you click the collapse
+                An EsCollapse component that takes a "visible" prop with "is-programmatic-until-user-input" true. Click
+                the checkbox to toggle showing it's contents! Unlike the previous example, if you click the collapse
                 itself, the "visible" prop will continue to be honored.
             </p>
             <form class="ml-450 mr-450">
-                <label for="suggestedVisibleForPriorityInput">
+                <label for="visible">
                     <input
-                        id="suggestedVisibleForPriorityInput"
-                        v-model="suggestedVisibleForPriority"
+                        id="visible"
+                        v-model="visible"
                         type="checkbox">
                     Toggle collapse programmatically (will always be honored)
                 </label>
             </form>
             <EsCollapse
                 id="testId"
-                :visible="suggestedVisibleForPriority"
-                :prioritize-suggested-visible="true"
+                v-model="visible"
+                :is-programmatic-until-user-input="false"
                 class="p-450"
                 @shown="shownEvent"
-                @toggled="toggledEvent">
+                @toggled="toggledEventInSuggestedVisibleExample">
                 <template #title>
                     <h2 class="mb-0">
                         My Title
@@ -139,23 +139,24 @@
 
 export default {
     name: 'EsCollapseDocs',
+
     data() {
         return {
             compCode: '',
             docCode: '',
             suggestedVisible: true,
-            suggestedVisibleForPriority: false,
+            visible: false,
             propTableRows: [
                 [
                     'visible',
                     'false',
                     'Suggested visibility state. Will be ignored if and when the user '
-                    + 'interacts with the collapse (unless "prioritizeSuggestedVisible" is true).',
+                    + 'interacts with the collapse (unless "isProgrammaticUntilUserInput" is false).',
                 ],
                 [
-                    'prioritizeSuggestedVisible',
-                    'false',
-                    'Priority for the "visible" prop. When true, "visible" will continue to affect the component '
+                    'isProgrammaticUntilUserInput',
+                    'true',
+                    'Priority for the "visible" prop. When false, "visible" will continue to affect the component '
                     + 'even after the user interacts with the collapse.',
                 ],
             ],
@@ -185,6 +186,11 @@ export default {
         toggledEvent(newValue) {
             // eslint-disable-next-line no-console
             console.log(`toggled to ${newValue}`);
+        },
+        toggledEventInSuggestedVisibleExample(newValue) {
+            // eslint-disable-next-line no-console
+            console.log(`toggled to ${newValue}`);
+            this.visible = newValue;
         },
     },
 };
