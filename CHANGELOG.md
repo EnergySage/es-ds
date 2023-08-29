@@ -5,8 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.10] - 2023-08-24
+
+### Changed
+- The vertical landing page links in `EsNavBar` no longer open in a new tab
+- Increased the space between submit button and privacy policy link in `EsZipCodeForm` to meet tappability criteria
+
 ## [0.25.9] - 2023-08-22
 
+### Changed
 - The primary vertical links in `EsFooter` now point to the new vertical landing page URLs
 
 ## [0.25.8] - 2023-08-22
@@ -749,6 +756,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.25.10]: https://github.com/EnergySage/es-ds/compare/v0.25.9...v0.25.10
 [0.25.9]: https://github.com/EnergySage/es-ds/compare/v0.25.8...v0.25.9
 [0.25.8]: https://github.com/EnergySage/es-ds/compare/v0.25.7...v0.25.8
 [0.25.7]: https://github.com/EnergySage/es-ds/compare/v0.25.6...v0.25.7
