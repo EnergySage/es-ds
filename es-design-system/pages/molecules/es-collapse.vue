@@ -10,14 +10,14 @@
         </p>
         <div class="mt-450 mb-450">
             <h2>
-                Default EsCollapse
+                Default
             </h2>
             <p>
-                A normal EsCollapse component. Click it to toggle showing it's contents!
+                A normal EsCollapse component. Click it to toggle showing its contents!
             </p>
             <EsCollapse
                 id="defaultCollapse"
-                class="ml-450 mr-450">
+                class="ml-450 mr-450 mt-450">
                 <template #title>
                     <h2 class="mb-0">
                         My Title
@@ -38,13 +38,13 @@
 
         <div class="mt-450 mb-450">
             <h2>
-                Programmatic EsCollapse
+                Programmatic, with user override
             </h2>
             <p>
-                An EsCollapse component that takes a "visible" prop. Click the checkbox to toggle showing it's
+                An EsCollapse component that takes a "visible" prop. Click the checkbox to toggle showing its
                 contents! If you click the collapse itself, the "visible" prop will no longer be honored.
             </p>
-            <form class="ml-450 mr-450 mt-5">
+            <form class="ml-450 mr-450 mt-450">
                 <label for="suggestedVisibleInput">
                     <input
                         id="suggestedVisibleInput"
@@ -79,14 +79,14 @@
 
         <div class="mt-450 mb-450">
             <h2>
-                Programmatic EsCollapse with Priority
+                Programmatic, with Priority
             </h2>
             <p>
                 An EsCollapse component that takes a "visible" prop with "is-programmatic-until-user-input" true. Click
-                the checkbox to toggle showing it's contents! Unlike the previous example, if you click the collapse
+                the checkbox to toggle showing its contents! Unlike the previous example, if you click the collapse
                 itself, the "visible" prop will continue to be honored.
             </p>
-            <form class="ml-450 mr-450">
+            <form class="ml-450 mr-450 mt-sm-n450">
                 <label for="visible">
                     <input
                         id="visible"
