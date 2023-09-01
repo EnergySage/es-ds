@@ -86,7 +86,7 @@
                 the checkbox to toggle showing its contents! Unlike the previous example, if you click the collapse
                 itself, the "visible" prop will continue to be honored.
             </p>
-            <form class="ml-450 mr-450 mt-sm-n450">
+            <form class="ml-450 mr-450 mt-450">
                 <label for="visible">
                     <input
                         id="visible"
