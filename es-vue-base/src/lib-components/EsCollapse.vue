@@ -7,7 +7,7 @@
             class="collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             inline
             variant="link"
-            @click="userSpecifiedIsExpanded = !expanded">
+            @click="userClick">
             <div>
                 <slot name="title" />
             </div>
@@ -50,6 +50,10 @@ export default {
     components: {
         EsButton, BCollapse, IconChevronDown,
     },
+    model: {
+        prop: 'visible',
+        event: 'userClick',
+    },
     props: {
         /**
          * ID
@@ -68,6 +72,15 @@ export default {
             default: false,
         },
         /**
+         * isProgrammaticUntilUserInput
+         * Prioritize the visible prop over the user's interaction with the collapse.
+         */
+        isProgrammaticUntilUserInput: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+        /**
          * Border
          * Show the border or not
          */
@@ -80,12 +93,14 @@ export default {
     data() {
         return {
             userSpecifiedIsExpanded: null,
+            isExpanded: null, // We use a second variable to track the expanded state so that we only emit the toggled
+            // event when the user interacts with the collapse.
         };
     },
     computed: {
         expanded: {
             get() {
-                if (this.userSpecifiedIsExpanded !== null) {
+                if (this.isProgrammaticUntilUserInput && this.userSpecifiedIsExpanded !== null) {
                     return this.userSpecifiedIsExpanded;
                 }
                 return this.visible;
@@ -97,7 +112,19 @@ export default {
     },
     watch: {
         userSpecifiedIsExpanded(newValue) {
+            this.isExpanded = newValue;
             this.$emit('toggled', newValue);
+        },
+        visible(newValue) {
+            if (!this.isProgrammaticUntilUserInput) {
+                this.isExpanded = newValue;
+            }
+        },
+    },
+    methods: {
+        userClick() {
+            this.userSpecifiedIsExpanded = !this.expanded;
+            this.$emit('userClick', !this.expanded);
         },
     },
 };
