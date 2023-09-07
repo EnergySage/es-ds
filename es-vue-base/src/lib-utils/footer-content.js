@@ -55,8 +55,8 @@ export default (
         {
             title: 'Work with us',
             links: [
-                { text: 'Solar companies', url: `${ES_DOMAIN}/installers/` },
-                { text: 'Partner with us', url: `${ES_DOMAIN}/partners/` },
+                { text: 'Solar & HVAC installers', url: `${ES_DOMAIN}/installers/` },
+                { text: 'Corporate partnerships', url: `${ES_DOMAIN}/partners/` },
                 { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
                 { text: 'Refer a friend', url: `${ES_DOMAIN}/refer-a-friend/` },
             ],

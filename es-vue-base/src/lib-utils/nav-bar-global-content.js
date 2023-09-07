@@ -220,10 +220,6 @@ export default (
                             link: `${ES_DOMAIN}/about-us/team/`,
                         },
                         {
-                            name: 'Partner with us',
-                            link: `${ES_DOMAIN}/partners/`,
-                        },
-                        {
                             name: 'Careers',
                             link: `${ES_DOMAIN}/about-us/careers/`,
                         },
@@ -243,6 +239,23 @@ export default (
                         {
                             name: 'Press',
                             link: `${ES_DOMAIN}/press/`,
+                        },
+                    ],
+                },
+                {
+                    name: 'Work with us',
+                    subtopics: [
+                        {
+                            name: 'Solar & HVAC installers',
+                            link: `${ES_DOMAIN}/installers/`,
+                        },
+                        {
+                            name: 'Corporate partnerships',
+                            link: `${ES_DOMAIN}/partners/`,
+                        },
+                        {
+                            name: 'Community programs',
+                            link: `${ES_DOMAIN}/partners/`,
                         },
                     ],
                 },
