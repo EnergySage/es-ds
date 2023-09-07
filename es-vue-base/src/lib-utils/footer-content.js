@@ -10,7 +10,7 @@ export default (
 ) => ({
     banner: {
         headline: 'Make an impact.',
-        subHeadline: 'It\'s never been easier.',
+        subHeadline: "It's never been easier.",
         body: `We developed our one-of-a-kind marketplace with funding from the U.S. Department of Energy to make
             clean home energy solutions affordable and accessible to all.`,
     },
