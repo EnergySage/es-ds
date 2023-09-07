@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.13] - 2023-09-06
+
+### Changed
+- Fixed an issue with `EsDataTable` where it would print a warning about `BTable` being an unknown custom element
+- Fixed a styling issue on the `EsCollapse` docs page
+
 ## [0.25.12] - 2023-09-01
 
 ### Changed
@@ -766,6 +772,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.25.13]: https://github.com/EnergySage/es-ds/compare/v0.25.12...v0.25.13
 [0.25.12]: https://github.com/EnergySage/es-ds/compare/v0.25.11...v0.25.12
 [0.25.11]: https://github.com/EnergySage/es-ds/compare/v0.25.10...v0.25.11
 [0.25.10]: https://github.com/EnergySage/es-ds/compare/v0.25.9...v0.25.10

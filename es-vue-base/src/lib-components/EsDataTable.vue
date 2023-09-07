@@ -11,8 +11,13 @@
 </template>
 
 <script lang="js">
+import { BTable } from 'bootstrap-vue';
+
 export default {
     name: 'EsDataTable',
+    components: {
+        BTable,
+    },
     props: {
         fields: {
             type: Array,
