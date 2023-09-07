@@ -249,10 +249,18 @@ export default (
                         },
                         {
                             name: 'Corporate partnerships',
-                            link: `${ES_DOMAIN}/partners/`,
+                            link: `${ES_DOMAIN}/partners/corporations`,
                         },
                         {
                             name: 'Community programs',
+                            link: `${ES_DOMAIN}/partners/non-profits`,
+                        },
+                        {
+                            name: 'Utility programs',
+                            link: `${ES_DOMAIN}/partners/utilities`,
+                        },
+                        {
+                            name: 'Others',
                             link: `${ES_DOMAIN}/partners/`,
                         },
                     ],
