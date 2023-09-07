@@ -419,8 +419,20 @@
                 <code>IconMarketplace</code>
             </li>
             <li>
+                <icon-money />
+                <code>IconMoney</code>
+            </li>
+            <li>
+                <icon-payback />
+                <code>IconPayback</code>
+            </li>
+            <li>
                 <icon-rooftop-solar />
                 <code>IconRooftopSolar</code>
+            </li>
+            <li>
+                <icon-saving />
+                <code>IconSaving</code>
             </li>
         </ul>
 
