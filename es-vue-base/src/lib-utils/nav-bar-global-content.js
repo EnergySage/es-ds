@@ -72,6 +72,7 @@ export default (
                         },
                         {
                             name: 'How much do heat pumps cost?',
+                            // eslint-disable-next-line max-len
                             link: `${ES_DOMAIN}/clean-heating-cooling/air-source-heat-pumps/costs-and-benefits-air-source-heat-pumps/`,
                         },
                         {
