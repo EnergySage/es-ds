@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.14] - 2023-09-12
+
+### Added
+- New marketing icons: `IconBank`, `IconCreditCard`, `IconMoney`, `IconPayback`, and `IconSaving`
+
+### Changed
+- Added a "Work with us" section to the "About us" menu in `EsNavBar`
+- Updated several links in `EsFooter`
+
 ## [0.25.13] - 2023-09-06
 
 ### Changed
@@ -772,6 +781,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.25.14]: https://github.com/EnergySage/es-ds/compare/v0.25.13...v0.25.14
 [0.25.13]: https://github.com/EnergySage/es-ds/compare/v0.25.12...v0.25.13
 [0.25.12]: https://github.com/EnergySage/es-ds/compare/v0.25.11...v0.25.12
 [0.25.11]: https://github.com/EnergySage/es-ds/compare/v0.25.10...v0.25.11
