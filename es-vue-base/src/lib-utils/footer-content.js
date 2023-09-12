@@ -10,7 +10,7 @@ export default (
 ) => ({
     banner: {
         headline: 'Make an impact.',
-        subHeadline: 'It\'s never been easier.',
+        subHeadline: "It's never been easier.",
         body: `We developed our one-of-a-kind marketplace with funding from the U.S. Department of Energy to make
             clean home energy solutions affordable and accessible to all.`,
     },
@@ -40,6 +40,8 @@ export default (
                 { text: 'News', url: NEWS_DOMAIN, newTab: true },
                 { text: 'Help center', url: HELP_DOMAIN, newTab: true },
                 { text: 'Home solar guide', url: `${ES_DOMAIN}/shop/home-solar/` },
+                { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
+                { text: 'Refer a friend', url: `${ES_DOMAIN}/refer-a-friend/` },
             ],
         },
         {
@@ -55,10 +57,11 @@ export default (
         {
             title: 'Work with us',
             links: [
-                { text: 'Solar companies', url: `${ES_DOMAIN}/installers/` },
-                { text: 'Partner with us', url: `${ES_DOMAIN}/partners/` },
-                { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
-                { text: 'Refer a friend', url: `${ES_DOMAIN}/refer-a-friend/` },
+                { text: 'Solar & HVAC installers', url: `${ES_DOMAIN}/installers/` },
+                { text: 'Corporate partnerships', url: `${ES_DOMAIN}/partners/corporations` },
+                { text: 'Community programs', url: `${ES_DOMAIN}/partners/non-profits` },
+                { text: 'Utility programs', url: `${ES_DOMAIN}/partners/utilities` },
+                { text: 'Others', url: `${ES_DOMAIN}/partners/` },
             ],
         },
     ],
