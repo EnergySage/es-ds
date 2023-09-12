@@ -21,7 +21,7 @@ export default {
          */
         width: {
             type: String,
-            default: '24px',
+            default: '32px',
             required: false,
         },
         /**
@@ -29,7 +29,7 @@ export default {
          */
         height: {
             type: String,
-            default: '24px',
+            default: '32px',
             required: false,
         },
     },
