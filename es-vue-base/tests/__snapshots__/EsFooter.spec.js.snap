@@ -69,6 +69,12 @@ exports[`EsFooter <EsFooter /> 1`] = `
               <li class="mt-25 mb-50"><a href="https://www.energysage.com/shop/home-solar/" class="text-reset">
                   Home solar guide
                 </a></li>
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/data/" class="text-reset">
+                  Market intel
+                </a></li>
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/refer-a-friend/" class="text-reset">
+                  Refer a friend
+                </a></li>
             </ul>
           </div>
           <div class="col col-6 col-md-3 mb-150">
@@ -99,16 +105,19 @@ exports[`EsFooter <EsFooter /> 1`] = `
                 Work with us
               </li>
               <li class="mt-25 mb-50"><a href="https://www.energysage.com/installers/" class="text-reset">
-                  Solar companies
+                  Solar &amp; HVAC installers
+                </a></li>
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/partners/corporations" class="text-reset">
+                  Corporate partnerships
+                </a></li>
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/partners/non-profits" class="text-reset">
+                  Community programs
+                </a></li>
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/partners/utilities" class="text-reset">
+                  Utility programs
                 </a></li>
               <li class="mt-25 mb-50"><a href="https://www.energysage.com/partners/" class="text-reset">
-                  Partner with us
-                </a></li>
-              <li class="mt-25 mb-50"><a href="https://www.energysage.com/data/" class="text-reset">
-                  Market intel
-                </a></li>
-              <li class="mt-25 mb-50"><a href="https://www.energysage.com/refer-a-friend/" class="text-reset">
-                  Refer a friend
+                  Others
                 </a></li>
             </ul>
           </div>

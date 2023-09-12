@@ -72,9 +72,8 @@ export default (
                         },
                         {
                             name: 'How much do heat pumps cost?',
-                            link: `${
-                                ES_DOMAIN
-                            }/clean-heating-cooling/air-source-heat-pumps/costs-and-benefits-air-source-heat-pumps/`,
+                            // eslint-disable-next-line max-len
+                            link: `${ES_DOMAIN}/clean-heating-cooling/air-source-heat-pumps/costs-and-benefits-air-source-heat-pumps/`,
                         },
                         {
                             name: 'How do heat pumps work?',
@@ -220,10 +219,6 @@ export default (
                             link: `${ES_DOMAIN}/about-us/team/`,
                         },
                         {
-                            name: 'Partner with us',
-                            link: `${ES_DOMAIN}/partners/`,
-                        },
-                        {
                             name: 'Careers',
                             link: `${ES_DOMAIN}/about-us/careers/`,
                         },
@@ -246,11 +241,36 @@ export default (
                         },
                     ],
                 },
+                {
+                    name: 'Work with us',
+                    subtopics: [
+                        {
+                            name: 'Solar & HVAC installers',
+                            link: `${ES_DOMAIN}/installers/`,
+                        },
+                        {
+                            name: 'Corporate partnerships',
+                            link: `${ES_DOMAIN}/partners/corporations`,
+                        },
+                        {
+                            name: 'Community programs',
+                            link: `${ES_DOMAIN}/partners/non-profits`,
+                        },
+                        {
+                            name: 'Utility programs',
+                            link: `${ES_DOMAIN}/partners/utilities`,
+                        },
+                        {
+                            name: 'Others',
+                            link: `${ES_DOMAIN}/partners/`,
+                        },
+                    ],
+                },
             ],
             featuredArticle: {
                 linkName: 'New research',
                 linkUrl: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-16`,
-                lede: 'EnergySage Intel\'s latest Solar & Storage Marketplace Report',
+                lede: "EnergySage Intel's latest Solar & Storage Marketplace Report",
                 image500: `${ES_IMAGE_DOMAIN}/static/img/navbar/articles/latest-market-intel-500w.png`,
                 imageAlt: 'market intel report charts',
             },
