@@ -387,6 +387,10 @@
             class="ds-icon-list m-0 mb-300 p-0"
             :class="{ [textColorClass]: true }">
             <li>
+                <icon-bank />
+                <code>IconBank</code>
+            </li>
+            <li>
                 <icon-battery />
                 <code>IconBattery</code>
             </li>
@@ -401,6 +405,10 @@
             <li>
                 <icon-contact-us />
                 <code>IconContactUs</code>
+            </li>
+            <li>
+                <icon-credit-card />
+                <code>IconCreditCard</code>
             </li>
             <li>
                 <icon-electric-vehicle />
