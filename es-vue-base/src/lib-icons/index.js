@@ -83,6 +83,8 @@ export { default as IconSolar } from './icon-solar.vue';
 export { default as IconTree } from './icon-tree.vue';
 export { default as IconUpload } from './icon-upload.vue';
 export { default as IconVideoPlay } from './icon-video-play.vue';
+export { default as IconBank } from './icon-bank.vue';
+export { default as IconCreditCard } from './icon-credit-card.vue';
 
 // marketing icons
 export { default as IconBattery } from './icon-battery.vue';

@@ -57,6 +57,10 @@
                 <code>IconArrow</code>
             </li>
             <li>
+                <icon-bank />
+                <code>IconBank</code>
+            </li>
+            <li>
                 <icon-bell />
                 <code>IconBell</code>
             </li>
@@ -167,6 +171,10 @@
             <li>
                 <icon-copy />
                 <code>IconCopy</code>
+            </li>
+            <li>
+                <icon-credit-card />
+                <code>IconCreditCard</code>
             </li>
             <li>
                 <icon-envelope />
