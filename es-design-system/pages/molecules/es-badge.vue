@@ -35,8 +35,8 @@
             doc-source="es-design-system/pages/molecules/es-badge.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsBadgeDocs',
     data() {

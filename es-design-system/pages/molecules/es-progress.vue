@@ -61,8 +61,8 @@
             doc-source="es-design-system/pages/molecules/es-progress.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsProgressDocs',
     data() {

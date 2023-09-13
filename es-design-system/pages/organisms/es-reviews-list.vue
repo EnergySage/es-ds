@@ -54,6 +54,7 @@
             doc-source="es-design-system/pages/organisms/es-review-list.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsReviewDocs',
@@ -150,7 +151,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+// @import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
 .review-col {
     border-left: 1px solid $border-color;

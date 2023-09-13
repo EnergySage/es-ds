@@ -196,6 +196,7 @@
             doc-source="es-design-system/pages/molecules/es-file-input.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsFileInputDocs',

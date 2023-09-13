@@ -21,6 +21,7 @@
             doc-source="es-design-system/pages/organisms/es-error-page.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsErrorDocs',

@@ -37,8 +37,8 @@
             doc-source="es-design-system/pages/molecules/es-horizontal-list.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsHorizontalListDocs',
     data() {
@@ -62,6 +62,7 @@ export default {
     },
 };
 </script>
+
 <style lang="scss" scoped>
 .large-block-holder {
   height: 185px;

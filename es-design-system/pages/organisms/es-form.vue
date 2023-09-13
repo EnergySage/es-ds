@@ -135,6 +135,7 @@
             doc-source="es-design-system/pages/organisms/es-form.vue" />
     </b-container>
 </template>
+
 <script>
 import {
     formMixins,
@@ -325,7 +326,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+// @import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
 @include media-breakpoint-up(md) {
     .w-lg-auto {

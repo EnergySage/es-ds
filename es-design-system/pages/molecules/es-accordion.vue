@@ -336,7 +336,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'EsAccordionDocs',
     data() {

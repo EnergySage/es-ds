@@ -28,6 +28,7 @@
             doc-source="es-design-system/pages/molecules/es-rating.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsRatingDocs',
