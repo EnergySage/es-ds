@@ -194,9 +194,9 @@ export default {
             this.files = this.files.filter(({ name }) => !newValidFiles.some((file) => file.name === name));
             this.files = [...this.files, ...newValidFiles];
 
-            if (this.files.length > 0) {
-                this.$emit('readyToUpload', this.files);
-                this.readFilesIntoUrl(this.files);
+            if (newValidFiles.length > 0) {
+                this.$emit('readyToUpload', newValidFiles);
+                this.readFilesIntoUrl(newValidFiles);
             }
             this.pickedItems = [];
         },
