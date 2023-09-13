@@ -1,3 +1,10 @@
+@use "sass:map";
+@use "mixins/box-shadow";
+@use "mixins/buttons";
+@use "mixins/hover";
+@use "mixins/transition";
+@use "variables";
+
 // stylelint-disable selector-no-qualifying-type
 
 //
@@ -8,47 +15,47 @@
   display: inline-flex;
   align-items: center; // aligns text and icons vertically by default
   justify-content: center;
-  height: $font-size-base * 3; // ensures consistent button height, matching the design, regardless of content
-  font-family: $btn-font-family;
-  font-weight: $btn-font-weight;
-  color: $body-color;
+  height: variables.$font-size-base * 3; // ensures consistent button height, matching the design, regardless of content
+  font-family: variables.$btn-font-family;
+  font-weight: variables.$btn-font-weight;
+  color: variables.$body-color;
   text-align: center;
-  text-decoration: if($link-decoration == none, null, none);
-  white-space: $btn-white-space;
+  text-decoration: if(variables.$link-decoration == none, null, none);
+  white-space: variables.$btn-white-space;
   vertical-align: middle;
   user-select: none;
   background-color: transparent;
-  border: $btn-border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
-  @include transition($btn-transition);
+  border: variables.$btn-border-width solid transparent;
+  @include buttons.button-size(variables.$btn-padding-y, variables.$btn-padding-x, variables.$btn-font-size, variables.$btn-line-height, variables.$btn-border-radius);
+  @include transition.transition(variables.$btn-transition);
 
-  @include hover() {
-    color: $body-color;
+  @include hover.hover() {
+    color: variables.$body-color;
     text-decoration: none;
   }
 
   &:focus,
   &.focus {
     outline: 0;
-    box-shadow: $btn-focus-box-shadow;
+    box-shadow: variables.$btn-focus-box-shadow;
   }
 
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
-    opacity: $btn-disabled-opacity;
-    @include box-shadow(none);
+    opacity: variables.$btn-disabled-opacity;
+    @include box-shadow.box-shadow(none);
   }
 
   &:not(:disabled):not(.disabled) {
-    cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
+    cursor: if(variables.$enable-pointer-cursor-for-buttons, pointer, null);
 
     &:active,
     &.active {
-      @include box-shadow($btn-active-box-shadow);
+      @include box-shadow.box-shadow(variables.$btn-active-box-shadow);
 
       &:focus {
-        @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+        @include box-shadow.box-shadow(variables.$btn-focus-box-shadow, variables.$btn-active-box-shadow);
       }
     }
   }
@@ -66,40 +73,40 @@ fieldset:disabled a.btn {
 //
 
 // DEPRECATED BUTTON STYLES
-@each $color, $value in $theme-colors {
+@each $color, $value in variables.$theme-colors {
   .btn-#{$color} {
-    @include button-variant($value, $value);
+    @include buttons.button-variant($value, $value);
   }
 }
 
 // DEPRECATED OUTLINE BUTTON STYLES
-@each $color, $value in $theme-colors {
+@each $color, $value in variables.$theme-colors {
   .btn-outline-#{$color} {
-    @include button-outline-variant($value);
+    @include buttons.button-outline-variant($value);
 
     &:disabled,
     &.disabled {
-      color: color-yiq($btn-disabled-bg-color);
+      color: color-yiq(variables.$btn-disabled-bg-color);
       pointer-events: none;
-      background-color: $btn-disabled-bg-color;
-      border-color: $btn-disabled-bg-color;
+      background-color: variables.$btn-disabled-bg-color;
+      border-color: variables.$btn-disabled-bg-color;
       // Remove CSS gradients if they're enabled
-      @if $enable-gradients {
+      @if variables.$enable-gradients {
         background-image: none;
       }
     }
   }
 }
 
-@each $color, $value in $button-colors {
+@each $color, $value in variables.$button-colors {
   .btn-#{$color} {
-    @include button-v2-variant($color);
+    @include buttons.button-v2-variant($color);
   }
 }
 
-@each $color, $value in $button-colors {
+@each $color, $value in variables.$button-colors {
   .btn-outline-#{$color} {
-    @include button-v2-outline-variant($color);
+    @include buttons.button-v2-outline-variant($color);
   }
 }
 
@@ -110,23 +117,23 @@ fieldset:disabled a.btn {
 
 // Make a button look and behave like a link
 .btn-link {
-  font-weight: $link-weight;
-  color: $link-color;
-  text-decoration: $link-decoration;
+  font-weight: variables.$link-weight;
+  color: variables.$link-color;
+  text-decoration: variables.$link-decoration;
 
-  @include hover() {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
+  @include hover.hover() {
+    color: variables.$link-hover-color;
+    text-decoration: variables.$link-hover-decoration;
   }
 
   &:focus,
   &.focus {
-    text-decoration: $link-hover-decoration;
+    text-decoration: variables.$link-hover-decoration;
   }
 
   &:disabled,
   &.disabled {
-    color: $btn-link-disabled-color;
+    color: variables.$btn-link-disabled-color;
     pointer-events: none;
   }
 
@@ -140,12 +147,12 @@ fieldset:disabled a.btn {
 
 // large button should be exactly the same as default button, per design
 .btn-lg {
-  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+  @include buttons.button-size(variables.$btn-padding-y, variables.$btn-padding-x, variables.$btn-font-size, variables.$btn-line-height, variables.$btn-border-radius);
 }
 
 .btn-sm {
-  height: $font-size-base * 1.75; // ensures consistent button height, matching the design, regardless of content
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius);
+  height: variables.$font-size-base * 1.75; // ensures consistent button height, matching the design, regardless of content
+  @include buttons.button-size(variables.$btn-padding-y-sm, variables.$btn-padding-x-sm, variables.$btn-font-size-sm, variables.$btn-line-height-sm, variables.$btn-border-radius);
 }
 
 
@@ -159,7 +166,7 @@ fieldset:disabled a.btn {
 
   // Vertically space out multiple block buttons
   + .btn-block {
-    margin-top: $btn-block-spacing-y;
+    margin-top: variables.$btn-block-spacing-y;
   }
 }
 

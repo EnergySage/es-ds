@@ -148,7 +148,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+// @import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
 // TODO: Move to es-bs-base
 .is-invalid {

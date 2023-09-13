@@ -82,7 +82,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+// @import '~@energysage/es-bs-base/scss/includes';
 
 .inner-circle {
     // position: relative;

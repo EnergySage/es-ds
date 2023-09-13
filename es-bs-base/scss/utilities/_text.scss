@@ -1,23 +1,31 @@
+@use "sass:map";
+@use "../mixins/breakpoints";
+@use "../mixins/text-emphasis";
+@use "../mixins/text-hide";
+@use "../mixins/text-truncate";
+@use "../vendor/rfs";
+@use "../variables";
+
 // stylelint-disable declaration-no-important
 
 //
 // Text
 //
 
-.text-monospace { font-family: $font-family-monospace !important; }
+.text-monospace { font-family: variables.$font-family-monospace !important; }
 
 // Alignment
 
 .text-justify  { text-align: justify !important; }
 .text-wrap     { white-space: normal !important; }
 .text-nowrap   { white-space: nowrap !important; }
-.text-truncate { @include text-truncate(); }
+.text-truncate { @include text-truncate.text-truncate(); }
 
 // Responsive alignment
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  @include breakpoints.media-breakpoint-up($breakpoint) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
 
     .text#{$infix}-left   { text-align: left !important; }
     .text#{$infix}-right  { text-align: right !important; }
@@ -27,7 +35,7 @@
 
 // Size
 
-@each $size, $value in $font-sizes {
+@each $size, $value in variables.$font-sizes {
   .font-size-#{$size} {
     font-size: $value !important;
   }
@@ -35,10 +43,10 @@
 
 // Responsive size
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    @each $size, $value in $font-sizes {
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  @include breakpoints.media-breakpoint-up($breakpoint) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
+    @each $size, $value in variables.$font-sizes {
       .font-size#{$infix}-#{$size} {
         font-size: $value !important;
       }
@@ -46,20 +54,20 @@
   }
 }
 
-.font-size-h1 { @include font-size($h1-font-size, true); }
-.font-size-h2 { @include font-size($h2-font-size, true); }
-.font-size-h3 { @include font-size($h3-font-size, true); }
-.font-size-h4 { @include font-size($h4-font-size, true); }
-.font-size-h5 { @include font-size($h5-font-size, true); }
-.font-size-h6 { @include font-size($h6-font-size, true); }
+.font-size-h1 { @include rfs.font-size(variables.$h1-font-size, true); }
+.font-size-h2 { @include rfs.font-size(variables.$h2-font-size, true); }
+.font-size-h3 { @include rfs.font-size(variables.$h3-font-size, true); }
+.font-size-h4 { @include rfs.font-size(variables.$h4-font-size, true); }
+.font-size-h5 { @include rfs.font-size(variables.$h5-font-size, true); }
+.font-size-h6 { @include rfs.font-size(variables.$h6-font-size, true); }
 
-@include media-breakpoint-up(lg) {
-  .font-size-h1 { @include font-size($h1-font-size-desktop, true); }
-  .font-size-h2 { @include font-size($h2-font-size-desktop, true); }
-  .font-size-h3 { @include font-size($h3-font-size-desktop, true); }
-  .font-size-h4 { @include font-size($h4-font-size-desktop, true); }
-  .font-size-h5 { @include font-size($h5-font-size-desktop, true); }
-  .font-size-h6 { @include font-size($h6-font-size-desktop, true); }
+@include breakpoints.media-breakpoint-up(lg) {
+  .font-size-h1 { @include rfs.font-size(variables.$h1-font-size-desktop, true); }
+  .font-size-h2 { @include rfs.font-size(variables.$h2-font-size-desktop, true); }
+  .font-size-h3 { @include rfs.font-size(variables.$h3-font-size-desktop, true); }
+  .font-size-h4 { @include rfs.font-size(variables.$h4-font-size-desktop, true); }
+  .font-size-h5 { @include rfs.font-size(variables.$h5-font-size-desktop, true); }
+  .font-size-h6 { @include rfs.font-size(variables.$h6-font-size-desktop, true); }
 }
 
 // Transformation
@@ -70,37 +78,37 @@
 
 // Weight and italics
 
-.font-weight-lightest { font-weight: $font-weight-lightest !important; }
-.font-weight-light    { font-weight: $font-weight-light !important; }
-.font-weight-lighter  { font-weight: $font-weight-lighter !important; }
-.font-weight-normal   { font-weight: $font-weight-normal !important; }
-.font-weight-semibold { font-weight: $font-weight-semibold !important; }
-.font-weight-bold     { font-weight: $font-weight-bold !important; }
-.font-weight-bolder   { font-weight: $font-weight-bolder !important; }
-.font-weight-boldest   { font-weight: $font-weight-boldest !important; }
+.font-weight-lightest { font-weight: variables.$font-weight-lightest !important; }
+.font-weight-light    { font-weight: variables.$font-weight-light !important; }
+.font-weight-lighter  { font-weight: variables.$font-weight-lighter !important; }
+.font-weight-normal   { font-weight: variables.$font-weight-normal !important; }
+.font-weight-semibold { font-weight: variables.$font-weight-semibold !important; }
+.font-weight-bold     { font-weight: variables.$font-weight-bold !important; }
+.font-weight-bolder   { font-weight: variables.$font-weight-bolder !important; }
+.font-weight-boldest  { font-weight: variables.$font-weight-boldest !important; }
 .font-italic          { font-style: italic !important; }
 
 // Line height
-.line-height-base { line-height: $line-height-base !important; }
+.line-height-base { line-height: variables.$line-height-base !important; }
 
 // Contextual colors
 
-.text-white { color: $white !important; }
+.text-white { color: variables.$white !important; }
 
-@each $color, $value in $theme-colors {
-  @include text-emphasis-variant(".text-#{$color}", $value, true);
+@each $color, $value in variables.$theme-colors {
+  @include text-emphasis.text-emphasis-variant(".text-#{$color}", $value, true);
 }
 
-.text-body { color: $body-color !important; }
-.text-muted { color: $text-muted !important; }
+.text-body { color: variables.$body-color !important; }
+.text-muted { color: variables.$text-muted !important; }
 
-.text-black-50 { color: rgba($black, .5) !important; }
-.text-white-50 { color: rgba($white, .5) !important; }
+.text-black-50 { color: rgba(variables.$black, .5) !important; }
+.text-white-50 { color: rgba(variables.$white, .5) !important; }
 
 // Misc
 
 .text-hide {
-  @include text-hide($ignore-warning: true);
+  @include text-hide.text-hide($ignore-warning: true);
 }
 
 .text-decoration-none { text-decoration: none !important; }
@@ -122,36 +130,36 @@
 
 // theme-colors are in _text-variants.scss
 // Add color text classes
-@each $color, $value in $colors {
+@each $color, $value in variables.$colors {
   @include text-colors($color, $value);
 }
 
 // Add gray text colors classes
-@each $color, $value in $grays {
+@each $color, $value in variables.$grays {
   @include text-colors($color, $value);
 }
 
 // Add teal text colors classes
-@each $color, $value in $teals {
+@each $color, $value in variables.$teals {
   @include text-colors($color, $value);
 }
 
 // Add cyan text colors classes
-@each $color, $value in $cyans {
+@each $color, $value in variables.$cyans {
   @include text-colors($color, $value);
 }
 
 // Add pink text colors classes
-@each $color, $value in $pinks {
+@each $color, $value in variables.$pinks {
   @include text-colors($color, $value);
 }
 
 // Add yellow text colors classes
-@each $color, $value in $yellows {
+@each $color, $value in variables.$yellows {
   @include text-colors($color, $value);
 }
 
 // Add orange text colors classes
-@each $color, $value in $oranges {
+@each $color, $value in variables.$oranges {
   @include text-colors($color, $value);
 }

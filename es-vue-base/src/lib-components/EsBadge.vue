@@ -34,8 +34,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+// @import '~@energysage/es-bs-base/scss/includes';
 /* stylelint-disable scss/no-global-function-names */
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
 .badge-primary {
     /* hard-coded background-color due to no satisfactory variation of defined colors */

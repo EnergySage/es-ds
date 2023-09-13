@@ -80,7 +80,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@energysage/es-bs-base/scss/includes';
+// @import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
 // TODO: Move this into es-bs-base ?
 .modal-lightbox {

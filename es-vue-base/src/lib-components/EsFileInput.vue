@@ -296,8 +296,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+// @import '~@energysage/es-bs-base/scss/bootstrap';
+// @import "~@energysage/es-bs-base/scss/variables";
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
 .es-file-upload {
     background-color: $gray-200;

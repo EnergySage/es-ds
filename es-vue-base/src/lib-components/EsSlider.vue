@@ -107,7 +107,9 @@ export default {
 
 <style lang="scss">
 /* stylelint-disable scss/dollar-variable-pattern */
-@import '~@energysage/es-bs-base/scss/includes';
+// @import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+
 @import '~vue-slider-component/lib/theme/default';
 $railBorderRadius: 9px;
 $dotBgColor: $white;

@@ -177,6 +177,7 @@ export default {
     },
 };
 </script>
+
 <style lang="scss" scoped>
 .EsZipCodeForm {
     .privacy-lock-icon {

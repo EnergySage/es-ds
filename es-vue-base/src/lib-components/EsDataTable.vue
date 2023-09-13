@@ -87,8 +87,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 @use "sass:map";
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import '~@energysage/es-bs-base/scss/variables';
+// @import '~@energysage/es-bs-base/scss/bootstrap';
+// @import '~@energysage/es-bs-base/scss/variables';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
 .data-table {
     ::v-deep th {

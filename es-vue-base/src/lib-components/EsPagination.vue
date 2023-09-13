@@ -42,7 +42,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~@energysage/es-bs-base/scss/includes';
+// @import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
 .pagination::v-deep {
     .page-number, .prev-next, .ellipses {

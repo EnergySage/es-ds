@@ -26,7 +26,10 @@ export default {
 
 <style lang="scss" scoped>
 @use "sass:map";
-@import '~@energysage/es-bs-base/scss/includes';
+
+@use '~@energysage/es-bs-base/scss/vendor/rfs';
+@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+// @import '~@energysage/es-bs-base/scss/includes';
 
 .EsFormRadioCard {
     /**
@@ -35,7 +38,7 @@ export default {
      * happen to appear earlier in the es-bs-base CSS than the component's utility classes, the component's
      * will win, leaving the user unable to override the desired style)
      */
-    @include font-size($h2-font-size);
+    @include rfs.font-size($h2-font-size);
     font-weight: $font-weight-bolder;
     margin-bottom: map.get($spacers, 100);
     padding-bottom: map.get($spacers, 200);
@@ -88,7 +91,7 @@ export default {
         * happen to appear earlier in the es-bs-base CSS than the component's utility classes, the component's
         * will win, leaving the user unable to override the desired style)
         */
-        @include font-size($h2-font-size-desktop);
+        @include rfs.font-size($h2-font-size-desktop);
         padding-left: map.get($spacers, 200);
         padding-right: map.get($spacers, 200);
     }
