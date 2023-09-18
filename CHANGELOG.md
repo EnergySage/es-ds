@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.15] - 2023-09-18
+
+### Changed
+- Made it possible to keep the `EsZipCodeForm` side-by-side on even the smallest screens
+by specifying `xs` for `stackUntil`
+- Made it possible to hide the privacy section of `EsZipCodeForm` to save space by using
+the new `showPrivacySection` prop
+
 ## [0.25.14] - 2023-09-12
 
 ### Added
