@@ -9,10 +9,11 @@
         v-on="$listeners">
         <b-form
             ref="ctaForm"
-            class="justify-content-center mb-100 w-100"
+            class="justify-content-center w-100"
             :class="{
                 invalid: $v.$dirty && $v.$invalid,
                 [`d-${stackBreak}flex`]: stackUntil,
+                'mb-100': showPrivacySection,
             }"
             :action="url"
             method="get"
