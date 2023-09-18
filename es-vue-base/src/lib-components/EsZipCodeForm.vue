@@ -58,7 +58,9 @@
                 </slot>
             </es-button>
         </b-form>
-        <div :class="{ 'font-size-75': constrained }">
+        <div
+            v-if="showPrivacySection"
+            :class="{ 'font-size-75': constrained }">
             <icon-lock-on
                 class="privacy-lock-icon mr-25 position-relative"
                 height="1.125rem"
@@ -67,6 +69,7 @@
                 <slot name="privacyExplanation"> Your information is safe with us. </slot>
             </span>
             <b-link
+                v-if="privacyPolicyLink"
                 :href="privacyPolicyLink"
                 class="text-nowrap"
                 :class="dark ? 'text-white' : 'text-dark'"
@@ -126,9 +129,13 @@ export default {
             type: String,
             default: 'ZIP code',
         },
+        showPrivacySection: {
+            type: Boolean,
+            default: true,
+        },
         privacyPolicyLink: {
             type: String,
-            required: true,
+            default: '',
         },
         privacyPolicyNewTab: {
             type: Boolean,
