@@ -100,6 +100,33 @@
 
         <div class="mb-450">
             <h2>
+                Side-by-side example with no privacy section
+            </h2>
+            <p class="mb-200">
+                This form has <code>stackUntil</code> set to <code>xs</code> so it is always side-by-side.
+                It also has the privacy section disabled by setting
+                <code>showPrivacySection</code> to <code>false</code>.
+            </p>
+            <b-row class="justify-content-center">
+                <b-col
+                    sm="10"
+                    md="8">
+                    <es-zip-code-form
+                        constrained
+                        input-id="side-by-side-example"
+                        stack-until="xs"
+                        :show-privacy-section="false"
+                        url="https://www.energysage.com/market/start/">
+                        <template #buttonText>
+                            See local offers
+                        </template>
+                    </es-zip-code-form>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="mb-450">
+            <h2>
                 Constrained stacked example
             </h2>
             <p class="mb-200">
@@ -193,9 +220,14 @@ export default {
                     'Shown in the input as placeholder text. Also used as the (visually hidden) label for the input.',
                 ],
                 [
+                    'showPrivacySection',
+                    'true',
+                    'Whether to show the privacy section.',
+                ],
+                [
                     'privacyPolicyLink',
-                    'n/a',
-                    'Required. Link to the privacy policy.',
+                    "''",
+                    'Link to the privacy policy. The link will not be shown if this is left blank.',
                 ],
                 [
                     'privacyPolicyNewTab',
