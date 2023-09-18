@@ -12,7 +12,7 @@
             class="justify-content-center mb-100 w-100"
             :class="{
                 invalid: $v.$dirty && $v.$invalid,
-                [`d-${stackBreak}flex`]: stackBreak,
+                [`d-${stackBreak}flex`]: stackUntil,
             }"
             :action="url"
             method="get"
@@ -23,7 +23,7 @@
                 :id="inputId"
                 v-model="zipCode"
                 :class="{
-                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackBreak,
+                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackUntil,
                 }"
                 :name="fieldName"
                 autocomplete="postal-code"
@@ -49,7 +49,7 @@
             <es-button
                 class="text-nowrap w-100"
                 :class="{
-                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackBreak,
+                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackUntil,
                     'px-100': constrained,
                 }"
                 type="submit">
@@ -150,7 +150,11 @@ export default {
     },
     computed: {
         stackBreak() {
-            return this.stackUntil ? `${this.stackUntil}-` : '';
+            let { stackUntil } = this;
+            if (stackUntil === 'xs') {
+                stackUntil = '';
+            }
+            return stackUntil ? `${stackUntil}-` : '';
         },
     },
     methods: {
