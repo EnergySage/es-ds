@@ -113,7 +113,7 @@
                     md="8">
                     <es-zip-code-form
                         constrained
-                        input-id="hero-example"
+                        input-id="side-by-side-example"
                         stack-until="xs"
                         :show-privacy-section="false"
                         url="https://www.energysage.com/market/start/">
