@@ -22,7 +22,7 @@
         "@nuxtjs/i18n": "^7.3.1",
         "bootstrap-vue": "^2.23.1",
         "clipboard": "^2.0.11",
-        "core-js": "^3.31.0",
+        "core-js": "^3.32.2",
         "html-truncate": "^1.2.2",
         "nuxt": "^2.17.0",
         "path": "^0.12.7",
