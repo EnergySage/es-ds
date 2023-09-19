@@ -190,13 +190,18 @@ export default {
             newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled')
                 .map((file) => file.value);
 
-            // If the new file already exists in the current files, remove it and use the new file
-            this.files = this.files.filter(({ name }) => !newValidFiles.some((file) => file.name === name));
+            // If the new file with name already exists in the current files
+            // Don't upload the new file and display an error
+            const duplicateFiles = newValidFiles.filter(({ name }) => this.files.some((file) => file.name === name));
+            duplicateFiles.forEach((file) => this.$emit('duplicateFileMessage', file.name));
+
+            // For new files with unused names, add them to files
+            newValidFiles = newValidFiles.filter(({ name }) => !this.files.some((file) => file.name === name));
             this.files = [...this.files, ...newValidFiles];
 
-            if (this.files.length > 0) {
-                this.$emit('readyToUpload', this.files);
-                this.readFilesIntoUrl(this.files);
+            if (newValidFiles.length > 0) {
+                this.$emit('readyToUpload', newValidFiles);
+                this.readFilesIntoUrl(newValidFiles);
             }
             this.pickedItems = [];
         },
