@@ -277,8 +277,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
-// @import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .EsReviewsIoCardCarousel {
     ::v-deep .CarouselWidget-prefix .CarouselWidget {
@@ -294,7 +294,7 @@ export default {
     ::v-deep .CarouselWidget .R-ReviewsList__item .item__inner {
         /* fix safari issue with drop-shadow buggy behavior */
         transform: translateZ(0);
-        transition: $transition-base;
+        transition: variables.$transition-base;
     }
 
     ::v-deep .CarouselWidget .R-ReviewsList__item:hover .item__inner {
@@ -302,7 +302,7 @@ export default {
     }
 }
 
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
     .EsReviewsIoCardCarousel {
         /* keep the clickable arrow width at 43px for accessibility. align the card edges with the standard
         /* content container edge as soon as we have room, but when the gutter is less than 43px, we do need to
@@ -318,7 +318,7 @@ export default {
     }
 }
 
-@include media-breakpoint-up(md) {
+@include breakpoints.media-breakpoint-up(md) {
     .EsReviewsIoCardCarousel {
         /* account for the extra -10px margin applied internal to the widget at this breakpoint */
         margin-left: max(calc(-1 * ((100vw - 720px) / 2) - 5px), -43px);
@@ -326,7 +326,7 @@ export default {
     }
 }
 
-@include media-breakpoint-up(lg) {
+@include breakpoints.media-breakpoint-up(lg) {
     .EsReviewsIoCardCarousel {
         /* account for the extra -10px margin applied internal to the widget at this breakpoint */
         margin-left: max(calc(-1 * ((100vw - 960px) / 2) - 5px), -43px);
@@ -334,7 +334,7 @@ export default {
     }
 }
 
-@include media-breakpoint-up(xl) {
+@include breakpoints.media-breakpoint-up(xl) {
     .EsReviewsIoCardCarousel {
         /* account for the extra -10px margin applied internal to the widget at this breakpoint */
         margin-left: max(calc(-1 * ((100vw - 1140px) / 2) - 5px), -43px);
@@ -342,7 +342,7 @@ export default {
     }
 }
 
-@include media-breakpoint-up(xxl) {
+@include breakpoints.media-breakpoint-up(xxl) {
     .EsReviewsIoCardCarousel {
         /* plenty of space on the sides, so just use the fixed value */
         margin-left: -43px;

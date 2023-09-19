@@ -14,7 +14,6 @@
 </template>
 
 <script lang="js">
-
 import truncate from 'html-truncate';
 import EsButton from './EsButton.vue';
 

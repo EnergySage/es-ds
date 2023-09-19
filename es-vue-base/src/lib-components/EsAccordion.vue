@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 /* rotate the chevron when expanded */
 .EsAccordion-button--visible {
@@ -95,7 +95,7 @@ export default {
 /* first item needs rounded corners on top */
   .EsAccordion:first-child {
     .EsAccordion-button {
-      border-radius: $border-radius $border-radius 0 0 !important;
+      border-radius: variables.$border-radius variables.$border-radius 0 0 !important;
     }
 }
 /**
@@ -105,7 +105,7 @@ export default {
 .EsAccordion:last-child {
     .EsAccordion-button,
     .EsAccordion-content {
-      border-radius: 0 0 $border-radius $border-radius !important;
+      border-radius: 0 0 variables.$border-radius variables.$border-radius !important;
     }
     /* if the last item is expanded, the button is no longer the last visible item */
     .EsAccordion-button--visible {
@@ -115,7 +115,7 @@ export default {
 /* only animate the chevron if the user doesn't prefer reduced motion */
 @media not prefers-reduced-motion {
     .EsAccordion-icon {
-      transition: $transition-base;
+      transition: variables.$transition-base;
     }
 }
 </style>

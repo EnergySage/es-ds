@@ -16,6 +16,7 @@
         </div>
     </b-alert>
 </template>
+
 <script>
 import {
     BAlert,
@@ -75,10 +76,8 @@ export default {
     },
 };
 </script>
-<style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
 
+<style lang="scss" scoped>
 .form-msg {
     flex: 0 0 100%;
     padding-right: 2.5rem;

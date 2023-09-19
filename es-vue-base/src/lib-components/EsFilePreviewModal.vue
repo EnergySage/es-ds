@@ -77,11 +77,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .rounded-img {
-    border-radius: $card-inner-border-radius !important;
+    border-radius: variables.$card-inner-border-radius !important;
 }
-
 </style>

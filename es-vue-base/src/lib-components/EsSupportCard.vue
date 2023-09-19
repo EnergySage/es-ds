@@ -116,10 +116,9 @@ export default {
 </script>
 
 <style lang="scss">
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
-@include media-breakpoint-up(lg) {
+@include breakpoints.media-breakpoint-up(lg) {
     .EsSupportCard {
         &-contentColumn {
             /* account for the size of the image */

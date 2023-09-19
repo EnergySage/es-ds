@@ -382,8 +382,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .review-holder {
     .details-holder {
@@ -396,14 +396,14 @@ export default {
 }
 
 .title {
-    @include media-breakpoint-down(md) {
-        font-size: $font-size-base;
+    @include breakpoints.media-breakpoint-down(md) {
+        font-size: variables.$font-size-base;
     }
 }
 
-@include media-breakpoint-down(md) {
+@include breakpoints.media-breakpoint-down(md) {
     .review-holder {
-        border: 1px solid $border-color;
+        border: 1px solid variables.$border-color;
         border-radius: 0.75rem;
     }
 }

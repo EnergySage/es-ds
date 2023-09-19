@@ -80,12 +80,11 @@ export default {
 </script>
 
 <style lang="scss">
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 // TODO: Move this into es-bs-base ?
 .modal-lightbox {
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         .modal-dialog {
             margin: 0;
             min-height: 100%;

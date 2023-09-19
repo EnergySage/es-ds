@@ -57,8 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .responsive-table-column {
     display: flex;
@@ -75,7 +74,7 @@ export default {
     }
 }
 
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
     .responsive-table-column {
         dt {
             width: 24%;
@@ -87,7 +86,7 @@ export default {
     }
 }
 
-@include media-breakpoint-up(md) {
+@include breakpoints.media-breakpoint-up(md) {
     .responsive-table-column {
         /* undo mobile styles */
         display: block;

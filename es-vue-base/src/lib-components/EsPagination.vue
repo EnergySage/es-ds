@@ -42,15 +42,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .pagination::v-deep {
     .page-number, .prev-next, .ellipses {
         .page-link {
             background-color: transparent;
             border: 0;
-            color: $dark;
+            color: variables.$dark;
         }
     }
 
@@ -58,8 +58,8 @@ export default {
         display: block !important; // override number limit on mobile viewports
 
         @media only screen and (min-width: 370px) {  // mid-xs breakpoint; only compressed further below 370px
-            margin-left: $pagination-padding-y-sm;
-            margin-right: $pagination-padding-y-sm;
+            margin-left: variables.$pagination-padding-y-sm;
+            margin-right: variables.$pagination-padding-y-sm;
         }
     }
 
@@ -76,18 +76,18 @@ export default {
 
             &:hover {
                 background-color: transparent;
-                color: $black;
+                color: variables.$black;
                 font-weight: bold;
             }
         }
 
         &.active {
             .page-link {
-                background: linear-gradient($white, $white) padding-box,
-                    linear-gradient(to bottom right, $yellow-500, $pink-500) border-box;
+                background: linear-gradient(variables.$white, variables.$white) padding-box,
+                    linear-gradient(to bottom right, variables.$yellow-500, variables.$pink-500) border-box;
                 border: 2px solid transparent;
                 border-radius: 50em;
-                color: $black;
+                color: variables.$black;
                 font-weight: bold;
                 padding: 0;
             }
@@ -100,16 +100,16 @@ export default {
             padding-left: 0;
             padding-right: 0;
 
-            @include media-breakpoint-up(sm) {
-                padding-left: $pagination-padding-x;
-                padding-right: $pagination-padding-x;
+            @include breakpoints.media-breakpoint-up(sm) {
+                padding-left: variables.$pagination-padding-x;
+                padding-right: variables.$pagination-padding-x;
             }
         }
 
         &.disabled {
             .page-link {
                 svg {
-                    color: $gray-500;
+                    color: variables.$gray-500;
                 }
             }
         }
@@ -117,8 +117,8 @@ export default {
         &:not(.disabled):hover {
             .page-link {
                 svg {
-                    fill: $black;
-                    stroke: $black;
+                    fill: variables.$black;
+                    stroke: variables.$black;
                     stroke-width: 1;
                 }
             }

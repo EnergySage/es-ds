@@ -91,8 +91,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .support-holder {
     max-width: 325px;
@@ -106,11 +105,11 @@ export default {
             object-fit: contain;
 
             &.image-bg-warm {
-                background: linear-gradient(141.22deg, $yellow 8.76%, $pink 100%);
+                background: linear-gradient(141.22deg, variables.$yellow 8.76%, variables.$pink 100%);
             }
 
             &.image-bg-cool {
-                background: $teal-300;
+                background: variables.$teal-300;
             }
         }
     }

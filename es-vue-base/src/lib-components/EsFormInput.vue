@@ -148,12 +148,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 // TODO: Move to es-bs-base
 .is-invalid {
-    color: $danger;
+    color: variables.$danger;
 }
 
 .es-form-input:disabled, .es-form-input[readonly] {
@@ -175,16 +174,16 @@ export default {
 
 .has-prefix-icon {
     /* match the padding right of valid/invalid state icons */
-    padding-left: $input-height-inner !important;
+    padding-left: variables.$input-height-inner !important;
 }
 
 .prefix-icon {
     /* match the padding left of normal inputs */
-    left: $input-padding-x;
+    left: variables.$input-padding-x;
     /* allow clicks to pass through and give the input focus */
     pointer-events: none;
     /* vertically center within the input container */
-    top: calc($input-height * 0.5);
+    top: calc(variables.$input-height * 0.5);
     transform: translateY(-50%);
 }
 

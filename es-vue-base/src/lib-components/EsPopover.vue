@@ -119,24 +119,23 @@ export default {
 </script>
 
 <style lang="scss">
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 /* stylelint-disable no-descending-specificity */
 .es-popover-light {
     &.popover {
-        background-color: $white;
-        border: 1px solid $primary;
+        background-color: variables.$white;
+        border: 1px solid variables.$primary;
     }
     // styling for all arrow backgrounds
     &.bs-popover-bottom, &.bs-popover-auto[x-placement^=bottom] {
         > .arrow {
             &::before {
-                border-bottom-color: $primary;
+                border-bottom-color: variables.$primary;
             }
 
             &::after {
-                border-bottom-color: $white;
+                border-bottom-color: variables.$white;
                 top: 1px;
             }
         }
@@ -145,11 +144,11 @@ export default {
     &.bs-popover-top, &.bs-popover-auto[x-placement^=top] {
         > .arrow {
             &::before {
-                border-top-color: $primary;
+                border-top-color: variables.$primary;
             }
 
             &::after {
-                border-top-color: $white;
+                border-top-color: variables.$white;
                 bottom: 1px;
             }
         }
@@ -158,11 +157,11 @@ export default {
     &.bs-popover-right, &.bs-popover-auto[x-placement^=right] {
         > .arrow {
             &::before {
-                border-right-color: $primary;
+                border-right-color: variables.$primary;
             }
 
             &::after {
-                border-right-color: $white;
+                border-right-color: variables.$white;
                 left: 1px;
             }
         }
@@ -171,35 +170,35 @@ export default {
     &.bs-popover-left, &.bs-popover-auto[x-placement^=left] {
         > .arrow {
             &::before {
-                border-left-color: $primary;
+                border-left-color: variables.$primary;
             }
 
             &::after {
-                border-left-color: $white;
+                border-left-color: variables.$white;
                 right: 1px;
             }
         }
     }
 
     .popover-header {
-        background-color: $white;
-        border-bottom-color: $white;
-        color: $black;
+        background-color: variables.$white;
+        border-bottom-color: variables.$white;
+        color: variables.$black;
 
         &::before {
-            border-bottom-color: $white;
+            border-bottom-color: variables.$white;
         }
 
         .btn, .btn:hover, .btn:active {
-            color: $black;
+            color: variables.$black;
         }
     }
 
     .popover-body {
-        color: $black;
+        color: variables.$black;
 
         .btn, .btn:hover, .btn:active {
-            color: $black;
+            color: variables.$black;
         }
     }
 }
@@ -208,18 +207,18 @@ export default {
     // styling for this color scheme will need to be added as default values for popovers are updated
     .popover-header {
         .btn, .btn:hover, .btn:active {
-            color: $white;
+            color: variables.$white;
         }
     }
 
     .popover-body {
         .btn, .btn:hover, .btn:active {
-            color: $white;
+            color: variables.$white;
         }
 
         a {
-            color: $lightblue;
-            font-weight: $font-weight-bold;
+            color: variables.$lightblue;
+            font-weight: variables.$font-weight-bold;
         }
     }
 }

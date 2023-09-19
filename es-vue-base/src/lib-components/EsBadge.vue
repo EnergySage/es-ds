@@ -34,77 +34,79 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
 /* stylelint-disable scss/no-global-function-names */
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+@use "sass:color";
 
 .badge-primary {
     /* hard-coded background-color due to no satisfactory variation of defined colors */
     background: #cce5ef;
-    color: darken($primary, 15%);
+    color: color.adjust(variables.$primary, $lightness: -15%);
 }
 
 .badge-primary:hover {
-    background: $primary;
-    color: $white;
+    background: variables.$primary;
+    color: variables.$white;
 }
 
 .badge-success {
     /* hard-coded background-color due to no satisfactory variation of defined colors */
     background: #cce6da;
-    color: darken($success, 14%);
+    color: color.adjust(variables.$success, $lightness: -14%);
 }
 
 .badge-success:hover {
-    background: $success;
-    color: $white;
+    background: variables.$success;
+    color: variables.$white;
 }
 
 .badge-danger {
-    background: lighten($danger, 42%);
-    color: darken($danger, 23%);
+    // background: lighten(variables.$danger, 42%);
+    background: color.adjust(variables.$danger, $lightness: 42%);
+    color: color.adjust(variables.$danger, $lightness: -23%);
 }
 
 .badge-danger:hover {
-    background: $danger;
-    color: $white;
+    background: variables.$danger;
+    color: variables.$white;
 }
 
 .badge-warning {
-    background: lighten($warning, 26%);
-    color: darken($warning, 41%);
+    background: lighten(variables.$warning, 26%);
+    color: color.adjust(variables.$warning, $lightness: -41%);
 }
 
 .badge-warning:hover {
-    background: $warning;
+    background: variables.$warning;
 }
 
 .badge-info {
-    background: lighten($info, 59%);
-    color: $indigo;
+    // background: lighten(variables.$info, 59%);
+    background: color.adjust(variables.$info, $lightness: 59%);
+    color: variables.$indigo;
 }
 
 .badge-info:hover {
-    background: $info;
-    color: $white;
+    background: variables.$info;
+    color: variables.$white;
 }
 
 .badge-disabled {
-    background: $gray-200;
-    color: $gray-700;
+    background: variables.$gray-200;
+    color: variables.$gray-700;
 }
 
 .badge-disabled:hover {
-    background: $gray-400;
+    background: variables.$gray-400;
 }
 
 .badge-dark {
-    background: $gray-400;
-    color: $gray-800;
+    background: variables.$gray-400;
+    color: variables.$gray-800;
 }
 
 .badge-dark:hover {
-    background: $dark;
-    color: $white;
+    background: variables.$dark;
+    color: variables.$white;
 }
 </style>

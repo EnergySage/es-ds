@@ -258,57 +258,57 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .desktop-preview {
     width: 165px;
 }
 
 .thumbnail-border {
-    border: 2px solid $card-border-color;
+    border: 2px solid variables.$card-border-color;
 }
 
 .thumbnail-border-failure {
-    border: 2px solid $danger;
+    border: 2px solid variables.$danger;
 }
 
 .thumbnail-outer-wrapper {
     height: 165px;
     width: 165px;
     z-index: 2;
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         height: 110px;
         width: 100px;
     }
 }
 
 .thumbnail-inner-wrapper-x {
-    border: 2px solid $card-border-color;
+    border: 2px solid variables.$card-border-color;
     height: 160px;
     top: -18px;
     width: 160px;
     z-index: -1; // dragons
 
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         height: 105px;
         width: 95px;
     }
 
     &:hover {
-        border: 2px solid $gray-900;
+        border: 2px solid variables.$gray-900;
     }
 }
 
 .thumbnail-inner-wrapper {
-    border: 2px solid $card-border-color;
+    border: 2px solid variables.$card-border-color;
     height: 160px;
     overflow: hidden;
     top: 8px;
     width: 160px;
     z-index: -1; // dragons
 
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         height: 105px;
         width: 95px;
     }
@@ -320,7 +320,7 @@ export default {
 }
 
 a:hover {
-    color: $gray-800;
+    color: variables.$gray-800;
 }
 
 .svg-fill-wrapper {
@@ -334,11 +334,11 @@ a:hover {
 }
 
 .image-preview {
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
         min-height: 100px;
     }
 
-    @include media-breakpoint-up(lg) {
+    @include breakpoints.media-breakpoint-up(lg) {
         min-height: 150px;
     }
 }

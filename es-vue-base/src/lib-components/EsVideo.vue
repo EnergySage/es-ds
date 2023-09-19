@@ -29,7 +29,6 @@
 </template>
 
 <script lang="js">
-
 import { BImg, BEmbed } from 'bootstrap-vue';
 import IconVideoPlay from '../lib-icons/icon-video-play.vue';
 
@@ -75,9 +74,6 @@ export default ({
 </script>
 
 <style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
-
 .EsVideo {
     &-button,
     &-image {
