@@ -1,17 +1,14 @@
 /* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
-
-@import "../functions";
-@import "../mixins";
-@import "../variables";
+@use "../variables";
 
 :export {
-  font-weight-lightest: $font-weight-lightest;
-  font-weight-lighter: $font-weight-lighter;
-  font-weight-light: $font-weight-light;
-  font-weight-base: $font-weight-base;
-  font-weight-normal: $font-weight-normal;
-  font-weight-semibold: $font-weight-semibold;
-  font-weight-bold: $font-weight-bold;
-  font-weight-bolder: $font-weight-bolder;
-  font-weight-boldest: $font-weight-boldest;
+  font-weight-lightest: variables.$font-weight-lightest;
+  font-weight-lighter: variables.$font-weight-lighter;
+  font-weight-light: variables.$font-weight-light;
+  font-weight-base: variables.$font-weight-base;
+  font-weight-normal: variables.$font-weight-normal;
+  font-weight-semibold: variables.$font-weight-semibold;
+  font-weight-bold: variables.$font-weight-bold;
+  font-weight-bolder: variables.$font-weight-bolder;
+  font-weight-boldest: variables.$font-weight-boldest;
 }

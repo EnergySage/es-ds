@@ -1,15 +1,12 @@
 /* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
-
-@import "../functions";
-@import "../mixins";
-@import "../variables";
+@use "../variables";
 
 :export {
-  body: $body-color;
-  primary: $primary;
-  gray: $gray;
-  pink: $pink;
-  teal: $teal;
-  yellow: $yellow;
-  orange: $orange;
+  body: variables.$body-color;
+  primary: variables.$primary;
+  gray: variables.$gray;
+  pink: variables.$pink;
+  teal: variables.$teal;
+  yellow: variables.$yellow;
+  orange: variables.$orange;
 }

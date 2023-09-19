@@ -171,11 +171,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import '~@energysage/es-bs-base/scss/includes';
-@use '~@energysage/es-bs-base/scss/bootstrap.import' as *;
+@use '~@energysage/es-bs-base/scss/variables' as variables;
 
 // TODO: Remove when gray scale is added to es-bs-base
 .text-gray-700 {
-    color: $gray-700;
+    color: variables.$gray-700;
 }
 </style>
