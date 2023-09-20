@@ -76,7 +76,8 @@
     "vue-jest": "^3.0.7",
     "vue-slider-component": "^3.2.20",
     "vue-template-compiler": "^2.7.14",
-    "vuelidate": "^0.7.7"
+    "vuelidate": "^0.7.7",
+    "sass": "^1.66.1"
   },
   "peerDependencies": {
     "@energysage/es-bs-base": "*",
@@ -104,7 +105,6 @@
     "url": "git@github.com:EnergySage/es-ds.git"
   },
   "dependencies": {
-    "path": "^0.12.7",
-    "sass": "^1.66.1"
+    "path": "^0.12.7"
   }
 }
