@@ -18,6 +18,10 @@ build:
 publish:
 	npx lerna publish
 
+.PHONY: publish-beta
+publish-beta:
+	npx lerna publish --canary --preid beta
+
 .PHONY: symlink
 symlink:
 	npx lerna bootstrap
