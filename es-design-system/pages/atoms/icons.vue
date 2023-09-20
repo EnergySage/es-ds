@@ -544,8 +544,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import '~@energysage/es-bs-base/scss/variables';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .ds-icon-list {
     list-style: none;
@@ -564,29 +564,29 @@ export default {
 
 .ds-icon-list code {
     /* so we don't have to repeat the utility classes many times */
-    color: $body-color;
+    color: variables.$body-color;
     margin-left: 0.5rem;
 }
 
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
     .ds-icon-list {
         column-count: 2;
     }
 }
 
-@include media-breakpoint-up(lg) {
+@include breakpoints.media-breakpoint-up(lg) {
     .ds-icon-list {
         column-count: 3;
     }
 }
 
-@include media-breakpoint-up(xl) {
+@include breakpoints.media-breakpoint-up(xl) {
     .ds-icon-list {
         column-count: 4;
     }
 }
 
-@include media-breakpoint-up(xxl) {
+@include breakpoints.media-breakpoint-up(xxl) {
     .ds-icon-list {
         column-count: 5;
     }

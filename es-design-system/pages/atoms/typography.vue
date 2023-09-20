@@ -698,6 +698,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+
 .responsive-table-typography {
     ::v-deep dl {
         dd {
