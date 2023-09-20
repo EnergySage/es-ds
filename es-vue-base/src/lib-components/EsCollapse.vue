@@ -2,11 +2,12 @@
     <div>
         <EsButton
             block
-            :aria-label="id"
+            :aria-expanded="expanded.toString()"
+            :aria-controls="id"
             class="collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
             inline
             variant="link"
-            @click="isExpanded = !isExpanded">
+            @click="userClick">
             <div>
                 <slot name="title" />
             </div>
@@ -14,7 +15,7 @@
                 <IconChevronDown
                     :class="{
                         svg: true,
-                        collapsed: isExpanded,
+                        chevronExpanded: expanded,
                     }"
                     width="30px"
                     height="30px" />
@@ -23,9 +24,7 @@
 
         <b-collapse
             :id="id"
-            :visible="isExpanded"
-            :aria-labelledby="id"
-            role="tabpanel"
+            v-model="expanded"
             data-testid="collapse"
             v-on="$listeners">
             <slot />
@@ -36,7 +35,7 @@
             :class="{
                 'border-bottom': true,
                 'bottom-spacer': true,
-                expanded: isExpanded,
+                expanded: expanded,
             }" />
     </div>
 </template>
@@ -51,6 +50,10 @@ export default {
     components: {
         EsButton, BCollapse, IconChevronDown,
     },
+    model: {
+        prop: 'visible',
+        event: 'userClick',
+    },
     props: {
         /**
          * ID
@@ -61,12 +64,21 @@ export default {
         },
         /**
          * Visible
-         * Start open/closed
+         * Suggested open/closed state. Will be ignored if and when the user interacts with the collapse.
          */
         visible: {
             type: Boolean,
             required: false,
             default: false,
+        },
+        /**
+         * isProgrammaticUntilUserInput
+         * Prioritize the visible prop over the user's interaction with the collapse.
+         */
+        isProgrammaticUntilUserInput: {
+            type: Boolean,
+            required: false,
+            default: true,
         },
         /**
          * Border
@@ -80,8 +92,40 @@ export default {
     },
     data() {
         return {
-            isExpanded: this.visible,
+            userSpecifiedIsExpanded: null,
+            isExpanded: null, // We use a second variable to track the expanded state so that we only emit the toggled
+            // event when the user interacts with the collapse.
         };
+    },
+    computed: {
+        expanded: {
+            get() {
+                if (this.isProgrammaticUntilUserInput && this.userSpecifiedIsExpanded !== null) {
+                    return this.userSpecifiedIsExpanded;
+                }
+                return this.visible;
+            },
+            set() {
+                // noop
+            },
+        },
+    },
+    watch: {
+        userSpecifiedIsExpanded(newValue) {
+            this.isExpanded = newValue;
+            this.$emit('toggled', newValue);
+        },
+        visible(newValue) {
+            if (!this.isProgrammaticUntilUserInput) {
+                this.isExpanded = newValue;
+            }
+        },
+    },
+    methods: {
+        userClick() {
+            this.userSpecifiedIsExpanded = !this.expanded;
+            this.$emit('userClick', !this.expanded);
+        },
     },
 };
 </script>
@@ -91,7 +135,7 @@ export default {
     transition: transform .5s ease;
 }
 
-.collapsed {
+.chevronExpanded {
     transform: rotate(180deg);
 }
 

@@ -5,6 +5,88 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.25.16] - 2023-09-19
+
+### Changed
+- Fixed an issue where uploading a file one after another in the same 
+session would throw an error saying "You have already uploaded a file with the name "{fileName}". 
+Please rename your file and try again.".
+
+## [0.25.15] - 2023-09-18
+
+### Changed
+- Made it possible to keep the `EsZipCodeForm` side-by-side on even the smallest screens
+by specifying `xs` for `stackUntil`
+- Made it possible to hide the privacy section of `EsZipCodeForm` to save space by using
+the new `showPrivacySection` prop
+
+## [0.25.14] - 2023-09-12
+
+### Added
+- New marketing icons: `IconBank`, `IconCreditCard`, `IconMoney`, `IconPayback`, and `IconSaving`
+
+### Changed
+- Added a "Work with us" section to the "About us" menu in `EsNavBar`
+- Updated several links in `EsFooter`
+
+## [0.25.13] - 2023-09-06
+
+### Changed
+- Fixed an issue with `EsDataTable` where it would print a warning about `BTable` being an unknown custom element
+- Fixed a styling issue on the `EsCollapse` docs page
+
+## [0.25.12] - 2023-09-01
+
+### Changed
+- `EsCollapse` now accepts `v-model` for full programmatic control
+
+## [0.25.11] - 2023-08-31
+
+### Changed
+- Added `arrows` prop to `EsHorizontalList` that will display arrows for left/right navigation
+
+## [0.25.10] - 2023-08-24
+
+### Changed
+- The vertical landing page links in `EsNavBar` no longer open in a new tab
+- Increased the space between submit button and privacy policy link in `EsZipCodeForm` to meet tappability criteria
+
+## [0.25.9] - 2023-08-22
+
+### Changed
+- The primary vertical links in `EsFooter` now point to the new vertical landing page URLs
+
+## [0.25.8] - 2023-08-22
+
+### Changed
+- The `visible` prop on `EsCollapse` can now programmatically control the collapse; will cease its control once the user interacts with the collapse
+- The primary vertical links in `EsNavBar` now point to the new vertical landing page URLs
+- Small spacing change to the desktop layout of `EsReviewModal`
+
+## [0.25.7] - 2023-08-18
+
+### Changed
+
+- `EsFileInput` no longer shows file upload progress and uses the fetch API instead of the axios library
+- `EsAccordion` has a new `variant` prop to support a new `minimal` variant
+- `EsAccordion` now uses heading tags under the hood and defaults to `<h3>`
+- `EsCtaBanner` and `EsCtaCard` no longer use an `<h2>` tag under the hood
+- The `coverImageUrl` prop is no longer required in `EsVideo`
+
+## [0.25.6] - 2023-08-14
+
+### Changed
+
+- Added a new `constrained` prop to `EsSupportCard` to enable use in limited-width containers
+- Fixed a bug in `EsVideo` where the button had a primary color background; it now has a transparent background.
+
+## [0.25.5] - 2023-08-09
+
+### Changed
+
+- The `EsFileInput` prop `uploadUrls` can now take in an optional `additionalFields` parameter that will be added as form data to the upload
+- `EsFileInput` now sets the content type of a file upload to `multipart/form-data`
+
 ## [0.25.4] - 2023-08-07
 
 ### Changed
@@ -714,6 +796,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[0.25.14]: https://github.com/EnergySage/es-ds/compare/v0.25.13...v0.25.14
+[0.25.13]: https://github.com/EnergySage/es-ds/compare/v0.25.12...v0.25.13
+[0.25.12]: https://github.com/EnergySage/es-ds/compare/v0.25.11...v0.25.12
+[0.25.11]: https://github.com/EnergySage/es-ds/compare/v0.25.10...v0.25.11
+[0.25.10]: https://github.com/EnergySage/es-ds/compare/v0.25.9...v0.25.10
+[0.25.9]: https://github.com/EnergySage/es-ds/compare/v0.25.8...v0.25.9
+[0.25.8]: https://github.com/EnergySage/es-ds/compare/v0.25.7...v0.25.8
+[0.25.7]: https://github.com/EnergySage/es-ds/compare/v0.25.6...v0.25.7
+[0.25.6]: https://github.com/EnergySage/es-ds/compare/v0.25.5...v0.25.6
+[0.25.5]: https://github.com/EnergySage/es-ds/compare/v0.25.4...v0.25.5
+[0.25.4]: https://github.com/EnergySage/es-ds/compare/v0.25.2...v0.25.4
+[0.25.2]: https://github.com/EnergySage/es-ds/compare/v0.25.1...v0.25.2
 [0.25.1]: https://github.com/EnergySage/es-ds/compare/v0.25.0...v0.25.1
 [0.25.0]: https://github.com/EnergySage/es-ds/compare/v0.24.1...v0.25.0
 [0.24.1]: https://github.com/EnergySage/es-ds/compare/v0.24.0...v0.24.1

@@ -110,9 +110,15 @@
                         <template v-else>
                             <div class="h-100 d-flex align-items-center justify-content-center">
                                 <es-progress-circle
+                                    v-if="percentLoaded"
+                                    :show-percentage="percentLoaded"
                                     :value="percentLoaded"
                                     circle
                                     height="65px" />
+                                <b-spinner
+                                    v-if="!percentLoaded"
+                                    role="status"
+                                    label="Loading" />
                             </div>
                         </template>
                     </div>

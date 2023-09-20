@@ -9,10 +9,11 @@
         v-on="$listeners">
         <b-form
             ref="ctaForm"
-            class="justify-content-center mb-50 w-100"
+            class="justify-content-center w-100"
             :class="{
                 invalid: $v.$dirty && $v.$invalid,
-                [`d-${stackBreak}flex`]: stackBreak
+                [`d-${stackBreak}flex`]: stackUntil,
+                'mb-100': showPrivacySection,
             }"
             :action="url"
             method="get"
@@ -23,7 +24,7 @@
                 :id="inputId"
                 v-model="zipCode"
                 :class="{
-                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackBreak
+                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackUntil,
                 }"
                 :name="fieldName"
                 autocomplete="postal-code"
@@ -42,16 +43,14 @@
                 </template>
                 <template #errorMessage>
                     <span :class="{ 'text-white': dark }">
-                        <slot name="errorMessage">
-                            Please enter a 5-digit zip code.
-                        </slot>
+                        <slot name="errorMessage"> Please enter a 5-digit zip code. </slot>
                     </span>
                 </template>
             </es-form-input>
             <es-button
                 class="text-nowrap w-100"
                 :class="{
-                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackBreak,
+                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackUntil,
                     'px-100': constrained,
                 }"
                 type="submit">
@@ -60,17 +59,18 @@
                 </slot>
             </es-button>
         </b-form>
-        <div :class="{ 'font-size-75': constrained }">
+        <div
+            v-if="showPrivacySection"
+            :class="{ 'font-size-75': constrained }">
             <icon-lock-on
                 class="privacy-lock-icon mr-25 position-relative"
                 height="1.125rem"
                 width="1.125rem" />
             <span>
-                <slot name="privacyExplanation">
-                    Your information is safe with us.
-                </slot>
+                <slot name="privacyExplanation"> Your information is safe with us. </slot>
             </span>
             <b-link
+                v-if="privacyPolicyLink"
                 :href="privacyPolicyLink"
                 class="text-nowrap"
                 :class="dark ? 'text-white' : 'text-dark'"
@@ -130,9 +130,13 @@ export default {
             type: String,
             default: 'ZIP code',
         },
+        showPrivacySection: {
+            type: Boolean,
+            default: true,
+        },
         privacyPolicyLink: {
             type: String,
-            required: true,
+            default: '',
         },
         privacyPolicyNewTab: {
             type: Boolean,
@@ -154,7 +158,11 @@ export default {
     },
     computed: {
         stackBreak() {
-            return this.stackUntil ? `${this.stackUntil}-` : '';
+            let { stackUntil } = this;
+            if (stackUntil === 'xs') {
+                stackUntil = '';
+            }
+            return stackUntil ? `${stackUntil}-` : '';
         },
     },
     methods: {

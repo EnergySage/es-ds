@@ -83,6 +83,8 @@ export { default as IconSolar } from './icon-solar.vue';
 export { default as IconTree } from './icon-tree.vue';
 export { default as IconUpload } from './icon-upload.vue';
 export { default as IconVideoPlay } from './icon-video-play.vue';
+export { default as IconBank } from './icon-bank.vue';
+export { default as IconCreditCard } from './icon-credit-card.vue';
 
 // marketing icons
 export { default as IconBattery } from './icon-battery.vue';
@@ -93,7 +95,10 @@ export { default as IconElectricVehicle } from './icon-electric-vehicle.vue';
 export { default as IconHeatPump } from './icon-heat-pump.vue';
 export { default as IconInfoBlogPost } from './icon-info-blog-post.vue';
 export { default as IconMarketplace } from './icon-marketplace.vue';
+export { default as IconMoney } from './icon-money.vue';
+export { default as IconPayback } from './icon-payback.vue';
 export { default as IconRooftopSolar } from './icon-rooftop-solar.vue';
+export { default as IconSaving } from './icon-saving.vue';
 
 // Social icons
 export { default as IconFacebook } from './icon-facebook.vue';

@@ -48,7 +48,7 @@
                 @readyToUpload="readyToUpload"
                 @uploadFailure="uploadFailure"
                 @fileDataRead="fileDataRead"
-                @uploadProgress="uploadProgress">
+                @uploadSuccess="uploadSuccess">
                 <template #cta>
                     <h2 class="d-none d-md-inline-block mb-4 text-center">
                         Drag and drop your files or
@@ -167,16 +167,8 @@ export default {
                 size: this.formatFileSizeInMb(file.size),
             });
         },
-        uploadProgress(progressData) {
-            this.files = this.files.map((file) => {
-                if (file.name === progressData.name) {
-                    return {
-                        ...file,
-                        percentLoaded: progressData.percentCompleted,
-                    };
-                }
-                return file;
-            });
+        uploadSuccess(fileName) {
+            this.files.find(({ name }) => name === fileName).percentLoaded = 100;
         },
         fileSizeError(fileName) {
             this.events.push({

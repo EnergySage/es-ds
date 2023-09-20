@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+// keeping COMMUNITY_SOLAR_DOMAIN and HEAT_PUMPS_DOMAIN for now to keep function argument order intact
+// and to minimize breaking change to consuming applications, but they are now deprecated in this function
 export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
     NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://news.energysage.com',
@@ -7,7 +10,7 @@ export default (
 ) => ({
     banner: {
         headline: 'Make an impact.',
-        subHeadline: 'It\'s never been easier.',
+        subHeadline: "It's never been easier.",
         body: `We developed our one-of-a-kind marketplace with funding from the U.S. Department of Energy to make
             clean home energy solutions affordable and accessible to all.`,
     },
@@ -20,9 +23,9 @@ export default (
         {
             title: 'Our offerings',
             links: [
-                { text: 'Home solar', url: `${ES_DOMAIN}/market-intro/` },
-                { text: 'Community solar', url: COMMUNITY_SOLAR_DOMAIN, newTab: true },
-                { text: 'Heating & cooling', url: HEAT_PUMPS_DOMAIN, newTab: true },
+                { text: 'Home solar', url: `${ES_DOMAIN}/shop/home-solar/` },
+                { text: 'Community solar', url: `${ES_DOMAIN}/shop/community-solar/` },
+                { text: 'Heating & cooling', url: `${ES_DOMAIN}/shop/heat-pumps/` },
                 { text: 'Backup power', url: `${ES_DOMAIN}/energy-storage/` },
                 { text: 'EV charging', url: `${ES_DOMAIN}/ev-charging/` },
                 { text: 'For your business', url: `${ES_DOMAIN}/businesses/` },
@@ -36,14 +39,16 @@ export default (
                 { text: 'Solar rebates', url: `${ES_DOMAIN}/market/equipment-rebates/` },
                 { text: 'News', url: NEWS_DOMAIN, newTab: true },
                 { text: 'Help center', url: HELP_DOMAIN, newTab: true },
-                { text: 'Home solar guide', url: `${ES_DOMAIN}/market-intro/` },
+                { text: 'Home solar guide', url: `${ES_DOMAIN}/shop/home-solar/` },
+                { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
+                { text: 'Refer a friend', url: `${ES_DOMAIN}/refer-a-friend/` },
             ],
         },
         {
             title: 'About us',
             links: [
                 { text: 'Mission & values', url: `${ES_DOMAIN}/about-us/company/` },
-                { text: 'How it works', url: `${ES_DOMAIN}/market-intro/` },
+                { text: 'How it works', url: `${ES_DOMAIN}/shop/home-solar/` },
                 { text: 'Careers', url: `${ES_DOMAIN}/about-us/careers/` },
                 { text: 'Contact us', url: `${ES_DOMAIN}/contact/` },
                 { text: 'Editorial guidelines', url: `${ES_DOMAIN}/editorial-guidelines/` },
@@ -52,10 +57,11 @@ export default (
         {
             title: 'Work with us',
             links: [
-                { text: 'Solar companies', url: `${ES_DOMAIN}/installers/` },
-                { text: 'Partner with us', url: `${ES_DOMAIN}/partners/` },
-                { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
-                { text: 'Refer a friend', url: `${ES_DOMAIN}/refer-a-friend/` },
+                { text: 'Solar & HVAC installers', url: `${ES_DOMAIN}/installers/` },
+                { text: 'Corporate partnerships', url: `${ES_DOMAIN}/partners/corporations` },
+                { text: 'Community programs', url: `${ES_DOMAIN}/partners/non-profits` },
+                { text: 'Utility programs', url: `${ES_DOMAIN}/partners/utilities` },
+                { text: 'Others', url: `${ES_DOMAIN}/partners/` },
             ],
         },
     ],
@@ -83,3 +89,4 @@ export default (
         logoUrl: 'https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png',
     },
 });
+/* eslint-enable no-unused-vars */

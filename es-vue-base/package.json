@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-vue-base",
-  "version": "0.25.4",
+  "version": "0.25.16",
   "private": false,
   "description": "",
   "scripts": {
@@ -94,7 +94,7 @@
   "license": "MIT",
   "npmClient": "npm",
   "sideEffects": false,
-  "gitHead": "bce04be980ab56747d198c2af6b2b1f5668d988a",
+  "gitHead": "d50430e59bc4a6ad6b60c04ec39c4aa049539eef",
   "bugs": {
     "url": "https://github.com/EnergySage/es-ds/issues"
   },

@@ -14,7 +14,7 @@
             class="modal-container">
             <b-row>
                 <b-col
-                    class="p-0"
+                    class="p-0 pr-lg-200"
                     cols="12"
                     md="8"
                     order="2"

@@ -1,6 +1,6 @@
 <template>
     <div
-        class="input-wrapper justify-content-end mb-50"
+        class="input-wrapper justify-content-end polite-mb-50"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
@@ -185,6 +185,10 @@ export default {
     /* vertically center within the input container */
     top: calc(variables.$input-height * 0.5);
     transform: translateY(-50%);
+}
+
+.polite-mb-50 {
+    margin-bottom: 0.5rem;
 }
 
 </style>

@@ -29,6 +29,21 @@
                     {{ index }}
                 </div>
             </es-horizontal-list>
+            <h2 class="mt-5">
+                Center Aligned With Dots and (Arrows In Desktop Only)
+            </h2>
+            <es-horizontal-list
+                id="docs-3"
+                class="center-holder overflow-hidden"
+                dots
+                arrows>
+                <div
+                    v-for="index in 5"
+                    :key="index"
+                    class="center-block-holder bg-primary mr-50 text-center text-white py-450">
+                    {{ index }}
+                </div>
+            </es-horizontal-list>
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -37,8 +52,8 @@
             doc-source="es-design-system/pages/molecules/es-horizontal-list.vue" />
     </div>
 </template>
-
 <script>
+
 export default {
     name: 'EsHorizontalListDocs',
     data() {
@@ -49,10 +64,12 @@ export default {
     },
     async created() {
         if (this.$prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
             const docSource = await import('!raw-loader!./es-horizontal-list.vue');
             // eslint-disable-next-line max-len
-            const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsHorizontalList.vue');
+            const compSource = await import(
+                '!raw-loader!@energysage/es-vue-base/src/lib-components/EsHorizontalList.vue'
+            );
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
             this.docCode = this.$prism.normalizeCode(docSource.default);
@@ -62,11 +79,10 @@ export default {
     },
 };
 </script>
-
 <style lang="scss" scoped>
 .large-block-holder {
-  height: 185px;
-  width: 300px;
+    height: 185px;
+    width: 300px;
 }
 
 .center-holder {
