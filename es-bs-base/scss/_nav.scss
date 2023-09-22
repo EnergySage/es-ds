@@ -4,6 +4,16 @@
 // `<nav>`s, `<ul>`s or `<ol>`s.
 
 .nav {
+  // scss-docs-start nav-css-vars
+  --#{$prefix}nav-link-padding-x: #{$nav-link-padding-x};
+  --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
+  @include rfs($nav-link-font-size, --#{$prefix}nav-link-font-size);
+  --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight};
+  --#{$prefix}nav-link-color: #{$nav-link-color};
+  --#{$prefix}nav-link-hover-color: #{$nav-link-hover-color};
+  --#{$prefix}nav-link-disabled-color: #{$nav-link-disabled-color};
+  // scss-docs-end nav-css-vars
+
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -13,16 +23,30 @@
 
 .nav-link {
   display: block;
-  padding: $nav-link-padding-y $nav-link-padding-x;
+  padding: var(--#{$prefix}nav-link-padding-y) var(--#{$prefix}nav-link-padding-x);
+  @include font-size(var(--#{$prefix}nav-link-font-size));
+  font-weight: var(--#{$prefix}nav-link-font-weight);
+  color: var(--#{$prefix}nav-link-color);
   text-decoration: if($link-decoration == none, null, none);
+  background: none;
+  border: 0;
+  @include transition($nav-link-transition);
 
-  @include hover-focus() {
-    text-decoration: none;
+  &:hover,
+  &:focus {
+    color: var(--#{$prefix}nav-link-hover-color);
+    text-decoration: if($link-hover-decoration == underline, none, null);
+  }
+
+  &:focus-visible {
+    outline: 0;
+    box-shadow: $nav-link-focus-box-shadow;
   }
 
   // Disabled state lightens text
-  &.disabled {
-    color: $nav-link-disabled-color;
+  &.disabled,
+  &:disabled {
+    color: var(--#{$prefix}nav-link-disabled-color);
     pointer-events: none;
     cursor: default;
   }
@@ -33,34 +57,41 @@
 //
 
 .nav-tabs {
-  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  // scss-docs-start nav-tabs-css-vars
+  --#{$prefix}nav-tabs-border-width: #{$nav-tabs-border-width};
+  --#{$prefix}nav-tabs-border-color: #{$nav-tabs-border-color};
+  --#{$prefix}nav-tabs-border-radius: #{$nav-tabs-border-radius};
+  --#{$prefix}nav-tabs-link-hover-border-color: #{$nav-tabs-link-hover-border-color};
+  --#{$prefix}nav-tabs-link-active-color: #{$nav-tabs-link-active-color};
+  --#{$prefix}nav-tabs-link-active-bg: #{$nav-tabs-link-active-bg};
+  --#{$prefix}nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
+  // scss-docs-end nav-tabs-css-vars
+
+  border-bottom: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
 
   .nav-link {
-    margin-bottom: -$nav-tabs-border-width;
-    border: $nav-tabs-border-width solid transparent;
-    @include border-top-radius($nav-tabs-border-radius);
+    margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
+    border: var(--#{$prefix}nav-tabs-border-width) solid transparent;
+    @include border-top-radius(var(--#{$prefix}nav-tabs-border-radius));
 
-    @include hover-focus() {
-      border-color: $nav-tabs-link-hover-border-color;
-    }
-
-    &.disabled {
-      color: $nav-link-disabled-color;
-      background-color: transparent;
-      border-color: transparent;
+    &:hover,
+    &:focus {
+      // Prevents active .nav-link tab overlapping focus outline of previous/next .nav-link
+      isolation: isolate;
+      border-color: var(--#{$prefix}nav-tabs-link-hover-border-color);
     }
   }
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-link-active-color;
-    background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color;
+    color: var(--#{$prefix}nav-tabs-link-active-color);
+    background-color: var(--#{$prefix}nav-tabs-link-active-bg);
+    border-color: var(--#{$prefix}nav-tabs-link-active-border-color);
   }
 
   .dropdown-menu {
     // Make dropdown border overlap tab border
-    margin-top: -$nav-tabs-border-width;
+    margin-top: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
     // Remove the top rounded corners here since there is a hard edge above the menu
     @include border-top-radius(0);
   }
@@ -72,14 +103,53 @@
 //
 
 .nav-pills {
+  // scss-docs-start nav-pills-css-vars
+  --#{$prefix}nav-pills-border-radius: #{$nav-pills-border-radius};
+  --#{$prefix}nav-pills-link-active-color: #{$nav-pills-link-active-color};
+  --#{$prefix}nav-pills-link-active-bg: #{$nav-pills-link-active-bg};
+  // scss-docs-end nav-pills-css-vars
+
   .nav-link {
-    @include border-radius($nav-pills-border-radius);
+    @include border-radius(var(--#{$prefix}nav-pills-border-radius));
   }
 
   .nav-link.active,
   .show > .nav-link {
-    color: $nav-pills-link-active-color;
-    background-color: $nav-pills-link-active-bg;
+    color: var(--#{$prefix}nav-pills-link-active-color);
+    @include gradient-bg(var(--#{$prefix}nav-pills-link-active-bg));
+  }
+}
+
+
+//
+// Underline
+//
+
+.nav-underline {
+  // scss-docs-start nav-underline-css-vars
+  --#{$prefix}nav-underline-gap: #{$nav-underline-gap};
+  --#{$prefix}nav-underline-border-width: #{$nav-underline-border-width};
+  --#{$prefix}nav-underline-link-active-color: #{$nav-underline-link-active-color};
+  // scss-docs-end nav-underline-css-vars
+
+  gap: var(--#{$prefix}nav-underline-gap);
+
+  .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: var(--#{$prefix}nav-underline-border-width) solid transparent;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: currentcolor;
+    }
+  }
+
+  .nav-link.active,
+  .show > .nav-link {
+    font-weight: $font-weight-bold;
+    color: var(--#{$prefix}nav-underline-link-active-color);
+    border-bottom-color: currentcolor;
   }
 }
 
@@ -105,6 +175,13 @@
   }
 }
 
+.nav-fill,
+.nav-justified {
+  .nav-item .nav-link {
+    width: 100%; // Make sure button will grow
+  }
+}
+
 
 // Tabbable tabs
 //
@@ -116,562 +193,5 @@
   }
   > .active {
     display: block;
-  }
-}
-
-//
-// EnergySage Global Navigation
-//
-
-$desktop-min-width: 992px;
-$mobile-max-width: $desktop-min-width - 1;
-$nav-hover-delay: 300ms;
-
-// Overlay that is displayed on navbar hovers on desktop, menu open on mobile
-// pull overlay up to avoid it from getting covered by other DOM elements
-.content-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  display: block;
-  width: 100%;
-  height: 0;
-  pointer-events: none;
-  visibility: hidden;
-  background: rgba(64, 64, 64, .45);
-  opacity: 0;
-  // stylelint-disable-next-line property-disallowed-list
-  transition: height 0s, opacity 0s, visibility 0s;
-
-  &.show {
-    height: 100%;
-    pointer-events: auto;
-    visibility: visible;
-    opacity: 1;
-    transition-delay: $nav-hover-delay;
-  }
-}
-
-.nav-es-container {
-
-  .nav-es-global,
-  .nav-es-sticky {
-    // default should be size 14px according to figma
-    font-size: $font-size-75;
-  }
-
-  .nav-es-global {
-    // add a background so veil goes under the nav and nav stands out against page bg
-    background-color: $white;
-
-    // shadow for additional visual separation between nav and more plain pages
-    box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
-  }
-
-  // override es-ds default
-  .btn-link {
-    color: $body-color;
-  }
-
-  // dropdown-menu items should be default size 14px
-  .dropdown-menu {
-    font-size: $font-size-75;
-  }
-
-  // All links and labels in the navigation should start at a font-weight-normal (weight 400)
-  // TODO: This overrides styles for `eyebrow`
-  a,
-  label {
-    font-weight: $font-weight-normal;
-  }
-
-  // Adjust default nav-link styling
-  .nav-es-sticky,
-  .navbar-light .navbar-nav {
-    // stylelint-disable-next-line selector-max-class
-    .nav-item.nav-link,
-    .dropdown-item.nav-link {
-      color: $gray-900;
-
-      // stylelint-disable-next-line selector-max-class
-      &:hover {
-        font-weight: $font-weight-semibold;
-        color: $gray-900;
-        text-decoration: underline;
-      }
-    }
-  }
-
-  // Hide the default BS4 expansion indicator
-  .dropdown-toggle::after {
-    content: none;
-  }
-
-  // Hide elements only needed for the mobile navigation
-  .dropdown-label,
-  .menu-checkbox,
-  .menu-header,
-  .menu-toggle,
-  .expand-icon {
-    display: none;
-  }
-
-  // Override default blue background
-  .dropdown-item:hover,
-  .dropdown-item:active,
-  .dropdown-item:focus {
-    background: none;
-  }
-
-  .dropdown-cta-right {
-    line-height: 1.3;
-
-    .cta-link {
-      font-size: $font-size-75;
-      color: $gray-900;
-      text-decoration: none;
-
-      &:hover {
-        color: $gray-1200;
-      }
-    }
-  }
-
-  .featured-article-image {
-    // override local style attribute on image
-    // stylelint-disable-next-line declaration-no-important
-    height: auto !important;
-  }
-
-  // On Desktop a hovers display the dropdowns
-  @media only screen and (min-width: $desktop-min-width) {
-    .nav-es-global,
-    .nav-es-sticky {
-      // pull navbar up to avoid overlay from getting covered by other DOM elements
-      z-index: 1000;
-
-      // shadow for additional visual separation between nav and more plain pages
-      filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
-      box-shadow: none;
-    }
-
-    // sticky nav bar, initially positioned out of viewport
-    .nav-es-sticky {
-      top: 0;
-      right: 0;
-      left: 0;
-      z-index: 1000;
-      // stylelint-disable-next-line property-disallowed-list
-      transition: $transition-base;
-      transform: translateY(-100%);
-    }
-
-    // when scrolled down, animate sticky nav bar into viewport
-    &.scrolled {
-      .nav-es-sticky {
-        transform: translateY(0%);
-      }
-    }
-
-    // Allow dropdown content to take up the full width of the page
-    .dropdown-full-page {
-      position: static;
-    }
-
-    // Full expand top level nav's topics section
-    .dropdown-menu-full-page {
-      top: 65%;
-      width: 100%;
-      padding-bottom: 0;
-    }
-
-    // eyebrow copied from es-ds class, but override for letter spacing and only display on lg+ viewports
-    .eyebrow-lg {
-      font-size: $font-size-100;
-      font-weight: $font-weight-bolder;
-      color: $gray;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    // line below topic header in desktop top-level flyout
-    .topic-menu-header::after {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 64px;
-      height: 1px;
-      margin: 0; // override .dropdown-toggle::after style
-      content: "";
-      background-color: $gray-400;
-      border-style: none;  // override .dropdown-toggle::after style
-      // stylelint-disable-next-line property-disallowed-list
-      border-radius: 1px;
-    }
-
-    // Show top headers down chevron icon
-    .nav-item {
-      .dropdown-toggle,
-      .nav-link {
-        cursor: pointer;
-      }
-
-      .top-header-icon {
-        // stylelint-disable-next-line property-disallowed-list
-        transition: transform 0s;
-        transform: rotate(0deg);
-      }
-      .dropdown-menu {
-        // prepare menu for delayed hover showing
-        display: block;
-        height: 0;
-        overflow: hidden;
-        pointer-events: none;
-        visibility: hidden;
-        opacity: 0;
-        // stylelint-disable-next-line property-disallowed-list
-        transition: height 0s, opacity 0s, visibility 0s;
-      }
-    }
-
-    .product-menu-header-link:hover {
-      // fix for text-gray utility class not being !important
-      color: $gray;
-    }
-    .product-menu-flyout {
-      left: 50%;
-      width: 310px; // approx width of four columns at 992px breakpoint / 960px max width
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-      transform: translateX(-50%);
-    }
-    // stylelint-disable-next-line selector-class-pattern
-    .product-menu-flyout--large {
-      left: 0;
-      width: 775px; // approx width of ten columns at 992px breakpoint / 960px max width
-      transform: none;
-    }
-
-    // ensure the last flyout on small desktop doesn't go off the screen
-    .nav-item:last-child .product-menu-flyout {
-      transform: translateX(-75%);
-    }
-
-    .account-menu {
-      right: 50%;
-      left: auto;
-      transform: translateX(25%);
-    }
-
-    // Show dropdown and hover colors on nav-item hover in desktop view
-    // Show top headers up chevron icon on nav-item hover
-    .nav-item:hover {
-      .dropdown-menu {
-        height: auto;
-        pointer-events: auto;
-        visibility: visible;
-        opacity: 1;
-        transition-delay: $nav-hover-delay;
-      }
-
-      // black bar at bottom of header link when product menu is up
-      .product-menu-header-text::after {
-        position: absolute;
-        right: 0;
-        bottom: -1px;
-        left: 0;
-        z-index: 1001;
-        height: 2px;
-        content: "";
-        background: $gray;
-        border-style: none;
-      }
-
-      .top-header-icon {
-        transition-delay: $nav-hover-delay;
-        transform: rotate(180deg);
-      }
-    }
-
-    .nav-item.top-header {
-      user-select: none;
-    }
-
-    // Top header hover should be gray
-    .nav-item.top-header:hover {
-      background: $gray-150;
-
-      // Top header menu background should be gray
-      .dropdown-menu {
-        background: $gray-150;
-      }
-    }
-
-    // Position person icon and dropdown menu
-    .icon-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    // Fix top header logged in/logged out state section with a fixed width
-    .icon-dropdown .container {
-      width: 225px;
-    }
-
-    // Fix width of the dropdown menu on person icon hover
-    .icon-dropdown .dropdown-menu {
-      width: 250px;
-    }
-
-    // style account menu name with truncation
-    .icon-dropdown .dropdown-toggle .first-name {
-      max-width: 180px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .dropdown-menu-primary {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .dropdown-list {
-      display: flex;
-      flex-wrap: wrap;
-      padding-left: 0;
-      list-style: none;
-    }
-
-    .dropdown-item {
-      // stylelint-disable-next-line declaration-no-important
-      white-space: normal !important;
-    }
-
-    .dropdown-cta-bottom {
-      align-items: center;
-      height: 78px;
-      color: $white;
-      background-color: $gray-900;
-
-      // stylelint-disable-next-line selector-class-pattern
-      .dropdown-cta-bottom--inner {
-        display: flex;
-        justify-content: space-between;
-        margin: 0 auto;
-      }
-
-      .btn-lg {
-        width: 250px;
-      }
-    }
-  }
-
-  @include media-breakpoint-up(xl) {
-    .product-menu-flyout {
-      width: 370px;  // approx width of four columns at 1200px breakpoint / 1140px max width
-    }
-    // stylelint-disable-next-line selector-class-pattern
-    .product-menu-flyout--large {
-      width: 832px; // approx width of nine columns at 1200px breakpoint / 1140px max width
-    }
-
-    // ensure the last flyout on small desktop doesn't go off the screen
-    .nav-item:last-child .product-menu-flyout {
-      transform: translateX(-60%);
-    }
-  }
-
-  @include media-breakpoint-up(xxl) {
-    // reset the last child back to normal
-    .nav-item:last-child .product-menu-flyout {
-      transform: translateX(-50%);
-    }
-    // allow the large flyout to be slightly more centered on its trigger link
-    // stylelint-disable-next-line selector-class-pattern
-    .product-menu-flyout--large {
-      transform: translateX(-25%);
-    }
-  }
-
-  // A lot of custom styles for the mobile navigation menu
-  @media only screen and (max-width: $mobile-max-width) {
-    .nav-es-global {
-      // Set collapsed navbar height
-      height: 56px;
-    }
-
-    // Force navigation items to align to the top and avoid conflict with other components on the page
-    // Ensure menus are visible above overlay
-    .top-level-menu {
-      z-index: 1000;
-    }
-
-    // Make primary menu scrollable
-    // Add padding to account for iOS menus
-    .navbar-nav {
-      padding-bottom: 120px;
-      overflow-y: scroll;
-    }
-
-    // Allow the dropdowns to overlap each other
-    .dropdown {
-      position: unset;
-    }
-
-    // Make menu scrollable, prevent it from making the page longer
-    // Prevent horizontal scrolling on menu
-    .dropdown-menu {
-      // stylelint-disable-next-line declaration-no-important
-      position: static !important;
-      // stylelint-disable-next-line declaration-no-important
-      display: flex !important;
-      // stylelint-disable-next-line function-disallowed-list
-      max-height: calc(100% - 64px);
-      padding: 0;
-      overflow-x: hidden;
-      overflow-y: scroll;
-
-      // Add padding below last menu element (not full page drop-downs) to account for iOS menus
-      &:not(.dropdown-menu-full-page) li:last-child {
-        margin-bottom: 120px;
-      }
-    }
-
-    .dropdown-menu-primary {
-      flex-direction: column;
-      width: 100%;
-      border-style: none;
-
-      .nav-item:not(.nav-link) {
-        margin: 0;
-      }
-    }
-
-    .dropdown-list {
-      padding: 0;
-    }
-
-    // Prevent horizontal scrolling on menu
-    .dropdown-menu-full-page {
-      // stylelint-disable-next-line declaration-no-important
-      display: flex !important;
-      border-style: none;
-    }
-
-    // Style the label as a proper tappable block target
-    .dropdown-label {
-      display: block;
-      cursor: pointer;
-    }
-
-    // allow longer items (e.g. news article titles) to wrap on mobile
-    .dropdown-item {
-      white-space: normal;
-    }
-
-    // Add padding below featured article to account for iOS menus
-    .dropdown-cta-right {
-      padding-bottom: 120px;
-    }
-
-    // Show chevrons on mobile
-    .expand-icon {
-      display: flex;
-    }
-
-    // Style rows in hamburger, add bottom border
-    .nav-item {
-      align-items: center;
-      height: 64px;
-      margin: 0 15px;
-    }
-    .nav-item-border-mobile {
-      // stylelint-disable-next-line declaration-no-important
-      border-bottom: 1px solid $gray-300 !important;
-    }
-
-    // Override default margin to allow centered titles
-    .dropdown-label.nav-link {
-      margin-bottom: 0;
-    }
-
-    // Style the menu for mobile navigation bit but use translate to keep it off screen
-    .menu {
-      position: absolute;
-      top: 0;
-      left: 0;
-      flex-direction: column;
-      width: 100%;
-      min-width: 300px;
-      max-width: 540px;
-      height: 100%;
-      min-height: 100vh;
-      max-height: 100%;
-      background: #fff;
-      // stylelint-disable-next-line property-disallowed-list
-      transition: transform 0.3s;
-      transform: translate3d(-100%, 0, 0);
-
-      // Override BS4 defaults for consistency
-      ul,
-      li {
-        display: block;
-        width: 100%;
-        border-style: none;
-      }
-      li,
-      .nav-item {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
-    }
-
-    // Avoid top level nav's subtopics level menu from laying on its topic level menu
-    .submenu {
-      position: fixed;
-      z-index: 2;
-
-      ul {
-        // stylelint-disable-next-line function-disallowed-list
-        max-height: calc(100% - 64px);
-        overflow-x: hidden;
-        overflow-y: scroll;
-
-        li:last-child {
-          margin-bottom: 120px;
-        }
-      }
-    }
-
-    // The menu after any checked checkboxes is translated on screen
-    .menu-checkbox:checked + .menu {
-      transform: translate3d(0, 0, 0);
-    }
-
-    // The menu header
-    .menu-header {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: 64px;
-      max-height: 64px;
-      font-weight: bolder;
-      border-bottom: 1px solid $gray-300;
-    }
-
-    // This is a generic placeholder button for open/close/back in the mobile menu
-    .menu-toggle {
-      display: flex;
-      vertical-align: center;
-      cursor: pointer;
-    }
-
-    .product-menu-flyout-see-all {
-      text-decoration: underline;
-      letter-spacing: 0.08em;
-    }
   }
 }
