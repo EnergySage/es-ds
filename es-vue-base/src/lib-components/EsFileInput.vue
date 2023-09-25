@@ -208,7 +208,7 @@ export default {
         async verifyMimeType(file) {
             // If a folder then trigger fileTypeError
             if (file.type === '') {
-                this.$emit('fileTypeError', file.name);
+                this.$emit('fileIsAFolderError');
             }
             return new Promise((resolve, reject) => {
                 const fileReader = new FileReader();
