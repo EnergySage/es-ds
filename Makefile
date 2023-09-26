@@ -18,9 +18,9 @@ build:
 publish:
 	npx lerna publish
 
-.PHONY: publish-beta
-publish-beta:
-	npx lerna publish --canary --preid beta
+.PHONY: publish-next
+publish-next:
+	npx lerna publish --tag-version-prefix="next"
 
 .PHONY: symlink
 symlink:
