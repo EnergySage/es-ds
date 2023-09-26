@@ -1,0 +1,144 @@
+@use "../variables";
+@use "../../variables" as v;
+
+// Wrapper
+.b-skeleton-wrapper {
+  cursor: variables.$b-skeleton-loading-cursor;
+}
+
+// Base
+.b-skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: variables.$b-skeleton-background-color;
+  cursor: variables.$b-skeleton-loading-cursor;
+  // https://gist.github.com/ayamflow/b602ab436ac9f05660d9c15190f4fd7b
+  mask-image: radial-gradient(white, black);
+
+  // Use `::before` since `::after` is used for the wave-animation
+  &::before {
+    content: "\00a0";
+  }
+}
+
+// Text
+.b-skeleton-text {
+  height: v.$font-size-base;
+  margin-bottom: variables.$b-skeleton-text-spacing;
+
+  @if v.$enable-rounded {
+    border-radius: 0.25rem;
+  }
+}
+
+// Button
+.b-skeleton-button {
+  width: variables.$b-skeleton-btn-width;
+  padding: v.$btn-padding-y v.$btn-padding-x;
+  font-size: v.$btn-font-size;
+  line-height: v.$btn-line-height;
+
+  @if v.$enable-rounded {
+    border-radius: v.$btn-border-radius;
+  }
+}
+
+// Avatar
+.b-skeleton-avatar {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+}
+
+// Input
+.b-skeleton-input {
+  height: v.$input-height;
+  padding: v.$input-padding-y v.$input-padding-x;
+  line-height: v.$input-line-height;
+  border: v.$input-border-color solid v.$input-border-width;
+
+  @if v.$enable-rounded {
+    border-radius: v.$input-border-radius;
+  }
+}
+
+// Icon
+.b-skeleton-icon-wrapper {
+  svg {
+    color: variables.$b-skeleton-background-color;
+  }
+}
+
+// Image
+.b-skeleton-img {
+  height: 100%;
+  width: 100%;
+}
+
+// Wave animation
+.b-skeleton-animate-wave {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+
+    background: variables.$b-skeleton-animate-wave-background;
+    animation: b-skeleton-animate-wave variables.$b-skeleton-animation-duration linear infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      background: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes b-skeleton-animate-wave {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+// Fade animation
+.b-skeleton-animate-fade {
+  animation: b-skeleton-animate-fade (variables.$b-skeleton-animation-duration * 0.5) ease-in-out alternate
+    infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes b-skeleton-animate-fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+// Throb animation
+.b-skeleton-animate-throb {
+  animation: b-skeleton-animate-throb (variables.$b-skeleton-animation-duration * 0.5) ease-in alternate
+    infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes b-skeleton-animate-throb {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.975);
+  }
+}
