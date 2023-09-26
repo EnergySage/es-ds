@@ -105,23 +105,23 @@ select.form-control {
 // For use with horizontal and inline forms, when you need the label (or legend)
 // text to align with the form controls.
 .col-form-label {
-  padding-top: add(variables.$input-padding-y, variables.$input-border-width);
-  padding-bottom: add(variables.$input-padding-y, variables.$input-border-width);
+  padding-top: functions.add(variables.$input-padding-y, variables.$input-border-width);
+  padding-bottom: functions.add(variables.$input-padding-y, variables.$input-border-width);
   margin-bottom: 0; // Override the `<label>/<legend>` default
   @include rfs.font-size(inherit); // Override the `<legend>` default
   line-height: variables.$input-line-height;
 }
 
 .col-form-label-lg {
-  padding-top: add(variables.$input-padding-y-lg, variables.$input-border-width);
-  padding-bottom: add(variables.$input-padding-y-lg, variables.$input-border-width);
+  padding-top: functions.add(variables.$input-padding-y-lg, variables.$input-border-width);
+  padding-bottom: functions.add(variables.$input-padding-y-lg, variables.$input-border-width);
   @include rfs.font-size(variables.$input-font-size-lg);
   line-height: variables.$input-line-height-lg;
 }
 
 .col-form-label-sm {
-  padding-top: add(variables.$input-padding-y-sm, variables.$input-border-width);
-  padding-bottom: add(variables.$input-padding-y-sm, variables.$input-border-width);
+  padding-top: functions.add(variables.$input-padding-y-sm, variables.$input-border-width);
+  padding-bottom: functions.add(variables.$input-padding-y-sm, variables.$input-border-width);
   @include rfs.font-size(variables.$input-font-size-sm);
   line-height: variables.$input-line-height-sm;
 }

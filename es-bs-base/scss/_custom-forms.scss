@@ -194,8 +194,8 @@
     }
 
     &::after {
-      top: add((variables.$font-size-base * variables.$line-height-base - variables.$custom-control-indicator-size) * .5, variables.$custom-control-indicator-border-width * 2);
-      left: add(-(variables.$custom-switch-width + variables.$custom-control-gutter), variables.$custom-control-indicator-border-width * 2);
+      top: functions.add((variables.$font-size-base * variables.$line-height-base - variables.$custom-control-indicator-size) * .5, variables.$custom-control-indicator-border-width * 2);
+      left: functions.add(-(variables.$custom-switch-width + variables.$custom-control-gutter), variables.$custom-control-indicator-border-width * 2);
       width: variables.$custom-switch-indicator-size;
       height: variables.$custom-switch-indicator-size;
       background-color: variables.$custom-control-indicator-border-color;
