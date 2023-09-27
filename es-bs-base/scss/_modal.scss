@@ -63,10 +63,10 @@
 
 .modal-dialog-scrollable {
   display: flex; // IE10/11
-  max-height: subtract(100%, variables.$modal-dialog-margin * 2);
+  max-height: functions.subtract(100%, variables.$modal-dialog-margin * 2);
 
   .modal-content {
-    max-height: subtract(100vh, variables.$modal-dialog-margin * 2); // IE10/11
+    max-height: functions.subtract(100vh, variables.$modal-dialog-margin * 2); // IE10/11
     overflow: hidden;
   }
 
@@ -83,12 +83,12 @@
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: subtract(100%, variables.$modal-dialog-margin * 2);
+  min-height: functions.subtract(100%, variables.$modal-dialog-margin * 2);
 
   // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
   &::before {
     display: block; // IE10
-    height: subtract(100vh, variables.$modal-dialog-margin * 2);
+    height: functions.subtract(100vh, variables.$modal-dialog-margin * 2);
     height: min-content; // Reset height to 0 except on IE
     content: "";
   }

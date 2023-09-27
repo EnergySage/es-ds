@@ -1,6 +1,7 @@
 @use "mixins/border-radius";
 @use "variables";
 @use "vendor/rfs";
+@use "functions";
 
 .toast {
   // Prevents from shrinking in IE11, when in a flex container
@@ -42,7 +43,7 @@
   background-color: variables.$toast-header-background-color;
   background-clip: padding-box;
   border-bottom: variables.$toast-border-width solid variables.$toast-header-border-color;
-  @include border-radius.border-top-radius(subtract(variables.$toast-border-radius, variables.$toast-border-width));
+  @include border-radius.border-top-radius(functions.subtract(variables.$toast-border-radius, variables.$toast-border-width));
 }
 
 .toast-body {

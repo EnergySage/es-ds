@@ -846,7 +846,7 @@ $custom-radio-indicator-icon-checked:           url("data:image/svg+xml,<svg xml
 
 $custom-switch-width:                           $custom-control-indicator-size * 1.75 !default;
 $custom-switch-indicator-border-radius:         $custom-control-indicator-size * .5 !default;
-$custom-switch-indicator-size:                  subtract($custom-control-indicator-size, $custom-control-indicator-border-width * 4) !default;
+$custom-switch-indicator-size:                  functions.subtract($custom-control-indicator-size, $custom-control-indicator-border-width * 4) !default;
 
 $custom-select-padding-y:           $input-padding-y !default;
 $custom-select-padding-x:           $input-padding-x !default;
@@ -1047,7 +1047,7 @@ $dropdown-bg:                       $white !default;
 $dropdown-border-color:             rgba($black, .15) !default;
 $dropdown-border-radius:            0 !default;
 $dropdown-border-width:             $border-width !default;
-$dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width) !default;
+$dropdown-inner-border-radius:      functions.subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-bg:               $gray-200 !default;
 $dropdown-divider-margin-y:         $nav-divider-margin-y !default;
 $dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
@@ -1116,7 +1116,7 @@ $card-spacer-x:                     1.25rem !default;
 $card-border-width:                 $border-width !default;
 $card-border-radius:                1rem !default;
 $card-border-color:                 rgba($black, .125) !default;
-$card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
+$card-inner-border-radius:          functions.subtract($card-border-radius, $card-border-width) !default;
 $card-cap-bg:                       $white !default;
 $card-cap-color:                    null !default;
 $card-height:                       null !default;
@@ -1166,7 +1166,7 @@ $popover-max-width:                 276px !default;
 $popover-border-width:              0 !default;
 $popover-border-color:              rgba($black, .2) !default;
 $popover-border-radius:             $border-radius-lg !default;
-$popover-inner-border-radius:       subtract($popover-border-radius, $popover-border-width) !default;
+$popover-inner-border-radius:       functions.subtract($popover-border-radius, $popover-border-width) !default;
 $popover-box-shadow:                0 .25rem .5rem rgba($black, .2) !default;
 
 $popover-header-bg:                 $popover-bg !default;
@@ -1239,7 +1239,7 @@ $modal-content-bg:                  $white !default;
 $modal-content-border-color:        null !default;
 $modal-content-border-width:        0 !default;
 $modal-content-border-radius:       $border-radius-lg !default;
-$modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width) !default;
+$modal-content-inner-border-radius: functions.subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       0 !default;
 $modal-content-box-shadow-sm-up:    0 !default;
 
