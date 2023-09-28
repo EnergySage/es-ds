@@ -338,7 +338,8 @@ a:hover {
 }
 
 .image-preview {
+        float: left;
     height: 200%;
-    float: left;
 }
+
 </style>
