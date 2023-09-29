@@ -12,6 +12,8 @@ import babel from '@rollup/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
 import terser from '@rollup/plugin-terser';
 import minimist from 'minimist';
+import bundleScss from 'rollup-plugin-bundle-scss';
+
 import {
     main as mainFileName,
     browser as browserFileName,
@@ -48,23 +50,23 @@ const baseConfig = {
         },
         vue: {
             css: true,
-            style: {
-                postcssPlugins: [autoprefixer()],
-                preprocessOptions: {
-                    scss: {
-                        importer: [
-                            // TODO: There has to be a better way to do this
-                            // We are trying to get '~' to resolve to the relative node_modules directory
-                            function scssImporter(url) {
-                                return {
-                                    file: url
-                                        .replace(/^~/, `${path.resolve(projectRoot)}/node_modules/`),
-                                };
-                            },
-                        ],
-                    },
-                },
-            },
+            // style: {
+            //     postcssPlugins: [autoprefixer()],
+            //     // preprocessOptions: {
+            //     //     scss: {
+            //     //         importer: [
+            //     //             // TODO: There has to be a better way to do this
+            //     //             // We are trying to get '~' to resolve to the relative node_modules directory
+            //     //             function scssImporter(url) {
+            //     //                 return {
+            //     //                     file: url
+            //     //                         .replace(/^~/, `${path.resolve(projectRoot)}/node_modules/`),
+            //     //                 };
+            //     //             },
+            //     //         ],
+            //     //     },
+            //     // },
+            // },
             template: {
                 isProduction: true,
             },
@@ -74,6 +76,7 @@ const baseConfig = {
                 extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
             }),
             commonjs(),
+            bundleScss(),
         ],
         babel: {
             exclude: 'node_modules/**',

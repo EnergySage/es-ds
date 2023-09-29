@@ -110,7 +110,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@import '@energysage/es-bs-base/scss/includes';
 
 /* rotate the chevron when expanded */
 .EsAccordion-heading--visible {

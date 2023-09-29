@@ -11,13 +11,8 @@
 </template>
 
 <script lang="js">
-import { BTable } from 'bootstrap-vue';
-
 export default {
     name: 'EsDataTable',
-    components: {
-        BTable,
-    },
     props: {
         fields: {
             type: Array,
@@ -96,26 +91,24 @@ export default {
 @import '~@energysage/es-bs-base/scss/variables';
 
 .data-table {
-    ::v-deep th {
+    :deep(th) {
         font-weight: $font-weight-bold;
     }
 
-    ::v-deep {
-        td, th {
-            border-right: 1px solid $gray-300;
-            padding-block: map.get($spacers, 50);
+    :deep(td, th) {
+        border-right: 1px solid $gray-300;
+        padding-block: map.get($spacers, 50);
 
-            .table-b-table-default {
-                color: $black;
-            }
+        .table-b-table-default {
+            color: $black;
+        }
 
-            &:last-of-type {
-                border-right: 0;
-            }
+        &:last-of-type {
+            border-right: 0;
         }
     }
 
-    ::v-deep .table thead th {
+    :deep(.table thead th) {
         background-color: $gray-200;
         border-bottom: 0;
         border-top: 0;
@@ -127,7 +120,7 @@ export default {
         }
     }
 
-    ::v-deep tbody tr {
+    :deep(tbody tr) {
         color: $black;
 
         .table-b-table-default {
@@ -135,7 +128,7 @@ export default {
         }
     }
 
-    ::v-deep tbody tr:nth-of-type(odd) {
+    :deep(tbody tr:nth-of-type(odd)) {
         background-color: $white;
 
         .table-b-table-default {
@@ -143,7 +136,7 @@ export default {
         }
     }
 
-    ::v-deep tbody tr:nth-of-type(even) {
+    :deep(tbody tr:nth-of-type(even)) {
         background-color: $gray-150;
 
         .table-b-table-default {
