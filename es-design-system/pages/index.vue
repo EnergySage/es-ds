@@ -39,6 +39,7 @@
                 </nuxt-link>
             </li>
         </ul>
+        <es-data-table />
     </div>
 </template>
 

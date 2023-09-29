@@ -25,7 +25,7 @@
             <b-row>
                 <b-col
                     cols="12">
-                    <Nuxt />
+                    <slot />
                 </b-col>
             </b-row>
         </b-container>

@@ -1,7 +1,7 @@
 import path from 'path';
 import { version } from './package.json';
 
-export default {
+export default defineNuxtConfig({
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
         meta: [
@@ -60,7 +60,7 @@ export default {
     },
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
-        '@/assets/scss/main.scss',
+        '@energysage/es-bs-base/dist/css/bootstrap.min.css',
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -83,10 +83,7 @@ export default {
     components: [{ path: '~/components', extensions: ['vue'] }],
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
-        // https://i18n.nuxtjs.org
-        '@nuxtjs/i18n',
-        // https://go.nuxtjs.dev/axios
-        '@nuxtjs/axios',
+        '@bootstrap-vue-next/nuxt',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -135,4 +132,4 @@ export default {
         ],
         componentPlugins: ['VBTogglePlugin'],
     },
-};
+});

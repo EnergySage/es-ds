@@ -39,7 +39,7 @@ export default {
 </script>
 ```
 
-nuxt.config.js:
+nuxt.config.ts:
 
 ```javascript
     /** 

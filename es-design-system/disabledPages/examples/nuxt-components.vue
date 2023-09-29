@@ -37,7 +37,7 @@
         </p>
         <pre>
             <code>
-nuxt.config.js:
+nuxt.config.ts:
 buildModules: [
     '@energysage/es-vue-base/nuxt'
 ],
@@ -72,7 +72,7 @@ buildModules: [
             <code>
 $ npm install -D null-loader
 
-nuxt.config.js:
+nuxt.config.ts:
  build: {
     extend(config) {
         // Prevents bootstrap-vue icons from being unitentionally included

@@ -37,7 +37,7 @@
                     Examples
                 </b-link>
             </div>
-            <DsExamplesList />
+<!--            <DsExamplesList />-->
         </li>
     </ul>
 </template>
