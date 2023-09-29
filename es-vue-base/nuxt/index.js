@@ -14,5 +14,9 @@ export default defineNuxtModule({
             name: 'EsButton',
             filePath: resolver.resolve('../src/lib-components/EsButton'),
         }));
+        addComponent(({
+            name: 'IconChevronRight',
+            filePath: resolver.resolve('../src/lib-icons/icon-chevron-right'),
+        }));
     },
 });
