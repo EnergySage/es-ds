@@ -3,8 +3,7 @@
         :class="{ 'inline': inline }"
         :variant="computedVariant"
         :size="size"
-        v-bind="$attrs"
-        v-on="$listeners">
+        v-bind="$attrs">
         <!--
             @slot Button Content
             @binding {string} text or html of the button content
@@ -14,13 +13,8 @@
 </template>
 
 <script lang="js">
-import { BButton } from 'bootstrap-vue';
-
 export default {
     name: 'EsButton',
-    components: {
-        BButton,
-    },
     props: {
         /**
          * Button Variant

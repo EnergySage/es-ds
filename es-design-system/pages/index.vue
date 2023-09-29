@@ -39,7 +39,7 @@
                 </nuxt-link>
             </li>
         </ul>
-        <es-data-table />
+        <es-button @click="console.log('hey')">Howdy</es-button>
     </div>
 </template>
 

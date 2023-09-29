@@ -104,6 +104,7 @@
     "url": "git@github.com:EnergySage/es-ds.git"
   },
   "dependencies": {
+    "@nuxt/kit": "^3.7.4",
     "path": "^0.12.7"
   }
 }

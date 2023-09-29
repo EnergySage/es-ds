@@ -84,6 +84,7 @@ export default defineNuxtConfig({
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         '@bootstrap-vue-next/nuxt',
+        '@energysage/es-vue-base/nuxt',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -107,7 +108,7 @@ export default defineNuxtConfig({
     },
 
     // https://bootstrap-vue.org/docs/#nuxtjs-module
-    bootstrapVue: {
+    bootstrapVueNext: {
         bootstrapCSS: false,
         bootstrapVueCSS: false,
         icons: false,
