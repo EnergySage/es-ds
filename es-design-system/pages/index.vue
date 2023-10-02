@@ -39,7 +39,6 @@
                 </nuxt-link>
             </li>
         </ul>
-        <es-button @click="console.log('hey')">Howdy</es-button>
     </div>
 </template>
 

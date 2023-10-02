@@ -1,7 +1,6 @@
 <template>
     <b-breadcrumb
-        v-bind="$attrs"
-        v-on="$listeners" />
+        v-bind="$attrs" />
 </template>
 <script>
 export default {
