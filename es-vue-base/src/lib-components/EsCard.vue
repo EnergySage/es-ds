@@ -3,8 +3,7 @@
         :is="tag"
         class="es-card"
         :class="{ [variant]: true}"
-        v-bind="$attrs"
-        v-on="$listeners">
+        v-bind="$attrs">
         <slot />
     </component>
 </template>

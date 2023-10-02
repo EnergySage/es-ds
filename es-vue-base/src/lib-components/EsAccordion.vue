@@ -43,13 +43,11 @@
 </template>
 
 <script>
-import { BCollapse } from 'bootstrap-vue';
 import IconChevronDown from '../lib-icons/icon-chevron-down.vue';
 
 export default {
     name: 'EsAccordion',
     components: {
-        BCollapse,
         IconChevronDown,
     },
     /**
@@ -103,7 +101,7 @@ export default {
          * @event accordion-toggle
          */
         handleClick() {
-            this.parent.$emit('accordion-toggle', this.id);
+            this.parent.accordionToggled(this.id);
         },
     },
 };

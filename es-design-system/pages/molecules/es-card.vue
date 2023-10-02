@@ -120,8 +120,8 @@ export default {
     async created() {
         if (this.$prism) {
         /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-            const docSource = await import('!raw-loader!./es-card.vue');
-            const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsCard.vue');
+            const docSource = await import('./es-card.vue?raw');
+            const compSource = await import('@energysage/es-vue-base/src/lib-components/EsCard.vue?raw');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
             this.docCode = this.$prism.normalizeCode(docSource.default);

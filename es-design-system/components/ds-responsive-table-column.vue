@@ -57,8 +57,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+@import '@energysage/es-bs-base/scss/bootstrap';
+@import "@energysage/es-bs-base/scss/variables";
 
 .responsive-table-column {
     display: flex;

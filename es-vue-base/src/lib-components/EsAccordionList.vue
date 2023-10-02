@@ -2,7 +2,7 @@
     <div
         class="rounded"
         role="tablist">
-        <slot />
+        <slot @accordion-toggle="accordionToggled" />
     </div>
 </template>
 
@@ -77,13 +77,13 @@ export default {
             this.$emit('input', newValue.length ? newValue[0] : '');
         },
     },
-    /**
-     * Listen for @accordion-toggle event from children EsAccordion components.
-     * They will inject the 'parent' object this component provides and call this.parent.$emit('accordion-toggle').
-     * @emits input
-     */
-    created() {
-        this.$on('accordion-toggle', (id) => {
+    methods: {
+        /**
+         * Listen for @accordion-toggle event from children EsAccordion components.
+         * They will inject the 'parent' object this component provides and call this.parent.$emit('accordion-toggle').
+         * @emits input
+         */
+        accordionToggled(id) {
             if (this.value) {
                 // if we're using v-model, fire the input event and
                 // have the change come via the value watch function
@@ -92,9 +92,7 @@ export default {
                 // if we're not using v-model, toggle the id directly
                 this.toggleId(id);
             }
-        });
-    },
-    methods: {
+        },
         toggleId(id) {
             if (!id) return;
 
