@@ -2,7 +2,7 @@
     <div
         class="rounded"
         role="tablist">
-        <slot @accordion-toggle="accordionToggled" />
+        <slot />
     </div>
 </template>
 
