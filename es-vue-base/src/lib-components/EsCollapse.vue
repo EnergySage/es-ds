@@ -41,14 +41,13 @@
 </template>
 
 <script lang="js">
-import { BCollapse } from 'bootstrap-vue';
 import IconChevronDown from '../lib-icons/icon-chevron-down.vue';
 import EsButton from './EsButton.vue';
 
 export default {
     name: 'EsCollapse',
     components: {
-        EsButton, BCollapse, IconChevronDown,
+        EsButton, IconChevronDown,
     },
     model: {
         prop: 'visible',

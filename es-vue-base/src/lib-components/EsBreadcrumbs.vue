@@ -4,18 +4,13 @@
         v-on="$listeners" />
 </template>
 <script>
-import { BBreadcrumb } from 'bootstrap-vue';
-
 export default {
     name: 'EsBreadcrumb',
-    components: {
-        BBreadcrumb,
-    },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@import '@energysage/es-bs-base/scss/includes';
 
 .breadcrumb {
     .active span {

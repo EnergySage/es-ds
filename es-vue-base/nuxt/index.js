@@ -1,22 +1,20 @@
 import { addComponent, defineNuxtModule, createResolver } from '@nuxt/kit';
-import Vue from 'vue';
-// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
-import install from '..';
+import fs from 'fs';
+import path from 'path';
 
 export default defineNuxtModule({
     setup(options, nuxt) {
         const resolver = createResolver(import.meta.url);
-        addComponent(({
-            name: 'EsDataTable',
-            filePath: resolver.resolve('../src/lib-components/EsDataTable'),
-        }));
-        addComponent(({
-            name: 'EsButton',
-            filePath: resolver.resolve('../src/lib-components/EsButton'),
-        }));
-        addComponent(({
-            name: 'IconChevronRight',
-            filePath: resolver.resolve('../src/lib-icons/icon-chevron-right'),
-        }));
+        for (const directory of ['../src/lib-components', '../src/lib-icons']) {
+            const filenames = fs.readdirSync(`${__dirname}/${directory}`);
+            const filteredFiles = filenames.filter((file) => path.extname(file).toLowerCase() === '.vue');
+            filteredFiles.forEach((file) => {
+                const fileWithoutExt = file.slice(0, -'.vue'.length);
+                addComponent(({
+                    name: fileWithoutExt,
+                    filePath: resolver.resolve(`${directory}/${fileWithoutExt}`),
+                }));
+            });
+        }
     },
 });
