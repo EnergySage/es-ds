@@ -1,7 +1,7 @@
 import 'clipboard'; // For the copy to clipboard plugin
 import Prism from 'prismjs';
-import Vue from 'vue';
-import DsDocSource from '@/components/ds-doc-source.vue';
+// import Vue from 'vue';
+// import DsDocSource from '@/components/ds-doc-source.vue';
 
 import 'prismjs/themes/prism-okaidia.css';
 import 'prismjs/components/prism-scss';
@@ -46,15 +46,16 @@ Prism.plugins.NormalizeWhitespace.setDefaults({
     'right-trim': true,
 });
 
-Vue.component('DsDocSource', DsDocSource);
+//Vue.component('DsDocSource', DsDocSource);
 
-export default async (ctx, inject) => {
+export default defineNuxtPlugin(async nuxtApp => {
     const normalizer = Prism.plugins.NormalizeWhitespace;
 
     const prism = {
         Prism,
         normalizer,
         normalizeCode: (code, lang = 'javascript') => {
+            console.log(code)
             const cleanCode = normalizer.normalize(code);
 
             return Prism.highlight(cleanCode, Prism.languages[lang]);
@@ -65,6 +66,11 @@ export default async (ctx, inject) => {
             });
         },
     };
-    ctx.$prism = prism;
-    inject('prism', prism);
-};
+    return {
+        provide: {
+            prism,
+        },
+    };
+    // ctx.$prism = prism;
+    // inject('prism', prism);
+});
