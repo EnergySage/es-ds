@@ -25,8 +25,8 @@
         <b-collapse
             :id="id"
             v-model="expanded"
-            data-testid="collapse"
-            v-on="$listeners">
+            v-bind="$attrs"
+            data-testid="collapse">
             <slot />
         </b-collapse>
 

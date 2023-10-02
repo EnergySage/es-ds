@@ -55,7 +55,6 @@ export default defineNuxtPlugin(async nuxtApp => {
         Prism,
         normalizer,
         normalizeCode: (code, lang = 'javascript') => {
-            console.log(code)
             const cleanCode = normalizer.normalize(code);
 
             return Prism.highlight(cleanCode, Prism.languages[lang]);
