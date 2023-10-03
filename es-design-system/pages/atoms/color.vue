@@ -292,14 +292,14 @@
 </template>
 
 <script>
-import sassBrandColors from '@energysage/es-bs-base/scss/variables/_brand-colors.scss';
-import sassCyans from '@energysage/es-bs-base/scss/variables/_cyans.scss';
-import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.scss';
-import sassOranges from '@energysage/es-bs-base/scss/variables/_oranges.scss';
-import sassPinks from '@energysage/es-bs-base/scss/variables/_pinks.scss';
-import sassTeals from '@energysage/es-bs-base/scss/variables/_teals.scss';
-import sassYellows from '@energysage/es-bs-base/scss/variables/_yellows.scss';
-import sassVariants from '@energysage/es-bs-base/scss/variables/_variants.scss';
+import sassBrandColors from '@energysage/es-bs-base/scss/variables/_brand-colors.module.scss';
+import sassCyans from '@energysage/es-bs-base/scss/variables/_cyans.module.scss';
+import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.module.scss';
+import sassOranges from '@energysage/es-bs-base/scss/variables/_oranges.module.scss';
+import sassPinks from '@energysage/es-bs-base/scss/variables/_pinks.module.scss';
+import sassTeals from '@energysage/es-bs-base/scss/variables/_teals.module.scss';
+import sassYellows from '@energysage/es-bs-base/scss/variables/_yellows.module.scss';
+import sassVariants from '@energysage/es-bs-base/scss/variables/_variants.module.scss';
 
 export default {
     name: 'AtomsColor',
@@ -364,7 +364,7 @@ export default {
     async created() {
         if (this.$prism) {
         /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-            const docSource = await import('!raw-loader!./color.vue');
+            const docSource = await import('./color.vue?raw');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
             this.docCode = this.$prism.normalizeCode(docSource.default);

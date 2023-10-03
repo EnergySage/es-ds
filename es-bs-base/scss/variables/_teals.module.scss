@@ -1,0 +1,16 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@import "../functions";
+@import "../mixins";
+@import "../variables";
+
+:export {
+  teal-100: $teal-100;
+  teal-200: $teal-200;
+  teal-300: $teal-300;
+  teal-400: $teal-400;
+  teal-500: $teal-500;
+  teal-600: $teal-600;
+  teal-700: $teal-700;
+  teal-800: $teal-800;
+}
