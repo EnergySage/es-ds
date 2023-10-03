@@ -253,19 +253,6 @@ $theme-colors: map.merge(
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
 
-// @use "functions" with (
-//     $escaped-characters : $escaped-characters,
-//     $yiq-text-dark : $yiq-text-dark,
-//     $yiq-text-light : $yiq-text-light ,
-//     $yiq-contrasted-threshold : $yiq-contrasted-threshold,
-//     $colors: $colors,
-//     $theme-colors: $theme-colors,
-//     $grays: $grays,
-//     $black: $black,
-//     $white: $white,
-//     $theme-color-interval: $theme-color-interval
-// );
-
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
