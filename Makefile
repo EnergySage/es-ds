@@ -18,10 +18,6 @@ build:
 publish:
 	npx lerna publish
 
-.PHONY: publish-next
-publish-next:
-	npx lerna publish --tag-version-prefix="next"
-
 .PHONY: symlink
 symlink:
 	npx lerna bootstrap

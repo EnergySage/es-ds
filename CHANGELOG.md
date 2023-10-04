@@ -16,13 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Upgraded `es-bs-base` SASS compiler from `node-sass` to `dart-sass`
+- **Breaking:** Upgraded `es-bs-base` SASS compiler from `node-sass` to `dart-sass`
 - Refactored all SCSS files to use `@use` or `@forward` instead of the
   deprecated `@import` feature
 - Dropped [fusv](https://www.npmjs.com/package/find-unused-sass-variables) linting given
 - Dropped `stylelint` in `es-bs-base`, as it's different from other projects
-
-### Removed
 
 ## [0.25.16] - 2023-09-19
 
