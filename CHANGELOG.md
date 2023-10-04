@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.1.2-alpha.0] - 2023-10-03
+## [1.1.4] - 2023-10-03
 
 ### Added
 
@@ -813,7 +813,7 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
-[1.1.2-alpha.0]: https://github.com/EnergySage/es-ds/compare/v0.25.16...next1.1.2-alpha.0
+[1.1.4]: https://github.com/EnergySage/es-ds/compare/v0.25.16...v1.1.4
 [0.25.16]: https://github.com/EnergySage/es-ds/compare/v0.25.15...v0.25.16
 [0.25.15]: https://github.com/EnergySage/es-ds/compare/v0.25.14...v0.25.15
 [0.25.14]: https://github.com/EnergySage/es-ds/compare/v0.25.13...v0.25.14
