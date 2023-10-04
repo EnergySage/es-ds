@@ -2,7 +2,7 @@
     <div>
         <b-navbar
             class="mb-3"
-            type="dark"
+            data-bs-theme="dark"
             variant="primary">
             <b-navbar-nav>
                 <b-nav-item @click="sidebarOpen = !sidebarOpen">
