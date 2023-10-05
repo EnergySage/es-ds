@@ -1,6 +1,6 @@
 {
     "name": "es-design-system",
-    "version": "0.25.16",
+    "version": "1.1.4",
     "private": true,
     "scripts": {
         "dev": "nuxt",
@@ -16,8 +16,8 @@
     },
     "prettier": "eslint-config-energysage/prettier",
     "dependencies": {
-        "@energysage/es-bs-base": "^0.25.2",
-        "@energysage/es-vue-base": "^0.25.16",
+        "@energysage/es-bs-base": "^1.1.4",
+        "@energysage/es-vue-base": "^1.1.4",
         "@nuxtjs/axios": "^5.13.6",
         "@nuxtjs/i18n": "^7.3.1",
         "bootstrap-vue": "^2.23.1",
@@ -38,7 +38,7 @@
         "@babel/eslint-parser": "^7.22.10",
         "@babel/preset-env": "^7.22.10",
         "@nuxtjs/eslint-config": "^12.0.0",
-        "@nuxtjs/eslint-module": "^4.1.0",
+        "@nuxtjs/eslint-module": "^3.1.0",
         "@nuxtjs/style-resources": "^1.2.1",
         "@nuxtjs/stylelint-module": "^4.2.1",
         "@nuxtjs/svg": "^0.4.0",

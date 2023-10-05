@@ -107,10 +107,11 @@ export default {
 
 <style lang="scss">
 /* stylelint-disable scss/dollar-variable-pattern */
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 @import '~vue-slider-component/lib/theme/default';
+
 $railBorderRadius: 9px;
-$dotBgColor: $white;
+$dotBgColor: variables.$white;
 
 @import '~vue-slider-component/lib/styles/dot';
 @import '~vue-slider-component/lib/styles/mark';
@@ -120,7 +121,7 @@ $dotBgColor: $white;
     padding: 0 !important;
 
     .vue-slider-process {
-        background: linear-gradient(112.58deg, $primary 28%, $indigo 100%);
+        background: linear-gradient(112.58deg, variables.$primary 28%, variables.$indigo 100%);
     }
 
     .vue-slider-rail {
@@ -128,7 +129,7 @@ $dotBgColor: $white;
     }
 
     .vue-slider-dot-handle {
-        border: 5px solid $primary;
+        border: 5px solid variables.$primary;
     }
 
     .slider-tooltip {
@@ -139,8 +140,8 @@ $dotBgColor: $white;
 
     .slider-label {
         color: currentColor;
-        font-size: $font-size-lg;
-        margin-top: $spacer;
+        font-size: variables.$font-size-lg;
+        margin-top: variables.$spacer;
     }
 }
 </style>

@@ -49,17 +49,17 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .es-tabs {
     .nav {
         border-bottom: var(--border-bottom);
-        border-color: $gray-300;
+        border-color: variables.$gray-300;
     }
 
     .nav-link {
-        color: $gray-900;
-        font-weight: $font-weight-normal;
+        color: variables.$gray-900;
+        font-weight: variables.$font-weight-normal;
         margin: 0 2rem -2px;
         padding: 0.25rem 0 0;
 
@@ -69,18 +69,18 @@ export default {
 
         &:hover,
         &:focus {
-            color: $primary;
+            color: variables.$primary;
         }
     }
 
     .active-tab {
         border-bottom: 2px solid;
-        border-color: $primary;
-        color: $primary;
+        border-color: variables.$primary;
+        color: variables.$primary;
 
         &:hover,
         &:focus {
-            color: $primary;
+            color: variables.$primary;
         }
     }
 }

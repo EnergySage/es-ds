@@ -54,6 +54,7 @@
             doc-source="es-design-system/pages/organisms/es-review-list.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsReviewDocs',
@@ -150,10 +151,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/variables' as variables;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .review-col {
-    border-left: 1px solid $border-color;
+    border-left: 1px solid variables.$border-color;
 
     &:first-child {
         border-left: 0;
@@ -161,7 +163,7 @@ export default {
     }
 }
 
-@include media-breakpoint-down(md) {
+@include breakpoints.media-breakpoint-down(md) {
     .review-col {
         border-left: 0;
         padding-left: 0 !important;

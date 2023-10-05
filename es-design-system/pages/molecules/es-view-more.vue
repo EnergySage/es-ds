@@ -21,8 +21,8 @@
             doc-source="es-design-system/pages/molecules/es-view-more.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsViewMoreDocs',
     data() {

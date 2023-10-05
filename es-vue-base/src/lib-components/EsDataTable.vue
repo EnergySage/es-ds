@@ -92,21 +92,21 @@ export default {
 </script>
 <style lang="scss" scoped>
 @use "sass:map";
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import '~@energysage/es-bs-base/scss/variables';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .data-table {
     ::v-deep th {
-        font-weight: $font-weight-bold;
+        font-weight: variables.$font-weight-bold;
     }
 
     ::v-deep {
         td, th {
-            border-right: 1px solid $gray-300;
-            padding-block: map.get($spacers, 50);
+            border-right: 1px solid variables.$gray-300;
+            padding-block: map.get(variables.$spacers, 50);
 
             .table-b-table-default {
-                color: $black;
+                color: variables.$black;
             }
 
             &:last-of-type {
@@ -116,38 +116,38 @@ export default {
     }
 
     ::v-deep .table thead th {
-        background-color: $gray-200;
+        background-color: variables.$gray-200;
         border-bottom: 0;
         border-top: 0;
-        color: $black;
-        padding-block: map.get($spacers, 50);
+        color: variables.$black;
+        padding-block: map.get(variables.$spacers, 50);
 
-        @include media-breakpoint-up(md) {
-            color: $gray-700;
+        @include breakpoints.media-breakpoint-up(md) {
+            color: variables.$gray-700;
         }
     }
 
     ::v-deep tbody tr {
-        color: $black;
+        color: variables.$black;
 
         .table-b-table-default {
-            color: $black;
+            color: variables.$black;
         }
     }
 
     ::v-deep tbody tr:nth-of-type(odd) {
-        background-color: $white;
+        background-color: variables.$white;
 
         .table-b-table-default {
-            background-color: $white;
+            background-color: variables.$white;
         }
     }
 
     ::v-deep tbody tr:nth-of-type(even) {
-        background-color: $gray-150;
+        background-color: variables.$gray-150;
 
         .table-b-table-default {
-            background-color: $gray-150;
+            background-color: variables.$gray-150;
         }
     }
 }

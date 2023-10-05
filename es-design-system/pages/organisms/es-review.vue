@@ -97,13 +97,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .review-wrapper {
     width: 470px;
 }
 
-@include media-breakpoint-down(md) {
+@include breakpoints.media-breakpoint-down(md) {
     .review-wrapper {
         width: 100%;
     }

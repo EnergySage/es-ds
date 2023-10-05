@@ -29,8 +29,8 @@
             doc-source="es-design-system/pages/molecules/es-progress-circle.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsProgressCircleDocs',
     data() {

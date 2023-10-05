@@ -300,16 +300,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .bg-gray-light {
-    background: $gray-400;
+    background: variables.$gray-400;
     text-align: center;
 }
 
 .bg-gray-dark {
-    background: $gray-700;
+    background: variables.$gray-700;
     text-align: center;
 }
 </style>

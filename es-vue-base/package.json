@@ -1,6 +1,6 @@
 {
   "name": "@energysage/es-vue-base",
-  "version": "0.25.16",
+  "version": "1.1.4",
   "private": false,
   "description": "",
   "scripts": {
@@ -30,7 +30,7 @@
     "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.20.2",
-    "@energysage/es-bs-base": "^0.25.2",
+    "@energysage/es-bs-base": "^1.1.4",
     "@rollup/plugin-babel": "^6.0.0",
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-image": "^3.0.0",
@@ -71,6 +71,7 @@
     "rollup": "^2.52.8",
     "rollup-plugin-visualizer": "^5.7.1",
     "rollup-plugin-vue": "^5.1.9",
+    "sass": "^1.66.1",
     "stylelint": "^14.16.1",
     "vue": "^2.7.14",
     "vue-jest": "^3.0.7",
@@ -94,7 +95,7 @@
   "license": "MIT",
   "npmClient": "npm",
   "sideEffects": false,
-  "gitHead": "d50430e59bc4a6ad6b60c04ec39c4aa049539eef",
+  "gitHead": "5fb889dfdb169c5995f96ec110a67331d58e9e92",
   "bugs": {
     "url": "https://github.com/EnergySage/es-ds/issues"
   },

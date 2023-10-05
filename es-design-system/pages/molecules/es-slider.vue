@@ -24,8 +24,8 @@
             doc-source="es-design-system/pages/molecules/es-slider.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsSliderDocs',
     data() {

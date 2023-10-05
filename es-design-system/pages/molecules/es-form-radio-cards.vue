@@ -148,7 +148,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'EsFormRadioCardsDocs',
     data() {

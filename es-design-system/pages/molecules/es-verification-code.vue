@@ -82,8 +82,8 @@
             doc-source="es-design-system/pages/molecules/es-verification-code.vue" />
     </div>
 </template>
-<script>
 
+<script>
 const CHARACTER_COUNT = 5;
 
 export default {

@@ -26,7 +26,9 @@ export default {
 
 <style lang="scss" scoped>
 @use "sass:map";
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+@use '~@energysage/es-bs-base/scss/vendor/rfs';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .EsFormRadioCard {
     /**
@@ -35,13 +37,13 @@ export default {
      * happen to appear earlier in the es-bs-base CSS than the component's utility classes, the component's
      * will win, leaving the user unable to override the desired style)
      */
-    @include font-size($h2-font-size);
-    font-weight: $font-weight-bolder;
-    margin-bottom: map.get($spacers, 100);
-    padding-bottom: map.get($spacers, 200);
-    padding-left: map.get($spacers, 100);
-    padding-right: map.get($spacers, 100);
-    padding-top: map.get($spacers, 200);
+    @include rfs.font-size(variables.$h2-font-size);
+    font-weight: variables.$font-weight-bolder;
+    margin-bottom: map.get(variables.$spacers, 100);
+    padding-bottom: map.get(variables.$spacers, 200);
+    padding-left: map.get(variables.$spacers, 100);
+    padding-right: map.get(variables.$spacers, 100);
+    padding-top: map.get(variables.$spacers, 200);
     text-align: left;
 
     ::v-deep input {
@@ -63,24 +65,24 @@ export default {
 
     &:hover {
         /* needed to override the default background/text color switch for outline button hover state */
-        background-color: $white;
+        background-color: variables.$white;
         /* match design border color on hover, override utility class */
-        border-color: $gray-400 !important;
+        border-color: variables.$gray-400 !important;
         /* needed to override the default background/text color switch for outline button hover state */
-        color: $dark;
+        color: variables.$dark;
     }
 
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
     .show > &.dropdown-toggle {
-        background-color: $white;
+        background-color: variables.$white;
         /* override 'border-light' utility class */
-        border-color: $dark !important;
-        color: $dark;
+        border-color: variables.$dark !important;
+        color: variables.$dark;
     }
 }
 
-@include media-breakpoint-up(lg) {
+@include breakpoints.media-breakpoint-up(lg) {
     .EsFormRadioCard {
         /**
         * overridable styles spelled out in CSS rather than utility classes so users are able to pass in
@@ -88,9 +90,9 @@ export default {
         * happen to appear earlier in the es-bs-base CSS than the component's utility classes, the component's
         * will win, leaving the user unable to override the desired style)
         */
-        @include font-size($h2-font-size-desktop);
-        padding-left: map.get($spacers, 200);
-        padding-right: map.get($spacers, 200);
+        @include rfs.font-size(variables.$h2-font-size-desktop);
+        padding-left: map.get(variables.$spacers, 200);
+        padding-right: map.get(variables.$spacers, 200);
     }
 }
 </style>

@@ -1,3 +1,5 @@
+@use "variables";
+
 //
 // Rotating border
 //
@@ -8,10 +10,10 @@
 
 .spinner-border {
   display: inline-block;
-  width: $spinner-width;
-  height: $spinner-height;
-  vertical-align: $spinner-vertical-align;
-  border: $spinner-border-width solid currentcolor;
+  width: variables.$spinner-width;
+  height: variables.$spinner-height;
+  vertical-align: variables.$spinner-vertical-align;
+  border: variables.$spinner-border-width solid currentcolor;
   border-right-color: transparent;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
@@ -19,9 +21,9 @@
 }
 
 .spinner-border-sm {
-  width: $spinner-width-sm;
-  height: $spinner-height-sm;
-  border-width: $spinner-border-width-sm;
+  width: variables.$spinner-width-sm;
+  height: variables.$spinner-height-sm;
+  border-width: variables.$spinner-border-width-sm;
 }
 
 //
@@ -40,9 +42,9 @@
 
 .spinner-grow {
   display: inline-block;
-  width: $spinner-width;
-  height: $spinner-height;
-  vertical-align: $spinner-vertical-align;
+  width: variables.$spinner-width;
+  height: variables.$spinner-height;
+  vertical-align: variables.$spinner-vertical-align;
   background-color: currentcolor;
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
@@ -51,11 +53,11 @@
 }
 
 .spinner-grow-sm {
-  width: $spinner-width-sm;
-  height: $spinner-height-sm;
+  width: variables.$spinner-width-sm;
+  height: variables.$spinner-height-sm;
 }
 
-@if $enable-prefers-reduced-motion-media-query {
+@if variables.$enable-prefers-reduced-motion-media-query {
   @media (prefers-reduced-motion: reduce) {
     .spinner-border,
     .spinner-grow {

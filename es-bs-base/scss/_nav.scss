@@ -1,3 +1,8 @@
+@use "mixins/border-radius";
+@use "mixins/hover";
+@use "mixins/breakpoints";
+@use "variables";
+
 // Base class
 //
 // Kickstart any navigation component with a set of style resets. Works with
@@ -13,16 +18,16 @@
 
 .nav-link {
   display: block;
-  padding: $nav-link-padding-y $nav-link-padding-x;
-  text-decoration: if($link-decoration == none, null, none);
+  padding: variables.$nav-link-padding-y variables.$nav-link-padding-x;
+  text-decoration: if(variables.$link-decoration == none, null, none);
 
-  @include hover-focus() {
+  @include hover.hover-focus() {
     text-decoration: none;
   }
 
   // Disabled state lightens text
   &.disabled {
-    color: $nav-link-disabled-color;
+    color: variables.$nav-link-disabled-color;
     pointer-events: none;
     cursor: default;
   }
@@ -33,19 +38,19 @@
 //
 
 .nav-tabs {
-  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  border-bottom: variables.$nav-tabs-border-width solid variables.$nav-tabs-border-color;
 
   .nav-link {
-    margin-bottom: -$nav-tabs-border-width;
-    border: $nav-tabs-border-width solid transparent;
-    @include border-top-radius($nav-tabs-border-radius);
+    margin-bottom: -(variables.$nav-tabs-border-width);
+    border: variables.$nav-tabs-border-width solid transparent;
+    @include border-radius.border-top-radius(variables.$nav-tabs-border-radius);
 
-    @include hover-focus() {
-      border-color: $nav-tabs-link-hover-border-color;
+    @include hover.hover-focus() {
+      border-color: variables.$nav-tabs-link-hover-border-color;
     }
 
     &.disabled {
-      color: $nav-link-disabled-color;
+      color: variables.$nav-link-disabled-color;
       background-color: transparent;
       border-color: transparent;
     }
@@ -53,16 +58,16 @@
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-link-active-color;
-    background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color;
+    color: variables.$nav-tabs-link-active-color;
+    background-color: variables.$nav-tabs-link-active-bg;
+    border-color: variables.$nav-tabs-link-active-border-color;
   }
 
   .dropdown-menu {
     // Make dropdown border overlap tab border
-    margin-top: -$nav-tabs-border-width;
+    margin-top: -(variables.$nav-tabs-border-width);
     // Remove the top rounded corners here since there is a hard edge above the menu
-    @include border-top-radius(0);
+    @include border-radius.border-top-radius(0);
   }
 }
 
@@ -73,13 +78,13 @@
 
 .nav-pills {
   .nav-link {
-    @include border-radius($nav-pills-border-radius);
+    @include border-radius.border-radius(variables.$nav-pills-border-radius);
   }
 
   .nav-link.active,
   .show > .nav-link {
-    color: $nav-pills-link-active-color;
-    background-color: $nav-pills-link-active-bg;
+    color: variables.$nav-pills-link-active-color;
+    background-color: variables.$nav-pills-link-active-bg;
   }
 }
 
@@ -158,12 +163,12 @@ $nav-hover-delay: 300ms;
   .nav-es-global,
   .nav-es-sticky {
     // default should be size 14px according to figma
-    font-size: $font-size-75;
+    font-size: variables.$font-size-75;
   }
 
   .nav-es-global {
     // add a background so veil goes under the nav and nav stands out against page bg
-    background-color: $white;
+    background-color: variables.$white;
 
     // shadow for additional visual separation between nav and more plain pages
     box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
@@ -171,19 +176,19 @@ $nav-hover-delay: 300ms;
 
   // override es-ds default
   .btn-link {
-    color: $body-color;
+    color: variables.$body-color;
   }
 
   // dropdown-menu items should be default size 14px
   .dropdown-menu {
-    font-size: $font-size-75;
+    font-size: variables.$font-size-75;
   }
 
   // All links and labels in the navigation should start at a font-weight-normal (weight 400)
   // TODO: This overrides styles for `eyebrow`
   a,
   label {
-    font-weight: $font-weight-normal;
+    font-weight: variables.$font-weight-normal;
   }
 
   // Adjust default nav-link styling
@@ -192,12 +197,12 @@ $nav-hover-delay: 300ms;
     // stylelint-disable-next-line selector-max-class
     .nav-item.nav-link,
     .dropdown-item.nav-link {
-      color: $gray-900;
+      color: variables.$gray-900;
 
       // stylelint-disable-next-line selector-max-class
       &:hover {
-        font-weight: $font-weight-semibold;
-        color: $gray-900;
+        font-weight: variables.$font-weight-semibold;
+        color: variables.$gray-900;
         text-decoration: underline;
       }
     }
@@ -228,12 +233,12 @@ $nav-hover-delay: 300ms;
     line-height: 1.3;
 
     .cta-link {
-      font-size: $font-size-75;
-      color: $gray-900;
+      font-size: variables.$font-size-75;
+      color: variables.$gray-900;
       text-decoration: none;
 
       &:hover {
-        color: $gray-1200;
+        color: variables.$gray-1200;
       }
     }
   }
@@ -263,7 +268,7 @@ $nav-hover-delay: 300ms;
       left: 0;
       z-index: 1000;
       // stylelint-disable-next-line property-disallowed-list
-      transition: $transition-base;
+      transition: variables.$transition-base;
       transform: translateY(-100%);
     }
 
@@ -288,9 +293,9 @@ $nav-hover-delay: 300ms;
 
     // eyebrow copied from es-ds class, but override for letter spacing and only display on lg+ viewports
     .eyebrow-lg {
-      font-size: $font-size-100;
-      font-weight: $font-weight-bolder;
-      color: $gray;
+      font-size: variables.$font-size-100;
+      font-weight: variables.$font-weight-bolder;
+      color: variables.$gray;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -304,7 +309,7 @@ $nav-hover-delay: 300ms;
       height: 1px;
       margin: 0; // override .dropdown-toggle::after style
       content: "";
-      background-color: $gray-400;
+      background-color: variables.$gray-400;
       border-style: none;  // override .dropdown-toggle::after style
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 1px;
@@ -337,7 +342,7 @@ $nav-hover-delay: 300ms;
 
     .product-menu-header-link:hover {
       // fix for text-gray utility class not being !important
-      color: $gray;
+      color: variables.$gray;
     }
     .product-menu-flyout {
       left: 50%;
@@ -383,7 +388,7 @@ $nav-hover-delay: 300ms;
         z-index: 1001;
         height: 2px;
         content: "";
-        background: $gray;
+        background: variables.$gray;
         border-style: none;
       }
 
@@ -399,11 +404,11 @@ $nav-hover-delay: 300ms;
 
     // Top header hover should be gray
     .nav-item.top-header:hover {
-      background: $gray-150;
+      background: variables.$gray-150;
 
       // Top header menu background should be gray
       .dropdown-menu {
-        background: $gray-150;
+        background: variables.$gray-150;
       }
     }
 
@@ -452,8 +457,8 @@ $nav-hover-delay: 300ms;
     .dropdown-cta-bottom {
       align-items: center;
       height: 78px;
-      color: $white;
-      background-color: $gray-900;
+      color: variables.$white;
+      background-color: variables.$gray-900;
 
       // stylelint-disable-next-line selector-class-pattern
       .dropdown-cta-bottom--inner {
@@ -468,7 +473,7 @@ $nav-hover-delay: 300ms;
     }
   }
 
-  @include media-breakpoint-up(xl) {
+  @include breakpoints.media-breakpoint-up(xl) {
     .product-menu-flyout {
       width: 370px;  // approx width of four columns at 1200px breakpoint / 1140px max width
     }
@@ -483,7 +488,7 @@ $nav-hover-delay: 300ms;
     }
   }
 
-  @include media-breakpoint-up(xxl) {
+  @include breakpoints.media-breakpoint-up(xxl) {
     // reset the last child back to normal
     .nav-item:last-child .product-menu-flyout {
       transform: translateX(-50%);
@@ -589,7 +594,7 @@ $nav-hover-delay: 300ms;
     }
     .nav-item-border-mobile {
       // stylelint-disable-next-line declaration-no-important
-      border-bottom: 1px solid $gray-300 !important;
+      border-bottom: 1px solid variables.$gray-300 !important;
     }
 
     // Override default margin to allow centered titles
@@ -659,7 +664,7 @@ $nav-hover-delay: 300ms;
       height: 64px;
       max-height: 64px;
       font-weight: bolder;
-      border-bottom: 1px solid $gray-300;
+      border-bottom: 1px solid variables.$gray-300;
     }
 
     // This is a generic placeholder button for open/close/back in the mobile menu

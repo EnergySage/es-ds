@@ -44,6 +44,7 @@
             doc-source="es-design-system/pages/molecules/es-data-table.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsDataTableDocs',

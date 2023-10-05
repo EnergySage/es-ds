@@ -1,3 +1,8 @@
+@use "mixins/border-radius";
+@use "mixins/breakpoints";
+@use "mixins/hover";
+@use "variables";
+
 //
 // Base styles
 //
@@ -7,12 +12,12 @@
   display: flex;
   flex-direction: column;
   min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
-  height: $card-height;
+  height: variables.$card-height;
   word-wrap: break-word;
-  background-color: $card-bg;
+  background-color: variables.$card-bg;
   background-clip: border-box;
-  border: $card-border-width solid $card-border-color;
-  @include border-radius($card-border-radius);
+  border: variables.$card-border-width solid variables.$card-border-color;
+  @include border-radius.border-radius(variables.$card-border-radius);
 
   > hr {
     margin-right: 0;
@@ -25,12 +30,12 @@
 
     &:first-child {
       border-top-width: 0;
-      @include border-top-radius($card-inner-border-radius);
+      @include border-radius.border-top-radius(variables.$card-inner-border-radius);
     }
 
     &:last-child  {
       border-bottom-width: 0;
-      @include border-bottom-radius($card-inner-border-radius);
+      @include border-radius.border-bottom-radius(variables.$card-inner-border-radius);
     }
   }
 
@@ -49,16 +54,16 @@
   // Workaround for the image size bug in IE
   // See: https://github.com/twbs/bootstrap/pull/28855
   min-height: 1px;
-  padding: $card-spacer-x;
-  color: $card-color;
+  padding: variables.$card-spacer-x;
+  color: variables.$card-color;
 }
 
 .card-title {
-  margin-bottom: $card-spacer-y;
+  margin-bottom: variables.$card-spacer-y;
 }
 
 .card-subtitle {
-  margin-top: -$card-spacer-y * .5;
+  margin-top: -(variables.$card-spacer-y) * .5;
   margin-bottom: 0;
 }
 
@@ -67,12 +72,12 @@
 }
 
 .card-link {
-  @include hover() {
+  @include hover.hover() {
     text-decoration: none;
   }
 
   + .card-link {
-    margin-left: $card-spacer-x;
+    margin-left: variables.$card-spacer-x;
   }
 }
 
@@ -81,25 +86,25 @@
 //
 
 .card-header {
-  padding: $card-spacer-y $card-spacer-x;
+  padding: variables.$card-spacer-y variables.$card-spacer-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
-  color: $card-cap-color;
-  background-color: $card-cap-bg;
-  border-bottom: $card-border-width solid $card-border-color;
+  color: variables.$card-cap-color;
+  background-color: variables.$card-cap-bg;
+  border-bottom: variables.$card-border-width solid variables.$card-border-color;
 
   &:first-child {
-    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+    @include border-radius.border-radius(variables.$card-inner-border-radius variables.$card-inner-border-radius 0 0);
   }
 }
 
 .card-footer {
-  padding: $card-spacer-y $card-spacer-x;
-  color: $card-cap-color;
-  background-color: $card-cap-bg;
-  border-top: $card-border-width solid $card-border-color;
+  padding: variables.$card-spacer-y variables.$card-spacer-x;
+  color: variables.$card-cap-color;
+  background-color: variables.$card-cap-bg;
+  border-top: variables.$card-border-width solid variables.$card-border-color;
 
   &:last-child {
-    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    @include border-radius.border-radius(0 0 variables.$card-inner-border-radius variables.$card-inner-border-radius);
   }
 }
 
@@ -109,15 +114,15 @@
 //
 
 .card-header-tabs {
-  margin-right: -$card-spacer-x * .5;
-  margin-bottom: -$card-spacer-y;
-  margin-left: -$card-spacer-x * .5;
+  margin-right: -(variables.$card-spacer-x) * .5;
+  margin-bottom: -(variables.$card-spacer-y);
+  margin-left: -(variables.$card-spacer-x) * .5;
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: -$card-spacer-x * .5;
-  margin-left: -$card-spacer-x * .5;
+  margin-right: -(variables.$card-spacer-x) * .5;
+  margin-left: -(variables.$card-spacer-x) * .5;
 }
 
 // Card image
@@ -127,8 +132,8 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: $card-img-overlay-padding;
-  @include border-radius($card-inner-border-radius);
+  padding: variables.$card-img-overlay-padding;
+  @include border-radius.border-radius(variables.$card-inner-border-radius);
 }
 
 .card-img,
@@ -140,12 +145,12 @@
 
 .card-img,
 .card-img-top {
-  @include border-top-radius($card-inner-border-radius);
+  @include border-radius.border-top-radius(variables.$card-inner-border-radius);
 }
 
 .card-img,
 .card-img-bottom {
-  @include border-bottom-radius($card-inner-border-radius);
+  @include border-radius.border-bottom-radius(variables.$card-inner-border-radius);
 }
 
 
@@ -153,21 +158,21 @@
 
 .card-deck {
   .card {
-    margin-bottom: $card-deck-margin;
+    margin-bottom: variables.$card-deck-margin;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include breakpoints.media-breakpoint-up(sm) {
     display: flex;
     flex-flow: row wrap;
-    margin-right: -$card-deck-margin;
-    margin-left: -$card-deck-margin;
+    margin-right: -(variables.$card-deck-margin);
+    margin-left: -(variables.$card-deck-margin);
 
     .card {
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
-      margin-right: $card-deck-margin;
+      margin-right: variables.$card-deck-margin;
       margin-bottom: 0; // Override the default
-      margin-left: $card-deck-margin;
+      margin-left: variables.$card-deck-margin;
     }
   }
 }
@@ -181,10 +186,10 @@
   // The child selector allows nested `.card` within `.card-group`
   // to display properly.
   > .card {
-    margin-bottom: $card-group-margin;
+    margin-bottom: variables.$card-group-margin;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include breakpoints.media-breakpoint-up(sm) {
     display: flex;
     flex-flow: row wrap;
     // The child selector allows nested `.card` within `.card-group`
@@ -200,9 +205,9 @@
       }
 
       // Handle rounded corners
-      @if $enable-rounded {
+      @if variables.$enable-rounded {
         &:not(:last-child) {
-          @include border-right-radius(0);
+          @include border-radius.border-right-radius(0);
 
           .card-img-top,
           .card-header {
@@ -217,7 +222,7 @@
         }
 
         &:not(:first-child) {
-          @include border-left-radius(0);
+          @include border-radius.border-left-radius(0);
 
           .card-img-top,
           .card-header {
@@ -242,12 +247,12 @@
 
 .card-columns {
   .card {
-    margin-bottom: $card-columns-margin;
+    margin-bottom: variables.$card-columns-margin;
   }
 
-  @include media-breakpoint-up(sm) {
-    column-count: $card-columns-count;
-    column-gap: $card-columns-gap;
+  @include breakpoints.media-breakpoint-up(sm) {
+    column-count: variables.$card-columns-count;
+    column-gap: variables.$card-columns-gap;
     orphans: 1;
     widows: 1;
 
@@ -263,23 +268,23 @@
 //
 
 .es-card {
-  padding: $spacer * 2;
-  background-color: $white;
+  padding: variables.$spacer * 2;
+  background-color: variables.$white;
   /* stylelint-disable-next-line property-disallowed-list */
-  border-radius: $border-radius-lg;
+  border-radius: variables.$border-radius-lg;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
 
   &.interactive {
     /* account for the tag likely being an anchor or button */
     display: block;
-    font-weight: $font-weight-base;
-    color: $body-color;
+    font-weight: variables.$font-weight-base;
+    color: variables.$body-color;
     cursor: pointer;
-    border: $border-width solid $gray-200;
+    border: variables.$border-width solid variables.$gray-200;
     box-shadow: none;
 
     /* stylelint-disable-next-line property-disallowed-list */
-    transition: $transition-base;
+    transition: variables.$transition-base;
 
     /* fix safari issue with drop-shadow buggy behavior */
     transform: translateZ(0);
@@ -303,16 +308,16 @@
 
     &:not(:last-of-type) {
       border-bottom: 0;
-      @include border-bottom-radius(0);
+      @include border-radius.border-bottom-radius(0);
     }
 
     &:not(:first-of-type) {
-      @include border-top-radius(0);
+      @include border-radius.border-top-radius(0);
     }
 
     > .card-header {
-      @include border-radius(0);
-      margin-bottom: -$card-border-width;
+      @include border-radius.border-radius(0);
+      margin-bottom: -(variables.$card-border-width);
     }
   }
 }

@@ -1,14 +1,12 @@
 /* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
-
-@import "../functions";
-@import "../mixins";
-@import "../variables";
+@use "sass:map";
+@use "../variables";
 
 :export {
-  xxl: map-get($grid-breakpoints, xxl);
-  xl: map-get($grid-breakpoints, xl);
-  lg: map-get($grid-breakpoints, lg);
-  md: map-get($grid-breakpoints, md);
-  sm: map-get($grid-breakpoints, sm);
-  xs: map-get($grid-breakpoints, xs);
+  xxl: map.get(variables.$grid-breakpoints, xxl);
+  xl: map.get(variables.$grid-breakpoints, xl);
+  lg: map.get(variables.$grid-breakpoints, lg);
+  md: map.get(variables.$grid-breakpoints, md);
+  sm: map.get(variables.$grid-breakpoints, sm);
+  xs: map.get(variables.$grid-breakpoints, xs);
 }

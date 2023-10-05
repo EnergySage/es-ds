@@ -3,6 +3,7 @@
         v-bind="$attrs"
         v-on="$listeners" />
 </template>
+
 <script>
 import { BBreadcrumb } from 'bootstrap-vue';
 
@@ -15,11 +16,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .breadcrumb {
     .active span {
-        font-weight: $font-weight-bold;
+        font-weight: variables.$font-weight-bold;
     }
 }
 </style>

@@ -11,19 +11,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .responsive-table-row {
-    border-bottom: $border-width solid $border-color;
+    border-bottom: variables.$border-width solid variables.$border-color;
     padding: 0.5rem 0.5rem 0;
 
     &:nth-child(even) {
-        background-color: $gray-200;
+        background-color: variables.$gray-200;
     }
 }
 
-@include media-breakpoint-up(md) {
+@include breakpoints.media-breakpoint-up(md) {
     .responsive-table-row {
         /* undo mobile styles */
         border-bottom-style: none;
@@ -41,8 +41,8 @@ export default {
             }
 
             ::v-deep dt {
-                border-bottom: $border-width solid $border-color;
-                border-top: $border-width solid $border-color;
+                border-bottom: variables.$border-width solid variables.$border-color;
+                border-top: variables.$border-width solid variables.$border-color;
                 padding: 0.5rem 0;
             }
 
@@ -64,7 +64,7 @@ export default {
         /* zebra-stripe every odd row */
         &:nth-child(odd) {
             ::v-deep dd {
-                background-color: $gray-200;
+                background-color: variables.$gray-200;
             }
         }
     }

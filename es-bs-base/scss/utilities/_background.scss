@@ -1,12 +1,15 @@
+@use "../mixins/background-variant";
+@use "../variables";
+
 // stylelint-disable declaration-no-important
 
-@each $color, $value in $theme-colors {
-  @include bg-variant(".bg-#{$color}", $value, true);
+@each $color, $value in variables.$theme-colors {
+  @include background-variant.bg-variant(".bg-#{$color}", $value, true);
 }
 
-@if $enable-gradients {
-  @each $color, $value in $theme-colors {
-    @include bg-gradient-variant(".bg-gradient-#{$color}", $value, true);
+@if variables.$enable-gradients {
+  @each $color, $value in variables.$theme-colors {
+    @include background-variant.bg-gradient-variant(".bg-gradient-#{$color}", $value, true);
   }
 }
 
@@ -18,37 +21,37 @@
 
 // theme-colors are in _background-variants.scss
 // Add color bg classes
-@each $color, $value in $colors {
+@each $color, $value in variables.$colors {
   @include bg-colors($color, $value);
 }
 
 // Add gray bg colors classes
-@each $color, $value in $grays {
+@each $color, $value in variables.$grays {
   @include bg-colors($color, $value);
 }
 
 // Add teal bg colors classes
-@each $color, $value in $teals {
+@each $color, $value in variables.$teals {
   @include bg-colors($color, $value);
 }
 
 // Add cyan bg colors classes
-@each $color, $value in $cyans {
+@each $color, $value in variables.$cyans {
   @include bg-colors($color, $value);
 }
 
 // Add pink bg colors classes
-@each $color, $value in $pinks {
+@each $color, $value in variables.$pinks {
   @include bg-colors($color, $value);
 }
 
 // Add yellow bg colors classes
-@each $color, $value in $yellows {
+@each $color, $value in variables.$yellows {
   @include bg-colors($color, $value);
 }
 
 // Add orange bg colors classes
-@each $color, $value in $oranges {
+@each $color, $value in variables.$oranges {
   @include bg-colors($color, $value);
 }
 

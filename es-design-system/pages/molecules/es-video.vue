@@ -23,6 +23,7 @@
             doc-source="es-design-system/pages/molecules/es-video.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsVideoDocs',

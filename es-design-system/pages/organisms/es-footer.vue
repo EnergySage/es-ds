@@ -15,6 +15,7 @@
             doc-source="es-design-system/pages/organisms/es-footer.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsFooterDocs',

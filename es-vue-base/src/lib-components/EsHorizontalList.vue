@@ -184,8 +184,9 @@ export default {
     },
 };
 </script>
+
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .horizontal-scroll-container {
     cursor: grab;
@@ -230,7 +231,7 @@ export default {
 
 .dots-holder {
     .dot {
-        background-color: $gray-400;
+        background-color: variables.$gray-400;
         border-radius: 50%;
         height: 14px;
         width: 14px;
@@ -240,7 +241,7 @@ export default {
         }
 
         &.active {
-            background-color: $primary;
+            background-color: variables.$primary;
         }
     }
 }
