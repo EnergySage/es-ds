@@ -45,8 +45,8 @@
             doc-source="es-design-system/pages/molecules/es-form-textarea.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsFormTextareaDocs',
     data() {

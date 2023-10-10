@@ -733,7 +733,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'EsButtonDocs',
     data() {
@@ -796,7 +795,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/variables' as variables;
 
 /**
  * ensures buttons are spaced out nicely on mobile and desktop
@@ -808,8 +807,8 @@ export default {
  */
 .button-table {
     button {
-        margin-bottom: $spacer * 0.5;
-        margin-right: $spacer * 0.5;
+        margin-bottom: variables.$spacer * 0.5;
+        margin-right: variables.$spacer * 0.5;
     }
 }
 </style>

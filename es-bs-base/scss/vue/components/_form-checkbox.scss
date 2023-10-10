@@ -1,0 +1,132 @@
+@forward 'input-group';
+
+@use '../utilities';
+@use "../../variables" as v;
+@use "../../mixins/border-radius";
+@use "../variables";
+
+// Adds control sizing to Bootstrap custom checkbox/switch inputs
+
+.custom-checkbox.b-custom-control-lg,
+.input-group-lg .custom-checkbox {
+  font-size: v.$font-size-lg;
+  line-height: v.$line-height-lg;
+  padding-left: variables.$b-custom-control-gutter-lg + variables.$b-custom-control-indicator-size-lg;
+
+  .custom-control-label::before {
+    top: (v.$font-size-lg * v.$line-height-lg - variables.$b-custom-control-indicator-size-lg) * 0.5;
+    left: -(variables.$b-custom-control-gutter-lg + variables.$b-custom-control-indicator-size-lg);
+    width: variables.$b-custom-control-indicator-size-lg;
+    height: variables.$b-custom-control-indicator-size-lg;
+    @include border-radius.border-radius(variables.$b-custom-checkbox-indicator-border-radius-lg);
+  }
+
+  .custom-control-label::after {
+    top: (v.$font-size-lg * v.$line-height-lg - variables.$b-custom-control-indicator-size-lg) * 0.5;
+    left: -(variables.$b-custom-control-gutter-lg + variables.$b-custom-control-indicator-size-lg);
+    width: variables.$b-custom-control-indicator-size-lg;
+    height: variables.$b-custom-control-indicator-size-lg;
+    background-size: variables.$b-custom-control-indicator-bg-size-lg;
+  }
+}
+
+.custom-checkbox.b-custom-control-sm,
+.input-group-sm .custom-checkbox {
+  font-size: v.$font-size-sm;
+  line-height: v.$line-height-sm;
+  padding-left: variables.$b-custom-control-gutter-sm + variables.$b-custom-control-indicator-size-sm;
+
+  .custom-control-label::before {
+    top: (v.$font-size-sm * v.$line-height-sm - variables.$b-custom-control-indicator-size-sm) * 0.5;
+    left: -(variables.$b-custom-control-gutter-sm + variables.$b-custom-control-indicator-size-sm);
+    width: variables.$b-custom-control-indicator-size-sm;
+    height: variables.$b-custom-control-indicator-size-sm;
+    @include border-radius.border-radius(variables.$b-custom-checkbox-indicator-border-radius-sm);
+  }
+
+  .custom-control-label::after {
+    top: (v.$font-size-sm * v.$line-height-sm - variables.$b-custom-control-indicator-size-sm) * 0.5;
+    left: -(variables.$b-custom-control-gutter-sm + variables.$b-custom-control-indicator-size-sm);
+    width: variables.$b-custom-control-indicator-size-sm;
+    height: variables.$b-custom-control-indicator-size-sm;
+    background-size: variables.$b-custom-control-indicator-bg-size-sm;
+  }
+}
+
+.custom-switch.b-custom-control-lg,
+.input-group-lg .custom-switch {
+  padding-left: variables.$b-custom-switch-width-lg + variables.$b-custom-control-gutter-lg;
+
+  .custom-control-label {
+    font-size: v.$font-size-lg;
+    line-height: v.$line-height-lg;
+
+    &::before {
+      top: (v.$font-size-lg * v.$line-height-lg - variables.$b-custom-control-indicator-size-lg) * 0.5;
+      height: variables.$b-custom-control-indicator-size-lg;
+      left: -(variables.$b-custom-switch-width-lg + variables.$b-custom-control-gutter-lg);
+      width: variables.$b-custom-switch-width-lg;
+      border-radius: variables.$b-custom-switch-indicator-border-radius-lg;
+    }
+
+    &::after {
+      top: calc(
+        #{((v.$font-size-lg * v.$line-height-lg - variables.$b-custom-control-indicator-size-lg) * 0.5)} + #{v.$custom-control-indicator-border-width *
+          2}
+      );
+      left: calc(
+        #{- (variables.$b-custom-switch-width-lg + variables.$b-custom-control-gutter-lg)} + #{v.$custom-control-indicator-border-width *
+          2}
+      );
+      width: variables.$b-custom-switch-indicator-size-lg;
+      height: variables.$b-custom-switch-indicator-size-lg;
+      border-radius: variables.$b-custom-switch-indicator-border-radius-lg;
+      background-size: variables.$b-custom-control-indicator-bg-size-lg;
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label {
+    &::after {
+      transform: translateX(variables.$b-custom-switch-width-lg - variables.$b-custom-control-indicator-size-lg);
+    }
+  }
+}
+
+.custom-switch.b-custom-control-sm,
+.input-group-sm .custom-switch {
+  padding-left: variables.$b-custom-switch-width-sm + variables.$b-custom-control-gutter-sm;
+
+  .custom-control-label {
+    font-size: v.$font-size-sm;
+    line-height: v.$line-height-sm;
+
+    &::before {
+      top: (v.$font-size-sm * v.$line-height-sm - variables.$b-custom-control-indicator-size-sm) * 0.5;
+      left: -(variables.$b-custom-switch-width-sm + variables.$b-custom-control-gutter-sm);
+      width: variables.$b-custom-switch-width-sm;
+      height: variables.$b-custom-control-indicator-size-sm;
+      border-radius: variables.$b-custom-switch-indicator-border-radius-sm;
+    }
+
+    &::after {
+      top: calc(
+        #{((v.$font-size-sm * v.$line-height-sm - variables.$b-custom-control-indicator-size-sm) * 0.5)} + #{v.$custom-control-indicator-border-width *
+          2}
+      );
+      left: calc(
+        #{- (variables.$b-custom-switch-width-sm + variables.$b-custom-control-gutter-sm)} + #{v.$custom-control-indicator-border-width *
+          2}
+      );
+      width: variables.$b-custom-switch-indicator-size-sm;
+      height: variables.$b-custom-switch-indicator-size-sm;
+      border-radius: variables.$b-custom-switch-indicator-border-radius-sm;
+      background-size: variables.$b-custom-control-indicator-bg-size-sm;
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label {
+    &::after {
+      transform: translateX(variables.$b-custom-switch-width-sm - variables.$b-custom-control-indicator-size-sm);
+    }
+  }
+}

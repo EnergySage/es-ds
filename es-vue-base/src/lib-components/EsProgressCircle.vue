@@ -44,7 +44,6 @@
 </template>
 
 <script lang="js">
-
 export default {
     name: 'EsProgressCircle',
     props: {
@@ -82,18 +81,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .inner-circle {
     // position: relative;
     fill: transparent;
-    stroke: $gray-200;
+    stroke: variables.$gray-200;
 }
 
 .progress-circle {
     // position: relative;
     fill: transparent;
-    stroke: $primary;
+    stroke: variables.$primary;
 }
 
 </style>

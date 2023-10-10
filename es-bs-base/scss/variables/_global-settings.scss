@@ -1,21 +1,18 @@
 /* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
-
-@import "../functions";
-@import "../mixins";
-@import "../variables";
+@use "../variables";
 
 :export {
-  enable-caret: $enable-caret;
-  enable-rounded: $enable-rounded;
-  enable-shadows: $enable-shadows;
-  enable-gradients: $enable-gradients;
-  enable-transitions: $enable-transitions;
-  enable-prefers-reduced-motion-media-query: $enable-prefers-reduced-motion-media-query;
-  enable-hover-media-query: $enable-hover-media-query;
-  enable-grid-classes: $enable-grid-classes;
-  enable-pointer-cursor-for-buttons: $enable-pointer-cursor-for-buttons;
-  enable-print-styles: $enable-print-styles;
-  enable-responsive-font-sizes: $enable-responsive-font-sizes;
-  enable-validation-icons: $enable-validation-icons;
-  enable-deprecation-messages: $enable-deprecation-messages;
+  enable-caret: variables.$enable-caret;
+  enable-rounded: variables.$enable-rounded;
+  enable-shadows: variables.$enable-shadows;
+  enable-gradients: variables.$enable-gradients;
+  enable-transitions: variables.$enable-transitions;
+  enable-prefers-reduced-motion-media-query: variables.$enable-prefers-reduced-motion-media-query;
+  enable-hover-media-query: variables.$enable-hover-media-query;
+  enable-grid-classes: variables.$enable-grid-classes;
+  enable-pointer-cursor-for-buttons: variables.$enable-pointer-cursor-for-buttons;
+  enable-print-styles: variables.$enable-print-styles;
+  enable-responsive-font-sizes: variables.$enable-responsive-font-sizes;
+  enable-validation-icons: variables.$enable-validation-icons;
+  enable-deprecation-messages: variables.$enable-deprecation-messages;
 }

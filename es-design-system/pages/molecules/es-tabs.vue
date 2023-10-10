@@ -114,8 +114,8 @@
             doc-source="es-design-system/pages/molecules/es-tabs.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsTabsDocs',
     data() {

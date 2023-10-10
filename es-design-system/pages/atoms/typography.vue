@@ -698,8 +698,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .responsive-table-typography {
     ::v-deep dl {
@@ -710,7 +709,7 @@ export default {
     }
 }
 
-@include media-breakpoint-up(xl) {
+@include breakpoints.media-breakpoint-up(xl) {
     .responsive-table-typography {
         ::v-deep dl {
             dd {

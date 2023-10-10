@@ -104,8 +104,8 @@
             doc-source="es-design-system/pages/molecules/es-card.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsCardDocs',
     data() {

@@ -38,6 +38,7 @@
             doc-source="es-design-system/pages/molecules/es-support.vue" />
     </div>
 </template>
+
 <script>
 import placeholderPersonImage from '@/assets/placeholder/icon-person.svg';
 

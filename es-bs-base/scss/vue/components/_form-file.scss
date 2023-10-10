@@ -1,0 +1,64 @@
+@use "../variables";
+@use "../../mixins/border-radius";
+
+// Adds in sizes for custom-file
+
+// Prevent file names from overflowing the file input
+// These styles can be removed when the related Bootstrap bug gets fixed:
+// https://github.com/twbs/bootstrap/issues/31577
+.custom-file-label {
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.b-custom-control-lg,
+.input-group-lg {
+  &.custom-file,
+  .custom-file-input,
+  .custom-file-label {
+    font-size: variables.$b-custom-file-font-size-lg;
+    height: variables.$b-custom-file-height-lg;
+  }
+
+  .custom-file-label,
+  .custom-file-label:after {
+    padding: variables.$b-custom-file-padding-y-lg variables.$b-custom-file-padding-x-lg;
+    line-height: variables.$b-custom-file-line-height-lg;
+  }
+
+  .custom-file-label {
+    @include border-radius.border-radius(variables.$b-custom-file-border-radius-lg);
+
+    &::after {
+      font-size: inherit;
+      height: variables.$b-custom-file-height-inner-lg;
+      @include border-radius.border-radius(0 variables.$b-custom-file-border-radius-lg variables.$b-custom-file-border-radius-lg 0);
+    }
+  }
+}
+
+.b-custom-control-sm,
+.input-group-sm {
+  &.custom-file,
+  .custom-file-input,
+  .custom-file-label {
+    font-size: variables.$b-custom-file-font-size-sm;
+    height: variables.$b-custom-file-height-sm;
+  }
+
+  .custom-file-label,
+  .custom-file-label:after {
+    padding: variables.$b-custom-file-padding-y-sm variables.$b-custom-file-padding-x-sm;
+    line-height: variables.$b-custom-file-line-height-sm;
+  }
+
+  .custom-file-label {
+    @include border-radius.border-radius(variables.$b-custom-file-border-radius-sm);
+
+    &::after {
+      font-size: inherit;
+      height: variables.$b-custom-file-height-inner-sm;
+      @include border-radius.border-radius(0 variables.$b-custom-file-border-radius-sm variables.$b-custom-file-border-radius-sm 0);
+    }
+  }
+}

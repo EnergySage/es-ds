@@ -1,16 +1,13 @@
 /* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
-
-@import "../functions";
-@import "../mixins";
-@import "../variables";
+@use "../variables";
 
 :export {
-  pink-100: $pink-100;
-  pink-200: $pink-200;
-  pink-300: $pink-300;
-  pink-400: $pink-400;
-  pink-500: $pink-500;
-  pink-600: $pink-600;
-  pink-700: $pink-700;
-  pink-800: $pink-800;
+  pink-100: variables.$pink-100;
+  pink-200: variables.$pink-200;
+  pink-300: variables.$pink-300;
+  pink-400: variables.$pink-400;
+  pink-500: variables.$pink-500;
+  pink-600: variables.$pink-600;
+  pink-700: variables.$pink-700;
+  pink-800: variables.$pink-800;
 }

@@ -138,7 +138,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+
 // TODO: Should be in es-bs-base
 .top-0 {
     top: 0;
@@ -150,11 +151,11 @@ export default {
 }
 
 .font-size-base {
-    font-size: $font-size-base;
+    font-size: variables.$font-size-base;
 }
 
 .sticky-mobile-col {
-    background: $modal-content-bg;
-    z-index: $zindex-sticky;
+    background: variables.$modal-content-bg;
+    z-index: variables.$zindex-sticky;
 }
 </style>

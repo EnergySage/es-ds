@@ -1,0 +1,267 @@
+@use "../../variables" as v;
+@use "../../functions";
+@use "../variables";
+@use "../../mixins/border-radius";
+@use "sass:color";
+
+// --- <b-toast> custom SCSS ---
+
+// Toast wrapper element class (needed for list transition in toasters)
+.b-toast {
+  display: block;
+  position: relative;
+  max-width: v.$toast-max-width;
+  backface-visibility: hidden;
+  background-clip: padding-box;
+
+  z-index: 1;
+  @include border-radius.border-radius(v.$toast-border-radius);
+
+  .toast {
+    // Allow us to override Bootstrap's default toast opacity
+    // As they do not provide it as a variable
+    background-color: rgba(v.$toast-background-color, variables.$b-toast-background-opacity);
+  }
+
+  &:not(:last-child) {
+    margin-bottom: v.$toast-padding-x;
+  }
+
+  &.b-toast-solid {
+    .toast {
+      background-color: rgba(v.$toast-background-color, 1);
+    }
+  }
+
+  .toast {
+    // Override default Bootstrap v4.x opacity of 0
+    // Needed for re-usable fade transition
+    opacity: 1;
+
+    &.fade:not(.show) {
+      opacity: 0;
+    }
+
+    .toast-body {
+      display: block; // Needed when we use a link as the body element
+    }
+  }
+}
+
+@mixin b-toast-variant($background, $border, $color) {
+  // Based on alert-variant mixin
+  .toast {
+    background-color: rgba(
+      color.adjust($background, $lightness: 5%),
+      variables.$b-toast-background-opacity
+    );
+    border-color: rgba($border, variables.$b-toast-background-opacity);
+    color: $color;
+
+    .toast-header {
+      color: $color;
+      background-color: rgba($background, variables.$b-toast-background-opacity);
+      border-bottom-color: rgba($border, variables.$b-toast-background-opacity);
+    }
+
+    // .toast-body[href] {
+    //   color: darken($color, 10%);
+    // }
+  }
+
+  &.b-toast-solid {
+    .toast {
+      background-color: rgba(
+        color.adjust($background, $lightness: 5%) ,
+        1
+      )
+    }
+  }
+}
+
+// Toast variants
+@each $color, $value in v.$theme-colors {
+  .b-toast-#{$color} {
+    @include b-toast-variant(
+      functions.theme-color-level-new(
+        $theme-colors: v.$theme-colors,
+        $black: v.$black,
+        $white: v.$white,
+        $theme-color-interval: v.$theme-color-interval,
+        $color-name: $color,
+        $level: variables.$b-toast-bg-level
+      ),
+      functions.theme-color-level-new(
+        $theme-colors: v.$theme-colors,
+        $black: v.$black,
+        $white: v.$white,
+        $theme-color-interval: v.$theme-color-interval,
+        $color-name: $color,
+        $level: variables.$b-toast-border-level
+      ),
+      functions.theme-color-level-new(
+        $theme-colors: v.$theme-colors,
+        $black: v.$black,
+        $white: v.$white,
+        $theme-color-interval: v.$theme-color-interval,
+        $color-name: $color,
+        $level: variables.$b-toast-color-level
+      )
+    );
+  }
+}
+
+// --- <b-toaster> custom SCSS ---
+
+// Base toaster styling
+.b-toaster {
+  z-index: variables.$b-toaster-zindex;
+
+  .b-toaster-slot {
+    position: relative;
+    display: block;
+
+    &:empty {
+      display: none !important;
+    }
+  }
+}
+
+// Built-in toaster styling
+//  - b-toaster-top-right
+//  - b-toaster-top-left
+//  - b-toaster-top-center
+//  - b-toaster-top-full
+//  - b-toaster-bottom-right
+//  - b-toaster-bottom-left
+//  - b-toaster-bottom-center
+//  - b-toaster-bottom-full
+.b-toaster {
+  &.b-toaster-top-right,
+  &.b-toaster-top-left,
+  &.b-toaster-top-center,
+  &.b-toaster-top-full,
+  &.b-toaster-bottom-right,
+  &.b-toaster-bottom-left,
+  &.b-toaster-bottom-center,
+  &.b-toaster-bottom-full {
+    position: fixed;
+    left: variables.$b-toaster-offset-left;
+    right: variables.$b-toaster-offset-right;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    overflow: visible;
+
+    .b-toaster-slot {
+      position: absolute;
+      max-width: v.$toast-max-width;
+      width: 100%; /* IE 11 fix */
+      left: 0;
+      right: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &.b-toaster-top-full,
+  &.b-toaster-bottom-full {
+    .b-toaster-slot {
+      width: 100%;
+      max-width: 100%;
+
+      .b-toast,
+      .toast {
+        // Override Bootstrap toast max-width
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  &.b-toaster-top-right,
+  &.b-toaster-top-left,
+  &.b-toaster-top-center,
+  &.b-toaster-top-full {
+    top: 0;
+
+    .b-toaster-slot {
+      top: variables.$b-toaster-offset-top;
+    }
+  }
+
+  &.b-toaster-bottom-right,
+  &.b-toaster-bottom-left,
+  &.b-toaster-bottom-center,
+  &.b-toaster-bottom-full {
+    bottom: 0;
+
+    .b-toaster-slot {
+      bottom: variables.$b-toaster-offset-bottom;
+    }
+  }
+
+  &.b-toaster-top-right,
+  &.b-toaster-bottom-right,
+  &.b-toaster-top-center,
+  &.b-toaster-bottom-center {
+    .b-toaster-slot {
+      margin-left: auto;
+    }
+  }
+
+  &.b-toaster-top-left,
+  &.b-toaster-bottom-left,
+  &.b-toaster-top-center,
+  &.b-toaster-bottom-center {
+    .b-toaster-slot {
+      margin-right: auto;
+    }
+  }
+}
+
+// --- <b-toast> custom transition SCSS ---
+
+// PortalVue appears to have issues with transition classes on portaled items
+
+.b-toaster {
+  &.b-toaster-top-right,
+  &.b-toaster-top-left,
+  &.b-toaster-bottom-right,
+  &.b-toaster-bottom-left {
+    .b-toast {
+      &.b-toaster-enter-active,
+      &.b-toaster-leave-active,
+      &.b-toaster-move {
+        transition: transform 0.175s;
+      }
+
+      &.b-toaster-enter {
+      }
+
+      &.b-toaster-enter-to,
+      &.b-toaster-enter-active {
+        .toast.fade {
+          // Delay the appearance of the toast until
+          // the move transition has completed
+          transition-delay: 0.175s;
+        }
+      }
+
+      &.b-toaster-enter-to {
+      }
+
+      &.b-toaster-leave-active {
+        position: absolute;
+        transition-delay: 0.175s;
+
+        .toast.fade {
+          transition-delay: 0s;
+        }
+      }
+
+      &.b-toaster-leave-to {
+      }
+    }
+  }
+}

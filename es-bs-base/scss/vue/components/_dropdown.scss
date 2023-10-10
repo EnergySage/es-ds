@@ -1,0 +1,117 @@
+@use "../../variables" as v;
+
+$bv-dropdown-defined: false !default;
+
+// Make sure to include these style definitions only once
+@if $bv-dropdown-defined == false {
+  $bv-dropdown-defined: true;
+
+  // Hide the caret for `no-caret` setting
+  // See: https://github.com/bootstrap-vue/bootstrap-vue/issues/1473
+  // See: https://github.com/twbs/bootstrap/issues/23724
+  .dropdown {
+    &:not(.dropleft) {
+      .dropdown-toggle {
+        &.dropdown-toggle-no-caret::after {
+          display: none !important;
+        }
+      }
+    }
+
+    // See: https://github.com/bootstrap-vue/bootstrap-vue/issues/2909
+    &.dropleft {
+      .dropdown-toggle {
+        &.dropdown-toggle-no-caret::before {
+          display: none !important;
+        }
+      }
+    }
+
+    // Hide the focus ring introduced by Bootstratp v4.4 reboot
+    // on items with tabindex="-1", as we know how users feel
+    // about blue rings where they don't expect them.
+    .dropdown-menu:focus {
+      outline: none;
+    }
+
+    // Prevent dropdown background overflow if there's no padding
+    // See https://github.com/twbs/bootstrap/pull/27703
+    // Added here to address <li> wrapping of items
+    @if v.$dropdown-padding-y == 0 {
+      .dropdown-menu {
+        > :first-child {
+          .dropdown-item,
+          .dropdown-form,
+          .dropdown-text {
+            @include border-top-radius(v.$dropdown-inner-border-radius);
+          }
+        }
+
+        > :last-child {
+          .dropdown-item,
+          .dropdown-form,
+          .dropdown-text {
+            @include border-bottom-radius(v.$dropdown-inner-border-radius);
+          }
+        }
+      }
+    }
+  }
+}
+
+$bv-dropdown-form-defined: false !default;
+
+@if $bv-dropdown-form-defined == false {
+  // This test will only include these style definitions once
+  $bv-dropdown-form-defined: true;
+
+  // Custom styles for <b-dropdown-form>
+  // Based on class `.dropdown-item`
+  .b-dropdown-form {
+    display: inline-block;
+    padding: v.$dropdown-item-padding-y v.$dropdown-item-padding-x;
+    width: 100%;
+    clear: both;
+    font-weight: v.$font-weight-normal;
+
+    &:focus {
+      // From https://github.com/twbs/bootstrap/blob/master/scss/_reboot.scss
+      // mimicking button:focus styling.
+      // We add important here as anything with tabindex `-1` and focused will not
+      // have a focus ring due to reboot.scss and its `!important` override.
+      // Needed for keyboard navigation high-lighting
+      outline: 1px dotted !important;
+      outline: 5px auto -webkit-focus-ring-color !important;
+    }
+
+    &.disabled,
+    &:disabled {
+      outline: 0 !important;
+      color: v.$dropdown-link-disabled-color;
+      pointer-events: none;
+      // background-color: transparent;
+      // Remove CSS gradients if they're enabled
+      // @if $enable-gradients {
+      //   background-image: none;
+      // }
+    }
+  }
+}
+
+$bv-dropdown-text-defined: false !default;
+
+@if $bv-dropdown-text-defined == false {
+  // This test will only include these style definitions once
+  $bv-dropdown-text-defined: true;
+
+  // Custom styles for <b-dropdown-text>
+  // Based on class `.dropdown-item`
+  .b-dropdown-text {
+    display: inline-block;
+    padding: v.$dropdown-item-padding-y v.$dropdown-item-padding-x;
+    margin-bottom: 0;
+    width: 100%;
+    clear: both;
+    font-weight: v.$font-weight-lighter;
+  }
+}

@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .es-form-textarea {
     min-height: 8.125rem;
@@ -121,7 +121,7 @@ export default {
 
 // TODO: Move to es-bs-base
 .is-invalid {
-    color: $danger;
+    color: variables.$danger;
 }
 
 .form-inline .input-wrapper {

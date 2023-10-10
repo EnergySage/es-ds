@@ -1,23 +1,19 @@
-/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
-
-@import "../functions";
-@import "../mixins";
-@import "../variables";
+@use "../variables";
 
 :export {
-  blue: $blue;
-  light-blue: $lightblue;
-  gray-blue: $grayblue;
-  indigo: $indigo;
-  purple: $purple;
-  pink: $pink;
-  red: $red;
-  orange: $orange;
-  yellow: $yellow;
-  green: $green;
-  teal: $teal;
-  cyan: $cyan;
-  white: $white;
-  gray: $gray-600;
-  gray-dark: $gray-800;
+  blue: variables.$blue;
+  light-blue: variables.$lightblue;
+  gray-blue: variables.$grayblue;
+  indigo: variables.$indigo;
+  purple: variables.$purple;
+  pink: variables.$pink;
+  red: variables.$red;
+  orange: variables.$orange;
+  yellow: variables.$yellow;
+  green: variables.$green;
+  teal: variables.$teal;
+  cyan: variables.$cyan;
+  white: variables.$white;
+  gray: variables.$gray-600;
+  gray-dark: variables.$gray-800;
 }

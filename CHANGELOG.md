@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.4] - 2023-10-03
+
+### Added
+
+- Vendorized [bootstrap-vue](https://github.com/bootstrap-vue/bootstrap-vue)
+  SCSS and rewrote using modular SCSS
+
+### Changed
+
+- **Breaking:** Upgraded `es-bs-base` SASS compiler from `node-sass` to `dart-sass`
+- Refactored all SCSS files to use `@use` or `@forward` instead of the
+  deprecated `@import` feature
+- Dropped [fusv](https://www.npmjs.com/package/find-unused-sass-variables) linting given
+- Dropped `stylelint` in `es-bs-base`, as it's different from other projects
+
 ## [0.25.16] - 2023-09-19
 
 ### Changed
@@ -796,6 +811,9 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[1.1.4]: https://github.com/EnergySage/es-ds/compare/v0.25.16...v1.1.4
+[0.25.16]: https://github.com/EnergySage/es-ds/compare/v0.25.15...v0.25.16
+[0.25.15]: https://github.com/EnergySage/es-ds/compare/v0.25.14...v0.25.15
 [0.25.14]: https://github.com/EnergySage/es-ds/compare/v0.25.13...v0.25.14
 [0.25.13]: https://github.com/EnergySage/es-ds/compare/v0.25.12...v0.25.13
 [0.25.12]: https://github.com/EnergySage/es-ds/compare/v0.25.11...v0.25.12

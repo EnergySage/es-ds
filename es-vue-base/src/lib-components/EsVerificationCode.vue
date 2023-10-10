@@ -239,8 +239,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@energysage/es-bs-base/scss/includes';
-
 .code-holder {
     .code-input {
         appearance: textfield;

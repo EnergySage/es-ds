@@ -15,3 +15,5 @@ cdk.out
 # Optional npm cache directory and config
 .npm
 .npmrc
+
+stats-*.html

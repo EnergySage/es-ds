@@ -20,7 +20,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'EsFilePreviewModalDocs',
     data() {

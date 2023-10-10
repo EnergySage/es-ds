@@ -145,8 +145,8 @@
             doc-source="es-design-system/pages/molecules/es-popover.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsPopoverDocs',
     data() {
@@ -171,10 +171,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use '~@energysage/es-bs-base/scss/variables' as variables;
 
 // TODO: Remove when gray scale is added to es-bs-base
 .text-gray-700 {
-    color: $gray-700;
+    color: variables.$gray-700;
 }
 </style>

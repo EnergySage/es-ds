@@ -135,8 +135,8 @@
             doc-source="es-design-system/pages/molecules/es-collapse.vue" />
     </div>
 </template>
-<script>
 
+<script>
 export default {
     name: 'EsCollapseDocs',
 

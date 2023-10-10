@@ -1,23 +1,20 @@
 /* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
-
-@import "../functions";
-@import "../mixins";
-@import "../variables";
+@use "../variables";
 
 :export {
-  white: $white;
-  gray-100: $gray-100;
-  gray-150: $gray-150;
-  gray-200: $gray-200;
-  gray-300: $gray-300;
-  gray-400: $gray-400;
-  gray-500: $gray-500;
-  gray-600: $gray-600;
-  gray-700: $gray-700;
-  gray-800: $gray-800;
-  gray-900: $gray-900;
-  gray-1000: $gray-1000;
-  gray-1100: $gray-1100;
-  gray-1200: $gray-1200;
-  black: $black;
+  white: variables.$white;
+  gray-100: variables.$gray-100;
+  gray-150: variables.$gray-150;
+  gray-200: variables.$gray-200;
+  gray-300: variables.$gray-300;
+  gray-400: variables.$gray-400;
+  gray-500: variables.$gray-500;
+  gray-600: variables.$gray-600;
+  gray-700: variables.$gray-700;
+  gray-800: variables.$gray-800;
+  gray-900: variables.$gray-900;
+  gray-1000: variables.$gray-1000;
+  gray-1100: variables.$gray-1100;
+  gray-1200: variables.$gray-1200;
+  black: variables.$black;
 }

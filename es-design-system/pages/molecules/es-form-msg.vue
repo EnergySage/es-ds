@@ -51,6 +51,7 @@
             doc-source="es-design-system/pages/molecules/es-form-msg.vue" />
     </div>
 </template>
+
 <script>
 import { formMixins } from '@energysage/es-vue-base';
 

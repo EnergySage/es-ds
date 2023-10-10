@@ -1,0 +1,10 @@
+@use "../../variables" as v;
+@use "../../mixins/border-radius";
+
+.card-img-left {
+  @include border-radius.border-left-radius(v.$card-inner-border-radius);
+}
+
+.card-img-right {
+  @include border-radius.border-right-radius(v.$card-inner-border-radius);
+}

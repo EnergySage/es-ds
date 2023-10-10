@@ -32,7 +32,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'EsPaginationDocs',
     data() {

@@ -1,3 +1,9 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+@use "functions";
+
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for
@@ -23,7 +29,7 @@ $gray-1200: #0a0a0a !default;
 $black:    #000 !default;
 
 $grays: () !default;
-$grays: map-merge(
+$grays: map.merge(
   (
     "gray-100": $gray-100,
     "gray-150": $gray-150,
@@ -54,7 +60,7 @@ $teal-700: #1b5b55 !default;
 $teal-800: #0d2e2a !default;
 
 $teals: () !default;
-$teals: map-merge(
+$teals: map.merge(
   (
     "teal-100": $teal-100,
     "teal-200": $teal-200,
@@ -79,7 +85,7 @@ $cyan-700: #003f58 !default;
 $cyan-800: #00202c !default;
 
 $cyans: () !default;
-$cyans: map-merge(
+$cyans: map.merge(
   (
     "cyan-100": $cyan-100,
     "cyan-200": $cyan-200,
@@ -104,7 +110,7 @@ $pink-700: #642243 !default;
 $pink-800: #321121 !default;
 
 $pinks: () !default;
-$pinks: map-merge(
+$pinks: map.merge(
   (
     "pink-100": $pink-100,
     "pink-200": $pink-200,
@@ -129,7 +135,7 @@ $yellow-700: #7b5920 !default;
 $yellow-800: #3e2c10 !default;
 
 $yellows: () !default;
-$yellows: map-merge(
+$yellows: map.merge(
   (
     "yellow-100": $yellow-100,
     "yellow-200": $yellow-200,
@@ -151,7 +157,7 @@ $orange-400: #ca6f20 !default;
 $orange-500: #b95100 !default;
 
 $oranges: () !default;
-$oranges: map-merge(
+$oranges: map.merge(
   (
     "orange-100": $orange-100,
     "orange-200": $orange-200,
@@ -178,7 +184,7 @@ $teal:      $teal-500 !default;
 $gray:      $gray-900 !default;
 
 $brand-colors: () !default;
-$brand-colors: map-merge(
+$brand-colors: map.merge(
   (
     "cyan":      $cyan,
     "gray":      $gray,
@@ -191,7 +197,7 @@ $brand-colors: map-merge(
 );
 
 $colors: () !default;
-$colors: map-merge(
+$colors: map.merge(
   (
     "blue":       $blue,
     "light-blue": $lightblue,
@@ -226,7 +232,7 @@ $highlight:     $indigo;
 $highlight-dark: $blue;
 
 $theme-colors: () !default;
-$theme-colors: map-merge(
+$theme-colors: map.merge(
   (
     "primary":    $primary,
     "secondary":  $secondary,
@@ -246,23 +252,6 @@ $theme-colors: map-merge(
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
-
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold:  163 !default;
-
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:             $gray-900 !default;
-$yiq-text-light:            $white !default;
-
-// Characters which are escaped by the escape-svg function
-$escaped-characters: (
-  ("<", "%3c"),
-  (">", "%3e"),
-  ("#", "%23"),
-  ("(", "%28"),
-  (")", "%29"),
-) !default;
-
 
 // Options
 //
@@ -292,7 +281,7 @@ $enable-deprecation-messages:                 false !default;
 $spacer: 1rem !default;
 
 $spacers: () !default;
-$spacers: map-merge(
+$spacers: map.merge(
   (
     0:    0,
     // deprecated
@@ -317,7 +306,7 @@ $spacers: map-merge(
 
 // This variable affects the `.h-*` and `.w-*` classes.
 $sizes: () !default;
-$sizes: map-merge(
+$sizes: map.merge(
   (
     25: 25%,
     50: 50%,
@@ -407,9 +396,9 @@ $body-color:                $gray-800 !default;
 //
 // Style anchor elements.
 
-$link-color:                              theme-color("primary") !default;
+$link-color:                              map.get($theme-colors, "primary") !default;
 $link-decoration:                         none !default;
-$link-hover-color:                        darken($link-color, 15%) !default;
+$link-hover-color:                        color.adjust($link-color, $lightness: -15%) !default;
 $link-hover-decoration:                   underline !default;
 $link-weight:                             $font-weight-semibold !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
@@ -436,8 +425,8 @@ $grid-breakpoints: (
   xxl: 1900px
 ) !default;
 
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+@include functions.assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include functions.assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
 
 
 // Grid containers
@@ -452,7 +441,7 @@ $container-max-widths: (
   xxl: 1440px
 ) !default;
 
-@include _assert-ascending($container-max-widths, "$container-max-widths");
+@include functions.assert-ascending($container-max-widths, "$container-max-widths");
 
 
 // Grid columns
@@ -496,7 +485,7 @@ $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
 $embed-responsive-aspect-ratios: () !default;
-$embed-responsive-aspect-ratios: join(
+$embed-responsive-aspect-ratios: list.join(
   (
     (21 9),
     (16 9),
@@ -599,7 +588,7 @@ $table-dark-bg:               $gray-800 !default;
 $table-dark-accent-bg:        rgba($white, .05) !default;
 $table-dark-hover-color:      $table-dark-color !default;
 $table-dark-hover-bg:         rgba($white, .075) !default;
-$table-dark-border-color:     lighten($table-dark-bg, 7.5%) !default;
+$table-dark-border-color:     color.adjust($table-dark-bg, $lightness: 7.5%) !default;
 
 $table-striped-order:         odd !default;
 
@@ -641,7 +630,7 @@ $input-btn-border-width:      1px !default;
 // For each of Bootstrap's buttons, define text, background, and border color.
 
 $button-colors: () !default;
-$button-colors: map-merge(
+$button-colors: map.merge(
   (
     "primary":   $cyan,
     "secondary": $gray-900
@@ -650,7 +639,7 @@ $button-colors: map-merge(
 );
 
 $button-hover-colors: () !default;
-$button-hover-colors: map-merge(
+$button-hover-colors: map.merge(
   (
     "primary":   $cyan-600,
     "secondary": $gray-700
@@ -659,7 +648,7 @@ $button-hover-colors: map-merge(
 );
 
 $button-active-colors: () !default;
-$button-active-colors: map-merge(
+$button-active-colors: map.merge(
   (
     "primary":   $cyan-700,
     "secondary": $gray-800
@@ -668,7 +657,7 @@ $button-active-colors: map-merge(
 );
 
 $button-focus-border-colors: () !default;
-$button-focus-border-colors: map-merge(
+$button-focus-border-colors: map.merge(
   (
     "primary":   $cyan-200,
     "secondary": $gray-500
@@ -769,13 +758,13 @@ $input-plaintext-color:                 $body-color !default;
 
 $input-height-border:                   $input-border-width * 2 !default;
 
-$input-height-inner:                    add($input-line-height * 1em, $input-padding-y * 2) !default;
-$input-height-inner-half:               add($input-line-height * .5em, $input-padding-y) !default;
-$input-height-inner-quarter:            add($input-line-height * .25em, $input-padding-y * .5) !default;
+$input-height-inner:                    functions.add($input-line-height * 1em, $input-padding-y * 2) !default;
+$input-height-inner-half:               functions.add($input-line-height * .5em, $input-padding-y) !default;
+$input-height-inner-quarter:            functions.add($input-line-height * .25em, $input-padding-y * .5) !default;
 
-$input-height:                          add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
-$input-height-sm:                       add($input-line-height-sm * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
-$input-height-lg:                       add($input-line-height-lg * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
+$input-height:                          functions.add($input-line-height * 1em, functions.add($input-padding-y * 2, $input-height-border, false)) !default;
+$input-height-sm:                       functions.add($input-line-height-sm * 1em, functions.add($input-padding-y-sm * 2, $input-height-border, false)) !default;
+$input-height-lg:                       functions.add($input-line-height-lg * 1em, functions.add($input-padding-y-lg * 2, $input-height-border, false)) !default;
 
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
@@ -816,7 +805,8 @@ $custom-control-label-disabled-color:           $gray-600 !default;
 
 $custom-control-indicator-checked-color:        $component-active-color !default;
 $custom-control-indicator-checked-bg:           $component-active-bg !default;
-$custom-control-indicator-checked-disabled-bg:  rgba(theme-color("primary"), .5) !default;
+$custom-control-indicator-checked-disabled-bg:  rgba(map.get($theme-colors, "primary"), .5) !default;
+
 $custom-control-indicator-checked-box-shadow:   null !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
 
@@ -824,7 +814,8 @@ $custom-control-indicator-focus-box-shadow:     $input-focus-box-shadow !default
 $custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
 
 $custom-control-indicator-active-color:         $component-active-color !default;
-$custom-control-indicator-active-bg:            lighten($component-active-bg, 35%) !default;
+$custom-control-indicator-active-bg:            color.adjust($component-active-bg, $lightness: 35%) !default;
+
 $custom-control-indicator-active-box-shadow:    null !default;
 $custom-control-indicator-active-border-color:  $custom-control-indicator-active-bg !default;
 
@@ -842,7 +833,7 @@ $custom-radio-indicator-icon-checked:           url("data:image/svg+xml,<svg xml
 
 $custom-switch-width:                           $custom-control-indicator-size * 1.75 !default;
 $custom-switch-indicator-border-radius:         $custom-control-indicator-size * .5 !default;
-$custom-switch-indicator-size:                  subtract($custom-control-indicator-size, $custom-control-indicator-border-width * 4) !default;
+$custom-switch-indicator-size:                  functions.subtract($custom-control-indicator-size, $custom-control-indicator-border-width * 4) !default;
 
 $custom-select-padding-y:           $input-padding-y !default;
 $custom-select-padding-x:           $input-padding-x !default;
@@ -861,7 +852,7 @@ $custom-select-indicator-color:     $gray-800 !default;
 $custom-select-indicator:           url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'><path fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") !default;
 $custom-select-background:          escape-svg($custom-select-indicator) right $custom-select-padding-x center / $custom-select-bg-size no-repeat !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
-$custom-select-feedback-icon-padding-right: add(1em * .75, (2 * $custom-select-padding-y * .75) + $custom-select-padding-x + $custom-select-indicator-padding) !default;
+$custom-select-feedback-icon-padding-right: functions.add(1em * .75, (2 * $custom-select-padding-y * .75) + $custom-select-padding-x + $custom-select-indicator-padding) !default;
 $custom-select-feedback-icon-position:      center right ($custom-select-padding-x + $custom-select-indicator-padding) !default;
 $custom-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
 
@@ -899,7 +890,7 @@ $custom-range-thumb-border-radius:           1rem !default;
 $custom-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
 $custom-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
 $custom-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in IE/Edge
-$custom-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
+$custom-range-thumb-active-bg:               color.adjust($component-active-bg, $lightness: 35%) !default;
 $custom-range-thumb-disabled-bg:             $gray-500 !default;
 
 $custom-file-height:                $input-height !default;
@@ -930,8 +921,8 @@ $custom-file-text: (
 
 $form-feedback-margin-top:          $form-text-margin-top !default;
 $form-feedback-font-size:           $small-font-size !default;
-$form-feedback-valid-color:         theme-color("success") !default;
-$form-feedback-invalid-color:       theme-color("danger") !default;
+$form-feedback-valid-color:         map.get($theme-colors, "success") !default;
+$form-feedback-invalid-color:       map.get($theme-colors, "danger") !default;
 
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
 $form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'> <path fill='transparent' d='M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11Z'></path> <path fill='#{$form-feedback-icon-valid-color}' d='M16.64 8.732a1 1 0 0 1 .128 1.408l-5 6a1 1 0 0 1-1.475.067l-3-3a1 1 0 1 1 1.414-1.414l2.226 2.226 4.299-5.16a1 1 0 0 1 1.408-.127Z'></path> <path fill='#{$form-feedback-icon-valid-color}' d='M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Z'></path></svg>") !default;
@@ -939,7 +930,7 @@ $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
 $form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'> <path fill='transparent' d='M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11Z'></path> <path fill='#{$form-feedback-icon-invalid-color}' d='M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Z'> </path> <path fill='#{$form-feedback-icon-invalid-color}' d='M12 6a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1Zm0 9.5a1 1 0 0 1 1 1v.5a1 1 0 1 1-2 0v-.5a1 1 0 0 1 1-1Z'></path></svg>") !default;
 
 $form-validation-states: () !default;
-$form-validation-states: map-merge(
+$form-validation-states: map.merge(
   (
     "valid": (
       "color": $form-feedback-valid-color,
@@ -1043,7 +1034,7 @@ $dropdown-bg:                       $white !default;
 $dropdown-border-color:             rgba($black, .15) !default;
 $dropdown-border-radius:            0 !default;
 $dropdown-border-width:             $border-width !default;
-$dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width) !default;
+$dropdown-inner-border-radius:      functions.subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-bg:               $gray-200 !default;
 $dropdown-divider-margin-y:         $nav-divider-margin-y !default;
 $dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
@@ -1112,7 +1103,7 @@ $card-spacer-x:                     1.25rem !default;
 $card-border-width:                 $border-width !default;
 $card-border-radius:                1rem !default;
 $card-border-color:                 rgba($black, .125) !default;
-$card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
+$card-inner-border-radius:          functions.subtract($card-border-radius, $card-border-width) !default;
 $card-cap-bg:                       $white !default;
 $card-cap-color:                    null !default;
 $card-height:                       null !default;
@@ -1162,7 +1153,7 @@ $popover-max-width:                 276px !default;
 $popover-border-width:              0 !default;
 $popover-border-color:              rgba($black, .2) !default;
 $popover-border-radius:             $border-radius-lg !default;
-$popover-inner-border-radius:       subtract($popover-border-radius, $popover-border-width) !default;
+$popover-inner-border-radius:       functions.subtract($popover-border-radius, $popover-border-width) !default;
 $popover-box-shadow:                0 .25rem .5rem rgba($black, .2) !default;
 
 $popover-header-bg:                 $popover-bg !default;
@@ -1178,6 +1169,7 @@ $popover-arrow-width:               2rem !default;
 $popover-arrow-height:              1.5rem !default;
 $popover-arrow-color:               $gray-900 !default;
 
+// asdf
 $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
 
 
@@ -1234,7 +1226,7 @@ $modal-content-bg:                  $white !default;
 $modal-content-border-color:        null !default;
 $modal-content-border-width:        0 !default;
 $modal-content-border-radius:       $border-radius-lg !default;
-$modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width) !default;
+$modal-content-inner-border-radius: functions.subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       0 !default;
 $modal-content-box-shadow-sm-up:    0 !default;
 
@@ -1283,7 +1275,7 @@ $progress-bg:                       $gray-200 !default;
 $progress-border-radius:            $border-radius !default;
 $progress-box-shadow:               inset 0 .1rem .1rem rgba($black, .1) !default;
 $progress-bar-color:                $white !default;
-$progress-bar-bg:                   theme-color("primary") !default;
+$progress-bar-bg:                   map.get($theme-colors, "primary") !default;
 $progress-bar-animation-timing:     1s linear infinite !default;
 $progress-bar-transition:           width .6s ease !default;
 
@@ -1343,7 +1335,7 @@ $breadcrumb-margin-bottom:          0 !default;
 $breadcrumb-bg:                     transparent !default;
 $breadcrumb-divider-color:          $gray-900 !default;
 $breadcrumb-active-color:           $gray-900 !default;
-$breadcrumb-divider:                quote("/") !default;
+$breadcrumb-divider:                string.quote("/") !default;
 
 $breadcrumb-border-radius:          $border-radius !default;
 
@@ -1421,7 +1413,7 @@ $user-selects: all, auto, none !default;
 // Printing
 
 $print-page-size:                   a3 !default;
-$print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
+$print-body-min-width:              map.get($grid-breakpoints, "lg") !default;
 
 
 // Further ES Atoms

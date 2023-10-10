@@ -304,20 +304,21 @@ export default {
     },
 };
 </script>
+
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+@use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .es-file-upload {
-    background-color: $gray-200;
-    border: $btn-border-width dotted $border-color;
-    @include media-breakpoint-down(sm) {
-        background-color: $white;
-        border: $btn-border-width solid $border-color;
+    background-color: variables.$gray-200;
+    border: variables.$btn-border-width dotted variables.$border-color;
+    @include breakpoints.media-breakpoint-down(sm) {
+        background-color: variables.$white;
+        border: variables.$btn-border-width solid variables.$border-color;
     }
 
     &.active {
-        border: $btn-border-width dotted $cyan-500;
+        border: variables.$btn-border-width dotted variables.$cyan-500;
     }
 }
 
