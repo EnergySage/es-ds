@@ -99,9 +99,9 @@
                             'thumbnail-inner-wrapper': loading,
                         }">
                         <template v-if="!loading">
-                            <div class="h-100">
+                            <div class="image-preview-div h-100 w-100 overflow-hidden">
                                 <b-img
-                                    class="image-preview"
+                                    class="image-preview h-100 w-100"
                                     :src="fileSource"
                                     :alt="fileName" />
                             </div>
@@ -339,8 +339,7 @@ a:hover {
 }
 
 .image-preview {
-    float: left;
-    height: 200%;
+    object-fit: cover;
 }
 
 </style>
