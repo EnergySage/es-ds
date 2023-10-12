@@ -37,7 +37,7 @@ export default (
             links: [
                 { text: 'Solar calculator', url: `${ES_DOMAIN}/solar/calculator/` },
                 { text: 'Solar rebates', url: `${ES_DOMAIN}/market/equipment-rebates/` },
-                { text: 'News', url: NEWS_DOMAIN, newTab: true },
+                { text: 'News', url: `${ES_DOMAIN}/blog` },
                 { text: 'Help center', url: HELP_DOMAIN, newTab: true },
                 { text: 'Home solar guide', url: `${ES_DOMAIN}/shop/home-solar/` },
                 { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
