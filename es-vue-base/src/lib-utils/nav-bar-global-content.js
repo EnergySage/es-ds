@@ -4,7 +4,8 @@ export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
     // exposed separately from ES_DOMAIN in case we want to use prod for images in local/dev
     ES_IMAGE_DOMAIN = process.env.ES_IMAGE_DOMAIN || 'https://www.energysage.com',
-    NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://energysage.com/blog',
+    // eslint-disable-next-line no-unused-vars
+    NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://energysage.com',
     COMMUNITY_SOLAR_DOMAIN = process.env.COMMUNITY_SOLAR_DOMAIN || 'https://communitysolar.energysage.com',
     HEAT_PUMPS_DOMAIN = process.env.HEAT_PUMPS_DOMAIN || 'https://heatpumps.energysage.com',
 ) => ({
@@ -36,7 +37,6 @@ export default (
                         {
                             name: 'Best solar panels',
                             link: `${ES_DOMAIN}/solar/best-solar-panels-complete-ranking/`,
-                            newTab: true,
                         },
                         {
                             name: 'How much do solar panels cost?',
@@ -54,13 +54,11 @@ export default (
                         {
                             name: 'Best home batteries',
                             link: `${ES_DOMAIN}/energy-storage/best-home-batteries/`,
-                            newTab: true,
                         },
                         {
                             name: 'Home batteries vs. generators',
                             // eslint-disable-next-line max-len
                             link: `${ES_DOMAIN}/energy-storage/battery-backup-power-vs-generators-which-is-right-for-you/`,
-                            newTab: true,
                         },
                     ],
                 },
@@ -79,7 +77,6 @@ export default (
                         {
                             name: 'How do heat pumps work?',
                             link: `${ES_DOMAIN}/heat-pumps/how-do-heat-pumps-work/`,
-                            newTab: true,
                         },
                     ],
                 },
@@ -101,7 +98,6 @@ export default (
                         {
                             name: 'How much does it cost to charge an EV?',
                             link: `${ES_DOMAIN}/ev-charging/electric-vehicle-charging-cost/`,
-                            newTab: true,
                         },
                     ],
                 },
@@ -132,17 +128,14 @@ export default (
                         {
                             name: 'Solar for businesses',
                             link: `${ES_DOMAIN}/business-solutions/commercial-solar-benefits/`,
-                            newTab: true,
                         },
                         {
                             name: 'Solar for nonprofit organizations',
                             link: `${ES_DOMAIN}/business-solutions/solar-nonprofit-benefits-financing/`,
-                            newTab: true,
                         },
                         {
                             name: 'Backup power for businesses',
                             link: `${ES_DOMAIN}/business-solutions/energy-storage-for-businesses/`,
-                            newTab: true,
                         },
                     ],
                 },
@@ -156,12 +149,10 @@ export default (
                         {
                             name: 'How to choose a solar loan',
                             link: `${ES_DOMAIN}/solar/solar-loans/`,
-                            newTab: true,
                         },
                         {
                             name: 'What to know about solar leases',
                             link: `${ES_DOMAIN}/solar/solar-leases/`,
-                            newTab: true,
                         },
                     ],
                 },
@@ -172,23 +163,19 @@ export default (
                             name: 'How long can you run your house on a Tesla Powerwall?',
                             // eslint-disable-next-line max-len
                             link: `${ES_DOMAIN}/energy-storage/tesla-powerwall-how-much-home-can-you-run-on-it-for-how-long/`,
-                            newTab: true,
                         },
                         {
                             name: 'How have solar panel cost and efficiency changed over time?',
                             link: `${ES_DOMAIN}/solar/solar-panel-efficiency-cost-over-time/`,
-                            newTab: true,
                         },
                     ],
-                    link: NEWS_DOMAIN,
-                    newTab: true,
+                    link: `${ES_DOMAIN}/blog/`,
                 },
             ],
             featuredArticle: {
                 linkName: "Editors' pick",
                 linkUrl: `${ES_DOMAIN}/solar/are-solar-panels-worth-it/`,
                 lede: 'Are solar panels worth it?',
-                newTab: true,
                 image500: `${ES_IMAGE_DOMAIN}/static/img/navbar/articles/are-solar-panels-worth-it-500w.png`,
                 imageAlt: 'home with solar panels',
             },
@@ -444,17 +431,14 @@ export default (
                 {
                     name: 'Solar for businesses',
                     link: `${ES_DOMAIN}/business-solutions/commercial-solar-benefits/`,
-                    newTab: true,
                 },
                 {
                     name: 'Solar for nonprofit organizations',
                     link: `${ES_DOMAIN}/business-solutions/solar-nonprofit-benefits-financing/`,
-                    newTab: true,
                 },
                 {
                     name: 'Energy storage for businesses',
                     link: `${ES_DOMAIN}/business-solutions/energy-storage-for-businesses/`,
-                    newTab: true,
                 },
             ],
         },
