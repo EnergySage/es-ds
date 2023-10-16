@@ -4,7 +4,7 @@ export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
     // exposed separately from ES_DOMAIN in case we want to use prod for images in local/dev
     ES_IMAGE_DOMAIN = process.env.ES_IMAGE_DOMAIN || 'https://www.energysage.com',
-    NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://news.energysage.com',
+    NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://energysage.com/blog',
     COMMUNITY_SOLAR_DOMAIN = process.env.COMMUNITY_SOLAR_DOMAIN || 'https://communitysolar.energysage.com',
     HEAT_PUMPS_DOMAIN = process.env.HEAT_PUMPS_DOMAIN || 'https://heatpumps.energysage.com',
 ) => ({
