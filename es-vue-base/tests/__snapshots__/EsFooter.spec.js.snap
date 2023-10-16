@@ -60,7 +60,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
               <li class="mt-25 mb-50"><a href="https://www.energysage.com/market/equipment-rebates/" class="text-reset">
                   Solar rebates
                 </a></li>
-              <li class="mt-25 mb-50"><a href="https://www.energysage.com/blog" class="text-reset">
+              <li class="mt-25 mb-50"><a href="https://www.energysage.com/blog/" class="text-reset">
                   News
                 </a></li>
               <li class="mt-25 mb-50"><a href="https://help.energysage.com" rel="noopener" target="_blank" class="text-reset">
