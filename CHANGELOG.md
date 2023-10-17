@@ -827,6 +827,7 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[1.1.6]: https://github.com/EnergySage/es-ds/compare/v1.1.5...v1.1.6
 [1.1.5]: https://github.com/EnergySage/es-ds/compare/v1.1.4...v1.1.5
 [1.1.4]: https://github.com/EnergySage/es-ds/compare/v0.25.16...v1.1.4
 [0.25.16]: https://github.com/EnergySage/es-ds/compare/v0.25.15...v0.25.16
