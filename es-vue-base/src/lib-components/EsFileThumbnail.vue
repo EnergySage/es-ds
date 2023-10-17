@@ -99,10 +99,9 @@
                             'thumbnail-inner-wrapper': loading,
                         }">
                         <template v-if="!loading">
-                            <div class="h-100 w-100">
+                            <div class="image-preview-div h-100 w-100 overflow-hidden">
                                 <b-img
-                                    fluid
-                                    class="image-preview"
+                                    class="image-preview h-100 w-100"
                                     :src="fileSource"
                                     :alt="fileName" />
                             </div>
@@ -264,56 +263,57 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/includes';
+@use "~@energysage/es-bs-base/scss/variables" as variables;
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .desktop-preview {
     width: 165px;
 }
 
 .thumbnail-border {
-    border: 2px solid $card-border-color;
+    border: 2px solid variables.$card-border-color;
 }
 
 .thumbnail-border-failure {
-    border: 2px solid $danger;
+    border: 2px solid variables.$danger;
 }
 
 .thumbnail-outer-wrapper {
     height: 165px;
     width: 165px;
     z-index: 2;
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         height: 110px;
         width: 100px;
     }
 }
 
 .thumbnail-inner-wrapper-x {
-    border: 2px solid $card-border-color;
+    border: 2px solid variables.$card-border-color;
     height: 160px;
     top: -18px;
     width: 160px;
-    z-index: -1; // dragons
+    z-index: -1;
 
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         height: 105px;
         width: 95px;
     }
 
     &:hover {
-        border: 2px solid $gray-900;
+        border: 2px solid variables.$gray-900;
     }
 }
 
 .thumbnail-inner-wrapper {
-    border: 2px solid $card-border-color;
+    border: 2px solid variables.$card-border-color;
     height: 160px;
     overflow: hidden;
     top: 8px;
     width: 160px;
-    z-index: -1; // dragons
+    z-index: -1;
 
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         height: 105px;
         width: 95px;
     }
@@ -325,11 +325,11 @@ export default {
 }
 
 a:hover {
-    color: $gray-800;
+    color: variables.$gray-800;
 }
 
 .svg-fill-wrapper {
-    border-radius: 1rem; // dragons
+    border-radius: 1rem;
     height: 20px;
     position: absolute;
     right: 2px;
@@ -339,13 +339,7 @@ a:hover {
 }
 
 .image-preview {
-    @include media-breakpoint-up(md) {
-        min-height: 100px;
-    }
-
-    @include media-breakpoint-up(lg) {
-        min-height: 150px;
-    }
+    object-fit: cover;
 }
 
 </style>
