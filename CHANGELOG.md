@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.6] - 2023-10-17
+
+### Changed
+
+- Updated links in `EsNavBar` to reflect URL changes from the site redesign
+- Updated links in `EsFooter` to reflect URL changes from the site redesign
+
 ## [1.1.5] - 2023-10-17
 
 ### Changed
