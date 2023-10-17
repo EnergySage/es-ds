@@ -28,7 +28,7 @@ export default (
                     subtopics: [
                         {
                             name: 'Home solar guide',
-                            link: `${ES_DOMAIN}/shop/home-solar/`,
+                            link: `${ES_DOMAIN}/solar/`,
                         },
                         {
                             name: 'Community solar guide',
@@ -393,7 +393,7 @@ export default (
                 },
                 {
                     name: 'Home battery incentives',
-                    link: `${ES_DOMAIN}/local-data/storage-rebates-incentives/`,
+                    link: `${ES_DOMAIN}/energy-storage/benefits-of-storage/energy-storage-incentives/`,
                 },
                 {
                     name: 'Compare home batteries',
