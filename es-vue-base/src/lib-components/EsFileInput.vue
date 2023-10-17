@@ -206,7 +206,7 @@ export default {
             this.pickedItems = [];
         },
         async verifyMimeType(file) {
-            // If a folder then trigger fileTypeError
+            // If an empty folder then trigger fileTypeError
             if (file.type === '') {
                 this.$emit('fileIsAFolderError');
             }
