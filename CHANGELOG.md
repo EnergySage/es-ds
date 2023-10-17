@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.5] - 2023-10-17
+
+### Changed
+
+- Fixed `EsFileThumbnail` to stop stretching images. Most images of standard
+letter dimensions (8.5" x 11") will appear fine. Extremely wide and short images
+will also be fine. The outlier is an extremely narrow and tall image, but I
+expect the use case for this to be small.
+
 ## [1.1.4] - 2023-10-03
 
 ### Added
@@ -811,6 +820,7 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[1.1.5]: https://github.com/EnergySage/es-ds/compare/v1.1.4...v1.1.5
 [1.1.4]: https://github.com/EnergySage/es-ds/compare/v0.25.16...v1.1.4
 [0.25.16]: https://github.com/EnergySage/es-ds/compare/v0.25.15...v0.25.16
 [0.25.15]: https://github.com/EnergySage/es-ds/compare/v0.25.14...v0.25.15
