@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-// keeping COMMUNITY_SOLAR_DOMAIN and HEAT_PUMPS_DOMAIN for now to keep function argument order intact
+// keeping COMMUNITY_SOLAR_DOMAIN, HEAT_PUMPS_DOMAIN and NEWS_DOMAIN for now to keep function argument order intact
 // and to minimize breaking change to consuming applications, but they are now deprecated in this function
 export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
-    NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://news.energysage.com',
+    NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://www.energysage.com',
     COMMUNITY_SOLAR_DOMAIN = process.env.COMMUNITY_SOLAR_DOMAIN || 'https://communitysolar.energysage.com',
     HEAT_PUMPS_DOMAIN = process.env.HEAT_PUMPS_DOMAIN || 'https://heatpumps.energysage.com',
     HELP_DOMAIN = process.env.HELP_DOMAIN || 'https://help.energysage.com',
@@ -37,7 +37,7 @@ export default (
             links: [
                 { text: 'Solar calculator', url: `${ES_DOMAIN}/solar/calculator/` },
                 { text: 'Solar rebates', url: `${ES_DOMAIN}/market/equipment-rebates/` },
-                { text: 'News', url: NEWS_DOMAIN, newTab: true },
+                { text: 'News', url: `${ES_DOMAIN}/blog/` },
                 { text: 'Help center', url: HELP_DOMAIN, newTab: true },
                 { text: 'Home solar guide', url: `${ES_DOMAIN}/shop/home-solar/` },
                 { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
