@@ -99,10 +99,9 @@
                             'thumbnail-inner-wrapper': loading,
                         }">
                         <template v-if="!loading">
-                            <div class="h-100 w-100">
+                            <div class="image-preview-div h-100 w-100 overflow-hidden">
                                 <b-img
-                                    fluid
-                                    class="image-preview"
+                                    class="image-preview h-100 w-100"
                                     :src="fileSource"
                                     :alt="fileName" />
                             </div>
@@ -294,7 +293,7 @@ export default {
     height: 160px;
     top: -18px;
     width: 160px;
-    z-index: -1; // dragons
+    z-index: -1;
 
     @include breakpoints.media-breakpoint-down(md) {
         height: 105px;
@@ -312,7 +311,7 @@ export default {
     overflow: hidden;
     top: 8px;
     width: 160px;
-    z-index: -1; // dragons
+    z-index: -1;
 
     @include breakpoints.media-breakpoint-down(md) {
         height: 105px;
@@ -330,7 +329,7 @@ a:hover {
 }
 
 .svg-fill-wrapper {
-    border-radius: 1rem; // dragons
+    border-radius: 1rem;
     height: 20px;
     position: absolute;
     right: 2px;
@@ -340,13 +339,7 @@ a:hover {
 }
 
 .image-preview {
-    @include breakpoints.media-breakpoint-up(md) {
-        min-height: 100px;
-    }
-
-    @include breakpoints.media-breakpoint-up(lg) {
-        min-height: 150px;
-    }
+    object-fit: cover;
 }
 
 </style>
