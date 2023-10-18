@@ -39,6 +39,7 @@ Thumbs.db
 # Folders to ignore
 /js/coverage/
 /node_modules/
+/node_modules-*/
 /.hugo_build.lock
 
 dist
