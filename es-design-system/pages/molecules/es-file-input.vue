@@ -11,6 +11,7 @@
                 :file-types="['image/png', 'application/pdf']"
                 @fileSizeError="fileSizeError"
                 @fileTypeError="fileTypeError"
+                @fileIsAFolderError="fileIsAFolderError"
                 @readyToUpload="readyToUpload"
                 @uploadSuccess="uploadSuccess"
                 @uploadFailure="uploadFailure"
@@ -46,6 +47,7 @@
                 :collapsed="true"
                 @fileSizeError="fileSizeError"
                 @fileTypeError="fileTypeError"
+                @fileIsAFolderError="fileIsAFolderError"
                 @readyToUpload="readyToUpload"
                 @uploadSuccess="uploadSuccess"
                 @uploadFailure="uploadFailure"
@@ -184,6 +186,7 @@
             doc-source="es-design-system/pages/molecules/es-file-input.vue" />
     </div>
 </template>
+
 <script>
 export default {
     name: 'EsFileInputDocs',
@@ -226,7 +229,12 @@ export default {
                 + 'emitted. The payload is the name of the file.',
             },
             {
-                name: '@fileTypeError',
+                name: '@fileIsAFolderError',
+                payload: 'String',
+                description: 'If the user tries to upload a folder.',
+            },
+            {
+                name: '@file',
                 payload: 'String',
                 description: 'If the file type of a file picked is not in the fileTypes array defined as a '
                 + 'prop, this event is emitted. The payload is the name of the file that was not accepted.',
@@ -272,6 +280,9 @@ export default {
     methods: {
         fileTypeError(fileName) {
             this.events.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger' });
+        },
+        fileIsAFolderError() {
+            this.events.push({ msg: 'fileIsAFolderError', variant: 'danger' });
         },
         onSubmit() {
             this.uploadUrls = this.fileObjects.map(({ name }) => ({

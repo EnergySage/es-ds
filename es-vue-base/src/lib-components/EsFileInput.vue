@@ -206,6 +206,10 @@ export default {
             this.pickedItems = [];
         },
         async verifyMimeType(file) {
+            // If an empty folder then trigger fileTypeError
+            if (file.type === '') {
+                this.$emit('fileIsAFolderError');
+            }
             return new Promise((resolve, reject) => {
                 const fileReader = new FileReader();
                 fileReader.onload = (evt) => {
@@ -304,9 +308,9 @@ export default {
     },
 };
 </script>
+
 <style lang="scss" scoped>
-@import '~@energysage/es-bs-base/scss/bootstrap';
-@import "~@energysage/es-bs-base/scss/variables";
+@import '~@energysage/es-bs-base/scss/includes';
 
 .es-file-upload {
     background-color: $gray-200;
