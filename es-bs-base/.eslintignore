@@ -4,3 +4,4 @@
 /_site/
 /js/coverage/
 /site/static/sw.js
+node_modules*/
