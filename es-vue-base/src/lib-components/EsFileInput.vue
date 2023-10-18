@@ -206,6 +206,10 @@ export default {
             this.pickedItems = [];
         },
         async verifyMimeType(file) {
+            // If an empty folder then trigger fileTypeError
+            if (file.type === '') {
+                this.$emit('fileIsAFolderError');
+            }
             return new Promise((resolve, reject) => {
                 const fileReader = new FileReader();
                 fileReader.onload = (evt) => {
