@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "sass:meta";
+@use '../variables';
 
 // stylelint-disable property-blacklist, scss/dollar-variable-default
 
@@ -45,9 +46,6 @@ $rfs-rem-value: 16 !default;
 
 // Safari iframe resize bug: https://github.com/twbs/rfs/issues/14
 $rfs-safari-iframe-resize-bug-fix: false !default;
-
-// Disable RFS by setting $enable-responsive-font-sizes to false
-$enable-responsive-font-sizes: true !default;
 
 // Cache $rfs-base-font-size unit
 $rfs-base-font-size-unit: math.unit($rfs-base-font-size);
@@ -180,7 +178,7 @@ $rfs-breakpoint-unit-cache: math.unit($rfs-breakpoint);
     $rfs-static: if($rfs-font-size-unit == rem, #{divide($fs, $rfs-rem-value)}rem, #{$fs}px);
 
     // Only add the media query if the font size is bigger than the minimum font size
-    @if $fs <= $rfs-base-font-size or not $enable-responsive-font-sizes {
+    @if $fs <= $rfs-base-font-size or not variables.$enable-responsive-font-sizes {
       font-size: #{$rfs-static}#{$rfs-suffix};
     }
     @else {
