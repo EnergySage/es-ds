@@ -3,9 +3,9 @@
         <div class="nav-item">
             <div class="nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100">
                 <IconPerson class="align-self-center" />
-                <div class="first-name align-self-center pl-50">
+                <span class="sr-only">
                     {{ loggedOut.menuButtonText }}
-                </div>
+                </span>
             </div>
             <div class="menu">
                 <ul
