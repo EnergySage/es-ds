@@ -4,9 +4,9 @@
         :class="{
             ['EsAccordion--' + variant]: true,
             'rounded-bottom': variant !== 'minimal',
-        }">
+        }"
+        role="tab">
         <header
-            role="tab"
             class="position-relative">
             <component
                 :is="headingTag"
