@@ -10,7 +10,7 @@ exports[`EsAccordion EsAccordionList expands one item and collapses another 1`] 
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
         </svg></h3> <button class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"><span class="sr-only">expand</span></button>
     </header>
-    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel" tabindex="0">
       <div id="accordion-id-1" class="collapse" style="display: none;">
         <div class="EsAccordion-content pb-25 bg-white pt-100 px-100 px-sm-200">
           <p>My content 1.</p>
@@ -24,7 +24,7 @@ exports[`EsAccordion EsAccordionList expands one item and collapses another 1`] 
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
         </svg></h3> <button class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"><span class="sr-only">collapse</span></button>
     </header>
-    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel" tabindex="0">
       <div id="accordion-id-2" class="collapse show">
         <div class="EsAccordion-content pb-25 bg-white pt-100 px-100 px-sm-200">
           <p>My content 2.</p>
@@ -43,7 +43,7 @@ exports[`EsAccordion EsAccordionList mounts with initial expand; collapse also w
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
         </svg></h3> <button class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"><span class="sr-only">collapse</span></button>
     </header>
-    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel" tabindex="0">
       <div id="accordion-id" class="collapse show">
         <div class="EsAccordion-content pb-25 bg-white pt-100 px-100 px-sm-200">
           <p>My content.</p>
@@ -62,7 +62,7 @@ exports[`EsAccordion EsAccordionList performs multi-expand correctly 1`] = `
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
         </svg></h3> <button class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"><span class="sr-only">collapse</span></button>
     </header>
-    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel" tabindex="0">
       <div id="accordion-id-1" class="collapse show">
         <div class="EsAccordion-content pb-25 bg-white pt-100 px-100 px-sm-200">
           <p>My content 1.</p>
@@ -76,7 +76,7 @@ exports[`EsAccordion EsAccordionList performs multi-expand correctly 1`] = `
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
         </svg></h3> <button class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"><span class="sr-only">expand</span></button>
     </header>
-    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel" tabindex="0">
       <div id="accordion-id-2" class="collapse" style="display: none;">
         <div class="EsAccordion-content pb-25 bg-white pt-100 px-100 px-sm-200">
           <p>My content 2.</p>
@@ -97,7 +97,7 @@ exports[`EsAccordion EsAccordionList v-model test 1`] = `
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
         </svg></h3> <button class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"><span class="sr-only">collapse</span></button>
     </header>
-    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel" tabindex="0">
       <div id="accordion-id-1" class="collapse show">
         <div class="EsAccordion-content pb-25 bg-white pt-100 px-100 px-sm-200">
           <p>My content 1.</p>
@@ -113,7 +113,7 @@ exports[`EsAccordion EsAccordionList v-model test 1`] = `
           <path fill-rule="evenodd" clip-rule="evenodd" d="M3.293 8.293a1 1 0 0 1 1.414 0L12 15.586l7.293-7.293a1 1 0 1 1 1.414 1.414l-8 8a1 1 0 0 1-1.414 0l-8-8a1 1 0 0 1 0-1.414Z"></path>
         </svg></h3> <button class="EsAccordion-button position-absolute w-100 h-100 border-0 bg-transparent"><span class="sr-only">expand</span></button>
     </header>
-    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel">
+    <transition-stub css="true" enterclass="" leaveclass="collapse show" entertoclass="collapse show" leavetoclass="collapse" enteractiveclass="collapsing" leaveactiveclass="collapsing" role="tabpanel" tabindex="0">
       <div id="accordion-id-2" class="collapse" style="display: none;">
         <div class="EsAccordion-content pb-25 bg-white pt-100 px-100 px-sm-200">
           <p>My content 2.</p>
