@@ -4,10 +4,9 @@
         :class="{
             ['EsAccordion--' + variant]: true,
             'rounded-bottom': variant !== 'minimal',
-        }">
-        <header
-            role="tab"
-            class="position-relative">
+        }"
+        role="tab">
+        <header class="position-relative">
             <component
                 :is="headingTag"
                 class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0 text-body text-body"
@@ -30,7 +29,8 @@
         <b-collapse
             :id="id"
             :visible="isVisible"
-            role="tabpanel">
+            role="tabpanel"
+            tabindex="0">
             <div
                 class="EsAccordion-content pb-25"
                 :class="{
