@@ -83,6 +83,22 @@
                             Please enter a valid phone number.
                         </template>
                     </es-form-input>
+                    <es-form-input
+                        id="maskedPhoneNumber"
+                        v-model="form.maskedPhoneNumber"
+                        :state="validateState('form.maskedPhoneNumber')"
+                        :disabled="isSubmitInProgress"
+                        required
+                        type="maskedTel"
+                        @change="touchOnChange('form.maskedPhoneNumber')"
+                        @blur="$v.form.maskedPhoneNumber.$touch">
+                        <template #label>
+                            Masked phone number
+                        </template>
+                        <template #errorMessage>
+                            Please enter a valid phone number.
+                        </template>
+                    </es-form-input>
                     <es-form-textarea
                         id="notes"
                         v-model="form.notes"
@@ -148,6 +164,7 @@ export default {
                 email: null,
                 notes: null,
                 password: null,
+                maskedPhoneNumber: null,
             },
         };
     },
@@ -171,6 +188,10 @@ export default {
                 [vuelidateKeys.HAS_SPECIAL_CHARACTER]: vuelidateHasSpecialCharacter(1),
                 [vuelidateKeys.HAS_UPPERCASE_LETTER]: vuelidateHasUppercaseLetter(1),
                 [vuelidateKeys.HAS_LOWERCASE_LETTER]: vuelidateHasLowercaseLetter(1),
+            },
+            maskedPhoneNumber: {
+                [vuelidateKeys.REQUIRED]: vuelidateRequired,
+                [vuelidateKeys.PHONE]: vuelidatePhone,
             },
         },
     },
