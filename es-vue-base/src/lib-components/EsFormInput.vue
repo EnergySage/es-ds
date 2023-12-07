@@ -144,7 +144,7 @@ export default {
         },
         phoneMaskValue: {
             type: String,
-            default: '(###)-###-####',
+            default: '(###) ###-####',
             required: false,
         },
     },
