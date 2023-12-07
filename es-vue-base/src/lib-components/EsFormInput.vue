@@ -30,7 +30,7 @@
             <b-form-input
                 :id="id"
                 v-bind="$attrs"
-                v-mask="type === 'maskedTel' ? maskValue : null"
+                v-mask="type === 'maskedTel' ? phoneMaskValue : null"
                 :type="type === 'maskedTel' ? 'tel' : type"
                 class="es-form-input w-100"
                 :class="{ 'has-prefix-icon': $slots.prefixIcon }"
@@ -142,9 +142,11 @@ export default {
             type: Boolean,
             default: false,
         },
-    },
-    data() {
-        return { maskValue: '(###)-###-####' };
+        phoneMaskValue: {
+            type: String,
+            default: '(###)-###-####',
+            required: false,
+        },
     },
     computed: {
         hasSuccess() {
