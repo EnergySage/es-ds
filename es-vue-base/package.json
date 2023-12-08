@@ -105,6 +105,7 @@
     "url": "git@github.com:EnergySage/es-ds.git"
   },
   "dependencies": {
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "vue-the-mask": "^0.11.1"
   }
 }

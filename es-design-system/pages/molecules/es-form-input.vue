@@ -156,6 +156,28 @@
 
         <div class="my-450">
             <h2>
+                Placeholder
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="placeholderExample"
+                        v-model="form.maskedPhoneNumber"
+                        type="maskedTel"
+                        placeholder="(XXX) XXX-XXXX">
+                        <template #label>
+                            Masked phone number
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-450">
+            <h2>
                 Hidden label
             </h2>
             <p>

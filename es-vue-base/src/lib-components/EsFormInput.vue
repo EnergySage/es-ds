@@ -29,12 +29,13 @@
             </span>
             <b-form-input
                 :id="id"
-                :type="type"
+                v-bind="$attrs"
+                v-mask="type === 'maskedTel' ? phoneMaskValue : null"
+                :type="type === 'maskedTel' ? 'tel' : type"
                 class="es-form-input w-100"
                 :class="{ 'has-prefix-icon': $slots.prefixIcon }"
                 :disabled="disabled"
                 :state="state"
-                v-bind="$attrs"
                 v-on="$listeners" />
             <b-form-text v-if="hasMessage && ((!hasSuccess && state) || state == null)">
                 <slot name="message" />
@@ -55,6 +56,7 @@
 </template>
 
 <script lang="js">
+import { mask } from 'vue-the-mask';
 import {
     BFormText,
     BFormInput,
@@ -69,6 +71,15 @@ export default {
         BFormInput,
         BFormInvalidFeedback,
         BFormValidFeedback,
+    },
+    directives: {
+        mask: {
+            bind(el, binding, vnode) {
+                if (binding.value && mask) {
+                    mask(el, binding, vnode); // Apply the mask if a valid mask pattern is provided
+                }
+            },
+        },
     },
     // Prevents attributes from being applied to first <div>
     // v-bind="$attr" is on the input instead
@@ -101,6 +112,7 @@ export default {
                 'number',
                 'password',
                 'tel',
+                'maskedTel',
             ].includes(val),
         },
         /**
@@ -129,6 +141,11 @@ export default {
         labelSrOnly: {
             type: Boolean,
             default: false,
+        },
+        phoneMaskValue: {
+            type: String,
+            default: '(###) ###-####',
+            required: false,
         },
     },
     computed: {
