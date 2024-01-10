@@ -148,6 +148,20 @@ export default {
         },
     },
     methods: {
+        removeSpaceFromFileNames(files) {
+            const newFiles = files.map((file) => {
+            // Create a new Blob object which is a clone of the file
+                const blob = new Blob([file], { type: file.type });
+
+                // Return a new File object with the modified name
+                return new File(
+                    [blob],
+                    file.name.replace(/\s/g, ''),
+                    { type: file.type, lastModified: file.lastModified },
+                );
+            });
+            return newFiles;
+        },
         filterLargeFiles(files) {
             // Takes an array of files, and filters out any files that exceed the maxFileSizeMb prop. Emits a
             // fileSizeError event for each file that exceeds the maxFileSizeMb prop. The File API uses bytes, so
@@ -181,10 +195,11 @@ export default {
         },
         async verifyFiles(files) {
             const correctlySizedFiles = this.filterLargeFiles(files);
+            const correctlyNamedFiles = this.removeSpaceFromFileNames(correctlySizedFiles);
 
             // Make sure the file is the correct mime type
             let newValidFiles = await Promise.allSettled(
-                correctlySizedFiles.map(async (file) => this.verifyMimeType(file)),
+                correctlyNamedFiles.map(async (file) => this.verifyMimeType(file)),
             );
             // Filter out undefined values and "rejected"
             newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled')
