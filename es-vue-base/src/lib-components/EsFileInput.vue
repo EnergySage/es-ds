@@ -149,17 +149,12 @@ export default {
     },
     methods: {
         removeSpaceFromFileNames(files) {
-            const newFiles = files.map((file) => {
-            // Create a new Blob object which is a clone of the file
-                const blob = new Blob([file], { type: file.type });
-
-                // Return a new File object with the modified name
-                return new File(
-                    [blob],
-                    file.name.replace(/\s/g, ''),
-                    { type: file.type, lastModified: file.lastModified },
-                );
-            });
+            const newFiles = files.map((file) => new File(
+                // Return new File object with the modified name (without any space)
+                [file],
+                file.name.replace(/\s/g, ''),
+                { type: file.type, lastModified: file.lastModified },
+            ));
             return newFiles;
         },
         filterLargeFiles(files) {
