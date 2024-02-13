@@ -118,7 +118,6 @@ import EsNavBarLink from './EsNavBarLink.vue';
 import EsLogo from '../lib-assets/es-logo.vue';
 import IconFacebook from '../lib-icons/icon-facebook.vue';
 import IconTwitter from '../lib-icons/icon-twitter.vue';
-import IconXLogo from '../lib-icons/icon-X-logo.vue';
 import IconYoutube from '../lib-icons/icon-youtube.vue';
 import IconLinkedin from '../lib-icons/icon-linkedin.vue';
 import IconInstagram from '../lib-icons/icon-instagram.vue';
@@ -131,7 +130,6 @@ export default {
         // Used by content.socialLinks
         IconFacebook,
         IconTwitter,
-        IconXLogo,
         IconYoutube,
         IconInstagram,
         IconLinkedin,

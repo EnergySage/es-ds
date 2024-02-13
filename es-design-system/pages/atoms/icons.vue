@@ -470,10 +470,6 @@
                 <code>IconTwitter</code>
             </li>
             <li>
-                <icon-X-logo />
-                <code>IconXLogo</code>
-            </li>
-            <li>
                 <icon-youtube />
                 <code>IconYoutube</code>
             </li>
