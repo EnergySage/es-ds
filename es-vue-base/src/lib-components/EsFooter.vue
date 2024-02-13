@@ -49,7 +49,7 @@
                         class="d-block mb-150"
                         :href="content.home.link">
                         <span class="sr-only">
-                            {{ content.home.name }}  
+                            {{ content.home.name }}
                         </span>
                         <es-logo
                             height="36px"
