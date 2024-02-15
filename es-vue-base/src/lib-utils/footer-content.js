@@ -69,7 +69,7 @@ export default (
         { text: 'Facebook', url: 'https://www.facebook.com/EnergySage', icon: 'icon-facebook' },
         { text: 'LinkedIn', url: 'https://www.linkedin.com/company/energysage/', icon: 'icon-linkedin' },
         { text: 'Instagram', url: 'https://www.instagram.com/energysage_official/', icon: 'icon-instagram' },
-        { text: 'Twitter', url: 'https://twitter.com/energysage', icon: 'icon-twitter' },
+        { text: 'X', url: 'https://X.com/energysage', icon: 'icon-twitter' },
         { text: 'YouTube', url: 'https://www.youtube.com/c/EnergySage', icon: 'icon-youtube' },
     ],
     legalLinks: [
@@ -84,7 +84,7 @@ export default (
     departmentOfEnergy: {
         learnMore: {
             link: 'https://www.energy.gov/eere/solar/articles/eere-success-story-doe-funding-helps-build-one-stop-shop-rooftop-pv-systems',
-            text: 'Learn more about our success working with the US. Department of Energy.',
+            text: 'Learn more about our success working with the U.S. Department of Energy.',
         },
         logoUrl: 'https://www-static.energysage.com/static/img/doe/doe-logo-179.943fe6467b04.png',
     },
