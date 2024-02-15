@@ -2,7 +2,7 @@
     <b-table
         table-class="font-size-75 font-size-md-100"
         responsive
-        class="data-table border"
+        class="border table__data-table"
         :class="{ rounded }"
         :no-border-collapse="stickyFirstCol"
         :sticky-header="stickyHeader"
@@ -90,65 +90,3 @@ export default {
     },
 };
 </script>
-<style lang="scss" scoped>
-@use "sass:map";
-@use "~@energysage/es-bs-base/scss/variables" as variables;
-@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
-
-.data-table {
-    ::v-deep th {
-        font-weight: variables.$font-weight-bold;
-    }
-
-    ::v-deep {
-        td, th {
-            border-right: 1px solid variables.$gray-300;
-            padding-block: map.get(variables.$spacers, 50);
-
-            .table-b-table-default {
-                color: variables.$black;
-            }
-
-            &:last-of-type {
-                border-right: 0;
-            }
-        }
-    }
-
-    ::v-deep .table thead th {
-        background-color: variables.$gray-200;
-        border-bottom: 0;
-        border-top: 0;
-        color: variables.$black;
-        padding-block: map.get(variables.$spacers, 50);
-
-        @include breakpoints.media-breakpoint-up(md) {
-            color: variables.$gray-700;
-        }
-    }
-
-    ::v-deep tbody tr {
-        color: variables.$black;
-
-        .table-b-table-default {
-            color: variables.$black;
-        }
-    }
-
-    ::v-deep tbody tr:nth-of-type(odd) {
-        background-color: variables.$white;
-
-        .table-b-table-default {
-            background-color: variables.$white;
-        }
-    }
-
-    ::v-deep tbody tr:nth-of-type(even) {
-        background-color: variables.$gray-150;
-
-        .table-b-table-default {
-            background-color: variables.$gray-150;
-        }
-    }
-}
-</style>
