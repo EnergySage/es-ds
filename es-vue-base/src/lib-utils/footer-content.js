@@ -69,7 +69,7 @@ export default (
         { text: 'Facebook', url: 'https://www.facebook.com/EnergySage', icon: 'icon-facebook' },
         { text: 'LinkedIn', url: 'https://www.linkedin.com/company/energysage/', icon: 'icon-linkedin' },
         { text: 'Instagram', url: 'https://www.instagram.com/energysage_official/', icon: 'icon-instagram' },
-        { text: 'Twitter', url: 'https://twitter.com/energysage', icon: 'icon-twitter' },
+        { text: 'X', url: 'https://X.com/energysage', icon: 'icon-twitter' },
         { text: 'YouTube', url: 'https://www.youtube.com/c/EnergySage', icon: 'icon-youtube' },
     ],
     legalLinks: [
