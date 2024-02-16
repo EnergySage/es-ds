@@ -6,6 +6,7 @@
         "dev": "nuxt",
         "generate": "nuxt generate",
         "build": "nuxt build",
+        "start": "nuxt start",
         "bootstrap": "npm --prefix aws run cdk bootstrap",
         "synth": "npm --prefix aws run cdk synth",
         "deploy": " npm --prefix aws run cdk deploy",
