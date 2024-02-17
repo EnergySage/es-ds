@@ -186,6 +186,7 @@
         > tr > .table-b-table-default {
           // Default cell color
           color: v.$table-color;
+
           // `$table-bg` is null by default in Bootstrap v4 variables
           // but could have a value set by the consumer
           background-color: if(v.$table-bg, v.$table-bg, v.$body-bg);
@@ -247,6 +248,24 @@
             // effect while keeping the background solid.
             background-image: linear-gradient(v.$table-dark-hover-bg, v.$table-dark-hover-bg);
             background-repeat: no-repeat;
+          }
+        }
+      }
+    }
+
+    // Make Sure table__data-table isn't overwritten
+    .table__data-table {
+      .table.b-table {
+        > thead,
+        > tbody,
+        > tfoot {
+          > tr > .table-b-table-default:not([role=cell]) {
+            color: v.$black;
+            background-color: v.$gray-200;
+
+            @include breakpoints.media-breakpoint-up(md) {
+                color: v.$gray-700;
+            }
           }
         }
       }
