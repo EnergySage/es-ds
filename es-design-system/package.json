@@ -27,10 +27,10 @@
         "nuxt": "^2.17.0",
         "path": "^0.12.7",
         "prismjs": "^1.29.0",
-        "vue": "^2.7.14",
-        "vue-server-renderer": "^2.7.14",
+        "vue": "^2.7.16",
+        "vue-server-renderer": "^2.7.16",
         "vue-slider-component": "^3.2.24",
-        "vue-template-compiler": "^2.7.14",
+        "vue-template-compiler": "^2.7.16",
         "vuelidate": "^0.7.7"
     },
     "devDependencies": {

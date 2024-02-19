@@ -72,10 +72,10 @@
     "rollup-plugin-visualizer": "^5.7.1",
     "rollup-plugin-vue": "^5.1.9",
     "stylelint": "^14.16.1",
-    "vue": "^2.7.14",
+    "vue": "^2.7.16",
     "vue-jest": "^3.0.7",
     "vue-slider-component": "^3.2.20",
-    "vue-template-compiler": "^2.7.14",
+    "vue-template-compiler": "^2.7.16",
     "vuelidate": "^0.7.7"
   },
   "peerDependencies": {
@@ -85,7 +85,7 @@
     "lodash.debounce": "^4.0.8",
     "vue": "^2.7.14",
     "vue-slider-component": "^3.2.18",
-    "vue-template-compiler": "^2.7.14",
+    "vue-template-compiler": "^2.7.16",
     "vuelidate": "^0.7.7"
   },
   "engines": {
