@@ -496,3 +496,59 @@ $bv-escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23"));
     }
   }
 }
+
+.table__data-table {
+  th {
+      font-weight: v.$font-weight-bold;
+  }
+
+  td, th {
+      border-right: 1px solid v.$gray-300;
+      padding-block: map.get(v.$spacers, 50);
+
+      .table-b-table-default {
+          color: v.$black;
+      }
+
+      &:last-of-type {
+          border-right: 0;
+      }
+  }
+
+
+  thead th {
+      background-color: v.$gray-200;
+      border-bottom: 0;
+      border-top: 0;
+      color: v.$black;
+      padding-block: map.get(v.$spacers, 50);
+
+      @include breakpoints.media-breakpoint-up(md) {
+          color: v.$gray-700;
+      }
+  }
+
+  tbody tr {
+      color: v.$black;
+
+      .table-b-table-default {
+          color: v.$black;
+      }
+  }
+
+  tbody tr:nth-of-type(odd) {
+      background-color: v.$white;
+
+      .table-b-table-default {
+          background-color: v.$white;
+      }
+  }
+
+  tbody tr:nth-of-type(even) {
+      background-color: v.$gray-150;
+
+      .table-b-table-default {
+          background-color: v.$gray-150;
+      }
+  }
+}
