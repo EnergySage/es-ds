@@ -10,6 +10,7 @@ metadata:
   annotations:
     github.com/project-slug: EnergySage/es-ds
     backstage.io/techdocs-ref: dir:.
+    backstage.io/code-coverage: enabled
 spec:
   type: library
   owner: guests
