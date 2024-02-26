@@ -5,7 +5,7 @@ edit_uri: edit/main
 nav:
   - Home: README.md
 
-docs_dir: docs
+docs_dir: ./
 plugins:
   - techdocs-core
 
