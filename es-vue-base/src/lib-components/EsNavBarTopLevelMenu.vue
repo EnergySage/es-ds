@@ -125,6 +125,7 @@
                             :link="featuredArticle.linkUrl"
                             :new-tab="featuredArticle.newTab"
                             :name="featuredArticle.lede"
+                            loading="lazy"
                             :image500="featuredArticle.image500"
                             :image-alt="featuredArticle.imageAlt" />
                     </b-row>
