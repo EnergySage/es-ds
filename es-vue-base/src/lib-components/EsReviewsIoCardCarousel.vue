@@ -118,7 +118,7 @@ export default {
                             enable_product_name: true,
                             /* Show only reviews which have specific tags (multiple semicolon
                             separated tags allowed i.e tag1;tag2) */
-                            tags: 'es-featured',
+                            // tags: 'es-featured',
                             /* Show branch, only one input */
                             branch: '',
                             enable_branch_name: false,
