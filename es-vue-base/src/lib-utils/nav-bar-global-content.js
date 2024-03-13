@@ -9,6 +9,7 @@ export default (
     NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://www.energysage.com',
     COMMUNITY_SOLAR_DOMAIN = process.env.COMMUNITY_SOLAR_DOMAIN || 'https://communitysolar.energysage.com',
     HEAT_PUMPS_DOMAIN = process.env.HEAT_PUMPS_DOMAIN || 'https://heatpumps.energysage.com',
+    EV_RAIVEN_DOMAIN = 'https://shop.energysage.com/',
 ) => ({
     home: {
         name: 'EnergySage',
@@ -416,12 +417,13 @@ export default (
                     link: `${ES_DOMAIN}/ev-charging/`,
                 },
                 {
-                    name: 'Compare EV chargers',
-                    link: `${ES_DOMAIN}/ev-charging/ev-charging-stations/`,
-                },
-                {
                     name: 'Electric vehicle guide',
                     link: `${ES_DOMAIN}/electric-vehicles/`,
+                },
+                {
+                    name: 'Shop EV chargers',
+                    link: `${EV_RAIVEN_DOMAIN}`,
+                    emphasize: true,
                 },
             ],
         },
