@@ -1,0 +1,13 @@
+site_name: EnergySage Design System docs
+repo_url: https://github.com/EnergySage/es-ds
+edit_uri: edit/main
+
+nav:
+  - Home: README.md
+
+docs_dir: ./
+plugins:
+  - techdocs-core
+
+markdown_extensions:
+  - markdown_inline_mermaid
