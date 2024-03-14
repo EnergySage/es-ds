@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: es-ds
+  title: EnergySage Design System
+  description: |
+    This is a monorepo containing the elements required for building experiences following the EnergySage Design System of es-ds for short.
+  links:
+    - title: Github Org
+      url: https://github.com/EnergySage/
+    - title: Documentation page
+      url: https://design.energysage.dev/
+  annotations:
+    github.com/project-slug: EnergySage/es-ds
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/code-coverage: enabled
+spec:
+  type: library
+  owner: guests
+  lifecycle: experimental
