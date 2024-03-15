@@ -403,6 +403,10 @@
                 <code>IconCommunitySolar</code>
             </li>
             <li>
+                <icon-companies />
+                <code>IconCompanies</code>
+            </li>
+            <li>
                 <icon-contact-us />
                 <code>IconContactUs</code>
             </li>
@@ -411,8 +415,20 @@
                 <code>IconCreditCard</code>
             </li>
             <li>
+                <icon-document />
+                <code>IconDocument</code>
+            </li>
+            <li>
+                <icon-electricity-circle />
+                <code>IconElectricityCircle</code>
+            </li>
+            <li>
                 <icon-electric-vehicle />
                 <code>IconElectricVehicle</code>
+            </li>
+            <li>
+                <icon-gift />
+                <code>IconGift</code>
             </li>
             <li>
                 <icon-heat-pump />
