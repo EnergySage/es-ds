@@ -8,27 +8,39 @@ export default (
     loggedIn: {
         items: [
             {
-                name: 'My Account',
+                name: 'My dashboard',
                 link: `${ES_DOMAIN}/profile/`,
             },
             {
-                name: 'My Quotes',
+                name: 'My quotes',
                 link: `${ES_DOMAIN}/your-marketplace/`,
             },
             {
-                name: 'Share Your Experience',
-                link: `${ES_DOMAIN}/share-your-experience/`,
+                name: 'My messages',
+                link: `${ES_DOMAIN}/message/`,
             },
             {
-                name: 'Settings',
+                name: 'My project preferences',
+                link: `${ES_DOMAIN}/market/solarpv/update/`,
+            },
+            {
+                name: 'Account settings',
                 link: `${ES_DOMAIN}/account-settings/router/`,
             },
             {
-                name: 'Refer a Friend',
-                link: `${ES_DOMAIN}/refer-a-friend/`,
+                name: 'How it works',
+                link: `${ES_DOMAIN}/market-process/`,
             },
             {
-                name: 'Sign Out',
+                name: 'Write a review',
+                link: `${ES_DOMAIN}/share-your-experience/`,
+            },
+            {
+                name: 'Done shopping',
+                link: `${ES_DOMAIN}/done-shopping/`,
+            },
+            {
+                name: 'Sign out',
                 link: `${ES_DOMAIN}/logout/`,
             },
         ],
