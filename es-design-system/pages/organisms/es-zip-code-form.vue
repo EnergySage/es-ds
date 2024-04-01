@@ -155,6 +155,32 @@
 
         <div class="mb-450">
             <h2>
+                Product Specific CTA
+            </h2>
+            <p class="mb-200">
+                This example shows how to specify a product.
+            </p>
+            <b-row class="justify-content-center">
+                <b-col
+                    sm="10"
+                    md="8">
+                    <es-zip-code-form
+                        input-id="hero-example"
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        stack-until="lg"
+                        url="https://www.energysage.com/market/start/">
+                        selected-product="heatpump"
+                        <template #buttonText>
+                            See local heat pump offers
+                        </template>
+                    </es-zip-code-form>
+                </b-col>
+            </b-row>
+
+        </div>
+
+        <div class="mb-450">
+            <h2>
                 EsZipCodeForm slots
             </h2>
             <ds-prop-table
@@ -245,6 +271,11 @@ export default {
                     'url',
                     'n/a',
                     'URL to which the form will submit the provided zip code value.',
+                ],
+                [
+                    'selectedProduct',
+                    'n/a',
+                    'Specify which product of interest. Options include: solar-pv, heatpump, ev-charger',
                 ],
             ],
             propTableWidths: {
