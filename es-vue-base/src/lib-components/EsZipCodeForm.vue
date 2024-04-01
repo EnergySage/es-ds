@@ -47,6 +47,11 @@
                     </span>
                 </template>
             </es-form-input>
+            <input
+                v-if="selectedProduct"
+                type="hidden"
+                name="product"
+                :value="selectedProduct" />
             <es-button
                 class="text-nowrap w-100"
                 :class="{
@@ -149,6 +154,14 @@ export default {
         url: {
             type: String,
             required: true,
+        },
+        selectedProduct: {
+            type: String,
+            required: false,
+            validator(value) {
+                // The value must match one of these strings
+                return ['heatpump', 'solar-pv', 'ev-charger'].includes(value)
+            }
         },
     },
     data() {
