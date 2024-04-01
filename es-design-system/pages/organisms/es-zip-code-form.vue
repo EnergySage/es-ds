@@ -168,8 +168,8 @@
                         input-id="hero-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
-                        url="https://www.energysage.com/market/start/">
-                        selected-product="heatpump"
+                        url="https://www.energysage.com/onboarding/start/"
+                        selected-product="heatpump">
                         <template #buttonText>
                             See local heat pump offers
                         </template>
