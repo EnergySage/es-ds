@@ -158,10 +158,6 @@ export default {
         selectedProduct: {
             type: String,
             required: false,
-            validator(value) {
-                // The value must match one of these strings
-                return ['heatpump', 'solar-pv', 'ev-charger'].includes(value)
-            }
         },
     },
     data() {
