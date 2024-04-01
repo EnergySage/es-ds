@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2024-04-01
+
+## Changes
+
+- EsZipCodeForm accepts selectedProduct query param
+
 ## [1.3.0] - 2024-03-15
 
 - Added some icons for the landing links
@@ -889,6 +895,9 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+
+[1.3.1]: https://github.com/EnergySage/es-ds/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/EnergySage/es-ds/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/EnergySage/es-ds/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/EnergySage/es-ds/compare/v1.1.13...v1.2.0
 [1.1.13]: https://github.com/EnergySage/es-ds/compare/v1.1.12...v1.1.13
