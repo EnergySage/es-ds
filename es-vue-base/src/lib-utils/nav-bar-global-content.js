@@ -156,6 +156,10 @@ export default (
                             name: 'What to know about solar leases',
                             link: `${ES_DOMAIN}/solar/solar-leases/`,
                         },
+                        {
+                            name: 'Explore cost-saving clean energy incentives',
+                            link: `${ES_DOMAIN}/shop/clean-energy-savings-and-tax-incentives/`,
+                        },
                     ],
                 },
                 {
@@ -208,6 +212,10 @@ export default (
                         {
                             name: 'Our team',
                             link: `${ES_DOMAIN}/about-us/team/`,
+                        },
+                        {
+                            name: 'Our Energy Advisors',
+                            link: `${ES_DOMAIN}/energy-advisors/`,
                         },
                         {
                             name: 'Careers',
