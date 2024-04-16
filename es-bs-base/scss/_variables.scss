@@ -9,24 +9,172 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
-// Color system
+// ----------------------
+// NEW VIZ ID COLORS 2024
+// ----------------------
 
-// Gray Scale
-$white:    #fff !default;
-$gray-100: #fafafa !default;
-$gray-150: #f8f8f8 !default;
-$gray-200: #ececec !default;
-$gray-300: #dddddd !default;
-$gray-400: #bababa !default;
-$gray-500: #999999 !default;
-$gray-600: #7e7e7e !default;
-$gray-700: #565656 !default;
-$gray-800: #404040 !default;
-$gray-900: #292929 !default;
-$gray-1000: #1f1f1f !default;
-$gray-1100: #151515 !default;
-$gray-1200: #0a0a0a !default;
-$black:    #000 !default;
+// Primary
+$blue-50: #ddedff !default;
+$blue-100: #c8dfff !default;
+$blue-200: #a7c9ff !default;
+$blue-300: #85b2ff !default;
+$blue-400: #688aea !default;
+$blue-500: #4a62d4 !default;
+$blue-600: #2e46b9 !default;
+$blue-700: #1d3297 !default;
+$blue-800: #162676 !default;
+$blue-900: #1b1763 !default;
+
+$blues: () !default;
+$blues: map.merge(
+  (
+    "blue-50": $blue-50,
+    "blue-100": $blue-100,
+    "blue-200": $blue-200,
+    "blue-300": $blue-300,
+    "blue-400": $blue-400,
+    "blue-500": $blue-500,
+    "blue-600": $blue-600,
+    "blue-700": $blue-700,
+    "blue-800": $blue-800,
+    "blue-900": $blue-900,
+  ),
+  $blues
+);
+
+// Secondary
+$orange-50:  #fff3df !default;
+$orange-100: #ffe7ca !default;
+$orange-200: #ffdbb5 !default;
+$orange-300: #ffcea0 !default;
+$orange-400: #ffc28b !default;
+$orange-500: #ffb67b !default;
+$orange-600: #ffaa66 !default;
+$orange-700: #ff9d51 !default;
+$orange-800: #ff9133 !default;
+$orange-900: #ed7c2b !default;
+
+$oranges: () !default;
+$oranges: map.merge(
+  (
+    "orange-50": $orange-50,
+    "orange-100": $orange-100,
+    "orange-200": $orange-200,
+    "orange-300": $orange-300,
+    "orange-400": $orange-400,
+    "orange-500": $orange-500,
+    "orange-600": $orange-600,
+    "orange-700": $orange-700,
+    "orange-800": $orange-800,
+    "orange-900": $orange-900,
+  ),
+  $oranges
+);
+
+// Neutrals
+$gray-50:  #f1f3fb !default;
+$gray-100: #eaecf4 !default;
+$gray-200: #dfe1eb !default;
+$gray-300: #cfd1df !default;
+$gray-400: #a7aaba !default;
+$gray-500: #878999 !default;
+$gray-600: #646776 !default;
+$gray-700: #515362 !default;
+$gray-800: #323543 !default;
+$gray-900: #222633 !default;
+
+$neutrals: () !default;
+$neutrals: map.merge(
+  (
+    "gray-50": $gray-50,
+    "gray-100": $gray-100,
+    "gray-200": $gray-200,
+    "gray-300": $gray-300,
+    "gray-400": $gray-400,
+    "gray-500": $gray-500,
+    "gray-600": $gray-600,
+    "gray-700": $gray-700,
+    "gray-800": $gray-800,
+    "gray-900": $gray-900,
+  ),
+  $neutrals
+);
+
+// Success
+$success-50:  #ccedd8 !default;
+$success-500: #80ce97 !default;
+$success-900: #00a759 !default;
+
+$success-colors: () !default;
+$success-colors: map.merge(
+  (
+    "success-50": $success-50,
+    "success-500": $success-500,
+    "success-900": $success-900,
+  ),
+  $success-colors
+);
+
+// Warning
+$warning-50:  #f8efca !default;
+$warning-500: #f4df83 !default;
+$warning-900: #f4ca11 !default;
+
+$warning-colors: () !default;
+$warning-colors: map.merge(
+  (
+    "warning-50": $warning-50,
+    "warning-500": $warning-500,
+    "warning-900": $warning-900,
+  ),
+  $warning-colors
+);
+
+// Error
+$error-50:  #f7d7db !default;
+$error-500: #efa6af !default;
+$error-900: #de3c50 !default;
+
+$error-colors: () !default;
+$error-colors: map.merge(
+  (
+    "error-50": $error-50,
+    "error-500": $error-500,
+    "error-900": $error-900,
+  ),
+  $error-colors
+);
+
+// Core Colors
+$white:       #fff !default;
+$soft-blue:   $blue-100 !default;
+$medium-blue: $blue-300 !default;
+$dark-blue:   $blue-900 !default;
+$warm-orange: $orange-800 !default;
+
+$core-colors: () !default;
+$core-colors: map.merge(
+  (
+    "white":       $white,
+    "soft-blue":   $soft-blue,
+    "medium-blue": $medium-blue,
+    "dark-blue":   $dark-blue,
+    "warm-orange": $warm-orange,
+  ),
+  $core-colors
+);
+
+// ------------------------------------------------------
+// OLD PRE-VIZ-ID COLORS - 2023 AND EARLIER
+// all old variable names kept for backward compatibility
+// ------------------------------------------------------
+
+// Gray Scale (mapped to closest new gray using https://codepen.io/romainblatrix/pen/YXgBoO)
+$gray-150:  $gray-100 !default; // exception to closest, keeping light-to-dark gradient
+$gray-1000: $gray-900 !default;
+$gray-1100: $gray-900 !default;
+$gray-1200: $gray-900 !default;
+$black:     #000 !default;
 
 $grays: () !default;
 $grays: map.merge(
@@ -49,15 +197,15 @@ $grays: map.merge(
   $grays
 );
 
-// teal scale
-$teal-100: #d7f0ee !default;
-$teal-200: #aee2dd !default;
-$teal-300: #86d3cc !default;
-$teal-400: #5dc5bb !default;
-$teal-500: #35b6aa !default;
-$teal-600: #288980 !default;
-$teal-700: #1b5b55 !default;
-$teal-800: #0d2e2a !default;
+// teal scale (mapped to closest blue using https://codepen.io/romainblatrix/pen/YXgBoO)
+$teal-100: $blue-50 !default;
+$teal-200: $blue-200 !default;
+$teal-300: $blue-300 !default;
+$teal-400: $blue-400 !default;
+$teal-500: $blue-400 !default;
+$teal-600: $blue-600 !default;
+$teal-700: $blue-800 !default;
+$teal-800: $blue-900 !default;
 
 $teals: () !default;
 $teals: map.merge(
@@ -74,15 +222,15 @@ $teals: map.merge(
   $teals
 );
 
-// cyan scale
-$cyan-100: #e0eff5 !default;
-$cyan-200: #cce5ef !default;
-$cyan-300: #99cbdf !default;
-$cyan-400: #3398c0 !default;
-$cyan-500: #007aab !default;
-$cyan-600: #005f84 !default;
-$cyan-700: #003f58 !default;
-$cyan-800: #00202c !default;
+// cyan scale (mapped to closest blue using https://codepen.io/romainblatrix/pen/YXgBoO)
+$cyan-100: $blue-50 !default;
+$cyan-200: $blue-100 !default;
+$cyan-300: $blue-200 !default;
+$cyan-400: $blue-500 !default;
+$cyan-500: $blue-600 !default;
+$cyan-600: $blue-700 !default;
+$cyan-700: $blue-800 !default;
+$cyan-800: $blue-900 !default;
 
 $cyans: () !default;
 $cyans: map.merge(
@@ -99,15 +247,15 @@ $cyans: map.merge(
   $cyans
 );
 
-// pink scale
-$pink-100: #f4dae7 !default;
-$pink-200: #e9b4cf !default;
-$pink-300: #de8fb6 !default;
-$pink-400: #d3699e !default;
-$pink-500: #c24282 !default;
-$pink-600: #963365 !default;
-$pink-700: #642243 !default;
-$pink-800: #321121 !default;
+// pink scale (mapped to closest orange using https://codepen.io/romainblatrix/pen/YXgBoO)
+$pink-100: $orange-50 !default;
+$pink-200: $orange-200 !default;
+$pink-300: $orange-400 !default;
+$pink-400: $orange-500 !default;
+$pink-500: $orange-900 !default;
+$pink-600: $orange-900 !default;
+$pink-700: $orange-900 !default;
+$pink-800: $orange-900 !default;
 
 $pinks: () !default;
 $pinks: map.merge(
@@ -124,15 +272,15 @@ $pinks: map.merge(
   $pinks
 );
 
-// yellow scale
-$yellow-100: #fdefd9 !default;
-$yellow-200: #fbe0b3 !default;
-$yellow-300: #fad08c !default;
-$yellow-400: #f8c166 !default;
-$yellow-500: #f6b140 !default;
-$yellow-600: #b98530 !default;
-$yellow-700: #7b5920 !default;
-$yellow-800: #3e2c10 !default;
+// yellow scale (mapped to closest orange using https://codepen.io/romainblatrix/pen/YXgBoO)
+$yellow-100: $orange-50 !default;
+$yellow-200: $orange-200 !default;
+$yellow-300: $orange-400 !default;
+$yellow-400: $orange-600 !default;
+$yellow-500: $orange-700 !default;
+$yellow-600: $orange-900 !default;
+$yellow-700: $orange-900 !default;
+$yellow-800: $orange-900 !default;
 
 $yellows: () !default;
 $yellows: map.merge(
@@ -149,38 +297,19 @@ $yellows: map.merge(
   $yellows
 );
 
-// orange scale
-$orange-100: #e9c7ad !default;
-$orange-200: #ddac85 !default;
-$orange-300: #d2905c !default;
-$orange-400: #ca6f20 !default;
-$orange-500: #b95100 !default;
-
-$oranges: () !default;
-$oranges: map.merge(
-  (
-    "orange-100": $orange-100,
-    "orange-200": $orange-200,
-    "orange-300": $orange-300,
-    "orange-400": $orange-400,
-    "orange-500": $orange-500
-  ),
-  $oranges
-);
-
-// Base Colors
-$blue:      #275ba9 !default;
-$lightblue: #8cd1ff !default;
-$grayblue:  #c9e9f6 !default;
-$indigo:    #152f87 !default;
-$purple:    #822a85 !default;
-$red:       #b93737 !default;
-$orange:    $orange-500 !default;
-$green:     #008445 !default;
-$pink:      $pink-500 !default;
-$yellow:    $yellow-500 !default;
-$cyan:      $cyan-500 !default;
-$teal:      $teal-500 !default;
+// Base Colors (mapped to closest appropriate color using https://codepen.io/romainblatrix/pen/YXgBoO)
+$blue:      $blue-600 !default;
+$lightblue: $blue-200 !default;
+$grayblue:  $blue-100 !default;
+$indigo:    $blue-700 !default;
+$purple:    $blue-600 !default;
+$red:       $error-900 !default;
+$orange:    $orange-800 !default;
+$green:     $success-900 !default;
+$pink:      $orange-800 !default;
+$yellow:    $orange-800 !default;
+$cyan:      $blue-900 !default;
+$teal:      $blue-300 !default;
 $gray:      $gray-900 !default;
 
 $brand-colors: () !default;
@@ -221,8 +350,8 @@ $colors: map.merge(
 $primary:       $cyan !default;
 $secondary:     $gray !default;
 $success:       $green !default;
-$info:          $indigo !default;
-$warning:       $yellow !default;
+$info:          $blue-300 !default;
+$warning:       $warning-900 !default;
 $danger:        $red !default;
 $light:         $gray-200 !default;
 $dark:          $gray-900 !default;
@@ -322,7 +451,7 @@ $sizes: map.merge(
 // Foundational variables relating to typography.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      "Inter", "Helvetica Neue", Roboto, "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      "Plus Jakarta Sans", "Helvetica Neue", Roboto, "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
@@ -396,7 +525,7 @@ $body-color:                $gray-800 !default;
 //
 // Style anchor elements.
 
-$link-color:                              map.get($theme-colors, "primary") !default;
+$link-color:                              $blue-600 !default;
 $link-decoration:                         none !default;
 $link-hover-color:                        color.adjust($link-color, $lightness: -15%) !default;
 $link-hover-decoration:                   underline !default;
