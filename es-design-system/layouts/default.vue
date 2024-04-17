@@ -17,7 +17,7 @@
             shadow>
             <ds-link-list class="mx-100" />
         </b-sidebar>
-        <div class="d-flex justify-content-xl-center">
+        <div class="d-flex justify-content-center">
             <div class="ds-side-nav d-none d-xl-block flex-shrink-0 p-100">
                 <ds-link-list />
             </div>
