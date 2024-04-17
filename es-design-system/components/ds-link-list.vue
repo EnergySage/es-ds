@@ -45,11 +45,5 @@
 <script>
 export default {
     name: 'DsLinkList',
-    props: {
-        currentPath: {
-            type: String,
-            required: true,
-        },
-    },
 };
 </script>
