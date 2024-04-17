@@ -1,29 +1,29 @@
 <template>
-    <ul>
+    <ul class="list-unstyled pl-100">
         <li>
-            <b-link to="/atoms/color">
+            <ds-link to="/atoms/color">
                 Color
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/atoms/typography">
+            <ds-link to="/atoms/typography">
                 Typography
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/atoms/layout">
+            <ds-link to="/atoms/layout">
                 Layout
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/atoms/spacing">
+            <ds-link to="/atoms/spacing">
                 Spacing
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/atoms/icons">
+            <ds-link to="/atoms/icons">
                 Icons
-            </b-link>
+            </ds-link>
         </li>
     </ul>
 </template>
