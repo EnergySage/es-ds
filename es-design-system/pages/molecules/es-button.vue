@@ -335,15 +335,57 @@
 
         <div class="my-450">
             <h2>
-                Width change across breakpoints
+                Loading
             </h2>
             <p>
-                Often, designs will specify buttons to be full width on mobile and content width on desktop.
-                Below is an example of how to easily accomplish this.
+                This example shows how to use the
+                <a
+                    href="https://bootstrap-vue.org/docs/components/spinner"
+                    target="_blank">
+                    spinner from Bootstrap Vue
+                </a>
+                to display a loading indicator within a button.
             </p>
-            <div class="mb-200">
-                <es-button class="w-100 w-lg-auto">
-                    Responsive button
+            <div class="mb-100">
+                <es-button class="mr-100 position-relative">
+                    <span class="invisible">
+                        Default button
+                    </span>
+                    <b-spinner
+                        class="position-absolute"
+                        label="Loading"
+                        role="status" />
+                </es-button>
+                <es-button>
+                    <span>
+                        Default button
+                    </span>
+                    <b-spinner
+                        class="ml-50"
+                        label="Loading"
+                        role="status" />
+                </es-button>
+            </div>
+            <div>
+                <es-button
+                    class="mr-100 position-relative"
+                    size="sm">
+                    <span class="invisible">
+                        Small button
+                    </span>
+                    <b-spinner
+                        class="position-absolute"
+                        label="Loading"
+                        role="status" />
+                </es-button>
+                <es-button size="sm">
+                    <span>
+                        Small button
+                    </span>
+                    <b-spinner
+                        class="ml-50"
+                        label="Loading"
+                        role="status" />
                 </es-button>
             </div>
         </div>
