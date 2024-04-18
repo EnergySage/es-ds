@@ -37,7 +37,7 @@ export default (
             },
             {
                 name: 'Done shopping',
-                link: `${ES_DOMAIN}/done-shopping/`,
+                link: `${ES_DOMAIN}/market/done-shopping/`,
             },
             {
                 name: 'Sign out',
