@@ -110,7 +110,6 @@ fieldset:disabled a.btn {
   }
 }
 
-
 //
 // Link buttons
 //
@@ -151,7 +150,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-sm {
-  height: variables.$font-size-base * 1.75; // ensures consistent button height, matching the design, regardless of content
+  height: variables.$font-size-base * 2.5; // ensures consistent button height, matching the design, regardless of content
   @include buttons.button-size(variables.$btn-padding-y-sm, variables.$btn-padding-x-sm, variables.$btn-font-size-sm, variables.$btn-line-height-sm, variables.$btn-border-radius);
 }
 

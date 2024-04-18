@@ -25,583 +25,312 @@
 
         <div class="my-450">
             <h2>
-                Primary Button
-            </h2>
-            <table class="table button-table mb-200">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            State
-                        </th>
-                        <th scope="col">
-                            Examples
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">
-                            Normal
-                        </td>
-                        <td>
-                            <div class="mb-50">
-                                <es-button>
-                                    Default button
-                                </es-button>
-                                <es-button>
-                                    Default button
-                                    <icon-chevron-right class="ml-25" />
-                                </es-button>
-                                <es-button>
-                                    <icon-chevron-right />
-                                </es-button>
-                            </div>
-                            <div>
-                                <es-button size="sm">
-                                    Small button
-                                </es-button>
-
-                                <es-button size="sm">
-                                    Small button
-                                    <icon-chevron-right
-                                        class="ml-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-
-                                <es-button size="sm">
-                                    <icon-chevron-right
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            Disabled
-                        </td>
-                        <td>
-                            <div class="mb-50">
-                                <es-button disabled>
-                                    Default button
-                                </es-button>
-
-                                <es-button disabled>
-                                    Default button
-                                    <icon-chevron-right class="ml-25" />
-                                </es-button>
-
-                                <es-button disabled>
-                                    <icon-chevron-right />
-                                </es-button>
-                            </div>
-                            <div>
-                                <es-button
-                                    disabled
-                                    size="sm">
-                                    Small button
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    size="sm">
-                                    Small button
-                                    <icon-chevron-right
-                                        class="ml-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    size="sm">
-                                    <icon-chevron-right
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                Secondary Button
-            </h2>
-            <table class="table button-table mb-200">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            State
-                        </th>
-                        <th scope="col">
-                            Examples
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">
-                            Normal
-                        </td>
-                        <td>
-                            <div class="mb-50">
-                                <es-button variant="secondary">
-                                    Default button
-                                </es-button>
-                                <es-button variant="secondary">
-                                    Default button
-                                    <icon-chevron-right class="ml-25" />
-                                </es-button>
-                                <es-button variant="secondary">
-                                    <icon-chevron-right />
-                                </es-button>
-                            </div>
-                            <div>
-                                <es-button
-                                    size="sm"
-                                    variant="secondary">
-                                    Small button
-                                </es-button>
-
-                                <es-button
-                                    size="sm"
-                                    variant="secondary">
-                                    Small button
-                                    <icon-chevron-right
-                                        class="ml-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-
-                                <es-button
-                                    size="sm"
-                                    variant="secondary">
-                                    <icon-chevron-right
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            Disabled
-                        </td>
-                        <td>
-                            <div class="mb-50">
-                                <es-button
-                                    disabled
-                                    variant="secondary">
-                                    Default button
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    variant="secondary">
-                                    Default button
-                                    <icon-chevron-right class="ml-25" />
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    variant="secondary">
-                                    <icon-chevron-right />
-                                </es-button>
-                            </div>
-                            <div>
-                                <es-button
-                                    disabled
-                                    size="sm"
-                                    variant="secondary">
-                                    Small button
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    size="sm"
-                                    variant="secondary">
-                                    Small button
-                                    <icon-chevron-right
-                                        class="ml-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    size="sm"
-                                    variant="secondary">
-                                    <icon-chevron-right
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                Outline Primary Button
-            </h2>
-            <table class="table button-table mb-200">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            State
-                        </th>
-                        <th scope="col">
-                            Examples
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">
-                            Normal
-                        </td>
-                        <td>
-                            <div class="mb-50">
-                                <es-button outline>
-                                    Default button
-                                </es-button>
-                                <es-button outline>
-                                    Default button
-                                    <icon-chevron-right class="ml-25" />
-                                </es-button>
-                                <es-button outline>
-                                    <icon-chevron-right />
-                                </es-button>
-                            </div>
-                            <div>
-                                <es-button
-                                    outline
-                                    size="sm">
-                                    Small button
-                                </es-button>
-
-                                <es-button
-                                    outline
-                                    size="sm">
-                                    Small button
-                                    <icon-chevron-right
-                                        class="ml-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-
-                                <es-button
-                                    outline
-                                    size="sm">
-                                    <icon-chevron-right
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            Disabled
-                        </td>
-                        <td>
-                            <div class="mb-50">
-                                <es-button
-                                    disabled
-                                    outline>
-                                    Default button
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    outline>
-                                    Default button
-                                    <icon-chevron-right class="ml-25" />
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    outline>
-                                    <icon-chevron-right />
-                                </es-button>
-                            </div>
-                            <div>
-                                <es-button
-                                    disabled
-                                    outline
-                                    size="sm">
-                                    Small button
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    outline
-                                    size="sm">
-                                    Small button
-                                    <icon-chevron-right
-                                        class="ml-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    outline
-                                    size="sm">
-                                    <icon-chevron-right
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                Outline Secondary Button
-            </h2>
-            <table class="table button-table mb-200">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            State
-                        </th>
-                        <th scope="col">
-                            Examples
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">
-                            Normal
-                        </td>
-                        <td>
-                            <div class="mb-50">
-                                <es-button
-                                    outline
-                                    variant="secondary">
-                                    Default button
-                                </es-button>
-                                <es-button
-                                    outline
-                                    variant="secondary">
-                                    Default button
-                                    <icon-chevron-right class="ml-25" />
-                                </es-button>
-                                <es-button
-                                    outline
-                                    variant="secondary">
-                                    <icon-chevron-right />
-                                </es-button>
-                            </div>
-                            <div>
-                                <es-button
-                                    outline
-                                    size="sm"
-                                    variant="secondary">
-                                    Small button
-                                </es-button>
-
-                                <es-button
-                                    outline
-                                    size="sm"
-                                    variant="secondary">
-                                    Small button
-                                    <icon-chevron-right
-                                        class="ml-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-
-                                <es-button
-                                    outline
-                                    size="sm"
-                                    variant="secondary">
-                                    <icon-chevron-right
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            Disabled
-                        </td>
-                        <td>
-                            <div class="mb-50">
-                                <es-button
-                                    disabled
-                                    outline
-                                    variant="secondary">
-                                    Default button
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    outline
-                                    variant="secondary">
-                                    Default button
-                                    <icon-chevron-right class="ml-25" />
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    outline
-                                    variant="secondary">
-                                    <icon-chevron-right />
-                                </es-button>
-                            </div>
-                            <div>
-                                <es-button
-                                    disabled
-                                    outline
-                                    size="sm"
-                                    variant="secondary">
-                                    Small button
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    outline
-                                    size="sm"
-                                    variant="secondary">
-                                    Small button
-                                    <icon-chevron-right
-                                        class="ml-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-
-                                <es-button
-                                    disabled
-                                    outline
-                                    size="sm"
-                                    variant="secondary">
-                                    <icon-chevron-right
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                Dark Background
-            </h2>
-            <div class="bg-gray pb-100 px-200 pt-200 rounded-lg">
-                <es-button class="mb-100 mr-50">
-                    Primary button
-                </es-button>
-                <es-button
-                    class="mb-100 mr-50"
-                    variant="secondary">
-                    Secondary button
-                </es-button>
-                <es-button
-                    class="mb-100 mr-50"
-                    outline>
-                    Outline primary button
-                </es-button>
-                <es-button
-                    class="mb-100 mr-50"
-                    outline
-                    variant="secondary">
-                    Outline secondary button
-                </es-button>
-            </div>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                Link button
+                Primary
             </h2>
             <p>
-                The <code>link</code> variant will render a button with the appearance of a link while
-                maintaining the default padding and size of a button. This is useful when the link button
-                will appear next to another button (e.g. within a modal), as they will remain vertically
-                aligned relative to each other.
+                This is the default style for buttons. For a small button, use the <code>size="sm"</code> prop value.
             </p>
-            <table class="table button-table mb-200">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            State
-                        </th>
-                        <th scope="col">
-                            Examples
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">
-                            Default
-                        </td>
-                        <td>
-                            <div>
-                                <es-button variant="link">
-                                    Link button
-                                </es-button>
-                                <es-button>
-                                    Default button
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            Small
-                        </td>
-                        <td>
-                            <div>
-                                <es-button
-                                    size="sm"
-                                    variant="link">
-                                    Link button
-                                </es-button>
-                                <es-button size="sm">
-                                    Small button
-                                </es-button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            Inline
-                        </td>
-                        <td>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. In tellus
+            <ds-responsive-table class="responsive-table-typography">
+                <ds-responsive-table-row
+                    v-for="example in primaryExamples"
+                    :key="example.name"
+                    :zebra-stripes="false"
+                    vertically-center-content>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Description
+                        </template>
+                        <template #value>
+                            <span class="font-weight-semibold">
+                                {{ example.name }}
+                            </span>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Normal
+                        </template>
+                        <template #value>
+                            <es-button :size="example.size">
+                                {{ example.text }}
+                                <icon-chevron-right
+                                    v-if="example.icon"
+                                    :class="{ 'ml-25': example.text }"
+                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
+                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                            </es-button>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Disabled
+                        </template>
+                        <template #value>
+                            <es-button
+                                disabled
+                                :size="example.size">
+                                {{ example.text }}
+                                <icon-chevron-right
+                                    v-if="example.icon"
+                                    :class="{ 'ml-25': example.text }"
+                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
+                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                            </es-button>
+                        </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+        </div>
+
+        <div class="my-450">
+            <h2>
+                Secondary
+            </h2>
+            <p>
+                For this style, add the <code>outline</code> boolean prop.
+            </p>
+            <ds-responsive-table class="responsive-table-typography">
+                <ds-responsive-table-row
+                    v-for="example in secondaryExamples"
+                    :key="example.name"
+                    :zebra-stripes="false"
+                    vertically-center-content>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Description
+                        </template>
+                        <template #value>
+                            <span class="font-weight-semibold">
+                                {{ example.name }}
+                            </span>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Normal
+                        </template>
+                        <template #value>
+                            <es-button
+                                :outline="example.outline"
+                                :size="example.size">
+                                {{ example.text }}
+                                <icon-chevron-right
+                                    v-if="example.icon"
+                                    :class="{ 'ml-25': example.text }"
+                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
+                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                            </es-button>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Disabled
+                        </template>
+                        <template #value>
+                            <es-button
+                                disabled
+                                :outline="example.outline"
+                                :size="example.size">
+                                {{ example.text }}
+                                <icon-chevron-right
+                                    v-if="example.icon"
+                                    :class="{ 'ml-25': example.text }"
+                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
+                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                            </es-button>
+                        </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+        </div>
+
+        <div class="my-450">
+            <h2>
+                Link
+            </h2>
+            <p>
+                This variant will render a button with the appearance of a link while maintaining the default
+                padding and size of a button. This is useful when the link button will appear next to another
+                button (e.g. within a modal), as they will remain vertically aligned relative to each other.
+            </p>
+            <p>
+                Use the <code>variant="link"</code> prop value to enable it.
+            </p>
+            <ds-responsive-table class="responsive-table-typography">
+                <ds-responsive-table-row
+                    v-for="example in linkExamples"
+                    :key="example.name"
+                    :zebra-stripes="false"
+                    vertically-center-content>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="2"
+                        xxl="2">
+                        <template #name>
+                            Description
+                        </template>
+                        <template #value>
+                            <span class="font-weight-semibold">
+                                {{ example.name }}
+                            </span>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="4"
+                        xxl="2">
+                        <template #name>
+                            Normal
+                        </template>
+                        <template #value>
+                            <p v-if="example.inline">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 <es-button
                                     inline
-                                    size="sm"
                                     variant="link">
-                                    integer feugiat scelerisque
+                                    eiusmod tempor
                                 </es-button>
-                                varius. Risus in hendrerit gravida rutrum. Faucibus interdum posuere lorem ipsum
-                                dolor sit amet consectetur adipiscing. Mi tempus imperdiet nulla malesuada pellentesque
-                                elit.
+                                incididunt ut labore et dolore magna aliqua.
                             </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            <div v-else>
+                                <es-button
+                                    :size="example.size"
+                                    :variant="example.variant">
+                                    {{ example.text }}
+                                </es-button>
+                                <es-button :size="example.size">
+                                    {{ example.secondButton.text }}
+                                </es-button>
+                            </div>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="4"
+                        xxl="2">
+                        <template #name>
+                            Disabled
+                        </template>
+                        <template #value>
+                            <p v-if="example.inline">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                <es-button
+                                    disabled
+                                    inline
+                                    variant="link">
+                                    eiusmod tempor
+                                </es-button>
+                                incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <div v-else>
+                                <es-button
+                                    disabled
+                                    :size="example.size"
+                                    :variant="example.variant">
+                                    {{ example.text }}
+                                </es-button>
+                                <es-button
+                                    disabled
+                                    :size="example.size">
+                                    {{ example.secondButton.text }}
+                                </es-button>
+                            </div>
+                        </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+        </div>
+
+        <div class="bg-dark-blue my-450 p-100 rounded-lg text-white">
+            <h2 class="text-white">
+                Dark mode
+            </h2>
+            <p>
+                This variant is only meant to be used against a dark blue background.
+                Use the <code>variant="dark-mode"</code> prop value to enable it.
+            </p>
+            <ds-responsive-table class="responsive-table-typography">
+                <ds-responsive-table-row
+                    v-for="example in darkModeExamples"
+                    :key="example.name"
+                    :zebra-stripes="false"
+                    vertically-center-content>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Description
+                        </template>
+                        <template #value>
+                            <span class="font-weight-semibold">
+                                {{ example.name }}
+                            </span>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Normal
+                        </template>
+                        <template #value>
+                            <es-button
+                                :outline="example.outline"
+                                :size="example.size"
+                                :variant="example.variant">
+                                {{ example.text }}
+                                <icon-chevron-right
+                                    v-if="example.icon"
+                                    :class="{ 'ml-25': example.text }"
+                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
+                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                            </es-button>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Disabled
+                        </template>
+                        <template #value>
+                            <es-button
+                                disabled
+                                :outline="example.outline"
+                                :size="example.size"
+                                :variant="example.variant">
+                                {{ example.text }}
+                                <icon-chevron-right
+                                    v-if="example.icon"
+                                    :class="{ 'ml-25': example.text }"
+                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
+                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                            </es-button>
+                        </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
         </div>
 
         <div class="my-450">
@@ -621,107 +350,11 @@
 
         <div class="my-450">
             <h2>
-                Deprecated Buttons (do not use)
+                Props
             </h2>
-            <p class="mb-200">
-                It is recommended not to use these variants and to refactor your code to remove instances of them.
-                They are a legacy artifact of Bootstrap, don't match EnergySage branding, and will be removed in a
-                future version of ESDS.
-            </p>
-            <div class="button-table mb-200">
-                <es-button variant="success">
-                    Success button
-                </es-button>
-                <es-button variant="info">
-                    Info button
-                </es-button>
-                <es-button variant="warning">
-                    Warning button
-                </es-button>
-                <es-button variant="danger">
-                    Danger button
-                </es-button>
-                <es-button variant="light">
-                    Light button
-                </es-button>
-                <es-button variant="dark">
-                    Dark button
-                </es-button>
-                <es-button variant="mid">
-                    Mid button
-                </es-button>
-                <es-button variant="mid-dark">
-                    Mid dark button
-                </es-button>
-                <es-button variant="highlight">
-                    Highlight button
-                </es-button>
-                <es-button variant="highlight-dark">
-                    Highlight dark button
-                </es-button>
-            </div>
-            <div class="button-table mb-50">
-                <es-button
-                    outline
-                    variant="success">
-                    Success button
-                </es-button>
-                <es-button
-                    outline
-                    variant="info">
-                    Info button
-                </es-button>
-                <es-button
-                    outline
-                    variant="warning">
-                    Warning button
-                </es-button>
-                <es-button
-                    outline
-                    variant="danger">
-                    Danger button
-                </es-button>
-                <es-button
-                    outline
-                    variant="light">
-                    Light button
-                </es-button>
-                <es-button
-                    outline
-                    variant="dark">
-                    Dark button
-                </es-button>
-                <es-button
-                    outline
-                    variant="mid">
-                    Mid button
-                </es-button>
-                <es-button
-                    outline
-                    variant="mid-dark">
-                    Mid dark button
-                </es-button>
-                <es-button
-                    outline
-                    variant="highlight">
-                    Highlight button
-                </es-button>
-                <es-button
-                    outline
-                    variant="highlight-dark">
-                    Highlight dark button
-                </es-button>
-            </div>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                EsButton props
-            </h2>
-            <b-table
-                :fields="propTableColumns"
-                :items="propTableRows"
-                striped />
+            <ds-prop-table
+                :rows="propTableRows"
+                :widths="propTableWidths" />
         </div>
 
         <ds-doc-source
@@ -737,42 +370,160 @@ export default {
     name: 'EsButtonDocs',
     data() {
         return {
-            propTableColumns: [
-                'name',
-                'type',
-                'description',
+            darkModeExamples: [
+                {
+                    name: 'Default',
+                    text: 'Default button',
+                    variant: 'dark-mode',
+                },
+                {
+                    name: 'Default (text with icon)',
+                    icon: true,
+                    text: 'Default button',
+                    variant: 'dark-mode',
+                },
+                {
+                    name: 'Default (icon only)',
+                    icon: true,
+                    variant: 'dark-mode',
+                },
+                {
+                    name: 'Small',
+                    size: 'sm',
+                    text: 'Small button',
+                    variant: 'dark-mode',
+                },
+                {
+                    name: 'Small (text with icon)',
+                    icon: true,
+                    size: 'sm',
+                    text: 'Small button',
+                    variant: 'dark-mode',
+                },
+                {
+                    name: 'Small (icon only)',
+                    icon: true,
+                    size: 'sm',
+                    variant: 'dark-mode',
+                },
+            ],
+            linkExamples: [
+                {
+                    name: 'Default',
+                    secondButton: {
+                        text: 'Submit',
+                    },
+                    text: 'Cancel',
+                    variant: 'link',
+                },
+                {
+                    name: 'Small',
+                    size: 'sm',
+                    secondButton: {
+                        text: 'Submit',
+                    },
+                    text: 'Cancel',
+                    variant: 'link',
+                },
+                {
+                    name: 'Inline',
+                    inline: true,
+                },
+            ],
+            primaryExamples: [
+                {
+                    name: 'Default',
+                    text: 'Default button',
+                },
+                {
+                    name: 'Default (text with icon)',
+                    icon: true,
+                    text: 'Default button',
+                },
+                {
+                    name: 'Default (icon only)',
+                    icon: true,
+                },
+                {
+                    name: 'Small',
+                    size: 'sm',
+                    text: 'Small button',
+                },
+                {
+                    name: 'Small (text with icon)',
+                    icon: true,
+                    size: 'sm',
+                    text: 'Small button',
+                },
+                {
+                    name: 'Small (icon only)',
+                    icon: true,
+                    size: 'sm',
+                },
             ],
             propTableRows: [
+                [
+                    'inline',
+                    'false',
+                    'Use only for the \'link\' variant. If true, removes the fixed padding and height from the '
+                    + 'button so it can be aligned with other text next to it.',
+                ],
+                [
+                    'outline',
+                    'false',
+                    'If true, changes to the outline version of the specified variant.',
+                ],
+                [
+                    'size',
+                    '"md"',
+                    'The size of the button: \'lg\', \'md\', or \'sm\'. Large and medium will render exactly '
+                    + 'the same.',
+                ],
+                [
+                    'variant',
+                    '"primary"',
+                    'The name of the desired button variant: \'primary\', \'dark-mode\', or \'link\'.',
+                ],
+            ],
+            propTableWidths: {
+                md: ['3', '4', '5'],
+                lg: ['2', '2', '8'],
+            },
+            secondaryExamples: [
                 {
-                    name: 'inline',
-                    type: 'boolean',
-                    description: `
-                        Use only for the 'link' variant. If true, removes the fixed padding and height from the
-                        button so it can be aligned with other text next to it. Defaults to false.
-                    `,
+                    name: 'Default',
+                    outline: true,
+                    text: 'Default button',
                 },
                 {
-                    name: 'outline',
-                    type: 'boolean',
-                    description: `
-                        If true, changes to the outline version of the specified variant. Defaults to false.
-                    `,
+                    name: 'Default (text with icon)',
+                    icon: true,
+                    outline: true,
+                    text: 'Default button',
                 },
                 {
-                    name: 'size',
-                    type: 'string',
-                    description: `
-                        The size of the button: 'lg', 'md', or 'sm'. Large and medium will render exactly the
-                        same. Defaults to 'md'.
-                    `,
+                    name: 'Default (icon only)',
+                    icon: true,
+                    outline: true,
                 },
                 {
-                    name: 'variant',
-                    type: 'string',
-                    description: `
-                        The name of the desired button variant: 'primary', 'secondary', or 'link'.
-                        Defaults to 'primary'.
-                    `,
+                    name: 'Small',
+                    outline: true,
+                    size: 'sm',
+                    text: 'Small button',
+                },
+                {
+                    name: 'Small (text with icon)',
+                    icon: true,
+                    outline: true,
+                    size: 'sm',
+                    text: 'Small button',
+                },
+                {
+                    name: 'Small (icon only)',
+                    icon: true,
+                    outline: true,
+                    size: 'sm',
                 },
             ],
             compCode: '',
