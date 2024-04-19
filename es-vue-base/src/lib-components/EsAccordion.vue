@@ -9,9 +9,9 @@
         <header class="position-relative">
             <component
                 :is="headingTag"
-                class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0 text-body text-body"
+                class="EsAccordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 rounded-0"
                 :class="{
-                    'bg-gray-200': isVisible && variant !== 'minimal',
+                    'bg-gray-50 text-blue-900': isVisible && variant !== 'minimal',
                     'bg-white': !isVisible && variant !== 'minimal',
                     'EsAccordion-heading--visible': isVisible,
                     'font-size-100 px-100 px-sm-200': variant !== 'minimal',
