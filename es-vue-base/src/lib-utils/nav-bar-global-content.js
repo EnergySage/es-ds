@@ -387,7 +387,7 @@ export default (
                 },
                 {
                     name: 'Get personalized quotes',
-                    link: `${HEAT_PUMPS_DOMAIN}/dashboard`,
+                    link: `${ES_DOMAIN}/shop/heat-pumps/`,
                     newTab: true,
                     emphasize: true,
                 },
