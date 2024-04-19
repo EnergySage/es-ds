@@ -268,7 +268,7 @@ export default (
             ],
             featuredArticle: {
                 linkName: 'New research',
-                linkUrl: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-16`,
+                linkUrl: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-18`,
                 lede: "EnergySage Intel's latest Solar & Storage Marketplace Report",
                 image500: `${ES_IMAGE_DOMAIN}/static/img/navbar/articles/latest-market-intel-500w.png`,
                 imageAlt: 'market intel report charts',
