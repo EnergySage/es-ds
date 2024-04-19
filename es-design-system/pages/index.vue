@@ -4,7 +4,7 @@
             EnergySage Design System
         </h1>
         <p>
-            Our designs system is based upon the
+            Our design system is based upon the
             <b-link href="https://getbootstrap.com/docs/4.6/getting-started/introduction/">
                 bootstrap 4
             </b-link> and
