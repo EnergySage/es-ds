@@ -16,7 +16,7 @@
 
         <div class="my-450">
             <h2>
-                Core Colors
+                Core colors
             </h2>
             <b-row>
                 <b-col
@@ -185,10 +185,15 @@
             </b-row>
         </div>
 
-        <div class="my-450">
-            <h2>
-                Legacy Color Names
-            </h2>
+        <es-collapse
+            id="legacy-collapse"
+            v-model="legacyCollapseVisible"
+            :is-programmatic-until-user-input="false">
+            <template #title>
+                <h2 class="mb-0">
+                    Legacy color names
+                </h2>
+            </template>
             <p>
                 These legacy color names have all been updated to pull from the new brand colors above.
                 Care was taken to match the old colors to the closest new color available, but you may still find
@@ -474,7 +479,7 @@
                     </b-col>
                 </b-row>
             </div>
-        </div>
+        </es-collapse>
 
         <ds-doc-source
             :doc-code="docCode"
@@ -525,6 +530,7 @@ export default {
             },
             errorColors: prepareColors(sassErrorColors),
             grays: sassGrays,
+            legacyCollapseVisible: false,
             neutrals: prepareColors(sassNeutrals),
             oranges: prepareColors(sassOranges),
             successColors: prepareColors(sassSuccessColors),

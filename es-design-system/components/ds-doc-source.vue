@@ -4,9 +4,9 @@
             v-if="compCode"
             id="compsource">
             <template #title>
-                <h3 class="mb-0">
-                    Component Source
-                </h3>
+                <h2 class="mb-0">
+                    Component source
+                </h2>
             </template>
             <ds-code-block
                 :code="compCode"
@@ -17,9 +17,9 @@
             id="docsource"
             class="mt-450">
             <template #title>
-                <h3 class="mb-0">
-                    Documentation Source
-                </h3>
+                <h2 class="mb-0">
+                    Documentation source
+                </h2>
             </template>
             <ds-code-block
                 :code="docCode"
