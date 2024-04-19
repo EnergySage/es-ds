@@ -261,15 +261,15 @@
 
         <div class="bg-dark-blue my-450 p-100 rounded-lg text-white">
             <h2 class="text-white">
-                Dark mode
+                Dark
             </h2>
             <p>
                 This variant is only meant to be used against a dark blue background.
-                Use the <code>variant="dark-mode"</code> prop value to enable it.
+                Use the <code>variant="dark"</code> prop value to enable it.
             </p>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
-                    v-for="example in darkModeExamples"
+                    v-for="example in darkExamples"
                     :key="example.name"
                     :zebra-stripes="false"
                     vertically-center-content>
@@ -412,41 +412,41 @@ export default {
     name: 'EsButtonDocs',
     data() {
         return {
-            darkModeExamples: [
+            darkExamples: [
                 {
                     name: 'Default',
                     text: 'Default button',
-                    variant: 'dark-mode',
+                    variant: 'dark',
                 },
                 {
                     name: 'Default (text with icon)',
                     icon: true,
                     text: 'Default button',
-                    variant: 'dark-mode',
+                    variant: 'dark',
                 },
                 {
                     name: 'Default (icon only)',
                     icon: true,
-                    variant: 'dark-mode',
+                    variant: 'dark',
                 },
                 {
                     name: 'Small',
                     size: 'sm',
                     text: 'Small button',
-                    variant: 'dark-mode',
+                    variant: 'dark',
                 },
                 {
                     name: 'Small (text with icon)',
                     icon: true,
                     size: 'sm',
                     text: 'Small button',
-                    variant: 'dark-mode',
+                    variant: 'dark',
                 },
                 {
                     name: 'Small (icon only)',
                     icon: true,
                     size: 'sm',
-                    variant: 'dark-mode',
+                    variant: 'dark',
                 },
             ],
             linkExamples: [

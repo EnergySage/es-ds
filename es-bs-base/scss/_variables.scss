@@ -518,7 +518,7 @@ $line-height-base:            1.5 !default;
 // Settings for the `<body>` element.
 
 $body-bg:                   $white !default;
-$body-color:                $gray-800 !default;
+$body-color:                $gray-900 !default;
 
 
 // Links
@@ -763,7 +763,7 @@ $button-colors: map.merge(
   (
     "primary":           $blue-600,
     "secondary":         $blue-600,
-    "dark-mode":         $orange-700,
+    "dark":         $orange-700,
   ),
   $button-colors
 );
@@ -775,8 +775,8 @@ $button-text-colors: map.merge(
     "secondary":         $white,
     "outline-primary":   $blue-600,
     "outline-secondary": $blue-600,
-    "dark-mode":         $blue-900,
-    "outline-dark-mode": $orange-800,
+    "dark":              $blue-900,
+    "outline-dark":      $orange-800,
   ),
   $button-text-colors
 );
@@ -788,8 +788,8 @@ $button-hover-colors: map.merge(
     "secondary":         $blue-700,
     "outline-primary":   $blue-50,
     "outline-secondary": $blue-50,
-    "dark-mode":         $orange-800,
-    "outline-dark-mode": $orange-800,
+    "dark":              $orange-800,
+    "outline-dark":      $orange-800,
   ),
   $button-hover-colors
 );
@@ -801,8 +801,8 @@ $button-active-colors: map.merge(
     "secondary":         $blue-800,
     "outline-primary":   $blue-200,
     "outline-secondary": $blue-200,
-    "dark-mode":         $orange-900,
-    "outline-dark-mode": $orange-900,
+    "dark":              $orange-900,
+    "outline-dark":      $orange-900,
   ),
   $button-active-colors
 );
@@ -814,8 +814,8 @@ $button-focus-border-colors: map.merge(
     "secondary":         $blue-100,
     "outline-primary":   $blue-600,
     "outline-secondary": $blue-600,
-    "dark-mode":         $blue-100,
-    "outline-dark-mode": $blue-100,
+    "dark":              $blue-100,
+    "outline-dark":      $blue-100,
   ),
   $button-focus-border-colors
 );
@@ -827,8 +827,8 @@ $button-disabled-colors: map.merge(
     "secondary":         $gray-200,
     "outline-primary":   $white,
     "outline-secondary": $white,
-    "dark-mode":         $orange-100,
-    "outline-dark-mode": $white,
+    "dark":              $orange-100,
+    "outline-dark":      $white,
   ),
   $button-disabled-colors
 );
@@ -840,14 +840,14 @@ $button-disabled-font-colors: map.merge(
     "secondary":         $gray-500,
     "outline-primary":   $gray-500,
     "outline-secondary": $gray-500,
-    "dark-mode":         $orange-400,
-    "outline-dark-mode": $orange-400,
+    "dark":              $orange-400,
+    "outline-dark":      $orange-400,
   ),
   $button-disabled-font-colors
 );
 
 $btn-primary-box-shadow: 0px 5px 10px 0px $blue-100 !default;
-$btn-dark-mode-box-shadow: 0px 4px 8px 0px rgba(41, 41, 41, 0.35);
+$btn-dark-box-shadow: 0px 4px 8px 0px rgba(41, 41, 41, 0.35);
 
 $button-box-shadows: () !default;
 $button-box-shadows: map.merge(
@@ -856,8 +856,8 @@ $button-box-shadows: map.merge(
     "secondary":         $btn-primary-box-shadow,
     "outline-primary":   'none',
     "outline-secondary": 'none',
-    "dark-mode":         $btn-dark-mode-box-shadow,
-    "outline-dark-mode": $btn-dark-mode-box-shadow,
+    "dark":              $btn-dark-box-shadow,
+    "outline-dark":      $btn-dark-box-shadow,
   ),
   $button-box-shadows
 );

@@ -42,7 +42,7 @@ h6, .h6 { @include rfs.font-size(variables.$h6-font-size); }
 .eyebrow {
   font-size: variables.$font-size-base;
   font-weight: variables.$font-weight-bolder;
-  color: variables.$headings-color;
+  color: variables.$blue-500;
   text-transform: uppercase;
   letter-spacing: variables.$eyebrow-letter-spacing;
 }
