@@ -14,19 +14,24 @@
                 Basic example
             </h2>
             <es-tabs>
-                <es-tab title="Tab 1">
+                <es-tab title="Item One">
                     <p>
-                        Content 1
+                        Content One
                     </p>
                 </es-tab>
-                <es-tab title="Tab 2">
+                <es-tab title="Item Two">
                     <p>
-                        Content 2
+                        Content Two
                     </p>
                 </es-tab>
-                <es-tab title="Tab 3">
+                <es-tab title="Item Three">
                     <p>
-                        Content 3
+                        Content Three
+                    </p>
+                </es-tab>
+                <es-tab title="Item Four">
+                    <p>
+                        Content Four
                     </p>
                 </es-tab>
             </es-tabs>
@@ -46,19 +51,19 @@
                     class="mb-50"
                     :disabled="tabIndexProgrammatic === 0"
                     @click="tabIndexProgrammatic = 0">
-                    Select tab 1
+                    Select tab one
                 </es-button>
                 <es-button
                     class="mb-50"
                     :disabled="tabIndexProgrammatic === 1"
                     @click="tabIndexProgrammatic = 1">
-                    Select tab 2
+                    Select tab two
                 </es-button>
                 <es-button
                     class="mb-50"
                     :disabled="tabIndexProgrammatic === 2"
                     @click="tabIndexProgrammatic = 2">
-                    Select tab 3
+                    Select tab three
                 </es-button>
             </div>
             <b-row>
@@ -68,19 +73,19 @@
                     <es-tabs
                         v-model="tabIndexProgrammatic"
                         class="mb-200">
-                        <es-tab title="Tab 1">
+                        <es-tab title="Item One">
                             <p>
-                                Content 1
+                                Content One
                             </p>
                         </es-tab>
-                        <es-tab title="Tab 2">
+                        <es-tab title="Item Two">
                             <p>
-                                Content 2
+                                Content Two
                             </p>
                         </es-tab>
-                        <es-tab title="Tab 3">
+                        <es-tab title="Item Three">
                             <p>
-                                Content 3
+                                Content Three
                             </p>
                         </es-tab>
                     </es-tabs>

@@ -1,0 +1,36 @@
+@use "../variables";
+@use "../../variables" as v;
+
+.es-tabs {
+  .nav {
+      border-bottom: var(--border-bottom);
+      border-color: v.$gray-300;
+  }
+
+  .nav-link {
+      color: v.$gray-900;
+      font-weight: v.$font-weight-normal;
+      margin: 0 2rem -2px;
+      padding: 0.25rem 0 0.5rem 0;
+
+      &:first-child {
+          margin-left: 0;
+      }
+
+      &:hover,
+      &:focus {
+          color: v.$blue-500;
+      }
+  }
+
+  .active-tab {
+      border-bottom: 2px solid;
+      border-color: v.$blue-500;
+      color: v.$blue-500;
+
+      &:hover,
+      &:focus {
+          color: v.$blue-500;
+      }
+  }
+}
