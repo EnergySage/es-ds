@@ -10,7 +10,7 @@
             <es-support-card
                 image-alt-text="Donec consequat auctor"
                 :image-src="placeholderPersonImage"
-                primary-cta-text="Lorem ipsum"
+                primary-cta-text="Schedule a call"
                 primary-cta-url="https://www.energysage.com">
                 <template #headline>
                     <span class="align-items-center d-flex text-success">
@@ -19,13 +19,13 @@
                             height="22px"
                             width="22px" />
                     </span>
-                    Lorem ipsum dolor sit
+                    We’re here to help
                 </template>
                 <template #description>
-                    Praesent hendrerit lacus eu eros varius, quis tempor eros varius.
-                    <span class="font-weight-bold">
-                        Sed efficitur gravida odio id posuere.
-                    </span>
+                    Our Energy Advisors provide expert, unbiased energy advice at no cost to you.
+                    <strong>
+                        No annoying sales pitches, and no spam calls.
+                    </strong>
                 </template>
             </es-support-card>
         </div>
@@ -36,9 +36,9 @@
             <es-support-card
                 image-alt-text="Donec consequat auctor"
                 :image-src="placeholderPersonImage"
-                primary-cta-text="Lorem ipsum"
+                primary-cta-text="Schedule a call"
                 primary-cta-url="https://www.energysage.com"
-                secondary-cta-text="Orci varius natoque"
+                secondary-cta-text="Send an email"
                 secondary-cta-url="mailto:media@energysage.com">
                 <template #headline>
                     <span class="align-items-center d-flex text-success">
@@ -47,13 +47,13 @@
                             height="22px"
                             width="22px" />
                     </span>
-                    Lorem ipsum dolor sit
+                    We’re here to help
                 </template>
                 <template #description>
-                    Praesent hendrerit lacus eu eros varius, quis tempor eros varius.
-                    <span class="font-weight-bold">
-                        Sed efficitur gravida odio id posuere.
-                    </span>
+                    Our Energy Advisors provide expert, unbiased energy advice at no cost to you.
+                    <strong>
+                        No annoying sales pitches, and no spam calls.
+                    </strong>
                 </template>
             </es-support-card>
         </div>
@@ -74,8 +74,10 @@
                         constrained
                         image-alt-text="Donec consequat auctor"
                         :image-src="placeholderPersonImage"
-                        primary-cta-text="Lorem ipsum"
-                        primary-cta-url="https://www.energysage.com">
+                        primary-cta-text="Schedule a call"
+                        primary-cta-url="https://www.energysage.com"
+                        secondary-cta-text="Send an email"
+                        secondary-cta-url="mailto:media@energysage.com">
                         <template #headline>
                             <span class="align-items-center d-flex text-success">
                                 <icon-verified
@@ -83,13 +85,13 @@
                                     height="22px"
                                     width="22px" />
                             </span>
-                            Lorem ipsum dolor sit
+                            We’re here to help
                         </template>
                         <template #description>
-                            Praesent hendrerit lacus eu eros varius, quis tempor eros varius.
-                            <span class="font-weight-bold">
-                                Sed efficitur gravida odio id posuere.
-                            </span>
+                            Our Energy Advisors provide expert, unbiased energy advice at no cost to you.
+                            <strong>
+                                No annoying sales pitches, and no spam calls.
+                            </strong>
                         </template>
                     </es-support-card>
                 </b-col>
@@ -437,8 +439,6 @@
 </template>
 
 <script>
-import placeholderPersonImage from '@/assets/placeholder/icon-person.svg';
-
 export default {
     name: 'EsSupportCardDocs',
     data() {
@@ -448,7 +448,7 @@ export default {
             columnWidths: {
                 md: ['3', '2', '7'],
             },
-            placeholderPersonImage,
+            placeholderPersonImage: 'https://a-us.storyblok.com/f/1006159/1200x1200/47efaeb0b3/jessica.png/m/280x280/filters:quality(100)',
         };
     },
     async created() {
