@@ -1391,11 +1391,11 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 
 // Badges
 
-$badge-font-size:                   $font-size-sm !default;
+$badge-font-size:                   0.75rem !default;
 $badge-font-weight:                 $font-weight-bold !default;
-$badge-padding-y:                   1rem * 0.3 !default;
-$badge-padding-x:                   1rem * 0.35 !default;
-$badge-border-radius:               1rem * 0.7 !default;
+$badge-padding-y:                   0.25rem !default;
+$badge-padding-x:                   1rem !default;
+$badge-border-radius:               $border-radius-sm !default;
 
 $badge-transition:                  $btn-transition !default;
 $badge-focus-width:                 $input-btn-focus-width !default;
@@ -1405,6 +1405,47 @@ $badge-pill-padding-x:              .6em !default;
 // customizing padding or font-size on labels.
 $badge-pill-border-radius:          10rem !default;
 
+$badge-bg-colors: () !default;
+$badge-bg-colors: map.merge(
+  (
+    "danger":    $error-50,
+    "dark":      $gray-400,
+    "info":      $orange-500,
+    "primary":   $soft-blue,
+    "success":   $success-50,
+    "warning":   $warning-50,
+
+    // deprecated
+    "secondary":      $soft-blue,
+    "light":          $light,
+    "mid":            $mid,
+    "mid-dark":       $mid-dark,
+    "highlight":      $highlight,
+    "highlight-dark": $highlight-dark,
+  ),
+  $badge-bg-colors
+);
+
+$badge-text-colors: () !default;
+$badge-text-colors: map.merge(
+  (
+    "danger":    $gray-900,
+    "dark":      $gray-800,
+    "info":      $gray-900,
+    "primary":   $dark-blue,
+    "success":   $gray-900,
+    "warning":   $gray-900,
+
+    // deprecated
+    "secondary":      $gray-900,
+    "light":          $gray-900,
+    "mid":            $gray-900,
+    "mid-dark":       $gray-900,
+    "highlight":      $gray-900,
+    "highlight-dark": $gray-900,
+  ),
+  $badge-text-colors
+);
 
 // Modals
 

@@ -12,19 +12,29 @@
             <es-badge>
                 Primary
             </es-badge>
-            <es-badge variant="success">
+            <es-badge
+                class="ml-50"
+                variant="success">
                 Success
             </es-badge>
-            <es-badge variant="danger">
-                Danger
-            </es-badge>
-            <es-badge variant="warning">
+            <es-badge
+                class="ml-50"
+                variant="warning">
                 Warning
             </es-badge>
-            <es-badge variant="info">
+            <es-badge
+                class="ml-50"
+                variant="danger">
+                Danger
+            </es-badge>
+            <es-badge
+                class="ml-50"
+                variant="info">
                 Info
             </es-badge>
-            <es-badge variant="dark">
+            <es-badge
+                class="ml-50"
+                variant="dark">
                 Dark
             </es-badge>
         </div>
