@@ -78,12 +78,6 @@ export default {
                     `,
                 },
                 {
-                    name: 'rounded',
-                    type: 'Boolean',
-                    default: false,
-                    description: 'Display the table with rounded corners.',
-                },
-                {
                     name: 'stickyFirstCol',
                     type: 'Boolean',
                     default: false,
