@@ -12,11 +12,9 @@
         </p>
         <div class="mb-450">
             <h2 class="mb-200">
-                Basic version, rounded corners, headers inferred from 1st item
+                Basic version, headers inferred from 1st item
             </h2>
-            <es-data-table
-                rounded
-                :items="dataTableItems" />
+            <es-data-table :items="dataTableItems" />
         </div>
         <div class="mb-450">
             <h2 class="mb-200">

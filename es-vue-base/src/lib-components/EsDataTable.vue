@@ -3,7 +3,6 @@
         table-class="font-size-75 font-size-md-100"
         responsive
         class="border table__data-table"
-        :class="{ rounded }"
         :no-border-collapse="stickyFirstCol"
         :sticky-header="stickyHeader"
         :fields="computedFields"
@@ -26,10 +25,6 @@ export default {
         items: {
             type: Array,
             required: true,
-        },
-        rounded: {
-            type: Boolean,
-            default: false,
         },
         stickyFirstCol: {
             type: Boolean,
