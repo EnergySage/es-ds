@@ -1,69 +1,69 @@
 <template>
-    <ul>
+    <ul class="list-unstyled pl-100">
         <li>
-            <b-link to="/organisms/es-cta-banner">
+            <ds-link to="/organisms/es-cta-banner">
                 EsCtaBanner
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-cta-card">
+            <ds-link to="/organisms/es-cta-card">
                 EsCtaCard
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-error-page">
+            <ds-link to="/organisms/es-error-page">
                 EsErrorPage
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-footer">
+            <ds-link to="/organisms/es-footer">
                 EsFooter
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-form">
+            <ds-link to="/organisms/es-form">
                 EsForm
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-nav-bar">
+            <ds-link to="/organisms/es-nav-bar">
                 EsNavBar
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-review">
+            <ds-link to="/organisms/es-review">
                 EsReview
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-reviews-list">
+            <ds-link to="/organisms/es-reviews-list">
                 EsReviewsList
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-reviews-io-card-carousel">
+            <ds-link to="/organisms/es-reviews-io-card-carousel">
                 EsReviewsIoCardCarousel
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-support-card">
+            <ds-link to="/organisms/es-support-card">
                 EsSupportCard
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-file-thumbnail">
+            <ds-link to="/organisms/es-file-thumbnail">
                 EsFileThumbnail
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-file-preview-modal">
+            <ds-link to="/organisms/es-file-preview-modal">
                 EsFilePreviewModal
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link to="/organisms/es-zip-code-form">
+            <ds-link to="/organisms/es-zip-code-form">
                 EsZipCodeForm
-            </b-link>
+            </ds-link>
         </li>
     </ul>
 </template>
