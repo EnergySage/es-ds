@@ -592,9 +592,9 @@ $line-height-sm:              1.5 !default;
 $border-width:                1px !default;
 $border-color:                $gray-300 !default;
 
-$border-radius:               1rem !default;
-$border-radius-lg:            2rem !default;
-$border-radius-sm:            .5rem !default;
+$border-radius:               .5rem !default;
+$border-radius-lg:            .75rem !default;
+$border-radius-sm:            .25rem !default;
 
 $rounded-pill:                50rem !default;
 
@@ -900,10 +900,10 @@ $btn-link-disabled-color:     $gray-500 !default;
 $btn-block-spacing-y:         .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:           $border-radius-lg !default;
+$btn-border-radius:           $border-radius !default;
 // fusv-disable
-$btn-border-radius-lg:        $border-radius-lg !default; // not currently used
-$btn-border-radius-sm:        $border-radius-sm !default; // not currently used
+$btn-border-radius-lg:        $border-radius !default; // not currently used
+$btn-border-radius-sm:        $border-radius !default; // not currently used
 // fusv-enable
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
@@ -941,7 +941,7 @@ $input-border-color:                    $gray-900 !default;
 $input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      inset 0 1px 1px rgba($black, .075) !default;
 
-$input-border-radius:                   $border-radius !default;
+$input-border-radius:                   $border-radius-sm !default;
 $input-border-radius-lg:                $border-radius-lg !default;
 $input-border-radius-sm:                $border-radius-sm !default;
 
