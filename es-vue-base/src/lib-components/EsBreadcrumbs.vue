@@ -22,5 +22,6 @@ export default {
     .active span {
         font-weight: variables.$font-weight-bold;
     }
+    font-size: variables.$font-size-50;
 }
 </style>
