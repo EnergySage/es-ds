@@ -9,7 +9,7 @@
 .es-accordion-list--default {
   background-color: variables.$white;
   border: variables.$border-width solid variables.$gray-200;
-  border-radius: variables.$border-radius variables.$border-radius 0 0;
+  border-radius: variables.$border-radius-lg variables.$border-radius-lg 0 0;
 
   .es-accordion {
     &.expanded {
@@ -27,7 +27,7 @@
     /* first item needs rounded corners on top */
     &:first-child {
       .es-accordion-heading {
-          border-radius: variables.$border-radius variables.$border-radius 0 0;
+          border-radius: variables.$border-radius-lg variables.$border-radius-lg 0 0;
       }
     }
 
