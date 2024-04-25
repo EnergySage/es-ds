@@ -8,7 +8,7 @@ export default (
     loggedIn: {
         items: [
             {
-                name: 'My dashboard',
+                name: 'My profile',
                 link: `${ES_DOMAIN}/profile/`,
             },
             {
