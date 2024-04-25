@@ -35,11 +35,13 @@ export default {
     },
     // Development has SSR turned on to test es-vue-base compatibility
     // Production build will generate client only SPA
-    ssr: process.env.NODE_ENV === 'development',
+    ssr: process.env.FAST_LOCAL ? false : process.env.NODE_ENV === 'development',
     target: 'static',
-    modern: true,
+    // eslint-disable-next-line no-unneeded-ternary
+    modern: process.env.FAST_LOCAL ? false : true,
     telemetry: false,
-    spa: false,
+    // eslint-disable-next-line no-unneeded-ternary
+    spa: process.env.FAST_LOCAL ? true : false,
     build: {
         // analyze: true,
         extend(config) {
