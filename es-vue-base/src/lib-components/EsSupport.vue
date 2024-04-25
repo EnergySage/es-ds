@@ -3,7 +3,7 @@
         class="d-flex support-holder align-items-center"
         v-bind="$attrs"
         v-on="$listeners">
-        <div class="image-holder mr-100">
+        <div class="image-holder mr-50">
             <a
                 target="_blank"
                 aria-label="Help"
