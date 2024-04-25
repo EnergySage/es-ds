@@ -22,9 +22,6 @@ export default {
     .active span {
         font-weight: variables.$font-weight-bold;
     }
-    a{
-        font-weight: variables.$font-weight-normal;
-    }
 }
 
 </style>
