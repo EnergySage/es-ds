@@ -39,6 +39,30 @@
         </div>
 
         <div class="mb-450">
+            <h2>Pre-populate zipcode example</h2>
+            <p class="mb-200">
+                Same as above, except the zip code form can accept an <code>initial zip code value</code>, facilitating
+                the pre-population of zip codes from a form. This feature is beneficial for scenarios where a
+                pre-determined zip code needs to be set, which users can subsequently modify. If the user does not
+                alter the zip code, it will default to the initial value provided.
+            </p>
+            <b-row class="justify-content-center">
+                <b-col
+                    sm="10"
+                    md="8">
+                    <es-zip-code-form
+                        input-id="prepopulate-hero-example"
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        stack-until="lg"
+                        zip-code-initial-value="02150"
+                        url="https://www.energysage.com/market/start/">
+                        <template #buttonText> See local offers </template>
+                    </es-zip-code-form>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="mb-450">
             <h2>
                 Dark responsive example
             </h2>
@@ -276,6 +300,11 @@ export default {
                     'selectedProduct',
                     'n/a',
                     'Specify which product of interest. Options include: solar-pv, heatpump, ev-charger',
+                ],
+                [
+                    'zipCodeInitialValue',
+                    "''",
+                    'The default zipcode value if passed to the zip code form',
                 ],
             ],
             propTableWidths: {
