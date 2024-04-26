@@ -305,7 +305,7 @@ export default {
                     'zipCodeInitialValue',
                     "''",
                     'The default zipcode value if passed to the zip code form',
-                ]
+                ],
             ],
             propTableWidths: {
                 md: ['4', '2', '6'],
