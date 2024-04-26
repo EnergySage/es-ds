@@ -150,10 +150,14 @@ export default {
             type: String,
             required: true,
         },
+        zipCodeInitialValue: {
+            type: String,
+            default: '',
+        },
     },
     data() {
         return {
-            zipCode: '',
+            zipCode: this.zipCodeInitialValue,
         };
     },
     computed: {
