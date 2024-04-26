@@ -301,6 +301,11 @@ export default {
                     'n/a',
                     'Specify which product of interest. Options include: solar-pv, heatpump, ev-charger',
                 ],
+                [
+                    'zipCodeInitialValue',
+                    "''",
+                    'The default zipcode value if passed to the zip code form',
+                ]
             ],
             propTableWidths: {
                 md: ['4', '2', '6'],
