@@ -1,24 +1,24 @@
 <template>
-    <ul>
+    <ul class="list-unstyled pl-100">
         <li>
-            <b-link :to="{ name: 'examples-nuxt-components___en' }">
+            <ds-link to="/examples/nuxt-components">
                 Nuxt Components
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link :to="{ name: 'examples-form-field-validation___en' }">
+            <ds-link to="/examples/form-field-validation">
                 Form with Field Validation
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link :to="{ name: 'examples-form-validation___en' }">
+            <ds-link to="/examples/form-validation">
                 Form with (form level) Validation
-            </b-link>
+            </ds-link>
         </li>
         <li>
-            <b-link :to="{ name: 'examples-file-upload___en' }">
+            <ds-link to="/examples/file-upload">
                 File Upload
-            </b-link>
+            </ds-link>
         </li>
     </ul>
 </template>
