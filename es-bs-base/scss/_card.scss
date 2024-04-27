@@ -268,11 +268,11 @@
 //
 
 .es-card {
-  padding: variables.$spacer * 2;
+  border: 2px solid variables.$gray-50;
+  padding: variables.$spacer * 1.5;
   background-color: variables.$white;
   /* stylelint-disable-next-line property-disallowed-list */
-  border-radius: variables.$border-radius-lg;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
+  border-radius: variables.$border-radius;
 
   &.interactive {
     /* account for the tag likely being an anchor or button */
@@ -280,8 +280,8 @@
     font-weight: variables.$font-weight-base;
     color: variables.$body-color;
     cursor: pointer;
-    border: variables.$border-width solid variables.$gray-200;
-    box-shadow: none;
+    border: 2px solid variables.$gray-200;
+    box-shadow: 0px 4px 12px 0px variables.$gray-50;
 
     /* stylelint-disable-next-line property-disallowed-list */
     transition: variables.$transition-base;
@@ -290,8 +290,13 @@
     transform: translateZ(0);
 
     &:hover {
+      border-color: variables.$orange-300;
       text-decoration: none;
-      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+    }
+
+    &:active {
+      box-shadow: 0px 3px 10px 0px variables.$gray-50;
+      transform: translateY(1px);
     }
   }
 }
