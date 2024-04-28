@@ -20,7 +20,6 @@
   z-index: 1;
   display: block;
   min-height: variables.$font-size-base * variables.$line-height-base;
-  padding-left: variables.$custom-control-gutter + variables.$custom-control-indicator-size;
   print-color-adjust: exact; // Keep themed appearance for print
 }
 
@@ -57,11 +56,17 @@
     border-color: variables.$custom-control-indicator-focus-border-color;
   }
 
+  &:not(:disabled):not(:focus) ~ .custom-control-label:hover::before {
+    // the mixin is not used here to make sure there is feedback
+    box-shadow: variables.$custom-control-indicator-hover-box-shadow;
+  }
+
   &:not(:disabled):active ~ .custom-control-label::before {
     color: variables.$custom-control-indicator-active-color;
     background-color: variables.$custom-control-indicator-active-bg;
     border-color: variables.$custom-control-indicator-active-border-color;
-    @include box-shadow.box-shadow(variables.$custom-control-indicator-active-box-shadow);
+    // the mixin is not used here to make sure there is feedback
+    box-shadow: variables.$custom-control-indicator-active-box-shadow;
   }
 
   // Use [disabled] and :disabled to work around https://github.com/twbs/bootstrap/issues/28247
@@ -72,6 +77,7 @@
 
       &::before {
         background-color: variables.$custom-control-indicator-disabled-bg;
+        border-color: variables.$custom-control-label-disabled-color;
       }
     }
   }
@@ -87,12 +93,17 @@
   color: variables.$custom-control-label-color;
   vertical-align: top;
   cursor: variables.$custom-control-cursor;
+  padding-bottom: variables.$custom-control-gutter * 0.5;
+  padding-left: variables.$custom-control-gutter + variables.$custom-control-indicator-size;
+  padding-top: variables.$custom-control-gutter * 0.5;
+  // prevent multiple clicks from selecting text unnecessarily
+  user-select: none;
 
   // Background-color and (when enabled) gradient
   &::before {
     position: absolute;
-    top: (variables.$font-size-base * variables.$line-height-base - variables.$custom-control-indicator-size) * .5;
-    left: -(variables.$custom-control-gutter + variables.$custom-control-indicator-size);
+    top: ((variables.$font-size-base * variables.$line-height-base + variables.$custom-control-gutter - variables.$custom-control-indicator-size) * .5);
+    left: 0;
     display: block;
     width: variables.$custom-control-indicator-size;
     height: variables.$custom-control-indicator-size;
@@ -106,8 +117,8 @@
   // Foreground (icon)
   &::after {
     position: absolute;
-    top: (variables.$font-size-base * variables.$line-height-base - variables.$custom-control-indicator-size) * .5;
-    left: -(variables.$custom-control-gutter + variables.$custom-control-indicator-size);
+    top: ((variables.$font-size-base * variables.$line-height-base + variables.$custom-control-gutter - variables.$custom-control-indicator-size) * .5);
+    left: 0;
     display: block;
     width: variables.$custom-control-indicator-size;
     height: variables.$custom-control-indicator-size;
@@ -128,7 +139,13 @@
 
   .custom-control-input:checked ~ .custom-control-label {
     &::after {
-      background-image: escape-svg(variables.$custom-checkbox-indicator-icon-checked);
+      background-image: functions.escape-svg(variables.$custom-checkbox-indicator-icon-checked);
+    }
+  }
+
+  .custom-control-input:disabled:checked ~ .custom-control-label {
+    &::after {
+      background-image: functions.escape-svg(variables.$custom-checkbox-indicator-icon-checked-disabled);
     }
   }
 
@@ -139,7 +156,7 @@
       @include box-shadow.box-shadow(variables.$custom-checkbox-indicator-indeterminate-box-shadow);
     }
     &::after {
-      background-image: escape-svg(variables.$custom-checkbox-indicator-icon-indeterminate);
+      background-image: functions.escape-svg(variables.$custom-checkbox-indicator-icon-indeterminate);
     }
   }
 
@@ -165,7 +182,7 @@
 
   .custom-control-input:checked ~ .custom-control-label {
     &::after {
-      background-image: escape-svg(variables.$custom-radio-indicator-icon-checked);
+      background-image: functions.escape-svg(variables.$custom-radio-indicator-icon-checked);
     }
   }
 

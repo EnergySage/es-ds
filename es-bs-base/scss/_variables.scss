@@ -604,7 +604,7 @@ $box-shadow-sm: $box-shadow !default;
 $box-shadow-lg: $box-shadow !default;
 
 $component-active-color:      $white !default;
-$component-active-bg:         $indigo !default;
+$component-active-bg:         $dark-blue !default;
 
 $caret-width:                 .4em !default;
 $caret-vertical-align:        $caret-width * .85 !default;
@@ -985,7 +985,7 @@ $input-group-addon-border-color:        $input-border-color !default;
 
 $custom-forms-transition:               background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
-$custom-control-gutter:                 .5rem !default;
+$custom-control-gutter:                 1rem !default;
 $custom-control-spacer-x:               1rem !default;
 $custom-control-cursor:                 null !default;
 
@@ -994,32 +994,35 @@ $custom-control-indicator-bg:           $input-bg !default;
 
 $custom-control-indicator-bg-size:      50% 50% !default;
 $custom-control-indicator-box-shadow:   $input-box-shadow !default;
-$custom-control-indicator-border-color: $gray-500 !default;
-$custom-control-indicator-border-width: $input-border-width !default;
+$custom-control-indicator-border-color: $gray-800 !default;
+$custom-control-indicator-border-width: 2px !default;
 
 $custom-control-label-color:            null !default;
 
-$custom-control-indicator-disabled-bg:          $input-disabled-bg !default;
-$custom-control-label-disabled-color:           $gray-600 !default;
+$custom-control-indicator-disabled-bg:          $white !default;
+$custom-control-label-disabled-color:           $gray-500 !default;
 
 $custom-control-indicator-checked-color:        $component-active-color !default;
 $custom-control-indicator-checked-bg:           $component-active-bg !default;
-$custom-control-indicator-checked-disabled-bg:  rgba(map.get($theme-colors, "primary"), .5) !default;
+$custom-control-indicator-checked-disabled-bg:  $white !default;
 
 $custom-control-indicator-checked-box-shadow:   null !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
 
-$custom-control-indicator-focus-box-shadow:     $input-focus-box-shadow !default;
+$custom-control-indicator-hover-box-shadow:     0px 0px 0px 10px $blue-50 !default;
+
+$custom-control-indicator-focus-box-shadow:     0px 0px 0px 10px $blue-300 !default;
 $custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
 
 $custom-control-indicator-active-color:         $component-active-color !default;
-$custom-control-indicator-active-bg:            color.adjust($component-active-bg, $lightness: 35%) !default;
+$custom-control-indicator-active-bg:            $white !default;
 
-$custom-control-indicator-active-box-shadow:    null !default;
-$custom-control-indicator-active-border-color:  $custom-control-indicator-active-bg !default;
+$custom-control-indicator-active-box-shadow:    0px 0px 0px 10px $blue-50 !default;
+$custom-control-indicator-active-border-color:  $custom-control-indicator-border-color !default;
 
-$custom-checkbox-indicator-border-radius:       $border-radius !default;
-$custom-checkbox-indicator-icon-checked:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/></svg>") !default;
+$custom-checkbox-indicator-border-radius:         0.125rem !default;
+$custom-checkbox-indicator-icon-checked:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='7 8 10 8'><path fill-rule='evenodd' clip-rule='evenodd' d='M16.723 8.237a.94.94 0 0 1 .053 1.277l-5.366 6.193a.834.834 0 0 1-.611.293.83.83 0 0 1-.622-.264L7.25 12.639a.94.94 0 0 1 0-1.278.821.821 0 0 1 1.207 0l2.297 2.43 4.763-5.498a.821.821 0 0 1 1.206-.056Z' fill='#{$custom-control-indicator-checked-color}'/></svg>") !default;
+$custom-checkbox-indicator-icon-checked-disabled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='7 8 10 8'><path fill-rule='evenodd' clip-rule='evenodd' d='M16.723 8.237a.94.94 0 0 1 .053 1.277l-5.366 6.193a.834.834 0 0 1-.611.293.83.83 0 0 1-.622-.264L7.25 12.639a.94.94 0 0 1 0-1.278.821.821 0 0 1 1.207 0l2.297 2.43 4.763-5.498a.821.821 0 0 1 1.206-.056Z' fill='#{$custom-control-label-disabled-color}'/></svg>") !default;
 
 $custom-checkbox-indicator-indeterminate-bg:           $component-active-bg !default;
 $custom-checkbox-indicator-indeterminate-color:        $custom-control-indicator-checked-color !default;
