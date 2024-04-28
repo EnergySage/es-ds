@@ -100,6 +100,10 @@
                 </b-form-group>
             </div>
         </div>
+
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/molecules/es-radio-button.vue" />
     </div>
 </template>
 
@@ -111,6 +115,16 @@ export default {
             docCode: '',
             fruit: 'banana',
         };
+    },
+    async created() {
+        if (this.$prism) {
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            const docSource = await import('!raw-loader!./radio-button.vue');
+            /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+            this.docCode = this.$prism.normalizeCode(docSource.default);
+            this.$prism.highlight(this);
+        }
     },
 };
 </script>

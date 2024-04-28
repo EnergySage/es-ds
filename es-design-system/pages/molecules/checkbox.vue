@@ -121,7 +121,7 @@
 
         <ds-doc-source
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-accordion.vue" />
+            doc-source="es-design-system/pages/molecules/checkbox.vue" />
     </div>
 </template>
 
