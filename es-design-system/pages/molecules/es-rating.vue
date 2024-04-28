@@ -4,7 +4,9 @@
             Rating
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-rating">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/form-rating"
+                target="_blank">
                 bootstrap-vue form-rating
             </b-link>
         </p>

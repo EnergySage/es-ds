@@ -4,7 +4,9 @@
             Typography
         </h1>
         <p>
-            Extended from <b-link href="https://getbootstrap.com/docs/4.6/content/typography/">
+            Extended from <b-link
+                href="https://getbootstrap.com/docs/4.6/content/typography/"
+                target="_blank">
                 bootstrap typography.
             </b-link>
             Please

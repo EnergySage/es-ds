@@ -4,7 +4,9 @@
             Breadcrumbs
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/breadcrumb">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/breadcrumb"
+                target="_blank">
                 bootstrap-vue breadcrumbs
             </b-link>
         </p>

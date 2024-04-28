@@ -4,7 +4,9 @@
             Modal
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/modal">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/modal"
+                target="_blank">
                 bootstrap-vue modal
             </b-link>
         </p>

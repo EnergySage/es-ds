@@ -5,7 +5,9 @@
         </h1>
         <p class="mb-450">
             Uses
-            <b-link href="https://bootstrap-vue.org/docs/components/form-checkbox">
+            <b-link
+                href="https://bootstrap-vue.org/docs/components/form-checkbox"
+                target="_blank">
                 bootstrap-vue checkbox
             </b-link>
         </p>

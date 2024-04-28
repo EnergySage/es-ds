@@ -4,7 +4,9 @@
             Button
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/button">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/button"
+                target="_blank">
                 bootstrap-vue button
             </b-link>
         </p>

@@ -4,7 +4,9 @@
             Input
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-input">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/form-input"
+                target="_blank">
                 bootstrap-vue form-input
             </b-link>
         </p>

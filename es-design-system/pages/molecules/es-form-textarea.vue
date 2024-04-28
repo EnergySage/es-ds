@@ -4,7 +4,9 @@
             Textarea
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-textarea">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/form-textarea"
+                target="_blank">
                 bootstrap-vue form-textarea
             </b-link>
         </p>
