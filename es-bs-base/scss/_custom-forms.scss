@@ -181,14 +181,20 @@
   }
 
   .custom-control-input:checked ~ .custom-control-label {
+    &::before {
+      background-color: variables.$custom-control-indicator-bg;
+    }
     &::after {
       background-image: functions.escape-svg(variables.$custom-radio-indicator-icon-checked);
     }
   }
 
-  .custom-control-input:disabled {
-    &:checked ~ .custom-control-label::before {
+  .custom-control-input:disabled:checked ~ .custom-control-label {
+    &::before {
       @include gradients.gradient-bg(variables.$custom-control-indicator-checked-disabled-bg);
+    }
+    &::after {
+      background-image: functions.escape-svg(variables.$custom-radio-indicator-icon-checked-disabled);
     }
   }
 }

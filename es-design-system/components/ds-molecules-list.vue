@@ -91,6 +91,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/radio-button">
+                Radio button
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/es-form-radio-cards">
                 Radio cards
             </ds-link>
