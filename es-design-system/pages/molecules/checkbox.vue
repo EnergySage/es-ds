@@ -116,6 +116,10 @@
                 </b-form-checkbox>
             </div>
         </div>
+
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-design-system/pages/molecules/es-accordion.vue" />
     </div>
 </template>
 
@@ -124,7 +128,6 @@ export default {
     name: 'CheckboxDocs',
     data() {
         return {
-            compCode: '',
             docCode: '',
             apple: false,
             banana: true,
