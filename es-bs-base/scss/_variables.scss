@@ -527,8 +527,9 @@ $body-color:                $gray-900 !default;
 
 $link-color:                              $blue-600 !default;
 $link-decoration:                         none !default;
-$link-hover-color:                        color.adjust($link-color, $lightness: -15%) !default;
+$link-hover-color:                        $blue-600 !default;
 $link-hover-decoration:                   underline !default;
+$link-visited-color:                      $blue-800 !default;
 $link-weight:                             $font-weight-semibold !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 $emphasized-link-hover-darken-percentage: 15% !default;

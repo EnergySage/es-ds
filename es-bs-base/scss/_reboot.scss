@@ -197,6 +197,11 @@ a {
     color: variables.$link-hover-color;
     text-decoration: variables.$link-hover-decoration;
   }
+
+  &:visited,
+  &:visited:hover {
+    color: variables.$link-visited-color;
+  }
 }
 
 // And undo these styles for placeholder links/named anchors (without href).
