@@ -51,7 +51,7 @@
                 v-if="selectedProduct"
                 type="hidden"
                 name="product"
-                :value="selectedProduct" />
+                :value="selectedProduct">
             <es-button
                 class="text-nowrap w-100"
                 :class="{
@@ -78,7 +78,7 @@
                 v-if="privacyPolicyLink"
                 :href="privacyPolicyLink"
                 class="text-nowrap"
-                :class="dark ? 'text-white' : 'text-dark'"
+                :class="dark ? 'text-white' : ''"
                 :target="privacyPolicyNewTab ? '_blank' : '_self'">
                 <slot name="privacyPolicyLinkText">
                     Privacy Policy
