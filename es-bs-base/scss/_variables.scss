@@ -767,9 +767,32 @@ $button-colors: map.merge(
   (
     "primary":           $blue-600,
     "secondary":         $blue-600,
-    "dark":              $orange-700,
+    "dark":              $blue-600,
+    "dark-bg":           $orange-700,
   ),
   $button-colors
+);
+
+$button-outline-bg-colors: () !default;
+$button-outline-bg-colors: map.merge(
+  (
+    "outline-primary":   $white,
+    "outline-secondary": $white,
+    "outline-dark":      $white,
+    "outline-dark-bg":   transparent,
+  ),
+  $button-outline-bg-colors
+);
+
+$button-outline-border-colors: () !default;
+$button-outline-border-colors: map.merge(
+  (
+    "outline-primary":   $blue-600,
+    "outline-secondary": $blue-600,
+    "outline-dark":      $blue-600,
+    "outline-dark-bg":   $white,
+  ),
+  $button-outline-border-colors
 );
 
 $button-text-colors: () !default;
@@ -777,10 +800,12 @@ $button-text-colors: map.merge(
   (
     "primary":           $white,
     "secondary":         $white,
+    "dark":              $white,
     "outline-primary":   $blue-600,
     "outline-secondary": $blue-600,
-    "dark":              $blue-900,
-    "outline-dark":      $orange-800,
+    "outline-dark":      $blue-600,
+    "dark-bg":           $blue-900,
+    "outline-dark-bg":   $white,
   ),
   $button-text-colors
 );
@@ -790,12 +815,25 @@ $button-hover-colors: map.merge(
   (
     "primary":           $blue-700,
     "secondary":         $blue-700,
+    "dark":              $blue-700,
     "outline-primary":   $blue-50,
     "outline-secondary": $blue-50,
-    "dark":              $orange-800,
-    "outline-dark":      $orange-800,
+    "outline-dark":      $blue-50,
+    "dark-bg":           $orange-800,
+    "outline-dark-bg":   transparent,
   ),
   $button-hover-colors
+);
+
+$button-outline-hover-border-colors: () !default;
+$button-outline-hover-border-colors: map.merge(
+  (
+    "outline-primary":   $blue-600,
+    "outline-secondary": $blue-600,
+    "outline-dark":      $blue-600,
+    "outline-dark-bg":   $blue-50,
+  ),
+  $button-outline-hover-border-colors
 );
 
 $button-active-colors: () !default;
@@ -803,12 +841,25 @@ $button-active-colors: map.merge(
   (
     "primary":           $blue-800,
     "secondary":         $blue-800,
+    "dark":              $blue-800,
     "outline-primary":   $blue-200,
     "outline-secondary": $blue-200,
-    "dark":              $orange-900,
-    "outline-dark":      $orange-900,
+    "outline-dark":      $blue-200,
+    "dark-bg":           $orange-900,
+    "outline-dark-bg":   transparent,
   ),
   $button-active-colors
+);
+
+$button-outline-active-border-colors: () !default;
+$button-outline-active-border-colors: map.merge(
+  (
+    "outline-primary":   $blue-600,
+    "outline-secondary": $blue-600,
+    "outline-dark":      $blue-600,
+    "outline-dark-bg":   $blue-200,
+  ),
+  $button-outline-active-border-colors
 );
 
 $button-focus-border-colors: () !default;
@@ -816,10 +867,12 @@ $button-focus-border-colors: map.merge(
   (
     "primary":           $blue-100,
     "secondary":         $blue-100,
+    "dark":              $blue-100,
     "outline-primary":   $blue-600,
     "outline-secondary": $blue-600,
-    "dark":              $blue-100,
-    "outline-dark":      $blue-100,
+    "outline-dark":      $blue-600,
+    "dark-bg":           $blue-100,
+    "outline-dark-bg":   $blue-50,
   ),
   $button-focus-border-colors
 );
@@ -829,10 +882,12 @@ $button-disabled-colors: map.merge(
   (
     "primary":           $gray-200,
     "secondary":         $gray-200,
+    "dark":              $gray-200,
     "outline-primary":   $white,
     "outline-secondary": $white,
-    "dark":              $orange-100,
     "outline-dark":      $white,
+    "dark-bg":           $orange-100,
+    "outline-dark-bg":   $gray-400,
   ),
   $button-disabled-colors
 );
@@ -842,28 +897,49 @@ $button-disabled-font-colors: map.merge(
   (
     "primary":           $gray-500,
     "secondary":         $gray-500,
+    "dark":              $gray-500,
     "outline-primary":   $gray-500,
     "outline-secondary": $gray-500,
-    "dark":              $orange-400,
-    "outline-dark":      $orange-400,
+    "outline-dark":      $gray-500,
+    "dark-bg":           $orange-400,
+    "outline-dark-bg":   $gray-400,
   ),
   $button-disabled-font-colors
 );
 
 $btn-primary-box-shadow: 0px 5px 10px 0px $blue-100 !default;
-$btn-dark-box-shadow: 0px 4px 8px 0px rgba(41, 41, 41, 0.35);
+$btn-primary-active-box-shadow: 0px 4px 10px 0px $blue-100 !default;
+$btn-dark-bg-box-shadow: 0px 5px 10px 0px rgba(255, 145, 51, 0.25);
+$btn-dark-bg-active-box-shadow: 0px 4px 10px 0px rgba(255, 145, 51, 0.25);
 
 $button-box-shadows: () !default;
 $button-box-shadows: map.merge(
   (
     "primary":           $btn-primary-box-shadow,
     "secondary":         $btn-primary-box-shadow,
-    "outline-primary":   'none',
-    "outline-secondary": 'none',
-    "dark":              $btn-dark-box-shadow,
-    "outline-dark":      $btn-dark-box-shadow,
+    "dark":              $btn-primary-box-shadow,
+    "outline-primary":   $btn-primary-box-shadow,
+    "outline-secondary": $btn-primary-box-shadow,
+    "outline-dark":      $btn-primary-box-shadow,
+    "dark-bg":           $btn-dark-bg-box-shadow,
+    "outline-dark-bg":   none,
   ),
   $button-box-shadows
+);
+
+$button-active-box-shadows: () !default;
+$button-active-box-shadows: map.merge(
+  (
+    "primary":           $btn-primary-active-box-shadow,
+    "secondary":         $btn-primary-active-box-shadow,
+    "dark":              $btn-primary-active-box-shadow,
+    "outline-primary":   $btn-primary-active-box-shadow,
+    "outline-secondary": $btn-primary-active-box-shadow,
+    "outline-dark":      $btn-primary-active-box-shadow,
+    "dark-bg":           $btn-dark-bg-active-box-shadow,
+    "outline-dark-bg":   none,
+  ),
+  $button-active-box-shadows
 );
 
 $btn-padding-y:               $input-btn-padding-y !default;
@@ -895,6 +971,7 @@ $btn-focus-width:             $input-btn-focus-width !default;
 $btn-focus-box-shadow:        0 !default;
 $btn-disabled-opacity:        1 !default;
 $btn-active-box-shadow:       0 !default;
+$btn-active-transform:        translateY(1px) !default;
 
 $btn-disabled-bg-color:       $gray-200 !default;
 $btn-disabled-border-color:   $gray-400 !default;
