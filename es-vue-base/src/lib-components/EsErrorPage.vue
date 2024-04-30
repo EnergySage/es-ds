@@ -1,21 +1,16 @@
 <template>
-    <b-container class="my-450">
+    <b-container class="my-450 bg-gray-50">
         <b-row>
             <b-col
                 md="7"
                 class="my-450 mx-auto text-center">
-                <h1 class="font-weight-boldest display-3">
-                    {{ errorType }}
+                <h1 class="font-weight-bolder display-3 text-gray-600">
+                    {{ errorShortMessage }}
                 </h1>
                 <h2
-                    v-if="checkValidError"
-                    id="msgError">
-                    {{ errorCode[errorType] }}
-                </h2>
-                <h2
-                    v-else
-                    id="msgGeneric">
-                    {{ genericMsg }}
+                    id="msgError"
+                    class="h4 text-gray-600">
+                    {{ errorLongMessage }}
                 </h2>
             </b-col>
         </b-row>
@@ -69,23 +64,41 @@ export default {
     },
     data() {
         return {
-            errorCode: {
-                // eslint-disable-next-line max-len, quote-props
-                '403': "Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.",
-                // eslint-disable-next-line quote-props
-                '404': 'Oops! We are terribly sorry, but there is nothing bright to see here.',
-                // eslint-disable-next-line quote-props
-                '500': 'Oops! We are terribly sorry, but our server is not so bright today. Please try again.',
-                // eslint-disable-next-line quote-props
-                '503': 'Service unavailable: The page you are requesting is temporarily unavailable.',
+            errorCodeToMessages: {
+                403: {
+                    shortMessage: 'Access Denied',
+                    longMessage: "Oops! If you're seeing this message, there's a good chance you have cookies or "
+                        + 'referrers turned off in your browser.',
+                },
+                404: {
+                    shortMessage: 'Page Not Found',
+                    longMessage: 'Oops! We are terribly sorry, but there is nothing bright to see here.',
+                },
+                500: {
+                    shortMessage: 'Internal Server Error',
+                    longMessage: 'Oops! We are terribly sorry, but our server is not so bright today. '
+                        + 'Please try again.',
+                },
+                503: {
+                    shortMessage: 'Service Unavailable',
+                    longMessage: 'The page you are requesting is temporarily unavailable.',
+                },
+                default: {
+                    longMessage: 'Oops! Something went wrong!',
+                },
             },
-            genericMsg: 'Oops! Something went wrong!',
             linkItems: getEsErrorPageContent(),
         };
     },
     computed: {
-        checkValidError() {
-            return Object.keys(this.errorCode).includes(this.errorType);
+        messages() {
+            return this.errorCodeToMessages[this.errorType];
+        },
+        errorShortMessage() {
+            return this.messages?.shortMessage || this.errorType;
+        },
+        errorLongMessage() {
+            return this.messages?.longMessage || this.errorCodeToMessages.default.longMessage;
         },
     },
 };
