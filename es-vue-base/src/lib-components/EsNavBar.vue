@@ -182,7 +182,8 @@
                     <li class="d-flex justify-content-center">
                         <EsButton
                             :href="accountContent.loggedOut.createAccount.link"
-                            variant="link">
+                            :outline="true"
+                            class="mx-100 w-100 font-weight-bold">
                             {{ accountContent.loggedOut.createAccount.name }}
                         </EsButton>
                     </li>
