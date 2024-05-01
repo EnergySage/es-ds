@@ -1,5 +1,5 @@
 <template>
-    <b-container class="py-450 bg-gray-50">
+    <b-container class="py-450 py-lg-800 bg-gray-50">
         <b-row>
             <b-col
                 md="7"
