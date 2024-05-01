@@ -4,7 +4,7 @@
         <div class="bg-blue-900 text-white py-200 py-lg-300 px-200">
             <div class="container">
                 <div class="row">
-                    <div class="col col-12 col-sm-6 col-md-5 col-lg-4 font-size-200 font-size-md-400 font-weight-bold mb-150 mb-md-0">
+                    <div class="col col-12 col-md-5 col-lg-4 font-size-200 font-size-md-400 font-weight-bold mb-150 mb-md-0">
                         {{ content.banner.headline }}
                         <br>
                         {{ content.banner.subHeadline }}
