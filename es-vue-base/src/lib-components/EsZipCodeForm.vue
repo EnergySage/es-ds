@@ -155,6 +155,10 @@ export default {
             type: String,
             required: true,
         },
+        zipCodeInitialValue: {
+            type: String,
+            default: '',
+        },
         selectedProduct: {
             type: String,
             required: false,
@@ -162,7 +166,7 @@ export default {
     },
     data() {
         return {
-            zipCode: '',
+            zipCode: this.zipCodeInitialValue,
         };
     },
     computed: {
