@@ -7,6 +7,7 @@
         <p>
             The Error Page component is intended to be used in error pages across nuxt apps.
             The four types of error codes explicitly handled include 403, 404, 500 and 503.
+            This component is intended to take over the entire page between the header and footer.
         </p>
         <div class="my-450">
             <h2>
