@@ -819,7 +819,7 @@ $input-btn-padding-x:         1rem !default;
 $input-btn-font-family:       $font-family-sans-serif !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       1.2 !default;
-$input-btn-height:            $font-size-base * 3.5 !default;;
+$input-btn-height:            $font-size-base * 3.5 !default;
 
 $input-btn-focus-width:       0 !default;
 $input-btn-focus-color:       rgba($component-active-bg, .25) !default;
@@ -988,10 +988,10 @@ $button-disabled-font-colors: map.merge(
   $button-disabled-font-colors
 );
 
-$btn-primary-box-shadow: 0px 5px 10px 0px $blue-100 !default;
-$btn-primary-active-box-shadow: 0px 4px 10px 0px $blue-100 !default;
-$btn-dark-bg-box-shadow: 0px 5px 10px 0px rgba(255, 145, 51, 0.25);
-$btn-dark-bg-active-box-shadow: 0px 4px 10px 0px rgba(255, 145, 51, 0.25);
+$btn-primary-box-shadow: 0 5px 10px 0 $blue-100 !default;
+$btn-primary-active-box-shadow: 0 4px 10px 0 $blue-100 !default;
+$btn-dark-bg-box-shadow: 0 5px 10px 0 rgba(255, 145, 51, 0.25);
+$btn-dark-bg-active-box-shadow: 0 4px 10px 0 rgba(255, 145, 51, 0.25);
 
 $button-box-shadows: () !default;
 $button-box-shadows: map.merge(
@@ -1047,7 +1047,7 @@ $btn-line-height-lg:          $input-btn-line-height-lg !default;
 $btn-border-width:            2px !default;
 
 $btn-font-weight:             $font-weight-bolder !default;
-$btn-box-shadow:              0px 5px 10px 0px $blue-100 !default;
+$btn-box-shadow:              0 5px 10px 0 $blue-100 !default;
 $btn-focus-width:             $input-btn-focus-width !default;
 $btn-focus-box-shadow:        0 !default;
 $btn-disabled-opacity:        1 !default;
@@ -1171,15 +1171,15 @@ $custom-control-indicator-checked-disabled-bg:  $white !default;
 $custom-control-indicator-checked-box-shadow:   null !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
 
-$custom-control-indicator-hover-box-shadow:     0px 0px 0px 10px $blue-50 !default;
+$custom-control-indicator-hover-box-shadow:     0 0 0 10px $blue-50 !default;
 
-$custom-control-indicator-focus-box-shadow:     0px 0px 0px 10px $blue-300 !default;
+$custom-control-indicator-focus-box-shadow:     0 0 0 10px $blue-300 !default;
 $custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
 
 $custom-control-indicator-active-color:         $component-active-color !default;
 $custom-control-indicator-active-bg:            $white !default;
 
-$custom-control-indicator-active-box-shadow:    0px 0px 0px 10px $blue-50 !default;
+$custom-control-indicator-active-box-shadow:    0 0 0 10px $blue-50 !default;
 $custom-control-indicator-active-border-color:  $custom-control-indicator-border-color !default;
 
 $custom-checkbox-indicator-border-radius:         0.125rem !default;
@@ -1299,7 +1299,7 @@ $form-validation-states: map.merge(
   (
     "valid": (
       "color": $form-feedback-valid-color,
-      "icon": ''
+      "icon": ""
     ),
     "invalid": (
       "color": $form-feedback-invalid-color,
