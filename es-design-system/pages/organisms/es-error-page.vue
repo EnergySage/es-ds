@@ -14,6 +14,30 @@
             </h2>
             <es-error-page error-type="403" />
         </div>
+        <div class="my-450">
+            <h2>
+                Error 404
+            </h2>
+            <es-error-page error-type="404" />
+        </div>
+        <div class="my-450">
+            <h2>
+                Error 500
+            </h2>
+            <es-error-page error-type="500" />
+        </div>
+        <div class="my-450">
+            <h2>
+                Error 503
+            </h2>
+            <es-error-page error-type="503" />
+        </div>
+        <div class="my-450">
+            <h2>
+                Error 418 (and how other errors look)
+            </h2>
+            <es-error-page error-type="418" />
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsErrorPage.vue"

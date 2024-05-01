@@ -1,5 +1,5 @@
 <template>
-    <b-container class="my-450 bg-gray-50">
+    <b-container class="py-450 bg-gray-50">
         <b-row>
             <b-col
                 md="7"
@@ -7,11 +7,11 @@
                 <h1 class="font-weight-bolder display-3 text-gray-600">
                     {{ errorShortMessage }}
                 </h1>
-                <h2
+                <p
                     id="msgError"
-                    class="h4 text-gray-600">
+                    class="font-size-lg text-gray-600">
                     {{ errorLongMessage }}
-                </h2>
+                </p>
             </b-col>
         </b-row>
         <b-row>
@@ -30,8 +30,8 @@
                             class="m-100 text-orange">
                             <component
                                 :is="item.icon"
-                                height="46px"
-                                width="46px" />
+                                height="53px"
+                                width="53px" />
                         </div>
                     </div>
                     <p class="'font-weight-bolder mb-200 mb-md-0'">{{ item.label }}</p>
@@ -66,21 +66,21 @@ export default {
         return {
             errorCodeToMessages: {
                 403: {
-                    shortMessage: 'Access Denied',
+                    shortMessage: 'Access denied',
                     longMessage: "Oops! If you're seeing this message, there's a good chance you have cookies or "
                         + 'referrers turned off in your browser.',
                 },
                 404: {
-                    shortMessage: 'Page Not Found',
+                    shortMessage: 'Page not found',
                     longMessage: 'Oops! We are terribly sorry, but there is nothing bright to see here.',
                 },
                 500: {
-                    shortMessage: 'Internal Server Error',
+                    shortMessage: 'Internal server error',
                     longMessage: 'Oops! We are terribly sorry, but our server is not so bright today. '
                         + 'Please try again.',
                 },
                 503: {
-                    shortMessage: 'Service Unavailable',
+                    shortMessage: 'Service unavailable',
                     longMessage: 'The page you are requesting is temporarily unavailable.',
                 },
                 default: {
