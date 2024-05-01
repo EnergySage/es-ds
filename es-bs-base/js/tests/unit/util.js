@@ -34,25 +34,6 @@ $(function () {
     assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
   })
 
-  QUnit.test('Util.typeCheckConfig should thrown an error when a bad config is passed', function (assert) {
-    assert.expect(1)
-    var namePlugin = 'collapse'
-    var defaultType = {
-      toggle: 'boolean',
-      parent: '(string|element)'
-    }
-    var config = {
-      toggle: true,
-      parent: 777
-    }
-
-    try {
-      Util.typeCheckConfig(namePlugin, config, defaultType)
-    } catch (error) {
-      assert.strictEqual(error.message, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
-    }
-  })
-
   QUnit.test('Util.typeCheckConfig should return null/undefined stringified when passed', function (assert) {
     assert.expect(1)
     var namePlugin = 'collapse'

@@ -47,6 +47,11 @@
                     </span>
                 </template>
             </es-form-input>
+            <input
+                v-if="selectedProduct"
+                type="hidden"
+                name="product"
+                :value="selectedProduct" />
             <es-button
                 class="text-nowrap w-100"
                 :class="{
@@ -150,10 +155,18 @@ export default {
             type: String,
             required: true,
         },
+        zipCodeInitialValue: {
+            type: String,
+            default: '',
+        },
+        selectedProduct: {
+            type: String,
+            required: false,
+        },
     },
     data() {
         return {
-            zipCode: '',
+            zipCode: this.zipCodeInitialValue,
         };
     },
     computed: {

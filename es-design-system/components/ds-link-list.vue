@@ -1,43 +1,43 @@
 <template>
-    <ul>
+    <ul class="ds-link-list list-unstyled">
         <li>
             <div class="h4">
-                <b-link to="/">
-                    Bootstrap 4
-                </b-link>
+                <ds-link to="/">
+                    Home
+                </ds-link>
             </div>
         </li>
         <li>
             <div class="h4">
-                <b-link to="/atoms">
+                <ds-link to="/atoms">
                     Atoms
-                </b-link>
+                </ds-link>
             </div>
-            <DsAtomsList />
+            <ds-atoms-list class="mb-100" />
         </li>
         <li>
             <div class="h4">
-                <b-link to="/molecules">
+                <ds-link to="/molecules">
                     Molecules
-                </b-link>
+                </ds-link>
             </div>
-            <DsMoleculesList />
+            <ds-molecules-list class="mb-100" />
         </li>
         <li>
             <div class="h4">
-                <b-link to="/organisms">
+                <ds-link to="/organisms">
                     Organisms
-                </b-link>
+                </ds-link>
             </div>
-            <DsOrganismsList />
+            <ds-organisms-list class="mb-100" />
         </li>
         <li>
             <div class="h4">
-                <b-link to="/examples">
+                <ds-link to="/examples">
                     Examples
-                </b-link>
+                </ds-link>
             </div>
-            <DsExamplesList />
+            <ds-examples-list class="mb-100" />
         </li>
     </ul>
 </template>

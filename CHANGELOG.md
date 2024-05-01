@@ -5,9 +5,49 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.8] - 2024-04-26
+
+### Changed
+
+- `EsZipCodeForm` now accepts a new `zipCodeInitialValue` prop that sets the initial value of the field
+
+## [1.3.7] - 2024-04-26
+
+### Changed
+
+- Updated several links in the logged-in account menu in `EsNavBar`
+
+## [1.3.6] - 2024-04-19
+
+### Changed
+
+- Updated the "Get personalized quotes" link under "Heating & cooling" in `EsNavBar`
+
+## [1.3.5] - 2024-04-19
+
+### Changed
+
+- Updated the EnergySage intel report link under About Us in `EsNavBar`
+
+## [1.3.2] - 2024-04-03
+
+### Changed
+
+- Added new nav links
+
+## [1.3.1] - 2024-04-01
+
+### Changed
+
+- EsZipCodeForm accepts selectedProduct query param
+
+## [1.3.0] - 2024-03-15
+
+- Added some icons for the landing links
+
 ## [1.2.1] - 2024-03-13
 
-## Changes
+### Changed
 
 - Replaced one link with another under "EV chargers" menu in `EsNavBar`
 - Added catalog-info.yaml and mkdocs.yml files to support Backstage integration
@@ -20,13 +60,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.13] - 2024-02-15
 
-## Changes
+### Changed
 
 - Updated to Node 18 and performed other "safe" dependency updates
 
 ## [1.1.12] - 2024-02-15
 
-## Changes
+### Changed
 
 - `IconTwitter` has been changed from the bird logo to the new X logo
 - `EsFooter` link for Twitter has been changed from twitter.com to x.com
@@ -34,32 +74,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.11] - 2024-02-07
 
-## Changes
+### Changed
 
 - Remove Spaces from File Names from `ESFileInput`
 
 ## [1.1.10] - 2023-12-8
 
-## Changed
+### Changed
 
 - Improved the phone number capture with a `maskedTel` option that gives the user guidance
 
 ## [1.1.9] - 2023-11-17
 
-## Changed
+### Changed
 
 - Fixed an accessibility issue in `EsAccordion` with improper configuration of aria attributes
 
 ## [1.1.8] - 2023-11-03
 
-## Changed
+### Changed
 
 - Fixed an issue in `EsNavBar` where the "Sign in" text was shown initially and then disappeared when the page fully loaded
 - Fixed an issue in the `lg` breakpoint where header font size would become fluid to the viewport width
 
 ## [1.1.7] - 2023-10-18
 
-## Changed
+### Changed
 
 - Displaying an error if empty folder is added
 
@@ -97,6 +137,7 @@ expect the use case for this to be small.
 ## [0.25.16] - 2023-09-19
 
 ### Changed
+
 - Fixed an issue where uploading a file one after another in the same 
 session would throw an error saying "You have already uploaded a file with the name "{fileName}". 
 Please rename your file and try again.".
@@ -104,6 +145,7 @@ Please rename your file and try again.".
 ## [0.25.15] - 2023-09-18
 
 ### Changed
+
 - Made it possible to keep the `EsZipCodeForm` side-by-side on even the smallest screens
 by specifying `xs` for `stackUntil`
 - Made it possible to hide the privacy section of `EsZipCodeForm` to save space by using
@@ -112,15 +154,18 @@ the new `showPrivacySection` prop
 ## [0.25.14] - 2023-09-12
 
 ### Added
+
 - New marketing icons: `IconBank`, `IconCreditCard`, `IconMoney`, `IconPayback`, and `IconSaving`
 
 ### Changed
+
 - Added a "Work with us" section to the "About us" menu in `EsNavBar`
 - Updated several links in `EsFooter`
 
 ## [0.25.13] - 2023-09-06
 
 ### Changed
+
 - Fixed an issue with `EsDataTable` where it would print a warning about `BTable` being an unknown custom element
 - Fixed a styling issue on the `EsCollapse` docs page
 
@@ -143,11 +188,13 @@ the new `showPrivacySection` prop
 ## [0.25.9] - 2023-08-22
 
 ### Changed
+
 - The primary vertical links in `EsFooter` now point to the new vertical landing page URLs
 
 ## [0.25.8] - 2023-08-22
 
 ### Changed
+
 - The `visible` prop on `EsCollapse` can now programmatically control the collapse; will cease its control once the user interacts with the collapse
 - The primary vertical links in `EsNavBar` now point to the new vertical landing page URLs
 - Small spacing change to the desktop layout of `EsReviewModal`
@@ -885,6 +932,13 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[1.3.8]: https://github.com/EnergySage/es-ds/compare/v1.3.7...v1.3.8
+[1.3.7]: https://github.com/EnergySage/es-ds/compare/v1.3.6...v1.3.7
+[1.3.6]: https://github.com/EnergySage/es-ds/compare/v1.3.5...v1.3.6
+[1.3.5]: https://github.com/EnergySage/es-ds/compare/v1.3.2...v1.3.5
+[1.3.2]: https://github.com/EnergySage/es-ds/compare/v1.3.1...v1.3.2
+[1.3.1]: https://github.com/EnergySage/es-ds/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/EnergySage/es-ds/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/EnergySage/es-ds/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/EnergySage/es-ds/compare/v1.1.13...v1.2.0
 [1.1.13]: https://github.com/EnergySage/es-ds/compare/v1.1.12...v1.1.13

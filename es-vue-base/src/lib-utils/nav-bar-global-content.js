@@ -156,6 +156,10 @@ export default (
                             name: 'What to know about solar leases',
                             link: `${ES_DOMAIN}/solar/solar-leases/`,
                         },
+                        {
+                            name: 'Explore cost-saving clean energy incentives',
+                            link: `${ES_DOMAIN}/shop/clean-energy-savings-and-tax-incentives/`,
+                        },
                     ],
                 },
                 {
@@ -210,6 +214,10 @@ export default (
                             link: `${ES_DOMAIN}/about-us/team/`,
                         },
                         {
+                            name: 'Our Energy Advisors',
+                            link: `${ES_DOMAIN}/energy-advisors/`,
+                        },
+                        {
                             name: 'Careers',
                             link: `${ES_DOMAIN}/about-us/careers/`,
                         },
@@ -260,7 +268,7 @@ export default (
             ],
             featuredArticle: {
                 linkName: 'New research',
-                linkUrl: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-16`,
+                linkUrl: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-18`,
                 lede: "EnergySage Intel's latest Solar & Storage Marketplace Report",
                 image500: `${ES_IMAGE_DOMAIN}/static/img/navbar/articles/latest-market-intel-500w.png`,
                 imageAlt: 'market intel report charts',
@@ -379,7 +387,7 @@ export default (
                 },
                 {
                     name: 'Get personalized quotes',
-                    link: `${HEAT_PUMPS_DOMAIN}/dashboard`,
+                    link: `${ES_DOMAIN}/shop/heat-pumps/`,
                     newTab: true,
                     emphasize: true,
                 },
