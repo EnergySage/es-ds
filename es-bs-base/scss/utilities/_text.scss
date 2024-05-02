@@ -136,6 +136,11 @@
   @include text-colors($color, $value);
 }
 
+// Core colors
+@each $color, $value in variables.$core-colors {
+  @include text-colors($color, $value);
+}
+
 // Add gray text colors classes
 @each $color, $value in variables.$grays {
   @include text-colors($color, $value);
