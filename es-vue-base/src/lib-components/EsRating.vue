@@ -1,7 +1,7 @@
 <template>
     <!-- 0.001 is a hacky fix because aria-valuenow="0" does not work. -->
     <b-form-rating
-        class="bg-transparent rounded-0"
+        class="bg-transparent rounded-0 text-orange"
         v-bind="$attrs"
         :value="roundedRating || 0.001"
         :readonly="readOnly"
