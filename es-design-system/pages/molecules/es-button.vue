@@ -21,8 +21,8 @@
         </p>
 
         <p class="mb-200">
-            Icons inside of default buttons should be 24px or 1.5rem (the default for ESDS icons).
-            Icons inside of small buttons should be 18px or 1.125rem.
+            Icons inside default buttons are sized automatically to 24px; and in
+            small buttons to 18px.
         </p>
 
         <div class="my-450">
