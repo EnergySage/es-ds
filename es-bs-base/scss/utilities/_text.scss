@@ -47,8 +47,10 @@
   @include breakpoints.media-breakpoint-up($breakpoint) {
     $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
     @each $size, $value in variables.$font-sizes {
+      $line-height: map.get(variables.$line-heights, $size);
       .font-size#{$infix}-#{$size} {
         font-size: $value !important;
+        line-height: $line-height !important;
       }
     }
   }

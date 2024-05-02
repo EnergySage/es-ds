@@ -35,8 +35,9 @@ export default {
 
     &.vertically-center-content ::v-deep dd,
     &.vertically-center-content ::v-deep dt {
-        align-items: center;
         display: flex;
+        flex-flow: column;
+        justify-content: center;
     }
 
     &.zebra:nth-child(even) {
