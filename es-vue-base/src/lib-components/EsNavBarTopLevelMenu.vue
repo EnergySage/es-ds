@@ -1,5 +1,5 @@
 <template>
-    <div class="nav-item nav-item-border-mobile top-header mx-0">
+    <div class="nav-item top-header mx-0">
         <!-- desktop fly-out menu trigger -->
         <es-nav-bar-link
             v-if="!link"
@@ -8,7 +8,7 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false">
-            <div class="d-lg-flex align-items-center eyebrow-lg">
+            <div class="d-lg-flex align-items-center">
                 <span class="mr-50">
                     <IconCircleChevronDown
                         class="top-header-icon"
@@ -23,15 +23,12 @@
         <!-- mobile+desktop top-level link -->
         <es-nav-bar-link
             v-else
-            class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-lg-50"
+            class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-100 font-weight-bold"
             :href="link"
             :target="newTab ? '_blank' : null">
-            <div class="d-flex d-lg-block">
-                <icon-calculator
-                    v-if="icon === NAV_BAR_ICONS.CALCULATOR"
-                    class="d-lg-none mr-50" />
+            <div class="d-flex d-lg-block top-level-label">
                 <div
-                    class="d-lg-flex align-items-center eyebrow-lg">
+                    class="d-lg-flex align-items-center">
                     {{ name }}
                 </div>
                 <div class="font-weight-light font-size-xs d-none d-lg-block">
@@ -44,18 +41,13 @@
         <label
             v-if="!link"
             :for="checkboxId"
-            class="dropdown-label nav-link d-flex d-lg-none px-0 w-100 h-100 align-items-center
-                                    justify-content-between">
+            class="dropdown-label nav-link d-flex d-lg-none px-100 w-100 h-100 align-items-center justify-content-between font-weight-bold">
             <div class="align-items-center d-flex">
-                <div class="mr-50">
-                    <icon-light-bulb v-if="icon === NAV_BAR_ICONS.LIGHT_BULB" />
-                    <icon-e-s-leaf v-if="icon === NAV_BAR_ICONS.ES_LEAF" />
-                </div>
                 {{ name }}
             </div>
-            <IconChevronRight
+            <IconArrowRight
                 class="expand-icon"
-                style="height: 18px;" />
+                style="height: 24px;" />
         </label>
         <input
             v-if="!link"
@@ -138,7 +130,6 @@
 import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
 import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
-import { NAV_BAR_ICONS } from '../lib-utils/nav-bar-constants';
 
 export default {
     name: 'EsNavBarTopLevelMenu',
@@ -184,11 +175,6 @@ export default {
             type: String,
             default: '',
         },
-    },
-    data() {
-        return {
-            NAV_BAR_ICONS,
-        };
     },
     computed: {
         checkboxId() {

@@ -32,7 +32,7 @@
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
-                    class="mb-0 text-dark text-decoration-none"
+                    class="mb-0 text-decoration-none"
                     for="data--account-menu">
                     <icon-person class="align-self-center" />
                     <span class="sr-only">
@@ -50,7 +50,7 @@
                 id="navbarNavDropdown"
                 class="menu top-level-menu align-items-start d-flex flex-grow-1">
                 <!-- mobile menu header -->
-                <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
+                <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100 mb-50">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
                         <es-logo
@@ -71,7 +71,7 @@
                 </div>
                 <div class="navbar-nav d-flex flex-column w-100">
                     <!-- top-level items on mobile, full top bar on desktop -->
-                    <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between">
+                    <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between top-level-nav">
                         <es-nav-bar-link
                             class="navbar-brand d-none d-lg-block"
                             :href="globalContent.home.link">
@@ -108,7 +108,7 @@
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <div class="row mx-0 d-flex justify-content-lg-center">
+                    <div class="row mx-0 d-flex justify-content-lg-center product-menu">
                         <es-nav-bar-product-menu
                             v-for="product in globalContent.products"
                             :key="product.name"
@@ -160,7 +160,7 @@
                         v-for="item in accountContent.loggedIn.items"
                         :key="item.name">
                         <es-nav-bar-link
-                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
+                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50 font-size-base"
                             :href="item.link">
                             {{ item.name }}
                         </es-nav-bar-link>
@@ -173,9 +173,7 @@
                     <li>
                         <EsButton
                             :href="accountContent.loggedOut.signIn.link"
-                            :outline="true"
-                            variant="secondary"
-                            class="m-100 w-100">
+                            class="m-100 w-100 text-white font-weight-bold">
                             {{ accountContent.loggedOut.signIn.name }}
                         </EsButton>
                     </li>

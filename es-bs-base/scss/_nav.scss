@@ -197,12 +197,12 @@ $nav-hover-delay: 300ms;
     // stylelint-disable-next-line selector-max-class
     .nav-item.nav-link,
     .dropdown-item.nav-link {
-      color: variables.$gray-900;
+      color: variables.$navbar-light-color;
 
       // stylelint-disable-next-line selector-max-class
       &:hover {
         font-weight: variables.$font-weight-semibold;
-        color: variables.$gray-900;
+        color: variables.$navbar-light-color;
         text-decoration: underline;
       }
     }
@@ -247,6 +247,17 @@ $nav-hover-delay: 300ms;
     // override local style attribute on image
     // stylelint-disable-next-line declaration-no-important
     height: auto !important;
+  }
+
+  // bluish hue to top-level menu items
+  .top-level-nav .nav-item {
+    margin-bottom: variables.$navbar-padding-y;
+    background-color: variables.$gray-50;
+    @include border-radius.border-radius(3px);
+  }
+
+  .nav-item.top-header .nav-link {
+    color: variables.$blue-900;
   }
 
   // On Desktop a hovers display the dropdowns
@@ -571,6 +582,11 @@ $nav-hover-delay: 300ms;
       cursor: pointer;
     }
 
+    .dropdown-label,
+    .top-level-label {
+      font-size: variables.$font-size-base;
+    }
+
     // allow longer items (e.g. news article titles) to wrap on mobile
     .dropdown-item {
       white-space: normal;
@@ -586,6 +602,10 @@ $nav-hover-delay: 300ms;
       display: flex;
     }
 
+    .product-menu .expand-icon {
+      fill: variables.$gray-400;
+    }
+
     // Style rows in hamburger, add bottom border
     .nav-item {
       align-items: center;
@@ -594,7 +614,13 @@ $nav-hover-delay: 300ms;
     }
     .nav-item-border-mobile {
       // stylelint-disable-next-line declaration-no-important
-      border-bottom: 1px solid variables.$gray-300 !important;
+      border-bottom: 1px solid variables.$gray-100 !important;
+    }
+
+    .navbar-nav li:last-child .nav-item-border-mobile,
+    .product-menu .nav-item-border-mobile:last-child {
+      // stylelint-disable-next-line declaration-no-important
+      border-bottom: none !important;
     }
 
     // Override default margin to allow centered titles
@@ -664,7 +690,7 @@ $nav-hover-delay: 300ms;
       height: 64px;
       max-height: 64px;
       font-weight: bolder;
-      border-bottom: 1px solid variables.$gray-300;
+      border-bottom: 1px solid variables.$gray-50;
     }
 
     // This is a generic placeholder button for open/close/back in the mobile menu
