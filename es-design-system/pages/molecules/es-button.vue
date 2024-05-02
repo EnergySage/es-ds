@@ -63,9 +63,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -83,9 +81,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -133,9 +129,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -154,9 +148,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -306,9 +298,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -327,9 +317,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -376,9 +364,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -398,9 +384,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -534,9 +518,7 @@
                                     {{ example.text }}
                                     <icon-chevron-right
                                         v-if="example.icon"
-                                        :class="{ 'ml-25': example.text }"
-                                        :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                        :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                        :class="{ 'ml-25': example.text }" />
                                 </es-button>
                             </template>
                         </ds-responsive-table-column>
@@ -556,9 +538,7 @@
                                     {{ example.text }}
                                     <icon-chevron-right
                                         v-if="example.icon"
-                                        :class="{ 'ml-25': example.text }"
-                                        :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                        :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                        :class="{ 'ml-25': example.text }" />
                                 </es-button>
                             </template>
                         </ds-responsive-table-column>
