@@ -2,7 +2,7 @@
     <div class="es-footer clearfix">
         <!-- Make an impact -->
         <div class="bg-blue-900 text-white py-200 py-lg-300 px-200">
-            <div class="container">
+            <div class="container px-0">
                 <div class="row">
                     <div class="col col-12 col-md-5 col-lg-4 font-size-200 font-size-md-400 font-weight-bold mb-150 mb-md-0">
                         {{ content.banner.headline }}
@@ -16,7 +16,7 @@
             </div>
         </div>  <!-- Make an impact -->
         <div class="bg-blue-800 py-200 px-200">
-            <div class="container">
+            <div class="container px-0">
                 <div class="row">
                     <!-- Link columns -->
                     <div class="col col-12 col-lg-8 order-lg-1 text-white">
@@ -57,7 +57,7 @@
                                 width="160px" />
                         </es-nav-bar-link>
                         <!-- Social icons -->
-                        <div class="d-flex text-gray-700">
+                        <div class="d-flex text-white">
                             <es-nav-bar-link
                                 v-for="iconLink in content.socialLinks"
                                 :key="iconLink.text"
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="bg-blue-700 text-blue-50 px-200 py-100">
-            <div class="container">
+            <div class="container px-0">
                 <!-- Trademark Info -->
                 <p class="font-size-75">
                     {{ content.trademarkText }}
@@ -84,11 +84,11 @@
                 <!-- Trademark Info -->
                 <!-- Legal -->
                 <hr class="border-top bg-blue-50 m-0">
-                <div class="row justify-content-between pt-100">
+                <div class="row justify-content-center pt-100">
                     <div
                         v-for="link in content.legalLinks"
                         :key="link.text"
-                        class="col col-6 col-lg font-size-75 font-weight-semibold font-size-md-50 font-weight-md-normal mt-25 mb-50">
+                        class="col col-6 col-lg-auto font-size-75 font-weight-semibold font-size-md-50 font-weight-md-normal mt-25 mb-50 px-lg-300">
                         <es-nav-bar-link
                             :href="link.url"
                             class="text-reset font-weight-normal">
@@ -99,7 +99,7 @@
             </div>
         </div>
         <div class="bg-blue-50 px-200 py-100">
-            <div class="container">
+            <div class="container px-0">
                 <!-- DOE -->
                 <div class="d-lg-flex align-items-end">
                     <!-- eslint-disable-next-line -->
