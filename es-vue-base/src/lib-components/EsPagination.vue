@@ -5,8 +5,8 @@
         class="mb-0"
         first-number
         last-number
-        page-class="page-number font-size-sm mx-sm-50"
-        ellipsis-class="ellipses mx-sm-50"
+        page-class="page-number mx-0"
+        ellipsis-class="ellipses mx-0"
         prev-class="prev-next"
         next-class="prev-next"
         :aria-controls="listID"
@@ -47,80 +47,56 @@ export default {
 
 .pagination::v-deep {
     .page-number, .prev-next, .ellipses {
+        height: 3rem;
+        width: 3rem;
+
         .page-link {
+            height: 3rem;
+            width: 3rem;
             background-color: transparent;
             border: 0;
-            color: variables.$dark;
-        }
-    }
-
-    .page-number, .ellipses {
-        display: block !important; // override number limit on mobile viewports
-
-        @media only screen and (min-width: 370px) {  // mid-xs breakpoint; only compressed further below 370px
-            margin-left: variables.$pagination-padding-y-sm;
-            margin-right: variables.$pagination-padding-y-sm;
+            color: variables.$blue-600;
+            font-weight: variables.$font-weight-semibold;
+            font-size: variables.$font-size-300;
         }
     }
 
     .ellipses {
         .page-link {
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: variables.$black;
         }
     }
 
     .page-number {
         .page-link {
-            height: 2.25rem;
-            width: 2.25rem;
+            border-radius: 0.25rem;
 
             &:hover {
                 background-color: transparent;
-                color: variables.$black;
-                font-weight: bold;
+                text-decoration: underline;
+                font-weight: variables.$font-weight-bold;
             }
         }
 
         &.active {
             .page-link {
-                background: linear-gradient(variables.$white, variables.$white) padding-box,
-                    linear-gradient(to bottom right, variables.$yellow-500, variables.$pink-500) border-box;
-                border: 2px solid transparent;
-                border-radius: 50em;
+                background-color: variables.$orange-50;
                 color: variables.$black;
-                font-weight: bold;
-                padding: 0;
             }
         }
     }
 
     .prev-next {
-        /* stylelint-disable-next-line no-descending-specificity */
         .page-link {
-            padding-left: 0;
-            padding-right: 0;
+            border-radius: 0.5rem;
+            align-items: center;
 
-            @include breakpoints.media-breakpoint-up(sm) {
-                padding-left: variables.$pagination-padding-x;
-                padding-right: variables.$pagination-padding-x;
-            }
-        }
-
-        &.disabled {
-            .page-link {
-                svg {
-                    color: variables.$gray-500;
-                }
-            }
-        }
-
-        &:not(.disabled):hover {
-            .page-link {
-                svg {
-                    fill: variables.$black;
-                    stroke: variables.$black;
-                    stroke-width: 1;
-                }
+            &:not(.disabled):hover {
+                background-color: variables.$gray-50;
             }
         }
     }
