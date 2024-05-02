@@ -93,6 +93,7 @@ export default {
     .prev-next {
         .page-link {
             border-radius: 0.5rem;
+            display: flex;
             align-items: center;
 
             &:not(.disabled):hover {
