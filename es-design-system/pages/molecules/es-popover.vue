@@ -21,16 +21,22 @@
                 </b-link>
                 for more details.
             </p>
-            <div class="my-450">
-                <h2>
-                    Dark Variant
-                </h2>
+            <h2>
+                Dark Variant
+            </h2>
+            <div
+                v-for="placement in directives"
+                :key="`dark-${placement}`"
+                class="py-100">
+                <h3>
+                    {{ placement }}
+                </h3>
                 <div>
                     <!-- eslint-disable vuejs-accessibility/label-has-for -->
                     <label>
                         With Title
                         <b-link
-                            id="darkTitleTarget"
+                            :id="`darkTitleTarget-${placement}`"
                             class="p-0 text-gray-700"
                             tabindex="0">
                             <IconInfo
@@ -39,7 +45,8 @@
                         </b-link>
                     </label>
                     <EsPopover
-                        target="darkTitleTarget"
+                        :placement="placement"
+                        :target="`darkTitleTarget-${placement}`"
                         variant="dark">
                         <template #title>
                             My Title
@@ -57,7 +64,7 @@
                     <label>
                         No Title
                         <b-link
-                            id="darkNoTitleTarget"
+                            :id="`darkNoTitleTarget-${placement}`"
                             class="p-0 text-gray-700"
                             tabindex="0">
                             <IconInfo
@@ -66,7 +73,8 @@
                         </b-link>
                     </label>
                     <EsPopover
-                        target="darkNoTitleTarget"
+                        :placement="placement"
+                        :target="`darkNoTitleTarget-${placement}`"
                         variant="dark">
                         <p class="mb-0">
                             Install solar panels through this program and get $250 cash back.
@@ -77,117 +85,86 @@
                         </p>
                     </EsPopover>
                 </div>
-                <div>
-                    <label>
-                        No Title or Link
-                        <b-link
-                            id="darkNoTitleOrLinkTarget"
-                            class="p-0 text-gray-700"
-                            tabindex="0">
-                            <IconInfo
-                                width="16px"
-                                height="16px" />
-                        </b-link>
-                    </label>
-                    <EsPopover
-                        target="darkNoTitleOrLinkTarget"
-                        variant="dark">
-                        <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
-                        </p>
-                    </EsPopover>
-                </div>
             </div>
-            <div class="bg-dark-blue my-450 p-100 rounded-lg text-white">
+            <div class="bg-dark-blue my-100 p-100 rounded-lg text-white">
                 <h2 class="text-white">
                     Light Variant
                 </h2>
                 <p>
-                    This popover is only to be used in a wizard like userflow with a dark background. If you have long
-                    content on a page; outside of a wizard, we recommend that you utilize a drawer instead.
+                    This popover is only to be used in a wizard like userflow with a dark background. If you have
+                    long content on a page; outside of a wizard, we recommend that you utilize a drawer instead.
                 </p>
-                <div>
-                    <!-- eslint-disable vuejs-accessibility/label-has-for -->
-                    <label>
-                        With Title
-                        <b-link
-                            id="lightTitleTarget"
-                            class="p-0 text-gray-700"
-                            tabindex="0">
-                            <IconInfo
-                                class="text-white"
-                                width="16px"
-                                height="16px" />
-                        </b-link>
-                    </label>
-                    <EsPopover
-                        target="lightTitleTarget"
-                        variant="light">
-                        <template #title>
-                            My Title
-                        </template>
-                        <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
-                            <a
-                                class="mt-50 d-block"
-                                href="https://communitysolar.energysage.com/"
-                                target="_blank">Learn More</a>
-                        </p>
-                    </EsPopover>
-                </div>
-                <div>
-                    <label>
-                        No Title
-                        <b-link
-                            id="lightNoTitleTarget"
-                            class="p-0 text-gray-700"
-                            tabindex="0">
-                            <IconInfo
-                                class="text-white"
-                                width="16px"
-                                height="16px" />
-                        </b-link>
-                    </label>
-                    <EsPopover
-                        target="lightNoTitleTarget"
-                        variant="light">
-                        <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
-                            <a
-                                class="mt-50 d-block"
-                                href="https://communitysolar.energysage.com/"
-                                target="_blank">Learn More</a>
-                        </p>
-                    </EsPopover>
-                </div>
-                <div>
-                    <label>
-                        No Title or Link
-                        <b-link
-                            id="lightNoTitleOrLinkTarget"
-                            class="p-0 text-gray-700"
-                            tabindex="0">
-                            <IconInfo
-                                class="text-white"
-                                width="16px"
-                                height="16px" />
-                        </b-link>
-                    </label>
-                    <EsPopover
-                        target="lightNoTitleOrLinkTarget"
-                        variant="light">
-                        <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
-                        </p>
-                    </EsPopover>
+                <div
+                    v-for="placement in directives"
+                    :key="`light-${placement}`"
+                    class="py-100">
+                    <h3 class="text-white">
+                        {{ placement }}
+                    </h3>
+                    <div>
+                        <!-- eslint-disable vuejs-accessibility/label-has-for -->
+                        <label>
+                            With Title
+                            <b-link
+                                :id="`lightTitleTarget-${placement}`"
+                                class="p-0 text-gray-700"
+                                tabindex="0">
+                                <IconInfo
+                                    class="text-white"
+                                    width="16px"
+                                    height="16px" />
+                            </b-link>
+                        </label>
+                        <EsPopover
+                            :placement="placement"
+                            :target="`lightTitleTarget-${placement}`"
+                            variant="light">
+                            <template #title>
+                                My Title
+                            </template>
+                            <p class="mb-0">
+                                Install solar panels through this program and get $250 cash back.
+                                <a
+                                    class="mt-50 d-block"
+                                    href="https://communitysolar.energysage.com/"
+                                    target="_blank">Learn More</a>
+                            </p>
+                        </EsPopover>
+                    </div>
+                    <div>
+                        <label>
+                            No Title
+                            <b-link
+                                :id="`lightNoTitleTarget-${placement}`"
+                                class="p-0 text-gray-700"
+                                tabindex="0">
+                                <IconInfo
+                                    class="text-white"
+                                    width="16px"
+                                    height="16px" />
+                            </b-link>
+                        </label>
+                        <EsPopover
+                            :placement="placement"
+                            :target="`lightNoTitleTarget-${placement}`"
+                            variant="light">
+                            <p class="mb-0">
+                                Install solar panels through this program and get $250 cash back.
+                                <a
+                                    class="mt-50 d-block"
+                                    href="https://communitysolar.energysage.com/"
+                                    target="_blank">Learn More</a>
+                            </p>
+                        </EsPopover>
+                    </div>
                 </div>
             </div>
+            <ds-doc-source
+                :comp-code="compCode"
+                comp-source="es-vue-base/src/lib-components/EsPopover.vue"
+                :doc-code="docCode"
+                doc-source="es-design-system/pages/molecules/es-popover.vue" />
         </div>
-        <ds-doc-source
-            :comp-code="compCode"
-            comp-source="es-vue-base/src/lib-components/EsPopover.vue"
-            :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-popover.vue" />
     </div>
 </template>
 
@@ -199,6 +176,11 @@ export default {
             compCode: '',
             docCode: '',
         };
+    },
+    computed: {
+        directives() {
+            return ['topright', 'bottomright', 'leftbottom', 'rightbottom'];
+        },
     },
     async created() {
         if (this.$prism) {
