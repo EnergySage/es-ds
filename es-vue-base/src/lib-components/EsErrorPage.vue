@@ -4,7 +4,7 @@
             <b-col
                 md="7"
                 class="my-450 mx-auto text-center">
-                <h1 class="font-weight-bolder post1 text-gray-600">
+                <h1 class="post1 text-gray-600">
                     {{ errorShortMessage }}
                 </h1>
                 <p
