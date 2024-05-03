@@ -458,45 +458,79 @@ $font-family-base:            $font-family-sans-serif !default;
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
 
-$font-size-50:                $font-size-base * 0.75 !default;
-$font-size-75:                $font-size-base * 0.875 !default;
-$font-size-100:               $font-size-base !default;
-$font-size-200:               $font-size-base * 1.125 !default;
-$font-size-300:               $font-size-base * 1.25 !default;
-$font-size-400:               $font-size-base * 1.5 !default;
-$font-size-500:               $font-size-base * 1.875 !default;
-$font-size-600:               $font-size-base * 2.375 !default;
-$font-size-700:               $font-size-base * 3 !default;
-$font-size-800:               $font-size-base * 3.375 !default;
-$font-size-900:               $font-size-base * 3.875 !default;
+$font-size-50:                $font-size-base * 0.75 !default;   // 12px
+$font-size-75:                $font-size-base * 0.875 !default;  // 14px
+$font-size-100:               $font-size-base !default;          // 16px
+$font-size-200:               $font-size-base * 1.125 !default;  // 18px
+$font-size-300:               $font-size-base * 1.25 !default;   // 20px
+$font-size-400:               $font-size-base * 1.5 !default;    // 24px
+$font-size-500:               $font-size-base * 1.875 !default;  // 30px
+$font-size-600:               $font-size-base * 2.375 !default;  // 38px
+$font-size-700:               $font-size-base * 3 !default;      // 48px
+$font-size-800:               $font-size-base * 3.375 !default;  // 54px
+$font-size-900:               $font-size-base * 3.875 !default;  // 62px
+
+$line-height-50:              $font-size-base * 1.125 !default;  // 18px
+$line-height-75:              $font-size-base * 1.25 !default;   // 20px
+$line-height-100:             $font-size-base * 1.5 !default;    // 24px
+$line-height-200:             $font-size-base * 1.5 !default;    // 24px
+$line-height-300:             $font-size-base * 1.75 !default;   // 28px
+$line-height-400:             $font-size-base * 1.75 !default;   // 28px
+$line-height-500:             $font-size-base * 2.25 !default;   // 36px
+$line-height-600:             $font-size-base * 3 !default;      // 48px
+$line-height-700:             $font-size-base * 3.5 !default;    // 56px
+$line-height-800:             $font-size-base * 4 !default;      // 64px
+$line-height-900:             $font-size-base * 4.375 !default;  // 70px
 
 // deprecated
-$font-size-xs:                $font-size-base * 0.75;
-$font-size-sm:                $font-size-base * 0.875 !default;
-$font-size-lg:                $font-size-base * 1.25 !default;
-$font-size-xl:                $font-size-base * 1.35 !default;
-$font-size-xxl:               $font-size-base * 1.85 !default;
+$font-size-xs:                $font-size-50 !default;            // 12px
+$font-size-sm:                $font-size-75 !default;            // 14px
+$font-size-lg:                $font-size-300 !default;           // 20px
+$font-size-xl:                $font-size-400 !default;           // 24px
+$font-size-xxl:               $font-size-500 !default;           // 30px
+
 
 // used in font-size-* utility classes
 $font-sizes: (
-  "50": $font-size-50,
-  "75": $font-size-75,
-  "100": $font-size-100,
-  "200": $font-size-200,
-  "300": $font-size-300,
-  "400": $font-size-400,
-  "500": $font-size-500,
-  "600": $font-size-600,
-  "700": $font-size-700,
-  "800": $font-size-800,
-  "900": $font-size-900,
+  "50":   $font-size-50,
+  "75":   $font-size-75,
+  "100":  $font-size-100,
+  "200":  $font-size-200,
+  "300":  $font-size-300,
+  "400":  $font-size-400,
+  "500":  $font-size-500,
+  "600":  $font-size-600,
+  "700":  $font-size-700,
+  "800":  $font-size-800,
+  "900":  $font-size-900,
   // deprecated
-  "xxl": $font-size-xxl,
-  "xl": $font-size-xl,
-  "lg": $font-size-lg,
+  "xs":   $font-size-xs,
+  "sm":   $font-size-sm,
   "base": $font-size-base,
-  "sm": $font-size-sm,
-  "xs": $font-size-xs,
+  "lg":   $font-size-lg,
+  "xl":   $font-size-xl,
+  "xxl":  $font-size-xxl,
+);
+
+$line-heights: (
+  "50":   $line-height-50,
+  "75":   $line-height-75,
+  "100":  $line-height-100,
+  "200":  $line-height-200,
+  "300":  $line-height-300,
+  "400":  $line-height-400,
+  "500":  $line-height-500,
+  "600":  $line-height-600,
+  "700":  $line-height-700,
+  "800":  $line-height-800,
+  "900":  $line-height-900,
+  // deprecated
+  "xs":   $line-height-50,
+  "sm":   $line-height-75,
+  "base": $line-height-100,
+  "lg":   $line-height-300,
+  "xl":   $line-height-400,
+  "xxl":  $line-height-500,
 );
 
 // fusv-disable
@@ -630,30 +664,75 @@ $embed-responsive-aspect-ratios: list.join(
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$h1-font-size:                $font-size-base * 1.5 !default;
-$h2-font-size:                $font-size-base * 1.25 !default;
-$h3-font-size:                $font-size-base * 1.125 !default;
-$h4-font-size:                $font-size-base !default;
-$h5-font-size:                $font-size-base * 0.875 !default;
-$h6-font-size:                $font-size-base * 0.75 !default;
+$h1-font-size:                $font-size-400 !default;
+$h2-font-size:                $font-size-300 !default;
+$h3-font-size:                $font-size-200 !default;
+$h4-font-size:                $font-size-100 !default;
+$h5-font-size:                $font-size-75 !default;
+// deprecated
+$h6-font-size:                $font-size-75 !default;
 
-$h1-font-size-desktop:        $font-size-base * 2.375;
-$h2-font-size-desktop:        $font-size-base * 1.875;
-$h3-font-size-desktop:        $font-size-base * 1.5;
-$h4-font-size-desktop:        $font-size-base * 1.25;
-$h5-font-size-desktop:        $font-size-base;
-$h6-font-size-desktop:        $font-size-base * 0.875;
+$h1-line-height:              $line-height-400 !default;
+$h2-line-height:              $line-height-300 !default;
+$h3-line-height:              $line-height-200 !default;
+$h4-line-height:              $line-height-100 !default;
+$h5-line-height:              $line-height-75 !default;
+// deprecated
+$h6-line-height:              $line-height-75 !default;
+
+$h1-font-size-desktop:        $font-size-600 !default;
+$h2-font-size-desktop:        $font-size-500 !default;
+$h3-font-size-desktop:        $font-size-400 !default;
+$h4-font-size-desktop:        $font-size-300 !default;
+$h5-font-size-desktop:        $font-size-100 !default;
+// deprecated
+$h6-font-size-desktop:        $font-size-100 !default;
+
+$h1-line-height-desktop:      $line-height-600 !default;
+$h2-line-height-desktop:      $line-height-500 !default;
+$h3-line-height-desktop:      $line-height-400 !default;
+$h4-line-height-desktop:      $line-height-300 !default;
+$h5-line-height-desktop:      $line-height-100 !default;
+// deprecated
+$h6-line-height-desktop:      $line-height-100 !default;
 
 $headings-margin-bottom:      1rem !default;
 $headings-font-family:        $font-family-sans-serif !default;
 $headings-font-weight:        $font-weight-semibold !default;
-$headings-line-height:        1.2 !default;
+$headings-line-height:        1.2 !default; // no longer used, in favor of specific per font size
 $headings-color:              $gray-900 !default;
 // fusv-disable
 $headings-font-family-higher: null;
 // fusv-enable
-$eyebrow-letter-spacing:      0.08em !default;
 
+// poster type sizing
+$post1-font-size:             $font-size-700 !default;
+$post2-font-size:             $font-size-600 !default;
+$post3-font-size:             $font-size-500 !default;
+
+$post1-line-height:           $line-height-700 !default;
+$post2-line-height:           $line-height-600 !default;
+$post3-line-height:           $line-height-500 !default;
+
+$post1-font-size-desktop:     $font-size-900 !default;
+$post2-font-size-desktop:     $font-size-800 !default;
+$post3-font-size-desktop:     $font-size-700 !default;
+
+$post1-line-height-desktop:   $line-height-900 !default;
+$post2-line-height-desktop:   $line-height-800 !default;
+$post3-line-height-desktop:   $line-height-700 !default;
+
+$post-font-weight:            $font-weight-bolder !default;
+
+// eyebrow
+$eyebrow-font-color:          $blue-500 !default;
+$eyebrow-font-size:           $font-size-100 !default;
+$eyebrow-line-height:         $line-height-100 !default;
+$eyebrow-margin-bottom:       0.5rem !default;
+$eyebrow-font-weight:         $font-weight-bold !default;
+$eyebrow-letter-spacing:      0.08rem !default;
+
+// deprecated "display" type sizing
 $display1-size:               5rem !default;
 $display2-size:               4.5rem !default;
 $display3-size:               4rem !default;
@@ -767,9 +846,32 @@ $button-colors: map.merge(
   (
     "primary":           $blue-600,
     "secondary":         $blue-600,
-    "dark":              $orange-700,
+    "dark":              $blue-600,
+    "dark-bg":           $orange-700,
   ),
   $button-colors
+);
+
+$button-outline-bg-colors: () !default;
+$button-outline-bg-colors: map.merge(
+  (
+    "outline-primary":   $white,
+    "outline-secondary": $white,
+    "outline-dark":      $white,
+    "outline-dark-bg":   transparent,
+  ),
+  $button-outline-bg-colors
+);
+
+$button-outline-border-colors: () !default;
+$button-outline-border-colors: map.merge(
+  (
+    "outline-primary":   $blue-600,
+    "outline-secondary": $blue-600,
+    "outline-dark":      $blue-600,
+    "outline-dark-bg":   $white,
+  ),
+  $button-outline-border-colors
 );
 
 $button-text-colors: () !default;
@@ -777,10 +879,12 @@ $button-text-colors: map.merge(
   (
     "primary":           $white,
     "secondary":         $white,
+    "dark":              $white,
     "outline-primary":   $blue-600,
     "outline-secondary": $blue-600,
-    "dark":              $blue-900,
-    "outline-dark":      $orange-800,
+    "outline-dark":      $blue-600,
+    "dark-bg":           $blue-900,
+    "outline-dark-bg":   $white,
   ),
   $button-text-colors
 );
@@ -790,12 +894,25 @@ $button-hover-colors: map.merge(
   (
     "primary":           $blue-700,
     "secondary":         $blue-700,
+    "dark":              $blue-700,
     "outline-primary":   $blue-50,
     "outline-secondary": $blue-50,
-    "dark":              $orange-800,
-    "outline-dark":      $orange-800,
+    "outline-dark":      $blue-50,
+    "dark-bg":           $orange-800,
+    "outline-dark-bg":   transparent,
   ),
   $button-hover-colors
+);
+
+$button-outline-hover-border-colors: () !default;
+$button-outline-hover-border-colors: map.merge(
+  (
+    "outline-primary":   $blue-600,
+    "outline-secondary": $blue-600,
+    "outline-dark":      $blue-600,
+    "outline-dark-bg":   $blue-50,
+  ),
+  $button-outline-hover-border-colors
 );
 
 $button-active-colors: () !default;
@@ -803,12 +920,25 @@ $button-active-colors: map.merge(
   (
     "primary":           $blue-800,
     "secondary":         $blue-800,
+    "dark":              $blue-800,
     "outline-primary":   $blue-200,
     "outline-secondary": $blue-200,
-    "dark":              $orange-900,
-    "outline-dark":      $orange-900,
+    "outline-dark":      $blue-200,
+    "dark-bg":           $orange-900,
+    "outline-dark-bg":   transparent,
   ),
   $button-active-colors
+);
+
+$button-outline-active-border-colors: () !default;
+$button-outline-active-border-colors: map.merge(
+  (
+    "outline-primary":   $blue-600,
+    "outline-secondary": $blue-600,
+    "outline-dark":      $blue-600,
+    "outline-dark-bg":   $blue-200,
+  ),
+  $button-outline-active-border-colors
 );
 
 $button-focus-border-colors: () !default;
@@ -816,10 +946,12 @@ $button-focus-border-colors: map.merge(
   (
     "primary":           $blue-100,
     "secondary":         $blue-100,
+    "dark":              $blue-100,
     "outline-primary":   $blue-600,
     "outline-secondary": $blue-600,
-    "dark":              $blue-100,
-    "outline-dark":      $blue-100,
+    "outline-dark":      $blue-600,
+    "dark-bg":           $blue-100,
+    "outline-dark-bg":   $blue-50,
   ),
   $button-focus-border-colors
 );
@@ -829,10 +961,12 @@ $button-disabled-colors: map.merge(
   (
     "primary":           $gray-200,
     "secondary":         $gray-200,
+    "dark":              $gray-200,
     "outline-primary":   $white,
     "outline-secondary": $white,
-    "dark":              $orange-100,
     "outline-dark":      $white,
+    "dark-bg":           $orange-100,
+    "outline-dark-bg":   $gray-400,
   ),
   $button-disabled-colors
 );
@@ -842,28 +976,49 @@ $button-disabled-font-colors: map.merge(
   (
     "primary":           $gray-500,
     "secondary":         $gray-500,
+    "dark":              $gray-500,
     "outline-primary":   $gray-500,
     "outline-secondary": $gray-500,
-    "dark":              $orange-400,
-    "outline-dark":      $orange-400,
+    "outline-dark":      $gray-500,
+    "dark-bg":           $orange-400,
+    "outline-dark-bg":   $gray-400,
   ),
   $button-disabled-font-colors
 );
 
 $btn-primary-box-shadow: 0px 5px 10px 0px $blue-100 !default;
-$btn-dark-box-shadow: 0px 4px 8px 0px rgba(41, 41, 41, 0.35);
+$btn-primary-active-box-shadow: 0px 4px 10px 0px $blue-100 !default;
+$btn-dark-bg-box-shadow: 0px 5px 10px 0px rgba(255, 145, 51, 0.25);
+$btn-dark-bg-active-box-shadow: 0px 4px 10px 0px rgba(255, 145, 51, 0.25);
 
 $button-box-shadows: () !default;
 $button-box-shadows: map.merge(
   (
     "primary":           $btn-primary-box-shadow,
     "secondary":         $btn-primary-box-shadow,
-    "outline-primary":   'none',
-    "outline-secondary": 'none',
-    "dark":              $btn-dark-box-shadow,
-    "outline-dark":      $btn-dark-box-shadow,
+    "dark":              $btn-primary-box-shadow,
+    "outline-primary":   $btn-primary-box-shadow,
+    "outline-secondary": $btn-primary-box-shadow,
+    "outline-dark":      $btn-primary-box-shadow,
+    "dark-bg":           $btn-dark-bg-box-shadow,
+    "outline-dark-bg":   none,
   ),
   $button-box-shadows
+);
+
+$button-active-box-shadows: () !default;
+$button-active-box-shadows: map.merge(
+  (
+    "primary":           $btn-primary-active-box-shadow,
+    "secondary":         $btn-primary-active-box-shadow,
+    "dark":              $btn-primary-active-box-shadow,
+    "outline-primary":   $btn-primary-active-box-shadow,
+    "outline-secondary": $btn-primary-active-box-shadow,
+    "outline-dark":      $btn-primary-active-box-shadow,
+    "dark-bg":           $btn-dark-bg-active-box-shadow,
+    "outline-dark-bg":   none,
+  ),
+  $button-active-box-shadows
 );
 
 $btn-padding-y:               $input-btn-padding-y !default;
@@ -895,6 +1050,7 @@ $btn-focus-width:             $input-btn-focus-width !default;
 $btn-focus-box-shadow:        0 !default;
 $btn-disabled-opacity:        1 !default;
 $btn-active-box-shadow:       0 !default;
+$btn-active-transform:        translateY(1px) !default;
 
 $btn-disabled-bg-color:       $gray-200 !default;
 $btn-disabled-border-color:   $gray-400 !default;
@@ -990,7 +1146,7 @@ $input-group-addon-border-color:        $input-border-color !default;
 $custom-forms-transition:               background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 $custom-control-gutter:                 1rem !default;
-$custom-control-spacer-x:               1rem !default;
+$custom-control-spacer-x:               2rem !default;
 $custom-control-cursor:                 null !default;
 
 $custom-control-indicator-size:         1rem !default;

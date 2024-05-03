@@ -21,8 +21,8 @@
         </p>
 
         <p class="mb-200">
-            Icons inside of default buttons should be 24px or 1.5rem (the default for ESDS icons).
-            Icons inside of small buttons should be 18px or 1.125rem.
+            Icons inside default buttons are sized automatically to 24px; and in
+            small buttons to 18px.
         </p>
 
         <div class="my-450">
@@ -34,7 +34,7 @@
             </p>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
-                    v-for="example in primaryExamples"
+                    v-for="example in mainExamples"
                     :key="example.name"
                     :zebra-stripes="false"
                     vertically-center-content>
@@ -63,9 +63,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -83,9 +81,7 @@
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -102,7 +98,7 @@
             </p>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
-                    v-for="example in secondaryExamples"
+                    v-for="example in mainExamples"
                     :key="example.name"
                     :zebra-stripes="false"
                     vertically-center-content>
@@ -128,14 +124,12 @@
                         </template>
                         <template #value>
                             <es-button
-                                :outline="example.outline"
+                                outline
                                 :size="example.size">
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -149,14 +143,12 @@
                         <template #value>
                             <es-button
                                 disabled
-                                :outline="example.outline"
+                                outline
                                 :size="example.size">
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -263,15 +255,19 @@
 
         <div class="bg-dark-blue my-450 p-100 rounded-lg text-white">
             <h2 class="text-white">
-                Dark
+                Dark background
             </h2>
             <p>
-                This variant is only meant to be used against a dark blue background.
-                Use the <code>variant="dark"</code> prop value to enable it.
+                These variants are only meant to be used against a dark blue background.
+                Use the <code>variant="dark-bg"</code> prop value to enable them.
             </p>
+
+            <h3 class="mt-200 text-white">
+                Primary
+            </h3>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
-                    v-for="example in darkExamples"
+                    v-for="example in mainExamples"
                     :key="example.name"
                     :zebra-stripes="false"
                     vertically-center-content>
@@ -297,15 +293,12 @@
                         </template>
                         <template #value>
                             <es-button
-                                :outline="example.outline"
                                 :size="example.size"
-                                :variant="example.variant">
+                                variant="dark-bg">
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -319,15 +312,79 @@
                         <template #value>
                             <es-button
                                 disabled
-                                :outline="example.outline"
                                 :size="example.size"
-                                :variant="example.variant">
+                                variant="dark-bg">
                                 {{ example.text }}
                                 <icon-chevron-right
                                     v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }"
-                                    :height="example.size === 'sm' ? '1.125rem' : undefined"
-                                    :width="example.size === 'sm' ? '1.125rem' : undefined" />
+                                    :class="{ 'ml-25': example.text }" />
+                            </es-button>
+                        </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
+
+            <h3 class="mt-200 text-white">
+                Secondary
+            </h3>
+            <p>
+                For this style, add the <code>outline</code> boolean prop.
+            </p>
+            <ds-responsive-table class="responsive-table-typography">
+                <ds-responsive-table-row
+                    v-for="example in mainExamples"
+                    :key="example.name"
+                    :zebra-stripes="false"
+                    vertically-center-content>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Description
+                        </template>
+                        <template #value>
+                            <span class="font-weight-semibold">
+                                {{ example.name }}
+                            </span>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Normal
+                        </template>
+                        <template #value>
+                            <es-button
+                                outline
+                                :size="example.size"
+                                variant="dark-bg">
+                                {{ example.text }}
+                                <icon-chevron-right
+                                    v-if="example.icon"
+                                    :class="{ 'ml-25': example.text }" />
+                            </es-button>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3"
+                        xxl="2">
+                        <template #name>
+                            Disabled
+                        </template>
+                        <template #value>
+                            <es-button
+                                disabled
+                                outline
+                                :size="example.size"
+                                variant="dark-bg">
+                                {{ example.text }}
+                                <icon-chevron-right
+                                    v-if="example.icon"
+                                    :class="{ 'ml-25': example.text }" />
                             </es-button>
                         </template>
                     </ds-responsive-table-column>
@@ -401,6 +458,95 @@
                 :widths="propTableWidths" />
         </div>
 
+        <es-collapse
+            id="legacy-collapse"
+            v-model="legacyCollapseVisible"
+            :is-programmatic-until-user-input="false">
+            <template #title>
+                <h2 class="mb-0">
+                    Legacy variants
+                </h2>
+            </template>
+            <p>
+                These legacy variants have all been updated to match the new button styling.
+            </p>
+
+            <div
+                v-for="legacyVariant in legacyVariants"
+                :key="legacyVariant.name">
+                <h3 class="mt-200">
+                    {{ legacyVariant.name }}
+                </h3>
+                <p>
+                    Use <code>variant="{{ legacyVariant.variant }}"</code>
+                    <span v-if="legacyVariant.outline">
+                        and <code>outline="true"</code>
+                    </span>
+                    for this style.
+                </p>
+                <ds-responsive-table class="responsive-table-typography">
+                    <ds-responsive-table-row
+                        v-for="example in legacyExamples"
+                        :key="example.name"
+                        :zebra-stripes="false"
+                        vertically-center-content>
+                        <ds-responsive-table-column
+                            md="4"
+                            lg="3"
+                            xxl="2">
+                            <template #name>
+                                Description
+                            </template>
+                            <template #value>
+                                <span class="font-weight-semibold">
+                                    {{ example.name }}
+                                </span>
+                            </template>
+                        </ds-responsive-table-column>
+                        <ds-responsive-table-column
+                            md="4"
+                            lg="3"
+                            xxl="2">
+                            <template #name>
+                                Normal
+                            </template>
+                            <template #value>
+                                <es-button
+                                    :outline="legacyVariant.outline"
+                                    :size="example.size"
+                                    :variant="legacyVariant.variant">
+                                    {{ example.text }}
+                                    <icon-chevron-right
+                                        v-if="example.icon"
+                                        :class="{ 'ml-25': example.text }" />
+                                </es-button>
+                            </template>
+                        </ds-responsive-table-column>
+                        <ds-responsive-table-column
+                            md="4"
+                            lg="3"
+                            xxl="2">
+                            <template #name>
+                                Disabled
+                            </template>
+                            <template #value>
+                                <es-button
+                                    disabled
+                                    :outline="legacyVariant.outline"
+                                    :size="example.size"
+                                    :variant="legacyVariant.variant">
+                                    {{ example.text }}
+                                    <icon-chevron-right
+                                        v-if="example.icon"
+                                        :class="{ 'ml-25': example.text }" />
+                                </es-button>
+                            </template>
+                        </ds-responsive-table-column>
+                    </ds-responsive-table-row>
+                </ds-responsive-table>
+            </div>
+        </es-collapse>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsButton.vue"
@@ -414,40 +560,37 @@ export default {
     name: 'EsButtonDocs',
     data() {
         return {
-            darkExamples: [
+            legacyCollapseVisible: false,
+            legacyExamples: [
                 {
                     name: 'Default',
                     text: 'Default button',
-                    variant: 'dark',
-                },
-                {
-                    name: 'Default (text with icon)',
-                    icon: true,
-                    text: 'Default button',
-                    variant: 'dark',
-                },
-                {
-                    name: 'Default (icon only)',
-                    icon: true,
-                    variant: 'dark',
                 },
                 {
                     name: 'Small',
                     size: 'sm',
                     text: 'Small button',
+                },
+            ],
+            legacyVariants: [
+                {
+                    name: 'Secondary',
+                    outline: false,
+                    variant: 'secondary',
+                },
+                {
+                    name: 'Secondary outline',
+                    outline: true,
+                    variant: 'secondary',
+                },
+                {
+                    name: 'Dark',
+                    outline: false,
                     variant: 'dark',
                 },
                 {
-                    name: 'Small (text with icon)',
-                    icon: true,
-                    size: 'sm',
-                    text: 'Small button',
-                    variant: 'dark',
-                },
-                {
-                    name: 'Small (icon only)',
-                    icon: true,
-                    size: 'sm',
+                    name: 'Dark outline',
+                    outline: true,
                     variant: 'dark',
                 },
             ],
@@ -474,7 +617,7 @@ export default {
                     inline: true,
                 },
             ],
-            primaryExamples: [
+            mainExamples: [
                 {
                     name: 'Default',
                     text: 'Default button',
@@ -520,56 +663,18 @@ export default {
                 [
                     'size',
                     '"md"',
-                    'The size of the button: \'lg\', \'md\', or \'sm\'. Large and medium will render exactly '
-                    + 'the same.',
+                    'The size of the button: \'md\', or \'sm\'.',
                 ],
                 [
                     'variant',
                     '"primary"',
-                    'The name of the desired button variant: \'primary\', \'dark-mode\', or \'link\'.',
+                    'The name of the desired button variant: \'primary\', \'dark-bg\', or \'link\'.',
                 ],
             ],
             propTableWidths: {
                 md: ['3', '4', '5'],
                 lg: ['2', '2', '8'],
             },
-            secondaryExamples: [
-                {
-                    name: 'Default',
-                    outline: true,
-                    text: 'Default button',
-                },
-                {
-                    name: 'Default (text with icon)',
-                    icon: true,
-                    outline: true,
-                    text: 'Default button',
-                },
-                {
-                    name: 'Default (icon only)',
-                    icon: true,
-                    outline: true,
-                },
-                {
-                    name: 'Small',
-                    outline: true,
-                    size: 'sm',
-                    text: 'Small button',
-                },
-                {
-                    name: 'Small (text with icon)',
-                    icon: true,
-                    outline: true,
-                    size: 'sm',
-                    text: 'Small button',
-                },
-                {
-                    name: 'Small (icon only)',
-                    icon: true,
-                    outline: true,
-                    size: 'sm',
-                },
-            ],
             compCode: '',
             docCode: '',
         };
