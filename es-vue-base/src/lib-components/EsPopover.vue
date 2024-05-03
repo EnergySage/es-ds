@@ -15,7 +15,7 @@
             -->
             <slot name="title" />
             <EsButton
-                inline="true"
+                :inline="true"
                 variant="link"
                 class="p-0 float-right"
                 @click="onClose">
@@ -33,7 +33,7 @@
                 <slot />
                 <div v-if="!hasTitle">
                     <EsButton
-                        inline="true"
+                        :inline="true"
                         variant="link"
                         class="p-0 pl-2"
                         @click="onClose">
