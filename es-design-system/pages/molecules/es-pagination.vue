@@ -25,6 +25,10 @@
             :per-page="perPage"
             align="center"
             list-id="paginated-list" />
+        <b-pagination
+            v-model="currentPage"
+            :total-rows="rows"
+            :per-page="perPage" />
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsPagination.vue"
@@ -34,8 +38,13 @@
 </template>
 
 <script>
+import { BPagination } from 'bootstrap-vue';
+
 export default {
     name: 'EsPaginationDocs',
+    components: {
+        BPagination,
+    },
     data() {
         return {
             perPage: 3,

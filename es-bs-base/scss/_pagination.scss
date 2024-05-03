@@ -23,9 +23,7 @@
   &:hover {
     z-index: 2;
     color: variables.$pagination-hover-color;
-    text-decoration: none;
-    background-color: variables.$pagination-hover-bg;
-    border-color: variables.$pagination-hover-border-color;
+    text-decoration: underline;
   }
 
   &:focus {

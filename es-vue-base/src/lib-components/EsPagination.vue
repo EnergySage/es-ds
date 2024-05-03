@@ -58,7 +58,6 @@ export default {
             width: 3rem;
             background-color: transparent;
             border: 0;
-            color: variables.$blue-600;
             font-weight: variables.$font-weight-semibold;
             font-size: variables.$font-size-300;
         }
@@ -77,12 +76,6 @@ export default {
     .page-number {
         .page-link {
             border-radius: 0.25rem;
-
-            &:hover {
-                background-color: transparent;
-                text-decoration: underline;
-                font-weight: variables.$font-weight-bold;
-            }
         }
 
         &.active {
