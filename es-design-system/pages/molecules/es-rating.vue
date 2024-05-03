@@ -18,9 +18,25 @@
             <h2 class="mt-450">
                 Static Display
             </h2>
-            <es-rating
-                :rating="3.9" />
+            <div
+                v-for="i in 11"
+                :key="i">
+                <es-rating
+                    :rating="(i-1)/2" />
+            </div>
         </div>
+        <div class="d-flex flex-column flex-md-row">
+            <div class="rating bg-gray-50 justify-content-center mb-200 mb-md-0 mr-md-200">
+                <es-rating :rating="4.5" />
+            </div>
+            <div class="rating bg-blue-50 justify-content-center mb-200 mb-md-0 mr-md-200">
+                <es-rating :rating="4.5" />
+            </div>
+            <div class="rating bg-blue-900 justify-content-center mb-200 mb-md-0 mr-md-200">
+                <es-rating :rating="4.5" />
+            </div>
+        </div>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsRating.vue"
@@ -29,7 +45,8 @@
     </div>
 </template>
 
-<script>
+<script lang="js">
+
 export default {
     name: 'EsRatingDocs',
     data() {
@@ -58,3 +75,22 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.code-holder {
+    .code-input {
+        appearance: textfield;
+
+        &.lg {
+            font-size: 3rem;
+            height: 6rem;
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            appearance: none;
+        }
+    }
+}
+
+</style>
