@@ -113,6 +113,32 @@ will then start a dev instance for `es-design-system` that will be available at
 Hot reloading will take longer than a typical nuxt app, as it will need to
 rebuild the packages and re-link them. This is expected.
 
+#### Faster Reloads Hack
+
+In a terminal run:
+
+```
+(cd es-design-system && FAST_LOCAL=true npm run dev)
+```
+
+In another terminal run:
+
+```
+find es-vue-base/src/ | entr -s 'npm --prefix es-vue-base run build'
+```
+
+(You may need to run `brew install entr` first)
+
+This will result in much faster reloads that skip rebuilding all of `es-bs-base`
+as well as skipping server-side rendering. But *note* this will also throw an
+error in webpack-dev server until `es-vue-base` finishes compiling, then it
+should recover.
+
+You must also ensure things work server-side before committing your changes.
+
+Once we upgrade to Lerna 6, this should all be much faster & smoother via native [Workspace watching](https://lerna.js.org/docs/features/workspace-watching)
+
+
 #### Vue Component Process
 
 ##### Unit Tests

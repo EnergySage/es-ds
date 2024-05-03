@@ -1,37 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsErrorPage <EsErrorPage /> 1`] = `
-"<div class="my-450 container" required="required">
+"<div class="py-450 py-lg-800 bg-gray-50 container" required="required">
   <div class="row">
     <div class="my-450 mx-auto text-center col-md-7">
-      <h1 class="font-weight-boldest display-3">
-        403
+      <h1 class="post1 text-gray-600">
+        Access denied
       </h1>
-      <h2 id="msgError">
+      <p id="msgError" class="font-size-lg text-gray-600">
         Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
-      </h2>
+      </p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-6"><a href="mailto:hello@energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M29.5901 7.05046C29.5004 7.00561 29.3995 6.99439 29.3042 7.01121C29.2874 7.01121 29.265 7 29.2481 7H2.61673C2.61673 7 2.57748 7.00561 2.55505 7.01121C2.45974 7 2.36443 7.00561 2.26912 7.05046C2.10092 7.12895 2 7.29715 2 7.48217V24.1562C2 24.4197 2.21305 24.6328 2.47656 24.6328H29.3883C29.5173 24.6328 29.635 24.5879 29.7247 24.4926C29.8144 24.4029 29.8649 24.2796 29.8649 24.1562V7.48217C29.8649 7.29715 29.7583 7.12895 29.5901 7.05046V7.05046ZM27.9138 7.95873L15.9324 17.7535L3.9511 7.95873H27.9138V7.95873ZM28.9117 23.6797H2.95312V8.48575L15.6297 18.8187C15.8035 18.9589 16.0558 18.9589 16.2296 18.8187L28.9117 8.48575V23.6797Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Contact Us</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">Contact us</p>
       </a></div>
     <div class="col-md-3 col-6"><a href="https://www.energysage.com/solar/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M31.99 6.07a.96.96 0 0 0-.154-.68.936.936 0 0 0-.788-.39H7.871c-.532 0-1.077.37-1.305.881L4.56 10.45 2.24 15.73.107 20.595c-.155.35-.142.713.04.99a.922.922 0 0 0 .787.403h5.228v4.265a.571.571 0 1 0 1.144 0v-4.265h13.018v4.265a.571.571 0 1 0 1.144 0v-4.265h3.673c.62 0 1.252-.471 1.48-1.09l1.723-4.736 1.917-5.282.592-1.621v16.994a.571.571 0 1 0 1.144 0V6.117s-.007-.034-.007-.047Zm-7.67 1.056-1.143 2.987h-4.925l1.594-3.97h4.851l-.377.983Zm-5.247 13.725h-5.127l1.73-4.313h5.045l-.787 2.06-.861 2.253ZM17.02 10.12h-4.912l1.669-3.97h4.837l-1.594 3.97Zm-5.396 1.144h4.938L14.901 15.4H9.89l1.736-4.137Zm9.533 4.137h-5.025l1.661-4.137h4.945l-.881 2.314-.7 1.823ZM7.615 6.346c.047-.108.202-.202.256-.202h4.662l-1.668 3.97H5.96l1.655-3.768Zm-2.16 4.91h4.932l-1.736 4.139H3.64l1.816-4.138Zm-2.32 5.282H8.16l-1.783 4.246-.027.06H1.244l1.89-4.312v.006Zm6.243.06.027-.06h5.039l-1.73 4.313h-5.12l1.784-4.245v-.007Zm16.174 3.91c-.068.195-.296.336-.404.336h-4.85l.786-2.059.861-2.253h5.053l-1.446 3.97v.006Zm1.863-5.113h-5.032l.881-2.315.7-1.823h4.952l-1.507 4.138h.006Zm1.918-5.282H24.4l.377-.982 1.144-2.987h4.857l-1.446 3.97Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Learn About Solar</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">Learn about solar</p>
       </a></div>
-    <div class="col-md-3 col-6"><a href="https://news.energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
+    <div class="col-md-3 col-6"><a href="https://www.energysage.com/blog/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M26.4643 5H5.54015C5.24351 5 5 5.24923 5 5.55283V24.0046C5 24.3082 5.24351 24.5575 5.54015 24.5575H19.3051L19.7213 26.4697C19.7523 26.6193 19.8718 26.7325 20.0179 26.7643C20.164 26.7914 20.3146 26.7325 20.3987 26.6057L21.2399 25.3505L22.5504 26.8775C22.6257 26.9636 22.7275 27.009 22.8338 27.009C22.9179 27.009 22.9976 26.9818 23.0684 26.9274L24.3701 25.8716C24.4498 25.8081 24.4985 25.713 24.5118 25.6088C24.5251 25.5045 24.4896 25.4003 24.4277 25.3233L23.8034 24.562H26.4599C26.7565 24.562 27 24.3128 27 24.0092V5.55283C27 5.24923 26.7565 5 26.4599 5H26.4643ZM26.2518 5.77034V8.27619H5.75267V5.77034H26.2518ZM18.7649 19.0564C18.6365 18.9703 18.4727 18.9748 18.3443 19.0609C18.2159 19.1515 18.1584 19.3101 18.1894 19.4597L18.4639 20.7103H8.31616V18.3449H23.2987V20.7103H21.231L18.7649 19.0564V19.0564ZM22.8869 26.0891L21.4923 24.4668C21.4214 24.3853 21.3152 24.3354 21.2089 24.3354C21.2 24.3354 21.1956 24.3354 21.1868 24.3354C21.0716 24.3445 20.9654 24.4034 20.899 24.5031L20.2703 25.4366L19.128 20.2209L23.4315 23.112L22.5238 23.3204C22.3955 23.3476 22.2936 23.4473 22.2493 23.5742C22.2051 23.701 22.2316 23.8415 22.3158 23.9457L23.5997 25.5091L22.8825 26.0936L22.8869 26.0891ZM23.9451 23.7826L24.4675 23.6648C24.6136 23.6331 24.7287 23.5107 24.7553 23.3567C24.7818 23.2026 24.7199 23.0485 24.5915 22.967L22.3777 21.4807H23.675C23.8831 21.4807 24.0513 21.3085 24.0513 21.0955V17.9598C24.0513 17.7468 23.8831 17.5746 23.675 17.5746H7.93983C7.73174 17.5746 7.56349 17.7468 7.56349 17.9598V21.0955C7.56349 21.3085 7.73174 21.4807 7.93983 21.4807H18.6321L19.1368 23.7871H5.75267V9.04653H26.2518V23.7871H23.9406L23.9451 23.7826Z"></path>
               <path d="M9.75506 7.39704C9.96758 7.39704 10.1402 7.22032 10.1402 7.00281C10.1402 6.78531 9.96758 6.60858 9.75506 6.60858C9.54254 6.60858 9.36987 6.78531 9.36987 7.00281C9.36987 7.22032 9.54254 7.39704 9.75506 7.39704Z"></path>
               <path d="M8.29403 7.39704C8.50655 7.39704 8.67922 7.22032 8.67922 7.00281C8.67922 6.78531 8.50655 6.60858 8.29403 6.60858C8.08151 6.60858 7.90884 6.78531 7.90884 7.00281C7.90884 7.22032 8.08151 7.39704 8.29403 7.39704Z"></path>
@@ -40,55 +40,55 @@ exports[`EsErrorPage <EsErrorPage /> 1`] = `
               <path d="M23.4757 14.5023H8.03722C7.82913 14.5023 7.66089 14.6745 7.66089 14.8875C7.66089 15.1005 7.82913 15.2727 8.03722 15.2727H23.4757C23.6838 15.2727 23.8521 15.1005 23.8521 14.8875C23.8521 14.6745 23.6838 14.5023 23.4757 14.5023Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Informative Blog Post</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage blog</p>
       </a></div>
-    <div class="col-md-3 col-6"><a href="https://www.energysage.com/market-intro/" class="align-items-center d-flex flex-column justify-content-center text-center">
+    <div class="col-md-3 col-6"><a href="https://www.energysage.com/shop/home-solar/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M26.6676 12.2197C26.5968 12.1356 26.4905 12.0825 26.3799 12.0825H22.3251C22.7191 11.3787 22.9272 10.5907 22.9272 9.7674C22.9272 7.13803 20.7891 5 18.1598 5C15.5304 5 13.3924 7.13803 13.3924 9.7674C13.3924 10.5907 13.6004 11.3787 13.9944 12.0825H10.2097L9.76257 10.4004C9.53682 9.53722 8.75775 8.93964 7.86358 8.93964H6.37626C6.16821 8.93964 6 9.10785 6 9.3159C6 9.52394 6.16821 9.69215 6.37626 9.69215H7.86358C8.41247 9.69215 8.89497 10.064 9.03219 10.5952L11.874 21.3384C12.0998 22.2016 12.8833 22.7992 13.773 22.7992H24.3525C24.5606 22.7992 24.7288 22.631 24.7288 22.4229C24.7288 22.2149 24.5606 22.0467 24.3525 22.0467H13.7775C13.2463 22.0467 12.7859 21.7014 12.6266 21.1968H16.1988H20.134H24.8394C25.0209 21.1968 25.1759 21.0684 25.2113 20.8869L26.7384 12.5252C26.7606 12.4145 26.7296 12.3038 26.6587 12.2153L26.6676 12.2197ZM25.561 14.8491H21.8781L22.334 12.835H25.9328L25.5654 14.8491H25.561ZM25.0475 17.66H21.2406L21.7054 15.6016H25.4237L25.0475 17.66V17.66ZM16.5042 20.4443L16.0483 18.4125H20.3022L19.8463 20.4443H16.5042ZM11.1392 15.6016H14.6406L15.1054 17.66H11.6837L11.1392 15.6016V15.6016ZM11.8829 18.4125H15.2736L15.7296 20.4443H12.4185L11.8829 18.4125V18.4125ZM15.8757 17.66L15.4109 15.6016H20.9352L20.4704 17.66H15.8757V17.66ZM14.7867 12.835H21.5549L21.099 14.8491H15.2382L14.7823 12.835H14.7867ZM14.1404 9.7674C14.1404 7.55412 15.9421 5.74809 18.1598 5.74809C20.3775 5.74809 22.1791 7.5497 22.1791 9.7674C22.1791 10.6085 21.9223 11.4052 21.4354 12.0825H14.8841C14.4016 11.4008 14.1449 10.6085 14.1449 9.7674H14.1404ZM14.0165 12.835L14.4724 14.8491H10.94L10.4089 12.835H14.0209H14.0165ZM24.5384 20.4443H20.6165L21.0724 18.4125H24.9103L24.5384 20.4443Z"></path>
               <path d="M15.2604 23.0073C14.1581 23.0073 13.264 23.9015 13.264 25.0037C13.264 26.1059 14.1581 27.0001 15.2604 27.0001C16.3626 27.0001 17.2567 26.1059 17.2567 25.0037C17.2567 23.9015 16.3626 23.0073 15.2604 23.0073ZM15.2604 26.2476C14.5742 26.2476 14.0165 25.6898 14.0165 25.0037C14.0165 24.3176 14.5742 23.7598 15.2604 23.7598C15.9465 23.7598 16.5042 24.3176 16.5042 25.0037C16.5042 25.6898 15.9465 26.2476 15.2604 26.2476Z"></path>
               <path d="M21.6214 23.0073C20.5192 23.0073 19.625 23.9015 19.625 25.0037C19.625 26.1059 20.5192 27.0001 21.6214 27.0001C22.7236 27.0001 23.6178 26.1059 23.6178 25.0037C23.6178 23.9015 22.7236 23.0073 21.6214 23.0073ZM21.6214 26.2476C20.9353 26.2476 20.3775 25.6898 20.3775 25.0037C20.3775 24.3176 20.9353 23.7598 21.6214 23.7598C22.3075 23.7598 22.8653 24.3176 22.8653 25.0037C22.8653 25.6898 22.3075 26.2476 21.6214 26.2476Z"></path>
               <path d="M20.3288 7.45682L17.4028 10.3828L16.2607 9.3204C16.1102 9.17875 15.8712 9.1876 15.7296 9.3381C15.6632 9.40893 15.6277 9.50189 15.6277 9.59484C15.6277 9.69665 15.6676 9.79847 15.7473 9.86929L17.1549 11.1796C17.2257 11.246 17.3187 11.2814 17.4117 11.2814C17.5046 11.2814 17.6064 11.246 17.6772 11.1707L20.8599 7.99243C20.9352 7.91718 20.9706 7.82422 20.9706 7.72684C20.9706 7.62945 20.9352 7.53649 20.8599 7.46124C20.7139 7.31517 20.4748 7.31517 20.3288 7.46124V7.45682Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage Marketplace</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage marketplace</p>
       </a></div>
   </div>
 </div>"
 `;
 
 exports[`EsErrorPage <EsErrorPage props /> 1`] = `
-"<div class="my-450 container" required="required">
+"<div class="py-450 py-lg-800 bg-gray-50 container" required="required">
   <div class="row">
     <div class="my-450 mx-auto text-center col-md-7">
-      <h1 class="font-weight-boldest display-3">
-        403
+      <h1 class="post1 text-gray-600">
+        Access denied
       </h1>
-      <h2 id="msgError">
+      <p id="msgError" class="font-size-lg text-gray-600">
         Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
-      </h2>
+      </p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-6"><a href="mailto:hello@energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M29.5901 7.05046C29.5004 7.00561 29.3995 6.99439 29.3042 7.01121C29.2874 7.01121 29.265 7 29.2481 7H2.61673C2.61673 7 2.57748 7.00561 2.55505 7.01121C2.45974 7 2.36443 7.00561 2.26912 7.05046C2.10092 7.12895 2 7.29715 2 7.48217V24.1562C2 24.4197 2.21305 24.6328 2.47656 24.6328H29.3883C29.5173 24.6328 29.635 24.5879 29.7247 24.4926C29.8144 24.4029 29.8649 24.2796 29.8649 24.1562V7.48217C29.8649 7.29715 29.7583 7.12895 29.5901 7.05046V7.05046ZM27.9138 7.95873L15.9324 17.7535L3.9511 7.95873H27.9138V7.95873ZM28.9117 23.6797H2.95312V8.48575L15.6297 18.8187C15.8035 18.9589 16.0558 18.9589 16.2296 18.8187L28.9117 8.48575V23.6797Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Contact Us</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">Contact us</p>
       </a></div>
     <div class="col-md-3 col-6"><a href="https://www.energysage.com/solar/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M31.99 6.07a.96.96 0 0 0-.154-.68.936.936 0 0 0-.788-.39H7.871c-.532 0-1.077.37-1.305.881L4.56 10.45 2.24 15.73.107 20.595c-.155.35-.142.713.04.99a.922.922 0 0 0 .787.403h5.228v4.265a.571.571 0 1 0 1.144 0v-4.265h13.018v4.265a.571.571 0 1 0 1.144 0v-4.265h3.673c.62 0 1.252-.471 1.48-1.09l1.723-4.736 1.917-5.282.592-1.621v16.994a.571.571 0 1 0 1.144 0V6.117s-.007-.034-.007-.047Zm-7.67 1.056-1.143 2.987h-4.925l1.594-3.97h4.851l-.377.983Zm-5.247 13.725h-5.127l1.73-4.313h5.045l-.787 2.06-.861 2.253ZM17.02 10.12h-4.912l1.669-3.97h4.837l-1.594 3.97Zm-5.396 1.144h4.938L14.901 15.4H9.89l1.736-4.137Zm9.533 4.137h-5.025l1.661-4.137h4.945l-.881 2.314-.7 1.823ZM7.615 6.346c.047-.108.202-.202.256-.202h4.662l-1.668 3.97H5.96l1.655-3.768Zm-2.16 4.91h4.932l-1.736 4.139H3.64l1.816-4.138Zm-2.32 5.282H8.16l-1.783 4.246-.027.06H1.244l1.89-4.312v.006Zm6.243.06.027-.06h5.039l-1.73 4.313h-5.12l1.784-4.245v-.007Zm16.174 3.91c-.068.195-.296.336-.404.336h-4.85l.786-2.059.861-2.253h5.053l-1.446 3.97v.006Zm1.863-5.113h-5.032l.881-2.315.7-1.823h4.952l-1.507 4.138h.006Zm1.918-5.282H24.4l.377-.982 1.144-2.987h4.857l-1.446 3.97Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Learn About Solar</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">Learn about solar</p>
       </a></div>
-    <div class="col-md-3 col-6"><a href="https://news.energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
+    <div class="col-md-3 col-6"><a href="https://www.energysage.com/blog/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M26.4643 5H5.54015C5.24351 5 5 5.24923 5 5.55283V24.0046C5 24.3082 5.24351 24.5575 5.54015 24.5575H19.3051L19.7213 26.4697C19.7523 26.6193 19.8718 26.7325 20.0179 26.7643C20.164 26.7914 20.3146 26.7325 20.3987 26.6057L21.2399 25.3505L22.5504 26.8775C22.6257 26.9636 22.7275 27.009 22.8338 27.009C22.9179 27.009 22.9976 26.9818 23.0684 26.9274L24.3701 25.8716C24.4498 25.8081 24.4985 25.713 24.5118 25.6088C24.5251 25.5045 24.4896 25.4003 24.4277 25.3233L23.8034 24.562H26.4599C26.7565 24.562 27 24.3128 27 24.0092V5.55283C27 5.24923 26.7565 5 26.4599 5H26.4643ZM26.2518 5.77034V8.27619H5.75267V5.77034H26.2518ZM18.7649 19.0564C18.6365 18.9703 18.4727 18.9748 18.3443 19.0609C18.2159 19.1515 18.1584 19.3101 18.1894 19.4597L18.4639 20.7103H8.31616V18.3449H23.2987V20.7103H21.231L18.7649 19.0564V19.0564ZM22.8869 26.0891L21.4923 24.4668C21.4214 24.3853 21.3152 24.3354 21.2089 24.3354C21.2 24.3354 21.1956 24.3354 21.1868 24.3354C21.0716 24.3445 20.9654 24.4034 20.899 24.5031L20.2703 25.4366L19.128 20.2209L23.4315 23.112L22.5238 23.3204C22.3955 23.3476 22.2936 23.4473 22.2493 23.5742C22.2051 23.701 22.2316 23.8415 22.3158 23.9457L23.5997 25.5091L22.8825 26.0936L22.8869 26.0891ZM23.9451 23.7826L24.4675 23.6648C24.6136 23.6331 24.7287 23.5107 24.7553 23.3567C24.7818 23.2026 24.7199 23.0485 24.5915 22.967L22.3777 21.4807H23.675C23.8831 21.4807 24.0513 21.3085 24.0513 21.0955V17.9598C24.0513 17.7468 23.8831 17.5746 23.675 17.5746H7.93983C7.73174 17.5746 7.56349 17.7468 7.56349 17.9598V21.0955C7.56349 21.3085 7.73174 21.4807 7.93983 21.4807H18.6321L19.1368 23.7871H5.75267V9.04653H26.2518V23.7871H23.9406L23.9451 23.7826Z"></path>
               <path d="M9.75506 7.39704C9.96758 7.39704 10.1402 7.22032 10.1402 7.00281C10.1402 6.78531 9.96758 6.60858 9.75506 6.60858C9.54254 6.60858 9.36987 6.78531 9.36987 7.00281C9.36987 7.22032 9.54254 7.39704 9.75506 7.39704Z"></path>
               <path d="M8.29403 7.39704C8.50655 7.39704 8.67922 7.22032 8.67922 7.00281C8.67922 6.78531 8.50655 6.60858 8.29403 6.60858C8.08151 6.60858 7.90884 6.78531 7.90884 7.00281C7.90884 7.22032 8.08151 7.39704 8.29403 7.39704Z"></path>
@@ -97,55 +97,55 @@ exports[`EsErrorPage <EsErrorPage props /> 1`] = `
               <path d="M23.4757 14.5023H8.03722C7.82913 14.5023 7.66089 14.6745 7.66089 14.8875C7.66089 15.1005 7.82913 15.2727 8.03722 15.2727H23.4757C23.6838 15.2727 23.8521 15.1005 23.8521 14.8875C23.8521 14.6745 23.6838 14.5023 23.4757 14.5023Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Informative Blog Post</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage blog</p>
       </a></div>
-    <div class="col-md-3 col-6"><a href="https://www.energysage.com/market-intro/" class="align-items-center d-flex flex-column justify-content-center text-center">
+    <div class="col-md-3 col-6"><a href="https://www.energysage.com/shop/home-solar/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M26.6676 12.2197C26.5968 12.1356 26.4905 12.0825 26.3799 12.0825H22.3251C22.7191 11.3787 22.9272 10.5907 22.9272 9.7674C22.9272 7.13803 20.7891 5 18.1598 5C15.5304 5 13.3924 7.13803 13.3924 9.7674C13.3924 10.5907 13.6004 11.3787 13.9944 12.0825H10.2097L9.76257 10.4004C9.53682 9.53722 8.75775 8.93964 7.86358 8.93964H6.37626C6.16821 8.93964 6 9.10785 6 9.3159C6 9.52394 6.16821 9.69215 6.37626 9.69215H7.86358C8.41247 9.69215 8.89497 10.064 9.03219 10.5952L11.874 21.3384C12.0998 22.2016 12.8833 22.7992 13.773 22.7992H24.3525C24.5606 22.7992 24.7288 22.631 24.7288 22.4229C24.7288 22.2149 24.5606 22.0467 24.3525 22.0467H13.7775C13.2463 22.0467 12.7859 21.7014 12.6266 21.1968H16.1988H20.134H24.8394C25.0209 21.1968 25.1759 21.0684 25.2113 20.8869L26.7384 12.5252C26.7606 12.4145 26.7296 12.3038 26.6587 12.2153L26.6676 12.2197ZM25.561 14.8491H21.8781L22.334 12.835H25.9328L25.5654 14.8491H25.561ZM25.0475 17.66H21.2406L21.7054 15.6016H25.4237L25.0475 17.66V17.66ZM16.5042 20.4443L16.0483 18.4125H20.3022L19.8463 20.4443H16.5042ZM11.1392 15.6016H14.6406L15.1054 17.66H11.6837L11.1392 15.6016V15.6016ZM11.8829 18.4125H15.2736L15.7296 20.4443H12.4185L11.8829 18.4125V18.4125ZM15.8757 17.66L15.4109 15.6016H20.9352L20.4704 17.66H15.8757V17.66ZM14.7867 12.835H21.5549L21.099 14.8491H15.2382L14.7823 12.835H14.7867ZM14.1404 9.7674C14.1404 7.55412 15.9421 5.74809 18.1598 5.74809C20.3775 5.74809 22.1791 7.5497 22.1791 9.7674C22.1791 10.6085 21.9223 11.4052 21.4354 12.0825H14.8841C14.4016 11.4008 14.1449 10.6085 14.1449 9.7674H14.1404ZM14.0165 12.835L14.4724 14.8491H10.94L10.4089 12.835H14.0209H14.0165ZM24.5384 20.4443H20.6165L21.0724 18.4125H24.9103L24.5384 20.4443Z"></path>
               <path d="M15.2604 23.0073C14.1581 23.0073 13.264 23.9015 13.264 25.0037C13.264 26.1059 14.1581 27.0001 15.2604 27.0001C16.3626 27.0001 17.2567 26.1059 17.2567 25.0037C17.2567 23.9015 16.3626 23.0073 15.2604 23.0073ZM15.2604 26.2476C14.5742 26.2476 14.0165 25.6898 14.0165 25.0037C14.0165 24.3176 14.5742 23.7598 15.2604 23.7598C15.9465 23.7598 16.5042 24.3176 16.5042 25.0037C16.5042 25.6898 15.9465 26.2476 15.2604 26.2476Z"></path>
               <path d="M21.6214 23.0073C20.5192 23.0073 19.625 23.9015 19.625 25.0037C19.625 26.1059 20.5192 27.0001 21.6214 27.0001C22.7236 27.0001 23.6178 26.1059 23.6178 25.0037C23.6178 23.9015 22.7236 23.0073 21.6214 23.0073ZM21.6214 26.2476C20.9353 26.2476 20.3775 25.6898 20.3775 25.0037C20.3775 24.3176 20.9353 23.7598 21.6214 23.7598C22.3075 23.7598 22.8653 24.3176 22.8653 25.0037C22.8653 25.6898 22.3075 26.2476 21.6214 26.2476Z"></path>
               <path d="M20.3288 7.45682L17.4028 10.3828L16.2607 9.3204C16.1102 9.17875 15.8712 9.1876 15.7296 9.3381C15.6632 9.40893 15.6277 9.50189 15.6277 9.59484C15.6277 9.69665 15.6676 9.79847 15.7473 9.86929L17.1549 11.1796C17.2257 11.246 17.3187 11.2814 17.4117 11.2814C17.5046 11.2814 17.6064 11.246 17.6772 11.1707L20.8599 7.99243C20.9352 7.91718 20.9706 7.82422 20.9706 7.72684C20.9706 7.62945 20.9352 7.53649 20.8599 7.46124C20.7139 7.31517 20.4748 7.31517 20.3288 7.46124V7.45682Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage Marketplace</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage marketplace</p>
       </a></div>
   </div>
 </div>"
 `;
 
 exports[`EsErrorPage EsErrorPage 403 error message text 1`] = `
-"<div class="my-450 container" required="required">
+"<div class="py-450 py-lg-800 bg-gray-50 container" required="required">
   <div class="row">
     <div class="my-450 mx-auto text-center col-md-7">
-      <h1 class="font-weight-boldest display-3">
-        403
+      <h1 class="post1 text-gray-600">
+        Access denied
       </h1>
-      <h2 id="msgError">
+      <p id="msgError" class="font-size-lg text-gray-600">
         Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.
-      </h2>
+      </p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-6"><a href="mailto:hello@energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M29.5901 7.05046C29.5004 7.00561 29.3995 6.99439 29.3042 7.01121C29.2874 7.01121 29.265 7 29.2481 7H2.61673C2.61673 7 2.57748 7.00561 2.55505 7.01121C2.45974 7 2.36443 7.00561 2.26912 7.05046C2.10092 7.12895 2 7.29715 2 7.48217V24.1562C2 24.4197 2.21305 24.6328 2.47656 24.6328H29.3883C29.5173 24.6328 29.635 24.5879 29.7247 24.4926C29.8144 24.4029 29.8649 24.2796 29.8649 24.1562V7.48217C29.8649 7.29715 29.7583 7.12895 29.5901 7.05046V7.05046ZM27.9138 7.95873L15.9324 17.7535L3.9511 7.95873H27.9138V7.95873ZM28.9117 23.6797H2.95312V8.48575L15.6297 18.8187C15.8035 18.9589 16.0558 18.9589 16.2296 18.8187L28.9117 8.48575V23.6797Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Contact Us</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">Contact us</p>
       </a></div>
     <div class="col-md-3 col-6"><a href="https://www.energysage.com/solar/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M31.99 6.07a.96.96 0 0 0-.154-.68.936.936 0 0 0-.788-.39H7.871c-.532 0-1.077.37-1.305.881L4.56 10.45 2.24 15.73.107 20.595c-.155.35-.142.713.04.99a.922.922 0 0 0 .787.403h5.228v4.265a.571.571 0 1 0 1.144 0v-4.265h13.018v4.265a.571.571 0 1 0 1.144 0v-4.265h3.673c.62 0 1.252-.471 1.48-1.09l1.723-4.736 1.917-5.282.592-1.621v16.994a.571.571 0 1 0 1.144 0V6.117s-.007-.034-.007-.047Zm-7.67 1.056-1.143 2.987h-4.925l1.594-3.97h4.851l-.377.983Zm-5.247 13.725h-5.127l1.73-4.313h5.045l-.787 2.06-.861 2.253ZM17.02 10.12h-4.912l1.669-3.97h4.837l-1.594 3.97Zm-5.396 1.144h4.938L14.901 15.4H9.89l1.736-4.137Zm9.533 4.137h-5.025l1.661-4.137h4.945l-.881 2.314-.7 1.823ZM7.615 6.346c.047-.108.202-.202.256-.202h4.662l-1.668 3.97H5.96l1.655-3.768Zm-2.16 4.91h4.932l-1.736 4.139H3.64l1.816-4.138Zm-2.32 5.282H8.16l-1.783 4.246-.027.06H1.244l1.89-4.312v.006Zm6.243.06.027-.06h5.039l-1.73 4.313h-5.12l1.784-4.245v-.007Zm16.174 3.91c-.068.195-.296.336-.404.336h-4.85l.786-2.059.861-2.253h5.053l-1.446 3.97v.006Zm1.863-5.113h-5.032l.881-2.315.7-1.823h4.952l-1.507 4.138h.006Zm1.918-5.282H24.4l.377-.982 1.144-2.987h4.857l-1.446 3.97Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Learn About Solar</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">Learn about solar</p>
       </a></div>
-    <div class="col-md-3 col-6"><a href="https://news.energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
+    <div class="col-md-3 col-6"><a href="https://www.energysage.com/blog/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M26.4643 5H5.54015C5.24351 5 5 5.24923 5 5.55283V24.0046C5 24.3082 5.24351 24.5575 5.54015 24.5575H19.3051L19.7213 26.4697C19.7523 26.6193 19.8718 26.7325 20.0179 26.7643C20.164 26.7914 20.3146 26.7325 20.3987 26.6057L21.2399 25.3505L22.5504 26.8775C22.6257 26.9636 22.7275 27.009 22.8338 27.009C22.9179 27.009 22.9976 26.9818 23.0684 26.9274L24.3701 25.8716C24.4498 25.8081 24.4985 25.713 24.5118 25.6088C24.5251 25.5045 24.4896 25.4003 24.4277 25.3233L23.8034 24.562H26.4599C26.7565 24.562 27 24.3128 27 24.0092V5.55283C27 5.24923 26.7565 5 26.4599 5H26.4643ZM26.2518 5.77034V8.27619H5.75267V5.77034H26.2518ZM18.7649 19.0564C18.6365 18.9703 18.4727 18.9748 18.3443 19.0609C18.2159 19.1515 18.1584 19.3101 18.1894 19.4597L18.4639 20.7103H8.31616V18.3449H23.2987V20.7103H21.231L18.7649 19.0564V19.0564ZM22.8869 26.0891L21.4923 24.4668C21.4214 24.3853 21.3152 24.3354 21.2089 24.3354C21.2 24.3354 21.1956 24.3354 21.1868 24.3354C21.0716 24.3445 20.9654 24.4034 20.899 24.5031L20.2703 25.4366L19.128 20.2209L23.4315 23.112L22.5238 23.3204C22.3955 23.3476 22.2936 23.4473 22.2493 23.5742C22.2051 23.701 22.2316 23.8415 22.3158 23.9457L23.5997 25.5091L22.8825 26.0936L22.8869 26.0891ZM23.9451 23.7826L24.4675 23.6648C24.6136 23.6331 24.7287 23.5107 24.7553 23.3567C24.7818 23.2026 24.7199 23.0485 24.5915 22.967L22.3777 21.4807H23.675C23.8831 21.4807 24.0513 21.3085 24.0513 21.0955V17.9598C24.0513 17.7468 23.8831 17.5746 23.675 17.5746H7.93983C7.73174 17.5746 7.56349 17.7468 7.56349 17.9598V21.0955C7.56349 21.3085 7.73174 21.4807 7.93983 21.4807H18.6321L19.1368 23.7871H5.75267V9.04653H26.2518V23.7871H23.9406L23.9451 23.7826Z"></path>
               <path d="M9.75506 7.39704C9.96758 7.39704 10.1402 7.22032 10.1402 7.00281C10.1402 6.78531 9.96758 6.60858 9.75506 6.60858C9.54254 6.60858 9.36987 6.78531 9.36987 7.00281C9.36987 7.22032 9.54254 7.39704 9.75506 7.39704Z"></path>
               <path d="M8.29403 7.39704C8.50655 7.39704 8.67922 7.22032 8.67922 7.00281C8.67922 6.78531 8.50655 6.60858 8.29403 6.60858C8.08151 6.60858 7.90884 6.78531 7.90884 7.00281C7.90884 7.22032 8.08151 7.39704 8.29403 7.39704Z"></path>
@@ -154,55 +154,55 @@ exports[`EsErrorPage EsErrorPage 403 error message text 1`] = `
               <path d="M23.4757 14.5023H8.03722C7.82913 14.5023 7.66089 14.6745 7.66089 14.8875C7.66089 15.1005 7.82913 15.2727 8.03722 15.2727H23.4757C23.6838 15.2727 23.8521 15.1005 23.8521 14.8875C23.8521 14.6745 23.6838 14.5023 23.4757 14.5023Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Informative Blog Post</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage blog</p>
       </a></div>
-    <div class="col-md-3 col-6"><a href="https://www.energysage.com/market-intro/" class="align-items-center d-flex flex-column justify-content-center text-center">
+    <div class="col-md-3 col-6"><a href="https://www.energysage.com/shop/home-solar/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M26.6676 12.2197C26.5968 12.1356 26.4905 12.0825 26.3799 12.0825H22.3251C22.7191 11.3787 22.9272 10.5907 22.9272 9.7674C22.9272 7.13803 20.7891 5 18.1598 5C15.5304 5 13.3924 7.13803 13.3924 9.7674C13.3924 10.5907 13.6004 11.3787 13.9944 12.0825H10.2097L9.76257 10.4004C9.53682 9.53722 8.75775 8.93964 7.86358 8.93964H6.37626C6.16821 8.93964 6 9.10785 6 9.3159C6 9.52394 6.16821 9.69215 6.37626 9.69215H7.86358C8.41247 9.69215 8.89497 10.064 9.03219 10.5952L11.874 21.3384C12.0998 22.2016 12.8833 22.7992 13.773 22.7992H24.3525C24.5606 22.7992 24.7288 22.631 24.7288 22.4229C24.7288 22.2149 24.5606 22.0467 24.3525 22.0467H13.7775C13.2463 22.0467 12.7859 21.7014 12.6266 21.1968H16.1988H20.134H24.8394C25.0209 21.1968 25.1759 21.0684 25.2113 20.8869L26.7384 12.5252C26.7606 12.4145 26.7296 12.3038 26.6587 12.2153L26.6676 12.2197ZM25.561 14.8491H21.8781L22.334 12.835H25.9328L25.5654 14.8491H25.561ZM25.0475 17.66H21.2406L21.7054 15.6016H25.4237L25.0475 17.66V17.66ZM16.5042 20.4443L16.0483 18.4125H20.3022L19.8463 20.4443H16.5042ZM11.1392 15.6016H14.6406L15.1054 17.66H11.6837L11.1392 15.6016V15.6016ZM11.8829 18.4125H15.2736L15.7296 20.4443H12.4185L11.8829 18.4125V18.4125ZM15.8757 17.66L15.4109 15.6016H20.9352L20.4704 17.66H15.8757V17.66ZM14.7867 12.835H21.5549L21.099 14.8491H15.2382L14.7823 12.835H14.7867ZM14.1404 9.7674C14.1404 7.55412 15.9421 5.74809 18.1598 5.74809C20.3775 5.74809 22.1791 7.5497 22.1791 9.7674C22.1791 10.6085 21.9223 11.4052 21.4354 12.0825H14.8841C14.4016 11.4008 14.1449 10.6085 14.1449 9.7674H14.1404ZM14.0165 12.835L14.4724 14.8491H10.94L10.4089 12.835H14.0209H14.0165ZM24.5384 20.4443H20.6165L21.0724 18.4125H24.9103L24.5384 20.4443Z"></path>
               <path d="M15.2604 23.0073C14.1581 23.0073 13.264 23.9015 13.264 25.0037C13.264 26.1059 14.1581 27.0001 15.2604 27.0001C16.3626 27.0001 17.2567 26.1059 17.2567 25.0037C17.2567 23.9015 16.3626 23.0073 15.2604 23.0073ZM15.2604 26.2476C14.5742 26.2476 14.0165 25.6898 14.0165 25.0037C14.0165 24.3176 14.5742 23.7598 15.2604 23.7598C15.9465 23.7598 16.5042 24.3176 16.5042 25.0037C16.5042 25.6898 15.9465 26.2476 15.2604 26.2476Z"></path>
               <path d="M21.6214 23.0073C20.5192 23.0073 19.625 23.9015 19.625 25.0037C19.625 26.1059 20.5192 27.0001 21.6214 27.0001C22.7236 27.0001 23.6178 26.1059 23.6178 25.0037C23.6178 23.9015 22.7236 23.0073 21.6214 23.0073ZM21.6214 26.2476C20.9353 26.2476 20.3775 25.6898 20.3775 25.0037C20.3775 24.3176 20.9353 23.7598 21.6214 23.7598C22.3075 23.7598 22.8653 24.3176 22.8653 25.0037C22.8653 25.6898 22.3075 26.2476 21.6214 26.2476Z"></path>
               <path d="M20.3288 7.45682L17.4028 10.3828L16.2607 9.3204C16.1102 9.17875 15.8712 9.1876 15.7296 9.3381C15.6632 9.40893 15.6277 9.50189 15.6277 9.59484C15.6277 9.69665 15.6676 9.79847 15.7473 9.86929L17.1549 11.1796C17.2257 11.246 17.3187 11.2814 17.4117 11.2814C17.5046 11.2814 17.6064 11.246 17.6772 11.1707L20.8599 7.99243C20.9352 7.91718 20.9706 7.82422 20.9706 7.72684C20.9706 7.62945 20.9352 7.53649 20.8599 7.46124C20.7139 7.31517 20.4748 7.31517 20.3288 7.46124V7.45682Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage Marketplace</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage marketplace</p>
       </a></div>
   </div>
 </div>"
 `;
 
 exports[`EsErrorPage EsErrorPage Generic error message text 1`] = `
-"<div class="my-450 container" required="required">
+"<div class="py-450 py-lg-800 bg-gray-50 container" required="required">
   <div class="row">
     <div class="my-450 mx-auto text-center col-md-7">
-      <h1 class="font-weight-boldest display-3">
+      <h1 class="post1 text-gray-600">
         301
       </h1>
-      <h2 id="msgGeneric">
+      <p id="msgError" class="font-size-lg text-gray-600">
         Oops! Something went wrong!
-      </h2>
+      </p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-3 col-6"><a href="mailto:hello@energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M29.5901 7.05046C29.5004 7.00561 29.3995 6.99439 29.3042 7.01121C29.2874 7.01121 29.265 7 29.2481 7H2.61673C2.61673 7 2.57748 7.00561 2.55505 7.01121C2.45974 7 2.36443 7.00561 2.26912 7.05046C2.10092 7.12895 2 7.29715 2 7.48217V24.1562C2 24.4197 2.21305 24.6328 2.47656 24.6328H29.3883C29.5173 24.6328 29.635 24.5879 29.7247 24.4926C29.8144 24.4029 29.8649 24.2796 29.8649 24.1562V7.48217C29.8649 7.29715 29.7583 7.12895 29.5901 7.05046V7.05046ZM27.9138 7.95873L15.9324 17.7535L3.9511 7.95873H27.9138V7.95873ZM28.9117 23.6797H2.95312V8.48575L15.6297 18.8187C15.8035 18.9589 16.0558 18.9589 16.2296 18.8187L28.9117 8.48575V23.6797Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Contact Us</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">Contact us</p>
       </a></div>
     <div class="col-md-3 col-6"><a href="https://www.energysage.com/solar/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M31.99 6.07a.96.96 0 0 0-.154-.68.936.936 0 0 0-.788-.39H7.871c-.532 0-1.077.37-1.305.881L4.56 10.45 2.24 15.73.107 20.595c-.155.35-.142.713.04.99a.922.922 0 0 0 .787.403h5.228v4.265a.571.571 0 1 0 1.144 0v-4.265h13.018v4.265a.571.571 0 1 0 1.144 0v-4.265h3.673c.62 0 1.252-.471 1.48-1.09l1.723-4.736 1.917-5.282.592-1.621v16.994a.571.571 0 1 0 1.144 0V6.117s-.007-.034-.007-.047Zm-7.67 1.056-1.143 2.987h-4.925l1.594-3.97h4.851l-.377.983Zm-5.247 13.725h-5.127l1.73-4.313h5.045l-.787 2.06-.861 2.253ZM17.02 10.12h-4.912l1.669-3.97h4.837l-1.594 3.97Zm-5.396 1.144h4.938L14.901 15.4H9.89l1.736-4.137Zm9.533 4.137h-5.025l1.661-4.137h4.945l-.881 2.314-.7 1.823ZM7.615 6.346c.047-.108.202-.202.256-.202h4.662l-1.668 3.97H5.96l1.655-3.768Zm-2.16 4.91h4.932l-1.736 4.139H3.64l1.816-4.138Zm-2.32 5.282H8.16l-1.783 4.246-.027.06H1.244l1.89-4.312v.006Zm6.243.06.027-.06h5.039l-1.73 4.313h-5.12l1.784-4.245v-.007Zm16.174 3.91c-.068.195-.296.336-.404.336h-4.85l.786-2.059.861-2.253h5.053l-1.446 3.97v.006Zm1.863-5.113h-5.032l.881-2.315.7-1.823h4.952l-1.507 4.138h.006Zm1.918-5.282H24.4l.377-.982 1.144-2.987h4.857l-1.446 3.97Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Learn About Solar</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">Learn about solar</p>
       </a></div>
-    <div class="col-md-3 col-6"><a href="https://news.energysage.com" class="align-items-center d-flex flex-column justify-content-center text-center">
+    <div class="col-md-3 col-6"><a href="https://www.energysage.com/blog/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M26.4643 5H5.54015C5.24351 5 5 5.24923 5 5.55283V24.0046C5 24.3082 5.24351 24.5575 5.54015 24.5575H19.3051L19.7213 26.4697C19.7523 26.6193 19.8718 26.7325 20.0179 26.7643C20.164 26.7914 20.3146 26.7325 20.3987 26.6057L21.2399 25.3505L22.5504 26.8775C22.6257 26.9636 22.7275 27.009 22.8338 27.009C22.9179 27.009 22.9976 26.9818 23.0684 26.9274L24.3701 25.8716C24.4498 25.8081 24.4985 25.713 24.5118 25.6088C24.5251 25.5045 24.4896 25.4003 24.4277 25.3233L23.8034 24.562H26.4599C26.7565 24.562 27 24.3128 27 24.0092V5.55283C27 5.24923 26.7565 5 26.4599 5H26.4643ZM26.2518 5.77034V8.27619H5.75267V5.77034H26.2518ZM18.7649 19.0564C18.6365 18.9703 18.4727 18.9748 18.3443 19.0609C18.2159 19.1515 18.1584 19.3101 18.1894 19.4597L18.4639 20.7103H8.31616V18.3449H23.2987V20.7103H21.231L18.7649 19.0564V19.0564ZM22.8869 26.0891L21.4923 24.4668C21.4214 24.3853 21.3152 24.3354 21.2089 24.3354C21.2 24.3354 21.1956 24.3354 21.1868 24.3354C21.0716 24.3445 20.9654 24.4034 20.899 24.5031L20.2703 25.4366L19.128 20.2209L23.4315 23.112L22.5238 23.3204C22.3955 23.3476 22.2936 23.4473 22.2493 23.5742C22.2051 23.701 22.2316 23.8415 22.3158 23.9457L23.5997 25.5091L22.8825 26.0936L22.8869 26.0891ZM23.9451 23.7826L24.4675 23.6648C24.6136 23.6331 24.7287 23.5107 24.7553 23.3567C24.7818 23.2026 24.7199 23.0485 24.5915 22.967L22.3777 21.4807H23.675C23.8831 21.4807 24.0513 21.3085 24.0513 21.0955V17.9598C24.0513 17.7468 23.8831 17.5746 23.675 17.5746H7.93983C7.73174 17.5746 7.56349 17.7468 7.56349 17.9598V21.0955C7.56349 21.3085 7.73174 21.4807 7.93983 21.4807H18.6321L19.1368 23.7871H5.75267V9.04653H26.2518V23.7871H23.9406L23.9451 23.7826Z"></path>
               <path d="M9.75506 7.39704C9.96758 7.39704 10.1402 7.22032 10.1402 7.00281C10.1402 6.78531 9.96758 6.60858 9.75506 6.60858C9.54254 6.60858 9.36987 6.78531 9.36987 7.00281C9.36987 7.22032 9.54254 7.39704 9.75506 7.39704Z"></path>
               <path d="M8.29403 7.39704C8.50655 7.39704 8.67922 7.22032 8.67922 7.00281C8.67922 6.78531 8.50655 6.60858 8.29403 6.60858C8.08151 6.60858 7.90884 6.78531 7.90884 7.00281C7.90884 7.22032 8.08151 7.39704 8.29403 7.39704Z"></path>
@@ -211,18 +211,18 @@ exports[`EsErrorPage EsErrorPage Generic error message text 1`] = `
               <path d="M23.4757 14.5023H8.03722C7.82913 14.5023 7.66089 14.6745 7.66089 14.8875C7.66089 15.1005 7.82913 15.2727 8.03722 15.2727H23.4757C23.6838 15.2727 23.8521 15.1005 23.8521 14.8875C23.8521 14.6745 23.6838 14.5023 23.4757 14.5023Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">Informative Blog Post</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage blog</p>
       </a></div>
-    <div class="col-md-3 col-6"><a href="https://www.energysage.com/market-intro/" class="align-items-center d-flex flex-column justify-content-center text-center">
+    <div class="col-md-3 col-6"><a href="https://www.energysage.com/shop/home-solar/" class="align-items-center d-flex flex-column justify-content-center text-center">
         <div align-v="center" class="bg-white d-flex justify-content-center mb-50 rounded-circle">
-          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 46px; width: 46px;">
+          <div class="m-100 text-orange"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="height: 53px; width: 53px;">
               <path d="M26.6676 12.2197C26.5968 12.1356 26.4905 12.0825 26.3799 12.0825H22.3251C22.7191 11.3787 22.9272 10.5907 22.9272 9.7674C22.9272 7.13803 20.7891 5 18.1598 5C15.5304 5 13.3924 7.13803 13.3924 9.7674C13.3924 10.5907 13.6004 11.3787 13.9944 12.0825H10.2097L9.76257 10.4004C9.53682 9.53722 8.75775 8.93964 7.86358 8.93964H6.37626C6.16821 8.93964 6 9.10785 6 9.3159C6 9.52394 6.16821 9.69215 6.37626 9.69215H7.86358C8.41247 9.69215 8.89497 10.064 9.03219 10.5952L11.874 21.3384C12.0998 22.2016 12.8833 22.7992 13.773 22.7992H24.3525C24.5606 22.7992 24.7288 22.631 24.7288 22.4229C24.7288 22.2149 24.5606 22.0467 24.3525 22.0467H13.7775C13.2463 22.0467 12.7859 21.7014 12.6266 21.1968H16.1988H20.134H24.8394C25.0209 21.1968 25.1759 21.0684 25.2113 20.8869L26.7384 12.5252C26.7606 12.4145 26.7296 12.3038 26.6587 12.2153L26.6676 12.2197ZM25.561 14.8491H21.8781L22.334 12.835H25.9328L25.5654 14.8491H25.561ZM25.0475 17.66H21.2406L21.7054 15.6016H25.4237L25.0475 17.66V17.66ZM16.5042 20.4443L16.0483 18.4125H20.3022L19.8463 20.4443H16.5042ZM11.1392 15.6016H14.6406L15.1054 17.66H11.6837L11.1392 15.6016V15.6016ZM11.8829 18.4125H15.2736L15.7296 20.4443H12.4185L11.8829 18.4125V18.4125ZM15.8757 17.66L15.4109 15.6016H20.9352L20.4704 17.66H15.8757V17.66ZM14.7867 12.835H21.5549L21.099 14.8491H15.2382L14.7823 12.835H14.7867ZM14.1404 9.7674C14.1404 7.55412 15.9421 5.74809 18.1598 5.74809C20.3775 5.74809 22.1791 7.5497 22.1791 9.7674C22.1791 10.6085 21.9223 11.4052 21.4354 12.0825H14.8841C14.4016 11.4008 14.1449 10.6085 14.1449 9.7674H14.1404ZM14.0165 12.835L14.4724 14.8491H10.94L10.4089 12.835H14.0209H14.0165ZM24.5384 20.4443H20.6165L21.0724 18.4125H24.9103L24.5384 20.4443Z"></path>
               <path d="M15.2604 23.0073C14.1581 23.0073 13.264 23.9015 13.264 25.0037C13.264 26.1059 14.1581 27.0001 15.2604 27.0001C16.3626 27.0001 17.2567 26.1059 17.2567 25.0037C17.2567 23.9015 16.3626 23.0073 15.2604 23.0073ZM15.2604 26.2476C14.5742 26.2476 14.0165 25.6898 14.0165 25.0037C14.0165 24.3176 14.5742 23.7598 15.2604 23.7598C15.9465 23.7598 16.5042 24.3176 16.5042 25.0037C16.5042 25.6898 15.9465 26.2476 15.2604 26.2476Z"></path>
               <path d="M21.6214 23.0073C20.5192 23.0073 19.625 23.9015 19.625 25.0037C19.625 26.1059 20.5192 27.0001 21.6214 27.0001C22.7236 27.0001 23.6178 26.1059 23.6178 25.0037C23.6178 23.9015 22.7236 23.0073 21.6214 23.0073ZM21.6214 26.2476C20.9353 26.2476 20.3775 25.6898 20.3775 25.0037C20.3775 24.3176 20.9353 23.7598 21.6214 23.7598C22.3075 23.7598 22.8653 24.3176 22.8653 25.0037C22.8653 25.6898 22.3075 26.2476 21.6214 26.2476Z"></path>
               <path d="M20.3288 7.45682L17.4028 10.3828L16.2607 9.3204C16.1102 9.17875 15.8712 9.1876 15.7296 9.3381C15.6632 9.40893 15.6277 9.50189 15.6277 9.59484C15.6277 9.69665 15.6676 9.79847 15.7473 9.86929L17.1549 11.1796C17.2257 11.246 17.3187 11.2814 17.4117 11.2814C17.5046 11.2814 17.6064 11.246 17.6772 11.1707L20.8599 7.99243C20.9352 7.91718 20.9706 7.82422 20.9706 7.72684C20.9706 7.62945 20.9352 7.53649 20.8599 7.46124C20.7139 7.31517 20.4748 7.31517 20.3288 7.46124V7.45682Z"></path>
             </svg></div>
         </div>
-        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage Marketplace</p>
+        <p class="'font-weight-bolder mb-200 mb-md-0'">EnergySage marketplace</p>
       </a></div>
   </div>
 </div>"

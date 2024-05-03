@@ -1,27 +1,26 @@
 export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
-    NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://news.energysage.com',
 ) => ({
     errorLinks: [
         {
             icon: 'IconContactUs',
             link: 'mailto:hello@energysage.com',
-            label: 'Contact Us',
+            label: 'Contact us',
         },
         {
             icon: 'IconCommunitySolar',
             link: `${ES_DOMAIN}/solar/`,
-            label: 'Learn About Solar',
+            label: 'Learn about solar',
         },
         {
             icon: 'IconInfoBlogPost',
-            link: NEWS_DOMAIN,
-            label: 'Informative Blog Post',
+            link: `${ES_DOMAIN}/blog/`,
+            label: 'EnergySage blog',
         },
         {
             icon: 'IconMarketplace',
-            link: `${ES_DOMAIN}/market-intro/`,
-            label: 'EnergySage Marketplace',
+            link: `${ES_DOMAIN}/shop/home-solar/`,
+            label: 'EnergySage marketplace',
         },
     ],
 });
