@@ -15,6 +15,7 @@
             -->
             <slot name="title" />
             <EsButton
+                inline="true"
                 variant="link"
                 class="p-0 float-right"
                 @click="onClose">
@@ -32,8 +33,9 @@
                 <slot />
                 <div v-if="!hasTitle">
                     <EsButton
+                        inline="true"
                         variant="link"
-                        class="p-0"
+                        class="p-0 pl-2"
                         @click="onClose">
                         <XIcon
                             height="20px"
@@ -125,13 +127,13 @@ export default {
 .es-popover-light {
     &.popover {
         background-color: variables.$white;
-        border: 1px solid variables.$primary;
+        border: 1px solid variables.$white;
     }
     // styling for all arrow backgrounds
     &.bs-popover-bottom, &.bs-popover-auto[x-placement^=bottom] {
         > .arrow {
             &::before {
-                border-bottom-color: variables.$primary;
+                border-bottom-color: variables.$white;
             }
 
             &::after {
@@ -144,7 +146,7 @@ export default {
     &.bs-popover-top, &.bs-popover-auto[x-placement^=top] {
         > .arrow {
             &::before {
-                border-top-color: variables.$primary;
+                border-top-color: variables.$white;
             }
 
             &::after {
@@ -157,7 +159,7 @@ export default {
     &.bs-popover-right, &.bs-popover-auto[x-placement^=right] {
         > .arrow {
             &::before {
-                border-right-color: variables.$primary;
+                border-right-color: variables.$white;
             }
 
             &::after {
@@ -170,7 +172,7 @@ export default {
     &.bs-popover-left, &.bs-popover-auto[x-placement^=left] {
         > .arrow {
             &::before {
-                border-left-color: variables.$primary;
+                border-left-color: variables.$white;
             }
 
             &::after {
@@ -183,22 +185,22 @@ export default {
     .popover-header {
         background-color: variables.$white;
         border-bottom-color: variables.$white;
-        color: variables.$black;
+        color: variables.$gray-900;
 
         &::before {
             border-bottom-color: variables.$white;
         }
 
         .btn, .btn:hover, .btn:active {
-            color: variables.$black;
+            color: variables.$gray-900;
         }
     }
 
     .popover-body {
-        color: variables.$black;
+        color: variables.$gray-900;
 
         .btn, .btn:hover, .btn:active {
-            color: variables.$black;
+            color: variables.$gray-900;
         }
     }
 }

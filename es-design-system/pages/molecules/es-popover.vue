@@ -77,14 +77,34 @@
                         </p>
                     </EsPopover>
                 </div>
+                <div>
+                    <label>
+                        No Title or Link
+                        <b-link
+                            id="darkNoTitleOrLinkTarget"
+                            class="p-0 text-gray-700"
+                            tabindex="0">
+                            <IconInfo
+                                width="16px"
+                                height="16px" />
+                        </b-link>
+                    </label>
+                    <EsPopover
+                        target="darkNoTitleOrLinkTarget"
+                        variant="dark">
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
+                        </p>
+                    </EsPopover>
+                </div>
             </div>
-            <div>
-                <h2>
+            <div class="bg-dark-blue my-450 p-100 rounded-lg text-white">
+                <h2 class="text-white">
                     Light Variant
                 </h2>
                 <p>
-                    This popover is only to be used in a wizard like userflow. If you have long content on a page;
-                    outside of a wizard, we recommend that you utilize a drawer instead.
+                    This popover is only to be used in a wizard like userflow with a dark background. If you have long
+                    content on a page; outside of a wizard, we recommend that you utilize a drawer instead.
                 </p>
                 <div>
                     <!-- eslint-disable vuejs-accessibility/label-has-for -->
@@ -95,6 +115,7 @@
                             class="p-0 text-gray-700"
                             tabindex="0">
                             <IconInfo
+                                class="text-white"
                                 width="16px"
                                 height="16px" />
                         </b-link>
@@ -122,6 +143,7 @@
                             class="p-0 text-gray-700"
                             tabindex="0">
                             <IconInfo
+                                class="text-white"
                                 width="16px"
                                 height="16px" />
                         </b-link>
@@ -135,6 +157,27 @@
                                 class="mt-50 d-block"
                                 href="https://communitysolar.energysage.com/"
                                 target="_blank">Learn More</a>
+                        </p>
+                    </EsPopover>
+                </div>
+                <div>
+                    <label>
+                        No Title or Link
+                        <b-link
+                            id="lightNoTitleOrLinkTarget"
+                            class="p-0 text-gray-700"
+                            tabindex="0">
+                            <IconInfo
+                                class="text-white"
+                                width="16px"
+                                height="16px" />
+                        </b-link>
+                    </label>
+                    <EsPopover
+                        target="lightNoTitleOrLinkTarget"
+                        variant="light">
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
                         </p>
                     </EsPopover>
                 </div>

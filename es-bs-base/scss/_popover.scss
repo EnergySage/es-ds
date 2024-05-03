@@ -24,6 +24,7 @@
   border: variables.$popover-border-width solid variables.$popover-border-color;
   @include border-radius.border-radius(variables.$popover-border-radius);
   @include box-shadow.box-shadow(variables.$popover-box-shadow);
+  padding: variables.$popover-header-padding-y variables.$popover-header-padding-x;
 
   .arrow {
     position: absolute;
@@ -41,6 +42,11 @@
       border-style: solid;
     }
   }
+
+  :nth-child(3) { // style specific to if there is a title
+    padding-top: 4px;
+    padding-right: 28px; // 8px + 20px (X icon size)
+  }
 }
 
 .bs-popover-top {
@@ -48,6 +54,7 @@
 
   > .arrow {
     bottom: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 0% 95%);
 
     &::before {
       bottom: 0;
@@ -71,6 +78,7 @@
     width: variables.$popover-arrow-height;
     height: variables.$popover-arrow-width;
     margin: variables.$popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
+    clip-path: polygon(5% 20%, 100% 0%, 100% 100%, 5% 100%);
 
     &::before {
       left: 0;
@@ -91,6 +99,7 @@
 
   > .arrow {
     top: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
+    clip-path: polygon(0% 100%, 0% 5%, 100% 0%, 100% 100%);
 
     &::before {
       top: 0;
@@ -126,6 +135,7 @@
     width: variables.$popover-arrow-height;
     height: variables.$popover-arrow-width;
     margin: variables.$popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
+    clip-path: polygon(0% 0%, 95% 0%, 95% 100%, 0% 100%);
 
     &::before {
       right: 0;
@@ -159,7 +169,6 @@
 
 // Offset the popover to account for the popover arrow
 .popover-header {
-  padding: variables.$popover-header-padding-y variables.$popover-header-padding-x;
   margin-bottom: 0; // Reset the default from Reboot
   @include rfs.font-size(variables.$font-size-base);
   color: variables.$popover-header-color;
@@ -173,6 +182,5 @@
 }
 
 .popover-body {
-  padding: variables.$popover-body-padding-y variables.$popover-body-padding-x;
   color: variables.$popover-body-color;
 }
