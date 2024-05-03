@@ -4,7 +4,7 @@
         class="nav-es-container">
         <div class="content-overlay" />
         <nav
-            class="nav-es-global navbar navbar-expand navbar-light py-0">
+            class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
             <!-- mobile hamburger menu button -->
             <div class="d-flex d-lg-none col-2 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -160,7 +160,7 @@
                         v-for="item in accountContent.loggedIn.items"
                         :key="item.name">
                         <es-nav-bar-link
-                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50 font-size-base"
+                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
                             :href="item.link">
                             {{ item.name }}
                         </es-nav-bar-link>

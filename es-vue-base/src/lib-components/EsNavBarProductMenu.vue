@@ -15,7 +15,8 @@
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="checkboxId"
-            class="dropdown-label nav-link d-flex d-lg-none align-items-center justify-content-between w-100 h-100 px-100 font-weight-bold">
+            class="dropdown-label nav-link d-flex d-lg-none align-items-center
+                justify-content-between w-100 h-100 px-100 font-weight-bold">
             {{ name }}
             <icon-chevron-right
                 class="expand-icon"

@@ -31,9 +31,6 @@
                     class="d-lg-flex align-items-center">
                     {{ name }}
                 </div>
-                <div class="font-weight-light font-size-xs d-none d-lg-block">
-                    {{ subHeading }}
-                </div>
             </div>
         </es-nav-bar-link>
         <!-- mobile fly-out menu trigger -->
@@ -41,7 +38,8 @@
         <label
             v-if="!link"
             :for="checkboxId"
-            class="dropdown-label nav-link d-flex d-lg-none px-100 w-100 h-100 align-items-center justify-content-between font-weight-bold">
+            class="dropdown-label nav-link d-flex d-lg-none px-100 w-100 h-100 align-items-center
+                justify-content-between font-weight-bold">
             <div class="align-items-center d-flex">
                 {{ name }}
             </div>
