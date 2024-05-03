@@ -25,10 +25,6 @@
             :per-page="perPage"
             align="center"
             list-id="paginated-list" />
-        <b-pagination
-            v-model="currentPage"
-            :total-rows="rows"
-            :per-page="perPage" />
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsPagination.vue"
