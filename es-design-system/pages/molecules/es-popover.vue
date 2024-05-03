@@ -177,11 +177,6 @@ export default {
             docCode: '',
         };
     },
-    computed: {
-        directives() {
-            return ['topright', 'bottomright', 'leftbottom', 'rightbottom'];
-        },
-    },
     async created() {
         if (this.$prism) {
         /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
