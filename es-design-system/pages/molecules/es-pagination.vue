@@ -34,13 +34,8 @@
 </template>
 
 <script>
-import { BPagination } from 'bootstrap-vue';
-
 export default {
     name: 'EsPaginationDocs',
-    components: {
-        BPagination,
-    },
     data() {
         return {
             perPage: 3,
