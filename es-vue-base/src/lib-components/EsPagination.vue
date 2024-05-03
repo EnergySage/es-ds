@@ -17,6 +17,9 @@
         <template #next-text>
             <IconChevronRight />
         </template>
+        <template #ellipsis-text>
+            ...
+        </template>
     </b-pagination>
 </template>
 
