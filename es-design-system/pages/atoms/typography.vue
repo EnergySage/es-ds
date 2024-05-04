@@ -148,29 +148,82 @@
         </div>
 
         <div class="my-450">
-            <ul class="list-unstyled">
-                <li>
-                    <p>
-                        Paragraph: Mint lime taco salsa lemon lime minty tabasco
-                        pepper apple vinaigrette chai tea portobello mushrooms
-                        couscous eating together green bowl tahini drizzle mint
-                        crispy iceberg lettuce orange dill lentils lime.
-                        <b>
-                            Southern Italian mediterranean vegetables pasta lemon.
-                        </b>
-                        Hummus falafel bowl red grapes plums peppermint artichoke hearts.
-                        Ultimate crunchy seaweed lemonade zest walnut mushroom tart
-                        macadamia nut cookies apples hearts of palm cherries. Thai
-                        super chili lemon tahini dressing seeds sweet potato dragon
-                        fruit smoked tofu.
-                    </p>
-                </li>
-                <li>
-                    <b-link href="#foo">
-                        Example link
-                    </b-link>
-                </li>
-            </ul>
+            <h2>
+                Body
+            </h2>
+            <ds-responsive-table class="responsive-table-typography">
+                <ds-responsive-table-row
+                    v-for="example in bodyExamples"
+                    :key="example.name"
+                    :zebra-stripes="false">
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3">
+                        <template #name>
+                            Example
+                        </template>
+                        <template #value>
+                            <component
+                                :is="example.tag"
+                                :class="example.class"
+                                :href="example.tag === 'a' ? 'https://www.energysage.com/' : null"
+                                :target="example.tag === 'a' ? '_blank' : null">
+                                {{ example.name }}
+                            </component>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3">
+                        <template #name>
+                            Size
+                        </template>
+                        <template #value>
+                            <p class="mb-25">
+                                <span class="font-italic">
+                                    Size:
+                                </span>
+                                {{ `${example.fontSizePx}px` }}
+                                <span class="d-inline-block mx-25">
+                                    /
+                                </span>
+                                {{ `${example.fontSizeRem}` }}
+                            </p>
+                            <p class="font-size-75 mb-0">
+                                <span class="font-italic">
+                                    Line height:
+                                </span>
+                                {{ `${example.lineHeightPx}px` }}
+                                <span class="d-inline-block mx-25">
+                                    /
+                                </span>
+                                {{ `${example.lineHeightRem}` }}
+                            </p>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column
+                        md="4"
+                        lg="3">
+                        <template #name>
+                            Attributes
+                        </template>
+                        <template #value>
+                            <p class="mb-25">
+                                <span class="font-italic">
+                                    Weight:
+                                </span>
+                                {{ example.fontWeight }}
+                            </p>
+                            <p class="font-size-75 mb-0">
+                                <span class="font-italic">
+                                    Color:
+                                </span>
+                                {{ example.color }}
+                            </p>
+                        </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
+            </ds-responsive-table>
         </div>
 
         <div class="my-450">
@@ -324,56 +377,6 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-450">
-            <b-col>
-                <h2>
-                    Font size (deprecated)
-                </h2>
-                <p>
-                    These utility classes are deprecated. Avoid using them and refactor your code to remove instances
-                    of them. They will be removed in a future version of ESDS.
-                </p>
-                <ds-responsive-table class="responsive-table-typography">
-                    <ds-responsive-table-row
-                        v-for="data in deprecatedFontSizeItems"
-                        :key="data.name">
-                        <ds-responsive-table-column
-                            md="4"
-                            lg="3"
-                            xxl="2">
-                            <template #name>
-                                Name
-                            </template>
-                            <template #value>
-                                <code>{{ data.name }}</code>
-                            </template>
-                        </ds-responsive-table-column>
-                        <ds-responsive-table-column
-                            md="2"
-                            lg="1">
-                            <template #name>
-                                Size
-                            </template>
-                            <template #value>
-                                <code>{{ calculateActualFontSize(data.size) }}</code>
-                            </template>
-                        </ds-responsive-table-column>
-                        <ds-responsive-table-column
-                            md="6"
-                            lg="8"
-                            xxl="9">
-                            <template #name>
-                                Example
-                            </template>
-                            <template #value>
-                                <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
-                            </template>
-                        </ds-responsive-table-column>
-                    </ds-responsive-table-row>
-                </ds-responsive-table>
-            </b-col>
-        </b-row>
-
         <es-collapse
             id="legacy-collapse"
             v-model="legacyCollapseVisible"
@@ -484,6 +487,56 @@
                     </ds-responsive-table-row>
                 </ds-responsive-table>
             </div>
+
+            <b-row class="my-450">
+                <b-col>
+                    <h2>
+                        Font size (deprecated)
+                    </h2>
+                    <p>
+                        These utility classes are deprecated. Avoid using them and refactor your code to remove instances
+                        of them. They will be removed in a future version of ESDS.
+                    </p>
+                    <ds-responsive-table class="responsive-table-typography">
+                        <ds-responsive-table-row
+                            v-for="data in deprecatedFontSizeItems"
+                            :key="data.name">
+                            <ds-responsive-table-column
+                                md="4"
+                                lg="3"
+                                xxl="2">
+                                <template #name>
+                                    Name
+                                </template>
+                                <template #value>
+                                    <code>{{ data.name }}</code>
+                                </template>
+                            </ds-responsive-table-column>
+                            <ds-responsive-table-column
+                                md="2"
+                                lg="1">
+                                <template #name>
+                                    Size
+                                </template>
+                                <template #value>
+                                    <code>{{ calculateActualFontSize(data.size) }}</code>
+                                </template>
+                            </ds-responsive-table-column>
+                            <ds-responsive-table-column
+                                md="6"
+                                lg="8"
+                                xxl="9">
+                                <template #name>
+                                    Example
+                                </template>
+                                <template #value>
+                                    <span :class="data.name">The quick brown fox jumps over the lazy dog.</span>
+                                </template>
+                            </ds-responsive-table-column>
+                        </ds-responsive-table-row>
+                    </ds-responsive-table>
+                </b-col>
+            </b-row>
         </es-collapse>
 
         <ds-doc-source
@@ -501,13 +554,15 @@ import sassHeadingLineHeightsMobile from '@energysage/es-bs-base/scss/variables/
 import sassHeadingEyebrow from '@energysage/es-bs-base/scss/variables/_heading-eyebrow.scss';
 import sassFontSizes from '@energysage/es-bs-base/scss/variables/_font-sizes.scss';
 import sassFontWeights from '@energysage/es-bs-base/scss/variables/_font-weights.scss';
+import sassLineHeights from '@energysage/es-bs-base/scss/variables/_line-heights.scss';
 import sassPostFontSizesDesktop from '@energysage/es-bs-base/scss/variables/_post-font-sizes-desktop.scss';
 import sassPostFontSizesMobile from '@energysage/es-bs-base/scss/variables/_post-font-sizes-mobile.scss';
 import sassPostGeneral from '@energysage/es-bs-base/scss/variables/_post-general.scss';
 import sassPostLineHeightsDesktop from '@energysage/es-bs-base/scss/variables/_post-line-heights-desktop.scss';
 import sassPostLineHeightsMobile from '@energysage/es-bs-base/scss/variables/_post-line-heights-mobile.scss';
+import sassType from '@energysage/es-bs-base/scss/variables/_type.scss';
 
-const deprecatedFontSizes = ['xxl', 'xl', 'lg', 'sm', 'xs'];
+const deprecatedFontSizes = ['xxl', 'xl'];
 
 const BASE_FONT_SIZE_PX = 16;
 
@@ -536,6 +591,65 @@ export default {
         };
     },
     computed: {
+        bodyExamples() {
+            const seeds = [
+                {
+                    name: 'Extra small body',
+                    key: 'xs',
+                    tag: 'span',
+                },
+                {
+                    name: 'Small body',
+                    key: 'sm',
+                    tag: 'span',
+                },
+                {
+                    name: 'Regular body',
+                    key: 'base',
+                    tag: 'span',
+                },
+                {
+                    name: 'Large body',
+                    key: 'lg',
+                    tag: 'span',
+                },
+                {
+                    name: 'Link small body',
+                    key: 'sm',
+                    tag: 'a',
+                },
+                {
+                    name: 'Link regular body',
+                    key: 'base',
+                    tag: 'a',
+                },
+                {
+                    name: 'Link large body',
+                    key: 'lg',
+                    tag: 'a',
+                },
+            ];
+
+            return seeds.reduce((result, seed) => {
+                const fontSizeRem = sassFontSizes[`font-size-${seed.key}`];
+                const fontSizePx = parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+                const lineHeightRem = sassLineHeights[`line-height-${seed.key}`];
+                const lineHeightPx = Math.round(
+                    (parseFloat(lineHeightRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+                ) / 10;
+                result.push({
+                    ...seed,
+                    class: seed.key !== 'base' ? `font-size-${seed.key}` : null,
+                    color: seed.tag === 'a' ? sassType['link-color'] : sassType['body-color'],
+                    fontSizePx,
+                    fontSizeRem,
+                    fontWeight: seed.tag === 'a' ? sassType['link-weight'] : sassType['font-weight-base'],
+                    lineHeightPx,
+                    lineHeightRem,
+                });
+                return result;
+            }, []);
+        },
         headingExamples() {
             const result = [];
 
