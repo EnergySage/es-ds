@@ -23,14 +23,15 @@
             <es-form-input
                 :id="inputId"
                 v-model="zipCode"
-                :class="{
-                    [`mb-${stackBreak}0 mr-${stackBreak}25`]: stackUntil,
-                }"
-                :name="fieldName"
                 autocomplete="postal-code"
+                class="mb-100"
+                :class="{
+                    [`mb-${stackBreak}0 mr-${stackBreak}50`]: stackUntil,
+                }"
                 inputmode="numeric"
                 label-sr-only
                 maxlength="5"
+                :name="fieldName"
                 pattern="\d*"
                 :placeholder="placeholder"
                 required
@@ -55,10 +56,11 @@
             <es-button
                 class="text-nowrap w-100"
                 :class="{
-                    [`ml-${stackBreak}25 w-${stackBreak}auto`]: stackUntil,
+                    [`ml-${stackBreak}50 w-${stackBreak}auto`]: stackUntil,
                     'px-100': constrained,
                 }"
-                type="submit">
+                type="submit"
+                :variant="dark ? 'dark-bg' : 'primary'">
                 <slot name="buttonText">
                     Submit
                 </slot>
