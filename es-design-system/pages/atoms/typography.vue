@@ -34,8 +34,7 @@
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
                     v-for="example in headingExamples"
-                    :key="example.name"
-                    :zebra-stripes="false">
+                    :key="example.name">
                     <ds-responsive-table-column md="3">
                         <template #name>
                             Example
@@ -149,13 +148,62 @@
 
         <div class="my-450">
             <h2>
+                Eyebrow with heading
+            </h2>
+            <p>
+                An eyebrow is commonly used just above a heading to indicate a category. Below is an example of how to
+                accomplish this while meeting accessibility guidelines regarding heading order, but still achieving a
+                Heading 1 font size for the question.
+            </p>
+            <div class="border pb-lg-100 px-100 px-lg-200 pt-100 pt-lg-200 rounded">
+                <h3 class="eyebrow mb-25">
+                    Property details
+                </h3>
+                <h4 class="h1">
+                    What is your address?
+                </h4>
+            </div>
+        </div>
+
+        <div class="my-450">
+            <h2>
+                Eyebrow as visual treatment only
+            </h2>
+            <p>
+                Occasionally, an eyebrow will be used in a situation where is not appropriate to use a heading element,
+                like on a customer name below a
+                <b-link
+                    href="https://css-tricks.com/quoting-in-html-quotations-citations-and-blockquotes/#aa-hey-what-about-the-figure-element"
+                    target="_blank">
+                    quote from their review.
+                </b-link>
+                Below is an example of how to accomplish this.
+            </p>
+            <div class="border pb-lg-100 px-100 px-lg-200 pt-100 pt-lg-200 rounded">
+                <figure>
+                    <blockquote class="font-size-300">
+                        “Working with this company was a breeze. They were so friendly and helpful.”
+                    </blockquote>
+                    <figcaption>
+                        <p class="eyebrow mb-0 text-body">
+                            Sofia
+                        </p>
+                        <p>
+                            Homeowner
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="my-450">
+            <h2>
                 Body
             </h2>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
                     v-for="example in bodyExamples"
-                    :key="example.name"
-                    :zebra-stripes="false">
+                    :key="example.name">
                     <ds-responsive-table-column
                         md="4"
                         lg="3">
@@ -226,56 +274,6 @@
             </ds-responsive-table>
         </div>
 
-        <div class="my-450">
-            <h2>
-                Eyebrow with heading
-            </h2>
-            <p>
-                An eyebrow is commonly used just above a heading to indicate a category. Below is an example of how to
-                accomplish this while meeting accessibility guidelines regarding heading order, but still achieving a
-                Heading 1 font size for the question.
-            </p>
-            <div class="border pb-lg-100 px-100 px-lg-200 pt-100 pt-lg-200 rounded">
-                <h3 class="eyebrow mb-25">
-                    Property details
-                </h3>
-                <h4 class="h1">
-                    What is your address?
-                </h4>
-            </div>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                Eyebrow as visual treatment only
-            </h2>
-            <p>
-                Occasionally, an eyebrow will be used in a situation where is not appropriate to use a heading element,
-                like on a customer name below a
-                <b-link
-                    href="https://css-tricks.com/quoting-in-html-quotations-citations-and-blockquotes/#aa-hey-what-about-the-figure-element"
-                    target="_blank">
-                    quote from their review.
-                </b-link>
-                Below is an example of how to accomplish this.
-            </p>
-            <div class="border pb-lg-100 px-100 px-lg-200 pt-100 pt-lg-200 rounded">
-                <figure>
-                    <blockquote class="font-size-300">
-                        “Working with this company was a breeze. They were so friendly and helpful.”
-                    </blockquote>
-                    <figcaption>
-                        <p class="eyebrow mb-0 text-body">
-                            Sofia
-                        </p>
-                        <p>
-                            Homeowner
-                        </p>
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-
         <b-row class="my-450">
             <b-col>
                 <h2>
@@ -306,7 +304,7 @@
                                 Weight
                             </template>
                             <template #value>
-                                <code>{{ data.weight }}</code>
+                                {{ data.weight }}
                             </template>
                         </ds-responsive-table-column>
                         <ds-responsive-table-column
@@ -358,7 +356,7 @@
                                 Size
                             </template>
                             <template #value>
-                                <code>{{ calculateActualFontSize(data.size) }}</code>
+                                {{ calculateActualFontSize(data.size) }}
                             </template>
                         </ds-responsive-table-column>
                         <ds-responsive-table-column
@@ -394,94 +392,30 @@
 
             <div class="my-450">
                 <h3>
-                    Display
+                    Display (deprecated)
                 </h3>
                 <ds-responsive-table class="responsive-table-typography">
-                    <ds-responsive-table-row :zebra-stripes="false">
+                    <ds-responsive-table-row
+                        v-for="example in displayExamples"
+                        :key="example.name">
+                        <ds-responsive-table-column>
+                            <template #name>
+                                Name
+                            </template>
+                            <template #value>
+                                <code>
+                                    {{ example.class }}
+                                </code>
+                            </template>
+                        </ds-responsive-table-column>
                         <ds-responsive-table-column>
                             <template #name>
                                 Example
                             </template>
                             <template #value>
-                                <h1 class="display-1">
-                                    Display 1
+                                <h1 :class="example.class">
+                                    {{ example.name }}
                                 </h1>
-                            </template>
-                        </ds-responsive-table-column>
-                        <ds-responsive-table-column>
-                            <template #name>
-                                Class name
-                            </template>
-                            <template #value>
-                                <code>
-                                    display-1
-                                </code>
-                            </template>
-                        </ds-responsive-table-column>
-                    </ds-responsive-table-row>
-                    <ds-responsive-table-row :zebra-stripes="false">
-                        <ds-responsive-table-column>
-                            <template #name>
-                                Example
-                            </template>
-                            <template #value>
-                                <h1 class="display-2">
-                                    Display 2
-                                </h1>
-                            </template>
-                        </ds-responsive-table-column>
-                        <ds-responsive-table-column>
-                            <template #name>
-                                Class name
-                            </template>
-                            <template #value>
-                                <code>
-                                    display-2
-                                </code>
-                            </template>
-                        </ds-responsive-table-column>
-                    </ds-responsive-table-row>
-                    <ds-responsive-table-row :zebra-stripes="false">
-                        <ds-responsive-table-column>
-                            <template #name>
-                                Example
-                            </template>
-                            <template #value>
-                                <h1 class="display-3">
-                                    Display 3
-                                </h1>
-                            </template>
-                        </ds-responsive-table-column>
-                        <ds-responsive-table-column>
-                            <template #name>
-                                Class name
-                            </template>
-                            <template #value>
-                                <code>
-                                    display-3
-                                </code>
-                            </template>
-                        </ds-responsive-table-column>
-                    </ds-responsive-table-row>
-                    <ds-responsive-table-row :zebra-stripes="false">
-                        <ds-responsive-table-column>
-                            <template #name>
-                                Example
-                            </template>
-                            <template #value>
-                                <h1 class="display-4">
-                                    Display 4
-                                </h1>
-                            </template>
-                        </ds-responsive-table-column>
-                        <ds-responsive-table-column>
-                            <template #name>
-                                Class name
-                            </template>
-                            <template #value>
-                                <code>
-                                    display-4
-                                </code>
                             </template>
                         </ds-responsive-table-column>
                     </ds-responsive-table-row>
@@ -493,10 +427,6 @@
                     <h2>
                         Font size (deprecated)
                     </h2>
-                    <p>
-                        These utility classes are deprecated. Avoid using them and refactor your code to remove instances
-                        of them. They will be removed in a future version of ESDS.
-                    </p>
                     <ds-responsive-table class="responsive-table-typography">
                         <ds-responsive-table-row
                             v-for="data in deprecatedFontSizeItems"
@@ -519,7 +449,7 @@
                                     Size
                                 </template>
                                 <template #value>
-                                    <code>{{ calculateActualFontSize(data.size) }}</code>
+                                    {{ calculateActualFontSize(data.size) }}
                                 </template>
                             </ds-responsive-table-column>
                             <ds-responsive-table-column
@@ -562,7 +492,8 @@ import sassPostLineHeightsDesktop from '@energysage/es-bs-base/scss/variables/_p
 import sassPostLineHeightsMobile from '@energysage/es-bs-base/scss/variables/_post-line-heights-mobile.scss';
 import sassType from '@energysage/es-bs-base/scss/variables/_type.scss';
 
-const deprecatedFontSizes = ['xxl', 'xl'];
+const deprecatedFontSizes = ['xl', 'xxl'];
+const excludedFontSizes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl'];
 
 const BASE_FONT_SIZE_PX = 16;
 
@@ -577,7 +508,7 @@ export default {
             ],
             fontSizeItems: [
                 ...Object.entries(sassFontSizes)
-                    .filter(([key]) => !deprecatedFontSizes.some((suffix) => key.endsWith(suffix)))
+                    .filter(([key]) => !excludedFontSizes.some((suffix) => key.endsWith(suffix)))
                     .map(([name, size]) => ({ name, size })),
             ],
             fontWeightItems: [
@@ -649,6 +580,19 @@ export default {
                 });
                 return result;
             }, []);
+        },
+        displayExamples() {
+            const result = [];
+
+            // display-1 through display-4
+            for (let i = 1; i <= 4; i += 1) {
+                result.push({
+                    class: `display-${i}`,
+                    name: `Display ${i}`,
+                });
+            }
+
+            return result;
         },
         headingExamples() {
             const result = [];

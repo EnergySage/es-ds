@@ -19,7 +19,7 @@ export default {
         },
         zebraStripes: {
             type: Boolean,
-            default: true,
+            default: false,
         },
     },
 };
