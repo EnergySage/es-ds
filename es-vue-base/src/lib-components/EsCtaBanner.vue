@@ -2,7 +2,7 @@
     <es-card
         :class="[
             {
-                'bg-gray text-white': dark,
+                'bg-dark-blue border-dark-blue text-white': dark,
                 'px-100 px-lg-200': variant === 'default',
                 'px-100 px-lg-300': variant === 'wide',
             },
