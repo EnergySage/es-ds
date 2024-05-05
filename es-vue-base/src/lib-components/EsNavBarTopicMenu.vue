@@ -38,7 +38,7 @@
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="checkboxId"
-            class="dropdown-label nav-link align-items-center border-bottom d-lg-none justify-content-between w-100 h-100 font-weight-bold"
+            class="dropdown-label nav-item-border-mobile nav-link align-items-center d-lg-none justify-content-between w-100 h-100 font-weight-bold"
             :class="{
                 'd-flex': showItemsOnMobile,
                 'd-none': !showItemsOnMobile
@@ -56,21 +56,17 @@
         <div
             class="menu submenu">
             <div class="menu-header">
-                <!-- vuejs-accessibility/label-has-for -->
-                <!-- eslint-disable-next-line -->
-                <label
-                    :for="checkboxId"
-                    class="menu-toggle d-flex w-100 h-100 mb-0
-                                                                    align-items-center font-size-sm">
-                    <div
-                        class="nav-link text-uppercase">
-                        <IconChevronLeft height="18px" />
-                        {{ name }}
-                    </div>
-                </label>
+                <div class="col-3" />
+                <div class="col-6 align-self-center text-center py-100">
+                    <es-logo
+                        width="128px"
+                        height="28px" />
+                    <span class="sr-only">
+                        {{ homeName }}
+                    </span>
+                </div>
                 <div class="d-flex col-3 justify-content-end">
-                    <!-- vuejs-accessibility/label-has-for -->
-                    <!-- eslint-disable-next-line -->
+                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                     <label
                         for="data--main-menu"
                         class="mb-0">
@@ -84,22 +80,35 @@
             <ul
                 class="visible-lg"
                 style="list-style: none; padding-left: 0; top: 0;">
-                <li class="d-lg-none">
-                    <es-nav-bar-link
-                        v-if="link"
-                        class="nav-item nav-item-border-mobile nav-link font-weight-bold d-flex w-100 align-items-center ml-50"
-                        :href="link"
-                        :target="newTab ? '_blank' : null">
-                        {{ name }}
-                    </es-nav-bar-link>
-                    <div
-                        v-else
-                        class="nav-item pl-100">
-                        <span
-                            class="nav-link align-items-center d-flex font-weight-bold h-100 text-decoration-none w-100">
-                            {{ name }}
-                        </span>
+                <li class="nav-item d-lg-none mb-50">
+                    <div class="col-2">
+                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                        <label
+                            :for="checkboxId"
+                            class="menu-toggle d-flex w-100 h-100 mb-0 align-items-center font-size-sm">
+                            <IconArrowLeft
+                                class="expand-icon"
+                                style="height: 24px;" />
+                        </label>
                     </div>
+                    <div class="col-8 align-self-center text-center py-100">
+                        <es-nav-bar-link
+                            v-if="link"
+                            class="nav-link font-weight-bold d-flex w-100 h-100 justify-content-center align-items-center"
+                            :href="link"
+                            :target="newTab ? '_blank' : null">
+                            {{ name }}
+                        </es-nav-bar-link>
+                        <div
+                            v-else
+                            class="h-100">
+                            <span
+                                class="nav-link justify-content-center align-items-center d-flex font-weight-bold h-100 text-decoration-none w-100">
+                                {{ name }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-2" />
                 </li>
                 <li
                     v-for="item in items"
@@ -139,12 +148,23 @@
 <script lang="js">
 import EsNavBarLink from './EsNavBarLink.vue';
 
+import EsLogo from '../lib-assets/es-logo.vue';
+
 export default {
     name: 'EsNavBarTopicMenu',
     components: {
+        EsLogo,
         EsNavBarLink,
     },
     props: {
+        homeName: {
+            type: String,
+            required: true,
+        },
+        homeLink: {
+            type: String,
+            required: true,
+        },
         closeButtonText: {
             type: String,
             required: true,

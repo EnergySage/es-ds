@@ -552,6 +552,16 @@ $nav-hover-delay: 300ms;
       cursor: pointer;
     }
 
+    // top header colors in mobile
+    .nav-item.top-header > .dropdown-label,
+    .nav-item.top-header > .nav-link {
+      color: variables.$blue-900;
+
+      &:hover {
+        color: variables.$blue-900;
+      }
+    }
+
     // mobile nav item hover
     .nav-item.top-header > .dropdown-label:hover,
     .nav-item.dropdown > .dropdown-label:hover,
@@ -577,6 +587,10 @@ $nav-hover-delay: 300ms;
     .product-menu .expand-icon,
     .topic-group .expand-icon {
       fill: variables.$gray-400;
+    }
+
+    .submenu .expand-icon {
+      fill: variables.$blue-900;
     }
 
     // Style rows in hamburger, add bottom border

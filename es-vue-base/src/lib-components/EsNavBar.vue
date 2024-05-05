@@ -114,6 +114,8 @@
                         <es-nav-bar-product-menu
                             v-for="product in globalContent.products"
                             :key="product.name"
+                            :home-name="globalContent.home.name"
+                            :home-link="globalContent.home.link"
                             :close-button-text="globalContent.mobileCloseButtonAltText"
                             :featured-article="product.featuredArticle"
                             :items="product.items"

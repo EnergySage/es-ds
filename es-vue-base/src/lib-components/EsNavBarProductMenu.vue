@@ -98,6 +98,8 @@
                         v-for="topic in topics"
                         :key="topic.name"
                         class="col-lg-4 d-block"
+                        :home-name="homeName"
+                        :home-link="homeLink"
                         :close-button-text="closeButtonText"
                         :items="topic.subtopics"
                         :link="topic.link"
@@ -132,6 +134,14 @@ export default {
         EsNavBarTopicMenu,
     },
     props: {
+        homeName: {
+            type: String,
+            required: true,
+        },
+        homeLink: {
+            type: String,
+            required: true,
+        },
         closeButtonText: {
             type: String,
             required: true,

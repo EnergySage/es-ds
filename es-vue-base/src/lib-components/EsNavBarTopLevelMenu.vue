@@ -92,8 +92,21 @@
                             }">
                             <ul class="dropdown-list row w-auto">
                                 <!-- name of top-level menu (won't ever be a link) -->
-                                <li class="nav-item col-lg-12 d-lg-none">
-                                    <span class="nav-link align-items-center d-flex font-weight-bold w-100 h-100">{{ name }}</span>
+                                <li class="nav-item col-lg-12 d-lg-none mb-50">
+                                    <div class="col-2">
+                                        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                                        <label
+                                            :for="checkboxId"
+                                            class="menu-toggle nav-link align-items-center d-flex font-size-sm h-100 mb-0 px-0 text-uppercase w-100">
+                                            <IconArrowLeft
+                                                class="expand-icon"
+                                                style="height: 24px;" />
+                                        </label>
+                                    </div>
+                                    <div class="col-8 align-self-center text-center py-100">
+                                        <span class="nav-link justify-content-center align-items-center d-flex font-weight-bold w-100 h-100">{{ name }}</span>
+                                    </div>
+                                    <div class="col-2" />
                                 </li>
                                 <es-nav-bar-topic-menu
                                     v-for="topic in topics"
@@ -103,6 +116,8 @@
                                         'col-lg-6': topics.length >= 2,
                                         'col-lg-12': topics.length == 1
                                     }"
+                                    :home-name="homeName"
+                                    :home-link="homeLink"
                                     :close-button-text="closeButtonText"
                                     :items="topic.subtopics"
                                     :link="topic.link"
