@@ -2,7 +2,7 @@
 <template>
     <div>
         <h1>
-            EsErrorPage component
+            Error page
         </h1>
         <p>
             The Error Page component is intended to be used in error pages across nuxt apps.

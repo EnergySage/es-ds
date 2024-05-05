@@ -228,7 +228,7 @@
   }
 
   .modal-content {
-    @include box-shadow.box-shadow(variables.$modal-content-box-shadow-sm-up);
+    box-shadow: variables.$modal-content-box-shadow-sm-up;
   }
 
   .modal-sm { max-width: variables.$modal-sm; }

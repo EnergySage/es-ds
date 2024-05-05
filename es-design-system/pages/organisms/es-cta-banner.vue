@@ -96,7 +96,8 @@
                         <template #cta>
                             <es-button
                                 class="px-100 w-100"
-                                href="https://heatpumps.energysage.com/welcome">
+                                href="https://heatpumps.energysage.com/welcome"
+                                variant="dark-bg">
                                 Get heat pump quotes
                             </es-button>
                         </template>
@@ -173,7 +174,9 @@
                     Our installer network is growing every day. Explore options in your state.
                 </template>
                 <template #cta>
-                    <es-button href="https://heatpumps.energysage.com/welcome">
+                    <es-button
+                        href="https://heatpumps.energysage.com/welcome"
+                        variant="dark-bg">
                         Get heat pump quotes
                     </es-button>
                 </template>
