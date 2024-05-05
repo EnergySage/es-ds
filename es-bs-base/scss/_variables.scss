@@ -1631,12 +1631,12 @@ $modal-content-color:               null !default;
 $modal-content-bg:                  $white !default;
 $modal-content-border-color:        null !default;
 $modal-content-border-width:        0 !default;
-$modal-content-border-radius:       $border-radius-lg !default;
+$modal-content-border-radius:       $border-radius-xs !default;
 $modal-content-inner-border-radius: functions.subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       0 !default;
-$modal-content-box-shadow-sm-up:    0 !default;
+$modal-content-box-shadow-sm-up:    0px 4px 12px 0px $gray-50 !default;
 
-$modal-backdrop-bg:                 rgba($black, 0.45) !default;
+$modal-backdrop-bg:                 rgba($gray-900, 0.45) !default;
 $modal-backdrop-opacity:            .2 !default;
 $modal-header-border-color:         null !default;
 $modal-footer-border-color:         $modal-header-border-color !default;
