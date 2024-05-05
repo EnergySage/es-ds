@@ -25,7 +25,6 @@
                 class="EsVideo-icon position-absolute"
                 width="74px"
                 height="54px" />
-            </es-button>
         </es-card>
     </div>
 </template>
