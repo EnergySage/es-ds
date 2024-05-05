@@ -2,14 +2,14 @@
     <div>
         <!-- eslint-disable-next-line vue/no-v-html -->
         <span v-html="bodyContent" />
-        <EsButton
+        <es-button
             v-if="isTruncated"
             inline
             variant="link"
-            class="p-0"
+            class="ml-50 p-0"
             @click="click">
             {{ buttonText }}
-        </EsButton>
+        </es-button>
     </div>
 </template>
 
@@ -43,7 +43,7 @@ export default {
         clamp: {
             type: String,
             required: false,
-            default: 'Show More',
+            default: 'Show more',
         },
         /**
          * Text for button to hide text
@@ -51,7 +51,7 @@ export default {
         less: {
             type: String,
             required: false,
-            default: 'Show Less',
+            default: 'Show less',
         },
     },
     data() {
