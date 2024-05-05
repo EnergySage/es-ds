@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            Data Table
+            Data table
         </h1>
         <p class="mb-450">
             A responsive table using the <a href="https://bootstrap-vue.org/docs/components/table">bootstrap-vue table</a>.
