@@ -31,6 +31,7 @@
 
 <script lang="js">
 import { BImg, BEmbed } from 'bootstrap-vue';
+import EsCard from './EsCard.vue';
 import IconVideoPlay from '../lib-icons/icon-video-play.vue';
 
 export default ({
@@ -38,6 +39,7 @@ export default ({
     components: {
         BImg,
         BEmbed,
+        EsCard,
         IconVideoPlay,
     },
     props: {
