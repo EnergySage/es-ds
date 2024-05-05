@@ -273,6 +273,9 @@
   background-color: variables.$white;
   /* stylelint-disable-next-line property-disallowed-list */
   border-radius: variables.$border-radius;
+  display: block;
+  text-align: left;
+  width: 100%;
 
   &.interactive {
     /* account for the tag likely being an anchor or button */
@@ -280,8 +283,8 @@
     font-weight: variables.$font-weight-base;
     color: variables.$body-color;
     cursor: pointer;
-    border: 2px solid variables.$gray-200;
-    box-shadow: 0px 4px 12px 0px variables.$gray-50;
+    border: 2px solid variables.$card-interactive-border-color;
+    box-shadow: 0 0 0 1px transparent, variables.$card-interactive-shadow;
 
     /* stylelint-disable-next-line property-disallowed-list */
     transition: variables.$transition-base;
@@ -290,12 +293,19 @@
     transform: translateZ(0);
 
     &:hover {
-      border-color: variables.$orange-300;
+      border-color: variables.$card-interactive-hover-border-color;
       text-decoration: none;
     }
 
+    &:focus {
+      border-color: variables.$card-interactive-focus-border-color;
+      box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-shadow;
+      outline: none;
+    }
+
     &:active {
-      box-shadow: 0px 3px 10px 0px variables.$gray-50;
+      border-color: variables.$card-interactive-active-border-color;
+      box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-active-shadow;
       transform: translateY(1px);
     }
   }

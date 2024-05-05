@@ -1484,6 +1484,16 @@ $card-columns-count:                3 !default;
 $card-columns-gap:                  1.25rem !default;
 $card-columns-margin:               $card-spacer-y !default;
 
+$card-interactive-border-color:        $gray-200 !default;
+$card-interactive-shadow:              0px 4px 12px 0px $gray-50 !default;
+
+$card-interactive-hover-border-color:  $orange-300 !default;
+
+$card-interactive-focus-border-color:  $orange-600 !default;
+
+$card-interactive-active-border-color: $orange-900 !default;
+$card-interactive-active-shadow:       0px 3px 10px 0px $gray-50 !default;
+
 
 // Tooltips
 
