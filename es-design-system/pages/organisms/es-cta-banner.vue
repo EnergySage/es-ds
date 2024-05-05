@@ -95,7 +95,7 @@
                         </template>
                         <template #cta>
                             <es-button
-                                class="px-100 w-100"
+                                class="px-100 text-nowrap"
                                 href="https://heatpumps.energysage.com/welcome"
                                 variant="dark-bg">
                                 Get heat pump quotes
