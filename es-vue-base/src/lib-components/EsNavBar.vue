@@ -93,6 +93,8 @@
                         <es-nav-bar-top-level-menu
                             v-for="topLevelMenu in globalContent.topLevelMenus"
                             :key="topLevelMenu.name"
+                            :home-name="globalContent.home.name"
+                            :home-link="globalContent.home.link"
                             :close-button-text="globalContent.mobileCloseButtonAltText"
                             :featured-article="topLevelMenu.featuredArticle"
                             :icon="topLevelMenu.icon"
@@ -160,7 +162,7 @@
                         v-for="item in accountContent.loggedIn.items"
                         :key="item.name">
                         <es-nav-bar-link
-                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
+                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50 font-weight-bold"
                             :href="item.link">
                             {{ item.name }}
                         </es-nav-bar-link>

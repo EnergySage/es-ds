@@ -21,10 +21,6 @@
   padding: variables.$nav-link-padding-y variables.$nav-link-padding-x;
   text-decoration: if(variables.$link-decoration == none, null, none);
 
-  @include hover.hover-focus() {
-    text-decoration: none;
-  }
-
   // Disabled state lightens text
   &.disabled {
     color: variables.$nav-link-disabled-color;
@@ -225,16 +221,8 @@ $nav-hover-delay: 300ms;
   }
 
   .dropdown-cta-right {
-    line-height: 1.3;
-
     .cta-link {
-      font-size: variables.$font-size-75;
-      color: variables.$gray-900;
       text-decoration: none;
-
-      &:hover {
-        color: variables.$gray-1200;
-      }
     }
   }
 
@@ -291,15 +279,6 @@ $nav-hover-delay: 300ms;
       top: 65%;
       width: 100%;
       padding-bottom: 0;
-    }
-
-    // eyebrow copied from es-ds class, but override for letter spacing and only display on lg+ viewports
-    .eyebrow-lg {
-      font-size: variables.$font-size-100;
-      font-weight: variables.$font-weight-bolder;
-      color: variables.$gray;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
     // line below topic header in desktop top-level flyout
@@ -571,6 +550,13 @@ $nav-hover-delay: 300ms;
     .dropdown-label {
       display: block;
       cursor: pointer;
+    }
+
+    // mobile nav item hover
+    .nav-item.top-header > .dropdown-label:hover,
+    .nav-item.dropdown > .dropdown-label:hover,
+    .topic-group > .dropdown-label:hover {
+      text-decoration: underline;
     }
 
     // allow longer items (e.g. news article titles) to wrap on mobile

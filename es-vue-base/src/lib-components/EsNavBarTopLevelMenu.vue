@@ -59,13 +59,15 @@
             class="menu">
             <!-- mobile menu header -->
             <div class="menu-header">
-                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                <label
-                    :for="checkboxId"
-                    class="menu-toggle nav-link align-items-center d-flex font-size-sm h-100 mb-0 text-uppercase w-100">
-                    <IconChevronLeft height="18px" />
-                    {{ mainMenuText }}
-                </label>
+                <div class="col-3" />
+                <div class="col-6 align-self-center text-center py-100">
+                    <es-logo
+                        width="128px"
+                        height="28px" />
+                    <span class="sr-only">
+                        {{ homeName }}
+                    </span>
+                </div>
                 <div class="d-flex col-3 justify-content-end">
                     <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                     <label
@@ -91,7 +93,7 @@
                             <ul class="dropdown-list row w-auto">
                                 <!-- name of top-level menu (won't ever be a link) -->
                                 <li class="nav-item col-lg-12 d-lg-none">
-                                    <span class="nav-link align-items-center border-bottom d-flex font-weight-bold w-100 h-100">{{ name }}</span>
+                                    <span class="nav-link align-items-center d-flex font-weight-bold w-100 h-100">{{ name }}</span>
                                 </li>
                                 <es-nav-bar-topic-menu
                                     v-for="topic in topics"
@@ -129,14 +131,25 @@ import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
 import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
 
+import EsLogo from '../lib-assets/es-logo.vue';
+
 export default {
     name: 'EsNavBarTopLevelMenu',
     components: {
+        EsLogo,
         EsNavBarFeaturedArticle,
         EsNavBarLink,
         EsNavBarTopicMenu,
     },
     props: {
+        homeName: {
+            type: String,
+            required: true,
+        },
+        homeLink: {
+            type: String,
+            required: true,
+        },
         closeButtonText: {
             type: String,
             required: true,

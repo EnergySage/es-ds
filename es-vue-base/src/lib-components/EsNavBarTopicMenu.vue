@@ -8,7 +8,7 @@
             class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray"
             :href="link"
             :target="newTab ? '_blank' : null">
-            <span class="align-items-center eyebrow d-flex font-size-50 font-weight-bolder text-gray">
+            <span class="align-items-center eyebrow d-flex">
                 {{ name }}
                 <icon-arrow-right
                     class="d-none d-lg-inline-block ml-25"
@@ -24,7 +24,7 @@
         <!-- desktop header, if it's not a link -->
         <p
             v-else
-            class="dropdown-toggle topic-menu-header eyebrow align-items-center d-none d-lg-block font-size-50 font-weight-bolder mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray">
+            class="dropdown-toggle topic-menu-header eyebrow align-items-center d-none d-lg-block mb-lg-50 position-relative px-lg-0 py-lg-50">
             <span class="d-block">
                 {{ name }}
             </span>
@@ -96,7 +96,7 @@
                         v-else
                         class="nav-item pl-100">
                         <span
-                            class="nav-link align-items-center border-bottom d-flex font-weight-bold h-100 text-decoration-none w-100">
+                            class="nav-link align-items-center d-flex font-weight-bold h-100 text-decoration-none w-100">
                             {{ name }}
                         </span>
                     </div>
