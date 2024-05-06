@@ -17,7 +17,7 @@
             <!-- Tooltip above the slider thumb -->
             <template #tooltip="{ value, focus }">
                 <div
-                    class="slider-tooltip d-flex h5 align-items-center text-white justify-content-center m-0 bg-primary"
+                    class="slider-tooltip d-flex h4 align-items-center text-white justify-content-center m-0 bg-blue-600 font-weight-boldest"
                     :class="[{ focus }]">
                     {{ tooltipFormatter(value) }}
                 </div>
@@ -25,7 +25,7 @@
             <!-- Labels below the process bar -->
             <template #label="{ label, active }">
                 <div :class="['slider-label', 'vue-slider-mark-label', { active }]">
-                    {{ label }}
+                    ${{ label }}
                 </div>
             </template>
         </vue-slider>

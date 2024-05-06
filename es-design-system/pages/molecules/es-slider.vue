@@ -31,7 +31,7 @@ export default {
     name: 'EsSliderDocs',
     data() {
         return {
-            startingValue: 0,
+            startingValue: 100,
             data: [0, 25, 50, 75, 100, 250, 500, 750, 1000],
             marks: [0, 1000],
             min: 0,

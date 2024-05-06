@@ -179,3 +179,12 @@ $b-skeleton-animate-wave-background: linear-gradient(
   $b-skeleton-animate-wave-color,
   transparent
 ) !default;
+
+// --- Slider ---
+
+$b-slider-background: linear-gradient(90deg, v.$blue-400 0%, v.$blue-800 100%);
+$b-slider-rail-height: 10px;
+$b-slider-tooltip-diameter: 52px;
+$b-slider-tooltip-border-radius: 50%;
+$b-slider-dot-border: 9px solid v.$blue-600;
+$b-slider-label-margin-top: 12px;

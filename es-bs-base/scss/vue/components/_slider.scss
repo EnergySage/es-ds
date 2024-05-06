@@ -10,29 +10,40 @@
 @import '~vue-slider-component/lib/styles/slider';
 
 .es-slider {
-    padding: 0 !important;
+  padding: 0 !important;
 
-    .vue-slider-process {
-        background: linear-gradient(112.58deg, v.$primary 28%, v.$indigo 100%);
+  .vue-slider-process {
+    background: variables.$b-slider-background;
+  }
+
+  .vue-slider-rail {
+    height: variables.$b-slider-rail-height;
+  }
+
+  .vue-slider-dot-handle {
+    border: variables.$b-slider-dot-border;
+  }
+
+  .slider-tooltip {
+    border-radius: variables.$b-slider-tooltip-border-radius;
+    height: variables.$b-slider-tooltip-diameter;
+    width: variables.$b-slider-tooltip-diameter;
+  }
+
+  .vue-slider-marks {
+    .vue-slider-mark:first-child .slider-label {
+      transform: none;
     }
 
-    .vue-slider-rail {
-        height: 10px;
+    .vue-slider-mark:last-child .slider-label {
+      transform: translateX(-100%);
     }
+  }
 
-    .vue-slider-dot-handle {
-        border: 5px solid v.$primary;
-    }
-
-    .slider-tooltip {
-        border-radius: 50%;
-        height: 54px;
-        width: 54px;
-    }
-
-    .slider-label {
-        color: currentColor;
-        font-size: v.$font-size-lg;
-        margin-top: v.$spacer;
-    }
+  .slider-label {
+    color: v.$gray-700;
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-bold;
+    margin-top: variables.$b-slider-label-margin-top;
+  }
 }
