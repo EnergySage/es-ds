@@ -1,12 +1,14 @@
-name: ci
+name: build & deploy
 
 on:
     push:
         branches:
             - esds-2.0-visual-identity
+            - deploy-to-new-url
     pull_request:
         branches:
             - esds-2.0-visual-identity
+            - deploy-to-new-url
 
 jobs:
     #ci:
@@ -14,7 +16,7 @@ jobs:
 
     deploy:
         runs-on: ubuntu-latest
-        
+
         steps:
             - name: Restore build 🗃️
               uses: actions/cache/restore@v4
