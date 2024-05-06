@@ -69,18 +69,18 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            color: variables.$black;
+            color: variables.$gray-900;
         }
     }
 
     .page-number {
         .page-link {
-            border-radius: 0.25rem;
+            border-radius: variables.$border-radius-sm;
         }
 
         &.active {
             .page-link {
-                background-color: variables.$orange-50;
+                background-color: variables.$gray-900;
                 color: variables.$black;
             }
         }
@@ -88,7 +88,7 @@ export default {
 
     .prev-next {
         .page-link {
-            border-radius: 0.5rem;
+            border-radius: variables.$border-radius-sm;
             display: flex;
             align-items: center;
 
