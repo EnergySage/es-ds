@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown-cta-right">
         <es-nav-bar-link
-            class="d-block cta-link text-gray-900"
+            class="d-block cta-link text-gray-900 text-decoration-none"
             :href="link"
             :target="newTab ? '_blank' : null"
             :title="name">
@@ -11,11 +11,11 @@
                 :alt="imageAlt"
                 loading="lazy"
                 :src="image500">
-            <div class="eyebrow mb-50">
+            <div class="eyebrow mb-50 link-name">
                 {{ eyebrow }}
             </div>
 
-            <p class="font-weight-bold">
+            <p class="font-weight-bold link-subheading">
                 {{ name }}
             </p>
         </es-nav-bar-link>

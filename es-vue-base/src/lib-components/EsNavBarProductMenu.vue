@@ -70,6 +70,7 @@
                     </div>
                     <div class="col-8 align-self-center text-center py-100">
                         <es-nav-bar-link
+                            class="font-weight-bold text-gray-900"
                             :href="link">
                             {{ name }}
                         </es-nav-bar-link>

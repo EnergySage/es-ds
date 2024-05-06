@@ -220,12 +220,6 @@ $nav-hover-delay: 300ms;
     background: none;
   }
 
-  .dropdown-cta-right {
-    .cta-link {
-      text-decoration: none;
-    }
-  }
-
   .featured-article-image {
     // override local style attribute on image
     // stylelint-disable-next-line declaration-no-important
@@ -600,6 +594,29 @@ $nav-hover-delay: 300ms;
       height: 64px;
       margin: 0 15px;
     }
+
+    // taller nav items with two lines
+    .nav-item-lg {
+      height: 76px;
+      margin-bottom: 0.5em;
+    }
+
+    .nav-item-lg:hover {
+      .link-name {
+        text-decoration: underline;
+      }
+      .link-subheading {
+        // stylelint-disable-next-line declaration-no-important
+        font-weight: 400 !important;
+      }
+    }
+
+    .dropdown-cta-right:hover {
+      .link-name {
+        text-decoration: underline;
+      }
+    }
+
     .nav-item-border-mobile {
       // stylelint-disable-next-line declaration-no-important
       border-bottom: 1px solid variables.$gray-100 !important;

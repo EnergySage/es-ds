@@ -128,19 +128,19 @@
         <!-- mobile link, shown only if we have a link and don't want to show child items on mobile -->
         <es-nav-bar-link
             v-if="link"
-            class="nav-item nav-item-border-mobile nav-link d-lg-none w-100"
+            class="nav-item nav-item-lg nav-item-border-mobile nav-link d-lg-none w-100 text-decoration-none"
             :class="{
                 'd-none': showItemsOnMobile,
-                'd-block': !showItemsOnMobile
+                'd-block': !showItemsOnMobile,
             }"
             :href="link"
             :target="newTab ? '_blank' : null">
-            <span class="d-block">
+            <span class="d-block eyebrow link-name">
                 {{ name }}
             </span>
             <span
                 v-if="subHeading"
-                class="d-block font-italic">
+                class="d-block font-size-sm link-subheading">
                 {{ subHeading }}
             </span>
         </es-nav-bar-link>
