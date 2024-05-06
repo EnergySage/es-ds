@@ -589,7 +589,8 @@ $nav-hover-delay: 300ms;
       fill: variables.$gray-400;
     }
 
-    .submenu .expand-icon {
+    .submenu .expand-icon,
+    .product-menu-flyout .expand-icon {
       fill: variables.$blue-900;
     }
 

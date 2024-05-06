@@ -78,9 +78,9 @@
                 </div>
             </div>
             <ul
-                class="visible-lg"
-                style="list-style: none; padding-left: 0; top: 0;">
-                <li class="nav-item d-lg-none mb-50">
+                class="visible-lg list-unstyled"
+                style="top: 0;">
+                <li class="nav-item col-lg-12 d-lg-none mb-50">
                     <div class="col-2">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                         <label
@@ -103,12 +103,14 @@
                             v-else
                             class="h-100">
                             <span
-                                class="nav-link justify-content-center align-items-center d-flex font-weight-bold h-100 text-decoration-none w-100">
+                                class="nav-item justify-content-center align-items-center d-flex font-weight-bold h-100 text-decoration-none w-100">
                                 {{ name }}
                             </span>
                         </div>
                     </div>
-                    <div class="col-2" />
+                    <div class="col-2">
+                        &nbsp;
+                    </div>
                 </li>
                 <li
                     v-for="item in items"
