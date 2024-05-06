@@ -4,7 +4,9 @@
             Badge
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/badge">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/badge"
+                target="_blank">
                 bootstrap-vue badge
             </b-link>
         </p>

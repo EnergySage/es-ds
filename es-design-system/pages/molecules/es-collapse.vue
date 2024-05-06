@@ -4,7 +4,9 @@
             Collapse
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/collapse">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/collapse"
+                target="_blank">
                 bootstrap-vue collapse
             </b-link>
         </p>

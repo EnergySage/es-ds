@@ -15,7 +15,7 @@
   display: inline-flex;
   align-items: center; // aligns text and icons vertically by default
   justify-content: center;
-  height: variables.$font-size-base * 3; // ensures consistent button height, matching the design, regardless of content
+  height: variables.$input-btn-height; // ensures consistent button height, matching the design, regardless of content
   font-family: variables.$btn-font-family;
   font-weight: variables.$btn-font-weight;
   color: variables.$body-color;
@@ -58,6 +58,12 @@
         @include box-shadow.box-shadow(variables.$btn-focus-box-shadow, variables.$btn-active-box-shadow);
       }
     }
+  }
+
+  // ensure icons automatically are sized properly in buttons without needing custom sizing entered each time
+  svg {
+    height: 1.5rem !important;
+    width: 1.5rem !important;
   }
 }
 
@@ -150,8 +156,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-sm {
-  height: variables.$font-size-base * 2.5; // ensures consistent button height, matching the design, regardless of content
+  height: variables.$input-btn-height-sm; // ensures consistent button height, matching the design, regardless of content
   @include buttons.button-size(variables.$btn-padding-y-sm, variables.$btn-padding-x-sm, variables.$btn-font-size-sm, variables.$btn-line-height-sm, variables.$btn-border-radius);
+
+  // ensure icons automatically are sized properly in small buttons without needing custom sizing entered each time
+  svg {
+    height: 1.125rem !important;
+    width: 1.125rem !important;
+  }
 }
 
 

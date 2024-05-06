@@ -1,0 +1,26 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  line-height-50: variables.$line-height-50;
+  line-height-75: variables.$line-height-75;
+  line-height-100: variables.$line-height-100;
+  line-height-200: variables.$line-height-200;
+  line-height-300: variables.$line-height-300;
+  line-height-400: variables.$line-height-400;
+  line-height-500: variables.$line-height-500;
+  line-height-600: variables.$line-height-600;
+  line-height-700: variables.$line-height-700;
+  line-height-800: variables.$line-height-800;
+  line-height-900: variables.$line-height-900;
+
+  // body sizes
+  line-height-xs: variables.$line-height-50;
+  line-height-sm: variables.$line-height-75;
+  line-height-base: variables.$line-height-100;
+  line-height-lg: variables.$line-height-300;
+
+  // deprecated
+  line-height-xl: variables.$line-height-400;
+  line-height-xxl: variables.$line-height-500;
+}

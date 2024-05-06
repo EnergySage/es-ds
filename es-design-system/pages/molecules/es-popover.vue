@@ -5,7 +5,9 @@
                 Popover
             </h1>
             <p>
-                Extended from <b-link href="https://bootstrap-vue.org/docs/components/popover">
+                Extended from <b-link
+                    href="https://bootstrap-vue.org/docs/components/popover"
+                    target="_blank">
                     bootstrap-vue popover
                 </b-link>
             </p>

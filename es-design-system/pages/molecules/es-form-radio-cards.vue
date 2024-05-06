@@ -1,10 +1,12 @@
 <template>
     <div>
         <h1>
-            Radio Cards
+            Radio cards
         </h1>
         <p class="mb-200 mb-lg-450">
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-radio#button-style-radios">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/form-radio#button-style-radios"
+                target="_blank">
                 bootstrap-vue form-radio
             </b-link>
         </p>

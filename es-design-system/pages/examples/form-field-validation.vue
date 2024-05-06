@@ -3,7 +3,7 @@
         <b-row>
             <b-col>
                 <h1>
-                    Form with Field Validation
+                    Form with field validation
                 </h1>
                 <h2>
                     UX Guidelines

@@ -4,7 +4,9 @@
             Spacing
         </h1>
         <p>
-            Extended from <b-link href="https://getbootstrap.com/docs/4.6/utilities/spacing/">
+            Extended from <b-link
+                href="https://getbootstrap.com/docs/4.6/utilities/spacing/"
+                target="_blank">
                 bootstrap spacing
             </b-link>
         </p>

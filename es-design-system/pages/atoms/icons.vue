@@ -546,7 +546,7 @@ export default {
             }, {});
 
         const colorOptions = Object.keys(colorNames).map((k) => ({
-            text: k,
+            text: k === 'body' ? 'default' : k.replace('-', ' '),
             value: k,
         }));
 
