@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            File Input
+            File input
         </h1>
 
         <div class="mb-450">
@@ -36,7 +36,7 @@
         </div>
         <div class="mb-450">
             <h2 class="mb-50">
-                File Input Collapsed
+                Collapsed
             </h2>
             <p class="mb-150">
                 Only applicable on non-mobile devices (medium and up breakpoints).
@@ -74,7 +74,7 @@
             v-if="fileObjects.length"
             class="mb-450">
             <h2 class="mb-200">
-                Upload Links
+                Upload links
             </h2>
             <b-form
                 @submit.stop.prevent="onSubmit">

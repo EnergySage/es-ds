@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            EsFileThumbnail
+            File thumbnail
         </h1>
         <div class="my-5">
             <h2>

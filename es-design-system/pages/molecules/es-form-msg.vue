@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            Form Message
+            Form message
         </h1>
         <p>
             Extended from <b-link

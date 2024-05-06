@@ -1,7 +1,7 @@
 <template>
     <div class="position-relative">
         <h1>
-            Horizontal List
+            Horizontal list
         </h1>
         <h2>
             Left Aligned No Dots

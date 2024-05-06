@@ -482,13 +482,13 @@ $line-height-700:             $font-size-base * 3.5 !default;    // 56px
 $line-height-800:             $font-size-base * 4 !default;      // 64px
 $line-height-900:             $font-size-base * 4.375 !default;  // 70px
 
-// deprecated
 $font-size-xs:                $font-size-50 !default;            // 12px
 $font-size-sm:                $font-size-75 !default;            // 14px
 $font-size-lg:                $font-size-300 !default;           // 20px
+
+// deprecated
 $font-size-xl:                $font-size-400 !default;           // 24px
 $font-size-xxl:               $font-size-500 !default;           // 30px
-
 
 // used in font-size-* utility classes
 $font-sizes: (
@@ -503,11 +503,12 @@ $font-sizes: (
   "700":  $font-size-700,
   "800":  $font-size-800,
   "900":  $font-size-900,
-  // deprecated
+  // body sizes
   "xs":   $font-size-xs,
   "sm":   $font-size-sm,
   "base": $font-size-base,
   "lg":   $font-size-lg,
+  // deprecated
   "xl":   $font-size-xl,
   "xxl":  $font-size-xxl,
 );
@@ -524,11 +525,12 @@ $line-heights: (
   "700":  $line-height-700,
   "800":  $line-height-800,
   "900":  $line-height-900,
-  // deprecated
+  // body sizes
   "xs":   $line-height-50,
   "sm":   $line-height-75,
   "base": $line-height-100,
   "lg":   $line-height-300,
+  // deprecated
   "xl":   $line-height-400,
   "xxl":  $line-height-500,
 );
@@ -749,7 +751,7 @@ $lead-font-weight:            300 !default;
 
 $small-font-size:             .875em !default;
 
-$text-muted:                  $gray-700 !default;
+$text-muted:                  $gray-600 !default;
 
 $blockquote-small-color:      $gray-600 !default;
 $blockquote-small-font-size:  $small-font-size !default;
@@ -1482,6 +1484,16 @@ $card-columns-count:                3 !default;
 $card-columns-gap:                  1.25rem !default;
 $card-columns-margin:               $card-spacer-y !default;
 
+$card-interactive-border-color:        $gray-200 !default;
+$card-interactive-shadow:              0px 4px 12px 0px $gray-50 !default;
+
+$card-interactive-hover-border-color:  $orange-300 !default;
+
+$card-interactive-focus-border-color:  $orange-600 !default;
+
+$card-interactive-active-border-color: $orange-900 !default;
+$card-interactive-active-shadow:       0px 3px 10px 0px $gray-50 !default;
+
 
 // Tooltips
 
@@ -1629,12 +1641,12 @@ $modal-content-color:               null !default;
 $modal-content-bg:                  $white !default;
 $modal-content-border-color:        null !default;
 $modal-content-border-width:        0 !default;
-$modal-content-border-radius:       $border-radius-lg !default;
+$modal-content-border-radius:       $border-radius-xs !default;
 $modal-content-inner-border-radius: functions.subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       0 !default;
-$modal-content-box-shadow-sm-up:    0 !default;
+$modal-content-box-shadow-sm-up:    0px 4px 12px 0px $gray-50 !default;
 
-$modal-backdrop-bg:                 rgba($black, 0.45) !default;
+$modal-backdrop-bg:                 rgba($gray-900, 0.45) !default;
 $modal-backdrop-opacity:            .2 !default;
 $modal-header-border-color:         null !default;
 $modal-footer-border-color:         $modal-header-border-color !default;
@@ -1794,7 +1806,7 @@ $close-text-shadow:                 0 1px 0 $white !default;
 // Code
 
 $code-font-size:                    87.5% !default;
-$code-color:                        $pink !default;
+$code-color:                        $orange-900 !default;
 
 $kbd-padding-y:                     .2rem !default;
 $kbd-padding-x:                     .4rem !default;
