@@ -22,21 +22,21 @@
                 for more details.
             </p>
             <h2>
-                Dark Variant
+                Dark variant
             </h2>
             <div
                 v-for="placement in directives"
-                :key="`dark-${placement}`"
+                :key="`dark-${placement.directive}`"
                 class="py-100">
                 <h3>
-                    {{ placement }}
+                    {{ placement.text }}
                 </h3>
                 <div>
                     <!-- eslint-disable vuejs-accessibility/label-has-for -->
                     <label>
                         With Title
                         <b-link
-                            :id="`darkTitleTarget-${placement}`"
+                            :id="`darkTitleTarget-${placement.directive}`"
                             class="p-0 text-gray-700"
                             tabindex="0">
                             <IconInfo
@@ -45,8 +45,8 @@
                         </b-link>
                     </label>
                     <EsPopover
-                        :placement="placement"
-                        :target="`darkTitleTarget-${placement}`"
+                        :placement="placement.directive"
+                        :target="`darkTitleTarget-${placement.directive}`"
                         variant="dark">
                         <template #title>
                             My Title
@@ -64,7 +64,7 @@
                     <label>
                         No Title
                         <b-link
-                            :id="`darkNoTitleTarget-${placement}`"
+                            :id="`darkNoTitleTarget-${placement.directive}`"
                             class="p-0 text-gray-700"
                             tabindex="0">
                             <IconInfo
@@ -74,7 +74,7 @@
                     </label>
                     <EsPopover
                         :placement="placement"
-                        :target="`darkNoTitleTarget-${placement}`"
+                        :target="`darkNoTitleTarget-${placement.directive}`"
                         variant="dark">
                         <p class="mb-0">
                             Install solar panels through this program and get $250 cash back.
@@ -88,25 +88,25 @@
             </div>
             <div class="bg-dark-blue my-100 p-100 rounded-lg text-white">
                 <h2 class="text-white">
-                    Light Variant
+                    Light variant
                 </h2>
                 <p>
                     This popover is only to be used in a wizard like userflow with a dark background. If you have
-                    long content on a page; outside of a wizard, we recommend that you utilize a drawer instead.
+                    long content on a page; outside of a wizard, we recommend that you utilize a modal instead.
                 </p>
                 <div
                     v-for="placement in directives"
-                    :key="`light-${placement}`"
+                    :key="`light-${placement.directive}`"
                     class="py-100">
                     <h3 class="text-white">
-                        {{ placement }}
+                        {{ placement.text }}
                     </h3>
                     <div>
                         <!-- eslint-disable vuejs-accessibility/label-has-for -->
                         <label>
                             With Title
                             <b-link
-                                :id="`lightTitleTarget-${placement}`"
+                                :id="`lightTitleTarget-${placement.directive}`"
                                 class="p-0 text-gray-700"
                                 tabindex="0">
                                 <IconInfo
@@ -117,7 +117,7 @@
                         </label>
                         <EsPopover
                             :placement="placement"
-                            :target="`lightTitleTarget-${placement}`"
+                            :target="`lightTitleTarget-${placement.directive}`"
                             variant="light">
                             <template #title>
                                 My Title
@@ -135,7 +135,7 @@
                         <label>
                             No Title
                             <b-link
-                                :id="`lightNoTitleTarget-${placement}`"
+                                :id="`lightNoTitleTarget-${placement.directive}`"
                                 class="p-0 text-gray-700"
                                 tabindex="0">
                                 <IconInfo
@@ -146,7 +146,7 @@
                         </label>
                         <EsPopover
                             :placement="placement"
-                            :target="`lightNoTitleTarget-${placement}`"
+                            :target="`lightNoTitleTarget-${placement.directive}`"
                             variant="light">
                             <p class="mb-0">
                                 Install solar panels through this program and get $250 cash back.
@@ -179,7 +179,12 @@ export default {
     },
     computed: {
         directives() {
-            return ['topright', 'bottomright', 'leftbottom', 'rightbottom'];
+            return [
+                { directive: 'topright', text: 'Top right' },
+                { directive: 'bottomright', text: 'Bottom right' },
+                { directive: 'leftbottom', text: 'Left bottom' },
+                { directive: 'rightbottom', text: 'Right bottom' },
+            ];
         },
     },
     async created() {
