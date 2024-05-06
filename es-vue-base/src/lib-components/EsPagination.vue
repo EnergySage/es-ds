@@ -56,9 +56,7 @@ export default {
         .page-link {
             height: 3rem;
             width: 3rem;
-            background-color: transparent;
             border: 0;
-            font-weight: variables.$font-weight-semibold;
             font-size: variables.$font-size-300;
         }
     }
@@ -76,13 +74,6 @@ export default {
     .page-number {
         .page-link {
             border-radius: variables.$border-radius-sm;
-        }
-
-        &.active {
-            .page-link {
-                background-color: variables.$orange-50;
-                color: variables.$gray-900;
-            }
         }
     }
 
