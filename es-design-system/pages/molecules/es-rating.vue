@@ -25,14 +25,14 @@
                     :rating="(i-1)/2" />
             </div>
         </div>
-        <div class="d-flex flex-column flex-lg-row">
-            <div class="rating bg-gray-50 justify-content-center mb-200 mb-lg-0 mr-lg-200">
+        <div class="d-flex flex-column flex-md-row">
+            <div class="bg-gray-50 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
                 <es-rating :rating="4.5" />
             </div>
-            <div class="rating bg-blue-50 justify-content-center mb-200 mb-lg-0 mr-lg-200">
+            <div class="bg-blue-50 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
                 <es-rating :rating="4.5" />
             </div>
-            <div class="rating bg-blue-900 justify-content-center mb-200 mb-lg-0 mr-lg-200">
+            <div class="bg-blue-900 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
                 <es-rating :rating="4.5" />
             </div>
         </div>
