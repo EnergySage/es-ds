@@ -2,67 +2,67 @@
     <ul class="list-unstyled pl-100">
         <li>
             <ds-link to="/organisms/es-cta-banner">
-                EsCtaBanner
+                CTA banner
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-cta-card">
-                EsCtaCard
+                CTA card
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-error-page">
-                EsErrorPage
+                Error page
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-footer">
-                EsFooter
+                Footer
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-form">
-                EsForm
+                Form
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-nav-bar">
-                EsNavBar
+                Nav bar
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-review">
-                EsReview
+                Review
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-reviews-list">
-                EsReviewsList
+                Reviews list
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-reviews-io-card-carousel">
-                EsReviewsIoCardCarousel
+                Reviews.io card carousel
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-support-card">
-                EsSupportCard
+                Support card
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-file-thumbnail">
-                EsFileThumbnail
+                File thumbnail
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-file-preview-modal">
-                EsFilePreviewModal
+                File preview modal
             </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/es-zip-code-form">
-                EsZipCodeForm
+                Zip code form
             </ds-link>
         </li>
     </ul>

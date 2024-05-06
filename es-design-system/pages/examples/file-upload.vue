@@ -3,7 +3,7 @@
         <div>
             <b-col>
                 <h1>
-                    File Upload
+                    File upload
                 </h1>
                 <h2>
                     Comprised of...

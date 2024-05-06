@@ -4,7 +4,9 @@
             Layout
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/layout">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/layout"
+                target="_blank">
                 bootstrap-vue layout
             </b-link>
         </p>

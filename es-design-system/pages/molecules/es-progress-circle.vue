@@ -1,7 +1,12 @@
 <template>
     <div>
+        <h1>
+            Progress circle
+        </h1>
         <p class="pb-200">
-            Extended from <b-link href="https://github.com/EnergySage/es-cdgm/blob/main/frontend/components/CircularProgress.vue">
+            Extended from <b-link
+                href="https://github.com/EnergySage/es-cdgm/blob/main/frontend/components/CircularProgress.vue"
+                target="_blank">
                 <code>es-cdgm</code> codebase
             </b-link>
         </p>

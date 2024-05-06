@@ -4,7 +4,9 @@
             Progress
         </h1>
         <p class="pb-200">
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/progress">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/progress"
+                target="_blank">
                 bootstrap-vue progress
             </b-link>
         </p>

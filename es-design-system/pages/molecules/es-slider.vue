@@ -4,7 +4,9 @@
             Slider
         </h1>
         <p class="pb-450">
-            Extended from <b-link href="https://nightcatsama.github.io/vue-slider-component/">
+            Extended from <b-link
+                href="https://nightcatsama.github.io/vue-slider-component/"
+                target="_blank">
                 vue-slider-component
             </b-link>
         </p>

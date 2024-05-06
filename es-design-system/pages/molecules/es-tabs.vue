@@ -4,7 +4,9 @@
             Tabs
         </h1>
         <p class="mb-450">
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/tabs">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/tabs"
+                target="_blank">
                 bootstrap-vue tabs
             </b-link>
         </p>

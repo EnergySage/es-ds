@@ -3,7 +3,7 @@
         <b-row>
             <b-col>
                 <h1>
-                    Form with (form level) Validation
+                    Form with (form level) validation
                 </h1>
                 <p>
                     See

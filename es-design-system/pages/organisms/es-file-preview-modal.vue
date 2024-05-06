@@ -1,16 +1,21 @@
 <template>
     <div class="h-100">
         <h1>
-            EsFilePreviewModal
+            File preview modal
         </h1>
-        <es-button @click="visible = true">
-            Show preview modal
-        </es-button>
+
+        <div class="my-450">
+            <es-button @click="visible = true">
+                Show preview modal
+            </es-button>
+        </div>
+
         <es-file-preview-modal
             file-source="https://www.eversource.com/content/images/default-source/bills/ct-sample-bill-electric-back.jpg?sfvrsn=e75bd262_4"
             file-name="bill.png"
             :visible="visible"
             @hidden="visible=false" />
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFileThumbnail.vue"

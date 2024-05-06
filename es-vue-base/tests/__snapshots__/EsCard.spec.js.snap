@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EsCard <EsCard /> 1`] = `"<div id="card-id" class="es-card display">Card content</div>"`;
+
+exports[`EsCard EsCard becomes interactive when href is passed and display variant is passed 1`] = `"<a id="card-id" href="https://www.energysage.com/" target="_self" class="es-card interactive">Card content</a>"`;
+
+exports[`EsCard EsCard becomes interactive when href is passed and variant is omitted 1`] = `"<a id="card-id" href="https://www.energysage.com/" target="_self" class="es-card interactive">Card content</a>"`;
+
+exports[`EsCard EsCard default interactive variant 1`] = `"<button id="card-id" class="es-card interactive">Card content</button>"`;
+
+exports[`EsCard EsCard interactive with href 1`] = `"<a id="card-id" href="https://www.energysage.com/" target="_self" class="es-card interactive">Card content</a>"`;
+
+exports[`EsCard EsCard paragraph tag 1`] = `"<p id="card-id" class="es-card display">Card content</p>"`;
+
+exports[`EsCard EsCard tag is honored when passed to interactive variant with href 1`] = `"<p href="https://www.energysage.com/" id="card-id" class="es-card interactive">Card content</p>"`;
