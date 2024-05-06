@@ -1,0 +1,38 @@
+@use "../variables";
+@use "../../variables" as v;
+@use "../../functions";
+@use 'sass:color';
+
+/* stylelint-disable scss/dollar-variable-pattern */
+@import '~vue-slider-component/lib/theme/default';
+@import '~vue-slider-component/lib/styles/dot';
+@import '~vue-slider-component/lib/styles/mark';
+@import '~vue-slider-component/lib/styles/slider';
+
+.es-slider {
+    padding: 0 !important;
+
+    .vue-slider-process {
+        background: linear-gradient(112.58deg, v.$primary 28%, v.$indigo 100%);
+    }
+
+    .vue-slider-rail {
+        height: 10px;
+    }
+
+    .vue-slider-dot-handle {
+        border: 5px solid v.$primary;
+    }
+
+    .slider-tooltip {
+        border-radius: 50%;
+        height: 54px;
+        width: 54px;
+    }
+
+    .slider-label {
+        color: currentColor;
+        font-size: v.$font-size-lg;
+        margin-top: v.$spacer;
+    }
+}

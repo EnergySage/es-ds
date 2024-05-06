@@ -17,8 +17,7 @@
             :marks="marks"
             :min="min"
             :max="max"
-            :tooltip-formatter="val => `$${val}`"
-            @change="changeEvent" />
+            :tooltip-formatter="val => `$${val}`" />
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsSlider.vue"
@@ -54,10 +53,10 @@ export default {
         }
     },
     methods: {
-        changeEvent($event) {
-            // eslint-disable-next-line no-alert
-            alert($event);
-        },
+        // changeEvent($event) {
+        //     // eslint-disable-next-line no-alert
+        //     alert($event);
+        // },
     },
 };
 </script>
