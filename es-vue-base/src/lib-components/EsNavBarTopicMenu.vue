@@ -103,7 +103,7 @@
                             v-else
                             class="h-100">
                             <span
-                                class="nav-item justify-content-center align-items-center d-flex font-weight-bold h-100 text-decoration-none w-100">
+                                class="nav-item justify-content-center align-items-center d-flex font-weight-boldest h-100 text-decoration-none w-100">
                                 {{ name }}
                             </span>
                         </div>

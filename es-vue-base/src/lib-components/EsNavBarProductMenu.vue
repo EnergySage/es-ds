@@ -69,11 +69,15 @@
                         </label>
                     </div>
                     <div class="col-8 align-self-center text-center py-100">
+                        <!--
                         <es-nav-bar-link
-                            class="font-weight-bold text-gray-900"
+                            class="font-weight-boldest text-gray-900"
                             :href="link">
                             {{ name }}
                         </es-nav-bar-link>
+                        <span class="font-weight-boldest text-gray-900">{{ name }}</span>
+                        -->
+                        <span class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
                     </div>
                     <div class="col-2" />
                 </li>
@@ -83,7 +87,7 @@
                     :key="item.name">
                     <es-nav-bar-link
                         class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
-                        :class="{ 'font-weight-bold': item.emphasize }"
+                        :class="item.emphasize ? 'font-weight-boldest' : 'font-weight-bold'"
                         :href="item.link"
                         :target="item.newTab ? '_blank' : null">
                         {{ item.name }}
@@ -109,11 +113,7 @@
                     <div class="col-8 align-self-center text-center py-100">
                         <p
                             class="align-items-center d-flex d-lg-none font-weight-bold justify-content-between mb-0 text-decoration-none w-100">
-                            <es-nav-bar-link
-                                class="nav-link justify-content-center align-items-center d-flex font-weight-bold w-100 h-100"
-                                :href="link">
-                                {{ name }}
-                            </es-nav-bar-link>
+                            <span class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
                         </p>
                     </div>
                     <div class="col-2" />

@@ -104,7 +104,7 @@
                                         </label>
                                     </div>
                                     <div class="col-8 align-self-center text-center py-100">
-                                        <span class="nav-link justify-content-center align-items-center d-flex font-weight-bold w-100 h-100">{{ name }}</span>
+                                        <span class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
                                     </div>
                                     <div class="col-2" />
                                 </li>
