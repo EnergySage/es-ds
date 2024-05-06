@@ -19,10 +19,8 @@ jobs:
 
         steps:
             - name: Restore build 🗃️
-              uses: actions/cache/restore@v4
+              uses: actions/checkout@v4
               with:
-                path: |
-                    ./
                 ref: deploy-to-new-url
 
             - name: Log into ES_DS_DEV AWS account 🔑
