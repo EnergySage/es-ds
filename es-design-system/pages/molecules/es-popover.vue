@@ -73,7 +73,7 @@
                         </b-link>
                     </label>
                     <EsPopover
-                        :placement="placement"
+                        :placement="placement.directive"
                         :target="`darkNoTitleTarget-${placement.directive}`"
                         variant="dark">
                         <p class="mb-0">
@@ -116,7 +116,7 @@
                             </b-link>
                         </label>
                         <EsPopover
-                            :placement="placement"
+                            :placement="placement.directive"
                             :target="`lightTitleTarget-${placement.directive}`"
                             variant="light">
                             <template #title>
@@ -145,7 +145,7 @@
                             </b-link>
                         </label>
                         <EsPopover
-                            :placement="placement"
+                            :placement="placement.directive"
                             :target="`lightNoTitleTarget-${placement.directive}`"
                             variant="light">
                             <p class="mb-0">
