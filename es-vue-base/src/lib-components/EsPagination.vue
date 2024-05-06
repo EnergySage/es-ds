@@ -54,20 +54,20 @@ export default {
         width: 3rem;
 
         .page-link {
-            height: 3rem;
-            width: 3rem;
             border: 0;
             font-size: variables.$font-size-300;
+            height: 3rem;
+            width: 3rem;
         }
     }
 
     .ellipses {
         .page-link {
-            text-align: center;
+            color: variables.$gray-900;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            color: variables.$gray-900;
+            text-align: center;
         }
     }
 
@@ -79,9 +79,9 @@ export default {
 
     .prev-next {
         .page-link {
+            align-items: center;
             border-radius: variables.$border-radius-sm;
             display: flex;
-            align-items: center;
 
             &:not(.disabled):hover {
                 background-color: variables.$gray-50;
