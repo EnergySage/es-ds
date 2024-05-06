@@ -80,8 +80,8 @@ export default {
 
         &.active {
             .page-link {
-                background-color: variables.$gray-900;
-                color: variables.$black;
+                background-color: variables.$orange-50;
+                color: variables.$gray-900;
             }
         }
     }
