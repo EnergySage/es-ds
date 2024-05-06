@@ -21,6 +21,7 @@ jobs:
             - name: Restore build 🗃️
               uses: actions/checkout@v4
               with:
+                fetch-depth: 0
                 ref: deploy-to-new-url
 
             - name: Log into ES_DS_DEV AWS account 🔑
