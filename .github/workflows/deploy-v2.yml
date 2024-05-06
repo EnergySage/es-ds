@@ -1,0 +1,50 @@
+name: ci
+
+on:
+    push:
+        branches:
+            - esds-2.0-visual-identity
+    pull_request:
+        branches:
+            - esds-2.0-visual-identity
+
+jobs:
+    #ci:
+        #uses: ./.github/workflows/ci.yml
+
+    deploy:
+        runs-on: ${{ matrix.os }}
+
+            strategy:
+                matrix:
+                    os: [ubuntu-latest]
+                    node: [16]
+
+            steps:
+                - name: Restore build 🗃️
+                uses: actions/cache/restore@v4
+                with:
+                    path: |
+                        ./
+                    key: |
+                        ${{ github.head_ref || github.ref_name }}-${{ github.sha }}-${{ inputs.environment }}
+
+                - name: Log into aws dev 🔑
+                uses: ./.github/actions/login
+                with:
+                    aws-access-key-id: ${{ secrets.ES_DS_DEV_AWS_ACCESS_KEY_ID }}
+                    aws-secret-access-key: ${{ secrets.ES_DS_DEV_AWS_SECRET_KEY }}
+
+                - name: Building ES-DS version 2
+                working-directory: ./es-design-system
+                shell: bash
+                run: |
+                    npx nuxt generate
+
+                - name: Deploying to S3 📍
+                working-directory: ./es-design-system
+                shell: bash
+                run: |
+                    aws s3 cp ./dist/ s3://es-ds-version-2
+
+
