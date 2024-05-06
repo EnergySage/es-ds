@@ -29,7 +29,7 @@
                 v-if="arrows"
                 variant="link"
                 :disabled="atBeginning"
-                class="d-none d-lg-block p-0 mr-200"
+                class="d-none d-lg-block p-0 mr-100"
                 :class="{
                     'text-gray-900': !atBeginning,
                 }"
@@ -51,7 +51,7 @@
                 v-if="arrows"
                 variant="link"
                 :disabled="atEnd"
-                class="d-none d-lg-block p-0 ml-200"
+                class="d-none d-lg-block p-0 ml-100"
                 :class="{
                     'text-gray-900': !atEnd,
                 }"
