@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            Nuxt Module Usage
+            Nuxt module usage
         </h1>
 
         <h2>
