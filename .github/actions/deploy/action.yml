@@ -1,0 +1,23 @@
+name: deploy
+
+inputs:
+    DISABLE_RESPONSE_HEADERS:
+        description: Disable Cloudfront Security Headers
+        required: false
+        default: false
+
+runs:
+    using: composite
+    steps:
+        - name: Setting clean name 🧹
+          shell: bash
+          run: |
+              echo "awk '{print tolower($0)}' | cut -c1-20 | sed -E 's/[^[:alnum:]-]+/-/g; s/-$//')" >> $GITHUB_OUTPUT
+
+        - name: Deploying to AWS  📍
+          working-directory: ./aws
+          shell: bash
+          env:
+              DISABLE_RESPONSE_HEADERS: ${{ inputs.DISABLE_RESPONSE_HEADERS }}
+          run: |
+              npx cdk deploy --app cdk.out --require-approval never --outputs-file cdk-outputs.json
