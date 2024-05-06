@@ -23,14 +23,14 @@ jobs:
               with:
                 path: |
                     ./
-                key: |
-                    ${{ github.head_ref || github.ref_name }}-${{ github.sha }}-${{ inputs.environment }}
+                ref: deploy-to-new-url
 
-            - name: Log into aws dev 🔑
-              uses: ./.github/actions/login
+            - name: Log into ES_DS_DEV AWS account 🔑
+              uses: aws-actions/configure-aws-credentials@v4
               with:
                 aws-access-key-id: ${{ secrets.ES_DS_DEV_AWS_ACCESS_KEY_ID }}
                 aws-secret-access-key: ${{ secrets.ES_DS_DEV_AWS_SECRET_KEY }}
+                aws-region: us-east-1
 
             - name: Building ES-DS version 2
               working-directory: ./es-design-system
