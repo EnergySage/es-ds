@@ -113,7 +113,8 @@
                     <p class="mb-0 font-size-75 font-weight-normal font-weight-lg-semibold">
                         <es-nav-bar-link
                             :href="content.departmentOfEnergy.learnMore.link"
-                            target="_blank">
+                            target="_blank"
+                            class="text-blue-900">
                             {{ content.departmentOfEnergy.learnMore.text }}
                         </es-nav-bar-link>
                     </p>
@@ -157,10 +158,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss">
-@use "~@energysage/es-bs-base/scss/variables" as variables;
-    a {
-        color: variables.$blue-900;
-    }
-</style>
