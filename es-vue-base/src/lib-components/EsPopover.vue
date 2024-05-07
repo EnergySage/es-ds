@@ -14,15 +14,15 @@
             @binding {string} text or html of the title content
             -->
             <slot name="title" />
-            <EsButton
-                :inline="true"
+            <es-button
+                inline
                 variant="link"
                 class="p-0 float-right"
                 @click="onClose">
                 <XIcon
                     height="20px"
                     width="20px" />
-            </EsButton>
+            </es-button>
         </template>
         <!--
         @slot Popover Content
@@ -32,15 +32,15 @@
             <div class="d-flex">
                 <slot />
                 <div v-if="!hasTitle">
-                    <EsButton
-                        :inline="true"
+                    <es-button
+                        inline
                         variant="link"
-                        class="p-0 pl-2"
+                        class="p-0 pl-50"
                         @click="onClose">
                         <XIcon
                             height="20px"
                             width="20px" />
-                    </EsButton>
+                    </es-button>
                 </div>
             </div>
         </template>

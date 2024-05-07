@@ -23,7 +23,7 @@
   background-clip: padding-box;
   border: variables.$popover-border-width solid variables.$popover-border-color;
   @include border-radius.border-radius(variables.$popover-border-radius);
-  @include box-shadow.box-shadow(variables.$popover-box-shadow);
+  box-shadow: variables.$popover-box-shadow;
   padding: variables.$popover-header-padding-y variables.$popover-header-padding-x;
 
   .arrow {
