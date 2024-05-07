@@ -2,12 +2,10 @@
 @use "../../variables" as v;
 @use "../../functions";
 @use 'sass:color';
-
-/* stylelint-disable scss/dollar-variable-pattern */
-@import '~vue-slider-component/lib/theme/default';
-@import '~vue-slider-component/lib/styles/dot';
-@import '~vue-slider-component/lib/styles/mark';
-@import '~vue-slider-component/lib/styles/slider';
+@use '~vue-slider-component/lib/theme/default';
+@use '~vue-slider-component/lib/styles/dot';
+@use '~vue-slider-component/lib/styles/mark';
+@use '~vue-slider-component/lib/styles/slider';
 
 .es-slider {
   padding: 0 !important;
