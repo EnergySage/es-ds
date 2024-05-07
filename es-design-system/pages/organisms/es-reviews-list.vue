@@ -4,13 +4,6 @@
             Reviews list
         </h1>
         <div class="my-450">
-            <es-button
-                size="sm"
-                class="mb-100"
-                variant="dark"
-                @click="reviewsModalVisible = true">
-                View All Reviews
-            </es-button>
             <es-review-modal
                 :reviews="reviews"
                 :avg-rating="3.5"
@@ -49,6 +42,18 @@
                         @showMore="reviewsModalVisible = true"
                         @editReview="editReview"
                         @reportReview="reportReview" />
+                </b-col>
+            </b-row>
+
+            <b-row class="mt-100">
+                <b-col>
+                    <es-button
+                        size="sm"
+                        class="mb-100"
+                        variant="dark"
+                        @click="reviewsModalVisible = true">
+                        View All Reviews
+                    </es-button>
                 </b-col>
             </b-row>
         </div>
