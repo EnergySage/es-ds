@@ -4,16 +4,11 @@ on:
     push:
         branches:
             - esds-2.0-visual-identity
-            - deploy-to-new-url
     pull_request:
         branches:
             - esds-2.0-visual-identity
-            - deploy-to-new-url
 
 jobs:
-    #ci:
-        #uses: ./.github/workflows/ci.yml
-
     deploy:
         runs-on: ubuntu-latest
         permissions:
@@ -21,7 +16,7 @@ jobs:
             contents: read
 
         steps:
-            - name: Restore build 🗃️
+            - name: Checkout Repo 🗃️
               uses: actions/checkout@v4
               with:
                 ref: deploy-to-new-url
