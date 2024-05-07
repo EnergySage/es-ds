@@ -917,7 +917,7 @@ $input-padding-y:                       0.9rem !default;
 $input-padding-x:                       $input-btn-padding-x !default;
 $input-font-family:                     $input-btn-font-family !default;
 $input-font-size:                       $input-btn-font-size !default;
-$input-font-weight:                     $font-weight-base !default;
+$input-font-weight:                     $font-weight-bold !default;
 $input-line-height:                     $input-btn-line-height !default;
 
 $input-padding-y-sm:                    $input-btn-padding-y-sm !default;
@@ -937,11 +937,11 @@ $input-color:                           $gray-900 !default;
 // fusv-disable
 $input-color-placeholder:               $gray-700 !default;
 // fusv-enable
-$input-border-color:                    $gray-900 !default;
-$input-border-width:                    $input-btn-border-width !default;
+$input-border-color:                    $gray-200 !default;
+$input-border-width:                    $input-btn-border-width * 2 !default;
 $input-box-shadow:                      inset 0 1px 1px rgba($black, .075) !default;
 
-$input-border-radius:                   $border-radius-sm !default;
+$input-border-radius:                   $border-radius !default;
 $input-border-radius-lg:                $border-radius-lg !default;
 $input-border-radius-sm:                $border-radius-sm !default;
 
@@ -954,7 +954,7 @@ $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
 $input-placeholder-color:               $gray-600 !default;
 $input-plaintext-color:                 $body-color !default;
 
-$input-height-border:                   $input-border-width * 2 !default;
+$input-height-border:                   $input-border-width !default;
 
 $input-height-inner:                    functions.add($input-line-height * 1em, $input-padding-y * 2) !default;
 $input-height-inner-half:               functions.add($input-line-height * .5em, $input-padding-y) !default;
@@ -980,7 +980,7 @@ $form-group-margin-bottom:              1rem !default;
 
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
-$input-group-addon-border-color:        $input-border-color !default;
+$input-group-addon-border-color:        $gray-900 !default;
 
 $custom-forms-transition:               background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
@@ -994,7 +994,7 @@ $custom-control-indicator-bg:           $input-bg !default;
 $custom-control-indicator-bg-size:      50% 50% !default;
 $custom-control-indicator-box-shadow:   $input-box-shadow !default;
 $custom-control-indicator-border-color: $gray-500 !default;
-$custom-control-indicator-border-width: $input-border-width !default;
+$custom-control-indicator-border-width: $input-btn-border-width !default;;
 
 $custom-control-label-color:            null !default;
 
@@ -1039,7 +1039,7 @@ $custom-select-font-family:         $input-font-family !default;
 $custom-select-font-size:           $input-font-size !default;
 $custom-select-height:              $input-height !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-font-weight:         $input-font-weight !default;
+$custom-select-font-weight:         $font-weight-base !default;
 $custom-select-line-height:         $input-line-height !default;
 $custom-select-color:               $input-color !default;
 $custom-select-disabled-color:      $gray-600 !default;
@@ -1054,8 +1054,8 @@ $custom-select-feedback-icon-padding-right: functions.add(1em * .75, (2 * $custo
 $custom-select-feedback-icon-position:      center right ($custom-select-padding-x + $custom-select-indicator-padding) !default;
 $custom-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
 
-$custom-select-border-width:        $input-border-width !default;
-$custom-select-border-color:        $input-border-color !default;
+$custom-select-border-width:        $input-btn-border-width !default;
+$custom-select-border-color:        $gray-900 !default;
 $custom-select-border-radius:       $border-radius !default;
 $custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
 
@@ -1101,11 +1101,11 @@ $custom-file-padding-y:             $input-padding-y !default;
 $custom-file-padding-x:             $input-padding-x !default;
 $custom-file-line-height:           $input-line-height !default;
 $custom-file-font-family:           $input-font-family !default;
-$custom-file-font-weight:           $input-font-weight !default;
+$custom-file-font-weight:           $font-weight-base !default;
 $custom-file-color:                 $input-color !default;
 $custom-file-bg:                    $input-bg !default;
-$custom-file-border-width:          $input-border-width !default;
-$custom-file-border-color:          $input-border-color !default;
+$custom-file-border-width:          $input-btn-border-width !default;
+$custom-file-border-color:          $gray-900 !default;
 $custom-file-border-radius:         $input-border-radius !default;
 $custom-file-box-shadow:            $input-box-shadow !default;
 $custom-file-button-color:          $custom-file-color !default;
@@ -1663,3 +1663,5 @@ $b-table-sort-icon-bg-not-sorted: url("data:image/svg+xml,<svg xmlns='http://www
 $b-table-sort-icon-bg-ascending: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='black' d='M51 1l25 23 24 22H1l25-22z'/><path fill='black' opacity='.3' d='M51 101l25-23 24-22H1l25 22z'/></svg>");
 $b-table-sort-icon-bg-descending: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='101' height='101' view-box='0 0 101 101' preserveAspectRatio='none'><path fill='black' opacity='.3' d='M51 1l25 23 24 22H1l25-22z'/><path fill='black' d='M51 101l25-23 24-22H1l25 22z'/></svg>");
 // fusv-enable
+
+

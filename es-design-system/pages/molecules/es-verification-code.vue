@@ -17,43 +17,28 @@
                     @valid-code="checkValidation" />
             </b-col>
         </b-row>
-        <b-row class="my-450">
-            <b-col
-                cols="12"
-                lg="3">
-                <h2>
-                    Medium
-                </h2>
-                <es-verification-code
-                    v-model="code"
-                    size="md"
-                    :char-count="charCount"
-                    :disabled="isSubmitInProgress"
-                    @valid-code="checkValidation" />
-            </b-col>
-        </b-row>
         <b-row class="mt-200 align-items-center">
             <b-col
                 class="mb-100 mb-lg-0"
-                cols="6"
+                cols="10"
                 lg="4">
                 <dl class="row">
-                    <dd class="col-3">
+                    <dd class="col-4">
                         Code:
                     </dd>
-                    <dt class="col-9">
+                    <dt class="col-8">
                         {{ code }}
                     </dt>
-                    <dd class="col-3">
+                    <dd class="col-4">
                         Code(string):
                     </dd>
-                    <dt class="col-9">
+                    <dt class="col-8">
                         {{ code.join('') }}
                     </dt>
-                    <dd class="col-3">
+                    <dd class="col-4">
                         Valid:
                     </dd>
-                    <dt class="col-9">
+                    <dt class="col-8">
                         {{ isValid }}
                     </dt>
                 </dl>
