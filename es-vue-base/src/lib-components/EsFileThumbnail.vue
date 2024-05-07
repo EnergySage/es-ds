@@ -26,9 +26,27 @@
                     <b-col
                         cols="8"
                         class="p-0">
-                        <div class="font-weight-bolder text-gray-800 pl-0">
-                            {{ fileName }}
-                        </div>
+                        <template v-if="mimeType && mimeType.includes('image') && fileSource">
+                            <b-link
+                                v-if="!loading"
+                                aria-label="show-preview-mobile-image"
+                                @click="$emit('showPreview',fileName)">
+                                <div class="font-weight-bold font-size-75 pl-0">
+                                    {{ fileName }}
+                                </div>
+                            </b-link>
+                        </template>
+                        <template v-else>
+                            <b-link
+                                v-if="!loading"
+                                aria-label="show-preview-mobile-file"
+                                :href="fileSource"
+                                target="_blank">
+                                <div class="font-weight-bold font-size-75 pl-0">
+                                    {{ fileName }}
+                                </div>
+                            </b-link>
+                        </template>
                     </b-col>
                     <b-col
                         cols="2">
@@ -38,32 +56,6 @@
                             @click="$emit('removeFile',fileName)">
                             <icon-trash-can />
                         </b-link>
-                    </b-col>
-                </b-row>
-                <b-row
-                    align-v="center"
-                    class="px-3 pb-3">
-                    <b-col cols="2" />
-                    <b-col
-                        cols="10"
-                        class="pl-0">
-                        <template v-if="mimeType && mimeType.includes('image') && fileSource">
-                            <b-link
-                                v-if="!loading"
-                                aria-label="show-preview-mobile-image"
-                                @click="$emit('showPreview',fileName)">
-                                {{ previewText }}
-                            </b-link>
-                        </template>
-                        <template v-else>
-                            <b-link
-                                v-if="!loading"
-                                aria-label="show-preview-mobile-file"
-                                :href="fileSource"
-                                target="_blank">
-                                {{ previewText }}
-                            </b-link>
-                        </template>
                     </b-col>
                 </b-row>
             </div>
@@ -156,12 +148,12 @@
                     </div>
                 </b-link>
             </div>
-            <div class="font-weight-bolder text-truncate pt-2 pt-md-3">
+            <div class="font-weight-bold font-size-75 text-black text-truncate pt-2 pt-md-3">
                 {{ fileName }}
             </div>
             <div
                 v-if="fileSize"
-                class="font-weight-normal">
+                class="font-weight-normal font-size-75 text-gray-800">
                 {{ fileSize }}
             </div>
         </div>
