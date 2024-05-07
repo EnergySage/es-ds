@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            Radio Cards
+            Radio cards
         </h1>
         <p class="mb-200 mb-lg-450">
             Extended from <b-link

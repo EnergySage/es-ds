@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            View More
+            View more
         </h1>
         <es-view-more
             class="my-450"

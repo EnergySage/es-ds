@@ -56,11 +56,6 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/es-form-input">
-                Input
-            </ds-link>
-        </li>
-        <li>
             <ds-link to="/molecules/es-modal">
                 Modal
             </ds-link>
@@ -118,6 +113,11 @@
         <li>
             <ds-link to="/molecules/es-form-textarea">
                 Textarea
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/es-form-input">
+                Text input
             </ds-link>
         </li>
         <li>

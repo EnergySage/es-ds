@@ -458,45 +458,81 @@ $font-family-base:            $font-family-sans-serif !default;
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
 
-$font-size-50:                $font-size-base * 0.75 !default;
-$font-size-75:                $font-size-base * 0.875 !default;
-$font-size-100:               $font-size-base !default;
-$font-size-200:               $font-size-base * 1.125 !default;
-$font-size-300:               $font-size-base * 1.25 !default;
-$font-size-400:               $font-size-base * 1.5 !default;
-$font-size-500:               $font-size-base * 1.875 !default;
-$font-size-600:               $font-size-base * 2.375 !default;
-$font-size-700:               $font-size-base * 3 !default;
-$font-size-800:               $font-size-base * 3.375 !default;
-$font-size-900:               $font-size-base * 3.875 !default;
+$font-size-50:                $font-size-base * 0.75 !default;   // 12px
+$font-size-75:                $font-size-base * 0.875 !default;  // 14px
+$font-size-100:               $font-size-base !default;          // 16px
+$font-size-200:               $font-size-base * 1.125 !default;  // 18px
+$font-size-300:               $font-size-base * 1.25 !default;   // 20px
+$font-size-400:               $font-size-base * 1.5 !default;    // 24px
+$font-size-500:               $font-size-base * 1.875 !default;  // 30px
+$font-size-600:               $font-size-base * 2.375 !default;  // 38px
+$font-size-700:               $font-size-base * 3 !default;      // 48px
+$font-size-800:               $font-size-base * 3.375 !default;  // 54px
+$font-size-900:               $font-size-base * 3.875 !default;  // 62px
+
+$line-height-50:              $font-size-base * 1.125 !default;  // 18px
+$line-height-75:              $font-size-base * 1.25 !default;   // 20px
+$line-height-100:             $font-size-base * 1.5 !default;    // 24px
+$line-height-200:             $font-size-base * 1.5 !default;    // 24px
+$line-height-300:             $font-size-base * 1.75 !default;   // 28px
+$line-height-400:             $font-size-base * 1.75 !default;   // 28px
+$line-height-500:             $font-size-base * 2.25 !default;   // 36px
+$line-height-600:             $font-size-base * 3 !default;      // 48px
+$line-height-700:             $font-size-base * 3.5 !default;    // 56px
+$line-height-800:             $font-size-base * 4 !default;      // 64px
+$line-height-900:             $font-size-base * 4.375 !default;  // 70px
+
+$font-size-xs:                $font-size-50 !default;            // 12px
+$font-size-sm:                $font-size-75 !default;            // 14px
+$font-size-lg:                $font-size-300 !default;           // 20px
 
 // deprecated
-$font-size-xs:                $font-size-base * 0.75;
-$font-size-sm:                $font-size-base * 0.875 !default;
-$font-size-lg:                $font-size-base * 1.25 !default;
-$font-size-xl:                $font-size-base * 1.35 !default;
-$font-size-xxl:               $font-size-base * 1.85 !default;
+$font-size-xl:                $font-size-400 !default;           // 24px
+$font-size-xxl:               $font-size-500 !default;           // 30px
 
 // used in font-size-* utility classes
 $font-sizes: (
-  "50": $font-size-50,
-  "75": $font-size-75,
-  "100": $font-size-100,
-  "200": $font-size-200,
-  "300": $font-size-300,
-  "400": $font-size-400,
-  "500": $font-size-500,
-  "600": $font-size-600,
-  "700": $font-size-700,
-  "800": $font-size-800,
-  "900": $font-size-900,
-  // deprecated
-  "xxl": $font-size-xxl,
-  "xl": $font-size-xl,
-  "lg": $font-size-lg,
+  "50":   $font-size-50,
+  "75":   $font-size-75,
+  "100":  $font-size-100,
+  "200":  $font-size-200,
+  "300":  $font-size-300,
+  "400":  $font-size-400,
+  "500":  $font-size-500,
+  "600":  $font-size-600,
+  "700":  $font-size-700,
+  "800":  $font-size-800,
+  "900":  $font-size-900,
+  // body sizes
+  "xs":   $font-size-xs,
+  "sm":   $font-size-sm,
   "base": $font-size-base,
-  "sm": $font-size-sm,
-  "xs": $font-size-xs,
+  "lg":   $font-size-lg,
+  // deprecated
+  "xl":   $font-size-xl,
+  "xxl":  $font-size-xxl,
+);
+
+$line-heights: (
+  "50":   $line-height-50,
+  "75":   $line-height-75,
+  "100":  $line-height-100,
+  "200":  $line-height-200,
+  "300":  $line-height-300,
+  "400":  $line-height-400,
+  "500":  $line-height-500,
+  "600":  $line-height-600,
+  "700":  $line-height-700,
+  "800":  $line-height-800,
+  "900":  $line-height-900,
+  // body sizes
+  "xs":   $line-height-50,
+  "sm":   $line-height-75,
+  "base": $line-height-100,
+  "lg":   $line-height-300,
+  // deprecated
+  "xl":   $line-height-400,
+  "xxl":  $line-height-500,
 );
 
 // fusv-disable
@@ -630,30 +666,75 @@ $embed-responsive-aspect-ratios: list.join(
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$h1-font-size:                $font-size-base * 1.5 !default;
-$h2-font-size:                $font-size-base * 1.25 !default;
-$h3-font-size:                $font-size-base * 1.125 !default;
-$h4-font-size:                $font-size-base !default;
-$h5-font-size:                $font-size-base * 0.875 !default;
-$h6-font-size:                $font-size-base * 0.75 !default;
+$h1-font-size:                $font-size-400 !default;
+$h2-font-size:                $font-size-300 !default;
+$h3-font-size:                $font-size-200 !default;
+$h4-font-size:                $font-size-100 !default;
+$h5-font-size:                $font-size-75 !default;
+// deprecated
+$h6-font-size:                $font-size-75 !default;
 
-$h1-font-size-desktop:        $font-size-base * 2.375;
-$h2-font-size-desktop:        $font-size-base * 1.875;
-$h3-font-size-desktop:        $font-size-base * 1.5;
-$h4-font-size-desktop:        $font-size-base * 1.25;
-$h5-font-size-desktop:        $font-size-base;
-$h6-font-size-desktop:        $font-size-base * 0.875;
+$h1-line-height:              $line-height-400 !default;
+$h2-line-height:              $line-height-300 !default;
+$h3-line-height:              $line-height-200 !default;
+$h4-line-height:              $line-height-100 !default;
+$h5-line-height:              $line-height-75 !default;
+// deprecated
+$h6-line-height:              $line-height-75 !default;
+
+$h1-font-size-desktop:        $font-size-600 !default;
+$h2-font-size-desktop:        $font-size-500 !default;
+$h3-font-size-desktop:        $font-size-400 !default;
+$h4-font-size-desktop:        $font-size-300 !default;
+$h5-font-size-desktop:        $font-size-100 !default;
+// deprecated
+$h6-font-size-desktop:        $font-size-100 !default;
+
+$h1-line-height-desktop:      $line-height-600 !default;
+$h2-line-height-desktop:      $line-height-500 !default;
+$h3-line-height-desktop:      $line-height-400 !default;
+$h4-line-height-desktop:      $line-height-300 !default;
+$h5-line-height-desktop:      $line-height-100 !default;
+// deprecated
+$h6-line-height-desktop:      $line-height-100 !default;
 
 $headings-margin-bottom:      1rem !default;
 $headings-font-family:        $font-family-sans-serif !default;
 $headings-font-weight:        $font-weight-semibold !default;
-$headings-line-height:        1.2 !default;
+$headings-line-height:        1.2 !default; // no longer used, in favor of specific per font size
 $headings-color:              $gray-900 !default;
 // fusv-disable
 $headings-font-family-higher: null;
 // fusv-enable
-$eyebrow-letter-spacing:      0.08em !default;
 
+// poster type sizing
+$post1-font-size:             $font-size-700 !default;
+$post2-font-size:             $font-size-600 !default;
+$post3-font-size:             $font-size-500 !default;
+
+$post1-line-height:           $line-height-700 !default;
+$post2-line-height:           $line-height-600 !default;
+$post3-line-height:           $line-height-500 !default;
+
+$post1-font-size-desktop:     $font-size-900 !default;
+$post2-font-size-desktop:     $font-size-800 !default;
+$post3-font-size-desktop:     $font-size-700 !default;
+
+$post1-line-height-desktop:   $line-height-900 !default;
+$post2-line-height-desktop:   $line-height-800 !default;
+$post3-line-height-desktop:   $line-height-700 !default;
+
+$post-font-weight:            $font-weight-bolder !default;
+
+// eyebrow
+$eyebrow-font-color:          $blue-500 !default;
+$eyebrow-font-size:           $font-size-100 !default;
+$eyebrow-line-height:         $line-height-100 !default;
+$eyebrow-margin-bottom:       0.5rem !default;
+$eyebrow-font-weight:         $font-weight-bold !default;
+$eyebrow-letter-spacing:      0.08rem !default;
+
+// deprecated "display" type sizing
 $display1-size:               5rem !default;
 $display2-size:               4.5rem !default;
 $display3-size:               4rem !default;
@@ -670,7 +751,7 @@ $lead-font-weight:            300 !default;
 
 $small-font-size:             .875em !default;
 
-$text-muted:                  $gray-700 !default;
+$text-muted:                  $gray-600 !default;
 
 $blockquote-small-color:      $gray-600 !default;
 $blockquote-small-font-size:  $small-font-size !default;
@@ -1067,7 +1148,7 @@ $input-group-addon-border-color:        $input-border-color !default;
 $custom-forms-transition:               background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 $custom-control-gutter:                 1rem !default;
-$custom-control-spacer-x:               1rem !default;
+$custom-control-spacer-x:               2rem !default;
 $custom-control-cursor:                 null !default;
 
 $custom-control-indicator-size:         1rem !default;
@@ -1403,6 +1484,16 @@ $card-columns-count:                3 !default;
 $card-columns-gap:                  1.25rem !default;
 $card-columns-margin:               $card-spacer-y !default;
 
+$card-interactive-border-color:        $gray-200 !default;
+$card-interactive-shadow:              0px 4px 12px 0px $gray-50 !default;
+
+$card-interactive-hover-border-color:  $orange-300 !default;
+
+$card-interactive-focus-border-color:  $orange-600 !default;
+
+$card-interactive-active-border-color: $orange-900 !default;
+$card-interactive-active-shadow:       0px 3px 10px 0px $gray-50 !default;
+
 
 // Tooltips
 
@@ -1550,12 +1641,12 @@ $modal-content-color:               null !default;
 $modal-content-bg:                  $white !default;
 $modal-content-border-color:        null !default;
 $modal-content-border-width:        0 !default;
-$modal-content-border-radius:       $border-radius-lg !default;
+$modal-content-border-radius:       $border-radius-xs !default;
 $modal-content-inner-border-radius: functions.subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       0 !default;
-$modal-content-box-shadow-sm-up:    0 !default;
+$modal-content-box-shadow-sm-up:    0px 4px 12px 0px $gray-300 !default;
 
-$modal-backdrop-bg:                 rgba($black, 0.45) !default;
+$modal-backdrop-bg:                 rgba($gray-900, 0.45) !default;
 $modal-backdrop-opacity:            .2 !default;
 $modal-header-border-color:         null !default;
 $modal-footer-border-color:         $modal-header-border-color !default;
@@ -1715,7 +1806,7 @@ $close-text-shadow:                 0 1px 0 $white !default;
 // Code
 
 $code-font-size:                    87.5% !default;
-$code-color:                        $pink !default;
+$code-color:                        $orange-900 !default;
 
 $kbd-padding-y:                     .2rem !default;
 $kbd-padding-x:                     .4rem !default;

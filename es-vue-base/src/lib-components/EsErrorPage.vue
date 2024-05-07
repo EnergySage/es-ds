@@ -1,22 +1,17 @@
 <template>
-    <b-container class="my-450">
+    <b-container class="py-450 py-lg-800 bg-gray-50">
         <b-row>
             <b-col
                 md="7"
                 class="my-450 mx-auto text-center">
-                <h1 class="font-weight-boldest display-3">
-                    {{ errorType }}
+                <h1 class="post1 text-gray-600">
+                    {{ errorShortMessage }}
                 </h1>
-                <h2
-                    v-if="checkValidError"
-                    id="msgError">
-                    {{ errorCode[errorType] }}
-                </h2>
-                <h2
-                    v-else
-                    id="msgGeneric">
-                    {{ genericMsg }}
-                </h2>
+                <p
+                    id="msgError"
+                    class="font-size-lg text-gray-600">
+                    {{ errorLongMessage }}
+                </p>
             </b-col>
         </b-row>
         <b-row>
@@ -35,8 +30,8 @@
                             class="m-100 text-orange">
                             <component
                                 :is="item.icon"
-                                height="46px"
-                                width="46px" />
+                                height="53px"
+                                width="53px" />
                         </div>
                     </div>
                     <p class="'font-weight-bolder mb-200 mb-md-0'">{{ item.label }}</p>
@@ -69,23 +64,41 @@ export default {
     },
     data() {
         return {
-            errorCode: {
-                // eslint-disable-next-line max-len, quote-props
-                '403': "Oops! If you're seeing this message, there's a good chance you have cookies or referrers turned off in your browser.",
-                // eslint-disable-next-line quote-props
-                '404': 'Oops! We are terribly sorry, but there is nothing bright to see here.',
-                // eslint-disable-next-line quote-props
-                '500': 'Oops! We are terribly sorry, but our server is not so bright today. Please try again.',
-                // eslint-disable-next-line quote-props
-                '503': 'Service unavailable: The page you are requesting is temporarily unavailable.',
+            errorCodeToMessages: {
+                403: {
+                    shortMessage: 'Access denied',
+                    longMessage: "Oops! If you're seeing this message, there's a good chance you have cookies or "
+                        + 'referrers turned off in your browser.',
+                },
+                404: {
+                    shortMessage: 'Page not found',
+                    longMessage: 'Oops! We are terribly sorry, but there is nothing bright to see here.',
+                },
+                500: {
+                    shortMessage: 'Internal server error',
+                    longMessage: 'Oops! We are terribly sorry, but our server is not so bright today. '
+                        + 'Please try again.',
+                },
+                503: {
+                    shortMessage: 'Service unavailable',
+                    longMessage: 'The page you are requesting is temporarily unavailable.',
+                },
+                default: {
+                    longMessage: 'Oops! Something went wrong!',
+                },
             },
-            genericMsg: 'Oops! Something went wrong!',
             linkItems: getEsErrorPageContent(),
         };
     },
     computed: {
-        checkValidError() {
-            return Object.keys(this.errorCode).includes(this.errorType);
+        messages() {
+            return this.errorCodeToMessages[this.errorType];
+        },
+        errorShortMessage() {
+            return this.messages?.shortMessage || this.errorType;
+        },
+        errorLongMessage() {
+            return this.messages?.longMessage || this.errorCodeToMessages.default.longMessage;
         },
     },
 };
