@@ -214,13 +214,8 @@ export default {
     }
 
     .popover-body {
-        .btn, .btn:hover, .btn:active {
+        .btn, .btn:hover, .btn:active, a {
             color: variables.$white;
-        }
-
-        a {
-            color: variables.$lightblue;
-            font-weight: variables.$font-weight-bold;
         }
     }
 }
