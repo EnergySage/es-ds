@@ -230,10 +230,6 @@ export default {
 .code-holder {
     .code-input {
         appearance: textfield;
-        height: 5rem;
-        @include breakpoints.media-breakpoint-down(md) {
-            height:3.5rem;
-    }
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
