@@ -16,20 +16,23 @@ jobs:
 
     deploy:
         runs-on: ubuntu-latest
+        permissions:
+            id-token: write
+            contents: read
 
         steps:
             - name: Restore build 🗃️
               uses: actions/checkout@v4
               with:
-                fetch-depth: 0
                 ref: deploy-to-new-url
 
             - name: Log into ES_DS_DEV AWS account 🔑
+              id: creds
               uses: aws-actions/configure-aws-credentials@v4
               with:
-                aws-access-key-id: ${{ secrets.ES_DS_DEV_AWS_ACCESS_KEY_ID }}
-                aws-secret-access-key: ${{ secrets.ES_DS_DEV_AWS_SECRET_KEY }}
                 aws-region: us-east-1
+                role-to-assume: arn:aws:iam::688938528921:role/github-write-to-s3
+                output-credentials: true
 
             - name: Building ES-DS version 2
               working-directory: ./es-design-system
