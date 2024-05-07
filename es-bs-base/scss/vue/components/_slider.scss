@@ -22,12 +22,14 @@
 
   .vue-slider-dot-handle {
     border: variables.$b-slider-dot-border;
+    filter: variables.$b-slider-dot-shadow;
   }
 
   .slider-tooltip {
     border-radius: variables.$b-slider-tooltip-border-radius;
     height: variables.$b-slider-tooltip-diameter;
     width: variables.$b-slider-tooltip-diameter;
+    box-shadow: variables.$b-slider-tooltip-shadow;
   }
 
   .vue-slider-marks {

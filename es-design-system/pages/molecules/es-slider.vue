@@ -17,6 +17,7 @@
             :marks="marks"
             :min="min"
             :max="max"
+            :label-formatter="val => `$${val}`"
             :tooltip-formatter="val => `$${val}`" />
         <ds-doc-source
             :comp-code="compCode"

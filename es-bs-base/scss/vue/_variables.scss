@@ -186,5 +186,8 @@ $b-slider-background: linear-gradient(90deg, v.$blue-400 0%, v.$blue-800 100%);
 $b-slider-rail-height: 10px;
 $b-slider-tooltip-diameter: 52px;
 $b-slider-tooltip-border-radius: 50%;
+$b-slider-shadow-color:rgba(34, 38, 51, 0.25);
+$b-slider-tooltip-shadow: 0 1px 6px 0 $b-slider-shadow-color;
+$b-slider-dot-shadow: drop-shadow(0 1px 6px $b-slider-shadow-color);
 $b-slider-dot-border: 9px solid v.$blue-600;
 $b-slider-label-margin-top: 12px;
