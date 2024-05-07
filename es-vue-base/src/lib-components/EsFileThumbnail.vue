@@ -78,7 +78,7 @@
                     <b-link
                         v-if="!loading"
                         aria-label="close-file-desktop"
-                        class="text-gray-800 text-decoration-none icon-button"
+                        class="text-blue-600 text-decoration-none icon-button"
                         @click="$emit('removeFile',fileName)">
                         <icon-circle-x />
                         <div class="svg-fill-wrapper bg-white" />
@@ -117,7 +117,9 @@
                                 <b-spinner
                                     v-if="!percentLoaded"
                                     role="status"
-                                    label="Loading" />
+                                    variant="primary"
+                                    label="Loading"
+                                    class="thumbnail-spinner" />
                             </div>
                         </template>
                     </div>
@@ -317,6 +319,16 @@ export default {
         height: 105px;
         width: 95px;
     }
+
+    ::v-deep.progress-circle {
+        stroke: variables.$blue-700 !important;
+    }
+}
+
+.thumbnail-spinner {
+    border-width: 0.3rem;
+    height: 40px;
+    width: 40px;
 }
 
 .icon-button {
