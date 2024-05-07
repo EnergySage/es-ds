@@ -50,6 +50,6 @@ jobs:
               working-directory: ./es-design-system
               shell: bash
               run: |
-                aws s3 cp ./dist/ s3://es-ds-version-2
+                aws s3 cp --recursive ./dist/ s3://es-ds-version-2
 
 
