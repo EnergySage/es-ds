@@ -2,7 +2,7 @@
     <div class="dropdown nav-item nav-item-border-mobile">
         <!-- desktop product link / hover menu trigger -->
         <es-nav-bar-link
-            class="product-menu-header-link dropdown-toggle d-none d-lg-block px-lg-100 px-xl-200 py-lg-0 text-decoration-none text-gray"
+            class="product-menu-header-link dropdown-toggle d-none d-lg-block px-lg-100 px-xl-200 py-lg-0 text-decoration-none"
             :href="link"
             :target="newTab ? '_blank' : null"
             aria-haspopup="true"
@@ -86,8 +86,8 @@
                     v-for="item in items"
                     :key="item.name">
                     <es-nav-bar-link
-                        class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
-                        :class="item.emphasize ? 'font-weight-boldest' : 'font-weight-bold'"
+                        class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50 product-menu-link"
+                        :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="item.newTab ? '_blank' : null">
                         {{ item.name }}

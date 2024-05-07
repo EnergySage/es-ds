@@ -179,6 +179,7 @@ export default (
                             link: `${ES_DOMAIN}/solar/solar-panel-efficiency-cost-over-time/`,
                         },
                     ],
+                    link: `${ES_DOMAIN}/blog/`,
                 },
             ],
             featuredArticle: {

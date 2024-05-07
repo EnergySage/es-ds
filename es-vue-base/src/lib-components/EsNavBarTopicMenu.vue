@@ -8,16 +8,16 @@
             class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray"
             :href="link"
             :target="newTab ? '_blank' : null">
-            <span class="align-items-center eyebrow d-flex">
+            <span class="align-items-center eyebrow mb-0 d-flex">
                 {{ name }}
                 <icon-arrow-right
                     class="d-none d-lg-inline-block ml-25"
-                    height="14px"
-                    width="14px" />
+                    height="24px"
+                    width="24px" />
             </span>
             <span
                 v-if="subHeading"
-                class="d-block font-italic">
+                class="d-block">
                 {{ subHeading }}
             </span>
         </es-nav-bar-link>
@@ -30,7 +30,7 @@
             </span>
             <span
                 v-if="subHeading"
-                class="d-block font-italic">
+                class="d-block">
                 {{ subHeading }}
             </span>
         </p>
@@ -116,7 +116,7 @@
                     v-for="item in items"
                     :key="item.name">
                     <es-nav-bar-link
-                        class="dropdown-item nav-item nav-item-border-mobile nav-link d-flex align-items-center ml-lg-0 px-lg-0 py-lg-50 font-weight-bold"
+                        class="dropdown-item nav-item nav-item-border-mobile nav-link d-flex align-items-center ml-lg-0 px-lg-0 py-lg-50"
                         :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="item.newTab ? '_blank' : null">

@@ -192,7 +192,7 @@ $nav-hover-delay: 300ms;
 
       // stylelint-disable-next-line selector-max-class
       &:hover {
-        font-weight: variables.$font-weight-semibold;
+        font-weight: variables.$font-weight-bold;
         color: variables.$navbar-light-color;
         text-decoration: underline;
       }
@@ -277,7 +277,7 @@ $nav-hover-delay: 300ms;
       height: 1px;
       margin: 0; // override .dropdown-toggle::after style
       content: "";
-      background-color: variables.$gray-400;
+      background-color: variables.$gray-100;
       border-style: none;  // override .dropdown-toggle::after style
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 1px;
@@ -303,10 +303,14 @@ $nav-hover-delay: 300ms;
       }
     }
 
-    .product-menu-header-link:hover {
-      // fix for text-gray utility class not being !important
-      color: variables.$gray;
+    .product-menu-header-link {
+      color: variables.$blue-800;
     }
+
+    .product-menu-link {
+      font-size: variables.$font-size-sm;
+    }
+
     .product-menu-flyout {
       left: 50%;
       width: 310px; // approx width of four columns at 992px breakpoint / 960px max width
@@ -351,7 +355,7 @@ $nav-hover-delay: 300ms;
         z-index: 1001;
         height: 2px;
         content: "";
-        background: variables.$gray;
+        background: variables.$orange-800;
         border-style: none;
       }
     }
@@ -361,12 +365,53 @@ $nav-hover-delay: 300ms;
       background: variables.$gray-50;
       @include border-radius.border-radius(8px);
 
-      .nav-link {
+      > .nav-link {
+        color: variables.$blue-900;
         text-decoration: none;
       }
 
       &:hover {
         background: variables.$blue-50;
+
+        > .nav-link {
+          color: variables.$blue-900;
+        }
+      }
+    }
+
+    .navbar-light .navbar-nav {
+      // stylelint-disable-next-line selector-max-class
+      .nav-item.nav-link {
+        // stylelint-disable-next-line selector-max-class
+        &:hover {
+          font-weight: variables.$font-weight-normal;
+        }
+      }
+    }
+
+    // stylelint-disable-next-line selector-max-class
+    .topic-group {
+      .eyebrow {
+        color: variables.$gray-900;
+      }
+
+      .nav-link:has(.eyebrow) {
+        /* stylelint-disable-next-line declaration-no-important */
+        color: variables.$blue-600 !important;
+
+        // stylelint-disable-next-line selector-max-class
+        &:hover {
+          /* stylelint-disable-next-line declaration-no-important */
+          color: variables.$blue-600 !important;
+        }
+
+        .eyebrow {
+          color: variables.$blue-600;
+        }
+      }
+
+      .dropdown-item {
+        font-size: variables.$font-size-sm;
       }
     }
 
@@ -533,23 +578,36 @@ $nav-hover-delay: 300ms;
       margin-bottom: variables.$navbar-padding-y;
       background: variables.$gray-50;
       @include border-radius.border-radius(3px);
+
+      > .nav-link {
+        color: variables.$blue-900;
+
+        &:hover {
+          color: variables.$blue-900;
+        }
+      }
     }
 
-    // TODO: Combine with previous selector?
-    .nav-item.top-header > .dropdown-label,
-    .nav-item.top-header > .nav-link {
+    .nav-item.top-header > .dropdown-label {
       color: variables.$blue-900;
 
       &:hover {
         color: variables.$blue-900;
+        text-decoration: underline;
       }
     }
 
-    // mobile nav item hover
-    .nav-item.top-header > .dropdown-label:hover,
     .nav-item.dropdown > .dropdown-label:hover,
     .topic-group > .dropdown-label:hover {
       text-decoration: underline;
+    }
+
+    .topic-group .dropdown-item {
+      font-weight: variables.$font-weight-bold;
+
+      &:hover {
+        font-weight: variables.$font-weight-bold;
+      }
     }
 
     // allow longer items (e.g. news article titles) to wrap on mobile
@@ -575,6 +633,10 @@ $nav-hover-delay: 300ms;
     .submenu .expand-icon,
     .product-menu-flyout .expand-icon {
       fill: variables.$blue-900;
+    }
+
+    .product-menu-link {
+      font-weight: variables.$font-weight-bold;
     }
 
     // Style rows in hamburger, add bottom border
