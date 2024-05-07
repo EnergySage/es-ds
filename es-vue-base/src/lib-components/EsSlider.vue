@@ -112,3 +112,11 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+/* stylelint-disable scss/dollar-variable-pattern */
+@import '~vue-slider-component/lib/theme/default';
+@import '~vue-slider-component/lib/styles/dot';
+@import '~vue-slider-component/lib/styles/mark';
+@import '~vue-slider-component/lib/styles/slider';
+</style>

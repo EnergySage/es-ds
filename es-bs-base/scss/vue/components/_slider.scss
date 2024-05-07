@@ -1,11 +1,5 @@
 @use "../variables";
 @use "../../variables" as v;
-@use "../../functions";
-@use 'sass:color';
-@use '~vue-slider-component/lib/theme/default';
-@use '~vue-slider-component/lib/styles/dot';
-@use '~vue-slider-component/lib/styles/mark';
-@use '~vue-slider-component/lib/styles/slider';
 
 .es-slider {
   padding: 0 !important;
