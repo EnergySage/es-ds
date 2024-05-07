@@ -38,25 +38,6 @@ exports[`EsSlider <EsSlider
 </div>"
 `;
 
-exports[`EsSlider <EsSlider /> labelFormatter works 1`] = `
-"<div min="0" max="100">
-  <div class="es-slider vue-slider vue-slider-ltr" style="padding: 14px 14px; width: auto; height: 4px;">
-    <div class="vue-slider-rail">
-      <div class="vue-slider-process" style="height: 100%; top: 0px; left: 0%; width: 100%; transition-property: width,left; transition-duration: 0.5s;"></div>
-      <div class="vue-slider-marks"></div>
-      <div aria-valuetext="50" class="vue-slider-dot" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" tabindex="0" aria-label="Select a number" style="width: 28px; height: 28px; transform: translate(-50%, -50%); top: 50%; left: 100%; transition: left 0.5s;">
-        <div class="vue-slider-dot-handle"></div>
-        <div class="vue-slider-dot-tooltip vue-slider-dot-tooltip-top vue-slider-dot-tooltip-show">
-          <div class="slider-tooltip d-flex align-items-center text-white justify-content-center m-0 bg-blue-600 font-weight-boldest">
-            50
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
 exports[`EsSlider <EsSlider /> tooltipFormatter works 1`] = `
 "<div min="0" max="100">
   <div class="es-slider vue-slider vue-slider-ltr" style="padding: 14px 14px; width: auto; height: 4px;">
