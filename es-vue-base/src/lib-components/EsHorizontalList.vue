@@ -28,7 +28,11 @@
             <es-button
                 v-if="arrows"
                 variant="link"
-                class="text-black d-none d-lg-block p-0 mr-200"
+                :disabled="atBeginning"
+                class="d-none d-lg-block p-0 mr-100"
+                :class="{
+                    'text-gray-900': !atBeginning,
+                }"
                 @click="arrowClick('left')">
                 <icon-chevron-left />
                 <span class="sr-only">Previous</span>
@@ -46,7 +50,11 @@
             <es-button
                 v-if="arrows"
                 variant="link"
-                class="text-black d-none d-lg-block p-0 ml-200"
+                :disabled="atEnd"
+                class="d-none d-lg-block p-0 ml-100"
+                :class="{
+                    'text-gray-900': !atEnd,
+                }"
                 @click="arrowClick('right')">
                 <icon-chevron-right />
                 <span class="sr-only">Next</span>
@@ -99,6 +107,14 @@ export default {
             startPosition: null,
             newPosition: null,
         };
+    },
+    computed: {
+        atBeginning() {
+            return this.activeIndex === 1;
+        },
+        atEnd() {
+            return this.activeIndex === this.children.length;
+        },
     },
     mounted() {
         const scroller = this.$refs[this.id];
@@ -231,7 +247,7 @@ export default {
 
 .dots-holder {
     .dot {
-        background-color: variables.$gray-400;
+        background-color: variables.$gray-100;
         border-radius: 50%;
         height: 14px;
         width: 14px;
@@ -241,7 +257,7 @@ export default {
         }
 
         &.active {
-            background-color: variables.$primary;
+            background-color: variables.$orange-800;
         }
     }
 }
