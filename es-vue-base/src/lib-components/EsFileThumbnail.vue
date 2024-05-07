@@ -18,6 +18,7 @@
                         </div>
                         <div v-else>
                             <es-progress-circle
+                                class="thumbnail-progress"
                                 :value="percentLoaded"
                                 :show-percentage="false"
                                 height="24px" />
@@ -26,26 +27,31 @@
                     <b-col
                         cols="8"
                         class="p-0">
-                        <template v-if="mimeType && mimeType.includes('image') && fileSource">
-                            <b-link
-                                v-if="!loading"
-                                aria-label="show-preview-mobile-image"
-                                @click="$emit('showPreview',fileName)">
-                                <div class="font-weight-bold font-size-75 pl-0">
-                                    {{ fileName }}
-                                </div>
-                            </b-link>
+                        <template v-if="!loading">
+                            <template v-if="mimeType && mimeType.includes('image') && fileSource">
+                                <b-link
+                                    aria-label="show-preview-mobile-image"
+                                    @click="$emit('showPreview',fileName)">
+                                    <div class="font-weight-bold font-size-75 pl-0">
+                                        {{ fileName }}
+                                    </div>
+                                </b-link>
+                            </template>
+                            <template v-else>
+                                <b-link
+                                    aria-label="show-preview-mobile-file"
+                                    :href="fileSource"
+                                    target="_blank">
+                                    <div class="font-weight-bold font-size-75 pl-0">
+                                        {{ fileName }}
+                                    </div>
+                                </b-link>
+                            </template>
                         </template>
                         <template v-else>
-                            <b-link
-                                v-if="!loading"
-                                aria-label="show-preview-mobile-file"
-                                :href="fileSource"
-                                target="_blank">
-                                <div class="font-weight-bold font-size-75 pl-0">
-                                    {{ fileName }}
-                                </div>
-                            </b-link>
+                            <div class="font-weight-bold font-size-75 pl-0">
+                                {{ fileName }}
+                            </div>
                         </template>
                     </b-col>
                     <b-col
@@ -105,7 +111,8 @@
                                     :show-percentage="percentLoaded"
                                     :value="percentLoaded"
                                     circle
-                                    height="65px" />
+                                    height="65px"
+                                    class="thumbnail-progress" />
                                 <b-spinner
                                     v-if="!percentLoaded"
                                     role="status"
@@ -142,7 +149,8 @@
                             <div class="h-100 d-flex align-items-center justify-content-center">
                                 <es-progress-circle
                                     :value="percentLoaded"
-                                    height="65px" />
+                                    height="65px"
+                                    class="thumbnail-progress" />
                             </div>
                         </template>
                     </div>
@@ -311,9 +319,11 @@ export default {
         height: 105px;
         width: 95px;
     }
+}
 
-    ::v-deep.progress-circle {
-        stroke: variables.$blue-700 !important;
+.thumbnail-progress::v-deep {
+    .progress-circle {
+            stroke: variables.$blue-700 !important;
     }
 }
 
