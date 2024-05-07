@@ -26,13 +26,13 @@
                                 :key="column.title"
                                 class="col col-6 col-md-3 mb-150">
                                 <ul class="list-unstyled">
-                                    <li class="font-weight-bold font-size-75 font-size-md-100 mb-50">
+                                    <li class="font-weight-bold font-size-75 font-size-md-100 mb-100 mb-lg-50">
                                         {{ column.title }}
                                     </li>
                                     <li
                                         v-for="link in column.links"
                                         :key="link.text"
-                                        class="mt-25 mb-50 font-size-75">
+                                        class="mt-25 mb-100 mb-lg-50 font-size-75">
                                         <es-nav-bar-link
                                             :href="link.url"
                                             :target="link.newTab ? '_blank' : null"
@@ -83,7 +83,7 @@
                 </p>
                 <!-- Trademark Info -->
                 <!-- Legal -->
-                <hr class="border-top bg-blue-50 m-0">
+                <hr class="border-top border-blue-50 m-0">
                 <div class="row justify-content-center pt-100">
                     <div
                         v-for="link in content.legalLinks"

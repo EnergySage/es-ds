@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-navbar
-            class="d-xl-none mb-3"
+            class="d-xl-none mb-100"
             type="dark"
             variant="primary">
             <b-navbar-nav>
@@ -22,7 +22,7 @@
                 <ds-link-list />
             </div>
             <b-container class="pt-xl-100 mx-0">
-                <b-row class="mb-3">
+                <b-row class="mb-100">
                     <b-col cols="12">
                         <es-breadcrumbs :items="breadcrumbs" />
                     </b-col>
