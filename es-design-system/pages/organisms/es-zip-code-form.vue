@@ -70,7 +70,7 @@
                 Same as above, except the zip code form is inside a container with a dark background and the
                 <code>dark</code> prop is set to <code>true</code>.
             </p>
-            <div class="bg-gray p-100">
+            <div class="bg-dark-blue rounded p-200">
                 <b-row class="justify-content-center">
                     <b-col
                         sm="10"
@@ -106,7 +106,6 @@
                     sm="8"
                     md="6"
                     lg="5"
-                    xl="4"
                     xxl="3">
                     <es-zip-code-form
                         constrained
@@ -179,10 +178,11 @@
 
         <div class="mb-450">
             <h2>
-                Product Specific CTA
+                Product specific CTA
             </h2>
             <p class="mb-200">
-                This example shows how to specify a product.
+                This example shows how to specify a product parameter that will be passed along when the form
+                is submitted.
             </p>
             <b-row class="justify-content-center">
                 <b-col
@@ -298,7 +298,7 @@ export default {
                 ],
                 [
                     'selectedProduct',
-                    'n/a',
+                    "''",
                     'Specify which product of interest. Options include: solar-pv, heatpump, ev-charger',
                 ],
                 [

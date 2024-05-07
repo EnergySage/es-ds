@@ -2,8 +2,6 @@
 @use "../variables";
 
 :export {
-  base: variables.$font-size-base;
-
   font-size-50: variables.$font-size-50;
   font-size-75: variables.$font-size-75;
   font-size-100: variables.$font-size-100;
@@ -16,10 +14,13 @@
   font-size-800: variables.$font-size-800;
   font-size-900: variables.$font-size-900;
 
-  // deprecated
-  font-size-xxl: variables.$font-size-xxl;
-  font-size-xl: variables.$font-size-xl;
-  font-size-lg: variables.$font-size-lg;
-  font-size-sm: variables.$font-size-sm;
+  // body sizes
   font-size-xs: variables.$font-size-xs;
+  font-size-sm: variables.$font-size-sm;
+  font-size-base: variables.$font-size-base;
+  font-size-lg: variables.$font-size-lg;
+
+  // deprecated
+  font-size-xl: variables.$font-size-xl;
+  font-size-xxl: variables.$font-size-xxl;
 }

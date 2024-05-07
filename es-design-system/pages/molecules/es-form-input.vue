@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            Input
+            Text input
         </h1>
         <p>
             Extended from <b-link
