@@ -1442,11 +1442,11 @@ $pagination-hover-color:            $link-hover-color !default;
 $pagination-hover-bg:               $gray-200 !default;
 $pagination-hover-border-color:     $gray-300 !default;
 
-$pagination-active-color:           $component-active-color !default;
-$pagination-active-bg:              $component-active-bg !default;
-$pagination-active-border-color:    $pagination-active-bg !default;
+$pagination-active-color:           $gray-900 !default;
+$pagination-active-bg:              $orange-50 !default;
+$pagination-active-border-color:    $pagination-border-color !default;
 
-$pagination-disabled-color:         $gray-600 !default;
+$pagination-disabled-color:         $gray-500 !default;
 $pagination-disabled-bg:            $white !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 
@@ -1644,7 +1644,7 @@ $modal-content-border-width:        0 !default;
 $modal-content-border-radius:       $border-radius-xs !default;
 $modal-content-inner-border-radius: functions.subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       0 !default;
-$modal-content-box-shadow-sm-up:    0px 4px 12px 0px $gray-50 !default;
+$modal-content-box-shadow-sm-up:    0px 4px 12px 0px $gray-300 !default;
 
 $modal-backdrop-bg:                 rgba($gray-900, 0.45) !default;
 $modal-backdrop-opacity:            .2 !default;

@@ -9,6 +9,7 @@ on:
         branches:
             - main
             - master
+            - esds-2.0-visual-identity
 
 jobs:
     ci:
