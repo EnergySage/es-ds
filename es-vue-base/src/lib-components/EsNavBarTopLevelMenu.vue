@@ -3,21 +3,13 @@
         <!-- desktop fly-out menu trigger -->
         <es-nav-bar-link
             v-if="!link"
-            class="nav-link dropdown-toggle d-none d-lg-block py-150"
+            class="nav-link dropdown-toggle d-none d-lg-block py-150 font-weight-bolder"
             href="#"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false">
             <div class="d-lg-flex align-items-center">
-                <span class="mr-50">
-                    <IconCircleChevronDown
-                        class="top-header-icon"
-                        style="height: 16px; width: 16px;" />
-                </span>
                 {{ name }}
-            </div>
-            <div class="font-weight-light font-size-xs pl-150">
-                {{ subHeading }}
             </div>
         </es-nav-bar-link>
         <!-- mobile+desktop top-level link -->

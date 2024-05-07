@@ -96,8 +96,8 @@
             </ul>
             <div
                 v-if="topics && topics.length"
-                class="product-menu-flyout product-menu-flyout--large dropdown-menu border-0 flex-wrap mt-0 p-lg-100 row w-auto">
-                <div class="nav-item mb-50">
+                class="product-menu-flyout product-menu-flyout--large dropdown-menu border-0 flex-wrap mt-0 p-lg-100">
+                <div class="nav-item d-lg-none mb-50">
                     <!-- mobile subnav header -->
                     <div class="col-2">
                         <!-- closes this menu level -->

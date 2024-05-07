@@ -166,6 +166,10 @@ export default (
                     name: 'News',
                     subtopics: [
                         {
+                            name: 'News',
+                            link: `${ES_DOMAIN}/blog/`,
+                        },
+                        {
                             name: 'How long can you run your house on a Tesla Powerwall?',
                             // eslint-disable-next-line max-len
                             link: `${ES_DOMAIN}/energy-storage/tesla-powerwall-how-much-home-can-you-run-on-it-for-how-long/`,
@@ -175,7 +179,6 @@ export default (
                             link: `${ES_DOMAIN}/solar/solar-panel-efficiency-cost-over-time/`,
                         },
                     ],
-                    link: `${ES_DOMAIN}/blog/`,
                 },
             ],
             featuredArticle: {
@@ -359,6 +362,7 @@ export default (
         },
         {
             name: 'Community solar',
+            link: `${ES_DOMAIN}/shop/community-solar/`,
             items: [
                 {
                     name: 'Community solar',
@@ -378,6 +382,7 @@ export default (
         },
         {
             name: 'Heating & cooling',
+            link: `${ES_DOMAIN}/shop/heat-pumps/`,
             items: [
                 {
                     name: 'Heating & cooling',
@@ -401,6 +406,7 @@ export default (
         },
         {
             name: 'Backup power',
+            link: `${ES_DOMAIN}/energy-storage/`,
             items: [
                 {
                     name: 'Backup power guide',
@@ -423,6 +429,7 @@ export default (
         },
         {
             name: 'EV charging',
+            link: `${ES_DOMAIN}/ev-charging/`,
             items: [
                 {
                     name: 'EV charging guide',
@@ -441,6 +448,7 @@ export default (
         },
         {
             name: 'For your business',
+            link: `${ES_DOMAIN}/businesses/`,
             items: [
                 {
                     name: 'For your business',
