@@ -221,6 +221,10 @@ ol li {
 
 .list-unstyled {
   @include lists.list-unstyled();
+
+  li {
+    margin-bottom: 0;
+  }
 }
 
 // Inline turns list items into inline-block
