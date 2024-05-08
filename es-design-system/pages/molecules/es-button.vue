@@ -25,7 +25,7 @@
             small buttons to 18px.
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Primary
             </h2>
@@ -89,7 +89,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Secondary
             </h2>
@@ -156,7 +156,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Link
             </h2>
@@ -253,7 +253,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="bg-dark-blue my-450 p-100 rounded-lg text-white">
+        <div class="bg-dark-blue my-500 p-100 rounded-lg text-white">
             <h2 class="text-white">
                 Dark background
             </h2>
@@ -392,7 +392,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Loading
             </h2>
@@ -449,7 +449,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Props
             </h2>

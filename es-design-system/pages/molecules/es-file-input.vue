@@ -4,7 +4,7 @@
             File input
         </h1>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <es-file-input
                 :upload-urls="uploadUrls"
                 :max-file-size-mb="10"
@@ -34,7 +34,7 @@
                 </template>
             </es-file-input>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-50">
                 Collapsed
             </h2>
@@ -72,7 +72,7 @@
         </div>
         <div
             v-if="fileObjects.length"
-            class="mb-450">
+            class="mb-500">
             <h2 class="mb-200">
                 Upload links
             </h2>
@@ -109,7 +109,7 @@
                 {{ event.msg }}
             </es-form-msg>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsFileInput props
             </h2>
@@ -144,7 +144,7 @@
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsFileInput event listeners
             </h2>

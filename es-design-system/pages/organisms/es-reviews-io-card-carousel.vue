@@ -7,7 +7,7 @@
             This is a third-party widget provided by Reviews.io with custom styling on our end.
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <es-reviews-io-card-carousel />
         </div>
     </div>

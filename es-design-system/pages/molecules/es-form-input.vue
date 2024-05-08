@@ -19,7 +19,7 @@
             </b-link>
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Basic example
             </h2>
@@ -39,7 +39,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Required
             </h2>
@@ -60,7 +60,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Error state
             </h2>
@@ -84,7 +84,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Success state
             </h2>
@@ -108,7 +108,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Success state with message
             </h2>
@@ -135,7 +135,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Disabled state
             </h2>
@@ -159,7 +159,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Placeholder
             </h2>
@@ -180,7 +180,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Masked
             </h2>
@@ -206,7 +206,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Hidden label
             </h2>
@@ -242,7 +242,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Prefix icon
             </h2>
@@ -271,7 +271,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Context message above the field
             </h2>
@@ -295,7 +295,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Context message below the field
             </h2>

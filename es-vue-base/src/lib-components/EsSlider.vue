@@ -17,7 +17,7 @@
             <!-- Tooltip above the slider thumb -->
             <template #tooltip="{ value, focus }">
                 <div
-                    class="slider-tooltip d-flex h5 align-items-center text-white justify-content-center m-0 bg-primary"
+                    class="slider-tooltip d-flex align-items-center text-white justify-content-center m-0 bg-blue-600 font-weight-boldest"
                     :class="[{ focus }]">
                     {{ tooltipFormatter(value) }}
                 </div>
@@ -25,7 +25,7 @@
             <!-- Labels below the process bar -->
             <template #label="{ label, active }">
                 <div :class="['slider-label', 'vue-slider-mark-label', { active }]">
-                    {{ label }}
+                    {{ labelFormatter(label) }}
                 </div>
             </template>
         </vue-slider>
@@ -71,6 +71,14 @@ export default {
             default: 'Select a number',
         },
         /**
+         * Function that modifies label value
+         */
+        labelFormatter: {
+            type: Function,
+            required: false,
+            default: (val) => val,
+        },
+        /**
          * Function that modifies tooltip value
          */
         tooltipFormatter: {
@@ -107,41 +115,8 @@ export default {
 
 <style lang="scss">
 /* stylelint-disable scss/dollar-variable-pattern */
-@use "~@energysage/es-bs-base/scss/variables" as variables;
 @import '~vue-slider-component/lib/theme/default';
-
-$railBorderRadius: 9px;
-$dotBgColor: variables.$white;
-
 @import '~vue-slider-component/lib/styles/dot';
 @import '~vue-slider-component/lib/styles/mark';
 @import '~vue-slider-component/lib/styles/slider';
-
-.es-slider {
-    padding: 0 !important;
-
-    .vue-slider-process {
-        background: linear-gradient(112.58deg, variables.$primary 28%, variables.$indigo 100%);
-    }
-
-    .vue-slider-rail {
-        height: 10px;
-    }
-
-    .vue-slider-dot-handle {
-        border: 5px solid variables.$primary;
-    }
-
-    .slider-tooltip {
-        border-radius: 50%;
-        height: 54px;
-        width: 54px;
-    }
-
-    .slider-label {
-        color: currentColor;
-        font-size: variables.$font-size-lg;
-        margin-top: variables.$spacer;
-    }
-}
 </style>
