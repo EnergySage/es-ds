@@ -214,6 +214,11 @@ mark,
 // Lists
 //
 
+ul li,
+ol li {
+  margin-bottom: 0.5rem;
+}
+
 .list-unstyled {
   @include lists.list-unstyled();
 }

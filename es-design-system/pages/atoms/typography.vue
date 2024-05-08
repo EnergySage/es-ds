@@ -200,7 +200,7 @@
             <h2>
                 Body
             </h2>
-            <ds-responsive-table class="responsive-table-typography">
+            <ds-responsive-table class="responsive-table-typography mb-100">
                 <ds-responsive-table-row
                     v-for="example in bodyExamples"
                     :key="example.name">
@@ -272,6 +272,52 @@
                     </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
+
+            <h3>
+                Bulleted lists
+            </h3>
+            <p>
+                Here is an example of an unordered list.
+            </p>
+            <ul>
+                <li>
+                    This is the first item.
+                </li>
+                <li>
+                    This is the second item.
+                </li>
+                <li>
+                    This is the third item.
+                </li>
+            </ul>
+            <p>
+                Here is an example of an ordered list.
+            </p>
+            <ol>
+                <li>
+                    This is the first item.
+                </li>
+                <li>
+                    This is the second item.
+                </li>
+                <li>
+                    This is the third item.
+                </li>
+            </ol>
+            <p>
+                Here is an example of an unstyled list.
+            </p>
+            <ul class="list-unstyled">
+                <li>
+                    This is the first item.
+                </li>
+                <li>
+                    This is the second item.
+                </li>
+                <li>
+                    This is the third item.
+                </li>
+            </ul>
         </div>
 
         <b-row class="my-450">
