@@ -165,12 +165,6 @@ export default {
 .margin-list {
     margin-bottom: 0.5rem;
     margin-top: 0.25rem;
-         &:last-child {
-            margin-bottom: 0;
-        }
-        &:first-child {
-            margin-top: 0;
-        }
 
     @include breakpoints.media-breakpoint-down(md) {
          margin-bottom: 1rem;
@@ -180,7 +174,13 @@ export default {
             margin-bottom: 0;
         }
     }
+
+         &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
 }
-
 </style>
-
