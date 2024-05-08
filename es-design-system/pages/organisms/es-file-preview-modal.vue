@@ -4,7 +4,7 @@
             File preview modal
         </h1>
 
-        <div class="my-450">
+        <div class="my-500">
             <es-button @click="visible = true">
                 Show preview modal
             </es-button>

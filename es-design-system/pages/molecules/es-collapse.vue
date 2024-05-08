@@ -10,7 +10,7 @@
                 bootstrap-vue collapse
             </b-link>
         </p>
-        <div class="mt-450 mb-450">
+        <div class="mt-500 mb-500">
             <h2>
                 Default
             </h2>
@@ -19,7 +19,7 @@
             </p>
             <EsCollapse
                 id="defaultCollapse"
-                class="ml-450 mr-450 mt-450">
+                class="ml-500 mr-500 mt-500">
                 <template #title>
                     <h2 class="mb-0">
                         My Title
@@ -38,7 +38,7 @@
             </EsCollapse>
         </div>
 
-        <div class="mt-450 mb-450">
+        <div class="mt-500 mb-500">
             <h2>
                 Programmatic, with user override
             </h2>
@@ -46,7 +46,7 @@
                 An EsCollapse component that takes a "visible" prop. Click the checkbox to toggle showing its
                 contents! If you click the collapse itself, the "visible" prop will no longer be honored.
             </p>
-            <form class="ml-450 mr-450 mt-450">
+            <form class="ml-500 mr-500 mt-500">
                 <label for="suggestedVisibleInput">
                     <input
                         id="suggestedVisibleInput"
@@ -58,7 +58,7 @@
             <EsCollapse
                 id="testId"
                 :visible="suggestedVisible"
-                class="p-450"
+                class="p-500"
                 @shown="shownEvent"
                 @toggled="toggledEvent">
                 <template #title>
@@ -79,7 +79,7 @@
             </EsCollapse>
         </div>
 
-        <div class="mt-450 mb-450">
+        <div class="mt-500 mb-500">
             <h2>
                 Programmatic, with Priority
             </h2>
@@ -88,7 +88,7 @@
                 the checkbox to toggle showing its contents! Unlike the previous example, if you click the collapse
                 itself, the "visible" prop will continue to be honored.
             </p>
-            <form class="ml-450 mr-450 mt-450">
+            <form class="ml-500 mr-500 mt-500">
                 <label for="visible">
                     <input
                         id="visible"
@@ -101,7 +101,7 @@
                 id="testId"
                 v-model="visible"
                 :is-programmatic-until-user-input="false"
-                class="p-450"
+                class="p-500"
                 @shown="shownEvent"
                 @toggled="toggledEventInSuggestedVisibleExample">
                 <template #title>
@@ -122,7 +122,7 @@
             </EsCollapse>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsCollapse props
             </h2>

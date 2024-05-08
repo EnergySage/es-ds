@@ -25,14 +25,14 @@
         </es-button>
 
         <es-form-msg
-            class="my-450"
+            class="my-500"
             :show="showSuccess"
             variant="success"
             @hidden="showSuccess = false">
             Saved successfully
         </es-form-msg>
         <es-form-msg
-            class="my-450"
+            class="my-500"
             :show="showError"
             variant="danger"
             @hidden="showError = false">
@@ -40,7 +40,7 @@
             and we were unable to complete your request. Please try again
         </es-form-msg>
         <es-form-msg
-            class="my-450"
+            class="my-500"
             :show="showInfo"
             variant="primary"
             @hidden="showInfo = false">
