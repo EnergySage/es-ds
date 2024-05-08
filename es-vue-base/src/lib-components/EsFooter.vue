@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>  <!-- Make an impact -->
-        <div class="bg-blue-800 py-200 px-200">
+        <div class="bg-blue-800 py-200 pt-lg-200 pb-lg-150 px-200">
             <div class="container px-0">
                 <div class="row">
                     <!-- Link columns -->
@@ -32,7 +32,7 @@
                                     <li
                                         v-for="link in column.links"
                                         :key="link.text"
-                                        class="margin-list font-size-75">
+                                        class="mt-0 mt-lg-25 mb-100 mb-lg-50 font-size-75">
                                         <es-nav-bar-link
                                             :href="link.url"
                                             :target="link.newTab ? '_blank' : null"
@@ -158,29 +158,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss" scoped>
-@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
-
-.margin-list {
-    margin-bottom: 0.5rem;
-    margin-top: 0.25rem;
-
-    @include breakpoints.media-breakpoint-down(md) {
-         margin-bottom: 1rem;
-         margin-top: 0;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-         &:last-child {
-            margin-bottom: 0;
-        }
-
-        &:first-child {
-            margin-top: 0;
-        }
-}
-</style>
