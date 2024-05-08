@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsFormTextarea <EsFormTextarea /> 1`] = `
-"<div class="input-wrapper justify-content-end mb-50"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">Notes
+"<div class="input-wrapper justify-content-end"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">Notes
     <!----></label>
   <div class="input-holder"><textarea id="myID" rows="2" wrap="soft" class="es-form-textarea w-100 form-control"></textarea>
     <!---->
@@ -12,7 +12,7 @@ exports[`EsFormTextarea <EsFormTextarea /> 1`] = `
 `;
 
 exports[`EsFormTextarea <EsFormTextarea <label /> /> 1`] = `
-"<div required="required" class="input-wrapper justify-content-end mb-50"><label for="myID" class="label font-italic font-weight-semibold justify-content-start"> <span class="text-danger">
+"<div required="required" class="input-wrapper justify-content-end"><label for="myID" class="label font-italic font-weight-semibold justify-content-start"> <span class="text-danger">
             *
         </span></label>
   <div class="input-holder"><textarea id="myID" rows="2" wrap="soft" class="es-form-textarea w-100 form-control"></textarea>
@@ -26,7 +26,7 @@ exports[`EsFormTextarea <EsFormTextarea <label /> /> 1`] = `
 `;
 
 exports[`EsFormTextarea <EsFormTextarea props /> 1`] = `
-"<div required="required" class="input-wrapper justify-content-end mb-50"><label for="myID" class="label font-italic font-weight-semibold justify-content-start"> <span class="text-danger">
+"<div required="required" class="input-wrapper justify-content-end"><label for="myID" class="label font-italic font-weight-semibold justify-content-start"> <span class="text-danger">
             *
         </span></label>
   <div class="input-holder"><textarea id="myID" rows="2" wrap="soft" class="es-form-textarea w-100 form-control"></textarea>
@@ -41,7 +41,7 @@ exports[`EsFormTextarea <EsFormTextarea props /> 1`] = `
 
 exports[`EsFormTextarea <EsFormTextarea v-model /> 1`] = `
 "<div>
-  <div class="input-wrapper justify-content-end mb-50"><label for="testId" class="label font-italic font-weight-semibold justify-content-start">
+  <div class="input-wrapper justify-content-end"><label for="testId" class="label font-italic font-weight-semibold justify-content-start">
       <!----></label>
     <div class="input-holder"><textarea id="testId" rows="2" wrap="soft" class="es-form-textarea w-100 form-control" data-testid="testTextarea"></textarea>
       <!---->
@@ -53,7 +53,7 @@ exports[`EsFormTextarea <EsFormTextarea v-model /> 1`] = `
 `;
 
 exports[`EsFormTextarea <EsFormTextarea>slots</EsFormTextarea> 1`] = `
-"<div class="input-wrapper justify-content-end mb-50"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">Notes
+"<div class="input-wrapper justify-content-end"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">Notes
     <!----></label>
   <div class="input-holder"><textarea id="myID" rows="2" wrap="soft" class="es-form-textarea w-100 form-control"></textarea> <small class="form-text text-muted">Enter your notes here.</small>
     <div class="invalid-feedback">Please enter a valid value.</div>
