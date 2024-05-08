@@ -266,94 +266,11 @@ export default {
 
 <style lang="scss" scoped>
 @use "~@energysage/es-bs-base/scss/variables" as variables;
-@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
-
-.desktop-preview {
-    width: 165px;
-}
-
-.thumbnail-border {
-    border: 2px solid variables.$card-border-color;
-}
-
-.thumbnail-border-failure {
-    border: 2px solid variables.$danger;
-}
-
-.thumbnail-outer-wrapper {
-    height: 165px;
-    width: 165px;
-    z-index: 2;
-    @include breakpoints.media-breakpoint-down(md) {
-        height: 110px;
-        width: 100px;
-    }
-}
-
-.thumbnail-inner-wrapper-x {
-    border: 2px solid variables.$card-border-color;
-    height: 160px;
-    top: -18px;
-    width: 160px;
-    z-index: -1;
-
-    @include breakpoints.media-breakpoint-down(md) {
-        height: 105px;
-        width: 95px;
-    }
-
-    &:hover {
-        border: 2px solid variables.$gray-900;
-    }
-}
-
-.thumbnail-inner-wrapper {
-    border: 2px solid variables.$card-border-color;
-    height: 160px;
-    overflow: hidden;
-    top: 8px;
-    width: 160px;
-    z-index: -1;
-
-    @include breakpoints.media-breakpoint-down(md) {
-        height: 105px;
-        width: 95px;
-    }
-}
 
 .thumbnail-progress::v-deep {
     .progress-circle {
             stroke: variables.$blue-700 !important;
     }
-}
-
-.thumbnail-spinner {
-    border-width: 0.3rem;
-    height: 40px;
-    width: 40px;
-}
-
-.icon-button {
-    position: relative;
-    z-index: 2;
-}
-
-a:hover {
-    color: variables.$gray-800;
-}
-
-.svg-fill-wrapper {
-    border-radius: 1rem;
-    height: 20px;
-    position: absolute;
-    right: 2px;
-    top: 4px;
-    width: 20px;
-    z-index: -1;
-}
-
-.image-preview {
-    object-fit: cover;
 }
 
 </style>
