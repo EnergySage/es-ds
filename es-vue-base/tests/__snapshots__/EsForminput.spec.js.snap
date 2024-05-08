@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsFormInput <EsFormInput /> 1`] = `
-"<div class="input-wrapper justify-content-end polite-mb-50"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">Account Number
+"<div class="input-wrapper justify-content-end"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">Account Number
     <!----></label>
   <!---->
   <div class="input-holder position-relative">
@@ -14,7 +14,7 @@ exports[`EsFormInput <EsFormInput /> 1`] = `
 `;
 
 exports[`EsFormInput <EsFormInput <label /> /> 1`] = `
-"<div required="required" class="input-wrapper justify-content-end polite-mb-50"><label for="myID" class="label font-italic font-weight-semibold justify-content-start"> <span class="text-danger">
+"<div required="required" class="input-wrapper justify-content-end"><label for="myID" class="label font-italic font-weight-semibold justify-content-start"> <span class="text-danger">
             *
         </span></label>
   <!---->
@@ -30,7 +30,7 @@ exports[`EsFormInput <EsFormInput <label /> /> 1`] = `
 `;
 
 exports[`EsFormInput <EsFormInput props /> 1`] = `
-"<div class="input-wrapper justify-content-end polite-mb-50"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">
+"<div class="input-wrapper justify-content-end"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">
     <!----></label>
   <!---->
   <div class="input-holder position-relative">
@@ -44,7 +44,7 @@ exports[`EsFormInput <EsFormInput props /> 1`] = `
 
 exports[`EsFormInput <EsFormInput v-model /> 1`] = `
 "<div>
-  <div class="input-wrapper justify-content-end polite-mb-50"><label for="testId" class="label font-italic font-weight-semibold justify-content-start">
+  <div class="input-wrapper justify-content-end"><label for="testId" class="label font-italic font-weight-semibold justify-content-start">
       <!----></label>
     <!---->
     <div class="input-holder position-relative">
@@ -58,7 +58,7 @@ exports[`EsFormInput <EsFormInput v-model /> 1`] = `
 `;
 
 exports[`EsFormInput <EsFormInput>slots</EsFormInput> 1`] = `
-"<div class="input-wrapper justify-content-end polite-mb-50"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">Account Number
+"<div class="input-wrapper justify-content-end"><label for="myID" class="label font-italic font-weight-semibold justify-content-start">Account Number
     <!----></label>
   <!---->
   <div class="input-holder position-relative">

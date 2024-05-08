@@ -3,14 +3,13 @@
         <b-row>
             <b-col>
                 <h1>
-                    Form with (form level) validation
+                    Form with server error
                 </h1>
                 <p>
                     See
-                    <b-link
-                        :to="{ name: 'examples-form-field-validation___en' }">
-                        Form Field Validation
-                    </b-link> for field level validation example
+                    <b-link to="/examples/form-field-validation">
+                        Form with client-side validation
+                    </b-link> for example of individual field validation
                 </p>
                 <h2>
                     UX Guidelines
@@ -21,10 +20,10 @@
                             Show loading spinner on button during server request
                         </li>
                         <li>
-                            Use <b-link :to="{ name: 'molecules-es-form-msg___en' }">
-                                EsFormMsg
+                            Use <b-link to="/molecules/es-form-msg">
+                                Form message
                             </b-link>
-                            for displaying of server-side form-level errors
+                            to display server-side errors
                         </li>
                     </ul>
                 </p>
@@ -34,8 +33,7 @@
             <b-col
                 cols="12"
                 lg="8">
-                <b-form
-                    @submit.stop.prevent="onSubmit">
+                <b-form @submit.stop.prevent="onSubmit">
                     <es-form-msg
                         class="mt-100"
                         :show="formShowError"
@@ -53,12 +51,12 @@
                             Name
                         </template>
                     </es-form-input>
-                    <div class="d-flex flex-grow-1 justify-content-end mt-100">
+                    <div class="d-flex flex-grow-1 justify-content-end mt-200">
                         <es-button
                             type="submit"
                             class="w-100 w-lg-auto"
                             :disabled="isSubmitInProgress">
-                            <span class="w-100 min-width-6">
+                            <span class="w-100">
                                 <span
                                     v-if="isSubmitInProgress">
                                     <b-spinner
