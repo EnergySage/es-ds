@@ -3,7 +3,7 @@
         <h1>
             Tabs
         </h1>
-        <p class="mb-450">
+        <p class="mb-500">
             Extended from <b-link
                 href="https://bootstrap-vue.org/docs/components/tabs"
                 target="_blank">
@@ -11,7 +11,7 @@
             </b-link>
         </p>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Basic example
             </h2>
@@ -39,7 +39,7 @@
             </es-tabs>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Using v-model
             </h2>

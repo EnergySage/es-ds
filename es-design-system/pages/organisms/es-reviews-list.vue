@@ -3,7 +3,7 @@
         <h1>
             Reviews list
         </h1>
-        <div class="my-450">
+        <div class="my-500">
             <es-button
                 size="sm"
                 class="mb-100"

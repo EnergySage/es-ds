@@ -37,7 +37,7 @@
                 </p>
             </div>
             <es-file-input
-                class="mb-450"
+                class="mb-500"
                 :upload-urls="uploadUrls"
                 :max-file-size-mb="maxFileSizeMb"
                 :file-types="fileTypes"

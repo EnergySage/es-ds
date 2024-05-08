@@ -3,7 +3,7 @@
         <h1>
             Accordion
         </h1>
-        <p class="mb-450">
+        <p class="mb-500">
             Makes use of
             <b-link
                 href="https://bootstrap-vue.org/docs/components/collapse"
@@ -12,7 +12,7 @@
             </b-link>
         </p>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Single expand
             </h2>
@@ -71,7 +71,7 @@
             </es-accordion-list>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Single expand, minimal variant
             </h2>
@@ -132,7 +132,7 @@
             </es-accordion-list>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Single expand, starts collapsed
             </h2>
@@ -190,7 +190,7 @@
             </es-accordion-list>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Single expand with v-model
             </h2>
@@ -310,7 +310,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Multiple expand
             </h2>
@@ -371,7 +371,7 @@
             </es-accordion-list>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsAccordionList props
             </h2>
@@ -381,7 +381,7 @@
                 striped />
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsAccordion props
             </h2>

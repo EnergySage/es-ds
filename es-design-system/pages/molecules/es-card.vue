@@ -3,12 +3,12 @@
         <h1>
             Card
         </h1>
-        <p class="mb-450">
+        <p class="mb-500">
             Cards are used to visually group related information on a page. There are two variants:
             display (default) and interactive.
         </p>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Display
             </h2>
@@ -25,7 +25,7 @@
             </es-card>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Interactive (button)
             </h2>
@@ -59,7 +59,7 @@
             </es-modal>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Interactive (link)
             </h2>
@@ -116,7 +116,7 @@
             </es-card>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsCard props
             </h2>

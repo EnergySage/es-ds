@@ -19,7 +19,7 @@
             </b-link>
         </p>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col
                 cols="12"
                 lg="6">
@@ -36,7 +36,7 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col
                 cols="12"
                 lg="6">
@@ -54,7 +54,7 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col
                 cols="12"
                 lg="6">
@@ -76,7 +76,7 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col
                 cols="12"
                 lg="6">
@@ -98,7 +98,7 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col
                 cols="12"
                 lg="6">
@@ -126,7 +126,7 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col
                 cols="12"
                 lg="6">
@@ -144,7 +144,7 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col
                 cols="12"
                 lg="6">

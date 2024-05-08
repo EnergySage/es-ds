@@ -88,7 +88,7 @@
                 </div>
             </b-col>
         </b-row>
-        <div class="mt-5 mb-450">
+        <div class="mt-5 mb-500">
             <h2>
                 EsFileThumbnail props
             </h2>
