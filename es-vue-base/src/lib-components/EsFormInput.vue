@@ -1,6 +1,6 @@
 <template>
     <div
-        class="input-wrapper justify-content-end polite-mb-50"
+        class="input-wrapper justify-content-end"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
@@ -164,48 +164,3 @@ export default {
     },
 };
 </script>
-<style lang="scss" scoped>
-@use "~@energysage/es-bs-base/scss/variables" as variables;
-
-// TODO: Move to es-bs-base
-.is-invalid {
-    color: variables.$danger;
-}
-
-.es-form-input:disabled, .es-form-input[readonly] {
-    border: 0;
-}
-
-.form-inline .input-wrapper {
-    display: flex;
-    flex: 0 0 100%;
-
-    label {
-        flex: 0 0 30%;
-    }
-
-    .input-holder {
-        flex: 0 0 70%;
-    }
-}
-
-.has-prefix-icon {
-    /* match the padding right of valid/invalid state icons */
-    padding-left: variables.$input-height-inner !important;
-}
-
-.prefix-icon {
-    /* match the padding left of normal inputs */
-    left: variables.$input-padding-x;
-    /* allow clicks to pass through and give the input focus */
-    pointer-events: none;
-    /* vertically center within the input container */
-    top: calc(variables.$input-height * 0.5);
-    transform: translateY(-50%);
-}
-
-.polite-mb-50 {
-    margin-bottom: 0.5rem;
-}
-
-</style>
