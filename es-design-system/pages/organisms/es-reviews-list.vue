@@ -4,13 +4,6 @@
             Reviews list
         </h1>
         <b-container class="my-500">
-            <es-button
-                size="sm"
-                class="mb-100"
-                variant="dark"
-                @click="reviewsModalVisible = true">
-                View All Reviews
-            </es-button>
             <es-review-modal
                 :reviews="reviews"
                 :avg-rating="3.5"
