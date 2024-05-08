@@ -5,10 +5,10 @@
         <!-- desktop header, if it's a link -->
         <es-nav-bar-link
             v-if="link"
-            class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-50 mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray"
+            class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-sm mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray"
             :href="link"
             :target="newTab ? '_blank' : null">
-            <span class="align-items-center eyebrow mb-0 d-flex">
+            <span class="align-items-center eyebrow mb-50 d-flex link-name">
                 {{ name }}
                 <icon-arrow-right
                     class="d-none d-lg-inline-block ml-25"
@@ -17,7 +17,7 @@
             </span>
             <span
                 v-if="subHeading"
-                class="d-block">
+                class="d-block link-subheading">
                 {{ subHeading }}
             </span>
         </es-nav-bar-link>
@@ -128,7 +128,7 @@
         <!-- mobile link, shown only if we have a link and don't want to show child items on mobile -->
         <es-nav-bar-link
             v-if="link"
-            class="nav-item nav-item-lg nav-item-border-mobile nav-link d-lg-none w-100 text-decoration-none"
+            class="nav-item nav-item-menu nav-item-border-mobile nav-link d-lg-none w-100 text-decoration-none"
             :class="{
                 'd-none': showItemsOnMobile,
                 'd-block': !showItemsOnMobile,

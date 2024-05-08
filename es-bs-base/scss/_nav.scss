@@ -226,6 +226,18 @@ $nav-hover-delay: 300ms;
     height: auto !important;
   }
 
+  // cta callout with image
+  .dropdown-cta-right .cta-link:hover {
+    .link-name {
+      text-decoration: underline;
+    }
+
+    .link-subheading {
+      // stylelint-disable-next-line declaration-no-important
+      text-decoration: none !important;
+    }
+  }
+
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: $desktop-min-width) {
     .nav-es-global,
@@ -474,6 +486,27 @@ $nav-hover-delay: 300ms;
         width: 250px;
       }
     }
+
+    // menu item with eyebrow heading
+    .nav-link.topic-menu-header {
+      .link-subheading {
+        color: variables.$gray-900;
+      }
+
+      &:hover {
+        // stylelint-disable-next-line declaration-no-important
+        text-decoration: none !important;
+
+        .link-name {
+          text-decoration: underline;
+        }
+
+        .link-subheading {
+          font-weight: variables.$font-weight-normal;
+          color: variables.$gray-900;
+        }
+      }
+    }
   }
 
   @include breakpoints.media-breakpoint-up(xl) {
@@ -646,28 +679,6 @@ $nav-hover-delay: 300ms;
       margin: 0 15px;
     }
 
-    // taller nav items with two lines
-    .nav-item-lg {
-      height: 76px;
-      margin-bottom: 0.5em;
-    }
-
-    .nav-item-lg:hover {
-      .link-name {
-        text-decoration: underline;
-      }
-      .link-subheading {
-        // stylelint-disable-next-line declaration-no-important
-        font-weight: 400 !important;
-      }
-    }
-
-    .dropdown-cta-right:hover {
-      .link-name {
-        text-decoration: underline;
-      }
-    }
-
     .nav-item-border-mobile {
       // stylelint-disable-next-line declaration-no-important
       border-bottom: 1px solid variables.$gray-100 !important;
@@ -752,6 +763,26 @@ $nav-hover-delay: 300ms;
     .product-menu-flyout-see-all {
       text-decoration: underline;
       letter-spacing: 0.08em;
+    }
+
+    // menu item with eyebrow heading
+    .nav-item.nav-item-menu {
+      height: 76px;
+      margin-bottom: 0.5em;
+      text-decoration: none;
+
+      &:hover {
+        .link-name {
+          text-decoration: underline;
+        }
+
+        .link-subheading {
+          font-weight: variables.$font-weight-normal;
+          color: variables.$gray-900;
+          // stylelint-disable-next-line declaration-no-important
+          text-decoration: none !important;
+        }
+      }
     }
   }
 }
