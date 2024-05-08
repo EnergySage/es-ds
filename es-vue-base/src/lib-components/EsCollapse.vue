@@ -4,11 +4,11 @@
             block
             :aria-expanded="expanded.toString()"
             :aria-controls="id"
-            class="collapse-holder pb-100 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
+            class="rounded-0 collapse-holder pb-0 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body border-top"
             inline
             variant="link"
             @click="userClick">
-            <div>
+            <div class="pt-100 pb-100">
                 <slot name="title" />
             </div>
             <div>
@@ -31,10 +31,8 @@
         </b-collapse>
 
         <div
-            v-if="border"
+            class="border-bottom"
             :class="{
-                'border-bottom': true,
-                'bottom-spacer': true,
                 expanded: expanded,
             }" />
     </div>
@@ -76,15 +74,6 @@ export default {
          * Prioritize the visible prop over the user's interaction with the collapse.
          */
         isProgrammaticUntilUserInput: {
-            type: Boolean,
-            required: false,
-            default: true,
-        },
-        /**
-         * Border
-         * Show the border or not
-         */
-        border: {
             type: Boolean,
             required: false,
             default: true,

@@ -1,7 +1,7 @@
 <template>
     <div class="position-relative">
         <h1>
-            Horizontal List
+            Horizontal list
         </h1>
         <h2>
             Left Aligned No Dots
@@ -11,7 +11,7 @@
                 <div
                     v-for="index in 10"
                     :key="index"
-                    class="large-block-holder bg-primary mr-200 text-center text-white py-450">
+                    class="large-block-holder bg-gray-50 mr-200 text-center py-450 rounded">
                     {{ index }}
                 </div>
             </es-horizontal-list>
@@ -25,7 +25,7 @@
                 <div
                     v-for="index in 3"
                     :key="index"
-                    class="center-block-holder bg-primary mr-50 text-center text-white py-450">
+                    class="center-block-holder bg-gray-50 mr-50 text-center py-450 rounded">
                     {{ index }}
                 </div>
             </es-horizontal-list>
@@ -40,7 +40,7 @@
                 <div
                     v-for="index in 5"
                     :key="index"
-                    class="center-block-holder bg-primary mr-50 text-center text-white py-450">
+                    class="center-block-holder bg-gray-50 mr-50 text-center py-450 rounded">
                     {{ index }}
                 </div>
             </es-horizontal-list>

@@ -14,24 +14,98 @@ h1, h2, h3, h4, h5, h6,
   margin-bottom: variables.$headings-margin-bottom;
   font-family: variables.$headings-font-family;
   font-weight: variables.$headings-font-weight;
-  line-height: variables.$headings-line-height;
   color: variables.$headings-color;
 }
 
-h1, .h1 { @include rfs.font-size(variables.$h1-font-size); }
-h2, .h2 { @include rfs.font-size(variables.$h2-font-size); }
-h3, .h3 { @include rfs.font-size(variables.$h3-font-size); }
-h4, .h4 { @include rfs.font-size(variables.$h4-font-size); }
-h5, .h5 { @include rfs.font-size(variables.$h5-font-size); }
-h6, .h6 { @include rfs.font-size(variables.$h6-font-size); }
+h1, .h1 {
+  @include rfs.font-size(variables.$h1-font-size);
+  line-height: variables.$h1-line-height;
+}
+h2, .h2 {
+  @include rfs.font-size(variables.$h2-font-size);
+  line-height: variables.$h2-line-height;
+}
+h3, .h3 {
+  @include rfs.font-size(variables.$h3-font-size);
+  line-height: variables.$h3-line-height;
+}
+h4, .h4 {
+  @include rfs.font-size(variables.$h4-font-size);
+  line-height: variables.$h4-line-height;
+}
+h5, .h5 {
+  @include rfs.font-size(variables.$h5-font-size);
+  line-height: variables.$h5-line-height;
+}
+h6, .h6 {
+  @include rfs.font-size(variables.$h6-font-size);
+  line-height: variables.$h6-line-height;
+}
 
 @include breakpoints.media-breakpoint-up(lg) {
-  h1, .h1 { @include rfs.font-size(variables.$h1-font-size-desktop); }
-  h2, .h2 { @include rfs.font-size(variables.$h2-font-size-desktop); }
-  h3, .h3 { @include rfs.font-size(variables.$h3-font-size-desktop); }
-  h4, .h4 { @include rfs.font-size(variables.$h4-font-size-desktop); }
-  h5, .h5 { @include rfs.font-size(variables.$h5-font-size-desktop); }
-  h6, .h6 { @include rfs.font-size(variables.$h6-font-size-desktop); }
+  h1, .h1 {
+    @include rfs.font-size(variables.$h1-font-size-desktop);
+    line-height: variables.$h1-line-height-desktop;
+  }
+  h2, .h2 {
+    @include rfs.font-size(variables.$h2-font-size-desktop);
+    line-height: variables.$h2-line-height-desktop;
+  }
+  h3, .h3 {
+    @include rfs.font-size(variables.$h3-font-size-desktop);
+    line-height: variables.$h3-line-height-desktop;
+  }
+  h4, .h4 {
+    @include rfs.font-size(variables.$h4-font-size-desktop);
+    line-height: variables.$h4-line-height-desktop;
+  }
+  h5, .h5 {
+    @include rfs.font-size(variables.$h5-font-size-desktop);
+    line-height: variables.$h5-line-height-desktop;
+  }
+  h6, .h6 {
+    @include rfs.font-size(variables.$h6-font-size-desktop);
+    line-height: variables.$h6-line-height-desktop;
+  }
+}
+
+//
+// Poster sizes
+//
+
+.post1, .post2, .post3 {
+  color: variables.$headings-color;
+  font-family: variables.$headings-font-family;
+  font-weight: variables.$post-font-weight;
+  margin-bottom: variables.$headings-margin-bottom;
+}
+
+.post1 {
+  @include rfs.font-size(variables.$post1-font-size);
+  line-height: variables.$post1-line-height;
+}
+.post2 {
+  @include rfs.font-size(variables.$post2-font-size);
+  line-height: variables.$post2-line-height;
+}
+.post3 {
+  @include rfs.font-size(variables.$post3-font-size);
+  line-height: variables.$post3-line-height;
+}
+
+@include breakpoints.media-breakpoint-up(lg) {
+  .post1 {
+    @include rfs.font-size(variables.$post1-font-size-desktop);
+    line-height: variables.$post1-line-height-desktop;
+  }
+  .post2 {
+    @include rfs.font-size(variables.$post2-font-size-desktop);
+    line-height: variables.$post2-line-height-desktop;
+  }
+  .post3 {
+    @include rfs.font-size(variables.$post3-font-size-desktop);
+    line-height: variables.$post3-line-height-desktop;
+  }
 }
 
 /**
@@ -40,11 +114,13 @@ h6, .h6 { @include rfs.font-size(variables.$h6-font-size); }
  * using utility classes
  */
 .eyebrow {
-  font-size: variables.$font-size-base;
-  font-weight: variables.$font-weight-bolder;
-  color: variables.$blue-500;
-  text-transform: uppercase;
+  color: variables.$eyebrow-font-color;
+  font-size: variables.$eyebrow-font-size;
+  font-weight: variables.$eyebrow-font-weight;
   letter-spacing: variables.$eyebrow-letter-spacing;
+  line-height: variables.$eyebrow-line-height;
+  margin-bottom: variables.$eyebrow-margin-bottom;
+  text-transform: uppercase;
 }
 
 .lead {
@@ -52,26 +128,56 @@ h6, .h6 { @include rfs.font-size(variables.$h6-font-size); }
   font-weight: variables.$lead-font-weight;
 }
 
-// Type display classes
+
+// DEPRECATED type display classes
+.display-1, .display-2, .display-3, .display-4 {
+  color: variables.$headings-color;
+  font-family: variables.$headings-font-family;
+  margin-bottom: variables.$headings-margin-bottom;
+}
+
 .display-1 {
-  @include rfs.font-size(variables.$display1-size);
-  font-weight: variables.$display1-weight;
-  line-height: variables.$display-line-height;
+  @include rfs.font-size(variables.$post1-font-size);
+  font-weight: variables.$post-font-weight;
+  line-height: variables.$post1-line-height;
 }
 .display-2 {
-  @include rfs.font-size(variables.$display2-size);
-  font-weight: variables.$display2-weight;
-  line-height: variables.$display-line-height;
+  @include rfs.font-size(variables.$post2-font-size);
+  font-weight: variables.$post-font-weight;
+  line-height: variables.$post2-line-height;
 }
 .display-3 {
-  @include rfs.font-size(variables.$display3-size);
-  font-weight: variables.$display3-weight;
-  line-height: variables.$display-line-height;
+  @include rfs.font-size(variables.$post3-font-size);
+  font-weight: variables.$post-font-weight;
+  line-height: variables.$post3-line-height;
 }
 .display-4 {
-  @include rfs.font-size(variables.$display4-size);
-  font-weight: variables.$display4-weight;
-  line-height: variables.$display-line-height;
+  @include rfs.font-size(variables.$h1-font-size);
+  font-weight: variables.$headings-font-weight;
+  line-height: variables.$h1-line-height;
+}
+
+@include breakpoints.media-breakpoint-up(lg) {
+  .display-1 {
+    @include rfs.font-size(variables.$post1-font-size-desktop);
+    font-weight: variables.$post-font-weight;
+    line-height: variables.$post1-line-height-desktop;
+  }
+  .display-2 {
+    @include rfs.font-size(variables.$post2-font-size-desktop);
+    font-weight: variables.$post-font-weight;
+    line-height: variables.$post2-line-height-desktop;
+  }
+  .display-3 {
+    @include rfs.font-size(variables.$post3-font-size-desktop);
+    font-weight: variables.$post-font-weight;
+    line-height: variables.$post3-line-height-desktop;
+  }
+  .display-4 {
+    @include rfs.font-size(variables.$h1-font-size-desktop);
+    font-weight: variables.$headings-font-weight;
+    line-height: variables.$h1-line-height-desktop;
+  }
 }
 
 
@@ -108,8 +214,17 @@ mark,
 // Lists
 //
 
+ul li,
+ol li {
+  margin-bottom: 0.5rem;
+}
+
 .list-unstyled {
   @include lists.list-unstyled();
+
+  li {
+    margin-bottom: 0;
+  }
 }
 
 // Inline turns list items into inline-block

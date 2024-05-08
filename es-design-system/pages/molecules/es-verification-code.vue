@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            Verification Code
+            Verification code
         </h1>
         <b-row class="justify-content-center my-450">
             <b-col

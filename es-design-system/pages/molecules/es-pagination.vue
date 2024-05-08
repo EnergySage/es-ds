@@ -4,7 +4,9 @@
             Pagination
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/pagination">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/pagination"
+                target="_blank">
                 bootstrap-vue pagination
             </b-link>
         </p>

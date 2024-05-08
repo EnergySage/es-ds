@@ -5,7 +5,9 @@
         </h1>
         <p class="mb-450">
             Makes use of
-            <b-link href="https://bootstrap-vue.org/docs/components/collapse">
+            <b-link
+                href="https://bootstrap-vue.org/docs/components/collapse"
+                target="_blank">
                 bootstrap-vue collapse
             </b-link>
         </p>

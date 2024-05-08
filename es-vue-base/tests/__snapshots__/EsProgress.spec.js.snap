@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsProgress <EsProgress /> 1`] = `
-"<div class="progress EsProgress bg-gray-300 rounded-0" style="height: 0.3125rem;" aria-describedby="es-progress">
+"<div class="progress EsProgress bg-gray-200 rounded-0" style="height: 0.3125rem;" aria-describedby="es-progress">
   <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55" class="progress-bar" style="width: 55.00000000000001%;"></div>
 </div>"
 `;

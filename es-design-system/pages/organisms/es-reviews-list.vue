@@ -1,5 +1,8 @@
 <template>
     <div>
+        <h1>
+            Reviews list
+        </h1>
         <div class="my-450">
             <es-button
                 size="sm"

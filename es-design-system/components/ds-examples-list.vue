@@ -2,22 +2,22 @@
     <ul class="list-unstyled pl-100">
         <li>
             <ds-link to="/examples/nuxt-components">
-                Nuxt Components
+                Nuxt components
             </ds-link>
         </li>
         <li>
             <ds-link to="/examples/form-field-validation">
-                Form with Field Validation
+                Form with client-side validation
             </ds-link>
         </li>
         <li>
             <ds-link to="/examples/form-validation">
-                Form with (form level) Validation
+                Form with server error
             </ds-link>
         </li>
         <li>
             <ds-link to="/examples/file-upload">
-                File Upload
+                File upload
             </ds-link>
         </li>
     </ul>

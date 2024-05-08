@@ -1,11 +1,11 @@
 <template>
     <div
-        class="input-wrapper justify-content-end mb-50"
+        class="input-wrapper justify-content-end"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="id"
-            class="label font-weight-semibold justify-content-start">
+            class="label font-italic font-weight-semibold justify-content-start">
             <slot name="label" />
 
             <span

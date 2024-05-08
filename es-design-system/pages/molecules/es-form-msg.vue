@@ -1,10 +1,12 @@
 <template>
     <div>
         <h1>
-            Form Message
+            Form message
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/alert">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/alert"
+                target="_blank">
                 bootstrap-vue alert
             </b-link>
         </p>

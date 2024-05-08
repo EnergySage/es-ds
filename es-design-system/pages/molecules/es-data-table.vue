@@ -1,12 +1,14 @@
 <template>
     <div>
         <h1>
-            Data Table
+            Data table
         </h1>
         <p class="mb-450">
             A responsive table using the <a href="https://bootstrap-vue.org/docs/components/table">bootstrap-vue table</a>.
             For further details about the properties used, refer to the
-            <a href="https://bootstrap-vue.org/docs/components/table">official bootstrap-vue documentation</a>.
+            <a
+                href="https://bootstrap-vue.org/docs/components/table"
+                target="_blank">official bootstrap-vue documentation</a>.
             Familiarity with the capabilities of the base component is <strong>strongly recommended</strong> if
             expanding the functionality of this table.
         </p>
