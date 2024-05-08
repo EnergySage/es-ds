@@ -7,12 +7,12 @@
         </li>
         <li>
             <ds-link to="/examples/form-field-validation">
-                Form with field validation
+                Form with client-side validation
             </ds-link>
         </li>
         <li>
             <ds-link to="/examples/form-validation">
-                Form with (form level) validation
+                Form with server error
             </ds-link>
         </li>
         <li>
