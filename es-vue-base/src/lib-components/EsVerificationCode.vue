@@ -1,5 +1,5 @@
 <template>
-    <b-input-group class="code-holder">
+    <b-input-group class="code-holder justify-content-center">
         <b-form-input
             v-for="(n, index) in code"
             :id="`codeInput_${index}`"
@@ -10,7 +10,7 @@
             :name="'codeInput_' + index"
             :type="type"
             :pattern="pattern"
-            class="code-input text-center font-size-300 font-size-lg-500 mr-100"
+            class="code-input text-center font-size-300 font-size-lg-500 mr-50 mr-lg-100 font-weight-bold px-100 px-lg-150 py-150"
             maxlength="1"
             autocomplete="off"
             aria-autocomplete="none"
@@ -224,17 +224,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss">
-@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
-.code-holder {
-    .code-input {
-        appearance: textfield;
-
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-            appearance: none;
-        }
-    }
-}
-</style>

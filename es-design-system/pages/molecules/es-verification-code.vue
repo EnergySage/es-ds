@@ -6,7 +6,7 @@
         <b-row class="justify-content-center my-450">
             <b-col
                 cols="12"
-                lg="6">
+                lg="8">
                 <h2 class="text-center">
                     Large
                 </h2>

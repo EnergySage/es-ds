@@ -1,0 +1,23 @@
+@use "../../variables" as variables;
+@use "../../mixins/breakpoints";
+
+.code-holder {
+    .code-input {
+        appearance: textfield;
+        border: variables.$verification-code-border;
+        border-radius: variables.$verification-code-border-radius !important;
+        height:variables.$verification-code-dimension-lg;
+        width: variables.$verification-code-dimension-lg;
+        flex: 0 0 auto;
+
+         @include breakpoints.media-breakpoint-down(md) {
+            height: variables.$verification-code-dimension-xs;
+            width: variables.$verification-code-dimension-xs;
+    }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            appearance: none;
+        }
+    }
+}

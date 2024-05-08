@@ -1155,6 +1155,14 @@ $zindex-modal:                      1050 !default;
 $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
 
+// Verification code
+
+$verification-code-dimension-xs:     3.5rem !default;
+$verification-code-dimension-lg:     5rem !default;
+$verification-code-border:           2px solid $gray-200;
+$verification-code-border-radius:    $border-radius !default;
+
+
 
 // Navs
 
