@@ -10,7 +10,7 @@
                 bootstrap-vue badge
             </b-link>
         </p>
-        <div class="my-450">
+        <div class="my-500">
             <es-badge>
                 Primary
             </es-badge>
