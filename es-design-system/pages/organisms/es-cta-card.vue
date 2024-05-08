@@ -3,7 +3,7 @@
         <h1>
             CTA card
         </h1>
-        <b-row class="mb-450">
+        <b-row class="mb-500">
             <b-col
                 xl="10"
                 xxl="8">
@@ -18,7 +18,7 @@
             </b-col>
         </b-row>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-200">
                 Default with zip code form
             </h2>
@@ -55,7 +55,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-200">
                 Image first with button
             </h2>
@@ -100,7 +100,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-200">
                 Image first with link
             </h2>
@@ -142,7 +142,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-200">
                 No image with zip code form
             </h2>
@@ -171,7 +171,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsCtaCard slots
             </h2>
@@ -180,7 +180,7 @@
                 :widths="tableWidths" />
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsCtaCard props
             </h2>

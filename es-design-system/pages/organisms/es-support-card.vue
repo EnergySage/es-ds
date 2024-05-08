@@ -3,7 +3,7 @@
         <h1 class="mb-300">
             Support card
         </h1>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Default
             </h2>
@@ -29,7 +29,7 @@
                 </template>
             </es-support-card>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 With secondary CTA
             </h2>
@@ -57,7 +57,7 @@
                 </template>
             </es-support-card>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Constrained
             </h2>
@@ -97,7 +97,7 @@
                 </b-col>
             </b-row>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Props
             </h2>
@@ -343,7 +343,7 @@
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Slots
             </h2>

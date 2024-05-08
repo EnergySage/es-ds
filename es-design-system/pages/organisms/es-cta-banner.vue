@@ -3,7 +3,7 @@
         <h1>
             CTA banner
         </h1>
-        <b-row class="mb-450">
+        <b-row class="mb-500">
             <b-col
                 xl="10"
                 xxl="8">
@@ -18,7 +18,7 @@
             </b-col>
         </b-row>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Default with zip code form
             </h2>
@@ -70,7 +70,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Default with subtitle and button
             </h2>
@@ -106,7 +106,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Wide with zip code form
             </h2>
@@ -154,7 +154,7 @@
             </es-cta-banner>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Wide with subtitle and button
             </h2>
@@ -183,7 +183,7 @@
             </es-cta-banner>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsCtaBanner slots
             </h2>
@@ -192,7 +192,7 @@
                 :widths="tableWidths" />
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsCta props
             </h2>

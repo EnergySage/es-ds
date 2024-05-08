@@ -420,6 +420,7 @@ $spacers: map.merge(
     4:   ($spacer * 2),   // 32
     5:   ($spacer * 4.5), // 72
     6:   ($spacer * 8),   // 128
+    450: ($spacer * 4.5), // 72
     // standard
     25:  ($spacer * .25), // 4
     50:  ($spacer * .5),  // 8
@@ -427,7 +428,8 @@ $spacers: map.merge(
     150: ($spacer * 1.5), // 24
     200: ($spacer * 2),   // 32
     300: ($spacer * 3),   // 48
-    450: ($spacer * 4.5), // 72
+    500: ($spacer * 5),   // 80
+    600: ($spacer * 6),   // 96
     800: ($spacer * 8)    // 128
   ),
   $spacers

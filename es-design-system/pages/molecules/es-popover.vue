@@ -21,7 +21,7 @@
                 </b-link>
                 for more details.
             </p>
-            <div class="my-450">
+            <div class="my-500">
                 <h2>
                     Dark variant
                 </h2>
