@@ -42,11 +42,6 @@
       border-style: solid;
     }
   }
-
-  :nth-child(3) { // style specific to if there is a title
-    padding-top: 4px;
-    padding-right: 28px; // 8px + 20px (X icon size)
-  }
 }
 
 .bs-popover-top {
@@ -169,7 +164,7 @@
 
 // Offset the popover to account for the popover arrow
 .popover-header {
-  margin-bottom: 0; // Reset the default from Reboot
+  margin-bottom: .25rem;
   @include rfs.font-size(variables.$font-size-base);
   color: variables.$popover-header-color;
   background-color: variables.$popover-header-bg;
@@ -180,6 +175,10 @@
   &:empty {
     display: none;
   }
+}
+
+.popover-header + .popover-body {
+  padding-right: 28px; // 8px + 20px (X icon size)
 }
 
 .popover-body {

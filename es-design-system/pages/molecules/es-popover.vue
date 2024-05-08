@@ -86,6 +86,36 @@
                             </p>
                         </es-popover>
                     </div>
+                    <div>
+                        <label>
+                            With button
+                            <b-link
+                                :id="`darkButtonTarget-${placement.directive}`"
+                                class="p-0 text-gray-700"
+                                tabindex="0">
+                                <IconInfo
+                                    width="16px"
+                                    height="16px" />
+                            </b-link>
+                        </label>
+                        <es-popover
+                            :placement="placement.directive"
+                            :target="`darkButtonTarget-${placement.directive}`"
+                            variant="dark">
+                            <template #title>
+                                My title
+                            </template>
+                            <p class="mb-0">
+                                Install solar panels through this program and get $250 cash back.
+                                <es-button
+                                    size="sm"
+                                    class="mt-100 d-block"
+                                    variant="dark-bg">
+                                    Small button
+                                </es-button>
+                            </p>
+                        </es-popover>
+                    </div>
                 </div>
             </div>
             <div class="bg-dark-blue p-100 my-450 rounded-lg text-white">
@@ -156,6 +186,36 @@
                                     class="mt-50 d-block"
                                     href="https://communitysolar.energysage.com/"
                                     target="_blank">Learn more</a>
+                            </p>
+                        </es-popover>
+                    </div>
+                    <div>
+                        <label>
+                            With button
+                            <b-link
+                                :id="`lightButtonTarget-${placement.directive}`"
+                                class="p-0 text-gray-700"
+                                tabindex="0">
+                                <IconInfo
+                                    class="text-white"
+                                    width="16px"
+                                    height="16px" />
+                            </b-link>
+                        </label>
+                        <es-popover
+                            :placement="placement.directive"
+                            :target="`lightButtonTarget-${placement.directive}`"
+                            variant="light">
+                            <template #title>
+                                My title
+                            </template>
+                            <p class="mb-0">
+                                Install solar panels through this program and get $250 cash back.
+                                <es-button
+                                    size="sm"
+                                    class="mt-100 d-block">
+                                    Small button
+                                </es-button>
                             </p>
                         </es-popover>
                     </div>

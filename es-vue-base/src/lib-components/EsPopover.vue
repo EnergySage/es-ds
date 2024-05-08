@@ -17,7 +17,7 @@
             <es-button
                 inline
                 variant="link"
-                class="p-0 float-right"
+                class="es-popover-close p-0 float-right"
                 @click="onClose">
                 <XIcon
                     height="20px"
@@ -35,7 +35,7 @@
                     <es-button
                         inline
                         variant="link"
-                        class="p-0 pl-50"
+                        class="es-popover-close p-0 pl-50"
                         @click="onClose">
                         <XIcon
                             height="20px"
@@ -190,33 +190,20 @@ export default {
         &::before {
             border-bottom-color: variables.$white;
         }
-
-        .btn, .btn:hover, .btn:active {
-            color: variables.$gray-900;
-        }
     }
 
     .popover-body {
         color: variables.$gray-900;
+    }
 
-        .btn, .btn:hover, .btn:active {
-            color: variables.$gray-900;
-        }
+    .es-popover-close {
+        color: variables.$gray-900;
     }
 }
 
 .es-popover-dark {
-    // styling for this color scheme will need to be added as default values for popovers are updated
-    .popover-header {
-        .btn, .btn:hover, .btn:active {
-            color: variables.$white;
-        }
-    }
-
-    .popover-body {
-        .btn, .btn:hover, .btn:active, a {
-            color: variables.$white;
-        }
+    .es-popover-close, a {
+        color: variables.$white;
     }
 }
 </style>
