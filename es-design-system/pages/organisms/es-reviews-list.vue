@@ -3,7 +3,7 @@
         <h1>
             Reviews list
         </h1>
-        <div class="my-450">
+        <b-container class="my-450">
             <es-review-modal
                 :reviews="reviews"
                 :avg-rating="3.5"
@@ -56,7 +56,7 @@
                     </es-button>
                 </b-col>
             </b-row>
-        </div>
+        </b-container>
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-design-system/pages/organisms/es-review-list.vue" />

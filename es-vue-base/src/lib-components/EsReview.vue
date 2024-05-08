@@ -40,16 +40,6 @@
                         Updated
                     </es-badge>
                 </div>
-                <div
-                    v-if="certified && !commentLimit"
-                    class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
-                    <div class="mr-50">
-                        Verified
-                    </div>
-                    <IconVerified
-                        width="16px"
-                        height="16px" />
-                </div>
             </div>
         </div>
         <div class="mb-100">
@@ -95,28 +85,23 @@
                     class="name-holder d-inline-block text-truncate pr-25"
                     data-testid="subtext-test">
                     <span class="d-none d-lg-inline-block">{{ displayDateText }}</span>
+                    <IconVerified
+                        v-if="certified"
+                        class="d-lg-none mr-50 text-success"
+                        width="20px"
+                        height="20px" />
                     {{ reviewerName }}
                 </span>
                 <span class="date-holder">on {{ localeDate(displayDate) }}</span>
             </small>
-            <div
-                v-if="certified && !response && commentLimit"
-                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
-                <div class="mr-50">
-                    Verified
-                </div>
-                <IconVerified
-                    width="16px"
-                    height="16px" />
-            </div>
         </div>
         <div
             v-if="certified"
             class="d-none d-lg-flex mt-50 align-items-center font-size-75">
             <IconVerified
-                class="mr-50"
-                width="16px"
-                height="16px" />
+                class="mr-50 text-success"
+                width="20px"
+                height="20px" />
             Verified Shopper
         </div>
         <div
@@ -127,16 +112,6 @@
                 @click="$emit('showMore')">
                 View provider response
             </b-link>
-            <div
-                v-if="certified"
-                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto">
-                <div class="mr-50">
-                    Verified
-                </div>
-                <IconVerified
-                    width="20px"
-                    height="20px" />
-            </div>
         </div>
         <div
             v-if="response && !commentLimit"
