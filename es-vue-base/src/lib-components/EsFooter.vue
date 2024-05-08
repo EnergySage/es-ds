@@ -24,15 +24,15 @@
                             <div
                                 v-for="column in content.columns"
                                 :key="column.title"
-                                class="col col-6 col-md-3 mb-150">
-                                <ul class="list-unstyled">
+                                class="col col-6 col-md-3 mb-100 mb-lg-0">
+                                <ul class="list-unstyled mb-lg-0">
                                     <li class="font-weight-bold font-size-75 font-size-md-100 mb-100 mb-lg-50">
                                         {{ column.title }}
                                     </li>
                                     <li
                                         v-for="link in column.links"
                                         :key="link.text"
-                                        class="mt-25 mb-100 mb-lg-50 font-size-75">
+                                        class="margin-list font-size-75">
                                         <es-nav-bar-link
                                             :href="link.url"
                                             :target="link.newTab ? '_blank' : null"
@@ -45,7 +45,7 @@
                         </div>
                     </div>  <!-- Link columns -->
                     <!-- Logo and Social-->
-                    <div class="col col-12 col-lg-4 order-lg-0 mb-200">
+                    <div class="col col-12 col-lg-4 order-lg-0">
                         <es-nav-bar-link
                             class="d-block mb-150 d-flex justify-content-center justify-content-lg-start"
                             :href="content.home.link">
@@ -83,7 +83,7 @@
                 </p>
                 <!-- Trademark Info -->
                 <!-- Legal -->
-                <hr class="border-top border-blue-50 m-0">
+                <hr class="border-top border-blue-500 m-0">
                 <div class="row justify-content-center pt-100">
                     <div
                         v-for="link in content.legalLinks"
@@ -158,3 +158,29 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+
+.margin-list {
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
+         &:last-child {
+            margin-bottom: 0;
+        }
+        &:first-child {
+            margin-top: 0;
+        }
+
+    @include breakpoints.media-breakpoint-down(md) {
+         margin-bottom: 1rem;
+         margin-top: 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+</style>
+
