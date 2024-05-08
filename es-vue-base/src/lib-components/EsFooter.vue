@@ -47,7 +47,7 @@
                     <!-- Logo and Social-->
                     <div class="col col-12 col-lg-4 order-lg-0 mb-200">
                         <es-nav-bar-link
-                            class="d-block mb-150"
+                            class="d-block mb-150 d-flex justify-content-center justify-content-lg-start"
                             :href="content.home.link">
                             <span class="sr-only">
                                 {{ content.home.name }}
@@ -57,7 +57,7 @@
                                 width="160px" />
                         </es-nav-bar-link>
                         <!-- Social icons -->
-                        <div class="d-flex text-white">
+                        <div class="d-flex text-white justify-content-center justify-content-lg-start">
                             <es-nav-bar-link
                                 v-for="iconLink in content.socialLinks"
                                 :key="iconLink.text"
