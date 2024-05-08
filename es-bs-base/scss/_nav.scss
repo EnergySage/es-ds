@@ -238,6 +238,10 @@ $nav-hover-delay: 300ms;
     }
   }
 
+  .account-icon {
+    fill: variables.$blue-900;
+  }
+
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: $desktop-min-width) {
     .nav-es-global,

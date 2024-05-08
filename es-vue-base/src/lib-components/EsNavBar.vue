@@ -34,7 +34,7 @@
                 <label
                     class="mb-0 text-decoration-none"
                     for="data--account-menu">
-                    <icon-person class="align-self-center" />
+                    <icon-person class="align-self-center account-icon" />
                     <span class="sr-only">
                         {{ accountContent.mobileAccountButtonAltText }}
                     </span>
