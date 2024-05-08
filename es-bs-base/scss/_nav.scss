@@ -511,6 +511,17 @@ $nav-hover-delay: 300ms;
         }
       }
     }
+
+    // nav-link styling for desktop account menu
+    .navbar-nav {
+      /* stylelint-disable-next-line selector-class-pattern */
+      .loggedIn {
+        /* stylelint-disable-next-line selector-max-class */
+        .dropdown-item.nav-link:hover {
+          font-weight: variables.$font-weight-normal;
+        }
+      }
+    }
   }
 
   @include breakpoints.media-breakpoint-up(xl) {
