@@ -3,7 +3,7 @@
         <h1>
             Radio button
         </h1>
-        <p class="mb-450">
+        <p class="mb-500">
             Uses
             <b-link
                 href="https://bootstrap-vue.org/docs/components/form-radio"
@@ -12,7 +12,7 @@
             </b-link>
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Inline
             </h2>
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Stacked
             </h2>
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Disabled
             </h2>

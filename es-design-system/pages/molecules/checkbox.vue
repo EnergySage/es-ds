@@ -3,7 +3,7 @@
         <h1>
             Checkbox
         </h1>
-        <p class="mb-450">
+        <p class="mb-500">
             Uses
             <b-link
                 href="https://bootstrap-vue.org/docs/components/form-checkbox"
@@ -12,7 +12,7 @@
             </b-link>
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Basic example
             </h2>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Disabled
             </h2>
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Indeterminate
             </h2>
@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Helper text and required indicators
             </h2>

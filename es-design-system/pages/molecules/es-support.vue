@@ -3,14 +3,14 @@
         <h1>
             Support
         </h1>
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Default
             </h2>
             <es-support
                 :link="link"
                 :src="placeholderPersonImage" />
-            <h2 class="mt-450">
+            <h2 class="mt-500">
                 Custom copy
             </h2>
             <es-support

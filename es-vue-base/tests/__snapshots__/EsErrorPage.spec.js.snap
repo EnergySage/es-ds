@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsErrorPage <EsErrorPage /> 1`] = `
-"<div class="py-450 py-lg-800 bg-gray-50 container" required="required">
+"<div class="py-500 py-lg-800 bg-gray-50 container" required="required">
   <div class="row">
-    <div class="my-450 mx-auto text-center col-md-7">
+    <div class="my-500 mx-auto text-center col-md-7">
       <h1 class="post1 text-gray-600">
         Access denied
       </h1>
@@ -58,9 +58,9 @@ exports[`EsErrorPage <EsErrorPage /> 1`] = `
 `;
 
 exports[`EsErrorPage <EsErrorPage props /> 1`] = `
-"<div class="py-450 py-lg-800 bg-gray-50 container" required="required">
+"<div class="py-500 py-lg-800 bg-gray-50 container" required="required">
   <div class="row">
-    <div class="my-450 mx-auto text-center col-md-7">
+    <div class="my-500 mx-auto text-center col-md-7">
       <h1 class="post1 text-gray-600">
         Access denied
       </h1>
@@ -115,9 +115,9 @@ exports[`EsErrorPage <EsErrorPage props /> 1`] = `
 `;
 
 exports[`EsErrorPage EsErrorPage 403 error message text 1`] = `
-"<div class="py-450 py-lg-800 bg-gray-50 container" required="required">
+"<div class="py-500 py-lg-800 bg-gray-50 container" required="required">
   <div class="row">
-    <div class="my-450 mx-auto text-center col-md-7">
+    <div class="my-500 mx-auto text-center col-md-7">
       <h1 class="post1 text-gray-600">
         Access denied
       </h1>
@@ -172,9 +172,9 @@ exports[`EsErrorPage EsErrorPage 403 error message text 1`] = `
 `;
 
 exports[`EsErrorPage EsErrorPage Generic error message text 1`] = `
-"<div class="py-450 py-lg-800 bg-gray-50 container" required="required">
+"<div class="py-500 py-lg-800 bg-gray-50 container" required="required">
   <div class="row">
-    <div class="my-450 mx-auto text-center col-md-7">
+    <div class="my-500 mx-auto text-center col-md-7">
       <h1 class="post1 text-gray-600">
         301
       </h1>
