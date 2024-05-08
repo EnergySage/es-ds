@@ -3,7 +3,7 @@
         <h1>
             Review
         </h1>
-        <div class="review-wrapper my-450 pr-450 border-right">
+        <div class="review-wrapper my-500 pr-500 border-right">
             <es-review
                 :id="review.id"
                 :key="review.id"

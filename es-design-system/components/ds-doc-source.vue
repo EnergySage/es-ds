@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-450">
+    <div class="mt-500">
         <EsCollapse
             v-if="compCode"
             id="compsource">
@@ -15,7 +15,7 @@
         <EsCollapse
             v-if="docCode"
             id="docsource"
-            class="mt-450">
+            class="mt-500">
             <template #title>
                 <h2 class="mb-0">
                     Documentation source

@@ -13,7 +13,7 @@
                 </b-form-checkbox>
             </b-col>
         </b-row>
-        <b-row class="my-450 border-top pt-450">
+        <b-row class="my-500 border-top pt-500">
             <b-col
                 cols="12"
                 lg="8">
@@ -100,7 +100,7 @@
                 </b-form>
             </b-col>
         </b-row>
-        <b-row class="my-450 border-top pt-450">
+        <b-row class="my-500 border-top pt-500">
             <b-col>
                 <h2>
                     Data Mixins

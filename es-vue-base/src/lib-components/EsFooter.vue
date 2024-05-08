@@ -1,7 +1,7 @@
 <template>
     <div class="es-footer clearfix">
         <!-- Make an impact -->
-        <div class="bg-gray text-white py-300 py-lg-450">
+        <div class="bg-gray text-white py-300 py-lg-500">
             <div class="container">
                 <div class="row">
                     <div class="col col-12 col-md-5 col-lg-4 font-size-300 font-weight-bolder mb-150 mb-md-0">
