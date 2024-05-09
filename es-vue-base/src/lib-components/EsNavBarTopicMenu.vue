@@ -8,7 +8,7 @@
             class="dropdown-item nav-link topic-menu-header d-none d-lg-block font-size-sm mb-lg-50 position-relative px-lg-0 py-lg-50 text-gray"
             :href="link"
             :target="newTab ? '_blank' : null">
-            <span class="align-items-center eyebrow mb-50 d-flex link-name">
+            <span class="align-items-center eyebrow d-flex link-name">
                 {{ name }}
                 <icon-arrow-right
                     class="d-none d-lg-inline-block ml-25"

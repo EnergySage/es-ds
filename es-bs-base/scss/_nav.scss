@@ -522,6 +522,12 @@ $nav-hover-delay: 300ms;
         }
       }
     }
+
+    // override eyebrow bottom margin for desktop primary menu items
+    .dropdown-menu-primary .eyebrow.link-name {
+      /* stylelint-disable-next-line declaration-no-important */
+      margin-bottom: 0 !important;
+    }
   }
 
   @include breakpoints.media-breakpoint-up(xl) {
