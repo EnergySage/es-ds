@@ -16,7 +16,7 @@ jobs:
             - name: Checkout Repo 🗃️
               uses: actions/checkout@v4
               with:
-                ref: deploy-to-new-url
+                ref: esds-2.0-visual-identity
 
             - name: Log into ES_DS_DEV AWS account 🔑
               id: creds
