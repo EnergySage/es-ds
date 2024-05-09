@@ -1,5 +1,5 @@
 @use "../../variables";
-@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+@use "../../mixins/breakpoints";
 
 @include breakpoints.media-breakpoint-up(sm) {
   .EsReviewsIoCardCarousel {
