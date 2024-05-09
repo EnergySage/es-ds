@@ -110,22 +110,24 @@
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <div class="row mx-0 d-flex justify-content-lg-center product-menu">
-                        <es-nav-bar-product-menu
-                            v-for="product in globalContent.products"
-                            :key="product.name"
-                            :home-name="globalContent.home.name"
-                            :home-link="globalContent.home.link"
-                            :close-button-text="globalContent.mobileCloseButtonAltText"
-                            :featured-article="product.featuredArticle"
-                            :items="product.items"
-                            :link="product.link"
-                            :main-menu-text="globalContent.mainMenuText"
-                            :new-tab="product.newTab"
-                            :name="product.name"
-                            :see-all-text="globalContent.seeAllText"
-                            :topics="product.topics" />
-                    </div>
+                    <b-container class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
+                        <div class="row">
+                            <es-nav-bar-product-menu
+                                v-for="product in globalContent.products"
+                                :key="product.name"
+                                :home-name="globalContent.home.name"
+                                :home-link="globalContent.home.link"
+                                :close-button-text="globalContent.mobileCloseButtonAltText"
+                                :featured-article="product.featuredArticle"
+                                :items="product.items"
+                                :link="product.link"
+                                :main-menu-text="globalContent.mainMenuText"
+                                :new-tab="product.newTab"
+                                :name="product.name"
+                                :see-all-text="globalContent.seeAllText"
+                                :topics="product.topics" />
+                        </div>
+                    </b-container>
                 </div>
             </div>
             <!-- mobile account menu checkbox -->
