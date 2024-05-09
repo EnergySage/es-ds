@@ -4,9 +4,6 @@ on:
     push:
         branches:
             - esds-2.0-visual-identity
-    pull_request:
-        branches:
-            - esds-2.0-visual-identity
 
 jobs:
     deploy:
