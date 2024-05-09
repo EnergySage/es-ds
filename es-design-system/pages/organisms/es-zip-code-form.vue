@@ -5,14 +5,14 @@
         <h1>
             Zip code form
         </h1>
-        <p class="mb-450">
+        <p class="mb-500">
             Intended for use inside
             <b-link to="/organisms/es-cta-banner">EsCtaBanner</b-link>,
             <b-link to="/organisms/es-cta-card">EsCtaCard</b-link>,
             and hero modules.
         </p>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Responsive example
             </h2>
@@ -38,7 +38,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>Pre-populate zipcode example</h2>
             <p class="mb-200">
                 Same as above, except the zip code form can accept an <code>initial zip code value</code>, facilitating
@@ -62,7 +62,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Dark responsive example
             </h2>
@@ -91,7 +91,7 @@
             </div>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Constrained responsive example
             </h2>
@@ -121,7 +121,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Side-by-side example with no privacy section
             </h2>
@@ -148,7 +148,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Constrained stacked example
             </h2>
@@ -176,7 +176,7 @@
             </b-row>
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 Product specific CTA
             </h2>
@@ -203,7 +203,7 @@
 
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsZipCodeForm slots
             </h2>
@@ -212,7 +212,7 @@
                 :widths="slotTableWidths" />
         </div>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsZipCodeForm props
             </h2>

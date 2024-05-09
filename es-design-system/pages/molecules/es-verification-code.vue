@@ -3,7 +3,7 @@
         <h1>
             Verification code
         </h1>
-        <b-row class="justify-content-center my-450">
+        <b-row class="justify-content-center my-500">
             <b-col
                 cols="12"
                 lg="8">

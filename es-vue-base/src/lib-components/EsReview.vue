@@ -11,7 +11,7 @@
                 <template v-if="isReviewOwner">
                     <b-link
                         data-testid="edit-review"
-                        class="d-flex"
+                        class="d-flex align-items-center"
                         @click="$emit('editReview', id)">
                         <IconPencil
                             class="ml-25"
@@ -22,7 +22,7 @@
                 <template v-if="reportFlagVisible">
                     <b-link
                         data-testid="report-review"
-                        class="d-flex"
+                        class="d-flex align-items-center"
                         @click="$emit('reportReview', id)">
                         <IconFlag
                             class="ml-1"
@@ -40,23 +40,12 @@
                         Updated
                     </es-badge>
                 </div>
-                <div
-                    v-if="certified && !commentLimit"
-                    class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
-                    <div class="mr-50">
-                        Verified
-                    </div>
-                    <IconVerified
-                        class="text-gray-900"
-                        width="16px"
-                        height="16px" />
-                </div>
             </div>
         </div>
         <div class="mb-100">
             <h4
                 v-if="title"
-                class="title font-weight-bold text-truncate mb-50"
+                class="font-size-200 font-weight-bold text-truncate mb-50"
                 data-testid="title-test">
                 {{ title }}
             </h4>
@@ -73,7 +62,7 @@
                         {{ updatedComment }}
                         <div
                             v-if="modified"
-                            class="font-size-75 text-gray-700 mt-50">
+                            class="font-size-75 mt-50">
                             <span class="d-none d-lg-inline-block">Updated on </span>
                             {{ localeDate(modified) }}
                         </div>
@@ -91,34 +80,28 @@
         <div class="d-flex flex-nowrap">
             <small
                 v-if="displayDate"
-                class="d-flex align-items-center text-gray-700 text-nowrap details-holder">
+                class="d-flex align-items-center text-nowrap details-holder">
                 <span
                     class="name-holder d-inline-block text-truncate pr-25"
                     data-testid="subtext-test">
                     <span class="d-none d-lg-inline-block">{{ displayDateText }}</span>
+                    <IconVerified
+                        v-if="certified"
+                        class="d-lg-none mr-50 text-success"
+                        width="20px"
+                        height="20px" />
                     {{ reviewerName }}
                 </span>
                 <span class="date-holder">on {{ localeDate(displayDate) }}</span>
             </small>
-            <div
-                v-if="certified && !response && commentLimit"
-                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto font-size-75">
-                <div class="mr-50">
-                    Verified
-                </div>
-                <IconVerified
-                    class="text-gray-900"
-                    width="16px"
-                    height="16px" />
-            </div>
         </div>
         <div
             v-if="certified"
-            class="d-none d-lg-flex text-gray-800 mt-50 align-items-center font-size-75">
+            class="d-none d-lg-flex mt-50 align-items-center font-size-75">
             <IconVerified
-                class="text-gray-900 mr-50"
-                width="16px"
-                height="16px" />
+                class="mr-50 text-success"
+                width="20px"
+                height="20px" />
             Verified Shopper
         </div>
         <div
@@ -129,17 +112,6 @@
                 @click="$emit('showMore')">
                 View provider response
             </b-link>
-            <div
-                v-if="certified"
-                class="d-lg-none d-flex flex-nowrap align-items-center ml-auto text-gray-800">
-                <div class="mr-50">
-                    Verified
-                </div>
-                <IconVerified
-                    class="text-gray-900"
-                    width="16px"
-                    height="16px" />
-            </div>
         </div>
         <div
             v-if="response && !commentLimit"
@@ -167,7 +139,7 @@
                             :cols="developerLogo ? 10 : 12"
                             lg="12"
                             class="d-lg-none">
-                            <span class="font-weight-bolder text-gray-900 m-0 mb-lg-50">
+                            <span class="font-weight-bolder m-0 mb-lg-50">
                                 Response from {{ developerName }}
                             </span>
                         </b-col>
@@ -177,11 +149,11 @@
                     cols="12"
                     :lg="developerLogo ? 11 : 12"
                     class="pt-lg-0 pt-50 pl-lg-100">
-                    <p class="d-none d-lg-block font-weight-bolder text-gray-900 m-0 mb-lg-50">
+                    <p class="d-none d-lg-block font-weight-bolder m-0 mb-lg-50">
                         Response from {{ developerName }}
                     </p>
                     {{ response }}
-                    <p class="font-size-75 text-gray-700 m-0 mt-50 mt-lg-100">
+                    <p class="font-size-75 m-0 mt-50 mt-lg-100">
                         Responded on {{ localeDate(responseDate) }}
                     </p>
                 </b-col>

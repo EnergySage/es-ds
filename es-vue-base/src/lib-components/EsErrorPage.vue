@@ -1,9 +1,9 @@
 <template>
-    <b-container class="py-450 py-lg-800 bg-gray-50">
+    <b-container class="py-500 py-lg-800 bg-gray-50">
         <b-row>
             <b-col
                 md="7"
-                class="my-450 mx-auto text-center">
+                class="my-500 mx-auto text-center">
                 <h1 class="post1 text-gray-600">
                     {{ errorShortMessage }}
                 </h1>

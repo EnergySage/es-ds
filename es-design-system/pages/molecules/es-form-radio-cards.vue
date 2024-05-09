@@ -3,7 +3,7 @@
         <h1>
             Radio cards
         </h1>
-        <p class="mb-200 mb-lg-450">
+        <p class="mb-200 mb-lg-500">
             Extended from <b-link
                 href="https://bootstrap-vue.org/docs/components/form-radio#button-style-radios"
                 target="_blank">
@@ -18,7 +18,7 @@
             Responsive font sizing is applied by default; the label matches Heading 1 and the card content
             matches Heading 2. This means the text will be smaller on mobile and larger on desktop.
         </p>
-        <div class="border mb-200 mb-lg-450 p-100 p-lg-200 rounded">
+        <div class="border mb-200 mb-lg-500 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.propertyType"
@@ -44,7 +44,7 @@
             This example demonstrates customizing the content, spacing, and typography of the cards,
             as well as changing the layout based on the breakpoint.
         </p>
-        <div class="border mb-450 p-100 p-lg-200 rounded">
+        <div class="border mb-500 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.storageReason"
@@ -92,7 +92,7 @@
             We do still need to pass the label text into the radio cards component for accessibility
             purposes, but hide it visually by passing in a prop.
         </p>
-        <div class="border mb-450 p-100 p-lg-200 rounded">
+        <div class="border mb-500 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
                 <b-row>
                     <b-col
@@ -125,7 +125,7 @@
             </p>
         </div>
 
-        <h2 class="mt-450">
+        <h2 class="mt-500">
             EsFormRadioCards props
         </h2>
         <b-table
@@ -133,7 +133,7 @@
             :items="radioCardsPropDocumentation"
             striped />
 
-        <h2 class="mt-450">
+        <h2 class="mt-500">
             EsFormRadioCard props
         </h2>
         <b-table

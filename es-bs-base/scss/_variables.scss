@@ -420,6 +420,7 @@ $spacers: map.merge(
     4:   ($spacer * 2),   // 32
     5:   ($spacer * 4.5), // 72
     6:   ($spacer * 8),   // 128
+    450: ($spacer * 4.5), // 72
     // standard
     25:  ($spacer * .25), // 4
     50:  ($spacer * .5),  // 8
@@ -427,7 +428,8 @@ $spacers: map.merge(
     150: ($spacer * 1.5), // 24
     200: ($spacer * 2),   // 32
     300: ($spacer * 3),   // 48
-    450: ($spacer * 4.5), // 72
+    500: ($spacer * 5),   // 80
+    600: ($spacer * 6),   // 96
     800: ($spacer * 8)    // 128
   ),
   $spacers
@@ -1530,27 +1532,28 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
 
 // Popovers
 
-$popover-font-size:                 $font-size-sm !default;
-$popover-bg:                        $gray-900 !default;
+$popover-font-size:                 $font-size-100 !default;
+$popover-bg:                        $black !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              0 !default;
 $popover-border-color:              rgba($black, .2) !default;
-$popover-border-radius:             $border-radius-lg !default;
+$popover-border-radius:             $border-radius-sm !default;
 $popover-inner-border-radius:       functions.subtract($popover-border-radius, $popover-border-width) !default;
-$popover-box-shadow:                0 .25rem .5rem rgba($black, .2) !default;
+$popover-box-shadow:                0 1px 6px 0 rgba(34, 38, 51, 0.25) !default;
 
 $popover-header-bg:                 $popover-bg !default;
 $popover-header-color:              $white !default;
+$popover-header-font-weight:        $font-weight-bold !default;
 $popover-header-padding-y:          1rem !default;
-$popover-header-padding-x:          1rem 0 !default;
+$popover-header-padding-x:          1rem !default;
 
 $popover-body-color:                $white !default;
 $popover-body-padding-y:            $popover-header-padding-y !default;
 $popover-body-padding-x:            1rem !default;
 
 $popover-arrow-width:               2rem !default;
-$popover-arrow-height:              1.5rem !default;
-$popover-arrow-color:               $gray-900 !default;
+$popover-arrow-height:              1.25rem !default;
+$popover-arrow-color:               $black !default;
 
 // asdf
 $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
@@ -1637,6 +1640,10 @@ $badge-text-colors: map.merge(
 // Padding applied to the modal body
 $modal-inner-padding:               0 2rem 2rem 2rem !default;
 
+$modal-footer-padding-x:            2rem !default;
+$modal-footer-padding-bottom:       2rem !default;
+$modal-footer-padding-top:          4rem !default; // border appears halfway down this
+
 // Margin between elements in footer, must be lower than or equal to 2 * $modal-inner-padding
 $modal-footer-margin-between:       .5rem !default;
 
@@ -1657,9 +1664,9 @@ $modal-content-box-shadow-sm-up:    0px 4px 12px 0px $gray-300 !default;
 $modal-backdrop-bg:                 rgba($gray-900, 0.45) !default;
 $modal-backdrop-opacity:            .2 !default;
 $modal-header-border-color:         null !default;
-$modal-footer-border-color:         $modal-header-border-color !default;
+$modal-footer-border-color:         $gray-500 !default;
 $modal-header-border-width:         0 !default;
-$modal-footer-border-width:         $modal-header-border-width !default;
+$modal-footer-border-width:         1px !default;
 $modal-header-padding-y:            2rem !default;
 $modal-header-padding-x:            2rem !default;
 $modal-header-padding:              $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility

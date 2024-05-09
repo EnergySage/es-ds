@@ -13,6 +13,7 @@
   s4: map.get(variables.$spacers, 4);
   s5: map.get(variables.$spacers, 5);
   s6: map.get(variables.$spacers, 6);
+  s450: map.get(variables.$spacers, 450);
 
   // standard
   s25: map.get(variables.$spacers, 25);
@@ -21,6 +22,7 @@
   s150: map.get(variables.$spacers, 150);
   s200: map.get(variables.$spacers, 200);
   s300: map.get(variables.$spacers, 300);
-  s450: map.get(variables.$spacers, 450);
+  s500: map.get(variables.$spacers, 500);
+  s600: map.get(variables.$spacers, 600);
   s800: map.get(variables.$spacers, 800);
 }
