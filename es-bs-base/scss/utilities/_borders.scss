@@ -81,3 +81,9 @@
 .rounded-0 {
   border-radius: 0 !important;
 }
+
+@each $color, $value in variables.$blues {
+  .border-#{$color} {
+    border-color: $value !important;
+  }
+}
