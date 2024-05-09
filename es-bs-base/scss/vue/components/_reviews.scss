@@ -1,4 +1,53 @@
-@use "variables";
+@use "../../variables";
+@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+
+@include breakpoints.media-breakpoint-up(sm) {
+  .EsReviewsIoCardCarousel {
+    /* keep the clickable arrow width at 43px for accessibility. align the card edges with the standard
+    /* content container edge as soon as we have room, but when the gutter is less than 43px, we do need to
+    /* squash the width of the review card the minimum amount so the arrows have room to show on the sides.
+    /* -53px = 43px width of the clickable arrow + 10px space between that and the card */
+    margin-left: max(calc(-1 * ((100vw - 540px) / 2) - 15px), -53px);
+    margin-right: max(calc(-1 * ((100vw - 540px) / 2) - 15px), -53px);
+
+    ::v-deep .CarouselWidget-prefix .CarouselWidget {
+      /* turn off internal margin bottom so we can control page vertical spacing outside this component */
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include breakpoints.media-breakpoint-up(md) {
+  .EsReviewsIoCardCarousel {
+    /* account for the extra -10px margin applied internal to the widget at this breakpoint */
+    margin-left: max(calc(-1 * ((100vw - 720px) / 2) - 5px), -43px);
+    margin-right: max(calc(-1 * ((100vw - 720px) / 2) - 5px), -43px);
+  }
+}
+
+@include breakpoints.media-breakpoint-up(lg) {
+  .EsReviewsIoCardCarousel {
+    /* account for the extra -10px margin applied internal to the widget at this breakpoint */
+    margin-left: max(calc(-1 * ((100vw - 960px) / 2) - 5px), -43px);
+    margin-right: max(calc(-1 * ((100vw - 960px) / 2) - 5px), -43px);
+  }
+}
+
+@include breakpoints.media-breakpoint-up(xl) {
+  .EsReviewsIoCardCarousel {
+    /* account for the extra -10px margin applied internal to the widget at this breakpoint */
+    margin-left: max(calc(-1 * ((100vw - 1140px) / 2) - 5px), -43px);
+    margin-right: max(calc(-1 * ((100vw - 1140px) / 2) - 5px), -43px);
+  }
+}
+
+@include breakpoints.media-breakpoint-up(xxl) {
+  .EsReviewsIoCardCarousel {
+    /* plenty of space on the sides, so just use the fixed value */
+    margin-left: -43px;
+    margin-right: -43px;
+  }
+}
 
 .EsReviewsIoCardCarousel, .CarouselWidget-prefix .CarouselWidget {
   /* style overrides for the widget; can't use sass variables with css variables */
