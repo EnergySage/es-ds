@@ -7,9 +7,6 @@
             <b-col
                 cols="12"
                 lg="8">
-                <h2 class="text-center">
-                    Large
-                </h2>
                 <es-verification-code
                     v-model="code"
                     :disabled="isSubmitInProgress"
