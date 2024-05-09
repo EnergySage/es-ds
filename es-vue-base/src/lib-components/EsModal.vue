@@ -15,10 +15,10 @@
             <slot name="modal-title" />
         </template>
         <template #modal-header-close>
-            <XIcon
+            <x-icon
                 class="text-gray-900"
-                height="26px"
-                width="26px" />
+                height="2rem"
+                width="2rem" />
         </template>
         <slot />
         <template #modal-footer>
