@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-navbar
-            class="mb-3"
+            class="d-xl-none mb-100"
             type="dark"
             variant="primary">
             <b-navbar-nav>
@@ -12,24 +12,29 @@
         </b-navbar>
         <b-sidebar
             id="sidebar-1"
+            class="d-xl-none"
             :title="`ES DS ${$config.version}`"
             shadow>
-            <DsLinkList />
+            <ds-link-list class="mx-100" />
         </b-sidebar>
-        <b-container>
-            <b-row class="mb-3">
-                <b-col cols="12">
-                    <es-breadcrumbs :items="breadcrumbs" />
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col
-                    cols="12">
-                    <Nuxt />
-                </b-col>
-            </b-row>
-        </b-container>
-
+        <div class="d-flex justify-content-center">
+            <div class="ds-side-nav d-none d-xl-block flex-shrink-0 p-100">
+                <ds-link-list />
+            </div>
+            <b-container class="pt-xl-100 mx-0">
+                <b-row class="mb-100">
+                    <b-col cols="12">
+                        <es-breadcrumbs :items="breadcrumbs" />
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col
+                        cols="12">
+                        <Nuxt />
+                    </b-col>
+                </b-row>
+            </b-container>
+        </div>
         <es-footer :content="footerContent" />
     </div>
 </template>

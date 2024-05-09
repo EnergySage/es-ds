@@ -27,7 +27,7 @@
             to convey meaning.
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Headings
             </h2>
@@ -146,7 +146,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Eyebrow with heading
             </h2>
@@ -165,7 +165,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Eyebrow as visual treatment only
             </h2>
@@ -196,7 +196,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Body
             </h2>
@@ -320,7 +320,7 @@
             </ul>
         </div>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col>
                 <h2>
                     Font weight
@@ -369,7 +369,7 @@
             </b-col>
         </b-row>
 
-        <b-row class="my-450">
+        <b-row class="my-500">
             <b-col>
                 <h2>
                     Font size
@@ -436,7 +436,7 @@
                 instances of them. They will be removed in a future version of ESDS.
             </p>
 
-            <div class="my-450">
+            <div class="my-500">
                 <h3>
                     Display (deprecated)
                 </h3>
@@ -468,7 +468,7 @@
                 </ds-responsive-table>
             </div>
 
-            <b-row class="my-450">
+            <b-row class="my-500">
                 <b-col>
                     <h2>
                         Font size (deprecated)

@@ -78,29 +78,17 @@ fieldset:disabled a.btn {
 // Alternate buttons
 //
 
-// DEPRECATED BUTTON STYLES
+// force DEPRECATED BUTTON STYLES to be primary
 @each $color, $value in variables.$theme-colors {
   .btn-#{$color} {
-    @include buttons.button-variant($value, $value);
+    @include buttons.button-v2-variant('primary');
   }
 }
 
-// DEPRECATED OUTLINE BUTTON STYLES
+// force DEPRECATED OUTLINE BUTTON STYLES to be primary
 @each $color, $value in variables.$theme-colors {
   .btn-outline-#{$color} {
-    @include buttons.button-outline-variant($value);
-
-    &:disabled,
-    &.disabled {
-      color: color-yiq(variables.$btn-disabled-bg-color);
-      pointer-events: none;
-      background-color: variables.$btn-disabled-bg-color;
-      border-color: variables.$btn-disabled-bg-color;
-      // Remove CSS gradients if they're enabled
-      @if variables.$enable-gradients {
-        background-image: none;
-      }
-    }
+    @include buttons.button-v2-outline-variant('primary');
   }
 }
 

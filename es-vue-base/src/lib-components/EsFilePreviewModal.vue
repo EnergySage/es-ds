@@ -18,7 +18,7 @@
                 :alt="fileName" />
         </div>
         <div class="d-none d-md-block">
-            <div class="px-450 py-200 bg-gray-200">
+            <div class="px-500 py-200 bg-gray-200">
                 <div class="card bg-white file-preview">
                     <b-img
                         fluid

@@ -7,7 +7,7 @@
             Shows a YouTube video when the provided cover image is clicked.
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <b-row>
                 <b-col md="8">
                     <es-video
@@ -21,7 +21,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <b-row>
                 <b-col md="8">
                     <es-video
