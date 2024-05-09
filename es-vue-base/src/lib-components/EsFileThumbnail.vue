@@ -268,6 +268,11 @@ export default {
 @use "~@energysage/es-bs-base/scss/variables" as variables;
 
 .thumbnail-progress::v-deep {
+    text {
+        color: variables.$black !important;
+        font-weight: variables.$font-weight-bold !important;
+    }
+
     .progress-circle {
             stroke: variables.$blue-700 !important;
     }

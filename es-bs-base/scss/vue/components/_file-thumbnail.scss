@@ -3,7 +3,7 @@
 
 .es-file-thumbnail {
   .desktop-preview {
-    width: 165px;
+    width: 135px;
   }
 
   .thumbnail-border {
@@ -16,25 +16,16 @@
 
   .thumbnail-outer-wrapper {
     z-index: 2;
-    width: 165px;
-    height: 165px;
-    @include breakpoints.media-breakpoint-down(md) {
-      width: 100px;
-      height: 110px;
-    }
+    width: 135px;
+    height: 135px;
   }
 
   .thumbnail-inner-wrapper-x {
     top: -18px;
     z-index: -1;
-    width: 160px;
-    height: 160px;
+    width: 130px;
+    height: 130px;
     border: 2px solid variables.$card-border-color;
-
-    @include breakpoints.media-breakpoint-down(md) {
-      width: 95px;
-      height: 105px;
-    }
 
     &:hover {
       border: 2px solid variables.$gray-900;
@@ -44,15 +35,10 @@
   .thumbnail-inner-wrapper {
     top: 8px;
     z-index: -1;
-    width: 160px;
-    height: 160px;
+    width: 130px;
+    height: 130px;
     overflow: hidden;
     border: 2px solid variables.$card-border-color;
-
-    @include breakpoints.media-breakpoint-down(md) {
-      width: 95px;
-      height: 105px;
-    }
   }
 
   .thumbnail-spinner {
