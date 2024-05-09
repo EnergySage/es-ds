@@ -1324,6 +1324,14 @@ $zindex-modal:                      1050 !default;
 $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
 
+// Verification code
+
+$verification-code-dimension-xs:     3.5rem !default;
+$verification-code-dimension-lg:     5rem !default;
+$verification-code-border:           2px solid $gray-200;
+$verification-code-border-radius:    $border-radius-sm !default;
+
+
 
 // Navs
 
@@ -1632,6 +1640,10 @@ $badge-text-colors: map.merge(
 // Padding applied to the modal body
 $modal-inner-padding:               0 2rem 2rem 2rem !default;
 
+$modal-footer-padding-x:            2rem !default;
+$modal-footer-padding-bottom:       2rem !default;
+$modal-footer-padding-top:          4rem !default; // border appears halfway down this
+
 // Margin between elements in footer, must be lower than or equal to 2 * $modal-inner-padding
 $modal-footer-margin-between:       .5rem !default;
 
@@ -1652,9 +1664,9 @@ $modal-content-box-shadow-sm-up:    0px 4px 12px 0px $gray-300 !default;
 $modal-backdrop-bg:                 rgba($gray-900, 0.45) !default;
 $modal-backdrop-opacity:            .2 !default;
 $modal-header-border-color:         null !default;
-$modal-footer-border-color:         $modal-header-border-color !default;
+$modal-footer-border-color:         $gray-500 !default;
 $modal-header-border-width:         0 !default;
-$modal-footer-border-width:         $modal-header-border-width !default;
+$modal-footer-border-width:         1px !default;
 $modal-header-padding-y:            2rem !default;
 $modal-header-padding-x:            2rem !default;
 $modal-header-padding:              $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
