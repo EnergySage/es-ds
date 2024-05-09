@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EsFileThumbnail <EsFileThumbnail /> 1`] = `
-"<div>
+"<div class="es-file-thumbnail">
   <div class="mobile-preview d-block d-md-none">
     <div class="card thumbnail-border">
       <div class="row p-3 align-items-center">
@@ -54,7 +54,7 @@ exports[`EsFileThumbnail <EsFileThumbnail /> 1`] = `
 `;
 
 exports[`EsFileThumbnail <EsFileThumbnail /> default prop values 1`] = `
-"<div>
+"<div class="es-file-thumbnail">
   <div class="mobile-preview d-block d-md-none">
     <div class="card thumbnail-border">
       <div class="row p-3 align-items-center">

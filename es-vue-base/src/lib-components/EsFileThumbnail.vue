@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="es-file-thumbnail">
         <!-- MOBILE PREVIEW START -->
         <div
             class="mobile-preview"
