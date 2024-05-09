@@ -10,7 +10,7 @@
             :name="'codeInput_' + index"
             :type="type"
             :pattern="pattern"
-            class="code-input text-center font-size-300 font-size-lg-500 mr-50 mr-lg-100 font-weight-bold p-100 p-lg-150"
+            class="verification-code-input text-center font-size-300 font-size-lg-500 mr-50 mr-lg-100 font-weight-bold p-100 p-lg-150"
             maxlength="1"
             autocomplete="off"
             aria-autocomplete="none"

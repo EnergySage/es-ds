@@ -2,7 +2,7 @@
 @use "../../mixins/breakpoints";
 
 .verification-code-holder {
-    .code-input {
+    .verification-code-input {
         appearance: textfield;
         border: variables.$verification-code-border;
         border-radius: variables.$verification-code-border-radius !important;
