@@ -1,5 +1,5 @@
-@use "variables";
-@use "mixins/breakpoints";
+@use "../../variables" as variables;
+@use "../../mixins/breakpoints";
 
 .es-file-thumbnail {
   .desktop-preview {
