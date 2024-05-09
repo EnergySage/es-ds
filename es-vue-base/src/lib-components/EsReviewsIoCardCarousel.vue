@@ -277,30 +277,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use "~@energysage/es-bs-base/scss/variables" as variables;
 @use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
-
-.EsReviewsIoCardCarousel {
-    ::v-deep .CarouselWidget-prefix .CarouselWidget {
-        /* style overrides for the widget; can't use sass variables with css variables */
-        --item-border-color: #ececec;
-        --item-border-radius: 12px;
-        --item-border-width: 1px;
-        --item-shadow-size: 0;
-        margin-bottom: 0;
-        overflow: hidden;
-    }
-
-    ::v-deep .CarouselWidget .R-ReviewsList__item .item__inner {
-        /* fix safari issue with drop-shadow buggy behavior */
-        transform: translateZ(0);
-        transition: variables.$transition-base;
-    }
-
-    ::v-deep .CarouselWidget .R-ReviewsList__item:hover .item__inner {
-        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
-    }
-}
 
 @include breakpoints.media-breakpoint-up(sm) {
     .EsReviewsIoCardCarousel {

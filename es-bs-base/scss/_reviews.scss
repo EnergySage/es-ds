@@ -1,0 +1,139 @@
+@use "variables";
+
+.EsReviewsIoCardCarousel, .CarouselWidget-prefix .CarouselWidget {
+  /* style overrides for the widget; can't use sass variables with css variables */
+  --author-font-size: 16px;
+  --badge-icon-color: #222633;
+  --badge-icon-font-size: 16px;
+  --badge-text-color: #222633;
+  --badge-text-font-size: 12px;
+  --body-text-color: #222633;
+  --body-text-line-height: 24px;
+  --common-star-color: #ff9133;
+  --common-star-disabled-color: #ffdbb5;
+  --header-heading-font-size: 18px;
+  --header-heading-line-height: 24px;
+  --header-heading-text-color: #222633;
+  --header-padding: 32px;
+  --header-subheading-font-size: 16px;
+  --header-subheading-font-weight: 400;
+  --header-subheading-line-height: 24px;
+  --header-subheading-text-color: #222633;
+  --heading-text-color: #222633;
+  --heading-text-line-height: 24px;
+  --item-border-color: #dfe1eb;
+  --item-border-radius: 8px;
+  --item-border-width: 2px;
+  --item-padding: 16px;
+  --popup-border-radius: 4px;
+  --popup-icon-color: black;
+  --popup-backdrop-color: rgba(34, 38, 51, 0.09);
+  --popup-shadow-color: #cfd1df;
+  --popup-shadow-size: 12px;
+  --scroll-button-horizontal-position: 5px;
+  --scroll-button-icon-color: #292929;
+  --scroll-button-icon-size: 32px;
+  --small-star-size: 32px;
+  margin-bottom: 0;
+  overflow: hidden;
+
+  .CarouselWidget__header {
+    margin-bottom: 32px !important;
+  }
+
+  .R-ReviewsList {
+    padding-top: 0 !important;
+  }
+
+  .R-ReviewsList__item {
+    padding: 0 8px !important;
+  }
+
+  .R-ReviewsList__item .item__inner {
+    /* fix safari issue with drop-shadow buggy behavior */
+    transform: translateZ(0);
+    transition: variables.$transition-base;
+    box-shadow: 0 4px 12px 0 #f1f3fb !important;
+  }
+
+  .R-ReviewsList__item:hover .item__inner {
+    --item-border-color: #ffcea0;
+  }
+
+  .R-ReviewsList__item--body {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .R-BadgeElement {
+    margin-bottom: 16px !important;
+
+    .R-TextBody {
+      line-height: 20px !important;
+    }
+  }
+
+  .R-flex-row .R-TextBody {
+    margin-bottom: 0 !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+  }
+
+  .cssVar-subheading__number {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    padding: 0 1px;
+  }
+
+  .cssVar-authorName:after {
+    content: '.';
+  }
+
+  .R-GlobalModal__dialog {
+    align-self: center;
+    padding: 10px 32px;
+
+    .controls__button {
+      position: absolute;
+      right: 32px;
+      opacity: .5;
+
+      .button__icon {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      &:hover {
+        opacity: .75;
+      }
+    }
+
+    .dialog__inner {
+      padding: 0;
+    }
+
+    .R-TextBody {
+      font-size: 16px !important;
+      font-weight: 300 !important;
+      line-height: 24px !important;
+    }
+
+    .R-BadgeElement {
+      margin-bottom: 32px !important;
+    }
+
+    .R-RatingStars {
+      vertical-align: unset !important;
+    }
+  }
+
+  .u-textLeft--all .cssVar-popup-heading-text {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 36px;
+
+    &:after {
+      content: '.';
+    }
+  }
+}
