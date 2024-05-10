@@ -6,14 +6,19 @@
         appearance: textfield;
         border: variables.$verification-code-border;
         border-radius: variables.$verification-code-border-radius !important;
+        box-shadow: variables.$verification-code-shadow;
         height:variables.$verification-code-dimension-lg;
         width: variables.$verification-code-dimension-lg;
         flex: 0 0 auto;
 
-         @include breakpoints.media-breakpoint-down(md) {
-            height: variables.$verification-code-dimension-xs;
-            width: variables.$verification-code-dimension-xs;
-    }
+        &:focus {
+          border-color: variables.$verification-code-focus-border-color;
+        }
+
+        @include breakpoints.media-breakpoint-down(md) {
+          height: variables.$verification-code-dimension-xs;
+          width: variables.$verification-code-dimension-xs;
+        }
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
