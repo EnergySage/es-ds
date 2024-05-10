@@ -1,0 +1,73 @@
+@use "../../variables" as variables;
+@use "../../mixins/breakpoints";
+
+.es-file-thumbnail {
+  .desktop-preview {
+    width: 135px;
+  }
+
+  .thumbnail-border {
+    border: 2px solid variables.$card-border-color;
+  }
+
+  .thumbnail-border-failure {
+    border: 2px solid variables.$danger;
+  }
+
+  .thumbnail-outer-wrapper {
+    z-index: 2;
+    width: 135px;
+    height: 135px;
+  }
+
+  .thumbnail-inner-wrapper-x {
+    top: -18px;
+    z-index: -1;
+    width: 130px;
+    height: 130px;
+    border: 2px solid variables.$card-border-color;
+
+    &:hover {
+      border: 2px solid variables.$gray-900;
+    }
+  }
+
+  .thumbnail-inner-wrapper {
+    top: 8px;
+    z-index: -1;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    border: 2px solid variables.$card-border-color;
+  }
+
+  .thumbnail-spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 0.3rem;
+  }
+
+  .icon-button {
+    position: relative;
+    z-index: 2;
+  }
+
+  a:hover {
+    color: variables.$gray-800;
+  }
+
+  .svg-fill-wrapper {
+    position: absolute;
+    top: 4px;
+    right: 2px;
+    z-index: -1;
+    width: 20px;
+    height: 20px;
+    /* stylelint-disable-next-line property-disallowed-list */
+    border-radius: 1rem;
+  }
+
+  .image-preview {
+    object-fit: cover;
+  }
+}
