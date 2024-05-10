@@ -1584,11 +1584,11 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 
 // Badges
 
-$badge-font-size:                   0.75rem !default;
+$badge-font-size:                   $font-size-sm !default;
 $badge-font-weight:                 $font-weight-bold !default;
 $badge-padding-y:                   0.25rem !default;
 $badge-padding-x:                   1rem !default;
-$badge-border-radius:               $border-radius-sm !default;
+$badge-border-radius:               $border-radius !default;
 
 $badge-transition:                  $btn-transition !default;
 $badge-focus-width:                 $input-btn-focus-width !default;
@@ -1602,7 +1602,7 @@ $badge-bg-colors: () !default;
 $badge-bg-colors: map.merge(
   (
     "danger":    $error-50,
-    "dark":      $gray-400,
+    "dark":      $dark-blue,
     "info":      $orange-500,
     "primary":   $soft-blue,
     "success":   $success-50,
@@ -1623,7 +1623,7 @@ $badge-text-colors: () !default;
 $badge-text-colors: map.merge(
   (
     "danger":    $gray-900,
-    "dark":      $gray-800,
+    "dark":      $white,
     "info":      $gray-900,
     "primary":   $dark-blue,
     "success":   $gray-900,
