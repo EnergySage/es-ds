@@ -386,6 +386,11 @@ $nav-hover-delay: 300ms;
       }
     }
 
+    .navbar-brand,
+    .icon-dropdown {
+      padding-top: 1em;
+    }
+
     // primary nav buttons desktop
     .nav-item.top-header {
       padding: 1em 0 2em;
