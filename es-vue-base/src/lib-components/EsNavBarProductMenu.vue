@@ -7,7 +7,7 @@
             :target="newTab ? '_blank' : null"
             aria-haspopup="true"
             aria-expanded="false">
-            <span class="product-menu-header-text d-block position-relative py-lg-50">
+            <span class="product-menu-header-text d-block position-relative py-lg-25">
                 {{ name }}
             </span>
         </es-nav-bar-link>

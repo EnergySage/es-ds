@@ -2,7 +2,10 @@
     <div class="icon-dropdown">
         <div class="nav-item">
             <div class="nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100">
-                <IconPerson class="align-self-center account-icon" />
+                <IconPerson
+                    class="align-self-center account-icon"
+                    width="20px"
+                    height="20px" />
                 <span class="sr-only">
                     {{ loggedOut.menuButtonText }}
                 </span>

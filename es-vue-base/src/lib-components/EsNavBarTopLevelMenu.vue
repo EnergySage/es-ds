@@ -4,7 +4,7 @@
             <!-- desktop fly-out menu trigger -->
             <es-nav-bar-link
                 v-if="!link"
-                class="nav-link dropdown-toggle d-none d-lg-block py-150 font-weight-bolder"
+                class="nav-link dropdown-toggle d-none d-lg-block py-100 font-weight-bolder"
                 href="#"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -16,7 +16,7 @@
             <!-- mobile+desktop top-level link -->
             <es-nav-bar-link
                 v-else
-                class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-150 px-100 font-weight-bold"
+                class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-100 px-100 font-weight-bold"
                 :href="link"
                 :target="newTab ? '_blank' : null">
                 <div class="d-flex d-lg-block top-level-label">
