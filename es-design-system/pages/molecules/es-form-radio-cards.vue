@@ -15,8 +15,8 @@
             Default
         </h2>
         <p>
-            Responsive font sizing is applied by default; the label matches Heading 1 and the card content
-            matches Heading 2. This means the text will be smaller on mobile and larger on desktop.
+            Responsive font sizing is applied by default. This means the text will be smaller on
+            mobile and larger on desktop.
         </p>
         <es-card class="mb-200 mb-lg-500">
             <form @submit="handleSubmit">
