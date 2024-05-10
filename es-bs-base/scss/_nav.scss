@@ -279,7 +279,7 @@ $nav-hover-delay: 300ms;
 
     // Full expand top level nav's topics section
     .dropdown-menu-full-page {
-      top: 65%;
+      top: 63%;
       width: 100%;
       padding-bottom: 0;
     }
@@ -376,21 +376,27 @@ $nav-hover-delay: 300ms;
       }
     }
 
+    // primary nav buttons desktop
     .nav-item.top-header {
       user-select: none;
-      background: variables.$gray-50;
-      @include border-radius.border-radius(8px);
 
-      > .nav-link {
-        color: variables.$blue-900;
-        text-decoration: none;
-      }
-
-      &:hover {
-        background: variables.$blue-50;
-
+      .top-header-inner {
+        /* stylelint-disable-next-line selector-max-class */
         > .nav-link {
           color: variables.$blue-900;
+          text-decoration: none;
+          background: variables.$gray-50;
+          @include border-radius.border-radius(8px);
+
+          /* stylelint-disable-next-line selector-max-class */
+          &:hover {
+            background: variables.$blue-50;
+
+            /* stylelint-disable-next-line selector-max-class */
+            > .nav-link {
+              color: variables.$blue-900;
+            }
+          }
         }
       }
     }
@@ -628,26 +634,33 @@ $nav-hover-delay: 300ms;
       cursor: pointer;
     }
 
+    // primary nav buttons mobile
     .nav-item.top-header {
       margin-bottom: variables.$navbar-padding-y;
       background: variables.$gray-50;
       @include border-radius.border-radius(3px);
 
-      > .nav-link {
+      /* stylelint-disable-next-line selector-max-class */
+      .top-header-inner > .nav-link {
         color: variables.$blue-900;
 
+        /* stylelint-disable-next-line selector-max-class */
         &:hover {
           color: variables.$blue-900;
         }
       }
     }
 
-    .nav-item.top-header > .dropdown-label {
-      color: variables.$blue-900;
-
-      &:hover {
+    .nav-item.top-header .top-header-inner {
+      /* stylelint-disable-next-line selector-max-class */
+      > .dropdown-label {
         color: variables.$blue-900;
-        text-decoration: underline;
+
+        /* stylelint-disable-next-line selector-max-class */
+        &:hover {
+          color: variables.$blue-900;
+          text-decoration: underline;
+        }
       }
     }
 
