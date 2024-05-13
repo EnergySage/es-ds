@@ -1,0 +1,16 @@
+@use "../../variables";
+@use "../../mixins/breakpoints";
+
+.es-file-upload {
+    background-color: variables.$white;
+    border: variables.$border-width solid variables.$border-color;
+
+    @include breakpoints.media-breakpoint-down(sm) {
+        background-color: variables.$white;
+        border: variables.$border-width solid variables.$border-color;
+    }
+
+    &.active {
+        border: variables.$border-width solid variables.$blue-300;
+    }
+}
