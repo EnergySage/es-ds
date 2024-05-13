@@ -17,21 +17,35 @@
             <div class="align-self-center">
                 <icon-upload
                     class="d-none d-md-inline-block"
+                    :class="{ 'mb-200': collapsed }"
                     height="32px"
                     width="32px" />
+                <icon-upload
+                    class="d-md-none"
+                    height="24px"
+                    width="24px" />
             </div>
-            <div class="align-self-center text-center">
+            <div
+                class="align-self-center text-center"
+                :class="{ 'px-100': collapsed }">
                 <slot name="cta" />
             </div>
             <div class="align-self-center">
                 <es-button
-                    class="w-100 w-md-auto"
+                    class="d-none d-md-inline w-100 w-md-auto"
+                    :class="{ 'mb-200': collapsed }"
                     @click="openFilePicker">
                     <slot name="buttonText">
-                        <p class="d-none d-md-inline m-0">
+                        <p class="m-0">
                             Browse files
                         </p>
-                        <p class="d-md-none m-0">
+                    </slot>
+                </es-button>
+                <es-button
+                    class="d-md-none w-100"
+                    @click="openFilePicker">
+                    <slot name="buttonText">
+                        <p class="m-0">
                             Choose files
                         </p>
                     </slot>
