@@ -55,6 +55,6 @@
 
 @each $color, $value in variables.$badge-bg-colors {
   .badge-#{$color} {
-    @include badge.badge-variant($value);
+    @include badge.badge-variant($color);
   }
 }

@@ -306,7 +306,7 @@
     &:active {
       border-color: variables.$card-interactive-active-border-color;
       box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-active-shadow;
-      transform: translateY(1px);
+      transform: variables.$btn-active-transform;
     }
   }
 }

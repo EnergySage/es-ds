@@ -33,7 +33,7 @@ describe('EsVerificationCode', () => {
         });
         const a11y = await axe(wrapper.element);
 
-        expect(wrapper.findAll('.code-input')).toHaveLength(charCount);
+        expect(wrapper.findAll('.verification-code-input')).toHaveLength(charCount);
         expect(wrapper.html()).toMatchSnapshot();
         expect(a11y).toHaveNoViolations();
     });
@@ -43,7 +43,7 @@ describe('EsVerificationCode', () => {
             ...jestVue,
         });
         const a11y = await axe(wrapper.element);
-        const fisrtInput = wrapper.find('.code-input');
+        const fisrtInput = wrapper.find('.verification-code-input');
 
         fisrtInput.element.value = 1;
         fisrtInput.trigger('input');
@@ -58,7 +58,7 @@ describe('EsVerificationCode', () => {
             ...jestVue,
         });
         const a11y = await axe(wrapper.element);
-        const codeInputs = wrapper.findAll('.code-input');
+        const codeInputs = wrapper.findAll('.verification-code-input');
         const chars = ['a', '/', '+', 'B', '?'];
 
         codeInputs.wrappers.forEach((input, index) => {
@@ -77,7 +77,7 @@ describe('EsVerificationCode', () => {
             ...jestVue,
         });
         const a11y = await axe(wrapper.element);
-        const codeInputs = wrapper.findAll('.code-input');
+        const codeInputs = wrapper.findAll('.verification-code-input');
 
         codeInputs.wrappers.forEach((input) => {
             // eslint-disable-next-line no-param-reassign

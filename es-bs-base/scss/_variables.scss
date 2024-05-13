@@ -428,6 +428,7 @@ $spacers: map.merge(
     150: ($spacer * 1.5), // 24
     200: ($spacer * 2),   // 32
     300: ($spacer * 3),   // 48
+    400: ($spacer * 4),   // 64
     500: ($spacer * 5),   // 80
     600: ($spacer * 6),   // 96
     800: ($spacer * 8)    // 128
@@ -821,7 +822,7 @@ $input-btn-padding-x:         1rem !default;
 $input-btn-font-family:       $font-family-sans-serif !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       1.2 !default;
-$input-btn-height:            $font-size-base * 3.5 !default;;
+$input-btn-height:            $font-size-base * 3.5 !default;
 
 $input-btn-focus-width:       0 !default;
 $input-btn-focus-color:       rgba($component-active-bg, .25) !default;
@@ -990,10 +991,10 @@ $button-disabled-font-colors: map.merge(
   $button-disabled-font-colors
 );
 
-$btn-primary-box-shadow: 0px 5px 10px 0px $blue-100 !default;
-$btn-primary-active-box-shadow: 0px 4px 10px 0px $blue-100 !default;
-$btn-dark-bg-box-shadow: 0px 5px 10px 0px rgba(255, 145, 51, 0.25);
-$btn-dark-bg-active-box-shadow: 0px 4px 10px 0px rgba(255, 145, 51, 0.25);
+$btn-primary-box-shadow: 0 5px 10px 0 $blue-100 !default;
+$btn-primary-active-box-shadow: 0 4px 10px 0 $blue-100 !default;
+$btn-dark-bg-box-shadow: 0 5px 10px 0 rgba(255, 145, 51, 0.25);
+$btn-dark-bg-active-box-shadow: 0 4px 10px 0 rgba(255, 145, 51, 0.25);
 
 $button-box-shadows: () !default;
 $button-box-shadows: map.merge(
@@ -1049,7 +1050,7 @@ $btn-line-height-lg:          $input-btn-line-height-lg !default;
 $btn-border-width:            2px !default;
 
 $btn-font-weight:             $font-weight-bolder !default;
-$btn-box-shadow:              0px 5px 10px 0px $blue-100 !default;
+$btn-box-shadow:              0 5px 10px 0 $blue-100 !default;
 $btn-focus-width:             $input-btn-focus-width !default;
 $btn-focus-box-shadow:        0 !default;
 $btn-disabled-opacity:        1 !default;
@@ -1173,15 +1174,15 @@ $custom-control-indicator-checked-disabled-bg:  $white !default;
 $custom-control-indicator-checked-box-shadow:   null !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
 
-$custom-control-indicator-hover-box-shadow:     0px 0px 0px 10px $blue-50 !default;
+$custom-control-indicator-hover-box-shadow:     0 0 0 10px $blue-50 !default;
 
-$custom-control-indicator-focus-box-shadow:     0px 0px 0px 10px $blue-300 !default;
+$custom-control-indicator-focus-box-shadow:     0 0 0 10px $blue-300 !default;
 $custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
 
 $custom-control-indicator-active-color:         $component-active-color !default;
 $custom-control-indicator-active-bg:            $white !default;
 
-$custom-control-indicator-active-box-shadow:    0px 0px 0px 10px $blue-50 !default;
+$custom-control-indicator-active-box-shadow:    0 0 0 10px $blue-50 !default;
 $custom-control-indicator-active-border-color:  $custom-control-indicator-border-color !default;
 
 $custom-checkbox-indicator-border-radius:         0.125rem !default;
@@ -1301,7 +1302,7 @@ $form-validation-states: map.merge(
   (
     "valid": (
       "color": $form-feedback-valid-color,
-      "icon": ''
+      "icon": ""
     ),
     "invalid": (
       "color": $form-feedback-invalid-color,
@@ -1323,6 +1324,15 @@ $zindex-modal-backdrop:             1040 !default;
 $zindex-modal:                      1050 !default;
 $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
+
+// Verification code
+
+$verification-code-dimension-xs:       3.5rem !default;
+$verification-code-dimension-lg:       5rem !default;
+$verification-code-border:             2px solid $gray-200;
+$verification-code-border-radius:      $border-radius-sm !default;
+$verification-code-shadow:             0px 4px 12px 0px $gray-50;
+$verification-code-focus-border-color: $blue-200;
 
 
 // Navs
@@ -1352,7 +1362,7 @@ $nav-divider-margin-y:              $spacer * .5 !default;
 $navbar-padding-y:                  $spacer * .5 !default;
 $navbar-padding-x:                  $spacer !default;
 
-$navbar-nav-link-padding-x:         .5rem !default;
+$navbar-nav-link-padding-x:         1rem !default;
 
 $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
@@ -1486,16 +1496,19 @@ $card-columns-count:                3 !default;
 $card-columns-gap:                  1.25rem !default;
 $card-columns-margin:               $card-spacer-y !default;
 
-$card-interactive-border-color:        $gray-200 !default;
-$card-interactive-shadow:              0px 4px 12px 0px $gray-50 !default;
+$card-interactive-border-color:           $gray-200 !default;
+$card-interactive-shadow:                 0px 4px 12px 0px $gray-50 !default;
 
-$card-interactive-hover-border-color:  $orange-300 !default;
+$card-interactive-hover-border-color:     $orange-300 !default;
 
-$card-interactive-focus-border-color:  $orange-600 !default;
+$card-interactive-focus-border-color:     $orange-600 !default;
+$card-interactive-focus-shadow:           0px 0px 8px 0px rgba(255, 145, 51, 0.40) !default;
 
-$card-interactive-active-border-color: $orange-900 !default;
-$card-interactive-active-shadow:       0px 3px 10px 0px $gray-50 !default;
+$card-interactive-active-border-color:    $orange-900 !default;
+$card-interactive-active-shadow:          0px 3px 10px 0px $gray-50 !default;
 
+$card-interactive-selected-shadow:        0px 0px 8px 0px rgba(255, 145, 51, 0.40) !default;
+$card-interactive-selected-active-shadow: 0px 0px 7px 0px rgba(255, 145, 51, 0.40) !default;
 
 // Tooltips
 
@@ -1571,11 +1584,11 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 
 // Badges
 
-$badge-font-size:                   0.75rem !default;
+$badge-font-size:                   $font-size-sm !default;
 $badge-font-weight:                 $font-weight-bold !default;
 $badge-padding-y:                   0.25rem !default;
 $badge-padding-x:                   1rem !default;
-$badge-border-radius:               $border-radius-sm !default;
+$badge-border-radius:               $border-radius !default;
 
 $badge-transition:                  $btn-transition !default;
 $badge-focus-width:                 $input-btn-focus-width !default;
@@ -1589,7 +1602,7 @@ $badge-bg-colors: () !default;
 $badge-bg-colors: map.merge(
   (
     "danger":    $error-50,
-    "dark":      $gray-400,
+    "dark":      $dark-blue,
     "info":      $orange-500,
     "primary":   $soft-blue,
     "success":   $success-50,
@@ -1610,7 +1623,7 @@ $badge-text-colors: () !default;
 $badge-text-colors: map.merge(
   (
     "danger":    $gray-900,
-    "dark":      $gray-800,
+    "dark":      $white,
     "info":      $gray-900,
     "primary":   $dark-blue,
     "success":   $gray-900,

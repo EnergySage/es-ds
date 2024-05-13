@@ -1,0 +1,135 @@
+@use "../..//mixins/breakpoints" as breakpoints;
+@use "../../variables" as variables;
+@use '../../vendor/rfs' as rfs;
+
+.es-form-radio-cards {
+  &.btn-group-vertical {
+    /* undo default radio group 'buttons' style that prevents full width */
+    align-items: stretch;
+
+    /* undo default stacked button group styles that turn off rounding on all except first/last child */
+    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-group:not(:last-child) > .btn,
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child) > .btn {
+      border-radius: variables.$border-radius-lg;
+    }
+  }
+
+  /* undo default stacked button group style that disables bottom margin */
+  &.btn-group-toggle {
+    > .btn,
+    > .btn-group > .btn {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.es-form-radio-card {
+  font-size: variables.$font-size-300;
+  margin-bottom: 1rem;
+  padding: 1.5rem 1rem 1.5rem 3rem;
+  position: relative;
+  text-align: left;
+
+  @include breakpoints.media-breakpoint-up(lg) {
+    font-size: variables.$font-size-400;
+    padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+  }
+
+  &::before,
+  &::after {
+    border-radius: 50%;
+    content: '';
+    left: 1rem;
+    position: absolute;
+    top: 1.5rem;
+
+    @include breakpoints.media-breakpoint-up(lg) {
+      left: 1.5rem;
+    }
+  }
+
+  /* outer circle of radio button */
+  &::before {
+    border: 2.5px solid variables.$blue-900;
+    height: 22px;
+    transform: translateY(2px);
+    width: 22px;
+
+    @include breakpoints.media-breakpoint-up(lg) {
+      height: 28px;
+      width: 28px;
+    }
+  }
+
+  /* needs additional specificity to override .es-card.interactive */
+  &.interactive {
+    color: variables.$gray-800;
+    font-weight: variables.$font-weight-bold;
+  }
+
+  /* undo primary button outline styles */
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle,
+  &:focus,
+  &:hover {
+    background-color: variables.$white;
+    color: variables.$gray-800;
+  }
+
+  /* selected state */
+  &:not(:disabled):not(.disabled).active {
+    border-color: variables.$warm-orange;
+    box-shadow: 0 0 0 1px transparent, variables.$card-interactive-selected-shadow;
+    transform: none;
+
+    /* inner circle of radio button */
+    &::after {
+      background-color: variables.$blue-900;
+      height: 11px;
+      transform: translateX(5.5px) translateY(7.5px);
+      width: 11px;
+
+      @include breakpoints.media-breakpoint-up(lg) {
+        height: 15px;
+        transform: translateX(6.5px) translateY(8.5px);
+        width: 15px;
+      }
+    }
+  }
+
+  &:focus,
+  &.focus,
+  &:not(:disabled):not(.disabled).active:focus,
+  &:not(:disabled):not(.disabled).active.focus {
+    border-color: variables.$card-interactive-focus-border-color;
+    box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-focus-shadow;
+  }
+
+  /* mousedown/touchstart state */
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active:active {
+    border-color: variables.$card-interactive-active-border-color;
+    box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-selected-active-shadow;
+    transform: variables.$btn-active-transform;
+  }
+
+  input {
+    /**
+     * hide the radio button input elements the same way bootstrap vue does.
+     * bootstrap vue's styles only work on items directly nested under b-form-radio-group, and we want
+     * to enable users to put any elements (e.g. <b-col> and <b-row>) between the EsFormRadioCards and
+     * EsFormRadioCard elements.
+     */
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+    position: absolute;
+  }
+
+  &.btn {
+    /* override the fixed height of normal buttons */
+    height: auto;
+  }
+}

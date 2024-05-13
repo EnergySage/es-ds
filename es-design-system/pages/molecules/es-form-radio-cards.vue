@@ -15,10 +15,10 @@
             Default
         </h2>
         <p>
-            Responsive font sizing is applied by default; the label matches Heading 1 and the card content
-            matches Heading 2. This means the text will be smaller on mobile and larger on desktop.
+            Responsive font sizing is applied by default. This means the text will be smaller on
+            mobile and larger on desktop.
         </p>
-        <div class="border mb-200 mb-lg-500 p-100 p-lg-200 rounded">
+        <es-card class="mb-200 mb-lg-500">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.propertyType"
@@ -35,7 +35,7 @@
                 <span class="font-weight-bold">Selection:</span>
                 {{ form.propertyType || '[none]' }}
             </p>
-        </div>
+        </es-card>
 
         <h2>
             Custom card styling
@@ -44,7 +44,7 @@
             This example demonstrates customizing the content, spacing, and typography of the cards,
             as well as changing the layout based on the breakpoint.
         </p>
-        <div class="border mb-500 p-100 p-lg-200 rounded">
+        <es-card class="mb-200 mb-lg-500">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.storageReason"
@@ -81,7 +81,7 @@
                 <span class="font-weight-bold">Selection:</span>
                 {{ form.storageReason || '[none]' }}
             </p>
-        </div>
+        </es-card>
 
         <h2>
             Detached label
