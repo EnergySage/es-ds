@@ -75,7 +75,7 @@
   --item-border-width: 2px;
   --item-padding: 16px;
   --popup-border-radius: 4px;
-  --popup-icon-color: black;
+  --popup-icon-color: #222633;
   --popup-backdrop-color: rgba(34, 38, 51, 0.09);
   --popup-shadow-color: #cfd1df;
   --popup-shadow-size: 12px;
@@ -106,7 +106,22 @@
   }
 
   .R-ReviewsList__item:hover .item__inner {
-    --item-border-color: #ffcea0;
+    border-color: variables.$card-interactive-hover-border-color;
+    text-decoration: none;
+  }
+
+  .R-ReviewsList__item:focus {
+    outline: none;
+    .item__inner {
+      border-color: variables.$card-interactive-focus-border-color;
+      box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-shadow;
+    }
+  }
+
+  .R-ReviewsList__item:active .item__inner {
+    border-color: variables.$card-interactive-active-border-color;
+    box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-active-shadow;
+    transform: variables.$btn-active-transform;
   }
 
   .R-ReviewsList__item--body {
@@ -145,10 +160,9 @@
     .controls__button {
       position: absolute;
       right: 32px;
-      opacity: .5;
 
       .button__icon {
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 600;
       }
 
@@ -173,6 +187,11 @@
 
     .R-RatingStars {
       vertical-align: unset !important;
+    }
+
+    .u-hr {
+      border-color: variables.$gray-500;
+      opacity: 1;
     }
   }
 
