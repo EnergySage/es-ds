@@ -356,6 +356,10 @@ $nav-hover-delay: 300ms;
       transform: translateX(25%);
     }
 
+    .account-menu.loggedIn {
+      font-size: variables.$font-size-75;
+    }
+
     // Show dropdown and hover colors on nav-item hover in desktop view
     // Show top headers up chevron icon on nav-item hover
     .nav-item:hover {
