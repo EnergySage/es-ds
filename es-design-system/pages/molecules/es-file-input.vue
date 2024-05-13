@@ -98,7 +98,7 @@
         </div>
         <div v-if="events.length">
             <h2 class="mb-200">
-                Emitted Events
+                Emitted events
             </h2>
             <es-form-msg
                 v-for="(event, index) in events"
