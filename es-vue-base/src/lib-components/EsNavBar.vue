@@ -301,9 +301,9 @@ export default {
         });
 
         // Show overlay on hovers for desktop only
-        // eslint-disable-next-line max-len
         document.querySelectorAll(
-            '.nav-es-container .nav-item .dropdown-toggle, .nav-es-container .nav-item .dropdown-menu',
+            // eslint-disable-next-line max-len
+            '.nav-es-container .nav-item .dropdown-toggle, .nav-es-container .nav-item .dropdown-menu, .nav-es-container .nav-item.has-dropdown',
         )
             .forEach((element) => {
                 element.addEventListener('mouseover', () => {

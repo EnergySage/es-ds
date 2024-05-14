@@ -1,5 +1,7 @@
 <template>
-    <div class="nav-item top-header mx-0">
+    <div
+        class="nav-item top-header mx-0"
+        :class="{ 'has-dropdown': !link }">
         <div class="top-header-inner w-100">
             <!-- desktop fly-out menu trigger -->
             <es-nav-bar-link
