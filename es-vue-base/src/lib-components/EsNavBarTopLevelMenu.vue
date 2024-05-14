@@ -1,5 +1,7 @@
 <template>
-    <div class="nav-item top-header mx-0">
+    <div
+        class="nav-item top-header mx-0"
+        :class="{ 'has-dropdown': !link }">
         <div class="top-header-inner w-100">
             <!-- desktop fly-out menu trigger -->
             <es-nav-bar-link
@@ -90,7 +92,7 @@
                                 }">
                                 <ul class="dropdown-list row w-auto">
                                     <!-- name of top-level menu (won't ever be a link) -->
-                                    <li class="nav-item col-lg-12 d-lg-none mb-50">
+                                    <li class="nav-item col-lg-12 d-lg-none mb-50 topic-menu-back">
                                         <div class="col-2">
                                             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                                             <label
