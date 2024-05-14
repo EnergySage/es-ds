@@ -36,10 +36,6 @@ export default (
                 link: `${ES_DOMAIN}/share-your-experience/`,
             },
             {
-                name: 'Done shopping',
-                link: `${ES_DOMAIN}/market/done-shopping/`,
-            },
-            {
                 name: 'Sign out',
                 link: `${ES_DOMAIN}/logout/`,
             },
