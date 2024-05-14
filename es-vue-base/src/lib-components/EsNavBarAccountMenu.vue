@@ -12,7 +12,7 @@
             </div>
             <div class="menu">
                 <ul
-                    class="loggedIn dropdown-menu account-menu rounded mt-0 py-100"
+                    class="loggedIn dropdown-menu account-menu rounded mt-0 py-100 list-unstyled"
                     style="display: none">
                     <li
                         v-for="item in authItems"
