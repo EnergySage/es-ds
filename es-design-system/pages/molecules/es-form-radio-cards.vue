@@ -48,6 +48,7 @@
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.storageReason"
+                    has-icon
                     label="What’s the main reason you want a battery?">
                     <b-row>
                         <b-col
@@ -56,7 +57,7 @@
                             cols="12"
                             lg="4">
                             <es-form-radio-card
-                                class="align-items-center d-block d-lg-flex flex-column font-size-base font-weight-normal line-height-base p-100 p-lg-200 text-lg-center"
+                                class="align-items-center d-block d-lg-flex flex-column font-size-base font-weight-normal line-height-base pt-lg-200 px-lg-200 text-lg-center"
                                 :value="option.value">
                                 <component
                                     :is="option.icon"
@@ -197,6 +198,13 @@ export default {
                 'defaultValue',
             ],
             radioCardsPropDocumentation: [
+                {
+                    name: 'hasIcon',
+                    description: `
+                        If true, moves the radio button circle to the bottom center of the radio card on desktop.
+                    `,
+                    defaultValue: 'false',
+                },
                 {
                     name: 'label',
                     description: `
