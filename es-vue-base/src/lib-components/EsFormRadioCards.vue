@@ -10,6 +10,7 @@
             button-variant="outline-primary"
             :checked="value"
             class="es-form-radio-cards d-flex justify-content-center"
+            :class="{ 'has-icon': hasIcon }"
             :name="label"
             stacked
             v-bind="$attrs"
@@ -29,10 +30,9 @@ export default {
         BFormRadioGroup,
     },
     props: {
-        value: {
-            type: String,
-            required: false,
-            default: '',
+        hasIcon: {
+            type: Boolean,
+            default: false,
         },
         label: {
             type: String,
@@ -45,6 +45,11 @@ export default {
         labelSrOnly: {
             type: Boolean,
             default: false,
+        },
+        value: {
+            type: String,
+            required: false,
+            default: '',
         },
     },
 };
