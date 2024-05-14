@@ -25,14 +25,14 @@
         </es-button>
 
         <es-form-msg
-            class="my-450"
+            class="my-450 form-msg-border"
             :show="showSuccess"
             variant="success"
             @hidden="showSuccess = false">
             Saved successfully
         </es-form-msg>
         <es-form-msg
-            class="my-450"
+            class="my-450 form-msg-border"
             :show="showError"
             variant="danger"
             @hidden="showError = false">
@@ -40,7 +40,7 @@
             and we were unable to complete your request. Please try again
         </es-form-msg>
         <es-form-msg
-            class="my-450"
+            class="my-450 form-msg-border"
             :show="showInfo"
             variant="primary"
             @hidden="showInfo = false">
@@ -84,3 +84,14 @@ export default {
 
 };
 </script>
+
+<style lang="scss" scoped>
+@use '~@energysage/es-bs-base/scss/variables' as variables;
+
+.form-msg-border{
+    background-color: variables.$white;
+    border: 1px solid variables.$gray-300;
+    border-radius: 8px;
+}
+
+</style>

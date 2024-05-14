@@ -70,3 +70,53 @@
     );
   }
 }
+
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  z-index: 1;
+  width: 40px;
+  height:40px;
+  align-items: center;
+  justify-content: center;
+  &:before,
+  &:after {
+    width: 32px;
+    height: 32px;
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+  &:after {
+    width: 24px;
+    height: 24px;
+    z-index: 2;
+  }
+}
+
+.variant-danger {
+     .icon-wrapper {
+        &:after {
+            box-shadow: 0 0 0 3px variables.$error-50,
+                0 0 0 2px variables.$error-500 inset;
+        }
+    }
+}
+
+.variant-success {
+    .icon-wrapper {
+        &:after {
+            box-shadow: 0 0 0 3px variables.$success-50,
+                0 0 0 2px variables.$success-500 inset;
+        }
+    }
+}
+
+.variant-primary {
+    .icon-wrapper {
+        &:after {
+            box-shadow: 0 0 0 3px variables.$blue-50,
+                0 0 0 2px variables.$blue-200 inset;
+        }
+    }
+}

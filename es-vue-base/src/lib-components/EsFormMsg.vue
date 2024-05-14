@@ -4,13 +4,17 @@
         fade
         dismissible
         :variant="variant"
+        :class="`variant-${variant}`"
         @dismissed="dismissAlert"
         @dismiss-count-down="countDownChanged">
-        <div class="d-flex">
-            <div class="pr-50">
-                <IconCircleAlert v-if="variant === 'danger'" />
-                <IconCircleCheck v-if="variant === 'success'" />
-                <IconInfo v-if="variant === 'primary'" />
+        <div class="d-flex pr-100">
+            <div class="p-50 icon-wrapper">
+                <IconCircleAlert
+                    v-if="variant === 'danger'" />
+                <IconCircleCheck
+                    v-if="variant === 'success'" />
+                <IconInfo
+                    v-if="variant === 'primary'" />
             </div>
             <slot />
         </div>
