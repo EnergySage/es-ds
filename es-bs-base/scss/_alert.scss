@@ -71,13 +71,6 @@
   }
 }
 
-/* deprecated; kept for backwards compatibility */
-@each $color, $value in variables.$theme-colors {
-  .icon-color-#{$color} {
-    color: $value;
-  }
-}
-
 .es-form-msg {
   .icon-wrapper {
     align-items: center;
