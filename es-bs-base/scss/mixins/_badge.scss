@@ -5,8 +5,9 @@
 @use "hover";
 
 @mixin badge-variant($variant) {
+  $background: map.get(variables.$badge-bg-colors, $variant);
   $text-color: map.get(variables.$badge-text-colors, $variant);
 
   color: $text-color;
-  background-color: $variant;
+  background-color: $background;
 }

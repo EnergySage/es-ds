@@ -1,0 +1,196 @@
+@use "sass:math";
+@use "../..//mixins/breakpoints" as breakpoints;
+@use "../../variables" as variables;
+@use '../../vendor/rfs' as rfs;
+
+/* padding */
+
+$padding-x-mobile: 1rem;
+$padding-y-mobile: 1.5rem;
+$padding-for-radio-mobile: 3rem;
+
+$padding-x-desktop: 1.5rem;
+$padding-y-desktop: 1.5rem;
+$padding-for-radio-desktop: 4.5rem;
+
+/* sizing */
+
+$inner-circle-size-mobile: 11px;
+$outer-circle-size-mobile: 22px;
+
+$inner-circle-size-desktop: 15px;
+$outer-circle-size-desktop: 28px;
+
+/* calculated positioning */
+
+$additional-translate-y-for-vertical-centering: 2px;
+
+$inner-circle-translate-x-from-left-mobile: math.div($outer-circle-size-mobile, 2) - math.div($inner-circle-size-mobile, 2);
+$inner-circle-translate-y-from-top-mobile: $inner-circle-translate-x-from-left-mobile + $additional-translate-y-for-vertical-centering;
+
+$inner-circle-half-of-dimension-desktop: math.div($inner-circle-size-desktop, 2);
+$outer-circle-half-of-dimension-desktop: math.div($outer-circle-size-desktop, 2);
+
+$inner-circle-translate-x-from-left-desktop: $outer-circle-half-of-dimension-desktop - $inner-circle-half-of-dimension-desktop;
+$inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-desktop + $additional-translate-y-for-vertical-centering;
+
+.es-form-radio-cards {
+  &.btn-group-vertical {
+    /* undo default radio group 'buttons' style that prevents full width */
+    align-items: stretch;
+
+    /* undo default stacked button group styles that turn off rounding on all except first/last child */
+    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-group:not(:last-child) > .btn,
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child) > .btn {
+      border-radius: variables.$border-radius-lg;
+    }
+  }
+
+  /* undo default stacked button group style that disables bottom margin */
+  &.btn-group-toggle {
+    > .btn,
+    > .btn-group > .btn {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.es-form-radio-card {
+  font-size: variables.$font-size-300;
+  margin-bottom: 1rem;
+  padding: $padding-y-mobile $padding-x-mobile $padding-y-mobile $padding-for-radio-mobile;
+  position: relative;
+  text-align: left;
+
+  @include breakpoints.media-breakpoint-up(lg) {
+    font-size: variables.$font-size-400;
+    padding: $padding-y-desktop $padding-x-desktop $padding-y-desktop $padding-for-radio-desktop;
+  }
+
+  &::before,
+  &::after {
+    border-radius: 50%;
+    content: '';
+    left: $padding-x-mobile;
+    position: absolute;
+    top: $padding-y-mobile;
+
+    @include breakpoints.media-breakpoint-up(lg) {
+      left: $padding-x-desktop;
+    }
+  }
+
+  /* outer circle of radio button */
+  &::before {
+    border: 2.5px solid variables.$blue-900;
+    height: $outer-circle-size-mobile;
+    transform: translateY($additional-translate-y-for-vertical-centering);
+    width: $outer-circle-size-mobile;
+
+    @include breakpoints.media-breakpoint-up(lg) {
+      height: $outer-circle-size-desktop;
+      width: $outer-circle-size-desktop;
+    }
+  }
+
+  /* needs additional specificity to override .es-card.interactive */
+  &.interactive {
+    color: variables.$gray-800;
+    font-weight: variables.$font-weight-bold;
+  }
+
+  /* undo primary button outline styles */
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle,
+  &:focus,
+  &:hover {
+    background-color: variables.$white;
+    color: variables.$gray-800;
+  }
+
+  /* selected state */
+  &:not(:disabled):not(.disabled).active {
+    border-color: variables.$warm-orange;
+    box-shadow: 0 0 0 1px transparent, variables.$card-interactive-selected-shadow;
+    transform: none;
+
+    /* inner circle of radio button */
+    &::after {
+      background-color: variables.$blue-900;
+      height: $inner-circle-size-mobile;
+      transform: translateX($inner-circle-translate-x-from-left-mobile) translateY($inner-circle-translate-y-from-top-mobile);
+      width: $inner-circle-size-mobile;
+
+      @include breakpoints.media-breakpoint-up(lg) {
+        height: $inner-circle-size-desktop;
+        transform: translateX($inner-circle-translate-x-from-left-desktop) translateY($inner-circle-translate-y-from-top-desktop);
+        width: $inner-circle-size-desktop;
+      }
+    }
+  }
+
+  &:focus,
+  &.focus,
+  &:not(:disabled):not(.disabled).active:focus,
+  &:not(:disabled):not(.disabled).active.focus {
+    border-color: variables.$card-interactive-focus-border-color;
+    box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-focus-shadow;
+  }
+
+  /* mousedown/touchstart state */
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active:active {
+    border-color: variables.$card-interactive-active-border-color;
+    box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-selected-active-shadow;
+    transform: variables.$btn-active-transform;
+  }
+
+  input {
+    /**
+     * hide the radio button input elements the same way bootstrap vue does.
+     * bootstrap vue's styles only work on items directly nested under b-form-radio-group, and we want
+     * to enable users to put any elements (e.g. <b-col> and <b-row>) between the EsFormRadioCards and
+     * EsFormRadioCard elements.
+     */
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+    position: absolute;
+  }
+
+  &.btn {
+    /* override the fixed height of normal buttons */
+    height: auto;
+  }
+}
+
+/* desktop has-icon styling (move radio button to bottom center) */
+@include breakpoints.media-breakpoint-up(lg) {
+  .es-form-radio-cards.has-icon {
+    .es-form-radio-card {
+      padding: $padding-y-desktop $padding-x-desktop $padding-for-radio-desktop $padding-x-desktop;
+
+      &::before,
+      &::after {
+        bottom: $padding-y-desktop;
+        left: 50%;
+        top: auto;
+      }
+
+      /* outer circle of radio button */
+      &::before {
+        transform: translateX(-$outer-circle-half-of-dimension-desktop);
+      }
+
+      /* selected state */
+      &:not(:disabled):not(.disabled).active {
+        /* inner circle of radio button */
+        &::after {
+          transform: translateX(-$inner-circle-half-of-dimension-desktop) translateY(-$inner-circle-translate-x-from-left-desktop);
+        }
+      }
+    }
+  }
+}

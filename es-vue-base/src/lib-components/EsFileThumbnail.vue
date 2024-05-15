@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="es-file-thumbnail">
         <!-- MOBILE PREVIEW START -->
         <div
             class="mobile-preview"
@@ -18,6 +18,7 @@
                         </div>
                         <div v-else>
                             <es-progress-circle
+                                class="thumbnail-progress"
                                 :value="percentLoaded"
                                 :show-percentage="false"
                                 height="24px" />
@@ -26,9 +27,32 @@
                     <b-col
                         cols="8"
                         class="p-0">
-                        <div class="font-weight-bolder text-gray-800 pl-0">
-                            {{ fileName }}
-                        </div>
+                        <template v-if="!loading">
+                            <template v-if="mimeType && mimeType.includes('image') && fileSource">
+                                <b-link
+                                    aria-label="show-preview-mobile-image"
+                                    @click="$emit('showPreview',fileName)">
+                                    <div class="font-weight-bold font-size-75 pl-0">
+                                        {{ fileName }}
+                                    </div>
+                                </b-link>
+                            </template>
+                            <template v-else>
+                                <b-link
+                                    aria-label="show-preview-mobile-file"
+                                    :href="fileSource"
+                                    target="_blank">
+                                    <div class="font-weight-bold font-size-75 pl-0">
+                                        {{ fileName }}
+                                    </div>
+                                </b-link>
+                            </template>
+                        </template>
+                        <template v-else>
+                            <div class="font-weight-bold font-size-75 pl-0">
+                                {{ fileName }}
+                            </div>
+                        </template>
                     </b-col>
                     <b-col
                         cols="2">
@@ -38,32 +62,6 @@
                             @click="$emit('removeFile',fileName)">
                             <icon-trash-can />
                         </b-link>
-                    </b-col>
-                </b-row>
-                <b-row
-                    align-v="center"
-                    class="px-3 pb-3">
-                    <b-col cols="2" />
-                    <b-col
-                        cols="10"
-                        class="pl-0">
-                        <template v-if="mimeType && mimeType.includes('image') && fileSource">
-                            <b-link
-                                v-if="!loading"
-                                aria-label="show-preview-mobile-image"
-                                @click="$emit('showPreview',fileName)">
-                                {{ previewText }}
-                            </b-link>
-                        </template>
-                        <template v-else>
-                            <b-link
-                                v-if="!loading"
-                                aria-label="show-preview-mobile-file"
-                                :href="fileSource"
-                                target="_blank">
-                                {{ previewText }}
-                            </b-link>
-                        </template>
                     </b-col>
                 </b-row>
             </div>
@@ -78,7 +76,7 @@
                     <b-link
                         v-if="!loading"
                         aria-label="close-file-desktop"
-                        class="text-gray-800 text-decoration-none icon-button"
+                        class="text-blue-600 text-decoration-none icon-button"
                         @click="$emit('removeFile',fileName)">
                         <icon-circle-x />
                         <div class="svg-fill-wrapper bg-white" />
@@ -113,11 +111,14 @@
                                     :show-percentage="percentLoaded"
                                     :value="percentLoaded"
                                     circle
-                                    height="65px" />
+                                    height="65px"
+                                    class="thumbnail-progress" />
                                 <b-spinner
                                     v-if="!percentLoaded"
                                     role="status"
-                                    label="Loading" />
+                                    variant="primary"
+                                    label="Loading"
+                                    class="thumbnail-spinner" />
                             </div>
                         </template>
                     </div>
@@ -148,18 +149,19 @@
                             <div class="h-100 d-flex align-items-center justify-content-center">
                                 <es-progress-circle
                                     :value="percentLoaded"
-                                    height="65px" />
+                                    height="65px"
+                                    class="thumbnail-progress" />
                             </div>
                         </template>
                     </div>
                 </b-link>
             </div>
-            <div class="font-weight-bolder text-truncate pt-2 pt-md-3">
+            <div class="font-weight-bold font-size-75 text-black text-truncate pt-2 pt-md-3">
                 {{ fileName }}
             </div>
             <div
                 v-if="fileSize"
-                class="font-weight-normal">
+                class="font-weight-normal font-size-75 text-gray-800">
                 {{ fileSize }}
             </div>
         </div>
@@ -264,82 +266,16 @@ export default {
 
 <style lang="scss" scoped>
 @use "~@energysage/es-bs-base/scss/variables" as variables;
-@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
-.desktop-preview {
-    width: 165px;
-}
-
-.thumbnail-border {
-    border: 2px solid variables.$card-border-color;
-}
-
-.thumbnail-border-failure {
-    border: 2px solid variables.$danger;
-}
-
-.thumbnail-outer-wrapper {
-    height: 165px;
-    width: 165px;
-    z-index: 2;
-    @include breakpoints.media-breakpoint-down(md) {
-        height: 110px;
-        width: 100px;
-    }
-}
-
-.thumbnail-inner-wrapper-x {
-    border: 2px solid variables.$card-border-color;
-    height: 160px;
-    top: -18px;
-    width: 160px;
-    z-index: -1;
-
-    @include breakpoints.media-breakpoint-down(md) {
-        height: 105px;
-        width: 95px;
+.thumbnail-progress::v-deep {
+    text {
+        color: variables.$black !important;
+        font-weight: variables.$font-weight-bold !important;
     }
 
-    &:hover {
-        border: 2px solid variables.$gray-900;
+    .progress-circle {
+            stroke: variables.$blue-700 !important;
     }
-}
-
-.thumbnail-inner-wrapper {
-    border: 2px solid variables.$card-border-color;
-    height: 160px;
-    overflow: hidden;
-    top: 8px;
-    width: 160px;
-    z-index: -1;
-
-    @include breakpoints.media-breakpoint-down(md) {
-        height: 105px;
-        width: 95px;
-    }
-}
-
-.icon-button {
-    position: relative;
-    z-index: 2;
-}
-
-a:hover {
-    color: variables.$gray-800;
-}
-
-.svg-fill-wrapper {
-    border-radius: 1rem;
-    height: 20px;
-    position: absolute;
-    right: 2px;
-    top: 4px;
-    width: 20px;
-    z-index: -1;
-}
-
-.image-preview {
-    object-fit: cover;
 }
 
 </style>

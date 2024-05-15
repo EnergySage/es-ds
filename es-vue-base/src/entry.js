@@ -14,3 +14,5 @@ Object.entries(exports).forEach(([componentName, component]) => {
 export default plugin;
 
 export * from './entry.esm';
+
+export const esVueBaseVersion = '2.0.0-alpha.5';

@@ -14,7 +14,7 @@
             for background color.
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Core colors
             </h2>
@@ -41,7 +41,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Primary
             </h2>
@@ -65,7 +65,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Secondary
             </h2>
@@ -87,7 +87,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Neutrals
             </h2>
@@ -111,7 +111,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Feedback
             </h2>

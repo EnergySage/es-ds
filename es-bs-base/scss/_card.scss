@@ -268,7 +268,7 @@
 //
 
 .es-card {
-  border: 2px solid variables.$gray-50;
+  border: 2px solid variables.$gray-100;
   padding: variables.$spacer * 1.5;
   background-color: variables.$white;
   /* stylelint-disable-next-line property-disallowed-list */
@@ -306,7 +306,7 @@
     &:active {
       border-color: variables.$card-interactive-active-border-color;
       box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-active-shadow;
-      transform: translateY(1px);
+      transform: variables.$btn-active-transform;
     }
   }
 }

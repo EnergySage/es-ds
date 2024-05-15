@@ -1,0 +1,43 @@
+@use "../variables";
+@use "../../variables" as v;
+
+.es-slider {
+  padding: 0 !important;
+
+  .vue-slider-process {
+    background: variables.$b-slider-background;
+  }
+
+  .vue-slider-rail {
+    height: variables.$b-slider-rail-height;
+  }
+
+  .vue-slider-dot-handle {
+    border: variables.$b-slider-dot-border;
+    filter: variables.$b-slider-dot-shadow;
+  }
+
+  .slider-tooltip {
+    border-radius: variables.$b-slider-tooltip-border-radius;
+    height: variables.$b-slider-tooltip-diameter;
+    width: variables.$b-slider-tooltip-diameter;
+    box-shadow: variables.$b-slider-tooltip-shadow;
+  }
+
+  .vue-slider-marks {
+    .vue-slider-mark:first-child .slider-label {
+      transform: none;
+    }
+
+    .vue-slider-mark:last-child .slider-label {
+      transform: translateX(-100%);
+    }
+  }
+
+  .slider-label {
+    color: v.$gray-700;
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-bold;
+    margin-top: variables.$b-slider-label-margin-top;
+  }
+}

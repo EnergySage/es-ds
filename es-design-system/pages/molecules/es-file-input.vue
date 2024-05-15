@@ -4,7 +4,7 @@
             File input
         </h1>
 
-        <div class="mb-450">
+        <div class="mb-500">
             <es-file-input
                 :upload-urls="uploadUrls"
                 :max-file-size-mb="10"
@@ -17,24 +17,24 @@
                 @uploadFailure="uploadFailure"
                 @fileDataRead="fileDataRead">
                 <template #cta>
-                    <h2 class="d-none d-md-inline-block mb-4 text-center">
-                        Drag and drop your files<br>or
+                    <h2 class="d-none d-md-inline-block font-size-500 text-center my-200">
+                        Drag and drop your files or
                     </h2>
-                    <p class="d-inline-block d-md-none">
+                    <p class="d-inline-block d-md-none my-200">
                         <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
                     </p>
                 </template>
                 <template #helpText>
-                    <p class="d-none d-md-inline-block">
+                    <p class="d-none d-md-inline-block mb-0 mt-200">
                         Please upload your file as a PDF or JPG.
                     </p>
-                    <p class="d-inline-block d-md-none mb-0">
-                        File types: PDF or JPG
+                    <p class="d-inline-block d-md-none mb-0 mt-200 font-size-sm">
+                        Please upload your file as a PDF or JPG.
                     </p>
                 </template>
             </es-file-input>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-50">
                 Collapsed
             </h2>
@@ -53,7 +53,7 @@
                 @uploadFailure="uploadFailure"
                 @fileDataRead="fileDataRead">
                 <template #cta>
-                    <h3 class="d-none d-md-block mb-4 text-center">
+                    <h3 class="d-none d-md-block mb-200 text-center">
                         Drag and drop your files or
                     </h3>
                     <p class="d-block d-md-none text-center">
@@ -72,7 +72,7 @@
         </div>
         <div
             v-if="fileObjects.length"
-            class="mb-450">
+            class="mb-500">
             <h2 class="mb-200">
                 Upload links
             </h2>
@@ -98,7 +98,7 @@
         </div>
         <div v-if="events.length">
             <h2 class="mb-200">
-                Emitted Events
+                Emitted events
             </h2>
             <es-form-msg
                 v-for="(event, index) in events"
@@ -109,7 +109,7 @@
                 {{ event.msg }}
             </es-form-msg>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsFileInput props
             </h2>
@@ -144,7 +144,7 @@
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2>
                 EsFileInput event listeners
             </h2>

@@ -7,6 +7,10 @@
       border-color: v.$gray-300;
   }
 
+  .nav-item {
+      margin-bottom: 0;
+  }
+
   .nav-link {
       color: v.$gray-900;
       font-weight: v.$font-weight-normal;
@@ -20,6 +24,7 @@
       &:hover,
       &:focus {
           color: v.$blue-500;
+          text-decoration: none;
       }
   }
 
@@ -27,6 +32,7 @@
       border-bottom: 2px solid;
       border-color: v.$blue-500;
       color: v.$blue-500;
+      pointer-events: none;
 
       &:hover,
       &:focus {

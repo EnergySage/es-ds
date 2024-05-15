@@ -9,31 +9,31 @@
             The four types of error codes explicitly handled include 403, 404, 500 and 503.
             This component is intended to take over the entire page between the header and footer.
         </p>
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Error 403
             </h2>
             <es-error-page error-type="403" />
         </div>
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Error 404
             </h2>
             <es-error-page error-type="404" />
         </div>
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Error 500
             </h2>
             <es-error-page error-type="500" />
         </div>
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Error 503
             </h2>
             <es-error-page error-type="503" />
         </div>
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Error 418 (and how other errors look)
             </h2>

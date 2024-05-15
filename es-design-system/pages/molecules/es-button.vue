@@ -25,7 +25,7 @@
             small buttons to 18px.
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Primary
             </h2>
@@ -89,7 +89,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Secondary
             </h2>
@@ -156,7 +156,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Link
             </h2>
@@ -253,7 +253,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="bg-dark-blue my-450 p-100 rounded-lg text-white">
+        <div class="bg-dark-blue my-500 p-100 rounded-lg text-white">
             <h2 class="text-white">
                 Dark background
             </h2>
@@ -392,7 +392,7 @@
             </ds-responsive-table>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Loading
             </h2>
@@ -449,7 +449,7 @@
             </div>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Props
             </h2>
@@ -574,14 +574,14 @@ export default {
             ],
             legacyVariants: [
                 {
-                    name: 'Secondary',
+                    name: 'Danger',
                     outline: false,
-                    variant: 'secondary',
+                    variant: 'danger',
                 },
                 {
-                    name: 'Secondary outline',
+                    name: 'Danger outline',
                     outline: true,
-                    variant: 'secondary',
+                    variant: 'danger',
                 },
                 {
                     name: 'Dark',
@@ -593,6 +593,97 @@ export default {
                     outline: true,
                     variant: 'dark',
                 },
+                {
+                    name: 'Highlight',
+                    outline: false,
+                    variant: 'highlight',
+                },
+                {
+                    name: 'Highlight outline',
+                    outline: true,
+                    variant: 'highlight',
+                },
+                {
+                    name: 'Highlight dark',
+                    outline: false,
+                    variant: 'highlight-dark',
+                },
+                {
+                    name: 'Highlight dark outline',
+                    outline: true,
+                    variant: 'highlight-dark',
+                },
+                {
+                    name: 'Info',
+                    outline: false,
+                    variant: 'info',
+                },
+                {
+                    name: 'Info outline',
+                    outline: true,
+                    variant: 'info',
+                },
+                {
+                    name: 'Light',
+                    outline: false,
+                    variant: 'light',
+                },
+                {
+                    name: 'Light outline',
+                    outline: true,
+                    variant: 'light',
+                },
+                {
+                    name: 'Mid',
+                    outline: false,
+                    variant: 'mid',
+                },
+                {
+                    name: 'Mid outline',
+                    outline: true,
+                    variant: 'mid',
+                },
+                {
+                    name: 'Mid dark',
+                    outline: false,
+                    variant: 'mid-dark',
+                },
+                {
+                    name: 'Mid dark outline',
+                    outline: true,
+                    variant: 'mid-dark',
+                },
+                {
+                    name: 'Secondary',
+                    outline: false,
+                    variant: 'secondary',
+                },
+                {
+                    name: 'Secondary outline',
+                    outline: true,
+                    variant: 'secondary',
+                },
+                {
+                    name: 'Success',
+                    outline: false,
+                    variant: 'success',
+                },
+                {
+                    name: 'Success outline',
+                    outline: true,
+                    variant: 'success',
+                },
+                {
+                    name: 'Warning',
+                    outline: false,
+                    variant: 'warning',
+                },
+                {
+                    name: 'Warning outline',
+                    outline: true,
+                    variant: 'warning',
+                },
+
             ],
             linkExamples: [
                 {
