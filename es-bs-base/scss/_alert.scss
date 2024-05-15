@@ -71,58 +71,79 @@
   }
 }
 
-.icon-wrapper {
-  position: relative;
-  display: flex;
-  z-index: 1;
-  width: 40px;
-  height:40px;
-  align-items: center;
-  justify-content: center;
-  &:before,
-  &:after {
-    width: 32px;
-    height: 32px;
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-  }
-  &:after {
-    width: 24px;
-    height: 24px;
-    z-index: 2;
-  }
-}
-
-.variant-danger {
-     .icon-wrapper {
-        &:after {
-            box-shadow: 0 0 0 3px variables.$error-50,
-                0 0 0 2px variables.$error-500 inset;
-        }
-    }
-}
-
-.variant-success {
-    .icon-wrapper {
-        &:after {
-            box-shadow: 0 0 0 3px variables.$success-50,
-                0 0 0 2px variables.$success-500 inset;
-        }
-    }
-}
-
-.variant-primary {
-    .icon-wrapper {
-        &:after {
-            box-shadow: 0 0 0 3px variables.$blue-50,
-                0 0 0 2px variables.$blue-200 inset;
-        }
-    }
-}
-
+/* deprecated; kept for backwards compatibility */
 @each $color, $value in variables.$theme-colors {
   .icon-color-#{$color} {
     color: $value;
+  }
+}
+
+.es-form-msg {
+  .icon-wrapper {
+    align-items: center;
+    display: flex;
+    height: 2.5rem;
+    justify-content: center;
+    position: relative;
+    width: 2.5rem;
+    z-index: 1;
+
+    &.icon-color-primary {
+      color: variables.$blue-600;
+    }
+
+    &.icon-color-success {
+      color: variables.$success-900;
+    }
+
+    &.icon-color-danger {
+      color: variables.$error-900;
+    }
+
+    &::before {
+      content: '';
+      height: 2rem;
+      position: absolute;
+      border-radius: 50%;
+      width: 2rem;
+    }
+
+    svg {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  .close,
+  .close:not(:disabled):not(.disabled):hover,
+  .close:not(:disabled):not(.disabled):focus {
+    opacity: 1;
+  }
+
+  &.alert-danger {
+    .icon-wrapper {
+      &::before {
+        box-shadow: 0 0 0 4px variables.$error-50,
+          0 0 0 6px variables.$error-500 inset;
+      }
+    }
+  }
+
+  &.alert-success {
+    .icon-wrapper {
+      &::before {
+        box-shadow: 0 0 0 4px variables.$success-50,
+          0 0 0 6px variables.$success-500 inset;
+      }
+    }
+  }
+
+  &.alert-primary {
+    .icon-wrapper {
+      &::before {
+        box-shadow: 0 0 0 4px variables.$blue-50,
+          0 0 0 6px variables.$blue-200 inset;
+      }
+    }
   }
 }

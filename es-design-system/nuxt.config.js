@@ -120,6 +120,7 @@ export default {
             breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'],
         },
         components: [
+            'BAlert',
             'BLink',
             'BContainer',
             'BNavbar',
