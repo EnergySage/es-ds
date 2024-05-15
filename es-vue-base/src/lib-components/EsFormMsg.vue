@@ -11,9 +11,7 @@
             <icon-x />
         </template>
         <div class="d-flex pr-100">
-            <div
-                class="icon-wrapper flex-shrink-0 mr-100"
-                :class="`icon-color-${variant}`">
+            <div class="icon-wrapper flex-shrink-0 mr-100">
                 <icon-circle-alert v-if="variant === 'danger'" />
                 <icon-circle-check v-if="variant === 'success'" />
                 <icon-info v-if="variant === 'primary'" />

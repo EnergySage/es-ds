@@ -81,18 +81,6 @@
     width: 2.5rem;
     z-index: 1;
 
-    &.icon-color-primary {
-      color: variables.$blue-600;
-    }
-
-    &.icon-color-success {
-      color: variables.$success-900;
-    }
-
-    &.icon-color-danger {
-      color: variables.$error-900;
-    }
-
     &::before {
       content: '';
       height: 2rem;
@@ -115,6 +103,8 @@
 
   &.alert-danger {
     .icon-wrapper {
+      color: variables.$error-900;
+
       &::before {
         box-shadow: 0 0 0 4px variables.$error-50,
           0 0 0 6px variables.$error-500 inset;
@@ -124,6 +114,8 @@
 
   &.alert-success {
     .icon-wrapper {
+      color: variables.$success-900;
+
       &::before {
         box-shadow: 0 0 0 4px variables.$success-50,
           0 0 0 6px variables.$success-500 inset;
@@ -133,6 +125,8 @@
 
   &.alert-primary {
     .icon-wrapper {
+      color: variables.$blue-600;
+
       &::before {
         box-shadow: 0 0 0 4px variables.$blue-50,
           0 0 0 6px variables.$blue-200 inset;
