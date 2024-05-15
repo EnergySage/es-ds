@@ -1,10 +1,11 @@
 @use "sass:color";
 @use "gradients";
+@use "../variables" as variables;
 
 @mixin alert-variant($background, $border, $color) {
-  color: $color;
-  @include gradients.gradient-bg($background);
-  border-color: $border;
+  color: variables.$body-color;
+  background-color: variables.$white;
+  border-color: variables.$gray-100;
 
   hr {
     // border-top-color: darken($border, 5%);
