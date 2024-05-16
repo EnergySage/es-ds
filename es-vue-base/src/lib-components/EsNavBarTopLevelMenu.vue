@@ -13,11 +13,6 @@
                 aria-expanded="false">
                 <div class="d-lg-flex align-items-center">
                     {{ name }}
-                    <span class="ml-50">
-                        <IconChevronDown
-                            class="top-header-icon"
-                            style="height: 20px; width: 20px;" />
-                    </span>
                 </div>
             </es-nav-bar-link>
             <!-- mobile+desktop top-level link -->

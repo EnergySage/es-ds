@@ -306,11 +306,6 @@ $nav-hover-delay: 300ms;
         cursor: pointer;
       }
 
-      .top-header-icon {
-        // stylelint-disable-next-line property-disallowed-list
-        transition: transform 0s;
-        transform: rotate(0deg);
-      }
       .dropdown-menu {
         // prepare menu for delayed hover showing
         display: block;
@@ -383,11 +378,6 @@ $nav-hover-delay: 300ms;
         content: "";
         background: variables.$orange-800;
         border-style: none;
-      }
-
-      .top-header-icon {
-        transition-delay: $nav-hover-delay;
-        transform: rotate(180deg);
       }
     }
 
