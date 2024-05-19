@@ -319,6 +319,11 @@ $nav-hover-delay: 300ms;
       }
     }
 
+    .product-menu .nav-item:last-child .product-menu-header-link {
+      /* stylelint-disable-next-line declaration-no-important */
+      padding-right: 2em !important;
+    }
+
     .product-menu-header-link {
       color: variables.$blue-800;
     }
