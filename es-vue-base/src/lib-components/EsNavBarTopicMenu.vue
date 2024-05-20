@@ -58,9 +58,7 @@
             <div class="menu-header">
                 <div class="col-3" />
                 <div class="col-6 align-self-center text-center py-100">
-                    <es-logo
-                        width="128px"
-                        height="28px" />
+                    <slot name="logo-mobile" />
                     <span class="sr-only">
                         {{ homeName }}
                     </span>
@@ -150,12 +148,9 @@
 <script lang="js">
 import EsNavBarLink from './EsNavBarLink.vue';
 
-import EsLogo from '../lib-assets/es-logo.vue';
-
 export default {
     name: 'EsNavBarTopicMenu',
     components: {
-        EsLogo,
         EsNavBarLink,
     },
     props: {
