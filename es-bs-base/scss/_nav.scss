@@ -272,6 +272,14 @@ $nav-hover-delay: 300ms;
       }
     }
 
+    // when not scrolled down, add top padding to upper navbar elements
+    &:not(.scrolled) {
+      .navbar-brand,
+      .icon-dropdown {
+        padding-top: 1em;
+      }
+    }
+
     // Allow dropdown content to take up the full width of the page
     .dropdown-full-page {
       position: static;
@@ -384,11 +392,6 @@ $nav-hover-delay: 300ms;
         background: variables.$orange-800;
         border-style: none;
       }
-    }
-
-    .navbar-brand,
-    .icon-dropdown {
-      padding-top: 1em;
     }
 
     // primary nav buttons desktop
