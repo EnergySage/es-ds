@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - VisID 2.0, more details to come in non alpha-release
 
+## [1.3.9] - 2024-05-20
+
+### Changed
+
+- Removed the "Done shopping" link from logged-in account menu in `EsNavBar`
+- Removed old collapse unit tests in es-bs-base
+- Added a faster reloads hack for local development
+
 ## [1.3.8] - 2024-04-26
 
 ### Changed
@@ -938,7 +946,8 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
-[2.0.0-alpha.0]: https://github.com/EnergySage/es-ds/compare/v1.3.6...v2.0.0-alpha.0
+[2.0.0-alpha.0]: https://github.com/EnergySage/es-ds/compare/v1.3.9...v2.0.0-alpha.0
+[1.3.9]: https://github.com/EnergySage/es-ds/compare/v1.3.8...v1.3.9
 [1.3.8]: https://github.com/EnergySage/es-ds/compare/v1.3.7...v1.3.8
 [1.3.7]: https://github.com/EnergySage/es-ds/compare/v1.3.6...v1.3.7
 [1.3.6]: https://github.com/EnergySage/es-ds/compare/v1.3.5...v1.3.6
