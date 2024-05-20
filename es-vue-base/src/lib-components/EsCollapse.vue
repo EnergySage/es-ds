@@ -5,6 +5,7 @@
             :aria-expanded="expanded.toString()"
             :aria-controls="id"
             class="rounded-0 collapse-holder pb-0 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body border-top"
+            :class="buttonStyles"
             inline
             variant="link"
             @click="userClick">
@@ -31,10 +32,9 @@
         </b-collapse>
 
         <div
-            class="border-bottom"
-            :class="{
+            :class="[{
                 expanded: expanded,
-            }" />
+            }, bottomBorderDivStyles]" />
     </div>
 </template>
 
@@ -77,6 +77,19 @@ export default {
             type: Boolean,
             required: false,
             default: true,
+        },
+        /**
+         * Allow style overrides to the button
+         */
+        buttonStyles: {
+            type: String,
+            required: false,
+            default: '',
+        },
+        bottomBorderDivStyles: {
+            type: String,
+            required: false,
+            default: 'border-bottom',
         },
     },
     data() {
