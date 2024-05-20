@@ -58,7 +58,9 @@
             <div class="menu-header">
                 <div class="col-3" />
                 <div class="col-6 align-self-center text-center py-100">
-                    <slot name="logo-mobile" />
+                    <div class="nav-es-logo-mobile">
+                        <slot name="logo" />
+                    </div>
                     <span class="sr-only">
                         {{ homeName }}
                     </span>

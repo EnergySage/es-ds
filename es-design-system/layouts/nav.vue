@@ -3,27 +3,8 @@
         <es-nav-bar
             :account-content="accountContent"
             :global-content="globalContent">
-            <template #logo-mobile>
-                <ds-es-logo
-                    width="128px"
-                    height="28px" />
-            </template>
-            <template #logo-desktop>
-                <!-- small desktop logo -->
-                <ds-es-logo
-                    class="d-none d-lg-block d-xl-none"
-                    width="150px"
-                    height="42px" />
-                <!-- large desktop logo-->
-                <ds-es-logo
-                    class="d-none d-xl-block"
-                    width="200px"
-                    height="42px" />
-            </template>
-            <template #logo-desktop-sticky>
-                <ds-es-logo
-                    width="128px"
-                    height="28px" />
+            <template #logo>
+                <ds-es-logo />
             </template>
         </es-nav-bar>
 

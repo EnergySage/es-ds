@@ -52,7 +52,9 @@
                             <span class="sr-only">
                                 {{ content.home.name }}
                             </span>
-                            <slot name="logo" />
+                            <div class="es-footer-logo">
+                                <slot name="logo" />
+                            </div>
                         </es-nav-bar-link>
                         <!-- Social icons -->
                         <div class="d-flex text-white justify-content-center justify-content-lg-start">

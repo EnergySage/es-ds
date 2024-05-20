@@ -21,7 +21,9 @@
             <es-nav-bar-link
                 class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
                 :href="globalContent.home.link">
-                <slot name="logo-mobile" />
+                <div class="nav-es-logo-mobile">
+                    <slot name="logo" />
+                </div>
                 <span class="sr-only">
                     {{ globalContent.home.name }}
                 </span>
@@ -51,7 +53,9 @@
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100 mb-50">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <slot name="logo-mobile" />
+                        <div class="nav-es-logo-mobile">
+                            <slot name="logo" />
+                        </div>
                     </div>
                     <div class="d-flex col-3 justify-content-end">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -71,7 +75,9 @@
                         <es-nav-bar-link
                             class="navbar-brand d-none d-lg-block pt-150"
                             :href="globalContent.home.link">
-                            <slot name="logo-desktop" />
+                            <div class="nav-es-logo-desktop">
+                                <slot name="logo" />
+                            </div>
                             <span class="sr-only">
                                 {{ globalContent.home.name }}
                             </span>
@@ -90,8 +96,8 @@
                             :name="topLevelMenu.name"
                             :sub-heading="topLevelMenu.subHeading"
                             :topics="topLevelMenu.topics">
-                            <template #logo-mobile>
-                                <slot name="logo-mobile" />
+                            <template #logo>
+                                <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
                         <!-- desktop account menu -->
@@ -117,8 +123,8 @@
                                 :name="product.name"
                                 :see-all-text="globalContent.seeAllText"
                                 :topics="product.topics">
-                                <template #logo-mobile>
-                                    <slot name="logo-mobile" />
+                                <template #logo>
+                                    <slot name="logo" />
                                 </template>
                             </es-nav-bar-product-menu>
                         </div>
@@ -137,7 +143,9 @@
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <slot name="logo-mobile" />
+                        <div class="nav-es-logo-mobile">
+                            <slot name="logo" />
+                        </div>
                     </div>
                     <div class="d-flex col-3 justify-content-end">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -194,8 +202,9 @@
                 <es-nav-bar-link
                     class="navbar-brand d-none d-lg-block"
                     :href="globalContent.home.link">
-                    <!-- small desktop logo -->
-                    <slot name="logo-desktop-sticky" />
+                    <div class="nav-es-logo-desktop-sticky">
+                        <slot name="logo" />
+                    </div>
                     <span class="sr-only">
                         {{ globalContent.home.name }}
                     </span>

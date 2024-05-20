@@ -31,7 +31,9 @@
             <div class="menu-header d-flex d-lg-none">
                 <div class="col-3" />
                 <div class="col-6 align-self-center text-center py-100">
-                    <slot name="logo-mobile" />
+                    <div class="nav-es-logo-mobile">
+                        <slot name="logo" />
+                    </div>
                     <span class="sr-only">
                         {{ homeName }}
                     </span>
@@ -132,8 +134,8 @@
                         :name="topic.name"
                         :show-items-on-mobile="topic.showItemsOnMobile"
                         :sub-heading="topic.subHeading">
-                        <template #logo-mobile>
-                            <slot name="logo-mobile" />
+                        <template #logo>
+                            <slot name="logo" />
                         </template>
                     </es-nav-bar-topic-menu>
                     <li class="nav-item col-lg-4 d-block h-auto my-100 my-lg-0">
