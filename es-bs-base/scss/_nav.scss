@@ -306,11 +306,6 @@ $nav-hover-delay: 300ms;
         cursor: pointer;
       }
 
-      .top-header-icon {
-        // stylelint-disable-next-line property-disallowed-list
-        transition: transform 0s;
-        transform: rotate(0deg);
-      }
       .dropdown-menu {
         // prepare menu for delayed hover showing
         display: block;
@@ -322,6 +317,11 @@ $nav-hover-delay: 300ms;
         // stylelint-disable-next-line property-disallowed-list
         transition: height 0s, opacity 0s, visibility 0s;
       }
+    }
+
+    .product-menu .nav-item:last-child .product-menu-header-link {
+      /* stylelint-disable-next-line declaration-no-important */
+      padding-right: 2em !important;
     }
 
     .product-menu-header-link {
@@ -384,16 +384,6 @@ $nav-hover-delay: 300ms;
         background: variables.$orange-800;
         border-style: none;
       }
-
-      .top-header-icon {
-        transition-delay: $nav-hover-delay;
-        transform: rotate(180deg);
-      }
-    }
-
-    .navbar-brand,
-    .icon-dropdown {
-      padding-top: 1em;
     }
 
     // primary nav buttons desktop
