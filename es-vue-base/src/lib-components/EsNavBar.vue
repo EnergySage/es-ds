@@ -73,7 +73,7 @@
                     <!-- top-level items on mobile, full top bar on desktop -->
                     <b-container class="align-items-start d-flex flex-lg-nowrap justify-content-between top-level-nav">
                         <es-nav-bar-link
-                            class="navbar-brand d-none d-lg-block"
+                            class="navbar-brand d-none d-lg-block pt-150"
                             :href="globalContent.home.link">
                             <!-- small desktop logo -->
                             <es-logo
@@ -106,7 +106,7 @@
                         <!-- desktop account menu -->
                         <es-nav-bar-account-menu
                             :auth-items="accountContent.loggedIn.items"
-                            class="d-none d-lg-block"
+                            class="d-none d-lg-block pt-100"
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
