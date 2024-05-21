@@ -10,7 +10,7 @@
                 bootstrap-vue collapse
             </b-link>
         </p>
-        <div class="mt-500 mb-500">
+        <div class="my-500">
             <h2>
                 Default
             </h2>
@@ -19,7 +19,7 @@
             </p>
             <EsCollapse
                 id="defaultCollapse"
-                class="ml-500 mr-500 mt-500">
+                class="mx-500 mt-500">
                 <template #title>
                     <h2 class="mb-0">
                         My title
@@ -38,7 +38,7 @@
             </EsCollapse>
         </div>
 
-        <div class="mt-500 mb-500">
+        <div class="my-500">
             <h2>
                 Programmatic, with user override
             </h2>
@@ -46,7 +46,7 @@
                 An EsCollapse component that takes a "visible" prop. Click the checkbox to toggle showing its
                 contents! If you click the collapse itself, the "visible" prop will no longer be honored.
             </p>
-            <form class="ml-500 mr-500 mt-500">
+            <form class="mx-500 mt-500">
                 <label for="suggestedVisibleInput">
                     <input
                         id="suggestedVisibleInput"
@@ -79,16 +79,16 @@
             </EsCollapse>
         </div>
 
-        <div class="mt-500 mb-500">
+        <div class="my-500">
             <h2>
-                Programmatic, with Priority
+                Programmatic, with priority
             </h2>
             <p>
                 An EsCollapse component that takes a "visible" prop with "is-programmatic-until-user-input" true. Click
                 the checkbox to toggle showing its contents! Unlike the previous example, if you click the collapse
                 itself, the "visible" prop will continue to be honored.
             </p>
-            <form class="ml-500 mr-500 mt-500">
+            <form class="mx-500 mt-500">
                 <label for="visible">
                     <input
                         id="visible"
@@ -106,7 +106,7 @@
                 @toggled="toggledEventInSuggestedVisibleExample">
                 <template #title>
                     <h2 class="mb-0">
-                        My Title
+                        My title
                     </h2>
                 </template>
                 <!-- eslint-disable max-len -->
@@ -122,7 +122,7 @@
             </EsCollapse>
         </div>
 
-        <div class="mt-500 mb-500">
+        <div class="my-500">
             <h2>
                 No border example
             </h2>
@@ -131,11 +131,11 @@
             </p>
             <EsCollapse
                 id="noBorderExample"
-                class="m-500 bg-gray-100"
+                class="m-500"
                 :border="false">
                 <template #title>
                     <h2 class="mb-0">
-                        My Title
+                        My title
                     </h2>
                 </template>
                 <!-- eslint-disable max-len -->
@@ -151,17 +151,17 @@
             </EsCollapse>
         </div>
 
-        <div class="mt-500 mb-500">
+        <div class="my-500">
             <h2>
                 Extra spacing
             </h2>
             <EsCollapse
-                id="extraStylingExapmle"
-                class="m-500 bg-yellow-100 pt-100 pb-100 px-lg-150 pt-lg-100 pb-lg-100 rounded"
+                id="extraStylingExample"
+                class="m-500 bg-yellow-100 py-100 px-150 rounded"
                 :border="false">
                 <template #title>
                     <h2 class="mb-0">
-                        My Title
+                        My title
                     </h2>
                 </template>
                 <!-- eslint-disable max-len -->
