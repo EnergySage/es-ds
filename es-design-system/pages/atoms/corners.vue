@@ -4,9 +4,9 @@
             Corners
         </h1>
         <p>
-            Below you will find our named color definitions. They are meant to convey the meaning of the color
-            using a defined naming convention. When working, please use these color definitions and try to avoid
-            introducing new unamed colors.
+            Below are the four corner radius sizes used throughout the design system. Each size lists a few examples
+            of components that make use of that size. Use the utility classes listed below (e.g. <code>rounded</code>)
+            to add the desired corner radius to your UI elements.
         </p>
 
         <b-row class="my-500">
