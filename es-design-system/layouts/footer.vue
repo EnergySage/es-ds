@@ -35,7 +35,12 @@
                 </b-row>
             </b-container>
         </div>
-        <es-footer :content="footerContent" />
+
+        <es-footer :content="footerContent">
+            <template #logo>
+                <ds-es-logo />
+            </template>
+        </es-footer>
     </div>
 </template>
 

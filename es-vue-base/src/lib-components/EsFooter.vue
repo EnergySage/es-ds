@@ -52,9 +52,9 @@
                             <span class="sr-only">
                                 {{ content.home.name }}
                             </span>
-                            <es-logo
-                                height="36px"
-                                width="160px" />
+                            <div class="es-footer-logo">
+                                <slot name="logo" />
+                            </div>
                         </es-nav-bar-link>
                         <!-- Social icons -->
                         <div class="d-flex text-white justify-content-center justify-content-lg-start">
@@ -126,7 +126,6 @@
 
 <script lang="js">
 import EsNavBarLink from './EsNavBarLink.vue';
-import EsLogo from '../lib-assets/es-logo.vue';
 import IconFacebook from '../lib-icons/icon-facebook.vue';
 import IconTwitter from '../lib-icons/icon-twitter.vue';
 import IconYoutube from '../lib-icons/icon-youtube.vue';
@@ -136,7 +135,6 @@ import IconInstagram from '../lib-icons/icon-instagram.vue';
 export default {
     name: 'EsFooter',
     components: {
-        EsLogo,
         EsNavBarLink,
         // Used by content.socialLinks
         IconFacebook,

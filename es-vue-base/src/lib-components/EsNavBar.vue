@@ -21,9 +21,9 @@
             <es-nav-bar-link
                 class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
                 :href="globalContent.home.link">
-                <es-logo
-                    width="128px"
-                    height="28px" />
+                <div class="nav-es-logo-mobile">
+                    <slot name="logo" />
+                </div>
                 <span class="sr-only">
                     {{ globalContent.home.name }}
                 </span>
@@ -53,9 +53,9 @@
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100 mb-50">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <es-logo
-                            width="128px"
-                            height="28px" />
+                        <div class="nav-es-logo-mobile">
+                            <slot name="logo" />
+                        </div>
                     </div>
                     <div class="d-flex col-3 justify-content-end">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -75,16 +75,9 @@
                         <es-nav-bar-link
                             class="navbar-brand d-none d-lg-block pt-150"
                             :href="globalContent.home.link">
-                            <!-- small desktop logo -->
-                            <es-logo
-                                class="d-none d-lg-block d-xl-none"
-                                width="150px"
-                                height="42px" />
-                            <!-- large desktop logo-->
-                            <es-logo
-                                class="d-none d-xl-block"
-                                width="200px"
-                                height="42px" />
+                            <div class="nav-es-logo-desktop">
+                                <slot name="logo" />
+                            </div>
                             <span class="sr-only">
                                 {{ globalContent.home.name }}
                             </span>
@@ -102,7 +95,11 @@
                             :main-menu-text="globalContent.mainMenuText"
                             :name="topLevelMenu.name"
                             :sub-heading="topLevelMenu.subHeading"
-                            :topics="topLevelMenu.topics" />
+                            :topics="topLevelMenu.topics">
+                            <template #logo>
+                                <slot name="logo" />
+                            </template>
+                        </es-nav-bar-top-level-menu>
                         <!-- desktop account menu -->
                         <es-nav-bar-account-menu
                             :auth-items="accountContent.loggedIn.items"
@@ -125,7 +122,11 @@
                                 :new-tab="product.newTab"
                                 :name="product.name"
                                 :see-all-text="globalContent.seeAllText"
-                                :topics="product.topics" />
+                                :topics="product.topics">
+                                <template #logo>
+                                    <slot name="logo" />
+                                </template>
+                            </es-nav-bar-product-menu>
                         </div>
                     </b-container>
                 </div>
@@ -142,9 +143,9 @@
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <es-logo
-                            width="128px"
-                            height="28px" />
+                        <div class="nav-es-logo-mobile">
+                            <slot name="logo" />
+                        </div>
                     </div>
                     <div class="d-flex col-3 justify-content-end">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -201,10 +202,9 @@
                 <es-nav-bar-link
                     class="navbar-brand d-none d-lg-block"
                     :href="globalContent.home.link">
-                    <!-- small desktop logo -->
-                    <es-logo
-                        width="128px"
-                        height="28px" />
+                    <div class="nav-es-logo-desktop-sticky">
+                        <slot name="logo" />
+                    </div>
                     <span class="sr-only">
                         {{ globalContent.home.name }}
                     </span>
@@ -226,13 +226,10 @@ import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
 
-import EsLogo from '../lib-assets/es-logo.vue';
-
 export default {
     name: 'EsNavBar',
     components: {
         EsButton,
-        EsLogo,
         EsNavBarAccountMenu,
         EsNavBarLink,
         EsNavBarProductMenu,
