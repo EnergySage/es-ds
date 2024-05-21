@@ -5,7 +5,7 @@
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="id"
-            class="label font-italic font-weight-semibold justify-content-start">
+            class="label justify-content-start">
             <slot name="label" />
 
             <span
