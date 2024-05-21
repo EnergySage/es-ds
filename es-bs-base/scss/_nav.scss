@@ -154,6 +154,16 @@ $nav-hover-delay: 300ms;
   }
 }
 
+/* including footer styles in here so they get ripped by rip-the-nav */
+.es-footer {
+  .es-footer-logo {
+    svg {
+      height: 36px !important;
+      width: 160px !important;
+    }
+  }
+}
+
 .nav-es-container {
 
   .nav-es-global,
@@ -180,6 +190,26 @@ $nav-hover-delay: 300ms;
   a,
   label {
     font-weight: variables.$font-weight-normal;
+  }
+
+  .nav-es-logo-mobile svg,
+  .nav-es-logo-desktop-sticky svg {
+    height: 28px !important;
+    width: 200px !important;
+  }
+
+  @include breakpoints.media-breakpoint-up(lg) {
+    .nav-es-logo-desktop svg {
+      height: 42px !important;
+      width: 150px !important;
+    }
+  }
+
+  @include breakpoints.media-breakpoint-up(xl) {
+    .nav-es-logo-desktop svg {
+      height: 42px !important;
+      width: 200px !important;
+    }
   }
 
   // Adjust default nav-link styling

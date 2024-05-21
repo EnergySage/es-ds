@@ -56,9 +56,9 @@
                 <div class="menu-header">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <es-logo
-                            width="128px"
-                            height="28px" />
+                        <div class="nav-es-logo-mobile">
+                            <slot name="logo" />
+                        </div>
                         <span class="sr-only">
                             {{ homeName }}
                         </span>
@@ -117,7 +117,11 @@
                                         :items="topic.subtopics"
                                         :link="topic.link"
                                         :new-tab="topic.newTab"
-                                        :name="topic.name" />
+                                        :name="topic.name">
+                                        <template #logo>
+                                            <slot name="logo" />
+                                        </template>
+                                    </es-nav-bar-topic-menu>
                                 </ul>
                             </div>
                             <!-- article link with image within menu -->
@@ -142,12 +146,9 @@ import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
 import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
 
-import EsLogo from '../lib-assets/es-logo.vue';
-
 export default {
     name: 'EsNavBarTopLevelMenu',
     components: {
-        EsLogo,
         EsNavBarFeaturedArticle,
         EsNavBarLink,
         EsNavBarTopicMenu,

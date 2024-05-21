@@ -31,9 +31,9 @@
             <div class="menu-header d-flex d-lg-none">
                 <div class="col-3" />
                 <div class="col-6 align-self-center text-center py-100">
-                    <es-logo
-                        width="128px"
-                        height="28px" />
+                    <div class="nav-es-logo-mobile">
+                        <slot name="logo" />
+                    </div>
                     <span class="sr-only">
                         {{ homeName }}
                     </span>
@@ -133,7 +133,11 @@
                         :new-tab="topic.newTab"
                         :name="topic.name"
                         :show-items-on-mobile="topic.showItemsOnMobile"
-                        :sub-heading="topic.subHeading" />
+                        :sub-heading="topic.subHeading">
+                        <template #logo>
+                            <slot name="logo" />
+                        </template>
+                    </es-nav-bar-topic-menu>
                     <li class="nav-item col-lg-4 d-block h-auto my-100 my-lg-0">
                         <es-nav-bar-featured-article
                             :eyebrow="featuredArticle.eyebrow"
@@ -153,12 +157,9 @@ import EsNavBarFeaturedArticle from './EsNavBarFeaturedArticle.vue';
 import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarTopicMenu from './EsNavBarTopicMenu.vue';
 
-import EsLogo from '../lib-assets/es-logo.vue';
-
 export default {
     name: 'EsNavBarProductMenu',
     components: {
-        EsLogo,
         EsNavBarFeaturedArticle,
         EsNavBarLink,
         EsNavBarTopicMenu,
