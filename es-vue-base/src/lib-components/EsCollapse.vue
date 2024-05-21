@@ -4,8 +4,8 @@
             block
             :aria-expanded="expanded.toString()"
             :aria-controls="id"
-            class="rounded-0 collapse-holder pb-0 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body border-top"
-            :class="buttonStyles"
+            class="rounded-0 collapse-holder pb-0 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
+            :class="{'border-top': border}"
             inline
             variant="link"
             @click="userClick">
@@ -26,15 +26,18 @@
         <b-collapse
             :id="id"
             v-model="expanded"
+            :class="{'pb-50': expanded && !border}"
             data-testid="collapse"
             v-on="$listeners">
             <slot />
         </b-collapse>
 
         <div
-            :class="[{
-                expanded: expanded,
-            }, bottomBorderDivStyles]" />
+            :class="
+                {
+                    'border-bottom': border,
+                    expanded: expanded,
+                }" />
     </div>
 </template>
 
@@ -78,18 +81,10 @@ export default {
             required: false,
             default: true,
         },
-        /**
-         * Allow style overrides to the button
-         */
-        buttonStyles: {
-            type: String,
+        border: {
+            type: Boolean,
             required: false,
-            default: '',
-        },
-        bottomBorderDivStyles: {
-            type: String,
-            required: false,
-            default: 'border-bottom',
+            default: true,
         },
     },
     data() {
