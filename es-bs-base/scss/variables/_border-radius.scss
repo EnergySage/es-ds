@@ -1,0 +1,9 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  xs: variables.$border-radius-xs;
+  sm: variables.$border-radius-sm;
+  md: variables.$border-radius;
+  lg: variables.$border-radius-lg;
+}

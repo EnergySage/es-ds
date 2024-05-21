@@ -73,14 +73,14 @@ export default {
 
     .page-number {
         .page-link {
-            border-radius: variables.$border-radius-sm;
+            border-radius: variables.$pagination-border-radius;
         }
     }
 
     .prev-next {
         .page-link {
             align-items: center;
-            border-radius: variables.$border-radius-sm;
+            border-radius: variables.$pagination-border-radius;
             display: flex;
 
             &:not(.disabled):hover {

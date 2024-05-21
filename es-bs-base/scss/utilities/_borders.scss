@@ -38,12 +38,20 @@
 // Border-radius
 //
 
+.rounded-xs {
+  border-radius: variables.$border-radius-xs !important;
+}
+
 .rounded-sm {
   border-radius: variables.$border-radius-sm !important;
 }
 
 .rounded {
   border-radius: variables.$border-radius !important;
+}
+
+.rounded-lg {
+  border-radius: variables.$border-radius-lg !important;
 }
 
 .rounded-top {
@@ -64,10 +72,6 @@
 .rounded-left {
   border-top-left-radius: variables.$border-radius !important;
   border-bottom-left-radius: variables.$border-radius !important;
-}
-
-.rounded-lg {
-  border-radius: variables.$border-radius-lg !important;
 }
 
 .rounded-circle {

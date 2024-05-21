@@ -38,12 +38,12 @@
   &:first-child {
     .page-link {
       margin-left: 0;
-      @include border-radius.border-left-radius(variables.$border-radius);
+      @include border-radius.border-left-radius(variables.$pagination-border-radius);
     }
   }
   &:last-child {
     .page-link {
-      @include border-radius.border-right-radius(variables.$border-radius);
+      @include border-radius.border-right-radius(variables.$pagination-border-radius);
     }
   }
 

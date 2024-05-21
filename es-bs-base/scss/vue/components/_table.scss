@@ -494,7 +494,7 @@ $bv-escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23"));
 }
 
 .table__data-table {
-  border-radius: v.$border-radius;
+  border-radius: v.$table-border-radius;
 
   th {
       font-weight: v.$font-weight-bold;
