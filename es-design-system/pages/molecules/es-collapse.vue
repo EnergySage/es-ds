@@ -127,7 +127,7 @@
                 No border example
             </h2>
             <p>
-                To avoid "jumping" try to remove margins from elements within the default slot
+                To avoid a jumpy transition, remove margins from elements within the default slot
             </p>
             <EsCollapse
                 id="noBorderExample"
