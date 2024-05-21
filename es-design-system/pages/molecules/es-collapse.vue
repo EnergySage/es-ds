@@ -126,6 +126,9 @@
             <h2>
                 No border example
             </h2>
+            <p>
+                To avoid "jumping" try to remove margins from elements within the default slot
+            </p>
             <EsCollapse
                 id="noBorderExample"
                 class="m-500 bg-gray-100"
@@ -136,7 +139,7 @@
                     </h2>
                 </template>
                 <!-- eslint-disable max-len -->
-                <p>
+                <p class="m-0">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex. Nullam vestibulum ex mi, ut suscipit libero condimentum id.
                     Pellentesque eu diam vel nisi molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum. Mauris
                     vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur

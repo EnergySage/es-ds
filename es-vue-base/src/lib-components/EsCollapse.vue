@@ -26,7 +26,6 @@
         <b-collapse
             :id="id"
             v-model="expanded"
-            :class="{'pb-50': expanded && !border}"
             data-testid="collapse"
             v-on="$listeners">
             <slot />
@@ -36,6 +35,7 @@
             :class="
                 {
                     'border-bottom': border,
+                    'pb-100': expanded && !border, // should match title-slot top-padding
                     expanded: expanded,
                 }" />
     </div>
@@ -136,11 +136,11 @@ export default {
     transform: rotate(180deg);
 }
 
-.bottom-spacer {
-    padding-top: 2rem;
+// .bottom-spacer {
+//     padding-top: 2rem;
 
-    &.expanded {
-        padding-top: 3rem;
-    }
-}
+//     &.expanded {
+//         padding-top: 3rem;
+//     }
+// }
 </style>
