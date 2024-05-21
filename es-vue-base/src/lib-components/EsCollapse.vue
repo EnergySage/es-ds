@@ -4,7 +4,8 @@
             block
             :aria-expanded="expanded.toString()"
             :aria-controls="id"
-            class="rounded-0 collapse-holder pb-0 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body border-top"
+            class="rounded-0 collapse-holder pb-0 p-0 text-left font-weight-bold text-black d-flex align-items-center justify-content-between text-decoration-none text-body"
+            :class="{'border-top': border}"
             inline
             variant="link"
             @click="userClick">
@@ -31,8 +32,9 @@
         </b-collapse>
 
         <div
-            class="border-bottom"
             :class="{
+                'border-bottom': border,
+                'pb-100': (expanded && !border), // should match title-slot top-padding
                 expanded: expanded,
             }" />
     </div>
@@ -74,6 +76,11 @@ export default {
          * Prioritize the visible prop over the user's interaction with the collapse.
          */
         isProgrammaticUntilUserInput: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+        border: {
             type: Boolean,
             required: false,
             default: true,
@@ -128,11 +135,4 @@ export default {
     transform: rotate(180deg);
 }
 
-.bottom-spacer {
-    padding-top: 2rem;
-
-    &.expanded {
-        padding-top: 3rem;
-    }
-}
 </style>
