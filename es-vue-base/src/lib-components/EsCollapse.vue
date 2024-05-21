@@ -135,11 +135,4 @@ export default {
     transform: rotate(180deg);
 }
 
-// .bottom-spacer {
-//     padding-top: 2rem;
-
-//     &.expanded {
-//         padding-top: 3rem;
-//     }
-// }
 </style>
