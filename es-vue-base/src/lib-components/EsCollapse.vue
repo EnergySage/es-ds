@@ -32,12 +32,11 @@
         </b-collapse>
 
         <div
-            :class="
-                {
-                    'border-bottom': border,
-                    'pb-100': expanded && !border, // should match title-slot top-padding
-                    expanded: expanded,
-                }" />
+            :class="{
+                'border-bottom': border,
+                'pb-100': (expanded && !border), // should match title-slot top-padding
+                expanded: expanded,
+            }" />
     </div>
 </template>
 

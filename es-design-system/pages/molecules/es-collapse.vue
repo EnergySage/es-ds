@@ -131,7 +131,7 @@
             </p>
             <EsCollapse
                 id="noBorderExample"
-                class="m-500"
+                class="m-500 bg-gray-100"
                 :border="false">
                 <template #title>
                     <h2 class="mb-0">
@@ -165,7 +165,7 @@
                     </h2>
                 </template>
                 <!-- eslint-disable max-len -->
-                <p>
+                <p class="m-0">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex. Nullam vestibulum ex mi, ut suscipit libero condimentum id.
                     Pellentesque eu diam vel nisi molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum. Mauris
                     vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
