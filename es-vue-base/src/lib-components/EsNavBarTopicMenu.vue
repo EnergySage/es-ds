@@ -58,7 +58,7 @@
             <div class="menu-header">
                 <div class="col-3" />
                 <div class="col-6 align-self-center text-center py-100">
-                    <div class="nav-es-logo-mobile">
+                    <div class="nav-es-logo-mobile align-items-center d-flex">
                         <slot name="logo" />
                     </div>
                     <span class="sr-only">
