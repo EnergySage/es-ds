@@ -1,6 +1,6 @@
 {
     "name": "es-design-system",
-    "version": "2.0.0-alpha.9",
+    "version": "2.0.0-alpha.10",
     "private": true,
     "scripts": {
         "dev": "nuxt",
@@ -18,7 +18,7 @@
     "prettier": "eslint-config-energysage/prettier",
     "dependencies": {
         "@energysage/es-bs-base": "^2.0.0-alpha.7",
-        "@energysage/es-vue-base": "^2.0.0-alpha.9",
+        "@energysage/es-vue-base": "^2.0.0-alpha.10",
         "@nuxtjs/axios": "^5.13.6",
         "@nuxtjs/i18n": "^7.3.1",
         "bootstrap-vue": "^2.23.1",
