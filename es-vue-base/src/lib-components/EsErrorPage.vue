@@ -1,44 +1,46 @@
 <template>
-    <b-container class="py-500 py-lg-800 bg-gray-50">
-        <b-row>
-            <b-col
-                md="7"
-                class="my-500 mx-auto text-center">
-                <h1 class="post1 text-gray-600">
-                    {{ errorShortMessage }}
-                </h1>
-                <p
-                    id="msgError"
-                    class="font-size-lg text-gray-600">
-                    {{ errorLongMessage }}
-                </p>
-            </b-col>
-        </b-row>
-        <b-row>
-            <b-col
-                v-for="(item, index) in linkItems.errorLinks"
-                :key="index"
-                cols="6"
-                md="3">
-                <a
-                    class="align-items-center d-flex flex-column justify-content-center text-center"
-                    :href="item.link">
-                    <div
-                        class="bg-white d-flex justify-content-center mb-50 rounded-circle"
-                        align-v="center">
+    <div class="bg-gray-50">
+        <b-container class="py-500 py-lg-800">
+            <b-row>
+                <b-col
+                    md="7"
+                    class="my-500 mx-auto text-center">
+                    <h1 class="post1 text-gray-600">
+                        {{ errorShortMessage }}
+                    </h1>
+                    <p
+                        id="msgError"
+                        class="font-size-lg text-gray-600">
+                        {{ errorLongMessage }}
+                    </p>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col
+                    v-for="(item, index) in linkItems.errorLinks"
+                    :key="index"
+                    cols="6"
+                    md="3">
+                    <a
+                        class="align-items-center d-flex flex-column justify-content-center text-center"
+                        :href="item.link">
                         <div
-                            class="m-100 text-orange">
-                            <component
-                                :is="item.icon"
-                                height="53px"
-                                width="53px" />
+                            class="bg-white d-flex justify-content-center mb-50 rounded-circle"
+                            align-v="center">
+                            <div
+                                class="m-100 text-orange">
+                                <component
+                                    :is="item.icon"
+                                    height="53px"
+                                    width="53px" />
+                            </div>
                         </div>
-                    </div>
-                    <p class="'font-weight-bolder mb-200 mb-md-0'">{{ item.label }}</p>
-                </a>
-            </b-col>
-        </b-row>
-    </b-container>
+                        <p class="'font-weight-bolder mb-200 mb-md-0'">{{ item.label }}</p>
+                    </a>
+                </b-col>
+            </b-row>
+        </b-container>
+    </div>
 </template>
 
 <script lang="js">
