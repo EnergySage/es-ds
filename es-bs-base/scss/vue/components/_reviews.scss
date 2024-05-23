@@ -84,6 +84,7 @@
   --scroll-button-icon-size: 32px !important;
   --small-star-size: 32px !important;
   margin-bottom: 0;
+  overflow: hidden;
 
   .CarouselWidget__header {
     margin-bottom: 32px !important;
@@ -91,6 +92,7 @@
 
   .R-ReviewsList {
     padding-top: 0 !important;
+    margin-top: 0 !important;
   }
 
   .R-ReviewsList__item {
