@@ -73,9 +73,9 @@
                     <!-- top-level items on mobile, full top bar on desktop -->
                     <b-container class="align-items-start d-flex flex-lg-nowrap justify-content-between top-level-nav">
                         <es-nav-bar-link
-                            class="navbar-brand d-none d-lg-block pt-150"
+                            class="navbar-brand d-none d-lg-block"
                             :href="globalContent.home.link">
-                            <div class="nav-es-logo-desktop">
+                            <div class="nav-es-logo-desktop pt-100">
                                 <slot name="logo" />
                             </div>
                             <span class="sr-only">

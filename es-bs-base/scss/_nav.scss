@@ -195,20 +195,19 @@ $nav-hover-delay: 300ms;
   .nav-es-logo-mobile svg,
   .nav-es-logo-desktop-sticky svg {
     height: 28px !important;
-    width: 200px !important;
+    width: auto !important;
+  }
+
+  .nav-es-logo-mobile svg {
+    margin: 0 auto;
   }
 
   @include breakpoints.media-breakpoint-up(lg) {
-    .nav-es-logo-desktop svg {
-      height: 42px !important;
-      width: 150px !important;
-    }
-  }
-
-  @include breakpoints.media-breakpoint-up(xl) {
-    .nav-es-logo-desktop svg {
-      height: 42px !important;
-      width: 200px !important;
+    .nav-es-logo-desktop {
+      svg {
+        height: 42px !important;
+        width: auto !important;
+      }
     }
   }
 
