@@ -21,7 +21,7 @@
             <es-nav-bar-link
                 class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
                 :href="globalContent.home.link">
-                <div class="nav-es-logo-mobile">
+                <div class="nav-es-logo-mobile align-items-center d-flex">
                     <slot name="logo" />
                 </div>
                 <span class="sr-only">
@@ -53,7 +53,7 @@
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100 mb-50">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <div class="nav-es-logo-mobile">
+                        <div class="nav-es-logo-mobile align-items-center d-flex">
                             <slot name="logo" />
                         </div>
                     </div>
@@ -73,9 +73,9 @@
                     <!-- top-level items on mobile, full top bar on desktop -->
                     <b-container class="align-items-start d-flex flex-lg-nowrap justify-content-between top-level-nav">
                         <es-nav-bar-link
-                            class="navbar-brand d-none d-lg-block pt-150"
+                            class="navbar-brand d-none d-lg-block"
                             :href="globalContent.home.link">
-                            <div class="nav-es-logo-desktop">
+                            <div class="nav-es-logo-desktop pt-100">
                                 <slot name="logo" />
                             </div>
                             <span class="sr-only">
@@ -143,7 +143,7 @@
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <div class="nav-es-logo-mobile">
+                        <div class="nav-es-logo-mobile align-items-center d-flex">
                             <slot name="logo" />
                         </div>
                     </div>

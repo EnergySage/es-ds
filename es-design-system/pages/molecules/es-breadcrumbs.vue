@@ -13,6 +13,9 @@
         <div class="my-500">
             <es-breadcrumbs :items="items" />
         </div>
+        <div class="my-500">
+            <es-breadcrumbs :items="longerItems" />
+        </div>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsBreadcrumbs.vue"
@@ -40,6 +43,20 @@ export default {
                 {
                     text: 'Search',
                     active: true,
+                },
+            ],
+            longerItems: [
+                {
+                    text: 'EnergySage',
+                    to: '#',
+                },
+                {
+                    text: 'Cost of solar',
+                    to: '#',
+                },
+                {
+                    text: 'Solar cost in California',
+                    to: '#',
                 },
             ],
         };

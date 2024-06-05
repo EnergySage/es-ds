@@ -59,9 +59,10 @@
                         <!-- Social icons -->
                         <div class="d-flex text-white justify-content-center justify-content-lg-start">
                             <es-nav-bar-link
-                                v-for="iconLink in content.socialLinks"
+                                v-for="(iconLink, index) in content.socialLinks"
                                 :key="iconLink.text"
-                                class="text-reset pr-150"
+                                class="text-reset"
+                                :class="{ 'mr-150': index < content.socialLinks.length - 1 }"
                                 :href="iconLink.url"
                                 target="_blank">
                                 <span class="sr-only">{{ iconLink.text }}</span>

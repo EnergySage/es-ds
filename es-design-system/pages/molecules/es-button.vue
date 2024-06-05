@@ -204,6 +204,15 @@
                                 </es-button>
                                 incididunt ut labore et dolore magna aliqua.
                             </p>
+                            <div v-else-if="example.arrow">
+                                <es-button
+                                    class="px-0 text-left"
+                                    :size="example.size"
+                                    :variant="example.variant">
+                                    {{ example.text }}
+                                    <icon-arrow-right class="ml-25" />
+                                </es-button>
+                            </div>
                             <div v-else>
                                 <es-button
                                     :size="example.size"
@@ -234,6 +243,16 @@
                                 </es-button>
                                 incididunt ut labore et dolore magna aliqua.
                             </p>
+                            <div v-else-if="example.arrow">
+                                <es-button
+                                    class="px-0 text-left"
+                                    disabled
+                                    :size="example.size"
+                                    :variant="example.variant">
+                                    {{ example.text }}
+                                    <icon-arrow-right class="ml-25" />
+                                </es-button>
+                            </div>
                             <div v-else>
                                 <es-button
                                     disabled
@@ -701,6 +720,19 @@ export default {
                         text: 'Submit',
                     },
                     text: 'Cancel',
+                    variant: 'link',
+                },
+                {
+                    arrow: true,
+                    name: 'Default with arrow',
+                    text: 'Learn about our rating system',
+                    variant: 'link',
+                },
+                {
+                    arrow: true,
+                    name: 'Small with arrow',
+                    size: 'sm',
+                    text: 'Learn about our rating system',
                     variant: 'link',
                 },
                 {

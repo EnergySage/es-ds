@@ -110,7 +110,7 @@ fieldset:disabled a.btn {
 
 // Make a button look and behave like a link
 .btn-link {
-  font-weight: variables.$link-weight;
+  font-weight: variables.$btn-font-weight;
   color: variables.$link-color;
   text-decoration: variables.$link-decoration;
 
@@ -128,6 +128,10 @@ fieldset:disabled a.btn {
   &.disabled {
     color: variables.$btn-link-disabled-color;
     pointer-events: none;
+  }
+
+  &.inline {
+    font-weight: variables.$link-weight;
   }
 
   // No need for an active state here

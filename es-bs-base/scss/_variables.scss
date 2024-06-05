@@ -703,7 +703,7 @@ $h6-line-height-desktop:      $line-height-100 !default;
 
 $headings-margin-bottom:      1rem !default;
 $headings-font-family:        $font-family-sans-serif !default;
-$headings-font-weight:        $font-weight-semibold !default;
+$headings-font-weight:        $font-weight-bold !default;
 $headings-line-height:        1.2 !default; // no longer used, in favor of specific per font size
 $headings-color:              $gray-900 !default;
 // fusv-disable
@@ -1448,7 +1448,7 @@ $pagination-padding-x-lg:           1.5rem !default;
 $pagination-line-height:            1.25 !default;
 
 $pagination-color:                  $link-color !default;
-$pagination-bg:                     $white !default;
+$pagination-bg:                     transparent !default;
 $pagination-border-width:           $border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
@@ -1464,7 +1464,7 @@ $pagination-active-bg:              $orange-50 !default;
 $pagination-active-border-color:    $pagination-border-color !default;
 
 $pagination-disabled-color:         $gray-500 !default;
-$pagination-disabled-bg:            $white !default;
+$pagination-disabled-bg:            transparent !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 
 $pagination-border-radius:          $border-radius-xs !default;
