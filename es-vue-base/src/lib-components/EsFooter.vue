@@ -62,7 +62,7 @@
                                 v-for="(iconLink, index) in content.socialLinks"
                                 :key="iconLink.text"
                                 class="text-reset"
-                                :class="{ 'pr-150': index < content.socialLinks.length - 1 }"
+                                :class="{ 'mr-150': index < content.socialLinks.length - 1 }"
                                 :href="iconLink.url"
                                 target="_blank">
                                 <span class="sr-only">{{ iconLink.text }}</span>
