@@ -107,21 +107,21 @@
   }
 
   .R-ReviewsList__item:hover .item__inner {
-    border-color: variables.$card-interactive-hover-border-color;
+    border-color: variables.$card-interactive-hover-border-color !important;
     text-decoration: none;
   }
 
   .R-ReviewsList__item:focus {
     outline: none;
     .item__inner {
-      border-color: variables.$card-interactive-focus-border-color;
-      box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-shadow;
+      border-color: variables.$card-interactive-focus-border-color !important;
+      box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-shadow !important;
     }
   }
 
   .R-ReviewsList__item:active .item__inner {
-    border-color: variables.$card-interactive-active-border-color;
-    box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-active-shadow;
+    border-color: variables.$card-interactive-active-border-color !important;
+    box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-active-shadow !important;
     transform: variables.$btn-active-transform;
   }
 
