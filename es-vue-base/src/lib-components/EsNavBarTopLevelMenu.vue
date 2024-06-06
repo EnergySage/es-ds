@@ -5,43 +5,33 @@
         <div class="top-header-inner w-100">
             <!-- desktop fly-out menu trigger -->
             <es-nav-bar-link
-                v-if="!link"
-                class="nav-link dropdown-toggle d-none d-lg-block py-100 font-weight-bolder"
-                href="#"
+                class="nav-link d-none d-lg-block py-100 font-weight-bolder"
+                :class="{ 'dropdown-toggle': !link }"
+                :href="link || '#'"
                 data-toggle="dropdown"
                 aria-haspopup="true"
-                aria-expanded="false">
+                :aria-expanded="link">
                 <div class="d-lg-flex align-items-center">
                     {{ name }}
                 </div>
             </es-nav-bar-link>
-            <!-- mobile+desktop top-level link -->
-            <es-nav-bar-link
-                v-else
-                class="nav-link d-flex align-items-center w-100 h-100 px-0 py-lg-100 px-100 font-weight-bold"
-                :href="link"
-                :target="newTab ? '_blank' : null">
-                <div class="d-flex d-lg-block top-level-label">
-                    <div
-                        class="d-lg-flex align-items-center">
-                        {{ name }}
-                    </div>
-                </div>
-            </es-nav-bar-link>
             <!-- mobile fly-out menu trigger -->
             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-            <label
-                v-if="!link"
+            <component
+                :is="link ? 'es-nav-bar-link' : 'label'"
+                class="nav-link d-flex d-lg-none align-items-center w-100 h-100 px-0 py-lg-100 px-100 font-weight-bold justify-content-between"
+                :class="{ 'dropdown-label': !link }"
                 :for="checkboxId"
-                class="dropdown-label nav-link d-flex d-lg-none px-100 w-100 h-100 align-items-center
-                justify-content-between font-weight-bold">
+                :href="link || '#'"
+                :target="newTab ? '_blank' : null">
                 <div class="align-items-center d-flex">
                     {{ name }}
                 </div>
                 <IconArrowRight
+                    v-if="!link"
                     class="expand-icon"
                     style="height: 24px;" />
-            </label>
+            </component>
             <input
                 v-if="!link"
                 :id="checkboxId"
