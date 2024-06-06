@@ -10,7 +10,7 @@
                 :href="link || '#'"
                 data-toggle="dropdown"
                 aria-haspopup="true"
-                :aria-expanded="link">
+                :aria-expanded="link ? 'true' : 'false'">
                 <div class="d-lg-flex align-items-center">
                     {{ name }}
                 </div>
