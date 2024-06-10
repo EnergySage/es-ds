@@ -3,27 +3,28 @@
         class="nav-item top-header mx-0"
         :class="{ 'has-dropdown': !link }">
         <div class="top-header-inner w-100">
-            <!-- desktop fly-out menu trigger -->
+            <!-- desktop link and fly-out menu trigger -->
             <es-nav-bar-link
                 class="nav-link d-none d-lg-block py-100 font-weight-bolder"
                 :class="{ 'dropdown-toggle': !link }"
                 :href="link || '#'"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                :aria-expanded="link ? 'true' : 'false'">
+                :data-toggle="link ? undefined : 'dropdown'"
+                :aria-haspopup="link ? undefined : true"
+                :aria-expanded="link ? undefined : false"
+                :target="link && newTab ? '_blank' : undefined">
                 <div class="d-lg-flex align-items-center">
                     {{ name }}
                 </div>
             </es-nav-bar-link>
-            <!-- mobile fly-out menu trigger -->
+            <!-- mobile link and fly-out menu trigger -->
             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
             <component
                 :is="link ? 'es-nav-bar-link' : 'label'"
                 class="nav-link d-flex d-lg-none align-items-center w-100 h-100 px-0 py-lg-100 px-100 font-weight-bold justify-content-between"
                 :class="{ 'dropdown-label': !link }"
-                :for="checkboxId"
+                :for="link ? undefined : checkboxId"
                 :href="link || '#'"
-                :target="newTab ? '_blank' : null">
+                :target="newTab ? '_blank' : undefined">
                 <div class="align-items-center d-flex">
                     {{ name }}
                 </div>
