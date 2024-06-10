@@ -23,7 +23,7 @@
                 class="nav-link d-flex d-lg-none align-items-center w-100 h-100 px-0 py-lg-100 px-100 font-weight-bold justify-content-between"
                 :class="{ 'dropdown-label': !link }"
                 :for="link ? undefined : checkboxId"
-                :href="link || '#'"
+                :href="link || undefined"
                 :target="newTab ? '_blank' : undefined">
                 <div class="align-items-center d-flex">
                     {{ name }}
