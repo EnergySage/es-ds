@@ -9,7 +9,7 @@ metadata:
     - title: Github Org
       url: https://github.com/EnergySage/
     - title: Documentation page
-      url: https://new.design.energysage.dev/
+      url: https://design.energysage.dev/
   annotations:
     github.com/project-slug: EnergySage/es-ds
     backstage.io/techdocs-ref: dir:.

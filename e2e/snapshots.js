@@ -2,7 +2,7 @@ require('dotenv').config({ override: true })
 const process = require('node:process')
 
 const snapShotFactory = (name, path, overrides) => {
-    const baseUrl = process.env.PERCY_BRANCH === 'production' ? 'https://new.design.energysage.dev' : 'http://localhost:8500';
+    const baseUrl = process.env.PERCY_BRANCH === 'production' ? 'https://design.energysage.dev' : 'http://localhost:8500';
     const url = `${baseUrl}${path}`;
     const baseTemplate = {
         name,
