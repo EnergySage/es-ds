@@ -63,7 +63,9 @@
         </div>
 
         <div class="mb-450">
-            <h2>Dark responsive example</h2>
+            <h2>
+                Dark responsive example
+            </h2>
             <p class="mb-200">
                 Same as above, except the zip code form is inside a container with a dark background and the
                 <code>dark</code> prop is set to <code>true</code>.
