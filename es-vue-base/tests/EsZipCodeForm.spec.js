@@ -8,13 +8,13 @@ describe('EsZipCodeForm', () => {
         const wrapper = mount(EsZipCodeForm, {
             ...jestVue,
             propsData: {
-                zipCodeInitialValue: '', // Start with an empty initial value
+                zipCodeValue: '', // Start with an empty initial value
             },
         });
 
         // Set a new value for the zip code after a delay
         const newValue = '54321';
-        wrapper.vm.zipCodeInitialValue = newValue;
+        wrapper.vm.zipCodeValue = newValue;
 
         // Simulate a delay (e.g., 2 seconds)
         await new Promise((resolve) => {

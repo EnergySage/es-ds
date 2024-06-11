@@ -155,7 +155,7 @@ export default {
             type: String,
             required: true,
         },
-        zipCodeInitialValue: {
+        zipCodeValue: {
             type: String,
             default: '',
         },
@@ -166,7 +166,7 @@ export default {
     },
     data() {
         return {
-            zipCode: this.zipCodeInitialValue,
+            zipCode: this.zipCodeValue,
         };
     },
     computed: {
@@ -179,7 +179,7 @@ export default {
         },
     },
     watch: {
-        zipCodeInitialValue(newVal) {
+        zipCodeValue(newVal) {
             this.zipCode = newVal;
         },
     },
