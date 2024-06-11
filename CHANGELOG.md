@@ -5,6 +5,81 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2024-06-11
+
+### Added
+
+- New color names
+- New 400 (64px), 500 (80px), and 600 (96px) classes
+- *Checkbox* to design-system
+
+### Changed
+
+- Border radii have changed from S / 4, M / 8, L / 12 to XS / 4, S / 8, M / 12, L / 16
+- 450 (72px) is officially deprecated in favor of 400 (64px) or 500 (80px)
+- Changed base font from "Inter" to "Plus Jakarta Sans"
+- Base font weight is now 400 instead of 300
+- Heading font weight is now 600 instead of 500
+- Link hover color is now the same as non-hover
+- List item bottom margin is now 8px instead of 0px
+- *Accordion* expand/collapse buttons on the default variant now have a hover color
+- *Accordion* on the default variant now have a border
+- *Accordion* bottom corners of the default variant are no longer rounded
+- *Accordion* background color and font color of default variant has been updated
+- *Badge* Updated background and font colors
+- *Badge* Horizontal padding is now 16px instead of 5.6px
+- *Badge* Border radius is now 16px instead of 11.2px
+- *Badge* Removed hover/focus state as badges are not clickable/focusable
+- *Breadcrumbs* Padding between items is now 8px instead of 4px
+- *Breadcrumbs* Bottom margin is now 16px instead of 0px for standardized spacing
+- *Button* Updated look of the primary variant and its outline state
+- *Button* Primary variant now has a light-colored shadow that makes it unsuitable for use on dark backgrounds
+- *Button* The secondary variant is now identical to primary
+- *Button* new dark-bg variant, along with an outline version, for use on dark backgrounds
+- *Button* Button font weight is now 700 instead of 600
+- *Button* Height of small buttons is now 40px instead of 28px
+- *Button* Font size in small buttons is now 14px instead of 16px
+- *Button* Updated default spinner styling
+- *Button* Added examples of loading spinners within buttons
+- *Card* Display cards no longer have a shadow and now have a 2px gray border
+- *Card* Interactive cards now have a shadow and a thicker 2px gray border
+- *Card* Interactive cards will now render as `<button>` tags by default, unless an href is provided, in which case they will render as `<b-link>`, unless a specific tag name is provided, in which case the provided tag will be used
+- *Card* Default padding is now 24px instead of 32px
+- *Card* Defined focus and active states, rather than allowing the default blue browser outline to appear
+- *Checkbox* Updated colors, check mark icon, padding, hover/focus/active/disabled states
+- *Data Table* Updated background and text colors
+- *Data Table* Horizontal cell padding is now 16px instead of 12px
+- *Data Table* Table now always has rounded corners
+- *Data Table* Removed rounded prop
+- *Error page* displays descriptive error phrases instead of error codes
+- *Error page* background color is now Gray 50 instead of transparent
+- *Horizontal list* Updated colors
+- *Horizontal list* Chevron buttons are now closer to the dots
+- *Modal* footer now has 32px padding and a top border
+- *Modal* close button icon is now 32px in size instead of 26px
+- *Modal* close button is now Gray 900 instead of a 50% transparent Gray 900
+- *Pagination* Updated colors
+- *Pagination* Each button now has sufficient size to meet accessibility tap target size criteria
+- *Pagination* Chevron arrows are further from the page numbers on mobile
+- *Radio button* Added docs page for radio button
+- *Radio button* Updated colors, checked circle icon, padding, hover/focus/active/disabled states
+- *Rating* Updated star icons with more rounded corners, half stars have white infill
+- *Rating* Stars are now orange
+- *Support* Margin between photo and text is now 8px instead of 16px
+- *Support Card* Photo will now be on top of the card on mobile
+- *Support Card* Paragraph will now have a max width on large desktop to prevent line length from getting too long
+- *Tabs* Updated colors and padding
+- *Textarea* visual updates
+- *Text input* Height is now 56px instead of 50px
+- *Text input* Border radius is now 4px instead of 8px
+- *Text input* Bottom margin is now 16px instead of 8px
+- *Text input* Labels are now italicized
+- *Text input* Focus state border color has changed
+- *Text input* The check icon on input success state has been removed
+- *Video* Now uses EsCard interactive variant instead of EsButton
+- *View more* Spacing between text and "View more" link is now 8px instead of 4px
+- *View more* Corrected case of default text to be sentence case instead of title case
+
 ## [1.3.9] - 2024-05-20
 
 ### Changed
@@ -940,6 +1015,7 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[2.0.0]: https://github.com/EnergySage/es-ds/compare/v1.3.9...v2.0.0
 [1.3.9]: https://github.com/EnergySage/es-ds/compare/v1.3.8...v1.3.9
 [1.3.8]: https://github.com/EnergySage/es-ds/compare/v1.3.7...v1.3.8
 [1.3.7]: https://github.com/EnergySage/es-ds/compare/v1.3.6...v1.3.7

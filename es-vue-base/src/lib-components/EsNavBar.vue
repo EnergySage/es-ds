@@ -4,7 +4,7 @@
         class="nav-es-container">
         <div class="content-overlay" />
         <nav
-            class="nav-es-global navbar navbar-expand navbar-light py-0">
+            class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
             <!-- mobile hamburger menu button -->
             <div class="d-flex d-lg-none col-2 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -21,9 +21,9 @@
             <es-nav-bar-link
                 class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
                 :href="globalContent.home.link">
-                <es-logo
-                    width="128px"
-                    height="28px" />
+                <div class="nav-es-logo-mobile align-items-center d-flex">
+                    <slot name="logo" />
+                </div>
                 <span class="sr-only">
                     {{ globalContent.home.name }}
                 </span>
@@ -32,9 +32,9 @@
             <div class="d-flex d-lg-none justify-content-end col-2 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
-                    class="mb-0 text-dark text-decoration-none"
+                    class="mb-0 text-decoration-none"
                     for="data--account-menu">
-                    <icon-person class="align-self-center" />
+                    <icon-person class="align-self-center account-icon" />
                     <span class="sr-only">
                         {{ accountContent.mobileAccountButtonAltText }}
                     </span>
@@ -50,12 +50,12 @@
                 id="navbarNavDropdown"
                 class="menu top-level-menu align-items-start d-flex flex-grow-1">
                 <!-- mobile menu header -->
-                <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
+                <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100 mb-50">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <es-logo
-                            width="128px"
-                            height="28px" />
+                        <div class="nav-es-logo-mobile align-items-center d-flex">
+                            <slot name="logo" />
+                        </div>
                     </div>
                     <div class="d-flex col-3 justify-content-end">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -71,20 +71,13 @@
                 </div>
                 <div class="navbar-nav d-flex flex-column w-100">
                     <!-- top-level items on mobile, full top bar on desktop -->
-                    <b-container class="align-items-center d-flex flex-lg-nowrap justify-content-between">
+                    <b-container class="align-items-start d-flex flex-lg-nowrap justify-content-between top-level-nav">
                         <es-nav-bar-link
                             class="navbar-brand d-none d-lg-block"
                             :href="globalContent.home.link">
-                            <!-- small desktop logo -->
-                            <es-logo
-                                class="d-none d-lg-block d-xl-none"
-                                width="150px"
-                                height="42px" />
-                            <!-- large desktop logo-->
-                            <es-logo
-                                class="d-none d-xl-block"
-                                width="200px"
-                                height="42px" />
+                            <div class="nav-es-logo-desktop pt-100">
+                                <slot name="logo" />
+                            </div>
                             <span class="sr-only">
                                 {{ globalContent.home.name }}
                             </span>
@@ -93,6 +86,8 @@
                         <es-nav-bar-top-level-menu
                             v-for="topLevelMenu in globalContent.topLevelMenus"
                             :key="topLevelMenu.name"
+                            :home-name="globalContent.home.name"
+                            :home-link="globalContent.home.link"
                             :close-button-text="globalContent.mobileCloseButtonAltText"
                             :featured-article="topLevelMenu.featuredArticle"
                             :icon="topLevelMenu.icon"
@@ -100,28 +95,40 @@
                             :main-menu-text="globalContent.mainMenuText"
                             :name="topLevelMenu.name"
                             :sub-heading="topLevelMenu.subHeading"
-                            :topics="topLevelMenu.topics" />
+                            :topics="topLevelMenu.topics">
+                            <template #logo>
+                                <slot name="logo" />
+                            </template>
+                        </es-nav-bar-top-level-menu>
                         <!-- desktop account menu -->
                         <es-nav-bar-account-menu
                             :auth-items="accountContent.loggedIn.items"
-                            class="d-none d-lg-block"
+                            class="d-none d-lg-block pt-100"
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <div class="row mx-0 d-flex justify-content-lg-center">
-                        <es-nav-bar-product-menu
-                            v-for="product in globalContent.products"
-                            :key="product.name"
-                            :close-button-text="globalContent.mobileCloseButtonAltText"
-                            :featured-article="product.featuredArticle"
-                            :items="product.items"
-                            :link="product.link"
-                            :main-menu-text="globalContent.mainMenuText"
-                            :new-tab="product.newTab"
-                            :name="product.name"
-                            :see-all-text="globalContent.seeAllText"
-                            :topics="product.topics" />
-                    </div>
+                    <b-container class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
+                        <div class="row">
+                            <es-nav-bar-product-menu
+                                v-for="product in globalContent.products"
+                                :key="product.name"
+                                :home-name="globalContent.home.name"
+                                :home-link="globalContent.home.link"
+                                :close-button-text="globalContent.mobileCloseButtonAltText"
+                                :featured-article="product.featuredArticle"
+                                :items="product.items"
+                                :link="product.link"
+                                :main-menu-text="globalContent.mainMenuText"
+                                :new-tab="product.newTab"
+                                :name="product.name"
+                                :see-all-text="globalContent.seeAllText"
+                                :topics="product.topics">
+                                <template #logo>
+                                    <slot name="logo" />
+                                </template>
+                            </es-nav-bar-product-menu>
+                        </div>
+                    </b-container>
                 </div>
             </div>
             <!-- mobile account menu checkbox -->
@@ -136,9 +143,9 @@
                 <div class="menu-header d-lg-none d-flex align-items-center justify-content-center h-100">
                     <div class="col-3" />
                     <div class="col-6 align-self-center text-center py-100">
-                        <es-logo
-                            width="128px"
-                            height="28px" />
+                        <div class="nav-es-logo-mobile align-items-center d-flex">
+                            <slot name="logo" />
+                        </div>
                     </div>
                     <div class="d-flex col-3 justify-content-end">
                         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -160,7 +167,7 @@
                         v-for="item in accountContent.loggedIn.items"
                         :key="item.name">
                         <es-nav-bar-link
-                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50"
+                            class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50 font-weight-bold"
                             :href="item.link">
                             {{ item.name }}
                         </es-nav-bar-link>
@@ -173,16 +180,15 @@
                     <li>
                         <EsButton
                             :href="accountContent.loggedOut.signIn.link"
-                            :outline="true"
-                            variant="secondary"
-                            class="m-100 w-100">
+                            class="m-100 w-100 text-white font-weight-bold">
                             {{ accountContent.loggedOut.signIn.name }}
                         </EsButton>
                     </li>
                     <li class="d-flex justify-content-center">
                         <EsButton
                             :href="accountContent.loggedOut.createAccount.link"
-                            variant="link">
+                            :outline="true"
+                            class="mx-100 w-100 font-weight-bold">
                             {{ accountContent.loggedOut.createAccount.name }}
                         </EsButton>
                     </li>
@@ -196,10 +202,9 @@
                 <es-nav-bar-link
                     class="navbar-brand d-none d-lg-block"
                     :href="globalContent.home.link">
-                    <!-- small desktop logo -->
-                    <es-logo
-                        width="128px"
-                        height="28px" />
+                    <div class="nav-es-logo-desktop-sticky">
+                        <slot name="logo" />
+                    </div>
                     <span class="sr-only">
                         {{ globalContent.home.name }}
                     </span>
@@ -221,13 +226,10 @@ import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
 
-import EsLogo from '../lib-assets/es-logo.vue';
-
 export default {
     name: 'EsNavBar',
     components: {
         EsButton,
-        EsLogo,
         EsNavBarAccountMenu,
         EsNavBarLink,
         EsNavBarProductMenu,
@@ -296,9 +298,9 @@ export default {
         });
 
         // Show overlay on hovers for desktop only
-        // eslint-disable-next-line max-len
         document.querySelectorAll(
-            '.nav-es-container .nav-item .dropdown-toggle, .nav-es-container .nav-item .dropdown-menu',
+            // eslint-disable-next-line max-len
+            '.nav-es-container .nav-item .dropdown-toggle, .nav-es-container .nav-item .dropdown-menu, .nav-es-container .nav-item.has-dropdown',
         )
             .forEach((element) => {
                 element.addEventListener('mouseover', () => {

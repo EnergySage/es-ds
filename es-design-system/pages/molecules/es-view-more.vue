@@ -1,10 +1,10 @@
 <template>
     <div>
         <h1>
-            View More
+            View more
         </h1>
         <es-view-more
-            class="my-450"
+            class="my-500"
             :length="100"
             :content="`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex.
                 Nullam vestibulum ex mi, ut suscipit libero condimentum id. Pellentesque eu diam vel nisi

@@ -53,7 +53,7 @@ describe('EsAccordion', () => {
         expect(heading.text()).toContain(title);
 
         // verify title and content slots together
-        expect(wrapper.text()).toBe(`${title}  collapse  ${content}`);
+        expect(wrapper.text()).toBe(`collapse ${title}   ${content}`);
 
         // verify that the content is visible
         const paragraph = wrapper.find('p');

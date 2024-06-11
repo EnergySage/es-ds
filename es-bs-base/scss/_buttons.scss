@@ -15,7 +15,7 @@
   display: inline-flex;
   align-items: center; // aligns text and icons vertically by default
   justify-content: center;
-  height: variables.$font-size-base * 3; // ensures consistent button height, matching the design, regardless of content
+  height: variables.$input-btn-height; // ensures consistent button height, matching the design, regardless of content
   font-family: variables.$btn-font-family;
   font-weight: variables.$btn-font-weight;
   color: variables.$body-color;
@@ -59,6 +59,12 @@
       }
     }
   }
+
+  // ensure icons automatically are sized properly in buttons without needing custom sizing entered each time
+  svg {
+    height: 1.5rem !important;
+    width: 1.5rem !important;
+  }
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -72,29 +78,17 @@ fieldset:disabled a.btn {
 // Alternate buttons
 //
 
-// DEPRECATED BUTTON STYLES
+// force DEPRECATED BUTTON STYLES to be primary
 @each $color, $value in variables.$theme-colors {
   .btn-#{$color} {
-    @include buttons.button-variant($value, $value);
+    @include buttons.button-v2-variant('primary');
   }
 }
 
-// DEPRECATED OUTLINE BUTTON STYLES
+// force DEPRECATED OUTLINE BUTTON STYLES to be primary
 @each $color, $value in variables.$theme-colors {
   .btn-outline-#{$color} {
-    @include buttons.button-outline-variant($value);
-
-    &:disabled,
-    &.disabled {
-      color: color-yiq(variables.$btn-disabled-bg-color);
-      pointer-events: none;
-      background-color: variables.$btn-disabled-bg-color;
-      border-color: variables.$btn-disabled-bg-color;
-      // Remove CSS gradients if they're enabled
-      @if variables.$enable-gradients {
-        background-image: none;
-      }
-    }
+    @include buttons.button-v2-outline-variant('primary');
   }
 }
 
@@ -110,14 +104,13 @@ fieldset:disabled a.btn {
   }
 }
 
-
 //
 // Link buttons
 //
 
 // Make a button look and behave like a link
 .btn-link {
-  font-weight: variables.$link-weight;
+  font-weight: variables.$btn-font-weight;
   color: variables.$link-color;
   text-decoration: variables.$link-decoration;
 
@@ -137,6 +130,10 @@ fieldset:disabled a.btn {
     pointer-events: none;
   }
 
+  &.inline {
+    font-weight: variables.$link-weight;
+  }
+
   // No need for an active state here
 }
 
@@ -151,8 +148,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-sm {
-  height: variables.$font-size-base * 1.75; // ensures consistent button height, matching the design, regardless of content
+  height: variables.$input-btn-height-sm; // ensures consistent button height, matching the design, regardless of content
   @include buttons.button-size(variables.$btn-padding-y-sm, variables.$btn-padding-x-sm, variables.$btn-font-size-sm, variables.$btn-line-height-sm, variables.$btn-border-radius);
+
+  // ensure icons automatically are sized properly in small buttons without needing custom sizing entered each time
+  svg {
+    height: 1.125rem !important;
+    width: 1.125rem !important;
+  }
 }
 
 

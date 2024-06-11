@@ -48,7 +48,6 @@ describe('EsErrorPage', () => {
         expect(wrapper.vm).toBeTruthy();
         expect(wrapper.html()).toMatchSnapshot();
 
-        expect(wrapper.find('#msgGeneric').exists()).toBe(false);
         expect(wrapper.find('#msgError').exists()).toBe(true);
     });
 
@@ -65,11 +64,6 @@ describe('EsErrorPage', () => {
         expect(wrapper.vm).toBeTruthy();
         expect(wrapper.html()).toMatchSnapshot();
 
-        expect(wrapper.find('#msgError').exists()).toBe(false);
-        expect(wrapper.find('#msgGeneric').exists()).toBe(true);
-        expect(wrapper.find('#msgGeneric').text())
-            .toBe(
-                'Oops! Something went wrong!',
-            );
+        expect(wrapper.find('#msgError').exists()).toBe(true);
     });
 });

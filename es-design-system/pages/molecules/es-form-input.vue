@@ -1,10 +1,12 @@
 <template>
     <div>
         <h1>
-            Input
+            Text input
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-input">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/form-input"
+                target="_blank">
                 bootstrap-vue form-input
             </b-link>
         </p>
@@ -17,7 +19,7 @@
             </b-link>
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Basic example
             </h2>
@@ -37,7 +39,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Required
             </h2>
@@ -58,7 +60,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Error state
             </h2>
@@ -82,7 +84,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Success state
             </h2>
@@ -106,7 +108,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Success state with message
             </h2>
@@ -133,7 +135,31 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
+            <h2>
+                Disabled state
+            </h2>
+            <b-row>
+                <b-col
+                    cols="12"
+                    md="6"
+                    lg="4">
+                    <es-form-input
+                        id="disabledExample"
+                        v-model="form.emailCorrect"
+                        disabled>
+                        <template #label>
+                            Email address
+                        </template>
+                        <template #errorMessage>
+                            Please enter a valid email address.
+                        </template>
+                    </es-form-input>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-500">
             <h2>
                 Placeholder
             </h2>
@@ -154,29 +180,33 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
-                Placeholder
+                Masked
             </h2>
+            <p>
+                This example uses an input mask to only allow entry of characters that match
+                the format "(XXX) XXX-XXXX".
+            </p>
             <b-row>
                 <b-col
                     cols="12"
                     md="6"
                     lg="4">
                     <es-form-input
-                        id="placeholderExample"
+                        id="maskedExample"
                         v-model="form.maskedPhoneNumber"
                         type="maskedTel"
                         placeholder="(XXX) XXX-XXXX">
                         <template #label>
-                            Masked phone number
+                            Phone number
                         </template>
                     </es-form-input>
                 </b-col>
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Hidden label
             </h2>
@@ -212,7 +242,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Prefix icon
             </h2>
@@ -241,7 +271,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Context message above the field
             </h2>
@@ -265,7 +295,7 @@
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
                 Context message below the field
             </h2>

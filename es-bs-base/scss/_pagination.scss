@@ -15,6 +15,7 @@
   padding: variables.$pagination-padding-y variables.$pagination-padding-x;
   margin-left: -(variables.$pagination-border-width);
   line-height: variables.$pagination-line-height;
+  font-weight: variables.$font-weight-semibold;
   color: variables.$pagination-color;
   text-decoration: if(variables.$link-decoration == none, null, none);
   background-color: variables.$pagination-bg;
@@ -23,9 +24,7 @@
   &:hover {
     z-index: 2;
     color: variables.$pagination-hover-color;
-    text-decoration: none;
-    background-color: variables.$pagination-hover-bg;
-    border-color: variables.$pagination-hover-border-color;
+    text-decoration: underline;
   }
 
   &:focus {
@@ -39,12 +38,12 @@
   &:first-child {
     .page-link {
       margin-left: 0;
-      @include border-radius.border-left-radius(variables.$border-radius);
+      @include border-radius.border-left-radius(variables.$pagination-border-radius);
     }
   }
   &:last-child {
     .page-link {
-      @include border-radius.border-right-radius(variables.$border-radius);
+      @include border-radius.border-right-radius(variables.$pagination-border-radius);
     }
   }
 
@@ -53,6 +52,7 @@
     color: variables.$pagination-active-color;
     background-color: variables.$pagination-active-bg;
     border-color: variables.$pagination-active-border-color;
+    pointer-events: none;
   }
 
   &.disabled .page-link {

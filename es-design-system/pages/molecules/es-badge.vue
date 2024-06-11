@@ -1,30 +1,42 @@
 <template>
     <div>
         <h1>
-            Badges
+            Badge
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/badge">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/badge"
+                target="_blank">
                 bootstrap-vue badge
             </b-link>
         </p>
-        <div class="my-450">
+        <div class="my-500">
             <es-badge>
                 Primary
             </es-badge>
-            <es-badge variant="success">
+            <es-badge
+                class="ml-50"
+                variant="success">
                 Success
             </es-badge>
-            <es-badge variant="danger">
-                Danger
-            </es-badge>
-            <es-badge variant="warning">
+            <es-badge
+                class="ml-50"
+                variant="warning">
                 Warning
             </es-badge>
-            <es-badge variant="info">
+            <es-badge
+                class="ml-50"
+                variant="danger">
+                Danger
+            </es-badge>
+            <es-badge
+                class="ml-50"
+                variant="info">
                 Info
             </es-badge>
-            <es-badge variant="dark">
+            <es-badge
+                class="ml-50"
+                variant="dark">
                 Dark
             </es-badge>
         </div>

@@ -3,7 +3,7 @@
         <b-row>
             <b-col>
                 <h1>
-                    Form with Field Validation
+                    Form with client-side validation
                 </h1>
                 <h2>
                     UX Guidelines
@@ -11,17 +11,19 @@
                 <p>
                     <ul>
                         <li>
-                            Validation should initially trigger <em>on blur</em>.<br>
-                            Subsequent validation should trigger <em>on input-change</em>.
+                            Validation should initially trigger <em>on blur</em>.
                         </li>
                         <li>
-                            Validation for password fields should always trigger <em>on input-change</em>
+                            Subsequent validation should trigger <em>on change</em>.
                         </li>
                         <li>
-                            In practice you'll likely also want to include form-level validation,
-                            and provide feedback from a server response. In this case see the
-                            <b-link :to="{ name: 'examples-form-validation___en' }">
-                                Form with (form level) Validation
+                            Validation for password fields should always trigger <em>on change</em>.
+                        </li>
+                        <li>
+                            You'll also want to provide feedback from a server response. For guidance on
+                            how to do this, see the
+                            <b-link to="/examples/form-validation">
+                                Form with server error
                             </b-link> example.
                         </li>
                     </ul>
@@ -111,7 +113,7 @@
                             Notes
                         </template>
                     </es-form-textarea>
-                    <div class="d-flex flex-grow-1 justify-content-end mt-100">
+                    <div class="d-flex flex-grow-1 justify-content-end mt-200">
                         <es-button
                             type="submit"
                             class="w-100 w-lg-auto"

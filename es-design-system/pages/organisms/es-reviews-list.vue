@@ -1,13 +1,9 @@
 <template>
     <div>
-        <div class="my-450">
-            <es-button
-                size="sm"
-                class="mb-100"
-                variant="dark"
-                @click="reviewsModalVisible = true">
-                View All Reviews
-            </es-button>
+        <h1>
+            Reviews list
+        </h1>
+        <b-container class="my-500">
             <es-review-modal
                 :reviews="reviews"
                 :avg-rating="3.5"
@@ -48,7 +44,19 @@
                         @reportReview="reportReview" />
                 </b-col>
             </b-row>
-        </div>
+
+            <b-row class="mt-100">
+                <b-col>
+                    <es-button
+                        size="sm"
+                        class="mb-100"
+                        variant="dark"
+                        @click="reviewsModalVisible = true">
+                        View All Reviews
+                    </es-button>
+                </b-col>
+            </b-row>
+        </b-container>
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-design-system/pages/organisms/es-review-list.vue" />

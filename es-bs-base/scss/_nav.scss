@@ -21,10 +21,6 @@
   padding: variables.$nav-link-padding-y variables.$nav-link-padding-x;
   text-decoration: if(variables.$link-decoration == none, null, none);
 
-  @include hover.hover-focus() {
-    text-decoration: none;
-  }
-
   // Disabled state lightens text
   &.disabled {
     color: variables.$nav-link-disabled-color;
@@ -158,6 +154,16 @@ $nav-hover-delay: 300ms;
   }
 }
 
+/* including footer styles in here so they get ripped by rip-the-nav */
+.es-footer {
+  .es-footer-logo {
+    svg {
+      height: 36px !important;
+      width: 160px !important;
+    }
+  }
+}
+
 .nav-es-container {
 
   .nav-es-global,
@@ -179,16 +185,30 @@ $nav-hover-delay: 300ms;
     color: variables.$body-color;
   }
 
-  // dropdown-menu items should be default size 14px
-  .dropdown-menu {
-    font-size: variables.$font-size-75;
-  }
-
   // All links and labels in the navigation should start at a font-weight-normal (weight 400)
   // TODO: This overrides styles for `eyebrow`
   a,
   label {
     font-weight: variables.$font-weight-normal;
+  }
+
+  .nav-es-logo-mobile svg,
+  .nav-es-logo-desktop-sticky svg {
+    height: 28px !important;
+    width: auto !important;
+  }
+
+  .nav-es-logo-mobile svg {
+    margin: 0 auto;
+  }
+
+  @include breakpoints.media-breakpoint-up(lg) {
+    .nav-es-logo-desktop {
+      svg {
+        height: 42px !important;
+        width: auto !important;
+      }
+    }
   }
 
   // Adjust default nav-link styling
@@ -197,12 +217,12 @@ $nav-hover-delay: 300ms;
     // stylelint-disable-next-line selector-max-class
     .nav-item.nav-link,
     .dropdown-item.nav-link {
-      color: variables.$gray-900;
+      color: variables.$navbar-light-color;
 
       // stylelint-disable-next-line selector-max-class
       &:hover {
-        font-weight: variables.$font-weight-semibold;
-        color: variables.$gray-900;
+        font-weight: variables.$font-weight-bold;
+        color: variables.$navbar-light-color;
         text-decoration: underline;
       }
     }
@@ -229,24 +249,26 @@ $nav-hover-delay: 300ms;
     background: none;
   }
 
-  .dropdown-cta-right {
-    line-height: 1.3;
-
-    .cta-link {
-      font-size: variables.$font-size-75;
-      color: variables.$gray-900;
-      text-decoration: none;
-
-      &:hover {
-        color: variables.$gray-1200;
-      }
-    }
-  }
-
   .featured-article-image {
     // override local style attribute on image
     // stylelint-disable-next-line declaration-no-important
     height: auto !important;
+  }
+
+  // cta callout with image
+  .dropdown-cta-right .cta-link:hover {
+    .link-name {
+      text-decoration: underline;
+    }
+
+    .link-subheading {
+      // stylelint-disable-next-line declaration-no-important
+      text-decoration: none !important;
+    }
+  }
+
+  .account-icon {
+    fill: variables.$blue-900;
   }
 
   // On Desktop a hovers display the dropdowns
@@ -291,15 +313,6 @@ $nav-hover-delay: 300ms;
       padding-bottom: 0;
     }
 
-    // eyebrow copied from es-ds class, but override for letter spacing and only display on lg+ viewports
-    .eyebrow-lg {
-      font-size: variables.$font-size-100;
-      font-weight: variables.$font-weight-bolder;
-      color: variables.$gray;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
     // line below topic header in desktop top-level flyout
     .topic-menu-header::after {
       position: absolute;
@@ -309,7 +322,7 @@ $nav-hover-delay: 300ms;
       height: 1px;
       margin: 0; // override .dropdown-toggle::after style
       content: "";
-      background-color: variables.$gray-400;
+      background-color: variables.$gray-100;
       border-style: none;  // override .dropdown-toggle::after style
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 1px;
@@ -322,11 +335,6 @@ $nav-hover-delay: 300ms;
         cursor: pointer;
       }
 
-      .top-header-icon {
-        // stylelint-disable-next-line property-disallowed-list
-        transition: transform 0s;
-        transform: rotate(0deg);
-      }
       .dropdown-menu {
         // prepare menu for delayed hover showing
         display: block;
@@ -340,10 +348,19 @@ $nav-hover-delay: 300ms;
       }
     }
 
-    .product-menu-header-link:hover {
-      // fix for text-gray utility class not being !important
-      color: variables.$gray;
+    .product-menu .nav-item:last-child .product-menu-header-link {
+      /* stylelint-disable-next-line declaration-no-important */
+      padding-right: 2em !important;
     }
+
+    .product-menu-header-link {
+      color: variables.$blue-800;
+    }
+
+    .product-menu-link {
+      font-size: variables.$font-size-sm;
+    }
+
     .product-menu-flyout {
       left: 50%;
       width: 310px; // approx width of four columns at 992px breakpoint / 960px max width
@@ -368,6 +385,11 @@ $nav-hover-delay: 300ms;
       transform: translateX(25%);
     }
 
+    /* stylelint-disable-next-line selector-class-pattern */
+    .account-menu.loggedIn {
+      font-size: variables.$font-size-75;
+    }
+
     // Show dropdown and hover colors on nav-item hover in desktop view
     // Show top headers up chevron icon on nav-item hover
     .nav-item:hover {
@@ -388,27 +410,66 @@ $nav-hover-delay: 300ms;
         z-index: 1001;
         height: 2px;
         content: "";
-        background: variables.$gray;
+        background: variables.$orange-800;
         border-style: none;
       }
+    }
 
-      .top-header-icon {
-        transition-delay: $nav-hover-delay;
-        transform: rotate(180deg);
+    // primary nav buttons desktop
+    .nav-item.top-header {
+      padding: 1em 0 2em;
+      user-select: none;
+
+      /* stylelint-disable-next-line selector-max-class */
+      .top-header-inner > .nav-link {
+        line-height: variables.$line-height-75;
+        color: variables.$blue-900;
+        text-decoration: none;
+        background: variables.$gray-50;
+        @include border-radius.border-radius(8px);
+      }
+
+      &:hover {
+        /* stylelint-disable-next-line selector-max-class */
+        .top-header-inner > .nav-link {
+          background: variables.$blue-50;
+        }
       }
     }
 
-    .nav-item.top-header {
-      user-select: none;
+    .navbar-light .navbar-nav {
+      // stylelint-disable-next-line selector-max-class
+      .nav-item.nav-link {
+        // stylelint-disable-next-line selector-max-class
+        &:hover {
+          font-weight: variables.$font-weight-normal;
+        }
+      }
     }
 
-    // Top header hover should be gray
-    .nav-item.top-header:hover {
-      background: variables.$gray-150;
+    // stylelint-disable-next-line selector-max-class
+    .topic-group {
+      .eyebrow {
+        color: variables.$gray-900;
+      }
 
-      // Top header menu background should be gray
-      .dropdown-menu {
-        background: variables.$gray-150;
+      .nav-link:has(.eyebrow) {
+        /* stylelint-disable-next-line declaration-no-important */
+        color: variables.$blue-600 !important;
+
+        // stylelint-disable-next-line selector-max-class
+        &:hover {
+          /* stylelint-disable-next-line declaration-no-important */
+          color: variables.$blue-600 !important;
+        }
+
+        .eyebrow {
+          color: variables.$blue-600;
+        }
+      }
+
+      .dropdown-item {
+        font-size: variables.$font-size-sm;
       }
     }
 
@@ -470,6 +531,44 @@ $nav-hover-delay: 300ms;
       .btn-lg {
         width: 250px;
       }
+    }
+
+    // menu item with eyebrow heading
+    .nav-link.topic-menu-header {
+      .link-subheading {
+        color: variables.$gray-900;
+      }
+
+      &:hover {
+        // stylelint-disable-next-line declaration-no-important
+        text-decoration: none !important;
+
+        .link-name {
+          text-decoration: underline;
+        }
+
+        .link-subheading {
+          font-weight: variables.$font-weight-normal;
+          color: variables.$gray-900;
+        }
+      }
+    }
+
+    // nav-link styling for desktop account menu
+    .navbar-nav {
+      /* stylelint-disable-next-line selector-class-pattern */
+      .loggedIn {
+        /* stylelint-disable-next-line selector-max-class */
+        .dropdown-item.nav-link:hover {
+          font-weight: variables.$font-weight-normal;
+        }
+      }
+    }
+
+    // override eyebrow bottom margin for desktop primary menu items
+    .dropdown-menu-primary .eyebrow.link-name {
+      /* stylelint-disable-next-line declaration-no-important */
+      margin-bottom: 0 !important;
     }
   }
 
@@ -571,6 +670,49 @@ $nav-hover-delay: 300ms;
       cursor: pointer;
     }
 
+    // primary nav buttons mobile
+    .nav-item.top-header {
+      margin-bottom: variables.$navbar-padding-y;
+      background: variables.$gray-50;
+      @include border-radius.border-radius(3px);
+
+      /* stylelint-disable-next-line selector-max-class */
+      .top-header-inner > .nav-link {
+        color: variables.$blue-900;
+
+        /* stylelint-disable-next-line selector-max-class */
+        &:hover {
+          color: variables.$blue-900;
+        }
+      }
+    }
+
+    .nav-item.top-header .top-header-inner {
+      /* stylelint-disable-next-line selector-max-class */
+      > .dropdown-label {
+        color: variables.$blue-900;
+
+        /* stylelint-disable-next-line selector-max-class */
+        &:hover {
+          color: variables.$blue-900;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .nav-item.dropdown > .dropdown-label:hover,
+    .topic-group > .dropdown-label:hover {
+      text-decoration: underline;
+    }
+
+    .topic-group .dropdown-item {
+      font-weight: variables.$font-weight-bold;
+
+      &:hover {
+        font-weight: variables.$font-weight-bold;
+      }
+    }
+
     // allow longer items (e.g. news article titles) to wrap on mobile
     .dropdown-item {
       white-space: normal;
@@ -586,15 +728,31 @@ $nav-hover-delay: 300ms;
       display: flex;
     }
 
+    .product-menu .expand-icon,
+    .topic-group .expand-icon {
+      fill: variables.$gray-400;
+    }
+
+    .submenu .expand-icon,
+    .product-menu-flyout .expand-icon,
+    .topic-menu-back .expand-icon {
+      fill: variables.$blue-900;
+    }
+
+    .product-menu-link {
+      font-weight: variables.$font-weight-bold;
+    }
+
     // Style rows in hamburger, add bottom border
     .nav-item {
       align-items: center;
       height: 64px;
       margin: 0 15px;
     }
+
     .nav-item-border-mobile {
       // stylelint-disable-next-line declaration-no-important
-      border-bottom: 1px solid variables.$gray-300 !important;
+      border-bottom: 1px solid variables.$gray-100 !important;
     }
 
     // Override default margin to allow centered titles
@@ -664,7 +822,6 @@ $nav-hover-delay: 300ms;
       height: 64px;
       max-height: 64px;
       font-weight: bolder;
-      border-bottom: 1px solid variables.$gray-300;
     }
 
     // This is a generic placeholder button for open/close/back in the mobile menu
@@ -677,6 +834,26 @@ $nav-hover-delay: 300ms;
     .product-menu-flyout-see-all {
       text-decoration: underline;
       letter-spacing: 0.08em;
+    }
+
+    // menu item with eyebrow heading
+    .nav-item.nav-item-menu {
+      height: 76px;
+      margin-bottom: 0.5em;
+      text-decoration: none;
+
+      &:hover {
+        .link-name {
+          text-decoration: underline;
+        }
+
+        .link-subheading {
+          font-weight: variables.$font-weight-normal;
+          color: variables.$gray-900;
+          // stylelint-disable-next-line declaration-no-important
+          text-decoration: none !important;
+        }
+      }
     }
   }
 }

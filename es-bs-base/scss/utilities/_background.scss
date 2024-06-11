@@ -50,11 +50,43 @@
   @include bg-colors($color, $value);
 }
 
-// Add orange bg colors classes
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+// NEW VIZ ID 2024
+
+// neutrals
+@each $color, $value in variables.$neutrals {
+  @include bg-colors($color, $value);
+}
+
+// blues
+@each $color, $value in variables.$blues {
+  @include bg-colors($color, $value);
+}
+
+// oranges
 @each $color, $value in variables.$oranges {
   @include bg-colors($color, $value);
 }
 
-.bg-transparent {
-  background-color: transparent !important;
+// success colors
+@each $color, $value in variables.$success-colors {
+  @include bg-colors($color, $value);
+}
+
+// warning colors
+@each $color, $value in variables.$warning-colors {
+  @include bg-colors($color, $value);
+}
+
+// error colors
+@each $color, $value in variables.$error-colors {
+  @include bg-colors($color, $value);
+}
+
+// core colors
+@each $color, $value in variables.$core-colors {
+  @include bg-colors($color, $value);
 }

@@ -1,10 +1,12 @@
 <template>
     <div>
         <h1>
-            Radio Cards
+            Radio cards
         </h1>
-        <p class="mb-200 mb-lg-450">
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-radio#button-style-radios">
+        <p class="mb-200 mb-lg-500">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/form-radio#button-style-radios"
+                target="_blank">
                 bootstrap-vue form-radio
             </b-link>
         </p>
@@ -13,10 +15,10 @@
             Default
         </h2>
         <p>
-            Responsive font sizing is applied by default; the label matches Heading 1 and the card content
-            matches Heading 2. This means the text will be smaller on mobile and larger on desktop.
+            Responsive font sizing is applied by default. This means the text will be smaller on
+            mobile and larger on desktop.
         </p>
-        <div class="border mb-200 mb-lg-450 p-100 p-lg-200 rounded">
+        <es-card class="mb-200 mb-lg-500">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.propertyType"
@@ -33,7 +35,7 @@
                 <span class="font-weight-bold">Selection:</span>
                 {{ form.propertyType || '[none]' }}
             </p>
-        </div>
+        </es-card>
 
         <h2>
             Custom card styling
@@ -42,10 +44,11 @@
             This example demonstrates customizing the content, spacing, and typography of the cards,
             as well as changing the layout based on the breakpoint.
         </p>
-        <div class="border mb-450 p-100 p-lg-200 rounded">
+        <es-card class="mb-200 mb-lg-500">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     v-model="form.storageReason"
+                    has-icon
                     label="What’s the main reason you want a battery?">
                     <b-row>
                         <b-col
@@ -54,7 +57,7 @@
                             cols="12"
                             lg="4">
                             <es-form-radio-card
-                                class="align-items-center d-block d-lg-flex flex-column font-size-base font-weight-normal line-height-base p-100 p-lg-200 text-lg-center"
+                                class="align-items-center d-block d-lg-flex flex-column font-size-base font-weight-normal line-height-base pt-lg-200 px-lg-200 text-lg-center"
                                 :value="option.value">
                                 <component
                                     :is="option.icon"
@@ -79,7 +82,7 @@
                 <span class="font-weight-bold">Selection:</span>
                 {{ form.storageReason || '[none]' }}
             </p>
-        </div>
+        </es-card>
 
         <h2>
             Detached label
@@ -90,7 +93,7 @@
             We do still need to pass the label text into the radio cards component for accessibility
             purposes, but hide it visually by passing in a prop.
         </p>
-        <div class="border mb-450 p-100 p-lg-200 rounded">
+        <div class="border mb-500 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
                 <b-row>
                     <b-col
@@ -123,7 +126,7 @@
             </p>
         </div>
 
-        <h2 class="mt-450">
+        <h2 class="mt-500">
             EsFormRadioCards props
         </h2>
         <b-table
@@ -131,7 +134,7 @@
             :items="radioCardsPropDocumentation"
             striped />
 
-        <h2 class="mt-450">
+        <h2 class="mt-500">
             EsFormRadioCard props
         </h2>
         <b-table
@@ -195,6 +198,13 @@ export default {
                 'defaultValue',
             ],
             radioCardsPropDocumentation: [
+                {
+                    name: 'hasIcon',
+                    description: `
+                        If true, moves the radio button circle to the bottom center of the radio card on desktop.
+                    `,
+                    defaultValue: 'false',
+                },
                 {
                     name: 'label',
                     description: `

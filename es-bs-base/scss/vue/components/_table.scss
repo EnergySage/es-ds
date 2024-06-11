@@ -260,12 +260,8 @@
         > tbody,
         > tfoot {
           > tr > .table-b-table-default:not([role=cell]) {
-            color: v.$black;
-            background-color: v.$gray-200;
-
-            @include breakpoints.media-breakpoint-up(md) {
-                color: v.$gray-700;
-            }
+            color: v.$gray-900;
+            background-color: v.$soft-blue;
           }
         }
       }
@@ -498,6 +494,8 @@ $bv-escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23"));
 }
 
 .table__data-table {
+  border-radius: v.$table-border-radius;
+
   th {
       font-weight: v.$font-weight-bold;
   }
@@ -517,15 +515,11 @@ $bv-escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23"));
 
 
   thead th {
-      background-color: v.$gray-200;
+      background-color: v.$soft-blue;
       border-bottom: 0;
       border-top: 0;
-      color: v.$black;
+      color: v.$gray-900;
       padding-block: map.get(v.$spacers, 50);
-
-      @include breakpoints.media-breakpoint-up(md) {
-          color: v.$gray-700;
-      }
   }
 
   tbody tr {
@@ -545,10 +539,10 @@ $bv-escaped-characters: (("<", "%3c"), (">", "%3e"), ("#", "%23"));
   }
 
   tbody tr:nth-of-type(even) {
-      background-color: v.$gray-150;
+      background-color: v.$gray-50;
 
       .table-b-table-default {
-          background-color: v.$gray-150;
+          background-color: v.$gray-50;
       }
   }
 }

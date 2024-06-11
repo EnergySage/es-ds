@@ -1,5 +1,5 @@
 <template>
-    <b-input-group class="code-holder">
+    <b-input-group class="verification-code-holder justify-content-center">
         <b-form-input
             v-for="(n, index) in code"
             :id="`codeInput_${index}`"
@@ -10,11 +10,7 @@
             :name="'codeInput_' + index"
             :type="type"
             :pattern="pattern"
-            class="code-input text-center"
-            :class="{
-                'lg': size === 'lg',
-                'md': size === 'md',
-            }"
+            class="verification-code-input text-center font-size-300 font-size-lg-500 mr-50 mr-lg-100 font-weight-bold p-100 p-lg-150"
             maxlength="1"
             autocomplete="off"
             aria-autocomplete="none"
@@ -80,15 +76,6 @@ export default {
             default: function emptyArray() {
                 return Array(this.charCount).fill('');
             },
-        },
-        /**
-         * Size of the input fields
-         */
-        size: {
-            type: String,
-            required: false,
-            default: 'lg',
-            validator: (val) => ['lg', 'md'].includes(val),
         },
     },
     data() {
@@ -237,21 +224,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss">
-.code-holder {
-    .code-input {
-        appearance: textfield;
-
-        &.lg {
-            font-size: 3rem;
-            height: 6rem;
-        }
-
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-            appearance: none;
-        }
-    }
-}
-</style>

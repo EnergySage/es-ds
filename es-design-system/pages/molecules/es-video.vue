@@ -6,16 +6,32 @@
         <p>
             Shows a YouTube video when the provided cover image is clicked.
         </p>
-        <div>
-            <b-row class="justify-content-center my-200 my-lg-450">
+
+        <div class="my-500">
+            <b-row>
                 <b-col md="8">
                     <es-video
-                        alt-text="Community solar: Everything you want to know before you join"
-                        cover-image-url="https://a-us.storyblok.com/f/1006156/1920x1080/d391440b19/energysage_thumbnail.png"
-                        embed-url="https://www.youtube.com/embed/hgmZG3GLLNg" />
+                        :alt-text="`
+                            ME from EnergySage talking to you about how to decide if solar panels
+                            are worth it for your needs
+                        `"
+                        cover-image-url="https://a-us.storyblok.com/f/1006159/1280x720/2cb0626421/are-solar-panels-worth-it_.jpg/m/810x0/filters:format(jpg):quality(70)"
+                        embed-url="https://www.youtube.com/embed/srBDwFZqOi0?si=ibiP1eg1wBdQcEFm" />
                 </b-col>
             </b-row>
         </div>
+
+        <div class="my-500">
+            <b-row>
+                <b-col md="8">
+                    <es-video
+                        alt-text="Heat Pump FAQs"
+                        cover-image-url="https://a-us.storyblok.com/f/1006159/1280x720/72788401c8/heat-pump-faqs-2024.jpg/m/810x0/filters:format(jpg):quality(70)"
+                        embed-url="https://www.youtube.com/embed/YHOIoxkX2kI" />
+                </b-col>
+            </b-row>
+        </div>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsVideo.vue"

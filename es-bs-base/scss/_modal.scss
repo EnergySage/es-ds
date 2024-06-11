@@ -181,9 +181,18 @@
   flex-wrap: wrap;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: variables.$modal-inner-padding - variables.$modal-footer-margin-between * .5;
-  border-top: variables.$modal-footer-border-width solid variables.$modal-footer-border-color;
+  padding: variables.$modal-footer-padding-top variables.$modal-footer-padding-x variables.$modal-footer-padding-bottom;
+  position: relative;
   @include border-radius.border-bottom-radius(variables.$modal-content-inner-border-radius);
+
+  &::before {
+    border-top: variables.$modal-footer-border-width solid variables.$modal-footer-border-color;
+    content: '';
+    left: variables.$modal-footer-padding-x;
+    position: absolute;
+    right: variables.$modal-footer-padding-x;
+    top: variables.$modal-footer-padding-bottom;
+  }
 
   // Place margin between footer elements
   // This solution is far from ideal because of the universal selector usage,
@@ -228,7 +237,7 @@
   }
 
   .modal-content {
-    @include box-shadow.box-shadow(variables.$modal-content-box-shadow-sm-up);
+    box-shadow: variables.$modal-content-box-shadow-sm-up;
   }
 
   .modal-sm { max-width: variables.$modal-sm; }

@@ -92,7 +92,7 @@ export default {
 .progress-circle {
     // position: relative;
     fill: transparent;
-    stroke: variables.$primary;
+    stroke: variables.$blue-400;
 }
 
 </style>

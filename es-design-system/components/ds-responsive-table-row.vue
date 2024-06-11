@@ -1,5 +1,10 @@
 <template>
-    <div class="responsive-table-row">
+    <div
+        class="responsive-table-row"
+        :class="{
+            'vertically-center-content': verticallyCenterContent,
+            'zebra': zebraStripes
+        }">
         <slot />
     </div>
 </template>
@@ -7,6 +12,16 @@
 <script lang="js">
 export default {
     name: 'DsResponsiveTableRow',
+    props: {
+        verticallyCenterContent: {
+            type: Boolean,
+            default: false,
+        },
+        zebraStripes: {
+            type: Boolean,
+            default: false,
+        },
+    },
 };
 </script>
 
@@ -18,8 +33,18 @@ export default {
     border-bottom: variables.$border-width solid variables.$border-color;
     padding: 0.5rem 0.5rem 0;
 
-    &:nth-child(even) {
-        background-color: variables.$gray-200;
+    &.vertically-center-content ::v-deep dd,
+    &.vertically-center-content ::v-deep dt {
+        align-items: center;
+        display: flex;
+    }
+
+    &.zebra:nth-child(even) {
+        background-color: variables.$gray-50;
+    }
+
+    &:last-child {
+        border-bottom-style: none;
     }
 }
 
@@ -30,7 +55,7 @@ export default {
         display: flex;
         padding: 0;
 
-        &:nth-child(even) {
+        &.zebra:nth-child(even) {
             background-color: transparent;
         }
 
@@ -43,7 +68,8 @@ export default {
             ::v-deep dt {
                 border-bottom: variables.$border-width solid variables.$border-color;
                 border-top: variables.$border-width solid variables.$border-color;
-                padding: 0.5rem 0;
+                padding-bottom: 0.5rem;
+                padding-top: 0.5rem;
             }
 
             ::v-deep dd {
@@ -61,11 +87,16 @@ export default {
             }
         }
 
-        /* zebra-stripe every odd row */
-        &:nth-child(odd) {
+        /* zebra-stripe every odd row, if enabled */
+        &.zebra:nth-child(odd) {
             ::v-deep dd {
-                background-color: variables.$gray-200;
+                background-color: variables.$gray-50;
             }
+        }
+
+        /* if zebra striping disabled, add a border below each row */
+        &:not(.zebra):not(:last-child) ::v-deep .responsive-table-column {
+            border-bottom: variables.$border-width solid variables.$border-color;
         }
     }
 }

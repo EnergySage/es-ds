@@ -1,7 +1,7 @@
 <template>
     <div
         role="presentation"
-        class="es-file-upload align-items-center rounded d-flex flex-column justify-content-center p-2"
+        class="es-file-upload align-items-center rounded-sm d-flex flex-column justify-content-center p-150"
         :class="{ 'active': active }"
         @dragenter.stop.prevent="active = true"
         @dragover.stop.prevent="active = true"
@@ -14,27 +14,39 @@
         <div
             class="d-flex justify-content-center flex-column"
             :class="{ 'flex-md-row': collapsed }">
-            <div class="align-self-center p-2">
+            <div class="align-self-center">
                 <icon-upload
-                    class="d-none d-md-inline-block mb-4"
-                    height="48px"
-                    width="48px" />
+                    class="d-none d-md-inline-block"
+                    :class="{ 'mb-200': collapsed }"
+                    height="32px"
+                    width="32px" />
+                <icon-upload
+                    class="d-md-none"
+                    height="24px"
+                    width="24px" />
             </div>
-            <div class="align-self-center p-2 text-center">
+            <div
+                class="align-self-center text-center"
+                :class="{ 'px-100': collapsed }">
                 <slot name="cta" />
             </div>
-            <div class="align-self-center p-2">
+            <div class="align-self-center">
                 <es-button
-                    class="w-100 w-md-auto mb-2 mb-md-4"
-                    variant="secondary"
-                    outline
+                    class="d-none d-md-inline w-100 w-md-auto"
+                    :class="{ 'mb-200': collapsed }"
                     @click="openFilePicker">
                     <slot name="buttonText">
-                        <p class="d-none d-md-inline m-0">
+                        <p class="m-0">
                             Browse files
                         </p>
-                        <p class="d-md-none m-0">
-                            Choose file
+                    </slot>
+                </es-button>
+                <es-button
+                    class="d-md-none w-100"
+                    @click="openFilePicker">
+                    <slot name="buttonText">
+                        <p class="m-0">
+                            Choose files
                         </p>
                     </slot>
                 </es-button>
@@ -318,22 +330,3 @@ export default {
     },
 };
 </script>
-
-<style lang="scss" scoped>
-@use "~@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
-@use "~@energysage/es-bs-base/scss/variables" as variables;
-
-.es-file-upload {
-    background-color: variables.$gray-200;
-    border: variables.$btn-border-width dotted variables.$border-color;
-    @include breakpoints.media-breakpoint-down(sm) {
-        background-color: variables.$white;
-        border: variables.$btn-border-width solid variables.$border-color;
-    }
-
-    &.active {
-        border: variables.$btn-border-width dotted variables.$cyan-500;
-    }
-}
-
-</style>

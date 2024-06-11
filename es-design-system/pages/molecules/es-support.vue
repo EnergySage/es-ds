@@ -3,31 +3,24 @@
         <h1>
             Support
         </h1>
-        <div class="my-450">
+        <div class="my-500">
             <h2>
-                Default(Warm)
+                Default
             </h2>
             <es-support
                 :link="link"
                 :src="placeholderPersonImage" />
-            <h2 class="mt-450">
-                Cool Variant
-            </h2>
-            <es-support
-                variant="cool"
-                :link="link"
-                :src="placeholderPersonImage" />
-            <h2 class="mt-450">
-                Custom Copy
+            <h2 class="mt-500">
+                Custom copy
             </h2>
             <es-support
                 :link="link"
                 :src="placeholderPersonImage">
                 <template #title>
-                    Custom title
+                    Need help with your quotes?
                 </template>
                 <template #linkCopy>
-                    Link Copy
+                    Schedule a free call with Jessica, your EnergySage specialist.
                 </template>
             </es-support>
         </div>
@@ -40,8 +33,6 @@
 </template>
 
 <script>
-import placeholderPersonImage from '@/assets/placeholder/icon-person.svg';
-
 export default {
     name: 'EsSupportDocs',
     data() {
@@ -49,7 +40,7 @@ export default {
             link: 'https://www.energysage.com',
             compCode: '',
             docCode: '',
-            placeholderPersonImage,
+            placeholderPersonImage: 'https://a-us.storyblok.com/f/1006159/1200x1200/47efaeb0b3/jessica.png/m/280x280/filters:quality(100)',
         };
     },
     async created() {

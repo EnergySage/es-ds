@@ -2,127 +2,137 @@
     <ul class="list-unstyled pl-100">
         <li>
             <ds-link to="/molecules/es-accordion">
-                EsAccordion
+                Accordion
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-badge">
-                EsBadge
+                Badge
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-breadcrumbs">
-                EsBreadcrumbs
+                Breadcrumbs
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-button">
-                EsButton
+                Button
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-card">
-                EsCard
+                Card
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/checkbox">
+                Checkbox
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-collapse">
-                EsCollapse
+                Collapse
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-data-table">
-                EsDataTable
+                Data table
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-file-input">
-                EsFileInput
-            </ds-link>
-        </li>
-        <li>
-            <ds-link to="/molecules/es-form-input">
-                EsFormInput
+                File input
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-form-msg">
-                EsFormMsg
-            </ds-link>
-        </li>
-        <li>
-            <ds-link to="/molecules/es-form-radio-cards">
-                EsFormRadioCards
-            </ds-link>
-        </li>
-        <li>
-            <ds-link to="/molecules/es-form-textarea">
-                EsFormTextarea
+                Form message
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-horizontal-list">
-                EsHorizontalList
+                Horizontal list
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-modal">
-                EsModal
+                Modal
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-pagination">
-                EsPagination
+                Pagination
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-popover">
-                EsPopover
+                Popover
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-progress">
-                EsProgress
+                Progress
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-progress-circle">
-                EsProgressCircle
+                Progress circle
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-rating">
-                EsRating
+                Rating
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/radio-button">
+                Radio button
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/es-form-radio-cards">
+                Radio cards
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-slider">
-                EsSlider
+                Slider
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-support">
-                EsSupport
+                Support
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-tabs">
-                EsTabs
+                Tabs
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/es-form-textarea">
+                Textarea
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/es-form-input">
+                Text input
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-verification-code">
-                EsVerificationCode
+                Verification code
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-video">
-                EsVideo
+                Video
             </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/es-view-more">
-                EsViewMore
+                View more
             </ds-link>
         </li>
     </ul>

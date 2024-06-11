@@ -3,7 +3,7 @@
         <div>
             <b-col>
                 <h1>
-                    File Upload
+                    File upload
                 </h1>
                 <h2>
                     Comprised of...
@@ -37,7 +37,7 @@
                 </p>
             </div>
             <es-file-input
-                class="mb-450"
+                class="mb-500"
                 :upload-urls="uploadUrls"
                 :max-file-size-mb="maxFileSizeMb"
                 :file-types="fileTypes"
@@ -50,19 +50,19 @@
                 @fileDataRead="fileDataRead"
                 @uploadSuccess="uploadSuccess">
                 <template #cta>
-                    <h2 class="d-none d-md-inline-block mb-4 text-center">
+                    <h2 class="d-none d-md-inline-block font-size-500 text-center my-200">
                         Drag and drop your files or
                     </h2>
-                    <p class="d-inline-block d-md-none">
+                    <p class="d-inline-block d-md-none my-200">
                         <b>Don't forget:</b> Make sure to upload an image of both sides of your bill.
                     </p>
                 </template>
                 <template #helpText>
-                    <p class="d-none d-md-inline-block">
+                    <p class="d-none d-md-inline-block mb-0 mt-200">
                         Please upload your file as a PDF or JPG.
                     </p>
-                    <p class="d-inline-block d-md-none mb-0">
-                        File types: PDF or JPG
+                    <p class="d-inline-block d-md-none mb-0 mt-200 font-size-sm">
+                        Please upload your file as a PDF or JPG.
                     </p>
                 </template>
             </es-file-input>
