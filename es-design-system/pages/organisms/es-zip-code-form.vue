@@ -63,28 +63,6 @@
         </div>
 
         <div class="mb-450">
-            <h2>Reactive pre-populate zipcode example with delay</h2>
-            <p class="mb-200">
-                Same as above, except the zip code form can accept change in initial zipcode value, facilitating
-                async fetching of zipcodes from api calls.
-            </p>
-            <b-row class="justify-content-center">
-                <b-col
-                    sm="10"
-                    md="8">
-                    <es-zip-code-form
-                        input-id="prepopulate-hero-example"
-                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
-                        stack-until="lg"
-                        :zip-code-initial-value="zipCode"
-                        url="https://www.energysage.com/market/start/">
-                        <template #buttonText> See local offers </template>
-                    </es-zip-code-form>
-                </b-col>
-            </b-row>
-        </div>
-
-        <div class="mb-450">
             <h2>Dark responsive example</h2>
             <p class="mb-200">
                 Same as above, except the zip code form is inside a container with a dark background and the
@@ -358,7 +336,6 @@ export default {
                 md: ['4', '3', '5'],
                 lg: ['3', '4', '5'],
             },
-            zipCode: '',
         };
     },
     async created() {
@@ -374,22 +351,6 @@ export default {
             this.compCode = this.$prism.normalizeCode(compSource.default);
             this.$prism.highlight(this);
         }
-    },
-    mounted() {
-        window.addEventListener('load', () => {
-            this.initializeZipCode();
-        });
-    },
-    methods: {
-        async initializeZipCode() {
-            await new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve();
-                }, 2000);
-            });
-            // Update zip code after delay
-            this.zipCode = '54321';
-        },
     },
 };
 </script>
