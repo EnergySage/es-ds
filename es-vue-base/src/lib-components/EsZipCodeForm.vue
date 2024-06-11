@@ -169,11 +169,6 @@ export default {
             zipCode: this.zipCodeInitialValue,
         };
     },
-    watch: {
-        zipCodeInitialValue(newVal) {
-            this.zipCode = newVal;
-        },
-    },
     computed: {
         stackBreak() {
             let { stackUntil } = this;
@@ -181,6 +176,11 @@ export default {
                 stackUntil = '';
             }
             return stackUntil ? `${stackUntil}-` : '';
+        },
+    },
+    watch: {
+        zipCodeInitialValue(newVal) {
+            this.zipCode = newVal;
         },
     },
     methods: {
