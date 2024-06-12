@@ -31,17 +31,16 @@
         <template #default>
             <div class="d-flex">
                 <slot />
-                <div v-if="!hasTitle">
-                    <es-button
-                        inline
-                        variant="link"
-                        class="es-popover-close p-0 pl-50"
-                        @click="onClose">
-                        <XIcon
-                            height="20px"
-                            width="20px" />
-                    </es-button>
-                </div>
+                <es-button
+                    v-if="!hasTitle"
+                    inline
+                    variant="link"
+                    class="es-popover-close p-0 pl-50"
+                    @click="onClose">
+                    <XIcon
+                        height="20px"
+                        width="20px" />
+                </es-button>
             </div>
         </template>
     </b-popover>
