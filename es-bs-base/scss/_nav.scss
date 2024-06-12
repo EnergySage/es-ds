@@ -67,7 +67,6 @@
   }
 }
 
-
 //
 // Pills
 //
@@ -83,7 +82,6 @@
     background-color: variables.$nav-pills-link-active-bg;
   }
 }
-
 
 //
 // Justified variants
@@ -105,7 +103,6 @@
     text-align: center;
   }
 }
-
 
 // Tabbable tabs
 //
@@ -140,7 +137,7 @@ $nav-hover-delay: 300ms;
   height: 0;
   pointer-events: none;
   visibility: hidden;
-  background: rgba(64, 64, 64, .45);
+  background: rgba(64, 64, 64, 0.45);
   opacity: 0;
   // stylelint-disable-next-line property-disallowed-list
   transition: height 0s, opacity 0s, visibility 0s;
@@ -158,14 +155,13 @@ $nav-hover-delay: 300ms;
 .es-footer {
   .es-footer-logo {
     svg {
-      height: 36px !important;
       width: 160px !important;
+      height: 36px !important;
     }
   }
 }
 
 .nav-es-container {
-
   .nav-es-global,
   .nav-es-sticky {
     // default should be size 14px according to figma
@@ -194,8 +190,8 @@ $nav-hover-delay: 300ms;
 
   .nav-es-logo-mobile svg,
   .nav-es-logo-desktop-sticky svg {
-    height: 28px !important;
     width: auto !important;
+    height: 28px !important;
   }
 
   .nav-es-logo-mobile svg {
@@ -205,8 +201,8 @@ $nav-hover-delay: 300ms;
   @include breakpoints.media-breakpoint-up(lg) {
     .nav-es-logo-desktop {
       svg {
-        height: 42px !important;
         width: auto !important;
+        height: 42px !important;
       }
     }
   }
@@ -323,7 +319,7 @@ $nav-hover-delay: 300ms;
       margin: 0; // override .dropdown-toggle::after style
       content: "";
       background-color: variables.$gray-100;
-      border-style: none;  // override .dropdown-toggle::after style
+      border-style: none; // override .dropdown-toggle::after style
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 1px;
     }
@@ -574,7 +570,7 @@ $nav-hover-delay: 300ms;
 
   @include breakpoints.media-breakpoint-up(xl) {
     .product-menu-flyout {
-      width: 370px;  // approx width of four columns at 1200px breakpoint / 1140px max width
+      width: 370px; // approx width of four columns at 1200px breakpoint / 1140px max width
     }
     // stylelint-disable-next-line selector-class-pattern
     .product-menu-flyout--large {
