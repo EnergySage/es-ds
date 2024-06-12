@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2024-06-12
+
+### Changed
+
+- Removed duplicate "News" link from `EsNavBar`
+
 ## [2.0.0] - 2024-06-11
 
 ### Added
@@ -1015,6 +1021,7 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[2.0.1]: https://github.com/EnergySage/es-ds/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/EnergySage/es-ds/compare/v1.3.9...v2.0.0
 [1.3.9]: https://github.com/EnergySage/es-ds/compare/v1.3.8...v1.3.9
 [1.3.8]: https://github.com/EnergySage/es-ds/compare/v1.3.7...v1.3.8
