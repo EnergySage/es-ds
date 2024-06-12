@@ -705,6 +705,16 @@ $nav-hover-delay: 300ms;
       text-decoration: underline;
     }
 
+    // mobile heading link style
+    .topic-group .nav-item .nav-link {
+      color: variables.$link-color;
+
+      &:hover {
+        color: variables.$link-color;
+        text-decoration: underline;
+      }
+    }
+
     .topic-group .dropdown-item {
       font-weight: variables.$font-weight-bold;
 
