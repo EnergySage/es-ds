@@ -70,7 +70,7 @@ export default ({
             // "&cc_load_policy=1&cc_lang_pref=en" turns closed captions on by default
             // https://support.google.com/youtube/answer/171780?hl=en#zippy=%2Cadd-captions-to-an-embedded-video
             // but requires that the video owner upload non-auto-generated captions
-            return `${pieces[0]}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`;
+            return `${pieces[0]}?rel=0&autoplay=1&mute=1&cc_load_policy=1&cc_lang_pref=en`;
         },
     },
 });
