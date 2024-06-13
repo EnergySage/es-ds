@@ -7,7 +7,7 @@
             :title="name">
             <img
                 :id="graphicId"
-                class="featured-article-image mb-100 w-100"
+                class="featured-article-image mb-100 w-100 rounded"
                 :alt="imageAlt"
                 loading="lazy"
                 :src="image500">
