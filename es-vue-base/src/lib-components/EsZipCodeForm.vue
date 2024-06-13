@@ -1,6 +1,6 @@
 <template>
     <div
-        class="EsZipCodeForm d-flex justify-content-center"
+        class="EsZipCodeForm d-flex"
         :class="{
             'EsZipCodeForm--constrained': constrained,
             'text-white': dark,

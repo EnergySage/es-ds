@@ -23,6 +23,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="10"
                     md="8">
                     <es-zip-code-form
@@ -48,6 +49,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="10"
                     md="8">
                     <es-zip-code-form
@@ -73,6 +75,7 @@
             <div class="bg-dark-blue rounded p-200">
                 <b-row class="justify-content-center">
                     <b-col
+                        class="d-flex justify-content-center"
                         sm="10"
                         md="8">
 
@@ -103,6 +106,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="8"
                     md="6"
                     lg="5"
@@ -132,6 +136,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="10"
                     md="8">
                     <es-zip-code-form
@@ -186,6 +191,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="10"
                     md="8">
                     <es-zip-code-form
@@ -356,3 +362,4 @@ export default {
     },
 };
 </script>
+
