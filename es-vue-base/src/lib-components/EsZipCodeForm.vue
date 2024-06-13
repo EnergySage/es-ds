@@ -1,6 +1,6 @@
 <template>
     <div
-        class="EsZipCodeForm d-flex justify-content-center"
+        class="EsZipCodeForm d-flex"
         :class="{
             'EsZipCodeForm--constrained': constrained,
             'text-white': dark,
@@ -163,7 +163,7 @@ export default {
             type: String,
             required: true,
         },
-        zipCodeInitialValue: {
+        zipCodeValue: {
             type: String,
             default: '',
         },
@@ -174,7 +174,7 @@ export default {
     },
     data() {
         return {
-            zipCode: this.zipCodeInitialValue,
+            zipCode: this.zipCodeValue,
         };
     },
     computed: {
@@ -184,6 +184,11 @@ export default {
                 stackUntil = '';
             }
             return stackUntil ? `${stackUntil}-` : '';
+        },
+    },
+    watch: {
+        zipCodeValue(newVal) {
+            this.zipCode = newVal;
         },
     },
     methods: {

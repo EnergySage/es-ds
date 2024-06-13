@@ -166,10 +166,6 @@ export default (
                     name: 'News',
                     subtopics: [
                         {
-                            name: 'News',
-                            link: `${ES_DOMAIN}/blog/`,
-                        },
-                        {
                             name: 'How long can you run your house on a Tesla Powerwall?',
                             // eslint-disable-next-line max-len
                             link: `${ES_DOMAIN}/energy-storage/tesla-powerwall-how-much-home-can-you-run-on-it-for-how-long/`,
