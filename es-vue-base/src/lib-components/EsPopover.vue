@@ -35,7 +35,7 @@
                     v-if="!hasTitle"
                     inline
                     variant="link"
-                    class="es-popover-close p-0 pl-50"
+                    class="es-popover-close p-0 pl-50 mb-auto"
                     @click="onClose">
                     <XIcon
                         height="20px"
