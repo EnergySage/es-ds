@@ -23,7 +23,7 @@ exports[`EsVideo <EsVideo slots /> 1`] = `
 
 exports[`EsVideo Embed exists 1`] = `
 "<div>
-  <div class="embed-responsive embed-responsive-16by9"><iframe allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/hgmZG3GLLNg?rel=0&amp;autoplay=1&amp;cc_load_policy=1&amp;cc_lang_pref=en" title="Community solar: Everything you want to know before you join" class="embed-responsive-item"></iframe></div>
+  <div class="embed-responsive embed-responsive-16by9"><iframe allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/hgmZG3GLLNg?rel=0&amp;autoplay=1&amp;mute=1&amp;cc_load_policy=1&amp;cc_lang_pref=en" title="Community solar: Everything you want to know before you join" class="embed-responsive-item"></iframe></div>
 </div>"
 `;
 
