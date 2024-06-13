@@ -31,7 +31,7 @@
     display: block;
     width: variables.$popover-arrow-width;
     height: variables.$popover-arrow-height;
-    margin: 0 variables.$popover-border-radius;
+    margin: 0 (variables.$popover-border-radius * 1.2); // 1.2 for centering
 
     &::before,
     &::after {
@@ -72,7 +72,7 @@
     left: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
     width: variables.$popover-arrow-height;
     height: variables.$popover-arrow-width;
-    margin: variables.$popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
+    margin: (variables.$popover-border-radius * .8) 0 0 0; // make sure the arrow does not touch the popover's rounded corners
     clip-path: polygon(5% 20%, 100% 0%, 100% 100%, 5% 100%);
 
     &::before {
@@ -129,7 +129,7 @@
     right: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
     width: variables.$popover-arrow-height;
     height: variables.$popover-arrow-width;
-    margin: variables.$popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
+    margin: (variables.$popover-border-radius * .8) 0 0 0; // make sure the arrow does not touch the popover's rounded corners
     clip-path: polygon(0% 0%, 95% 0%, 95% 100%, 0% 100%);
 
     &::before {
