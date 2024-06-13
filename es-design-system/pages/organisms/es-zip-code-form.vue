@@ -23,6 +23,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="10"
                     md="8">
                     <es-zip-code-form
@@ -48,13 +49,14 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="10"
                     md="8">
                     <es-zip-code-form
                         input-id="prepopulate-hero-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
-                        zip-code-initial-value="02150"
+                        zip-code-value="02150"
                         url="https://www.energysage.com/market/start/">
                         <template #buttonText> See local offers </template>
                     </es-zip-code-form>
@@ -73,6 +75,7 @@
             <div class="bg-dark-blue rounded p-200">
                 <b-row class="justify-content-center">
                     <b-col
+                        class="d-flex justify-content-center"
                         sm="10"
                         md="8">
 
@@ -103,6 +106,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="8"
                     md="6"
                     lg="5"
@@ -132,6 +136,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="10"
                     md="8">
                     <es-zip-code-form
@@ -186,6 +191,7 @@
             </p>
             <b-row class="justify-content-center">
                 <b-col
+                    class="d-flex justify-content-center"
                     sm="10"
                     md="8">
                     <es-zip-code-form
@@ -302,7 +308,7 @@ export default {
                     'Specify which product of interest. Options include: solar-pv, heatpump, ev-charger',
                 ],
                 [
-                    'zipCodeInitialValue',
+                    'zipCodeValue',
                     "''",
                     'The default zipcode value if passed to the zip code form',
                 ],
