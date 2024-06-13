@@ -72,7 +72,7 @@
     left: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
     width: variables.$popover-arrow-height;
     height: variables.$popover-arrow-width;
-    margin: (variables.$popover-border-radius * .6) 0 0 0; // make sure the arrow does not touch the popover's rounded corners
+    margin: (variables.$popover-border-radius * .8) 0 0 0; // make sure the arrow does not touch the popover's rounded corners
     clip-path: polygon(5% 20%, 100% 0%, 100% 100%, 5% 100%);
 
     &::before {
