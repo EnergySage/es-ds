@@ -4,7 +4,7 @@ exports[`EsFormRadioCards <EsFormRadioCards /> 1`] = `
 "<fieldset class="form-group" id="__BVID__4">
   <legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0 font-size-h1 font-weight-bolder mb-200 pb-0 text-dark" id="__BVID__4__BV_label_">What is one plus one?</legend>
   <div>
-    <div role="radiogroup" tabindex="-1" class="EsFormRadioCards d-flex justify-content-center btn-group-toggle btn-group-vertical bv-no-focus-ring" id="__BVID__5"><label class="EsFormRadioCard bg-white border-light rounded-lg w-100 btn btn-outline-dark"><input type="radio" name="What is one plus one?" class="" value="2" id="__BVID__7">
+    <div role="radiogroup" tabindex="-1" class="es-form-radio-cards d-flex justify-content-center btn-group-toggle btn-group-vertical bv-no-focus-ring" id="__BVID__5"><label class="es-form-radio-card es-card interactive w-100 btn btn-outline-primary"><input type="radio" name="What is one plus one?" class="" value="2" id="__BVID__7">
         Two
       </label></div>
     <!---->
@@ -18,11 +18,11 @@ exports[`EsFormRadioCards EsFormRadioCards card click updates value 1`] = `
 "<fieldset class="form-group">
   <legend tabindex="-1" class="bv-no-focus-ring col-form-label pt-0 font-size-h1 font-weight-bolder mb-200 pb-0 text-dark">What is one plus one?</legend>
   <div>
-    <div role="radiogroup" tabindex="-1" class="EsFormRadioCards d-flex justify-content-center btn-group-toggle btn-group-vertical bv-no-focus-ring"><label class="EsFormRadioCard bg-white border-light rounded-lg w-100 btn btn-outline-dark"><input type="radio" name="What is one plus one?" class="" value="1">
+    <div role="radiogroup" tabindex="-1" class="es-form-radio-cards d-flex justify-content-center btn-group-toggle btn-group-vertical bv-no-focus-ring"><label class="es-form-radio-card es-card interactive w-100 btn btn-outline-primary"><input type="radio" name="What is one plus one?" class="" value="1">
         One
-      </label> <label class="EsFormRadioCard bg-white border-light rounded-lg w-100 btn btn-outline-dark" data-testid="radioCardTwo"><input type="radio" name="What is one plus one?" class="" value="2">
+      </label> <label class="es-form-radio-card es-card interactive w-100 btn btn-outline-primary" data-testid="radioCardTwo"><input type="radio" name="What is one plus one?" class="" value="2">
         Two
-      </label> <label class="EsFormRadioCard bg-white border-light rounded-lg w-100 btn btn-outline-dark"><input type="radio" name="What is one plus one?" class="" value="3">
+      </label> <label class="es-form-radio-card es-card interactive w-100 btn btn-outline-primary"><input type="radio" name="What is one plus one?" class="" value="3">
         Three
       </label></div>
     <!---->

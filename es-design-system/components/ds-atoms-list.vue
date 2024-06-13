@@ -6,8 +6,13 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/atoms/typography">
-                Typography
+            <ds-link to="/atoms/corners">
+                Corners
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/atoms/icons">
+                Icons
             </ds-link>
         </li>
         <li>
@@ -21,8 +26,8 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/atoms/icons">
-                Icons
+            <ds-link to="/atoms/typography">
+                Typography
             </ds-link>
         </li>
     </ul>

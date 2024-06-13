@@ -66,10 +66,12 @@ export default {
     padding: 0 !important;
 
     dt {
+        margin-bottom: 0.5rem;
         width: 30%;
     }
 
     dd {
+        margin-bottom: 0.5rem;
         width: 70%;
     }
 }
@@ -103,7 +105,8 @@ export default {
         /* ensure background is full height of row */
         dd {
             height: 100%;
-            padding: 0.5rem 0;
+            padding-bottom: 0.5rem;
+            padding-top: 0.5rem;
         }
 
         /* side padding on left-most cells */

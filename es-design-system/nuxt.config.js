@@ -16,7 +16,7 @@ export default {
             // Fonts
             {
                 rel: 'stylesheet',
-                href: 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap',
+                href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap',
             },
             // Icon
             {
@@ -120,6 +120,7 @@ export default {
             breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'],
         },
         components: [
+            'BAlert',
             'BLink',
             'BContainer',
             'BNavbar',
@@ -129,9 +130,10 @@ export default {
             'BCol',
             'BSidebar',
             'BForm',
-            'BFormGroup',
-            'BFormRadioGroup',
             'BFormCheckbox',
+            'BFormGroup',
+            'BFormRadio',
+            'BFormRadioGroup',
             'BSpinner',
             'BTable',
         ],

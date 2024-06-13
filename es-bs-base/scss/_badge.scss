@@ -14,7 +14,7 @@
   padding: variables.$badge-padding-y variables.$badge-padding-x;
   @include rfs.font-size(variables.$badge-font-size);
   font-weight: variables.$badge-font-weight;
-  line-height: 1;
+  line-height: 1rem;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -53,8 +53,8 @@
 //
 // Contextual variations (linked badges get darker on :hover).
 
-@each $color, $value in variables.$theme-colors {
+@each $color, $value in variables.$badge-bg-colors {
   .badge-#{$color} {
-    @include badge.badge-variant($value);
+    @include badge.badge-variant($color);
   }
 }

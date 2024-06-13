@@ -4,7 +4,9 @@
             Textarea
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/form-textarea">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/form-textarea"
+                target="_blank">
                 bootstrap-vue form-textarea
             </b-link>
         </p>
@@ -16,28 +18,159 @@
                 Sentence case.
             </b-link>
         </p>
-        <b-row class="my-450">
+
+        <b-row class="my-500">
             <b-col
                 cols="12"
                 lg="6">
+                <h2>
+                    Basic example
+                </h2>
                 <es-form-textarea
-                    id="myId"
+                    id="basic-example"
                     v-model="docTextarea">
                     <template #label>
-                        My notes
+                        Notes
+                    </template>
+                </es-form-textarea>
+            </b-col>
+        </b-row>
+
+        <b-row class="my-500">
+            <b-col
+                cols="12"
+                lg="6">
+                <h2>
+                    Required
+                </h2>
+                <es-form-textarea
+                    id="required-example"
+                    v-model="docTextarea"
+                    required>
+                    <template #label>
+                        Notes
+                    </template>
+                </es-form-textarea>
+            </b-col>
+        </b-row>
+
+        <b-row class="my-500">
+            <b-col
+                cols="12"
+                lg="6">
+                <h2>
+                    Error state
+                </h2>
+                <es-form-textarea
+                    id="error-example"
+                    v-model="docTextarea"
+                    required
+                    :state="false">
+                    <template #label>
+                        Notes
+                    </template>
+                    <template #errorMessage>
+                        This field is required.
+                    </template>
+                </es-form-textarea>
+            </b-col>
+        </b-row>
+
+        <b-row class="my-500">
+            <b-col
+                cols="12"
+                lg="6">
+                <h2>
+                    Success state
+                </h2>
+                <es-form-textarea
+                    id="success-example"
+                    v-model="successValue"
+                    required
+                    :state="true">
+                    <template #label>
+                        Notes
+                    </template>
+                    <template #errorMessage>
+                        This field is required.
+                    </template>
+                </es-form-textarea>
+            </b-col>
+        </b-row>
+
+        <b-row class="my-500">
+            <b-col
+                cols="12"
+                lg="6">
+                <h2>
+                    Success state with message
+                </h2>
+                <es-form-textarea
+                    id="success-message-example"
+                    v-model="successValue"
+                    required
+                    :state="true">
+                    <template #label>
+                        Notes
                     </template>
                     <template #message>
                         Please enter your notes.
                     </template>
                     <template #errorMessage>
-                        Please enter some notes.
+                        This field is required.
                     </template>
                     <template #successMessage>
-                        Your notes has been submitted successfully.
+                        Your notes have been entered successfully.
                     </template>
                 </es-form-textarea>
             </b-col>
         </b-row>
+
+        <b-row class="my-500">
+            <b-col
+                cols="12"
+                lg="6">
+                <h2>
+                    Disabled state
+                </h2>
+                <es-form-textarea
+                    id="disabled-example"
+                    v-model="docTextarea"
+                    disabled>
+                    <template #label>
+                        Notes
+                    </template>
+                </es-form-textarea>
+            </b-col>
+        </b-row>
+
+        <b-row class="my-500">
+            <b-col
+                cols="12"
+                lg="6">
+                <h2>
+                    Context message
+                </h2>
+                <es-form-textarea
+                    id="context-message-example"
+                    v-model="docTextarea"
+                    required>
+                    <template #label>
+                        Notes
+                    </template>
+                    <template #message>
+                        Please enter your notes.
+                    </template>
+                    <template #errorMessage>
+                        This field is required.
+                    </template>
+                    <template #successMessage>
+                        Your notes have been entered successfully.
+                    </template>
+                </es-form-textarea>
+            </b-col>
+        </b-row>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFormTextarea.vue"
@@ -51,7 +184,8 @@ export default {
     name: 'EsFormTextareaDocs',
     data() {
         return {
-            docTextarea: 'Example text',
+            docTextarea: '',
+            successValue: 'My experience was great!',
             compCode: '',
             docCode: '',
         };

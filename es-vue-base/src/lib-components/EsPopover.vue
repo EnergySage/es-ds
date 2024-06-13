@@ -14,14 +14,15 @@
             @binding {string} text or html of the title content
             -->
             <slot name="title" />
-            <EsButton
+            <es-button
+                inline
                 variant="link"
-                class="p-0 float-right"
+                class="es-popover-close p-0 float-right"
                 @click="onClose">
                 <XIcon
                     height="20px"
                     width="20px" />
-            </EsButton>
+            </es-button>
         </template>
         <!--
         @slot Popover Content
@@ -31,14 +32,15 @@
             <div class="d-flex">
                 <slot />
                 <div v-if="!hasTitle">
-                    <EsButton
+                    <es-button
+                        inline
                         variant="link"
-                        class="p-0"
+                        class="es-popover-close p-0 pl-50"
                         @click="onClose">
                         <XIcon
                             height="20px"
                             width="20px" />
-                    </EsButton>
+                    </es-button>
                 </div>
             </div>
         </template>
@@ -125,13 +127,13 @@ export default {
 .es-popover-light {
     &.popover {
         background-color: variables.$white;
-        border: 1px solid variables.$primary;
+        border: 1px solid variables.$white;
     }
     // styling for all arrow backgrounds
     &.bs-popover-bottom, &.bs-popover-auto[x-placement^=bottom] {
         > .arrow {
             &::before {
-                border-bottom-color: variables.$primary;
+                border-bottom-color: variables.$white;
             }
 
             &::after {
@@ -144,7 +146,7 @@ export default {
     &.bs-popover-top, &.bs-popover-auto[x-placement^=top] {
         > .arrow {
             &::before {
-                border-top-color: variables.$primary;
+                border-top-color: variables.$white;
             }
 
             &::after {
@@ -157,7 +159,7 @@ export default {
     &.bs-popover-right, &.bs-popover-auto[x-placement^=right] {
         > .arrow {
             &::before {
-                border-right-color: variables.$primary;
+                border-right-color: variables.$white;
             }
 
             &::after {
@@ -170,7 +172,7 @@ export default {
     &.bs-popover-left, &.bs-popover-auto[x-placement^=left] {
         > .arrow {
             &::before {
-                border-left-color: variables.$primary;
+                border-left-color: variables.$white;
             }
 
             &::after {
@@ -183,43 +185,25 @@ export default {
     .popover-header {
         background-color: variables.$white;
         border-bottom-color: variables.$white;
-        color: variables.$black;
+        color: variables.$gray-900;
 
         &::before {
             border-bottom-color: variables.$white;
         }
-
-        .btn, .btn:hover, .btn:active {
-            color: variables.$black;
-        }
     }
 
     .popover-body {
-        color: variables.$black;
+        color: variables.$gray-900;
+    }
 
-        .btn, .btn:hover, .btn:active {
-            color: variables.$black;
-        }
+    .es-popover-close {
+        color: variables.$gray-900;
     }
 }
 
 .es-popover-dark {
-    // styling for this color scheme will need to be added as default values for popovers are updated
-    .popover-header {
-        .btn, .btn:hover, .btn:active {
-            color: variables.$white;
-        }
-    }
-
-    .popover-body {
-        .btn, .btn:hover, .btn:active {
-            color: variables.$white;
-        }
-
-        a {
-            color: variables.$lightblue;
-            font-weight: variables.$font-weight-bold;
-        }
+    .es-popover-close, a {
+        color: variables.$white;
     }
 }
 </style>

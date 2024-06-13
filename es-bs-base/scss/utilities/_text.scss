@@ -47,8 +47,10 @@
   @include breakpoints.media-breakpoint-up($breakpoint) {
     $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
     @each $size, $value in variables.$font-sizes {
+      $line-height: map.get(variables.$line-heights, $size);
       .font-size#{$infix}-#{$size} {
         font-size: $value !important;
+        line-height: $line-height !important;
       }
     }
   }
@@ -134,6 +136,11 @@
   @include text-colors($color, $value);
 }
 
+// Core colors
+@each $color, $value in variables.$core-colors {
+  @include text-colors($color, $value);
+}
+
 // Add gray text colors classes
 @each $color, $value in variables.$grays {
   @include text-colors($color, $value);
@@ -161,5 +168,10 @@
 
 // Add orange text colors classes
 @each $color, $value in variables.$oranges {
+  @include text-colors($color, $value);
+}
+
+// Add blue text colors classes
+@each $color, $value in variables.$blues {
   @include text-colors($color, $value);
 }

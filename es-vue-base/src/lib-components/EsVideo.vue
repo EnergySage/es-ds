@@ -7,9 +7,10 @@
             :src="autoplayUrl"
             :title="altText"
             type="iframe" />
-        <es-button
+        <es-card
             v-else
-            class="EsVideo-button text-gray-900 border-0 p-0 position-relative text-gray w-100 bg-transparent"
+            class="EsVideo-button bg-transparent overflow-hidden p-0 position-relative w-100"
+            variant="interactive"
             @click="showVideo = true">
             <slot
                 v-if="hasImage"
@@ -18,18 +19,19 @@
                 v-else-if="coverImageUrl"
                 :alt="altText"
                 sizes="md:530px sm:275px"
-                class="EsVideo-image d-block rounded-lg w-100"
+                class="EsVideo-image d-block w-100"
                 :src="coverImageUrl" />
             <icon-video-play
                 class="EsVideo-icon position-absolute"
                 width="74px"
                 height="54px" />
-        </es-button>
+        </es-card>
     </div>
 </template>
 
 <script lang="js">
 import { BImg, BEmbed } from 'bootstrap-vue';
+import EsCard from './EsCard.vue';
 import IconVideoPlay from '../lib-icons/icon-video-play.vue';
 
 export default ({
@@ -37,6 +39,7 @@ export default ({
     components: {
         BImg,
         BEmbed,
+        EsCard,
         IconVideoPlay,
     },
     props: {

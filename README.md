@@ -118,16 +118,17 @@ rebuild the packages and re-link them. This is expected.
 In a terminal run:
 
 ```
-(cd es-design-system && FAST_LOCAL=true npm run dev)
-```
-
-In another terminal run:
-
-```
 find es-vue-base/src/ | entr -s 'npm --prefix es-vue-base run build'
 ```
 
 (You may need to run `brew install entr` first)
+
+In another terminal run:
+
+
+```
+(cd es-design-system && FAST_LOCAL=true npm run dev)
+```
 
 This will result in much faster reloads that skip rebuilding all of `es-bs-base`
 as well as skipping server-side rendering. But *note* this will also throw an

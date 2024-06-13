@@ -514,6 +514,212 @@
             </li>
         </ul>
         <h2>
+            State Icons
+        </h2>
+        <p>
+            Default size for state icons is 24px by 24px.
+        </p>
+        <ul
+            class="ds-icon-list m-0 mb-300 p-0"
+            :class="{ [textColorClass]: true }">
+            <li>
+                <icon-state-al />
+                <code>IconStateAl</code>
+            </li>
+            <li>
+                <icon-state-ar />
+                <code>IconStateAr</code>
+            </li>
+            <li>
+                <icon-state-az />
+                <code>IconStateAz</code>
+            </li>
+            <li>
+                <icon-state-ca />
+                <code>IconStateCa</code>
+            </li>
+            <li>
+                <icon-state-co />
+                <code>IconStateCo</code>
+            </li>
+            <li>
+                <icon-state-ct />
+                <code>IconStateCt</code>
+            </li>
+            <li>
+                <icon-state-dc />
+                <code>IconStateDc</code>
+            </li>
+            <li>
+                <icon-state-de />
+                <code>IconStateDe</code>
+            </li>
+            <li>
+                <icon-state-fl />
+                <code>IconStateFl</code>
+            </li>
+            <li>
+                <icon-state-ga />
+                <code>IconStateGa</code>
+            </li>
+            <li>
+                <icon-state-ia />
+                <code>IconStateIa</code>
+            </li>
+            <li>
+                <icon-state-id />
+                <code>IconStateId</code>
+            </li>
+            <li>
+                <icon-state-il />
+                <code>IconStateIl</code>
+            </li>
+            <li>
+                <icon-state-in />
+                <code>IconStateIn</code>
+            </li>
+            <li>
+                <icon-state-ks />
+                <code>IconStateKs</code>
+            </li>
+            <li>
+                <icon-state-ky />
+                <code>IconStateKy</code>
+            </li>
+            <li>
+                <icon-state-la />
+                <code>IconStateLa</code>
+            </li>
+            <li>
+                <icon-state-ma />
+                <code>IconStateMa</code>
+            </li>
+            <li>
+                <icon-state-md />
+                <code>IconStateMd</code>
+            </li>
+            <li>
+                <icon-state-me />
+                <code>IconStateMe</code>
+            </li>
+            <li>
+                <icon-state-mi />
+                <code>IconStateMi</code>
+            </li>
+            <li>
+                <icon-state-mn />
+                <code>IconStateMn</code>
+            </li>
+            <li>
+                <icon-state-mo />
+                <code>IconStateMo</code>
+            </li>
+            <li>
+                <icon-state-ms />
+                <code>IconStateMs</code>
+            </li>
+            <li>
+                <icon-state-mt />
+                <code>IconStateMt</code>
+            </li>
+            <li>
+                <icon-state-nc />
+                <code>IconStateNc</code>
+            </li>
+            <li>
+                <icon-state-nd />
+                <code>IconStateNd</code>
+            </li>
+            <li>
+                <icon-state-ne />
+                <code>IconStateNe</code>
+            </li>
+            <li>
+                <icon-state-nh />
+                <code>IconStateNh</code>
+            </li>
+            <li>
+                <icon-state-nj />
+                <code>IconStateNj</code>
+            </li>
+            <li>
+                <icon-state-nm />
+                <code>IconStateNm</code>
+            </li>
+            <li>
+                <icon-state-nv />
+                <code>IconStateNv</code>
+            </li>
+            <li>
+                <icon-state-ny />
+                <code>IconStateNy</code>
+            </li>
+            <li>
+                <icon-state-oh />
+                <code>IconStateOh</code>
+            </li>
+            <li>
+                <icon-state-ok />
+                <code>IconStateOk</code>
+            </li>
+            <li>
+                <icon-state-or />
+                <code>IconStateOr</code>
+            </li>
+            <li>
+                <icon-state-pa />
+                <code>IconStatePa</code>
+            </li>
+            <li>
+                <icon-state-ri />
+                <code>IconStateRi</code>
+            </li>
+            <li>
+                <icon-state-sc />
+                <code>IconStateSc</code>
+            </li>
+            <li>
+                <icon-state-sd />
+                <code>IconStateSd</code>
+            </li>
+            <li>
+                <icon-state-tn />
+                <code>IconStateTn</code>
+            </li>
+            <li>
+                <icon-state-tx />
+                <code>IconStateTx</code>
+            </li>
+            <li>
+                <icon-state-ut />
+                <code>IconStateUt</code>
+            </li>
+            <li>
+                <icon-state-va />
+                <code>IconStateVa</code>
+            </li>
+            <li>
+                <icon-state-vt />
+                <code>IconStateVt</code>
+            </li>
+            <li>
+                <icon-state-wa />
+                <code>IconStateWa</code>
+            </li>
+            <li>
+                <icon-state-wi />
+                <code>IconStateWi</code>
+            </li>
+            <li>
+                <icon-state-wv />
+                <code>IconStateWv</code>
+            </li>
+            <li>
+                <icon-state-wy />
+                <code>IconStateWy</code>
+            </li>
+        </ul>
+        <h2>
             Miscellaneous Icons
         </h2>
         <ul
@@ -546,7 +752,7 @@ export default {
             }, {});
 
         const colorOptions = Object.keys(colorNames).map((k) => ({
-            text: k,
+            text: k === 'body' ? 'default' : k.replace('-', ' '),
             value: k,
         }));
 

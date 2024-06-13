@@ -97,7 +97,7 @@
         border-color: $color;
       }
 
-      @if variables.$enable-validation-icons {
+      @if variables.$enable-validation-icons and $icon != '' {
         padding-right: variables.$input-height-inner !important; // stylelint-disable-line declaration-no-important
         background-image: functions.escape-svg($icon);
         background-repeat: no-repeat;
@@ -106,7 +106,7 @@
       }
 
       &:focus {
-        // Don't change border color for valid state
+        // Don't change border color for invalid state
         @if ($state == "invalid") {
           border-color: $color;
           box-shadow: 0 0 0 variables.$input-focus-width rgba($color, .25);

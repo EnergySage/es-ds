@@ -268,11 +268,14 @@
 //
 
 .es-card {
-  padding: variables.$spacer * 2;
+  border: 2px solid variables.$gray-100;
+  padding: variables.$spacer * 1.5;
   background-color: variables.$white;
   /* stylelint-disable-next-line property-disallowed-list */
-  border-radius: variables.$border-radius-lg;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
+  border-radius: variables.$card-border-radius;
+  display: block;
+  text-align: left;
+  width: 100%;
 
   &.interactive {
     /* account for the tag likely being an anchor or button */
@@ -280,8 +283,8 @@
     font-weight: variables.$font-weight-base;
     color: variables.$body-color;
     cursor: pointer;
-    border: variables.$border-width solid variables.$gray-200;
-    box-shadow: none;
+    border: 2px solid variables.$card-interactive-border-color;
+    box-shadow: 0 0 0 1px transparent, variables.$card-interactive-shadow;
 
     /* stylelint-disable-next-line property-disallowed-list */
     transition: variables.$transition-base;
@@ -290,8 +293,20 @@
     transform: translateZ(0);
 
     &:hover {
+      border-color: variables.$card-interactive-hover-border-color;
       text-decoration: none;
-      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+    }
+
+    &:focus {
+      border-color: variables.$card-interactive-focus-border-color;
+      box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-shadow;
+      outline: none;
+    }
+
+    &:active {
+      border-color: variables.$card-interactive-active-border-color;
+      box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-active-shadow;
+      transform: variables.$btn-active-transform;
     }
   }
 }

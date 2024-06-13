@@ -1,7 +1,10 @@
+@use "accordion";
 @use "avatar";
 @use "calendar";
 @use "card";
 @use "dropdown";
+@use "file-input";
+@use "file-thumbnail";
 @use "form-checkbox";
 @use "form-datepicker";
 @use "form-file";
@@ -19,9 +22,14 @@
 @use "pagination-nav";
 @use "pagination";
 @use "popover";
+@use "radio-cards";
+@use "reviews";
 @use "sidebar";
+@use "slider";
 @use "skeleton";
 @use "table";
+@use "tabs";
 @use "time";
 @use "toast";
 @use "tooltip";
+@use "verification-code";

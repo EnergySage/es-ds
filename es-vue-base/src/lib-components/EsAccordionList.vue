@@ -1,6 +1,7 @@
 <template>
     <div
-        class="rounded"
+        class="es-accordion-list"
+        :class="{ [`es-accordion-list--${variant}`]: true }"
         role="tablist">
         <slot />
     </div>

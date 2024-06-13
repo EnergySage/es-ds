@@ -362,6 +362,10 @@ export default (
             link: `${ES_DOMAIN}/shop/community-solar/`,
             items: [
                 {
+                    name: 'Community solar',
+                    link: `${ES_DOMAIN}/shop/community-solar/`,
+                },
+                {
                     name: 'Community solar guide',
                     link: `${ES_DOMAIN}/community-solar/`,
                 },
@@ -377,6 +381,10 @@ export default (
             name: 'Heating & cooling',
             link: `${ES_DOMAIN}/shop/heat-pumps/`,
             items: [
+                {
+                    name: 'Heating & cooling',
+                    link: `${ES_DOMAIN}/shop/heat-pumps/`,
+                },
                 {
                     name: 'Heat pump guide',
                     link: `${ES_DOMAIN}/heat-pumps/`,
@@ -439,6 +447,10 @@ export default (
             name: 'For your business',
             link: `${ES_DOMAIN}/businesses/`,
             items: [
+                {
+                    name: 'For your business',
+                    link: `${ES_DOMAIN}/businesses/`,
+                },
                 {
                     name: 'Solar for businesses',
                     link: `${ES_DOMAIN}/business-solutions/commercial-solar-benefits/`,

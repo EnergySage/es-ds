@@ -3,9 +3,14 @@
 @use "../variables";
 
 :export {
+  orange-50: variables.$orange-50;
   orange-100: variables.$orange-100;
   orange-200: variables.$orange-200;
   orange-300: variables.$orange-300;
   orange-400: variables.$orange-400;
   orange-500: variables.$orange-500;
+  orange-600: variables.$orange-600;
+  orange-700: variables.$orange-700;
+  orange-800: variables.$orange-800;
+  orange-900: variables.$orange-900;
 }

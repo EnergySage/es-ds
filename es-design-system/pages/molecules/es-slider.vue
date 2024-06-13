@@ -3,20 +3,22 @@
         <h1>
             Slider
         </h1>
-        <p class="pb-450">
-            Extended from <b-link href="https://nightcatsama.github.io/vue-slider-component/">
+        <p class="pb-500">
+            Extended from <b-link
+                href="https://nightcatsama.github.io/vue-slider-component/"
+                target="_blank">
                 vue-slider-component
             </b-link>
         </p>
         <es-slider
-            class="my-450"
+            class="my-500"
             :starting-value="startingValue"
             :data="data"
             :marks="marks"
             :min="min"
             :max="max"
-            :tooltip-formatter="val => `$${val}`"
-            @change="changeEvent" />
+            :label-formatter="val => `$${val}`"
+            :tooltip-formatter="val => `$${val}`" />
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsSlider.vue"
@@ -30,7 +32,7 @@ export default {
     name: 'EsSliderDocs',
     data() {
         return {
-            startingValue: 0,
+            startingValue: 100,
             data: [0, 25, 50, 75, 100, 250, 500, 750, 1000],
             marks: [0, 1000],
             min: 0,
@@ -52,10 +54,10 @@ export default {
         }
     },
     methods: {
-        changeEvent($event) {
-            // eslint-disable-next-line no-alert
-            alert($event);
-        },
+        // changeEvent($event) {
+        //     // eslint-disable-next-line no-alert
+        //     alert($event);
+        // },
     },
 };
 </script>

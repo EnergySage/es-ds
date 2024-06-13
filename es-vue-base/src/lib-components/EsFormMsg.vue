@@ -1,16 +1,20 @@
 <template>
     <b-alert
-        :show="dismissCountDown"
-        fade
+        class="es-form-msg"
         dismissible
+        fade
+        :show="dismissCountDown"
         :variant="variant"
-        @dismissed="dismissAlert"
-        @dismiss-count-down="countDownChanged">
-        <div class="d-flex">
-            <div class="pr-50">
-                <IconCircleAlert v-if="variant === 'danger'" />
-                <IconCircleCheck v-if="variant === 'success'" />
-                <IconInfo v-if="variant === 'primary'" />
+        @dismiss-count-down="countDownChanged"
+        @dismissed="dismissAlert">
+        <template #dismiss>
+            <icon-x />
+        </template>
+        <div class="d-flex pr-100">
+            <div class="icon-wrapper flex-shrink-0 mr-100">
+                <icon-circle-alert v-if="variant === 'danger'" />
+                <icon-circle-check v-if="variant === 'success'" />
+                <icon-info v-if="variant === 'primary'" />
             </div>
             <slot />
         </div>
@@ -24,6 +28,7 @@ import {
 import IconCircleAlert from '../lib-icons/icon-circle-alert.vue';
 import IconCircleCheck from '../lib-icons/icon-circle-check.vue';
 import IconInfo from '../lib-icons/icon-info.vue';
+import IconX from '../lib-icons/icon-x.vue';
 
 export default {
     name: 'EsFormMsg',
@@ -32,6 +37,7 @@ export default {
         IconCircleAlert,
         IconCircleCheck,
         IconInfo,
+        IconX,
     },
     props: {
         show: {

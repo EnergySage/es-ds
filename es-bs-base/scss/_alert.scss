@@ -70,3 +70,67 @@
     );
   }
 }
+
+.es-form-msg {
+  .icon-wrapper {
+    align-items: center;
+    display: flex;
+    height: 2.5rem;
+    justify-content: center;
+    position: relative;
+    width: 2.5rem;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      height: 2rem;
+      position: absolute;
+      border-radius: 50%;
+      width: 2rem;
+    }
+
+    svg {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  .close,
+  .close:not(:disabled):not(.disabled):hover,
+  .close:not(:disabled):not(.disabled):focus {
+    opacity: 1;
+  }
+
+  &.alert-danger {
+    .icon-wrapper {
+      color: variables.$error-900;
+
+      &::before {
+        box-shadow: 0 0 0 4px variables.$error-50,
+          0 0 0 6px variables.$error-500 inset;
+      }
+    }
+  }
+
+  &.alert-success {
+    .icon-wrapper {
+      color: variables.$success-900;
+
+      &::before {
+        box-shadow: 0 0 0 4px variables.$success-50,
+          0 0 0 6px variables.$success-500 inset;
+      }
+    }
+  }
+
+  &.alert-primary {
+    .icon-wrapper {
+      color: variables.$blue-600;
+
+      &::before {
+        box-shadow: 0 0 0 4px variables.$blue-50,
+          0 0 0 6px variables.$blue-200 inset;
+      }
+    }
+  }
+}

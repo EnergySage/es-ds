@@ -2,7 +2,7 @@
 
 exports[`EsSupport <EsSupport /> 1`] = `
 "<div class="d-flex support-holder align-items-center">
-  <div class="image-holder mr-100"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-warm"></a></div>
+  <div class="image-holder mr-50"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-warm"></a></div>
   <div class="text-holder d-flex flex-column">
     <div class="title">
       <div class="h5 mb-25 font-size-base font-weight-bold">
@@ -18,7 +18,7 @@ exports[`EsSupport <EsSupport /> 1`] = `
 
 exports[`EsSupport <EsSupport variant="cool" /> 1`] = `
 "<div class="d-flex support-holder align-items-center">
-  <div class="image-holder mr-100"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-cool"></a></div>
+  <div class="image-holder mr-50"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-cool"></a></div>
   <div class="text-holder d-flex flex-column">
     <div class="title">
       <div class="h5 mb-25 font-size-base font-weight-bold">
@@ -34,7 +34,7 @@ exports[`EsSupport <EsSupport variant="cool" /> 1`] = `
 
 exports[`EsSupport Image exists 1`] = `
 "<div class="d-flex support-holder align-items-center">
-  <div class="image-holder mr-100"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-warm"></a></div>
+  <div class="image-holder mr-50"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-warm"></a></div>
   <div class="text-holder d-flex flex-column">
     <div class="title">
       <div class="h5 mb-25 font-size-base font-weight-bold">
@@ -50,7 +50,7 @@ exports[`EsSupport Image exists 1`] = `
 
 exports[`EsSupport Support text exists 1`] = `
 "<div class="d-flex support-holder align-items-center">
-  <div class="image-holder mr-100"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-warm"></a></div>
+  <div class="image-holder mr-50"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-warm"></a></div>
   <div class="text-holder d-flex flex-column">
     <div class="title">
       <div class="h5 mb-25 font-size-base font-weight-bold">
@@ -66,7 +66,7 @@ exports[`EsSupport Support text exists 1`] = `
 
 exports[`EsSupport Support title slot exists 1`] = `
 "<div class="d-flex support-holder align-items-center">
-  <div class="image-holder mr-100"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-warm"></a></div>
+  <div class="image-holder mr-50"><a target="_blank" aria-label="Help" href="https://www.google.com/"><img src="https://via.placeholder.com/200x100" alt="Help Image" width="64" height="64" class="image image-bg-warm"></a></div>
   <div class="text-holder d-flex flex-column">
     <div class="title">
       <div class="h5 mb-25 font-size-base font-weight-bold">

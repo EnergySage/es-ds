@@ -2,14 +2,17 @@
     <div class="icon-dropdown">
         <div class="nav-item">
             <div class="nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100">
-                <IconPerson class="align-self-center" />
+                <IconPerson
+                    class="align-self-center account-icon"
+                    width="20px"
+                    height="20px" />
                 <span class="sr-only">
                     {{ loggedOut.menuButtonText }}
                 </span>
             </div>
             <div class="menu">
                 <ul
-                    class="loggedIn dropdown-menu account-menu rounded mt-0 py-100"
+                    class="loggedIn dropdown-menu account-menu rounded mt-0 py-100 list-unstyled"
                     style="display: none">
                     <li
                         v-for="item in authItems"
@@ -26,25 +29,20 @@
                 <ul
                     class="loggedOut dropdown-menu account-menu rounded mt-0"
                     style="display: none">
-                    <es-nav-bar-link
-                        class="d-flex justify-content-around text-decoration-none"
-                        :href="loggedOut.signIn.link">
+                    <li class="d-flex justify-content-center">
                         <EsButton
-                            :outline="true"
-                            variant="secondary"
-                            class="m-100 w-75">
+                            :href="loggedOut.signIn.link"
+                            class="m-100 w-100 text-white font-weight-bold">
                             {{ loggedOut.signIn.name }}
                         </EsButton>
-                    </es-nav-bar-link>
-                    <li>
-                        <es-nav-bar-link
-                            class="d-flex justify-content-around"
-                            :href="loggedOut.createAccount.link">
-                            <EsButton
-                                variant="link">
-                                {{ loggedOut.createAccount.name }}
-                            </EsButton>
-                        </es-nav-bar-link>
+                    </li>
+                    <li class="d-flex justify-content-center">
+                        <EsButton
+                            :href="loggedOut.createAccount.link"
+                            :outline="true"
+                            class="mx-100 w-100 font-weight-bold">
+                            {{ loggedOut.createAccount.name }}
+                        </EsButton>
                     </li>
                 </ul>
             </div>

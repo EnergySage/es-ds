@@ -6,18 +6,19 @@
             'px-md-300': !constrained}">
         <b-row class="align-items-lg-center justify-content-xl-between">
             <b-col
-                class="EsSupportCard-contentColumn d-lg-flex flex-lg-column justify-content-lg-center position-relative"
+                class="EsSupportCard-contentColumn d-flex flex-column justify-content-lg-center position-relative"
                 :class="{'pr-lg-0': constrained}"
                 cols="12"
                 lg="8">
+                <!-- h2 is first in DOM order for semantics; using order utility classes to rearrange -->
                 <h2
-                    class="align-items-center d-flex font-size-300 justify-content-center justify-content-lg-start mb-150 mb-lg-100"
+                    class="align-items-center d-flex font-size-300 justify-content-center justify-content-lg-start mb-150 mb-lg-100 order-1"
                     :class="{
                         'pl-lg-100': constrained,
                         'pl-lg-200': !constrained}">
                     <slot name="headline" />
                 </h2>
-                <div class="EsSupportCard-imageContainer mb-150 mb-lg-0">
+                <div class="EsSupportCard-imageContainer mb-150 mb-lg-0 order-0">
                     <slot name="image">
                         <b-img
                             v-if="imageAltText && imageSrc"
@@ -39,7 +40,7 @@
                     <p> tags within this element, in case they may want two <p> tags or any other markup in here.
                 -->
                 <div
-                    class="EsSupportCard-description font-size-75 font-size-lg-100 mb-150 mb-lg-0"
+                    class="EsSupportCard-description font-size-75 font-size-lg-100 mb-150 mb-lg-0 order-2"
                     :class="{
                         'pl-lg-100': constrained,
                         'pl-lg-200': !constrained}">
@@ -55,7 +56,7 @@
                     :class="{ 'mb-100': showSecondaryCta }"
                     :href="primaryCtaUrl"
                     :target="primaryCtaTarget"
-                    variant="secondary">
+                    variant="primary">
                     {{ primaryCtaText }}
                 </es-button>
                 <es-button
@@ -64,7 +65,7 @@
                     :href="secondaryCtaUrl"
                     outline
                     :target="secondaryCtaTarget"
-                    variant="secondary">
+                    variant="primary">
                     {{ secondaryCtaText }}
                 </es-button>
             </b-col>
@@ -142,6 +143,11 @@ export default {
             min-height: 100px;
             /* 15px standard column padding + 100px image width */
             padding-left: 115px;
+        }
+
+        &-description {
+            /* limit line length on larger breakpoints */
+            max-width: 450px;
         }
 
         &-imageContainer {

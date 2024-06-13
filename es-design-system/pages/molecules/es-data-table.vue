@@ -1,24 +1,24 @@
 <template>
     <div>
         <h1>
-            Data Table
+            Data table
         </h1>
-        <p class="mb-450">
+        <p class="mb-500">
             A responsive table using the <a href="https://bootstrap-vue.org/docs/components/table">bootstrap-vue table</a>.
             For further details about the properties used, refer to the
-            <a href="https://bootstrap-vue.org/docs/components/table">official bootstrap-vue documentation</a>.
+            <a
+                href="https://bootstrap-vue.org/docs/components/table"
+                target="_blank">official bootstrap-vue documentation</a>.
             Familiarity with the capabilities of the base component is <strong>strongly recommended</strong> if
             expanding the functionality of this table.
         </p>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-200">
-                Basic version, rounded corners, headers inferred from 1st item
+                Basic version, headers inferred from 1st item
             </h2>
-            <es-data-table
-                rounded
-                :items="dataTableItems" />
+            <es-data-table :items="dataTableItems" />
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-200">
                 Height limited to 150px w/sticky header
             </h2>
@@ -27,7 +27,7 @@
                 :fields="dataTableFields"
                 :items="dataTableItems" />
         </div>
-        <div class="mb-450">
+        <div class="mb-500">
             <h2 class="mb-200">
                 Height limited to default 300px w/sticky header, sticky first column
             </h2>
@@ -78,12 +78,6 @@ export default {
                         List of dictionaries (1 per row) with keys representing column names and values representing
                         row data. Missing keys are allowed. Refer to official documentation for more details.
                     `,
-                },
-                {
-                    name: 'rounded',
-                    type: 'Boolean',
-                    default: false,
-                    description: 'Display the table with rounded corners.',
                 },
                 {
                     name: 'stickyFirstCol',

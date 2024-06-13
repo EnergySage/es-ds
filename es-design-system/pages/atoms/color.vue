@@ -14,13 +14,13 @@
             for background color.
         </p>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
-                Brand Colors
+                Core colors
             </h2>
             <b-row>
                 <b-col
-                    v-for="(value, alias) in brandColors"
+                    v-for="(value, alias) in coreColors"
                     :key="alias"
                     cols="6"
                     sm="4"
@@ -28,262 +28,458 @@
                     lg="2"
                     class="mb-100 text-center">
                     <ds-color-swatch
-                        :is-light="['teal', 'yellow'].includes(alias)"
+                        :is-light="[
+                            'white', 'soft-blue', 'medium-blue', 'warm-orange'
+                        ].includes(alias)"
                         :hex="value"
+                        :show-border="['white', 'soft-blue'].includes(alias)"
                         :token="alias" />
                     <p class="font-weight-semibold mb-0 mt-50">
-                        {{ brandColorNames[alias] || alias }}
+                        {{ coreColorNames[alias] || alias }}
                     </p>
                 </b-col>
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
-                Tints
-            </h2>
-            <p class="mb-200">
-                Tints are to be used as background colors for tables, badges, tags, labels, hovers, and notifications.
-                They may also be used in graphics and charts as needed.
-            </p>
-            <h3>
-                Primary Palette
-            </h3>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in cyanTints"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        is-light
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <b-row class="mb-200">
-                <b-col
-                    v-for="(value, alias) in grayTints"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        :is-light="['gray-600', 'gray-500'].includes(alias)"
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <h3>
-                Secondary Palette
-            </h3>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in pinkTints"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        is-light
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in tealTints"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        is-light
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in yellowTints"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        is-light
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in orangeTints"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        is-light
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                Shades
-            </h2>
-            <p class="mb-200">
-                Shades are to only be used if additional contrast is needed to comply to WCAG AA accessibility
-                standards. Avoid using shades as background colors.
-            </p>
-            <h3>
-                Primary Palette
-            </h3>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in cyanShades"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <b-row class="mb-200">
-                <b-col
-                    v-for="(value, alias) in grayShades"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <h3>
-                Secondary Palette
-            </h3>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in pinkShades"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in tealShades"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col
-                    v-for="(value, alias) in yellowShades"
-                    :key="alias"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    lg="2"
-                    class="mb-200">
-                    <ds-color-swatch
-                        :hex="value"
-                        :token="alias" />
-                </b-col>
-            </b-row>
-        </div>
-
-        <div class="my-450">
-            <h2>
-                Grayscale
+                Primary
             </h2>
             <b-row>
                 <b-col
-                    v-for="(value, alias) in grays"
+                    v-for="[alias, value] in blues"
                     :key="alias"
                     cols="6"
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-200">
+                    class="mb-100 text-center">
                     <ds-color-swatch
-                        :hex="value"
                         :is-light="[
-                            'white', 'gray-100', 'gray-150', 'gray-200', 'gray-300', 'gray-400', 'gray-500'
+                            'blue-50', 'blue-100', 'blue-200', 'blue-300', 'blue-400'
                         ].includes(alias)"
-                        :show-border="['white', 'gray-100', 'gray-150'].includes(alias)"
+                        :hex="value"
+                        :show-border="['blue-50', 'blue-100'].includes(alias)"
                         :token="alias" />
                 </b-col>
             </b-row>
         </div>
 
-        <div class="my-450">
+        <div class="my-500">
             <h2>
-                Product Colors
+                Secondary
             </h2>
-            <p>
-                These colors are used to generate
-                <b-link
-                    href="https://bootstrap-vue.org/docs/reference/color-variants"
-                    target="_blank">
-                    variants of Bootstrap components.
-                </b-link>
-                Primary and secondary are the most commonly-used variants. The others may be deprecated
-                for certain components; see the component documentation for details.
-            </p>
             <b-row>
                 <b-col
-                    v-for="(value, alias) in variants"
+                    v-for="[alias, value] in oranges"
                     :key="alias"
                     cols="6"
                     sm="4"
                     md="3"
                     lg="2"
-                    class="mb-200">
+                    class="mb-100 text-center">
                     <ds-color-swatch
+                        :is-light="true"
                         :hex="value"
-                        :is-light="alias === 'light'"
+                        :show-border="['orange-50', 'orange-100'].includes(alias)"
                         :token="alias" />
                 </b-col>
             </b-row>
         </div>
+
+        <div class="my-500">
+            <h2>
+                Neutrals
+            </h2>
+            <b-row>
+                <b-col
+                    v-for="[alias, value] in neutrals"
+                    :key="alias"
+                    cols="6"
+                    sm="4"
+                    md="3"
+                    lg="2"
+                    class="mb-100 text-center">
+                    <ds-color-swatch
+                        :is-light="[
+                            'gray-50', 'gray-100', 'gray-200', 'gray-300', 'gray-400', 'gray-500'
+                        ].includes(alias)"
+                        :hex="value"
+                        :show-border="['gray-50', 'gray-100'].includes(alias)"
+                        :token="alias" />
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-500">
+            <h2>
+                Feedback
+            </h2>
+
+            <b-row class="mt-200">
+                <b-col lg="6">
+                    <h3>
+                        Success
+                    </h3>
+                    <b-row>
+                        <b-col
+                            v-for="[alias, value] in successColors"
+                            :key="alias"
+                            cols="6"
+                            sm="4"
+                            md="3"
+                            lg="4"
+                            class="mb-100 text-center">
+                            <ds-color-swatch
+                                :is-light="true"
+                                :hex="value"
+                                :show-border="['success-50'].includes(alias)"
+                                :token="alias" />
+                        </b-col>
+                    </b-row>
+                </b-col>
+
+                <b-col lg="6">
+                    <h3>
+                        Warning
+                    </h3>
+                    <b-row>
+                        <b-col
+                            v-for="[alias, value] in warningColors"
+                            :key="alias"
+                            cols="6"
+                            sm="4"
+                            md="3"
+                            lg="4"
+                            class="mb-100 text-center">
+                            <ds-color-swatch
+                                :is-light="true"
+                                :hex="value"
+                                :show-border="['warning-50'].includes(alias)"
+                                :token="alias" />
+                        </b-col>
+                    </b-row>
+                </b-col>
+
+                <b-col lg="6">
+                    <h3>
+                        Error
+                    </h3>
+                    <b-row>
+                        <b-col
+                            v-for="[alias, value] in errorColors"
+                            :key="alias"
+                            cols="6"
+                            sm="4"
+                            md="3"
+                            lg="4"
+                            class="mb-100 text-center">
+                            <ds-color-swatch
+                                :is-light="true"
+                                :hex="value"
+                                :show-border="['error-50'].includes(alias)"
+                                :token="alias" />
+                        </b-col>
+                    </b-row>
+                </b-col>
+            </b-row>
+        </div>
+
+        <es-collapse
+            id="legacy-collapse"
+            v-model="legacyCollapseVisible"
+            :is-programmatic-until-user-input="false">
+            <template #title>
+                <h2 class="mb-0">
+                    Legacy color names
+                </h2>
+            </template>
+            <p>
+                These legacy color names have all been updated to pull from the new brand colors above.
+                Care was taken to match the old colors to the closest new color available, but you may still find
+                differences when upgrading to the new visual identity.
+            </p>
+            <p>
+                Please be sure to check all screens
+                and pages of your app and make adjustments as necessary, paying close attention to whether text
+                color is still accessible against the new background color using the
+                <b-link
+                    href="https://webaim.org/resources/contrastchecker/"
+                    target="_blank">
+                    WebAIM color contrast checker
+                </b-link>.
+            </p>
+
+            <div class="my-200">
+                <h3>
+                    Brand Colors
+                </h3>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in brandColors"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-100 text-center">
+                        <ds-color-swatch
+                            :is-light="['teal', 'yellow', 'pink', 'orange'].includes(alias)"
+                            :hex="value"
+                            :token="alias" />
+                        <p class="font-weight-semibold mb-0 mt-50">
+                            {{ brandColorNames[alias] || alias }}
+                        </p>
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="my-200">
+                <h3>
+                    Primary Tints
+                </h3>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in cyanTints"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :is-light="['cyan-100', 'cyan-200', 'cyan-300'].includes(alias)"
+                            :hex="value"
+                            :show-border="['cyan-100'].includes(alias)"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+                <b-row class="mb-200">
+                    <b-col
+                        v-for="(value, alias) in grayTints"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :is-light="['gray-500'].includes(alias)"
+                            :hex="value"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="my-200">
+                <h3>
+                    Secondary Tints
+                </h3>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in pinkTints"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            is-light
+                            :hex="value"
+                            :show-border="['pink-100'].includes(alias)"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in tealTints"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            is-light
+                            :hex="value"
+                            :show-border="['teal-100'].includes(alias)"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in yellowTints"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            is-light
+                            :hex="value"
+                            :show-border="['yellow-100'].includes(alias)"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in orangeTints"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            is-light
+                            :hex="value"
+                            :show-border="['orange-100'].includes(alias)"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="my-200">
+                <h3>
+                    Primary Shades
+                </h3>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in cyanShades"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :hex="value"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+                <b-row class="mb-200">
+                    <b-col
+                        v-for="(value, alias) in grayShades"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :hex="value"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="my-200">
+                <h3>
+                    Secondary Shades
+                </h3>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in pinkShades"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :hex="value"
+                            :is-light="true"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in tealShades"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :hex="value"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in yellowShades"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :hex="value"
+                            :is-light="true"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="my-200">
+                <h3>
+                    Grayscale
+                </h3>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in grays"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :hex="value"
+                            :is-light="[
+                                'white', 'gray-100', 'gray-150', 'gray-200', 'gray-300', 'gray-400', 'gray-500'
+                            ].includes(alias)"
+                            :show-border="['white', 'gray-100', 'gray-150'].includes(alias)"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="my-200">
+                <h3>
+                    Product Colors
+                </h3>
+                <p>
+                    These colors are used to generate
+                    <b-link
+                        href="https://bootstrap-vue.org/docs/reference/color-variants"
+                        target="_blank">
+                        variants of Bootstrap components.
+                    </b-link>
+                    Primary and secondary are the most commonly-used variants. The others may be deprecated
+                    for certain components; see the component documentation for details.
+                </p>
+                <b-row>
+                    <b-col
+                        v-for="(value, alias) in variants"
+                        :key="alias"
+                        cols="6"
+                        sm="4"
+                        md="3"
+                        lg="2"
+                        class="mb-200">
+                        <ds-color-swatch
+                            :hex="value"
+                            :is-light="['danger', 'info', 'light', 'success', 'warning'].includes(alias)"
+                            :token="alias" />
+                    </b-col>
+                </b-row>
+            </div>
+        </es-collapse>
 
         <ds-doc-source
             :doc-code="docCode"
@@ -292,14 +488,23 @@
 </template>
 
 <script>
+import sassBlues from '@energysage/es-bs-base/scss/variables/_blues.scss';
+import sassCoreColors from '@energysage/es-bs-base/scss/variables/_core-colors.scss';
+import sassErrorColors from '@energysage/es-bs-base/scss/variables/_error-colors.scss';
+import sassNeutrals from '@energysage/es-bs-base/scss/variables/_neutrals.scss';
+import sassOranges from '@energysage/es-bs-base/scss/variables/_oranges.scss';
+import sassSuccessColors from '@energysage/es-bs-base/scss/variables/_success-colors.scss';
+import sassWarningColors from '@energysage/es-bs-base/scss/variables/_warning-colors.scss';
+
 import sassBrandColors from '@energysage/es-bs-base/scss/variables/_brand-colors.scss';
 import sassCyans from '@energysage/es-bs-base/scss/variables/_cyans.scss';
 import sassGrays from '@energysage/es-bs-base/scss/variables/_grays.scss';
-import sassOranges from '@energysage/es-bs-base/scss/variables/_oranges.scss';
 import sassPinks from '@energysage/es-bs-base/scss/variables/_pinks.scss';
 import sassTeals from '@energysage/es-bs-base/scss/variables/_teals.scss';
 import sassYellows from '@energysage/es-bs-base/scss/variables/_yellows.scss';
 import sassVariants from '@energysage/es-bs-base/scss/variables/_variants.scss';
+
+const prepareColors = (colors) => Object.entries(colors).reverse();
 
 export default {
     name: 'AtomsColor',
@@ -314,8 +519,23 @@ export default {
                 yellow: 'ES Yellow',
                 orange: 'ES Orange',
             },
-            variants: sassVariants,
+            blues: prepareColors(sassBlues),
+            coreColors: sassCoreColors,
+            coreColorNames: {
+                white: 'ES White',
+                'soft-blue': 'ES Soft Blue',
+                'medium-blue': 'ES Medium Blue',
+                'dark-blue': 'ES Dark Blue',
+                'warm-orange': 'ES Warm Orange',
+            },
+            errorColors: prepareColors(sassErrorColors),
             grays: sassGrays,
+            legacyCollapseVisible: false,
+            neutrals: prepareColors(sassNeutrals),
+            oranges: prepareColors(sassOranges),
+            successColors: prepareColors(sassSuccessColors),
+            variants: sassVariants,
+            warningColors: prepareColors(sassWarningColors),
             compCode: '',
             docCode: '',
         };

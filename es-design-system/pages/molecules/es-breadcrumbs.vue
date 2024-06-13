@@ -4,12 +4,17 @@
             Breadcrumbs
         </h1>
         <p>
-            Extended from <b-link href="https://bootstrap-vue.org/docs/components/breadcrumb">
+            Extended from <b-link
+                href="https://bootstrap-vue.org/docs/components/breadcrumb"
+                target="_blank">
                 bootstrap-vue breadcrumbs
             </b-link>
         </p>
-        <div class="my-450">
+        <div class="my-500">
             <es-breadcrumbs :items="items" />
+        </div>
+        <div class="my-500">
+            <es-breadcrumbs :items="longerItems" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -38,6 +43,20 @@ export default {
                 {
                     text: 'Search',
                     active: true,
+                },
+            ],
+            longerItems: [
+                {
+                    text: 'EnergySage',
+                    to: '#',
+                },
+                {
+                    text: 'Cost of solar',
+                    to: '#',
+                },
+                {
+                    text: 'Solar cost in California',
+                    to: '#',
                 },
             ],
         };

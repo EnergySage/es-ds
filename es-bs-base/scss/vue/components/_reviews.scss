@@ -1,0 +1,208 @@
+@use "../../variables";
+@use "../../mixins/breakpoints";
+
+@include breakpoints.media-breakpoint-up(sm) {
+  .EsReviewsIoCardCarousel {
+    /* keep the clickable arrow width at 43px for accessibility. align the card edges with the standard
+    /* content container edge as soon as we have room, but when the gutter is less than 43px, we do need to
+    /* squash the width of the review card the minimum amount so the arrows have room to show on the sides.
+    /* -53px = 43px width of the clickable arrow + 10px space between that and the card */
+    margin-left: max(calc(-1 * ((100vw - 540px) / 2) - 15px), -53px);
+    margin-right: max(calc(-1 * ((100vw - 540px) / 2) - 15px), -53px);
+
+    ::v-deep .CarouselWidget-prefix .CarouselWidget {
+      /* turn off internal margin bottom so we can control page vertical spacing outside this component */
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include breakpoints.media-breakpoint-up(md) {
+  .EsReviewsIoCardCarousel {
+    /* account for the extra -10px margin applied internal to the widget at this breakpoint */
+    margin-left: max(calc(-1 * ((100vw - 720px) / 2) - 5px), -43px);
+    margin-right: max(calc(-1 * ((100vw - 720px) / 2) - 5px), -43px);
+  }
+}
+
+@include breakpoints.media-breakpoint-up(lg) {
+  .EsReviewsIoCardCarousel {
+    /* account for the extra -10px margin applied internal to the widget at this breakpoint */
+    margin-left: max(calc(-1 * ((100vw - 960px) / 2) - 5px), -43px);
+    margin-right: max(calc(-1 * ((100vw - 960px) / 2) - 5px), -43px);
+  }
+}
+
+@include breakpoints.media-breakpoint-up(xl) {
+  .EsReviewsIoCardCarousel {
+    /* account for the extra -10px margin applied internal to the widget at this breakpoint */
+    margin-left: max(calc(-1 * ((100vw - 1140px) / 2) - 5px), -43px);
+    margin-right: max(calc(-1 * ((100vw - 1140px) / 2) - 5px), -43px);
+  }
+}
+
+@include breakpoints.media-breakpoint-up(xxl) {
+  .EsReviewsIoCardCarousel {
+    /* plenty of space on the sides, so just use the fixed value */
+    margin-left: -43px;
+    margin-right: -43px;
+  }
+}
+
+.EsReviewsIoCardCarousel, .CarouselWidget-prefix .CarouselWidget {
+  /* style overrides for the widget; can't use sass variables with css variables */
+  --author-font-size: 16px !important;
+  --badge-icon-color: #222633 !important;
+  --badge-icon-font-size: 16px !important;
+  --badge-text-color: #222633 !important;
+  --badge-text-font-size: 12px !important;
+  --body-text-color: #222633 !important;
+  --body-text-line-height: 24px !important;
+  --common-star-color: #ff9133 !important;
+  --common-star-disabled-color: #ffdbb5 !important;
+  --header-heading-font-size: 18px !important;
+  --header-heading-line-height: 24px !important;
+  --header-heading-text-color: #222633 !important;
+  --header-padding: 32px !important;
+  --header-subheading-font-size: 16px !important;
+  --header-subheading-font-weight: 400 !important;
+  --header-subheading-line-height: 24px !important;
+  --header-subheading-text-color: #222633 !important;
+  --heading-text-color: #222633 !important;
+  --heading-text-line-height: 24px !important;
+  --item-border-color: #dfe1eb !important;
+  --item-border-radius: 8px !important;
+  --item-border-width: 2px !important;
+  --item-padding: 16px !important;
+  --popup-border-radius: 4px !important;
+  --popup-icon-color: #222633 !important;
+  --popup-backdrop-color: rgba(34, 38, 51, 0.09) !important;
+  --popup-shadow-color: #cfd1df !important;
+  --popup-shadow-size: 12px !important;
+  --scroll-button-horizontal-position: 5px !important;
+  --scroll-button-icon-color: #292929 !important;
+  --scroll-button-icon-size: 32px !important;
+  --small-star-size: 32px !important;
+  margin-bottom: 0;
+  overflow: hidden;
+
+  .CarouselWidget__header {
+    margin-bottom: 32px !important;
+  }
+
+  .R-ReviewsList {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .R-ReviewsList__item {
+    padding: 0 8px !important;
+  }
+
+  .R-ReviewsList__item .item__inner {
+    /* fix safari issue with drop-shadow buggy behavior */
+    transform: translateZ(0);
+    transition: variables.$transition-base;
+    box-shadow: 0 4px 12px 0 #f1f3fb !important;
+  }
+
+  .R-ReviewsList__item:hover .item__inner {
+    border-color: variables.$card-interactive-hover-border-color !important;
+    text-decoration: none;
+  }
+
+  .R-ReviewsList__item:focus {
+    outline: none;
+    .item__inner {
+      border-color: variables.$card-interactive-focus-border-color !important;
+      box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-shadow !important;
+    }
+  }
+
+  .R-ReviewsList__item:active .item__inner {
+    border-color: variables.$card-interactive-active-border-color !important;
+    box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-active-shadow !important;
+    transform: variables.$btn-active-transform;
+  }
+
+  .R-ReviewsList__item--body {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .R-BadgeElement {
+    margin-bottom: 16px !important;
+
+    .R-TextBody {
+      line-height: 20px !important;
+    }
+  }
+
+  .R-flex-row .R-TextBody {
+    margin-bottom: 0 !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+  }
+
+  .cssVar-subheading__number {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    padding: 0 1px;
+  }
+
+  .cssVar-authorName:after {
+    content: '.';
+  }
+
+  .R-GlobalModal__dialog {
+    align-self: center;
+    padding: 10px 32px;
+
+    .controls__button {
+      position: absolute;
+      right: 32px;
+
+      .button__icon {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      &:hover {
+        opacity: .75;
+      }
+    }
+
+    .dialog__inner {
+      padding: 0;
+    }
+
+    .R-TextBody {
+      font-size: 16px !important;
+      font-weight: 300 !important;
+      line-height: 24px !important;
+    }
+
+    .R-BadgeElement {
+      margin-bottom: 32px !important;
+    }
+
+    .R-RatingStars {
+      vertical-align: unset !important;
+    }
+
+    .u-hr {
+      border-color: variables.$gray-500;
+      opacity: 1;
+    }
+  }
+
+  .u-textLeft--all .cssVar-popup-heading-text {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 36px;
+
+    &:after {
+      content: '.';
+    }
+  }
+}
