@@ -6,7 +6,6 @@ export default (
     NEWS_DOMAIN = process.env.NEWS_DOMAIN || 'https://www.energysage.com',
     COMMUNITY_SOLAR_DOMAIN = process.env.COMMUNITY_SOLAR_DOMAIN || 'https://communitysolar.energysage.com',
     HEAT_PUMPS_DOMAIN = process.env.HEAT_PUMPS_DOMAIN || 'https://heatpumps.energysage.com',
-    HELP_DOMAIN = process.env.HELP_DOMAIN || 'https://help.energysage.com',
 ) => ({
     banner: {
         headline: 'Make an impact.',
@@ -38,7 +37,6 @@ export default (
                 { text: 'Solar calculator', url: `${ES_DOMAIN}/solar/calculator/` },
                 { text: 'Solar rebates', url: `${ES_DOMAIN}/market/equipment-rebates/` },
                 { text: 'News', url: `${ES_DOMAIN}/blog/` },
-                { text: 'Help center', url: HELP_DOMAIN, newTab: true },
                 { text: 'Home solar guide', url: `${ES_DOMAIN}/shop/home-solar/` },
                 { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
                 { text: 'Refer a friend', url: `${ES_DOMAIN}/refer-a-friend/` },
