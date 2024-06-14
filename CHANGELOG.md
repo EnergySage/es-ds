@@ -9,14 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
-- fix: center one line popovers
-- feat: mute video to allow autoplay 
+- One-line text in `EsPopver` is now vertically centered
+- `EsVideo` now starts the video off muted to allow autoplay
 
 ## [2.0.3] - 2024-06-13
 
 ### Changed
 
-- fixed `EsZipCodeForm` centering issue
+- Fixed `EsZipCodeForm` centering issue
+- Article images in `EsNavBar` now have rounded corners
 
 ## [2.0.2] - 2024-06-13
 
@@ -1041,7 +1042,8 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
-[2.0.3]: https://github.com/EnergySage/es-ds/compare/v2.0.3...v2.0.3
+[2.0.4]: https://github.com/EnergySage/es-ds/compare/v2.0.3...v2.0.4
+[2.0.3]: https://github.com/EnergySage/es-ds/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/EnergySage/es-ds/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/EnergySage/es-ds/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/EnergySage/es-ds/compare/v1.3.9...v2.0.0
