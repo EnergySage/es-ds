@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
-- One-line text in `EsPopver` is now vertically centered
+- One-line text in `EsPopover` is now vertically centered
 - `EsVideo` now starts the video off muted to allow autoplay
 
 ## [2.0.3] - 2024-06-13
