@@ -179,8 +179,12 @@ export default {
     },
     mounted() {
         if(this.inputId === document.getElementsByName('zip_code')[0].id) {
+            const scrollY = window.scrollY;
+            const scrollX = window.scrollX;
             this.autofocus = true;
+            window.scroll(scrollX, scrollY);
         }
+
     },
     computed: {
         stackBreak() {
