@@ -117,6 +117,7 @@ export { default as IconFilePdf } from './icon-file-pdf.vue';
 export { default as IconFileDocx } from './icon-file-docx.vue';
 
 // State icons
+export { default as IconStateAk } from './states/icon-state-ak.vue';
 export { default as IconStateAl } from './states/icon-state-al.vue';
 export { default as IconStateAr } from './states/icon-state-ar.vue';
 export { default as IconStateAz } from './states/icon-state-az.vue';
@@ -127,6 +128,7 @@ export { default as IconStateDc } from './states/icon-state-dc.vue';
 export { default as IconStateDe } from './states/icon-state-de.vue';
 export { default as IconStateFl } from './states/icon-state-fl.vue';
 export { default as IconStateGa } from './states/icon-state-ga.vue';
+export { default as IconStateHi } from './states/icon-state-hi.vue';
 export { default as IconStateIa } from './states/icon-state-ia.vue';
 export { default as IconStateId } from './states/icon-state-id.vue';
 export { default as IconStateIl } from './states/icon-state-il.vue';
