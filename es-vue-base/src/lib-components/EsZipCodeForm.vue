@@ -62,7 +62,9 @@
                     }"
                     type="submit"
                     :variant="dark ? 'dark-bg' : 'primary'">
-                    <slot name="buttonText"> Submit </slot>
+                    <slot name="buttonText">
+                        Submit
+                    </slot>
                 </es-button>
             </b-form>
             <div
@@ -84,7 +86,9 @@
                         class="text-nowrap"
                         :class="dark ? 'text-white' : ''"
                         :target="privacyPolicyNewTab ? '_blank' : '_self'">
-                        <slot name="privacyPolicyLinkText"> Privacy Policy </slot>
+                        <slot name="privacyPolicyLinkText">
+                            Privacy Policy
+                        </slot>
                     </b-link>
                 </div>
             </div>
@@ -189,9 +193,9 @@ export default {
     },
     mounted() {
         const inputField = document.getElementsByName('zip_code')[0];
-        if(this.inputId === inputField.id) {
+        if (this.inputId === inputField.id) {
             inputField.focus({
-                preventScroll: true
+                preventScroll: true,
             });
         }
     },
