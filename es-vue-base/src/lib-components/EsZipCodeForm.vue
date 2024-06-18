@@ -24,7 +24,6 @@
                 <es-form-input
                     :id="inputId"
                     v-model="zipCode"
-                    :autofocus="autofocus"
                     autocomplete="postal-code"
                     class="mb-100"
                     :class="{
@@ -85,9 +84,7 @@
                         class="text-nowrap"
                         :class="dark ? 'text-white' : ''"
                         :target="privacyPolicyNewTab ? '_blank' : '_self'">
-                        <slot name="privacyPolicyLinkText">
-                            Privacy Policy
-                        </slot>
+                        <slot name="privacyPolicyLinkText"> Privacy Policy </slot>
                     </b-link>
                 </div>
             </div>
@@ -174,17 +171,15 @@ export default {
     data() {
         return {
             zipCode: this.zipCodeValue,
-            autofocus: false,
         };
     },
     mounted() {
-        if(this.inputId === document.getElementsByName('zip_code')[0].id) {
-            const scrollY = window.scrollY;
-            const scrollX = window.scrollX;
-            this.autofocus = true;
-            window.scroll(scrollX, scrollY);
+        let inputField = document.getElementsByName('zip_code')[0];
+        if(this.inputId === inputField.id) {
+            inputField.focus({
+                preventScroll: true
+            });
         }
-
     },
     computed: {
         stackBreak() {
