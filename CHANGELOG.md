@@ -5,9 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.6] - 2024-06-18
+
+## Changes
+
+- Added Alaska and Hawaii state graphics as icons
+- Added restricted chart colors to the Colors docs page
+
 ## [2.0.5] - 2024-06-17
 
+## Changes
+
 - Temporarily revert `EsVideo` default to muted
+- Remove the "Help center" link from `EsFooter`
 
 ## [2.0.4] - 2024-06-13
 
@@ -1046,6 +1056,7 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[2.0.6]: https://github.com/EnergySage/es-ds/compare/v2.0.5...v2.0.6
 [2.0.5]: https://github.com/EnergySage/es-ds/compare/v2.0.4...v2.0.5
 [2.0.4]: https://github.com/EnergySage/es-ds/compare/v2.0.3...v2.0.4
 [2.0.3]: https://github.com/EnergySage/es-ds/compare/v2.0.2...v2.0.3
