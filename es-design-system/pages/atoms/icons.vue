@@ -523,6 +523,10 @@
             class="ds-icon-list m-0 mb-300 p-0"
             :class="{ [textColorClass]: true }">
             <li>
+                <icon-state-ak />
+                <code>IconStateAk</code>
+            </li>
+            <li>
                 <icon-state-al />
                 <code>IconStateAl</code>
             </li>
@@ -561,6 +565,10 @@
             <li>
                 <icon-state-ga />
                 <code>IconStateGa</code>
+            </li>
+            <li>
+                <icon-state-hi />
+                <code>IconStateHi</code>
             </li>
             <li>
                 <icon-state-ia />
