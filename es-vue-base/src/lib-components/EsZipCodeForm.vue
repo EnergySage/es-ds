@@ -173,14 +173,6 @@ export default {
             zipCode: this.zipCodeValue,
         };
     },
-    mounted() {
-        let inputField = document.getElementsByName('zip_code')[0];
-        if(this.inputId === inputField.id) {
-            inputField.focus({
-                preventScroll: true
-            });
-        }
-    },
     computed: {
         stackBreak() {
             let { stackUntil } = this;
@@ -194,6 +186,14 @@ export default {
         zipCodeValue(newVal) {
             this.zipCode = newVal;
         },
+    },
+    mounted() {
+        const inputField = document.getElementsByName('zip_code')[0];
+        if(this.inputId === inputField.id) {
+            inputField.focus({
+                preventScroll: true
+            });
+        }
     },
     methods: {
         handleSubmit() {
