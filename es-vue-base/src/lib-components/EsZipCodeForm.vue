@@ -85,7 +85,9 @@
                         class="text-nowrap"
                         :class="dark ? 'text-white' : ''"
                         :target="privacyPolicyNewTab ? '_blank' : '_self'">
-                        <slot name="privacyPolicyLinkText"> Privacy Policy </slot>
+                        <slot name="privacyPolicyLinkText">
+                            Privacy Policy
+                        </slot>
                     </b-link>
                 </div>
             </div>
@@ -177,8 +179,6 @@ export default {
     },
     mounted() {
         if(this.inputId === document.getElementsByName('zip_code')[0].id) {
-            console.log("This id: " + this.inputId);
-            console.log("First id: " + document.getElementsByName('zip_code')[0].id);
             this.autofocus = true;
         }
     },
