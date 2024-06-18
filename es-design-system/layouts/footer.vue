@@ -38,7 +38,7 @@
 
         <es-footer :content="footerContent">
             <template #logo>
-                <ds-es-logo />
+                <ds-es-logo class="text-white"/>
             </template>
         </es-footer>
     </div>
