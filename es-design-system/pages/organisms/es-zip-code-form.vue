@@ -113,7 +113,7 @@
                     xxl="3">
                     <es-zip-code-form
                         constrained
-                        input-id="hero-example"
+                        input-id="constrained-hero-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="sm"
                         url="https://www.energysage.com/market/start/">
@@ -195,7 +195,7 @@
                     sm="10"
                     md="8">
                     <es-zip-code-form
-                        input-id="hero-example"
+                        input-id="product-hero-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
                         url="https://www.energysage.com/onboarding/start/"
