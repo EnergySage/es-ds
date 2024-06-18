@@ -9,7 +9,7 @@
             introducing new unamed colors.
         </p>
         <p>
-            All colors have CSS utility classes associated with them.
+            All colors (except restricted colors) have CSS utility classes associated with them.
             <code>text-{COLOR_NAME}</code> for text color and <code>bg-{COLOR_NAME}</code>
             for background color.
         </p>
@@ -32,7 +32,6 @@
                             'white', 'soft-blue', 'medium-blue', 'warm-orange'
                         ].includes(alias)"
                         :hex="value"
-                        :show-border="['white', 'soft-blue'].includes(alias)"
                         :token="alias" />
                     <p class="font-weight-semibold mb-0 mt-50">
                         {{ coreColorNames[alias] || alias }}
@@ -181,6 +180,41 @@
                                 :token="alias" />
                         </b-col>
                     </b-row>
+                </b-col>
+            </b-row>
+        </div>
+
+        <div class="my-500">
+            <h2>
+                Restricted colors
+            </h2>
+            <p>
+                Use only for charts and data.
+            </p>
+            <b-row>
+                <b-col
+                    v-for="(value, alias) in chartColors"
+                    :key="alias"
+                    cols="6"
+                    sm="4"
+                    md="3"
+                    lg="2"
+                    class="mb-100 text-center">
+                    <ds-color-swatch
+                        :is-light="[
+                            'myrtle-cactus-blue',
+                            'sunny-yellow',
+                            'petal-purple',
+                            'white-oak',
+                            'earthy-brown'
+                        ].includes(alias)"
+                        :hex="value"
+                        :show-border="['white', 'soft-blue'].includes(alias)"
+                        :style="{ backgroundColor: value }"
+                        :token="alias" />
+                    <p class="font-weight-semibold mb-0 mt-50">
+                        {{ chartColorNames[alias] || alias }}
+                    </p>
                 </b-col>
             </b-row>
         </div>
@@ -520,13 +554,32 @@ export default {
                 orange: 'ES Orange',
             },
             blues: prepareColors(sassBlues),
+            // defining chart colors here just for documentation purposes
+            // they should NOT be put into SASS and should NOT have bg-color utility classes
+            // TODO: move these into a set of JS const variables exported from es-vue-base?
+            chartColors: {
+                'myrtle-cactus-blue': '#3ea2bd',
+                'sunny-yellow': '#ffc021',
+                'petal-purple': '#ca77d1',
+                'leaf-green': '#4a9158',
+                'white-oak': '#d4b595',
+                'earthy-brown': '#9a6d51',
+            },
+            chartColorNames: {
+                'myrtle-cactus-blue': 'ES myrtle cactus blue',
+                'sunny-yellow': 'ES sunny yellow',
+                'petal-purple': 'ES petal purple',
+                'leaf-green': 'ES leaf green',
+                'white-oak': 'ES white oak',
+                'earthy-brown': 'ES earthy brown',
+            },
             coreColors: sassCoreColors,
             coreColorNames: {
-                white: 'ES White',
-                'soft-blue': 'ES Soft Blue',
-                'medium-blue': 'ES Medium Blue',
-                'dark-blue': 'ES Dark Blue',
-                'warm-orange': 'ES Warm Orange',
+                white: 'ES white',
+                'soft-blue': 'ES soft blue',
+                'medium-blue': 'ES medium blue',
+                'dark-blue': 'ES dark blue',
+                'warm-orange': 'ES warm orange',
             },
             errorColors: prepareColors(sassErrorColors),
             grays: sassGrays,
