@@ -173,6 +173,28 @@ you'll create a new page to display the component.
 _Note_ This step also functions as a form of integration testing as it will
 validate the component will import and render on a nuxt page.
 
+### Updating the changelog
+
+In your PR, make sure to include a section in the changelog documenting your
+change. Following [keep a changelog](https://keepachangelog.com/en/1.0.0/)
+conventions this will look similar to the following:
+
+```markdown
+## [Unreleased]
+
+### Added
+
+- Thing one
+
+### Changed
+
+- Thing two
+
+```
+
+This will make it easier to ensure all changes merged into `main` are captured
+in the changelog when publishing a new release.
+
 ### Publishing and Versioning
 
 For simplicity of deployment, versioning of packages are fixed and updated
