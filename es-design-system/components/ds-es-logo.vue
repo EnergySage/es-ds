@@ -5,7 +5,7 @@
             height: height,
             width: width,
         }"
-        viewBox="0 0 205 45"
+        viewBox="0 0 215 45"
         fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <!-- eslint-disable -->
@@ -34,7 +34,7 @@ export default {
          */
         width: {
             type: String,
-            default: '205px',
+            default: '215px',
             required: false,
         },
         /**
