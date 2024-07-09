@@ -20,7 +20,7 @@
             @touchend="upEvent"
             @mouseleave="leaveEvent"
             @blur="leaveEvent">
-            <slot />
+            <slot :active-index="activeIndex" />
         </div>
         <div
             v-if="dots"
