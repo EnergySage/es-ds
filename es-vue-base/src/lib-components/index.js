@@ -9,6 +9,7 @@ export { default as EsCollapse } from './EsCollapse.vue';
 export { default as EsCtaBanner } from './EsCtaBanner.vue';
 export { default as EsCtaCard } from './EsCtaCard.vue';
 export { default as EsDataTable } from './EsDataTable.vue';
+export { default as EsDataTableSimple } from './EsDataTableSimple.vue';
 export { default as EsErrorPage } from './EsErrorPage.vue';
 export { default as EsFileInput } from './EsFileInput.vue';
 export { default as EsFileThumbnail } from './EsFileThumbnail.vue';
