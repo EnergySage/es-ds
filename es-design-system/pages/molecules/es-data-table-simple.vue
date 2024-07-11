@@ -59,6 +59,48 @@
                 table-class="font-size-100"
                 :items="items" />
         </div>
+        <div class="mb-500">
+            <h2 class="mb-200">
+                Slot content
+            </h2>
+            <es-data-table-simple
+                table-class="font-size-100"
+                striped>
+                <b-thead>
+                    <b-tr>
+                        <b-th>
+                            Header text goes here
+                        </b-th>
+                    </b-tr>
+                </b-thead>
+                <b-tbody>
+                    <b-tr>
+                        <b-th>
+                            Field name 1
+                        </b-th>
+                        <b-td>
+                            Item value 1
+                        </b-td>
+                    </b-tr>
+                    <b-tr>
+                        <b-th>
+                            Field name 2
+                        </b-th>
+                        <b-td>
+                            Item value 2
+                        </b-td>
+                    </b-tr>
+                    <b-tr>
+                        <b-th>
+                            Field name 3
+                        </b-th>
+                        <b-td>
+                            Item value 3
+                        </b-td>
+                    </b-tr>
+                </b-tbody>
+            </es-data-table-simple>
+        </div>
         <div class="my-500">
             <h2 class="mb-200">
                 Props
@@ -94,7 +136,7 @@ export default {
                 [
                     'items',
                     'Array',
-                    '',
+                    '[]',
                     'List of values to display.',
                 ],
                 [
