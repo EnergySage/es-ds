@@ -41,6 +41,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/es-data-table-simple">
+                Data table simple
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/es-file-input">
                 File input
             </ds-link>
