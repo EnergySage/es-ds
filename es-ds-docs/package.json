@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "es-ds-docs",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,10 +13,9 @@
     "@energysage/es-bs-base": "^2.0.4",
     "@nuxtjs/google-fonts": "^3.2.0",
     "nuxt": "^3.12.4",
-    "vue": "latest"
+    "vue": "^3.4.34"
   },
   "devDependencies": {
-    "eslint-config-energysage": "^2.2.3",
     "sass": "^1.77.8"
   }
 }
