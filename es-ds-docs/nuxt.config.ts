@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 
     // https://nuxt.com/docs/getting-started/styling#the-css-property
     css: [
-        '@/assets/scss/main.scss',
+        '@energysage/es-bs-base/scss/bootstrap.scss',
     ],
 
     devtools: { enabled: true },
