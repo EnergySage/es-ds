@@ -1,7 +1,6 @@
 <template>
   <div>
     hello world
-    <!--<NuxtRouteAnnouncer />
-    <NuxtWelcome />-->
+    <test-component />
   </div>
 </template>

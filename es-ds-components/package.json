@@ -1,0 +1,14 @@
+{
+  "name": "@energysage/es-ds-components",
+  "version": "0.0.1",
+  "description": "An EnergySage Vue component library",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EnergySage",
+  "license": "MIT",
+  "devDependencies": {
+    "nuxt": "^3.12.4"
+  }
+}

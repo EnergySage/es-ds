@@ -9,6 +9,11 @@ export default defineNuxtConfig({
 
     devtools: { enabled: true },
 
+    // https://nuxt.com/docs/getting-started/layers#usage
+    extends: [
+        '@energysage/es-ds-components',
+    ],
+
     // https://google-fonts.nuxtjs.org/options
     googleFonts: {
         preload: true,
