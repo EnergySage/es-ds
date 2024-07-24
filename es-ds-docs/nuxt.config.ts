@@ -26,5 +26,8 @@ export default defineNuxtConfig({
     modules: [
         // https://google-fonts.nuxtjs.org/getting-started/setup
         "@nuxtjs/google-fonts"
-    ]
+    ],
+
+    // https://nuxt.com/docs/getting-started/deployment#static-hosting
+    ssr: true
 })
