@@ -4,10 +4,12 @@ An EnergySage Nuxt layer library with design system components
 
 ## Usage
 
-`npm install @energysage/es-ds-components`
+```
+npm install @energysage/es-ds-components
+```
 
-*Note:* this library is in pre-release development, so the above command won't yet work, as this package
-is not yet published to NPM.
+*Note: this library is in pre-release development, so the above command won't yet work, as this package
+is not yet published to NPM._
 
 Once the package is installed, you'll need to add a reference to it in your nuxt.config.ts like so:
 
