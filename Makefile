@@ -2,6 +2,25 @@
 dev:
 	overmind s
 
+# Run local v3 docs site with hot reloading hooked up to es-bs-base and es-ds-components
+
+.PHONY: dev-next
+dev-next:
+	npm --prefix es-bs-base link
+	npm --prefix es-ds-components link
+	cd es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
+	npm run --prefix es-ds-docs dev
+
+# Unlink local v3 docs site from local es-bs-base and es-ds-components; restore to NPM versions
+
+.PHONY: unlink
+unlink:
+	npm --prefix es-bs-base unlink @energysage/es-bs-base
+	npm --prefix es-ds-components unlink @energysage/es-ds-components
+	npm --prefix es-ds-docs unlink --no-save @energysage/es-bs-base
+	npm --prefix es-ds-docs unlink --no-save @energysage/es-ds-components
+	npm --prefix es-ds-docs install
+
 .PHONY: lint
 lint:
 	npx lerna run lint
