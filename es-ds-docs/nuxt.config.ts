@@ -27,11 +27,15 @@ export default defineNuxtConfig({
         },
     },
 
-
     modules: [
         // https://google-fonts.nuxtjs.org/getting-started/setup
         "@nuxtjs/google-fonts"
     ],
+
+    sourcemap: {
+        server: true,
+        client: true
+    },
 
     // https://nuxt.com/docs/getting-started/deployment#static-hosting
     ssr: true
