@@ -1,13 +1,13 @@
 # EnergySage Design System
 
 This is a **monorepo** containing the elements required for building experiences
-following the EnergySage Design System of _es-ds_ for short.
+following the EnergySage Design System, or _es-ds_ for short.
 
-- [Public Works](#public-works)
+- [Public works](#public-works)
 - [The parts](#the-parts)
 - [Contributing](#contributing)
 
-## Public Works
+## Public works
 
 This repository `es-ds` **is public** and the contents are licensed under the
 [MIT](https://tldrlegal.com/license/mit-license#summary)
@@ -20,9 +20,54 @@ within private org channels.
 For EnergySage specific resources & channels see the
 [Quick Links section of the Design System confluence page](https://energysage.atlassian.net/wiki/spaces/DS/overview#%F0%9F%96%B1%EF%B8%8F-Quick-Links)
 
-## The Parts
+## The parts
 
-The EnergySage Design System is composed of 2 core npm packages:
+Starting in version 3.0, the EnergySage Design System is composed of 2 core npm packages:
+
+- [@energysage/es-bs-base](https://www.npmjs.com/package/@energysage/es-bs-base)
+- [@energysage/es-ds-components](https://www.npmjs.com/package/@energysage/es-ds-components)
+
+```mermaid
+graph TB
+    subgraph es-ds
+        subgraph "@energysage"
+            A["@energysage/es-bs-base"]
+            C["@energysage/es-ds-components"]
+        end
+        D[es-ds-docs]
+        C-->D
+    end
+    Y(nuxt3)
+    Z(primevue) --> C
+    Y-->D
+```
+
+**es-bs-base**
+
+- [es-bs-base](./es-bs-base/) started as a fork of **Bootstrap 4**.
+- This package overrides the `_variables.scss` file in Bootstrap to the defaults required by the EnergySage design system.
+- There are additional variables and colors that diverge and extend from the core
+Bootstrap framework.
+- The SASS has also been refactored to use
+[the modular system](https://sass-lang.com/blog/the-module-system-is-launched/)
+and dart-sass compiler.
+- Prior to v3.0, `es-bs-base` worked with the `es-vue-base` package, which is based on
+[bootstrap-vue](https://bootstrap-vue.org/). As such, there are still some legacy
+Bootstrap Vue styles present in `es-bs-base`. Those are deprecated and will be removed
+in a future version.
+
+**es-ds-components**
+- [es-ds-components](./es-ds-components/) contains Vue 3 components for use in Nuxt 3 projects.
+It is primarily based on [PrimeVue](https://primevue.org/), with some customizations specific to EnergySage.
+
+**es-ds-docs**
+- This is the design system documentation site powered by Nuxt 3.
+- It also serves a reference for
+how to integrate `es-ds` packages into a Nuxt 3 project.
+
+### Legacy packages
+
+Prior to version 3.0, the EnergySage Design System was composed of 2 core npm packages:
 
 - [@energysage/es-bs-base](https://www.npmjs.com/package/@energysage/es-bs-base)
 - [@energysage/es-vue-base](https://www.npmjs.com/package/@energysage/es-vue-base)
@@ -38,41 +83,19 @@ graph TB
         C-->D
     end
     Y(nuxt2)
-    Z(vue-bootstrap) --> C
+    Z(bootstrap-vue) --> C
     Y-->D
 ```
 
-### es-bs-base
-
-[es-bs-base](./es-bs-base/) started as a fork **bootstrap 4**.
-
-This package overrides the `_variables.scss` file in bootstrap to the ones use
-defaults required by the energysage design system.
-
-There's additional variables and colors that diverge and extend from the core
-bootstrap framework.
-
-Additionally the SASS has been refactored to use
-[the modular system](https://sass-lang.com/blog/the-module-system-is-launched/)
-and dart-sass compiler.
-
-`es-vue-base` has a peer-dependency of
-[bootstrap-vue](https://bootstrap-vue.org/) which is used for vue components.
-Associated styling is vendorized in `es-bs-base` and re-written using the SASS
-modular system.
-
-### es-vue-base
-
-[es-vue-base](./es-vue-base/) contains vue components for use in nuxt projects.
+**es-vue-base**
+- [es-vue-base](./es-vue-base/) contains vue components for use in nuxt projects.
 It has a dependency of [bootstrap-vue](https://bootstrap-vue.org/) as components
 extends or are composed of bootstrap components.
-
-`es-bs-base` is a sibling dependencies and should provide the baseline CSS
+- `es-bs-base` is a sibling dependencies and should provide the baseline CSS
 styling to vue rendered components.
 
-### es-design-system
-
-This is our design-system documentation branch, and reference integration for
+**es-design-system**
+- This is our v2.x design-system documentation site, and reference integration for
 the `es-ds` packages.
 
 ## Contributing
@@ -92,6 +115,12 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 
 ### Installing Dependencies and Linking packages
 
+**v3.0 and later**
+
+1. tbd install command
+
+**v2.x and earlier**
+
 1. `make install` - installs all packages from npm
 2. `make update-peer-deps` - installs necessary peer deps for `es-vue-base` used
    in `es-design-system`
@@ -102,7 +131,40 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 6. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap)
    `es-bs-base/dist` and `es-vue-base/dist` for use in `es-design-system`
 
-### Development Workflow
+### Development workflow
+
+```
+make dev-next
+```
+
+This command will:
+
+- Locally link your `es-bs-base` and `es-ds-components` folders to the `es-ds-docs` Nuxt app
+- Start the `es-ds-docs` local dev server
+
+You can then make changes as desired in either upstream package folder and the local dev server should immediately reflect those changes.
+
+```
+make unlink
+```
+
+This command will:
+
+- Undo the local linking set up by the above command
+- Reinstall the public NPM versions of the `es-bs-base` and `es-ds-components` packages
+
+This enables you to run the `es-ds-docs` server with the state of code that is publicly available on NPM.
+
+```
+cd es-ds-docs
+npm run dev
+```
+
+These commands will:
+- Run the `es-ds-docs` local dev server without locally linking to the `es-bs-base` and `es-ds-components` packages folders
+- Whichever versions of the two upstream packages are installed (or already locally linked) will be used
+
+#### Development workflow prior to v3.0
 
 To develop with hot reloading for all packages you'll want to run `make dev` in
 the `es-ds` directory. This will build and package `es-bs-base` and
@@ -113,7 +175,7 @@ will then start a dev instance for `es-design-system` that will be available at
 Hot reloading will take longer than a typical nuxt app, as it will need to
 rebuild the packages and re-link them. This is expected.
 
-#### Faster Reloads Hack
+**Faster reloads hack**
 
 In a terminal run:
 
