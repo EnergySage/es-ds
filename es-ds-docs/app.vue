@@ -1,6 +1,5 @@
 <template>
-  <div>
-    hello world
-    <test-component />
-  </div>
+  <nuxt-layout>
+    <nuxt-page />
+  </nuxt-layout>
 </template>
