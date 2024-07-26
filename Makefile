@@ -1,9 +1,3 @@
-# Run the old v2 docs site with slow rebuilds of es-bs-base and es-vue-base
-
-.PHONY: legacy-dev
-legacy-dev:
-	overmind s
-
 # Run local v3 docs site with hot reloading hooked up to es-bs-base and es-ds-components
 
 .PHONY: dev
@@ -12,6 +6,12 @@ dev:
 	npm --prefix es-ds-components link
 	cd es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
 	npm run --prefix es-ds-docs dev
+
+# Run the old v2 docs site with slow rebuilds of es-bs-base and es-vue-base
+
+.PHONY: legacy-dev
+legacy-dev:
+	overmind s
 
 # Unlink local v3 docs site from local es-bs-base and es-ds-components; restore to NPM versions
 
@@ -52,6 +52,13 @@ reload:
 
 .PHONY: install
 install:
+	npm install
+	npm --prefix es-bs-base install
+	npm --prefix es-ds-components install
+	npm --prefix es-ds-docs install
+
+.PHONY: legacy-install
+legacy-install:
 	npm install
 	npx lerna exec -- npm install
 

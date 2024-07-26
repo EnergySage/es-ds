@@ -117,11 +117,11 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 
 **v3.0 and later**
 
-1. tbd install command
+1. `make install` - installs all packages from npm
 
 **v2.x and earlier**
 
-1. `make install` - installs all packages from npm
+1. `make legacy-install` - installs all packages from npm
 2. `make update-peer-deps` - installs necessary peer deps for `es-vue-base` used
    in `es-design-system`
 3. `make build-scss-pkg` - build `es-bs-base/dist` locally; we do this first
