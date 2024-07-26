@@ -134,7 +134,7 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 ### Development workflow
 
 ```
-make dev-next
+make dev
 ```
 
 This command will:
@@ -166,7 +166,7 @@ These commands will:
 
 #### Development workflow prior to v3.0
 
-To develop with hot reloading for all packages you'll want to run `make dev` in
+To develop with hot reloading for all packages you'll want to run `make legacy-dev` in
 the `es-ds` directory. This will build and package `es-bs-base` and
 `es-vue-base` and symlink them to `es-design-system` for use in the nuxt app. It
 will then start a dev instance for `es-design-system` that will be available at
