@@ -1,11 +1,13 @@
-.PHONY: dev
-dev:
+# Run the old v2 docs site with slow rebuilds of es-bs-base and es-vue-base
+
+.PHONY: legacy-dev
+legacy-dev:
 	overmind s
 
 # Run local v3 docs site with hot reloading hooked up to es-bs-base and es-ds-components
 
-.PHONY: dev-next
-dev-next:
+.PHONY: dev
+dev:
 	npm --prefix es-bs-base link
 	npm --prefix es-ds-components link
 	cd es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
