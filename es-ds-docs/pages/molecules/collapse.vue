@@ -190,9 +190,9 @@
             <h2>
                 EsCollapse props
             </h2>
-            <!--<ds-prop-table
+            <ds-prop-table
                 :rows="propTableRows"
-                :widths="tableWidths" />-->
+                :widths="tableWidths" />
         </div>
 
         <ds-doc-source
