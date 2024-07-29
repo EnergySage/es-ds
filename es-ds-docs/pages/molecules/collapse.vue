@@ -7,7 +7,7 @@
             Extended from <a
                 href="https://v3.primevue.org/panel/#toggleable"
                 target="_blank">
-                PrimeVue panel
+                PrimeVue Panel
             </a>
         </p>
         <p>
