@@ -1,6 +1,7 @@
 {
   "name": "@energysage/es-ds-components",
   "version": "0.0.1",
+  "private": false,
   "description": "An EnergySage Vue component library",
   "main": "./nuxt.config.ts",
   "scripts": {
