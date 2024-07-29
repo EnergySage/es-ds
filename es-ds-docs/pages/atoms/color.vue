@@ -512,6 +512,10 @@
                 </b-row>
             </div>
         </es-collapse>
+
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-ds-docs/atoms/color.vue" />
     </div>
 </template>
 
@@ -604,108 +608,15 @@ const tealTints = slice(sassTeals, ['teal-400', 'teal-300', 'teal-200', 'teal-10
 const yellowShades = slice(sassYellows, ['yellow-600', 'yellow-700', 'yellow-800']);
 const yellowTints = slice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200', 'yellow-100']);
 
-/*export default {
-    name: 'AtomsColor',
-    data() {
-        return {
-            brandColors: sassBrandColors,
-            brandColorNames: {
-                cyan: 'ES Blue',
-                gray: 'ES Slate',
-                pink: 'ES Pink',
-                teal: 'ES Teal',
-                yellow: 'ES Yellow',
-                orange: 'ES Orange',
-            },
-            blues: prepareColors(sassBlues),
-            // defining chart colors here just for documentation purposes
-            // they should NOT be put into SASS and should NOT have bg-color utility classes
-            // TODO: move these into a set of JS const variables exported from es-vue-base?
-            chartColors: {
-                'myrtle-cactus-blue': '#3ea2bd',
-                'sunny-yellow': '#ffc021',
-                'petal-purple': '#ca77d1',
-                'leaf-green': '#4a9158',
-                'white-oak': '#d4b595',
-                'earthy-brown': '#9a6d51',
-            },
-            chartColorNames: {
-                'myrtle-cactus-blue': 'ES myrtle cactus blue',
-                'sunny-yellow': 'ES sunny yellow',
-                'petal-purple': 'ES petal purple',
-                'leaf-green': 'ES leaf green',
-                'white-oak': 'ES white oak',
-                'earthy-brown': 'ES earthy brown',
-            },
-            coreColors: sassCoreColors,
-            coreColorNames: {
-                white: 'ES white',
-                'soft-blue': 'ES soft blue',
-                'medium-blue': 'ES medium blue',
-                'dark-blue': 'ES dark blue',
-                'warm-orange': 'ES warm orange',
-            },
-            errorColors: prepareColors(sassErrorColors),
-            grays: sassGrays,
-            legacyCollapseVisible: false,
-            neutrals: prepareColors(sassNeutrals),
-            oranges: prepareColors(sassOranges),
-            successColors: prepareColors(sassSuccessColors),
-            variants: sassVariants,
-            warningColors: prepareColors(sassWarningColors),
-            compCode: '',
-            docCode: '',
-        };
-    },
-    computed: {
-        cyan() {
-            return this.slice(sassCyans, ['cyan-500']);
-        },
-        cyanShades() {
-            return this.slice(sassCyans, ['cyan-600', 'cyan-700', 'cyan-800']);
-        },
-        cyanTints() {
-            return this.slice(sassCyans, ['cyan-400', 'cyan-300', 'cyan-200', 'cyan-100']);
-        },
-        orangeTints() {
-            return this.slice(sassOranges, ['orange-400', 'orange-300', 'orange-200', 'orange-100']);
-        },
-        pinkShades() {
-            return this.slice(sassPinks, ['pink-600', 'pink-700', 'pink-800']);
-        },
-        pinkTints() {
-            return this.slice(sassPinks, ['pink-400', 'pink-300', 'pink-200', 'pink-100']);
-        },
-        gray() {
-            return this.slice(sassGrays, ['gray-900']);
-        },
-        grayShades() {
-            return this.slice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200']);
-        },
-        grayTints() {
-            return this.slice(sassGrays, ['gray-800', 'gray-700', 'gray-600', 'gray-500']);
-        },
-        tealShades() {
-            return this.slice(sassTeals, ['teal-600', 'teal-700', 'teal-800']);
-        },
-        tealTints() {
-            return this.slice(sassTeals, ['teal-400', 'teal-300', 'teal-200', 'teal-100']);
-        },
-        yellowShades() {
-            return this.slice(sassYellows, ['yellow-600', 'yellow-700', 'yellow-800']);
-        },
-        yellowTints() {
-            return this.slice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200', 'yellow-100']);
-        },
-    },
-    methods: {
-        slice(colors, tokens) {
-            const result = {};
-            tokens.forEach((token) => {
-                result[token] = colors[token];
-            });
-            return result;
-        },
-    },
-};*/
+const { $prism } = useNuxtApp();
+const docCode = ref('');
+
+if ($prism) {
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    const docSource = await import('./color.vue?raw');
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
 </script>
