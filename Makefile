@@ -2,10 +2,10 @@
 
 .PHONY: dev
 dev:
-	npm --prefix es-bs-base link
-	npm --prefix es-ds-components link
+	cd es-bs-base; npm link
+	cd es-ds-components; npm link
 	cd es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
-	npm run --prefix es-ds-docs dev
+	cd es-ds-docs; npm run dev
 
 # Run the old v2 docs site with slow rebuilds of es-bs-base and es-vue-base
 
@@ -17,11 +17,11 @@ legacy-dev:
 
 .PHONY: unlink
 unlink:
-	npm --prefix es-bs-base unlink @energysage/es-bs-base
-	npm --prefix es-ds-components unlink @energysage/es-ds-components
-	npm --prefix es-ds-docs unlink --no-save @energysage/es-bs-base
-	npm --prefix es-ds-docs unlink --no-save @energysage/es-ds-components
-	npm --prefix es-ds-docs install
+	cd es-bs-base; npm unlink @energysage/es-bs-base
+	cd es-ds-components; npm unlink @energysage/es-ds-components
+	cd es-ds-docs; npm unlink --no-save @energysage/es-bs-base
+	cd es-ds-docs; npm unlink --no-save @energysage/es-ds-components
+	cd es-ds-docs npm install
 
 .PHONY: lint
 lint:
