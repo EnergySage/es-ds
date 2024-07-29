@@ -21,6 +21,7 @@
                     Molecules
                 </ds-link>
             </div>
+            <ds-molecules-list class="mb-100" />
         </li>
     </ul>
 </template>
