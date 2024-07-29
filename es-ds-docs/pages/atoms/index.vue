@@ -1,5 +1,8 @@
 <template>
     <div>
-        atoms
+        <h1>
+            Atoms
+        </h1>
+        <ds-atoms-list />
     </div>
 </template>

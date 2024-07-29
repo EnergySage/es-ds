@@ -32,6 +32,7 @@
                             'white', 'soft-blue', 'medium-blue', 'warm-orange'
                         ].includes(alias)"
                         :hex="value"
+                        :show-border="['white'].includes(alias)"
                         :token="alias" />
                     <p class="font-weight-semibold mb-0 mt-50">
                         {{ coreColorNames[alias] || alias }}
