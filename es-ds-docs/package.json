@@ -14,9 +14,11 @@
     "@energysage/es-ds-components": "^0.0.1",
     "@nuxtjs/google-fonts": "^3.2.0",
     "nuxt": "^3.12.4",
+    "primevue": "^3.53.0",
     "vue": "^3.4.34"
   },
   "devDependencies": {
+    "nuxt-primevue": "^3.0.0",
     "sass": "^1.77.8"
   }
 }
