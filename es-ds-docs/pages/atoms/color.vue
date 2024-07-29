@@ -557,7 +557,7 @@ const brandColorNames = {
 const blues = prepareColors(sassBlues);
 // defining chart colors here just for documentation purposes
 // they should NOT be put into SASS and should NOT have bg-color utility classes
-// TODO: move these into a set of JS const variables exported from es-vue-base?
+// TODO: move these into a set of JS const variables exported from es-ds-components?
 const chartColors = {
     'myrtle-cactus-blue': '#3ea2bd',
     'sunny-yellow': '#ffc021',

@@ -13,6 +13,7 @@
                 </b-row>
                 <b-row>
                     <b-col
+                        class="mb-300"
                         cols="12">
                         <slot />
                     </b-col>
