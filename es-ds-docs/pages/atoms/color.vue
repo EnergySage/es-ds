@@ -220,19 +220,12 @@
             </b-row>
         </div>
 
-        <!-- TODO: replace with real Collapse component -->
-        <h2>
-            Legacy color names
-        </h2>
-        <!--<es-collapse
-            id="legacy-collapse"
-            v-model="legacyCollapseVisible"
-            :is-programmatic-until-user-input="false">
+        <es-collapse>
             <template #title>
                 <h2 class="mb-0">
                     Legacy color names
                 </h2>
-            </template>-->
+            </template>
             <p>
                 These legacy color names have all been updated to pull from the new brand colors above.
                 Care was taken to match the old colors to the closest new color available, but you may still find
@@ -518,7 +511,7 @@
                     </b-col>
                 </b-row>
             </div>
-        <!--</es-collapse>-->
+        </es-collapse>
     </div>
 </template>
 
@@ -610,8 +603,6 @@ const tealShades = slice(sassTeals, ['teal-600', 'teal-700', 'teal-800']);
 const tealTints = slice(sassTeals, ['teal-400', 'teal-300', 'teal-200', 'teal-100']);
 const yellowShades = slice(sassYellows, ['yellow-600', 'yellow-700', 'yellow-800']);
 const yellowTints = slice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200', 'yellow-100']);
-
-const legacyCollapseVisible = ref(false);
 
 /*export default {
     name: 'AtomsColor',
