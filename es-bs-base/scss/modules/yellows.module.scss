@@ -1,0 +1,13 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  yellow-100: variables.$yellow-100;
+  yellow-200: variables.$yellow-200;
+  yellow-300: variables.$yellow-300;
+  yellow-400: variables.$yellow-400;
+  yellow-500: variables.$yellow-500;
+  yellow-600: variables.$yellow-600;
+  yellow-700: variables.$yellow-700;
+  yellow-800: variables.$yellow-800;
+}

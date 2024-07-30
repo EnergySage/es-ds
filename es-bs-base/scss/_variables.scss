@@ -654,6 +654,10 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
+// primevue collapse transition
+$transition-collapse-primevue-expand: max-height 1s ease-in-out !default;
+$transition-collapse-primevue-collapse: max-height .75s cubic-bezier(0, 1, 0, 1) !default;
+
 $embed-responsive-aspect-ratios: () !default;
 $embed-responsive-aspect-ratios: list.join(
   (
