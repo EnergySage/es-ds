@@ -1,5 +1,5 @@
 <template>
-    <div width: 100%;>
+    <div>
         <h1>
             Layout
         </h1>
