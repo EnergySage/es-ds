@@ -28,7 +28,7 @@
                     <p class="font-size-sm mb-0">
                         <ul class="component-list list-unstyled mb-0">
                             <li class="d-inline-block">
-                                Used by
+                                Used by&nbsp;
                             </li>
                             <li
                                 v-for="component in item.components"
@@ -57,7 +57,7 @@ import { computed } from "vue";
 const BASE_FONT_SIZE_PX = 16;
 
 const COMPONENT_NAME_URLS = {
-    /*
+    /* TODO: uncomment once these molecules exist
     accordion: '/molecules/es-accordion',
     badge: '/molecules/es-badge',
     button: '/molecules/es-button',
@@ -109,7 +109,7 @@ const docCode = ref("");
 
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import("./color.vue?raw");
+    const docSource = await import("./corners.vue?raw");
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
     docCode.value = $prism.normalizeCode(docSource.default);
