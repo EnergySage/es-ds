@@ -435,6 +435,7 @@
   }
 
   &::-webkit-slider-thumb {
+    appearance: none;
     width: variables.$custom-range-thumb-width;
     height: variables.$custom-range-thumb-height;
     margin-top: (variables.$custom-range-track-height - variables.$custom-range-thumb-height) * .5; // Webkit specific
@@ -443,7 +444,6 @@
     @include border-radius.border-radius(variables.$custom-range-thumb-border-radius);
     @include box-shadow.box-shadow(variables.$custom-range-thumb-box-shadow);
     @include transition.transition(variables.$custom-forms-transition);
-    appearance: none;
 
     &:active {
       @include gradients.gradient-bg(variables.$custom-range-thumb-active-bg);
@@ -462,6 +462,7 @@
   }
 
   &::-moz-range-thumb {
+    appearance: none;
     width: variables.$custom-range-thumb-width;
     height: variables.$custom-range-thumb-height;
     @include gradients.gradient-bg(variables.$custom-range-thumb-bg);
@@ -469,7 +470,6 @@
     @include border-radius.border-radius(variables.$custom-range-thumb-border-radius);
     @include box-shadow.box-shadow(variables.$custom-range-thumb-box-shadow);
     @include transition.transition(variables.$custom-forms-transition);
-    appearance: none;
 
     &:active {
       @include gradients.gradient-bg(variables.$custom-range-thumb-active-bg);
@@ -488,6 +488,7 @@
   }
 
   &::-ms-thumb {
+    appearance: none;
     width: variables.$custom-range-thumb-width;
     height: variables.$custom-range-thumb-height;
     margin-top: 0; // Edge specific
@@ -498,7 +499,6 @@
     @include border-radius.border-radius(variables.$custom-range-thumb-border-radius);
     @include box-shadow.box-shadow(variables.$custom-range-thumb-box-shadow);
     @include transition.transition(variables.$custom-forms-transition);
-    appearance: none;
 
     &:active {
       @include gradients.gradient-bg(variables.$custom-range-thumb-active-bg);
