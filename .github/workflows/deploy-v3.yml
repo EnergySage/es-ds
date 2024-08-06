@@ -1,0 +1,43 @@
+name: build & deploy
+
+on:
+    push:
+        branches:
+            - esds-3.0-vue3-primevue
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        permissions:
+            id-token: write
+            contents: read
+
+        steps:
+            - name: Checkout Repo 🗃️
+              uses: actions/checkout@v4
+              with:
+                ref: esds-3.0-vue3-primevue
+
+            - name: Log into ES_DS_DEV AWS account 🔑
+              id: creds
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                aws-region: us-east-1
+                role-to-assume: arn:aws:iam::453321834875:role/github-write-to-s3
+                output-credentials: true
+
+            - name: Log into CodeArtifact 🗝️
+              shell: bash
+              run: |
+                  aws codeartifact login --tool npm --domain energysage --domain-owner 659694780082 --repository cloud-engineering
+            - name: Building ES-DS version 3
+              working-directory: ./es-ds-docs
+              shell: bash
+              run: |
+                npm install
+                npx nuxt generate
+            - name: Deploying to S3 📍
+              working-directory: ./es-ds-docs
+              shell: bash
+              run: |
+                aws s3 cp --recursive ./dist/ s3://es-ds-version-2
