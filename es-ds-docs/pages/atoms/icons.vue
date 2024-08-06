@@ -10,13 +10,20 @@
                 the container in which they're placed. To change their color, simply place the appropriate
                 <code>text-{xxx}</code> utility class on their containing element.
             </p>
-            <b-form-group label="Select an option to see how the icons look with that color applied.">
-                <b-form-radio-group
-                    id="icon-color-options"
+            <p>Select an option to see how the icons look with that color applied.</p>
+            <div
+                v-for="color in colorOptions"
+                :key="color.value"
+                class="flex flex-column align-items-center">
+                <RadioButton
                     v-model="activeColor"
-                    :options="colorOptions"
-                    name="icon-color-options" />
-            </b-form-group>
+                    :inputId="color.value"
+                    name="dynamic"
+                    :value="color.value" />
+                <label :for="color.value" class="ml-2">
+                    {{ color.text }}
+                </label>
+            </div>
         </div>
         <h2>
             Base Icons
@@ -26,7 +33,7 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ textColorClass: true }">
+            :class="{ [ textColorClass() ]: true }">
             <li>
                 <icon-arrow-clockwise />
                 <code>IconArrowClockwise</code>
@@ -361,7 +368,7 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ textColorClass: true }">
+            :class="{ [ textColorClass() ]: true }">
             <li>
                 <icon-star-empty />
                 <code>IconStarEmpty</code>
@@ -384,7 +391,7 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ textColorClass: true }">
+            :class="{ [ textColorClass() ]: true }">
             <li>
                 <icon-bank />
                 <code>IconBank</code>
@@ -467,7 +474,7 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ textColorClass: true }">
+            :class="{ [ textColorClass() ]: true }">
             <li>
                 <icon-facebook />
                 <code>IconFacebook</code>
@@ -498,7 +505,7 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ textColorClass: true }">
+            :class="{ [ textColorClass() ]: true }">
             <li>
                 <icon-file-doc />
                 <code>IconFileDoc</code>
@@ -521,7 +528,7 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ textColorClass: true }">
+            :class="{ [ textColorClass() ]: true }">
             <li>
                 <icon-state-ak />
                 <code>IconStateAk</code>
@@ -732,7 +739,7 @@
         </h2>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ textColorClass: true }">
+            :class="{ [ textColorClass() ]: true }">
             <li>
                 <icon-video-play />
                 <code>IconVideoPlay</code>
@@ -746,10 +753,10 @@
 </template>
 
 <script setup lang="ts">
-// import sassIconColors from '@energysage/es-bs-base/scss/variables/_icon-colors.scss';
-import sassBlues from '@energysage/es-bs-base/scss/modules/blues.module.scss';
+import sassIconColors from '@energysage/es-bs-base/scss/modules/icon-colors.module.scss';
+import { computed, ref } from "vue";
 
-const colorNames = Object.keys(sassBlues)
+const colorNames = Object.keys(sassIconColors)
     .map((k) => k)
     .reduce((prev, cur) => {
         // eslint-disable-next-line no-param-reassign
@@ -762,13 +769,14 @@ const colorOptions = Object.keys(colorNames).map((k) => ({
     value: k,
 }));
 
-const activeColor = colorNames.body;
+let activeColor = ref(colorNames.body);
+
+const textColorClass = () => {
+    return `text-${activeColor.value}`;
+};
 
 const docCode = ref('');
 
-const textColorClass = () => {
-    return `text-${activeColor}`;
-}
 const { $prism } = useNuxtApp();
 
 if ($prism) {
