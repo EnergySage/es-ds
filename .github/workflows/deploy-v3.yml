@@ -1,4 +1,4 @@
-name: build & deploy
+name: build & deploy esds 3.0
 
 on:
     push:
