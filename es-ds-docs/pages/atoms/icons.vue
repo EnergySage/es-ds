@@ -172,7 +172,7 @@
                 <code>IconEnvelope</code>
             </li>
             <li>
-                <icon-e-s-leaf />
+                <icon-es-leaf />
                 <code>IconESLeaf</code>
             </li>
             <li>
