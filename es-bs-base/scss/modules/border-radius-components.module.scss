@@ -1,0 +1,17 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  accordion: variables.$accordion-border-radius;
+  badge: variables.$badge-border-radius;
+  button: variables.$btn-border-radius;
+  card: variables.$card-border-radius;
+  data-table: variables.$table-border-radius;
+  form-message: variables.$alert-border-radius;
+  modal: variables.$modal-content-border-radius;
+  pagination: variables.$pagination-border-radius;
+  popover: variables.$popover-border-radius;
+  textarea: variables.$input-border-radius;
+  text-input: variables.$input-border-radius;
+  verification-code: variables.$verification-code-border-radius;
+}
