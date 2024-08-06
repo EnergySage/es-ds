@@ -10,12 +10,12 @@
         <path
             fill-rule="evenodd"
             clip-rule="evenodd"
-            d="M7.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L14.586 12 7.293 4.707a1 1 0 0 1 0-1.414Z" />
+            d="M7.707 7.293a1 1 0 0 1 0 1.414L4.414 12l3.293 3.293a1 1 0 1 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 0Zm8.586 0a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L19.586 12l-3.293-3.293a1 1 0 0 1 0-1.414Z" />
     </svg>
 </template>
 <script>
 export default {
-    name: 'IconChevronRight',
+    name: 'IconChevronHorizontal',
     props: {
         /**
          * Width

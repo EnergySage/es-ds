@@ -8,14 +8,21 @@
         viewBox="0 0 24 24"
         fill="currentColor">
         <path
+            d="M1.879 3.879A3 3 0 0 1 4 3h16a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V6a3 3 0 0 1 .879-2.121Z"
+            fill="none" />
+        <path
             fill-rule="evenodd"
             clip-rule="evenodd"
-            d="M7.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L14.586 12 7.293 4.707a1 1 0 0 1 0-1.414Z" />
+            d="M4 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4ZM1.879 3.879A3 3 0 0 1 4 3h16a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V6a3 3 0 0 1 .879-2.121Z" />
+        <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="m8.876 14.782-7.5-6.001 1.249-1.562 7.5 6.001a3 3 0 0 0 3.75 0l7.5-6 1.25 1.56-7.501 6.002a5 5 0 0 1-6.248 0Z" />
     </svg>
 </template>
 <script>
 export default {
-    name: 'IconChevronRight',
+    name: 'IconEnvelope',
     props: {
         /**
          * Width

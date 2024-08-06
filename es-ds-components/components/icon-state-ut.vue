@@ -5,17 +5,17 @@
             width: width,
         }"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
+        viewBox="0 0 161.66 200"
         fill="currentColor">
         <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M7.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L14.586 12 7.293 4.707a1 1 0 0 1 0-1.414Z" />
+            d="M109.02 39.9c-1.48.04-15.02.46-15.18.3-.11-.1-.16-9.56-.17-10.59-.17-9.8-.33-19.61-.49-29.42C63.49.67 33.79.61 4.11 0L0 199.46c53.89 1.09 107.81.53 161.66-1.7-2.38-53.11-4.78-106.22-7.14-159.32-15.17.63-30.33 1.12-45.5 1.46"
+            style="stroke-width: 0" />
     </svg>
 </template>
+
 <script>
 export default {
-    name: 'IconChevronRight',
+    name: 'IconStateUt',
     props: {
         /**
          * Width

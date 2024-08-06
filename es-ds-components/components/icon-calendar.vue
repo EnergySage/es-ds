@@ -8,14 +8,21 @@
         viewBox="0 0 24 24"
         fill="currentColor">
         <path
+            d="M6 3a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h12a5 5 0 0 0 5-5V8a5 5 0 0 0-5-5H6Z"
+            fill="none" />
+        <path
             fill-rule="evenodd"
             clip-rule="evenodd"
-            d="M7.293 3.293a1 1 0 0 1 1.414 0l8 8a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414-1.414L14.586 12 7.293 4.707a1 1 0 0 1 0-1.414Z" />
+            d="M6 5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6ZM1 8a5 5 0 0 1 5-5h12a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H6a5 5 0 0 1-5-5V8Z" />
+        <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8 1a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1Zm8 0a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V2a1 1 0 0 1 1-1ZM1 10a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1Z" />
     </svg>
 </template>
 <script>
 export default {
-    name: 'IconChevronRight',
+    name: 'IconCalendar',
     props: {
         /**
          * Width
