@@ -42,8 +42,7 @@ jobs:
               working-directory: ./es-ds-docs
               shell: bash
               run: |
-                npm install
-                nxp nuxt generate
+                npx nuxt generate
             - name: Deploying to S3 📍
               working-directory: ./es-ds-docs
               shell: bash
