@@ -16,22 +16,18 @@
                 Inline
             </h2>
             <div>
-                <div class="flex flex-wrap gap-3">
-                    <div class="custom-control custom-control-inline custom-radio">
-                        <RadioButton class="custom-control-input" v-model="fruit" inputId="fruit1" name="fruit" value="apple" />
-                        <label class="custom-control-label" for="fruit1">Apple</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio">
-                        <RadioButton class="custom-control-input" v-model="fruit" inputId="fruit2" name="fruit" value="banana" />
-                        <label class="custom-control-label" for="fruit2">Banana</label>
-                    </div>
-                    <div class="custom-control custom-control-inline custom-radio">
-                        <RadioButton class="custom-control-input" v-model="fruit" inputId="fruit3" name="fruit" value="cherry" />
-                        <label class="custom-control-label" for="fruit3">Cherry</label>
-                    </div>
+                <div class="custom-control custom-control-inline custom-radio">
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" v-model="fruit" inputId="fruit1" value="apple" />
+                    <label for="fruit1" class="custom-control-label">Apple</label>
                 </div>
-
-                {{ fruit }}
+                <div class="custom-control custom-control-inline custom-radio">
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" v-model="fruit" inputId="fruit2" value="banana" />
+                    <label for="fruit2" class="custom-control-label">Banana</label>
+                </div>
+                <div class="custom-control custom-control-inline custom-radio">
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" v-model="fruit" inputId="fruit3" value="cherry" />
+                    <label for="fruit3" class="custom-control-label">Cherry</label>
+                </div>
             </div>
         </div>
 
@@ -41,15 +37,15 @@
             </h2>
             <div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" v-model="fruit" inputId="fruit1" name="fruit" value="apple" />
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" v-model="fruit" inputId="fruit1" value="apple" />
                     <label class="custom-control-label" for="fruit1">Apple</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" v-model="fruit" inputId="fruit2" name="fruit" value="banana" />
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" v-model="fruit" inputId="fruit2" value="banana" />
                     <label class="custom-control-label" for="fruit2">Banana</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" v-model="fruit" inputId="fruit3" name="fruit" value="cherry" />
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" v-model="fruit" inputId="fruit3" value="cherry" />
                     <label class="custom-control-label" for="fruit3">Cherry</label>
                 </div>
             </div>
@@ -61,15 +57,15 @@
             </h2>
             <div>
                 <div class="custom-control custom-radio">
-                    <RadioButton disabled class="custom-control-input" v-model="fruit" inputId="fruit1" name="fruit" value="apple" />
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" disabled v-model="fruit" inputId="fruit1" value="apple" />
                     <label class="custom-control-label" for="fruit1">Apple</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <RadioButton disabled class="custom-control-input" v-model="fruit" inputId="fruit2" name="fruit" value="banana" />
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" disabled v-model="fruit" inputId="fruit2" value="banana" />
                     <label class="custom-control-label" for="fruit2">Banana</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" disabled v-model="fruit" inputId="fruit3" name="fruit" value="cherry" />
+                    <RadioButton class="custom-control-wrapper" inputClass="custom-control-input" disabled v-model="fruit" inputId="fruit3" value="cherry" />
                     <label class="custom-control-label" for="fruit3">Cherry</label>
                 </div>
             </div>
