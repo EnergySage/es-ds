@@ -60,8 +60,8 @@ legacy-build:
 
 .PHONY: publish
 publish:
-	npm --prefix es-bs-base run publish
-	npm --prefix es-ds-components run publish
+	cd es-bs-base; npm publish --tag alpha
+	cd es-ds-components; npm publish
 
 .PHONY: legacy-publish
 legacy-publish:
@@ -90,6 +90,10 @@ legacy-install:
 	npx lerna exec -- npm install
 
 # Bootstraping Commands (not reguarly called)
+
+.PHONY: update-docs-deps
+update-docs-deps:
+	cd es-ds-docs; npm uninstall @energysage/es-bs-base && npm install @energysage/es-bs-base@alpha && npm uninstall @energysage/es-ds-components && npm install @energysage/es-ds-components
 
 .PHONY: legacy-build-scss-pkg
 legacy-build-scss-pkg:

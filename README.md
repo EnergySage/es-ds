@@ -268,13 +268,18 @@ Assuming changes are approved, the process of publishing a new version is...
 0. Ensure your local environment is
    [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
    the `main` branch
-1. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
-2. `make install` - Install dependencies locally
-3. `make symlink` - Symlink the packages locally
+1. Make sure the package.json versions in `es-bs-base` and `es-ds-components` is updated to a new version 
+   that hasn't been published before on NPM.
+2. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
+3. `make install && make symlink` - Install and symlink dependencies locally
 4. `make build` - Build all packages to `*/dist` folders locally
 5. `make lint && make test` - Run tests and linting to ensure they pass
 6. `make publish` - Publish updated packages to
    [npmjs.com](https://www.npmjs.com/org/energysage)
+7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
+8. `make update-docs-deps` - Install the new published versions locally
+9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
+   Commit and push the changelog and `package-lock.json` updates
 
 #### (LEGACY VERSION PRE-3.0) Publishing a new version of a package
 
