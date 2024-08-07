@@ -1,10 +1,7 @@
 # Run local v3 docs site with hot reloading hooked up to es-bs-base and es-ds-components
 
 .PHONY: dev
-dev:
-	cd es-bs-base; npm link
-	cd es-ds-components; npm link
-	cd es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
+dev: symlink
 	cd es-ds-docs; npm run dev
 
 # Run the old v2 docs site with slow rebuilds of es-bs-base and es-vue-base
@@ -12,6 +9,12 @@ dev:
 .PHONY: legacy-dev
 legacy-dev:
 	overmind s
+
+.PHONY: symlink
+symlink:
+	cd es-bs-base; npm link
+	cd es-ds-components; npm link
+	cd es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
 
 # Unlink local v3 docs site from local es-bs-base and es-ds-components; restore to NPM versions
 
@@ -25,26 +28,51 @@ unlink:
 
 .PHONY: lint
 lint:
+	npm --prefix es-bs-base run lint
+# TODO: set up linting for es-ds-components and es-ds-docs
+# 	npm --prefix es-ds-components run lint
+# 	npm --prefix es-ds-docs run lint
+
+.PHONY: legacy-lint
+legacy-lint:
 	npx lerna run lint
 
 .PHONY: test
 test:
+	npm --prefix es-bs-base run test
+# TODO: set up testing for es-ds-components and es-ds-docs
+#	npm --prefix es-ds-components run test
+#	npm --prefix es-ds-docs run test
+
+.PHONY: legacy-test
+legacy-test:
 	npx lerna run test
 
 .PHONY: build
 build:
+	npm --prefix es-bs-base run build
+	npm --prefix es-ds-docs run build
+# es-ds-components does not have a build step
+
+.PHONY: legacy-build
+legacy-build:
 	npx lerna run build
 
 .PHONY: publish
 publish:
+	npm --prefix es-bs-base run publish
+	npm --prefix es-ds-components run publish
+
+.PHONY: legacy-publish
+legacy-publish:
 	npx lerna publish
 
-.PHONY: symlink
-symlink:
+.PHONY: legacy-symlink
+legacy-symlink:
 	npx lerna bootstrap
 
-.PHONE: reload
-reload:
+.PHONE: legacy-reload
+legacy-reload:
 	npm --prefix es-vue-base run build
 	npx lerna bootstrap
 
@@ -52,7 +80,6 @@ reload:
 
 .PHONY: install
 install:
-	npm install
 	npm --prefix es-bs-base install
 	npm --prefix es-ds-components install
 	npm --prefix es-ds-docs install
@@ -64,15 +91,15 @@ legacy-install:
 
 # Bootstraping Commands (not reguarly called)
 
-.PHONY: build-scss-pkg
-build-scss-pkg:
+.PHONY: legacy-build-scss-pkg
+legacy-build-scss-pkg:
 	npm run --prefix es-bs-base build
 
-.PHONY: build-vue-pkg
-build-vue-pkg:
+.PHONY: legacy-build-vue-pkg
+legacy-build-vue-pkg:
 	npm run --prefix es-vue-base build
 
-.PHONY: update-peer-deps
-update-peer-deps:
+.PHONY: legacy-update-peer-deps
+legacy-update-peer-deps:
 	npm --prefix es-vue-base install bootstrap-vue@2 \
 		vue@2

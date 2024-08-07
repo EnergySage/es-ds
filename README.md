@@ -122,13 +122,13 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 **v2.x and earlier**
 
 1. `make legacy-install` - installs all packages from npm
-2. `make update-peer-deps` - installs necessary peer deps for `es-vue-base` used
+2. `make legacy-update-peer-deps` - installs necessary peer deps for `es-vue-base` used
    in `es-design-system`
-3. `make build-scss-pkg` - build `es-bs-base/dist` locally; we do this first
+3. `make legacy-build-scss-pkg` - build `es-bs-base/dist` locally; we do this first
    since `es-vue-base` imports it `@import '~@energysage/es-bs-base/scss/includes'`
-4. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap) `es-bs-base/dist`
-5. `make build-vue-pkg` - build `es-vue-base/dist` locally
-6. `make symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap)
+4. `make legacy-symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap) `es-bs-base/dist`
+5. `make legacy-build-vue-pkg` - build `es-vue-base/dist` locally
+6. `make legacy-symlink` - [symlink or bootstrap](https://lerna.js.org/docs/features/bootstrap)
    `es-bs-base/dist` and `es-vue-base/dist` for use in `es-design-system`
 
 ### Development workflow
@@ -262,7 +262,21 @@ in the changelog when publishing a new release.
 For simplicity of deployment, versioning of packages are fixed and updated
 together.
 
-#### Publishing a new version of a package
+#### Publishing a new version of a package (3.0 and later)
+
+Assuming changes are approved, the process of publishing a new version is...
+0. Ensure your local environment is
+   [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
+   the `main` branch
+1. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
+2. `make install` - Install dependencies locally
+3. `make symlink` - Symlink the packages locally
+4. `make build` - Build all packages to `*/dist` folders locally
+5. `make lint && make test` - Run tests and linting to ensure they pass
+6. `make publish` - Publish updated packages to
+   [npmjs.com](https://www.npmjs.com/org/energysage)
+
+#### (LEGACY VERSION PRE-3.0) Publishing a new version of a package
 
 Assuming changes are approved, the process of publishing a new version is...
 
@@ -270,21 +284,21 @@ Assuming changes are approved, the process of publishing a new version is...
    [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
    the `main` branch
 1. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
-2. `make install && make symlink` - Install the new published versions locally
+2. `make legacy-install && make legacy-symlink` - Install the new published versions locally
    and symlink them
-3. `make build` - Build all packages to `*/dist` folders locally
-4. `make lint && make test` - Run tests and linting to ensure they pass
-5. `make publish` - Publish updated packages to
+3. `make legacy-build` - Build all packages to `*/dist` folders locally
+4. `make legacy-lint && make legacy-test` - Run tests and linting to ensure they pass
+5. `make legacy-publish` - Publish updated packages to
    [npmjs.com](https://www.npmjs.com/org/energysage)
 6. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
-7. `make install && make symlink` - Install the new published versions locally
+7. `make legacy-install && make legacy-symlink` - Install the new published versions locally
    and symlink them
 8. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
    Commit and push the changelog and `package-lock.json` updates
 9. For updating the design-system website see
    [Deploy Design System](https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation)
 
-Running `make publish` will trigger the following prompt:
+Running `make legacy-publish` will trigger the following prompt:
 
 ```shell
 lerna info Looking for changed packages since v0.1.9
