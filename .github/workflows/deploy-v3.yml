@@ -4,7 +4,6 @@ on:
     push:
         branches:
             - esds-3.0-vue3-primevue
-            - CED-1730-temporary-deploy
 
 jobs:
     deploy:
@@ -31,6 +30,7 @@ jobs:
               shell: bash
               run: |
                   aws codeartifact login --tool npm --domain energysage --domain-owner 659694780082 --repository cloud-engineering
+
             - name: Linking ES-DS version 3
               working-directory: 
               shell: bash
@@ -38,11 +38,13 @@ jobs:
                 cd es-bs-base; npm link
                 cd ../es-ds-components; npm link  
                 cd ../es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
+
             - name: Building ES-DS version 3
               working-directory: ./es-ds-docs
               shell: bash
               run: |
                 npx nuxt generate
+
             - name: Deploying to S3 📍
               working-directory: ./es-ds-docs
               shell: bash
