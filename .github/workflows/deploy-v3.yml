@@ -4,7 +4,6 @@ on:
     push:
         branches:
             - esds-3.0-vue3-primevue
-            - CED-1730-temporary-deploy
 
 jobs:
     deploy:
