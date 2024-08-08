@@ -86,9 +86,9 @@ import { ref } from 'vue';
 
 const selectedFruit = ref('');
 const fruits = ref([
-    { name: 'Apple', key: 'A' },
-    { name: 'Banana', key: 'M' },
-    { name: 'Cherry', key: 'P' },
+    { name: 'Apple', key: 'apple' },
+    { name: 'Banana', key: 'banana' },
+    { name: 'Cherry', key: 'cherry' },
 ]);
 
 const { $prism } = useNuxtApp();
