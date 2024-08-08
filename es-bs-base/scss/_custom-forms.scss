@@ -56,7 +56,7 @@
     border-color: variables.$custom-control-indicator-focus-border-color;
   }
 
-  &:not(:disabled):not(:focus) ~ .custom-control-label:hover::before, &:not(:has(.custom-radio-input:disabled)):not(:has(.custom-radio-input:focus)) ~ .custom-control-label:hover::before {
+  &:not(:disabled):not(:focus):not(:has(.custom-radio-input:disabled)):not(:has(.custom-radio-input:focus)) ~ .custom-control-label:hover::before {
     // the mixin is not used here to make sure there is feedback
     box-shadow: variables.$custom-control-indicator-hover-box-shadow;
   }
