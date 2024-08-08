@@ -138,7 +138,7 @@
 
         <ds-doc-source
             :doc-code="docCode"
-            doc-source="es-design-system/atoms/spacing.vue" />
+            doc-source="es-ds-docs/atoms/spacing.vue" />
     </div>
 </template>
 
@@ -194,7 +194,6 @@ if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
     const docSource = await import('./spacing.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();
 }
