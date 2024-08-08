@@ -19,17 +19,15 @@
                 Please choose your favorite fruit.
             </p>
             <div>
-                <div class="custom-control custom-control-inline custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit1" value="apple" />
-                    <label for="fruit1" class="custom-control-label">Apple</label>
-                </div>
-                <div class="custom-control custom-control-inline custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit2" value="banana" />
-                    <label for="fruit2" class="custom-control-label">Banana</label>
-                </div>
-                <div class="custom-control custom-control-inline custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit3" value="cherry" />
-                    <label for="fruit3" class="custom-control-label">Cherry</label>
+                <div v-for="fruit in fruits" class="custom-control custom-control-inline custom-radio">
+                    <RadioButton
+                        class="custom-control-input"
+                        inputClass="custom-radio-input"
+                        v-model="selectedFruit"
+                        :inputId="`${fruit.key}-inline`"
+                        name="inline"
+                        :value="fruit.name" />
+                    <label :for="`${fruit.key}-inline`" class="custom-control-label">{{ fruit.name }}</label>
                 </div>
             </div>
         </div>
@@ -42,17 +40,15 @@
                 Please choose your favorite fruit.
             </p>
             <div>
-                <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit4" value="apple" />
-                    <label class="custom-control-label" for="fruit4">Apple</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit5" value="banana" />
-                    <label class="custom-control-label" for="fruit5">Banana</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit6" value="cherry" />
-                    <label class="custom-control-label" for="fruit6">Cherry</label>
+                <div v-for="fruit in fruits" class="custom-control custom-radio">
+                    <RadioButton
+                        class="custom-control-input"
+                        inputClass="custom-radio-input"
+                        v-model="selectedFruit"
+                        :inputId="`${fruit.key}-stacked`"
+                        name="stacked"
+                        :value="fruit.name" />
+                    <label :for="`${fruit.key}-stacked`" class="custom-control-label">{{ fruit.name }}</label>
                 </div>
             </div>
         </div>
@@ -65,17 +61,16 @@
                 Please choose your favorite fruit.
             </p>
             <div>
-                <div class="custom-control custom-radio">
-                    <RadioButton disabled class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit7" value="apple" />
-                    <label class="custom-control-label" for="fruit7">Apple</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <RadioButton disabled class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit8" value="banana" />
-                    <label class="custom-control-label" for="fruit8">Banana</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <RadioButton disabled class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit9" value="cherry" />
-                    <label class="custom-control-label" for="fruit9">Cherry</label>
+                <div v-for="fruit in fruits" class="custom-control custom-radio">
+                    <RadioButton
+                        disabled
+                        class="custom-control-input"
+                        inputClass="custom-radio-input"
+                        v-model="selectedFruit"
+                        :inputId="`${fruit.key}-disabled`"
+                        name="disabled"
+                        :value="fruit.name" />
+                    <label :for="`${fruit.key}-disabled`" class="custom-control-label">{{ fruit.name }}</label>
                 </div>
             </div>
         </div>
@@ -89,7 +84,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const fruit = ref('');
+const selectedFruit = ref('');
+const fruits = ref([
+    { name: 'Apple', key: 'A' },
+    { name: 'Banana', key: 'M' },
+    { name: 'Cherry', key: 'P' },
+]);
 
 const { $prism } = useNuxtApp();
 const docCode = ref("");
