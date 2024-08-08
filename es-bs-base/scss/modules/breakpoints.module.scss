@@ -1,0 +1,12 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "sass:map";
+@use "../variables";
+
+:export {
+  xxl: map.get(variables.$grid-breakpoints, xxl);
+  xl: map.get(variables.$grid-breakpoints, xl);
+  lg: map.get(variables.$grid-breakpoints, lg);
+  md: map.get(variables.$grid-breakpoints, md);
+  sm: map.get(variables.$grid-breakpoints, sm);
+  xs: map.get(variables.$grid-breakpoints, xs);
+}
