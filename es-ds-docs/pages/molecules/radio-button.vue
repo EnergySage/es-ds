@@ -15,6 +15,9 @@
             <h2>
                 Inline
             </h2>
+            <p>
+                Please choose your favorite fruit.
+            </p>
             <div>
                 <div class="custom-control custom-control-inline custom-radio">
                     <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit1" value="apple" />
@@ -35,18 +38,21 @@
             <h2>
                 Stacked
             </h2>
+            <p>
+                Please choose your favorite fruit.
+            </p>
             <div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit1" value="apple" />
-                    <label class="custom-control-label" for="fruit1">Apple</label>
+                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit4" value="apple" />
+                    <label class="custom-control-label" for="fruit4">Apple</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit2" value="banana" />
-                    <label class="custom-control-label" for="fruit2">Banana</label>
+                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit5" value="banana" />
+                    <label class="custom-control-label" for="fruit5">Banana</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit3" value="cherry" />
-                    <label class="custom-control-label" for="fruit3">Cherry</label>
+                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit6" value="cherry" />
+                    <label class="custom-control-label" for="fruit6">Cherry</label>
                 </div>
             </div>
         </div>
@@ -55,18 +61,21 @@
             <h2>
                 Disabled
             </h2>
+            <p>
+                Please choose your favorite fruit.
+            </p>
             <div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" disabled v-model="fruit" inputId="fruit1" value="apple" />
-                    <label class="custom-control-label" for="fruit1">Apple</label>
+                    <RadioButton disabled class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit7" value="apple" />
+                    <label class="custom-control-label" for="fruit7">Apple</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" disabled v-model="fruit" inputId="fruit2" value="banana" />
-                    <label class="custom-control-label" for="fruit2">Banana</label>
+                    <RadioButton disabled class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit8" value="banana" />
+                    <label class="custom-control-label" for="fruit8">Banana</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <RadioButton class="custom-control-input" inputClass="custom-radio-input" disabled v-model="fruit" inputId="fruit3" value="cherry" />
-                    <label class="custom-control-label" for="fruit3">Cherry</label>
+                    <RadioButton disabled class="custom-control-input" inputClass="custom-radio-input" v-model="fruit" inputId="fruit9" value="cherry" />
+                    <label class="custom-control-label" for="fruit9">Cherry</label>
                 </div>
             </div>
         </div>
