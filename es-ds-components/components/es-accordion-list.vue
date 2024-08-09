@@ -10,18 +10,22 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
     allowMultipleExpand: false,
-    initialExpandedId: '0',
+    initialExpandedId: '',
     variant: "default",
 });
 
 const children = useSlots().default?.() || [];
-const accordionTabs = children.map((child) => {
+let activeIndex;
+const accordionTabs = children.map((child, index) => {
+    if (child.props.id === props.initialExpandedId) {
+        activeIndex = index;
+    }
     return child.children;
 });
 </script>
 
 <template>
-    <accordion>
+    <accordion :multiple="allowMultipleExpand" :active-index="activeIndex">
         <accordion-tab v-for="(tab, index) in accordionTabs" :key="index">
             <template #header>
                 <span>

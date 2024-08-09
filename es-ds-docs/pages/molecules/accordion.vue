@@ -12,7 +12,7 @@
                 By default, accordions will only allow one item to be expanded at a
                 time. Upon expanding a second item, the open item will collapse.
             </p>
-            <es-accordion-list initial-expanded-id="0">
+            <es-accordion-list initial-expanded-id="single-question-11">
                 <es-accordion id="single-question-11">
                     <template #title>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit?
