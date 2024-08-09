@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Accordion from 'primevue/accordiontab';
+
 interface Props {
     allowMultipleExpand?: boolean;
     initialExpandedId?: string;
@@ -13,7 +15,6 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <p>hey from accordion-list</p>
     <accordion>
         <slot></slot>
     </accordion>

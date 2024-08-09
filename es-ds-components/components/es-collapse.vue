@@ -31,6 +31,8 @@
 </template>
 
 <script setup lang="ts">
+import Panel from "primevue/panel";
+
 const emit = defineEmits(['toggled', 'userClick']);
 const model = defineModel();
 const props = defineProps({

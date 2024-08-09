@@ -7,15 +7,6 @@
         </p>
 
         <div class="mb-450">
-            <h2>Directly using PrimeVue</h2>
-            <accordion>
-                <accordion-tab>
-                    howdy
-                </accordion-tab>
-                <accordion-tab>
-                    bye
-                </accordion-tab>
-            </accordion>
             <h2>Single expand</h2>
             <p>
                 By default, accordions will only allow one item to be expanded at a
