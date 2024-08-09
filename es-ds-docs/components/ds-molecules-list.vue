@@ -10,5 +10,10 @@
                 Collapse
             </ds-link>
         </li>
+        <li>
+            <ds-link to="/molecules/radio-button">
+                Radio button
+            </ds-link>
+        </li>
     </ul>
 </template>
