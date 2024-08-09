@@ -14,9 +14,9 @@
             </p>
             <es-accordion-list initial-expanded-id="0">
                 <es-accordion id="single-question-11">
-<!--                    <template #title>-->
-<!--                        Lorem ipsum dolor sit amet, consectetur adipiscing elit?-->
-<!--                    </template>-->
+                    <template #title>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit?
+                    </template>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. In

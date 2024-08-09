@@ -13,6 +13,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
     <accordion-tab>
+        <template #header>
+            <span>
+                <slot name="title"></slot>
+            </span>
+        </template>
         <slot></slot>
     </accordion-tab>
 </template>
