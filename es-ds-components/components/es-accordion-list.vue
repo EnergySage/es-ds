@@ -1,19 +1,21 @@
 <script setup lang="ts">
+import Accordion from 'primevue/accordion';
+
 interface Props {
   allowMultipleExpand?: boolean;
-  initialExpandedId?: number;
+  initialExpandedId?: string;
   variant?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   allowMultipleExpand: false,
-  initialExpandedId: 0,
+  initialExpandedId: '0',
   variant: "default",
 });
 </script>
 
 <template>
-  <div class="rounded" role="tablist" :activeIndex="initialExpandedId">
+  <accordion>
     <slot />
-  </div>
+  </accordion>
 </template>
