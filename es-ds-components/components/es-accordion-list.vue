@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Accordion from 'primevue/accordion';
 import AccordionTab from "primevue/accordiontab";
-import type {VNodeArrayChildren} from "vue";
 
 interface Props {
     allowMultipleExpand?: boolean;
