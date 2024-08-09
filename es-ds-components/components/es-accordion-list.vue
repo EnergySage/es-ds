@@ -2,20 +2,20 @@
 import Accordion from 'primevue/accordion';
 
 interface Props {
-  allowMultipleExpand?: boolean;
-  initialExpandedId?: string;
-  variant?: string;
+    allowMultipleExpand?: boolean;
+    initialExpandedId?: string;
+    variant?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  allowMultipleExpand: false,
-  initialExpandedId: '0',
-  variant: "default",
+    allowMultipleExpand: false,
+    initialExpandedId: '0',
+    variant: "default",
 });
 </script>
 
 <template>
-  <accordion>
-    <slot />
-  </accordion>
+    <accordion>
+        <slot/>
+    </accordion>
 </template>
