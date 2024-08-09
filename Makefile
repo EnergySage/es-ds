@@ -3,7 +3,7 @@
 .PHONY: dev
 dev:
 	cd es-bs-base; npm link
-	cd es-ds-components; npm link
+	cd es-ds-components; npm link @energysage/es-bs-base; npm link
 	cd es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
 	cd es-ds-docs; npm run dev
 
