@@ -171,11 +171,11 @@
             <p>
                 Occasionally, an eyebrow will be used in a situation where is not appropriate to use a heading element,
                 like on a customer name below a
-                <b-link
+                <nuxt-link
                     href="https://css-tricks.com/quoting-in-html-quotations-citations-and-blockquotes/#aa-hey-what-about-the-figure-element"
                     target="_blank">
                     quote from their review.
-                </b-link>
+                </nuxt-link>
                 Below is an example of how to accomplish this.
             </p>
             <div class="border pb-lg-100 px-100 px-lg-200 pt-100 pt-lg-200 rounded">
@@ -776,7 +776,7 @@ if ($prism) {
 @use "@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
 
 .responsive-table-typography {
-    ::v-deep dl {
+    :deep(dl) {
         dd {
             max-height: 180px;
             overflow: hidden;
@@ -786,7 +786,7 @@ if ($prism) {
 
 @include breakpoints.media-breakpoint-up(xl) {
     .responsive-table-typography {
-        ::v-deep dl {
+        :deep(dl) {
             dd {
                 max-height: none;
                 overflow: visible;
