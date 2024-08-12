@@ -7,11 +7,11 @@ export default defineNuxtConfig({
         '@energysage/es-bs-base/scss/bootstrap.scss',
     ],
 
-    // The following will still not work until https://github.com/alibaba/formily/pull/4195
     vite: {
         css: {
             preprocessorOptions: {
                 scss: {
+                    api: 'modern-compiler',
                     silenceDeprecations: [
                         'mixed-decls', // https://sass-lang.com/documentation/breaking-changes/mixed-decls/
                     ],
