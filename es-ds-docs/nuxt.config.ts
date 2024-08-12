@@ -7,6 +7,19 @@ export default defineNuxtConfig({
         '@energysage/es-bs-base/scss/bootstrap.scss',
     ],
 
+    // The following will still not work until https://github.com/alibaba/formily/pull/4195
+    vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    silenceDeprecations: [
+                        'mixed-decls', // https://sass-lang.com/documentation/breaking-changes/mixed-decls/
+                    ],
+                }
+            }
+        }
+    },
+
     devtools: { enabled: true },
 
     // https://nuxt.com/docs/getting-started/layers#usage
@@ -46,5 +59,5 @@ export default defineNuxtConfig({
     },
 
     // https://nuxt.com/docs/getting-started/deployment#static-hosting
-    ssr: true
+    ssr: true,
 })
