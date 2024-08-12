@@ -103,7 +103,7 @@
             </p>
             <p>
                 Below is an example of using <code>tag="nuxt-link"</code> to make the card an internal navigation
-                link to another page in the same Nuxt app (in this case, the breadcrumbs page).
+                link to another page in the same Nuxt app (in this case, the color page).
             </p>
             <!--TODO: Swap to="/organisms/es-cta-card" once it is created and (in this case, the CTA card page) in text above-->
             <es-card
