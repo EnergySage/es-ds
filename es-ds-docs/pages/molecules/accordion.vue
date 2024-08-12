@@ -1,5 +1,67 @@
 <script setup lang="ts">
 const programmaticExpandedId = ref('programmatic-question-1');
+
+const accordionListProps = [
+    [
+        'allowMultipleExpand',
+        'false',
+        `
+        Defaults to false, which only allows one item to expand at a time. If true, allows multiple
+        items to expand at a time. Do not use at the same time as v-model.
+        `,
+    ],
+    [
+        'initialExpandedId',
+        '',
+        `
+        The id of the item that should begin expanded when the component mounts. If omitted, all
+        items will start out collapsed. Do not use at the same time as v-model.
+        `,
+    ],
+    [
+        'variant',
+        'default',
+        `
+        Defaults to 'default'; also accepts 'minimal'. Default has a rounded white background,
+        minimal has no background, Heading 3 text style, reduced padding, and a horizontal border
+        separating accordions.
+        `,
+    ],
+];
+const accordionProps = [
+    [
+        'id',
+        '',
+        `
+        Required. Used to uniquely identify the item on the page. This value can also be passed to
+        EsAccordionList to signify that this item should start out expanded.
+        `,
+    ],
+    [
+        'headingTag',
+        'h3',
+        `
+        Defaults to h3. The tag used can be customized as needed.
+        For example, if the accordion is used within a section that is already under an <h3>,
+        it may need to be an h4.
+        `,
+    ],
+];
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+
+if ($prism) {
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    const compSource = await import('@energysage/es-ds-components/components/es-accordion-list.vue?raw');
+    const docSource = await import('./accordion.vue?raw');
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
 </script>
 
 <template>
@@ -411,5 +473,27 @@ const programmaticExpandedId = ref('programmatic-question-1');
                 </es-accordion>
             </es-accordion-list>
         </div>
+
+        <div class="mb-500">
+            <h2>
+                EsAccordionList props
+            </h2>
+            <ds-prop-table
+                :rows="accordionListProps" />
+        </div>
+
+        <div class="mb-500">
+            <h2>
+                EsAccordion props
+            </h2>
+            <ds-prop-table
+                :rows="accordionProps" />
+        </div>
+
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-breadcrumbs.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/breadcrumbs.vue" />
     </div>
 </template>
