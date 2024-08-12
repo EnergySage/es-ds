@@ -1,0 +1,9 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  color: variables.$headings-color;
+  fontFamily: variables.$headings-font-family;
+  fontWeight: variables.$post-font-weight;
+  marginBottom: variables.$headings-margin-bottom;
+}
