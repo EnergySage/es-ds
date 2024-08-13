@@ -65,17 +65,9 @@ const updateActiveIndex = (index) => {
             headerAction: {
                 class: 'es-accordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 es-accordion-heading--visible font-size-100 px-100 px-sm-200',
             },
-            // transition: {
-            //     name: 'es-accordion-list-toggleable',
-            // },
-            toggleableContent: ({context}) => ({
-                class: [
-                    'es-accordion-list-toggleable',
-                    {
-                        'show': context.active,
-                    },
-                ],
-            }),
+            transition: {
+                name: 'es-accordion-list-toggleable',
+            },
             content: {
                 class: 'es-accordion-content pb-25 bg-white pt-100 px-100 px-sm-200',
             },
@@ -91,13 +83,13 @@ const updateActiveIndex = (index) => {
 </template>
 
 <style lang="scss">
-.es-accordion-list-toggleable {
-    max-height: 0;
+.es-accordion-list-toggleable-enter-active, .es-accordion-list-toggleable-leave-active {
+    max-height: 100px;
     overflow: hidden;
-    transition: max-height 0.5s ease;
+    transition: max-height .35s ease;
+}
 
-    &.show {
-        max-height: 100px;
-    }
+.es-accordion-list-toggleable-enter-from, .es-accordion-list-toggleable-leave-to {
+    max-height: 0;
 }
 </style>
