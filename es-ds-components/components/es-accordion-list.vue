@@ -82,14 +82,14 @@ const updateActiveIndex = (index) => {
     </accordion>
 </template>
 
-<style lang="scss">
-.es-accordion-list-toggleable-enter-active, .es-accordion-list-toggleable-leave-active {
+<style scoped lang="scss">
+:deep(.es-accordion-list-toggleable-enter-active), :deep(.es-accordion-list-toggleable-leave-active) {
     max-height: 100px;
     overflow: hidden;
     transition: max-height .35s ease;
 }
 
-.es-accordion-list-toggleable-enter-from, .es-accordion-list-toggleable-leave-to {
+:deep(.es-accordion-list-toggleable-enter-from), :deep(.es-accordion-list-toggleable-leave-to) {
     max-height: 0;
 }
 </style>
