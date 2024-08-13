@@ -80,11 +80,16 @@ const updateActiveIndex = (index) => {
                 name: 'v-transition',
             },
             content: {
-                class: 'es-accordion-content pb-25 bg-white pt-100 px-100 px-sm-200',
+                class: [
+                    'es-accordion-content pb-25',
+                    {
+                        'bg-white pt-100 px-100 px-sm-200': variant !== 'minimal'
+                    },
+                ],
             },
         }">
             <template #header>
-                <span role="heading" aria-level="3" :class="{'h3': variant === 'minimal'}">
+                <span role="heading" aria-level="3" :class="{'h3 mb-0': variant === 'minimal'}">
                     <component v-for="item in tab.title()" :is="item" />
                 </span>
                 <icon-chevron-down class="es-accordion-icon flex-shrink-0 ml-200" />

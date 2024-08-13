@@ -43,6 +43,11 @@
   }
 }
 
+.es-accordion-list--minimal .es-accordion-heading:hover {
+  color: variables.$blue-900;
+  text-decoration: none;
+}
+
 /* rotate the chevron when expanded */
 .es-accordion-heading--visible {
   .es-accordion-icon {
