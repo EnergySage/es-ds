@@ -1,0 +1,8 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  post1: variables.$post1-line-height-desktop;
+  post2: variables.$post2-line-height-desktop;
+  post3: variables.$post3-line-height-desktop;
+}
