@@ -1,5 +1,5 @@
 <template>
-    <div :class="`custom-control custom-radio custom-control${props.inline ? '-inline' : ''}`">
+    <div :class="`custom-control custom-radio custom-control${inline ? '-inline' : ''}`">
         <radio-button
             class="custom-control-input"
             input-class="custom-radio-input"
