@@ -1,0 +1,26 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  font-size-50: variables.$font-size-50;
+  font-size-75: variables.$font-size-75;
+  font-size-100: variables.$font-size-100;
+  font-size-200: variables.$font-size-200;
+  font-size-300: variables.$font-size-300;
+  font-size-400: variables.$font-size-400;
+  font-size-500: variables.$font-size-500;
+  font-size-600: variables.$font-size-600;
+  font-size-700: variables.$font-size-700;
+  font-size-800: variables.$font-size-800;
+  font-size-900: variables.$font-size-900;
+
+  // body sizes
+  font-size-xs: variables.$font-size-xs;
+  font-size-sm: variables.$font-size-sm;
+  font-size-base: variables.$font-size-base;
+  font-size-lg: variables.$font-size-lg;
+
+  // deprecated
+  font-size-xl: variables.$font-size-xl;
+  font-size-xxl: variables.$font-size-xxl;
+}
