@@ -46,7 +46,7 @@ const updateActiveIndex = (index) => {
     <accordion :multiple="allowMultipleExpand" :active-index="activeIndex" @update:active-index="updateActiveIndex" :pt="{
         root: {
             role: 'tablist',
-            class: 'es-accordion-list es-accordion-list--default',
+            class: `es-accordion-list es-accordion-list--${variant}`,
         },
     }">
         <template #collapseicon>
@@ -57,7 +57,7 @@ const updateActiveIndex = (index) => {
             root: ({ context }) => ({
                 role: 'tab',
                 class: [
-                    'es-accordion es-accordion--default',
+                    `es-accordion es-accordion--${variant}`,
                     {
                         'expanded': context.active,
                     },
@@ -68,9 +68,11 @@ const updateActiveIndex = (index) => {
             },
             headerAction: ({ context }) => ({
                 class: [
-                    'es-accordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 font-size-100 px-100 px-sm-200',
+                    'es-accordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100',
                     {
                         'es-accordion-heading--visible': context.active,
+                        'font-size-100 px-100 px-sm-200': variant !== 'minimal',
+                        'h3 px-0': variant === 'minimal',
                     },
                 ],
             }),
@@ -82,7 +84,7 @@ const updateActiveIndex = (index) => {
             },
         }">
             <template #header>
-                <span>
+                <span role="heading" aria-level="3" :class="{'h3': variant === 'minimal'}">
                     <component v-for="item in tab.title()" :is="item" />
                 </span>
                 <icon-chevron-down class="es-accordion-icon flex-shrink-0 ml-200" />

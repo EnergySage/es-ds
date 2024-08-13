@@ -29,11 +29,6 @@
       }
     }
 
-    &-button:hover + .es-accordion-heading {
-      background-color: variables.$blue-50;
-      color: variables.$blue-900;
-    }
-
     /* first item needs rounded corners on top */
     &:first-child {
       .es-accordion-heading {
