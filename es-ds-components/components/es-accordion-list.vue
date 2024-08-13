@@ -66,7 +66,7 @@ const updateActiveIndex = (index) => {
                 class: 'es-accordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100 es-accordion-heading--visible font-size-100 px-100 px-sm-200',
             },
             transition: {
-                name: 'es-accordion-list-toggleable',
+                name: 'v-transition',
             },
             content: {
                 class: 'es-accordion-content pb-25 bg-white pt-100 px-100 px-sm-200',
@@ -83,13 +83,15 @@ const updateActiveIndex = (index) => {
 </template>
 
 <style scoped lang="scss">
-:deep(.es-accordion-list-toggleable-enter-active), :deep(.es-accordion-list-toggleable-leave-active) {
+// https://vuejs.org/guide/built-ins/transition
+
+:deep(.v-transition-enter-active), :deep(.v-transition-leave-active) {
     max-height: 100px;
     overflow: hidden;
     transition: max-height .35s ease;
 }
 
-:deep(.es-accordion-list-toggleable-enter-from), :deep(.es-accordion-list-toggleable-leave-to) {
+:deep(.v-transition-enter-from), :deep(.v-transition-leave-to) {
     max-height: 0;
 }
 </style>
