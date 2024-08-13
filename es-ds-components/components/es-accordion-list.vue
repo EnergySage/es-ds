@@ -45,7 +45,6 @@ const updateActiveIndex = (index) => {
 <template>
     <accordion :multiple="allowMultipleExpand" :active-index="activeIndex" @update:active-index="updateActiveIndex" :pt="{
         root: {
-            role: 'tablist',
             class: `es-accordion-list es-accordion-list--${variant}`,
         },
     }">
@@ -55,7 +54,6 @@ const updateActiveIndex = (index) => {
         </template>
         <accordion-tab v-for="(tab, index) in accordionTabs" :key="index" :pt="{
             root: ({ context }) => ({
-                role: 'tab',
                 class: [
                     `es-accordion es-accordion--${variant}`,
                     {
