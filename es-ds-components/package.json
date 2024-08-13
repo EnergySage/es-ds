@@ -11,5 +11,9 @@
   "license": "MIT",
   "devDependencies": {
     "nuxt": "^3.12.4"
+  },
+  "dependencies": {
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "nuxt-primevue": "^3.0.0"
   }
 }

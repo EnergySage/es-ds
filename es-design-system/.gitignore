@@ -97,3 +97,5 @@ sw.*
 
 # Vim swap files
 *.swp
+
+.aws_profile

@@ -56,6 +56,7 @@ install:
 	npm --prefix es-bs-base install
 	npm --prefix es-ds-components install
 	npm --prefix es-ds-docs install
+	(cd es-ds-components && npx nuxt build)
 
 .PHONY: legacy-install
 legacy-install:
