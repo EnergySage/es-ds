@@ -23,7 +23,6 @@
   "bugs": {
     "url": "https://github.com/EnergySage/es-ds/issues"
   },
-  "main": "dist/js/bootstrap.js",
   "sass": "scss/bootstrap.scss",
   "style": "dist/css/bootstrap.css",
   "scripts": {
@@ -32,20 +31,10 @@
     "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/*.css\" \"!dist/css/*.min.css\"",
     "css-prefix": "npm-run-all --aggregate-output --parallel css-prefix-*",
     "css-prefix-main": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",
-    "js": "npm-run-all js-compile js-minify",
-    "js-compile": "npm-run-all --aggregate-output --parallel js-compile-*",
-    "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
-    "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
-    "js-compile-plugins": "node build/build-plugins.js",
-    "js-compile-plugins-coverage": "cross-env NODE_ENV=test node build/build-plugins.js",
-    "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives .",
-    "js-minify": "npm-run-all --aggregate-output --parallel js-minify-*",
-    "js-minify-standalone": "terser --compress passes=2,typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
-    "js-minify-bundle": "terser --compress passes=2,typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
-    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint lockfile-lint",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lockfile-lint",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "release": "npm-run-all dist",
-    "dist": "npm-run-all --aggregate-output --parallel css js",
+    "dist": "npm-run-all --aggregate-output --parallel css",
     "build": "npm-run-all dist",
     "test": "npm-run-all lint dist"
   },
@@ -54,14 +43,7 @@
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.9",
-    "@babel/preset-env": "^7.16.11",
-    "@rollup/plugin-babel": "^6.0.0",
-    "@rollup/plugin-commonjs": "^25.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.0",
     "autoprefixer": "^9.8.8",
-    "babel-plugin-istanbul": "^6.1.1",
     "clean-css-cli": "^5.6.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.13.0",
@@ -90,7 +72,6 @@
     "postcss": "^8.4.12",
     "postcss-cli": "^10.0.0",
     "qunit": "^2.18.2",
-    "rollup": "^3.2.5",
     "sass": "^1.66.1",
     "shelljs": "^0.8.5",
     "sinon": "^15.0.0",
@@ -100,8 +81,7 @@
     "vnu-jar": "23.4.11"
   },
   "files": [
-    "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/*.{js,map}",
+    "dist/css/*.{css,map}",
     "scss/**/*.scss"
   ],
   "license": "MIT",
