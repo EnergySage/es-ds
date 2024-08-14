@@ -11,19 +11,12 @@
                 <code>text-{xxx}</code> utility class on their containing element.
             </p>
             <p>Select an option to see how the icons look with that color applied.</p>
-            <div
+            <es-radio-button
                 v-for="color in colorOptions"
-                :key="color.value"
-                class="flex flex-column align-items-center">
-                <RadioButton
-                    v-model="activeColor"
-                    :inputId="color.value"
-                    name="dynamic"
-                    :value="color.value" />
-                <label :for="color.value" class="ml-2">
-                    {{ color.text }}
-                </label>
-            </div>
+                v-model="activeColor"
+                :display-name="color.text"
+                :value="color.value"
+                inline />
         </div>
         <h2>
             Base Icons
