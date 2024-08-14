@@ -1,6 +1,6 @@
-# EnergySage es-bs-base
+# EnergySage es-ds-styles
 
-An EnergySage branded Bootstrap
+An EnergySage branded Bootstrap 4 styling
 
 ## Getting Started
 
