@@ -4,12 +4,6 @@
 dev: symlink
 	cd es-ds-docs; npm run dev
 
-# Run the old v2 docs site with slow rebuilds of es-bs-base and es-vue-base
-
-.PHONY: legacy-dev
-legacy-dev:
-	overmind s
-
 .PHONY: symlink
 symlink:
 	cd es-bs-base; npm link
@@ -33,10 +27,6 @@ lint:
 # 	npm --prefix es-ds-components run lint
 # 	npm --prefix es-ds-docs run lint
 
-.PHONY: legacy-lint
-legacy-lint:
-	npx lerna run lint
-
 .PHONY: test
 test:
 	npm --prefix es-bs-base run test
@@ -44,37 +34,16 @@ test:
 #	npm --prefix es-ds-components run test
 #	npm --prefix es-ds-docs run test
 
-.PHONY: legacy-test
-legacy-test:
-	npx lerna run test
-
 .PHONY: build
 build:
 	npm --prefix es-bs-base run build
 	npm --prefix es-ds-docs run build
 # es-ds-components does not have a build step
 
-.PHONY: legacy-build
-legacy-build:
-	npx lerna run build
-
 .PHONY: publish
 publish:
 	cd es-bs-base; npm publish --tag alpha
 	cd es-ds-components; npm publish
-
-.PHONY: legacy-publish
-legacy-publish:
-	npx lerna publish
-
-.PHONY: legacy-symlink
-legacy-symlink:
-	npx lerna bootstrap
-
-.PHONE: legacy-reload
-legacy-reload:
-	npm --prefix es-vue-base run build
-	npx lerna bootstrap
 
 # Sometimes Called
 
@@ -84,26 +53,8 @@ install:
 	npm --prefix es-ds-components install
 	npm --prefix es-ds-docs install
 
-.PHONY: legacy-install
-legacy-install:
-	npm install
-	npx lerna exec -- npm install
-
 # Bootstraping Commands (not reguarly called)
 
 .PHONY: update-docs-deps
 update-docs-deps:
 	cd es-ds-docs; npm uninstall @energysage/es-bs-base && npm install @energysage/es-bs-base@alpha && npm uninstall @energysage/es-ds-components && npm install @energysage/es-ds-components
-
-.PHONY: legacy-build-scss-pkg
-legacy-build-scss-pkg:
-	npm run --prefix es-bs-base build
-
-.PHONY: legacy-build-vue-pkg
-legacy-build-vue-pkg:
-	npm run --prefix es-vue-base build
-
-.PHONY: legacy-update-peer-deps
-legacy-update-peer-deps:
-	npm --prefix es-vue-base install bootstrap-vue@2 \
-		vue@2
