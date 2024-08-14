@@ -747,7 +747,7 @@
 
 <script setup lang="ts">
 import sassIconColors from '@energysage/es-bs-base/scss/modules/icon-colors.module.scss';
-import { computed, ref } from "vue";
+import { ref } from "vue";
 
 const colorNames = Object.keys(sassIconColors)
     .map((k) => k)
