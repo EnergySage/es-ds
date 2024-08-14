@@ -10,8 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@energysage/es-ds-components": "^3.0.0-alpha.5",
-    "@energysage/es-ds-styles": "^3.0.0-alpha.5",
+    "@energysage/es-ds-components": "^3.0.0-alpha.6",
+    "@energysage/es-ds-styles": "^3.0.0-alpha.6",
     "@nuxtjs/google-fonts": "^3.2.0",
     "clipboard": "^2.0.11",
     "nuxt": "^3.12.4",

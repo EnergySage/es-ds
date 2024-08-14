@@ -7,7 +7,7 @@ dev: symlink
 .PHONY: symlink
 symlink:
 	cd es-ds-styles; npm link
-	cd es-ds-components; npm link @energysage/es-ds-styles; npm link
+	cd es-ds-components; npm link
 	cd es-ds-docs; npm link @energysage/es-ds-styles @energysage/es-ds-components
 
 # Unlink local v3 docs site from local es-ds-styles and es-ds-components; restore to NPM versions
@@ -57,5 +57,4 @@ install:
 
 .PHONY: update-package-deps
 update-package-deps:
-	cd es-ds-components; npm uninstall @energysage/es-ds-styles && npm install @energysage/es-ds-styles
 	cd es-ds-docs; npm uninstall @energysage/es-ds-styles && npm install @energysage/es-ds-styles && npm uninstall @energysage/es-ds-components && npm install @energysage/es-ds-components
