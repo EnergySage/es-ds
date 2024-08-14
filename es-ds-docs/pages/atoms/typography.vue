@@ -522,22 +522,22 @@
 </template>
 
 <script setup lang="ts">
-import sassHeadingFontSizesDesktop from '@energysage/es-bs-base/scss/modules/heading-font-sizes-desktop.module.scss';
-import sassHeadingFontSizesMobile from '@energysage/es-bs-base/scss/modules/heading-font-sizes-mobile.module.scss';
-import sassHeadingGeneral from '@energysage/es-bs-base/scss/modules/heading-general.module.scss';
+import sassHeadingFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-desktop.module.scss';
+import sassHeadingFontSizesMobile from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-mobile.module.scss';
+import sassHeadingGeneral from '@energysage/es-ds-styles/scss/modules/heading-general.module.scss';
 // eslint-disable-next-line max-len
-import sassHeadingLineHeightsDesktop from '@energysage/es-bs-base/scss/modules/heading-line-heights-desktop.module.scss';
-import sassHeadingLineHeightsMobile from '@energysage/es-bs-base/scss/modules/heading-line-heights-mobile.module.scss';
-import sassHeadingEyebrow from '@energysage/es-bs-base/scss/modules/heading-eyebrow.module.scss';
-import sassFontSizes from '@energysage/es-bs-base/scss/modules/font-sizes.module.scss';
-import sassFontWeights from '@energysage/es-bs-base/scss/modules/font-weights.module.scss';
-import sassLineHeights from '@energysage/es-bs-base/scss/modules/line-heights.module.scss';
-import sassPostFontSizesDesktop from '@energysage/es-bs-base/scss/modules/post-font-sizes-desktop.module.scss';
-import sassPostFontSizesMobile from '@energysage/es-bs-base/scss/modules/post-font-sizes-mobile.module.scss';
-import sassPostGeneral from '@energysage/es-bs-base/scss/modules/post-general.module.scss';
-import sassPostLineHeightsDesktop from '@energysage/es-bs-base/scss/modules/post-line-heights-desktop.module.scss';
-import sassPostLineHeightsMobile from '@energysage/es-bs-base/scss/modules/post-line-heights-mobile.module.scss';
-import sassType from '@energysage/es-bs-base/scss/modules/type.module.scss';
+import sassHeadingLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/heading-line-heights-desktop.module.scss';
+import sassHeadingLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/heading-line-heights-mobile.module.scss';
+import sassHeadingEyebrow from '@energysage/es-ds-styles/scss/modules/heading-eyebrow.module.scss';
+import sassFontSizes from '@energysage/es-ds-styles/scss/modules/font-sizes.module.scss';
+import sassFontWeights from '@energysage/es-ds-styles/scss/modules/font-weights.module.scss';
+import sassLineHeights from '@energysage/es-ds-styles/scss/modules/line-heights.module.scss';
+import sassPostFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/post-font-sizes-desktop.module.scss';
+import sassPostFontSizesMobile from '@energysage/es-ds-styles/scss/modules/post-font-sizes-mobile.module.scss';
+import sassPostGeneral from '@energysage/es-ds-styles/scss/modules/post-general.module.scss';
+import sassPostLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/post-line-heights-desktop.module.scss';
+import sassPostLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/post-line-heights-mobile.module.scss';
+import sassType from '@energysage/es-ds-styles/scss/modules/type.module.scss';
 
 const deprecatedFontSizes = ['xl', 'xxl'];
 const excludedFontSizes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl'];
@@ -773,7 +773,7 @@ if ($prism) {
 </script>
 
 <style lang="scss" scoped>
-@use "@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+@use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
 
 .responsive-table-typography {
     :deep(dl) {

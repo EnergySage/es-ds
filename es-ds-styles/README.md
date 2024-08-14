@@ -4,14 +4,14 @@ An EnergySage branded Bootstrap
 
 ## Getting Started
 
-`npm install @energysage/es-bs-base`
+`npm install @energysage/es-ds-styles`
 
 ### Basic Example Usage
 
 main.scss:
 
 ```scss
-@import '~@energysage/es-bs-base/scss/bootstrap';
+@import '~@energysage/es-ds-styles/scss/bootstrap';
 ```
 
 test.html:

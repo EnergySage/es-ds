@@ -260,6 +260,6 @@ Assuming changes are approved, the process of publishing a new version is...
 6. `make publish` - Publish updated packages to
    [npmjs.com](https://www.npmjs.com/org/energysage)
 7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
-8. `make update-docs-deps` - Install the new published versions locally
+8. `make update-package-deps` - Install the new published versions locally
 9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
    Commit and push the changelog and `package-lock.json` updates

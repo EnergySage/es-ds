@@ -1,15 +1,25 @@
 {
-  "name": "@energysage/es-ds-components",
-  "version": "3.0.0-alpha.2",
-  "private": false,
-  "description": "An EnergySage Vue component library",
-  "main": "./nuxt.config.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "EnergySage",
-  "license": "MIT",
-  "devDependencies": {
-    "nuxt": "^3.12.4"
-  }
+    "name": "@energysage/es-ds-components",
+    "version": "3.0.0-alpha.5",
+    "private": false,
+    "type": "module",
+    "description": "An EnergySage Vue component library",
+    "main": "./nuxt.config.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "EnergySage",
+    "license": "MIT",
+    "dependencies": {
+        "@energysage/es-ds-styles": "^3.0.0-alpha.5",
+        "@nuxtjs/google-fonts": "^3.2.0",
+        "nuxt": "^3.12.4",
+        "primevue": "^3.53.0",
+        "prismjs": "^1.29.0",
+        "vue": "^3.4.34"
+    },
+    "devDependencies": {
+        "nuxt-primevue": "^3.0.0",
+        "sass": "^1.77.8"
+    }
 }
