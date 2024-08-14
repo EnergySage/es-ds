@@ -161,6 +161,7 @@
 
     &#{$infix} {
       @include breakpoints.media-breakpoint-down($breakpoint) {
+
         %container-navbar-expand-#{$breakpoint} {
           padding-right: 0;
           padding-left: 0;
@@ -178,52 +179,54 @@
         }
       }
 
-      @include breakpoints.media-breakpoint-up($next) {
-        flex-flow: row nowrap;
-        justify-content: flex-start;
+      @if $next {
+        @include breakpoints.media-breakpoint-up($next) {
+          flex-flow: row nowrap;
+          justify-content: flex-start;
 
-        .navbar-nav {
-          flex-direction: row;
-
-          .dropdown-menu {
-            position: absolute;
+          // For nesting containers, have to redeclare for alignment purposes
+          %container-nesting-#{$breakpoint} {
+            flex-wrap: nowrap;
           }
 
-          .nav-link {
-            padding-right: variables.$navbar-nav-link-padding-x;
-            padding-left: variables.$navbar-nav-link-padding-x;
+          .navbar-nav {
+            flex-direction: row;
+
+            .dropdown-menu {
+              position: absolute;
+            }
+
+            .nav-link {
+              padding-right: variables.$navbar-nav-link-padding-x;
+              padding-left: variables.$navbar-nav-link-padding-x;
+            }
           }
-        }
 
-        // For nesting containers, have to redeclare for alignment purposes
-        %container-nesting-#{$breakpoint} {
-          flex-wrap: nowrap;
-        }
-
-        > .container,
-        > .container-fluid {
-          @extend %container-nesting-#{$breakpoint};
-        }
-
-        @each $size, $container-max-width in variables.$container-max-widths {
-          > .container#{breakpoints.breakpoint-infix($size, variables.$container-max-widths)} {
+          > .container,
+          > .container-fluid {
             @extend %container-nesting-#{$breakpoint};
           }
-        }
 
-        .navbar-nav-scroll {
-          overflow: visible;
-        }
+          @each $size, $container-max-width in variables.$container-max-widths {
+            > .container#{breakpoints.breakpoint-infix($size, variables.$container-max-widths)} {
+              @extend %container-nesting-#{$breakpoint};
+            }
+          }
 
-        .navbar-collapse {
-          display: flex !important; // stylelint-disable-line declaration-no-important
+          .navbar-nav-scroll {
+            overflow: visible;
+          }
 
-          // Changes flex-bases to auto because of an IE10 bug
-          flex-basis: auto;
-        }
+          .navbar-collapse {
+            display: flex !important; // stylelint-disable-line declaration-no-important
 
-        .navbar-toggler {
-          display: none;
+            // Changes flex-bases to auto because of an IE10 bug
+            flex-basis: auto;
+          }
+
+          .navbar-toggler {
+            display: none;
+          }
         }
       }
     }
