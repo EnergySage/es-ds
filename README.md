@@ -1,3 +1,5 @@
+**NOTICE: this repo is for all bootstrap based front-ends, and is in maintenance mode 🚧 for the latest version of the design system see [EnergySage/es-ds](https://github.com/EnergySage/es-ds)**
+
 # EnergySage Design System
 
 This is a **monorepo** containing the elements required for building experiences
