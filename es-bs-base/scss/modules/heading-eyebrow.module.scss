@@ -1,0 +1,11 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  color: variables.$eyebrow-font-color;
+  fontSize: variables.$eyebrow-font-size;
+  fontWeight: variables.$eyebrow-font-weight;
+  letterSpacing: variables.$eyebrow-letter-spacing;
+  lineHeight: variables.$eyebrow-line-height;
+  marginBottom: variables.$eyebrow-margin-bottom;
+}
