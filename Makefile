@@ -40,11 +40,6 @@ build:
 	npm --prefix es-ds-docs run build
 # es-ds-components does not have a build step
 
-.PHONY: publish
-publish:
-	cd es-ds-styles; npm publish
-	cd es-ds-components; npm publish
-
 # Sometimes Called
 
 .PHONY: install
