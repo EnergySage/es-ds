@@ -1,7 +1,9 @@
 <template>
     <div>
         <h1>Badge</h1>
-        <p>Extended from <a href="https://v3.primevue.org/badge/" target="_blank"> PrimeVue Badge </a></p>
+        <p>
+            Based on <a href="https://getbootstrap.com/docs/4.6/components/badge/" target="_blank">Bootstrap Badge</a>
+        </p>
 
         <div class="my-500">
             <es-badge> Primary </es-badge>
