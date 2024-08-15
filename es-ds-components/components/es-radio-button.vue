@@ -13,6 +13,8 @@
 </template>
 
 <script setup lang="ts">
+import RadioButton from 'primevue/radiobutton';
+
 import { ref, watch } from 'vue';
 
 const props = defineProps({
