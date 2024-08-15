@@ -263,8 +263,8 @@
     </div>
 </template>
 <script setup lang="ts">
-import sassBreakpoints from '@energysage/es-bs-base/scss/modules/breakpoints.module.scss';
-import sassMaxWidths from '@energysage/es-bs-base/scss/modules/max-widths.module.scss';
+import sassBreakpoints from '@energysage/es-ds-styles/scss/modules/breakpoints.module.scss';
+import sassMaxWidths from '@energysage/es-ds-styles/scss/modules/max-widths.module.scss';
 
 
 const  breakpointTableLabels = [`Breakpoint`, `Max container width` ];
