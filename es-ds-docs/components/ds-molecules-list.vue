@@ -10,5 +10,10 @@
                 Collapse
             </ds-link>
         </li>
+        <li>
+            <ds-link to="/molecules/data-table">
+                Data table
+            </ds-link>
+        </li>
     </ul>
 </template>
