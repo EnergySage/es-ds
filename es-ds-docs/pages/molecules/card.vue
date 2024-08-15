@@ -33,10 +33,9 @@
                 Use <code>variant="interactive"</code> to change the card's visual treatment to
                 indicate that it's clickable. By default, it will automatically become a button.
             </p>
-            <es-card 
-                onclick="alert('The interactive card has been clicked.')"    
+            <es-card   
                 variant="interactive"
-                @click="modalVisible = true">
+                @click="notify('The interactive card has been clicked.')">
                 <h3>
                     Card title
                 </h3>
@@ -44,7 +43,8 @@
                     Card contents
                 </p>
             </es-card>
-            <!-- TODO: Add modal component once modal is created and delete the alert
+            <!-- TODO: Add modal component once modal is created, swap notify with
+                "modalVisible = true", and delete nofity function
                 <es-modal
                 id="button-modal"
                 hide-footer
@@ -105,7 +105,6 @@
                 Below is an example of using <code>tag="nuxt-link"</code> to make the card an internal navigation
                 link to another page in the same Nuxt app (in this case, the color page).
             </p>
-            <!--TODO: Swap to="/organisms/es-cta-card" once it is created and (in this case, the CTA card page) in text above-->
             <es-card
                 tag="nuxt-link"
                 to="/atoms/color"
@@ -218,7 +217,9 @@ const columnWidths = {
     md: ['2', '2', '8'],
 };
 const modalVisible = false;
-
+const notify = (string) => {
+    alert(string);
+}
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');

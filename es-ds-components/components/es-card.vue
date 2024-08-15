@@ -39,8 +39,8 @@ const props = defineProps({
 const actualVariant = computed(() => {
     // if href is specified, force variant to be interactive
     if (props.href) {
-                return 'interactive';
-            }
+        return 'interactive';
+    }
     // if no href provided, honor the specified variant
     return props.variant;
 });  
