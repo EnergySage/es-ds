@@ -523,21 +523,21 @@
 // with vite, sass variable exports must be defined as xyz.module.scss in order to be
 // imported into JS as an object rather than a string of the file contents
 // https://github.com/vitejs/vite/discussions/9601#discussioncomment-3359769
-import sassBlues from '@energysage/es-bs-base/scss/modules/blues.module.scss';
-import sassCoreColors from '@energysage/es-bs-base/scss/modules/core-colors.module.scss';
-import sassErrorColors from '@energysage/es-bs-base/scss/modules/error-colors.module.scss';
-import sassNeutrals from '@energysage/es-bs-base/scss/modules/neutrals.module.scss';
-import sassOranges from '@energysage/es-bs-base/scss/modules/oranges.module.scss';
-import sassSuccessColors from '@energysage/es-bs-base/scss/modules/success-colors.module.scss';
-import sassWarningColors from '@energysage/es-bs-base/scss/modules/warning-colors.module.scss';
+import sassBlues from '@energysage/es-ds-styles/scss/modules/blues.module.scss';
+import sassCoreColors from '@energysage/es-ds-styles/scss/modules/core-colors.module.scss';
+import sassErrorColors from '@energysage/es-ds-styles/scss/modules/error-colors.module.scss';
+import sassNeutrals from '@energysage/es-ds-styles/scss/modules/neutrals.module.scss';
+import sassOranges from '@energysage/es-ds-styles/scss/modules/oranges.module.scss';
+import sassSuccessColors from '@energysage/es-ds-styles/scss/modules/success-colors.module.scss';
+import sassWarningColors from '@energysage/es-ds-styles/scss/modules/warning-colors.module.scss';
 
-import sassBrandColors from '@energysage/es-bs-base/scss/modules/brand-colors.module.scss';
-import sassCyans from '@energysage/es-bs-base/scss/modules/cyans.module.scss';
-import sassGrays from '@energysage/es-bs-base/scss/modules/grays.module.scss';
-import sassPinks from '@energysage/es-bs-base/scss/modules/pinks.module.scss';
-import sassTeals from '@energysage/es-bs-base/scss/modules/teals.module.scss';
-import sassYellows from '@energysage/es-bs-base/scss/modules/yellows.module.scss';
-import sassVariants from '@energysage/es-bs-base/scss/modules/variants.module.scss';
+import sassBrandColors from '@energysage/es-ds-styles/scss/modules/brand-colors.module.scss';
+import sassCyans from '@energysage/es-ds-styles/scss/modules/cyans.module.scss';
+import sassGrays from '@energysage/es-ds-styles/scss/modules/grays.module.scss';
+import sassPinks from '@energysage/es-ds-styles/scss/modules/pinks.module.scss';
+import sassTeals from '@energysage/es-ds-styles/scss/modules/teals.module.scss';
+import sassYellows from '@energysage/es-ds-styles/scss/modules/yellows.module.scss';
+import sassVariants from '@energysage/es-ds-styles/scss/modules/variants.module.scss';
 
 // utility functions
 const prepareColors = (colors) => Object.entries(colors).reverse();

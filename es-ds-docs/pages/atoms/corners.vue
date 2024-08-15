@@ -49,8 +49,8 @@
 </template>
 
 <script setup lang="ts">
-import sassBorderRadius from "@energysage/es-bs-base/scss/modules/border-radius.module.scss";
-import sassBorderRadiusComponents from "@energysage/es-bs-base/scss/modules/border-radius-components.module.scss";
+import sassBorderRadius from "@energysage/es-ds-styles/scss/modules/border-radius.module.scss";
+import sassBorderRadiusComponents from "@energysage/es-ds-styles/scss/modules/border-radius-components.module.scss";
 
 import { computed } from "vue";
 
