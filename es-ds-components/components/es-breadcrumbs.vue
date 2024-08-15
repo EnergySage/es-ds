@@ -36,6 +36,8 @@
 </template>
 
 <script setup lang="ts">
+import Breadcrumb from 'primevue/breadcrumb';
+
 const props = defineProps({
     items: {
         type: Array,
