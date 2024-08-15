@@ -1,78 +1,55 @@
-# Run local v3 docs site with hot reloading hooked up to es-bs-base and es-ds-components
+# Run local v3 docs site with hot reloading hooked up to es-ds-styles and es-ds-components
 
 .PHONY: dev
-dev:
-	cd es-bs-base; npm link
-	cd es-ds-components; npm link @energysage/es-bs-base; npm link
-	cd es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
+dev: symlink
 	cd es-ds-docs; npm run dev
 
-# Run the old v2 docs site with slow rebuilds of es-bs-base and es-vue-base
+.PHONY: symlink
+symlink:
+	cd es-ds-styles; npm link
+	cd es-ds-components; npm link
+	cd es-ds-docs; npm link @energysage/es-ds-styles @energysage/es-ds-components
 
-.PHONY: legacy-dev
-legacy-dev:
-	overmind s
-
-# Unlink local v3 docs site from local es-bs-base and es-ds-components; restore to NPM versions
+# Unlink local v3 docs site from local es-ds-styles and es-ds-components; restore to NPM versions
 
 .PHONY: unlink
 unlink:
-	cd es-bs-base; npm unlink @energysage/es-bs-base
+	cd es-ds-styles; npm unlink @energysage/es-ds-styles
 	cd es-ds-components; npm unlink @energysage/es-ds-components
-	cd es-ds-docs; npm unlink --no-save @energysage/es-bs-base
+	cd es-ds-docs; npm unlink --no-save @energysage/es-ds-styles
 	cd es-ds-docs; npm unlink --no-save @energysage/es-ds-components
 	cd es-ds-docs npm install
 
 .PHONY: lint
 lint:
-	npx lerna run lint
+	npm --prefix es-ds-styles run lint
+# TODO: set up linting for es-ds-components and es-ds-docs
+# 	npm --prefix es-ds-components run lint
+# 	npm --prefix es-ds-docs run lint
 
 .PHONY: test
 test:
-	npx lerna run test
+	npm --prefix es-ds-styles run test
+# TODO: set up testing for es-ds-components and es-ds-docs
+#	npm --prefix es-ds-components run test
+#	npm --prefix es-ds-docs run test
 
 .PHONY: build
 build:
-	npx lerna run build
-
-.PHONY: publish
-publish:
-	npx lerna publish
-
-.PHONY: symlink
-symlink:
-	npx lerna bootstrap
-
-.PHONE: reload
-reload:
-	npm --prefix es-vue-base run build
-	npx lerna bootstrap
+	npm --prefix es-ds-styles run build
+	npm --prefix es-ds-docs run build
+# es-ds-components does not have a build step
 
 # Sometimes Called
 
 .PHONY: install
 install:
-	npm install
-	npm --prefix es-bs-base install
+	npm --prefix es-ds-styles install
 	npm --prefix es-ds-components install
 	npm --prefix es-ds-docs install
 
-.PHONY: legacy-install
-legacy-install:
-	npm install
-	npx lerna exec -- npm install
-
 # Bootstraping Commands (not reguarly called)
 
-.PHONY: build-scss-pkg
-build-scss-pkg:
-	npm run --prefix es-bs-base build
-
-.PHONY: build-vue-pkg
-build-vue-pkg:
-	npm run --prefix es-vue-base build
-
-.PHONY: update-peer-deps
-update-peer-deps:
-	npm --prefix es-vue-base install bootstrap-vue@2 \
-		vue@2
+.PHONY: update-package-deps
+update-package-deps:
+	cd es-ds-docs; npm uninstall @energysage/es-ds-styles && npm install @energysage/es-ds-styles && npm uninstall @energysage/es-ds-components && npm install @energysage/es-ds-components

@@ -18,7 +18,7 @@ jobs:
               with:
                 ref: esds-3.0-vue3-primevue
 
-            - name: Log into ES_DS_DEV AWS account 🔑 
+            - name: Log into ES_DS_DEV AWS account 🔑
               id: creds
               uses: aws-actions/configure-aws-credentials@v4
               with:
@@ -31,13 +31,13 @@ jobs:
               run: |
                   aws codeartifact login --tool npm --domain energysage --domain-owner 659694780082 --repository cloud-engineering
 
-            - name: Link ES-DS Version 3 🔗 
-              working-directory: 
+            - name: Link ES-DS Version 3 🔗
+              working-directory:
               shell: bash
               run: |
-                cd es-bs-base; npm link
-                cd ../es-ds-components; npm link  
-                cd ../es-ds-docs; npm link @energysage/es-bs-base @energysage/es-ds-components
+                cd es-ds-styles; npm link
+                cd ../es-ds-components; npm link
+                cd ../es-ds-docs; npm link @energysage/es-ds-styles @energysage/es-ds-components
 
             - name: Build ES-DS Version 3 🛠️
               working-directory: ./es-ds-docs
