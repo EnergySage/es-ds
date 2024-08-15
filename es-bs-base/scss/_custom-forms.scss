@@ -36,14 +36,14 @@
   height: (variables.$font-size-base * variables.$line-height-base + variables.$custom-control-indicator-size) * .5;
   opacity: 0;
 
-  &:checked ~ .custom-control-label::before {
+  &:checked ~ .custom-control-label::before, &:has(.custom-radio-input:checked) ~ .custom-control-label::before {
     color: variables.$custom-control-indicator-checked-color;
     border-color: variables.$custom-control-indicator-checked-border-color;
     @include gradients.gradient-bg(variables.$custom-control-indicator-checked-bg);
     @include box-shadow.box-shadow(variables.$custom-control-indicator-checked-box-shadow);
   }
 
-  &:focus ~ .custom-control-label::before {
+  &:focus ~ .custom-control-label::before, &:has(.custom-radio-input:focus) ~ .custom-control-label::before {
     // the mixin is not used here to make sure there is feedback
     @if variables.$enable-shadows {
       box-shadow: variables.$input-box-shadow, variables.$custom-control-indicator-focus-box-shadow;
@@ -52,16 +52,16 @@
     }
   }
 
-  &:focus:not(:checked) ~ .custom-control-label::before {
+  &:focus:not(:checked) ~ .custom-control-label::before, &:has(.custom-radio-input:focus):not(:has(.custom-radio-input:checked)) ~ .custom-control-label::before {
     border-color: variables.$custom-control-indicator-focus-border-color;
   }
 
-  &:not(:disabled):not(:focus) ~ .custom-control-label:hover::before {
+  &:not(:disabled):not(:focus):not(:has(.custom-radio-input:disabled)):not(:has(.custom-radio-input:focus)) ~ .custom-control-label:hover::before {
     // the mixin is not used here to make sure there is feedback
     box-shadow: variables.$custom-control-indicator-hover-box-shadow;
   }
 
-  &:not(:disabled):active ~ .custom-control-label::before {
+  &:not(:disabled):active ~ .custom-control-label::before, &:not(:has(.custom-radio-input:disabled)):active ~ .custom-control-label::before {
     color: variables.$custom-control-indicator-active-color;
     background-color: variables.$custom-control-indicator-active-bg;
     border-color: variables.$custom-control-indicator-active-border-color;
@@ -71,7 +71,8 @@
 
   // Use [disabled] and :disabled to work around https://github.com/twbs/bootstrap/issues/28247
   &[disabled],
-  &:disabled {
+  &:disabled,
+  &:has(.custom-radio-input:disabled) {
     ~ .custom-control-label {
       color: variables.$custom-control-label-disabled-color;
 
@@ -180,21 +181,21 @@
     border-radius: variables.$custom-radio-indicator-border-radius;
   }
 
-  .custom-control-input:checked ~ .custom-control-label {
+  .custom-control-input:has(.custom-radio-input:checked) ~ .custom-control-label {
     &::before {
       background-color: variables.$custom-control-indicator-bg;
     }
     &::after {
-      background-image: functions.escape-svg(variables.$custom-radio-indicator-icon-checked);
+      background-image: functions.escape-svg(variables.$custom-radio-indicator-icon-checked) !important;
     }
   }
 
-  .custom-control-input:disabled:checked ~ .custom-control-label {
+  .custom-control-input:has(.custom-radio-input:disabled:checked) ~ .custom-control-label {
     &::before {
       @include gradients.gradient-bg(variables.$custom-control-indicator-checked-disabled-bg);
     }
     &::after {
-      background-image: functions.escape-svg(variables.$custom-radio-indicator-icon-checked-disabled);
+      background-image: functions.escape-svg(variables.$custom-radio-indicator-icon-checked-disabled) !important;
     }
   }
 }
