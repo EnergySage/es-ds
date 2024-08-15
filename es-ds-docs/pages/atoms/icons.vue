@@ -746,7 +746,7 @@
 </template>
 
 <script setup lang="ts">
-import sassIconColors from '@energysage/es-bs-base/scss/modules/icon-colors.module.scss';
+import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
 import { ref } from "vue";
 
 const colorNames = Object.keys(sassIconColors)
@@ -784,8 +784,8 @@ if ($prism) {
 </script>
 
 <style lang="scss" scoped>
-@use "@energysage/es-bs-base/scss/variables" as variables;
-@use "@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+@use "@energysage/es-ds-styles/scss/variables" as variables;
+@use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
 
 .ds-icon-list {
     list-style: none;
