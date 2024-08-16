@@ -16,6 +16,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/form-msg">
+                Form Message
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/radio-button">
                 Radio button
             </ds-link>
