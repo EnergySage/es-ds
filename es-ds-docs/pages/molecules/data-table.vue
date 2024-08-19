@@ -8,7 +8,7 @@
             For further details about the properties used, refer to the
             <nuxt-link
                 to="https://primevue.org/datatable/"
-                target="_blank"> official PrimeVue documentation </nuxt-link>.
+                target="_blank">official PrimeVue documentation</nuxt-link>.
             Familiarity with the capabilities of the base component is <strong>strongly recommended</strong> if
             expanding the functionality of this table.
         </p>
@@ -83,33 +83,6 @@ const dataTableItems = [
         description: `
             Make the first column of the data stick on the left side when the table is horizontally
             scrolled.
-        `,
-    },
-    {
-        name: 'stickyHeader',
-        type: 'Boolean | String',
-        default: false,
-        description: `
-            When set, makes the table vertically scrollable with a sticky header row. The max height of the
-            table defaults to 300px, unless a string with a max height is used for this property.
-        `,
-    },
-    {
-        name: 'stickyHeader',
-        type: 'Boolean | String',
-        default: false,
-        description: `
-            When set, makes the table vertically scrollable with a sticky header row. The max height of the
-            table defaults to 300px, unless a string with a max height is used for this property.
-        `,
-    },
-    {
-        name: 'stickyHeader',
-        type: 'Boolean | String',
-        default: false,
-        description: `
-            When set, makes the table vertically scrollable with a sticky header row. The max height of the
-            table defaults to 300px, unless a string with a max height is used for this property.
         `,
     },
     {
