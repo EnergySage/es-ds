@@ -27,9 +27,7 @@ watch(model, (newVal, oldVal) => {
 })
 
 const accordionTabs = children.map((child, index) => {
-    if (child.props.id === props.initialExpandedId) {
-        activeIndex.value = index;
-    } else if (child.props.id === model.value) {
+    if (child.props.id === props.initialExpandedId || child.props.id === model.value) {
         activeIndex.value = index;
     }
     return child.children;
