@@ -44,13 +44,6 @@ if ($prism) {
         <h1>
             Form message
         </h1>
-        <p>
-            Extended from <nuxt-link
-                to="https://v3.primevue.org/message/"
-                target="_blank">
-                PrimeVue Message
-            </nuxt-link>
-        </p>
 
         <div class="my-500">
             <h2>
