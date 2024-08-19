@@ -6,6 +6,25 @@ const showSimpleError = ref(false);
 const showSimpleInfo = ref(false);
 const showSimpleSuccess = ref(false);
 
+const propTableRows = [
+    [
+        'show',
+        'false',
+        '(boolean) Whether to show the form message. This component will respond to changes of this prop, ' +
+        'and the client is responsible for setting it false upon receiving the "hidden" event.',
+    ],
+    [
+        'timeout',
+        '20',
+        '(number) How many seconds the message should show for.',
+    ],
+    [
+        'variant',
+        'danger',
+        '(string) Controls the icon on the message. Options are danger, success, or primary.',
+    ]
+];
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -153,6 +172,14 @@ if ($prism) {
                     </p>
                 </div>
             </es-form-msg>
+        </div>
+
+        <div class="mb-500">
+            <h2>
+                EsFormMsg props
+            </h2>
+            <ds-prop-table
+                :rows="propTableRows" />
         </div>
 
         <ds-doc-source
