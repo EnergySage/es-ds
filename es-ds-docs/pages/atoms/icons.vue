@@ -747,7 +747,6 @@
 
 <script setup lang="ts">
 import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
-import { ref } from "vue";
 
 const colorNames = Object.keys(sassIconColors)
     .map((k) => k)
@@ -774,7 +773,7 @@ const { $prism } = useNuxtApp();
 
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import('./color.vue?raw');
+    const docSource = await import('./icons.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
     docCode.value = $prism.normalizeCode(docSource.default);
