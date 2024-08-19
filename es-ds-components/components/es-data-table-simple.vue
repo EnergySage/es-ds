@@ -1,6 +1,7 @@
 <template>
-  <div :class="tableClass">
-    <table v-if="$slots.default || items.length" class="table table-borderless" :class="{ 'table-striped': striped }">
+  <div :class="tableClass"
+        class="table-borderless table-responsive">
+    <table v-if="$slots.default || items.length" class="table" :class="{ 'table-striped': striped }">
       <template v-if="$slots.default">
         <slot />
       </template>
@@ -55,6 +56,9 @@ const computedItems = computed(() => {
   if (!props.fields) {
     return props.items;
   }
+  if (props.fields.length !== props.items.length) {
+    throw new Error('The number of fields and items must be the same.');
+    }
   // If fields and items are both present, map them together
   return props.fields.map((field, index) => [field, props.items[index]]);
 });

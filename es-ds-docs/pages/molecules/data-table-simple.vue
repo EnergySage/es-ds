@@ -90,8 +90,6 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useNuxtApp } from '#app';
 const fields = ['Field name 1', 'Field name 2', 'Field name 3', 'Field name 4'];
 const items = ['Item value 1', 'Item value 2', 'Item value 3', 'Item value 4'];
 const propTableColumns = ['Name', 'Type', 'Default', 'Description'];
