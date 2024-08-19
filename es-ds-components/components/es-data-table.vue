@@ -74,24 +74,24 @@ const checkFrozenRow = (index) => {
 
 const label = (col) => {
     if (typeof col == 'string') {
-        return capitalizeFirstLetter(col);
+        return convertKey(col);
     }
-    return col?.label? col.label : capitalizeFirstLetter(col?.key);
+    return col?.label? col.label : convertKey(col?.key);
 };
 
-// Make first letter of string uppercase
-const capitalizeFirstLetter = (string) => {
+// Convert camel case and make first letter of string uppercase
+const convertKey = (string) => {
     if (typeof string == 'string') {
-        return string.charAt(0).toUpperCase() + string.slice(1);;
+        const stringSpaced = string.replace(/([a-z])([A-Z])/g, '$1 $2');
+        return stringSpaced.charAt(0).toUpperCase() + stringSpaced.slice(1);
     }
-    return string;
-    
+    return string;  
 }
+
 const columns = computed(() => {
     if (props.fields ) {
         return props.fields;
     }
-    
     return Object.keys(props.items[0]);
 });
 
