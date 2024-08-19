@@ -1,7 +1,7 @@
 <template>
   <div :class="tableClass"
-        class="table-borderless table-responsive">
-    <table v-if="$slots.default || items.length" class="table" :class="{ 'table-striped': striped }">
+        class="table-responsive">
+    <table v-if="$slots.default || items.length" class="table table-borderless" :class="{ 'table-striped': striped }">
       <template v-if="$slots.default">
         <slot />
       </template>
