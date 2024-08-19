@@ -33,25 +33,37 @@ watch(() => props.show, (newValue, oldValue) => {
 </script>
 
 <template>
-    <div v-if="show" role="alert" aria-live="polite" aria-atomic="true"
-         class="alert es-form-msg my-100 alert-dismissible" :class="`alert-${variant}`">
-        <div class="d-flex pr-100">
-            <div class="icon-wrapper flex-shrink-0 mr-100">
-                <icon-circle-alert v-if="variant === 'danger'" />
-                <icon-circle-check v-if="variant === 'success'" />
-                <icon-info v-if="variant === 'primary'" />
+    <transition>
+        <div v-if="show" role="alert" aria-live="polite" aria-atomic="true"
+             class="alert es-form-msg my-100 alert-dismissible" :class="`alert-${variant}`">
+            <div class="d-flex pr-100">
+                <div class="icon-wrapper flex-shrink-0 mr-100">
+                    <icon-circle-alert v-if="variant === 'danger'" />
+                    <icon-circle-check v-if="variant === 'success'" />
+                    <icon-info v-if="variant === 'primary'" />
+                </div>
+                <slot />
             </div>
-            <slot />
+            <button type="button" aria-label="Close" class="close" @click="hide">
+                <icon-x />
+            </button>
         </div>
-        <button type="button" aria-label="Close" class="close" @click="hide">
-            <icon-x />
-        </button>
-    </div>
+    </transition>
 </template>
 
 <style lang="scss" scoped>
 .form-msg {
     flex: 0 0 100%;
     padding-right: 2.5rem;
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.15s;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
 }
 </style>
