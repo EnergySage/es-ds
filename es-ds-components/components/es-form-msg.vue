@@ -36,14 +36,13 @@ watch(() => props.show, (newValue, oldValue) => {
     <div v-if="show" role="alert" aria-live="polite" aria-atomic="true"
          class="alert es-form-msg my-100 alert-dismissible" :class="`alert-${variant}`">
         <button type="button" aria-label="Close" class="close" @click="hide">
-            icon-x
+            <icon-x />
         </button>
         <div class="d-flex pr-100">
             <div class="icon-wrapper flex-shrink-0 mr-100">
-                <!-- todo put in the actual icons once they're available -->
-                <div v-if="variant === 'danger'">icon-circle-alert</div>
-                <div v-if="variant === 'success'">icon-circle-check</div>
-                <div v-if="variant === 'primary'">icon-info</div>
+                <icon-circle-alert v-if="variant === 'danger'" />
+                <icon-circle-check v-if="variant === 'success'" />
+                <icon-info v-if="variant === 'primary'" />
             </div>
             <slot />
         </div>
