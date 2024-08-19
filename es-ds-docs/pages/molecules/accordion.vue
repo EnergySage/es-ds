@@ -69,7 +69,7 @@ if ($prism) {
         <h1>Accordion</h1>
         <p class="mb-450">
             Extended from
-            <a href="https://primevue.org/accordion/">PrimeVue accordion</a>
+            <a href="https://v3.primevue.org/accordion/">PrimeVue accordion</a>
         </p>
 
         <div class="mb-450">
