@@ -4,28 +4,28 @@
             Progress circle
         </h1>
         <p class="pb-200">
-            Extended from <b-link
+            Extended from <nuxt-link
                 href="https://github.com/EnergySage/es-cdgm/blob/main/frontend/components/CircularProgress.vue"
                 target="_blank">
                 <code>es-cdgm</code> codebase
-            </b-link>
+            </nuxt-link>
         </p>
         <es-progress-circle
             class="mb-100"
             :value="value"
             height="100px" />
         <div class="d-flex flex-nowrap">
-            <es-button
+            <button
                 size="sm"
                 class="mr-50"
                 @click="value = value - 10">
                 -10%
-            </es-button>
-            <es-button
+            </button>
+            <button
                 size="sm"
                 @click="value = value + 10">
                 +10%
-            </es-button>
+            </button>
         </div>
         <ds-doc-source
             :comp-code="compCode"
