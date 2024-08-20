@@ -9,19 +9,22 @@ const showSimpleSuccess = ref(false);
 const propTableRows = [
     [
         'show',
+        'Boolean',
         'false',
-        '(boolean) Whether to show the form message. This component will respond to changes of this prop, ' +
+        'Whether to show the form message. This component will respond to changes of this prop, ' +
         'and the client is responsible for setting it false upon receiving the "hidden" event.',
     ],
     [
         'timeout',
+        'Number',
         '20',
-        '(number) How many seconds the message should show for.',
+        'How many seconds the message should show for.',
     ],
     [
         'variant',
-        'danger',
-        '(string) Controls the icon on the message. Options are danger, success, or primary.',
+        'String',
+        '\'danger\'',
+        'Controls the icon on the message. Options are danger, success, or primary.',
     ]
 ];
 
