@@ -19,9 +19,14 @@
       }
     }
 
-    &-button:hover + .es-accordion-heading {
-      background-color: variables.$blue-50;
-      color: variables.$blue-900;
+    .es-accordion-heading {
+      color: variables.$gray-900;
+
+      &:hover {
+        background-color: variables.$blue-50;
+        color: variables.$blue-900;
+        text-decoration: none;
+      }
     }
 
     /* first item needs rounded corners on top */
@@ -36,6 +41,11 @@
       border-bottom: none;
     }
   }
+}
+
+.es-accordion-list--minimal .es-accordion-heading:hover {
+  color: variables.$blue-900;
+  text-decoration: none;
 }
 
 /* rotate the chevron when expanded */
@@ -56,12 +66,6 @@
 /* first item of minimal variant has border top */
 .es-accordion--minimal:first-child {
   border-top: variables.$border-width solid variables.$gray-200;
-}
-
-/* align button to cover the heading tag and ensure it's on top */
-.es-accordion-button {
-  top: 0;
-  z-index: 2;
 }
 
 /* only animate the chevron if the user doesn't prefer reduced motion */
