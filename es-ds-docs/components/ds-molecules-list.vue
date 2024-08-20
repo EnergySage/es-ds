@@ -6,6 +6,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/badge">
+                Badge
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/breadcrumbs">
                 Breadcrumbs
             </ds-link>
