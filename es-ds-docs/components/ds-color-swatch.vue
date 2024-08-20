@@ -17,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+
 const props = defineProps({
     hex: {
         type: String,
@@ -35,8 +37,5 @@ const props = defineProps({
         required: true,
     },
 });
-
-const uppercaseHex = computed(() => {
-    return props.hex.toUpperCase();
-});
+const uppercaseHex = computed(() => props.hex.toUpperCase());
 </script>

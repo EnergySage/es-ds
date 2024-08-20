@@ -6,7 +6,8 @@
     "description": "An EnergySage Vue component library",
     "main": "./nuxt.config.ts",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint:js": "eslint ./components --ext .js,.vue,.ts"
     },
     "author": "EnergySage",
     "license": "MIT",
@@ -18,7 +19,15 @@
         "vue": "^3.4.34"
     },
     "devDependencies": {
+        "eslint": "^8.57.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.6.1",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-vitest": "^0.5.4",
+        "eslint-plugin-vue": "^9.27.0",
         "nuxt-primevue": "^3.0.0",
+        "prettier": "^3.3.3",
         "sass": "^1.77.8"
     }
 }

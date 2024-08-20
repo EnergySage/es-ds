@@ -1,3 +1,5 @@
+<!-- eslint-disable max-len -->
+
 <template>
     <svg
         :style="{

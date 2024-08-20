@@ -1,14 +1,16 @@
 <template>
     <div :class="`custom-control custom-radio custom-control${inline ? '-inline' : ''}`">
         <radio-button
+            v-model="localValue"
             class="custom-control-input"
             input-class="custom-radio-input"
-            v-model="localValue"
             :disabled="disabled"
             :input-id="`${value}-${groupName}`"
             :name="groupName"
             :value="value" />
-        <label :for="`${value}-${groupName}`" class="custom-control-label">{{ displayName }}</label>
+        <label
+            :for="`${value}-${groupName}`"
+            class="custom-control-label">{{ displayName }}</label>
     </div>
 </template>
 
@@ -25,12 +27,12 @@ const props = defineProps({
     displayName: {
         type: String,
         required: true,
-        default: "",
+        default: '',
     },
     groupName: {
         type: String,
         required: false,
-        default: "",
+        default: '',
     },
     inline: {
         type: Boolean,
@@ -39,12 +41,12 @@ const props = defineProps({
     modelValue: {
         type: String,
         required: true,
-        default: "",
+        default: '',
     },
     value: {
         type: String,
         required: true,
-        default: "",
+        default: '',
     },
 });
 

@@ -3,11 +3,11 @@
     <div class="prism">
         <pre
             class="line-numbers"
-            :class="`language-${lang}`"
-            ><code
-                class="match-braces"
-                :data-source="source"
-                v-html="code" />
+            :class="`language-${lang}`">
+        <code
+            class="match-braces"
+            :data-source="source"
+            v-html="code" />
         </pre>
     </div>
 </template>

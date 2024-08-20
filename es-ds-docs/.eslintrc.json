@@ -1,0 +1,133 @@
+{
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser"
+    },
+    "settings": {
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            },
+            "alias": {
+                "map": [
+                    ["@", "./lib"],
+                    ["~", "."]
+                ]
+            }
+        }
+    },
+    "plugins": ["@typescript-eslint"],
+    "env": {
+        "node": true
+    },
+    "overrides": [
+        {
+            "files": ["*.yaml", "*.yml"],
+            "parser": "yaml-eslint-parser",
+            "rules": {
+                "max-len": "off"
+            }
+        }
+    ],
+    "extends": [
+        "@vue/typescript/recommended",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:vue/recommended",
+        "prettier",
+        "airbnb-base"
+    ],
+    "rules": {
+        "linebreak-style": "off",
+        "camelcase": "off",
+        "no-console": "warn",
+        "indent": [
+            "warn",
+            4,
+            {
+                // https://github.com/babel/babel-eslint/issues/530
+                "ignoredNodes": ["TemplateLiteral"]
+            }
+        ],
+        "max-len": [
+            "warn",
+            {
+                "code": 119,
+                "ignorePattern": "class=",
+                "ignoreUrls": true
+            }
+        ],
+        "vue/html-closing-bracket-newline": [
+            "error",
+            {
+                "singleline": "never",
+                "multiline": "never"
+            }
+        ],
+        "vue/html-indent": ["warn", 4],
+        "vue/html-closing-bracket-spacing": [
+            "error",
+            {
+                "startTag": "never",
+                "endTag": "never",
+                "selfClosingTag": "always"
+            }
+        ],
+        "vue/max-attributes-per-line": [
+            "error",
+            {
+                "singleline": {
+                    "max": 1
+                },
+                "multiline": {
+                    "max": 1
+                }
+            }
+        ],
+        "vue/singleline-html-element-content-newline": [
+            "error",
+            {
+                "ignoreWhenNoAttributes": false,
+                "ignoreWhenEmpty": true
+            }
+        ],
+        "no-param-reassign": [
+            "error",
+            {
+                "props": true,
+                "ignorePropertyModificationsFor": ["e", "state", "ctx", "jestVue"]
+            }
+        ],
+        "no-shadow": [
+            "error",
+            {
+                "allow": ["state", "getters", "actions", "mutations"]
+            }
+        ],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true,
+                "peerDependencies": true
+            }
+        ],
+        "strict-vue/require-jsdoc": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "ts": "never"
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "vue/component-name-in-template-casing": [
+            "error",
+            "kebab-case",
+            {
+                "registeredComponentsOnly": false,
+                "ignores": []
+            }
+        ]
+    }
+}
