@@ -12,7 +12,7 @@ const accordionListProps = [
     ],
     [
         'initialExpandedId',
-        '',
+        'N/A',
         `
         The id of the item that should begin expanded when the component mounts. If omitted, all
         items will start out collapsed. Do not use at the same time as v-model.
@@ -31,7 +31,7 @@ const accordionListProps = [
 const accordionProps = [
     [
         'id',
-        '',
+        'N/A',
         `
         Required. Used to uniquely identify the item on the page. This value can also be passed to
         EsAccordionList to signify that this item should start out expanded.
