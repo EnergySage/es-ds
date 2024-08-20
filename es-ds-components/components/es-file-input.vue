@@ -65,9 +65,9 @@
     </div>
 </template>
 
-<script lang="js">
+<script setup lang="ts">
 // import { BFormFile } from 'bootstrap-vue';
-import { mimeTypes, findMimeType } from '../lib-utils';
+import findMimeType, { mimeTypes } from '../lib-utils/mime-type-finder'
 
 const props = defineProps({
     /**
@@ -123,7 +123,7 @@ let pickedItems = [];
 let files = [];
 let active = false;
 
-watch(uploadUrls, (newUrls) => {
+watch(props.uploadUrls, (newUrls, oldUrls) => {
     // For every file that has an associated upload URL, we start the upload
     newUrls.forEach((newUrlPair) => {
         const oldUrl = oldUrls.find(({ name }) => name === newUrlPair.name);
@@ -142,7 +142,7 @@ watch(pickedItems, async (newVal) => {
     }
 });
 
-watch(deleteFileName, (newVal) => {
+watch(props.deleteFileName, (newVal) => {
     files = files.filter((file) => file.name !== newVal);
 });
 
