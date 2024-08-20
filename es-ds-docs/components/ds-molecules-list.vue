@@ -25,5 +25,10 @@
                 Radio button
             </ds-link>
         </li>
+         <li>
+            <ds-link to="/molecules/progress-circle">
+                Progress circle
+            </ds-link>
+        </li>
     </ul>
 </template>
