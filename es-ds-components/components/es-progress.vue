@@ -1,12 +1,11 @@
 <template>
-    <ProgressBar
-        aria-describedby="es-progress"
+    <progress-bar
         class="bg-gray-200 rounded-0"
         :pt="progressBarPt"
         :showValue="showValue"
         :value="value"
         v-bind="$attrs">
-    </ProgressBar>
+    </progress-bar>
 </template>
 <script setup lang="ts">
 import ProgressBar from 'primevue/progressbar';
