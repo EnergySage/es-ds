@@ -24,7 +24,7 @@ const hide = () => {
 }
 
 watch(() => props.show, (newValue, oldValue) => {
-    if (newValue === true && oldValue === false) {
+    if (newValue && !oldValue) {
         setTimeout(() => {
             hide();
         }, props.timeout * 1000)
