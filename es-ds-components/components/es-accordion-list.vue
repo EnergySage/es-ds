@@ -99,7 +99,7 @@ const updateActiveIndex = (index) => {
 // https://vuejs.org/guide/built-ins/transition
 
 :deep(.v-transition-enter-active), :deep(.v-transition-leave-active) {
-    max-height: 100px;
+    max-height: 200px;
     overflow: hidden;
     transition: max-height .35s ease;
 }
