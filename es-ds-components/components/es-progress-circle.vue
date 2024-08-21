@@ -52,10 +52,6 @@ const props = defineProps({
             type: Number,
             required: true,
         },
-        circle: {
-            type: Boolean,
-            default: false,
-        },
         showPercentage: {
             type: Boolean,
             default: true,

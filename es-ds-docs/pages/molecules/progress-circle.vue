@@ -37,15 +37,14 @@
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-progress-circle.vue"
+            comp-source="es-ds-components/components/es-progress-circle.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/es-progress-circle.vue" />
+            doc-source="es-ds-docs/pages/molecules/progress-circle.vue" />
     </div>
 </template>
 
 <script setup>
 const value = ref(10);
-const heightRange = [50, 60, 70, 80, 90, 100];
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref("");
@@ -62,12 +61,6 @@ const propTableRows = [
         'Number',
         '10',
         'Required. A value between 0 and 100 representing the progress',
-    ],
-    [
-        'circle',
-        'Boolean',
-        'false',
-        'Variant of the circle',
     ],
     [
         'showPercentage',
