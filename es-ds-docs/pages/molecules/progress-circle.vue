@@ -77,9 +77,9 @@ const propTableRows = [
     ],
 ];
 const propTableWidths = {
-    md: ['2', '2', '2', '6'],
+    md: ['3','2','2','5'],
+    lg: ['2','2','2','6'],
 };
-
 
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
