@@ -29,7 +29,7 @@
         </div>
         <div class="mb-500">
             <h2>
-                Progress circle props
+                EsProgressCircle props
             </h2>
             <ds-prop-table
                 :rows="propTableRows"
