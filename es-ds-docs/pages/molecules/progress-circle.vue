@@ -33,7 +33,7 @@
             </h2>
             <ds-prop-table
                 :rows="propTableRows"
-                :widths="tableWidths" />
+                :widths="propTableWidths" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -53,28 +53,31 @@ const docCode = ref("");
 const propTableRows = [
     [
         'height',
+        'String',
         '50px',
         'Specifies height of the progress circle',
     ],
     [
         'value',
+        'Number',
         '10',
         'Required. A value between 0 and 100 representing the progress',
     ],
     [
         'circle',
+        'Boolean',
         'false',
         'Variant of the circle',
     ],
     [
         'showPercentage',
+        'Boolean',
         'true',
         'When present, it allows the progress percentage in the center of progress circle'
     ],
 ];
-const tableWidths = {
-    md: ['3', '2', '7'],
-    lg: ['2', '2', '8'],
+const propTableWidths = {
+    md: ['2', '2', '2', '6'],
 };
 
 
