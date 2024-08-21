@@ -31,7 +31,8 @@
                 <slot name="cta" />
             </div>
             <div class="align-self-center">
-                <es-button
+                <button
+                    type="button"
                     class="d-none d-md-inline w-100 w-md-auto"
                     :class="{ 'mb-200': collapsed }"
                     @click="openFilePicker">
@@ -40,8 +41,9 @@
                             Browse files
                         </p>
                     </slot>
-                </es-button>
-                <es-button
+                </button>
+                <button
+                    type="button"
                     class="d-md-none w-100"
                     @click="openFilePicker">
                     <slot name="buttonText">
@@ -49,7 +51,7 @@
                             Choose files
                         </p>
                     </slot>
-                </es-button>
+                </button>
             </div>
         </div>
         <div>

@@ -76,7 +76,7 @@
             <h2 class="mb-200">
                 Upload links
             </h2>
-            <b-form
+            <form
                 @submit.stop.prevent="onSubmit">
                 <es-form-input
                     id="basicExample"
@@ -86,15 +86,15 @@
                     </template>
                 </es-form-input>
                 <div class="d-flex flex-grow-1 justify-content-end mt-100">
-                    <es-button
+                    <button
                         type="submit"
                         class="w-100 w-lg-auto">
                         <span class="position-relative d-inline-block w-100">
                             Submit
                         </span>
-                    </es-button>
+                    </button>
                 </div>
-            </b-form>
+            </form>
         </div>
         <div v-if="events.length">
             <h2 class="mb-200">
