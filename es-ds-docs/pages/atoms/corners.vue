@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h1>Corners</h1>
+        <h1>
+            Corners
+        </h1>
         <p>
             Below are the four corner radius sizes used throughout the design system. Each size lists a few examples of
             components that make use of that size. Use the utility classes listed below (e.g. <code>rounded</code>) to
@@ -44,15 +46,17 @@
             </b-col>
         </b-row>
 
-        <ds-doc-source :doc-code="docCode" doc-source="es-ds-docs/atoms/corners.vue" />
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-ds-docs/atoms/corners.vue" />
     </div>
 </template>
 
 <script setup lang="ts">
-import sassBorderRadius from "@energysage/es-ds-styles/scss/modules/border-radius.module.scss";
-import sassBorderRadiusComponents from "@energysage/es-ds-styles/scss/modules/border-radius-components.module.scss";
+import sassBorderRadius from '@energysage/es-ds-styles/scss/modules/border-radius.module.scss';
+import sassBorderRadiusComponents from '@energysage/es-ds-styles/scss/modules/border-radius-components.module.scss';
 
-import { computed } from "vue";
+import { computed, ref } from 'vue';
 
 const BASE_FONT_SIZE_PX = 16;
 
@@ -90,11 +94,11 @@ const borderRadius = computed(() => {
     });
 
     return Object.entries(sassBorderRadius).map(([name, sizeRem]) => {
-        const sizePx = parseFloat(sizeRem.replace("rem", "")) * BASE_FONT_SIZE_PX;
+        const sizePx = parseFloat(sizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
         return {
-            class: name === "md" ? "rounded" : `rounded-${name}`,
+            class: name === 'md' ? 'rounded' : `rounded-${name}`,
             components: sizeMap[sizeRem].components.map((simpleName) => ({
-                name: `${simpleName[0].toUpperCase()}${simpleName.substring(1).replace("-", " ")}`,
+                name: `${simpleName[0].toUpperCase()}${simpleName.substring(1).replace('-', ' ')}`,
                 url: COMPONENT_NAME_URLS[simpleName],
             })),
             name,
@@ -105,11 +109,11 @@ const borderRadius = computed(() => {
 });
 
 const { $prism } = useNuxtApp();
-const docCode = ref("");
+const docCode = ref('');
 
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import("./corners.vue?raw");
+    const docSource = await import('./corners.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
     docCode.value = $prism.normalizeCode(docSource.default);
@@ -117,13 +121,13 @@ if ($prism) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .component-list {
     li:not(:first-child):not(:last-child) {
         margin-right: 0.25rem;
 
         &::after {
-            content: ",";
+            content: ',';
         }
     }
 }

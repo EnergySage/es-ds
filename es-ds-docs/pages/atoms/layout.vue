@@ -5,7 +5,9 @@
         </h1>
         <p>
             Based on
-            <nuxt-link to="https://bootstrap-vue.org/docs/components/layout" target="_blank">
+            <nuxt-link
+                to="https://bootstrap-vue.org/docs/components/layout"
+                target="_blank">
                 Bootstrap Vue layout
             </nuxt-link>
         </p>
@@ -265,18 +267,19 @@
 <script setup lang="ts">
 import sassBreakpoints from '@energysage/es-ds-styles/scss/modules/breakpoints.module.scss';
 import sassMaxWidths from '@energysage/es-ds-styles/scss/modules/max-widths.module.scss';
+import { ref } from 'vue';
 
+// eslint-disable-next-line quotes
+const breakpointTableLabels = [`Breakpoint`, `Max container width`];
 
-const  breakpointTableLabels = [`Breakpoint`, `Max container width` ];
-
-const  breakpointTableFields = [
-    //{ key: 'label', label: `` },
+const breakpointTableFields = [
+    // { key: 'label', label: `` },
     { key: 'xs', label: 'Extra small (xs)' },
     { key: 'sm', label: 'Small (sm)' },
     { key: 'md', label: 'Medium (md)' },
     { key: 'lg', label: 'Large (lg)' },
     { key: 'xl', label: 'Extra large (xl)' },
-    { key: 'xxl', label: 'Extra extra large (xxl)' }
+    { key: 'xxl', label: 'Extra extra large (xxl)' },
 ];
 const breakpointTableItems = [
     {
@@ -296,7 +299,7 @@ const breakpointTableItems = [
         lg: sassMaxWidths.lg,
         xl: sassMaxWidths.xl,
         xxl: sassMaxWidths.xxl,
-    }
+    },
 ];
 
 const { $prism } = useNuxtApp();
@@ -310,4 +313,3 @@ if ($prism) {
     $prism.highlight();
 }
 </script>
-

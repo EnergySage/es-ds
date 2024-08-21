@@ -23,6 +23,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 const route = useRoute();
 
 const breadcrumbs = computed(() => {

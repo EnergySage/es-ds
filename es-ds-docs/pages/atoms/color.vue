@@ -520,6 +520,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 // with vite, sass variable exports must be defined as xyz.module.scss in order to be
 // imported into JS as an object rather than a string of the file contents
 // https://github.com/vitejs/vite/discussions/9601#discussioncomment-3359769

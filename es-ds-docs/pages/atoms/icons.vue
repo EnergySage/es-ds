@@ -1,3 +1,4 @@
+<!-- eslint-disable import/* -->
 <template>
     <div>
         <h1>
@@ -10,7 +11,9 @@
                 the container in which they're placed. To change their color, simply place the appropriate
                 <code>text-{xxx}</code> utility class on their containing element.
             </p>
-            <p>Select an option to see how the icons look with that color applied.</p>
+            <p>
+                Select an option to see how the icons look with that color applied.
+            </p>
             <es-radio-button
                 v-for="color in colorOptions"
                 v-model="activeColor"
@@ -746,6 +749,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+// eslint-disable-next-line import/no-unresolved
 import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
 
 const colorNames = Object.keys(sassIconColors)
@@ -761,11 +766,9 @@ const colorOptions = Object.keys(colorNames).map((k) => ({
     value: k,
 }));
 
-let activeColor = ref(colorNames.body);
+const activeColor = ref(colorNames.body);
 
-const textColorClass = () => {
-    return `text-${activeColor.value}`;
-};
+const textColorClass = () => `text-${activeColor.value}`;
 
 const docCode = ref('');
 

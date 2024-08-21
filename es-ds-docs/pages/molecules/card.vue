@@ -33,7 +33,7 @@
                 Use <code>variant="interactive"</code> to change the card's visual treatment to
                 indicate that it's clickable. By default, it will automatically become a button.
             </p>
-            <es-card   
+            <es-card
                 variant="interactive"
                 @click="notify('The interactive card has been clicked.')">
                 <h3>
@@ -204,7 +204,7 @@
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
-       <ds-doc-source
+        <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/components/es-card.vue"
             :doc-code="docCode"
@@ -219,7 +219,7 @@ const columnWidths = {
 const modalVisible = false;
 const notify = (string) => {
     alert(string);
-}
+};
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');

@@ -1,3 +1,5 @@
+<!-- eslint-disable no-use-before-define -->
+<!-- eslint-disable import/no-self-import -->
 <template>
     <div>
         <h1>
@@ -143,54 +145,49 @@
 </template>
 
 <script setup lang="ts">
-import sassSpacers from "@energysage/es-ds-styles/scss/modules/spacers.module.scss";
+import sassSpacers from '@energysage/es-ds-styles/scss/modules/spacers.module.scss';
 
 const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450];
 
-const convertSpacerVariablesToTableEntries = (vars) =>  {
-    return Object.keys(vars)
-        .map((key) => ({ key, value: vars[key] }))
-        .map((item) => {
-            const key = parseInt(item.key.replace(/s/, ''), 10);
-            const alias = generateAlias(key);
-            const em = Number(item.value.replace(/rem/, ''));
-            const px = em * 16; // Assuming we'll never change base font-size
-            return {
-                alias,
-                em,
-                key,
-                px,
-            };
-        });
-};
-const generateAlias = (key) =>  {
-    return `p-${key} m-${key}`;
-};
+const convertSpacerVariablesToTableEntries = (vars) => Object.keys(vars)
+    .map((key) => ({ key, value: vars[key] }))
+    .map((item) => {
+        const key = parseInt(item.key.replace(/s/, ''), 10);
+        const alias = generateAlias(key);
+        const em = Number(item.value.replace(/rem/, ''));
+        const px = em * 16; // Assuming we'll never change base font-size
+        return {
+            alias,
+            em,
+            key,
+            px,
+        };
+    });
+const generateAlias = (key) => `p-${key} m-${key}`;
 
 const legacyCollapseVisible = false;
-const tableEntries = computed(() => {return convertSpacerVariablesToTableEntries(sassSpacers)});
-const deprecatedSpacers = computed(() => {
-    return tableEntries
-        // filter out updated spacers
-        .value.filter((spacer) => DEPRECATED_SPACERS.includes(spacer.key))
-        // find the equivalent spacer from the updated naming scheme
-        .map((entry) => {
-            const newSpacer = spacers.value.find((spacer) => spacer.px === entry.px);
-            return {
-                ...entry,
-                newKey: newSpacer ? newSpacer.key : 'n/a',
-                newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
-            };
-        })
-        // eslint-disable-next-line no-nested-ternary
-        .sort((a, b) => (a.px < b.px ? -1 : a.px > b.px ? 1 : 0));
-});
-const spacers = computed(() => {return tableEntries.value.filter((spacer) => !DEPRECATED_SPACERS.includes(spacer.key));});
+const tableEntries = computed(() => convertSpacerVariablesToTableEntries(sassSpacers));
+const deprecatedSpacers = computed(() => tableEntries
+// filter out updated spacers
+    .value.filter((spacer) => DEPRECATED_SPACERS.includes(spacer.key))
+// find the equivalent spacer from the updated naming scheme
+    .map((entry) => {
+        const newSpacer = spacers.value.find((spacer) => spacer.px === entry.px);
+        return {
+            ...entry,
+            newKey: newSpacer ? newSpacer.key : 'n/a',
+            newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
+        };
+    })
+// eslint-disable-next-line no-nested-ternary
+    .sort((a, b) => (a.px < b.px ? -1 : a.px > b.px ? 1 : 0)));
+const spacers = computed(() => tableEntries.value.filter((spacer) => !DEPRECATED_SPACERS.includes(spacer.key)));
 
 const { $prism } = useNuxtApp();
 const docCode = ref('');
 
 if ($prism) {
+    // eslint-disable-next-line import/no-self-import
     const docSource = await import('./spacing.vue?raw');
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();

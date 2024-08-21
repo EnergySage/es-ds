@@ -128,6 +128,16 @@
                 "registeredComponentsOnly": false,
                 "ignores": []
             }
-        ]
+        ],
+        "vue/multi-word-component-names": "off",
+        "no-undef": "warn",
+        "no-unused-vars": "warn",
+        "no-use-before-define": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "vue/valid-v-for": "warn",
+        "import/no-unresolved": "warn",
+        "import/no-self-import": "warn",
+        "import/no-cycle": "warn",
+        "import/no-relative-packages": "warn"
     }
 }

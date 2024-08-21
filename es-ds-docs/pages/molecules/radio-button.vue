@@ -87,12 +87,12 @@ const fruits = ref([
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
-const docCode = ref("");
+const docCode = ref('');
 
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
     const compSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
-    const docSource = await import("./radio-button.vue?raw");
+    const docSource = await import('./radio-button.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
     compCode.value = $prism.normalizeCode(compSource.default);
@@ -128,7 +128,7 @@ const propTableRows = [
     ],
     [
         'group-name',
-        "''",
+        '""',
         'Descriptive name of the radio button group. Optional but should be used if multiple groups '
         + 'use the same v-model.',
     ],

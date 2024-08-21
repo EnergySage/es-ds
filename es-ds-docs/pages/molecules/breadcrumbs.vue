@@ -38,7 +38,7 @@ const items = [
     },
     {
         text: 'Typography',
-        active: true
+        active: true,
     },
 ];
 const longerItems = [

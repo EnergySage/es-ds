@@ -1,3 +1,4 @@
+<!-- eslint-disable no-use-before-define -->
 <template>
     <div>
         <h1>
@@ -517,7 +518,6 @@
             :doc-code="docCode"
             doc-source="es-ds-docs/atoms/typography.vue" />
 
-
     </div>
 </template>
 
@@ -545,101 +545,101 @@ const excludedFontSizes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl'];
 const BASE_FONT_SIZE_PX = 16;
 
 const deprecatedFontSizeItems = [
-                ...Object.entries(sassFontSizes)
-                    .filter(([key]) => deprecatedFontSizes.some((suffix) => key.endsWith(suffix)))
-                    .map(([name, size]) => ({ name, size })),
-            ];
-const fontSizeItems = [ ...Object.entries(sassFontSizes)
-                        .filter(([key]) => !excludedFontSizes.some((suffix) => key.endsWith(suffix)))
-                        .map(([name, size]) => ({ name, size })),
-            ]
+    ...Object.entries(sassFontSizes)
+        .filter(([key]) => deprecatedFontSizes.some((suffix) => key.endsWith(suffix)))
+        .map(([name, size]) => ({ name, size })),
+];
+const fontSizeItems = [...Object.entries(sassFontSizes)
+    .filter(([key]) => !excludedFontSizes.some((suffix) => key.endsWith(suffix)))
+    .map(([name, size]) => ({ name, size })),
+];
 const fontWeightItems = [
-                ...Object.entries(sassFontWeights).map(([name, weight]) => ({
-                    name,
-                    weight,
-                })),
-            ];
+    ...Object.entries(sassFontWeights).map(([name, weight]) => ({
+        name,
+        weight,
+    })),
+];
 const legacyCollapseVisible = ref(false);
 
 const bodyExamples = computed(() => {
     const seeds = [
-                {
-                    name: 'Extra small body',
-                    key: 'xs',
-                    tag: 'span',
-                },
-                {
-                    name: 'Small body',
-                    key: 'sm',
-                    tag: 'span',
-                },
-                {
-                    name: 'Regular body',
-                    key: 'base',
-                    tag: 'span',
-                },
-                {
-                    name: 'Large body',
-                    key: 'lg',
-                    tag: 'span',
-                },
-                {
-                    name: 'Link small body',
-                    key: 'sm',
-                    tag: 'a',
-                },
-                {
-                    name: 'Link regular body',
-                    key: 'base',
-                    tag: 'a',
-                },
-                {
-                    name: 'Link large body',
-                    key: 'lg',
-                    tag: 'a',
-                },
-            ];
-            return seeds.reduce((result, seed) => {
-                const fontSizeRem = sassFontSizes[`font-size-${seed.key}`];
-                const fontSizePx = parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-                const lineHeightRem = sassLineHeights[`line-height-${seed.key}`];
-                const lineHeightPx = Math.round(
-                    (parseFloat(lineHeightRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-                ) / 10;
-                result.push({
-                    ...seed,
-                    class: seed.key !== 'base' ? `font-size-${seed.key}` : null,
-                    color: seed.tag === 'a' ? sassType['link-color'] : sassType['body-color'],
-                    fontSizePx,
-                    fontSizeRem,
-                    fontWeight: seed.tag === 'a' ? sassType['link-weight'] : sassType['font-weight-base'],
-                    lineHeightPx,
-                    lineHeightRem,
-                });
-                return result;
-            }, []);
-    }, {});
+        {
+            name: 'Extra small body',
+            key: 'xs',
+            tag: 'span',
+        },
+        {
+            name: 'Small body',
+            key: 'sm',
+            tag: 'span',
+        },
+        {
+            name: 'Regular body',
+            key: 'base',
+            tag: 'span',
+        },
+        {
+            name: 'Large body',
+            key: 'lg',
+            tag: 'span',
+        },
+        {
+            name: 'Link small body',
+            key: 'sm',
+            tag: 'a',
+        },
+        {
+            name: 'Link regular body',
+            key: 'base',
+            tag: 'a',
+        },
+        {
+            name: 'Link large body',
+            key: 'lg',
+            tag: 'a',
+        },
+    ];
+    return seeds.reduce((result, seed) => {
+        const fontSizeRem = sassFontSizes[`font-size-${seed.key}`];
+        const fontSizePx = parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+        const lineHeightRem = sassLineHeights[`line-height-${seed.key}`];
+        const lineHeightPx = Math.round(
+            (parseFloat(lineHeightRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+        ) / 10;
+        result.push({
+            ...seed,
+            class: seed.key !== 'base' ? `font-size-${seed.key}` : null,
+            color: seed.tag === 'a' ? sassType['link-color'] : sassType['body-color'],
+            fontSizePx,
+            fontSizeRem,
+            fontWeight: seed.tag === 'a' ? sassType['link-weight'] : sassType['font-weight-base'],
+            lineHeightPx,
+            lineHeightRem,
+        });
+        return result;
+    }, []);
+}, {});
 
 const displayExamples = computed(() => {
     const result = [];
 
-            // display-1 through display-4
-            for (let i = 1; i <= 4; i += 1) {
-                result.push({
-                    class: `display-${i}`,
-                    name: `Display ${i}`,
-                });
-            }
+    // display-1 through display-4
+    for (let i = 1; i <= 4; i += 1) {
+        result.push({
+            class: `display-${i}`,
+            name: `Display ${i}`,
+        });
+    }
 
-            return result;
-    }, {});
+    return result;
+}, {});
 
 const headingExamples = computed(() => {
     const result = [];
 
-            // post1 through post2
-            for (let i = 1; i <= 3; i += 1) {
-                result.push(createHeadingExample(
+    // post1 through post2
+    for (let i = 1; i <= 3; i += 1) {
+        result.push(createHeadingExample(
                     `post${i}`,
                     'post',
                     'Post',
@@ -648,12 +648,12 @@ const headingExamples = computed(() => {
                     sassPostFontSizesDesktop,
                     sassPostLineHeightsMobile,
                     sassPostLineHeightsDesktop,
-                ));
-            }
+        ));
+    }
 
-            // h1 through h6
-            for (let i = 1; i <= 6; i += 1) {
-                result.push(createHeadingExample(
+    // h1 through h6
+    for (let i = 1; i <= 6; i += 1) {
+        result.push(createHeadingExample(
                     `h${i}`,
                     'h',
                     'Heading',
@@ -662,109 +662,108 @@ const headingExamples = computed(() => {
                     sassHeadingFontSizesDesktop,
                     sassHeadingLineHeightsMobile,
                     sassHeadingLineHeightsDesktop,
-                ));
-            }
+        ));
+    }
 
-            // eyebrow
-            result.push(createHeadingExample(
-                'eyebrow',
-                'h',
-                'Eyebrow',
-                {
-                    color: sassHeadingEyebrow.color,
-                    fontWeight: sassHeadingEyebrow.fontWeight,
-                    marginBottom: sassHeadingEyebrow.marginBottom,
-                    letterSpacing: sassHeadingEyebrow.letterSpacing,
-                },
-                {
-                    eyebrow: sassHeadingEyebrow.fontSize,
-                },
-                {
-                    eyebrow: sassHeadingEyebrow.fontSize,
-                },
-                {
-                    eyebrow: sassHeadingEyebrow.lineHeight,
-                },
-                {
-                    eyebrow: sassHeadingEyebrow.lineHeight,
-                },
-            ));
+    // eyebrow
+    result.push(createHeadingExample(
+        'eyebrow',
+        'h',
+        'Eyebrow',
+        {
+            color: sassHeadingEyebrow.color,
+            fontWeight: sassHeadingEyebrow.fontWeight,
+            marginBottom: sassHeadingEyebrow.marginBottom,
+            letterSpacing: sassHeadingEyebrow.letterSpacing,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.fontSize,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.fontSize,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.lineHeight,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.lineHeight,
+        },
+    ));
 
-            return result;
-    }, {});
+    return result;
+}, {});
 
 const createHeadingExample = (
-            identifier,
-            categoryPrefix,
-            categoryName,
-            generalInfo,
-            mobileFontSizes,
-            desktopFontSizes,
-            mobileLineHeights,
-            desktopLineHeights,
+    identifier,
+    categoryPrefix,
+    categoryName,
+    generalInfo,
+    mobileFontSizes,
+    desktopFontSizes,
+    mobileLineHeights,
+    desktopLineHeights,
 ) => {
-            const sizeMobileRem = mobileFontSizes[identifier];
-            const sizeDesktopRem = desktopFontSizes[identifier];
-            const sizeMobilePx = parseFloat(sizeMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-            const sizeDesktopPx = parseFloat(sizeDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-            const lineHeightMobileRem = mobileLineHeights[identifier];
-            const lineHeightMobilePx = Math.round(
-                (parseFloat(lineHeightMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-            ) / 10;
-            const lineHeightDesktopRem = desktopLineHeights[identifier];
-            const lineHeightDesktopPx = Math.round(
-                (parseFloat(lineHeightDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-            ) / 10;
-            const marginBottomRem = generalInfo.marginBottom;
-            const marginBottomPx = parseFloat(marginBottomRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+    const sizeMobileRem = mobileFontSizes[identifier];
+    const sizeDesktopRem = desktopFontSizes[identifier];
+    const sizeMobilePx = parseFloat(sizeMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+    const sizeDesktopPx = parseFloat(sizeDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+    const lineHeightMobileRem = mobileLineHeights[identifier];
+    const lineHeightMobilePx = Math.round(
+        (parseFloat(lineHeightMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+    ) / 10;
+    const lineHeightDesktopRem = desktopLineHeights[identifier];
+    const lineHeightDesktopPx = Math.round(
+        (parseFloat(lineHeightDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+    ) / 10;
+    const marginBottomRem = generalInfo.marginBottom;
+    const marginBottomPx = parseFloat(marginBottomRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
 
-            const isEyebrow = identifier === 'eyebrow';
-            const isHeading = identifier[0] === 'h';
+    const isEyebrow = identifier === 'eyebrow';
+    const isHeading = identifier[0] === 'h';
 
-            let letterSpacingRem = '';
-            let letterSpacingPx = '';
+    let letterSpacingRem = '';
+    let letterSpacingPx = '';
 
-            if (isEyebrow) {
-                letterSpacingRem = generalInfo.letterSpacing;
-                letterSpacingPx = parseFloat(letterSpacingRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-            }
+    if (isEyebrow) {
+        letterSpacingRem = generalInfo.letterSpacing;
+        letterSpacingPx = parseFloat(letterSpacingRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+    }
 
-            return {
-                class: isHeading ? '' : identifier,
-                color: generalInfo.color,
-                fontWeight: generalInfo.fontWeight,
-                letterSpacingPx,
-                letterSpacingRem,
-                lineHeightDesktopPx,
-                lineHeightDesktopRem,
-                lineHeightMobilePx,
-                lineHeightMobileRem,
-                marginBottomPx,
-                marginBottomRem,
-                name: isEyebrow ? 'Eyebrow' : `${categoryName} ${identifier.replace(categoryPrefix, '')}`,
-                sizeDesktopPx,
-                sizeDesktopRem,
-                sizeMobilePx,
-                sizeMobileRem,
-                // eslint-disable-next-line no-nested-ternary
-                tag: isEyebrow ? 'h2' : isHeading ? identifier : 'h1',
-            };
-        };
+    return {
+        class: isHeading ? '' : identifier,
+        color: generalInfo.color,
+        fontWeight: generalInfo.fontWeight,
+        letterSpacingPx,
+        letterSpacingRem,
+        lineHeightDesktopPx,
+        lineHeightDesktopRem,
+        lineHeightMobilePx,
+        lineHeightMobileRem,
+        marginBottomPx,
+        marginBottomRem,
+        name: isEyebrow ? 'Eyebrow' : `${categoryName} ${identifier.replace(categoryPrefix, '')}`,
+        sizeDesktopPx,
+        sizeDesktopRem,
+        sizeMobilePx,
+        sizeMobileRem,
+        // eslint-disable-next-line no-nested-ternary
+        tag: isEyebrow ? 'h2' : isHeading ? identifier : 'h1',
+    };
+};
 
 const calculateActualFontSize = (remStr) => {
-            if (!remStr) {
-                return '';
-            }
-            const multiplier = parseFloat(remStr.replace('rem', ''));
-            return `${multiplier * 16}px`;
-        };
-
+    if (!remStr) {
+        return '';
+    }
+    const multiplier = parseFloat(remStr.replace('rem', ''));
+    return `${multiplier * 16}px`;
+};
 
 const { $prism } = useNuxtApp();
-const docCode = ref("");
+const docCode = ref('');
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import("./typography.vue?raw");
+    const docSource = await import('./typography.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();
@@ -795,5 +794,3 @@ if ($prism) {
     }
 }
 </style>
-
-

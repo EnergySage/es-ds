@@ -203,7 +203,6 @@
     </div>
 </template>
 
-
 <script setup>
 const suggestedVisible = ref(true);
 const visible = ref(false);
