@@ -35,5 +35,10 @@
                 Radio button
             </ds-link>
         </li>
+        <li>
+            <ds-link to="/molecules/progress">
+                Progress
+            </ds-link>
+        </li>
     </ul>
 </template>
