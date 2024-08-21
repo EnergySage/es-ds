@@ -31,13 +31,23 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/radio-button">
-                Radio button
+            <ds-link to="/molecules/form-msg">
+                Form Message
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/progress">
+                Progress
             </ds-link>
         </li>
          <li>
             <ds-link to="/molecules/progress-circle">
                 Progress circle
+            </ds-link>
+         </li>
+        <li>
+            <ds-link to="/molecules/radio-button">
+                Radio button
             </ds-link>
         </li>
     </ul>
