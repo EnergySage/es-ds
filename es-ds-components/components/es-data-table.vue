@@ -1,5 +1,5 @@
 <template>
-    <DataTable
+    <data-table
         scrollable
         :pt="{
             table: {
@@ -17,7 +17,7 @@
         class="border table__data-table table-spacing table"
         :scrollHeight="scrollHeight"
     >
-    <Column v-for="(col,index) of columns" :key="col?.key ? col.key : col" :field="col?.key ? col.key : col" :header="label(col)" 
+    <column v-for="(col,index) of columns" :key="col?.key ? col.key : col" :field="col?.key ? col.key : col" :header="label(col)" 
         :sortable="col?.sortable"
         :frozen="checkFrozenRow(index)" alignFrozen="left"
         :pt="{
@@ -26,8 +26,9 @@
             }, 
             headerCell: (options)  => ({
                 class:[
-                    {
-                        'stickyFirstCol': options.props.frozen,
+                    { 
+                        'sortable': options.props.sortable,
+                        'stickyFirstColHeader': options.props.frozen,
                     }
                 ],
             }),
@@ -40,8 +41,8 @@
             }),  
         }"
         >
-    </Column>
-    </DataTable>
+    </column>
+    </data-table>
 </template>
 <script setup lang="ts">
 import DataTable from 'primevue/datatable';
@@ -74,18 +75,21 @@ const checkFrozenRow = (index) => {
 
 const label = (col) => {
     if (typeof col == 'string') {
-        return convertKey(col);
+        return startCase(col);
     }
-    return col?.label? col.label : convertKey(col?.key);
+    return col?.label? col.label : startCase(col?.key);
 };
 
-// Convert camel case and make first letter of string uppercase
-const convertKey = (string) => {
-    if (typeof string == 'string') {
-        const stringSpaced = string.replace(/([a-z])([A-Z])/g, '$1 $2');
-        return stringSpaced.charAt(0).toUpperCase() + stringSpaced.slice(1);
-    }
-    return string;  
+// Code is taken from BootStrap Vue to implemnt <b-table> feature that automatically
+// samples the first row to extract field name and "humanize" by converting kebab-case,
+// snake_case, and camelCase to individual words and capitalizes each word. 
+// Doc: https://bootstrap-vue.org/docs/components/table
+// Source Code: https://github.com/bootstrap-vue/bootstrap-vue/blob/5173dd19f6f46dc9d125cd7233fb59ccd2ef9296/src/utils/string.js#L30 
+const startCase = (str) =>{
+  return str
+    .replace(/_/g, ' ')
+    .replace(/([a-z])([A-Z])/g, (str, $1, $2) => $1 + ' ' + $2)
+    .replace(/(\s|^)(\w)/g, (str, $1, $2) => $1 + $2.toUpperCase())
 }
 
 const columns = computed(() => {
@@ -106,9 +110,15 @@ const scrollHeight = computed(() => {
 });
 
 </script>
-<style>
-.stickyFirstCol{
+<style scoped lang="scss">
+:deep(.stickyFirstColHeader){
+    position: sticky !important;
+}
+:deep(.stickyFirstCol){
     position: sticky !important;
     background: inherit;
+}
+:deep(.sortable){
+    cursor: pointer !important;
 }
 </style>

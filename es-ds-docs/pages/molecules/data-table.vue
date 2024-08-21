@@ -4,10 +4,10 @@
             Data table
         </h1>
         <p class="mb-500">
-            A responsive table using the <nuxt-link to="https://primevue.org/datatable/">PrimeVue DataTable</nuxt-link>.
+            A responsive table using the <nuxt-link to="https://v3.primevue.org/datatable/">PrimeVue DataTable</nuxt-link>.
             For further details about the properties used, refer to the
             <nuxt-link
-                to="https://primevue.org/datatable/"
+                to="https://v3.primevue.org/datatable/"
                 target="_blank">official PrimeVue documentation</nuxt-link>.
             Familiarity with the capabilities of the base component is <strong>strongly recommended</strong> if
             expanding the functionality of this table.
