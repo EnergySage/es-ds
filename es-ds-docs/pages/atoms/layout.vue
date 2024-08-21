@@ -20,7 +20,7 @@
         <ds-responsive-table>
             <ds-responsive-table-row
                 v-for="field in breakpointTableFields"
-                zebraStripes>
+                zebra-stripes>
                 <ds-responsive-table-column>
                     <template #name>
                         &nbsp;

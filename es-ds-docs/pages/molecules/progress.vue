@@ -56,7 +56,7 @@
         <p class="mb-300">
             value: {{ value }}
         </p>
-       <ds-doc-source
+        <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/src/lib-components/es-progress.vue"
             :doc-code="docCode"

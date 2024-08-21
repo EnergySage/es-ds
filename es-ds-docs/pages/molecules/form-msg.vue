@@ -11,8 +11,8 @@ const propTableRows = [
         'show',
         'Boolean',
         'false',
-        'Whether to show the form message. This component will respond to changes of this prop, ' +
-        'and the client is responsible for setting it false upon receiving the "hidden" event.',
+        'Whether to show the form message. This component will respond to changes of this prop, '
+        + 'and the client is responsible for setting it false upon receiving the "hidden" event.',
     ],
     [
         'timeout',
@@ -25,7 +25,7 @@ const propTableRows = [
         'String',
         '\'danger\'',
         'Controls the icon on the message. Options are danger, success, or primary.',
-    ]
+    ],
 ];
 
 const { $prism } = useNuxtApp();

@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint:js": "eslint ./components ./pages ./layouts --ext .js,.vue,.ts"
+    "lint": "eslint ./components ./pages ./layouts --ext .js,.vue,.ts",
+    "lint-fix": "eslint --fix ./components ./pages ./layouts --ext .js,.vue,.ts"
   },
   "dependencies": {
     "@energysage/es-ds-components": "^3.0.0-alpha.6",
