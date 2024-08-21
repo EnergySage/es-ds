@@ -191,8 +191,7 @@
                 EsCollapse props
             </h2>
             <ds-prop-table
-                :rows="propTableRows"
-                :widths="tableWidths" />
+                :rows="propTableRows" />
         </div>
 
         <ds-doc-source
@@ -211,26 +210,25 @@ const visible = ref(false);
 const propTableRows = [
     [
         'visible',
+        'Boolean',
         'false',
         'Suggested visibility state. Will be ignored if and when the user '
         + 'interacts with the collapse (unless "isProgrammaticUntilUserInput" is false).',
     ],
     [
         'isProgrammaticUntilUserInput',
+        'Boolean',
         'true',
         'Priority for the "visible" prop. When false, "visible" will continue to affect the component '
         + 'even after the user interacts with the collapse.',
     ],
     [
         'border',
+        'Boolean',
         'true',
         'Will hide/show borders',
     ],
 ];
-const tableWidths = {
-    md: ['4', '3', '5'],
-    lg: ['4', '3', '5'],
-};
 
 const shownEvent = () => {
     // eslint-disable-next-line no-console
