@@ -1,6 +1,11 @@
 <template>
     <ul class="list-unstyled pl-100">
         <li>
+            <ds-link to="/molecules/accordion">
+                Accordion
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/badge">
                 Badge
             </ds-link>
@@ -26,8 +31,18 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/form-msg">
+                Form Message
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/radio-button">
                 Radio button
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/progress">
+                Progress
             </ds-link>
         </li>
     </ul>
