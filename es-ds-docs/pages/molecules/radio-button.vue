@@ -63,8 +63,7 @@
                 EsCollapse props
             </h2>
             <ds-prop-table
-                :rows="propTableRows"
-                :widths="tableWidths" />
+                :rows="propTableRows" />
         </div>
 
         <ds-doc-source
@@ -103,39 +102,40 @@ if ($prism) {
 const propTableRows = [
     [
         'disabled',
+        'Boolean',
         'false',
         'When present, it specifies that the radio button should be disabled.',
     ],
     [
         'inline',
+        'Boolean',
         'false',
         'When present, it specifies that the radio buttons should be displayed inline.',
     ],
     [
         'v-model',
+        'String',
         'n/a',
         'Required. The v-model directive binds the radio button to a data property.',
     ],
     [
         'display-name',
+        'String',
         'n/a',
         'Required. The text to display next to the radio button.',
     ],
     [
         'value',
+        'String',
         'n/a',
         'Required. The value to be used by v-model.',
     ],
     [
         'group-name',
+        'String',
         "''",
         'Descriptive name of the radio button group. Optional but should be used if multiple groups '
         + 'use the same v-model.',
     ],
 ];
-
-const tableWidths = {
-    md: ['4', '3', '5'],
-    lg: ['4', '3', '5'],
-};
 </script>
