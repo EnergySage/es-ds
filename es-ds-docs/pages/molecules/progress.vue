@@ -64,11 +64,11 @@
                 :rows="propTableRows"
                 :widths="propTableWidths" />
         </div>
-       <ds-doc-source
+         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-progress.vue"
+            comp-source="es-ds-components/components/es-progress.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/es-progress.vue" />
+            doc-source="es-ds-docs/pages/molecules/progress.vue" />
     </div>
 </template>
 
