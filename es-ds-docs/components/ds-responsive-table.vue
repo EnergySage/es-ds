@@ -11,8 +11,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use "@energysage/es-bs-base/scss/variables" as variables;
-@use "@energysage/es-bs-base/scss/mixins/breakpoints" as breakpoints;
+@use "@energysage/es-ds-styles/scss/variables" as variables;
+@use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
 
 .responsive-table {
     border-top: variables.$border-width solid variables.$border-color;

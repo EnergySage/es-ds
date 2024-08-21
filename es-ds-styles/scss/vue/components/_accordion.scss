@@ -1,0 +1,76 @@
+@use "../../variables" as variables;
+
+.es-accordion-list {
+  .es-accordion {
+    border-bottom: variables.$border-width solid variables.$gray-200;
+  }
+}
+
+.es-accordion-list--default {
+  background-color: variables.$white;
+  border: variables.$border-width solid variables.$gray-200;
+  border-radius: variables.$accordion-border-radius variables.$accordion-border-radius 0 0;
+
+  .es-accordion {
+    &.expanded {
+      .es-accordion-heading {
+        background-color: variables.$gray-50;
+        color: variables.$blue-900;
+      }
+    }
+
+    .es-accordion-heading {
+      color: variables.$gray-900;
+
+      &:hover {
+        background-color: variables.$blue-50;
+        color: variables.$blue-900;
+        text-decoration: none;
+      }
+    }
+
+    /* first item needs rounded corners on top */
+    &:first-child {
+      .es-accordion-heading {
+          border-radius: variables.$accordion-border-radius variables.$accordion-border-radius 0 0;
+      }
+    }
+
+    /* remove bottom border from last item so it doesn't collide with overall border */
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.es-accordion-list--minimal .es-accordion-heading:hover {
+  color: variables.$blue-900;
+  text-decoration: none;
+}
+
+/* rotate the chevron when expanded */
+.es-accordion-heading--visible {
+  .es-accordion-icon {
+    transform: rotate(180deg);
+  }
+}
+
+/* for smooth background color transition */
+@media not prefers-reduced-motion {
+  .es-accordion-heading {
+    /* use this instead of $transition-base so font size and padding don't animate weirdly on breakpoint change */
+    transition: background-color .2s ease-in-out;
+  }
+}
+
+/* first item of minimal variant has border top */
+.es-accordion--minimal:first-child {
+  border-top: variables.$border-width solid variables.$gray-200;
+}
+
+/* only animate the chevron if the user doesn't prefer reduced motion */
+@media not prefers-reduced-motion {
+  .es-accordion-icon {
+    transition: variables.$transition-base;
+  }
+}

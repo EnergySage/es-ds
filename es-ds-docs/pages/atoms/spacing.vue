@@ -143,7 +143,7 @@
 </template>
 
 <script setup lang="ts">
-import sassSpacers from "@energysage/es-bs-base/scss/modules/spacers.module.scss";
+import sassSpacers from "@energysage/es-ds-styles/scss/modules/spacers.module.scss";
 
 const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450];
 
@@ -167,7 +167,7 @@ const generateAlias = (key) =>  {
     return `p-${key} m-${key}`;
 };
 
-const legacyCollapseVisible = false;      
+const legacyCollapseVisible = false;
 const tableEntries = computed(() => {return convertSpacerVariablesToTableEntries(sassSpacers)});
 const deprecatedSpacers = computed(() => {
     return tableEntries
