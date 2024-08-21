@@ -14,7 +14,7 @@
             class="mb-100"
             :value="value"
             height="100px" />
-        <div class="d-flex flex-nowrap">
+        <div class="d-flex flex-nowrap mb-400">
             <button
                 size="sm"
                 class="mr-50"
@@ -26,6 +26,14 @@
                 @click="value = value + 10">
                 +10%
             </button>
+        </div>
+        <div class="mb-500">
+            <h2>
+                Progress circle props
+            </h2>
+            <ds-prop-table
+                :rows="propTableRows"
+                :widths="tableWidths" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
@@ -41,6 +49,34 @@ const heightRange = [50, 60, 70, 80, 90, 100];
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref("");
+
+const propTableRows = [
+    [
+        'height',
+        '50px',
+        'Specifies height of the progress circle',
+    ],
+    [
+        'value',
+        '10',
+        'Required. A value between 0 and 100 representing the progress',
+    ],
+    [
+        'circle',
+        'false',
+        'Variant of the circle',
+    ],
+    [
+        'showPercentage',
+        'true',
+        'When present, it allows the progress percentage in the center of progress circle'
+    ],
+];
+const tableWidths = {
+    md: ['3', '2', '7'],
+    lg: ['2', '2', '8'],
+};
+
 
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
