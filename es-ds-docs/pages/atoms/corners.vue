@@ -1,57 +1,3 @@
-<template>
-    <div>
-        <h1>
-            Corners
-        </h1>
-        <p>
-            Below are the four corner radius sizes used throughout the design system. Each size lists a few examples of
-            components that make use of that size. Use the utility classes listed below (e.g. <code>rounded</code>) to
-            add the desired corner radius to your UI elements.
-        </p>
-
-        <b-row class="my-500">
-            <b-col
-                v-for="item in borderRadius"
-                :key="item.name"
-                class="mb-200"
-                cols="6"
-                lg="3">
-                <div
-                    class="bg-soft-blue h-100 px-100 px-lg-200 py-200 py-lg-300 text-center text-dark-blue"
-                    :class="item.class">
-                    <p class="font-size-300 mb-25">
-                        {{ `${item.name} / ${item.sizePx}px` }}
-                    </p>
-                    <p>
-                        <code class="text-body">
-                            {{ item.class }}
-                        </code>
-                    </p>
-                    <p class="font-size-sm mb-0">
-                        <ul class="component-list list-unstyled mb-0">
-                            <li class="d-inline-block">
-                                Used by&nbsp;
-                            </li>
-                            <li
-                                v-for="component in item.components"
-                                :key="component.name"
-                                class="d-inline-block">
-                                <ds-link :to="component.url">
-                                    {{ component.name }}
-                                </ds-link>
-                            </li>
-                        </ul>
-                    </p>
-                </div>
-            </b-col>
-        </b-row>
-
-        <ds-doc-source
-            :doc-code="docCode"
-            doc-source="es-ds-docs/atoms/corners.vue" />
-    </div>
-</template>
-
 <script setup lang="ts">
 import sassBorderRadius from '@energysage/es-ds-styles/scss/modules/border-radius.module.scss';
 import sassBorderRadiusComponents from '@energysage/es-ds-styles/scss/modules/border-radius-components.module.scss';
@@ -120,6 +66,60 @@ if ($prism) {
     $prism.highlight();
 }
 </script>
+
+<template>
+    <div>
+        <h1>
+            Corners
+        </h1>
+        <p>
+            Below are the four corner radius sizes used throughout the design system. Each size lists a few examples of
+            components that make use of that size. Use the utility classes listed below (e.g. <code>rounded</code>) to
+            add the desired corner radius to your UI elements.
+        </p>
+
+        <b-row class="my-500">
+            <b-col
+                v-for="item in borderRadius"
+                :key="item.name"
+                class="mb-200"
+                cols="6"
+                lg="3">
+                <div
+                    class="bg-soft-blue h-100 px-100 px-lg-200 py-200 py-lg-300 text-center text-dark-blue"
+                    :class="item.class">
+                    <p class="font-size-300 mb-25">
+                        {{ `${item.name} / ${item.sizePx}px` }}
+                    </p>
+                    <p>
+                        <code class="text-body">
+                            {{ item.class }}
+                        </code>
+                    </p>
+                    <p class="font-size-sm mb-0">
+                        <ul class="component-list list-unstyled mb-0">
+                            <li class="d-inline-block">
+                                Used by&nbsp;
+                            </li>
+                            <li
+                                v-for="component in item.components"
+                                :key="component.name"
+                                class="d-inline-block">
+                                <ds-link :to="component.url">
+                                    {{ component.name }}
+                                </ds-link>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </b-col>
+        </b-row>
+
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-ds-docs/atoms/corners.vue" />
+    </div>
+</template>
 
 <style lang='scss' scoped>
 .component-list {

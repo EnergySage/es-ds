@@ -1,17 +1,3 @@
-<template>
-    <!-- eslint-disable vue/no-v-html -->
-    <div class="prism">
-        <pre
-            class="line-numbers"
-            :class="`language-${lang}`">
-        <code
-            class="match-braces"
-            :data-source="source"
-            v-html="code" />
-        </pre>
-    </div>
-</template>
-
 <script>
 export default {
     name: 'CodeBlock',
@@ -33,3 +19,17 @@ export default {
     },
 };
 </script>
+
+<template>
+    <!-- eslint-disable vue/no-v-html -->
+    <div class="prism">
+        <pre
+            class="line-numbers"
+            :class="`language-${lang}`">
+        <code
+            class="match-braces"
+            :data-source="source"
+            v-html="code" />
+        </pre>
+    </div>
+</template>

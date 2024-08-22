@@ -1,3 +1,25 @@
+<script lang="js">
+export default {
+    name: 'DsPropTable',
+    props: {
+        columns: {
+            type: Array,
+            default: () => ['Name', 'Type', 'Default', 'Description'],
+        },
+        rows: {
+            type: Array,
+            required: true,
+        },
+        widths: {
+            type: Object,
+            default: () => ({
+                md: ['3', '2', '2', '5'],
+            }),
+        },
+    },
+};
+</script>
+
 <template>
     <ds-responsive-table>
         <ds-responsive-table-row
@@ -23,25 +45,3 @@
         </ds-responsive-table-row>
     </ds-responsive-table>
 </template>
-
-<script lang="js">
-export default {
-    name: 'DsPropTable',
-    props: {
-        columns: {
-            type: Array,
-            default: () => ['Name', 'Type', 'Default', 'Description'],
-        },
-        rows: {
-            type: Array,
-            required: true,
-        },
-        widths: {
-            type: Object,
-            default: () => ({
-                md: ['3', '2', '2', '5'],
-            }),
-        },
-    },
-};
-</script>

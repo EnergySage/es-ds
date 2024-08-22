@@ -1,3 +1,13 @@
+<script setup lang="ts">
+defineProps({
+    variant: {
+        type: String,
+        default: 'primary',
+        required: false,
+    },
+});
+</script>
+
 <template>
     <span
         class="badge"
@@ -8,13 +18,3 @@
         <slot />
     </span>
 </template>
-
-<script setup lang="ts">
-const props = defineProps({
-    variant: {
-        type: String,
-        default: 'primary',
-        required: false,
-    },
-});
-</script>

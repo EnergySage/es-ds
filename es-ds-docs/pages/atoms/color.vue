@@ -1,3 +1,108 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
+<!-- eslint-disable no-unused-vars -->
+<script setup lang="ts">
+
+// with vite, sass variable exports must be defined as xyz.module.scss in order to be
+// imported into JS as an object rather than a string of the file contents
+// https://github.com/vitejs/vite/discussions/9601#discussioncomment-3359769
+import sassBlues from '@energysage/es-ds-styles/scss/modules/blues.module.scss';
+import sassCoreColors from '@energysage/es-ds-styles/scss/modules/core-colors.module.scss';
+import sassErrorColors from '@energysage/es-ds-styles/scss/modules/error-colors.module.scss';
+import sassNeutrals from '@energysage/es-ds-styles/scss/modules/neutrals.module.scss';
+import sassOranges from '@energysage/es-ds-styles/scss/modules/oranges.module.scss';
+import sassSuccessColors from '@energysage/es-ds-styles/scss/modules/success-colors.module.scss';
+import sassWarningColors from '@energysage/es-ds-styles/scss/modules/warning-colors.module.scss';
+
+import sassBrandColors from '@energysage/es-ds-styles/scss/modules/brand-colors.module.scss';
+import sassCyans from '@energysage/es-ds-styles/scss/modules/cyans.module.scss';
+import sassGrays from '@energysage/es-ds-styles/scss/modules/grays.module.scss';
+import sassPinks from '@energysage/es-ds-styles/scss/modules/pinks.module.scss';
+import sassTeals from '@energysage/es-ds-styles/scss/modules/teals.module.scss';
+import sassYellows from '@energysage/es-ds-styles/scss/modules/yellows.module.scss';
+import sassVariants from '@energysage/es-ds-styles/scss/modules/variants.module.scss';
+
+// utility functions
+const prepareColors = (colors) => Object.entries(colors).reverse();
+const slice = (colors, tokens) => {
+    const result = {};
+    tokens.forEach((token) => {
+        result[token] = colors[token];
+    });
+    return result;
+};
+
+const brandColors = sassBrandColors;
+const brandColorNames = {
+    cyan: 'ES Blue',
+    gray: 'ES Slate',
+    pink: 'ES Pink',
+    teal: 'ES Teal',
+    yellow: 'ES Yellow',
+    orange: 'ES Orange',
+};
+const blues = prepareColors(sassBlues);
+// defining chart colors here just for documentation purposes
+// they should NOT be put into SASS and should NOT have bg-color utility classes
+// TODO: move these into a set of JS const variables exported from es-ds-components?
+const chartColors = {
+    'myrtle-cactus-blue': '#3ea2bd',
+    'sunny-yellow': '#ffc021',
+    'petal-purple': '#ca77d1',
+    'leaf-green': '#4a9158',
+    'white-oak': '#d4b595',
+    'earthy-brown': '#9a6d51',
+};
+const chartColorNames = {
+    'myrtle-cactus-blue': 'ES myrtle cactus blue',
+    'sunny-yellow': 'ES sunny yellow',
+    'petal-purple': 'ES petal purple',
+    'leaf-green': 'ES leaf green',
+    'white-oak': 'ES white oak',
+    'earthy-brown': 'ES earthy brown',
+};
+const coreColors = sassCoreColors;
+const coreColorNames = {
+    white: 'ES white',
+    'soft-blue': 'ES soft blue',
+    'medium-blue': 'ES medium blue',
+    'dark-blue': 'ES dark blue',
+    'warm-orange': 'ES warm orange',
+};
+const errorColors = prepareColors(sassErrorColors);
+const grays = sassGrays;
+const neutrals = prepareColors(sassNeutrals);
+const oranges = prepareColors(sassOranges);
+const successColors = prepareColors(sassSuccessColors);
+const variants = sassVariants;
+const warningColors = prepareColors(sassWarningColors);
+
+const cyan = slice(sassCyans, ['cyan-500']);
+const cyanShades = slice(sassCyans, ['cyan-600', 'cyan-700', 'cyan-800']);
+const cyanTints = slice(sassCyans, ['cyan-400', 'cyan-300', 'cyan-200', 'cyan-100']);
+const orangeTints = slice(sassOranges, ['orange-400', 'orange-300', 'orange-200', 'orange-100']);
+const pinkShades = slice(sassPinks, ['pink-600', 'pink-700', 'pink-800']);
+const pinkTints = slice(sassPinks, ['pink-400', 'pink-300', 'pink-200', 'pink-100']);
+const gray = slice(sassGrays, ['gray-900']);
+const grayShades = slice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200']);
+const grayTints = slice(sassGrays, ['gray-800', 'gray-700', 'gray-600', 'gray-500']);
+const tealShades = slice(sassTeals, ['teal-600', 'teal-700', 'teal-800']);
+const tealTints = slice(sassTeals, ['teal-400', 'teal-300', 'teal-200', 'teal-100']);
+const yellowShades = slice(sassYellows, ['yellow-600', 'yellow-700', 'yellow-800']);
+const yellowTints = slice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200', 'yellow-100']);
+
+const { $prism } = useNuxtApp();
+const docCode = ref('');
+
+if ($prism) {
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    const docSource = await import('./color.vue?raw');
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -518,107 +623,3 @@
             doc-source="es-ds-docs/atoms/color.vue" />
     </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-// with vite, sass variable exports must be defined as xyz.module.scss in order to be
-// imported into JS as an object rather than a string of the file contents
-// https://github.com/vitejs/vite/discussions/9601#discussioncomment-3359769
-import sassBlues from '@energysage/es-ds-styles/scss/modules/blues.module.scss';
-import sassCoreColors from '@energysage/es-ds-styles/scss/modules/core-colors.module.scss';
-import sassErrorColors from '@energysage/es-ds-styles/scss/modules/error-colors.module.scss';
-import sassNeutrals from '@energysage/es-ds-styles/scss/modules/neutrals.module.scss';
-import sassOranges from '@energysage/es-ds-styles/scss/modules/oranges.module.scss';
-import sassSuccessColors from '@energysage/es-ds-styles/scss/modules/success-colors.module.scss';
-import sassWarningColors from '@energysage/es-ds-styles/scss/modules/warning-colors.module.scss';
-
-import sassBrandColors from '@energysage/es-ds-styles/scss/modules/brand-colors.module.scss';
-import sassCyans from '@energysage/es-ds-styles/scss/modules/cyans.module.scss';
-import sassGrays from '@energysage/es-ds-styles/scss/modules/grays.module.scss';
-import sassPinks from '@energysage/es-ds-styles/scss/modules/pinks.module.scss';
-import sassTeals from '@energysage/es-ds-styles/scss/modules/teals.module.scss';
-import sassYellows from '@energysage/es-ds-styles/scss/modules/yellows.module.scss';
-import sassVariants from '@energysage/es-ds-styles/scss/modules/variants.module.scss';
-
-// utility functions
-const prepareColors = (colors) => Object.entries(colors).reverse();
-const slice = (colors, tokens) => {
-    const result = {};
-    tokens.forEach((token) => {
-        result[token] = colors[token];
-    });
-    return result;
-};
-
-const brandColors = sassBrandColors;
-const brandColorNames = {
-    cyan: 'ES Blue',
-    gray: 'ES Slate',
-    pink: 'ES Pink',
-    teal: 'ES Teal',
-    yellow: 'ES Yellow',
-    orange: 'ES Orange',
-};
-const blues = prepareColors(sassBlues);
-// defining chart colors here just for documentation purposes
-// they should NOT be put into SASS and should NOT have bg-color utility classes
-// TODO: move these into a set of JS const variables exported from es-ds-components?
-const chartColors = {
-    'myrtle-cactus-blue': '#3ea2bd',
-    'sunny-yellow': '#ffc021',
-    'petal-purple': '#ca77d1',
-    'leaf-green': '#4a9158',
-    'white-oak': '#d4b595',
-    'earthy-brown': '#9a6d51',
-};
-const chartColorNames = {
-    'myrtle-cactus-blue': 'ES myrtle cactus blue',
-    'sunny-yellow': 'ES sunny yellow',
-    'petal-purple': 'ES petal purple',
-    'leaf-green': 'ES leaf green',
-    'white-oak': 'ES white oak',
-    'earthy-brown': 'ES earthy brown',
-};
-const coreColors = sassCoreColors;
-const coreColorNames = {
-    white: 'ES white',
-    'soft-blue': 'ES soft blue',
-    'medium-blue': 'ES medium blue',
-    'dark-blue': 'ES dark blue',
-    'warm-orange': 'ES warm orange',
-};
-const errorColors = prepareColors(sassErrorColors);
-const grays = sassGrays;
-const neutrals = prepareColors(sassNeutrals);
-const oranges = prepareColors(sassOranges);
-const successColors = prepareColors(sassSuccessColors);
-const variants = sassVariants;
-const warningColors = prepareColors(sassWarningColors);
-
-const cyan = slice(sassCyans, ['cyan-500']);
-const cyanShades = slice(sassCyans, ['cyan-600', 'cyan-700', 'cyan-800']);
-const cyanTints = slice(sassCyans, ['cyan-400', 'cyan-300', 'cyan-200', 'cyan-100']);
-const orangeTints = slice(sassOranges, ['orange-400', 'orange-300', 'orange-200', 'orange-100']);
-const pinkShades = slice(sassPinks, ['pink-600', 'pink-700', 'pink-800']);
-const pinkTints = slice(sassPinks, ['pink-400', 'pink-300', 'pink-200', 'pink-100']);
-const gray = slice(sassGrays, ['gray-900']);
-const grayShades = slice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200']);
-const grayTints = slice(sassGrays, ['gray-800', 'gray-700', 'gray-600', 'gray-500']);
-const tealShades = slice(sassTeals, ['teal-600', 'teal-700', 'teal-800']);
-const tealTints = slice(sassTeals, ['teal-400', 'teal-300', 'teal-200', 'teal-100']);
-const yellowShades = slice(sassYellows, ['yellow-600', 'yellow-700', 'yellow-800']);
-const yellowTints = slice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200', 'yellow-100']);
-
-const { $prism } = useNuxtApp();
-const docCode = ref('');
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import('./color.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>

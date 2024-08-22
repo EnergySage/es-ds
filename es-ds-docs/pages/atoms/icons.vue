@@ -1,4 +1,37 @@
-<!-- eslint-disable import/* -->
+<script setup lang="ts">
+import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
+
+const colorNames = Object.keys(sassIconColors)
+    .map((k) => k)
+    .reduce((prev, cur) => {
+        // eslint-disable-next-line no-param-reassign
+        prev[cur] = cur;
+        return prev;
+    }, {});
+
+const colorOptions = Object.keys(colorNames).map((k) => ({
+    text: k === 'body' ? 'default' : k.replace('-', ' '),
+    value: k,
+}));
+
+const activeColor = ref(colorNames.body);
+
+const textColorClass = () => `text-${activeColor.value}`;
+
+const docCode = ref('');
+
+const { $prism } = useNuxtApp();
+
+if ($prism) {
+    // eslint-disable-next-line import/no-self-import
+    const docSource = await import('./icons.vue?raw');
+
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+
+</script>
+
 <template>
     <div>
         <h1>
@@ -16,6 +49,7 @@
             </p>
             <es-radio-button
                 v-for="color in colorOptions"
+                :key="color.value"
                 v-model="activeColor"
                 :display-name="color.text"
                 :value="color.value"
@@ -720,6 +754,7 @@
             <li>
                 <icon-state-wi />
                 <code>IconStateWi</code>
+
             </li>
             <li>
                 <icon-state-wv />
@@ -747,43 +782,6 @@
             doc-source="es-ds-docs/atoms/icons.vue" />
     </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-// eslint-disable-next-line import/no-unresolved
-import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
-
-const colorNames = Object.keys(sassIconColors)
-    .map((k) => k)
-    .reduce((prev, cur) => {
-        // eslint-disable-next-line no-param-reassign
-        prev[cur] = cur;
-        return prev;
-    }, {});
-
-const colorOptions = Object.keys(colorNames).map((k) => ({
-    text: k === 'body' ? 'default' : k.replace('-', ' '),
-    value: k,
-}));
-
-const activeColor = ref(colorNames.body);
-
-const textColorClass = () => `text-${activeColor.value}`;
-
-const docCode = ref('');
-
-const { $prism } = useNuxtApp();
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import('./icons.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-
-</script>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/variables" as variables;

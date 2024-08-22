@@ -10,7 +10,6 @@
             },
             "alias": {
                 "map": [
-                    ["@", "./lib"],
                     ["~", "."]
                 ]
             }
@@ -26,6 +25,14 @@
             "parser": "yaml-eslint-parser",
             "rules": {
                 "max-len": "off"
+            }
+        },
+        {
+            "files": "*.vue",
+            "globals": {
+                "ref": "readonly",
+                "useSlots": "readonly",
+                "watch": "readonly"
             }
         }
     ],
@@ -52,7 +59,7 @@
             "warn",
             {
                 "code": 119,
-                "ignorePattern": "class=",
+                "ignorePattern": "class=|d=|points=",
                 "ignoreUrls": true
             }
         ],
@@ -126,6 +133,12 @@
             {
                 "registeredComponentsOnly": false,
                 "ignores": []
+            }
+        ],
+        "vue/block-order": [
+            "error",
+            {
+                "order": [ [ "script[setup]", "script:not([setup])" ], "template", "style" ]
             }
         ]
     }

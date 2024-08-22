@@ -1,18 +1,3 @@
-<template>
-    <svg
-        :style="{
-            height: height,
-            width: width,
-        }"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor">
-        <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M3 12a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z" />
-    </svg>
-</template>
 <script>
 export default {
     name: 'IconMinus',
@@ -36,3 +21,18 @@ export default {
     },
 };
 </script>
+<template>
+    <svg
+        :style="{
+            height: height,
+            width: width,
+        }"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3 12a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1Z" />
+    </svg>
+</template>

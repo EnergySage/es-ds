@@ -1,29 +1,4 @@
-<template>
-    <div>
-        <div class="d-flex justify-content-center">
-            <div class="ds-side-nav d-none d-xl-block flex-shrink-0 p-100">
-                <ds-link-list />
-            </div>
-            <b-container class="pt-xl-100 mx-0">
-                <b-row class="mb-100">
-                    <b-col cols="12">
-                        <es-breadcrumbs :items="breadcrumbs" />
-                    </b-col>
-                </b-row>
-                <b-row>
-                    <b-col
-                        class="mb-300"
-                        cols="12">
-                        <slot />
-                    </b-col>
-                </b-row>
-            </b-container>
-        </div>
-    </div>
-</template>
-
 <script setup>
-import { computed } from 'vue';
 
 const route = useRoute();
 
@@ -48,3 +23,27 @@ const breadcrumbs = computed(() => {
     });
 });
 </script>
+
+<template>
+    <div>
+        <div class="d-flex justify-content-center">
+            <div class="ds-side-nav d-none d-xl-block flex-shrink-0 p-100">
+                <ds-link-list />
+            </div>
+            <b-container class="pt-xl-100 mx-0">
+                <b-row class="mb-100">
+                    <b-col cols="12">
+                        <es-breadcrumbs :items="breadcrumbs" />
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col
+                        class="mb-300"
+                        cols="12">
+                        <slot />
+                    </b-col>
+                </b-row>
+            </b-container>
+        </div>
+    </div>
+</template>

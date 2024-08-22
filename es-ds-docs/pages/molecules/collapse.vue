@@ -1,3 +1,60 @@
+<script setup>
+const suggestedVisible = ref(true);
+const visible = ref(false);
+
+const propTableRows = [
+    [
+        'visible',
+        'Boolean',
+        'false',
+        'Suggested visibility state. Will be ignored if and when the user '
+        + 'interacts with the collapse (unless "isProgrammaticUntilUserInput" is false).',
+    ],
+    [
+        'isProgrammaticUntilUserInput',
+        'Boolean',
+        'true',
+        'Priority for the "visible" prop. When false, "visible" will continue to affect the component '
+        + 'even after the user interacts with the collapse.',
+    ],
+    [
+        'border',
+        'Boolean',
+        'true',
+        'Will hide/show borders',
+    ],
+];
+
+const shownEvent = () => {
+    // eslint-disable-next-line no-console
+    console.log('shown');
+};
+const toggledEvent = (newValue) => {
+    // eslint-disable-next-line no-console
+    console.log(`toggled to ${newValue}`);
+};
+const toggledEventInSuggestedVisibleExample = (newValue) => {
+    // eslint-disable-next-line no-console
+    console.log(`toggled to ${newValue}`);
+    visible.value = newValue;
+};
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+
+if ($prism) {
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    const compSource = await import('@energysage/es-ds-components/components/es-collapse.vue?raw');
+    const docSource = await import('./collapse.vue?raw');
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -201,60 +258,3 @@
             doc-source="es-ds-docs/pages/molecules/es-collapse.vue" />
     </div>
 </template>
-
-<script setup>
-const suggestedVisible = ref(true);
-const visible = ref(false);
-
-const propTableRows = [
-    [
-        'visible',
-        'Boolean',
-        'false',
-        'Suggested visibility state. Will be ignored if and when the user '
-        + 'interacts with the collapse (unless "isProgrammaticUntilUserInput" is false).',
-    ],
-    [
-        'isProgrammaticUntilUserInput',
-        'Boolean',
-        'true',
-        'Priority for the "visible" prop. When false, "visible" will continue to affect the component '
-        + 'even after the user interacts with the collapse.',
-    ],
-    [
-        'border',
-        'Boolean',
-        'true',
-        'Will hide/show borders',
-    ],
-];
-
-const shownEvent = () => {
-    // eslint-disable-next-line no-console
-    console.log('shown');
-};
-const toggledEvent = (newValue) => {
-    // eslint-disable-next-line no-console
-    console.log(`toggled to ${newValue}`);
-};
-const toggledEventInSuggestedVisibleExample = (newValue) => {
-    // eslint-disable-next-line no-console
-    console.log(`toggled to ${newValue}`);
-    visible.value = newValue;
-};
-
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-collapse.vue?raw');
-    const docSource = await import('./collapse.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>

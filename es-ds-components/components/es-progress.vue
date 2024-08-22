@@ -1,12 +1,3 @@
-<template>
-    <progress-bar
-        class="bg-gray-200 rounded-0"
-        :pt="progressBarPt"
-        :show-value="showValue"
-        :value="value"
-        v-bind="$attrs">
-    </progress-bar>
-</template>
 <script setup lang="ts">
 import ProgressBar from 'primevue/progressbar';
 
@@ -34,3 +25,12 @@ const progressBarPt = {
     },
 };
 </script>
+<template>
+    <progress-bar
+        class="bg-gray-200 rounded-0"
+        :pt="progressBarPt"
+        :show-value="showValue"
+        :value="value"
+        v-bind="$attrs">
+    </progress-bar>
+</template>

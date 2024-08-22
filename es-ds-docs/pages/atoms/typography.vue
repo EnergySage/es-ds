@@ -1,4 +1,254 @@
-<!-- eslint-disable no-use-before-define -->
+<script setup lang="ts">
+import sassHeadingFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-desktop.module.scss';
+import sassHeadingFontSizesMobile from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-mobile.module.scss';
+import sassHeadingGeneral from '@energysage/es-ds-styles/scss/modules/heading-general.module.scss';
+import sassHeadingLineHeightsDesktop from
+    '@energysage/es-ds-styles/scss/modules/heading-line-heights-desktop.module.scss';
+import sassHeadingLineHeightsMobile from
+    '@energysage/es-ds-styles/scss/modules/heading-line-heights-mobile.module.scss';
+import sassHeadingEyebrow from '@energysage/es-ds-styles/scss/modules/heading-eyebrow.module.scss';
+import sassFontSizes from '@energysage/es-ds-styles/scss/modules/font-sizes.module.scss';
+import sassFontWeights from '@energysage/es-ds-styles/scss/modules/font-weights.module.scss';
+import sassLineHeights from '@energysage/es-ds-styles/scss/modules/line-heights.module.scss';
+import sassPostFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/post-font-sizes-desktop.module.scss';
+import sassPostFontSizesMobile from '@energysage/es-ds-styles/scss/modules/post-font-sizes-mobile.module.scss';
+import sassPostGeneral from '@energysage/es-ds-styles/scss/modules/post-general.module.scss';
+import sassPostLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/post-line-heights-desktop.module.scss';
+import sassPostLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/post-line-heights-mobile.module.scss';
+import sassType from '@energysage/es-ds-styles/scss/modules/type.module.scss';
+
+const deprecatedFontSizes = ['xl', 'xxl'];
+const excludedFontSizes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl'];
+
+const BASE_FONT_SIZE_PX = 16;
+
+const deprecatedFontSizeItems = [
+    ...Object.entries(sassFontSizes)
+        .filter(([key]) => deprecatedFontSizes.some((suffix) => key.endsWith(suffix)))
+        .map(([name, size]) => ({ name, size })),
+];
+const fontSizeItems = [...Object.entries(sassFontSizes)
+    .filter(([key]) => !excludedFontSizes.some((suffix) => key.endsWith(suffix)))
+    .map(([name, size]) => ({ name, size })),
+];
+const fontWeightItems = [
+    ...Object.entries(sassFontWeights).map(([name, weight]) => ({
+        name,
+        weight,
+    })),
+];
+const legacyCollapseVisible = ref(false);
+
+const bodyExamples = computed(() => {
+    const seeds = [
+        {
+            name: 'Extra small body',
+            key: 'xs',
+            tag: 'span',
+        },
+        {
+            name: 'Small body',
+            key: 'sm',
+            tag: 'span',
+        },
+        {
+            name: 'Regular body',
+            key: 'base',
+            tag: 'span',
+        },
+        {
+            name: 'Large body',
+            key: 'lg',
+            tag: 'span',
+        },
+        {
+            name: 'Link small body',
+            key: 'sm',
+            tag: 'a',
+        },
+        {
+            name: 'Link regular body',
+            key: 'base',
+            tag: 'a',
+        },
+        {
+            name: 'Link large body',
+            key: 'lg',
+            tag: 'a',
+        },
+    ];
+    return seeds.reduce((result, seed) => {
+        const fontSizeRem = sassFontSizes[`font-size-${seed.key}`];
+        const fontSizePx = parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+        const lineHeightRem = sassLineHeights[`line-height-${seed.key}`];
+        const lineHeightPx = Math.round(
+            (parseFloat(lineHeightRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+        ) / 10;
+        result.push({
+            ...seed,
+            class: seed.key !== 'base' ? `font-size-${seed.key}` : null,
+            color: seed.tag === 'a' ? sassType['link-color'] : sassType['body-color'],
+            fontSizePx,
+            fontSizeRem,
+            fontWeight: seed.tag === 'a' ? sassType['link-weight'] : sassType['font-weight-base'],
+            lineHeightPx,
+            lineHeightRem,
+        });
+        return result;
+    }, []);
+}, {});
+
+const displayExamples = computed(() => {
+    const result = [];
+
+    // display-1 through display-4
+    for (let i = 1; i <= 4; i += 1) {
+        result.push({
+            class: `display-${i}`,
+            name: `Display ${i}`,
+        });
+    }
+
+    return result;
+}, {});
+
+const createHeadingExample = (
+    identifier,
+    categoryPrefix,
+    categoryName,
+    generalInfo,
+    mobileFontSizes,
+    desktopFontSizes,
+    mobileLineHeights,
+    desktopLineHeights,
+) => {
+    const sizeMobileRem = mobileFontSizes[identifier];
+    const sizeDesktopRem = desktopFontSizes[identifier];
+    const sizeMobilePx = parseFloat(sizeMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+    const sizeDesktopPx = parseFloat(sizeDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+    const lineHeightMobileRem = mobileLineHeights[identifier];
+    const lineHeightMobilePx = Math.round(
+        (parseFloat(lineHeightMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+    ) / 10;
+    const lineHeightDesktopRem = desktopLineHeights[identifier];
+    const lineHeightDesktopPx = Math.round(
+        (parseFloat(lineHeightDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+    ) / 10;
+    const marginBottomRem = generalInfo.marginBottom;
+    const marginBottomPx = parseFloat(marginBottomRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+
+    const isEyebrow = identifier === 'eyebrow';
+    const isHeading = identifier[0] === 'h';
+
+    let letterSpacingRem = '';
+    let letterSpacingPx = '';
+
+    if (isEyebrow) {
+        letterSpacingRem = generalInfo.letterSpacing;
+        letterSpacingPx = parseFloat(letterSpacingRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+    }
+
+    return {
+        class: isHeading ? '' : identifier,
+        color: generalInfo.color,
+        fontWeight: generalInfo.fontWeight,
+        letterSpacingPx,
+        letterSpacingRem,
+        lineHeightDesktopPx,
+        lineHeightDesktopRem,
+        lineHeightMobilePx,
+        lineHeightMobileRem,
+        marginBottomPx,
+        marginBottomRem,
+        name: isEyebrow ? 'Eyebrow' : `${categoryName} ${identifier.replace(categoryPrefix, '')}`,
+        sizeDesktopPx,
+        sizeDesktopRem,
+        sizeMobilePx,
+        sizeMobileRem,
+        // eslint-disable-next-line no-nested-ternary
+        tag: isEyebrow ? 'h2' : isHeading ? identifier : 'h1',
+    };
+};
+
+const headingExamples = computed(() => {
+    const result = [];
+
+    // post1 through post2
+    for (let i = 1; i <= 3; i += 1) {
+        result.push(createHeadingExample(
+                    `post${i}`,
+                    'post',
+                    'Post',
+                    sassPostGeneral,
+                    sassPostFontSizesMobile,
+                    sassPostFontSizesDesktop,
+                    sassPostLineHeightsMobile,
+                    sassPostLineHeightsDesktop,
+        ));
+    }
+
+    // h1 through h6
+    for (let i = 1; i <= 6; i += 1) {
+        result.push(createHeadingExample(
+                    `h${i}`,
+                    'h',
+                    'Heading',
+                    sassHeadingGeneral,
+                    sassHeadingFontSizesMobile,
+                    sassHeadingFontSizesDesktop,
+                    sassHeadingLineHeightsMobile,
+                    sassHeadingLineHeightsDesktop,
+        ));
+    }
+
+    // eyebrow
+    result.push(createHeadingExample(
+        'eyebrow',
+        'h',
+        'Eyebrow',
+        {
+            color: sassHeadingEyebrow.color,
+            fontWeight: sassHeadingEyebrow.fontWeight,
+            marginBottom: sassHeadingEyebrow.marginBottom,
+            letterSpacing: sassHeadingEyebrow.letterSpacing,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.fontSize,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.fontSize,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.lineHeight,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.lineHeight,
+        },
+    ));
+
+    return result;
+}, {});
+
+const calculateActualFontSize = (remStr) => {
+    if (!remStr) {
+        return '';
+    }
+    const multiplier = parseFloat(remStr.replace('rem', ''));
+    return `${multiplier * 16}px`;
+};
+
+const { $prism } = useNuxtApp();
+const docCode = ref('');
+if ($prism) {
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    const docSource = await import('./typography.vue?raw');
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+
+</script>
+
 <template>
     <div>
         <h1>
@@ -520,256 +770,6 @@
 
     </div>
 </template>
-
-<script setup lang="ts">
-import sassHeadingFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-desktop.module.scss';
-import sassHeadingFontSizesMobile from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-mobile.module.scss';
-import sassHeadingGeneral from '@energysage/es-ds-styles/scss/modules/heading-general.module.scss';
-// eslint-disable-next-line max-len
-import sassHeadingLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/heading-line-heights-desktop.module.scss';
-import sassHeadingLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/heading-line-heights-mobile.module.scss';
-import sassHeadingEyebrow from '@energysage/es-ds-styles/scss/modules/heading-eyebrow.module.scss';
-import sassFontSizes from '@energysage/es-ds-styles/scss/modules/font-sizes.module.scss';
-import sassFontWeights from '@energysage/es-ds-styles/scss/modules/font-weights.module.scss';
-import sassLineHeights from '@energysage/es-ds-styles/scss/modules/line-heights.module.scss';
-import sassPostFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/post-font-sizes-desktop.module.scss';
-import sassPostFontSizesMobile from '@energysage/es-ds-styles/scss/modules/post-font-sizes-mobile.module.scss';
-import sassPostGeneral from '@energysage/es-ds-styles/scss/modules/post-general.module.scss';
-import sassPostLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/post-line-heights-desktop.module.scss';
-import sassPostLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/post-line-heights-mobile.module.scss';
-import sassType from '@energysage/es-ds-styles/scss/modules/type.module.scss';
-
-const deprecatedFontSizes = ['xl', 'xxl'];
-const excludedFontSizes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl'];
-
-const BASE_FONT_SIZE_PX = 16;
-
-const deprecatedFontSizeItems = [
-    ...Object.entries(sassFontSizes)
-        .filter(([key]) => deprecatedFontSizes.some((suffix) => key.endsWith(suffix)))
-        .map(([name, size]) => ({ name, size })),
-];
-const fontSizeItems = [...Object.entries(sassFontSizes)
-    .filter(([key]) => !excludedFontSizes.some((suffix) => key.endsWith(suffix)))
-    .map(([name, size]) => ({ name, size })),
-];
-const fontWeightItems = [
-    ...Object.entries(sassFontWeights).map(([name, weight]) => ({
-        name,
-        weight,
-    })),
-];
-const legacyCollapseVisible = ref(false);
-
-const bodyExamples = computed(() => {
-    const seeds = [
-        {
-            name: 'Extra small body',
-            key: 'xs',
-            tag: 'span',
-        },
-        {
-            name: 'Small body',
-            key: 'sm',
-            tag: 'span',
-        },
-        {
-            name: 'Regular body',
-            key: 'base',
-            tag: 'span',
-        },
-        {
-            name: 'Large body',
-            key: 'lg',
-            tag: 'span',
-        },
-        {
-            name: 'Link small body',
-            key: 'sm',
-            tag: 'a',
-        },
-        {
-            name: 'Link regular body',
-            key: 'base',
-            tag: 'a',
-        },
-        {
-            name: 'Link large body',
-            key: 'lg',
-            tag: 'a',
-        },
-    ];
-    return seeds.reduce((result, seed) => {
-        const fontSizeRem = sassFontSizes[`font-size-${seed.key}`];
-        const fontSizePx = parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-        const lineHeightRem = sassLineHeights[`line-height-${seed.key}`];
-        const lineHeightPx = Math.round(
-            (parseFloat(lineHeightRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-        ) / 10;
-        result.push({
-            ...seed,
-            class: seed.key !== 'base' ? `font-size-${seed.key}` : null,
-            color: seed.tag === 'a' ? sassType['link-color'] : sassType['body-color'],
-            fontSizePx,
-            fontSizeRem,
-            fontWeight: seed.tag === 'a' ? sassType['link-weight'] : sassType['font-weight-base'],
-            lineHeightPx,
-            lineHeightRem,
-        });
-        return result;
-    }, []);
-}, {});
-
-const displayExamples = computed(() => {
-    const result = [];
-
-    // display-1 through display-4
-    for (let i = 1; i <= 4; i += 1) {
-        result.push({
-            class: `display-${i}`,
-            name: `Display ${i}`,
-        });
-    }
-
-    return result;
-}, {});
-
-const headingExamples = computed(() => {
-    const result = [];
-
-    // post1 through post2
-    for (let i = 1; i <= 3; i += 1) {
-        result.push(createHeadingExample(
-                    `post${i}`,
-                    'post',
-                    'Post',
-                    sassPostGeneral,
-                    sassPostFontSizesMobile,
-                    sassPostFontSizesDesktop,
-                    sassPostLineHeightsMobile,
-                    sassPostLineHeightsDesktop,
-        ));
-    }
-
-    // h1 through h6
-    for (let i = 1; i <= 6; i += 1) {
-        result.push(createHeadingExample(
-                    `h${i}`,
-                    'h',
-                    'Heading',
-                    sassHeadingGeneral,
-                    sassHeadingFontSizesMobile,
-                    sassHeadingFontSizesDesktop,
-                    sassHeadingLineHeightsMobile,
-                    sassHeadingLineHeightsDesktop,
-        ));
-    }
-
-    // eyebrow
-    result.push(createHeadingExample(
-        'eyebrow',
-        'h',
-        'Eyebrow',
-        {
-            color: sassHeadingEyebrow.color,
-            fontWeight: sassHeadingEyebrow.fontWeight,
-            marginBottom: sassHeadingEyebrow.marginBottom,
-            letterSpacing: sassHeadingEyebrow.letterSpacing,
-        },
-        {
-            eyebrow: sassHeadingEyebrow.fontSize,
-        },
-        {
-            eyebrow: sassHeadingEyebrow.fontSize,
-        },
-        {
-            eyebrow: sassHeadingEyebrow.lineHeight,
-        },
-        {
-            eyebrow: sassHeadingEyebrow.lineHeight,
-        },
-    ));
-
-    return result;
-}, {});
-
-const createHeadingExample = (
-    identifier,
-    categoryPrefix,
-    categoryName,
-    generalInfo,
-    mobileFontSizes,
-    desktopFontSizes,
-    mobileLineHeights,
-    desktopLineHeights,
-) => {
-    const sizeMobileRem = mobileFontSizes[identifier];
-    const sizeDesktopRem = desktopFontSizes[identifier];
-    const sizeMobilePx = parseFloat(sizeMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-    const sizeDesktopPx = parseFloat(sizeDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-    const lineHeightMobileRem = mobileLineHeights[identifier];
-    const lineHeightMobilePx = Math.round(
-        (parseFloat(lineHeightMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-    ) / 10;
-    const lineHeightDesktopRem = desktopLineHeights[identifier];
-    const lineHeightDesktopPx = Math.round(
-        (parseFloat(lineHeightDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-    ) / 10;
-    const marginBottomRem = generalInfo.marginBottom;
-    const marginBottomPx = parseFloat(marginBottomRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-
-    const isEyebrow = identifier === 'eyebrow';
-    const isHeading = identifier[0] === 'h';
-
-    let letterSpacingRem = '';
-    let letterSpacingPx = '';
-
-    if (isEyebrow) {
-        letterSpacingRem = generalInfo.letterSpacing;
-        letterSpacingPx = parseFloat(letterSpacingRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-    }
-
-    return {
-        class: isHeading ? '' : identifier,
-        color: generalInfo.color,
-        fontWeight: generalInfo.fontWeight,
-        letterSpacingPx,
-        letterSpacingRem,
-        lineHeightDesktopPx,
-        lineHeightDesktopRem,
-        lineHeightMobilePx,
-        lineHeightMobileRem,
-        marginBottomPx,
-        marginBottomRem,
-        name: isEyebrow ? 'Eyebrow' : `${categoryName} ${identifier.replace(categoryPrefix, '')}`,
-        sizeDesktopPx,
-        sizeDesktopRem,
-        sizeMobilePx,
-        sizeMobileRem,
-        // eslint-disable-next-line no-nested-ternary
-        tag: isEyebrow ? 'h2' : isHeading ? identifier : 'h1',
-    };
-};
-
-const calculateActualFontSize = (remStr) => {
-    if (!remStr) {
-        return '';
-    }
-    const multiplier = parseFloat(remStr.replace('rem', ''));
-    return `${multiplier * 16}px`;
-};
-
-const { $prism } = useNuxtApp();
-const docCode = ref('');
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import('./typography.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-
-</script>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;

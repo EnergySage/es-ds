@@ -1,31 +1,3 @@
-<template>
-    <div>
-        <h1>
-            Breadcrumbs
-        </h1>
-        <p>
-            Extended from <a
-                href="https://v3.primevue.org/breadcrumb/"
-                target="_blank">
-                PrimeVue Breadcrumb
-            </a>
-        </p>
-
-        <div class="my-500">
-            <es-breadcrumbs :items="items" />
-        </div>
-        <div class="my-500">
-            <es-breadcrumbs :items="longerItems" />
-        </div>
-
-        <ds-doc-source
-            :comp-code="compCode"
-            comp-source="es-ds-components/components/es-breadcrumbs.vue"
-            :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/breadcrumbs.vue" />
-    </div>
-</template>
-
 <script setup>
 const items = [
     {
@@ -74,3 +46,31 @@ if ($prism) {
     $prism.highlight();
 }
 </script>
+
+<template>
+    <div>
+        <h1>
+            Breadcrumbs
+        </h1>
+        <p>
+            Extended from <a
+                href="https://v3.primevue.org/breadcrumb/"
+                target="_blank">
+                PrimeVue Breadcrumb
+            </a>
+        </p>
+
+        <div class="my-500">
+            <es-breadcrumbs :items="items" />
+        </div>
+        <div class="my-500">
+            <es-breadcrumbs :items="longerItems" />
+        </div>
+
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-breadcrumbs.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/breadcrumbs.vue" />
+    </div>
+</template>

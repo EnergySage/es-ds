@@ -1,40 +1,3 @@
-<template>
-    <div
-        :class="tableClass"
-        class="table-responsive">
-        <table
-            v-if="$slots.default || items.length"
-            class="table table-borderless"
-            :class="{ 'table-striped': striped }">
-            <template v-if="$slots.default">
-                <slot />
-            </template>
-            <tbody v-else>
-                <template v-if="isSingleCol">
-                    <tr
-                        v-for="(item, index) in computedItems"
-                        :key="`${index}${item}`">
-                        <td>
-                            {{ item }}
-                        </td>
-                    </tr>
-                </template>
-                <template v-else>
-                    <tr
-                        v-for="(item, index) in computedItems"
-                        :key="`${index}${item[0]}`">
-                        <td class="col-sm-7">
-                            {{ item[0] }}
-                        </td>
-                        <td class="col-sm-4">
-                            <b>{{ item[1] }}</b>
-                        </td>
-                    </tr>
-                </template>
-            </tbody>
-        </table>
-    </div>
-</template>
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
 
@@ -73,3 +36,40 @@ const computedItems = computed(() => {
     return props.fields.map((field, index) => [field, props.items[index]]);
 });
 </script>
+<template>
+    <div
+        :class="tableClass"
+        class="table-responsive">
+        <table
+            v-if="$slots.default || items.length"
+            class="table table-borderless"
+            :class="{ 'table-striped': striped }">
+            <template v-if="$slots.default">
+                <slot />
+            </template>
+            <tbody v-else>
+                <template v-if="isSingleCol">
+                    <tr
+                        v-for="(item, index) in computedItems"
+                        :key="`${index}${item}`">
+                        <td>
+                            {{ item }}
+                        </td>
+                    </tr>
+                </template>
+                <template v-else>
+                    <tr
+                        v-for="(item, index) in computedItems"
+                        :key="`${index}${item[0]}`">
+                        <td class="col-sm-7">
+                            {{ item[0] }}
+                        </td>
+                        <td class="col-sm-4">
+                            <b>{{ item[1] }}</b>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>

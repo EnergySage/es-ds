@@ -14,13 +14,14 @@ const props = withDefaults(defineProps<Props>(), {
     variant: 'default',
 });
 
+// eslint-disable-next-line vue/require-prop-types
 const model = defineModel();
 
 const children = useSlots().default?.() || [];
 
 const activeIndex = ref();
 
-watch(model, (newVal, oldVal) => {
+watch(model, (newVal) => {
     if (newVal) {
         activeIndex.value = children.findIndex((child) => child.props.id === newVal);
     }
@@ -71,6 +72,7 @@ const updateActiveIndex = (index) => {
                 },
                 headerAction: ({ context }) => ({
                     class: [
+                        // eslint-disable-next-line max-len
                         'es-accordion-heading mb-0 align-items-center d-flex font-weight-bold justify-content-between py-100',
                         {
                             'es-accordion-heading--visible': context.active,
@@ -98,13 +100,15 @@ const updateActiveIndex = (index) => {
                     :class="{'h3 mb-0': variant === 'minimal'}">
                     <component
                         :is="item"
-                        v-for="item in tab.title()" />
+                        v-for="item in tab.title()"
+                        :key="item" />
                 </span>
                 <icon-chevron-down class="es-accordion-icon flex-shrink-0 ml-200" />
             </template>
             <component
                 :is="item"
-                v-for="item in tab.default()" />
+                v-for="item in tab.default()"
+                :key="item" />
         </accordion-tab>
     </accordion>
 </template>

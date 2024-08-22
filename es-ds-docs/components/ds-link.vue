@@ -1,17 +1,3 @@
-<template>
-    <component
-        :is="isCurrentPage ? 'div' : NuxtLink"
-        class="d-inline-block font-weight-semibold position-relative"
-        :to="to">
-        <icon-chevron-right
-            v-if="isCurrentPage"
-            class="ds-link-icon position-absolute"
-            height="0.75rem"
-            width="0.75rem" />
-        <slot />
-    </component>
-</template>
-
 <script setup lang="ts">
 import { computed, resolveComponent } from 'vue';
 
@@ -29,6 +15,20 @@ const route = useRoute();
 
 const isCurrentPage = computed(() => route.path === props.to);
 </script>
+
+<template>
+    <component
+        :is="isCurrentPage ? 'div' : NuxtLink"
+        class="d-inline-block font-weight-semibold position-relative"
+        :to="to">
+        <icon-chevron-right
+            v-if="isCurrentPage"
+            class="ds-link-icon position-absolute"
+            height="0.75rem"
+            width="0.75rem" />
+        <slot />
+    </component>
+</template>
 
 <style lang="scss" scoped>
 .ds-link-icon {

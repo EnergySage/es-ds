@@ -1,14 +1,3 @@
-<template>
-    <component
-        :is="defaultTag =='nuxt-link' ? NuxtLink: defaultTag"
-        class="es-card"
-        :class="actualVariant"
-        :to="to ? to : href"
-        v-bind="$attrs">
-        <slot />
-    </component>
-</template>
-
 <script setup lang="ts">
 import { computed, resolveComponent } from 'vue';
 // specific workaround for getting a reference to an auto-imported but not globally registered
@@ -63,3 +52,14 @@ const defaultTag = computed(() => {
     return 'button';
 });
 </script>
+
+<template>
+    <component
+        :is="defaultTag =='nuxt-link' ? NuxtLink: defaultTag"
+        class="es-card"
+        :class="actualVariant"
+        :to="to ? to : href"
+        v-bind="$attrs">
+        <slot />
+    </component>
+</template>

@@ -1,3 +1,26 @@
+<script setup>
+const columnWidths = {
+    md: ['2', '2', '8'],
+};
+// TODO: Uncomment line when fixing commented logic on line 67
+// const modalVisible = false;
+const notify = (string) => {
+    // eslint-disable-next-line no-alert
+    alert(string);
+};
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+if ($prism) {
+    const compSource = await import('@energysage/es-ds-components/components/es-card.vue?raw');
+    // eslint-disable-next-line import/no-self-import
+    const docSource = await import('./card.vue?raw');
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -211,23 +234,3 @@
             doc-source="es-ds-docs/pages/molecules/card.vue" />
     </div>
 </template>
-
-<script setup>
-const columnWidths = {
-    md: ['2', '2', '8'],
-};
-const modalVisible = false;
-const notify = (string) => {
-    alert(string);
-};
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-card.vue?raw');
-    const docSource = await import('./card.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>

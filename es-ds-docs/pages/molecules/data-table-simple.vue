@@ -1,3 +1,30 @@
+<script setup>
+const fields = ['Field name 1', 'Field name 2', 'Field name 3', 'Field name 4'];
+const items = ['Item value 1', 'Item value 2', 'Item value 3', 'Item value 4'];
+const propTableColumns = ['Name', 'Type', 'Default', 'Description'];
+const propTableRows = [
+    ['fields', 'Array', 'null', 'List of strings to use as field names.'],
+    ['items', 'Array', '[]', 'List of values to display.'],
+    ['tableClass', 'Array|String', 'null', 'CSS class (or classes) to apply to the table element.'],
+    ['striped', 'Boolean', 'false', 'Add zebra-striping to the table rows.'],
+];
+
+const propTableWidths = { md: ['2', '2', '2', '6'] };
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+onMounted(async () => {
+    if ($prism) {
+        // eslint-disable-next-line import/no-unresolved
+        const compSource = await import('@energysage/es-ds-components/components/es-data-table-simple.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./data-table-simple.vue?raw');
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
+</script>
 <template>
     <div>
         <h1>
@@ -122,30 +149,3 @@
             doc-source="es-ds-docs/pages/molecules/data-table-simple.vue" />
     </div>
 </template>
-<script setup>
-const fields = ['Field name 1', 'Field name 2', 'Field name 3', 'Field name 4'];
-const items = ['Item value 1', 'Item value 2', 'Item value 3', 'Item value 4'];
-const propTableColumns = ['Name', 'Type', 'Default', 'Description'];
-const propTableRows = [
-    ['fields', 'Array', 'null', 'List of strings to use as field names.'],
-    ['items', 'Array', '[]', 'List of values to display.'],
-    ['tableClass', 'Array|String', 'null', 'CSS class (or classes) to apply to the table element.'],
-    ['striped', 'Boolean', 'false', 'Add zebra-striping to the table rows.'],
-];
-
-const propTableWidths = { md: ['2', '2', '2', '6'] };
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-onMounted(async () => {
-    if ($prism) {
-        // eslint-disable-next-line import/no-unresolved
-        const compSource = await import('@energysage/es-ds-components/components/es-data-table-simple.vue?raw');
-        // eslint-disable-next-line import/no-self-import
-        const docSource = await import('./data-table-simple.vue?raw');
-        compCode.value = $prism.normalizeCode(compSource.default);
-        docCode.value = $prism.normalizeCode(docSource.default);
-        $prism.highlight();
-    }
-});
-</script>
