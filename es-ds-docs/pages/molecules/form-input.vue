@@ -367,17 +367,6 @@ if ($prism) {
     $prism.highlight();
 }
 
-
-//     labelSrOnly: {
-//         type: Boolean,
-//         default: false,
-//     },
-//     phoneMaskValue: {
-//         type: String,
-//         default: '(999) 999-9999',
-//         required: false,
-//     },
-
 const propTableRows = [
     [
         'v-model',
