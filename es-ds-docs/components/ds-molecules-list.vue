@@ -8,6 +8,9 @@ const moleculeSlugs = [
     'checkbox',
     'data-table-simple',
     'radio-button',
+    'data-table',
+    'form-msg',
+    'progress',
 ];
 const moleculeList = moleculeSlugs.map((slug) => {
     const nameWithCap = slug[0].toUpperCase() + slug.slice(1);
