@@ -10,7 +10,6 @@
                 primevue button
             </a>
         </p>
-
         <p>
             When using a button, please ensure that the copy style is
             <ds-link
@@ -528,5 +527,4 @@ const linkExamples = ref([
         inline: true,
     },
 ]);
-
 </script>
