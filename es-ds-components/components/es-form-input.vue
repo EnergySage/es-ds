@@ -31,7 +31,6 @@ defineProps({
         default: 'text',
         validator: (val: string) => [
             'text',
-            'number',
             'email',
             'number',
             'password',

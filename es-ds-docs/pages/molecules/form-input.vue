@@ -325,6 +325,14 @@
             </b-row>
         </div>
 
+        <div class="mb-500">
+            <h2>
+                EsFormInput props
+            </h2>
+            <ds-prop-table
+                :rows="propTableRows" />
+        </div>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/src/lib-components/es-form-input.vue"
@@ -358,5 +366,67 @@ if ($prism) {
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();
 }
+
+
+//     labelSrOnly: {
+//         type: Boolean,
+//         default: false,
+//     },
+//     phoneMaskValue: {
+//         type: String,
+//         default: '(999) 999-9999',
+//         required: false,
+//     },
+
+const propTableRows = [
+    [
+        'v-model',
+        'String',
+        'n/a',
+        'Required. The v-model directive binds the input to a data property.',
+    ],
+    [
+        'id',
+        'String',
+        'n/a',
+        'Required. The id of the input.',
+    ],
+    [
+        'disabled',
+        'Boolean',
+        'false',
+        'Specifies that the input should be disabled.',
+    ],
+    [
+        'label-sr-only',
+        'Boolean',
+        'false',
+        'Specifies that the label should be visually hidden.',
+    ],
+    [
+        'required',
+        'Boolean',
+        'false',
+        'Specifies that the input is required.',
+    ],
+    [
+        'state',
+        'Boolean',
+        "null",
+        'Specifies the validity of the input. Can be true (success), false (error), or null (default).',
+    ],
+    [
+        'phone-mask-value',
+        'String',
+        "'(999) 999-9999'",
+        'The mask value for the phone number input.',
+    ],
+    [
+        'type',
+        'String',
+        "'text'",
+        'The type of input. Can be text, number, email, password, tel, or maskedTel.',
+    ],
+];
 
 </script>
