@@ -56,11 +56,19 @@
         <p class="mb-300">
             value: {{ value }}
         </p>
-       <ds-doc-source
+        <div class="mb-500">
+            <h2>
+                EsProgress props
+            </h2>
+            <ds-prop-table
+                :rows="propTableRows"
+                :widths="propTableWidths" />
+        </div>
+         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-progress.vue"
+            comp-source="es-ds-components/components/es-progress.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/es-progress.vue" />
+            doc-source="es-ds-docs/pages/molecules/progress.vue" />
     </div>
 </template>
 
@@ -69,6 +77,30 @@ const value = ref(20);
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
+
+const propTableRows = [
+    [
+        'value',
+        'Number',
+        '20',
+        'Required. A value between 0 and 100 representing the progress',
+    ],
+    [
+        'height',
+        'String',
+        '0.3125rem',
+        'Specifies height of the progress bar',
+    ],
+    [
+        'showValue',
+        'Boolean',
+        'false',
+        'When present, it allows the progress percentage visible on the progress bar',
+    ],
+];
+const propTableWidths = {
+    md: ['2', '2', '2','6'],
+};
 
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
