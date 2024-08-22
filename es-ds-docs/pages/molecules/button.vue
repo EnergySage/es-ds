@@ -455,6 +455,14 @@
                 </es-button>
             </div>
         </div>
+
+
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-button.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/button.vue" />
+
     </div>
 </template>
 
@@ -527,4 +535,16 @@ const linkExamples = ref([
         inline: true,
     },
 ]);
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+if ($prism) {
+    const compSource = await import('@energysage/es-ds-components/components/es-button.vue?raw');
+    const docSource = await import('./button.vue?raw');
+
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
 </script>
