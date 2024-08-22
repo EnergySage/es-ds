@@ -12,7 +12,7 @@
                     {{ column }}
                 </template>
                 <template #value>
-                    <code v-if="columnIndex < 2 && row[columnIndex] !== 'n/a'">
+                    <code v-if="columnIndex < 3 && row[columnIndex] !== 'n/a'">
                         {{ row[columnIndex] }}
                     </code>
                     <span v-else>
@@ -30,7 +30,7 @@ export default {
     props: {
         columns: {
             type: Array,
-            default: () => ['Name', 'Default', 'Description'],
+            default: () => ['Name', 'Type', 'Default', 'Description'],
         },
         rows: {
             type: Array,
@@ -39,7 +39,7 @@ export default {
         widths: {
             type: Object,
             default: () => ({
-                md: ['3', '3', '6'],
+                md: ['3', '2', '2', '5'],
             }),
         },
     },
