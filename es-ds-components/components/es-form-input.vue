@@ -1,10 +1,14 @@
 
 <script setup lang="ts">
 import InputText from 'primevue/inputtext';
+import InputMask from 'primevue/inputmask';
 
 // Prevents attributes from being applied to first <div>
 // v-bind="$attr" is on the input instead
-// inheritAttrs: false,
+defineOptions({
+  inheritAttrs: false
+})
+
 const props = defineProps({
     /**
      * Required
@@ -65,7 +69,7 @@ const props = defineProps({
     },
     phoneMaskValue: {
         type: String,
-        default: '(###) ###-####',
+        default: '(999) 999-9999',
         required: false,
     },
 });
@@ -116,38 +120,27 @@ const hasExtraContext = () => {
                 class="prefix-icon position-absolute">
                 <slot name="prefixIcon" />
             </span>
-            <!-- <input-text
-                v-mask="type === 'maskedTel' ? phoneMaskValue : null"
-                v-on="$listeners" /> -->
-            <InputMask
-                v-if="type === 'maskedTel'"
+            <component
+                :is="type === 'maskedTel' ? InputMask : InputText"
                 :id="id"
                 v-bind="$attrs"
-                mask="(999) 999-9999"
-                placeholder="(XXX) XXX-XXXX"
-                :disabled="disabled"
-                :invalid="hasError()"
-                :state="state" />
-            <input-text
-                v-else
-                :id="id"
-                v-bind="$attrs"
+                v-on="$listeners"
                 :type="type"
                 class="es-form-input form-control w-100"
                 :class="{
                     'has-prefix-icon': $slots.prefixIcon,
-                    'is-invalid': hasError()
+                    'is-invalid': state === false
                 }"
+                :mask="phoneMaskValue"
                 :disabled="disabled"
-                :invalid="hasError()"
-                :state="state" />
+                :invalid="state === false" />
             <small
                 v-if="hasMessage() && ((!hasSuccess() && state) || state == null)"
                 class="text-muted" >
                 <slot name="message" />
             </small>
             <small
-                v-if="hasError() || required"
+                v-if="state === false && (hasError() || required)"
                 class="text-danger">
                 <slot
                     v-if="hasError()"
@@ -157,7 +150,7 @@ const hasExtraContext = () => {
                 </template>
             </small>
             <small
-                v-if="hasSuccess()"
+                v-if="state && hasSuccess()"
                 class="text-success">
                 <slot name="successMessage" />
             </small>

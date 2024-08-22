@@ -8,6 +8,11 @@
                 href="https://v3.primevue.org/inputtext/"
                 target="_blank">
                 PrimeVue InputText
+            </a> and
+            <a
+                href="https://v3.primevue.org/inputmask/"
+                target="_blank">
+                PrimeVue InputMask
             </a>
         </p>
 
@@ -172,7 +177,7 @@
                     <es-form-input
                         id="placeholderExample"
                         v-model="form.phoneNumber"
-                        placeholder="(XXX) XXX-XXXX">
+                        placeholder="(999) 999-9999">
                         <template #label>
                             Phone number
                         </template>
@@ -187,7 +192,7 @@
             </h2>
             <p>
                 This example uses an input mask to only allow entry of characters that match
-                the format "(XXX) XXX-XXXX".
+                the format "(999) 999-9999".
             </p>
             <b-row>
                 <b-col
@@ -198,7 +203,7 @@
                         id="maskedExample"
                         v-model="form.maskedPhoneNumber"
                         type="maskedTel"
-                        placeholder="(XXX) XXX-XXXX">
+                        placeholder="(999) 999-9999">
                         <template #label>
                             Phone number
                         </template>
