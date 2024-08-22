@@ -55,5 +55,10 @@
                 Radio button
             </ds-link>
         </li>
+        <li>
+            <ds-link to="/molecules/button">
+                Button
+            </ds-link>
+        </li>
     </ul>
 </template>
