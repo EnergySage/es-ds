@@ -53,14 +53,6 @@ defineProps({
         type: [Boolean, null],
         default: null,
     },
-    /**
-     * inline
-     */
-    inline: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
     labelSrOnly: {
         type: Boolean,
         default: false,
