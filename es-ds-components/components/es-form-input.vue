@@ -8,7 +8,7 @@ defineOptions({
   inheritAttrs: false
 })
 
-const props = defineProps({
+defineProps({
     /**
      * Required
      */
