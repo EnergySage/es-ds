@@ -335,14 +335,14 @@
 
 <script setup>
 
-const form = {
+const form = ref({
     emailCorrect: 'hello@energysage.com',
     emailWrong: 'hello@energy',
     firstName: '',
     password: '',
     phoneNumber: '',
     zipCode: '',
-};
+});
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');

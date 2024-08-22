@@ -2,7 +2,6 @@
 <script setup lang="ts">
 import InputText from 'primevue/inputtext';
 import InputMask from 'primevue/inputmask';
-
 // Prevents attributes from being applied to first <div>
 // v-bind="$attr" is on the input instead
 defineOptions({
@@ -124,7 +123,6 @@ const hasExtraContext = () => {
                 :is="type === 'maskedTel' ? InputMask : InputText"
                 :id="id"
                 v-bind="$attrs"
-                v-on="$listeners"
                 :type="type"
                 class="es-form-input form-control w-100"
                 :class="{
