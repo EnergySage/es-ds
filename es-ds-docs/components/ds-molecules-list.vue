@@ -31,6 +31,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/progress">
+                Progress
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/radio-button">
                 Radio button
             </ds-link>

@@ -1,14 +1,29 @@
+
 <template>
-     <Rating 
-        v-model="roundedRating"
+    <rating
+        :modelValue="roundedRating"
         :cancel="false" 
         :readonly="readOnly"
+        @update:modelValue="update"
+        v-bind="$attrs"
         data-testid="rating-test"
         :pt="{
-            root: { 
-                class: 'bg-transparent rounded-0 text-orange rating' 
-            },   
-                                         // OR { class: 'text-xl' }
+            root: (options)  => ({
+                class: [
+                    'bg-transparent rounded-0 text-orange rating',
+                    {
+                        'reactive':  !options.props.readonly
+                    }
+                ]
+            }),   	
+            item: (options)  => ({
+                class:[
+                    { 
+                       
+                        'reactiveStar':  !options.props.readonly
+                    }
+                ],
+            })
         }"
     >
     <template #officon>
@@ -21,7 +36,7 @@
             :width="width"
             :height="height" />
     </template>
-    </Rating>
+    </rating>
 </template>
 
 <script setup lang="ts">
@@ -31,9 +46,10 @@ const props = defineProps({
      * Starting rating
      * 0-5; Avg will show half icons rounded down
      */
-        rating: {
-            type: Number,
-            default: 0,
+    rating: {
+        type: Number,
+        default: 0,
+        validator: (num) => num >= 0 && num <= 5,
     },
     /**
      * Disable changing the rating
@@ -68,25 +84,38 @@ const props = defineProps({
     },
 });
 
+var localRating = ref(props.rating)
+
 const roundedRating = computed(() => {
     if (!props.rounded) {
-        return props.rating;
+        return localRating.value;
     }
     // Rounds to nearest .5
-return Math.round(props.rating);
+    return Math.round(localRating.value * 2) / 2
 });  
 
+const update = (value: number) =>{
+    localRating.value = value;
+}
 </script>
 
 <style lang="scss">
 .rating {
     height: auto !important;
+    width: auto;
     padding: 0 !important;
     align-items: center !important;
+    justify-content: center;
     display: inline-flex !important;
     text-align: center;
     width: auto;
     display: inline-flex !important;
+    outline: 0;
 }
-
+.reactive{
+    cursor: pointer !important;
+}
+.reactiveStar:hover{
+    transform: scale(1.5);
+}
 </style>

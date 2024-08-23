@@ -5,7 +5,7 @@
         </h1>
         <p>
             Extended from <nuxt-link
-                href="https://primevue.org/rating/"
+                href="https://v3.primevue.org/rating/"
                 target="_blank">
                 PrimveVue Rating
         </nuxt-link>
@@ -15,7 +15,9 @@
                 Form Input
             </h2>
             <es-rating
-                :read-only="false" />
+                :read-only="false" 
+                @change="changeEvent"
+               />
             <h2 class="mt-500">
                 Static Display
             </h2>
@@ -48,6 +50,9 @@
 
 <script setup lang="ts">
 
+const changeEvent = ($event) => {
+    alert($event.value);
+}
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -77,5 +82,4 @@ if ($prism) {
         }
     }
 }
-
 </style>
