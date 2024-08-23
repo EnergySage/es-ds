@@ -60,7 +60,7 @@
 
         <div class="mb-500">
             <h2>
-                EsCollapse props
+                EsRadioButton props
             </h2>
             <ds-prop-table
                 :rows="propTableRows" />

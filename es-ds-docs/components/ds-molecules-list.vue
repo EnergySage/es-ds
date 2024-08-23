@@ -11,6 +11,7 @@ const moleculeSlugs = [
     'data-table',
     'form-msg',
     'progress',
+    'progress-circle',
 ];
 const moleculeList = moleculeSlugs.map((slug) => {
     const nameWithCap = slug[0].toUpperCase() + slug.slice(1);

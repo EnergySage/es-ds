@@ -76,7 +76,7 @@
       </es-data-table-simple>
     </div>
     <div class="my-500">
-      <h2 class="mb-200">Props</h2>
+      <h2 class="mb-200">EsDataTableSimple Props</h2>
       <ds-prop-table
         :columns="propTableColumns"
         :rows="propTableRows"
