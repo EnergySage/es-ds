@@ -246,12 +246,6 @@ const docCode = ref('');
 
 const propTableRows = [
     [
-        'target',
-        'String',
-        'n/a',
-        'Required. Target defines the variant(dark, light), with or without title, button and the placement of the popover',
-    ],
-    [
         'triggers',
         '[String, Object]',
         'focus',
@@ -274,6 +268,12 @@ const propTableRows = [
         'String',
         'dark',
         'Defines variant of the popover - either dark or light'
+    ],
+     [
+        'target',
+        'String',
+        'n/a',
+        'Required. Target defines the variant(dark, light), with or without title, button and the placement of the popover',
     ],
 ];
 const propTableWidths = {

@@ -98,11 +98,11 @@ const overlayPanelStyle = computed(() => {
     switch (props.placement) {
         case 'topright':
             return {
-                transform: 'translateX(0) translateY(-100%)',
+                transform: 'translateX(7%) translateY(-100%)',
             };
         case 'bottomright':
             return {
-                transform: 'translateX(0) translateY(0)',
+                transform: 'translateX(3%) translateY(0)',
             };
         case 'leftbottom':
             return {
@@ -110,11 +110,10 @@ const overlayPanelStyle = computed(() => {
             };
         case 'rightbottom':
             return {
-                transform: 'translateX(100%) translateY(0)',
+                transform: 'translateX(7%) translateY(-50%)',
             }
         default:
             return {};
-
     }
 });
 
