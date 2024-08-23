@@ -8,6 +8,11 @@
                 href="https://v3.primevue.org/inputtext/"
                 target="_blank">
                 PrimeVue InputText
+            </a> and
+            <a
+                href="https://v3.primevue.org/inputmask/"
+                target="_blank">
+                PrimeVue InputMask
             </a>
         </p>
 
@@ -172,7 +177,7 @@
                     <es-form-input
                         id="placeholderExample"
                         v-model="form.phoneNumber"
-                        placeholder="(XXX) XXX-XXXX">
+                        placeholder="(999) 999-9999">
                         <template #label>
                             Phone number
                         </template>
@@ -187,7 +192,7 @@
             </h2>
             <p>
                 This example uses an input mask to only allow entry of characters that match
-                the format "(XXX) XXX-XXXX".
+                the format "(999) 999-9999".
             </p>
             <b-row>
                 <b-col
@@ -198,7 +203,7 @@
                         id="maskedExample"
                         v-model="form.maskedPhoneNumber"
                         type="maskedTel"
-                        placeholder="(XXX) XXX-XXXX">
+                        placeholder="(999) 999-9999">
                         <template #label>
                             Phone number
                         </template>
@@ -320,6 +325,14 @@
             </b-row>
         </div>
 
+        <div class="mb-500">
+            <h2>
+                EsFormInput props
+            </h2>
+            <ds-prop-table
+                :rows="propTableRows" />
+        </div>
+
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/src/lib-components/es-form-input.vue"
@@ -330,14 +343,14 @@
 
 <script setup>
 
-const form = {
+const form = ref({
     emailCorrect: 'hello@energysage.com',
     emailWrong: 'hello@energy',
     firstName: '',
     password: '',
     phoneNumber: '',
     zipCode: '',
-};
+});
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -353,5 +366,56 @@ if ($prism) {
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();
 }
+
+const propTableRows = [
+    [
+        'v-model',
+        'String',
+        'n/a',
+        'Required. The v-model directive binds the input to a data property.',
+    ],
+    [
+        'id',
+        'String',
+        'n/a',
+        'Required. The id of the input.',
+    ],
+    [
+        'disabled',
+        'Boolean',
+        'false',
+        'Specifies that the input should be disabled.',
+    ],
+    [
+        'label-sr-only',
+        'Boolean',
+        'false',
+        'Specifies that the label should be visually hidden.',
+    ],
+    [
+        'required',
+        'Boolean',
+        'false',
+        'Specifies that the input is required.',
+    ],
+    [
+        'state',
+        'Boolean',
+        "null",
+        'Specifies the validity of the input. Can be true (success), false (error), or null (default).',
+    ],
+    [
+        'phone-mask-value',
+        'String',
+        "'(999) 999-9999'",
+        'The mask value for the phone number input.',
+    ],
+    [
+        'type',
+        'String',
+        "'text'",
+        'The type of input. Can be text, number, email, password, tel, or maskedTel.',
+    ],
+];
 
 </script>
