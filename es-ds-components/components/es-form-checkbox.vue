@@ -5,8 +5,7 @@ const model = defineModel({
 defineOptions({
   inheritAttrs: false
 })
-
-const props = defineProps({
+defineProps({
     id: {
         type: String,
         required: true,
