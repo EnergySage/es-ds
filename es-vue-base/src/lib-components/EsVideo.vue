@@ -134,19 +134,10 @@ export default ({
     width: 100% !important;
 }
 
-.y-video__button {
-    padding-bottom: 0 !important;
-}
-
 .y-video__media {
-    //position: relative !important;
     height: 800px !important;
     padding-bottom: 0 !important;
     width: 800px !important;
-}
-.movie_player {
-    padding-bottom: 0 !important;
-    //object-fit: cover !important;
 }
 
 .html5-video-player {
