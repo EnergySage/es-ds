@@ -12,16 +12,10 @@ const selectAllIsIndeterminate = computed(() => {
 });
 
 const handleOptionChange = () => {
-    console.log("handleOptionChange fired");
-    console.log('apple.value: ', apple.value);
-    console.log('banana.value: ', banana.value);
-    console.log('cherry.value: ', cherry.value);
     selectAll.value = apple.value && banana.value && cherry.value;
 };
 
 const handleSelectAllToggle = () => {
-    // debugger;
-    console.log("handleSelectAllToggle fired");
     if (!(apple.value && banana.value && cherry.value)) {
         apple.value = true;
         banana.value = true;
