@@ -62,7 +62,7 @@
   &:disabled,
   &[readonly] {
     background-color: variables.$input-disabled-bg;
-    color: variables.$input-disabled-color;
+    color: variables.$input-disabled-color !important;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
