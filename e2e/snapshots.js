@@ -1,16 +1,16 @@
 require('dotenv').config({ override: true })
 const process = require('node:process')
 
-const snapShotFactory = (name, path, overrides) => {
-    const baseUrl = process.env.PERCY_BRANCH === 'production' ? 'https://design.energysage.dev' : 'http://localhost:8500';
-    const url = `${baseUrl}${path}`;
+function snapShotFactory(name, path, overrides) {
+    const baseUrl = process.env.PERCY_BRANCH === 'production' ? 'https://design.energysage.dev' : 'http://localhost:8500'
+    const url = `${baseUrl}${path}`
     const baseTemplate = {
         name,
         url,
         waitForTimeout: 30000,
         waitForSelector: '.container',
     }
-    return {...baseTemplate, ...overrides}
+    return { ...baseTemplate, ...overrides }
 }
 
 module.exports = async () => {
@@ -72,10 +72,10 @@ module.exports = async () => {
         '/examples/form-field-validation',
         '/examples/form-validation',
         '/examples/file-upload',
-    ];
+    ]
 
     return urls.map((urlPath) => {
-        const name = urlPath.substring(1).replace('/', '__');
-        return snapShotFactory(name, urlPath);
-    });
+        const name = urlPath.substring(1).replace('/', '__')
+        return snapShotFactory(name, urlPath)
+    })
 }

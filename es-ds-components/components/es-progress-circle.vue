@@ -1,17 +1,45 @@
+<script setup lang="ts">
+const props = defineProps({
+    height: {
+        type: String,
+        default: '50px',
+    },
+    value: {
+        type: Number,
+        required: true,
+    },
+    showPercentage: {
+        type: Boolean,
+        default: true,
+    },
+})
+
+const computedHeight = computed(() => {
+    const height = props.height.replace(/\D/g, '')
+    return Number.parseInt(height, 10)
+})
+const fillLength = computed(() => {
+    return computedHeight.value * Math.PI * (props.value / 100) * (90 / computedHeight.value)
+})
+</script>
+
 <template>
     <div
-        v-bind="$attrs">
+        v-bind="$attrs"
+    >
         <!-- Based on prior art from es-cdgm codebase -->
         <svg
             viewBox="0 0 100 100"
             :height="height"
-            :width="height">
+            :width="height"
+        >
             <circle
                 class="inner-circle"
                 :cx="50"
                 :cy="50"
                 stroke-width="8"
-                r="45%" />
+                r="45%"
+            />
             <!-- The first argument in `stoke-dasharray` is the amount of the circle we want colored
                 The second is the gap before the next stroke starts
                 Since we don't want another stroke to start, we use a number greater than the
@@ -25,7 +53,8 @@
                     r="45%"
                     stroke-width="8"
                     stroke-linecap="round"
-                    transform="rotate(-90, 50, 50)" />
+                    transform="rotate(-90, 50, 50)"
+                />
             </template>
             <template v-if="showPercentage">
                 <text
@@ -34,39 +63,14 @@
                     class="font-weight-boldest text-gray-700 font-size-base"
                     dominant-baseline="middle"
                     alignment-baseline="middle"
-                    text-anchor="middle">
+                    text-anchor="middle"
+                >
                     {{ value }}%
                 </text>
             </template>
         </svg>
     </div>
 </template>
-
-<script setup lang="ts">
-const props = defineProps({
-    height: {
-            type: String,
-            default: '50px',
-        },
-        value: {
-            type: Number,
-            required: true,
-        },
-        showPercentage: {
-            type: Boolean,
-            default: true,
-        }
-});
-
-const computedHeight = computed(() => {
-        const height = props.height.replace(/[^0-9]/g, '');
-        return parseInt(height, 10);
-    });
-const fillLength = computed(() => {
-    return computedHeight.value * Math.PI * (props.value / 100) * (90 / computedHeight.value);
-    });
-</script>
-
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/variables" as variables;
@@ -82,5 +86,4 @@ const fillLength = computed(() => {
     fill: transparent;
     stroke: variables.$blue-400;
 }
-
 </style>

@@ -1,3 +1,242 @@
+<script setup lang="ts">
+import sassHeadingFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-desktop.module.scss'
+import sassHeadingFontSizesMobile from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-mobile.module.scss'
+import sassHeadingGeneral from '@energysage/es-ds-styles/scss/modules/heading-general.module.scss'
+
+import sassHeadingLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/heading-line-heights-desktop.module.scss'
+import sassHeadingLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/heading-line-heights-mobile.module.scss'
+import sassHeadingEyebrow from '@energysage/es-ds-styles/scss/modules/heading-eyebrow.module.scss'
+import sassFontSizes from '@energysage/es-ds-styles/scss/modules/font-sizes.module.scss'
+import sassFontWeights from '@energysage/es-ds-styles/scss/modules/font-weights.module.scss'
+import sassLineHeights from '@energysage/es-ds-styles/scss/modules/line-heights.module.scss'
+import sassPostFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/post-font-sizes-desktop.module.scss'
+import sassPostFontSizesMobile from '@energysage/es-ds-styles/scss/modules/post-font-sizes-mobile.module.scss'
+import sassPostGeneral from '@energysage/es-ds-styles/scss/modules/post-general.module.scss'
+import sassPostLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/post-line-heights-desktop.module.scss'
+import sassPostLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/post-line-heights-mobile.module.scss'
+import sassType from '@energysage/es-ds-styles/scss/modules/type.module.scss'
+
+const deprecatedFontSizes = ['xl', 'xxl']
+const excludedFontSizes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl']
+
+const BASE_FONT_SIZE_PX = 16
+
+const deprecatedFontSizeItems = [
+    ...Object.entries(sassFontSizes)
+        .filter(([key]) => deprecatedFontSizes.some(suffix => key.endsWith(suffix)))
+        .map(([name, size]) => ({ name, size })),
+]
+const fontSizeItems = [...Object.entries(sassFontSizes)
+    .filter(([key]) => !excludedFontSizes.some(suffix => key.endsWith(suffix)))
+    .map(([name, size]) => ({ name, size })),
+]
+const fontWeightItems = [
+    ...Object.entries(sassFontWeights).map(([name, weight]) => ({
+        name,
+        weight,
+    })),
+]
+const legacyCollapseVisible = ref(false)
+
+const bodyExamples = computed(() => {
+    const seeds = [
+        {
+            name: 'Extra small body',
+            key: 'xs',
+            tag: 'span',
+        },
+        {
+            name: 'Small body',
+            key: 'sm',
+            tag: 'span',
+        },
+        {
+            name: 'Regular body',
+            key: 'base',
+            tag: 'span',
+        },
+        {
+            name: 'Large body',
+            key: 'lg',
+            tag: 'span',
+        },
+        {
+            name: 'Link small body',
+            key: 'sm',
+            tag: 'a',
+        },
+        {
+            name: 'Link regular body',
+            key: 'base',
+            tag: 'a',
+        },
+        {
+            name: 'Link large body',
+            key: 'lg',
+            tag: 'a',
+        },
+    ]
+    return seeds.reduce((result, seed) => {
+        const fontSizeRem = sassFontSizes[`font-size-${seed.key}`]
+        const fontSizePx = Number.parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX
+        const lineHeightRem = sassLineHeights[`line-height-${seed.key}`]
+        const lineHeightPx = Math.round(
+            (Number.parseFloat(lineHeightRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+        ) / 10
+        result.push({
+            ...seed,
+            class: seed.key !== 'base' ? `font-size-${seed.key}` : null,
+            color: seed.tag === 'a' ? sassType['link-color'] : sassType['body-color'],
+            fontSizePx,
+            fontSizeRem,
+            fontWeight: seed.tag === 'a' ? sassType['link-weight'] : sassType['font-weight-base'],
+            lineHeightPx,
+            lineHeightRem,
+        })
+        return result
+    }, [])
+}, {})
+
+const displayExamples = computed(() => {
+    const result = []
+
+    // display-1 through display-4
+    for (let i = 1; i <= 4; i += 1) {
+        result.push({
+            class: `display-${i}`,
+            name: `Display ${i}`,
+        })
+    }
+
+    return result
+}, {})
+
+const headingExamples = computed(() => {
+    const result = []
+
+    // post1 through post2
+    for (let i = 1; i <= 3; i += 1) {
+        result.push(createHeadingExample(
+            `post${i}`,
+            'post',
+            'Post',
+            sassPostGeneral,
+            sassPostFontSizesMobile,
+            sassPostFontSizesDesktop,
+            sassPostLineHeightsMobile,
+            sassPostLineHeightsDesktop,
+        ))
+    }
+
+    // h1 through h6
+    for (let i = 1; i <= 6; i += 1) {
+        result.push(createHeadingExample(
+            `h${i}`,
+            'h',
+            'Heading',
+            sassHeadingGeneral,
+            sassHeadingFontSizesMobile,
+            sassHeadingFontSizesDesktop,
+            sassHeadingLineHeightsMobile,
+            sassHeadingLineHeightsDesktop,
+        ))
+    }
+
+    // eyebrow
+    result.push(createHeadingExample(
+        'eyebrow',
+        'h',
+        'Eyebrow',
+        {
+            color: sassHeadingEyebrow.color,
+            fontWeight: sassHeadingEyebrow.fontWeight,
+            marginBottom: sassHeadingEyebrow.marginBottom,
+            letterSpacing: sassHeadingEyebrow.letterSpacing,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.fontSize,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.fontSize,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.lineHeight,
+        },
+        {
+            eyebrow: sassHeadingEyebrow.lineHeight,
+        },
+    ))
+
+    return result
+}, {})
+
+function createHeadingExample(identifier, categoryPrefix, categoryName, generalInfo, mobileFontSizes, desktopFontSizes, mobileLineHeights, desktopLineHeights) {
+    const sizeMobileRem = mobileFontSizes[identifier]
+    const sizeDesktopRem = desktopFontSizes[identifier]
+    const sizeMobilePx = Number.parseFloat(sizeMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX
+    const sizeDesktopPx = Number.parseFloat(sizeDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX
+    const lineHeightMobileRem = mobileLineHeights[identifier]
+    const lineHeightMobilePx = Math.round(
+        (Number.parseFloat(lineHeightMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+    ) / 10
+    const lineHeightDesktopRem = desktopLineHeights[identifier]
+    const lineHeightDesktopPx = Math.round(
+        (Number.parseFloat(lineHeightDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
+    ) / 10
+    const marginBottomRem = generalInfo.marginBottom
+    const marginBottomPx = Number.parseFloat(marginBottomRem.replace('rem', '')) * BASE_FONT_SIZE_PX
+
+    const isEyebrow = identifier === 'eyebrow'
+    const isHeading = identifier[0] === 'h'
+
+    let letterSpacingRem = ''
+    let letterSpacingPx = ''
+
+    if (isEyebrow) {
+        letterSpacingRem = generalInfo.letterSpacing
+        letterSpacingPx = Number.parseFloat(letterSpacingRem.replace('rem', '')) * BASE_FONT_SIZE_PX
+    }
+
+    return {
+        class: isHeading ? '' : identifier,
+        color: generalInfo.color,
+        fontWeight: generalInfo.fontWeight,
+        letterSpacingPx,
+        letterSpacingRem,
+        lineHeightDesktopPx,
+        lineHeightDesktopRem,
+        lineHeightMobilePx,
+        lineHeightMobileRem,
+        marginBottomPx,
+        marginBottomRem,
+        name: isEyebrow ? 'Eyebrow' : `${categoryName} ${identifier.replace(categoryPrefix, '')}`,
+        sizeDesktopPx,
+        sizeDesktopRem,
+        sizeMobilePx,
+        sizeMobileRem,
+
+        tag: isEyebrow ? 'h2' : isHeading ? identifier : 'h1',
+    }
+}
+
+function calculateActualFontSize(remStr) {
+    if (!remStr) {
+        return ''
+    }
+    const multiplier = Number.parseFloat(remStr.replace('rem', ''))
+    return `${multiplier * 16}px`
+}
+
+const { $prism } = useNuxtApp()
+const docCode = ref('')
+if ($prism) {
+    const docSource = await import('./typography.vue?raw')
+
+    docCode.value = $prism.normalizeCode(docSource.default)
+    $prism.highlight()
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -6,7 +245,8 @@
         <p>
             Based on <nuxt-link
                 href="https://getbootstrap.com/docs/4.6/content/typography/"
-                target="_blank">
+                target="_blank"
+            >
                 bootstrap typography.
             </nuxt-link>
         </p>
@@ -14,13 +254,15 @@
             When writing a heading, please ensure that the copy style is
             <nuxt-link
                 href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case"
-                target="_blank">
+                target="_blank"
+            >
                 Sentence case.
             </nuxt-link>
             Also, please
             <nuxt-link
                 target="_blank"
-                href="https://a11y-style-guide.com/style-guide/section-general.html#kssref-general-typography">
+                href="https://a11y-style-guide.com/style-guide/section-general.html#kssref-general-typography"
+            >
                 do not
             </nuxt-link>
             rely only on the appearance of the font (color, shape, font variation, placement, etc.)
@@ -33,7 +275,8 @@
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
                     v-for="example in headingExamples"
-                    :key="example.name">
+                    :key="example.name"
+                >
                     <ds-responsive-table-column md="3">
                         <template #name>
                             Example
@@ -41,7 +284,8 @@
                         <template #value>
                             <component
                                 :is="example.tag"
-                                :class="example.class">
+                                :class="example.class"
+                            >
                                 {{ example.name }}
                             </component>
                         </template>
@@ -123,7 +367,8 @@
                             </p>
                             <p
                                 v-if="example.letterSpacingPx"
-                                class="font-size-75 mb-25">
+                                class="font-size-75 mb-25"
+                            >
                                 <span class="font-italic">
                                     Letter spacing:
                                 </span>
@@ -173,7 +418,8 @@
                 like on a customer name below a
                 <nuxt-link
                     href="https://css-tricks.com/quoting-in-html-quotations-citations-and-blockquotes/#aa-hey-what-about-the-figure-element"
-                    target="_blank">
+                    target="_blank"
+                >
                     quote from their review.
                 </nuxt-link>
                 Below is an example of how to accomplish this.
@@ -202,10 +448,12 @@
             <ds-responsive-table class="responsive-table-typography mb-100">
                 <ds-responsive-table-row
                     v-for="example in bodyExamples"
-                    :key="example.name">
+                    :key="example.name"
+                >
                     <ds-responsive-table-column
                         md="4"
-                        lg="3">
+                        lg="3"
+                    >
                         <template #name>
                             Example
                         </template>
@@ -214,14 +462,16 @@
                                 :is="example.tag"
                                 :class="example.class"
                                 :href="example.tag === 'a' ? 'https://www.energysage.com/' : null"
-                                :target="example.tag === 'a' ? '_blank' : null">
+                                :target="example.tag === 'a' ? '_blank' : null"
+                            >
                                 {{ example.name }}
                             </component>
                         </template>
                     </ds-responsive-table-column>
                     <ds-responsive-table-column
                         md="4"
-                        lg="3">
+                        lg="3"
+                    >
                         <template #name>
                             Size
                         </template>
@@ -250,7 +500,8 @@
                     </ds-responsive-table-column>
                     <ds-responsive-table-column
                         md="4"
-                        lg="3">
+                        lg="3"
+                    >
                         <template #name>
                             Attributes
                         </template>
@@ -330,11 +581,13 @@
                 <ds-responsive-table class="responsive-table-typography">
                     <ds-responsive-table-row
                         v-for="data in fontWeightItems"
-                        :key="data.name">
+                        :key="data.name"
+                    >
                         <ds-responsive-table-column
                             md="4"
                             lg="3"
-                            xxl="2">
+                            xxl="2"
+                        >
                             <template #name>
                                 Name
                             </template>
@@ -344,7 +597,8 @@
                         </ds-responsive-table-column>
                         <ds-responsive-table-column
                             md="2"
-                            lg="1">
+                            lg="1"
+                        >
                             <template #name>
                                 Weight
                             </template>
@@ -355,7 +609,8 @@
                         <ds-responsive-table-column
                             md="6"
                             lg="8"
-                            xxl="9">
+                            xxl="9"
+                        >
                             <template #name>
                                 Example
                             </template>
@@ -382,11 +637,13 @@
                 <ds-responsive-table class="responsive-table-typography">
                     <ds-responsive-table-row
                         v-for="data in fontSizeItems"
-                        :key="data.name">
+                        :key="data.name"
+                    >
                         <ds-responsive-table-column
                             md="4"
                             lg="3"
-                            xxl="2">
+                            xxl="2"
+                        >
                             <template #name>
                                 Name
                             </template>
@@ -396,7 +653,8 @@
                         </ds-responsive-table-column>
                         <ds-responsive-table-column
                             md="2"
-                            lg="1">
+                            lg="1"
+                        >
                             <template #name>
                                 Size
                             </template>
@@ -407,7 +665,8 @@
                         <ds-responsive-table-column
                             md="6"
                             lg="8"
-                            xxl="9">
+                            xxl="9"
+                        >
                             <template #name>
                                 Example
                             </template>
@@ -423,7 +682,8 @@
         <es-collapse
             id="legacy-collapse"
             v-model="legacyCollapseVisible"
-            :is-programmatic-until-user-input="false">
+            :is-programmatic-until-user-input="false"
+        >
             <template #title>
                 <h2 class="mb-0">
                     Legacy class names
@@ -442,7 +702,8 @@
                 <ds-responsive-table class="responsive-table-typography">
                     <ds-responsive-table-row
                         v-for="example in displayExamples"
-                        :key="example.name">
+                        :key="example.name"
+                    >
                         <ds-responsive-table-column>
                             <template #name>
                                 Name
@@ -475,11 +736,13 @@
                     <ds-responsive-table class="responsive-table-typography">
                         <ds-responsive-table-row
                             v-for="data in deprecatedFontSizeItems"
-                            :key="data.name">
+                            :key="data.name"
+                        >
                             <ds-responsive-table-column
                                 md="4"
                                 lg="3"
-                                xxl="2">
+                                xxl="2"
+                            >
                                 <template #name>
                                     Name
                                 </template>
@@ -489,7 +752,8 @@
                             </ds-responsive-table-column>
                             <ds-responsive-table-column
                                 md="2"
-                                lg="1">
+                                lg="1"
+                            >
                                 <template #name>
                                     Size
                                 </template>
@@ -500,7 +764,8 @@
                             <ds-responsive-table-column
                                 md="6"
                                 lg="8"
-                                xxl="9">
+                                xxl="9"
+                            >
                                 <template #name>
                                     Example
                                 </template>
@@ -515,262 +780,10 @@
         </es-collapse>
         <ds-doc-source
             :doc-code="docCode"
-            doc-source="es-ds-docs/atoms/typography.vue" />
-
-
+            doc-source="es-ds-docs/atoms/typography.vue"
+        />
     </div>
 </template>
-
-<script setup lang="ts">
-import sassHeadingFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-desktop.module.scss';
-import sassHeadingFontSizesMobile from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-mobile.module.scss';
-import sassHeadingGeneral from '@energysage/es-ds-styles/scss/modules/heading-general.module.scss';
-// eslint-disable-next-line max-len
-import sassHeadingLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/heading-line-heights-desktop.module.scss';
-import sassHeadingLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/heading-line-heights-mobile.module.scss';
-import sassHeadingEyebrow from '@energysage/es-ds-styles/scss/modules/heading-eyebrow.module.scss';
-import sassFontSizes from '@energysage/es-ds-styles/scss/modules/font-sizes.module.scss';
-import sassFontWeights from '@energysage/es-ds-styles/scss/modules/font-weights.module.scss';
-import sassLineHeights from '@energysage/es-ds-styles/scss/modules/line-heights.module.scss';
-import sassPostFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/post-font-sizes-desktop.module.scss';
-import sassPostFontSizesMobile from '@energysage/es-ds-styles/scss/modules/post-font-sizes-mobile.module.scss';
-import sassPostGeneral from '@energysage/es-ds-styles/scss/modules/post-general.module.scss';
-import sassPostLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/post-line-heights-desktop.module.scss';
-import sassPostLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/post-line-heights-mobile.module.scss';
-import sassType from '@energysage/es-ds-styles/scss/modules/type.module.scss';
-
-const deprecatedFontSizes = ['xl', 'xxl'];
-const excludedFontSizes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl'];
-
-const BASE_FONT_SIZE_PX = 16;
-
-const deprecatedFontSizeItems = [
-                ...Object.entries(sassFontSizes)
-                    .filter(([key]) => deprecatedFontSizes.some((suffix) => key.endsWith(suffix)))
-                    .map(([name, size]) => ({ name, size })),
-            ];
-const fontSizeItems = [ ...Object.entries(sassFontSizes)
-                        .filter(([key]) => !excludedFontSizes.some((suffix) => key.endsWith(suffix)))
-                        .map(([name, size]) => ({ name, size })),
-            ]
-const fontWeightItems = [
-                ...Object.entries(sassFontWeights).map(([name, weight]) => ({
-                    name,
-                    weight,
-                })),
-            ];
-const legacyCollapseVisible = ref(false);
-
-const bodyExamples = computed(() => {
-    const seeds = [
-                {
-                    name: 'Extra small body',
-                    key: 'xs',
-                    tag: 'span',
-                },
-                {
-                    name: 'Small body',
-                    key: 'sm',
-                    tag: 'span',
-                },
-                {
-                    name: 'Regular body',
-                    key: 'base',
-                    tag: 'span',
-                },
-                {
-                    name: 'Large body',
-                    key: 'lg',
-                    tag: 'span',
-                },
-                {
-                    name: 'Link small body',
-                    key: 'sm',
-                    tag: 'a',
-                },
-                {
-                    name: 'Link regular body',
-                    key: 'base',
-                    tag: 'a',
-                },
-                {
-                    name: 'Link large body',
-                    key: 'lg',
-                    tag: 'a',
-                },
-            ];
-            return seeds.reduce((result, seed) => {
-                const fontSizeRem = sassFontSizes[`font-size-${seed.key}`];
-                const fontSizePx = parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-                const lineHeightRem = sassLineHeights[`line-height-${seed.key}`];
-                const lineHeightPx = Math.round(
-                    (parseFloat(lineHeightRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-                ) / 10;
-                result.push({
-                    ...seed,
-                    class: seed.key !== 'base' ? `font-size-${seed.key}` : null,
-                    color: seed.tag === 'a' ? sassType['link-color'] : sassType['body-color'],
-                    fontSizePx,
-                    fontSizeRem,
-                    fontWeight: seed.tag === 'a' ? sassType['link-weight'] : sassType['font-weight-base'],
-                    lineHeightPx,
-                    lineHeightRem,
-                });
-                return result;
-            }, []);
-    }, {});
-
-const displayExamples = computed(() => {
-    const result = [];
-
-            // display-1 through display-4
-            for (let i = 1; i <= 4; i += 1) {
-                result.push({
-                    class: `display-${i}`,
-                    name: `Display ${i}`,
-                });
-            }
-
-            return result;
-    }, {});
-
-const headingExamples = computed(() => {
-    const result = [];
-
-            // post1 through post2
-            for (let i = 1; i <= 3; i += 1) {
-                result.push(createHeadingExample(
-                    `post${i}`,
-                    'post',
-                    'Post',
-                    sassPostGeneral,
-                    sassPostFontSizesMobile,
-                    sassPostFontSizesDesktop,
-                    sassPostLineHeightsMobile,
-                    sassPostLineHeightsDesktop,
-                ));
-            }
-
-            // h1 through h6
-            for (let i = 1; i <= 6; i += 1) {
-                result.push(createHeadingExample(
-                    `h${i}`,
-                    'h',
-                    'Heading',
-                    sassHeadingGeneral,
-                    sassHeadingFontSizesMobile,
-                    sassHeadingFontSizesDesktop,
-                    sassHeadingLineHeightsMobile,
-                    sassHeadingLineHeightsDesktop,
-                ));
-            }
-
-            // eyebrow
-            result.push(createHeadingExample(
-                'eyebrow',
-                'h',
-                'Eyebrow',
-                {
-                    color: sassHeadingEyebrow.color,
-                    fontWeight: sassHeadingEyebrow.fontWeight,
-                    marginBottom: sassHeadingEyebrow.marginBottom,
-                    letterSpacing: sassHeadingEyebrow.letterSpacing,
-                },
-                {
-                    eyebrow: sassHeadingEyebrow.fontSize,
-                },
-                {
-                    eyebrow: sassHeadingEyebrow.fontSize,
-                },
-                {
-                    eyebrow: sassHeadingEyebrow.lineHeight,
-                },
-                {
-                    eyebrow: sassHeadingEyebrow.lineHeight,
-                },
-            ));
-
-            return result;
-    }, {});
-
-const createHeadingExample = (
-            identifier,
-            categoryPrefix,
-            categoryName,
-            generalInfo,
-            mobileFontSizes,
-            desktopFontSizes,
-            mobileLineHeights,
-            desktopLineHeights,
-) => {
-            const sizeMobileRem = mobileFontSizes[identifier];
-            const sizeDesktopRem = desktopFontSizes[identifier];
-            const sizeMobilePx = parseFloat(sizeMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-            const sizeDesktopPx = parseFloat(sizeDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-            const lineHeightMobileRem = mobileLineHeights[identifier];
-            const lineHeightMobilePx = Math.round(
-                (parseFloat(lineHeightMobileRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-            ) / 10;
-            const lineHeightDesktopRem = desktopLineHeights[identifier];
-            const lineHeightDesktopPx = Math.round(
-                (parseFloat(lineHeightDesktopRem.replace('rem', '')) * BASE_FONT_SIZE_PX) * 10,
-            ) / 10;
-            const marginBottomRem = generalInfo.marginBottom;
-            const marginBottomPx = parseFloat(marginBottomRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-
-            const isEyebrow = identifier === 'eyebrow';
-            const isHeading = identifier[0] === 'h';
-
-            let letterSpacingRem = '';
-            let letterSpacingPx = '';
-
-            if (isEyebrow) {
-                letterSpacingRem = generalInfo.letterSpacing;
-                letterSpacingPx = parseFloat(letterSpacingRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
-            }
-
-            return {
-                class: isHeading ? '' : identifier,
-                color: generalInfo.color,
-                fontWeight: generalInfo.fontWeight,
-                letterSpacingPx,
-                letterSpacingRem,
-                lineHeightDesktopPx,
-                lineHeightDesktopRem,
-                lineHeightMobilePx,
-                lineHeightMobileRem,
-                marginBottomPx,
-                marginBottomRem,
-                name: isEyebrow ? 'Eyebrow' : `${categoryName} ${identifier.replace(categoryPrefix, '')}`,
-                sizeDesktopPx,
-                sizeDesktopRem,
-                sizeMobilePx,
-                sizeMobileRem,
-                // eslint-disable-next-line no-nested-ternary
-                tag: isEyebrow ? 'h2' : isHeading ? identifier : 'h1',
-            };
-        };
-
-const calculateActualFontSize = (remStr) => {
-            if (!remStr) {
-                return '';
-            }
-            const multiplier = parseFloat(remStr.replace('rem', ''));
-            return `${multiplier * 16}px`;
-        };
-
-
-const { $prism } = useNuxtApp();
-const docCode = ref("");
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import("./typography.vue?raw");
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-
-</script>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
@@ -795,5 +808,3 @@ if ($prism) {
     }
 }
 </style>
-
-

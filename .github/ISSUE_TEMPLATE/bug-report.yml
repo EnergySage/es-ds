@@ -1,48 +1,48 @@
-name: "\U0001F41E Bug report"
+name: 🐞 Bug report
 description: Create a report to help us improve es-ds
-labels: ["pending triage"]
+labels: [pending triage]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Please carefully read the contribution docs before creating a bug report
-        👉 https://energysage.atlassian.net/wiki/spaces/DSE/pages/116391995/Contribution
+    - type: markdown
+        attributes:
+            value: |
+                Please carefully read the contribution docs before creating a bug report
+                👉 https://energysage.atlassian.net/wiki/spaces/DSE/pages/116391995/Contribution
 
-        Please provide steps to reproduce
-        👉 [code sandbox](https://codesandbox.io/) or a link to a repo or page is helpful here
-  - type: textarea
-    id: bug-env
-    attributes:
-      label: Environment
-      description: Please provide any environment information (es-ds version, browser, operating system, ect.)
-      placeholder: Environment
-    validations:
-      required: true
-  - type: textarea
-    id: reproduction
-    attributes:
-      label: Reproduction
-      description: Please provide any information for steps to reproduce. Again [code sandbox](https://codesandbox.io/) or a link to a repo or page is helpful here
-      placeholder: Reproduction
-    validations:
-      required: true
-  - type: textarea
-    id: bug-description
-    attributes:
-      label: Describe the bug
-      description: A clear and concise description of what the bug is. If you intend to submit a PR for this issue, tell us in the description. Thanks!
-      placeholder: Bug description
-    validations:
-      required: true
-  - type: textarea
-    id: additonal
-    attributes:
-      label: Additional context
-      description: If applicable, add any other context about the problem here
-  - type: textarea
-    id: logs
-    attributes:
-      label: Logs
-      description: |
-        Optional if provided reproduction. Please try not to insert an image but copy paste the log text.
-      render: shell
+                Please provide steps to reproduce
+                👉 [code sandbox](https://codesandbox.io/) or a link to a repo or page is helpful here
+    - type: textarea
+        id: bug-env
+        attributes:
+            label: Environment
+            description: Please provide any environment information (es-ds version, browser, operating system, ect.)
+            placeholder: Environment
+        validations:
+            required: true
+    - type: textarea
+        id: reproduction
+        attributes:
+            label: Reproduction
+            description: Please provide any information for steps to reproduce. Again [code sandbox](https://codesandbox.io/) or a link to a repo or page is helpful here
+            placeholder: Reproduction
+        validations:
+            required: true
+    - type: textarea
+        id: bug-description
+        attributes:
+            label: Describe the bug
+            description: A clear and concise description of what the bug is. If you intend to submit a PR for this issue, tell us in the description. Thanks!
+            placeholder: Bug description
+        validations:
+            required: true
+    - type: textarea
+        id: additonal
+        attributes:
+            label: Additional context
+            description: If applicable, add any other context about the problem here
+    - type: textarea
+        id: logs
+        attributes:
+            label: Logs
+            description: |
+                Optional if provided reproduction. Please try not to insert an image but copy paste the log text.
+            render: shell

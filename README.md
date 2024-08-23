@@ -175,7 +175,6 @@ find es-vue-base/src/ | entr -s 'npm --prefix es-vue-base run build'
 
 In another terminal run:
 
-
 ```
 (cd es-design-system && FAST_LOCAL=true npm run dev)
 ```
@@ -188,7 +187,6 @@ should recover.
 You must also ensure things work server-side before committing your changes.
 
 Once we upgrade to Lerna 6, this should all be much faster & smoother via native [Workspace watching](https://lerna.js.org/docs/features/workspace-watching)
-
 
 #### Vue Component Process
 
@@ -239,7 +237,6 @@ conventions this will look similar to the following:
 ### Changed
 
 - Thing two
-
 ```
 
 This will make it easier to ensure all changes merged into `main` are captured
@@ -251,7 +248,7 @@ Assuming changes are approved, the process of publishing a new version is...
 0. Ensure your local environment is
    [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
    the `main` branch
-1. Make sure the package.json versions in `es-ds-styles` and `es-ds-components` is updated to a new version 
+1. Make sure the package.json versions in `es-ds-styles` and `es-ds-components` is updated to a new version
    that hasn't been published before on NPM.
 2. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
 3. `make install && make symlink` - Install and symlink dependencies locally

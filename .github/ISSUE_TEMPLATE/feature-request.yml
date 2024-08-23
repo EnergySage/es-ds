@@ -1,36 +1,36 @@
-name: "🚀 Feature request"
+name: 🚀 Feature request
 description: Suggest a feature that will improve es-ds
-labels: ["pending triage"]
+labels: [pending triage]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thank you for taking the time to fill out this feature request!
+    - type: markdown
+        attributes:
+            value: |
+                Thank you for taking the time to fill out this feature request!
 
-        Please carefully read the contribution docs before suggesting a new feature
-        👉 https://energysage.atlassian.net/wiki/spaces/DSE/pages/116391995/Contribution
-  - type: textarea
-    id: feature-description
-    attributes:
-      label: Describe the feature
-      description: A clear and concise description of what you think would be a helpful addition to es-ds, including the possible use cases and alternatives you have considered. If you have a working prototype or module that implements it, please include a link. If the feature includes EnergySage specific context, consider writing up a Jira ticket instead.
-      placeholder: Feature description
-    validations:
-      required: true
-  - type: checkboxes
-    id: additional-info
-    attributes:
-      label: Additional information
-      description: Additional information that helps us decide how to proceed.
-      options:
-        - label: Would you be willing to help implement this feature?
-  - type: checkboxes
-    id: required-info
-    attributes:
-      label: Final checks
-      description: Before submitting, please make sure you do the following
-      options:
-        - label: Read the [contribution guide](https://energysage.atlassian.net/wiki/spaces/DSE/pages/116391995/Contribution).
-          required: true
-        - label: Check existing [issues](https://github.com/EnergySage/es-ds/issues).
-          required: true
+                Please carefully read the contribution docs before suggesting a new feature
+                👉 https://energysage.atlassian.net/wiki/spaces/DSE/pages/116391995/Contribution
+    - type: textarea
+        id: feature-description
+        attributes:
+            label: Describe the feature
+            description: A clear and concise description of what you think would be a helpful addition to es-ds, including the possible use cases and alternatives you have considered. If you have a working prototype or module that implements it, please include a link. If the feature includes EnergySage specific context, consider writing up a Jira ticket instead.
+            placeholder: Feature description
+        validations:
+            required: true
+    - type: checkboxes
+        id: additional-info
+        attributes:
+            label: Additional information
+            description: Additional information that helps us decide how to proceed.
+            options:
+                - label: Would you be willing to help implement this feature?
+    - type: checkboxes
+        id: required-info
+        attributes:
+            label: Final checks
+            description: Before submitting, please make sure you do the following
+            options:
+                - label: Read the [contribution guide](https://energysage.atlassian.net/wiki/spaces/DSE/pages/116391995/Contribution).
+                    required: true
+                - label: Check existing [issues](https://github.com/EnergySage/es-ds/issues).
+                    required: true

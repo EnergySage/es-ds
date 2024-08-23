@@ -1,3 +1,58 @@
+<script setup lang="ts">
+import sassSpacers from '@energysage/es-ds-styles/scss/modules/spacers.module.scss'
+
+const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450]
+
+function convertSpacerVariablesToTableEntries(vars) {
+    return Object.keys(vars)
+        .map(key => ({ key, value: vars[key] }))
+        .map((item) => {
+            const key = Number.parseInt(item.key.replace(/s/, ''), 10)
+            const alias = generateAlias(key)
+            const em = Number(item.value.replace(/rem/, ''))
+            const px = em * 16 // Assuming we'll never change base font-size
+            return {
+                alias,
+                em,
+                key,
+                px,
+            }
+        })
+}
+function generateAlias(key) {
+    return `p-${key} m-${key}`
+}
+
+const legacyCollapseVisible = false
+const tableEntries = computed(() => { return convertSpacerVariablesToTableEntries(sassSpacers) })
+const deprecatedSpacers = computed(() => {
+    return tableEntries
+        // filter out updated spacers
+        .value.filter(spacer => DEPRECATED_SPACERS.includes(spacer.key))
+        // find the equivalent spacer from the updated naming scheme
+        .map((entry) => {
+            const newSpacer = spacers.value.find(spacer => spacer.px === entry.px)
+            return {
+                ...entry,
+                newKey: newSpacer ? newSpacer.key : 'n/a',
+                newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
+            }
+        })
+
+        .sort((a, b) => (a.px < b.px ? -1 : a.px > b.px ? 1 : 0))
+})
+const spacers = computed(() => { return tableEntries.value.filter(spacer => !DEPRECATED_SPACERS.includes(spacer.key)) })
+
+const { $prism } = useNuxtApp()
+const docCode = ref('')
+
+if ($prism) {
+    const docSource = await import('./spacing.vue?raw')
+    docCode.value = $prism.normalizeCode(docSource.default)
+    $prism.highlight()
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -6,7 +61,8 @@
         <p>
             Extended from <nuxt-link
                 to="https://getbootstrap.com/docs/4.6/utilities/spacing/"
-                target="_blank">
+                target="_blank"
+            >
                 bootstrap spacing
             </nuxt-link>
         </p>
@@ -23,7 +79,8 @@
             <ds-responsive-table>
                 <ds-responsive-table-row
                     v-for="space in spacers"
-                    :key="space.alias">
+                    :key="space.alias"
+                >
                     <ds-responsive-table-column md="3">
                         <template #name>
                             Example
@@ -32,19 +89,22 @@
                             <div
                                 v-if="space.key > 0"
                                 class="d-inline-block bg-soft-blue font-weight-semibold position-relative"
-                                :class="[`pl-${space.key} pt-${space.key}`]">
+                                :class="[`pl-${space.key} pt-${space.key}`]"
+                            >
                                 <span
                                     class="spacer-example position-absolute"
                                     :class="{
                                         //'font-size-xs': space.key < 200,
                                         'spacer-example--outside': space.key < 150,
-                                    }">
+                                    }"
+                                >
                                     {{ space.px }}
                                 </span>
                             </div>
                             <div
                                 v-else
-                                class="font-weight-semibold">
+                                class="font-weight-semibold"
+                            >
                                 {{ space.px }}
                             </div>
                         </template>
@@ -80,7 +140,8 @@
         <es-collapse
             id="legacy-collapse"
             v-model="legacyCollapseVisible"
-            :is-programmatic-until-user-input="false">
+            :is-programmatic-until-user-input="false"
+        >
             <template #title>
                 <h2 class="mb-0">
                     Legacy spacing
@@ -94,7 +155,8 @@
             <ds-responsive-table>
                 <ds-responsive-table-row
                     v-for="space in deprecatedSpacers"
-                    :key="space.alias">
+                    :key="space.alias"
+                >
                     <ds-responsive-table-column md="3">
                         <template #name>
                             Old name
@@ -138,64 +200,10 @@
 
         <ds-doc-source
             :doc-code="docCode"
-            doc-source="es-ds-docs/atoms/spacing.vue" />
+            doc-source="es-ds-docs/atoms/spacing.vue"
+        />
     </div>
 </template>
-
-<script setup lang="ts">
-import sassSpacers from "@energysage/es-ds-styles/scss/modules/spacers.module.scss";
-
-const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450];
-
-const convertSpacerVariablesToTableEntries = (vars) =>  {
-    return Object.keys(vars)
-        .map((key) => ({ key, value: vars[key] }))
-        .map((item) => {
-            const key = parseInt(item.key.replace(/s/, ''), 10);
-            const alias = generateAlias(key);
-            const em = Number(item.value.replace(/rem/, ''));
-            const px = em * 16; // Assuming we'll never change base font-size
-            return {
-                alias,
-                em,
-                key,
-                px,
-            };
-        });
-};
-const generateAlias = (key) =>  {
-    return `p-${key} m-${key}`;
-};
-
-const legacyCollapseVisible = false;
-const tableEntries = computed(() => {return convertSpacerVariablesToTableEntries(sassSpacers)});
-const deprecatedSpacers = computed(() => {
-    return tableEntries
-        // filter out updated spacers
-        .value.filter((spacer) => DEPRECATED_SPACERS.includes(spacer.key))
-        // find the equivalent spacer from the updated naming scheme
-        .map((entry) => {
-            const newSpacer = spacers.value.find((spacer) => spacer.px === entry.px);
-            return {
-                ...entry,
-                newKey: newSpacer ? newSpacer.key : 'n/a',
-                newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
-            };
-        })
-        // eslint-disable-next-line no-nested-ternary
-        .sort((a, b) => (a.px < b.px ? -1 : a.px > b.px ? 1 : 0));
-});
-const spacers = computed(() => {return tableEntries.value.filter((spacer) => !DEPRECATED_SPACERS.includes(spacer.key));});
-
-const { $prism } = useNuxtApp();
-const docCode = ref('');
-
-if ($prism) {
-    const docSource = await import('./spacing.vue?raw');
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>
 
 <style lang="scss" scoped>
 .spacer-example {

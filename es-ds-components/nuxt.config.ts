@@ -25,7 +25,8 @@ export default defineNuxtConfig({
         // https://google-fonts.nuxtjs.org/getting-started/setup
         '@nuxtjs/google-fonts',
         // https://v3.primevue.org/nuxt
-        'nuxt-primevue'
+        'nuxt-primevue',
+        '@nuxt/eslint',
     ],
 
     primevue: {
@@ -33,12 +34,12 @@ export default defineNuxtConfig({
             include: [],
         },
         options: {
-            unstyled: true
-        }
+            unstyled: true,
+        },
     },
 
     sourcemap: {
         server: true,
-        client: true
+        client: true,
     },
 })

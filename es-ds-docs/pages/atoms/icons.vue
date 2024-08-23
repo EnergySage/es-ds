@@ -1,3 +1,36 @@
+<script setup lang="ts">
+import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss'
+
+const colorNames = Object.keys(sassIconColors)
+    .map(k => k)
+    .reduce((prev, cur) => {
+        prev[cur] = cur
+        return prev
+    }, {})
+
+const colorOptions = Object.keys(colorNames).map(k => ({
+    text: k === 'body' ? 'default' : k.replace('-', ' '),
+    value: k,
+}))
+
+const activeColor = ref(colorNames.body)
+
+function textColorClass() {
+    return `text-${activeColor.value}`
+}
+
+const docCode = ref('')
+
+const { $prism } = useNuxtApp()
+
+if ($prism) {
+    const docSource = await import('./icons.vue?raw')
+
+    docCode.value = $prism.normalizeCode(docSource.default)
+    $prism.highlight()
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -16,7 +49,8 @@
                 v-model="activeColor"
                 :display-name="color.text"
                 :value="color.value"
-                inline />
+                inline
+            />
         </div>
         <h2>
             Base Icons
@@ -26,7 +60,8 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [ textColorClass() ]: true }"
+        >
             <li>
                 <icon-arrow-clockwise />
                 <code>IconArrowClockwise</code>
@@ -361,7 +396,8 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [ textColorClass() ]: true }"
+        >
             <li>
                 <icon-star-empty />
                 <code>IconStarEmpty</code>
@@ -384,7 +420,8 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [ textColorClass() ]: true }"
+        >
             <li>
                 <icon-bank />
                 <code>IconBank</code>
@@ -467,7 +504,8 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [ textColorClass() ]: true }"
+        >
             <li>
                 <icon-facebook />
                 <code>IconFacebook</code>
@@ -498,7 +536,8 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [ textColorClass() ]: true }"
+        >
             <li>
                 <icon-file-doc />
                 <code>IconFileDoc</code>
@@ -521,7 +560,8 @@
         </p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [ textColorClass() ]: true }"
+        >
             <li>
                 <icon-state-ak />
                 <code>IconStateAk</code>
@@ -732,7 +772,8 @@
         </h2>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [ textColorClass() ]: true }"
+        >
             <li>
                 <icon-video-play />
                 <code>IconVideoPlay</code>
@@ -741,46 +782,10 @@
 
         <ds-doc-source
             :doc-code="docCode"
-            doc-source="es-ds-docs/atoms/icons.vue" />
+            doc-source="es-ds-docs/atoms/icons.vue"
+        />
     </div>
 </template>
-
-<script setup lang="ts">
-import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
-
-const colorNames = Object.keys(sassIconColors)
-    .map((k) => k)
-    .reduce((prev, cur) => {
-        // eslint-disable-next-line no-param-reassign
-        prev[cur] = cur;
-        return prev;
-    }, {});
-
-const colorOptions = Object.keys(colorNames).map((k) => ({
-    text: k === 'body' ? 'default' : k.replace('-', ' '),
-    value: k,
-}));
-
-let activeColor = ref(colorNames.body);
-
-const textColorClass = () => {
-    return `text-${activeColor.value}`;
-};
-
-const docCode = ref('');
-
-const { $prism } = useNuxtApp();
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import('./icons.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-
-</script>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/variables" as variables;

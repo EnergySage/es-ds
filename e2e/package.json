@@ -1,18 +1,18 @@
 {
-  "name": "e2e",
-  "version": "1.0.0",
-  "description": "e2e testing for es-ds",
-  "type": "commonjs",
-  "scripts": {
-    "local": "PERCY_BRANCH=local PERCY_TARGET_BRANCH=production percy snapshot snapshots.js",
-    "local:test": "npm run local -- --dry-run",
-    "baseline": "PERCY_BRANCH=production percy snapshot snapshots.js",
-    "baseline:test": "npm run baseline -- --dry-run"
-  },
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "@percy/cli": "^1.28.0",
-    "dotenv": "^16.4.4"
-  }
+    "name": "e2e",
+    "type": "commonjs",
+    "version": "1.0.0",
+    "description": "e2e testing for es-ds",
+    "author": "",
+    "license": "MIT",
+    "scripts": {
+        "local": "PERCY_BRANCH=local PERCY_TARGET_BRANCH=production percy snapshot snapshots.js",
+        "local:test": "npm run local -- --dry-run",
+        "baseline": "PERCY_BRANCH=production percy snapshot snapshots.js",
+        "baseline:test": "npm run baseline -- --dry-run"
+    },
+    "dependencies": {
+        "@percy/cli": "^1.28.0",
+        "dotenv": "^16.4.4"
+    }
 }

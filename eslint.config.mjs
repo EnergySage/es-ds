@@ -13,4 +13,15 @@ export default antfu({
     formatters: {
         html: true, // uses Prettier
     },
+    ignores: [
+        '.github/**',
+        '.vscode/**',
+        'es-ds-styles/build/**',
+    ],
+},
+// Rules
+{
+    rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+    },
 })

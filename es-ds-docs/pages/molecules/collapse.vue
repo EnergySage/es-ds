@@ -1,3 +1,58 @@
+<script setup>
+const suggestedVisible = ref(true)
+const visible = ref(false)
+
+const propTableRows = [
+    [
+        'visible',
+        'Boolean',
+        'false',
+        'Suggested visibility state. Will be ignored if and when the user '
+        + 'interacts with the collapse (unless "isProgrammaticUntilUserInput" is false).',
+    ],
+    [
+        'isProgrammaticUntilUserInput',
+        'Boolean',
+        'true',
+        'Priority for the "visible" prop. When false, "visible" will continue to affect the component '
+        + 'even after the user interacts with the collapse.',
+    ],
+    [
+        'border',
+        'Boolean',
+        'true',
+        'Will hide/show borders',
+    ],
+]
+
+function shownEvent() {
+    // eslint-disable-next-line no-console
+    console.log('shown')
+}
+function toggledEvent(newValue) {
+    // eslint-disable-next-line no-console
+    console.log(`toggled to ${newValue}`)
+}
+function toggledEventInSuggestedVisibleExample(newValue) {
+    // eslint-disable-next-line no-console
+    console.log(`toggled to ${newValue}`)
+    visible.value = newValue
+}
+
+const { $prism } = useNuxtApp()
+const compCode = ref('')
+const docCode = ref('')
+
+if ($prism) {
+    const compSource = await import('@energysage/es-ds-components/components/es-collapse.vue?raw')
+    const docSource = await import('./collapse.vue?raw')
+
+    compCode.value = $prism.normalizeCode(compSource.default)
+    docCode.value = $prism.normalizeCode(docSource.default)
+    $prism.highlight()
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -6,7 +61,8 @@
         <p>
             Extended from <a
                 href="https://v3.primevue.org/panel/#toggleable"
-                target="_blank">
+                target="_blank"
+            >
                 PrimeVue Panel
             </a>
         </p>
@@ -14,7 +70,8 @@
             Per our writing guidelines, please ensure the title is in
             <a
                 href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case"
-                target="_blank">
+                target="_blank"
+            >
                 Sentence case.
             </a>
         </p>
@@ -60,7 +117,8 @@
                     <input
                         id="suggestedVisibleInput"
                         v-model="suggestedVisible"
-                        type="checkbox">
+                        type="checkbox"
+                    >
                     Toggle collapse programmatically (will be honored until a manual expand or collapse)
                 </label>
             </form>
@@ -68,7 +126,8 @@
                 <es-collapse
                     :visible="suggestedVisible"
                     @shown="shownEvent"
-                    @toggled="toggledEvent">
+                    @toggled="toggledEvent"
+                >
                     <template #title>
                         <h2 class="mb-0">
                             My title
@@ -102,7 +161,8 @@
                     <input
                         id="visible"
                         v-model="visible"
-                        type="checkbox">
+                        type="checkbox"
+                    >
                     Toggle collapse programmatically (will always be honored)
                 </label>
             </form>
@@ -111,7 +171,8 @@
                     v-model="visible"
                     :is-programmatic-until-user-input="false"
                     @shown="shownEvent"
-                    @toggled="toggledEventInSuggestedVisibleExample">
+                    @toggled="toggledEventInSuggestedVisibleExample"
+                >
                     <template #title>
                         <h2 class="mb-0">
                             My title
@@ -141,7 +202,8 @@
             <es-collapse
                 id="noBorderExample"
                 class="m-500"
-                :border="false">
+                :border="false"
+            >
                 <template #title>
                     <h2 class="mb-0">
                         My title
@@ -167,7 +229,8 @@
             <es-collapse
                 id="extraStylingExample"
                 class="m-500 bg-yellow-100 py-100 px-150 rounded"
-                :border="false">
+                :border="false"
+            >
                 <template #title>
                     <h2 class="mb-0">
                         My title
@@ -191,71 +254,15 @@
                 EsCollapse props
             </h2>
             <ds-prop-table
-                :rows="propTableRows" />
+                :rows="propTableRows"
+            />
         </div>
 
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/src/lib-components/es-collapse.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/es-collapse.vue" />
+            doc-source="es-ds-docs/pages/molecules/es-collapse.vue"
+        />
     </div>
 </template>
-
-
-<script setup>
-const suggestedVisible = ref(true);
-const visible = ref(false);
-
-const propTableRows = [
-    [
-        'visible',
-        'Boolean',
-        'false',
-        'Suggested visibility state. Will be ignored if and when the user '
-        + 'interacts with the collapse (unless "isProgrammaticUntilUserInput" is false).',
-    ],
-    [
-        'isProgrammaticUntilUserInput',
-        'Boolean',
-        'true',
-        'Priority for the "visible" prop. When false, "visible" will continue to affect the component '
-        + 'even after the user interacts with the collapse.',
-    ],
-    [
-        'border',
-        'Boolean',
-        'true',
-        'Will hide/show borders',
-    ],
-];
-
-const shownEvent = () => {
-    // eslint-disable-next-line no-console
-    console.log('shown');
-};
-const toggledEvent = (newValue) => {
-    // eslint-disable-next-line no-console
-    console.log(`toggled to ${newValue}`);
-};
-const toggledEventInSuggestedVisibleExample = (newValue) => {
-    // eslint-disable-next-line no-console
-    console.log(`toggled to ${newValue}`);
-    visible.value = newValue;
-};
-
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-collapse.vue?raw');
-    const docSource = await import('./collapse.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>

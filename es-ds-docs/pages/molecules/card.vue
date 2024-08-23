@@ -1,3 +1,23 @@
+<script setup>
+const columnWidths = {
+    md: ['2', '2', '8'],
+}
+const modalVisible = false
+function notify(string) {
+    alert(string)
+}
+const { $prism } = useNuxtApp()
+const compCode = ref('')
+const docCode = ref('')
+if ($prism) {
+    const compSource = await import('@energysage/es-ds-components/components/es-card.vue?raw')
+    const docSource = await import('./card.vue?raw')
+    compCode.value = $prism.normalizeCode(compSource.default)
+    docCode.value = $prism.normalizeCode(docSource.default)
+    $prism.highlight()
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -33,9 +53,10 @@
                 Use <code>variant="interactive"</code> to change the card's visual treatment to
                 indicate that it's clickable. By default, it will automatically become a button.
             </p>
-            <es-card   
+            <es-card
                 variant="interactive"
-                @click="notify('The interactive card has been clicked.')">
+                @click="notify('The interactive card has been clicked.')"
+            >
                 <h3>
                     Card title
                 </h3>
@@ -73,7 +94,8 @@
                 class="mb-100"
                 href="https://www.energysage.com"
                 target="_blank"
-                variant="interactive">
+                variant="interactive"
+            >
                 <h3>
                     Card title
                 </h3>
@@ -88,7 +110,8 @@
             <es-card
                 class="mb-100"
                 href="https://www.energysage.com"
-                target="_blank">
+                target="_blank"
+            >
                 <h3>
                     Card title
                 </h3>
@@ -108,7 +131,8 @@
             <es-card
                 tag="nuxt-link"
                 to="/atoms/color"
-                variant="interactive">
+                variant="interactive"
+            >
                 <h3>
                     Card title
                 </h3>
@@ -204,30 +228,11 @@
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
-       <ds-doc-source
+        <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/components/es-card.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/card.vue" />
+            doc-source="es-ds-docs/pages/molecules/card.vue"
+        />
     </div>
 </template>
-
-<script setup>
-const columnWidths = {
-    md: ['2', '2', '8'],
-};
-const modalVisible = false;
-const notify = (string) => {
-    alert(string);
-}
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-card.vue?raw');
-    const docSource = await import('./card.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>

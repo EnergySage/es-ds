@@ -1,21 +1,7 @@
-<template>
-    <div :class="`custom-control custom-radio custom-control${inline ? '-inline' : ''}`">
-        <radio-button
-            class="custom-control-input"
-            input-class="custom-radio-input"
-            v-model="localValue"
-            :disabled="disabled"
-            :input-id="`${value}-${groupName}`"
-            :name="groupName"
-            :value="value" />
-        <label :for="`${value}-${groupName}`" class="custom-control-label">{{ displayName }}</label>
-    </div>
-</template>
-
 <script setup lang="ts">
-import RadioButton from 'primevue/radiobutton';
+import RadioButton from 'primevue/radiobutton'
 
-import { ref, watch } from 'vue';
+import { ref, watch } from 'vue'
 
 const props = defineProps({
     disabled: {
@@ -25,12 +11,12 @@ const props = defineProps({
     displayName: {
         type: String,
         required: true,
-        default: "",
+        default: '',
     },
     groupName: {
         type: String,
         required: false,
-        default: "",
+        default: '',
     },
     inline: {
         type: Boolean,
@@ -39,26 +25,40 @@ const props = defineProps({
     modelValue: {
         type: String,
         required: true,
-        default: "",
+        default: '',
     },
     value: {
         type: String,
         required: true,
-        default: "",
+        default: '',
     },
-});
+})
 
-const emit = defineEmits(['update:modelValue']);
-const localValue = ref(props.modelValue);
+const emit = defineEmits(['update:modelValue'])
+const localValue = ref(props.modelValue)
 
 // Watch for changes to the local value and emit them
 watch(localValue, (newValue) => {
-    emit('update:modelValue', newValue);
-});
+    emit('update:modelValue', newValue)
+})
 
 // Watch for prop changes and update the local value
 watch(() => props.modelValue, (newValue) => {
-    localValue.value = newValue;
-});
-
+    localValue.value = newValue
+})
 </script>
+
+<template>
+    <div :class="`custom-control custom-radio custom-control${inline ? '-inline' : ''}`">
+        <RadioButton
+            v-model="localValue"
+            class="custom-control-input"
+            input-class="custom-radio-input"
+            :disabled="disabled"
+            :input-id="`${value}-${groupName}`"
+            :name="groupName"
+            :value="value"
+        />
+        <label :for="`${value}-${groupName}`" class="custom-control-label">{{ displayName }}</label>
+    </div>
+</template>

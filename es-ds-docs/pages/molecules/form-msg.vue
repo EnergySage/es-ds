@@ -1,18 +1,18 @@
 <script setup lang="ts">
-const showHeaderError = ref(false);
-const showHeaderInfo = ref(false);
-const showHeaderSuccess = ref(false);
-const showSimpleError = ref(false);
-const showSimpleInfo = ref(false);
-const showSimpleSuccess = ref(false);
+const showHeaderError = ref(false)
+const showHeaderInfo = ref(false)
+const showHeaderSuccess = ref(false)
+const showSimpleError = ref(false)
+const showSimpleInfo = ref(false)
+const showSimpleSuccess = ref(false)
 
 const propTableRows = [
     [
         'show',
         'Boolean',
         'false',
-        'Whether to show the form message. This component will respond to changes of this prop, ' +
-        'and the client is responsible for setting it false upon receiving the "hidden" event.',
+        'Whether to show the form message. This component will respond to changes of this prop, '
+        + 'and the client is responsible for setting it false upon receiving the "hidden" event.',
     ],
     [
         'timeout',
@@ -25,20 +25,20 @@ const propTableRows = [
         'String',
         '\'danger\'',
         'Controls the icon on the message. Options are danger, success, or primary.',
-    ]
-];
+    ],
+]
 
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
+const { $prism } = useNuxtApp()
+const compCode = ref('')
+const docCode = ref('')
 
 if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-form-msg.vue?raw');
-    const docSource = await import('./form-msg.vue?raw');
+    const compSource = await import('@energysage/es-ds-components/components/es-form-msg.vue?raw')
+    const docSource = await import('./form-msg.vue?raw')
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
+    compCode.value = $prism.normalizeCode(compSource.default)
+    docCode.value = $prism.normalizeCode(docSource.default)
+    $prism.highlight()
 }
 </script>
 
@@ -56,17 +56,20 @@ if ($prism) {
             <!-- TODO replace buttons with es-button after that's available -->
             <button
                 class="mb-100 mb-sm-0 mr-100"
-                @click="showSimpleSuccess = true">
+                @click="showSimpleSuccess = true"
+            >
                 Show success
             </button>
             <button
                 class="mb-100 mb-sm-0 mr-100"
-                @click="showSimpleError = true">
+                @click="showSimpleError = true"
+            >
                 Show error
             </button>
             <button
                 class="mb-100 mb-sm-0"
-                @click="showSimpleInfo = true">
+                @click="showSimpleInfo = true"
+            >
                 Show info
             </button>
 
@@ -74,7 +77,8 @@ if ($prism) {
                 class="my-100"
                 :show="showSimpleSuccess"
                 variant="success"
-                @hidden="showSimpleSuccess = false">
+                @hidden="showSimpleSuccess = false"
+            >
                 <div class="align-items-center d-flex">
                     Saved successfully!
                 </div>
@@ -83,7 +87,8 @@ if ($prism) {
                 class="my-100"
                 :show="showSimpleError"
                 variant="danger"
-                @hidden="showSimpleError = false">
+                @hidden="showSimpleError = false"
+            >
                 <div class="align-items-center d-flex">
                     The server responded with an error and we were unable to complete your request.
                     Please try again.
@@ -93,7 +98,8 @@ if ($prism) {
                 class="my-100"
                 :show="showSimpleInfo"
                 variant="primary"
-                @hidden="showSimpleInfo = false">
+                @hidden="showSimpleInfo = false"
+            >
                 <div class="align-items-center d-flex">
                     <p class="mb-0">
                         Need expert advice? &nbsp;
@@ -112,17 +118,20 @@ if ($prism) {
 
             <button
                 class="mb-100 mb-sm-0  mr-100"
-                @click="showHeaderSuccess = true">
+                @click="showHeaderSuccess = true"
+            >
                 Show success
             </button>
             <button
                 class="mb-100 mb-sm-0  mr-100"
-                @click="showHeaderError = true">
+                @click="showHeaderError = true"
+            >
                 Show error
             </button>
             <button
                 class="mb-100 mb-sm-0 "
-                @click="showHeaderInfo = true">
+                @click="showHeaderInfo = true"
+            >
                 Show info
             </button>
 
@@ -130,7 +139,8 @@ if ($prism) {
                 class="my-100"
                 :show="showHeaderSuccess"
                 variant="success"
-                @hidden="showHeaderSuccess = false">
+                @hidden="showHeaderSuccess = false"
+            >
                 <div>
                     <h2 class="h4 mb-50">
                         bill.png
@@ -144,7 +154,8 @@ if ($prism) {
                 class="my-100"
                 :show="showHeaderError"
                 variant="danger"
-                @hidden="showHeaderError = false">
+                @hidden="showHeaderError = false"
+            >
                 <div>
                     <h2 class="h4 mb-50">
                         bill.webp
@@ -158,7 +169,8 @@ if ($prism) {
                 class="my-100"
                 :show="showHeaderInfo"
                 variant="primary"
-                @hidden="showHeaderInfo = false">
+                @hidden="showHeaderInfo = false"
+            >
                 <div>
                     <h2 class="h4 mb-50">
                         bill.png
@@ -175,13 +187,15 @@ if ($prism) {
                 EsFormMsg props
             </h2>
             <ds-prop-table
-                :rows="propTableRows" />
+                :rows="propTableRows"
+            />
         </div>
 
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-form-msg.vue" />
+            doc-source="es-design-system/pages/molecules/es-form-msg.vue"
+        />
     </div>
 </template>

@@ -6,7 +6,7 @@ As this is a design / pattern library, visual regression is particularly useful 
 
 ### Usage
 
-In one tab, serve the statically generated routes 
+In one tab, serve the statically generated routes
 
 **NOTE** `webpack-dev-server` is very flakey when using percy snapshot testing,
 *best to use the nuxt server

@@ -3,7 +3,7 @@
 const year = new Date().getFullYear()
 
 function getBanner() {
-  return `/*!
+    return `/*!
   * EnergySage Flavor of Bootstrap
   * Copyright 2022-${year} (https://github.com/EnergySage/es-bs-base/blob/main/LICENSE)
   *

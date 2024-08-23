@@ -3,11 +3,11 @@ repo_url: https://github.com/EnergySage/es-ds
 edit_uri: edit/main
 
 nav:
-  - Home: README.md
+    -   Home: README.md
 
 docs_dir: ./
 plugins:
-  - techdocs-core
+    -   techdocs-core
 
 markdown_extensions:
-  - markdown_inline_mermaid
+    -   markdown_inline_mermaid

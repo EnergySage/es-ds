@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const programmaticExpandedId = ref('programmatic-question-1');
+const programmaticExpandedId = ref('programmatic-question-1')
 
 const accordionListProps = [
     [
@@ -30,7 +30,7 @@ const accordionListProps = [
         separating accordions.
         `,
     ],
-];
+]
 const accordionProps = [
     [
         'id',
@@ -51,21 +51,19 @@ const accordionProps = [
         it may need to be an h4.
         `,
     ],
-];
+]
 
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
+const { $prism } = useNuxtApp()
+const compCode = ref('')
+const docCode = ref('')
 
 if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-accordion-list.vue?raw');
-    const docSource = await import('./accordion.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+    const compSource = await import('@energysage/es-ds-components/components/es-accordion-list.vue?raw')
+    const docSource = await import('./accordion.vue?raw')
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
+    compCode.value = $prism.normalizeCode(compSource.default)
+    docCode.value = $prism.normalizeCode(docSource.default)
+    $prism.highlight()
 }
 </script>
 
@@ -484,7 +482,8 @@ if ($prism) {
                 EsAccordionList props
             </h2>
             <ds-prop-table
-                :rows="accordionListProps" />
+                :rows="accordionListProps"
+            />
         </div>
 
         <div class="mb-500">
@@ -492,13 +491,15 @@ if ($prism) {
                 EsAccordion props
             </h2>
             <ds-prop-table
-                :rows="accordionProps" />
+                :rows="accordionProps"
+            />
         </div>
 
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/components/es-breadcrumbs.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/breadcrumbs.vue" />
+            doc-source="es-ds-docs/pages/molecules/breadcrumbs.vue"
+        />
     </div>
 </template>

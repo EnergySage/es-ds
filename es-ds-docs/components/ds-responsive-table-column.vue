@@ -1,14 +1,3 @@
-<template>
-    <dl :class="columnClass">
-        <dt>
-            <slot name="name" />
-        </dt>
-        <dd>
-            <slot name="value" />
-        </dd>
-    </dl>
-</template>
-
 <script lang="js">
 export default {
     name: 'DsResponsiveTableColumn',
@@ -36,25 +25,36 @@ export default {
                 'responsive-table-column',
                 'col',
                 `col-md-${this.md}`,
-            ];
+            ]
 
             if (this.lg) {
-                classes.push(`col-lg-${this.lg}`);
+                classes.push(`col-lg-${this.lg}`)
             }
 
             if (this.xl) {
-                classes.push(`col-xl-${this.xl}`);
+                classes.push(`col-xl-${this.xl}`)
             }
 
             if (this.xxl) {
-                classes.push(`col-xxl-${this.xxl}`);
+                classes.push(`col-xxl-${this.xxl}`)
             }
 
-            return classes.join(' ');
+            return classes.join(' ')
         },
     },
-};
+}
 </script>
+
+<template>
+    <dl :class="columnClass">
+        <dt>
+            <slot name="name" />
+        </dt>
+        <dd>
+            <slot name="value" />
+        </dd>
+    </dl>
+</template>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
