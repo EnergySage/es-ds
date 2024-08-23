@@ -25,5 +25,11 @@
                 Radio button
             </ds-link>
         </li>
+          <li>
+            <ds-link to="/molecules/popover">
+                Popover
+            </ds-link>
+        </li>
+
     </ul>
 </template>
