@@ -29,6 +29,7 @@
         "path": "^0.12.7",
         "prismjs": "^1.29.0",
         "vue": "^2.7.14",
+        "vue-lazy-youtube-video": "^2.4.0",
         "vue-server-renderer": "^2.7.14",
         "vue-slider-component": "^3.2.24",
         "vue-template-compiler": "^2.7.14",
