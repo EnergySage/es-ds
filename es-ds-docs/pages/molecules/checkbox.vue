@@ -13,6 +13,9 @@ const selectAllIsIndeterminate = computed(() => {
 
 const handleOptionChange = () => {
     console.log("handleOptionChange fired");
+    console.log('apple.value: ', apple.value);
+    console.log('banana.value: ', banana.value);
+    console.log('cherry.value: ', cherry.value);
     selectAll.value = apple.value && banana.value && cherry.value;
 };
 
@@ -50,13 +53,13 @@ const handleSelectAllToggle = () => {
                 Basic example
             </h2>
             <div>
-                <es-form-checkbox v-model="apple">
+                <es-form-checkbox v-model="apple" id="idApple">
                     Apple
                 </es-form-checkbox>
-                <es-form-checkbox v-model="banana">
+                <es-form-checkbox v-model="banana" id="idBanana">
                     Banana
                 </es-form-checkbox>
-                <es-form-checkbox v-model="cherry">
+                <es-form-checkbox v-model="cherry" id="idCherry">
                     Cherry
                 </es-form-checkbox>
             </div>
@@ -69,16 +72,19 @@ const handleSelectAllToggle = () => {
             <div>
                 <es-form-checkbox
                     v-model="apple"
+                    id="idApple2"
                     disabled>
                     Apple
                 </es-form-checkbox>
                 <es-form-checkbox
                     v-model="banana"
+                    id="idBanana2"
                     disabled>
                     Banana
                 </es-form-checkbox>
                 <es-form-checkbox
                     v-model="cherry"
+                    id="idCherry2"
                     disabled>
                     Cherry
                 </es-form-checkbox>
@@ -90,6 +96,7 @@ const handleSelectAllToggle = () => {
                 Indeterminate
             </h2>
             <es-form-checkbox
+                id="idSelectAll"
                 v-model="selectAll"
                 :indeterminate="selectAllIsIndeterminate"
                 @change="handleSelectAllToggle">
@@ -97,19 +104,63 @@ const handleSelectAllToggle = () => {
             </es-form-checkbox>
             <div class="ml-100">
                 <es-form-checkbox
+                    id="idApple3"
                     v-model="apple"
                     @change="handleOptionChange">
                     Apple
                 </es-form-checkbox>
                 <es-form-checkbox
+                    id="idBanana3"
                     v-model="banana"
                     @change="handleOptionChange">
                     Banana
                 </es-form-checkbox>
                 <es-form-checkbox
+                    id="idCherry3"
                     v-model="cherry"
                     @change="handleOptionChange">
                     Cherry
+                </es-form-checkbox>
+            </div>
+        </div>
+
+        <div class="my-500">
+            <h2>
+                Helper text and required indicators
+            </h2>
+            <div>
+                <es-form-checkbox
+                    id="idApple4"
+                    v-model="apple"
+                    name="fruit">
+                    <div>
+                        Apple <span class="font-italic text-error-900">*</span>
+                    </div>
+                    <div class="font-size-sm text-gray-700">
+                        Malus domestica
+                    </div>
+                </es-form-checkbox>
+                <es-form-checkbox
+                    id="idBanana4"
+                    v-model="banana"
+                    name="fruit">
+                    <div>
+                        Banana <span class="font-italic text-error-900">*</span>
+                    </div>
+                    <div class="font-size-sm text-gray-700">
+                        Musa acuminata
+                    </div>
+                </es-form-checkbox>
+                <es-form-checkbox
+                    id="idCherry4"
+                    v-model="cherry"
+                    name="fruit">
+                    <div>
+                        Cherry <span class="font-italic text-error-900">*</span>
+                    </div>
+                    <div class="font-size-sm text-gray-700">
+                        Prunus avium
+                    </div>
                 </es-form-checkbox>
             </div>
         </div>
