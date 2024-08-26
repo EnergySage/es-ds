@@ -56,6 +56,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/rating">
+                Rating
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/form-input">
                 Text input
             </ds-link>
