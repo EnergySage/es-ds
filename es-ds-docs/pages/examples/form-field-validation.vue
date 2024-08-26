@@ -5,7 +5,7 @@ const state = reactive({
         password: '',
         phone: '',
         maskedPhoneNumber: '',
-        notes: '',
+        // notes: '',
     },
 });
 
@@ -19,9 +19,9 @@ const rules = {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
             [vuelidateKeys.EMAIL]: vuelidateEmail,
         },
-        notes: {
-            [vuelidateKeys.REQUIRED]: vuelidateRequired,
-        },
+        // notes: {
+        //     [vuelidateKeys.REQUIRED]: vuelidateRequired,
+        // },
         password: {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
             [vuelidateKeys.MIN_LENGTH]: vuelidateMinLength(8),
@@ -48,10 +48,8 @@ const fakeServerRequest = async () => {
 const onSubmit = async () => {
     startSubmit();
     v$.value.form.$touch();
-    console.log('onSubmit')
     const correct = await v$.value.$validate();
     if (correct) {
-        console.log('faking request')
         await fakeServerRequest();
     }
     stopSubmit();
@@ -144,38 +142,38 @@ const getErrorMessage = (validatorName) => {
                             </div>
                         </template>
                     </es-form-input>
-<!--                    <es-form-input-->
-<!--                        id="phone"-->
-<!--                        v-model="form.phone"-->
-<!--                        :state="validateState('form.phone')"-->
-<!--                        :disabled="isSubmitInProgress"-->
-<!--                        required-->
-<!--                        type="tel"-->
-<!--                        @change="touchOnChange('form.phone')"-->
-<!--                        @blur="$v.form.phone.$touch">-->
-<!--                        <template #label>-->
-<!--                            Phone number-->
-<!--                        </template>-->
-<!--                        <template #errorMessage>-->
-<!--                            Please enter a valid phone number.-->
-<!--                        </template>-->
-<!--                    </es-form-input>-->
-<!--                    <es-form-input-->
-<!--                        id="maskedPhoneNumber"-->
-<!--                        v-model="form.maskedPhoneNumber"-->
-<!--                        :state="validateState('form.maskedPhoneNumber')"-->
-<!--                        :disabled="isSubmitInProgress"-->
-<!--                        required-->
-<!--                        type="maskedTel"-->
-<!--                        @change="touchOnChange('form.maskedPhoneNumber')"-->
-<!--                        @blur="$v.form.maskedPhoneNumber.$touch">-->
-<!--                        <template #label>-->
-<!--                            Masked phone number-->
-<!--                        </template>-->
-<!--                        <template #errorMessage>-->
-<!--                            Please enter a valid phone number.-->
-<!--                        </template>-->
-<!--                    </es-form-input>-->
+                    <es-form-input
+                        id="phone"
+                        v-model="state.form.phone"
+                        :state="validateState('form.phone')"
+                        :disabled="isSubmitInProgress"
+                        required
+                        type="tel"
+                        @change="touchOnChange('form.phone')"
+                        @blur="v$.form.phone.$touch">
+                        <template #label>
+                            Phone number
+                        </template>
+                        <template #errorMessage>
+                            Please enter a valid phone number.
+                        </template>
+                    </es-form-input>
+                    <es-form-input
+                        id="maskedPhoneNumber"
+                        v-model="state.form.maskedPhoneNumber"
+                        :state="validateState('form.maskedPhoneNumber')"
+                        :disabled="isSubmitInProgress"
+                        required
+                        type="maskedTel"
+                        @change="touchOnChange('form.maskedPhoneNumber')"
+                        @blur="v$.form.maskedPhoneNumber.$touch">
+                        <template #label>
+                            Masked phone number
+                        </template>
+                        <template #errorMessage>
+                            Please enter a valid phone number.
+                        </template>
+                    </es-form-input>
 <!--                    <es-form-textarea-->
 <!--                        id="notes"-->
 <!--                        v-model="form.notes"-->
@@ -187,7 +185,7 @@ const getErrorMessage = (validatorName) => {
 <!--                        <template #label>-->
 <!--                            Notes-->
 <!--                        </template>-->
-<!--                    </es-form-textarea>-->
+<!--                    </es-form-textarea-->
                     <div class="d-flex flex-grow-1 justify-content-end mt-200">
                         <button
                             type="submit"

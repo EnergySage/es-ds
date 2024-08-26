@@ -33,10 +33,6 @@ export function useEsForms<
     const formErrors = computed(() => {
         const errors = v$.value.$errors.map((error) => error);
         return errors.reduce((acc: any, error: ErrorObject) => {
-            if (!error.$propertyPath?.startsWith('form.')) {
-                console.warn('The formErrors API expects your entire form state to be within "form". This function ' +
-                    'may otherwise produce undesired or unexpected behavior.')
-            }
             if (!(error.$property in acc)) {
                 acc[error.$property] = [];
             }
@@ -70,7 +66,7 @@ export function useEsForms<
 
     // TODO I don't know whether this function is even necessary. I think touching already happens on change
     const touchOnChange = (bla: string) => {
-        console.log(`touchOnChange ${bla}`);
+        console.log(`Probably useless function touchOnChange ${bla}`);
     };
 
     const showFormError = (
