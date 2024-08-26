@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useVuelidate } from '@vuelidate/core';
-import { required, email, minLength, helpers } from '@vuelidate/validators';
+import { required, email, minLength } from '@vuelidate/validators';
 
 const form = reactive({
     email: '',
@@ -10,35 +9,6 @@ const form = reactive({
     notes: '',
 });
 
-/**
- * @param { string } pattern
- * @returns { Function } a function that takes a number, and returns another function which takes a string param
- * that will ultimately be what you're comparing the pattern against N times.
- */
-// eslint-disable-next-line max-len
-const matchesPatternNTimes = (pattern) => (N = 1) => (param) => [...String(param).matchAll(pattern)].length >= N;
-
-/**
- * @param { Number } number of times the resulting function will need to match
- * @returns { Function } function that will take a string param that will compare against a
- * pattern N times. The pattern is defined in the functional closure.
- *
- * Usage: hasNumber(1)('s0me string')
- */
-const hasNumber = matchesPatternNTimes(/[0-9]/g);
-
-/**
- * @param { string } param
- * @returns { boolean } if not required or string contains a number
- */
-const vuelidateHasNumber = (X) => helpers.withMessage(
-    'This field must include a number',
-    helpers.withParams(
-        { type: 'xTimes', value: X },
-        (value) => !helpers.req(value) || hasNumber(X)(value),
-    ),
-);
-
 const rules = {
     email: { required, email },
     password: { required, minLength: minLength(8), hasNumber: vuelidateHasNumber(1) },
@@ -47,11 +17,10 @@ const rules = {
     notes: { required },
 };
 
-const v$ = useVuelidate(rules, form);
+const { v$, touchOnChange } = useEsForms(rules, form);
 
 // TODO
 const onSubmit = () => {};
-const touchOnChange = (bla) => {};
 const isSubmitInProgress = false;
 //
 
