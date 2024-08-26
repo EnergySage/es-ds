@@ -24,8 +24,8 @@ unlink:
 lint:
 	npm --prefix es-ds-styles run lint
 # TODO: set up linting for es-ds-components and es-ds-docs
-# 	npm --prefix es-ds-components run lint
-# 	npm --prefix es-ds-docs run lint
+	npm --prefix es-ds-components run lint
+	npm --prefix es-ds-docs run lint
 
 .PHONY: test
 test:

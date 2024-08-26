@@ -7,7 +7,6 @@ const props = defineProps({
         required: true,
     },
 });
-/* eslint-disable no-undef */
 const route = useRoute();
 const model = computed(() => {
     if (!props.items) {

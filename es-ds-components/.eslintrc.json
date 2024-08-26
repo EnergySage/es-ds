@@ -30,6 +30,8 @@
         {
             "files": "*.vue",
             "globals": {
+                "useRoute": "readonly",
+                "computed": "readonly",
                 "ref": "readonly",
                 "useSlots": "readonly",
                 "watch": "readonly"
