@@ -21,11 +21,10 @@ const rules = {
     },
 };
 
-const { v$, validateState, touchOnChange } = useEsForms(rules, state);
+const { v$, formErrors, validateState, touchOnChange, isSubmitInProgress } = useEsForms(rules, state);
 
 // TODO
 const onSubmit = () => {};
-const isSubmitInProgress = false;
 //
 
 </script>
@@ -93,9 +92,9 @@ const isSubmitInProgress = false;
                         </template>
                         <template #errorMessage>
                             <div
-                                v-for="error in v$.form.password.$errors"
+                                v-for="error in formErrors.password"
                                 :key="error">
-                                {{ error.$message }}
+                                {{ error }}
                             </div>
                         </template>
                     </es-form-input>
