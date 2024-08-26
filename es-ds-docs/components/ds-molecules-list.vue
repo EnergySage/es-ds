@@ -26,6 +26,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/data-table">
+                Data table
+            </ds-link>
+         </li>
+         <li>
             <ds-link to="/molecules/data-table-simple">
                 Data table simple
             </ds-link>
@@ -36,13 +41,23 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/progress">
+                Progress
+            </ds-link>
+        </li>
+         <li>
+            <ds-link to="/molecules/progress-circle">
+                Progress circle
+            </ds-link>
+         </li>
+        <li>
             <ds-link to="/molecules/radio-button">
                 Radio button
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/progress">
-                Progress
+            <ds-link to="/molecules/form-input">
+                Text input
             </ds-link>
         </li>
     </ul>
