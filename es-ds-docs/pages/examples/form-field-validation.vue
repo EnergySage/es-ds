@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { required, email, minLength } from '@vuelidate/validators';
-
 const state = reactive({
     form: {
         email: '',
@@ -13,19 +11,67 @@ const state = reactive({
 
 const rules = {
     form: {
-        email: { required, email },
-        password: { required, minLength: minLength(8), hasNumber: vuelidateHasNumber(1) },
-        phone: { required },
-        maskedPhoneNumber: { required },
-        notes: { required },
+        phone: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
+            [vuelidateKeys.PHONE]: vuelidatePhone,
+        },
+        email: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
+            [vuelidateKeys.EMAIL]: vuelidateEmail,
+        },
+        notes: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
+        },
+        password: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
+            [vuelidateKeys.MIN_LENGTH]: vuelidateMinLength(8),
+            [vuelidateKeys.HAS_NUMBER]: vuelidateHasNumber(1),
+            [vuelidateKeys.HAS_SPECIAL_CHARACTER]: vuelidateHasSpecialCharacter(1),
+            [vuelidateKeys.HAS_UPPERCASE_LETTER]: vuelidateHasUppercaseLetter(1),
+            [vuelidateKeys.HAS_LOWERCASE_LETTER]: vuelidateHasLowercaseLetter(1),
+        },
+        maskedPhoneNumber: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
+            [vuelidateKeys.PHONE]: vuelidatePhone,
+        },
     },
 };
 
-const { v$, formErrors, validateState, touchOnChange, isSubmitInProgress } = useEsForms(rules, state);
+const { v$, formErrors, validateState, touchOnChange, isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(rules, state);
 
-// TODO
-const onSubmit = () => {};
-//
+const fakeServerRequest = async () => {
+    const threeSecondTimeout = async (func) => setTimeout(func, 3000);
+    // eslint-disable-next-line no-console
+    await threeSecondTimeout(() => console.log('Submit Complete'));
+}
+
+const onSubmit = async () => {
+    startSubmit();
+    v$.value.form.$touch();
+    console.log('onSubmit')
+    const correct = await v$.value.$validate();
+    if (correct) {
+        console.log('faking request')
+        await fakeServerRequest();
+    }
+    stopSubmit();
+}
+
+const getErrorMessage = (validatorName) => {
+    const ERROR_MESSAGES = {
+        [vuelidateKeys.REQUIRED]: () => 'This field is required',
+        [vuelidateKeys.MIN_LENGTH]: (min = 8) => `This field must be at least ${min} characters`,
+        [vuelidateKeys.HAS_NUMBER]: () => 'This field must include a number',
+        [vuelidateKeys.HAS_SPECIAL_CHARACTER]: () => 'This field must include a special character',
+        [vuelidateKeys.HAS_UPPERCASE_LETTER]: () => 'This field must include an uppercase letter',
+        [vuelidateKeys.HAS_LOWERCASE_LETTER]: () => 'This field must include a lowercase letter',
+    };
+    const msgFunc = ERROR_MESSAGES[validatorName];
+    if (msgFunc) {
+        return msgFunc();
+    }
+    return '';
+}
 
 </script>
 
@@ -94,7 +140,7 @@ const onSubmit = () => {};
                             <div
                                 v-for="error in formErrors.password"
                                 :key="error">
-                                {{ error }}
+                                {{ getErrorMessage(error) }}
                             </div>
                         </template>
                     </es-form-input>
