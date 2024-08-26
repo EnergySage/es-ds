@@ -2,6 +2,7 @@ import { useVuelidate, type ValidationArgs } from '@vuelidate/core';
 
 import type { ToRefs, Ref } from 'vue';
 
+// TODO I don't know whether this function is even necessary. I think touching already happens on change
 const touchOnChange = (bla: string) => {
     console.log(`touchOnChange ${bla}`);
 };

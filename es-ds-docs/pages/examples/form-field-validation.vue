@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import { required, email, minLength } from '@vuelidate/validators';
 
-const form = reactive({
-    email: '',
-    password: '',
-    phone: '',
-    maskedPhoneNumber: '',
-    notes: '',
+const state = reactive({
+    form: {
+        email: '',
+        password: '',
+        phone: '',
+        maskedPhoneNumber: '',
+        notes: '',
+    },
 });
 
 const rules = {
-    email: { required, email },
-    password: { required, minLength: minLength(8), hasNumber: vuelidateHasNumber(1) },
-    phone: { required },
-    maskedPhoneNumber: { required },
-    notes: { required },
+    form: {
+        email: { required, email },
+        password: { required, minLength: minLength(8), hasNumber: vuelidateHasNumber(1) },
+        phone: { required },
+        maskedPhoneNumber: { required },
+        notes: { required },
+    },
 };
 
-const { v$, touchOnChange } = useEsForms(rules, form);
+const { v$, touchOnChange } = useEsForms(rules, state);
 
 // TODO
 const onSubmit = () => {};
@@ -64,12 +68,12 @@ const isSubmitInProgress = false;
                     @submit.stop.prevent="onSubmit">
                     <es-form-input
                         id="email"
-                        v-model="form.email"
+                        v-model="state.form.email"
                         :disabled="isSubmitInProgress"
                         required
-                        :state="!v$.email.$error"
+                        :state="!v$.form.email.$error"
                         @change="touchOnChange('form.email')"
-                        @blur="v$.email.$touch">
+                        @blur="v$.form.email.$touch">
                         <template #label>
                             Email address
                         </template>
@@ -79,8 +83,8 @@ const isSubmitInProgress = false;
                     </es-form-input>
                     <es-form-input
                         id="password"
-                        v-model="v$.password.$model"
-                        :state="!v$.password.$error"
+                        v-model="v$.form.password.$model"
+                        :state="!v$.form.password.$error"
                         :disabled="isSubmitInProgress"
                         required
                         type="password">
@@ -89,7 +93,7 @@ const isSubmitInProgress = false;
                         </template>
                         <template #errorMessage>
                             <div
-                                v-for="error in v$.password.$errors"
+                                v-for="error in v$.form.password.$errors"
                                 :key="error">
                                 {{ error.$message }}
                             </div>
