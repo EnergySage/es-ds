@@ -21,7 +21,7 @@ const rules = {
     },
 };
 
-const { v$, touchOnChange } = useEsForms(rules, state);
+const { v$, validateState, touchOnChange } = useEsForms(rules, state);
 
 // TODO
 const onSubmit = () => {};
@@ -71,7 +71,7 @@ const isSubmitInProgress = false;
                         v-model="state.form.email"
                         :disabled="isSubmitInProgress"
                         required
-                        :state="!v$.form.email.$error"
+                        :state="validateState('form.email')"
                         @change="touchOnChange('form.email')"
                         @blur="v$.form.email.$touch">
                         <template #label>
@@ -84,7 +84,7 @@ const isSubmitInProgress = false;
                     <es-form-input
                         id="password"
                         v-model="v$.form.password.$model"
-                        :state="!v$.form.password.$error"
+                        :state="validateState('form.password')"
                         :disabled="isSubmitInProgress"
                         required
                         type="password">
