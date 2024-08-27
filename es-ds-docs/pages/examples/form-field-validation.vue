@@ -53,7 +53,6 @@ const fakeServerRequest = async () => {
 
 const onSubmit = async () => {
     startSubmit();
-    v$.value.form.$touch(); // is this necessary?
     const correct = await v$.value.$validate();
     if (correct) {
         await fakeServerRequest();
