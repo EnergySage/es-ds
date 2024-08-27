@@ -187,7 +187,7 @@ const getErrorMessage = (validatorName) => {
 <!--                        </template>-->
 <!--                    </es-form-textarea-->
                     <div class="d-flex flex-grow-1 justify-content-end mt-200">
-                        <button
+                        <es-button
                             type="submit"
                             class="w-100 w-lg-auto"
                             :disabled="isSubmitInProgress">
@@ -195,17 +195,16 @@ const getErrorMessage = (validatorName) => {
                                 <span
                                     v-if="isSubmitInProgress"
                                     class="form-actions__button-spinner position-absolute d-inline-block h-100 w-100">
-                                    b-spinner
-<!--                                    <b-spinner-->
-<!--                                        role="status"-->
-<!--                                        label="Loading" />-->
+                                    <b-spinner
+                                        role="status"
+                                        label="Loading" />
                                 </span>
                                 <span
                                     :class="{'sr-only': isSubmitInProgress }">
                                     Submit
                                 </span>
                             </span>
-                        </button>
+                        </es-button>
                     </div>
                 </form>
             </b-col>
