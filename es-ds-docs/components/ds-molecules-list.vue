@@ -56,6 +56,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/button">
+                Button
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/rating">
                 Rating
             </ds-link>
