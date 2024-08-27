@@ -35,7 +35,7 @@ if ($prism) {
                 hide-footer
                 :visible="simpleModalVisible"
                 size="lg"
-                @hide="simpleModalVisible = false"
+                @hidden="simpleModalVisible = false"
             >
                 <template #modal-title> Arcadia Reviews </template>
                 <template #default>
@@ -62,7 +62,12 @@ if ($prism) {
                 </template>
             </es-modal>
 
-            <es-modal id="buttons-modal" :visible="buttonsModalVisible" size="lg" @hide="buttonsModalVisible = false">
+            <es-modal
+                id="buttons-modal"
+                :visible="buttonsModalVisible"
+                size="lg"
+                @hidden="buttonsModalVisible = false"
+            >
                 <template #modal-title> Arcadia Reviews </template>
                 <template #default>
                     <p id="lorem-ipsum" class="mb-0">

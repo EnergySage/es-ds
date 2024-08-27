@@ -36,11 +36,17 @@ const modalPt = {
     },
 };
 
-const visible = defineModel<boolean>("visible");
+const emit = defineEmits(["hidden"]);
+
+const onChange = (visible: boolean) => {
+    if (!visible) {
+        emit("hidden");
+    }
+};
 </script>
 
 <template>
-    <prime-dialog v-model:visible="visible" modal :class="`modal-${size}`" :pt="modalPt">
+    <prime-dialog modal :class="`modal-${size}`" :pt="modalPt" @update:visible="onChange">
         <template #header>
             <h5 class="modal-title h2">
                 <slot name="modal-title" />
