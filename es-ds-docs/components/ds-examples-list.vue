@@ -5,5 +5,10 @@
                 Form with client-side validation
             </ds-link>
         </li>
+        <li>
+            <ds-link to="/examples/form-validation">
+                Form with server error
+            </ds-link>
+        </li>
     </ul>
 </template>
