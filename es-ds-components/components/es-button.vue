@@ -66,16 +66,13 @@ const getRootClasses = computed(() => {
     const btnSize = props.size ? `btn-${props.size }` : 'btn-md';
     return `btn ${btnVariant} ${btnInline} ${btnSize}`;
 });
-
-const isLink = computed(() => props.variant === 'link');
 </script>
 
 <template>
     <prime-button
         :pt="{
             root: { class: getRootClasses }
-        }"
-        :link="isLink">
+        }">
         <slot />
     </prime-button>
 </template>
