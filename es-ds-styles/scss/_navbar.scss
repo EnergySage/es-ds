@@ -178,9 +178,13 @@
         }
       }
 
+      // TODO: this is where the repeat happens the first time
       @include breakpoints.media-breakpoint-up($next) {
-        flex-flow: row nowrap;
-        justify-content: flex-start;
+        & {
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+        }
 
         .navbar-nav {
           flex-direction: row;
