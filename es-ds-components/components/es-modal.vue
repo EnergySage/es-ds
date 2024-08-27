@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import Dialog from "primevue/dialog";
-
-import { watch } from "vue";
+import PrimeDialog from "primevue/dialog";
 
 const props = defineProps({
     hideFooter: {
@@ -42,7 +40,7 @@ const visible = defineModel<boolean>("visible");
 </script>
 
 <template>
-    <Dialog v-model:visible="visible" modal :class="`modal-${size}`" :pt="modalPt">
+    <prime-dialog v-model:visible="visible" modal :class="`modal-${size}`" :pt="modalPt">
         <template #header>
             <h5 class="modal-title h2">
                 <slot name="modal-title" />
@@ -58,5 +56,5 @@ const visible = defineModel<boolean>("visible");
         <template #footer v-if="!hideFooter">
             <slot name="modal-footer" />
         </template>
-    </Dialog>
+    </prime-dialog>
 </template>
