@@ -27,8 +27,8 @@ if ($prism) {
         </p>
         <div class="my-500">
             <!-- TODO replace buttons with EsButton -->
-            <button class="mb-100 mb-lg-0 mr-100" @click="simpleModalVisible = true">Show simple modal</button>
-            <button class="mb-100 mb-lg-0" @click="buttonsModalVisible = true">Show modal with buttons</button>
+            <es-button class="mb-100 mb-lg-0 mr-100" @click="simpleModalVisible = true">Show simple modal</es-button>
+            <es-button class="mb-100 mb-lg-0" @click="buttonsModalVisible = true">Show modal with buttons</es-button>
 
             <es-modal
                 id="simple-modal"
@@ -83,8 +83,8 @@ if ($prism) {
                     </p>
                 </template>
                 <template #modal-footer>
-                    <button @click="buttonsModalVisible = false">Cancel</button>
-                    <button class="ml-100" @click="buttonsModalVisible = false">Submit</button>
+                    <es-button @click="buttonsModalVisible = false">Cancel</es-button>
+                    <es-button class="ml-100" @click="buttonsModalVisible = false">Submit</es-button>
                 </template>
             </es-modal>
         </div>
