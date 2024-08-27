@@ -498,8 +498,8 @@
     border: variables.$custom-range-thumb-border;
     @include border-radius.border-radius(variables.$custom-range-thumb-border-radius);
     @include box-shadow.box-shadow(variables.$custom-range-thumb-box-shadow);
-    @include transition.transition(variables.$custom-forms-transition);
     appearance: none;
+    @include transition.transition(variables.$custom-forms-transition);
 
     &:active {
       @include gradients.gradient-bg(variables.$custom-range-thumb-active-bg);
