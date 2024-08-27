@@ -44,19 +44,3 @@ defineProps({
             class="custom-control-label">{{ displayName }}</label>
     </div>
 </template>
-
-<template>
-    <div :class="`custom-control custom-radio custom-control${inline ? '-inline' : ''}`">
-        <radio-button
-            v-model="localValue"
-            class="custom-control-input"
-            input-class="custom-radio-input"
-            :disabled="disabled"
-            :input-id="`${value}-${groupName}`"
-            :name="groupName"
-            :value="value" />
-        <label
-            :for="`${value}-${groupName}`"
-            class="custom-control-label">{{ displayName }}</label>
-    </div>
-</template>
