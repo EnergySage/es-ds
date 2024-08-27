@@ -114,36 +114,8 @@
             <h2>
                 EsFileInput props
             </h2>
-            <ds-responsive-table>
-                <ds-responsive-table-row
-                    v-for="prop in fileUploadProps"
-                    :key="prop.name">
-                    <ds-responsive-table-column :md="columnWidths.md[0]">
-                        <template #name>
-                            Name
-                        </template>
-                        <template #value>
-                            <code>{{ prop.name }}</code>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column :md="columnWidths.md[1]">
-                        <template #name>
-                            Default
-                        </template>
-                        <template #value>
-                            <code>{{ prop.default }}</code>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column :md="columnWidths.md[2]">
-                        <template #name>
-                            Description
-                        </template>
-                        <template #value>
-                            {{ prop.description }}
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <ds-prop-table
+                :rows="propTableRows" />
         </div>
         <div class="mb-500">
             <h2>
@@ -194,27 +166,33 @@ const columnWidths = {
     md: ['3', '2', '7'],
 };
 
-const fileUploadProps = [
-    {
-        name: 'uploadUrls',
-        default: 'None',
-        description: 'An array of objects with name, uploadUrl, and additionalFields (optional) as fields.',
-    }, {
-        name: 'fileTypes',
-        default: 'None',
-        description: 'An array of accepted mime types for a file. If no argument passed, all file types are '
+const propTableRows = [
+    [
+        'uploadUrls',
+        'Object',
+        'n/a',
+        'An array of objects with name, uploadUrl, and additionalFields (optional) as fields.',
+    ],
+    [
+        'fileTypes',
+        'Array',
+        '[]',
+        'An array of accepted mime types for a file. If no argument passed, all file types are '
         + 'accepted. These mime types follow the IANA Media Types.',
-    }, {
-        name: 'maxFileSize',
-        default: '25',
-        description: 'Max file size in MB. This is per file. Any file that exceeds this size will not be '
+    ],
+    [
+        'maxFileSize',
+        'Number',
+        '25',
+        'Max file size in MB. This is per file. Any file that exceeds this size will not be '
         + 'uploaded.',
-    },
-    {
-        name: 'collapsed',
-        default: 'false',
-        description: 'In desktop view, determines whether the upload box is horizontally collapsed.',
-    },
+    ],
+    [
+        'collapsed',
+        'Boolean',
+        'false',
+        'In desktop view, determines whether the upload box is horizontally collapsed.',
+    ],
 ];
 
 const fileUploadEventListeners = [
