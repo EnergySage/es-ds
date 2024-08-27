@@ -170,7 +170,7 @@
                     </ds-responsive-table-column>
                     <ds-responsive-table-column :md="columnWidths.md[2]">
                         <template #name>
-                            Description
+                            Descriptions
                         </template>
                         <template #value>
                             {{ eventListener.description }}
@@ -274,20 +274,20 @@ if ($prism) {
 }
 
 let url = '';
-let uploadUrls = [];
 let fileObjects = [];
-let events = [];
+const uploadUrls = ref([]);
+const events = ref([]);
 
 const fileTypeError = (fileName) => {
-    events.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger' });
+    events.value.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger' });
 }
 
 const fileIsAFolderError = () => {
-    events.push({ msg: 'fileIsAFolderError', variant: 'danger' });
+    events.value.push({ msg: 'fileIsAFolderError', variant: 'danger' });
 }
 
 const onSubmit = () => {
-    uploadUrls = fileObjects.map(({ name }) => ({
+    uploadUrls.value = fileObjects.map(({ name }) => ({
         name,
         uploadUrl: url,
     }));
@@ -295,15 +295,15 @@ const onSubmit = () => {
 
 const readyToUpload = (fileUploads) => {
     fileObjects = fileUploads;
-    events.push({ msg: `readyToUpload for ${fileUploads.length} file(s)`, variant: 'success' });
+    events.value.push({ msg: `readyToUpload for ${fileUploads.length} file(s)`, variant: 'success' });
 }
 
 const uploadSuccess= (fileName) => {
-    events.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success' });
+    events.value.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success' });
 }
 
 const uploadFailure = (fileNameAndMessage) => {
-    events.push({
+    events.value.push({
         msg: `uploadFailure for file: ${fileNameAndMessage.name}. Message: `
     + `${fileNameAndMessage.message}`,
         variant: 'danger',
@@ -311,13 +311,13 @@ const uploadFailure = (fileNameAndMessage) => {
 }
 
 const fileDataRead = (file) => {
-    events.push({
+    events.value.push({
         msg: `fileDataRead for file: ${file.name} type: ${file.type} size: ${file.size}`,
         variant: 'success',
     });
 }
 const fileSizeError = (fileName) => {
-    events.push({ msg: `fileSizeError: exceeded max file size for file ${fileName}`, variant: 'danger' });
+    events.value.push({ msg: `fileSizeError: exceeded max file size for file ${fileName}`, variant: 'danger' });
 }
 
 </script>

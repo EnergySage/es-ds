@@ -57,31 +57,36 @@
         <div>
             <slot name="helpText" />
         </div>
-        <!-- <b-form-file
-            ref="fileInput"
-            v-model="pickedItems"
-            :state="Boolean(pickedItems)"
+        <input
+            type="file"
+            @change="onFileChanged($event)"
             :accept="fileTypes.join(', ')"
+            ref="fileInput"
             style="display: none"
-            multiple /> -->
+            multiple/>
     </div>
 </template>
 
 <script setup lang="ts">
-// import { BFormFile } from 'bootstrap-vue';
-import findMimeType, { mimeTypes } from '../lib-utils/mime-type-finder'
+import findMimeType, { mimeTypes } from '../lib-utils/mime-type-finder';
+
+type UploadInfo = {
+    name: string;
+    uploadUrl: string;
+    additionalFields?: Object;
+};
 
 const props = defineProps({
     /**
      * An array of Objects with the following shape:
      * {
-     *    fileName: String,
+     *    name: String,
      *    uploadUrl: String,
      *    additionalFields: Object,
      * }
      */
     uploadUrls: {
-        type: Array,
+        type: Array<UploadInfo>,
         default: () => [],
     },
     /**
@@ -114,41 +119,43 @@ const props = defineProps({
         default: false,
         required: false,
     },
-    deleteFileName: {
-        type: String,
-        default: '',
-        required: false,
-    },
 });
 
-let pickedItems = [];
-let files = [];
+let currentFiles: Array<File> = [];
 let active = false;
+const fileInput = ref(null);
+const emit = defineEmits([
+    'fileSizeError',
+    'fileTypeError',
+    'fileIsAFolderError',
+    'fileDataRead',
+    'duplicateFileMessage',
+    'readyToUpload',
+    'uploadFailure',
+    'uploadSuccess'
+]);
 
-watch(props.uploadUrls, (newUrls, oldUrls) => {
+watch(() => props.uploadUrls, (newUrls, oldUrls) => {
     // For every file that has an associated upload URL, we start the upload
     newUrls.forEach((newUrlPair) => {
         const oldUrl = oldUrls.find(({ name }) => name === newUrlPair.name);
-        const fileToUpload = files.find((file) => file.name === newUrlPair.name);
+        const fileToUpload = currentFiles.find((file) => file.name === newUrlPair.name);
         if ((!oldUrl || oldUrl.uploadUrl !== newUrlPair.uploadUrl) && fileToUpload) {
             uploadSingleFile(fileToUpload);
         }
     });
 });
 
-watch(pickedItems, async (newVal) => {
+async function onFileChanged($event: Event) {
+    const target = $event.target as HTMLInputElement;
     // The user has selected files from the file picker. We have to filter out any files that exceed the
     // maxFileSizeMb prop.
-    if (newVal.length > 0) {
-        await verifyFiles(newVal);
+    if (target && target.files) {
+        await verifyFiles([...target.files]);
     }
-});
+}
 
-watch(props.deleteFileName, (newVal) => {
-    files = files.filter((file) => file.name !== newVal);
-});
-
-const removeSpaceFromFileNames = (files) => {
+const removeSpaceFromFileNames = (files: Array<File>) => {
     const newFiles = files.map((file) => new File(
         // Return new File object with the modified name (without any space)
         [file],
@@ -158,25 +165,25 @@ const removeSpaceFromFileNames = (files) => {
     return newFiles;
 }
 
-const filterLargeFiles = (files) => {
+const filterLargeFiles = (files: Array<File>) => {
     // Takes an array of files, and filters out any files that exceed the maxFileSizeMb prop. Emits a
     // fileSizeError event for each file that exceeds the maxFileSizeMb prop. The File API uses bytes, so
     // we have to convert the maxFileSizeMb prop to bytes.
     const maxFileSizeBytes = props.maxFileSizeMb * 1000000;
-    return files.filter((file) => {
+    return [...files].filter((file) => {
         if (file.size > maxFileSizeBytes) {
-            this.$emit('fileSizeError', file.name);
+            emit('fileSizeError', file.name);
             return false;
         }
         return true;
     });
 }
 
-const readFilesIntoUrl = (files) => {
+const readFilesIntoUrl = (files: Array<File>) => {
     files.forEach((file) => {
         const fileReader = new FileReader();
         fileReader.onload = () => {
-            this.$emit('fileDataRead', {
+            emit('fileDataRead', {
                 name: file.name,
                 type: file.type,
                 size: file.size,
@@ -190,7 +197,7 @@ const readFilesIntoUrl = (files) => {
     });
 }
 
-async function verifyFiles(files) {
+async function verifyFiles(files: Array<File>) {
     const correctlySizedFiles = filterLargeFiles(files);
     const correctlyNamedFiles = removeSpaceFromFileNames(correctlySizedFiles);
 
@@ -204,37 +211,38 @@ async function verifyFiles(files) {
 
     // If the new file with name already exists in the current files
     // Don't upload the new file and display an error
-    const duplicateFiles = newValidFiles.filter(({ name }) => files.some((file) => file.name === name));
-    duplicateFiles.forEach((file) => this.$emit('duplicateFileMessage', file.name));
+    const duplicateFiles = newValidFiles.filter(({ name }) => currentFiles.some((file) => file.name === name));
+    duplicateFiles.forEach((file) => emit('duplicateFileMessage', file.name));
 
     // For new files with unused names, add them to files
-    newValidFiles = newValidFiles.filter(({ name }) => !files.some((file) => file.name === name));
-    files = [...files, ...newValidFiles];
+    newValidFiles = newValidFiles.filter(({ name }) => !currentFiles.some((file) => file.name === name));
+    currentFiles = [...currentFiles, ...newValidFiles];
 
     if (newValidFiles.length > 0) {
-        this.$emit('readyToUpload', newValidFiles);
+        emit('readyToUpload', newValidFiles);
         readFilesIntoUrl(newValidFiles);
     }
-    pickedItems = [];
+
+    console.log(currentFiles);
 }
 
-async function verifyMimeType(file) {
-    // If an empty folder then trigger fileTypeError
+async function verifyMimeType(file: File) {
+    // If an empty folder then trigger fileIsAFolderError
     if (file.type === '') {
-        this.$emit('fileIsAFolderError');
+        emit('fileIsAFolderError');
     }
     return new Promise((resolve, reject) => {
         const fileReader = new FileReader();
         fileReader.onload = (evt) => {
             const uint = new Uint8Array(evt.target.result);
-            const bytes = [];
+            const bytes: String[] = [];
             uint.forEach((byte) => {
                 bytes.push(byte.toString(16));
             });
             const hex = bytes.join('').toUpperCase();
             const mimeType = findMimeType(hex);
             if (!mimeType || (props.fileTypes.length > 0 && !props.fileTypes.includes(mimeType))) {
-                this.$emit('fileTypeError', file.name);
+                emit('fileTypeError', file.name);
                 return reject();
             }
             return resolve(file);
@@ -257,7 +265,7 @@ const onDrop = (event) => {
     const dataTransfersAsFiles = [...event.dataTransfer.items]
         .filter((item) => {
             if (item.kind !== 'file') {
-                this.$emit('fileTypeError', item.name);
+                emit('fileTypeError', item.name);
                 return false;
             }
             return true;
@@ -267,12 +275,16 @@ const onDrop = (event) => {
     verifyFiles(dataTransfersAsFiles);
 }
 
-const openFilePicker = () => { this.$refs.fileInput.$el.childNodes[0].click(); }
+const openFilePicker = () => {
+    if (fileInput.value) {
+        fileInput.value.click();
+    }
+}
 
-async function uploadSingleFile(file) {
+async function uploadSingleFile(file: File) {
     const uploadInfo = props.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name);
     if (!uploadInfo) {
-        this.$emit('uploadFailure', {
+        emit('uploadFailure', {
             name: file.name,
             message: 'No upload URL found for this file.',
         });
@@ -291,9 +303,9 @@ async function uploadSingleFile(file) {
     })
     .then((response) => {
         if (response.status >= 200 && response.status < 300) {
-            this.$emit('uploadSuccess', file.name);
+            emit('uploadSuccess', file.name);
         } else {
-            this.$emit('uploadFailure', {
+            emit('uploadFailure', {
                 name: file.name,
                 message: `Received ${response.status} code from server.`,
             });
@@ -303,7 +315,7 @@ async function uploadSingleFile(file) {
         if (error.response) {
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
-            this.$emit('uploadFailure', {
+            emit('uploadFailure', {
                 name: file.name,
                 message: `Received ${error.response.status} code from server.`,
             });
@@ -311,10 +323,10 @@ async function uploadSingleFile(file) {
             // The request was made but no response was received
             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
             // http.ClientRequest in node.js
-            this.$emit('uploadFailure', { name: file.name, message: 'The server did not respond.' });
+            emit('uploadFailure', { name: file.name, message: 'The server did not respond.' });
         } else {
             // Something happened in setting up the request that triggered an Error
-            this.$emit('uploadFailure', {
+            emit('uploadFailure', {
                 name: file.name,
                 message: 'There was an error sending your file to the server.',
             });
