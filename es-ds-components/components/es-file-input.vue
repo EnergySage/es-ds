@@ -222,8 +222,6 @@ async function verifyFiles(files: Array<File>) {
         emit('readyToUpload', newValidFiles);
         readFilesIntoUrl(newValidFiles);
     }
-
-    console.log(currentFiles);
 }
 
 async function verifyMimeType(file: File) {
