@@ -25,6 +25,15 @@ const onSubmit = async () => {
     await fakeServerRequest();
     stopSubmit(); // This method via forms composable, will set submitInProgress to false
 }
+
+const { $prism } = useNuxtApp();
+const docCode = ref("");
+if ($prism) {
+    const docSource = await import("./form-validation.vue?raw");
+
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
 </script>
 
 <template>
@@ -100,5 +109,8 @@ const onSubmit = async () => {
                 </form>
             </b-col>
         </b-row>
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/examples/form-validation.vue" />
     </b-container>
 </template>

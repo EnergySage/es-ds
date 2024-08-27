@@ -76,6 +76,14 @@ const getErrorMessage = (validatorName) => {
     return '';
 }
 
+const { $prism } = useNuxtApp();
+const docCode = ref("");
+if ($prism) {
+    const docSource = await import("./form-field-validation.vue?raw");
+
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
 </script>
 
 <template>
@@ -101,9 +109,9 @@ const getErrorMessage = (validatorName) => {
                     <li>
                         You'll also want to provide feedback from a server response. For guidance on
                         how to do this, see the
-<!--                            <b-link to="/examples/form-validation">-->
-<!--                                Form with server error-->
-<!--                            </b-link> example.-->
+                        <nuxt-link to="/examples/form-validation">
+                            Form with server error
+                        </nuxt-link> example.
                     </li>
                 </ul>
             </b-col>
@@ -211,6 +219,47 @@ const getErrorMessage = (validatorName) => {
                         </es-button>
                     </div>
                 </form>
+            </b-col>
+        </b-row>
+        <b-row>
+            <b-col>
+                <ds-doc-source
+                    :doc-code="docCode"
+                    doc-source="es-ds-docs/pages/examples/form-field-validation.vue" />
+                <es-collapse class="mt-500">
+                    <template #title>
+                        <h2>Migration from ESDS 2.0/Nuxt 2</h2>
+                    </template>
+                    <p>
+                        Previously, these form utilities were exposed as a mixin which you added to the
+                        <code>mixins</code> of your component. Mixins are no longer recommended by Vue,
+                        and are not compatible with the composition API. Therefore, these form utilities
+                        are now provided as a
+                        <nuxt-link to="https://vuejs.org/guide/reusability/composables">composable</nuxt-link>.
+                    </p>
+                    <p>
+                        To use the composable, call <code>useEsForms</code> within your script,
+                        as shown in the documentation source. Parameters are
+                        your validation rules and the reactive state that includes your form. You will get back
+                        all the functions and reactive refs that were previously accessible on <code>this</code>
+                        as a result of using the mixin.
+                        You will also get back the Vuelidate object, now called <code>v$</code> instead of
+                        <code>$v</code> due to a restriction within Vue 3.
+                    </p>
+                    <p>
+                        If you're still using the options API, please refer to the
+                        <nuxt-link to="https://vuejs.org/guide/reusability/composables#using-composables-in-options-api">Vue documentation</nuxt-link>
+                        for using a composable with the options API.
+                    </p>
+                    <p>
+                        Note that while the API for functions in this composable have not changed from the version
+                        in the old mixin, there <b>are</b> upstream changes in Vuelidate which may require
+                        manual handling. At a minimum, <code>$v</code> is now <code>v$</code> as previously mentioned.
+                        Please refer to the
+                        <nuxt-link to="https://vuelidate-next.netlify.app/migration_guide.html">Vuelidate Migration Guide</nuxt-link>
+                        for more information.
+                    </p>
+                </es-collapse>
             </b-col>
         </b-row>
     </b-container>
