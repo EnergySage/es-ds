@@ -3,7 +3,7 @@ const model = defineModel({
     default: false,
 });
 defineOptions({
-  inheritAttrs: false
+    inheritAttrs: false
 })
 defineProps({
     id: {
