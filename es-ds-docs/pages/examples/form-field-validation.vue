@@ -39,15 +39,21 @@ const rules = {
 
 const { v$, formErrors, validateState, touchOnChange, isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(rules, state);
 
+const asyncTimeout = async (seconds = 3) => {
+    const millisecondTimeout = seconds * 1000;
+    return new Promise((resolve) => {
+        setTimeout(resolve, millisecondTimeout);
+    });
+}
+
 const fakeServerRequest = async () => {
-    const threeSecondTimeout = async (func) => setTimeout(func, 3000);
-    // eslint-disable-next-line no-console
-    await threeSecondTimeout(() => console.log('Submit Complete'));
+    await asyncTimeout();
+    console.log('Submit Complete!');
 }
 
 const onSubmit = async () => {
     startSubmit();
-    v$.value.form.$touch();
+    v$.value.form.$touch(); // is this necessary?
     const correct = await v$.value.$validate();
     if (correct) {
         await fakeServerRequest();
@@ -191,10 +197,9 @@ const getErrorMessage = (validatorName) => {
                             type="submit"
                             class="w-100 w-lg-auto"
                             :disabled="isSubmitInProgress">
-                            <span class="position-relative d-inline-block w-100">
+                            <span class="w-100">
                                 <span
-                                    v-if="isSubmitInProgress"
-                                    class="form-actions__button-spinner position-absolute d-inline-block h-100 w-100">
+                                    v-if="isSubmitInProgress">
                                     <b-spinner
                                         role="status"
                                         label="Loading" />
