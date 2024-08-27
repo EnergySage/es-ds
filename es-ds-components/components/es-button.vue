@@ -75,7 +75,6 @@ const isLink = computed(() => props.variant === 'link');
         :pt="{
             root: { class: getRootClasses }
         }"
-        v-bind="$attrs"
         :link="isLink"
         :outlined="outline">
         <slot />
