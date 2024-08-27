@@ -64,9 +64,14 @@ export function useEsForms<
         return $dirty ? !$error : null;
     }
 
-    // TODO I don't know whether this function is even necessary. I think touching already happens on change
-    const touchOnChange = (bla: string) => {
-        console.log(`Probably useless function touchOnChange ${bla}`);
+    const touchOnChange = (dotPath: string) => {
+        const validatorField = getValidatorField(dotPath);
+        if (!validatorField) {
+            return;
+        }
+        if (validatorField.$dirty) {
+            validatorField.$touch();
+        }
     };
 
     const showFormError = (
