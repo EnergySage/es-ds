@@ -44,14 +44,6 @@ if ($prism) {
         <h1>
             Checkbox
         </h1>
-        <p class="mb-500">
-            Uses
-            <ds-link
-                to="https://v3.primevue.org/checkbox/"
-                target="_blank">
-                primevue checkbox
-            </ds-link>
-        </p>
 
         <div class="my-500">
             <h2>
