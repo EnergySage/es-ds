@@ -102,9 +102,10 @@
             </h2>
             <es-form-msg
                 v-for="(event, index) in events"
+                @hidden="event.show = false"
                 :key="index"
                 :variant="event.variant"
-                :show="true"
+                :show="event.show"
                 :timeout="60">
                 {{ event.msg }}
             </es-form-msg>
@@ -193,70 +194,73 @@ const columnWidths = {
     md: ['3', '2', '7'],
 };
 
-const fileUploadProps = [{
-    name: 'uploadUrls',
-    default: 'None',
-    description: 'An array of objects with name, uploadUrl, and additionalFields (optional) as fields.',
-}, {
-    name: 'fileTypes',
-    default: 'None',
-    description: 'An array of accepted mime types for a file. If no argument passed, all file types are '
-    + 'accepted. These mime types follow the IANA Media Types.',
-}, {
-    name: 'maxFileSize',
-    default: '25',
-    description: 'Max file size in MB. This is per file. Any file that exceeds this size will not be '
-    + 'uploaded.',
-},
-{
-    name: 'collapsed',
-    default: 'false',
-    description: 'In desktop view, determines whether the upload box is horizontally collapsed.',
-},
+const fileUploadProps = [
+    {
+        name: 'uploadUrls',
+        default: 'None',
+        description: 'An array of objects with name, uploadUrl, and additionalFields (optional) as fields.',
+    }, {
+        name: 'fileTypes',
+        default: 'None',
+        description: 'An array of accepted mime types for a file. If no argument passed, all file types are '
+        + 'accepted. These mime types follow the IANA Media Types.',
+    }, {
+        name: 'maxFileSize',
+        default: '25',
+        description: 'Max file size in MB. This is per file. Any file that exceeds this size will not be '
+        + 'uploaded.',
+    },
+    {
+        name: 'collapsed',
+        default: 'false',
+        description: 'In desktop view, determines whether the upload box is horizontally collapsed.',
+    },
 ];
 
-const fileUploadEventListeners = [{
-    name: '@fileSizeError',
-    payload: 'String',
-    description: 'If a file picked exceeds the max file size defined as a prop, this event is '
-    + 'emitted. The payload is the name of the file.',
-},
-{
-    name: '@fileIsAFolderError',
-    payload: 'String',
-    description: 'If the user tries to upload a folder.',
-},
-{
-    name: '@file',
-    payload: 'String',
-    description: 'If the file type of a file picked is not in the fileTypes array defined as a '
-    + 'prop, this event is emitted. The payload is the name of the file that was not accepted.',
-},
-{
-    name: '@readyToUpload',
-    payload: 'Array',
-    description: 'If the files picked do not exceed the max file size defined as a prop, this '
-    + 'event is emitted. The payload is an array of file objects ready to be uploaded.',
-},
-{
-    name: '@uploadSuccess',
-    payload: 'String',
-    description: 'If the upload for a given file is successful, this event is emitted. The payload is the '
-    + 'name of the file that was successfully uploaded.',
-},
-{
-    name: '@uploadFailure',
-    payload: 'Object',
-    description: 'If the upload for a given file fails, this event is emitted. The payload is an object '
-    + 'with the fields name and message.',
-},
-{
-    name: '@fileDataRead',
-    payload: 'Object',
-    description: 'Used for a file thumbnail preview. This is the callback for the FileReader onload '
-    + 'event (a file has finished being read locally into the browser as an encoded string). The payload '
-    + 'is an object with the fields name, size, type, and data.',
-}];
+const fileUploadEventListeners = [
+    {
+        name: '@fileSizeError',
+        payload: 'String',
+        description: 'If a file picked exceeds the max file size defined as a prop, this event is '
+        + 'emitted. The payload is the name of the file.',
+    },
+    {
+        name: '@fileIsAFolderError',
+        payload: 'String',
+        description: 'If the user tries to upload a folder.',
+    },
+    {
+        name: '@file',
+        payload: 'String',
+        description: 'If the file type of a file picked is not in the fileTypes array defined as a '
+        + 'prop, this event is emitted. The payload is the name of the file that was not accepted.',
+    },
+    {
+        name: '@readyToUpload',
+        payload: 'Array',
+        description: 'If the files picked do not exceed the max file size defined as a prop, this '
+        + 'event is emitted. The payload is an array of file objects ready to be uploaded.',
+    },
+    {
+        name: '@uploadSuccess',
+        payload: 'String',
+        description: 'If the upload for a given file is successful, this event is emitted. The payload is the '
+        + 'name of the file that was successfully uploaded.',
+    },
+    {
+        name: '@uploadFailure',
+        payload: 'Object',
+        description: 'If the upload for a given file fails, this event is emitted. The payload is an object '
+        + 'with the fields name and message.',
+    },
+    {
+        name: '@fileDataRead',
+        payload: 'Object',
+        description: 'Used for a file thumbnail preview. This is the callback for the FileReader onload '
+        + 'event (a file has finished being read locally into the browser as an encoded string). The payload '
+        + 'is an object with the fields name, size, type, and data.',
+    }
+];
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -278,14 +282,6 @@ let fileObjects = [];
 const uploadUrls = ref([]);
 const events = ref([]);
 
-const fileTypeError = (fileName) => {
-    events.value.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger' });
-}
-
-const fileIsAFolderError = () => {
-    events.value.push({ msg: 'fileIsAFolderError', variant: 'danger' });
-}
-
 const onSubmit = () => {
     uploadUrls.value = fileObjects.map(({ name }) => ({
         name,
@@ -293,13 +289,21 @@ const onSubmit = () => {
     }));
 }
 
-const readyToUpload = (fileUploads) => {
-    fileObjects = fileUploads;
-    events.value.push({ msg: `readyToUpload for ${fileUploads.length} file(s)`, variant: 'success' });
+const fileTypeError = (fileName) => {
+    events.value.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger', show: true });
 }
 
-const uploadSuccess= (fileName) => {
-    events.value.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success' });
+const fileIsAFolderError = () => {
+    events.value.push({ msg: 'fileIsAFolderError', variant: 'danger', show: true });
+}
+
+const readyToUpload = (fileUploads) => {
+    fileObjects = fileUploads;
+    events.value.push({ msg: `readyToUpload for ${fileUploads.length} file(s)`, variant: 'success', show: true });
+}
+
+const uploadSuccess = (fileName) => {
+    events.value.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success', show: true });
 }
 
 const uploadFailure = (fileNameAndMessage) => {
@@ -307,6 +311,7 @@ const uploadFailure = (fileNameAndMessage) => {
         msg: `uploadFailure for file: ${fileNameAndMessage.name}. Message: `
     + `${fileNameAndMessage.message}`,
         variant: 'danger',
+        show: true
     });
 }
 
@@ -314,10 +319,15 @@ const fileDataRead = (file) => {
     events.value.push({
         msg: `fileDataRead for file: ${file.name} type: ${file.type} size: ${file.size}`,
         variant: 'success',
+        show: true
     });
 }
 const fileSizeError = (fileName) => {
-    events.value.push({ msg: `fileSizeError: exceeded max file size for file ${fileName}`, variant: 'danger' });
+    events.value.push({
+        msg: `fileSizeError: exceeded max file size for file ${fileName}`,
+        variant: 'danger',
+        show: true
+    });
 }
 
 </script>
