@@ -456,6 +456,14 @@
             </div>
         </div>
 
+        <div class="my-500">
+            <h2>
+                Props
+            </h2>
+            <ds-prop-table
+                :rows="propTableRows"
+                :widths="propTableWidths" />
+        </div>
 
         <ds-doc-source
             :comp-code="compCode"
@@ -535,6 +543,39 @@ const linkExamples = ref([
         inline: true,
     },
 ]);
+
+const propTableRows = ref([
+    [
+        'inline',
+        'Boolean',
+        'false',
+        'Use only for the \'link\' variant. If true, removes the fixed padding and height from the '
+        + 'button so it can be aligned with other text next to it.',
+    ],
+    [
+        'outline',
+        'Boolean',
+        'false',
+        'If true, changes to the outline version of the specified variant.',
+    ],
+    [
+        'size',
+        'String',
+        '"md"',
+        'The size of the button: \'md\', or \'sm\'.',
+    ],
+    [
+        'variant',
+        'String',
+        '"primary"',
+        'The name of the desired button variant: \'primary\', \'dark-bg\', or \'link\'.',
+    ],
+]);
+
+const propTableWidths = ref({
+    md: ['3', '1', '3', '5'],
+    lg: ['2', '1', '1', '8'],
+});
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
