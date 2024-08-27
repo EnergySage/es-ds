@@ -21,6 +21,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/checkbox">
+                Checkbox
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/collapse">
                 Collapse
             </ds-link>
@@ -73,6 +78,11 @@
         <li>
             <ds-link to="/molecules/form-input">
                 Text input
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/checkbox">
+                Checkbox
             </ds-link>
         </li>
     </ul>
