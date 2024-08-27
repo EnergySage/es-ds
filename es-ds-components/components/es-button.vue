@@ -75,8 +75,7 @@ const isLink = computed(() => props.variant === 'link');
         :pt="{
             root: { class: getRootClasses }
         }"
-        :link="isLink"
-        :outlined="outline">
+        :link="isLink">
         <slot />
     </prime-button>
 </template>
