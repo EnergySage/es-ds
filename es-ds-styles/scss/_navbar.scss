@@ -178,7 +178,6 @@
         }
       }
 
-      // TODO: this is where the repeat happens the first time
       @include breakpoints.media-breakpoint-up($next) {
         & {
           flex-direction: row;
