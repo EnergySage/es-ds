@@ -159,12 +159,12 @@ onMounted(async () => {
                             </template>
                             <p class="mb-0">
                                 Install solar panels through this program and get $250 cash back.
-                                <button
+                                <es-button
                                     size="sm"
                                     class="mt-100 d-block"
                                     variant="dark-bg">
                                     Small button
-                                </button>
+                                </es-button>
                             </p>
                         </es-popover>
                     </div>
@@ -263,11 +263,11 @@ onMounted(async () => {
                             </template>
                             <p class="mb-0">
                                 Install solar panels through this program and get $250 cash back.
-                                <button
+                                <es-button
                                     size="sm"
                                     class="mt-100 d-block">
                                     Small button
-                                </button>
+                                </es-button>
                             </p>
                         </es-popover>
                     </div>

@@ -96,9 +96,6 @@ const popoverPt = {
     root: {
          class: `popover ${props.variant === 'light' ? 'es-popover-light':'es-popover-dark'}`,
     },
-    content: {
-        class: 'es-popover-close',
-    },
 };
 </script>
 
@@ -106,22 +103,26 @@ const popoverPt = {
     <overlay-panel ref="op" :dismissable="true" appendTo="body" :pt="popoverPt" :style="overlayPanelStyle">
         <template v-if="hasTitle">
             <!-- Title slot content -->
-            <slot name="title" />
-            <button
-                class="es-popover-close p-0 float-right custom-x-icon"
-                @click="closePanel">
-                <icon-x height="20px" width="20px" />
-            </button>
+            <h3 class="popover-header">
+                <slot name="title" />
+                <button
+                    class="es-popover-close p-0 float-right custom-x-icon"
+                    @click="closePanel">
+                    <icon-x height="20px" width="20px" />
+                </button>
+            </h3>
         </template>
         <!-- Popover Content -->
-        <div class="d-flex">
-            <slot />
-            <button
-                v-if="!hasTitle"
-                class="es-popover-close p-0 pl-50 mb-auto custom-x-icon"
-                @click="closePanel">
-                <icon-x class="custom-x-ixon" height="20px" width="20px" />
-            </button>
+        <div class="popover-body">
+            <div class="d-flex">
+                <slot />
+                <button
+                    v-if="!hasTitle"
+                    class="es-popover-close p-0 pl-50 mb-auto custom-x-icon"
+                    @click="closePanel">
+                    <icon-x class="custom-x-ixon" height="20px" width="20px" />
+                </button>
+            </div>
         </div>
     </overlay-panel>
 </template>
@@ -134,6 +135,11 @@ const popoverPt = {
         background-color: variables.$white;
         border: 1px solid variables.$white;
     }
+
+    .popover-header {
+        background-color: variables.$white;
+    }
+
     .popover-header, .popover-body, .es-popover-close {
         color: variables.$gray-900;
     }
