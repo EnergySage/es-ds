@@ -9,5 +9,5 @@ export default defineNuxtConfig({
     ],
 
     // https://nuxt.com/docs/getting-started/deployment#static-hosting
-    ssr: true,
+    ssr: true
 })
