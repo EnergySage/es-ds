@@ -70,6 +70,14 @@ const onChange = (visible: boolean) => {
     --maskbg: rgba(0, 0, 0, 0.07);
 }
 
+.modal-content {
+    max-height: 90%;
+}
+
+.modal-body {
+    overflow-y: auto;
+}
+
 .p-component-overlay {
     background-color: var(--maskbg);
     transition-duration: 0.2s;
