@@ -2,6 +2,11 @@
 const simpleModalVisible = ref(false);
 const buttonsModalVisible = ref(false);
 
+const propTableRows = [
+    ["hideFooter", "Boolean", "false", "Whether to show the modal footer."],
+    ["size", "string", "md", "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
+];
+
 const { $prism } = useNuxtApp();
 const compCode = ref("");
 const docCode = ref("");
@@ -87,6 +92,11 @@ if ($prism) {
                     <es-button class="ml-100" @click="buttonsModalVisible = false">Submit</es-button>
                 </template>
             </es-modal>
+        </div>
+
+        <div class="mb-500">
+            <h2>EsModal props</h2>
+            <ds-prop-table :rows="propTableRows" />
         </div>
 
         <ds-doc-source
