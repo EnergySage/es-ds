@@ -26,10 +26,10 @@
                 </template>
                 <template #helpText>
                     <p class="d-none d-md-inline-block mb-0 mt-200">
-                        Please upload your file as a PDF or JPG.
+                        Please upload your file as a PDF or PNG.
                     </p>
                     <p class="d-inline-block d-md-none mb-0 mt-200 font-size-sm">
-                        Please upload your file as a PDF or JPG.
+                        Please upload your file as a PDF or PNG.
                     </p>
                 </template>
             </es-file-input>
@@ -62,10 +62,10 @@
                 </template>
                 <template #helpText>
                     <p class="d-none d-md-block">
-                        Please upload your file as a PDF or JPG.
+                        Please upload your file as a PDF or PNG.
                     </p>
                     <p class="d-md-none mb-0">
-                        File types: PDF or JPG
+                        File types: PDF or PNG
                     </p>
                 </template>
             </es-file-input>
