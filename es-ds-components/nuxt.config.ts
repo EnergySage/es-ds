@@ -59,6 +59,7 @@ export default defineNuxtConfig({
                 "primevue/dialog",
                 "primevue/inputmask",
                 "primevue/inputtext",
+                "primevue/overlaypanel",
                 "primevue/panel",
                 "primevue/progressbar",
                 "primevue/radiobutton",
