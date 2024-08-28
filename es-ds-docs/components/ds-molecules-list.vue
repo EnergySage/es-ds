@@ -16,8 +16,18 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/button">
+                Button
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/card">
                 Card
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/checkbox">
+                Checkbox
             </ds-link>
         </li>
         <li>
@@ -42,7 +52,7 @@
         </li>
         <li>
             <ds-link to="/molecules/form-msg">
-                Form Message
+                Form message
             </ds-link>
         </li>
         <li>
@@ -58,11 +68,6 @@
         <li>
             <ds-link to="/molecules/radio-button">
                 Radio button
-            </ds-link>
-        </li>
-        <li>
-            <ds-link to="/molecules/button">
-                Button
             </ds-link>
         </li>
         <li>
