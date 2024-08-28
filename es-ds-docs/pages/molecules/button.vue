@@ -429,13 +429,19 @@
                     <span class="invisible">
                         Default button
                     </span>
-                    <es-spinner class="position-absolute" />
+                    <b-spinner
+                        class="position-absolute"
+                        label="Loading"
+                        role="status" />
                 </es-button>
                 <es-button>
                     <span>
                         Default button
                     </span>
-                    <es-spinner />
+                    <b-spinner
+                        class="ml-50"
+                        label="Loading"
+                        role="status" />
                 </es-button>
             </div>
             <div>
@@ -445,13 +451,19 @@
                     <span class="invisible">
                         Small button
                     </span>
-                    <es-spinner class="position-absolute" />
+                    <b-spinner
+                        class="position-absolute"
+                        label="Loading"
+                        role="status" />
                 </es-button>
                 <es-button size="sm">
                     <span>
                         Small button
                     </span>
-                    <es-spinner />
+                    <b-spinner
+                        class="ml-50"
+                        label="Loading"
+                        role="status" />
                 </es-button>
             </div>
         </div>
