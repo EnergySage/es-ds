@@ -8,7 +8,8 @@ const props = defineProps({
     },
     size: {
         type: String,
-        default: "lg",
+        default: "md",
+        validator: (val) => ["sm", "md", "lg", "xl"].includes(val),
     },
 });
 
@@ -43,10 +44,15 @@ const onChange = (visible: boolean) => {
         emit("hidden");
     }
 };
+
+const getSizeClass = computed(() => {
+    const modalSize = props.size === "" ? "modal-md" : `modal-${props.size}`;
+    return modalSize;
+});
 </script>
 
 <template>
-    <prime-dialog modal :class="`modal-${size}`" :pt="modalPt" @update:visible="onChange" dismissable-mask>
+    <prime-dialog modal :class="getSizeClass" :pt="modalPt" @update:visible="onChange" dismissable-mask>
         <template #header>
             <h5 class="modal-title h2">
                 <slot name="modal-title" />
