@@ -42,7 +42,7 @@
         </li>
         <li>
             <ds-link to="/molecules/form-msg">
-                Form Message
+                Form message
             </ds-link>
         </li>
         <li>
@@ -73,11 +73,6 @@
         <li>
             <ds-link to="/molecules/form-input">
                 Text input
-            </ds-link>
-        </li>
-        <li>
-            <ds-link to="/molecules/checkbox">
-                Checkbox
             </ds-link>
         </li>
     </ul>
