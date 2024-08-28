@@ -31,7 +31,6 @@ if ($prism) {
             <nuxt-link href="https://v3.primevue.org/dialog/" target="_blank"> primevue modal </nuxt-link>
         </p>
         <div class="my-500">
-            <!-- TODO replace buttons with EsButton -->
             <es-button class="mb-100 mb-lg-0 mr-100" @click="simpleModalVisible = true">Show simple modal</es-button>
             <es-button class="mb-100 mb-lg-0" @click="buttonsModalVisible = true">Show modal with buttons</es-button>
 
