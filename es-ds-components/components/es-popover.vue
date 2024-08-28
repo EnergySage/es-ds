@@ -11,12 +11,6 @@ const props = defineProps({
         required: false,
         default: 'focus',
     },
-    placement: {
-        type: String,
-        required: false,
-        default: 'auto',
-        validator: (val: string) => ['auto', 'top', 'bottom', 'right', 'left', 'topleft', 'topright', 'bottomleft', 'bottomright', 'lefttop', 'leftbottom', 'righttop', 'rightbottom'].includes(val),
-    },
     show: {
         type: Boolean,
         required: false,
@@ -71,29 +65,6 @@ watch(
     }
 );
 
-const overlayPanelStyle = computed(() => {
-    switch (props.placement) {
-        case 'topright':
-            return {
-                transform: 'translateX(7%) translateY(-100%)',
-            };
-        case 'bottomright':
-            return {
-                transform: 'translateX(3%) translateY(0)',
-            };
-        case 'leftbottom':
-            return {
-                transform: 'translateX(-100%) translateY(0)',
-            };
-        case 'rightbottom':
-            return {
-                transform: 'translateX(7%) translateY(-50%)',
-            }
-        default:
-            return {};
-    }
-});
-
 const popoverPt = {
     root: {
          class: `popover ${props.variant === 'light' ? 'es-popover-light':'es-popover-dark'}`,
@@ -102,7 +73,7 @@ const popoverPt = {
 </script>
 
 <template>
-    <overlay-panel ref="op" :dismissable="true" appendTo="body" :pt="popoverPt" :style="overlayPanelStyle">
+    <overlay-panel ref="op" :dismissable="true" appendTo="body" :pt="popoverPt">
         <template v-if="hasTitle">
             <!-- Title slot content -->
             <h3 class="popover-header">

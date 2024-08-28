@@ -19,16 +19,10 @@ const propTableRows = [
         'Specifies different triggers for the popover, space separated',
     ],
     [
-        'placement',
-        'String',
-        'auto',
-        'Specifies different placement options for the popover'
-    ],
-    [
         'show',
         'Boolean',
         'false',
-        'When present, it allows the popover to be visible'
+        'When true, the popover will become visible'
     ],
     [
         'variant',
@@ -40,7 +34,7 @@ const propTableRows = [
         'target',
         'String',
         'n/a',
-        'Required. Target defines the variant(dark, light), with or without title, button and the placement of the popover',
+        'Required. Defines which element makes the popover show when triggered',
     ],
 ];
 const propTableWidths = {
@@ -70,7 +64,7 @@ onMounted(async () => {
                 Extended from <nuxt-link
                     href="https://v3.primevue.org/overlaypanel/"
                     target="_blank">
-                    primevue OverlayPanel
+                    PrimeVue OverlayPanel
                 </nuxt-link>
             </p>
             <div class="my-500">
