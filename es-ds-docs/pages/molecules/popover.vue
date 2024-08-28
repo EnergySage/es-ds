@@ -14,9 +14,9 @@ const docCode = ref('');
 const propTableRows = [
     [
         'triggers',
-        '[String, Object]',
+        'String',
         'focus',
-        'Specifies different triggers for the popover',
+        'Specifies different triggers for the popover, space separated',
     ],
     [
         'placement',

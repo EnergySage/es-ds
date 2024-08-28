@@ -7,7 +7,7 @@ const props = defineProps({
         required: true,
     },
     triggers: {
-        type: [String, Object],
+        type: String,
         required: false,
         default: 'focus',
     },
@@ -42,11 +42,13 @@ const showPanel = (event: Event) => {
     }
 };
 
-
 onMounted(() => {
     const targetElement = document.getElementById(props.target);
     if (targetElement) {
-        targetElement.addEventListener(props.triggers as string, showPanel);
+        const triggers = props.triggers.split(' ').map(trigger => trigger === 'hover' ? 'mouseover' : trigger);
+        for (const trigger of triggers) {
+            targetElement.addEventListener(trigger, showPanel);
+        }
     }
 });
 
