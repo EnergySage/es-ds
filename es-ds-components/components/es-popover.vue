@@ -1,30 +1,5 @@
-
-<template>
-    <OverlayPanel ref="op" :dismissable="true" appendTo="body" :pt="popoverPt" :style="overlayPanelStyle">
-        <template v-if="hasTitle">
-            <!-- Title slot content -->
-            <slot name="title" />
-            <button
-                class="es-popover-close p-0 float-right custom-x-icon"
-                @click="closePanel">
-                <icon-x height="20px" width="20px" />
-            </button>
-        </template>
-        <!-- Popover Content -->
-        <div class="d-flex">
-            <slot />
-            <button
-                v-if="!hasTitle"
-                class="es-popover-close p-0 pl-50 mb-auto custom-x-icon"
-                @click="closePanel">
-                <icon-x class="custom-x-ixon" height="20px" width="20px" />
-            </button>
-        </div>
-    </OverlayPanel>
-</template>
 <script setup lang="ts">
 import OverlayPanel from 'primevue/overlaypanel';
-import IconX from './icon/x.vue';
 
 const props = defineProps({
     target: {
@@ -127,6 +102,29 @@ const popoverPt = {
 };
 </script>
 
+<template>
+    <overlay-panel ref="op" :dismissable="true" appendTo="body" :pt="popoverPt" :style="overlayPanelStyle">
+        <template v-if="hasTitle">
+            <!-- Title slot content -->
+            <slot name="title" />
+            <button
+                class="es-popover-close p-0 float-right custom-x-icon"
+                @click="closePanel">
+                <icon-x height="20px" width="20px" />
+            </button>
+        </template>
+        <!-- Popover Content -->
+        <div class="d-flex">
+            <slot />
+            <button
+                v-if="!hasTitle"
+                class="es-popover-close p-0 pl-50 mb-auto custom-x-icon"
+                @click="closePanel">
+                <icon-x class="custom-x-ixon" height="20px" width="20px" />
+            </button>
+        </div>
+    </overlay-panel>
+</template>
 
 <style lang="scss">
 @use "@energysage/es-ds-styles/scss/variables" as variables;

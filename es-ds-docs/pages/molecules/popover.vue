@@ -1,3 +1,64 @@
+<script setup lang="ts">
+const directives = computed(() => {  return [
+                { directive: 'topright', text: 'Top right' },
+                { directive: 'bottomright', text: 'Bottom right' },
+                { directive: 'leftbottom', text: 'Left bottom' },
+                { directive: 'rightbottom', text: 'Right bottom' },
+            ];
+        })
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+
+const propTableRows = [
+    [
+        'triggers',
+        '[String, Object]',
+        'focus',
+        'Specifies different triggers for the popover',
+    ],
+    [
+        'placement',
+        'String',
+        'auto',
+        'Specifies different placement options for the popover'
+    ],
+    [
+        'show',
+        'Boolean',
+        'false',
+        'When present, it allows the popover to be visible'
+    ],
+    [
+        'variant',
+        'String',
+        'dark',
+        'Defines variant of the popover - either dark or light'
+    ],
+     [
+        'target',
+        'String',
+        'n/a',
+        'Required. Target defines the variant(dark, light), with or without title, button and the placement of the popover',
+    ],
+];
+const propTableWidths = {
+    md: ['2','3','2','5'],
+};
+
+
+onMounted(async () => {
+  if ($prism) {
+    const compSource = await import('@energysage/es-ds-components/components/es-popover.vue?raw');
+    const docSource = await import('./popover.vue?raw');
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+  }
+});
+
+</script>
 
 <template>
     <div>
@@ -230,68 +291,6 @@
         </div>
     </div>
 </template>
-
-<script setup>
-const directives = computed(() => {  return [
-                { directive: 'topright', text: 'Top right' },
-                { directive: 'bottomright', text: 'Bottom right' },
-                { directive: 'leftbottom', text: 'Left bottom' },
-                { directive: 'rightbottom', text: 'Right bottom' },
-            ];
-        })
-
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-
-const propTableRows = [
-    [
-        'triggers',
-        '[String, Object]',
-        'focus',
-        'Specifies different triggers for the popover',
-    ],
-    [
-        'placement',
-        'String',
-        'auto',
-        'Specifies different placement options for the popover'
-    ],
-    [
-        'show',
-        'Boolean',
-        'false',
-        'When present, it allows the popover to be visible'
-    ],
-    [
-        'variant',
-        'String',
-        'dark',
-        'Defines variant of the popover - either dark or light'
-    ],
-     [
-        'target',
-        'String',
-        'n/a',
-        'Required. Target defines the variant(dark, light), with or without title, button and the placement of the popover',
-    ],
-];
-const propTableWidths = {
-    md: ['2','3','2','5'],
-};
-
-
-onMounted(async () => {
-  if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-popover.vue?raw');
-    const docSource = await import('./popover.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-  }
-});
-
-</script>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/variables" as variables;
