@@ -16,6 +16,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/button">
+                Button
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/card">
                 Card
             </ds-link>
@@ -42,7 +47,7 @@
         </li>
         <li>
             <ds-link to="/molecules/form-msg">
-                Form Message
+                Form message
             </ds-link>
         </li>
         <li>
@@ -66,11 +71,6 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/button">
-                Button
-            </ds-link>
-        </li>
-        <li>
             <ds-link to="/molecules/rating">
                 Rating
             </ds-link>
@@ -78,11 +78,6 @@
         <li>
             <ds-link to="/molecules/form-input">
                 Text input
-            </ds-link>
-        </li>
-        <li>
-            <ds-link to="/molecules/checkbox">
-                Checkbox
             </ds-link>
         </li>
     </ul>
