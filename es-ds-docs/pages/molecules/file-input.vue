@@ -86,13 +86,13 @@
                     </template>
                 </es-form-input>
                 <div class="d-flex flex-grow-1 justify-content-end mt-100">
-                    <button
+                    <es-button
                         type="submit"
                         class="w-100 w-lg-auto">
                         <span class="position-relative d-inline-block w-100">
                             Submit
                         </span>
-                    </button>
+                    </es-button>
                 </div>
             </form>
         </div>
