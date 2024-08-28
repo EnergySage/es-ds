@@ -88,14 +88,14 @@ onMounted(async () => {
                         <!-- eslint-disable vuejs-accessibility/label-has-for -->
                         <label>
                             With title
-                            <nuxt-link
+                            <a
                                 :id="`darkTitleTarget-${placement.directive}`"
-                                class="p-0 text-gray-700"
+                                class="p-0 text-gray-700 cursor-pointer-hover"
                                 tabindex="0">
                                 <IconInfo
                                     width="16px"
                                     height="16px" />
-                            </nuxt-link>
+                            </a>
                         </label>
                         <es-popover
                             :placement="placement.directive"
@@ -107,7 +107,7 @@ onMounted(async () => {
                             <p class="mb-0">
                                 Install solar panels through this program and get $250 cash back.
                                 <a
-                                    class="mt-50 d-block"
+                                    class="mt-50 d-block cursor-pointer-hover"
                                     href="https://communitysolar.energysage.com/"
                                     target="_blank">Learn more</a>
                             </p>
@@ -116,14 +116,14 @@ onMounted(async () => {
                     <div>
                         <label>
                             No title
-                            <nuxt-link
+                            <a
                                 :id="`darkNoTitleTarget-${placement.directive}`"
-                                class="p-0 text-gray-700"
+                                class="p-0 text-gray-700 cursor-pointer-hover"
                                 tabindex="0">
                                 <IconInfo
                                     width="16px"
                                     height="16px" />
-                            </nuxt-link>
+                            </a>
                         </label>
                         <es-popover
                             :placement="placement.directive"
@@ -132,7 +132,7 @@ onMounted(async () => {
                             <p class="mb-0">
                                 Install solar panels through this program and get $250 cash back.
                                 <a
-                                    class="mt-50 d-block"
+                                    class="mt-50 d-block cursor-pointer-hover"
                                     href="https://communitysolar.energysage.com/"
                                     target="_blank">Learn more</a>
                             </p>
@@ -141,14 +141,14 @@ onMounted(async () => {
                     <div>
                         <label>
                             With button
-                            <nuxt-link
+                            <a
                                 :id="`darkButtonTarget-${placement.directive}`"
-                                class="p-0 text-gray-700"
+                                class="p-0 text-gray-700 cursor-pointer-hover"
                                 tabindex="0">
                                 <IconInfo
                                     width="16px"
                                     height="16px" />
-                            </nuxt-link>
+                            </a>
                         </label>
                         <es-popover
                             :placement="placement.directive"
@@ -189,15 +189,15 @@ onMounted(async () => {
                         <!-- eslint-disable vuejs-accessibility/label-has-for -->
                         <label>
                             With title
-                            <nuxt-link
+                            <a
                                 :id="`lightTitleTarget-${placement.directive}`"
-                                class="p-0 text-gray-700"
+                                class="p-0 text-gray-700 cursor-pointer-hover"
                                 tabindex="0">
                                 <IconInfo
                                     class="text-white"
                                     width="16px"
                                     height="16px" />
-                            </nuxt-link>
+                            </a>
                         </label>
                         <es-popover
                             :placement="placement.directive"
@@ -209,7 +209,7 @@ onMounted(async () => {
                             <p class="mb-0">
                                 Install solar panels through this program and get $250 cash back.
                                 <a
-                                    class="mt-50 d-block"
+                                    class="mt-50 d-block cursor-pointer-hover"
                                     href="https://communitysolar.energysage.com/"
                                     target="_blank">Learn more</a>
                             </p>
@@ -218,15 +218,15 @@ onMounted(async () => {
                     <div>
                         <label>
                             No title
-                            <nuxt-link
+                            <a
                                 :id="`lightNoTitleTarget-${placement.directive}`"
-                                class="p-0 text-gray-700"
+                                class="p-0 text-gray-700 cursor-pointer-hover"
                                 tabindex="0">
                                 <IconInfo
                                     class="text-white"
                                     width="16px"
                                     height="16px" />
-                            </nuxt-link>
+                            </a>
                         </label>
                         <es-popover
                             :placement="placement.directive"
@@ -235,7 +235,7 @@ onMounted(async () => {
                             <p class="mb-0">
                                 Install solar panels through this program and get $250 cash back.
                                 <a
-                                    class="mt-50 d-block"
+                                    class="mt-50 d-block cursor-pointer-hover"
                                     href="https://communitysolar.energysage.com/"
                                     target="_blank">Learn more</a>
                             </p>
@@ -244,15 +244,15 @@ onMounted(async () => {
                     <div>
                         <label>
                             With button
-                            <nuxt-link
+                            <a
                                 :id="`lightButtonTarget-${placement.directive}`"
-                                class="p-0 text-gray-700"
+                                class="p-0 text-gray-700 cursor-pointer-hover"
                                 tabindex="0">
                                 <IconInfo
                                     class="text-white"
                                     width="16px"
                                     height="16px" />
-                            </nuxt-link>
+                            </a>
                         </label>
                         <es-popover
                             :placement="placement.directive"
@@ -298,5 +298,11 @@ onMounted(async () => {
 // TODO: Remove when gray scale is added to es-bs-base
 .text-gray-700 {
     color: variables.$gray-700;
+}
+
+.cursor-pointer-hover {
+    &:hover {
+        cursor: pointer;
+    }
 }
 </style>
