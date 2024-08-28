@@ -46,7 +46,7 @@ const onChange = (visible: boolean) => {
 </script>
 
 <template>
-    <prime-dialog modal :class="`modal-${size}`" :pt="modalPt" @update:visible="onChange" dismissable-mask="true">
+    <prime-dialog modal :class="`modal-${size}`" :pt="modalPt" @update:visible="onChange" dismissable-mask>
         <template #header>
             <h5 class="modal-title h2">
                 <slot name="modal-title" />
