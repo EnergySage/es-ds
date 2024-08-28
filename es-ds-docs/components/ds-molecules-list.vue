@@ -16,6 +16,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/button">
+                Button
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/card">
                 Card
             </ds-link>
@@ -61,11 +66,6 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/button">
-                Button
-            </ds-link>
-        </li>
-        <li>
             <ds-link to="/molecules/rating">
                 Rating
             </ds-link>
@@ -77,3 +77,5 @@
         </li>
     </ul>
 </template>
+<script setup>
+</script>
