@@ -48,6 +48,8 @@ export default defineNuxtConfig({
     vite: {
         optimizeDeps: {
             include: [
+                "@vuelidate/core",
+                "@vuelidate/validators",
                 "primevue/accordion",
                 "primevue/accordiontab",
                 "primevue/breadcrumb",
@@ -60,7 +62,7 @@ export default defineNuxtConfig({
                 "primevue/panel",
                 "primevue/progressbar",
                 "primevue/radiobutton",
-                "primevue/rating"
+                "primevue/rating",
             ]
         }
     }
