@@ -134,7 +134,7 @@ const popoverPt = {
         background-color: variables.$white;
         border: 1px solid variables.$white;
     }
-    .popover-header, .popover-body, .es-popover-close {
+    .es-popover-close {
         color: variables.$gray-900;
     }
 }
