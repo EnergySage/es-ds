@@ -1,12 +1,4 @@
 <script setup lang="ts">
-const directives = computed(() => {  return [
-                { directive: 'topright', text: 'Top right' },
-                { directive: 'bottomright', text: 'Bottom right' },
-                { directive: 'leftbottom', text: 'Left bottom' },
-                { directive: 'rightbottom', text: 'Right bottom' },
-            ];
-        })
-
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -15,7 +7,7 @@ const propTableRows = [
     [
         'triggers',
         'String',
-        'focus',
+        '\'focus\'',
         'Specifies different triggers for the popover, space separated',
     ],
     [
@@ -27,7 +19,7 @@ const propTableRows = [
     [
         'variant',
         'String',
-        'dark',
+        '\'dark\'',
         'Defines variant of the popover - either dark or light'
     ],
      [
@@ -71,97 +63,86 @@ onMounted(async () => {
                 <h2>
                     Dark variant
                 </h2>
-                <div
-                    v-for="placement in directives"
-                    :key="`dark-${placement.directive}`"
-                    class="py-100">
-                    <h3>
-                        {{ placement.text }}
-                    </h3>
-                    <div>
-                        <!-- eslint-disable vuejs-accessibility/label-has-for -->
-                        <label>
-                            With title
+                <div>
+                    <!-- eslint-disable vuejs-accessibility/label-has-for -->
+                    <label>
+                        With title
+                        <a
+                            id="darkTitleTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <IconInfo
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="darkTitleTarget"
+                        variant="dark">
+                        <template #title>
+                            My title
+                        </template>
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
                             <a
-                                :id="`darkTitleTarget-${placement.directive}`"
-                                class="p-0 text-gray-700 cursor-pointer-hover"
-                                tabindex="0">
-                                <IconInfo
-                                    width="16px"
-                                    height="16px" />
-                            </a>
-                        </label>
-                        <es-popover
-                            :placement="placement.directive"
-                            :target="`darkTitleTarget-${placement.directive}`"
-                            variant="dark">
-                            <template #title>
-                                My title
-                            </template>
-                            <p class="mb-0">
-                                Install solar panels through this program and get $250 cash back.
-                                <a
-                                    class="mt-50 d-block cursor-pointer-hover"
-                                    href="https://communitysolar.energysage.com/"
-                                    target="_blank">Learn more</a>
-                            </p>
-                        </es-popover>
-                    </div>
-                    <div>
-                        <label>
-                            No title
+                                class="mt-50 d-block cursor-pointer-hover"
+                                href="https://communitysolar.energysage.com/"
+                                target="_blank">Learn more</a>
+                        </p>
+                    </es-popover>
+                </div>
+                <div>
+                    <label>
+                        No title
+                        <a
+                            id="darkNoTitleTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <IconInfo
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="darkNoTitleTarget"
+                        variant="dark">
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
                             <a
-                                :id="`darkNoTitleTarget-${placement.directive}`"
-                                class="p-0 text-gray-700 cursor-pointer-hover"
-                                tabindex="0">
-                                <IconInfo
-                                    width="16px"
-                                    height="16px" />
-                            </a>
-                        </label>
-                        <es-popover
-                            :placement="placement.directive"
-                            :target="`darkNoTitleTarget-${placement.directive}`"
-                            variant="dark">
-                            <p class="mb-0">
-                                Install solar panels through this program and get $250 cash back.
-                                <a
-                                    class="mt-50 d-block cursor-pointer-hover"
-                                    href="https://communitysolar.energysage.com/"
-                                    target="_blank">Learn more</a>
-                            </p>
-                        </es-popover>
-                    </div>
-                    <div>
-                        <label>
-                            With button
-                            <a
-                                :id="`darkButtonTarget-${placement.directive}`"
-                                class="p-0 text-gray-700 cursor-pointer-hover"
-                                tabindex="0">
-                                <IconInfo
-                                    width="16px"
-                                    height="16px" />
-                            </a>
-                        </label>
-                        <es-popover
-                            :placement="placement.directive"
-                            :target="`darkButtonTarget-${placement.directive}`"
-                            variant="dark">
-                            <template #title>
-                                My title
-                            </template>
-                            <p class="mb-0">
-                                Install solar panels through this program and get $250 cash back.
-                                <es-button
-                                    size="sm"
-                                    class="mt-100 d-block"
-                                    variant="dark-bg">
-                                    Small button
-                                </es-button>
-                            </p>
-                        </es-popover>
-                    </div>
+                                class="mt-50 d-block cursor-pointer-hover"
+                                href="https://communitysolar.energysage.com/"
+                                target="_blank">Learn more</a>
+                        </p>
+                    </es-popover>
+                </div>
+                <div>
+                    <label>
+                        With button
+                        <a
+                            id="darkButtonTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <IconInfo
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="darkButtonTarget"
+                        variant="dark">
+                        <template #title>
+                            My title
+                        </template>
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
+                            <es-button
+                                size="sm"
+                                class="mt-100 d-block"
+                                variant="dark-bg">
+                                Small button
+                            </es-button>
+                        </p>
+                    </es-popover>
                 </div>
             </div>
             <div class="bg-dark-blue p-100 my-450 rounded-lg text-white">
@@ -172,99 +153,88 @@ onMounted(async () => {
                     This popover is only to be used in a wizard like userflow with a dark background. If you have
                     long content on a page; outside of a wizard, we recommend that you utilize a modal instead.
                 </p>
-                <div
-                    v-for="placement in directives"
-                    :key="`light-${placement.directive}`"
-                    class="py-100">
-                    <h3 class="text-white">
-                        {{ placement.text }}
-                    </h3>
-                    <div>
-                        <!-- eslint-disable vuejs-accessibility/label-has-for -->
-                        <label>
-                            With title
+                <div>
+                    <!-- eslint-disable vuejs-accessibility/label-has-for -->
+                    <label>
+                        With title
+                        <a
+                            id="lightTitleTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <IconInfo
+                                class="text-white"
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="lightTitleTarget"
+                        variant="light">
+                        <template #title>
+                            My title
+                        </template>
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
                             <a
-                                :id="`lightTitleTarget-${placement.directive}`"
-                                class="p-0 text-gray-700 cursor-pointer-hover"
-                                tabindex="0">
-                                <IconInfo
-                                    class="text-white"
-                                    width="16px"
-                                    height="16px" />
-                            </a>
-                        </label>
-                        <es-popover
-                            :placement="placement.directive"
-                            :target="`lightTitleTarget-${placement.directive}`"
-                            variant="light">
-                            <template #title>
-                                My title
-                            </template>
-                            <p class="mb-0">
-                                Install solar panels through this program and get $250 cash back.
-                                <a
-                                    class="mt-50 d-block cursor-pointer-hover"
-                                    href="https://communitysolar.energysage.com/"
-                                    target="_blank">Learn more</a>
-                            </p>
-                        </es-popover>
-                    </div>
-                    <div>
-                        <label>
-                            No title
+                                class="mt-50 d-block cursor-pointer-hover"
+                                href="https://communitysolar.energysage.com/"
+                                target="_blank">Learn more</a>
+                        </p>
+                    </es-popover>
+                </div>
+                <div>
+                    <label>
+                        No title
+                        <a
+                            id="lightNoTitleTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <IconInfo
+                                class="text-white"
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="lightNoTitleTarget"
+                        variant="light">
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
                             <a
-                                :id="`lightNoTitleTarget-${placement.directive}`"
-                                class="p-0 text-gray-700 cursor-pointer-hover"
-                                tabindex="0">
-                                <IconInfo
-                                    class="text-white"
-                                    width="16px"
-                                    height="16px" />
-                            </a>
-                        </label>
-                        <es-popover
-                            :placement="placement.directive"
-                            :target="`lightNoTitleTarget-${placement.directive}`"
-                            variant="light">
-                            <p class="mb-0">
-                                Install solar panels through this program and get $250 cash back.
-                                <a
-                                    class="mt-50 d-block cursor-pointer-hover"
-                                    href="https://communitysolar.energysage.com/"
-                                    target="_blank">Learn more</a>
-                            </p>
-                        </es-popover>
-                    </div>
-                    <div>
-                        <label>
-                            With button
-                            <a
-                                :id="`lightButtonTarget-${placement.directive}`"
-                                class="p-0 text-gray-700 cursor-pointer-hover"
-                                tabindex="0">
-                                <IconInfo
-                                    class="text-white"
-                                    width="16px"
-                                    height="16px" />
-                            </a>
-                        </label>
-                        <es-popover
-                            :placement="placement.directive"
-                            :target="`lightButtonTarget-${placement.directive}`"
-                            variant="light">
-                            <template #title>
-                                My title
-                            </template>
-                            <p class="mb-0">
-                                Install solar panels through this program and get $250 cash back.
-                                <es-button
-                                    size="sm"
-                                    class="mt-100 d-block">
-                                    Small button
-                                </es-button>
-                            </p>
-                        </es-popover>
-                    </div>
+                                class="mt-50 d-block cursor-pointer-hover"
+                                href="https://communitysolar.energysage.com/"
+                                target="_blank">Learn more</a>
+                        </p>
+                    </es-popover>
+                </div>
+                <div>
+                    <label>
+                        With button
+                        <a
+                            id="lightButtonTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <IconInfo
+                                class="text-white"
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="lightButtonTarget"
+                        variant="light">
+                        <template #title>
+                            My title
+                        </template>
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
+                            <es-button
+                                size="sm"
+                                class="mt-100 d-block">
+                                Small button
+                            </es-button>
+                        </p>
+                    </es-popover>
                 </div>
             </div>
         <div class="mb-500">
