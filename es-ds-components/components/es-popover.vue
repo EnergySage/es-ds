@@ -66,14 +66,16 @@ watch(
 );
 
 const popoverPt = {
-    root: {
-         class: `popover ${props.variant === 'light' ? 'es-popover-light':'es-popover-dark'}`,
+    content: {
+         class: `popover b-popover bs-popover-bottom ${props.variant === 'light' ? 'es-popover-light': 'es-popover-dark'}`,
     },
 };
 </script>
 
 <template>
     <overlay-panel ref="op" :dismissable="true" appendTo="body" :pt="popoverPt">
+        <div class="arrow">
+        </div>
         <template v-if="hasTitle">
             <!-- Title slot content -->
             <h3 class="popover-header">
@@ -129,6 +131,10 @@ const popoverPt = {
 
 .es-popover-close {
     border: none;
+}
+
+.popover {
+    width: max-content;
 }
 </style>
 
