@@ -54,21 +54,21 @@ if ($prism) {
             </h2>
 
             <!-- TODO replace buttons with es-button after that's available -->
-            <button
+            <es-button
                 class="mb-100 mb-sm-0 mr-100"
                 @click="showSimpleSuccess = true">
                 Show success
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="mb-100 mb-sm-0 mr-100"
                 @click="showSimpleError = true">
                 Show error
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="mb-100 mb-sm-0"
                 @click="showSimpleInfo = true">
                 Show info
-            </button>
+            </es-button>
 
             <es-form-msg
                 class="my-100"
@@ -110,21 +110,21 @@ if ($prism) {
                 With header and body
             </h2>
 
-            <button
+            <es-button
                 class="mb-100 mb-sm-0  mr-100"
                 @click="showHeaderSuccess = true">
                 Show success
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="mb-100 mb-sm-0  mr-100"
                 @click="showHeaderError = true">
                 Show error
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="mb-100 mb-sm-0 "
                 @click="showHeaderInfo = true">
                 Show info
-            </button>
+            </es-button>
 
             <es-form-msg
                 class="my-100"

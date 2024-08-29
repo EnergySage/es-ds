@@ -46,8 +46,18 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/file-input">
+                File input
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/form-msg">
                 Form message
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/modal">
+                Modal
             </ds-link>
         </li>
         <li>
@@ -73,6 +83,11 @@
         <li>
             <ds-link to="/molecules/rating">
                 Rating
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/tabs">
+                Tabs
             </ds-link>
         </li>
         <li>

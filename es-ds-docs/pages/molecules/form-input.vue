@@ -241,9 +241,9 @@
                             ZIP code
                         </template>
                     </es-form-input>
-                    <button class="ml-lg-50 w-100 w-lg-auto">
+                    <es-button class="ml-lg-50 w-100 w-lg-auto">
                         Submit
-                    </button>
+                    </es-button>
                 </b-col>
             </b-row>
         </div>

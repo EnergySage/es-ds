@@ -32,8 +32,8 @@
             <es-progress :value="value" />
         </div>
         <div class="mb-100">
-            <button
-                class="px-50"
+            <es-button
+                class="px-50 mr-50"
                 size="sm"
                 @click="value = Math.max(value - 20, 0)">
                 <icon-minus
@@ -41,8 +41,8 @@
                     width="16px" />
                 <span class="sr-only">Remove</span>
                 20%
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="px-50"
                 size="sm"
                 @click="value = Math.min(value + 20, 100)">
@@ -51,7 +51,7 @@
                     width="16px" />
                 <span class="sr-only">Add</span>
                 20%
-            </button>
+            </es-button>
         </div>
         <p class="mb-300">
             value: {{ value }}
