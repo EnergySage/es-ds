@@ -31,9 +31,7 @@ const closePanel = () => {
     op.value?.hide();
 };
 const showPanel = (event: Event) => {
-    if (op.value) {
-        op.value.toggle(event);
-    }
+    op.value?.show(event);
 };
 
 onMounted(() => {
