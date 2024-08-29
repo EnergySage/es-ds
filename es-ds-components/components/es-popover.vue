@@ -66,8 +66,8 @@ watch(
 );
 
 const popoverPt = {
-    content: {
-         class: `popover b-popover bs-popover-bottom ${props.variant === 'light' ? 'es-popover-light': 'es-popover-dark'}`,
+    root: {
+         class: `popover b-popover ${props.variant === 'light' ? 'es-popover-light': 'es-popover-dark'}`,
     },
 };
 </script>
@@ -81,7 +81,7 @@ const popoverPt = {
             <h3 class="popover-header">
                 <slot name="title" />
                 <button
-                    class="es-popover-close p-0 float-right custom-x-icon"
+                    class="es-popover-close p-0 float-right bg-transparent"
                     @click="closePanel">
                     <icon-x height="20px" width="20px" />
                 </button>
@@ -93,48 +93,12 @@ const popoverPt = {
                 <slot />
                 <button
                     v-if="!hasTitle"
-                    class="es-popover-close p-0 pl-50 mb-auto custom-x-icon"
+                    class="es-popover-close p-0 pl-50 mb-auto bg-transparent"
                     @click="closePanel">
-                    <icon-x class="custom-x-ixon" height="20px" width="20px" />
+                    <icon-x height="20px" width="20px" />
                 </button>
             </div>
         </div>
     </overlay-panel>
 </template>
-
-<style lang="scss">
-@use "@energysage/es-ds-styles/scss/variables" as variables;
-/* Styles copied from the old implementation to maintain consistency */
-.es-popover-light {
-    &.popover {
-        background-color: variables.$white;
-        border: 1px solid variables.$white;
-    }
-
-    .popover-header {
-        background-color: variables.$white;
-    }
-
-    .popover-header, .popover-body, .es-popover-close {
-        color: variables.$gray-900;
-    }
-}
-.es-popover-dark {
-    .es-popover-close, a {
-        color: variables.$white;
-    }
-}
-
-.custom-x-icon {
-    background-color: transparent;
-}
-
-.es-popover-close {
-    border: none;
-}
-
-.popover {
-    width: max-content;
-}
-</style>
 

@@ -12,6 +12,7 @@
   left: 0;
   z-index: variables.$zindex-popover;
   display: block;
+  width: max-content;
   max-width: variables.$popover-max-width;
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
@@ -19,12 +20,37 @@
   @include rfs.font-size(variables.$popover-font-size);
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;
-  background-color: variables.$popover-bg;
   background-clip: padding-box;
-  border: variables.$popover-border-width solid variables.$popover-border-color;
+
   @include border-radius.border-radius(variables.$popover-border-radius);
   box-shadow: variables.$popover-box-shadow;
   padding: variables.$popover-header-padding-y variables.$popover-header-padding-x;
+
+  .es-popover-close {
+    border: none;
+  }
+
+  &.es-popover-light {
+    background-color: variables.$white;
+    border: variables.$popover-border-width solid variables.$white;
+
+    .popover-header {
+      background-color: variables.$white;
+    }
+
+    .popover-header, .popover-body, .es-popover-close {
+      color: variables.$gray-900;
+    }
+  }
+
+  &.es-popover-dark {
+    background-color: variables.$popover-bg;
+    border: variables.$popover-border-width solid variables.$popover-border-color;
+
+    .es-popover-close, a {
+      color: variables.$white;
+    }
+  }
 
   .arrow {
     position: absolute;
@@ -42,122 +68,73 @@
       border-style: solid;
     }
   }
-}
 
-.bs-popover-top {
-  margin-bottom: variables.$popover-arrow-height;
+  &[data-p-overlaypanel-flipped="true"] {
+    margin-bottom: variables.$popover-arrow-height;
 
-  > .arrow {
-    bottom: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 0% 95%);
+    .arrow {
+      bottom: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
+      clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 0% 95%);
 
-    &::before {
-      bottom: 0;
-      border-width: variables.$popover-arrow-height (variables.$popover-arrow-width * .5) 0;
-      border-top-color: variables.$popover-arrow-outer-color;
+      &::before {
+        bottom: 0;
+        border-width: variables.$popover-arrow-height (variables.$popover-arrow-width * .5) 0;
+        border-top-color: variables.$popover-arrow-outer-color;
+      }
+
+      &::after {
+        bottom: variables.$popover-border-width;
+        border-width: variables.$popover-arrow-height (variables.$popover-arrow-width * .5) 0;
+      }
     }
 
-    &::after {
-      bottom: variables.$popover-border-width;
-      border-width: variables.$popover-arrow-height (variables.$popover-arrow-width * .5) 0;
+    &.es-popover-dark .arrow::after {
       border-top-color: variables.$popover-arrow-color;
     }
-  }
-}
 
-.bs-popover-right {
-  margin-left: variables.$popover-arrow-height;
-
-  > .arrow {
-    left: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
-    width: variables.$popover-arrow-height;
-    height: variables.$popover-arrow-width;
-    margin: (variables.$popover-border-radius * .8) 0 0 0; // make sure the arrow does not touch the popover's rounded corners
-    clip-path: polygon(5% 20%, 100% 0%, 100% 100%, 5% 100%);
-
-    &::before {
-      left: 0;
-      border-width: (variables.$popover-arrow-width * .5) variables.$popover-arrow-height (variables.$popover-arrow-width * .5) 0;
-      border-right-color: variables.$popover-arrow-outer-color;
-    }
-
-    &::after {
-      left: variables.$popover-border-width;
-      border-width: (variables.$popover-arrow-width * .5) variables.$popover-arrow-height (variables.$popover-arrow-width * .5) 0;
-      border-right-color: variables.$popover-arrow-color;
+    &.es-popover-light .arrow::after {
+      border-top-color: variables.$white;
     }
   }
-}
 
-.bs-popover-bottom {
-  margin-top: variables.$popover-arrow-height;
+  &:not([data-p-overlaypanel-flipped="true"]) {
+    margin-top: variables.$popover-arrow-height;
 
-  > .arrow {
-    top: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
-    clip-path: polygon(0% 100%, 0% 5%, 100% 0%, 100% 100%);
+    .arrow {
+      top: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
+      clip-path: polygon(0% 100%, 0% 5%, 100% 0%, 100% 100%);
 
-    &::before {
-      top: 0;
-      border-width: 0 (variables.$popover-arrow-width * .5) variables.$popover-arrow-height (variables.$popover-arrow-width * .5);
-      border-bottom-color: variables.$popover-arrow-outer-color;
+      &::before {
+        top: 0;
+        border-width: 0 (variables.$popover-arrow-width * .5) variables.$popover-arrow-height (variables.$popover-arrow-width * .5);
+        border-bottom-color: variables.$popover-arrow-outer-color;
+      }
+
+      &::after {
+        top: variables.$popover-border-width;
+        border-width: 0 (variables.$popover-arrow-width * .5) variables.$popover-arrow-height (variables.$popover-arrow-width * .5);
+      }
     }
 
-    &::after {
-      top: variables.$popover-border-width;
-      border-width: 0 (variables.$popover-arrow-width * .5) variables.$popover-arrow-height (variables.$popover-arrow-width * .5);
+    &.es-popover-dark .arrow::after {
       border-bottom-color: variables.$popover-arrow-color;
     }
-  }
 
-  // This will remove the popover-header's border just below the arrow
-  .popover-header::before {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    display: block;
-    width: variables.$popover-arrow-width;
-    margin-left: -(variables.$popover-arrow-width) * .5;
-    content: "";
-    border-bottom: variables.$popover-border-width solid variables.$popover-header-bg;
-  }
-}
-
-.bs-popover-left {
-  margin-right: variables.$popover-arrow-height;
-
-  > .arrow {
-    right: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
-    width: variables.$popover-arrow-height;
-    height: variables.$popover-arrow-width;
-    margin: (variables.$popover-border-radius * .8) 0 0 0; // make sure the arrow does not touch the popover's rounded corners
-    clip-path: polygon(0% 0%, 95% 0%, 95% 100%, 0% 100%);
-
-    &::before {
-      right: 0;
-      border-width: (variables.$popover-arrow-width * .5) 0 (variables.$popover-arrow-width * .5) variables.$popover-arrow-height;
-      border-left-color: variables.$popover-arrow-outer-color;
+    &.es-popover-light .arrow::after {
+      border-bottom-color: variables.$white;
     }
 
-    &::after {
-      right: variables.$popover-border-width;
-      border-width: (variables.$popover-arrow-width * .5) 0 (variables.$popover-arrow-width * .5) variables.$popover-arrow-height;
-      border-left-color: variables.$popover-arrow-color;
+    // This will remove the popover-header's border just below the arrow
+    .popover-header::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      display: block;
+      width: variables.$popover-arrow-width;
+      margin-left: -(variables.$popover-arrow-width) * .5;
+      content: "";
+      border-bottom: variables.$popover-border-width solid variables.$popover-header-bg;
     }
-  }
-}
-
-.bs-popover-auto {
-  &[x-placement^="top"] {
-    @extend .bs-popover-top;
-  }
-  &[x-placement^="right"] {
-    @extend .bs-popover-right;
-  }
-  &[x-placement^="bottom"] {
-    @extend .bs-popover-bottom;
-  }
-  &[x-placement^="left"] {
-    @extend .bs-popover-left;
   }
 }
 
