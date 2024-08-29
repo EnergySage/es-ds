@@ -30,8 +30,7 @@
 
   &:focus {
     z-index: 3;
-    outline: variables.$pagination-focus-outline;
-    box-shadow: variables.$pagination-focus-box-shadow;
+    border: 2px;
   }
 
   &:disabled {

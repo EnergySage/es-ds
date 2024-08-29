@@ -5,6 +5,7 @@
         :totalRecords="totalRows"
         template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
         currentPageReportTemplate="{currentPage} of {totalPages}"
+        :aria-controls="listId"
         :pt="passThrough">
         <template #prevpagelinkicon><IconChevronLeft /></template>
         <template #nextpagelinkicon><IconChevronRight /></template>
