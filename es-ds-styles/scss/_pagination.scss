@@ -9,22 +9,23 @@
   @include border-radius.border-radius();
 }
 
-.page-link {
-  position: relative;
-  display: block;
+.paginator-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include border-radius.border-radius(variables.$pagination-border-radius);
+  width: 3rem;
+  height: 3rem;
   padding: variables.$pagination-padding-y variables.$pagination-padding-x;
   margin-left: -(variables.$pagination-border-width);
   line-height: variables.$pagination-line-height;
-  font-weight: variables.$font-weight-semibold;
   color: variables.$pagination-color;
   text-decoration: if(variables.$link-decoration == none, null, none);
   background-color: variables.$pagination-bg;
-  border: variables.$pagination-border-width solid variables.$pagination-border-color;
+  border: 0;
 
-  &:hover {
-    z-index: 2;
-    color: variables.$pagination-hover-color;
-    text-decoration: underline;
+  &:not(.disabled):hover {
+    background-color: variables.$gray-50;
   }
 
   &:focus {
@@ -32,48 +33,24 @@
     outline: variables.$pagination-focus-outline;
     box-shadow: variables.$pagination-focus-box-shadow;
   }
-}
 
-.page-item {
-  &:first-child {
-    .page-link {
-      margin-left: 0;
-      @include border-radius.border-left-radius(variables.$pagination-border-radius);
-    }
-  }
-  &:last-child {
-    .page-link {
-      @include border-radius.border-right-radius(variables.$pagination-border-radius);
-    }
-  }
-
-  &.active .page-link {
-    z-index: 3;
-    color: variables.$pagination-active-color;
-    background-color: variables.$pagination-active-bg;
-    border-color: variables.$pagination-active-border-color;
-    pointer-events: none;
-  }
-
-  &.disabled .page-link {
+  &:disabled {
     color: variables.$pagination-disabled-color;
     pointer-events: none;
     // Opinionated: remove the "hand" cursor set previously for .page-link
     cursor: auto;
+    // TODO: this seems removable... note in PR and scan for other removable styles?
     background-color: variables.$pagination-disabled-bg;
     border-color: variables.$pagination-disabled-border-color;
   }
 }
 
-
-//
-// Sizing
-//
-
-.pagination-lg {
-  @include pagination.pagination-size(variables.$pagination-padding-y-lg, variables.$pagination-padding-x-lg, variables.$font-size-lg, variables.$line-height-lg, variables.$pagination-border-radius-lg);
-}
-
-.pagination-sm {
-  @include pagination.pagination-size(variables.$pagination-padding-y-sm, variables.$pagination-padding-x-sm, variables.$font-size-sm, variables.$line-height-sm, variables.$pagination-border-radius-sm);
+.current-page-report {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: variables.$font-size-300;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$pagination-color;
+  text-align: center;
 }
