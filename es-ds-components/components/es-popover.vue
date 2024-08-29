@@ -64,16 +64,14 @@ watch(
         }
     }
 );
-
-const popoverPt = {
-    root: {
-         class: `popover b-popover ${props.variant === 'light' ? 'es-popover-light': 'es-popover-dark'}`,
-    },
-};
 </script>
 
 <template>
-    <overlay-panel ref="op" :dismissable="true" appendTo="body" :pt="popoverPt">
+    <overlay-panel ref="op" :dismissable="true" appendTo="body" :pt="{
+        root: {
+             class: `popover b-popover ${props.variant === 'light' ? 'es-popover-light': 'es-popover-dark'}`,
+        },
+    }">
         <div class="arrow">
         </div>
         <template v-if="hasTitle">
