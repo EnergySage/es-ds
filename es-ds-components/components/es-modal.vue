@@ -32,9 +32,11 @@ const modalPt = {
     footer: {
         class: "modal-footer",
     },
+    /* TODO implement mask as scoped style? */
     mask: {
         style: "background-color: rgba(0, 0, 0, 0.075);",
     },
+    /* TODO implement transition similiar to modal in v2 Design System */
 };
 
 const emit = defineEmits(["hidden"]);
