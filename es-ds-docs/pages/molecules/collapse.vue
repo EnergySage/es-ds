@@ -56,13 +56,9 @@
                 contents! If you click the collapse itself, the "visible" prop will no longer be honored.
             </p>
             <form class="mx-500 mt-500">
-                <label for="suggestedVisibleInput">
-                    <input
-                        id="suggestedVisibleInput"
-                        v-model="suggestedVisible"
-                        type="checkbox">
+                <es-form-checkbox v-model="suggestedVisible" id="suggestedVisibleInput">
                     Toggle collapse programmatically (will be honored until a manual expand or collapse)
-                </label>
+                </es-form-checkbox>
             </form>
             <div class="p-500">
                 <es-collapse
@@ -98,13 +94,9 @@
                 itself, the "visible" prop will continue to be honored.
             </p>
             <form class="mx-500 mt-500">
-                <label for="visible">
-                    <input
-                        id="visible"
-                        v-model="visible"
-                        type="checkbox">
+                <es-form-checkbox v-model="visible" id="visible">
                     Toggle collapse programmatically (will always be honored)
-                </label>
+                </es-form-checkbox>
             </form>
             <div class="p-500">
                 <es-collapse

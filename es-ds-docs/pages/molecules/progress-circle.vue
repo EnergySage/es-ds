@@ -15,17 +15,17 @@
             :value="value"
             height="100px" />
         <div class="d-flex flex-nowrap mb-400">
-            <button
+            <es-button
                 size="sm"
                 class="mr-50"
                 @click="value = value - 10">
                 -10%
-            </button>
-            <button
+            </es-button>
+            <es-button
                 size="sm"
                 @click="value = value + 10">
                 +10%
-            </button>
+            </es-button>
         </div>
         <div class="mb-500">
             <h2>
