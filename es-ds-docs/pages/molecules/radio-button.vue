@@ -15,47 +15,47 @@
             <h2>
                 Inline
             </h2>
-            <p>
-                Please choose your favorite fruit.
-            </p>
-            <es-radio-button
-                v-for="fruit in fruits"
-                v-model="selectedFruit"
-                :display-name="fruit.name"
-                group-name="inline"
-                :value="fruit.key"
-                inline />
+            <fieldset>
+                <legend class="font-size-100">Please choose your favorite fruit.</legend>
+                <es-radio-button
+                    v-for="fruit in fruits"
+                    v-model="selectedFruit"
+                    :display-name="fruit.name"
+                    group-name="inline"
+                    :value="fruit.key"
+                    inline />
+            </fieldset>
         </div>
 
         <div class="my-500">
             <h2>
                 Stacked
             </h2>
-            <p>
-                Please choose your favorite fruit.
-            </p>
-            <es-radio-button
-                v-for="fruit in fruits"
-                v-model="selectedFruit"
-                :display-name="fruit.name"
-                group-name="stacked"
-                :value="fruit.key" />
+            <fieldset>
+                <legend class="font-size-100">Please choose your favorite fruit.</legend>
+                <es-radio-button
+                    v-for="fruit in fruits"
+                    v-model="selectedFruit"
+                    :display-name="fruit.name"
+                    group-name="stacked"
+                    :value="fruit.key" />
+            </fieldset>
         </div>
 
         <div class="my-500">
             <h2>
                 Disabled
             </h2>
-            <p>
-                Please choose your favorite fruit.
-            </p>
-            <es-radio-button
-                v-for="fruit in fruits"
-                v-model="selectedFruit"
-                :display-name="fruit.name"
-                group-name="disabled"
-                :value="fruit.key"
-                disabled />
+            <fieldset>
+                <legend class="font-size-100">Please choose your favorite fruit.</legend>
+                <es-radio-button
+                    v-for="fruit in fruits"
+                    v-model="selectedFruit"
+                    :display-name="fruit.name"
+                    group-name="disabled"
+                    :value="fruit.key"
+                    disabled />
+            </fieldset>
         </div>
 
         <div class="mb-500">
