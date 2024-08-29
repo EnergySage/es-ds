@@ -26,6 +26,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/carousel">
+                Carousel
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/checkbox">
                 Checkbox
             </ds-link>
