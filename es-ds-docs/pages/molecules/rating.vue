@@ -7,7 +7,7 @@
             Extended from <nuxt-link
                 href="https://v3.primevue.org/rating/"
                 target="_blank">
-                PrimveVue Rating
+                PrimeVue Rating
         </nuxt-link>
         </p>
         <div class="my-500">
@@ -15,7 +15,7 @@
                 Form Input
             </h2>
             <es-rating
-                :read-only="false" 
+                :read-only="false"
                 @change="changeEvent"
                />
             <h2 class="mt-500">
