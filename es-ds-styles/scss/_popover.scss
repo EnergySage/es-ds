@@ -162,3 +162,13 @@
 .popover-body {
   color: variables.$popover-body-color;
 }
+
+.es-popover-enter-active,
+.es-popover-leave-active {
+    transition: opacity 0.15s ease;
+}
+
+.es-popover-enter-from,
+.es-popover-leave-to {
+    opacity: 0;
+}

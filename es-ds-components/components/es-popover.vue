@@ -70,10 +70,10 @@ watch(
              class: `popover b-popover ${props.variant === 'light' ? 'es-popover-light': 'es-popover-dark'}`,
         },
         transition: {
-            enterFromClass: 'v-enter-from',
-            enterActiveClass: 'v-enter-active',
-            leaveActiveClass: 'v-leave-active',
-            leaveToClass: 'v-leave-to',
+            enterFromClass: 'es-popover-enter-from',
+            enterActiveClass: 'es-popover-enter-active',
+            leaveActiveClass: 'es-popover-leave-active',
+            leaveToClass: 'es-popover-leave-to',
         },
     }">
         <div class="arrow">
@@ -103,15 +103,3 @@ watch(
         </div>
     </overlay-panel>
 </template>
-
-<style lang="scss">
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 0.15s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-}
-</style>
