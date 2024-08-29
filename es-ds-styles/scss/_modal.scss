@@ -240,7 +240,15 @@
     box-shadow: variables.$modal-content-box-shadow-sm-up;
   }
 
-  .modal-sm { max-width: variables.$modal-sm; }
+  .modal-sm {
+    max-width: variables.$modal-sm;
+  }
+}
+
+@include breakpoints.media-breakpoint-up(md) {
+  .modal-md {
+    max-width: variables.$modal-md;
+  }
 }
 
 @include breakpoints.media-breakpoint-up(lg) {

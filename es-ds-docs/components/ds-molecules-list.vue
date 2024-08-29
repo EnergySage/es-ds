@@ -56,6 +56,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/modal">
+                Modal
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/progress">
                 Progress
             </ds-link>
