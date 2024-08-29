@@ -69,6 +69,12 @@ watch(
         root: {
              class: `popover b-popover ${props.variant === 'light' ? 'es-popover-light': 'es-popover-dark'}`,
         },
+        transition: {
+            enterFromClass: 'v-enter-from',
+            enterActiveClass: 'v-enter-active',
+            leaveActiveClass: 'v-leave-active',
+            leaveToClass: 'v-leave-to',
+        },
     }">
         <div class="arrow">
         </div>
@@ -98,3 +104,14 @@ watch(
     </overlay-panel>
 </template>
 
+<style lang="scss">
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.15s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+</style>
