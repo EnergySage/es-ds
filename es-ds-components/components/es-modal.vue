@@ -32,6 +32,9 @@ const modalPt = {
     footer: {
         class: "modal-footer",
     },
+    mask: {
+        style: "background-color: rgba(0, 0, 0, 0.075);",
+    },
 };
 
 const emit = defineEmits(["hidden"]);
