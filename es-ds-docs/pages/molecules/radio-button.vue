@@ -15,8 +15,10 @@
             <h2>
                 Inline
             </h2>
-            <fieldset>
-                <legend class="font-size-100">Please choose your favorite fruit.</legend>
+            <es-radio-button-group
+                id="idFruits"
+                label="Please choose your favorite fruit."
+            >
                 <es-radio-button
                     v-for="fruit in fruits"
                     v-model="selectedFruit"
@@ -24,7 +26,7 @@
                     group-name="inline"
                     :value="fruit.key"
                     inline />
-            </fieldset>
+            </es-radio-button-group>
         </div>
 
         <div class="my-500">
