@@ -46,6 +46,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/file-input">
+                File input
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/form-msg">
                 Form message
             </ds-link>
