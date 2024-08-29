@@ -70,6 +70,7 @@
 
   &[data-p-overlaypanel-flipped="true"] {
     margin-bottom: variables.$popover-arrow-height;
+    transform: translate(-34px, -17px);
 
     .arrow {
       bottom: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
@@ -98,6 +99,7 @@
 
   &:not([data-p-overlaypanel-flipped="true"]) {
     margin-top: variables.$popover-arrow-height;
+    transform: translate(-34px, 1px);
 
     .arrow {
       top: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
