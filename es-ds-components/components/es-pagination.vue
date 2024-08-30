@@ -1,6 +1,5 @@
 <template>
-    <Paginator
-        v-bind="$attrs"
+    <paginator
         :rows="perPage"
         :totalRecords="totalRows"
         template="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
@@ -9,7 +8,7 @@
         :pt="passThrough">
         <template #prevpagelinkicon><IconChevronLeft /></template>
         <template #nextpagelinkicon><IconChevronRight /></template>
-    </Paginator>
+    </paginator>
 </template>
 
 <script setup lang="ts">
