@@ -10,9 +10,28 @@
                 PrimeVue Carousel
             </a>
         </p>
+        <h2>
+            No dots
+        </h2>
+
+        <div class="my-500">
+           <es-carousel :items="items" :dots="false"/>
+        </div>
+
+        <h2>
+            With dots
+        </h2>
 
         <div class="my-500">
            <es-carousel :items="items"/>
+        </div>
+
+        <h2>
+            With autoscroll
+        </h2>
+
+        <div class="my-500">
+           <es-carousel :items="items" autoscroll/>
         </div>
 
         <div class="mb-500">
@@ -52,10 +71,22 @@ if ($prism) {
 
 const propTableRows = [
     [
-        'name',
-        'type',
-        'default',
-        'description',
+        'autoscroll',
+        'Boolean',
+        'false',
+        'Whether to automatically scroll the carousel.',
+    ],
+    [
+        'background',
+        'Boolean',
+        'true',
+        'Whether to show the background of each item card.',
+    ],
+    [
+        'dots',
+        'Boolean',
+        'true',
+        'Whether to show the dots at the bottom of the carousel.',
     ],
 ];
 </script>
