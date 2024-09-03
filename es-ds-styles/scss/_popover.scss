@@ -70,7 +70,7 @@
 
   &[data-p-overlaypanel-flipped="true"] {
     margin-bottom: variables.$popover-arrow-height;
-    transform: translate(-(variables.$popover-arrow-width / 2), -1rem);
+    transform: translate(-(calc(variables.$popover-arrow-width / 2)), -1rem);
 
     .arrow {
       bottom: -(variables.$popover-arrow-height) - variables.$popover-border-width + 0.1rem;
@@ -94,7 +94,7 @@
 
   &:not([data-p-overlaypanel-flipped="true"]) {
     margin-top: variables.$popover-arrow-height;
-    transform: translate(-(variables.$popover-arrow-width / 2), 0);
+    transform: translate(-(calc(variables.$popover-arrow-width / 2)), 0);
 
     .arrow {
       top: -(variables.$popover-arrow-height) - variables.$popover-border-width + 0.1rem;
