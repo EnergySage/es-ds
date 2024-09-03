@@ -51,7 +51,7 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/form-msg">
+            <ds-link to="/molecules/form-message">
                 Form message
             </ds-link>
         </li>
