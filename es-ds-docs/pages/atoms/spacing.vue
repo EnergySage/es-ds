@@ -79,7 +79,6 @@
 
         <es-collapse
             id="legacy-collapse"
-            v-model="legacyCollapseVisible"
             :is-programmatic-until-user-input="false">
             <template #title>
                 <h2 class="mb-0">
@@ -167,7 +166,6 @@ const generateAlias = (key) =>  {
     return `p-${key} m-${key}`;
 };
 
-const legacyCollapseVisible = false;
 const tableEntries = computed(() => {return convertSpacerVariablesToTableEntries(sassSpacers)});
 const deprecatedSpacers = computed(() => {
     return tableEntries
