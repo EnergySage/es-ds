@@ -76,12 +76,6 @@
       bottom: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
       clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 0% 95%);
 
-      &::before {
-        bottom: 0;
-        border-width: variables.$popover-arrow-height (variables.$popover-arrow-width * .5) 0;
-        border-top-color: variables.$popover-arrow-outer-color;
-      }
-
       &::after {
         bottom: variables.$popover-border-width;
         border-width: variables.$popover-arrow-height (variables.$popover-arrow-width * .5) 0;
@@ -104,12 +98,6 @@
     .arrow {
       top: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
       clip-path: polygon(0% 100%, 0% 5%, 100% 0%, 100% 100%);
-
-      &::before {
-        top: 0;
-        border-width: 0 (variables.$popover-arrow-width * .5) variables.$popover-arrow-height (variables.$popover-arrow-width * .5);
-        border-bottom-color: variables.$popover-arrow-outer-color;
-      }
 
       &::after {
         top: variables.$popover-border-width;
