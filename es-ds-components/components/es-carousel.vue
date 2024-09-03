@@ -56,7 +56,6 @@ const props = defineProps({
 
 <template>
     <Carousel
-        ref="carousel"
         :autoplayInterval="props.autoscroll ? 3000 : 0"
         circular
         :responsiveOptions="responsiveOptions"
@@ -71,10 +70,10 @@ const props = defineProps({
             },
             indicators: {
                 class: 'd-flex justify-content-center',
-                style: 'gap: 12px;'
+                style: 'gap: 12px;',
             },
             itemsContent: {
-                style: 'overflow: hidden;',
+                class: 'w-100 overflow-hidden',
             },
             itemsContainer: {
                 class: 'd-flex',
@@ -86,10 +85,10 @@ const props = defineProps({
                 class: 'p-carousel-item m-1',
             },
             previousButton: {
-                style: 'border: unset; background: unset; color: #64748b;'
+                style: 'border: unset; background: unset; color: #64748b;',
             },
             nextButton: {
-                style: 'border: unset; background: unset; color: #64748b;'
+                style: 'border: unset; background: unset; color: #64748b;',
             },
         }">
         <template #item="slotProps">
