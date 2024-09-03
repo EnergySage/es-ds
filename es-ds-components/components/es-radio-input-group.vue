@@ -19,7 +19,6 @@ interface IProps {
     label: string;
     name?: string;
     options?: IOptions[];
-    checked?: any;
     inline?: boolean;
 }
 
@@ -29,11 +28,6 @@ withDefaults(defineProps<IProps>(), {
 
 const model = defineModel();
 
-// withDefaults(defineProps<IProps>(), {
-//     checked: null,
-// }));
-
-// v-model="model"
 </script>
 
 <template>

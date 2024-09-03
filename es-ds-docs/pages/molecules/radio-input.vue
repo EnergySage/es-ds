@@ -1,47 +1,5 @@
 <template>
     <div>
-        <h1>
-            Radio button API tests
-        </h1>
-
-        <div class="my-500">
-            <h2>Test 1 - Radio Input Group</h2>
-            <es-radio-input-group
-                id="radioGroup1"
-                label="Individual radios">
-                <es-radio-input
-                    displayName="Option A"
-                    value="A"
-                    v-model="selected"
-                    group-name="some-radios">
-                </es-radio-input>
-                <es-radio-input
-                    displayName="Option B"
-                    value="B"
-                    v-model="selected"
-                    group-name="some-radios">
-                </es-radio-input>
-            </es-radio-input-group>
-<pre>
-selected: {{ selected }}
-</pre>
-        </div>
-
-        <div class="my-500">
-            <h2>Test 2 - Grouped Radios</h2>
-            <es-radio-input-group
-                id="test2RadioGroup"
-                label="Radios using options"
-                v-model="test2Selected"
-                :options="test2Options"
-                name="test2" />
-        </div>
-<pre>
-selected: {{ test2Selected }}
-</pre>
-
-        <hr />
-
         <p class="mb-500">
             Uses <a
                 href="https://v3.primevue.org/radiobutton/"
@@ -57,7 +15,6 @@ selected: {{ test2Selected }}
             <es-radio-input-group
                 id="idFruits"
                 label="Please choose your favorite fruit."
-                v-slot="{ ariaDescribedby }"
             >
                 <es-radio-input
                     v-for="fruit in fruits"
@@ -65,7 +22,6 @@ selected: {{ test2Selected }}
                     :display-name="fruit.name"
                     group-name="inline"
                     :value="fruit.key"
-                    :aria-describedby="ariaDescribedby"
                     inline />
             </es-radio-input-group>
         </div>
@@ -74,23 +30,27 @@ selected: {{ test2Selected }}
             <h2>
                 Stacked
             </h2>
-            <fieldset>
-                <legend class="font-size-100">Please choose your favorite fruit.</legend>
+            <es-radio-input-group
+                id="idFruits2"
+                label="Please choose your favorite fruit."
+            >
                 <es-radio-input
                     v-for="fruit in fruits"
                     v-model="selectedFruit"
                     :display-name="fruit.name"
                     group-name="stacked"
                     :value="fruit.key" />
-            </fieldset>
+            </es-radio-input-group>
         </div>
 
         <div class="my-500">
             <h2>
                 Disabled
             </h2>
-            <fieldset>
-                <legend class="font-size-100">Please choose your favorite fruit.</legend>
+            <es-radio-input-group
+                id="idFruits3"
+                label="Please choose your favorite fruit."
+            >
                 <es-radio-input
                     v-for="fruit in fruits"
                     v-model="selectedFruit"
@@ -98,7 +58,21 @@ selected: {{ test2Selected }}
                     group-name="disabled"
                     :value="fruit.key"
                     disabled />
-            </fieldset>
+            </es-radio-input-group>
+        </div>
+
+        <div class="my-500">
+            <h2>Using Options Prop</h2>
+            <es-radio-input-group
+                id="test2RadioGroup"
+                label="Radios using options"
+                v-model="test2Selected"
+                :options="test2Options"
+                name="test2" />
+
+            <div>
+                selected: {{ test2Selected }}
+            </div>
         </div>
 
         <div class="mb-500">
@@ -107,6 +81,11 @@ selected: {{ test2Selected }}
             </h2>
             <ds-prop-table
                 :rows="propTableRows" />
+        </div>
+
+        <div class="mb-500">
+            <h2>EsRadioInputGroup props</h2>
+            <ds-prop-table :rows="radioInputGroupPropTableRows" />
         </div>
 
         <ds-doc-source
@@ -126,25 +105,16 @@ const fruits = ref([
     { name: 'Banana', key: 'banana' },
     { name: 'Cherry', key: 'cherry' },
 ]);
+const test2Options = [
+    { text: 'Toggle this custom radio', value: 'first' },
+    { text: 'Or toggle this other custom radio', value: 'second' },
+    { text: 'This one is Disabled', value: 'third', disabled: true },
+    { text: 'This is the 4th radio', value: { fourth: 4 } }
+];
+const test2Selected = ref('first');
 
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref("");
 
-const ariaDescribedby = ref("legend-radioGroup1");
-const selected = ref("");
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-radio-input.vue?raw');
-    const docSource = await import("./radio-input.vue?raw");
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-
+// Name, Type, Default, Description
 const propTableRows = [
     [
         'disabled',
@@ -160,7 +130,7 @@ const propTableRows = [
     ],
     [
         'v-model',
-        'String',
+        'Any',
         'n/a',
         'Required. The v-model directive binds the radio button to a data property.',
     ],
@@ -172,7 +142,7 @@ const propTableRows = [
     ],
     [
         'value',
-        'String',
+        'Any',
         'n/a',
         'Required. The value to be used by v-model.',
     ],
@@ -185,11 +155,51 @@ const propTableRows = [
     ],
 ];
 
-const test2Options = [
-    { text: 'Toggle this custom radio', value: 'first' },
-    { text: 'Or toggle this other custom radio', value: 'second' },
-    { text: 'This one is Disabled', value: 'third', disabled: true },
-    { text: 'This is the 4th radio', value: { fourth: 4 } }
+// Name, Type, Default, Description
+const radioInputGroupPropTableRows = [
+    [
+        'id',
+        'String',
+        '',
+        'Required.'
+    ],
+    [
+        'label',
+        'String',
+        '',
+        'Required. Corresponds to the legend value describing the group',
+    ],
+    [
+        'name',
+        'String',
+        '',
+        'Optional. Maps to the group name for each radio input',
+    ],
+    [
+        'options',
+        'Array',
+        '',
+        'Optional. Must provide if not using the default slot. Allows radio input values to be passed as an array.',
+    ],
+    [
+        'inline',
+        'Boolean',
+        'false',
+        'Optional. Attribute is passed down to children when using the options attribute'
+    ]
 ];
-const test2Selected = ref('first');
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref("");
+if ($prism) {
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    const compSource = await import('@energysage/es-ds-components/components/es-radio-input.vue?raw');
+    const docSource = await import("./radio-input.vue?raw");
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
 </script>

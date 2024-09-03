@@ -16,16 +16,6 @@ const props = withDefaults(defineProps<IProps>(), {
     inline: false,
     value: null,
 });
-
-// defineEmits(['update:modelValue'])
-// watch(props.value, (newVal, oldVal) => {
-//     console.log(
-// })
-// @input="$emit('update:modelValue', handleUpdate)"
-const handleUpdate = (e: any) => {
-    console.log('handleUpdate: ', e);
-};
-
 </script>
 
 <template>
