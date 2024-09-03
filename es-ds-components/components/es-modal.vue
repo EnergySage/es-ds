@@ -32,11 +32,18 @@ const modalPt = {
     footer: {
         class: "modal-footer",
     },
-    /* TODO implement mask as scoped style? */
     mask: {
-        style: "background-color: rgba(0, 0, 0, 0.075);",
+        class: 'es-modal-mask',
     },
-    /* TODO implement transition similiar to modal in v2 Design System */
+    // https://vuejs.org/guide/built-ins/transition
+    transition: {
+        enterActiveClass: 'es-modal-enter-active',
+        enterFromClass: 'es-modal-enter-from',
+        enterToClass: 'es-modal-enter-to',
+        leaveActiveClass: 'es-modal-leave-active',
+        leaveFromClass: 'es-modal-leave-from',
+        leaveToClass: 'es-modal-leave-to'
+    },
 };
 
 const emit = defineEmits(["hidden"]);

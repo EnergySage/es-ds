@@ -28,7 +28,7 @@ if ($prism) {
         <h1>Modal</h1>
         <p>
             Extended from
-            <nuxt-link href="https://v3.primevue.org/dialog/" target="_blank"> primevue modal </nuxt-link>
+            <nuxt-link href="https://v3.primevue.org/dialog/" target="_blank"> PrimeVue Modal </nuxt-link>
         </p>
         <div class="my-500">
             <es-button class="mb-100 mb-lg-0 mr-100" @click="simpleModalVisible = true">Show simple modal</es-button>
@@ -87,7 +87,7 @@ if ($prism) {
                     </p>
                 </template>
                 <template #modal-footer>
-                    <es-button @click="buttonsModalVisible = false">Cancel</es-button>
+                    <es-button @click="buttonsModalVisible = false" variant="link">Cancel</es-button>
                     <es-button class="ml-100" @click="buttonsModalVisible = false">Submit</es-button>
                 </template>
             </es-modal>
