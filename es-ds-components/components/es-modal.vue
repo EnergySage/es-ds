@@ -32,11 +32,25 @@ const modalPt = {
     footer: {
         class: "modal-footer",
     },
-    /* TODO implement mask as scoped style? */
+    /*
+        TODO: see if there's a way of getting a transition on the mask.
+        the below transition classes are put on the dialog element, which
+        is the child of the mask element, so we currently have no way of
+        animating away the mask background upon modal close; only animation
+        in on modal open is set up
+    */
     mask: {
-        style: "background-color: rgba(0, 0, 0, 0.075);",
+        class: 'es-modal-mask',
     },
-    /* TODO implement transition similiar to modal in v2 Design System */
+    // https://vuejs.org/guide/built-ins/transition
+    transition: {
+        enterActiveClass: 'es-modal-enter-active',
+        enterFromClass: 'es-modal-enter-from',
+        enterToClass: 'es-modal-enter-to',
+        leaveActiveClass: 'es-modal-leave-active',
+        leaveFromClass: 'es-modal-leave-from',
+        leaveToClass: 'es-modal-leave-to'
+    },
 };
 
 const emit = defineEmits(["hidden"]);
