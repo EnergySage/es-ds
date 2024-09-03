@@ -1,29 +1,38 @@
 @use "../../variables" as v;
 
-@keyframes es-modal-mask-enter-animation {
-  0% {
-    background-color: transparent;
-  }
-  100% {
+@media (prefers-reduced-motion) {
+  .es-modal-mask {
     background-color: rgba(0, 0, 0, 0.075);
   }
 }
 
-.es-modal-mask {
-  animation: es-modal-mask-enter-animation 150ms forwards;
-}
+@media not (prefers-reduced-motion) {
+  .es-modal-mask {
+    &:has(.es-modal-enter-active, .es-modal-leave-active) {
+      transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-.es-modal-enter-active,
-.es-modal-leave-active {
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.es-modal-enter-from,
-.es-modal-leave-to {
-  opacity: 0;
-  transform: scale(0.8);
-}
-.es-modal-enter-to,
-.es-modal-leave-from {
-  opacity: 1;
-  transform: scale(1);
+    &:has(.es-modal-enter-from, .es-modal-leave-to) {
+      background-color: transparent;
+    }
+
+    &:has(.es-modal-enter-to, .es-modal-leave-from), &:not(:has(.es-modal-enter-active, .es-modal-leave-active)) {
+      background-color: rgba(0, 0, 0, 0.075);
+    }
+  }
+
+  .es-modal-enter-active,
+  .es-modal-leave-active {
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .es-modal-enter-from,
+  .es-modal-leave-to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  .es-modal-enter-to,
+  .es-modal-leave-from {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
