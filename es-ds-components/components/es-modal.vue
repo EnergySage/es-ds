@@ -32,13 +32,6 @@ const modalPt = {
     footer: {
         class: "modal-footer",
     },
-    /*
-        TODO: see if there's a way of getting a transition on the mask.
-        the below transition classes are put on the dialog element, which
-        is the child of the mask element, so we currently have no way of
-        animating away the mask background upon modal close; only animation
-        in on modal open is set up
-    */
     mask: {
         class: 'es-modal-mask',
     },
