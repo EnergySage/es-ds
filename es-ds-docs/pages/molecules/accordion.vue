@@ -293,30 +293,30 @@ if ($prism) {
             </p>
             <div class="mb-200">
                 <!-- TODO: these are temporarily buttons rather than es-buttons, until es-button exists -->
-                <button
-                    class="mb-50"
+                <es-button
+                    class="mb-50 mr-50"
                     :disabled="programmaticExpandedId === 'programmatic-question-1'"
                     @click="programmaticExpandedId = 'programmatic-question-1'">
                     Expand first accordion
-                </button>
-                <button
-                    class="mb-50"
+                </es-button>
+                <es-button
+                    class="mb-50 mr-50"
                     :disabled="programmaticExpandedId === 'programmatic-question-2'"
                     @click="programmaticExpandedId = 'programmatic-question-2'">
                     Expand second accordion
-                </button>
-                <button
-                    class="mb-50"
+                </es-button>
+                <es-button
+                    class="mb-50 mr-50"
                     :disabled="programmaticExpandedId === 'programmatic-question-3'"
                     @click="programmaticExpandedId = 'programmatic-question-3'">
                     Expand third accordion
-                </button>
-                <button
+                </es-button>
+                <es-button
                     class="mb-50"
                     :disabled="programmaticExpandedId === 'programmatic-question-4'"
                     @click="programmaticExpandedId = 'programmatic-question-4'">
                     Expand fourth accordion
-                </button>
+                </es-button>
             </div>
             <div>
                 <div>

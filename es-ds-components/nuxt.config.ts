@@ -41,4 +41,31 @@ export default defineNuxtConfig({
         server: true,
         client: true,
     },
+
+    // Per suggestion from https://github.com/nuxt/nuxt/issues/26783#issuecomment-2058966800
+    // See also:
+    // - https://github.com/nuxt/nuxt/issues/24196#issuecomment-1853870504
+    vite: {
+        optimizeDeps: {
+            include: [
+                '@vuelidate/core',
+                '@vuelidate/validators',
+                'primevue/accordion',
+                'primevue/accordiontab',
+                'primevue/breadcrumb',
+                'primevue/button',
+                'primevue/column',
+                'primevue/datatable',
+                'primevue/dialog',
+                'primevue/inputmask',
+                'primevue/inputtext',
+                'primevue/panel',
+                'primevue/progressbar',
+                'primevue/radiobutton',
+                'primevue/rating',
+                'primevue/tabpanel',
+                'primevue/tabview',
+            ],
+        },
+    },
 });
