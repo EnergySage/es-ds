@@ -801,6 +801,10 @@ if ($prism) {
     page-break-inside: avoid;
 }
 
+.ds-icon-list svg {
+    flex-shrink: 0;
+}
+
 .ds-icon-list code {
     /* so we don't have to repeat the utility classes many times */
     color: variables.$body-color;
@@ -819,15 +823,9 @@ if ($prism) {
     }
 }
 
-@include breakpoints.media-breakpoint-up(xl) {
-    .ds-icon-list {
-        column-count: 4;
-    }
-}
-
 @include breakpoints.media-breakpoint-up(xxl) {
     .ds-icon-list {
-        column-count: 5;
+        column-count: 4;
     }
 }
 </style>

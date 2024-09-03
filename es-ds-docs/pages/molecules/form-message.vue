@@ -34,7 +34,7 @@ const docCode = ref('');
 
 if ($prism) {
     const compSource = await import('@energysage/es-ds-components/components/es-form-msg.vue?raw');
-    const docSource = await import('./form-msg.vue?raw');
+    const docSource = await import('./form-message.vue?raw');
 
     compCode.value = $prism.normalizeCode(compSource.default);
     docCode.value = $prism.normalizeCode(docSource.default);
