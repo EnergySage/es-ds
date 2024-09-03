@@ -61,6 +61,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/pagination">
+                Pagination
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/progress">
                 Progress
             </ds-link>
