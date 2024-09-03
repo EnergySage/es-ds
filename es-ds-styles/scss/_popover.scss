@@ -56,7 +56,7 @@
     display: block;
     width: variables.$popover-arrow-width;
     height: variables.$popover-arrow-height;
-    margin: 0 (variables.$popover-border-radius * 1.2); // 1.2 for centering
+    margin: 0 variables.$popover-border-radius;
 
     &::before,
     &::after {
@@ -70,11 +70,12 @@
 
   &[data-p-overlaypanel-flipped="true"] {
     margin-bottom: variables.$popover-arrow-height;
-    transform: translate(-34px, -17px);
+    transform: translate(-(variables.$popover-arrow-width / 2), -1rem);
 
     .arrow {
-      bottom: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
-      clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 0% 95%);
+      bottom: -(variables.$popover-arrow-height) - variables.$popover-border-width + 0.1rem;
+      left: 0;
+      clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
 
       &::after {
         bottom: variables.$popover-border-width;
@@ -93,11 +94,12 @@
 
   &:not([data-p-overlaypanel-flipped="true"]) {
     margin-top: variables.$popover-arrow-height;
-    transform: translate(-34px, 1px);
+    transform: translate(-(variables.$popover-arrow-width / 2), 0);
 
     .arrow {
-      top: functions.subtract(-(variables.$popover-arrow-height), variables.$popover-border-width);
-      clip-path: polygon(0% 100%, 0% 5%, 100% 0%, 100% 100%);
+      top: -(variables.$popover-arrow-height) - variables.$popover-border-width + 0.1rem;
+      left: 0;
+      clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
 
       &::after {
         top: variables.$popover-border-width;
