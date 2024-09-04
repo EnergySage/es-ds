@@ -29,7 +29,8 @@
                 "computed": "readonly",
                 "useNuxtApp": "readonly",
                 "ref": "readonly",
-                "onMounted": "readonly"
+                "onMounted": "readonly",
+                "resolveComponent": "readonly"
             }
         }
     ],

@@ -34,7 +34,8 @@
                 "computed": "readonly",
                 "ref": "readonly",
                 "useSlots": "readonly",
-                "watch": "readonly"
+                "watch": "readonly",
+                "resolveComponent": "readonly"
             }
         }
     ],

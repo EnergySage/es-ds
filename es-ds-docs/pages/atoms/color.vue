@@ -1,5 +1,3 @@
-<!-- eslint-disable @typescript-eslint/no-unused-vars -->
-<!-- eslint-disable no-unused-vars -->
 <script setup lang="ts">
 
 // with vite, sass variable exports must be defined as xyz.module.scss in order to be
@@ -76,13 +74,13 @@ const successColors = prepareColors(sassSuccessColors);
 const variants = sassVariants;
 const warningColors = prepareColors(sassWarningColors);
 
-const cyan = slice(sassCyans, ['cyan-500']);
+// const cyan = slice(sassCyans, ['cyan-500']);
 const cyanShades = slice(sassCyans, ['cyan-600', 'cyan-700', 'cyan-800']);
 const cyanTints = slice(sassCyans, ['cyan-400', 'cyan-300', 'cyan-200', 'cyan-100']);
 const orangeTints = slice(sassOranges, ['orange-400', 'orange-300', 'orange-200', 'orange-100']);
 const pinkShades = slice(sassPinks, ['pink-600', 'pink-700', 'pink-800']);
 const pinkTints = slice(sassPinks, ['pink-400', 'pink-300', 'pink-200', 'pink-100']);
-const gray = slice(sassGrays, ['gray-900']);
+// const gray = slice(sassGrays, ['gray-900']);
 const grayShades = slice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200']);
 const grayTints = slice(sassGrays, ['gray-800', 'gray-700', 'gray-600', 'gray-500']);
 const tealShades = slice(sassTeals, ['teal-600', 'teal-700', 'teal-800']);

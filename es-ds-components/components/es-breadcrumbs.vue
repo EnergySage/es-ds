@@ -30,9 +30,7 @@ const model = computed(() => {
             menu: 'breadcrumb',
             menuitem: 'breadcrumb-item'
         }">
-        <!-- eslint-disable vue/no-unused-vars -->
-        <!-- eslint-disable vue/no-template-shadow -->
-        <template #item="{ item, props }">
+        <template #item="{ item }">
             <!--
                 primevue breadcrumb doesn't support an active non-link state out of the box,
                 so we have to implement it via this slot
@@ -66,7 +64,7 @@ const model = computed(() => {
         </template>
         <template #separator>
             <span
-                aria-hidden
+                aria-hidden="true"
                 class="mx-50">/</span>
         </template>
     </breadcrumb>

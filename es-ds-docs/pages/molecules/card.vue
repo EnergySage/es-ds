@@ -2,12 +2,8 @@
 const columnWidths = {
     md: ['2', '2', '8'],
 };
-// TODO: Uncomment line when fixing commented logic on line 67
-// const modalVisible = false;
-const notify = (string) => {
-    // eslint-disable-next-line no-alert
-    alert(string);
-};
+const modalVisible = ref(false);
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -58,7 +54,7 @@ if ($prism) {
             </p>
             <es-card
                 variant="interactive"
-                @click="notify('The interactive card has been clicked.')">
+                @click="modalVisible = true">
                 <h3>
                     Card title
                 </h3>
@@ -66,9 +62,7 @@ if ($prism) {
                     Card contents
                 </p>
             </es-card>
-            <!-- TODO: Add modal component once modal is created, swap notify with
-                "modalVisible = true", and delete nofity function
-                <es-modal
+            <es-modal
                 id="button-modal"
                 hide-footer
                 :visible="modalVisible"
@@ -81,7 +75,7 @@ if ($prism) {
                         The interactive card has been clicked.
                     </p>
                 </template>
-            </es-modal> -->
+            </es-modal>
         </div>
 
         <div class="mb-500">

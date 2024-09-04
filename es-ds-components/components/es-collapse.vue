@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import Panel from 'primevue/panel';
-import { computed, ref } from 'vue';
 
 const emit = defineEmits(['toggled', 'userClick']);
-/* eslint-disable vue/require-prop-types */
-const model = defineModel();
+
+const model = defineModel<boolean>();
 const props = defineProps({
     border: {
         type: Boolean,

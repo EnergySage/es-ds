@@ -2,8 +2,7 @@
 import sassBreakpoints from '@energysage/es-ds-styles/scss/modules/breakpoints.module.scss';
 import sassMaxWidths from '@energysage/es-ds-styles/scss/modules/max-widths.module.scss';
 
-// eslint-disable-next-line quotes
-const breakpointTableLabels = [`Breakpoint`, `Max container width`];
+const breakpointTableLabels = ['Breakpoint', 'Max container width'];
 
 const breakpointTableFields = [
     // { key: 'label', label: `` },

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, resolveComponent } from 'vue';
 
 // specific workaround for getting a reference to an auto-imported but not globally registered
 // component like NuxtLink, so that it can be used in a <component :is=""> context.
@@ -10,7 +9,6 @@ const NuxtLink = resolveComponent('NuxtLink');
 const props = defineProps<{
   to: string
 }>();
-/* eslint-disable no-undef */
 const route = useRoute();
 
 const isCurrentPage = computed(() => route.path === props.to);

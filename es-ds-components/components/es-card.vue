@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, resolveComponent } from 'vue';
 // specific workaround for getting a reference to an auto-imported but not globally registered
 // component like NuxtLink, so that it can be used in a <component :is=""> context.
 // this resolves to an import statement, according to:
