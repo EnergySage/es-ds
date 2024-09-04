@@ -28,8 +28,8 @@ lint:
 
 .PHONY: format
 format:
-	npm --prefix es-ds-components run lint -- --fix
-	npm --prefix es-ds-docs run lint -- --fix
+	npm --prefix es-ds-components run format
+	npm --prefix es-ds-docs run format
 
 .PHONY: test
 test:

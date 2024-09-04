@@ -8,7 +8,10 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint ./components --ext .js,.vue,.ts",
-        "lint:fix": "npm run lint -- --fix"
+        "lint:prettier": "prettier --check .",
+        "format:prettier": "prettier --write --list-different .",
+        "format:lint": "npm run lint -- --fix",
+        "format": "npm run format:prettier && npm run format:lint"
     },
     "author": "EnergySage",
     "license": "MIT",
