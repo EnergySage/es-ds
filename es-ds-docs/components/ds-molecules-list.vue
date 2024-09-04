@@ -66,6 +66,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/popover">
+                Popover
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/progress">
                 Progress
             </ds-link>
@@ -78,11 +83,6 @@
         <li>
             <ds-link to="/molecules/radio-button">
                 Radio button
-            </ds-link>
-        </li>
-          <li>
-            <ds-link to="/molecules/popover">
-                Popover
             </ds-link>
         </li>
         <li>
@@ -102,3 +102,5 @@
         </li>
     </ul>
 </template>
+<script setup>
+</script>
