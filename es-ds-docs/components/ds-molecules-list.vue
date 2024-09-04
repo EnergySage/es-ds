@@ -86,6 +86,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/support">
+                Support
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/tabs">
                 Tabs
             </ds-link>
