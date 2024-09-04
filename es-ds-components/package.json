@@ -7,8 +7,8 @@
     "main": "./nuxt.config.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint ./components --ext .js,.vue,.ts",
-        "lint-fix": "eslint --fix ./components --ext .js,.vue,.ts"
+        "lint": "eslint .",
+        "lint-fix": "eslint --fix ."
     },
     "author": "EnergySage",
     "license": "MIT",

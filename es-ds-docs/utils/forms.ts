@@ -1,4 +1,6 @@
-import { helpers, required, minValue, maxValue, requiredIf, numeric, minLength, maxLength } from '@vuelidate/validators';
+import {
+    helpers, required, minValue, maxValue, requiredIf, numeric, minLength, maxLength,
+} from '@vuelidate/validators';
 
 // Only some vuelidate validators can be reused; others don't work well
 export const vuelidateRequired = required;
@@ -14,7 +16,9 @@ export const vuelidateHelpers = helpers;
  * @returns a function that takes a number, and returns another function which takes a string param
  * that will ultimately be what you're comparing the pattern against N times.
  */
-const matchesPatternNTimes = (pattern: RegExp) => (N = 1) => (param: string) => [...String(param).matchAll(pattern)].length >= N;
+const matchesPatternNTimes = (pattern: RegExp) => (N = 1) => (param: string) => [
+    ...String(param).matchAll(pattern),
+].length >= N;
 
 /**
  * @param { Number } number of times the resulting function will need to match
