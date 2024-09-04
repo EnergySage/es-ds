@@ -77,22 +77,34 @@
 
         <div class="mb-500">
             <h2>
-                EsRadioInput props
+                EsRadioButton props
             </h2>
             <ds-prop-table
-                :rows="propTableRows" />
+                :rows="radioButtonPropTableRows" />
         </div>
 
         <div class="mb-500">
-            <h2>EsRadioInputGroup props</h2>
-            <ds-prop-table :rows="radioInputGroupPropTableRows" />
+            <h2>EsRadioButtonGroup props</h2>
+            <ds-prop-table :rows="radioButtonGroupPropTableRows" />
         </div>
 
         <ds-doc-source
-            :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-radio-button.vue"
+            comp-title="Radio Button Component"
+            :comp-code="radioButtonComponentCode"
+            comp-source="es-ds-components/src/lib-components/es-radio-button.vue" />
+
+        <ds-doc-source
+            comp-title="Radio Button Group Component"
+            :comp-code="radioButtonGroupComponentCode"
+            comp-source="es-ds-components/src/lib-components/es-radio-button-group.vue"
+        />
+
+        <ds-doc-source
+            doc-title="Radio Button & Group Documentation"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/radio-input.vue" />
+            doc-source="es-ds-docs/pages/molecules/radio-input.vue"
+        />
+
     </div>
 </template>
 
@@ -115,7 +127,7 @@ const test2Selected = ref('first');
 
 
 // Name, Type, Default, Description
-const propTableRows = [
+const radioButtonPropTableRows = [
     [
         'disabled',
         'Boolean',
@@ -156,7 +168,7 @@ const propTableRows = [
 ];
 
 // Name, Type, Default, Description
-const radioInputGroupPropTableRows = [
+const radioButtonGroupPropTableRows = [
     [
         'id',
         'String',
@@ -190,15 +202,18 @@ const radioInputGroupPropTableRows = [
 ];
 
 const { $prism } = useNuxtApp();
-const compCode = ref('');
+const radioButtonComponentCode = ref('');
+const radioButtonGroupComponentCode = ref('');
 const docCode = ref("");
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
+    const radioButtonComponentSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
+    const radioButtonGroupComponentSource = await import('@energysage/es-ds-components/components/es-radio-button-group.vue?raw');
     const docSource = await import("./radio-button.vue?raw");
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
-    compCode.value = $prism.normalizeCode(compSource.default);
+    radioButtonComponentCode.value = $prism.normalizeCode(radioButtonComponentSource.default);
+    radioButtonGroupComponentCode.value = $prism.normalizeCode(radioButtonGroupComponentSource.default);
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();
 }
