@@ -12,58 +12,58 @@
             <h2>
                 Inline
             </h2>
-            <es-radio-input-group
+            <es-radio-button-group
                 id="idFruits"
                 label="Please choose your favorite fruit."
             >
-                <es-radio-input
+                <es-radio-button
                     v-for="fruit in fruits"
                     v-model="selectedFruit"
                     :display-name="fruit.name"
                     group-name="inline"
                     :value="fruit.key"
                     inline />
-            </es-radio-input-group>
+            </es-radio-button-group>
         </div>
 
         <div class="my-500">
             <h2>
                 Stacked
             </h2>
-            <es-radio-input-group
+            <es-radio-button-group
                 id="idFruits2"
                 label="Please choose your favorite fruit."
             >
-                <es-radio-input
+                <es-radio-button
                     v-for="fruit in fruits"
                     v-model="selectedFruit"
                     :display-name="fruit.name"
                     group-name="stacked"
                     :value="fruit.key" />
-            </es-radio-input-group>
+            </es-radio-button-group>
         </div>
 
         <div class="my-500">
             <h2>
                 Disabled
             </h2>
-            <es-radio-input-group
+            <es-radio-button-group
                 id="idFruits3"
                 label="Please choose your favorite fruit."
             >
-                <es-radio-input
+                <es-radio-button
                     v-for="fruit in fruits"
                     v-model="selectedFruit"
                     :display-name="fruit.name"
                     group-name="disabled"
                     :value="fruit.key"
                     disabled />
-            </es-radio-input-group>
+            </es-radio-button-group>
         </div>
 
         <div class="my-500">
             <h2>Using Options Prop</h2>
-            <es-radio-input-group
+            <es-radio-button-group
                 id="test2RadioGroup"
                 label="Radios using options"
                 v-model="test2Selected"
@@ -90,7 +90,7 @@
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-radio-input.vue"
+            comp-source="es-ds-components/src/lib-components/es-radio-button.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/radio-input.vue" />
     </div>
@@ -194,8 +194,8 @@ const compCode = ref('');
 const docCode = ref("");
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-radio-input.vue?raw');
-    const docSource = await import("./radio-input.vue?raw");
+    const compSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
+    const docSource = await import("./radio-button.vue?raw");
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
     compCode.value = $prism.normalizeCode(compSource.default);

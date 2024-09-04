@@ -76,8 +76,8 @@
             </ds-link>
          </li>
         <li>
-            <ds-link to="/molecules/radio-input">
-                Radio input
+            <ds-link to="/molecules/radio-button">
+                Radio button
             </ds-link>
         </li>
         <li>

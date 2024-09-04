@@ -37,7 +37,7 @@ const model = defineModel();
             <slot />
         </template>
         <template v-else>
-            <es-radio-input
+            <es-radio-button
                 v-for="option in options"
                 :disabled="option?.disabled || false"
                 :displayName="option?.text"
