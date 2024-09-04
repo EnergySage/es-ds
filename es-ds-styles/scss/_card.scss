@@ -292,7 +292,9 @@
     }
 
     /* fix safari issue with drop-shadow buggy behavior */
-    transform: translateZ(0);
+    & {
+      transform: translateZ(0);
+    }
 
     &:hover {
       border-color: variables.$card-interactive-hover-border-color;
