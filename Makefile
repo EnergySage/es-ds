@@ -26,6 +26,11 @@ lint:
 	npm --prefix es-ds-components run lint
 	npm --prefix es-ds-docs run lint
 
+.PHONY: format
+format:
+	npm --prefix es-ds-components run lint -- --fix
+	npm --prefix es-ds-docs run lint -- --fix
+
 .PHONY: test
 test:
 	npm --prefix es-ds-styles run test
