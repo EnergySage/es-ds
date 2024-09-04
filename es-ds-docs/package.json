@@ -8,11 +8,12 @@
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "patch-package && nuxt prepare",
-        "lint": "eslint .",
+        "lint:eslint": "eslint .",
         "lint:prettier": "prettier --check .",
+        "lint": "npm run lint:eslint && npm run lint:prettier",
         "format:prettier": "prettier --write --list-different .",
-        "format:lint": "npm run lint -- --fix",
-        "format": "npm run format:prettier && npm run format:lint"
+        "format:eslint": "npm run lint:eslint -- --fix",
+        "format": "npm run format:prettier && npm run format:eslint"
     },
     "dependencies": {
         "@energysage/es-ds-components": "^3.0.0-alpha.6",
