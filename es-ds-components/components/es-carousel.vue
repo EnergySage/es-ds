@@ -3,32 +3,26 @@
 import Carousel from 'primevue/carousel';
 
 const responsiveOptions = ref([
-// (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
-    {
+    { // xl: 1200px
         breakpoint: '1199px',
-        numVisible: 5,
-        numScroll: 1
-    },
-    {
-        breakpoint: '991px',
         numVisible: 4,
         numScroll: 1
     },
-    {
-        breakpoint: '767px',
+    { // lg: 992px
+        breakpoint: '991px',
         numVisible: 3,
         numScroll: 1
     },
-    {
-        breakpoint: '575px',
+    { // md: 768px
+        breakpoint: '767px',
         numVisible: 2,
         numScroll: 1
     },
-    {
-        breakpoint: '0px',
+    { // sm: 576px
+        breakpoint: '575px',
         numVisible: 1,
         numScroll: 1
-    }
+    },
 ]);
 
 
@@ -37,26 +31,43 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
-    background: {
-        type: Boolean,
-        default: true,
-    },
     dots: {
         type: Boolean,
         default: true,
     },
     items: {
         type: Array,
-        default: [],
+        default: () => [],
         required: true,
     },
 });
+
+const autoplayInterval = ref(props.autoscroll ? 3000 : 0);
+const key = ref('');
+
+onMounted(() => {
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'Escape') {
+            // Stop carousel when user presses Escape key, in lieu of pause button
+            // https://www.w3.org/WAI/WCAG22/Techniques/general/G187.html
+            stopAutoplay();
+        }
+    });
+});
+
+const stopAutoplay = () => {
+    if (props.autoscroll) {
+        autoplayInterval.value = 0;
+        key.value = "stopAutoplay";
+    }
+};
 
 </script>
 
 <template>
     <Carousel
-        :autoplayInterval="props.autoscroll ? 3000 : 0"
+        :key="key"
+        :autoplayInterval="autoplayInterval"
         circular
         :responsiveOptions="responsiveOptions"
         :showIndicators="dots"
@@ -79,10 +90,10 @@ const props = defineProps({
                 class: 'd-flex',
             },
             item: {
-                class: 'p-carousel-item m-1',
+                class: 'p-carousel-item p-1',
             },
             itemCloned: {
-                class: 'p-carousel-item m-1',
+                class: 'p-carousel-item p-1',
             },
             previousButton: {
                 style: 'border: unset; background: unset; color: #64748b;',
@@ -91,10 +102,8 @@ const props = defineProps({
                 style: 'border: unset; background: unset; color: #64748b;',
             },
         }">
-        <template #item="slotProps">
-            <es-card >
-                {{ slotProps.data }}
-            </es-card>
+        <template #item="item">
+            <slot name="item" :item="item.data" />
         </template>
     </Carousel>
 </template>
@@ -122,12 +131,6 @@ const props = defineProps({
 @include breakpoints.media-breakpoint-up(lg) {
     :deep(.p-carousel-item) {
         flex: 1 0 calc(100% / 4);
-    }
-}
-
-@include breakpoints.media-breakpoint-up(xl) {
-    :deep(.p-carousel-item) {
-        flex: 1 0 calc(100% / 5);
     }
 }
 
