@@ -2,7 +2,6 @@
 import sassSpacers from '@energysage/es-ds-styles/scss/modules/spacers.module.scss';
 
 const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450];
-
 const generateAlias = (key) => `p-${key} m-${key}`;
 
 const convertSpacerVariablesToTableEntries = (vars) => Object.keys(vars)
@@ -20,7 +19,6 @@ const convertSpacerVariablesToTableEntries = (vars) => Object.keys(vars)
         };
     });
 
-const legacyCollapseVisible = false;
 const tableEntries = computed(() => convertSpacerVariablesToTableEntries(sassSpacers));
 const spacers = computed(() => tableEntries.value.filter((spacer) => !DEPRECATED_SPACERS.includes(spacer.key)));
 const deprecatedSpacers = computed(() => tableEntries
@@ -130,7 +128,6 @@ if ($prism) {
 
         <es-collapse
             id="legacy-collapse"
-            v-model="legacyCollapseVisible"
             :is-programmatic-until-user-input="false">
             <template #title>
                 <h2 class="mb-0">
