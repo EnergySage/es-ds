@@ -1,3 +1,31 @@
+<script>
+
+export default {
+    name: 'DsDocSource',
+    props: {
+        compCode: {
+            type: String,
+            default: '',
+            required: false,
+        },
+        compSource: {
+            type: String,
+            default: '',
+            required: false,
+        },
+        docCode: {
+            type: String,
+            default: '',
+            required: false,
+        },
+        docSource: {
+            type: String,
+            default: '',
+            required: false,
+        },
+    },
+};
+</script>
 <template>
     <div class="mt-500">
         <client-only>
@@ -29,31 +57,3 @@
         </client-only>
     </div>
 </template>
-<script>
-
-export default {
-    name: 'DsDocSource',
-    props: {
-        compCode: {
-            type: String,
-            default: '',
-            required: false,
-        },
-        compSource: {
-            type: String,
-            default: '',
-            required: false,
-        },
-        docCode: {
-            type: String,
-            default: '',
-            required: false,
-        },
-        docSource: {
-            type: String,
-            default: '',
-            required: false,
-        },
-    },
-};
-</script>

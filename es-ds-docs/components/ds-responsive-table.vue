@@ -1,14 +1,14 @@
-<template>
-    <div class="responsive-table">
-        <slot />
-    </div>
-</template>
-
 <script lang="js">
 export default {
     name: 'DsResponsiveTable',
 };
 </script>
+
+<template>
+    <div class="responsive-table">
+        <slot />
+    </div>
+</template>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/variables" as variables;

@@ -1,14 +1,3 @@
-<template>
-    <div
-        class="responsive-table-row"
-        :class="{
-            'vertically-center-content': verticallyCenterContent,
-            'zebra': zebraStripes
-        }">
-        <slot />
-    </div>
-</template>
-
 <script lang="js">
 export default {
     name: 'DsResponsiveTableRow',
@@ -24,6 +13,17 @@ export default {
     },
 };
 </script>
+
+<template>
+    <div
+        class="responsive-table-row"
+        :class="{
+            'vertically-center-content': verticallyCenterContent,
+            'zebra': zebraStripes
+        }">
+        <slot />
+    </div>
+</template>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/variables" as variables;

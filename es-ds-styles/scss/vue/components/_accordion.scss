@@ -4,6 +4,22 @@
   .es-accordion {
     border-bottom: variables.$border-width solid variables.$gray-200;
   }
+
+  @media not (prefers-reduced-motion) {
+    // https://vuejs.org/guide/built-ins/transition
+
+    .v-transition-enter-active,
+    .v-transition-leave-active {
+      max-height: 200px;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+
+    .v-transition-enter-from,
+    .v-transition-leave-to {
+      max-height: 0;
+    }
+  }
 }
 
 .es-accordion-list--default {
@@ -56,7 +72,7 @@
 }
 
 /* for smooth background color transition */
-@media not prefers-reduced-motion {
+@media not (prefers-reduced-motion) {
   .es-accordion-heading {
     /* use this instead of $transition-base so font size and padding don't animate weirdly on breakpoint change */
     transition: background-color .2s ease-in-out;
@@ -69,7 +85,7 @@
 }
 
 /* only animate the chevron if the user doesn't prefer reduced motion */
-@media not prefers-reduced-motion {
+@media not (prefers-reduced-motion) {
   .es-accordion-icon {
     transition: variables.$transition-base;
   }

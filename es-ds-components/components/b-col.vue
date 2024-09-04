@@ -1,3 +1,14 @@
+<script setup lang="ts">
+defineProps<{
+  cols?: string,
+  sm?: string,
+  md?: string,
+  lg?: string,
+  xl?: string,
+  xxl?: string
+}>();
+</script>
+
 <template>
     <div
         class="col"
@@ -12,14 +23,3 @@
         <slot />
     </div>
 </template>
-
-<script setup lang="ts">
-const props = defineProps<{
-  cols?: string,
-  sm?: string,
-  md?: string,
-  lg?: string,
-  xl?: string,
-  xxl?: string
-}>();
-</script>
