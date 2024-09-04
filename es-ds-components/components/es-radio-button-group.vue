@@ -10,6 +10,7 @@ Similarly things like size are not implemented
 
 interface IOptions {
     text: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any;
     disabled?: boolean;
 }
@@ -24,28 +25,38 @@ interface IProps {
 
 withDefaults(defineProps<IProps>(), {
     inline: false,
-})
+    name: '',
+    options: undefined,
+});
 
-const model = defineModel();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const model = defineModel<any>();
 
 </script>
 
 <template>
-    <fieldset class="form-group" :id="id">
-        <legend :id="`legend-${id}`" class="font-size-100" tabindex="-1">{{ label }}</legend>
+    <fieldset
+        :id="id"
+        class="form-group">
+        <legend
+            :id="`legend-${id}`"
+            class="font-size-100"
+            tabindex="-1">
+            {{ label }}
+        </legend>
         <template v-if="$slots.default">
             <slot />
         </template>
         <template v-else>
             <es-radio-button
                 v-for="option in options"
-                :disabled="option?.disabled || false"
-                :displayName="option?.text"
-                :groupName="name"
-                :inline="inline"
-                :value="option.value"
+                :key="option.value"
                 v-model="model"
-            />
+                :disabled="option?.disabled || false"
+                :display-name="option?.text"
+                :group-name="name"
+                :inline="inline"
+                :value="option.value" />
         </template>
     </fieldset>
 </template>

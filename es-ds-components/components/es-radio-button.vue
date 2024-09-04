@@ -6,13 +6,14 @@ interface IProps {
     displayName: string,
     groupName?: string,
     inline?: boolean,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any,
 }
 
 const props = withDefaults(defineProps<IProps>(), {
     disabled: false,
-    displayName: "",
-    groupName: "",
+    displayName: '',
+    groupName: '',
     inline: false,
     value: null,
 });
@@ -27,8 +28,7 @@ const props = withDefaults(defineProps<IProps>(), {
             :disabled="disabled"
             :input-id="`${props.value}-${props.groupName}`"
             :name="props.groupName"
-            :value="props.value"
-        />
+            :value="props.value" />
         <slot>
             <label
                 :for="`${props.value}-${props.groupName}`"
