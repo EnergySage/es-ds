@@ -2,25 +2,21 @@
 import sassBorderRadius from '@energysage/es-ds-styles/scss/modules/border-radius.module.scss';
 import sassBorderRadiusComponents from '@energysage/es-ds-styles/scss/modules/border-radius-components.module.scss';
 
-import { computed, ref } from 'vue';
-
 const BASE_FONT_SIZE_PX = 16;
 
 const COMPONENT_NAME_URLS = {
-    /* TODO: uncomment once these molecules exist
-    accordion: '/molecules/es-accordion',
-    badge: '/molecules/es-badge',
-    button: '/molecules/es-button',
-    card: '/molecules/es-card',
-    'data-table': '/molecules/es-data-table',
-    'form-message': '/molecules/es-form-msg',
-    modal: '/molecules/es-modal',
-    pagination: '/molecules/es-pagination',
-    popover: '/molecules/es-popover',
-    textarea: '/molecules/es-form-textarea',
-    'text-input': '/molecules/es-form-input',
-    'verification-code': '/molecules/es-verification-code',
-    */
+    accordion: '/molecules/accordion',
+    badge: '/molecules/badge',
+    button: '/molecules/button',
+    card: '/molecules/card',
+    'data-table': '/molecules/data-table',
+    'form-message': '/molecules/form-message',
+    modal: '/molecules/modal',
+    pagination: '/molecules/pagination',
+    popover: '/molecules/popover',
+    textarea: '/molecules/form-textarea',
+    'text-input': '/molecules/form-input',
+    'verification-code': '/molecules/verification-code',
 };
 
 const borderRadius = computed(() => {
@@ -96,7 +92,7 @@ if ($prism) {
                             {{ item.class }}
                         </code>
                     </p>
-                    <p class="font-size-sm mb-0">
+                    <div class="font-size-sm mb-0">
                         <ul class="component-list list-unstyled mb-0">
                             <li class="d-inline-block">
                                 Used by&nbsp;
@@ -110,7 +106,7 @@ if ($prism) {
                                 </ds-link>
                             </li>
                         </ul>
-                    </p>
+                    </div>
                 </div>
             </b-col>
         </b-row>
