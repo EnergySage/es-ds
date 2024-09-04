@@ -1,3 +1,21 @@
+<script setup lang="ts">
+defineProps({
+    link: {
+        type: String,
+        required: true,
+    },
+    src: {
+        type: String,
+        required: true,
+    },
+});
+
+const slots = useSlots();
+const hasTitle = computed(() => !!slots.title);
+const hasLinkCopy = computed(() => !!slots.linkCopy);
+
+</script>
+
 <template>
     <div class="d-flex support-holder align-items-center">
         <div class="mr-50">
@@ -38,24 +56,6 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-const props = defineProps({
-    link: {
-        type: String,
-        required: true,
-    },
-    src: {
-        type: String,
-        required: true,
-    },
-});
-
-const slots = useSlots();
-const hasTitle = computed(() => !!slots.title);
-const hasLinkCopy = computed(() => !!slots.linkCopy);
-
-</script>
 
 <style lang="scss" scoped>
 .support-holder {
