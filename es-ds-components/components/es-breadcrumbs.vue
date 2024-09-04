@@ -65,7 +65,9 @@ const model = computed(() => {
         <template #separator>
             <span
                 aria-hidden="true"
-                class="mx-50">/</span>
+                class="mx-50"
+                >/</span
+            >
         </template>
     </breadcrumb>
 </template>

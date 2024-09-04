@@ -8,7 +8,7 @@
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "patch-package && nuxt prepare",
-        "lint": "eslint ./components --ext .js,.vue,.ts",
+        "lint": "eslint .",
         "lint:prettier": "prettier --check .",
         "format:prettier": "prettier --write --list-different .",
         "format:lint": "npm run lint -- --fix",
@@ -17,6 +17,7 @@
     "dependencies": {
         "@energysage/es-ds-components": "^3.0.0-alpha.6",
         "@energysage/es-ds-styles": "^3.0.0-alpha.6",
+        "@nuxt/kit": "^3.13.1",
         "@nuxtjs/google-fonts": "^3.2.0",
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
@@ -38,11 +39,11 @@
         "eslint-plugin-vitest": "^0.5.4",
         "eslint-plugin-vue": "^9.27.0",
         "nuxt-primevue": "^3.0.0",
+        "patch-package": "^8.0.0",
         "prettier": "^3.3.3",
         "sass": "^1.77.8",
         "typescript": "^5.5.4",
         "typescript-eslint": "^8.2.0",
-        "vue-tsc": "^2.0.29",
-        "patch-package": "^8.0.0"
+        "vue-tsc": "^2.0.29"
     }
 }

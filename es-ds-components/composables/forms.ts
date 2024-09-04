@@ -1,10 +1,11 @@
 import { type ErrorObject, useVuelidate, type ValidationArgs } from '@vuelidate/core';
 import type { ToRefs, Ref } from 'vue';
 
-export function useEsForms<T extends { [key in keyof Vargs]: any }, Vargs extends ValidationArgs = ValidationArgs>(
-    validationsArgs: Ref<Vargs> | Vargs,
-    state: T | Ref<T> | ToRefs<T>,
-) {
+export function useEsForms<
+    // eslint-disable-next-line no-unused-vars, no-use-before-define, @typescript-eslint/no-explicit-any
+    T extends { [key in keyof Vargs]: any },
+    Vargs extends ValidationArgs = ValidationArgs,
+>(validationsArgs: Ref<Vargs> | Vargs, state: T | Ref<T> | ToRefs<T>) {
     const v$ = useVuelidate(validationsArgs, state);
 
     const submitInProgress = ref(false);
@@ -14,12 +15,13 @@ export function useEsForms<T extends { [key in keyof Vargs]: any }, Vargs extend
 
     const isSubmitInProgress = computed(() => submitInProgress.value);
 
-    const getFields = (obj: any, valueKey = 'obj') => {
+    const getFields = (obj: unknown, valueKey = 'obj') => {
         let objKeys = null;
         try {
             objKeys = Object.keys(obj);
+            // eslint-disable-next-line no-console
             console.log('objKeys: ', objKeys);
-        } catch (e) {
+        } catch {
             return [];
         }
         return objKeys.filter((name) => !name.startsWith('$')).map((name) => ({ name, [valueKey]: obj[name] }));
@@ -27,8 +29,10 @@ export function useEsForms<T extends { [key in keyof Vargs]: any }, Vargs extend
 
     const formErrors = computed(() => {
         const errors = v$.value.$errors.map((error) => error);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return errors.reduce((acc: any, error: ErrorObject) => {
             if (!(error.$property in acc)) {
+                // eslint-disable-next-line no-param-reassign
                 acc[error.$property] = [];
             }
             acc[error.$property].push(error.$validator);
@@ -38,6 +42,7 @@ export function useEsForms<T extends { [key in keyof Vargs]: any }, Vargs extend
 
     const getValidatorField = (dotPath: string) => {
         const validatorField = dotPath.split('.').reduce((acc, field) => {
+            // eslint-disable-next-line no-param-reassign
             acc = acc[field];
             return acc;
         }, v$.value);
@@ -69,14 +74,12 @@ export function useEsForms<T extends { [key in keyof Vargs]: any }, Vargs extend
         }
     };
 
-    const showFormError = (
-        text = 'The server responded with an error and we were unable to complete your request. Please try again',
-    ) => {
+    const showFormError = () => {
         formMsgVariant.value = 'danger';
         formShowError.value = true;
     };
 
-    const showFormSuccess = (text = 'Saved Successfully') => {
+    const showFormSuccess = () => {
         formMsgVariant.value = 'success';
         formShowSuccess.value = true;
     };

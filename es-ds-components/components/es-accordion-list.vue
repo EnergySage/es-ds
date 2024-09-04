@@ -51,10 +51,8 @@ const updateActiveIndex = (index) => {
             },
         }"
         @update:active-index="updateActiveIndex">
-        <template #collapseicon>
-        </template>
-        <template #expandicon>
-        </template>
+        <template #collapseicon> </template>
+        <template #expandicon> </template>
         <accordion-tab
             v-for="(tab, index) in accordionTabs"
             :key="index"

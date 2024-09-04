@@ -23,8 +23,7 @@ const convertSpacerVariablesToTableEntries = (vars) =>
 const tableEntries = computed(() => convertSpacerVariablesToTableEntries(sassSpacers));
 const spacers = computed(() => tableEntries.value.filter((spacer) => !DEPRECATED_SPACERS.includes(spacer.key)));
 const deprecatedSpacers = computed(() =>
-    tableEntries// filter out updated spacers
-    .value
+    tableEntries.value // filter out updated spacers
         .filter((spacer) => DEPRECATED_SPACERS.includes(spacer.key))
         // find the equivalent spacer from the updated naming scheme
         .map((entry) => {

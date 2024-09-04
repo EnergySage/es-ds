@@ -56,6 +56,7 @@ export default defineNuxtConfig({
                 'primevue/dialog',
                 'primevue/inputmask',
                 'primevue/inputtext',
+                'primevue/overlaypanel',
                 'primevue/paginator',
                 'primevue/panel',
                 'primevue/progressbar',

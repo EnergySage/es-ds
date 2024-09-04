@@ -40,6 +40,8 @@ defineProps({
             :value="value" />
         <label
             :for="`${value}-${groupName}`"
-            class="custom-control-label">{{ displayName }}</label>
+            class="custom-control-label"
+            >{{ displayName }}</label
+        >
     </div>
 </template>

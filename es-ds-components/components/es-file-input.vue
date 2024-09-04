@@ -82,12 +82,13 @@ const filterLargeFiles = (files: Array<File>) => {
 
 const removeSpaceFromFileNames = (files: Array<File>) => {
     const newFiles = files.map(
-        (file) => new File(
-            // Return new File object with the modified name (without any space)
-            [file],
-            file.name.replace(/\s/g, ''),
-            { type: file.type, lastModified: file.lastModified },
-        ),
+        (file) =>
+            new File(
+                // Return new File object with the modified name (without any space)
+                [file],
+                file.name.replace(/\s/g, ''),
+                { type: file.type, lastModified: file.lastModified },
+            ),
     );
     return newFiles;
 };
@@ -304,18 +305,14 @@ const openFilePicker = () => {
                     :class="{ 'mb-200': collapsed }"
                     @click="openFilePicker">
                     <slot name="buttonText">
-                        <p class="m-0">
-                            Browse files
-                        </p>
+                        <p class="m-0">Browse files</p>
                     </slot>
                 </es-button>
                 <es-button
                     class="d-md-none w-100"
                     @click="openFilePicker">
                     <slot name="buttonText">
-                        <p class="m-0">
-                            Choose files
-                        </p>
+                        <p class="m-0">Choose files</p>
                     </slot>
                 </es-button>
             </div>

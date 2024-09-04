@@ -7,4 +7,6 @@ export default defineNuxtConfig({
 
     // https://nuxt.com/docs/getting-started/deployment#static-hosting
     ssr: true,
+
+    modules: ['./modules/auto-import-eslint.ts'],
 });

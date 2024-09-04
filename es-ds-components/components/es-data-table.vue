@@ -33,10 +33,11 @@ const checkFrozenRow = (index) => {
 // snake_case, and camelCase to individual words and capitalizes each word.
 // Doc: https://bootstrap-vue.org/docs/components/table
 // Source Code: https://github.com/bootstrap-vue/bootstrap-vue/blob/5173dd19f6f46dc9d125cd7233fb59ccd2ef9296/src/utils/string.js#L30
-const startCase = (str: string) => str
-    .replace(/_/g, ' ')
-    .replace(/([a-z])([A-Z])/g, (_, $1, $2) => `${$1} ${$2}`)
-    .replace(/(\s|^)(\w)/g, (_, $1, $2) => $1 + $2.toUpperCase());
+const startCase = (str: string) =>
+    str
+        .replace(/_/g, ' ')
+        .replace(/([a-z])([A-Z])/g, (_, $1, $2) => `${$1} ${$2}`)
+        .replace(/(\s|^)(\w)/g, (_, $1, $2) => $1 + $2.toUpperCase());
 
 const label = (col) => {
     if (typeof col === 'string') {
