@@ -1,14 +1,3 @@
-<template>
-    <dl :class="columnClass">
-        <dt>
-            <slot name="name" />
-        </dt>
-        <dd>
-            <slot name="value" />
-        </dd>
-    </dl>
-</template>
-
 <script lang="js">
 export default {
     name: 'DsResponsiveTableColumn',
@@ -55,6 +44,17 @@ export default {
     },
 };
 </script>
+
+<template>
+    <dl :class="columnClass">
+        <dt>
+            <slot name="name" />
+        </dt>
+        <dd>
+            <slot name="value" />
+        </dd>
+    </dl>
+</template>
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;

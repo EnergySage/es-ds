@@ -1,3 +1,26 @@
+<script>
+export default {
+    name: 'IconSettingsHorizontal',
+    props: {
+        /**
+         * Width
+         */
+        width: {
+            type: String,
+            default: '24px',
+            required: false,
+        },
+        /**
+         * Height
+         */
+        height: {
+            type: String,
+            default: '24px',
+            required: false,
+        },
+    },
+};
+</script>
 <template>
     <svg
         :style="{
@@ -32,26 +55,3 @@
             d="M9 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM6 5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm11 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-3 1a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm-7 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-3 1a3 3 0 1 1 6 0 3 3 0 0 1-6 0Z" />
     </svg>
 </template>
-<script>
-export default {
-    name: 'IconSettingsHorizontal',
-    props: {
-        /**
-         * Width
-         */
-        width: {
-            type: String,
-            default: '24px',
-            required: false,
-        },
-        /**
-         * Height
-         */
-        height: {
-            type: String,
-            default: '24px',
-            required: false,
-        },
-    },
-};
-</script>

@@ -1,3 +1,26 @@
+<script>
+export default {
+    name: 'IconStarHalf',
+    props: {
+        /**
+         * Width
+         */
+        width: {
+            type: String,
+            default: '20px',
+            required: false,
+        },
+        /**
+         * Height
+         */
+        height: {
+            type: String,
+            default: '20px',
+            required: false,
+        },
+    },
+};
+</script>
 <template>
     <svg
         :style="{
@@ -30,26 +53,3 @@
         </g>
     </svg>
 </template>
-<script>
-export default {
-    name: 'IconStarHalf',
-    props: {
-        /**
-         * Width
-         */
-        width: {
-            type: String,
-            default: '20px',
-            required: false,
-        },
-        /**
-         * Height
-         */
-        height: {
-            type: String,
-            default: '20px',
-            required: false,
-        },
-    },
-};
-</script>
