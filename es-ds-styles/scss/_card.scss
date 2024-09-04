@@ -286,13 +286,13 @@
     border: 2px solid variables.$card-interactive-border-color;
     box-shadow: 0 0 0 1px transparent, variables.$card-interactive-shadow;
 
+    /* fix safari issue with drop-shadow buggy behavior */
+    transform: translateZ(0);
+
     @media not (prefers-reduced-motion) {
       /* stylelint-disable-next-line property-disallowed-list */
       transition: variables.$transition-base;
     }
-
-    /* fix safari issue with drop-shadow buggy behavior */
-    transform: translateZ(0);
 
     &:hover {
       border-color: variables.$card-interactive-hover-border-color;
