@@ -112,17 +112,3 @@ const updateActiveIndex = (index) => {
         </accordion-tab>
     </accordion>
 </template>
-
-<style scoped lang="scss">
-// https://vuejs.org/guide/built-ins/transition
-
-:deep(.v-transition-enter-active), :deep(.v-transition-leave-active) {
-    max-height: 200px;
-    overflow: hidden;
-    transition: max-height .35s ease;
-}
-
-:deep(.v-transition-enter-from), :deep(.v-transition-leave-to) {
-    max-height: 0;
-}
-</style>
