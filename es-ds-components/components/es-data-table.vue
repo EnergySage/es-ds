@@ -28,22 +28,22 @@ const checkFrozenRow = (index) => {
     return false;
 };
 
+// Code is taken from BootStrap Vue to implemnt <b-table> feature that automatically
+// samples the first row to extract field name and "humanize" by converting kebab-case,
+// snake_case, and camelCase to individual words and capitalizes each word.
+// Doc: https://bootstrap-vue.org/docs/components/table
+// Source Code: https://github.com/bootstrap-vue/bootstrap-vue/blob/5173dd19f6f46dc9d125cd7233fb59ccd2ef9296/src/utils/string.js#L30
+const startCase = (str: string) => str
+    .replace(/_/g, ' ')
+    .replace(/([a-z])([A-Z])/g, (_, $1, $2) => `${$1} ${$2}`)
+    .replace(/(\s|^)(\w)/g, (_, $1, $2) => $1 + $2.toUpperCase());
+
 const label = (col) => {
     if (typeof col === 'string') {
         return startCase(col);
     }
     return col?.label ? col.label : startCase(col?.key);
 };
-
-// Code is taken from BootStrap Vue to implemnt <b-table> feature that automatically
-// samples the first row to extract field name and "humanize" by converting kebab-case,
-// snake_case, and camelCase to individual words and capitalizes each word.
-// Doc: https://bootstrap-vue.org/docs/components/table
-// Source Code: https://github.com/bootstrap-vue/bootstrap-vue/blob/5173dd19f6f46dc9d125cd7233fb59ccd2ef9296/src/utils/string.js#L30
-const startCase = (str) => str
-    .replace(/_/g, ' ')
-    .replace(/([a-z])([A-Z])/g, (str, $1, $2) => `${$1} ${$2}`)
-    .replace(/(\s|^)(\w)/g, (str, $1, $2) => $1 + $2.toUpperCase());
 
 const columns = computed(() => {
     if (props.fields) {

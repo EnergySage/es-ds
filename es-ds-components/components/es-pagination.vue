@@ -20,19 +20,22 @@ const props = defineProps({
     },
 });
 
-const model = defineModel();
+const model = defineModel<number>();
 const first = ref();
 
 watch(model, (newVal) => {
     first.value = (newVal - 1) * props.perPage;
 });
 
-const updatePage = (first) => {
-    model.value = (first / props.perPage) + 1;
+const updatePage = (newFirst: number) => {
+    model.value = (newFirst / props.perPage) + 1;
 };
 
 const passThrough = {
-    root: { class: ['pagination', { 'justify-content-center': props.align == 'center', 'justify-content-end': props.align == 'right' }] },
+    root: {
+        class: ['pagination',
+            { 'justify-content-center': props.align === 'center', 'justify-content-end': props.align === 'right' }],
+    },
     firstPageButton: { class: 'paginator-button' },
     previousPageButton: { class: 'paginator-button' },
     nextPageButton: { class: 'paginator-button' },

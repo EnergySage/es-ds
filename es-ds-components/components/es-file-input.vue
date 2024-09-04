@@ -66,36 +66,6 @@ const emit = defineEmits([
     'uploadSuccess',
 ]);
 
-watch(() => props.uploadUrls, (newUrls, oldUrls) => {
-    // For every file that has an associated upload URL, we start the upload
-    newUrls.forEach((newUrlPair) => {
-        const oldUrl = oldUrls.find(({ name }) => name === newUrlPair.name);
-        const fileToUpload = currentFiles.find((file) => file.name === newUrlPair.name);
-        if ((!oldUrl || oldUrl.uploadUrl !== newUrlPair.uploadUrl) && fileToUpload) {
-            uploadSingleFile(fileToUpload);
-        }
-    });
-});
-
-async function onFileChanged($event: Event) {
-    const target = $event.target as HTMLInputElement;
-    // The user has selected files from the file picker. We have to filter out any files that exceed the
-    // maxFileSizeMb prop.
-    if (target && target.files) {
-        await verifyFiles([...target.files]);
-    }
-}
-
-const removeSpaceFromFileNames = (files: Array<File>) => {
-    const newFiles = files.map((file) => new File(
-        // Return new File object with the modified name (without any space)
-        [file],
-        file.name.replace(/\s/g, ''),
-        { type: file.type, lastModified: file.lastModified },
-    ));
-    return newFiles;
-};
-
 const filterLargeFiles = (files: Array<File>) => {
     // Takes an array of files, and filters out any files that exceed the maxFileSizeMb prop. Emits a
     // fileSizeError event for each file that exceeds the maxFileSizeMb prop. The File API uses bytes, so
@@ -110,50 +80,15 @@ const filterLargeFiles = (files: Array<File>) => {
     });
 };
 
-const readFilesIntoUrl = (files: Array<File>) => {
-    files.forEach((file) => {
-        const fileReader = new FileReader();
-        fileReader.onload = () => {
-            emit('fileDataRead', {
-                name: file.name,
-                type: file.type,
-                size: file.size,
-                data: file.type.includes('application')
-                    // For non-image files (pdf, docx, etc.)
-                    ? URL.createObjectURL(new Blob([file], { type: file.type }))
-                    : fileReader.result,
-            });
-        };
-        fileReader.readAsDataURL(file);
-    });
+const removeSpaceFromFileNames = (files: Array<File>) => {
+    const newFiles = files.map((file) => new File(
+        // Return new File object with the modified name (without any space)
+        [file],
+        file.name.replace(/\s/g, ''),
+        { type: file.type, lastModified: file.lastModified },
+    ));
+    return newFiles;
 };
-
-async function verifyFiles(files: Array<File>) {
-    const correctlySizedFiles = filterLargeFiles(files);
-    const correctlyNamedFiles = removeSpaceFromFileNames(correctlySizedFiles);
-
-    // Make sure the file is the correct mime type
-    let newValidFiles = await Promise.allSettled(
-        correctlyNamedFiles.map(async (file) => verifyMimeType(file)),
-    );
-    // Filter out undefined values and "rejected"
-    newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled')
-        .map((file) => file.value);
-
-    // If the new file with name already exists in the current files
-    // Don't upload the new file and display an error
-    const duplicateFiles = newValidFiles.filter(({ name }) => currentFiles.some((file) => file.name === name));
-    duplicateFiles.forEach((file) => emit('duplicateFileMessage', file.name));
-
-    // For new files with unused names, add them to files
-    newValidFiles = newValidFiles.filter(({ name }) => !currentFiles.some((file) => file.name === name));
-    currentFiles = [...currentFiles, ...newValidFiles];
-
-    if (newValidFiles.length > 0) {
-        emit('readyToUpload', newValidFiles);
-        readFilesIntoUrl(newValidFiles);
-    }
-}
 
 async function verifyMimeType(file: File) {
     // If an empty folder then trigger fileIsAFolderError
@@ -183,32 +118,6 @@ async function verifyMimeType(file: File) {
         fileReader.readAsArrayBuffer(blob);
     });
 }
-
-const onDrop = (event) => {
-    // The user has dropped files onto the component. We have to apply the same logic as if they had
-    // selected the files from the file picker which limits the file types to the ones specified in the
-    // fileTypes prop.
-    active = false;
-
-    // Use DataTransferItemList interface to access the file(s)
-    const dataTransfersAsFiles = [...event.dataTransfer.items]
-        .filter((item) => {
-            if (item.kind !== 'file') {
-                emit('fileTypeError', item.name);
-                return false;
-            }
-            return true;
-        })
-        .map((item) => item.getAsFile());
-
-    verifyFiles(dataTransfersAsFiles);
-};
-
-const openFilePicker = () => {
-    if (fileInput.value) {
-        fileInput.value.click();
-    }
-};
 
 async function uploadSingleFile(file: File) {
     const uploadInfo = props.uploadUrls.find((uploadUrl) => uploadUrl.name === file.name);
@@ -262,6 +171,97 @@ async function uploadSingleFile(file: File) {
             }
         });
 }
+
+const readFilesIntoUrl = (files: Array<File>) => {
+    files.forEach((file) => {
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+            emit('fileDataRead', {
+                name: file.name,
+                type: file.type,
+                size: file.size,
+                data: file.type.includes('application')
+                    // For non-image files (pdf, docx, etc.)
+                    ? URL.createObjectURL(new Blob([file], { type: file.type }))
+                    : fileReader.result,
+            });
+        };
+        fileReader.readAsDataURL(file);
+    });
+};
+
+async function verifyFiles(files: Array<File>) {
+    const correctlySizedFiles = filterLargeFiles(files);
+    const correctlyNamedFiles = removeSpaceFromFileNames(correctlySizedFiles);
+
+    // Make sure the file is the correct mime type
+    let newValidFiles = await Promise.allSettled(
+        correctlyNamedFiles.map(async (file) => verifyMimeType(file)),
+    );
+    // Filter out undefined values and "rejected"
+    newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled')
+        .map((file) => file.value);
+
+    // If the new file with name already exists in the current files
+    // Don't upload the new file and display an error
+    const duplicateFiles = newValidFiles.filter(({ name }) => currentFiles.some((file) => file.name === name));
+    duplicateFiles.forEach((file) => emit('duplicateFileMessage', file.name));
+
+    // For new files with unused names, add them to files
+    newValidFiles = newValidFiles.filter(({ name }) => !currentFiles.some((file) => file.name === name));
+    currentFiles = [...currentFiles, ...newValidFiles];
+
+    if (newValidFiles.length > 0) {
+        emit('readyToUpload', newValidFiles);
+        readFilesIntoUrl(newValidFiles);
+    }
+}
+
+watch(() => props.uploadUrls, (newUrls, oldUrls) => {
+    // For every file that has an associated upload URL, we start the upload
+    newUrls.forEach((newUrlPair) => {
+        const oldUrl = oldUrls.find(({ name }) => name === newUrlPair.name);
+        const fileToUpload = currentFiles.find((file) => file.name === newUrlPair.name);
+        if ((!oldUrl || oldUrl.uploadUrl !== newUrlPair.uploadUrl) && fileToUpload) {
+            uploadSingleFile(fileToUpload);
+        }
+    });
+});
+
+async function onFileChanged($event: Event) {
+    const target = $event.target as HTMLInputElement;
+    // The user has selected files from the file picker. We have to filter out any files that exceed the
+    // maxFileSizeMb prop.
+    if (target && target.files) {
+        await verifyFiles([...target.files]);
+    }
+}
+
+const onDrop = (event) => {
+    // The user has dropped files onto the component. We have to apply the same logic as if they had
+    // selected the files from the file picker which limits the file types to the ones specified in the
+    // fileTypes prop.
+    active = false;
+
+    // Use DataTransferItemList interface to access the file(s)
+    const dataTransfersAsFiles = [...event.dataTransfer.items]
+        .filter((item) => {
+            if (item.kind !== 'file') {
+                emit('fileTypeError', item.name);
+                return false;
+            }
+            return true;
+        })
+        .map((item) => item.getAsFile());
+
+    verifyFiles(dataTransfersAsFiles);
+};
+
+const openFilePicker = () => {
+    if (fileInput.value) {
+        fileInput.value.click();
+    }
+};
 </script>
 
 <template>
