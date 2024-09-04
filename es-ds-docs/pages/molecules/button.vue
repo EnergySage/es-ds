@@ -106,6 +106,7 @@ const compCode = ref('');
 const docCode = ref('');
 if ($prism) {
     const compSource = await import('@energysage/es-ds-components/components/es-button.vue?raw');
+    // eslint-disable-next-line import/no-self-import
     const docSource = await import('./button.vue?raw');
 
     compCode.value = $prism.normalizeCode(compSource.default);

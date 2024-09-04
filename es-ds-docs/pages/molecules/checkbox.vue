@@ -6,7 +6,9 @@ const banana = ref(true);
 const cherry = ref(false);
 const selectAll = ref(false);
 
-const selectAllIsIndeterminate = computed(() => (apple.value && banana.value && cherry.value) !== (apple.value || banana.value || cherry.value));
+const selectAllIsIndeterminate = computed(
+    () => (apple.value && banana.value && cherry.value) !== (apple.value || banana.value || cherry.value),
+);
 
 const handleOptionChange = () => {
     selectAll.value = apple.value && banana.value && cherry.value;
@@ -29,6 +31,7 @@ const compCode = ref('');
 const docCode = ref('');
 if ($prism) {
     const compSource = await import('@energysage/es-ds-components/components/es-form-checkbox.vue?raw');
+    // eslint-disable-next-line import/no-self-import
     const docSource = await import('./checkbox.vue?raw');
 
     compCode.value = $prism.normalizeCode(compSource.default);

@@ -4,6 +4,7 @@ const compCode = ref('');
 const docCode = ref('');
 if ($prism) {
     const compSource = await import('@energysage/es-ds-components/components/es-pagination.vue?raw');
+    // eslint-disable-next-line import/no-self-import
     const docSource = await import('./pagination.vue?raw');
     compCode.value = $prism.normalizeCode(compSource.default);
     docCode.value = $prism.normalizeCode(docSource.default);
@@ -31,7 +32,8 @@ const paginationListProps = [
         'Number',
         'n/a',
         `
-        Required. This is the number of items to be displayed on each page, and along with totalRows determines how many pages are needed.
+        Required. This is the number of items to be displayed on each page, and along with totalRows determines
+        how many pages are needed.
         `,
     ],
     [
@@ -39,7 +41,8 @@ const paginationListProps = [
         'String',
         'n/a',
         `
-        Required. The ID of a list or table element to be paginated, this is input to "aria-controls" for accessibility.
+        Required. The ID of a list or table element to be paginated, this is input to "aria-controls"
+        for accessibility.
         `,
     ],
     [

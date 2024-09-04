@@ -30,7 +30,18 @@
                 "useNuxtApp": "readonly",
                 "ref": "readonly",
                 "onMounted": "readonly",
-                "resolveComponent": "readonly"
+                "resolveComponent": "readonly",
+                "reactive": "readonly",
+                "vuelidateKeys": "readonly",
+                "vuelidateRequired": "readonly",
+                "vuelidatePhone": "readonly",
+                "vuelidateEmail": "readonly",
+                "vuelidateMinLength": "readonly",
+                "vuelidateHasNumber": "readonly",
+                "vuelidateHasSpecialCharacter": "readonly",
+                "vuelidateHasUppercaseLetter": "readonly",
+                "vuelidateHasLowercaseLetter": "readonly",
+                "useEsForms": "readonly"
             }
         }
     ],

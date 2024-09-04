@@ -35,7 +35,8 @@
                 "ref": "readonly",
                 "useSlots": "readonly",
                 "watch": "readonly",
-                "resolveComponent": "readonly"
+                "resolveComponent": "readonly",
+                "reactive": "readonly"
             }
         }
     ],
