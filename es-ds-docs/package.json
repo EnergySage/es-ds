@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "patch-package && nuxt prepare",
     "lint": "eslint ./components ./pages ./layouts --ext .js,.vue,.ts",
-    "lint-fix": "eslint --fix ./components ./pages ./layouts --ext .js,.vue,.ts"
+    "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "@energysage/es-ds-components": "^3.0.0-alpha.6",
