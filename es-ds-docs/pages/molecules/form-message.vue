@@ -11,8 +11,8 @@ const propTableRows = [
         'show',
         'Boolean',
         'false',
-        'Whether to show the form message. This component will respond to changes of this prop, ' +
-        'and the client is responsible for setting it false upon receiving the "hidden" event.',
+        'Whether to show the form message. This component will respond to changes of this prop, '
+        + 'and the client is responsible for setting it false upon receiving the "hidden" event.',
     ],
     [
         'timeout',
@@ -25,7 +25,7 @@ const propTableRows = [
         'String',
         '\'danger\'',
         'Controls the icon on the message. Options are danger, success, or primary.',
-    ]
+    ],
 ];
 
 const { $prism } = useNuxtApp();
@@ -34,7 +34,8 @@ const docCode = ref('');
 
 if ($prism) {
     const compSource = await import('@energysage/es-ds-components/components/es-form-msg.vue?raw');
-    const docSource = await import('./form-msg.vue?raw');
+    // eslint-disable-next-line import/no-self-import
+    const docSource = await import('./form-message.vue?raw');
 
     compCode.value = $prism.normalizeCode(compSource.default);
     docCode.value = $prism.normalizeCode(docSource.default);
@@ -54,21 +55,21 @@ if ($prism) {
             </h2>
 
             <!-- TODO replace buttons with es-button after that's available -->
-            <button
+            <es-button
                 class="mb-100 mb-sm-0 mr-100"
                 @click="showSimpleSuccess = true">
                 Show success
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="mb-100 mb-sm-0 mr-100"
                 @click="showSimpleError = true">
                 Show error
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="mb-100 mb-sm-0"
                 @click="showSimpleInfo = true">
                 Show info
-            </button>
+            </es-button>
 
             <es-form-msg
                 class="my-100"
@@ -110,21 +111,21 @@ if ($prism) {
                 With header and body
             </h2>
 
-            <button
+            <es-button
                 class="mb-100 mb-sm-0  mr-100"
                 @click="showHeaderSuccess = true">
                 Show success
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="mb-100 mb-sm-0  mr-100"
                 @click="showHeaderError = true">
                 Show error
-            </button>
-            <button
+            </es-button>
+            <es-button
                 class="mb-100 mb-sm-0 "
                 @click="showHeaderInfo = true">
                 Show info
-            </button>
+            </es-button>
 
             <es-form-msg
                 class="my-100"

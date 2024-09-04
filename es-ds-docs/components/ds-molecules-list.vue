@@ -44,10 +44,10 @@
             <ds-link to="/molecules/data-table">
                 Data table
             </ds-link>
-         </li>
-         <li>
+        </li>
+        <li>
             <ds-link to="/molecules/data-table-simple">
-              Data table simple
+                Data table simple
             </ds-link>
         </li>
         <li>
@@ -56,8 +56,23 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/form-msg">
+            <ds-link to="/molecules/form-message">
                 Form message
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/modal">
+                Modal
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/pagination">
+                Pagination
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/popover">
+                Popover
             </ds-link>
         </li>
         <li>
@@ -65,11 +80,11 @@
                 Progress
             </ds-link>
         </li>
-         <li>
+        <li>
             <ds-link to="/molecules/progress-circle">
                 Progress circle
             </ds-link>
-         </li>
+        </li>
         <li>
             <ds-link to="/molecules/radio-button">
                 Radio button
@@ -81,9 +96,16 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/tabs">
+                Tabs
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/form-input">
                 Text input
             </ds-link>
         </li>
     </ul>
 </template>
+<script setup>
+</script>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const model = defineModel({
+const model = defineModel<boolean>({
     default: false,
 });
 defineOptions({
-    inheritAttrs: false
-})
+    inheritAttrs: false,
+});
 defineProps({
     id: {
         type: String,
@@ -12,27 +12,28 @@ defineProps({
     },
     disabled: {
         type: Boolean,
-        default: false
+        default: false,
     },
     indeterminate: {
         type: Boolean,
-        default: false
-    }
+        default: false,
+    },
 });
 </script>
 
 <template>
     <div class="custom-control custom-checkbox">
         <input
-            type="checkbox"
-            class="custom-control-input"
-            v-model="model"
             v-bind="$attrs"
             :id="id"
+            v-model="model"
+            type="checkbox"
+            class="custom-control-input"
             :indeterminate="indeterminate"
-            :disabled="disabled"
-        />
-        <label :for="id" class="custom-control-label">
+            :disabled="disabled" />
+        <label
+            :for="id"
+            class="custom-control-label">
             <slot />
         </label>
     </div>

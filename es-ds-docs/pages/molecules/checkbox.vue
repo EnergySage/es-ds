@@ -1,14 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const apple = ref(false);
 const banana = ref(true);
 const cherry = ref(false);
 const selectAll = ref(false);
 
-const selectAllIsIndeterminate = computed(() => {
-    return (apple.value && banana.value && cherry.value) !== (apple.value || banana.value || cherry.value);
-});
+const selectAllIsIndeterminate = computed(
+    () => (apple.value && banana.value && cherry.value) !== (apple.value || banana.value || cherry.value),
+);
 
 const handleOptionChange = () => {
     selectAll.value = apple.value && banana.value && cherry.value;
@@ -24,13 +24,14 @@ const handleSelectAllToggle = () => {
         banana.value = false;
         cherry.value = false;
     }
-}
+};
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 if ($prism) {
     const compSource = await import('@energysage/es-ds-components/components/es-form-checkbox.vue?raw');
+    // eslint-disable-next-line import/no-self-import
     const docSource = await import('./checkbox.vue?raw');
 
     compCode.value = $prism.normalizeCode(compSource.default);
@@ -50,13 +51,19 @@ if ($prism) {
                 Basic example
             </h2>
             <div>
-                <es-form-checkbox v-model="apple" id="idApple">
+                <es-form-checkbox
+                    id="idApple"
+                    v-model="apple">
                     Apple
                 </es-form-checkbox>
-                <es-form-checkbox v-model="banana" id="idBanana">
+                <es-form-checkbox
+                    id="idBanana"
+                    v-model="banana">
                     Banana
                 </es-form-checkbox>
-                <es-form-checkbox v-model="cherry" id="idCherry">
+                <es-form-checkbox
+                    id="idCherry"
+                    v-model="cherry">
                     Cherry
                 </es-form-checkbox>
             </div>
@@ -68,20 +75,20 @@ if ($prism) {
             </h2>
             <div>
                 <es-form-checkbox
-                    v-model="apple"
                     id="idApple2"
+                    v-model="apple"
                     disabled>
                     Apple
                 </es-form-checkbox>
                 <es-form-checkbox
-                    v-model="banana"
                     id="idBanana2"
+                    v-model="banana"
                     disabled>
                     Banana
                 </es-form-checkbox>
                 <es-form-checkbox
-                    v-model="cherry"
                     id="idCherry2"
+                    v-model="cherry"
                     disabled>
                     Cherry
                 </es-form-checkbox>

@@ -1,3 +1,37 @@
+<script setup lang="ts">
+import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
+
+const colorNames = Object.keys(sassIconColors)
+    .map((k) => k)
+    .reduce((prev, cur) => {
+        // eslint-disable-next-line no-param-reassign
+        prev[cur] = cur;
+        return prev;
+    }, {});
+
+const colorOptions = Object.keys(colorNames).map((k) => ({
+    text: k === 'body' ? 'default' : k.replace('-', ' '),
+    value: k,
+}));
+
+const activeColor = ref(colorNames.body);
+
+const textColorClass = () => `text-${activeColor.value}`;
+
+const docCode = ref('');
+
+const { $prism } = useNuxtApp();
+
+if ($prism) {
+    // eslint-disable-next-line import/no-self-import
+    const docSource = await import('./icons.vue?raw');
+
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+
+</script>
+
 <template>
     <div>
         <h1>
@@ -10,9 +44,12 @@
                 the container in which they're placed. To change their color, simply place the appropriate
                 <code>text-{xxx}</code> utility class on their containing element.
             </p>
-            <p>Select an option to see how the icons look with that color applied.</p>
+            <p>
+                Select an option to see how the icons look with that color applied.
+            </p>
             <es-radio-button
                 v-for="color in colorOptions"
+                :key="color.value"
                 v-model="activeColor"
                 :display-name="color.text"
                 :value="color.value"
@@ -717,6 +754,7 @@
             <li>
                 <icon-state-wi />
                 <code>IconStateWi</code>
+
             </li>
             <li>
                 <icon-state-wv />
@@ -745,43 +783,6 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
-
-const colorNames = Object.keys(sassIconColors)
-    .map((k) => k)
-    .reduce((prev, cur) => {
-        // eslint-disable-next-line no-param-reassign
-        prev[cur] = cur;
-        return prev;
-    }, {});
-
-const colorOptions = Object.keys(colorNames).map((k) => ({
-    text: k === 'body' ? 'default' : k.replace('-', ' '),
-    value: k,
-}));
-
-let activeColor = ref(colorNames.body);
-
-const textColorClass = () => {
-    return `text-${activeColor.value}`;
-};
-
-const docCode = ref('');
-
-const { $prism } = useNuxtApp();
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import('./icons.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-
-</script>
-
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/variables" as variables;
 @use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
@@ -799,6 +800,10 @@ if ($prism) {
     display: flex;
     padding: 0.5rem 0;
     page-break-inside: avoid;
+}
+
+.ds-icon-list svg {
+    flex-shrink: 0;
 }
 
 .ds-icon-list code {
@@ -819,15 +824,9 @@ if ($prism) {
     }
 }
 
-@include breakpoints.media-breakpoint-up(xl) {
-    .ds-icon-list {
-        column-count: 4;
-    }
-}
-
 @include breakpoints.media-breakpoint-up(xxl) {
     .ds-icon-list {
-        column-count: 5;
+        column-count: 4;
     }
 }
 </style>

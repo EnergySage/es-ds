@@ -10,5 +10,8 @@ export default defineNuxtConfig({
     // https://nuxt.com/docs/getting-started/deployment#static-hosting
     ssr: true,
 
-    modules: ["@nuxt/image"]
-})
+    modules: [
+        './modules/auto-import-eslint.ts',
+        '@nuxt/image'
+    ],
+});

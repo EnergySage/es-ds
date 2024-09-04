@@ -1,46 +1,6 @@
-
-<template>
-    <rating
-        :modelValue="roundedRating"
-        :cancel="false" 
-        :readonly="readOnly"
-        @update:modelValue="update"
-        v-bind="$attrs"
-        data-testid="rating-test"
-        :pt="{
-            root: (options)  => ({
-                class: [
-                    'bg-transparent rounded-0 text-orange rating',
-                    {
-                        'reactive':  !options.props.readonly
-                    }
-                ]
-            }),   	
-            item: (options)  => ({
-                class:[
-                    { 
-                       
-                        'reactiveStar':  !options.props.readonly
-                    }
-                ],
-            })
-        }"
-    >
-    <template #officon>
-        <icon-star-empty
-            :width="width"
-            :height="height" />
-    </template>
-    <template #onicon>
-        <icon-star-full
-            :width="width"
-            :height="height" />
-    </template>
-    </rating>
-</template>
-
 <script setup lang="ts">
 import Rating from 'primevue/rating';
+
 const props = defineProps({
     /**
      * Starting rating
@@ -84,20 +44,59 @@ const props = defineProps({
     },
 });
 
-var localRating = ref(props.rating)
+const localRating = ref(props.rating);
 
 const roundedRating = computed(() => {
     if (!props.rounded) {
         return localRating.value;
     }
     // Rounds to nearest .5
-    return Math.round(localRating.value * 2) / 2
-});  
+    return Math.round(localRating.value * 2) / 2;
+});
 
-const update = (value: number) =>{
+const update = (value: number) => {
     localRating.value = value;
-}
+};
 </script>
+
+<template>
+    <rating
+        :model-value="roundedRating"
+        :cancel="false"
+        :readonly="readOnly"
+        v-bind="$attrs"
+        data-testid="rating-test"
+        :pt="{
+            root: (options)  => ({
+                class: [
+                    'bg-transparent rounded-0 text-orange rating',
+                    {
+                        'reactive':  !options.props.readonly
+                    }
+                ]
+            }),
+            item: (options)  => ({
+                class:[
+                    {
+
+                        'reactiveStar':  !options.props.readonly
+                    }
+                ],
+            })
+        }"
+        @update:model-value="update">
+        <template #officon>
+            <icon-star-empty
+                :width="width"
+                :height="height" />
+        </template>
+        <template #onicon>
+            <icon-star-full
+                :width="width"
+                :height="height" />
+        </template>
+    </rating>
+</template>
 
 <style lang="scss">
 .rating {

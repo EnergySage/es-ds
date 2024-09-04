@@ -24,8 +24,10 @@
 
 /* es-collapse built on primevue panel */
 
-.es-collapse-toggler svg {
-  transition: transform .5s ease;
+@media not (prefers-reduced-motion) {
+  .es-collapse-toggler svg {
+    transition: transform .5s ease;
+  }
 }
 
 .es-collapse-toggler[aria-expanded="true"] svg {

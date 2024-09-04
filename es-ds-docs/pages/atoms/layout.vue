@@ -1,3 +1,49 @@
+<script setup lang="ts">
+import sassBreakpoints from '@energysage/es-ds-styles/scss/modules/breakpoints.module.scss';
+import sassMaxWidths from '@energysage/es-ds-styles/scss/modules/max-widths.module.scss';
+
+const breakpointTableLabels = ['Breakpoint', 'Max container width'];
+
+const breakpointTableFields = [
+    // { key: 'label', label: `` },
+    { key: 'xs', label: 'Extra small (xs)' },
+    { key: 'sm', label: 'Small (sm)' },
+    { key: 'md', label: 'Medium (md)' },
+    { key: 'lg', label: 'Large (lg)' },
+    { key: 'xl', label: 'Extra large (xl)' },
+    { key: 'xxl', label: 'Extra extra large (xxl)' },
+];
+const breakpointTableItems = [
+    {
+        // label: 'Breakpoint',
+        xs: `< ${sassBreakpoints.sm}`,
+        sm: `≥ ${sassBreakpoints.sm}`,
+        md: `≥ ${sassBreakpoints.md}`,
+        lg: `≥ ${sassBreakpoints.lg}`,
+        xl: `≥ ${sassBreakpoints.xl}`,
+        xxl: `≥ ${sassBreakpoints.xxl}`,
+    },
+    {
+        // label: 'Max container width',
+        xs: 'None',
+        sm: sassMaxWidths.sm,
+        md: sassMaxWidths.md,
+        lg: sassMaxWidths.lg,
+        xl: sassMaxWidths.xl,
+        xxl: sassMaxWidths.xxl,
+    },
+];
+
+const { $prism } = useNuxtApp();
+const docCode = ref('');
+
+if ($prism) {
+    // eslint-disable-next-line import/no-self-import
+    const docSource = await import('./layout.vue?raw');
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+</script>
 <template>
     <div>
         <h1>
@@ -5,7 +51,9 @@
         </h1>
         <p>
             Based on
-            <nuxt-link to="https://bootstrap-vue.org/docs/components/layout" target="_blank">
+            <nuxt-link
+                to="https://bootstrap-vue.org/docs/components/layout"
+                target="_blank">
                 Bootstrap Vue layout
             </nuxt-link>
         </p>
@@ -18,7 +66,8 @@
         <ds-responsive-table>
             <ds-responsive-table-row
                 v-for="field in breakpointTableFields"
-                zebraStripes>
+                :key="field.key"
+                zebra-stripes>
                 <ds-responsive-table-column>
                     <template #name>
                         &nbsp;
@@ -30,7 +79,8 @@
                     </template>
                 </ds-responsive-table-column>
                 <ds-responsive-table-column
-                    v-for="(item, index) in breakpointTableItems">
+                    v-for="(item, index) in breakpointTableItems"
+                    :key="index">
                     <template #name>
                         {{ breakpointTableLabels[index] }}
                     </template>
@@ -262,52 +312,3 @@
             doc-source="es-ds-docs/atoms/layout.vue" />
     </div>
 </template>
-<script setup lang="ts">
-import sassBreakpoints from '@energysage/es-ds-styles/scss/modules/breakpoints.module.scss';
-import sassMaxWidths from '@energysage/es-ds-styles/scss/modules/max-widths.module.scss';
-
-
-const  breakpointTableLabels = [`Breakpoint`, `Max container width` ];
-
-const  breakpointTableFields = [
-    //{ key: 'label', label: `` },
-    { key: 'xs', label: 'Extra small (xs)' },
-    { key: 'sm', label: 'Small (sm)' },
-    { key: 'md', label: 'Medium (md)' },
-    { key: 'lg', label: 'Large (lg)' },
-    { key: 'xl', label: 'Extra large (xl)' },
-    { key: 'xxl', label: 'Extra extra large (xxl)' }
-];
-const breakpointTableItems = [
-    {
-        // label: 'Breakpoint',
-        xs: `< ${sassBreakpoints.sm}`,
-        sm: `≥ ${sassBreakpoints.sm}`,
-        md: `≥ ${sassBreakpoints.md}`,
-        lg: `≥ ${sassBreakpoints.lg}`,
-        xl: `≥ ${sassBreakpoints.xl}`,
-        xxl: `≥ ${sassBreakpoints.xxl}`,
-    },
-    {
-        // label: 'Max container width',
-        xs: 'None',
-        sm: sassMaxWidths.sm,
-        md: sassMaxWidths.md,
-        lg: sassMaxWidths.lg,
-        xl: sassMaxWidths.xl,
-        xxl: sassMaxWidths.xxl,
-    }
-];
-
-const { $prism } = useNuxtApp();
-const docCode = ref('');
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import('./layout.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>
-

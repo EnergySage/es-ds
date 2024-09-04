@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/valid-template-root -->
 <template>
     <!--
     While this file needs to exist to keep Nuxt happy, it doesn't actually do anything.

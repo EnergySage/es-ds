@@ -1,14 +1,3 @@
-<template>
-    <component
-        :is="defaultTag =='nuxt-link' ? NuxtLink: defaultTag"
-        class="es-card"
-        :class="actualVariant"
-        :to="to ? to : href"
-        v-bind="$attrs">
-        <slot />
-    </component>
-</template>
-
 <script setup lang="ts">
 // specific workaround for getting a reference to an auto-imported but not globally registered
 // component like NuxtLink, so that it can be used in a <component :is=""> context.
@@ -19,21 +8,21 @@ const NuxtLink = resolveComponent('NuxtLink');
 const props = defineProps({
     href: {
         type: String,
-        default: undefined
+        default: undefined,
     },
     tag: {
         type: String,
-        default: 'div'
+        default: 'div',
     },
     to: {
         type: String,
-        default: undefined
+        default: undefined,
     },
     variant: {
         type: String,
         default: 'display',
-        required: false
-    }
+        required: false,
+    },
 });
 
 const actualVariant = computed(() => {
@@ -43,7 +32,7 @@ const actualVariant = computed(() => {
     }
     // if no href provided, honor the specified variant
     return props.variant;
-});  
+});
 const defaultTag = computed(() => {
     // if an href is provided and no alternate link tag was provided (e.g. nuxt-link),
     // force the tag to be a nuxt-link, no matter the variant
@@ -62,3 +51,14 @@ const defaultTag = computed(() => {
     return 'button';
 });
 </script>
+
+<template>
+    <component
+        :is="defaultTag =='nuxt-link' ? NuxtLink: defaultTag"
+        class="es-card"
+        :class="actualVariant"
+        :to="to ? to : href"
+        v-bind="$attrs">
+        <slot />
+    </component>
+</template>
