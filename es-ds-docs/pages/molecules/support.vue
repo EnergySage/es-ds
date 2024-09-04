@@ -14,6 +14,24 @@ if ($prism) {
 const link = 'https://www.energysage.com';
 const placeholderImage = 'https://a-us.storyblok.com/f/1006156/110x110/d215996a95/default-installer-logo.png';
 
+const supportProps = [
+    [
+        'link',
+        'String',
+        'n/a',
+        `
+        Required. Url that this points users to.
+        `,
+    ],
+    [
+        'src',
+        'String',
+        'n/a',
+        `
+        Required. Url for the image (usually a person's headshot).
+        `,
+    ]
+];
 </script>
 
 <template>
@@ -42,6 +60,14 @@ const placeholderImage = 'https://a-us.storyblok.com/f/1006156/110x110/d215996a9
                     Schedule a free call with Jessica, your EnergySage specialist.
                 </template>
             </es-support>
+        </div>
+
+        <div class="mb-500">
+            <h2>
+                EsSupport props
+            </h2>
+            <ds-prop-table
+                :rows="supportProps" />
         </div>
 
         <ds-doc-source
