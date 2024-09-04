@@ -1,3 +1,21 @@
+<script setup lang="ts">
+
+const changeEvent = ($event) => {
+    alert($event.value);
+};
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+if ($prism) {
+    const compSource = await import('@energysage/es-ds-components/components/es-rating.vue?raw');
+    const docSource = await import('./rating.vue?raw');
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -8,7 +26,7 @@
                 href="https://v3.primevue.org/rating/"
                 target="_blank">
                 PrimeVue Rating
-        </nuxt-link>
+            </nuxt-link>
         </p>
         <div class="my-500">
             <h2>
@@ -16,8 +34,7 @@
             </h2>
             <es-rating
                 :read-only="false"
-                @change="changeEvent"
-               />
+                @change="changeEvent" />
             <h2 class="mt-500">
                 Static Display
             </h2>
@@ -47,24 +64,6 @@
             doc-source="es-ds-docs/pages/molecules/rating.vue" />
     </div>
 </template>
-
-<script setup lang="ts">
-
-const changeEvent = ($event) => {
-    alert($event.value);
-}
-
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-rating.vue?raw');
-    const docSource = await import('./rating.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>
 
 <style lang="scss">
 .code-holder {

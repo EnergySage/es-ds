@@ -1,3 +1,119 @@
+<script setup>
+const mainExamples = ref([
+    {
+        name: 'Default',
+        text: 'Default button',
+    },
+    {
+        name: 'Default (text with icon)',
+        icon: true,
+        text: 'Default button',
+    },
+    {
+        name: 'Default (icon only)',
+        icon: true,
+    },
+    {
+        name: 'Small',
+        size: 'sm',
+        text: 'Small button',
+    },
+    {
+        name: 'Small (text with icon)',
+        icon: true,
+        size: 'sm',
+        text: 'Small button',
+    },
+    {
+        name: 'Small (icon only)',
+        icon: true,
+        size: 'sm',
+    },
+]);
+
+const linkExamples = ref([
+    {
+        name: 'Default',
+        secondButton: {
+            text: 'Submit',
+        },
+        text: 'Cancel',
+        variant: 'link',
+    },
+    {
+        name: 'Small',
+        size: 'sm',
+        secondButton: {
+            text: 'Submit',
+        },
+        text: 'Cancel',
+        variant: 'link',
+    },
+    {
+        arrow: true,
+        name: 'Default with arrow',
+        text: 'Learn about our rating system',
+        variant: 'link',
+    },
+    {
+        arrow: true,
+        name: 'Small with arrow',
+        size: 'sm',
+        text: 'Learn about our rating system',
+        variant: 'link',
+    },
+    {
+        name: 'Inline',
+        inline: true,
+    },
+]);
+
+const propTableRows = ref([
+    [
+        'inline',
+        'Boolean',
+        'false',
+        'Use only for the \'link\' variant. If true, removes the fixed padding and height from the '
+        + 'button so it can be aligned with other text next to it.',
+    ],
+    [
+        'outline',
+        'Boolean',
+        'false',
+        'If true, changes to the outline version of the specified variant.',
+    ],
+    [
+        'size',
+        'String',
+        '"md"',
+        'The size of the button: \'md\', or \'sm\'.',
+    ],
+    [
+        'variant',
+        'String',
+        '"primary"',
+        'The name of the desired button variant: \'primary\', \'dark-bg\', or \'link\'.',
+    ],
+]);
+
+const propTableWidths = ref({
+    md: ['3', '1', '3', '5'],
+    lg: ['2', '1', '1', '8'],
+});
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+if ($prism) {
+    const compSource = await import('@energysage/es-ds-components/components/es-button.vue?raw');
+    const docSource = await import('./button.vue?raw');
+
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -485,119 +601,3 @@
 
     </div>
 </template>
-
-<script setup>
-const mainExamples = ref([
-    {
-        name: 'Default',
-        text: 'Default button',
-    },
-    {
-        name: 'Default (text with icon)',
-        icon: true,
-        text: 'Default button',
-    },
-    {
-        name: 'Default (icon only)',
-        icon: true,
-    },
-    {
-        name: 'Small',
-        size: 'sm',
-        text: 'Small button',
-    },
-    {
-        name: 'Small (text with icon)',
-        icon: true,
-        size: 'sm',
-        text: 'Small button',
-    },
-    {
-        name: 'Small (icon only)',
-        icon: true,
-        size: 'sm',
-    },
-]);
-
-const linkExamples = ref([
-    {
-        name: 'Default',
-        secondButton: {
-            text: 'Submit',
-        },
-        text: 'Cancel',
-        variant: 'link',
-    },
-    {
-        name: 'Small',
-        size: 'sm',
-        secondButton: {
-            text: 'Submit',
-        },
-        text: 'Cancel',
-        variant: 'link',
-    },
-    {
-        arrow: true,
-        name: 'Default with arrow',
-        text: 'Learn about our rating system',
-        variant: 'link',
-    },
-    {
-        arrow: true,
-        name: 'Small with arrow',
-        size: 'sm',
-        text: 'Learn about our rating system',
-        variant: 'link',
-    },
-    {
-        name: 'Inline',
-        inline: true,
-    },
-]);
-
-const propTableRows = ref([
-    [
-        'inline',
-        'Boolean',
-        'false',
-        'Use only for the \'link\' variant. If true, removes the fixed padding and height from the '
-        + 'button so it can be aligned with other text next to it.',
-    ],
-    [
-        'outline',
-        'Boolean',
-        'false',
-        'If true, changes to the outline version of the specified variant.',
-    ],
-    [
-        'size',
-        'String',
-        '"md"',
-        'The size of the button: \'md\', or \'sm\'.',
-    ],
-    [
-        'variant',
-        'String',
-        '"primary"',
-        'The name of the desired button variant: \'primary\', \'dark-bg\', or \'link\'.',
-    ],
-]);
-
-const propTableWidths = ref({
-    md: ['3', '1', '3', '5'],
-    lg: ['2', '1', '1', '8'],
-});
-
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-button.vue?raw');
-    const docSource = await import('./button.vue?raw');
-
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>

@@ -54,16 +54,16 @@ const props = defineProps({
     rounded: {
         type: Boolean,
         default: true,
-    }
-})
+    },
+});
 
 const getRootClasses = computed(() => {
     const withOutline = props.outline ? '-outline' : '';
-    const btnVariant = props.variant === 'link' ? 'btn-link' :
-        props.variant === 'dark-bg' ? `btn${withOutline}-dark-bg` :
-            `btn${withOutline}-primary`;
+    const btnVariant = props.variant === 'link' ? 'btn-link'
+        : props.variant === 'dark-bg' ? `btn${withOutline}-dark-bg`
+            : `btn${withOutline}-primary`;
     const btnInline = props.inline ? 'inline' : '';
-    const btnSize = props.size ? `btn-${props.size }` : 'btn-md';
+    const btnSize = props.size ? `btn-${props.size}` : 'btn-md';
     return `btn ${btnVariant} ${btnInline} ${btnSize}`;
 });
 </script>

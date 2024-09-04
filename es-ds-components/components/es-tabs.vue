@@ -27,14 +27,14 @@ const updateActiveIndex = (index) => {
 <template>
     <tab-view
         :active-index="activeIndex"
-        @update:active-index="updateActiveIndex"
         :pt="{
             root: 'tabs es-tabs',
             nav: 'list-unstyled nav position-relative',
             tab: 'nav-link',
             inkbar: 'inkbar position-absolute',
             panelContainer: 'tab-content'
-        }">
+        }"
+        @update:active-index="updateActiveIndex">
         <tab-panel
             v-for="(panel, index) in panels"
             :key="index"
@@ -58,7 +58,9 @@ const updateActiveIndex = (index) => {
                     ]
                 })
             }">
-            <component v-for="item in panel.children.default()" :is="item" />
+            <component
+                :is="item"
+                v-for="item in panel.children.default()" />
         </tab-panel>
     </tab-view>
 </template>

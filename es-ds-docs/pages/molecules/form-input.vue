@@ -1,3 +1,82 @@
+<script setup>
+
+const form = ref({
+    emailCorrect: 'hello@energysage.com',
+    emailWrong: 'hello@energy',
+    firstName: '',
+    password: '',
+    phoneNumber: '',
+    zipCode: '',
+});
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+
+if ($prism) {
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    const compSource = await import('@energysage/es-ds-components/components/es-form-input.vue?raw');
+    const docSource = await import('./form-input.vue?raw');
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+
+const propTableRows = [
+    [
+        'v-model',
+        'String',
+        'n/a',
+        'Required. The v-model directive binds the input to a data property.',
+    ],
+    [
+        'id',
+        'String',
+        'n/a',
+        'Required. The id of the input.',
+    ],
+    [
+        'disabled',
+        'Boolean',
+        'false',
+        'Specifies that the input should be disabled.',
+    ],
+    [
+        'label-sr-only',
+        'Boolean',
+        'false',
+        'Specifies that the label should be visually hidden.',
+    ],
+    [
+        'required',
+        'Boolean',
+        'false',
+        'Specifies that the input is required.',
+    ],
+    [
+        'state',
+        'Boolean',
+        'null',
+        'Specifies the validity of the input. Can be true (success), false (error), or null (default).',
+    ],
+    [
+        'phone-mask-value',
+        'String',
+        "'(999) 999-9999'",
+        'The mask value for the phone number input.',
+    ],
+    [
+        'type',
+        'String',
+        "'text'",
+        'The type of input. Can be text, number, email, password, tel, or maskedTel.',
+    ],
+];
+
+</script>
+
 <template>
     <div>
         <h1>
@@ -340,82 +419,3 @@
             doc-source="es-ds-docs/pages/molecules/form-input.vue" />
     </div>
 </template>
-
-<script setup>
-
-const form = ref({
-    emailCorrect: 'hello@energysage.com',
-    emailWrong: 'hello@energy',
-    firstName: '',
-    password: '',
-    phoneNumber: '',
-    zipCode: '',
-});
-
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref("");
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-form-input.vue?raw');
-    const docSource = await import("./form-input.vue?raw");
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-
-const propTableRows = [
-    [
-        'v-model',
-        'String',
-        'n/a',
-        'Required. The v-model directive binds the input to a data property.',
-    ],
-    [
-        'id',
-        'String',
-        'n/a',
-        'Required. The id of the input.',
-    ],
-    [
-        'disabled',
-        'Boolean',
-        'false',
-        'Specifies that the input should be disabled.',
-    ],
-    [
-        'label-sr-only',
-        'Boolean',
-        'false',
-        'Specifies that the label should be visually hidden.',
-    ],
-    [
-        'required',
-        'Boolean',
-        'false',
-        'Specifies that the input is required.',
-    ],
-    [
-        'state',
-        'Boolean',
-        "null",
-        'Specifies the validity of the input. Can be true (success), false (error), or null (default).',
-    ],
-    [
-        'phone-mask-value',
-        'String',
-        "'(999) 999-9999'",
-        'The mask value for the phone number input.',
-    ],
-    [
-        'type',
-        'String',
-        "'text'",
-        'The type of input. Can be text, number, email, password, tel, or maskedTel.',
-    ],
-];
-
-</script>

@@ -111,7 +111,9 @@ if ($prism) {
                 contents! If you click the collapse itself, the "visible" prop will no longer be honored.
             </p>
             <form class="mb-100">
-                <es-form-checkbox v-model="suggestedVisible" id="suggestedVisibleInput">
+                <es-form-checkbox
+                    id="suggestedVisibleInput"
+                    v-model="suggestedVisible">
                     Toggle collapse programmatically (will be honored until a manual expand or collapse)
                 </es-form-checkbox>
             </form>
@@ -147,7 +149,9 @@ if ($prism) {
                 itself, the "visible" prop will continue to be honored.
             </p>
             <form class="mb-100">
-                <es-form-checkbox v-model="visible" id="visible">
+                <es-form-checkbox
+                    id="visible"
+                    v-model="visible">
                     Toggle collapse programmatically (will always be honored)
                 </es-form-checkbox>
             </form>
