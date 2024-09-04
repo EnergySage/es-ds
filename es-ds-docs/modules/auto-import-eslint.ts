@@ -1,3 +1,5 @@
+// This comes from @mudoo on this GitHub issue: https://github.com/nuxt/eslint-plugin-nuxt/issues/173
+
 import { basename, resolve } from 'path';
 import type { Import, Unimport } from 'unimport';
 import { addTemplate, defineNuxtModule } from '@nuxt/kit';
