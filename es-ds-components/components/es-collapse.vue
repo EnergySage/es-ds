@@ -1,40 +1,9 @@
-<template>
-    <panel
-        :collapsed="!expanded"
-        :pt="{
-            header: 'align-items-center d-flex justify-content-between position-relative py-100',
-            icons: 'h-100 position-absolute w-100',
-            root: border ? 'border-bottom border-top' : '',
-            toggler: {
-                class: 'es-collapse-toggler align-items-center btn btn-link d-flex h-100 inline justify-content-end rounded-0 p-0 position-absolute text-body w-100',
-            },
-            // https://vuejs.org/guide/built-ins/transition
-            transition: {
-                enterActiveClass: 'es-collapse-enter-active',
-                enterFromClass: 'es-collapse-enter-from',
-                enterToClass: 'es-collapse-enter-to',
-                leaveActiveClass: 'es-collapse-leave-active',
-                leaveFromClass: 'es-collapse-leave-from',
-                leaveToClass: 'es-collapse-leave-to'
-            },
-        }"
-        toggleable
-        @toggle="onClick">
-        <template #header>
-            <slot name="title" />
-        </template>
-        <template #togglericon>
-            <icon-chevron-down />
-        </template>
-        <slot />
-    </panel>
-</template>
-
 <script setup lang="ts">
 import Panel from 'primevue/panel';
 
 const emit = defineEmits(['toggled', 'userClick']);
-const model = defineModel();
+
+const model = defineModel<boolean>();
 const props = defineProps({
     border: {
         type: Boolean,
@@ -42,12 +11,12 @@ const props = defineProps({
     },
     isProgrammaticUntilUserInput: {
         type: Boolean,
-        default: true
+        default: true,
     },
     visible: {
         type: Boolean,
-        default: false
-    }
+        default: false,
+    },
 });
 
 const userDeterminedState = ref(null);
@@ -79,3 +48,36 @@ const onClick = ({ value }) => {
     emit('userClick', !value);
 };
 </script>
+
+<template>
+    <panel
+        :collapsed="!expanded"
+        :pt="{
+            header: 'align-items-center d-flex justify-content-between position-relative py-100',
+            icons: 'h-100 position-absolute w-100',
+            root: border ? 'border-bottom border-top' : '',
+            toggler: {
+                // eslint-disable-next-line max-len
+                class: 'es-collapse-toggler align-items-center btn btn-link d-flex h-100 inline justify-content-end rounded-0 p-0 position-absolute text-body w-100',
+            },
+            // https://vuejs.org/guide/built-ins/transition
+            transition: {
+                enterActiveClass: 'es-collapse-enter-active',
+                enterFromClass: 'es-collapse-enter-from',
+                enterToClass: 'es-collapse-enter-to',
+                leaveActiveClass: 'es-collapse-leave-active',
+                leaveFromClass: 'es-collapse-leave-from',
+                leaveToClass: 'es-collapse-leave-to'
+            },
+        }"
+        toggleable
+        @toggle="onClick">
+        <template #header>
+            <slot name="title" />
+        </template>
+        <template #togglericon>
+            <icon-chevron-down />
+        </template>
+        <slot />
+    </panel>
+</template>

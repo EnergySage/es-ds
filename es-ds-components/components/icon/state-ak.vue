@@ -1,3 +1,27 @@
+<script>
+export default {
+    name: 'IconStateAk',
+    props: {
+        /**
+         * Width
+         */
+        width: {
+            type: String,
+            default: '24px',
+            required: false,
+        },
+        /**
+         * Height
+         */
+        height: {
+            type: String,
+            default: '24px',
+            required: false,
+        },
+    },
+};
+</script>
+
 <template>
     <svg
         :style="{
@@ -27,27 +51,3 @@
             points="114.54 148.83 111.09 151.27 105.21 155.73 99.12 159.39 97.5 160.81 98.92 168.11 102.57 169.13 108.86 165.47 114.34 162.23 112.31 159.18 112.92 156.14 110.28 157.76 106.63 156.75 108.66 155.33 111.09 156.34 115.96 154.11 116.57 152.28 113.53 151.27 114.54 148.83" />
     </svg>
 </template>
-
-<script>
-export default {
-    name: 'IconStateAk',
-    props: {
-        /**
-         * Width
-         */
-        width: {
-            type: String,
-            default: '24px',
-            required: false,
-        },
-        /**
-         * Height
-         */
-        height: {
-            type: String,
-            default: '24px',
-            required: false,
-        },
-    },
-};
-</script>

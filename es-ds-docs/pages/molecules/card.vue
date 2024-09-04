@@ -1,3 +1,22 @@
+<script setup>
+const columnWidths = {
+    md: ['2', '2', '8'],
+};
+const modalVisible = ref(false);
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+if ($prism) {
+    const compSource = await import('@energysage/es-ds-components/components/es-card.vue?raw');
+    // eslint-disable-next-line import/no-self-import
+    const docSource = await import('./card.vue?raw');
+    compCode.value = $prism.normalizeCode(compSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+</script>
+
 <template>
     <div>
         <h1>
@@ -33,9 +52,9 @@
                 Use <code>variant="interactive"</code> to change the card's visual treatment to
                 indicate that it's clickable. By default, it will automatically become a button.
             </p>
-            <es-card   
+            <es-card
                 variant="interactive"
-                @click="notify('The interactive card has been clicked.')">
+                @click="modalVisible = true">
                 <h3>
                     Card title
                 </h3>
@@ -43,9 +62,7 @@
                     Card contents
                 </p>
             </es-card>
-            <!-- TODO: Add modal component once modal is created, swap notify with
-                "modalVisible = true", and delete nofity function
-                <es-modal
+            <es-modal
                 id="button-modal"
                 hide-footer
                 :visible="modalVisible"
@@ -58,7 +75,7 @@
                         The interactive card has been clicked.
                     </p>
                 </template>
-            </es-modal> -->
+            </es-modal>
         </div>
 
         <div class="mb-500">
@@ -204,30 +221,10 @@
                 </ds-responsive-table-row>
             </ds-responsive-table>
         </div>
-       <ds-doc-source
+        <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/components/es-card.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/card.vue" />
     </div>
 </template>
-
-<script setup>
-const columnWidths = {
-    md: ['2', '2', '8'],
-};
-const modalVisible = false;
-const notify = (string) => {
-    alert(string);
-}
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-card.vue?raw');
-    const docSource = await import('./card.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-</script>

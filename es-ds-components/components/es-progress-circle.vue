@@ -1,3 +1,26 @@
+<script setup lang="ts">
+const props = defineProps({
+    height: {
+        type: String,
+        default: '50px',
+    },
+    value: {
+        type: Number,
+        required: true,
+    },
+    showPercentage: {
+        type: Boolean,
+        default: true,
+    },
+});
+
+const computedHeight = computed(() => {
+    const height = props.height.replace(/[^0-9]/g, '');
+    return parseInt(height, 10);
+});
+const fillLength = computed(() => computedHeight.value * Math.PI * (props.value / 100) * (90 / computedHeight.value));
+</script>
+
 <template>
     <div
         v-bind="$attrs">
@@ -41,32 +64,6 @@
         </svg>
     </div>
 </template>
-
-<script setup lang="ts">
-const props = defineProps({
-    height: {
-            type: String,
-            default: '50px',
-        },
-        value: {
-            type: Number,
-            required: true,
-        },
-        showPercentage: {
-            type: Boolean,
-            default: true,
-        }
-});
-
-const computedHeight = computed(() => {
-        const height = props.height.replace(/[^0-9]/g, '');
-        return parseInt(height, 10);
-    });
-const fillLength = computed(() => {
-    return computedHeight.value * Math.PI * (props.value / 100) * (90 / computedHeight.value);
-    });
-</script>
-
 
 <style lang="scss" scoped>
 @use "@energysage/es-ds-styles/scss/variables" as variables;

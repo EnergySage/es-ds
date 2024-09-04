@@ -2,34 +2,37 @@
 const state = reactive({
     form: {
         name: '',
-    }
+    },
 });
 const rules = {};
 
-const { showFormError, formShowError, formMsgVariant, isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(rules, state);
+const {
+    showFormError, formShowError, formMsgVariant, isSubmitInProgress, startSubmit, stopSubmit,
+} = useEsForms(rules, state);
 
 const asyncTimeout = async (seconds = 3) => {
     const millisecondTimeout = seconds * 1000;
     return new Promise((resolve) => {
         setTimeout(resolve, millisecondTimeout);
     });
-}
+};
 
 const fakeServerRequest = async () => {
     await asyncTimeout();
     showFormError();
-}
+};
 
 const onSubmit = async () => {
     startSubmit(); // This method via forms composable, will set submitInProgress to true
     await fakeServerRequest();
     stopSubmit(); // This method via forms composable, will set submitInProgress to false
-}
+};
 
 const { $prism } = useNuxtApp();
-const docCode = ref("");
+const docCode = ref('');
 if ($prism) {
-    const docSource = await import("./form-validation.vue?raw");
+    // eslint-disable-next-line import/no-self-import
+    const docSource = await import('./form-validation.vue?raw');
 
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();

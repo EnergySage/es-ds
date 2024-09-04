@@ -8,7 +8,7 @@ defineProps({
         type: String,
         default: 'status',
     },
-})
+});
 </script>
 
 <template>

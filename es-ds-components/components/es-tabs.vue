@@ -3,7 +3,7 @@ import TabPanel from 'primevue/tabpanel';
 import TabView from 'primevue/tabview';
 
 // allow use of v-model on this component
-const model = defineModel();
+const model = defineModel<number>();
 
 // get the list of elements provided as children to the default slot
 const panels = useSlots().default?.() || [];
@@ -27,14 +27,14 @@ const updateActiveIndex = (index) => {
 <template>
     <tab-view
         :active-index="activeIndex"
-        @update:active-index="updateActiveIndex"
         :pt="{
             root: 'tabs es-tabs',
             nav: 'list-unstyled nav position-relative',
             tab: 'nav-link',
             inkbar: 'inkbar position-absolute',
             panelContainer: 'tab-content'
-        }">
+        }"
+        @update:active-index="updateActiveIndex">
         <tab-panel
             v-for="(panel, index) in panels"
             :key="index"
@@ -58,7 +58,10 @@ const updateActiveIndex = (index) => {
                     ]
                 })
             }">
-            <component v-for="item in panel.children.default()" :is="item" />
+            <component
+                :is="item"
+                v-for="(item, idx) in panel.children.default()"
+                :key="idx" />
         </tab-panel>
     </tab-view>
 </template>

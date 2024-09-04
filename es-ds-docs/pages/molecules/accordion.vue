@@ -71,14 +71,18 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>Accordion</h1>
+        <h1>
+            Accordion
+        </h1>
         <p class="mb-450">
             Extended from
             <a href="https://v3.primevue.org/accordion/">PrimeVue accordion</a>
         </p>
 
         <div class="mb-450">
-            <h2>Single expand</h2>
+            <h2>
+                Single expand
+            </h2>
             <p>
                 By default, accordions will only allow one item to be expanded at a
                 time. Upon expanding a second item, the open item will collapse.
@@ -143,15 +147,16 @@ if ($prism) {
         </div>
 
         <div class="mb-450">
-            <h2>Single expand, minimal variant</h2>
+            <h2>
+                Single expand, minimal variant
+            </h2>
             <p>
                 The minimal variant is designed to be used within a block of long-form
                 content to better match headings and text alignment.
             </p>
             <es-accordion-list
                 initial-expanded-id="single-question-21"
-                variant="minimal"
-            >
+                variant="minimal">
                 <es-accordion id="single-question-21">
                     <template #title>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit?
@@ -211,7 +216,9 @@ if ($prism) {
         </div>
 
         <div class="mb-450">
-            <h2>Single expand, starts collapsed</h2>
+            <h2>
+                Single expand, starts collapsed
+            </h2>
             <p>
                 If no initial expanded id is provided, each item will start collapsed.
             </p>
@@ -275,7 +282,9 @@ if ($prism) {
         </div>
 
         <div class="mb-450">
-            <h2>Single expand with v-model</h2>
+            <h2>
+                Single expand with v-model
+            </h2>
             <p>
                 If you want to control the accordion programmatically or trigger a UI
                 change elsewhere when a specific item is expanded, you can use the
@@ -287,29 +296,25 @@ if ($prism) {
                 <es-button
                     class="mb-50 mr-50"
                     :disabled="programmaticExpandedId === 'programmatic-question-1'"
-                    @click="programmaticExpandedId = 'programmatic-question-1'"
-                >
+                    @click="programmaticExpandedId = 'programmatic-question-1'">
                     Expand first accordion
                 </es-button>
                 <es-button
                     class="mb-50 mr-50"
                     :disabled="programmaticExpandedId === 'programmatic-question-2'"
-                    @click="programmaticExpandedId = 'programmatic-question-2'"
-                >
+                    @click="programmaticExpandedId = 'programmatic-question-2'">
                     Expand second accordion
                 </es-button>
                 <es-button
                     class="mb-50 mr-50"
                     :disabled="programmaticExpandedId === 'programmatic-question-3'"
-                    @click="programmaticExpandedId = 'programmatic-question-3'"
-                >
+                    @click="programmaticExpandedId = 'programmatic-question-3'">
                     Expand third accordion
                 </es-button>
                 <es-button
                     class="mb-50"
                     :disabled="programmaticExpandedId === 'programmatic-question-4'"
-                    @click="programmaticExpandedId = 'programmatic-question-4'"
-                >
+                    @click="programmaticExpandedId = 'programmatic-question-4'">
                     Expand fourth accordion
                 </es-button>
             </div>
@@ -317,8 +322,7 @@ if ($prism) {
                 <div>
                     <es-accordion-list
                         v-model="programmaticExpandedId"
-                        class="mb-4 mb-lg-0"
-                    >
+                        class="mb-4 mb-lg-0">
                         <es-accordion id="programmatic-question-1">
                             <template #title>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit?
@@ -380,29 +384,25 @@ if ($prism) {
                 <div>
                     <div
                         v-if="programmaticExpandedId === 'programmatic-question-1'"
-                        class="bg-gray-300 p-200 rounded-lg text-center"
-                    >
+                        class="bg-gray-300 p-200 rounded-lg text-center">
                         Content associated with "Lorem ipsum dolor sit amet, consectetur
                         adipiscing elit?"
                     </div>
                     <div
                         v-if="programmaticExpandedId === 'programmatic-question-2'"
-                        class="bg-gray-300 p-200 rounded-lg text-center"
-                    >
+                        class="bg-gray-300 p-200 rounded-lg text-center">
                         Content associated with "Faucibus purus in massa tempor nec
                         feugiat?"
                     </div>
                     <div
                         v-if="programmaticExpandedId === 'programmatic-question-3'"
-                        class="bg-gray-300 p-200 rounded-lg text-center"
-                    >
+                        class="bg-gray-300 p-200 rounded-lg text-center">
                         Content associated with "Duis convallis convallis tellus id interdum
                         velit laoreet id?"
                     </div>
                     <div
                         v-if="programmaticExpandedId === 'programmatic-question-4'"
-                        class="bg-gray-300 p-200 rounded-lg text-center"
-                    >
+                        class="bg-gray-300 p-200 rounded-lg text-center">
                         Content associated with "Ipsum a arcu cursus vitae congue mauris
                         rhoncus?"
                     </div>
@@ -411,7 +411,9 @@ if ($prism) {
         </div>
 
         <div class="mb-450">
-            <h2>Multiple expand</h2>
+            <h2>
+                Multiple expand
+            </h2>
             <p>
                 This variant allows more than one item to be expanded at a time. Do not
                 use in conjunction with
@@ -419,8 +421,7 @@ if ($prism) {
             </p>
             <es-accordion-list
                 allow-multiple-expand
-                initial-expanded-id="multiple-question-1"
-            >
+                initial-expanded-id="multiple-question-1">
                 <es-accordion id="multiple-question-1">
                     <template #title>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit?
