@@ -28,14 +28,7 @@ defineProps({
     type: {
         type: String,
         default: 'text',
-        validator: (val: string) => [
-            'text',
-            'email',
-            'number',
-            'password',
-            'tel',
-            'maskedTel',
-        ].includes(val),
+        validator: (val: string) => ['text', 'email', 'number', 'password', 'tel', 'maskedTel'].includes(val),
     },
     /**
      * ID
@@ -69,7 +62,6 @@ const hasSuccess = () => !!slots.successMessage;
 const hasMessage = () => !!slots.message;
 const hasError = () => !!slots.errorMessage;
 const hasExtraContext = () => !!slots.extraContext;
-
 </script>
 
 <template>
@@ -109,7 +101,7 @@ const hasExtraContext = () => !!slots.extraContext;
                 class="es-form-input form-control w-100"
                 :class="{
                     'has-prefix-icon': $slots.prefixIcon,
-                    'is-invalid': state === false
+                    'is-invalid': state === false,
                 }"
                 :mask="phoneMaskValue"
                 :disabled="disabled"
@@ -125,9 +117,7 @@ const hasExtraContext = () => !!slots.extraContext;
                 <slot
                     v-if="hasError()"
                     name="errorMessage" />
-                <template v-else-if="required">
-                    This field is required.
-                </template>
+                <template v-else-if="required"> This field is required. </template>
             </small>
             <small
                 v-if="state && hasSuccess()"

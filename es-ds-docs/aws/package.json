@@ -1,17 +1,17 @@
 {
-  "name": "aws",
-  "version": "0.1.0",
-  "bin": {
-    "aws": "bin/aws.js"
-  },
-  "scripts": {
-    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
-    "cdk": "cdk"
-  },
-  "dependencies": {
-    "aws-cdk": "^2.90.0",
-    "aws-cdk-lib": "^2.90.0",
-    "es-cdk": "^1.20.0",
-    "path": "^0.12.7"
-  }
+    "name": "aws",
+    "version": "0.1.0",
+    "bin": {
+        "aws": "bin/aws.js"
+    },
+    "scripts": {
+        "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
+        "cdk": "cdk"
+    },
+    "dependencies": {
+        "aws-cdk": "^2.90.0",
+        "aws-cdk-lib": "^2.90.0",
+        "es-cdk": "^1.20.0",
+        "path": "^0.12.7"
+    }
 }

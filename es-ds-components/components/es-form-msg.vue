@@ -23,13 +23,16 @@ const hide = () => {
     emit('hidden');
 };
 
-watch(() => props.show, (newValue, oldValue) => {
-    if (newValue && !oldValue) {
-        setTimeout(() => {
-            hide();
-        }, props.timeout * 1000);
-    }
-});
+watch(
+    () => props.show,
+    (newValue, oldValue) => {
+        if (newValue && !oldValue) {
+            setTimeout(() => {
+                hide();
+            }, props.timeout * 1000);
+        }
+    },
+);
 </script>
 
 <template>

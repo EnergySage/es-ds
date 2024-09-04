@@ -18,33 +18,33 @@ currently we're not using this (but we may want to re-visit)
 
 const props = defineProps({
     /**
-        * Button Variant
-        *
-        */
+     * Button Variant
+     *
+     */
     variant: {
         type: String,
         default: 'primary',
         required: false,
     },
     /**
-        * Outline only button
-        */
+     * Outline only button
+     */
     outline: {
         type: Boolean,
         default: false,
     },
     /**
-        * Size of button
-        */
+     * Size of button
+     */
     size: {
         type: String,
         validator: (val) => ['lg', 'md', 'sm'].includes(String(val)),
         default: 'md',
     },
     /**
-        * Only works for 'link' variant buttons.
-        * Removes the fixed height and padding so the button can fit nicely within a block of text.
-        */
+     * Only works for 'link' variant buttons.
+     * Removes the fixed height and padding so the button can fit nicely within a block of text.
+     */
     inline: {
         type: Boolean,
         default: false,
@@ -60,8 +60,10 @@ const props = defineProps({
 const getRootClasses = computed(() => {
     const withOutline = props.outline ? '-outline' : '';
     // eslint-disable-next-line no-nested-ternary
-    const btnVariant = props.variant === 'link' ? 'btn-link'
-        : props.variant === 'dark-bg' ? `btn${withOutline}-dark-bg`
+    const btnVariant = props.variant === 'link'
+        ? 'btn-link'
+        : props.variant === 'dark-bg'
+            ? `btn${withOutline}-dark-bg`
             : `btn${withOutline}-primary`;
     const btnInline = props.inline ? 'inline' : '';
     const btnSize = props.size ? `btn-${props.size}` : 'btn-md';
@@ -72,7 +74,7 @@ const getRootClasses = computed(() => {
 <template>
     <prime-button
         :pt="{
-            root: { class: getRootClasses }
+            root: { class: getRootClasses },
         }">
         <slot />
     </prime-button>

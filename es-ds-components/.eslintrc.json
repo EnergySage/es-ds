@@ -9,9 +9,7 @@
                 "alwaysTryTypes": true
             },
             "alias": {
-                "map": [
-                    ["~", "."]
-                ]
+                "map": [["~", "."]]
             }
         }
     },
@@ -142,7 +140,7 @@
         "vue/block-order": [
             "error",
             {
-                "order": [ [ "script[setup]", "script:not([setup])" ], "template", "style" ]
+                "order": [["script[setup]", "script:not([setup])"], "template", "style"]
             }
         ]
     }

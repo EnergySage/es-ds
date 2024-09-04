@@ -2,17 +2,17 @@
 export default {
     name: 'IconCommunitySolar',
     props: {
-    /**
-     * Width
-     */
+        /**
+         * Width
+         */
         width: {
             type: String,
             default: '32px',
             required: false,
         },
         /**
-     * Height
-     */
+         * Height
+         */
         height: {
             type: String,
             default: '32px',

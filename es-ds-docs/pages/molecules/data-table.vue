@@ -1,5 +1,4 @@
-<script  setup>
-
+<script setup>
 const dataTableFields = [
     {
         key: 'name',
@@ -65,39 +64,31 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Data table
-        </h1>
+        <h1>Data table</h1>
         <p class="mb-500">
-            A responsive table using the <nuxt-link to="https://v3.primevue.org/datatable/">
-                PrimeVue DataTable
-            </nuxt-link>.
-            For further details about the properties used, refer to the
+            A responsive table using the
+            <nuxt-link to="https://v3.primevue.org/datatable/"> PrimeVue DataTable </nuxt-link>. For further details
+            about the properties used, refer to the
             <nuxt-link
                 to="https://v3.primevue.org/datatable/"
-                target="_blank">official PrimeVue documentation</nuxt-link>.
-            Familiarity with the capabilities of the base component is <strong>strongly recommended</strong> if
+                target="_blank"
+                >official PrimeVue documentation</nuxt-link
+            >. Familiarity with the capabilities of the base component is <strong>strongly recommended</strong> if
             expanding the functionality of this table.
         </p>
         <div class="mb-500">
-            <h2 class="mb-200">
-                Basic version, headers inferred from 1st item
-            </h2>
+            <h2 class="mb-200">Basic version, headers inferred from 1st item</h2>
             <es-data-table :items="dataTableItems" />
         </div>
         <div class="mb-500">
-            <h2 class="mb-200">
-                Height limited to 150px w/sticky header
-            </h2>
+            <h2 class="mb-200">Height limited to 150px w/sticky header</h2>
             <es-data-table
                 sticky-header="150px"
                 :fields="dataTableFields"
                 :items="dataTableItems" />
         </div>
         <div class="mb-500">
-            <h2 class="mb-200">
-                Height limited to default 300px w/sticky header, sticky first column
-            </h2>
+            <h2 class="mb-200">Height limited to default 300px w/sticky header, sticky first column</h2>
             <es-data-table
                 sticky-header
                 sticky-first-col

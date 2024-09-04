@@ -6,9 +6,10 @@ const state = reactive({
 });
 const rules = {};
 
-const {
-    showFormError, formShowError, formMsgVariant, isSubmitInProgress, startSubmit, stopSubmit,
-} = useEsForms(rules, state);
+const { showFormError, formShowError, formMsgVariant, isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(
+    rules,
+    state,
+);
 
 const asyncTimeout = async (seconds = 3) => {
     const millisecondTimeout = seconds * 1000;
@@ -43,26 +44,17 @@ if ($prism) {
     <b-container>
         <b-row>
             <b-col>
-                <h1>
-                    Form with server error
-                </h1>
+                <h1>Form with server error</h1>
                 <p>
                     See
-                    <nuxt-link to="/examples/form-field-validation">
-                        Form with client-side validation
-                    </nuxt-link> for example of individual field validation
+                    <nuxt-link to="/examples/form-field-validation"> Form with client-side validation </nuxt-link> for
+                    example of individual field validation
                 </p>
-                <h2>
-                    UX Guidelines
-                </h2>
+                <h2>UX Guidelines</h2>
                 <ul>
+                    <li>Show loading spinner on button during server request</li>
                     <li>
-                        Show loading spinner on button during server request
-                    </li>
-                    <li>
-                        Use <nuxt-link to="/molecules/form-message">
-                            Form message
-                        </nuxt-link>
+                        Use <nuxt-link to="/molecules/form-message"> Form message </nuxt-link>
                         to display server-side errors
                     </li>
                 </ul>
@@ -77,18 +69,16 @@ if ($prism) {
                         class="mt-100"
                         :show="formShowError"
                         :variant="formMsgVariant"
-                        @hidden="formShowError=false">
-                        The server responded with an error and
-                        we were unable to complete your request. Please try again
+                        @hidden="formShowError = false">
+                        The server responded with an error and we were unable to complete your request. Please try
+                        again
                     </es-form-msg>
                     <es-form-input
                         id="form-input-name"
                         v-model="state.form.name"
                         :disabled="isSubmitInProgress"
                         required>
-                        <template #label>
-                            Name
-                        </template>
+                        <template #label> Name </template>
                     </es-form-input>
                     <div class="d-flex flex-grow-1 justify-content-end mt-200">
                         <es-button
@@ -96,16 +86,12 @@ if ($prism) {
                             class="w-100 w-lg-auto"
                             :disabled="isSubmitInProgress">
                             <span class="w-100">
-                                <span
-                                    v-if="isSubmitInProgress">
+                                <span v-if="isSubmitInProgress">
                                     <b-spinner
                                         role="status"
                                         label="Loading" />
                                 </span>
-                                <span
-                                    :class="{'sr-only': isSubmitInProgress }">
-                                    Submit
-                                </span>
+                                <span :class="{ 'sr-only': isSubmitInProgress }"> Submit </span>
                             </span>
                         </es-button>
                     </div>

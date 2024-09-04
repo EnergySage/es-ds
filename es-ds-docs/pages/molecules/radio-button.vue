@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const selectedFruit = ref('banana');
 const fruits = ref([
     { name: 'Apple', key: 'apple' },
@@ -23,53 +22,27 @@ if ($prism) {
 }
 
 const propTableRows = [
-    [
-        'disabled',
-        'Boolean',
-        'false',
-        'When present, it specifies that the radio button should be disabled.',
-    ],
-    [
-        'inline',
-        'Boolean',
-        'false',
-        'When present, it specifies that the radio buttons should be displayed inline.',
-    ],
-    [
-        'v-model',
-        'String',
-        'n/a',
-        'Required. The v-model directive binds the radio button to a data property.',
-    ],
-    [
-        'display-name',
-        'String',
-        'n/a',
-        'Required. The text to display next to the radio button.',
-    ],
-    [
-        'value',
-        'String',
-        'n/a',
-        'Required. The value to be used by v-model.',
-    ],
+    ['disabled', 'Boolean', 'false', 'When present, it specifies that the radio button should be disabled.'],
+    ['inline', 'Boolean', 'false', 'When present, it specifies that the radio buttons should be displayed inline.'],
+    ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the radio button to a data property.'],
+    ['display-name', 'String', 'n/a', 'Required. The text to display next to the radio button.'],
+    ['value', 'String', 'n/a', 'Required. The value to be used by v-model.'],
     [
         'group-name',
         'String',
         "''",
-        'Descriptive name of the radio button group. Optional but should be used if multiple groups '
-        + 'use the same v-model.',
+        'Descriptive name of the radio button group. Optional but should be used if multiple groups ' +
+            'use the same v-model.',
     ],
 ];
 </script>
 
 <template>
     <div>
-        <h1>
-            Radio button
-        </h1>
+        <h1>Radio button</h1>
         <p class="mb-500">
-            Uses <a
+            Uses
+            <a
                 href="https://v3.primevue.org/radiobutton/"
                 target="_blank">
                 PrimeVue RadioButton
@@ -77,12 +50,8 @@ const propTableRows = [
         </p>
 
         <div class="my-500">
-            <h2>
-                Inline
-            </h2>
-            <p>
-                Please choose your favorite fruit.
-            </p>
+            <h2>Inline</h2>
+            <p>Please choose your favorite fruit.</p>
             <es-radio-button
                 v-for="fruit in fruits"
                 :key="fruit.key"
@@ -94,12 +63,8 @@ const propTableRows = [
         </div>
 
         <div class="my-500">
-            <h2>
-                Stacked
-            </h2>
-            <p>
-                Please choose your favorite fruit.
-            </p>
+            <h2>Stacked</h2>
+            <p>Please choose your favorite fruit.</p>
             <es-radio-button
                 v-for="fruit in fruits"
                 :key="fruit.key"
@@ -110,12 +75,8 @@ const propTableRows = [
         </div>
 
         <div class="my-500">
-            <h2>
-                Disabled
-            </h2>
-            <p>
-                Please choose your favorite fruit.
-            </p>
+            <h2>Disabled</h2>
+            <p>Please choose your favorite fruit.</p>
             <es-radio-button
                 v-for="fruit in fruits"
                 :key="fruit.key"
@@ -127,11 +88,8 @@ const propTableRows = [
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsRadioButton props
-            </h2>
-            <ds-prop-table
-                :rows="propTableRows" />
+            <h2>EsRadioButton props</h2>
+            <ds-prop-table :rows="propTableRows" />
         </div>
 
         <ds-doc-source

@@ -1,12 +1,9 @@
 import { type ErrorObject, useVuelidate, type ValidationArgs } from '@vuelidate/core';
 import type { ToRefs, Ref } from 'vue';
 
-export function useEsForms<
-  T extends {[key in keyof Vargs]: any},
-  Vargs extends ValidationArgs = ValidationArgs,
->(
-  validationsArgs: Ref<Vargs> | Vargs,
-  state: T | Ref<T> | ToRefs<T>,
+export function useEsForms<T extends { [key in keyof Vargs]: any }, Vargs extends ValidationArgs = ValidationArgs>(
+    validationsArgs: Ref<Vargs> | Vargs,
+    state: T | Ref<T> | ToRefs<T>,
 ) {
     const v$ = useVuelidate(validationsArgs, state);
 
@@ -21,13 +18,11 @@ export function useEsForms<
         let objKeys = null;
         try {
             objKeys = Object.keys(obj);
-            console.log('objKeys: ', objKeys)
+            console.log('objKeys: ', objKeys);
         } catch (e) {
             return [];
         }
-        return objKeys
-            .filter((name) => !name.startsWith('$'))
-            .map((name) => ({ name, [valueKey]: obj[name] }));
+        return objKeys.filter((name) => !name.startsWith('$')).map((name) => ({ name, [valueKey]: obj[name] }));
     };
 
     const formErrors = computed(() => {
@@ -38,7 +33,7 @@ export function useEsForms<
             }
             acc[error.$property].push(error.$validator);
             return acc;
-        }, {})
+        }, {});
     });
 
     const getValidatorField = (dotPath: string) => {
@@ -53,7 +48,7 @@ export function useEsForms<
             return null;
         }
         return validatorField;
-    }
+    };
 
     const validateState = (dotPath: string) => {
         const validatorField = getValidatorField(dotPath);
@@ -62,7 +57,7 @@ export function useEsForms<
         }
         const { $dirty, $error } = validatorField;
         return $dirty ? !$error : null;
-    }
+    };
 
     const touchOnChange = (dotPath: string) => {
         const validatorField = getValidatorField(dotPath);
@@ -79,32 +74,30 @@ export function useEsForms<
     ) => {
         formMsgVariant.value = 'danger';
         formShowError.value = true;
-    }
+    };
 
-    const showFormSuccess = (
-        text = 'Saved Successfully',
-    ) => {
+    const showFormSuccess = (text = 'Saved Successfully') => {
         formMsgVariant.value = 'success';
         formShowSuccess.value = true;
-    }
+    };
 
     const hideFormError = () => {
         formShowError.value = false;
-    }
+    };
 
     const hideFormSuccess = () => {
         formShowSuccess.value = false;
-    }
+    };
 
     const startSubmit = () => {
         submitInProgress.value = true;
         formShowSuccess.value = false;
         formShowError.value = false;
-    }
+    };
 
     const stopSubmit = () => {
         submitInProgress.value = false;
-    }
+    };
 
     return {
         v$,

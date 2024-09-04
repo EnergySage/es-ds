@@ -49,11 +49,10 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Breadcrumbs
-        </h1>
+        <h1>Breadcrumbs</h1>
         <p>
-            Extended from <a
+            Extended from
+            <a
                 href="https://v3.primevue.org/breadcrumb/"
                 target="_blank">
                 PrimeVue Breadcrumb

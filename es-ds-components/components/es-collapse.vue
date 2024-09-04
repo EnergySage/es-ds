@@ -67,7 +67,7 @@ const onClick = ({ value }) => {
                 enterToClass: 'es-collapse-enter-to',
                 leaveActiveClass: 'es-collapse-leave-active',
                 leaveFromClass: 'es-collapse-leave-from',
-                leaveToClass: 'es-collapse-leave-to'
+                leaveToClass: 'es-collapse-leave-to',
             },
         }"
         toggleable

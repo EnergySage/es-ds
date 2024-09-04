@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 // with vite, sass variable exports must be defined as xyz.module.scss in order to be
 // imported into JS as an object rather than a string of the file contents
 // https://github.com/vitejs/vite/discussions/9601#discussioncomment-3359769
@@ -103,13 +102,11 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Colors
-        </h1>
+        <h1>Colors</h1>
         <p>
-            Below you will find our named color definitions. They are meant to convey the meaning of the color
-            using a defined naming convention. When working, please use these color definitions and try to avoid
-            introducing new unamed colors.
+            Below you will find our named color definitions. They are meant to convey the meaning of the color using a
+            defined naming convention. When working, please use these color definitions and try to avoid introducing
+            new unamed colors.
         </p>
         <p>
             All colors (except restricted colors) have CSS utility classes associated with them.
@@ -118,9 +115,7 @@ if ($prism) {
         </p>
 
         <div class="my-500">
-            <h2>
-                Core colors
-            </h2>
+            <h2>Core colors</h2>
             <b-row>
                 <b-col
                     v-for="(value, alias) in coreColors"
@@ -131,9 +126,7 @@ if ($prism) {
                     lg="2"
                     class="mb-100 text-center">
                     <ds-color-swatch
-                        :is-light="[
-                            'white', 'soft-blue', 'medium-blue', 'warm-orange'
-                        ].includes(alias)"
+                        :is-light="['white', 'soft-blue', 'medium-blue', 'warm-orange'].includes(alias)"
                         :hex="value"
                         :show-border="['white'].includes(alias)"
                         :token="alias" />
@@ -145,9 +138,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Primary
-            </h2>
+            <h2>Primary</h2>
             <b-row>
                 <b-col
                     v-for="[alias, value] in blues"
@@ -158,9 +149,7 @@ if ($prism) {
                     lg="2"
                     class="mb-100 text-center">
                     <ds-color-swatch
-                        :is-light="[
-                            'blue-50', 'blue-100', 'blue-200', 'blue-300', 'blue-400'
-                        ].includes(alias)"
+                        :is-light="['blue-50', 'blue-100', 'blue-200', 'blue-300', 'blue-400'].includes(alias)"
                         :hex="value"
                         :show-border="['blue-50', 'blue-100'].includes(alias)"
                         :token="alias" />
@@ -169,9 +158,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Secondary
-            </h2>
+            <h2>Secondary</h2>
             <b-row>
                 <b-col
                     v-for="[alias, value] in oranges"
@@ -191,9 +178,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Neutrals
-            </h2>
+            <h2>Neutrals</h2>
             <b-row>
                 <b-col
                     v-for="[alias, value] in neutrals"
@@ -204,9 +189,9 @@ if ($prism) {
                     lg="2"
                     class="mb-100 text-center">
                     <ds-color-swatch
-                        :is-light="[
-                            'gray-50', 'gray-100', 'gray-200', 'gray-300', 'gray-400', 'gray-500'
-                        ].includes(alias)"
+                        :is-light="
+                            ['gray-50', 'gray-100', 'gray-200', 'gray-300', 'gray-400', 'gray-500'].includes(alias)
+                        "
                         :hex="value"
                         :show-border="['gray-50', 'gray-100'].includes(alias)"
                         :token="alias" />
@@ -215,15 +200,11 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Feedback
-            </h2>
+            <h2>Feedback</h2>
 
             <b-row class="mt-200">
                 <b-col lg="6">
-                    <h3>
-                        Success
-                    </h3>
+                    <h3>Success</h3>
                     <b-row>
                         <b-col
                             v-for="[alias, value] in successColors"
@@ -243,9 +224,7 @@ if ($prism) {
                 </b-col>
 
                 <b-col lg="6">
-                    <h3>
-                        Warning
-                    </h3>
+                    <h3>Warning</h3>
                     <b-row>
                         <b-col
                             v-for="[alias, value] in warningColors"
@@ -265,9 +244,7 @@ if ($prism) {
                 </b-col>
 
                 <b-col lg="6">
-                    <h3>
-                        Error
-                    </h3>
+                    <h3>Error</h3>
                     <b-row>
                         <b-col
                             v-for="[alias, value] in errorColors"
@@ -289,12 +266,8 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Restricted colors
-            </h2>
-            <p>
-                Use only for charts and data.
-            </p>
+            <h2>Restricted colors</h2>
+            <p>Use only for charts and data.</p>
             <b-row>
                 <b-col
                     v-for="(value, alias) in chartColors"
@@ -305,13 +278,15 @@ if ($prism) {
                     lg="2"
                     class="mb-100 text-center">
                     <ds-color-swatch
-                        :is-light="[
-                            'myrtle-cactus-blue',
-                            'sunny-yellow',
-                            'petal-purple',
-                            'white-oak',
-                            'earthy-brown'
-                        ].includes(alias)"
+                        :is-light="
+                            [
+                                'myrtle-cactus-blue',
+                                'sunny-yellow',
+                                'petal-purple',
+                                'white-oak',
+                                'earthy-brown',
+                            ].includes(alias)
+                        "
                         :hex="value"
                         :show-border="['white', 'soft-blue'].includes(alias)"
                         :style="{ backgroundColor: value }"
@@ -325,30 +300,25 @@ if ($prism) {
 
         <es-collapse>
             <template #title>
-                <h2 class="mb-0">
-                    Legacy color names
-                </h2>
+                <h2 class="mb-0">Legacy color names</h2>
             </template>
             <p>
-                These legacy color names have all been updated to pull from the new brand colors above.
-                Care was taken to match the old colors to the closest new color available, but you may still find
-                differences when upgrading to the new visual identity.
+                These legacy color names have all been updated to pull from the new brand colors above. Care was taken
+                to match the old colors to the closest new color available, but you may still find differences when
+                upgrading to the new visual identity.
             </p>
             <p>
-                Please be sure to check all screens
-                and pages of your app and make adjustments as necessary, paying close attention to whether text
-                color is still accessible against the new background color using the
+                Please be sure to check all screens and pages of your app and make adjustments as necessary, paying
+                close attention to whether text color is still accessible against the new background color using the
                 <a
                     href="https://webaim.org/resources/contrastchecker/"
                     target="_blank">
-                    WebAIM color contrast checker
-                </a>.
+                    WebAIM color contrast checker </a
+                >.
             </p>
 
             <div class="my-200">
-                <h3>
-                    Brand Colors
-                </h3>
+                <h3>Brand Colors</h3>
                 <b-row>
                     <b-col
                         v-for="(value, alias) in brandColors"
@@ -370,9 +340,7 @@ if ($prism) {
             </div>
 
             <div class="my-200">
-                <h3>
-                    Primary Tints
-                </h3>
+                <h3>Primary Tints</h3>
                 <b-row>
                     <b-col
                         v-for="(value, alias) in cyanTints"
@@ -407,9 +375,7 @@ if ($prism) {
             </div>
 
             <div class="my-200">
-                <h3>
-                    Secondary Tints
-                </h3>
+                <h3>Secondary Tints</h3>
                 <b-row>
                     <b-col
                         v-for="(value, alias) in pinkTints"
@@ -477,9 +443,7 @@ if ($prism) {
             </div>
 
             <div class="my-200">
-                <h3>
-                    Primary Shades
-                </h3>
+                <h3>Primary Shades</h3>
                 <b-row>
                     <b-col
                         v-for="(value, alias) in cyanShades"
@@ -511,9 +475,7 @@ if ($prism) {
             </div>
 
             <div class="my-200">
-                <h3>
-                    Secondary Shades
-                </h3>
+                <h3>Secondary Shades</h3>
                 <b-row>
                     <b-col
                         v-for="(value, alias) in pinkShades"
@@ -561,9 +523,7 @@ if ($prism) {
             </div>
 
             <div class="my-200">
-                <h3>
-                    Grayscale
-                </h3>
+                <h3>Grayscale</h3>
                 <b-row>
                     <b-col
                         v-for="(value, alias) in grays"
@@ -575,9 +535,17 @@ if ($prism) {
                         class="mb-200">
                         <ds-color-swatch
                             :hex="value"
-                            :is-light="[
-                                'white', 'gray-100', 'gray-150', 'gray-200', 'gray-300', 'gray-400', 'gray-500'
-                            ].includes(alias)"
+                            :is-light="
+                                [
+                                    'white',
+                                    'gray-100',
+                                    'gray-150',
+                                    'gray-200',
+                                    'gray-300',
+                                    'gray-400',
+                                    'gray-500',
+                                ].includes(alias)
+                            "
                             :show-border="['white', 'gray-100', 'gray-150'].includes(alias)"
                             :token="alias" />
                     </b-col>
@@ -585,9 +553,7 @@ if ($prism) {
             </div>
 
             <div class="my-200">
-                <h3>
-                    Product Colors
-                </h3>
+                <h3>Product Colors</h3>
                 <p>
                     These colors are used to generate
                     <a
@@ -595,8 +561,8 @@ if ($prism) {
                         target="_blank">
                         variants of Bootstrap components.
                     </a>
-                    Primary and secondary are the most commonly-used variants. The others may be deprecated
-                    for certain components; see the component documentation for details.
+                    Primary and secondary are the most commonly-used variants. The others may be deprecated for certain
+                    components; see the component documentation for details.
                 </p>
                 <b-row>
                     <b-col

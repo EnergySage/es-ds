@@ -61,7 +61,6 @@ const scrollHeight = computed(() => {
     }
     return '';
 });
-
 </script>
 <template>
     <data-table
@@ -69,20 +68,20 @@ const scrollHeight = computed(() => {
         :pt="{
             table: {
                 class: 'font-size-75 font-size-md-100',
-                style: 'border-collapse: separate; border-spacing: 0;'
+                style: 'border-collapse: separate; border-spacing: 0;',
             },
             wrapper: {
-                style: 'border-radius: inherit'
+                style: 'border-radius: inherit',
             },
-            thead:{
-                style: 'top: 0px; z-index: 2'
-            }
+            thead: {
+                style: 'top: 0px; z-index: 2',
+            },
         }"
         :value="props.items"
         class="border table__data-table table-spacing table"
         :scroll-height="scrollHeight">
         <column
-            v-for="(col,index) of columns"
+            v-for="(col, index) of columns"
             :key="col?.key ? col.key : col"
             :field="col?.key ? col.key : col"
             :header="label(col)"
@@ -90,22 +89,22 @@ const scrollHeight = computed(() => {
             :frozen="checkFrozenRow(index)"
             align-frozen="left"
             :pt="{
-                sortIcon:{
-                    style: 'display: none'
+                sortIcon: {
+                    style: 'display: none',
                 },
-                headerCell: (options)  => ({
-                    class:[
+                headerCell: (options) => ({
+                    class: [
                         {
-                            'sortable': options.props.sortable,
-                            'stickyFirstColHeader': options.props.frozen,
-                        }
+                            sortable: options.props.sortable,
+                            stickyFirstColHeader: options.props.frozen,
+                        },
                     ],
                 }),
-                bodyCell: (options)  => ({
-                    class:[
+                bodyCell: (options) => ({
+                    class: [
                         {
-                            'stickyFirstCol': options.props.frozen,
-                        }
+                            stickyFirstCol: options.props.frozen,
+                        },
                     ],
                 }),
             }">
@@ -113,14 +112,14 @@ const scrollHeight = computed(() => {
     </data-table>
 </template>
 <style scoped lang="scss">
-:deep(.stickyFirstColHeader){
+:deep(.stickyFirstColHeader) {
     position: sticky !important;
 }
-:deep(.stickyFirstCol){
+:deep(.stickyFirstCol) {
     position: sticky !important;
     background: inherit;
 }
-:deep(.sortable){
+:deep(.sortable) {
     cursor: pointer !important;
 }
 </style>

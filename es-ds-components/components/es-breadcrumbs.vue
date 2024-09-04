@@ -28,7 +28,7 @@ const model = computed(() => {
         :model="model"
         :pt="{
             menu: 'breadcrumb',
-            menuitem: 'breadcrumb-item'
+            menuitem: 'breadcrumb-item',
         }">
         <template #item="{ item }">
             <!--
