@@ -7,16 +7,10 @@ import { addTemplate, defineNuxtModule } from '@nuxt/kit';
 const padding = ' '.repeat(4);
 const autoImportEslint = defineNuxtModule({
     setup(_, nuxt) {
-    // console.log('autoImportEslint', _)
+        // console.log('autoImportEslint', _)
         const autoImports: { [key: string]: string[] } = {
             // global imports
-            global: [
-                '$fetch',
-                'useCloneDeep',
-                'defineNuxtConfig',
-                'definePageMeta',
-                'defineI18nConfig',
-            ],
+            global: ['$fetch', 'useCloneDeep', 'defineNuxtConfig', 'definePageMeta', 'defineI18nConfig'],
         };
 
         nuxt.hook('imports:context', async (context: Unimport) => {

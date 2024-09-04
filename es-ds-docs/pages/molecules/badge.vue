@@ -16,19 +16,18 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Badge
-        </h1>
+        <h1>Badge</h1>
         <p>
-            Based on <a
+            Based on
+            <a
                 href="https://getbootstrap.com/docs/4.6/components/badge/"
-                target="_blank">Bootstrap Badge</a>
+                target="_blank"
+                >Bootstrap Badge</a
+            >
         </p>
 
         <div class="my-500">
-            <es-badge>
-                Primary
-            </es-badge>
+            <es-badge> Primary </es-badge>
 
             <es-badge
                 class="ml-50"

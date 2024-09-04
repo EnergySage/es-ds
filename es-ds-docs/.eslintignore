@@ -8,3 +8,4 @@ dist
 coverage
 # aws stuff
 aws
+*.json

@@ -2,13 +2,10 @@ import { type ErrorObject, useVuelidate, type ValidationArgs } from '@vuelidate/
 import type { ToRefs, Ref } from 'vue';
 
 export function useEsForms<
-// eslint-disable-next-line no-unused-vars, no-use-before-define, @typescript-eslint/no-explicit-any
-  T extends {[key in keyof Vargs]: any},
-  Vargs extends ValidationArgs = ValidationArgs,
->(
-    validationsArgs: Ref<Vargs> | Vargs,
-    state: T | Ref<T> | ToRefs<T>,
-) {
+    // eslint-disable-next-line no-unused-vars, no-use-before-define, @typescript-eslint/no-explicit-any
+    T extends { [key in keyof Vargs]: any },
+    Vargs extends ValidationArgs = ValidationArgs,
+>(validationsArgs: Ref<Vargs> | Vargs, state: T | Ref<T> | ToRefs<T>) {
     const v$ = useVuelidate(validationsArgs, state);
 
     const submitInProgress = ref(false);
@@ -27,9 +24,7 @@ export function useEsForms<
         } catch {
             return [];
         }
-        return objKeys
-            .filter((name) => !name.startsWith('$'))
-            .map((name) => ({ name, [valueKey]: obj[name] }));
+        return objKeys.filter((name) => !name.startsWith('$')).map((name) => ({ name, [valueKey]: obj[name] }));
     };
 
     const formErrors = computed(() => {

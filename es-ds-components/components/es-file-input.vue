@@ -81,12 +81,15 @@ const filterLargeFiles = (files: Array<File>) => {
 };
 
 const removeSpaceFromFileNames = (files: Array<File>) => {
-    const newFiles = files.map((file) => new File(
-        // Return new File object with the modified name (without any space)
-        [file],
-        file.name.replace(/\s/g, ''),
-        { type: file.type, lastModified: file.lastModified },
-    ));
+    const newFiles = files.map(
+        (file) =>
+            new File(
+                // Return new File object with the modified name (without any space)
+                [file],
+                file.name.replace(/\s/g, ''),
+                { type: file.type, lastModified: file.lastModified },
+            ),
+    );
     return newFiles;
 };
 
@@ -151,19 +154,19 @@ async function uploadSingleFile(file: File) {
         })
         .catch((error) => {
             if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
                 emit('uploadFailure', {
                     name: file.name,
                     message: `Received ${error.response.status} code from server.`,
                 });
             } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                // http.ClientRequest in node.js
                 emit('uploadFailure', { name: file.name, message: 'The server did not respond.' });
             } else {
-            // Something happened in setting up the request that triggered an Error
+                // Something happened in setting up the request that triggered an Error
                 emit('uploadFailure', {
                     name: file.name,
                     message: 'There was an error sending your file to the server.',
@@ -180,8 +183,8 @@ const readFilesIntoUrl = (files: Array<File>) => {
                 name: file.name,
                 type: file.type,
                 size: file.size,
+                // For non-image files (pdf, docx, etc.)
                 data: file.type.includes('application')
-                    // For non-image files (pdf, docx, etc.)
                     ? URL.createObjectURL(new Blob([file], { type: file.type }))
                     : fileReader.result,
             });
@@ -195,12 +198,9 @@ async function verifyFiles(files: Array<File>) {
     const correctlyNamedFiles = removeSpaceFromFileNames(correctlySizedFiles);
 
     // Make sure the file is the correct mime type
-    let newValidFiles = await Promise.allSettled(
-        correctlyNamedFiles.map(async (file) => verifyMimeType(file)),
-    );
+    let newValidFiles = await Promise.allSettled(correctlyNamedFiles.map(async (file) => verifyMimeType(file)));
     // Filter out undefined values and "rejected"
-    newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled')
-        .map((file) => file.value);
+    newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled').map((file) => file.value);
 
     // If the new file with name already exists in the current files
     // Don't upload the new file and display an error
@@ -217,16 +217,19 @@ async function verifyFiles(files: Array<File>) {
     }
 }
 
-watch(() => props.uploadUrls, (newUrls, oldUrls) => {
-    // For every file that has an associated upload URL, we start the upload
-    newUrls.forEach((newUrlPair) => {
-        const oldUrl = oldUrls.find(({ name }) => name === newUrlPair.name);
-        const fileToUpload = currentFiles.find((file) => file.name === newUrlPair.name);
-        if ((!oldUrl || oldUrl.uploadUrl !== newUrlPair.uploadUrl) && fileToUpload) {
-            uploadSingleFile(fileToUpload);
-        }
-    });
-});
+watch(
+    () => props.uploadUrls,
+    (newUrls, oldUrls) => {
+        // For every file that has an associated upload URL, we start the upload
+        newUrls.forEach((newUrlPair) => {
+            const oldUrl = oldUrls.find(({ name }) => name === newUrlPair.name);
+            const fileToUpload = currentFiles.find((file) => file.name === newUrlPair.name);
+            if ((!oldUrl || oldUrl.uploadUrl !== newUrlPair.uploadUrl) && fileToUpload) {
+                uploadSingleFile(fileToUpload);
+            }
+        });
+    },
+);
 
 async function onFileChanged($event: Event) {
     const target = $event.target as HTMLInputElement;
@@ -268,7 +271,7 @@ const openFilePicker = () => {
     <div
         role="presentation"
         class="es-file-upload align-items-center rounded-sm d-flex flex-column justify-content-center p-150"
-        :class="{ 'active': active }"
+        :class="{ active: active }"
         @dragenter.stop.prevent="active = true"
         @dragover.stop.prevent="active = true"
         @dragleave.stop.prevent="active = false"
@@ -302,18 +305,14 @@ const openFilePicker = () => {
                     :class="{ 'mb-200': collapsed }"
                     @click="openFilePicker">
                     <slot name="buttonText">
-                        <p class="m-0">
-                            Browse files
-                        </p>
+                        <p class="m-0">Browse files</p>
                     </slot>
                 </es-button>
                 <es-button
                     class="d-md-none w-100"
                     @click="openFilePicker">
                     <slot name="buttonText">
-                        <p class="m-0">
-                            Choose files
-                        </p>
+                        <p class="m-0">Choose files</p>
                     </slot>
                 </es-button>
             </div>

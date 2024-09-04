@@ -21,11 +21,7 @@ export default {
     },
     computed: {
         columnClass() {
-            const classes = [
-                'responsive-table-column',
-                'col',
-                `col-md-${this.md}`,
-            ];
+            const classes = ['responsive-table-column', 'col', `col-md-${this.md}`];
 
             if (this.lg) {
                 classes.push(`col-lg-${this.lg}`);
@@ -57,7 +53,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 
 .responsive-table-column {
     display: flex;

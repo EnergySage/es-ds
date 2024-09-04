@@ -1,5 +1,4 @@
 <script>
-
 export default {
     name: 'DsDocSource',
     props: {
@@ -33,9 +32,7 @@ export default {
                 v-if="compCode"
                 id="compsource">
                 <template #title>
-                    <h2 class="mb-0">
-                        Component source
-                    </h2>
+                    <h2 class="mb-0">Component source</h2>
                 </template>
                 <ds-code-block
                     :code="compCode"
@@ -46,9 +43,7 @@ export default {
                 id="docsource"
                 class="mt-500">
                 <template #title>
-                    <h2 class="mb-0">
-                        Documentation source
-                    </h2>
+                    <h2 class="mb-0">Documentation source</h2>
                 </template>
                 <ds-code-block
                     :code="docCode"

@@ -1,12 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
     compatibilityDate: '2024-04-03',
 
     // https://nuxt.com/docs/getting-started/styling#the-css-property
-    css: [
-        '@energysage/es-ds-styles/scss/bootstrap.scss',
-    ],
+    css: ['@energysage/es-ds-styles/scss/bootstrap.scss'],
 
     // https://google-fonts.nuxtjs.org/options
     googleFonts: {

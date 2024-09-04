@@ -5,18 +5,8 @@ const compCode = ref('');
 const docCode = ref('');
 
 const propTableRows = [
-    [
-        'height',
-        'String',
-        '50px',
-        'Specifies height of the progress circle',
-    ],
-    [
-        'value',
-        'Number',
-        '10',
-        'Required. A value between 0 and 100 representing the progress',
-    ],
+    ['height', 'String', '50px', 'Specifies height of the progress circle'],
+    ['value', 'Number', '10', 'Required. A value between 0 and 100 representing the progress'],
     [
         'showPercentage',
         'Boolean',
@@ -43,11 +33,10 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Progress circle
-        </h1>
+        <h1>Progress circle</h1>
         <p class="pb-200">
-            Extended from <nuxt-link
+            Extended from
+            <nuxt-link
                 href="https://github.com/EnergySage/es-cdgm/blob/main/frontend/components/CircularProgress.vue"
                 target="_blank">
                 <code>es-cdgm</code> codebase
@@ -71,9 +60,7 @@ if ($prism) {
             </es-button>
         </div>
         <div class="mb-500">
-            <h2>
-                EsProgressCircle props
-            </h2>
+            <h2>EsProgressCircle props</h2>
             <ds-prop-table
                 :rows="propTableRows"
                 :widths="propTableWidths" />
