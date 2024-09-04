@@ -37,19 +37,22 @@ const rules = {
     },
 };
 
-const { v$, formErrors, validateState, touchOnChange, isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(rules, state);
+const {
+    v$, formErrors, validateState, touchOnChange, isSubmitInProgress, startSubmit, stopSubmit,
+} = useEsForms(rules, state);
 
 const asyncTimeout = async (seconds = 3) => {
     const millisecondTimeout = seconds * 1000;
     return new Promise((resolve) => {
         setTimeout(resolve, millisecondTimeout);
     });
-}
+};
 
 const fakeServerRequest = async () => {
     await asyncTimeout();
+    // eslint-disable-next-line no-console
     console.log('Submit Complete!');
-}
+};
 
 const onSubmit = async () => {
     startSubmit();
@@ -58,7 +61,7 @@ const onSubmit = async () => {
         await fakeServerRequest();
     }
     stopSubmit();
-}
+};
 
 const getErrorMessage = (validatorName) => {
     const ERROR_MESSAGES = {
@@ -74,12 +77,13 @@ const getErrorMessage = (validatorName) => {
         return msgFunc();
     }
     return '';
-}
+};
 
 const { $prism } = useNuxtApp();
-const docCode = ref("");
+const docCode = ref('');
 if ($prism) {
-    const docSource = await import("./form-field-validation.vue?raw");
+    // eslint-disable-next-line import/no-self-import
+    const docSource = await import('./form-field-validation.vue?raw');
 
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();
@@ -187,18 +191,18 @@ if ($prism) {
                             Please enter a valid phone number.
                         </template>
                     </es-form-input>
-<!--                    <es-form-textarea-->
-<!--                        id="notes"-->
-<!--                        v-model="form.notes"-->
-<!--                        :disabled="isSubmitInProgress"-->
-<!--                        :state="validateState('form.notes')"-->
-<!--                        required-->
-<!--                        @change="touchOnChange('form.notes')"-->
-<!--                        @blur="$v.form.notes.$touch">-->
-<!--                        <template #label>-->
-<!--                            Notes-->
-<!--                        </template>-->
-<!--                    </es-form-textarea-->
+                    <!--                    <es-form-textarea-->
+                    <!--                        id="notes"-->
+                    <!--                        v-model="form.notes"-->
+                    <!--                        :disabled="isSubmitInProgress"-->
+                    <!--                        :state="validateState('form.notes')"-->
+                    <!--                        required-->
+                    <!--                        @change="touchOnChange('form.notes')"-->
+                    <!--                        @blur="$v.form.notes.$touch">-->
+                    <!--                        <template #label>-->
+                    <!--                            Notes-->
+                    <!--                        </template>-->
+                    <!--                    </es-form-textarea-->
                     <div class="d-flex flex-grow-1 justify-content-end mt-200">
                         <es-button
                             type="submit"
@@ -228,14 +232,18 @@ if ($prism) {
                     doc-source="es-ds-docs/pages/examples/form-field-validation.vue" />
                 <es-collapse class="mt-500">
                     <template #title>
-                        <h2>Migration from ESDS 2.0/Nuxt 2</h2>
+                        <h2>
+                            Migration from ESDS 2.0/Nuxt 2
+                        </h2>
                     </template>
                     <p>
                         Previously, these form utilities were exposed as a mixin which you added to the
                         <code>mixins</code> of your component. Mixins are no longer recommended by Vue,
                         and are not compatible with the composition API. Therefore, these form utilities
                         are now provided as a
-                        <nuxt-link to="https://vuejs.org/guide/reusability/composables">composable</nuxt-link>.
+                        <nuxt-link to="https://vuejs.org/guide/reusability/composables">
+                            composable
+                        </nuxt-link>.
                     </p>
                     <p>
                         To use the composable, call <code>useEsForms</code> within your script,
@@ -248,7 +256,9 @@ if ($prism) {
                     </p>
                     <p>
                         If you're still using the options API, please refer to the
-                        <nuxt-link to="https://vuejs.org/guide/reusability/composables#using-composables-in-options-api">Vue documentation</nuxt-link>
+                        <nuxt-link to="https://vuejs.org/guide/reusability/composables#using-composables-in-options-api">
+                            Vue documentation
+                        </nuxt-link>
                         for using a composable with the options API.
                     </p>
                     <p>
@@ -256,7 +266,9 @@ if ($prism) {
                         in the old mixin, there <b>are</b> upstream changes in Vuelidate which may require
                         manual handling. At a minimum, <code>$v</code> is now <code>v$</code> as previously mentioned.
                         Please refer to the
-                        <nuxt-link to="https://vuelidate-next.netlify.app/migration_guide.html">Vuelidate Migration Guide</nuxt-link>
+                        <nuxt-link to="https://vuelidate-next.netlify.app/migration_guide.html">
+                            Vuelidate Migration Guide
+                        </nuxt-link>
                         for more information.
                     </p>
                 </es-collapse>

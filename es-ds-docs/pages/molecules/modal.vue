@@ -3,18 +3,18 @@ const simpleModalVisible = ref(false);
 const buttonsModalVisible = ref(false);
 
 const propTableRows = [
-    ["hideFooter", "Boolean", "false", "Whether to show the modal footer."],
-    ["size", "string", "md", "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
+    ['hideFooter', 'Boolean', 'false', 'Whether to show the modal footer.'],
+    ['size', 'string', 'md', "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
 ];
 
 const { $prism } = useNuxtApp();
-const compCode = ref("");
-const docCode = ref("");
+const compCode = ref('');
+const docCode = ref('');
 
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import("@energysage/es-ds-components/components/es-modal.vue?raw");
-    const docSource = await import("./modal.vue?raw");
+    const compSource = await import('@energysage/es-ds-components/components/es-modal.vue?raw');
+    const docSource = await import('./modal.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
     compCode.value = $prism.normalizeCode(compSource.default);
@@ -25,25 +25,42 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>Modal</h1>
+        <h1>
+            Modal
+        </h1>
         <p>
             Extended from
-            <nuxt-link href="https://v3.primevue.org/dialog/" target="_blank"> primevue modal </nuxt-link>
+            <nuxt-link
+                href="https://v3.primevue.org/dialog/"
+                target="_blank">
+                PrimeVue Modal
+            </nuxt-link>
         </p>
         <div class="my-500">
-            <es-button class="mb-100 mb-lg-0 mr-100" @click="simpleModalVisible = true">Show simple modal</es-button>
-            <es-button class="mb-100 mb-lg-0" @click="buttonsModalVisible = true">Show modal with buttons</es-button>
+            <es-button
+                class="mb-100 mb-lg-0 mr-100"
+                @click="simpleModalVisible = true">
+                Show simple modal
+            </es-button>
+            <es-button
+                class="mb-100 mb-lg-0"
+                @click="buttonsModalVisible = true">
+                Show modal with buttons
+            </es-button>
 
             <es-modal
                 id="simple-modal"
                 hide-footer
                 :visible="simpleModalVisible"
                 size="lg"
-                @hidden="simpleModalVisible = false"
-            >
-                <template #modal-title> Arcadia Reviews </template>
+                @hidden="simpleModalVisible = false">
+                <template #modal-title>
+                    Arcadia Reviews
+                </template>
                 <template #default>
-                    <p id="lorem-ipsum" class="mb-0">
+                    <p
+                        id="lorem-ipsum"
+                        class="mb-0">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis lacus quis turpis commodo
                         tempus. Donec sodales enim in dolor blandit aliquet. Sed ac lectus ipsum. Curabitur et nisi
                         dapibus, ultricies lacus a, congue turpis. Nullam viverra velit nisi, sed eleifend neque
@@ -70,11 +87,14 @@ if ($prism) {
                 id="buttons-modal"
                 :visible="buttonsModalVisible"
                 size="lg"
-                @hidden="buttonsModalVisible = false"
-            >
-                <template #modal-title> Arcadia Reviews </template>
+                @hidden="buttonsModalVisible = false">
+                <template #modal-title>
+                    Arcadia Reviews
+                </template>
                 <template #default>
-                    <p id="lorem-ipsum" class="mb-0">
+                    <p
+                        id="lorem-ipsum"
+                        class="mb-0">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis lacus quis turpis commodo
                         tempus. Donec sodales enim in dolor blandit aliquet. Sed ac lectus ipsum. Curabitur et nisi
                         dapibus, ultricies lacus a, congue turpis. Nullam viverra velit nisi, sed eleifend neque
@@ -87,14 +107,24 @@ if ($prism) {
                     </p>
                 </template>
                 <template #modal-footer>
-                    <es-button @click="buttonsModalVisible = false">Cancel</es-button>
-                    <es-button class="ml-100" @click="buttonsModalVisible = false">Submit</es-button>
+                    <es-button
+                        variant="link"
+                        @click="buttonsModalVisible = false">
+                        Cancel
+                    </es-button>
+                    <es-button
+                        class="ml-100"
+                        @click="buttonsModalVisible = false">
+                        Submit
+                    </es-button>
                 </template>
             </es-modal>
         </div>
 
         <div class="mb-500">
-            <h2>EsModal props</h2>
+            <h2>
+                EsModal props
+            </h2>
             <ds-prop-table :rows="propTableRows" />
         </div>
 
@@ -102,7 +132,6 @@ if ($prism) {
             :comp-code="compCode"
             comp-source="es-ds-components/components/es-modal.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/modal.vue"
-        />
+            doc-source="es-ds-docs/pages/molecules/modal.vue" />
     </div>
 </template>

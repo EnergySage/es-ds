@@ -1,12 +1,11 @@
-
 <script setup lang="ts">
 import InputText from 'primevue/inputtext';
 import InputMask from 'primevue/inputmask';
 // Prevents attributes from being applied to first <div>
 // v-bind="$attr" is on the input instead
 defineOptions({
-  inheritAttrs: false
-})
+    inheritAttrs: false,
+});
 
 defineProps({
     /**
@@ -66,18 +65,10 @@ defineProps({
 
 const slots = useSlots();
 
-const hasSuccess = () => {
-    return !!slots.successMessage;
-}
-const hasMessage = () => {
-    return !!slots.message;
-}
-const hasError = () => {
-    return !!slots.errorMessage;
-}
-const hasExtraContext = () => {
-    return !!slots.extraContext;
-}
+const hasSuccess = () => !!slots.successMessage;
+const hasMessage = () => !!slots.message;
+const hasError = () => !!slots.errorMessage;
+const hasExtraContext = () => !!slots.extraContext;
 
 </script>
 
@@ -125,7 +116,7 @@ const hasExtraContext = () => {
                 :invalid="state === false" />
             <small
                 v-if="hasMessage() && ((!hasSuccess() && state) || state == null)"
-                class="text-muted" >
+                class="text-muted">
                 <slot name="message" />
             </small>
             <small

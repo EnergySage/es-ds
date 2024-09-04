@@ -1,3 +1,26 @@
+<script>
+export default {
+    name: 'IconInstagram',
+    props: {
+        /**
+         * Width
+         */
+        width: {
+            type: String,
+            default: '31px',
+            required: false,
+        },
+        /**
+         * Height
+         */
+        height: {
+            type: String,
+            default: '32px',
+            required: false,
+        },
+    },
+};
+</script>
 <template>
     <svg
         :style="{
@@ -24,26 +47,3 @@
             d="M15.5 12.65a3.23 3.23 0 1 0-.06 6.46 3.23 3.23 0 0 0 .06-6.46Z" />
     </svg>
 </template>
-<script>
-export default {
-    name: 'IconInstagram',
-    props: {
-        /**
-         * Width
-         */
-        width: {
-            type: String,
-            default: '31px',
-            required: false,
-        },
-        /**
-         * Height
-         */
-        height: {
-            type: String,
-            default: '32px',
-            required: false,
-        },
-    },
-};
-</script>

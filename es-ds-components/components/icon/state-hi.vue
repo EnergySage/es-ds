@@ -1,3 +1,27 @@
+<script>
+export default {
+    name: 'IconStateHi',
+    props: {
+        /**
+         * Width
+         */
+        width: {
+            type: String,
+            default: '24px',
+            required: false,
+        },
+        /**
+         * Height
+         */
+        height: {
+            type: String,
+            default: '24px',
+            required: false,
+        },
+    },
+};
+</script>
+
 <template>
     <svg
         :style="{
@@ -33,27 +57,3 @@
             d="M185.6,141.1s-4.7-4.3.5-7.4c0,0,7.4-6.6,7.9-8.4s-.6-1.6-2.2-3.3c-1.6-1.7-3.2-3.5-1.6-6.1,1.6-2.6,1.2-3.8,4.5-1.7,3.3,2.1,8.4,6.3,9.7,6,1.4-.3,10.4,1.4,11.6,4,1.2,2.6,8.1,3.7,8.4,8.2.3,4.5.4,4.4,0,5.2-.4.9,3.1-1.3,3.9,1.4.8,2.6,1.5,3.7,3.9,4.4,2.4.6,5,3.4,3.5,4.9-1.5,1.5-9.4,8.9-15.6,9-6.2,0-10.4,4.2-13,6.6-2.6,2.4-4.7,8.9-6.7,9.1-2,.1-3.4-3.9-5.5-4-2.1,0-6.6-.7-5.5-4s1.3-9.4,1.4-11.9c0-2.4-3.3-11.8-5-11.9Z" />
     </svg>
 </template>
-
-<script>
-export default {
-    name: 'IconStateHi',
-    props: {
-        /**
-         * Width
-         */
-        width: {
-            type: String,
-            default: '24px',
-            required: false,
-        },
-        /**
-         * Height
-         */
-        height: {
-            type: String,
-            default: '24px',
-            required: false,
-        },
-    },
-};
-</script>
