@@ -57,7 +57,7 @@ if ($prism) {
                         Show loading spinner on button during server request
                     </li>
                     <li>
-                        Use <nuxt-link to="/molecules/form-msg">
+                        Use <nuxt-link to="/molecules/form-message">
                             Form message
                         </nuxt-link>
                         to display server-side errors

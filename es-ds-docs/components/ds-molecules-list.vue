@@ -51,8 +51,18 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/form-msg">
+            <ds-link to="/molecules/form-message">
                 Form message
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/modal">
+                Modal
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/pagination">
+                Pagination
             </ds-link>
         </li>
         <li>
@@ -73,6 +83,11 @@
         <li>
             <ds-link to="/molecules/rating">
                 Rating
+            </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/tabs">
+                Tabs
             </ds-link>
         </li>
         <li>

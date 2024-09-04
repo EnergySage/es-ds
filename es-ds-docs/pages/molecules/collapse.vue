@@ -26,25 +26,23 @@
             <p>
                 A normal EsCollapse component. Click it to toggle showing its contents!
             </p>
-            <div class="px-500 pt-500">
-                <es-collapse>
-                    <template #title>
-                        <h2 class="mb-0">
-                            My title
-                        </h2>
-                    </template>
-                    <!-- eslint-disable max-len -->
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex. Nullam vestibulum ex mi, ut suscipit libero condimentum id.
-                        Pellentesque eu diam vel nisi molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum. Mauris
-                        vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                        ridiculus mus. Nulla ullamcorper elit sed viverra finibus. Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare.
-                        Maecenas quis turpis sit amet sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
-                        Donec eleifend elit quam.
-                    </p>
-                    <!-- eslint-enable max-len -->
-                </es-collapse>
-            </div>
+            <es-collapse>
+                <template #title>
+                    <h2 class="mb-0">
+                        My title
+                    </h2>
+                </template>
+                <!-- eslint-disable max-len -->
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex. Nullam vestibulum ex mi, ut suscipit libero condimentum id.
+                    Pellentesque eu diam vel nisi molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum. Mauris
+                    vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Nulla ullamcorper elit sed viverra finibus. Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare.
+                    Maecenas quis turpis sit amet sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
+                    Donec eleifend elit quam.
+                </p>
+                <!-- eslint-enable max-len -->
+            </es-collapse>
         </div>
 
         <div class="my-500">
@@ -55,37 +53,31 @@
                 An EsCollapse component that takes a "visible" prop. Click the checkbox to toggle showing its
                 contents! If you click the collapse itself, the "visible" prop will no longer be honored.
             </p>
-            <form class="mx-500 mt-500">
-                <label for="suggestedVisibleInput">
-                    <input
-                        id="suggestedVisibleInput"
-                        v-model="suggestedVisible"
-                        type="checkbox">
+            <form class="mb-100">
+                <es-form-checkbox v-model="suggestedVisible" id="suggestedVisibleInput">
                     Toggle collapse programmatically (will be honored until a manual expand or collapse)
-                </label>
+                </es-form-checkbox>
             </form>
-            <div class="p-500">
-                <es-collapse
-                    :visible="suggestedVisible"
-                    @shown="shownEvent"
-                    @toggled="toggledEvent">
-                    <template #title>
-                        <h2 class="mb-0">
-                            My title
-                        </h2>
-                    </template>
-                    <!-- eslint-disable max-len -->
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex. Nullam vestibulum ex mi, ut suscipit libero condimentum id.
-                        Pellentesque eu diam vel nisi molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum. Mauris
-                        vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                        ridiculus mus. Nulla ullamcorper elit sed viverra finibus. Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare.
-                        Maecenas quis turpis sit amet sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
-                        Donec eleifend elit quam.
-                    </p>
-                    <!-- eslint-enable max-len -->
-                </es-collapse>
-            </div>
+            <es-collapse
+                :visible="suggestedVisible"
+                @shown="shownEvent"
+                @toggled="toggledEvent">
+                <template #title>
+                    <h2 class="mb-0">
+                        My title
+                    </h2>
+                </template>
+                <!-- eslint-disable max-len -->
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex. Nullam vestibulum ex mi, ut suscipit libero condimentum id.
+                    Pellentesque eu diam vel nisi molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum. Mauris
+                    vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Nulla ullamcorper elit sed viverra finibus. Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare.
+                    Maecenas quis turpis sit amet sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
+                    Donec eleifend elit quam.
+                </p>
+                <!-- eslint-enable max-len -->
+            </es-collapse>
         </div>
 
         <div class="my-500">
@@ -97,38 +89,32 @@
                 the checkbox to toggle showing its contents! Unlike the previous example, if you click the collapse
                 itself, the "visible" prop will continue to be honored.
             </p>
-            <form class="mx-500 mt-500">
-                <label for="visible">
-                    <input
-                        id="visible"
-                        v-model="visible"
-                        type="checkbox">
+            <form class="mb-100">
+                <es-form-checkbox v-model="visible" id="visible">
                     Toggle collapse programmatically (will always be honored)
-                </label>
+                </es-form-checkbox>
             </form>
-            <div class="p-500">
-                <es-collapse
-                    v-model="visible"
-                    :is-programmatic-until-user-input="false"
-                    @shown="shownEvent"
-                    @toggled="toggledEventInSuggestedVisibleExample">
-                    <template #title>
-                        <h2 class="mb-0">
-                            My title
-                        </h2>
-                    </template>
-                    <!-- eslint-disable max-len -->
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex. Nullam vestibulum ex mi, ut suscipit libero condimentum id.
-                        Pellentesque eu diam vel nisi molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum. Mauris
-                        vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                        ridiculus mus. Nulla ullamcorper elit sed viverra finibus. Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare.
-                        Maecenas quis turpis sit amet sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
-                        Donec eleifend elit quam.
-                    </p>
-                    <!-- eslint-enable max-len -->
-                </es-collapse>
-            </div>
+            <es-collapse
+                v-model="visible"
+                :is-programmatic-until-user-input="false"
+                @shown="shownEvent"
+                @toggled="toggledEventInSuggestedVisibleExample">
+                <template #title>
+                    <h2 class="mb-0">
+                        My title
+                    </h2>
+                </template>
+                <!-- eslint-disable max-len -->
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in aliquam ex. Nullam vestibulum ex mi, ut suscipit libero condimentum id.
+                    Pellentesque eu diam vel nisi molestie porta eget sed odio. Quisque congue risus id metus facilisis, non imperdiet libero rutrum. Mauris
+                    vitae ante porttitor, consectetur purus faucibus, euismod ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Nulla ullamcorper elit sed viverra finibus. Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare.
+                    Maecenas quis turpis sit amet sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
+                    Donec eleifend elit quam.
+                </p>
+                <!-- eslint-enable max-len -->
+            </es-collapse>
         </div>
 
         <div class="my-500">
@@ -140,7 +126,6 @@
             </p>
             <es-collapse
                 id="noBorderExample"
-                class="m-500"
                 :border="false">
                 <template #title>
                     <h2 class="mb-0">
@@ -166,7 +151,7 @@
             </h2>
             <es-collapse
                 id="extraStylingExample"
-                class="m-500 bg-yellow-100 py-100 px-150 rounded"
+                class="bg-yellow-100 py-100 px-150 rounded"
                 :border="false">
                 <template #title>
                     <h2 class="mb-0">
