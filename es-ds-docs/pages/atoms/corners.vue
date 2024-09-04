@@ -13,10 +13,11 @@ const COMPONENT_NAME_URLS = {
     'form-message': '/molecules/form-message',
     modal: '/molecules/modal',
     pagination: '/molecules/pagination',
-    popover: '/molecules/popover',
-    textarea: '/molecules/form-textarea',
+    // TODO switch popover, textarea, and verification-code to the right route once they exist
+    popover: '/molecules',
+    textarea: '/molecules',
     'text-input': '/molecules/form-input',
-    'verification-code': '/molecules/verification-code',
+    'verification-code': '/molecules',
 };
 
 const borderRadius = computed(() => {
@@ -54,9 +55,9 @@ const { $prism } = useNuxtApp();
 const docCode = ref('');
 
 if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    /* eslint-disable import/no-self-import */
     const docSource = await import('./corners.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+    /* eslint-enable import/no-self-import */
 
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();

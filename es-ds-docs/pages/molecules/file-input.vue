@@ -93,7 +93,7 @@ if ($prism) {
     $prism.highlight();
 }
 
-const url = '';
+const url = ref('');
 let fileObjects = [];
 const uploadUrls = ref([]);
 const events = ref([]);
