@@ -37,7 +37,7 @@ const props = defineProps({
     },
     items: {
         type: Array,
-        default: () => [],
+        default: [],
         required: true,
     },
 });
@@ -69,6 +69,7 @@ const stopAutoplay = () => {
         :key="key"
         :autoplayInterval="autoplayInterval"
         circular
+        :num-visible="4"
         :responsiveOptions="responsiveOptions"
         :showIndicators="dots"
         :value="items"
