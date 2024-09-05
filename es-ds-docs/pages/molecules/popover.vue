@@ -16,6 +16,7 @@ const propTableWidths = {
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-popover.vue?raw');
+        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./popover.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
@@ -46,7 +47,7 @@ onMounted(async () => {
                             id="darkTitleTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
                             tabindex="0">
-                            <IconInfo
+                            <icon-info
                                 width="16px"
                                 height="16px" />
                         </a>
@@ -73,7 +74,7 @@ onMounted(async () => {
                             id="darkNoTitleTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
                             tabindex="0">
-                            <IconInfo
+                            <icon-info
                                 width="16px"
                                 height="16px" />
                         </a>
@@ -99,7 +100,7 @@ onMounted(async () => {
                             id="darkButtonTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
                             tabindex="0">
-                            <IconInfo
+                            <icon-info
                                 width="16px"
                                 height="16px" />
                         </a>
@@ -134,7 +135,7 @@ onMounted(async () => {
                             id="lightTitleTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
                             tabindex="0">
-                            <IconInfo
+                            <icon-info
                                 class="text-white"
                                 width="16px"
                                 height="16px" />
@@ -162,7 +163,7 @@ onMounted(async () => {
                             id="lightNoTitleTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
                             tabindex="0">
-                            <IconInfo
+                            <icon-info
                                 class="text-white"
                                 width="16px"
                                 height="16px" />
@@ -189,7 +190,7 @@ onMounted(async () => {
                             id="lightButtonTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
                             tabindex="0">
-                            <IconInfo
+                            <icon-info
                                 class="text-white"
                                 width="16px"
                                 height="16px" />
