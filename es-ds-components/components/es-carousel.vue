@@ -39,13 +39,20 @@ const props = defineProps({
     },
     items: {
         type: Array,
-        default: [],
+        default: () => [],
         required: true,
     },
 });
 
 const autoplayInterval = ref(props.autoscroll ? 3000 : 0);
 const key = ref('');
+
+const stopAutoplay = () => {
+    if (props.autoscroll) {
+        autoplayInterval.value = 0;
+        key.value = 'stopAutoplay';
+    }
+};
 
 onMounted(() => {
     document.addEventListener('keyup', (e) => {
@@ -57,22 +64,16 @@ onMounted(() => {
     });
 });
 
-const stopAutoplay = () => {
-    if (props.autoscroll) {
-        autoplayInterval.value = 0;
-        key.value = 'stopAutoplay';
-    }
-};
 </script>
 
 <template>
-    <Carousel
+    <carousel
         :key="key"
-        :autoplayInterval="autoplayInterval"
+        :autoplay-interval="autoplayInterval"
         circular
         :num-visible="4"
-        :responsiveOptions="responsiveOptions"
-        :showIndicators="dots"
+        :responsive-options="responsiveOptions"
+        :show-indicators="dots"
         :value="items"
         :pt="{
             container: {
@@ -109,7 +110,7 @@ const stopAutoplay = () => {
                 name="item"
                 :item="item.data" />
         </template>
-    </Carousel>
+    </carousel>
 </template>
 
 <style lang="scss" scoped>
