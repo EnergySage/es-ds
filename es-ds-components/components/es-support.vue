@@ -13,7 +13,6 @@ defineProps({
 const slots = useSlots();
 const hasTitle = computed(() => !!slots.title);
 const hasLinkCopy = computed(() => !!slots.linkCopy);
-
 </script>
 
 <template>
@@ -35,9 +34,7 @@ const hasLinkCopy = computed(() => !!slots.linkCopy);
                     <slot
                         v-if="hasTitle"
                         name="title" />
-                    <template v-else>
-                        Need help signing up?
-                    </template>
+                    <template v-else> Need help signing up? </template>
                 </div>
             </div>
             <div>
@@ -48,9 +45,7 @@ const hasLinkCopy = computed(() => !!slots.linkCopy);
                     <slot
                         v-if="hasLinkCopy"
                         name="linkCopy" />
-                    <template v-else>
-                        Schedule a free call with your EnergySage Advisor.
-                    </template>
+                    <template v-else> Schedule a free call with your EnergySage Advisor. </template>
                 </a>
             </div>
         </div>
