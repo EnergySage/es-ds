@@ -54,7 +54,7 @@ const defaultTag = computed(() => {
 
 <template>
     <component
-        :is="defaultTag =='nuxt-link' ? NuxtLink: defaultTag"
+        :is="defaultTag == 'nuxt-link' ? NuxtLink : defaultTag"
         class="es-card"
         :class="actualVariant"
         :to="to ? to : href"

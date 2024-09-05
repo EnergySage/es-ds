@@ -1,12 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
     compatibilityDate: '2024-04-03',
 
     // https://nuxt.com/docs/getting-started/styling#the-css-property
-    css: [
-        '@energysage/es-ds-styles/scss/bootstrap.scss',
-    ],
+    css: ['@energysage/es-ds-styles/scss/bootstrap.scss'],
 
     // https://google-fonts.nuxtjs.org/options
     googleFonts: {
@@ -48,25 +45,26 @@ export default defineNuxtConfig({
     vite: {
         optimizeDeps: {
             include: [
-                "@vuelidate/core",
-                "@vuelidate/validators",
-                "primevue/accordion",
-                "primevue/accordiontab",
-                "primevue/breadcrumb",
-                "primevue/button",
-                "primevue/column",
-                "primevue/datatable",
-                "primevue/dialog",
-                "primevue/inputmask",
-                "primevue/inputtext",
-                "primevue/paginator",
-                "primevue/panel",
-                "primevue/progressbar",
-                "primevue/radiobutton",
-                "primevue/rating",
-                "primevue/tabpanel",
-                "primevue/tabview",
-            ]
-        }
-    }
-})
+                '@vuelidate/core',
+                '@vuelidate/validators',
+                'primevue/accordion',
+                'primevue/accordiontab',
+                'primevue/breadcrumb',
+                'primevue/button',
+                'primevue/column',
+                'primevue/datatable',
+                'primevue/dialog',
+                'primevue/inputmask',
+                'primevue/inputtext',
+                'primevue/overlaypanel',
+                'primevue/paginator',
+                'primevue/panel',
+                'primevue/progressbar',
+                'primevue/radiobutton',
+                'primevue/rating',
+                'primevue/tabpanel',
+                'primevue/tabview',
+            ],
+        },
+    },
+});

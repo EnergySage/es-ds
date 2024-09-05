@@ -19,15 +19,15 @@ export default {
         class="responsive-table-row"
         :class="{
             'vertically-center-content': verticallyCenterContent,
-            'zebra': zebraStripes
+            zebra: zebraStripes,
         }">
         <slot />
     </div>
 </template>
 
 <style lang="scss" scoped>
-@use "@energysage/es-ds-styles/scss/variables" as variables;
-@use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 
 .responsive-table-row {
     border-bottom: variables.$border-width solid variables.$border-color;
@@ -100,5 +100,4 @@ export default {
         }
     }
 }
-
 </style>

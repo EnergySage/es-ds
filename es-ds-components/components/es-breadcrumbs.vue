@@ -28,7 +28,7 @@ const model = computed(() => {
         :model="model"
         :pt="{
             menu: 'breadcrumb',
-            menuitem: 'breadcrumb-item'
+            menuitem: 'breadcrumb-item',
         }">
         <template #item="{ item }">
             <!--
@@ -65,7 +65,9 @@ const model = computed(() => {
         <template #separator>
             <span
                 aria-hidden="true"
-                class="mx-50">/</span>
+                class="mx-50"
+                >/</span
+            >
         </template>
     </breadcrumb>
 </template>

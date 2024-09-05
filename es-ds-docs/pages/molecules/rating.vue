@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const changeEvent = ($event) => {
     // eslint-disable-next-line no-alert
     alert($event.value);
@@ -20,31 +19,25 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Rating
-        </h1>
+        <h1>Rating</h1>
         <p>
-            Extended from <nuxt-link
+            Extended from
+            <nuxt-link
                 href="https://v3.primevue.org/rating/"
                 target="_blank">
                 PrimeVue Rating
             </nuxt-link>
         </p>
         <div class="my-500">
-            <h2>
-                Form Input
-            </h2>
+            <h2>Form Input</h2>
             <es-rating
                 :read-only="false"
                 @change="changeEvent" />
-            <h2 class="mt-500">
-                Static Display
-            </h2>
+            <h2 class="mt-500">Static Display</h2>
             <div
                 v-for="i in 11"
                 :key="i">
-                <es-rating
-                    :rating="(i-1)/2" />
+                <es-rating :rating="(i - 1) / 2" />
             </div>
         </div>
         <div class="d-flex flex-column flex-md-row">

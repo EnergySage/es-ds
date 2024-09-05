@@ -21,54 +21,26 @@
             "rules": {
                 "max-len": "off"
             }
-        },
-        {
-            "files": "*.vue",
-            "globals": {
-                "useRoute": "readonly",
-                "computed": "readonly",
-                "useNuxtApp": "readonly",
-                "ref": "readonly",
-                "onMounted": "readonly",
-                "resolveComponent": "readonly",
-                "reactive": "readonly",
-                "vuelidateKeys": "readonly",
-                "vuelidateRequired": "readonly",
-                "vuelidatePhone": "readonly",
-                "vuelidateEmail": "readonly",
-                "vuelidateMinLength": "readonly",
-                "vuelidateHasNumber": "readonly",
-                "vuelidateHasSpecialCharacter": "readonly",
-                "vuelidateHasUppercaseLetter": "readonly",
-                "vuelidateHasLowercaseLetter": "readonly",
-                "useEsForms": "readonly"
-            }
         }
     ],
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:vue/vue3-recommended",
-        "prettier",
-        "airbnb-base"
+        "./.nuxt/.eslint.globals.json",
+        "airbnb-base",
+        "prettier"
     ],
     "rules": {
         "linebreak-style": "off",
         "camelcase": "off",
         "no-console": "warn",
-        "indent": [
-            "warn",
-            4,
-            {
-                // https://github.com/babel/babel-eslint/issues/530
-                "ignoredNodes": ["TemplateLiteral"]
-            }
-        ],
+        "indent": "off",
         "max-len": [
             "warn",
             {
                 "code": 119,
-                "ignorePattern": "class=",
+                "ignorePattern": "class=|d=|points=",
                 "ignoreUrls": true
             }
         ],
@@ -147,9 +119,11 @@
         "vue/block-order": [
             "error",
             {
-                "order": [ [ "script[setup]", "script:not([setup])" ], "template", "style" ]
+                "order": [["script[setup]", "script:not([setup])"], "template", "style"]
             }
         ],
-        "vue/multi-word-component-names": "off"
+        "vue/multi-word-component-names": "off",
+        "arrow-body-style": "off",
+        "implicit-arrow-linebreak": "off"
     }
 }

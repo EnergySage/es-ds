@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const props = defineProps({
     hex: {
         type: String,
@@ -26,9 +25,9 @@ const uppercaseHex = computed(() => props.hex.toUpperCase());
         class="font-size-75 px-50 py-200 rounded text-center"
         :class="{
             [`bg-${token}`]: true,
-            'border': showBorder,
+            border: showBorder,
             'text-white': !isLight,
-            'text-dark': isLight
+            'text-dark': isLight,
         }">
         <p class="mb-50">
             {{ uppercaseHex }}

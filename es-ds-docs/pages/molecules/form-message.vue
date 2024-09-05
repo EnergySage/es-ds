@@ -11,21 +11,11 @@ const propTableRows = [
         'show',
         'Boolean',
         'false',
-        'Whether to show the form message. This component will respond to changes of this prop, '
-        + 'and the client is responsible for setting it false upon receiving the "hidden" event.',
+        'Whether to show the form message. This component will respond to changes of this prop, ' +
+            'and the client is responsible for setting it false upon receiving the "hidden" event.',
     ],
-    [
-        'timeout',
-        'Number',
-        '20',
-        'How many seconds the message should show for.',
-    ],
-    [
-        'variant',
-        'String',
-        '\'danger\'',
-        'Controls the icon on the message. Options are danger, success, or primary.',
-    ],
+    ['timeout', 'Number', '20', 'How many seconds the message should show for.'],
+    ['variant', 'String', "'danger'", 'Controls the icon on the message. Options are danger, success, or primary.'],
 ];
 
 const { $prism } = useNuxtApp();
@@ -45,14 +35,10 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Form message
-        </h1>
+        <h1>Form message</h1>
 
         <div class="my-500">
-            <h2>
-                Simple
-            </h2>
+            <h2>Simple</h2>
 
             <!-- TODO replace buttons with es-button after that's available -->
             <es-button
@@ -76,9 +62,7 @@ if ($prism) {
                 :show="showSimpleSuccess"
                 variant="success"
                 @hidden="showSimpleSuccess = false">
-                <div class="align-items-center d-flex">
-                    Saved successfully!
-                </div>
+                <div class="align-items-center d-flex">Saved successfully!</div>
             </es-form-msg>
             <es-form-msg
                 class="my-100"
@@ -86,8 +70,7 @@ if ($prism) {
                 variant="danger"
                 @hidden="showSimpleError = false">
                 <div class="align-items-center d-flex">
-                    The server responded with an error and we were unable to complete your request.
-                    Please try again.
+                    The server responded with an error and we were unable to complete your request. Please try again.
                 </div>
             </es-form-msg>
             <es-form-msg
@@ -98,31 +81,27 @@ if ($prism) {
                 <div class="align-items-center d-flex">
                     <p class="mb-0">
                         Need expert advice? &nbsp;
-                        <a href="https://www.energysage.com/">
-                            Schedule a free call with our Energy Advisor team!
-                        </a>
+                        <a href="https://www.energysage.com/"> Schedule a free call with our Energy Advisor team! </a>
                     </p>
                 </div>
             </es-form-msg>
         </div>
 
         <div class="my-500">
-            <h2>
-                With header and body
-            </h2>
+            <h2>With header and body</h2>
 
             <es-button
-                class="mb-100 mb-sm-0  mr-100"
+                class="mb-100 mb-sm-0 mr-100"
                 @click="showHeaderSuccess = true">
                 Show success
             </es-button>
             <es-button
-                class="mb-100 mb-sm-0  mr-100"
+                class="mb-100 mb-sm-0 mr-100"
                 @click="showHeaderError = true">
                 Show error
             </es-button>
             <es-button
-                class="mb-100 mb-sm-0 "
+                class="mb-100 mb-sm-0"
                 @click="showHeaderInfo = true">
                 Show info
             </es-button>
@@ -133,12 +112,8 @@ if ($prism) {
                 variant="success"
                 @hidden="showHeaderSuccess = false">
                 <div>
-                    <h2 class="h4 mb-50">
-                        bill.png
-                    </h2>
-                    <p class="mb-0">
-                        Upload successful!
-                    </p>
+                    <h2 class="h4 mb-50">bill.png</h2>
+                    <p class="mb-0">Upload successful!</p>
                 </div>
             </es-form-msg>
             <es-form-msg
@@ -147,12 +122,8 @@ if ($prism) {
                 variant="danger"
                 @hidden="showHeaderError = false">
                 <div>
-                    <h2 class="h4 mb-50">
-                        bill.webp
-                    </h2>
-                    <p class="mb-0">
-                        Upload failed: incorrect file type.
-                    </p>
+                    <h2 class="h4 mb-50">bill.webp</h2>
+                    <p class="mb-0">Upload failed: incorrect file type.</p>
                 </div>
             </es-form-msg>
             <es-form-msg
@@ -161,22 +132,15 @@ if ($prism) {
                 variant="primary"
                 @hidden="showHeaderInfo = false">
                 <div>
-                    <h2 class="h4 mb-50">
-                        bill.png
-                    </h2>
-                    <p class="mb-0">
-                        This file is now available for preview.
-                    </p>
+                    <h2 class="h4 mb-50">bill.png</h2>
+                    <p class="mb-0">This file is now available for preview.</p>
                 </div>
             </es-form-msg>
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsFormMsg props
-            </h2>
-            <ds-prop-table
-                :rows="propTableRows" />
+            <h2>EsFormMsg props</h2>
+            <ds-prop-table :rows="propTableRows" />
         </div>
 
         <ds-doc-source

@@ -58,11 +58,10 @@ const paginationListProps = [
 
 <template>
     <div>
-        <h1>
-            Pagination
-        </h1>
+        <h1>Pagination</h1>
         <p class="pb-200">
-            Extended from <nuxt-link
+            Extended from
+            <nuxt-link
                 href="https://v3.primevue.org/paginator/"
                 target="_blank">
                 PrimeVue paginator
@@ -70,8 +69,7 @@ const paginationListProps = [
         </p>
 
         <div class="mb-500">
-            <ul
-                id="paginated-list">
+            <ul id="paginated-list">
                 <li
                     v-for="item in items.slice(perPage * (currentPage - 1), perPage * currentPage)"
                     :key="item">
@@ -87,11 +85,8 @@ const paginationListProps = [
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsPagination props
-            </h2>
-            <ds-prop-table
-                :rows="paginationListProps" />
+            <h2>EsPagination props</h2>
+            <ds-prop-table :rows="paginationListProps" />
         </div>
 
         <ds-doc-source

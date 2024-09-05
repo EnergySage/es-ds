@@ -64,7 +64,7 @@ export default defineNuxtPlugin(() => {
     };
     return {
         provide: {
-            prism
-        }
-    }
+            prism,
+        },
+    };
 });

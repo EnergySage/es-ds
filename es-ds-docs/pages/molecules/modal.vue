@@ -25,9 +25,7 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Modal
-        </h1>
+        <h1>Modal</h1>
         <p>
             Extended from
             <nuxt-link
@@ -54,9 +52,7 @@ if ($prism) {
                 :visible="simpleModalVisible"
                 size="lg"
                 @hidden="simpleModalVisible = false">
-                <template #modal-title>
-                    Arcadia Reviews
-                </template>
+                <template #modal-title> Arcadia Reviews </template>
                 <template #default>
                     <p
                         id="lorem-ipsum"
@@ -88,9 +84,7 @@ if ($prism) {
                 :visible="buttonsModalVisible"
                 size="lg"
                 @hidden="buttonsModalVisible = false">
-                <template #modal-title>
-                    Arcadia Reviews
-                </template>
+                <template #modal-title> Arcadia Reviews </template>
                 <template #default>
                     <p
                         id="lorem-ipsum"
@@ -122,9 +116,7 @@ if ($prism) {
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsModal props
-            </h2>
+            <h2>EsModal props</h2>
             <ds-prop-table :rows="propTableRows" />
         </div>
 
