@@ -68,4 +68,3 @@
         </li>
     </ul>
 </template>
-<script setup></script>
