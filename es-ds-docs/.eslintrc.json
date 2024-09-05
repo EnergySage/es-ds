@@ -39,14 +39,6 @@
         "camelcase": "off",
         "no-console": "warn",
         "indent": "off",
-        "max-len": [
-            "warn",
-            {
-                "code": 119,
-                "ignorePattern": "class=|d=|points=",
-                "ignoreUrls": true
-            }
-        ],
         "vue/html-closing-bracket-spacing": [
             "error",
             {
