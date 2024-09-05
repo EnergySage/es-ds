@@ -4,37 +4,39 @@ import sassSpacers from '@energysage/es-ds-styles/scss/modules/spacers.module.sc
 const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450];
 const generateAlias = (key) => `p-${key} m-${key}`;
 
-const convertSpacerVariablesToTableEntries = (vars) => Object.keys(vars)
-    .map((key) => ({ key, value: vars[key] }))
-    .map((item) => {
-        const key = parseInt(item.key.replace(/s/, ''), 10);
-        const alias = generateAlias(key);
-        const em = Number(item.value.replace(/rem/, ''));
-        const px = em * 16; // Assuming we'll never change base font-size
-        return {
-            alias,
-            em,
-            key,
-            px,
-        };
-    });
+const convertSpacerVariablesToTableEntries = (vars) =>
+    Object.keys(vars)
+        .map((key) => ({ key, value: vars[key] }))
+        .map((item) => {
+            const key = parseInt(item.key.replace(/s/, ''), 10);
+            const alias = generateAlias(key);
+            const em = Number(item.value.replace(/rem/, ''));
+            const px = em * 16; // Assuming we'll never change base font-size
+            return {
+                alias,
+                em,
+                key,
+                px,
+            };
+        });
 
 const tableEntries = computed(() => convertSpacerVariablesToTableEntries(sassSpacers));
 const spacers = computed(() => tableEntries.value.filter((spacer) => !DEPRECATED_SPACERS.includes(spacer.key)));
-const deprecatedSpacers = computed(() => tableEntries
-// filter out updated spacers
-    .value.filter((spacer) => DEPRECATED_SPACERS.includes(spacer.key))
-// find the equivalent spacer from the updated naming scheme
-    .map((entry) => {
-        const newSpacer = spacers.value.find((spacer) => spacer.px === entry.px);
-        return {
-            ...entry,
-            newKey: newSpacer ? newSpacer.key : 'n/a',
-            newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
-        };
-    })
-// eslint-disable-next-line no-nested-ternary
-    .sort((a, b) => (a.px < b.px ? -1 : a.px > b.px ? 1 : 0)));
+const deprecatedSpacers = computed(() =>
+    tableEntries.value // filter out updated spacers
+        .filter((spacer) => DEPRECATED_SPACERS.includes(spacer.key))
+        // find the equivalent spacer from the updated naming scheme
+        .map((entry) => {
+            const newSpacer = spacers.value.find((spacer) => spacer.px === entry.px);
+            return {
+                ...entry,
+                newKey: newSpacer ? newSpacer.key : 'n/a',
+                newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
+            };
+        })
+        // eslint-disable-next-line no-nested-ternary
+        .sort((a, b) => (a.px < b.px ? -1 : a.px > b.px ? 1 : 0)),
+);
 
 const { $prism } = useNuxtApp();
 const docCode = ref('');
@@ -49,11 +51,10 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Spacing
-        </h1>
+        <h1>Spacing</h1>
         <p>
-            Extended from <nuxt-link
+            Extended from
+            <nuxt-link
                 to="https://getbootstrap.com/docs/4.6/utilities/spacing/"
                 target="_blank">
                 bootstrap spacing
@@ -65,18 +66,14 @@ if ($prism) {
                 Each spacing class is named for the percentage of the base size (16px) that generates the associated
                 pixel value.
             </p>
-            <p>
-                For example, 32px is 200% of 16px, so the classes are named <code>p-200 m-200</code>.
-            </p>
+            <p>For example, 32px is 200% of 16px, so the classes are named <code>p-200 m-200</code>.</p>
 
             <ds-responsive-table>
                 <ds-responsive-table-row
                     v-for="space in spacers"
                     :key="space.alias">
                     <ds-responsive-table-column md="3">
-                        <template #name>
-                            Example
-                        </template>
+                        <template #name> Example </template>
                         <template #value>
                             <div
                                 v-if="space.key > 0"
@@ -99,25 +96,19 @@ if ($prism) {
                         </template>
                     </ds-responsive-table-column>
                     <ds-responsive-table-column md="3">
-                        <template #name>
-                            Name
-                        </template>
+                        <template #name> Name </template>
                         <template #value>
                             <code>{{ space.alias }}</code>
                         </template>
                     </ds-responsive-table-column>
                     <ds-responsive-table-column md="3">
-                        <template #name>
-                            Size
-                        </template>
+                        <template #name> Size </template>
                         <template #value>
                             {{ `${space.px}px` }}
                         </template>
                     </ds-responsive-table-column>
                     <ds-responsive-table-column md="3">
-                        <template #name>
-                            Multiplier
-                        </template>
+                        <template #name> Multiplier </template>
                         <template #value>
                             {{ `${space.em}rem` }}
                         </template>
@@ -130,13 +121,11 @@ if ($prism) {
             id="legacy-collapse"
             :is-programmatic-until-user-input="false">
             <template #title>
-                <h2 class="mb-0">
-                    Legacy spacing
-                </h2>
+                <h2 class="mb-0">Legacy spacing</h2>
             </template>
             <p>
-                The following class names remain for backward compatibility but should not be used.
-                Please refactor any code that does use them, as they will be removed in a future version of ESDS.
+                The following class names remain for backward compatibility but should not be used. Please refactor any
+                code that does use them, as they will be removed in a future version of ESDS.
             </p>
 
             <ds-responsive-table>
@@ -144,17 +133,13 @@ if ($prism) {
                     v-for="space in deprecatedSpacers"
                     :key="space.alias">
                     <ds-responsive-table-column md="3">
-                        <template #name>
-                            Old name
-                        </template>
+                        <template #name> Old name </template>
                         <template #value>
                             <code>{{ space.alias }}</code>
                         </template>
                     </ds-responsive-table-column>
                     <ds-responsive-table-column md="3">
-                        <template #name>
-                            New name
-                        </template>
+                        <template #name> New name </template>
                         <template #value>
                             <code v-if="space.newAlias !== 'n/a'">
                                 {{ space.newAlias }}
@@ -165,17 +150,13 @@ if ($prism) {
                         </template>
                     </ds-responsive-table-column>
                     <ds-responsive-table-column md="3">
-                        <template #name>
-                            Size
-                        </template>
+                        <template #name> Size </template>
                         <template #value>
                             {{ `${space.px}px` }}
                         </template>
                     </ds-responsive-table-column>
                     <ds-responsive-table-column md="3">
-                        <template #name>
-                            Multiplier
-                        </template>
+                        <template #name> Multiplier </template>
                         <template #value>
                             {{ `${space.em}rem` }}
                         </template>

@@ -1,5 +1,4 @@
 <script>
-
 export default {
     name: 'DsDocSource',
     props: {
@@ -13,6 +12,11 @@ export default {
             default: '',
             required: false,
         },
+        compTitle: {
+            type: String,
+            default: 'Component source',
+            required: false,
+        },
         docCode: {
             type: String,
             default: '',
@@ -23,9 +27,15 @@ export default {
             default: '',
             required: false,
         },
+        docTitle: {
+            type: String,
+            default: 'Documentation source',
+            required: false,
+        },
     },
 };
 </script>
+
 <template>
     <div class="mt-500">
         <client-only>
@@ -34,7 +44,7 @@ export default {
                 id="compsource">
                 <template #title>
                     <h2 class="mb-0">
-                        Component source
+                        {{ compTitle }}
                     </h2>
                 </template>
                 <ds-code-block
@@ -47,7 +57,7 @@ export default {
                 class="mt-500">
                 <template #title>
                     <h2 class="mb-0">
-                        Documentation source
+                        {{ docTitle }}
                     </h2>
                 </template>
                 <ds-code-block

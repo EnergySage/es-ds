@@ -19,11 +19,10 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Tabs
-        </h1>
+        <h1>Tabs</h1>
         <p>
-            Extended from <a
+            Extended from
+            <a
                 href="https://v3.primevue.org/tabview/"
                 target="_blank">
                 PrimeVue TabView
@@ -39,41 +38,28 @@ if ($prism) {
         </p>
 
         <div class="my-500">
-            <h2>
-                Basic example
-            </h2>
+            <h2>Basic example</h2>
             <es-tabs>
                 <es-tab title="Item one">
-                    <p>
-                        Content one
-                    </p>
+                    <p>Content one</p>
                 </es-tab>
                 <es-tab title="Item two">
-                    <p>
-                        Content two
-                    </p>
+                    <p>Content two</p>
                 </es-tab>
                 <es-tab title="Item three">
-                    <p>
-                        Content three
-                    </p>
+                    <p>Content three</p>
                 </es-tab>
                 <es-tab title="Item four">
-                    <p>
-                        Content four
-                    </p>
+                    <p>Content four</p>
                 </es-tab>
             </es-tabs>
         </div>
 
         <div class="my-500">
-            <h2>
-                Using v-model
-            </h2>
+            <h2>Using v-model</h2>
             <p>
-                If you need to select tabs programmatically or trigger a UI change elsewhere when a
-                tab is selected, you can use the <code>v-model</code> directive to bind the
-                active index to a data value.
+                If you need to select tabs programmatically or trigger a UI change elsewhere when a tab is selected,
+                you can use the <code>v-model</code> directive to bind the active index to a data value.
             </p>
             <div class="mb-100">
                 <es-button
@@ -103,19 +89,13 @@ if ($prism) {
                         v-model="tabIndexProgrammatic"
                         class="mb-200">
                         <es-tab title="Item one">
-                            <p>
-                                Content one
-                            </p>
+                            <p>Content one</p>
                         </es-tab>
                         <es-tab title="Item two">
-                            <p>
-                                Content two
-                            </p>
+                            <p>Content two</p>
                         </es-tab>
                         <es-tab title="Item three">
-                            <p>
-                                Content three
-                            </p>
+                            <p>Content three</p>
                         </es-tab>
                     </es-tabs>
                 </b-col>

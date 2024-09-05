@@ -37,7 +37,7 @@ const showPanel = (event: Event) => {
 onMounted(() => {
     const targetElement = document.getElementById(props.target);
     if (targetElement) {
-        const triggers = props.triggers.split(' ').map(trigger => trigger === 'hover' ? 'mouseover' : trigger);
+        const triggers = props.triggers.split(' ').map((trigger) => (trigger === 'hover' ? 'mouseover' : trigger));
         for (const trigger of triggers) {
             targetElement.addEventListener(trigger, showPanel);
         }
@@ -60,24 +60,27 @@ watch(
         } else {
             closePanel();
         }
-    }
+    },
 );
 </script>
 
 <template>
-    <overlay-panel ref="op" :dismissable="true" appendTo="body" :pt="{
-        root: {
-             class: `popover b-popover ${props.variant === 'light' ? 'es-popover-light': 'es-popover-dark'}`,
-        },
-        transition: {
-            enterFromClass: 'es-popover-enter-from',
-            enterActiveClass: 'es-popover-enter-active',
-            leaveActiveClass: 'es-popover-leave-active',
-            leaveToClass: 'es-popover-leave-to',
-        },
-    }">
-        <div class="arrow">
-        </div>
+    <overlay-panel
+        ref="op"
+        :dismissable="true"
+        appendTo="body"
+        :pt="{
+            root: {
+                class: `popover b-popover ${props.variant === 'light' ? 'es-popover-light' : 'es-popover-dark'}`,
+            },
+            transition: {
+                enterFromClass: 'es-popover-enter-from',
+                enterActiveClass: 'es-popover-enter-active',
+                leaveActiveClass: 'es-popover-leave-active',
+                leaveToClass: 'es-popover-leave-to',
+            },
+        }">
+        <div class="arrow"></div>
         <template v-if="hasTitle">
             <!-- Title slot content -->
             <h3 class="popover-header">
@@ -85,7 +88,9 @@ watch(
                 <button
                     class="es-popover-close p-0 float-right bg-transparent"
                     @click="closePanel">
-                    <icon-x height="20px" width="20px" />
+                    <icon-x
+                        height="20px"
+                        width="20px" />
                 </button>
             </h3>
         </template>
@@ -97,7 +102,9 @@ watch(
                     v-if="!hasTitle"
                     class="es-popover-close p-0 pl-50 mb-auto bg-transparent"
                     @click="closePanel">
-                    <icon-x height="20px" width="20px" />
+                    <icon-x
+                        height="20px"
+                        width="20px" />
                 </button>
             </div>
         </div>

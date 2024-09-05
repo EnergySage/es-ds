@@ -51,10 +51,8 @@ const updateActiveIndex = (index) => {
             },
         }"
         @update:active-index="updateActiveIndex">
-        <template #collapseicon>
-        </template>
-        <template #expandicon>
-        </template>
+        <template #collapseicon> </template>
+        <template #expandicon> </template>
         <accordion-tab
             v-for="(tab, index) in accordionTabs"
             :key="index"
@@ -63,7 +61,7 @@ const updateActiveIndex = (index) => {
                     class: [
                         `es-accordion es-accordion--${variant}`,
                         {
-                            'expanded': context.active,
+                            expanded: context.active,
                         },
                     ],
                 }),
@@ -88,7 +86,7 @@ const updateActiveIndex = (index) => {
                     class: [
                         'es-accordion-content pb-25',
                         {
-                            'bg-white pt-100 px-100 px-sm-200': variant !== 'minimal'
+                            'bg-white pt-100 px-100 px-sm-200': variant !== 'minimal',
                         },
                     ],
                 },
@@ -97,7 +95,7 @@ const updateActiveIndex = (index) => {
                 <span
                     role="heading"
                     aria-level="3"
-                    :class="{'h3 mb-0': variant === 'minimal'}">
+                    :class="{ 'h3 mb-0': variant === 'minimal' }">
                     <component
                         :is="item"
                         v-for="item in tab.title()"

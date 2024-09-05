@@ -28,21 +28,14 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:vue/vue3-recommended",
         "./.nuxt/.eslint.globals.json",
-        "prettier",
-        "airbnb-base"
+        "airbnb-base",
+        "prettier"
     ],
     "rules": {
         "linebreak-style": "off",
         "camelcase": "off",
         "no-console": "warn",
-        "indent": [
-            "warn",
-            4,
-            {
-                // https://github.com/babel/babel-eslint/issues/530
-                "ignoredNodes": ["TemplateLiteral"]
-            }
-        ],
+        "indent": "off",
         "max-len": [
             "warn",
             {
@@ -126,9 +119,12 @@
         "vue/block-order": [
             "error",
             {
-                "order": [ [ "script[setup]", "script:not([setup])" ], "template", "style" ]
+                "order": [["script[setup]", "script:not([setup])"], "template", "style"]
             }
         ],
-        "vue/multi-word-component-names": "off"
+        "vue/multi-word-component-names": "off",
+        "arrow-body-style": "off",
+        "implicit-arrow-linebreak": "off",
+        "no-nested-ternary": "off"
     }
 }

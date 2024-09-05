@@ -32,7 +32,7 @@ const updateActiveIndex = (index) => {
             nav: 'list-unstyled nav position-relative',
             tab: 'nav-link',
             inkbar: 'inkbar position-absolute',
-            panelContainer: 'tab-content'
+            panelContainer: 'tab-content',
         }"
         @update:active-index="updateActiveIndex">
         <tab-panel
@@ -53,10 +53,10 @@ const updateActiveIndex = (index) => {
                     class: [
                         'tab-pane mt-100',
                         {
-                            'active': context.active
-                        }
-                    ]
-                })
+                            active: context.active,
+                        },
+                    ],
+                }),
             }">
             <component
                 :is="item"

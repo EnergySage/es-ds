@@ -42,14 +42,10 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Checkbox
-        </h1>
+        <h1>Checkbox</h1>
 
         <div class="my-500">
-            <h2>
-                Basic example
-            </h2>
+            <h2>Basic example</h2>
             <div>
                 <es-form-checkbox
                     id="idApple"
@@ -70,9 +66,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Disabled
-            </h2>
+            <h2>Disabled</h2>
             <div>
                 <es-form-checkbox
                     id="idApple2"
@@ -96,9 +90,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Indeterminate
-            </h2>
+            <h2>Indeterminate</h2>
             <es-form-checkbox
                 id="idSelectAll"
                 v-model="selectAll"
@@ -129,42 +121,28 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Helper text and required indicators
-            </h2>
+            <h2>Helper text and required indicators</h2>
             <div>
                 <es-form-checkbox
                     id="idApple4"
                     v-model="apple"
                     name="fruit">
-                    <div>
-                        Apple <span class="font-italic text-error-900">*</span>
-                    </div>
-                    <div class="font-size-sm text-gray-700">
-                        Malus domestica
-                    </div>
+                    <div>Apple <span class="font-italic text-error-900">*</span></div>
+                    <div class="font-size-sm text-gray-700">Malus domestica</div>
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idBanana4"
                     v-model="banana"
                     name="fruit">
-                    <div>
-                        Banana <span class="font-italic text-error-900">*</span>
-                    </div>
-                    <div class="font-size-sm text-gray-700">
-                        Musa acuminata
-                    </div>
+                    <div>Banana <span class="font-italic text-error-900">*</span></div>
+                    <div class="font-size-sm text-gray-700">Musa acuminata</div>
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idCherry4"
                     v-model="cherry"
                     name="fruit">
-                    <div>
-                        Cherry <span class="font-italic text-error-900">*</span>
-                    </div>
-                    <div class="font-size-sm text-gray-700">
-                        Prunus avium
-                    </div>
+                    <div>Cherry <span class="font-italic text-error-900">*</span></div>
+                    <div class="font-size-sm text-gray-700">Prunus avium</div>
                 </es-form-checkbox>
             </div>
         </div>
@@ -174,6 +152,5 @@ if ($prism) {
             comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
             :doc-code="docCode"
             doc-source="es-design-system/pages/molecules/es-form-msg.vue" />
-
     </div>
 </template>
