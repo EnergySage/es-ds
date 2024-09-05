@@ -33,13 +33,13 @@ const radioButtonPropTableRows = [
 
 // Name, Type, Default, Description
 const radioButtonGroupPropTableRows = [
-    ['id', 'String', '', 'Required.'],
-    ['label', 'String', '', 'Required. Corresponds to the legend value describing the group'],
-    ['name', 'String', '', 'Optional. Maps to the group name for each radio input'],
+    ['id', 'String', 'n/a', 'Required.'],
+    ['label', 'String', 'n/a', 'Required. Corresponds to the legend value describing the group'],
+    ['name', 'String', `''`, 'Optional. Maps to the group name for each radio input'],
     [
         'options',
         'Array',
-        '',
+        'undefined',
         'Optional. Must provide if not using the default slot. Allows radio input values to be passed as an array.',
     ],
     ['inline', 'Boolean', 'false', 'Optional. Attribute is passed down to children when using the options attribute'],
@@ -78,7 +78,9 @@ if ($prism) {
         </p>
 
         <div class="my-500">
-            <h2>Inline</h2>
+            <h2>
+                Inline
+            </h2>
             <es-radio-button-group
                 id="idFruits"
                 label="Please choose your favorite fruit.">
@@ -94,7 +96,9 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>Stacked</h2>
+            <h2>
+                Stacked
+            </h2>
             <es-radio-button-group
                 id="idFruits2"
                 label="Please choose your favorite fruit.">
@@ -109,7 +113,9 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>Disabled</h2>
+            <h2>
+                Disabled
+            </h2>
             <es-radio-button-group
                 id="idFruits3"
                 label="Please choose your favorite fruit.">
@@ -125,7 +131,9 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>Using Options Prop</h2>
+            <h2>
+                Using options prop
+            </h2>
             <es-radio-button-group
                 id="test2RadioGroup"
                 v-model="test2Selected"
@@ -133,32 +141,38 @@ if ($prism) {
                 :options="test2Options"
                 name="test2" />
 
-            <div>selected: {{ test2Selected }}</div>
+            <div>
+                selected: {{ test2Selected }}
+            </div>
         </div>
 
         <div class="mb-500">
-            <h2>EsRadioButton props</h2>
+            <h2>
+                EsRadioButton props
+            </h2>
             <ds-prop-table :rows="radioButtonPropTableRows" />
         </div>
 
         <div class="mb-500">
-            <h2>EsRadioButtonGroup props</h2>
+            <h2>
+                EsRadioButtonGroup props
+            </h2>
             <ds-prop-table :rows="radioButtonGroupPropTableRows" />
         </div>
 
         <ds-doc-source
-            comp-title="Radio Button Component"
+            comp-title="Radio button component"
             :comp-code="radioButtonComponentCode"
             comp-source="es-ds-components/src/lib-components/es-radio-button.vue" />
 
         <ds-doc-source
-            comp-title="Radio Button Group Component"
+            comp-title="Radio button group component"
             :comp-code="radioButtonGroupComponentCode"
             comp-source="es-ds-components/src/lib-components/es-radio-button-group.vue" />
 
         <ds-doc-source
-            doc-title="Radio Button & Group Documentation"
+            doc-title="Radio button & radio button group documentation"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/radio-input.vue" />
+            doc-source="es-ds-docs/pages/molecules/radio-button.vue" />
     </div>
 </template>
