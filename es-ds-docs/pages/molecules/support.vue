@@ -30,44 +30,31 @@ const supportProps = [
         `
         Required. Url for the image (usually a person's headshot).
         `,
-    ]
+    ],
 ];
 </script>
 
 <template>
     <div>
-        <h1>
-            Support
-        </h1>
+        <h1>Support</h1>
 
         <div class="my-500">
-            <h2>
-                Default
-            </h2>
+            <h2>Default</h2>
             <es-support
                 :link="link"
                 :src="placeholderImage" />
-            <h2 class="mt-500">
-                Custom copy
-            </h2>
+            <h2 class="mt-500">Custom copy</h2>
             <es-support
                 :link="link"
                 :src="placeholderImage">
-                <template #title>
-                    Need help with your quotes?
-                </template>
-                <template #linkCopy>
-                    Schedule a free call with Jessica, your EnergySage specialist.
-                </template>
+                <template #title> Need help with your quotes? </template>
+                <template #linkCopy> Schedule a free call with Jessica, your EnergySage specialist. </template>
             </es-support>
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsSupport props
-            </h2>
-            <ds-prop-table
-                :rows="supportProps" />
+            <h2>EsSupport props</h2>
+            <ds-prop-table :rows="supportProps" />
         </div>
 
         <ds-doc-source
