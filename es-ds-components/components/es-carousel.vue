@@ -1,30 +1,32 @@
-
 <script setup lang="ts">
 import Carousel from 'primevue/carousel';
 
 const responsiveOptions = ref([
-    { // xl: 1200px
+    {
+        // xl: 1200px
         breakpoint: '1199px',
         numVisible: 4,
-        numScroll: 1
+        numScroll: 1,
     },
-    { // lg: 992px
+    {
+        // lg: 992px
         breakpoint: '991px',
         numVisible: 3,
-        numScroll: 1
+        numScroll: 1,
     },
-    { // md: 768px
+    {
+        // md: 768px
         breakpoint: '767px',
         numVisible: 2,
-        numScroll: 1
+        numScroll: 1,
     },
-    { // sm: 576px
+    {
+        // sm: 576px
         breakpoint: '575px',
         numVisible: 1,
-        numScroll: 1
+        numScroll: 1,
     },
 ]);
-
 
 const props = defineProps({
     autoscroll: {
@@ -58,10 +60,9 @@ onMounted(() => {
 const stopAutoplay = () => {
     if (props.autoscroll) {
         autoplayInterval.value = 0;
-        key.value = "stopAutoplay";
+        key.value = 'stopAutoplay';
     }
 };
-
 </script>
 
 <template>
@@ -104,14 +105,16 @@ const stopAutoplay = () => {
             },
         }">
         <template #item="item">
-            <slot name="item" :item="item.data" />
+            <slot
+                name="item"
+                :item="item.data" />
         </template>
     </Carousel>
 </template>
 
 <style lang="scss" scoped>
-@use "@energysage/es-ds-styles/scss/variables" as variables;
-@use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 
 :deep(.p-carousel-item) {
     flex: 1 0 100%;
@@ -138,7 +141,7 @@ const stopAutoplay = () => {
 :deep(.dot) {
     list-style-type: none;
 
-    &[data-p-highlight="true"] button {
+    &[data-p-highlight='true'] button {
         background-color: variables.$orange-800;
     }
 
@@ -154,5 +157,4 @@ const stopAutoplay = () => {
         }
     }
 }
-
 </style>
