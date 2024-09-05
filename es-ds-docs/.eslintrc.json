@@ -21,6 +21,9 @@
             "rules": {
                 "max-len": "off"
             }
+        },
+        {
+            "files": ["*.vue", "*.ts"]
         }
     ],
     "extends": [
@@ -44,14 +47,6 @@
                 "ignoreUrls": true
             }
         ],
-        "vue/html-closing-bracket-newline": [
-            "error",
-            {
-                "singleline": "never",
-                "multiline": "never"
-            }
-        ],
-        "vue/html-indent": ["warn", 4],
         "vue/html-closing-bracket-spacing": [
             "error",
             {
@@ -69,13 +64,6 @@
                 "multiline": {
                     "max": 1
                 }
-            }
-        ],
-        "vue/singleline-html-element-content-newline": [
-            "error",
-            {
-                "ignoreWhenNoAttributes": false,
-                "ignoreWhenEmpty": true
             }
         ],
         "no-param-reassign": [

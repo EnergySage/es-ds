@@ -2,8 +2,10 @@
 import sassHeadingFontSizesDesktop from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-desktop.module.scss';
 import sassHeadingFontSizesMobile from '@energysage/es-ds-styles/scss/modules/heading-font-sizes-mobile.module.scss';
 import sassHeadingGeneral from '@energysage/es-ds-styles/scss/modules/heading-general.module.scss';
-import sassHeadingLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/heading-line-heights-desktop.module.scss';
-import sassHeadingLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/heading-line-heights-mobile.module.scss';
+import sassHeadingLineHeightsDesktop from
+        '@energysage/es-ds-styles/scss/modules/heading-line-heights-desktop.module.scss';
+import sassHeadingLineHeightsMobile from
+        '@energysage/es-ds-styles/scss/modules/heading-line-heights-mobile.module.scss';
 import sassHeadingEyebrow from '@energysage/es-ds-styles/scss/modules/heading-eyebrow.module.scss';
 import sassFontSizes from '@energysage/es-ds-styles/scss/modules/font-sizes.module.scss';
 import sassFontWeights from '@energysage/es-ds-styles/scss/modules/font-weights.module.scss';
