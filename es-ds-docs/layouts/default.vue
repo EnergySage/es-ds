@@ -1,5 +1,4 @@
 <script setup>
-
 const route = useRoute();
 
 const breadcrumbs = computed(() => {

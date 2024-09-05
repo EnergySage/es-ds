@@ -31,7 +31,7 @@ export default {
         viewBox="0 0 20 20">
         <mask
             id="halfFull"
-            style="mask-type:alpha"
+            style="mask-type: alpha"
             maskUnits="userSpaceOnUse"
             x="0"
             y="0"

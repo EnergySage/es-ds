@@ -29,7 +29,7 @@ export default {
                 v-for="(column, columnIndex) in columns"
                 :key="column"
                 :md="widths.md[columnIndex]"
-                :lg="widths.lg && widths.lg[columnIndex] || null">
+                :lg="(widths.lg && widths.lg[columnIndex]) || null">
                 <template #name>
                     {{ column }}
                 </template>

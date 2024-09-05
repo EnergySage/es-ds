@@ -73,27 +73,12 @@ const propTableRows = ref([
         'inline',
         'Boolean',
         'false',
-        'Use only for the \'link\' variant. If true, removes the fixed padding and height from the '
-        + 'button so it can be aligned with other text next to it.',
+        "Use only for the 'link' variant. If true, removes the fixed padding and height from the " +
+            'button so it can be aligned with other text next to it.',
     ],
-    [
-        'outline',
-        'Boolean',
-        'false',
-        'If true, changes to the outline version of the specified variant.',
-    ],
-    [
-        'size',
-        'String',
-        '"md"',
-        'The size of the button: \'md\', or \'sm\'.',
-    ],
-    [
-        'variant',
-        'String',
-        '"primary"',
-        'The name of the desired button variant: \'primary\', \'dark-bg\', or \'link\'.',
-    ],
+    ['outline', 'Boolean', 'false', 'If true, changes to the outline version of the specified variant.'],
+    ['size', 'String', '"md"', "The size of the button: 'md', or 'sm'."],
+    ['variant', 'String', '"primary"', "The name of the desired button variant: 'primary', 'dark-bg', or 'link'."],
 ]);
 
 const propTableWidths = ref({
@@ -117,11 +102,10 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Button
-        </h1>
+        <h1>Button</h1>
         <p>
-            Extended from <a
+            Extended from
+            <a
                 href="https://v3.primevue.org/button/"
                 target="_blank">
                 primevue button
@@ -137,14 +121,11 @@ if ($prism) {
         </p>
 
         <p class="mb-200">
-            Icons inside default buttons are sized automatically to 24px; and in
-            small buttons to 18px.
+            Icons inside default buttons are sized automatically to 24px; and in small buttons to 18px.
         </p>
 
         <div class="my-500">
-            <h2>
-                Primary
-            </h2>
+            <h2>Primary</h2>
             <p>
                 This is the default style for buttons. For a small button, use the <code>size="sm"</code> prop value.
             </p>
@@ -159,9 +140,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Description
-                        </template>
+                        <template #name> Description </template>
                         <template #value>
                             <span class="font-weight-semibold">
                                 {{ example.name }}
@@ -172,9 +151,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Normal
-                        </template>
+                        <template #name> Normal </template>
                         <template #value>
                             <es-button :size="example.size">
                                 {{ example.text }}
@@ -188,9 +165,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Disabled
-                        </template>
+                        <template #name> Disabled </template>
                         <template #value>
                             <es-button
                                 disabled
@@ -207,12 +182,8 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Secondary
-            </h2>
-            <p>
-                For this style, add the <code>outline</code> boolean prop.
-            </p>
+            <h2>Secondary</h2>
+            <p>For this style, add the <code>outline</code> boolean prop.</p>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
                     v-for="example in mainExamples"
@@ -223,9 +194,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Description
-                        </template>
+                        <template #name> Description </template>
                         <template #value>
                             <span class="font-weight-semibold">
                                 {{ example.name }}
@@ -236,9 +205,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Normal
-                        </template>
+                        <template #name> Normal </template>
                         <template #value>
                             <es-button
                                 outline
@@ -254,9 +221,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Disabled
-                        </template>
+                        <template #name> Disabled </template>
                         <template #value>
                             <es-button
                                 disabled
@@ -274,17 +239,13 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Link
-            </h2>
+            <h2>Link</h2>
             <p>
-                This variant will render a button with the appearance of a link while maintaining the default
-                padding and size of a button. This is useful when the link button will appear next to another
-                button (e.g. within a modal), as they will remain vertically aligned relative to each other.
+                This variant will render a button with the appearance of a link while maintaining the default padding
+                and size of a button. This is useful when the link button will appear next to another button (e.g.
+                within a modal), as they will remain vertically aligned relative to each other.
             </p>
-            <p>
-                Use the <code>variant="link"</code> prop value to enable it.
-            </p>
+            <p>Use the <code>variant="link"</code> prop value to enable it.</p>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
                     v-for="example in linkExamples"
@@ -295,9 +256,7 @@ if ($prism) {
                         md="4"
                         lg="2"
                         xxl="2">
-                        <template #name>
-                            Description
-                        </template>
+                        <template #name> Description </template>
                         <template #value>
                             <span class="font-weight-semibold">
                                 {{ example.name }}
@@ -308,9 +267,7 @@ if ($prism) {
                         md="4"
                         lg="4"
                         xxl="2">
-                        <template #name>
-                            Normal
-                        </template>
+                        <template #name> Normal </template>
                         <template #value>
                             <p v-if="example.inline">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -346,9 +303,7 @@ if ($prism) {
                         md="4"
                         lg="4"
                         xxl="2">
-                        <template #name>
-                            Disabled
-                        </template>
+                        <template #name> Disabled </template>
                         <template #value>
                             <p v-if="example.inline">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -390,17 +345,13 @@ if ($prism) {
         </div>
 
         <div class="bg-dark-blue my-500 p-100 rounded-lg text-white">
-            <h2 class="text-white">
-                Dark background
-            </h2>
+            <h2 class="text-white">Dark background</h2>
             <p>
-                These variants are only meant to be used against a dark blue background.
-                Use the <code>variant="dark-bg"</code> prop value to enable them.
+                These variants are only meant to be used against a dark blue background. Use the
+                <code>variant="dark-bg"</code> prop value to enable them.
             </p>
 
-            <h3 class="mt-200 text-white">
-                Primary
-            </h3>
+            <h3 class="mt-200 text-white">Primary</h3>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
                     v-for="example in mainExamples"
@@ -411,9 +362,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Description
-                        </template>
+                        <template #name> Description </template>
                         <template #value>
                             <span class="font-weight-semibold">
                                 {{ example.name }}
@@ -424,9 +373,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Normal
-                        </template>
+                        <template #name> Normal </template>
                         <template #value>
                             <es-button
                                 :size="example.size"
@@ -442,9 +389,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Disabled
-                        </template>
+                        <template #name> Disabled </template>
                         <template #value>
                             <es-button
                                 disabled
@@ -460,12 +405,8 @@ if ($prism) {
                 </ds-responsive-table-row>
             </ds-responsive-table>
 
-            <h3 class="mt-200 text-white">
-                Secondary
-            </h3>
-            <p>
-                For this style, add the <code>outline</code> boolean prop.
-            </p>
+            <h3 class="mt-200 text-white">Secondary</h3>
+            <p>For this style, add the <code>outline</code> boolean prop.</p>
             <ds-responsive-table class="responsive-table-typography">
                 <ds-responsive-table-row
                     v-for="example in mainExamples"
@@ -476,9 +417,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Description
-                        </template>
+                        <template #name> Description </template>
                         <template #value>
                             <span class="font-weight-semibold">
                                 {{ example.name }}
@@ -489,9 +428,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Normal
-                        </template>
+                        <template #name> Normal </template>
                         <template #value>
                             <es-button
                                 outline
@@ -508,9 +445,7 @@ if ($prism) {
                         md="4"
                         lg="3"
                         xxl="2">
-                        <template #name>
-                            Disabled
-                        </template>
+                        <template #name> Disabled </template>
                         <template #value>
                             <es-button
                                 disabled
@@ -529,9 +464,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Loading
-            </h2>
+            <h2>Loading</h2>
             <p>
                 This example shows how to use the
                 <a
@@ -543,18 +476,14 @@ if ($prism) {
             </p>
             <div class="mb-100">
                 <es-button class="mr-100 position-relative">
-                    <span class="invisible">
-                        Default button
-                    </span>
+                    <span class="invisible"> Default button </span>
                     <b-spinner
                         class="position-absolute"
                         label="Loading"
                         role="status" />
                 </es-button>
                 <es-button>
-                    <span>
-                        Default button
-                    </span>
+                    <span> Default button </span>
                     <b-spinner
                         class="ml-50"
                         label="Loading"
@@ -565,18 +494,14 @@ if ($prism) {
                 <es-button
                     class="mr-100 position-relative"
                     size="sm">
-                    <span class="invisible">
-                        Small button
-                    </span>
+                    <span class="invisible"> Small button </span>
                     <b-spinner
                         class="position-absolute"
                         label="Loading"
                         role="status" />
                 </es-button>
                 <es-button size="sm">
-                    <span>
-                        Small button
-                    </span>
+                    <span> Small button </span>
                     <b-spinner
                         class="ml-50"
                         label="Loading"
@@ -586,9 +511,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Props
-            </h2>
+            <h2>Props</h2>
             <ds-prop-table
                 :rows="propTableRows"
                 :widths="propTableWidths" />
@@ -599,6 +522,5 @@ if ($prism) {
             comp-source="es-ds-components/components/es-button.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/button.vue" />
-
     </div>
 </template>

@@ -52,7 +52,7 @@ const radioButtonPropTableRows = [
         'String',
         "''",
         'Descriptive name of the radio button group. Optional but should be used if multiple groups '
-        + 'use the same v-model.',
+            + 'use the same v-model.',
     ],
 ];
 
@@ -112,7 +112,8 @@ if ($prism) {
 <template>
     <div>
         <p class="mb-500">
-            Uses <a
+            Uses
+            <a
                 href="https://v3.primevue.org/radiobutton/"
                 target="_blank">
                 PrimeVue RadioButton

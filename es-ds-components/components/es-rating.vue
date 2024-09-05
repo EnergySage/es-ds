@@ -67,22 +67,21 @@ const update = (value: number) => {
         v-bind="$attrs"
         data-testid="rating-test"
         :pt="{
-            root: (options)  => ({
+            root: (options) => ({
                 class: [
                     'bg-transparent rounded-0 text-orange rating',
                     {
-                        'reactive':  !options.props.readonly
-                    }
-                ]
-            }),
-            item: (options)  => ({
-                class:[
-                    {
-
-                        'reactiveStar':  !options.props.readonly
-                    }
+                        reactive: !options.props.readonly,
+                    },
                 ],
-            })
+            }),
+            item: (options) => ({
+                class: [
+                    {
+                        reactiveStar: !options.props.readonly,
+                    },
+                ],
+            }),
         }"
         @update:model-value="update">
         <template #officon>
@@ -111,10 +110,10 @@ const update = (value: number) => {
     display: inline-flex !important;
     outline: 0;
 }
-.reactive{
+.reactive {
     cursor: pointer !important;
 }
-.reactiveStar:hover{
+.reactiveStar:hover {
     transform: scale(1.5);
 }
 </style>

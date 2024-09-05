@@ -2,17 +2,17 @@
 export default {
     name: 'IconTwitter',
     props: {
-    /**
-     * Width
-     */
+        /**
+         * Width
+         */
         width: {
             type: String,
             default: '31px',
             required: false,
         },
         /**
-     * Height
-     */
+         * Height
+         */
         height: {
             type: String,
             default: '32px',

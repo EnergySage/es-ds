@@ -46,9 +46,7 @@ if ($prism) {
 </script>
 <template>
     <div>
-        <h1>
-            Layout
-        </h1>
+        <h1>Layout</h1>
         <p>
             Based on
             <nuxt-link
@@ -57,21 +55,15 @@ if ($prism) {
                 Bootstrap Vue layout
             </nuxt-link>
         </p>
-        <h2 class="mt-200">
-            Responsive breakpoints
-        </h2>
-        <p>
-            At each breakpoint above extra small (xs), the content is constrained to the max width listed below.
-        </p>
+        <h2 class="mt-200">Responsive breakpoints</h2>
+        <p>At each breakpoint above extra small (xs), the content is constrained to the max width listed below.</p>
         <ds-responsive-table>
             <ds-responsive-table-row
                 v-for="field in breakpointTableFields"
                 :key="field.key"
                 zebra-stripes>
                 <ds-responsive-table-column>
-                    <template #name>
-                        &nbsp;
-                    </template>
+                    <template #name> &nbsp; </template>
                     <template #value>
                         <div>
                             <strong>{{ field.label }} </strong>
@@ -90,9 +82,7 @@ if ($prism) {
                 </ds-responsive-table-column>
             </ds-responsive-table-row>
         </ds-responsive-table>
-        <h2 class="mt-200">
-            Grid overview
-        </h2>
+        <h2 class="mt-200">Grid overview</h2>
         <b-container>
             <b-row>
                 <b-col

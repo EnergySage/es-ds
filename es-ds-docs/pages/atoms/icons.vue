@@ -29,14 +29,11 @@ if ($prism) {
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();
 }
-
 </script>
 
 <template>
     <div>
-        <h1>
-            Icons
-        </h1>
+        <h1>Icons</h1>
         <div class="mb-300">
             <p>
                 These icons are designed to work with design system components. Their size can be adjusted by passing
@@ -44,9 +41,7 @@ if ($prism) {
                 the container in which they're placed. To change their color, simply place the appropriate
                 <code>text-{xxx}</code> utility class on their containing element.
             </p>
-            <p>
-                Select an option to see how the icons look with that color applied.
-            </p>
+            <p>Select an option to see how the icons look with that color applied.</p>
             <es-radio-button
                 v-for="color in colorOptions"
                 :key="color.value"
@@ -55,15 +50,11 @@ if ($prism) {
                 :value="color.value"
                 inline />
         </div>
-        <h2>
-            Base Icons
-        </h2>
-        <p>
-            Default size for base icons is 24px by 24px.
-        </p>
+        <h2>Base Icons</h2>
+        <p>Default size for base icons is 24px by 24px.</p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [textColorClass()]: true }">
             <li>
                 <icon-arrow-clockwise />
                 <code>IconArrowClockwise</code>
@@ -390,15 +381,11 @@ if ($prism) {
             </li>
         </ul>
 
-        <h2>
-            Rating Star Icons
-        </h2>
-        <p>
-            Default size for rating star icons is 20px by 20px.
-        </p>
+        <h2>Rating Star Icons</h2>
+        <p>Default size for rating star icons is 20px by 20px.</p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [textColorClass()]: true }">
             <li>
                 <icon-star-empty />
                 <code>IconStarEmpty</code>
@@ -413,15 +400,11 @@ if ($prism) {
             </li>
         </ul>
 
-        <h2>
-            Marketing Icons
-        </h2>
-        <p>
-            Default size for marketing icons is 32px by 32px.
-        </p>
+        <h2>Marketing Icons</h2>
+        <p>Default size for marketing icons is 32px by 32px.</p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [textColorClass()]: true }">
             <li>
                 <icon-bank />
                 <code>IconBank</code>
@@ -496,15 +479,11 @@ if ($prism) {
             </li>
         </ul>
 
-        <h2>
-            Social Icons
-        </h2>
-        <p>
-            Default size for social icons is 31px wide by 32px tall.
-        </p>
+        <h2>Social Icons</h2>
+        <p>Default size for social icons is 31px wide by 32px tall.</p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [textColorClass()]: true }">
             <li>
                 <icon-facebook />
                 <code>IconFacebook</code>
@@ -527,15 +506,11 @@ if ($prism) {
             </li>
         </ul>
 
-        <h2>
-            File Icons
-        </h2>
-        <p>
-            Default size for file icons is 56px by 73px.
-        </p>
+        <h2>File Icons</h2>
+        <p>Default size for file icons is 56px by 73px.</p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [textColorClass()]: true }">
             <li>
                 <icon-file-doc />
                 <code>IconFileDoc</code>
@@ -550,15 +525,11 @@ if ($prism) {
             </li>
         </ul>
 
-        <h2>
-            State Icons
-        </h2>
-        <p>
-            Default size for state icons is 24px by 24px.
-        </p>
+        <h2>State Icons</h2>
+        <p>Default size for state icons is 24px by 24px.</p>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [textColorClass()]: true }">
             <li>
                 <icon-state-ak />
                 <code>IconStateAk</code>
@@ -754,7 +725,6 @@ if ($prism) {
             <li>
                 <icon-state-wi />
                 <code>IconStateWi</code>
-
             </li>
             <li>
                 <icon-state-wv />
@@ -765,12 +735,10 @@ if ($prism) {
                 <code>IconStateWy</code>
             </li>
         </ul>
-        <h2>
-            Miscellaneous Icons
-        </h2>
+        <h2>Miscellaneous Icons</h2>
         <ul
             class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [ textColorClass() ]: true }">
+            :class="{ [textColorClass()]: true }">
             <li>
                 <icon-video-play />
                 <code>IconVideoPlay</code>
@@ -784,8 +752,8 @@ if ($prism) {
 </template>
 
 <style lang="scss" scoped>
-@use "@energysage/es-ds-styles/scss/variables" as variables;
-@use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 
 .ds-icon-list {
     list-style: none;
