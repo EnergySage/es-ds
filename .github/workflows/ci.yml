@@ -43,6 +43,9 @@ jobs:
                 make install
                 make symlink
 
+            - name: Building
+              run: make build
+
             - name: Run linter 👀
               run: make lint
 
