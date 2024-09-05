@@ -17,77 +17,32 @@ const test2Selected = ref('first');
 
 // Name, Type, Default, Description
 const radioButtonPropTableRows = [
-    [
-        'disabled',
-        'Boolean',
-        'false',
-        'When present, it specifies that the radio button should be disabled.',
-    ],
-    [
-        'inline',
-        'Boolean',
-        'false',
-        'When present, it specifies that the radio buttons should be displayed inline.',
-    ],
-    [
-        'v-model',
-        'Any',
-        'n/a',
-        'Required. The v-model directive binds the radio button to a data property.',
-    ],
-    [
-        'display-name',
-        'String',
-        'n/a',
-        'Required. The text to display next to the radio button.',
-    ],
-    [
-        'value',
-        'Any',
-        'n/a',
-        'Required. The value to be used by v-model.',
-    ],
+    ['disabled', 'Boolean', 'false', 'When present, it specifies that the radio button should be disabled.'],
+    ['inline', 'Boolean', 'false', 'When present, it specifies that the radio buttons should be displayed inline.'],
+    ['v-model', 'Any', 'n/a', 'Required. The v-model directive binds the radio button to a data property.'],
+    ['display-name', 'String', 'n/a', 'Required. The text to display next to the radio button.'],
+    ['value', 'Any', 'n/a', 'Required. The value to be used by v-model.'],
     [
         'group-name',
         'String',
         "''",
-        'Descriptive name of the radio button group. Optional but should be used if multiple groups '
-            + 'use the same v-model.',
+        'Descriptive name of the radio button group. Optional but should be used if multiple groups ' +
+            'use the same v-model.',
     ],
 ];
 
 // Name, Type, Default, Description
 const radioButtonGroupPropTableRows = [
-    [
-        'id',
-        'String',
-        '',
-        'Required.',
-    ],
-    [
-        'label',
-        'String',
-        '',
-        'Required. Corresponds to the legend value describing the group',
-    ],
-    [
-        'name',
-        'String',
-        '',
-        'Optional. Maps to the group name for each radio input',
-    ],
+    ['id', 'String', '', 'Required.'],
+    ['label', 'String', '', 'Required. Corresponds to the legend value describing the group'],
+    ['name', 'String', '', 'Optional. Maps to the group name for each radio input'],
     [
         'options',
         'Array',
         '',
         'Optional. Must provide if not using the default slot. Allows radio input values to be passed as an array.',
     ],
-    [
-        'inline',
-        'Boolean',
-        'false',
-        'Optional. Attribute is passed down to children when using the options attribute',
-    ],
+    ['inline', 'Boolean', 'false', 'Optional. Attribute is passed down to children when using the options attribute'],
 ];
 
 const { $prism } = useNuxtApp();
@@ -98,7 +53,9 @@ if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
     const radioButtonComponentSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
     // eslint-disable-next-line max-len
-    const radioButtonGroupComponentSource = await import('@energysage/es-ds-components/components/es-radio-button-group.vue?raw');
+    const radioButtonGroupComponentSource = await import(
+        '@energysage/es-ds-components/components/es-radio-button-group.vue?raw'
+    );
     const docSource = await import('./radio-button.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
@@ -121,9 +78,7 @@ if ($prism) {
         </p>
 
         <div class="my-500">
-            <h2>
-                Inline
-            </h2>
+            <h2>Inline</h2>
             <es-radio-button-group
                 id="idFruits"
                 label="Please choose your favorite fruit.">
@@ -139,9 +94,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Stacked
-            </h2>
+            <h2>Stacked</h2>
             <es-radio-button-group
                 id="idFruits2"
                 label="Please choose your favorite fruit.">
@@ -156,9 +109,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Disabled
-            </h2>
+            <h2>Disabled</h2>
             <es-radio-button-group
                 id="idFruits3"
                 label="Please choose your favorite fruit.">
@@ -174,9 +125,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Using Options Prop
-            </h2>
+            <h2>Using Options Prop</h2>
             <es-radio-button-group
                 id="test2RadioGroup"
                 v-model="test2Selected"
@@ -184,23 +133,16 @@ if ($prism) {
                 :options="test2Options"
                 name="test2" />
 
-            <div>
-                selected: {{ test2Selected }}
-            </div>
+            <div>selected: {{ test2Selected }}</div>
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsRadioButton props
-            </h2>
-            <ds-prop-table
-                :rows="radioButtonPropTableRows" />
+            <h2>EsRadioButton props</h2>
+            <ds-prop-table :rows="radioButtonPropTableRows" />
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsRadioButtonGroup props
-            </h2>
+            <h2>EsRadioButtonGroup props</h2>
             <ds-prop-table :rows="radioButtonGroupPropTableRows" />
         </div>
 
@@ -218,6 +160,5 @@ if ($prism) {
             doc-title="Radio Button & Group Documentation"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/radio-input.vue" />
-
     </div>
 </template>

@@ -31,7 +31,6 @@ withDefaults(defineProps<IProps>(), {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const model = defineModel<any>();
-
 </script>
 
 <template>

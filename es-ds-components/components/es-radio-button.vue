@@ -2,12 +2,12 @@
 import RadioButton from 'primevue/radiobutton';
 
 interface IProps {
-    disabled?: boolean,
-    displayName: string,
-    groupName?: string,
-    inline?: boolean,
+    disabled?: boolean;
+    displayName: string;
+    groupName?: string;
+    inline?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    value: any,
+    value: any;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
