@@ -208,3 +208,10 @@ const propTableRows = [
             doc-source="es-ds-docs/pages/molecules/radio-button.vue" />
     </div>
 </template>
+<style lang="scss" scoped>
+.product-image {
+    aspect-ratio: 1;
+    margin-bottom: 0.75rem;
+    object-fit: cover;
+}
+</style>
