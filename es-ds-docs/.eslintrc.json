@@ -124,6 +124,7 @@
         ],
         "vue/multi-word-component-names": "off",
         "arrow-body-style": "off",
-        "implicit-arrow-linebreak": "off"
+        "implicit-arrow-linebreak": "off",
+        "no-nested-ternary": "off"
     }
 }
