@@ -78,9 +78,7 @@ if ($prism) {
         </p>
 
         <div class="my-500">
-            <h2>
-                Inline
-            </h2>
+            <h2>Inline</h2>
             <es-radio-button-group
                 id="idFruits"
                 label="Please choose your favorite fruit.">
@@ -96,9 +94,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Stacked
-            </h2>
+            <h2>Stacked</h2>
             <es-radio-button-group
                 id="idFruits2"
                 label="Please choose your favorite fruit.">
@@ -113,9 +109,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Disabled
-            </h2>
+            <h2>Disabled</h2>
             <es-radio-button-group
                 id="idFruits3"
                 label="Please choose your favorite fruit.">
@@ -131,9 +125,7 @@ if ($prism) {
         </div>
 
         <div class="my-500">
-            <h2>
-                Using options prop
-            </h2>
+            <h2>Using options prop</h2>
             <es-radio-button-group
                 id="test2RadioGroup"
                 v-model="test2Selected"
@@ -141,22 +133,16 @@ if ($prism) {
                 :options="test2Options"
                 name="test2" />
 
-            <div>
-                selected: {{ test2Selected }}
-            </div>
+            <div>selected: {{ test2Selected }}</div>
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsRadioButton props
-            </h2>
+            <h2>EsRadioButton props</h2>
             <ds-prop-table :rows="radioButtonPropTableRows" />
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsRadioButtonGroup props
-            </h2>
+            <h2>EsRadioButtonGroup props</h2>
             <ds-prop-table :rows="radioButtonGroupPropTableRows" />
         </div>
 
