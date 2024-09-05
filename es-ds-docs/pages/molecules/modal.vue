@@ -4,7 +4,8 @@ const buttonsModalVisible = ref(false);
 
 const propTableRows = [
     ['hideFooter', 'Boolean', 'false', 'Whether to show the modal footer.'],
-    ['size', 'string', 'md', "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
+    ['size',
+        'string', 'md', "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
 ];
 
 const { $prism } = useNuxtApp();
@@ -26,7 +27,6 @@ if ($prism) {
 <template>
     <div>
         <h1>Modal</h1>
-        <h2>test</h2>
         <p>
             Extended from
             <nuxt-link
