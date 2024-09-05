@@ -24,7 +24,11 @@ export const vuelidateHelpers = helpers;
  * that will ultimately be what you're comparing the pattern against N times.
  */
 // eslint-disable-next-line max-len
-const matchesPatternNTimes = (pattern: RegExp) => (N = 1) => (param: string) => [...String(param).matchAll(pattern)].length >= N;
+const matchesPatternNTimes =
+    (pattern: RegExp) =>
+    (N = 1) =>
+    (param: string) =>
+        [...String(param).matchAll(pattern)].length >= N;
 
 /**
  * @param { Number } number of times the resulting function will need to match
@@ -83,28 +87,32 @@ export function vuelidatePhone(number: string) {
  * @returns if not required or string contains a number
  */
 // eslint-disable-next-line max-len
-export const vuelidateHasNumber = (X: number) => helpers.withParams({ type: 'xTimes', value: X }, (value: string) => !helpers.req(value) || hasNumber(X)(value));
+export const vuelidateHasNumber = (X: number) =>
+    helpers.withParams({ type: 'xTimes', value: X }, (value: string) => !helpers.req(value) || hasNumber(X)(value));
 
 /**
  * @returns if not required or string contains a special character
  */
-export const vuelidateHasSpecialCharacter = (X: number) => helpers.withParams(
-    { type: 'xTimes', value: X },
-    (value: string) => !helpers.req(value) || hasSpecialCharacter(X)(value),
-);
+export const vuelidateHasSpecialCharacter = (X: number) =>
+    helpers.withParams(
+        { type: 'xTimes', value: X },
+        (value: string) => !helpers.req(value) || hasSpecialCharacter(X)(value),
+    );
 
 /**
  * @returns if not required or string contains an uppercase letter
  */
-export const vuelidateHasUppercaseLetter = (X: number) => helpers.withParams(
-    { type: 'xTimes', value: X },
-    (value: string) => !helpers.req(value) || hasUppercaseLetter(X)(value),
-);
+export const vuelidateHasUppercaseLetter = (X: number) =>
+    helpers.withParams(
+        { type: 'xTimes', value: X },
+        (value: string) => !helpers.req(value) || hasUppercaseLetter(X)(value),
+    );
 
 /**
  * @returns if not required or string contains an lowercase letter
  */
-export const vuelidateHasLowercaseLetter = (X: number) => helpers.withParams(
-    { type: 'xTimes', value: X },
-    (value: string) => !helpers.req(value) || hasLowercaseLetter(X)(value),
-);
+export const vuelidateHasLowercaseLetter = (X: number) =>
+    helpers.withParams(
+        { type: 'xTimes', value: X },
+        (value: string) => !helpers.req(value) || hasLowercaseLetter(X)(value),
+    );
