@@ -26,6 +26,7 @@ if ($prism) {
 <template>
     <div>
         <h1>Modal</h1>
+        <h2>test</h2>
         <p>
             Extended from
             <nuxt-link
