@@ -1,44 +1,39 @@
 <script setup lang="ts">
 const items = ref([
     {
-        image_url:
-            'https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/BDDP_STG/on/demandware.static/-/Sites-masterCatalog/default/Products/I-PUPEVCHAR-NEMA.jpg',
-        model_name: 'Wallbox Pulsar Plus 40A',
-        price: '$649.00',
-        productUrl: 'https://equipment.energysage.com/ev-chargers/PUP1-U-1-5-N-002-A',
-        subtitle: 'You may be eligible for rebates!',
+        image_url: 'https://loremflickr.com/200/200?random=1',
+        breed: 'Manx',
+        age: 'Kitten',
+        url: 'https://www.petfinder.com/search/cats-for-adoption/',
+        subtitle: 'Adopt me!',
     },
     {
-        image_url:
-            'https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/BDDP_STG/on/demandware.static/-/Sites-masterCatalog/default/Products/I-PUPEVCHAR-Hardwire.jpg',
-        model_name: 'Wallbox Pulsar Plus 48A',
-        price: '$699.00',
-        productUrl: 'https://equipment.energysage.com/ev-chargers/PUP1-U-1-6-C-002-A',
-        subtitle: 'You may be eligible for rebates!',
+        image_url: 'https://loremflickr.com/200/200?random=2',
+        breed: 'Maine Coon',
+        age: 'Kitten',
+        url: 'https://www.petfinder.com/search/cats-for-adoption/',
+        subtitle: 'Adopt me!',
     },
     {
-        image_url:
-            'https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/BDDP_STG/on/demandware.static/-/Sites-masterCatalog/default/Products/I-CHARGFLEX-01-PGIN-0650-V1.jpg',
-        model_name: 'ChargePoint Home Flex Level 2 EV Charger w/ NEMA 6-50, 23 ft cable',
-        price: '$599.00',
-        productUrl: 'https://equipment.energysage.com/ev-chargers/CPH50-NEMA6-50-L23',
-        subtitle: 'You may be eligible for rebates!',
+        image_url: 'https://loremflickr.com/200/200?random=3',
+        breed: 'Ragamuffin',
+        age: 'Adult',
+        url: 'https://www.petfinder.com/search/cats-for-adoption/',
+        subtitle: 'Adopt me!',
     },
     {
-        image_url:
-            'https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/BDDP_STG/on/demandware.static/-/Sites-masterCatalog/default/Products/I-FLOX5EVC-01-HI5C-FL01-V1.jpg',
-        model_name: 'FLO Home X5 - Smart EV Charging Station - Carbon',
-        price: '$995.00',
-        productUrl: 'https://equipment.energysage.com/ev-chargers/FH-1-STA-X5-HI5C-FL1',
-        subtitle: 'You may be eligible for rebates!',
+        image_url: 'https://loremflickr.com/200/200?random=4',
+        breed: 'Ragdoll',
+        age: 'Senior',
+        url: 'https://www.petfinder.com/search/cats-for-adoption/',
+        subtitle: 'Adopt me!',
     },
     {
-        image_url:
-            'https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/BDDP_STG/on/demandware.static/-/Sites-masterCatalog/default/Products/I-CHARGFLEX-01-HARD-WIRE-V1.jpg',
-        model_name: 'ChargePoint Home Flex - Hardwired',
-        price: '$540.00',
-        productUrl: 'https://equipment.energysage.com/ev-chargers/CPH50-HARDWIRE-L23',
-        subtitle: 'You may be eligible for rebates!',
+        image_url: 'https://loremflickr.com/200/200?random=5',
+        breed: 'Sphynx',
+        age: 'Senior',
+        url: 'https://www.petfinder.com/search/cats-for-adoption/',
+        subtitle: 'Adopt me!',
     },
 ]);
 
@@ -94,7 +89,7 @@ const propTableRows = [
                 <template #item="{ item }">
                     <es-card
                         class="d-flex flex-column bg-soft-blue h-100"
-                        :href="item.productUrl"
+                        :href="item.url"
                         variant="interactive">
                         <nuxt-img
                             v-if="item.image_url"
@@ -105,9 +100,9 @@ const propTableRows = [
                         <h3 class="flex-grow-1 font-size-300 mb-50 text-blue-900">{{ item.model_name }}</h3>
                         <div>
                             <p
-                                v-if="item.price"
+                                v-if="item.age"
                                 class="mb-100 mb-lg-50 text-blue-900">
-                                {{ item.price }}
+                                {{ item.age }}
                             </p>
                             <p
                                 v-if="item.subtitle"
@@ -127,7 +122,7 @@ const propTableRows = [
                 <template #item="{ item }">
                     <es-card
                         class="d-flex flex-column bg-soft-blue h-100"
-                        :href="item.productUrl"
+                        :href="item.url"
                         variant="interactive">
                         <img
                             v-if="item.image_url"
@@ -138,9 +133,9 @@ const propTableRows = [
                         <h3 class="flex-grow-1 font-size-300 mb-50 text-blue-900">{{ item.model_name }}</h3>
                         <div>
                             <p
-                                v-if="item.price"
+                                v-if="item.age"
                                 class="mb-100 mb-lg-50 text-blue-900">
-                                {{ item.price }}
+                                {{ item.age }}
                             </p>
                             <p
                                 v-if="item.subtitle"
@@ -162,7 +157,7 @@ const propTableRows = [
                 <template #item="{ item }">
                     <es-card
                         class="d-flex flex-column bg-soft-blue h-100"
-                        :href="item.productUrl"
+                        :href="item.url"
                         variant="interactive">
                         <img
                             v-if="item.image_url"
@@ -173,9 +168,9 @@ const propTableRows = [
                         <h3 class="flex-grow-1 font-size-300 mb-50 text-blue-900">{{ item.model_name }}</h3>
                         <div>
                             <p
-                                v-if="item.price"
+                                v-if="item.age"
                                 class="mb-100 mb-lg-50 text-blue-900">
-                                {{ item.price }}
+                                {{ item.age }}
                             </p>
                             <p
                                 v-if="item.subtitle"
