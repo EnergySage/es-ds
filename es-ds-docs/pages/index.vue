@@ -30,6 +30,9 @@
             <li>
                 <nuxt-link to="/molecules"> Molecules </nuxt-link>
             </li>
+            <li>
+                <nuxt-link to="/organisms"> Organisms </nuxt-link>
+            </li>
         </ul>
     </div>
 </template>
