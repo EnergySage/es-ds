@@ -21,7 +21,7 @@ const propTableRows = [
         'maxFileSize',
         'Number',
         '25',
-        'Max file size in MB. This is per file. Any file that exceeds this size will not be ' + 'uploaded.',
+        'Max file size in MB. This is per file. Any file that exceeds this size will not be uploaded.',
     ],
     ['collapsed', 'Boolean', 'false', 'In desktop view, determines whether the upload box is horizontally collapsed.'],
 ];
@@ -123,7 +123,7 @@ const uploadSuccess = (fileName) => {
 
 const uploadFailure = (fileNameAndMessage) => {
     events.value.push({
-        msg: `uploadFailure for file: ${fileNameAndMessage.name}. Message: ` + `${fileNameAndMessage.message}`,
+        msg: `uploadFailure for file: ${fileNameAndMessage.name}. Message: ${fileNameAndMessage.message}`,
         variant: 'danger',
         show: true,
     });

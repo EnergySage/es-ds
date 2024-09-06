@@ -19,6 +19,12 @@
         </li>
         <li>
             <div class="h4">
+                <ds-link to="/organisms"> Organisms </ds-link>
+            </div>
+            <ds-organisms-list class="mb-100" />
+        </li>
+        <li>
+            <div class="h4">
                 <ds-link to="/examples"> Examples </ds-link>
             </div>
             <ds-examples-list class="mb-100" />

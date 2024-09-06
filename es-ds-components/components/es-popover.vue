@@ -38,6 +38,7 @@ onMounted(() => {
     const targetElement = document.getElementById(props.target);
     if (targetElement) {
         const triggers = props.triggers.split(' ').map((trigger) => (trigger === 'hover' ? 'mouseover' : trigger));
+        // eslint-disable-next-line no-restricted-syntax
         for (const trigger of triggers) {
             targetElement.addEventListener(trigger, showPanel);
         }
@@ -68,7 +69,7 @@ watch(
     <overlay-panel
         ref="op"
         :dismissable="true"
-        appendTo="body"
+        append-to="body"
         :pt="{
             root: {
                 class: `popover b-popover ${props.variant === 'light' ? 'es-popover-light' : 'es-popover-dark'}`,
