@@ -48,7 +48,7 @@ const autoplayInterval = ref(props.autoscroll ? 3000 : 0);
 const key = ref('');
 
 const stopAutoplay = () => {
-    if (props.autoscroll) {
+    if (autoplayInterval.value > 0) {
         autoplayInterval.value = 0;
         key.value = 'stopAutoplay';
     }

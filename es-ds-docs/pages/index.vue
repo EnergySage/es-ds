@@ -31,7 +31,7 @@
                 <nuxt-link to="/molecules"> Molecules </nuxt-link>
             </li>
             <li>
-                <nuxt-link to="/molecules"> Organisms </nuxt-link>
+                <nuxt-link to="/organisms"> Organisms </nuxt-link>
             </li>
         </ul>
     </div>
