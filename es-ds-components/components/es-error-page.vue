@@ -111,7 +111,7 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
                                     width="53px" />
                             </div>
                         </div>
-                        <p class="font-weight-bolder mb-200 mb-md-0">{{ item.label }}</p>
+                        <p class="mb-200 mb-md-0">{{ item.label }}</p>
                     </a>
                 </b-col>
             </b-row>
