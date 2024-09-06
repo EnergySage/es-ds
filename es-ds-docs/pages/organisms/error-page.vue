@@ -1,6 +1,9 @@
 <script setup>
-const propTableRows = [['errorType', 'String', 'n/a', 'The type of error to display.']];
+definePageMeta({
+    layout: 'full-width-component',
+});
 
+const propTableRows = [['errorType', 'String', 'n/a', 'The type of error to display.']];
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
