@@ -62,6 +62,10 @@ const update = (value: number) => {
 <template>
     <div
         v-if="readOnly"
+        role="slider"
+        aria-valuemin="1"
+        aria-valuemax="5"
+        :aria-valuenow="roundedRating"
         class="bg-transparent rounded-0 text-orange rating">
         <div
             v-for="i in 5"
@@ -91,6 +95,10 @@ const update = (value: number) => {
     </div>
     <rating
         v-else
+        role="slider"
+        aria-valuemin="1"
+        aria-valuemax="5"
+        :aria-valuenow="roundedRating"
         :model-value="roundedRating"
         :cancel="false"
         :readonly="readOnly"
