@@ -97,21 +97,12 @@ const update = (value: number) => {
         v-bind="$attrs"
         data-testid="rating-test"
         :pt="{
-            root: (options) => ({
-                class: [
-                    'bg-transparent rounded-0 text-orange rating',
-                    {
-                        reactive: !options.props.readonly,
-                    },
-                ],
-            }),
-            item: (options) => ({
-                class: [
-                    {
-                        reactiveStar: !options.props.readonly,
-                    },
-                ],
-            }),
+            root: {
+                class: 'bg-transparent rounded-0 text-orange rating reactive',
+            },
+            item: {
+                class: 'reactiveStar',
+            },
         }"
         @update:model-value="update">
         <template #officon>
