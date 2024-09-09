@@ -4,7 +4,7 @@ import Rating from 'primevue/rating';
 const props = defineProps({
     /**
      * Starting rating
-     * 0-5; Avg will show half icons rounded down
+     * 0-5; Avg will show half icons rounded down in read only mode
      */
     rating: {
         type: Number,
@@ -19,7 +19,7 @@ const props = defineProps({
         default: true,
     },
     /**
-     * Icon Width
+     * Icon width
      */
     width: {
         type: String,
@@ -27,7 +27,7 @@ const props = defineProps({
         required: false,
     },
     /**
-     * Icon Height
+     * Icon height
      */
     height: {
         type: String,

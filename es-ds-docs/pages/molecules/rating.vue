@@ -4,6 +4,14 @@ const changeEvent = ($event) => {
     alert($event.value);
 };
 
+const propTableRows = [
+    ['rating', 'Number', '0', 'Starting rating value 0-5, with .5 values available in read only mode'],
+    ['rounded', 'Boolean', 'true', 'Round rating to nearest .5'],
+    ['read-only', 'Boolean', 'true', 'Disable changing the rating'],
+    ['width', 'String', '20px', 'Icon width'],
+    ['height', 'String', '20px', 'Icon height'],
+];
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -50,6 +58,11 @@ if ($prism) {
             <div class="bg-blue-900 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
                 <es-rating :rating="4.5" />
             </div>
+        </div>
+
+        <div class="my-500">
+            <h2>EsRating props</h2>
+            <ds-prop-table :rows="propTableRows" />
         </div>
 
         <ds-doc-source
