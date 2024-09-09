@@ -9,7 +9,7 @@ const props = defineProps({
     rating: {
         type: Number,
         default: 0,
-        validator: (num) => num >= 0 && num <= 5,
+        validator: (num: number) => num >= 0 && num <= 5,
     },
     /**
      * Disable changing the rating
@@ -113,7 +113,7 @@ const update = (value: number) => {
 .reactive {
     cursor: pointer !important;
 }
-.reactiveStar:hover {
+.reactiveStar:hover, .reactiveStar[data-p-focused='true'] {
     transform: scale(1.5);
 }
 </style>
