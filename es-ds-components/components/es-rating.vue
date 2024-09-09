@@ -60,7 +60,37 @@ const update = (value: number) => {
 </script>
 
 <template>
+    <div
+        v-if="readOnly"
+        class="bg-transparent rounded-0 text-orange rating">
+        <div
+            v-for="i in 5"
+            :key="i">
+            <span
+                v-if="i <= roundedRating"
+                data-testid="rating-test">
+                <icon-star-full
+                    :width="width"
+                    :height="height" />
+            </span>
+            <span
+                v-else-if="i - 0.5 === roundedRating"
+                data-testid="rating-test">
+                <icon-star-half
+                    :width="width"
+                    :height="height" />
+            </span>
+            <span
+                v-else
+                data-testid="rating-test">
+                <icon-star-empty
+                    :width="width"
+                    :height="height" />
+            </span>
+        </div>
+    </div>
     <rating
+        v-else
         :model-value="roundedRating"
         :cancel="false"
         :readonly="readOnly"
@@ -113,7 +143,8 @@ const update = (value: number) => {
 .reactive {
     cursor: pointer !important;
 }
-.reactiveStar:hover, .reactiveStar[data-p-focused='true'] {
+.reactiveStar:hover,
+.reactiveStar[data-p-focused='true'] {
     transform: scale(1.5);
 }
 </style>
