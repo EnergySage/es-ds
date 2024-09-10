@@ -47,7 +47,7 @@ const model = defineModel<number>();
                 },
             }" />
 
-        <div class="d-flex flex-row justify-content-between w-100">
+        <div class="d-flex flex-row justify-content-between">
             <span>{{ labelFormatter(min) }}</span>
             <span>{{ labelFormatter(max) }}</span>
         </div>
@@ -60,6 +60,8 @@ const model = defineModel<number>();
     background-color: variables.$gray-300;
     border-radius: 15px;
     height: 10px;
+    margin-bottom: 0.75rem;
+    position: relative;
 }
 
 :deep(.slider-range) {
@@ -76,7 +78,7 @@ const model = defineModel<number>();
     cursor: pointer;
     filter: drop-shadow(0 1px 6px rgba(34, 38, 51, 0.25));
     height: 28px;
-    transform: translate(0, -32%);
+    transform: translate(-54%, -32%);
     width: 28px;
 
     &:focus-visible {
