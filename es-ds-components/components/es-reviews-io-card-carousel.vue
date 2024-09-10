@@ -1,9 +1,3 @@
-<template>
-    <div
-        id="reviewsio-carousel-widget"
-        class="EsReviewsIoCardCarousel" />
-</template>
-
 <script setup>
 useHead({
     link: [
@@ -33,22 +27,9 @@ useHead({
 
 onBeforeUnmount(() => {
     const widgetPrefixes = document.querySelectorAll('.CarouselWidget-prefix');
-    widgetPrefixes.forEach((prefix) => { prefix.remove(); });
-});
-
-onMounted(async () => {
-    // if we're server-side, get out
-    if (typeof window === 'undefined') return;
-
-    if (window.carouselInlineWidget) {
-        // if the Reviews.io script has loaded, initialize the widget
-        initializeWidget();
-    } else {
-        // if the Reviews.io script has not loaded, set its callback function to trigger widget initialization
-        window.carouselInlineWidgetCallback = () => {
-            initializeWidget();
-        };
-    }
+    widgetPrefixes.forEach((prefix) => {
+        prefix.remove();
+    });
 });
 
 const initializeWidget = () => {
@@ -271,4 +252,24 @@ const initializeWidget = () => {
     }
 };
 
+onMounted(async () => {
+    // if we're server-side, get out
+    if (typeof window === 'undefined') return;
+
+    if (window.carouselInlineWidget) {
+        // if the Reviews.io script has loaded, initialize the widget
+        initializeWidget();
+    } else {
+        // if the Reviews.io script has not loaded, set its callback function to trigger widget initialization
+        window.carouselInlineWidgetCallback = () => {
+            initializeWidget();
+        };
+    }
+});
 </script>
+
+<template>
+    <div
+        id="reviewsio-carousel-widget"
+        class="EsReviewsIoCardCarousel" />
+</template>
