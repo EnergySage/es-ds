@@ -83,4 +83,22 @@ const model = defineModel<number>();
         outline: none;
     }
 }
+
+// "tooltip"
+:deep(.slider-handle::before) {
+    align-items: center;
+    background-color: variables.$blue-600;
+    border-radius: 50%;
+    bottom: 100%;
+    box-shadow: 0 1px 6px 0 rgba(34, 38, 51, 0.25);
+    color: variables.$white;
+    content: attr(aria-valuenow);
+    display: flex;
+    font-weight: variables.$font-weight-boldest;
+    height: 52px;
+    justify-content: center;
+    padding-bottom: 2px;
+    position: absolute;
+    width: 52px;
+}
 </style>
