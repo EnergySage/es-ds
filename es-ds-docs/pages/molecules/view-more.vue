@@ -51,11 +51,12 @@ const viewMoreProps = [
     <div>
         <h1>View more</h1>
         <p>
-            Using <nuxt-link
+            Using
+            <nuxt-link
                 href="https://www.npmjs.com/package/html-truncate"
                 target="_blank">
-                html-truncate
-            </nuxt-link>.
+                html-truncate </nuxt-link
+            >.
         </p>
 
         <es-view-more
