@@ -10,11 +10,53 @@ if ($prism) {
     docCode.value = $prism.normalizeCode(docSource.default);
     $prism.highlight();
 }
+
+const viewMoreProps = [
+    [
+        'content',
+        'String',
+        'n/a',
+        `
+        Required. Full content of text to be truncated.
+        `,
+    ],
+    [
+        'length',
+        'Number',
+        'n/a',
+        `
+        Required. Maximum character length of text before it is truncated
+        `,
+    ],
+    [
+        'clamp',
+        'String',
+        'Show more',
+        `
+        Text on button to expand content
+        `,
+    ],
+    [
+        'less',
+        'String',
+        'Show less',
+        `
+        Text on button to truncate content
+        `,
+    ],
+];
 </script>
 
 <template>
     <div>
         <h1>View more</h1>
+        <p>
+            Using <nuxt-link
+                href="https://www.npmjs.com/package/html-truncate"
+                target="_blank">
+                html-truncate
+            </nuxt-link>.
+        </p>
 
         <es-view-more
             class="my-500"
@@ -27,6 +69,11 @@ if ($prism) {
                 Mauris vitae tortor mauris. Cras suscipit nibh nec nisi cursus ornare. Maecenas quis turpis sit amet
                 sapien dapibus sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat.
                 Donec eleifend elit quam. `" />
+
+        <div class="mb-500">
+            <h2>EsViewMore props</h2>
+            <ds-prop-table :rows="viewMoreProps" />
+        </div>
 
         <ds-doc-source
             :comp-code="compCode"

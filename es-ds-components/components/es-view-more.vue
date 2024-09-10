@@ -3,7 +3,7 @@ import truncate from 'html-truncate';
 
 const props = defineProps({
     /**
-     * Content of the button
+     * Full text content
      */
     content: {
         type: String,
