@@ -36,7 +36,10 @@ const propertyTypeOptions = [
         </h2>
         <es-form-radio-card
             display-name="test1"
-            :value="propertyTypeOptions[0].value" />
+            :model-value="form.propertyType"
+            :value="propertyTypeOptions[0].value"
+            @radio-card:update="(val) => form.propertyType = val"
+        />
 
         <h2>
             Default
@@ -57,7 +60,9 @@ const propertyTypeOptions = [
                         :key="option.value"
                         :display-name="option.label"
                         group-name="radioCards1"
-                        :value="option.value">
+                        :model-value="form.propertyType"
+                        :value="option.value"
+                        @radio-card:update="(val) => form.propertyType = val">
                         {{ option.label }}
                     </es-form-radio-card>
                 </es-form-radio-cards>

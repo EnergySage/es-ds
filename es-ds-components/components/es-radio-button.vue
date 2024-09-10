@@ -8,6 +8,8 @@ interface IProps {
     inline?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    modelValue: any;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
@@ -17,6 +19,13 @@ const props = withDefaults(defineProps<IProps>(), {
     inline: false,
     value: null,
 });
+
+defineEmits([
+    'radio-button:change',
+    'radio-button:focus',
+    'radio-button:blur',
+    'radio-button:update',
+])
 </script>
 
 <template>
@@ -28,7 +37,12 @@ const props = withDefaults(defineProps<IProps>(), {
             :disabled="disabled"
             :input-id="`${props.value}-${props.groupName}`"
             :name="props.groupName"
-            :value="props.value" />
+            :model-value="modelValue"
+            :value="props.value"
+            @change="$emit('radio-button:change', (evt: any) => evt)"
+            @focus="$emit('radio-button:focus', (evt: any) => evt)"
+            @blur="$emit('radio-button:blur', (evt: any) => evt)"
+            @update:model-value="$emit('radio-button:update', props.value)" />
         <slot>
             <label
                 :for="`${props.value}-${props.groupName}`"
