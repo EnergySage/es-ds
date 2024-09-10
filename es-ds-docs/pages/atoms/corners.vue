@@ -16,7 +16,7 @@ const COMPONENT_NAME_URLS = {
     // TODO switch popover, textarea, and verification-code to the right route once they exist
     popover: '/molecules',
     textarea: '/molecules',
-    'text-input': '/molecules/form-input',
+    'text-input': '/molecules/text-input',
     'verification-code': '/molecules',
 };
 
