@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 // Prevents attributes from being applied to first <div>
 // v-bind="$attr" is on the input instead
 defineOptions({
@@ -35,7 +34,7 @@ const props = defineProps({
     modelValue: {
         type: String,
         required: true,
-        default: "",
+        default: '',
     },
     /**
      * state
@@ -53,9 +52,12 @@ watch(localValue, (newValue) => {
     emit('update:modelValue', newValue);
 });
 // Watch for prop changes and update the local value
-watch(() => props.modelValue, (newValue) => {
-    localValue.value = newValue;
-});
+watch(
+    () => props.modelValue,
+    (newValue) => {
+        localValue.value = newValue;
+    },
+);
 
 const slots = useSlots();
 
@@ -83,10 +85,10 @@ const hasError = () => !!slots.errorMessage;
 
         <div class="input-holder">
             <textarea
+                :id="id"
+                v-model="localValue"
                 class="es-form-textarea w-100 form-control"
                 :class="{ 'is-invalid': state === false }"
-                v-model="localValue"
-                :id="id"
                 :disabled="disabled"
                 :invalid="state === false" />
             <small
