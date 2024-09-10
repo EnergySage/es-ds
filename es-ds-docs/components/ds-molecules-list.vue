@@ -34,6 +34,9 @@
             <ds-link to="/molecules/form-message"> Form message </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/form-textarea"> Form textarea </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/modal"> Modal </ds-link>
         </li>
         <li>
