@@ -1,13 +1,7 @@
 <script setup lang="ts">
 import Slider from 'primevue/slider';
 
-const props = defineProps({
-    /*
-    modelValue: {
-        type: Number,
-        default: 0,
-    },
-    */
+defineProps({
     min: {
         type: Number,
         required: true,
@@ -34,22 +28,13 @@ const props = defineProps({
 
 // allow use of v-model on this component
 const model = defineModel<number>();
-
-/*
-const { modelValue } = props;
-
-watch(model, (newVal) => {
-    if (newVal) {
-        modelValue.valueOf = newVal;
-    }
-});
-*/
 </script>
 
 <template>
     <div class="mb-3">
         <slider
             v-model="model"
+            v-bind="$attrs"
             :pt="{
                 root: {
                     class: 'slider-root',
@@ -62,6 +47,7 @@ watch(model, (newVal) => {
                 },
             }" />
     </div>
+
     <div class="d-flex flex-row justify-content-between w-100">
         <span>{{ labelFormatter(min) }}</span>
         <span>{{ labelFormatter(max) }}</span>

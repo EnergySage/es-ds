@@ -1,6 +1,5 @@
 <script setup>
 const model = ref(null);
-// const modelValue = ref(25);
 const min = ref(0);
 const max = ref(1000);
 const step = ref(50);
@@ -47,10 +46,6 @@ const propTableRows = [
             :max="max"
             :step="step"
             :label-formatter="(val) => `$${val}`" />
-
-        <!--
-            :model-value="modelValue"
-        -->
 
         <div class="my-500"></div>
 
