@@ -1,52 +1,58 @@
 <script setup lang="ts">
-import RadioButton from 'primevue/radiobutton';
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface IProps {
-    disabled?: boolean;
-    displayName: string;
-    groupName?: string;
-    inline?: boolean;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    name: string;
     value: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    modelValue: any;
+    id: string;
+    disabled?: boolean;
+    inline?: boolean;
+    displayName?: string;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
     disabled: false,
-    displayName: '',
-    groupName: '',
     inline: false,
-    value: null,
+    displayName: '',
 });
 
-defineEmits([
-    'radio-button:change',
-    'radio-button:focus',
-    'radio-button:blur',
-    'radio-button:update',
+// Need to define the implicit emit from v-model, so that it can also get fired
+// from the label clicks
+const emit = defineEmits([
+    'update:modelValue',
 ])
+function handleRadioButtonClick() {
+    if (!props.disabled) {
+        emit('update:modelValue', props.value);
+    }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const model = defineModel<any>();
+const isChecked = computed(() => props.value === model.value);
 </script>
 
 <template>
-    <div :class="`custom-control custom-radio custom-control${inline ? '-inline' : ''}`">
-        <radio-button
+    <div
+        class="custom-control custom-radio"
+        :class="{'custom-control-inline': props.inline }">
+        <input
+            :id="id"
+            v-model="model"
+            :disabled="props.disabled"
+            type="radio"
+            :name="props.name"
             class="custom-control-input"
-            input-class="custom-radio-input"
-            v-bind="$attrs"
-            :disabled="disabled"
-            :input-id="`${props.value}-${props.groupName}`"
-            :name="props.groupName"
-            :model-value="modelValue"
             :value="props.value"
-            @change="$emit('radio-button:change', (evt: any) => evt)"
-            @focus="$emit('radio-button:focus', (evt: any) => evt)"
-            @blur="$emit('radio-button:blur', (evt: any) => evt)"
-            @update:model-value="$emit('radio-button:update', props.value)" />
+            :checked="isChecked"
+            @click="handleRadioButtonClick"
+        />
         <label
-            :for="`${props.value}-${props.groupName}`"
-            class="custom-control-label">
-            {{ props.displayName }}
+            class="custom-control-label"
+            :for="id"
+            @click="handleRadioButtonClick">
+            <slot>
+                {{ displayName }}
+            </slot>
         </label>
     </div>
 </template>

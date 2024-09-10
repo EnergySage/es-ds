@@ -1,18 +1,11 @@
 <script setup lang="ts">
-/*
-Similar API to https://bootstrap-vue.org/docs/components/form-radio#component-reference
-
-Only more restrained, and based on historical usage. Things like configurable
-value field aren't supported as they weren't used downstream.
-
-Similarly things like size are not implemented
-*/
-
 interface IOptions {
+    id: string;
     text: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any;
     disabled?: boolean;
+    inline?: boolean;
 }
 
 interface IProps {
@@ -21,16 +14,19 @@ interface IProps {
     name?: string;
     options?: IOptions[];
     inline?: boolean;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    modelValue?: any;
 }
-
-withDefaults(defineProps<IProps>(), {
+const props = withDefaults(defineProps<IProps>(), {
     inline: false,
     name: '',
     options: undefined,
+    modelValue: undefined,
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const model = defineModel<any>();
+defineEmits([
+    'update:model-value',
+])
 </script>
 
 <template>
@@ -43,19 +39,18 @@ const model = defineModel<any>();
             tabindex="-1">
             {{ label }}
         </legend>
-        <template v-if="$slots.default">
-            <slot />
-        </template>
-        <template v-else>
+        <slot :options="options">
             <es-radio-button
                 v-for="option in options"
+                :id="option.id"
                 :key="option.value"
-                v-model="model"
                 :disabled="option?.disabled || false"
-                :display-name="option?.text"
-                :group-name="name"
-                :inline="inline"
-                :value="option.value" />
-        </template>
+                :name="name"
+                :value="option.value"
+                :model-value="props.modelValue"
+                :inline="option.inline || false"
+                :display-name="option.text"
+                @update:model-value="$emit('update:model-value', option.value)" />
+        </slot>
     </fieldset>
 </template>
