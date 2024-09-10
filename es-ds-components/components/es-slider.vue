@@ -89,7 +89,7 @@ const model = defineModel<number>();
     align-items: center;
     background-color: variables.$blue-600;
     border-radius: 50%;
-    bottom: 100%;
+    bottom: 27px;
     box-shadow: 0 1px 6px 0 rgba(34, 38, 51, 0.25);
     color: variables.$white;
     content: attr(aria-valuenow);
@@ -99,6 +99,7 @@ const model = defineModel<number>();
     justify-content: center;
     padding-bottom: 2px;
     position: absolute;
+    right: -22px;
     width: 52px;
 }
 </style>
