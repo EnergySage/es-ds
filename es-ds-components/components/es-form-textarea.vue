@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Textarea from 'primevue/textarea';
 
 // Prevents attributes from being applied to first <div>
 // v-bind="$attr" is on the input instead
@@ -83,7 +82,7 @@ const hasError = () => !!slots.errorMessage;
         </label>
 
         <div class="input-holder">
-            <Textarea
+            <textarea
                 class="es-form-textarea w-100 form-control"
                 :class="{ 'is-invalid': state === false }"
                 v-model="localValue"
