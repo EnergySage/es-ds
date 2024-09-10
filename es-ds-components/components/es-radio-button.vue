@@ -43,12 +43,10 @@ defineEmits([
             @focus="$emit('radio-button:focus', (evt: any) => evt)"
             @blur="$emit('radio-button:blur', (evt: any) => evt)"
             @update:model-value="$emit('radio-button:update', props.value)" />
-        <slot>
-            <label
-                :for="`${props.value}-${props.groupName}`"
-                class="custom-control-label">
-                {{ props.displayName }}
-            </label>
-        </slot>
+        <label
+            :for="`${props.value}-${props.groupName}`"
+            class="custom-control-label">
+            {{ props.displayName }}
+        </label>
     </div>
 </template>
