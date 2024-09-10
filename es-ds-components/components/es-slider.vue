@@ -46,11 +46,11 @@ const model = defineModel<number>();
                     class: 'slider-handle',
                 },
             }" />
-    </div>
 
-    <div class="d-flex flex-row justify-content-between w-100">
-        <span>{{ labelFormatter(min) }}</span>
-        <span>{{ labelFormatter(max) }}</span>
+        <div class="d-flex flex-row justify-content-between w-100">
+            <span>{{ labelFormatter(min) }}</span>
+            <span>{{ labelFormatter(max) }}</span>
+        </div>
     </div>
 </template>
 
@@ -76,7 +76,7 @@ const model = defineModel<number>();
     cursor: pointer;
     filter: drop-shadow(0 1px 6px rgba(34, 38, 51, 0.25));
     height: 28px;
-    transform: translate(-32%, -32%);
+    transform: translate(0, -32%);
     width: 28px;
 
     &:focus-visible {
