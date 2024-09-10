@@ -75,6 +75,5 @@
     "scss/**/*.scss"
   ],
   "license": "MIT",
-  "private": false,
-  "gitHead": "5fb889dfdb169c5995f96ec110a67331d58e9e92"
+  "private": false
 }
