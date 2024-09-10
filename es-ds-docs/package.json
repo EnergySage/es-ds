@@ -27,7 +27,8 @@
         "nuxt-primevue": "^3.0.0",
         "primevue": "^3.53.0",
         "prismjs": "^1.29.0",
-        "vue": "^3.4.34"
+        "vue": "^3.4.34",
+        "html-truncate": "^1.2.2"
     },
     "devDependencies": {
         "@eslint/js": "^9.9.0",
