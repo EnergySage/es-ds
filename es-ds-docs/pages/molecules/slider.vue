@@ -31,7 +31,7 @@ const propTableRows = [
     <div>
         <h1>Slider</h1>
 
-        <p>
+        <p class="pb-200">
             Extended from
             <nuxt-link
                 href="https://v3.primevue.org/slider/"
@@ -40,14 +40,14 @@ const propTableRows = [
             </nuxt-link>
         </p>
 
-        <es-slider
-            v-model="model"
-            :min="min"
-            :max="max"
-            :step="step"
-            :label-formatter="(val) => `$${val}`" />
-
-        <div class="my-500"></div>
+        <div class="my-500">
+            <es-slider
+                v-model="model"
+                :min="min"
+                :max="max"
+                :step="step"
+                :label-formatter="(val) => `$${val}`" />
+        </div>
 
         <div class="mb-500">
             <h2>Slider props</h2>

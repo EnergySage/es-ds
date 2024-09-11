@@ -31,7 +31,7 @@ const model = defineModel<number>();
 </script>
 
 <template>
-    <div class="mb-3">
+    <div>
         <slider
             v-model="model"
             v-bind="$attrs"
