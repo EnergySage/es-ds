@@ -5,7 +5,7 @@ interface IOptions {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any;
     disabled?: boolean;
-    inline?: boolean;
+    // inline?: boolean;
 }
 
 interface IProps {
@@ -45,10 +45,10 @@ defineEmits([
                 :id="option.id"
                 :key="option.value"
                 :disabled="option?.disabled || false"
-                :name="name"
+                :name="props.name"
                 :value="option.value"
                 :model-value="props.modelValue"
-                :inline="option.inline || false"
+                :inline="props.inline || false"
                 :display-name="option.text"
                 @update:model-value="$emit('update:model-value', option.value)" />
         </slot>

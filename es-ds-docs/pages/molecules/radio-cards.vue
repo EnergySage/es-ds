@@ -1,10 +1,5 @@
 
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function handleSubmit(e: any) {
-    console.log(e);
-}
-
 const form = ref({
     installTimeline: '',
     propertyType: '',
@@ -16,6 +11,10 @@ const propertyTypeOptions = [
     { label: 'Business', value: 'commercial' },
     { label: 'Nonprofit', value: 'nonprofit' },
 ];
+
+function handleSubmit() {
+    console.log('handleSubmit');
+}
 
 </script>
 
@@ -35,11 +34,11 @@ const propertyTypeOptions = [
             Radio Card
         </h2>
         <es-form-radio-card
-            display-name="test1"
-            :model-value="form.propertyType"
+            id="idRadioCard1"
+            v-model="form.propertyType"
+            name="radioCard1"
             :value="propertyTypeOptions[0].value"
-            @radio-card:update="(val) => form.propertyType = val"
-        />
+        >{{ propertyTypeOptions[0].label }}</es-form-radio-card>
 
         <h2>
             Default
@@ -52,19 +51,16 @@ const propertyTypeOptions = [
             <form @submit="handleSubmit">
                 <es-form-radio-cards
                     id="idRadioCards1"
-                    v-model="form.propertyType"
+                    name="radioCards1"
                     label="What type of property do you want quotes for?">
                     <es-form-radio-card
                         v-for="option in propertyTypeOptions"
                         :id="`id${option.value}`"
                         :key="option.value"
-                        :display-name="option.label"
-                        group-name="radioCards1"
-                        :model-value="form.propertyType"
+                        v-model="form.propertyType"
+                        name="radioCards1"
                         :value="option.value"
-                        @radio-card:update="(val) => form.propertyType = val">
-                        {{ option.label }}
-                    </es-form-radio-card>
+                        :display-name="option.label" />
                 </es-form-radio-cards>
             </form>
             <p class="mb-0">
