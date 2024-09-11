@@ -7,6 +7,9 @@
             <ds-link to="/organisms/error-page"> Error page </ds-link>
         </li>
         <li>
+            <ds-link to="/organisms/reviews-io-card-carousel"> Reviews.io card carousel </ds-link>
+        </li>
+        <li>
             <ds-link to="/organisms/support-card"> Support card </ds-link>
         </li>
     </ul>
