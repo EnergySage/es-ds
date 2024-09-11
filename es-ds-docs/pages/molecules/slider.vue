@@ -3,6 +3,7 @@ const model = ref(null);
 const min = ref(0);
 const max = ref(1000);
 const step = ref(50);
+const ariaLabel = ref('Sample aria-label');
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -23,6 +24,7 @@ const propTableRows = [
     ['min', 'Number', '0', 'Required. Minimum value of slider.'],
     ['max', 'Number', '100', 'Required. Maximum value of slider.'],
     ['step', 'Number', '1', 'Step factor to increment/decrement the value.'],
+    ['ariaLabel', 'String', '"Pick a number"', 'Aria-label for slider handle.'],
     ['labelFormatter', 'Function', 'n/a', 'Function that modifies label value.'],
 ];
 </script>
@@ -46,6 +48,7 @@ const propTableRows = [
                 :min="min"
                 :max="max"
                 :step="step"
+                :aria-label="ariaLabel"
                 :label-formatter="(val) => `$${val}`" />
         </div>
 

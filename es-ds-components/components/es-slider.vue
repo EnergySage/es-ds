@@ -17,6 +17,14 @@ defineProps({
         default: 1,
     },
     /**
+     * Aria label for slider handle
+     */
+    ariaLabel: {
+        type: String,
+        required: false,
+        default: 'Select a number',
+    },
+    /**
      * Function that modifies label value
      */
     labelFormatter: {
@@ -38,6 +46,7 @@ const model = defineModel<number>();
             :min="min"
             :max="max"
             :step="step"
+            :aria-label="ariaLabel"
             :pt="{
                 root: {
                     class: 'slider-root',
