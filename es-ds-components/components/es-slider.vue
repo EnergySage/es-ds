@@ -10,7 +10,7 @@ defineProps({
     max: {
         type: Number,
         required: true,
-        default: 0,
+        default: 100,
     },
     step: {
         type: Number,
@@ -35,6 +35,9 @@ const model = defineModel<number>();
         <slider
             v-model="model"
             v-bind="$attrs"
+            :min="min"
+            :max="max"
+            :step="step"
             :pt="{
                 root: {
                     class: 'slider-root',
