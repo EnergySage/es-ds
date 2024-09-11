@@ -59,8 +59,8 @@ const supportProps = [
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/components/es-pagination.vue"
+            comp-source="es-ds-components/components/es-support.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/pagination.vue" />
+            doc-source="es-ds-docs/pages/molecules/support.vue" />
     </div>
 </template>
