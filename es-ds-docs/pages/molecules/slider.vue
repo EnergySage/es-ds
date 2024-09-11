@@ -20,10 +20,10 @@ if ($prism) {
 }
 
 const propTableRows = [
-    ['min', 'Number', 'true', 'Minimum value of slider.'],
-    ['max', 'Number', 'true', 'Maximum value of slider.'],
-    ['step', 'Number', 'false', 'Step factor to increment/decrement the value.'],
-    ['labelFormatter', 'Function', 'false', 'Function that modifies label value.'],
+    ['min', 'Number', '0', 'Required. Minimum value of slider.'],
+    ['max', 'Number', '100', 'Required. Maximum value of slider.'],
+    ['step', 'Number', '1', 'Step factor to increment/decrement the value.'],
+    ['labelFormatter', 'Function', 'n/a', 'Function that modifies label value.'],
 ];
 </script>
 
