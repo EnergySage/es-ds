@@ -12,6 +12,31 @@ const propertyTypeOptions = [
     { label: 'Nonprofit', value: 'nonprofit' },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const storageReasonOptions: { [key:string]: any }[] = [
+    {
+        title: 'Back up power',
+        description: 'Run appliances during a power outage',
+        icon: 'IconSettingsVertical',
+        component: resolveComponent('icon-settings-vertical'),
+        value: 'Back up power',
+    },
+    {
+        title: 'Maximize savings',
+        description: 'Avoid paying for energy during peak hours',
+        icon: 'IconShoppingBag',
+        component: resolveComponent('icon-shopping-bag'),
+        value: 'Maximize savings',
+    },
+    {
+        title: 'Self supply',
+        description: 'Limit how much energy you pull from the grid',
+        icon: 'IconPersonCheck',
+        component: resolveComponent('icon-person-check'),
+        value: 'Self supply',
+    },
+]
+
 function handleSubmit() {
     console.log('handleSubmit');
 }
@@ -66,6 +91,57 @@ function handleSubmit() {
             <p class="mb-0">
                 <span class="font-weight-bold">Selection:</span>
                 {{ form.propertyType || '[none]' }}
+            </p>
+        </es-card>
+
+        <h2>
+            Custom card styling
+        </h2>
+        <p>
+            This example demonstrates customizing the content, spacing, and typography of the cards,
+            as well as changing the layout based on the breakpoint.
+        </p>
+        <es-card class="mb-200 mb-lg-500">
+            <form @submit="handleSubmit">
+                <es-form-radio-cards
+                    id="idCustomCardStyling"
+                    label="What’s the main reason you want a battery?"
+                    model-value="form.storageReason"
+                    has-icon>
+                    <b-row>
+                        <b-col
+                            v-for="option in storageReasonOptions"
+                            :key="option.value"
+                            cols="12"
+                            lg="4">
+                            <es-form-radio-card
+                                :id="option.value"
+                                v-model="form.storageReason"
+                                class="align-items-center d-block d-lg-flex flex-column font-size-base font-weight-normal line-height-base pt-lg-200 px-lg-200 text-lg-center"
+                                name="customCardStyling"
+                                :value="option.value">
+                                <component
+                                    :is="option.component"
+                                    class="d-none d-lg-block mb-50"
+                                    height="48px"
+                                    width="48px" />
+                                <span class="font-weight-bolder mb-lg-100">
+                                    {{ option.title }}
+                                </span>
+                                <span class="d-lg-none">
+                                    {{ ' - ' }}
+                                </span>
+                                <span>
+                                    {{ option.description }}
+                                </span>
+                            </es-form-radio-card>
+                        </b-col>
+                    </b-row>
+                </es-form-radio-cards>
+            </form>
+            <p class="mb-0">
+                <span class="font-weight-bold">Selection:</span>
+                {{ form.storageReason || '[none]' }}
             </p>
         </es-card>
 

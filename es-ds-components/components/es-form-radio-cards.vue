@@ -60,7 +60,9 @@ function handleUpdate(value: any) {
                 :id="`${props.id}-radiogroup`"
                 role="radiogroup"
                 tabindex="-1"
-                class="es-form-radio-cards d-flex justify-content-center ">
+                class="es-form-radio-cards d-flex justify-content-center"
+                :class="{ 'has-icon': props.hasIcon }"
+            >
                 <!-- How are these classes getting added?: btn-group-toggle btn-group-vertical bv-no-focus-ring -->
                 <slot :options="options">
                     <es-form-radio-card
