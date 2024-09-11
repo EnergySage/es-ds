@@ -45,37 +45,45 @@ function handleUpdate(value: any) {
 </script>
 
 <template>
-    <es-radio-button-group
-        :id="props.id"
-        :label="props.label"
-        :name="props.name"
-        :options="props.options"
-        :inline="props.inline"
-        :model-value="props.modelValue"
-        class="es-form-radio-cards d-flex justify-content-center"
-        :class="{ 'has-icon': props.hasIcon }">
-        <template #default>
-            <slot :options="props.options">
-                <es-form-radio-card
-                    v-for="option in options"
-                    :id="option.id"
-                    :key="option.value"
-                    :disabled="option?.disabled || false"
-                    :name="props.name"
-                    :value="option.value"
-                    :model-value="props.modelValue"
-                    :inline="props.inline || false"
-                    @update:model-value="handleUpdate">
-                    <span
-                        :class="{
-                            [props.labelClass]: props.labelClass,
-                            'sr-only': props.labelSrOnly,
-                        }"
-                    >
-                        {{ option.text }}
-                    </span>
-                </es-form-radio-card>
-            </slot>
-        </template>
-    </es-radio-button-group>
+    <fieldset
+        :id="`${props.id}-fieldset`"
+        class="form-group">
+        <legend
+            :id="`${props.id}-legend`"
+            class="font-size-h1 font-weight-bolder mb-200 pb-0 text-dark"
+            tabindex="-1">
+            <!-- How are these classes getting added?: bv-no-focus-ring col-form-label pt-0 -->
+            {{ props.label }}
+        </legend>
+        <div>
+            <div
+                :id="`${props.id}-radiogroup`"
+                role="radiogroup"
+                tabindex="-1"
+                class="es-form-radio-cards d-flex justify-content-center ">
+                <!-- How are these classes getting added?: btn-group-toggle btn-group-vertical bv-no-focus-ring -->
+                <slot :options="options">
+                    <es-form-radio-card
+                        v-for="option in options"
+                        :id="option.id"
+                        :key="option.value"
+                        :disabled="option?.disabled || false"
+                        :name="props.name"
+                        :value="option.value"
+                        :model-value="props.modelValue"
+                        :inline="props.inline || false"
+                        @update:model-value="handleUpdate">
+                        <span
+                            :class="{
+                                [props.labelClass]: props.labelClass,
+                                'sr-only': props.labelSrOnly,
+                            }"
+                        >
+                            {{ option.text }}
+                        </span>
+                    </es-form-radio-card>
+                </slot>
+            </div>
+        </div>
+    </fieldset>
 </template>

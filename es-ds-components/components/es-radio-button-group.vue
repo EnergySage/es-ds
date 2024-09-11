@@ -34,10 +34,10 @@ defineEmits([
         :id="id"
         class="form-group">
         <legend
-            :id="`legend-${id}`"
+            :id="`${props.id}-legend`"
             class="font-size-100"
             tabindex="-1">
-            {{ label }}
+            {{ props.label }}
         </legend>
         <slot :options="options">
             <es-radio-button
