@@ -58,12 +58,15 @@ const state = reactive({
     zipCode: props.zipCodeValue,
 });
 
-watch(() => props.zipCodeValue, (newVal) => {
-    state.zipCode = newVal;
-});
+watch(
+    () => props.zipCodeValue,
+    (newVal) => {
+        state.zipCode = newVal;
+    },
+);
 
 const stackBreak = computed(() => {
-    let {stackUntil} = props;
+    let { stackUntil } = props;
     if (stackUntil === 'xs') {
         stackUntil = '';
     }
@@ -80,10 +83,7 @@ const rules = {
     },
 };
 
-const { v$, validateState } = useEsForms(
-    rules,
-    state,
-);
+const { v$, validateState } = useEsForms(rules, state);
 
 const ctaForm = ref<HTMLFormElement>('ctaForm');
 
@@ -149,7 +149,7 @@ const handleSubmit = () => {
                     v-if="selectedProduct"
                     type="hidden"
                     name="product"
-                    :value="selectedProduct">
+                    :value="selectedProduct" />
                 <es-button
                     class="text-nowrap w-100"
                     :class="{
@@ -158,9 +158,7 @@ const handleSubmit = () => {
                     }"
                     type="submit"
                     :variant="dark ? 'dark-bg' : 'primary'">
-                    <slot name="buttonText">
-                        Submit
-                    </slot>
+                    <slot name="buttonText"> Submit </slot>
                 </es-button>
             </form>
             <div
@@ -182,9 +180,7 @@ const handleSubmit = () => {
                         class="text-nowrap"
                         :class="dark ? 'text-white' : ''"
                         :target="privacyPolicyNewTab ? '_blank' : '_self'">
-                        <slot name="privacyPolicyLinkText">
-                            Privacy Policy
-                        </slot>
+                        <slot name="privacyPolicyLinkText"> Privacy Policy </slot>
                     </nuxt-link>
                 </div>
             </div>

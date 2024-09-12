@@ -19,54 +19,24 @@ const propTableRows = [
         `Reduces the button padding and privacy text font size to better accommodate
             limited-width layouts.`,
     ],
-    [
-        'dark',
-        'Boolean',
-        'false',
-        'Renders the CTA with white text (suitable for display on a dark background).',
-    ],
-    [
-        'fieldName',
-        'String',
-        "'zip_code'",
-        'The name to use when submitting the ZIP code to the provided url.',
-    ],
-    [
-        'inputId',
-        'String',
-        'n/a',
-        'Required. The id for the zip entry. Must be unique on the page.',
-    ],
-    [
-        'newTab',
-        'Boolean',
-        'false',
-        'Whether to open the URL in the url prop in a new tab.',
-    ],
+    ['dark', 'Boolean', 'false', 'Renders the CTA with white text (suitable for display on a dark background).'],
+    ['fieldName', 'String', "'zip_code'", 'The name to use when submitting the ZIP code to the provided url.'],
+    ['inputId', 'String', 'n/a', 'Required. The id for the zip entry. Must be unique on the page.'],
+    ['newTab', 'Boolean', 'false', 'Whether to open the URL in the url prop in a new tab.'],
     [
         'placeholder',
         'String',
         "'ZIP code'",
         'Shown in the input as placeholder text. Also used as the (visually hidden) label for the input.',
     ],
-    [
-        'showPrivacySection',
-        'Boolean',
-        'true',
-        'Whether to show the privacy section.',
-    ],
+    ['showPrivacySection', 'Boolean', 'true', 'Whether to show the privacy section.'],
     [
         'privacyPolicyLink',
         'String',
         "''",
         'Link to the privacy policy. The link will not be shown if this is left blank.',
     ],
-    [
-        'privacyPolicyNewTab',
-        'Boolean',
-        'false',
-        'Whether to open the privacy policy link in a new tab.',
-    ],
+    ['privacyPolicyNewTab', 'Boolean', 'false', 'Whether to open the privacy policy link in a new tab.'],
     [
         'stackUntil',
         'String',
@@ -75,33 +45,18 @@ const propTableRows = [
             which point they will appear side by side. If no breakpoint is provided, the form will
             remain stacked on all breakpoints.`,
     ],
-    [
-        'url',
-        'String',
-        'n/a',
-        'URL to which the form will submit the provided zip code value.',
-    ],
+    ['url', 'String', 'n/a', 'URL to which the form will submit the provided zip code value.'],
     [
         'selectedProduct',
         'String',
         "''",
         'Specify which product of interest. Options include: solar-pv, heatpump, ev-charger',
     ],
-    [
-        'zipCodeValue',
-        'String',
-        "''",
-        'The default zipcode value if passed to the zip code form',
-    ],
+    ['zipCodeValue', 'String', "''", 'The default zipcode value if passed to the zip code form'],
 ];
 
 const slotTableRows = [
-    [
-        'buttonText',
-        'String',
-        "'Submit'",
-        'The caption of the submit button.',
-    ],
+    ['buttonText', 'String', "'Submit'", 'The caption of the submit button.'],
     [
         'errorMessage',
         'String',
@@ -115,14 +70,8 @@ const slotTableRows = [
         `Text that will appear next to the Privacy Policy link. Intended to be a brief
             description of our commitment to protecting customer information.`,
     ],
-    [
-        'privacyPolicyLinkText',
-        'String',
-        "'Privacy Policy'",
-        'The text for the Privacy Policy link.',
-    ],
+    ['privacyPolicyLinkText', 'String', "'Privacy Policy'", 'The text for the Privacy Policy link.'],
 ];
-
 </script>
 
 <template>
@@ -138,12 +87,10 @@ const slotTableRows = [
         <p class="mb-500"></p>
 
         <div class="mb-500">
-            <h2>
-                Responsive example
-            </h2>
+            <h2>Responsive example</h2>
             <p class="mb-200">
-                The zip code form is wrapped in grid columns that constrain the width at certain breakpoints.
-                The <code>stackUntil</code> prop is set to <code>lg</code> so the input and button begin displaying
+                The zip code form is wrapped in grid columns that constrain the width at certain breakpoints. The
+                <code>stackUntil</code> prop is set to <code>lg</code> so the input and button begin displaying
                 side-by-side at that breakpoint.
             </p>
             <b-row class="justify-content-center">
@@ -156,9 +103,7 @@ const slotTableRows = [
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
                         url="https://www.energysage.com/market/start/">
-                        <template #buttonText>
-                            See local offers
-                        </template>
+                        <template #buttonText> See local offers </template>
                     </es-zip-code-form>
                 </b-col>
             </b-row>
@@ -190,9 +135,7 @@ const slotTableRows = [
         </div>
 
         <div class="mb-500">
-            <h2>
-                Dark responsive example
-            </h2>
+            <h2>Dark responsive example</h2>
             <p class="mb-200">
                 Same as above, except the zip code form is inside a container with a dark background and the
                 <code>dark</code> prop is set to <code>true</code>.
@@ -203,16 +146,13 @@ const slotTableRows = [
                         class="d-flex justify-content-center"
                         sm="10"
                         md="8">
-
                         <es-zip-code-form
                             dark
                             input-id="dark-hero-example"
                             privacy-policy-link="https://www.energysage.com/privacy-policy/"
                             stack-until="lg"
                             url="https://www.energysage.com/market/start/">
-                            <template #buttonText>
-                                See local offers
-                            </template>
+                            <template #buttonText> See local offers </template>
                         </es-zip-code-form>
                     </b-col>
                 </b-row>
@@ -220,14 +160,12 @@ const slotTableRows = [
         </div>
 
         <div class="mb-500">
-            <h2>
-                Constrained responsive example
-            </h2>
+            <h2>Constrained responsive example</h2>
             <p class="mb-200">
-                This form has <code>stackUntil</code> set to <code>sm</code> and appears within a
-                smaller-width container. It has <code>constrained</code> set to <code>true</code>
-                in order to make better use of the limited space. This reduces the horizontal padding
-                on the submit button and reduces the size of the privacy text.
+                This form has <code>stackUntil</code> set to <code>sm</code> and appears within a smaller-width
+                container. It has <code>constrained</code> set to <code>true</code>
+                in order to make better use of the limited space. This reduces the horizontal padding on the submit
+                button and reduces the size of the privacy text.
             </p>
             <b-row class="justify-content-center">
                 <b-col
@@ -243,22 +181,17 @@ const slotTableRows = [
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="sm"
                         url="https://www.energysage.com/market/start/">
-                        <template #buttonText>
-                            See local offers
-                        </template>
+                        <template #buttonText> See local offers </template>
                     </es-zip-code-form>
                 </b-col>
             </b-row>
         </div>
 
         <div class="mb-500">
-            <h2>
-                Side-by-side example with no privacy section
-            </h2>
+            <h2>Side-by-side example with no privacy section</h2>
             <p class="mb-200">
-                This form has <code>stackUntil</code> set to <code>xs</code> so it is always side-by-side.
-                It also has the privacy section disabled by setting
-                <code>showPrivacySection</code> to <code>false</code>.
+                This form has <code>stackUntil</code> set to <code>xs</code> so it is always side-by-side. It also has
+                the privacy section disabled by setting <code>showPrivacySection</code> to <code>false</code>.
             </p>
             <b-row class="justify-content-center">
                 <b-col
@@ -271,21 +204,17 @@ const slotTableRows = [
                         stack-until="xs"
                         :show-privacy-section="false"
                         url="https://www.energysage.com/market/start/">
-                        <template #buttonText>
-                            See local offers
-                        </template>
+                        <template #buttonText> See local offers </template>
                     </es-zip-code-form>
                 </b-col>
             </b-row>
         </div>
 
         <div class="mb-500">
-            <h2>
-                Constrained stacked example
-            </h2>
+            <h2>Constrained stacked example</h2>
             <p class="mb-200">
-                This example remains stacked at every breakpoint, in a limited-width container. This shows how
-                the form would display within a card on the sidebar of a page.
+                This example remains stacked at every breakpoint, in a limited-width container. This shows how the form
+                would display within a card on the sidebar of a page.
             </p>
             <b-row class="justify-content-center">
                 <b-col
@@ -299,21 +228,17 @@ const slotTableRows = [
                         input-id="narrow-card-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         url="https://www.energysage.com/market/start/">
-                        <template #buttonText>
-                            See local offers
-                        </template>
+                        <template #buttonText> See local offers </template>
                     </es-zip-code-form>
                 </b-col>
             </b-row>
         </div>
 
         <div class="mb-500">
-            <h2>
-                Product specific CTA
-            </h2>
+            <h2>Product specific CTA</h2>
             <p class="mb-200">
-                This example shows how to specify a product parameter that will be passed along when the form
-                is submitted.
+                This example shows how to specify a product parameter that will be passed along when the form is
+                submitted.
             </p>
             <b-row class="justify-content-center">
                 <b-col
@@ -326,28 +251,20 @@ const slotTableRows = [
                         stack-until="lg"
                         url="https://www.energysage.com/onboarding/start/"
                         selected-product="heatpump">
-                        <template #buttonText>
-                            See local heat pump offers
-                        </template>
+                        <template #buttonText> See local heat pump offers </template>
                     </es-zip-code-form>
                 </b-col>
             </b-row>
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsZipCodeForm slots
-            </h2>
-            <ds-prop-table
-                :rows="slotTableRows" />
+            <h2>EsZipCodeForm slots</h2>
+            <ds-prop-table :rows="slotTableRows" />
         </div>
 
         <div class="mb-500">
-            <h2>
-                EsZipCodeForm props
-            </h2>
-            <ds-prop-table
-                :rows="propTableRows" />
+            <h2>EsZipCodeForm props</h2>
+            <ds-prop-table :rows="propTableRows" />
         </div>
 
         <ds-doc-source
@@ -357,4 +274,3 @@ const slotTableRows = [
             doc-source="es-ds-docs/pages/molecules/zip-code-form.vue" />
     </div>
 </template>
-
