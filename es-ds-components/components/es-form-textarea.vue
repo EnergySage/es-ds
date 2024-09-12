@@ -29,14 +29,6 @@ const props = defineProps({
         required: true,
     },
     /**
-     * modelValue
-     */
-    modelValue: {
-        type: String,
-        required: true,
-        default: '',
-    },
-    /**
      * state
      */
     state: {
@@ -44,20 +36,7 @@ const props = defineProps({
         default: null,
     },
 });
-
-const emit = defineEmits(['update:modelValue']);
-const localValue = ref(props.modelValue);
-// Watch for changes to the local value and emit them
-watch(localValue, (newValue) => {
-    emit('update:modelValue', newValue);
-});
-// Watch for prop changes and update the local value
-watch(
-    () => props.modelValue,
-    (newValue) => {
-        localValue.value = newValue;
-    },
-);
+const model = defineModel<string>();
 
 const slots = useSlots();
 
@@ -69,15 +48,15 @@ const hasError = () => !!slots.errorMessage;
 <template>
     <div
         class="input-wrapper justify-content-end"
-        :required="required">
+        :required="props.required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
-            :for="id"
+            :for="props.id"
             class="label justify-content-start">
             <slot name="label" />
 
             <span
-                v-if="required"
+                v-if="props.required"
                 class="text-danger">
                 *
             </span>
@@ -85,27 +64,28 @@ const hasError = () => !!slots.errorMessage;
 
         <div class="input-holder">
             <textarea
-                :id="id"
-                v-model="localValue"
+                :id="props.id"
+                v-model="model"
+                v-bind="$attrs"
                 class="es-form-textarea w-100 form-control"
-                :class="{ 'is-invalid': state === false }"
-                :disabled="disabled"
-                :invalid="state === false" />
+                :class="{ 'is-invalid': props.state === false }"
+                :disabled="props.disabled"
+                :invalid="props.state === false" />
             <small
-                v-if="hasMessage() && ((!hasSuccess() && state) || state == null)"
+                v-if="hasMessage() && ((!hasSuccess() && props.state) || props.state == null)"
                 class="text-muted">
                 <slot name="message" />
             </small>
             <small
-                v-if="state === false && (hasError() || required)"
+                v-if="props.state === false && (hasError() || props.required)"
                 class="text-danger">
                 <slot
                     v-if="hasError()"
                     name="errorMessage" />
-                <template v-else-if="required"> This field is required. </template>
+                <template v-else-if="props.required"> This field is required. </template>
             </small>
             <small
-                v-if="state && hasSuccess()"
+                v-if="props.state && hasSuccess()"
                 class="text-success">
                 <slot name="successMessage" />
             </small>
@@ -125,7 +105,6 @@ const hasError = () => !!slots.errorMessage;
     border: 0;
 }
 
-// TODO: Move to es-bs-base
 .is-invalid {
     color: variables.$danger;
 }

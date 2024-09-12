@@ -1,6 +1,6 @@
 <script setup>
 const docTextarea = ref('');
-const successValue = 'My experience was great!';
+const successValue = ref('My experience was great!');
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
