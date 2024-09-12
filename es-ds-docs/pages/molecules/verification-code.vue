@@ -29,7 +29,7 @@ const isSubmitInProgress = ref(false);
 const charCount: number = 5;
 
 const isValid = () => {
-    if (code.value) {
+    if (code.value && code.value.length === charCount) {
         return true;
     }
     return false;
@@ -67,6 +67,7 @@ const clearCode = () => {
         <h1>
             Verification code
         </h1>
+        <p>{{ code }}</p>
         <p class="mb-500">
             Uses <a
                 href="https://v3.primevue.org/inputotp/"
@@ -77,7 +78,7 @@ const clearCode = () => {
         <b-row class="justify-content-center my-500">
             <es-verification-code
                 v-model="code"
-                :clickable="isSubmitInProgress" />
+                :disabled="isSubmitInProgress" />
         </b-row>
         <b-row class="mt-200 align-items-center">
             <b-col
