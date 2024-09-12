@@ -151,12 +151,12 @@ onMounted(async () => {
         <ds-doc-source
             comp-title="Radio button component"
             :comp-code="radioButtonComponentCode"
-            comp-source="es-ds-components/src/lib-components/es-radio-button.vue" />
+            comp-source="es-ds-components/components/es-radio-button.vue" />
 
         <ds-doc-source
             comp-title="Radio button group component"
             :comp-code="radioButtonGroupComponentCode"
-            comp-source="es-ds-components/src/lib-components/es-radio-button-group.vue" />
+            comp-source="es-ds-components/components/es-radio-button-group.vue" />
 
         <ds-doc-source
             doc-title="Radio button & radio button group documentation"

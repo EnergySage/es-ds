@@ -147,8 +147,8 @@ onMounted(async () => {
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
+            comp-source="es-ds-components/components/es-form-msg.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-form-msg.vue" />
+            doc-source="es-ds-docs/pages/molecules/form-message.vue" />
     </div>
 </template>

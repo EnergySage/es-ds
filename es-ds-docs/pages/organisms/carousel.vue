@@ -192,9 +192,9 @@ const propTableRows = [
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-radio-button.vue"
+            comp-source="es-ds-components/components/es-carousel.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/radio-button.vue" />
+            doc-source="es-ds-docs/pages/organisms/carousel.vue" />
     </div>
 </template>
 <style lang="scss" scoped>

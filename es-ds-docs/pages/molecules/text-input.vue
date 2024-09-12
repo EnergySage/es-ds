@@ -312,7 +312,7 @@ const propTableRows = [
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-form-input.vue"
+            comp-source="es-ds-components/components/es-form-input.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/text-input.vue" />
     </div>

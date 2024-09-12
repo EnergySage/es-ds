@@ -269,7 +269,7 @@ const fileSizeError = (fileName) => {
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-file-input.vue"
+            comp-source="es-ds-components/components/es-file-input.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/file-input.vue" />
     </div>

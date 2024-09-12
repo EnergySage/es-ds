@@ -168,8 +168,8 @@ onMounted(async () => {
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-support-card.vue"
+            comp-source="es-ds-components/components/es-support-card.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/support-card.vue" />
+            doc-source="es-ds-docs/pages/organisms/support-card.vue" />
     </div>
 </template>

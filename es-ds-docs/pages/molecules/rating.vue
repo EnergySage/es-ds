@@ -56,7 +56,7 @@ onMounted(async () => {
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="@energysage/es-ds-components/components/es-rating.vue"
+            comp-source="es-ds-components/components/es-rating.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/rating.vue" />
     </div>

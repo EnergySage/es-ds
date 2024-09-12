@@ -56,7 +56,7 @@ onMounted(async () => {
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-error-page.vue"
+            comp-source="es-ds-components/components/es-error-page.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/organisms/error-page.vue" />
     </div>
