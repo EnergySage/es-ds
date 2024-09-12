@@ -37,6 +37,14 @@ const storageReasonOptions: { [key:string]: any }[] = [
     },
 ]
 
+const installTimelineLabel = 'What’s your timeline for installing heat pumps?';
+const installTimelineOptions = [
+    { label: 'ASAP', value: 'ASAP' },
+    { label: 'Within the next 2-4 weeks', value: '2-4 weeks' },
+    { label: 'Within the next 2-4 months', value: '2-4 months' },
+    { label: '5+ months', value: '5+ months' },
+];
+
 function handleSubmit() {
     console.log('handleSubmit');
 }
@@ -144,6 +152,52 @@ function handleSubmit() {
                 {{ form.storageReason || '[none]' }}
             </p>
         </es-card>
+
+        <h2>
+            Detached label
+        </h2>
+        <p>
+            This example demonstrates a case where more control is needed over the position of the field
+            label on the desktop breakpoint, so it is rendered separately of the radio cards component.
+            We do still need to pass the label text into the radio cards component for accessibility
+            purposes, but hide it visually by passing in a prop.
+        </p>
+        <div class="border mb-500 p-100 p-lg-200 rounded">
+            <form @submit="handleSubmit">
+                <b-row>
+                    <b-col
+                        cols="12"
+                        lg="4">
+                        <h1 aria-hidden>
+                            {{ installTimelineLabel }}
+                        </h1>
+                    </b-col>
+                    <b-col
+                        cols="12"
+                        lg="8">
+                        <es-form-radio-cards
+                            id="idDetachedLabel"
+                            :label="installTimelineLabel"
+                            name="detachedLabel"
+                            label-sr-only>
+                            <es-form-radio-card
+                                v-for="option in installTimelineOptions"
+                                :id="option.value"
+                                :key="option.value"
+                                v-model="form.installTimeline"
+                                name="detachedLabel"
+                                :value="option.value">
+                                {{ option.label }}
+                            </es-form-radio-card>
+                        </es-form-radio-cards>
+                    </b-col>
+                </b-row>
+            </form>
+            <p class="mb-0">
+                <span class="font-weight-bold">Selection:</span>
+                {{ form.installTimeline || '[none]' }}
+            </p>
+        </div>
 
     </div>
 </template>
