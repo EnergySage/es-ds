@@ -54,14 +54,16 @@ const borderRadius = computed(() => {
 const { $prism } = useNuxtApp();
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-self-import */
-    const docSource = await import('./corners.vue?raw');
-    /* eslint-enable import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        /* eslint-disable import/no-self-import */
+        const docSource = await import('./corners.vue?raw');
+        /* eslint-enable import/no-self-import */
 
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>

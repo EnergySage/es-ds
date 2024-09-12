@@ -22,15 +22,17 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-form-msg.vue?raw');
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./form-message.vue?raw');
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-form-msg.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./form-message.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>

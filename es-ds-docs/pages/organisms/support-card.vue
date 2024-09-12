@@ -56,16 +56,18 @@ const slotTableRows = [
     ['description', 'n/a', "The content to display in the card's main paragraph."],
 ];
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-support-card.vue?raw');
-    const docSource = await import('./support-card.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const compSource = await import('@energysage/es-ds-components/components/es-support-card.vue?raw');
+        const docSource = await import('./support-card.vue?raw');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>

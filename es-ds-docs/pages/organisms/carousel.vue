@@ -41,16 +41,18 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-carousel.vue?raw');
-    const docSource = await import('./carousel.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const compSource = await import('@energysage/es-ds-components/components/es-carousel.vue?raw');
+        const docSource = await import('./carousel.vue?raw');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 
 const propTableRows = [
     [

@@ -49,21 +49,23 @@ const { $prism } = useNuxtApp();
 const radioButtonComponentCode = ref('');
 const radioButtonGroupComponentCode = ref('');
 const docCode = ref('');
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const radioButtonComponentSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
-    // eslint-disable-next-line max-len
-    const radioButtonGroupComponentSource = await import(
-        '@energysage/es-ds-components/components/es-radio-button-group.vue?raw'
-    );
-    const docSource = await import('./radio-button.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const radioButtonComponentSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
+        // eslint-disable-next-line max-len
+        const radioButtonGroupComponentSource = await import(
+            '@energysage/es-ds-components/components/es-radio-button-group.vue?raw'
+            );
+        const docSource = await import('./radio-button.vue?raw');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
-    radioButtonComponentCode.value = $prism.normalizeCode(radioButtonComponentSource.default);
-    radioButtonGroupComponentCode.value = $prism.normalizeCode(radioButtonGroupComponentSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        radioButtonComponentCode.value = $prism.normalizeCode(radioButtonComponentSource.default);
+        radioButtonGroupComponentCode.value = $prism.normalizeCode(radioButtonGroupComponentSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
