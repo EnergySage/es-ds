@@ -47,10 +47,12 @@ export default defineNuxtConfig({
             include: [
                 '@vuelidate/core',
                 '@vuelidate/validators',
+                'html-truncate',
                 'primevue/accordion',
                 'primevue/accordiontab',
                 'primevue/breadcrumb',
                 'primevue/button',
+                'primevue/carousel',
                 'primevue/column',
                 'primevue/datatable',
                 'primevue/dialog',

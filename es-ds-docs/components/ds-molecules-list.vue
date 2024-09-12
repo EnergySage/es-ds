@@ -107,9 +107,12 @@
             </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/form-input">
+            <ds-link to="/molecules/text-input">
                 Text input
             </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/view-more"> View more </ds-link>
         </li>
     </ul>
 </template>

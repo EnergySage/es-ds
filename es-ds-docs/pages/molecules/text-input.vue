@@ -15,7 +15,7 @@ const docCode = ref('');
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
     const compSource = await import('@energysage/es-ds-components/components/es-form-input.vue?raw');
-    const docSource = await import('./form-input.vue?raw');
+    const docSource = await import('./text-input.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
     compCode.value = $prism.normalizeCode(compSource.default);
@@ -73,7 +73,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="basicExample"
                         v-model="form.firstName">
@@ -89,7 +89,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="requiredExample"
                         v-model="form.firstName"
@@ -106,7 +106,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="errorExample"
                         v-model="form.emailWrong"
@@ -124,7 +124,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="successExample"
                         v-model="form.emailCorrect"
@@ -142,7 +142,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="successMessageExample"
                         v-model="form.emailCorrect"
@@ -161,7 +161,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="disabledExample"
                         v-model="form.emailCorrect"
@@ -179,7 +179,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="placeholderExample"
                         v-model="form.phoneNumber"
@@ -200,7 +200,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="maskedExample"
                         v-model="form.maskedPhoneNumber"
@@ -224,7 +224,7 @@ const propTableRows = [
                     class="d-lg-flex"
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="hiddenLabelExample"
                         v-model="form.zipCode"
@@ -248,7 +248,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="prefixIconExample"
                         v-model="form.zipCode"
@@ -273,7 +273,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="contextAboveExample"
                         v-model="form.password"
@@ -291,7 +291,7 @@ const propTableRows = [
                 <b-col
                     cols="12"
                     md="6"
-                    lg="4">
+                    xxl="4">
                     <es-form-input
                         id="contextBelowExample"
                         v-model="form.password"
@@ -312,6 +312,6 @@ const propTableRows = [
             :comp-code="compCode"
             comp-source="es-ds-components/src/lib-components/es-form-input.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/form-input.vue" />
+            doc-source="es-ds-docs/pages/molecules/text-input.vue" />
     </div>
 </template>
