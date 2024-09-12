@@ -2,12 +2,10 @@ import { type ErrorObject, useVuelidate, type ValidationArgs } from '@vuelidate/
 import type { ToRefs, Ref } from 'vue';
 
 export function useEsForms<
-  T extends {[key in keyof Vargs]: any},
-  Vargs extends ValidationArgs = ValidationArgs,
->(
-  validationsArgs: Ref<Vargs> | Vargs,
-  state: T | Ref<T> | ToRefs<T>,
-) {
+    // eslint-disable-next-line no-unused-vars, no-use-before-define, @typescript-eslint/no-explicit-any
+    T extends { [key in keyof Vargs]: any },
+    Vargs extends ValidationArgs = ValidationArgs,
+>(validationsArgs: Ref<Vargs> | Vargs, state: T | Ref<T> | ToRefs<T>) {
     const v$ = useVuelidate(validationsArgs, state);
 
     const submitInProgress = ref(false);
@@ -17,32 +15,34 @@ export function useEsForms<
 
     const isSubmitInProgress = computed(() => submitInProgress.value);
 
-    const getFields = (obj: any, valueKey = 'obj') => {
+    const getFields = (obj: unknown, valueKey = 'obj') => {
         let objKeys = null;
         try {
             objKeys = Object.keys(obj);
-            console.log('objKeys: ', objKeys)
-        } catch (e) {
+            // eslint-disable-next-line no-console
+            console.log('objKeys: ', objKeys);
+        } catch {
             return [];
         }
-        return objKeys
-            .filter((name) => !name.startsWith('$'))
-            .map((name) => ({ name, [valueKey]: obj[name] }));
+        return objKeys.filter((name) => !name.startsWith('$')).map((name) => ({ name, [valueKey]: obj[name] }));
     };
 
     const formErrors = computed(() => {
         const errors = v$.value.$errors.map((error) => error);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return errors.reduce((acc: any, error: ErrorObject) => {
             if (!(error.$property in acc)) {
+                // eslint-disable-next-line no-param-reassign
                 acc[error.$property] = [];
             }
             acc[error.$property].push(error.$validator);
             return acc;
-        }, {})
+        }, {});
     });
 
     const getValidatorField = (dotPath: string) => {
         const validatorField = dotPath.split('.').reduce((acc, field) => {
+            // eslint-disable-next-line no-param-reassign
             acc = acc[field];
             return acc;
         }, v$.value);
@@ -53,7 +53,7 @@ export function useEsForms<
             return null;
         }
         return validatorField;
-    }
+    };
 
     const validateState = (dotPath: string) => {
         const validatorField = getValidatorField(dotPath);
@@ -62,7 +62,7 @@ export function useEsForms<
         }
         const { $dirty, $error } = validatorField;
         return $dirty ? !$error : null;
-    }
+    };
 
     const touchOnChange = (dotPath: string) => {
         const validatorField = getValidatorField(dotPath);
@@ -74,37 +74,33 @@ export function useEsForms<
         }
     };
 
-    const showFormError = (
-        text = 'The server responded with an error and we were unable to complete your request. Please try again',
-    ) => {
+    const showFormError = () => {
         formMsgVariant.value = 'danger';
         formShowError.value = true;
-    }
+    };
 
-    const showFormSuccess = (
-        text = 'Saved Successfully',
-    ) => {
+    const showFormSuccess = () => {
         formMsgVariant.value = 'success';
         formShowSuccess.value = true;
-    }
+    };
 
     const hideFormError = () => {
         formShowError.value = false;
-    }
+    };
 
     const hideFormSuccess = () => {
         formShowSuccess.value = false;
-    }
+    };
 
     const startSubmit = () => {
         submitInProgress.value = true;
         formShowSuccess.value = false;
         formShowError.value = false;
-    }
+    };
 
     const stopSubmit = () => {
         submitInProgress.value = false;
-    }
+    };
 
     return {
         v$,

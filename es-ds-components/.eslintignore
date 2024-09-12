@@ -6,3 +6,4 @@ dist
 .output
 # don't lint coverage output
 coverage
+*.json

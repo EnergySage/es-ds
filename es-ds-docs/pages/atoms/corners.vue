@@ -16,7 +16,7 @@ const COMPONENT_NAME_URLS = {
     // TODO switch popover, textarea, and verification-code to the right route once they exist
     popover: '/molecules',
     textarea: '/molecules',
-    'text-input': '/molecules/form-input',
+    'text-input': '/molecules/text-input',
     'verification-code': '/molecules',
 };
 
@@ -66,9 +66,7 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Corners
-        </h1>
+        <h1>Corners</h1>
         <p>
             Below are the four corner radius sizes used throughout the design system. Each size lists a few examples of
             components that make use of that size. Use the utility classes listed below (e.g. <code>rounded</code>) to
@@ -95,9 +93,7 @@ if ($prism) {
                     </p>
                     <div class="font-size-sm mb-0">
                         <ul class="component-list list-unstyled mb-0">
-                            <li class="d-inline-block">
-                                Used by&nbsp;
-                            </li>
+                            <li class="d-inline-block">Used by&nbsp;</li>
                             <li
                                 v-for="component in item.components"
                                 :key="component.name"
@@ -118,7 +114,7 @@ if ($prism) {
     </div>
 </template>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .component-list {
     li:not(:first-child):not(:last-child) {
         margin-right: 0.25rem;

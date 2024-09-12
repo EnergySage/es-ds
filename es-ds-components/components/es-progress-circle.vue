@@ -22,8 +22,7 @@ const fillLength = computed(() => computedHeight.value * Math.PI * (props.value 
 </script>
 
 <template>
-    <div
-        v-bind="$attrs">
+    <div v-bind="$attrs">
         <!-- Based on prior art from es-cdgm codebase -->
         <svg
             viewBox="0 0 100 100"
@@ -66,7 +65,7 @@ const fillLength = computed(() => computedHeight.value * Math.PI * (props.value 
 </template>
 
 <style lang="scss" scoped>
-@use "@energysage/es-ds-styles/scss/variables" as variables;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .inner-circle {
     // position: relative;
@@ -79,5 +78,4 @@ const fillLength = computed(() => computedHeight.value * Math.PI * (props.value 
     fill: transparent;
     stroke: variables.$blue-400;
 }
-
 </style>

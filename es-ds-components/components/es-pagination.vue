@@ -28,13 +28,15 @@ watch(model, (newVal) => {
 });
 
 const updatePage = (newFirst: number) => {
-    model.value = (newFirst / props.perPage) + 1;
+    model.value = newFirst / props.perPage + 1;
 };
 
 const passThrough = {
     root: {
-        class: ['pagination',
-            { 'justify-content-center': props.align === 'center', 'justify-content-end': props.align === 'right' }],
+        class: [
+            'pagination',
+            { 'justify-content-center': props.align === 'center', 'justify-content-end': props.align === 'right' },
+        ],
     },
     firstPageButton: { class: 'paginator-button' },
     previousPageButton: { class: 'paginator-button' },
@@ -42,7 +44,6 @@ const passThrough = {
     lastPageButton: { class: 'paginator-button' },
     current: { class: 'px-100 current-page-report' },
 };
-
 </script>
 
 <template>

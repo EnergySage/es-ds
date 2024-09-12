@@ -23,63 +23,22 @@
             }
         },
         {
-            "files": "*.vue",
-            "globals": {
-                "useRoute": "readonly",
-                "computed": "readonly",
-                "useNuxtApp": "readonly",
-                "ref": "readonly",
-                "onMounted": "readonly",
-                "resolveComponent": "readonly",
-                "reactive": "readonly",
-                "vuelidateKeys": "readonly",
-                "vuelidateRequired": "readonly",
-                "vuelidatePhone": "readonly",
-                "vuelidateEmail": "readonly",
-                "vuelidateMinLength": "readonly",
-                "vuelidateHasNumber": "readonly",
-                "vuelidateHasSpecialCharacter": "readonly",
-                "vuelidateHasUppercaseLetter": "readonly",
-                "vuelidateHasLowercaseLetter": "readonly",
-                "useEsForms": "readonly"
-            }
+            "files": ["*.vue", "*.ts"]
         }
     ],
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:vue/vue3-recommended",
-        "prettier",
-        "airbnb-base"
+        "./.nuxt/.eslint.globals.json",
+        "airbnb-base",
+        "prettier"
     ],
     "rules": {
         "linebreak-style": "off",
         "camelcase": "off",
         "no-console": "warn",
-        "indent": [
-            "warn",
-            4,
-            {
-                // https://github.com/babel/babel-eslint/issues/530
-                "ignoredNodes": ["TemplateLiteral"]
-            }
-        ],
-        "max-len": [
-            "warn",
-            {
-                "code": 119,
-                "ignorePattern": "class=",
-                "ignoreUrls": true
-            }
-        ],
-        "vue/html-closing-bracket-newline": [
-            "error",
-            {
-                "singleline": "never",
-                "multiline": "never"
-            }
-        ],
-        "vue/html-indent": ["warn", 4],
+        "indent": "off",
         "vue/html-closing-bracket-spacing": [
             "error",
             {
@@ -97,13 +56,6 @@
                 "multiline": {
                     "max": 1
                 }
-            }
-        ],
-        "vue/singleline-html-element-content-newline": [
-            "error",
-            {
-                "ignoreWhenNoAttributes": false,
-                "ignoreWhenEmpty": true
             }
         ],
         "no-param-reassign": [
@@ -147,9 +99,12 @@
         "vue/block-order": [
             "error",
             {
-                "order": [ [ "script[setup]", "script:not([setup])" ], "template", "style" ]
+                "order": [["script[setup]", "script:not([setup])"], "template", "style"]
             }
         ],
-        "vue/multi-word-component-names": "off"
+        "vue/multi-word-component-names": "off",
+        "arrow-body-style": "off",
+        "implicit-arrow-linebreak": "off",
+        "no-nested-ternary": "off"
     }
 }

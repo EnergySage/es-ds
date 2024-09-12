@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineProps<{
-  cols?: string,
-  sm?: string,
-  md?: string,
-  lg?: string,
-  xl?: string,
-  xxl?: string
+    cols?: string;
+    sm?: string;
+    md?: string;
+    lg?: string;
+    xl?: string;
+    xxl?: string;
 }>();
 </script>
 

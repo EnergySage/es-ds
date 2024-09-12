@@ -1,28 +1,13 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 const value = ref(20);
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
 const propTableRows = [
-    [
-        'value',
-        'Number',
-        '20',
-        'Required. A value between 0 and 100 representing the progress',
-    ],
-    [
-        'height',
-        'String',
-        '0.3125rem',
-        'Specifies height of the progress bar',
-    ],
-    [
-        'showValue',
-        'Boolean',
-        'false',
-        'When present, it allows the progress percentage visible on the progress bar',
-    ],
+    ['value', 'Number', '20', 'Required. A value between 0 and 100 representing the progress'],
+    ['height', 'String', '0.3125rem', 'Specifies height of the progress bar'],
+    ['showValue', 'Boolean', 'false', 'When present, it allows the progress percentage visible on the progress bar'],
 ];
 const propTableWidths = {
     md: ['2', '2', '2', '6'],
@@ -41,19 +26,16 @@ if ($prism) {
 
 <template>
     <div>
-        <h1>
-            Progress
-        </h1>
+        <h1>Progress</h1>
         <p class="pb-200">
-            Extended from <nuxt-link
+            Extended from
+            <nuxt-link
                 href="https://v3.primevue.org/progressbar/"
                 target="_blank">
                 primevue progress
             </nuxt-link>
         </p>
-        <h2>
-            Three Steps
-        </h2>
+        <h2>Three Steps</h2>
         <div class="mb-100">
             <es-progress :value="0" />
         </div>
@@ -66,9 +48,7 @@ if ($prism) {
         <div class="mb-100">
             <es-progress :value="100" />
         </div>
-        <h2>
-            Animated Transition
-        </h2>
+        <h2>Animated Transition</h2>
         <div class="mb-100">
             <es-progress :value="value" />
         </div>
@@ -94,13 +74,9 @@ if ($prism) {
                 20%
             </es-button>
         </div>
-        <p class="mb-300">
-            value: {{ value }}
-        </p>
+        <p class="mb-300">value: {{ value }}</p>
         <div class="mb-500">
-            <h2>
-                EsProgress props
-            </h2>
+            <h2>EsProgress props</h2>
             <ds-prop-table
                 :rows="propTableRows"
                 :widths="propTableWidths" />
