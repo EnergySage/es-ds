@@ -12,7 +12,6 @@ watch(model, (newVal) => {
 const updateCode = (newValue: any) => {
     model.value = newValue;
 };
-
 </script>
 
 <template>
@@ -23,7 +22,6 @@ const updateCode = (newValue: any) => {
             :length="5"
             integer-only
             @update:model-value="updateCode">
-            <!-- eslint-disable-next-line vue/no-lone-template -->
             <template #default="{ attrs, events, index }">
                 <input
                     :id="index.toString()"
@@ -37,8 +35,8 @@ const updateCode = (newValue: any) => {
 </template>
 
 <style lang="scss" scoped>
-@use "@energysage/es-ds-styles/scss/variables" as variables;
-@use "@energysage/es-ds-styles/scss/mixins/breakpoints" as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 
 .custom-otp {
     display: flex;
@@ -55,7 +53,7 @@ const updateCode = (newValue: any) => {
     border: variables.$verification-code-border;
     border-radius: variables.$verification-code-border-radius !important;
     box-shadow: variables.$verification-code-shadow;
-    height:variables.$verification-code-dimension-lg;
+    height: variables.$verification-code-dimension-lg;
     width: variables.$verification-code-dimension-lg;
     flex: 0 0 auto;
 
