@@ -54,10 +54,12 @@ const props = defineProps({
     },
 });
 
-const zipCode = ref(props.zipCodeValue);
+const state = reactive({
+    zipCode: props.zipCodeValue,
+});
 
 watch(() => props.zipCodeValue, (newVal) => {
-    zipCode.value = newVal;
+    state.zipCode = newVal;
 });
 
 const stackBreak = computed(() => {
@@ -68,6 +70,30 @@ const stackBreak = computed(() => {
     return stackUntil ? `${stackUntil}-` : '';
 });
 
+/* Set up validation using Vuelidate */
+const rules = {
+    zipCode: {
+        [vuelidateKeys.MAX_LENGTH]: vuelidateMaxLength(5),
+        [vuelidateKeys.MIN_LENGTH]: vuelidateMinLength(5),
+        [vuelidateKeys.INTEGER]: vuelidateInteger,
+        [vuelidateKeys.REQUIRED]: vuelidateRequired,
+    },
+};
+
+const { v$, validateState } = useEsForms(
+    rules,
+    state,
+);
+
+const ctaForm = ref<HTMLFormElement>('ctaForm');
+
+const handleSubmit = () => {
+    if (v$.value.$invalid) {
+        v$.value.$touch();
+    } else {
+        ctaForm.value.submit();
+    }
+};
 </script>
 
 <template>
@@ -93,7 +119,8 @@ const stackBreak = computed(() => {
                 @submit.prevent.stop="handleSubmit">
                 <es-form-input
                     :id="inputId"
-                    v-model="zipCode"
+                    v-model="state.zipCode"
+                    :state="validateState('zipCode')"
                     autocomplete="postal-code"
                     class="mb-100"
                     :class="{
