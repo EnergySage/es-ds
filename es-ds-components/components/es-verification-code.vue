@@ -8,7 +8,8 @@ watch(model, (newVal) => {
     verificationCode.value = newVal;
 });
 
-const updateCode = (newValue) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const updateCode = (newValue: any) => {
     model.value = newValue;
 };
 
