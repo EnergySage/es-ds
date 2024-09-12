@@ -95,5 +95,10 @@
                 Text input
             </ds-link>
         </li>
+        <li>
+            <ds-link to="/molecules/verification-code">
+                Verification Code
+            </ds-link>
+        </li>
     </ul>
 </template>
