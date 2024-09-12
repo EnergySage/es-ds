@@ -34,7 +34,12 @@ export default {
                     {{ column }}
                 </template>
                 <template #value>
-                    <code v-if="columnIndex < 3 && row[columnIndex] !== 'n/a'">
+                    <code
+                        v-if="
+                            // Applies code formatting to the first 2 out of 3 columns or 3 out of 4+ columns
+                            ((widths.md.length > 3 && columnIndex < 3) || columnIndex < 2) &&
+                            row[columnIndex] !== 'n/a'
+                        ">
                         {{ row[columnIndex] }}
                     </code>
                     <span v-else>
