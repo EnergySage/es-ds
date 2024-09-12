@@ -24,9 +24,9 @@ const propTableRows = [
     ],
 ];
 const code = ref();
+const isSubmitInProgress = ref(false);
 
 const charCount: number = 5;
-let isSubmitInProgress = false;
 
 const isValid = () => {
     if (code.value) {
@@ -42,22 +42,21 @@ const randomCode = () => {
         () => Math.floor(Math.random() * 10).toString(),
     );
 
-    isSubmitInProgress = true;
-    setTimeout(() => {
-        isSubmitInProgress = false;
-    }, 10000);
-
     // eslint-disable-next-line no-console
     console.log('Generated', rand);
+    isSubmitInProgress.value = true;
+    setTimeout(() => {
+        isSubmitInProgress.value = false;
+    }, 1000);
     return rand.join('');
 };
 
 // eslint-disable-next-line no-return-assign
 const clearCode = () => {
-    isSubmitInProgress = true;
+    isSubmitInProgress.value = true;
     setTimeout(() => {
-        isSubmitInProgress = false;
-    }, 10000);
+        isSubmitInProgress.value = false;
+    }, 1000);
     return '';
 };
 
@@ -78,7 +77,7 @@ const clearCode = () => {
         <b-row class="justify-content-center my-500">
             <es-verification-code
                 v-model="code"
-                :disabled="isSubmitInProgress" />
+                :clickable="isSubmitInProgress" />
         </b-row>
         <b-row class="mt-200 align-items-center">
             <b-col

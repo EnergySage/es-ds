@@ -11,6 +11,7 @@ watch(model, (newVal) => {
 const updateCode = (newValue) => {
     model.value = newValue;
 };
+
 </script>
 
 <template>
