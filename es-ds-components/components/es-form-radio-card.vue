@@ -34,7 +34,7 @@ const isChecked = computed(() => props.value === model.value);
 <template>
     <label
         class="es-form-radio-card es-card interactive w-100 btn btn-outline-primary"
-        :class="{ 'active': isChecked }"
+        :class="{ 'active': isChecked, 'disabled': props.disabled }"
         @click="handleRadioButtonClick"
     >
         <input

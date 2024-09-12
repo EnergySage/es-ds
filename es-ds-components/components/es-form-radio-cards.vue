@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<IProps>(), {
     inline: false,
     modelValue: undefined,
     hasIcon: false,
-    labelClass: 'font-size-h1 font-weight-bolder mb-200 pb-0 text-dark',
+    labelClass: 'font-size-h3',
     labelSrOnly: false,
 });
 

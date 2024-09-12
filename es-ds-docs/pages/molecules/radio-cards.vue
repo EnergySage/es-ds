@@ -16,7 +16,7 @@ const propertyTypeOptions = [
 const storageReasonOptions: { [key:string]: any }[] = [
     {
         title: 'Back up power',
-        description: 'Run appliances during a power outage',
+        description: 'Run appliances during a power outage, with backup power',
         icon: 'IconSettingsVertical',
         component: resolveComponent('icon-settings-vertical'),
         value: 'Back up power',
@@ -45,9 +45,57 @@ const installTimelineOptions = [
     { label: '5+ months', value: '5+ months' },
 ];
 
+const test2Options = ref([
+    { text: 'Toggle this custom radio', value: 'first', id: 'idFirst' },
+    { text: 'Or toggle this other custom radio', value: 'second', id: 'idSecond' },
+    { text: 'This one is Disabled', value: 'third', disabled: true, id: 'idThird' },
+    { text: 'This is the 4th radio', value: { fourth: 4 }, id: 'idFourth' },
+]);
+const test2Selected = ref('first');
+
+const { $prism } = useNuxtApp();
+const componentCodeRadioCard = ref('');
+const componentCodeRadioCards = ref('');
+const docCode = ref('');
+if ($prism) {
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    const componentCodeRadioCardSource = await import('@energysage/es-ds-components/components/es-form-radio-card.vue?raw');
+    const componentCodeRadioCardsSource = await import ('@energysage/es-ds-components/components/es-form-radio-cards.vue?raw');
+    const docSource = await import('./radio-cards.vue?raw');
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+    componentCodeRadioCard.value = $prism.normalizeCode(componentCodeRadioCardSource.default);
+    componentCodeRadioCards.value = $prism.normalizeCode(componentCodeRadioCardsSource.default);
+    docCode.value = $prism.normalizeCode(docSource.default);
+    $prism.highlight();
+}
+
 function handleSubmit() {
     console.log('handleSubmit');
 }
+
+// Name, Type, Default, Description
+const propTableRowsRadioCard = [
+    ['id', 'String', 'n/a', 'Required.'],
+    ['name',  'String', 'n/a', 'Required. Name of radio group'],
+    ['value', 'Any',    'n/a', 'Required. Value of radio button'],
+    ['disabled', 'Boolean', 'false', 'Optional. When present, it specifies that the radio button should be disabled.'],
+    ['inline', 'Boolean', 'false', 'Optional. When present, it specifies that the radio buttons should be displayed inline.'],
+    ['displayName', 'String', '', 'Optional. Required, if not using the default slot. The text to display next to the radio button.'],
+    ['v-model', 'Any', 'n/a', 'Required.'],
+];
+
+const propTableRowsRadioCards = [
+    ['id', 'String', 'n/a', 'Required.'],
+    ['label', 'String', 'n/a', 'Required.'],
+    ['name', 'String', `''`, 'Optional.'], // TODO: should this be required?
+    ['options', 'Array', 'undefined', 'Optional. Alternative to creating an es-form-radio-card in the default slot.'],
+    ['inline', 'Boolean', 'false', 'Optional.'], // TODO: example of this?
+    ['modelValue', 'Any', 'undefined', 'Optional. Required, if using the options prop'],
+    ['hasIcon', 'Boolean', 'false', 'Optional. Adds a "has-icon" class to the radiogroup'],
+    ['labelClass', 'String', `''`, 'Optional. Apply class to the input label. Defaults to "font-size-h3"'],
+    ['labelSrOnly', 'Boolean', 'false', 'Optional. Applies an `sr-only` class to the label'],
+]
 
 </script>
 
@@ -66,12 +114,14 @@ function handleSubmit() {
         <h2>
             Radio Card
         </h2>
-        <es-form-radio-card
-            id="idRadioCard1"
-            v-model="form.propertyType"
-            name="radioCard1"
-            :value="propertyTypeOptions[0].value"
-        >{{ propertyTypeOptions[0].label }}</es-form-radio-card>
+        <div class="mb-200 mb-lg-500">
+            <es-form-radio-card
+                id="idRadioCard1"
+                v-model="form.propertyType"
+                name="radioCard1"
+                :value="propertyTypeOptions[0].value"
+            >{{ propertyTypeOptions[0].label }}</es-form-radio-card>
+        </div>
 
         <h2>
             Default
@@ -198,6 +248,50 @@ function handleSubmit() {
                 {{ form.installTimeline || '[none]' }}
             </p>
         </div>
+
+        <h2>
+            Passing options
+        </h2>
+        <div class="border mb-500 p-100 p-lg-200 rounded">
+            <form @submit="handleSubmit">
+                <es-form-radio-cards
+                    id="idPassingOptions"
+                    v-model="test2Selected"
+                    label="Passing Options"
+                    name="passingOptions"
+                    :options="test2Options"
+                />
+            </form>
+            <p class="mb-0">
+                <span class="font-weight-bold">Selection:</span>
+                {{ test2Selected || '[none]' }}
+            </p>
+        </div>
+
+        <div class="mb-500">
+            <h2>EsFormRadioCard props</h2>
+            <ds-prop-table :rows="propTableRowsRadioCard" />
+        </div>
+
+        <div class="mb-500">
+            <h2>EsFormRadioCards props</h2>
+            <ds-prop-table :rows="propTableRowsRadioCards" />
+        </div>
+
+        <ds-doc-source
+            comp-title="Radio card component"
+            :comp-code="componentCodeRadioCard"
+            comp-source="es-ds-components/src/lib-components/es-form-radio-card.vue" />
+
+        <ds-doc-source
+            comp-title="Radio cards component"
+            :comp-code="componentCodeRadioCards"
+            comp-source="es-ds-components/src/lib-components/es-form-radio-cards.vue" />
+
+        <ds-doc-source
+            doc-title="Radio card & radio cards documentation"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/radio-cards.vue" />
 
     </div>
 </template>
