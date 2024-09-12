@@ -25,7 +25,8 @@ const test2Selected = ref('first');
                 v-model="selectedFruit"
                 name="basic"
                 :value="fruit.key"
-            >{{ fruit.name }}</es-radio-button-new>
+                >{{ fruit.name }}</es-radio-button-new
+            >
         </div>
 
         <div class="my-500">
@@ -88,6 +89,5 @@ const test2Selected = ref('first');
                 name="radioGroupUsingOptionsProp" />
             <div>selected: {{ test2Selected }}</div>
         </div>
-
     </div>
 </template>
