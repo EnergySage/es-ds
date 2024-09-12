@@ -16,11 +16,9 @@ interface IProps {
     inline?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     modelValue?: any;
-
-    // TODO
     hasIcon?: boolean;
-    labelClass?: string,
-    labelSrOnly?: boolean,
+    labelClass?: string;
+    labelSrOnly?: boolean;
 }
 const props = withDefaults(defineProps<IProps>(), {
     name: '',
@@ -32,16 +30,12 @@ const props = withDefaults(defineProps<IProps>(), {
     labelSrOnly: false,
 });
 
-const emit = defineEmits([
-    'update:model-value',
-])
+const emit = defineEmits(['update:model-value']);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function handleUpdate(value: any) {
-    console.log("radio-cards got value: ", value);
     emit('update:model-value', value);
 }
-// @update:model-value="$emit('update:model-value', option.value)"
 </script>
 
 <template>
@@ -61,8 +55,7 @@ function handleUpdate(value: any) {
                 role="radiogroup"
                 tabindex="-1"
                 class="es-form-radio-cards d-flex justify-content-center btn-group-vertical"
-                :class="{ 'has-icon': props.hasIcon }"
-            >
+                :class="{ 'has-icon': props.hasIcon }">
                 <!-- How are these classes getting added?: btn-group-toggle btn-group-vertical bv-no-focus-ring -->
                 <slot :options="options">
                     <es-form-radio-card
@@ -79,8 +72,7 @@ function handleUpdate(value: any) {
                             :class="{
                                 [props.labelClass]: props.labelClass,
                                 'sr-only': props.labelSrOnly,
-                            }"
-                        >
+                            }">
                             {{ option.text }}
                         </span>
                     </es-form-radio-card>

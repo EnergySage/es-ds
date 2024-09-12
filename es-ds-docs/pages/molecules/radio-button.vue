@@ -15,12 +15,17 @@ const test2Selected = ref('first');
 
 // Name, Type, Default, Description
 const radioButtonPropTableRows = [
-    ['name',  'String', 'n/a', 'Required. Name of radio group'],
-    ['value', 'Any',    'n/a', 'Required. Value of radio button'],
+    ['name', 'String', 'n/a', 'Required. Name of radio group'],
+    ['value', 'Any', 'n/a', 'Required. Value of radio button'],
     ['id', 'String', 'n/a', 'Required.'],
     ['disabled', 'Boolean', 'false', 'When present, it specifies that the radio button should be disabled.'],
     ['inline', 'Boolean', 'false', 'When present, it specifies that the radio buttons should be displayed inline.'],
-    ['displayName', 'String', '', 'Required, if not using the default slot. The text to display next to the radio button.'],
+    [
+        'displayName',
+        'String',
+        '',
+        'Required, if not using the default slot. The text to display next to the radio button.',
+    ],
     ['v-model', 'Any', 'n/a', 'Optional. The v-model directive binds the radio button to a data property.'],
 ];
 
@@ -43,14 +48,14 @@ const radioButtonComponentCode = ref('');
 const radioButtonGroupComponentCode = ref('');
 const docCode = ref('');
 if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import, import/no-unresolved */
     const radioButtonComponentSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
     // eslint-disable-next-line max-len
     const radioButtonGroupComponentSource = await import(
         '@energysage/es-ds-components/components/es-radio-button-group.vue?raw'
     );
     const docSource = await import('./radio-button.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import, import/no-unresolved */
 
     radioButtonComponentCode.value = $prism.normalizeCode(radioButtonComponentSource.default);
     radioButtonGroupComponentCode.value = $prism.normalizeCode(radioButtonGroupComponentSource.default);
@@ -103,7 +108,7 @@ if ($prism) {
             </es-radio-button-group>
         </div>
 
-         <div class="my-500">
+        <div class="my-500">
             <h2>Disabled</h2>
             <es-radio-button-group
                 id="idFruitsDisabled"

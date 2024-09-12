@@ -17,9 +17,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
 // Need to define the implicit emit from v-model, so that it can also get fired
 // from the label clicks
-const emit = defineEmits([
-    'update:modelValue',
-])
+const emit = defineEmits(['update:modelValue']);
 function handleRadioButtonClick() {
     if (!props.disabled) {
         emit('update:modelValue', props.value);
@@ -34,7 +32,7 @@ const isChecked = computed(() => props.value === model.value);
 <template>
     <div
         class="custom-control custom-radio"
-        :class="{'custom-control-inline': props.inline }">
+        :class="{ 'custom-control-inline': props.inline }">
         <input
             :id="id"
             v-model="model"
@@ -44,8 +42,7 @@ const isChecked = computed(() => props.value === model.value);
             class="custom-control-input"
             :value="props.value"
             :checked="isChecked"
-            @click="handleRadioButtonClick"
-        />
+            @click="handleRadioButtonClick" />
         <label
             class="custom-control-label"
             :for="id"

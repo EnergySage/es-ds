@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 const form = ref({
     installTimeline: '',
@@ -13,7 +12,7 @@ const propertyTypeOptions = [
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const storageReasonOptions: { [key:string]: any }[] = [
+const storageReasonOptions: { [key: string]: any }[] = [
     {
         title: 'Back up power',
         description: 'Run appliances during a power outage, with backup power',
@@ -35,7 +34,7 @@ const storageReasonOptions: { [key:string]: any }[] = [
         component: resolveComponent('icon-person-check'),
         value: 'Self supply',
     },
-]
+];
 
 const installTimelineLabel = 'What’s your timeline for installing heat pumps?';
 const installTimelineOptions = [
@@ -59,8 +58,12 @@ const componentCodeRadioCards = ref('');
 const docCode = ref('');
 if ($prism) {
     /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const componentCodeRadioCardSource = await import('@energysage/es-ds-components/components/es-form-radio-card.vue?raw');
-    const componentCodeRadioCardsSource = await import ('@energysage/es-ds-components/components/es-form-radio-cards.vue?raw');
+    const componentCodeRadioCardSource = await import(
+        '@energysage/es-ds-components/components/es-form-radio-card.vue?raw'
+    );
+    const componentCodeRadioCardsSource = await import(
+        '@energysage/es-ds-components/components/es-form-radio-cards.vue?raw'
+    );
     const docSource = await import('./radio-cards.vue?raw');
     /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
@@ -71,17 +74,28 @@ if ($prism) {
 }
 
 function handleSubmit() {
+    // eslint-disable-next-line no-console
     console.log('handleSubmit');
 }
 
 // Name, Type, Default, Description
 const propTableRowsRadioCard = [
     ['id', 'String', 'n/a', 'Required.'],
-    ['name',  'String', 'n/a', 'Required. Name of radio group'],
-    ['value', 'Any',    'n/a', 'Required. Value of radio button'],
+    ['name', 'String', 'n/a', 'Required. Name of radio group'],
+    ['value', 'Any', 'n/a', 'Required. Value of radio button'],
     ['disabled', 'Boolean', 'false', 'Optional. When present, it specifies that the radio button should be disabled.'],
-    ['inline', 'Boolean', 'false', 'Optional. When present, it specifies that the radio buttons should be displayed inline.'],
-    ['displayName', 'String', '', 'Optional. Required, if not using the default slot. The text to display next to the radio button.'],
+    [
+        'inline',
+        'Boolean',
+        'false',
+        'Optional. When present, it specifies that the radio buttons should be displayed inline.',
+    ],
+    [
+        'displayName',
+        'String',
+        '',
+        'Optional. Required, if not using the default slot. The text to display next to the radio button.',
+    ],
     ['v-model', 'Any', 'n/a', 'Required.'],
 ];
 
@@ -95,40 +109,31 @@ const propTableRowsRadioCards = [
     ['hasIcon', 'Boolean', 'false', 'Optional. Adds a "has-icon" class to the radiogroup'],
     ['labelClass', 'String', `''`, 'Optional. Apply class to the input label. Defaults to "font-size-h3"'],
     ['labelSrOnly', 'Boolean', 'false', 'Optional. Applies an `sr-only` class to the label'],
-]
-
+];
 </script>
 
 <template>
     <div>
-        <h1>
-            Radio cards
-        </h1>
+        <h1>Radio cards</h1>
         <p class="mb-200 mb-lg-500">
-            Extended from <ds-link
-                to="https://v3.primevue.org/radiobutton/">
-                prime-vue form-radio
-            </ds-link>
+            Extended from <ds-link to="https://v3.primevue.org/radiobutton/"> prime-vue form-radio </ds-link>
         </p>
 
-        <h2>
-            Radio Card
-        </h2>
+        <h2>Radio Card</h2>
         <div class="mb-200 mb-lg-500">
             <es-form-radio-card
                 id="idRadioCard1"
                 v-model="form.propertyType"
                 name="radioCard1"
                 :value="propertyTypeOptions[0].value"
-            >{{ propertyTypeOptions[0].label }}</es-form-radio-card>
+                >{{ propertyTypeOptions[0].label }}</es-form-radio-card
+            >
         </div>
 
-        <h2>
-            Default
-        </h2>
+        <h2>Default</h2>
         <p>
-            Responsive font sizing is applied by default. This means the text will be smaller on
-            mobile and larger on desktop.
+            Responsive font sizing is applied by default. This means the text will be smaller on mobile and larger on
+            desktop.
         </p>
         <es-card class="mb-200 mb-lg-500">
             <form @submit="handleSubmit">
@@ -152,12 +157,10 @@ const propTableRowsRadioCards = [
             </p>
         </es-card>
 
-        <h2>
-            Custom card styling
-        </h2>
+        <h2>Custom card styling</h2>
         <p>
-            This example demonstrates customizing the content, spacing, and typography of the cards,
-            as well as changing the layout based on the breakpoint.
+            This example demonstrates customizing the content, spacing, and typography of the cards, as well as
+            changing the layout based on the breakpoint.
         </p>
         <es-card class="mb-200 mb-lg-500">
             <form @submit="handleSubmit">
@@ -203,14 +206,12 @@ const propTableRowsRadioCards = [
             </p>
         </es-card>
 
-        <h2>
-            Detached label
-        </h2>
+        <h2>Detached label</h2>
         <p>
-            This example demonstrates a case where more control is needed over the position of the field
-            label on the desktop breakpoint, so it is rendered separately of the radio cards component.
-            We do still need to pass the label text into the radio cards component for accessibility
-            purposes, but hide it visually by passing in a prop.
+            This example demonstrates a case where more control is needed over the position of the field label on the
+            desktop breakpoint, so it is rendered separately of the radio cards component. We do still need to pass the
+            label text into the radio cards component for accessibility purposes, but hide it visually by passing in a
+            prop.
         </p>
         <div class="border mb-500 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
@@ -249,9 +250,7 @@ const propTableRowsRadioCards = [
             </p>
         </div>
 
-        <h2>
-            Passing options
-        </h2>
+        <h2>Passing options</h2>
         <div class="border mb-500 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
                 <es-form-radio-cards
@@ -259,8 +258,7 @@ const propTableRowsRadioCards = [
                     v-model="test2Selected"
                     label="Passing Options"
                     name="passingOptions"
-                    :options="test2Options"
-                />
+                    :options="test2Options" />
             </form>
             <p class="mb-0">
                 <span class="font-weight-bold">Selection:</span>
@@ -292,6 +290,5 @@ const propTableRowsRadioCards = [
             doc-title="Radio card & radio cards documentation"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/radio-cards.vue" />
-
     </div>
 </template>

@@ -24,9 +24,7 @@ const props = withDefaults(defineProps<IProps>(), {
     modelValue: undefined,
 });
 
-defineEmits([
-    'update:model-value',
-])
+defineEmits(['update:model-value']);
 </script>
 
 <template>
