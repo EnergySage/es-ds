@@ -51,7 +51,9 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import, import/no-unresolved */
-        const radioButtonComponentSource = await import('@energysage/es-ds-components/components/es-radio-button.vue?raw');
+        const radioButtonComponentSource = await import(
+            '@energysage/es-ds-components/components/es-radio-button.vue?raw'
+        );
         // eslint-disable-next-line max-len
         const radioButtonGroupComponentSource = await import(
             '@energysage/es-ds-components/components/es-radio-button-group.vue?raw'
