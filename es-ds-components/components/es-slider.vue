@@ -58,7 +58,7 @@ const value = defineModel<number>();
                     class: 'slider-handle',
                 },
             }" />
-        <input v-model.number="value" />
+
         <div class="d-flex flex-row justify-content-between">
             <span>{{ labelFormatter(min) }}</span>
             <span>{{ labelFormatter(max) }}</span>
