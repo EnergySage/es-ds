@@ -15,14 +15,16 @@ const propTableRows = [
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-rating.vue?raw');
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./rating.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-rating.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./rating.vue?raw');
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -67,7 +69,7 @@ if ($prism) {
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="@energysage/es-ds-components/components/es-rating.vue"
+            comp-source="es-ds-components/components/es-rating.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/rating.vue" />
     </div>
