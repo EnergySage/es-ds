@@ -11,6 +11,11 @@ const props = defineProps({
         default: 'md',
         validator: (val) => ['sm', 'md', 'lg', 'xl'].includes(val),
     },
+    bodyClass: {
+        type: String,
+        required: false,
+        default: '',
+    },
 });
 
 const modalPt = {
@@ -27,7 +32,7 @@ const modalPt = {
         class: 'close',
     },
     content: {
-        class: 'modal-body',
+        class: `modal-body ${props.bodyClass}`,
     },
     footer: {
         class: 'modal-footer',
