@@ -93,7 +93,7 @@ const propTableRowsRadioCard = [
     [
         'displayName',
         'String',
-        '',
+        `''`,
         'Optional. Required, if not using the default slot. The text to display next to the radio button.',
     ],
     ['v-model', 'Any', 'n/a', 'Required.'],
