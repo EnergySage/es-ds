@@ -59,10 +59,9 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
         const compSource = await import('@energysage/es-ds-components/components/es-accordion-list.vue?raw');
+        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./accordion.vue?raw');
-        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);

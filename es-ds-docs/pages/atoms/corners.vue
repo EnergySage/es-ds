@@ -56,9 +56,8 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        /* eslint-disable import/no-self-import */
+        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./corners.vue?raw');
-        /* eslint-enable import/no-self-import */
 
         docCode.value = $prism.normalizeCode(docSource.default);
         $prism.highlight();

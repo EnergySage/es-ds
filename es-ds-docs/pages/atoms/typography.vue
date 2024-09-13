@@ -242,9 +242,8 @@ const { $prism } = useNuxtApp();
 const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./typography.vue?raw');
-        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
         docCode.value = $prism.normalizeCode(docSource.default);
         $prism.highlight();
     }
