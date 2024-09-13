@@ -15,7 +15,7 @@ const props = defineProps({
 
 const modalPt = {
     root: {
-        class: 'modal-content',
+        class: 'modal-dialog modal-dialog-scrollable modal-content',
     },
     header: {
         class: 'modal-header',
