@@ -5,7 +5,7 @@ defineOptions({
     inheritAttrs: false,
 });
 
-const props = defineProps({
+defineProps({
     /**
      * Required
      */
@@ -48,15 +48,15 @@ const hasError = () => !!slots.errorMessage;
 <template>
     <div
         class="input-wrapper justify-content-end"
-        :required="props.required">
+        :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
-            :for="props.id"
+            :for="id"
             class="label justify-content-start">
             <slot name="label" />
 
             <span
-                v-if="props.required"
+                v-if="required"
                 class="text-danger">
                 *
             </span>
@@ -64,28 +64,28 @@ const hasError = () => !!slots.errorMessage;
 
         <div class="input-holder">
             <textarea
-                :id="props.id"
+                :id="id"
                 v-model="model"
                 v-bind="$attrs"
                 class="es-form-textarea w-100 form-control"
-                :class="{ 'is-invalid': props.state === false }"
-                :disabled="props.disabled"
-                :invalid="props.state === false" />
+                :class="{ 'is-invalid': state === false }"
+                :disabled="disabled"
+                :invalid="state === false" />
             <small
-                v-if="hasMessage() && ((!hasSuccess() && props.state) || props.state == null)"
+                v-if="hasMessage() && ((!hasSuccess() && state) || state == null)"
                 class="text-muted">
                 <slot name="message" />
             </small>
             <small
-                v-if="props.state === false && (hasError() || props.required)"
+                v-if="state === false && (hasError() || required)"
                 class="text-danger">
                 <slot
                     v-if="hasError()"
                     name="errorMessage" />
-                <template v-else-if="props.required"> This field is required. </template>
+                <template v-else-if="required"> This field is required. </template>
             </small>
             <small
-                v-if="props.state && hasSuccess()"
+                v-if="state && hasSuccess()"
                 class="text-success">
                 <slot name="successMessage" />
             </small>
