@@ -2,14 +2,16 @@
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-support.vue?raw');
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./support.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-support.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./support.vue?raw');
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 
 const link = 'https://www.energysage.com';
 const placeholderImage = 'https://a-us.storyblok.com/f/1006156/110x110/d215996a95/default-installer-logo.png';
