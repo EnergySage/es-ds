@@ -43,6 +43,7 @@ onMounted(async () => {
                     <!-- eslint-disable vuejs-accessibility/label-has-for -->
                     <label>
                         With title
+                        <!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
                         <a
                             id="darkTitleTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
@@ -70,6 +71,7 @@ onMounted(async () => {
                 <div>
                     <label>
                         No title
+                        <!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
                         <a
                             id="darkNoTitleTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
@@ -96,6 +98,7 @@ onMounted(async () => {
                 <div>
                     <label>
                         With button
+                        <!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
                         <a
                             id="darkButtonTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
@@ -131,6 +134,7 @@ onMounted(async () => {
                     <!-- eslint-disable vuejs-accessibility/label-has-for -->
                     <label>
                         With title
+                        <!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
                         <a
                             id="lightTitleTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
@@ -159,6 +163,7 @@ onMounted(async () => {
                 <div>
                     <label>
                         No title
+                        <!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
                         <a
                             id="lightNoTitleTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"
@@ -186,6 +191,7 @@ onMounted(async () => {
                 <div>
                     <label>
                         With button
+                        <!-- eslint-disable-next-line vuejs-accessibility/anchor-has-content -->
                         <a
                             id="lightButtonTarget"
                             class="p-0 text-gray-700 cursor-pointer-hover"

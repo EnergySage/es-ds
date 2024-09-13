@@ -320,6 +320,7 @@ const openFilePicker = () => {
         <div>
             <slot name="helpText" />
         </div>
+        <!-- eslint-disable-next-line vuejs-accessibility/form-control-has-label -->
         <input
             ref="fileInput"
             type="file"

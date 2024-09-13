@@ -31,6 +31,7 @@ defineProps({
             class="custom-control-input"
             :indeterminate="indeterminate"
             :disabled="disabled" />
+        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="id"
             class="custom-control-label">

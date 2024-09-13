@@ -20,12 +20,12 @@
         "@nuxtjs/google-fonts": "^3.2.0",
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
+        "html-truncate": "^1.2.2",
         "nuxt": "^3.13.1",
-        "primevue": "^3.53.0",
         "nuxt-primevue": "^3.0.0",
+        "primevue": "^3.53.0",
         "prismjs": "^1.29.0",
-        "vue": "^3.5.4",
-        "html-truncate": "^1.2.2"
+        "vue": "^3.5.4"
     },
     "devDependencies": {
         "@eslint/js": "^9.9.0",
@@ -37,6 +37,7 @@
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-vitest": "^0.5.4",
         "eslint-plugin-vue": "^9.27.0",
+        "eslint-plugin-vuejs-accessibility": "^2.4.1",
         "nuxt-primevue": "^3.0.0",
         "prettier": "^3.3.3",
         "sass": "^1.77.8",

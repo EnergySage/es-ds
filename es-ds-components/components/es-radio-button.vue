@@ -30,6 +30,7 @@ const props = withDefaults(defineProps<IProps>(), {
             :name="props.groupName"
             :value="props.value" />
         <slot>
+            <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
             <label
                 :for="`${props.value}-${props.groupName}`"
                 class="custom-control-label">

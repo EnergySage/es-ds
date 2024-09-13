@@ -10,7 +10,7 @@
             }
         }
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "vuejs-accessibility"],
     "env": {
         "node": true
     },
@@ -30,6 +30,7 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:vue/vue3-recommended",
+        "plugin:vuejs-accessibility/recommended",
         "./.nuxt/.eslint.globals.json",
         "airbnb-base",
         "prettier"
