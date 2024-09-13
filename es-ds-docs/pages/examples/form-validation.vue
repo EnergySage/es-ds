@@ -31,13 +31,15 @@ const onSubmit = async () => {
 
 const { $prism } = useNuxtApp();
 const docCode = ref('');
-if ($prism) {
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./form-validation.vue?raw');
+onMounted(async () => {
+    if ($prism) {
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./form-validation.vue?raw');
 
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>

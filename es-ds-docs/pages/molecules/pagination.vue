@@ -2,14 +2,16 @@
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-pagination.vue?raw');
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./pagination.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-pagination.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./pagination.vue?raw');
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 
 const perPage = 3;
 const items = Array.from({ length: 36 }, (v, i) => `Item ${i}`);

@@ -118,7 +118,7 @@ onMounted(async () => {
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-data-table-simple.vue"
+            comp-source="es-ds-components/components/es-data-table-simple.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/data-table-simple.vue" />
     </div>
