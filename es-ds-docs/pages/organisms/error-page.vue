@@ -8,16 +8,17 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-error-page.vue?raw');
-    const docSource = await import('./error-page.vue?raw');
-    /* eslint-enable import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-error-page.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./error-page.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -54,7 +55,7 @@ if ($prism) {
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-error-page.vue"
+            comp-source="es-ds-components/components/es-error-page.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/organisms/error-page.vue" />
     </div>

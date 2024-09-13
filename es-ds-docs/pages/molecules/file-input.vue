@@ -81,16 +81,17 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-file-input.vue?raw');
-    const docSource = await import('./file-input.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-file-input.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./file-input.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 
 const url = ref('');
 let fileObjects = [];
@@ -267,7 +268,7 @@ const fileSizeError = (fileName) => {
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-file-input.vue"
+            comp-source="es-ds-components/components/es-file-input.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/file-input.vue" />
     </div>

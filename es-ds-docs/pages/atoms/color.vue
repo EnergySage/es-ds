@@ -90,14 +90,15 @@ const yellowTints = slice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200'
 const { $prism } = useNuxtApp();
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const docSource = await import('./color.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./color.vue?raw');
 
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>

@@ -3,16 +3,17 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-reviews-io-card-carousel.vue?raw');
-    const docSource = await import('./reviews-io-card-carousel.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-reviews-io-card-carousel.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./reviews-io-card-carousel.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -27,7 +28,7 @@ if ($prism) {
 
     <ds-doc-source
         :comp-code="compCode"
-        comp-source="es-ds-components/src/lib-components/es-reviews-io-card-carousel.vue"
+        comp-source="es-ds-components/components/es-reviews-io-card-carousel.vue"
         :doc-code="docCode"
-        doc-source="es-ds-docs/pages/molecules/reviews-io-carousel.vue" />
+        doc-source="es-ds-docs/pages/organisms/reviews-io-carousel.vue" />
 </template>
