@@ -6,16 +6,17 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-form-textarea.vue?raw');
-    const docSource = await import('./form-textarea.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-form-textarea.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./form-textarea.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 
 const propTableRows = [
     ['id', 'String', 'n/a', 'Required. The id of the input.'],
@@ -158,7 +159,7 @@ const propTableRows = [
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-form-textarea.vue"
+            comp-source="es-ds-components/components/es-form-textarea.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/form-textarea.vue" />
     </div>
