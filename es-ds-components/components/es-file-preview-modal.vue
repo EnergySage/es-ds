@@ -1,29 +1,15 @@
 <script setup lang="ts">
 defineProps({
-    /**
-     * Visible
-     *
-     */
     visible: {
         type: Boolean,
         default: false,
         required: false,
     },
-    /**
-     * File Name
-     * Already formatted, e.g. 'bill.png'
-     *
-     */
     fileName: {
         type: String,
         default: 'test.png',
         required: false,
     },
-    /**
-     * File Source
-     * Image or file source for preview
-     *
-     */
     fileSource: {
         type: String,
         default: '',

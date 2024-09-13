@@ -1,6 +1,12 @@
 <script setup lang="ts">
 const visible = ref(false);
 
+const propTableRows = [
+    ['visible', 'Boolean', 'false', 'Set to true to show the modal'],
+    ['file-name', 'String', "'test.png'", 'The name of the file'],
+    ['file-source', 'String', "''", 'The URL of the file'],
+];
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -35,6 +41,11 @@ onMounted(async () => {
             file-name="bill.png"
             :visible="visible"
             @hidden="visible=false" />
+
+        <div class="mb-500">
+            <h2>es-file-preview-modal props</h2>
+            <ds-prop-table :rows="propTableRows" />
+        </div>
 
         <ds-doc-source
             :comp-code="compCode"
