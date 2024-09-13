@@ -15,7 +15,7 @@ defineProps({
         default: '',
         required: false,
     },
-})
+});
 
 defineEmits(['hidden']);
 </script>
