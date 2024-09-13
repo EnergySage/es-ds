@@ -2,6 +2,10 @@
 import PrimeDialog from 'primevue/dialog';
 
 const props = defineProps({
+    id: {
+        type: String,
+        required: true,
+    },
     hideFooter: {
         type: Boolean,
         default: false,
@@ -67,13 +71,16 @@ const getSizeClass = computed(() => {
 
 <template>
     <prime-dialog
+        :id="id"
         modal
         :class="getSizeClass"
         :pt="modalPt"
         dismissable-mask
         @update:visible="onChange">
         <template #header>
-            <h5 class="modal-title h2">
+            <h5
+                :id="`${id}_header`"
+                class="modal-title h2">
                 <slot name="modal-title" />
             </h5>
         </template>

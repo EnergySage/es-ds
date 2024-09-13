@@ -3,6 +3,7 @@ const simpleModalVisible = ref(false);
 const buttonsModalVisible = ref(false);
 
 const propTableRows = [
+    ['id', 'String', 'n/a', 'Required. Provide a unique ID for the modal for accessibility purposes.'],
     ['hide-footer', 'Boolean', 'false', 'Whether to show the modal footer.'],
     ['size', 'string', 'md', "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
     ['body-class', 'String', '', 'Additional classes to add to the modal-body'],
