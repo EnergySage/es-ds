@@ -166,6 +166,7 @@ const handleSubmit = () => {
                 class="d-flex text-left"
                 :class="{ 'font-size-75': constrained }">
                 <icon-lock-on
+                    aria-hidden="true"
                     class="privacy-lock-icon flex-shrink-0 mr-50 position-relative"
                     :class="{ 'mt-25': !constrained }"
                     height="1.125rem"
