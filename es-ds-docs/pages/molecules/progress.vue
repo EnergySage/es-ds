@@ -13,15 +13,17 @@ const propTableWidths = {
     md: ['2', '2', '2', '6'],
 };
 
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-progress.vue?raw');
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./progress.vue?raw');
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-progress.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./progress.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>

@@ -12,16 +12,17 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-form-input.vue?raw');
-    const docSource = await import('./text-input.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-form-input.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./text-input.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 
 const propTableRows = [
     ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the input to a data property.'],
@@ -310,7 +311,7 @@ const propTableRows = [
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-form-input.vue"
+            comp-source="es-ds-components/components/es-form-input.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/text-input.vue" />
     </div>
