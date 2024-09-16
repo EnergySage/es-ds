@@ -56,16 +56,17 @@ const slotTableRows = [
     ['description', 'n/a', "The content to display in the card's main paragraph."],
 ];
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-support-card.vue?raw');
-    const docSource = await import('./support-card.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-support-card.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./support-card.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -166,8 +167,8 @@ if ($prism) {
         </div>
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-support-card.vue"
+            comp-source="es-ds-components/components/es-support-card.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/support-card.vue" />
+            doc-source="es-ds-docs/pages/organisms/support-card.vue" />
     </div>
 </template>

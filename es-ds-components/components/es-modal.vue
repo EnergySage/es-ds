@@ -2,6 +2,10 @@
 import PrimeDialog from 'primevue/dialog';
 
 const props = defineProps({
+    id: {
+        type: String,
+        required: true,
+    },
     hideFooter: {
         type: Boolean,
         default: false,
@@ -11,11 +15,16 @@ const props = defineProps({
         default: 'md',
         validator: (val) => ['sm', 'md', 'lg', 'xl'].includes(val),
     },
+    bodyClass: {
+        type: String,
+        required: false,
+        default: '',
+    },
 });
 
 const modalPt = {
     root: {
-        class: 'modal-content',
+        class: 'modal-dialog modal-dialog-scrollable modal-content',
     },
     header: {
         class: 'modal-header',
@@ -27,7 +36,7 @@ const modalPt = {
         class: 'close',
     },
     content: {
-        class: 'modal-body',
+        class: `modal-body ${props.bodyClass}`,
     },
     footer: {
         class: 'modal-footer',
@@ -62,13 +71,16 @@ const getSizeClass = computed(() => {
 
 <template>
     <prime-dialog
+        :id="id"
         modal
         :class="getSizeClass"
         :pt="modalPt"
         dismissable-mask
         @update:visible="onChange">
         <template #header>
-            <h5 class="modal-title h2">
+            <h5
+                :id="`${id}_header`"
+                class="modal-title h2">
                 <slot name="modal-title" />
             </h5>
         </template>
