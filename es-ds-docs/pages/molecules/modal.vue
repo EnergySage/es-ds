@@ -3,8 +3,10 @@ const simpleModalVisible = ref(false);
 const buttonsModalVisible = ref(false);
 
 const propTableRows = [
-    ['hideFooter', 'Boolean', 'false', 'Whether to show the modal footer.'],
+    ['id', 'String', 'n/a', 'Required. Provide a unique ID for the modal for accessibility purposes.'],
+    ['hide-footer', 'Boolean', 'false', 'Whether to show the modal footer.'],
     ['size', 'string', 'md', "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
+    ['body-class', 'String', '', 'Additional classes to add to the modal-body'],
 ];
 
 const { $prism } = useNuxtApp();
