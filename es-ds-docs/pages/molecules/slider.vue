@@ -5,21 +5,6 @@ const max = ref(1000);
 const step = ref(50);
 const ariaLabel = ref('Sample aria-label');
 
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-slider.vue?raw');
-    const docSource = await import('./slider.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
-
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
-
 const propTableRows = [
     ['min', 'Number', '0', 'Required. Minimum value of slider.'],
     ['max', 'Number', '100', 'Required. Maximum value of slider.'],
@@ -27,6 +12,23 @@ const propTableRows = [
     ['ariaLabel', 'String', '"Pick a number"', 'Aria-label for slider handle.'],
     ['labelFormatter', 'Function', 'n/a', 'Function that modifies label value.'],
 ];
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+
+onMounted(async () => {
+    if ($prism) {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const compSource = await import('@energysage/es-ds-components/components/es-slider.vue?raw');
+        const docSource = await import('./slider.vue?raw');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
