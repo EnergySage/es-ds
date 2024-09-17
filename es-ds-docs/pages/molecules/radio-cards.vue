@@ -268,13 +268,13 @@ const propTableRowsRadioCards = [
         </div>
 
         <div class="mb-500">
-            <h2>EsFormRadioCard props</h2>
-            <ds-prop-table :rows="propTableRowsRadioCard" />
+            <h2>EsFormRadioCards props</h2>
+            <ds-prop-table :rows="propTableRowsRadioCards" />
         </div>
 
         <div class="mb-500">
-            <h2>EsFormRadioCards props</h2>
-            <ds-prop-table :rows="propTableRowsRadioCards" />
+            <h2>EsFormRadioCard props</h2>
+            <ds-prop-table :rows="propTableRowsRadioCard" />
         </div>
 
         <h2>
@@ -299,14 +299,14 @@ const propTableRowsRadioCards = [
         </p>
 
         <ds-doc-source
-            comp-title="Radio card component"
-            :comp-code="componentCodeRadioCard"
-            comp-source="es-ds-components/src/lib-components/es-form-radio-card.vue" />
-
-        <ds-doc-source
             comp-title="Radio cards component"
             :comp-code="componentCodeRadioCards"
             comp-source="es-ds-components/src/lib-components/es-form-radio-cards.vue" />
+
+        <ds-doc-source
+            comp-title="Radio card component"
+            :comp-code="componentCodeRadioCard"
+            comp-source="es-ds-components/src/lib-components/es-form-radio-card.vue" />
 
         <ds-doc-source
             doc-title="Radio card & radio cards documentation"
