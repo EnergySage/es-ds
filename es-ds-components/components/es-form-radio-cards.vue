@@ -1,5 +1,5 @@
 <script setup lang="ts">
-interface IOptions {
+interface Option {
     id: string;
     text: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -8,11 +8,11 @@ interface IOptions {
     inline?: boolean;
 }
 
-interface IProps {
+interface Props {
     id: string;
     label: string;
     name?: string;
-    options?: IOptions[];
+    options?: Option[];
     inline?: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     modelValue?: any;
@@ -20,7 +20,7 @@ interface IProps {
     labelClass?: string;
     labelSrOnly?: boolean;
 }
-const props = withDefaults(defineProps<IProps>(), {
+const props = withDefaults(defineProps<Props>(), {
     name: '',
     options: undefined,
     inline: false,
