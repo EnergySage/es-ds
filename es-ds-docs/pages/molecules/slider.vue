@@ -6,11 +6,12 @@ const step = ref(50);
 const ariaLabel = ref('Sample aria-label');
 
 const propTableRows = [
-    ['min', 'Number', '0', 'Required. Minimum value of slider.'],
+    ['starting-value', 'Number', '1', 'Required. Initial value of slider.'],
+    ['min', 'Number', '1', 'Required. Minimum value of slider.'],
     ['max', 'Number', '100', 'Required. Maximum value of slider.'],
     ['step', 'Number', '1', 'Step factor to increment/decrement the value.'],
-    ['ariaLabel', 'String', '"Pick a number"', 'Aria-label for slider handle.'],
-    ['labelFormatter', 'Function', 'n/a', 'Function that modifies label value.'],
+    ['aria-label', 'String', '"Pick a number"', 'Aria-label for slider handle.'],
+    ['label-formatter', 'Function', 'n/a', 'Function that modifies label value.'],
 ];
 
 const { $prism } = useNuxtApp();

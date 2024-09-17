@@ -3,12 +3,20 @@ import Slider from 'primevue/slider';
 
 const props = defineProps({
     /**
+     * Starting value of slider thumb
+     */
+    startingValue: {
+        type: Number,
+        required: true,
+        default: 1,
+    },
+    /**
      * Minimum value of slider
      */
     min: {
         type: Number,
         required: true,
-        default: 0,
+        default: 1,
     },
     /**
      * Maximum value of slider
@@ -24,13 +32,6 @@ const props = defineProps({
     step: {
         type: Number,
         default: 1,
-    },
-    /**
-     * Starting value of slider thumb
-     */
-    startingValue: {
-        type: Number,
-        required: true,
     },
     /**
      * Aria label for slider handle
