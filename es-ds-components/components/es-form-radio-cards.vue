@@ -45,7 +45,7 @@ function handleUpdate(value: any) {
         <legend
             :id="`${props.id}-legend`"
             class="font-size-h1 font-weight-bolder mb-200 pb-0 text-dark"
-            :class="{'sr-only': props.labelSrOnly}"
+            :class="{ 'sr-only': props.labelSrOnly }"
             tabindex="-1">
             {{ props.label }}
         </legend>
@@ -67,8 +67,7 @@ function handleUpdate(value: any) {
                         :model-value="props.modelValue"
                         :inline="props.inline || false"
                         @update:model-value="handleUpdate">
-                        <span
-                            :class="props.labelClass">
+                        <span :class="props.labelClass">
                             {{ option.text }}
                         </span>
                     </es-form-radio-card>

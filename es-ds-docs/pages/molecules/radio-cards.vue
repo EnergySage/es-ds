@@ -74,7 +74,7 @@ onMounted(async () => {
         docCode.value = $prism.normalizeCode(docSource.default);
         $prism.highlight();
     }
-})
+});
 
 function handleSubmit() {
     // eslint-disable-next-line no-console
@@ -278,25 +278,28 @@ const propTableRowsRadioCards = [
             <ds-prop-table :rows="propTableRowsRadioCard" />
         </div>
 
-        <h2>
-            Migrating from ESDS 2.0 form radio cards
-        </h2>
+        <h2>Migrating from ESDS 2.0 form radio cards</h2>
         <p>
             The previous
-            <a href="https://github.com/EnergySage/es-ds-legacy/blob/main/es-vue-base/src/lib-components/EsFormRadioCard.vue">
+            <a
+                href="https://github.com/EnergySage/es-ds-legacy/blob/main/es-vue-base/src/lib-components/EsFormRadioCard.vue">
                 radio card
-            </a> and <a href="https://github.com/EnergySage/es-ds-legacy/blob/main/es-vue-base/src/lib-components/EsFormRadioCards.vue">radio card group</a> components were based on
-            <a href="https://bootstrap-vue.org/docs/components/form-radio">
-            bootstrap-vue
-            </a>'s implementation.
+            </a>
+            and
+            <a
+                href="https://github.com/EnergySage/es-ds-legacy/blob/main/es-vue-base/src/lib-components/EsFormRadioCards.vue"
+                >radio card group</a
+            >
+            components were based on
+            <a href="https://bootstrap-vue.org/docs/components/form-radio"> bootstrap-vue </a>'s implementation.
         </p>
         <p>
-            Going forward the <code>v-model</code> should be on the <strong>radio card group</strong>
-            component when passing in the <code>options</code> prop.
+            Going forward the <code>v-model</code> should be on the <strong>radio card group</strong> component when
+            passing in the <code>options</code> prop.
         </p>
         <p>
-            When using the radio card group's default slot
-            the <code>v-model</code> should be on the <strong>radio card</strong> components within that slot.
+            When using the radio card group's default slot the <code>v-model</code> should be on the
+            <strong>radio card</strong> components within that slot.
         </p>
 
         <ds-doc-source
