@@ -50,6 +50,7 @@ onMounted(async () => {
                 :min="min"
                 :max="max"
                 :step="step"
+                :starting-value="150"
                 :aria-label="ariaLabel"
                 :label-formatter="(val) => `$${val}`" />
         </div>

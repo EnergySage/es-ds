@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Slider from 'primevue/slider';
 
-defineProps({
+const props = defineProps({
     min: {
         type: Number,
         required: true,
@@ -15,6 +15,13 @@ defineProps({
     step: {
         type: Number,
         default: 1,
+    },
+    /**
+     * Starting value of slider thumb
+     */
+    startingValue: {
+        type: Number,
+        required: true,
     },
     /**
      * Aria label for slider handle
@@ -35,13 +42,16 @@ defineProps({
 });
 
 // allow use of v-model on this component
-const value = defineModel<number>();
+const model = defineModel<number>();
+
+// set starting value
+model.value = props.startingValue;
 </script>
 
 <template>
     <div>
         <slider
-            v-model="value"
+            v-model="model"
             v-bind="$attrs"
             :min="min"
             :max="max"
