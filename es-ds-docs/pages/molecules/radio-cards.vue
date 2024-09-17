@@ -277,6 +277,27 @@ const propTableRowsRadioCards = [
             <ds-prop-table :rows="propTableRowsRadioCards" />
         </div>
 
+        <h2>
+            Migrating from ESDS 2.0 form radio cards
+        </h2>
+        <p>
+            The previous
+            <a href="https://github.com/EnergySage/es-ds-legacy/blob/main/es-vue-base/src/lib-components/EsFormRadioCard.vue">
+                radio card
+            </a> and <a href="https://github.com/EnergySage/es-ds-legacy/blob/main/es-vue-base/src/lib-components/EsFormRadioCards.vue">radio card group</a> components were based on
+            <a href="https://bootstrap-vue.org/docs/components/form-radio">
+            bootstrap-vue
+            </a>'s implementation.
+        </p>
+        <p>
+            Going forward the <code>v-model</code> should be on the <strong>radio card group</strong>
+            component when passing in the <code>options</code> prop.
+        </p>
+        <p>
+            When using the radio card group's default slot
+            the <code>v-model</code> should be on the <strong>radio card</strong> components within that slot.
+        </p>
+
         <ds-doc-source
             comp-title="Radio card component"
             :comp-code="componentCodeRadioCard"
