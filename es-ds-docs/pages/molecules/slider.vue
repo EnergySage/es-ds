@@ -20,10 +20,9 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
         const compSource = await import('@energysage/es-ds-components/components/es-slider.vue?raw');
+        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./slider.vue?raw');
-        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
@@ -57,7 +56,7 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Slider props</h2>
+            <h2>EsSlider props</h2>
             <ds-prop-table :rows="propTableRows" />
         </div>
 
