@@ -219,9 +219,11 @@ const propTableRowsRadioCards = [
                     <b-col
                         cols="12"
                         lg="4">
-                        <h1 aria-hidden="true">
+                        <h3
+                            class="h1"
+                            aria-hidden="true">
                             {{ installTimelineLabel }}
-                        </h1>
+                        </h3>
                     </b-col>
                     <b-col
                         cols="12"
