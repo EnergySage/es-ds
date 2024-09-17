@@ -24,6 +24,8 @@ function handleRadioButtonClick() {
     }
 }
 
+// Similar to the API of https://bootstrap-vue.org/docs/components/form-radio#changing-the-option-field-names
+// the value can be a string, number, or simple object. Avoid using complex types in values.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const model = defineModel<any>();
 const isChecked = computed(() => props.value === model.value);
