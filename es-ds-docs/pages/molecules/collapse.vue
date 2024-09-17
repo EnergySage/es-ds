@@ -38,16 +38,17 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-collapse.vue?raw');
-    const docSource = await import('./collapse.vue?raw');
-    /* eslint-enable import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-collapse.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./collapse.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -219,7 +220,7 @@ if ($prism) {
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/src/lib-components/es-collapse.vue"
+            comp-source="es-ds-components/components/es-collapse.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/es-collapse.vue" />
     </div>
