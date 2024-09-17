@@ -2,16 +2,25 @@
 import Slider from 'primevue/slider';
 
 const props = defineProps({
+    /**
+     * Minimum value of slider
+     */
     min: {
         type: Number,
         required: true,
         default: 0,
     },
+    /**
+     * Maximum value of slider
+     */
     max: {
         type: Number,
         required: true,
         default: 100,
     },
+    /**
+     * Step increment
+     */
     step: {
         type: Number,
         default: 1,
