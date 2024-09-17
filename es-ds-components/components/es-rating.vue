@@ -68,23 +68,17 @@ const update = (value: number) => {
             v-for="i in 5"
             :key="i"
             aria-hidden="true">
-            <span
-                v-if="i <= roundedRating"
-                data-testid="rating-test">
+            <span v-if="i <= roundedRating">
                 <icon-star-full
                     :width="width"
                     :height="height" />
             </span>
-            <span
-                v-else-if="i - 0.5 === roundedRating"
-                data-testid="rating-test">
+            <span v-else-if="i - 0.5 === roundedRating">
                 <icon-star-half
                     :width="width"
                     :height="height" />
             </span>
-            <span
-                v-else
-                data-testid="rating-test">
+            <span v-else>
                 <icon-star-empty
                     :width="width"
                     :height="height" />
@@ -101,7 +95,6 @@ const update = (value: number) => {
         :cancel="false"
         :readonly="readOnly"
         v-bind="$attrs"
-        data-testid="rating-test"
         :pt="{
             root: {
                 class: 'bg-transparent rounded-0 text-orange rating reactive',
