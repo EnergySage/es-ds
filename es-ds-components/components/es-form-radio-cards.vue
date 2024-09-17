@@ -45,8 +45,8 @@ function handleUpdate(value: any) {
         <legend
             :id="`${props.id}-legend`"
             class="font-size-h1 font-weight-bolder mb-200 pb-0 text-dark"
+            :class="{'sr-only': props.labelSrOnly}"
             tabindex="-1">
-            <!-- How are these classes getting added?: bv-no-focus-ring col-form-label pt-0 -->
             {{ props.label }}
         </legend>
         <div>
@@ -56,7 +56,6 @@ function handleUpdate(value: any) {
                 tabindex="-1"
                 class="es-form-radio-cards d-flex justify-content-center btn-group-vertical"
                 :class="{ 'has-icon': props.hasIcon }">
-                <!-- How are these classes getting added?: btn-group-toggle btn-group-vertical bv-no-focus-ring -->
                 <slot :options="options">
                     <es-form-radio-card
                         v-for="option in options"
@@ -69,10 +68,7 @@ function handleUpdate(value: any) {
                         :inline="props.inline || false"
                         @update:model-value="handleUpdate">
                         <span
-                            :class="{
-                                [props.labelClass]: props.labelClass,
-                                'sr-only': props.labelSrOnly,
-                            }">
+                            :class="props.labelClass">
                             {{ option.text }}
                         </span>
                     </es-form-radio-card>
