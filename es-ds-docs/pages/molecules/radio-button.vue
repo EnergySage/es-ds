@@ -50,7 +50,7 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import, import/no-unresolved */
+        /* eslint-disable import/no-self-import */
         const radioButtonComponentSource = await import(
             '@energysage/es-ds-components/components/es-radio-button.vue?raw'
         );
@@ -59,7 +59,7 @@ onMounted(async () => {
             '@energysage/es-ds-components/components/es-radio-button-group.vue?raw'
         );
         const docSource = await import('./radio-button.vue?raw');
-        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import, import/no-unresolved */
+        /* eslint-enable import/no-self-import */
 
         radioButtonComponentCode.value = $prism.normalizeCode(radioButtonComponentSource.default);
         radioButtonGroupComponentCode.value = $prism.normalizeCode(radioButtonGroupComponentSource.default);
@@ -71,14 +71,7 @@ onMounted(async () => {
 
 <template>
     <div>
-        <p class="mb-500">
-            Uses
-            <a
-                href="https://v3.primevue.org/radiobutton/"
-                target="_blank">
-                PrimeVue RadioButton
-            </a>
-        </p>
+        <h1>Radio button</h1>
 
         <div class="my-500">
             <h2>Inline</h2>

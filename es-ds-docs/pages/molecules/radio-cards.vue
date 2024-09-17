@@ -56,22 +56,25 @@ const { $prism } = useNuxtApp();
 const componentCodeRadioCard = ref('');
 const componentCodeRadioCards = ref('');
 const docCode = ref('');
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const componentCodeRadioCardSource = await import(
-        '@energysage/es-ds-components/components/es-form-radio-card.vue?raw'
-    );
-    const componentCodeRadioCardsSource = await import(
-        '@energysage/es-ds-components/components/es-form-radio-cards.vue?raw'
-    );
-    const docSource = await import('./radio-cards.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
-    componentCodeRadioCard.value = $prism.normalizeCode(componentCodeRadioCardSource.default);
-    componentCodeRadioCards.value = $prism.normalizeCode(componentCodeRadioCardsSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+onMounted(async () => {
+    if ($prism) {
+        /* eslint-disable import/no-self-import */
+        const componentCodeRadioCardSource = await import(
+            '@energysage/es-ds-components/components/es-form-radio-card.vue?raw'
+        );
+        const componentCodeRadioCardsSource = await import(
+            '@energysage/es-ds-components/components/es-form-radio-cards.vue?raw'
+        );
+        const docSource = await import('./radio-cards.vue?raw');
+        /* eslint-enable import/no-self-import */
+
+        componentCodeRadioCard.value = $prism.normalizeCode(componentCodeRadioCardSource.default);
+        componentCodeRadioCards.value = $prism.normalizeCode(componentCodeRadioCardsSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+})
 
 function handleSubmit() {
     // eslint-disable-next-line no-console
@@ -115,11 +118,9 @@ const propTableRowsRadioCards = [
 <template>
     <div>
         <h1>Radio cards</h1>
-        <p class="mb-200 mb-lg-500">
-            Extended from <ds-link to="https://v3.primevue.org/radiobutton/"> prime-vue form-radio </ds-link>
-        </p>
 
-        <h2>Radio Card</h2>
+        <h2>Radio card</h2>
+
         <div class="mb-200 mb-lg-500">
             <es-form-radio-card
                 id="idRadioCard1"

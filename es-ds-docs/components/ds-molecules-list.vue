@@ -1,4 +1,3 @@
-<script setup></script>
 <template>
     <ul class="list-unstyled pl-100">
         <li>
