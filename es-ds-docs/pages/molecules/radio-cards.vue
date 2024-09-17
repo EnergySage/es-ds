@@ -105,10 +105,10 @@ const propTableRowsRadioCard = [
 const propTableRowsRadioCards = [
     ['id', 'String', 'n/a', 'Required.'],
     ['label', 'String', 'n/a', 'Required.'],
-    ['name', 'String', `''`, 'Optional.'], // TODO: should this be required?
+    ['name', 'String', `''`, 'Optional.'],
     ['options', 'Array', 'undefined', 'Optional. Alternative to creating an es-form-radio-card in the default slot.'],
-    ['inline', 'Boolean', 'false', 'Optional.'], // TODO: example of this?
-    ['modelValue', 'Any', 'undefined', 'Optional. Required, if using the options prop'],
+    ['inline', 'Boolean', 'false', 'Optional.'],
+    ['v-model', 'Any', 'undefined', 'Optional. Required, only if passing the options prop'],
     ['hasIcon', 'Boolean', 'false', 'Optional. Adds a "has-icon" class to the radiogroup'],
     ['labelClass', 'String', `''`, 'Optional. Apply class to the input label. Defaults to "font-size-h3"'],
     ['labelSrOnly', 'Boolean', 'false', 'Optional. Applies an `sr-only` class to the label'],
@@ -168,7 +168,6 @@ const propTableRowsRadioCards = [
                 <es-form-radio-cards
                     id="idCustomCardStyling"
                     label="What’s the main reason you want a battery?"
-                    model-value="form.storageReason"
                     has-icon>
                     <b-row>
                         <b-col
