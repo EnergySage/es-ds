@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Event will trigger twice when using keyboard to focus due to PrimeVue bug
 const changeEvent = ($event) => {
     // eslint-disable-next-line no-alert
     alert($event.value);

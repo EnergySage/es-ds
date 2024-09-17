@@ -87,10 +87,6 @@ const update = (value: number) => {
     </div>
     <rating
         v-else
-        role="slider"
-        aria-valuemin="1"
-        aria-valuemax="5"
-        :aria-valuenow="roundedRating"
         :model-value="roundedRating"
         :cancel="false"
         :readonly="readOnly"
