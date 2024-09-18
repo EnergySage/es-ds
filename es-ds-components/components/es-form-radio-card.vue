@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { useFocus } from '@vueuse/core'
+
+const inputElem = useTemplateRef('input-elem')
+const { focused: inputFocused } = useFocus(inputElem)
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface IProps {
     id: string;
@@ -24,6 +29,7 @@ function handleRadioButtonClick() {
         emit('update:modelValue', props.value);
     }
 }
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const model = defineModel<any>();
 const isChecked = computed(() => props.value === model.value);
@@ -32,10 +38,11 @@ const isChecked = computed(() => props.value === model.value);
 <template>
     <label
         class="es-form-radio-card es-card interactive w-100 btn btn-outline-primary"
-        :class="{ active: isChecked, disabled: props.disabled }"
+        :class="{ active: isChecked, disabled: props.disabled, focus: isChecked || inputFocused }"
         @click="handleRadioButtonClick">
         <input
             :id="id"
+            ref="input-elem"
             v-model="model"
             :disabled="props.disabled"
             type="radio"
