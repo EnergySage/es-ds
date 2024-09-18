@@ -208,7 +208,7 @@ const slotTableRows = [
                         stack-until="xs"
                         :show-privacy-section="false"
                         url="https://www.energysage.com/market/start/">
-                        <template #buttonText> See local offers </template>
+                        <template #buttonText> Go! </template>
                     </es-zip-code-form>
                 </b-col>
             </b-row>
