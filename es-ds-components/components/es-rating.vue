@@ -44,52 +44,45 @@ const props = defineProps({
     },
 });
 
-const localRating = ref(props.rating);
+const model = defineModel<number>()
+model.value = props.rating;
 
-const roundedRating = computed(() => {
-    if (!props.rounded) {
-        return localRating.value;
-    }
-    // Rounds to nearest .5
-    return Math.round(localRating.value * 2) / 2;
-});
-
-const update = (value: number) => {
-    localRating.value = value;
-};
+// Rounds to nearest .5
+const round = (value: number) => value ? Math.round(value * 2) / 2 : 0;
+const localRating = computed(() => props.rounded ? round(model.value as number) : model.value || 0);
 </script>
 
 <template>
     <div
-        v-if="readOnly"
-        :aria-label="`${roundedRating} out of 5 stars`"
+        v-if="props.readOnly"
+        :aria-label="`${localRating} out of 5 stars`"
         class="bg-transparent rounded-0 text-orange rating">
         <div
             v-for="i in 5"
             :key="i"
             aria-hidden="true">
-            <span v-if="i <= roundedRating">
+            <span v-if="i <= localRating">
                 <icon-star-full
-                    :width="width"
-                    :height="height" />
+                    :width="props.width"
+                    :height="props.height" />
             </span>
-            <span v-else-if="i - 0.5 === roundedRating">
+            <span v-else-if="i - 0.5 === localRating">
                 <icon-star-half
-                    :width="width"
-                    :height="height" />
+                    :width="props.width"
+                    :height="props.height" />
             </span>
             <span v-else>
                 <icon-star-empty
-                    :width="width"
-                    :height="height" />
+                    :width="props.width"
+                    :height="props.height" />
             </span>
         </div>
     </div>
     <rating
         v-else
-        :model-value="roundedRating"
+        v-model="model"
         :cancel="false"
-        :readonly="readOnly"
+        :readonly="props.readOnly"
         v-bind="$attrs"
         :pt="{
             root: {
@@ -98,17 +91,16 @@ const update = (value: number) => {
             item: {
                 class: 'reactiveStar',
             },
-        }"
-        @update:model-value="update">
+        }">
         <template #officon>
             <icon-star-empty
-                :width="width"
-                :height="height" />
+                :width="props.width"
+                :height="props.height" />
         </template>
         <template #onicon>
             <icon-star-full
-                :width="width"
-                :height="height" />
+                :width="props.width"
+                :height="props.height" />
         </template>
     </rating>
 </template>
@@ -130,9 +122,10 @@ const update = (value: number) => {
     cursor: pointer !important;
 }
 
-// TODO: Star should go back to normal size after click
-.reactiveStar:hover,
-.reactiveStar[data-p-focused='true'] {
-    transform: scale(1.5);
+.reactiveStar {
+    &:hover,
+    &[data-p-focused='true'] {
+        transform: scale(1.5);
+    }
 }
 </style>
