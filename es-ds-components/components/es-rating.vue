@@ -4,12 +4,12 @@ import Rating from 'primevue/rating';
 const props = defineProps({
     /**
      * Starting rating
-     * 0-5; Avg will show half icons rounded down
+     * 0-5; Avg will show half icons rounded down in read only mode
      */
     rating: {
         type: Number,
         default: 0,
-        validator: (num) => num >= 0 && num <= 5,
+        validator: (num: number) => num >= 0 && num <= 5,
     },
     /**
      * Disable changing the rating
@@ -19,7 +19,7 @@ const props = defineProps({
         default: true,
     },
     /**
-     * Icon Width
+     * Icon width
      */
     width: {
         type: String,
@@ -27,7 +27,7 @@ const props = defineProps({
         required: false,
     },
     /**
-     * Icon Height
+     * Icon height
      */
     height: {
         type: String,
@@ -60,28 +60,44 @@ const update = (value: number) => {
 </script>
 
 <template>
+    <div
+        v-if="readOnly"
+        :aria-label="`${roundedRating} out of 5 stars`"
+        class="bg-transparent rounded-0 text-orange rating">
+        <div
+            v-for="i in 5"
+            :key="i"
+            aria-hidden="true">
+            <span v-if="i <= roundedRating">
+                <icon-star-full
+                    :width="width"
+                    :height="height" />
+            </span>
+            <span v-else-if="i - 0.5 === roundedRating">
+                <icon-star-half
+                    :width="width"
+                    :height="height" />
+            </span>
+            <span v-else>
+                <icon-star-empty
+                    :width="width"
+                    :height="height" />
+            </span>
+        </div>
+    </div>
     <rating
+        v-else
         :model-value="roundedRating"
         :cancel="false"
         :readonly="readOnly"
         v-bind="$attrs"
-        data-testid="rating-test"
         :pt="{
-            root: (options) => ({
-                class: [
-                    'bg-transparent rounded-0 text-orange rating',
-                    {
-                        reactive: !options.props.readonly,
-                    },
-                ],
-            }),
-            item: (options) => ({
-                class: [
-                    {
-                        reactiveStar: !options.props.readonly,
-                    },
-                ],
-            }),
+            root: {
+                class: 'bg-transparent rounded-0 text-orange rating reactive',
+            },
+            item: {
+                class: 'reactiveStar',
+            },
         }"
         @update:model-value="update">
         <template #officon>
@@ -113,7 +129,10 @@ const update = (value: number) => {
 .reactive {
     cursor: pointer !important;
 }
-.reactiveStar:hover {
+
+// TODO: Star should go back to normal size after click
+.reactiveStar:hover,
+.reactiveStar[data-p-focused='true'] {
     transform: scale(1.5);
 }
 </style>
