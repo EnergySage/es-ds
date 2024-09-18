@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useFocus } from '@vueuse/core'
+import { useFocus } from '@vueuse/core';
 
-const inputElem = useTemplateRef('input-elem')
-const { focused: inputFocused } = useFocus(inputElem)
+const inputElem = useTemplateRef('input-elem');
+const { focused: inputFocused } = useFocus(inputElem);
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface IProps {
