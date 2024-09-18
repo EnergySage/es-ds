@@ -305,12 +305,12 @@ const propTableRowsRadioCards = [
         <ds-doc-source
             comp-title="Radio cards component"
             :comp-code="componentCodeRadioCards"
-            comp-source="es-ds-components/src/lib-components/es-form-radio-cards.vue" />
+            comp-source="es-ds-components/components/es-form-radio-cards.vue" />
 
         <ds-doc-source
             comp-title="Radio card component"
             :comp-code="componentCodeRadioCard"
-            comp-source="es-ds-components/src/lib-components/es-form-radio-card.vue" />
+            comp-source="es-ds-components/components/es-form-radio-card.vue" />
 
         <ds-doc-source
             doc-title="Radio card & radio cards documentation"
