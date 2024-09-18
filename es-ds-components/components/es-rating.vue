@@ -129,6 +129,8 @@ const update = (value: number) => {
 .reactive {
     cursor: pointer !important;
 }
+
+// TODO: Star should go back to normal size after click
 .reactiveStar:hover,
 .reactiveStar[data-p-focused='true'] {
     transform: scale(1.5);
