@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { useFocus } from '@vueuse/core';
+
+const inputElem = useTemplateRef('input-elem');
+const { focused: inputFocused } = useFocus(inputElem);
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface IProps {
+    id: string;
     name: string;
     value: any;
-    id: string;
     disabled?: boolean;
     inline?: boolean;
     displayName?: string;
@@ -18,40 +23,35 @@ const props = withDefaults(defineProps<IProps>(), {
 // Need to define the implicit emit from v-model, so that it can also get fired
 // from the label clicks
 const emit = defineEmits(['update:modelValue']);
+
 function handleRadioButtonClick() {
     if (!props.disabled) {
         emit('update:modelValue', props.value);
     }
 }
 
-// Similar to the API of https://bootstrap-vue.org/docs/components/form-radio#changing-the-option-field-names
-// the value can be a string, number, or simple object. Avoid using complex types in values.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const model = defineModel<any>();
 const isChecked = computed(() => props.value === model.value);
 </script>
 
 <template>
-    <div
-        class="custom-control custom-radio"
-        :class="{ 'custom-control-inline': props.inline }">
+    <label
+        class="es-form-radio-card es-card interactive w-100 btn btn-outline-primary"
+        :class="{ active: isChecked, disabled: props.disabled, focus: isChecked || inputFocused }"
+        @click="handleRadioButtonClick">
         <input
             :id="id"
+            ref="input-elem"
             v-model="model"
             :disabled="props.disabled"
             type="radio"
-            :name="props.name"
-            class="custom-control-input"
+            name="props.name"
             :value="props.value"
             :checked="isChecked"
             @click="handleRadioButtonClick" />
-        <label
-            class="custom-control-label"
-            :for="id"
-            @click="handleRadioButtonClick">
-            <slot>
-                {{ displayName }}
-            </slot>
-        </label>
-    </div>
+        <slot>
+            {{ displayName }}
+        </slot>
+    </label>
 </template>
