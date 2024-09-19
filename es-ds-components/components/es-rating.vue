@@ -50,6 +50,8 @@ model.value = props.rating;
 // Rounds to nearest .5
 const round = (value: number) => value ? Math.round(value * 2) / 2 : 0;
 const localRating = computed(() => props.rounded ? round(model.value as number) : model.value || 0);
+
+const showFocus = ref(false);
 </script>
 
 <template>
@@ -78,31 +80,41 @@ const localRating = computed(() => props.rounded ? round(model.value as number) 
             </span>
         </div>
     </div>
-    <rating
-        v-else
-        v-model="model"
-        :cancel="false"
-        :readonly="props.readOnly"
-        v-bind="$attrs"
-        :pt="{
-            root: {
-                class: 'bg-transparent rounded-0 text-orange rating reactive',
-            },
-            item: {
-                class: 'reactiveStar',
-            },
-        }">
-        <template #officon>
-            <icon-star-empty
-                :width="props.width"
-                :height="props.height" />
-        </template>
-        <template #onicon>
-            <icon-star-full
-                :width="props.width"
-                :height="props.height" />
-        </template>
-    </rating>
+    <div v-else>
+        <rating
+            v-model="model"
+            :cancel="false"
+            :readonly="props.readOnly"
+            v-bind="$attrs"
+            :pt="{
+                root: {
+                    class: 'bg-transparent rounded-0 text-orange rating reactive',
+                },
+                item: (options) => {
+                    return {
+                        class: [{
+                            'reactiveStar': true,
+                            'focused': options.context.focused,
+                            'fade-focus': options.context.active && options.context.focused,
+                        }]
+                    }
+                },
+            }"
+            @focus="showFocus = true"
+            @blur="showFocus = false">
+            <template #officon>
+                <icon-star-empty
+                    :width="props.width"
+                    :height="props.height" />
+            </template>
+            <template #onicon>
+                <icon-star-full
+                    :width="props.width"
+                    :height="props.height" />
+            </template>
+        </rating>
+        showFocus: {{ showFocus }}
+    </div>
 </template>
 
 <style lang="scss">
@@ -123,9 +135,23 @@ const localRating = computed(() => props.rounded ? round(model.value as number) 
 }
 
 .reactiveStar {
-    &:hover,
-    &[data-p-focused='true'] {
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
         transform: scale(1.5);
+
+    }
+    &.focused {
+        transform: scale(1.5);
+    }
+}
+
+.rating {
+    .reactiveStar.focused,
+    .reactiveStar:hover {
+        .reactiveStar {
+            transform: scale(1.5);
+        }
     }
 }
 </style>
