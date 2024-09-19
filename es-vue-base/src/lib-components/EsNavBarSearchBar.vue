@@ -1,13 +1,13 @@
 <template>
-   <div class="align-items-center w-100 d-flex justify-content-center position-relative">
+    <div class="align-items-center w-100 d-flex justify-content-center position-relative">
         <div class="d-flex align-items-center mx-auto justify-content-center w-100">
             <es-form-input
-                class="mt-3 w-50"
                 id="searchBar"
+                class="mt-3 w-50"
                 v-bind="$attrs"
                 label-sr-only
                 :placeholder="label"
-                v-on="$listeners" >
+                v-on="$listeners">
                 <template #prefixIcon>
                     <icon-search />
                 </template>
@@ -21,13 +21,9 @@
 </template>
 
 <script lang="js">
-import EsNavBarLink from './EsNavBarLink.vue';
 
 export default {
     name: 'EsNavBarSearchBar',
-    components: {
-        EsNavBarLink,
-    },
     props: {
         label: {
             type: String,

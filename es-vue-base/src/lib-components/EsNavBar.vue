@@ -100,7 +100,8 @@
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
-                        <div v-if="showSearch" class="nav-item d-none d-lg-block pt-100">
+                        <div v-if="showSearch"
+                            class="nav-item d-none d-lg-block pt-100">
                             <es-button
                                 variant="link"
                                 class="nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100"
@@ -122,7 +123,7 @@
                         <div class="row w-100">
                             <es-nav-bar-search-bar
                                 v-bind="$attrs"
-                                v-on="$listeners" >
+                                v-on="$listeners">
                                 <template #close>
                                     <es-button
                                         class="position-absolute"
@@ -137,7 +138,8 @@
                             </es-nav-bar-search-bar>
                         </div>
                     </b-container>
-                    <b-container v-else class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
+                    <b-container v-else
+                        class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
                                 v-for="product in globalContent.products"
@@ -256,7 +258,6 @@ import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
 import EsNavBarSearchBar from './EsNavBarSearchBar.vue';
-import IconX from '../lib-icons/icon-x.vue';
 
 export default {
     name: 'EsNavBar',
@@ -266,7 +267,7 @@ export default {
         EsNavBarLink,
         EsNavBarProductMenu,
         EsNavBarTopLevelMenu,
-        EsNavBarSearchBar
+        EsNavBarSearchBar,
     },
     props: {
         accountContent: {
@@ -285,12 +286,7 @@ export default {
     data() {
         return {
             searchBarOpen: false,
-        }
-    },
-    methods: {
-        toggleSearchBar() {
-            this.searchBarOpen = !this.searchBarOpen;
-        }
+        };
     },
     mounted() {
         // CUSTOM GLOBAL-NAV SCRIPT STARTS
@@ -449,6 +445,11 @@ export default {
         observer.observe(targetEl);
 
         // CUSTOM GLOBAL-NAV SCRIPT ENDS
+    },
+    methods: {
+        toggleSearchBar() {
+            this.searchBarOpen = !this.searchBarOpen;
+        },
     },
 };
 </script>
