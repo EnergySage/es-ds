@@ -14,9 +14,7 @@ const compSourceText = compSource.default;
 const docSource = await import('./nav-bar.vue?raw');
 
 const scriptRegex = /\/\/ CUSTOM GLOBAL-NAV SCRIPT STARTS([\s\S]+)\/\/ CUSTOM GLOBAL-NAV SCRIPT ENDS/;
-const navScriptSource = ref([
-    ...compSourceText.match(scriptRegex)[0]
-].join(''));
+const navScriptSource = ref([...compSourceText.match(scriptRegex)[0]].join(''));
 
 onMounted(async () => {
     if ($prism) {
@@ -28,13 +26,8 @@ onMounted(async () => {
 </script>
 
 <template>
-    <h1>
-        EsNavBar
-    </h1>
-    <p>
-        The nav bar is a specialized component intended for use outside the normal content
-        container. See above.
-    </p>
+    <h1>EsNavBar</h1>
+    <p>The nav bar is a specialized component intended for use outside the normal content container. See above.</p>
 
     <p
         v-for="index in 10"

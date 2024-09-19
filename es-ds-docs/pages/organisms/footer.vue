@@ -23,13 +23,8 @@ onMounted(async () => {
 
 <template>
     <div>
-        <h1>
-            EsFooter component
-        </h1>
-        <p>
-            The footer is a specialized component intended for use outside the normal content
-            container. See below.
-        </p>
+        <h1>EsFooter component</h1>
+        <p>The footer is a specialized component intended for use outside the normal content container. See below.</p>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/components/es-footer.vue"
