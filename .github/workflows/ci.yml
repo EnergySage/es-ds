@@ -39,7 +39,11 @@ jobs:
               run: make build
 
             - name: Run linter 👀
+              id: linting
               run: make lint
+
+            - name: Linting failed. Run make format to apply automatic fixes and show remaining problems.
+              if: ${{ failure() && steps.linting.conclusion == 'failure' }}
 
             - name: Run tests 🧪
               run: make test
