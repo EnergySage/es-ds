@@ -120,7 +120,8 @@
                     <!-- mobile+desktop product menus -->
                     <b-container v-if="searchBarOpen">
                         <div class="row w-100">
-                            <es-nav-bar-search-bar>
+                            <es-nav-bar-search-bar
+                                v-model="searchText">
                                 <template #close>
                                     <es-button
                                         class="position-absolute"
@@ -283,6 +284,7 @@ export default {
     data() {
         return {
             searchBarOpen: false,
+            searchText: '',
         }
     },
     methods: {

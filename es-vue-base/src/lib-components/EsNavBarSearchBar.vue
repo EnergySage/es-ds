@@ -4,9 +4,10 @@
             <es-form-input
                 class="mt-3 w-50"
                 id="searchBar"
-                v-model="searchText"
+                v-bind="$attrs"
                 label-sr-only
-                :placeholder="label">
+                :placeholder="label"
+                v-on="$listeners" >
                 <template #prefixIcon>
                     <icon-search />
                 </template>
@@ -36,11 +37,6 @@ export default {
             type: String,
             default: 'Search',
         },
-    },
-    data() {
-        return {
-            searchText: '',
-        }
     },
 };
 </script>
