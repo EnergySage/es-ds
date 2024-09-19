@@ -1,6 +1,5 @@
 <template>
     <div>
-        text: {{ searchText }}
         <es-nav-bar
             v-model="searchText"
             :account-content="accountContent"
