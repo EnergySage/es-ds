@@ -6,23 +6,22 @@ definePageMeta({
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
-const navScriptSource = ref(null);
+
+const compSource = await import('@energysage/es-ds-components/components/es-nav-bar.vue?raw');
+const compSourceText = compSource.default;
+
+// eslint-disable-next-line import/no-self-import
+const docSource = await import('./nav-bar.vue?raw');
+
+const scriptRegex = /\/\/ CUSTOM GLOBAL-NAV SCRIPT STARTS([\s\S]+)\/\/ CUSTOM GLOBAL-NAV SCRIPT ENDS/;
+const navScriptSource = ref([
+    ...compSourceText.match(scriptRegex)[0]
+].join(''));
 
 onMounted(async () => {
     if ($prism) {
-        const compSource = await import('@energysage/es-ds-components/components/es-nav-bar.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
-
-        // eslint-disable-next-line import/no-self-import
-        const docSource = await import('./nav-bar.vue?raw');
         docCode.value = $prism.normalizeCode(docSource.default);
-
-        const compSourceText = compSource.default;
-        const scriptRegex = /\/\/ CUSTOM GLOBAL-NAV SCRIPT STARTS([\s\S]+)\/\/ CUSTOM GLOBAL-NAV SCRIPT ENDS/;
-        navScriptSource.value = [
-            ...compSourceText.match(scriptRegex)[0]
-        ];
-
         $prism.highlight();
     }
 });
