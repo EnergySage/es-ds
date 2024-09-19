@@ -22,9 +22,9 @@ unlink:
 
 .PHONY: lint
 lint:
-	npm --prefix es-ds-styles run lint
-	npm --prefix es-ds-components run lint
-	npm --prefix es-ds-docs run lint
+	npm --prefix es-ds-styles run lint || { echo "Linting failed. Forgot to run 'make format'?"; exit 1; }
+	npm --prefix es-ds-components run lint || { echo "Linting failed. Forgot to run 'make format'?"; exit 1; }
+	npm --prefix es-ds-docs run lint || { echo "Linting failed. Forgot to run 'make format'?"; exit 1; }
 
 .PHONY: format
 format:
