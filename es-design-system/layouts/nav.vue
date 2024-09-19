@@ -2,7 +2,8 @@
     <div>
         <es-nav-bar
             :account-content="accountContent"
-            :global-content="globalContent">
+            :global-content="globalContent"
+            show-search>
             <template #logo>
                 <ds-es-logo />
             </template>
