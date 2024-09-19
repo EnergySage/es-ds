@@ -121,7 +121,8 @@
                     <b-container v-if="searchBarOpen">
                         <div class="row w-100">
                             <es-nav-bar-search-bar
-                                v-model="searchText">
+                                v-bind="$attrs"
+                                v-on="$listeners" >
                                 <template #close>
                                     <es-button
                                         class="position-absolute"
@@ -284,7 +285,6 @@ export default {
     data() {
         return {
             searchBarOpen: false,
-            searchText: '',
         }
     },
     methods: {

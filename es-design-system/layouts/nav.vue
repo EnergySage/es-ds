@@ -1,6 +1,8 @@
 <template>
     <div>
+        text: {{ searchText }}
         <es-nav-bar
+            v-model="searchText"
             :account-content="accountContent"
             :global-content="globalContent"
             show-search>
@@ -53,6 +55,11 @@ import { getEsNavBarAccountContent, getEsNavBarGlobalContent } from '@energysage
 /* eslint-disable vue/multi-word-component-names, vue/component-definition-name-casing */
 export default {
     name: 'NavLayout',
+    data() {
+        return {
+            searchText: '',
+        };
+    },
     computed: {
         accountContent() {
             return getEsNavBarAccountContent();
