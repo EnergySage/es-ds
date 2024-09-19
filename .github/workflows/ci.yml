@@ -42,8 +42,9 @@ jobs:
               id: linting
               run: make lint
 
-            - name: Linting failed. Run make format to apply automatic fixes and show remaining problems.
+            - name: Linting failure message
               if: ${{ failure() && steps.linting.conclusion == 'failure' }}
+              run: echo "Linting failed. Run `make format` to apply automatic fixes and show remaining problems."
 
             - name: Run tests 🧪
               run: make test
