@@ -288,7 +288,6 @@ export default {
     methods: {
         toggleSearchBar() {
             this.searchBarOpen = !this.searchBarOpen;
-            console.log(this.searchBarOpen);
         }
     },
     mounted() {
