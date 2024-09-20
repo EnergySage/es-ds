@@ -1,6 +1,19 @@
 <script lang="js">
+import IconFacebook from './icon/facebook.vue';
+import IconInstagram from './icon/instagram.vue';
+import IconLinkedin from './icon/linkedin.vue';
+import IconTwitter from './icon/twitter.vue';
+import IconYoutube from './icon/youtube.vue';
+
 export default {
     name: 'EsFooter',
+    components: {
+        IconFacebook,
+        IconInstagram,
+        IconLinkedin,
+        IconTwitter,
+        IconYoutube,
+    },
     props: {
         content: {
             type: Object,
