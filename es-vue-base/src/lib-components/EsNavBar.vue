@@ -100,7 +100,8 @@
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
-                        <div v-if="showSearch"
+                        <div
+                            v-if="showSearch"
                             class="nav-item d-none d-lg-block pt-100">
                             <es-button
                                 variant="link"
@@ -138,7 +139,8 @@
                             </es-nav-bar-search-bar>
                         </div>
                     </b-container>
-                    <b-container v-else
+                    <b-container
+                        v-else
                         class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
