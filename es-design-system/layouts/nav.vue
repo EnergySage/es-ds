@@ -4,7 +4,8 @@
             v-model="searchText"
             :account-content="accountContent"
             :global-content="globalContent"
-            show-search>
+            show-search
+            @searchButtonClicked="searchButtonClicked">
             <template #logo>
                 <ds-es-logo />
             </template>
@@ -82,6 +83,12 @@ export default {
         },
         globalContent() {
             return getEsNavBarGlobalContent();
+        },
+    },
+    methods: {
+        searchButtonClicked() {
+            /* eslint-disable-next-line no-console */
+            console.log('Searching...');
         },
     },
 };

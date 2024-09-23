@@ -12,7 +12,9 @@
                     <icon-search />
                 </template>
             </es-form-input>
-            <es-button class="ml-50">
+            <es-button
+                class="ml-50"
+                @click="$emit('searchButtonClicked')">
                 {{ buttonText }}
             </es-button>
         </div>
@@ -21,9 +23,17 @@
 </template>
 
 <script lang="js">
+import EsButton from './EsButton.vue';
+import EsFormInput from './EsFormInput.vue';
+import IconSearch from '../lib-icons/icon-search.vue';
 
 export default {
     name: 'EsNavBarSearchBar',
+    components: {
+        EsButton,
+        EsFormInput,
+        IconSearch
+    },
     props: {
         label: {
             type: String,

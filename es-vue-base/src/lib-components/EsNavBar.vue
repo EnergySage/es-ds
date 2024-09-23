@@ -105,7 +105,8 @@
                             class="nav-item d-none d-lg-block pt-100">
                             <es-button
                                 variant="link"
-                                class="nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100"
+                                aria-label="Open search bar"
+                                class="nav-button nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100"
                                 @click="toggleSearchBar()">
                                 <icon-search
                                     class="align-self-center account-icon"
@@ -124,10 +125,12 @@
                         <div class="row w-100">
                             <es-nav-bar-search-bar
                                 v-bind="$attrs"
-                                v-on="$listeners">
+                                v-on="$listeners"
+                                @searchButtonClicked="searchButtonClicked">
                                 <template #close>
                                     <es-button
-                                        class="position-absolute"
+                                        class="position-absolute nav-button"
+                                        aria-label="Close search bar"
                                         style="right: 0"
                                         variant="link"
                                         @click="toggleSearchBar()">
@@ -451,6 +454,9 @@ export default {
     methods: {
         toggleSearchBar() {
             this.searchBarOpen = !this.searchBarOpen;
+        },
+        searchButtonClicked() {
+            this.$emit('searchButtonClicked');
         },
     },
 };
