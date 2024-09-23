@@ -32,7 +32,7 @@ export default {
     components: {
         EsButton,
         EsFormInput,
-        IconSearch
+        IconSearch,
     },
     props: {
         label: {
