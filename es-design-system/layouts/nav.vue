@@ -88,7 +88,7 @@ export default {
     methods: {
         searchButtonClicked() {
             /* eslint-disable-next-line no-console */
-            console.log('Searching...');
+            console.log('Searching...', this.searchText);
         },
     },
 };
