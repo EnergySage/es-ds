@@ -29,6 +29,17 @@
   }
 }
 
+.nav-button {
+  &:hover {
+    background: variables.$blue-50 !important;
+  }
+
+  &:focus,
+  &.focus {
+    border-color: variables.$blue-500;
+  }
+}
+
 //
 // Tabs
 //

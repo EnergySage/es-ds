@@ -100,6 +100,20 @@
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
+                        <div
+                            v-if="showSearch"
+                            class="nav-item d-none d-lg-block pt-100">
+                            <es-button
+                                variant="link"
+                                aria-label="Open search bar"
+                                class="nav-button nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100"
+                                @click="toggleSearchBar()">
+                                <icon-search
+                                    class="align-self-center account-icon"
+                                    width="20px"
+                                    height="20px" />
+                            </es-button>
+                        </div>
                         <!-- desktop account menu -->
                         <es-nav-bar-account-menu
                             :auth-items="accountContent.loggedIn.items"
@@ -107,7 +121,29 @@
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <b-container class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
+                    <b-container v-if="searchBarOpen">
+                        <div class="row w-100">
+                            <es-nav-bar-search-bar
+                                v-bind="$attrs"
+                                v-on="$listeners">
+                                <template #close>
+                                    <es-button
+                                        class="position-absolute nav-button"
+                                        aria-label="Close search bar"
+                                        style="right: 0"
+                                        variant="link"
+                                        @click="toggleSearchBar()">
+                                        <icon-x
+                                            width="30px"
+                                            height="30px" />
+                                    </es-button>
+                                </template>
+                            </es-nav-bar-search-bar>
+                        </div>
+                    </b-container>
+                    <b-container
+                        v-else
+                        class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
                                 v-for="product in globalContent.products"
@@ -225,6 +261,7 @@ import EsNavBarAccountMenu from './EsNavBarAccountMenu.vue';
 import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
+import EsNavBarSearchBar from './EsNavBarSearchBar.vue';
 
 export default {
     name: 'EsNavBar',
@@ -234,16 +271,26 @@ export default {
         EsNavBarLink,
         EsNavBarProductMenu,
         EsNavBarTopLevelMenu,
+        EsNavBarSearchBar,
     },
     props: {
         accountContent: {
             type: Object,
             required: true,
         },
+        showSearch: {
+            type: Boolean,
+            default: false,
+        },
         globalContent: {
             type: Object,
             required: true,
         },
+    },
+    data() {
+        return {
+            searchBarOpen: false,
+        };
     },
     mounted() {
         // CUSTOM GLOBAL-NAV SCRIPT STARTS
@@ -402,6 +449,14 @@ export default {
         observer.observe(targetEl);
 
         // CUSTOM GLOBAL-NAV SCRIPT ENDS
+    },
+    methods: {
+        toggleSearchBar() {
+            this.searchBarOpen = !this.searchBarOpen;
+        },
+        searchButtonClicked() {
+            this.$emit('searchButtonClicked');
+        },
     },
 };
 </script>

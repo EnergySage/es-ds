@@ -1,8 +1,11 @@
 <template>
     <div>
         <es-nav-bar
+            v-model="searchText"
             :account-content="accountContent"
-            :global-content="globalContent">
+            :global-content="globalContent"
+            show-search
+            @searchButtonClicked="searchButtonClicked">
             <template #logo>
                 <ds-es-logo />
             </template>
@@ -52,6 +55,11 @@ import { getEsNavBarAccountContent, getEsNavBarGlobalContent } from '@energysage
 /* eslint-disable vue/multi-word-component-names, vue/component-definition-name-casing */
 export default {
     name: 'NavLayout',
+    data() {
+        return {
+            searchText: '',
+        };
+    },
     computed: {
         accountContent() {
             return getEsNavBarAccountContent();
@@ -75,6 +83,12 @@ export default {
         },
         globalContent() {
             return getEsNavBarGlobalContent();
+        },
+    },
+    methods: {
+        searchButtonClicked() {
+            /* eslint-disable-next-line no-console */
+            console.log('Searching...', this.searchText);
         },
     },
 };
