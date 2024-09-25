@@ -7,6 +7,7 @@
                 v-bind="$attrs"
                 label-sr-only
                 :placeholder="label"
+                @keyup.enter="$emit('searchButtonClicked')"
                 v-on="$listeners">
                 <template #prefixIcon>
                     <icon-search />

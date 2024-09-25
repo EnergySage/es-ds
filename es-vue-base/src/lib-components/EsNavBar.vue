@@ -125,8 +125,7 @@
                         <div class="row w-100">
                             <es-nav-bar-search-bar
                                 v-bind="$attrs"
-                                v-on="$listeners"
-                                @searchButtonClicked="searchButtonClicked">
+                                v-on="$listeners">
                                 <template #close>
                                     <es-button
                                         class="position-absolute nav-button"
