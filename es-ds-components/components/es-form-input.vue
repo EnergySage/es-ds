@@ -67,6 +67,7 @@ const hasExtraContext = () => !!slots.extraContext;
 <template>
     <div
         class="input-wrapper justify-content-end"
+        v-bind="$attrs"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label

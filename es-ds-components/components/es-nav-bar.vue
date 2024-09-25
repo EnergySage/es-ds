@@ -10,6 +10,15 @@ export default {
             type: Object,
             required: true,
         },
+        showSearch: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    data() {
+        return {
+            searchBarOpen: false,
+        };
     },
     mounted() {
         // CUSTOM GLOBAL-NAV SCRIPT STARTS
@@ -171,6 +180,14 @@ export default {
 
         // CUSTOM GLOBAL-NAV SCRIPT ENDS
     },
+    methods: {
+        toggleSearchBar() {
+            this.searchBarOpen = !this.searchBarOpen;
+        },
+        searchButtonClicked() {
+            this.$emit('searchButtonClicked');
+        },
+    },
 };
 </script>
 
@@ -275,6 +292,20 @@ export default {
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
+                        <div
+                            v-if="showSearch"
+                            class="nav-item d-none d-lg-block pt-100">
+                            <es-button
+                                variant="link"
+                                aria-label="Open search bar"
+                                class="nav-button nav-link dropdown-toggle d-none d-lg-flex flex-nowrap py-100"
+                                @click="toggleSearchBar()">
+                                <icon-search
+                                    class="align-self-center account-icon"
+                                    width="20px"
+                                    height="20px" />
+                            </es-button>
+                        </div>
                         <!-- desktop account menu -->
                         <es-nav-bar-account-menu
                             :auth-items="accountContent.loggedIn.items"
@@ -282,7 +313,29 @@ export default {
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <b-container class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
+                    <b-container v-if="searchBarOpen">
+                        <div class="row w-100">
+                            <es-search-bar
+                                v-bind="$attrs"
+                                v-on="$listeners">
+                                <template #close>
+                                    <es-button
+                                        class="position-absolute nav-button mb-3"
+                                        aria-label="Close search bar"
+                                        style="right: 0"
+                                        variant="link"
+                                        @click="toggleSearchBar()">
+                                        <icon-x
+                                            width="30px"
+                                            height="30px" />
+                                    </es-button>
+                                </template>
+                            </es-search-bar>
+                        </div>
+                    </b-container>
+                    <b-container
+                        v-else
+                        class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
                                 v-for="product in globalContent.products"

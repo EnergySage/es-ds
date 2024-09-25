@@ -16,6 +16,9 @@
             <ds-link to="/organisms/nav-bar"> Nav bar </ds-link>
         </li>
         <li>
+            <ds-link to="/organisms/nav-bar-search"> Nav bar with search </ds-link>
+        </li>
+        <li>
             <ds-link to="/organisms/reviews-io-card-carousel"> Reviews.io card carousel </ds-link>
         </li>
         <li>
