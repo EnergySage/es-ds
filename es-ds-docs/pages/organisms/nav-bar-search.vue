@@ -8,8 +8,8 @@ const compCode = ref('');
 const docCode = ref('');
 const searchText = ref('');
 const searchResultsText = ref('');
-const numResults = ref(0);
-const results = ref(null);
+
+const results = ref({ hits: null, numResults: 0, numPages: 0, currentPage: 0 });
 
 const compSource = await import('@energysage/es-ds-components/components/es-nav-bar.vue?raw');
 const compSourceText = compSource.default;
@@ -21,12 +21,18 @@ const scriptRegex = /\/\/ CUSTOM GLOBAL-NAV SCRIPT STARTS([\s\S]+)\/\/ CUSTOM GL
 const navScriptSource = ref([...compSourceText.match(scriptRegex)[0]].join(''));
 
 const searchButtonClicked = async () => {
-    const searchResults = await search(searchText.value);
-    results.value = searchResults.results;
-    numResults.value = searchResults.numResults;
+    const searchResults = await search(searchText.value, results.value.currentPage);
+    results.value.hits = searchResults.results;
+    results.value.numResults = searchResults.numResults;
+    results.value.numPages = searchResults.numPages;
     searchResultsText.value = searchText.value;
     /* eslint-disable-next-line no-console */
 };
+
+const changePage = (page) => {
+    results.value.currentPage = page;
+    searchButtonClicked();
+}
 
 const mockSearch = () => {
     searchText.value = 'best solar panels';
@@ -56,10 +62,10 @@ onMounted(async () => {
     </div>
     <h2>Search results:</h2>
     <p v-if="searchResultsText !== ''">
-        <strong>{{ numResults }}</strong> result{{ numResults !== 1 ? 's' : '' }} for "{{ searchResultsText }}"
+        <strong>{{ results.numResults }}</strong> result{{ results.numResults !== 1 ? 's' : '' }} for "{{ searchResultsText }}"
     </p>
     <es-button
-        v-if="searchResultsText !== '' && numResults === 0"
+        v-if="searchResultsText !== '' && results.numResults === 0"
         inline
         variant="link"
         @click="mockSearch">
@@ -68,7 +74,7 @@ onMounted(async () => {
     <hr />
     <b-row class="my-300">
         <b-col
-            v-for="result in results"
+            v-for="result in results.hits"
             :key="result.name"
             class="mb-200"
             cols="6"
@@ -90,6 +96,12 @@ onMounted(async () => {
                     :src="result.image.startsWith('https:') ? result.image : `https:${result.image}`" />
             </es-card>
         </b-col>
+        <div class="d-flex align-items-center w-100 justify-content-center" v-if="results.numResults > 0">
+            <es-button variant="link" @click="changePage(results.currentPage - 1)" :disabled="results.currentPage === 0"><icon-chevron-left /></es-button>
+            <p class="m-0">{{ results.currentPage + 1 }} of {{ results.numPages }}</p>
+            <es-button variant="link" @click="changePage(results.currentPage + 1)" :disabled="results.currentPage === results.numPages - 1"><icon-chevron-right /></es-button>
+        </div>
+
     </b-row>
 
     <!-- print out EsNavBar's mounted() script here so the rip-the-nav utility can access it -->
