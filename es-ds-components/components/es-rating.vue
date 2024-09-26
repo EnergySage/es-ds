@@ -1,48 +1,7 @@
 <script setup lang="ts">
 import Rating from 'primevue/rating';
 
-const props = defineProps({
-    /**
-     * Starting rating
-     * 0-5; Avg will show half icons rounded down in read only mode
-     */
-    rating: {
-        type: Number,
-        default: 0,
-        validator: (num: number) => num >= 0 && num <= 5,
-    },
-    /**
-     * Disable changing the rating
-     */
-    readOnly: {
-        type: Boolean,
-        default: true,
-    },
-    /**
-     * Icon width
-     */
-    width: {
-        type: String,
-        default: '20px',
-        required: false,
-    },
-    /**
-     * Icon height
-     */
-    height: {
-        type: String,
-        default: '20px',
-        required: false,
-    },
-    /**
-     * Round rating to nearest .5
-     */
-    rounded: {
-        type: Boolean,
-        default: true,
-        required: false,
-    },
-});
+
 
 const model = defineModel<number>()
 model.value = props.rating;
