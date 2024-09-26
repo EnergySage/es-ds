@@ -316,8 +316,7 @@ export default {
                     <b-container v-if="searchBarOpen">
                         <div class="row w-100">
                             <es-search-bar
-                                v-bind="$attrs"
-                                v-on="$listeners">
+                                v-bind="$attrs">
                                 <template #close>
                                     <es-button
                                         class="position-absolute nav-button mb-3"

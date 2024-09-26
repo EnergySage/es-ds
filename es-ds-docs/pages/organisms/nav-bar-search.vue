@@ -55,7 +55,6 @@ onMounted(async () => {
     <div class="my-300">
         <es-search-bar
             v-bind="$attrs"
-            v-on="$listeners"
             v-model="searchText"
             @searchButtonClicked="searchButtonClicked">
         </es-search-bar>

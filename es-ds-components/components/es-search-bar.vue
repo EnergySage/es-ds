@@ -23,7 +23,6 @@ export default {
                 class="w-50"
                 label-sr-only
                 :placeholder="label"
-                v-on="$listeners"
                 v-bind="$attrs"
                 @keyup.enter="$emit('searchButtonClicked')">
                 <template #prefixIcon>
