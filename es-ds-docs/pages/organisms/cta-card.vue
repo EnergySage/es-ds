@@ -11,15 +11,10 @@ const propTableRows = [
 ];
 
 const slotTableRows = [
-    ['heading', 'n/a', "'Easily find what solar costs in your area'", 'The card heading.'],
-    ['image', 'n/a', 'n/a', 'Optional. The image for the card.'],
-    [
-        'subtitle',
-        'n/a',
-        'n/a',
-        'Optional. The paragraph(s) of text that should appear below the heading and/or image.',
-    ],
-    ['cta', 'n/a', 'n/a', 'The call to action itself. Meant to be an EsButton, EsZipCodeForm, or a link.'],
+    ['heading', "'Easily find what solar costs in your area'", 'The card heading.'],
+    ['image', 'n/a', 'Optional. The image for the card.'],
+    ['subtitle', 'n/a', 'Optional. The paragraph(s) of text that should appear below the heading and/or image.'],
+    ['cta', 'n/a', 'The call to action itself. Meant to be an EsButton, EsZipCodeForm, or a link.'],
 ];
 
 const tableWidths = {
@@ -192,8 +187,12 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>EsCtaCard slots</h2>
             <ds-prop-table
+                :columns="['Name', 'Default', 'Description']"
                 :rows="slotTableRows"
-                :widths="tableWidths" />
+                :widths="{
+                    md: ['3', '4', '5'],
+                    lg: ['2', '5', '5'],
+                }" />
         </div>
 
         <div class="mb-500">
