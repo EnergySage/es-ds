@@ -204,8 +204,8 @@ onMounted(async () => {
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-vue-base/src/lib-components/EsCtaCard.vue"
+            comp-source="es-ds-components/components/es-cta-card.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/organisms/es-cta-card.vue" />
+            doc-source="es-ds-docs/pages/organisms/cta-card.vue" />
     </div>
 </template>
