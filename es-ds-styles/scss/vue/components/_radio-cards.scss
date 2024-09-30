@@ -148,6 +148,16 @@ $inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-
     transform: variables.$btn-active-transform;
   }
 
+  &.disabled {
+    background: variables.$gray-50;
+    border-color: variables.$gray-200;
+    color: variables.$gray-500;
+
+    &::before {
+      border: 2.5px solid variables.$gray-500;
+    }
+  }
+
   input {
     /**
      * hide the radio button input elements the same way bootstrap vue does.
