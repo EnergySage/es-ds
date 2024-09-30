@@ -1,41 +1,39 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
 const selectedFruit = ref('banana');
 const fruits = ref([
-    { name: 'Apple', key: 'apple' },
-    { name: 'Banana', key: 'banana' },
-    { name: 'Cherry', key: 'cherry' },
+    { name: 'Apple', key: 'apple', id: 'id_apple' },
+    { name: 'Banana', key: 'banana', id: 'id_banana' },
+    { name: 'Cherry', key: 'cherry', id: 'id_cherry' },
 ]);
-const test2Options = [
-    { text: 'Toggle this custom radio', value: 'first' },
-    { text: 'Or toggle this other custom radio', value: 'second' },
-    { text: 'This one is Disabled', value: 'third', disabled: true },
-    { text: 'This is the 4th radio', value: { fourth: 4 } },
-];
+const test2Options = ref([
+    { text: 'Toggle this custom radio', value: 'first', id: 'idFirst' },
+    { text: 'Or toggle this other custom radio', value: 'second', id: 'idSecond' },
+    { text: 'This one is Disabled', value: 'third', disabled: true, id: 'idThird' },
+    { text: 'This is the 4th radio', value: { fourth: 4 }, id: 'idFourth' },
+]);
 const test2Selected = ref('first');
 
 // Name, Type, Default, Description
 const radioButtonPropTableRows = [
+    ['name', 'String', 'n/a', 'Required. Name of radio group'],
+    ['value', 'Any', 'n/a', 'Required. Value of radio button'],
+    ['id', 'String', 'n/a', 'Required.'],
     ['disabled', 'Boolean', 'false', 'When present, it specifies that the radio button should be disabled.'],
     ['inline', 'Boolean', 'false', 'When present, it specifies that the radio buttons should be displayed inline.'],
-    ['v-model', 'Any', 'n/a', 'Required. The v-model directive binds the radio button to a data property.'],
-    ['display-name', 'String', 'n/a', 'Required. The text to display next to the radio button.'],
-    ['value', 'Any', 'n/a', 'Required. The value to be used by v-model.'],
     [
-        'group-name',
+        'displayName',
         'String',
-        "''",
-        'Descriptive name of the radio button group. Optional but should be used if multiple groups ' +
-            'use the same v-model.',
+        '',
+        'Required, if not using the default slot. The text to display next to the radio button.',
     ],
+    ['v-model', 'Any', 'n/a', 'Optional. The v-model directive binds the radio button to a data property.'],
 ];
 
 // Name, Type, Default, Description
 const radioButtonGroupPropTableRows = [
     ['id', 'String', 'n/a', 'Required.'],
     ['label', 'String', 'n/a', 'Required. Corresponds to the legend value describing the group'],
-    ['name', 'String', `''`, 'Optional. Maps to the group name for each radio input'],
+    ['name', 'String', `''`, 'Required, if using the default slot. Maps to the name for each radio input'],
     [
         'options',
         'Array',
@@ -49,16 +47,19 @@ const { $prism } = useNuxtApp();
 const radioButtonComponentCode = ref('');
 const radioButtonGroupComponentCode = ref('');
 const docCode = ref('');
+
 onMounted(async () => {
     if ($prism) {
+        /* eslint-disable import/no-self-import */
         const radioButtonComponentSource = await import(
             '@energysage/es-ds-components/components/es-radio-button.vue?raw'
         );
+        // eslint-disable-next-line max-len
         const radioButtonGroupComponentSource = await import(
             '@energysage/es-ds-components/components/es-radio-button-group.vue?raw'
         );
-        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./radio-button.vue?raw');
+        /* eslint-enable import/no-self-import */
 
         radioButtonComponentCode.value = $prism.normalizeCode(radioButtonComponentSource.default);
         radioButtonGroupComponentCode.value = $prism.normalizeCode(radioButtonGroupComponentSource.default);
@@ -70,26 +71,20 @@ onMounted(async () => {
 
 <template>
     <div>
-        <p class="mb-500">
-            Uses
-            <a
-                href="https://v3.primevue.org/radiobutton/"
-                target="_blank">
-                PrimeVue RadioButton
-            </a>
-        </p>
+        <h1>Radio button</h1>
 
         <div class="my-500">
             <h2>Inline</h2>
             <es-radio-button-group
-                id="idFruits"
+                id="idFruitsInline"
                 label="Please choose your favorite fruit.">
                 <es-radio-button
                     v-for="fruit in fruits"
+                    :id="`id_${fruit.key}2`"
                     :key="fruit.key"
                     v-model="selectedFruit"
                     :display-name="fruit.name"
-                    group-name="inline"
+                    name="inline"
                     :value="fruit.key"
                     inline />
             </es-radio-button-group>
@@ -98,14 +93,15 @@ onMounted(async () => {
         <div class="my-500">
             <h2>Stacked</h2>
             <es-radio-button-group
-                id="idFruits2"
+                id="idFruitsStacked"
                 label="Please choose your favorite fruit.">
                 <es-radio-button
                     v-for="fruit in fruits"
+                    :id="`id_${fruit.key}3`"
                     :key="fruit.key"
                     v-model="selectedFruit"
                     :display-name="fruit.name"
-                    group-name="stacked"
+                    name="stacked"
                     :value="fruit.key" />
             </es-radio-button-group>
         </div>
@@ -113,14 +109,15 @@ onMounted(async () => {
         <div class="my-500">
             <h2>Disabled</h2>
             <es-radio-button-group
-                id="idFruits3"
+                id="idFruitsDisabled"
                 label="Please choose your favorite fruit.">
                 <es-radio-button
                     v-for="fruit in fruits"
+                    :id="`id_${fruit.key}4`"
                     :key="fruit.key"
                     v-model="selectedFruit"
                     :display-name="fruit.name"
-                    group-name="disabled"
+                    name="disabled"
                     :value="fruit.key"
                     disabled />
             </es-radio-button-group>
@@ -129,18 +126,12 @@ onMounted(async () => {
         <div class="my-500">
             <h2>Using options prop</h2>
             <es-radio-button-group
-                id="test2RadioGroup"
+                id="idRadioGroupUsingOptionsProp"
                 v-model="test2Selected"
-                label="Radios using options"
                 :options="test2Options"
-                name="test2" />
-
+                label="Radios using options"
+                name="radioGroupUsingOptionsProp" />
             <div>selected: {{ test2Selected }}</div>
-        </div>
-
-        <div class="mb-500">
-            <h2>EsRadioButton props</h2>
-            <ds-prop-table :rows="radioButtonPropTableRows" />
         </div>
 
         <div class="mb-500">
@@ -148,15 +139,20 @@ onMounted(async () => {
             <ds-prop-table :rows="radioButtonGroupPropTableRows" />
         </div>
 
-        <ds-doc-source
-            comp-title="Radio button component"
-            :comp-code="radioButtonComponentCode"
-            comp-source="es-ds-components/components/es-radio-button.vue" />
+        <div class="mb-500">
+            <h2>EsRadioButton props</h2>
+            <ds-prop-table :rows="radioButtonPropTableRows" />
+        </div>
 
         <ds-doc-source
             comp-title="Radio button group component"
             :comp-code="radioButtonGroupComponentCode"
             comp-source="es-ds-components/components/es-radio-button-group.vue" />
+
+        <ds-doc-source
+            comp-title="Radio button component"
+            :comp-code="radioButtonComponentCode"
+            comp-source="es-ds-components/components/es-radio-button.vue" />
 
         <ds-doc-source
             doc-title="Radio button & radio button group documentation"
