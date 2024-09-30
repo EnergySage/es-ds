@@ -52,7 +52,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 .es-cta-card {
     &-subtitle {
-        ::v-deep p:last-child {
+        :deep(p:last-child) {
             margin-bottom: 0;
         }
     }
