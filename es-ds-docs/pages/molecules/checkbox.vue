@@ -11,6 +11,7 @@ const selectAllIsIndeterminate = computed(
 );
 
 const handleOptionChange = () => {
+    // update the value of the Select All checkbox whenever the other ones change
     selectAll.value = apple.value && banana.value && cherry.value;
 };
 
@@ -51,17 +52,20 @@ onMounted(async () => {
             <div>
                 <es-form-checkbox
                     id="idApple"
-                    v-model="apple">
+                    v-model="apple"
+                    @change="handleOptionChange">
                     Apple
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idBanana"
-                    v-model="banana">
+                    v-model="banana"
+                    @change="handleOptionChange">
                     Banana
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idCherry"
-                    v-model="cherry">
+                    v-model="cherry"
+                    @change="handleOptionChange">
                     Cherry
                 </es-form-checkbox>
             </div>
@@ -73,19 +77,22 @@ onMounted(async () => {
                 <es-form-checkbox
                     id="idApple2"
                     v-model="apple"
-                    disabled>
+                    disabled
+                    @change="handleOptionChange">
                     Apple
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idBanana2"
                     v-model="banana"
-                    disabled>
+                    disabled
+                    @change="handleOptionChange">
                     Banana
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idCherry2"
                     v-model="cherry"
-                    disabled>
+                    disabled
+                    @change="handleOptionChange">
                     Cherry
                 </es-form-checkbox>
             </div>
@@ -128,21 +135,24 @@ onMounted(async () => {
                 <es-form-checkbox
                     id="idApple4"
                     v-model="apple"
-                    name="fruit">
+                    name="fruit"
+                    @change="handleOptionChange">
                     <div>Apple <span class="font-italic text-error-900">*</span></div>
                     <div class="font-size-sm text-gray-700">Malus domestica</div>
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idBanana4"
                     v-model="banana"
-                    name="fruit">
+                    name="fruit"
+                    @change="handleOptionChange">
                     <div>Banana <span class="font-italic text-error-900">*</span></div>
                     <div class="font-size-sm text-gray-700">Musa acuminata</div>
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idCherry4"
                     v-model="cherry"
-                    name="fruit">
+                    name="fruit"
+                    @change="handleOptionChange">
                     <div>Cherry <span class="font-italic text-error-900">*</span></div>
                     <div class="font-size-sm text-gray-700">Prunus avium</div>
                 </es-form-checkbox>
