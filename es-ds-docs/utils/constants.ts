@@ -9,6 +9,7 @@ const MIN_VALUE = 'vuelidateMinValue';
 const MAX_VALUE = 'vuelidateMaxValue';
 const REQUIRED_IF = 'vuelidateRequiredIf';
 const NUMERIC = 'vuelidateNumeric';
+const INTEGER = 'vuelidateInteger';
 const MIN_LENGTH = 'vuelidateMinLength';
 const MAX_LENGTH = 'vuelidateMaxLength';
 const HAS_NUMBER = 'vuelidateHasNumber';
@@ -27,6 +28,7 @@ export const vuelidateKeys = {
     MIN_LENGTH,
     MAX_LENGTH,
     NUMERIC,
+    INTEGER,
     EMAIL,
     PHONE,
     HAS_NUMBER,

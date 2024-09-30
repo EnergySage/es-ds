@@ -21,5 +21,8 @@
         <li>
             <ds-link to="/organisms/support-card"> Support card </ds-link>
         </li>
+        <li>
+            <ds-link to="/organisms/zip-code-form"> Zip code form </ds-link>
+        </li>
     </ul>
 </template>
