@@ -7,21 +7,17 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
-    novalidate: {
-        type: Boolean,
-        default: false,
-    },
     validated: {
         type: Boolean,
-        default: false,
+        default: true,
     }
 });
 </script>
 
 <template>
     <form
-        :class="{ 'form-inline': props.inline }"
-        :novalidate="props.novalidate">
+        :class="{ 'form-inline': props.inline, 'was-validated': props.validated }"
+        v-bind="$attrs">
         <slot />
     </form>
 </template>

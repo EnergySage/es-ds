@@ -4,11 +4,10 @@
 const inline = ref(false);
 
 const propTableRows = [
-    ['inline', 'Boolean', 'false', 'Display form inline'],
-    ['novalidate', 'Boolean', 'false', 'Disable browser validation'],
-    ['validated', 'Boolean', 'false', 'Determines if the form is validated'],
+    ['inline', 'Boolean', 'false', 'Display labels and form controls on a single horizontal row'],
+    ['novalidate', 'Boolean', 'null', 'Disables browser native HTML5 validation on controls in the form'],
+    ['validated', 'Boolean', 'null', 'Adds the Bootstrap class \'was-validated\' on the form, triggering the native browser validation states'],
 ];
-
 
 const state = reactive({
     form: {
@@ -22,18 +21,20 @@ const state = reactive({
 
 const rules = {};
 
-const { v$, isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(
+const { isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(
     rules,
     state,
 );
 
 const { $prism } = useNuxtApp();
+const compCode = ref('');
 const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-form.vue?raw');
         // eslint-disable-next-line import/no-self-import
         const docSource = await import('./form.vue?raw');
-
+        compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
         $prism.highlight();
     }
@@ -89,9 +90,6 @@ const onSubmit = async () => {
                         <template #label>
                             Email address
                         </template>
-                        <template #errorMessage>
-                            Please enter a valid email address.
-                        </template>
                     </es-form-input>
                     <es-form-input
                         id="password"
@@ -111,9 +109,6 @@ const onSubmit = async () => {
                         type="tel">
                         <template #label>
                             Phone number
-                        </template>
-                        <template #errorMessage>
-                            Please enter a valid phone number.
                         </template>
                     </es-form-input>
                     <es-form-textarea
@@ -148,7 +143,9 @@ const onSubmit = async () => {
             <ds-prop-table :rows="propTableRows" />
         </div>
         <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-form.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/organisms/es-form.vue" />
+            doc-source="es-ds-docs/pages/organisms/form.vue" />
     </b-container>
 </template>
