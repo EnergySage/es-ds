@@ -55,6 +55,16 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    // Url when using button as a link
+    href: {
+        type: String,
+        default: null,
+    },
+    // Url when using button as a link to an internal page
+    to: {
+        type: String,
+        default: null,
+    },
 });
 
 const getRootClasses = computed(() => {
@@ -73,7 +83,20 @@ const getRootClasses = computed(() => {
 </script>
 
 <template>
+    <nuxt-link
+        v-if="props.href"
+        :to="props.href"
+        :class="getRootClasses">
+        <slot />
+    </nuxt-link>
+    <nuxt-link
+        v-else-if="props.to"
+        :to="props.to"
+        :class="getRootClasses">
+        <slot />
+    </nuxt-link>
     <prime-button
+        v-else
         :pt="{
             root: { class: getRootClasses },
         }">
