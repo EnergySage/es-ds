@@ -109,11 +109,11 @@ onMounted(async () => {
         <h1>Button</h1>
         <p>
             Extended from
-            <a
+            <nuxt-link
                 href="https://v3.primevue.org/button/"
                 target="_blank">
-                primevue button
-            </a>
+                PrimeBue Button
+            </nuxt-link>
             and
             <nuxt-link
                 href="https://nuxt.com/docs/api/components/nuxt-link"
