@@ -5,6 +5,7 @@
         </h1>
         <div class="my-500">
             <b-row>
+                <!-- TODO: set explicit width & height on on es-video container to avoid CLS -->
                 <b-col md="8">
                     <es-video
                         :alt-text="`
