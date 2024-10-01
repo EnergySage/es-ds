@@ -29,7 +29,7 @@ const showFocus = ref(false);
 
 <template>
     <div
-        v-if="props.readOnly"
+        v-if="readOnly"
         :aria-label="`${localRating} out of 5 stars`"
         class="bg-transparent rounded-0 text-orange rating">
         <div
@@ -38,18 +38,18 @@ const showFocus = ref(false);
             aria-hidden="true">
             <span v-if="i <= localRating">
                 <icon-star-full
-                    :width="props.width"
-                    :height="props.height" />
+                    :width="width"
+                    :height="height" />
             </span>
             <span v-else-if="i - 0.5 === localRating">
                 <icon-star-half
-                    :width="props.width"
-                    :height="props.height" />
+                    :width="width"
+                    :height="height" />
             </span>
             <span v-else>
                 <icon-star-empty
-                    :width="props.width"
-                    :height="props.height" />
+                    :width="width"
+                    :height="height" />
             </span>
         </div>
     </div>
@@ -57,7 +57,7 @@ const showFocus = ref(false);
         <rating
             v-model="model"
             :cancel="false"
-            :readonly="props.readOnly"
+            :readonly="readOnly"
             v-bind="$attrs"
             :pt="{
                 root: {
@@ -79,13 +79,13 @@ const showFocus = ref(false);
             @blur="showFocus = false">
             <template #officon>
                 <icon-star-empty
-                    :width="props.width"
-                    :height="props.height" />
+                    :width="width"
+                    :height="height" />
             </template>
             <template #onicon>
                 <icon-star-full
-                    :width="props.width"
-                    :height="props.height" />
+                    :width="width"
+                    :height="height" />
             </template>
         </rating>
     </div>
