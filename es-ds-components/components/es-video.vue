@@ -70,18 +70,9 @@ function handleLoadVideo() {
                 class="EsVideo-image d-block w-100"
                 :src="props.coverImageUrl" />
             <icon-video-play
-                class="EsVideo-icon position-absolute center-this"
+                class="EsVideo-icon position-absolute abs-center"
                 width="74px"
                 height="54px" />
         </es-card>
     </div>
 </template>
-
-<style lang="scss" scoped>
-.center-this {
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 2;
-}
-</style>

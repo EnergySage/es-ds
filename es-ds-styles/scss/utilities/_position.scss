@@ -32,3 +32,11 @@
     z-index: variables.$zindex-sticky;
   }
 }
+
+// Used with position-absolute to center an element within it's container
+.abs-center {
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: variables.$zindex-overlay;
+}
