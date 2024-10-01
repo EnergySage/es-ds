@@ -1,8 +1,5 @@
 <script setup lang="ts">
 const props = defineProps({
-    /**
-     * Inline
-     */
     inline: {
         type: Boolean,
         default: false,
@@ -10,7 +7,7 @@ const props = defineProps({
     validated: {
         type: Boolean,
         default: true,
-    }
+    },
 });
 </script>
 

@@ -1,12 +1,15 @@
-
 <script setup lang="ts">
-
 const inline = ref(false);
 
 const propTableRows = [
     ['inline', 'Boolean', 'false', 'Display labels and form controls on a single horizontal row'],
     ['novalidate', 'Boolean', 'null', 'Disables browser native HTML5 validation on controls in the form'],
-    ['validated', 'Boolean', 'null', 'Adds the Bootstrap class \'was-validated\' on the form, triggering the native browser validation states'],
+    [
+        'validated',
+        'Boolean',
+        'null',
+        "Adds the Bootstrap class 'was-validated' on the form, triggering the native browser validation states",
+    ],
 ];
 
 const state = reactive({
@@ -21,10 +24,7 @@ const state = reactive({
 
 const rules = {};
 
-const { isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(
-    rules,
-    state,
-);
+const { isSubmitInProgress, startSubmit, stopSubmit } = useEsForms(rules, state);
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -64,9 +64,7 @@ const onSubmit = async () => {
     <b-container>
         <b-row>
             <b-col>
-                <h1>
-                    Form
-                </h1>
+                <h1>Form</h1>
                 <es-form-checkbox
                     id="inline-form"
                     v-model="inline"
@@ -87,9 +85,7 @@ const onSubmit = async () => {
                         v-model="state.form.email"
                         :disabled="isSubmitInProgress"
                         required>
-                        <template #label>
-                            Email address
-                        </template>
+                        <template #label> Email address </template>
                     </es-form-input>
                     <es-form-input
                         id="password"
@@ -97,9 +93,7 @@ const onSubmit = async () => {
                         :disabled="isSubmitInProgress"
                         required
                         type="tel">
-                        <template #label>
-                            Password
-                        </template>
+                        <template #label> Password </template>
                     </es-form-input>
                     <es-form-input
                         id="phone"
@@ -107,18 +101,14 @@ const onSubmit = async () => {
                         :disabled="isSubmitInProgress"
                         required
                         type="tel">
-                        <template #label>
-                            Phone number
-                        </template>
+                        <template #label> Phone number </template>
                     </es-form-input>
                     <es-form-textarea
                         id="notes"
                         v-model="state.form.notes"
                         :disabled="isSubmitInProgress"
                         required>
-                        <template #label>
-                            Notes
-                        </template>
+                        <template #label> Notes </template>
                     </es-form-textarea>
                     <div class="d-flex flex-grow-1 justify-content-end mt-200">
                         <es-button
