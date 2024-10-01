@@ -9,7 +9,7 @@ interface IProps {
 const props = defineProps<IProps>();
 const showVideo = ref(false);
 function getVideoIdFromUrl(url: string) {
-    const embedPattern = /https:\/\/www\.youtube\.com\/embed\/(?<videoId>[A-Za-z1-9-]+)/;
+    const embedPattern = /https:\/\/www\.youtube\.com\/embed\/(?<videoId>[A-Za-z0-9-]+)/;
     const parsedUrl = embedPattern.exec(url);
     if (parsedUrl) {
         return parsedUrl?.groups?.videoId;
@@ -17,6 +17,7 @@ function getVideoIdFromUrl(url: string) {
     return '';
 }
 const videoId = getVideoIdFromUrl(props.embedUrl);
+const embedUrlWithParams = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`
 
 const placeholderCardEl = useTemplateRef('placeholder-card');
 const cardDimensionElementSize: { width: number, height: number } = reactive(
@@ -49,13 +50,14 @@ function handleLoadVideo() {
                 :id="`youtube-video-${videoId}`"
                 :width="cardDimensions.width"
                 :height="cardDimensions.height"
-                :src="props.embedUrl"
+                :src="embedUrlWithParams"
                 class="overflow-hidden p-0 w-100"
                 frameborder="0"
             ></iframe>
         </div>
         <es-card
             v-else
+            :id="`youtube-placeholder-${videoId}`"
             ref="placeholder-card"
             class="EsVideo-button bg-transparent overflow-hidden p-0 position-relative w-100"
             variant="interactive"
