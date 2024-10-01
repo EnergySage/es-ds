@@ -1,3 +1,26 @@
+<script setup lang="ts">
+const propTableRows = [
+    ['alt-text', 'String', 'n/a', 'Required.'],
+    ['cover-image-url', 'String', 'n/a', 'Required.'],
+    ['embed-url', 'String', 'n/a', 'Required.'],
+];
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-video.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./video.vue?raw');
+
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
+</script>
+
 <template>
     <div>
         <h1>
@@ -28,5 +51,17 @@
                 </b-col>
             </b-row>
         </div>
+
+        <div class="mb-500">
+            <h2>Props</h2>
+            <ds-prop-table :rows="propTableRows" />
+        </div>
+
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-form-input.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/text-input.vue" />
+
     </div>
 </template>
