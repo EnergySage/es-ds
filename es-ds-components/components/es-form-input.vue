@@ -67,6 +67,7 @@ const hasExtraContext = () => !!slots.extraContext;
 <template>
     <div
         class="input-wrapper justify-content-end"
+        :class="$attrs.class"
         :required="required">
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
@@ -96,7 +97,7 @@ const hasExtraContext = () => !!slots.extraContext;
             <component
                 :is="type === 'maskedTel' ? InputMask : InputText"
                 :id="id"
-                v-bind="$attrs"
+                v-bind="{ ...$attrs, class: undefined }"
                 :type="type"
                 class="es-form-input form-control w-100"
                 :class="{
