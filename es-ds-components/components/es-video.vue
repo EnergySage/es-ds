@@ -2,8 +2,8 @@
 import { useElementSize } from '@vueuse/core';
 
 interface IProps {
-    altText: string,
-    coverImageUrl: string,
+    altText: string;
+    coverImageUrl: string;
     embedUrl: string;
 }
 const props = defineProps<IProps>();
@@ -17,23 +17,19 @@ function getVideoIdFromUrl(url: string) {
     return '';
 }
 const videoId = getVideoIdFromUrl(props.embedUrl);
-const embedUrlWithParams = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`
+const embedUrlWithParams = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`;
 
 const placeholderCardEl = useTemplateRef('placeholder-card');
-const cardDimensionElementSize: { width: number, height: number } = reactive(
-    useElementSize(
-        placeholderCardEl,
-        { width: 0, height: 0 },
-        { box: 'border-box' },
-    ),
-)
+const cardDimensionElementSize: { width: number; height: number } = reactive(
+    useElementSize(placeholderCardEl, { width: 0, height: 0 }, { box: 'border-box' }),
+);
 const cardDimensions = reactive({
     width: 0,
     height: 0,
-})
+});
 function handleLoadVideo() {
     // Undo-reactivity to lock-in dimensions once images have loaded
-    const { width, height } = cardDimensionElementSize
+    const { width, height } = cardDimensionElementSize;
     cardDimensions.width = width;
     cardDimensions.height = height;
     showVideo.value = true;
@@ -44,7 +40,7 @@ function handleLoadVideo() {
     <div>
         <div
             v-if="showVideo"
-            :style="{width: cardDimensions.width, height: cardDimensions.height}"
+            :style="{ width: cardDimensions.width, height: cardDimensions.height }"
             class="iframe-container">
             <iframe
                 :id="`youtube-video-${videoId}`"
@@ -52,8 +48,7 @@ function handleLoadVideo() {
                 :height="cardDimensions.height"
                 :src="embedUrlWithParams"
                 class="overflow-hidden p-0 w-100"
-                frameborder="0"
-            ></iframe>
+                frameborder="0"></iframe>
         </div>
         <es-card
             v-else

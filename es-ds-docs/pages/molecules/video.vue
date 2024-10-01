@@ -23,9 +23,7 @@ onMounted(async () => {
 
 <template>
     <div>
-        <h1>
-            Video
-        </h1>
+        <h1>Video</h1>
         <div class="my-500">
             <b-row>
                 <!-- TODO: set explicit width & height on on es-video container to avoid CLS -->
@@ -62,6 +60,5 @@ onMounted(async () => {
             comp-source="es-ds-components/components/es-form-input.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/text-input.vue" />
-
     </div>
 </template>
