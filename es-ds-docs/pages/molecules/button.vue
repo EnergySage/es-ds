@@ -112,7 +112,7 @@ onMounted(async () => {
             <nuxt-link
                 href="https://v3.primevue.org/button/"
                 target="_blank">
-                PrimeBue Button
+                PrimeVue Button
             </nuxt-link>
             and
             <nuxt-link
