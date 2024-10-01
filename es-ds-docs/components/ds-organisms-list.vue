@@ -4,6 +4,9 @@
             <ds-link to="/organisms/carousel"> Carousel </ds-link>
         </li>
         <li>
+            <ds-link to="/organisms/cta-card"> CTA card </ds-link>
+        </li>
+        <li>
             <ds-link to="/organisms/error-page"> Error page </ds-link>
         </li>
         <li>
