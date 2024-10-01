@@ -86,7 +86,6 @@ const showFocus = ref(false);
                     :height="props.height" />
             </template>
         </rating>
-        showFocus: {{ showFocus }}
     </div>
 </template>
 
