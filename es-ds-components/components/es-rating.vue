@@ -1,7 +1,21 @@
 <script setup lang="ts">
 import Rating from 'primevue/rating';
 
+interface IProps {
+    rating?: number;
+    readOnly?: boolean;
+    width?: string;
+    height?: string;
+    rounded?: boolean;
+}
 
+const props = withDefaults(defineProps<IProps>(), {
+    rating: 0,
+    readOnly: true,
+    width: '20px',
+    height: '20px',
+    rounded: true, // Round rating to nearest .5
+});
 
 const model = defineModel<number>()
 model.value = props.rating;
