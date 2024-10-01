@@ -84,14 +84,9 @@ const getRootClasses = computed(() => {
 
 <template>
     <nuxt-link
-        v-if="props.href"
-        :to="props.href"
-        :class="getRootClasses">
-        <slot />
-    </nuxt-link>
-    <nuxt-link
-        v-else-if="props.to"
-        :to="props.to"
+        v-if="props.href || props.to"
+        :href="props.href || undefined"
+        :to="props.to || undefined"
         :class="getRootClasses">
         <slot />
     </nuxt-link>

@@ -114,6 +114,12 @@ onMounted(async () => {
                 target="_blank">
                 primevue button
             </a>
+            and
+            <nuxt-link
+                href="https://nuxt.com/docs/api/components/nuxt-link"
+                target="_blank">
+                NuxtLink
+            </nuxt-link>
         </p>
         <p>
             When using a button, please ensure that the copy style is
