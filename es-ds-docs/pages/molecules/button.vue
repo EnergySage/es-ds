@@ -69,6 +69,7 @@ const linkExamples = ref([
 ]);
 
 const propTableRows = ref([
+    ['href', 'String', 'null', 'An external URL to navigate to when using a button as a link.'],
     [
         'inline',
         'Boolean',
@@ -78,6 +79,7 @@ const propTableRows = ref([
     ],
     ['outline', 'Boolean', 'false', 'If true, changes to the outline version of the specified variant.'],
     ['size', 'String', '"md"', "The size of the button: 'md', or 'sm'."],
+    ['to', 'String', 'null', 'An internal path to navigate to when using a button as a link'],
     ['variant', 'String', '"primary"', "The name of the desired button variant: 'primary', 'dark-bg', or 'link'."],
 ]);
 
