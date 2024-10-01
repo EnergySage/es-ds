@@ -17,12 +17,12 @@ const props = withDefaults(defineProps<IProps>(), {
     rounded: true, // Round rating to nearest .5
 });
 
-const model = defineModel<number>()
+const model = defineModel<number>();
 model.value = props.rating;
 
 // Rounds to nearest .5
-const round = (value: number) => value ? Math.round(value * 2) / 2 : 0;
-const localRating = computed(() => props.rounded ? round(model.value as number) : model.value || 0);
+const round = (value: number) => (value ? Math.round(value * 2) / 2 : 0);
+const localRating = computed(() => (props.rounded ? round(model.value as number) : model.value || 0));
 
 const showFocus = ref(false);
 </script>
@@ -65,12 +65,14 @@ const showFocus = ref(false);
                 },
                 item: (options) => {
                     return {
-                        class: [{
-                            'reactiveStar': true,
-                            'focused': options.context.focused,
-                            'fade-focus': options.context.active && options.context.focused,
-                        }]
-                    }
+                        class: [
+                            {
+                                reactiveStar: true,
+                                focused: options.context.focused,
+                                'fade-focus': options.context.active && options.context.focused,
+                            },
+                        ],
+                    };
                 },
             }"
             @focus="showFocus = true"
@@ -111,7 +113,6 @@ const showFocus = ref(false);
 
     &:hover {
         transform: scale(1.5);
-
     }
     &.focused {
         transform: scale(1.5);

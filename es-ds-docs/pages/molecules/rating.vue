@@ -36,11 +36,11 @@ const rating1Val = ref(0);
             </nuxt-link>
         </p>
         <div class="my-500">
-            <h2>Form Input</h2>
+            <h2>Form input</h2>
             <es-rating
                 v-model="rating1Val"
                 :read-only="false" />
-            <h2 class="mt-500">Static Display</h2>
+            <h2 class="mt-500">Static display</h2>
             <div
                 v-for="i in 11"
                 :key="i">
@@ -49,7 +49,7 @@ const rating1Val = ref(0);
         </div>
 
         <div class="my-500">
-            <h2>Background Variations</h2>
+            <h2>Background variations</h2>
             <div class="d-flex flex-column flex-md-row">
                 <div class="bg-gray-50 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
                     <es-rating :rating="4.5" />
