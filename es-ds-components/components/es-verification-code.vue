@@ -5,7 +5,7 @@ const model = defineModel<string>();
 const verificationCode = ref();
 
 const props = defineProps({
-    charCount:{
+    charCount: {
         type: Number,
         default: 5,
     },
@@ -27,7 +27,7 @@ const updateCode = (newValue: any) => {
         <input-otp
             v-model="verificationCode"
             class="custom-otp"
-            :length=count
+            :length="count"
             integer-only
             @update:model-value="updateCode">
             <template #default="{ attrs, events, index }">

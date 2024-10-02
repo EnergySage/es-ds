@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -16,12 +15,7 @@ if ($prism) {
 }
 
 const propTableRows = [
-    [
-        'v-model',
-        'String',
-        'n/a',
-        'Required. The v-model directive binds the otpinput to a data property.',
-    ],
+    ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the otpinput to a data property.'],
 ];
 const code = ref();
 const isSubmitInProgress = ref(false);
@@ -37,10 +31,7 @@ const isValid = () => {
 
 const randomCode = () => {
     // Randomly generates an array of numbers 0-9
-    const rand = Array.from(
-        { length: charCount },
-        () => Math.floor(Math.random() * 10).toString(),
-    );
+    const rand = Array.from({ length: charCount }, () => Math.floor(Math.random() * 10).toString());
 
     // eslint-disable-next-line no-console
     console.log('Generated', rand);
@@ -59,17 +50,15 @@ const clearCode = () => {
     }, 1000);
     return '';
 };
-
 </script>
 
 <template>
     <div>
-        <h1>
-            Verification code
-        </h1>
+        <h1>Verification code</h1>
         <p>{{ code }}</p>
         <p class="mb-500">
-            Uses <a
+            Uses
+            <a
                 href="https://v3.primevue.org/inputotp/"
                 target="_blank">
                 PrimeVue InputOtp
@@ -87,21 +76,15 @@ const clearCode = () => {
                 cols="10"
                 lg="4">
                 <dl class="row">
-                    <dd class="col-4">
-                        Code:
-                    </dd>
+                    <dd class="col-4">Code:</dd>
                     <dt class="col-8">
                         {{ code && code.split('') }}
                     </dt>
-                    <dd class="col-4">
-                        Code(string):
-                    </dd>
+                    <dd class="col-4">Code(string):</dd>
                     <dt class="col-8">
                         {{ code }}
                     </dt>
-                    <dd class="col-4">
-                        Valid:
-                    </dd>
+                    <dd class="col-4">Valid:</dd>
                     <dt class="col-8">
                         {{ isValid() }}
                     </dt>
@@ -128,11 +111,8 @@ const clearCode = () => {
     </div>
     <div>
         <div class="mb-500">
-            <h2>
-                EsVerification props
-            </h2>
-            <ds-prop-table
-                :rows="propTableRows" />
+            <h2>EsVerification props</h2>
+            <ds-prop-table :rows="propTableRows" />
         </div>
 
         <ds-doc-source
