@@ -4,16 +4,12 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
-    validated: {
-        type: Boolean,
-        default: true,
-    },
 });
 </script>
 
 <template>
     <form
-        :class="{ 'form-inline': props.inline, 'was-validated': props.validated }"
+        :class="{ 'form-inline': props.inline }"
         v-bind="$attrs">
         <slot />
     </form>

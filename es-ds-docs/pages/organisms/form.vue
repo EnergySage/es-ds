@@ -4,7 +4,6 @@ const inline = ref(false);
 const propTableRows = [
     ['inline', 'Boolean', 'false', 'Display labels and form controls on a single horizontal row'],
     ['novalidate', 'Boolean', 'null', 'Disables browser native HTML5 validation on controls in the form'],
-    ['validated', 'Boolean', 'null', "Adds the Bootstrap class 'was-validated' on the form"],
 ];
 
 const state = reactive({
