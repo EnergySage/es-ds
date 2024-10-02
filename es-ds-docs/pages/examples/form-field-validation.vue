@@ -184,7 +184,7 @@ onMounted(async () => {
                             :disabled="isSubmitInProgress">
                             <span class="w-100">
                                 <span v-if="isSubmitInProgress">
-                                    <b-spinner
+                                    <es-spinner
                                         role="status"
                                         label="Loading" />
                                 </span>

@@ -34,14 +34,38 @@ const breakpointTableItems = [
     },
 ];
 
+// Name, type, required, default value, description
+const esColProps = [
+    ['cols', 'string', 'False', `''`, 'Number of columns to span'],
+    ['sm', 'string', 'False', `''`, 'Number of columns to span in the sm breakpoint'],
+    ['md', 'string', 'False', `''`, 'Number of columns to span in the md breakpoint'],
+    ['lg', 'string', 'False', `''`, 'Number of columns to span in the lg breakpoint'],
+    ['xl', 'string', 'False', `''`, 'Number of columns to span in the xl breakpoint'],
+    ['xxl', 'string', 'False', `''`, 'Number of columns to span in the xxl breakpoint'],
+];
+
 const { $prism } = useNuxtApp();
 const docCode = ref('');
+
+const esContainerCode = ref('');
+const esColCode = ref('');
+const esRowCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
         // eslint-disable-next-line import/no-self-import
         const docSource = await import('./layout.vue?raw');
         docCode.value = $prism.normalizeCode(docSource.default);
+
+        const esContainerCodeSource = await import ('@energysage/es-ds-components/components/es-container.vue?raw');
+        esContainerCode.value = $prism.normalizeCode(esContainerCodeSource.default);
+
+        const esColCodeSource = await import ('@energysage/es-ds-components/components/es-col.vue?raw');
+        esColCode.value = $prism.normalizeCode(esColCodeSource.default);
+
+        const esRowCodeSource = await import ('@energysage/es-ds-components/components/es-row.vue?raw');
+        esRowCode.value = $prism.normalizeCode(esRowCodeSource.default);
+
         $prism.highlight();
     }
 });
@@ -56,6 +80,7 @@ onMounted(async () => {
                 target="_blank">
                 Bootstrap Vue layout
             </nuxt-link>
+            but only supporting a sub-set of APIs for <code>b-row</code>, <code>b-col</code>, and <code>b-container</code>
         </p>
         <h2 class="mt-200">Responsive breakpoints</h2>
         <p>At each breakpoint above extra small (xs), the content is constrained to the max width listed below.</p>
@@ -299,6 +324,41 @@ onMounted(async () => {
                 </es-col>
             </es-row>
         </es-container>
+
+        <div class="mb-300 mt-300">
+            <h2>EsContainer</h2>
+            <p>
+                Only input is a <code>slot</code>
+            </p>
+        </div>
+
+        <div class="mb-300">
+            <h2>EsRow</h2>
+            <p>
+                Only input is a <code>slot</code>
+            </p>
+        </div>
+
+        <div class="mb-300">
+            <h2>EsCol</h2>
+            <ds-prop-table :rows="esColProps" />
+        </div>
+
+        <ds-doc-source
+            comp-title="EsContainer source"
+            :comp-code="esContainerCode"
+            comp-source="es-ds-components/components/es-container.vue"
+        />
+        <ds-doc-source
+            comp-title="EsRow source"
+            :comp-code="esRowCode"
+            comp-source="es-ds-components/components/es-row.vue"
+        />
+        <ds-doc-source
+            comp-title="EsCol source"
+            :comp-code="esColCode"
+            comp-source="es-ds-components/components/es-col.vue"
+        />
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-ds-docs/atoms/layout.vue" />
