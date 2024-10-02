@@ -246,7 +246,7 @@ export default {
                 </div>
                 <div class="navbar-nav d-flex flex-column w-100">
                     <!-- top-level items on mobile, full top bar on desktop -->
-                    <b-container class="align-items-start d-flex flex-lg-nowrap justify-content-between top-level-nav">
+                    <es-container class="align-items-start d-flex flex-lg-nowrap justify-content-between top-level-nav">
                         <es-nav-bar-link
                             class="navbar-brand d-none d-lg-block"
                             :href="globalContent.home.link">
@@ -280,9 +280,9 @@ export default {
                             :auth-items="accountContent.loggedIn.items"
                             class="d-none d-lg-block pt-100"
                             :logged-out="accountContent.loggedOut" />
-                    </b-container>
+                    </es-container>
                     <!-- mobile+desktop product menus -->
-                    <b-container class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
+                    <es-container class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
                                 v-for="product in globalContent.products"
@@ -303,7 +303,7 @@ export default {
                                 </template>
                             </es-nav-bar-product-menu>
                         </div>
-                    </b-container>
+                    </es-container>
                 </div>
             </div>
             <!-- mobile account menu checkbox -->
@@ -372,7 +372,7 @@ export default {
         </nav>
         <!-- sticky nav bar -->
         <nav class="nav-es-sticky bg-white d-none d-lg-block position-fixed py-25">
-            <b-container class="align-items-center d-flex justify-content-between">
+            <es-container class="align-items-center d-flex justify-content-between">
                 <!-- EnergySage logo -->
                 <es-nav-bar-link
                     class="navbar-brand d-none d-lg-block"
@@ -389,7 +389,7 @@ export default {
                     :auth-items="accountContent.loggedIn.items"
                     class="d-none d-lg-block"
                     :logged-out="accountContent.loggedOut" />
-            </b-container>
+            </es-container>
         </nav>
     </div>
 </template>

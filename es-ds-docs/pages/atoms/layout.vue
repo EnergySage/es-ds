@@ -85,7 +85,7 @@ onMounted(async () => {
             </ds-responsive-table-row>
         </ds-responsive-table>
         <h2 class="mt-200">Grid overview</h2>
-        <b-container>
+        <es-container>
             <b-row>
                 <es-col
                     cols="12"
@@ -298,7 +298,7 @@ onMounted(async () => {
                     1
                 </es-col>
             </b-row>
-        </b-container>
+        </es-container>
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-ds-docs/atoms/layout.vue" />

@@ -34,7 +34,7 @@ const breadcrumbs = computed(() => {
             <div class="ds-side-nav d-none d-xl-block flex-shrink-0 p-100">
                 <ds-link-list />
             </div>
-            <b-container class="pt-xl-100 mx-0">
+            <es-container class="pt-xl-100 mx-0">
                 <b-row class="mb-100">
                     <es-col cols="12">
                         <es-breadcrumbs :items="breadcrumbs" />
@@ -47,7 +47,7 @@ const breadcrumbs = computed(() => {
                         <slot />
                     </es-col>
                 </b-row>
-            </b-container>
+            </es-container>
         </div>
     </div>
 </template>

@@ -28,7 +28,7 @@ const breadcrumbs = computed(() => {
 <template>
     <div>
         <div class="d-flex justify-content-center">
-            <b-container class="pt-100 mx-0">
+            <es-container class="pt-100 mx-0">
                 <b-row>
                     <es-col
                         class="d-none d-xl-block"
@@ -46,7 +46,7 @@ const breadcrumbs = computed(() => {
                         </div>
                     </es-col>
                 </b-row>
-            </b-container>
+            </es-container>
         </div>
 
         <es-footer :content="footerContent">

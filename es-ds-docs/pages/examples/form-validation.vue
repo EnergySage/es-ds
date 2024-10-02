@@ -43,7 +43,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <b-container>
+    <es-container>
         <b-row>
             <es-col>
                 <h1>Form with server error</h1>
@@ -103,5 +103,5 @@ onMounted(async () => {
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/examples/form-validation.vue" />
-    </b-container>
+    </es-container>
 </template>

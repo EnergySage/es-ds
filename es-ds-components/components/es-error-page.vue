@@ -77,7 +77,7 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
 
 <template>
     <div class="bg-gray-50">
-        <b-container class="py-500 py-lg-800">
+        <es-container class="py-500 py-lg-800">
             <b-row>
                 <es-col
                     md="7"
@@ -115,6 +115,6 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
                     </a>
                 </es-col>
             </b-row>
-        </b-container>
+        </es-container>
     </div>
 </template>

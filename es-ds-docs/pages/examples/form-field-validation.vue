@@ -94,7 +94,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <b-container>
+    <es-container>
         <b-row>
             <es-col>
                 <h1>Form with client-side validation</h1>
@@ -239,5 +239,5 @@ onMounted(async () => {
                 </es-collapse>
             </es-col>
         </b-row>
-    </b-container>
+    </es-container>
 </template>
