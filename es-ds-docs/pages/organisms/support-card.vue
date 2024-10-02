@@ -125,7 +125,7 @@ onMounted(async () => {
                 differences on mobile viewports from the default example.
             </p>
             <b-row class="justify-content-center">
-                <b-col
+                <es-col
                     cols="12"
                     lg="8"
                     xl="7">
@@ -151,7 +151,7 @@ onMounted(async () => {
                             <strong> No annoying sales pitches, and no spam calls. </strong>
                         </template>
                     </es-support-card>
-                </b-col>
+                </es-col>
             </b-row>
         </div>
         <div class="mb-500">

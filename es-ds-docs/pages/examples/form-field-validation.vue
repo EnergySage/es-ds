@@ -96,7 +96,7 @@ onMounted(async () => {
 <template>
     <b-container>
         <b-row>
-            <b-col>
+            <es-col>
                 <h1>Form with client-side validation</h1>
                 <h2>UX Guidelines</h2>
                 <ul>
@@ -109,10 +109,10 @@ onMounted(async () => {
                         <nuxt-link to="/examples/form-validation"> Form with server error </nuxt-link> example.
                     </li>
                 </ul>
-            </b-col>
+            </es-col>
         </b-row>
         <b-row class="border-top pt-200 my-50">
-            <b-col
+            <es-col
                 cols="12"
                 lg="8">
                 <form @submit.stop.prevent="onSubmit">
@@ -193,10 +193,10 @@ onMounted(async () => {
                         </es-button>
                     </div>
                 </form>
-            </b-col>
+            </es-col>
         </b-row>
         <b-row>
-            <b-col>
+            <es-col>
                 <ds-doc-source
                     :doc-code="docCode"
                     doc-source="es-ds-docs/pages/examples/form-field-validation.vue" />
@@ -237,7 +237,7 @@ onMounted(async () => {
                         for more information.
                     </p>
                 </es-collapse>
-            </b-col>
+            </es-col>
         </b-row>
     </b-container>
 </template>

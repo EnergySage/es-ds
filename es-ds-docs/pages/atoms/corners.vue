@@ -75,7 +75,7 @@ onMounted(async () => {
         </p>
 
         <b-row class="my-500">
-            <b-col
+            <es-col
                 v-for="item in borderRadius"
                 :key="item.name"
                 class="mb-200"
@@ -106,7 +106,7 @@ onMounted(async () => {
                         </ul>
                     </div>
                 </div>
-            </b-col>
+            </es-col>
         </b-row>
 
         <ds-doc-source

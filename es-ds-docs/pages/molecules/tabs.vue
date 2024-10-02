@@ -83,7 +83,7 @@ onMounted(async () => {
                 </es-button>
             </div>
             <b-row>
-                <b-col
+                <es-col
                     cols="12"
                     lg="8">
                     <es-tabs
@@ -99,8 +99,8 @@ onMounted(async () => {
                             <p>Content three</p>
                         </es-tab>
                     </es-tabs>
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="12"
                     lg="4">
                     <div
@@ -118,7 +118,7 @@ onMounted(async () => {
                         class="bg-gray-300 p-200 rounded-lg text-center">
                         Content associated with tab 3
                     </div>
-                </b-col>
+                </es-col>
             </b-row>
         </div>
 

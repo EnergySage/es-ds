@@ -45,7 +45,7 @@ onMounted(async () => {
 <template>
     <b-container>
         <b-row>
-            <b-col>
+            <es-col>
                 <h1>Form with server error</h1>
                 <p>
                     See
@@ -60,10 +60,10 @@ onMounted(async () => {
                         to display server-side errors
                     </li>
                 </ul>
-            </b-col>
+            </es-col>
         </b-row>
         <b-row class="border-top pt-200 my-50">
-            <b-col
+            <es-col
                 cols="12"
                 lg="8">
                 <form @submit.stop.prevent="onSubmit">
@@ -98,7 +98,7 @@ onMounted(async () => {
                         </es-button>
                     </div>
                 </form>
-            </b-col>
+            </es-col>
         </b-row>
         <ds-doc-source
             :doc-code="docCode"

@@ -43,7 +43,7 @@ onMounted(async () => {
     <div>
         <h1>CTA card</h1>
         <b-row class="mb-500">
-            <b-col
+            <es-col
                 xl="10"
                 xxl="8">
                 <p>
@@ -54,13 +54,13 @@ onMounted(async () => {
                     Intended for use within a width-constrained grid column layout on larger breakpoints, either on the
                     left rail of a page layout or side by side with other CTA cards.
                 </p>
-            </b-col>
+            </es-col>
         </b-row>
 
         <div class="mb-500">
             <h2 class="mb-200">Default with zip code form</h2>
             <b-row class="justify-content-center justify-content-lg-start">
-                <b-col
+                <es-col
                     sm="8"
                     md="6"
                     lg="4"
@@ -84,14 +84,14 @@ onMounted(async () => {
                             </es-zip-code-form>
                         </template>
                     </es-cta-card>
-                </b-col>
+                </es-col>
             </b-row>
         </div>
 
         <div class="mb-500">
             <h2 class="mb-200">Image first with button</h2>
             <b-row class="justify-content-center justify-content-lg-start">
-                <b-col
+                <es-col
                     sm="8"
                     md="6"
                     lg="4"
@@ -120,14 +120,14 @@ onMounted(async () => {
                             </es-button>
                         </template>
                     </es-cta-card>
-                </b-col>
+                </es-col>
             </b-row>
         </div>
 
         <div class="mb-500">
             <h2 class="mb-200">Image first with link</h2>
             <b-row class="justify-content-center justify-content-lg-start">
-                <b-col
+                <es-col
                     sm="8"
                     md="6"
                     lg="5"
@@ -156,14 +156,14 @@ onMounted(async () => {
                             </nuxt-link>
                         </template>
                     </es-cta-card>
-                </b-col>
+                </es-col>
             </b-row>
         </div>
 
         <div class="mb-500">
             <h2 class="mb-200">No image with zip code form</h2>
             <b-row class="justify-content-center justify-content-lg-start">
-                <b-col
+                <es-col
                     sm="8"
                     md="6"
                     lg="4"
@@ -180,7 +180,7 @@ onMounted(async () => {
                             </es-zip-code-form>
                         </template>
                     </es-cta-card>
-                </b-col>
+                </es-col>
             </b-row>
         </div>
 

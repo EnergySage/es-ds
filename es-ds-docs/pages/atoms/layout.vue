@@ -87,216 +87,216 @@ onMounted(async () => {
         <h2 class="mt-200">Grid overview</h2>
         <b-container>
             <b-row>
-                <b-col
+                <es-col
                     cols="12"
                     class="bg-gray-400 text-center">
                     12 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="11"
                     class="bg-gray-400 text-center">
                     11 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-700 text-center text-gray-400">
                     1
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="10"
                     class="bg-gray-400 text-center">
                     10 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="2"
                     class="bg-gray-700 text-center text-gray-400">
                     2 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="9"
                     class="bg-gray-400 text-center">
                     9 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="3"
                     class="bg-gray-700 text-center text-gray-400">
                     3 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="8"
                     class="bg-gray-400 text-center">
                     8 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="4"
                     class="bg-gray-700 text-center text-gray-400">
                     4 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="7"
                     class="bg-gray-400 text-center">
                     7 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="5"
                     class="bg-gray-700 text-center text-gray-400">
                     5 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="6"
                     class="bg-gray-400 text-center">
                     6 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="6"
                     class="bg-gray-700 text-center text-gray-400">
                     6 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="4"
                     class="bg-gray-400 text-center">
                     4 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="4"
                     class="bg-gray-700 text-center text-gray-400">
                     4 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="4"
                     class="bg-gray-400 text-center">
                     4 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="3"
                     class="bg-gray-400 text-center">
                     3 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="3"
                     class="bg-gray-700 text-center text-gray-400">
                     3 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="3"
                     class="bg-gray-400 text-center">
                     3 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="3"
                     class="bg-gray-700 text-center text-gray-400">
                     3 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="2"
                     class="bg-gray-400 text-center">
                     2 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="2"
                     class="bg-gray-700 text-center text-gray-400">
                     2 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="2"
                     class="bg-gray-400 text-center">
                     2 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="2"
                     class="bg-gray-700 text-center text-gray-400">
                     2 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="2"
                     class="bg-gray-400 text-center">
                     2 Columns
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="2"
                     class="bg-gray-700 text-center text-gray-400">
                     2 Columns
-                </b-col>
+                </es-col>
             </b-row>
             <b-row>
-                <b-col
+                <es-col
                     cols="1"
                     class="bg-gray-400 text-center">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-700 text-center text-gray-400">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-400 text-center">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-700 text-center text-gray-400">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-400 text-center">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-700 text-center text-gray-400">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-400 text-center">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-700 text-center text-gray-400">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-400 text-center">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-700 text-center text-gray-400">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-400 text-center">
                     1
-                </b-col>
-                <b-col
+                </es-col>
+                <es-col
                     cols="1"
                     class="bg-gray-700 text-center text-gray-400">
                     1
-                </b-col>
+                </es-col>
             </b-row>
         </b-container>
         <ds-doc-source

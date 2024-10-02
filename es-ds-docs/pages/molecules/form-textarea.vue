@@ -45,7 +45,7 @@ const propTableRows = [
         </p>
 
         <b-row class="my-500">
-            <b-col
+            <es-col
                 cols="12"
                 lg="6">
                 <h2>Basic example</h2>
@@ -54,11 +54,11 @@ const propTableRows = [
                     v-model="docTextarea">
                     <template #label> Notes </template>
                 </es-form-textarea>
-            </b-col>
+            </es-col>
         </b-row>
 
         <b-row class="my-500">
-            <b-col
+            <es-col
                 cols="12"
                 lg="6">
                 <h2>Required</h2>
@@ -68,11 +68,11 @@ const propTableRows = [
                     required>
                     <template #label> Notes </template>
                 </es-form-textarea>
-            </b-col>
+            </es-col>
         </b-row>
 
         <b-row class="my-500">
-            <b-col
+            <es-col
                 cols="12"
                 lg="6">
                 <h2>Error state</h2>
@@ -84,11 +84,11 @@ const propTableRows = [
                     <template #label> Notes </template>
                     <template #errorMessage> This field is required. </template>
                 </es-form-textarea>
-            </b-col>
+            </es-col>
         </b-row>
 
         <b-row class="my-500">
-            <b-col
+            <es-col
                 cols="12"
                 lg="6">
                 <h2>Success state</h2>
@@ -100,11 +100,11 @@ const propTableRows = [
                     <template #label> Notes </template>
                     <template #errorMessage> This field is required. </template>
                 </es-form-textarea>
-            </b-col>
+            </es-col>
         </b-row>
 
         <b-row class="my-500">
-            <b-col
+            <es-col
                 cols="12"
                 lg="6">
                 <h2>Success state with message</h2>
@@ -118,11 +118,11 @@ const propTableRows = [
                     <template #errorMessage> This field is required. </template>
                     <template #successMessage> Your notes have been entered successfully. </template>
                 </es-form-textarea>
-            </b-col>
+            </es-col>
         </b-row>
 
         <b-row class="my-500">
-            <b-col
+            <es-col
                 cols="12"
                 lg="6">
                 <h2>Disabled state</h2>
@@ -132,11 +132,11 @@ const propTableRows = [
                     disabled>
                     <template #label> Notes </template>
                 </es-form-textarea>
-            </b-col>
+            </es-col>
         </b-row>
 
         <b-row class="my-500">
-            <b-col
+            <es-col
                 cols="12"
                 lg="6">
                 <h2>Context message</h2>
@@ -149,7 +149,7 @@ const propTableRows = [
                     <template #errorMessage> This field is required. </template>
                     <template #successMessage> Your notes have been entered successfully. </template>
                 </es-form-textarea>
-            </b-col>
+            </es-col>
         </b-row>
 
         <div class="mb-500">

@@ -36,16 +36,16 @@ const breadcrumbs = computed(() => {
             </div>
             <b-container class="pt-xl-100 mx-0">
                 <b-row class="mb-100">
-                    <b-col cols="12">
+                    <es-col cols="12">
                         <es-breadcrumbs :items="breadcrumbs" />
-                    </b-col>
+                    </es-col>
                 </b-row>
                 <b-row>
-                    <b-col
+                    <es-col
                         class="mb-300"
                         cols="12">
                         <slot />
-                    </b-col>
+                    </es-col>
                 </b-row>
             </b-container>
         </div>
