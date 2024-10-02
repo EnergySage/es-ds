@@ -4,6 +4,14 @@ import InputOtp from 'primevue/inputotp';
 const model = defineModel<string>();
 const verificationCode = ref();
 
+const props = defineProps({
+    charCount:{
+        type: Number,
+        default: 5,
+    },
+});
+
+const count = ref(props.charCount);
 watch(model, (newVal) => {
     verificationCode.value = newVal;
 });
@@ -19,7 +27,7 @@ const updateCode = (newValue: any) => {
         <input-otp
             v-model="verificationCode"
             class="custom-otp"
-            :length="5"
+            :length=count
             integer-only
             @update:model-value="updateCode">
             <template #default="{ attrs, events, index }">

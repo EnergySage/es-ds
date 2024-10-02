@@ -78,6 +78,7 @@ const clearCode = () => {
         <b-row class="justify-content-center my-500">
             <es-verification-code
                 v-model="code"
+                :char-count="charCount"
                 :disabled="isSubmitInProgress" />
         </b-row>
         <b-row class="mt-200 align-items-center">
