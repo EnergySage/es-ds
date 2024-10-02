@@ -5,7 +5,7 @@ const state = reactive({
         password: '',
         phone: '',
         maskedPhoneNumber: '',
-        // notes: '',
+        notes: '',
     },
 });
 
@@ -19,9 +19,9 @@ const rules = {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
             [vuelidateKeys.EMAIL]: vuelidateEmail,
         },
-        // notes: {
-        //     [vuelidateKeys.REQUIRED]: vuelidateRequired,
-        // },
+        notes: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
+        },
         password: {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
             [vuelidateKeys.MIN_LENGTH]: vuelidateMinLength(8),
@@ -167,18 +167,16 @@ onMounted(async () => {
                         <template #label> Masked phone number </template>
                         <template #errorMessage> Please enter a valid phone number. </template>
                     </es-form-input>
-                    <!--                    <es-form-textarea-->
-                    <!--                        id="notes"-->
-                    <!--                        v-model="form.notes"-->
-                    <!--                        :disabled="isSubmitInProgress"-->
-                    <!--                        :state="validateState('form.notes')"-->
-                    <!--                        required-->
-                    <!--                        @change="touchOnChange('form.notes')"-->
-                    <!--                        @blur="$v.form.notes.$touch">-->
-                    <!--                        <template #label>-->
-                    <!--                            Notes-->
-                    <!--                        </template>-->
-                    <!--                    </es-form-textarea-->
+                    <es-form-textarea
+                        id="notes"
+                        v-model="state.form.notes"
+                        :disabled="isSubmitInProgress"
+                        :state="validateState('form.notes')"
+                        required
+                        @change="touchOnChange('form.notes')"
+                        @blur="v$.form.notes.$touch">
+                        <template #label> Notes </template>
+                    </es-form-textarea>
                     <div class="d-flex flex-grow-1 justify-content-end mt-200">
                         <es-button
                             type="submit"
