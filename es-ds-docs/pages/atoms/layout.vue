@@ -37,12 +37,14 @@ const breakpointTableItems = [
 const { $prism } = useNuxtApp();
 const docCode = ref('');
 
-if ($prism) {
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./layout.vue?raw');
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+onMounted(async () => {
+    if ($prism) {
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./layout.vue?raw');
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 <template>
     <div>

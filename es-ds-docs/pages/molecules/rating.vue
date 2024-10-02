@@ -1,20 +1,31 @@
 <script setup lang="ts">
+// Event will trigger twice when using keyboard to focus due to PrimeVue bug
 const changeEvent = ($event) => {
     // eslint-disable-next-line no-alert
     alert($event.value);
 };
 
+const propTableRows = [
+    ['rating', 'Number', '0', 'Starting rating value 0-5, with .5 values available in read only mode'],
+    ['rounded', 'Boolean', 'true', 'Round rating to nearest .5'],
+    ['read-only', 'Boolean', 'true', 'Disable changing the rating'],
+    ['width', 'String', '20px', 'Icon width'],
+    ['height', 'String', '20px', 'Icon height'],
+];
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-rating.vue?raw');
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./rating.vue?raw');
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-rating.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./rating.vue?raw');
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -52,9 +63,14 @@ if ($prism) {
             </div>
         </div>
 
+        <div class="my-500">
+            <h2>EsRating props</h2>
+            <ds-prop-table :rows="propTableRows" />
+        </div>
+
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="@energysage/es-ds-components/components/es-rating.vue"
+            comp-source="es-ds-components/components/es-rating.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/molecules/rating.vue" />
     </div>

@@ -11,6 +11,7 @@ const selectAllIsIndeterminate = computed(
 );
 
 const handleOptionChange = () => {
+    // update the value of the Select All checkbox whenever the other ones change
     selectAll.value = apple.value && banana.value && cherry.value;
 };
 
@@ -29,15 +30,17 @@ const handleSelectAllToggle = () => {
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
-if ($prism) {
-    const compSource = await import('@energysage/es-ds-components/components/es-form-checkbox.vue?raw');
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./checkbox.vue?raw');
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/components/es-form-checkbox.vue?raw');
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./checkbox.vue?raw');
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -49,17 +52,20 @@ if ($prism) {
             <div>
                 <es-form-checkbox
                     id="idApple"
-                    v-model="apple">
+                    v-model="apple"
+                    @change="handleOptionChange">
                     Apple
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idBanana"
-                    v-model="banana">
+                    v-model="banana"
+                    @change="handleOptionChange">
                     Banana
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idCherry"
-                    v-model="cherry">
+                    v-model="cherry"
+                    @change="handleOptionChange">
                     Cherry
                 </es-form-checkbox>
             </div>
@@ -71,19 +77,22 @@ if ($prism) {
                 <es-form-checkbox
                     id="idApple2"
                     v-model="apple"
-                    disabled>
+                    disabled
+                    @change="handleOptionChange">
                     Apple
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idBanana2"
                     v-model="banana"
-                    disabled>
+                    disabled
+                    @change="handleOptionChange">
                     Banana
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idCherry2"
                     v-model="cherry"
-                    disabled>
+                    disabled
+                    @change="handleOptionChange">
                     Cherry
                 </es-form-checkbox>
             </div>
@@ -126,21 +135,24 @@ if ($prism) {
                 <es-form-checkbox
                     id="idApple4"
                     v-model="apple"
-                    name="fruit">
+                    name="fruit"
+                    @change="handleOptionChange">
                     <div>Apple <span class="font-italic text-error-900">*</span></div>
                     <div class="font-size-sm text-gray-700">Malus domestica</div>
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idBanana4"
                     v-model="banana"
-                    name="fruit">
+                    name="fruit"
+                    @change="handleOptionChange">
                     <div>Banana <span class="font-italic text-error-900">*</span></div>
                     <div class="font-size-sm text-gray-700">Musa acuminata</div>
                 </es-form-checkbox>
                 <es-form-checkbox
                     id="idCherry4"
                     v-model="cherry"
-                    name="fruit">
+                    name="fruit"
+                    @change="handleOptionChange">
                     <div>Cherry <span class="font-italic text-error-900">*</span></div>
                     <div class="font-size-sm text-gray-700">Prunus avium</div>
                 </es-form-checkbox>
@@ -149,8 +161,8 @@ if ($prism) {
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-vue-base/src/lib-components/EsFormMsg.vue"
+            comp-source="es-ds-components/components/es-form-checkbox.vue"
             :doc-code="docCode"
-            doc-source="es-design-system/pages/molecules/es-form-msg.vue" />
+            doc-source="es-ds-docs/pages/molecules/checkbox.vue" />
     </div>
 </template>

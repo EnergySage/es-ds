@@ -5,39 +5,6 @@
 @use "mixins/transition";
 @use "variables";
 
-// .modal-open      - body class for killing the scroll
-// .modal           - container to scroll within
-// .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and stuff
-
-.modal-open {
-  // Kill the scroll on the body
-  overflow: hidden;
-
-  .modal {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-}
-
-// Container that the modal scrolls within
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: variables.$zindex-modal;
-  display: none;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  // Prevent Chrome on Windows from adding a focus outline. For details, see
-  // https://github.com/twbs/bootstrap/pull/10951.
-  outline: 0;
-  // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
-  // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
-  // See also https://github.com/twbs/bootstrap/issues/17695
-}
-
 // Shell div to position the modal with bottom padding
 .modal-dialog {
   position: relative;
@@ -45,20 +12,6 @@
   margin: variables.$modal-dialog-margin;
   // allow clicks to pass through for custom click handling to close modal
   pointer-events: none;
-
-  // When fading in the modal, animate it to slide down
-  .modal.fade & {
-    transform: variables.$modal-fade-transform;
-    @include transition.transition(variables.$modal-transition);
-  }
-  .modal.show & {
-    transform: variables.$modal-show-transform;
-  }
-
-  // When trying to close, animate focus to scale
-  .modal.modal-static & {
-    transform: variables.$modal-scale-transform;
-  }
 }
 
 .modal-dialog-scrollable {
@@ -77,35 +30,6 @@
 
   .modal-body {
     overflow-y: auto;
-  }
-}
-
-.modal-dialog-centered {
-  display: flex;
-  align-items: center;
-  min-height: functions.subtract(100%, variables.$modal-dialog-margin * 2);
-
-  // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
-  &::before {
-    display: block; // IE10
-    height: functions.subtract(100vh, variables.$modal-dialog-margin * 2);
-    height: min-content; // Reset height to 0 except on IE
-    content: "";
-  }
-
-  // Ensure `.modal-body` shows scrollbar (IE10/11)
-  &.modal-dialog-scrollable {
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-
-    .modal-content {
-      max-height: none;
-    }
-
-    &::before {
-      content: none;
-    }
   }
 }
 
