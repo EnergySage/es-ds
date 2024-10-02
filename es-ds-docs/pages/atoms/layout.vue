@@ -86,14 +86,14 @@ onMounted(async () => {
         </ds-responsive-table>
         <h2 class="mt-200">Grid overview</h2>
         <es-container>
-            <b-row>
+            <es-row>
                 <es-col
                     cols="12"
                     class="bg-gray-400 text-center">
                     12 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="11"
                     class="bg-gray-400 text-center">
@@ -104,8 +104,8 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     1
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="10"
                     class="bg-gray-400 text-center">
@@ -116,8 +116,8 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     2 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="9"
                     class="bg-gray-400 text-center">
@@ -128,8 +128,8 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     3 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="8"
                     class="bg-gray-400 text-center">
@@ -140,8 +140,8 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     4 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="7"
                     class="bg-gray-400 text-center">
@@ -152,8 +152,8 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     5 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="6"
                     class="bg-gray-400 text-center">
@@ -164,8 +164,8 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     6 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="4"
                     class="bg-gray-400 text-center">
@@ -181,8 +181,8 @@ onMounted(async () => {
                     class="bg-gray-400 text-center">
                     4 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="3"
                     class="bg-gray-400 text-center">
@@ -203,8 +203,8 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     3 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="2"
                     class="bg-gray-400 text-center">
@@ -235,8 +235,8 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     2 Columns
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     cols="1"
                     class="bg-gray-400 text-center">
@@ -297,7 +297,7 @@ onMounted(async () => {
                     class="bg-gray-700 text-center text-gray-400">
                     1
                 </es-col>
-            </b-row>
+            </es-row>
         </es-container>
         <ds-doc-source
             :doc-code="docCode"

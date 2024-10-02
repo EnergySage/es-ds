@@ -44,7 +44,7 @@ onMounted(async () => {
 
 <template>
     <es-container>
-        <b-row>
+        <es-row>
             <es-col>
                 <h1>Form with server error</h1>
                 <p>
@@ -61,8 +61,8 @@ onMounted(async () => {
                     </li>
                 </ul>
             </es-col>
-        </b-row>
-        <b-row class="border-top pt-200 my-50">
+        </es-row>
+        <es-row class="border-top pt-200 my-50">
             <es-col
                 cols="12"
                 lg="8">
@@ -99,7 +99,7 @@ onMounted(async () => {
                     </div>
                 </form>
             </es-col>
-        </b-row>
+        </es-row>
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/examples/form-validation.vue" />

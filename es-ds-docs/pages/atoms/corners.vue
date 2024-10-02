@@ -74,7 +74,7 @@ onMounted(async () => {
             add the desired corner radius to your UI elements.
         </p>
 
-        <b-row class="my-500">
+        <es-row class="my-500">
             <es-col
                 v-for="item in borderRadius"
                 :key="item.name"
@@ -107,7 +107,7 @@ onMounted(async () => {
                     </div>
                 </div>
             </es-col>
-        </b-row>
+        </es-row>
 
         <ds-doc-source
             :doc-code="docCode"

@@ -78,7 +78,7 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
 <template>
     <div class="bg-gray-50">
         <es-container class="py-500 py-lg-800">
-            <b-row>
+            <es-row>
                 <es-col
                     md="7"
                     class="my-500 mx-auto text-center">
@@ -91,8 +91,8 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
                         {{ errorLongMessage }}
                     </p>
                 </es-col>
-            </b-row>
-            <b-row>
+            </es-row>
+            <es-row>
                 <es-col
                     v-for="(item, index) in linkItems"
                     :key="index"
@@ -114,7 +114,7 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
                         <p class="mb-200 mb-md-0">{{ item.label }}</p>
                     </a>
                 </es-col>
-            </b-row>
+            </es-row>
         </es-container>
     </div>
 </template>

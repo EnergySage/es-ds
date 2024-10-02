@@ -95,7 +95,7 @@ onMounted(async () => {
 
 <template>
     <es-container>
-        <b-row>
+        <es-row>
             <es-col>
                 <h1>Form with client-side validation</h1>
                 <h2>UX Guidelines</h2>
@@ -110,8 +110,8 @@ onMounted(async () => {
                     </li>
                 </ul>
             </es-col>
-        </b-row>
-        <b-row class="border-top pt-200 my-50">
+        </es-row>
+        <es-row class="border-top pt-200 my-50">
             <es-col
                 cols="12"
                 lg="8">
@@ -194,8 +194,8 @@ onMounted(async () => {
                     </div>
                 </form>
             </es-col>
-        </b-row>
-        <b-row>
+        </es-row>
+        <es-row>
             <es-col>
                 <ds-doc-source
                     :doc-code="docCode"
@@ -238,6 +238,6 @@ onMounted(async () => {
                     </p>
                 </es-collapse>
             </es-col>
-        </b-row>
+        </es-row>
     </es-container>
 </template>

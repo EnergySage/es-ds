@@ -82,7 +82,7 @@ onMounted(async () => {
                     Select tab three
                 </es-button>
             </div>
-            <b-row>
+            <es-row>
                 <es-col
                     cols="12"
                     lg="8">
@@ -119,7 +119,7 @@ onMounted(async () => {
                         Content associated with tab 3
                     </div>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <ds-doc-source

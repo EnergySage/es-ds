@@ -42,7 +42,7 @@ onMounted(async () => {
 <template>
     <div>
         <h1>CTA card</h1>
-        <b-row class="mb-500">
+        <es-row class="mb-500">
             <es-col
                 xl="10"
                 xxl="8">
@@ -55,11 +55,11 @@ onMounted(async () => {
                     left rail of a page layout or side by side with other CTA cards.
                 </p>
             </es-col>
-        </b-row>
+        </es-row>
 
         <div class="mb-500">
             <h2 class="mb-200">Default with zip code form</h2>
-            <b-row class="justify-content-center justify-content-lg-start">
+            <es-row class="justify-content-center justify-content-lg-start">
                 <es-col
                     sm="8"
                     md="6"
@@ -85,12 +85,12 @@ onMounted(async () => {
                         </template>
                     </es-cta-card>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">
             <h2 class="mb-200">Image first with button</h2>
-            <b-row class="justify-content-center justify-content-lg-start">
+            <es-row class="justify-content-center justify-content-lg-start">
                 <es-col
                     sm="8"
                     md="6"
@@ -121,12 +121,12 @@ onMounted(async () => {
                         </template>
                     </es-cta-card>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">
             <h2 class="mb-200">Image first with link</h2>
-            <b-row class="justify-content-center justify-content-lg-start">
+            <es-row class="justify-content-center justify-content-lg-start">
                 <es-col
                     sm="8"
                     md="6"
@@ -157,12 +157,12 @@ onMounted(async () => {
                         </template>
                     </es-cta-card>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">
             <h2 class="mb-200">No image with zip code form</h2>
-            <b-row class="justify-content-center justify-content-lg-start">
+            <es-row class="justify-content-center justify-content-lg-start">
                 <es-col
                     sm="8"
                     md="6"
@@ -181,7 +181,7 @@ onMounted(async () => {
                         </template>
                     </es-cta-card>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">

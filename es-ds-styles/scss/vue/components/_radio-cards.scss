@@ -162,7 +162,7 @@ $inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-
     /**
      * hide the radio button input elements the same way bootstrap vue does.
      * bootstrap vue's styles only work on items directly nested under b-form-radio-group, and we want
-     * to enable users to put any elements (e.g. <es-col> and <b-row>) between the EsFormRadioCards and
+     * to enable users to put any elements (e.g. <es-col> and <es-row>) between the EsFormRadioCards and
      * EsFormRadioCard elements.
      */
     clip: rect(0, 0, 0, 0);

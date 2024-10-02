@@ -97,7 +97,7 @@ const slotTableRows = [
                 <code>stackUntil</code> prop is set to <code>lg</code> so the input and button begin displaying
                 side-by-side at that breakpoint.
             </p>
-            <b-row class="justify-content-center">
+            <es-row class="justify-content-center">
                 <es-col
                     class="d-flex justify-content-center"
                     sm="10"
@@ -110,7 +110,7 @@ const slotTableRows = [
                         <template #buttonText> See local offers </template>
                     </es-zip-code-form>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">
@@ -121,7 +121,7 @@ const slotTableRows = [
                 pre-determined zip code needs to be set, which users can subsequently modify. If the user does not
                 alter the zip code, it will default to the initial value provided.
             </p>
-            <b-row class="justify-content-center">
+            <es-row class="justify-content-center">
                 <es-col
                     class="d-flex justify-content-center"
                     sm="10"
@@ -135,7 +135,7 @@ const slotTableRows = [
                         <template #buttonText> See local offers </template>
                     </es-zip-code-form>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">
@@ -145,7 +145,7 @@ const slotTableRows = [
                 <code>dark</code> prop is set to <code>true</code>.
             </p>
             <div class="bg-dark-blue rounded p-200">
-                <b-row class="justify-content-center">
+                <es-row class="justify-content-center">
                     <es-col
                         class="d-flex justify-content-center"
                         sm="10"
@@ -159,7 +159,7 @@ const slotTableRows = [
                             <template #buttonText> See local offers </template>
                         </es-zip-code-form>
                     </es-col>
-                </b-row>
+                </es-row>
             </div>
         </div>
 
@@ -171,7 +171,7 @@ const slotTableRows = [
                 in order to make better use of the limited space. This reduces the horizontal padding on the submit
                 button and reduces the size of the privacy text.
             </p>
-            <b-row class="justify-content-center">
+            <es-row class="justify-content-center">
                 <es-col
                     class="d-flex justify-content-center"
                     sm="8"
@@ -188,7 +188,7 @@ const slotTableRows = [
                         <template #buttonText> See local offers </template>
                     </es-zip-code-form>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">
@@ -197,7 +197,7 @@ const slotTableRows = [
                 This form has <code>stackUntil</code> set to <code>xs</code> so it is always side-by-side. It also has
                 the privacy section disabled by setting <code>showPrivacySection</code> to <code>false</code>.
             </p>
-            <b-row class="justify-content-center">
+            <es-row class="justify-content-center">
                 <es-col
                     class="d-flex justify-content-center"
                     sm="10"
@@ -211,7 +211,7 @@ const slotTableRows = [
                         <template #buttonText> Go! </template>
                     </es-zip-code-form>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">
@@ -220,7 +220,7 @@ const slotTableRows = [
                 This example remains stacked at every breakpoint, in a limited-width container. This shows how the form
                 would display within a card on the sidebar of a page.
             </p>
-            <b-row class="justify-content-center">
+            <es-row class="justify-content-center">
                 <es-col
                     sm="8"
                     md="6"
@@ -235,7 +235,7 @@ const slotTableRows = [
                         <template #buttonText> See local offers </template>
                     </es-zip-code-form>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">
@@ -244,7 +244,7 @@ const slotTableRows = [
                 This example shows how to specify a product parameter that will be passed along when the form is
                 submitted.
             </p>
-            <b-row class="justify-content-center">
+            <es-row class="justify-content-center">
                 <es-col
                     class="d-flex justify-content-center"
                     sm="10"
@@ -258,7 +258,7 @@ const slotTableRows = [
                         <template #buttonText> See local heat pump offers </template>
                     </es-zip-code-form>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="mb-500">

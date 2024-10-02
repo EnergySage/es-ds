@@ -35,18 +35,18 @@ const breadcrumbs = computed(() => {
                 <ds-link-list />
             </div>
             <es-container class="pt-xl-100 mx-0">
-                <b-row class="mb-100">
+                <es-row class="mb-100">
                     <es-col cols="12">
                         <es-breadcrumbs :items="breadcrumbs" />
                     </es-col>
-                </b-row>
-                <b-row>
+                </es-row>
+                <es-row>
                     <es-col
                         class="mb-300"
                         cols="12">
                         <slot />
                     </es-col>
-                </b-row>
+                </es-row>
             </es-container>
         </div>
     </div>

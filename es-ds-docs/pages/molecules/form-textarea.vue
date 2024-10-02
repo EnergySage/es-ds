@@ -44,7 +44,7 @@ const propTableRows = [
             </nuxt-link>
         </p>
 
-        <b-row class="my-500">
+        <es-row class="my-500">
             <es-col
                 cols="12"
                 lg="6">
@@ -55,9 +55,9 @@ const propTableRows = [
                     <template #label> Notes </template>
                 </es-form-textarea>
             </es-col>
-        </b-row>
+        </es-row>
 
-        <b-row class="my-500">
+        <es-row class="my-500">
             <es-col
                 cols="12"
                 lg="6">
@@ -69,9 +69,9 @@ const propTableRows = [
                     <template #label> Notes </template>
                 </es-form-textarea>
             </es-col>
-        </b-row>
+        </es-row>
 
-        <b-row class="my-500">
+        <es-row class="my-500">
             <es-col
                 cols="12"
                 lg="6">
@@ -85,9 +85,9 @@ const propTableRows = [
                     <template #errorMessage> This field is required. </template>
                 </es-form-textarea>
             </es-col>
-        </b-row>
+        </es-row>
 
-        <b-row class="my-500">
+        <es-row class="my-500">
             <es-col
                 cols="12"
                 lg="6">
@@ -101,9 +101,9 @@ const propTableRows = [
                     <template #errorMessage> This field is required. </template>
                 </es-form-textarea>
             </es-col>
-        </b-row>
+        </es-row>
 
-        <b-row class="my-500">
+        <es-row class="my-500">
             <es-col
                 cols="12"
                 lg="6">
@@ -119,9 +119,9 @@ const propTableRows = [
                     <template #successMessage> Your notes have been entered successfully. </template>
                 </es-form-textarea>
             </es-col>
-        </b-row>
+        </es-row>
 
-        <b-row class="my-500">
+        <es-row class="my-500">
             <es-col
                 cols="12"
                 lg="6">
@@ -133,9 +133,9 @@ const propTableRows = [
                     <template #label> Notes </template>
                 </es-form-textarea>
             </es-col>
-        </b-row>
+        </es-row>
 
-        <b-row class="my-500">
+        <es-row class="my-500">
             <es-col
                 cols="12"
                 lg="6">
@@ -150,7 +150,7 @@ const propTableRows = [
                     <template #successMessage> Your notes have been entered successfully. </template>
                 </es-form-textarea>
             </es-col>
-        </b-row>
+        </es-row>
 
         <div class="mb-500">
             <h2>EsFormTextarea props</h2>

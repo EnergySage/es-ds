@@ -29,7 +29,7 @@ const breadcrumbs = computed(() => {
     <div>
         <div class="d-flex justify-content-center">
             <es-container class="pt-100 mx-0">
-                <b-row>
+                <es-row>
                     <es-col
                         class="d-none d-xl-block"
                         xl="3">
@@ -45,7 +45,7 @@ const breadcrumbs = computed(() => {
                             <slot />
                         </div>
                     </es-col>
-                </b-row>
+                </es-row>
             </es-container>
         </div>
 

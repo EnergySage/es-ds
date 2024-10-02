@@ -117,7 +117,7 @@ onMounted(async () => {
 
         <div class="my-500">
             <h2>Core colors</h2>
-            <b-row>
+            <es-row>
                 <es-col
                     v-for="(value, alias) in coreColors"
                     :key="alias"
@@ -135,12 +135,12 @@ onMounted(async () => {
                         {{ coreColorNames[alias] || alias }}
                     </p>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Primary</h2>
-            <b-row>
+            <es-row>
                 <es-col
                     v-for="[alias, value] in blues"
                     :key="alias"
@@ -155,12 +155,12 @@ onMounted(async () => {
                         :show-border="['blue-50', 'blue-100'].includes(alias)"
                         :token="alias" />
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Secondary</h2>
-            <b-row>
+            <es-row>
                 <es-col
                     v-for="[alias, value] in oranges"
                     :key="alias"
@@ -175,12 +175,12 @@ onMounted(async () => {
                         :show-border="['orange-50', 'orange-100'].includes(alias)"
                         :token="alias" />
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Neutrals</h2>
-            <b-row>
+            <es-row>
                 <es-col
                     v-for="[alias, value] in neutrals"
                     :key="alias"
@@ -197,16 +197,16 @@ onMounted(async () => {
                         :show-border="['gray-50', 'gray-100'].includes(alias)"
                         :token="alias" />
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Feedback</h2>
 
-            <b-row class="mt-200">
+            <es-row class="mt-200">
                 <es-col lg="6">
                     <h3>Success</h3>
-                    <b-row>
+                    <es-row>
                         <es-col
                             v-for="[alias, value] in successColors"
                             :key="alias"
@@ -221,12 +221,12 @@ onMounted(async () => {
                                 :show-border="['success-50'].includes(alias)"
                                 :token="alias" />
                         </es-col>
-                    </b-row>
+                    </es-row>
                 </es-col>
 
                 <es-col lg="6">
                     <h3>Warning</h3>
-                    <b-row>
+                    <es-row>
                         <es-col
                             v-for="[alias, value] in warningColors"
                             :key="alias"
@@ -241,12 +241,12 @@ onMounted(async () => {
                                 :show-border="['warning-50'].includes(alias)"
                                 :token="alias" />
                         </es-col>
-                    </b-row>
+                    </es-row>
                 </es-col>
 
                 <es-col lg="6">
                     <h3>Error</h3>
-                    <b-row>
+                    <es-row>
                         <es-col
                             v-for="[alias, value] in errorColors"
                             :key="alias"
@@ -261,15 +261,15 @@ onMounted(async () => {
                                 :show-border="['error-50'].includes(alias)"
                                 :token="alias" />
                         </es-col>
-                    </b-row>
+                    </es-row>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Restricted colors</h2>
             <p>Use only for charts and data.</p>
-            <b-row>
+            <es-row>
                 <es-col
                     v-for="(value, alias) in chartColors"
                     :key="alias"
@@ -296,7 +296,7 @@ onMounted(async () => {
                         {{ chartColorNames[alias] || alias }}
                     </p>
                 </es-col>
-            </b-row>
+            </es-row>
         </div>
 
         <es-collapse>
@@ -320,7 +320,7 @@ onMounted(async () => {
 
             <div class="my-200">
                 <h3>Brand Colors</h3>
-                <b-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in brandColors"
                         :key="alias"
@@ -337,12 +337,12 @@ onMounted(async () => {
                             {{ brandColorNames[alias] || alias }}
                         </p>
                     </es-col>
-                </b-row>
+                </es-row>
             </div>
 
             <div class="my-200">
                 <h3>Primary Tints</h3>
-                <b-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in cyanTints"
                         :key="alias"
@@ -357,8 +357,8 @@ onMounted(async () => {
                             :show-border="['cyan-100'].includes(alias)"
                             :token="alias" />
                     </es-col>
-                </b-row>
-                <b-row class="mb-200">
+                </es-row>
+                <es-row class="mb-200">
                     <es-col
                         v-for="(value, alias) in grayTints"
                         :key="alias"
@@ -372,12 +372,12 @@ onMounted(async () => {
                             :hex="value"
                             :token="alias" />
                     </es-col>
-                </b-row>
+                </es-row>
             </div>
 
             <div class="my-200">
                 <h3>Secondary Tints</h3>
-                <b-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in pinkTints"
                         :key="alias"
@@ -392,8 +392,8 @@ onMounted(async () => {
                             :show-border="['pink-100'].includes(alias)"
                             :token="alias" />
                     </es-col>
-                </b-row>
-                <b-row>
+                </es-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in tealTints"
                         :key="alias"
@@ -408,8 +408,8 @@ onMounted(async () => {
                             :show-border="['teal-100'].includes(alias)"
                             :token="alias" />
                     </es-col>
-                </b-row>
-                <b-row>
+                </es-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in yellowTints"
                         :key="alias"
@@ -424,8 +424,8 @@ onMounted(async () => {
                             :show-border="['yellow-100'].includes(alias)"
                             :token="alias" />
                     </es-col>
-                </b-row>
-                <b-row>
+                </es-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in orangeTints"
                         :key="alias"
@@ -440,12 +440,12 @@ onMounted(async () => {
                             :show-border="['orange-100'].includes(alias)"
                             :token="alias" />
                     </es-col>
-                </b-row>
+                </es-row>
             </div>
 
             <div class="my-200">
                 <h3>Primary Shades</h3>
-                <b-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in cyanShades"
                         :key="alias"
@@ -458,8 +458,8 @@ onMounted(async () => {
                             :hex="value"
                             :token="alias" />
                     </es-col>
-                </b-row>
-                <b-row class="mb-200">
+                </es-row>
+                <es-row class="mb-200">
                     <es-col
                         v-for="(value, alias) in grayShades"
                         :key="alias"
@@ -472,12 +472,12 @@ onMounted(async () => {
                             :hex="value"
                             :token="alias" />
                     </es-col>
-                </b-row>
+                </es-row>
             </div>
 
             <div class="my-200">
                 <h3>Secondary Shades</h3>
-                <b-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in pinkShades"
                         :key="alias"
@@ -491,8 +491,8 @@ onMounted(async () => {
                             :is-light="true"
                             :token="alias" />
                     </es-col>
-                </b-row>
-                <b-row>
+                </es-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in tealShades"
                         :key="alias"
@@ -505,8 +505,8 @@ onMounted(async () => {
                             :hex="value"
                             :token="alias" />
                     </es-col>
-                </b-row>
-                <b-row>
+                </es-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in yellowShades"
                         :key="alias"
@@ -520,12 +520,12 @@ onMounted(async () => {
                             :is-light="true"
                             :token="alias" />
                     </es-col>
-                </b-row>
+                </es-row>
             </div>
 
             <div class="my-200">
                 <h3>Grayscale</h3>
-                <b-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in grays"
                         :key="alias"
@@ -550,7 +550,7 @@ onMounted(async () => {
                             :show-border="['white', 'gray-100', 'gray-150'].includes(alias)"
                             :token="alias" />
                     </es-col>
-                </b-row>
+                </es-row>
             </div>
 
             <div class="my-200">
@@ -565,7 +565,7 @@ onMounted(async () => {
                     Primary and secondary are the most commonly-used variants. The others may be deprecated for certain
                     components; see the component documentation for details.
                 </p>
-                <b-row>
+                <es-row>
                     <es-col
                         v-for="(value, alias) in variants"
                         :key="alias"
@@ -579,7 +579,7 @@ onMounted(async () => {
                             :is-light="['danger', 'info', 'light', 'success', 'warning'].includes(alias)"
                             :token="alias" />
                     </es-col>
-                </b-row>
+                </es-row>
             </div>
         </es-collapse>
 

@@ -169,7 +169,7 @@ const propTableRowsRadioCards = [
                     id="idCustomCardStyling"
                     label="What’s the main reason you want a battery?"
                     has-icon>
-                    <b-row>
+                    <es-row>
                         <es-col
                             v-for="option in storageReasonOptions"
                             :key="option.value"
@@ -197,7 +197,7 @@ const propTableRowsRadioCards = [
                                 </span>
                             </es-form-radio-card>
                         </es-col>
-                    </b-row>
+                    </es-row>
                 </es-form-radio-cards>
             </form>
             <p class="mb-0">
@@ -215,7 +215,7 @@ const propTableRowsRadioCards = [
         </p>
         <div class="border mb-500 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
-                <b-row>
+                <es-row>
                     <es-col
                         cols="12"
                         lg="4">
@@ -244,7 +244,7 @@ const propTableRowsRadioCards = [
                             </es-form-radio-card>
                         </es-form-radio-cards>
                     </es-col>
-                </b-row>
+                </es-row>
             </form>
             <p class="mb-0">
                 <span class="font-weight-bold">Selection:</span>
