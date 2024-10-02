@@ -219,7 +219,7 @@ onMounted(async () => {
             </div>
             <ds-doc-source
                 :comp-code="compCode"
-                comp-source="es-ds-components/src/lib-components/es-popover.vue"
+                comp-source="es-ds-components/components/es-popover.vue"
                 :doc-code="docCode"
                 doc-source="es-ds-docs/pages/molecules/popover.vue" />
         </div>

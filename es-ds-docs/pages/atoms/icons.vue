@@ -22,13 +22,15 @@ const docCode = ref('');
 
 const { $prism } = useNuxtApp();
 
-if ($prism) {
-    // eslint-disable-next-line import/no-self-import
-    const docSource = await import('./icons.vue?raw');
+onMounted(async () => {
+    if ($prism) {
+        // eslint-disable-next-line import/no-self-import
+        const docSource = await import('./icons.vue?raw');
 
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>

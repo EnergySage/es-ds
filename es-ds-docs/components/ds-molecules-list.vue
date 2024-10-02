@@ -52,6 +52,9 @@
             <ds-link to="/molecules/radio-button"> Radio button </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/radio-cards"> Radio cards </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/rating"> Rating </ds-link>
         </li>
         <li>
@@ -59,6 +62,9 @@
         </li>
         <li>
             <ds-link to="/molecules/tabs"> Tabs </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/form-textarea"> Textarea </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/text-input"> Text input </ds-link>

@@ -5,6 +5,7 @@ import {
     maxValue,
     requiredIf,
     numeric,
+    integer,
     minLength,
     maxLength,
 } from '@vuelidate/validators';
@@ -15,6 +16,7 @@ export const vuelidateMinValue = minValue;
 export const vuelidateMaxValue = maxValue;
 export const vuelidateRequiredIf = requiredIf;
 export const vuelidateNumeric = numeric;
+export const vuelidateInteger = integer;
 export const vuelidateMinLength = minLength;
 export const vuelidateMaxLength = maxLength;
 export const vuelidateHelpers = helpers;
