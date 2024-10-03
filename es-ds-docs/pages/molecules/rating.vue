@@ -23,6 +23,7 @@ onMounted(async () => {
 
 const rating1Val = ref(0);
 watch(rating1Val, () => {
+    // eslint-disable-next-line no-alert
     alert(rating1Val.value);
 })
 </script>

@@ -69,7 +69,6 @@ const showFocus = ref(false);
                             {
                                 reactiveStar: true,
                                 focused: options.context.focused,
-                                'fade-focus': options.context.active && options.context.focused,
                             },
                         ],
                     };
