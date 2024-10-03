@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Props
 interface IProps {
     altText: string;
     coverImageUrl: string;
@@ -7,6 +8,7 @@ interface IProps {
 const props = defineProps<IProps>();
 const showVideo = ref(false);
 
+// Methods
 function getVideoIdFromUrl(url: string) {
     const embedPattern = /https:\/\/www\.youtube\.com\/embed\/(?<videoId>[A-Za-z0-9-]+)/;
     const parsedUrl = embedPattern.exec(url);
@@ -15,8 +17,10 @@ function getVideoIdFromUrl(url: string) {
     }
     return '';
 }
-const videoId = getVideoIdFromUrl(props.embedUrl);
-const embedUrlWithParams = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`;
+
+// Computed
+const videoId = computed(() => getVideoIdFromUrl(props.embedUrl));
+const embedUrlWithParams = computed(() => `https://www.youtube.com/embed/${videoId.value}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`);
 </script>
 
 <template>
