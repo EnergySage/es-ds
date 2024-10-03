@@ -1,9 +1,7 @@
 <script setup lang="ts">
 const inline = ref(false);
 
-const propTableRows = [
-    ['inline', 'Boolean', 'false', 'Display labels and form controls on a single horizontal row'],
-];
+const propTableRows = [['inline', 'Boolean', 'false', 'Display labels and form controls on a single horizontal row']];
 
 const state = reactive({
     form: {
