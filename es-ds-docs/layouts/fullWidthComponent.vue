@@ -34,20 +34,20 @@ const breadcrumbs = computed(() => {
             <div class="ds-side-nav d-none d-xl-block flex-shrink-0 p-100">
                 <ds-link-list />
             </div>
-            <b-container class="pt-xl-100 mx-0">
-                <b-row class="mb-100">
-                    <b-col cols="12">
+            <es-container class="pt-xl-100 mx-0">
+                <es-row class="mb-100">
+                    <es-col cols="12">
                         <es-breadcrumbs :items="breadcrumbs" />
-                    </b-col>
-                </b-row>
-                <b-row>
-                    <b-col
+                    </es-col>
+                </es-row>
+                <es-row>
+                    <es-col
                         class="mb-300"
                         cols="12">
                         <slot />
-                    </b-col>
-                </b-row>
-            </b-container>
+                    </es-col>
+                </es-row>
+            </es-container>
         </div>
     </div>
 </template>
