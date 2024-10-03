@@ -42,8 +42,4 @@
     &.overlay {
       z-index: variables.$zindex-overlay;
     }
-
-    &.overlay-modal {
-      z-index: variables.$z-index-modal-overlay;
-    }
 }

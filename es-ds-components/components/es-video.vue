@@ -4,11 +4,8 @@ interface IProps {
     altText: string;
     coverImageUrl: string;
     embedUrl: string;
-    isInModal?: boolean;
 }
-const props = withDefaults(defineProps<IProps>(), {
-    isInModal: false,
-});
+const props = defineProps<IProps>();
 const showVideo = ref(false);
 
 // Methods
@@ -53,8 +50,7 @@ const embedUrlWithParams = computed(
                 :src="props.coverImageUrl"
                 :alt="props.altText" />
             <icon-video-play
-                class="EsVideo-icon position-absolute abs-center"
-                :class="[props.isInModal ? 'overlay-modal' : 'overlay']"
+                class="EsVideo-icon position-absolute abs-center overlay"
                 width="74px"
                 height="54px" />
         </es-card>
