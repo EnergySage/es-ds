@@ -69,6 +69,7 @@ const linkExamples = ref([
 ]);
 
 const propTableRows = ref([
+    ['href', 'String', 'null', 'An external URL to navigate to when using a button as a link.'],
     [
         'inline',
         'Boolean',
@@ -78,6 +79,7 @@ const propTableRows = ref([
     ],
     ['outline', 'Boolean', 'false', 'If true, changes to the outline version of the specified variant.'],
     ['size', 'String', '"md"', "The size of the button: 'md', or 'sm'."],
+    ['to', 'String', 'null', 'An internal path to navigate to when using a button as a link'],
     ['variant', 'String', '"primary"', "The name of the desired button variant: 'primary', 'dark-bg', or 'link'."],
 ]);
 
@@ -107,11 +109,17 @@ onMounted(async () => {
         <h1>Button</h1>
         <p>
             Extended from
-            <a
+            <nuxt-link
                 href="https://v3.primevue.org/button/"
                 target="_blank">
-                primevue button
-            </a>
+                PrimeVue Button
+            </nuxt-link>
+            and
+            <nuxt-link
+                href="https://nuxt.com/docs/api/components/nuxt-link"
+                target="_blank">
+                NuxtLink
+            </nuxt-link>
         </p>
         <p>
             When using a button, please ensure that the copy style is
