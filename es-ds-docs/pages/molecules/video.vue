@@ -2,7 +2,12 @@
 const propTableRows = [
     ['alt-text', 'String', 'n/a', 'Required. A short description of the video'],
     ['cover-image-url', 'String', 'n/a', 'Required. The image shown before loading the video'],
-    ['embed-url', 'String', 'n/a', 'Required. The embed URL following the format https://www.youtube.com/embed/:video-id'],
+    [
+        'embed-url',
+        'String',
+        'n/a',
+        'Required. The embed URL following the format https://www.youtube.com/embed/:video-id',
+    ],
 ];
 
 const { $prism } = useNuxtApp();

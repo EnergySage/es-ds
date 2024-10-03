@@ -23,7 +23,9 @@ function getVideoIdFromUrl(url: string) {
 
 // Computed
 const videoId = computed(() => getVideoIdFromUrl(props.embedUrl));
-const embedUrlWithParams = computed(() => `https://www.youtube.com/embed/${videoId.value}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`);
+const embedUrlWithParams = computed(
+    () => `https://www.youtube.com/embed/${videoId.value}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`,
+);
 </script>
 
 <template>
@@ -52,7 +54,7 @@ const embedUrlWithParams = computed(() => `https://www.youtube.com/embed/${video
                 :alt="props.altText" />
             <icon-video-play
                 class="EsVideo-icon position-absolute abs-center"
-                :class="[ props.isInModal ? 'overlay-modal' : 'overlay' ]"
+                :class="[props.isInModal ? 'overlay-modal' : 'overlay']"
                 width="74px"
                 height="54px" />
         </es-card>
