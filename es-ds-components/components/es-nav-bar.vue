@@ -246,7 +246,8 @@ export default {
                 </div>
                 <div class="navbar-nav d-flex flex-column w-100">
                     <!-- top-level items on mobile, full top bar on desktop -->
-                    <es-container class="align-items-start d-flex flex-lg-nowrap justify-content-between top-level-nav">
+                    <es-container
+                        class="align-items-start d-flex flex-lg-nowrap justify-content-between top-level-nav">
                         <es-nav-bar-link
                             class="navbar-brand d-none d-lg-block"
                             :href="globalContent.home.link">
