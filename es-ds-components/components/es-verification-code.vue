@@ -16,6 +16,8 @@ watch(model, (newVal) => {
     verificationCode.value = newVal;
 });
 
+// Note: @update:model-value is erroneously requiring a boolean function argument,
+// workaround for error is to specify any
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const updateCode = (newValue: any) => {
     model.value = newValue;
@@ -27,6 +29,7 @@ const updateCode = (newValue: any) => {
         <input-otp
             v-model="verificationCode"
             class="custom-otp"
+            v-bind="$attrs"
             :length="count"
             integer-only
             @update:model-value="updateCode">
@@ -82,8 +85,5 @@ const updateCode = (newValue: any) => {
     &:last-child {
         margin-right: 0 !important;
     }
-}
-.red-input {
-    background-color: red;
 }
 </style>

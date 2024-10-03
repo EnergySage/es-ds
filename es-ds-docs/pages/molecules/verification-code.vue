@@ -3,19 +3,22 @@ const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
 
-if ($prism) {
-    /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
-    const compSource = await import('@energysage/es-ds-components/components/es-verification-code.vue?raw');
-    const docSource = await import('./verification-code.vue?raw');
-    /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
+onMounted(async () => {
+    if ($prism) {
+        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+        const compSource = await import('@energysage/es-ds-components/components/es-verification-code.vue?raw');
+        const docSource = await import('./verification-code.vue?raw');
+        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
-    compCode.value = $prism.normalizeCode(compSource.default);
-    docCode.value = $prism.normalizeCode(docSource.default);
-    $prism.highlight();
-}
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 
 const propTableRows = [
-    ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the otpinput to a data property.'],
+    ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the input to a data property.'],
+    ['charCount', 'Number', '5', 'Specifies the length of the verification code input.'],
 ];
 const code = ref();
 const isSubmitInProgress = ref(false);
@@ -33,8 +36,6 @@ const randomCode = () => {
     // Randomly generates an array of numbers 0-9
     const rand = Array.from({ length: charCount }, () => Math.floor(Math.random() * 10).toString());
 
-    // eslint-disable-next-line no-console
-    console.log('Generated', rand);
     isSubmitInProgress.value = true;
     setTimeout(() => {
         isSubmitInProgress.value = false;
@@ -44,10 +45,6 @@ const randomCode = () => {
 
 // eslint-disable-next-line no-return-assign
 const clearCode = () => {
-    isSubmitInProgress.value = true;
-    setTimeout(() => {
-        isSubmitInProgress.value = false;
-    }, 1000);
     return '';
 };
 </script>
@@ -55,7 +52,6 @@ const clearCode = () => {
 <template>
     <div>
         <h1>Verification code</h1>
-        <p>{{ code }}</p>
         <p class="mb-500">
             Uses
             <a
@@ -91,7 +87,7 @@ const clearCode = () => {
                 </dl>
             </b-col>
             <b-col
-                class="text-right"
+                class="text-nowrap mb-lg-0 mb-100"
                 cols="12"
                 lg="4">
                 <es-button
@@ -111,7 +107,7 @@ const clearCode = () => {
     </div>
     <div>
         <div class="mb-500">
-            <h2>EsVerification props</h2>
+            <h2>EsVerificationCode props</h2>
             <ds-prop-table :rows="propTableRows" />
         </div>
 
