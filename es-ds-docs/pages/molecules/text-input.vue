@@ -70,8 +70,8 @@ const propTableRows = [
 
         <div class="my-500">
             <h2>Basic example</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -80,14 +80,14 @@ const propTableRows = [
                         v-model="form.firstName">
                         <template #label> First name </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Required</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -97,14 +97,14 @@ const propTableRows = [
                         required>
                         <template #label> First name </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Error state</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -115,14 +115,14 @@ const propTableRows = [
                         <template #label> Email address </template>
                         <template #errorMessage> Please enter a valid email address. </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Success state</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -133,14 +133,14 @@ const propTableRows = [
                         <template #label> Email address </template>
                         <template #errorMessage> Please enter a valid email address. </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Success state with message</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -152,14 +152,14 @@ const propTableRows = [
                         <template #errorMessage> Please enter a valid email address. </template>
                         <template #successMessage> Your email address has been entered successfully. </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Disabled state</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -170,14 +170,14 @@ const propTableRows = [
                         <template #label> Email address </template>
                         <template #errorMessage> Please enter a valid email address. </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Placeholder</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -187,8 +187,8 @@ const propTableRows = [
                         placeholder="(999) 999-9999">
                         <template #label> Phone number </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
@@ -197,8 +197,8 @@ const propTableRows = [
                 This example uses an input mask to only allow entry of characters that match the format "(999)
                 999-9999".
             </p>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -209,8 +209,8 @@ const propTableRows = [
                         placeholder="(999) 999-9999">
                         <template #label> Phone number </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
@@ -220,8 +220,8 @@ const propTableRows = [
                 input label and use the placeholder text to label the input. Below is an example of how to accomplish
                 this.
             </p>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     class="d-lg-flex"
                     cols="12"
                     md="6"
@@ -239,14 +239,14 @@ const propTableRows = [
                         <template #label> ZIP code </template>
                     </es-form-input>
                     <es-button class="ml-lg-50 w-100 w-lg-auto"> Submit </es-button>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Prefix icon</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -264,14 +264,14 @@ const propTableRows = [
                         </template>
                         <template #label> ZIP code </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Context message above the field</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -282,14 +282,14 @@ const propTableRows = [
                         <template #extraContext> Your password should be hard to guess. </template>
                         <template #label> Password </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Context message below the field</h2>
-            <b-row>
-                <b-col
+            <es-row>
+                <es-col
                     cols="12"
                     md="6"
                     xxl="4">
@@ -300,8 +300,8 @@ const propTableRows = [
                         <template #message> Your password should be hard to guess. </template>
                         <template #label> Password </template>
                     </es-form-input>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="mb-500">
