@@ -3,7 +3,6 @@ const inline = ref(false);
 
 const propTableRows = [
     ['inline', 'Boolean', 'false', 'Display labels and form controls on a single horizontal row'],
-    ['novalidate', 'Boolean', 'null', 'Disables browser native HTML5 validation on controls in the form'],
 ];
 
 const state = reactive({
@@ -55,9 +54,9 @@ const onSubmit = async () => {
 </script>
 
 <template>
-    <b-container>
-        <b-row>
-            <b-col>
+    <es-container>
+        <es-row>
+            <es-col>
                 <h1>Form</h1>
                 <es-form-checkbox
                     id="inline-form"
@@ -65,10 +64,10 @@ const onSubmit = async () => {
                     name="inline-form">
                     Inline form
                 </es-form-checkbox>
-            </b-col>
-        </b-row>
-        <b-row class="my-500 border-top pt-500">
-            <b-col
+            </es-col>
+        </es-row>
+        <es-row class="my-500 border-top pt-500">
+            <es-col
                 cols="12"
                 lg="8">
                 <es-form
@@ -120,16 +119,24 @@ const onSubmit = async () => {
                         </es-button>
                     </div>
                 </es-form>
-            </b-col>
-        </b-row>
+            </es-col>
+        </es-row>
         <div class="my-500">
             <h2>EsForm props</h2>
             <ds-prop-table :rows="propTableRows" />
         </div>
+        <p>
+            For more props, use
+            <nuxt-link
+                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"
+                target="_blank">
+                native form element attributes
+            </nuxt-link>
+        </p>
         <ds-doc-source
             :comp-code="compCode"
             comp-source="es-ds-components/components/es-form.vue"
             :doc-code="docCode"
             doc-source="es-ds-docs/pages/organisms/form.vue" />
-    </b-container>
+    </es-container>
 </template>
