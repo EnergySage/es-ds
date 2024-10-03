@@ -169,8 +169,8 @@ const propTableRowsRadioCards = [
                     id="idCustomCardStyling"
                     label="What’s the main reason you want a battery?"
                     has-icon>
-                    <b-row>
-                        <b-col
+                    <es-row>
+                        <es-col
                             v-for="option in storageReasonOptions"
                             :key="option.value"
                             cols="12"
@@ -196,8 +196,8 @@ const propTableRowsRadioCards = [
                                     {{ option.description }}
                                 </span>
                             </es-form-radio-card>
-                        </b-col>
-                    </b-row>
+                        </es-col>
+                    </es-row>
                 </es-form-radio-cards>
             </form>
             <p class="mb-0">
@@ -215,8 +215,8 @@ const propTableRowsRadioCards = [
         </p>
         <div class="border mb-500 p-100 p-lg-200 rounded">
             <form @submit="handleSubmit">
-                <b-row>
-                    <b-col
+                <es-row>
+                    <es-col
                         cols="12"
                         lg="4">
                         <h3
@@ -224,8 +224,8 @@ const propTableRowsRadioCards = [
                             aria-hidden="true">
                             {{ installTimelineLabel }}
                         </h3>
-                    </b-col>
-                    <b-col
+                    </es-col>
+                    <es-col
                         cols="12"
                         lg="8">
                         <es-form-radio-cards
@@ -243,8 +243,8 @@ const propTableRowsRadioCards = [
                                 {{ option.label }}
                             </es-form-radio-card>
                         </es-form-radio-cards>
-                    </b-col>
-                </b-row>
+                    </es-col>
+                </es-row>
             </form>
             <p class="mb-0">
                 <span class="font-weight-bold">Selection:</span>

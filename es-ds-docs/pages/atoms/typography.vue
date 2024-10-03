@@ -473,8 +473,8 @@ onMounted(async () => {
             </ul>
         </div>
 
-        <b-row class="my-500">
-            <b-col>
+        <es-row class="my-500">
+            <es-col>
                 <h2>Font weight</h2>
                 <p>These utility classes will apply the associated font weight to text.</p>
                 <ds-responsive-table class="responsive-table-typography">
@@ -509,11 +509,11 @@ onMounted(async () => {
                         </ds-responsive-table-column>
                     </ds-responsive-table-row>
                 </ds-responsive-table>
-            </b-col>
-        </b-row>
+            </es-col>
+        </es-row>
 
-        <b-row class="my-500">
-            <b-col>
+        <es-row class="my-500">
+            <es-col>
                 <h2>Font size</h2>
                 <p>
                     These utility classes will apply the associated font size to text. Responsive versions for each
@@ -552,8 +552,8 @@ onMounted(async () => {
                         </ds-responsive-table-column>
                     </ds-responsive-table-row>
                 </ds-responsive-table>
-            </b-col>
-        </b-row>
+            </es-col>
+        </es-row>
 
         <es-collapse
             id="legacy-collapse"
@@ -594,8 +594,8 @@ onMounted(async () => {
                 </ds-responsive-table>
             </div>
 
-            <b-row class="my-500">
-                <b-col>
+            <es-row class="my-500">
+                <es-col>
                     <h2>Font size (deprecated)</h2>
                     <ds-responsive-table class="responsive-table-typography">
                         <ds-responsive-table-row
@@ -629,8 +629,8 @@ onMounted(async () => {
                             </ds-responsive-table-column>
                         </ds-responsive-table-row>
                     </ds-responsive-table>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </es-collapse>
         <ds-doc-source
             :doc-code="docCode"
