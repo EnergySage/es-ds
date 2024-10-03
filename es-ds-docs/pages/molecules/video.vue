@@ -26,15 +26,11 @@ onMounted(async () => {
         <h1>Video</h1>
         <div class="my-500">
             <b-row>
-                <!-- TODO: set explicit width & height on on es-video container to avoid CLS -->
                 <b-col md="8">
                     <es-video
-                        :alt-text="`
-                            ME from EnergySage talking to you about how to decide if solar panels
-                            are worth it for your needs
-                        `"
-                        cover-image-url="https://a-us.storyblok.com/f/1006159/1280x720/2cb0626421/are-solar-panels-worth-it_.jpg/m/810x0/filters:format(jpg):quality(70)"
-                        embed-url="https://www.youtube.com/embed/srBDwFZqOi0" />
+                        alt-text="Bears, beets, Battlestar Galactica."
+                        cover-image-url="https://www.placebear.com/810/456"
+                        embed-url="https://www.youtube.com/embed/dQw4w9WgXcQ" />
                 </b-col>
             </b-row>
         </div>
@@ -43,9 +39,9 @@ onMounted(async () => {
             <b-row>
                 <b-col md="8">
                     <es-video
-                        alt-text="Heat Pump FAQs"
-                        cover-image-url="https://a-us.storyblok.com/f/1006159/1280x720/72788401c8/heat-pump-faqs-2024.jpg/m/810x0/filters:format(jpg):quality(70)"
-                        embed-url="https://www.youtube.com/embed/YHOIoxkX2kI" />
+                        alt-text="The worst thing about prison was the Dementors."
+                        cover-image-url="https://www.placebear.com/810/455"
+                        embed-url="https://www.youtube.com/embed/djV11Xbc914" />
                 </b-col>
             </b-row>
         </div>
@@ -57,8 +53,8 @@ onMounted(async () => {
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/components/es-form-input.vue"
+            comp-source="es-ds-components/components/es-video.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/text-input.vue" />
+            doc-source="es-ds-docs/pages/molecules/video.vue" />
     </div>
 </template>
