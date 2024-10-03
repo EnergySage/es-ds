@@ -24,6 +24,8 @@ onMounted(async () => {
         $prism.highlight();
     }
 });
+
+const showModal = ref(false);
 </script>
 
 <template>
@@ -49,6 +51,25 @@ onMounted(async () => {
                         embed-url="https://www.youtube.com/embed/djV11Xbc914" />
                 </b-col>
             </b-row>
+        </div>
+
+        <div class="my-500">
+            <h2>Video in modal</h2>
+            <button @click="showModal = !showModal">Show/Hide Modal</button>
+            <es-modal
+                id="simple-modal"
+                hide-footer
+                :visible="showModal"
+                size="lg"
+                @hidden="showModal = false">
+                <template #modal-title> Modal Example </template>
+                <template #default>
+                    <es-video
+                        alt-text="Bears, beets, Battlestar Galactica."
+                        cover-image-url="/placeholders/810-455.jpg"
+                        embed-url="https://www.youtube.com/embed/dQw4w9WgXcQ" />
+                </template>
+            </es-modal>
         </div>
 
         <div class="mb-500">
