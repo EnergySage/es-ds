@@ -20,7 +20,7 @@ const propTableRows = [
     ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the input to a data property.'],
     ['charCount', 'Number', '5', 'Specifies the length of the verification code input.'],
 ];
-const code = ref();
+const code = ref<Array<string>>([]);
 const isSubmitInProgress = ref(false);
 
 const charCount: number = 5;
@@ -40,12 +40,12 @@ const randomCode = () => {
     setTimeout(() => {
         isSubmitInProgress.value = false;
     }, 1000);
-    return rand.join('');
+    return rand;
 };
 
 // eslint-disable-next-line no-return-assign
 const clearCode = () => {
-    return '';
+    return [];
 };
 </script>
 
@@ -66,21 +66,21 @@ const clearCode = () => {
                 :char-count="charCount"
                 :disabled="isSubmitInProgress" />
         </b-row>
-        <b-row class="mt-200 align-items-center">
+        <b-row class="m-200 align-items-center">
             <b-col
-                class="mb-100 mb-lg-0"
-                cols="10"
-                lg="4">
+                class="text-nowrap mb-100 mb-lg-0"
+                cols="12"
+                lg="6">
                 <dl class="row">
-                    <dd class="col-4">Code:</dd>
-                    <dt class="col-8">
-                        {{ code && code.split('') }}
-                    </dt>
-                    <dd class="col-4">Code(string):</dd>
+                    <dd class="col-4 mr-50 mr-lg-0">Code:</dd>
                     <dt class="col-8">
                         {{ code }}
                     </dt>
-                    <dd class="col-4">Valid:</dd>
+                    <dd class="col-4 mr-50 mr-lg-0">Code(string):</dd>
+                    <dt class="col-8">
+                        {{ code.join('') }}
+                    </dt>
+                    <dd class="col-4 mr-50 mr-lg-0">Valid:</dd>
                     <dt class="col-8">
                         {{ isValid() }}
                     </dt>
@@ -89,7 +89,7 @@ const clearCode = () => {
             <b-col
                 class="text-nowrap mb-lg-0 mb-100"
                 cols="12"
-                lg="4">
+                lg="6">
                 <es-button
                     class="mr-1"
                     :disabled="isSubmitInProgress"

@@ -1,26 +1,30 @@
 <script setup lang="ts">
 import InputOtp from 'primevue/inputotp';
 
-const model = defineModel<string>();
-const verificationCode = ref();
+const model = defineModel<Array<string>>();
+const verificationCode = ref<string>();
 
 const props = defineProps({
     charCount: {
         type: Number,
         default: 5,
     },
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const count = ref(props.charCount);
 watch(model, (newVal) => {
-    verificationCode.value = newVal;
+    verificationCode.value = newVal ? newVal.join('') : '';
 });
 
 // Note: @update:model-value is erroneously requiring a boolean function argument,
 // workaround for error is to specify any
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const updateCode = (newValue: any) => {
-    model.value = newValue;
+    model.value = newValue.split('');
 };
 </script>
 
@@ -37,7 +41,8 @@ const updateCode = (newValue: any) => {
                 <input
                     :id="index.toString()"
                     type="text"
-                    class="custom-otp-input"
+                    class="custom-otp-input form-control"
+                    :disabled="props.disabled"
                     v-bind="attrs"
                     v-on="events" />
             </template>
