@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useElementSize } from '@vueuse/core';
-
 interface IProps {
     altText: string;
     coverImageUrl: string;
@@ -8,6 +6,7 @@ interface IProps {
 }
 const props = defineProps<IProps>();
 const showVideo = ref(false);
+
 function getVideoIdFromUrl(url: string) {
     const embedPattern = /https:\/\/www\.youtube\.com\/embed\/(?<videoId>[A-Za-z0-9-]+)/;
     const parsedUrl = embedPattern.exec(url);
@@ -18,45 +17,25 @@ function getVideoIdFromUrl(url: string) {
 }
 const videoId = getVideoIdFromUrl(props.embedUrl);
 const embedUrlWithParams = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&cc_load_policy=1&cc_lang_pref=en`;
-
-const placeholderCardEl = useTemplateRef('placeholder-card');
-const cardDimensionElementSize: { width: number; height: number } = reactive(
-    useElementSize(placeholderCardEl, { width: 0, height: 0 }, { box: 'border-box' }),
-);
-const cardDimensions = reactive({
-    width: 0,
-    height: 0,
-});
-function handleLoadVideo() {
-    // Undo-reactivity to lock-in dimensions once images have loaded
-    const { width, height } = cardDimensionElementSize;
-    cardDimensions.width = width;
-    cardDimensions.height = height;
-    showVideo.value = true;
-}
 </script>
 
 <template>
     <div>
         <div
             v-if="showVideo"
-            :style="{ width: cardDimensions.width, height: cardDimensions.height }"
-            class="iframe-container">
+            class="embed-responsive embed-responsive-16by9">
             <iframe
                 :id="`youtube-video-${videoId}`"
-                :width="cardDimensions.width"
-                :height="cardDimensions.height"
                 :src="embedUrlWithParams"
-                class="overflow-hidden p-0 w-100"
+                class="embed-responsive-item"
                 frameborder="0"></iframe>
         </div>
         <es-card
             v-else
             :id="`youtube-placeholder-${videoId}`"
-            ref="placeholder-card"
             class="EsVideo-button bg-transparent overflow-hidden p-0 position-relative w-100"
             variant="interactive"
-            @click="handleLoadVideo">
+            @click="showVideo = true">
             <slot v-if="$slots.default" />
             <img
                 v-else
