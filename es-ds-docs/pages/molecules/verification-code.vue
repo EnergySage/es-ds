@@ -43,10 +43,6 @@ const randomCode = () => {
     return rand;
 };
 
-// eslint-disable-next-line no-return-assign
-const clearCode = () => {
-    return [];
-};
 </script>
 
 <template>
@@ -60,14 +56,14 @@ const clearCode = () => {
                 PrimeVue InputOtp
             </a>
         </p>
-        <b-row class="justify-content-center my-500">
+        <es-row class="justify-content-center my-500">
             <es-verification-code
                 v-model="code"
                 :char-count="charCount"
                 :disabled="isSubmitInProgress" />
-        </b-row>
-        <b-row class="m-200 align-items-center">
-            <b-col
+        </es-row>
+        <es-row class="m-200 align-items-center">
+            <es-col
                 class="text-nowrap mb-100 mb-lg-0"
                 cols="12"
                 lg="6">
@@ -85,8 +81,8 @@ const clearCode = () => {
                         {{ isValid() }}
                     </dt>
                 </dl>
-            </b-col>
-            <b-col
+            </es-col>
+            <es-col
                 class="text-nowrap mb-lg-0 mb-100"
                 cols="12"
                 lg="6">
@@ -99,11 +95,11 @@ const clearCode = () => {
                 <es-button
                     outline
                     :disabled="isSubmitInProgress"
-                    @click="code = clearCode()">
+                    @click="code = []">
                     clear code
                 </es-button>
-            </b-col>
-        </b-row>
+            </es-col>
+        </es-row>
     </div>
     <div>
         <div class="mb-500">
