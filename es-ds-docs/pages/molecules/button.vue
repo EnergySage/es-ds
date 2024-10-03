@@ -487,14 +487,14 @@ onMounted(async () => {
             <div class="mb-100">
                 <es-button class="mr-100 position-relative">
                     <span class="invisible"> Default button </span>
-                    <b-spinner
+                    <es-spinner
                         class="position-absolute"
                         label="Loading"
                         role="status" />
                 </es-button>
                 <es-button>
                     <span> Default button </span>
-                    <b-spinner
+                    <es-spinner
                         class="ml-50"
                         label="Loading"
                         role="status" />
@@ -505,14 +505,14 @@ onMounted(async () => {
                     class="mr-100 position-relative"
                     size="sm">
                     <span class="invisible"> Small button </span>
-                    <b-spinner
+                    <es-spinner
                         class="position-absolute"
                         label="Loading"
                         role="status" />
                 </es-button>
                 <es-button size="sm">
                     <span> Small button </span>
-                    <b-spinner
+                    <es-spinner
                         class="ml-50"
                         label="Loading"
                         role="status" />

@@ -77,9 +77,9 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
 
 <template>
     <div class="bg-gray-50">
-        <b-container class="py-500 py-lg-800">
-            <b-row>
-                <b-col
+        <es-container class="py-500 py-lg-800">
+            <es-row>
+                <es-col
                     md="7"
                     class="my-500 mx-auto text-center">
                     <h1 class="post1 text-gray-600">
@@ -90,10 +90,10 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
                         class="font-size-lg text-gray-600">
                         {{ errorLongMessage }}
                     </p>
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col
+                </es-col>
+            </es-row>
+            <es-row>
+                <es-col
                     v-for="(item, index) in linkItems"
                     :key="index"
                     cols="6"
@@ -113,8 +113,8 @@ const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.lo
                         </div>
                         <p class="mb-200 mb-md-0">{{ item.label }}</p>
                     </a>
-                </b-col>
-            </b-row>
-        </b-container>
+                </es-col>
+            </es-row>
+        </es-container>
     </div>
 </template>
