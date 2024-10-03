@@ -29,7 +29,7 @@ onMounted(async () => {
                 <b-col md="8">
                     <es-video
                         alt-text="Bears, beets, Battlestar Galactica."
-                        cover-image-url="https://www.placebear.com/810/456"
+                        cover-image-url="/placeholders/810-455.jpg"
                         embed-url="https://www.youtube.com/embed/dQw4w9WgXcQ" />
                 </b-col>
             </b-row>
@@ -40,7 +40,7 @@ onMounted(async () => {
                 <b-col md="8">
                     <es-video
                         alt-text="The worst thing about prison was the Dementors."
-                        cover-image-url="https://www.placebear.com/810/455"
+                        cover-image-url="/placeholders/810-456.jpg"
                         embed-url="https://www.youtube.com/embed/djV11Xbc914" />
                 </b-col>
             </b-row>
