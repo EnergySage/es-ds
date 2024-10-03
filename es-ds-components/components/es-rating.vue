@@ -117,13 +117,4 @@ const showFocus = ref(false);
         transform: scale(1.5);
     }
 }
-
-.rating {
-    .reactiveStar.focused,
-    .reactiveStar:hover {
-        .reactiveStar {
-            transform: scale(1.5);
-        }
-    }
-}
 </style>

@@ -22,10 +22,6 @@ onMounted(async () => {
 });
 
 const rating1Val = ref(0);
-watch(rating1Val, () => {
-    // eslint-disable-next-line no-alert
-    alert(rating1Val.value);
-});
 </script>
 
 <template>
@@ -44,6 +40,7 @@ watch(rating1Val, () => {
             <es-rating
                 v-model="rating1Val"
                 :read-only="false" />
+            <pre>Value: {{ rating1Val }}</pre>
             <h2 class="mt-500">Static display</h2>
             <div
                 v-for="i in 11"
