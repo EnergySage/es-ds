@@ -124,8 +124,8 @@ onMounted(async () => {
                 The <code>constrained</code> prop is set to demonstrate a limited-width container. There are no
                 differences on mobile viewports from the default example.
             </p>
-            <b-row class="justify-content-center">
-                <b-col
+            <es-row class="justify-content-center">
+                <es-col
                     cols="12"
                     lg="8"
                     xl="7">
@@ -151,8 +151,8 @@ onMounted(async () => {
                             <strong> No annoying sales pitches, and no spam calls. </strong>
                         </template>
                     </es-support-card>
-                </b-col>
-            </b-row>
+                </es-col>
+            </es-row>
         </div>
         <div class="mb-500">
             <h2>EsSupportCard props</h2>

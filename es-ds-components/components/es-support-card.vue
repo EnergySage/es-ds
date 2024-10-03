@@ -50,8 +50,8 @@ const showSecondaryCta = computed(() => {
             'px-md-100 py-md-200': constrained,
             'px-md-300': !constrained,
         }">
-        <b-row class="align-items-lg-center justify-content-xl-between">
-            <b-col
+        <es-row class="align-items-lg-center justify-content-xl-between">
+            <es-col
                 class="EsSupportCard-contentColumn d-flex flex-column justify-content-lg-center position-relative"
                 :class="{ 'pr-lg-0': constrained }"
                 cols="12"
@@ -94,8 +94,8 @@ const showSecondaryCta = computed(() => {
                     }">
                     <slot name="description" />
                 </div>
-            </b-col>
-            <b-col
+            </es-col>
+            <es-col
                 cols="12"
                 lg="4"
                 xxl="3">
@@ -116,8 +116,8 @@ const showSecondaryCta = computed(() => {
                     variant="primary">
                     {{ secondaryCtaText }}
                 </es-button>
-            </b-col>
-        </b-row>
+            </es-col>
+        </es-row>
     </es-card>
 </template>
 

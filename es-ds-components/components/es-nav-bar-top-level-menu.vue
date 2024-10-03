@@ -124,8 +124,8 @@ export default {
                     </div>
                 </div>
                 <div class="dropdown-menu dropdown-menu-full-page">
-                    <b-container class="dropdown-menu-primary justify-content-lg-center py-lg-100">
-                        <b-row class="flex-grow-1 justify-content-lg-center">
+                    <es-container class="dropdown-menu-primary justify-content-lg-center py-lg-100">
+                        <es-row class="flex-grow-1 justify-content-lg-center">
                             <div
                                 class="mb-3 mb-lg-0"
                                 :class="{
@@ -184,8 +184,8 @@ export default {
                                 :name="featuredArticle.lede"
                                 :image500="featuredArticle.image500"
                                 :image-alt="featuredArticle.imageAlt" />
-                        </b-row>
-                    </b-container>
+                        </es-row>
+                    </es-container>
                 </div>
             </div>
         </div>

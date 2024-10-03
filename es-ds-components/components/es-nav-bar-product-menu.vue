@@ -180,7 +180,7 @@ export default {
                     </div>
                     <div class="col-2" />
                 </div>
-                <b-row
+                <es-row
                     tag="ul"
                     class="d-block d-lg-flex list-unstyled">
                     <es-nav-bar-topic-menu
@@ -208,7 +208,7 @@ export default {
                             :image500="featuredArticle.image500"
                             :image-alt="featuredArticle.imageAlt" />
                     </li>
-                </b-row>
+                </es-row>
             </div>
         </div>
     </div>
