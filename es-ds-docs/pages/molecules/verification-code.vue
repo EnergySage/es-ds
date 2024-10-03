@@ -42,7 +42,6 @@ const randomCode = () => {
     }, 1000);
     return rand;
 };
-
 </script>
 
 <template>
