@@ -44,19 +44,19 @@ onMounted(async () => {
         </p>
 
         <h2>Basic examples</h2>
-        <b-row class="mb-500">
-            <b-col lg="6">
+        <es-row class="mb-500">
+            <es-col lg="6">
                 <es-skeleton
                     height="5rem" />
-            </b-col>
-        </b-row>
+            </es-col>
+        </es-row>
 
         <h2>EsSkeletonWrapper</h2>
-        <b-row class="mb-500 d-flex">
-            <b-col lg="2">
+        <es-row class="mb-500 d-flex">
+            <es-col lg="2">
                 <es-button @click="startLoading()">Reload content</es-button>
-            </b-col>
-            <b-col
+            </es-col>
+            <es-col
                 lg="8"
                 class="ml-100">
                 <es-skeleton-wrapper :loading="loading">
@@ -70,8 +70,8 @@ onMounted(async () => {
                         Maecenas viverra nunc sapien, non rhoncus elit tincidunt vitae.
                     </p>
                 </es-skeleton-wrapper>
-            </b-col>
-        </b-row>
+            </es-col>
+        </es-row>
 
         <ds-doc-source
             :comp-code="compCode"
