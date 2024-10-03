@@ -38,5 +38,12 @@
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    z-index: variables.$zindex-overlay;
+
+    &.overlay {
+      z-index: variables.$zindex-overlay;
+    }
+
+    &.overlay-modal {
+      z-index: variables.$z-index-modal-overlay;
+    }
 }
