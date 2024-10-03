@@ -44,12 +44,12 @@ const embedUrlWithParams = computed(() => `https://www.youtube.com/embed/${video
             variant="interactive"
             @click="showVideo = true">
             <slot v-if="$slots.default" />
-            <img
+            <nuxt-img
                 v-else
-                :alt="props.altText"
-                sizes="md:530px sm:275px"
                 class="EsVideo-image d-block w-100"
-                :src="props.coverImageUrl" />
+                sizes="md:530px sm:275px"
+                :src="props.coverImageUrl"
+                :alt="props.altText" />
             <icon-video-play
                 class="EsVideo-icon position-absolute abs-center"
                 :class="[ props.isInModal ? 'overlay-modal' : 'overlay' ]"
