@@ -16,6 +16,9 @@
             <ds-link to="/organisms/footer"> Footer </ds-link>
         </li>
         <li>
+            <ds-link to="/organisms/form"> Form </ds-link>
+        </li>
+        <li>
             <ds-link to="/organisms/nav-bar"> Nav bar </ds-link>
         </li>
         <li>
