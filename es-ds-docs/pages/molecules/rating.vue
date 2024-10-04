@@ -1,10 +1,4 @@
 <script setup lang="ts">
-// Event will trigger twice when using keyboard to focus due to PrimeVue bug
-const changeEvent = ($event) => {
-    // eslint-disable-next-line no-alert
-    alert($event.value);
-};
-
 const propTableRows = [
     ['rating', 'Number', '0', 'Starting rating value 0-5, with .5 values available in read only mode'],
     ['rounded', 'Boolean', 'true', 'Round rating to nearest .5'],
@@ -26,6 +20,8 @@ onMounted(async () => {
         $prism.highlight();
     }
 });
+
+const rating1Val = ref(0);
 </script>
 
 <template>
@@ -40,26 +36,31 @@ onMounted(async () => {
             </nuxt-link>
         </p>
         <div class="my-500">
-            <h2>Form Input</h2>
+            <h2>Form input</h2>
             <es-rating
-                :read-only="false"
-                @change="changeEvent" />
-            <h2 class="mt-500">Static Display</h2>
+                v-model="rating1Val"
+                :read-only="false" />
+            <pre class="pt-100">Value: {{ rating1Val }}</pre>
+            <h2 class="mt-500">Static display</h2>
             <div
                 v-for="i in 11"
                 :key="i">
                 <es-rating :rating="(i - 1) / 2" />
             </div>
         </div>
-        <div class="d-flex flex-column flex-md-row">
-            <div class="bg-gray-50 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
-                <es-rating :rating="4.5" />
-            </div>
-            <div class="bg-blue-50 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
-                <es-rating :rating="4.5" />
-            </div>
-            <div class="bg-blue-900 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
-                <es-rating :rating="4.5" />
+
+        <div class="my-500">
+            <h2>Background variations</h2>
+            <div class="d-flex flex-column flex-md-row">
+                <div class="bg-gray-50 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
+                    <es-rating :rating="4.5" />
+                </div>
+                <div class="bg-blue-50 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
+                    <es-rating :rating="4.5" />
+                </div>
+                <div class="bg-blue-900 justify-content-center d-flex p-200 mb-200 mb-md-0 mr-md-200">
+                    <es-rating :rating="4.5" />
+                </div>
             </div>
         </div>
 
