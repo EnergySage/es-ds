@@ -13,11 +13,10 @@ const COMPONENT_NAME_URLS = {
     'form-message': '/molecules/form-message',
     modal: '/molecules/modal',
     pagination: '/molecules/pagination',
-    // TODO switch popover, textarea, and verification-code to the right route once they exist
-    popover: '/molecules',
-    textarea: '/molecules',
+    popover: '/molecules/popover',
+    textarea: '/molecules/textarea',
     'text-input': '/molecules/text-input',
-    'verification-code': '/molecules',
+    'verification-code': '/molecules/verification-code',
 };
 
 const borderRadius = computed(() => {
