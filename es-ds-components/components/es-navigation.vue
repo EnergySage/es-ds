@@ -141,7 +141,7 @@ console.log('product', productBandItems);
 <template>
     <div class="es-navigation">
         <div class="es-navigation-bar position-relative">
-            <b-container>
+            <es-container>
                 <mega-menu
                     :model="topBandItems"
                     :pt="{
@@ -168,7 +168,7 @@ console.log('product', productBandItems);
                 <es-navigation-product-menu
                     class="mt-150"
                     :products="productBandItems" />
-            </b-container>
+            </es-container>
         </div>
     </div>
 </template>
