@@ -40,7 +40,7 @@ const rating1Val = ref(0);
             <es-rating
                 v-model="rating1Val"
                 :read-only="false" />
-            <pre>Value: {{ rating1Val }}</pre>
+            <pre class="pt-100">Value: {{ rating1Val }}</pre>
             <h2 class="mt-500">Static display</h2>
             <div
                 v-for="i in 11"
