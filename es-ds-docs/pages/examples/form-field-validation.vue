@@ -5,7 +5,7 @@ const state = reactive({
         password: '',
         phone: '',
         maskedPhoneNumber: '',
-        // notes: '',
+        notes: '',
     },
 });
 
@@ -19,9 +19,9 @@ const rules = {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
             [vuelidateKeys.EMAIL]: vuelidateEmail,
         },
-        // notes: {
-        //     [vuelidateKeys.REQUIRED]: vuelidateRequired,
-        // },
+        notes: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
+        },
         password: {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
             [vuelidateKeys.MIN_LENGTH]: vuelidateMinLength(8),
@@ -94,9 +94,9 @@ onMounted(async () => {
 </script>
 
 <template>
-    <b-container>
-        <b-row>
-            <b-col>
+    <es-container>
+        <es-row>
+            <es-col>
                 <h1>Form with client-side validation</h1>
                 <h2>UX Guidelines</h2>
                 <ul>
@@ -109,10 +109,10 @@ onMounted(async () => {
                         <nuxt-link to="/examples/form-validation"> Form with server error </nuxt-link> example.
                     </li>
                 </ul>
-            </b-col>
-        </b-row>
-        <b-row class="border-top pt-200 my-50">
-            <b-col
+            </es-col>
+        </es-row>
+        <es-row class="border-top pt-200 my-50">
+            <es-col
                 cols="12"
                 lg="8">
                 <form @submit.stop.prevent="onSubmit">
@@ -167,18 +167,16 @@ onMounted(async () => {
                         <template #label> Masked phone number </template>
                         <template #errorMessage> Please enter a valid phone number. </template>
                     </es-form-input>
-                    <!--                    <es-form-textarea-->
-                    <!--                        id="notes"-->
-                    <!--                        v-model="form.notes"-->
-                    <!--                        :disabled="isSubmitInProgress"-->
-                    <!--                        :state="validateState('form.notes')"-->
-                    <!--                        required-->
-                    <!--                        @change="touchOnChange('form.notes')"-->
-                    <!--                        @blur="$v.form.notes.$touch">-->
-                    <!--                        <template #label>-->
-                    <!--                            Notes-->
-                    <!--                        </template>-->
-                    <!--                    </es-form-textarea-->
+                    <es-form-textarea
+                        id="notes"
+                        v-model="state.form.notes"
+                        :disabled="isSubmitInProgress"
+                        :state="validateState('form.notes')"
+                        required
+                        @change="touchOnChange('form.notes')"
+                        @blur="v$.form.notes.$touch">
+                        <template #label> Notes </template>
+                    </es-form-textarea>
                     <div class="d-flex flex-grow-1 justify-content-end mt-200">
                         <es-button
                             type="submit"
@@ -186,7 +184,7 @@ onMounted(async () => {
                             :disabled="isSubmitInProgress">
                             <span class="w-100">
                                 <span v-if="isSubmitInProgress">
-                                    <b-spinner
+                                    <es-spinner
                                         role="status"
                                         label="Loading" />
                                 </span>
@@ -195,10 +193,10 @@ onMounted(async () => {
                         </es-button>
                     </div>
                 </form>
-            </b-col>
-        </b-row>
-        <b-row>
-            <b-col>
+            </es-col>
+        </es-row>
+        <es-row>
+            <es-col>
                 <ds-doc-source
                     :doc-code="docCode"
                     doc-source="es-ds-docs/pages/examples/form-field-validation.vue" />
@@ -239,7 +237,7 @@ onMounted(async () => {
                         for more information.
                     </p>
                 </es-collapse>
-            </b-col>
-        </b-row>
-    </b-container>
+            </es-col>
+        </es-row>
+    </es-container>
 </template>

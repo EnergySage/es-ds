@@ -58,6 +58,7 @@ export default defineNuxtConfig({
                 'primevue/datatable',
                 'primevue/dialog',
                 'primevue/inputmask',
+                'primevue/inputotp',
                 'primevue/inputtext',
                 'primevue/overlaypanel',
                 'primevue/paginator',
