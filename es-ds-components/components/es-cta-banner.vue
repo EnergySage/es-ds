@@ -93,13 +93,3 @@ const xxlSecond = computed(() => {
         </es-row>
     </es-card>
 </template>
-
-<style lang="scss" scoped>
-.es-cta-card {
-    &-subtitle {
-        :deep(p:last-child) {
-            margin-bottom: 0;
-        }
-    }
-}
-</style>
