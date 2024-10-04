@@ -31,49 +31,52 @@ const showModal = ref(false);
 <template>
     <div>
         <h1>Video</h1>
+
         <div class="my-500">
-            <b-row>
-                <b-col md="8">
+            <h2>Example 1</h2>
+            <es-row>
+                <es-col md="8">
                     <es-video
-                        alt-text="Bears, beets, Battlestar Galactica."
-                        cover-image-url="/placeholders/810-455.jpg"
-                        embed-url="https://www.youtube.com/embed/dQw4w9WgXcQ" />
-                </b-col>
-            </b-row>
+                        alt-text="EnergySage talking to you about how to decide if solar panels are worth it for your needs"
+                        cover-image-url="https://a-us.storyblok.com/f/1006159/1280x720/2cb0626421/are-solar-panels-worth-it_.jpg/m/810x0/filters:format(jpg):quality(70)"
+                        embed-url="https://www.youtube.com/embed/srBDwFZqOi0" />
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
-            <b-row>
-                <b-col md="8">
+            <h2>Example 2</h2>
+            <es-row>
+                <es-col md="8">
                     <es-video
-                        alt-text="The worst thing about prison was the Dementors."
-                        cover-image-url="/placeholders/810-456.jpg"
-                        embed-url="https://www.youtube.com/embed/djV11Xbc914" />
-                </b-col>
-            </b-row>
+                        alt-text="Heat Pump FAQs"
+                        cover-image-url="https://a-us.storyblok.com/f/1006159/1280x720/72788401c8/heat-pump-faqs-2024.jpg/m/810x0/filters:format(jpg):quality(70)"
+                        embed-url="https://www.youtube.com/embed/YHOIoxkX2kI" />
+                </es-col>
+            </es-row>
         </div>
 
         <div class="my-500">
             <h2>Video in modal</h2>
-            <button @click="showModal = !showModal">Show/Hide Modal</button>
+            <button @click="showModal = !showModal">Show/Hide modal</button>
             <es-modal
                 id="simple-modal"
                 hide-footer
                 :visible="showModal"
                 size="lg"
                 @hidden="showModal = false">
-                <template #modal-title> Modal Example </template>
+                <template #modal-title> Modal example </template>
                 <template #default>
                     <es-video
-                        alt-text="Bears, beets, Battlestar Galactica."
-                        cover-image-url="/placeholders/810-455.jpg"
-                        embed-url="https://www.youtube.com/embed/dQw4w9WgXcQ" />
+                        alt-text="Heat Pump FAQs"
+                        cover-image-url="https://a-us.storyblok.com/f/1006159/1280x720/72788401c8/heat-pump-faqs-2024.jpg/m/810x0/filters:format(jpg):quality(70)"
+                        embed-url="https://www.youtube.com/embed/YHOIoxkX2kI" />
                 </template>
             </es-modal>
         </div>
 
         <div class="mb-500">
-            <h2>Props</h2>
+            <h2>EsVideo props</h2>
             <ds-prop-table :rows="propTableRows" />
         </div>
 
