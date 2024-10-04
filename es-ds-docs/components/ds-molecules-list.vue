@@ -70,6 +70,9 @@
             <ds-link to="/molecules/text-input"> Text input </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/verification-code"> Verification code </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/video"> Video </ds-link>
         </li>
         <li>
