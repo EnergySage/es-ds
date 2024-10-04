@@ -40,7 +40,12 @@ onMounted(async () => {
                 href="https://v3.primevue.org/skeleton/"
                 target="_blank">
                 PrimeVue Skeleton
-            </nuxt-link>
+            </nuxt-link> and
+            <nuxt-link
+                href="https://bootstrap-vue.org/docs/components/skeleton/"
+                target="_blank">
+                Bootstrap Skeleton
+            </nuxt-link> styles
         </p>
 
         <h2>Basic examples</h2>
@@ -51,7 +56,9 @@ onMounted(async () => {
             </es-col>
         </es-row>
 
-        <h2>EsSkeletonWrapper</h2>
+        <h2>With helper components:</h2>
+
+        <h3>Skeleton Wrapper</h3>
         <es-row class="mb-500 d-flex">
             <es-col lg="2">
                 <es-button @click="startLoading()">Reload content</es-button>
@@ -70,6 +77,23 @@ onMounted(async () => {
                         Maecenas viverra nunc sapien, non rhoncus elit tincidunt vitae.
                     </p>
                 </es-skeleton-wrapper>
+            </es-col>
+        </es-row>
+
+        <h3>Skeleton Image</h3>
+        <es-row class="mb-500 d-flex">
+            <es-col lg="6">
+                <es-skeleton-img />
+            </es-col>
+            <es-col lg="6">
+                <es-skeleton-img aspect="3:1" />
+            </es-col>
+            <es-col
+                cols="12"
+                class="mt-100">
+                <es-skeleton-img
+                    no-aspect
+                    height="5rem" />
             </es-col>
         </es-row>
 
