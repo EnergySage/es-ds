@@ -67,7 +67,7 @@
             <ds-link to="/molecules/tabs"> Tabs </ds-link>
         </li>
         <li>
-            <ds-link to="/molecules/form-textarea"> Textarea </ds-link>
+            <ds-link to="/molecules/textarea"> Textarea </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/text-input"> Text input </ds-link>

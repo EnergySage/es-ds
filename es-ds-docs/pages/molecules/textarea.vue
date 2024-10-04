@@ -10,7 +10,7 @@ onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-form-textarea.vue?raw');
         // eslint-disable-next-line import/no-self-import
-        const docSource = await import('./form-textarea.vue?raw');
+        const docSource = await import('./textarea.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
@@ -161,6 +161,6 @@ const propTableRows = [
             :comp-code="compCode"
             comp-source="es-ds-components/components/es-form-textarea.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/form-textarea.vue" />
+            doc-source="es-ds-docs/pages/molecules/textarea.vue" />
     </div>
 </template>
