@@ -50,6 +50,15 @@ const props = defineProps({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         default: (val: any) => val,
     },
+    /**
+     * Function that modifies tooltip value
+     */
+    tooltipFormatter: {
+        type: Function,
+        required: false,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        default: (val: any) => val,
+    },
 });
 
 // allow use of v-model on this component
@@ -75,9 +84,8 @@ model.value = props.startingValue;
                 },
                 handle: {
                     class: 'slider-handle',
-                }
-            }"
-        />
+                },
+            }" />
 
         <div class="d-flex flex-row justify-content-between">
             <span>{{ labelFormatter(min) }}</span>
@@ -126,7 +134,7 @@ model.value = props.startingValue;
     bottom: 27px;
     box-shadow: 0 1px 6px 0 rgba(34, 38, 51, 0.25);
     color: variables.$white;
-    content: v-bind("`'${labelFormatter(model)}'`");
+    content: v-bind("`'${tooltipFormatter(model)}'`");
     display: flex;
     font-weight: variables.$font-weight-boldest;
     height: 52px;

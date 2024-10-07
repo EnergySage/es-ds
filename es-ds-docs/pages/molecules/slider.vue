@@ -12,7 +12,8 @@ const propTableRows = [
     ['max', 'Number', '100', 'Required. Maximum value of slider.'],
     ['step', 'Number', '1', 'Step factor to increment/decrement the value.'],
     ['aria-label', 'String', '"Pick a number"', 'Aria-label for slider handle.'],
-    ['label-formatter', 'Function', 'n/a', 'Function that modifies label value.'],
+    ['label-formatter', 'Function', 'n/a', 'Function that modifies min and max labels.'],
+    ['tooltip-formatter', 'Function', 'n/a', 'Function that modifies tooltip label.'],
 ];
 
 const { $prism } = useNuxtApp();
@@ -53,10 +54,8 @@ onMounted(async () => {
                 :step="step"
                 :starting-value="startValue"
                 :aria-label="ariaLabel"
-                :label-formatter="(val) => `$${val}`" />
-            <pre>
-                sliderVal: {{ sliderVal }}
-            </pre>
+                :label-formatter="(val) => `$${val}`"
+                :tooltip-formatter="(val) => `$${val}`" />
         </div>
 
         <div class="mb-500">
