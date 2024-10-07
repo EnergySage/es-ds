@@ -55,9 +55,6 @@ const props = defineProps({
 // allow use of v-model on this component
 const model = defineModel<number | number[]>();
 model.value = props.startingValue;
-function handleSliderUpdate(newVal: number | number[]) {
-    model.value = newVal;
-}
 </script>
 
 <template>
@@ -80,7 +77,7 @@ function handleSliderUpdate(newVal: number | number[]) {
                     class: 'slider-handle',
                 }
             }"
-            @update:model-value="handleSliderUpdate" />
+        />
 
         <div class="d-flex flex-row justify-content-between">
             <span>{{ labelFormatter(min) }}</span>
