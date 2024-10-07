@@ -1,5 +1,6 @@
 <script setup>
-const model = ref(null);
+const startValue = 150;
+const sliderVal = ref(startValue);
 const min = ref(0);
 const max = ref(1000);
 const step = ref(50);
@@ -46,13 +47,16 @@ onMounted(async () => {
 
         <div class="my-500">
             <es-slider
-                v-model="model"
+                v-model="sliderVal"
                 :min="min"
                 :max="max"
                 :step="step"
-                :starting-value="150"
+                :starting-value="startValue"
                 :aria-label="ariaLabel"
                 :label-formatter="(val) => `$${val}`" />
+            <pre>
+                sliderVal: {{ sliderVal }}
+            </pre>
         </div>
 
         <div class="mb-500">

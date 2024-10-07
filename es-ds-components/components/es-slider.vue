@@ -47,14 +47,13 @@ const props = defineProps({
     labelFormatter: {
         type: Function,
         required: false,
-        default: (val) => val,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        default: (val: any) => val,
     },
 });
 
 // allow use of v-model on this component
-const model = defineModel<number>();
-
-// set starting value
+const model = defineModel<number | number[]>();
 model.value = props.startingValue;
 </script>
 
@@ -76,8 +75,9 @@ model.value = props.startingValue;
                 },
                 handle: {
                     class: 'slider-handle',
-                },
-            }" />
+                }
+            }"
+        />
 
         <div class="d-flex flex-row justify-content-between">
             <span>{{ labelFormatter(min) }}</span>
@@ -126,7 +126,7 @@ model.value = props.startingValue;
     bottom: 27px;
     box-shadow: 0 1px 6px 0 rgba(34, 38, 51, 0.25);
     color: variables.$white;
-    content: attr(aria-valuenow);
+    content: v-bind("`'${labelFormatter(model)}'`");
     display: flex;
     font-weight: variables.$font-weight-boldest;
     height: 52px;
