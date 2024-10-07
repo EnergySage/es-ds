@@ -6,7 +6,7 @@ const propTableRows = [
         'embed-url',
         'String',
         'n/a',
-        'Required. The embed URL following the format https://www.youtube.com/embed/:video-id',
+        'Required. The embed URL following the format https://www.youtube.com/embed/[video id]',
     ],
 ];
 
@@ -24,8 +24,6 @@ onMounted(async () => {
         $prism.highlight();
     }
 });
-
-const showModal = ref(false);
 </script>
 
 <template>
@@ -54,25 +52,6 @@ const showModal = ref(false);
                         embed-url="https://www.youtube.com/embed/YHOIoxkX2kI" />
                 </es-col>
             </es-row>
-        </div>
-
-        <div class="my-500">
-            <h2>Video in modal</h2>
-            <button @click="showModal = !showModal">Show/Hide modal</button>
-            <es-modal
-                id="simple-modal"
-                hide-footer
-                :visible="showModal"
-                size="lg"
-                @hidden="showModal = false">
-                <template #modal-title> Modal example </template>
-                <template #default>
-                    <es-video
-                        alt-text="Heat Pump FAQs"
-                        cover-image-url="https://a-us.storyblok.com/f/1006159/1280x720/72788401c8/heat-pump-faqs-2024.jpg/m/810x0/filters:format(jpg):quality(70)"
-                        embed-url="https://www.youtube.com/embed/YHOIoxkX2kI" />
-                </template>
-            </es-modal>
         </div>
 
         <div class="mb-500">
