@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="es-skeleton-wrapper">
+    <div>
         <slot
             v-if="loading"
             name="loading" />

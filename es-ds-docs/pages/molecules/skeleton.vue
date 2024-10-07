@@ -21,14 +21,14 @@ const esSkeletonProps = [
     ['size', 'String', 'null', `Manually set width and height, overriding 'height' and 'width' props`],
 ];
 
-const esSkeletonWrapperProps = [
-    ['loading', 'Boolean', 'false', `Determines whether to show loading template or default content`],
-];
-
 const esSkeletonImgProps = [
     ['aspect', 'String', '16:9', `Adds a container around the skeleton image with given aspect ratio`],
     ['noAspect', 'Boolean', 'false', `Override the default aspect ratio and height, width, or size`],
-    ['...EsSkeleton props', '...', '...', `Takes all 'esSkeleton' props shown above`],
+    ...esSkeletonProps,
+];
+
+const esSkeletonWrapperProps = [
+    ['loading', 'Boolean', 'false', `Determines whether to show loading template or default content`],
 ];
 
 const { $prism } = useNuxtApp();
@@ -68,7 +68,7 @@ onMounted(async () => {
         </p>
 
         <h2>Basic examples</h2>
-        <p>Wave Animation:</p>
+        <p>Wave animation:</p>
         <es-row class="mb-200">
             <es-col lg="6">
                 <es-skeleton />
@@ -85,7 +85,7 @@ onMounted(async () => {
             </es-col>
         </es-row>
 
-        <p>Fade Animation:</p>
+        <p>Fade animation:</p>
         <es-row class="mb-500">
             <es-col lg="6">
                 <es-skeleton
@@ -101,29 +101,7 @@ onMounted(async () => {
 
         <h2>Helper components</h2>
 
-        <h3>Skeleton Wrapper</h3>
-        <es-row class="mb-500 d-flex">
-            <es-col lg="2">
-                <es-button @click="startLoading()">Reload content</es-button>
-            </es-col>
-            <es-col
-                lg="8"
-                class="ml-100">
-                <es-skeleton-wrapper :loading="loading">
-                    <template #loading>
-                        <es-skeleton width="85%"></es-skeleton>
-                        <es-skeleton width="55%"></es-skeleton>
-                    </template>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra nunc sapien, non
-                        rhoncus elit tincidunt vitae.
-                    </p>
-                </es-skeleton-wrapper>
-            </es-col>
-        </es-row>
-
-        <h3>Skeleton Image</h3>
+        <h3>Skeleton image</h3>
         <es-row class="mb-500 d-flex">
             <es-col lg="6">
                 <es-skeleton-img />
@@ -140,19 +118,44 @@ onMounted(async () => {
             </es-col>
         </es-row>
 
+        <h3>Skeleton wrapper</h3>
+        <es-row class="mb-500 d-flex">
+            <es-col
+                cols="12"
+                lg="3"
+                class="mb-100 mb-lg-0">
+                <es-button @click="startLoading()">Reload content</es-button>
+            </es-col>
+            <es-col
+                lg="7"
+                class="ml-lg-100">
+                <es-skeleton-wrapper :loading="loading">
+                    <template #loading>
+                        <es-skeleton width="85%"></es-skeleton>
+                        <es-skeleton width="55%"></es-skeleton>
+                    </template>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra nunc sapien, non
+                        rhoncus elit tincidunt vitae.
+                    </p>
+                </es-skeleton-wrapper>
+            </es-col>
+        </es-row>
+
         <div class="my-500">
             <h2>EsSkeleton props</h2>
             <ds-prop-table :rows="esSkeletonProps" />
         </div>
 
         <div class="my-500">
-            <h2>EsSkeletonWrapper props</h2>
-            <ds-prop-table :rows="esSkeletonWrapperProps" />
+            <h2>EsSkeletonImg props</h2>
+            <ds-prop-table :rows="esSkeletonImgProps" />
         </div>
 
         <div class="my-500">
-            <h2>EsSkeletonImg props</h2>
-            <ds-prop-table :rows="esSkeletonImgProps" />
+            <h2>EsSkeletonWrapper props</h2>
+            <ds-prop-table :rows="esSkeletonWrapperProps" />
         </div>
 
         <ds-doc-source
