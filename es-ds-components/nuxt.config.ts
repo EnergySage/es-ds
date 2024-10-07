@@ -67,6 +67,7 @@ export default defineNuxtConfig({
                 'primevue/radiobutton',
                 'primevue/rating',
                 'primevue/skeleton',
+                'primevue/slider',
                 'primevue/tabpanel',
                 'primevue/tabview',
             ],
