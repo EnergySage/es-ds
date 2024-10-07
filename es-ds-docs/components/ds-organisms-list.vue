@@ -4,6 +4,9 @@
             <ds-link to="/organisms/carousel"> Carousel </ds-link>
         </li>
         <li>
+            <ds-link to="/organisms/cta-banner"> CTA banner </ds-link>
+        </li>
+        <li>
             <ds-link to="/organisms/cta-card"> CTA card </ds-link>
         </li>
         <li>
@@ -14,6 +17,9 @@
         </li>
         <li>
             <ds-link to="/organisms/footer"> Footer </ds-link>
+        </li>
+        <li>
+            <ds-link to="/organisms/form"> Form </ds-link>
         </li>
         <li>
             <ds-link to="/organisms/nav-bar"> Nav bar </ds-link>
