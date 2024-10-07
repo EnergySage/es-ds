@@ -126,7 +126,7 @@ model.value = props.startingValue;
     bottom: 27px;
     box-shadow: 0 1px 6px 0 rgba(34, 38, 51, 0.25);
     color: variables.$white;
-    content: v-bind("`'${model}'`");
+    content: v-bind("`'${labelFormatter(model)}'`");
     display: flex;
     font-weight: variables.$font-weight-boldest;
     height: 52px;
