@@ -11,7 +11,7 @@ defineProps({
     <div class="es-skeleton-wrapper">
         <slot
             v-if="loading"
-            name="loading"  />
+            name="loading" />
         <slot v-else />
     </div>
 </template>

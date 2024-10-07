@@ -9,20 +9,20 @@ const asyncTimeout = async (seconds = 3) => {
 };
 
 const startLoading = async () => {
-    loading.value=true;
+    loading.value = true;
     await asyncTimeout();
-    loading.value=false;
+    loading.value = false;
 };
 
 const esSkeletonProps = [
     ['animation', 'String', 'wave', `Options are 'wave', 'fade', or 'none'`],
     ['height', 'String', '1rem', `Manually set height`],
     ['width', 'String', 'auto', `Manually set width`],
-    ['size', 'String', 'null', `Manually set width and height, overriding 'height' and 'width' props`]
+    ['size', 'String', 'null', `Manually set width and height, overriding 'height' and 'width' props`],
 ];
 
 const esSkeletonWrapperProps = [
-    ['loading', 'Boolean', 'false', `Determines whether to show loading template or default content`]
+    ['loading', 'Boolean', 'false', `Determines whether to show loading template or default content`],
 ];
 
 const esSkeletonImgProps = [
@@ -57,12 +57,14 @@ onMounted(async () => {
                 href="https://v3.primevue.org/skeleton/"
                 target="_blank">
                 PrimeVue Skeleton
-            </nuxt-link> and
+            </nuxt-link>
+            and
             <nuxt-link
                 href="https://bootstrap-vue.org/docs/components/skeleton/"
                 target="_blank">
                 Bootstrap Skeleton
-            </nuxt-link> styles
+            </nuxt-link>
+            styles
         </p>
 
         <h2>Basic examples</h2>
@@ -71,14 +73,12 @@ onMounted(async () => {
             <es-col lg="6">
                 <es-skeleton />
                 <es-skeleton width="75%" />
-                <es-skeleton
-                    height="3rem" />
+                <es-skeleton height="3rem" />
             </es-col>
             <es-col
                 lg="6"
                 class="d-flex">
-                <es-skeleton
-                    size="5rem" />
+                <es-skeleton size="5rem" />
                 <es-skeleton
                     size="4rem"
                     class="rounded-circle ml-100" />
@@ -89,9 +89,9 @@ onMounted(async () => {
         <es-row class="mb-500">
             <es-col lg="6">
                 <es-skeleton
-                        animation="fade"
-                        height="33px"
-                        width="100%" />
+                    animation="fade"
+                    height="33px"
+                    width="100%" />
                 <es-skeleton
                     animation="fade"
                     height="25px"
@@ -116,8 +116,8 @@ onMounted(async () => {
                     </template>
 
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Maecenas viverra nunc sapien, non rhoncus elit tincidunt vitae.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra nunc sapien, non
+                        rhoncus elit tincidunt vitae.
                     </p>
                 </es-skeleton-wrapper>
             </es-col>
@@ -154,7 +154,6 @@ onMounted(async () => {
             <h2>EsSkeletonImg props</h2>
             <ds-prop-table :rows="esSkeletonImgProps" />
         </div>
-
 
         <ds-doc-source
             :comp-code="compCode"
