@@ -14,6 +14,23 @@ const startLoading = async () => {
     loading.value=false;
 };
 
+const esSkeletonProps = [
+    ['animation', 'String', 'wave', `Options are 'wave', 'fade', or 'none'`],
+    ['height', 'String', '1rem', `Manually set height`],
+    ['width', 'String', 'auto', `Manually set width`],
+    ['size', 'String', 'null', `Manually set width and height, overriding 'height' and 'width' props`]
+];
+
+const esSkeletonWrapperProps = [
+    ['loading', 'Boolean', 'false', `Determines whether to show loading template or default content`]
+];
+
+const esSkeletonImgProps = [
+    ['aspect', 'String', '16:9', `Adds a container around the skeleton image with given aspect ratio`],
+    ['noAspect', 'Boolean', 'false', `Override the default aspect ratio and height, width, or size`],
+    ['...EsSkeleton props', '...', '...', `Takes all 'esSkeleton' props shown above`],
+];
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -49,14 +66,40 @@ onMounted(async () => {
         </p>
 
         <h2>Basic examples</h2>
-        <es-row class="mb-500">
+        <p>Wave Animation:</p>
+        <es-row class="mb-200">
             <es-col lg="6">
+                <es-skeleton />
+                <es-skeleton width="75%" />
                 <es-skeleton
-                    height="5rem" />
+                    height="3rem" />
+            </es-col>
+            <es-col
+                lg="6"
+                class="d-flex">
+                <es-skeleton
+                    size="5rem" />
+                <es-skeleton
+                    size="4rem"
+                    class="rounded-circle ml-100" />
             </es-col>
         </es-row>
 
-        <h2>With helper components:</h2>
+        <p>Fade Animation:</p>
+        <es-row class="mb-500">
+            <es-col lg="6">
+                <es-skeleton
+                        animation="fade"
+                        height="33px"
+                        width="100%" />
+                <es-skeleton
+                    animation="fade"
+                    height="25px"
+                    width="100%" />
+            </es-col>
+        </es-row>
+
+        <h2>Helper components</h2>
 
         <h3>Skeleton Wrapper</h3>
         <es-row class="mb-500 d-flex">
@@ -96,6 +139,22 @@ onMounted(async () => {
                     height="5rem" />
             </es-col>
         </es-row>
+
+        <div class="my-500">
+            <h2>EsSkeleton props</h2>
+            <ds-prop-table :rows="esSkeletonProps" />
+        </div>
+
+        <div class="my-500">
+            <h2>EsSkeletonWrapper props</h2>
+            <ds-prop-table :rows="esSkeletonWrapperProps" />
+        </div>
+
+        <div class="my-500">
+            <h2>EsSkeletonImg props</h2>
+            <ds-prop-table :rows="esSkeletonImgProps" />
+        </div>
+
 
         <ds-doc-source
             :comp-code="compCode"
