@@ -1570,9 +1570,7 @@ $popover-body-padding-x:            1rem !default;
 $popover-arrow-width:               1.44rem !default;
 $popover-arrow-height:              0.9rem !default;
 $popover-arrow-color:               $black !default;
-
-// asdf
-$popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
+$popover-arrow-outer-color:         color.adjust($popover-border-color, $alpha: .05) !default;
 
 
 // Toasts
