@@ -50,7 +50,7 @@ const embedUrlWithParams = computed(
                 :src="props.coverImageUrl"
                 :alt="props.altText" />
             <icon-video-play
-                class="EsVideo-icon position-absolute abs-center overlay"
+                class="EsVideo-icon position-absolute abs-center"
                 width="74px"
                 height="54px" />
         </es-card>
