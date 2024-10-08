@@ -66,6 +66,7 @@ export default defineNuxtConfig({
                 'primevue/progressbar',
                 'primevue/radiobutton',
                 'primevue/rating',
+                'primevue/skeleton',
                 'primevue/slider',
                 'primevue/tabpanel',
                 'primevue/tabview',

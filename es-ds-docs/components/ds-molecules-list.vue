@@ -58,6 +58,9 @@
             <ds-link to="/molecules/rating"> Rating </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/skeleton"> Skeleton </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/slider"> Slider </ds-link>
         </li>
         <li>
