@@ -15,9 +15,12 @@ const aspectRatio = computed(() => `${(parseFloat(aspects[1]) / parseFloat(aspec
 </script>
 
 <template>
+    <!-- if noAspect is set, pass along to esSkeleton with all other props -->
     <es-skeleton
         v-if="noAspect"
         v-bind="$attrs" />
+    <!-- if setting the aspect ratio, wrap skeleton in containers to determine responsive size  -->
+    <!-- based on Bootstrap Aspect -->
     <div
         v-else
         class="d-flex">

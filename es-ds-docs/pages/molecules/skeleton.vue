@@ -25,7 +25,7 @@ const esSkeletonImgProps = [
     ['aspect', 'String', '16:9', `Adds a container around the skeleton image with given aspect ratio`],
     ['noAspect', 'Boolean', 'false', `Override the default aspect ratio and height, width, or size`],
     ...esSkeletonProps,
-];
+].sort((a, b) => a[0].localeCompare(b[0]));
 
 const esSkeletonWrapperProps = [
     ['loading', 'Boolean', 'false', `Determines whether to show loading template or default content`],
