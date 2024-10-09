@@ -16,6 +16,9 @@ const props = defineProps({
         type: String,
         default: null,
     },
+    /**
+     * Indicates whether or not the slider should be disabled
+     */
     disabled: {
         type: Boolean,
         default: false,
@@ -29,14 +32,6 @@ const props = defineProps({
         default: (val: any) => val,
     },
     /**
-     * Minimum value of slider
-     */
-    min: {
-        type: Number,
-        required: true,
-        default: 1,
-    },
-    /**
      * Maximum value of slider
      */
     max: {
@@ -45,12 +40,19 @@ const props = defineProps({
         default: 100,
     },
     /**
+     * Minimum value of slider
+     */
+    min: {
+        type: Number,
+        required: true,
+        default: 1,
+    },
+    /**
      * Starting value of slider thumb
      */
     startingValue: {
         type: Number,
-        required: true,
-        default: 1,
+        default: null,
     },
     /**
      * Step increment
@@ -70,8 +72,9 @@ const props = defineProps({
 });
 
 // allow use of v-model on this component
+// and only use props.startingValue if it's provided, otherwise use the value from the v-model
 const model = defineModel<number | number[]>();
-model.value = props.startingValue;
+model.value = props.startingValue !== null ? props.startingValue : model.value;
 </script>
 
 <template>
@@ -96,8 +99,13 @@ model.value = props.startingValue;
                     class: 'es-slider-handle',
                 },
             }" />
-
-        <div class="es-slider-labels d-flex flex-row font-weight-bold justify-content-between text-gray-700">
+        <!--
+            this is aria-hidden because the slider already uses the aria-valuemin and aria-value-max
+            attributes to indicate the minimum and maximum value, so these labels are just for visual users
+        -->
+        <div
+            aria-hidden
+            class="es-slider-labels d-flex flex-row font-weight-bold justify-content-between text-gray-700">
             <span>{{ labelFormatter(min) }}</span>
             <span>{{ labelFormatter(max) }}</span>
         </div>
