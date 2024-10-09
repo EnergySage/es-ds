@@ -82,6 +82,7 @@ model.value = props.startingValue !== null ? props.startingValue : model.value;
         <slider
             v-model="model"
             v-bind="$attrs"
+            :aria-disabled="disabled"
             :disabled="disabled"
             :min="min"
             :max="max"

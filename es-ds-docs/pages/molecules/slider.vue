@@ -100,21 +100,22 @@ onMounted(async () => {
         </div>
 
         <div class="my-450">
-            <h2>Manual data binding</h2>
-            <p class="mb-300">
+            <h2>Manual data binding and aria label</h2>
+            <p>
                 Though two-day data binding via <code>v-model</code> is recommended, it's also possible to use the
                 <code>startingValue</code> prop and listen to the <code>@change</code> event to hook up the slider to a
                 variable.
             </p>
-            <h3
-                id="credit-score-label"
-                class="mb-500 text-center">
-                What is the minimum credit score necessary to qualify?
-            </h3>
+            <p class="mb-300">
+                This example also shows using <code>ariaLabel</code> instead of <code>ariaLabelledby</code> to describe
+                the purpose of the slider to screen reader users.
+            </p>
+
+            <h3 class="mb-500 text-center">What is the minimum credit score necessary to qualify?</h3>
             <es-row class="justify-content-center">
                 <es-col cols="10">
                     <es-slider
-                        aria-labelledby="credit-score-label"
+                        aria-label="What is the minimum credit score necessary to qualify?"
                         :min="0"
                         :max="800"
                         :starting-value="creditScore"
@@ -187,6 +188,11 @@ onMounted(async () => {
                 practices and because the PrimeVue component doesn't support display of labeled marks at arbitrary
                 points along the slider, minimum and maximum labels will now always display at the start and end of the
                 slider, and the <code>marks</code> prop is no longer available.
+            </p>
+            <p>
+                A function could also be passed to the <code>marks</code> prop to act as both a label formatter and an
+                indication of which values on the slider should be labeled. The label formatting part of this is now
+                handled by the <code>labelFormatter</code> prop.
             </p>
         </es-collapse>
     </div>
