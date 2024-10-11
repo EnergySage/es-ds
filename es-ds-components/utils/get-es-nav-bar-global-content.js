@@ -306,6 +306,10 @@ export default (
                         },
                         {
                             name: 'Financing',
+                            link: `${ES_DOMAIN}/financing/`,
+                        },
+                        {
+                            name: 'Solar loan providers',
                             link: `${ES_DOMAIN}/solar/financing/loan-providers/`,
                         },
                         {
@@ -397,6 +401,10 @@ export default (
                 {
                     name: 'Heat pump incentives',
                     link: `${ES_DOMAIN}/heat-pumps/heat-pump-incentives/`,
+                },
+                {
+                    name: 'Financing',
+                    link: `${ES_DOMAIN}/financing/`,
                 },
                 {
                     name: 'Get personalized quotes',
