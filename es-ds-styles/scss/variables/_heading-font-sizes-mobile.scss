@@ -1,0 +1,11 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  h1: variables.$h1-font-size;
+  h2: variables.$h2-font-size;
+  h3: variables.$h3-font-size;
+  h4: variables.$h4-font-size;
+  h5: variables.$h5-font-size;
+  h6: variables.$h6-font-size;
+}

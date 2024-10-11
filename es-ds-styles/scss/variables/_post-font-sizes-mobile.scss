@@ -1,0 +1,8 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  post1: variables.$post1-font-size;
+  post2: variables.$post2-font-size;
+  post3: variables.$post3-font-size;
+}
