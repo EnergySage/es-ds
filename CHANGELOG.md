@@ -426,7 +426,7 @@ the new `showPrivacySection` prop
   - Truncated display name
   - Emit the file name as payload for emitted events
 - Added a `humanReadable` field to the `mime-type-finder` utils to support better error handling
-- The internal `DsResponsiveTable` component used to generate slots and props documentation on the `Typography`,`EsCard`, `EsFileInput`, `EsFileThumbnail`, and `EsSupportCard` pages now has the ability to customize its column widths to match the layout grid in the same manner as `<b-col>` by taking breakpoint props for `md` and up
+- The internal `DsResponsiveTable` component used to generate slots and props documentation on the `Typography`,`EsCard`, `EsFileInput`, `EsFileThumbnail`, and `EsSupportCard` pages now has the ability to customize its column widths to match the layout grid in the same manner as `<es-col>` by taking breakpoint props for `md` and up
 
 ## [0.23.2] - 2023-07-13
 
