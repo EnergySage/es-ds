@@ -46,9 +46,13 @@
   background-clip: padding-box;
   border: variables.$modal-content-border-width solid variables.$modal-content-border-color;
   @include border-radius.border-radius(variables.$modal-content-border-radius);
-  @include box-shadow.box-shadow(variables.$modal-content-box-shadow-xs);
   // Remove focus outline from opened modal
   outline: 0;
+  padding: variables.$modal-padding-mobile;
+
+  @include breakpoints.media-breakpoint-up(lg) {
+    padding: variables.$modal-padding-desktop;
+  }
 }
 
 // Modal background
@@ -72,9 +76,9 @@
   display: flex;
   align-items: flex-start; // so the close btn always stays on the upper right corner
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
-  padding: variables.$modal-header-padding;
   border-bottom: variables.$modal-header-border-width solid variables.$modal-header-border-color;
   @include border-radius.border-top-radius(variables.$modal-content-inner-border-radius);
+  margin-bottom: variables.$modal-header-body-spacing;
 
   .close {
     padding: variables.$modal-header-padding;
@@ -96,7 +100,6 @@
   // Enable `flex-grow: 1` so that the body take up as much space as possible
   // when there should be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
-  padding: variables.$modal-inner-padding;
 }
 
 // Footer (for actions)
@@ -105,16 +108,16 @@
   flex-wrap: wrap;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: variables.$modal-footer-padding-top variables.$modal-footer-padding-x variables.$modal-footer-padding-bottom;
+  padding-top: variables.$modal-footer-padding-top;
   position: relative;
   @include border-radius.border-bottom-radius(variables.$modal-content-inner-border-radius);
 
   &::before {
     border-top: variables.$modal-footer-border-width solid variables.$modal-footer-border-color;
     content: '';
-    left: variables.$modal-footer-padding-x;
+    left: 0;
     position: absolute;
-    right: variables.$modal-footer-padding-x;
+    right: 0;
     top: variables.$modal-footer-padding-bottom;
   }
 
@@ -158,10 +161,6 @@
       height: functions.subtract(100vh, variables.$modal-dialog-margin-y-sm-up * 2);
       height: min-content;
     }
-  }
-
-  .modal-content {
-    box-shadow: variables.$modal-content-box-shadow-sm-up;
   }
 
   .modal-sm {

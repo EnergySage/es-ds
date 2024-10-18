@@ -67,17 +67,7 @@ onMounted(async () => {
                         aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos. Praesent non
                         gravida leo, quis ultrices mi. Aliquam erat volutpat. Donec sed orci. Quisque felis est, et
                         cursus diam facilisis quis. Integer fermentum mauris ut metus dignissim, sed ligula finibus.
-                        Donec non sem tempus nulla lobortis elementum at a sapien. Sed ut elit. dignissim lobortis
-                        varius. Duis sollicitudin justo vel augue eleifend interdum. Mauris a ligula lorem pulvinar
-                        viverra. Integer arcu erat, bibendum quis est sit amet, volutpat aliquam lacus. volutpat odio
-                        vitae lacinia semper. Nulla sit amet iaculis lacus, sit amet tempor nisi. Donec vitae lacus vel
-                        aliquam. Maecenas vitae scelerisque elit. Vestibulum ante ipsum in faucibus orci luctus et
-                        ultrices posuere cubilia curae; Pellentesque nisi dolor, lobortis eu ut, feugiat quis erat.Orci
-                        varius natoque penatibus et magnis dis parturient montes, ridiculus mus. Integer mauris ipsum,
-                        suscipit nec lobortis pulvinar, finibus accumsan felis. Nullam consequat auctor. Duis non
-                        efficitur ante. Morbi malesuada, nunc non imperdiet, enim lectus dapibus purus, at vestibulum
-                        elit tellus id eros. Vestibulum volutpat ex, a faucibus tortor posuere non. Integer in risus in
-                        justo efficitur semper. In hac habitasse dictumst. Vestibulum vitae semper turpis.
+                        Donec non sem tempus nulla lobortis elementum at a sapien.
                     </p>
                 </template>
             </es-modal>
