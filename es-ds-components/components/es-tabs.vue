@@ -11,7 +11,7 @@ const panels = useSlots().default?.() || [];
 // keep track of the active tab index
 //  - from above, if v-model is used
 //  - from below, if the tab component receives a click
-const activeIndex = ref(0);
+const activeIndex = ref(model.value || 0);
 
 // watch the v-model for changes and update the active index if it does change
 watch(model, (newVal) => {

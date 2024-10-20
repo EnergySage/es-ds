@@ -1,5 +1,5 @@
 <script setup>
-const tabIndexProgrammatic = ref(0);
+const tabIndexProgrammatic = ref(1);
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
