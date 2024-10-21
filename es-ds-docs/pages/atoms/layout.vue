@@ -36,12 +36,12 @@ const breakpointTableItems = [
 
 // Name, type, required, default value, description
 const esColProps = [
-    ['cols', 'string', 'False', `''`, 'Number of columns to span'],
-    ['sm', 'string', 'False', `''`, 'Number of columns to span in the sm breakpoint'],
-    ['md', 'string', 'False', `''`, 'Number of columns to span in the md breakpoint'],
-    ['lg', 'string', 'False', `''`, 'Number of columns to span in the lg breakpoint'],
-    ['xl', 'string', 'False', `''`, 'Number of columns to span in the xl breakpoint'],
-    ['xxl', 'string', 'False', `''`, 'Number of columns to span in the xxl breakpoint'],
+    ['cols', 'string', 'n/a', 'Number of columns to span'],
+    ['sm', 'string', 'n/a', 'Number of columns to span in the sm breakpoint and above'],
+    ['md', 'string', 'n/a', 'Number of columns to span in the md breakpoint and above'],
+    ['lg', 'string', 'n/a', 'Number of columns to span in the lg breakpoint and above'],
+    ['xl', 'string', 'n/a', 'Number of columns to span in the xl breakpoint and above'],
+    ['xxl', 'string', 'n/a', 'Number of columns to span in the xxl breakpoint and above'],
 ];
 
 const { $prism } = useNuxtApp();
@@ -78,10 +78,15 @@ onMounted(async () => {
             <nuxt-link
                 to="https://bootstrap-vue.org/docs/components/layout"
                 target="_blank">
-                Bootstrap Vue layout
-            </nuxt-link>
-            but only supporting a sub-set of APIs for <code>b-row</code>, <code>b-col</code>, and
-            <code>b-container</code>
+                Bootstrap Vue layout </nuxt-link
+            >. <code>es-container</code>, <code>es-row</code>, and <code>es-col</code> are based on
+            <code>b-container</code>, <code>b-row</code>, and <code>b-col</code> respectively, but support only a
+            subset of props as documented below.
+        </p>
+        <p>
+            The subset of props should be sufficient to cover our existing use cases, and allow doing a global find and
+            replace for <code>b-container</code> to <code>es-container</code>
+            (for example) to migrate to the V3 design system.
         </p>
         <h2 class="mt-200">Responsive breakpoints</h2>
         <p>At each breakpoint above extra small (xs), the content is constrained to the max width listed below.</p>

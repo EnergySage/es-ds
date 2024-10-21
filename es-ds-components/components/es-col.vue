@@ -14,7 +14,7 @@ const undefinedSize = !(props.cols || props.sm || props.md || props.lg || props.
 <template>
     <div
         :class="{
-            'col': undefinedSize,
+            col: undefinedSize,
             [`col-${cols}`]: cols,
             [`col-sm-${sm}`]: sm,
             [`col-md-${md}`]: md,
