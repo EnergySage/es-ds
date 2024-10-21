@@ -62,22 +62,28 @@ onMounted(async () => {
                 If you need to select tabs programmatically or trigger a UI change elsewhere when a tab is selected,
                 you can use the <code>v-model</code> directive to bind the active index to a data value.
             </p>
-            <div class="mb-100">
+            <div class="mb-200">
                 <es-button
-                    class="mb-50 mr-50"
+                    class="mb-50 mr-200"
                     :disabled="tabIndexProgrammatic === 0"
+                    inline
+                    variant="link"
                     @click="tabIndexProgrammatic = 0">
                     Select tab one
                 </es-button>
                 <es-button
-                    class="mb-50 mr-50"
+                    class="mb-50 mr-200"
                     :disabled="tabIndexProgrammatic === 1"
+                    inline
+                    variant="link"
                     @click="tabIndexProgrammatic = 1">
                     Select tab two
                 </es-button>
                 <es-button
                     class="mb-50"
                     :disabled="tabIndexProgrammatic === 2"
+                    inline
+                    variant="link"
                     @click="tabIndexProgrammatic = 2">
                     Select tab three
                 </es-button>
@@ -85,7 +91,7 @@ onMounted(async () => {
             <es-row>
                 <es-col
                     cols="12"
-                    lg="8">
+                    lg="6">
                     <es-tabs
                         v-model="tabIndexProgrammatic"
                         class="mb-200">
@@ -102,20 +108,20 @@ onMounted(async () => {
                 </es-col>
                 <es-col
                     cols="12"
-                    lg="4">
+                    lg="6">
                     <div
                         v-if="tabIndexProgrammatic === 0"
-                        class="bg-gray-300 p-200 rounded-lg text-center">
+                        class="bg-medium-blue p-200 rounded-lg text-center">
                         Content associated with tab 1
                     </div>
                     <div
                         v-if="tabIndexProgrammatic === 1"
-                        class="bg-gray-300 p-200 rounded-lg text-center">
+                        class="bg-warm-orange p-200 rounded-lg text-center">
                         Content associated with tab 2
                     </div>
                     <div
                         v-if="tabIndexProgrammatic === 2"
-                        class="bg-gray-300 p-200 rounded-lg text-center">
+                        class="bg-dark-blue p-200 rounded-lg text-center text-white">
                         Content associated with tab 3
                     </div>
                 </es-col>
