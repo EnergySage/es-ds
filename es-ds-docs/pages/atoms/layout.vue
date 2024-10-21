@@ -84,8 +84,8 @@ onMounted(async () => {
             subset of props as documented below.
         </p>
         <p>
-            The subset of props should be sufficient to cover our existing use cases, and allow doing a global find and
-            replace for <code>b-container</code> to <code>es-container</code>
+            The subset of props is sufficient to cover most of our existing use cases, and allow doing a global find
+            and replace for <code>b-container</code> to <code>es-container</code>
             (for example) to migrate to the V3 design system.
         </p>
         <h2 class="mt-200">Responsive breakpoints</h2>
