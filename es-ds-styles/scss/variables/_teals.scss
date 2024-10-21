@@ -1,0 +1,13 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  teal-100: variables.$teal-100;
+  teal-200: variables.$teal-200;
+  teal-300: variables.$teal-300;
+  teal-400: variables.$teal-400;
+  teal-500: variables.$teal-500;
+  teal-600: variables.$teal-600;
+  teal-700: variables.$teal-700;
+  teal-800: variables.$teal-800;
+}
