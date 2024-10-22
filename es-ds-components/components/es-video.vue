@@ -2,10 +2,12 @@
 // Props
 interface IProps {
     altText: string;
-    coverImageUrl: string;
+    coverImageUrl?: string;
     embedUrl: string;
 }
-const props = defineProps<IProps>();
+const props = withDefaults(defineProps<IProps>(), {
+    coverImageUrl: '',
+});
 const showVideo = ref(false);
 
 // Methods
