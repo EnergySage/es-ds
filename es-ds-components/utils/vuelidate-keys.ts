@@ -20,7 +20,7 @@ const EMAIL = 'vuelidateEmail';
 const PHONE = 'vuelidatePhone';
 const HELPERS = 'vuelidateHelpers';
 
-export const vuelidateKeys = {
+export default {
     REQUIRED,
     REQUIRED_IF,
     MIN_VALUE,
