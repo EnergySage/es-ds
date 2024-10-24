@@ -1,0 +1,12 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@use "sass:map";
+@use "../variables";
+
+:export {
+  xxl: map.get(variables.$container-max-widths, xxl);
+  xl: map.get(variables.$container-max-widths, xl);
+  lg: map.get(variables.$container-max-widths, lg);
+  md: map.get(variables.$container-max-widths, md);
+  sm: map.get(variables.$container-max-widths, sm);
+}

@@ -2,16 +2,11 @@
     "recommendations": [
         "davidanson.vscode-markdownlint",
         "stylelint.vscode-stylelint",
-        "redhat.vscode-yaml",
-        "octref.vetur",
-        "dbaeumer.vscode-eslint",
-        "editorconfig.editorconfig",
-        "mikestead.dotenv",
-        "esbenp.prettier-vscode",
         "lokalise.i18n-ally",
-        "zignd.html-css-class-completion",
-        "christian-kohler.path-intellisense",
-        "simonsiefke.svg-preview",
-        "wayou.vscode-todo-highlight"
+        "EditorConfig.EditorConfig",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "Vue.volar",
+        "redhat.vscode-yaml"
     ]
 }
