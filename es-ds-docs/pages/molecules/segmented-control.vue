@@ -1,4 +1,11 @@
 <script setup>
+const VIEW_SWITCHER_VALUES = {
+    COMPARE: 'Compare view',
+    LIST: 'List view',
+};
+const viewSwitcherOptions = [VIEW_SWITCHER_VALUES.LIST, VIEW_SWITCHER_VALUES.COMPARE];
+const viewSwitcherActiveOption = ref(VIEW_SWITCHER_VALUES.LIST);
+
 const viewActiveIndex = ref(0);
 const viewItems = [
     {
@@ -21,6 +28,9 @@ const timeframeItems = [
         label: '1 year',
     },
 ];
+
+const viewActiveItemSimple = ref(0);
+const viewItemsSimple = ['List view', 'Compare view'];
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -58,6 +68,22 @@ onMounted(async () => {
                 Sentence case.
             </a>
         </p>
+    </div>
+
+    <div class="my-500">
+        <h2>Basic example</h2>
+        <es-segmented-control-new
+            v-model="viewActiveIndex"
+            :options="viewItems" />
+        <p>
+            {{ `Selected item: "${viewActiveIndex}"` }}
+        </p>
+        <!--<es-segmented-control-new
+            v-model="viewSwitcherActiveOption"
+            :options="viewSwitcherOptions" />
+        <p>
+            {{ `Selected item: "${viewSwitcherActiveOption}"` }}
+        </p>-->
     </div>
 
     <div class="my-500">
