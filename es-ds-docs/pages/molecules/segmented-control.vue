@@ -1,11 +1,4 @@
 <script setup>
-const VIEW_SWITCHER_VALUES = {
-    COMPARE: 'Compare view',
-    LIST: 'List view',
-};
-const viewSwitcherOptions = [VIEW_SWITCHER_VALUES.LIST, VIEW_SWITCHER_VALUES.COMPARE];
-const viewSwitcherActiveOption = ref(VIEW_SWITCHER_VALUES.LIST);
-
 const viewActiveIndex = ref(0);
 const viewItems = [
     {
@@ -16,7 +9,7 @@ const viewItems = [
     },
 ];
 
-const timeframeActiveIndex = ref(0);
+const timeframeActiveIndex = ref(1);
 const timeframeItems = [
     {
         label: '90 days',
@@ -29,8 +22,11 @@ const timeframeItems = [
     },
 ];
 
-const viewActiveItemSimple = ref(0);
-const viewItemsSimple = ['List view', 'Compare view'];
+const esSegmentedControlProps = [
+    ['ariaLabel', 'String', 'n/a', 'Required. A description of the purpose of selecting an option. It will be hidden visually but read aloud by screen readers.'],
+    ['disabled', 'Boolean', 'false', `When set to true, it specifies that the element should be disabled.`],
+    ['options', 'Array', 'n/a', `Required. An array of items to display as the available options. Each item should be an object with a "label" string.`],
+];
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -55,9 +51,9 @@ onMounted(async () => {
         <p>
             Extended from
             <a
-                href="https://v3.primevue.org/tabmenu/"
+                href="https://v3.primevue.org/selectbutton/"
                 target="_blank">
-                PrimeVue TabMenu
+                PrimeVue SelectButton
             </a>
         </p>
         <p>
@@ -72,26 +68,11 @@ onMounted(async () => {
 
     <div class="my-500">
         <h2>Basic example</h2>
-        <es-segmented-control-new
-            v-model="viewActiveIndex"
-            :options="viewItems" />
-        <p>
-            {{ `Selected item: "${viewActiveIndex}"` }}
-        </p>
-        <!--<es-segmented-control-new
-            v-model="viewSwitcherActiveOption"
-            :options="viewSwitcherOptions" />
-        <p>
-            {{ `Selected item: "${viewSwitcherActiveOption}"` }}
-        </p>-->
-    </div>
-
-    <div class="my-500">
-        <h2>Basic example</h2>
         <es-segmented-control
             v-model="viewActiveIndex"
+            aria-label="Select how you want to view your quotes"
             class="mb-100"
-            :items="viewItems" />
+            :options="viewItems" />
         <p>
             {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
         </p>
@@ -101,8 +82,9 @@ onMounted(async () => {
         <h2>Timeframe selector example</h2>
         <es-segmented-control
             v-model="timeframeActiveIndex"
+            aria-label="Select the timeframe to view"
             class="mb-100"
-            :items="timeframeItems" />
+            :options="timeframeItems" />
         <p class="mb-200">
             {{ `Selected item: "${timeframeItems[timeframeActiveIndex].label}"` }}
         </p>
@@ -141,13 +123,19 @@ onMounted(async () => {
         <h2>Disabled example</h2>
         <es-segmented-control
             v-model="viewActiveIndex"
+            aria-label="Select the timeframe to view"
             class="mb-100"
             disabled
-            :items="viewItems" />
+            :options="viewItems" />
         <p>
             {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
         </p>
     </div>
+
+    <div class="my-500">
+            <h2>EsSegmentedControl props</h2>
+            <ds-prop-table :rows="esSegmentedControlProps" />
+        </div>
 
     <ds-doc-source
         :comp-code="compCode"
