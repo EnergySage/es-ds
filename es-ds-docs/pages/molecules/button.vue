@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const mainExamples = ref([
     {
         name: 'Default',

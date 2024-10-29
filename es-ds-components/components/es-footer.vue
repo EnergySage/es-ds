@@ -1,4 +1,4 @@
-<script lang="js">
+<script lang="ts">
 import IconFacebook from './icon/facebook.vue';
 import IconInstagram from './icon/instagram.vue';
 import IconLinkedin from './icon/linkedin.vue';

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const suggestedVisible = ref(true);
 const visible = ref(false);
 

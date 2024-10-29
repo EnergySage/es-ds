@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const form = ref({
     emailCorrect: 'hello@energysage.com',
     emailWrong: 'hello@energy',

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 type UploadInfo = {
     name: string;
     uploadUrl: string;
@@ -198,7 +197,9 @@ async function verifyFiles(files: Array<File>) {
     const correctlyNamedFiles = removeSpaceFromFileNames(correctlySizedFiles);
 
     // Make sure the file is the correct mime type
-    let newValidFiles = await Promise.allSettled(correctlyNamedFiles.map(async (file) => verifyMimeType(file))) as unknown as File[];
+    let newValidFiles = (await Promise.allSettled(
+        correctlyNamedFiles.map(async (file) => verifyMimeType(file)),
+    )) as unknown as File[];
     // Filter out undefined values and "rejected"
     // @ts-expect-error basically we're filtering out the non-Files here
     newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled').map((file) => file.value);

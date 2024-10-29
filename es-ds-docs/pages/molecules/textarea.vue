@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const docTextarea = ref('');
 const successValue = ref('My experience was great!');
 

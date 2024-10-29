@@ -1,5 +1,5 @@
 <!-- eslint-disable max-len -->
-<script>
+<script lang="ts">
 export default {
     name: 'IconCircleX',
     props: {
