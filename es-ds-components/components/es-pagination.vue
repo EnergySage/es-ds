@@ -24,6 +24,7 @@ const model = defineModel<number>();
 const first = ref();
 
 watch(model, (newVal) => {
+    // @ts-expect-error I don't know
     first.value = (newVal - 1) * props.perPage;
 });
 

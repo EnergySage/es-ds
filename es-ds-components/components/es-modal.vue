@@ -13,7 +13,7 @@ const props = defineProps({
     size: {
         type: String,
         default: 'md',
-        validator: (val) => ['sm', 'md', 'lg', 'xl'].includes(val),
+        validator: (val: string) => ['sm', 'md', 'lg', 'xl'].includes(val),
     },
     bodyClass: {
         type: String,
