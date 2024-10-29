@@ -105,6 +105,7 @@
         "vue/multi-word-component-names": "off",
         "arrow-body-style": "off",
         "implicit-arrow-linebreak": "off",
-        "no-nested-ternary": "off"
+        "no-nested-ternary": "off",
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }

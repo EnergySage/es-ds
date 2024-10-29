@@ -2,9 +2,9 @@
 import sassSpacers from '@energysage/es-ds-styles/scss/modules/spacers.module.scss';
 
 const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450];
-const generateAlias = (key) => `p-${key} m-${key}`;
+const generateAlias = (key: any) => `p-${key} m-${key}`;
 
-const convertSpacerVariablesToTableEntries = (vars) =>
+const convertSpacerVariablesToTableEntries = (vars: any) =>
     Object.keys(vars)
         .map((key) => ({ key, value: vars[key] }))
         .map((item) => {
