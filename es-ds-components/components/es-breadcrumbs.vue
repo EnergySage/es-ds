@@ -13,7 +13,7 @@ const model = computed(() => {
         return [];
     }
 
-    return props.items.map((item) => ({
+    return props.items.map((item: any) => ({
         ...item,
         // mark breadcrumb as active if manually set or if it matches this route
         active: item.active || route.path === item.to || route.path === item.href,

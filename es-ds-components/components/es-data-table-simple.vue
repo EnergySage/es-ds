@@ -19,7 +19,7 @@ const props = defineProps({
 });
 
 const isSingleCol = computed(() => !props.fields);
-const computedItems = computed(() => {
+const computedItems: ComputedRef<any[]> = computed(() => {
     if (!props.items.length && !useSlots().default) {
         throw new Error('Neither items prop nor slot content is defined.');
     }
