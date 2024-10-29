@@ -102,6 +102,14 @@
                 "order": [["script[setup]", "script:not([setup])"], "template", "style"]
             }
         ],
+        "vue/block-lang": [
+            "error",
+            {
+                "script": {
+                    "lang": "ts"
+                }
+            }
+        ],
         "vue/multi-word-component-names": "off",
         "arrow-body-style": "off",
         "implicit-arrow-linebreak": "off",
