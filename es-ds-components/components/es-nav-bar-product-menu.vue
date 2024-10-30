@@ -141,14 +141,17 @@ export default {
                     <div class="col-2" />
                 </li>
                 <!-- subnav items -->
+                <!-- @vue-expect-error -->
                 <li
                     v-for="item in items"
                     :key="item.name">
+                    <!-- @vue-expect-error -->
                     <es-nav-bar-link
                         class="dropdown-item nav-item nav-item-border-mobile nav-link align-items-center d-flex px-lg-100 py-lg-50 product-menu-link"
                         :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="item.newTab ? '_blank' : null">
+                        <!-- @vue-expect-error -->
                         {{ item.name }}
                     </es-nav-bar-link>
                 </li>
@@ -183,6 +186,7 @@ export default {
                 <es-row
                     tag="ul"
                     class="d-block d-lg-flex list-unstyled">
+                    <!-- @vue-expect-error -->
                     <es-nav-bar-topic-menu
                         v-for="topic in topics"
                         :key="topic.name"

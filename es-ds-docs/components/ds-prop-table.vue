@@ -5,9 +5,9 @@ const {
         md: ['3', '2', '2', '5'],
     },
 } = defineProps<{
-    columns?: string[],
-    rows: string[][],
-    widths?: {xs?: string[], sm?: string[], md: string[], lg?: string[], xl?: string[], xxl?: string[]},
+    columns?: string[];
+    rows: string[][];
+    widths?: { xs?: string[]; sm?: string[]; md: string[]; lg?: string[]; xl?: string[]; xxl?: string[] };
 }>();
 </script>
 

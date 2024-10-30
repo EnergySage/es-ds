@@ -95,8 +95,8 @@ onMounted(async () => {
 
 const url = ref('');
 let fileObjects: File[] = [];
-const uploadUrls: Ref<{name: string, uploadUrl: string}[]> = ref([]);
-const events: Ref<{msg: string, variant: string, show: boolean}[]> = ref([]);
+const uploadUrls: Ref<{ name: string; uploadUrl: string }[]> = ref([]);
+const events: Ref<{ msg: string; variant: string; show: boolean }[]> = ref([]);
 
 const onSubmit = () => {
     uploadUrls.value = fileObjects.map(({ name }) => ({
@@ -122,7 +122,7 @@ const uploadSuccess = (fileName: string) => {
     events.value.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success', show: true });
 };
 
-const uploadFailure = (fileNameAndMessage: {name: string, message: string}) => {
+const uploadFailure = (fileNameAndMessage: { name: string; message: string }) => {
     events.value.push({
         msg: `uploadFailure for file: ${fileNameAndMessage.name}. Message: ${fileNameAndMessage.message}`,
         variant: 'danger',

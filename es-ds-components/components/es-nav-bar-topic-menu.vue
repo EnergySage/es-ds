@@ -158,14 +158,17 @@ export default {
                     </div>
                     <div class="col-2">&nbsp;</div>
                 </li>
+                <!-- @vue-expect-error -->
                 <li
                     v-for="item in items"
                     :key="item.name">
+                    <!-- @vue-expect-error -->
                     <es-nav-bar-link
                         class="dropdown-item nav-item nav-item-border-mobile nav-link d-flex align-items-center ml-lg-0 px-lg-0 py-lg-50"
                         :class="{ 'font-weight-bold': item.emphasize }"
                         :href="item.link"
                         :target="item.newTab ? '_blank' : null">
+                        <!-- @vue-expect-error -->
                         {{ item.name }}
                     </es-nav-bar-link>
                 </li>

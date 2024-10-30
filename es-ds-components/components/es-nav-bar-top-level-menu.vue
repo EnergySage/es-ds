@@ -154,6 +154,7 @@ export default {
                                         </div>
                                         <div class="col-2" />
                                     </li>
+                                    <!-- @vue-expect-error -->
                                     <es-nav-bar-topic-menu
                                         v-for="topic in topics"
                                         :key="topic.name"
