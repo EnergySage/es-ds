@@ -1,7 +1,4 @@
 <script lang="ts">
-const foo: number = 'bla';
-// eslint-disable-next-line no-console
-console.log(foo);
 export default {
     name: 'EsNavBarProductMenu',
     props: {
