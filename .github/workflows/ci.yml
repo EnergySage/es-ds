@@ -41,5 +41,8 @@ jobs:
             - name: Run linter 👀
               run: make lint
 
+            - name: Run typechecker
+              run: make typecheck
+
             - name: Run tests 🧪
               run: make test
