@@ -94,18 +94,18 @@ onMounted(async () => {
 });
 
 const url = ref('');
-let fileObjects = [];
-const uploadUrls = ref([]);
-const events = ref([]);
+let fileObjects: File[] = [];
+const uploadUrls: Ref<{name: string, uploadUrl: string}[]> = ref([]);
+const events: Ref<{msg: string, variant: string, show: boolean}[]> = ref([]);
 
 const onSubmit = () => {
     uploadUrls.value = fileObjects.map(({ name }) => ({
         name,
-        uploadUrl: url,
+        uploadUrl: url.value,
     }));
 };
 
-const fileTypeError = (fileName) => {
+const fileTypeError = (fileName: string) => {
     events.value.push({ msg: `fileTypeError for file: ${fileName}`, variant: 'danger', show: true });
 };
 
@@ -113,16 +113,16 @@ const fileIsAFolderError = () => {
     events.value.push({ msg: 'fileIsAFolderError', variant: 'danger', show: true });
 };
 
-const readyToUpload = (fileUploads) => {
+const readyToUpload = (fileUploads: File[]) => {
     fileObjects = fileUploads;
     events.value.push({ msg: `readyToUpload for ${fileUploads.length} file(s)`, variant: 'success', show: true });
 };
 
-const uploadSuccess = (fileName) => {
+const uploadSuccess = (fileName: string) => {
     events.value.push({ msg: `uploadSuccess for file: ${fileName}`, variant: 'success', show: true });
 };
 
-const uploadFailure = (fileNameAndMessage) => {
+const uploadFailure = (fileNameAndMessage: {name: string, message: string}) => {
     events.value.push({
         msg: `uploadFailure for file: ${fileNameAndMessage.name}. Message: ${fileNameAndMessage.message}`,
         variant: 'danger',
@@ -130,14 +130,14 @@ const uploadFailure = (fileNameAndMessage) => {
     });
 };
 
-const fileDataRead = (file) => {
+const fileDataRead = (file: File) => {
     events.value.push({
         msg: `fileDataRead for file: ${file.name} type: ${file.type} size: ${file.size}`,
         variant: 'success',
         show: true,
     });
 };
-const fileSizeError = (fileName) => {
+const fileSizeError = (fileName: string) => {
     events.value.push({
         msg: `fileSizeError: exceeded max file size for file ${fileName}`,
         variant: 'danger',

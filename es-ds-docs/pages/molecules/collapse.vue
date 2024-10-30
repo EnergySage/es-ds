@@ -24,11 +24,11 @@ const shownEvent = () => {
     // eslint-disable-next-line no-console
     console.log('shown');
 };
-const toggledEvent = (newValue) => {
+const toggledEvent = (newValue: boolean) => {
     // eslint-disable-next-line no-console
     console.log(`toggled to ${newValue}`);
 };
-const toggledEventInSuggestedVisibleExample = (newValue) => {
+const toggledEventInSuggestedVisibleExample = (newValue: boolean) => {
     // eslint-disable-next-line no-console
     console.log(`toggled to ${newValue}`);
     visible.value = newValue;

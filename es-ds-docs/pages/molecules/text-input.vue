@@ -5,6 +5,7 @@ const form = ref({
     firstName: '',
     password: '',
     phoneNumber: '',
+    maskedPhoneNumber: '',
     zipCode: '',
 });
 

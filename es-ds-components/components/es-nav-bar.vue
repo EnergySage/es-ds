@@ -153,7 +153,7 @@ export default {
         };
 
         // set up callback for sticky nav intersection observer
-        const intersectionCallback = (entries) => {
+        const intersectionCallback = (entries: IntersectionObserverEntry[]) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.remove('scrolled');
@@ -167,6 +167,7 @@ export default {
         // https://www.smashingmagazine.com/2021/07/dynamic-header-intersection-observer/
         const observer = new IntersectionObserver(intersectionCallback, intersectionOptions);
         const targetEl = document.querySelector('#nav-main');
+        // @ts-expect-error legacy code
         observer.observe(targetEl);
 
         // CUSTOM GLOBAL-NAV SCRIPT ENDS

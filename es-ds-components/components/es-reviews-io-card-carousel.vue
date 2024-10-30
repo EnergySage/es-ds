@@ -34,7 +34,9 @@ onBeforeUnmount(() => {
 
 const initializeWidget = () => {
     // if the Reviews.io script loaded before
+    // @ts-expect-error global-scoped ReviewsIO stuff
     if (typeof window !== 'undefined' && window.carouselInlineWidget) {
+        // @ts-expect-error global-scoped ReviewsIO stuff
         // eslint-disable-next-line no-new, new-cap
         new window.carouselInlineWidget('reviewsio-carousel-widget', {
             /* Your REVIEWS.io account ID: */
@@ -256,11 +258,13 @@ onMounted(async () => {
     // if we're server-side, get out
     if (typeof window === 'undefined') return;
 
+    // @ts-expect-error global-scoped ReviewsIO stuff
     if (window.carouselInlineWidget) {
         // if the Reviews.io script has loaded, initialize the widget
         initializeWidget();
     } else {
         // if the Reviews.io script has not loaded, set its callback function to trigger widget initialization
+        // @ts-expect-error global-scoped ReviewsIO stuff
         window.carouselInlineWidgetCallback = () => {
             initializeWidget();
         };
