@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-expect-error module has no types
 import truncate from 'html-truncate';
 
 const props = defineProps({

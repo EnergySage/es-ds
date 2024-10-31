@@ -19,10 +19,10 @@ import sassYellows from '@energysage/es-ds-styles/scss/modules/yellows.module.sc
 import sassVariants from '@energysage/es-ds-styles/scss/modules/variants.module.scss';
 
 // utility functions
-const prepareColors = (colors) => Object.entries(colors).reverse();
-const slice = (colors, tokens) => {
-    const result = {};
-    tokens.forEach((token) => {
+const prepareColors = (colors: any) => Object.entries(colors).reverse() as unknown as [string, string][];
+const slice = (colors: any, tokens: any) => {
+    const result: any = {};
+    tokens.forEach((token: any) => {
         result[token] = colors[token];
     });
     return result;
@@ -126,12 +126,14 @@ onMounted(async () => {
                     md="3"
                     lg="2"
                     class="mb-100 text-center">
+                    <!-- @vue-expect-error -->
                     <ds-color-swatch
                         :is-light="['white', 'soft-blue', 'medium-blue', 'warm-orange'].includes(alias)"
                         :hex="value"
                         :show-border="['white'].includes(alias)"
                         :token="alias" />
                     <p class="font-weight-semibold mb-0 mt-50">
+                        <!-- @vue-expect-error -->
                         {{ coreColorNames[alias] || alias }}
                     </p>
                 </es-col>
@@ -329,11 +331,13 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-100 text-center">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :is-light="['teal', 'yellow', 'pink', 'orange'].includes(alias)"
                             :hex="value"
                             :token="alias" />
                         <p class="font-weight-semibold mb-0 mt-50">
+                            <!-- @vue-expect-error -->
                             {{ brandColorNames[alias] || alias }}
                         </p>
                     </es-col>
@@ -351,6 +355,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :is-light="['cyan-100', 'cyan-200', 'cyan-300'].includes(alias)"
                             :hex="value"
@@ -367,6 +372,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :is-light="['gray-500'].includes(alias)"
                             :hex="value"
@@ -386,6 +392,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             is-light
                             :hex="value"
@@ -402,6 +409,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             is-light
                             :hex="value"
@@ -418,6 +426,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             is-light
                             :hex="value"
@@ -434,6 +443,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             is-light
                             :hex="value"
@@ -454,6 +464,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :token="alias" />
@@ -468,6 +479,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :token="alias" />
@@ -486,6 +498,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :is-light="true"
@@ -501,6 +514,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :token="alias" />
@@ -515,6 +529,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :is-light="true"
@@ -534,6 +549,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :is-light="
@@ -574,6 +590,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :is-light="['danger', 'info', 'light', 'success', 'warning'].includes(alias)"

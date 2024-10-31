@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import findMimeType, { mimeTypes } from '../lib-utils/mime-type-finder';
-
 type UploadInfo = {
     name: string;
     uploadUrl: string;
@@ -29,7 +27,7 @@ const props = defineProps({
         type: Array,
         default: () => [],
         required: true,
-        validator(fileTypes) {
+        validator(fileTypes: any[]) {
             return fileTypes.every((fileType) => mimeTypes.includes(fileType));
         },
     },
@@ -101,6 +99,7 @@ async function verifyMimeType(file: File) {
     return new Promise((resolve, reject) => {
         const fileReader = new FileReader();
         fileReader.onload = (evt) => {
+            // @ts-expect-error not sure
             const uint = new Uint8Array(evt.target.result);
             const bytes: string[] = [];
             uint.forEach((byte) => {
@@ -198,8 +197,11 @@ async function verifyFiles(files: Array<File>) {
     const correctlyNamedFiles = removeSpaceFromFileNames(correctlySizedFiles);
 
     // Make sure the file is the correct mime type
-    let newValidFiles = await Promise.allSettled(correctlyNamedFiles.map(async (file) => verifyMimeType(file)));
+    let newValidFiles = (await Promise.allSettled(
+        correctlyNamedFiles.map(async (file) => verifyMimeType(file)),
+    )) as unknown as File[];
     // Filter out undefined values and "rejected"
+    // @ts-expect-error basically we're filtering out the non-Files here
     newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled').map((file) => file.value);
 
     // If the new file with name already exists in the current files
@@ -240,7 +242,7 @@ async function onFileChanged($event: Event) {
     }
 }
 
-const onDrop = (event) => {
+const onDrop = (event: any) => {
     // The user has dropped files onto the component. We have to apply the same logic as if they had
     // selected the files from the file picker which limits the file types to the ones specified in the
     // fileTypes prop.
@@ -262,6 +264,7 @@ const onDrop = (event) => {
 
 const openFilePicker = () => {
     if (fileInput.value) {
+        // @ts-expect-error not sure
         fileInput.value.click();
     }
 };

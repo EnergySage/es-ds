@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const columnWidths = {
     md: ['2', '2', '8'],
 };
