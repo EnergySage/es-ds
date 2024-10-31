@@ -19,7 +19,7 @@ describe('EsZipCodeForm', () => {
         // Simulate a delay (e.g., 2 seconds)
         await new Promise((resolve) => {
             setTimeout(() => {
-              resolve();
+                resolve();
             }, 2000);
         });
 

@@ -10,8 +10,8 @@
                 class="w-50"
                 label-sr-only
                 name="query"
-                :placeholder="placeholder"
                 v-model="searchText"
+                :placeholder="placeholder"
                 :value="searchText"
                 @keydown.enter="checkSearchText">
                 <template #prefixIcon>

@@ -123,7 +123,9 @@
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <b-container class="nav-search-bar" style="display: none">
+                    <b-container
+                        class="nav-search-bar"
+                        style="display: none">
                         <div class="row w-100">
                             <es-search-bar>
                                 <template #close>
