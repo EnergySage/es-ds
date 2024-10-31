@@ -152,7 +152,7 @@ Assuming changes are approved, the process of publishing a new version is...
 2. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
 3. `make install && make symlink` - Install and symlink dependencies locally
 4. `make build` - Build all packages to `*/dist` folders locally
-5. `make lint && make test` - Run tests and linting to ensure they pass
+5. `make lint && make typecheck && make test` - Run tests and linting to ensure they pass
 6. Publish updated packages to
    [npmjs.com](https://www.npmjs.com/org/energysage) with npm publish.
    1. `cd es-ds-styles && npm publish && cd ..`
