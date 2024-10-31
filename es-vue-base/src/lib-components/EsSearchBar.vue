@@ -14,6 +14,9 @@
                 :placeholder="placeholder"
                 :value="searchText"
                 @keydown.enter="checkSearchText">
+                <template #label>
+                    Search bar
+                </template>
                 <template #prefixIcon>
                     <icon-search />
                 </template>
