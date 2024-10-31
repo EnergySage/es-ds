@@ -5,14 +5,14 @@
             class="d-flex align-items-center mx-auto justify-content-center w-100"
             method="get">
             <es-form-input
+                id="searchBar"
                 aria-label="Search bar"
                 class="w-50"
-                id="searchBar"
                 label-sr-only
                 name="query"
                 :placeholder="placeholder"
-                :value="searchText"
                 v-model="searchText"
+                :value="searchText"
                 @keydown.enter="checkSearchText">
                 <template #prefixIcon>
                     <icon-search />
@@ -42,18 +42,6 @@ export default {
         EsButton,
         EsFormInput,
     },
-    data() {
-        return {
-            searchText: '',
-        }
-    },
-    methods: {
-        checkSearchText(event) {
-            if (!this.searchText) {
-                event.preventDefault();
-            }
-        },
-    },
     props: {
         buttonText: {
             type: String,
@@ -62,6 +50,18 @@ export default {
         placeholder: {
             type: String,
             default: 'Try "best solar panels"',
+        },
+    },
+    data() {
+        return {
+            searchText: '',
+        };
+    },
+    methods: {
+        checkSearchText(event) {
+            if (!this.searchText) {
+                event.preventDefault();
+            }
         },
     },
 };

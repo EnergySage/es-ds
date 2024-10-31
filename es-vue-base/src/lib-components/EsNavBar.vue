@@ -101,11 +101,11 @@
                             </template>
                         </es-nav-bar-top-level-menu>
                         <div
+                            id="navBarSearchIcon"
                             class="nav-item d-none pt-100"
                             :class="{
                                 'd-lg-block': showSearch,
-                            }"
-                            id="navBarSearchIcon">
+                            }">
                             <es-button
                                 variant="link"
                                 aria-label="Open search bar"
@@ -267,7 +267,7 @@ export default {
         EsNavBarLink,
         EsNavBarProductMenu,
         EsNavBarTopLevelMenu,
-        EsSearchBar
+        EsSearchBar,
     },
     props: {
         accountContent: {
@@ -281,7 +281,7 @@ export default {
         showSearch: {
             type: Boolean,
             default: false,
-        }
+        },
     },
     mounted() {
         // CUSTOM GLOBAL-NAV SCRIPT STARTS
