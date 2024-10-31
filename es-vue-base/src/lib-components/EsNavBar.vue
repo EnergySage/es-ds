@@ -346,7 +346,7 @@ export default {
 
         // Collapse all open menus on window resize
         window.addEventListener('resize', () => {
-            if (mainMenuCheckbox.checked || accountMenuCheckbox.checked) {
+            if (mainMenuCheckbox.checked || accountMenuCheckbox.checked || searchBar.style.display !== 'none') {
                 collapse_mobile_menus();
             }
         });
