@@ -29,6 +29,17 @@
   }
 }
 
+.nav-button {
+  &:hover {
+    background: variables.$blue-50 !important;
+  }
+
+  &:focus,
+  &.focus {
+    border-color: variables.$blue-500;
+  }
+}
+
 //
 // Tabs
 //
@@ -263,8 +274,12 @@ $nav-hover-delay: 300ms;
     }
   }
 
-  .account-icon {
+  .account-icon, .search-icon {
     fill: variables.$blue-900;
+  }
+
+  .search-open {
+    fill: variables.$blue-600 !important;
   }
 
   // On Desktop a hovers display the dropdowns
