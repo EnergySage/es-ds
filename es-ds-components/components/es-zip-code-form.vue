@@ -85,7 +85,7 @@ const rules = {
 
 const { v$, validateState } = useEsForms(rules, state);
 
-const ctaForm = useTemplateRef('ctaForm');
+const ctaForm = useTemplateRef<HTMLFormElement>('ctaForm');
 
 const handleSubmit = () => {
     if (v$.value.$invalid) {
