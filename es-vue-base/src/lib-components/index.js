@@ -31,6 +31,7 @@ export { default as EsRating } from './EsRating.vue';
 export { default as EsReview } from './EsReview.vue';
 export { default as EsReviewModal } from './EsReviewModal.vue';
 export { default as EsReviewsIoCardCarousel } from './EsReviewsIoCardCarousel.vue';
+export { default as EsSearchBar } from './EsSearchBar.vue';
 export { default as EsSlider } from './EsSlider.vue';
 export { default as EsSupport } from './EsSupport.vue';
 export { default as EsSupportCard } from './EsSupportCard.vue';

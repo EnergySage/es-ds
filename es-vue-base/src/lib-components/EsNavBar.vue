@@ -100,6 +100,22 @@
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
+                        <div
+                            class="nav-item d-none pt-100"
+                            :class="{
+                                'd-lg-block': showSearch,
+                            }"
+                            id="navBarSearchIcon">
+                            <es-button
+                                variant="link"
+                                aria-label="Open search bar"
+                                class="nav-button nav-link icon-toggle d-none d-lg-flex flex-nowrap py-100">
+                                <icon-search
+                                    class="align-self-center search-icon"
+                                    width="20px !important"
+                                    height="20px !important" />
+                            </es-button>
+                        </div>
                         <!-- desktop account menu -->
                         <es-nav-bar-account-menu
                             :auth-items="accountContent.loggedIn.items"
@@ -107,7 +123,23 @@
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <b-container class="d-flex flex-lg-nowrap justify-content-lg-end product-menu">
+                    <b-container class="nav-search-bar d-none">
+                        <div class="row w-100">
+                            <es-search-bar>
+                                <template #close>
+                                    <es-button
+                                        class="position-absolute nav-button mb-3 nav-search-close"
+                                        aria-label="Close search bar"
+                                        style="right: 0"
+                                        variant="link">
+                                        <icon-x />
+                                    </es-button>
+                                </template>
+                            </es-search-bar>
+                        </div>
+                    </b-container>
+                    <b-container
+                        class="flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
                                 v-for="product in globalContent.products"
@@ -225,6 +257,7 @@ import EsNavBarAccountMenu from './EsNavBarAccountMenu.vue';
 import EsNavBarLink from './EsNavBarLink.vue';
 import EsNavBarProductMenu from './EsNavBarProductMenu.vue';
 import EsNavBarTopLevelMenu from './EsNavBarTopLevelMenu.vue';
+import EsSearchBar from './EsSearchBar.vue';
 
 export default {
     name: 'EsNavBar',
@@ -234,6 +267,7 @@ export default {
         EsNavBarLink,
         EsNavBarProductMenu,
         EsNavBarTopLevelMenu,
+        EsSearchBar
     },
     props: {
         accountContent: {
@@ -244,6 +278,10 @@ export default {
             type: Object,
             required: true,
         },
+        showSearch: {
+            type: Boolean,
+            default: false,
+        }
     },
     mounted() {
         // CUSTOM GLOBAL-NAV SCRIPT STARTS
@@ -259,11 +297,29 @@ export default {
         // Create an overlay to obscure page contents
         const overlay = document.querySelector('.content-overlay');
 
+        // Search bar elements for hiding/showing
+        const searchBar = document.querySelector('.nav-search-bar');
+        const productMenu = document.querySelector('.product-menu');
+        const searchIcon = document.querySelector('.search-icon');
+        const searchForm = document.getElementById('searchBar');
+
+        // Function to show/hide search bar
+        function toggle_search_bar(show_search_bar) {
+            searchBar.style.display = show_search_bar ? 'flex' : 'none';
+            productMenu.style.display = show_search_bar ? 'none' : 'flex';
+            if (show_search_bar) {
+                searchIcon.classList.add('search-open');
+                searchForm.focus();
+            } else {
+                searchIcon.classList.remove('search-open');
+            }
+        }
+
         // Function to show/hide overlay
         function show_overlay(overlay_visible) {
             if (overlay_visible) {
                 overlay.classList.add('show');
-            } else {
+            } else if (!overlay_visible && searchBar.style.display === 'none') {
                 overlay.classList.remove('show');
             }
         }
@@ -277,6 +333,7 @@ export default {
         // Close all submenus, hide overlay, and unlock scrolling when menu is closed
         function collapse_mobile_menus() {
             uncheck_menus();
+            toggle_search_bar(false);
             show_overlay(false);
             document.body.style.overflow = 'visible';
         }
@@ -311,6 +368,18 @@ export default {
                     show_overlay(mainMenuCheckbox.checked || accountMenuCheckbox.checked);
                 });
             });
+
+        // Show overlay on click for desktop only
+        document.querySelector('.icon-toggle').addEventListener('click', () => {
+            const show = searchBar.style.display === 'none';
+            toggle_search_bar(show);
+            show_overlay(show);
+        });
+
+        document.querySelector('.nav-search-close').addEventListener('click', () => {
+            toggle_search_bar(false);
+            show_overlay(false);
+        });
 
         // Toggle menu display on main menu open/close
         mainMenuCheckbox.addEventListener('change', (event) => {

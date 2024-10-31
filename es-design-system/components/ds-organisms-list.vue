@@ -31,6 +31,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/organisms/es-nav-bar-with-search">
+                Nav bar with search
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/organisms/es-review">
                 Review
             </ds-link>

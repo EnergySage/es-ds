@@ -45,6 +45,7 @@ module.exports = async () => {
         '/molecules/es-progress',
         '/molecules/es-progress-circle',
         '/molecules/es-rating',
+        '/molecules/es-search-bar',
         '/molecules/es-slider',
         '/molecules/es-support',
         '/molecules/es-tabs',

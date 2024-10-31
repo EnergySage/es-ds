@@ -101,6 +101,11 @@
             </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/es-search-bar">
+                Search bar
+            </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/es-slider">
                 Slider
             </ds-link>
