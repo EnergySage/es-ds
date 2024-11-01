@@ -170,7 +170,7 @@ onMounted(() => {
     <carousel
         :key="key"
         :autoplay-interval="autoplayInterval"
-        :circular="isMounted ? props.circular : false"
+        :circular="isMounted && props.circular"
         :num-scroll="props.numScroll"
         :num-visible="props.numVisible"
         :responsive-options="responsiveOptions"
