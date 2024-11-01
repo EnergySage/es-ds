@@ -119,8 +119,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                         numVisible: 4,
                     },
                 }"
-                :items="basicExampleItems"
-                @update="(value) => console.log('it is now value', value)">
+                :items="basicExampleItems">
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
@@ -135,9 +134,57 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
         </div>
 
         <div class="my-500">
-            <h2>Autoplay with hidden arrows and dots</h2>
+            <h2>Circular example</h2>
+            <p>
+                This example shows the same responsive carousel but with circular behavior turned on, meaning the user
+                can continue paging in one direction forever and the items from the beginning of the list will be
+                repeated once the end of the list is reached.
+            </p>
             <p class="mb-200">
-                This example shows the same twelve items, but with autoplay turned on and the arrows and dots hidden.
+                Unless paging is done in a rapid-fire succession (the carousel needs a split second to add more hidden
+                items after a page transition completes), the next set of items will always appear to come from the
+                same direction as all previous items, even when circling back to the beginning of the list.
+            </p>
+            <es-carousel
+                :breakpoints="{
+                    sm: {
+                        numScroll: 2,
+                        numVisible: 2,
+                    },
+                    lg: {
+                        numScroll: 3,
+                        numVisible: 3,
+                    },
+                    xxl: {
+                        numScroll: 4,
+                        numVisible: 4,
+                    },
+                }"
+                circular
+                :items="basicExampleItems">
+                <template #item="{ item }">
+                    <es-card class="text-center">
+                        <nuxt-img
+                            class="mb-50 w-100"
+                            :src="item.url" />
+                        <p class="font-weight-semibold mb-0">
+                            {{ item.heading }}
+                        </p>
+                    </es-card>
+                </template>
+            </es-carousel>
+        </div>
+
+        <div class="my-500">
+            <h2>Circular autoplay with hidden arrows and dots</h2>
+            <p>
+                This example shows the same twelve items, but with autoplay turned on, circular behavior enabled, and
+                the arrows and dots hidden.
+            </p>
+            <p class="mb-200">
+                Pressing the Esc key will stop the autoplay. This is an accessibility feature for screen readers,
+                because the contents of each new slide brought into view by autoplay are automatically read aloud, no
+                matter where the user is on the page.
             </p>
             <es-carousel
                 auto-play
@@ -152,6 +199,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                         numVisible: 4,
                     },
                 }"
+                circular
                 :items="basicExampleItems"
                 :show-arrows="false"
                 :show-dots="false">

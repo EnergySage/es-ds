@@ -1,8 +1,12 @@
 <script setup lang="ts">
 /*
     TODO:
-     - why is mobile so messed up with paging
-     - why does mobile first show item 12 and then switch to item 1
+     - responsive carousels briefly show mobile amount of dots on desktop, until hydration
+        - i think we may be able to fix this with CSS, because we know how many dots there should be
+        - (something PrimeVue Carousel should really be doing)
+     - circular has quirky behavior when numVisible doesn't match numScroll
+        - you can see this in the circular autoplay example
+        - i'm not sure if this is fixable
 */
 
 import Carousel from 'primevue/carousel';
@@ -25,7 +29,7 @@ const props = withDefaults(defineProps<IProps>(), {
     autoPlay: false,
     autoPlayInterval: 2000,
     breakpoints: () => ({}),
-    circular: true,
+    circular: false,
     items: () => [],
     numScroll: 1,
     numVisible: 1,
@@ -116,10 +120,19 @@ const responsiveOptions = computed(() => {
             numScroll: numScrollSm.value,
             numVisible: numVisibleSm.value,
         },
+        // XS breakpoint
+        // (this is necessary to avoid weird behavior on mobile)
+        {
+            // max width of XS is SM minus one
+            breakpoint: `${BREAKPOINTS.SM - 1}px`,
+            numScroll: props.numScroll,
+            numVisible: props.numVisible,
+        },
     ];
 });
 
 const autoplayInterval = ref(props.autoPlay ? props.autoPlayInterval : 0);
+const isMounted = ref(false);
 const key = ref('');
 
 const stopAutoplay = () => {
@@ -130,6 +143,19 @@ const stopAutoplay = () => {
 };
 
 onMounted(() => {
+    /**
+     * avoids an unavoidable SSR issue with responsive carousels (SSR can't know the breakpoint
+     * and therefore how many items need to be displayed per page) where circular carousels have
+     * their last few items cloned and inserted before the first item in the list, meaning on initial
+     * page render, you see those cloned last items listed first rather than the first item.
+     *
+     * then, upon hydration, the items change and the first item is then listed first.
+     *
+     * this workaround disables circular functionality for SSR, and swaps to the user-provided
+     * setting for it on mount.
+     */
+    isMounted.value = true;
+
     document.addEventListener('keyup', (e) => {
         if (e.key === 'Escape') {
             // Stop carousel when user presses Escape key, in lieu of pause button
@@ -144,7 +170,7 @@ onMounted(() => {
     <carousel
         :key="key"
         :autoplay-interval="autoplayInterval"
-        :circular="props.circular"
+        :circular="isMounted ? props.circular : false"
         :num-scroll="props.numScroll"
         :num-visible="props.numVisible"
         :responsive-options="responsiveOptions"
@@ -160,7 +186,6 @@ onMounted(() => {
             },
             indicators: {
                 class: 'es-carousel-dots d-flex justify-content-center mt-100',
-                style: 'gap: 12px;',
             },
             itemsContent: {
                 class: 'w-100 overflow-hidden',
@@ -250,15 +275,27 @@ onMounted(() => {
     &:hover {
         color: variables.$gray-700;
     }
+    &:focus {
+        color: variables.$gray-900;
+    }
     &:not(:disabled):not(.disabled):active {
         background: unset;
         box-shadow: none;
         color: variables.$gray-700;
     }
+    &:disabled {
+        color: variables.$gray-400;
+    }
+}
+
+:deep(.es-carousel-dots) {
+    gap: 0.7rem;
+    padding-left: 0;
 }
 
 :deep(.es-carousel-dot) {
     list-style-type: none;
+    margin-bottom: 0;
 
     &[data-p-highlight='true'] button {
         background-color: variables.$orange-800;
