@@ -178,27 +178,19 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
         <div class="my-500">
             <h2>Circular autoplay with hidden arrows and dots</h2>
             <p>
-                This example shows the same twelve items, but with autoplay turned on, circular behavior enabled, and
-                the arrows and dots hidden.
+                This example shows the same twelve items, but with autoplay turned on, circular behavior enabled, the
+                arrows and dots hidden, and simplified to show a single item at a time on all breakpoints. The autoplay
+                interval has also been increased from the default two seconds to four seconds.
             </p>
             <p class="mb-200">
-                Pressing the Esc key will stop the autoplay. This is an accessibility feature for screen readers,
-                because the contents of each new slide brought into view by autoplay are automatically read aloud, no
-                matter where the user is on the page.
+                Pressing the Esc key will stop the autoplay and reset the carousel to the first item. This is an
+                important accessibility feature for screen readers, because the contents of each new slide brought into
+                view by autoplay are automatically read aloud, no matter where the user is on the page, which can be
+                distracting while trying to read through another part of the page.
             </p>
             <es-carousel
                 auto-play
-                :breakpoints="{
-                    sm: {
-                        numVisible: 2,
-                    },
-                    lg: {
-                        numVisible: 3,
-                    },
-                    xxl: {
-                        numVisible: 4,
-                    },
-                }"
+                :auto-play-interval="4000"
                 circular
                 :items="basicExampleItems"
                 :show-arrows="false"
