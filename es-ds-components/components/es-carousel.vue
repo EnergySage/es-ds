@@ -306,6 +306,7 @@ onMounted(() => {
         border: none;
         border-radius: 50%;
         height: 0.875rem;
+        padding: 0;
         width: 0.875rem;
 
         &:hover {
