@@ -3,10 +3,9 @@
         id="nav-main"
         class="nav-es-container">
         <div class="content-overlay" />
-        <nav
-            class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
+        <nav class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
             <!-- mobile hamburger menu button -->
-            <div class="d-flex d-lg-none col-2 px-0">
+            <div class="d-flex d-lg-none col-3 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
                     for="data--main-menu"
@@ -19,7 +18,7 @@
             </div>
             <!-- mobile logo -->
             <es-nav-bar-link
-                class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
+                class="d-flex d-lg-none col-6 align-self-center justify-content-center px-0"
                 :href="globalContent.home.link">
                 <div class="nav-es-logo-mobile align-items-center d-flex">
                     <slot name="logo" />
@@ -28,23 +27,38 @@
                     {{ globalContent.home.name }}
                 </span>
             </es-nav-bar-link>
-            <!-- mobile account menu trigger -->
-            <div class="d-flex d-lg-none justify-content-end col-2 px-0">
-                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                <label
-                    class="mb-0 text-decoration-none"
-                    for="data--account-menu">
-                    <icon-person class="align-self-center account-icon" />
-                    <span class="sr-only">
-                        {{ accountContent.mobileAccountButtonAltText }}
-                    </span>
-                </label>
+            <div class="col-3 d-flex flex-nowrap d-lg-none justify-content-end px-0">
+                <!-- mobile search icon -->
+                <div
+                    id="navBarSearchIconMobile"
+                    class="d-block d-lg-none">
+                    <es-button
+                        variant="link"
+                        aria-label="Open search bar"
+                        class="nav-button nav-link search-toggle-mobile d-flex flex-nowrap d-lg-none py-0 px-50 mr-100">
+                        <icon-search class="align-self-center search-icon-mobile" />
+                    </es-button>
+                </div>
+
+                <!-- mobile account menu trigger -->
+                <div class="d-flex d-lg-none align-self-center">
+                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                    <label
+                        class="mb-0 text-decoration-none"
+                        for="data--account-menu">
+                        <icon-person class="align-self-center account-icon" />
+                        <span class="sr-only">
+                            {{ accountContent.mobileAccountButtonAltText }}
+                        </span>
+                    </label>
+                </div>
             </div>
+
             <input
                 id="data--main-menu"
                 class="menu-checkbox main-menu-checkbox"
                 aria-labelledby="data--main-menu"
-                type="checkbox">
+                type="checkbox" />
             <!-- first-level menu on mobile, the whole nav on desktop-->
             <div
                 id="navbarNavDropdown"
@@ -102,16 +116,13 @@
                         </es-nav-bar-top-level-menu>
                         <div
                             id="navBarSearchIcon"
-                            class="nav-item d-none pt-100"
-                            :class="{
-                                'd-lg-block': showSearch,
-                            }">
+                            class="nav-item d-none d-lg-block pt-100">
                             <es-button
                                 variant="link"
                                 aria-label="Open search bar"
-                                class="nav-button nav-link icon-toggle d-none d-lg-flex flex-nowrap py-100">
+                                class="nav-button nav-link search-toggle-desktop d-none d-lg-flex flex-nowrap py-100">
                                 <icon-search
-                                    class="align-self-center search-icon"
+                                    class="align-self-center search-icon-desktop"
                                     width="20px !important"
                                     height="20px !important" />
                             </es-button>
@@ -122,7 +133,7 @@
                             class="d-none d-lg-block pt-100"
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
-                    <!-- mobile+desktop product menus -->
+                    <!-- desktop search bar -->
                     <b-container
                         class="nav-search-bar"
                         style="display: none">
@@ -140,8 +151,8 @@
                             </es-search-bar>
                         </div>
                     </b-container>
-                    <b-container
-                        class="flex-lg-nowrap justify-content-lg-end product-menu">
+                    <!-- mobile+desktop product menus -->
+                    <b-container class="flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
                                 v-for="product in globalContent.products"
@@ -170,7 +181,7 @@
                 id="data--account-menu"
                 class="menu-checkbox account-menu-checkbox"
                 aria-labelledby="data--account-menu"
-                type="checkbox">
+                type="checkbox" />
             <!-- mobile account menu -->
             <div class="menu top-level-menu align-items-start d-flex d-lg-none flex-grow-1">
                 <!-- menu header -->
@@ -280,10 +291,6 @@ export default {
             type: Object,
             required: true,
         },
-        showSearch: {
-            type: Boolean,
-            default: false,
-        },
     },
     mounted() {
         // CUSTOM GLOBAL-NAV SCRIPT STARTS
@@ -302,7 +309,8 @@ export default {
         // Search bar elements for hiding/showing
         const searchBar = document.querySelector('.nav-search-bar');
         const productMenu = document.querySelector('.product-menu');
-        const searchIcon = document.querySelector('.search-icon');
+        const searchIconMobile = document.querySelector('.search-icon-mobile');
+        const searchIconDesktop = document.querySelector('.search-icon-desktop');
         const searchForm = document.getElementById('searchBar');
 
         // Function to show/hide search bar
@@ -310,10 +318,12 @@ export default {
             searchBar.style.display = show_search_bar ? 'flex' : 'none';
             productMenu.style.display = show_search_bar ? 'none' : 'flex';
             if (show_search_bar) {
-                searchIcon.classList.add('search-open');
+                searchIconMobile.classList.add('search-open');
+                searchIconDesktop.classList.add('search-open');
                 searchForm.focus();
             } else {
-                searchIcon.classList.remove('search-open');
+                searchIconMobile.classList.remove('search-open');
+                searchIconDesktop.classList.remove('search-open');
             }
         }
 
@@ -371,8 +381,15 @@ export default {
                 });
             });
 
-        // Show overlay on click for desktop only
-        document.querySelector('.icon-toggle').addEventListener('click', () => {
+        // Show overlay on click for mobile
+        document.querySelector('.search-toggle-mobile').addEventListener('click', () => {
+            const show = searchBar.style.display === 'none';
+            toggle_search_bar(show);
+            show_overlay(show);
+        });
+
+        // Show overlay on click for desktop
+        document.querySelector('.search-toggle-desktop').addEventListener('click', () => {
             const show = searchBar.style.display === 'none';
             toggle_search_bar(show);
             show_overlay(show);
