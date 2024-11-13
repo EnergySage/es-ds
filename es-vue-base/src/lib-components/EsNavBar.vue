@@ -53,7 +53,7 @@
                     </label>
                 </div>
             </div>
-
+            <!-- eslint-disable-next-line vue/html-self-closing -->
             <input
                 id="data--main-menu"
                 class="menu-checkbox main-menu-checkbox"
@@ -240,6 +240,24 @@
                 </ul>
             </div>
         </nav>
+        <!-- mobile search bar -->
+        <b-container
+            class="nav-search-bar-mobile d-lg-none pt-100"
+            style="display: none">
+            <div class="row w-100">
+                <es-search-bar>
+                    <template #close>
+                        <es-button
+                            class="position-absolute nav-button mb-3 nav-search-close-mobile d-lg-none"
+                            aria-label="Close search bar"
+                            style="right: 0"
+                            variant="link">
+                            <icon-x />
+                        </es-button>
+                    </template>
+                </es-search-bar>
+            </div>
+        </b-container>
         <!-- sticky nav bar -->
         <nav class="nav-es-sticky bg-white d-none d-lg-block position-fixed py-25">
             <b-container class="align-items-center d-flex justify-content-between">
@@ -308,6 +326,7 @@ export default {
 
         // Search bar elements for hiding/showing
         const searchBar = document.querySelector('.nav-search-bar');
+        const searchBarMobile = document.querySelector('.nav-search-bar-mobile');
         const productMenu = document.querySelector('.product-menu');
         const searchIconMobile = document.querySelector('.search-icon-mobile');
         const searchIconDesktop = document.querySelector('.search-icon-desktop');
@@ -316,6 +335,7 @@ export default {
         // Function to show/hide search bar
         function toggle_search_bar(show_search_bar) {
             searchBar.style.display = show_search_bar ? 'flex' : 'none';
+            searchBarMobile.style.display = show_search_bar ? 'flex' : 'none';
             productMenu.style.display = show_search_bar ? 'none' : 'flex';
             if (show_search_bar) {
                 searchIconMobile.classList.add('search-open');
@@ -331,7 +351,8 @@ export default {
         function show_overlay(overlay_visible) {
             if (overlay_visible) {
                 overlay.classList.add('show');
-            } else if (!overlay_visible && searchBar.style.display === 'none') {
+            } else if (!overlay_visible
+                && searchBar.style.display === 'none' && searchBarMobile.style.display === 'none') {
                 overlay.classList.remove('show');
             }
         }
@@ -383,7 +404,7 @@ export default {
 
         // Show overlay on click for mobile
         document.querySelector('.search-toggle-mobile').addEventListener('click', () => {
-            const show = searchBar.style.display === 'none';
+            const show = searchBarMobile.style.display === 'none';
             toggle_search_bar(show);
             show_overlay(show);
         });
@@ -396,6 +417,11 @@ export default {
         });
 
         document.querySelector('.nav-search-close').addEventListener('click', () => {
+            toggle_search_bar(false);
+            show_overlay(false);
+        });
+
+        document.querySelector('.nav-search-close-mobile').addEventListener('click', () => {
             toggle_search_bar(false);
             show_overlay(false);
         });
