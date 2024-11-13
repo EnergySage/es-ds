@@ -30,13 +30,16 @@
 }
 
 .nav-button {
-  &:hover {
-    background: variables.$blue-50 !important;
-  }
+  @include breakpoints.media-breakpoint-up(lg) {
+    &:hover {
+      /* stylelint-disable-next-line declaration-no-important */
+      background: variables.$blue-50 !important;
+    }
 
-  &:focus,
-  &.focus {
-    border-color: variables.$blue-500;
+    &:focus,
+    &.focus {
+      border-color: variables.$blue-500;
+    }
   }
 }
 
@@ -181,16 +184,26 @@ $nav-hover-delay: 300ms;
     font-size: variables.$font-size-75;
 
     // shadow for additional visual separation between nav and more plain pages
-    filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
-    box-shadow: none;
+    @include breakpoints.media-breakpoint-up(lg) {
+      filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
+      box-shadow: none;
+    }
   }
 
   .nav-es-global {
     // add a background so veil goes under the nav and nav stands out against page bg
     background-color: variables.$white;
 
-    // shadow for additional visual separation between nav and more plain pages
-    box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
+    @include breakpoints.media-breakpoint-up(lg) {
+      // shadow for additional visual separation between nav and more plain pages
+      box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
+    }
+  }
+
+  .nav-search-bar-mobile {
+    z-index: 1000;
+    font-size: variables.$font-size-75;
+    background-color: variables.$white;
   }
 
   // override es-ds default
