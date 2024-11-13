@@ -204,6 +204,20 @@ $nav-hover-delay: 300ms;
     z-index: 1000;
     font-size: variables.$font-size-75;
     background-color: variables.$white;
+
+    .input-wrapper {
+      width: 100% !important;
+    }
+
+    .btn-primary {
+      display: none !important;
+    }
+
+    .nav-search-close-mobile {
+      @include breakpoints.media-breakpoint-up(lg) {
+        position: absolute;
+      }
+    }
   }
 
   // override es-ds default

@@ -141,7 +141,7 @@
                             <es-search-bar>
                                 <template #close>
                                     <es-button
-                                        class="position-absolute nav-button mb-3 nav-search-close"
+                                        class="position-absolute nav-button mb-100 nav-search-close"
                                         aria-label="Close search bar"
                                         style="right: 0"
                                         variant="link">
@@ -242,21 +242,18 @@
         </nav>
         <!-- mobile search bar -->
         <b-container
-            class="nav-search-bar-mobile d-lg-none pt-100"
+            class="nav-search-bar-mobile d-lg-none"
             style="display: none">
-            <div class="row w-100">
-                <es-search-bar>
-                    <template #close>
-                        <es-button
-                            class="position-absolute nav-button mb-3 nav-search-close-mobile d-lg-none"
-                            aria-label="Close search bar"
-                            style="right: 0"
-                            variant="link">
-                            <icon-x />
-                        </es-button>
-                    </template>
-                </es-search-bar>
-            </div>
+            <es-search-bar>
+                <template #close>
+                    <es-button
+                        class="order-1 d-flex d-lg-none align-self-end nav-button nav-search-close-mobile p-0"
+                        aria-label="Close search bar"
+                        variant="link">
+                        <icon-x />
+                    </es-button>
+                </template>
+            </es-search-bar>
         </b-container>
         <!-- sticky nav bar -->
         <nav class="nav-es-sticky bg-white d-none d-lg-block position-fixed py-25">

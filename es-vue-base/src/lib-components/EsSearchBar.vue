@@ -1,8 +1,9 @@
 <template>
-    <div class="align-items-center w-100 d-flex justify-content-center position-relative">
+    <div class="align-items-center w-100 d-flex flex-column flex-lg-row justify-content-center position-relative">
+        <!--  d-flex flex-column -->
         <form
             action="/search/"
-            class="d-flex align-items-center mx-auto justify-content-center w-100"
+            class="d-flex align-items-center mx-auto justify-content-center order-2 order-lg-1 w-100"
             method="get">
             <es-form-input
                 id="searchBar"
@@ -20,7 +21,7 @@
                 </template>
             </es-form-input>
             <es-button
-                class="ml-50 mb-3"
+                class="ml-50 mb-100"
                 :disabled="!searchText"
                 type="submit"
                 :value="buttonText">
