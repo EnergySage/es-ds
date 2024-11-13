@@ -6,17 +6,15 @@
             method="get">
             <es-form-input
                 id="searchBar"
+                v-model="searchText"
                 aria-label="Search bar"
                 class="w-50"
                 label-sr-only
                 name="query"
-                v-model="searchText"
                 :placeholder="placeholder"
                 :value="searchText"
                 @keydown.enter="checkSearchText">
-                <template #label>
-                    Search bar
-                </template>
+                <template #label> Search bar </template>
                 <template #prefixIcon>
                     <icon-search />
                 </template>
