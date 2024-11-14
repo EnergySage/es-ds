@@ -6,7 +6,7 @@
             class="d-flex align-items-center mx-auto justify-content-center order-2 order-lg-1 w-100"
             method="get">
             <es-form-input
-                id="searchBar"
+                :id="id"
                 v-model="searchText"
                 aria-label="Search bar"
                 class="w-50"
@@ -45,6 +45,13 @@ export default {
         EsFormInput,
     },
     props: {
+        /**
+         * A unique id to keep track of which search form is being used.
+         */
+        id: {
+            type: String,
+            required: true,
+        },
         buttonText: {
             type: String,
             default: 'Search',

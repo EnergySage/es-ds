@@ -138,7 +138,7 @@
                         class="nav-search-bar"
                         style="display: none">
                         <div class="row w-100">
-                            <es-search-bar>
+                            <es-search-bar id="searchBarDesktop">
                                 <template #close>
                                     <es-button
                                         class="position-absolute nav-button mb-100 nav-search-close"
@@ -245,7 +245,7 @@
             class="nav-search-bar-mobile d-lg-none position-relative"
             style="display: none">
             <b-container>
-                <es-search-bar>
+                <es-search-bar id="searchBarMobile">
                     <template #close>
                         <es-button
                             class="order-1 d-flex d-lg-none align-self-end nav-button nav-search-close-mobile p-0"

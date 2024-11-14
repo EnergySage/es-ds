@@ -1,17 +1,14 @@
 <template>
     <div>
-        <h1 class="mb-500">
-            Search bar
-        </h1>
-        <h2>
-            Basic example
-        </h2>
-        <es-search-bar class="my-500" />
-        <h2>
-            Example with open/close functionality
-        </h2>
+        <h1 class="mb-500">Search bar</h1>
+        <h2>Basic example</h2>
+        <es-search-bar
+            id="searchBar1"
+            class="my-500" />
+        <h2>Example with open/close functionality</h2>
         <es-search-bar
             v-if="showSearchBar"
+            id="searchBar2"
             class="my-500">
             <template #close>
                 <es-button
