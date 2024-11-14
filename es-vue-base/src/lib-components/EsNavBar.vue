@@ -241,20 +241,22 @@
             </div>
         </nav>
         <!-- mobile search bar -->
-        <b-container
-            class="nav-search-bar-mobile d-lg-none"
+        <div
+            class="nav-search-bar-mobile d-lg-none position-relative"
             style="display: none">
-            <es-search-bar>
-                <template #close>
-                    <es-button
-                        class="order-1 d-flex d-lg-none align-self-end nav-button nav-search-close-mobile p-0"
-                        aria-label="Close search bar"
-                        variant="link">
-                        <icon-x />
-                    </es-button>
-                </template>
-            </es-search-bar>
-        </b-container>
+            <b-container>
+                <es-search-bar>
+                    <template #close>
+                        <es-button
+                            class="order-1 d-flex d-lg-none align-self-end nav-button nav-search-close-mobile p-0"
+                            aria-label="Close search bar"
+                            variant="link">
+                            <icon-x />
+                        </es-button>
+                    </template>
+                </es-search-bar>
+            </b-container>
+        </div>
         <!-- sticky nav bar -->
         <nav class="nav-es-sticky bg-white d-none d-lg-block position-fixed py-25">
             <b-container class="align-items-center d-flex justify-content-between">
