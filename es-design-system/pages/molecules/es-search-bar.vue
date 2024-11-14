@@ -36,18 +36,14 @@
         </es-button>
 
         <div class="my-500">
-            <h2>
-                EsSearchBar slots
-            </h2>
+            <h2>EsSearchBar slots</h2>
             <ds-prop-table
                 :rows="slotTableRows"
                 :widths="slotTableWidths" />
         </div>
 
         <div class="my-500">
-            <h2>
-                EsSearchBar props
-            </h2>
+            <h2>EsSearchBar props</h2>
             <ds-prop-table
                 :rows="propTableRows"
                 :widths="propTableWidths" />
@@ -70,16 +66,8 @@ export default {
             docCode: '',
             showSearchBar: false,
             propTableRows: [
-                [
-                    'buttonText',
-                    'Search',
-                    'Text to display on the submit button.',
-                ],
-                [
-                    'placeholder',
-                    'Try "best solar panels"',
-                    'Placeholder text to display in the search input.',
-                ],
+                ['buttonText', 'Search', 'Text to display on the submit button.'],
+                ['placeholder', 'Try "best solar panels"', 'Placeholder text to display in the search input.'],
             ],
             propTableWidths: {
                 md: ['4', '2', '6'],
@@ -100,7 +88,7 @@ export default {
     },
     async created() {
         if (this.$prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
             const docSource = await import('!raw-loader!./es-search-bar.vue');
             const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsSearchBar.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
