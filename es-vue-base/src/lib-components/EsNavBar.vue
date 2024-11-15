@@ -141,7 +141,7 @@
                     </b-container>
                     <!-- desktop search bar -->
                     <b-container
-                        class="nav-search-bar"
+                        class="nav-search-bar-desktop"
                         style="display: none">
                         <div class="row w-100">
                             <es-search-bar id="searchBarDesktop">
@@ -334,16 +334,16 @@ export default {
         const overlay = document.querySelector('.content-overlay');
 
         // Search bar elements for hiding/showing
-        const searchBar = document.querySelector('.nav-search-bar');
+        const searchBarDesktop = document.querySelector('.nav-search-bar-desktop');
         const searchBarMobile = document.querySelector('.nav-search-bar-mobile');
         const productMenu = document.querySelector('.product-menu');
         const searchIconMobile = document.querySelector('.search-icon-mobile');
         const searchIconDesktop = document.querySelector('.search-icon-desktop');
-        const searchForm = document.getElementById('searchBar');
+        const searchForm = document.getElementById('searchBarDesktop');
 
         // Function to show/hide search bar
         function toggle_search_bar(show_search_bar) {
-            searchBar.style.display = show_search_bar ? 'flex' : 'none';
+            searchBarDesktop.style.display = show_search_bar ? 'flex' : 'none';
             searchBarMobile.style.display = show_search_bar ? 'flex' : 'none';
             productMenu.style.display = show_search_bar ? 'none' : 'flex';
             if (show_search_bar) {
@@ -361,7 +361,7 @@ export default {
             if (overlay_visible) {
                 overlay.classList.add('show');
             } else if (!overlay_visible
-                && searchBar.style.display === 'none' && searchBarMobile.style.display === 'none') {
+                && searchBarDesktop.style.display === 'none' && searchBarMobile.style.display === 'none') {
                 overlay.classList.remove('show');
             }
         }
@@ -386,7 +386,8 @@ export default {
 
         // Collapse all open menus on window resize
         window.addEventListener('resize', () => {
-            if (mainMenuCheckbox.checked || accountMenuCheckbox.checked || searchBar.style.display !== 'none') {
+            if (mainMenuCheckbox.checked || accountMenuCheckbox.checked
+                || searchBarDesktop.style.display !== 'none' || searchBarMobile.style.display !== 'none') {
                 collapse_mobile_menus();
             }
         });
@@ -420,7 +421,7 @@ export default {
 
         // Show overlay on click for desktop
         document.querySelector('.search-toggle-desktop').addEventListener('click', () => {
-            const show = searchBar.style.display === 'none';
+            const show = searchBarDesktop.style.display === 'none';
             toggle_search_bar(show);
             show_overlay(show);
         });
