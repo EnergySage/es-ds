@@ -116,9 +116,13 @@
                         </es-nav-bar-top-level-menu>
                         <div
                             id="navBarSearchIcon"
-                            class="nav-item d-none d-lg-block pt-100">
+                            class="nav-item d-none pt-100"
+                            :class="{
+                                'd-lg-block': showSearch,
+                            }">
                             <es-button
-                                variant="link"
+                                variant="
+                            link"
                                 aria-label="Open search bar"
                                 class="nav-button nav-link search-toggle-desktop d-none d-lg-flex flex-nowrap py-100">
                                 <icon-search
@@ -307,6 +311,10 @@ export default {
         globalContent: {
             type: Object,
             required: true,
+        },
+        showSearch: {
+            type: Boolean,
+            default: false,
         },
     },
     mounted() {
