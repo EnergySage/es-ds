@@ -31,7 +31,8 @@
                 <!-- mobile search icon -->
                 <div
                     id="navBarSearchIconMobile"
-                    class="d-block d-lg-none">
+                    class="d-lg-none"
+                    :class="showSearch ? 'd-block' : 'd-none'">
                     <es-button
                         variant="link"
                         aria-label="Open search bar"
@@ -114,6 +115,7 @@
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
+                        <!-- desktop search icon -->
                         <div
                             id="navBarSearchIcon"
                             class="nav-item d-none pt-100"
