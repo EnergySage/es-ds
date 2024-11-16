@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import SelectButton from 'primevue/selectbutton';
 
-/**
- * TODOs:
- *  - resize active bubble on breakpoint change, due to padding
- *  - focus states
- */
-
 interface SegmentedControlItem {
     label: string;
 }
@@ -22,7 +16,7 @@ interface ButtonDimensionsInterface {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    disabled: false
+    disabled: false,
 });
 const model = defineModel<number>();
 const segmentedControlRef = useTemplateRef('segmentedControl');
@@ -36,7 +30,9 @@ const buttonDimensions: ButtonDimensionsInterface = reactive({
     options: props.options?.length ? props.options.map(() => ({})) : [],
 });
 
-const inkbarStyle: ComputedRef<Partial<CSSStyleDeclaration>> = computed(() => buttonDimensions.options[model.value || 0]);
+const inkbarStyle: ComputedRef<Partial<CSSStyleDeclaration>> = computed(
+    () => buttonDimensions.options[model.value || 0],
+);
 
 // assume the provided aria-label is unique and convert to an id
 // by lowercasing and replacing all whitespace with dashes
@@ -44,12 +40,8 @@ const labelId = computed(() => {
     return props.ariaLabel ? props.ariaLabel.toLowerCase().replace(/\s/g, '-') : '';
 });
 
-const getButtonDimensions = () => {
-    if (!segmentedControlRef.value) {
-        return [];
-    }
-
-    const buttons = segmentedControlRef.value.querySelectorAll('.es-segmented-control-button');
+// return the left/width to use for the active state bubble, for each provided button
+const getButtonDimensions = (buttons: NodeListOf<Element> | HTMLCollection) => {
     const result = [];
     let runningLeftTotal = 0;
     for (let i = 0; i < buttons.length; i += 1) {
@@ -68,7 +60,25 @@ onMounted(() => {
     isMounted.value = true;
 
     if (segmentedControlRef.value) {
-        buttonDimensions.options = getButtonDimensions();
+        // set the initial button dimensions
+        const buttons = segmentedControlRef.value.querySelectorAll('.es-segmented-control-button');
+        buttonDimensions.options = getButtonDimensions(buttons);
+
+        // set up a resize observer for whenever the segmented control's button group changes width
+        // this will most commonly happen when changing between desktop and mobile breakpoints
+        // but could also happen if the label text of any options changes
+        const resizeObserver = new ResizeObserver((groups) => {
+            groups.forEach((group) => {
+                const updatedButtons = group.target.children;
+                buttonDimensions.options = getButtonDimensions(updatedButtons);
+            });
+        });
+
+        // start the resize observer listening to the segmented control's button group
+        const group = segmentedControlRef.value.querySelector('.es-segmented-control-group');
+        if (group) {
+            resizeObserver.observe(group);
+        }
     }
 });
 </script>
@@ -102,9 +112,9 @@ onMounted(() => {
             :option-value="(option) => props.options.findIndex((innerOption) => option.label === innerOption.label)"
             :options="props.options"
             :pt="{
-                root: 'bg-gray-100 d-flex rounded-lg',
+                root: 'es-segmented-control-group bg-gray-100 d-flex rounded-lg',
                 button: 'es-segmented-control-button font-size-sm font-weight-bold position-relative px-200 px-lg-300 rounded-lg',
-                label: 'es-segmented-control-label position-relative'
+                label: 'es-segmented-control-label position-relative',
             }"
             :unselectable="false" />
     </div>
@@ -165,7 +175,8 @@ onMounted(() => {
     */
     padding-bottom: 6px;
     padding-top: 6px;
-    transition: 250ms ease-in-out;
+    /* don't transition all properties, otherwise responsive bubble width updates will be delayed */
+    transition: color 250ms ease-in-out;
     /* prevent text from highlighting when you click a bunch of times */
     user-select: none;
     white-space: nowrap;
@@ -175,11 +186,10 @@ onMounted(() => {
         color: variables.$gray-900;
     }
 
-    /*&:focus,
     &:focus-visible {
         box-shadow: 0 0 0 3px variables.$warm-orange inset;
         outline: none;
-    }*/
+    }
 }
 
 /* bring the label above the active state bubble */

@@ -23,9 +23,19 @@ const timeframeItems = [
 ];
 
 const esSegmentedControlProps = [
-    ['ariaLabel', 'String', 'n/a', 'Required. A description of the purpose of selecting an option. It will be hidden visually but read aloud by screen readers.'],
+    [
+        'ariaLabel',
+        'String',
+        'n/a',
+        'Required. A description of the purpose of selecting an option. It will be hidden visually but read aloud by screen readers.',
+    ],
     ['disabled', 'Boolean', 'false', `When set to true, it specifies that the element should be disabled.`],
-    ['options', 'Array', 'n/a', `Required. An array of items to display as the available options. Each item should be an object with a "label" string.`],
+    [
+        'options',
+        'Array',
+        'n/a',
+        `Required. An array of items to display as the available options. Each item should be an object with a "label" string.`,
+    ],
 ];
 
 const { $prism } = useNuxtApp();
@@ -133,9 +143,9 @@ onMounted(async () => {
     </div>
 
     <div class="my-500">
-            <h2>EsSegmentedControl props</h2>
-            <ds-prop-table :rows="esSegmentedControlProps" />
-        </div>
+        <h2>EsSegmentedControl props</h2>
+        <ds-prop-table :rows="esSegmentedControlProps" />
+    </div>
 
     <ds-doc-source
         :comp-code="compCode"
