@@ -102,7 +102,7 @@ onMounted(() => {
         <span
             class="es-segmented-control-inkbar rounded-lg position-absolute"
             :data-left="buttonDimensions.options[model || 0]?.left || 0"
-            :style="inkbarStyle as unknown as StyleValue" />
+            :style="inkbarStyle as any" />
         <select-button
             v-model="model"
             :allow-empty="false"
