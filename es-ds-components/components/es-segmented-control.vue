@@ -41,7 +41,7 @@ const labelId = computed(() => {
 });
 
 // return the left/width to use for the active state bubble, for each provided button
-const getButtonDimensions = (buttons: NodeListOf<Element> | HTMLCollection) => {
+const getButtonDimensions = (buttons: HTMLCollection) => {
     const result = [];
     let runningLeftTotal = 0;
     for (let i = 0; i < buttons.length; i += 1) {
@@ -62,7 +62,9 @@ onMounted(() => {
 
     if (segmentedControlRef.value) {
         // set the initial button dimensions
-        const buttons = segmentedControlRef.value.querySelectorAll('.es-segmented-control-button');
+        const buttons = segmentedControlRef.value.querySelectorAll(
+            '.es-segmented-control-button',
+        ) as unknown as HTMLCollection;
         buttonDimensions.options = getButtonDimensions(buttons);
 
         // set up a resize observer for whenever the segmented control's button group changes width
