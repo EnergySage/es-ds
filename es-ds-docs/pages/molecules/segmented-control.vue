@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const viewActiveIndex = ref(0);
 const viewItems = [
     {
@@ -80,8 +80,8 @@ onMounted(async () => {
         <h2>Basic example</h2>
         <es-segmented-control
             v-model="viewActiveIndex"
-            aria-label="Select how you want to view your quotes"
             class="mb-100"
+            label="Select how you want to view your quotes"
             :options="viewItems" />
         <p>
             {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
@@ -92,8 +92,8 @@ onMounted(async () => {
         <h2>Timeframe selector example</h2>
         <es-segmented-control
             v-model="timeframeActiveIndex"
-            aria-label="Select the timeframe to view"
             class="mb-100"
+            label="Select the timeframe to view"
             :options="timeframeItems" />
         <p class="mb-200">
             {{ `Selected item: "${timeframeItems[timeframeActiveIndex].label}"` }}
@@ -133,9 +133,9 @@ onMounted(async () => {
         <h2>Disabled example</h2>
         <es-segmented-control
             v-model="viewActiveIndex"
-            aria-label="Select the timeframe to view"
             class="mb-100"
             disabled
+            label="Select the timeframe to view"
             :options="viewItems" />
         <p>
             {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}

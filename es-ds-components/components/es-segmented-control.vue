@@ -6,8 +6,8 @@ interface SegmentedControlItem {
 }
 
 interface Props {
-    ariaLabel: string;
     disabled?: boolean;
+    label: string;
     options: SegmentedControlItem[];
 }
 
@@ -20,6 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const model = defineModel<number>();
 const segmentedControlRef = useTemplateRef('segmentedControl');
+let resizeObserver: ResizeObserver | null = null;
 
 // needed to avoid Content Layout Shift (CLS)
 // as the inkbar is positioned via left and width attributes which are not set until mount
@@ -34,10 +35,10 @@ const inkbarStyle: ComputedRef<Partial<CSSStyleDeclaration>> = computed(
     () => buttonDimensions.options[model.value || 0],
 );
 
-// assume the provided aria-label is unique and convert to an id
+// assume the provided label is unique and convert to an id
 // by lowercasing and replacing all whitespace with dashes
 const labelId = computed(() => {
-    return props.ariaLabel ? props.ariaLabel.toLowerCase().replace(/\s/g, '-') : '';
+    return props.label ? props.label.toLowerCase().replace(/\s/g, '-') : '';
 });
 
 // return the left/width to use for the active state bubble, for each provided button
@@ -70,7 +71,7 @@ onMounted(() => {
         // set up a resize observer for whenever the segmented control's button group changes width
         // this will most commonly happen when changing between desktop and mobile breakpoints
         // but could also happen if the label text of any options changes
-        const resizeObserver = new ResizeObserver((groups) => {
+        resizeObserver = new ResizeObserver((groups) => {
             groups.forEach((group) => {
                 const updatedButtons = group.target.children;
                 buttonDimensions.options = getButtonDimensions(updatedButtons);
@@ -82,6 +83,12 @@ onMounted(() => {
         if (group) {
             resizeObserver.observe(group);
         }
+    }
+});
+
+onUnmounted(() => {
+    if (resizeObserver) {
+        resizeObserver.disconnect();
     }
 });
 </script>
@@ -99,7 +106,7 @@ onMounted(() => {
         <label
             :id="labelId"
             class="sr-only">
-            {{ ariaLabel }}
+            {{ label }}
         </label>
         <span
             class="es-segmented-control-inkbar rounded-lg position-absolute"
