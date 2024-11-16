@@ -45,12 +45,13 @@ const getButtonDimensions = (buttons: NodeListOf<Element> | HTMLCollection) => {
     const result = [];
     let runningLeftTotal = 0;
     for (let i = 0; i < buttons.length; i += 1) {
+        const button = buttons[i] as unknown as HTMLElement;
         result.push({
             left: `${runningLeftTotal}px`,
-            width: `${buttons[i].offsetWidth}px`,
+            width: `${button.offsetWidth}px`,
         });
 
-        runningLeftTotal += buttons[i].offsetWidth;
+        runningLeftTotal += button.offsetWidth;
     }
 
     return result;
@@ -101,7 +102,7 @@ onMounted(() => {
         <span
             class="es-segmented-control-inkbar rounded-lg position-absolute"
             :data-left="buttonDimensions.options[model || 0]?.left || 0"
-            :style="inkbarStyle" />
+            :style="inkbarStyle as unknown as StyleValue" />
         <select-button
             v-model="model"
             :allow-empty="false"
