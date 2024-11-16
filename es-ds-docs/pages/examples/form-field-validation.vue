@@ -64,7 +64,7 @@ const onSubmit = async () => {
     stopSubmit();
 };
 
-const getErrorMessage = (validatorName) => {
+const getErrorMessage = (validatorName: any) => {
     const ERROR_MESSAGES = {
         [vuelidateKeys.REQUIRED]: () => 'This field is required',
         [vuelidateKeys.MIN_LENGTH]: (min = 8) => `This field must be at least ${min} characters`,

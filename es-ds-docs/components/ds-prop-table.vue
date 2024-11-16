@@ -1,23 +1,14 @@
-<script lang="js">
-export default {
-    name: 'DsPropTable',
-    props: {
-        columns: {
-            type: Array,
-            default: () => ['Name', 'Type', 'Default', 'Description'],
-        },
-        rows: {
-            type: Array,
-            required: true,
-        },
-        widths: {
-            type: Object,
-            default: () => ({
-                md: ['3', '2', '2', '5'],
-            }),
-        },
+<script setup lang="ts">
+const {
+    columns = ['Name', 'Type', 'Default', 'Description'],
+    widths = {
+        md: ['3', '2', '2', '5'],
     },
-};
+} = defineProps<{
+    columns?: string[];
+    rows: string[][];
+    widths?: { xs?: string[]; sm?: string[]; md: string[]; lg?: string[]; xl?: string[]; xxl?: string[] };
+}>();
 </script>
 
 <template>
@@ -29,7 +20,7 @@ export default {
                 v-for="(column, columnIndex) in columns"
                 :key="column"
                 :md="widths.md[columnIndex]"
-                :lg="(widths.lg && widths.lg[columnIndex]) || null">
+                :lg="(widths.lg && widths.lg[columnIndex]) || undefined">
                 <template #name>
                     {{ column }}
                 </template>

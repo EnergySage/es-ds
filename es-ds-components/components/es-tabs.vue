@@ -11,15 +11,16 @@ const panels = useSlots().default?.() || [];
 // keep track of the active tab index
 //  - from above, if v-model is used
 //  - from below, if the tab component receives a click
-const activeIndex = ref(model.value || 0);
+const activeIndex: Ref<number> = ref(model.value || 0);
 
 // watch the v-model for changes and update the active index if it does change
 watch(model, (newVal) => {
+    // @ts-expect-error I don't know why
     activeIndex.value = newVal;
 });
 
 // called from the TabView when the user clicks a tab to make it active
-const updateActiveIndex = (index) => {
+const updateActiveIndex = (index: number) => {
     model.value = index;
 };
 </script>
@@ -35,6 +36,7 @@ const updateActiveIndex = (index) => {
             panelContainer: 'tab-content',
         }"
         @update:active-index="updateActiveIndex">
+        <!-- @vue-expect-error -->
         <tab-panel
             v-for="(panel, index) in panels"
             :key="index"
@@ -58,6 +60,7 @@ const updateActiveIndex = (index) => {
                     ],
                 }),
             }">
+            <!-- @vue-expect-error -->
             <component
                 :is="item"
                 v-for="(item, idx) in panel.children.default()"

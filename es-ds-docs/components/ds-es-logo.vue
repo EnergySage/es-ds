@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 /**
  * for dark background, set class="text-white" on this component
  */

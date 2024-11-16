@@ -18,6 +18,11 @@ export default defineNuxtConfig({
         },
     },
 
+    // Configure how Nuxt auto-imports composables into your application.
+    imports: {
+        dirs: ['composables', 'types'],
+    },
+
     modules: [
         // https://google-fonts.nuxtjs.org/getting-started/setup
         '@nuxtjs/google-fonts',
@@ -73,5 +78,8 @@ export default defineNuxtConfig({
                 'primevue/tabview',
             ],
         },
+    },
+    typescript: {
+        typeCheck: true,
     },
 });

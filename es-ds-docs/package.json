@@ -16,8 +16,8 @@
         "format": "npm run format:prettier && npm run format:eslint"
     },
     "dependencies": {
-        "@energysage/es-ds-components": "^3.0.0-alpha.8",
-        "@energysage/es-ds-styles": "^3.0.0-alpha.8",
+        "@energysage/es-ds-components": "^3.0.0-alpha.10",
+        "@energysage/es-ds-styles": "^3.0.0-alpha.9",
         "@nuxt/image": "^1.8.0",
         "@nuxt/kit": "^3.13.1",
         "@nuxtjs/google-fonts": "^3.2.0",

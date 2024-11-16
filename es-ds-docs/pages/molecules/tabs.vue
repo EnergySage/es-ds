@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const tabIndexProgrammatic = ref(1);
 
 const { $prism } = useNuxtApp();

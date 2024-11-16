@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');

@@ -16,11 +16,11 @@ const undefinedSize = !(props.cols || props.sm || props.md || props.lg || props.
         :class="{
             col: undefinedSize,
             [`col-${cols}`]: cols,
-            [`col-sm-${sm}`]: sm,
-            [`col-md-${md}`]: md,
-            [`col-lg-${lg}`]: lg,
-            [`col-xl-${xl}`]: xl,
-            [`col-xxl-${xxl}`]: xxl,
+            [`col-sm${sm ? `-${sm}` : ''}`]: sm !== undefined,
+            [`col-md${md ? `-${md}` : ''}`]: md !== undefined,
+            [`col-lg${lg ? `-${lg}` : ''}`]: lg !== undefined,
+            [`col-xl${xl ? `-${xl}` : ''}`]: xl !== undefined,
+            [`col-xxl${xxl ? `-${xxl}` : ''}`]: xxl !== undefined,
         }">
         <slot />
     </div>

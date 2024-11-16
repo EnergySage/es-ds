@@ -110,6 +110,7 @@ onMounted(async () => {
                         {{ breakpointTableLabels[index] }}
                     </template>
                     <template #value>
+                        <!-- @vue-expect-error -->
                         {{ item[field.key] }}
                     </template>
                 </ds-responsive-table-column>
