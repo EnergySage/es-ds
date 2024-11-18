@@ -3,7 +3,8 @@
         id="nav-main"
         class="nav-es-container">
         <div class="content-overlay" />
-        <nav class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
+        <nav
+            class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
             <!-- mobile hamburger menu button -->
             <div class="d-flex d-lg-none col-3 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -59,7 +60,7 @@
                 id="data--main-menu"
                 class="menu-checkbox main-menu-checkbox"
                 aria-labelledby="data--main-menu"
-                type="checkbox" />
+                type="checkbox">
             <!-- first-level menu on mobile, the whole nav on desktop-->
             <div
                 id="navbarNavDropdown"
@@ -123,8 +124,7 @@
                                 'd-lg-block': showSearch,
                             }">
                             <es-button
-                                variant="
-                            link"
+                                variant="link"
                                 aria-label="Open search bar"
                                 class="nav-button nav-link search-toggle-desktop d-none d-lg-flex flex-nowrap py-100">
                                 <icon-search
@@ -158,7 +158,8 @@
                         </div>
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <b-container class="flex-lg-nowrap justify-content-lg-end product-menu">
+                    <b-container
+                        class="flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
                                 v-for="product in globalContent.products"
@@ -187,7 +188,7 @@
                 id="data--account-menu"
                 class="menu-checkbox account-menu-checkbox"
                 aria-labelledby="data--account-menu"
-                type="checkbox" />
+                type="checkbox">
             <!-- mobile account menu -->
             <div class="menu top-level-menu align-items-start d-flex d-lg-none flex-grow-1">
                 <!-- menu header -->

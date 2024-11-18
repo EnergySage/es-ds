@@ -1,11 +1,17 @@
 <template>
     <div>
-        <h1 class="mb-500">Search bar</h1>
-        <h2>Basic example</h2>
+        <h1 class="mb-500">
+            Search bar
+        </h1>
+        <h2>
+            Basic example
+        </h2>
         <es-search-bar
             id="searchBar1"
             class="my-500" />
-        <h2>Example with open/close functionality</h2>
+        <h2>
+            Example with open/close functionality
+        </h2>
         <es-search-bar
             v-if="showSearchBar"
             id="searchBar2"
@@ -36,14 +42,18 @@
         </es-button>
 
         <div class="my-500">
-            <h2>EsSearchBar slots</h2>
+            <h2>
+                EsSearchBar slots
+            </h2>
             <ds-prop-table
                 :rows="slotTableRows"
                 :widths="slotTableWidths" />
         </div>
 
         <div class="my-500">
-            <h2>EsSearchBar props</h2>
+            <h2>
+                EsSearchBar props
+            </h2>
             <ds-prop-table
                 :rows="propTableRows"
                 :widths="propTableWidths" />
@@ -66,8 +76,16 @@ export default {
             docCode: '',
             showSearchBar: false,
             propTableRows: [
-                ['buttonText', 'Search', 'Text to display on the submit button.'],
-                ['placeholder', 'Try "best solar panels"', 'Placeholder text to display in the search input.'],
+                [
+                    'buttonText',
+                    'Search',
+                    'Text to display on the submit button.',
+                ],
+                [
+                    'placeholder',
+                    'Try "best solar panels"',
+                    'Placeholder text to display in the search input.',
+                ],
             ],
             propTableWidths: {
                 md: ['4', '2', '6'],
