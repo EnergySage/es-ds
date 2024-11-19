@@ -999,8 +999,8 @@ $button-disabled-font-colors: map.merge(
 
 $btn-primary-box-shadow: 0 5px 10px 0 $blue-100 !default;
 $btn-primary-active-box-shadow: 0 4px 10px 0 $blue-100 !default;
-$btn-dark-bg-box-shadow: 0 5px 10px 0 rgba(255, 145, 51, 0.25);
-$btn-dark-bg-active-box-shadow: 0 4px 10px 0 rgba(255, 145, 51, 0.25);
+$btn-dark-bg-box-shadow: none;
+$btn-dark-bg-active-box-shadow: none;
 
 $button-box-shadows: () !default;
 $button-box-shadows: map.merge(
