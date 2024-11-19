@@ -340,7 +340,8 @@ export default {
         const productMenu = document.querySelector('.product-menu');
         const searchIconMobile = document.querySelector('.search-icon-mobile');
         const searchIconDesktop = document.querySelector('.search-icon-desktop');
-        const searchForm = document.getElementById('searchBarDesktop');
+        const searchFormMobile = document.getElementById('searchBarMobile');
+        const searchFormDesktop = document.getElementById('searchBarDesktop');
 
         // Function to show/hide search bar
         function toggle_search_bar(show_search_bar) {
@@ -350,7 +351,12 @@ export default {
             if (show_search_bar) {
                 searchIconMobile.classList.add('search-open');
                 searchIconDesktop.classList.add('search-open');
-                searchForm.focus();
+
+                if (searchFormMobile.checkVisibility()) {
+                    searchFormMobile.focus();
+                } else {
+                    searchFormDesktop.focus();
+                }
             } else {
                 searchIconMobile.classList.remove('search-open');
                 searchIconDesktop.classList.remove('search-open');
