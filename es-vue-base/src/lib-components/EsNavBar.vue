@@ -147,7 +147,7 @@
                             <es-search-bar id="searchBarDesktop">
                                 <template #close>
                                     <es-button
-                                        class="position-absolute nav-button mb-100 nav-search-close"
+                                        class="position-absolute nav-button mb-100 nav-search-close-desktop"
                                         aria-label="Close search bar"
                                         style="right: 0"
                                         variant="link">
@@ -335,27 +335,29 @@ export default {
         const overlay = document.querySelector('.content-overlay');
 
         // Search bar elements for hiding/showing
-        const searchBarDesktop = document.querySelector('.nav-search-bar-desktop');
-        const searchBarMobile = document.querySelector('.nav-search-bar-mobile');
-        const productMenu = document.querySelector('.product-menu');
         const searchIconMobile = document.querySelector('.search-icon-mobile');
         const searchIconDesktop = document.querySelector('.search-icon-desktop');
-        const searchFormMobile = document.getElementById('searchBarMobile');
-        const searchFormDesktop = document.getElementById('searchBarDesktop');
+        const productMenu = document.querySelector('.product-menu');
+
+        const navSearchBarMobile = document.querySelector('.nav-search-bar-mobile');
+        const navSearchBarDesktop = document.querySelector('.nav-search-bar-desktop');
+        const searchBarMobile = document.getElementById('searchBarMobile');
+        const searchBarDesktop = document.getElementById('searchBarDesktop');
 
         // Function to show/hide search bar
         function toggle_search_bar(show_search_bar) {
-            searchBarDesktop.style.display = show_search_bar ? 'flex' : 'none';
-            searchBarMobile.style.display = show_search_bar ? 'flex' : 'none';
+            navSearchBarMobile.style.display = show_search_bar ? 'flex' : 'none';
+            navSearchBarDesktop.style.display = show_search_bar ? 'flex' : 'none';
             productMenu.style.display = show_search_bar ? 'none' : 'flex';
+
             if (show_search_bar) {
                 searchIconMobile.classList.add('search-open');
                 searchIconDesktop.classList.add('search-open');
 
-                if (searchFormMobile.checkVisibility()) {
-                    searchFormMobile.focus();
+                if (searchBarMobile.checkVisibility()) {
+                    searchBarMobile.focus();
                 } else {
-                    searchFormDesktop.focus();
+                    searchBarDesktop.focus();
                 }
             } else {
                 searchIconMobile.classList.remove('search-open');
@@ -368,7 +370,7 @@ export default {
             if (overlay_visible) {
                 overlay.classList.add('show');
             } else if (!overlay_visible
-                && searchBarDesktop.style.display === 'none' && searchBarMobile.style.display === 'none') {
+                && navSearchBarMobile.style.display === 'none' && navSearchBarDesktop.style.display === 'none') {
                 overlay.classList.remove('show');
             }
         }
@@ -394,7 +396,7 @@ export default {
         // Collapse all open menus on window resize
         window.addEventListener('resize', () => {
             if (mainMenuCheckbox.checked || accountMenuCheckbox.checked
-                || searchBarDesktop.style.display !== 'none' || searchBarMobile.style.display !== 'none') {
+                || navSearchBarMobile.style.display !== 'none' || navSearchBarDesktop.style.display !== 'none') {
                 collapse_mobile_menus();
             }
         });
@@ -419,26 +421,26 @@ export default {
                 });
             });
 
-        // Show overlay on click for mobile
+        // Click handlers for navbar search buttons
         document.querySelector('.search-toggle-mobile').addEventListener('click', () => {
-            const show = searchBarMobile.style.display === 'none';
+            const show = navSearchBarMobile.style.display === 'none';
             toggle_search_bar(show);
             show_overlay(show);
         });
 
-        // Show overlay on click for desktop
         document.querySelector('.search-toggle-desktop').addEventListener('click', () => {
-            const show = searchBarDesktop.style.display === 'none';
+            const show = navSearchBarDesktop.style.display === 'none';
             toggle_search_bar(show);
             show_overlay(show);
         });
 
-        document.querySelector('.nav-search-close').addEventListener('click', () => {
+        // Click handlers for search form close buttons
+        document.querySelector('.nav-search-close-mobile').addEventListener('click', () => {
             toggle_search_bar(false);
             show_overlay(false);
         });
 
-        document.querySelector('.nav-search-close-mobile').addEventListener('click', () => {
+        document.querySelector('.nav-search-close-desktop').addEventListener('click', () => {
             toggle_search_bar(false);
             show_overlay(false);
         });
