@@ -417,6 +417,7 @@ export default {
             .forEach((element) => {
                 element.addEventListener('mouseover', () => {
                     show_overlay(true);
+                    toggle_search_bar_desktop(false);
                 });
                 element.addEventListener('mouseout', () => {
                 // Hide overlay on mouseout on desktop not mobile
@@ -452,6 +453,7 @@ export default {
         mainMenuCheckbox.addEventListener('change', (event) => {
             if (event.target.checked) {
                 show_mobile_menus();
+                toggle_search_bar_mobile(false);
             } else {
                 collapse_mobile_menus();
             }
@@ -461,6 +463,7 @@ export default {
         accountMenuCheckbox.addEventListener('change', (event) => {
             if (event.target.checked) {
                 show_mobile_menus();
+                toggle_search_bar_mobile(false);
             } else {
                 collapse_mobile_menus();
             }
