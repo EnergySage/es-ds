@@ -568,6 +568,7 @@ $link-color:                              $blue-600 !default;
 $link-decoration:                         none !default;
 $link-hover-color:                        $blue-600 !default;
 $link-hover-decoration:                   underline !default;
+$link-active-color:                       $blue-800 !default;
 $link-visited-color:                      $blue-800 !default;
 $link-weight:                             $font-weight-semibold !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
@@ -1052,12 +1053,12 @@ $btn-font-size-lg:            $input-btn-font-size-lg !default;
 $btn-line-height-lg:          $input-btn-line-height-lg !default;
 // fusv-enable
 
-$btn-border-width:            2px !default;
+$btn-border-width:            1px !default;
 
 $btn-font-weight:             $font-weight-bolder !default;
 $btn-box-shadow:              0 5px 10px 0 $blue-100 !default;
 $btn-focus-width:             $input-btn-focus-width !default;
-$btn-focus-box-shadow:        0 !default;
+$btn-focus-box-shadow:        none !default;
 $btn-disabled-opacity:        1 !default;
 $btn-active-box-shadow:       0 !default;
 $btn-active-transform:        translateY(1px) !default;

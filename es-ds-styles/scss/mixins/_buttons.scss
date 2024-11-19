@@ -46,12 +46,12 @@
     border-color: $hover-border;
   }
 
-  &:focus,
+  &:focus-visible,
   &.focus {
     color: $text-color;
     @include gradients.gradient-bg($focus-background);
-    border-color: $focus-border;
-    box-shadow: 0 0 0 1px $focus-border, $box-shadow;
+    border-color: $focus-background;
+    box-shadow: 0 0 0 2px $focus-border, $box-shadow;
   }
 
   // Disabled comes first so active can properly restyle
@@ -77,14 +77,14 @@
       background-image: none; // Remove the gradient for the pressed/active state
     }
     border-color: $active-border;
-    box-shadow: 0 0 0 1px transparent, $active-box-shadow;
+    box-shadow: 0 0 0 2px transparent, $active-box-shadow;
     transform: variables.$btn-active-transform;
   }
 
-  &:not(:disabled):not(.disabled):active:focus,
-  &:not(:disabled):not(.disabled).active:focus {
-    border-color: $focus-border;
-    box-shadow: 0 0 0 1px $focus-border, $box-shadow;
+  &:not(:disabled):not(.disabled):active:focus-visible,
+  &:not(:disabled):not(.disabled).active:focus-visible {
+    border-color: $focus-background;
+    box-shadow: 0 0 0 2px $focus-border, $box-shadow;
   }
 }
 
@@ -120,12 +120,12 @@
     border-color: $hover-border;
   }
 
-  &:focus,
+  &:focus-visible,
   &.focus {
     color: $focus-border;
     @include gradients.gradient-bg($focus-background);
-    border-color: $focus-border;
-    box-shadow: 0 0 0 1px $focus-border, $box-shadow;
+    border-color: $focus-background;
+    box-shadow: 0 0 0 2px $focus-border, $box-shadow;
   }
 
   &:disabled,
@@ -148,14 +148,14 @@
     color: $active-border;
     background-color: $active-background;
     border-color: $active-border;
-    box-shadow: 0 0 0 1px transparent, $active-box-shadow;
+    box-shadow: 0 0 0 2px transparent, $active-box-shadow;
     transform: variables.$btn-active-transform;
   }
 
-  &:not(:disabled):not(.disabled):active:focus,
-  &:not(:disabled):not(.disabled).active:focus {
-    border-color: $active-border;
-    box-shadow: 0 0 0 1px $active-border, $box-shadow;
+  &:not(:disabled):not(.disabled):active:focus-visible,
+  &:not(:disabled):not(.disabled).active:focus-visible {
+    border-color: $active-background;
+    box-shadow: 0 0 0 2px $active-border, $box-shadow;
   }
 }
 
