@@ -345,26 +345,29 @@ export default {
         const searchBarDesktop = document.getElementById('searchBarDesktop');
 
         // Function to show/hide search bar
-        function toggle_search_bar(show_search_bar) {
+        function toggle_search_bar_mobile(show_search_bar) {
             navSearchBarMobile.style.display = show_search_bar ? 'flex' : 'none';
+
+            if (show_search_bar) {
+                searchIconMobile.classList.add('search-open');
+                searchBarMobile.focus();
+            } else {
+                searchIconMobile.classList.remove('search-open');
+            }
+        }
+
+        // Function to show/hide search bar
+        function toggle_search_bar_desktop(show_search_bar) {
             navSearchBarDesktop.style.display = show_search_bar ? 'flex' : 'none';
             productMenu.style.display = show_search_bar ? 'none' : 'flex';
 
             if (show_search_bar) {
-                searchIconMobile.classList.add('search-open');
                 searchIconDesktop.classList.add('search-open');
-
-                if (searchBarMobile.checkVisibility()) {
-                    searchBarMobile.focus();
-                } else {
-                    searchBarDesktop.focus();
-                }
+                searchBarDesktop.focus();
             } else {
-                searchIconMobile.classList.remove('search-open');
                 searchIconDesktop.classList.remove('search-open');
             }
         }
-
         // Function to show/hide overlay
         function show_overlay(overlay_visible) {
             if (overlay_visible) {
@@ -384,7 +387,7 @@ export default {
         // Close all submenus, hide overlay, and unlock scrolling when menu is closed
         function collapse_mobile_menus() {
             uncheck_menus();
-            toggle_search_bar(false);
+            toggle_search_bar_mobile(false);
             show_overlay(false);
             document.body.style.overflow = 'visible';
         }
@@ -424,24 +427,24 @@ export default {
         // Click handlers for navbar search buttons
         document.querySelector('.search-toggle-mobile').addEventListener('click', () => {
             const show = navSearchBarMobile.style.display === 'none';
-            toggle_search_bar(show);
+            toggle_search_bar_mobile(show);
             show_overlay(show);
         });
 
         document.querySelector('.search-toggle-desktop').addEventListener('click', () => {
             const show = navSearchBarDesktop.style.display === 'none';
-            toggle_search_bar(show);
+            toggle_search_bar_desktop(show);
             show_overlay(show);
         });
 
         // Click handlers for search form close buttons
         document.querySelector('.nav-search-close-mobile').addEventListener('click', () => {
-            toggle_search_bar(false);
+            toggle_search_bar_mobile(false);
             show_overlay(false);
         });
 
         document.querySelector('.nav-search-close-desktop').addEventListener('click', () => {
-            toggle_search_bar(false);
+            toggle_search_bar_desktop(false);
             show_overlay(false);
         });
 
