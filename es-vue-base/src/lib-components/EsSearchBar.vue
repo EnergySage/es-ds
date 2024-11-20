@@ -1,16 +1,17 @@
 <template>
-    <div class="align-items-center w-100 d-flex justify-content-center position-relative">
+    <div class="align-items-center w-100 d-flex flex-column flex-lg-row justify-content-center position-relative">
+        <!--  d-flex flex-column -->
         <form
             action="/search/"
-            class="d-flex align-items-center mx-auto justify-content-center w-100"
+            class="d-flex align-items-center mx-auto justify-content-center order-2 order-lg-1 w-100"
             method="get">
             <es-form-input
-                id="searchBar"
+                :id="id"
+                v-model="searchText"
                 aria-label="Search bar"
                 class="w-50"
                 label-sr-only
                 name="query"
-                v-model="searchText"
                 :placeholder="placeholder"
                 :value="searchText"
                 @keydown.enter="checkSearchText">
@@ -22,7 +23,7 @@
                 </template>
             </es-form-input>
             <es-button
-                class="ml-50 mb-3"
+                class="ml-50 mb-100"
                 :disabled="!searchText"
                 type="submit"
                 :value="buttonText">
@@ -46,6 +47,13 @@ export default {
         EsFormInput,
     },
     props: {
+        /**
+         * A unique id to keep track of which search form is being used.
+         */
+        id: {
+            type: String,
+            required: true,
+        },
         buttonText: {
             type: String,
             default: 'Search',

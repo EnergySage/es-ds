@@ -30,13 +30,16 @@
 }
 
 .nav-button {
-  &:hover {
-    background: variables.$blue-50 !important;
-  }
+  @include breakpoints.media-breakpoint-up(lg) {
+    &:hover {
+      /* stylelint-disable-next-line declaration-no-important */
+      background: variables.$blue-50 !important;
+    }
 
-  &:focus,
-  &.focus {
-    border-color: variables.$blue-500;
+    &:focus,
+    &.focus {
+      border-color: variables.$blue-500;
+    }
   }
 }
 
@@ -175,16 +178,46 @@ $nav-hover-delay: 300ms;
 .nav-es-container {
   .nav-es-global,
   .nav-es-sticky {
+    // pull navbar up to avoid overlay from getting covered by other DOM elements
+    z-index: 1000;
     // default should be size 14px according to figma
     font-size: variables.$font-size-75;
+
+    // shadow for additional visual separation between nav and more plain pages
+    @include breakpoints.media-breakpoint-up(lg) {
+      filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
+      box-shadow: none;
+    }
   }
 
   .nav-es-global {
     // add a background so veil goes under the nav and nav stands out against page bg
     background-color: variables.$white;
 
-    // shadow for additional visual separation between nav and more plain pages
-    box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
+    @include breakpoints.media-breakpoint-up(lg) {
+      // shadow for additional visual separation between nav and more plain pages
+      box-shadow: 0 4px 4px rgba(221, 221, 221, 0.25);
+    }
+  }
+
+  .nav-search-bar-mobile {
+    z-index: 1000;
+    font-size: variables.$font-size-75;
+    background-color: variables.$white;
+
+    .input-wrapper {
+      width: 100% !important;
+    }
+
+    .btn-primary {
+      display: none !important;
+    }
+
+    .nav-search-close-mobile {
+      @include breakpoints.media-breakpoint-up(lg) {
+        position: absolute;
+      }
+    }
   }
 
   // override es-ds default
@@ -274,7 +307,8 @@ $nav-hover-delay: 300ms;
     }
   }
 
-  .account-icon, .search-icon {
+  .account-icon,
+  .search-icon {
     fill: variables.$blue-900;
   }
 
@@ -284,16 +318,6 @@ $nav-hover-delay: 300ms;
 
   // On Desktop a hovers display the dropdowns
   @media only screen and (min-width: $desktop-min-width) {
-    .nav-es-global,
-    .nav-es-sticky {
-      // pull navbar up to avoid overlay from getting covered by other DOM elements
-      z-index: 1000;
-
-      // shadow for additional visual separation between nav and more plain pages
-      filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
-      box-shadow: none;
-    }
-
     // sticky nav bar, initially positioned out of viewport
     .nav-es-sticky {
       top: 0;

@@ -6,12 +6,15 @@
         <h2>
             Basic example
         </h2>
-        <es-search-bar class="my-500" />
+        <es-search-bar
+            id="searchBar1"
+            class="my-500" />
         <h2>
             Example with open/close functionality
         </h2>
         <es-search-bar
             v-if="showSearchBar"
+            id="searchBar2"
             class="my-500">
             <template #close>
                 <es-button
@@ -103,7 +106,7 @@ export default {
     },
     async created() {
         if (this.$prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
             const docSource = await import('!raw-loader!./es-search-bar.vue');
             const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsSearchBar.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */

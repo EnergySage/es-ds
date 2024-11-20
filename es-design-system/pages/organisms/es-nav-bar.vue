@@ -4,8 +4,7 @@
             EsNavBar
         </h1>
         <p>
-            The nav bar is a specialized component intended for use outside the normal content
-            container. See above.
+            The nav bar is a specialized component intended for use outside the normal content container. See above.
         </p>
 
         <p
@@ -57,7 +56,7 @@ export default {
     },
     async created() {
         if (this.$prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
+            /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
             const docSource = await import('!raw-loader!./es-nav-bar.vue');
             const compSource = await import('!raw-loader!@energysage/es-vue-base/src/lib-components/EsNavBar.vue');
             /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */

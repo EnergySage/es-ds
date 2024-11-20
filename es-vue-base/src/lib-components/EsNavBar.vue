@@ -6,7 +6,7 @@
         <nav
             class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
             <!-- mobile hamburger menu button -->
-            <div class="d-flex d-lg-none col-2 px-0">
+            <div class="d-flex d-lg-none col-3 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
                 <label
                     for="data--main-menu"
@@ -19,7 +19,7 @@
             </div>
             <!-- mobile logo -->
             <es-nav-bar-link
-                class="d-flex d-lg-none col-8 align-self-center justify-content-center px-0"
+                class="d-flex d-lg-none col-6 align-self-center justify-content-center px-0"
                 :href="globalContent.home.link">
                 <div class="nav-es-logo-mobile align-items-center d-flex">
                     <slot name="logo" />
@@ -28,18 +28,34 @@
                     {{ globalContent.home.name }}
                 </span>
             </es-nav-bar-link>
-            <!-- mobile account menu trigger -->
-            <div class="d-flex d-lg-none justify-content-end col-2 px-0">
-                <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-                <label
-                    class="mb-0 text-decoration-none"
-                    for="data--account-menu">
-                    <icon-person class="align-self-center account-icon" />
-                    <span class="sr-only">
-                        {{ accountContent.mobileAccountButtonAltText }}
-                    </span>
-                </label>
+            <div class="col-3 d-flex flex-nowrap d-lg-none justify-content-end px-0">
+                <!-- mobile search icon -->
+                <div
+                    id="navBarSearchIconMobile"
+                    class="d-lg-none"
+                    :class="showSearch ? 'd-block' : 'd-none'">
+                    <es-button
+                        variant="link"
+                        aria-label="Open search bar"
+                        class="nav-button nav-link search-toggle-mobile d-flex flex-nowrap d-lg-none py-0 px-50 mr-100">
+                        <icon-search class="align-self-center search-icon-mobile" />
+                    </es-button>
+                </div>
+
+                <!-- mobile account menu trigger -->
+                <div class="d-flex d-lg-none align-self-center">
+                    <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+                    <label
+                        class="mb-0 text-decoration-none"
+                        for="data--account-menu">
+                        <icon-person class="align-self-center account-icon" />
+                        <span class="sr-only">
+                            {{ accountContent.mobileAccountButtonAltText }}
+                        </span>
+                    </label>
+                </div>
             </div>
+            <!-- eslint-disable-next-line vue/html-self-closing -->
             <input
                 id="data--main-menu"
                 class="menu-checkbox main-menu-checkbox"
@@ -100,6 +116,7 @@
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
+                        <!-- desktop search icon -->
                         <div
                             id="navBarSearchIcon"
                             class="nav-item d-none pt-100"
@@ -109,9 +126,9 @@
                             <es-button
                                 variant="link"
                                 aria-label="Open search bar"
-                                class="nav-button nav-link icon-toggle d-none d-lg-flex flex-nowrap py-100">
+                                class="nav-button nav-link search-toggle-desktop d-none d-lg-flex flex-nowrap py-100">
                                 <icon-search
-                                    class="align-self-center search-icon"
+                                    class="align-self-center search-icon-desktop"
                                     width="20px !important"
                                     height="20px !important" />
                             </es-button>
@@ -122,15 +139,15 @@
                             class="d-none d-lg-block pt-100"
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
-                    <!-- mobile+desktop product menus -->
+                    <!-- desktop search bar -->
                     <b-container
-                        class="nav-search-bar"
+                        class="nav-search-bar-desktop"
                         style="display: none">
                         <div class="row w-100">
-                            <es-search-bar>
+                            <es-search-bar id="searchBarDesktop">
                                 <template #close>
                                     <es-button
-                                        class="position-absolute nav-button mb-3 nav-search-close"
+                                        class="position-absolute nav-button mb-100 nav-search-close-desktop"
                                         aria-label="Close search bar"
                                         style="right: 0"
                                         variant="link">
@@ -140,6 +157,7 @@
                             </es-search-bar>
                         </div>
                     </b-container>
+                    <!-- mobile+desktop product menus -->
                     <b-container
                         class="flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
@@ -229,6 +247,23 @@
                 </ul>
             </div>
         </nav>
+        <!-- mobile search bar -->
+        <div
+            class="nav-search-bar-mobile d-lg-none position-relative"
+            style="display: none">
+            <b-container>
+                <es-search-bar id="searchBarMobile">
+                    <template #close>
+                        <es-button
+                            class="order-1 d-flex d-lg-none align-self-end nav-button nav-search-close-mobile p-0"
+                            aria-label="Close search bar"
+                            variant="link">
+                            <icon-x />
+                        </es-button>
+                    </template>
+                </es-search-bar>
+            </b-container>
+        </div>
         <!-- sticky nav bar -->
         <nav class="nav-es-sticky bg-white d-none d-lg-block position-fixed py-25">
             <b-container class="align-items-center d-flex justify-content-between">
@@ -300,28 +335,45 @@ export default {
         const overlay = document.querySelector('.content-overlay');
 
         // Search bar elements for hiding/showing
-        const searchBar = document.querySelector('.nav-search-bar');
+        const searchIconMobile = document.querySelector('.search-icon-mobile');
+        const searchIconDesktop = document.querySelector('.search-icon-desktop');
         const productMenu = document.querySelector('.product-menu');
-        const searchIcon = document.querySelector('.search-icon');
-        const searchForm = document.getElementById('searchBar');
+
+        const navSearchBarMobile = document.querySelector('.nav-search-bar-mobile');
+        const navSearchBarDesktop = document.querySelector('.nav-search-bar-desktop');
+        const searchBarMobile = document.getElementById('searchBarMobile');
+        const searchBarDesktop = document.getElementById('searchBarDesktop');
 
         // Function to show/hide search bar
-        function toggle_search_bar(show_search_bar) {
-            searchBar.style.display = show_search_bar ? 'flex' : 'none';
-            productMenu.style.display = show_search_bar ? 'none' : 'flex';
+        function toggle_search_bar_mobile(show_search_bar) {
+            navSearchBarMobile.style.display = show_search_bar ? 'flex' : 'none';
+
             if (show_search_bar) {
-                searchIcon.classList.add('search-open');
-                searchForm.focus();
+                searchIconMobile.classList.add('search-open');
+                searchBarMobile.focus();
             } else {
-                searchIcon.classList.remove('search-open');
+                searchIconMobile.classList.remove('search-open');
             }
         }
 
+        // Function to show/hide search bar
+        function toggle_search_bar_desktop(show_search_bar) {
+            navSearchBarDesktop.style.display = show_search_bar ? 'flex' : 'none';
+            productMenu.style.display = show_search_bar ? 'none' : 'flex';
+
+            if (show_search_bar) {
+                searchIconDesktop.classList.add('search-open');
+                searchBarDesktop.focus();
+            } else {
+                searchIconDesktop.classList.remove('search-open');
+            }
+        }
         // Function to show/hide overlay
         function show_overlay(overlay_visible) {
             if (overlay_visible) {
                 overlay.classList.add('show');
-            } else if (!overlay_visible && searchBar.style.display === 'none') {
+            } else if (!overlay_visible
+                && navSearchBarMobile.style.display === 'none' && navSearchBarDesktop.style.display === 'none') {
                 overlay.classList.remove('show');
             }
         }
@@ -335,7 +387,7 @@ export default {
         // Close all submenus, hide overlay, and unlock scrolling when menu is closed
         function collapse_mobile_menus() {
             uncheck_menus();
-            toggle_search_bar(false);
+            toggle_search_bar_mobile(false);
             show_overlay(false);
             document.body.style.overflow = 'visible';
         }
@@ -346,7 +398,8 @@ export default {
 
         // Collapse all open menus on window resize
         window.addEventListener('resize', () => {
-            if (mainMenuCheckbox.checked || accountMenuCheckbox.checked || searchBar.style.display !== 'none') {
+            if (mainMenuCheckbox.checked || accountMenuCheckbox.checked
+                || navSearchBarMobile.style.display !== 'none' || navSearchBarDesktop.style.display !== 'none') {
                 collapse_mobile_menus();
             }
         });
@@ -364,6 +417,7 @@ export default {
             .forEach((element) => {
                 element.addEventListener('mouseover', () => {
                     show_overlay(true);
+                    toggle_search_bar_desktop(false);
                 });
                 element.addEventListener('mouseout', () => {
                 // Hide overlay on mouseout on desktop not mobile
@@ -371,15 +425,27 @@ export default {
                 });
             });
 
-        // Show overlay on click for desktop only
-        document.querySelector('.icon-toggle').addEventListener('click', () => {
-            const show = searchBar.style.display === 'none';
-            toggle_search_bar(show);
+        // Click handlers for navbar search buttons
+        document.querySelector('.search-toggle-mobile').addEventListener('click', () => {
+            const show = navSearchBarMobile.style.display === 'none';
+            toggle_search_bar_mobile(show);
             show_overlay(show);
         });
 
-        document.querySelector('.nav-search-close').addEventListener('click', () => {
-            toggle_search_bar(false);
+        document.querySelector('.search-toggle-desktop').addEventListener('click', () => {
+            const show = navSearchBarDesktop.style.display === 'none';
+            toggle_search_bar_desktop(show);
+            show_overlay(show);
+        });
+
+        // Click handlers for search form close buttons
+        document.querySelector('.nav-search-close-mobile').addEventListener('click', () => {
+            toggle_search_bar_mobile(false);
+            show_overlay(false);
+        });
+
+        document.querySelector('.nav-search-close-desktop').addEventListener('click', () => {
+            toggle_search_bar_desktop(false);
             show_overlay(false);
         });
 
@@ -387,6 +453,7 @@ export default {
         mainMenuCheckbox.addEventListener('change', (event) => {
             if (event.target.checked) {
                 show_mobile_menus();
+                toggle_search_bar_mobile(false);
             } else {
                 collapse_mobile_menus();
             }
@@ -396,6 +463,7 @@ export default {
         accountMenuCheckbox.addEventListener('change', (event) => {
             if (event.target.checked) {
                 show_mobile_menus();
+                toggle_search_bar_mobile(false);
             } else {
                 collapse_mobile_menus();
             }
