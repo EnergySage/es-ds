@@ -95,7 +95,7 @@ onUnmounted(() => {
 
 <template>
     <div
-        v-if="$props.options?.length"
+        v-if="options?.length"
         ref="segmentedControl"
         :aria-hidden="props.disabled || undefined"
         class="es-segmented-control d-flex position-relative"

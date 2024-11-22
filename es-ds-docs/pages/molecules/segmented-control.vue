@@ -24,7 +24,7 @@ const timeframeItems = [
 
 const esSegmentedControlProps = [
     [
-        'ariaLabel',
+        'label',
         'String',
         'n/a',
         'Required. A description of the purpose of selecting an option. It will be hidden visually but read aloud by screen readers.',
