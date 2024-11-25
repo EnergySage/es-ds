@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 export default {
     name: 'IconOpenEnvelope',
     props: {

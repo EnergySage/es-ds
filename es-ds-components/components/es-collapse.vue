@@ -19,7 +19,7 @@ const props = defineProps({
     },
 });
 
-const userDeterminedState = ref(null);
+const userDeterminedState: Ref<boolean | null> = ref(null);
 
 // directly determines the expanded/collapsed state of the panel
 const expanded = computed(() => {
@@ -34,7 +34,7 @@ const expanded = computed(() => {
     return props.visible || model.value;
 });
 
-const onClick = ({ value }) => {
+const onClick = ({ value }: { value: boolean }) => {
     // save the state toggled by the user
     // convert from "collapsed" semantics internal to the primevue panel
     // to the "expanded" semantics exposed by this component

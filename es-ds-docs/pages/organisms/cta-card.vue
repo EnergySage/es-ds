@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const propTableRows = [
     ['imageFirst', 'Boolean', 'false', 'If true, reorders the elements so the image appears above the heading.'],
     [

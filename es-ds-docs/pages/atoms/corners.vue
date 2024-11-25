@@ -4,7 +4,7 @@ import sassBorderRadiusComponents from '@energysage/es-ds-styles/scss/modules/bo
 
 const BASE_FONT_SIZE_PX = 16;
 
-const COMPONENT_NAME_URLS = {
+const COMPONENT_NAME_URLS: any = {
     accordion: '/molecules/accordion',
     badge: '/molecules/badge',
     button: '/molecules/button',
@@ -13,15 +13,14 @@ const COMPONENT_NAME_URLS = {
     'form-message': '/molecules/form-message',
     modal: '/molecules/modal',
     pagination: '/molecules/pagination',
-    // TODO switch popover, textarea, and verification-code to the right route once they exist
-    popover: '/molecules',
-    textarea: '/molecules',
+    popover: '/molecules/popover',
+    textarea: '/molecules/textarea',
     'text-input': '/molecules/text-input',
-    'verification-code': '/molecules',
+    'verification-code': '/molecules/verification-code',
 };
 
 const borderRadius = computed(() => {
-    const sizeMap = Object.entries(sassBorderRadius).reduce((result, [name, sizeRem]) => {
+    const sizeMap: any = Object.entries(sassBorderRadius).reduce((result: any, [name, sizeRem]) => {
         // eslint-disable-next-line no-param-reassign
         result[sizeRem] = {
             name,
@@ -40,7 +39,7 @@ const borderRadius = computed(() => {
         const sizePx = parseFloat(sizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
         return {
             class: name === 'md' ? 'rounded' : `rounded-${name}`,
-            components: sizeMap[sizeRem].components.map((simpleName) => ({
+            components: sizeMap[sizeRem].components.map((simpleName: any) => ({
                 name: `${simpleName[0].toUpperCase()}${simpleName.substring(1).replace('-', ' ')}`,
                 url: COMPONENT_NAME_URLS[simpleName],
             })),

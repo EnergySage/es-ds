@@ -38,7 +38,7 @@ const fontWeightItems = [
 ];
 const legacyCollapseVisible = ref(false);
 
-const bodyExamples = computed(() => {
+const bodyExamples: ComputedRef<any[]> = computed(() => {
     const seeds = [
         {
             name: 'Extra small body',
@@ -76,7 +76,7 @@ const bodyExamples = computed(() => {
             tag: 'a',
         },
     ];
-    return seeds.reduce((result, seed) => {
+    return seeds.reduce((result: any, seed: any) => {
         const fontSizeRem = sassFontSizes[`font-size-${seed.key}`];
         const fontSizePx = parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
         const lineHeightRem = sassLineHeights[`line-height-${seed.key}`];
@@ -110,14 +110,14 @@ const displayExamples = computed(() => {
 }, {});
 
 const createHeadingExample = (
-    identifier,
-    categoryPrefix,
-    categoryName,
-    generalInfo,
-    mobileFontSizes,
-    desktopFontSizes,
-    mobileLineHeights,
-    desktopLineHeights,
+    identifier: string,
+    categoryPrefix: string,
+    categoryName: string,
+    generalInfo: any,
+    mobileFontSizes: any,
+    desktopFontSizes: any,
+    mobileLineHeights: any,
+    desktopLineHeights: any,
 ) => {
     const sizeMobileRem = mobileFontSizes[identifier];
     const sizeDesktopRem = desktopFontSizes[identifier];
@@ -136,7 +136,7 @@ const createHeadingExample = (
     const isHeading = identifier[0] === 'h';
 
     let letterSpacingRem = '';
-    let letterSpacingPx = '';
+    let letterSpacingPx: any = '';
 
     if (isEyebrow) {
         letterSpacingRem = generalInfo.letterSpacing;
@@ -230,7 +230,7 @@ const headingExamples = computed(() => {
     return result;
 }, {});
 
-const calculateActualFontSize = (remStr) => {
+const calculateActualFontSize = (remStr: string) => {
     if (!remStr) {
         return '';
     }

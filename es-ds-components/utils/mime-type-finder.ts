@@ -39,10 +39,10 @@ const mimeTypesAndHexes = [
 
 export const mimeTypes = mimeTypesAndHexes.map(({ mime }) => mime);
 
-export function getHumanReadableTypeFromMime(mimeType) {
+export function getHumanReadableTypeFromMime(mimeType: any) {
     return mimeTypesAndHexes.find((mimeTypeAndHex) => mimeTypeAndHex.mime === mimeType)?.humanReadable;
 }
 
-export default function findMimeType(hex) {
+export function findMimeType(hex: any) {
     return mimeTypesAndHexes.find((mimeType) => mimeType.hexes.includes(hex))?.mime;
 }

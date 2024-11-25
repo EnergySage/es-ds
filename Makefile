@@ -44,6 +44,10 @@ build:
 	npm --prefix es-ds-docs run build
 # es-ds-components does not have a build step
 
+.PHONY: typecheck
+typecheck:
+	cd es-ds-docs && npx nuxi typecheck
+
 # Sometimes Called
 
 .PHONY: install

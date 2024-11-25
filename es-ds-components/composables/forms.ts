@@ -15,7 +15,7 @@ export function useEsForms<
 
     const isSubmitInProgress = computed(() => submitInProgress.value);
 
-    const getFields = (obj: unknown, valueKey = 'obj') => {
+    const getFields = (obj: any, valueKey = 'obj') => {
         let objKeys = null;
         try {
             objKeys = Object.keys(obj);

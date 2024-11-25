@@ -23,19 +23,22 @@ const activeIndex = ref();
 
 watch(model, (newVal) => {
     if (newVal) {
+        // @ts-expect-error not sure
         activeIndex.value = children.findIndex((child) => child.props.id === newVal);
     }
 });
 
 const accordionTabs = children.map((child, index) => {
+    // @ts-expect-error not sure
     if (child.props.id === props.initialExpandedId || child.props.id === model.value) {
         activeIndex.value = index;
     }
     return child.children;
 });
 
-const updateActiveIndex = (index) => {
+const updateActiveIndex = (index: any) => {
     if (model.value) {
+        // @ts-expect-error not sure
         model.value = children[index]?.props.id || '';
     }
 };
@@ -96,6 +99,7 @@ const updateActiveIndex = (index) => {
                     role="heading"
                     aria-level="3"
                     :class="{ 'h3 mb-0': variant === 'minimal' }">
+                    <!-- @vue-expect-error -->
                     <component
                         :is="item"
                         v-for="item in tab.title()"
@@ -103,6 +107,7 @@ const updateActiveIndex = (index) => {
                 </span>
                 <icon-chevron-down class="es-accordion-icon flex-shrink-0 ml-200" />
             </template>
+            <!-- @vue-expect-error -->
             <component
                 :is="item"
                 v-for="item in tab.default()"

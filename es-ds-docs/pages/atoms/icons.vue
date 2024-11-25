@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
 
-const colorNames = Object.keys(sassIconColors)
+const colorNames: any = Object.keys(sassIconColors)
     .map((k) => k)
-    .reduce((prev, cur) => {
+    .reduce((prev: any, cur: any) => {
         // eslint-disable-next-line no-param-reassign
         prev[cur] = cur;
         return prev;
@@ -46,8 +46,10 @@ onMounted(async () => {
             <p>Select an option to see how the icons look with that color applied.</p>
             <es-radio-button
                 v-for="color in colorOptions"
+                :id="`icon-id-${color.value}`"
                 :key="color.value"
                 v-model="activeColor"
+                :name="`icon-name-${color.value}`"
                 :display-name="color.text"
                 :value="color.value"
                 inline />

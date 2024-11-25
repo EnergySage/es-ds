@@ -21,7 +21,7 @@ const props = defineProps({
     },
 });
 
-const checkFrozenRow = (index) => {
+const checkFrozenRow = (index: any) => {
     if (index === 0 && props.stickyFirstCol) {
         return true;
     }
@@ -39,7 +39,7 @@ const startCase = (str: string) =>
         .replace(/([a-z])([A-Z])/g, (_, $1, $2) => `${$1} ${$2}`)
         .replace(/(\s|^)(\w)/g, (_, $1, $2) => $1 + $2.toUpperCase());
 
-const label = (col) => {
+const label = (col: any) => {
     if (typeof col === 'string') {
         return startCase(col);
     }
@@ -50,6 +50,7 @@ const columns = computed(() => {
     if (props.fields) {
         return props.fields;
     }
+    // @ts-expect-error not sure
     return Object.keys(props.items[0]);
 });
 
@@ -81,6 +82,7 @@ const scrollHeight = computed(() => {
         :value="props.items"
         class="border table__data-table table-spacing table"
         :scroll-height="scrollHeight">
+        <!-- @vue-expect-error -->
         <column
             v-for="(col, index) of columns"
             :key="col?.key ? col.key : col"

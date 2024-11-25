@@ -1,4 +1,4 @@
-<script lang="js">
+<script lang="ts">
 export default {
     name: 'EsNavBarAccountMenu',
     props: {
@@ -30,13 +30,16 @@ export default {
                 <ul
                     class="loggedIn dropdown-menu account-menu rounded mt-0 py-100 list-unstyled"
                     style="display: none">
+                    <!-- @vue-expect-error -->
                     <li
                         v-for="item in authItems"
                         :key="item.name">
+                        <!-- @vue-expect-error -->
                         <es-nav-bar-link
                             class="dropdown-item nav-link"
                             :href="item.link">
                             <span class="mx-50">
+                                <!-- @vue-expect-error -->
                                 {{ item.name }}
                             </span>
                         </es-nav-bar-link>

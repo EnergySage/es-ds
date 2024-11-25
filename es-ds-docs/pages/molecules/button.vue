@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const mainExamples = ref([
     {
         name: 'Default',
@@ -304,7 +304,7 @@ onMounted(async () => {
                                     {{ example.text }}
                                 </es-button>
                                 <es-button :size="example.size">
-                                    {{ example.secondButton.text }}
+                                    {{ example.secondButton?.text }}
                                 </es-button>
                             </div>
                         </template>
@@ -345,7 +345,7 @@ onMounted(async () => {
                                 <es-button
                                     disabled
                                     :size="example.size">
-                                    {{ example.secondButton.text }}
+                                    {{ example.secondButton?.text }}
                                 </es-button>
                             </div>
                         </template>

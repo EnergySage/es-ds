@@ -1,4 +1,4 @@
-<script lang="js">
+<script lang="ts">
 export default {
     name: 'EsNavBar',
     props: {
@@ -18,6 +18,7 @@ export default {
         function uncheck_menus() {
             document.querySelectorAll('.menu-checkbox').forEach((element) => {
                 const checkbox = element;
+                // @ts-expect-error legacy code
                 checkbox.checked = false;
             });
         }
@@ -26,10 +27,12 @@ export default {
         const overlay = document.querySelector('.content-overlay');
 
         // Function to show/hide overlay
-        function show_overlay(overlay_visible) {
+        function show_overlay(overlay_visible: boolean) {
             if (overlay_visible) {
+                // @ts-expect-error legacy code
                 overlay.classList.add('show');
             } else {
+                // @ts-expect-error legacy code
                 overlay.classList.remove('show');
             }
         }
@@ -53,12 +56,14 @@ export default {
 
         // Collapse all open menus on window resize
         window.addEventListener('resize', () => {
+            // @ts-expect-error legacy code
             if (mainMenuCheckbox.checked || accountMenuCheckbox.checked) {
                 collapse_mobile_menus();
             }
         });
 
         // Collapse all open menus on overlay click
+        // @ts-expect-error legacy code
         overlay.addEventListener('click', () => {
             collapse_mobile_menus();
         });
@@ -74,13 +79,16 @@ export default {
                     show_overlay(true);
                 });
                 element.addEventListener('mouseout', () => {
+                    // @ts-expect-error legacy code
                     // Hide overlay on mouseout on desktop not mobile
                     show_overlay(mainMenuCheckbox.checked || accountMenuCheckbox.checked);
                 });
             });
 
+        // @ts-expect-error legacy code
         // Toggle menu display on main menu open/close
         mainMenuCheckbox.addEventListener('change', (event) => {
+            // @ts-expect-error legacy code
             if (event.target.checked) {
                 show_mobile_menus();
             } else {
@@ -88,8 +96,10 @@ export default {
             }
         });
 
+        // @ts-expect-error legacy code
         // Toggle menu display on account menu open/close
         accountMenuCheckbox.addEventListener('change', (event) => {
+            // @ts-expect-error legacy code
             if (event.target.checked) {
                 show_mobile_menus();
             } else {
@@ -98,22 +108,26 @@ export default {
         });
 
         // get logged in/out state and display appropriate menu
-        const menuDisplay = ({ loggedOut }) => {
+        const menuDisplay = ({ loggedOut }: { loggedOut: boolean }) => {
             if (loggedOut) {
                 // logged out so allow loggedOut menu and the compare buttons to be visible
                 document.querySelectorAll('.nav-es-container .loggedOut').forEach((element) => {
+                    // @ts-expect-error legacy code
                     // eslint-disable-next-line no-param-reassign
                     element.style.display = null;
                 });
             } else {
                 // logged in so allow logged in menu to be visible, and show name with appropriate layout
                 document.querySelectorAll('.nav-es-container .loggedIn').forEach((element) => {
+                    // @ts-expect-error legacy code
                     // eslint-disable-next-line no-param-reassign
                     element.style.display = null;
                 });
+                // @ts-expect-error legacy code
                 document.querySelector('.nav-es-container .icon-dropdown .dropdown-toggle').style.display = 'flex';
                 const selector = '.nav-es-container .icon-dropdown .dropdown-toggle .first-name';
                 document.querySelectorAll(selector).forEach((element) => {
+                    // @ts-expect-error legacy code
                     // eslint-disable-next-line no-param-reassign
                     element.style.display = 'block';
                 });
@@ -153,7 +167,7 @@ export default {
         };
 
         // set up callback for sticky nav intersection observer
-        const intersectionCallback = (entries) => {
+        const intersectionCallback = (entries: IntersectionObserverEntry[]) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.remove('scrolled');
@@ -167,6 +181,7 @@ export default {
         // https://www.smashingmagazine.com/2021/07/dynamic-header-intersection-observer/
         const observer = new IntersectionObserver(intersectionCallback, intersectionOptions);
         const targetEl = document.querySelector('#nav-main');
+        // @ts-expect-error legacy code
         observer.observe(targetEl);
 
         // CUSTOM GLOBAL-NAV SCRIPT ENDS

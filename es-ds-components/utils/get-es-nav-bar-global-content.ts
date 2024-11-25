@@ -273,7 +273,7 @@ export default (
             ],
             featuredArticle: {
                 linkName: 'New research',
-                linkUrl: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-18`,
+                linkUrl: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-19`,
                 lede: "EnergySage Intel's latest Solar & Storage Marketplace Report",
                 image500: `${ES_IMAGE_DOMAIN}/static/img/navbar/articles/latest-market-intel-500w.png`,
                 imageAlt: 'market intel report charts',
@@ -306,6 +306,10 @@ export default (
                         },
                         {
                             name: 'Financing',
+                            link: `${ES_DOMAIN}/financing/`,
+                        },
+                        {
+                            name: 'Solar loan providers',
                             link: `${ES_DOMAIN}/solar/financing/loan-providers/`,
                         },
                         {
@@ -397,6 +401,10 @@ export default (
                 {
                     name: 'Heat pump incentives',
                     link: `${ES_DOMAIN}/heat-pumps/heat-pump-incentives/`,
+                },
+                {
+                    name: 'Financing',
+                    link: `${ES_DOMAIN}/financing/`,
                 },
                 {
                     name: 'Get personalized quotes',

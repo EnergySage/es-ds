@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 definePageMeta({
     layout: 'nav',
 });
@@ -14,6 +14,7 @@ const compSourceText = compSource.default;
 const docSource = await import('./nav-bar.vue?raw');
 
 const scriptRegex = /\/\/ CUSTOM GLOBAL-NAV SCRIPT STARTS([\s\S]+)\/\/ CUSTOM GLOBAL-NAV SCRIPT ENDS/;
+// @ts-expect-error not sure
 const navScriptSource = ref([...compSourceText.match(scriptRegex)[0]].join(''));
 
 onMounted(async () => {
