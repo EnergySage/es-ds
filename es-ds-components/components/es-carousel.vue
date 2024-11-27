@@ -258,25 +258,25 @@ onMounted(() => {
     <carousel
         :key="key"
         :autoplay-interval="autoplayInterval"
-        :circular="isMounted && props.circular"
+        :circular="isMounted && circular"
         class="es-carousel"
         :class="{
-            'es-carousel--brand': props.variant === 'brand',
-            'arrows-only': props.showArrows && !props.showDots,
+            'es-carousel--brand': variant === 'brand',
+            'arrows-only': showArrows && !showDots,
             'before-mount': !isMounted,
-            dots: props.showDots,
+            dots: showDots,
             [`num-dots-sm-${numDotsSm}`]: true,
             [`num-dots-md-${numDotsMd}`]: true,
             [`num-dots-lg-${numDotsLg}`]: true,
             [`num-dots-xl-${numDotsXl}`]: true,
             [`num-dots-xxl-${numDotsXxl}`]: true,
         }"
-        :num-scroll="props.numScroll"
-        :num-visible="props.numVisible"
+        :num-scroll="numScroll"
+        :num-visible="numVisible"
         :responsive-options="responsiveOptions"
-        :show-indicators="props.showDots"
-        :show-navigators="props.showArrows"
-        :value="props.items"
+        :show-indicators="showDots"
+        :show-navigators="showArrows"
+        :value="items"
         :pt="{
             container: {
                 class: 'es-carousel-container d-flex position-relative',
