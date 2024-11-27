@@ -14,7 +14,14 @@ const SAMPLE_IMAGES = [
     'https://a-us.storyblok.com/f/1006159/810x473/a3a6b6d667/adding-solar-panels.jpg?cv=1728482273086',
 ];
 
-const basicExampleItems = SAMPLE_IMAGES.map((image, index) => ({
+// only six items to showcase best practices around not showing too many dots
+const basicExampleItems = SAMPLE_IMAGES.slice(0, 6).map((image, index) => ({
+    heading: `Item ${index + 1}`,
+    url: image,
+}));
+
+// use the full twelve items for the slideshow example since there's no dots
+const slideShowItems = SAMPLE_IMAGES.map((image, index) => ({
     heading: `Item ${index + 1}`,
     url: image,
 }));
@@ -36,6 +43,7 @@ onMounted(async () => {
 });
 
 const propTableRows = [
+    ['arrowSize', 'String', '"sm"', 'Takes either "sm" or "lg". Small size is 24px, large size is 32px.'],
     [
         'autoPlay',
         'Boolean',
@@ -45,7 +53,7 @@ const propTableRows = [
     [
         'autoPlayInterval',
         'Number',
-        '2000',
+        '4000',
         'If autoPlay is true, this determines the number of milliseconds between transitions.',
     ],
     [
@@ -59,6 +67,12 @@ const propTableRows = [
         'Boolean',
         'true',
         'Whether the carousel should stop paging at either end or start over from the beginning.',
+    ],
+    [
+        'controlGap',
+        'Number',
+        '24',
+        'The spacing, in pixels, between the carousel slides and the controls that appear below.',
     ],
     [
         'items',
@@ -78,8 +92,15 @@ const propTableRows = [
         '1',
         'The number of items visible at any one time. This is also used as the default mobile value when using breakpoints.',
     ],
-    ['showArrows', 'Boolean', 'true', 'Whether to show the arrows on either side of the carousel.'],
-    ['showDots', 'Boolean', 'true', 'Whether to show the dots at the bottom of the carousel.'],
+    ['showArrows', 'Boolean', 'true', 'Whether to show the arrows below the carousel.'],
+    ['showDots', 'Boolean', 'true', 'Whether to show the dots below the carousel.'],
+    ['slideGap', 'Number', '16', 'The spacing, in pixels, between each carousel slide.'],
+    [
+        'variant',
+        'String',
+        '"default"',
+        'Takes either "default" or "brand". Default means gray arrows, brand means blue arrows.',
+    ],
 ];
 
 const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible page of the carousel changes.']];
@@ -100,9 +121,8 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
         <div class="my-500">
             <h2>Basic example</h2>
             <p class="mb-200">
-                This example shows a responsive carousel with twelve items, rendered as cards with an image and
-                subtitle. Mobile sees one card at a time, which then increases to two, three, and four as the viewport
-                width increases.
+                This example shows a responsive carousel with six items, rendered as cards with an image and subtitle.
+                Mobile sees one card at a time, which then increases to two and three as the viewport width increases.
             </p>
             <es-carousel
                 :breakpoints="{
@@ -113,10 +133,6 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                     lg: {
                         numScroll: 3,
                         numVisible: 3,
-                    },
-                    xxl: {
-                        numScroll: 4,
-                        numVisible: 4,
                     },
                 }"
                 :items="basicExampleItems">
@@ -134,11 +150,74 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
         </div>
 
         <div class="my-500">
-            <h2>Circular example</h2>
+            <h2>No dots</h2>
+            <p class="mb-200">
+                When dots are turned off, the arrows are spaced out more but still appear below the carousel.
+            </p>
+            <es-carousel
+                :breakpoints="{
+                    sm: {
+                        numScroll: 2,
+                        numVisible: 2,
+                    },
+                    lg: {
+                        numScroll: 3,
+                        numVisible: 3,
+                    },
+                }"
+                :items="basicExampleItems"
+                :show-dots="false">
+                <template #item="{ item }">
+                    <es-card class="text-center">
+                        <nuxt-img
+                            class="mb-50 w-100"
+                            :src="item.url" />
+                        <p class="font-weight-semibold mb-0">
+                            {{ item.heading }}
+                        </p>
+                    </es-card>
+                </template>
+            </es-carousel>
+        </div>
+
+        <div class="my-500">
+            <h2>Customization</h2>
+            <p class="mb-200">
+                This example shows the ability to customize the gap between slides, the gap between the slides and the
+                controls, and the size and color of the arrow button icons.
+            </p>
+            <es-carousel
+                arrow-size="lg"
+                :breakpoints="{
+                    sm: {
+                        numScroll: 2,
+                        numVisible: 2,
+                    },
+                }"
+                :control-gap="48"
+                :items="basicExampleItems"
+                :show-dots="false"
+                :slide-gap="32"
+                variant="brand">
+                <template #item="{ item }">
+                    <es-card class="text-center">
+                        <nuxt-img
+                            class="mb-50 w-100"
+                            :src="item.url" />
+                        <p class="font-weight-semibold mb-0">
+                            {{ item.heading }}
+                        </p>
+                    </es-card>
+                </template>
+            </es-carousel>
+        </div>
+
+        <div class="my-500">
+            <h2>Circular behavior</h2>
             <p>
-                This example shows the same responsive carousel but with circular behavior turned on, meaning the user
-                can continue paging in one direction forever and the items from the beginning of the list will be
-                repeated once the end of the list is reached.
+                This setting allows the user to continue paging in one direction forever and the items from the
+                beginning of the list will be repeated once the end of the list is reached. It's recommended to show
+                the dots when the circular setting is enabled so the user knows when the end of the list is reached.
             </p>
             <p class="mb-200">
                 Unless paging is done in a rapid-fire succession (the carousel needs a split second to add more hidden
@@ -151,14 +230,6 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                         numScroll: 2,
                         numVisible: 2,
                     },
-                    lg: {
-                        numScroll: 3,
-                        numVisible: 3,
-                    },
-                    xxl: {
-                        numScroll: 4,
-                        numVisible: 4,
-                    },
                 }"
                 circular
                 :items="basicExampleItems">
@@ -176,12 +247,8 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
         </div>
 
         <div class="my-500">
-            <h2>Circular autoplay with hidden arrows and dots</h2>
-            <p>
-                This example shows the same twelve items, but with autoplay turned on, circular behavior enabled, the
-                arrows and dots hidden, and simplified to show a single item at a time on all breakpoints. The autoplay
-                interval has also been increased from the default two seconds to four seconds.
-            </p>
+            <h2>Autoplay with circular behavior</h2>
+            <p>This example shows autoplay behavior with circular mode enabled, to show a slideshow of images.</p>
             <p class="mb-200">
                 Pressing the Esc key will stop the autoplay and reset the carousel to the first item. This is an
                 important accessibility feature for screen readers, because the contents of each new slide brought into
@@ -190,20 +257,15 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             </p>
             <es-carousel
                 auto-play
-                :auto-play-interval="4000"
                 circular
-                :items="basicExampleItems"
+                :items="slideShowItems"
                 :show-arrows="false"
                 :show-dots="false">
                 <template #item="{ item }">
-                    <es-card class="text-center">
-                        <nuxt-img
-                            class="mb-50 w-100"
-                            :src="item.url" />
-                        <p class="font-weight-semibold mb-0">
-                            {{ item.heading }}
-                        </p>
-                    </es-card>
+                    <nuxt-img
+                        :alt="item.heading"
+                        class="mb-50 w-100"
+                        :src="item.url" />
                 </template>
             </es-carousel>
         </div>

@@ -1,40 +1,59 @@
 <script setup lang="ts">
 /*
     TODO:
-     - responsive carousels briefly show mobile amount of dots on desktop, until hydration
-        - i think we may be able to fix this with CSS, because we know how many dots there should be
-        - (something PrimeVue Carousel should really be doing)
      - circular has quirky behavior when numVisible doesn't match numScroll
         - you can see this in the circular autoplay example
         - i'm not sure if this is fixable
+     - figure out peek behavior
+     - prop to position the arrows at the bottom two corners of a full-width slide, like homepage
 */
 
 import Carousel from 'primevue/carousel';
 import sassBreakpoints from '@energysage/es-ds-styles/scss/modules/breakpoints.module.scss';
 import type { EsCarouselBreakpointsInterface } from '../types';
 
+// this isn't set in a SASS variable so we can't import it, but it's
+// defined as a constant here so we can easily change it if we need to
+const BASE_FONT_SIZE = 16;
+
+// constants that contribute to dots and arrows positioning
+const DOT_SIZE = 14;
+const DOT_SPACING = 16;
+const ARROW_BUTTON_PADDING = 8;
+
+// the number of "dots" apart the arrows should be when dots are hidden
+const ARROW_SPACING_WHEN_NO_DOTS = 1;
+
 interface IProps {
+    arrowSize?: 'sm' | 'lg';
     autoPlay?: boolean;
     autoPlayInterval?: number;
     breakpoints?: EsCarouselBreakpointsInterface;
     circular?: boolean;
+    controlGap?: number;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     items: Array<any>;
     numScroll?: number;
     numVisible?: number;
     showArrows?: boolean;
     showDots?: boolean;
+    slideGap?: number;
+    variant?: 'default' | 'brand';
 }
 const props = withDefaults(defineProps<IProps>(), {
+    arrowSize: 'sm',
     autoPlay: false,
-    autoPlayInterval: 2000,
+    autoPlayInterval: 4000,
     breakpoints: () => ({}),
     circular: false,
+    controlGap: 24,
     items: () => [],
     numScroll: 1,
     numVisible: 1,
     showArrows: true,
     showDots: true,
+    slideGap: 16,
+    variant: 'default',
 });
 
 const emit = defineEmits<{
@@ -67,16 +86,82 @@ const numScrollLg = computed(() => props.breakpoints?.lg?.numScroll || numScroll
 const numScrollXl = computed(() => props.breakpoints?.xl?.numScroll || numScrollLg.value);
 const numScrollXxl = computed(() => props.breakpoints?.xxl?.numScroll || numScrollXl.value);
 
-// in order to enable full-width carousels with one item
-// but also ensure there is some space between items when more than one is visible
-// only apply horizontal padding to carousel items on breakpoints where more than one item is visible
-const DEFAULT_PADDING = '0.5rem';
-const paddingXs = computed(() => (numVisibleXs.value === 1 ? '0' : DEFAULT_PADDING));
-const paddingSm = computed(() => (numVisibleSm.value === 1 ? '0' : DEFAULT_PADDING));
-const paddingMd = computed(() => (numVisibleMd.value === 1 ? '0' : DEFAULT_PADDING));
-const paddingLg = computed(() => (numVisibleLg.value === 1 ? '0' : DEFAULT_PADDING));
-const paddingXl = computed(() => (numVisibleXl.value === 1 ? '0' : DEFAULT_PADDING));
-const paddingXxl = computed(() => (numVisibleXxl.value === 1 ? '0' : DEFAULT_PADDING));
+// allow customizable spacing between slides
+// but since that's done as side padding around each slide, which moves them in from the container edge
+// to get slides to left and right align with page content
+// we apply a negative margin to either side to bring the container edges back out to match
+const sidePadding = computed(() => `${props.slideGap / 2 / BASE_FONT_SIZE}rem`);
+const negativeMargin = computed(() => `-${sidePadding.value}`);
+
+// size of dots and spacing between dots
+const dotSize = `${DOT_SIZE / BASE_FONT_SIZE}rem`;
+const dotSpacing = `${DOT_SPACING / BASE_FONT_SIZE}rem`;
+
+// arrow padding
+const arrowPadding = `${ARROW_BUTTON_PADDING / BASE_FONT_SIZE}rem`;
+
+// arrow size
+const arrowSize = computed(() => (props.arrowSize === 'lg' ? 32 : 24));
+const arrowSizePx = computed(() => `${arrowSize.value}px`);
+const arrowButtonSize = computed(() => arrowSize.value + ARROW_BUTTON_PADDING * 2);
+
+// vertical positioning for the arrows
+const distanceFromCarouselBottomToCenterOfDots = computed(() => props.controlGap + DOT_SIZE / 2);
+const arrowPositionBottom = computed(
+    () => `-${distanceFromCarouselBottomToCenterOfDots.value + arrowButtonSize.value / 2}px`,
+);
+const dotsMarginTop = computed(() => `${props.controlGap / BASE_FONT_SIZE}rem`);
+
+// the number of dots visible at each breakpoint
+const numDotsXs = computed(() =>
+    props.showDots ? Math.ceil(props.items.length / numVisibleXs.value) : ARROW_SPACING_WHEN_NO_DOTS,
+);
+const numDotsSm = computed(() =>
+    props.showDots ? Math.ceil(props.items.length / numVisibleSm.value) : ARROW_SPACING_WHEN_NO_DOTS,
+);
+const numDotsMd = computed(() =>
+    props.showDots ? Math.ceil(props.items.length / numVisibleMd.value) : ARROW_SPACING_WHEN_NO_DOTS,
+);
+const numDotsLg = computed(() =>
+    props.showDots ? Math.ceil(props.items.length / numVisibleLg.value) : ARROW_SPACING_WHEN_NO_DOTS,
+);
+const numDotsXl = computed(() =>
+    props.showDots ? Math.ceil(props.items.length / numVisibleXl.value) : ARROW_SPACING_WHEN_NO_DOTS,
+);
+const numDotsXxl = computed(() =>
+    props.showDots ? Math.ceil(props.items.length / numVisibleXxl.value) : ARROW_SPACING_WHEN_NO_DOTS,
+);
+
+// calculate the arrow position from center based on the number of dots
+const calculateArrowPosition = (numDots: number): number =>
+    (numDots * DOT_SIZE) / 2 + (numDots * DOT_SPACING) / 2 + DOT_SPACING;
+
+// determine how much from center we need to move the arrow buttons, based on how many dots there are
+const arrowPositionXs = computed(() => calculateArrowPosition(numDotsXs.value));
+const arrowPositionSm = computed(() => calculateArrowPosition(numDotsSm.value));
+const arrowPositionMd = computed(() => calculateArrowPosition(numDotsMd.value));
+const arrowPositionLg = computed(() => calculateArrowPosition(numDotsLg.value));
+const arrowPositionXl = computed(() => calculateArrowPosition(numDotsXl.value));
+const arrowPositionXxl = computed(() => calculateArrowPosition(numDotsXxl.value));
+
+// prev button horizontal position
+const prevArrowTranslateXs = computed(() => `-${arrowPositionXs.value + arrowButtonSize.value}px`);
+const prevArrowTranslateSm = computed(() => `-${arrowPositionSm.value + arrowButtonSize.value}px`);
+const prevArrowTranslateMd = computed(() => `-${arrowPositionMd.value + arrowButtonSize.value}px`);
+const prevArrowTranslateLg = computed(() => `-${arrowPositionLg.value + arrowButtonSize.value}px`);
+const prevArrowTranslateXl = computed(() => `-${arrowPositionXl.value + arrowButtonSize.value}px`);
+const prevArrowTranslateXxl = computed(() => `-${arrowPositionXxl.value + arrowButtonSize.value}px`);
+
+// next arrow horizontal position
+const nextArrowTranslateXs = computed(() => `${arrowPositionXs.value}px`);
+const nextArrowTranslateSm = computed(() => `${arrowPositionSm.value}px`);
+const nextArrowTranslateMd = computed(() => `${arrowPositionMd.value}px`);
+const nextArrowTranslateLg = computed(() => `${arrowPositionLg.value}px`);
+const nextArrowTranslateXl = computed(() => `${arrowPositionXl.value}px`);
+const nextArrowTranslateXxl = computed(() => `${arrowPositionXxl.value}px`);
+
+// extra space to add below the carousel for the arrows when arrows are on but dots are off
+const arrowsOnlyBottomSpacing = computed(() => `${props.controlGap + arrowButtonSize.value}px`);
 
 const responsiveOptions = computed(() => {
     // if no special breakpoints are defined, don't pass in any responsive options
@@ -153,6 +238,9 @@ onMounted(() => {
      *
      * this workaround disables circular functionality for SSR, and swaps to the user-provided
      * setting for it on mount.
+     *
+     * this flag is also used to hide the extra dots from the mobile view on larger breakpoints
+     * before hydration occurs and the number of dots is adjusted to the breakpoint.
      */
     isMounted.value = true;
 
@@ -170,22 +258,38 @@ onMounted(() => {
     <carousel
         :key="key"
         :autoplay-interval="autoplayInterval"
-        :circular="isMounted && props.circular"
-        :num-scroll="props.numScroll"
-        :num-visible="props.numVisible"
+        :circular="isMounted && circular"
+        class="es-carousel"
+        :class="{
+            'es-carousel--brand': variant === 'brand',
+            'arrows-only': showArrows && !showDots,
+            'before-mount': !isMounted,
+            circular: circular,
+            dots: showDots,
+            [`num-dots-sm-${numDotsSm}`]: true,
+            [`num-dots-md-${numDotsMd}`]: true,
+            [`num-dots-lg-${numDotsLg}`]: true,
+            [`num-dots-xl-${numDotsXl}`]: true,
+            [`num-dots-xxl-${numDotsXxl}`]: true,
+        }"
+        :num-scroll="numScroll"
+        :num-visible="numVisible"
         :responsive-options="responsiveOptions"
-        :show-indicators="props.showDots"
-        :show-navigators="props.showArrows"
-        :value="props.items"
+        :show-indicators="showDots"
+        :show-navigators="showArrows"
+        :value="items"
         :pt="{
             container: {
-                class: 'd-flex',
+                class: 'es-carousel-container d-flex position-relative',
             },
             indicator: {
                 class: 'es-carousel-dot',
             },
             indicators: {
-                class: 'es-carousel-dots d-flex justify-content-center mt-100',
+                class: 'es-carousel-dots d-flex justify-content-center',
+            },
+            indicatorButton: {
+                class: 'd-block',
             },
             itemsContent: {
                 class: 'w-100 overflow-hidden',
@@ -200,10 +304,10 @@ onMounted(() => {
                 class: 'es-carousel-item',
             },
             previousButton: {
-                class: 'es-carousel-arrow es-carousel-prev-arrow btn btn-outline-primary px-sm-50',
+                class: 'es-carousel-arrow es-carousel-prev-arrow btn btn-outline-primary position-absolute px-sm-50',
             },
             nextButton: {
-                class: 'es-carousel-arrow es-carousel-next-arrow btn btn-outline-primary px-sm-50',
+                class: 'es-carousel-arrow es-carousel-next-arrow btn btn-outline-primary position-absolute px-sm-50',
             },
         }"
         @update:page="(value: number) => emit('update', value)">
@@ -224,53 +328,188 @@ onMounted(() => {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+@use 'sass:map';
 
+/**
+    solution for PrimeVue initially displaying the mobile breakpoint's number of dots on page load
+    until hydration, when it then adjusts to the actual breakpoint and corrects the number of dots
+
+    generate CSS classes for each breakpoint that hide the dots that should be hidden before mount
+*/
+$num-dots-supported: 8;
+.es-carousel.before-mount {
+    @each $breakpoint in map.keys(variables.$grid-breakpoints) {
+        @include breakpoints.media-breakpoint-up($breakpoint) {
+            $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
+            @for $i from 1 through $num-dots-supported {
+                &.num-dots#{$infix}-#{$i} :deep(.es-carousel-dot:nth-child(#{$i}) ~ .es-carousel-dot) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+/* prevent the prev arrow from looking disabled on circular carousels on first paint */
+.es-carousel.before-mount.circular :deep(.es-carousel-prev-arrow:disabled) {
+    color: variables.$gray-900;
+}
+.es-carousel.es-carousel--brand.before-mount.circular :deep(.es-carousel-prev-arrow:disabled) {
+    color: variables.$blue-900;
+}
+
+/* arrows are positioned absolutely, so when arrows are shown but dots are not, we need to reserve space for them */
+.es-carousel.arrows-only {
+    padding-bottom: v-bind(arrowsOnlyBottomSpacing);
+}
+
+/* ensure there's enough space between the dots (when present) and the next content on the page */
+.es-carousel.dots {
+    padding-bottom: 0.25rem;
+}
+
+/* make the carousel card edges align with page content */
+:deep(.es-carousel-container) {
+    margin-left: v-bind(negativeMargin);
+    margin-right: v-bind(negativeMargin);
+}
+
+/* card sizing, based on num visible at each breakpoint */
 :deep(.es-carousel-item) {
     flex: 1 0 calc(100% / v-bind(numVisibleXs));
-    padding: 0 v-bind(paddingXs);
-}
+    padding: 0 v-bind(sidePadding);
 
-@include breakpoints.media-breakpoint-up(sm) {
-    :deep(.es-carousel-item) {
+    @include breakpoints.media-breakpoint-up(sm) {
         flex: 1 0 calc(100% / v-bind(numVisibleSm));
-        padding: 0 v-bind(paddingSm);
     }
-}
 
-@include breakpoints.media-breakpoint-up(md) {
-    :deep(.es-carousel-item) {
+    @include breakpoints.media-breakpoint-up(md) {
         flex: 1 0 calc(100% / v-bind(numVisibleMd));
-        padding: 0 v-bind(paddingMd);
     }
-}
 
-@include breakpoints.media-breakpoint-up(lg) {
-    :deep(.es-carousel-item) {
+    @include breakpoints.media-breakpoint-up(lg) {
         flex: 1 0 calc(100% / v-bind(numVisibleLg));
-        padding: 0 v-bind(paddingLg);
     }
-}
 
-@include breakpoints.media-breakpoint-up(xl) {
-    :deep(.es-carousel-item) {
+    @include breakpoints.media-breakpoint-up(xl) {
         flex: 1 0 calc(100% / v-bind(numVisibleXl));
-        padding: 0 v-bind(paddingXl);
     }
-}
 
-@include breakpoints.media-breakpoint-up(xxl) {
-    :deep(.es-carousel-item) {
+    @include breakpoints.media-breakpoint-up(xxl) {
         flex: 1 0 calc(100% / v-bind(numVisibleXxl));
-        padding: 0 v-bind(paddingXxl);
     }
 }
 
+/* previous arrow horizontal positioning at each breakpoint */
+:deep(.es-carousel-prev-arrow) {
+    transform: translateX(v-bind(prevArrowTranslateXs));
+
+    /* keep the "shift 1px down on click" transform from removing our transform */
+    &:not(:disabled):not(.disabled):active {
+        transform: translateX(v-bind(prevArrowTranslateXs)) translateY(1px);
+    }
+
+    @include breakpoints.media-breakpoint-up(sm) {
+        transform: translateX(v-bind(prevArrowTranslateSm));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(prevArrowTranslateSm)) translateY(1px);
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(md) {
+        transform: translateX(v-bind(prevArrowTranslateMd));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(prevArrowTranslateMd)) translateY(1px);
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(lg) {
+        transform: translateX(v-bind(prevArrowTranslateLg));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(prevArrowTranslateLg)) translateY(1px);
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(xl) {
+        transform: translateX(v-bind(prevArrowTranslateXl));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(prevArrowTranslateXl)) translateY(1px);
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(xxl) {
+        transform: translateX(v-bind(prevArrowTranslateXxl));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(prevArrowTranslateXxl)) translateY(1px);
+        }
+    }
+}
+
+/* next arrow horizontal positioning at each breakpoint */
+:deep(.es-carousel-next-arrow) {
+    transform: translateX(v-bind(nextArrowTranslateXs));
+
+    /* keep the "shift 1px down on click" transform from removing our transform */
+    &:not(:disabled):not(.disabled):active {
+        transform: translateX(v-bind(nextArrowTranslateXs)) translateY(1px);
+    }
+
+    @include breakpoints.media-breakpoint-up(sm) {
+        transform: translateX(v-bind(nextArrowTranslateSm));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(nextArrowTranslateSm)) translateY(1px);
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(md) {
+        transform: translateX(v-bind(nextArrowTranslateMd));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(nextArrowTranslateMd)) translateY(1px);
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(lg) {
+        transform: translateX(v-bind(nextArrowTranslateLg));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(nextArrowTranslateLg)) translateY(1px);
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(xl) {
+        transform: translateX(v-bind(nextArrowTranslateXl));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(nextArrowTranslateXl)) translateY(1px);
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(xxl) {
+        transform: translateX(v-bind(nextArrowTranslateXxl));
+
+        &:not(:disabled):not(.disabled):active {
+            transform: translateX(v-bind(nextArrowTranslateXxl)) translateY(1px);
+        }
+    }
+}
+
+/* prev/next arrow button styling */
 :deep(.es-carousel-arrow) {
     background: unset;
     border: unset;
+    bottom: v-bind(arrowPositionBottom);
     box-shadow: none;
     color: variables.$gray-900;
     height: auto;
+    left: 50%;
+    padding: v-bind(arrowPadding);
 
     &:hover {
         color: variables.$gray-700;
@@ -286,13 +525,39 @@ onMounted(() => {
     &:disabled {
         color: variables.$gray-400;
     }
+
+    svg {
+        /* use !important to override the inline style on svg icons */
+        height: v-bind(arrowSizePx) !important;
+        width: v-bind(arrowSizePx) !important;
+    }
 }
 
+/* prev/next arrow button styling for the "brand" variant */
+.es-carousel--brand {
+    :deep(.es-carousel-arrow) {
+        color: variables.$blue-600;
+
+        &:hover {
+            color: variables.$blue-700;
+        }
+        &:not(:disabled):not(.disabled):active {
+            color: variables.$blue-800;
+        }
+        &:disabled {
+            color: variables.$gray-400;
+        }
+    }
+}
+
+/* dots container */
 :deep(.es-carousel-dots) {
-    gap: 0.7rem;
+    gap: v-bind(dotSpacing);
     padding-left: 0;
+    margin-top: v-bind(dotsMarginTop);
 }
 
+/* each individual dot */
 :deep(.es-carousel-dot) {
     list-style-type: none;
     margin-bottom: 0;
@@ -305,9 +570,9 @@ onMounted(() => {
         background-color: variables.$gray-100;
         border: none;
         border-radius: 50%;
-        height: 0.875rem;
+        height: v-bind(dotSize);
         padding: 0;
-        width: 0.875rem;
+        width: v-bind(dotSize);
 
         &:hover {
             opacity: 0.8;
