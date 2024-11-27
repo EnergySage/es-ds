@@ -264,6 +264,7 @@ onMounted(() => {
             'es-carousel--brand': variant === 'brand',
             'arrows-only': showArrows && !showDots,
             'before-mount': !isMounted,
+            circular: circular,
             dots: showDots,
             [`num-dots-sm-${numDotsSm}`]: true,
             [`num-dots-md-${numDotsMd}`]: true,
@@ -347,6 +348,14 @@ $num-dots-supported: 8;
             }
         }
     }
+}
+
+/* prevent the prev arrow from looking disabled on circular carousels on first paint */
+.es-carousel.before-mount.circular :deep(.es-carousel-prev-arrow:disabled) {
+    color: variables.$gray-900;
+}
+.es-carousel.es-carousel--brand.before-mount.circular :deep(.es-carousel-prev-arrow:disabled) {
+    color: variables.$blue-900;
 }
 
 /* arrows are positioned absolutely, so when arrows are shown but dots are not, we need to reserve space for them */
