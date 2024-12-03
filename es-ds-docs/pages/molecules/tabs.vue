@@ -16,6 +16,11 @@ onMounted(async () => {
         $prism.highlight();
     }
 });
+
+const tabs = [
+    { id: 1, title: 'Item one', content: 'Content one' },
+    { id: 2, title: 'Item two', content: 'Content two' },
+];
 </script>
 
 <template>
@@ -52,6 +57,19 @@ onMounted(async () => {
                 </es-tab>
                 <es-tab title="Item four">
                     <p>Content four</p>
+                </es-tab>
+            </es-tabs>
+        </div>
+
+        <div class="my-500">
+            <h2>Using v-for</h2>
+            <p>Example using v-for to construct the children <code>es-tab</code> elements.</p>
+            <es-tabs>
+                <es-tab
+                    v-for="tab in tabs"
+                    :key="tab.id"
+                    :title="tab.title">
+                    <p>{{ tab.content }}</p>
                 </es-tab>
             </es-tabs>
         </div>

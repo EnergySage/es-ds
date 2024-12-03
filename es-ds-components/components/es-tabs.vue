@@ -6,7 +6,16 @@ import TabView from 'primevue/tabview';
 const model = defineModel<number>();
 
 // get the list of elements provided as children to the default slot
-const panels = useSlots().default?.() || [];
+const initialChildren = useSlots().default?.() || [];
+const panels: any[] = [];
+initialChildren.forEach((child) => {
+    // unless this has a v-for element and we instead need to access its children
+    if (typeof child.type === 'symbol' && Array.isArray(child.children)) {
+        panels.push(...child.children);
+    } else {
+        panels.push(child);
+    }
+});
 
 // keep track of the active tab index
 //  - from above, if v-model is used
@@ -36,7 +45,6 @@ const updateActiveIndex = (index: number) => {
             panelContainer: 'tab-content',
         }"
         @update:active-index="updateActiveIndex">
-        <!-- @vue-expect-error -->
         <tab-panel
             v-for="(panel, index) in panels"
             :key="index"
@@ -60,7 +68,6 @@ const updateActiveIndex = (index: number) => {
                     ],
                 }),
             }">
-            <!-- @vue-expect-error -->
             <component
                 :is="item"
                 v-for="(item, idx) in panel.children.default()"
