@@ -100,6 +100,7 @@
                         </es-nav-bar-link>
                         <!-- top level menus -->
                         <es-nav-bar-top-level-menu
+                            class="top-level-menus"
                             v-for="topLevelMenu in globalContent.topLevelMenus"
                             :key="topLevelMenu.name"
                             :home-name="globalContent.home.name"
@@ -116,6 +117,24 @@
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
+                        <!-- desktop search bar -->
+                        <b-container
+                            class="nav-search-bar-desktop nav-item top-header mx-0"
+                            style="display: none">
+                            <div class="row w-100">
+                                <es-search-bar id="searchBarDesktop" class="mb-0">
+                                    <template #close>
+                                        <es-button
+                                            class="position-absolute nav-button mb-100 nav-search-close-desktop"
+                                            aria-label="Close search bar"
+                                            style="right: 0"
+                                            variant="link">
+                                            <icon-x />
+                                        </es-button>
+                                    </template>
+                                </es-search-bar>
+                            </div>
+                        </b-container>
                         <!-- desktop search icon -->
                         <div
                             id="navBarSearchIcon"
@@ -138,24 +157,6 @@
                             :auth-items="accountContent.loggedIn.items"
                             class="d-none d-lg-block pt-100"
                             :logged-out="accountContent.loggedOut" />
-                    </b-container>
-                    <!-- desktop search bar -->
-                    <b-container
-                        class="nav-search-bar-desktop"
-                        style="display: none">
-                        <div class="row w-100">
-                            <es-search-bar id="searchBarDesktop">
-                                <template #close>
-                                    <es-button
-                                        class="position-absolute nav-button mb-100 nav-search-close-desktop"
-                                        aria-label="Close search bar"
-                                        style="right: 0"
-                                        variant="link">
-                                        <icon-x />
-                                    </es-button>
-                                </template>
-                            </es-search-bar>
-                        </div>
                     </b-container>
                     <!-- mobile+desktop product menus -->
                     <b-container
@@ -344,6 +345,8 @@ export default {
         const searchBarMobile = document.getElementById('searchBarMobile');
         const searchBarDesktop = document.getElementById('searchBarDesktop');
 
+        const topLevelMenus = document.querySelectorAll('.top-level-menus');
+
         // Function to show/hide search bar
         function toggle_search_bar_mobile(show_search_bar) {
             navSearchBarMobile.style.display = show_search_bar ? 'flex' : 'none';
@@ -358,14 +361,14 @@ export default {
 
         // Function to show/hide search bar
         function toggle_search_bar_desktop(show_search_bar) {
+            topLevelMenus.forEach((menu) => {
+                menu.style.display = show_search_bar ? 'none' : 'flex';
+            });
+            searchIconDesktop.style.display = show_search_bar ? 'none' : 'flex';
             navSearchBarDesktop.style.display = show_search_bar ? 'flex' : 'none';
-            productMenu.style.display = show_search_bar ? 'none' : 'flex';
 
             if (show_search_bar) {
-                searchIconDesktop.classList.add('search-open');
                 searchBarDesktop.focus();
-            } else {
-                searchIconDesktop.classList.remove('search-open');
             }
         }
         // Function to show/hide overlay
@@ -417,7 +420,6 @@ export default {
             .forEach((element) => {
                 element.addEventListener('mouseover', () => {
                     show_overlay(true);
-                    toggle_search_bar_desktop(false);
                 });
                 element.addEventListener('mouseout', () => {
                 // Hide overlay on mouseout on desktop not mobile

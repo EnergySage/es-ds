@@ -1,6 +1,5 @@
 <template>
     <div class="align-items-center w-100 d-flex flex-column flex-lg-row justify-content-center position-relative">
-        <!--  d-flex flex-column -->
         <form
             action="/search/"
             class="d-flex align-items-center mx-auto justify-content-center order-2 order-lg-1 w-100"
@@ -14,7 +13,8 @@
                 name="query"
                 :placeholder="placeholder"
                 :value="searchText"
-                @keydown.enter="checkSearchText">
+                @keydown.enter.prevent="!searchText"
+                v-bind="$attrs">
                 <template #label>
                     Search bar
                 </template>
@@ -28,7 +28,6 @@
                 type="submit"
                 :value="buttonText">
                 {{ buttonText }}
-                <!-- <input enterkeyhint="search" /> -->
             </es-button>
         </form>
         <slot name="close" />
@@ -36,7 +35,6 @@
 </template>
 
 <script lang="js">
-// import axios from 'axios';
 import EsButton from './EsButton.vue';
 import EsFormInput from './EsFormInput.vue';
 
@@ -67,13 +65,6 @@ export default {
         return {
             searchText: '',
         };
-    },
-    methods: {
-        checkSearchText(event) {
-            if (!this.searchText) {
-                event.preventDefault();
-            }
-        },
     },
 };
 </script>
