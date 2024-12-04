@@ -127,7 +127,6 @@
                                         <es-button
                                             class="order-2 nav-button mb-100 nav-search-close-desktop ml-50"
                                             aria-label="Close search bar"
-                                            style="right: 0"
                                             variant="link">
                                             <icon-x />
                                         </es-button>
