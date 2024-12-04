@@ -138,16 +138,14 @@
                         <!-- desktop search icon -->
                         <div
                             id="navBarSearchIcon"
-                            class="nav-item d-none pt-100"
-                            :class="{
-                                'd-lg-block': showSearch,
-                            }">
+                            class="search-icon-desktop nav-item pt-100"
+                            :style="{ display: showSearch ? 'flex' : 'none' }">
                             <es-button
                                 variant="link"
                                 aria-label="Open search bar"
                                 class="nav-button nav-link search-toggle-desktop d-none d-lg-flex flex-nowrap py-100">
                                 <icon-search
-                                    class="align-self-center search-icon-desktop"
+                                    class="align-self-center"
                                     width="20px !important"
                                     height="20px !important" />
                             </es-button>

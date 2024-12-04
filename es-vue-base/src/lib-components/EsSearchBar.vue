@@ -13,7 +13,7 @@
                 name="query"
                 :placeholder="placeholder"
                 :value="searchText"
-                @keydown.enter.prevent="!searchText"
+                @keydown.enter="checkSearchText"
                 v-bind="$attrs">
                 <template #label>
                     Search bar
@@ -65,6 +65,13 @@ export default {
         return {
             searchText: '',
         };
+    },
+    methods: {
+        checkSearchText(event) {
+            if (!this.searchText) {
+                event.preventDefault();
+            }
+        },
     },
 };
 </script>
