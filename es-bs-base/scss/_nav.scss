@@ -461,6 +461,7 @@ $nav-hover-delay: 300ms;
         color: variables.$blue-900;
         text-decoration: none;
         background: variables.$gray-50;
+        border: variables.$btn-border-width solid transparent;
         @include border-radius.border-radius(8px);
       }
 

@@ -111,24 +111,38 @@
                             :main-menu-text="globalContent.mainMenuText"
                             :name="topLevelMenu.name"
                             :sub-heading="topLevelMenu.subHeading"
-                            :topics="topLevelMenu.topics">
+                            :topics="topLevelMenu.topics"
+                            class="top-level-menus">
                             <template #logo>
                                 <slot name="logo" />
                             </template>
                         </es-nav-bar-top-level-menu>
+                        <!-- desktop search bar -->
+                        <div
+                            class="w-100 nav-search-bar-desktop nav-item top-header mx-0 justify-content-center"
+                            style="display: none">
+                            <es-search-bar id="searchBarDesktop">
+                                <template #close>
+                                    <es-button
+                                        class="order-2 nav-button nav-search-close-desktop ml-50"
+                                        aria-label="Close search bar"
+                                        variant="link">
+                                        <icon-x />
+                                    </es-button>
+                                </template>
+                            </es-search-bar>
+                        </div>
                         <!-- desktop search icon -->
                         <div
                             id="navBarSearchIcon"
-                            class="nav-item d-none pt-100"
-                            :class="{
-                                'd-lg-block': showSearch,
-                            }">
+                            class="search-icon-desktop nav-item pt-100"
+                            :style="{ display: showSearch ? 'flex' : 'none' }">
                             <es-button
                                 variant="link"
                                 aria-label="Open search bar"
                                 class="nav-button nav-link search-toggle-desktop d-none d-lg-flex flex-nowrap py-100">
                                 <icon-search
-                                    class="align-self-center search-icon-desktop"
+                                    class="align-self-center"
                                     width="20px !important"
                                     height="20px !important" />
                             </es-button>
@@ -138,24 +152,6 @@
                             :auth-items="accountContent.loggedIn.items"
                             class="d-none d-lg-block pt-100"
                             :logged-out="accountContent.loggedOut" />
-                    </b-container>
-                    <!-- desktop search bar -->
-                    <b-container
-                        class="nav-search-bar-desktop"
-                        style="display: none">
-                        <div class="row w-100">
-                            <es-search-bar id="searchBarDesktop">
-                                <template #close>
-                                    <es-button
-                                        class="position-absolute nav-button mb-100 nav-search-close-desktop"
-                                        aria-label="Close search bar"
-                                        style="right: 0"
-                                        variant="link">
-                                        <icon-x />
-                                    </es-button>
-                                </template>
-                            </es-search-bar>
-                        </div>
                     </b-container>
                     <!-- mobile+desktop product menus -->
                     <b-container
@@ -337,12 +333,13 @@ export default {
         // Search bar elements for hiding/showing
         const searchIconMobile = document.querySelector('.search-icon-mobile');
         const searchIconDesktop = document.querySelector('.search-icon-desktop');
-        const productMenu = document.querySelector('.product-menu');
 
         const navSearchBarMobile = document.querySelector('.nav-search-bar-mobile');
         const navSearchBarDesktop = document.querySelector('.nav-search-bar-desktop');
         const searchBarMobile = document.getElementById('searchBarMobile');
         const searchBarDesktop = document.getElementById('searchBarDesktop');
+
+        const topLevelMenus = document.querySelectorAll('.top-level-menus');
 
         // Function to show/hide search bar
         function toggle_search_bar_mobile(show_search_bar) {
@@ -358,14 +355,15 @@ export default {
 
         // Function to show/hide search bar
         function toggle_search_bar_desktop(show_search_bar) {
+            topLevelMenus.forEach((menu) => {
+                // eslint-disable-next-line no-param-reassign
+                menu.style.display = show_search_bar ? 'none' : 'flex';
+            });
+            searchIconDesktop.style.display = show_search_bar ? 'none' : 'flex';
             navSearchBarDesktop.style.display = show_search_bar ? 'flex' : 'none';
-            productMenu.style.display = show_search_bar ? 'none' : 'flex';
 
             if (show_search_bar) {
-                searchIconDesktop.classList.add('search-open');
                 searchBarDesktop.focus();
-            } else {
-                searchIconDesktop.classList.remove('search-open');
             }
         }
         // Function to show/hide overlay
@@ -406,6 +404,7 @@ export default {
 
         // Collapse all open menus on overlay click
         overlay.addEventListener('click', () => {
+            toggle_search_bar_desktop(false);
             collapse_mobile_menus();
         });
 
@@ -417,7 +416,6 @@ export default {
             .forEach((element) => {
                 element.addEventListener('mouseover', () => {
                     show_overlay(true);
-                    toggle_search_bar_desktop(false);
                 });
                 element.addEventListener('mouseout', () => {
                 // Hide overlay on mouseout on desktop not mobile
