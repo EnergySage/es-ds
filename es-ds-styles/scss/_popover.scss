@@ -137,7 +137,7 @@
   color: variables.$popover-header-color;
   background-color: variables.$popover-header-bg;
   font-weight: variables.$popover-header-font-weight;
-  border-bottom: variables.$popover-border-width solid darken(variables.$popover-header-bg, 5%);
+  border-bottom: variables.$popover-border-width solid color.adjust(variables.$popover-header-bg, $lightness: -5%);
   @include border-radius.border-top-radius(variables.$popover-inner-border-radius);
 
   &:empty {
