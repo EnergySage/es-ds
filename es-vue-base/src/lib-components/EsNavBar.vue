@@ -100,7 +100,6 @@
                         </es-nav-bar-link>
                         <!-- top level menus -->
                         <es-nav-bar-top-level-menu
-                            class="top-level-menus"
                             v-for="topLevelMenu in globalContent.topLevelMenus"
                             :key="topLevelMenu.name"
                             :home-name="globalContent.home.name"
@@ -112,7 +111,8 @@
                             :main-menu-text="globalContent.mainMenuText"
                             :name="topLevelMenu.name"
                             :sub-heading="topLevelMenu.subHeading"
-                            :topics="topLevelMenu.topics">
+                            :topics="topLevelMenu.topics"
+                            class="top-level-menus">
                             <template #logo>
                                 <slot name="logo" />
                             </template>

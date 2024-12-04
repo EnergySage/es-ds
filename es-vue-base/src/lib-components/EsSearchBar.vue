@@ -13,8 +13,8 @@
                 name="query"
                 :placeholder="placeholder"
                 :value="searchText"
-                @keydown.enter="checkSearchText"
-                v-bind="$attrs">
+                v-bind="$attrs"
+                @keydown.enter="checkSearchText">
                 <template #label>
                     Search bar
                 </template>
