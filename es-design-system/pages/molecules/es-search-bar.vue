@@ -6,40 +6,47 @@
         <h2>
             Basic example
         </h2>
-        <es-search-bar
-            id="searchBar1"
-            class="my-500" />
+        <b-row class="mb-100 justify-content-center">
+            <b-col lg="10">
+                <es-search-bar
+                    id="searchBar1"
+                    class="my-500" />
+            </b-col>
+        </b-row>
         <h2>
             Example with open/close functionality
         </h2>
-        <es-search-bar
-            v-if="showSearchBar"
-            id="searchBar2"
-            class="my-500">
-            <template #close>
+        <b-row class="mb-100 justify-content-center">
+            <b-col lg="10">
+                <es-search-bar
+                    v-if="showSearchBar"
+                    id="searchBar2"
+                    class="my-500">
+                    <template #close>
+                        <es-button
+                            class="nav-button order-2 ml-50"
+                            aria-label="Close search bar"
+                            variant="link"
+                            @click="toggleSearchBar()">
+                            <icon-x
+                                width="30px"
+                                height="30px" />
+                        </es-button>
+                    </template>
+                </es-search-bar>
                 <es-button
-                    class="position-absolute nav-button mb-3"
-                    aria-label="Close search bar"
-                    style="right: 0"
+                    v-else
                     variant="link"
+                    aria-label="Open search bar"
+                    class="nav-button nav-link icon-toggle d-flex flex-nowrap my-500 mx-auto"
                     @click="toggleSearchBar()">
-                    <icon-x
-                        width="30px"
-                        height="30px" />
+                    <icon-search
+                        class="align-self-center search-icon"
+                        width="20px"
+                        height="20px" />
                 </es-button>
-            </template>
-        </es-search-bar>
-        <es-button
-            v-else
-            variant="link"
-            aria-label="Open search bar"
-            class="nav-button nav-link icon-toggle d-flex flex-nowrap my-500 mx-auto"
-            @click="toggleSearchBar()">
-            <icon-search
-                class="align-self-center search-icon"
-                width="20px"
-                height="20px" />
-        </es-button>
+            </b-col>
+        </b-row>
 
         <div class="my-500">
             <h2>
