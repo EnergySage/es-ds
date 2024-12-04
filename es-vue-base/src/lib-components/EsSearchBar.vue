@@ -8,7 +8,7 @@
                 :id="id"
                 v-model="searchText"
                 aria-label="Search bar"
-                class="w-50"
+                class="w-50 flex-grow-1"
                 label-sr-only
                 name="query"
                 :placeholder="placeholder"

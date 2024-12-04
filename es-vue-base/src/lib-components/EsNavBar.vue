@@ -119,13 +119,13 @@
                         </es-nav-bar-top-level-menu>
                         <!-- desktop search bar -->
                         <b-container
-                            class="nav-search-bar-desktop nav-item top-header mx-0"
+                            class="nav-search-bar-desktop nav-item top-header mx-0 justify-content-center"
                             style="display: none">
                             <div class="row w-100">
                                 <es-search-bar id="searchBarDesktop" class="mb-0">
                                     <template #close>
                                         <es-button
-                                            class="position-absolute nav-button mb-100 nav-search-close-desktop"
+                                            class="order-2 nav-button mb-100 nav-search-close-desktop ml-50"
                                             aria-label="Close search bar"
                                             style="right: 0"
                                             variant="link">
@@ -338,7 +338,6 @@ export default {
         // Search bar elements for hiding/showing
         const searchIconMobile = document.querySelector('.search-icon-mobile');
         const searchIconDesktop = document.querySelector('.search-icon-desktop');
-        const productMenu = document.querySelector('.product-menu');
 
         const navSearchBarMobile = document.querySelector('.nav-search-bar-mobile');
         const navSearchBarDesktop = document.querySelector('.nav-search-bar-desktop');
