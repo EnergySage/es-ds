@@ -39,7 +39,6 @@ export default (
                 { text: 'News', url: `${ES_DOMAIN}/blog/` },
                 { text: 'Home solar guide', url: `${ES_DOMAIN}/shop/home-solar/` },
                 { text: 'Market intel', url: `${ES_DOMAIN}/data/` },
-                { text: 'Refer a friend', url: `${ES_DOMAIN}/refer-a-friend/` },
             ],
         },
         {

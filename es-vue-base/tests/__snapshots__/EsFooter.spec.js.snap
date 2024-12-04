@@ -70,9 +70,6 @@ exports[`EsFooter <EsFooter /> 1`] = `
                 <li class="mt-0 mt-lg-25 mb-100 mb-lg-50 font-size-75"><a href="https://www.energysage.com/data/" class="text-reset">
                     Market intel
                   </a></li>
-                <li class="mt-0 mt-lg-25 mb-100 mb-lg-50 font-size-75"><a href="https://www.energysage.com/refer-a-friend/" class="text-reset">
-                    Refer a friend
-                  </a></li>
               </ul>
             </div>
             <div class="col col-6 col-md-3 mb-100 mb-lg-0">
