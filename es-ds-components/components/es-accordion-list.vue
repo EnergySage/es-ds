@@ -17,19 +17,27 @@ const props = withDefaults(defineProps<Props>(), {
 // eslint-disable-next-line vue/require-prop-types
 const model = defineModel();
 
-const children = useSlots().default?.() || [];
+// get the list of elements provided as children to the default slot
+const initialChildren = useSlots().default?.() || [];
+const children: any[] = [];
+initialChildren.forEach((child) => {
+    // unless this has a v-for element and we instead need to access its children
+    if (typeof child.type === 'symbol' && Array.isArray(child.children)) {
+        children.push(...child.children);
+    } else {
+        children.push(child);
+    }
+});
 
 const activeIndex = ref();
 
 watch(model, (newVal) => {
     if (newVal) {
-        // @ts-expect-error not sure
         activeIndex.value = children.findIndex((child) => child.props.id === newVal);
     }
 });
 
 const accordionTabs = children.map((child, index) => {
-    // @ts-expect-error not sure
     if (child.props.id === props.initialExpandedId || child.props.id === model.value) {
         activeIndex.value = index;
     }
@@ -38,7 +46,6 @@ const accordionTabs = children.map((child, index) => {
 
 const updateActiveIndex = (index: any) => {
     if (model.value) {
-        // @ts-expect-error not sure
         model.value = children[index]?.props.id || '';
     }
 };
@@ -99,7 +106,6 @@ const updateActiveIndex = (index: any) => {
                     role="heading"
                     aria-level="3"
                     :class="{ 'h3 mb-0': variant === 'minimal' }">
-                    <!-- @vue-expect-error -->
                     <component
                         :is="item"
                         v-for="item in tab.title()"
@@ -107,7 +113,6 @@ const updateActiveIndex = (index: any) => {
                 </span>
                 <icon-chevron-down class="es-accordion-icon flex-shrink-0 ml-200" />
             </template>
-            <!-- @vue-expect-error -->
             <component
                 :is="item"
                 v-for="item in tab.default()"

@@ -1,6 +1,21 @@
 <script setup lang="ts">
 const programmaticExpandedId = ref('programmatic-question-1');
 
+const accordionIterativeItems = [
+    {
+        id: 1,
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
+        content:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In tellus integer feugiat scelerisque varius. Risus in hendrerit gravida rutrum. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Mi tempus imperdiet nulla malesuada pellentesque elit.',
+    },
+    {
+        id: 2,
+        title: 'Faucibus purus in massa tempor nec feugiat?',
+        content:
+            'Faucibus purus in massa tempor nec feugiat. In hac habitasse platea dictumst. Leo duis ut diam quam nulla porttitor. Diam vel quam elementum pulvinar etiam non quam. Elementum curabitur vitae nunc sed velit dignissim. Velit sed ullamcorper morbi tincidunt ornare. Sed cras ornare arcu dui vivamus arcu felis bibendum. Vel pharetra vel turpis nunc eget lorem.',
+    },
+];
+
 const accordionListProps = [
     [
         'allowMultipleExpand',
@@ -378,6 +393,22 @@ onMounted(async () => {
                         cursus vitae congue mauris rhoncus aenean vel elit. In aliquam sem fringilla ut morbi
                         tincidunt. Semper auctor neque vitae tempus quam pellentesque nec. Sit amet nisl purus in
                         mollis nunc sed id semper.
+                    </p>
+                </es-accordion>
+            </es-accordion-list>
+        </div>
+
+        <div class="mb-450">
+            <h2>Using v-for</h2>
+            <p>Example using v-for to construct the children <code>es-accordion</code> elements.</p>
+            <es-accordion-list :initial-expanded-id="`iterative-item-${accordionIterativeItems[0].id}`">
+                <es-accordion
+                    v-for="item in accordionIterativeItems"
+                    :id="`iterative-item-${item.id}`"
+                    :key="item.id">
+                    <template #title> {{ item.title }}</template>
+                    <p>
+                        {{ item.content }}
                     </p>
                 </es-accordion>
             </es-accordion-list>
