@@ -358,6 +358,7 @@ export default {
         // Function to show/hide search bar
         function toggle_search_bar_desktop(show_search_bar) {
             topLevelMenus.forEach((menu) => {
+                // eslint-disable-next-line no-param-reassign
                 menu.style.display = show_search_bar ? 'none' : 'flex';
             });
             searchIconDesktop.style.display = show_search_bar ? 'none' : 'flex';
