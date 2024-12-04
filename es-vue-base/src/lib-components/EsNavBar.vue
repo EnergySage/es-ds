@@ -122,10 +122,10 @@
                             class="nav-search-bar-desktop nav-item top-header mx-0 justify-content-center"
                             style="display: none">
                             <div class="row w-100">
-                                <es-search-bar id="searchBarDesktop" class="mb-0">
+                                <es-search-bar id="searchBarDesktop">
                                     <template #close>
                                         <es-button
-                                            class="order-2 nav-button mb-100 nav-search-close-desktop ml-50"
+                                            class="order-2 nav-button nav-search-close-desktop ml-50"
                                             aria-label="Close search bar"
                                             variant="link">
                                             <icon-x />

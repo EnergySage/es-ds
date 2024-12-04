@@ -8,7 +8,7 @@
                 :id="id"
                 v-model="searchText"
                 aria-label="Search bar"
-                class="w-50 flex-grow-1"
+                class="w-50 flex-grow-1 mb-lg-0"
                 label-sr-only
                 name="query"
                 :placeholder="placeholder"
@@ -23,7 +23,7 @@
                 </template>
             </es-form-input>
             <es-button
-                class="ml-50 mb-100"
+                class="ml-50 mb-100 mb-lg-0"
                 :disabled="!searchText"
                 type="submit"
                 :value="buttonText">
