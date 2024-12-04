@@ -118,22 +118,20 @@
                             </template>
                         </es-nav-bar-top-level-menu>
                         <!-- desktop search bar -->
-                        <b-container
-                            class="nav-search-bar-desktop nav-item top-header mx-0 justify-content-center"
+                        <div
+                            class="w-100 nav-search-bar-desktop nav-item top-header mx-0 justify-content-center"
                             style="display: none">
-                            <div class="row w-100">
-                                <es-search-bar id="searchBarDesktop">
-                                    <template #close>
-                                        <es-button
-                                            class="order-2 nav-button nav-search-close-desktop ml-50"
-                                            aria-label="Close search bar"
-                                            variant="link">
-                                            <icon-x />
-                                        </es-button>
-                                    </template>
-                                </es-search-bar>
-                            </div>
-                        </b-container>
+                            <es-search-bar id="searchBarDesktop">
+                                <template #close>
+                                    <es-button
+                                        class="order-2 nav-button nav-search-close-desktop ml-50"
+                                        aria-label="Close search bar"
+                                        variant="link">
+                                        <icon-x />
+                                    </es-button>
+                                </template>
+                            </es-search-bar>
+                        </div>
                         <!-- desktop search icon -->
                         <div
                             id="navBarSearchIcon"
