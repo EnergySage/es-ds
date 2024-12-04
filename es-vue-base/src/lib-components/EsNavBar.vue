@@ -406,6 +406,7 @@ export default {
 
         // Collapse all open menus on overlay click
         overlay.addEventListener('click', () => {
+            toggle_search_bar_desktop(false);
             collapse_mobile_menus();
         });
 
