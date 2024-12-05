@@ -313,7 +313,7 @@ textarea.form-control {
 // server side validation.
 
 @each $state, $data in variables.$form-validation-states {
-  @include forms.form-validation-state($state, map-get($data, color), map-get($data, icon));
+  @include forms.form-validation-state($state, map.get($data, color), map.get($data, icon));
 }
 
 // Inline forms
