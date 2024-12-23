@@ -120,11 +120,11 @@ export default {
                 <!-- Trademark Info -->
                 <!-- Legal -->
                 <hr class="border-top border-blue-500 m-0" />
-                <div class="row justify-content-center pt-100">
+                <div class="row pt-100">
                     <div
                         v-for="link in content.legalLinks"
                         :key="link.text"
-                        class="col col-6 col-lg-auto font-size-75 font-weight-semibold font-size-md-50 font-weight-md-normal mt-25 mb-50 px-lg-300">
+                        class="col col-6 col-lg-auto font-size-75 font-weight-semibold font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
                         <es-nav-bar-link
                             :href="link.url"
                             class="text-reset font-weight-normal">
