@@ -77,6 +77,7 @@ export default (
         { text: 'Mobile terms of use', url: `${ES_DOMAIN}/mobile-terms-of-use/` },
         { text: 'Non-discrimination policy', url: `${ES_DOMAIN}/nondiscrimination/` },
         { text: 'Cookie notice', url: `${ES_DOMAIN}/cookie-notice/` },
+        { text: 'Your privacy choices' },
     ],
     copyrightText: '© Copyright 2009-{currentYear} EnergySage, Inc. All rights reserved.',
     trademarkText: `ENERGYSAGE is a registered trademark and the EnergySage logo is a trademark of EnergySage, Inc.
