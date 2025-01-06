@@ -4,7 +4,6 @@
      - circular has quirky behavior when numVisible doesn't match numScroll
         - you can see this in the circular autoplay example
         - i'm not sure if this is fixable
-     - figure out peek behavior
      - prop to position the arrows at the bottom two corners of a full-width slide, like homepage
 */
 
