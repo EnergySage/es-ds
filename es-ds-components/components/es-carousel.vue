@@ -35,6 +35,8 @@ interface IProps {
     items: Array<any>;
     numScroll?: number;
     numVisible?: number;
+    peekDesktop?: string;
+    peekMobile?: string;
     showArrows?: boolean;
     showDots?: boolean;
     slideGap?: number;
@@ -50,6 +52,8 @@ const props = withDefaults(defineProps<IProps>(), {
     items: () => [],
     numScroll: 1,
     numVisible: 1,
+    peekDesktop: '',
+    peekMobile: '',
     showArrows: true,
     showDots: true,
     slideGap: 16,
@@ -114,22 +118,34 @@ const dotsMarginTop = computed(() => `${props.controlGap / BASE_FONT_SIZE}rem`);
 
 // the number of dots visible at each breakpoint
 const numDotsXs = computed(() =>
-    props.showDots ? Math.ceil(props.items.length / numVisibleXs.value) : ARROW_SPACING_WHEN_NO_DOTS,
+    props.showDots
+        ? Math.ceil((props.items.length - numVisibleXs.value) / numScrollXs.value) + 1
+        : ARROW_SPACING_WHEN_NO_DOTS,
 );
 const numDotsSm = computed(() =>
-    props.showDots ? Math.ceil(props.items.length / numVisibleSm.value) : ARROW_SPACING_WHEN_NO_DOTS,
+    props.showDots
+        ? Math.ceil((props.items.length - numVisibleSm.value) / numScrollSm.value) + 1
+        : ARROW_SPACING_WHEN_NO_DOTS,
 );
 const numDotsMd = computed(() =>
-    props.showDots ? Math.ceil(props.items.length / numVisibleMd.value) : ARROW_SPACING_WHEN_NO_DOTS,
+    props.showDots
+        ? Math.ceil((props.items.length - numVisibleMd.value) / numScrollMd.value) + 1
+        : ARROW_SPACING_WHEN_NO_DOTS,
 );
 const numDotsLg = computed(() =>
-    props.showDots ? Math.ceil(props.items.length / numVisibleLg.value) : ARROW_SPACING_WHEN_NO_DOTS,
+    props.showDots
+        ? Math.ceil((props.items.length - numVisibleLg.value) / numScrollLg.value) + 1
+        : ARROW_SPACING_WHEN_NO_DOTS,
 );
 const numDotsXl = computed(() =>
-    props.showDots ? Math.ceil(props.items.length / numVisibleXl.value) : ARROW_SPACING_WHEN_NO_DOTS,
+    props.showDots
+        ? Math.ceil((props.items.length - numVisibleXl.value) / numScrollXl.value) + 1
+        : ARROW_SPACING_WHEN_NO_DOTS,
 );
 const numDotsXxl = computed(() =>
-    props.showDots ? Math.ceil(props.items.length / numVisibleXxl.value) : ARROW_SPACING_WHEN_NO_DOTS,
+    props.showDots
+        ? Math.ceil((props.items.length - numVisibleXxl.value) / numScrollXxl.value) + 1
+        : ARROW_SPACING_WHEN_NO_DOTS,
 );
 
 // calculate the arrow position from center based on the number of dots
@@ -292,7 +308,13 @@ onMounted(() => {
                 class: 'd-block',
             },
             itemsContent: {
-                class: 'w-100 overflow-hidden',
+                class: [
+                    'w-100 overflow-hidden',
+                    {
+                        'es-carousel-peek-desktop': peekDesktop,
+                        'es-carousel-peek-mobile': peekMobile,
+                    },
+                ],
             },
             itemsContainer: {
                 class: 'd-flex',
@@ -372,6 +394,18 @@ $num-dots-supported: 8;
 :deep(.es-carousel-container) {
     margin-left: v-bind(negativeMargin);
     margin-right: v-bind(negativeMargin);
+
+    > div.es-carousel-peek-desktop {
+        @include breakpoints.media-breakpoint-up(lg) {
+            padding-right: v-bind(peekDesktop);
+        }
+    }
+
+    > div.es-carousel-peek-mobile {
+        @include breakpoints.media-breakpoint-down(sm) {
+            padding-right: v-bind(peekMobile);
+        }
+    }
 }
 
 /* card sizing, based on num visible at each breakpoint */
