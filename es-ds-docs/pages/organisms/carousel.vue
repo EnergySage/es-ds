@@ -92,6 +92,18 @@ const propTableRows = [
         '1',
         'The number of items visible at any one time. This is also used as the default mobile value when using breakpoints.',
     ],
+    [
+        'peekDesktop',
+        'string',
+        '""',
+        'Padding added to the right of the carousel on desktop viewports to give the rightmost card a peek or cut-off. Ex: "100px"; "6rem".',
+    ],
+    [
+        'peekMobile',
+        'string',
+        '""',
+        'Same as peekDesktop but only applies to mobile viewports.  Both must be set if peek should be applied to all viewports.',
+    ],
     ['showArrows', 'Boolean', 'true', 'Whether to show the arrows below the carousel.'],
     ['showDots', 'Boolean', 'true', 'Whether to show the dots below the carousel.'],
     ['slideGap', 'Number', '16', 'The spacing, in pixels, between each carousel slide.'],
@@ -184,7 +196,8 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             <h2>Customization</h2>
             <p class="mb-200">
                 This example shows the ability to customize the gap between slides, the gap between the slides and the
-                controls, and the size and color of the arrow button icons.
+                controls, 'peek' styling for cards on desktop and mobile, and the size and color of the arrow button
+                icons.
             </p>
             <es-carousel
                 arrow-size="lg"
@@ -198,6 +211,8 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 :items="basicExampleItems"
                 :show-dots="false"
                 :slide-gap="32"
+                peek-desktop="125px"
+                peek-mobile="75px"
                 variant="brand">
                 <template #item="{ item }">
                     <es-card class="text-center">
