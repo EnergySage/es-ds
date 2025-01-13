@@ -30,8 +30,7 @@ export default {
         // See https://tagmanager.google.com/#/container/accounts/2920232696/containers/8806152/workspaces/126/tags
         // for GTM script that triggers this event.
         window.addEventListener('OneTrustLoadedCb', () => {
-            // @ts-ignore
-            window.OneTrust.OnConsentChanged(() => {
+            (window as any).OneTrust.OnConsentChanged(() => {
                 // OneTrust modal should modify cookie values, a hard-refresh will
                 // trigger re-loading GTM with updated cookie values, which in turn
                 // will only fire tags aligned with new preferences
@@ -42,8 +41,7 @@ export default {
                 // Function closure to ensure event only fires on one elem
                 elem.addEventListener('click', (e) => {
                     e.stopImmediatePropagation();
-                    // @ts-ignore
-                    window.OneTrust.ToggleInfoDisplay();
+                    (window as any).OneTrust.ToggleInfoDisplay();
                 });
             });
         });
