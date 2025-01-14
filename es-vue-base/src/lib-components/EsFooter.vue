@@ -85,16 +85,26 @@
                 <!-- Trademark Info -->
                 <!-- Legal -->
                 <hr class="border-top border-blue-500 m-0">
-                <div class="row justify-content-center pt-100">
+                <div class="row pt-100">
                     <div
                         v-for="link in content.legalLinks"
                         :key="link.text"
-                        class="col col-6 col-lg-auto font-size-75 font-weight-semibold font-size-md-50 font-weight-md-normal mt-25 mb-50 px-lg-300">
+                        class="col col-6 col-lg-auto">
                         <es-nav-bar-link
+                            v-if="link.url"
                             :href="link.url"
-                            class="text-reset font-weight-normal">
+                            class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
                             {{ link.text }}
                         </es-nav-bar-link>
+                        <div v-else>
+                            <icon-ccpa-opt-out />
+                            <es-button
+                                inline
+                                class="toggle-info-display text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal ml-1"
+                                variant="link">
+                                {{ link.text }}
+                            </es-button>
+                        </div>
                     </div>
                 </div>  <!-- Legal -->
             </div>
@@ -154,6 +164,27 @@ export default {
         copyrightText() {
             return this.content.copyrightText.replace('{currentYear}', new Date().getFullYear());
         },
+    },
+    mounted() {
+        // TODO: update with GTM tag in prod once we've gone live
+        // See https://tagmanager.google.com/#/container/accounts/2920232696/containers/8806152/workspaces/126/tags
+        // for GTM script that triggers this event.
+        window.addEventListener('OneTrustLoadedCb', () => {
+            window.OneTrust.OnConsentChanged(() => {
+                // OneTrust modal should modify cookie values, a hard-refresh will
+                // trigger re-loading GTM with updated cookie values, which in turn
+                // will only fire tags aligned with new preferences
+                window.location.reload();
+                return false;
+            });
+            document.querySelectorAll('.toggle-info-display').forEach((elem) => {
+                // Function closure to ensure event only fires on one elem
+                elem.addEventListener('click', (e) => {
+                    e.stopImmediatePropagation();
+                    window.OneTrust.ToggleInfoDisplay();
+                });
+            });
+        });
     },
 };
 </script>

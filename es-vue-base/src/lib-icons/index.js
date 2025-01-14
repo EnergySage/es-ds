@@ -85,6 +85,7 @@ export { default as IconUpload } from './icon-upload.vue';
 export { default as IconVideoPlay } from './icon-video-play.vue';
 export { default as IconBank } from './icon-bank.vue';
 export { default as IconCreditCard } from './icon-credit-card.vue';
+export { default as IconCcpaOptOut } from './icon-ccpa-opt-out.vue';
 
 // marketing icons
 export { default as IconBattery } from './icon-battery.vue';
