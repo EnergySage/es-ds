@@ -107,6 +107,33 @@ exports[`icons IconCart renders correctly 1`] = `
 </svg>"
 `;
 
+exports[`icons IconCcpaOptOut renders correctly 1`] = `
+"<svg id="Layer_1" aria-labelledby="California Consumer Privacy Act (CCPA) Opt-Out Icon" role="img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 14" xml:space="preserve" style="enable-background: new 0 0 30 14; height: 14px; width: 29px;">
+  <g>
+    <g id="final---dec.11-2020_1_">
+      <g id="_x30_208-our-toggle_2_" transform="translate(-1275.000000, -200.000000)">
+        <g id="Final-Copy-2_2_" transform="translate(1275.000000, 200.000000)">
+          <path d="M7.4,12.8h6.8l3.1-11.6H7.4C4.2,1.2,1.6,3.8,1.6,7S4.2,12.8,7.4,12.8z" class="st0"></path>
+        </g>
+      </g>
+    </g>
+    <g id="final---dec.11-2020">
+      <g id="_x30_208-our-toggle" transform="translate(-1275.000000, -200.000000)">
+        <g id="Final-Copy-2" transform="translate(1275.000000, 200.000000)">
+          <path d="M22.6,0H7.4c-3.9,0-7,3.1-7,7s3.1,7,7,7h15.2c3.9,0,7-3.1,7-7S26.4,0,22.6,0z M1.6,7c0-3.2,2.6-5.8,5.8-5.8
+                        h9.9l-3.1,11.6H7.4C4.2,12.8,1.6,10.2,1.6,7z" class="st1"></path>
+          <path id="x" d="M24.6,4c0.2,0.2,0.2,0.6,0,0.8l0,0L22.5,7l2.2,2.2c0.2,0.2,0.2,0.6,0,0.8c-0.2,0.2-0.6,0.2-0.8,0
+                        l0,0l-2.2-2.2L19.5,10c-0.2,0.2-0.6,0.2-0.8,0c-0.2-0.2-0.2-0.6,0-0.8l0,0L20.8,7l-2.2-2.2c-0.2-0.2-0.2-0.6,0-0.8
+                        c0.2-0.2,0.6-0.2,0.8,0l0,0l2.2,2.2L23.8,4C24,3.8,24.4,3.8,24.6,4z" class="st2"></path>
+          <path id="y" d="M12.7,4.1c0.2,0.2,0.3,0.6,0.1,0.8l0,0L8.6,9.8C8.5,9.9,8.4,10,8.3,10c-0.2,0.1-0.5,0.1-0.7-0.1l0,0
+                        L5.4,7.7c-0.2-0.2-0.2-0.6,0-0.8c0.2-0.2,0.6-0.2,0.8,0l0,0L8,8.6l3.8-4.5C12,3.9,12.4,3.9,12.7,4.1z" class="st3"></path>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>"
+`;
+
 exports[`icons IconChatAdd renders correctly 1`] = `
 "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="height: 24px; width: 24px;">
   <path d="M13.905 2.044c3.557 0 5.508 0 6.842 1.344 1.325 1.363 1.325 3.338 1.325 6.914 0 3.575-.11 5.66-1.325 6.886-1.216 1.225-4.075 1.344-7.405 1.344-.41 0-.816.091-1.189.265L7.126 21.98a.902.902 0 0 1-.48.137.848.848 0 0 1-.436-.12.91.91 0 0 1-.472-.795v-2.88a4.089 4.089 0 0 1-2.296-1.134c-1.334-1.335-1.334-3.31-1.334-6.886s.009-5.597 1.334-6.914c1.325-1.317 3.321-1.317 6.833-1.344h3.63Z" fill="none"></path>
