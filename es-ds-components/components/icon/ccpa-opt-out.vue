@@ -83,14 +83,17 @@ export default {
 </template>
 
 <style type="text/css">
-.st0, .st1 {
+.st0,
+.st1 {
     clip-rule: evenodd;
     fill-rule: evenodd;
 }
-.st0, .st2 {
+.st0,
+.st2 {
     fill: #fff;
 }
-.st1, .st3 {
+.st1,
+.st3 {
     fill: #06f;
 }
 </style>
