@@ -108,7 +108,7 @@ exports[`icons IconCart renders correctly 1`] = `
 `;
 
 exports[`icons IconCcpaOptOut renders correctly 1`] = `
-"<svg id="Layer_1" aria-labelledby="California Consumer Privacy Act (CCPA) Opt-Out Icon" role="img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 14" xml:space="preserve" style="enable-background: new 0 0 30 14; height: 14px; width: 29px;">
+"<svg id="Layer_1" aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon" role="img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 14" xml:space="preserve" style="enable-background: new 0 0 30 14; height: 14px; width: 29px;">
   <g>
     <g id="final---dec.11-2020_1_">
       <g id="_x30_208-our-toggle_2_" transform="translate(-1275.000000, -200.000000)">
