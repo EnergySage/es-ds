@@ -45,7 +45,7 @@ export default {
          */
         width: {
             type: String,
-            default: '29px',
+            default: '30px',
             required: false,
         },
         /**
