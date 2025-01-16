@@ -7,6 +7,8 @@
             height: height,
             width: width,
         }"
+        aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon"
+        role="img"
         x="0"
         y="0"
         version="1.1"
