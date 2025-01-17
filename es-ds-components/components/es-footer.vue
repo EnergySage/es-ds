@@ -26,9 +26,7 @@ export default {
         },
     },
     mounted() {
-        // TODO: update with GTM tag in prod once we've gone live
-        // See https://tagmanager.google.com/#/container/accounts/2920232696/containers/8806152/workspaces/126/tags
-        // for GTM script that triggers this event.
+        // https://energysage.atlassian.net/wiki/spaces/FG/pages/1427865649/One-trust+Consent+Initialization+and+GTM
         window.addEventListener('OneTrustLoadedCb', () => {
             (window as any).OneTrust.OnConsentChanged(() => {
                 // OneTrust modal should modify cookie values, a hard-refresh will
@@ -145,11 +143,11 @@ export default {
                     <div
                         v-for="link in content.legalLinks"
                         :key="link.text"
-                        class="col col-6 col-lg-auto">
+                        class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
                         <es-nav-bar-link
                             v-if="link.url"
                             :href="link.url"
-                            class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
+                            class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
                             {{ link.text }}
                         </es-nav-bar-link>
                         <div v-else>
