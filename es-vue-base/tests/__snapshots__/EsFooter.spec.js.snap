@@ -157,19 +157,19 @@ exports[`EsFooter <EsFooter /> 1`] = `
       </p>
       <hr class="border-top border-blue-500 m-0">
       <div class="row pt-100">
-        <div class="col col-6 col-lg-auto"><a href="https://www.energysage.com/terms-of-use/" target="_self" class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
+        <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300"><a href="https://www.energysage.com/terms-of-use/" target="_self" class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
             Terms of use
           </a></div>
-        <div class="col col-6 col-lg-auto"><a href="https://www.energysage.com/privacy-policy/" target="_self" class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
+        <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300"><a href="https://www.energysage.com/privacy-policy/" target="_self" class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
             Privacy policy
           </a></div>
-        <div class="col col-6 col-lg-auto"><a href="https://www.energysage.com/mobile-terms-of-use/" target="_self" class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
+        <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300"><a href="https://www.energysage.com/mobile-terms-of-use/" target="_self" class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
             Mobile terms of use
           </a></div>
-        <div class="col col-6 col-lg-auto"><a href="https://www.energysage.com/nondiscrimination/" target="_self" class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
+        <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300"><a href="https://www.energysage.com/nondiscrimination/" target="_self" class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
             Non-discrimination policy
           </a></div>
-        <div class="col col-6 col-lg-auto">
+        <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
           <div>
             <icon-ccpa-opt-out></icon-ccpa-opt-out>
             <es-button inline="" variant="link" class="toggle-info-display text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal ml-1">
