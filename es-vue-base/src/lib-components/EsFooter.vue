@@ -166,9 +166,7 @@ export default {
         },
     },
     mounted() {
-        // TODO: update with GTM tag in prod once we've gone live
-        // See https://tagmanager.google.com/#/container/accounts/2920232696/containers/8806152/workspaces/126/tags
-        // for GTM script that triggers this event.
+        // https://energysage.atlassian.net/wiki/spaces/FG/pages/1427865649/One-trust+Consent+Initialization+and+GTM
         window.addEventListener('OneTrustLoadedCb', () => {
             window.OneTrust.OnConsentChanged(() => {
                 // OneTrust modal should modify cookie values, a hard-refresh will
