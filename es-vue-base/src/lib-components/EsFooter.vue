@@ -89,11 +89,11 @@
                     <div
                         v-for="link in content.legalLinks"
                         :key="link.text"
-                        class="col col-6 col-lg-auto">
+                        class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
                         <es-nav-bar-link
                             v-if="link.url"
                             :href="link.url"
-                            class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
+                            class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
                             {{ link.text }}
                         </es-nav-bar-link>
                         <div v-else>
