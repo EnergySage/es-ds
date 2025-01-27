@@ -176,8 +176,8 @@
 
       &:checked {
         ~ .custom-control-label::before {
-          border-color: lighten($color, 10%);
-          @include gradients.gradient-bg(lighten($color, 10%));
+          border-color: color.adjust($color, $lightness: 10%);
+          @include gradients.gradient-bg(color.adjust($color, $lightness: 10%));
         }
       }
 
