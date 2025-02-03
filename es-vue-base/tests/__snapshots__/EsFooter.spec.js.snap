@@ -172,7 +172,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
         <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
           <div>
             <icon-ccpa-opt-out></icon-ccpa-opt-out>
-            <es-button inline="" variant="link" class="toggle-info-display text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal ml-1">
+            <es-button inline="" variant="link" class="toggle-info-display text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal ml-1 border-0 p-0">
               Your privacy choices
             </es-button>
           </div>
