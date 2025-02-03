@@ -4,9 +4,10 @@
         <div class="bg-blue-900 text-white py-200 py-lg-300 px-200">
             <div class="container px-0">
                 <div class="row">
-                    <div class="col col-12 col-md-5 col-lg-4 font-size-200 font-size-md-400 font-weight-bold mb-150 mb-md-0">
+                    <div
+                        class="col col-12 col-md-5 col-lg-4 font-size-200 font-size-md-400 font-weight-bold mb-150 mb-md-0">
                         {{ content.banner.headline }}
-                        <br>
+                        <br />
                         {{ content.banner.subHeadline }}
                     </div>
                     <div class="col col-12 col-md-7 col-lg-8">
@@ -14,7 +15,8 @@
                     </div>
                 </div>
             </div>
-        </div>  <!-- Make an impact -->
+        </div>
+        <!-- Make an impact -->
         <div class="bg-blue-800 py-200 pt-lg-200 pb-lg-150 px-200">
             <div class="container px-0">
                 <div class="row">
@@ -43,7 +45,8 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>  <!-- Link columns -->
+                    </div>
+                    <!-- Link columns -->
                     <!-- Logo and Social-->
                     <div class="col col-12 col-lg-4 order-lg-0">
                         <es-nav-bar-link
@@ -68,8 +71,10 @@
                                 <span class="sr-only">{{ iconLink.text }}</span>
                                 <component :is="iconLink.icon" />
                             </es-nav-bar-link>
-                        </div>  <!-- Social icons -->
-                    </div>  <!-- Logo and Social -->
+                        </div>
+                        <!-- Social icons -->
+                    </div>
+                    <!-- Logo and Social -->
                 </div>
             </div>
         </div>
@@ -84,7 +89,7 @@
                 </p>
                 <!-- Trademark Info -->
                 <!-- Legal -->
-                <hr class="border-top border-blue-500 m-0">
+                <hr class="border-top border-blue-500 m-0" />
                 <div class="row pt-100">
                     <div
                         v-for="link in content.legalLinks"
@@ -106,7 +111,8 @@
                             </es-button>
                         </div>
                     </div>
-                </div>  <!-- Legal -->
+                </div>
+                <!-- Legal -->
             </div>
         </div>
         <div class="bg-blue-50 px-200 py-100">
@@ -120,7 +126,7 @@
                         aria-hidden="true"
                         class="mr-100 mb-100 mb-lg-0"
                         width="99"
-                        height="24">
+                        height="24" />
                     <p class="mb-0 font-size-75 font-weight-normal font-weight-lg-semibold">
                         <es-nav-bar-link
                             :href="content.departmentOfEnergy.learnMore.link"
@@ -129,7 +135,8 @@
                             {{ content.departmentOfEnergy.learnMore.text }}
                         </es-nav-bar-link>
                     </p>
-                </div>  <!-- DOE -->
+                </div>
+                <!-- DOE -->
             </div>
         </div>
     </div>
