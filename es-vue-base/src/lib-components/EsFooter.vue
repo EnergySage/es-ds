@@ -105,7 +105,7 @@
                             <icon-ccpa-opt-out />
                             <es-button
                                 inline
-                                class="toggle-info-display text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal ml-1"
+                                class="toggle-info-display text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal ml-1 border-0 p-0"
                                 variant="link">
                                 {{ link.text }}
                             </es-button>
