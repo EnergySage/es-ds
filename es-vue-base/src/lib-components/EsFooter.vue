@@ -7,7 +7,7 @@
                     <div
                         class="col col-12 col-md-5 col-lg-4 font-size-200 font-size-md-400 font-weight-bold mb-150 mb-md-0">
                         {{ content.banner.headline }}
-                        <br />
+                        <br>
                         {{ content.banner.subHeadline }}
                     </div>
                     <div class="col col-12 col-md-7 col-lg-8">
@@ -89,7 +89,7 @@
                 </p>
                 <!-- Trademark Info -->
                 <!-- Legal -->
-                <hr class="border-top border-blue-500 m-0" />
+                <hr class="border-top border-blue-500 m-0">
                 <div class="row pt-100">
                     <div
                         v-for="link in content.legalLinks"

@@ -182,7 +182,7 @@
                 id="data--account-menu"
                 class="menu-checkbox account-menu-checkbox"
                 aria-labelledby="data--account-menu"
-                type="checkbox" />
+                type="checkbox">
             <!-- mobile account menu -->
             <div class="menu top-level-menu align-items-start d-flex d-lg-none flex-grow-1">
                 <!-- menu header -->
