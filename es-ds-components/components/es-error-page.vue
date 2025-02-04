@@ -4,7 +4,21 @@ import IconCommunitySolar from './icon/community-solar.vue';
 import IconInfoBlogPost from './icon/info-blog-post.vue';
 import IconMarketplace from './icon/marketplace.vue';
 
-const ES_DOMAIN = 'https://www.energysage.com';
+const props = defineProps({
+    errorType: {
+        type: String,
+        required: true,
+    },
+    useEsDomain: {
+        type: Boolean,
+        default: false,
+    },
+});
+
+const ES_DOMAIN = props.useEsDomain
+    ? process.env.ES_DOMAIN || 'https://www.energysage.com'
+    : 'https://www.energysage.com';
+
 const linkItems = [
     {
         icon: IconContactUs,
@@ -27,13 +41,6 @@ const linkItems = [
         label: 'EnergySage marketplace',
     },
 ];
-
-const props = defineProps({
-    errorType: {
-        type: String,
-        required: true,
-    },
-});
 
 interface ErrorCode {
     shortMessage?: string;
