@@ -9,15 +9,13 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    useEsDomain: {
-        type: Boolean,
-        default: false,
+    esDomain: {
+        type: String,
+        default: null,
     },
 });
 
-const ES_DOMAIN = props.useEsDomain
-    ? process.env.ES_DOMAIN || 'https://www.energysage.com'
-    : 'https://www.energysage.com';
+const ES_DOMAIN = props.esDomain || 'https://www.energysage.com';
 
 const linkItems = [
     {
