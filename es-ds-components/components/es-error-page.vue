@@ -4,7 +4,7 @@ import IconCommunitySolar from './icon/community-solar.vue';
 import IconInfoBlogPost from './icon/info-blog-post.vue';
 import IconMarketplace from './icon/marketplace.vue';
 
-const ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com';
+const ES_DOMAIN = 'https://www.energysage.com';
 const linkItems = [
     {
         icon: IconContactUs,
