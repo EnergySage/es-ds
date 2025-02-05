@@ -3,7 +3,7 @@ name: build & deploy esds 3.0
 on:
     push:
         branches:
-            - esds-3.0-vue3-primevue
+            - main
 
 jobs:
     deploy:
@@ -16,7 +16,7 @@ jobs:
             - name: Checkout Repo 🗃️
               uses: actions/checkout@v4
               with:
-                ref: esds-3.0-vue3-primevue
+                ref: main
 
             - name: Log into ES_DS_DEV AWS account 🔑
               id: creds
