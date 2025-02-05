@@ -45,6 +45,14 @@ Please carefully read the contribution docs before creating a pull request
 <!-- If your change requires a documentation PR, please link it appropriately -->
 <!-- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 
-- [ ] I have linked an issue or discussion.
-- [ ] I have updated the documentation accordingly.
-- [ ] I have documented testing approach
+<!-- Accessibility is required for new components unless specifically exempted. -->
+<!-- The WAVE browser extension can be downloaded here: https://wave.webaim.org/extension/ -->
+<!-- Navigating with keyboard means that any interactive elements like forms and buttons can be navigated -->
+<!-- to using the Tab key and triggered with the Enter key. -->
+
+- [ ] I have verified accessibility of any new components by:
+  - [ ] automated check with the WAVE browser extension
+  - [ ] navigating by keyboard
+  - [ ] using with a screen reader (e.g. VoiceOver on Safari)
+- [ ] I have included any Storyblok component schema updates.
+- [ ] I have updated any applicable documentation.

@@ -1,50 +1,63 @@
+# Run local v3 docs site with hot reloading hooked up to es-ds-styles and es-ds-components
+
 .PHONY: dev
-dev:
-	overmind s
-
-.PHONY: lint
-lint:
-	npx lerna run lint
-
-.PHONY: test
-test:
-	npx lerna run test
-
-.PHONY: build
-build:
-	npx lerna run build
-
-.PHONY: publish
-publish:
-	npx lerna publish
+dev: symlink
+	cd es-ds-docs; npm run dev
 
 .PHONY: symlink
 symlink:
-	npx lerna bootstrap
+	cd es-ds-styles; npm link
+	cd es-ds-components; npm link
+	cd es-ds-docs; npm link @energysage/es-ds-styles @energysage/es-ds-components
 
-.PHONE: reload
-reload:
-	npm --prefix es-vue-base run build
-	npx lerna bootstrap
+# Unlink local v3 docs site from local es-ds-styles and es-ds-components; restore to NPM versions
+
+.PHONY: unlink
+unlink:
+	cd es-ds-styles; npm unlink @energysage/es-ds-styles
+	cd es-ds-components; npm unlink @energysage/es-ds-components
+	cd es-ds-docs; npm unlink --no-save @energysage/es-ds-styles
+	cd es-ds-docs; npm unlink --no-save @energysage/es-ds-components
+	cd es-ds-docs npm install
+
+.PHONY: lint
+lint:
+	npm --prefix es-ds-styles run lint || { echo "Linting failed. Forgot to run 'make format'?"; exit 1; }
+	npm --prefix es-ds-components run lint || { echo "Linting failed. Forgot to run 'make format'?"; exit 1; }
+	npm --prefix es-ds-docs run lint || { echo "Linting failed. Forgot to run 'make format'?"; exit 1; }
+
+.PHONY: format
+format:
+	npm --prefix es-ds-components run format
+	npm --prefix es-ds-docs run format
+
+.PHONY: test
+test:
+	npm --prefix es-ds-styles run test
+# TODO: set up testing for es-ds-components and es-ds-docs
+#	npm --prefix es-ds-components run test
+#	npm --prefix es-ds-docs run test
+
+.PHONY: build
+build:
+	npm --prefix es-ds-styles run build
+	npm --prefix es-ds-docs run build
+# es-ds-components does not have a build step
+
+.PHONY: typecheck
+typecheck:
+	cd es-ds-docs && npx nuxi typecheck
 
 # Sometimes Called
 
 .PHONY: install
 install:
-	npm install
-	npx lerna exec -- npm install
+	npm --prefix es-ds-styles install
+	npm --prefix es-ds-components install
+	npm --prefix es-ds-docs install
 
 # Bootstraping Commands (not reguarly called)
 
-.PHONY: build-scss-pkg
-build-scss-pkg:
-	npm run --prefix es-bs-base build
-
-.PHONY: build-vue-pkg
-build-vue-pkg:
-	npm run --prefix es-vue-base build
-
-.PHONY: update-peer-deps
-update-peer-deps:
-	npm --prefix es-vue-base install bootstrap-vue@2 \
-		vue@2
+.PHONY: update-package-deps
+update-package-deps:
+	cd es-ds-docs; npm uninstall @energysage/es-ds-styles && npm install @energysage/es-ds-styles && npm uninstall @energysage/es-ds-components && npm install @energysage/es-ds-components

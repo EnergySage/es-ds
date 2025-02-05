@@ -1,0 +1,9 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  body-color: variables.$body-color;
+  font-weight-base: variables.$font-weight-base;
+  link-color: variables.$link-color;
+  link-weight: variables.$link-weight;
+}

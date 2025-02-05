@@ -1,0 +1,8 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  warning-50: variables.$warning-50;
+  warning-500: variables.$warning-500;
+  warning-900: variables.$warning-900;
+}

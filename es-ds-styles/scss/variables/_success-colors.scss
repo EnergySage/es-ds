@@ -1,0 +1,8 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  success-50: variables.$success-50;
+  success-500: variables.$success-500;
+  success-900: variables.$success-900;
+}

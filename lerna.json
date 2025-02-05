@@ -1,8 +1,0 @@
-{
-    "packages": [
-        "es-bs-base",
-        "es-vue-base",
-        "es-design-system"
-    ],
-    "version": "2.1.0"
-}

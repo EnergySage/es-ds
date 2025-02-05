@@ -1,0 +1,11 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@use "../variables";
+
+:export {
+  white: variables.$white;
+  soft-blue: variables.$soft-blue;
+  medium-blue: variables.$medium-blue;
+  dark-blue: variables.$dark-blue;
+  warm-orange: variables.$warm-orange;
+}

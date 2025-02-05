@@ -1,0 +1,11 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+@use "../variables";
+
+:export {
+  h1: variables.$h1-line-height;
+  h2: variables.$h2-line-height;
+  h3: variables.$h3-line-height;
+  h4: variables.$h4-line-height;
+  h5: variables.$h5-line-height;
+  h6: variables.$h6-line-height;
+}
