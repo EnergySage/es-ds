@@ -156,7 +156,7 @@ Assuming changes are approved, the process of publishing a new version is...
 6. Publish updated packages to
    [npmjs.com](https://www.npmjs.com/org/energysage) with npm publish.
    1. `cd es-ds-styles && npm publish && cd ..`
-   2. `cd es-ds-components && npm publish && cd ..`
+   2. `cd es-ds-components` and update the version of `es-ds-styles` to the just-published one, and run `npm install` and then run `npm publish && cd ..`
 7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
 8. `make update-package-deps` - Install the new published versions locally
 9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
