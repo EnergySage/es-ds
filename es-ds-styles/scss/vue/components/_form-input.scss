@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../variables" as v;
 @use "../../mixins/border-radius";
 @use "../../mixins/box-shadow";
@@ -155,13 +156,13 @@ input[type="color"].form-control:disabled {
       // Pseudo-elements must be split across multiple rulesets to have an affect
       &:focus {
         &::-webkit-slider-thumb {
-          box-shadow: 0 0 0 1px v.$body-bg, 0 0 0 v.$input-btn-focus-width lighten($color, 35%);
+          box-shadow: 0 0 0 1px v.$body-bg, 0 0 0 v.$input-btn-focus-width color.adjust($color, $lightness: 35%);
         }
         &::-moz-range-thumb {
-          box-shadow: 0 0 0 1px v.$body-bg, 0 0 0 v.$input-btn-focus-width lighten($color, 35%);
+          box-shadow: 0 0 0 1px v.$body-bg, 0 0 0 v.$input-btn-focus-width color.adjust($color, $lightness: 35%);
         }
         &::-ms-thumb {
-          box-shadow: 0 0 0 1px v.$body-bg, 0 0 0 v.$input-btn-focus-width lighten($color, 35%);
+          box-shadow: 0 0 0 1px v.$body-bg, 0 0 0 v.$input-btn-focus-width color.adjust($color, $lightness: 35%);
         }
       }
 
@@ -170,7 +171,7 @@ input[type="color"].form-control:disabled {
         background-image: none;
 
         &:active {
-          background-color: lighten($color, 35%);
+          background-color: color.adjust($color, $lightness: 35%);
           background-image: none;
         }
       }
@@ -184,7 +185,7 @@ input[type="color"].form-control:disabled {
         background-image: none;
 
         &:active {
-          background-color: lighten($color, 35%);
+          background-color: color.adjust($color, $lightness: 35%);
           background-image: none;
         }
       }
@@ -203,7 +204,7 @@ input[type="color"].form-control:disabled {
         background-image: none;
 
         &:active {
-          background-color: lighten($color, 35%);
+          background-color: color.adjust($color, $lightness: 35%);
           background-image: none;
         }
       }

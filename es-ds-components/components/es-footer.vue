@@ -25,6 +25,25 @@ export default {
             return this.content.copyrightText.replace('{currentYear}', new Date().getFullYear());
         },
     },
+    mounted() {
+        // https://energysage.atlassian.net/wiki/spaces/FG/pages/1427865649/One-trust+Consent+Initialization+and+GTM
+        window.addEventListener('OneTrustLoadedCb', () => {
+            (window as any).OneTrust.OnConsentChanged(() => {
+                // OneTrust modal should modify cookie values, a hard-refresh will
+                // trigger re-loading GTM with updated cookie values, which in turn
+                // will only fire tags aligned with new preferences
+                window.location.reload();
+                return false;
+            });
+            document.querySelectorAll('.toggle-info-display').forEach((elem) => {
+                // Function closure to ensure event only fires on one elem
+                elem.addEventListener('click', (e) => {
+                    e.stopImmediatePropagation();
+                    (window as any).OneTrust.ToggleInfoDisplay();
+                });
+            });
+        });
+    },
 };
 </script>
 
@@ -120,16 +139,26 @@ export default {
                 <!-- Trademark Info -->
                 <!-- Legal -->
                 <hr class="border-top border-blue-500 m-0" />
-                <div class="row justify-content-center pt-100">
+                <div class="row pt-100">
                     <div
                         v-for="link in content.legalLinks"
                         :key="link.text"
-                        class="col col-6 col-lg-auto font-size-75 font-weight-semibold font-size-md-50 font-weight-md-normal mt-25 mb-50 px-lg-300">
+                        class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
                         <es-nav-bar-link
+                            v-if="link.url"
                             :href="link.url"
-                            class="text-reset font-weight-normal">
+                            class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
                             {{ link.text }}
                         </es-nav-bar-link>
+                        <div v-else>
+                            <icon-ccpa-opt-out />
+                            <es-button
+                                inline
+                                class="toggle-info-display text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal ml-1"
+                                variant="link">
+                                {{ link.text }}
+                            </es-button>
+                        </div>
                     </div>
                 </div>
                 <!-- Legal -->
