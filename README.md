@@ -1,4 +1,4 @@
-**NOTICE: this is a vue3 based design system, if you're working with a vue2 and/or bootstrap based micro-frontend, please see [EnergySage/es-ds-legacy](https://github.com/EnergySage/es-ds-legacy) instead**
+**NOTICE: this is a vue3 based design system, if you're working with a vue2 based micro-frontend, please see [EnergySage/es-ds-legacy](https://github.com/EnergySage/es-ds-legacy) instead**
 
 # EnergySage Design System
 
