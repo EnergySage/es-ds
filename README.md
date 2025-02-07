@@ -162,5 +162,4 @@ Assuming changes are approved, the process of publishing a new version is...
 9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
    Commit and push the changelog and `package-lock.json` updates
 
-For updating the design-system website see 
-[Deploy Design System](https://energysage.atlassian.net/wiki/spaces/CE/pages/1094058044/3.0+and+later+Deploy+Design+System+Documentation)
+Deploys currently happen automatically to new.design.energysage.dev.
