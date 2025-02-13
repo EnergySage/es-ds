@@ -137,7 +137,9 @@ const handleSubmit = () => {
                     pattern="\d*"
                     :placeholder="placeholder"
                     required>
-                    <template v-if="contextMessage" #extraContent>
+                    <template
+                        v-if="contextMessage"
+                        #extraContent>
                         {{ contextMessage }}
                     </template>
                     <template #prefixIcon>
