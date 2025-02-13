@@ -23,6 +23,12 @@ const propTableRows = [
         `Reduces the button padding and privacy text font size to better accommodate
             limited-width layouts.`,
     ],
+    [
+        'contextMessage',
+        'String',
+        "''",
+        'Optional message to display above the ZIP code input field.',
+    ],
     ['dark', 'Boolean', 'false', 'Renders the CTA with white text (suitable for display on a dark background).'],
     ['fieldName', 'String', "'zip_code'", 'The name to use when submitting the ZIP code to the provided url.'],
     ['inputId', 'String', 'n/a', 'Required. The id for the zip entry. Must be unique on the page.'],

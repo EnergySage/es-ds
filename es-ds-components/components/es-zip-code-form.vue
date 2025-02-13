@@ -52,6 +52,10 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    contextMessage: {
+        type: String,
+        default: '',
+    },
 });
 
 const state = reactive({
@@ -133,6 +137,9 @@ const handleSubmit = () => {
                     pattern="\d*"
                     :placeholder="placeholder"
                     required>
+                    <template v-if="contextMessage" #extraContent>
+                        {{ contextMessage }}
+                    </template>
                     <template #prefixIcon>
                         <icon-location class="text-gray-800" />
                     </template>
