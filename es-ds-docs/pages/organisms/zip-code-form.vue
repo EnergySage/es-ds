@@ -263,9 +263,10 @@ const slotTableRows = [
         </div>
 
         <div class="mb-500">
-            <h2> context Message Example</h2>
+            <h2>context Message Example</h2>
             <p class="mb-500">
-                This example shows how to use the <code>contextMessage</code> prop to display a message above the ZIP code input.
+                This example shows how to use the <code>contextMessage</code> prop to display a message above the ZIP
+                code input.
             </p>
             <es-row class="justify-content-center">
                 <es-col
@@ -278,7 +279,7 @@ const slotTableRows = [
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
                         url="https://www.energysage.com/market/start/">
-                            <template #buttonText>See local offers</template>
+                        <template #buttonText>See local offers</template>
                     </es-zip-code-form>
                 </es-col>
             </es-row>
