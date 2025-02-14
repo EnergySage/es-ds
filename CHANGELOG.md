@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.2] - 2025-02-14
+
+- Fixed an issue in EsVideo where the video would fail to play sometimes
+
 ## [3.0.1] - 2025-02-07
 
 - Fix hydration error in EsErrorPage
@@ -1070,6 +1074,7 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[3.0.2]: https://github.com/EnergySage/es-ds/pull/1574
 [3.0.1]: https://github.com/EnergySage/es-ds/pull/1571
 [3.0.0]: https://github.com/EnergySage/es-ds/pull/1461
 [2.1.0]: https://github.com/EnergySage/es-ds/compare/v2.0.6...v2.1.0
