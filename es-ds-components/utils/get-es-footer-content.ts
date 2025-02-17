@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
+
 // keeping COMMUNITY_SOLAR_DOMAIN, HEAT_PUMPS_DOMAIN and NEWS_DOMAIN for now to keep function argument order intact
 // and to minimize breaking change to consuming applications, but they are now deprecated in this function
 export default (

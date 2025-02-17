@@ -38,7 +38,7 @@ onMounted(() => {
     const targetElement = document.getElementById(props.target);
     if (targetElement) {
         const triggers = props.triggers.split(' ').map((trigger) => (trigger === 'hover' ? 'mouseover' : trigger));
-        // eslint-disable-next-line no-restricted-syntax
+
         for (const trigger of triggers) {
             targetElement.addEventListener(trigger, showPanel);
         }

@@ -25,7 +25,7 @@ export const vuelidateHelpers = helpers;
  * @returns a function that takes a number, and returns another function which takes a string param
  * that will ultimately be what you're comparing the pattern against N times.
  */
-// eslint-disable-next-line max-len
+
 const matchesPatternNTimes =
     (pattern: RegExp) =>
     (N = 1) =>
@@ -88,7 +88,7 @@ export function vuelidatePhone(number: string) {
 /**
  * @returns if not required or string contains a number
  */
-// eslint-disable-next-line max-len
+
 export const vuelidateHasNumber = (X: number) =>
     helpers.withParams({ type: 'xTimes', value: X }, (value: string) => !helpers.req(value) || hasNumber(X)(value));
 
