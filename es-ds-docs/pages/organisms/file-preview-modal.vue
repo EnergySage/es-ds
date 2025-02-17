@@ -14,7 +14,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-file-preview-modal.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./file-preview-modal.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);

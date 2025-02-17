@@ -5,7 +5,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-view-more.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./view-more.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);

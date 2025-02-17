@@ -42,10 +42,10 @@ const autoImportEslint = defineNuxtModule({
                 let contents = '';
                 contents += '{\n';
                 contents += '  "globals": {';
-                // eslint-disable-next-line no-restricted-syntax, guard-for-in
+
                 for (const autoImport in autoImports) {
                     contents += `\n${padding}// ${autoImport}`;
-                    // eslint-disable-next-line no-loop-func
+
                     autoImports[autoImport].forEach((imp) => {
                         contents += '\n';
                         contents += `${padding}"${imp}": "readonly",`;
@@ -64,7 +64,6 @@ const autoImportEslint = defineNuxtModule({
                 write: true,
             });
 
-            // eslint-disable-next-line no-console
             console.log(`globals file is generated at ${fullPath}`);
         });
     },

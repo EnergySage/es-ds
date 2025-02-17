@@ -9,7 +9,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-form-textarea.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./textarea.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);

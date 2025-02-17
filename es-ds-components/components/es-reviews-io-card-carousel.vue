@@ -37,7 +37,7 @@ const initializeWidget = () => {
     // @ts-expect-error global-scoped ReviewsIO stuff
     if (typeof window !== 'undefined' && window.carouselInlineWidget) {
         // @ts-expect-error global-scoped ReviewsIO stuff
-        // eslint-disable-next-line no-new, new-cap
+
         new window.carouselInlineWidget('reviewsio-carousel-widget', {
             /* Your REVIEWS.io account ID: */
             store: 'energy-sage',

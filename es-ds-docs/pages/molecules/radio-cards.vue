@@ -11,7 +11,6 @@ const propertyTypeOptions = [
     { label: 'Nonprofit', value: 'nonprofit' },
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const storageReasonOptions: { [key: string]: any }[] = [
     {
         title: 'Back up power',
@@ -59,7 +58,6 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        /* eslint-disable import/no-self-import */
         const componentCodeRadioCardSource = await import(
             '@energysage/es-ds-components/components/es-form-radio-card.vue?raw'
         );
@@ -67,7 +65,6 @@ onMounted(async () => {
             '@energysage/es-ds-components/components/es-form-radio-cards.vue?raw'
         );
         const docSource = await import('./radio-cards.vue?raw');
-        /* eslint-enable import/no-self-import */
 
         componentCodeRadioCard.value = $prism.normalizeCode(componentCodeRadioCardSource.default);
         componentCodeRadioCards.value = $prism.normalizeCode(componentCodeRadioCardsSource.default);
@@ -77,7 +74,6 @@ onMounted(async () => {
 });
 
 function handleSubmit() {
-    // eslint-disable-next-line no-console
     console.log('handleSubmit');
 }
 

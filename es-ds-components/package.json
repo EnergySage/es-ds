@@ -18,32 +18,25 @@
     "license": "MIT",
     "dependencies": {
         "@energysage/es-ds-styles": "^3.0.0",
+        "@nuxt/eslint": "^1.0.1",
         "@nuxtjs/google-fonts": "^3.2.0",
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
         "@vueuse/core": "^11.1.0",
         "html-truncate": "^1.2.2",
-        "nuxt": "^3.13.2",
+        "nuxt": "^3.15.4",
         "nuxt-primevue": "^3.0.0",
         "primevue": "^3.53.0",
         "prismjs": "^1.29.0",
         "vue": "^3.5.6"
     },
     "devDependencies": {
-        "@eslint/js": "^9.9.0",
-        "@types/eslint__js": "^8.42.3",
-        "eslint": "^8.57.0",
-        "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-import-resolver-typescript": "^3.6.1",
-        "eslint-plugin-import": "^2.29.1",
-        "eslint-plugin-vitest": "^0.5.4",
-        "eslint-plugin-vue": "^9.27.0",
+        "eslint": "^9.20.1",
+        "eslint-config-prettier": "^10.0.1",
         "nuxt-primevue": "^3.0.0",
         "prettier": "^3.3.3",
         "sass": "^1.77.8",
         "typescript": "^5.5.4",
-        "typescript-eslint": "^8.2.0",
         "vue-tsc": "^2.0.29"
     }
 }

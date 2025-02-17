@@ -1,11 +1,10 @@
 import { type ErrorObject, useVuelidate, type ValidationArgs } from '@vuelidate/core';
 import type { ToRefs, Ref } from 'vue';
 
-export function useEsForms<
-    // eslint-disable-next-line no-unused-vars, no-use-before-define, @typescript-eslint/no-explicit-any
-    T extends { [key in keyof Vargs]: any },
-    Vargs extends ValidationArgs = ValidationArgs,
->(validationsArgs: Ref<Vargs> | Vargs, state: T | Ref<T> | ToRefs<T>) {
+export function useEsForms<T extends { [key in keyof Vargs]: any }, Vargs extends ValidationArgs = ValidationArgs>(
+    validationsArgs: Ref<Vargs> | Vargs,
+    state: T | Ref<T> | ToRefs<T>,
+) {
     const v$ = useVuelidate(validationsArgs, state);
 
     const submitInProgress = ref(false);
@@ -19,7 +18,7 @@ export function useEsForms<
         let objKeys = null;
         try {
             objKeys = Object.keys(obj);
-            // eslint-disable-next-line no-console
+
             console.log('objKeys: ', objKeys);
         } catch {
             return [];
@@ -29,10 +28,9 @@ export function useEsForms<
 
     const formErrors = computed(() => {
         const errors = v$.value.$errors.map((error) => error);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
         return errors.reduce((acc: any, error: ErrorObject) => {
             if (!(error.$property in acc)) {
-                // eslint-disable-next-line no-param-reassign
                 acc[error.$property] = [];
             }
             acc[error.$property].push(error.$validator);
@@ -42,7 +40,6 @@ export function useEsForms<
 
     const getValidatorField = (dotPath: string) => {
         const validatorField = dotPath.split('.').reduce((acc, field) => {
-            // eslint-disable-next-line no-param-reassign
             acc = acc[field];
             return acc;
         }, v$.value);

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 const { esNuxt } = require('es-cdk');
 const path = require('path');
 const cdk = require('aws-cdk-lib');
@@ -11,7 +10,6 @@ class NuxtStaticStack extends cdk.Stack {
     constructor(scope, id, props) {
         super(scope, id, props);
 
-        // eslint-disable-next-line no-new
         new esNuxt.NuxtStatic(this, 'DesignSystemApp', {
             // The domain (without the protocol) at which the Nuxt app shall be publicly available.
             rootDomain: 'design.energysage.dev',

@@ -4,7 +4,6 @@ import { useFocus } from '@vueuse/core';
 const inputElem = useTemplateRef('input-elem');
 const { focused: inputFocused } = useFocus(inputElem);
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 interface IProps {
     id: string;
     name: string;
@@ -30,7 +29,6 @@ function handleRadioButtonClick() {
     }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const model = defineModel<any>();
 const isChecked = computed(() => props.value === model.value);
 </script>

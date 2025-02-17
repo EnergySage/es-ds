@@ -2,7 +2,7 @@
 interface IOptions {
     id: string;
     text: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     value: any;
     disabled?: boolean;
 }
@@ -13,7 +13,7 @@ interface IProps {
     name?: string;
     options?: IOptions[];
     inline?: boolean;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     modelValue?: any;
 }
 const props = withDefaults(defineProps<IProps>(), {

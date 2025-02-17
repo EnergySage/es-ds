@@ -71,7 +71,6 @@ export default {
         // Show overlay on hovers for desktop only
         document
             .querySelectorAll(
-                // eslint-disable-next-line max-len
                 '.nav-es-container .nav-item .dropdown-toggle, .nav-es-container .nav-item .dropdown-menu, .nav-es-container .nav-item.has-dropdown',
             )
             .forEach((element) => {
@@ -113,14 +112,14 @@ export default {
                 // logged out so allow loggedOut menu and the compare buttons to be visible
                 document.querySelectorAll('.nav-es-container .loggedOut').forEach((element) => {
                     // @ts-expect-error legacy code
-                    // eslint-disable-next-line no-param-reassign
+
                     element.style.display = null;
                 });
             } else {
                 // logged in so allow logged in menu to be visible, and show name with appropriate layout
                 document.querySelectorAll('.nav-es-container .loggedIn').forEach((element) => {
                     // @ts-expect-error legacy code
-                    // eslint-disable-next-line no-param-reassign
+
                     element.style.display = null;
                 });
                 // @ts-expect-error legacy code
@@ -128,7 +127,7 @@ export default {
                 const selector = '.nav-es-container .icon-dropdown .dropdown-toggle .first-name';
                 document.querySelectorAll(selector).forEach((element) => {
                     // @ts-expect-error legacy code
-                    // eslint-disable-next-line no-param-reassign
+
                     element.style.display = 'block';
                 });
             }
@@ -143,13 +142,11 @@ export default {
                 const name = data?.first_name || null;
                 const selector = '.nav-es-container .icon-dropdown .dropdown-toggle .first-name';
                 document.querySelectorAll(selector).forEach((element) => {
-                    // eslint-disable-next-line no-param-reassign
                     element.innerHTML = name;
                 });
                 menuDisplay({ loggedOut: name === null });
             })
             .catch((e) => {
-                // eslint-disable-next-line no-console
                 console.log('error', e);
                 menuDisplay({ loggedOut: true });
             });
