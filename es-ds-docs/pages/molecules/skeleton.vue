@@ -37,7 +37,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-skeleton.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./skeleton.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);

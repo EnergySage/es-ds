@@ -160,7 +160,7 @@ const createHeadingExample = (
         sizeDesktopRem,
         sizeMobilePx,
         sizeMobileRem,
-        // eslint-disable-next-line no-nested-ternary
+
         tag: isEyebrow ? 'h2' : isHeading ? identifier : 'h1',
     };
 };
@@ -242,7 +242,6 @@ const { $prism } = useNuxtApp();
 const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
-        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./typography.vue?raw');
         docCode.value = $prism.normalizeCode(docSource.default);
         $prism.highlight();

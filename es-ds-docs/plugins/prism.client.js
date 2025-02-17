@@ -31,7 +31,6 @@ Prism.plugins.toolbar.registerButton('source', {
         if (linkSuffix) {
             window.open(`${SOURCE_LINK_PREFIX}${linkSuffix}`);
         } else {
-            // eslint-disable-next-line no-alert
             alert('No source Provided');
         }
     },

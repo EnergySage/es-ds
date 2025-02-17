@@ -4,7 +4,6 @@ import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.mo
 const colorNames: any = Object.keys(sassIconColors)
     .map((k) => k)
     .reduce((prev: any, cur: any) => {
-        // eslint-disable-next-line no-param-reassign
         prev[cur] = cur;
         return prev;
     }, {});
@@ -24,7 +23,6 @@ const { $prism } = useNuxtApp();
 
 onMounted(async () => {
     if ($prism) {
-        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./icons.vue?raw');
 
         docCode.value = $prism.normalizeCode(docSource.default);

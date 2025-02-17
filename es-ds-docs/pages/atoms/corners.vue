@@ -21,7 +21,6 @@ const COMPONENT_NAME_URLS: any = {
 
 const borderRadius = computed(() => {
     const sizeMap: any = Object.entries(sassBorderRadius).reduce((result: any, [name, sizeRem]) => {
-        // eslint-disable-next-line no-param-reassign
         result[sizeRem] = {
             name,
             components: [],
@@ -55,7 +54,6 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./corners.vue?raw');
 
         docCode.value = $prism.normalizeCode(docSource.default);

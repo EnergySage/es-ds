@@ -6,7 +6,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-reviews-io-card-carousel.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./reviews-io-card-carousel.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);
@@ -24,11 +24,11 @@ onMounted(async () => {
         <div class="my-500">
             <es-reviews-io-card-carousel />
         </div>
-    </div>
 
-    <ds-doc-source
-        :comp-code="compCode"
-        comp-source="es-ds-components/components/es-reviews-io-card-carousel.vue"
-        :doc-code="docCode"
-        doc-source="es-ds-docs/pages/organisms/reviews-io-carousel.vue" />
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-reviews-io-card-carousel.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/organisms/reviews-io-carousel.vue" />
+    </div>
 </template>

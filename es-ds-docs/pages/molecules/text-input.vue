@@ -16,7 +16,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-form-input.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./text-input.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);

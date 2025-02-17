@@ -51,7 +51,7 @@ const asyncTimeout = async (seconds = 3) => {
 
 const fakeServerRequest = async () => {
     await asyncTimeout();
-    // eslint-disable-next-line no-console
+
     console.log('Submit Complete!');
 };
 
@@ -84,7 +84,6 @@ const { $prism } = useNuxtApp();
 const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
-        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./form-field-validation.vue?raw');
 
         docCode.value = $prism.normalizeCode(docSource.default);
