@@ -10,7 +10,7 @@
 
     .v-transition-enter-active,
     .v-transition-leave-active {
-      max-height: 200px;
+      max-height: 350px;
       overflow: hidden;
       transition: max-height .35s ease;
     }
