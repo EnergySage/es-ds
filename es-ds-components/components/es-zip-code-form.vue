@@ -159,7 +159,7 @@ const handleSubmit = () => {
                     name="product"
                     :value="selectedProduct" />
                 <es-button
-                 class="text-nowrap w-100"
+                    class="text-nowrap w-100"
                     :class="{
                         [`ml-${stackBreak}50 w-${stackBreak}auto`]: stackUntil,
                         'px-100': constrained,
@@ -216,4 +216,3 @@ const handleSubmit = () => {
     }
 }
 </style>
-
