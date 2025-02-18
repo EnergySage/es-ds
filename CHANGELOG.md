@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 3.0.3 - 2025-02-18
+
+- Fix a mobile issue in EsAccordion where the expand animation would sometimes not animate to the full height of the content
+- Fixed an issue when running the local es-ds-docs server where sometimes an `EMFILE: too many open files, watch` error would crash the server
+- Updated the version and config of eslint in es-ds-components and es-ds-docs
+
 ## [3.0.2] - 2025-02-14
 
 - Fixed an issue in EsVideo where the video would fail to play sometimes
