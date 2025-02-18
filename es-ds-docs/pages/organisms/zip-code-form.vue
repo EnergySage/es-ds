@@ -263,7 +263,7 @@ const slotTableRows = [
         </div>
 
         <div class="mb-500">
-            <h2>context Message Example</h2>
+            <h2>Context message example</h2>
             <p class="mb-500">
                 This example shows how to use the <code>contextMessage</code> prop to display a message above the ZIP
                 code input.

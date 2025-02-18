@@ -126,7 +126,6 @@ const handleSubmit = () => {
                     v-model="state.zipCode"
                     :state="validateState('zipCode')"
                     autocomplete="postal-code"
-                    class="mb-100"
                     :class="{
                         [`mb-${stackBreak}0 mr-${stackBreak}50`]: stackUntil,
                     }"
@@ -139,7 +138,7 @@ const handleSubmit = () => {
                     required>
                     <template
                         v-if="contextMessage"
-                        #extraContent>
+                        #extraContext>
                         {{ contextMessage }}
                     </template>
                     <template #prefixIcon>
@@ -160,7 +159,7 @@ const handleSubmit = () => {
                     name="product"
                     :value="selectedProduct" />
                 <es-button
-                    class="text-nowrap w-100"
+                 class="text-nowrap w-100"
                     :class="{
                         [`ml-${stackBreak}50 w-${stackBreak}auto`]: stackUntil,
                         'px-100': constrained,
@@ -209,5 +208,12 @@ const handleSubmit = () => {
             top: 0.02em;
         }
     }
+    form {
+        align-items: flex-start !important;
+        &:not(:has([data-context-message])) {
+            align-items: flex-end !important;
+        }
+    }
 }
 </style>
+
