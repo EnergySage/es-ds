@@ -275,7 +275,7 @@ const slotTableRows = [
                     md="8">
                     <es-zip-code-form
                         input-id="context-message-example"
-                        context-message="Enter your ZIP code to get started"
+                        context-message="Enter your ZIP code to get started."
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
                         url="https://www.energysage.com/market/start/">
