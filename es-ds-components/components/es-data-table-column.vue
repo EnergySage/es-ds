@@ -5,6 +5,7 @@ import type { ComponentOptionsMixin } from 'vue';
 // magic solution for wrapping Column successfully
 // https://www.reddit.com/r/vuejs/comments/1g17u7u/comment/lvjv91h/
 defineOptions({
+    // eslint-disable-next-line vue/multi-word-component-names
     name: 'Column',
     extends: (Column as unknown as ComponentOptionsMixin).extends,
     inheritAttrs: false,

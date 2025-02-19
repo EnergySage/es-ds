@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const NAV_BAR_ICONS = {
     CALCULATOR: 'calculator',
@@ -64,7 +63,7 @@ export default (
                         },
                         {
                             name: 'Home batteries vs. generators',
-                            // eslint-disable-next-line max-len
+
                             link: `${ES_DOMAIN}/energy-storage/battery-backup-power-vs-generators-which-is-right-for-you/`,
                         },
                     ],
@@ -78,7 +77,7 @@ export default (
                         },
                         {
                             name: 'How much do heat pumps cost?',
-                            // eslint-disable-next-line max-len
+
                             link: `${ES_DOMAIN}/heat-pumps/costs-and-benefits-air-source-heat-pumps/`,
                         },
                         {
@@ -172,7 +171,7 @@ export default (
                     subtopics: [
                         {
                             name: 'How long can you run your house on a Tesla Powerwall?',
-                            // eslint-disable-next-line max-len
+
                             link: `${ES_DOMAIN}/energy-storage/tesla-powerwall-how-much-home-can-you-run-on-it-for-how-long/`,
                         },
                         {
@@ -301,7 +300,7 @@ export default (
                         },
                         {
                             name: 'Search local installers',
-                            // eslint-disable-next-line max-len
+
                             link: `${ES_DOMAIN}/supplier/search?selected_facets=services:installers&selected_facets=technology_types:Solar%20PV`,
                         },
                         {

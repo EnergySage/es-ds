@@ -21,15 +21,12 @@ const propTableRows = [
 ];
 
 const shownEvent = () => {
-    // eslint-disable-next-line no-console
     console.log('shown');
 };
 const toggledEvent = (newValue: boolean) => {
-    // eslint-disable-next-line no-console
     console.log(`toggled to ${newValue}`);
 };
 const toggledEventInSuggestedVisibleExample = (newValue: boolean) => {
-    // eslint-disable-next-line no-console
     console.log(`toggled to ${newValue}`);
     visible.value = newValue;
 };
@@ -41,7 +38,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-collapse.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./collapse.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);

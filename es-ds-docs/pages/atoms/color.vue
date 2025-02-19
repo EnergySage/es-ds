@@ -92,7 +92,6 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./color.vue?raw');
 
         docCode.value = $prism.normalizeCode(docSource.default);

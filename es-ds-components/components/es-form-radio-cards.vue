@@ -2,7 +2,7 @@
 interface Option {
     id: string;
     text: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     value: any;
     disabled?: boolean;
     inline?: boolean;
@@ -14,7 +14,7 @@ interface Props {
     name?: string;
     options?: Option[];
     inline?: boolean;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     modelValue?: any;
     hasIcon?: boolean;
     labelClass?: string;
@@ -32,7 +32,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:model-value']);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function handleUpdate(value: any) {
     emit('update:model-value', value);
 }

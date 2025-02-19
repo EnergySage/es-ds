@@ -6,7 +6,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-zip-code-form.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./zip-code-form.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);

@@ -45,7 +45,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-segmented-control.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./segmented-control.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);
@@ -57,99 +57,101 @@ onMounted(async () => {
 
 <template>
     <div>
-        <h1>Segmented control</h1>
-        <p>
-            Extended from
-            <a
-                href="https://v3.primevue.org/selectbutton/"
-                target="_blank">
-                PrimeVue SelectButton
-            </a>
-        </p>
-        <p>
-            Per our writing guidelines, please ensure the title is in
-            <a
-                href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case"
-                target="_blank">
-                Sentence case.
-            </a>
-        </p>
-    </div>
-
-    <div class="my-500">
-        <h2>Basic example</h2>
-        <es-segmented-control
-            v-model="viewActiveIndex"
-            class="mb-100"
-            label="Select how you want to view your quotes"
-            :options="viewItems" />
-        <p>
-            {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
-        </p>
-    </div>
-
-    <div class="my-500">
-        <h2>Timeframe selector example</h2>
-        <es-segmented-control
-            v-model="timeframeActiveIndex"
-            class="mb-100"
-            label="Select the timeframe to view"
-            :options="timeframeItems" />
-        <p class="mb-200">
-            {{ `Selected item: "${timeframeItems[timeframeActiveIndex].label}"` }}
-        </p>
-        <p>Since the segmented control uses <code>v-model</code>, you can also control it from other places:</p>
         <div>
-            <es-button
-                class="mr-200"
-                :disabled="timeframeActiveIndex === 0"
-                inline
-                size="sm"
-                variant="link"
-                @click="timeframeActiveIndex = 0">
-                Set to 90 days
-            </es-button>
-            <es-button
-                class="mr-200"
-                :disabled="timeframeActiveIndex === 1"
-                inline
-                size="sm"
-                variant="link"
-                @click="timeframeActiveIndex = 1">
-                Set to 3 months
-            </es-button>
-            <es-button
-                :disabled="timeframeActiveIndex === 2"
-                inline
-                size="sm"
-                variant="link"
-                @click="timeframeActiveIndex = 2">
-                Set to 1 year
-            </es-button>
+            <h1>Segmented control</h1>
+            <p>
+                Extended from
+                <a
+                    href="https://v3.primevue.org/selectbutton/"
+                    target="_blank">
+                    PrimeVue SelectButton
+                </a>
+            </p>
+            <p>
+                Per our writing guidelines, please ensure the title is in
+                <a
+                    href="https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case"
+                    target="_blank">
+                    Sentence case.
+                </a>
+            </p>
         </div>
-    </div>
 
-    <div class="my-500">
-        <h2>Disabled example</h2>
-        <es-segmented-control
-            v-model="viewActiveIndex"
-            class="mb-100"
-            disabled
-            label="Select the timeframe to view"
-            :options="viewItems" />
-        <p>
-            {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
-        </p>
-    </div>
+        <div class="my-500">
+            <h2>Basic example</h2>
+            <es-segmented-control
+                v-model="viewActiveIndex"
+                class="mb-100"
+                label="Select how you want to view your quotes"
+                :options="viewItems" />
+            <p>
+                {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
+            </p>
+        </div>
 
-    <div class="my-500">
-        <h2>EsSegmentedControl props</h2>
-        <ds-prop-table :rows="esSegmentedControlProps" />
-    </div>
+        <div class="my-500">
+            <h2>Timeframe selector example</h2>
+            <es-segmented-control
+                v-model="timeframeActiveIndex"
+                class="mb-100"
+                label="Select the timeframe to view"
+                :options="timeframeItems" />
+            <p class="mb-200">
+                {{ `Selected item: "${timeframeItems[timeframeActiveIndex].label}"` }}
+            </p>
+            <p>Since the segmented control uses <code>v-model</code>, you can also control it from other places:</p>
+            <div>
+                <es-button
+                    class="mr-200"
+                    :disabled="timeframeActiveIndex === 0"
+                    inline
+                    size="sm"
+                    variant="link"
+                    @click="timeframeActiveIndex = 0">
+                    Set to 90 days
+                </es-button>
+                <es-button
+                    class="mr-200"
+                    :disabled="timeframeActiveIndex === 1"
+                    inline
+                    size="sm"
+                    variant="link"
+                    @click="timeframeActiveIndex = 1">
+                    Set to 3 months
+                </es-button>
+                <es-button
+                    :disabled="timeframeActiveIndex === 2"
+                    inline
+                    size="sm"
+                    variant="link"
+                    @click="timeframeActiveIndex = 2">
+                    Set to 1 year
+                </es-button>
+            </div>
+        </div>
 
-    <ds-doc-source
-        :comp-code="compCode"
-        comp-source="es-ds-components/components/es-segmented-control.vue"
-        :doc-code="docCode"
-        doc-source="es-ds-docs/pages/molecules/segmented-control.vue" />
+        <div class="my-500">
+            <h2>Disabled example</h2>
+            <es-segmented-control
+                v-model="viewActiveIndex"
+                class="mb-100"
+                disabled
+                label="Select the timeframe to view"
+                :options="viewItems" />
+            <p>
+                {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
+            </p>
+        </div>
+
+        <div class="my-500">
+            <h2>EsSegmentedControl props</h2>
+            <ds-prop-table :rows="esSegmentedControlProps" />
+        </div>
+
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-segmented-control.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/segmented-control.vue" />
+    </div>
 </template>

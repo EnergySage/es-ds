@@ -69,7 +69,7 @@ const props = defineProps({
 
 const getRootClasses = computed(() => {
     const withOutline = props.outline ? '-outline' : '';
-    // eslint-disable-next-line no-nested-ternary
+
     const btnVariant =
         props.variant === 'link'
             ? 'btn-link'

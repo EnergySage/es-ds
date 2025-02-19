@@ -59,7 +59,7 @@ const slotTableRows = [
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-support-card.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./support-card.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);

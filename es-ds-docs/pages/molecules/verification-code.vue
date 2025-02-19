@@ -5,10 +5,8 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        /* eslint-disable import/no-webpack-loader-syntax, import/no-self-import */
         const compSource = await import('@energysage/es-ds-components/components/es-verification-code.vue?raw');
         const docSource = await import('./verification-code.vue?raw');
-        /* eslint-enable import/no-webpack-loader-syntax, import/no-self-import */
 
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
@@ -99,8 +97,7 @@ const randomCode = () => {
                 </es-button>
             </es-col>
         </es-row>
-    </div>
-    <div>
+
         <div class="mb-500">
             <h2>EsVerificationCode props</h2>
             <ds-prop-table :rows="propTableRows" />

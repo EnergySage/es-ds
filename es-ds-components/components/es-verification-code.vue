@@ -22,7 +22,7 @@ watch(model, (newVal) => {
 
 // Note: @update:model-value is erroneously requiring a boolean function argument,
 // workaround for error is to specify any
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 const updateCode = (newValue: any) => {
     model.value = newValue.split('');
 };

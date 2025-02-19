@@ -34,7 +34,7 @@ const deprecatedSpacers = computed(() =>
                 newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
             };
         })
-        // eslint-disable-next-line no-nested-ternary
+
         .sort((a, b) => (a.px < b.px ? -1 : a.px > b.px ? 1 : 0)),
 );
 
@@ -43,7 +43,6 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./spacing.vue?raw');
         docCode.value = $prism.normalizeCode(docSource.default);
         $prism.highlight();

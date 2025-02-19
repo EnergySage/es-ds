@@ -12,7 +12,6 @@ onMounted(async () => {
         const compSource = await import('@energysage/es-ds-components/components/es-footer.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
 
-        // eslint-disable-next-line import/no-self-import
         const docSource = await import('./footer.vue?raw');
         docCode.value = $prism.normalizeCode(docSource.default);
 
