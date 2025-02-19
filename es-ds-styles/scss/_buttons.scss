@@ -27,6 +27,7 @@
   background-color: transparent;
   border: variables.$btn-border-width solid transparent;
   @include buttons.button-size(variables.$btn-padding-y, variables.$btn-padding-x, variables.$btn-font-size, variables.$btn-line-height, variables.$btn-border-radius);
+  /* this mixin already handles prefers-reduced-motion */
   @include transition.transition(variables.$btn-transition);
 
   @include hover.hover() {
@@ -34,7 +35,7 @@
     text-decoration: none;
   }
 
-  &:focus,
+  &:focus-visible,
   &.focus {
     outline: 0;
     box-shadow: variables.$btn-focus-box-shadow;
@@ -54,7 +55,7 @@
     &.active {
       @include box-shadow.box-shadow(variables.$btn-active-box-shadow);
 
-      &:focus {
+      &:focus-visible {
         @include box-shadow.box-shadow(variables.$btn-focus-box-shadow, variables.$btn-active-box-shadow);
       }
     }
@@ -119,7 +120,7 @@ fieldset:disabled a.btn {
     text-decoration: variables.$link-hover-decoration;
   }
 
-  &:focus,
+  &:focus-visible,
   &.focus {
     text-decoration: variables.$link-hover-decoration;
   }
@@ -128,6 +129,13 @@ fieldset:disabled a.btn {
   &.disabled {
     color: variables.$btn-link-disabled-color;
     pointer-events: none;
+  }
+
+  // Active style, when button is not disabled
+  &:not(:disabled):not(.disabled):not(.inline):active,
+  &:not(:disabled):not(.disabled):not(.inline).active {
+    color: variables.$link-active-color;
+    transform: variables.$btn-active-transform;
   }
 
   &.inline {
