@@ -109,10 +109,10 @@ const handleSubmit = () => {
         }"
         v-bind="$attrs">
         <div class="d-flex flex-column">
-            <div
-                v-if="contextMessage"
-                class="mb-2">
-                {{ contextMessage }}
+            <div v-if="contextMessage">
+                <p class="mb-25 font-size-75">
+                    {{ contextMessage }}
+                </p>
             </div>
             <form
                 ref="ctaForm"
