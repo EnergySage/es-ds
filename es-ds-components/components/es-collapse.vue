@@ -52,6 +52,7 @@ const onClick = ({ value }: { value: boolean }) => {
 <template>
     <panel
         :collapsed="!expanded"
+        :header="expanded ? 'click to collapse content' : 'click to expand content'"
         :pt="{
             header: 'align-items-center d-flex justify-content-between position-relative py-100',
             icons: 'h-100 position-absolute w-100',
