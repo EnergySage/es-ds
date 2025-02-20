@@ -131,6 +131,7 @@ const handleSubmit = () => {
                     v-model="state.zipCode"
                     :state="validateState('zipCode')"
                     autocomplete="postal-code"
+                    class="mb-100"
                     :class="{
                         [`mb-${stackBreak}0 mr-${stackBreak}50`]: stackUntil,
                     }"
