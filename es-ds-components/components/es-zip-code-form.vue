@@ -111,7 +111,7 @@ const handleSubmit = () => {
         <div class="d-flex flex-column">
             <p
                 v-if="contextMessage"
-                class="mb-25 font-size-75">
+                class="mb-50 font-size-75 text-left">
                 {{ contextMessage }}
             </p>
             <form
