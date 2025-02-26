@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 3.0.5 - 2025-02-26
+
+- Fixed an issue in EsZipCodeForm where the context message would sometimes not be aligned left
+- Fixed one moderate security vulnerability via dependency updates
+
 ## 3.0.4 - 2025-02-20
 
 - Added a new `contextMessage` prop to EsZipCodeForm
@@ -15,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix a mobile issue in EsAccordion where the expand animation would sometimes not animate to the full height of the content
 - Fixed an issue when running the local es-ds-docs server where sometimes an `EMFILE: too many open files, watch` error would crash the server
 - Updated the version and config of eslint in es-ds-components and es-ds-docs
+- Fixed four moderate security vulnerabilities via dependency updates
 
 ## [3.0.2] - 2025-02-14
 
