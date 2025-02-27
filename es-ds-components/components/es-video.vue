@@ -4,9 +4,13 @@ interface IProps {
     altText: string;
     coverImageUrl?: string;
     embedUrl: string;
+    provider?: string;
+    quality?: string;
 }
 const props = withDefaults(defineProps<IProps>(), {
     coverImageUrl: '',
+    provider: 'storyblok',
+    quality: '100',
 });
 const showVideo = ref(false);
 
@@ -54,7 +58,9 @@ const embedUrlWithParams = computed(
                 class="EsVideo-image d-block w-100"
                 sizes="md:530px sm:275px"
                 :src="props.coverImageUrl"
-                :alt="props.altText" />
+                :alt="props.altText"
+                :provider="props.provider"
+                :quality="props.quality" />
             <icon-video-play
                 class="EsVideo-icon position-absolute abs-center"
                 width="74px"
