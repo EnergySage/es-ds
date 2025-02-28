@@ -57,10 +57,10 @@ const embedUrlWithParams = computed(
                 v-else
                 class="EsVideo-image d-block w-100"
                 sizes="md:530px sm:275px"
-                :src="props.coverImageUrl"
-                :alt="props.altText"
-                :provider="props.provider"
-                :quality="props.quality" />
+                :src="coverImageUrl"
+                :alt="altText"
+                :provider="provider"
+                :quality="quality" />
             <icon-video-play
                 class="EsVideo-icon position-absolute abs-center"
                 width="74px"
