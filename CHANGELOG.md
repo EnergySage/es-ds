@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.0.2] - 2025-02-14
 
 - Fixed an issue in EsVideo where the video would fail to play sometimes
+- Temporarily removed "Your privacy choices" link in EsFooter
 
 ## [3.0.1] - 2025-02-07
 
