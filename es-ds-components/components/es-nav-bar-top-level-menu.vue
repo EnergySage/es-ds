@@ -51,6 +51,9 @@ export default {
         checkboxId() {
             return `menu-${this.name}`;
         },
+        resolvedEsNavBarLink() {
+            return resolveComponent('es-nav-bar-link');
+        },
     },
 };
 </script>
@@ -76,7 +79,7 @@ export default {
             <!-- mobile link and fly-out menu trigger -->
             <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
             <component
-                :is="link ? 'es-nav-bar-link' : 'label'"
+                :is="link ? resolvedEsNavBarLink : 'label'"
                 class="nav-link d-flex d-lg-none align-items-center w-100 h-100 px-0 py-lg-100 px-100 font-weight-bold justify-content-between"
                 :class="{ 'dropdown-label': !link }"
                 :for="link ? undefined : checkboxId"
