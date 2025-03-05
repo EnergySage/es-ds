@@ -16,7 +16,7 @@
         "format": "npm run format:prettier && npm run format:eslint"
     },
     "dependencies": {
-        "@energysage/es-ds-components": "^3.0.5",
+        "@energysage/es-ds-components": "^3.0.6",
         "@energysage/es-ds-styles": "^3.0.3",
         "@nuxt/image": "^1.8.0",
         "@nuxt/kit": "^3.13.1",
