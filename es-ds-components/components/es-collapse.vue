@@ -54,7 +54,7 @@ const onClick = ({ value }: { value: boolean }) => {
         :collapsed="!expanded"
         :header="expanded ? 'click to collapse content' : 'click to expand content'"
         :pt="{
-            header: 'align-items-center d-flex justify-content-between position-relative py-100',
+            header: 'd-flex flex-column justify-content-center position-relative py-100',
             icons: 'h-100 position-absolute w-100',
             root: border ? 'border-bottom border-top' : '',
             toggler: {
