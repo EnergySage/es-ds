@@ -184,7 +184,7 @@ export default (
                     link: '/blog/',
                     subtopics: [
                         {
-                            name: 'Solar is a bipartisan issue—here\'s why',
+                            name: "Solar is a bipartisan issue—here's why",
                             link: '/blog/you-should-support-solar-no-matter-who-you-vote-for/',
                         },
                         {
@@ -195,7 +195,7 @@ export default (
                 },
             ],
             featuredArticle: {
-                eyebrow: 'Editors\' pick',
+                eyebrow: "Editors' pick",
                 imageAlt: 'Solar panels on a house',
                 imageUrl: 'https://a-us.storyblok.com/f/1006159/500x375/c57c675005/are-solar-panels-worth-it-500w.png/m/500x0',
                 name: 'Are solar panels worth it?',
@@ -285,7 +285,7 @@ export default (
                 eyebrow: 'New research',
                 imageAlt: 'Home with solar panels',
                 imageUrl: 'https://a-us.storyblok.com/f/1006159/500x375/4c4f7febab/latest-market-intel-500w.png/m/500x0',
-                name: 'EnergySage Intel\'s latest Solar & Storage Marketplace Report',
+                name: "EnergySage Intel's latest Solar & Storage Marketplace Report",
                 url: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-19/`,
             },
         },
@@ -392,7 +392,7 @@ export default (
                 },
             ],
             featuredArticle: {
-                eyebrow: 'Editors\' pick',
+                eyebrow: "Editors' pick",
                 imageAlt: 'How much do solar panels cost?',
                 imageUrl: 'https://a-us.storyblok.com/f/1006159/2688x1513/83fcff9d64/how-much-do-solar-panels-cost_-thumb.jpg/m/500x0',
                 name: 'How much do solar panels cost?',
