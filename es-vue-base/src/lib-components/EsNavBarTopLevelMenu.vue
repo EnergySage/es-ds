@@ -31,7 +31,7 @@
                 <IconArrowRight
                     v-if="!link"
                     class="expand-icon"
-                    style="height: 24px;" />
+                    style="height: 24px" />
             </component>
             <input
                 v-if="!link"
@@ -74,7 +74,7 @@
                                 :class="{
                                     'col-lg-9': topics.length >= 3,
                                     'col-lg-9 col-xl-6 col-xxl-5': topics.length == 2,
-                                    'col-lg-4': topics.length == 1
+                                    'col-lg-4': topics.length == 1,
                                 }">
                                 <ul class="dropdown-list row w-auto">
                                     <!-- name of top-level menu (won't ever be a link) -->
@@ -86,11 +86,12 @@
                                                 class="menu-toggle nav-link align-items-center d-flex font-size-sm h-100 mb-0 px-0 text-uppercase w-100">
                                                 <IconArrowLeft
                                                     class="expand-icon"
-                                                    style="height: 24px;" />
+                                                    style="height: 24px" />
                                             </label>
                                         </div>
                                         <div class="col-8 align-self-center text-center py-100">
-                                            <span class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
+                                            <span
+                                                class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
                                         </div>
                                         <div class="col-2" />
                                     </li>
@@ -100,7 +101,7 @@
                                         :class="{
                                             'col-xl-4': topics.length >= 3,
                                             'col-lg-6': topics.length >= 2,
-                                            'col-lg-12': topics.length == 1
+                                            'col-lg-12': topics.length == 1,
                                         }"
                                         :home-name="homeName"
                                         :home-link="homeLink"
@@ -118,12 +119,12 @@
                             <!-- article link with image within menu -->
                             <es-nav-bar-featured-article
                                 class="col-lg-3"
-                                :eyebrow="featuredArticle.linkName"
-                                :link="featuredArticle.linkUrl"
+                                :eyebrow="featuredArticle.eyebrow"
+                                :link="featuredArticle.url"
                                 :new-tab="featuredArticle.newTab"
-                                :name="featuredArticle.lede"
-                                :image500="featuredArticle.image500"
-                                :image-alt="featuredArticle.imageAlt" />
+                                :name="featuredArticle.name"
+                                :image-alt="featuredArticle.imageAlt"
+                                :image-url="featuredArticle.imageUrl" />
                         </b-row>
                     </b-container>
                 </div>
