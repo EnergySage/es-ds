@@ -1,8 +1,8 @@
-// rooftop account links
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
     ACCOUNTS_DOMAIN = process.env.ACCOUNTS_DOMAIN || 'https://accounts.energysage.com',
-    REGISTER_LINK = process.env.REGISTER_LINK || `${ACCOUNTS_DOMAIN}/register/?next=${ES_DOMAIN}/register-thanks/`,
 ) => ({
     mobileAccountButtonAltText: 'Open account menu',
     loggedIn: {
@@ -49,7 +49,7 @@ export default (
         },
         createAccount: {
             name: 'Create an account',
-            link: REGISTER_LINK,
+            link: `${ACCOUNTS_DOMAIN}/register/?next=${ES_DOMAIN}/register-thanks/`,
         },
     },
 });

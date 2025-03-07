@@ -30,7 +30,7 @@ jobs:
                   check-latest: true
 
             - name: Cache node_modules 📦
-              uses: actions/cache@v3.3.1
+              uses: actions/cache@v4
               with:
                   path: ~/.npm
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -39,12 +39,12 @@ jobs:
 
             - name: Install dependencies 👨🏻‍💻
               run: |
-                make install
-                make update-peer-deps
-                make build-scss-pkg
-                make symlink
-                make build-vue-pkg
-                make symlink
+                  make install
+                  make update-peer-deps
+                  make build-scss-pkg
+                  make symlink
+                  make build-vue-pkg
+                  make symlink
 
             - name: Run linter 👀
               run: make lint
