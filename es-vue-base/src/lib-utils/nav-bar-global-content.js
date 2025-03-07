@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 import { NAV_BAR_ICONS } from './nav-bar-constants';
 
 export default (

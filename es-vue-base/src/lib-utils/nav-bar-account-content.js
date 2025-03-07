@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 export default (
     ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com',
     ACCOUNTS_DOMAIN = process.env.ACCOUNTS_DOMAIN || 'https://accounts.energysage.com',
