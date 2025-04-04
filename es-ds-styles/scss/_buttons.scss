@@ -122,6 +122,10 @@ fieldset:disabled a.btn {
   &:focus,
   &.focus {
     text-decoration: variables.$link-hover-decoration;
+  }
+
+  &:focus-visible,
+  &.focus-visible {
     outline: 0.125rem solid variables.$blue-500 !important;
   }
 
