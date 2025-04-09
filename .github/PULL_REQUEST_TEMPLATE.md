@@ -54,5 +54,4 @@ Please carefully read the contribution docs before creating a pull request
   - [ ] automated check with the WAVE browser extension
   - [ ] navigating by keyboard
   - [ ] using with a screen reader (e.g. VoiceOver on Safari)
-- [ ] I have included any Storyblok component schema updates.
 - [ ] I have updated any applicable documentation.
