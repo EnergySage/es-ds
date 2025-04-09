@@ -145,6 +145,27 @@ onMounted(async () => {
                     <ds-responsive-table-column :md="columnWidths.md[0]">
                         <template #name> Name </template>
                         <template #value>
+                            <code>to</code>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name> Default </template>
+                        <template #value>
+                            <code>undefined</code>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name> Description </template>
+                        <template #value>
+                            If card is intended to be an internal link within a Nuxt application, the URL destination
+                            should be passed in here.
+                        </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name> Name </template>
+                        <template #value>
                             <code>variant</code>
                         </template>
                     </ds-responsive-table-column>
