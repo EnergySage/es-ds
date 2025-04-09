@@ -156,7 +156,7 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Stacked with subtitle and zip code form</h2>
+            <h2>Stacked with subtitle and email form</h2>
             <p class="mb-200">
                 The stacked <code>variant</code> will always keep the heading and subtitle above the CTA section on all
                 breakpoints. This is useful when the form's text input needs to be wider, as in the case of an email
