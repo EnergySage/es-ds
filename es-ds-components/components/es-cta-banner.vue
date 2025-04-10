@@ -122,24 +122,16 @@ const xxlSecond = computed(() => {
 
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .bg-blue-300-radial-gradient {
     background:
-        radial-gradient(
-            44.92% 45.42% at 5.14% 6.4%,
-            rgba(133, 178, 255, 0) 0%,
-            var(--Primary-colors-Blue-300, #85b2ff) 100%
-        ),
-        #fff;
+        radial-gradient(44.92% 45.42% at 5.14% 6.4%, rgba(133, 178, 255, 0) 0%, variables.$blue-300 100%), #fff;
 
     @include breakpoints.media-breakpoint-up(md) {
         background:
-            radial-gradient(
-                95.61% 111.81% at -0.65% 0%,
-                rgba(133, 178, 255, 0) 0%,
-                var(--Primary-colors-Blue-300, #85b2ff) 100%
-            ),
-            #fff;
+            radial-gradient(95.61% 111.81% at -0.65% 0%, rgba(133, 178, 255, 0) 0%, variables.$blue-300 100%),
+            variables.$white;
     }
 }
 </style>
