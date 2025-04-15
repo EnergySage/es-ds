@@ -27,13 +27,34 @@ const props = defineProps({
 const op = ref<InstanceType<typeof OverlayPanel> | null>(null);
 const slots = useSlots();
 const hasTitle = computed(() => !!slots.title);
+const triggeredBy = ref('');
 const closePanel = () => {
     op.value?.hide();
 };
 const showPanel = (event: Event) => {
+    if (event.type !== 'mouseover') {
+        triggeredBy.value = event.type;
+    } else {
+        const overlayVisible = (op.value as any)?.visible as boolean | undefined;
+        if (!overlayVisible) {
+            triggeredBy.value = event.type;
+        }
+    }
     op.value?.show(event);
 };
+const addHoverListener = () => {
+    if (!props.triggers.split(' ').includes('hover')) return;
 
+    const targetElement = document.getElementById(props.target);
+    const overlayElement = (op.value as any)?.container as HTMLElement | undefined;
+    overlayElement?.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+            if (targetElement && !targetElement.matches(':hover') && triggeredBy.value === 'mouseover') {
+                closePanel();
+            }
+        }, 250);
+    });
+};
 onMounted(() => {
     const targetElement = document.getElementById(props.target);
     if (targetElement) {
@@ -41,6 +62,16 @@ onMounted(() => {
 
         for (const trigger of triggers) {
             targetElement.addEventListener(trigger, showPanel);
+
+            if (trigger === 'mouseover') {
+                targetElement.addEventListener('mouseleave', () => {
+                    setTimeout(() => {
+                        if (triggeredBy.value === 'mouseover' && !(op.value as any)?.container?.matches(':hover')) {
+                            closePanel();
+                        }
+                    }, 250);
+                });
+            }
         }
     }
 });
@@ -80,7 +111,8 @@ watch(
                 leaveActiveClass: 'es-popover-leave-active',
                 leaveToClass: 'es-popover-leave-to',
             },
-        }">
+        }"
+        @show="addHoverListener">
         <div class="arrow"></div>
         <template v-if="hasTitle">
             <!-- Title slot content -->

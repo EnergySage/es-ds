@@ -211,6 +211,93 @@ onMounted(async () => {
                     </es-popover>
                 </div>
             </div>
+            <div class="my-500">
+                <h2>Hover trigger</h2>
+                <div>
+                    <!-- eslint-disable vuejs-accessibility/label-has-for -->
+                    <label>
+                        With title
+                        <a
+                            id="hoverTitleTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <icon-info
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="hoverTitleTarget"
+                        variant="dark"
+                        triggers="hover focus">
+                        <template #title> My title </template>
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
+                            <a
+                                class="mt-50 d-block cursor-pointer-hover"
+                                href="https://communitysolar.energysage.com/"
+                                target="_blank"
+                                >Learn more</a
+                            >
+                        </p>
+                    </es-popover>
+                </div>
+                <div>
+                    <label>
+                        No title
+                        <a
+                            id="hoverNoTitleTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <icon-info
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="hoverNoTitleTarget"
+                        variant="dark"
+                        triggers="hover focus">
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
+                            <a
+                                class="mt-50 d-block cursor-pointer-hover"
+                                href="https://communitysolar.energysage.com/"
+                                target="_blank"
+                                >Learn more</a
+                            >
+                        </p>
+                    </es-popover>
+                </div>
+                <div>
+                    <label>
+                        With button
+                        <a
+                            id="hoverButtonTarget"
+                            class="p-0 text-gray-700 cursor-pointer-hover"
+                            tabindex="0">
+                            <icon-info
+                                width="16px"
+                                height="16px" />
+                        </a>
+                    </label>
+                    <es-popover
+                        target="hoverButtonTarget"
+                        variant="dark"
+                        triggers="hover focus">
+                        <template #title> My title </template>
+                        <p class="mb-0">
+                            Install solar panels through this program and get $250 cash back.
+                            <es-button
+                                size="sm"
+                                class="mt-100 d-block"
+                                variant="dark-bg">
+                                Small button
+                            </es-button>
+                        </p>
+                    </es-popover>
+                </div>
+            </div>
             <div class="mb-500">
                 <h2>EsPopover props</h2>
                 <ds-prop-table
