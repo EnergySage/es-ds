@@ -2,6 +2,7 @@
 @use "functions";
 @use "mixins/border-radius";
 @use "mixins/box-shadow";
+@use "mixins/breakpoints";
 @use "mixins/reset-text";
 @use "variables";
 @use "vendor/rfs";
@@ -76,6 +77,10 @@
       bottom: -(variables.$popover-arrow-height) - variables.$popover-border-width + 0.1rem;
       left: 0;
       clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+ 
+      @include breakpoints.media-breakpoint-down("xs") {
+          left: calc(var(--overlayArrowLeft) - 0.75rem);     
+      }      
 
       &::after {
         bottom: variables.$popover-border-width;
@@ -100,6 +105,10 @@
       top: -(variables.$popover-arrow-height) - variables.$popover-border-width + 0.1rem;
       left: 0;
       clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+
+      @include breakpoints.media-breakpoint-down("xs") {
+        left: calc(var(--overlayArrowLeft) - 0.75rem);
+      }      
 
       &::after {
         top: variables.$popover-border-width;
