@@ -52,7 +52,8 @@ const onClick = ({ value }: { value: boolean }) => {
 <template>
     <panel
         :collapsed="!expanded"
-        :header="expanded ? 'click to collapse content' : 'click to expand content'"
+        :header="''"
+        :toggle-button-props="{ 'aria-labelledby': 'collapse-header'}"
         :pt="{
             header: 'd-flex flex-column justify-content-center position-relative py-100',
             icons: 'h-100 position-absolute w-100',
@@ -74,7 +75,9 @@ const onClick = ({ value }: { value: boolean }) => {
         toggleable
         @toggle="onClick">
         <template #header>
-            <slot name="title" />
+            <div id="collapse-header">
+                <slot name="title" />
+            </div>
         </template>
         <template #togglericon>
             <icon-chevron-down />
