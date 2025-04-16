@@ -48,6 +48,8 @@ const addHoverListener = () => {
     const targetElement = document.getElementById(props.target);
     const overlayElement = (op.value as any)?.container as HTMLElement | undefined;
     overlayElement?.addEventListener('mouseleave', () => {
+        // Add a 0.25s delay before closing the panel to ensure the user
+        // can hover over the target element before the panel closes
         setTimeout(() => {
             if (targetElement && !targetElement.matches(':hover') && triggeredBy.value === 'mouseover') {
                 closePanel();
@@ -65,6 +67,8 @@ onMounted(() => {
 
             if (trigger === 'mouseover') {
                 targetElement.addEventListener('mouseleave', () => {
+                    // Add a 0.25s delay before closing the panel to ensure the user
+                    // can hover over the popover body before it closes
                     setTimeout(() => {
                         if (triggeredBy.value === 'mouseover' && !(op.value as any)?.container?.matches(':hover')) {
                             closePanel();
