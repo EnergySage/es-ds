@@ -79,7 +79,7 @@
       clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
  
       @include breakpoints.media-breakpoint-down("xs") {
-          left: calc(var(--overlayArrowLeft) - 0.75rem);     
+        left: calc(var(--overlayArrowLeft) - 0.75rem);     
       }      
 
       &::after {
