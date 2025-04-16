@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Panel from 'primevue/panel';
-import { useId } from '#imports';
 
 const emit = defineEmits(['toggled', 'userClick']);
 
