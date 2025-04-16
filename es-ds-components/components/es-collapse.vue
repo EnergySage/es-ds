@@ -2,7 +2,6 @@
 import Panel from 'primevue/panel';
 import { useId } from '#imports';
 
-
 const emit = defineEmits(['toggled', 'userClick']);
 
 const model = defineModel<boolean>();
