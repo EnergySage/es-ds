@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { OverlayPanelState } from 'primevue/overlaypanel';
 import OverlayPanel from 'primevue/overlaypanel';
 
 const props = defineProps({
@@ -35,7 +36,7 @@ const showPanel = (event: Event) => {
     if (event.type !== 'mouseover') {
         triggeredBy.value = event.type;
     } else {
-        const overlayVisible = (op.value as any)?.visible as boolean | undefined;
+        const overlayVisible = (op.value as unknown as OverlayPanelState)?.visible;
         if (!overlayVisible) {
             triggeredBy.value = event.type;
         }
