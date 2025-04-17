@@ -22,6 +22,21 @@ withDefaults(defineProps<IProps>(), {
 const emit = defineEmits(['update:show']);
 
 const deviceSupportsTouch = ref(false);
+const internalShow = ref(false);
+
+// provide a workaround for the case where scroll-flipping causes the tooltip
+// to get in a state where it won't reopen on hover (allow user to click to open)
+const handleClick = () => {
+    internalShow.value = true;
+    emit('update:show', true);
+};
+
+// keep the internal boolean up to date when the state changes
+// and also emit the update event up and out
+const handleUpdateOpen = (val: boolean) => {
+    internalShow.value = val;
+    emit('update:show', val);
+};
 
 onMounted(() => {
     // detect if the device supports touch events or not
@@ -36,11 +51,12 @@ onMounted(() => {
         :delay-duration="delayDuration"
         :disable-closing-trigger="true">
         <tooltip-root
-            :open="show"
-            @update:open="(val) => emit('update:show', val)">
+            :open="show || internalShow"
+            @update:open="handleUpdateOpen">
             <tooltip-trigger
                 class="es-tooltip-trigger p-0"
-                :class="{ [triggerClass]: true }">
+                :class="{ [triggerClass]: true }"
+                @click="handleClick">
                 <slot name="trigger" />
             </tooltip-trigger>
             <tooltip-portal>
