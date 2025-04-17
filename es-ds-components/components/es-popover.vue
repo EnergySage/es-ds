@@ -2,6 +2,7 @@
 import { PopoverArrow, PopoverClose, PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from 'reka-ui';
 
 interface IProps {
+    collisionPadding?: number | Partial<Record<'top' | 'right' | 'bottom' | 'left', number>>;
     side?: 'top' | 'right' | 'bottom' | 'left';
     triggerClass?: string;
     triggerDescription?: string;
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
+    collisionPadding: 0,
     side: 'top',
     triggerClass: '',
     triggerDescription: 'More information',
@@ -31,6 +33,7 @@ withDefaults(defineProps<IProps>(), {
                     'text-white': variant === 'dark',
                     'es-popover-content--light': variant === 'light',
                 }"
+                :collision-padding="collisionPadding"
                 :side="side">
                 <popover-close
                     class="es-popover-close position-absolute"
@@ -92,6 +95,7 @@ withDefaults(defineProps<IProps>(), {
     box-shadow: variables.$popover-box-shadow;
     padding: variables.$popover-header-padding-y variables.$popover-header-padding-x;
     width: 250px;
+    z-index: variables.$zindex-popover;
 }
 
 :deep(.es-popover-content[data-state='open']) {

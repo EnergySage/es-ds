@@ -5,6 +5,12 @@ const docCode = ref('');
 
 const propTableRows = [
     [
+        'collisionPadding',
+        'number or object',
+        '0',
+        'The distance in pixels from the viewport edges where collision detection should occur. Accepts a number (same for all sides), or a partial padding object, for example: { top: 20, left: 20 }.',
+    ],
+    [
         'side',
         'String',
         "'top'",
@@ -186,6 +192,31 @@ onMounted(async () => {
                                 About EnergySage
                             </es-button>
                         </template>
+                    </es-popover>
+                </p>
+            </div>
+
+            <div class="my-500">
+                <h2>Collision padding</h2>
+                <p>
+                    This example shows how to tell the popover that there is a sticky element it should treat as the
+                    edge of visibility and flip the popover to the opposite side when reached. This is useful when
+                    there is a sticky navbar or CTA banner on the page and you want to ensure the popover remains
+                    visible and doesn't appear partially hidden underneath it.
+                </p>
+                <p>
+                    This popover will flip when it gets 100px away from the top of the viewport
+                    <es-popover
+                        :collision-padding="{ top: 100 }"
+                        trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <p class="mb-0">
+                            This is the body text for the popover and it can be long or short as needed.
+                        </p>
                     </es-popover>
                 </p>
             </div>

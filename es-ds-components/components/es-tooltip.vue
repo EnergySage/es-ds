@@ -2,6 +2,7 @@
 import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from 'reka-ui';
 
 interface IProps {
+    collisionPadding?: number | Partial<Record<'top' | 'right' | 'bottom' | 'left', number>>;
     delayDuration?: number;
     side?: 'top' | 'right' | 'bottom' | 'left';
     triggerClass?: string;
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 withDefaults(defineProps<IProps>(), {
+    collisionPadding: 0,
     delayDuration: 0,
     side: 'top',
     triggerClass: '',
@@ -41,6 +43,7 @@ onMounted(() => {
                         'text-white': variant === 'dark',
                         'es-tooltip-content--light': variant === 'light',
                     }"
+                    :collision-padding="collisionPadding"
                     :side="side">
                     <tooltip-arrow
                         class="es-tooltip-arrow"
@@ -55,6 +58,7 @@ onMounted(() => {
     </tooltip-provider>
     <es-popover
         v-else
+        :collision-padding="collisionPadding"
         :side="side"
         :trigger-class="triggerClass"
         :variant="variant">
@@ -102,6 +106,7 @@ onMounted(() => {
     box-shadow: variables.$popover-box-shadow;
     padding: variables.$popover-header-padding-y variables.$popover-header-padding-x;
     width: 250px;
+    z-index: variables.$zindex-popover;
 }
 
 :deep(.es-tooltip-content[data-state='open']) {

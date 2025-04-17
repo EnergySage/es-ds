@@ -5,6 +5,12 @@ const docCode = ref('');
 
 const propTableRows = [
     [
+        'collisionPadding',
+        'number or object',
+        '0',
+        'The distance in pixels from the viewport edges where collision detection should occur. Accepts a number (same for all sides), or a partial padding object, for example: { top: 20, left: 20 }.',
+    ],
+    [
         'delayDuration',
         'number',
         '0',
@@ -25,7 +31,7 @@ const propTableRows = [
     ],
 ];
 const propTableWidths = {
-    md: ['2', '3', '2', '5'],
+    md: ['3', '2', '2', '5'],
 };
 
 const slotTableRows = [['trigger', 'n/a', 'Required. The icon and/or content to put inside the trigger button.']];
@@ -165,6 +171,31 @@ onMounted(async () => {
                     This tooltip will appear after 500ms
                     <es-tooltip
                         :delay-duration="500"
+                        trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <p class="mb-0">
+                            This is the body text for the tooltip and it can be long or short as needed.
+                        </p>
+                    </es-tooltip>
+                </p>
+            </div>
+
+            <div class="my-500">
+                <h2>Collision padding</h2>
+                <p>
+                    This example shows how to tell the tooltip that there is a sticky element it should treat as the
+                    edge of visibility and flip the tooltip to the opposite side when reached. This is useful when
+                    there is a sticky navbar or CTA banner on the page and you want to ensure the tooltip remains
+                    visible and doesn't appear partially hidden underneath it.
+                </p>
+                <p>
+                    This tooltip will flip when it gets 100px away from the top of the viewport
+                    <es-tooltip
+                        :collision-padding="{ top: 100 }"
                         trigger-class="ml-25">
                         <template #trigger>
                             <icon-info
