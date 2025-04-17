@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import TabPanel from 'primevue/tabpanel';
 import TabView from 'primevue/tabview';
+import { Comment } from 'vue';
 
 // allow use of v-model on this component
 const model = defineModel<number>();
 
-// get the list of elements provided as children to the default slot
-const initialChildren = useSlots().default?.() || [];
+// get the list of elements provided as children to the default slot - filtering out comments
+const rawChildren = useSlots().default?.() || [];
+const initialChildren = rawChildren.filter((child) => child.type !== Comment);
+
 const panels: any[] = [];
 initialChildren.forEach((child) => {
     // unless this has a v-for element and we instead need to access its children
