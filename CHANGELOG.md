@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 3.0.11 - 2025-04-17
+
+- Fixed an issue with EsTabs where it would fail to render if a code comment was a child of EsTabs
+- Fixed an issue where screen readers would announce an incorrect header for the EsCollapse toggle
+- Fixed an issue with EsVideo where it would reject a YouTube embed URL if it contained an underscore
+
 ## 3.0.10 - 2025-04-10
 
 - The `dark` prop on EsCtaBanner is now deprecated in favor of a new `background` prop
