@@ -41,6 +41,7 @@ graph TB
     end
     Y(nuxt3)
     Z(primevue) --> C
+    X(reka-ui) --> C
     Y-->D
 ```
 
@@ -60,7 +61,7 @@ in a future version.
 
 **es-ds-components**
 - [es-ds-components](./es-ds-components/) contains Vue 3 components for use in Nuxt 3 projects.
-It is primarily based on [PrimeVue](https://primevue.org/), with some customizations specific to EnergySage.
+It is primarily based on [PrimeVue](https://primevue.org/) and [Reka UI](https://reka-ui.com/), with some customizations specific to EnergySage.
 
 **es-ds-docs**
 - This is the design system documentation site powered by Nuxt 3.
