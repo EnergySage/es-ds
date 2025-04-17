@@ -16,6 +16,7 @@ const COMPONENT_NAME_URLS: any = {
     popover: '/molecules/popover',
     textarea: '/molecules/textarea',
     'text-input': '/molecules/text-input',
+    tooltip: '/molecules/tooltip',
     'verification-code': '/molecules/verification-code',
 };
 

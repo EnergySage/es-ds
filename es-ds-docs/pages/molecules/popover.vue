@@ -4,13 +4,28 @@ const compCode = ref('');
 const docCode = ref('');
 
 const propTableRows = [
-    ['triggers', 'String', "'focus'", 'Specifies different triggers for the popover, space separated'],
-    ['show', 'Boolean', 'false', 'When true, the popover will become visible'],
-    ['variant', 'String', "'dark'", 'Defines variant of the popover - either dark or light'],
-    ['target', 'String', 'n/a', 'Required. Defines which element makes the popover show when triggered'],
+    [
+        'side',
+        'String',
+        "'top'",
+        "Specifies on which side of the trigger button the popover should attempt to appear. Can be 'top', 'right', 'bottom', or 'left'.",
+    ],
+    ['triggerClass', 'String', "''", 'Classes, if any, that should be applied to the trigger button.'],
+    [
+        'triggerDescription',
+        'String',
+        "'More information'",
+        'A description of the trigger button that will be read out to screen readers upon reaching the button.',
+    ],
+    [
+        'variant',
+        'String',
+        "'dark'",
+        "Determines whether the popover appears with a darker or lighter background. Can be 'dark' or 'light'.",
+    ],
 ];
 const propTableWidths = {
-    md: ['2', '3', '2', '5'],
+    md: ['3', '2', '2', '5'],
 };
 
 onMounted(async () => {
@@ -32,191 +47,216 @@ onMounted(async () => {
             <p>
                 Extended from
                 <nuxt-link
-                    href="https://v3.primevue.org/overlaypanel/"
+                    href="https://reka-ui.com/docs/components/popover"
                     target="_blank">
-                    PrimeVue OverlayPanel
+                    Reka UI Popover
                 </nuxt-link>
             </p>
+            <p>
+                A popover is opened on tap or click and displays a speech-bubble-like popup with some additional
+                information. For keyboard users and screen readers, it acts like a modal dialog in that it traps focus
+                until you close it. This is ideal for accessibility — especially when the popover contains interactive
+                elements like a link or button — so that users can browse the full contents of the popover before
+                continuing down the page.
+            </p>
+
             <div class="my-500">
-                <h2>Dark variant</h2>
-                <div>
-                    <!-- eslint-disable vuejs-accessibility/label-has-for -->
-                    <label>
-                        With title
-                        <a
-                            id="darkTitleTarget"
-                            class="p-0 text-gray-700 cursor-pointer-hover"
-                            tabindex="0">
+                <h2>Direction</h2>
+                <p>
+                    Using the <code>side</code> prop allows you to control on which side of the triggering element the
+                    popover will attempt to appear. If there is not enough room on that side, the popover will switch
+                    to the opposite side.
+                </p>
+                <p>
+                    Positioned on top (default)
+                    <es-popover trigger-class="ml-25">
+                        <template #trigger>
                             <icon-info
-                                width="16px"
-                                height="16px" />
-                        </a>
-                    </label>
-                    <es-popover
-                        target="darkTitleTarget"
-                        variant="dark">
-                        <template #title> My title </template>
+                                width="18px"
+                                height="18px" />
+                        </template>
                         <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
-                            <a
-                                class="mt-50 d-block cursor-pointer-hover"
-                                href="https://communitysolar.energysage.com/"
-                                target="_blank"
-                                >Learn more</a
-                            >
+                            This is the body text for the popover and it can be long or short as needed.
                         </p>
                     </es-popover>
-                </div>
-                <div>
-                    <label>
-                        No title
-                        <a
-                            id="darkNoTitleTarget"
-                            class="p-0 text-gray-700 cursor-pointer-hover"
-                            tabindex="0">
-                            <icon-info
-                                width="16px"
-                                height="16px" />
-                        </a>
-                    </label>
+                </p>
+                <p>
+                    Positioned on right
                     <es-popover
-                        target="darkNoTitleTarget"
-                        variant="dark">
+                        side="right"
+                        trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
                         <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
-                            <a
-                                class="mt-50 d-block cursor-pointer-hover"
-                                href="https://communitysolar.energysage.com/"
-                                target="_blank"
-                                >Learn more</a
-                            >
+                            This is the body text for the popover and it can be long or short as needed.
                         </p>
                     </es-popover>
-                </div>
-                <div>
-                    <label>
-                        With button
-                        <a
-                            id="darkButtonTarget"
-                            class="p-0 text-gray-700 cursor-pointer-hover"
-                            tabindex="0">
-                            <icon-info
-                                width="16px"
-                                height="16px" />
-                        </a>
-                    </label>
+                </p>
+                <p>
+                    Positioned on bottom
                     <es-popover
-                        target="darkButtonTarget"
-                        variant="dark">
-                        <template #title> My title </template>
+                        side="bottom"
+                        trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
                         <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
-                            <es-button
-                                size="sm"
-                                class="mt-100 d-block"
-                                variant="dark-bg">
-                                Small button
-                            </es-button>
+                            This is the body text for the popover and it can be long or short as needed.
                         </p>
                     </es-popover>
-                </div>
+                </p>
+                <p>
+                    Positioned on left
+                    <es-popover
+                        side="left"
+                        trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <p class="mb-0">
+                            This is the body text for the popover and it can be long or short as needed.
+                        </p>
+                    </es-popover>
+                </p>
             </div>
+
+            <div class="my-500">
+                <h2>Headings and CTAs</h2>
+                <p>
+                    These examples show the recommended styling for headings and how to insert a link or button into
+                    the bottom of the popover. Since the popover has padding on the right side to make room for the
+                    close button, the <code>cta</code> slot allows you to insert a link or button at the bottom of the
+                    popover that can go full width without that padding.
+                </p>
+                <p>
+                    This popover contains a heading and a link
+                    <es-popover trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <h3 class="font-size-100 mb-50 text-white">This is a heading</h3>
+                        <p class="mb-50">
+                            This is the body text for the popover and it can be long or short as needed.
+                        </p>
+                        <template #cta>
+                            <a
+                                class="text-white"
+                                href="https://www.energysage.com/"
+                                target="_blank">
+                                Learn about EnergySage
+                            </a>
+                        </template>
+                    </es-popover>
+                </p>
+                <p>
+                    This popover contains a heading and a button
+                    <es-popover trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <h3 class="font-size-100 mb-50 text-white">This is a heading</h3>
+                        <p>This is the body text for the popover and it can be long or short as needed.</p>
+                        <template #cta>
+                            <es-button
+                                class="w-100"
+                                href="https://www.energysage.com/"
+                                outline
+                                target="_blank"
+                                variant="dark-bg">
+                                About EnergySage
+                            </es-button>
+                        </template>
+                    </es-popover>
+                </p>
+            </div>
+
             <div class="bg-dark-blue p-100 my-450 rounded-lg text-white">
                 <h2 class="text-white">Light variant</h2>
+                <p>Use the light <code>variant</code> if the popover will appear against a dark background.</p>
                 <p>
-                    This popover is only to be used in a wizard like userflow with a dark background. If you have long
-                    content on a page; outside of a wizard, we recommend that you utilize a modal instead.
+                    This popover only contains text
+                    <es-popover
+                        trigger-class="ml-25"
+                        variant="light">
+                        <template #trigger>
+                            <icon-info
+                                class="text-white"
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <p class="mb-0">
+                            This is the body text for the popover and it can be long or short as needed.
+                        </p>
+                    </es-popover>
                 </p>
-                <div>
-                    <!-- eslint-disable vuejs-accessibility/label-has-for -->
-                    <label>
-                        With title
-                        <a
-                            id="lightTitleTarget"
-                            class="p-0 text-gray-700 cursor-pointer-hover"
-                            tabindex="0">
+                <p>
+                    This popover contains a heading and a link
+                    <es-popover
+                        trigger-class="ml-25"
+                        variant="light">
+                        <template #trigger>
                             <icon-info
                                 class="text-white"
-                                width="16px"
-                                height="16px" />
-                        </a>
-                    </label>
-                    <es-popover
-                        target="lightTitleTarget"
-                        variant="light">
-                        <template #title> My title </template>
-                        <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
-                            <a
-                                class="mt-50 d-block cursor-pointer-hover"
-                                href="https://communitysolar.energysage.com/"
-                                target="_blank"
-                                >Learn more</a
-                            >
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <h3 class="font-size-100 mb-50">This is a heading</h3>
+                        <p class="mb-50">
+                            This is the body text for the popover and it can be long or short as needed.
                         </p>
-                    </es-popover>
-                </div>
-                <div>
-                    <label>
-                        No title
-                        <a
-                            id="lightNoTitleTarget"
-                            class="p-0 text-gray-700 cursor-pointer-hover"
-                            tabindex="0">
-                            <icon-info
-                                class="text-white"
-                                width="16px"
-                                height="16px" />
-                        </a>
-                    </label>
-                    <es-popover
-                        target="lightNoTitleTarget"
-                        variant="light">
-                        <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
+                        <template #cta>
                             <a
-                                class="mt-50 d-block cursor-pointer-hover"
-                                href="https://communitysolar.energysage.com/"
-                                target="_blank"
-                                >Learn more</a
-                            >
-                        </p>
+                                href="https://www.energysage.com/"
+                                target="_blank">
+                                Learn about EnergySage
+                            </a>
+                        </template>
                     </es-popover>
-                </div>
-                <div>
-                    <label>
-                        With button
-                        <a
-                            id="lightButtonTarget"
-                            class="p-0 text-gray-700 cursor-pointer-hover"
-                            tabindex="0">
+                </p>
+                <p>
+                    This popover contains a heading and a button
+                    <es-popover
+                        trigger-class="ml-25"
+                        variant="light">
+                        <template #trigger>
                             <icon-info
                                 class="text-white"
-                                width="16px"
-                                height="16px" />
-                        </a>
-                    </label>
-                    <es-popover
-                        target="lightButtonTarget"
-                        variant="light">
-                        <template #title> My title </template>
-                        <p class="mb-0">
-                            Install solar panels through this program and get $250 cash back.
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <h3 class="font-size-100 mb-50">This is a heading</h3>
+                        <p>This is the body text for the popover and it can be long or short as needed.</p>
+                        <template #cta>
                             <es-button
-                                size="sm"
-                                class="mt-100 d-block">
-                                Small button
+                                class="w-100"
+                                href="https://www.energysage.com/"
+                                outline
+                                target="_blank">
+                                About EnergySage
                             </es-button>
-                        </p>
+                        </template>
                     </es-popover>
-                </div>
+                </p>
             </div>
+
             <div class="mb-500">
                 <h2>EsPopover props</h2>
                 <ds-prop-table
                     :rows="propTableRows"
                     :widths="propTableWidths" />
             </div>
+
             <ds-doc-source
                 :comp-code="compCode"
                 comp-source="es-ds-components/components/es-popover.vue"
