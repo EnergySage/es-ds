@@ -16,6 +16,7 @@ const propTableRows = [
         '0',
         'The delay in milliseconds between hover and the tooltip appearing. Only applies on non-touch devices.',
     ],
+    ['show', 'boolean or undefined', 'undefined', 'The controlled open state of the popover.'],
     [
         'side',
         'String',
@@ -35,6 +36,8 @@ const propTableWidths = {
 };
 
 const slotTableRows = [['trigger', 'n/a', 'Required. The icon and/or content to put inside the trigger button.']];
+
+const showControlledTooltip: Ref<boolean | undefined> = ref(undefined);
 
 onMounted(async () => {
     if ($prism) {
@@ -207,6 +210,46 @@ onMounted(async () => {
                         </p>
                     </es-tooltip>
                 </p>
+            </div>
+
+            <div class="my-500">
+                <h2>External control</h2>
+                <p>
+                    This example shows how to control the visibility of the tooltip from an external source. It can
+                    still be opened and closed via hover and un-hover, but the buttons also have the ability to show
+                    and hide the tooltip.
+                </p>
+                <div>
+                    This tooltip is controlled by the show/hide buttons
+                    <es-tooltip
+                        :show="showControlledTooltip"
+                        trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <p class="mb-0">
+                            This is the body text for the tooltip and it can be long or short as needed.
+                        </p>
+                    </es-tooltip>
+                    <p class="mt-100">
+                        <es-button
+                            class="mb-50 mr-50"
+                            outline
+                            size="sm"
+                            @click="showControlledTooltip = true">
+                            Show tooltip
+                        </es-button>
+                        <es-button
+                            class="mb-50 mr-50"
+                            outline
+                            size="sm"
+                            @click="showControlledTooltip = false">
+                            Hide tooltip
+                        </es-button>
+                    </p>
+                </div>
             </div>
 
             <div class="bg-dark-blue p-100 my-450 rounded-lg text-white">

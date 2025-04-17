@@ -4,6 +4,7 @@ import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRo
 interface IProps {
     collisionPadding?: number | Partial<Record<'top' | 'right' | 'bottom' | 'left', number>>;
     delayDuration?: number;
+    show?: boolean | undefined;
     side?: 'top' | 'right' | 'bottom' | 'left';
     triggerClass?: string;
     variant?: 'light' | 'dark';
@@ -12,6 +13,7 @@ interface IProps {
 withDefaults(defineProps<IProps>(), {
     collisionPadding: 0,
     delayDuration: 0,
+    show: undefined,
     side: 'top',
     triggerClass: '',
     variant: 'dark',
@@ -30,7 +32,7 @@ onMounted(() => {
     <tooltip-provider
         v-if="!deviceSupportsTouch"
         :delay-duration="delayDuration">
-        <tooltip-root>
+        <tooltip-root :open="show">
             <tooltip-trigger
                 class="es-tooltip-trigger p-0"
                 :class="{ [triggerClass]: true }">
@@ -59,6 +61,7 @@ onMounted(() => {
     <es-popover
         v-else
         :collision-padding="collisionPadding"
+        :show="show"
         :side="side"
         :trigger-class="triggerClass"
         :variant="variant">

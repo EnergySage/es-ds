@@ -3,6 +3,7 @@ import { PopoverArrow, PopoverClose, PopoverContent, PopoverPortal, PopoverRoot,
 
 interface IProps {
     collisionPadding?: number | Partial<Record<'top' | 'right' | 'bottom' | 'left', number>>;
+    show?: boolean | undefined;
     side?: 'top' | 'right' | 'bottom' | 'left';
     triggerClass?: string;
     triggerDescription?: string;
@@ -11,6 +12,7 @@ interface IProps {
 
 withDefaults(defineProps<IProps>(), {
     collisionPadding: 0,
+    show: undefined,
     side: 'top',
     triggerClass: '',
     triggerDescription: 'More information',
@@ -19,7 +21,7 @@ withDefaults(defineProps<IProps>(), {
 </script>
 
 <template>
-    <popover-root>
+    <popover-root :open="show">
         <popover-trigger
             class="es-popover-trigger p-0"
             :class="{ [triggerClass]: true }">
