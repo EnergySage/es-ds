@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 3.1.0 - 2025-04-17
+
+- ***BREAKING CHANGE:*** The `target` and `triggers` props of EsPopover have been removed and a `trigger` slot is now available
+- EsPopover is now based on [Reka UI Popover](https://reka-ui.com/docs/components/popover) instead of [PrimeVue OverlayPanel](https://v3.primevue.org/overlaypanel/)
+- A new EsTooltip component has been added based on [Reka UI Tooltip](https://reka-ui.com/docs/components/tooltip), that will fall back to the EsPopover implementation on touch devices
+- Fixed an issue where EsPopover was not accessible by screen readers or keyboard
+- Fixed an issue where EsPopover positioning was incorrect if the triggering element was too close to the right edge of the viewport
+- EsPopover now supports left, right, top, and bottom positioning relative to the trigger button
+- EsPopover background color has been updated from black to dark blue
+- EsPopover arrow is now rounded
+- EsPopover can now accept a `cta` slot to enable a link or button to appear full width within the popover
+- EsPopover will now automatically flip to the opposite side of the triggering element automatically while the popover is open if a scroll or other movement collides with the viewport edge
+- EsPopover can now have a collision padding set so it will flip a certain amount of pixels prior to reaching the viewport edge (e.g. in case of a sticky nav bar)
+- Added Tooltip within the list of components referenced on the Corners docs page
+- Removed the old, now-unused popover styles from es-ds-styles
+
 ## 3.0.11 - 2025-04-17
 
 - Fixed an issue with EsTabs where it would fail to render if a code comment was a child of EsTabs
