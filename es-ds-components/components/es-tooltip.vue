@@ -31,7 +31,8 @@ onMounted(() => {
 <template>
     <tooltip-provider
         v-if="!deviceSupportsTouch"
-        :delay-duration="delayDuration">
+        :delay-duration="delayDuration"
+        :disable-closing-trigger="true">
         <tooltip-root :open="show">
             <tooltip-trigger
                 class="es-tooltip-trigger p-0"
