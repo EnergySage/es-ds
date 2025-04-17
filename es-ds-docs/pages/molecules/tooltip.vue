@@ -37,6 +37,10 @@ const propTableWidths = {
 
 const slotTableRows = [['trigger', 'n/a', 'Required. The icon and/or content to put inside the trigger button.']];
 
+const eventTableRows = [
+    ['update:show', 'boolean', 'Event handler called when the open state of the tooltip changes.'],
+];
+
 const showControlledTooltip: Ref<boolean | undefined> = ref(undefined);
 
 const handleUpdateShow = (val: boolean) => {
@@ -309,6 +313,16 @@ onMounted(async () => {
                 <ds-prop-table
                     :columns="['Name', 'Default', 'Description']"
                     :rows="slotTableRows"
+                    :widths="{
+                        md: ['3', '4', '5'],
+                    }" />
+            </div>
+
+            <div class="mb-500">
+                <h2>EsTooltip events</h2>
+                <ds-prop-table
+                    :columns="['Name', 'Type', 'Description']"
+                    :rows="eventTableRows"
                     :widths="{
                         md: ['3', '4', '5'],
                     }" />

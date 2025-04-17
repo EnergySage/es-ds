@@ -69,7 +69,8 @@ onMounted(() => {
         :show="show"
         :side="side"
         :trigger-class="triggerClass"
-        :variant="variant">
+        :variant="variant"
+        @update:show="(val) => emit('update:show', val)">
         <template #trigger>
             <slot name="trigger" />
         </template>
