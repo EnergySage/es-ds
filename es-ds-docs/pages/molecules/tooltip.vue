@@ -4,7 +4,12 @@ const compCode = ref('');
 const docCode = ref('');
 
 const propTableRows = [
-    ['delayDuration', 'number', '0', 'The delay in milliseconds between hover and the tooltip appearing.'],
+    [
+        'delayDuration',
+        'number',
+        '0',
+        'The delay in milliseconds between hover and the tooltip appearing. Only applies on non-touch devices.',
+    ],
     [
         'side',
         'String',
@@ -22,6 +27,8 @@ const propTableRows = [
 const propTableWidths = {
     md: ['2', '3', '2', '5'],
 };
+
+const slotTableRows = [['trigger', 'n/a', 'Required. The icon and/or content to put inside the trigger button.']];
 
 onMounted(async () => {
     if ($prism) {
@@ -142,7 +149,29 @@ onMounted(async () => {
                                 height="18px" />
                         </template>
                         <h3 class="font-size-100 mb-50 text-white">This is a heading</h3>
-                        <p class="mb-50">
+                        <p class="mb-0">
+                            This is the body text for the tooltip and it can be long or short as needed.
+                        </p>
+                    </es-tooltip>
+                </p>
+            </div>
+
+            <div class="my-500">
+                <h2>Delay</h2>
+                <p>
+                    This example shows how to delay the appearance of the tooltip. Only applies on non-touch devices.
+                </p>
+                <p>
+                    This tooltip will appear after 500ms
+                    <es-tooltip
+                        :delay-duration="500"
+                        trigger-class="ml-25">
+                        <template #trigger>
+                            <icon-info
+                                width="18px"
+                                height="18px" />
+                        </template>
+                        <p class="mb-0">
                             This is the body text for the tooltip and it can be long or short as needed.
                         </p>
                     </es-tooltip>
@@ -180,7 +209,7 @@ onMounted(async () => {
                                 height="18px" />
                         </template>
                         <h3 class="font-size-100 mb-50">This is a heading</h3>
-                        <p class="mb-50">
+                        <p class="mb-0">
                             This is the body text for the tooltip and it can be long or short as needed.
                         </p>
                     </es-tooltip>
@@ -193,6 +222,17 @@ onMounted(async () => {
                     :rows="propTableRows"
                     :widths="propTableWidths" />
             </div>
+
+            <div class="mb-500">
+                <h2>EsTooltip slots</h2>
+                <ds-prop-table
+                    :columns="['Name', 'Default', 'Description']"
+                    :rows="slotTableRows"
+                    :widths="{
+                        md: ['3', '4', '5'],
+                    }" />
+            </div>
+
             <ds-doc-source
                 :comp-code="compCode"
                 comp-source="es-ds-components/components/es-tooltip.vue"

@@ -28,6 +28,15 @@ const propTableWidths = {
     md: ['3', '2', '2', '5'],
 };
 
+const slotTableRows = [
+    ['trigger', 'n/a', 'Required. The icon and/or content to put inside the trigger button.'],
+    [
+        'cta',
+        'n/a',
+        'Optional. Use to enable a link or button to appear at the bottom of the popover content and take up the full width of the popover.',
+    ],
+];
+
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-popover.vue?raw');
@@ -255,6 +264,16 @@ onMounted(async () => {
                 <ds-prop-table
                     :rows="propTableRows"
                     :widths="propTableWidths" />
+            </div>
+
+            <div class="mb-500">
+                <h2>EsPopover slots</h2>
+                <ds-prop-table
+                    :columns="['Name', 'Default', 'Description']"
+                    :rows="slotTableRows"
+                    :widths="{
+                        md: ['3', '4', '5'],
+                    }" />
             </div>
 
             <ds-doc-source
