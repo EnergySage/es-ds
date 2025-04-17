@@ -46,6 +46,10 @@ const slotTableRows = [
 
 const showControlledPopover: Ref<boolean | undefined> = ref(undefined);
 
+const handleUpdateShow = (val: boolean) => {
+    showControlledPopover.value = val;
+};
+
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-popover.vue?raw');
@@ -235,7 +239,8 @@ onMounted(async () => {
                     This popover is controlled by the show/hide buttons
                     <es-popover
                         :show="showControlledPopover"
-                        trigger-class="ml-25">
+                        trigger-class="ml-25"
+                        @update:show="handleUpdateShow">
                         <template #trigger>
                             <icon-info
                                 width="18px"
@@ -248,6 +253,7 @@ onMounted(async () => {
                     <p class="mt-100">
                         <es-button
                             class="mb-50 mr-50"
+                            :disabled="showControlledPopover === true"
                             outline
                             size="sm"
                             @click="showControlledPopover = true">
@@ -255,6 +261,7 @@ onMounted(async () => {
                         </es-button>
                         <es-button
                             class="mb-50 mr-50"
+                            :disabled="showControlledPopover === false"
                             outline
                             size="sm"
                             @click="showControlledPopover = false">

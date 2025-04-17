@@ -19,6 +19,8 @@ withDefaults(defineProps<IProps>(), {
     variant: 'dark',
 });
 
+const emit = defineEmits(['update:show']);
+
 const deviceSupportsTouch = ref(false);
 
 onMounted(() => {
@@ -33,7 +35,9 @@ onMounted(() => {
         v-if="!deviceSupportsTouch"
         :delay-duration="delayDuration"
         :disable-closing-trigger="true">
-        <tooltip-root :open="show">
+        <tooltip-root
+            :open="show"
+            @update:open="(val) => emit('update:show', val)">
             <tooltip-trigger
                 class="es-tooltip-trigger p-0"
                 :class="{ [triggerClass]: true }">

@@ -18,10 +18,14 @@ withDefaults(defineProps<IProps>(), {
     triggerDescription: 'More information',
     variant: 'dark',
 });
+
+const emit = defineEmits(['update:show']);
 </script>
 
 <template>
-    <popover-root :open="show">
+    <popover-root
+        :open="show"
+        @update:open="(val) => emit('update:show', val)">
         <popover-trigger
             class="es-popover-trigger p-0"
             :class="{ [triggerClass]: true }">

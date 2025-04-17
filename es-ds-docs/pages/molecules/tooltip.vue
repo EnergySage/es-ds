@@ -39,6 +39,10 @@ const slotTableRows = [['trigger', 'n/a', 'Required. The icon and/or content to 
 
 const showControlledTooltip: Ref<boolean | undefined> = ref(undefined);
 
+const handleUpdateShow = (val: boolean) => {
+    showControlledTooltip.value = val;
+};
+
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-tooltip.vue?raw');
@@ -223,7 +227,8 @@ onMounted(async () => {
                     This tooltip is controlled by the show/hide buttons
                     <es-tooltip
                         :show="showControlledTooltip"
-                        trigger-class="ml-25">
+                        trigger-class="ml-25"
+                        @update:show="handleUpdateShow">
                         <template #trigger>
                             <icon-info
                                 width="18px"
@@ -236,6 +241,7 @@ onMounted(async () => {
                     <p class="mt-100">
                         <es-button
                             class="mb-50 mr-50"
+                            :disabled="showControlledTooltip === true"
                             outline
                             size="sm"
                             @click="showControlledTooltip = true">
@@ -243,6 +249,7 @@ onMounted(async () => {
                         </es-button>
                         <es-button
                             class="mb-50 mr-50"
+                            :disabled="showControlledTooltip === false"
                             outline
                             size="sm"
                             @click="showControlledTooltip = false">
