@@ -368,7 +368,7 @@ onMounted(async () => {
                     need to do is pass in the contents (e.g. an info icon) into the <code>trigger</code> slot.
                 </p>
                 <p>
-                    For accessibility reasons, the <code>trigger</code> prop is no longer available to specify whether
+                    For accessibility reasons, the <code>triggers</code> prop is no longer available to specify whether
                     the popover should appear on focus, hover, mouseover, etc. of the triggering element. It will now
                     only appear on click/tap of the triggering button. If you need hover functionality, first consider
                     whether it's really necessary (as hover has accessibility pitfalls). If it is necessary, the
