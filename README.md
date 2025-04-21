@@ -60,10 +60,12 @@ Bootstrap Vue styles present in `es-ds-styles`. Those are deprecated and will be
 in a future version.
 
 **es-ds-components**
+
 - [es-ds-components](./es-ds-components/) contains Vue 3 components for use in Nuxt 3 projects.
 It is primarily based on [PrimeVue](https://primevue.org/) and [Reka UI](https://reka-ui.com/), with some customizations specific to EnergySage.
 
 **es-ds-docs**
+
 - This is the design system documentation site powered by Nuxt 3.
 - It also serves a reference for
 how to integrate `es-ds` packages into a Nuxt 3 project.
@@ -85,7 +87,14 @@ origin  git@github.com:EnergySage/es-ds.git (push)
 
 ### Installing Dependencies and Linking packages
 
-1. `make install && make symlink` - installs all packages from npm
+1. You will need access to the Consumer-Education-Dev AWS profile, and to clone <https://github.com/EnergySage/es-dev-utils> to run the below scripts.
+
+```
+source ../es-dev-utils/aws_login.sh Consumer-Education-Dev
+../es-dev-utils/npm_config.sh Consumer-Education-Dev
+```
+
+2. `make install && make symlink` - installs all packages from npm
 
 ### Development workflow
 
@@ -117,6 +126,7 @@ npm run dev
 ```
 
 These commands will:
+
 - Run the `es-ds-docs` local dev server without locally linking to the `es-ds-styles` and `es-ds-components` packages folders
 - Whichever versions of the two upstream packages are installed (or already locally linked) will be used
 
@@ -148,7 +158,8 @@ Assuming changes are approved, the process of publishing a new version is...
 0. Ensure your local environment is
    [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
    the `main` branch
-1. Make sure the package.json versions in `es-ds-styles` and `es-ds-components` is updated to a new version 
+
+1. Make sure the package.json versions in `es-ds-styles` and `es-ds-components` is updated to a new version
    that hasn't been published before on NPM.
 2. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
 3. `make install && make symlink` - Install and symlink dependencies locally
