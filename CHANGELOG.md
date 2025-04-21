@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 3.1.1 - 2025-04-21
+
+- Fixed an issue with IconTwitter where the inner part of the X was forced to be white instead of the icon color
+
 ## 3.1.0 - 2025-04-17
 
 - ***BREAKING CHANGE:*** The `target` and `triggers` props of EsPopover have been removed and a `trigger` slot is now available
