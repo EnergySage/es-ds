@@ -34,7 +34,7 @@ export default {
             fill="none"
             d="M0 0.4h31v31H0z" />
         <polygon
-            fill="white"
+            fill="currentColor"
             points="15.67 14.46 10.87 7.58 8.31 7.58 14.27 16.11 15.02 17.18 15.02 17.18 20.11 24.48 22.68 24.48 16.43 15.53 15.67 14.46" />
         <path
             fill="currentColor"
