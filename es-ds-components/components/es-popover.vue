@@ -42,7 +42,7 @@ const emit = defineEmits(['update:show']);
                 :collision-padding="collisionPadding"
                 :side="side">
                 <popover-close
-                    class="es-popover-close align-items-center d-flex justify-content-center float-right mb-50 ml-50"
+                    class="es-popover-close align-items-center d-flex justify-content-center float-right mb-50 ml-50 position-relative"
                     :class="{ 'es-popover-close--light': variant === 'light' }">
                     <span class="sr-only">Close</span>
                     <icon-x
@@ -129,6 +129,9 @@ const emit = defineEmits(['update:show']);
     color: variables.$white;
     height: 28px;
     padding: 0;
+    /* better align top of close button with text */
+    right: -0.125rem;
+    top: -0.125rem;
     width: 28px;
 }
 
