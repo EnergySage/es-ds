@@ -35,14 +35,7 @@ const propTableWidths = {
     md: ['3', '2', '2', '5'],
 };
 
-const slotTableRows = [
-    ['trigger', 'n/a', 'Required. The icon and/or content to put inside the trigger button.'],
-    [
-        'cta',
-        'n/a',
-        'Optional. Use to enable a link or button to appear at the bottom of the popover content and take up the full width of the popover.',
-    ],
-];
+const slotTableRows = [['trigger', 'n/a', 'Required. The icon and/or content to put inside the trigger button.']];
 
 const eventTableRows = [
     ['update:show', 'boolean', 'Event handler called when the open state of the popover changes.'],
@@ -156,10 +149,8 @@ onMounted(async () => {
             <div class="my-500">
                 <h2>Headings and CTAs</h2>
                 <p>
-                    These examples show the recommended styling for headings and how to insert a link or button into
-                    the bottom of the popover. Since the popover has padding on the right side to make room for the
-                    close button, the <code>cta</code> slot allows you to insert a link or button at the bottom of the
-                    popover that can go full width without that padding.
+                    These examples show the recommended styling for headings and how a link or button should appear at
+                    the bottom of the popover.
                 </p>
                 <p>
                     This popover contains a heading and a link
@@ -173,14 +164,12 @@ onMounted(async () => {
                         <p class="mb-50">
                             This is the body text for the popover and it can be long or short as needed.
                         </p>
-                        <template #cta>
-                            <a
-                                class="text-white"
-                                href="https://www.energysage.com/"
-                                target="_blank">
-                                Learn about EnergySage
-                            </a>
-                        </template>
+                        <a
+                            class="text-white"
+                            href="https://www.energysage.com/"
+                            target="_blank">
+                            Learn about EnergySage
+                        </a>
                     </es-popover>
                 </p>
                 <p>
@@ -193,16 +182,14 @@ onMounted(async () => {
                         </template>
                         <h3 class="font-size-100 mb-50 text-white">This is a heading</h3>
                         <p>This is the body text for the popover and it can be long or short as needed.</p>
-                        <template #cta>
-                            <es-button
-                                class="w-100"
-                                href="https://www.energysage.com/"
-                                outline
-                                target="_blank"
-                                variant="dark-bg">
-                                About EnergySage
-                            </es-button>
-                        </template>
+                        <es-button
+                            class="w-100"
+                            href="https://www.energysage.com/"
+                            outline
+                            target="_blank"
+                            variant="dark-bg">
+                            About EnergySage
+                        </es-button>
                     </es-popover>
                 </p>
             </div>
@@ -309,13 +296,11 @@ onMounted(async () => {
                         <p class="mb-50">
                             This is the body text for the popover and it can be long or short as needed.
                         </p>
-                        <template #cta>
-                            <a
-                                href="https://www.energysage.com/"
-                                target="_blank">
-                                Learn about EnergySage
-                            </a>
-                        </template>
+                        <a
+                            href="https://www.energysage.com/"
+                            target="_blank">
+                            Learn about EnergySage
+                        </a>
                     </es-popover>
                 </p>
                 <p>
@@ -331,15 +316,13 @@ onMounted(async () => {
                         </template>
                         <h3 class="font-size-100 mb-50">This is a heading</h3>
                         <p>This is the body text for the popover and it can be long or short as needed.</p>
-                        <template #cta>
-                            <es-button
-                                class="w-100"
-                                href="https://www.energysage.com/"
-                                outline
-                                target="_blank">
-                                About EnergySage
-                            </es-button>
-                        </template>
+                        <es-button
+                            class="w-100"
+                            href="https://www.energysage.com/"
+                            outline
+                            target="_blank">
+                            About EnergySage
+                        </es-button>
                     </es-popover>
                 </p>
             </div>

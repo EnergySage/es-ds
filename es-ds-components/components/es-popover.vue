@@ -42,7 +42,7 @@ const emit = defineEmits(['update:show']);
                 :collision-padding="collisionPadding"
                 :side="side">
                 <popover-close
-                    class="es-popover-close position-absolute"
+                    class="es-popover-close align-items-center d-flex justify-content-center float-right mb-50 ml-50"
                     :class="{ 'es-popover-close--light': variant === 'light' }">
                     <span class="sr-only">Close</span>
                     <icon-x
@@ -55,9 +55,8 @@ const emit = defineEmits(['update:show']);
                     :height="12"
                     rounded
                     :width="22" />
-                <div class="pr-300">
-                    <slot />
-                </div>
+                <slot />
+                <!-- the cta slot is kept for backwards compatibility but is deprecated -->
                 <slot name="cta" />
             </popover-content>
         </popover-portal>
@@ -129,9 +128,7 @@ const emit = defineEmits(['update:show']);
     border: none;
     color: variables.$white;
     height: 28px;
-    right: 1rem;
     padding: 0;
-    top: 0.75rem;
     width: 28px;
 }
 
