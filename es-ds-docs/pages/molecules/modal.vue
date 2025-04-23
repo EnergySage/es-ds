@@ -55,7 +55,6 @@ onMounted(async () => {
                 Show modal without header
             </es-button>
 
-
             <es-modal
                 id="simple-modal"
                 hide-footer
