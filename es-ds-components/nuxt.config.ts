@@ -76,6 +76,7 @@ export default defineNuxtConfig({
                 'primevue/slider',
                 'primevue/tabpanel',
                 'primevue/tabview',
+                'reka-ui',
             ],
         },
     },

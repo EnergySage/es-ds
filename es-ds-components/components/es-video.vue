@@ -12,7 +12,7 @@ const showVideo = ref(false);
 
 // Methods
 function getVideoIdFromUrl(url: string) {
-    const embedPattern = /https:\/\/www\.youtube\.com\/embed\/(?<videoId>[A-Za-z0-9-]+)/;
+    const embedPattern = /https:\/\/www\.youtube\.com\/embed\/(?<videoId>[_A-Za-z0-9-]+)/;
     const parsedUrl = embedPattern.exec(url);
     if (parsedUrl) {
         return parsedUrl?.groups?.videoId;

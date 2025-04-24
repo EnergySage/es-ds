@@ -20,6 +20,7 @@ const props = defineProps({
 });
 
 const userDeterminedState: Ref<boolean | null> = ref(null);
+const uniqueId = useId();
 
 // directly determines the expanded/collapsed state of the panel
 const expanded = computed(() => {
@@ -52,7 +53,7 @@ const onClick = ({ value }: { value: boolean }) => {
 <template>
     <panel
         :collapsed="!expanded"
-        :header="expanded ? 'click to collapse content' : 'click to expand content'"
+        :toggle-button-props="{ 'aria-labelledby': uniqueId }"
         :pt="{
             header: 'd-flex flex-column justify-content-center position-relative py-100',
             icons: 'h-100 position-absolute w-100',
@@ -74,7 +75,9 @@ const onClick = ({ value }: { value: boolean }) => {
         toggleable
         @toggle="onClick">
         <template #header>
-            <slot name="title" />
+            <div :id="uniqueId">
+                <slot name="title" />
+            </div>
         </template>
         <template #togglericon>
             <icon-chevron-down />
