@@ -10,9 +10,9 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
-    hideHeader: {
+    closable: {
         type: Boolean,
-        default: false,
+        default: true,
     },
     size: {
         type: String,
@@ -25,13 +25,14 @@ const props = defineProps({
         default: '',
     },
 });
+const slots = useSlots();
 
 const modalPt = {
     root: {
         class: 'modal-dialog modal-dialog-scrollable modal-content',
     },
     header: {
-        class: props.hideHeader ? '' : 'modal-header',
+        class: slots['modal-title'] ? 'modal-header' : '',
     },
     title: {
         class: 'modal-title',
@@ -79,11 +80,11 @@ const getSizeClass = computed(() => {
         modal
         :class="getSizeClass"
         :pt="modalPt"
-        :closable="!hideHeader"
+        :closable="closable"
         dismissable-mask
         @update:visible="onChange">
         <template
-            v-if="!hideHeader"
+            v-if="slots['modal-title']"
             #header>
             <h5
                 :id="`${id}_header`"

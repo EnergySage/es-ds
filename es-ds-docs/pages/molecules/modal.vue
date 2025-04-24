@@ -116,10 +116,10 @@ onMounted(async () => {
             <es-modal
                 id="no-header-modal"
                 :visible="noHeaderModalVisible"
-                hide-header
+                class="px-200 py-150"
+                :closable="false"
                 size="lg"
                 @hidden="noHeaderModalVisible = false">
-                <template #modal-title> Arcadia Reviews </template>
                 <template #default>
                     <p
                         id="lorem-ipsum"
