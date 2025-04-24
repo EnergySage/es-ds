@@ -112,13 +112,15 @@
   position: relative;
   @include border-radius.border-bottom-radius(variables.$modal-content-inner-border-radius);
 
-  &::before {
-    border-top: variables.$modal-footer-border-width solid variables.$modal-footer-border-color;
-    content: '';
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: variables.$modal-footer-padding-bottom;
+  &.footer-separator {
+    &::before {
+      border-top: variables.$modal-footer-border-width solid variables.$modal-footer-border-color;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: variables.$modal-footer-padding-bottom;
+    }
   }
 
   // Place margin between footer elements

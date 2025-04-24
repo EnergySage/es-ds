@@ -14,6 +14,10 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    showFooterSeparator: {
+        type: Boolean,
+        default: true,
+    },
     size: {
         type: String,
         default: 'md',
@@ -44,7 +48,7 @@ const modalPt = {
         class: `modal-body ${props.bodyClass}`,
     },
     footer: {
-        class: 'modal-footer',
+        class: `modal-footer ${props.showFooterSeparator ? 'footer-separator' : ''}`,
     },
     mask: {
         class: 'es-modal-mask',

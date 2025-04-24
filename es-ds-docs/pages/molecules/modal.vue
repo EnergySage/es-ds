@@ -118,6 +118,7 @@ onMounted(async () => {
                 :visible="noHeaderModalVisible"
                 class="px-200 py-150"
                 :closable="false"
+                :show-footer-separator="false"
                 size="lg"
                 @hidden="noHeaderModalVisible = false">
                 <template #default>
