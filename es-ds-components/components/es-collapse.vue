@@ -89,7 +89,9 @@ const onClick = ({ value }: { value: boolean }) => {
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 :deep(.es-collapse-toggler:focus-visible) {
-    outline: 2px solid variables.$medium-blue;
-    outline-offset: 4px;
+    outline: 2px solid #2e46b9;
+    outline-offset: 0.998264px;
+    outline-style: auto;
+    outline-width: 0.555556px;
 }
 </style>
