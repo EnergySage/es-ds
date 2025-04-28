@@ -285,9 +285,9 @@ export default (
             featuredArticle: {
                 eyebrow: 'New research',
                 imageAlt: 'Home with solar panels',
-                imageUrl: 'https://a-us.storyblok.com/f/1006159/500x375/4c4f7febab/latest-market-intel-500w.png/m/500x0',
-                name: "EnergySage Intel's latest Solar & Storage Marketplace Report",
-                url: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-19/`,
+                imageUrl: 'https://a-us.storyblok.com/f/1006159/500x375/4c4f7febab/market-intel-2025-500w.jpg/m/500x0',
+                name: 'EnergySage Releases Its 20th Solar & Storage Marketplace Report',
+                url: `${ES_DOMAIN}/press/energysage-marketplace-intel-report-20/`,
             },
         },
     ],
