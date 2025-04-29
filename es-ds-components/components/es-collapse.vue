@@ -89,7 +89,6 @@ const onClick = ({ value }: { value: boolean }) => {
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 :deep(.es-collapse-toggler:focus-visible) {
-    border: 0;
     outline: 2px auto -webkit-focus-ring-color;
     outline-offset: 2px;
 }
