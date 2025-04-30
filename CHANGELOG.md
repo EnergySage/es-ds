@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 3.1.2 - 2025-04-30
+
+- Added social icons for Bluesky and Threads
+- Improved the layout of EsPopover so the content can go full width and wrap around the close button
+- Deprecated the `cta` slot of EsPopover as it's no longer needed to go full width
+- Fixed an issue with EsCollapse where it didn't have a visible focus outline when tabbed to via keyboard
+
 ## 3.1.1 - 2025-04-21
 
 - Fixed an issue with IconTwitter where the inner part of the X was forced to be white instead of the icon color
