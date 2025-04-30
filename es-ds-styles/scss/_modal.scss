@@ -108,11 +108,13 @@
   flex-wrap: wrap;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding-top: variables.$modal-footer-padding-top;
+  padding-top: 1rem;
   position: relative;
   @include border-radius.border-bottom-radius(variables.$modal-content-inner-border-radius);
 
   &.footer-separator {
+    padding-top: variables.$modal-footer-padding-top;
+
     &::before {
       border-top: variables.$modal-footer-border-width solid variables.$modal-footer-border-color;
       content: '';
