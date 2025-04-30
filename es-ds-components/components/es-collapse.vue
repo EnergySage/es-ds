@@ -85,3 +85,12 @@ const onClick = ({ value }: { value: boolean }) => {
         <slot />
     </panel>
 </template>
+<style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+
+:deep(.es-collapse-toggler:focus-visible) {
+    outline: 2px auto variables.$blue-600;
+    outline: 2px auto -webkit-focus-ring-color;
+    outline-offset: 2px;
+}
+</style>
