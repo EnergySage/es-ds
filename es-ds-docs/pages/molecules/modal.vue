@@ -4,10 +4,17 @@ const buttonsModalVisible = ref(false);
 const noHeaderModalVisible = ref(false);
 
 const propTableRows = [
-    ['id', 'String', 'n/a', 'Required. Provide a unique ID for the modal for accessibility purposes.'],
-    ['hide-footer', 'Boolean', 'false', 'Whether to show the modal footer.'],
-    ['size', 'string', 'md', "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
-    ['body-class', 'String', '', 'Additional classes to add to the modal-body'],
+    ['bodyClass', 'String', "''", 'Additional classes to add to the modal-body'],
+    ['closable', 'Boolean', 'true', 'Whether the close button should appear in the top right corner.'],
+    ['hideFooter', 'Boolean', 'false', 'Whether to show the modal footer.'],
+    ['id', 'String', 'n/a', 'Required. Provide a unique id for the modal for accessibility purposes.'],
+    [
+        'showFooterSeparator',
+        'Boolean',
+        'true',
+        'Whether to show the separator line between the modal content and footer.',
+    ],
+    ['size', 'string', "'md'", "Width of modal window. Allowed values: 'sm', 'md', 'lg', 'xl'"],
 ];
 
 const { $prism } = useNuxtApp();

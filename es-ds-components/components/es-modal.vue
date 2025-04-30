@@ -1,34 +1,22 @@
 <script setup lang="ts">
 import PrimeDialog from 'primevue/dialog';
 
-const props = defineProps({
-    id: {
-        type: String,
-        required: true,
-    },
-    hideFooter: {
-        type: Boolean,
-        default: false,
-    },
-    closable: {
-        type: Boolean,
-        default: true,
-    },
-    showFooterSeparator: {
-        type: Boolean,
-        default: true,
-    },
-    size: {
-        type: String,
-        default: 'md',
-        validator: (val: string) => ['sm', 'md', 'lg', 'xl'].includes(val),
-    },
-    bodyClass: {
-        type: String,
-        required: false,
-        default: '',
-    },
+interface Props {
+    bodyClass?: string;
+    closable?: boolean;
+    hideFooter?: boolean;
+    id: string;
+    showFooterSeparator?: boolean;
+    size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+const props = withDefaults(defineProps<Props>(), {
+    bodyClass: '',
+    closable: true,
+    hideFooter: false,
+    showFooterSeparator: true,
+    size: 'md',
 });
+
 const slots = useSlots();
 
 const modalPt = {
@@ -73,7 +61,7 @@ const onChange = (visible: boolean) => {
 };
 
 const getSizeClass = computed(() => {
-    const modalSize = props.size === '' ? 'modal-md' : `modal-${props.size}`;
+    const modalSize = `modal-${props.size}`;
     return modalSize;
 });
 </script>
