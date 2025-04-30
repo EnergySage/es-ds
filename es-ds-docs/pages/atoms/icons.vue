@@ -481,11 +481,15 @@ onMounted(async () => {
             </li>
         </ul>
 
-        <h2>Social Icons</h2>
-        <p>Default size for social icons is 31px wide by 32px tall.</p>
+        <h2>Social icons</h2>
+        <p>Default size for social icons is 32px wide by 32px tall.</p>
         <ul
-            class="ds-icon-list m-0 mb-300 p-0"
+            class="ds-icon-list m-0 mb-100 p-0"
             :class="{ [textColorClass()]: true }">
+            <li>
+                <icon-bluesky />
+                <code>IconBluesky</code>
+            </li>
             <li>
                 <icon-facebook />
                 <code>IconFacebook</code>
@@ -499,12 +503,25 @@ onMounted(async () => {
                 <code>IconLinkedin</code>
             </li>
             <li>
-                <icon-twitter />
-                <code>IconTwitter</code>
+                <icon-threads />
+                <code>IconThreads</code>
+            </li>
+            <li>
+                <icon-x-social />
+                <code>IconXSocial</code>
             </li>
             <li>
                 <icon-youtube />
                 <code>IconYoutube</code>
+            </li>
+        </ul>
+        <p>The following icons are deprecated and have been renamed.</p>
+        <ul
+            class="ds-icon-list m-0 mb-300 p-0"
+            :class="{ [textColorClass()]: true }">
+            <li>
+                <icon-twitter />
+                <code>IconTwitter</code>
             </li>
         </ul>
 

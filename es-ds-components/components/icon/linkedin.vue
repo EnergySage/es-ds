@@ -1,41 +1,28 @@
-<script lang="ts">
-export default {
-    name: 'IconLinkedin',
-    props: {
-        /**
-         * Width
-         */
-        width: {
-            type: String,
-            default: '31px',
-            required: false,
-        },
-        /**
-         * Height
-         */
-        height: {
-            type: String,
-            default: '32px',
-            required: false,
-        },
-    },
-};
+<script setup lang="ts">
+interface IProps {
+    height?: string;
+    width?: string;
+}
+withDefaults(defineProps<IProps>(), {
+    height: '32px',
+    width: '32px',
+});
 </script>
+
 <template>
     <svg
+        fill="none"
         :style="{
             height: height,
             width: width,
         }"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 31 32"
-        fill="currentColor">
-        <path
-            fill="none"
-            d="M0 .4h31v31H0z" />
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg">
         <path
             fill-rule="evenodd"
             clip-rule="evenodd"
-            d="M15.5.4a15.5 15.5 0 1 0 0 31 15.5 15.5 0 0 0 0-31Zm-4.74 23.8H7.04V13.02h3.72V24.2ZM8.9 11.47a1.93 1.93 0 1 1 .05-3.86 1.94 1.94 0 1 1 0 3.86H8.9Zm15.28 12.71h-3.72v-5.98c0-1.5-.53-2.53-1.86-2.53a2.03 2.03 0 0 0-1.9 1.36c-.1.3-.14.6-.13.9v6.25h-3.72s.05-10.13 0-11.16h3.72v1.59a3.72 3.72 0 0 1 3.36-1.86c2.39-.02 4.25 1.58 4.25 5v6.43Z" />
+            d="M16 .165a15.835 15.835 0 1 0 0 31.67 15.835 15.835 0 0 0 0-31.67ZM11.157 24.48h-3.8V13.058h3.8Zm-1.9-13.006a1.972 1.972 0 1 1 .052-3.944 1.981 1.981 0 1 1 0 3.944zm15.61 12.985H21.07v-6.108c0-1.533-.543-2.587-1.9-2.587a2.074 2.074 0 0 0-1.943 1.39 2.584 2.584 0 0 0-.133.92v6.385h-3.8s.051-10.35 0-11.401h3.8v1.625a3.801 3.801 0 0 1 3.433-1.901c2.441-.02 4.342 1.614 4.342 5.108v6.57z"
+            fill="currentColor"
+            style="stroke-width: 1.15468" />
     </svg>
 </template>
