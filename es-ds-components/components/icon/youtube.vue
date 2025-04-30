@@ -1,26 +1,14 @@
-<script lang="ts">
-export default {
-    name: 'IconYoutube',
-    props: {
-        /**
-         * Width
-         */
-        width: {
-            type: String,
-            default: '31px',
-            required: false,
-        },
-        /**
-         * Height
-         */
-        height: {
-            type: String,
-            default: '32px',
-            required: false,
-        },
-    },
-};
+<script setup lang="ts">
+interface IProps {
+    height?: string;
+    width?: string;
+}
+withDefaults(defineProps<IProps>(), {
+    height: '32px',
+    width: '32px',
+});
 </script>
+
 <template>
     <svg
         :style="{
@@ -28,7 +16,7 @@ export default {
             width: width,
         }"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 31 32"
+        viewBox="0 0 32 32"
         fill="currentColor">
         <path
             fill="none"
