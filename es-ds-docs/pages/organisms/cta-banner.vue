@@ -31,18 +31,28 @@ const propTableRows = [
         more room on desktop, and reduce the width of the button container.`,
     ],
     [
+        'sideImageContainerClass',
+        'String',
+        "''",
+        `The class(es) that should be applied to the containing element around the sideImage. Useful for
+        custom positioning of the side image at different breakpoints.`,
+    ],
+    [
         'variant',
         'String',
         "'default'",
-        `Accepts 'default', 'stacked', or 'wide'. The default variant has a smaller heading size and reduced padding.
-        The wide variant has a larger heading size and larger padding on desktop.`,
+        `Accepts 'default', 'stacked', 'semi-wide', or 'wide'. The default variant has a smaller heading size
+        and reduced padding. The semi-wide variant is the same as default but is intended to be displayed at full
+        page width and gives more room to the heading. The wide variant has a larger heading size and larger
+        padding on desktop.`,
     ],
 ];
 
 const slotTableRows = [
-    ['heading', "'Easily find what solar costs in your area'", 'The banner heading.'],
-    ['subtitle', 'n/a', 'Optional. The text that should appear below the heading.'],
     ['cta', 'n/a', 'The call to action itself. Meant to be an EsButton or EsZipCodeForm.'],
+    ['heading', "'Easily find what solar costs in your area'", 'The banner heading.'],
+    ['sideImage', 'n/a', 'A narrow-width image that will appear on the right side of the banner.'],
+    ['subtitle', 'n/a', 'Optional. The text that should appear below the heading.'],
 ];
 
 const { $prism } = useNuxtApp();
@@ -161,7 +171,8 @@ onMounted(async () => {
                 The stacked <code>variant</code> will always keep the heading and subtitle above the CTA section on all
                 breakpoints. This is useful when the form's text input needs to be wider, as in the case of an email
                 signup form (a nonfunctional form is shown below just for illustrative layout purposes). The example
-                below also demonstrates using the <code>alignMobile</code> and <code>background</code> props.
+                below also demonstrates using the <code>sideImage</code> slot and the <code>alignMobile</code>,
+                <code>background</code>, and <code>sideImageContainerClass</code> props.
             </p>
             <es-row class="justify-content-center">
                 <es-col
@@ -171,43 +182,66 @@ onMounted(async () => {
                     <es-cta-banner
                         align-mobile="left"
                         background="blue-300-radial"
+                        class="pl-md-400 pl-lg-300 pr-md-800"
+                        side-image-container-class="newsletter-banner-side-image-container flex-shrink-0 ml-100 ml-md-0 overflow-hidden"
                         variant="stacked">
-                        <template #heading> Subscribe to the EnergySage newsletter! </template>
+                        <template #heading>
+                            <span class="font-size-md-400 font-size-lg-300 font-size-xxl-400">
+                                Subscribe to the EnergySage newsletter!
+                            </span>
+                        </template>
                         <template #subtitle>
-                            Plug in for monthly energy-saving tips, climate news, sustainability trends and more.
+                            <span
+                                class="font-size-75 font-size-sm-100 font-size-md-300 font-size-lg-200 font-size-xxl-300">
+                                Plug in for monthly energy-saving tips, climate news, sustainability trends and more.
+                            </span>
+                        </template>
+                        <template #sideImage>
+                            <nuxt-img
+                                class="side-image position-absolute"
+                                src="https://a-us.storyblok.com/f/1006156/59x183/476a20557b/side-plug-graphic.svg" />
                         </template>
                         <template #cta>
-                            <form class="w-100">
-                                <div class="d-flex flex-column flex-md-row mb-100 mb-md-0 w-100">
-                                    <es-form-input
-                                        id="email-subscribe"
-                                        class="flex-grow-1"
-                                        label-sr-only
-                                        placeholder="Enter your email address">
-                                        <template #label> Enter your email address </template>
-                                    </es-form-input>
-                                    <es-button class="ml-md-100">
-                                        Subscribe
-                                        <icon-envelope class="ml-50" />
-                                    </es-button>
-                                </div>
-                                <div class="align-items-center d-flex flex-wrap font-size-75 font-size-sm-100">
-                                    <icon-lock-on
-                                        class="flex-shrink-0 mr-50"
-                                        height="1.125rem"
-                                        width="1.125rem" />
-                                    <span class="mr-25 text-nowrap"> Your information is safe with us. </span>
-                                    <a
-                                        href="https://www.energysage.com/privacy-policy/"
-                                        target="_blank">
-                                        Privacy Policy
-                                    </a>
-                                </div>
-                            </form>
+                            <ds-sample-email-form />
                         </template>
                     </es-cta-banner>
                 </es-col>
             </es-row>
+        </div>
+
+        <div class="mb-500">
+            <h2>Semi-wide with subtitle and email form</h2>
+            <p class="mb-200">
+                The semi-wide <code>variant</code> gives more width to the heading and subtitle than the default
+                <code>variant</code> at the <code>lg</code> breakpoint and up, and more width to the cta slot than the
+                wide <code>variant</code>. It's recommended for email form CTAs that will go full width like the one
+                below.
+            </p>
+            <es-cta-banner
+                align-mobile="left"
+                background="blue-300-radial"
+                class="overflow-hidden pl-md-400 pl-lg-200 pr-md-800"
+                side-image-container-class="newsletter-banner-side-image-container flex-shrink-0 ml-100 ml-md-0 overflow-hidden"
+                variant="semi-wide">
+                <template #heading>
+                    <span class="font-size-md-400 font-size-lg-300 font-size-xxl-400">
+                        Subscribe to the EnergySage newsletter!
+                    </span>
+                </template>
+                <template #subtitle>
+                    <span class="font-size-75 font-size-sm-100 font-size-md-300 font-size-lg-100 font-size-xxl-300">
+                        Plug in for monthly energy-saving tips, climate news, sustainability trends and more.
+                    </span>
+                </template>
+                <template #sideImage>
+                    <nuxt-img
+                        class="side-image side-image-wide position-absolute"
+                        src="https://a-us.storyblok.com/f/1006156/59x183/476a20557b/side-plug-graphic.svg" />
+                </template>
+                <template #cta>
+                    <ds-sample-email-form />
+                </template>
+            </es-cta-banner>
         </div>
 
         <div class="mb-500">
@@ -326,3 +360,45 @@ onMounted(async () => {
             doc-source="es-ds-docs/pages/organisms/cta-banner.vue" />
     </div>
 </template>
+
+<style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+
+:deep(.newsletter-banner-side-image-container) {
+    min-height: 120px;
+    position: relative;
+    width: 60px;
+
+    @include breakpoints.media-breakpoint-up(md) {
+        min-height: 0;
+        position: static;
+        width: auto;
+    }
+}
+
+.side-image {
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+
+    @include breakpoints.media-breakpoint-up(md) {
+        bottom: 0;
+        left: auto;
+        right: 2rem;
+        top: auto;
+        width: 60px;
+    }
+}
+
+.side-image-wide {
+    @include breakpoints.media-breakpoint-up(lg) {
+        bottom: auto;
+        top: 2rem;
+    }
+
+    @include breakpoints.media-breakpoint-up(xl) {
+        top: 1.5rem;
+    }
+}
+</style>
