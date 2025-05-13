@@ -82,7 +82,9 @@ onMounted(async () => {
                 xxl="8">
                 <p>
                     Full-width banner that displays a heading, subtitle, and call to action. The call to action can be
-                    a button or zip code form. Subtitle is optional and can be omitted.
+                    a <nuxt-link to="/molecules/button">button</nuxt-link>,
+                    <nuxt-link to="/organisms/zip-code-form">zip code form</nuxt-link>, or something custom. Subtitle
+                    is optional and can be omitted.
                 </p>
                 <p class="mb-0">
                     Intended for use either within a full-width page layout or one slightly constrained to 10 columns
