@@ -117,6 +117,7 @@ const spring = {
         </div>
 
         <div>
+            <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
             <motion.div
                 v-for="item in displayItems"
                 :key="item.name"
