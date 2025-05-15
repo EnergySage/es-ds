@@ -68,7 +68,6 @@ const spring = {
 };
 
 const { $prism } = useNuxtApp();
-const compCode = ref('');
 const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
