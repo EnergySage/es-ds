@@ -66,6 +66,17 @@ const spring = {
     damping: 20,
     stiffness: 100,
 };
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+onMounted(async () => {
+    if ($prism) {
+        const docSource = await import('./reordering-with-motion.vue?raw');
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -159,5 +170,9 @@ const spring = {
                 </div>
             </motion.div>
         </div>
+
+        <ds-doc-source
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/examples/reordering-with-motion.vue" />
     </div>
 </template>
