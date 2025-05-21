@@ -15,12 +15,11 @@
         <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
         <label
             :for="checkboxId"
-            class="dropdown-label nav-link d-flex d-lg-none align-items-center
-                justify-content-between w-100 h-100 px-100 font-weight-bold">
+            class="dropdown-label nav-link d-flex d-lg-none align-items-center justify-content-between w-100 h-100 px-100 font-weight-bold">
             {{ name }}
             <icon-chevron-right
                 class="expand-icon"
-                style="height: 24px;" />
+                style="height: 24px" />
         </label>
         <input
             :id="checkboxId"
@@ -65,7 +64,7 @@
                             class="menu-toggle nav-link align-items-center d-flex font-size-sm h-100 mb-0 px-0 text-uppercase w-100">
                             <IconArrowLeft
                                 class="expand-icon"
-                                style="height: 24px;" />
+                                style="height: 24px" />
                         </label>
                     </div>
                     <div class="col-8 align-self-center text-center py-100">
@@ -77,7 +76,8 @@
                         </es-nav-bar-link>
                         <span class="font-weight-boldest text-gray-900">{{ name }}</span>
                         -->
-                        <span class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
+                        <span
+                            class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
                     </div>
                     <div class="col-2" />
                 </li>
@@ -107,13 +107,14 @@
                             class="menu-toggle nav-link align-items-center d-flex font-size-sm h-100 mb-0 px-0 text-uppercase w-100">
                             <IconArrowLeft
                                 class="expand-icon"
-                                style="height: 24px;" />
+                                style="height: 24px" />
                         </label>
                     </div>
                     <div class="col-8 align-self-center text-center py-100">
                         <p
                             class="align-items-center d-flex d-lg-none font-weight-bold justify-content-between mb-0 text-decoration-none w-100">
-                            <span class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
+                            <span
+                                class="nav-link justify-content-center align-items-center d-flex font-weight-boldest w-100 h-100">{{ name }}</span>
                         </p>
                     </div>
                     <div class="col-2" />
@@ -141,10 +142,10 @@
                     <li class="nav-item col-lg-4 d-block h-auto my-100 my-lg-0">
                         <es-nav-bar-featured-article
                             :eyebrow="featuredArticle.eyebrow"
-                            :link="featuredArticle.link"
+                            :link="featuredArticle.url"
                             :name="featuredArticle.name"
-                            :image500="featuredArticle.image500"
-                            :image-alt="featuredArticle.imageAlt" />
+                            :image-alt="featuredArticle.imageAlt"
+                            :image-url="featuredArticle.imageUrl" />
                     </li>
                 </b-row>
             </div>

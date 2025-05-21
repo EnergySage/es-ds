@@ -10,7 +10,7 @@
                 class="featured-article-image mb-100 w-100 rounded"
                 :alt="imageAlt"
                 loading="lazy"
-                :src="image500">
+                :src="imageUrl">
             <div class="eyebrow mb-50 link-name">
                 {{ eyebrow }}
             </div>
@@ -47,13 +47,13 @@ export default {
             type: String,
             required: true,
         },
-        image500: {
-            type: String,
-            required: true,
-        },
         imageAlt: {
             type: String,
             default: '',
+        },
+        imageUrl: {
+            type: String,
+            required: true,
         },
     },
     computed: {
