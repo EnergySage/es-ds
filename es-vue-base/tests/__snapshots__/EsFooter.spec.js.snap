@@ -360,7 +360,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
       <div class="row pt-100">
         <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
           <a
-            href="/terms-of-use/"
+            href="https://www.energysage.com/terms-of-use/"
             target="_self"
             class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal"
           >
@@ -369,7 +369,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
         </div>
         <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
           <a
-            href="/privacy-policy/"
+            href="https://www.energysage.com/privacy-policy/"
             target="_self"
             class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal"
           >
@@ -378,7 +378,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
         </div>
         <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
           <a
-            href="/mobile-terms-of-use/"
+            href="https://www.energysage.com/mobile-terms-of-use/"
             target="_self"
             class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal"
           >
@@ -387,7 +387,7 @@ exports[`EsFooter <EsFooter /> 1`] = `
         </div>
         <div class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
           <a
-            href="/nondiscrimination/"
+            href="https://www.energysage.com/nondiscrimination/"
             target="_self"
             class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal"
           >
