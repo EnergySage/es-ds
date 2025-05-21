@@ -176,7 +176,7 @@ export default (
             url: '/nondiscrimination/',
         },
         {
-            text: 'Your privacy choies-dslces',
+            text: 'Your privacy choices',
         },
     ],
     copyrightText: '© Copyright 2009-{currentYear} EnergySage, Inc. All rights reserved.',
