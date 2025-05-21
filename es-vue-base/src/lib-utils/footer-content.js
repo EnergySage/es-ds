@@ -161,19 +161,19 @@ export default (
     legalLinks: [
         {
             text: 'Terms of use',
-            url: '/terms-of-use/',
+            url: `${ES_DOMAIN}/terms-of-use/`,
         },
         {
             text: 'Privacy policy',
-            url: '/privacy-policy/',
+            url: `${ES_DOMAIN}/privacy-policy/`,
         },
         {
             text: 'Mobile terms of use',
-            url: '/mobile-terms-of-use/',
+            url: `${ES_DOMAIN}/mobile-terms-of-use/`,
         },
         {
             text: 'Non-discrimination policy',
-            url: '/nondiscrimination/',
+            url: `${ES_DOMAIN}/nondiscrimination/`,
         },
         {
             text: 'Your privacy choices',
