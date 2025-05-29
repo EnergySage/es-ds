@@ -22,9 +22,9 @@ jobs:
               id: creds
               uses: aws-actions/configure-aws-credentials@v4
               with:
+                role-to-assume: arn:aws:iam::453321834875:role/DefaultDevDeployRole
+                role-session-name: ${{ github.event.repository.name }}-dev-GithubActionsSession
                 aws-region: us-east-1
-                role-to-assume: arn:aws:iam::453321834875:role/github-write-to-s3
-                output-credentials: true
 
             - name: Log into CodeArtifact 🗝️
               shell: bash
