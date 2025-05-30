@@ -123,7 +123,7 @@ jobs:
               env:
                   DEPLOY_ENV: ${{ steps.deployEnv.outputs.deployEnv }}
               run: |
-                  npx cdk synth --app 'npx node --prefer-ts-exts bin/aws.js'
+                  npx cdk synth --app 'npx node bin/aws.js'
 
             - name: CDK Diff 🗜️
               if: ${{ inputs.is-deployment }}
