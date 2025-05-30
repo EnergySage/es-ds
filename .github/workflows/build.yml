@@ -68,6 +68,7 @@ jobs:
                       ${{ runner.os }}-node-
 
             - name: Install app dependencies 👨🏻‍💻
+              working-directory: ./es-design-system
               shell: bash
               run: |
                   HUSKY=0 npm ci --prefer-offline --no-audit
