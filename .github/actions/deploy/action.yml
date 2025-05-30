@@ -1,0 +1,53 @@
+name: deploy
+
+inputs:
+    DEPLOY_ENV:
+        description: Deployment Environment
+        required: true
+        default: ''
+
+runs:
+    using: composite
+    steps:
+        - name: Setting clean name 🧹
+          id: deployEnv
+          shell: bash
+          run: |
+              deployEnv=${{ inputs.DEPLOY_ENV }}
+              echo "deployEnv=$(echo ${deployEnv} | awk '{print tolower($0)}' | cut -c1-20 | sed -E 's/[^[:alnum:]-]+/-/g; s/-$//')" >> $GITHUB_OUTPUT
+
+        - name: Set up for deploy without HTML
+          working-directory: ./aws
+          shell: bash
+          run: |
+              mkdir -p ../html_dist/
+              find ../dist -name "*.html" -type f | while read file; do
+                  relpath=${file#../dist/}
+                  mkdir -p "../html_dist/$(dirname "$relpath")"
+                  mv "$file" "../html_dist/$relpath"
+              done
+              rm -rf cdk.out/
+
+        - name: Deploying non-HTML to aws ${{ steps.deployEnv.outputs.deployEnv }} 📍
+          working-directory: ./aws
+          shell: bash
+          env:
+              DEPLOY_ENV: ${{ steps.deployEnv.outputs.deployEnv }}
+          run: |
+              npx cdk deploy ${{ steps.deployEnv.outputs.deployEnv }} --require-approval never --outputs-file cdk-outputs.json
+
+        - name: Set up for deploy of HTML
+          working-directory: ./aws
+          shell: bash
+          run: |
+              rm -rf ../dist/
+              mv ../html_dist/ ../dist/
+              rm -rf cdk.out/
+
+        - name: Deploying HTML to aws ${{ steps.deployEnv.outputs.deployEnv }} 📍
+          working-directory: ./aws
+          shell: bash
+          env:
+              DEPLOY_ENV: ${{ steps.deployEnv.outputs.deployEnv }}
+          run: |
+              npx cdk deploy ${{ steps.deployEnv.outputs.deployEnv }} --require-approval never --outputs-file cdk-outputs.json
