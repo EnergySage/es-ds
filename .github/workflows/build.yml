@@ -46,6 +46,12 @@ jobs:
             - name: Log into aws dev 🔑
               uses: ./.github/actions/login-dev-deploy
 
+            - name: Log into CodeArtifact 🗝️
+              working-directory: ./es-design-system
+              shell: bash
+              run: |
+                  aws codeartifact login --tool npm --domain energysage --domain-owner 659694780082 --repository cloud-engineering
+
             # Get the node version from .node-version
             - name: Get nodenv version 🔌
               id: nodenv
