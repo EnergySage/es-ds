@@ -17,7 +17,7 @@ runs:
               echo "deployEnv=$(echo ${deployEnv} | awk '{print tolower($0)}' | cut -c1-20 | sed -E 's/[^[:alnum:]-]+/-/g; s/-$//')" >> $GITHUB_OUTPUT
 
         - name: Set up for deploy without HTML
-          working-directory: ./aws
+          working-directory: ./es-design-system/aws
           shell: bash
           run: |
               mkdir -p ../html_dist/
@@ -29,7 +29,7 @@ runs:
               rm -rf cdk.out/
 
         - name: Deploying non-HTML to aws ${{ steps.deployEnv.outputs.deployEnv }} 📍
-          working-directory: ./aws
+          working-directory: ./es-design-system/aws
           shell: bash
           env:
               DEPLOY_ENV: ${{ steps.deployEnv.outputs.deployEnv }}
@@ -37,7 +37,7 @@ runs:
               npx cdk deploy ${{ steps.deployEnv.outputs.deployEnv }} --require-approval never --outputs-file cdk-outputs.json
 
         - name: Set up for deploy of HTML
-          working-directory: ./aws
+          working-directory: ./es-design-system/aws
           shell: bash
           run: |
               rm -rf ../dist/
@@ -45,7 +45,7 @@ runs:
               rm -rf cdk.out/
 
         - name: Deploying HTML to aws ${{ steps.deployEnv.outputs.deployEnv }} 📍
-          working-directory: ./aws
+          working-directory: ./es-design-system/aws
           shell: bash
           env:
               DEPLOY_ENV: ${{ steps.deployEnv.outputs.deployEnv }}

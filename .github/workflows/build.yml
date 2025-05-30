@@ -92,6 +92,7 @@ jobs:
 
             - name: Build using ${{ inputs.environment }} 🛠️
               if: ${{ inputs.is-deployment }}
+              working-directory: ./es-design-system
               env:
                   # 7 GiB by default on GitHub, setting to 6 GiB
                   # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resource
@@ -104,14 +105,14 @@ jobs:
                   CI="1" npm run generate
 
             - name: Install aws dependencies 👩‍💻
-              working-directory: ./aws
+              working-directory: ./es-design-system/aws
               shell: bash
               run: |
                   npm ci --prefer-offline --no-audit
 
             - name: CDK Synth 🖇️
               if: ${{ inputs.is-deployment }}
-              working-directory: ./aws
+              working-directory: ./es-design-system/aws
               env:
                   DEPLOY_ENV: ${{ steps.deployEnv.outputs.deployEnv }}
               run: |
@@ -119,7 +120,7 @@ jobs:
 
             - name: CDK Diff 🗜️
               if: ${{ inputs.is-deployment }}
-              working-directory: ./aws
+              working-directory: ./es-design-system/aws
               id: diff
               shell: bash
               run: |
