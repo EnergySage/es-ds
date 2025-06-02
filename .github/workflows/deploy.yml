@@ -22,10 +22,10 @@ env:
     FORCE_COLOR: '1'
 
 concurrency:
-    group: deploy-${{ inputs.environment }}
+    group: deploy-${{ inputs.environment || 'int' }}
     cancel-in-progress: false
 
-run-name: Deploy to ${{ inputs.environment }}
+run-name: Deploy to ${{ inputs.environment || 'int' }}
 
 permissions:
     contents: read
@@ -36,14 +36,14 @@ jobs:
         uses: ./.github/workflows/build.yml
         secrets: inherit
         with:
-            deploy-env: ${{ inputs.environment }}
-            environment: ${{ inputs.environment }}
+            deploy-env: ${{ inputs.environment || 'int' }}
+            environment: ${{ inputs.environment || 'int' }}
             # we use github.sha here to ensure that the cache is invalidated on every new commit
-            cache-key: ${{ inputs.environment }}-${{ github.sha }}
+            cache-key: ${{ inputs.environment || 'int' }}-${{ github.sha }}
             is-deployment: true
 
     deploy:
-        environment: ${{ inputs.environment }}
+        environment: ${{ inputs.environment || 'int' }}
         needs: build
         runs-on: ubuntu-latest
         steps:
@@ -53,15 +53,15 @@ jobs:
                   path: |
                       ./
                   key: |
-                      ${{ github.head_ref || github.ref_name }}-${{ github.sha }}-${{ inputs.environment }}
+                      ${{ github.head_ref || github.ref_name }}-${{ github.sha }}-${{ inputs.environment || 'int' }}
 
             - name: Log into aws dev 🔑
               uses: ./.github/actions/login-dev-deploy
 
-            - name: Deploying ${{ inputs.environment }} 📍
+            - name: Deploying ${{ inputs.environment || 'int' }} 📍
               uses: ./.github/actions/deploy
               with:
-                  DEPLOY_ENV: ${{ inputs.environment }}
+                  DEPLOY_ENV: ${{ inputs.environment || 'int' }}
 
             - name: Get site hostname 🌎
               id: hostname
@@ -75,4 +75,4 @@ jobs:
               with:
                   slack-token: ${{ secrets.SLACK_TOKEN }}
                   slack-channel: ${{ vars.SLACK_CHANNEL }}
-                  slack-message: "🚀New ESDS Deployment🚀\nURL: ${{ steps.hostname.outputs.hostname }}\nRequested By: ${{ github.actor }}"
+                  slack-message: "🚀New ESDS Deployment🚀\nURL: ${{ steps.hostname.outputs.hostname }}\nRequested By: ${{ github.actor }}\nTrigger: ${{ inputs.trigger || 'deploy.yml - push to main' }}"
