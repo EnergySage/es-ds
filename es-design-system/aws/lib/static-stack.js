@@ -14,7 +14,8 @@ class NuxtStaticStack extends cdk.Stack {
         // eslint-disable-next-line no-new
         new esNuxt.NuxtStatic(this, 'DesignSystemApp', {
             // The domain (without the protocol) at which the Nuxt app shall be publicly available.
-            rootDomain: 'design.energysage.dev',
+            rootDomain: props.rootDomain,
+            subDomain: props.subDomain,
             version,
             // Used to determine where static files are located and what caching metadata to use
             nuxtConfig: {
@@ -41,6 +42,11 @@ class NuxtStaticStack extends cdk.Stack {
                     facebook: false,
                 },
             },
+        });
+
+        // eslint-disable-next-line no-new
+        new cdk.CfnOutput(this, 'Route53HostName', {
+            value: `https://${props.subDomain ? `${props.subDomain}.` : ''}${props.rootDomain}`,
         });
     }
 }
