@@ -125,13 +125,13 @@ jobs:
               run: |
                   npx cdk synth --app 'npx ts-node --prefer-ts-exts bin/app.ts'
 
-            # - name: CDK Diff 🗜️
-            #  if: ${{ inputs.is-deployment }}
-            #  working-directory: ./es-ds-docs/aws
-            #  id: diff
-            #  shell: bash
-            #  run: |
-            #      npx cdk diff '${{ steps.deployEnv.outputs.deployEnv }}' --app cdk.out
+            - name: CDK Diff 🗜️
+              if: ${{ inputs.is-deployment }}
+              working-directory: ./es-ds-docs/aws
+              id: diff
+              shell: bash
+              run: |
+                  npx cdk diff '${{ steps.deployEnv.outputs.deployEnv }}' --app cdk.out
 
             - name: Cache build 🗃️
               uses: actions/cache/save@v4
