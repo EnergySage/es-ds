@@ -16,7 +16,7 @@ const awsEnvs: Record<string, any> = {
         env: {
             account: accountID,
         },
-    }
+    },
 };
 
 // Allow dynamic deployment environment name to be passed in via command line
