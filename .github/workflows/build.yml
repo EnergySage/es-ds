@@ -1,0 +1,141 @@
+name: build
+on:
+    workflow_call:
+        inputs:
+            deploy-env:
+                description: What cdk environment are we in prod|int|branch-name
+                required: false
+                type: string
+                default: ${{ github.head_ref || github.ref_name }}
+            environment:
+                description: What environment are we in prod|int|dev
+                required: true
+                type: string
+            cache-key:
+                description: Cache key
+                required: true
+                type: string
+            is-deployment:
+                description: Is this a deployment
+                required: false
+                type: boolean
+                default: false
+
+env:
+    FORCE_COLOR: '1'
+
+concurrency:
+    group: full-build-${{ github.head_ref || github.ref_name }}-${{ inputs.cache-key }}
+    cancel-in-progress: true
+
+permissions:
+    contents: read
+    id-token: write
+
+jobs:
+    build:
+        environment: ${{ inputs.environment }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0 # Fetches all history for all branches and tags
+                  ref: ${{ github.ref }}
+
+            - name: Log into aws dev 🔑
+              uses: ./.github/actions/login-dev-deploy
+
+            - name: Log into CodeArtifact 🗝️
+              working-directory: ./es-ds-docs
+              shell: bash
+              run: |
+                  aws codeartifact login --tool npm --domain energysage --domain-owner 659694780082 --repository cloud-engineering
+
+            # Get the node version from .node-version
+            - name: Get nodenv version 🔌
+              id: nodenv
+              shell: bash
+              run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+
+            - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '${{ steps.nodenv.outputs.node-version }}'
+                  cache: npm
+                  cache-dependency-path: '**/package-lock.json'
+
+            - name: Cache node_modules 📦
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: Install app dependencies 👨🏻‍💻
+              working-directory: ./es-ds-docs
+              shell: bash
+              run: |
+                  HUSKY=0 npm ci --prefer-offline --no-audit
+
+            - name: Setting clean name ${{ inputs.deploy-env }} 🧹
+              id: deployEnv
+              shell: bash
+              run: |
+                  deployEnv=${{ inputs.deploy-env }}
+                  echo "deployEnv=$(echo ${deployEnv} | awk '{print tolower($0)}' | cut -c1-20 | sed -E 's/[^[:alnum:]-]+/-/g; s/-$//')" >> $GITHUB_OUTPUT
+
+            - name: Set PUBLIC_PATH 🦠
+              id: publicPath
+              run: |
+                  if [ "${{ inputs.environment }}" = "prod" ]; then
+                    echo "publicPath=https://design.energysage.dev" >> $GITHUB_OUTPUT
+                  elif [ "${{ inputs.environment }}" = "int" ]; then
+                    echo "publicPath=https://design.energysage.dev" >> $GITHUB_OUTPUT
+                  elif [ "${{ inputs.environment }}" = "dev" ]; then
+                    echo "publicPath=https://design.energysage.dev" >> $GITHUB_OUTPUT
+                  fi
+
+            - name: Build using ${{ inputs.environment }} 🛠️
+              if: ${{ inputs.is-deployment }}
+              working-directory: ./es-ds-docs
+              env:
+                  # 7 GiB by default on GitHub, setting to 6 GiB
+                  # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resource
+                  NODE_OPTIONS: --max-old-space-size=6144
+                  DEPLOY_ENV: ${{ inputs.environment }}
+                  PUBLIC_PATH: ${{ steps.publicPath.outputs.publicPath }}
+
+              shell: bash
+              run: |
+                  CI="1" npm run generate
+
+            - name: Install aws dependencies 👩‍💻
+              working-directory: ./es-ds-docs/aws
+              shell: bash
+              run: |
+                  npm ci --prefer-offline --no-audit
+
+            - name: CDK Synth 🖇️
+              if: ${{ inputs.is-deployment }}
+              working-directory: ./es-ds-docs/aws
+              env:
+                  DEPLOY_ENV: ${{ steps.deployEnv.outputs.deployEnv }}
+              run: |
+                  npx cdk synth --app 'npx ts-node --prefer-ts-exts bin/app.ts'
+
+            # - name: CDK Diff 🗜️
+            #  if: ${{ inputs.is-deployment }}
+            #  working-directory: ./es-ds-docs/aws
+            #  id: diff
+            #  shell: bash
+            #  run: |
+            #      npx cdk diff '${{ steps.deployEnv.outputs.deployEnv }}' --app cdk.out
+
+            - name: Cache build 🗃️
+              uses: actions/cache/save@v4
+              with:
+                  path: |
+                      ./
+                  key: ${{ github.head_ref || github.ref_name }}-${{ github.sha }}-${{ inputs.cache-key }}
