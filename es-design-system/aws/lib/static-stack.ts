@@ -3,13 +3,15 @@ import * as cdk from 'aws-cdk-lib';
 import { esNuxt } from 'es-cdk';
 // eslint-disable-next-line import/no-relative-packages
 import { version } from '../../package.json';
+import type { Construct } from 'constructs';
+import type { DsLegacyProps } from './interfaces';
 
 /**
  * A stack that sets up NuxtStatic
  */
 // eslint-disable-next-line import/prefer-default-export
 export class NuxtStaticStack extends cdk.Stack {
-    constructor(scope, id, props) {
+    constructor(scope: Construct, id: string, props: DsLegacyProps) {
         super(scope, id, props);
 
         // eslint-disable-next-line no-new
