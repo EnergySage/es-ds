@@ -46,6 +46,12 @@ jobs:
             - name: Log into aws dev 🔑
               uses: ./.github/actions/login-dev-deploy
 
+            - name: Log into CodeArtifact 🗝️
+              working-directory: ./es-design-system
+              shell: bash
+              run: |
+                  aws codeartifact login --tool npm --domain energysage --domain-owner 659694780082 --repository cloud-engineering
+
             # Get the node version from .node-version
             - name: Get nodenv version 🔌
               id: nodenv
@@ -68,6 +74,7 @@ jobs:
                       ${{ runner.os }}-node-
 
             - name: Install app dependencies 👨🏻‍💻
+              working-directory: ./es-design-system
               shell: bash
               run: |
                   HUSKY=0 npm ci --prefer-offline --no-audit
@@ -92,6 +99,7 @@ jobs:
 
             - name: Build using ${{ inputs.environment }} 🛠️
               if: ${{ inputs.is-deployment }}
+              working-directory: ./es-design-system
               env:
                   # 7 GiB by default on GitHub, setting to 6 GiB
                   # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resource
@@ -104,26 +112,26 @@ jobs:
                   CI="1" npm run generate
 
             - name: Install aws dependencies 👩‍💻
-              working-directory: ./aws
+              working-directory: ./es-design-system/aws
               shell: bash
               run: |
                   npm ci --prefer-offline --no-audit
 
             - name: CDK Synth 🖇️
               if: ${{ inputs.is-deployment }}
-              working-directory: ./aws
+              working-directory: ./es-design-system/aws
               env:
                   DEPLOY_ENV: ${{ steps.deployEnv.outputs.deployEnv }}
               run: |
                   npx cdk synth --app 'npx ts-node --prefer-ts-exts bin/app.ts'
 
-            - name: CDK Diff 🗜️
-              if: ${{ inputs.is-deployment }}
-              working-directory: ./aws
-              id: diff
-              shell: bash
-              run: |
-                  npx cdk diff '${{ steps.deployEnv.outputs.deployEnv }}' --app cdk.out
+            # - name: CDK Diff 🗜️
+            #  if: ${{ inputs.is-deployment }}
+            #  working-directory: ./es-design-system/aws
+            #  id: diff
+            #  shell: bash
+            #  run: |
+            #      npx cdk diff '${{ steps.deployEnv.outputs.deployEnv }}' --app cdk.out
 
             - name: Cache build 🗃️
               uses: actions/cache/save@v4

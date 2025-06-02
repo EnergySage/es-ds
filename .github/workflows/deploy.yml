@@ -64,7 +64,7 @@ jobs:
               id: hostname
               shell: bash
               run: |
-                  HOSTNAME=$(cat aws/cdk-outputs.json | jq -r 'map(.Route53HostName)[0]' )
+                  HOSTNAME=$(cat es-design-system/aws/cdk-outputs.json | jq -r 'map(.Route53HostName)[0]' )
                   echo "hostname=$HOSTNAME" >> $GITHUB_OUTPUT
 
             - name: Post slack notification 💬
