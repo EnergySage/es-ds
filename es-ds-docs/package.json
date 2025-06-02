@@ -1,5 +1,6 @@
 {
     "name": "es-ds-docs",
+    "version": "3.1.5",
     "private": true,
     "type": "module",
     "scripts": {

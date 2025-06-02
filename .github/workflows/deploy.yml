@@ -1,0 +1,78 @@
+name: deploy
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: Environment
+                required: true
+                default: int
+                type: choice
+                options:
+                    - int
+            trigger:
+                description: What triggered the workflow
+                default: deploy.yml - github
+                required: false
+
+env:
+    FORCE_COLOR: '1'
+
+concurrency:
+    group: deploy-${{ inputs.environment }}
+    cancel-in-progress: false
+
+run-name: Deploy to ${{ inputs.environment }}
+
+permissions:
+    contents: read
+    id-token: write
+
+jobs:
+    build:
+        uses: ./.github/workflows/build.yml
+        secrets: inherit
+        with:
+            deploy-env: ${{ inputs.environment }}
+            environment: ${{ inputs.environment }}
+            # we use github.sha here to ensure that the cache is invalidated on every new commit
+            cache-key: ${{ inputs.environment }}-${{ github.sha }}
+            is-deployment: true
+
+    deploy:
+        environment: ${{ inputs.environment }}
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Restore build 🗃️
+              uses: actions/cache/restore@v4
+              with:
+                  path: |
+                      ./
+                  key: |
+                      ${{ github.head_ref || github.ref_name }}-${{ github.sha }}-${{ inputs.environment }}
+
+            - name: Log into aws dev 🔑
+              uses: ./.github/actions/login-dev-deploy
+
+            - name: Deploying ${{ inputs.environment }} 📍
+              uses: ./.github/actions/deploy
+              with:
+                  DEPLOY_ENV: ${{ inputs.environment }}
+
+            - name: Get site hostname 🌎
+              id: hostname
+              shell: bash
+              run: |
+                  HOSTNAME=$(cat es-ds-docs/aws/cdk-outputs.json | jq -r 'map(.Route53HostName)[0]' )
+                  echo "hostname=$HOSTNAME" >> $GITHUB_OUTPUT
+
+            - name: Post slack notification 💬
+              uses: ./.github/actions/slack
+              with:
+                  slack-token: ${{ secrets.SLACK_TOKEN }}
+                  slack-channel: ${{ vars.SLACK_CHANNEL }}
+                  slack-message: "🚀New ESDS Deployment🚀\nURL: ${{ steps.hostname.outputs.hostname }}\nRequested By: ${{ github.actor }}"
