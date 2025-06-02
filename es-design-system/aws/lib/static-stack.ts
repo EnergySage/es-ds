@@ -1,13 +1,14 @@
-// eslint-disable-next-line import/no-unresolved
-const { esNuxt } = require('es-cdk');
-const path = require('path');
-const cdk = require('aws-cdk-lib');
-const { version } = require('../../package.json');
+import * as path from 'path';
+import * as cdk from 'aws-cdk-lib';
+import { esNuxt } from 'es-cdk';
+// eslint-disable-next-line import/no-relative-packages
+import { version } from '../../package.json';
 
 /**
  * A stack that sets up NuxtStatic
  */
-class NuxtStaticStack extends cdk.Stack {
+// eslint-disable-next-line import/prefer-default-export
+export class NuxtStaticStack extends cdk.Stack {
     constructor(scope, id, props) {
         super(scope, id, props);
 
@@ -50,5 +51,3 @@ class NuxtStaticStack extends cdk.Stack {
         });
     }
 }
-
-module.exports = { NuxtStaticStack };
