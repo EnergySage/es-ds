@@ -30,19 +30,19 @@ export default (
                     subtopics: [
                         {
                             name: 'Home solar guide',
-                            link: '/solar/',
+                            link: `${ES_DOMAIN}/solar/`,
                         },
                         {
                             name: 'Community solar guide',
-                            link: '/community-solar/',
+                            link: `${ES_DOMAIN}/community-solar/`,
                         },
                         {
                             name: 'Best solar panels',
-                            link: '/solar/best-solar-panels-complete-ranking/',
+                            link: `${ES_DOMAIN}/solar/best-solar-panels-complete-ranking/`,
                         },
                         {
                             name: 'How much do solar panels cost?',
-                            link: '/local-data/solar-panel-cost/',
+                            link: `${ES_DOMAIN}/local-data/solar-panel-cost/`,
                         },
                     ],
                 },
@@ -52,15 +52,15 @@ export default (
                     subtopics: [
                         {
                             name: 'Backup power guide',
-                            link: '/energy-storage/',
+                            link: `${ES_DOMAIN}/energy-storage/`,
                         },
                         {
                             name: 'Best home batteries',
-                            link: '/energy-storage/best-home-batteries/',
+                            link: `${ES_DOMAIN}/energy-storage/best-home-batteries/`,
                         },
                         {
                             name: 'Home batteries vs. generators',
-                            link: '/energy-storage/battery-backup-power-vs-generators-which-is-right-for-you/',
+                            link: `${ES_DOMAIN}/energy-storage/battery-backup-power-vs-generators-which-is-right-for-you/`,
                         },
                     ],
                 },
@@ -70,15 +70,15 @@ export default (
                     subtopics: [
                         {
                             name: 'Heat pump guide',
-                            link: '/heat-pumps/',
+                            link: `${ES_DOMAIN}/heat-pumps/`,
                         },
                         {
                             name: 'How much do heat pumps cost?',
-                            link: '/heat-pumps/costs-and-benefits-air-source-heat-pumps/',
+                            link: `${ES_DOMAIN}/heat-pumps/costs-and-benefits-air-source-heat-pumps/`,
                         },
                         {
                             name: 'How do heat pumps work?',
-                            link: '/heat-pumps/how-do-heat-pumps-work/',
+                            link: `${ES_DOMAIN}/heat-pumps/how-do-heat-pumps-work/`,
                         },
                     ],
                 },
@@ -88,19 +88,19 @@ export default (
                     subtopics: [
                         {
                             name: 'EV charging guide',
-                            link: '/ev-charging/',
+                            link: `${ES_DOMAIN}/ev-charging/`,
                         },
                         {
                             name: 'Electric vehicles guide',
-                            link: '/electric-vehicles/',
+                            link: `${ES_DOMAIN}/electric-vehicles/`,
                         },
                         {
                             name: 'Best EV chargers',
-                            link: '/ev-charging/ev-charging-stations/',
+                            link: `${ES_DOMAIN}/ev-charging/ev-charging-stations/`,
                         },
                         {
                             name: 'How much does it cost to charge an EV?',
-                            link: '/ev-charging/electric-vehicle-charging-cost/',
+                            link: `${ES_DOMAIN}/ev-charging/electric-vehicle-charging-cost/`,
                         },
                     ],
                 },
@@ -110,19 +110,19 @@ export default (
                     subtopics: [
                         {
                             name: 'Home electricity guide',
-                            link: '/electricity/',
+                            link: `${ES_DOMAIN}/electricity/`,
                         },
                         {
                             name: 'Home energy management guide',
-                            link: '/energy-management/',
+                            link: `${ES_DOMAIN}/energy-management/`,
                         },
                         {
                             name: 'Energy efficiency',
-                            link: '/energy-efficiency/',
+                            link: `${ES_DOMAIN}/energy-efficiency/`,
                         },
                         {
                             name: 'Best smart home gadgets',
-                            link: '/energy-products/',
+                            link: `${ES_DOMAIN}/energy-products/`,
                         },
                     ],
                 },
@@ -132,15 +132,15 @@ export default (
                     subtopics: [
                         {
                             name: 'Solar for businesses',
-                            link: '/business-solutions/commercial-solar-benefits/',
+                            link: `${ES_DOMAIN}/business-solutions/commercial-solar-benefits/`,
                         },
                         {
                             name: 'Solar for nonprofit organizations',
-                            link: '/business-solutions/solar-nonprofit-benefits-financing/',
+                            link: `${ES_DOMAIN}/business-solutions/solar-nonprofit-benefits-financing/`,
                         },
                         {
                             name: 'Backup power for businesses',
-                            link: '/business-solutions/energy-storage-for-businesses/',
+                            link: `${ES_DOMAIN}/business-solutions/energy-storage-for-businesses/`,
                         },
                     ],
                 },
@@ -150,28 +150,28 @@ export default (
                     subtopics: [
                         {
                             name: 'How to pay for solar',
-                            link: '/solar/how-to-pay-for-solar/',
+                            link: `${ES_DOMAIN}/solar/how-to-pay-for-solar/`,
                         },
                         {
                             name: 'How to choose a solar loan',
-                            link: '/solar/solar-loans/',
+                            link: `${ES_DOMAIN}/solar/solar-loans/`,
                         },
                         {
                             name: 'What to know about solar leases',
-                            link: '/solar/solar-leases/',
+                            link: `${ES_DOMAIN}/solar/solar-leases/`,
                         },
                         {
                             name: 'Explore cost-saving clean energy incentives',
-                            link: '/shop/clean-energy-savings-and-tax-incentives/',
+                            link: `${ES_DOMAIN}/shop/clean-energy-savings-and-tax-incentives/`,
                         },
                     ],
                 },
                 {
                     name: 'News',
-                    link: '/news/',
+                    link: `${ES_DOMAIN}/news/`,
                     subtopics: [
                         {
-                            name: 'How Trump’s tariffs could impact solar',
+                            name: 'How Trump’s latest tariffs could impact solar',
                             link: '/news/how-new-trump-tariffs-could-affect-the-solar-industry/',
                         },
                         {
@@ -182,7 +182,7 @@ export default (
                 },
                 {
                     name: 'Blog',
-                    link: '/blog/',
+                    link: `${ES_DOMAIN}/blog/`,
                     subtopics: [
                         {
                             name: "Solar is a bipartisan issue—here's why",
@@ -221,7 +221,7 @@ export default (
                         },
                         {
                             name: 'How it works',
-                            link: '/shop/home-solar/',
+                            link: `${ES_DOMAIN}/shop/home-solar/`,
                         },
                         {
                             name: 'Our team',
@@ -229,7 +229,7 @@ export default (
                         },
                         {
                             name: 'Our Energy Advisors',
-                            link: '/energy-advisors/',
+                            link: `${ES_DOMAIN}/energy-advisors/`,
                         },
                         {
                             name: 'Careers',
@@ -247,7 +247,7 @@ export default (
                         },
                         {
                             name: 'Editorial guidelines',
-                            link: '/editorial-guidelines/',
+                            link: `${ES_DOMAIN}/editorial-guidelines/`,
                         },
                         {
                             name: 'Press',
@@ -261,11 +261,11 @@ export default (
                     subtopics: [
                         {
                             name: 'Solar & HVAC installers',
-                            link: '/installers/',
+                            link: `${ES_DOMAIN}/installers/`,
                         },
                         {
                             name: 'Corporate partnerships',
-                            link: '/partners/corporations/',
+                            link: `${ES_DOMAIN}/partners/corporations/`,
                         },
                         {
                             name: 'Community programs',
@@ -294,20 +294,20 @@ export default (
     products: [
         {
             name: 'Home solar',
-            link: '/shop/home-solar/',
+            link: `${ES_DOMAIN}/shop/home-solar/`,
             items: [],
             topics: [
                 {
                     name: 'Rooftop solar',
                     subHeading: 'Install solar on your property',
-                    link: '/shop/home-solar/',
+                    link: `${ES_DOMAIN}/shop/home-solar/`,
                     showItemsOnMobile: false,
                     subtopics: [
                         {
                             emphasize: false,
                             name: 'Home solar guide',
                             newTab: false,
-                            link: '/solar/',
+                            link: `${ES_DOMAIN}/solar/`,
                         },
                         {
                             emphasize: false,
@@ -325,7 +325,7 @@ export default (
                             emphasize: false,
                             name: 'Financing',
                             newTab: false,
-                            link: '/financing/',
+                            link: `${ES_DOMAIN}/financing/`,
                         },
                         {
                             emphasize: false,
@@ -374,14 +374,14 @@ export default (
                 {
                     name: 'Community solar',
                     subHeading: 'Go solar with no equipment',
-                    link: '/shop/community-solar/',
+                    link: `${ES_DOMAIN}/shop/community-solar/`,
                     showItemsOnMobile: false,
                     subtopics: [
                         {
                             emphasize: false,
                             name: 'Community solar guide',
                             newTab: false,
-                            link: '/community-solar/',
+                            link: `${ES_DOMAIN}/community-solar/`,
                         },
                         {
                             emphasize: true,
@@ -397,24 +397,24 @@ export default (
                 imageAlt: 'How much do solar panels cost?',
                 imageUrl: 'https://a-us.storyblok.com/f/1006159/2688x1513/83fcff9d64/how-much-do-solar-panels-cost_-thumb.jpg/m/500x0',
                 name: 'How much do solar panels cost?',
-                url: '/local-data/solar-panel-cost/',
+                url: `${ES_DOMAIN}/local-data/solar-panel-cost/`,
             },
         },
         {
             name: 'Community solar',
-            link: '/shop/community-solar/',
+            link: `${ES_DOMAIN}/shop/community-solar/`,
             items: [
                 {
                     emphasize: false,
                     name: 'Community solar',
                     newTab: false,
-                    link: '/shop/community-solar/',
+                    link: `${ES_DOMAIN}/shop/community-solar/`,
                 },
                 {
                     emphasize: false,
                     name: 'Community solar guide',
                     newTab: false,
-                    link: '/community-solar/',
+                    link: `${ES_DOMAIN}/community-solar/`,
                 },
                 {
                     emphasize: true,
@@ -427,56 +427,56 @@ export default (
         },
         {
             name: 'Heating & cooling',
-            link: '/shop/heat-pumps/',
+            link: `${ES_DOMAIN}/shop/heat-pumps/`,
             items: [
                 {
                     emphasize: false,
                     name: 'Heating & cooling',
                     newTab: false,
-                    link: '/shop/heat-pumps/',
+                    link: `${ES_DOMAIN}/shop/heat-pumps/`,
                 },
                 {
                     emphasize: false,
                     name: 'Heat pump guide',
                     newTab: false,
-                    link: '/heat-pumps/',
+                    link: `${ES_DOMAIN}/heat-pumps/`,
                 },
                 {
                     emphasize: false,
                     name: 'Heat pump incentives',
                     newTab: false,
-                    link: '/heat-pumps/heat-pump-incentives/',
+                    link: `${ES_DOMAIN}/heat-pumps/heat-pump-incentives/`,
                 },
                 {
                     emphasize: false,
                     name: 'Financing',
                     newTab: false,
-                    link: '/financing/',
+                    link: `${ES_DOMAIN}/financing/`,
                 },
                 {
                     emphasize: true,
                     name: 'Get personalized quotes',
                     newTab: false,
-                    link: '/shop/heat-pumps/',
+                    link: `${ES_DOMAIN}/shop/heat-pumps/`,
                 },
             ],
             topics: [],
         },
         {
             name: 'Backup power',
-            link: '/energy-storage/',
+            link: `${ES_DOMAIN}/energy-storage/`,
             items: [
                 {
                     emphasize: false,
                     name: 'Backup power guide',
                     newTab: false,
-                    link: '/energy-storage/',
+                    link: `${ES_DOMAIN}/energy-storage/`,
                 },
                 {
                     emphasize: false,
                     name: 'Home battery incentives',
                     newTab: false,
-                    link: '/energy-storage/benefits-of-storage/energy-storage-incentives/',
+                    link: `${ES_DOMAIN}/energy-storage/benefits-of-storage/energy-storage-incentives/`,
                 },
                 {
                     emphasize: false,
@@ -495,19 +495,19 @@ export default (
         },
         {
             name: 'EV charging',
-            link: '/ev-charging/',
+            link: `${ES_DOMAIN}/ev-charging/`,
             items: [
                 {
                     emphasize: false,
                     name: 'EV charging guide',
                     newTab: false,
-                    link: '/ev-charging/',
+                    link: `${ES_DOMAIN}/ev-charging/`,
                 },
                 {
                     emphasize: false,
                     name: 'Electric vehicle guide',
                     newTab: false,
-                    link: '/electric-vehicles/',
+                    link: `${ES_DOMAIN}/electric-vehicles/`,
                 },
                 {
                     emphasize: true,
@@ -520,31 +520,31 @@ export default (
         },
         {
             name: 'For your business',
-            link: '/businesses/',
+            link: `${ES_DOMAIN}/businesses/`,
             items: [
                 {
                     emphasize: false,
                     name: 'For your business',
                     newTab: false,
-                    link: '/businesses/',
+                    link: `${ES_DOMAIN}/businesses/`,
                 },
                 {
                     emphasize: false,
                     name: 'Solar for businesses',
                     newTab: false,
-                    link: '/business-solutions/commercial-solar-benefits/',
+                    link: `${ES_DOMAIN}/business-solutions/commercial-solar-benefits/`,
                 },
                 {
                     emphasize: false,
                     name: 'Solar for nonprofit organizations',
                     newTab: false,
-                    link: '/business-solutions/solar-nonprofit-benefits-financing/',
+                    link: `${ES_DOMAIN}/business-solutions/solar-nonprofit-benefits-financing/`,
                 },
                 {
                     emphasize: false,
                     name: 'Energy storage for businesses',
                     newTab: false,
-                    link: '/business-solutions/energy-storage-for-businesses/',
+                    link: `${ES_DOMAIN}/business-solutions/energy-storage-for-businesses/`,
                 },
             ],
             topics: [],

@@ -7,7 +7,7 @@
                     <div
                         class="col col-12 col-md-5 col-lg-4 font-size-200 font-size-md-400 font-weight-bold mb-150 mb-md-0">
                         {{ content.banner.headline }}
-                        <br />
+                        <br>
                         {{ content.banner.subHeadline }}
                     </div>
                     <div class="col col-12 col-md-7 col-lg-8">
@@ -38,7 +38,7 @@
                                         class="mt-0 mt-lg-25 mb-100 mb-lg-50 font-size-75">
                                         <es-nav-bar-link
                                             :href="link.url"
-                                            :target="link.newTab ? '_blank' : null"
+                                            :target="link.target"
                                             class="text-reset">
                                             {{ link.text }}
                                         </es-nav-bar-link>
@@ -91,7 +91,7 @@
                 </p>
                 <!-- Trademark Info -->
                 <!-- Legal -->
-                <hr class="border-top border-blue-500 m-0" />
+                <hr class="border-top border-blue-500 m-0">
                 <div class="row pt-100">
                     <div
                         v-for="link in content.legalLinks"
@@ -100,10 +100,11 @@
                         <es-nav-bar-link
                             v-if="link.url"
                             :href="link.url"
+                            :target="link.target"
                             class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
                             {{ link.text }}
                         </es-nav-bar-link>
-                        <div v-else>
+                        <div v-else-if="link.isPrivacyButton">
                             <icon-ccpa-opt-out />
                             <es-button
                                 inline
