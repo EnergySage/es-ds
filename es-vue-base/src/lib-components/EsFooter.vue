@@ -152,11 +152,15 @@ import IconTwitter from '../lib-icons/icon-twitter.vue';
 import IconYoutube from '../lib-icons/icon-youtube.vue';
 import IconLinkedin from '../lib-icons/icon-linkedin.vue';
 import IconInstagram from '../lib-icons/icon-instagram.vue';
+import IconCcpaOptOut from '../lib-icons/icon-ccpa-opt-out.vue';
+import EsButton from './EsButton.vue';
 
 export default {
     name: 'EsFooter',
     components: {
         EsNavBarLink,
+        IconCcpaOptOut,
+        EsButton,
         // Used by content.socialLinks
         IconFacebook,
         IconTwitter,
