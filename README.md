@@ -221,8 +221,8 @@ Assuming changes are approved, the process of publishing a new version is...
    and symlink them
 8. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
    Commit and push the changelog and `package-lock.json` updates
-9. For updating the design-system website see
-   [Deploy Design System](https://energysage.atlassian.net/wiki/spaces/DSE/pages/208568321/Deploy+Design+System+Documentation)
+9. To update the v2 design system website, run the
+   [deploy GitHub action](https://github.com/EnergySage/es-ds-legacy/actions/workflows/deploy.yml)
 
 Running `make publish` will trigger the following prompt:
 

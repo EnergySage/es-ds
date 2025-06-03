@@ -1,0 +1,12 @@
+name: login-dev-deploy
+description: Log into Dev Deploy AWS account
+
+runs:
+    using: composite
+    steps:
+        - name: Log into Dev Deploy AWS account 🔑
+          uses: aws-actions/configure-aws-credentials@v4
+          with:
+              role-to-assume: arn:aws:iam::453321834875:role/DefaultDevDeployRole
+              role-session-name: ${{ github.event.repository.name }}-dev-GithubActionsSession
+              aws-region: us-east-1
