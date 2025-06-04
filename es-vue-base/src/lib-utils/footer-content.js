@@ -23,31 +23,38 @@ export default (
             links: [
                 {
                     text: 'Home solar',
-                    url: '/shop/home-solar/',
+                    url: `${ES_DOMAIN}/shop/home-solar/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Community solar',
-                    url: '/shop/community-solar/',
+                    url: `${ES_DOMAIN}/shop/community-solar/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Heating & cooling',
-                    url: '/shop/heat-pumps/',
+                    url: `${ES_DOMAIN}/shop/heat-pumps/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Backup power',
-                    url: '/energy-storage/',
+                    url: `${ES_DOMAIN}/energy-storage/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'EV charging',
-                    url: '/ev-charging/',
+                    url: `${ES_DOMAIN}/ev-charging/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'For your business',
-                    url: '/businesses/',
+                    url: `${ES_DOMAIN}/businesses/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Other energy options',
-                    url: '/other-clean-options/',
+                    url: `${ES_DOMAIN}/other-clean-options/`,
+                    isPrivacyButton: false,
                 },
             ],
         },
@@ -57,26 +64,38 @@ export default (
                 {
                     text: 'Solar calculator',
                     url: `${ES_DOMAIN}/solar/calculator/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Solar rebates',
                     url: `${ES_DOMAIN}/market/equipment-rebates/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'News',
-                    url: '/news/',
+                    url: `${ES_DOMAIN}/news/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Blog',
-                    url: '/blog/',
+                    url: `${ES_DOMAIN}/blog/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Home solar guide',
-                    url: '/shop/home-solar/',
+                    url: `${ES_DOMAIN}/shop/home-solar/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Market intel',
                     url: `${ES_DOMAIN}/data/`,
+                    isPrivacyButton: false,
+                },
+                {
+                    text: 'Newsletter',
+                    url: 'https://www.energysage.com/landing/newsletter-signup/?utm_campaign=12560937-Newsletter+landing+page&utm_source=footer&utm_medium=website',
+                    target: '_blank',
+                    isPrivacyButton: false,
                 },
             ],
         },
@@ -86,22 +105,33 @@ export default (
                 {
                     text: 'Mission & values',
                     url: `${ES_DOMAIN}/about-us/company/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'How it works',
-                    url: '/shop/home-solar/',
+                    url: `${ES_DOMAIN}/shop/home-solar/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Careers',
                     url: `${ES_DOMAIN}/about-us/careers/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Contact us',
                     url: `${ES_DOMAIN}/contact/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Editorial guidelines',
-                    url: '/editorial-guidelines/',
+                    url: `${ES_DOMAIN}/editorial-guidelines/`,
+                    isPrivacyButton: false,
+                },
+                {
+                    text: 'Testimonials',
+                    url: 'https://www.energysage.com/testimonials/',
+                    target: '_blank',
+                    isPrivacyButton: false,
                 },
             ],
         },
@@ -110,70 +140,89 @@ export default (
             links: [
                 {
                     text: 'Solar & HVAC installers',
-                    url: '/installers/',
+                    url: `${ES_DOMAIN}/installers/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Corporate partnerships',
-                    url: '/partners/corporations/',
+                    url: `${ES_DOMAIN}/partners/corporations/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Community programs',
                     url: `${ES_DOMAIN}/partners/non-profits/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Utility programs',
                     url: `${ES_DOMAIN}/partners/utilities/`,
+                    isPrivacyButton: false,
                 },
                 {
                     text: 'Others',
                     url: `${ES_DOMAIN}/partners/`,
+                    isPrivacyButton: false,
                 },
             ],
         },
     ],
-    socialLinks: [
+    social: [
         {
             icon: 'icon-facebook',
             text: 'Facebook',
             url: 'https://www.facebook.com/EnergySage',
+            isPrivacyButton: false,
         },
         {
             icon: 'icon-linkedin',
             text: 'LinkedIn',
             url: 'https://www.linkedin.com/company/energysage/',
+            isPrivacyButton: false,
         },
         {
             icon: 'icon-instagram',
             text: 'Instagram',
             url: 'https://www.instagram.com/energysage_official/',
+            isPrivacyButton: false,
         },
         {
             icon: 'icon-twitter',
             text: 'X',
             url: 'https://x.com/energysage',
+            isPrivacyButton: false,
         },
         {
             icon: 'icon-youtube',
             text: 'YouTube',
             url: 'https://www.youtube.com/c/EnergySage',
+            isPrivacyButton: false,
         },
     ],
     legalLinks: [
         {
             text: 'Terms of use',
-            url: '/terms-of-use/',
+            url: `${ES_DOMAIN}/terms-of-use/`,
+            isPrivacyButton: false,
         },
         {
             text: 'Privacy policy',
-            url: '/privacy-policy/',
+            url: `${ES_DOMAIN}/privacy-policy/`,
+            isPrivacyButton: false,
         },
         {
-            text: 'Mobile terms of use',
-            url: '/mobile-terms-of-use/',
+            text: 'Messaging terms and conditions',
+            url: `${ES_DOMAIN}/mobile-terms-of-use/`,
+            isPrivacyButton: false,
         },
         {
             text: 'Non-discrimination policy',
-            url: '/nondiscrimination/',
+            url: `${ES_DOMAIN}/nondiscrimination/`,
+            isPrivacyButton: false,
+        },
+        {
+            text: 'Your privacy choices',
+            url: '',
+            isPrivacyButton: true,
         },
     ],
     copyrightText: '© Copyright 2009-{currentYear} EnergySage, Inc. All rights reserved.',
@@ -182,6 +231,7 @@ export default (
         learnMore: {
             text: 'Learn more about our success working with the U.S. Department of Energy.',
             url: 'https://www.energy.gov/eere/solar/articles/eere-success-story-doe-funding-helps-build-one-stop-shop-rooftop-pv-systems',
+            isPrivacyButton: false,
         },
         logoUrl: 'https://a-us.storyblok.com/f/1006159/179x45/6ea4b7dea5/doe-logo-179-943fe6467b04.png/m/180x0',
     },

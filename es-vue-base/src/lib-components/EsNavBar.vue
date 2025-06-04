@@ -3,8 +3,7 @@
         id="nav-main"
         class="nav-es-container">
         <div class="content-overlay" />
-        <nav
-            class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
+        <nav class="nav-es-global navbar navbar-expand navbar-light py-0 font-size-base">
             <!-- mobile hamburger menu button -->
             <div class="d-flex d-lg-none col-3 px-0">
                 <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
@@ -60,7 +59,7 @@
                 id="data--main-menu"
                 class="menu-checkbox main-menu-checkbox"
                 aria-labelledby="data--main-menu"
-                type="checkbox">
+                type="checkbox" />
             <!-- first-level menu on mobile, the whole nav on desktop-->
             <div
                 id="navbarNavDropdown"
@@ -154,8 +153,7 @@
                             :logged-out="accountContent.loggedOut" />
                     </b-container>
                     <!-- mobile+desktop product menus -->
-                    <b-container
-                        class="flex-lg-nowrap justify-content-lg-end product-menu">
+                    <b-container class="flex-lg-nowrap justify-content-lg-end product-menu">
                         <div class="row">
                             <es-nav-bar-product-menu
                                 v-for="product in globalContent.products"
@@ -537,6 +535,26 @@ export default {
         const observer = new IntersectionObserver(intersectionCallback, intersectionOptions);
         const targetEl = document.querySelector('#nav-main');
         observer.observe(targetEl);
+
+        // FOOTER SCRIPT
+
+        // https://energysage.atlassian.net/wiki/spaces/FG/pages/1427865649/One-trust+Consent+Initialization+and+GTM
+        window.addEventListener('OneTrustLoadedCb', () => {
+            window.OneTrust.OnConsentChanged(() => {
+                // OneTrust modal should modify cookie values, a hard-refresh will
+                // trigger re-loading GTM with updated cookie values, which in turn
+                // will only fire tags aligned with new preferences
+                window.location.reload();
+                return false;
+            });
+            document.querySelectorAll('.toggle-info-display').forEach((elem) => {
+                // Function closure to ensure event only fires on one elem
+                elem.addEventListener('click', (e) => {
+                    e.stopImmediatePropagation();
+                    window.OneTrust.ToggleInfoDisplay();
+                });
+            });
+        });
 
         // CUSTOM GLOBAL-NAV SCRIPT ENDS
     },

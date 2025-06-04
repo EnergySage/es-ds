@@ -16,6 +16,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Make an impact -->
         <div class="bg-blue-800 py-200 pt-lg-200 pb-lg-150 px-200">
             <div class="container px-0">
@@ -37,7 +38,7 @@
                                         class="mt-0 mt-lg-25 mb-100 mb-lg-50 font-size-75">
                                         <es-nav-bar-link
                                             :href="link.url"
-                                            :target="link.newTab ? '_blank' : null"
+                                            :target="link.target"
                                             class="text-reset">
                                             {{ link.text }}
                                         </es-nav-bar-link>
@@ -46,6 +47,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- Link columns -->
                     <!-- Logo and Social-->
                     <div class="col col-12 col-lg-4 order-lg-0">
@@ -94,12 +96,23 @@
                     <div
                         v-for="link in content.legalLinks"
                         :key="link.text"
-                        class="col col-6 col-lg-auto font-size-75 font-weight-semibold font-size-md-50 font-weight-md-normal mt-25 mb-50 pr-lg-300">
+                        class="col col-6 col-lg-auto mt-25 mb-50 pr-lg-300">
                         <es-nav-bar-link
+                            v-if="link.url"
                             :href="link.url"
-                            class="text-reset font-weight-normal">
+                            :target="link.target"
+                            class="text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal">
                             {{ link.text }}
                         </es-nav-bar-link>
+                        <div v-else-if="link.isPrivacyButton">
+                            <icon-ccpa-opt-out />
+                            <es-button
+                                inline
+                                class="toggle-info-display text-reset font-weight-normal font-size-75 font-size-md-50 font-weight-md-normal ml-1 border-0 p-0"
+                                variant="link">
+                                {{ link.text }}
+                            </es-button>
+                        </div>
                     </div>
                 </div>
                 <!-- Legal -->
@@ -139,11 +152,15 @@ import IconTwitter from '../lib-icons/icon-twitter.vue';
 import IconYoutube from '../lib-icons/icon-youtube.vue';
 import IconLinkedin from '../lib-icons/icon-linkedin.vue';
 import IconInstagram from '../lib-icons/icon-instagram.vue';
+import IconCcpaOptOut from '../lib-icons/icon-ccpa-opt-out.vue';
+import EsButton from './EsButton.vue';
 
 export default {
     name: 'EsFooter',
     components: {
         EsNavBarLink,
+        IconCcpaOptOut,
+        EsButton,
         // Used by content.socialLinks
         IconFacebook,
         IconTwitter,
