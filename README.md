@@ -214,14 +214,16 @@ Assuming changes are approved, the process of publishing a new version is...
    and symlink them
 3. `make build` - Build all packages to `*/dist` folders locally
 4. `make lint && make test` - Run tests and linting to ensure they pass
-5. `make publish` - Publish updated packages to
+5. Open a new branch for the release specifically
+6. `make publish` - Publish updated packages to
    [npmjs.com](https://www.npmjs.com/org/energysage)
-6. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
-7. `make install && make symlink` - Install the new published versions locally
+7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
+8. `make install && make symlink` - Install the new published versions locally
    and symlink them
-8. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
-   Commit and push the changelog and `package-lock.json` updates
-9. To update the v2 design system website, run the
+9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
+   Commit and push the changelog and `package-lock.json` updates to our new branch
+10. Open a PR for this new branch and get it merged
+11. To update the v2 design system website, run the
    [deploy GitHub action](https://github.com/EnergySage/es-ds-legacy/actions/workflows/deploy.yml)
 
 Running `make publish` will trigger the following prompt:
