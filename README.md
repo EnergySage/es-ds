@@ -214,8 +214,7 @@ Assuming changes are approved, the process of publishing a new version is...
    and symlink them
 3. `make build` - Build all packages to `*/dist` folders locally
 4. `make lint && make test` - Run tests and linting to ensure they pass
-5. `make publish` - Publish updated packages to
-   [npmjs.com](https://www.npmjs.com/org/energysage)
+5. Publish new versions of es-bs-base and/or es-vue-base by going into their folder and running `npm publish`
 6. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
 7. `make install && make symlink` - Install the new published versions locally
    and symlink them
