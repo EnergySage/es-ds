@@ -214,14 +214,16 @@ Assuming changes are approved, the process of publishing a new version is...
    and symlink them
 3. `make build` - Build all packages to `*/dist` folders locally
 4. `make lint && make test` - Run tests and linting to ensure they pass
-5. Run `make publish` which will bump versions successfully but fail to commit and publish due to Jit restrictions
-6. Publish new versions of es-bs-base and/or es-vue-base by going into their folder and running `npm publish`
-7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
-8. `make install && make symlink` - Install the new published versions locally
+5. Open a new branch for the release specifically
+6. Run `make publish` which will bump versions successfully but fail to commit and publish due to Jit restrictions
+7. Publish new versions of es-bs-base and/or es-vue-base by going into their folder and running `npm publish`
+8. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
+9. `make install && make symlink` - Install the new published versions locally
    and symlink them
-9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
+10. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
    Commit and push the changelog and `package-lock.json` updates
-10. To update the v2 design system website, run the
+11. Open a PR for this new branch and get it merged
+12. To update the v2 design system website, run the
    [deploy GitHub action](https://github.com/EnergySage/es-ds-legacy/actions/workflows/deploy.yml)
 
 Running `make publish` will trigger the following prompt:
