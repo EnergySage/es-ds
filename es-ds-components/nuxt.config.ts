@@ -77,6 +77,7 @@ export default defineNuxtConfig({
                 'primevue/tabpanel',
                 'primevue/tabview',
                 'reka-ui',
+                'motion-v',
             ],
         },
         css: {
