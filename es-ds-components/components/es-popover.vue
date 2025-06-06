@@ -20,47 +20,52 @@ withDefaults(defineProps<IProps>(), {
 });
 
 const emit = defineEmits(['update:show']);
+
+// Workaround: Reka UI components don't play nice with the Nuxt 3.16+ dev server side rendering while using NPM link
+const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'span';
 </script>
 
 <template>
-    <popover-root
-        :open="show"
-        @update:open="(val) => emit('update:show', val)">
-        <popover-trigger
-            class="es-popover-trigger p-0"
-            :class="{ [triggerClass]: true }">
-            <span class="sr-only">{{ triggerDescription }}</span>
-            <slot name="trigger" />
-        </popover-trigger>
-        <popover-portal>
-            <popover-content
-                class="es-popover-content position-relative"
-                :class="{
-                    'text-white': variant === 'dark',
-                    'es-popover-content--light': variant === 'light',
-                }"
-                :collision-padding="collisionPadding"
-                :side="side">
-                <popover-close
-                    class="es-popover-close align-items-center d-flex justify-content-center float-right mb-50 ml-50 position-relative"
-                    :class="{ 'es-popover-close--light': variant === 'light' }">
-                    <span class="sr-only">Close</span>
-                    <icon-x
-                        height="20px"
-                        width="20px" />
-                </popover-close>
-                <popover-arrow
-                    class="es-popover-arrow"
-                    :class="{ 'es-popover-arrow--light': variant === 'light' }"
-                    :height="12"
-                    rounded
-                    :width="22" />
-                <slot />
-                <!-- the cta slot is kept for backwards compatibility but is deprecated -->
-                <slot name="cta" />
-            </popover-content>
-        </popover-portal>
-    </popover-root>
+    <component :is="wrappingComponent">
+        <popover-root
+            :open="show"
+            @update:open="(val) => emit('update:show', val)">
+            <popover-trigger
+                class="es-popover-trigger p-0"
+                :class="{ [triggerClass]: true }">
+                <span class="sr-only">{{ triggerDescription }}</span>
+                <slot name="trigger" />
+            </popover-trigger>
+            <popover-portal>
+                <popover-content
+                    class="es-popover-content position-relative"
+                    :class="{
+                        'text-white': variant === 'dark',
+                        'es-popover-content--light': variant === 'light',
+                    }"
+                    :collision-padding="collisionPadding"
+                    :side="side">
+                    <popover-close
+                        class="es-popover-close align-items-center d-flex justify-content-center float-right mb-50 ml-50 position-relative"
+                        :class="{ 'es-popover-close--light': variant === 'light' }">
+                        <span class="sr-only">Close</span>
+                        <icon-x
+                            height="20px"
+                            width="20px" />
+                    </popover-close>
+                    <popover-arrow
+                        class="es-popover-arrow"
+                        :class="{ 'es-popover-arrow--light': variant === 'light' }"
+                        :height="12"
+                        rounded
+                        :width="22" />
+                    <slot />
+                    <!-- the cta slot is kept for backwards compatibility but is deprecated -->
+                    <slot name="cta" />
+                </popover-content>
+            </popover-portal>
+        </popover-root>
+    </component>
 </template>
 
 <style lang="scss" scoped>

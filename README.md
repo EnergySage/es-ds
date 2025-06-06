@@ -144,10 +144,10 @@ in the changelog when publishing a new release.
 
 ### Publishing and Versioning
 
+Due to new restrictions imposed by Jit, this process must be done on the branch prior to merging to main.
 Assuming changes are approved, the process of publishing a new version is...
 0. Ensure your local environment is
-   [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
-   the `main` branch
+   [setup](./README.md#installing-dependencies-and-linking-packages)
 1. Make sure the package.json versions in `es-ds-styles` and `es-ds-components` is updated to a new version 
    that hasn't been published before on NPM.
 2. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
@@ -163,4 +163,4 @@ Assuming changes are approved, the process of publishing a new version is...
 9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
    Commit and push the changelog and `package-lock.json` updates
 
-Deploys currently happen automatically to new.design.energysage.dev.
+Deploys to design.energysage.dev can be initiated through GitHub actions once your branch is merged.
