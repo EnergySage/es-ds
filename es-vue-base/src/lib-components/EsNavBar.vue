@@ -539,12 +539,20 @@ export default {
         // FOOTER SCRIPT
 
         // https://energysage.atlassian.net/wiki/spaces/FG/pages/1427865649/One-trust+Consent+Initialization+and+GTM
+        let previousConsentState = null;
+        const getConsentState = () => new Set(window.OnetrustActiveGroups.split(',').filter((item) => item !== ''));
         window.addEventListener('OneTrustLoadedCb', () => {
+            if (!previousConsentState && window.OnetrustActiveGroups) {
+                previousConsentState = getConsentState();
+            }
             window.OneTrust.OnConsentChanged(() => {
-                // OneTrust modal should modify cookie values, a hard-refresh will
-                // trigger re-loading GTM with updated cookie values, which in turn
-                // will only fire tags aligned with new preferences
-                window.location.reload();
+                // If the new consent configuration allows anything but a superset of categories, then we
+                // need to refresh the page so that ongoing tracking scripts the user has opted out of
+                // stop immediately.
+                const newConsentState = getConsentState();
+                if (!previousConsentState || !newConsentState.isSupersetOf(previousConsentState)) {
+                    window.location.reload();
+                }
                 return false;
             });
             document.querySelectorAll('.toggle-info-display').forEach((elem) => {
