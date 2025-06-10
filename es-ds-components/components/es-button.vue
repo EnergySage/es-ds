@@ -80,14 +80,15 @@ const getRootClasses = computed(() => {
     const btnSize = props.size ? `btn-${props.size}` : 'btn-md';
     return `btn ${btnVariant} ${btnInline} ${btnSize}`;
 });
+
+/*
+    <a> is needed for href because a root-relative link like /market/start/
+    that is passed to <nuxt-link :to="" /> will attempt to internally navigate
+    within a micro frontend, which will result in a 404
+*/
 </script>
 
 <template>
-    <!--
-        <a> is needed for href because a root-relative link like /market/start/
-        that is passed to <nuxt-link :to="" /> will attempt to internally navigate
-        within a micro frontend, which will result in a 404
-    -->
     <a
         v-if="props.href"
         :class="getRootClasses"
