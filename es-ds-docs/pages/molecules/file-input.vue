@@ -24,6 +24,7 @@ const propTableRows = [
         'Max file size in MB. This is per file. Any file that exceeds this size will not be uploaded.',
     ],
     ['collapsed', 'Boolean', 'false', 'In desktop view, determines whether the upload box is horizontally collapsed.'],
+    ['multiple', 'Boolean', 'true', 'When true, allows multiple file selection. When false, restricts to single file selection.'],
 ];
 
 const fileUploadEventListeners = [
@@ -201,6 +202,32 @@ const fileSizeError = (fileName: string) => {
                 <template #helpText>
                     <p class="d-none d-md-block">Please upload your file as a PDF or PNG.</p>
                     <p class="d-md-none mb-0">File types: PDF or PNG</p>
+                </template>
+            </es-file-input>
+        </div>
+        <div class="mb-500">
+            <h2 class="mb-50">Single file mode</h2>
+            <p class="mb-150">When <code>:multiple="false"</code> is set, only one file can be selected at a time.</p>
+            <es-file-input
+                :upload-urls="uploadUrls"
+                :file-types="['image/png', 'application/pdf']"
+                :multiple="false"
+                @file-size-error="fileSizeError"
+                @file-type-error="fileTypeError"
+                @file-is-a-folder-error="fileIsAFolderError"
+                @ready-to-upload="readyToUpload"
+                @upload-success="uploadSuccess"
+                @upload-failure="uploadFailure"
+                @file-data-read="fileDataRead">
+                <template #cta>
+                    <h3 class="d-none d-md-block mb-200 text-center">Drag and drop your file or</h3>
+                    <p class="d-block d-md-none text-center">
+                        Upload a single file
+                    </p>
+                </template>
+                <template #helpText>
+                    <p class="d-none d-md-block">Please upload one file as a PDF or PNG.</p>
+                    <p class="d-md-none mb-0">Single file: PDF or PNG</p>
                 </template>
             </es-file-input>
         </div>

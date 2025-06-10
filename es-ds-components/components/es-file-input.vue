@@ -48,6 +48,15 @@ const props = defineProps({
         default: false,
         required: false,
     },
+    /**
+     * When true, allows multiple file selection. When false, restricts to single file selection.
+     * Defaults to true to maintain backward compatibility.
+     */
+    multiple: {
+        type: Boolean,
+        default: true,
+        required: false,
+    },
 });
 
 let currentFiles: Array<File> = [];
@@ -204,6 +213,13 @@ async function verifyFiles(files: Array<File>) {
     // @ts-expect-error basically we're filtering out the non-Files here
     newValidFiles = newValidFiles.filter((file) => file && file.status === 'fulfilled').map((file) => file.value);
 
+    // If multiple is false, only keep the first file
+    if (!props.multiple && newValidFiles.length > 0) {
+        newValidFiles = [newValidFiles[0]];
+        // Clear existing files when single mode is enabled
+        currentFiles = [];
+    }
+
     // If the new file with name already exists in the current files
     // Don't upload the new file and display an error
     const duplicateFiles = newValidFiles.filter(({ name }) => currentFiles.some((file) => file.name === name));
@@ -211,7 +227,13 @@ async function verifyFiles(files: Array<File>) {
 
     // For new files with unused names, add them to files
     newValidFiles = newValidFiles.filter(({ name }) => !currentFiles.some((file) => file.name === name));
-    currentFiles = [...currentFiles, ...newValidFiles];
+    
+    // In single file mode, replace existing files instead of adding to them
+    if (!props.multiple && newValidFiles.length > 0) {
+        currentFiles = newValidFiles;
+    } else {
+        currentFiles = [...currentFiles, ...newValidFiles];
+    }
 
     if (newValidFiles.length > 0) {
         emit('readyToUpload', newValidFiles);
@@ -328,7 +350,7 @@ const openFilePicker = () => {
             type="file"
             :accept="fileTypes.join(', ')"
             style="display: none"
-            multiple
+            :multiple="multiple"
             @change="onFileChanged($event)" />
     </div>
 </template>
