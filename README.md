@@ -207,23 +207,21 @@ together.
 Assuming changes are approved, the process of publishing a new version is...
 
 0. Ensure your local environment is
-   [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
-   the `main` branch
+   [setup](./README.md#installing-dependencies-and-linking-packages) and you are on the branch of code that you're releasing, which is up to date with the main branch
 1. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
 2. `make install && make symlink` - Install the new published versions locally
    and symlink them
 3. `make build` - Build all packages to `*/dist` folders locally
 4. `make lint && make test` - Run tests and linting to ensure they pass
-5. Open a new branch for the release specifically
-6. `make publish` - Publish updated packages to
+5. `make publish` - Publish updated packages to
    [npmjs.com](https://www.npmjs.com/org/energysage)
-7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
-8. `make install && make symlink` - Install the new published versions locally
+6. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
+7. `make install && make symlink` - Install the new published versions locally
    and symlink them
-9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
+8. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
    Commit and push the changelog and `package-lock.json` updates to our new branch
-10. Open a PR for this new branch and get it merged
-11. To update the v2 design system website, run the
+9. Merge the PR
+10. To update the v2 design system website, run the
    [deploy GitHub action](https://github.com/EnergySage/es-ds-legacy/actions/workflows/deploy.yml)
 
 Running `make publish` will trigger the following prompt:
