@@ -24,7 +24,12 @@ const propTableRows = [
         'Max file size in MB. This is per file. Any file that exceeds this size will not be uploaded.',
     ],
     ['collapsed', 'Boolean', 'false', 'In desktop view, determines whether the upload box is horizontally collapsed.'],
-    ['multiple', 'Boolean', 'true', 'When true, allows multiple file selection. When false, restricts to single file selection.'],
+    [
+        'multiple',
+        'Boolean',
+        'true',
+        'When true, allows multiple file selection. When false, restricts to single file selection.',
+    ],
 ];
 
 const fileUploadEventListeners = [
@@ -221,9 +226,7 @@ const fileSizeError = (fileName: string) => {
                 @file-data-read="fileDataRead">
                 <template #cta>
                     <h3 class="d-none d-md-block mb-200 text-center">Drag and drop your file or</h3>
-                    <p class="d-block d-md-none text-center">
-                        Upload a single file
-                    </p>
+                    <p class="d-block d-md-none text-center">Upload a single file</p>
                 </template>
                 <template #helpText>
                     <p class="d-none d-md-block">Please upload one file as a PDF or PNG.</p>

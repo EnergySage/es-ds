@@ -227,7 +227,7 @@ async function verifyFiles(files: Array<File>) {
 
     // For new files with unused names, add them to files
     newValidFiles = newValidFiles.filter(({ name }) => !currentFiles.some((file) => file.name === name));
-    
+
     // In single file mode, replace existing files instead of adding to them
     if (!props.multiple && newValidFiles.length > 0) {
         currentFiles = newValidFiles;
