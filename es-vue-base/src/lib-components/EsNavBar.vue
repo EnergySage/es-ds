@@ -539,18 +539,19 @@ export default {
         // FOOTER SCRIPT
 
         // https://energysage.atlassian.net/wiki/spaces/FG/pages/1427865649/One-trust+Consent+Initialization+and+GTM
-        let previousConsentState = null;
+        let currentConsentState = null;
         const getConsentState = () => new Set(window.OnetrustActiveGroups.split(',').filter((item) => item !== ''));
         window.addEventListener('OneTrustLoadedCb', () => {
-            if (!previousConsentState && window.OnetrustActiveGroups) {
-                previousConsentState = getConsentState();
+            if (!currentConsentState && window.OnetrustActiveGroups) {
+                currentConsentState = getConsentState();
             }
             window.OneTrust.OnConsentChanged(() => {
                 // If the new consent configuration allows anything but a superset of categories, then we
                 // need to refresh the page so that ongoing tracking scripts the user has opted out of
                 // stop immediately.
-                const newConsentState = getConsentState();
-                if (!previousConsentState || !newConsentState.isSupersetOf(previousConsentState)) {
+                const previousConsentState = currentConsentState;
+                currentConsentState = getConsentState();
+                if (!previousConsentState || !currentConsentState.isSupersetOf(previousConsentState)) {
                     window.location.reload();
                 }
                 return false;
