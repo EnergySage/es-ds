@@ -225,12 +225,14 @@ const fileSizeError = (fileName: string) => {
                 @upload-failure="uploadFailure"
                 @file-data-read="fileDataRead">
                 <template #cta>
-                    <h3 class="d-none d-md-block mb-200 text-center">Drag and drop your file or</h3>
-                    <p class="d-block d-md-none text-center">Upload a single file</p>
+                    <h2 class="d-none d-md-inline-block font-size-500 text-center my-200">
+                        Drag and drop your file or
+                    </h2>
+                    <p class="d-inline-block d-md-none my-200 text-center">Upload a single file</p>
                 </template>
                 <template #helpText>
-                    <p class="d-none d-md-block">Please upload one file as a PDF or PNG.</p>
-                    <p class="d-md-none mb-0">Single file: PDF or PNG</p>
+                    <p class="d-none d-md-inline-block mb-0 mt-200">Please upload one file as a PDF or PNG.</p>
+                    <p class="d-inline-block d-md-none mb-0 mt-200 font-size-sm">Single file: PDF or PNG</p>
                 </template>
             </es-file-input>
         </div>
