@@ -186,15 +186,21 @@ export default (
             isPrivacyButton: false,
         },
         {
-            icon: 'icon-twitter',
-            text: 'X',
-            url: 'https://x.com/energysage',
-            isPrivacyButton: false,
-        },
-        {
             icon: 'icon-youtube',
             text: 'YouTube',
             url: 'https://www.youtube.com/c/EnergySage',
+            isPrivacyButton: false,
+        },
+        {
+            icon: 'icon-threads',
+            text: 'Threads',
+            url: 'https://www.threads.net/@energysage_official',
+            isPrivacyButton: false,
+        },
+        {
+            icon: 'icon-bluesky',
+            text: 'Bluesky',
+            url: 'https://bsky.app/profile/energysage.com',
             isPrivacyButton: false,
         },
     ],
