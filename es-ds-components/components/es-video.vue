@@ -12,7 +12,7 @@ const showVideo = ref(false);
 
 // Methods
 function getVideoIdFromUrl(url: string) {
-    const embedPattern = /https:\/\/www\.youtube\.com\/embed\/(?<videoId>[A-Za-z0-9-]+)/;
+    const embedPattern = /https:\/\/www\.youtube\.com\/embed\/(?<videoId>[_A-Za-z0-9-]+)/;
     const parsedUrl = embedPattern.exec(url);
     if (parsedUrl) {
         return parsedUrl?.groups?.videoId;
@@ -34,9 +34,13 @@ const embedUrlWithParams = computed(
             class="embed-responsive embed-responsive-16by9">
             <iframe
                 :id="`youtube-video-${videoId}`"
-                :src="embedUrlWithParams"
                 class="embed-responsive-item"
-                frameborder="0"></iframe>
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                frameborder="0"
+                referrerpolicy="strict-origin-when-cross-origin"
+                :src="embedUrlWithParams"
+                title="YouTube video player"></iframe>
         </div>
         <es-card
             v-else

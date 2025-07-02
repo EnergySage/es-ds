@@ -23,7 +23,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-form.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./form.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
@@ -40,7 +40,7 @@ const asyncTimeout = async (seconds = 3) => {
 
 const fakeServerRequest = async () => {
     await asyncTimeout();
-    // eslint-disable-next-line no-console
+
     console.log('Submit Complete!');
 };
 

@@ -35,8 +35,14 @@ const actualVariant = computed(() => {
 });
 const defaultTag = computed(() => {
     // if an href is provided and no alternate link tag was provided (e.g. nuxt-link),
-    // force the tag to be a nuxt-link, no matter the variant
+    // force the tag to be an anchor tag, no matter the variant
     if (props.href && props.tag === 'div') {
+        return 'a';
+    }
+
+    // if a 'to' destination is provided and no alternate link tag was provided (e.g. nuxt-link),
+    // force the tag to be a nuxt-link, no matter the variant
+    if (props.to && props.tag === 'div') {
         return 'nuxt-link';
     }
 
@@ -57,7 +63,8 @@ const defaultTag = computed(() => {
         :is="defaultTag == 'nuxt-link' ? NuxtLink : defaultTag"
         class="es-card"
         :class="actualVariant"
-        :to="to ? to : href"
+        :href="href"
+        :to="to"
         v-bind="$attrs">
         <slot />
     </component>

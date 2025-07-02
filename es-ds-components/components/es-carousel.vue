@@ -30,7 +30,7 @@ interface IProps {
     breakpoints?: EsCarouselBreakpointsInterface;
     circular?: boolean;
     controlGap?: number;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     items: Array<any>;
     numScroll?: number;
     numVisible?: number;

@@ -28,7 +28,7 @@ const props = defineProps({
      */
     labelFormatter: {
         type: Function,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
         default: (val: any) => val,
     },
     /**
@@ -66,7 +66,7 @@ const props = defineProps({
      */
     tooltipFormatter: {
         type: Function,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
         default: (val: any) => val,
     },
 });

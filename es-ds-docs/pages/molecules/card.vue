@@ -10,7 +10,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-card.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./card.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
@@ -139,6 +139,27 @@ onMounted(async () => {
                     <ds-responsive-table-column :md="columnWidths.md[2]">
                         <template #name> Description </template>
                         <template #value> The name of the tag or component the card should render as. </template>
+                    </ds-responsive-table-column>
+                </ds-responsive-table-row>
+                <ds-responsive-table-row>
+                    <ds-responsive-table-column :md="columnWidths.md[0]">
+                        <template #name> Name </template>
+                        <template #value>
+                            <code>to</code>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[1]">
+                        <template #name> Default </template>
+                        <template #value>
+                            <code>undefined</code>
+                        </template>
+                    </ds-responsive-table-column>
+                    <ds-responsive-table-column :md="columnWidths.md[2]">
+                        <template #name> Description </template>
+                        <template #value>
+                            If card is intended to be an internal link within a Nuxt application, the URL destination
+                            should be passed in here.
+                        </template>
                     </ds-responsive-table-column>
                 </ds-responsive-table-row>
                 <ds-responsive-table-row>

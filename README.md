@@ -1,4 +1,4 @@
-**NOTICE: this is a vue3 based design system, if you're working with a vue2 and/or bootstrap based micro-frontend, please see [EnergySage/es-ds-legacy](https://github.com/EnergySage/es-ds-legacy) instead**
+**NOTICE: this is a vue3 based design system, if you're working with a vue2 based micro-frontend, please see [EnergySage/es-ds-legacy](https://github.com/EnergySage/es-ds-legacy) instead**
 
 # EnergySage Design System
 
@@ -41,6 +41,7 @@ graph TB
     end
     Y(nuxt3)
     Z(primevue) --> C
+    X(reka-ui) --> C
     Y-->D
 ```
 
@@ -60,7 +61,7 @@ in a future version.
 
 **es-ds-components**
 - [es-ds-components](./es-ds-components/) contains Vue 3 components for use in Nuxt 3 projects.
-It is primarily based on [PrimeVue](https://primevue.org/), with some customizations specific to EnergySage.
+It is primarily based on [PrimeVue](https://primevue.org/) and [Reka UI](https://reka-ui.com/), with some customizations specific to EnergySage.
 
 **es-ds-docs**
 - This is the design system documentation site powered by Nuxt 3.
@@ -143,10 +144,10 @@ in the changelog when publishing a new release.
 
 ### Publishing and Versioning
 
+Due to new restrictions imposed by Jit, this process must be done on the branch prior to merging to main.
 Assuming changes are approved, the process of publishing a new version is...
 0. Ensure your local environment is
-   [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
-   the `main` branch
+   [setup](./README.md#installing-dependencies-and-linking-packages)
 1. Make sure the package.json versions in `es-ds-styles` and `es-ds-components` is updated to a new version 
    that hasn't been published before on NPM.
 2. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
@@ -162,5 +163,4 @@ Assuming changes are approved, the process of publishing a new version is...
 9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
    Commit and push the changelog and `package-lock.json` updates
 
-For updating the design-system website see 
-[Deploy Design System](https://energysage.atlassian.net/wiki/spaces/CE/pages/1094058044/3.0+and+later+Deploy+Design+System+Documentation)
+Deploys to design.energysage.dev can be initiated through GitHub actions once your branch is merged.

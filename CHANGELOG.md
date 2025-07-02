@@ -5,7 +5,110 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## 3.1.7 - 2025-06-13
+
+- Made it possible for file picker to restrict to a single file
+
+## 3.1.6 - 2025-06-06
+
+- Upgraded dependencies, including Nuxt (3.15 to 3.17)
+
+## 3.1.5 - 2025-05-13
+
+- Added `sideImage` slot, `sideImageContainerClass` prop, and `semi-wide` variant to EsCtaBanner
+
+## 3.1.4 - 2025-05-01
+
+- Fixed an issue with IconFacebook where it didn't resize based on the height and width props passed to it
+
+## 3.1.3 - 2025-04-30
+
+- Added `closable` and `showFooterSeparator` props to EsModal
+- The EsModal header will now automatically hide if the modal title slot is not provided
+
+## 3.1.2 - 2025-04-30
+
+- Added social icons for Bluesky and Threads
+- Improved the layout of EsPopover so the content can go full width and wrap around the close button
+- Deprecated the `cta` slot of EsPopover as it's no longer needed to go full width
+- Fixed an issue with EsCollapse where it didn't have a visible focus outline when tabbed to via keyboard
+
+## 3.1.1 - 2025-04-21
+
+- Fixed an issue with IconTwitter where the inner part of the X was forced to be white instead of the icon color
+
+## 3.1.0 - 2025-04-17
+
+- ***BREAKING CHANGE:*** The `target` and `triggers` props of EsPopover have been removed and a `trigger` slot is now available
+- EsPopover is now based on [Reka UI Popover](https://reka-ui.com/docs/components/popover) instead of [PrimeVue OverlayPanel](https://v3.primevue.org/overlaypanel/)
+- A new EsTooltip component has been added based on [Reka UI Tooltip](https://reka-ui.com/docs/components/tooltip), that will fall back to the EsPopover implementation on touch devices
+- Fixed an issue where EsPopover was not accessible by screen readers or keyboard
+- Fixed an issue where EsPopover positioning was incorrect if the triggering element was too close to the right edge of the viewport
+- EsPopover now supports left, right, top, and bottom positioning relative to the trigger button
+- EsPopover background color has been updated from black to dark blue
+- EsPopover arrow is now rounded
+- EsPopover can now accept a `cta` slot to enable a link or button to appear full width within the popover
+- EsPopover will now automatically flip to the opposite side of the triggering element automatically while the popover is open if a scroll or other movement collides with the viewport edge
+- EsPopover can now have a collision padding set so it will flip a certain amount of pixels prior to reaching the viewport edge (e.g. in case of a sticky nav bar)
+- Added Tooltip within the list of components referenced on the Corners docs page
+- Removed the old, now-unused popover styles from es-ds-styles
+
+## 3.0.11 - 2025-04-17
+
+- Fixed an issue with EsTabs where it would fail to render if a code comment was a child of EsTabs
+- Fixed an issue where screen readers would announce an incorrect header for the EsCollapse toggle
+- Fixed an issue with EsVideo where it would reject a YouTube embed URL if it contained an underscore
+
+## 3.0.10 - 2025-04-10
+
+- The `dark` prop on EsCtaBanner is now deprecated in favor of a new `background` prop
+- Added a new stacked `variant` of EsCtaBanner
+
+## 3.0.9 - 2025-04-04
+
+- Fixed an issue in EsCard where root-relative links were treated as internal links, breaking navigation to links outside the same Nuxt app
+
+## 3.0.8 - 2025-03-07
+
+- Removed EsNavBar and EsFooter as they are now hosted elsewhere
+
+## 3.0.7 - 2025-03-06
+
+- Fixed an issue in EsCollapse where if the heading contained more than one element, the layout would break
+
+## 3.0.6 - 2025-03-05
+
+- Fixed an issue in EsNavBar where the mobile Solar Calculator link was not a link
+
+## 3.0.5 - 2025-02-26
+
+- Fixed an issue in EsZipCodeForm where the context message would sometimes not be aligned left
+- Fixed one moderate security vulnerability via dependency updates
+
+## 3.0.4 - 2025-02-20
+
+- Added a new `contextMessage` prop to EsZipCodeForm
+- Fixed an accessibility issue with EsCollapse by adding descriptive text to its expand/collapse button
+
+## 3.0.3 - 2025-02-18
+
+- Fix a mobile issue in EsAccordion where the expand animation would sometimes not animate to the full height of the content
+- Fixed an issue when running the local es-ds-docs server where sometimes an `EMFILE: too many open files, watch` error would crash the server
+- Updated the version and config of eslint in es-ds-components and es-ds-docs
+- Fixed four moderate security vulnerabilities via dependency updates
+
+## [3.0.2] - 2025-02-14
+
+- Fixed an issue in EsVideo where the video would fail to play sometimes
+- Temporarily removed "Your privacy choices" link in EsFooter
+
+## [3.0.1] - 2025-02-07
+
+- Fix hydration error in EsErrorPage
+
+## [3.0.0] - 2025-02-05
+
+- Update to Vue/Nuxt 3. This is a big change; see [documentation in Confluence](https://energysage.atlassian.net/wiki/spaces/DS/pages/1489174627/Changelog+from+ESDS+v2+to+v3).
 
 ## [2.1.0] - 2024-07-24
 
@@ -1064,6 +1167,9 @@ the new `showPrivacySection` prop
 - Tweaks to `EsTabs` *molecule* component
 - Tweaks to `EsCollapse
 
+[3.0.2]: https://github.com/EnergySage/es-ds/pull/1574
+[3.0.1]: https://github.com/EnergySage/es-ds/pull/1571
+[3.0.0]: https://github.com/EnergySage/es-ds/pull/1461
 [2.1.0]: https://github.com/EnergySage/es-ds/compare/v2.0.6...v2.1.0
 [2.0.6]: https://github.com/EnergySage/es-ds/compare/v2.0.5...v2.0.6
 [2.0.5]: https://github.com/EnergySage/es-ds/compare/v2.0.4...v2.0.5

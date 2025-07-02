@@ -1,20 +1,23 @@
-// eslint-disable-next-line import/no-unresolved
-const { esNuxt } = require('es-cdk');
-const path = require('path');
-const cdk = require('aws-cdk-lib');
-const { version } = require('../../package.json');
+import * as path from 'path';
+import * as cdk from 'aws-cdk-lib';
+import { esNuxt } from 'es-cdk';
+
+import { version } from '../../package.json';
+import type { Construct } from 'constructs';
+import type { DsProps } from './interfaces';
 
 /**
  * A stack that sets up NuxtStatic
  */
-class NuxtStaticStack extends cdk.Stack {
-    constructor(scope, id, props) {
+
+export class NuxtStaticStack extends cdk.Stack {
+    constructor(scope: Construct, id: string, props: DsProps) {
         super(scope, id, props);
 
-        // eslint-disable-next-line no-new
         new esNuxt.NuxtStatic(this, 'DesignSystemApp', {
             // The domain (without the protocol) at which the Nuxt app shall be publicly available.
-            rootDomain: 'design.energysage.dev',
+            rootDomain: props.rootDomain,
+            subDomain: props.subDomain,
             version,
             // Used to determine where static files are located and what caching metadata to use
             nuxtConfig: {
@@ -42,7 +45,9 @@ class NuxtStaticStack extends cdk.Stack {
                 },
             },
         });
+
+        new cdk.CfnOutput(this, 'Route53HostName', {
+            value: `https://${props.subDomain ? `${props.subDomain}.` : ''}${props.rootDomain}`,
+        });
     }
 }
-
-module.exports = { NuxtStaticStack };

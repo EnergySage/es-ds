@@ -1,0 +1,27 @@
+name: slack
+
+inputs:
+    slack-channel:
+        description: Slack channel name
+        required: true
+        default: ''
+    slack-token:
+        description: Slack webhook token
+        required: true
+        default: ''
+    slack-message:
+        description: Slack Message
+        required: true
+        default: ''
+
+runs:
+    using: composite
+    steps:
+        - name: Post to a Slack channel
+          id: slack
+          uses: slackapi/slack-github-action@v1.25.0
+          with:
+              channel-id: ${{ inputs.slack-channel }}
+              slack-message: ${{ inputs.slack-message }}
+          env:
+              SLACK_BOT_TOKEN: ${{ inputs.slack-token }}

@@ -4,35 +4,44 @@ import IconCommunitySolar from './icon/community-solar.vue';
 import IconInfoBlogPost from './icon/info-blog-post.vue';
 import IconMarketplace from './icon/marketplace.vue';
 
-const ES_DOMAIN = process.env.ES_DOMAIN || 'https://www.energysage.com';
-const linkItems = [
-    {
-        icon: IconContactUs,
-        link: 'mailto:hello@energysage.com',
-        label: 'Contact us',
-    },
-    {
-        icon: IconCommunitySolar,
-        link: `${ES_DOMAIN}/solar/`,
-        label: 'Learn about solar',
-    },
-    {
-        icon: IconInfoBlogPost,
-        link: `${ES_DOMAIN}/blog/`,
-        label: 'EnergySage blog',
-    },
-    {
-        icon: IconMarketplace,
-        link: `${ES_DOMAIN}/shop/home-solar/`,
-        label: 'EnergySage marketplace',
-    },
-];
-
 const props = defineProps({
     errorType: {
         type: String,
         required: true,
     },
+    esDomain: {
+        type: String,
+        default: null,
+    },
+});
+
+const esDomain = computed(() => {
+    return props.esDomain || 'https://www.energysage.com';
+});
+
+const linkItems = computed(() => {
+    return [
+        {
+            icon: IconContactUs,
+            link: 'mailto:hello@energysage.com',
+            label: 'Contact us',
+        },
+        {
+            icon: IconCommunitySolar,
+            link: `${esDomain.value}/solar/`,
+            label: 'Learn about solar',
+        },
+        {
+            icon: IconInfoBlogPost,
+            link: `${esDomain.value}/blog/`,
+            label: 'EnergySage blog',
+        },
+        {
+            icon: IconMarketplace,
+            link: `${esDomain.value}/shop/home-solar/`,
+            label: 'EnergySage marketplace',
+        },
+    ];
 });
 
 interface ErrorCode {

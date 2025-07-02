@@ -20,6 +20,7 @@ const props = defineProps({
 });
 
 const userDeterminedState: Ref<boolean | null> = ref(null);
+const uniqueId = useId();
 
 // directly determines the expanded/collapsed state of the panel
 const expanded = computed(() => {
@@ -52,8 +53,9 @@ const onClick = ({ value }: { value: boolean }) => {
 <template>
     <panel
         :collapsed="!expanded"
+        :toggle-button-props="{ 'aria-labelledby': uniqueId }"
         :pt="{
-            header: 'align-items-center d-flex justify-content-between position-relative py-100',
+            header: 'd-flex flex-column justify-content-center position-relative py-100',
             icons: 'h-100 position-absolute w-100',
             root: border ? 'border-bottom border-top' : '',
             toggler: {
@@ -73,7 +75,9 @@ const onClick = ({ value }: { value: boolean }) => {
         toggleable
         @toggle="onClick">
         <template #header>
-            <slot name="title" />
+            <div :id="uniqueId">
+                <slot name="title" />
+            </div>
         </template>
         <template #togglericon>
             <icon-chevron-down />
@@ -81,3 +85,12 @@ const onClick = ({ value }: { value: boolean }) => {
         <slot />
     </panel>
 </template>
+<style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+
+:deep(.es-collapse-toggler:focus-visible) {
+    outline: 2px auto variables.$blue-600;
+    outline: 2px auto -webkit-focus-ring-color;
+    outline-offset: 2px;
+}
+</style>

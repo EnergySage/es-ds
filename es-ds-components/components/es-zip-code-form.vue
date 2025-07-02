@@ -52,6 +52,10 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    contextMessage: {
+        type: String,
+        default: '',
+    },
 });
 
 const state = reactive({
@@ -105,6 +109,11 @@ const handleSubmit = () => {
         }"
         v-bind="$attrs">
         <div class="d-flex flex-column">
+            <p
+                v-if="contextMessage"
+                class="mb-50 font-size-75 text-left">
+                {{ contextMessage }}
+            </p>
             <form
                 ref="ctaForm"
                 class="justify-content-center w-100"
@@ -141,7 +150,7 @@ const handleSubmit = () => {
                     </template>
                     <template #errorMessage>
                         <span :class="{ 'text-white': dark }">
-                            <slot name="errorMessage"> Please enter a 5-digit zip code. </slot>
+                            <slot name="errorMessage">Please enter a 5-digit zip code.</slot>
                         </span>
                     </template>
                 </es-form-input>
@@ -158,7 +167,7 @@ const handleSubmit = () => {
                     }"
                     type="submit"
                     :variant="dark ? 'dark-bg' : 'primary'">
-                    <slot name="buttonText"> Submit </slot>
+                    <slot name="buttonText">Submit</slot>
                 </es-button>
             </form>
             <div
@@ -181,7 +190,7 @@ const handleSubmit = () => {
                         class="text-nowrap"
                         :class="dark ? 'text-white' : ''"
                         :target="privacyPolicyNewTab ? '_blank' : '_self'">
-                        <slot name="privacyPolicyLinkText"> Privacy Policy </slot>
+                        <slot name="privacyPolicyLinkText">Privacy Policy</slot>
                     </nuxt-link>
                 </div>
             </div>

@@ -24,6 +24,12 @@ const propTableRows = [
         'Max file size in MB. This is per file. Any file that exceeds this size will not be uploaded.',
     ],
     ['collapsed', 'Boolean', 'false', 'In desktop view, determines whether the upload box is horizontally collapsed.'],
+    [
+        'multiple',
+        'Boolean',
+        'true',
+        'When true, allows multiple file selection. When false, restricts to single file selection.',
+    ],
 ];
 
 const fileUploadEventListeners = [
@@ -84,7 +90,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-file-input.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./file-input.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);
@@ -201,6 +207,32 @@ const fileSizeError = (fileName: string) => {
                 <template #helpText>
                     <p class="d-none d-md-block">Please upload your file as a PDF or PNG.</p>
                     <p class="d-md-none mb-0">File types: PDF or PNG</p>
+                </template>
+            </es-file-input>
+        </div>
+        <div class="mb-500">
+            <h2 class="mb-50">Single file mode</h2>
+            <p class="mb-150">When <code>:multiple="false"</code> is set, only one file can be selected at a time.</p>
+            <es-file-input
+                :upload-urls="uploadUrls"
+                :file-types="['image/png', 'application/pdf']"
+                :multiple="false"
+                @file-size-error="fileSizeError"
+                @file-type-error="fileTypeError"
+                @file-is-a-folder-error="fileIsAFolderError"
+                @ready-to-upload="readyToUpload"
+                @upload-success="uploadSuccess"
+                @upload-failure="uploadFailure"
+                @file-data-read="fileDataRead">
+                <template #cta>
+                    <h2 class="d-none d-md-inline-block font-size-500 text-center my-200">
+                        Drag and drop your file or
+                    </h2>
+                    <p class="d-inline-block d-md-none my-200 text-center">Upload a single file</p>
+                </template>
+                <template #helpText>
+                    <p class="d-none d-md-inline-block mb-0 mt-200">Please upload one file as a PDF or PNG.</p>
+                    <p class="d-inline-block d-md-none mb-0 mt-200 font-size-sm">Single file: PDF or PNG</p>
                 </template>
             </es-file-input>
         </div>

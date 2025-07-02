@@ -15,9 +15,8 @@ const compCode = ref('');
 const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
-        // eslint-disable-next-line import/no-unresolved
         const compSource = await import('@energysage/es-ds-components/components/es-data-table-simple.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./data-table-simple.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);

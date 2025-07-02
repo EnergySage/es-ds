@@ -6,7 +6,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/components/es-zip-code-form.vue?raw');
-        // eslint-disable-next-line import/no-self-import
+
         const docSource = await import('./zip-code-form.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);
@@ -23,6 +23,7 @@ const propTableRows = [
         `Reduces the button padding and privacy text font size to better accommodate
             limited-width layouts.`,
     ],
+    ['contextMessage', 'String', "''", 'Optional message to display above the ZIP code input field.'],
     ['dark', 'Boolean', 'false', 'Renders the CTA with white text (suitable for display on a dark background).'],
     ['fieldName', 'String', "'zip_code'", 'The name to use when submitting the ZIP code to the provided url.'],
     ['inputId', 'String', 'n/a', 'Required. The id for the zip entry. Must be unique on the page.'],
@@ -256,6 +257,29 @@ const slotTableRows = [
                         url="https://www.energysage.com/onboarding/start/"
                         selected-product="heatpump">
                         <template #buttonText> See local heat pump offers </template>
+                    </es-zip-code-form>
+                </es-col>
+            </es-row>
+        </div>
+
+        <div class="mb-500">
+            <h2>Context message example</h2>
+            <p class="mb-500">
+                This example shows how to use the <code>contextMessage</code> prop to display a message above the ZIP
+                code input.
+            </p>
+            <es-row class="justify-content-center">
+                <es-col
+                    class="d-flex justify-content-center"
+                    sm="10"
+                    md="8">
+                    <es-zip-code-form
+                        input-id="context-message-example"
+                        context-message="Enter your ZIP code to get started."
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        stack-until="lg"
+                        url="https://www.energysage.com/market/start/">
+                        <template #buttonText>See local offers</template>
                     </es-zip-code-form>
                 </es-col>
             </es-row>
