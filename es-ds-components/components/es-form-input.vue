@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import InputText from 'primevue/inputtext';
 import InputMask from 'primevue/inputmask';
+import { useSlots } from 'vue';
 // Prevents attributes from being applied to first <div>
 // v-bind="$attr" is on the input instead
 defineOptions({

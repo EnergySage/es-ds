@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // Cannot import as Button due to issue with native element Button
 import PrimeButton from 'primevue/button';
+import { computed } from 'vue';
 
 /*
 severity:
