@@ -33,7 +33,23 @@
   text-align: center;
   white-space: nowrap;
   background-color: variables.$progress-bar-bg;
+  background: linear-gradient(90deg, variables.$orange-300 20%, variables.$orange-800 100%);
   @include transition.transition(variables.$progress-bar-transition);
+}
+
+.progress-bar--with-circle {
+  &::after {
+    background: variables.$white;
+    border: 0.5px solid variables.$warm-orange;
+    border-radius: 50%;
+    box-shadow: (0 0 1px 1px variables.$warm-orange inset, 0 0 4px 0 variables.$warm-orange);
+    content: '';
+    height: 6px;
+    overflow: visible;
+    position: absolute;
+    right: -3px;
+    width: 6px;
+  }
 }
 
 .progress-bar-striped {
