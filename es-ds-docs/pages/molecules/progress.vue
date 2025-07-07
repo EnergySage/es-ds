@@ -5,7 +5,12 @@ const compCode = ref('');
 const docCode = ref('');
 
 const propTableRows = [
-    ['formatter', 'Function', '(val: number) => `${val}%`', 'Allows controlling the display of the value displayed when showValue is set to true.'],
+    [
+        'formatter',
+        'Function',
+        '(val: number) => `${val}%`',
+        'Allows controlling the display of the value displayed when showValue is set to true.',
+    ],
     ['height', 'String', '0.125rem', 'Specifies height of the progress bar'],
     ['showCircle', 'Boolean', 'true', 'Set to false to hide the indicator circle.'],
     ['showValue', 'Boolean', 'false', 'When present, it shows the progress bar value below the bar.'],
@@ -43,21 +48,30 @@ onMounted(async () => {
 
         <div class="my-500">
             <h2>Basic example</h2>
-            <es-progress class="mb-100" :value="0" />
-            <es-progress class="mb-100" :value="33" />
-            <es-progress class="mb-100" :value="67" />
-            <es-progress class="mb-100" :value="100" />
+            <es-progress
+                class="mb-100"
+                :value="0" />
+            <es-progress
+                class="mb-100"
+                :value="33" />
+            <es-progress
+                class="mb-100"
+                :value="67" />
+            <es-progress
+                class="mb-100"
+                :value="100" />
         </div>
 
         <div class="my-500">
-            <h2>
-                Animated transition
-            </h2>
+            <h2>Animated transition</h2>
             <p>
-                If the value of the progress bar is changed programmatically, it will animate to the new value. Try clicking one of the buttons below to add or subtract from the progress bar's value.
+                If the value of the progress bar is changed programmatically, it will animate to the new value. Try
+                clicking one of the buttons below to add or subtract from the progress bar's value.
             </p>
 
-            <es-progress class="mb-100" :value="value" />
+            <es-progress
+                class="mb-100"
+                :value="value" />
 
             <div class="mb-100">
                 <es-button
@@ -84,18 +98,29 @@ onMounted(async () => {
         </div>
 
         <div class="my-500">
-            <h2>
-                Showing the value
-            </h2>
+            <h2>Showing the value</h2>
             <p>
-                These examples show how to make the value of the progress bar visible, and how to format it to display in whatever way you want.
+                These examples show how to make the value of the progress bar visible, and how to format it to display
+                in whatever way you want.
             </p>
 
-            <es-progress class="mb-100" :value="value" show-value />
+            <es-progress
+                class="mb-100"
+                :value="value"
+                show-value />
 
-            <es-progress class="mb-100" :formatter="(val: number) => `${(val * 10) / 100} of 10`" :value="value" show-value />
+            <es-progress
+                class="mb-100"
+                :formatter="(val: number) => `${(val * 10) / 100} of 10`"
+                :value="value"
+                show-value />
 
-            <es-progress class="mb-100" :formatter="(val: number) => `${(val * 10) / 100}/10`" :value="value" value-class="font-weight-bold" show-value />
+            <es-progress
+                class="mb-100"
+                :formatter="(val: number) => `${(val * 10) / 100}/10`"
+                :value="value"
+                value-class="font-weight-bold"
+                show-value />
 
             <div class="mb-100">
                 <es-button
@@ -124,19 +149,47 @@ onMounted(async () => {
         <div class="my-500">
             <h2>Customized height</h2>
             <p>The height of the progress bar is customizable. The indicator circle will scale proportionally.</p>
-            <es-progress class="mb-100" height="0.25rem" :value="0" />
-            <es-progress class="mb-100" height="0.25rem" :value="33" />
-            <es-progress class="mb-100" height="0.25rem" :value="67" />
-            <es-progress class="mb-100" height="0.25rem" :value="100" />
+            <es-progress
+                class="mb-100"
+                height="0.25rem"
+                :value="0" />
+            <es-progress
+                class="mb-100"
+                height="0.25rem"
+                :value="33" />
+            <es-progress
+                class="mb-100"
+                height="0.25rem"
+                :value="67" />
+            <es-progress
+                class="mb-100"
+                height="0.25rem"
+                :value="100" />
         </div>
 
         <div class="my-500">
             <h2>Hide indicator circle</h2>
             <p>This example shows how to hide the indicator circle for a simpler progress bar.</p>
-            <es-progress class="mb-200" height="0.375rem" :show-circle="false" :value="0" />
-            <es-progress class="mb-200" height="0.375rem" :show-circle="false" :value="33" />
-            <es-progress class="mb-200" height="0.375rem" :show-circle="false" :value="67" />
-            <es-progress class="mb-200" height="0.375rem" :show-circle="false" :value="100" />
+            <es-progress
+                class="mb-200"
+                height="0.375rem"
+                :show-circle="false"
+                :value="0" />
+            <es-progress
+                class="mb-200"
+                height="0.375rem"
+                :show-circle="false"
+                :value="33" />
+            <es-progress
+                class="mb-200"
+                height="0.375rem"
+                :show-circle="false"
+                :value="67" />
+            <es-progress
+                class="mb-200"
+                height="0.375rem"
+                :show-circle="false"
+                :value="100" />
         </div>
 
         <div class="mb-500">

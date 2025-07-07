@@ -51,19 +51,31 @@ const barHeight = computed(() => {
 
     return barHeight;
 });
-const circleDimension = computed(() => barHeight.value + (DIFF_CIRCLE_SIZE_FROM_BAR_HEIGHT_IN_PX * barHeight.value) / DEFAULT_BAR_HEIGHT);
+const circleDimension = computed(
+    () => barHeight.value + (DIFF_CIRCLE_SIZE_FROM_BAR_HEIGHT_IN_PX * barHeight.value) / DEFAULT_BAR_HEIGHT,
+);
 
 const circleDimensionPx = computed(() => `${circleDimension.value}px`);
 const circleRightPx = computed(() => `${circleDimension.value * -0.5}px`);
-const circleBorderWidthPx = computed(() => `${(DEFAULT_BORDER_WIDTH * circleDimension.value / DEFAULT_CIRCLE_DIMENSION)}px`);
-const circleGlowSizePx = computed(() => `${DEFAULT_CIRCLE_GLOW_SIZE * circleDimension.value / DEFAULT_CIRCLE_DIMENSION}px`)
-const circleInsetShadowSizePx = computed(() => `${DEFAULT_INSET_SHADOW_SIZE * circleDimension.value / DEFAULT_CIRCLE_DIMENSION}px`);
+const circleBorderWidthPx = computed(
+    () => `${(DEFAULT_BORDER_WIDTH * circleDimension.value) / DEFAULT_CIRCLE_DIMENSION}px`,
+);
+const circleGlowSizePx = computed(
+    () => `${(DEFAULT_CIRCLE_GLOW_SIZE * circleDimension.value) / DEFAULT_CIRCLE_DIMENSION}px`,
+);
+const circleInsetShadowSizePx = computed(
+    () => `${(DEFAULT_INSET_SHADOW_SIZE * circleDimension.value) / DEFAULT_CIRCLE_DIMENSION}px`,
+);
 
-const verticalContainerPaddingPx = computed(() => props.showCircle ? `${(circleDimension.value - barHeight.value) / 2}px` : '0');
+const verticalContainerPaddingPx = computed(() =>
+    props.showCircle ? `${(circleDimension.value - barHeight.value) / 2}px` : '0',
+);
 </script>
 
 <template>
-    <div class="es-progress" :class="$attrs.class">
+    <div
+        class="es-progress"
+        :class="$attrs.class">
         <progress-bar
             class="bg-gray-200 rounded-sm"
             :pt="progressBarPt"
@@ -71,7 +83,10 @@ const verticalContainerPaddingPx = computed(() => props.showCircle ? `${(circleD
             :value="value"
             v-bind="omit('class', $attrs)">
         </progress-bar>
-        <div v-if="showValue" class="font-size-75 mt-25 text-right" :class="valueClass">
+        <div
+            v-if="showValue"
+            class="font-size-75 mt-25 text-right"
+            :class="valueClass">
             {{ formatter(value) }}
         </div>
     </div>
@@ -86,7 +101,9 @@ const verticalContainerPaddingPx = computed(() => props.showCircle ? `${(circleD
 
     :deep(.progress-bar--with-circle::after) {
         border: v-bind(circleBorderWidthPx) solid variables.$warm-orange;
-        box-shadow: 0 0 v-bind(circleInsetShadowSizePx) v-bind(circleInsetShadowSizePx) variables.$warm-orange inset, 0 0 v-bind(circleGlowSizePx) 0 variables.$warm-orange;
+        box-shadow:
+            0 0 v-bind(circleInsetShadowSizePx) v-bind(circleInsetShadowSizePx) variables.$warm-orange inset,
+            0 0 v-bind(circleGlowSizePx) 0 variables.$warm-orange;
         height: v-bind(circleDimensionPx);
         right: v-bind(circleRightPx);
         width: v-bind(circleDimensionPx);
