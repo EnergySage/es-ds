@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const value = ref(20);
+const animatedProgressExample = ref(20);
+const showValueExample = ref(20);
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -71,13 +73,13 @@ onMounted(async () => {
 
             <es-progress
                 class="mb-100"
-                :value="value" />
+                :value="animatedProgressExample" />
 
             <div class="mb-100">
                 <es-button
                     class="px-50 mr-50"
                     size="sm"
-                    @click="value = Math.max(value - 10, 0)">
+                    @click="animatedProgressExample = Math.max(animatedProgressExample - 10, 0)">
                     <icon-minus
                         height="16px"
                         width="16px" />
@@ -87,7 +89,7 @@ onMounted(async () => {
                 <es-button
                     class="px-50"
                     size="sm"
-                    @click="value = Math.min(value + 10, 100)">
+                    @click="animatedProgressExample = Math.min(animatedProgressExample + 10, 100)">
                     <icon-plus
                         height="16px"
                         width="16px" />
@@ -106,19 +108,19 @@ onMounted(async () => {
 
             <es-progress
                 class="mb-100"
-                :value="value"
+                :value="showValueExample"
                 show-value />
 
             <es-progress
                 class="mb-100"
                 :formatter="(val: number) => `${(val * 10) / 100} of 10`"
-                :value="value"
+                :value="showValueExample"
                 show-value />
 
             <es-progress
                 class="mb-100"
                 :formatter="(val: number) => `${(val * 10) / 100}/10`"
-                :value="value"
+                :value="showValueExample"
                 value-class="font-weight-bold"
                 show-value />
 
@@ -126,7 +128,7 @@ onMounted(async () => {
                 <es-button
                     class="px-50 mr-50"
                     size="sm"
-                    @click="value = Math.max(value - 10, 0)">
+                    @click="showValueExample = Math.max(showValueExample - 10, 0)">
                     <icon-minus
                         height="16px"
                         width="16px" />
@@ -136,7 +138,7 @@ onMounted(async () => {
                 <es-button
                     class="px-50"
                     size="sm"
-                    @click="value = Math.min(value + 10, 100)">
+                    @click="showValueExample = Math.min(showValueExample + 10, 100)">
                     <icon-plus
                         height="16px"
                         width="16px" />
