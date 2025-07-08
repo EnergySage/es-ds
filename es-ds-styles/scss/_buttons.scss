@@ -38,7 +38,6 @@
   &:focus-visible,
   &.focus {
     outline: 0;
-    box-shadow: variables.$btn-focus-box-shadow;
   }
 
   // Disabled comes first so active can properly restyle

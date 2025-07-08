@@ -967,6 +967,24 @@ $button-focus-border-colors: map.merge(
   $button-focus-border-colors
 );
 
+/**
+ * enables a box shadow focus outline for the outline dark-bg variant but not the other outline variants
+ *
+ * TODO: switch to Tailwind so we don't have to do stupid overly complicated stuff like this just to affect
+ * one variant within a common mixin that controls all variants in an incredibly fragile setup with dozens of
+ * global variables, most of which can have unintended side effects
+ */
+$button-focus-outline-box-shadow-colors: () !default;
+$button-focus-outline-box-shadow-colors: map.merge(
+  (
+    "outline-primary":   transparent,
+    "outline-secondary": transparent,
+    "outline-dark":      transparent,
+    "outline-dark-bg":   $blue-50,
+  ),
+  $button-focus-outline-box-shadow-colors
+);
+
 $button-disabled-colors: () !default;
 $button-disabled-colors: map.merge(
   (
@@ -999,7 +1017,7 @@ $button-disabled-font-colors: map.merge(
 
 $btn-primary-box-shadow: 0 5px 10px 0 $blue-100 !default;
 $btn-primary-active-box-shadow: 0 4px 10px 0 $blue-100 !default;
-$btn-dark-bg-box-shadow: none;
+$btn-dark-bg-box-shadow: 0px 5px 10px 0px rgba(255, 157, 81, 0.25);
 $btn-dark-bg-active-box-shadow: none;
 
 $button-box-shadows: () !default;
@@ -1012,7 +1030,8 @@ $button-box-shadows: map.merge(
     "outline-secondary": $btn-primary-box-shadow,
     "outline-dark":      $btn-primary-box-shadow,
     "dark-bg":           $btn-dark-bg-box-shadow,
-    "outline-dark-bg":   none,
+    /* needed (rather than 'none') to ensure the first box shadow for the outline is applied */
+    "outline-dark-bg":   0 0 0 0 $white,
   ),
   $button-box-shadows
 );
