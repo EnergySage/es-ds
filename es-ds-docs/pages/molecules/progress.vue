@@ -195,7 +195,7 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>EsProgress props</h2>
+            <h2>Props</h2>
             <ds-prop-table
                 :rows="propTableRows"
                 :widths="propTableWidths" />
