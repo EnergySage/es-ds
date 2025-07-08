@@ -13,10 +13,10 @@ const propTableRows = [
         '(val: number) => `${val}%`',
         'Allows controlling the display of the value displayed when showValue is set to true.',
     ],
-    ['height', 'String', '0.125rem', 'Specifies height of the progress bar'],
+    ['height', 'String', '0.125rem', 'Specifies height of the progress bar.'],
     ['showCircle', 'Boolean', 'true', 'Set to false to hide the indicator circle.'],
     ['showValue', 'Boolean', 'false', 'When present, it shows the progress bar value below the bar.'],
-    ['value', 'Number', 'n/a', 'Required. A value between 0 and 100 representing the progress'],
+    ['value', 'Number', 'n/a', 'Required. A value between 0 and 100 representing the progress.'],
     ['valueClass', 'String', "''", 'Allows control of styling for the value displayed when showValue is set to true.'],
 ];
 const propTableWidths = {
