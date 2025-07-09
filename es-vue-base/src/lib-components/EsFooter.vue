@@ -62,12 +62,11 @@
                             </div>
                         </es-nav-bar-link>
                         <!-- Social icons -->
-                        <div class="d-flex text-white justify-content-center justify-content-lg-start">
+                        <div class="social-icons-container d-flex flex-wrap text-white justify-content-center justify-content-lg-start">
                             <es-nav-bar-link
-                                v-for="(iconLink, index) in content.socialLinks"
+                                v-for="iconLink in content.social"
                                 :key="iconLink.text"
                                 class="text-reset"
-                                :class="{ 'mr-150': index < content.socialLinks.length - 1 }"
                                 :href="iconLink.url"
                                 target="_blank">
                                 <span class="sr-only">{{ iconLink.text }}</span>
@@ -181,3 +180,28 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+.social-icons-container {
+    // Use CSS gap for proper spacing that handles line wrapping correctly
+    // This automatically handles spacing between items and line endings: 24px or 1.5rem
+    gap: 24px;
+
+    // Ensure at least 2 icons per line when wrapping
+    // Use negative margin technique to force last two items to wrap together
+    a {
+        // Force the last item to "pull" the second-to-last item with it
+        &:last-child {
+            // Increased negative margin to be more aggressive about pulling
+            // Use larger value to account for icon + padding + gap: -56px or 3.5rem
+            margin-left: -56px;
+        }
+
+        // Make room for the pulled last item
+        &:nth-last-child(2) {
+            // Corresponding positive margin to make space: 56px or 3.5rem
+            margin-right: 56px;
+        }
+    }
+}
+</style>

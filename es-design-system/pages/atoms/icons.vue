@@ -489,6 +489,14 @@
                 <icon-youtube />
                 <code>IconYoutube</code>
             </li>
+            <li>
+                <icon-threads />
+                <code>IconThreads</code>
+            </li>
+            <li>
+                <icon-bluesky />
+                <code>IconBluesky</code>
+            </li>
         </ul>
 
         <h2>
