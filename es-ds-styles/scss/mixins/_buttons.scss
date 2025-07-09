@@ -38,7 +38,7 @@
   @include gradients.gradient-bg($background);
   border-color: $border;
   // starting first shadow as transparent so focus outline doesn't animate into regular shadow on blur
-  box-shadow: 0 0 0 1px transparent, $box-shadow;
+  box-shadow: 0 0 0 2px transparent, $box-shadow;
 
   @include hover.hover() {
     color: $text-color;
@@ -83,7 +83,7 @@
 
   &:not(:disabled):not(.disabled):active:focus-visible,
   &:not(:disabled):not(.disabled).active:focus-visible {
-    border-color: $focus-background;
+    border-color: $active-background;
     box-shadow: 0 0 0 2px $focus-border, $box-shadow;
   }
 }
@@ -112,7 +112,7 @@
   background: $background;
   border-color: $color;
   // starting first shadow as transparent so focus outline doesn't animate into regular shadow on blur
-  box-shadow: 0 0 0 1px transparent, $box-shadow;
+  box-shadow: 0 0 0 2px transparent, $box-shadow;
 
   @include hover.hover() {
     color: $hover-border;
@@ -125,7 +125,7 @@
     color: $focus-border;
     @include gradients.gradient-bg($focus-background);
     border-color: $focus-border;
-    box-shadow: 0 0 0 1px $focus-border, $box-shadow;
+    box-shadow: 0 0 0 2px $focus-border, $box-shadow;
   }
 
   &:disabled,
@@ -155,7 +155,7 @@
   &:not(:disabled):not(.disabled):active:focus-visible,
   &:not(:disabled):not(.disabled).active:focus-visible {
     border-color: $active-border;
-    box-shadow: 0 0 0 1px $active-border, $box-shadow;
+    box-shadow: 0 0 0 2px $active-border, $box-shadow;
   }
 }
 

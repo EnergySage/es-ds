@@ -955,9 +955,9 @@ $button-outline-active-border-colors: map.merge(
 $button-focus-border-colors: () !default;
 $button-focus-border-colors: map.merge(
   (
-    "primary":           $blue-100,
-    "secondary":         $blue-100,
-    "dark":              $blue-100,
+    "primary":           $blue-900,
+    "secondary":         $blue-900,
+    "dark":              $blue-900,
     "outline-primary":   $blue-600,
     "outline-secondary": $blue-600,
     "outline-dark":      $blue-600,
