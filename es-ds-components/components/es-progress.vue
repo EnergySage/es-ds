@@ -3,9 +3,7 @@ import ProgressBar from 'primevue/progressbar';
 
 const BASE_FONT_SIZE = 16;
 const DEFAULT_BAR_HEIGHT = 2;
-const DEFAULT_BORDER_WIDTH = 0.5;
 const DEFAULT_CIRCLE_GLOW_SIZE = 4;
-const DEFAULT_INSET_SHADOW_SIZE = 0.5;
 const DIFF_CIRCLE_SIZE_FROM_BAR_HEIGHT_IN_PX = 4;
 const DEFAULT_CIRCLE_DIMENSION = DEFAULT_BAR_HEIGHT + DIFF_CIRCLE_SIZE_FROM_BAR_HEIGHT_IN_PX;
 
@@ -57,14 +55,8 @@ const circleDimension = computed(
 
 const circleDimensionPx = computed(() => `${circleDimension.value}px`);
 const circleRightPx = computed(() => `${circleDimension.value * -0.5}px`);
-const circleBorderWidthPx = computed(
-    () => `${(DEFAULT_BORDER_WIDTH * circleDimension.value) / DEFAULT_CIRCLE_DIMENSION}px`,
-);
 const circleGlowSizePx = computed(
     () => `${(DEFAULT_CIRCLE_GLOW_SIZE * circleDimension.value) / DEFAULT_CIRCLE_DIMENSION}px`,
-);
-const circleInsetShadowSizePx = computed(
-    () => `${(DEFAULT_INSET_SHADOW_SIZE * circleDimension.value) / DEFAULT_CIRCLE_DIMENSION}px`,
 );
 
 const verticalContainerPaddingPx = computed(() =>
@@ -100,10 +92,18 @@ const verticalContainerPaddingPx = computed(() =>
     padding-top: v-bind(verticalContainerPaddingPx);
 
     :deep(.progress-bar--with-circle::after) {
-        border: v-bind(circleBorderWidthPx) solid variables.$warm-orange;
-        box-shadow:
-            0 0 v-bind(circleInsetShadowSizePx) v-bind(circleInsetShadowSizePx) variables.$warm-orange inset,
-            0 0 v-bind(circleGlowSizePx) 0 variables.$warm-orange;
+        /*
+         * using v-bind for this border width gets disappeared during npm run generate,
+         * so we need to hardcode it, and the radial background gradient makes it look
+         * good enough at larger sizes
+         */
+        border: 0.5px solid variables.$warm-orange;
+        /*
+         * do not mix both an inset box shadow (has been converted to radial background gradient)
+         * with a non-inset box shadow while using v-bind, or you will get unexpected results
+         * after npm run generate
+         */
+        box-shadow: 0 0 v-bind(circleGlowSizePx) variables.$warm-orange;
         height: v-bind(circleDimensionPx);
         right: v-bind(circleRightPx);
         width: v-bind(circleDimensionPx);
