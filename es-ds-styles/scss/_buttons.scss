@@ -115,7 +115,7 @@ fieldset:disabled a.btn {
   color: variables.$link-color;
   text-decoration: variables.$link-decoration;
   /* this mixin already handles prefers-reduced-motion */
-  @include transition.transition(color .15s, ease-in-out, box-shadow .15s ease-in-out);
+  @include transition.transition(color .15s, ease-in-out, outline .15s ease-in-out);
 
   @include hover.hover() {
     color: variables.$link-hover-color;
@@ -124,12 +124,13 @@ fieldset:disabled a.btn {
 
   &:focus-visible,
   &.focus {
-    box-shadow: 0 0 0 2px variables.$link-color;
+    outline: 2px solid variables.$link-color;
+    outline-offset: 2px;
   }
 
   &.text-white:focus-visible,
   &.text-white.focus {
-    box-shadow: 0 0 0 2px variables.$white;
+    outline: 2px solid variables.$white;
   }
 
   &:disabled,
@@ -146,16 +147,18 @@ fieldset:disabled a.btn {
 
     &:focus-visible,
     &.focus {
-      box-shadow: 0 0 0 2px variables.$link-active-color;
+      outline: 2px solid variables.$link-active-color;
 
       &.text-white {
-        box-shadow: 0 0 0 2px variables.$white;
+        outline: 2px solid variables.$white;
       }
     }
   }
 
   &.inline {
+    border-radius: 0.125rem;
     font-weight: variables.$link-weight;
+    outline-offset: 0;
   }
 
   // No need for an active state here

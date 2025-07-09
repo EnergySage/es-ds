@@ -37,8 +37,7 @@
   color: $text-color;
   @include gradients.gradient-bg($background);
   border-color: $border;
-  // starting first shadow as transparent so focus outline doesn't animate into regular shadow on blur
-  box-shadow: 0 0 0 2px transparent, $box-shadow;
+  box-shadow: $box-shadow;
 
   @include hover.hover() {
     color: $text-color;
@@ -51,7 +50,8 @@
     color: $text-color;
     @include gradients.gradient-bg($focus-background);
     border-color: $focus-background;
-    box-shadow: 0 0 0 2px $focus-border, $box-shadow;
+    outline: 2px solid $focus-border;
+    outline-offset: 2px;
   }
 
   // Disabled comes first so active can properly restyle
@@ -77,14 +77,14 @@
       background-image: none; // Remove the gradient for the pressed/active state
     }
     border-color: $active-border;
-    box-shadow: 0 0 0 2px transparent, $active-box-shadow;
+    box-shadow: $active-box-shadow;
     transform: variables.$btn-active-transform;
   }
 
   &:not(:disabled):not(.disabled):active:focus-visible,
   &:not(:disabled):not(.disabled).active:focus-visible {
     border-color: $active-background;
-    box-shadow: 0 0 0 2px $focus-border, $box-shadow;
+    outline: 2px solid $focus-border;
   }
 }
 
@@ -111,8 +111,7 @@
   color: $color;
   background: $background;
   border-color: $color;
-  // starting first shadow as transparent so focus outline doesn't animate into regular shadow on blur
-  box-shadow: 0 0 0 2px transparent, $box-shadow;
+  box-shadow: $box-shadow;
 
   @include hover.hover() {
     color: $hover-border;
@@ -125,7 +124,8 @@
     color: $focus-border;
     @include gradients.gradient-bg($focus-background);
     border-color: $focus-border;
-    box-shadow: 0 0 0 2px $focus-border, $box-shadow;
+    outline: 2px solid $focus-border;
+    outline-offset: 2px;
   }
 
   &:disabled,
@@ -148,14 +148,15 @@
     color: $active-border;
     background-color: $active-background;
     border-color: $active-border;
-    box-shadow: 0 0 0 2px transparent, $active-box-shadow;
+    box-shadow: $active-box-shadow;
     transform: variables.$btn-active-transform;
   }
 
   &:not(:disabled):not(.disabled):active:focus-visible,
   &:not(:disabled):not(.disabled).active:focus-visible {
     border-color: $active-border;
-    box-shadow: 0 0 0 2px $active-border, $box-shadow;
+    box-shadow: $box-shadow;
+    outline: 2px solid $active-border;
   }
 }
 
