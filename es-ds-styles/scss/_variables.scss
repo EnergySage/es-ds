@@ -967,24 +967,6 @@ $button-focus-border-colors: map.merge(
   $button-focus-border-colors
 );
 
-/**
- * enables a box shadow focus outline for the outline dark-bg variant but not the other outline variants
- *
- * TODO: switch to Tailwind so we don't have to do stupid overly complicated stuff like this just to affect
- * one variant within a common mixin that controls all variants in an incredibly fragile setup with dozens of
- * global variables, most of which can have unintended side effects
- */
-$button-focus-outline-box-shadow-colors: () !default;
-$button-focus-outline-box-shadow-colors: map.merge(
-  (
-    "outline-primary":   transparent,
-    "outline-secondary": transparent,
-    "outline-dark":      transparent,
-    "outline-dark-bg":   $blue-50,
-  ),
-  $button-focus-outline-box-shadow-colors
-);
-
 $button-disabled-colors: () !default;
 $button-disabled-colors: map.merge(
   (

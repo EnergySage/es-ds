@@ -38,6 +38,7 @@
   &:focus-visible,
   &.focus {
     outline: 0;
+    box-shadow: variables.$btn-focus-box-shadow;
   }
 
   // Disabled comes first so active can properly restyle
@@ -113,6 +114,8 @@ fieldset:disabled a.btn {
   font-weight: variables.$btn-font-weight;
   color: variables.$link-color;
   text-decoration: variables.$link-decoration;
+  /* this mixin already handles prefers-reduced-motion */
+  @include transition.transition(color .15s, ease-in-out, box-shadow .15s ease-in-out);
 
   @include hover.hover() {
     color: variables.$link-hover-color;
@@ -121,7 +124,12 @@ fieldset:disabled a.btn {
 
   &:focus-visible,
   &.focus {
-    text-decoration: variables.$link-hover-decoration;
+    box-shadow: 0 0 0 2px variables.$link-color;
+  }
+
+  &.text-white:focus-visible,
+  &.text-white.focus {
+    box-shadow: 0 0 0 2px variables.$white;
   }
 
   &:disabled,
@@ -135,6 +143,15 @@ fieldset:disabled a.btn {
   &:not(:disabled):not(.disabled):not(.inline).active {
     color: variables.$link-active-color;
     transform: variables.$btn-active-transform;
+
+    &:focus-visible,
+    &.focus {
+      box-shadow: 0 0 0 2px variables.$link-active-color;
+
+      &.text-white {
+        box-shadow: 0 0 0 2px variables.$white;
+      }
+    }
   }
 
   &.inline {
