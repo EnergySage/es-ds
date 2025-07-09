@@ -1,73 +1,4 @@
 <script setup lang="ts">
-const mainExamples = ref([
-    {
-        name: 'Default',
-        text: 'Default button',
-    },
-    {
-        name: 'Default (text with icon)',
-        icon: true,
-        text: 'Default button',
-    },
-    {
-        name: 'Default (icon only)',
-        icon: true,
-    },
-    {
-        name: 'Small',
-        size: 'sm',
-        text: 'Small button',
-    },
-    {
-        name: 'Small (text with icon)',
-        icon: true,
-        size: 'sm',
-        text: 'Small button',
-    },
-    {
-        name: 'Small (icon only)',
-        icon: true,
-        size: 'sm',
-    },
-]);
-
-const linkExamples = ref([
-    {
-        name: 'Default',
-        secondButton: {
-            text: 'Submit',
-        },
-        text: 'Cancel',
-        variant: 'link',
-    },
-    {
-        name: 'Small',
-        size: 'sm',
-        secondButton: {
-            text: 'Submit',
-        },
-        text: 'Cancel',
-        variant: 'link',
-    },
-    {
-        arrow: true,
-        name: 'Default with arrow',
-        text: 'Learn about our rating system',
-        variant: 'link',
-    },
-    {
-        arrow: true,
-        name: 'Small with arrow',
-        size: 'sm',
-        text: 'Learn about our rating system',
-        variant: 'link',
-    },
-    {
-        name: 'Inline',
-        inline: true,
-    },
-]);
-
 const propTableRows = ref([
     ['href', 'String', 'null', 'An external URL to navigate to when using a button as a link.'],
     [
@@ -84,8 +15,7 @@ const propTableRows = ref([
 ]);
 
 const propTableWidths = ref({
-    md: ['3', '1', '3', '5'],
-    lg: ['2', '1', '1', '8'],
+    md: ['2', '2', '2', '6'],
 });
 
 const { $prism } = useNuxtApp();
@@ -130,347 +60,161 @@ onMounted(async () => {
             </ds-link>
         </p>
 
-        <p class="mb-200">
-            Icons inside default buttons are sized automatically to 24px; and in small buttons to 18px.
-        </p>
-
         <div class="my-500">
-            <h2>Primary</h2>
+            <h2>Default</h2>
             <p>
-                This is the default style for buttons. For a small button, use the <code>size="sm"</code> prop value.
+                This is the default size for buttons. For the secondary button, add the <code>outline</code> boolean
+                prop.
             </p>
-
-            <ds-responsive-table class="responsive-table-typography">
-                <ds-responsive-table-row
-                    v-for="example in mainExamples"
-                    :key="example.name"
-                    :zebra-stripes="false"
-                    vertically-center-content>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Description </template>
-                        <template #value>
-                            <span class="font-weight-semibold">
-                                {{ example.name }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Normal </template>
-                        <template #value>
-                            <es-button :size="example.size">
-                                {{ example.text }}
-                                <icon-chevron-right
-                                    v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }" />
-                            </es-button>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Disabled </template>
-                        <template #value>
-                            <es-button
-                                disabled
-                                :size="example.size">
-                                {{ example.text }}
-                                <icon-chevron-right
-                                    v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }" />
-                            </es-button>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <div class="multiple-buttons d-flex flex-column flex-sm-row flex-sm-wrap">
+                <es-button> Primary button </es-button>
+                <es-button outline> Secondary button </es-button>
+                <es-button variant="link"> Link button </es-button>
+            </div>
         </div>
 
         <div class="my-500">
-            <h2>Secondary</h2>
-            <p>For this style, add the <code>outline</code> boolean prop.</p>
-            <ds-responsive-table class="responsive-table-typography">
-                <ds-responsive-table-row
-                    v-for="example in mainExamples"
-                    :key="example.name"
-                    :zebra-stripes="false"
-                    vertically-center-content>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Description </template>
-                        <template #value>
-                            <span class="font-weight-semibold">
-                                {{ example.name }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Normal </template>
-                        <template #value>
-                            <es-button
-                                outline
-                                :size="example.size">
-                                {{ example.text }}
-                                <icon-chevron-right
-                                    v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }" />
-                            </es-button>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Disabled </template>
-                        <template #value>
-                            <es-button
-                                disabled
-                                outline
-                                :size="example.size">
-                                {{ example.text }}
-                                <icon-chevron-right
-                                    v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }" />
-                            </es-button>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <h2>Default on dark background</h2>
+            <p>When the button will appear on a dark background, use the <code>dark-bg</code> variant.</p>
+            <div class="multiple-buttons bg-dark-blue d-flex flex-column flex-sm-row flex-sm-wrap rounded p-100">
+                <es-button variant="dark-bg"> Primary button </es-button>
+                <es-button
+                    outline
+                    variant="dark-bg">
+                    Secondary button
+                </es-button>
+                <es-button
+                    class="text-white"
+                    variant="link">
+                    Link button
+                </es-button>
+            </div>
         </div>
 
         <div class="my-500">
-            <h2>Link</h2>
-            <p>
-                This variant will render a button with the appearance of a link while maintaining the default padding
-                and size of a button. This is useful when the link button will appear next to another button (e.g.
-                within a modal), as they will remain vertically aligned relative to each other.
-            </p>
-            <p>Use the <code>variant="link"</code> prop value to enable it.</p>
-            <ds-responsive-table class="responsive-table-typography">
-                <ds-responsive-table-row
-                    v-for="example in linkExamples"
-                    :key="example.name"
-                    :zebra-stripes="false"
-                    vertically-center-content>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="2"
-                        xxl="2">
-                        <template #name> Description </template>
-                        <template #value>
-                            <span class="font-weight-semibold">
-                                {{ example.name }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="4"
-                        xxl="2">
-                        <template #name> Normal </template>
-                        <template #value>
-                            <p v-if="example.inline">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                <es-button
-                                    inline
-                                    variant="link">
-                                    eiusmod tempor
-                                </es-button>
-                                incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <div v-else-if="example.arrow">
-                                <es-button
-                                    class="px-0 text-left"
-                                    :size="example.size"
-                                    :variant="example.variant">
-                                    {{ example.text }}
-                                    <icon-arrow-right class="ml-25" />
-                                </es-button>
-                            </div>
-                            <div v-else>
-                                <es-button
-                                    :size="example.size"
-                                    :variant="example.variant">
-                                    {{ example.text }}
-                                </es-button>
-                                <es-button :size="example.size">
-                                    {{ example.secondButton?.text }}
-                                </es-button>
-                            </div>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="4"
-                        xxl="2">
-                        <template #name> Disabled </template>
-                        <template #value>
-                            <p v-if="example.inline">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                <es-button
-                                    disabled
-                                    inline
-                                    variant="link">
-                                    eiusmod tempor
-                                </es-button>
-                                incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <div v-else-if="example.arrow">
-                                <es-button
-                                    class="px-0 text-left"
-                                    disabled
-                                    :size="example.size"
-                                    :variant="example.variant">
-                                    {{ example.text }}
-                                    <icon-arrow-right class="ml-25" />
-                                </es-button>
-                            </div>
-                            <div v-else>
-                                <es-button
-                                    disabled
-                                    :size="example.size"
-                                    :variant="example.variant">
-                                    {{ example.text }}
-                                </es-button>
-                                <es-button
-                                    disabled
-                                    :size="example.size">
-                                    {{ example.secondButton?.text }}
-                                </es-button>
-                            </div>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <h2>Small</h2>
+            <p>For a small button, pass in <code>size="sm"</code>.</p>
+            <div class="multiple-buttons d-flex flex-column flex-sm-row flex-sm-wrap">
+                <es-button size="sm"> Primary button </es-button>
+                <es-button
+                    outline
+                    size="sm">
+                    Secondary button
+                </es-button>
+                <es-button
+                    size="sm"
+                    variant="link">
+                    Link button
+                </es-button>
+            </div>
         </div>
 
-        <div class="bg-dark-blue my-500 p-100 rounded-lg text-white">
-            <h2 class="text-white">Dark background</h2>
+        <div class="my-500">
+            <h2>Small on dark background</h2>
+            <div class="multiple-buttons bg-dark-blue d-flex flex-column flex-sm-row flex-sm-wrap rounded p-100">
+                <es-button
+                    size="sm"
+                    variant="dark-bg">
+                    Primary button
+                </es-button>
+                <es-button
+                    outline
+                    size="sm"
+                    variant="dark-bg">
+                    Secondary button
+                </es-button>
+                <es-button
+                    class="text-white"
+                    size="sm"
+                    variant="link">
+                    Link button
+                </es-button>
+            </div>
+        </div>
+
+        <div class="my-500">
+            <h2>Icons</h2>
+            <p>Icons will adjust their size automatically to match the size of the button.</p>
+            <div class="multiple-buttons d-flex flex-column flex-sm-row flex-sm-wrap mb-100">
+                <es-button>
+                    Primary button
+                    <icon-chevron-right class="ml-25" />
+                </es-button>
+                <es-button>
+                    <icon-chevron-right />
+                </es-button>
+                <es-button variant="link"> Link button <icon-arrow-right class="ml-25" /> </es-button>
+            </div>
+            <div class="multiple-buttons d-flex flex-column flex-sm-row flex-sm-wrap">
+                <es-button size="sm">
+                    Primary button
+                    <icon-chevron-right class="ml-25" />
+                </es-button>
+                <es-button size="sm">
+                    <icon-chevron-right />
+                </es-button>
+                <es-button
+                    size="sm"
+                    variant="link">
+                    Link button <icon-arrow-right class="ml-25" />
+                </es-button>
+            </div>
+        </div>
+
+        <div class="my-500">
+            <h2>Disabled</h2>
+            <div class="multiple-buttons d-flex flex-column flex-sm-row flex-sm-wrap">
+                <es-button disabled>Primary button</es-button>
+                <es-button
+                    disabled
+                    outline
+                    >Secondary button</es-button
+                >
+                <es-button
+                    disabled
+                    variant="link"
+                    >Link button</es-button
+                >
+            </div>
+        </div>
+
+        <div class="my-500">
+            <h2>Disabled on dark background</h2>
+            <div class="multiple-buttons bg-dark-blue d-flex flex-column flex-sm-row flex-sm-wrap rounded p-100">
+                <es-button
+                    disabled
+                    variant="dark-bg"
+                    >Primary button</es-button
+                >
+                <es-button
+                    disabled
+                    outline
+                    variant="dark-bg"
+                    >Secondary button</es-button
+                >
+                <es-button
+                    disabled
+                    variant="link"
+                    >Link button</es-button
+                >
+            </div>
+        </div>
+
+        <div class="my-500">
+            <h2>Inline link</h2>
             <p>
-                These variants are only meant to be used against a dark blue background. Use the
-                <code>variant="dark-bg"</code> prop value to enable them.
+                The <code>link</code> button variant can also appear within a paragraph of text by adding the
+                <code>inline</code> prop.
             </p>
-
-            <h3 class="mt-200 text-white">Primary</h3>
-            <ds-responsive-table class="responsive-table-typography">
-                <ds-responsive-table-row
-                    v-for="example in mainExamples"
-                    :key="example.name"
-                    :zebra-stripes="false"
-                    vertically-center-content>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Description </template>
-                        <template #value>
-                            <span class="font-weight-semibold">
-                                {{ example.name }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Normal </template>
-                        <template #value>
-                            <es-button
-                                :size="example.size"
-                                variant="dark-bg">
-                                {{ example.text }}
-                                <icon-chevron-right
-                                    v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }" />
-                            </es-button>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Disabled </template>
-                        <template #value>
-                            <es-button
-                                disabled
-                                :size="example.size"
-                                variant="dark-bg">
-                                {{ example.text }}
-                                <icon-chevron-right
-                                    v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }" />
-                            </es-button>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
-
-            <h3 class="mt-200 text-white">Secondary</h3>
-            <p>For this style, add the <code>outline</code> boolean prop.</p>
-            <ds-responsive-table class="responsive-table-typography">
-                <ds-responsive-table-row
-                    v-for="example in mainExamples"
-                    :key="example.name"
-                    :zebra-stripes="false"
-                    vertically-center-content>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Description </template>
-                        <template #value>
-                            <span class="font-weight-semibold">
-                                {{ example.name }}
-                            </span>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Normal </template>
-                        <template #value>
-                            <es-button
-                                outline
-                                :size="example.size"
-                                variant="dark-bg">
-                                {{ example.text }}
-                                <icon-chevron-right
-                                    v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }" />
-                            </es-button>
-                        </template>
-                    </ds-responsive-table-column>
-                    <ds-responsive-table-column
-                        md="4"
-                        lg="3"
-                        xxl="2">
-                        <template #name> Disabled </template>
-                        <template #value>
-                            <es-button
-                                disabled
-                                outline
-                                :size="example.size"
-                                variant="dark-bg">
-                                {{ example.text }}
-                                <icon-chevron-right
-                                    v-if="example.icon"
-                                    :class="{ 'ml-25': example.text }" />
-                            </es-button>
-                        </template>
-                    </ds-responsive-table-column>
-                </ds-responsive-table-row>
-            </ds-responsive-table>
+            <es-card>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                <es-button
+                    inline
+                    variant="link">
+                    eiusmod tempor
+                </es-button>
+                incididunt ut labore et dolore magna aliqua.
+            </es-card>
         </div>
 
         <div class="my-500">
@@ -484,8 +228,8 @@ onMounted(async () => {
                 </a>
                 to display a loading indicator within a button.
             </p>
-            <div class="mb-100">
-                <es-button class="mr-100 position-relative">
+            <div class="multiple-buttons d-flex flex-column flex-sm-row flex-sm-wrap mb-100">
+                <es-button class="position-relative">
                     <span class="invisible"> Default button </span>
                     <es-spinner
                         class="position-absolute"
@@ -500,9 +244,9 @@ onMounted(async () => {
                         role="status" />
                 </es-button>
             </div>
-            <div>
+            <div class="multiple-buttons d-flex flex-column flex-sm-row flex-sm-wrap">
                 <es-button
-                    class="mr-100 position-relative"
+                    class="position-relative"
                     size="sm">
                     <span class="invisible"> Small button </span>
                     <es-spinner
@@ -534,3 +278,9 @@ onMounted(async () => {
             doc-source="es-ds-docs/pages/molecules/button.vue" />
     </div>
 </template>
+
+<style lang="scss" scoped>
+.multiple-buttons {
+    gap: 1rem;
+}
+</style>
