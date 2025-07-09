@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is the **EnergySage Design System (es-ds)** - a Vue 3-based design system monorepo containing npm packages and documentation for building EnergySage applications.
+This is the **EnergySage Design System (es-ds)** - a Nuxt 3-based design system monorepo containing npm packages and documentation for building EnergySage applications.
 
 ## Project Structure
 
 The repository consists of 3 main packages:
 
 - **es-ds-styles/**: Bootstrap 4-based SASS/CSS framework with EnergySage customizations
-- **es-ds-components/**: Vue 3 component library built on PrimeVue and Reka UI
+- **es-ds-components/**: Nuxt 3 component library built on PrimeVue and Reka UI
 - **es-ds-docs/**: Nuxt 3 documentation site
 
 ## Development Commands
@@ -48,7 +48,7 @@ make build                    # Build all packages
 - Build outputs to `dist/css/`
 - Contains comprehensive design tokens for colors, typography, spacing
 
-**es-ds-components** (Vue 3):
+**es-ds-components** (Nuxt 3):
 - Component library using PrimeVue (unstyled) and Reka UI as base
 - No build step - consumed directly as source
 - Uses Vuelidate for form validation
