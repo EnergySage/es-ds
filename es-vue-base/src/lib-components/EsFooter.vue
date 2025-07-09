@@ -151,6 +151,8 @@ import IconTwitter from '../lib-icons/icon-twitter.vue';
 import IconYoutube from '../lib-icons/icon-youtube.vue';
 import IconLinkedin from '../lib-icons/icon-linkedin.vue';
 import IconInstagram from '../lib-icons/icon-instagram.vue';
+import IconThreads from '../lib-icons/icon-threads.vue';
+import IconBluesky from '../lib-icons/icon-bluesky.vue';
 import IconCcpaOptOut from '../lib-icons/icon-ccpa-opt-out.vue';
 import EsButton from './EsButton.vue';
 
@@ -160,12 +162,14 @@ export default {
         EsNavBarLink,
         IconCcpaOptOut,
         EsButton,
-        // Used by content.socialLinks
+        // Used by content.social
         IconFacebook,
         IconTwitter,
         IconYoutube,
         IconInstagram,
         IconLinkedin,
+        IconThreads,
+        IconBluesky,
     },
     props: {
         content: {
