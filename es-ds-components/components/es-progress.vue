@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ProgressBar from 'primevue/progressbar';
+import { omit } from '#imports';
 
 const BASE_FONT_SIZE = 16;
 const DEFAULT_BAR_HEIGHT = 2;
