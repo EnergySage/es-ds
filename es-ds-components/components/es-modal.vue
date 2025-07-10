@@ -30,7 +30,14 @@ const modalPt = {
         class: 'modal-title',
     },
     closeButton: {
-        class: 'close',
+        class: [
+            'close',
+            {
+                // if closable is true, keep the close button around (for accessibility, and to
+                // allow Escape to still close the modal), but hide it visually
+                'sr-only': !props.closable,
+            },
+        ],
     },
     content: {
         class: `modal-body ${props.bodyClass}`,
@@ -72,7 +79,6 @@ const getSizeClass = computed(() => {
         modal
         :class="getSizeClass"
         :pt="modalPt"
-        :closable="closable"
         dismissable-mask
         @update:visible="onChange">
         <template
