@@ -482,8 +482,8 @@
                 <code>IconLinkedin</code>
             </li>
             <li>
-                <icon-twitter />
-                <code>IconTwitter</code>
+                <icon-x-social />
+                <code>IconXSocial</code>
             </li>
             <li>
                 <icon-youtube />
@@ -498,7 +498,17 @@
                 <code>IconBluesky</code>
             </li>
         </ul>
-
+        <p>
+            The following icons are deprecated and have been renamed.
+        </p>
+        <ul
+            class="ds-icon-list m-0 mb-300 p-0"
+            :class="{ [textColorClass]: true }">
+            <li>
+                <icon-twitter />
+                <code>IconTwitter</code>
+            </li>
+        </ul>
         <h2>
             File Icons
         </h2>
