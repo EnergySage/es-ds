@@ -17,7 +17,7 @@
 </template>
 <script>
 export default {
-    name: 'IconTwitter',
+    name: 'IconXSocial',
     props: {
     /**
      * Width

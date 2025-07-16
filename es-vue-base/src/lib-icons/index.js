@@ -110,7 +110,10 @@ export { default as IconFacebook } from './icon-facebook.vue';
 export { default as IconInstagram } from './icon-instagram.vue';
 export { default as IconLinkedin } from './icon-linkedin.vue';
 export { default as IconTwitter } from './icon-twitter.vue';
+export { default as IconXSocial } from './icon-x-social.vue';
 export { default as IconYoutube } from './icon-youtube.vue';
+export { default as IconThreads } from './icon-threads.vue';
+export { default as IconBluesky } from './icon-bluesky.vue';
 
 // File icons
 export { default as IconFileDoc } from './icon-file-doc.vue';

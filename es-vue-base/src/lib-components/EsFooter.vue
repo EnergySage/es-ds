@@ -62,12 +62,11 @@
                             </div>
                         </es-nav-bar-link>
                         <!-- Social icons -->
-                        <div class="d-flex text-white justify-content-center justify-content-lg-start">
+                        <div class="social-icons-container d-flex flex-wrap text-white justify-content-center justify-content-lg-start">
                             <es-nav-bar-link
-                                v-for="(iconLink, index) in content.socialLinks"
+                                v-for="iconLink in content.social"
                                 :key="iconLink.text"
                                 class="text-reset"
-                                :class="{ 'mr-150': index < content.socialLinks.length - 1 }"
                                 :href="iconLink.url"
                                 target="_blank">
                                 <span class="sr-only">{{ iconLink.text }}</span>
@@ -149,9 +148,12 @@
 import EsNavBarLink from './EsNavBarLink.vue';
 import IconFacebook from '../lib-icons/icon-facebook.vue';
 import IconTwitter from '../lib-icons/icon-twitter.vue';
+import IconXSocial from '../lib-icons/icon-x-social.vue';
 import IconYoutube from '../lib-icons/icon-youtube.vue';
 import IconLinkedin from '../lib-icons/icon-linkedin.vue';
 import IconInstagram from '../lib-icons/icon-instagram.vue';
+import IconThreads from '../lib-icons/icon-threads.vue';
+import IconBluesky from '../lib-icons/icon-bluesky.vue';
 import IconCcpaOptOut from '../lib-icons/icon-ccpa-opt-out.vue';
 import EsButton from './EsButton.vue';
 
@@ -161,12 +163,15 @@ export default {
         EsNavBarLink,
         IconCcpaOptOut,
         EsButton,
-        // Used by content.socialLinks
+        // Used by content.social
         IconFacebook,
         IconTwitter,
+        IconXSocial,
         IconYoutube,
         IconInstagram,
         IconLinkedin,
+        IconThreads,
+        IconBluesky,
     },
     props: {
         content: {
@@ -181,3 +186,28 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+.social-icons-container {
+    // Use CSS gap for proper spacing that handles line wrapping correctly
+    // This automatically handles spacing between items and line endings: 24px or 1.5rem
+    gap: 24px;
+
+    // Ensure at least 2 icons per line when wrapping
+    // Use negative margin technique to force last two items to wrap together
+    a {
+        // Force the last item to "pull" the second-to-last item with it
+        &:last-child {
+            // Increased negative margin to be more aggressive about pulling
+            // Use larger value to account for icon + padding + gap: -56px or 3.5rem
+            margin-left: -56px;
+        }
+
+        // Make room for the pulled last item
+        &:nth-last-child(2) {
+            // Corresponding positive margin to make space: 56px or 3.5rem
+            margin-right: 56px;
+        }
+    }
+}
+</style>
