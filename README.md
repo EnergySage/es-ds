@@ -146,5 +146,5 @@ in the changelog when publishing a new release.
 
 Publishing and versioning is now automated through release-please.
 Upon merging to `main`, a release-please PR will be created or updated
-with your changes in the description. Merging this PR will create a 
+with your changes in the description. Merging this release-please PR will create a 
 release automatically, and also deploy to the documentation site.
