@@ -144,23 +144,7 @@ in the changelog when publishing a new release.
 
 ### Publishing and Versioning
 
-Due to new restrictions imposed by Jit, this process must be done on the branch prior to merging to main.
-Assuming changes are approved, the process of publishing a new version is...
-0. Ensure your local environment is
-   [setup](./README.md#installing-dependencies-and-linking-packages)
-1. Make sure the package.json versions in `es-ds-styles` and `es-ds-components` is updated to a new version 
-   that hasn't been published before on NPM.
-2. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
-3. `make install && make symlink` - Install and symlink dependencies locally
-4. `make build` - Build all packages to `*/dist` folders locally
-5. `make lint && make typecheck && make test` - Run tests and linting to ensure they pass
-6. Publish updated packages to
-   [npmjs.com](https://www.npmjs.com/org/energysage) with npm publish.
-   1. `cd es-ds-styles && npm publish && cd ..`
-   2. `cd es-ds-components` and update the version of `es-ds-styles` to the just-published one, and run `npm install` and then run `npm publish && cd ..`
-7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
-8. `make update-package-deps` - Install the new published versions locally
-9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
-   Commit and push the changelog and `package-lock.json` updates
-
-Deploys to design.energysage.dev can be initiated through GitHub actions once your branch is merged.
+Publishing and versioning is now automated through release-please.
+Upon merging to `main`, a release-please PR will be created or updated
+with your changes in the description. Merging this PR will create a 
+release automatically, and also deploy to the documentation site.
