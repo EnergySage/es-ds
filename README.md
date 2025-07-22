@@ -1,6 +1,6 @@
-**NOTICE: this is a vue3 based design system, if you're working with a vue2 based micro-frontend, please see [EnergySage/es-ds-legacy](https://github.com/EnergySage/es-ds-legacy) instead**
-
 # EnergySage Design System
+
+See the documentation and demonstrations at https://design.energysage.dev/
 
 This is a **monorepo** containing the elements required for building experiences
 following the EnergySage Design System, or _es-ds_ for short.
@@ -8,6 +8,8 @@ following the EnergySage Design System, or _es-ds_ for short.
 - [Public works](#public-works)
 - [The parts](#the-parts)
 - [Contributing](#contributing)
+
+NOTICE: this is a vue3 based design system, if you're working with a vue2 based micro-frontend, please see [EnergySage/es-ds-legacy](https://github.com/EnergySage/es-ds-legacy) instead
 
 ## Public works
 
