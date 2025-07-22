@@ -97,3 +97,12 @@ jobs:
               run: |
                   npm run build
                   npm publish
+
+    deploy:
+        uses: ./.github/workflows/deploy.yml
+        needs: release-please
+        if: needs.release-please.outputs.es-ds-styles--release_created || needs.release-please.outputs.es-ds-components--release_created || needs.release-please.outputs.es-ds-docs--release_created
+        secrets: inherit
+        with:
+            environment: int
+            trigger: automated release
