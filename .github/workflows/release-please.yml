@@ -1,0 +1,96 @@
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+    pull-requests: write
+
+name: release-please
+
+jobs:
+    release-please:
+        permissions:
+            contents: write
+            pull-requests: write
+        runs-on: ubuntu-latest
+        outputs:
+            es-ds-styles--version: ${{ steps.release.outputs.es-ds-styles--version}}
+            es-ds-styles--release_created: ${{ steps.release.outputs.es-ds-styles--release_created}}
+            es-ds-components--version: ${{ steps.release.outputs.es-ds-components--version}}
+            es-ds-components--release_created: ${{ steps.release.outputs.es-ds-components--release_created}}
+            es-ds-docs--version: ${{ steps.release.outputs.es-ds-docs--version}}
+            es-ds-docs--release_created: ${{ steps.release.outputs.es-ds-docs--release_created}}
+        steps:
+            - uses: googleapis/release-please-action@v4
+              id: 'release'
+
+    release-es-ds-styles:
+        permissions:
+            contents: read
+        runs-on: ubuntu-latest
+        needs: release-please
+        if: needs.release-please.outputs.es-ds-styles--release_created
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v4
+
+            - name: Get nodenv version 🔌
+              id: nodenv
+              shell: bash
+              run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+
+            - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '${{ steps.nodenv.outputs.node-version }}'
+                  registry-url: 'https://registry.npmjs.org'
+                  cache: npm
+                  cache-dependency-path: '**/package-lock.json'
+
+            - name: Install dependencies
+              working-directory: es-ds-styles
+              run: npm install
+
+            - name: Publish Packages
+              id: publish-packages
+              working-directory: es-ds-styles
+              run: |
+                  npm run build
+                  npm publish
+
+    release-es-ds-components:
+        permissions:
+            contents: read
+        runs-on: ubuntu-latest
+        needs: release-please
+        if: needs.release-please.outputs.es-ds-components--release_created
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v4
+
+            - name: Get nodenv version 🔌
+              id: nodenv
+              shell: bash
+              run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+
+            - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '${{ steps.nodenv.outputs.node-version }}'
+                  cache: npm
+                  cache-dependency-path: '**/package-lock.json'
+
+            - name: Install dependencies
+              working-directory: es-ds-components
+              run: npm install
+
+            - name: Publish Packages
+              working-directory: es-ds-components
+              id: publish-packages
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+              run: |
+                  npm run build
+                  npm publish
