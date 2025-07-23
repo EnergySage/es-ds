@@ -12,6 +12,10 @@ permissions:
 name: release-please
 
 jobs:
+    ci:
+        uses: ./.github/workflows/ci.yml
+        secrets: inherit
+
     release-please:
         permissions:
             contents: write
@@ -100,7 +104,6 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
               run: |
-                  npm run build
                   npm publish
 
     deploy:
