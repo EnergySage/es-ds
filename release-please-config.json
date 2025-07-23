@@ -1,0 +1,8 @@
+{
+    "packages": {
+        "es-ds-styles": {},
+        "es-ds-components": {},
+        "es-ds-docs": {}
+    },
+    "bootstrap-sha": "65134ee8cb2806cff99b4924da2d06aa6a45ff17"
+}

@@ -1,0 +1,33 @@
+# Copied from https://github.com/EnergySage/projen-template/blob/main/.github/workflows/pull-request-lint.yml
+
+name: pull-request-lint
+on:
+    pull_request_target:
+        types:
+            - labeled
+            - opened
+            - synchronize
+            - reopened
+            - ready_for_review
+            - edited
+jobs:
+    validate:
+        name: Validate PR title
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
+        steps:
+            - uses: amannn/action-semantic-pull-request@v5
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  types: |-
+                      feat
+                      fix
+                      chore
+                      docs
+                      refactor
+                      perf
+                      test
+                  requireScope: false
+                  githubBaseUrl: ${{ github.api_url }}
