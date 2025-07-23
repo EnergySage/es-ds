@@ -1,6 +1,6 @@
 # EnergySage es-ds-styles
 
-An EnergySage branded Bootstrap 4 styling
+An EnergySage-branded fork of Bootstrap 4 styling
 
 ## Getting Started
 
