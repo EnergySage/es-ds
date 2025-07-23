@@ -23,6 +23,7 @@ jobs:
             issues: write
         runs-on: ubuntu-latest
         outputs:
+            releases_created: ${{ steps.release.outputs.releases_created }}
             es-ds-styles--version: ${{ steps.release.outputs.es-ds-styles--version }}
             es-ds-styles--release_created: ${{ steps.release.outputs.es-ds-styles--release_created }}
             es-ds-components--version: ${{ steps.release.outputs.es-ds-components--version }}
@@ -112,7 +113,7 @@ jobs:
             - release-please
             - release-es-ds-styles
             - release-es-ds-components
-        if: always() && !cancelled() && !failure() && (needs.release-please.outputs.es-ds-styles--release_created || needs.release-please.outputs.es-ds-components--release_created || needs.release-please.outputs.es-ds-docs--release_created)
+        if: always() && !cancelled() && !failure() && needs.release-please.outputs.releases_created
         secrets: inherit
         with:
             environment: int
