@@ -16,12 +16,12 @@ jobs:
             pull-requests: write
         runs-on: ubuntu-latest
         outputs:
-            es-ds-styles--version: ${{ steps.release.outputs.es-ds-styles--version}}
-            es-ds-styles--release_created: ${{ steps.release.outputs.es-ds-styles--release_created}}
-            es-ds-components--version: ${{ steps.release.outputs.es-ds-components--version}}
-            es-ds-components--release_created: ${{ steps.release.outputs.es-ds-components--release_created}}
-            es-ds-docs--version: ${{ steps.release.outputs.es-ds-docs--version}}
-            es-ds-docs--release_created: ${{ steps.release.outputs.es-ds-docs--release_created}}
+            es-ds-styles--version: ${{ steps.release.outputs.es-ds-styles--version }}
+            es-ds-styles--release_created: ${{ steps.release.outputs.es-ds-styles--release_created }}
+            es-ds-components--version: ${{ steps.release.outputs.es-ds-components--version }}
+            es-ds-components--release_created: ${{ steps.release.outputs.es-ds-components--release_created }}
+            es-ds-docs--version: ${{ steps.release.outputs.es-ds-docs--version }}
+            es-ds-docs--release_created: ${{ steps.release.outputs.es-ds-docs--release_created }}
         steps:
             - uses: googleapis/release-please-action@v4
               id: 'release'
