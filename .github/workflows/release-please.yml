@@ -114,7 +114,7 @@ jobs:
             - release-please
             - release-es-ds-styles
             - release-es-ds-components
-        if: always() && !cancelled() && !failure() && needs.release-please.outputs.releases_created
+        if: always() && !cancelled() && !failure() && (needs.release-please.outputs.es-ds-styles--release_created || needs.release-please.outputs.es-ds-components--release_created || needs.release-please.outputs.es-ds-docs--release_created)
         secrets: inherit
         with:
             environment: int
