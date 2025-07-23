@@ -1,3 +1,9 @@
+_**Note: This file is no longer being updated as a result of the adoption of release-please.
+Instead, the changelogs within each package are being updated automatically by release-please.
+See the changelogs for [es-ds-styles](./es-ds-styles/CHANGELOG.md), 
+[es-ds-components](./es-ds-components/CHANGELOG.md), and 
+[es-ds-docs](./es-ds-docs/CHANGELOG.md).**_
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
