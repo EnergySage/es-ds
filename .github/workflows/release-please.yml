@@ -16,6 +16,7 @@ jobs:
         permissions:
             contents: write
             pull-requests: write
+            issues: write
         runs-on: ubuntu-latest
         outputs:
             es-ds-styles--version: ${{ steps.release.outputs.es-ds-styles--version }}
