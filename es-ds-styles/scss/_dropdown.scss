@@ -221,27 +221,43 @@
   color: variables.$input-color;
   background-color: variables.$input-bg;
   background-clip: padding-box;
-  border: 1px solid variables.$blue-600;
-  border-radius: 4px;
-  transition: border-color 0.15s ease-in-out;
+  border: 1px solid variables.$gray-500;
+  border-radius: 8px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   &:hover {
-    border-color: variables.$blue-700;
+    border-color: variables.$blue-300;
   }
 
   &:focus,
   &:focus-within {
-    border-color: variables.$blue-600;
+    border-color: variables.$gray-500;
     outline: 0;
     box-shadow: 0 0 0 2px rgba(46, 70, 185, 0.25);
   }
 
   &:active {
-    border-color: variables.$blue-700;
+    border-color: variables.$blue-300;
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: variables.$gray-100;
+    border-color: variables.$gray-500;
+    color: variables.$gray-500;
+    cursor: not-allowed;
+
+    .placeholder-text {
+      color: variables.$gray-500;
+    }
+
+    .chevron-icon {
+      color: variables.$gray-500;
+    }
   }
 
   .placeholder-text {
-    color: variables.$gray-500;
+    color: variables.$input-color;
   }
 
   .chevron-icon {
@@ -259,7 +275,7 @@
   border-radius: variables.$dropdown-border-radius !important;
   box-shadow: variables.$dropdown-box-shadow !important;
   padding: variables.$dropdown-padding-y variables.$dropdown-padding-x;
-  
+
   [data-pc-section="wrapper"] {
     max-height: 200px;
     overflow-y: auto;

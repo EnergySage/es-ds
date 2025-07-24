@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Dropdown from 'primevue/dropdown';
+import ChevronDown from './icon/chevron-down.vue';
 
 const props = defineProps({
     title: {
@@ -31,6 +32,11 @@ const props = defineProps({
         default: undefined,
         required: false,
     },
+    disabled: {
+        type: Boolean,
+        default: false,
+        required: false,
+    },
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -42,12 +48,13 @@ const emit = defineEmits(['update:modelValue']);
             {{ props.title }}
         </label>
         <dropdown
-            class="es-dropdown-input"
+            :class="['es-dropdown-input', { 'disabled': props.disabled }]"
             :model-value="modelValue"
             :placeholder="props.placeholder"
             :options="props.options"
             :option-label="props.optionLabel"
             :option-value="props.optionValue"
+            :disabled="props.disabled"
             @update:model-value="emit('update:modelValue', $event)"
         >
             <template #value="slotProps">
@@ -55,7 +62,7 @@ const emit = defineEmits(['update:modelValue']);
                 <span v-else class="placeholder-text">{{ props.placeholder }}</span>
             </template>
             <template #dropdownicon>
-                <i class="fas fa-chevron-down chevron-icon"></i>
+                <ChevronDown class="chevron-icon" />
             </template>
         </dropdown>
     </div>

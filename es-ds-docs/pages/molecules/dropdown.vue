@@ -64,6 +64,14 @@ const dropdownProps = [
         The selected value. Use with v-model for two-way binding.
         `,
     ],
+    [
+        'disabled',
+        'Boolean',
+        'false',
+        `
+        Disables the dropdown. When disabled, the dropdown has a gray background and cannot be interacted with.
+        `,
+    ],
 ];
 </script>
 
@@ -107,6 +115,21 @@ const dropdownProps = [
                         option-value="value"
                     />
                     <p class="mt-3 text-muted">Selected: {{ selectedColor || 'None' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2 class="mb-200">Disabled example</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown 
+                        v-model="selectedFruit"
+                        title="Disabled dropdown"
+                        placeholder="This dropdown is disabled"
+                        :options="fruits"
+                        :disabled="true"
+                    />
                 </div>
             </div>
         </div>
