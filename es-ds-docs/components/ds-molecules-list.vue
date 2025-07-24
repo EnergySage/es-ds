@@ -27,7 +27,7 @@
         <li>
             <ds-link to="/molecules/data-table-simple"> Data table simple </ds-link>
         </li>
-                <li>
+        <li>
             <ds-link to="/molecules/dropdown"> Dropdown </ds-link>
         </li>
         <li>

@@ -219,10 +219,12 @@
   font-weight: variables.$input-font-weight;
   line-height: variables.$input-line-height;
   color: variables.$input-color;
+  text-decoration: none;
+  white-space: nowrap;
   background-color: variables.$input-bg;
   background-clip: padding-box;
   border: 1px solid variables.$gray-500;
-  border-radius: 8px;
+  border-radius: variables.$border-radius-sm;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   &:hover {
@@ -268,79 +270,71 @@
 }
 
 // PrimeVue dropdown panel styling
-[data-pc-section="panel"] {
-  background-color: variables.$white !important;
+.es-dropdown-panel {
+  background-color: variables.$white;
   background-clip: padding-box;
-  border: 1px solid variables.$gray-300 !important;
-  border-radius: 8px !important;
-  box-shadow: none !important;
+  border: 1px solid variables.$gray-300;
+  border-radius: variables.$border-radius-sm;
+  box-shadow: none;
   padding: 0;
+}
 
-  [data-pc-section="wrapper"] {
-    max-height: 200px;
-    overflow-y: auto;
+.es-dropdown-wrapper {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.es-dropdown-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: variables.$dropdown-color;
+  font-size: variables.$dropdown-font-size;
+}
+
+.es-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 16px;
+  color: variables.$gray-900;
+  text-align: left;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: variables.$gray-50;
   }
 
-  [data-pc-section="list"] {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    color: variables.$dropdown-color;
-    font-size: variables.$dropdown-font-size;
+  &[data-p-highlight="true"] {
+    color: variables.$gray-900;
+    background-color: variables.$blue-100;
   }
 
-  [data-pc-section="item"] {
+  &[data-p-focused="true"] {
+    background-color: variables.$gray-50;
+  }
+
+  &[data-p-disabled="true"] {
+    color: variables.$gray-400;
+    background-color: transparent;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .dropdown-option-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 12px 16px;
-    font-weight: variables.$font-weight-normal;
-    color: variables.$gray-900;
-    text-align: left;
-    text-decoration: none;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    transition: background-color 0.15s ease-in-out;
 
-    &:hover {
-      background-color: variables.$gray-50;
-    }
-
-    &[data-p-highlight="true"] {
-      color: variables.$gray-900;
-      background-color: variables.$blue-100;
-    }
-
-    &[data-p-focused="true"] {
-      background-color: variables.$gray-50;
-    }
-
-    &[data-p-disabled="true"] {
-      color: variables.$gray-400;
-      background-color: transparent;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    [data-pc-section="itemlabel"] {
-      display: block;
-      flex: 1;
-    }
-
-    .dropdown-option-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-
-      .check-icon {
-        width: 16px;
-        height: 16px;
-        color: variables.$gray-700;
-      }
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      color: variables.$gray-700;
     }
   }
 }

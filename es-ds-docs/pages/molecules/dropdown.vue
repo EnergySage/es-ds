@@ -16,19 +16,13 @@ onMounted(async () => {
 const selectedFruit = ref<string | undefined>(undefined);
 const selectedColor = ref<string | undefined>(undefined);
 
-const fruits = [
-    'Apple',
-    'Banana', 
-    'Orange',
-    'Grape',
-    'Strawberry'
-];
+const fruits = ['Apple', 'Banana', 'Orange', 'Grape', 'Strawberry'];
 
 const colors = [
     { label: 'Red', value: 'red' },
     { label: 'Blue', value: 'blue' },
     { label: 'Green', value: 'green' },
-    { label: 'Yellow', value: 'yellow' }
+    { label: 'Yellow', value: 'yellow' },
 ];
 
 const dropdownProps = [
@@ -91,12 +85,11 @@ const dropdownProps = [
             <h2 class="mb-200">Basic example</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <es-dropdown 
+                    <es-dropdown
                         v-model="selectedFruit"
                         title="Select a fruit"
                         placeholder="Choose a fruit..."
-                        :options="fruits"
-                    />
+                        :options="fruits" />
                     <p class="mt-3 text-muted">Selected: {{ selectedFruit || 'None' }}</p>
                 </div>
             </div>
@@ -106,14 +99,13 @@ const dropdownProps = [
             <h2 class="mb-200">Object options example</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <es-dropdown 
+                    <es-dropdown
                         v-model="selectedColor"
                         title="Select a color"
                         placeholder="Choose a color..."
                         :options="colors"
                         option-label="label"
-                        option-value="value"
-                    />
+                        option-value="value" />
                     <p class="mt-3 text-muted">Selected: {{ selectedColor || 'None' }}</p>
                 </div>
             </div>
@@ -123,13 +115,12 @@ const dropdownProps = [
             <h2 class="mb-200">Disabled example</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <es-dropdown 
+                    <es-dropdown
                         v-model="selectedFruit"
                         title="Disabled dropdown"
                         placeholder="This dropdown is disabled"
                         :options="fruits"
-                        :disabled="true"
-                    />
+                        :disabled="true" />
                 </div>
             </div>
         </div>

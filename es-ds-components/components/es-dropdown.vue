@@ -55,34 +55,44 @@ const isSelected = (option: any) => {
 
 <template>
     <div class="dropdown-wrapper">
-        <label v-if="props.title" class="form-label">
+        <label
+            v-if="props.title"
+            class="form-label">
             {{ props.title }}
         </label>
         <dropdown
-            :class="['es-dropdown-input', { 'disabled': props.disabled }]"
+            :class="['es-dropdown-input', { disabled: props.disabled }]"
             :model-value="modelValue"
             :placeholder="props.placeholder"
             :options="props.options"
             :option-label="props.optionLabel"
             :option-value="props.optionValue"
             :disabled="props.disabled"
-            @update:model-value="emit('update:modelValue', $event)"
-        >
+            :pt="{
+                root: { class: 'es-dropdown-root' },
+                panel: { class: 'es-dropdown-panel' },
+                wrapper: { class: 'es-dropdown-wrapper' },
+                list: { class: 'es-dropdown-list' },
+                item: { class: 'es-dropdown-item' },
+            }"
+            @update:model-value="emit('update:modelValue', $event)">
             <template #value="slotProps">
                 <span v-if="slotProps.value">{{ slotProps.value }}</span>
-                <span v-else class="placeholder-text">{{ props.placeholder }}</span>
+                <span
+                    v-else
+                    class="placeholder-text"
+                    >{{ props.placeholder }}</span
+                >
             </template>
             <template #dropdownicon>
                 <chevron-down class="chevron-icon" />
             </template>
             <template #option="slotProps">
                 <div class="dropdown-option-content">
-                    <span>{{
-                        props.optionLabel
-                            ? slotProps.option[props.optionLabel]
-                            : slotProps.option
-                    }}</span>
-                    <check v-if="isSelected(slotProps.option)" class="check-icon" />
+                    <span>{{ props.optionLabel ? slotProps.option[props.optionLabel] : slotProps.option }}</span>
+                    <check
+                        v-if="isSelected(slotProps.option)"
+                        class="check-icon" />
                 </div>
             </template>
         </dropdown>
