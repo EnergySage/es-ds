@@ -202,7 +202,11 @@
   color: variables.$dropdown-link-color;
 }
 
-// Custom es-dropdown styles
+// ==========================================
+// ES-DROPDOWN CUSTOM STYLES
+// ==========================================
+
+// Custom es-dropdown input styling
 .es-dropdown-input {
   display: flex;
   align-items: center;
@@ -244,5 +248,70 @@
     color: variables.$gray-600;
     font-size: 12px;
     margin-left: auto;
+  }
+}
+
+// PrimeVue dropdown panel styling
+[data-pc-section="panel"] {
+  background-color: variables.$dropdown-bg !important;
+  background-clip: padding-box;
+  border: variables.$dropdown-border-width solid variables.$dropdown-border-color !important;
+  border-radius: variables.$dropdown-border-radius !important;
+  box-shadow: variables.$dropdown-box-shadow !important;
+  padding: variables.$dropdown-padding-y variables.$dropdown-padding-x;
+  
+  [data-pc-section="wrapper"] {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  [data-pc-section="list"] {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: variables.$dropdown-color;
+    font-size: variables.$dropdown-font-size;
+  }
+
+  [data-pc-section="item"] {
+    display: block;
+    width: 100%;
+    padding: variables.$dropdown-item-padding-y variables.$dropdown-item-padding-x;
+    clear: both;
+    font-weight: variables.$font-weight-normal;
+    color: variables.$dropdown-link-color;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: variables.$dropdown-link-hover-color;
+      text-decoration: none;
+      background-color: variables.$dropdown-link-hover-bg;
+    }
+
+    &[data-p-highlight="true"] {
+      color: variables.$dropdown-link-active-color;
+      text-decoration: none;
+      background-color: variables.$dropdown-link-active-bg;
+    }
+
+    &[data-p-focused="true"] {
+      color: variables.$dropdown-link-hover-color;
+      background-color: variables.$dropdown-link-hover-bg;
+    }
+
+    &[data-p-disabled="true"] {
+      color: variables.$dropdown-link-disabled-color;
+      pointer-events: none;
+      background-color: transparent;
+    }
+
+    [data-pc-section="itemlabel"] {
+      display: block;
+    }
   }
 }

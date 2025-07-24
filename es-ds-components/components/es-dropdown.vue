@@ -41,7 +41,7 @@ const emit = defineEmits(['update:modelValue']);
         <label v-if="props.title" class="form-label">
             {{ props.title }}
         </label>
-        <dropdown 
+        <dropdown
             class="es-dropdown-input"
             :model-value="modelValue"
             :placeholder="props.placeholder"
