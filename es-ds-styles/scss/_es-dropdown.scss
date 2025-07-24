@@ -89,6 +89,11 @@
   width: 325px !important;
 }
 
+.es-dropdown-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
 .es-dropdown-list {
   margin: 0;
   padding: 0;
