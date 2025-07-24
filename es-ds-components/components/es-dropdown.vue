@@ -85,11 +85,12 @@ const onHide = () => {
             :option-label="props.optionLabel"
             :option-value="props.optionValue"
             :disabled="props.disabled"
+            scrollHeight="400px"
             :pt="{
                 root: { class: 'es-dropdown-root' },
                 panel: { class: 'es-dropdown-panel' },
                 wrapper: { class: 'es-dropdown-wrapper' },
-                list: { class: 'es-dropdown-list' },
+                list: { class: 'es-dropdown-list list-unstyled' },
                 item: { class: 'es-dropdown-item' },
             }"
             @update:model-value="emit('update:modelValue', $event)"

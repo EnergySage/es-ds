@@ -15,6 +15,7 @@ onMounted(async () => {
 
 const selectedFruit = ref<string | undefined>(undefined);
 const selectedColor = ref<string | undefined>(undefined);
+const selectedSize = ref<string | undefined>(undefined);
 
 const fruits = ['Apple', 'Banana', 'Orange', 'Grape', 'Strawberry'];
 
@@ -24,6 +25,8 @@ const colors = [
     { label: 'Green', value: 'green' },
     { label: 'Yellow', value: 'yellow' },
 ];
+
+const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
 const dropdownProps = [
     [
@@ -107,6 +110,19 @@ const dropdownProps = [
                         option-label="label"
                         option-value="value" />
                     <p class="mt-3 text-muted">Selected: {{ selectedColor || 'None' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2 class="mb-200">No placeholder example</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown
+                        v-model="selectedSize"
+                        title="Select a size"
+                        :options="sizes" />
+                    <p class="mt-3 text-muted">Selected: {{ selectedSize || 'None' }}</p>
                 </div>
             </div>
         </div>

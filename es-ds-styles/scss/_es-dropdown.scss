@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 325px;
   height: variables.$input-btn-height;
   padding: 16px 16px 16px 32px;
   font-family: variables.$input-font-family;
@@ -87,10 +87,6 @@
   overflow: hidden;
 }
 
-.es-dropdown-wrapper {
-  max-height: 200px;
-  overflow-y: auto;
-}
 
 .es-dropdown-list {
   margin: 0;
@@ -98,10 +94,6 @@
   list-style: none;
   color: variables.$dropdown-color;
   font-size: variables.$dropdown-font-size;
-
-  li {
-    margin-bottom: 0;
-  }
 }
 
 .es-dropdown-item {
