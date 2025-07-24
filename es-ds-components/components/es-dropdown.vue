@@ -85,7 +85,8 @@ const onHide = () => {
             :option-label="props.optionLabel"
             :option-value="props.optionValue"
             :disabled="props.disabled"
-            scrollHeight="400px"
+            appendTo="self"
+            scroll-height="300px"
             :pt="{
                 root: { class: 'es-dropdown-root' },
                 panel: { class: 'es-dropdown-panel' },

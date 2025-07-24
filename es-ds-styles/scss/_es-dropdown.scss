@@ -72,21 +72,22 @@
   }
 }
 
-// PrimeVue dropdown panel styling
+// Dropdown panel styling
+// Top corners have no radius so that it visually merges with the input
 .es-dropdown-panel {
   background-color: variables.$white;
-  background-clip: padding-box;
   border: 1px solid variables.$gray-500;
   border-top: 1px solid variables.$gray-500;
   border-radius: variables.$border-radius-sm;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  box-shadow: none;
   padding: 0;
-  margin-top: 0;
   overflow: hidden;
+  // Force dropdown to always appear below with appendTo="self"
+  top: calc(100% - 57px) !important;
+  left: 15px !important;
+  width: 325px !important;
 }
-
 
 .es-dropdown-list {
   margin: 0;
@@ -101,7 +102,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 12px 16px;
+  padding: 16px 16px 16px 32px;
   margin-bottom: 0;
   color: variables.$gray-900;
   text-align: left;
@@ -123,18 +124,7 @@
     background-color: variables.$blue-50;
   }
 
-  &[data-p-disabled="true"] {
-    color: variables.$gray-400;
-    background-color: transparent;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-
-  &:first-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-
+  // Prevent overlapping corners
   &:last-child {
     border-bottom-left-radius: variables.$border-radius-sm;
     border-bottom-right-radius: variables.$border-radius-sm;
