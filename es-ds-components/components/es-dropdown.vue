@@ -42,7 +42,7 @@ const emit = defineEmits(['update:modelValue']);
             {{ props.title }}
         </label>
         <dropdown 
-            class="btn btn-outline-primary w-100 text-start d-flex justify-content-between align-items-center"
+            class="es-dropdown-input"
             :model-value="modelValue"
             :placeholder="props.placeholder"
             :options="props.options"
@@ -52,10 +52,10 @@ const emit = defineEmits(['update:modelValue']);
         >
             <template #value="slotProps">
                 <span v-if="slotProps.value">{{ slotProps.value }}</span>
-                <span v-else class="text-muted">{{ props.placeholder }}</span>
+                <span v-else class="placeholder-text">{{ props.placeholder }}</span>
             </template>
             <template #dropdownicon>
-                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down chevron-icon"></i>
             </template>
         </dropdown>
     </div>
