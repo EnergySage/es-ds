@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import Dropdown from 'primevue/dropdown';
 import ChevronDown from './icon/chevron-down.vue';
 import Check from './icon/check.vue';
@@ -42,6 +43,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue']);
 
+const isOpen = ref(false);
+
 const isSelected = (option: any) => {
     // Handle object options with optionValue
     if (props.optionValue && typeof option === 'object' && option !== null) {
@@ -50,6 +53,14 @@ const isSelected = (option: any) => {
 
     // Handle simple string/number options
     return option === props.modelValue;
+};
+
+const onShow = () => {
+    isOpen.value = true;
+};
+
+const onHide = () => {
+    isOpen.value = false;
 };
 </script>
 
@@ -61,7 +72,13 @@ const isSelected = (option: any) => {
             {{ props.title }}
         </label>
         <dropdown
-            :class="['es-dropdown-input', { disabled: props.disabled }]"
+            :class="[
+                'es-dropdown-input', 
+                { 
+                    disabled: props.disabled,
+                    'es-dropdown-open': isOpen
+                }
+            ]"
             :model-value="modelValue"
             :placeholder="props.placeholder"
             :options="props.options"
@@ -75,7 +92,9 @@ const isSelected = (option: any) => {
                 list: { class: 'es-dropdown-list' },
                 item: { class: 'es-dropdown-item' },
             }"
-            @update:model-value="emit('update:modelValue', $event)">
+            @update:model-value="emit('update:modelValue', $event)"
+            @show="onShow"
+            @hide="onHide">
             <template #value="slotProps">
                 <span v-if="slotProps.value">{{ slotProps.value }}</span>
                 <span

@@ -235,7 +235,6 @@
   &:focus-within {
     border-color: variables.$gray-500;
     outline: 0;
-    box-shadow: 0 0 0 2px rgba(46, 70, 185, 0.25);
   }
 
   &:active {
@@ -258,6 +257,12 @@
     }
   }
 
+  &.es-dropdown-open {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
   .placeholder-text {
     color: variables.$input-color;
   }
@@ -273,10 +278,14 @@
 .es-dropdown-panel {
   background-color: variables.$white;
   background-clip: padding-box;
-  border: 1px solid variables.$gray-300;
+  border: 1px solid variables.$gray-500;
+  border-top: 1px solid variables.$gray-500;
   border-radius: variables.$border-radius-sm;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   box-shadow: none;
   padding: 0;
+  margin-top: 0;
 }
 
 .es-dropdown-wrapper {
