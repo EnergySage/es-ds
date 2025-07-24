@@ -73,11 +73,11 @@ const onHide = () => {
         </label>
         <dropdown
             :class="[
-                'es-dropdown-input', 
-                { 
+                'es-dropdown-input',
+                {
                     disabled: props.disabled,
-                    'es-dropdown-open': isOpen
-                }
+                    'es-dropdown-open': isOpen,
+                },
             ]"
             :model-value="modelValue"
             :placeholder="props.placeholder"
