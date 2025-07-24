@@ -13,6 +13,24 @@ onMounted(async () => {
     }
 });
 
+const selectedFruit = ref<string | undefined>(undefined);
+const selectedColor = ref<string | undefined>(undefined);
+
+const fruits = [
+    'Apple',
+    'Banana', 
+    'Orange',
+    'Grape',
+    'Strawberry'
+];
+
+const colors = [
+    { label: 'Red', value: 'red' },
+    { label: 'Blue', value: 'blue' },
+    { label: 'Green', value: 'green' },
+    { label: 'Yellow', value: 'yellow' }
+];
+
 const dropdownProps = [
     [
         'title',
@@ -28,6 +46,22 @@ const dropdownProps = [
         'n/a',
         `
         Text to display inside dropdown before it is clicked.
+        `,
+    ],
+    [
+        'options',
+        'Array',
+        '[]',
+        `
+        Array of options for the dropdown. Can be simple strings or objects with label/value properties.
+        `,
+    ],
+    [
+        'modelValue',
+        'String | Number | Object',
+        'null',
+        `
+        The selected value. Use with v-model for two-way binding.
         `,
     ],
 ];
@@ -47,8 +81,34 @@ const dropdownProps = [
 
         <div class="mb-500">
             <h2 class="mb-200">Basic example</h2>
-            <es-dropdown title="Basic example">
-            </es-dropdown>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown 
+                        v-model="selectedFruit"
+                        title="Select a fruit"
+                        placeholder="Choose a fruit..."
+                        :options="fruits"
+                    />
+                    <p class="mt-3 text-muted">Selected: {{ selectedFruit || 'None' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2 class="mb-200">Object options example</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown 
+                        v-model="selectedColor"
+                        title="Select a color"
+                        placeholder="Choose a color..."
+                        :options="colors"
+                        option-label="label"
+                        option-value="value"
+                    />
+                    <p class="mt-3 text-muted">Selected: {{ selectedColor || 'None' }}</p>
+                </div>
+            </div>
         </div>
 
         <div class="mb-500">

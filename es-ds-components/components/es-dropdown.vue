@@ -8,16 +8,55 @@ const props = defineProps({
     },
     placeholder: {
         type: String,
+        default: '',
+        required: false,
+    },
+    options: {
+        type: Array,
+        default: () => [],
+        required: false,
+    },
+    modelValue: {
+        type: [String, Number, Object],
+        default: null,
+        required: false,
+    },
+    optionLabel: {
+        type: String,
+        default: undefined,
+        required: false,
+    },
+    optionValue: {
+        type: String,
+        default: undefined,
         required: false,
     },
 });
+
+const emit = defineEmits(['update:modelValue']);
 </script>
 
 <template>
-    <h4 v-if="props.title">
-        {{ props.title }}
-    </h4>
-    <Dropdown placeholder="{{ props.placeholder }}">
-
-    </Dropdown>
+    <div class="dropdown-wrapper">
+        <label v-if="props.title" class="form-label">
+            {{ props.title }}
+        </label>
+        <dropdown 
+            class="btn btn-outline-primary w-100 text-start d-flex justify-content-between align-items-center"
+            :model-value="modelValue"
+            :placeholder="props.placeholder"
+            :options="props.options"
+            :option-label="props.optionLabel"
+            :option-value="props.optionValue"
+            @update:model-value="emit('update:modelValue', $event)"
+        >
+            <template #value="slotProps">
+                <span v-if="slotProps.value">{{ slotProps.value }}</span>
+                <span v-else class="text-muted">{{ props.placeholder }}</span>
+            </template>
+            <template #dropdownicon>
+                <i class="fas fa-chevron-down"></i>
+            </template>
+        </dropdown>
+    </div>
 </template>
