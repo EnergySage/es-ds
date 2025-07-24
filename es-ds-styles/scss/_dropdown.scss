@@ -261,7 +261,7 @@
   }
 
   .chevron-icon {
-    color: variables.$gray-600;
+    color: variables.$gray-900;
     font-size: 12px;
     margin-left: auto;
   }
@@ -269,12 +269,12 @@
 
 // PrimeVue dropdown panel styling
 [data-pc-section="panel"] {
-  background-color: variables.$dropdown-bg !important;
+  background-color: variables.$white !important;
   background-clip: padding-box;
-  border: variables.$dropdown-border-width solid variables.$dropdown-border-color !important;
-  border-radius: variables.$dropdown-border-radius !important;
-  box-shadow: variables.$dropdown-box-shadow !important;
-  padding: variables.$dropdown-padding-y variables.$dropdown-padding-x;
+  border: 1px solid variables.$gray-300 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 0;
 
   [data-pc-section="wrapper"] {
     max-height: 200px;
@@ -290,44 +290,57 @@
   }
 
   [data-pc-section="item"] {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    padding: variables.$dropdown-item-padding-y variables.$dropdown-item-padding-x;
-    clear: both;
+    padding: 12px 16px;
     font-weight: variables.$font-weight-normal;
-    color: variables.$dropdown-link-color;
-    text-align: inherit;
+    color: variables.$gray-900;
+    text-align: left;
     text-decoration: none;
     white-space: nowrap;
     background-color: transparent;
     border: 0;
     cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
 
     &:hover {
-      color: variables.$dropdown-link-hover-color;
-      text-decoration: none;
-      background-color: variables.$dropdown-link-hover-bg;
+      background-color: variables.$gray-50;
     }
 
     &[data-p-highlight="true"] {
-      color: variables.$dropdown-link-active-color;
-      text-decoration: none;
-      background-color: variables.$dropdown-link-active-bg;
+      color: variables.$gray-900;
+      background-color: variables.$blue-100;
     }
 
     &[data-p-focused="true"] {
-      color: variables.$dropdown-link-hover-color;
-      background-color: variables.$dropdown-link-hover-bg;
+      background-color: variables.$gray-50;
     }
 
     &[data-p-disabled="true"] {
-      color: variables.$dropdown-link-disabled-color;
-      pointer-events: none;
+      color: variables.$gray-400;
       background-color: transparent;
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
     [data-pc-section="itemlabel"] {
       display: block;
+      flex: 1;
+    }
+
+    .dropdown-option-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .check-icon {
+        width: 16px;
+        height: 16px;
+        color: variables.$gray-700;
+      }
     }
   }
 }

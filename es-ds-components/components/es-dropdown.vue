@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Dropdown from 'primevue/dropdown';
 import ChevronDown from './icon/chevron-down.vue';
+import Check from './icon/check.vue';
 
 const props = defineProps({
     title: {
@@ -40,6 +41,16 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:modelValue']);
+
+const isSelected = (option: any) => {
+    // Handle object options with optionValue
+    if (props.optionValue && typeof option === 'object' && option !== null) {
+        return option[props.optionValue] === props.modelValue;
+    }
+
+    // Handle simple string/number options
+    return option === props.modelValue;
+};
 </script>
 
 <template>
@@ -62,7 +73,17 @@ const emit = defineEmits(['update:modelValue']);
                 <span v-else class="placeholder-text">{{ props.placeholder }}</span>
             </template>
             <template #dropdownicon>
-                <ChevronDown class="chevron-icon" />
+                <chevron-down class="chevron-icon" />
+            </template>
+            <template #option="slotProps">
+                <div class="dropdown-option-content">
+                    <span>{{
+                        props.optionLabel
+                            ? slotProps.option[props.optionLabel]
+                            : slotProps.option
+                    }}</span>
+                    <check v-if="isSelected(slotProps.option)" class="check-icon" />
+                </div>
             </template>
         </dropdown>
     </div>
