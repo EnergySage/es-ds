@@ -55,7 +55,7 @@ const dropdownProps = [
     ],
     [
         'modelValue',
-        'String | Number | Object',
+        'any',
         'null',
         `
         The selected value. Use with v-model for two-way binding.
