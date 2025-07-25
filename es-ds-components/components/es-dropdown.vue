@@ -62,6 +62,7 @@ const onShow = () => {
 const onHide = () => {
     isOpen.value = false;
 };
+
 </script>
 
 <template>
@@ -85,7 +86,7 @@ const onHide = () => {
             :option-label="props.optionLabel"
             :option-value="props.optionValue"
             :disabled="props.disabled"
-            appendTo="self"
+            append-to="self"
             scroll-height="300px"
             :pt="{
                 root: { class: 'es-dropdown-root' },
@@ -97,14 +98,6 @@ const onHide = () => {
             @update:model-value="emit('update:modelValue', $event)"
             @show="onShow"
             @hide="onHide">
-            <template #value="slotProps">
-                <span v-if="slotProps.value">{{ slotProps.value }}</span>
-                <span
-                    v-else
-                    class="placeholder-text"
-                    >{{ props.placeholder }}</span
-                >
-            </template>
             <template #dropdownicon>
                 <chevron-down class="chevron-icon" />
             </template>

@@ -20,10 +20,10 @@ const selectedSize = ref<string | undefined>(undefined);
 const fruits = ['Apple', 'Banana', 'Orange', 'Grape', 'Strawberry'];
 
 const colors = [
-    { label: 'Red', value: 'red' },
-    { label: 'Blue', value: 'blue' },
-    { label: 'Green', value: 'green' },
-    { label: 'Yellow', value: 'yellow' },
+    { label: 'Red', value: 'Rouge' },
+    { label: 'Blue', value: 'Bleu' },
+    { label: 'Green', value: 'Vert' },
+    { label: 'Yellow', value: 'Jaune' },
 ];
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
