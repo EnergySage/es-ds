@@ -22,7 +22,7 @@
   background-color: variables.$input-bg;
   background-clip: padding-box;
   border: 1px solid variables.$gray-500;
-  border-radius: variables.$border-radius-sm;
+  border-radius: variables.$border-radius-xs;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   &:hover {
@@ -78,7 +78,7 @@
   background-color: variables.$white;
   border: 1px solid variables.$gray-500;
   border-top: 1px solid variables.$gray-500;
-  border-radius: variables.$border-radius-sm;
+  border-radius: variables.$border-radius-xs;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 0;
@@ -131,8 +131,8 @@
 
   // Prevent overlapping corners
   &:last-child {
-    border-bottom-left-radius: variables.$border-radius-sm;
-    border-bottom-right-radius: variables.$border-radius-sm;
+    border-bottom-left-radius: variables.$border-radius-xs;
+    border-bottom-right-radius: variables.$border-radius-xs;
   }
 
   .dropdown-option-content {
