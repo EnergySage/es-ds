@@ -62,7 +62,6 @@ const onShow = () => {
 const onHide = () => {
     isOpen.value = false;
 };
-
 </script>
 
 <template>

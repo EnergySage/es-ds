@@ -71,7 +71,7 @@ const dropdownProps = [
     ],
     [
         'optionValue',
-        'String', 
+        'String',
         'undefined',
         `
         Property name to use as the value when options are objects. Required when using object-based options.
