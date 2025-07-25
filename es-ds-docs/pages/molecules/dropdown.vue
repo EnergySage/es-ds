@@ -62,6 +62,22 @@ const dropdownProps = [
         `,
     ],
     [
+        'optionLabel',
+        'String',
+        'undefined',
+        `
+        Property name to use as the display label when options are objects. Required when using object-based options.
+        `,
+    ],
+    [
+        'optionValue',
+        'String', 
+        'undefined',
+        `
+        Property name to use as the value when options are objects. Required when using object-based options.
+        `,
+    ],
+    [
         'disabled',
         'Boolean',
         'false',
