@@ -19,12 +19,7 @@ const selectedSize = ref<string | undefined>(undefined);
 
 const fruits = ['Apple', 'Banana', 'Orange', 'Grape', 'Strawberry'];
 
-const colors = [
-    { label: 'Red', value: 'Rouge' },
-    { label: 'Blue', value: 'Bleu' },
-    { label: 'Green', value: 'Vert' },
-    { label: 'Yellow', value: 'Jaune' },
-];
+const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
@@ -50,31 +45,7 @@ const dropdownProps = [
         'Array',
         '[]',
         `
-        Array of options for the dropdown. Can be simple strings or objects with label/value properties.
-        `,
-    ],
-    [
-        'modelValue',
-        'any',
-        'null',
-        `
-        The selected value. Use with v-model for two-way binding.
-        `,
-    ],
-    [
-        'optionLabel',
-        'String',
-        'undefined',
-        `
-        Property name to use as the display label when options are objects. Required when using object-based options.
-        `,
-    ],
-    [
-        'optionValue',
-        'String',
-        'undefined',
-        `
-        Property name to use as the value when options are objects. Required when using object-based options.
+        Array of strings for the dropdown.
         `,
     ],
     [
@@ -82,7 +53,7 @@ const dropdownProps = [
         'Boolean',
         'false',
         `
-        Disables the dropdown. When disabled, the dropdown has a gray background and cannot be interacted with.
+        When disabled, the dropdown has a gray background and cannot be interacted with.
         `,
     ],
 ];
@@ -115,22 +86,6 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">Object options example</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-dropdown
-                        v-model="selectedColor"
-                        title="Select a color"
-                        placeholder="Choose a color..."
-                        :options="colors"
-                        option-label="label"
-                        option-value="value" />
-                    <p class="mt-3 text-muted">Selected: {{ selectedColor || 'None' }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-500">
             <h2 class="mb-200">No placeholder example</h2>
             <div class="row">
                 <div class="col-md-6">
@@ -148,11 +103,11 @@ const dropdownProps = [
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown
-                        v-model="selectedFruit"
+                        v-model="selectedColor"
                         title="Disabled dropdown"
                         placeholder="This dropdown is disabled"
-                        :options="fruits"
-                        :disabled="true" />
+                        :options="colors"
+                        disabled />
                 </div>
             </div>
         </div>
