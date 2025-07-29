@@ -7,7 +7,6 @@ interface Props {
     options?: string[];
     placeholder?: string;
     title: string;
-
 }
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
@@ -33,6 +32,7 @@ const id = useId();
             {{ props.title }}
         </label>
         <dropdown
+            :id="id"
             :class="[
                 'es-dropdown-input',
                 {
@@ -40,7 +40,6 @@ const id = useId();
                     'es-dropdown-open': isOpen,
                 },
             ]"
-            :id="id"
             :model-value="modelValue"
             :placeholder="props.placeholder"
             :options="props.options"
