@@ -202,3 +202,151 @@
   color: variables.$dropdown-link-color;
 }
 
+// ==========================================
+// ES-DROPDOWN CUSTOM STYLES
+// ==========================================
+
+// Custom es-dropdown input styling
+.es-dropdown-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 325px;
+  height: variables.$input-btn-height;
+  padding: 16px 16px 16px 32px;
+  font-family: variables.$input-font-family;
+  font-size: variables.$input-font-size;
+  font-weight: variables.$input-font-weight;
+  line-height: variables.$input-line-height;
+  color: variables.$input-color;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: variables.$input-bg;
+  background-clip: padding-box;
+  border: 1px solid variables.$gray-500;
+  border-radius: variables.$border-radius-xs;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:hover {
+    border-color: variables.$blue-300;
+  }
+
+  &:focus,
+  &:focus-within {
+    border-color: variables.$gray-500;
+    outline: 0;
+  }
+
+  &:active {
+    border-color: variables.$blue-300;
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: variables.$gray-100;
+    border-color: variables.$gray-500;
+    color: variables.$gray-500;
+    cursor: not-allowed;
+
+    .placeholder-text {
+      color: variables.$gray-500;
+    }
+
+    .chevron-icon {
+      color: variables.$gray-500;
+    }
+  }
+
+  &.es-dropdown-open {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .placeholder-text {
+    color: variables.$input-color;
+  }
+
+  .chevron-icon {
+    color: variables.$gray-900;
+    font-size: 12px;
+    margin-left: auto;
+  }
+}
+
+// Dropdown panel styling
+// Top corners have no radius so that it visually merges with the input
+.es-dropdown-panel {
+  background-color: variables.$white;
+  border: 1px solid variables.$gray-500;
+  border-top: 1px solid variables.$gray-500;
+  border-radius: variables.$border-radius-xs;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 0;
+  overflow: hidden;
+  // Force dropdown to always appear below with appendTo="self"
+  top: calc(100% - 57px) !important;
+  left: 15px !important;
+  width: 325px !important;
+}
+
+.es-dropdown-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.es-dropdown-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: variables.$dropdown-color;
+  font-size: variables.$dropdown-font-size;
+}
+
+.es-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 16px 16px 32px;
+  margin-bottom: 0;
+  color: variables.$gray-900;
+  text-align: left;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: variables.$blue-50;
+  }
+
+  &[data-p-highlight="true"] {
+    color: variables.$gray-900;
+    background-color: variables.$blue-100;
+  }
+
+  &[data-p-focused="true"] {
+    background-color: variables.$blue-50;
+  }
+
+  // Prevent overlapping corners
+  &:last-child {
+    border-bottom-left-radius: variables.$border-radius-xs;
+    border-bottom-right-radius: variables.$border-radius-xs;
+  }
+
+  .dropdown-option-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .check-icon {
+      width: 16px;
+      height: 16px;
+      color: variables.$gray-700;
+    }
+  }
+}
