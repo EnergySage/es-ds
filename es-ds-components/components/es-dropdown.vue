@@ -53,16 +53,21 @@ const id = useId();
                 list: { class: 'es-dropdown-list list-unstyled' },
                 item: { class: 'es-dropdown-item' },
             }"
-            @update:model-value="emit('update:modelValue', $event)">
+            @update:model-value="emit('update:modelValue', $event)"
+            @show="isOpen = true"
+            @hide="isOpen = false">
             <template #dropdownicon>
-                <icon-chevron-down class="chevron-icon" />
+                <icon-chevron-down
+                    height="18px"
+                    class="text-gray-900" />
             </template>
             <template #option="slotProps">
                 <div class="dropdown-option-content">
                     <span>{{ slotProps.option }}</span>
                     <icon-check
                         v-if="isSelected(slotProps.option)"
-                        class="check-icon" />
+                        height="24px"
+                        class="text-gray-700" />
                 </div>
             </template>
         </dropdown>
