@@ -64,6 +64,7 @@ const id = useId();
             @hide="isOpen = false">
             <template #dropdownicon>
                 <icon-chevron-down
+                    aria-hidden="true"
                     height="18px"
                     :class="`${disabled ? 'text-gray-500' : 'text-gray-900'}`" />
             </template>
