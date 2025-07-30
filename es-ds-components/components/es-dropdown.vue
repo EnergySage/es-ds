@@ -6,7 +6,7 @@ interface Props {
     modelValue?: any;
     options?: string[];
     placeholder?: string;
-    title: string;
+    title?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
@@ -27,9 +27,15 @@ const id = useId();
 <template>
     <div class="dropdown-wrapper">
         <label
-            :for="id"
-            class="form-label">
+            v-if="props.title"
+            :for="id">
             {{ props.title }}
+        </label>
+        <label
+            v-else
+            :for="id"
+            class="sr-only">
+            Select an option
         </label>
         <dropdown
             :id="id"
@@ -59,7 +65,7 @@ const id = useId();
             <template #dropdownicon>
                 <icon-chevron-down
                     height="18px"
-                    class="text-gray-900" />
+                    :class="`${disabled ? 'text-gray-500' : 'text-gray-900'}`" />
             </template>
             <template #option="slotProps">
                 <div class="dropdown-option-content">

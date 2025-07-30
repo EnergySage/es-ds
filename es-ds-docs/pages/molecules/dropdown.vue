@@ -99,6 +99,18 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
+            <h2 class="mb-200">No title example</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown
+                        v-model="selectedColor"
+                        :options="colors" />
+                    <p class="mt-3 text-muted">Selected: {{ selectedColor || 'None' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
             <h2 class="mb-200">Disabled example</h2>
             <div class="row">
                 <div class="col-md-6">

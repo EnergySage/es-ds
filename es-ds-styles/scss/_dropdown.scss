@@ -227,8 +227,11 @@
   white-space: nowrap;
   width: 325px;
 
-  &:hover {
+  &:hover, &:active {
     border-color: variables.$blue-300;
+    .es-dropdown-panel {
+      border-top: 1px solid variables.$blue-300;
+    }
   }
 
   &:focus,
@@ -238,18 +241,21 @@
     font-weight: variables.$font-weight-bold;
   }
 
-  &:active {
-    border-color: variables.$blue-300;
+  span[data-pc-section='input'] {
+    color: variables.$input-color-placeholder;
+    &:focus,
+    &:focus-visible {
+      outline: 0;
+      font-weight: variables.$font-weight-bold;
+    }
   }
 
   &:disabled,
   &.disabled {
     background-color: variables.$gray-50;
     border-color: variables.$gray-500;
-    color: variables.$gray-500;
     cursor: not-allowed;
-
-    .chevron-icon {
+    span[data-pc-section='input'] {
       color: variables.$gray-500;
     }
   }
@@ -258,10 +264,6 @@
     border-bottom: none;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-  }
-
-  .placeholder-text {
-    color: variables.$input-color;
   }
 }
 
@@ -309,13 +311,9 @@
     background-color: variables.$blue-50;
   }
 
-  &[data-p-highlight="true"] {
-    color: variables.$gray-900;
+  &:active {
     background-color: variables.$blue-100;
-  }
-
-  &[data-p-focused="true"] {
-    background-color: variables.$blue-50;
+    font-weight: variables.$font-weight-bold;
   }
 
   &:focus,
