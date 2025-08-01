@@ -6,7 +6,7 @@ interface Props {
     modelValue?: any;
     options?: string[];
     placeholder?: string;
-    title?: string;
+    label?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
@@ -27,9 +27,9 @@ const id = useId();
 <template>
     <div class="dropdown-wrapper">
         <label
-            v-if="props.title"
+            v-if="label"
             :for="id">
-            {{ props.title }}
+            {{ label }}
         </label>
         <label
             v-else
@@ -38,26 +38,25 @@ const id = useId();
             Select an option
         </label>
         <dropdown
-            :id="id"
+            :input-id="id"
             :class="[
-                'es-dropdown-input',
+                'es-dropdown-input d-flex align-items-center bg-white rounded-xs justify-content-between p-100',
                 {
-                    disabled: props.disabled,
+                    disabled: disabled,
                     'es-dropdown-open': isOpen,
                 },
             ]"
             :model-value="modelValue"
-            :placeholder="props.placeholder"
-            :options="props.options"
-            :disabled="props.disabled"
+            :placeholder="placeholder"
+            :options="options"
+            :disabled="disabled"
             append-to="self"
             scroll-height="300px"
             :pt="{
-                root: { class: 'es-dropdown-root' },
-                panel: { class: 'es-dropdown-panel' },
+                panel: { class: 'es-dropdown-panel bg-white rounded-xs w-100' },
                 wrapper: { class: 'es-dropdown-wrapper' },
-                list: { class: 'es-dropdown-list list-unstyled' },
-                item: { class: 'es-dropdown-item' },
+                list: { class: 'p-0 m-0 list-unstyled' },
+                item: { class: 'es-dropdown-item d-flex justify-content-between p-100 pl-200' },
             }"
             @update:model-value="emit('update:modelValue', $event)"
             @show="isOpen = true"
@@ -65,18 +64,107 @@ const id = useId();
             <template #dropdownicon>
                 <icon-chevron-down
                     aria-hidden="true"
-                    height="18px"
+                    height="1.125rem"
                     :class="`${disabled ? 'text-gray-500' : 'text-gray-900'}`" />
             </template>
             <template #option="slotProps">
-                <div class="dropdown-option-content">
-                    <span>{{ slotProps.option }}</span>
-                    <icon-check
-                        v-if="isSelected(slotProps.option)"
-                        height="24px"
-                        class="text-gray-700" />
-                </div>
+                <span>{{ slotProps.option }}</span>
+                <icon-check
+                    v-if="isSelected(slotProps.option)"
+                    height="1.5rem"
+                    class="text-gray-700" />
             </template>
         </dropdown>
     </div>
 </template>
+
+<style lang="scss">
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+
+.es-dropdown-input {
+    background-clip: padding-box;
+    border: variables.$border-width solid variables.$gray-500;
+    height: variables.$input-btn-height;
+    transition: variables.$input-transition;
+    user-select: none;
+
+    &:hover,
+    &:active {
+        border-color: variables.$blue-300;
+        .es-dropdown-panel {
+            border-top: variables.$border-width solid variables.$blue-300;
+        }
+    }
+
+    &:focus-visible {
+        border-color: variables.$gray-500;
+        outline: 0;
+        font-weight: variables.$font-weight-bold;
+    }
+
+    span[data-pc-section='input'] {
+        color: variables.$input-color-placeholder;
+        &:focus-visible {
+            outline: 0;
+            font-weight: variables.$font-weight-bold;
+        }
+    }
+
+    &:disabled,
+    &.disabled {
+        background-color: variables.$gray-50;
+        border-color: variables.$gray-500;
+        cursor: not-allowed;
+        span[data-pc-section='input'] {
+            color: variables.$gray-500;
+        }
+    }
+
+    &.es-dropdown-open {
+        border-bottom: none;
+        // Bottom corners have no radius so that it visually merges with the dropdown
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+}
+
+.es-dropdown-panel {
+    border: variables.$border-width solid variables.$gray-500;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    overflow: hidden;
+    left: 15px !important;
+    // top: calc(100% - 57px) !important;
+    transform: translateY(2rem);
+}
+
+.es-dropdown-wrapper {
+    max-height: 18.75rem;
+    overflow-y: auto;
+}
+
+.es-dropdown-item {
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+        background-color: variables.$blue-50;
+    }
+
+    &:active {
+        background-color: variables.$blue-100;
+        font-weight: variables.$font-weight-bold;
+    }
+
+    &:focus-visible {
+        outline: 0;
+        font-weight: variables.$font-weight-bold;
+    }
+
+    &:last-child {
+        // Prevent overlapping corners
+        border-bottom-left-radius: variables.$border-radius-xs;
+        border-bottom-right-radius: variables.$border-radius-xs;
+    }
+}
+</style>

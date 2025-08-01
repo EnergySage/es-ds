@@ -25,7 +25,7 @@ const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
 const dropdownProps = [
     [
-        'title',
+        'label',
         'String',
         'n/a',
         `
@@ -77,7 +77,7 @@ const dropdownProps = [
                 <div class="col-md-6">
                     <es-dropdown
                         v-model="selectedFruit"
-                        title="Select a fruit"
+                        label="Select a fruit"
                         placeholder="Choose a fruit..."
                         :options="fruits" />
                     <p class="mt-3 text-muted">Selected: {{ selectedFruit || 'None' }}</p>
@@ -91,7 +91,7 @@ const dropdownProps = [
                 <div class="col-md-6">
                     <es-dropdown
                         v-model="selectedSize"
-                        title="Select a size"
+                        label="Select a size"
                         :options="sizes" />
                     <p class="mt-3 text-muted">Selected: {{ selectedSize || 'None' }}</p>
                 </div>
@@ -99,7 +99,7 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">No title example</h2>
+            <h2 class="mb-200">No label example</h2>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown
@@ -116,7 +116,7 @@ const dropdownProps = [
                 <div class="col-md-6">
                     <es-dropdown
                         v-model="selectedColor"
-                        title="Disabled dropdown"
+                        label="Disabled dropdown"
                         placeholder="This dropdown is disabled"
                         :options="colors"
                         disabled />
