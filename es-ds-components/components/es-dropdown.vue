@@ -145,7 +145,9 @@ const id = useId();
     }
 
     &.p-connected-overlay-enter-active {
-        transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);
+        transition:
+            transform 0.12s cubic-bezier(0, 0, 0.2, 1),
+            opacity 0.12s cubic-bezier(0, 0, 0.2, 1);
     }
 
     &.p-connected-overlay-leave-active {
