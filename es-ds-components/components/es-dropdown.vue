@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
     modelValue: undefined,
     options: () => [],
     placeholder: '',
+    label: '',
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -27,7 +28,7 @@ const id = useId();
 <template>
     <div class="dropdown-wrapper">
         <label
-            v-if="label"
+            v-if="label !== ''"
             :for="id">
             {{ label }}
         </label>
@@ -51,7 +52,7 @@ const id = useId();
             :options="options"
             :disabled="disabled"
             append-to="self"
-            scroll-height="300px"
+            scroll-height="18rem"
             :pt="{
                 panel: { class: 'es-dropdown-panel bg-white rounded-xs w-100' },
                 wrapper: { class: 'es-dropdown-wrapper' },
@@ -132,10 +133,10 @@ const id = useId();
     border: variables.$border-width solid variables.$gray-500;
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
+    box-shadow: variables.$popover-box-shadow;
     overflow: hidden;
     left: 15px !important;
-    // top: calc(100% - 57px) !important;
-    transform: translateY(2rem);
+    top: calc(100% - 56px) !important;
     transform-origin: center top;
 
     // matched from PrimeVue styled mode
