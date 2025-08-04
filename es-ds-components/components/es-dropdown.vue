@@ -136,6 +136,25 @@ const id = useId();
     left: 15px !important;
     // top: calc(100% - 57px) !important;
     transform: translateY(2rem);
+    transform-origin: center top;
+
+    // matched from PrimeVue styled mode
+    &.p-connected-overlay-enter-from {
+        opacity: 0;
+        transform: scaleY(0.8);
+    }
+
+    &.p-connected-overlay-enter-active {
+        transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    &.p-connected-overlay-leave-active {
+        transition: opacity 0.1s linear;
+    }
+
+    &.p-connected-overlay-leave-to {
+        opacity: 0;
+    }
 }
 
 .es-dropdown-wrapper {
