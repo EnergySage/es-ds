@@ -16,12 +16,40 @@ onMounted(async () => {
 const selectedFruit = ref<string | undefined>(undefined);
 const selectedColor = ref<string | undefined>(undefined);
 const selectedSize = ref<string | undefined>(undefined);
+const selectedContinent = ref<{ label: string; value: string } | undefined>(undefined);
 
 const fruits = ['Apple', 'Banana', 'Orange', 'Grape', 'Strawberry'];
 
 const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+
+const continents = [
+    {
+        label: 'Africa',
+        value: 'africa',
+    },
+    {
+        label: 'Antarctica',
+        value: 'antarctica',
+    },
+    {
+        label: 'Asia',
+        value: 'asia',
+    },
+    {
+        label: 'Europe',
+        value: 'europe',
+    },
+    {
+        label: 'North America',
+        value: 'north_america',
+    },
+    {
+        label: 'South America',
+        value: 'south_america',
+    },
+];
 
 const dropdownProps = [
     [
@@ -45,7 +73,7 @@ const dropdownProps = [
         'Array',
         '[]',
         `
-        Array of strings for the dropdown.
+        Array of options to display in the dropdown. Can be an array of strings or objects with 'label' and 'value' properties.
         `,
     ],
     [
@@ -120,6 +148,19 @@ const dropdownProps = [
                         placeholder="This dropdown is disabled"
                         :options="colors"
                         disabled />
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2 class="mb-200">Object options example</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown
+                        v-model="selectedContinent"
+                        label="Select your continent"
+                        :options="continents" />
+                    <p class="mt-3 text-muted">Selected: {{ selectedContinent?.value || 'None' }}</p>
                 </div>
             </div>
         </div>

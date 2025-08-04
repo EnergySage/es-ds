@@ -4,7 +4,7 @@ import Dropdown from 'primevue/dropdown';
 interface Props {
     disabled?: boolean;
     modelValue?: any;
-    options?: string[];
+    options?: string[] | { label: string; value: string }[];
     placeholder?: string;
     label?: string;
 }
@@ -48,6 +48,7 @@ const id = useId();
                 },
             ]"
             :model-value="modelValue"
+            :option-label="options.length > 0 && typeof options[0] === 'object' ? 'label' : undefined"
             :placeholder="placeholder"
             :options="options"
             :disabled="disabled"
@@ -69,7 +70,7 @@ const id = useId();
                     :class="`${disabled ? 'text-gray-500' : 'text-gray-900'}`" />
             </template>
             <template #option="slotProps">
-                <span>{{ slotProps.option }}</span>
+                <span>{{ slotProps.option.label ? slotProps.option.label : slotProps.option }}</span>
                 <icon-check
                     v-if="isSelected(slotProps.option)"
                     height="1.5rem"
