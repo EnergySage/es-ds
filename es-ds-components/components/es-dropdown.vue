@@ -48,25 +48,34 @@ const id = useId();
                 {
                     disabled: disabled,
                     'es-dropdown-open': isOpen,
-                    focused: isFocused,
+                    focused: isFocused && !isOpen,
                 },
             ]"
+            :disabled="disabled"
+            :focus-on-hover="false"
             :model-value="modelValue"
             :option-label="options.length > 0 && typeof options[0] === 'object' ? 'label' : undefined"
-            :placeholder="placeholder"
             :options="options"
-            :disabled="disabled"
-            append-to="self"
-            scroll-height="18rem"
+            :placeholder="placeholder"
             :pt="{
                 panel: { class: 'es-dropdown-panel bg-white rounded-xs w-100' },
                 wrapper: { class: 'es-dropdown-wrapper' },
                 list: { class: 'p-0 m-0 list-unstyled' },
-                item: { class: 'es-dropdown-item d-flex justify-content-between p-100 pl-200' },
+                item: {
+                    class: [
+                        'es-dropdown-item d-flex justify-content-between p-100 pl-200',
+                        {
+                            'input-focused': isFocused,
+                        },
+                    ],
+                },
             }"
+            append-to="self"
+            scroll-height="18rem"
             @update:model-value="emit('update:modelValue', $event)"
             @blur="isFocused = false"
             @focus="isFocused = true"
+            @click="isFocused = false"
             @hide="isOpen = false"
             @show="isOpen = true">
             <template #dropdownicon>
@@ -115,6 +124,9 @@ const id = useId();
 
     span[data-pc-section='input'] {
         color: variables.$input-color-placeholder;
+        &:focus-visible {
+            outline: 0;
+        }
     }
 
     &:disabled,
@@ -176,9 +188,13 @@ const id = useId();
     transition: background-color 0.15s ease-in-out;
 
     &:hover,
-    &[data-p-focused='true'] {
+    &:not(.focused)[data-p-focused='true'] {
         background-color: variables.$blue-50;
-        outline: 0;
+    }
+
+    &.input-focused[data-p-focused='true'] {
+        outline: 0.125rem solid variables.$blue-600;
+        outline-offset: -0.25rem;
     }
 
     &:active {
