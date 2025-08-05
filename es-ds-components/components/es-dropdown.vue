@@ -48,7 +48,7 @@ const id = useId();
                 {
                     disabled: disabled,
                     'es-dropdown-open': isOpen,
-                    'focused': isFocused,
+                    focused: isFocused,
                 },
             ]"
             :model-value="modelValue"
@@ -68,7 +68,7 @@ const id = useId();
             @blur="isFocused = false"
             @focus="isFocused = true"
             @hide="isOpen = false"
-            @show="isOpen = true" >
+            @show="isOpen = true">
             <template #dropdownicon>
                 <icon-chevron-down
                     aria-hidden="true"
@@ -175,14 +175,14 @@ const id = useId();
     cursor: pointer;
     transition: background-color 0.15s ease-in-out;
 
-    &:hover, &[data-p-focused='true'] {
+    &:hover,
+    &[data-p-focused='true'] {
         background-color: variables.$blue-50;
         outline: 0;
     }
 
     &:active {
         background-color: variables.$blue-100;
-        font-weight: variables.$font-weight-bold;
     }
 
     &:last-child {
