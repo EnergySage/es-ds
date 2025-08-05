@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['update:modelValue']);
 
 const isOpen = ref(false);
+const isFocused = ref(false);
 
 const isSelected = (option: any) => option === props.modelValue;
 
@@ -26,7 +27,9 @@ const id = useId();
 </script>
 
 <template>
-    <div class="dropdown-wrapper">
+    <div
+        class="input-wrapper justify-content-end"
+        :class="$attrs.class">
         <label
             v-if="label !== ''"
             :for="id">
@@ -45,6 +48,7 @@ const id = useId();
                 {
                     disabled: disabled,
                     'es-dropdown-open': isOpen,
+                    'focused': isFocused,
                 },
             ]"
             :model-value="modelValue"
@@ -61,8 +65,10 @@ const id = useId();
                 item: { class: 'es-dropdown-item d-flex justify-content-between p-100 pl-200' },
             }"
             @update:model-value="emit('update:modelValue', $event)"
-            @show="isOpen = true"
-            @hide="isOpen = false">
+            @blur="isFocused = false"
+            @focus="isFocused = true"
+            @hide="isOpen = false"
+            @show="isOpen = true" >
             <template #dropdownicon>
                 <icon-chevron-down
                     aria-hidden="true"
@@ -85,7 +91,7 @@ const id = useId();
 
 .es-dropdown-input {
     background-clip: padding-box;
-    border: variables.$border-width solid variables.$gray-500;
+    border: variables.$border-width solid variables.$gray-900;
     height: variables.$input-btn-height;
     transition: variables.$input-transition;
     user-select: none;
@@ -98,18 +104,17 @@ const id = useId();
         }
     }
 
-    &:focus-visible {
-        border-color: variables.$gray-500;
-        outline: 0;
-        font-weight: variables.$font-weight-bold;
+    &.focused {
+        border-color: variables.$blue-600;
+        outline: 0.125rem solid variables.$blue-600;
+        outline-offset: 0.125rem;
+        span[data-pc-section='input'] {
+            outline: 0;
+        }
     }
 
     span[data-pc-section='input'] {
         color: variables.$input-color-placeholder;
-        &:focus-visible {
-            outline: 0;
-            font-weight: variables.$font-weight-bold;
-        }
     }
 
     &:disabled,
@@ -140,7 +145,7 @@ const id = useId();
     top: calc(100% - 56px) !important;
     transform-origin: center top;
 
-    // matched from PrimeVue styled mode
+    // matched animation to PrimeVue styled mode
     &.p-connected-overlay-enter-from {
         opacity: 0;
         transform: scaleY(0.8);
@@ -170,17 +175,13 @@ const id = useId();
     cursor: pointer;
     transition: background-color 0.15s ease-in-out;
 
-    &:hover {
+    &:hover, &[data-p-focused='true'] {
         background-color: variables.$blue-50;
+        outline: 0;
     }
 
     &:active {
         background-color: variables.$blue-100;
-        font-weight: variables.$font-weight-bold;
-    }
-
-    &:focus-visible {
-        outline: 0;
         font-weight: variables.$font-weight-bold;
     }
 

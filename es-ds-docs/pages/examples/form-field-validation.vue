@@ -174,6 +174,7 @@ onMounted(async () => {
                     </es-form-input>
                     <es-dropdown
                         v-model="state.form.contactMethod"
+                        label="Preferred contact method"
                         :options="contactMethods" />
                     <es-form-textarea
                         id="notes"
