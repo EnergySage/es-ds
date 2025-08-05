@@ -107,9 +107,6 @@ const id = useId();
     &:hover,
     &:active {
         border-color: variables.$blue-300;
-        .es-dropdown-panel {
-            border-top: variables.$border-width solid variables.$blue-300;
-        }
     }
 
     &.focused {
@@ -137,18 +134,10 @@ const id = useId();
             color: variables.$gray-500;
         }
     }
-
-    &.es-dropdown-open {
-        // Bottom corners have no radius so that it visually merges with the dropdown
-        border-bottom-left-radius: 0 !important;
-        border-bottom-right-radius: 0 !important;
-    }
 }
 
 .es-dropdown-panel {
-    border: variables.$border-width solid variables.$gray-500;
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
+    border: variables.$border-width solid variables.$gray-900;
     box-shadow: variables.$popover-box-shadow;
     overflow: hidden;
 
@@ -194,12 +183,6 @@ const id = useId();
 
     &:active {
         background-color: variables.$blue-100;
-    }
-
-    &:last-child {
-        // Prevent overlapping corners
-        border-bottom-left-radius: variables.$border-radius-xs;
-        border-bottom-right-radius: variables.$border-radius-xs;
     }
 }
 </style>
