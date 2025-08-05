@@ -58,7 +58,7 @@ const id = useId();
             :options="options"
             :placeholder="placeholder"
             :pt="{
-                panel: { class: 'es-dropdown-panel bg-white rounded-xs w-100' },
+                panel: { class: 'es-dropdown-panel bg-white rounded-xs' },
                 wrapper: { class: 'es-dropdown-wrapper' },
                 list: { class: 'p-0 m-0 list-unstyled' },
                 item: {
@@ -70,7 +70,6 @@ const id = useId();
                     ],
                 },
             }"
-            append-to="self"
             scroll-height="18rem"
             @update:model-value="emit('update:modelValue', $event)"
             @blur="isFocused = false"
@@ -140,7 +139,6 @@ const id = useId();
     }
 
     &.es-dropdown-open {
-        border-bottom: none;
         // Bottom corners have no radius so that it visually merges with the dropdown
         border-bottom-left-radius: 0 !important;
         border-bottom-right-radius: 0 !important;
@@ -153,9 +151,6 @@ const id = useId();
     border-top-right-radius: 0 !important;
     box-shadow: variables.$popover-box-shadow;
     overflow: hidden;
-    left: 15px !important;
-    top: calc(100% - 56px) !important;
-    transform-origin: center top;
 
     // matched animation to PrimeVue styled mode
     &.p-connected-overlay-enter-from {
@@ -188,7 +183,7 @@ const id = useId();
     transition: background-color 0.15s ease-in-out;
 
     &:hover,
-    &:not(.focused)[data-p-focused='true'] {
+    &:not(.input-focused)[data-p-focused='true'] {
         background-color: variables.$blue-50;
     }
 
