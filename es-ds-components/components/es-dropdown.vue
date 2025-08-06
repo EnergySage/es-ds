@@ -70,7 +70,7 @@ const id = useId();
                     ],
                 },
             }"
-            scroll-height="18rem"
+            scroll-height="15.75rem"
             @update:model-value="emit('update:modelValue', $event)"
             @blur="isFocused = false"
             @focus="isFocused = true"
@@ -163,7 +163,6 @@ const id = useId();
 }
 
 .es-dropdown-wrapper {
-    max-height: 18.75rem;
     overflow-y: auto;
 }
 
