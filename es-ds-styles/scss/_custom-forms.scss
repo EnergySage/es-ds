@@ -43,7 +43,7 @@
     @include box-shadow.box-shadow(variables.$custom-control-indicator-checked-box-shadow);
   }
 
-  &:focus ~ .custom-control-label::before, &:has(.custom-radio-input:focus) ~ .custom-control-label::before {
+  &:focus-visible ~ .custom-control-label::before, &:has(.custom-radio-input:focus-visible) ~ .custom-control-label::before {
     // the mixin is not used here to make sure there is feedback
     @if variables.$enable-shadows {
       box-shadow: variables.$input-box-shadow, variables.$custom-control-indicator-focus-box-shadow;
@@ -52,11 +52,7 @@
     }
   }
 
-  &:focus:not(:checked) ~ .custom-control-label::before, &:has(.custom-radio-input:focus):not(:has(.custom-radio-input:checked)) ~ .custom-control-label::before {
-    border-color: variables.$custom-control-indicator-focus-border-color;
-  }
-
-  &:not(:disabled):not(:focus):not(:has(.custom-radio-input:disabled)):not(:has(.custom-radio-input:focus)) ~ .custom-control-label:hover::before {
+  &:not(:disabled):not(:focus-visible):not(:has(.custom-radio-input:disabled)):not(:has(.custom-radio-input:focus-visible)) ~ .custom-control-label:hover::before {
     // the mixin is not used here to make sure there is feedback
     box-shadow: variables.$custom-control-indicator-hover-box-shadow;
   }
@@ -67,6 +63,14 @@
     border-color: variables.$custom-control-indicator-active-border-color;
     // the mixin is not used here to make sure there is feedback
     box-shadow: variables.$custom-control-indicator-active-box-shadow;
+  }
+
+  &:focus-visible:not(:disabled):active ~ .custom-control-label::before, &:focus-visible:not(:has(.custom-radio-input:disabled)):active ~ .custom-control-label::before {
+    @if variables.$enable-shadows {
+      box-shadow: variables.$input-box-shadow, variables.$custom-control-indicator-focus-box-shadow;
+    } @else {
+      box-shadow: variables.$custom-control-indicator-focus-box-shadow;
+    }
   }
 
   // Use [disabled] and :disabled to work around https://github.com/twbs/bootstrap/issues/28247
