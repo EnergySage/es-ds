@@ -20,10 +20,20 @@ const emit = defineEmits(['update:modelValue']);
 
 const isOpen = ref(false);
 const isFocused = ref(false);
+const isClicked = ref(false);
 
 const isSelected = (option: any) => option === props.modelValue;
 
 const id = useId();
+
+const focus = () => {
+    if (isClicked.value) {
+        isClicked.value = false;
+        return;
+    }
+
+    isFocused.value = true;
+};
 </script>
 
 <template>
@@ -47,8 +57,8 @@ const id = useId();
                 'es-dropdown-input d-flex align-items-center bg-white rounded-xs justify-content-between p-100',
                 {
                     disabled: disabled,
-                    'es-dropdown-open': isOpen,
-                    focused: isFocused && !isOpen,
+                    focused: isFocused && !isClicked && !isOpen,
+                    'panel-open': isOpen,
                 },
             ]"
             :disabled="disabled"
@@ -65,7 +75,7 @@ const id = useId();
                     class: [
                         'es-dropdown-item d-flex justify-content-between p-100 pl-200',
                         {
-                            'input-focused': isFocused,
+                            'input-focused': isFocused && !isClicked,
                         },
                     ],
                 },
@@ -73,8 +83,8 @@ const id = useId();
             scroll-height="15.75rem"
             @update:model-value="emit('update:modelValue', $event)"
             @blur="isFocused = false"
-            @focus="isFocused = true"
-            @click="isFocused = false"
+            @focus="focus"
+            @click="isClicked = true"
             @hide="isOpen = false"
             @show="isOpen = true">
             <template #dropdownicon>
@@ -105,7 +115,8 @@ const id = useId();
     user-select: none;
 
     &:hover,
-    &:active {
+    &:active,
+    &.panel-open {
         border-color: variables.$blue-300;
     }
 

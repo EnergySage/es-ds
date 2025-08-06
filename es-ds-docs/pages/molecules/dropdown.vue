@@ -18,7 +18,7 @@ const selectedColor = ref<string | undefined>(undefined);
 const selectedSize = ref<string | undefined>(undefined);
 const selectedContinent = ref<{ label: string; value: string } | undefined>(undefined);
 
-const fruits = ['Apple', 'Banana', 'Orange', 'Grape', 'Strawberry'];
+const fruits = ['Apple', 'Banana', 'Orange', 'Grape'];
 
 const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
 
