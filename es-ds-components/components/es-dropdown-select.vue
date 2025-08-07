@@ -54,7 +54,7 @@ const focus = () => {
         <dropdown
             :input-id="id"
             :class="[
-                'es-dropdown-input d-flex align-items-center bg-white rounded-xs justify-content-between p-100',
+                'es-dropdown d-flex align-items-center bg-white rounded-xs justify-content-between p-100',
                 {
                     disabled: disabled,
                     focused: isFocused && !isClicked && !isOpen,
@@ -71,6 +71,14 @@ const focus = () => {
                 panel: { class: 'es-dropdown-panel bg-white rounded-xs' },
                 wrapper: { class: 'es-dropdown-wrapper' },
                 list: { class: 'p-0 m-0 list-unstyled' },
+                input: {
+                    class: [
+                        'es-dropdown-input',
+                        {
+                            'es-dropdown-input--placeholder': !modelValue,
+                        },
+                    ],
+                },
                 item: {
                     class: [
                         'es-dropdown-item d-flex justify-content-between p-100 pl-200',
@@ -107,7 +115,7 @@ const focus = () => {
 <style lang="scss">
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-.es-dropdown-input {
+.es-dropdown {
     background-clip: padding-box;
     border: variables.$border-width solid variables.$gray-900;
     height: variables.$input-btn-height;
@@ -124,15 +132,15 @@ const focus = () => {
         border-color: variables.$blue-600;
         outline: 0.125rem solid variables.$blue-600;
         outline-offset: 0.125rem;
-        span[data-pc-section='input'] {
-            outline: 0;
-        }
     }
 
-    span[data-pc-section='input'] {
-        color: variables.$input-color-placeholder;
+    .es-dropdown-input {
         &:focus-visible {
             outline: 0;
+        }
+
+        &--placeholder {
+            color: variables.$input-color-placeholder;
         }
     }
 
@@ -141,7 +149,7 @@ const focus = () => {
         background-color: variables.$gray-50;
         border-color: variables.$gray-500;
         cursor: not-allowed;
-        span[data-pc-section='input'] {
+        .es-dropdown-input {
             color: variables.$gray-500;
         }
     }
