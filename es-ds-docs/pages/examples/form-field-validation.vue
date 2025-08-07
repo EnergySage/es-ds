@@ -175,7 +175,12 @@ onMounted(async () => {
                     <es-dropdown-select
                         v-model="state.form.contactMethod"
                         label="Preferred contact method"
-                        :options="contactMethods" />
+                        required
+                        :disabled="isSubmitInProgress"
+                        :options="contactMethods"
+                        :state="validateState('form.contactMethod')">
+                        <template #errorMessage> Please select an option from the dropdown. </template>
+                    </es-dropdown-select>
                     <es-form-textarea
                         id="notes"
                         v-model="state.form.notes"

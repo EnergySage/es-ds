@@ -3,10 +3,12 @@ import Dropdown from 'primevue/dropdown';
 
 interface Props {
     disabled?: boolean;
+    label?: string;
     modelValue?: any;
     options?: string[] | { label: string; value: string }[];
     placeholder?: string;
-    label?: string;
+    required?: boolean;
+    state?: boolean | null;
 }
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
@@ -14,7 +16,12 @@ const props = withDefaults(defineProps<Props>(), {
     options: () => [],
     placeholder: '',
     label: '',
+    required: false,
+    state: null,
 });
+
+const slots = useSlots();
+const hasError = () => !!slots.errorMessage;
 
 const emit = defineEmits(['update:modelValue']);
 
@@ -44,6 +51,11 @@ const focus = () => {
             v-if="label !== ''"
             :for="id">
             {{ label }}
+            <span
+                v-if="required"
+                class="text-danger">
+                *
+            </span>
         </label>
         <label
             v-else
@@ -54,7 +66,7 @@ const focus = () => {
         <dropdown
             :input-id="id"
             :class="[
-                'es-dropdown d-flex align-items-center bg-white rounded-xs justify-content-between p-100',
+                'es-dropdown es-form-input form-control d-flex align-items-center justify-content-between',
                 {
                     disabled: disabled,
                     focused: isFocused && !isClicked && !isOpen,
@@ -109,6 +121,14 @@ const focus = () => {
                     class="text-gray-700" />
             </template>
         </dropdown>
+        <small
+            v-if="state === false && (hasError() || required)"
+            class="text-danger">
+            <slot
+                v-if="hasError()"
+                name="errorMessage" />
+            <template v-else-if="required"> This field is required. </template>
+        </small>
     </div>
 </template>
 
@@ -116,10 +136,6 @@ const focus = () => {
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .es-dropdown {
-    background-clip: padding-box;
-    border: variables.$border-width solid variables.$gray-900;
-    height: variables.$input-btn-height;
-    transition: variables.$input-transition;
     user-select: none;
 
     &:hover,

@@ -84,6 +84,22 @@ const dropdownProps = [
         When disabled, the dropdown has a gray background and cannot be interacted with.
         `,
     ],
+    [
+        'required',
+        'Boolean',
+        'false',
+        `
+        When true, a red asterisk is displayed next to the label.
+        `,
+    ],
+    [
+        'state',
+        'Boolean | null',
+        'null',
+        `
+        Specifies the validity of the input. Can be true (success), false (error), or null (default).
+        `,
+    ],
 ];
 </script>
 
@@ -100,7 +116,7 @@ const dropdownProps = [
         </p>
 
         <div class="mb-500">
-            <h2 class="mb-200">Basic example</h2>
+            <h2>Basic example</h2>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown-select
@@ -114,7 +130,38 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">No placeholder</h2>
+            <h2>Required</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown-select
+                        v-model="selectedFruit"
+                        label="Select a fruit"
+                        placeholder="Choose a fruit..."
+                        :options="fruits"
+                        required />
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>Error state</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown-select
+                        v-model="selectedFruit"
+                        label="Select a fruit"
+                        placeholder="Choose a fruit..."
+                        required
+                        :options="fruits"
+                        :state="!!selectedFruit">
+                        <template #errorMessage> Please select an option from the dropdown. </template>
+                    </es-dropdown-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>No placeholder</h2>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown-select
@@ -127,7 +174,7 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">Hidden label</h2>
+            <h2>Hidden label</h2>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown-select
@@ -139,7 +186,7 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">Disabled</h2>
+            <h2>Disabled</h2>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown-select
@@ -154,7 +201,7 @@ const dropdownProps = [
 
         <div class="mb-500">
             <h2>Options label different from value</h2>
-            <p class="mb-200">
+            <p>
                 You can also pass in an array of objects to the <code>options</code> prop with <code>label</code> and
                 <code>value</code> keys. The <code>label</code> property will be displayed in the dropdown, while the
                 <code>value</code> property will be used as the model value.
