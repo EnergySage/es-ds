@@ -4,9 +4,9 @@ const compCode = ref('');
 const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
-        const compSource = await import('@energysage/es-ds-components/components/es-dropdown.vue?raw');
+        const compSource = await import('@energysage/es-ds-components/components/es-dropdown-select.vue?raw');
 
-        const docSource = await import('./dropdown.vue?raw');
+        const docSource = await import('./dropdown-select.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
         $prism.highlight();
@@ -89,7 +89,7 @@ const dropdownProps = [
 
 <template>
     <div>
-        <h1>Dropdown</h1>
+        <h1>Dropdown select</h1>
         <p class="mb-500">
             Extended from
             <nuxt-link
@@ -103,7 +103,7 @@ const dropdownProps = [
             <h2 class="mb-200">Basic example</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <es-dropdown
+                    <es-dropdown-select
                         v-model="selectedFruit"
                         label="Select a fruit"
                         placeholder="Choose a fruit..."
@@ -117,7 +117,7 @@ const dropdownProps = [
             <h2 class="mb-200">No placeholder</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <es-dropdown
+                    <es-dropdown-select
                         v-model="selectedSize"
                         label="Select a size"
                         :options="sizes" />
@@ -130,7 +130,7 @@ const dropdownProps = [
             <h2 class="mb-200">Hidden label</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <es-dropdown
+                    <es-dropdown-select
                         v-model="selectedColor"
                         :options="colors" />
                     <p class="mt-3 text-muted">Selected: {{ selectedColor || 'None' }}</p>
@@ -142,7 +142,7 @@ const dropdownProps = [
             <h2 class="mb-200">Disabled</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <es-dropdown
+                    <es-dropdown-select
                         v-model="selectedColor"
                         label="Disabled dropdown"
                         placeholder="This dropdown is disabled"
@@ -161,7 +161,7 @@ const dropdownProps = [
             </p>
             <div class="row">
                 <div class="col-md-6">
-                    <es-dropdown
+                    <es-dropdown-select
                         v-model="selectedContinent"
                         label="Select your continent"
                         :options="continents" />
@@ -171,14 +171,14 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2>EsDropdown props</h2>
+            <h2>EsDropdownSelect props</h2>
             <ds-prop-table :rows="dropdownProps" />
         </div>
 
         <ds-doc-source
             :comp-code="compCode"
-            comp-source="es-ds-components/components/es-dropdown.vue"
+            comp-source="es-ds-components/components/es-dropdown-select.vue"
             :doc-code="docCode"
-            doc-source="es-ds-docs/pages/molecules/dropdown.vue" />
+            doc-source="es-ds-docs/pages/molecules/dropdown-select.vue" />
     </div>
 </template>

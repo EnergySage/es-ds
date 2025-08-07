@@ -172,7 +172,7 @@ onMounted(async () => {
                         <template #label> Masked phone number </template>
                         <template #errorMessage> Please enter a valid phone number. </template>
                     </es-form-input>
-                    <es-dropdown
+                    <es-dropdown-select
                         v-model="state.form.contactMethod"
                         label="Preferred contact method"
                         :options="contactMethods" />
