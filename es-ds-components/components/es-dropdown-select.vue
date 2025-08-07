@@ -27,19 +27,28 @@ const emit = defineEmits(['update:modelValue']);
 
 const isOpen = ref(false);
 const isFocused = ref(false);
-const isClicked = ref(false);
+const isInputClicked = ref(false);
+const isLabelClicked = ref(false);
 
 const isSelected = (option: any) => option === props.modelValue;
 
 const id = useId();
 
-const focus = () => {
-    if (isClicked.value) {
-        isClicked.value = false;
-        return;
+const blur = () => {
+    if (!isOpen.value && (isInputClicked.value || isLabelClicked.value)) {
+        isInputClicked.value = false;
+        isLabelClicked.value = false;
     }
+    isFocused.value = false;
+};
 
-    isFocused.value = true;
+const hide = () => {
+    isOpen.value = false;
+
+    if (!isFocused.value) {
+        isInputClicked.value = false;
+        isLabelClicked.value = false;
+    }
 };
 </script>
 
@@ -49,7 +58,8 @@ const focus = () => {
         :class="$attrs.class">
         <label
             v-if="label !== ''"
-            :for="id">
+            :for="id"
+            @click="isLabelClicked = true">
             {{ label }}
             <span
                 v-if="required"
@@ -69,8 +79,8 @@ const focus = () => {
                 'es-dropdown es-form-input form-control d-flex align-items-center justify-content-between',
                 {
                     disabled: disabled,
-                    focused: isFocused && !isClicked && !isOpen,
-                    'panel-open': isOpen,
+                    focused: isFocused && !isInputClicked && !isOpen && !isLabelClicked,
+                    'focused-on-click': isOpen || isLabelClicked || isInputClicked,
                     'is-invalid': state === false,
                 },
             ]"
@@ -96,17 +106,17 @@ const focus = () => {
                     class: [
                         'es-dropdown-item d-flex justify-content-between p-100 pl-200',
                         {
-                            'input-focused position-relative': isFocused && !isClicked,
+                            'input-focused position-relative': isFocused && !isInputClicked && !isLabelClicked,
                         },
                     ],
                 },
             }"
             scroll-height="15.75rem"
             @update:model-value="emit('update:modelValue', $event)"
-            @blur="isFocused = false"
-            @focus="focus"
-            @click="isClicked = true"
-            @hide="isOpen = false"
+            @blur="blur"
+            @focus="isFocused = true"
+            @click="isInputClicked = true"
+            @hide="hide"
             @show="isOpen = true">
             <template #dropdownicon>
                 <icon-chevron-down
@@ -146,7 +156,7 @@ const focus = () => {
 
     &:hover,
     &:active,
-    &.panel-open {
+    &.focused-on-click {
         border-color: variables.$blue-300;
     }
 
@@ -178,7 +188,7 @@ const focus = () => {
 }
 
 .es-dropdown-panel {
-    border: variables.$border-width solid variables.$gray-900;
+    border: variables.$border-width solid variables.$gray-500;
     box-shadow: variables.$popover-box-shadow;
     overflow: hidden;
 
