@@ -98,7 +98,7 @@ const hide = () => {
                     class: [
                         'es-dropdown-input',
                         {
-                            'es-dropdown-input--placeholder': modelValue !== undefined,
+                            'es-dropdown-input--placeholder': modelValue === undefined && state !== false,
                         },
                     ],
                 },
@@ -171,7 +171,7 @@ const hide = () => {
             outline: 0;
         }
 
-        &--placeholder:not(.is-invalid) {
+        &--placeholder {
             color: variables.$input-color-placeholder;
         }
     }
