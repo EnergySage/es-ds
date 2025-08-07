@@ -122,7 +122,7 @@ const dropdownProps = [
                     <es-dropdown-select
                         v-model="selectedFruit"
                         label="Select a fruit"
-                        placeholder="Choose a fruit..."
+                        placeholder="Choose a fruit"
                         :options="fruits" />
                     <p class="mt-3 text-muted">Selected: {{ selectedFruit || 'None' }}</p>
                 </div>
@@ -136,7 +136,7 @@ const dropdownProps = [
                     <es-dropdown-select
                         v-model="selectedFruit"
                         label="Select a fruit"
-                        placeholder="Choose a fruit..."
+                        placeholder="Choose a fruit"
                         :options="fruits"
                         required />
                 </div>
@@ -150,7 +150,7 @@ const dropdownProps = [
                     <es-dropdown-select
                         v-model="selectedFruit"
                         label="Select a fruit"
-                        placeholder="Choose a fruit..."
+                        placeholder="Choose a fruit"
                         required
                         :options="fruits"
                         :state="!!selectedFruit">
