@@ -98,7 +98,7 @@ const hide = () => {
                     class: [
                         'es-dropdown-input',
                         {
-                            'es-dropdown-input--placeholder': !modelValue,
+                            'es-dropdown-input--placeholder': modelValue !== undefined,
                         },
                     ],
                 },
