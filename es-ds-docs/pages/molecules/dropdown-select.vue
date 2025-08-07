@@ -14,11 +14,14 @@ onMounted(async () => {
 });
 
 const selectedFruit = ref<string | undefined>(undefined);
+const selectedTropicalFruit = ref<string | undefined>(undefined);
 const selectedColor = ref<string | undefined>(undefined);
 const selectedSize = ref<string | undefined>(undefined);
 const selectedContinent = ref<{ label: string; value: string } | undefined>(undefined);
 
-const fruits = ['Apple', 'Banana', 'Orange', 'Grape'];
+const fruits = ['Apple', 'Banana', 'Grape', 'Orange'];
+
+const tropicalFruits = ['Mango', 'Papaya', 'Pineapple', 'Coconut'];
 
 const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
 
@@ -53,19 +56,19 @@ const continents = [
 
 const dropdownProps = [
     [
-        'label',
-        'String',
-        'n/a',
+        'disabled',
+        'Boolean',
+        'false',
         `
-        Required. Text to display above dropdown
+        When disabled, the dropdown has a gray background and cannot be interacted with.
         `,
     ],
     [
-        'placeholder',
+        'label',
         'String',
-        'n/a',
+        'Select an option',
         `
-        Text to display inside dropdown before it is clicked.
+        Text to display above dropdown. When not specified, the label will be hidden and default to "Select an option" for accessibility purposes.
         `,
     ],
     [
@@ -77,11 +80,11 @@ const dropdownProps = [
         `,
     ],
     [
-        'disabled',
-        'Boolean',
-        'false',
+        'placeholder',
+        'String',
+        'n/a',
         `
-        When disabled, the dropdown has a gray background and cannot be interacted with.
+        Text to display inside dropdown when no option is selected.
         `,
     ],
     [
@@ -148,12 +151,12 @@ const dropdownProps = [
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown-select
-                        v-model="selectedFruit"
-                        label="Select a fruit"
+                        v-model="selectedTropicalFruit"
+                        label="Select a tropical fruit"
                         placeholder="Choose a fruit"
                         required
-                        :options="fruits"
-                        :state="!!selectedFruit">
+                        :options="tropicalFruits"
+                        :state="!!selectedTropicalFruit">
                         <template #errorMessage> Please select an option from the dropdown. </template>
                     </es-dropdown-select>
                 </div>
