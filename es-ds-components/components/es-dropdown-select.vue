@@ -60,10 +60,9 @@ const hide = () => {
         <label
             :id="labelId"
             :for="id"
-            :class="{ 'sr-only': label === '' }"
+            :class="{ 'sr-only': !label }"
             @click="isLabelClicked = true">
-            <span v-if="label !== ''">{{ label }}</span>
-            <span v-else>Select an option</span>
+            {{ label || 'Select an option' }}
             <span
                 v-if="required && label !== ''"
                 class="text-danger">
