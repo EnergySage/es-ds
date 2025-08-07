@@ -71,6 +71,7 @@ const focus = () => {
                     disabled: disabled,
                     focused: isFocused && !isClicked && !isOpen,
                     'panel-open': isOpen,
+                    'is-invalid': state === false,
                 },
             ]"
             :disabled="disabled"
