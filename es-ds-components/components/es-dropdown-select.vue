@@ -33,6 +33,7 @@ const isLabelClicked = ref(false);
 const isSelected = (option: any) => option === props.modelValue;
 
 const id = useId();
+const labelId = useId();
 
 const blur = () => {
     if (!isOpen.value && (isInputClicked.value || isLabelClicked.value)) {
@@ -57,21 +58,17 @@ const hide = () => {
         class="input-wrapper justify-content-end"
         :class="$attrs.class">
         <label
-            v-if="label !== ''"
+            :id="labelId"
             :for="id"
+            :class="{ 'sr-only': label === '' }"
             @click="isLabelClicked = true">
-            {{ label }}
+            <span v-if="label !== ''">{{ label }}</span>
+            <span v-else>Select an option</span>
             <span
-                v-if="required"
+                v-if="required && label !== ''"
                 class="text-danger">
                 *
             </span>
-        </label>
-        <label
-            v-else
-            :for="id"
-            class="sr-only">
-            Select an option
         </label>
         <dropdown
             :input-id="id"
@@ -84,6 +81,7 @@ const hide = () => {
                     'is-invalid': state === false,
                 },
             ]"
+            :aria-labelledby="labelId"
             :disabled="disabled"
             :focus-on-hover="false"
             :model-value="modelValue"
