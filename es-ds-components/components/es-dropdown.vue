@@ -75,7 +75,7 @@ const focus = () => {
                     class: [
                         'es-dropdown-item d-flex justify-content-between p-100 pl-200',
                         {
-                            'input-focused': isFocused && !isClicked,
+                            'input-focused position-relative': isFocused && !isClicked,
                         },
                     ],
                 },
@@ -186,9 +186,15 @@ const focus = () => {
         background-color: variables.$blue-50;
     }
 
-    &.input-focused[data-p-focused='true'] {
-        outline: 0.125rem solid variables.$blue-600;
-        outline-offset: -0.25rem;
+    &.input-focused[data-p-focused='true']::after {
+        border: 2px solid variables.$blue-600;
+        border-radius: variables.$border-radius-xs;
+        bottom: 2px;
+        content: '';
+        left: 2px;
+        position: absolute;
+        right: 2px;
+        top: 2px;
     }
 
     &:active {

@@ -114,7 +114,7 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">No placeholder example</h2>
+            <h2 class="mb-200">No placeholder</h2>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown
@@ -127,7 +127,7 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">No label example</h2>
+            <h2 class="mb-200">Hidden label</h2>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown
@@ -139,7 +139,7 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">Disabled example</h2>
+            <h2 class="mb-200">Disabled</h2>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown
@@ -153,7 +153,12 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">Object options example</h2>
+            <h2>Options label different from value</h2>
+            <p class="mb-200">
+                You can also pass in an array of objects to the <code>options</code> prop with <code>label</code> and
+                <code>value</code> keys. The <code>label</code> property will be displayed in the dropdown, while the
+                <code>value</code> property will be used as the model value.
+            </p>
             <div class="row">
                 <div class="col-md-6">
                     <es-dropdown
