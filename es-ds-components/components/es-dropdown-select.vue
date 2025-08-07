@@ -171,7 +171,7 @@ const hide = () => {
             outline: 0;
         }
 
-        &--placeholder &:not(.is-invalid) {
+        &--placeholder:not(.is-invalid) {
             color: variables.$input-color-placeholder;
         }
     }
