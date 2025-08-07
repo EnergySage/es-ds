@@ -127,7 +127,64 @@ const dropdownProps = [
                         label="Select a fruit"
                         placeholder="Choose a fruit"
                         :options="fruits" />
-                    <p class="mt-3 text-muted">Selected: {{ selectedFruit || 'None' }}</p>
+                    <p class="text-muted">Selected: {{ selectedFruit || 'None' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>Disabled</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown-select
+                        v-model="selectedColor"
+                        label="Disabled dropdown"
+                        placeholder="This dropdown is disabled"
+                        :options="colors"
+                        disabled />
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>Hidden label</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown-select
+                        v-model="selectedColor"
+                        :options="colors" />
+                    <p class="text-muted">Selected: {{ selectedColor || 'None' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>Options label different from value</h2>
+            <p>
+                You can also pass in an array of objects to the <code>options</code> prop with <code>label</code> and
+                <code>value</code> keys. The <code>label</code> property will be displayed in the dropdown, while the
+                <code>value</code> property will be used as the model value.
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown-select
+                        v-model="selectedContinent"
+                        label="Select your continent"
+                        :options="continents" />
+                    <p class="text-muted">Selected: {{ selectedContinent?.value || 'None' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>No placeholder</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown-select
+                        v-model="selectedSize"
+                        label="Select a size"
+                        :options="sizes" />
+                    <p class="text-muted">Selected: {{ selectedSize || 'None' }}</p>
                 </div>
             </div>
         </div>
@@ -159,63 +216,6 @@ const dropdownProps = [
                         :state="!!selectedTropicalFruit">
                         <template #errorMessage> Please select an option from the dropdown. </template>
                     </es-dropdown-select>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-500">
-            <h2>No placeholder</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-dropdown-select
-                        v-model="selectedSize"
-                        label="Select a size"
-                        :options="sizes" />
-                    <p class="mt-3 text-muted">Selected: {{ selectedSize || 'None' }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-500">
-            <h2>Hidden label</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-dropdown-select
-                        v-model="selectedColor"
-                        :options="colors" />
-                    <p class="mt-3 text-muted">Selected: {{ selectedColor || 'None' }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-500">
-            <h2>Disabled</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-dropdown-select
-                        v-model="selectedColor"
-                        label="Disabled dropdown"
-                        placeholder="This dropdown is disabled"
-                        :options="colors"
-                        disabled />
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-500">
-            <h2>Options label different from value</h2>
-            <p>
-                You can also pass in an array of objects to the <code>options</code> prop with <code>label</code> and
-                <code>value</code> keys. The <code>label</code> property will be displayed in the dropdown, while the
-                <code>value</code> property will be used as the model value.
-            </p>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-dropdown-select
-                        v-model="selectedContinent"
-                        label="Select your continent"
-                        :options="continents" />
-                    <p class="mt-3 text-muted">Selected: {{ selectedContinent?.value || 'None' }}</p>
                 </div>
             </div>
         </div>
