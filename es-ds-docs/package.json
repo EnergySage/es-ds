@@ -1,6 +1,6 @@
 {
     "name": "es-ds-docs",
-    "version": "3.3.2",
+    "version": "3.4.0",
     "private": true,
     "type": "module",
     "scripts": {
@@ -17,7 +17,7 @@
         "format": "npm run format:prettier && npm run format:eslint"
     },
     "dependencies": {
-        "@energysage/es-ds-components": "^3.3.2",
+        "@energysage/es-ds-components": "^3.4.0",
         "@energysage/es-ds-styles": "^3.3.1",
         "@nuxt/image": "^1.8.0",
         "@nuxt/kit": "^3.13.1",
