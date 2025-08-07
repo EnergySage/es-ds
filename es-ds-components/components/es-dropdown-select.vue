@@ -112,7 +112,12 @@ const focus = () => {
                 <icon-chevron-down
                     aria-hidden="true"
                     height="1.125rem"
-                    :class="`${disabled ? 'text-gray-500' : 'text-gray-900'}`" />
+                    :class="[
+                        {
+                            'text-gray-500': disabled,
+                            'text-gray-900': !disabled && state !== false,
+                        },
+                    ]" />
             </template>
             <template #option="slotProps">
                 <span>{{ slotProps.option.label ? slotProps.option.label : slotProps.option }}</span>
@@ -156,7 +161,7 @@ const focus = () => {
             outline: 0;
         }
 
-        &--placeholder {
+        &--placeholder &:not(.is-invalid) {
             color: variables.$input-color-placeholder;
         }
     }
