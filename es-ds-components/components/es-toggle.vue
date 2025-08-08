@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import InputSwitch from 'primevue/inputswitch';
+import { SwitchRoot, SwitchThumb } from 'reka-ui';
 
 const model = defineModel<boolean>({
     default: false,
@@ -14,107 +14,137 @@ defineProps({
 </script>
 
 <template>
-    <div>
-        <input-switch
-            :class="[
-                'es-toggle',
-                {
-                    disabled: disabled,
-                },
-            ]"
-            v-model="model"
-            :disabled="disabled" />
-    </div>
+    <SwitchRoot
+        v-model="model"
+        :disabled="disabled"
+        class="es-toggle">
+        <SwitchThumb class="es-toggle-thumb" />
+    </SwitchRoot>
 </template>
 
 <style lang="scss">
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .es-toggle {
-    // Spacing between switch and label
-    .custom-control-label {
-        padding-left: 12px;
-    }
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-radius: 68px;
+    background-color: variables.$gray-400;
+    border: 2px solid variables.$gray-400;
 
-    // SWITCH BACKGROUND STYLING
-    // Unchecked - default state
-    .custom-control-label::before {
-        width: 40px;
-        height: 20px;
-        border-radius: 68px;
-        background-color: variables.$gray-400;
-        border: 2px solid variables.$gray-400;
-    }
-    // Unchecked - focus and active states
-    .custom-control-input:focus ~ .custom-control-label::before,
-    .custom-control-input:active ~ .custom-control-label::before {
+    // Focus state - track
+    &:focus-visible {
         background-color: variables.$gray-400;
         border: 2px solid variables.$gray-400;
         box-shadow: none;
     }
-    // Checked - default state
-    .custom-control-input:checked ~ .custom-control-label::before {
+
+    // Checked state - track
+    &[data-state='checked'] {
         background-color: variables.$blue-900;
         border-color: variables.$blue-900;
     }
-    // Hide deafult box shadow
-    .custom-control-input:hover ~ .custom-control-label::before,
-    .custom-control-input:not(:disabled):not(:focus) ~ .custom-control-label:hover::before {
+
+    // Hide default box shadow on hover
+    &:hover,
+    &:not([data-disabled]):hover {
         box-shadow: none;
     }
 
-    // SWITCH THUMB STYLING
-    // Unchecked - default state
-    .custom-control-label::after {
-        width: 20px;
-        height: 20px;
-        border-radius: 100%;
-        top: 12px;
-        left: -44px;
-        border: 2px solid variables.$blue-900;
-        background-color: variables.$white;
+    // Disabled state
+    &[data-disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
     }
-    // Unchecked - hover and active states
-    .custom-control-input:hover ~ .custom-control-label::after,
-    .custom-control-input:active ~ .custom-control-label::after {
+}
+
+.es-toggle-thumb {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: variables.$white;
+    border: 2px solid variables.$blue-900;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    // Checked state - thumb
+    .es-toggle[data-state='checked'] & {
+        width: 16px;
+        height: 16px;
+        top: 0px;
+        left: 2px;
+        transform: translateX(18px);
+        border: 0;
+    }
+
+    // Hover states - unchecked
+    .es-toggle:hover:not([data-disabled]) & {
         width: 20px;
         height: 20px;
         border-radius: 100%;
-        top: 12px;
-        left: -44px;
+        top: -2px;
+        left: -2px;
         border: 2px solid variables.$blue-900;
         box-shadow: 0 0 0 9px variables.$blue-50;
     }
-    // Checked - default state
-    .custom-control-input:checked ~ .custom-control-label::after {
-        border: 0;
-        width: 16px;
-        height: 16px;
-        top: 14px;
-        left: -40px;
+
+    // Active states - unchecked
+    .es-toggle:active:not([data-disabled]) & {
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        top: -2px;
+        left: -2px;
+        border: 2px solid variables.$blue-900;
+        box-shadow: 0 0 0 9px variables.$blue-50;
+    }
+
+    // Hover states - checked
+    .es-toggle[data-state='checked']:hover:not([data-disabled]) & {
+        width: 20px;
+        height: 20px;
+        border: 2px solid variables.$blue-900;
+        top: -2px;
+        left: 2px;
+        transform: translateX(18px);
+        box-shadow: 0 0 0 9px variables.$blue-50;
+    }
+
+    // Active states - checked
+    .es-toggle[data-state='checked']:active:not([data-disabled]) & {
+        width: 20px;
+        height: 20px;
+        border: 2px solid variables.$blue-900;
+        top: -2px;
+        left: 2px;
+        transform: translateX(18px);
+        box-shadow: 0 0 0 9px variables.$blue-50;
+    }
+
+    // Focus states - unchecked
+    .es-toggle:focus-visible & {
+        box-shadow: 0 0 0 9px rgba(133, 178, 255, 0.85);
+    }
+
+    // Focus states - checked
+    .es-toggle[data-state='checked']:focus-visible & {
+        width: 20px;
+        height: 20px;
+        top: -2px;
+        left: 2px;
+        border: 2px solid variables.$blue-900;
+        box-shadow: 0 0 0 9px rgba(133, 178, 255, 0.85);
         transform: translateX(18px);
     }
-    // Unchecked - focus state
-    .custom-control-input:focus ~ .custom-control-label::after {
-        box-shadow: 0 0 0 9px rgba(133, 178, 255, 0.85);
-    }
-    // Checked - hover and active states
-    .custom-control-input:checked:hover ~ .custom-control-label::after,
-    .custom-control-input:checked:active ~ .custom-control-label::after {
-        width: 20px;
-        height: 20px;
-        border: 2px solid variables.$blue-900;
-        top: 12px;
-        left: -42px;
-    }
-    // Checked - focus state
-    .custom-control-input:checked:focus ~ .custom-control-label::after {
-        width: 20px;
-        height: 20px;
-        top: 12px;
-        left: -42px;
-        border: 2px solid variables.$blue-900;
-        box-shadow: 0 0 0 9px rgba(133, 178, 255, 0.85);
+
+    // Disabled state
+    .es-toggle[data-disabled] & {
+        cursor: not-allowed;
     }
 }
 </style>

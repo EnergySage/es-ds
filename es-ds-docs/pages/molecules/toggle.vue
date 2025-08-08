@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const propTableRows = ref([['disabled', 'boolean', 'false', 'Disables the toggle']]);
+const propTableRows = ref([['disabled', 'boolean', 'false', 'Disables the toggle.']]);
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -23,9 +23,9 @@ onMounted(async () => {
         <p>
             Extended from
             <nuxt-link
-                href="https://v3.primevue.org/inputswitch/"
+                href="https://reka-ui.com/docs/components/switch/"
                 target="_blank">
-                PrimeVue InputSwitch
+                Reka UI Switch
             </nuxt-link>
         </p>
 
@@ -33,6 +33,12 @@ onMounted(async () => {
             <h2>Default</h2>
             <div>
                 <es-toggle />
+            </div>
+
+            <h2 class="mt-500">Disabled</h2>
+
+            <div>
+                <es-toggle disabled />
             </div>
         </div>
 
