@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.3.2...es-ds-components-v3.4.0) (2025-08-07)
+
+
+### Features
+
+* create es-dropdown ([#1642](https://github.com/EnergySage/es-ds/issues/1642)) ([bcf8860](https://github.com/EnergySage/es-ds/commit/bcf886075b0b6c9b2d0724616124b01a12a74550))
+
 ## [3.3.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.3.1...es-ds-components-v3.3.2) (2025-08-06)
 
 

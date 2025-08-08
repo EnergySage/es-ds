@@ -1,0 +1,241 @@
+<script setup lang="ts">
+import Dropdown from 'primevue/dropdown';
+
+interface Props {
+    disabled?: boolean;
+    label?: string;
+    modelValue?: any;
+    options?: string[] | { label: string; value: string }[];
+    placeholder?: string;
+    required?: boolean;
+    state?: boolean | null;
+}
+const props = withDefaults(defineProps<Props>(), {
+    disabled: false,
+    modelValue: undefined,
+    options: () => [],
+    placeholder: '',
+    label: '',
+    required: false,
+    state: null,
+});
+
+const slots = useSlots();
+const hasError = () => !!slots.errorMessage;
+
+const emit = defineEmits(['update:modelValue']);
+
+const isOpen = ref(false);
+const isFocused = ref(false);
+const isInputClicked = ref(false);
+const isLabelClicked = ref(false);
+
+const isSelected = (option: any) => option === props.modelValue;
+
+const id = useId();
+const labelId = useId();
+
+const blur = () => {
+    if (!isOpen.value && (isInputClicked.value || isLabelClicked.value)) {
+        isInputClicked.value = false;
+        isLabelClicked.value = false;
+    }
+    isFocused.value = false;
+};
+
+const hide = () => {
+    isOpen.value = false;
+
+    if (!isFocused.value) {
+        isInputClicked.value = false;
+        isLabelClicked.value = false;
+    }
+};
+</script>
+
+<template>
+    <div
+        class="input-wrapper justify-content-end"
+        :class="$attrs.class">
+        <label
+            :id="labelId"
+            :for="id"
+            :class="{ 'sr-only': !label }"
+            @click="isLabelClicked = true">
+            {{ label || 'Select an option' }}
+            <span
+                v-if="required && label !== ''"
+                class="text-danger">
+                *
+            </span>
+        </label>
+        <dropdown
+            :input-id="id"
+            :class="[
+                'es-dropdown es-form-input form-control d-flex align-items-center justify-content-between',
+                {
+                    disabled: disabled,
+                    focused: isFocused && !isInputClicked && !isOpen && !isLabelClicked,
+                    'focused-on-click': isOpen || isLabelClicked || isInputClicked,
+                    'is-invalid': state === false,
+                },
+            ]"
+            :aria-labelledby="labelId"
+            :disabled="disabled"
+            :focus-on-hover="false"
+            :model-value="modelValue"
+            :option-label="options.length > 0 && typeof options[0] === 'object' ? 'label' : undefined"
+            :options="options"
+            :placeholder="placeholder"
+            :pt="{
+                panel: { class: 'es-dropdown-panel bg-white rounded-xs' },
+                wrapper: { class: 'es-dropdown-wrapper' },
+                list: { class: 'p-0 m-0 list-unstyled' },
+                input: {
+                    class: [
+                        'es-dropdown-input',
+                        {
+                            'es-dropdown-input--placeholder': modelValue === undefined && state !== false,
+                        },
+                    ],
+                },
+                item: {
+                    class: [
+                        'es-dropdown-item d-flex justify-content-between p-100 pl-200',
+                        {
+                            'input-focused position-relative': isFocused && !isInputClicked && !isLabelClicked,
+                        },
+                    ],
+                },
+            }"
+            scroll-height="15.75rem"
+            @update:model-value="emit('update:modelValue', $event)"
+            @blur="blur"
+            @focus="isFocused = true"
+            @click="isInputClicked = true"
+            @hide="hide"
+            @show="isOpen = true">
+            <template #dropdownicon>
+                <icon-chevron-down
+                    aria-hidden="true"
+                    height="1.125rem"
+                    :class="[
+                        {
+                            'text-gray-500': disabled,
+                            'text-gray-900': !disabled && state !== false,
+                        },
+                    ]" />
+            </template>
+            <template #option="slotProps">
+                <span>{{ slotProps.option.label ? slotProps.option.label : slotProps.option }}</span>
+                <icon-check
+                    v-if="isSelected(slotProps.option)"
+                    height="1.5rem"
+                    class="text-gray-700" />
+            </template>
+        </dropdown>
+        <small
+            v-if="state === false && (hasError() || required)"
+            class="text-danger">
+            <slot
+                v-if="hasError()"
+                name="errorMessage" />
+            <template v-else-if="required"> This field is required. </template>
+        </small>
+    </div>
+</template>
+
+<style lang="scss">
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+
+.es-dropdown {
+    user-select: none;
+
+    &:hover,
+    &:active,
+    &.focused-on-click {
+        border-color: variables.$blue-300;
+    }
+
+    &.focused {
+        border-color: variables.$blue-600;
+        outline: 0.125rem solid variables.$blue-600;
+        outline-offset: 0.125rem;
+    }
+
+    .es-dropdown-input {
+        &:focus-visible {
+            outline: 0;
+        }
+
+        &--placeholder {
+            color: variables.$input-color-placeholder;
+        }
+    }
+
+    &:disabled,
+    &.disabled {
+        background-color: variables.$gray-50;
+        border-color: variables.$gray-500;
+        cursor: not-allowed;
+        .es-dropdown-input {
+            color: variables.$gray-500;
+        }
+    }
+}
+
+.es-dropdown-panel {
+    border: variables.$border-width solid variables.$gray-500;
+    box-shadow: variables.$popover-box-shadow;
+    overflow: hidden;
+
+    // matched animation to PrimeVue styled mode
+    &.p-connected-overlay-enter-from {
+        opacity: 0;
+        transform: scaleY(0.8);
+    }
+
+    &.p-connected-overlay-enter-active {
+        transition:
+            transform 0.12s cubic-bezier(0, 0, 0.2, 1),
+            opacity 0.12s cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    &.p-connected-overlay-leave-active {
+        transition: opacity 0.1s linear;
+    }
+
+    &.p-connected-overlay-leave-to {
+        opacity: 0;
+    }
+}
+
+.es-dropdown-wrapper {
+    overflow-y: auto;
+}
+
+.es-dropdown-item {
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover,
+    &:not(.input-focused)[data-p-focused='true'] {
+        background-color: variables.$blue-50;
+    }
+
+    &.input-focused[data-p-focused='true']::after {
+        border: 2px solid variables.$blue-600;
+        border-radius: variables.$border-radius-xs;
+        bottom: 2px;
+        content: '';
+        left: 2px;
+        position: absolute;
+        right: 2px;
+        top: 2px;
+    }
+
+    &:active {
+        background-color: variables.$blue-100;
+    }
+}
+</style>

@@ -5,6 +5,7 @@ const state = reactive({
         password: '',
         phone: '',
         maskedPhoneNumber: '',
+        contactMethod: '',
         notes: '',
     },
 });
@@ -29,6 +30,9 @@ const rules = {
             [vuelidateKeys.HAS_SPECIAL_CHARACTER]: vuelidateHasSpecialCharacter(1),
             [vuelidateKeys.HAS_UPPERCASE_LETTER]: vuelidateHasUppercaseLetter(1),
             [vuelidateKeys.HAS_LOWERCASE_LETTER]: vuelidateHasLowercaseLetter(1),
+        },
+        contactMethod: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
         },
         maskedPhoneNumber: {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
@@ -79,6 +83,8 @@ const getErrorMessage = (validatorName: any) => {
     }
     return '';
 };
+
+const contactMethods = ['Email', 'Phone call', 'Text message', 'No preference'];
 
 const { $prism } = useNuxtApp();
 const docCode = ref('');
@@ -166,6 +172,15 @@ onMounted(async () => {
                         <template #label> Masked phone number </template>
                         <template #errorMessage> Please enter a valid phone number. </template>
                     </es-form-input>
+                    <es-dropdown-select
+                        v-model="state.form.contactMethod"
+                        label="Preferred contact method"
+                        required
+                        :disabled="isSubmitInProgress"
+                        :options="contactMethods"
+                        :state="validateState('form.contactMethod')">
+                        <template #errorMessage> Please select an option from the dropdown. </template>
+                    </es-dropdown-select>
                     <es-form-textarea
                         id="notes"
                         v-model="state.form.notes"
