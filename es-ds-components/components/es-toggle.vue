@@ -72,14 +72,9 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
     transition: all 0.2s ease;
     cursor: pointer;
 
-    // Active checked state
+    // Checked state
     .es-toggle[data-state='checked'] & {
-        border: 0;
-        width: 16px;
-        height: 16px;
-        top: 0px;
-        left: 2px;
-        transform: translateX(18px);
+        transform: translateX(20px);
     }
 
     // Disabled unchecked state
@@ -91,27 +86,19 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
 
     // Disabled checked state
     .es-toggle[data-state='checked'][data-disabled] & {
-        border: 0;
+        border-color: variables.$gray-500;
         background-color: variables.$gray-200;
         cursor: not-allowed;
     }
 
-    // Interactive states (hover & focus)
-    .es-toggle:hover:not([data-disabled]) &,
-    .es-toggle:focus-visible:not([data-disabled]) & {
-        width: 20px;
-        height: 20px;
-        border-radius: 100%;
-        top: -2px;
-        left: -2px;
-        border: 2px solid variables.$blue-900;
-    }
-
+    // Hover state
     .es-toggle:hover:not([data-disabled]) & {
         box-shadow: 0 0 0 9px variables.$blue-50;
     }
 
-    .es-toggle:focus-visible:not([data-disabled]) & {
+    // Focus state and active (clicked) state
+    .es-toggle:focus-visible:not([data-disabled]) &,
+    .es-toggle:active:not([data-disabled]) & {
         box-shadow: 0 0 0 9px variables.$blue-300;
     }
 }
