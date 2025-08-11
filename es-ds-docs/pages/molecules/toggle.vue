@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const propTableRows = ref([['disabled', 'boolean', 'false', 'Disables the toggle.']]);
+const checked = ref(true);
+const disabledChecked = ref(true);
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -35,10 +37,19 @@ onMounted(async () => {
                 <es-toggle />
             </div>
 
-            <h2 class="mt-500">Disabled</h2>
+            <h2 class="mt-500">Checked</h2>
+            <div>
+                <es-toggle v-model="checked" />
+            </div>
 
+            <h2 class="mt-500">Disabled</h2>
             <div>
                 <es-toggle disabled />
+            </div>
+            <div>
+                <es-toggle
+                    v-model="disabledChecked"
+                    disabled />
             </div>
         </div>
 
@@ -54,9 +65,3 @@ onMounted(async () => {
             doc-source="es-ds-docs/pages/molecules/toggle.vue" />
     </div>
 </template>
-
-<style lang="scss" scoped>
-.multiple-buttons {
-    gap: 1rem;
-}
-</style>
