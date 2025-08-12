@@ -75,7 +75,7 @@ onMounted(async () => {
                 </es-toggle>
             </div>
             <div class="mb-300">
-                <es-toggle v-model="checked">
+                <es-toggle>
                     <template #text>
                         <h4>Two-factor authentication</h4>
                         <p class="mb-0">Add an extra layer of security to your account</p>
