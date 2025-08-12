@@ -15,18 +15,9 @@ defineProps({
         default: 'es-toggle',
         required: false,
     },
-    hasValue: {
-        type: Boolean,
-        default: false,
-    },
-    onValue: {
+    label: {
         type: String,
-        default: 'ON',
-        required: false,
-    },
-    offValue: {
-        type: String,
-        default: 'OFF',
+        default: '',
         required: false,
     },
 });
@@ -38,25 +29,30 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
 <template>
     <component :is="wrappingComponent">
         <div
-            class="es-toggle-container"
-            :class="{ 'has-value': hasValue, 'has-text': $slots.text }">
-            <div class="es-toggle-wrapper">
+            class="d-flex"
+            :class="{ 'has-text': $slots.text }">
+            <div
+                class="d-flex flex-column align-items-center"
+                :class="{ 'has-value': label }">
                 <switch-root
                     v-model="model"
                     :disabled="disabled"
                     :aria-label="ariaLabel"
-                    :aria-labelledby="hasValue ? 'es-toggle-value' : undefined"
+                    :aria-labelledby="label ? 'es-toggle-value' : undefined"
                     class="es-toggle">
                     <switch-thumb class="es-toggle-thumb" />
                 </switch-root>
                 <p
-                    v-if="hasValue"
+                    v-if="label"
                     id="es-toggle-value"
                     class="es-toggle-value">
-                    {{ model ? onValue : offValue }}
+                    {{ label }}
                 </p>
             </div>
-            <div v-if="$slots.text">
+            <div
+                v-if="$slots.text"
+                :class="{ 'cursor-pointer': !disabled }"
+                @click="!disabled && (model = !model)">
                 <slot name="text" />
             </div>
         </div>
@@ -66,25 +62,13 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
 <style lang="scss">
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-.es-toggle-container {
-    display: flex;
-    align-items: flex-start;
-
-    &.has-value {
-        gap: 8px;
-    }
-
-    &.has-text {
-        gap: 16px;
-        align-items: center;
-    }
+.has-text {
+    gap: 16px;
+    align-items: center;
 }
 
-.es-toggle-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+.has-value {
+    gap: 8px;
 }
 
 .es-toggle-value {
@@ -166,5 +150,9 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
     .es-toggle:active:not([data-disabled]) & {
         box-shadow: 0 0 0 9px rgba(133, 178, 255, 0.85);
     }
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 </style>

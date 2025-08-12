@@ -2,13 +2,13 @@
 const propTableRows = ref([
     ['disabled', 'Boolean', 'false', 'Disables the toggle.'],
     ['ariaLabel', 'String', 'undefined', 'Accessible label for toggle.'],
-    ['hasValue', 'Boolean', 'false', 'Display ON/OFF values below toggle.'],
-    ['onValue', 'String', "'ON'", 'Text to display when toggle is checked (requires hasValue).'],
-    ['offValue', 'String', "'OFF'", 'Text to display when toggle is unchecked (requires hasValue).'],
+    ['label', 'String', "''", 'Optional label to display below toggle.'],
 ]);
-const slotTableRows = ref([['text', 'n/a', 'Content to display to the right of the toggle.']]);
+const slotTableRows = ref([['text', 'n/a', 'Optional text to display to the right of the toggle.']]);
+
 const checked = ref(true);
 const disabledChecked = ref(true);
+const dynamicToggle = ref(false);
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -39,59 +39,51 @@ onMounted(async () => {
         </p>
 
         <div class="my-500">
-            <h2>Default</h2>
-            <div>
-                <es-toggle />
-            </div>
-
-            <h2 class="mt-500">Checked</h2>
-            <div>
-                <es-toggle v-model="checked" />
-            </div>
-
-            <h2 class="mt-500">With Value Label</h2>
-            <div>
-                <es-toggle has-value />
-                <es-toggle
-                    has-value
-                    on-value="YES"
-                    off-value="NO" />
-            </div>
-
-            <h2 class="mt-500">With Text Label</h2>
-            <div class="mb-300">
-                <es-toggle>
-                    <template #text>
-                        <h4 class="mb-0">Enable notifications</h4>
-                    </template>
-                </es-toggle>
-            </div>
-            <div class="mb-300">
-                <es-toggle>
-                    <template #text>
-                        <h4>Marketing emails</h4>
-                        <p class="mb-0">Receive updates about new features and promotions</p>
-                    </template>
-                </es-toggle>
-            </div>
-            <div class="mb-300">
-                <es-toggle>
-                    <template #text>
-                        <h4>Two-factor authentication</h4>
-                        <p class="mb-0">Add an extra layer of security to your account</p>
-                    </template>
-                </es-toggle>
-            </div>
-
-            <h2 class="mt-500">Disabled</h2>
-            <div>
-                <es-toggle disabled />
-            </div>
-            <div class="mt-200">
-                <es-toggle
-                    v-model="disabledChecked"
-                    disabled />
-            </div>
+            <h2>No text</h2>
+            <es-toggle class="mb-100" />
+            <es-toggle
+                v-model="checked"
+                class="mb-100" />
+        </div>
+        <div class="my-500">
+            <h2>With label</h2>
+            <es-toggle
+                class="mb-100"
+                label="ON" />
+            <es-toggle
+                v-model="dynamicToggle"
+                class="mb-100"
+                :label="dynamicToggle ? 'YES' : 'NO'" />
+        </div>
+        <div class="my-500">
+            <h2>With text</h2>
+            <es-toggle class="mb-300">
+                <template #text>
+                    <p class="mb-0">Add a battery (avg cost is $13k)</p>
+                </template>
+            </es-toggle>
+            <es-toggle class="mb-300">
+                <template #text>
+                    <p class="mb-0 font-size-100">Marketing emails</p>
+                    <p class="mb-0 font-size-75">Receive updates about new features and promotions</p>
+                </template>
+            </es-toggle>
+            <es-toggle class="mb-300">
+                <template #text>
+                    <p class="mb-0 font-size-100">Two-factor authentication</p>
+                    <p class="mb-0 font-size-75 font-weight-bold">Add an extra layer of security to your account</p>
+                </template>
+            </es-toggle>
+        </div>
+        <div class="my-500">
+            <h2>Disabled</h2>
+            <es-toggle
+                class="mb-300"
+                disabled />
+            <es-toggle
+                v-model="disabledChecked"
+                class="mb-300"
+                disabled />
         </div>
 
         <div class="my-500">
