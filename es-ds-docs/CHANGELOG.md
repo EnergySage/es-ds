@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.5.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.4.0...es-ds-docs-v3.5.0) (2025-08-12)
+
+
+### Features
+
+* INS-3548 Add new empty template slot to es data table ([#1646](https://github.com/EnergySage/es-ds/issues/1646)) ([977db21](https://github.com/EnergySage/es-ds/commit/977db21e6ad58eeb8b4b25b2e99ca0b25cf15872))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^3.4.0 to ^3.5.0
+
 ## [3.4.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.3.2...es-ds-docs-v3.4.0) (2025-08-07)
 
 
