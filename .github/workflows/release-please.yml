@@ -100,6 +100,14 @@ jobs:
               working-directory: es-ds-components
               run: npm install
 
+            - name: Commit package-lock.json changes
+              run: |-
+                  git config user.name 'github-actions[bot]'
+                  git config user.email 'github-actions[bot]@users.noreply.github.com'
+                  git add .
+                  git commit -m "chore: update es-ds-components package-lock.json"
+                  git push
+
             - name: Publish Packages
               working-directory: es-ds-components
               id: publish-packages
@@ -107,6 +115,44 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
               run: |
                   npm publish
+
+    release-es-ds-docs:
+        permissions:
+            contents: read
+        runs-on: ubuntu-latest
+        needs:
+            - release-please
+            - release-es-ds-styles
+            - release-es-ds-components
+        if: always() && !cancelled() && !failure() && needs.release-please.outputs.es-ds-docs--release_created
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v4
+
+            - name: Get nodenv version 🔌
+              id: nodenv
+              shell: bash
+              run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+
+            - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '${{ steps.nodenv.outputs.node-version }}'
+                  registry-url: 'https://registry.npmjs.org'
+                  cache: npm
+                  cache-dependency-path: '**/package-lock.json'
+
+            - name: Install dependencies
+              working-directory: es-ds-docs
+              run: npm install
+
+            - name: Commit package-lock.json changes
+              run: |-
+                  git config user.name 'github-actions[bot]'
+                  git config user.email 'github-actions[bot]@users.noreply.github.com'
+                  git add .
+                  git commit -m "chore: update es-ds-docs package-lock.json"
+                  git push
 
     deploy:
         uses: ./.github/workflows/deploy.yml
