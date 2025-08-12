@@ -1,5 +1,12 @@
 <script setup lang="ts">
-const propTableRows = ref([['disabled', 'boolean', 'false', 'Disables the toggle.']]);
+const propTableRows = ref([
+    ['disabled', 'Boolean', 'false', 'Disables the toggle.'],
+    ['ariaLabel', 'String', 'undefined', 'Accessible label for toggle.'],
+    ['hasValue', 'Boolean', 'false', 'Display ON/OFF values below toggle.'],
+    ['onValue', 'String', "'ON'", 'Text to display when toggle is checked (requires hasValue).'],
+    ['offValue', 'String', "'OFF'", 'Text to display when toggle is unchecked (requires hasValue).'],
+]);
+const slotTableRows = ref([['text', 'n/a', 'Content to display to the right of the toggle.']]);
 const checked = ref(true);
 const disabledChecked = ref(true);
 
@@ -42,11 +49,45 @@ onMounted(async () => {
                 <es-toggle v-model="checked" />
             </div>
 
+            <h2 class="mt-500">With Value Label</h2>
+            <div>
+                <es-toggle has-value />
+                <es-toggle
+                    has-value
+                    on-value="YES"
+                    off-value="NO" />
+            </div>
+
+            <h2 class="mt-500">With Text Label</h2>
+            <div class="mb-300">
+                <es-toggle>
+                    <template #text>
+                        <h4 class="mb-0">Enable notifications</h4>
+                    </template>
+                </es-toggle>
+            </div>
+            <div class="mb-300">
+                <es-toggle>
+                    <template #text>
+                        <h4>Marketing emails</h4>
+                        <p class="mb-0">Receive updates about new features and promotions</p>
+                    </template>
+                </es-toggle>
+            </div>
+            <div class="mb-300">
+                <es-toggle v-model="checked">
+                    <template #text>
+                        <h4>Two-factor authentication</h4>
+                        <p class="mb-0">Add an extra layer of security to your account</p>
+                    </template>
+                </es-toggle>
+            </div>
+
             <h2 class="mt-500">Disabled</h2>
             <div>
                 <es-toggle disabled />
             </div>
-            <div>
+            <div class="mt-200">
                 <es-toggle
                     v-model="disabledChecked"
                     disabled />
@@ -54,8 +95,18 @@ onMounted(async () => {
         </div>
 
         <div class="my-500">
-            <h2>EsToggle Props</h2>
+            <h2>EsToggle props</h2>
             <ds-prop-table :rows="propTableRows" />
+        </div>
+
+        <div class="my-500">
+            <h2>EsToggle slots</h2>
+            <ds-prop-table
+                :columns="['Name', 'Default', 'Description']"
+                :rows="slotTableRows"
+                :widths="{
+                    md: ['3', '4', '5'],
+                }" />
         </div>
 
         <ds-doc-source

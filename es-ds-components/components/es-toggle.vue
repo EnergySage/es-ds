@@ -10,6 +10,25 @@ defineProps({
         type: Boolean,
         default: false,
     },
+    ariaLabel: {
+        type: String,
+        default: 'es-toggle',
+        required: false,
+    },
+    hasValue: {
+        type: Boolean,
+        default: false,
+    },
+    onValue: {
+        type: String,
+        default: 'ON',
+        required: false,
+    },
+    offValue: {
+        type: String,
+        default: 'OFF',
+        required: false,
+    },
 });
 
 // Workaround: Reka UI components don't play nice with the Nuxt 3.16+ dev server side rendering while using NPM link
@@ -18,17 +37,63 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
 
 <template>
     <component :is="wrappingComponent">
-        <switch-root
-            v-model="model"
-            :disabled="disabled"
-            class="es-toggle">
-            <switch-thumb class="es-toggle-thumb" />
-        </switch-root>
+        <div
+            class="es-toggle-container"
+            :class="{ 'has-value': hasValue, 'has-text': $slots.text }">
+            <div class="es-toggle-wrapper">
+                <switch-root
+                    v-model="model"
+                    :disabled="disabled"
+                    :aria-label="ariaLabel"
+                    :aria-labelledby="hasValue ? 'es-toggle-value' : undefined"
+                    class="es-toggle">
+                    <switch-thumb class="es-toggle-thumb" />
+                </switch-root>
+                <p
+                    v-if="hasValue"
+                    id="es-toggle-value"
+                    class="es-toggle-value">
+                    {{ model ? onValue : offValue }}
+                </p>
+            </div>
+            <div v-if="$slots.text">
+                <slot name="text" />
+            </div>
+        </div>
     </component>
 </template>
 
 <style lang="scss">
 @use '@energysage/es-ds-styles/scss/variables' as variables;
+
+.es-toggle-container {
+    display: flex;
+    align-items: flex-start;
+
+    &.has-value {
+        gap: 8px;
+    }
+
+    &.has-text {
+        gap: 16px;
+        align-items: center;
+    }
+}
+
+.es-toggle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.es-toggle-value {
+    color: variables.$gray-700;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+}
 
 .es-toggle {
     position: relative;
@@ -87,7 +152,7 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
     // Disabled checked state
     .es-toggle[data-state='checked'][data-disabled] & {
         border-color: variables.$gray-500;
-        background-color: variables.$gray-200;
+        background-color: variables.$gray-300;
         cursor: not-allowed;
     }
 
@@ -99,7 +164,7 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
     // Focus state and active (clicked) state
     .es-toggle:focus-visible:not([data-disabled]) &,
     .es-toggle:active:not([data-disabled]) & {
-        box-shadow: 0 0 0 9px variables.$blue-300;
+        box-shadow: 0 0 0 9px rgba(133, 178, 255, 0.85);
     }
 }
 </style>
