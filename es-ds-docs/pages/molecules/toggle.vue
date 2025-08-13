@@ -1,14 +1,8 @@
 <script setup lang="ts">
-const propTableRows = ref([
-    ['disabled', 'Boolean', 'false', 'Disables the toggle.'],
-    ['ariaLabel', 'String', 'undefined', 'Accessible label for toggle.'],
-    ['label', 'String', "''", 'Optional label to display below toggle.'],
-]);
-const slotTableRows = ref([['text', 'n/a', 'Optional text to display to the right of the toggle.']]);
+const propTableRows = ref([['disabled', 'Boolean', 'false', 'Disables the toggle.']]);
+const slotTableRows = ref([['label', 'n/a', 'Label to display to the right of the toggle.']]);
 
-const checked = ref(true);
 const disabledChecked = ref(true);
-const dynamicToggle = ref(false);
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');
@@ -39,39 +33,21 @@ onMounted(async () => {
         </p>
 
         <div class="my-500">
-            <h2>No text</h2>
-            <es-toggle class="mb-100" />
-            <es-toggle
-                v-model="checked"
-                class="mb-100" />
-        </div>
-        <div class="my-500">
-            <h2>With label</h2>
-            <es-toggle
-                class="mb-100"
-                label="ON" />
-            <es-toggle
-                v-model="dynamicToggle"
-                class="mb-100"
-                :label="dynamicToggle ? 'YES' : 'NO'" />
-        </div>
-        <div class="my-500">
-            <h2>With text</h2>
             <es-toggle class="mb-300">
-                <template #text>
-                    <p class="mb-0">Add a battery (avg cost is $13k)</p>
+                <template #label>
+                    <p class="m-0">Add a battery (avg cost is $13k)</p>
                 </template>
             </es-toggle>
             <es-toggle class="mb-300">
-                <template #text>
-                    <p class="mb-0 font-size-100">Marketing emails</p>
-                    <p class="mb-0 font-size-75">Receive updates about new features and promotions</p>
+                <template #label>
+                    <p class="m-0 font-size-100">Marketing emails</p>
+                    <p class="m-0 font-size-75">Receive updates about new features and promotions</p>
                 </template>
             </es-toggle>
             <es-toggle class="mb-300">
-                <template #text>
-                    <p class="mb-0 font-size-100">Two-factor authentication</p>
-                    <p class="mb-0 font-size-75 font-weight-bold">Add an extra layer of security to your account</p>
+                <template #label>
+                    <p class="m-0 font-size-100">Two-factor authentication</p>
+                    <p class="m-0 font-size-75 font-weight-bold">Add an extra layer of security to your account</p>
                 </template>
             </es-toggle>
         </div>
@@ -79,11 +55,20 @@ onMounted(async () => {
             <h2>Disabled</h2>
             <es-toggle
                 class="mb-300"
-                disabled />
+                disabled
+                ><template #label>
+                    <p class="m-0">Add a battery (avg cost is $13k)</p>
+                </template></es-toggle
+            >
             <es-toggle
                 v-model="disabledChecked"
                 class="mb-300"
-                disabled />
+                disabled
+                ><template #label>
+                    <p class="m-0 font-size-100">Two-factor authentication</p>
+                    <p class="m-0 font-size-75 font-weight-bold">Add an extra layer of security to your account</p>
+                </template>
+            </es-toggle>
         </div>
 
         <div class="my-500">

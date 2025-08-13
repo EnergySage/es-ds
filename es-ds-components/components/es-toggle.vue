@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { SwitchRoot, SwitchThumb } from 'reka-ui';
 
+const switchId = useId();
 const model = defineModel<boolean>({
     default: false,
 });
@@ -9,16 +10,7 @@ defineProps({
     disabled: {
         type: Boolean,
         default: false,
-    },
-    ariaLabel: {
-        type: String,
-        default: 'es-toggle',
-        required: false,
-    },
-    label: {
-        type: String,
-        default: '',
-        required: false,
+        description: 'Disables the toggle.',
     },
 });
 
@@ -29,32 +21,23 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
 <template>
     <component :is="wrappingComponent">
         <div
-            class="d-flex"
-            :class="{ 'has-text': $slots.text }">
-            <div
-                class="d-flex flex-column align-items-center"
-                :class="{ 'has-value': label }">
-                <switch-root
-                    v-model="model"
-                    :disabled="disabled"
-                    :aria-label="ariaLabel"
-                    :aria-labelledby="label ? 'es-toggle-value' : undefined"
-                    class="es-toggle">
-                    <switch-thumb class="es-toggle-thumb" />
-                </switch-root>
-                <p
-                    v-if="label"
-                    id="es-toggle-value"
-                    class="es-toggle-value">
-                    {{ label }}
-                </p>
-            </div>
-            <div
-                v-if="$slots.text"
-                :class="{ 'cursor-pointer': !disabled }"
-                @click="!disabled && (model = !model)">
-                <slot name="text" />
-            </div>
+            class="d-flex flex-row"
+            :class="{
+                'has-label': $slots.label,
+            }">
+            <switch-root
+                :id="switchId"
+                v-model="model"
+                :disabled="disabled"
+                class="es-toggle">
+                <switch-thumb class="es-toggle-thumb" />
+            </switch-root>
+            <label
+                v-if="$slots.label"
+                :for="switchId"
+                class="es-toggle-label">
+                <slot name="label" />
+            </label>
         </div>
     </component>
 </template>
@@ -62,21 +45,22 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
 <style lang="scss">
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-.has-text {
+.has-label {
     gap: 16px;
     align-items: center;
+
+    .es-toggle[data-disabled] ~ .es-toggle-label {
+        cursor: not-allowed;
+        opacity: 0.5;
+
+        :deep(*) {
+            opacity: inherit;
+        }
+    }
 }
 
-.has-value {
-    gap: 8px;
-}
-
-.es-toggle-value {
-    color: variables.$gray-700;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 16px;
+.es-toggle-label {
+    margin-top: 8px;
 }
 
 .es-toggle {
@@ -150,9 +134,5 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
     .es-toggle:active:not([data-disabled]) & {
         box-shadow: 0 0 0 9px rgba(133, 178, 255, 0.85);
     }
-}
-
-.cursor-pointer {
-    cursor: pointer;
 }
 </style>
