@@ -50,7 +50,6 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
     align-items: center;
 
     .es-toggle[data-disabled] ~ .es-toggle-label {
-        cursor: not-allowed;
         opacity: 0.5;
 
         :deep(*) {
@@ -79,8 +78,6 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
 
     // Disabled states
     &[data-disabled] {
-        cursor: not-allowed;
-
         &:not([data-state='checked']) {
             background: variables.$gray-300;
             border-color: variables.$gray-300;
@@ -114,14 +111,12 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
     .es-toggle:not([data-state='checked'])[data-disabled] & {
         border-color: variables.$gray-300;
         background-color: variables.$gray-500;
-        cursor: not-allowed;
     }
 
     // Disabled checked state
     .es-toggle[data-state='checked'][data-disabled] & {
         border-color: variables.$gray-500;
         background-color: variables.$gray-300;
-        cursor: not-allowed;
     }
 
     // Hover state
