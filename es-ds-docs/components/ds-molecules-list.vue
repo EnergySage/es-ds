@@ -82,6 +82,9 @@
             <ds-link to="/molecules/text-input"> Text input </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/toggle"> Toggle </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/tooltip"> Tooltip </ds-link>
         </li>
         <li>
