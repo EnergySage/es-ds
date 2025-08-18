@@ -1,6 +1,8 @@
 import withNuxt from './.nuxt/eslint.config.mjs';
 
-export default withNuxt()
+export default withNuxt({
+    ignores: ['**/cdk.out/**'],
+})
     .override('nuxt/vue/rules', {
         rules: {
             'vue/component-name-in-template-casing': [

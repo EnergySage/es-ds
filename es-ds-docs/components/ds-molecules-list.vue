@@ -28,6 +28,9 @@
             <ds-link to="/molecules/data-table-simple"> Data table simple </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/dropdown-select"> Dropdown select </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/file-input"> File input </ds-link>
         </li>
         <li>
@@ -77,6 +80,12 @@
         </li>
         <li>
             <ds-link to="/molecules/text-input"> Text input </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/toggle"> Toggle </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/tooltip"> Tooltip </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/verification-code"> Verification code </ds-link>

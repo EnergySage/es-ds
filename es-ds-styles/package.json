@@ -1,7 +1,7 @@
 {
   "name": "@energysage/es-ds-styles",
   "description": "Base CSS for EnergySage design system based on Bootstrap",
-  "version": "3.0.3",
+  "version": "3.3.1",
   "keywords": [
     "css",
     "sass",

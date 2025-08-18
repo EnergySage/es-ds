@@ -1,9 +1,90 @@
+_**Note: This file is no longer being updated as a result of the adoption of release-please.
+Instead, the changelogs within each package are being updated automatically by release-please.
+See the changelogs for [es-ds-styles](./es-ds-styles/CHANGELOG.md), 
+[es-ds-components](./es-ds-components/CHANGELOG.md), and 
+[es-ds-docs](./es-ds-docs/CHANGELOG.md).**_
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## 3.2.3 - 2025-07-10
+
+- Fixed a type error within EsProgress
+
+## 3.2.2 - 2025-07-10
+
+- Fixed an accessibility issue with EsModal where focus would not be given to the modal when opened if the `closeable` prop was set to false
+
+## 3.2.1 - 2025-07-09
+
+- Fixed a visual bug with EsProgress where the circle appeared much larger than intended
+- Reduced the border of the EsButton outline variant from 2px to 1px
+- Brought EsButton focus outline states into compliance with WCAG accessibility guidelines
+- EsButton focus outlines will now only appear when tabbing via keyboard, not when clicking/tapping
+- Simplified the EsButton docs page
+- Added a CLAUDE.md file
+
+## 3.2.0 - 2025-07-08
+
+- ***BREAKING CHANGE:*** EsProgress has updated styling and new props `formatter`, `showCircle`, and `valueClass`
+
+## 3.1.7 - 2025-06-13
+
+- Made it possible for file picker to restrict to a single file
+
+## 3.1.6 - 2025-06-06
+
+- Upgraded dependencies, including Nuxt (3.15 to 3.17)
+
+## 3.1.5 - 2025-05-13
+
+- Added `sideImage` slot, `sideImageContainerClass` prop, and `semi-wide` variant to EsCtaBanner
+
+## 3.1.4 - 2025-05-01
+
+- Fixed an issue with IconFacebook where it didn't resize based on the height and width props passed to it
+
+## 3.1.3 - 2025-04-30
+
+- Added `closable` and `showFooterSeparator` props to EsModal
+- The EsModal header will now automatically hide if the modal title slot is not provided
+
+## 3.1.2 - 2025-04-30
+
+- Added social icons for Bluesky and Threads
+- Improved the layout of EsPopover so the content can go full width and wrap around the close button
+- Deprecated the `cta` slot of EsPopover as it's no longer needed to go full width
+- Fixed an issue with EsCollapse where it didn't have a visible focus outline when tabbed to via keyboard
+
+## 3.1.1 - 2025-04-21
+
+- Fixed an issue with IconTwitter where the inner part of the X was forced to be white instead of the icon color
+
+## 3.1.0 - 2025-04-17
+
+- ***BREAKING CHANGE:*** The `target` and `triggers` props of EsPopover have been removed and a `trigger` slot is now available
+- EsPopover is now based on [Reka UI Popover](https://reka-ui.com/docs/components/popover) instead of [PrimeVue OverlayPanel](https://v3.primevue.org/overlaypanel/)
+- A new EsTooltip component has been added based on [Reka UI Tooltip](https://reka-ui.com/docs/components/tooltip), that will fall back to the EsPopover implementation on touch devices
+- Fixed an issue where EsPopover was not accessible by screen readers or keyboard
+- Fixed an issue where EsPopover positioning was incorrect if the triggering element was too close to the right edge of the viewport
+- EsPopover now supports left, right, top, and bottom positioning relative to the trigger button
+- EsPopover background color has been updated from black to dark blue
+- EsPopover arrow is now rounded
+- EsPopover can now accept a `cta` slot to enable a link or button to appear full width within the popover
+- EsPopover will now automatically flip to the opposite side of the triggering element automatically while the popover is open if a scroll or other movement collides with the viewport edge
+- EsPopover can now have a collision padding set so it will flip a certain amount of pixels prior to reaching the viewport edge (e.g. in case of a sticky nav bar)
+- Added Tooltip within the list of components referenced on the Corners docs page
+- Removed the old, now-unused popover styles from es-ds-styles
+
+## 3.0.11 - 2025-04-17
+
+- Fixed an issue with EsTabs where it would fail to render if a code comment was a child of EsTabs
+- Fixed an issue where screen readers would announce an incorrect header for the EsCollapse toggle
+- Fixed an issue with EsVideo where it would reject a YouTube embed URL if it contained an underscore
 
 ## 3.0.10 - 2025-04-10
 

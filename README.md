@@ -1,6 +1,6 @@
-**NOTICE: this is a vue3 based design system, if you're working with a vue2 based micro-frontend, please see [EnergySage/es-ds-legacy](https://github.com/EnergySage/es-ds-legacy) instead**
-
 # EnergySage Design System
+
+See the documentation and demonstrations at https://design.energysage.dev/
 
 This is a **monorepo** containing the elements required for building experiences
 following the EnergySage Design System, or _es-ds_ for short.
@@ -8,6 +8,8 @@ following the EnergySage Design System, or _es-ds_ for short.
 - [Public works](#public-works)
 - [The parts](#the-parts)
 - [Contributing](#contributing)
+
+NOTICE: this is a vue3 based design system, if you're working with a vue2 based micro-frontend, please see [EnergySage/es-ds-legacy](https://github.com/EnergySage/es-ds-legacy) instead
 
 ## Public works
 
@@ -41,6 +43,7 @@ graph TB
     end
     Y(nuxt3)
     Z(primevue) --> C
+    X(reka-ui) --> C
     Y-->D
 ```
 
@@ -60,7 +63,7 @@ in a future version.
 
 **es-ds-components**
 - [es-ds-components](./es-ds-components/) contains Vue 3 components for use in Nuxt 3 projects.
-It is primarily based on [PrimeVue](https://primevue.org/), with some customizations specific to EnergySage.
+It is primarily based on [PrimeVue](https://primevue.org/) and [Reka UI](https://reka-ui.com/), with some customizations specific to EnergySage.
 
 **es-ds-docs**
 - This is the design system documentation site powered by Nuxt 3.
@@ -143,23 +146,7 @@ in the changelog when publishing a new release.
 
 ### Publishing and Versioning
 
-Assuming changes are approved, the process of publishing a new version is...
-0. Ensure your local environment is
-   [setup](./README.md#installing-dependencies-and-linking-packages) and you are on
-   the `main` branch
-1. Make sure the package.json versions in `es-ds-styles` and `es-ds-components` is updated to a new version 
-   that hasn't been published before on NPM.
-2. `npm login` - Logs you into the npm.js registry. You'll need access to our `es-ds` package there in order for things to work.
-3. `make install && make symlink` - Install and symlink dependencies locally
-4. `make build` - Build all packages to `*/dist` folders locally
-5. `make lint && make typecheck && make test` - Run tests and linting to ensure they pass
-6. Publish updated packages to
-   [npmjs.com](https://www.npmjs.com/org/energysage) with npm publish.
-   1. `cd es-ds-styles && npm publish && cd ..`
-   2. `cd es-ds-components` and update the version of `es-ds-styles` to the just-published one, and run `npm install` and then run `npm publish && cd ..`
-7. Update [CHANGELOG.md](./CHANGELOG.md) with our newly published changes
-8. `make update-package-deps` - Install the new published versions locally
-9. `git commit -m "docs: :memo: add version X.X.X to the changelog" && git push` -
-   Commit and push the changelog and `package-lock.json` updates
-
-Deploys currently happen automatically to new.design.energysage.dev.
+Publishing and versioning is now automated through release-please.
+Upon merging to `main`, a release-please PR will be created or updated
+with your changes in the description. Merging this release-please PR will create a 
+release automatically, and also deploy to the documentation site.

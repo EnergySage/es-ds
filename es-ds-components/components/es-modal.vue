@@ -1,45 +1,49 @@
 <script setup lang="ts">
 import PrimeDialog from 'primevue/dialog';
 
-const props = defineProps({
-    id: {
-        type: String,
-        required: true,
-    },
-    hideFooter: {
-        type: Boolean,
-        default: false,
-    },
-    size: {
-        type: String,
-        default: 'md',
-        validator: (val: string) => ['sm', 'md', 'lg', 'xl'].includes(val),
-    },
-    bodyClass: {
-        type: String,
-        required: false,
-        default: '',
-    },
+interface Props {
+    bodyClass?: string;
+    closable?: boolean;
+    hideFooter?: boolean;
+    id: string;
+    showFooterSeparator?: boolean;
+    size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+const props = withDefaults(defineProps<Props>(), {
+    bodyClass: '',
+    closable: true,
+    hideFooter: false,
+    showFooterSeparator: true,
+    size: 'md',
 });
+
+const slots = useSlots();
 
 const modalPt = {
     root: {
         class: 'modal-dialog modal-dialog-scrollable modal-content',
     },
     header: {
-        class: 'modal-header',
+        class: slots['modal-title'] ? 'modal-header' : '',
     },
     title: {
         class: 'modal-title',
     },
     closeButton: {
-        class: 'close',
+        class: [
+            'close',
+            {
+                // if closable is true, keep the close button around (for accessibility, and to
+                // allow Escape to still close the modal), but hide it visually
+                'sr-only': !props.closable,
+            },
+        ],
     },
     content: {
         class: `modal-body ${props.bodyClass}`,
     },
     footer: {
-        class: 'modal-footer',
+        class: `modal-footer ${props.showFooterSeparator ? 'footer-separator' : ''}`,
     },
     mask: {
         class: 'es-modal-mask',
@@ -64,7 +68,7 @@ const onChange = (visible: boolean) => {
 };
 
 const getSizeClass = computed(() => {
-    const modalSize = props.size === '' ? 'modal-md' : `modal-${props.size}`;
+    const modalSize = `modal-${props.size}`;
     return modalSize;
 });
 </script>
@@ -77,7 +81,9 @@ const getSizeClass = computed(() => {
         :pt="modalPt"
         dismissable-mask
         @update:visible="onChange">
-        <template #header>
+        <template
+            v-if="slots['modal-title']"
+            #header>
             <h5
                 :id="`${id}_header`"
                 class="modal-title h2">

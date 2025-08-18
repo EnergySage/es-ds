@@ -46,6 +46,9 @@ const defaultScrollHeight = computed(() => {
         :scroll-height="defaultScrollHeight"
         :value="items">
         <slot />
+        <template #empty>
+            <slot name="empty" />
+        </template>
     </data-table>
 </template>
 

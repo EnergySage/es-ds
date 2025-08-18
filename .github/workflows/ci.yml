@@ -1,15 +1,10 @@
 name: ci
 
 on:
-    push:
-        branches:
-            - main
-            - master
+    workflow_call:
     pull_request:
         branches:
             - main
-            - master
-            - esds-3.0-vue3-primevue
 
 jobs:
     ci:

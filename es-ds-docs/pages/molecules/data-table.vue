@@ -197,6 +197,21 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
+            <h2 class="mb-200">Empty example</h2>
+            <es-data-table :items="[]">
+                <es-data-table-column
+                    field="advantages"
+                    header="Advantages" />
+                <es-data-table-column
+                    field="disadvantages"
+                    header="Disadvantages" />
+                <template #empty>
+                    <div class="text-center p-4">No data found</div>
+                </template>
+            </es-data-table>
+        </div>
+
+        <div class="mb-500">
             <h2 class="mb-200">Custom rendering</h2>
             <es-data-table :items="averageCostTable">
                 <es-data-table-column>
