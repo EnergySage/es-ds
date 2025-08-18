@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.6.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.5.0...es-ds-components-v3.6.0) (2025-08-18)
+
+
+### Features
+
+* IDR-1606 create es-toggle ([#1647](https://github.com/EnergySage/es-ds/issues/1647)) ([da6b3c2](https://github.com/EnergySage/es-ds/commit/da6b3c28585d7aaae7ef07d7f426405783e3f276))
+
+
+### Bug Fixes
+
+* ensure package-lock files get updated upon release; also manually bring current ones up to date ([#1649](https://github.com/EnergySage/es-ds/issues/1649)) ([53cf5ae](https://github.com/EnergySage/es-ds/commit/53cf5aeec419b7a050038172dec8cc1d8fb31655))
+
 ## [3.5.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.4.0...es-ds-components-v3.5.0) (2025-08-12)
 
 
