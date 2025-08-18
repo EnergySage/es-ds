@@ -6,16 +6,16 @@ const model = defineModel<boolean>({
     default: false,
 });
 
-defineProps({
-    disabled: {
-        type: Boolean,
-        default: false,
-        description: 'Disables the toggle.',
-    },
+interface Props {
+    disabled?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
+    disabled: false,
 });
 
 // Workaround: Reka UI components don't play nice with the Nuxt 3.16+ dev server side rendering while using NPM link
-const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'span';
+const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'div';
 </script>
 
 <template>
@@ -60,6 +60,7 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
 
 .es-toggle-label {
     margin-top: 8px;
+    user-select: none;
 }
 
 .es-toggle {
@@ -107,16 +108,19 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
         transform: translateX(20px);
     }
 
-    // Disabled unchecked state
-    .es-toggle:not([data-state='checked'])[data-disabled] & {
-        border-color: variables.$gray-300;
-        background-color: variables.$gray-500;
-    }
+    // Disabled states
+    .es-toggle[data-disabled] & {
+        cursor: default;
 
-    // Disabled checked state
-    .es-toggle[data-state='checked'][data-disabled] & {
-        border-color: variables.$gray-500;
-        background-color: variables.$gray-300;
+        &:not([data-state='checked']) {
+            border-color: variables.$gray-300;
+            background-color: variables.$gray-500;
+        }
+
+        &[data-state='checked'] {
+            border-color: variables.$gray-500;
+            background-color: variables.$gray-300;
+        }
     }
 
     // Hover state
