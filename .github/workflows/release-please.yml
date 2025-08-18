@@ -101,12 +101,16 @@ jobs:
               run: npm install
 
             - name: Commit package-lock.json changes
-              run: |-
+              run: |
+                if [[ $(git status --porcelain) ]]; then
                   git config user.name 'github-actions[bot]'
                   git config user.email 'github-actions[bot]@users.noreply.github.com'
                   git add .
                   git commit -m "chore: update es-ds-components package-lock.json"
                   git push
+                else
+                  echo "No changes to commit."
+                fi
 
             - name: Publish Packages
               working-directory: es-ds-components
@@ -147,12 +151,16 @@ jobs:
               run: npm install
 
             - name: Commit package-lock.json changes
-              run: |-
+              run: |
+                if [[ $(git status --porcelain) ]]; then
                   git config user.name 'github-actions[bot]'
                   git config user.email 'github-actions[bot]@users.noreply.github.com'
                   git add .
                   git commit -m "chore: update es-ds-docs package-lock.json"
                   git push
+                else
+                  echo "No changes to commit."
+                fi
 
     deploy:
         uses: ./.github/workflows/deploy.yml
