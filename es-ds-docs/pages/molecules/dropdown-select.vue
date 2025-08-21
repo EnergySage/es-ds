@@ -17,7 +17,7 @@ const selectedFruit = ref<string | undefined>(undefined);
 const selectedTropicalFruit = ref<string | undefined>(undefined);
 const selectedColor = ref<string | undefined>(undefined);
 const selectedSize = ref<string | undefined>(undefined);
-const selectedContinent = ref<{ label: string; value: string } | undefined>(undefined);
+const selectedContinent = ref<string | undefined>(undefined);
 
 const fruits = ['Apple', 'Banana', 'Grape', 'Orange'];
 
