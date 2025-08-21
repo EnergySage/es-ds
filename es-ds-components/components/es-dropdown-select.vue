@@ -85,6 +85,7 @@ const hide = () => {
             :focus-on-hover="false"
             :model-value="modelValue"
             :option-label="options.length > 0 && typeof options[0] === 'object' ? 'label' : undefined"
+            :option-value="options.length > 0 && typeof options[0] === 'object' ? 'value' : undefined"
             :options="options"
             :placeholder="placeholder"
             :pt="{
@@ -109,6 +110,7 @@ const hide = () => {
                 },
             }"
             scroll-height="15.75rem"
+            v-bind="$attrs"
             @update:model-value="emit('update:modelValue', $event)"
             @blur="blur"
             @focus="isFocused = true"

@@ -171,7 +171,7 @@ const dropdownProps = [
                         v-model="selectedContinent"
                         label="Select your continent"
                         :options="continents" />
-                    <p class="text-muted">Selected: {{ selectedContinent?.value || 'None' }}</p>
+                    <p class="text-muted">Selected: {{ selectedContinent || 'None' }}</p>
                 </div>
             </div>
         </div>
