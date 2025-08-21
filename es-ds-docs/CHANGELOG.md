@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.6.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.6.0...es-ds-docs-v3.6.1) (2025-08-21)
+
+
+### Bug Fixes
+
+* define value for dropdown option ([#1653](https://github.com/EnergySage/es-ds/issues/1653)) ([4dc706f](https://github.com/EnergySage/es-ds/commit/4dc706f88cc85f35a09c42e3cf06fea36f249b31))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^3.6.0 to ^3.6.1
+
 ## [3.6.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.5.0...es-ds-docs-v3.6.0) (2025-08-18)
 
 
