@@ -17,7 +17,7 @@ const selectedFruit = ref<string | undefined>(undefined);
 const selectedTropicalFruit = ref<string | undefined>(undefined);
 const selectedColor = ref<string | undefined>(undefined);
 const selectedSize = ref<string | undefined>(undefined);
-const selectedContinent = ref<{ label: string; value: string } | undefined>(undefined);
+const selectedContinent = ref<string | undefined>(undefined);
 
 const fruits = ['Apple', 'Banana', 'Grape', 'Orange'];
 
@@ -171,7 +171,7 @@ const dropdownProps = [
                         v-model="selectedContinent"
                         label="Select your continent"
                         :options="continents" />
-                    <p class="text-muted">Selected: {{ selectedContinent?.value || 'None' }}</p>
+                    <p class="text-muted">Selected: {{ selectedContinent || 'None' }}</p>
                 </div>
             </div>
         </div>

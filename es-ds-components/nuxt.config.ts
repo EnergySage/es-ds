@@ -62,6 +62,7 @@ export default defineNuxtConfig({
                 'primevue/column',
                 'primevue/datatable',
                 'primevue/dialog',
+                'primevue/dropdown',
                 'primevue/inputmask',
                 'primevue/inputotp',
                 'primevue/inputtext',
