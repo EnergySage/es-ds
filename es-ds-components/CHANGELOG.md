@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.6.1...es-ds-components-v3.6.2) (2025-08-25)
+
+
+### Bug Fixes
+
+* remove unoverridable margin from form message ([#1656](https://github.com/EnergySage/es-ds/issues/1656)) ([6d93853](https://github.com/EnergySage/es-ds/commit/6d93853df13156de9c7b5f938b345d64c295017a))
+
 ## [3.6.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.6.0...es-ds-components-v3.6.1) (2025-08-21)
 
 
