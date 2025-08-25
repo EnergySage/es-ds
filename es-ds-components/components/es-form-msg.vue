@@ -64,6 +64,11 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+.es-form-msg {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
 .form-msg {
     flex: 0 0 100%;
     padding-right: 2.5rem;
