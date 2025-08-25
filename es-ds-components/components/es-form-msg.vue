@@ -42,7 +42,7 @@ watch(
             role="alert"
             aria-live="polite"
             aria-atomic="true"
-            class="alert es-form-msg my-100 alert-dismissible"
+            class="alert es-form-msg alert-dismissible"
             :class="`alert-${variant}`">
             <div class="d-flex pr-100">
                 <div class="icon-wrapper flex-shrink-0 mr-100">
@@ -64,6 +64,11 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+.es-form-msg {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
 .form-msg {
     flex: 0 0 100%;
     padding-right: 2.5rem;
