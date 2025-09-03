@@ -73,7 +73,7 @@ const hide = () => {
         <dropdown
             :input-id="id"
             :class="[
-                'es-dropdown es-form-input form-control d-flex align-items-center justify-content-between',
+                'es-dropdown es-form-input form-control d-flex align-items-center justify-content-between position-relative',
                 {
                     disabled: isDisabled,
                     focused: isFocused && !isInputClicked && !isOpen && !isLabelClicked,
@@ -90,12 +90,12 @@ const hide = () => {
             :options="options"
             :placeholder="options.length === 0 ? 'No available options' : placeholder"
             :pt="{
-                panel: { class: 'es-dropdown-panel bg-white rounded-xs' },
+                panel: { class: 'es-dropdown-panel bg-white rounded-xs w-100' },
                 wrapper: { class: 'es-dropdown-wrapper' },
                 list: { class: 'p-0 m-0 list-unstyled' },
                 input: {
                     class: [
-                        'es-dropdown-input',
+                        'es-dropdown-input h-100 text-truncate',
                         {
                             'es-dropdown-input--placeholder': modelValue === undefined && state !== false,
                         },
@@ -103,13 +103,15 @@ const hide = () => {
                 },
                 item: {
                     class: [
-                        'es-dropdown-item d-flex justify-content-between p-100 pl-200',
+                        'es-dropdown-item d-flex justify-content-between p-100 pl-200 align-items-center',
                         {
                             'input-focused position-relative': isFocused && !isInputClicked && !isLabelClicked,
                         },
                     ],
                 },
+                trigger: { class: 'h-100' },
             }"
+            append-to="self"
             scroll-height="15.75rem"
             v-bind="$attrs"
             @update:model-value="emit('update:modelValue', $event)"
@@ -130,11 +132,13 @@ const hide = () => {
                     ]" />
             </template>
             <template #option="slotProps">
-                <span>{{ slotProps.option.label ? slotProps.option.label : slotProps.option }}</span>
+                <span class="option-label">{{
+                    slotProps.option.label ? slotProps.option.label : slotProps.option
+                }}</span>
                 <icon-check
                     v-if="isSelected(slotProps.option)"
                     height="1.5rem"
-                    class="text-gray-700" />
+                    class="text-gray-700 flex-shrink-0 ml-25" />
             </template>
         </dropdown>
         <small
@@ -167,10 +171,6 @@ const hide = () => {
     }
 
     .es-dropdown-input {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
         &:focus-visible {
             outline: 0;
         }
@@ -224,6 +224,10 @@ const hide = () => {
 .es-dropdown-item {
     cursor: pointer;
     transition: background-color 0.15s ease-in-out;
+
+    .option-label {
+        overflow-wrap: anywhere;
+    }
 
     &:hover,
     &:not(.input-focused)[data-p-focused='true'] {

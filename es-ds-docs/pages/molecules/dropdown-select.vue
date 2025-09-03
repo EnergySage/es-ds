@@ -19,7 +19,13 @@ const selectedColor = ref<string | undefined>(undefined);
 const selectedSize = ref<string | undefined>(undefined);
 const selectedContinent = ref<string | undefined>(undefined);
 
-const fruits = ['Apple', 'Banana', 'Grape', 'Orange'];
+const fruits = [
+    'Apple',
+    'Banana',
+    'Grape',
+    'Orange',
+    'This is a really long example to show that the dropdown can handle long text options',
+];
 
 const tropicalFruits = ['Mango', 'Papaya', 'Pineapple', 'Coconut'];
 
