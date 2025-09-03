@@ -92,6 +92,7 @@ const hide = () => {
                 panel: { class: 'es-dropdown-panel bg-white rounded-xs' },
                 wrapper: { class: 'es-dropdown-wrapper' },
                 list: { class: 'p-0 m-0 list-unstyled' },
+                emptyMessage: { class: 'p-100 pl-200 bg-gray-50' },
                 input: {
                     class: [
                         'es-dropdown-input',
@@ -166,6 +167,10 @@ const hide = () => {
     }
 
     .es-dropdown-input {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
         &:focus-visible {
             outline: 0;
         }
