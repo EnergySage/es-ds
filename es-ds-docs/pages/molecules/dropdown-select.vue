@@ -177,6 +177,17 @@ const dropdownProps = [
         </div>
 
         <div class="mb-500">
+            <h2>No options</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown-select
+                        v-model="selectedSize"
+                        :options="[]" />
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
             <h2>No placeholder</h2>
             <div class="row">
                 <div class="col-md-6">

@@ -29,6 +29,7 @@ const isOpen = ref(false);
 const isFocused = ref(false);
 const isInputClicked = ref(false);
 const isLabelClicked = ref(false);
+const isDisabled = computed(() => props.disabled || props.options.length === 0);
 
 const isSelected = (option: any) => option === props.modelValue;
 
@@ -74,25 +75,24 @@ const hide = () => {
             :class="[
                 'es-dropdown es-form-input form-control d-flex align-items-center justify-content-between',
                 {
-                    disabled: disabled,
+                    disabled: isDisabled,
                     focused: isFocused && !isInputClicked && !isOpen && !isLabelClicked,
                     'focused-on-click': isOpen || isLabelClicked || isInputClicked,
                     'is-invalid': state === false,
                 },
             ]"
             :aria-labelledby="labelId"
-            :disabled="disabled"
+            :disabled="isDisabled"
             :focus-on-hover="false"
             :model-value="modelValue"
             :option-label="options.length > 0 && typeof options[0] === 'object' ? 'label' : undefined"
             :option-value="options.length > 0 && typeof options[0] === 'object' ? 'value' : undefined"
             :options="options"
-            :placeholder="placeholder"
+            :placeholder="options.length === 0 ? 'No available options' : placeholder"
             :pt="{
                 panel: { class: 'es-dropdown-panel bg-white rounded-xs' },
                 wrapper: { class: 'es-dropdown-wrapper' },
                 list: { class: 'p-0 m-0 list-unstyled' },
-                emptyMessage: { class: 'p-100 pl-200 bg-gray-50' },
                 input: {
                     class: [
                         'es-dropdown-input',
@@ -124,8 +124,8 @@ const hide = () => {
                     height="1.125rem"
                     :class="[
                         {
-                            'text-gray-500': disabled,
-                            'text-gray-900': !disabled && state !== false,
+                            'text-gray-500': isDisabled,
+                            'text-gray-900': !isDisabled && state !== false,
                         },
                     ]" />
             </template>
