@@ -19,7 +19,13 @@ const selectedColor = ref<string | undefined>(undefined);
 const selectedSize = ref<string | undefined>(undefined);
 const selectedContinent = ref<string | undefined>(undefined);
 
-const fruits = ['Apple', 'Banana', 'Grape', 'Orange'];
+const fruits = [
+    'Apple',
+    'Banana',
+    'Grape',
+    'Orange',
+    'This is a really long example to show that the dropdown can handle long text options',
+];
 
 const tropicalFruits = ['Mango', 'Papaya', 'Pineapple', 'Coconut'];
 
@@ -69,6 +75,14 @@ const dropdownProps = [
         'Select an option',
         `
         Text to display above dropdown. When not specified, the label will be hidden and default to "Select an option" for accessibility purposes.
+        `,
+    ],
+    [
+        'noOptionsText',
+        'String',
+        'No available options',
+        `
+        Placeholder text to display when there are no options to select from.
         `,
     ],
     [
@@ -172,6 +186,18 @@ const dropdownProps = [
                         label="Select your continent"
                         :options="continents" />
                     <p class="text-muted">Selected: {{ selectedContinent || 'None' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>No options</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-dropdown-select
+                        v-model="selectedSize"
+                        no-options-text="No sizes available"
+                        :options="[]" />
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ interface Props {
     disabled?: boolean;
     label?: string;
     modelValue?: any;
+    noOptionsText?: string;
     options?: string[] | { label: string; value: string }[];
     placeholder?: string;
     required?: boolean;
@@ -13,6 +14,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
     modelValue: undefined,
+    noOptionsText: 'No available options',
     options: () => [],
     placeholder: '',
     label: '',
@@ -29,6 +31,7 @@ const isOpen = ref(false);
 const isFocused = ref(false);
 const isInputClicked = ref(false);
 const isLabelClicked = ref(false);
+const isDisabled = computed(() => props.disabled || props.options.length === 0);
 
 const isSelected = (option: any) => option === props.modelValue;
 
@@ -72,29 +75,30 @@ const hide = () => {
         <dropdown
             :input-id="id"
             :class="[
-                'es-dropdown es-form-input form-control d-flex align-items-center justify-content-between',
+                'es-dropdown es-form-input form-control align-items-center d-flex justify-content-between position-relative',
                 {
-                    disabled: disabled,
+                    disabled: isDisabled,
                     focused: isFocused && !isInputClicked && !isOpen && !isLabelClicked,
                     'focused-on-click': isOpen || isLabelClicked || isInputClicked,
                     'is-invalid': state === false,
                 },
             ]"
+            append-to="self"
             :aria-labelledby="labelId"
-            :disabled="disabled"
+            :disabled="isDisabled"
             :focus-on-hover="false"
             :model-value="modelValue"
             :option-label="options.length > 0 && typeof options[0] === 'object' ? 'label' : undefined"
             :option-value="options.length > 0 && typeof options[0] === 'object' ? 'value' : undefined"
             :options="options"
-            :placeholder="placeholder"
+            :placeholder="options.length === 0 ? props.noOptionsText : placeholder"
             :pt="{
-                panel: { class: 'es-dropdown-panel bg-white rounded-xs' },
+                panel: { class: 'es-dropdown-panel bg-white rounded-xs w-100' },
                 wrapper: { class: 'es-dropdown-wrapper' },
-                list: { class: 'p-0 m-0 list-unstyled' },
+                list: { class: 'list-unstyled m-0 p-0' },
                 input: {
                     class: [
-                        'es-dropdown-input',
+                        'es-dropdown-input h-100 text-truncate',
                         {
                             'es-dropdown-input--placeholder': modelValue === undefined && state !== false,
                         },
@@ -102,12 +106,13 @@ const hide = () => {
                 },
                 item: {
                     class: [
-                        'es-dropdown-item d-flex justify-content-between p-100 pl-200',
+                        'es-dropdown-item align-items-center d-flex justify-content-between p-100 pl-200 position-relative',
                         {
                             'input-focused position-relative': isFocused && !isInputClicked && !isLabelClicked,
                         },
                     ],
                 },
+                trigger: { class: 'h-100' },
             }"
             scroll-height="15.75rem"
             v-bind="$attrs"
@@ -123,17 +128,19 @@ const hide = () => {
                     height="1.125rem"
                     :class="[
                         {
-                            'text-gray-500': disabled,
-                            'text-gray-900': !disabled && state !== false,
+                            'text-gray-500': isDisabled,
+                            'text-gray-900': !isDisabled && state !== false,
                         },
                     ]" />
             </template>
             <template #option="slotProps">
-                <span>{{ slotProps.option.label ? slotProps.option.label : slotProps.option }}</span>
+                <span class="option-label pr-200">{{
+                    slotProps.option.label ? slotProps.option.label : slotProps.option
+                }}</span>
                 <icon-check
                     v-if="isSelected(slotProps.option)"
                     height="1.5rem"
-                    class="text-gray-700" />
+                    class="icon-check position-absolute text-gray-700" />
             </template>
         </dropdown>
         <small
@@ -219,6 +226,14 @@ const hide = () => {
 .es-dropdown-item {
     cursor: pointer;
     transition: background-color 0.15s ease-in-out;
+
+    .icon-check {
+        right: 1rem;
+    }
+
+    .option-label {
+        overflow-wrap: anywhere;
+    }
 
     &:hover,
     &:not(.input-focused)[data-p-focused='true'] {
