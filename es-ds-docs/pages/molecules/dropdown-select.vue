@@ -78,6 +78,14 @@ const dropdownProps = [
         `,
     ],
     [
+        'noOptionsText',
+        'String',
+        'No available options',
+        `
+        Placeholder text to display when there are no options to select from.
+        `,
+    ],
+    [
         'options',
         'Array',
         '[]',
@@ -188,6 +196,7 @@ const dropdownProps = [
                 <div class="col-md-6">
                     <es-dropdown-select
                         v-model="selectedSize"
+                        no-options-text="No sizes available"
                         :options="[]" />
                 </div>
             </div>

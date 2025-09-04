@@ -5,6 +5,7 @@ interface Props {
     disabled?: boolean;
     label?: string;
     modelValue?: any;
+    noOptionsText?: string;
     options?: string[] | { label: string; value: string }[];
     placeholder?: string;
     required?: boolean;
@@ -13,6 +14,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     disabled: false,
     modelValue: undefined,
+    noOptionsText: 'No available options',
     options: () => [],
     placeholder: '',
     label: '',
@@ -73,7 +75,7 @@ const hide = () => {
         <dropdown
             :input-id="id"
             :class="[
-                'es-dropdown es-form-input form-control d-flex align-items-center justify-content-between position-relative',
+                'es-dropdown es-form-input form-control align-items-center d-flex justify-content-between position-relative',
                 {
                     disabled: isDisabled,
                     focused: isFocused && !isInputClicked && !isOpen && !isLabelClicked,
@@ -81,6 +83,7 @@ const hide = () => {
                     'is-invalid': state === false,
                 },
             ]"
+            append-to="self"
             :aria-labelledby="labelId"
             :disabled="isDisabled"
             :focus-on-hover="false"
@@ -88,11 +91,11 @@ const hide = () => {
             :option-label="options.length > 0 && typeof options[0] === 'object' ? 'label' : undefined"
             :option-value="options.length > 0 && typeof options[0] === 'object' ? 'value' : undefined"
             :options="options"
-            :placeholder="options.length === 0 ? 'No available options' : placeholder"
+            :placeholder="options.length === 0 ? props.noOptionsText : placeholder"
             :pt="{
                 panel: { class: 'es-dropdown-panel bg-white rounded-xs w-100' },
                 wrapper: { class: 'es-dropdown-wrapper' },
-                list: { class: 'p-0 m-0 list-unstyled' },
+                list: { class: 'list-unstyled m-0 p-0' },
                 input: {
                     class: [
                         'es-dropdown-input h-100 text-truncate',
@@ -103,7 +106,7 @@ const hide = () => {
                 },
                 item: {
                     class: [
-                        'es-dropdown-item d-flex justify-content-between p-100 pl-200 align-items-center',
+                        'es-dropdown-item align-items-center d-flex justify-content-between p-100 pl-200',
                         {
                             'input-focused position-relative': isFocused && !isInputClicked && !isLabelClicked,
                         },
@@ -111,7 +114,6 @@ const hide = () => {
                 },
                 trigger: { class: 'h-100' },
             }"
-            append-to="self"
             scroll-height="15.75rem"
             v-bind="$attrs"
             @update:model-value="emit('update:modelValue', $event)"
