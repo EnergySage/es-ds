@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.6.2...es-ds-components-v3.7.0) (2025-09-04)
+
+
+### Features
+
+* dropdown tweaks ([#1660](https://github.com/EnergySage/es-ds/issues/1660)) ([42ffeac](https://github.com/EnergySage/es-ds/commit/42ffeac51b89969cd55b936d744be598e769e1a5))
+
 ## [3.6.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.6.1...es-ds-components-v3.6.2) (2025-08-25)
 
 
