@@ -106,7 +106,7 @@ const hide = () => {
                 },
                 item: {
                     class: [
-                        'es-dropdown-item align-items-center d-flex justify-content-between p-100 pl-200',
+                        'es-dropdown-item align-items-center d-flex justify-content-between p-100 pl-200 position-relative',
                         {
                             'input-focused position-relative': isFocused && !isInputClicked && !isLabelClicked,
                         },
@@ -134,13 +134,13 @@ const hide = () => {
                     ]" />
             </template>
             <template #option="slotProps">
-                <span class="option-label">{{
+                <span class="option-label pr-200">{{
                     slotProps.option.label ? slotProps.option.label : slotProps.option
                 }}</span>
                 <icon-check
                     v-if="isSelected(slotProps.option)"
                     height="1.5rem"
-                    class="text-gray-700 flex-shrink-0 ml-25" />
+                    class="icon-check position-absolute text-gray-700" />
             </template>
         </dropdown>
         <small
@@ -226,6 +226,10 @@ const hide = () => {
 .es-dropdown-item {
     cursor: pointer;
     transition: background-color 0.15s ease-in-out;
+
+    .icon-check {
+        right: 1rem;
+    }
 
     .option-label {
         overflow-wrap: anywhere;
