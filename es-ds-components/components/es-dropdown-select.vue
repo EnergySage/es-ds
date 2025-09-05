@@ -34,7 +34,7 @@ const isLabelClicked = ref(false);
 const isDisabled = computed(() => props.disabled || props.options.length === 0);
 
 const isSelected = (option: any) => {
-    const compareOption = props.options.length > 0 && typeof props.options[0] === 'object' ? option.value : option;
+    const compareOption = typeof option === 'object' ? option.value : option;
     return compareOption === props.modelValue;
 };
 
