@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.7.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.1...es-ds-components-v3.7.2) (2025-09-05)
+
+
+### Features
+
+* upgrade nuxt to resolve vulnerability with devalue ([#1666](https://github.com/EnergySage/es-ds/issues/1666)) ([6bde0f0](https://github.com/EnergySage/es-ds/commit/6bde0f005b8fbdd2289b2248fad8f917b0c5b21b))
+
+
 ## [3.7.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.0...es-ds-components-v3.7.1) (2025-09-05)
 
 
