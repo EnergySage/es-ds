@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.0...es-ds-components-v3.7.1) (2025-09-05)
+
+
+### Bug Fixes
+
+* account for object array in isSelected ([#1663](https://github.com/EnergySage/es-ds/issues/1663)) ([d34ce8a](https://github.com/EnergySage/es-ds/commit/d34ce8a0b2935cfe9621a54b85cac88f95a5a314))
+
 ## [3.7.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.6.2...es-ds-components-v3.7.0) (2025-09-04)
 
 
