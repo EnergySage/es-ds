@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.7.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.7.1...es-ds-docs-v3.7.2) (2025-09-05)
+
+
+### Bug Fixes
+
+* revert "chore: revert "chore: upgrade nuxt"" ([#1669](https://github.com/EnergySage/es-ds/issues/1669)) ([b3c072d](https://github.com/EnergySage/es-ds/commit/b3c072dadd255d7a5a05d1215d8558ad1c0661f7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^3.7.1 to ^3.7.2
+
 ## [3.7.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.7.0...es-ds-docs-v3.7.1) (2025-09-05)
 
 
