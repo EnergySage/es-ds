@@ -84,7 +84,6 @@ export default defineNuxtConfig({
         css: {
             preprocessorOptions: {
                 scss: {
-                    api: 'modern',
                     // color functions will be deprecated in SASS 2.0: https://sass-lang.com/documentation/breaking-changes/color-functions/
                     silenceDeprecations: ['color-functions'],
                 },
