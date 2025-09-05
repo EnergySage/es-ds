@@ -463,6 +463,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :token="alias" />
@@ -477,6 +478,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :token="alias" />
@@ -495,6 +497,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :is-light="true"
@@ -510,6 +513,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :token="alias" />
@@ -524,6 +528,7 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
+                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :hex="value"
                             :is-light="true"

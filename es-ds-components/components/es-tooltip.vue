@@ -90,7 +90,7 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'sp
             :side="side"
             :trigger-class="triggerClass"
             :variant="variant"
-            @update:show="(val: any) => emit('update:show', val)">
+            @update:show="(val) => emit('update:show', val)">
             <template #trigger>
                 <slot name="trigger" />
             </template>
