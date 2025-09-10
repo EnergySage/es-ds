@@ -124,25 +124,11 @@ These commands will:
 
 ### Updating the changelog
 
-In your PR, make sure to include a section in the changelog documenting your
-change. Following [keep a changelog](https://keepachangelog.com/en/1.0.0/)
-conventions this will look similar to the following:
-
-```markdown
-## [Unreleased]
-
-### Added
-
-- Thing one
-
-### Changed
-
-- Thing two
-
-```
-
-This will make it easier to ensure all changes merged into `main` are captured
-in the changelog when publishing a new release.
+The changelog no longer needs to be updated manually, as it will be managed automatically by release-please,
+based on the pull request titles. See the individual changelogs:
+- [es-ds-styles](./es-ds-styles/CHANGELOG.md)
+- [es-ds-components](./es-ds-components/CHANGELOG.md)
+- [es-ds-docs](./es-ds-docs/CHANGELOG.md)
 
 ### Publishing and Versioning
 
