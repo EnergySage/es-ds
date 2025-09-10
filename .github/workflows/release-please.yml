@@ -101,6 +101,7 @@ jobs:
 
             - id: set_es_ds_styles_version
               name: Get es-ds-styles version
+              working-directory: es-ds-components
               run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')" >> $GITHUB_OUTPUT
 
             - name: Install dependencies
@@ -151,10 +152,12 @@ jobs:
 
             - id: set_es_ds_styles_version
               name: Get es-ds-styles version
+              working-directory: es-ds-docs
               run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')" >> $GITHUB_OUTPUT
 
             - id: set_es_ds_components_version
               name: Get es-ds-components version
+              working-directory: es-ds-docs
               run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-components"]')" >> $GITHUB_OUTPUT
 
             - name: Install dependencies
