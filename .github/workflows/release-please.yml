@@ -83,6 +83,7 @@ jobs:
             - name: Check out repository code
               uses: actions/checkout@v4
               with:
+                  ref: ${{ github.head_ref }}
                   token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Get nodenv version 🔌
@@ -128,6 +129,7 @@ jobs:
             - name: Check out repository code
               uses: actions/checkout@v4
               with:
+                  ref: ${{ github.head_ref }}
                   token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Get nodenv version 🔌
