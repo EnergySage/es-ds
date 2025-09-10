@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.7.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.7.2...es-ds-docs-v3.7.3) (2025-09-10)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^3.7.2 to ^3.7.3
+
 ## [3.7.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.7.1...es-ds-docs-v3.7.2) (2025-09-05)
 
 
