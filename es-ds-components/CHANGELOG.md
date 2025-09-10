@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.3](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.2...es-ds-components-v3.7.3) (2025-09-10)
+
+
+### Bug Fixes
+
+* use git-auto-commit action in attempt to fix docs site deploy problem ([#1672](https://github.com/EnergySage/es-ds/issues/1672)) ([25ababc](https://github.com/EnergySage/es-ds/commit/25ababc3de253e21b1cf39a2a2353239b0c919cc))
+
 ## [3.7.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.1...es-ds-components-v3.7.2) (2025-09-05)
 
 
