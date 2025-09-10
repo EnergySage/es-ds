@@ -99,9 +99,13 @@ jobs:
                   cache: npm
                   cache-dependency-path: '**/package-lock.json'
 
+            - id: set_es_ds_styles_version
+              name: Get es-ds-styles version
+              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')" >> $GITHUB_OUTPUT
+
             - name: Install dependencies
               working-directory: es-ds-components
-              run: npm install
+              run: npm install @energysage/es-ds-styles@${{ steps.set_es_ds_styles_version.outputs.version_string }}
 
             - name: Commit package-lock.json changes
               uses: stefanzweifel/git-auto-commit-action@v6
@@ -145,9 +149,17 @@ jobs:
                   cache: npm
                   cache-dependency-path: '**/package-lock.json'
 
+            - id: set_es_ds_styles_version
+              name: Get es-ds-styles version
+              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')" >> $GITHUB_OUTPUT
+
+            - id: set_es_ds_components_version
+              name: Get es-ds-components version
+              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-components"]')" >> $GITHUB_OUTPUT
+
             - name: Install dependencies
               working-directory: es-ds-docs
-              run: npm install
+              run: npm install @energysage/es-ds-styles@${{ steps.set_es_ds_styles_version.outputs.version_string }} @energysage/es-ds-components@${{ steps.set_es_ds_components_version.outputs.version_string }}
 
             - name: Commit package-lock.json changes
               uses: stefanzweifel/git-auto-commit-action@v6
@@ -160,6 +172,7 @@ jobs:
             - release-please
             - release-es-ds-styles
             - release-es-ds-components
+            - release-es-ds-docs
         if: always() && !cancelled() && !failure() && (needs.release-please.outputs.es-ds-styles--release_created || needs.release-please.outputs.es-ds-components--release_created || needs.release-please.outputs.es-ds-docs--release_created)
         secrets: inherit
         with:
