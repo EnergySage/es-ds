@@ -80,11 +80,19 @@ jobs:
             - release-es-ds-styles
         if: always() && !cancelled() && !failure() && needs.release-please.outputs.es-ds-components--release_created
         steps:
+            # Uses an app with elevated permissions to bypass required checks when pushing to main
+            - uses: actions/create-github-app-token@v2
+              id: app-token
+              with:
+                app-id: ${{ vars.VERSION_BUMPER_APPID }}
+                private-key: ${{ secrets.VERSION_BUMPER_SECRET }}
+
             - name: Check out repository code
               uses: actions/checkout@v4
               with:
                   ref: ${{ github.head_ref }}
-                  token: ${{ secrets.GITHUB_TOKEN }}
+                  fetch-depth: 0
+                  token: ${{ steps.app-token.outputs.token }}
 
             - name: Get nodenv version 🔌
               id: nodenv
@@ -99,9 +107,16 @@ jobs:
                   cache: npm
                   cache-dependency-path: '**/package-lock.json'
 
+            # release-please increments the version in some places but not everywhere due to inherent limitations.
+            # Obtaining the new version number is needed to explicitly install it.
+            - id: set_es_ds_styles_version
+              name: Get es-ds-styles version
+              working-directory: es-ds-components
+              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')" >> $GITHUB_OUTPUT
+
             - name: Install dependencies
               working-directory: es-ds-components
-              run: npm install
+              run: npm install @energysage/es-ds-styles@${{ steps.set_es_ds_styles_version.outputs.version_string }}
 
             - name: Commit package-lock.json changes
               uses: stefanzweifel/git-auto-commit-action@v6
@@ -126,11 +141,19 @@ jobs:
             - release-es-ds-components
         if: always() && !cancelled() && !failure() && needs.release-please.outputs.es-ds-docs--release_created
         steps:
+            # Uses an app with elevated permissions to bypass required checks when pushing to main
+            - uses: actions/create-github-app-token@v2
+              id: app-token
+              with:
+                app-id: ${{ vars.VERSION_BUMPER_APPID }}
+                private-key: ${{ secrets.VERSION_BUMPER_SECRET }}
+
             - name: Check out repository code
               uses: actions/checkout@v4
               with:
                   ref: ${{ github.head_ref }}
-                  token: ${{ secrets.GITHUB_TOKEN }}
+                  fetch-depth: 0
+                  token: ${{ steps.app-token.outputs.token }}
 
             - name: Get nodenv version 🔌
               id: nodenv
@@ -145,9 +168,21 @@ jobs:
                   cache: npm
                   cache-dependency-path: '**/package-lock.json'
 
+            # release-please increments the version in some places but not everywhere due to inherent limitations.
+            # Obtaining the new version number is needed to explicitly install it.
+            - id: set_es_ds_styles_version
+              name: Get es-ds-styles version
+              working-directory: es-ds-docs
+              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')" >> $GITHUB_OUTPUT
+
+            - id: set_es_ds_components_version
+              name: Get es-ds-components version
+              working-directory: es-ds-docs
+              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-components"]')" >> $GITHUB_OUTPUT
+
             - name: Install dependencies
               working-directory: es-ds-docs
-              run: npm install
+              run: npm install @energysage/es-ds-styles@${{ steps.set_es_ds_styles_version.outputs.version_string }} @energysage/es-ds-components@${{ steps.set_es_ds_components_version.outputs.version_string }}
 
             - name: Commit package-lock.json changes
               uses: stefanzweifel/git-auto-commit-action@v6
@@ -160,6 +195,7 @@ jobs:
             - release-please
             - release-es-ds-styles
             - release-es-ds-components
+            - release-es-ds-docs
         if: always() && !cancelled() && !failure() && (needs.release-please.outputs.es-ds-styles--release_created || needs.release-please.outputs.es-ds-components--release_created || needs.release-please.outputs.es-ds-docs--release_created)
         secrets: inherit
         with:
