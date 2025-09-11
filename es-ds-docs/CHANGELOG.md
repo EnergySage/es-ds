@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.7.4](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.7.3...es-ds-docs-v3.7.4) (2025-09-11)
+
+
+### Bug Fixes
+
+* more automated release and deploy issues ([#1674](https://github.com/EnergySage/es-ds/issues/1674)) ([383bf9e](https://github.com/EnergySage/es-ds/commit/383bf9e409047c3c10e93fa78d4643e702b07869))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^3.7.3 to ^3.7.4
+
 ## [3.7.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.7.2...es-ds-docs-v3.7.3) (2025-09-10)
 
 
