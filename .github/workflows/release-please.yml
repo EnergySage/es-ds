@@ -107,8 +107,8 @@ jobs:
                   cache: npm
                   cache-dependency-path: '**/package-lock.json'
 
-              # release-please increments the version in some places but not everywhere due to inherent limitations.
-              # Obtaining the new version number is needed to explicitly install it.
+            # release-please increments the version in some places but not everywhere due to inherent limitations.
+            # Obtaining the new version number is needed to explicitly install it.
             - id: set_es_ds_styles_version
               name: Get es-ds-styles version
               working-directory: es-ds-components
