@@ -24,7 +24,8 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'di
             class="d-flex flex-row"
             :class="{
                 'has-label': $slots.label,
-            }">
+            }"
+            v-bind="$attrs">
             <switch-root
                 :id="switchId"
                 v-model="model"
