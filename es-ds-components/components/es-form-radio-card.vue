@@ -44,7 +44,7 @@ const isChecked = computed(() => props.value === model.value);
             v-model="model"
             :disabled="props.disabled"
             type="radio"
-            name="props.name"
+            :name="props.name"
             :value="props.value"
             :checked="isChecked"
             @click="handleRadioButtonClick" />
