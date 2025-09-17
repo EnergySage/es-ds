@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { SwitchRoot, SwitchThumb } from 'reka-ui';
+// Prevents attributes from being applied to first <div>
+defineOptions({
+    inheritAttrs: false,
+});
 
 const switchId = useId();
 const model = defineModel<boolean>({
