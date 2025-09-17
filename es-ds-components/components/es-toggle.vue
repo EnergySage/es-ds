@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { SwitchRoot, SwitchThumb } from 'reka-ui';
+// Prevents attributes from being applied to first <div>
+defineOptions({
+    inheritAttrs: false,
+});
 
 const switchId = useId();
 const model = defineModel<boolean>({
@@ -24,7 +28,8 @@ const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'di
             class="d-flex flex-row"
             :class="{
                 'has-label': $slots.label,
-            }">
+            }"
+            v-bind="$attrs">
             <switch-root
                 :id="switchId"
                 v-model="model"
