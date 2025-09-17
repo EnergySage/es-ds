@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.5](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.4...es-ds-components-v3.7.5) (2025-09-17)
+
+
+### Bug Fixes
+
+* pass toggle attrs to inner div ([#1676](https://github.com/EnergySage/es-ds/issues/1676)) ([d246187](https://github.com/EnergySage/es-ds/commit/d246187d901d258d8ef3591d65f48b8742bae0fb))
+
 ## [3.7.4](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.3...es-ds-components-v3.7.4) (2025-09-11)
 
 
