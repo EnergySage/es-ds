@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.6](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.5...es-ds-components-v3.7.6) (2025-09-17)
+
+
+### Bug Fixes
+
+* input attribute name ([#1678](https://github.com/EnergySage/es-ds/issues/1678)) ([3ab88a6](https://github.com/EnergySage/es-ds/commit/3ab88a6c435666ef5f7d2c290f0b97ecffb64172))
+
 ## [3.7.5](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.4...es-ds-components-v3.7.5) (2025-09-17)
 
 
