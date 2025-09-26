@@ -215,7 +215,7 @@ async function verifyFiles(files: Array<File>) {
 
     // If multiple is false, only keep the first file
     if (!props.multiple && newValidFiles.length > 0) {
-        newValidFiles = [newValidFiles[0]];
+        newValidFiles = [newValidFiles[0]!];
         // Clear existing files when single mode is enabled
         currentFiles = [];
     }

@@ -77,11 +77,11 @@ const errorCodeToMessages: ErrorCodeMap = {
     },
 };
 
-const messages: ErrorCode = errorCodeToMessages[props.errorType];
+const messages = errorCodeToMessages[props.errorType];
 
 const errorShortMessage = messages?.shortMessage || props.errorType;
 
-const errorLongMessage = messages?.longMessage || errorCodeToMessages.default.longMessage;
+const errorLongMessage = messages?.longMessage || errorCodeToMessages.default?.longMessage;
 </script>
 
 <template>

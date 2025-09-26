@@ -66,11 +66,11 @@ const emit = defineEmits<{
 // get the breakpoint pixel numbers from the SASS variables in es-ds-styles
 const parseSassBreakpoint = (breakpoint: string) => parseInt(breakpoint.replace('px', ''), 10);
 const BREAKPOINTS = {
-    SM: parseSassBreakpoint(sassBreakpoints.sm),
-    MD: parseSassBreakpoint(sassBreakpoints.md),
-    LG: parseSassBreakpoint(sassBreakpoints.lg),
-    XL: parseSassBreakpoint(sassBreakpoints.xl),
-    XXL: parseSassBreakpoint(sassBreakpoints.xxl),
+    SM: parseSassBreakpoint(sassBreakpoints.sm!),
+    MD: parseSassBreakpoint(sassBreakpoints.md!),
+    LG: parseSassBreakpoint(sassBreakpoints.lg!),
+    XL: parseSassBreakpoint(sassBreakpoints.xl!),
+    XXL: parseSassBreakpoint(sassBreakpoints.xxl!),
 };
 
 // lower breakpoint values propagate to higher breakpoints unless overridden

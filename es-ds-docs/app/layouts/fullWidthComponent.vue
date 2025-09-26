@@ -13,7 +13,7 @@ const breadcrumbs = computed(() => {
         // Convert to CamelCase to be in line with component naming
         if (path) {
             text = path.replace(/-([a-z])/g, (g) => ` ${g[1]}`);
-            text = text[0].toUpperCase() + text.slice(1);
+            text = text[0]!.toUpperCase() + text.slice(1);
         }
         return {
             text,

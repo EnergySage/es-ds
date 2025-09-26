@@ -31,7 +31,7 @@ const buttonDimensions: ButtonDimensionsInterface = reactive({
     options: props.options?.length ? props.options.map(() => ({})) : [],
 });
 
-const inkbarStyle: ComputedRef<Partial<CSSStyleDeclaration>> = computed(
+const inkbarStyle = computed(
     () => buttonDimensions.options[model.value || 0],
 );
 

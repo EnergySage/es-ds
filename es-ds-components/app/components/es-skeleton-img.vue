@@ -11,7 +11,7 @@ const props = defineProps({
 });
 
 const aspects = props.aspect.split(':');
-const aspectRatio = computed(() => `${(parseFloat(aspects[1]) / parseFloat(aspects[0])) * 100}%`);
+const aspectRatio = computed(() => `${(parseFloat(aspects[1]!) / parseFloat(aspects[0]!)) * 100}%`);
 </script>
 
 <template>
