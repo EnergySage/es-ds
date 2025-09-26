@@ -10,6 +10,7 @@
         "lint:eslint": "eslint .",
         "lint:prettier": "prettier --check .",
         "lint": "npm run lint:eslint && npm run lint:prettier",
+        "postinstall": "patch-package",
         "format:prettier": "prettier --write --list-different .",
         "format:eslint": "npm run lint:eslint -- --fix",
         "format": "npm run format:prettier && npm run format:eslint"
@@ -35,6 +36,7 @@
         "eslint": "^9.20.1",
         "eslint-config-prettier": "^10.0.1",
         "nuxt-primevue": "^3.0.0",
+        "patch-package": "^8.0.0",
         "prettier": "^3.3.3",
         "sass": "^1.77.8",
         "typescript": "^5.5.4",
