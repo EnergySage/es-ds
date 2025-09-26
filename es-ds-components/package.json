@@ -22,9 +22,9 @@
         "@nuxtjs/google-fonts": "^3.2.0",
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
-        "@vueuse/core": "^11.1.0",
+        "@vueuse/core": "^13.9.0",
         "html-truncate": "^1.2.2",
-        "nuxt": "^3.19.0",
+        "nuxt": "^4.1.2",
         "nuxt-primevue": "^3.0.0",
         "primevue": "^3.53.0",
         "prismjs": "^1.29.0",
@@ -38,6 +38,6 @@
         "prettier": "^3.3.3",
         "sass": "^1.77.8",
         "typescript": "^5.5.4",
-        "vue-tsc": "^2.0.29"
+        "vue-tsc": "^3.0.8"
     }
 }
