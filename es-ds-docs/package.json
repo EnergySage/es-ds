@@ -37,6 +37,7 @@
     },
     "devDependencies": {
         "@nuxt/eslint": "^1.0.1",
+        "@types/node": "^24.6.0",
         "eslint": "^9.20.1",
         "eslint-config-prettier": "^10.0.1",
         "nuxt-primevue": "^3.0.0",

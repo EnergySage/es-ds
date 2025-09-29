@@ -465,7 +465,7 @@ onMounted(async () => {
                         class="mb-200">
                         <ds-color-swatch
                             :hex="value"
-                            :token="alias" />
+                            :token="`${alias}`" />
                     </es-col>
                 </es-row>
                 <es-row class="mb-200">
@@ -479,7 +479,7 @@ onMounted(async () => {
                         class="mb-200">
                         <ds-color-swatch
                             :hex="value"
-                            :token="alias" />
+                            :token="`${alias}`" />
                     </es-col>
                 </es-row>
             </div>
@@ -498,7 +498,7 @@ onMounted(async () => {
                         <ds-color-swatch
                             :hex="value"
                             :is-light="true"
-                            :token="alias" />
+                            :token="`${alias}`" />
                     </es-col>
                 </es-row>
                 <es-row>
@@ -512,7 +512,7 @@ onMounted(async () => {
                         class="mb-200">
                         <ds-color-swatch
                             :hex="value"
-                            :token="alias" />
+                            :token="`${alias}`" />
                     </es-col>
                 </es-row>
                 <es-row>
@@ -527,7 +527,7 @@ onMounted(async () => {
                         <ds-color-swatch
                             :hex="value"
                             :is-light="true"
-                            :token="alias" />
+                            :token="`${alias}`" />
                     </es-col>
                 </es-row>
             </div>

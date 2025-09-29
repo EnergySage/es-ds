@@ -133,7 +133,7 @@ onMounted(async () => {
                 :key="item.name"
                 class="align-items-center bg-gray-100 d-flex justify-content-between mb-100 px-100 px-md-200 py-100 py-md-150 rounded-lg"
                 layout
-                :transition="spring">
+                :transition="spring as any">
                 <div class="align-items-center d-flex">
                     <icon-calculator
                         v-if="item.icon === 'calculator'"

@@ -85,7 +85,7 @@ onMounted(async () => {
                 label="Select how you want to view your quotes"
                 :options="viewItems" />
             <p>
-                {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
+                {{ `Selected item: "${viewItems[viewActiveIndex]!.label}"` }}
             </p>
         </div>
 
@@ -97,7 +97,7 @@ onMounted(async () => {
                 label="Select the timeframe to view"
                 :options="timeframeItems" />
             <p class="mb-200">
-                {{ `Selected item: "${timeframeItems[timeframeActiveIndex].label}"` }}
+                {{ `Selected item: "${timeframeItems[timeframeActiveIndex]!.label}"` }}
             </p>
             <p>Since the segmented control uses <code>v-model</code>, you can also control it from other places:</p>
             <div>
@@ -139,7 +139,7 @@ onMounted(async () => {
                 label="Select the timeframe to view"
                 :options="viewItems" />
             <p>
-                {{ `Selected item: "${viewItems[viewActiveIndex].label}"` }}
+                {{ `Selected item: "${viewItems[viewActiveIndex]!.label}"` }}
             </p>
         </div>
 

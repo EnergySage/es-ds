@@ -18,7 +18,7 @@ const propTableRows = [
     ['step', 'Number', '1', 'Step factor to increment/decrement the value.'],
     ['labelFormatter', 'Function', '(val) => val', 'Function that modifies min and max labels.'],
     ['tooltipFormatter', 'Function', '(val) => val', 'Function that modifies tooltip label.'],
-].sort((a, b) => a[0].localeCompare(b[0]));
+].sort((a, b) => a[0]!.localeCompare(b[0]!));
 
 const { $prism } = useNuxtApp();
 const compCode = ref('');

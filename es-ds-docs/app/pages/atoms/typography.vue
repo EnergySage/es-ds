@@ -78,9 +78,9 @@ const bodyExamples: ComputedRef<any[]> = computed(() => {
     ];
     return seeds.reduce((result: any, seed: any) => {
         const fontSizeRem = sassFontSizes[`font-size-${seed.key}`];
-        const fontSizePx = parseFloat(fontSizeRem.replace('rem', '')) * BASE_FONT_SIZE_PX;
+        const fontSizePx = parseFloat(fontSizeRem!.replace('rem', '')) * BASE_FONT_SIZE_PX;
         const lineHeightRem = sassLineHeights[`line-height-${seed.key}`];
-        const lineHeightPx = Math.round(parseFloat(lineHeightRem.replace('rem', '')) * BASE_FONT_SIZE_PX * 10) / 10;
+        const lineHeightPx = Math.round(parseFloat(lineHeightRem!.replace('rem', '')) * BASE_FONT_SIZE_PX * 10) / 10;
         result.push({
             ...seed,
             class: seed.key !== 'base' ? `font-size-${seed.key}` : null,

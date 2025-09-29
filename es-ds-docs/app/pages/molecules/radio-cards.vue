@@ -122,8 +122,8 @@ const propTableRowsRadioCards = [
                 id="idRadioCard1"
                 v-model="form.propertyType"
                 name="radioCard1"
-                :value="propertyTypeOptions[0].value"
-                >{{ propertyTypeOptions[0].label }}</es-form-radio-card
+                :value="propertyTypeOptions[0]!.value"
+                >{{ propertyTypeOptions[0]!.label }}</es-form-radio-card
             >
         </div>
 

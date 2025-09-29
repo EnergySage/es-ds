@@ -401,7 +401,7 @@ onMounted(async () => {
         <div class="mb-450">
             <h2>Using v-for</h2>
             <p>Example using v-for to construct the children <code>es-accordion</code> elements.</p>
-            <es-accordion-list :initial-expanded-id="`iterative-item-${accordionIterativeItems[0].id}`">
+            <es-accordion-list :initial-expanded-id="`iterative-item-${accordionIterativeItems[0]!.id}`">
                 <es-accordion
                     v-for="item in accordionIterativeItems"
                     :id="`iterative-item-${item.id}`"
