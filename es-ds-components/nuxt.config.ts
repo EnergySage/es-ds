@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     // https://google-fonts.nuxtjs.org/options
     googleFonts: {
         preload: true,
-        download: false,
+        download: true,
         display: 'swap',
         families: {
             'Plus+Jakarta+Sans': {
