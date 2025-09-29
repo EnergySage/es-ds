@@ -31,9 +31,7 @@ const buttonDimensions: ButtonDimensionsInterface = reactive({
     options: props.options?.length ? props.options.map(() => ({})) : [],
 });
 
-const inkbarStyle = computed(
-    () => buttonDimensions.options[model.value || 0],
-);
+const inkbarStyle = computed(() => buttonDimensions.options[model.value || 0]);
 
 // assume the provided label is unique and convert to an id
 // by lowercasing and replacing all whitespace with dashes

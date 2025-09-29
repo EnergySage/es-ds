@@ -5,7 +5,9 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        const compSource = await import('@energysage/es-ds-components/app/components/es-reviews-io-card-carousel.vue?raw');
+        const compSource = await import(
+            '@energysage/es-ds-components/app/components/es-reviews-io-card-carousel.vue?raw'
+        );
 
         const docSource = await import('./reviews-io-card-carousel.vue?raw');
 
