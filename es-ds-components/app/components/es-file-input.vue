@@ -60,7 +60,7 @@ const props = defineProps({
 });
 
 let currentFiles: Array<File> = [];
-let active = false;
+let active = ref(false);
 const fileInput = ref(null);
 const emit = defineEmits([
     'fileSizeError',
@@ -268,7 +268,7 @@ const onDrop = (event: any) => {
     // The user has dropped files onto the component. We have to apply the same logic as if they had
     // selected the files from the file picker which limits the file types to the ones specified in the
     // fileTypes prop.
-    active = false;
+    active.value = false;
 
     // Use DataTransferItemList interface to access the file(s)
     const dataTransfersAsFiles = [...event.dataTransfer.items]
