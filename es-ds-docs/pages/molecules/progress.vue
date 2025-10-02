@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const animatedProgressExample = ref(20);
+const dynamicSizeSetting = ref('sm');
 const showValueExample = ref(20);
 
 const { $prism } = useNuxtApp();
@@ -170,6 +171,31 @@ onMounted(async () => {
         </div>
 
         <div class="my-500">
+            <h2>Dynamic height change</h2>
+            <p>The height of the progress bar can also be changed dynamically as needed.</p>
+            <div class="dynamic-size-example align-items-center d-flex">
+                <es-progress
+                    class="mb-100 w-100"
+                    :height="dynamicSizeSetting === 'lg' ? '0.25rem' : '0.125rem'"
+                    :value="50" />
+            </div>
+            <div class="mb-100">
+                <es-button
+                    class="px-50 mr-50"
+                    size="sm"
+                    @click="dynamicSizeSetting = 'sm'">
+                    Small
+                </es-button>
+                <es-button
+                    class="px-50"
+                    size="sm"
+                    @click="dynamicSizeSetting = 'lg'">
+                    Large
+                </es-button>
+            </div>
+        </div>
+
+        <div class="my-500">
             <h2>Hide indicator circle</h2>
             <p>This example shows how to hide the indicator circle for a simpler progress bar.</p>
             <es-progress
@@ -207,3 +233,9 @@ onMounted(async () => {
             doc-source="es-ds-docs/pages/molecules/progress.vue" />
     </div>
 </template>
+
+<style lang="scss" scoped>
+.dynamic-size-example {
+    height: 40px;
+}
+</style>
