@@ -60,7 +60,7 @@ const props = defineProps({
 });
 
 let currentFiles: Array<File> = [];
-let active = ref(false);
+const active = ref(false);
 const fileInput = ref(null);
 const emit = defineEmits([
     'fileSizeError',
