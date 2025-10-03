@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.7.7](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.7.6...es-ds-docs-v3.7.7) (2025-10-03)
+
+
+### Bug Fixes
+
+* bug with EsProgress preventing height prop from being reactive ([#1680](https://github.com/EnergySage/es-ds/issues/1680)) ([7911846](https://github.com/EnergySage/es-ds/commit/79118462b8741946ce838cdd230b8469d4f449ca))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^3.7.6 to ^3.7.7
+
 ## [3.7.6](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v3.7.5...es-ds-docs-v3.7.6) (2025-09-17)
 
 
