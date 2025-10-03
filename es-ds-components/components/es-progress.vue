@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
     valueClass: '',
 });
 
-const progressBarPt = {
+const progressBarPt = computed(() => ({
     value: {
         class: [
             'EsProgressValue progress-bar overflow-visible position-relative rounded-sm',
@@ -37,7 +37,7 @@ const progressBarPt = {
             height: props.height,
         },
     },
-};
+}));
 
 const barHeight = computed(() => {
     let barHeight = DEFAULT_BAR_HEIGHT;
