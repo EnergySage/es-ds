@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     // https://google-fonts.nuxtjs.org/options
     googleFonts: {
         preload: true,
-        download: false,
+        download: true,
         display: 'swap',
         families: {
             'Plus+Jakarta+Sans': {
@@ -50,12 +50,19 @@ export default defineNuxtConfig({
     vite: {
         optimizeDeps: {
             include: [
+                '@vue/devtools-core',
+                '@vue/devtools-kit',
                 '@vuelidate/core',
                 '@vuelidate/validators',
-                'html-truncate',
                 '@vueuse/core',
+                'clipboard',
+                'html-truncate',
+                'motion-v',
+                'primevue/config',
                 'primevue/accordion',
                 'primevue/accordiontab',
+                'primevue/animateonscroll',
+                'primevue/badgedirective',
                 'primevue/breadcrumb',
                 'primevue/button',
                 'primevue/carousel',
@@ -63,6 +70,7 @@ export default defineNuxtConfig({
                 'primevue/datatable',
                 'primevue/dialog',
                 'primevue/dropdown',
+                'primevue/focustrap',
                 'primevue/inputmask',
                 'primevue/inputotp',
                 'primevue/inputtext',
@@ -72,13 +80,15 @@ export default defineNuxtConfig({
                 'primevue/progressbar',
                 'primevue/radiobutton',
                 'primevue/rating',
+                'primevue/ripple',
                 'primevue/selectbutton',
                 'primevue/skeleton',
                 'primevue/slider',
+                'primevue/styleclass',
                 'primevue/tabpanel',
                 'primevue/tabview',
+                'primevue/tooltip',
                 'reka-ui',
-                'motion-v',
             ],
         },
         css: {

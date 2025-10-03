@@ -10,6 +10,7 @@
         "lint:eslint": "eslint .",
         "lint:prettier": "prettier --check .",
         "lint": "npm run lint:eslint && npm run lint:prettier",
+        "postinstall": "patch-package",
         "format:prettier": "prettier --write --list-different .",
         "format:eslint": "npm run lint:eslint -- --fix",
         "format": "npm run format:prettier && npm run format:eslint"
@@ -22,9 +23,9 @@
         "@nuxtjs/google-fonts": "^3.2.0",
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
-        "@vueuse/core": "^11.1.0",
+        "@vueuse/core": "^13.9.0",
         "html-truncate": "^1.2.2",
-        "nuxt": "^3.19.0",
+        "nuxt": "^4.1.2",
         "nuxt-primevue": "^3.0.0",
         "primevue": "^3.53.0",
         "prismjs": "^1.29.0",
@@ -35,9 +36,13 @@
         "eslint": "^9.20.1",
         "eslint-config-prettier": "^10.0.1",
         "nuxt-primevue": "^3.0.0",
+        "patch-package": "^8.0.0",
         "prettier": "^3.3.3",
         "sass": "^1.77.8",
         "typescript": "^5.5.4",
-        "vue-tsc": "^2.0.29"
+        "vue-tsc": "^3.0.8"
+    },
+    "overrides": {
+        "chokidar": "==3.6.0"
     }
 }
