@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.7...es-ds-components-v4.0.0) (2025-10-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to nuxt 4 ([#1682](https://github.com/EnergySage/es-ds/issues/1682))
+
+### Features
+
+* update to nuxt 4 ([#1682](https://github.com/EnergySage/es-ds/issues/1682)) ([c01c5e8](https://github.com/EnergySage/es-ds/commit/c01c5e8b5aa98020d09145436b596ba231f09dd9))
+
 ## [3.7.7](https://github.com/EnergySage/es-ds/compare/es-ds-components-v3.7.6...es-ds-components-v3.7.7) (2025-10-03)
 
 
