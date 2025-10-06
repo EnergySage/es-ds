@@ -44,7 +44,7 @@ onMounted(async () => {
                     <p class="m-0 font-size-75">Receive updates about new features and promotions</p>
                 </template>
             </es-toggle>
-            <es-toggle class="mb-300 outline-me">
+            <es-toggle class="mb-300">
                 <template #label>
                     <p class="m-0 font-size-100">Two-factor authentication</p>
                     <p class="m-0 font-size-75 font-weight-bold">Add an extra layer of security to your account</p>
@@ -93,9 +93,3 @@ onMounted(async () => {
             doc-source="es-ds-docs/pages/molecules/toggle.vue" />
     </div>
 </template>
-
-<style lang="scss">
-.outline-me {
-    border: 1px solid red;
-}
-</style>
