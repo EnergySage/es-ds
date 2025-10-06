@@ -54,7 +54,8 @@ typecheck:
 install:
 	npm --prefix es-ds-styles install
 	npm --prefix es-ds-components install
-	npm --prefix es-ds-docs install
+	npm --prefix es-ds-docs install --ignore-scripts
+	npm --prefix es-ds-docs rebuild
 
 # Bootstraping Commands (not reguarly called)
 

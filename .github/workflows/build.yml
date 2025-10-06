@@ -74,10 +74,9 @@ jobs:
                       ${{ runner.os }}-node-
 
             - name: Install app dependencies 👨🏻‍💻
-              working-directory: ./es-ds-docs
               shell: bash
               run: |
-                  HUSKY=0 npm ci --prefer-offline --no-audit
+                  make install
 
             - name: Setting clean name ${{ inputs.deploy-env }} 🧹
               id: deployEnv
