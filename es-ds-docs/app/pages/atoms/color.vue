@@ -354,7 +354,6 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
-                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :is-light="['cyan-100', 'cyan-200', 'cyan-300'].includes(alias)"
                             :hex="value"
@@ -371,7 +370,6 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
-                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             :is-light="['gray-500'].includes(alias)"
                             :hex="value"
@@ -391,7 +389,6 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
-                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             is-light
                             :hex="value"
@@ -408,7 +405,6 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
-                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             is-light
                             :hex="value"
@@ -425,7 +421,6 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
-                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             is-light
                             :hex="value"
@@ -442,7 +437,6 @@ onMounted(async () => {
                         md="3"
                         lg="2"
                         class="mb-200">
-                        <!-- @vue-expect-error -->
                         <ds-color-swatch
                             is-light
                             :hex="value"
