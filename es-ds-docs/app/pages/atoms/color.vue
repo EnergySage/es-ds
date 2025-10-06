@@ -20,10 +20,10 @@ import sassVariants from '@energysage/es-ds-styles/scss/modules/variants.module.
 
 // utility functions
 const prepareColors = (colors: any) => Object.entries(colors).reverse() as unknown as [string, string][];
-const slice = (colors: any, tokens: any) => {
+const slice = (colors: Record<string, any>, tokens: string[]): Record<string, string> => {
     const result: any = {};
     tokens.forEach((token: any) => {
-        result[token] = colors[token];
+        result[token] = `${colors[token]}`;
     });
     return result;
 };
@@ -465,7 +465,7 @@ onMounted(async () => {
                         class="mb-200">
                         <ds-color-swatch
                             :hex="value"
-                            :token="`${alias}`" />
+                            :token="alias" />
                     </es-col>
                 </es-row>
                 <es-row class="mb-200">
@@ -479,7 +479,7 @@ onMounted(async () => {
                         class="mb-200">
                         <ds-color-swatch
                             :hex="value"
-                            :token="`${alias}`" />
+                            :token="alias" />
                     </es-col>
                 </es-row>
             </div>
@@ -498,7 +498,7 @@ onMounted(async () => {
                         <ds-color-swatch
                             :hex="value"
                             :is-light="true"
-                            :token="`${alias}`" />
+                            :token="alias" />
                     </es-col>
                 </es-row>
                 <es-row>
@@ -512,7 +512,7 @@ onMounted(async () => {
                         class="mb-200">
                         <ds-color-swatch
                             :hex="value"
-                            :token="`${alias}`" />
+                            :token="alias" />
                     </es-col>
                 </es-row>
                 <es-row>
@@ -527,7 +527,7 @@ onMounted(async () => {
                         <ds-color-swatch
                             :hex="value"
                             :is-light="true"
-                            :token="`${alias}`" />
+                            :token="alias" />
                     </es-col>
                 </es-row>
             </div>
