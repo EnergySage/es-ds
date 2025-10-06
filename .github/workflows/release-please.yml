@@ -116,11 +116,7 @@ jobs:
 
             - name: Install dependencies
               working-directory: es-ds-components
-              run: npm ci --ignore-scripts
-
-            - name: Update dependency
-              working-directory: es-ds-components
-              run: npm install @energysage/es-ds-styles@${{ steps.set_es_ds_styles_version.outputs.version_string }}
+              run: npm install --ignore-scripts @energysage/es-ds-styles@${{ steps.set_es_ds_styles_version.outputs.version_string }}
 
             - name: Commit package-lock.json changes
               uses: stefanzweifel/git-auto-commit-action@v6
@@ -186,11 +182,7 @@ jobs:
 
             - name: Install dependencies
               working-directory: es-ds-docs
-              run: npm ci --ignore-scripts
-
-            - name: Update dependencies
-              working-directory: es-ds-docs
-              run: npm install @energysage/es-ds-styles@${{ steps.set_es_ds_styles_version.outputs.version_string }} @energysage/es-ds-components@${{ steps.set_es_ds_components_version.outputs.version_string }}
+              run: npm install --ignore-scripts @energysage/es-ds-styles@${{ steps.set_es_ds_styles_version.outputs.version_string }} @energysage/es-ds-components@${{ steps.set_es_ds_components_version.outputs.version_string }}
 
             - name: Commit package-lock.json changes
               uses: stefanzweifel/git-auto-commit-action@v6
