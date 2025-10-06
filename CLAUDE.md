@@ -4,15 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is the **EnergySage Design System (es-ds)** - a Nuxt 3-based design system monorepo containing npm packages and documentation for building EnergySage applications.
+This is the **EnergySage Design System (es-ds)** - a Nuxt 4-based design system monorepo containing npm packages and documentation for building EnergySage applications.
 
 ## Project Structure
 
 The repository consists of 3 main packages:
 
 - **es-ds-styles/**: Bootstrap 4-based SASS/CSS framework with EnergySage customizations
-- **es-ds-components/**: Nuxt 3 component library built on PrimeVue and Reka UI
-- **es-ds-docs/**: Nuxt 3 documentation site
+- **es-ds-components/**: Nuxt 4 component library built on PrimeVue and Reka UI
+- **es-ds-docs/**: Nuxt 4 documentation site
 
 ## Development Commands
 
@@ -48,14 +48,14 @@ make build                    # Build all packages
 - Build outputs to `dist/css/`
 - Contains comprehensive design tokens for colors, typography, spacing
 
-**es-ds-components** (Nuxt 3):
+**es-ds-components** (Nuxt 4):
 - Component library using PrimeVue (unstyled) and Reka UI as base
 - No build step - consumed directly as source
 - Uses Vuelidate for form validation
 - All components prefixed with `es-`
 - Extensive icon library in `components/icon/`
 
-**es-ds-docs** (Nuxt 3):
+**es-ds-docs** (Nuxt 4):
 - Documentation and component showcase
 - Uses local linking during development via `make symlink`
 - Runs on port 8500 by default
@@ -71,7 +71,7 @@ make build                    # Build all packages
 
 ## Key Dependencies
 
-- Vue 3.5+, Nuxt 3.15+
+- Vue 3.5+, Nuxt 4.1+
 - PrimeVue 3.53 (unstyled components)
 - Reka UI 2.2 (headless components)
 - Vuelidate 2.x (form validation)

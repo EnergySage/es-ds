@@ -46,7 +46,7 @@ const autoImportEslint = defineNuxtModule({
                 for (const autoImport in autoImports) {
                     contents += `\n${padding}// ${autoImport}`;
 
-                    autoImports[autoImport].forEach((imp) => {
+                    autoImports[autoImport]!.forEach((imp) => {
                         contents += '\n';
                         contents += `${padding}"${imp}": "readonly",`;
                     });

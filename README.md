@@ -62,13 +62,13 @@ Bootstrap Vue styles present in `es-ds-styles`. Those are deprecated and will be
 in a future version.
 
 **es-ds-components**
-- [es-ds-components](./es-ds-components/) contains Vue 3 components for use in Nuxt 3 projects.
+- [es-ds-components](./es-ds-components/) contains Vue 3 components for use in Nuxt 4 projects.
 It is primarily based on [PrimeVue](https://primevue.org/) and [Reka UI](https://reka-ui.com/), with some customizations specific to EnergySage.
 
 **es-ds-docs**
-- This is the design system documentation site powered by Nuxt 3.
+- This is the design system documentation site powered by Nuxt 4.
 - It also serves a reference for
-how to integrate `es-ds` packages into a Nuxt 3 project.
+how to integrate `es-ds` packages into a Nuxt 4 project.
 
 ## Contributing
 

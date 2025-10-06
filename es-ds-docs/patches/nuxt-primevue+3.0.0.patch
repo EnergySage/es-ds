@@ -1,0 +1,26 @@
+diff --git a/node_modules/nuxt-primevue/dist/module.json b/node_modules/nuxt-primevue/dist/module.json
+index 5d029a4..0386f95 100644
+--- a/node_modules/nuxt-primevue/dist/module.json
++++ b/node_modules/nuxt-primevue/dist/module.json
+@@ -2,7 +2,7 @@
+   "name": "nuxt-primevue",
+   "configKey": "primevue",
+   "compatibility": {
+-    "nuxt": "^3.0.0"
++    "nuxt": "^4.0.0"
+   },
+   "version": "3.0.0"
+ }
+diff --git a/node_modules/nuxt-primevue/dist/module.mjs b/node_modules/nuxt-primevue/dist/module.mjs
+index fd76a2e..6ef19a4 100644
+--- a/node_modules/nuxt-primevue/dist/module.mjs
++++ b/node_modules/nuxt-primevue/dist/module.mjs
+@@ -230,7 +230,7 @@ const module = defineNuxtModule({
+     name: "nuxt-primevue",
+     configKey: "primevue",
+     compatibility: {
+-      nuxt: "^3.0.0"
++      nuxt: "^4.0.0"
+     }
+   },
+   defaults: {
