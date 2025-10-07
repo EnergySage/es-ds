@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.0.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.0.1...es-ds-docs-v4.0.2) (2025-10-07)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.0.1 to ^4.0.2
+
 ## [4.0.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.0.0...es-ds-docs-v4.0.1) (2025-10-06)
 
 
