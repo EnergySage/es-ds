@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.0.1...es-ds-components-v4.0.2) (2025-10-07)
+
+
+### Bug Fixes
+
+* another attempt to fix workflow ([#1686](https://github.com/EnergySage/es-ds/issues/1686)) ([2d53e28](https://github.com/EnergySage/es-ds/commit/2d53e284c04d2f42a7c42b59a075c7d9640c81c7))
+
 ## [4.0.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.0.0...es-ds-components-v4.0.1) (2025-10-06)
 
 
