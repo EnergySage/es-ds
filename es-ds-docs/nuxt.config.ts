@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     vite: {
         optimizeDeps: {
             include: [
+                '@phosphor-icons/vue',
                 'prismjs',
                 'prismjs/components/prism-scss',
                 'prismjs/components/prism-javascript',
