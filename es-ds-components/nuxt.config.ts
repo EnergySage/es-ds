@@ -55,7 +55,6 @@ export default defineNuxtConfig({
                 '@vuelidate/core',
                 '@vuelidate/validators',
                 '@vueuse/core',
-                'clipboard',
                 'html-truncate',
                 'primevue/config',
                 'primevue/accordion',
