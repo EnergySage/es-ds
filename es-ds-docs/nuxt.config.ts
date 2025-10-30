@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     vite: {
         optimizeDeps: {
             include: [
+                'motion-v',
                 'prismjs',
                 'prismjs/components/prism-scss',
                 'prismjs/components/prism-javascript',

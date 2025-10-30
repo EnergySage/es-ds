@@ -57,7 +57,6 @@ export default defineNuxtConfig({
                 '@vueuse/core',
                 'clipboard',
                 'html-truncate',
-                'motion-v',
                 'primevue/config',
                 'primevue/accordion',
                 'primevue/accordiontab',
