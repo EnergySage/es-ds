@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.3](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.0.2...es-ds-components-v4.0.3) (2025-10-30)
+
+
+### Bug Fixes
+
+* prevent optimize dependency warning for unused packages ([#1690](https://github.com/EnergySage/es-ds/issues/1690)) ([f7b2dbe](https://github.com/EnergySage/es-ds/commit/f7b2dbe0d3bfd7c987026c7fbc0558d9505cb01e))
+
 ## [4.0.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.0.1...es-ds-components-v4.0.2) (2025-10-07)
 
 
