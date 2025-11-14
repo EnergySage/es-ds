@@ -96,5 +96,8 @@
         <li>
             <ds-link to="/molecules/view-more"> View more </ds-link>
         </li>
+        <li>
+            <ds-link to="/molecules/loader"> Loader </ds-link>
+        </li>
     </ul>
 </template>
