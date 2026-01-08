@@ -1,0 +1,271 @@
+@theme {
+  /* ============================================================================
+     EnergySage Design System - Tailwind 4 Theme
+     Mapped from es-ds-styles/scss/_variables.scss
+     ============================================================================ */
+
+  /* ==========================================================================
+     BASE COLOR SCALES (Layer 1: SASS → Tailwind Color Variables)
+     ========================================================================== */
+
+  /* Blue Scale - Primary brand color
+     Source: $blue-50 through $blue-900 */
+  --color-blue-50: oklch(0.94 0.030 251.3);   /* #ddedff */
+  --color-blue-100: oklch(0.90 0.051 256.7);  /* #c8dfff */
+  --color-blue-200: oklch(0.83 0.085 259.5);  /* #a7c9ff */
+  --color-blue-300: oklch(0.76 0.122 260.8);  /* #85b2ff */
+  --color-blue-400: oklch(0.65 0.148 267.5);  /* #688aea */
+  --color-blue-500: oklch(0.54 0.177 270.5);  /* #4a62d4 */
+  --color-blue-600: oklch(0.45 0.183 268.7);  /* #2e46b9 */
+  --color-blue-700: oklch(0.37 0.166 267.8);  /* #1d3297 */
+  --color-blue-800: oklch(0.32 0.137 268.2);  /* #162676 */
+  --color-blue-900: oklch(0.27 0.128 276.0);  /* #1b1763 */
+  --color-blue-950: oklch(0.22 0.110 276.0);  /* Interpolated darker */
+
+  /* Orange Scale - Secondary brand color
+     Source: $orange-50 through $orange-900 */
+  --color-orange-50: oklch(0.97 0.029 80.7);   /* #fff3df */
+  --color-orange-100: oklch(0.94 0.046 72.5);  /* #ffe7ca */
+  --color-orange-200: oklch(0.91 0.064 68.4);  /* #ffdbb5 */
+  --color-orange-300: oklch(0.88 0.082 64.6);  /* #ffcea0 */
+  --color-orange-400: oklch(0.86 0.099 62.9);  /* #ffc28b */
+  --color-orange-500: oklch(0.83 0.113 59.3);  /* #ffb67b */
+  --color-orange-600: oklch(0.81 0.131 58.1);  /* #ffaa66 */
+  --color-orange-700: oklch(0.78 0.148 56.1);  /* #ff9d51 */
+  --color-orange-800: oklch(0.76 0.166 56.0);  /* #ff9133 */
+  --color-orange-900: oklch(0.70 0.165 51.3);  /* #ed7c2b */
+  --color-orange-950: oklch(0.60 0.155 51.3);  /* Interpolated darker */
+
+  /* Gray/Neutral Scale
+     Source: $gray-50 through $gray-900 */
+  --color-gray-50: oklch(0.96 0.011 274.9);    /* #f1f3fb */
+  --color-gray-100: oklch(0.94 0.011 274.9);   /* #eaecf4 */
+  --color-gray-200: oklch(0.91 0.014 277.0);   /* #dfe1eb */
+  --color-gray-300: oklch(0.86 0.019 279.5);   /* #cfd1df */
+  --color-gray-400: oklch(0.74 0.023 277.4);   /* #a7aaba */
+  --color-gray-500: oklch(0.63 0.024 280.0);   /* #878999 */
+  --color-gray-600: oklch(0.52 0.024 276.6);   /* #646776 */
+  --color-gray-700: oklch(0.45 0.025 279.4);   /* #515362 */
+  --color-gray-800: oklch(0.33 0.025 275.5);   /* #323543 */
+  --color-gray-900: oklch(0.27 0.025 271.4);   /* #222633 */
+  --color-gray-950: oklch(0.20 0.025 271.4);   /* Interpolated darker */
+
+  /* Green Scale - Success/Positive states
+     Source: $success-50, $success-500, $success-900 (filled missing shades) */
+  --color-green-50: oklch(0.92 0.045 157.5);   /* #ccedd8 */
+  --color-green-100: oklch(0.89 0.060 156.0);  /* Interpolated */
+  --color-green-200: oklch(0.86 0.075 155.0);  /* Interpolated */
+  --color-green-300: oklch(0.83 0.090 154.0);  /* Interpolated */
+  --color-green-400: oklch(0.81 0.100 153.5);  /* Interpolated */
+  --color-green-500: oklch(0.79 0.110 152.6);  /* #80ce97 */
+  --color-green-600: oklch(0.75 0.125 152.9);  /* Interpolated */
+  --color-green-700: oklch(0.70 0.140 153.0);  /* Interpolated */
+  --color-green-800: oklch(0.67 0.152 153.0);  /* Interpolated */
+  --color-green-900: oklch(0.64 0.164 153.1);  /* #00a759 */
+  --color-green-950: oklch(0.55 0.155 153.1);  /* Interpolated darker */
+
+  /* Yellow Scale - Warning states
+     Source: $warning-50, $warning-500, $warning-900 (filled missing shades) */
+  --color-yellow-50: oklch(0.95 0.049 95.9);   /* #f8efca */
+  --color-yellow-100: oklch(0.93 0.065 96.2);  /* Interpolated */
+  --color-yellow-200: oklch(0.92 0.080 96.4);  /* Interpolated */
+  --color-yellow-300: oklch(0.91 0.095 96.6);  /* Interpolated */
+  --color-yellow-400: oklch(0.90 0.105 96.7);  /* Interpolated */
+  --color-yellow-500: oklch(0.90 0.115 96.8);  /* #f4df83 */
+  --color-yellow-600: oklch(0.89 0.130 95.8);  /* Interpolated */
+  --color-yellow-700: oklch(0.88 0.145 95.0);  /* Interpolated */
+  --color-yellow-800: oklch(0.87 0.160 94.2);  /* Interpolated */
+  --color-yellow-900: oklch(0.85 0.172 93.4);  /* #f4ca11 */
+  --color-yellow-950: oklch(0.75 0.162 93.4);  /* Interpolated darker */
+
+  /* Red Scale - Error/Danger states
+     Source: $error-50, $error-500, $error-900 (filled missing shades) */
+  --color-red-50: oklch(0.91 0.036 9.3);      /* #f7d7db */
+  --color-red-100: oklch(0.88 0.050 10.0);    /* Interpolated */
+  --color-red-200: oklch(0.85 0.063 10.5);    /* Interpolated */
+  --color-red-300: oklch(0.83 0.073 10.8);    /* Interpolated */
+  --color-red-400: oklch(0.81 0.080 11.0);    /* Interpolated */
+  --color-red-500: oklch(0.80 0.087 11.1);    /* #efa6af */
+  --color-red-600: oklch(0.73 0.130 15.0);    /* Interpolated */
+  --color-red-700: oklch(0.67 0.160 17.0);    /* Interpolated */
+  --color-red-800: oklch(0.64 0.180 18.0);    /* Interpolated */
+  --color-red-900: oklch(0.60 0.197 18.9);    /* #de3c50 */
+  --color-red-950: oklch(0.50 0.187 18.9);    /* Interpolated darker */
+
+  /* Base colors */
+  --color-white: oklch(1.0 0 0);            /* #fff */
+  --color-black: oklch(0 0 0);              /* #000 */
+
+  /* ==========================================================================
+     SEMANTIC COLOR ALIASES (Layer 2: Semantic → Base Colors)
+     ========================================================================== */
+
+  /* Primary - Blue (main brand) */
+  --color-primary-50: var(--color-blue-50);
+  --color-primary-100: var(--color-blue-100);
+  --color-primary-200: var(--color-blue-200);
+  --color-primary-300: var(--color-blue-300);
+  --color-primary-400: var(--color-blue-400);
+  --color-primary-500: var(--color-blue-500);
+  --color-primary-600: var(--color-blue-600);
+  --color-primary-700: var(--color-blue-700);
+  --color-primary-800: var(--color-blue-800);
+  --color-primary-900: var(--color-blue-900);
+  --color-primary-950: var(--color-blue-950);
+
+  /* Secondary - Orange */
+  --color-secondary-50: var(--color-orange-50);
+  --color-secondary-100: var(--color-orange-100);
+  --color-secondary-200: var(--color-orange-200);
+  --color-secondary-300: var(--color-orange-300);
+  --color-secondary-400: var(--color-orange-400);
+  --color-secondary-500: var(--color-orange-500);
+  --color-secondary-600: var(--color-orange-600);
+  --color-secondary-700: var(--color-orange-700);
+  --color-secondary-800: var(--color-orange-800);
+  --color-secondary-900: var(--color-orange-900);
+  --color-secondary-950: var(--color-orange-950);
+
+  /* Success - Green */
+  --color-success-50: var(--color-green-50);
+  --color-success-100: var(--color-green-100);
+  --color-success-200: var(--color-green-200);
+  --color-success-300: var(--color-green-300);
+  --color-success-400: var(--color-green-400);
+  --color-success-500: var(--color-green-500);
+  --color-success-600: var(--color-green-600);
+  --color-success-700: var(--color-green-700);
+  --color-success-800: var(--color-green-800);
+  --color-success-900: var(--color-green-900);
+  --color-success-950: var(--color-green-950);
+
+  /* Warning - Yellow */
+  --color-warning-50: var(--color-yellow-50);
+  --color-warning-100: var(--color-yellow-100);
+  --color-warning-200: var(--color-yellow-200);
+  --color-warning-300: var(--color-yellow-300);
+  --color-warning-400: var(--color-yellow-400);
+  --color-warning-500: var(--color-yellow-500);
+  --color-warning-600: var(--color-yellow-600);
+  --color-warning-700: var(--color-yellow-700);
+  --color-warning-800: var(--color-yellow-800);
+  --color-warning-900: var(--color-yellow-900);
+  --color-warning-950: var(--color-yellow-950);
+
+  /* Danger/Error - Red */
+  --color-danger-50: var(--color-red-50);
+  --color-danger-100: var(--color-red-100);
+  --color-danger-200: var(--color-red-200);
+  --color-danger-300: var(--color-red-300);
+  --color-danger-400: var(--color-red-400);
+  --color-danger-500: var(--color-red-500);
+  --color-danger-600: var(--color-red-600);
+  --color-danger-700: var(--color-red-700);
+  --color-danger-800: var(--color-red-800);
+  --color-danger-900: var(--color-red-900);
+  --color-danger-950: var(--color-red-950);
+
+  /* ==========================================================================
+     SPACING SCALE
+     Source: $spacers map
+     ========================================================================== */
+
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;    /* 4px - $spacer * .25 */
+  --spacing-2: 0.5rem;     /* 8px - $spacer * .5 */
+  --spacing-3: 0.75rem;    /* 12px - Tailwind standard (not in SASS) */
+  --spacing-4: 1rem;       /* 16px - $spacer (100) */
+  --spacing-5: 1.25rem;    /* 20px - Tailwind standard (not in SASS) */
+  --spacing-6: 1.5rem;     /* 24px - $spacer * 1.5 (150) */
+  --spacing-8: 2rem;       /* 32px - $spacer * 2 (200) */
+  --spacing-10: 2.5rem;    /* 40px - Tailwind standard (not in SASS) */
+  --spacing-12: 3rem;      /* 48px - $spacer * 3 (300) */
+  --spacing-16: 4rem;      /* 64px - $spacer * 4 (400) */
+  --spacing-20: 5rem;      /* 80px - $spacer * 5 (500) */
+  --spacing-24: 6rem;      /* 96px - $spacer * 6 (600) */
+  --spacing-32: 8rem;      /* 128px - $spacer * 8 (800) */
+
+  /* ==========================================================================
+     TYPOGRAPHY
+     ========================================================================== */
+
+  /* Font Families
+     Source: $font-family-sans-serif, $font-family-monospace */
+  --font-sans: "Plus Jakarta Sans", "Helvetica Neue", Roboto, "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Font Sizes
+     Source: $font-size-* variables */
+  --font-size-xs: 0.75rem;      /* 12px - $font-size-50 */
+  --font-size-sm: 0.875rem;     /* 14px - $font-size-75 */
+  --font-size-base: 1rem;       /* 16px - $font-size-100 */
+  --font-size-lg: 1.125rem;     /* 18px - $font-size-200 */
+  --font-size-xl: 1.25rem;      /* 20px - $font-size-300 */
+  --font-size-2xl: 1.5rem;      /* 24px - $font-size-400 */
+  --font-size-3xl: 1.875rem;    /* 30px - $font-size-500 */
+  --font-size-4xl: 2.375rem;    /* 38px - $font-size-600 */
+  --font-size-5xl: 3rem;        /* 48px - $font-size-700 */
+  --font-size-6xl: 3.375rem;    /* 54px - $font-size-800 */
+  --font-size-7xl: 3.875rem;    /* 62px - $font-size-900 */
+
+  /* Line Heights
+     Source: $line-height-* variables */
+  --line-height-xs: 1.125rem;   /* 18px - $line-height-50 */
+  --line-height-sm: 1.25rem;    /* 20px - $line-height-75 */
+  --line-height-base: 1.5rem;   /* 24px - $line-height-100 */
+  --line-height-lg: 1.5rem;     /* 24px - $line-height-200 */
+  --line-height-xl: 1.75rem;    /* 28px - $line-height-300 */
+  --line-height-2xl: 1.75rem;   /* 28px - $line-height-400 */
+  --line-height-3xl: 2.25rem;   /* 36px - $line-height-500 */
+  --line-height-4xl: 3rem;      /* 48px - $line-height-600 */
+  --line-height-5xl: 3.5rem;    /* 56px - $line-height-700 */
+  --line-height-6xl: 4rem;      /* 64px - $line-height-800 */
+  --line-height-7xl: 4.375rem;  /* 70px - $line-height-900 */
+
+  /* Font Weights
+     Source: $font-weight-* variables */
+  --font-weight-lighter: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;    /* $font-weight-semibold */
+  --font-weight-semibold: 600;  /* $font-weight-bold */
+  --font-weight-bold: 700;      /* $font-weight-bolder */
+  --font-weight-extrabold: 800; /* $font-weight-boldest */
+
+  /* ==========================================================================
+     BORDER RADIUS
+     Source: $border-radius-* variables
+     ========================================================================== */
+
+  --radius-none: 0;
+  --radius-sm: 0.25rem;   /* $border-radius-xs */
+  --radius: 0.5rem;       /* $border-radius-sm */
+  --radius-md: 0.75rem;   /* $border-radius */
+  --radius-lg: 1rem;      /* $border-radius-lg */
+  --radius-xl: 1.5rem;    /* Tailwind standard */
+  --radius-2xl: 2rem;     /* Tailwind standard */
+  --radius-full: 9999px;  /* Tailwind standard */
+
+  /* ==========================================================================
+     SHADOWS
+     Source: $box-shadow variables
+     ========================================================================== */
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 4px 12px var(--color-gray-300);
+  --shadow-md: 0 4px 12px var(--color-gray-300);
+  --shadow-lg: 0 4px 12px var(--color-gray-300);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* ==========================================================================
+     BREAKPOINTS
+     Source: $grid-breakpoints
+     ========================================================================== */
+
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1900px;
+}
