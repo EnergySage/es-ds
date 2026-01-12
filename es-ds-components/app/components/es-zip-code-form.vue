@@ -56,6 +56,10 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    replaceFieldNameInUrl: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const state = reactive({
@@ -86,6 +90,10 @@ const rules = {
         [vuelidateKeys.REQUIRED]: vuelidateRequired,
     },
 };
+
+const replacementUrl = computed(() => {
+    return props.url.replace(`{` + props.fieldName + `}`, state.zipCode);
+});
 
 const { v$, validateState } = useEsForms(rules, state);
 
@@ -121,7 +129,7 @@ const handleSubmit = () => {
                     [`d-${stackBreak}flex`]: stackUntil,
                     'mb-100': showPrivacySection,
                 }"
-                :action="url"
+                :action="replaceFieldNameInUrl ? replacementUrl : url"
                 method="get"
                 novalidate
                 :target="newTab ? '_blank' : '_self'"

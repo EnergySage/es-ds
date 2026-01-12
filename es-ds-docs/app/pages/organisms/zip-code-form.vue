@@ -286,6 +286,29 @@ const slotTableRows = [
         </div>
 
         <div class="mb-500">
+            <h2>Replace field in URL</h2>
+            <p class="mb-200">
+                This example shows how to use the <code>replaceFieldNameInUrl</code> prop when the zip code needs to be
+                embedded within the URL, rather than appended as a URL parameter.
+            </p>
+            <es-row class="justify-content-center">
+                <es-col
+                    class="d-flex justify-content-center"
+                    sm="10"
+                    md="8">
+                    <es-zip-code-form
+                        input-id="replace-in-URL-example"
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        replace-field-name-in-url
+                        stack-until="lg"
+                        url="https://energysage.wattbuy.com/electricity/en/{zip_code}/electricity-plans/">
+                        <template #buttonText> See options </template>
+                    </es-zip-code-form>
+                </es-col>
+            </es-row>
+        </div>
+
+        <div class="mb-500">
             <h2>EsZipCodeForm slots</h2>
             <ds-prop-table :rows="slotTableRows" />
         </div>
