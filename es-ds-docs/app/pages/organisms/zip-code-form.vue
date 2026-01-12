@@ -43,6 +43,12 @@ const propTableRows = [
     ],
     ['privacyPolicyNewTab', 'Boolean', 'false', 'Whether to open the privacy policy link in a new tab.'],
     [
+        'replaceFieldNameInUrl',
+        'Boolean',
+        'false',
+        'Whether to replace the field name in the URL instead of just appending it.',
+    ],
+    [
         'stackUntil',
         'String',
         "''",
