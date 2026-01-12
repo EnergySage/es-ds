@@ -34,7 +34,6 @@ const propTableRows = [
         "'ZIP code'",
         'Shown in the input as placeholder text. Also used as the (visually hidden) label for the input.',
     ],
-    ['showPrivacySection', 'Boolean', 'true', 'Whether to show the privacy section.'],
     [
         'privacyPolicyLink',
         'String',
@@ -46,8 +45,15 @@ const propTableRows = [
         'replaceFieldNameInUrl',
         'Boolean',
         'false',
-        'Whether to replace the field name in the URL instead of just appending it.',
+        'Whether to replace the field name in the URL instead of submitting it as a query string parameter in the URL.',
     ],
+    [
+        'selectedProduct',
+        'String',
+        "''",
+        'Specify which product of interest. Options include: solar-pv, heatpump, ev-charger',
+    ],
+    ['showPrivacySection', 'Boolean', 'true', 'Whether to show the privacy section.'],
     [
         'stackUntil',
         'String',
@@ -57,12 +63,6 @@ const propTableRows = [
             remain stacked on all breakpoints.`,
     ],
     ['url', 'String', 'n/a', 'URL to which the form will submit the provided zip code value.'],
-    [
-        'selectedProduct',
-        'String',
-        "''",
-        'Specify which product of interest. Options include: solar-pv, heatpump, ev-charger',
-    ],
     ['zipCodeValue', 'String', "''", 'The default zipcode value if passed to the zip code form'],
 ];
 
@@ -295,7 +295,9 @@ const slotTableRows = [
             <h2>Replace field in URL</h2>
             <p class="mb-200">
                 This example shows how to use the <code>replaceFieldNameInUrl</code> prop when the zip code needs to be
-                embedded within the URL, rather than appended as a URL parameter.
+                embedded within the URL, rather than appended as a URL parameter. Provide a URL that contains the
+                <code>fieldName</code> within curly braces, such as
+                <code>https://energysage.wattbuy.com/electricity/en/{zip_code}/electricity-plans/</code>.
             </p>
             <es-row class="justify-content-center">
                 <es-col
@@ -304,6 +306,7 @@ const slotTableRows = [
                     md="8">
                     <es-zip-code-form
                         input-id="replace-in-URL-example"
+                        new-tab
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         replace-field-name-in-url
                         stack-until="lg"
