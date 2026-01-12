@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.0.3...es-ds-components-v4.1.0) (2026-01-12)
+
+
+### Features
+
+* add prop to allow replacements in zip code form URL ([#1695](https://github.com/EnergySage/es-ds/issues/1695)) ([001feb5](https://github.com/EnergySage/es-ds/commit/001feb52b9bbfd84c31390449c0810517c726a6f))
+
+
+### Bug Fixes
+
+* fix dependency vulnerabilities reported by jit ([#1697](https://github.com/EnergySage/es-ds/issues/1697)) ([db13818](https://github.com/EnergySage/es-ds/commit/db13818d9e83593f06c49d774fd219e96f6702dd))
+
 ## [4.0.3](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.0.2...es-ds-components-v4.0.3) (2025-10-30)
 
 
