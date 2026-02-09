@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from 'reka-ui'
+import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from 'reka-ui';
 
 interface Props {
     border?: boolean;
@@ -62,7 +62,9 @@ const onClick = (value: boolean) => {
         :open="expanded"
         :unmount-on-hide="false"
         @update:open="onClick">
-        <collapsible-trigger class="es-collapse-trigger d-flex justify-content-between text-left position-relative py-100 w-100" :class="triggerClass">
+        <collapsible-trigger
+            class="es-collapse-trigger d-flex justify-content-between text-left position-relative py-100 w-100"
+            :class="triggerClass">
             <div class="pr-200">
                 <slot name="title" />
             </div>
@@ -79,8 +81,8 @@ const onClick = (value: boolean) => {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-$animation-duration: .3s;
-$easing-function: cubic-bezier(.87, 0, .13, 1);
+$animation-duration: 0.3s;
+$easing-function: cubic-bezier(0.87, 0, 0.13, 1);
 
 @keyframes slideDown {
     0% {
@@ -117,7 +119,7 @@ $easing-function: cubic-bezier(.87, 0, .13, 1);
         transform: translateY(-50%);
     }
 
-    &[data-state="open"] .es-collapse-icon {
+    &[data-state='open'] .es-collapse-icon {
         transform: rotate(180deg);
     }
 
@@ -130,11 +132,11 @@ $easing-function: cubic-bezier(.87, 0, .13, 1);
 
 .es-collapse-content {
     @media not (prefers-reduced-motion) {
-        &[data-state="closed"] {
+        &[data-state='closed'] {
             animation: slideUp $animation-duration $easing-function;
         }
 
-        &[data-state="open"] {
+        &[data-state='open'] {
             animation: slideDown $animation-duration $easing-function;
         }
     }

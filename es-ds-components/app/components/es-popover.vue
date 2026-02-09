@@ -20,7 +20,6 @@ withDefaults(defineProps<IProps>(), {
 });
 
 const emit = defineEmits(['update:show']);
-
 </script>
 
 <template>

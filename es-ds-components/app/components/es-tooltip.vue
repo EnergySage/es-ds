@@ -43,7 +43,6 @@ onMounted(() => {
     const mediaQueryResult = window.matchMedia('(hover: none)') as MediaQueryList;
     deviceSupportsTouch.value = mediaQueryResult?.matches || false;
 });
-
 </script>
 
 <template>

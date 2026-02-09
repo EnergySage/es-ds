@@ -18,12 +18,7 @@ const PROP_TABLE_ROWS = [
         'Controls whether manual user input permanently overrides external control coming in via ' +
             'v-model or the visible prop.',
     ],
-    [
-        'triggerClass',
-        'String',
-        "''",
-        'A CSS class to apply to the button that contains the title and chevron icon.',
-    ],
+    ['triggerClass', 'String', "''", 'A CSS class to apply to the button that contains the title and chevron icon.'],
     [
         'visible',
         'Boolean',
@@ -34,8 +29,16 @@ const PROP_TABLE_ROWS = [
 ];
 
 const EVENT_TABLE_ROWS = [
-    ['toggled', 'value (boolean)', 'Emitted when the component either collapses or expands, whether from user interaction or programmatic control.'],
-    ['userClick', 'value (boolean)', 'Emitted when the user manually clicks on the trigger button to expand or collapse the component.'],
+    [
+        'toggled',
+        'value (boolean)',
+        'Emitted when the component either collapses or expands, whether from user interaction or programmatic control.',
+    ],
+    [
+        'userClick',
+        'value (boolean)',
+        'Emitted when the user manually clicks on the trigger button to expand or collapse the component.',
+    ],
 ];
 
 const suggestedVisible = ref(false);
@@ -132,7 +135,10 @@ const prosConsTable = [
 
         <div class="my-500">
             <h2>Color change and no border</h2>
-            <p>This shows how to remove the border and change the color of the text and icon by using the <code>trigger-class</code> prop.</p>
+            <p>
+                This shows how to remove the border and change the color of the text and icon by using the
+                <code>trigger-class</code> prop.
+            </p>
             <es-collapse
                 :border="false"
                 trigger-class="text-blue">
@@ -169,13 +175,14 @@ const prosConsTable = [
         <div class="my-500">
             <h2>External control with user override</h2>
             <p>
-                This shows the behavior of the collapse being controlled by a separate toggle, by passing a reactive variable to the <code>visible</code> prop. By default, controlled collapses like this will automatically stop responding to the outside control as soon as a user interacts with the collapse directly, to ensure the user's choice is respected.
+                This shows the behavior of the collapse being controlled by a separate toggle, by passing a reactive
+                variable to the <code>visible</code> prop. By default, controlled collapses like this will
+                automatically stop responding to the outside control as soon as a user interacts with the collapse
+                directly, to ensure the user's choice is respected.
             </p>
             <form class="mb-100">
                 <es-toggle v-model="suggestedVisible">
-                    <template #label>
-                        Show contents (will be honored until a manual expand or collapse)
-                    </template>
+                    <template #label> Show contents (will be honored until a manual expand or collapse) </template>
                 </es-toggle>
             </form>
             <es-collapse
@@ -194,13 +201,12 @@ const prosConsTable = [
         <div class="my-500">
             <h2>External control without user override</h2>
             <p>
-                Use <code>v-model</code> and set <code>is-programmatic-until-user-input</code> to false if you need the collapse to remain externally controlled whether or not the user interacts with it.
+                Use <code>v-model</code> and set <code>is-programmatic-until-user-input</code> to false if you need the
+                collapse to remain externally controlled whether or not the user interacts with it.
             </p>
             <form class="mb-100">
                 <es-toggle v-model="visible">
-                    <template #label>
-                        Show contents (will always be honored)
-                    </template>
+                    <template #label> Show contents (will always be honored) </template>
                 </es-toggle>
             </form>
             <es-collapse
