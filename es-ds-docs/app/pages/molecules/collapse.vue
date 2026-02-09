@@ -72,7 +72,7 @@ const prosConsTable = [
     },
     {
         advantages: 'Low or no upfront costs',
-        disadvantages: "Can't take advantage of the federal solar tax credit and other state and local incentives",
+        disadvantages: "Can't take advantage of state and local incentives",
     },
     {
         advantages: 'May be an attractive feature to some homebuyers',
@@ -119,7 +119,7 @@ const prosConsTable = [
 
         <div class="my-500">
             <h2>Expanded</h2>
-            <p>Use the <code>visible</code> prop to set the initial state to be expanded.</p>
+            <p>Use the <code>visible</code> prop to control the initial collapsed/expanded state.</p>
             <es-collapse visible>
                 <template #title>
                     <h3 class="mb-0">How much can financing impact savings?</h3>
@@ -132,12 +132,12 @@ const prosConsTable = [
 
         <div class="my-500">
             <h2>Color change and no border</h2>
-            <p>This shows how to remove the border and change the color of the text and the chevron icon by using the <code>trigger-class</code> prop.</p>
+            <p>This shows how to remove the border and change the color of the text and icon by using the <code>trigger-class</code> prop.</p>
             <es-collapse
                 :border="false"
                 trigger-class="text-blue">
                 <template #title>
-                    <h3 class="h4 mb-0 text-blue">How much can financing impact savings?</h3>
+                    <h3 class="h4 mb-0 text-blue">Is solar third-party ownership right for you?</h3>
                 </template>
                 <es-data-table :items="prosConsTable">
                     <es-data-table-column
