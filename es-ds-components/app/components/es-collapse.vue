@@ -60,6 +60,7 @@ const onClick = (value: boolean) => {
             'border-bottom border-top': border,
         }"
         :open="expanded"
+        :unmount-on-hide="false"
         @update:open="onClick">
         <collapsible-trigger class="es-collapse-trigger d-flex justify-content-between text-left position-relative py-100 w-100" :class="triggerClass">
             <div class="pr-200">
