@@ -10,7 +10,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     border: true,
     isProgrammaticUntilUserInput: true,
-    triggerClass: '',
+    triggerClass: 'text-body',
     visible: false,
 });
 

@@ -37,7 +37,7 @@ const PROP_TABLE_ROWS = [
         'Controls whether manual user input permanently overrides external control coming in via ' +
             'v-model or the visible prop.',
     ],
-    ['triggerClass', 'String', "''", 'A CSS class to apply to the button that contains the title and chevron icon.'],
+    ['triggerClass', 'String', "'text-body'", 'A CSS class to apply to the button that contains the title and chevron icon.'],
     [
         'visible',
         'Boolean',
