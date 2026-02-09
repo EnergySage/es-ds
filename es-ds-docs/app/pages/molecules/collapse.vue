@@ -9,6 +9,25 @@ const LOREM_IPSUM_TEXT =
     'sollicitudin viverra eu justo. Vivamus posuere metus sit amet purus tempus volutpat. Donec eleifend ' +
     'elit quam.';
 
+const PROS_CONS_TABLE = [
+    {
+        advantages: 'Saves money on electricity',
+        disadvantages: 'Savings are lower than with a solar loan or cash purchases',
+    },
+    {
+        advantages: 'Low or no upfront costs',
+        disadvantages: "Can't take advantage of state and local incentives",
+    },
+    {
+        advantages: 'May be an attractive feature to some homebuyers',
+        disadvantages: 'Complicates selling your home',
+    },
+    {
+        advantages: 'No maintenance responsibilities',
+        disadvantages: 'Leasing companies sometimes neglect their maintenance responsibilities',
+    },
+];
+
 const PROP_TABLE_ROWS = [
     ['border', 'Boolean', 'true', 'Will show or hide borders on the top and bottom.'],
     [
@@ -67,25 +86,6 @@ onMounted(async () => {
         $prism.highlight();
     }
 });
-
-const prosConsTable = [
-    {
-        advantages: 'Saves money on electricity',
-        disadvantages: 'Savings are lower than with a solar loan or cash purchases',
-    },
-    {
-        advantages: 'Low or no upfront costs',
-        disadvantages: "Can't take advantage of state and local incentives",
-    },
-    {
-        advantages: 'May be an attractive feature to some homebuyers',
-        disadvantages: 'Complicates selling your home',
-    },
-    {
-        advantages: 'No maintenance responsibilities',
-        disadvantages: 'Leasing companies sometimes neglect their maintenance responsibilities',
-    },
-];
 </script>
 
 <template>
@@ -145,7 +145,7 @@ const prosConsTable = [
                 <template #title>
                     <h3 class="h4 mb-0 text-blue">Is solar third-party ownership right for you?</h3>
                 </template>
-                <es-data-table :items="prosConsTable">
+                <es-data-table :items="PROS_CONS_TABLE">
                     <es-data-table-column
                         field="advantages"
                         header="Advantages" />
