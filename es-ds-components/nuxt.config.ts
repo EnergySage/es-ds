@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
 
+    // prevents "Cannot read properties of null (reading 'ce')" in SSR/SSG with reka-ui
+    build: {
+        transpile: ['reka-ui'],
+    },
+
     // https://nuxt.com/docs/getting-started/styling#the-css-property
     css: ['@energysage/es-ds-styles/scss/bootstrap.scss'],
 
