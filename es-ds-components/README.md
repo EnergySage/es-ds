@@ -17,6 +17,7 @@ extends: [
 ],
 ```
 
+
 That should be it! The config and components should automatically be available in your Nuxt app.
 
 ## Local development
