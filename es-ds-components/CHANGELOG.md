@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.1.1...es-ds-components-v4.1.2) (2026-02-10)
+
+
+### Bug Fixes
+
+* try to trigger release ([#1701](https://github.com/EnergySage/es-ds/issues/1701)) ([aad6c7c](https://github.com/EnergySage/es-ds/commit/aad6c7c4c6285dbc5207617ee24c9dbe0cfcc221))
+
 ## [4.1.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.1.0...es-ds-components-v4.1.1) (2026-02-10)
 
 
