@@ -112,7 +112,7 @@ jobs:
             - id: set_es_ds_styles_version
               name: Get es-ds-styles version
               working-directory: es-ds-components
-              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')" >> $GITHUB_OUTPUT
+              run: echo "version_string=$(jq -r '.dependencies["@energysage/es-ds-styles"]' package.json)" >> $GITHUB_OUTPUT
 
             - name: Install dependencies
               working-directory: es-ds-components
@@ -168,12 +168,12 @@ jobs:
             - id: set_es_ds_styles_version
               name: Get es-ds-styles version
               working-directory: es-ds-docs
-              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')" >> $GITHUB_OUTPUT
+              run: echo "version_string=$(jq -r '.dependencies["@energysage/es-ds-styles"]' package.json)" >> $GITHUB_OUTPUT
 
             - id: set_es_ds_components_version
               name: Get es-ds-components version
               working-directory: es-ds-docs
-              run: echo "version_string=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-components"]')" >> $GITHUB_OUTPUT
+              run: echo "version_string=$(jq -r '.dependencies["@energysage/es-ds-components"]' package.json)" >> $GITHUB_OUTPUT
 
             - name: Install dependencies
               working-directory: es-ds-docs
@@ -223,7 +223,7 @@ jobs:
               if: needs.release-please.outputs['es-ds-styles--release_created'] == 'true'
               working-directory: es-ds-components
               run: |
-                version=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')
+                version=$(jq -r '.dependencies["@energysage/es-ds-styles"]' package.json)
                 npm install @energysage/es-ds-styles@$version
 
             # Update es-ds-docs lock file if styles or components was released
@@ -231,8 +231,8 @@ jobs:
               if: needs.release-please.outputs['es-ds-styles--release_created'] == 'true' || needs.release-please.outputs['es-ds-components--release_created'] == 'true'
               working-directory: es-ds-docs
               run: |
-                styles_version=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')
-                components_version=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-components"]')
+                styles_version=$(jq -r '.dependencies["@energysage/es-ds-styles"]' package.json)
+                components_version=$(jq -r '.dependencies["@energysage/es-ds-components"]' package.json)
                 npm install @energysage/es-ds-styles@$styles_version @energysage/es-ds-components@$components_version
 
             - name: Commit package-lock.json changes
