@@ -43,60 +43,55 @@ onMounted(() => {
     const mediaQueryResult = window.matchMedia('(hover: none)') as MediaQueryList;
     deviceSupportsTouch.value = mediaQueryResult?.matches || false;
 });
-
-// Workaround: Reka UI components don't play nice with the Nuxt 3.16+ dev server side rendering while using NPM link
-const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'span';
 </script>
 
 <template>
-    <component :is="wrappingComponent">
-        <tooltip-provider
-            v-if="!deviceSupportsTouch"
-            :delay-duration="delayDuration"
-            :disable-closing-trigger="true">
-            <tooltip-root
-                :open="show || internalShow"
-                @update:open="handleUpdateOpen">
-                <tooltip-trigger
-                    class="es-tooltip-trigger p-0"
-                    :class="{ [triggerClass]: true }"
-                    @click="handleClick">
-                    <slot name="trigger" />
-                </tooltip-trigger>
-                <tooltip-portal>
-                    <tooltip-content
-                        class="es-tooltip-content"
-                        :class="{
-                            'text-white': variant === 'dark',
-                            'es-tooltip-content--light': variant === 'light',
-                        }"
-                        :collision-padding="collisionPadding"
-                        :side="side">
-                        <tooltip-arrow
-                            class="es-tooltip-arrow"
-                            :class="{ 'es-tooltip-arrow--light': variant === 'light' }"
-                            :height="12"
-                            rounded
-                            :width="22" />
-                        <slot />
-                    </tooltip-content>
-                </tooltip-portal>
-            </tooltip-root>
-        </tooltip-provider>
-        <es-popover
-            v-else
-            :collision-padding="collisionPadding"
-            :show="show"
-            :side="side"
-            :trigger-class="triggerClass"
-            :variant="variant"
-            @update:show="(val: any) => emit('update:show', val)">
-            <template #trigger>
+    <tooltip-provider
+        v-if="!deviceSupportsTouch"
+        :delay-duration="delayDuration"
+        :disable-closing-trigger="true">
+        <tooltip-root
+            :open="show || internalShow"
+            @update:open="handleUpdateOpen">
+            <tooltip-trigger
+                class="es-tooltip-trigger p-0"
+                :class="{ [triggerClass]: true }"
+                @click="handleClick">
                 <slot name="trigger" />
-            </template>
-            <slot />
-        </es-popover>
-    </component>
+            </tooltip-trigger>
+            <tooltip-portal>
+                <tooltip-content
+                    class="es-tooltip-content"
+                    :class="{
+                        'text-white': variant === 'dark',
+                        'es-tooltip-content--light': variant === 'light',
+                    }"
+                    :collision-padding="collisionPadding"
+                    :side="side">
+                    <tooltip-arrow
+                        class="es-tooltip-arrow"
+                        :class="{ 'es-tooltip-arrow--light': variant === 'light' }"
+                        :height="12"
+                        rounded
+                        :width="22" />
+                    <slot />
+                </tooltip-content>
+            </tooltip-portal>
+        </tooltip-root>
+    </tooltip-provider>
+    <es-popover
+        v-else
+        :collision-padding="collisionPadding"
+        :show="show"
+        :side="side"
+        :trigger-class="triggerClass"
+        :variant="variant"
+        @update:show="(val: any) => emit('update:show', val)">
+        <template #trigger>
+            <slot name="trigger" />
+        </template>
+        <slot />
+    </es-popover>
 </template>
 
 <style lang="scss" scoped>
