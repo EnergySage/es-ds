@@ -1,5 +1,20 @@
 # Changelog
 
+## [4.1.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.1.0...es-ds-docs-v4.1.1) (2026-02-10)
+
+
+### Bug Fixes
+
+* EsCollapse animation bug and arrow overlap issue ([#1698](https://github.com/EnergySage/es-ds/issues/1698)) ([a87aba7](https://github.com/EnergySage/es-ds/commit/a87aba7e47b0dffebadfefa43f0a7a3dfa6e074f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.1.0 to ^4.1.1
+    * @energysage/es-ds-styles bumped from ^3.3.1 to ^3.3.2
+
 ## [4.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.0.3...es-ds-docs-v4.1.0) (2026-01-12)
 
 
