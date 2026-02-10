@@ -40,7 +40,7 @@ jobs:
             contents: read
         runs-on: ubuntu-latest
         needs: release-please
-        if: needs.release-please.outputs.es-ds-styles--release_created
+        if: needs.release-please.outputs['es-ds-styles--release_created'] == 'true'
         steps:
             - name: Check out repository code
               uses: actions/checkout@v4
@@ -78,7 +78,7 @@ jobs:
         needs:
             - release-please
             - release-es-ds-styles
-        if: always() && !cancelled() && !failure() && needs.release-please.outputs.es-ds-components--release_created
+        if: always() && !cancelled() && !failure() && needs.release-please.outputs['es-ds-components--release_created'] == 'true'
         steps:
             # Uses an app with elevated permissions to bypass required checks when pushing to main
             - uses: actions/create-github-app-token@v2
@@ -134,7 +134,7 @@ jobs:
             - release-please
             - release-es-ds-styles
             - release-es-ds-components
-        if: always() && !cancelled() && !failure() && needs.release-please.outputs.es-ds-docs--release_created
+        if: always() && !cancelled() && !failure() && needs.release-please.outputs['es-ds-docs--release_created'] == 'true'
         steps:
             # Uses an app with elevated permissions to bypass required checks when pushing to main
             - uses: actions/create-github-app-token@v2
@@ -189,7 +189,7 @@ jobs:
             - release-es-ds-components
             - release-es-ds-docs
         # Run if any releases were created
-        if: always() && !cancelled() && !failure() && needs.release-please.outputs.releases_created
+        if: always() && !cancelled() && !failure() && needs.release-please.outputs['releases_created'] == 'true'
         steps:
             # Uses an app with elevated permissions to bypass required checks when pushing to main
             - uses: actions/create-github-app-token@v2
@@ -220,7 +220,7 @@ jobs:
 
             # Update es-ds-components lock file if styles was released
             - name: Update es-ds-components dependencies
-              if: needs.release-please.outputs.es-ds-styles--release_created
+              if: needs.release-please.outputs['es-ds-styles--release_created'] == 'true'
               working-directory: es-ds-components
               run: |
                 version=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')
@@ -228,7 +228,7 @@ jobs:
 
             # Update es-ds-docs lock file if styles or components was released
             - name: Update es-ds-docs dependencies
-              if: needs.release-please.outputs.es-ds-styles--release_created || needs.release-please.outputs.es-ds-components--release_created
+              if: needs.release-please.outputs['es-ds-styles--release_created'] == 'true' || needs.release-please.outputs['es-ds-components--release_created'] == 'true'
               working-directory: es-ds-docs
               run: |
                 styles_version=$(cat package.json | jq -r '.["dependencies"].["@energysage/es-ds-styles"]')
@@ -249,7 +249,7 @@ jobs:
             - release-es-ds-components
             - release-es-ds-docs
             - update-lock-files
-        if: always() && !cancelled() && !failure() && (needs.release-please.outputs.es-ds-styles--release_created || needs.release-please.outputs.es-ds-components--release_created || needs.release-please.outputs.es-ds-docs--release_created)
+        if: always() && !cancelled() && !failure() && (needs.release-please.outputs['es-ds-styles--release_created'] == 'true' || needs.release-please.outputs['es-ds-components--release_created'] == 'true' || needs.release-please.outputs['es-ds-docs--release_created'] == 'true')
         secrets: inherit
         with:
             environment: int
