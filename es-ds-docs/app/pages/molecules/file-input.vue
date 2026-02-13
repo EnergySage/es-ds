@@ -83,6 +83,11 @@ const fileUploadEventListeners = [
     },
 ];
 
+const exposedMethods = [
+    ['clear', 'none', 'Clears the value of the file input.'],
+    ['openFilePicker', 'none', 'Opens the system file picker dialog.'],
+];
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -149,6 +154,29 @@ const fileSizeError = (fileName: string) => {
         variant: 'danger',
         show: true,
     });
+};
+
+// hidden file input example
+const hiddenInputFile: Ref<File | undefined> = ref(undefined);
+const hiddenInputRef = useTemplateRef('hiddenInput');
+
+const handleHiddenInputReadyToUpload = (fileUploads: File[]) => {
+    if (fileUploads?.length) {
+        hiddenInputFile.value = fileUploads[0];
+    }
+};
+
+const handleHiddenInputFileClear = () => {
+    if (hiddenInputRef.value) {
+        hiddenInputRef.value.clear();
+        hiddenInputFile.value = undefined;
+    }
+};
+
+const handleClickHiddenInputButton = () => {
+    if (hiddenInputRef.value) {
+        hiddenInputRef.value.openFilePicker();
+    }
 };
 </script>
 
@@ -236,6 +264,48 @@ const fileSizeError = (fileName: string) => {
                 </template>
             </es-file-input>
         </div>
+        <div class="mb-500">
+            <h2 class="mb-50">Hidden input opened via link button</h2>
+            <p class="mb-150">
+                In space-constrained areas, you can allow file upload with just an inline link button by making use of
+                the <code>openFilePicker</code> exposed by the file input. If you put a template ref on the file
+                picker, you'll be able to call <code>openFilePicker</code> from any button's click handler.
+            </p>
+            <p>
+                Have a file handy? You can
+                <es-button
+                    inline
+                    variant="link"
+                    @click="handleClickHiddenInputButton">
+                    upload your file
+                </es-button>
+                to send it to us.
+            </p>
+            <es-file-input
+                ref="hiddenInput"
+                class="sr-only"
+                :file-types="['image/png', 'application/pdf']"
+                :max-file-size-mb="10"
+                :multiple="false"
+                @file-size-error="fileSizeError"
+                @file-type-error="fileTypeError"
+                @ready-to-upload="handleHiddenInputReadyToUpload" />
+            <div
+                v-if="!!hiddenInputFile"
+                class="d-none d-md-block">
+                <es-form-msg
+                    variant="success"
+                    :show="true"
+                    :timeout="999999"
+                    class="w-100 mb-0 mt-200"
+                    @hidden="handleHiddenInputFileClear">
+                    <p class="mb-0">
+                        <span class="d-block pb-50 font-weight-bold">{{ hiddenInputFile?.name }}</span> Thanks for
+                        uploading the file.
+                    </p>
+                </es-form-msg>
+            </div>
+        </div>
         <div
             v-if="fileObjects.length"
             class="mb-500">
@@ -297,6 +367,15 @@ const fileSizeError = (fileName: string) => {
                     </ds-responsive-table-column>
                 </ds-responsive-table-row>
             </ds-responsive-table>
+        </div>
+        <div class="mb-500">
+            <h2>EsFileInput exposed methods</h2>
+            <ds-prop-table
+                :columns="['Name', 'Arguments', 'Description']"
+                :rows="exposedMethods"
+                :widths="{
+                    md: ['3', '2', '7'],
+                }" />
         </div>
         <ds-doc-source
             :comp-code="compCode"
