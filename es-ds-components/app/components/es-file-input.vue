@@ -284,12 +284,26 @@ const onDrop = (event: any) => {
     verifyFiles(dataTransfersAsFiles);
 };
 
+const clear = () => {
+    if (fileInput.value) {
+        // @ts-ignore
+        fileInput.value.value = null;
+    }
+};
+
 const openFilePicker = () => {
     if (fileInput.value) {
         // @ts-expect-error not sure
         fileInput.value.click();
     }
 };
+
+// expose to parent components so alternate buttons can be used to open file modal
+// https://vuejs.org/api/sfc-script-setup.html#defineexpose
+defineExpose({
+    clear,
+    openFilePicker,
+});
 </script>
 
 <template>
