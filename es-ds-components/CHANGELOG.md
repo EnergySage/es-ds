@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.1.2...es-ds-components-v4.2.0) (2026-02-16)
+
+
+### Features
+
+* expose clear and openFilePicker methods on EsFileInput ([#1703](https://github.com/EnergySage/es-ds/issues/1703)) ([0b011ac](https://github.com/EnergySage/es-ds/commit/0b011acdeddff26df0c54e2651e883a9965bd61b))
+
+
+### Bug Fixes
+
+* ran npm audit fix for nanotar vulnerability ([#1706](https://github.com/EnergySage/es-ds/issues/1706)) ([57b579f](https://github.com/EnergySage/es-ds/commit/57b579fafdd3414aeb116cf51df675fc20007a23))
+
 ## [4.1.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.1.1...es-ds-components-v4.1.2) (2026-02-10)
 
 
