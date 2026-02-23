@@ -1,6 +1,6 @@
 {
     "name": "@energysage/es-ds-components",
-    "version": "4.2.0",
+    "version": "5.0.0",
     "private": false,
     "type": "module",
     "description": "An EnergySage Vue component library",
