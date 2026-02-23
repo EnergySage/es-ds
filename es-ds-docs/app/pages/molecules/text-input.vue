@@ -37,7 +37,7 @@ const propTableRows = [
         'null',
         'Specifies the validity of the input. Can be true (success), false (error), or null (default).',
     ],
-    ['phone-mask-value', 'String', "'(999) 999-9999'", 'The mask value for the phone number input.'],
+    ['phone-mask-value', 'String', "'(###) ###-####'", 'The mask value for the phone number input.'],
     ['type', 'String', "'text'", 'The type of input. Can be text, number, email, password, tel, or maskedTel.'],
 ];
 </script>
@@ -54,10 +54,11 @@ const propTableRows = [
             </a>
             and
             <a
-                href="https://v3.primevue.org/inputmask/"
+                href="https://beholdr.github.io/maska/"
                 target="_blank">
-                PrimeVue InputMask
+                Maska
             </a>
+            for input masking
         </p>
 
         <p>
