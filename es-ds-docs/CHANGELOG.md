@@ -1,5 +1,24 @@
 # Changelog
 
+## [5.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.2.0...es-ds-docs-v5.0.0) (2026-02-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* telephone input mask no longer allows cursor to get stuck ([#1708](https://github.com/EnergySage/es-ds/issues/1708))
+
+### Bug Fixes
+
+* open security vulnerabilities ([#1710](https://github.com/EnergySage/es-ds/issues/1710)) ([3ebd65a](https://github.com/EnergySage/es-ds/commit/3ebd65abe10eba46faa1ee911e87a213cdd6d035))
+* telephone input mask no longer allows cursor to get stuck ([#1708](https://github.com/EnergySage/es-ds/issues/1708)) ([304cb42](https://github.com/EnergySage/es-ds/commit/304cb4248bb16fdd8910754413e482ed4697c06c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.2.0 to ^5.0.0
+
 ## [4.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.1.2...es-ds-docs-v4.2.0) (2026-02-16)
 
 
