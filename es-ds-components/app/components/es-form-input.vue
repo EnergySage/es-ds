@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import InputText from 'primevue/inputtext';
-import { vMaska } from "maska/vue"
+import { vMaska } from 'maska/vue';
 
 // Prevents attributes from being applied to first <div>
 // v-bind="$attr" is on the input instead
