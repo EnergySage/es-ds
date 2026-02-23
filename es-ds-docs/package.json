@@ -48,6 +48,7 @@
         "vue-tsc": "^3.0.8"
     },
     "overrides": {
-        "chokidar": "==3.6.0"
+        "chokidar": "==3.6.0",
+        "minimatch": "==10.2.1"
     }
 }
