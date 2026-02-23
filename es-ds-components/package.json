@@ -23,6 +23,7 @@
         "@vuelidate/validators": "^2.0.4",
         "@vueuse/core": "^13.9.0",
         "html-truncate": "^1.2.2",
+        "maska": "^3.2.0",
         "nuxt": "^4.3.1",
         "nuxt-primevue": "^3.0.0",
         "primevue": "^3.53.0",
