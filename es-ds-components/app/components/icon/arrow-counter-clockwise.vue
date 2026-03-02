@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
+import { PhArrowCounterClockwise } from '@phosphor-icons/vue';
 
 interface Props {
     height?: string;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhArrowLeft } from "@phosphor-icons/vue";
+import { PhArrowLeft } from '@phosphor-icons/vue';
 
 interface Props {
     height?: string;

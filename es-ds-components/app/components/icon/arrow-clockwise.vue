@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhArrowClockwise } from "@phosphor-icons/vue";
+import { PhArrowClockwise } from '@phosphor-icons/vue';
 
 interface Props {
     height?: string;
@@ -14,5 +14,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <ph-arrow-clockwise :mirrored="orientation === 'counter-clockwise'" :size="width" />
+    <ph-arrow-clockwise
+        :mirrored="orientation === 'counter-clockwise'"
+        :size="width" />
 </template>
