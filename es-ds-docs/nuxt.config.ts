@@ -16,6 +16,8 @@ export default defineNuxtConfig({
     vite: {
         optimizeDeps: {
             include: [
+                'clipboard',
+                'motion-v',
                 '@phosphor-icons/vue',
                 'prismjs',
                 'prismjs/components/prism-scss',

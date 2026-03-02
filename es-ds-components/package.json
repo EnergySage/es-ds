@@ -1,6 +1,6 @@
 {
     "name": "@energysage/es-ds-components",
-    "version": "4.0.2",
+    "version": "5.0.0",
     "private": false,
     "type": "module",
     "description": "An EnergySage Vue component library",
@@ -17,22 +17,23 @@
     "author": "EnergySage",
     "license": "MIT",
     "dependencies": {
-        "@energysage/es-ds-styles": "^3.3.1",
-        "@nuxt/eslint": "^1.0.1",
+        "@energysage/es-ds-styles": "^3.3.2",
         "@nuxtjs/google-fonts": "^3.2.0",
         "@phosphor-icons/vue": "^2.2.1",
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
         "@vueuse/core": "^13.9.0",
         "html-truncate": "^1.2.2",
-        "nuxt": "^4.1.2",
+        "maska": "^3.2.0",
+        "nuxt": "^4.3.1",
         "nuxt-primevue": "^3.0.0",
         "primevue": "^3.53.0",
         "prismjs": "^1.29.0",
-        "reka-ui": "^2.2.0",
-        "vue": "^3.5.6"
+        "reka-ui": "^2.8.0",
+        "vue": "^3.5.28"
     },
     "devDependencies": {
+        "@nuxt/eslint": "^1.14.0",
         "eslint": "^9.20.1",
         "eslint-config-prettier": "^10.0.1",
         "nuxt-primevue": "^3.0.0",
@@ -42,6 +43,7 @@
         "vue-tsc": "^3.0.8"
     },
     "overrides": {
-        "chokidar": "==3.6.0"
+        "chokidar": "==3.6.0",
+        "minimatch": "==10.2.1"
     }
 }

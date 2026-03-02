@@ -17,34 +17,29 @@ interface Props {
 withDefaults(defineProps<Props>(), {
     disabled: false,
 });
-
-// Workaround: Reka UI components don't play nice with the Nuxt 3.16+ dev server side rendering while using NPM link
-const wrappingComponent = import.meta.dev ? resolveComponent('ClientOnly') : 'div';
 </script>
 
 <template>
-    <component :is="wrappingComponent">
-        <div
-            class="d-flex flex-row"
-            :class="{
-                'has-label': $slots.label,
-            }"
-            v-bind="$attrs">
-            <switch-root
-                :id="switchId"
-                v-model="model"
-                :disabled="disabled"
-                class="es-toggle">
-                <switch-thumb class="es-toggle-thumb" />
-            </switch-root>
-            <label
-                v-if="$slots.label"
-                :for="switchId"
-                class="es-toggle-label">
-                <slot name="label" />
-            </label>
-        </div>
-    </component>
+    <div
+        class="d-flex flex-row"
+        :class="{
+            'has-label': $slots.label,
+        }"
+        v-bind="$attrs">
+        <switch-root
+            :id="switchId"
+            v-model="model"
+            :disabled="disabled"
+            class="es-toggle">
+            <switch-thumb class="es-toggle-thumb" />
+        </switch-root>
+        <label
+            v-if="$slots.label"
+            :for="switchId"
+            class="es-toggle-label">
+            <slot name="label" />
+        </label>
+    </div>
 </template>
 
 <style lang="scss">

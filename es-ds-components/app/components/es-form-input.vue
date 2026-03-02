@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import InputText from 'primevue/inputtext';
-import InputMask from 'primevue/inputmask';
+import { vMaska } from 'maska/vue';
+
 // Prevents attributes from being applied to first <div>
 // v-bind="$attr" is on the input instead
 defineOptions({
@@ -51,7 +52,7 @@ defineProps({
     },
     phoneMaskValue: {
         type: String,
-        default: '(999) 999-9999',
+        default: '(###) ###-####',
         required: false,
     },
 });
@@ -94,19 +95,18 @@ const hasExtraContext = () => !!slots.extraContext;
                 class="prefix-icon position-absolute">
                 <slot name="prefixIcon" />
             </span>
-            <component
-                :is="type === 'maskedTel' ? InputMask : InputText"
+            <input-text
                 :id="id"
                 v-bind="{ ...$attrs, class: undefined }"
-                :type="type"
+                v-maska:mask="type === 'maskedTel' ? phoneMaskValue : ''"
                 class="es-form-input form-control w-100"
                 :class="{
                     'has-prefix-icon': $slots.prefixIcon,
                     'is-invalid': state === false,
                 }"
-                :mask="phoneMaskValue"
                 :disabled="disabled"
-                :invalid="state === false" />
+                :invalid="state === false"
+                :type="type" />
             <small
                 v-if="hasMessage() && ((!hasSuccess() && state) || state == null)"
                 class="text-muted">

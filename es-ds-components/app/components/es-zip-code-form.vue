@@ -4,6 +4,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    contextMessage: {
+        type: String,
+        default: '',
+    },
     dark: {
         type: Boolean,
         default: false,
@@ -24,10 +28,6 @@ const props = defineProps({
         type: String,
         default: 'ZIP code',
     },
-    showPrivacySection: {
-        type: Boolean,
-        default: true,
-    },
     privacyPolicyLink: {
         type: String,
         default: '',
@@ -35,6 +35,18 @@ const props = defineProps({
     privacyPolicyNewTab: {
         type: Boolean,
         default: false,
+    },
+    replaceFieldNameInUrl: {
+        type: Boolean,
+        default: false,
+    },
+    selectedProduct: {
+        type: String,
+        default: '',
+    },
+    showPrivacySection: {
+        type: Boolean,
+        default: true,
     },
     stackUntil: {
         type: String,
@@ -45,14 +57,6 @@ const props = defineProps({
         required: true,
     },
     zipCodeValue: {
-        type: String,
-        default: '',
-    },
-    selectedProduct: {
-        type: String,
-        default: '',
-    },
-    contextMessage: {
         type: String,
         default: '',
     },
@@ -87,6 +91,10 @@ const rules = {
     },
 };
 
+const replacementUrl = computed(() => {
+    return props.url.replace(`{${props.fieldName}}`, state.zipCode);
+});
+
 const { v$, validateState } = useEsForms(rules, state);
 
 const ctaForm = useTemplateRef<HTMLFormElement>('ctaForm');
@@ -95,7 +103,16 @@ const handleSubmit = () => {
     if (v$.value.$invalid) {
         v$.value.$touch();
     } else {
-        ctaForm.value?.submit();
+        if (props.replaceFieldNameInUrl) {
+            navigateTo(replacementUrl.value, {
+                external: true,
+                open: {
+                    target: props.newTab ? '_blank' : '_self',
+                },
+            });
+        } else {
+            ctaForm.value?.submit();
+        }
     }
 };
 </script>
@@ -121,7 +138,7 @@ const handleSubmit = () => {
                     [`d-${stackBreak}flex`]: stackUntil,
                     'mb-100': showPrivacySection,
                 }"
-                :action="url"
+                :action="replaceFieldNameInUrl ? replacementUrl : url"
                 method="get"
                 novalidate
                 :target="newTab ? '_blank' : '_self'"

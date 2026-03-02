@@ -12,7 +12,7 @@ const prosConsTable = [
     },
     {
         advantages: 'Low or no upfront costs',
-        disadvantages: "Can't take advantage of the federal solar tax credit and other state and local incentives",
+        disadvantages: "Can't take advantage of state and local incentives",
     },
     {
         advantages: 'May be an attractive feature to some homebuyers',
@@ -40,7 +40,7 @@ const averageCostTable = [
     {
         costAfter: 20000,
         costBefore: 30000,
-        incentive: 'Federal tax credit',
+        incentive: 'Larger state tax credit',
         url: '/atoms/typography',
     },
 ];

@@ -1,5 +1,100 @@
 # Changelog
 
+## [5.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.2.0...es-ds-docs-v5.0.0) (2026-02-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* telephone input mask no longer allows cursor to get stuck ([#1708](https://github.com/EnergySage/es-ds/issues/1708))
+
+### Bug Fixes
+
+* open security vulnerabilities ([#1710](https://github.com/EnergySage/es-ds/issues/1710)) ([3ebd65a](https://github.com/EnergySage/es-ds/commit/3ebd65abe10eba46faa1ee911e87a213cdd6d035))
+* telephone input mask no longer allows cursor to get stuck ([#1708](https://github.com/EnergySage/es-ds/issues/1708)) ([304cb42](https://github.com/EnergySage/es-ds/commit/304cb4248bb16fdd8910754413e482ed4697c06c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.2.0 to ^5.0.0
+
+## [4.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.1.2...es-ds-docs-v4.2.0) (2026-02-16)
+
+
+### Features
+
+* expose clear and openFilePicker methods on EsFileInput ([#1703](https://github.com/EnergySage/es-ds/issues/1703)) ([0b011ac](https://github.com/EnergySage/es-ds/commit/0b011acdeddff26df0c54e2651e883a9965bd61b))
+
+
+### Bug Fixes
+
+* same nanotar fix to es-ds-docs ([#1707](https://github.com/EnergySage/es-ds/issues/1707)) ([9bb2281](https://github.com/EnergySage/es-ds/commit/9bb22813546e0ab8c1409a476b234ce2803ff2f5))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.1.2 to ^4.2.0
+
+## [4.1.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.1.1...es-ds-docs-v4.1.2) (2026-02-10)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.1.1 to ^4.1.2
+
+## [4.1.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.1.0...es-ds-docs-v4.1.1) (2026-02-10)
+
+
+### Bug Fixes
+
+* EsCollapse animation bug and arrow overlap issue ([#1698](https://github.com/EnergySage/es-ds/issues/1698)) ([a87aba7](https://github.com/EnergySage/es-ds/commit/a87aba7e47b0dffebadfefa43f0a7a3dfa6e074f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.1.0 to ^4.1.1
+    * @energysage/es-ds-styles bumped from ^3.3.1 to ^3.3.2
+
+## [4.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.0.3...es-ds-docs-v4.1.0) (2026-01-12)
+
+
+### Features
+
+* add prop to allow replacements in zip code form URL ([#1695](https://github.com/EnergySage/es-ds/issues/1695)) ([001feb5](https://github.com/EnergySage/es-ds/commit/001feb52b9bbfd84c31390449c0810517c726a6f))
+
+
+### Bug Fixes
+
+* fix dependency vulnerabilities reported by jit ([#1697](https://github.com/EnergySage/es-ds/issues/1697)) ([db13818](https://github.com/EnergySage/es-ds/commit/db13818d9e83593f06c49d774fd219e96f6702dd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.0.3 to ^4.1.0
+
+## [4.0.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.0.2...es-ds-docs-v4.0.3) (2025-10-30)
+
+
+### Bug Fixes
+
+* prevent optimize dependency warning for unused packages ([#1690](https://github.com/EnergySage/es-ds/issues/1690)) ([f7b2dbe](https://github.com/EnergySage/es-ds/commit/f7b2dbe0d3bfd7c987026c7fbc0558d9505cb01e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^4.0.2 to ^4.0.3
+
 ## [4.0.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v4.0.1...es-ds-docs-v4.0.2) (2025-10-07)
 
 

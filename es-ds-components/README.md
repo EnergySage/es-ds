@@ -8,7 +8,7 @@ This is an EnergySage Nuxt layer library with design system components.
 npm install @energysage/es-ds-components
 ```
 
-Once the package is installed, you'll need to add a reference to it in your nuxt.config.ts:
+Once the package is installed, you will need to add a reference to it in your nuxt.config.ts:
 
 ```
 // https://nuxt.com/docs/getting-started/layers#usage
