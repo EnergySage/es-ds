@@ -43,6 +43,7 @@
     },
     "overrides": {
         "chokidar": "==3.6.0",
-        "minimatch": "==10.2.1"
+        "minimatch": "==10.2.3",
+        "serialize-javascript": "==7.0.3"
     }
 }
