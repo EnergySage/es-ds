@@ -52,7 +52,7 @@ const isChecked = computed(() => props.value === model.value);
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables' as variables;
-@use "sass:math";
+@use 'sass:math';
 
 /* padding */
 
@@ -76,14 +76,20 @@ $outer-circle-size-desktop: 28px;
 
 $additional-translate-y-for-vertical-centering: 2px;
 
-$inner-circle-translate-x-from-left-mobile: math.div($outer-circle-size-mobile, 2) - math.div($inner-circle-size-mobile, 2);
-$inner-circle-translate-y-from-top-mobile: $inner-circle-translate-x-from-left-mobile + $additional-translate-y-for-vertical-centering;
+$inner-circle-translate-x-from-left-mobile: math.div($outer-circle-size-mobile, 2) - math.div(
+        $inner-circle-size-mobile,
+        2
+    );
+$inner-circle-translate-y-from-top-mobile: $inner-circle-translate-x-from-left-mobile +
+    $additional-translate-y-for-vertical-centering;
 
 $inner-circle-half-of-dimension-desktop: math.div($inner-circle-size-desktop, 2);
 $outer-circle-half-of-dimension-desktop: math.div($outer-circle-size-desktop, 2);
 
-$inner-circle-translate-x-from-left-desktop: $outer-circle-half-of-dimension-desktop - $inner-circle-half-of-dimension-desktop;
-$inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-desktop + $additional-translate-y-for-vertical-centering;
+$inner-circle-translate-x-from-left-desktop: $outer-circle-half-of-dimension-desktop -
+    $inner-circle-half-of-dimension-desktop;
+$inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-desktop +
+    $additional-translate-y-for-vertical-centering;
 
 .es-form-radio-card {
     /* keep these styles here instead of applying via utility classes so they can be easily overridden by utility classes downstream */
@@ -91,7 +97,9 @@ $inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-
     background-color: variables.$white;
     border: 2px solid variables.$gray-200;
     border-radius: 1rem;
-    box-shadow: 0 0 0 1px transparent, 0 4px 12px variables.$gray-50;
+    box-shadow:
+        0 0 0 1px transparent,
+        0 4px 12px variables.$gray-50;
     color: variables.$gray-800;
     cursor: pointer;
     font-size: variables.$font-size-300;
@@ -102,7 +110,12 @@ $inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-
     position: relative;
     text-align: left;
     transform: translateZ(0);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, outline 0.15s ease-in-out;
+    transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out,
+        outline 0.15s ease-in-out;
 
     @include breakpoints.media-breakpoint-up(lg) {
         font-size: variables.$font-size-400;
@@ -138,19 +151,23 @@ $inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-
     /* selected state */
     &:not(:disabled):not(.disabled).active {
         border-color: variables.$warm-orange;
-        box-shadow: 0 0 0 1px transparent, variables.$card-interactive-selected-shadow;
+        box-shadow:
+            0 0 0 1px transparent,
+            variables.$card-interactive-selected-shadow;
         transform: none;
 
         /* inner circle of radio button */
         &::after {
             background-color: variables.$blue-900;
             height: $inner-circle-size-mobile;
-            transform: translateX($inner-circle-translate-x-from-left-mobile) translateY($inner-circle-translate-y-from-top-mobile);
+            transform: translateX($inner-circle-translate-x-from-left-mobile)
+                translateY($inner-circle-translate-y-from-top-mobile);
             width: $inner-circle-size-mobile;
 
             @include breakpoints.media-breakpoint-up(lg) {
                 height: $inner-circle-size-desktop;
-                transform: translateX($inner-circle-translate-x-from-left-desktop) translateY($inner-circle-translate-y-from-top-desktop);
+                transform: translateX($inner-circle-translate-x-from-left-desktop)
+                    translateY($inner-circle-translate-y-from-top-desktop);
                 width: $inner-circle-size-desktop;
             }
         }
@@ -165,7 +182,9 @@ $inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active:active {
         border-color: variables.$card-interactive-active-border-color;
-        box-shadow: 0 0 0 1px variables.$card-interactive-active-border-color, variables.$card-interactive-selected-active-shadow;
+        box-shadow:
+            0 0 0 1px variables.$card-interactive-active-border-color,
+            variables.$card-interactive-selected-active-shadow;
         transform: variables.$btn-active-transform;
     }
 
@@ -214,7 +233,8 @@ $inner-circle-translate-y-from-top-desktop: $inner-circle-translate-x-from-left-
             &:not(:disabled):not(.disabled).active {
                 /* inner circle of radio button */
                 &::after {
-                    transform: translateX(-$inner-circle-half-of-dimension-desktop) translateY(-$inner-circle-translate-x-from-left-desktop);
+                    transform: translateX(-$inner-circle-half-of-dimension-desktop)
+                        translateY(-$inner-circle-translate-x-from-left-desktop);
                 }
             }
         }
