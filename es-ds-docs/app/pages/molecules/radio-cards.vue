@@ -15,22 +15,22 @@ const storageReasonOptions: { [key: string]: any }[] = [
     {
         title: 'Back up power',
         description: 'Run appliances during a power outage, with backup power',
-        icon: 'IconSettingsVertical',
-        component: resolveComponent('icon-settings-vertical'),
+        icon: 'IconBattery',
+        component: resolveComponent('icon-battery'),
         value: 'Back up power',
     },
     {
         title: 'Maximize savings',
         description: 'Avoid paying for energy during peak hours',
-        icon: 'IconShoppingBag',
-        component: resolveComponent('icon-shopping-bag'),
+        icon: 'IconSaving',
+        component: resolveComponent('icon-saving'),
         value: 'Maximize savings',
     },
     {
         title: 'Self supply',
         description: 'Limit how much energy you pull from the grid',
-        icon: 'IconPersonCheck',
-        component: resolveComponent('icon-person-check'),
+        icon: 'IconElectricityCircle',
+        component: resolveComponent('icon-electricity-circle'),
         value: 'Self supply',
     },
 ];
