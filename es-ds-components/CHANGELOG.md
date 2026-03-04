@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.0.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.0.0...es-ds-components-v5.0.1) (2026-03-04)
+
+
+### Bug Fixes
+
+* EsFormRadioCards focus state is no longer applied on select/click ([#1711](https://github.com/EnergySage/es-ds/issues/1711)) ([c1ff4eb](https://github.com/EnergySage/es-ds/commit/c1ff4eb951d06d5de38ad35127adf4e7b8ca47c7))
+* security vulnerabilities in serialize-javascript and minimatch ([#1713](https://github.com/EnergySage/es-ds/issues/1713)) ([3a5e859](https://github.com/EnergySage/es-ds/commit/3a5e85954ca208a7e3a7f510ec04eca6a71ba92f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-styles bumped from ^3.3.2 to ^3.3.3
+
 ## [5.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v4.2.0...es-ds-components-v5.0.0) (2026-02-23)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.3](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.3.2...es-ds-styles-v3.3.3) (2026-03-04)
+
+
+### Bug Fixes
+
+* EsFormRadioCards focus state is no longer applied on select/click ([#1711](https://github.com/EnergySage/es-ds/issues/1711)) ([c1ff4eb](https://github.com/EnergySage/es-ds/commit/c1ff4eb951d06d5de38ad35127adf4e7b8ca47c7))
+
 ## [3.3.2](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.3.1...es-ds-styles-v3.3.2) (2026-02-10)
 
 
