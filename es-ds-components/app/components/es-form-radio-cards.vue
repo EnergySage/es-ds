@@ -1,33 +1,31 @@
 <script setup lang="ts">
 interface Option {
-    id: string;
-    text: string;
-
-    value: any;
     disabled?: boolean;
+    id: string;
     inline?: boolean;
+    text: string;
+    value: any;
 }
 
 interface Props {
+    hasIcon?: boolean;
     id: string;
     label: string;
+    labelClass?: string;
+    labelSrOnly?: boolean;
+    modelValue?: any;
     name?: string;
     options?: Option[];
     inline?: boolean;
-
-    modelValue?: any;
-    hasIcon?: boolean;
-    labelClass?: string;
-    labelSrOnly?: boolean;
 }
 const props = withDefaults(defineProps<Props>(), {
-    name: '',
-    options: undefined,
-    inline: false,
-    modelValue: undefined,
     hasIcon: false,
+    inline: false,
     labelClass: 'font-size-h3',
     labelSrOnly: false,
+    modelValue: undefined,
+    name: '',
+    options: undefined,
 });
 
 const emit = defineEmits(['update:model-value']);
@@ -40,7 +38,7 @@ function handleUpdate(value: any) {
 <template>
     <fieldset
         :id="`${props.id}-fieldset`"
-        class="form-group">
+        class="mb-100">
         <legend
             :id="`${props.id}-legend`"
             class="font-size-h1 font-weight-bolder mb-200 pb-0 text-dark"
@@ -53,7 +51,7 @@ function handleUpdate(value: any) {
                 :id="`${props.id}-radiogroup`"
                 role="radiogroup"
                 tabindex="-1"
-                class="es-form-radio-cards d-flex justify-content-center btn-group-vertical"
+                class="es-form-radio-cards align-items-stretch d-flex flex-column justify-content-center position-relative"
                 :class="{ 'has-icon': props.hasIcon }">
                 <slot :options="options">
                     <es-form-radio-card
