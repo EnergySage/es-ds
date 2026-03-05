@@ -15,6 +15,7 @@ export class NuxtStaticStack extends cdk.Stack {
         super(scope, id, props);
 
         new esNuxt.NuxtStatic(this, 'DesignSystemApp', {
+            envName: props.envName,
             // The domain (without the protocol) at which the Nuxt app shall be publicly available.
             rootDomain: props.rootDomain,
             subDomain: props.subDomain,
@@ -23,26 +24,6 @@ export class NuxtStaticStack extends cdk.Stack {
             nuxtConfig: {
                 server: false,
                 distDir: path.join(__dirname, '../../dist'),
-            },
-            csp: {
-                directives: {
-                    frameSrc: ['www.youtube.com'],
-                    connectSrc: ['api.reviews.io'],
-                    fontSrc: ['assets.reviews.io'],
-                    scriptSrc: ["'unsafe-eval'", 'widget.reviews.io'],
-                    styleSrc: ['data:', 'assets.reviews.io'],
-                },
-                sites: {
-                    vwo: false,
-                    gtag: false,
-                    hubspot: false,
-                    heap: false,
-                    sentry: false,
-                    datadog: false,
-                    gfonts: true,
-                    gmaps: false,
-                    facebook: false,
-                },
             },
         });
 
