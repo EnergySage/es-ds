@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.0.1...es-ds-docs-v5.0.2) (2026-03-05)
+
+
+### Bug Fixes
+
+* envName TypeScript error and CSP es-cdk upgrade ([#1714](https://github.com/EnergySage/es-ds/issues/1714)) ([d71a7e8](https://github.com/EnergySage/es-ds/commit/d71a7e84de28c521d6c18ae90c0c2146ee714ad4))
+
 ## [5.0.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.0.0...es-ds-docs-v5.0.1) (2026-03-04)
 
 
