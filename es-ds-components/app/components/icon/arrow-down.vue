@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhMinusCircle } from '@phosphor-icons/vue';
+import { PhArrowDown } from '@phosphor-icons/vue';
 
 interface Props {
     height?: string;
@@ -12,5 +12,5 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <ph-minus-circle :size="width" />
+    <ph-arrow-down :size="width" />
 </template>

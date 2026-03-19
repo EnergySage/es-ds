@@ -1,68 +1,24 @@
-<!-- eslint-disable max-len -->
-<script lang="ts">
-export default {
-    name: 'IconArrow',
-    props: {
-        /**
-         * Width
-         */
-        width: {
-            type: String,
-            default: '24px',
-            required: false,
-        },
-        /**
-         * Height
-         */
-        height: {
-            type: String,
-            default: '24px',
-            required: false,
-        },
-        orientation: {
-            type: String,
-            default: 'top',
-            required: false,
-        },
-    },
-    computed: {
-        classFromOrientation() {
-            return `orientation-${this.orientation}`;
-        },
-    },
-};
+<script setup lang="ts">
+import ArrowDown from './arrow-down.vue';
+import ArrowLeft from './arrow-left.vue';
+import ArrowRight from './arrow-right.vue';
+import ArrowUp from './arrow-up.vue';
+
+interface Props {
+    height?: string;
+    orientation?: 'down' | 'left' | 'right' | 'top';
+    width?: string;
+}
+withDefaults(defineProps<Props>(), {
+    height: '24px',
+    orientation: 'top',
+    width: '24px',
+});
 </script>
+
 <template>
-    <svg
-        :style="{
-            height: height,
-            width: width,
-        }"
-        :class="classFromOrientation"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor">
-        <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M12 3a1 1 0 0 1 1 1v13.586l5.293-5.293a1 1 0 0 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 1 1 1.414-1.414L11 17.586V4a1 1 0 0 1 1-1Z" />
-    </svg>
+    <arrow-down v-if="orientation === 'down'" :size="width" />
+    <arrow-left v-else-if="orientation === 'left'" :size="width" />
+    <arrow-right v-else-if="orientation === 'right'" :size="width" />
+    <arrow-up v-else :size="width" />
 </template>
-
-<style lang="scss" scoped>
-.orientation-down {
-    transform: rotate(0deg);
-}
-
-.orientation-left {
-    transform: rotate(90deg);
-}
-
-.orientation-top {
-    transform: rotate(180deg);
-}
-
-.orientation-right {
-    transform: rotate(270deg);
-}
-</style>
