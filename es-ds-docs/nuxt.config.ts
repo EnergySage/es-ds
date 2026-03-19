@@ -18,6 +18,7 @@ export default defineNuxtConfig({
             include: [
                 'clipboard',
                 'motion-v',
+                '@phosphor-icons/vue',
                 'prismjs',
                 'prismjs/components/prism-scss',
                 'prismjs/components/prism-javascript',

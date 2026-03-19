@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 
     // prevents "Cannot read properties of null (reading 'ce')" in SSR/SSG with reka-ui
     build: {
-        transpile: ['reka-ui'],
+        transpile: ['@phosphor-icons', 'reka-ui'],
     },
 
     // https://nuxt.com/docs/getting-started/styling#the-css-property
