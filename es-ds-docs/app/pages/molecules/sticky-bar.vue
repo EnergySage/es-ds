@@ -30,9 +30,13 @@ onMounted(async () => {
     <div>
         <h1>Sticky bar</h1>
         <p>
-            The sticky bar can be seen above, at the top of the page. It's intended for use with site navigation. It
-            has automatic hide and reveal behavior built in so it gets out of the user's way when they're trying to
-            read the page content and comes back only when it's needed.
+            The sticky bar is intended for use with site navigation. It has automatic hide and reveal behavior built in
+            so it gets out of the user's way when they're trying to read the page content and comes back only when it's
+            needed.
+        </p>
+        <p>
+            It can be seen above at the top of the page where it says "test content". Try scrolling up and down the
+            page to see how it behaves.
         </p>
 
         <h2 class="mt-300">Behavior</h2>
@@ -40,6 +44,11 @@ onMounted(async () => {
             It will scroll away smoothly with the page content as the user scrolls down from the top of the page. If
             the user scrolls back up slightly, it will slide back into view, this time floating above the page content.
             If the user scrolls down again, it will slide out of view.
+        </p>
+        <p>
+            On desktop, when scrolled to the top of the page, there is no shadow dividing the sticky bar from the rest
+            of the page content. As soon as the nav bar becomes floating, there is a shadow. On mobile, there is always
+            a shadow.
         </p>
 
         <h2 class="mt-300">Usage</h2>
