@@ -113,12 +113,24 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+
+$shadow: 0 0 6px 0 rgba(34, 38, 51, 0.20);
+
 .es-sticky-bar {
-    box-shadow: 0 1px 6px 0 rgba(34, 38, 51, 0.25);
+    box-shadow: $shadow;
     left: 0;
     right: 0;
     top: 0;
     z-index: 1000;
+
+    @include breakpoints.media-breakpoint-up(lg) {
+        box-shadow: none;
+    }
+
+    @media not (prefers-reduced-motion) {
+        transition: box-shadow 0.2s ease-in-out;
+    }
 
     &--absolute {
         position: absolute;
@@ -126,6 +138,7 @@ onUnmounted(() => {
 
     &--fixed-visible,
     &--fixed-hidden {
+        box-shadow: $shadow;
         position: fixed;
 
         @media not (prefers-reduced-motion) {
