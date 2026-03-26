@@ -24,7 +24,7 @@ const breadcrumbs = computed(() => {
 </script>
 
 <template>
-    <div class="d-flex justify-content-center">
+    <div>
         <es-sticky-bar>
             <es-container>
                 <p class="py-100 py-lg-200 mb-0">
@@ -32,24 +32,26 @@ const breadcrumbs = computed(() => {
                 </p>
             </es-container>
         </es-sticky-bar>
-        <es-container class="pt-500 pt-lg-800 mx-0">
-            <es-row>
-                <es-col
-                    class="d-none d-xl-block"
-                    xl="3">
-                    <div class="ds-side-nav flex-shrink-0">
-                        <ds-link-list />
-                    </div>
-                </es-col>
-                <es-col xl="9">
-                    <div class="mb-100">
-                        <es-breadcrumbs :items="breadcrumbs" />
-                    </div>
-                    <div class="mb-300">
-                        <slot />
-                    </div>
-                </es-col>
-            </es-row>
-        </es-container>
+        <div class="d-flex justify-content-center">
+            <es-container class="pt-100 mx-0">
+                <es-row>
+                    <es-col
+                        class="d-none d-xl-block"
+                        xl="3">
+                        <div class="ds-side-nav flex-shrink-0">
+                            <ds-link-list />
+                        </div>
+                    </es-col>
+                    <es-col xl="9">
+                        <div class="mb-100">
+                            <es-breadcrumbs :items="breadcrumbs" />
+                        </div>
+                        <div class="mb-300">
+                            <slot />
+                        </div>
+                    </es-col>
+                </es-row>
+            </es-container>
+        </div>
     </div>
 </template>
