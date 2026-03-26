@@ -35,7 +35,10 @@ function hideWithoutAnimation() {
 }
 
 function updateVisibility() {
-    const currentScrollY = window.scrollY;
+    // clamp to the valid scroll range to prevent Safari's rubber-band momentum scrolling
+    // from triggering false direction changes at the top and bottom of the page
+    const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+    const currentScrollY = Math.min(Math.max(window.scrollY, 0), maxScrollY);
     const delta = currentScrollY - lastScrollY;
 
     if (delta === 0) {
