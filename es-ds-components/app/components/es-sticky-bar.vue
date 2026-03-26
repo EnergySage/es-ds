@@ -50,7 +50,7 @@ function updateVisibility() {
         scrollAnchor = lastScrollY;
     }
 
-    if (currentScrollY === 0) {
+    if (currentScrollY <= 0) {
         // back at the very top: switch to absolute so bar scrolls away naturally on next scroll down
         barState.value = 'absolute';
     } else if (barState.value === 'absolute' && currentScrollY >= barHeight.value) {
