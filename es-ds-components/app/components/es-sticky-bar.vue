@@ -23,6 +23,15 @@ let scrollAnchor = 0; // position where the current scroll direction started
 let scrollDirection = 0; // positive = down, negative = up
 let ticking = false; // tracks whether a rAF is already queued
 
+// switches to fixed-hidden without triggering the CSS transition — used when the bar is already
+// off screen and we need to silently reposition it before the user scrolls back up
+function hideWithoutAnimation() {
+    suppressTransition.value = true;
+    barState.value = 'fixed-hidden';
+    // re-enable transition after the next paint so future show/hide animations still work
+    requestAnimationFrame(() => { suppressTransition.value = false; });
+}
+
 function updateVisibility() {
     const currentScrollY = window.scrollY;
     const delta = currentScrollY - lastScrollY;
@@ -43,10 +52,8 @@ function updateVisibility() {
         // back at the very top: switch to absolute so bar scrolls away naturally on next scroll down
         barState.value = 'absolute';
     } else if (barState.value === 'absolute' && currentScrollY >= barHeight.value) {
-        // bar has scrolled fully off screen: switch to fixed-hidden without animating
-        suppressTransition.value = true;
-        barState.value = 'fixed-hidden';
-        requestAnimationFrame(() => { suppressTransition.value = false; });
+        // bar has scrolled fully off screen: reposition to fixed-hidden while invisible
+        hideWithoutAnimation();
     } else if (barState.value === 'fixed-hidden' && scrollDirection < 0 && scrollAnchor - currentScrollY >= SCROLL_THRESHOLD) {
         // scrolling up far enough: slide bar into view
         barState.value = 'fixed-visible';
