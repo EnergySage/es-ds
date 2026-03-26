@@ -6,6 +6,23 @@ const samplePageContent = Array(4).fill(LOREM_TEXT);
 definePageMeta({
     layout: 'sticky-bar',
 });
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/app/components/es-sticky-bar.vue?raw');
+
+        // using the stickyBar layout here instead of the doc page because that's where we're using the component
+        const docSource = await import('../../layouts/stickyBar.vue?raw');
+
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -38,5 +55,11 @@ definePageMeta({
         <p v-for="(content, index) in samplePageContent" :key="index">
             {{ content }}
         </p>
+
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-sticky-bar.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/sticky-bar.vue" />
     </div>
 </template>
