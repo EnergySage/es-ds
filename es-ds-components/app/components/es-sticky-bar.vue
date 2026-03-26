@@ -29,7 +29,9 @@ function hideWithoutAnimation() {
     suppressTransition.value = true;
     barState.value = 'fixed-hidden';
     // re-enable transition after the next paint so future show/hide animations still work
-    requestAnimationFrame(() => { suppressTransition.value = false; });
+    requestAnimationFrame(() => {
+        suppressTransition.value = false;
+    });
 }
 
 function updateVisibility() {
@@ -54,10 +56,18 @@ function updateVisibility() {
     } else if (barState.value === 'absolute' && currentScrollY >= barHeight.value) {
         // bar has scrolled fully off screen: reposition to fixed-hidden while invisible
         hideWithoutAnimation();
-    } else if (barState.value === 'fixed-hidden' && scrollDirection < 0 && scrollAnchor - currentScrollY >= SCROLL_THRESHOLD) {
+    } else if (
+        barState.value === 'fixed-hidden' &&
+        scrollDirection < 0 &&
+        scrollAnchor - currentScrollY >= SCROLL_THRESHOLD
+    ) {
         // scrolling up far enough: slide bar into view
         barState.value = 'fixed-visible';
-    } else if (barState.value === 'fixed-visible' && scrollDirection > 0 && currentScrollY - scrollAnchor >= SCROLL_THRESHOLD) {
+    } else if (
+        barState.value === 'fixed-visible' &&
+        scrollDirection > 0 &&
+        currentScrollY - scrollAnchor >= SCROLL_THRESHOLD
+    ) {
         // scrolling down far enough: slide bar off screen
         barState.value = 'fixed-hidden';
     }
@@ -115,7 +125,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 
-$shadow: 0 0 6px 0 rgba(34, 38, 51, 0.20);
+$shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
 
 .es-sticky-bar {
     box-shadow: $shadow;

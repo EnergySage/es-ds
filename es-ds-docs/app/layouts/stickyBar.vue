@@ -27,9 +27,7 @@ const breadcrumbs = computed(() => {
     <div>
         <es-sticky-bar>
             <es-container>
-                <p class="py-100 py-lg-200 mb-0">
-                    test content
-                </p>
+                <p class="py-100 py-lg-200 mb-0">test content</p>
             </es-container>
         </es-sticky-bar>
         <div class="d-flex justify-content-center">
