@@ -17,8 +17,16 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <arrow-down v-if="orientation === 'down'" :size="width" />
-    <arrow-left v-else-if="orientation === 'left'" :size="width" />
-    <arrow-right v-else-if="orientation === 'right'" :size="width" />
-    <arrow-up v-else :size="width" />
+    <arrow-down
+        v-if="orientation === 'down'"
+        :size="width" />
+    <arrow-left
+        v-else-if="orientation === 'left'"
+        :size="width" />
+    <arrow-right
+        v-else-if="orientation === 'right'"
+        :size="width" />
+    <arrow-up
+        v-else
+        :size="width" />
 </template>
