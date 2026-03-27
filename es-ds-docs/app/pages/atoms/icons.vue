@@ -12,6 +12,8 @@ import IconBolt from '@energysage/es-ds-components/app/components/icon/bolt.vue'
 import IconCalculator from '@energysage/es-ds-components/app/components/icon/calculator.vue';
 import IconCalendar from '@energysage/es-ds-components/app/components/icon/calendar.vue';
 import IconCart from '@energysage/es-ds-components/app/components/icon/cart.vue';
+import IconChatAdd from '@energysage/es-ds-components/app/components/icon/chat-add.vue';
+import IconChatApprove from '@energysage/es-ds-components/app/components/icon/chat-approve.vue';
 import IconChatBubble from '@energysage/es-ds-components/app/components/icon/chat-bubble.vue';
 import IconChatDots from '@energysage/es-ds-components/app/components/icon/chat-dots.vue';
 import IconChevronDown from '@energysage/es-ds-components/app/components/icon/chevron-down.vue';
@@ -33,6 +35,7 @@ import IconCheck from '@energysage/es-ds-components/app/components/icon/check.vu
 import IconClock from '@energysage/es-ds-components/app/components/icon/clock.vue';
 import IconCopy from '@energysage/es-ds-components/app/components/icon/copy.vue';
 import IconEnvelope from '@energysage/es-ds-components/app/components/icon/envelope.vue';
+import IconEsLeaf from '@energysage/es-ds-components/app/components/icon/es-leaf.vue';
 import IconEye from '@energysage/es-ds-components/app/components/icon/eye.vue';
 import IconFolder from '@energysage/es-ds-components/app/components/icon/folder.vue';
 import IconFlag from '@energysage/es-ds-components/app/components/icon/flag.vue';
@@ -77,21 +80,6 @@ import IconUpload from '@energysage/es-ds-components/app/components/icon/upload.
 import IconVerified from '@energysage/es-ds-components/app/components/icon/verified.vue';
 import IconWifi from '@energysage/es-ds-components/app/components/icon/wifi.vue';
 import IconX from '@energysage/es-ds-components/app/components/icon/x.vue';
-import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
-
-const colorNames: any = Object.keys(sassIconColors)
-    .map((k) => k)
-    .reduce((prev: any, cur: any) => {
-        prev[cur] = cur;
-        return prev;
-    }, {});
-
-const colorOptions = Object.keys(colorNames).map((k) => ({
-    text: k === 'body' ? 'default' : k.replace('-', ' '),
-    value: k,
-}));
-const activeColor = ref(colorNames.body);
-const textColorClass = () => `text-${activeColor.value}`;
 
 const isDarkBackgroundActive = ref(false);
 const showPhosphorName = ref(false);
@@ -489,6 +477,21 @@ const baseIcons = [
     },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
+const baseIconsNotPhosphor = [
+    {
+        name: 'chat add',
+        component: IconChatAdd
+    },
+    {
+        name: 'chat approve',
+        component: IconChatApprove
+    },
+    {
+        name: 'ES leaf',
+        component: IconEsLeaf
+    },
+];
+
 const docCode = ref('');
 const { $prism } = useNuxtApp();
 onMounted(async () => {
@@ -527,6 +530,9 @@ onMounted(async () => {
 
         <div class="mb-300">
             <h2 class="mt-300">Base icons</h2>
+            <p>
+                The default size of base icons is 24px by 24px, but you can change that by passing in <code>height</code> and <code>width</code> props.
+            </p>
             <ul class="ds-icon-examples list-unstyled">
                 <li
                     v-for="icon in baseIcons"
@@ -554,58 +560,43 @@ onMounted(async () => {
         </div>
 
         <div class="mb-300">
+            <h3 class="mt-300">Base icons not yet transitioned to Phosphor</h3>
             <p>
-                These icons are designed to work with design system components. Their size can be adjusted by passing
-                in <code>height</code> and <code>width</code> parameters. By default, icons will take the font color of
-                the container in which they're placed. To change their color, simply place the appropriate
-                <code>text-{xxx}</code> utility class on their containing element.
+                These are candidates for removal and are the subject of active conversations on the design team.
             </p>
-            <p>Select an option to see how the icons look with that color applied.</p>
-            <es-radio-button
-                v-for="color in colorOptions"
-                :id="`icon-id-${color.value}`"
-                :key="color.value"
-                v-model="activeColor"
-                :name="`icon-name-${color.value}`"
-                :display-name="color.text"
-                :value="color.value"
-                inline />
+            <ul class="ds-icon-examples list-unstyled">
+                <li
+                    v-for="icon in baseIconsNotPhosphor"
+                    :key="icon.name"
+                    class="ds-icon-example align-items-center d-flex mb-50">
+                    <span
+                        class="d-flex px-100 py-50 rounded-sm"
+                        :class="{
+                            'bg-dark-blue text-white': isDarkBackgroundActive,
+                        }">
+                        <component :is="icon.component" />
+                    </span>
+                    <span class="ml-50">
+                        {{ icon.name }}
+                    </span>
+                </li>
+            </ul>
         </div>
+
         <h2>Base Icons</h2>
         <p>Default size for base icons is 24px by 24px.</p>
         <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
+            class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-arrow />
                 <code>IconArrow</code>
             </li>
         </ul>
 
-        <h2>Base icons not transitioned to Phosphor yet</h2>
-        <p>Default size for base icons is 24px by 24px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-chat-add />
-                <code>IconChatAdd</code>
-            </li>
-            <li>
-                <icon-chat-approve />
-                <code>IconChatApprove</code>
-            </li>
-            <li>
-                <icon-es-leaf />
-                <code>IconESLeaf</code>
-            </li>
-        </ul>
-
         <h2>Rating Star Icons</h2>
         <p>Default size for rating star icons is 20px by 20px.</p>
         <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
+            class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-star-empty />
                 <code>IconStarEmpty</code>
@@ -623,8 +614,7 @@ onMounted(async () => {
         <h2>Marketing Icons</h2>
         <p>Default size for marketing icons is 32px by 32px.</p>
         <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
+            class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-bank />
                 <code>IconBank</code>
@@ -702,8 +692,7 @@ onMounted(async () => {
         <h2>Social icons</h2>
         <p>Default size for social icons is 32px wide by 32px tall.</p>
         <ul
-            class="ds-icon-list m-0 mb-100 p-0"
-            :class="{ [textColorClass()]: true }">
+            class="ds-icon-list m-0 mb-100 p-0">
             <li>
                 <icon-bluesky />
                 <code>IconBluesky</code>
@@ -735,8 +724,7 @@ onMounted(async () => {
         </ul>
         <p>The following icons are deprecated and have been renamed.</p>
         <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
+            class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-twitter />
                 <code>IconTwitter</code>
@@ -746,8 +734,7 @@ onMounted(async () => {
         <h2>File Icons</h2>
         <p>Default size for file icons is 56px by 73px.</p>
         <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
+            class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-file-doc />
                 <code>IconFileDoc</code>
@@ -765,8 +752,7 @@ onMounted(async () => {
         <h2>State Icons</h2>
         <p>Default size for state icons is 24px by 24px.</p>
         <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
+            class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-state-ak />
                 <code>IconStateAk</code>
@@ -974,8 +960,7 @@ onMounted(async () => {
         </ul>
         <h2>Miscellaneous Icons</h2>
         <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
+            class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-video-play />
                 <code>IconVideoPlay</code>
