@@ -1,26 +1,943 @@
 <script setup lang="ts">
-import sassIconColors from '@energysage/es-ds-styles/scss/modules/icon-colors.module.scss';
+import IconArrowClockwise from '@energysage/es-ds-components/app/components/icon/arrow-clockwise.vue';
+import IconArrowCounterClockwise from '@energysage/es-ds-components/app/components/icon/arrow-counter-clockwise.vue';
+import IconArrowCycle from '@energysage/es-ds-components/app/components/icon/arrow-cycle.vue';
+import IconArrowDown from '@energysage/es-ds-components/app/components/icon/arrow-down.vue';
+import IconArrowLeft from '@energysage/es-ds-components/app/components/icon/arrow-left.vue';
+import IconArrowRight from '@energysage/es-ds-components/app/components/icon/arrow-right.vue';
+import IconArrowUp from '@energysage/es-ds-components/app/components/icon/arrow-up.vue';
+import IconBank from '@energysage/es-ds-components/app/components/icon/bank.vue';
+import IconBattery from '@energysage/es-ds-components/app/components/icon/battery.vue';
+import IconBell from '@energysage/es-ds-components/app/components/icon/bell.vue';
+import IconBlock from '@energysage/es-ds-components/app/components/icon/block.vue';
+import IconBluesky from '@energysage/es-ds-components/app/components/icon/bluesky.vue';
+import IconBolt from '@energysage/es-ds-components/app/components/icon/bolt.vue';
+import IconBusiness from '@energysage/es-ds-components/app/components/icon/business.vue';
+import IconCalculator from '@energysage/es-ds-components/app/components/icon/calculator.vue';
+import IconCalendar from '@energysage/es-ds-components/app/components/icon/calendar.vue';
+import IconCart from '@energysage/es-ds-components/app/components/icon/cart.vue';
+import IconChatAdd from '@energysage/es-ds-components/app/components/icon/chat-add.vue';
+import IconChatApprove from '@energysage/es-ds-components/app/components/icon/chat-approve.vue';
+import IconChatBubble from '@energysage/es-ds-components/app/components/icon/chat-bubble.vue';
+import IconChatDots from '@energysage/es-ds-components/app/components/icon/chat-dots.vue';
+import IconChevronDown from '@energysage/es-ds-components/app/components/icon/chevron-down.vue';
+import IconChevronHorizontal from '@energysage/es-ds-components/app/components/icon/chevron-horizontal.vue';
+import IconChevronLeft from '@energysage/es-ds-components/app/components/icon/chevron-left.vue';
+import IconChevronRight from '@energysage/es-ds-components/app/components/icon/chevron-right.vue';
+import IconChevronUp from '@energysage/es-ds-components/app/components/icon/chevron-up.vue';
+import IconCircle from '@energysage/es-ds-components/app/components/icon/circle.vue';
+import IconCircleAlert from '@energysage/es-ds-components/app/components/icon/circle-alert.vue';
+import IconCircleCheck from '@energysage/es-ds-components/app/components/icon/circle-check.vue';
+import IconCircleChevronDown from '@energysage/es-ds-components/app/components/icon/circle-chevron-down.vue';
+import IconCircleChevronLeft from '@energysage/es-ds-components/app/components/icon/circle-chevron-left.vue';
+import IconCircleChevronRight from '@energysage/es-ds-components/app/components/icon/circle-chevron-right.vue';
+import IconCircleChevronUp from '@energysage/es-ds-components/app/components/icon/circle-chevron-up.vue';
+import IconCircleMinus from '@energysage/es-ds-components/app/components/icon/circle-minus.vue';
+import IconCirclePlus from '@energysage/es-ds-components/app/components/icon/circle-plus.vue';
+import IconCircleX from '@energysage/es-ds-components/app/components/icon/circle-x.vue';
+import IconCheck from '@energysage/es-ds-components/app/components/icon/check.vue';
+import IconClock from '@energysage/es-ds-components/app/components/icon/clock.vue';
+import IconCommunitySolar from '@energysage/es-ds-components/app/components/icon/community-solar.vue';
+import IconCompanies from '@energysage/es-ds-components/app/components/icon/companies.vue';
+import IconContactUs from '@energysage/es-ds-components/app/components/icon/contact-us.vue';
+import IconCopy from '@energysage/es-ds-components/app/components/icon/copy.vue';
+import IconCreditCard from '@energysage/es-ds-components/app/components/icon/credit-card.vue';
+import IconDocument from '@energysage/es-ds-components/app/components/icon/document.vue';
+import IconElectricityCircle from '@energysage/es-ds-components/app/components/icon/electricity-circle.vue';
+import IconElectricVehicle from '@energysage/es-ds-components/app/components/icon/electric-vehicle.vue';
+import IconEnvelope from '@energysage/es-ds-components/app/components/icon/envelope.vue';
+import IconEsLeaf from '@energysage/es-ds-components/app/components/icon/es-leaf.vue';
+import IconEye from '@energysage/es-ds-components/app/components/icon/eye.vue';
+import IconFacebook from '@energysage/es-ds-components/app/components/icon/facebook.vue';
+import IconFileDoc from '@energysage/es-ds-components/app/components/icon/file-doc.vue';
+import IconFileDocx from '@energysage/es-ds-components/app/components/icon/file-docx.vue';
+import IconFilePdf from '@energysage/es-ds-components/app/components/icon/file-pdf.vue';
+import IconFolder from '@energysage/es-ds-components/app/components/icon/folder.vue';
+import IconFlag from '@energysage/es-ds-components/app/components/icon/flag.vue';
+import IconGear from '@energysage/es-ds-components/app/components/icon/gear.vue';
+import IconGift from '@energysage/es-ds-components/app/components/icon/gift.vue';
+import IconHamburger from '@energysage/es-ds-components/app/components/icon/hamburger.vue';
+import IconHeart from '@energysage/es-ds-components/app/components/icon/heart.vue';
+import IconHeatPump from '@energysage/es-ds-components/app/components/icon/heat-pump.vue';
+import IconImage from '@energysage/es-ds-components/app/components/icon/image.vue';
+import IconInfo from '@energysage/es-ds-components/app/components/icon/info.vue';
+import IconInfoBlogPost from '@energysage/es-ds-components/app/components/icon/info-blog-post.vue';
+import IconInstagram from '@energysage/es-ds-components/app/components/icon/instagram.vue';
+import IconLightBulb from '@energysage/es-ds-components/app/components/icon/light-bulb.vue';
+import IconLinkedin from '@energysage/es-ds-components/app/components/icon/linkedin.vue';
+import IconLinkOut from '@energysage/es-ds-components/app/components/icon/link-out.vue';
+import IconLocation from '@energysage/es-ds-components/app/components/icon/location.vue';
+import IconLockOff from '@energysage/es-ds-components/app/components/icon/lock-off.vue';
+import IconLockOn from '@energysage/es-ds-components/app/components/icon/lock-on.vue';
+import IconMarketplace from '@energysage/es-ds-components/app/components/icon/marketplace.vue';
+import IconMinus from '@energysage/es-ds-components/app/components/icon/minus.vue';
+import IconMoney from '@energysage/es-ds-components/app/components/icon/money.vue';
+import IconMoneyBag from '@energysage/es-ds-components/app/components/icon/money-bag.vue';
+import IconOpenEnvelope from '@energysage/es-ds-components/app/components/icon/open-envelope.vue';
+import IconPaper from '@energysage/es-ds-components/app/components/icon/paper.vue';
+import IconPayback from '@energysage/es-ds-components/app/components/icon/payback.vue';
+import IconPencil from '@energysage/es-ds-components/app/components/icon/pencil.vue';
+import IconPerson from '@energysage/es-ds-components/app/components/icon/person.vue';
+import IconPersonAdd from '@energysage/es-ds-components/app/components/icon/person-add.vue';
+import IconPersonCheck from '@energysage/es-ds-components/app/components/icon/person-check.vue';
+import IconPersonCross from '@energysage/es-ds-components/app/components/icon/person-cross.vue';
+import IconPhone from '@energysage/es-ds-components/app/components/icon/phone.vue';
+import IconPlay from '@energysage/es-ds-components/app/components/icon/play.vue';
+import IconPlus from '@energysage/es-ds-components/app/components/icon/plus.vue';
+import IconRoof from '@energysage/es-ds-components/app/components/icon/roof.vue';
+import IconRooftopSolar from '@energysage/es-ds-components/app/components/icon/rooftop-solar.vue';
+import IconSaving from '@energysage/es-ds-components/app/components/icon/saving.vue';
+import IconSearch from '@energysage/es-ds-components/app/components/icon/search.vue';
+import IconSettingsHorizontal from '@energysage/es-ds-components/app/components/icon/settings-horizontal.vue';
+import IconSettingsVertical from '@energysage/es-ds-components/app/components/icon/settings-vertical.vue';
+import IconShield from '@energysage/es-ds-components/app/components/icon/shield.vue';
+import IconShieldWithCheck from '@energysage/es-ds-components/app/components/icon/shield-with-check.vue';
+import IconShoppingBag from '@energysage/es-ds-components/app/components/icon/shopping-bag.vue';
+import IconSolar from '@energysage/es-ds-components/app/components/icon/solar.vue';
+import IconSoundDown from '@energysage/es-ds-components/app/components/icon/sound-down.vue';
+import IconSoundOff from '@energysage/es-ds-components/app/components/icon/sound-off.vue';
+import IconSoundOn from '@energysage/es-ds-components/app/components/icon/sound-on.vue';
+import IconSoundUp from '@energysage/es-ds-components/app/components/icon/sound-up.vue';
+import IconStarEmpty from '@energysage/es-ds-components/app/components/icon/star-empty.vue';
+import IconStarFull from '@energysage/es-ds-components/app/components/icon/star-full.vue';
+import IconStarHalf from '@energysage/es-ds-components/app/components/icon/star-half.vue';
+import IconStateAk from '@energysage/es-ds-components/app/components/icon/state-ak.vue';
+import IconStateAl from '@energysage/es-ds-components/app/components/icon/state-al.vue';
+import IconStateAr from '@energysage/es-ds-components/app/components/icon/state-ar.vue';
+import IconStateAz from '@energysage/es-ds-components/app/components/icon/state-az.vue';
+import IconStateCa from '@energysage/es-ds-components/app/components/icon/state-ca.vue';
+import IconStateCo from '@energysage/es-ds-components/app/components/icon/state-co.vue';
+import IconStateCt from '@energysage/es-ds-components/app/components/icon/state-ct.vue';
+import IconStateDc from '@energysage/es-ds-components/app/components/icon/state-dc.vue';
+import IconStateDe from '@energysage/es-ds-components/app/components/icon/state-de.vue';
+import IconStateFl from '@energysage/es-ds-components/app/components/icon/state-fl.vue';
+import IconStateGa from '@energysage/es-ds-components/app/components/icon/state-ga.vue';
+import IconStateHi from '@energysage/es-ds-components/app/components/icon/state-hi.vue';
+import IconStateIa from '@energysage/es-ds-components/app/components/icon/state-ia.vue';
+import IconStateId from '@energysage/es-ds-components/app/components/icon/state-id.vue';
+import IconStateIl from '@energysage/es-ds-components/app/components/icon/state-il.vue';
+import IconStateIn from '@energysage/es-ds-components/app/components/icon/state-in.vue';
+import IconStateKs from '@energysage/es-ds-components/app/components/icon/state-ks.vue';
+import IconStateKy from '@energysage/es-ds-components/app/components/icon/state-ky.vue';
+import IconStateLa from '@energysage/es-ds-components/app/components/icon/state-la.vue';
+import IconStateMa from '@energysage/es-ds-components/app/components/icon/state-ma.vue';
+import IconStateMd from '@energysage/es-ds-components/app/components/icon/state-md.vue';
+import IconStateMe from '@energysage/es-ds-components/app/components/icon/state-me.vue';
+import IconStateMi from '@energysage/es-ds-components/app/components/icon/state-mi.vue';
+import IconStateMn from '@energysage/es-ds-components/app/components/icon/state-mn.vue';
+import IconStateMo from '@energysage/es-ds-components/app/components/icon/state-mo.vue';
+import IconStateMs from '@energysage/es-ds-components/app/components/icon/state-ms.vue';
+import IconStateMt from '@energysage/es-ds-components/app/components/icon/state-mt.vue';
+import IconStateNc from '@energysage/es-ds-components/app/components/icon/state-nc.vue';
+import IconStateNd from '@energysage/es-ds-components/app/components/icon/state-nd.vue';
+import IconStateNe from '@energysage/es-ds-components/app/components/icon/state-ne.vue';
+import IconStateNh from '@energysage/es-ds-components/app/components/icon/state-nh.vue';
+import IconStateNj from '@energysage/es-ds-components/app/components/icon/state-nj.vue';
+import IconStateNm from '@energysage/es-ds-components/app/components/icon/state-nm.vue';
+import IconStateNv from '@energysage/es-ds-components/app/components/icon/state-nv.vue';
+import IconStateNy from '@energysage/es-ds-components/app/components/icon/state-ny.vue';
+import IconStateOh from '@energysage/es-ds-components/app/components/icon/state-oh.vue';
+import IconStateOk from '@energysage/es-ds-components/app/components/icon/state-ok.vue';
+import IconStateOr from '@energysage/es-ds-components/app/components/icon/state-or.vue';
+import IconStatePa from '@energysage/es-ds-components/app/components/icon/state-pa.vue';
+import IconStateRi from '@energysage/es-ds-components/app/components/icon/state-ri.vue';
+import IconStateSc from '@energysage/es-ds-components/app/components/icon/state-sc.vue';
+import IconStateSd from '@energysage/es-ds-components/app/components/icon/state-sd.vue';
+import IconStateTn from '@energysage/es-ds-components/app/components/icon/state-tn.vue';
+import IconStateTx from '@energysage/es-ds-components/app/components/icon/state-tx.vue';
+import IconStateUt from '@energysage/es-ds-components/app/components/icon/state-ut.vue';
+import IconStateVa from '@energysage/es-ds-components/app/components/icon/state-va.vue';
+import IconStateVt from '@energysage/es-ds-components/app/components/icon/state-vt.vue';
+import IconStateWa from '@energysage/es-ds-components/app/components/icon/state-wa.vue';
+import IconStateWi from '@energysage/es-ds-components/app/components/icon/state-wi.vue';
+import IconStateWv from '@energysage/es-ds-components/app/components/icon/state-wv.vue';
+import IconStateWy from '@energysage/es-ds-components/app/components/icon/state-wy.vue';
+import IconThreads from '@energysage/es-ds-components/app/components/icon/threads.vue';
+import IconThumbsUp from '@energysage/es-ds-components/app/components/icon/thumbs-up.vue';
+import IconTrashCan from '@energysage/es-ds-components/app/components/icon/trash-can.vue';
+import IconTree from '@energysage/es-ds-components/app/components/icon/tree.vue';
+import IconTwitter from '@energysage/es-ds-components/app/components/icon/twitter.vue';
+import IconUpload from '@energysage/es-ds-components/app/components/icon/upload.vue';
+import IconVerified from '@energysage/es-ds-components/app/components/icon/verified.vue';
+import IconVideoPlay from '@energysage/es-ds-components/app/components/icon/video-play.vue';
+import IconWifi from '@energysage/es-ds-components/app/components/icon/wifi.vue';
+import IconX from '@energysage/es-ds-components/app/components/icon/x.vue';
+import IconXSocial from '@energysage/es-ds-components/app/components/icon/x-social.vue';
+import IconYoutube from '@energysage/es-ds-components/app/components/icon/youtube.vue';
 
-const colorNames: any = Object.keys(sassIconColors)
-    .map((k) => k)
-    .reduce((prev: any, cur: any) => {
-        prev[cur] = cur;
-        return prev;
-    }, {});
+const isDarkBackgroundActive = ref(false);
+const showPhosphorName = ref(false);
 
-const colorOptions = Object.keys(colorNames).map((k) => ({
-    text: k === 'body' ? 'default' : k.replace('-', ' '),
-    value: k,
-}));
+const baseIcons = [
+    {
+        name: 'arrow clockwise',
+        component: IconArrowClockwise,
+        phosphorName: 'arrow-clockwise',
+    },
+    {
+        name: 'arrow counter clockwise',
+        component: IconArrowCounterClockwise,
+        phosphorName: 'arrow-counter-clockwise',
+    },
+    {
+        name: 'arrow cycle',
+        component: IconArrowCycle,
+        phosphorName: 'arrows-clockwise',
+    },
+    {
+        name: 'arrow down',
+        component: IconArrowDown,
+        phosphorName: 'arrow-down',
+    },
+    {
+        name: 'arrow left',
+        component: IconArrowLeft,
+        phosphorName: 'arrow-left',
+    },
+    {
+        name: 'arrow right',
+        component: IconArrowRight,
+        phosphorName: 'arrow-right',
+    },
+    {
+        name: 'arrow up',
+        component: IconArrowUp,
+        phosphorName: 'arrow-up',
+    },
+    {
+        name: 'bell',
+        component: IconBell,
+        phosphorName: 'bell',
+    },
+    {
+        name: 'block',
+        component: IconBlock,
+        phosphorName: 'prohibit',
+    },
+    {
+        name: 'bolt',
+        component: IconBolt,
+        phosphorName: 'lightning',
+    },
+    {
+        name: 'calculator',
+        component: IconCalculator,
+        phosphorName: 'calculator',
+    },
+    {
+        name: 'calendar',
+        component: IconCalendar,
+        phosphorName: 'calendar-dots',
+    },
+    {
+        name: 'cart',
+        component: IconCart,
+        phosphorName: 'shopping-cart-simple',
+    },
+    {
+        name: 'chat-bubble',
+        component: IconChatBubble,
+        phosphorName: 'chat',
+    },
+    {
+        name: 'chat-dots',
+        component: IconChatDots,
+        phosphorName: 'chat-dots',
+    },
+    {
+        name: 'check',
+        component: IconCheck,
+        phosphorName: 'check',
+    },
+    {
+        name: 'chevron down',
+        component: IconChevronDown,
+        phosphorName: 'caret-down',
+    },
+    {
+        name: 'chevron horizontal',
+        component: IconChevronHorizontal,
+        phosphorName: 'code-simple',
+    },
+    {
+        name: 'chevron left',
+        component: IconChevronLeft,
+        phosphorName: 'caret-left',
+    },
+    {
+        name: 'chevron right',
+        component: IconChevronRight,
+        phosphorName: 'caret-right',
+    },
+    {
+        name: 'chevron up',
+        component: IconChevronUp,
+        phosphorName: 'caret-up',
+    },
+    {
+        name: 'circle',
+        component: IconCircle,
+        phosphorName: 'circle',
+    },
+    {
+        name: 'circle alert',
+        component: IconCircleAlert,
+        phosphorName: 'warning-circle',
+    },
+    {
+        name: 'circle check',
+        component: IconCircleCheck,
+        phosphorName: 'check-circle',
+    },
+    {
+        name: 'circle minus',
+        component: IconCircleMinus,
+        phosphorName: 'minus-circle',
+    },
+    {
+        name: 'circle plus',
+        component: IconCirclePlus,
+        phosphorName: 'plus-circle',
+    },
+    {
+        name: 'circle chevron down',
+        component: IconCircleChevronDown,
+        phosphorName: 'caret-circle-down',
+    },
+    {
+        name: 'circle chevron left',
+        component: IconCircleChevronLeft,
+        phosphorName: 'caret-circle-left',
+    },
+    {
+        name: 'circle chevron right',
+        component: IconCircleChevronRight,
+        phosphorName: 'caret-circle-right',
+    },
+    {
+        name: 'circle chevron up',
+        component: IconCircleChevronUp,
+        phosphorName: 'caret-circle-up',
+    },
+    {
+        name: 'circle x',
+        component: IconCircleX,
+        phosphorName: 'x-circle',
+    },
+    {
+        name: 'clock',
+        component: IconClock,
+        phosphorName: 'clock',
+    },
+    {
+        name: 'copy',
+        component: IconCopy,
+        phosphorName: 'copy-simple',
+    },
+    {
+        name: 'envelope',
+        component: IconEnvelope,
+        phosphorName: 'envelope',
+    },
+    {
+        name: 'eye',
+        component: IconEye,
+        phosphorName: 'eye',
+    },
+    {
+        name: 'folder',
+        component: IconFolder,
+        phosphorName: 'folder',
+    },
+    {
+        name: 'flag',
+        component: IconFlag,
+        phosphorName: 'flag',
+    },
+    {
+        name: 'gear',
+        component: IconGear,
+        phosphorName: 'gear',
+    },
+    {
+        name: 'hamburger',
+        component: IconHamburger,
+        phosphorName: 'list',
+    },
+    {
+        name: 'heart',
+        component: IconHeart,
+        phosphorName: 'heart',
+    },
+    {
+        name: 'image',
+        component: IconImage,
+        phosphorName: 'image-square',
+    },
+    {
+        name: 'info',
+        component: IconInfo,
+        phosphorName: 'info',
+    },
+    {
+        name: 'light bulb',
+        component: IconLightBulb,
+        phosphorName: 'lightbulb',
+    },
+    {
+        name: 'link out',
+        component: IconLinkOut,
+        phosphorName: 'arrow-square-out',
+    },
+    {
+        name: 'location',
+        component: IconLocation,
+        phosphorName: 'map-pin',
+    },
+    {
+        name: 'lock off',
+        component: IconLockOff,
+        phosphorName: 'lock-open',
+    },
+    {
+        name: 'lock on',
+        component: IconLockOn,
+        phosphorName: 'lock',
+    },
+    {
+        name: 'minus',
+        component: IconMinus,
+        phosphorName: 'minus',
+    },
+    {
+        name: 'money bag',
+        component: IconMoneyBag,
+        phosphorName: 'money',
+    },
+    {
+        name: 'open envelope',
+        component: IconOpenEnvelope,
+        phosphorName: 'envelope-open',
+    },
+    {
+        name: 'paper',
+        component: IconPaper,
+        phosphorName: 'file',
+    },
+    {
+        name: 'pencil',
+        component: IconPencil,
+        phosphorName: 'pencil-simple',
+    },
+    {
+        name: 'person',
+        component: IconPerson,
+        phosphorName: 'user',
+    },
+    {
+        name: 'person add',
+        component: IconPersonAdd,
+        phosphorName: 'user-plus',
+    },
+    {
+        name: 'person check',
+        component: IconPersonCheck,
+        phosphorName: 'user-check',
+    },
+    {
+        name: 'person cross',
+        component: IconPersonCross,
+        phosphorName: 'user-minus',
+    },
+    {
+        name: 'phone',
+        component: IconPhone,
+        phosphorName: 'phone',
+    },
+    {
+        name: 'play',
+        component: IconPlay,
+        phosphorName: 'play',
+    },
+    {
+        name: 'plus',
+        component: IconPlus,
+        phosphorName: 'plus',
+    },
+    {
+        name: 'roof',
+        component: IconRoof,
+        phosphorName: 'solar-roof',
+    },
+    {
+        name: 'search',
+        component: IconSearch,
+        phosphorName: 'magnifying-glass',
+    },
+    {
+        name: 'settings horizontal',
+        component: IconSettingsHorizontal,
+        phosphorName: 'sliders-horizontal',
+    },
+    {
+        name: 'settings vertical',
+        component: IconSettingsVertical,
+        phosphorName: 'sliders',
+    },
+    {
+        name: 'shield',
+        component: IconShield,
+        phosphorName: 'shield',
+    },
+    {
+        name: 'shield with check',
+        component: IconShieldWithCheck,
+        phosphorName: 'shield-check',
+    },
+    {
+        name: 'shopping bag',
+        component: IconShoppingBag,
+        phosphorName: 'shopping-bag',
+    },
+    {
+        name: 'solar',
+        component: IconSolar,
+        phosphorName: 'solar-panel',
+    },
+    {
+        name: 'sound down',
+        component: IconSoundDown,
+        phosphorName: 'speaker-low',
+    },
+    {
+        name: 'sound off',
+        component: IconSoundOff,
+        phosphorName: 'speaker-x',
+    },
+    {
+        name: 'sound on',
+        component: IconSoundOn,
+        phosphorName: 'speaker-none',
+    },
+    {
+        name: 'sound up',
+        component: IconSoundUp,
+        phosphorName: 'speaker-high',
+    },
+    {
+        name: 'thumbs up',
+        component: IconThumbsUp,
+        phosphorName: 'thumbs-up',
+    },
+    {
+        name: 'trash can',
+        component: IconTrashCan,
+        phosphorName: 'trash',
+    },
+    {
+        name: 'tree',
+        component: IconTree,
+        phosphorName: 'tree',
+    },
+    {
+        name: 'upload',
+        component: IconUpload,
+        phosphorName: 'upload-simple',
+    },
+    {
+        name: 'verified',
+        component: IconVerified,
+        phosphorName: 'seal-check',
+    },
+    {
+        name: 'wifi',
+        component: IconWifi,
+        phosphorName: 'wifi-high',
+    },
+    {
+        name: 'x',
+        component: IconX,
+        phosphorName: 'x',
+    },
+].sort((a, b) => a.name.localeCompare(b.name));
 
-const activeColor = ref(colorNames.body);
+const baseIconsNotPhosphor = [
+    {
+        name: 'chat add',
+        component: IconChatAdd,
+    },
+    {
+        name: 'chat approve',
+        component: IconChatApprove,
+    },
+    {
+        name: 'ES leaf',
+        component: IconEsLeaf,
+    },
+].sort((a, b) => a.name.localeCompare(b.name));
 
-const textColorClass = () => `text-${activeColor.value}`;
+const ratingStarIcons = [
+    {
+        name: 'star empty',
+        component: IconStarEmpty,
+        phosphorName: 'star',
+    },
+    {
+        name: 'star full',
+        component: IconStarFull,
+        phosphorName: 'star',
+    },
+    {
+        name: 'star half',
+        component: IconStarHalf,
+        phosphorName: 'star-half',
+    },
+].sort((a, b) => a.name.localeCompare(b.name));
+
+const marketingIcons = [
+    {
+        name: 'bank',
+        component: IconBank,
+    },
+    {
+        name: 'battery',
+        component: IconBattery,
+    },
+    {
+        name: 'business',
+        component: IconBusiness,
+    },
+    {
+        name: 'community solar',
+        component: IconCommunitySolar,
+    },
+    {
+        name: 'companies',
+        component: IconCompanies,
+    },
+    {
+        name: 'contact us',
+        component: IconContactUs,
+    },
+    {
+        name: 'credit card',
+        component: IconCreditCard,
+    },
+    {
+        name: 'document',
+        component: IconDocument,
+    },
+    {
+        name: 'electricity circle',
+        component: IconElectricityCircle,
+    },
+    {
+        name: 'electric vehicle',
+        component: IconElectricVehicle,
+    },
+    {
+        name: 'gift',
+        component: IconGift,
+    },
+    {
+        name: 'heat pump',
+        component: IconHeatPump,
+    },
+    {
+        name: 'info blog post',
+        component: IconInfoBlogPost,
+    },
+    {
+        name: 'marketplace',
+        component: IconMarketplace,
+    },
+    {
+        name: 'money',
+        component: IconMoney,
+    },
+    {
+        name: 'payback',
+        component: IconPayback,
+    },
+    {
+        name: 'rooftop solar',
+        component: IconRooftopSolar,
+    },
+    {
+        name: 'saving',
+        component: IconSaving,
+    },
+].sort((a, b) => a.name.localeCompare(b.name));
+
+const socialIcons = [
+    {
+        name: 'bluesky',
+        component: IconBluesky,
+    },
+    {
+        name: 'facebook',
+        component: IconFacebook,
+    },
+    {
+        name: 'instagram',
+        component: IconInstagram,
+    },
+    {
+        name: 'linkedin',
+        component: IconLinkedin,
+    },
+    {
+        name: 'threads',
+        component: IconThreads,
+    },
+    {
+        name: 'x social',
+        component: IconXSocial,
+    },
+    {
+        name: 'youtube',
+        component: IconYoutube,
+    },
+].sort((a, b) => a.name.localeCompare(b.name));
+
+const deprecatedSocialIcons = [
+    {
+        name: 'twitter',
+        component: IconTwitter,
+    },
+];
+
+const fileIcons = [
+    {
+        name: 'file doc',
+        component: IconFileDoc,
+    },
+    {
+        name: 'file docx',
+        component: IconFileDocx,
+    },
+    {
+        name: 'file pdf',
+        component: IconFilePdf,
+    },
+].sort((a, b) => a.name.localeCompare(b.name));
+
+const stateIcons = [
+    {
+        name: 'state ak',
+        component: IconStateAk,
+    },
+    {
+        name: 'state al',
+        component: IconStateAl,
+    },
+    {
+        name: 'state ar',
+        component: IconStateAr,
+    },
+    {
+        name: 'state az',
+        component: IconStateAz,
+    },
+    {
+        name: 'state ca',
+        component: IconStateCa,
+    },
+    {
+        name: 'state co',
+        component: IconStateCo,
+    },
+    {
+        name: 'state ct',
+        component: IconStateCt,
+    },
+    {
+        name: 'state dc',
+        component: IconStateDc,
+    },
+    {
+        name: 'state de',
+        component: IconStateDe,
+    },
+    {
+        name: 'state fl',
+        component: IconStateFl,
+    },
+    {
+        name: 'state ga',
+        component: IconStateGa,
+    },
+    {
+        name: 'state hi',
+        component: IconStateHi,
+    },
+    {
+        name: 'state ia',
+        component: IconStateIa,
+    },
+    {
+        name: 'state id',
+        component: IconStateId,
+    },
+    {
+        name: 'state il',
+        component: IconStateIl,
+    },
+    {
+        name: 'state in',
+        component: IconStateIn,
+    },
+    {
+        name: 'state ks',
+        component: IconStateKs,
+    },
+    {
+        name: 'state ky',
+        component: IconStateKy,
+    },
+    {
+        name: 'state la',
+        component: IconStateLa,
+    },
+    {
+        name: 'state ma',
+        component: IconStateMa,
+    },
+    {
+        name: 'state md',
+        component: IconStateMd,
+    },
+    {
+        name: 'state me',
+        component: IconStateMe,
+    },
+    {
+        name: 'state mi',
+        component: IconStateMi,
+    },
+    {
+        name: 'state mn',
+        component: IconStateMn,
+    },
+    {
+        name: 'state mo',
+        component: IconStateMo,
+    },
+    {
+        name: 'state ms',
+        component: IconStateMs,
+    },
+    {
+        name: 'state mt',
+        component: IconStateMt,
+    },
+    {
+        name: 'state nc',
+        component: IconStateNc,
+    },
+    {
+        name: 'state nd',
+        component: IconStateNd,
+    },
+    {
+        name: 'state ne',
+        component: IconStateNe,
+    },
+    {
+        name: 'state nh',
+        component: IconStateNh,
+    },
+    {
+        name: 'state nj',
+        component: IconStateNj,
+    },
+    {
+        name: 'state nm',
+        component: IconStateNm,
+    },
+    {
+        name: 'state nv',
+        component: IconStateNv,
+    },
+    {
+        name: 'state ny',
+        component: IconStateNy,
+    },
+    {
+        name: 'state oh',
+        component: IconStateOh,
+    },
+    {
+        name: 'state ok',
+        component: IconStateOk,
+    },
+    {
+        name: 'state or',
+        component: IconStateOr,
+    },
+    {
+        name: 'state pa',
+        component: IconStatePa,
+    },
+    {
+        name: 'state ri',
+        component: IconStateRi,
+    },
+    {
+        name: 'state sc',
+        component: IconStateSc,
+    },
+    {
+        name: 'state sd',
+        component: IconStateSd,
+    },
+    {
+        name: 'state tn',
+        component: IconStateTn,
+    },
+    {
+        name: 'state tx',
+        component: IconStateTx,
+    },
+    {
+        name: 'state ut',
+        component: IconStateUt,
+    },
+    {
+        name: 'state va',
+        component: IconStateVa,
+    },
+    {
+        name: 'state vt',
+        component: IconStateVt,
+    },
+    {
+        name: 'state wa',
+        component: IconStateWa,
+    },
+    {
+        name: 'state wi',
+        component: IconStateWi,
+    },
+    {
+        name: 'state wv',
+        component: IconStateWv,
+    },
+    {
+        name: 'state wy',
+        component: IconStateWy,
+    },
+].sort((a, b) => a.name.localeCompare(b.name));
+
+const videoPlayIcons = [
+    {
+        name: 'video play',
+        component: IconVideoPlay,
+    },
+];
 
 const docCode = ref('');
-
 const { $prism } = useNuxtApp();
-
 onMounted(async () => {
     if ($prism) {
         const docSource = await import('./icons.vue?raw');
@@ -34,786 +951,112 @@ onMounted(async () => {
 <template>
     <div>
         <h1>Icons</h1>
-        <div class="mb-300">
-            <p>
-                These icons are designed to work with design system components. Their size can be adjusted by passing
-                in <code>height</code> and <code>width</code> parameters. By default, icons will take the font color of
-                the container in which they're placed. To change their color, simply place the appropriate
-                <code>text-{xxx}</code> utility class on their containing element.
-            </p>
-            <p>Select an option to see how the icons look with that color applied.</p>
-            <es-radio-button
-                v-for="color in colorOptions"
-                :id="`icon-id-${color.value}`"
-                :key="color.value"
-                v-model="activeColor"
-                :name="`icon-name-${color.value}`"
-                :display-name="color.text"
-                :value="color.value"
-                inline />
+
+        <p>
+            The base and rating star icons are from the open-source
+            <a
+                href="https://phosphoricons.com/"
+                target="_blank"
+                >Phosphor icon library</a
+            >. All others were sourced elsewhere or created by our design team.
+        </p>
+
+        <div class="d-flex flex-wrap mb-100">
+            <es-toggle
+                v-model="isDarkBackgroundActive"
+                class="mr-300">
+                <template #label> View against dark background </template>
+            </es-toggle>
+            <es-toggle v-model="showPhosphorName">
+                <template #label> Show Phosphor icon name </template>
+            </es-toggle>
         </div>
-        <h2>Base Icons</h2>
-        <p>Default size for base icons is 24px by 24px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-arrow-clockwise />
-                <code>IconArrowClockwise</code>
-            </li>
-            <li>
-                <icon-arrow-counter-clockwise />
-                <code>IconArrowCounterClockwise</code>
-            </li>
-            <li>
-                <icon-arrow-cycle />
-                <code>IconArrowCycle</code>
-            </li>
-            <li>
-                <icon-arrow-left />
-                <code>IconArrowLeft</code>
-            </li>
-            <li>
-                <icon-arrow-right />
-                <code>IconArrowRight</code>
-            </li>
-            <li>
-                <icon-arrow-up />
-                <code>IconArrowUp</code>
-            </li>
-            <li>
-                <icon-arrow />
-                <code>IconArrow</code>
-            </li>
-            <li>
-                <icon-bell />
-                <code>IconBell</code>
-            </li>
-            <li>
-                <icon-block />
-                <code>IconBlock</code>
-            </li>
-            <li>
-                <icon-bolt />
-                <code>IconBolt</code>
-            </li>
-            <li>
-                <icon-calculator />
-                <code>IconCalculator</code>
-            </li>
-            <li>
-                <icon-calendar />
-                <code>IconCalendar</code>
-            </li>
-            <li>
-                <icon-cart />
-                <code>IconCart</code>
-            </li>
-            <li>
-                <icon-chat-add />
-                <code>IconChatAdd</code>
-            </li>
-            <li>
-                <icon-chat-approve />
-                <code>IconChatApprove</code>
-            </li>
-            <li>
-                <icon-chat-bubble />
-                <code>IconChatBubble</code>
-            </li>
-            <li>
-                <icon-chat-dots />
-                <code>IconChatDots</code>
-            </li>
-            <li>
-                <icon-check />
-                <code>IconCheck</code>
-            </li>
-            <li>
-                <icon-chevron-down />
-                <code>IconChevronDown</code>
-            </li>
-            <li>
-                <icon-chevron-horizontal />
-                <code>IconChevronHorizontal</code>
-            </li>
-            <li>
-                <icon-chevron-left />
-                <code>IconChevronLeft</code>
-            </li>
-            <li>
-                <icon-chevron-right />
-                <code>IconChevronRight</code>
-            </li>
-            <li>
-                <icon-chevron-up />
-                <code>IconChevronUp</code>
-            </li>
-            <li>
-                <icon-circle-alert />
-                <code>IconCircleAlert</code>
-            </li>
-            <li>
-                <icon-circle-check />
-                <code>IconCircleCheck</code>
-            </li>
-            <li>
-                <icon-circle-chevron-down />
-                <code>IconCircleChevronDown</code>
-            </li>
-            <li>
-                <icon-circle-chevron-left />
-                <code>IconCircleChevronLeft</code>
-            </li>
-            <li>
-                <icon-circle-chevron-right />
-                <code>IconCircleChevronRight</code>
-            </li>
-            <li>
-                <icon-circle-chevron-up />
-                <code>IconCircleChevronUp</code>
-            </li>
-            <li>
-                <icon-circle-minus />
-                <code>IconCircleMinus</code>
-            </li>
-            <li>
-                <icon-circle-plus />
-                <code>IconCirclePlus</code>
-            </li>
-            <li>
-                <icon-circle-x />
-                <code>IconCircleX</code>
-            </li>
-            <li>
-                <icon-circle />
-                <code>IconCircle</code>
-            </li>
-            <li>
-                <icon-clock />
-                <code>IconClock</code>
-            </li>
-            <li>
-                <icon-copy />
-                <code>IconCopy</code>
-            </li>
-            <li>
-                <icon-envelope />
-                <code>IconEnvelope</code>
-            </li>
-            <li>
-                <icon-es-leaf />
-                <code>IconESLeaf</code>
-            </li>
-            <li>
-                <icon-eye />
-                <code>IconEye</code>
-            </li>
-            <li>
-                <icon-folder />
-                <code>IconFolder</code>
-            </li>
-            <li>
-                <icon-flag />
-                <code>IconFlag</code>
-            </li>
-            <li>
-                <icon-gear />
-                <code>IconGear</code>
-            </li>
-            <li>
-                <icon-hamburger />
-                <code>IconHamburger</code>
-            </li>
-            <li>
-                <icon-heart />
-                <code>IconHeart</code>
-            </li>
-            <li>
-                <icon-image />
-                <code>IconImage</code>
-            </li>
-            <li>
-                <icon-info />
-                <code>IconInfo</code>
-            </li>
-            <li>
-                <icon-light-bulb />
-                <code>IconLightBulb</code>
-            </li>
-            <li>
-                <icon-link-out />
-                <code>IconLinkOut</code>
-            </li>
-            <li>
-                <icon-location />
-                <code>IconLocation</code>
-            </li>
-            <li>
-                <icon-lock-off />
-                <code>IconLockOff</code>
-            </li>
-            <li>
-                <icon-lock-on />
-                <code>IconLockOn</code>
-            </li>
-            <li>
-                <icon-minus />
-                <code>IconMinus</code>
-            </li>
-            <li>
-                <icon-money-bag />
-                <code>IconMoneyBag</code>
-            </li>
-            <li>
-                <icon-open-envelope />
-                <code>IconOpenEnvelope</code>
-            </li>
-            <li>
-                <icon-paper />
-                <code>IconPaper</code>
-            </li>
-            <li>
-                <icon-pencil />
-                <code>IconPencil</code>
-            </li>
-            <li>
-                <icon-person-add />
-                <code>IconPersonAdd</code>
-            </li>
-            <li>
-                <icon-person-check />
-                <code>IconPersonCheck</code>
-            </li>
-            <li>
-                <icon-person-cross />
-                <code>IconPersonCross</code>
-            </li>
-            <li>
-                <icon-person />
-                <code>IconPerson</code>
-            </li>
-            <li>
-                <icon-phone />
-                <code>IconPhone</code>
-            </li>
-            <li>
-                <icon-play />
-                <code>IconPlay</code>
-            </li>
-            <li>
-                <icon-plus />
-                <code>IconPlus</code>
-            </li>
-            <li>
-                <icon-roof />
-                <code>IconRoof</code>
-            </li>
-            <li>
-                <icon-search />
-                <code>IconSearch</code>
-            </li>
-            <li>
-                <icon-settings-horizontal />
-                <code>IconSettingsHorizontal</code>
-            </li>
-            <li>
-                <icon-settings-vertical />
-                <code>IconSettingsVertical</code>
-            </li>
-            <li>
-                <icon-shield />
-                <code>IconShield</code>
-            </li>
-            <li>
-                <icon-shield-with-check />
-                <code>IconShieldWithCheck</code>
-            </li>
-            <li>
-                <icon-shopping-bag />
-                <code>IconShoppingBag</code>
-            </li>
-            <li>
-                <icon-solar />
-                <code>IconSolar</code>
-            </li>
-            <li>
-                <icon-sound-down />
-                <code>IconSoundDown</code>
-            </li>
-            <li>
-                <icon-sound-off />
-                <code>IconSoundOff</code>
-            </li>
-            <li>
-                <icon-sound-on />
-                <code>IconSoundOn</code>
-            </li>
-            <li>
-                <icon-sound-up />
-                <code>IconSoundUp</code>
-            </li>
-            <li>
-                <icon-thumbs-up />
-                <code>IconThumbsUp</code>
-            </li>
-            <li>
-                <icon-trash-can />
-                <code>IconTrashCan</code>
-            </li>
-            <li>
-                <icon-tree />
-                <code>IconTree</code>
-            </li>
-            <li>
-                <icon-upload />
-                <code>IconUpload</code>
-            </li>
-            <li>
-                <icon-verified />
-                <code>IconVerified</code>
-            </li>
-            <li>
-                <icon-wifi />
-                <code>IconWifi</code>
-            </li>
-            <li>
-                <icon-x />
-                <code>IconX</code>
-            </li>
-        </ul>
 
-        <h2>Rating Star Icons</h2>
-        <p>Default size for rating star icons is 20px by 20px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-star-empty />
-                <code>IconStarEmpty</code>
-            </li>
-            <li>
-                <icon-star-full />
-                <code>IconStarFull</code>
-            </li>
-            <li>
-                <icon-star-half />
-                <code>IconStarHalf</code>
-            </li>
-        </ul>
+        <div class="mb-300">
+            <h2 class="mt-300">Base icons</h2>
+            <p>
+                The default size of base icons is 24px by 24px, but you can change that by passing in
+                <code>height</code> and <code>width</code> props.
+            </p>
+            <ds-icon-list
+                :icons="baseIcons"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
 
-        <h2>Marketing Icons</h2>
-        <p>Default size for marketing icons is 32px by 32px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-bank />
-                <code>IconBank</code>
-            </li>
-            <li>
-                <icon-battery />
-                <code>IconBattery</code>
-            </li>
-            <li>
-                <icon-business />
-                <code>IconBusiness</code>
-            </li>
-            <li>
-                <icon-community-solar />
-                <code>IconCommunitySolar</code>
-            </li>
-            <li>
-                <icon-companies />
-                <code>IconCompanies</code>
-            </li>
-            <li>
-                <icon-contact-us />
-                <code>IconContactUs</code>
-            </li>
-            <li>
-                <icon-credit-card />
-                <code>IconCreditCard</code>
-            </li>
-            <li>
-                <icon-document />
-                <code>IconDocument</code>
-            </li>
-            <li>
-                <icon-electricity-circle />
-                <code>IconElectricityCircle</code>
-            </li>
-            <li>
-                <icon-electric-vehicle />
-                <code>IconElectricVehicle</code>
-            </li>
-            <li>
-                <icon-gift />
-                <code>IconGift</code>
-            </li>
-            <li>
-                <icon-heat-pump />
-                <code>IconHeatPump</code>
-            </li>
-            <li>
-                <icon-info-blog-post />
-                <code>IconInfoBlogPost</code>
-            </li>
-            <li>
-                <icon-marketplace />
-                <code>IconMarketplace</code>
-            </li>
-            <li>
-                <icon-money />
-                <code>IconMoney</code>
-            </li>
-            <li>
-                <icon-payback />
-                <code>IconPayback</code>
-            </li>
-            <li>
-                <icon-rooftop-solar />
-                <code>IconRooftopSolar</code>
-            </li>
-            <li>
-                <icon-saving />
-                <code>IconSaving</code>
-            </li>
-        </ul>
+        <div class="mb-300">
+            <h3 class="mt-300">Base icons not yet transitioned to Phosphor</h3>
+            <p>These are candidates for removal and are the subject of active conversations on the design team.</p>
+            <ds-icon-list
+                :icons="baseIconsNotPhosphor"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
 
-        <h2>Social icons</h2>
-        <p>Default size for social icons is 32px wide by 32px tall.</p>
-        <ul
-            class="ds-icon-list m-0 mb-100 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-bluesky />
-                <code>IconBluesky</code>
-            </li>
-            <li>
-                <icon-facebook />
-                <code>IconFacebook</code>
-            </li>
-            <li>
-                <icon-instagram />
-                <code>IconInstagram</code>
-            </li>
-            <li>
-                <icon-linkedin />
-                <code>IconLinkedin</code>
-            </li>
-            <li>
-                <icon-threads />
-                <code>IconThreads</code>
-            </li>
-            <li>
-                <icon-x-social />
-                <code>IconXSocial</code>
-            </li>
-            <li>
-                <icon-youtube />
-                <code>IconYoutube</code>
-            </li>
-        </ul>
-        <p>The following icons are deprecated and have been renamed.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-twitter />
-                <code>IconTwitter</code>
-            </li>
-        </ul>
+        <div class="mb-300">
+            <h2 class="mt-300">Rating stars</h2>
+            <p>The default size of rating star icons is 20px by 20px.</p>
+            <ds-icon-list
+                :icons="ratingStarIcons"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
 
-        <h2>File Icons</h2>
-        <p>Default size for file icons is 56px by 73px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-file-doc />
-                <code>IconFileDoc</code>
-            </li>
-            <li>
-                <icon-file-docx />
-                <code>IconFileDocx</code>
-            </li>
-            <li>
-                <icon-file-pdf />
-                <code>IconFilePdf</code>
-            </li>
-        </ul>
+        <div class="mb-300">
+            <h2 class="mt-300">Marketing icons</h2>
+            <p>The default size of marketing icons is 32px by 32px.</p>
+            <ds-icon-list
+                :icons="marketingIcons"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
 
-        <h2>State Icons</h2>
-        <p>Default size for state icons is 24px by 24px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-state-ak />
-                <code>IconStateAk</code>
-            </li>
-            <li>
-                <icon-state-al />
-                <code>IconStateAl</code>
-            </li>
-            <li>
-                <icon-state-ar />
-                <code>IconStateAr</code>
-            </li>
-            <li>
-                <icon-state-az />
-                <code>IconStateAz</code>
-            </li>
-            <li>
-                <icon-state-ca />
-                <code>IconStateCa</code>
-            </li>
-            <li>
-                <icon-state-co />
-                <code>IconStateCo</code>
-            </li>
-            <li>
-                <icon-state-ct />
-                <code>IconStateCt</code>
-            </li>
-            <li>
-                <icon-state-dc />
-                <code>IconStateDc</code>
-            </li>
-            <li>
-                <icon-state-de />
-                <code>IconStateDe</code>
-            </li>
-            <li>
-                <icon-state-fl />
-                <code>IconStateFl</code>
-            </li>
-            <li>
-                <icon-state-ga />
-                <code>IconStateGa</code>
-            </li>
-            <li>
-                <icon-state-hi />
-                <code>IconStateHi</code>
-            </li>
-            <li>
-                <icon-state-ia />
-                <code>IconStateIa</code>
-            </li>
-            <li>
-                <icon-state-id />
-                <code>IconStateId</code>
-            </li>
-            <li>
-                <icon-state-il />
-                <code>IconStateIl</code>
-            </li>
-            <li>
-                <icon-state-in />
-                <code>IconStateIn</code>
-            </li>
-            <li>
-                <icon-state-ks />
-                <code>IconStateKs</code>
-            </li>
-            <li>
-                <icon-state-ky />
-                <code>IconStateKy</code>
-            </li>
-            <li>
-                <icon-state-la />
-                <code>IconStateLa</code>
-            </li>
-            <li>
-                <icon-state-ma />
-                <code>IconStateMa</code>
-            </li>
-            <li>
-                <icon-state-md />
-                <code>IconStateMd</code>
-            </li>
-            <li>
-                <icon-state-me />
-                <code>IconStateMe</code>
-            </li>
-            <li>
-                <icon-state-mi />
-                <code>IconStateMi</code>
-            </li>
-            <li>
-                <icon-state-mn />
-                <code>IconStateMn</code>
-            </li>
-            <li>
-                <icon-state-mo />
-                <code>IconStateMo</code>
-            </li>
-            <li>
-                <icon-state-ms />
-                <code>IconStateMs</code>
-            </li>
-            <li>
-                <icon-state-mt />
-                <code>IconStateMt</code>
-            </li>
-            <li>
-                <icon-state-nc />
-                <code>IconStateNc</code>
-            </li>
-            <li>
-                <icon-state-nd />
-                <code>IconStateNd</code>
-            </li>
-            <li>
-                <icon-state-ne />
-                <code>IconStateNe</code>
-            </li>
-            <li>
-                <icon-state-nh />
-                <code>IconStateNh</code>
-            </li>
-            <li>
-                <icon-state-nj />
-                <code>IconStateNj</code>
-            </li>
-            <li>
-                <icon-state-nm />
-                <code>IconStateNm</code>
-            </li>
-            <li>
-                <icon-state-nv />
-                <code>IconStateNv</code>
-            </li>
-            <li>
-                <icon-state-ny />
-                <code>IconStateNy</code>
-            </li>
-            <li>
-                <icon-state-oh />
-                <code>IconStateOh</code>
-            </li>
-            <li>
-                <icon-state-ok />
-                <code>IconStateOk</code>
-            </li>
-            <li>
-                <icon-state-or />
-                <code>IconStateOr</code>
-            </li>
-            <li>
-                <icon-state-pa />
-                <code>IconStatePa</code>
-            </li>
-            <li>
-                <icon-state-ri />
-                <code>IconStateRi</code>
-            </li>
-            <li>
-                <icon-state-sc />
-                <code>IconStateSc</code>
-            </li>
-            <li>
-                <icon-state-sd />
-                <code>IconStateSd</code>
-            </li>
-            <li>
-                <icon-state-tn />
-                <code>IconStateTn</code>
-            </li>
-            <li>
-                <icon-state-tx />
-                <code>IconStateTx</code>
-            </li>
-            <li>
-                <icon-state-ut />
-                <code>IconStateUt</code>
-            </li>
-            <li>
-                <icon-state-va />
-                <code>IconStateVa</code>
-            </li>
-            <li>
-                <icon-state-vt />
-                <code>IconStateVt</code>
-            </li>
-            <li>
-                <icon-state-wa />
-                <code>IconStateWa</code>
-            </li>
-            <li>
-                <icon-state-wi />
-                <code>IconStateWi</code>
-            </li>
-            <li>
-                <icon-state-wv />
-                <code>IconStateWv</code>
-            </li>
-            <li>
-                <icon-state-wy />
-                <code>IconStateWy</code>
-            </li>
-        </ul>
-        <h2>Miscellaneous Icons</h2>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0"
-            :class="{ [textColorClass()]: true }">
-            <li>
-                <icon-video-play />
-                <code>IconVideoPlay</code>
-            </li>
-        </ul>
+        <div class="mb-300">
+            <h2 class="mt-300">Social icons</h2>
+            <p>The default size of social icons is 32px by 32px.</p>
+            <ds-icon-list
+                :icons="socialIcons"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+            <p>The following icons are deprecated and have been renamed.</p>
+            <ds-icon-list
+                :icons="deprecatedSocialIcons"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
+
+        <div class="mb-300">
+            <h2 class="mt-300">File icons</h2>
+            <p>The default size of file icons is 56px by 73px.</p>
+            <ds-icon-list
+                :icons="fileIcons"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
+
+        <div class="mb-300">
+            <h2 class="mt-300">State icons</h2>
+            <p>The default size of state icons is 24px by 24px.</p>
+            <ds-icon-list
+                :icons="stateIcons"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
+
+        <div class="mb-300">
+            <h2 class="mt-300">Video play icon</h2>
+            <p>
+                The default size of the video play icon is 74px by 54px. It will take the text color of its container,
+                but at 50% opacity. The triangle in the middle has a hardcoded white fill.
+            </p>
+            <ds-icon-list
+                :icons="videoPlayIcons"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
 
         <ds-doc-source
             :doc-code="docCode"
             doc-source="es-ds-docs/atoms/icons.vue" />
     </div>
 </template>
-
-<style lang="scss" scoped>
-@use '@energysage/es-ds-styles/scss/variables' as variables;
-@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
-
-.ds-icon-list {
-    list-style: none;
-}
-
-.ds-icon-list li {
-    align-items: center;
-    /* avoid break inside so Safari renders things properly */
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    /* so we don't have to repeat the utility classes many times */
-    display: flex;
-    padding: 0.5rem 0;
-    page-break-inside: avoid;
-}
-
-.ds-icon-list svg {
-    flex-shrink: 0;
-}
-
-.ds-icon-list code {
-    /* so we don't have to repeat the utility classes many times */
-    color: variables.$body-color;
-    margin-left: 0.5rem;
-}
-
-@include breakpoints.media-breakpoint-up(sm) {
-    .ds-icon-list {
-        column-count: 2;
-    }
-}
-
-@include breakpoints.media-breakpoint-up(lg) {
-    .ds-icon-list {
-        column-count: 3;
-    }
-}
-
-@include breakpoints.media-breakpoint-up(xxl) {
-    .ds-icon-list {
-        column-count: 4;
-    }
-}
-</style>
