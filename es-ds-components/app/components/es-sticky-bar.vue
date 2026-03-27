@@ -161,6 +161,7 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
 
     // translated off screen above the viewport
     &--fixed-hidden {
+        box-shadow: none;
         transform: translateY(-100%);
     }
 

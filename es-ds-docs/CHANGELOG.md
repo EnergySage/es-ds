@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.0.3...es-ds-docs-v5.1.0) (2026-03-27)
+
+
+### Features
+
+* added EsStickyBar ([#1718](https://github.com/EnergySage/es-ds/issues/1718)) ([9940605](https://github.com/EnergySage/es-ds/commit/994060525ea5c8a04ff3abfdd593e01b5c304176))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.0.2 to ^5.1.0
+
 ## [5.0.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.0.2...es-ds-docs-v5.0.3) (2026-03-18)
 
 
