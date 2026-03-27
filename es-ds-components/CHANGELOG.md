@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.1.0...es-ds-components-v5.2.0) (2026-03-27)
+
+
+### Features
+
+* update to Phosphor icon library ([#1689](https://github.com/EnergySage/es-ds/issues/1689)) ([78bd39b](https://github.com/EnergySage/es-ds/commit/78bd39b2e3325722bfa71e660961cba0de2766ed))
+
+
+### Bug Fixes
+
+* ensure shadow is not visible when sticky bar is hidden ([#1720](https://github.com/EnergySage/es-ds/issues/1720)) ([68a7396](https://github.com/EnergySage/es-ds/commit/68a73966dba1eabb170eb0e0cb8ae5a22b6057f7))
+
 ## [5.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.0.2...es-ds-components-v5.1.0) (2026-03-27)
 
 
