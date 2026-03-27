@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.1.0...es-ds-docs-v5.2.0) (2026-03-27)
+
+
+### Features
+
+* update to Phosphor icon library ([#1689](https://github.com/EnergySage/es-ds/issues/1689)) ([78bd39b](https://github.com/EnergySage/es-ds/commit/78bd39b2e3325722bfa71e660961cba0de2766ed))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.1.0 to ^5.2.0
+
 ## [5.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.0.3...es-ds-docs-v5.1.0) (2026-03-27)
 
 
