@@ -480,15 +480,15 @@ const baseIcons = [
 const baseIconsNotPhosphor = [
     {
         name: 'chat add',
-        component: IconChatAdd
+        component: IconChatAdd,
     },
     {
         name: 'chat approve',
-        component: IconChatApprove
+        component: IconChatApprove,
     },
     {
         name: 'ES leaf',
-        component: IconEsLeaf
+        component: IconEsLeaf,
     },
 ];
 
@@ -531,7 +531,8 @@ onMounted(async () => {
         <div class="mb-300">
             <h2 class="mt-300">Base icons</h2>
             <p>
-                The default size of base icons is 24px by 24px, but you can change that by passing in <code>height</code> and <code>width</code> props.
+                The default size of base icons is 24px by 24px, but you can change that by passing in
+                <code>height</code> and <code>width</code> props.
             </p>
             <ul class="ds-icon-examples list-unstyled">
                 <li
@@ -561,9 +562,7 @@ onMounted(async () => {
 
         <div class="mb-300">
             <h3 class="mt-300">Base icons not yet transitioned to Phosphor</h3>
-            <p>
-                These are candidates for removal and are the subject of active conversations on the design team.
-            </p>
+            <p>These are candidates for removal and are the subject of active conversations on the design team.</p>
             <ul class="ds-icon-examples list-unstyled">
                 <li
                     v-for="icon in baseIconsNotPhosphor"
@@ -585,8 +584,7 @@ onMounted(async () => {
 
         <h2>Base Icons</h2>
         <p>Default size for base icons is 24px by 24px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0">
+        <ul class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-arrow />
                 <code>IconArrow</code>
@@ -595,8 +593,7 @@ onMounted(async () => {
 
         <h2>Rating Star Icons</h2>
         <p>Default size for rating star icons is 20px by 20px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0">
+        <ul class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-star-empty />
                 <code>IconStarEmpty</code>
@@ -613,8 +610,7 @@ onMounted(async () => {
 
         <h2>Marketing Icons</h2>
         <p>Default size for marketing icons is 32px by 32px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0">
+        <ul class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-bank />
                 <code>IconBank</code>
@@ -691,8 +687,7 @@ onMounted(async () => {
 
         <h2>Social icons</h2>
         <p>Default size for social icons is 32px wide by 32px tall.</p>
-        <ul
-            class="ds-icon-list m-0 mb-100 p-0">
+        <ul class="ds-icon-list m-0 mb-100 p-0">
             <li>
                 <icon-bluesky />
                 <code>IconBluesky</code>
@@ -723,8 +718,7 @@ onMounted(async () => {
             </li>
         </ul>
         <p>The following icons are deprecated and have been renamed.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0">
+        <ul class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-twitter />
                 <code>IconTwitter</code>
@@ -733,8 +727,7 @@ onMounted(async () => {
 
         <h2>File Icons</h2>
         <p>Default size for file icons is 56px by 73px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0">
+        <ul class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-file-doc />
                 <code>IconFileDoc</code>
@@ -751,8 +744,7 @@ onMounted(async () => {
 
         <h2>State Icons</h2>
         <p>Default size for state icons is 24px by 24px.</p>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0">
+        <ul class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-state-ak />
                 <code>IconStateAk</code>
@@ -959,8 +951,7 @@ onMounted(async () => {
             </li>
         </ul>
         <h2>Miscellaneous Icons</h2>
-        <ul
-            class="ds-icon-list m-0 mb-300 p-0">
+        <ul class="ds-icon-list m-0 mb-300 p-0">
             <li>
                 <icon-video-play />
                 <code>IconVideoPlay</code>
