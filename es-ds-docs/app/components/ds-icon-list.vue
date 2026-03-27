@@ -24,7 +24,7 @@ withDefaults(defineProps<IProps>(), {
             :key="icon.name"
             class="ds-icon-list-item align-items-center d-flex mb-50">
             <span
-                class="d-flex px-100 py-50 rounded-sm"
+                class="ds-icon-preview d-flex px-100 py-50 rounded-sm"
                 :class="{
                     'bg-dark-blue text-white': isDarkBackgroundActive,
                 }">
@@ -63,5 +63,9 @@ withDefaults(defineProps<IProps>(), {
 .ds-icon-list-item {
     break-inside: avoid;
     -webkit-column-break-inside: avoid;
+}
+
+.ds-icon-preview {
+    transition: variables.$transition-base;
 }
 </style>
