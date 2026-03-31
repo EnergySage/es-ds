@@ -24,13 +24,13 @@ const subNavCloseHandlers: Ref<Function[]> = ref([]);
 
 const contentPaneTransformXs = computed(() => `translateX(${depth.value * -100}vw)`);
 const contentPaneTransformSm = computed(() => `translateX(${depth.value * -1 * props.width}px)`);
-const displayedName = computed(() => nameStack.value.length > 0 ? nameStack.value[nameStack.value.length - 1] : '');
+const displayedName = computed(() => (nameStack.value.length > 0 ? nameStack.value[nameStack.value.length - 1] : ''));
 const menuClosedTranslateX = computed(() => (props.from === 'right' ? '100%' : '-100%'));
 const mobileNavParentElement = useTemplateRef('mobileNavParentElement');
 
 // positioning and width of the mobile nav
-const left = computed(() => props.from === 'left' ? '0' : 'auto');
-const right = computed(() => props.from === 'right' ? '0' : 'auto');
+const left = computed(() => (props.from === 'left' ? '0' : 'auto'));
+const right = computed(() => (props.from === 'right' ? '0' : 'auto'));
 const widthPx = computed(() => `${props.width}px`);
 
 // closes the top-level menu
@@ -123,15 +123,14 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
         class="es-mobile-nav d-flex"
         disable-hover-trigger
         disable-pointer-leave-close>
-
         <!-- overlay -->
         <teleport to="body">
             <div
                 class="es-mobile-nav-overlay position-absolute"
                 :class="{
-                    'active': !!activeMenuId
+                    active: !!activeMenuId,
                 }"
-                @click="activeMenuId = ''"/>
+                @click="activeMenuId = ''" />
         </teleport>
 
         <!-- since the first level is a single item, prevent it from being a <ul> and <li> -->
@@ -145,7 +144,6 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
                 <slot />
             </navigation-menu-item>
         </navigation-menu-list>
-
     </navigation-menu-root>
 </template>
 

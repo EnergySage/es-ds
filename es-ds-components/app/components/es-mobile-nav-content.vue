@@ -2,15 +2,22 @@
 import { NavigationMenuContent } from 'reka-ui';
 
 const closeMenu: (...args: any[]) => void = inject('closeMenu', () => {});
-const currentDepth = inject('currentDepth', computed(() => 0));
+const currentDepth = inject(
+    'currentDepth',
+    computed(() => 0),
+);
 const displayedName = inject('displayedName', '');
 const goBack = inject('goBack', () => {});
 const isElementWithinMenu: (...args: any[]) => boolean = inject('isElementWithinMenu', () => true);
 
 const direction = ref(1);
-watch(currentDepth, (newVal, oldVal) => {
-    direction.value = newVal > oldVal ? 1 : -1;
-}, { flush: 'sync' });
+watch(
+    currentDepth,
+    (newVal, oldVal) => {
+        direction.value = newVal > oldVal ? 1 : -1;
+    },
+    { flush: 'sync' },
+);
 
 const transitionName = computed(() => (direction.value > 0 ? 'nav-title-forward' : 'nav-title-back'));
 
@@ -30,12 +37,12 @@ const focusOutside = (e: any) => {
         @focus-outside="focusOutside"
         @interact-outside.prevent.stop
         @pointer-down-outside.prevent.stop>
-        <div class="es-mobile-nav-content-header align-items-center d-flex justify-content-center position-relative w-100">
-
+        <div
+            class="es-mobile-nav-content-header align-items-center d-flex justify-content-center position-relative w-100">
             <!-- back button -->
             <es-button
                 class="es-mobile-nav-back-button p-50 position-absolute text-blue-900"
-                :class="{ 'hide': currentDepth === 0 }"
+                :class="{ hide: currentDepth === 0 }"
                 inline
                 variant="link"
                 @click="goBack">
@@ -43,12 +50,20 @@ const focusOutside = (e: any) => {
                 <span class="sr-only">back</span>
             </es-button>
 
-            <div style="display: grid;">
-                <Transition :name="transitionName">
+            <div style="display: grid">
+                <transition :name="transitionName">
                     <div
                         :key="displayedName || 'logo'"
-                        style="grid-area: 1 / 1; display: flex; align-items: center; justify-content: center; height: 30px;">
-                        <div v-if="displayedName" class="font-weight-bolder">
+                        style="
+                            grid-area: 1 / 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 30px;
+                        ">
+                        <div
+                            v-if="displayedName"
+                            class="font-weight-bolder">
                             {{ displayedName }}
                         </div>
                         <es-logo
@@ -57,7 +72,7 @@ const focusOutside = (e: any) => {
                             height="30px"
                             width="135px" />
                     </div>
-                </Transition>
+                </transition>
             </div>
 
             <!-- close button -->
@@ -69,7 +84,6 @@ const focusOutside = (e: any) => {
                 <icon-x />
                 <span class="sr-only">close</span>
             </es-button>
-
         </div>
         <div class="es-mobile-nav-content-pane position-relative">
             <slot />

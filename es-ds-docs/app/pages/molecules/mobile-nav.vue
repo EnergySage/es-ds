@@ -14,25 +14,25 @@ const items: EsMobileNavItemInterface[] = [
                 items: [
                     {
                         name: 'Solar calculator',
-                        href: 'https://www.energysage.com/solar/calculator/'
+                        href: 'https://www.energysage.com/solar/calculator/',
                     },
                     {
                         name: 'Your guide to home solar',
-                        href: 'https://www.energysage.com/solar/'
+                        href: 'https://www.energysage.com/solar/',
                     },
                     {
                         name: 'How much do solar panels cost?',
-                        href: 'https://www.energysage.com/local-data/solar-panel-cost/'
+                        href: 'https://www.energysage.com/local-data/solar-panel-cost/',
                     },
                     {
                         name: 'Is solar right for you?',
-                        href: 'https://www.energysage.com/solar/are-solar-panels-worth-it/'
+                        href: 'https://www.energysage.com/solar/are-solar-panels-worth-it/',
                     },
                     {
                         name: 'How much does solar save you?',
-                        href: 'https://www.energysage.com/solar/much-solar-panels-save/'
+                        href: 'https://www.energysage.com/solar/much-solar-panels-save/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Compare your options',
@@ -57,34 +57,34 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Compare installers',
                         href: 'https://www.energysage.com/supplier/search/?selected_facets=services%3Ainstallers',
                     },
-                ]
+                ],
             },
             {
                 name: 'Paying for solar',
                 items: [
                     {
                         name: 'Financing options',
-                        href: 'https://www.energysage.com/solar/how-to-pay-for-solar/'
+                        href: 'https://www.energysage.com/solar/how-to-pay-for-solar/',
                     },
                     {
                         name: 'Prepaid leases and PPAs',
-                        href: 'https://www.energysage.com/solar/pre-paid-solar-leases-and-ppas/'
+                        href: 'https://www.energysage.com/solar/pre-paid-solar-leases-and-ppas/',
                     },
                     {
                         name: 'Zero-down solar',
-                        href: 'https://www.energysage.com/solar/solar-loans/zero-down-solar-financing-options/'
+                        href: 'https://www.energysage.com/solar/solar-loans/zero-down-solar-financing-options/',
                     },
                     {
                         name: 'Incentives',
-                        href: 'https://www.energysage.com/local-data/solar-rebates-incentives/'
+                        href: 'https://www.energysage.com/local-data/solar-rebates-incentives/',
                     },
                     {
                         name: 'When will you break even?',
-                        href: 'https://www.energysage.com/solar/understanding-your-solar-panel-payback-period/'
+                        href: 'https://www.energysage.com/solar/understanding-your-solar-panel-payback-period/',
                     },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
     {
         name: 'Home batteries',
@@ -112,7 +112,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Already have solar panels?',
                         href: 'https://www.energysage.com/energy-storage/adding-battery-to-solar-energy-system-as-retrofit/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Compare your options',
@@ -133,7 +133,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Do you need whole home backup?',
                         href: 'https://www.energysage.com/energy-storage/best-batteries-for-whole-home-backup/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Paying for batteries',
@@ -150,9 +150,9 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Virtual power plants (VPP)s',
                         href: 'https://www.energysage.com/energy-storage/what-is-a-virtual-power-plant/',
                     },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
     {
         name: 'Heat pumps',
@@ -180,7 +180,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Heat pump vs. AC',
                         href: 'https://www.energysage.com/heat-pumps/heat-pump-vs-ac/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Compare your options',
@@ -205,7 +205,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Pairing with solar',
                         href: 'https://www.energysage.com/heat-pumps/how-many-solar-panels-for-air-source-heat-pumps/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Paying for heat pumps',
@@ -226,9 +226,9 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'How much can heat pumps save you?',
                         href: 'https://www.energysage.com/heat-pumps/heat-pump-save-money/',
                     },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
     {
         name: 'EV charging',
@@ -256,7 +256,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Do you need an electrical panel upgrade?',
                         href: 'https://www.energysage.com/ev-charging/do-you-need-an-electrical-panel-upgrade-for-your-ev-/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Compare your options',
@@ -281,7 +281,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Pairing with solar',
                         href: 'https://www.energysage.com/ev-charging/how-many-panels-do-you-need-for-your-ev/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Shopping for an EV?',
@@ -294,9 +294,9 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Buying vs. leasing',
                         href: 'https://www.energysage.com/electric-vehicles/how-to-pay-for-your-ev/',
                     },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
     {
         name: 'Other projects',
@@ -312,7 +312,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Is energy efficiency worth it?',
                         href: 'https://www.energysage.com/energy-efficiency/energy-efficient-homes/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Electricity plans',
@@ -325,9 +325,9 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Should you switch providers?',
                         href: 'https://www.energysage.com/blog/power-to-choose-your-electricity-plan/',
                     },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
     {
         name: 'About us',
@@ -359,7 +359,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Editorial guidelines',
                         href: 'https://www.energysage.com/editorial-guidelines/',
                     },
-                ]
+                ],
             },
             {
                 name: 'Resources',
@@ -384,7 +384,7 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Plugged In YouTube show',
                         href: 'https://www.youtube.com/@EnergySage',
                     },
-                ]
+                ],
             },
             {
                 name: 'Work with us',
@@ -413,10 +413,10 @@ const items: EsMobileNavItemInterface[] = [
                         name: 'Others',
                         href: 'https://www.energysage.com/partners/',
                     },
-                ]
-            }
-        ]
-    }
+                ],
+            },
+        ],
+    },
 ];
 </script>
 
@@ -426,23 +426,31 @@ const items: EsMobileNavItemInterface[] = [
 
         <div class="my-300">
             <es-mobile-nav>
-                <es-mobile-nav-trigger>
-                    open the mobile nav
-                </es-mobile-nav-trigger>
+                <es-mobile-nav-trigger> open the mobile nav </es-mobile-nav-trigger>
                 <es-mobile-nav-content>
-                    <template v-for="item in items" :key="item.name">
+                    <template
+                        v-for="item in items"
+                        :key="item.name">
                         <es-mobile-nav-link
                             v-if="item.href"
                             :href="item.href"
                             :name="item.name" />
-                        <es-mobile-sub-nav v-else :name="item.name">
-                            <template v-for="subItem in item.items" :key="subItem.name">
+                        <es-mobile-sub-nav
+                            v-else
+                            :name="item.name">
+                            <template
+                                v-for="subItem in item.items"
+                                :key="subItem.name">
                                 <es-mobile-nav-link
                                     v-if="subItem.href"
                                     :href="subItem.href"
                                     :name="subItem.name" />
-                                <es-mobile-sub-nav v-else :name="subItem.name">
-                                    <template v-for="subSubItem in subItem.items" :key="subSubItem.name">
+                                <es-mobile-sub-nav
+                                    v-else
+                                    :name="subItem.name">
+                                    <template
+                                        v-for="subSubItem in subItem.items"
+                                        :key="subSubItem.name">
                                         <es-mobile-nav-link
                                             v-if="subSubItem.href"
                                             :href="subSubItem.href"

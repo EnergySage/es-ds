@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuSub, NavigationMenuTrigger } from 'reka-ui';
+import {
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuList,
+    NavigationMenuSub,
+    NavigationMenuTrigger,
+} from 'reka-ui';
 
 interface IProps {
     defaultValue?: string;
@@ -168,7 +174,7 @@ $transition-duration: 100ms;
         width: 100%;
 
         @include breakpoints.media-breakpoint-up(sm) {
-            left: var(--mobile-nav-width)
+            left: var(--mobile-nav-width);
         }
     }
 }
