@@ -2,10 +2,17 @@
 import { NavigationMenuContent } from 'reka-ui';
 
 const closeMenu: (...args: any[]) => void = inject('closeMenu', () => {});
-const currentDepth = inject('currentDepth', 0);
+const currentDepth = inject('currentDepth', computed(() => 0));
 const displayedName = inject('displayedName', '');
 const goBack = inject('goBack', () => {});
 const isElementWithinMenu: (...args: any[]) => boolean = inject('isElementWithinMenu', () => true);
+
+const direction = ref(1);
+watch(currentDepth, (newVal, oldVal) => {
+    direction.value = newVal > oldVal ? 1 : -1;
+}, { flush: 'sync' });
+
+const transitionName = computed(() => (direction.value > 0 ? 'nav-title-forward' : 'nav-title-back'));
 
 const focusOutside = (e: any) => {
     // if focus is on something outside of the overall menu, close it
@@ -36,14 +43,22 @@ const focusOutside = (e: any) => {
                 <span class="sr-only">back</span>
             </es-button>
 
-            <div v-if="displayedName" class="font-weight-bolder">
-                {{ displayedName }}
+            <div style="display: grid;">
+                <Transition :name="transitionName">
+                    <div
+                        :key="displayedName || 'logo'"
+                        style="grid-area: 1 / 1; display: flex; align-items: center; justify-content: center; height: 30px;">
+                        <div v-if="displayedName" class="font-weight-bolder">
+                            {{ displayedName }}
+                        </div>
+                        <es-logo
+                            v-else
+                            aria-hidden
+                            height="30px"
+                            width="135px" />
+                    </div>
+                </Transition>
             </div>
-            <es-logo
-                v-else
-                aria-hidden
-                height="30px"
-                width="135px" />
 
             <!-- close button -->
             <es-button
@@ -61,3 +76,30 @@ const focusOutside = (e: any) => {
         </div>
     </navigation-menu-content>
 </template>
+
+<style scoped>
+.nav-title-forward-enter-from {
+    opacity: 0;
+    transform: translateX(20px);
+}
+.nav-title-forward-leave-to {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+.nav-title-back-enter-from {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+.nav-title-back-leave-to {
+    opacity: 0;
+    transform: translateX(20px);
+}
+.nav-title-forward-enter-active,
+.nav-title-forward-leave-active,
+.nav-title-back-enter-active,
+.nav-title-back-leave-active {
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+</style>
