@@ -130,8 +130,7 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
                 class="d-flex">
                 <slot />
             </navigation-menu-item>
-
-            </navigation-menu-list>
+        </navigation-menu-list>
     </navigation-menu-root>
 </template>
 

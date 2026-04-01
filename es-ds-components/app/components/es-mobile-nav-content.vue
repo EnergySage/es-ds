@@ -14,7 +14,10 @@ const displayedName = inject('displayedName', '');
 const from = inject('from', ref<'left' | 'right'>('left'));
 const goBack = inject('goBack', () => {});
 const width = inject('width', ref(400));
-const widthPx = inject('widthPx', computed(() => '400px'));
+const widthPx = inject(
+    'widthPx',
+    computed(() => '400px'),
+);
 
 // derived values for CSS custom properties set directly on the element
 const animationDurationMs = `${animationDuration}ms`;

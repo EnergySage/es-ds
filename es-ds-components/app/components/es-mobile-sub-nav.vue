@@ -24,7 +24,10 @@ const increaseDepth: (...args: any[]) => void = inject('increaseDepth', () => {}
 const isElementWithinMenu: (...args: any[]) => boolean = inject('isElementWithinMenu', () => true);
 const registerSubNavCloseHandler: Function | undefined = inject('registerSubNavCloseHandler');
 const waitForAnimationDuration = inject('waitForAnimationDuration', () => {});
-const widthPx = inject('widthPx', computed(() => '400px'));
+const widthPx = inject(
+    'widthPx',
+    computed(() => '400px'),
+);
 
 const escapeKeyDown = (e: any) => {
     // prevent the Esc key from immediately closing all submenus prior to the mobile nav animating closed

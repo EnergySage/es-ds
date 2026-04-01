@@ -430,7 +430,6 @@ const items: EsMobileNavItemInterface[] = [
     <div>
         <es-sticky-bar>
             <div class="site-navigation align-items-center d-flex position-relative">
-
                 <!-- mobile nav -->
                 <es-mobile-nav>
                     <es-mobile-nav-trigger>
@@ -473,13 +472,14 @@ const items: EsMobileNavItemInterface[] = [
                     </es-mobile-nav-content>
                 </es-mobile-nav>
 
-                <a href="https://www.energysage.com" class="site-navigation-logo position-absolute">
+                <a
+                    href="https://www.energysage.com"
+                    class="site-navigation-logo position-absolute">
                     <es-logo
                         alt="EnergySage"
                         height="30px"
                         width="135px" />
                 </a>
-
             </div>
         </es-sticky-bar>
         <ds-main-layout>
