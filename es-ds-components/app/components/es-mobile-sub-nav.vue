@@ -166,7 +166,6 @@ $transition-duration: 100ms;
     }
 
     :deep(.es-mobile-sub-nav-item-content[data-state='open']) {
-        border-top: 1px solid variables.$gray-100;
         bottom: 0;
         left: 100vw;
         position: absolute;

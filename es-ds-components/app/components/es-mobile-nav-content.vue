@@ -79,7 +79,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
             @interact-outside.prevent.stop
             @pointer-down-outside.prevent.stop>
             <div
-                class="es-mobile-nav-content-header align-items-center d-flex justify-content-center position-relative w-100">
+                class="es-mobile-nav-content-header align-items-center bg-white d-flex justify-content-center position-fixed w-100">
                 <!-- back button -->
                 <es-button
                     class="es-mobile-nav-back-button p-50 position-absolute text-blue-900"
@@ -152,10 +152,13 @@ provide('isElementWithinMenu', isElementWithinMenu);
 }
 
 .es-mobile-nav-content {
+    --es-mobile-nav-header-height: 88px;
+
     bottom: 0;
     box-shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     left: 0;
     overflow-x: hidden;
+    padding-top: var(--es-mobile-nav-header-height);
     position: fixed;
     right: 0;
     top: 0;
@@ -179,7 +182,12 @@ provide('isElementWithinMenu', isElementWithinMenu);
 }
 
 .es-mobile-nav-content-header {
-    height: 88px;
+    border-bottom: 1px solid variables.$gray-100;
+    height: var(--es-mobile-nav-header-height);
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
 }
 
 .es-mobile-nav-back-button {
@@ -215,7 +223,6 @@ provide('isElementWithinMenu', isElementWithinMenu);
 }
 
 .es-mobile-nav-content-pane {
-    border-top: 1px solid variables.$gray-100;
     transform: var(--es-mobile-nav-content-pane-transform-xs);
 
     @media not (prefers-reduced-motion) {
