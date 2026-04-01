@@ -81,15 +81,17 @@ provide('isElementWithinMenu', isElementWithinMenu);
             <div
                 class="es-mobile-nav-content-header align-items-center bg-white d-flex justify-content-center position-sticky w-100">
                 <!-- back button -->
-                <es-button
-                    class="es-mobile-nav-back-button p-50 position-absolute text-blue-900"
-                    :class="{ hide: currentDepth === 0 }"
-                    inline
-                    variant="link"
-                    @click="goBack">
-                    <icon-arrow-left />
-                    <span class="sr-only">back</span>
-                </es-button>
+                <transition name="es-mobile-nav-back">
+                    <es-button
+                        v-if="currentDepth > 0"
+                        class="es-mobile-nav-back-button p-50 position-absolute text-blue-900"
+                        inline
+                        variant="link"
+                        @click="goBack">
+                        <icon-arrow-left aria-hidden />
+                        <span class="sr-only">back</span>
+                    </es-button>
+                </transition>
 
                 <!-- logo or subnav title, with smooth transition between them -->
                 <div class="es-mobile-nav-title-outer-container">
@@ -191,18 +193,8 @@ provide('isElementWithinMenu', isElementWithinMenu);
 
 .es-mobile-nav-back-button {
     left: variables.$spacer * 0.5;
-    opacity: 1;
     transform: translateY(-50%);
     top: 50%;
-
-    @media not (prefers-reduced-motion) {
-        transition: opacity var(--es-mobile-nav-animation-duration) ease-in-out;
-    }
-
-    &.hide {
-        opacity: 0;
-        pointer-events: none;
-    }
 
     svg {
         height: 20px !important;
@@ -236,6 +228,18 @@ provide('isElementWithinMenu', isElementWithinMenu);
 
 <!-- scoped: targets native elements directly in this component's template -->
 <style lang="scss" scoped>
+.es-mobile-nav-back-enter-from,
+.es-mobile-nav-back-leave-to {
+    opacity: 0;
+}
+
+@media not (prefers-reduced-motion) {
+    .es-mobile-nav-back-enter-active,
+    .es-mobile-nav-back-leave-active {
+        transition: opacity var(--es-mobile-nav-animation-duration) ease-in-out;
+    }
+}
+
 .es-mobile-nav-title-outer-container {
     /* necessary to keep the logo/titles centered as they show/hide and animate */
     display: grid;

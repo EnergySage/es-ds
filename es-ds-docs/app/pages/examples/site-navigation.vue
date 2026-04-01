@@ -433,8 +433,8 @@ const items: EsMobileNavItemInterface[] = [
                 <!-- mobile nav -->
                 <es-mobile-nav>
                     <es-mobile-nav-trigger>
-                        <span class="sr-only">Open the site navigation</span>
-                        <icon-hamburger />
+                        <span class="sr-only">Open navigation menu</span>
+                        <icon-hamburger aria-hidden />
                     </es-mobile-nav-trigger>
                     <es-mobile-nav-content>
                         <template
