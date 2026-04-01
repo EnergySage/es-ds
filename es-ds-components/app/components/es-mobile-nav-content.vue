@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { NavigationMenuContent } from 'reka-ui';
 
+// injected variables provided from EsMobileNav
 const closeMenu: (...args: any[]) => void = inject('closeMenu', () => {});
 const currentDepth = inject(
     'currentDepth',
@@ -10,7 +11,11 @@ const displayedName = inject('displayedName', '');
 const goBack = inject('goBack', () => {});
 const isElementWithinMenu: (...args: any[]) => boolean = inject('isElementWithinMenu', () => true);
 
+// directional animation of the submenu titles as you're going down and back up
 const direction = ref(1);
+const transitionName = computed(() =>
+    direction.value > 0 ? 'es-mobile-nav-title-forward' : 'es-mobile-nav-title-back',
+);
 watch(
     currentDepth,
     (newVal, oldVal) => {
@@ -18,8 +23,6 @@ watch(
     },
     { flush: 'sync' },
 );
-
-const transitionName = computed(() => (direction.value > 0 ? 'nav-title-forward' : 'nav-title-back'));
 
 const focusOutside = (e: any) => {
     // if focus is on something outside of the overall menu, close it
@@ -30,7 +33,7 @@ const focusOutside = (e: any) => {
 </script>
 
 <template>
-    <!-- styles defined with :deep() in EsMobileNav due to Reka UI's rendering method -->
+    <!-- most styles defined with :deep() in EsMobileNav due to Reka UI's rendering method -->
     <navigation-menu-content
         v-bind="$attrs"
         class="es-mobile-nav-content bg-white pb-50 px-50"
@@ -50,17 +53,12 @@ const focusOutside = (e: any) => {
                 <span class="sr-only">back</span>
             </es-button>
 
-            <div style="display: grid">
+            <!-- logo or subnav title, with smooth transition between them -->
+            <div class="es-mobile-nav-title-outer-container">
                 <transition :name="transitionName">
                     <div
                         :key="displayedName || 'logo'"
-                        style="
-                            grid-area: 1 / 1;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            height: 30px;
-                        ">
+                        class="es-mobile-nav-title-inner-container align-items-center d-flex justify-content-center">
                         <div
                             v-if="displayedName"
                             class="font-weight-bolder">
@@ -91,29 +89,46 @@ const focusOutside = (e: any) => {
     </navigation-menu-content>
 </template>
 
-<style scoped>
-.nav-title-forward-enter-from {
-    opacity: 0;
-    transform: translateX(20px);
+<style lang="scss" scoped>
+.es-mobile-nav-title-outer-container {
+    /* necessary to keep the logo/titles centered as they show/hide and animate */
+    display: grid;
 }
-.nav-title-forward-leave-to {
+
+.es-mobile-nav-title-inner-container {
+    /* necessary to keep the logo/titles centered as they show/hide and animate */
+    grid-area: 1 / 1;
+    height: 30px;
+}
+
+.es-mobile-nav-title-back-enter-from {
     opacity: 0;
     transform: translateX(-20px);
 }
-.nav-title-back-enter-from {
-    opacity: 0;
-    transform: translateX(-20px);
-}
-.nav-title-back-leave-to {
+
+.es-mobile-nav-title-back-leave-to {
     opacity: 0;
     transform: translateX(20px);
 }
-.nav-title-forward-enter-active,
-.nav-title-forward-leave-active,
-.nav-title-back-enter-active,
-.nav-title-back-leave-active {
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+
+.es-mobile-nav-title-forward-enter-from {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.es-mobile-nav-title-forward-leave-to {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+@media not (prefers-reduced-motion) {
+    .es-mobile-nav-title-forward-enter-active,
+    .es-mobile-nav-title-forward-leave-active,
+    .es-mobile-nav-title-back-enter-active,
+    .es-mobile-nav-title-back-leave-active {
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+    }
 }
 </style>
