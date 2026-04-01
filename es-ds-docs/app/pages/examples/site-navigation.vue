@@ -3,7 +3,7 @@ definePageMeta({
     layout: 'minimal',
 });
 
-const samplePageContent = Array(10).fill('test');
+const samplePageContent = Array(10).fill('test content for scrolling');
 
 interface EsMobileNavItemInterface {
     name: string;
@@ -484,6 +484,9 @@ const items: EsMobileNavItemInterface[] = [
         </es-sticky-bar>
         <ds-main-layout>
             <h1>Site navigation</h1>
+            <p>
+                This page demonstrates how to use the <nuxt-link to="/molecules/mobile-nav">mobile nav</nuxt-link> inside of a <nuxt-link to="/molecules/sticky-bar">sticky bar</nuxt-link>.
+            </p>
 
             <p
                 v-for="(content, index) in samplePageContent"
