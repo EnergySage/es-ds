@@ -485,7 +485,9 @@ const items: EsMobileNavItemInterface[] = [
         <ds-main-layout>
             <h1>Site navigation</h1>
             <p>
-                This page demonstrates how to use the <nuxt-link to="/molecules/mobile-nav">mobile nav</nuxt-link> inside of a <nuxt-link to="/molecules/sticky-bar">sticky bar</nuxt-link>.
+                This page demonstrates how to use the
+                <nuxt-link to="/molecules/mobile-nav">mobile nav</nuxt-link> inside of a
+                <nuxt-link to="/molecules/sticky-bar">sticky bar</nuxt-link>.
             </p>
 
             <p
