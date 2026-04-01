@@ -3,7 +3,6 @@ import { useScrollLock } from '@vueuse/core';
 import { NavigationMenuItem, NavigationMenuList, NavigationMenuRoot } from 'reka-ui';
 
 // TODO: fix issue where going two levels down, switching to another window, then back to browser, closes all submenus
-// TODO: consider accessibility of submenu name header
 
 interface IProps {
     from?: 'left' | 'right';
@@ -144,10 +143,6 @@ $animation-duration: v-bind(ANIMATION_DURATION_MS);
 
 .es-mobile-nav {
     --mobile-nav-width: v-bind(widthPx);
-
-    & > div {
-        z-index: 2000;
-    }
 
     &-overlay {
         opacity: 0;
