@@ -65,7 +65,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
         <navigation-menu-content
             v-bind="$attrs"
             ref="mobileNavParentElement"
-            class="es-mobile-nav-content bg-white pb-50 px-50"
+            class="es-mobile-nav-content bg-white pb-50 position-fixed px-50"
             :style="{
                 '--es-mobile-nav-animation-duration': animationDurationMs,
                 '--es-mobile-nav-closed-translate-x': menuClosedTranslateX,
@@ -79,7 +79,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
             @interact-outside.prevent.stop
             @pointer-down-outside.prevent.stop>
             <div
-                class="es-mobile-nav-content-header align-items-center bg-white d-flex justify-content-center position-fixed w-100">
+                class="es-mobile-nav-content-header align-items-center bg-white d-flex justify-content-center position-sticky w-100">
                 <!-- back button -->
                 <es-button
                     class="es-mobile-nav-back-button p-50 position-absolute text-blue-900"
@@ -158,7 +158,6 @@ provide('isElementWithinMenu', isElementWithinMenu);
     box-shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     left: 0;
     overflow-x: hidden;
-    padding-top: var(--es-mobile-nav-header-height);
     position: fixed;
     right: 0;
     top: 0;

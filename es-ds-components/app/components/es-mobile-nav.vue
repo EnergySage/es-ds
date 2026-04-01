@@ -4,7 +4,6 @@ import { NavigationMenuItem, NavigationMenuList, NavigationMenuRoot } from 'reka
 
 // TODO: fix issue where going two levels down, switching to another window, then back to browser, closes all submenus
 // TODO: consider accessibility of submenu name header
-// TODO: scrolling inside
 
 interface IProps {
     from?: 'left' | 'right';
@@ -185,7 +184,7 @@ $animation-duration: v-bind(ANIMATION_DURATION_MS);
         background: transparent;
         border: none;
         color: variables.$dark-blue;
-        /*height: 40px;*/
+        min-height: 40px;
         margin: 0;
         padding: 0 variables.$spacer;
         position: relative;
