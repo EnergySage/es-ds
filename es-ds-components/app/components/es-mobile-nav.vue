@@ -120,7 +120,10 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
                 @click="activeMenuId = ''" />
         </teleport>
 
-        <!-- since the first level is a single item, prevent it from being a <ul> and <li> -->
+        <!--
+            since the first level is a single item - the trigger to open the mobile nav -
+            prevent it from being a <ul> and <li>
+        -->
         <navigation-menu-list
             as="div"
             class="es-mobile-nav-list d-flex">

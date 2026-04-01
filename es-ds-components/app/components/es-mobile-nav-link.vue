@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NavigationMenuLink } from 'reka-ui';
+import { NavigationMenuItem, NavigationMenuLink } from 'reka-ui';
 
 interface IProps {
     emphasize?: boolean;
@@ -14,30 +14,32 @@ withDefaults(defineProps<IProps>(), {
 </script>
 
 <template>
-    <navigation-menu-link
-        v-if="href"
-        as-child
-        @select.prevent.stop>
-        <a
-            v-if="emphasize"
-            class="es-mobile-nav-link es-mobile-nav-link-primary align-items-center d-flex font-weight-bolder justify-content-between p-100 rounded-sm"
-            :href="href"
-            :target="target">
-            {{ name }}
-            <icon-arrow-right
-                height="20px"
-                width="20px" />
-        </a>
-        <a
-            v-else
-            class="es-mobile-nav-link d-block font-size-75 font-weight-bolder"
-            :href="href"
-            :target="target">
-            <span class="d-block p-100 rounded-sm">
+    <navigation-menu-item>
+        <navigation-menu-link
+            v-if="href"
+            as-child
+            @select.prevent.stop>
+            <a
+                v-if="emphasize"
+                class="es-mobile-nav-link es-mobile-nav-link-primary align-items-center d-flex font-weight-bolder justify-content-between p-100 rounded-sm"
+                :href="href"
+                :target="target">
                 {{ name }}
-            </span>
-        </a>
-    </navigation-menu-link>
+                <icon-arrow-right
+                    height="20px"
+                    width="20px" />
+            </a>
+            <a
+                v-else
+                class="es-mobile-nav-link d-block font-size-75 font-weight-bolder"
+                :href="href"
+                :target="target">
+                <span class="d-block p-100 rounded-sm">
+                    {{ name }}
+                </span>
+            </a>
+        </navigation-menu-link>
+    </navigation-menu-item>
 </template>
 
 <style lang="scss" scoped>

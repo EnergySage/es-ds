@@ -77,35 +77,35 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
 </script>
 
 <template>
-    <navigation-menu-sub
-        v-bind="$attrs"
-        v-model="activeMenuId"
-        class="es-mobile-sub-nav"
-        :default-value="defaultValue"
-        orientation="vertical">
-        <navigation-menu-list class="es-mobile-sub-nav-list m-0 p-0">
-            <navigation-menu-item class="es-mobile-sub-nav-item">
-                <navigation-menu-trigger
-                    class="es-mobile-sub-nav-item-trigger d-block font-size-75 font-weight-bolder m-0 p-0 text-left w-100">
-                    <span class="d-flex justify-content-between p-100 rounded-sm w-100">
-                        {{ name }}
-                        <icon-chevron-right
-                            height="20px"
-                            width="20px" />
-                    </span>
-                </navigation-menu-trigger>
-                <navigation-menu-content
-                    v-bind="$attrs"
-                    class="es-mobile-sub-nav-item-content bg-white"
-                    @escape-key-down="escapeKeyDown"
-                    @focus-outside="focusOutside"
-                    @interact-outside.prevent.stop
-                    @pointer-down-outside.prevent.stop>
+    <navigation-menu-item>
+        <navigation-menu-sub
+            v-bind="$attrs"
+            v-model="activeMenuId"
+            class="es-mobile-sub-nav"
+            :default-value="defaultValue"
+            orientation="vertical">
+            <navigation-menu-trigger
+                class="es-mobile-sub-nav-item-trigger d-block font-size-75 font-weight-bolder m-0 p-0 text-left w-100">
+                <span class="d-flex justify-content-between p-100 rounded-sm w-100">
+                    {{ name }}
+                    <icon-chevron-right
+                        height="20px"
+                        width="20px" />
+                </span>
+            </navigation-menu-trigger>
+            <navigation-menu-content
+                v-bind="$attrs"
+                class="es-mobile-sub-nav-item-content bg-white"
+                @escape-key-down="escapeKeyDown"
+                @focus-outside="focusOutside"
+                @interact-outside.prevent.stop
+                @pointer-down-outside.prevent.stop>
+                <navigation-menu-list class="es-mobile-sub-nav-list list-unstyled m-0 p-0">
                     <slot />
-                </navigation-menu-content>
-            </navigation-menu-item>
-        </navigation-menu-list>
-    </navigation-menu-sub>
+                </navigation-menu-list>
+            </navigation-menu-content>
+        </navigation-menu-sub>
+    </navigation-menu-item>
 </template>
 
 <style lang="scss" scoped>
@@ -115,14 +115,7 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
 $transition-duration: 100ms;
 
 .es-mobile-sub-nav {
-    :deep(> div) {
-        /* disable Reka UI's automatically-applied position relative so our menus can position properly */
-        position: static !important;
-    }
-
     :deep(.es-mobile-sub-nav-list) {
-        list-style: none;
-
         li {
             margin: 0;
         }

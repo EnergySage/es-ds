@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NavigationMenuContent } from 'reka-ui';
+import { NavigationMenuContent, NavigationMenuList } from 'reka-ui';
 
 const mobileNavParentElement = useTemplateRef('mobileNavParentElement');
 
@@ -124,7 +124,9 @@ provide('isElementWithinMenu', isElementWithinMenu);
                 </es-button>
             </div>
             <div class="es-mobile-nav-content-pane position-relative">
-                <slot />
+                <navigation-menu-list class="list-unstyled">
+                    <slot />
+                </navigation-menu-list>
             </div>
         </navigation-menu-content>
     </teleport>
