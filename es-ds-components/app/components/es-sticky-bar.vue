@@ -115,7 +115,8 @@ onUnmounted(() => {
     <div
         ref="bar"
         class="es-sticky-bar bg-white"
-        :class="[`es-sticky-bar--${barState}`, { 'es-sticky-bar--no-transition': suppressTransition }]">
+        :class="[`es-sticky-bar--${barState}`, { 'es-sticky-bar--no-transition': suppressTransition }]"
+        v-bind="$attrs">
         <slot />
     </div>
     <!-- holds the bar's space in normal flow when the bar is absolutely or fixed positioned -->

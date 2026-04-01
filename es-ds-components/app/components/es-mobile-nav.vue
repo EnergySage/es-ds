@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { useScrollLock } from '@vueuse/core';
 import { NavigationMenuItem, NavigationMenuList, NavigationMenuRoot } from 'reka-ui';
 
-// TODO: disable body scrolling while mobile nav is active
 // TODO: fix issue where going two levels down, switching to another window, then back to browser, closes all submenus
 // TODO: consider accessibility of submenu name header
+// TODO: scrolling inside
 
 interface IProps {
     from?: 'left' | 'right';
@@ -27,6 +28,7 @@ const contentPaneTransformSm = computed(() => `translateX(${depth.value * -1 * p
 const displayedName = computed(() => (nameStack.value.length > 0 ? nameStack.value[nameStack.value.length - 1] : ''));
 const menuClosedTranslateX = computed(() => (props.from === 'right' ? '100%' : '-100%'));
 const mobileNavParentElement = useTemplateRef('mobileNavParentElement');
+const isScrollLocked = useScrollLock(import.meta.client ? document.body : null);
 
 // positioning and width of the mobile nav
 const left = computed(() => (props.from === 'left' ? '0' : 'auto'));
@@ -97,6 +99,8 @@ provide('waitForAnimationDuration', waitForAnimationDuration);
 provide('widthPx', widthPx);
 
 watch(activeMenuId, async (newVal: string, oldVal: string) => {
+    isScrollLocked.value = !!newVal;
+
     // if the menu is closing
     if (!newVal && oldVal) {
         // wait until the mobile nav closing animation is complete
@@ -126,7 +130,7 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
         <!-- overlay -->
         <teleport to="body">
             <div
-                class="es-mobile-nav-overlay position-absolute"
+                class="es-mobile-nav-overlay position-fixed"
                 :class="{
                     active: !!activeMenuId,
                 }"
@@ -134,16 +138,17 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
         </teleport>
 
         <!-- since the first level is a single item, prevent it from being a <ul> and <li> -->
-        <navigation-menu-list
-            ref="mobileNavParentElement"
-            as="div"
-            class="es-mobile-nav-list d-flex">
-            <navigation-menu-item
+
+            <navigation-menu-list
+                ref="mobileNavParentElement"
                 as="div"
-                class="d-flex">
-                <slot />
-            </navigation-menu-item>
-        </navigation-menu-list>
+                class="es-mobile-nav-list d-flex">
+                <navigation-menu-item
+                    as="div"
+                    class="d-flex">
+                    <slot />
+                </navigation-menu-item>
+            </navigation-menu-list>
     </navigation-menu-root>
 </template>
 
@@ -174,6 +179,11 @@ $animation-duration: v-bind(ANIMATION_DURATION_MS);
 .es-mobile-nav {
     --mobile-nav-width: v-bind(widthPx);
 
+
+    & > div {
+        z-index: 2000;
+    }
+
     &-overlay {
         opacity: 0;
         pointer-events: none;
@@ -189,7 +199,7 @@ $animation-duration: v-bind(ANIMATION_DURATION_MS);
             left: 0;
             right: 0;
             top: 0;
-            z-index: 990;
+            z-index: 1010;
 
             @media not (prefers-reduced-motion) {
                 transition: opacity $animation-duration ease-in-out;
@@ -226,7 +236,7 @@ $animation-duration: v-bind(ANIMATION_DURATION_MS);
         position: fixed;
         right: 0;
         top: 0;
-        z-index: 1000;
+        z-index: 1020;
 
         @media not (prefers-reduced-motion) {
             &[data-state='open'] {
