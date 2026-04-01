@@ -3,6 +3,8 @@ definePageMeta({
     layout: 'minimal',
 });
 
+const samplePageContent = Array(10).fill('test');
+
 interface EsMobileNavItemInterface {
     name: string;
     href?: string;
@@ -426,61 +428,69 @@ const items: EsMobileNavItemInterface[] = [
 
 <template>
     <div>
-        <es-sticky-bar class="site-navigation align-items-center d-flex">
+        <es-sticky-bar>
+            <div class="site-navigation align-items-center d-flex position-relative">
 
-            <!-- mobile nav -->
-            <es-mobile-nav>
-                <es-mobile-nav-trigger>
-                    <span class="sr-only">Open the site navigation</span>
-                    <icon-hamburger />
-                </es-mobile-nav-trigger>
-                <es-mobile-nav-content>
-                    <template
-                        v-for="item in items"
-                        :key="item.name">
-                        <es-mobile-nav-link
-                            v-if="item.href"
-                            :href="item.href"
-                            :name="item.name" />
-                        <es-mobile-sub-nav
-                            v-else
-                            :name="item.name">
-                            <template
-                                v-for="subItem in item.items"
-                                :key="subItem.name">
-                                <es-mobile-nav-link
-                                    v-if="subItem.href"
-                                    :href="subItem.href"
-                                    :name="subItem.name" />
-                                <es-mobile-sub-nav
-                                    v-else
-                                    :name="subItem.name">
-                                    <template
-                                        v-for="subSubItem in subItem.items"
-                                        :key="subSubItem.name">
-                                        <es-mobile-nav-link
-                                            v-if="subSubItem.href"
-                                            :href="subSubItem.href"
-                                            :name="subSubItem.name" />
-                                    </template>
-                                </es-mobile-sub-nav>
-                            </template>
-                        </es-mobile-sub-nav>
-                    </template>
-                </es-mobile-nav-content>
-            </es-mobile-nav>
+                <!-- mobile nav -->
+                <es-mobile-nav>
+                    <es-mobile-nav-trigger>
+                        <span class="sr-only">Open the site navigation</span>
+                        <icon-hamburger />
+                    </es-mobile-nav-trigger>
+                    <es-mobile-nav-content>
+                        <template
+                            v-for="item in items"
+                            :key="item.name">
+                            <es-mobile-nav-link
+                                v-if="item.href"
+                                :href="item.href"
+                                :name="item.name" />
+                            <es-mobile-sub-nav
+                                v-else
+                                :name="item.name">
+                                <template
+                                    v-for="subItem in item.items"
+                                    :key="subItem.name">
+                                    <es-mobile-nav-link
+                                        v-if="subItem.href"
+                                        :href="subItem.href"
+                                        :name="subItem.name" />
+                                    <es-mobile-sub-nav
+                                        v-else
+                                        :name="subItem.name">
+                                        <template
+                                            v-for="subSubItem in subItem.items"
+                                            :key="subSubItem.name">
+                                            <es-mobile-nav-link
+                                                v-if="subSubItem.href"
+                                                :href="subSubItem.href"
+                                                :name="subSubItem.name" />
+                                        </template>
+                                    </es-mobile-sub-nav>
+                                </template>
+                            </es-mobile-sub-nav>
+                        </template>
+                    </es-mobile-nav-content>
+                </es-mobile-nav>
 
-            <a href="https://www.energysage.com" class="site-navigation-logo position-absolute">
-                <es-logo
-                    alt="EnergySage"
-                    height="30px"
-                    width="135px" />
-            </a>
+                <a href="https://www.energysage.com" class="site-navigation-logo position-absolute">
+                    <es-logo
+                        alt="EnergySage"
+                        height="30px"
+                        width="135px" />
+                </a>
 
-
+            </div>
         </es-sticky-bar>
         <ds-main-layout>
             <h1>Site navigation</h1>
+
+            <p
+                v-for="(content, index) in samplePageContent"
+                :key="index"
+                class="my-500">
+                {{ content }}
+            </p>
         </ds-main-layout>
     </div>
 </template>

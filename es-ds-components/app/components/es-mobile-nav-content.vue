@@ -1,15 +1,28 @@
 <script setup lang="ts">
 import { NavigationMenuContent } from 'reka-ui';
 
+const mobileNavParentElement = useTemplateRef('mobileNavParentElement');
+
 // injected variables provided from EsMobileNav
+const animationDuration = inject('animationDuration', 200);
 const closeMenu: (...args: any[]) => void = inject('closeMenu', () => {});
 const currentDepth = inject(
     'currentDepth',
     computed(() => 0),
 );
 const displayedName = inject('displayedName', '');
+const from = inject('from', ref<'left' | 'right'>('left'));
 const goBack = inject('goBack', () => {});
-const isElementWithinMenu: (...args: any[]) => boolean = inject('isElementWithinMenu', () => true);
+const width = inject('width', ref(400));
+const widthPx = inject('widthPx', computed(() => '400px'));
+
+// derived values for CSS custom properties set directly on the element
+const animationDurationMs = `${animationDuration}ms`;
+const contentPaneTransformXs = computed(() => `translateX(${currentDepth.value * -100}vw)`);
+const contentPaneTransformSm = computed(() => `translateX(${currentDepth.value * -1 * width.value}px)`);
+const left = computed(() => (from.value === 'left' ? '0' : 'auto'));
+const menuClosedTranslateX = computed(() => (from.value === 'right' ? '100%' : '-100%'));
+const right = computed(() => (from.value === 'right' ? '0' : 'auto'));
 
 // directional animation of the submenu titles as you're going down and back up
 const direction = ref(1);
@@ -30,65 +43,189 @@ const focusOutside = (e: any) => {
         closeMenu();
     }
 };
+
+const isElementWithinMenu = (element: any) => {
+    if (!mobileNavParentElement?.value?.$el) {
+        return false;
+    }
+
+    const parent: Node = mobileNavParentElement.value.$el;
+    return parent.contains(element);
+};
+
+provide('isElementWithinMenu', isElementWithinMenu);
 </script>
 
 <template>
-    <!-- most styles defined with :deep() in EsMobileNav due to Reka UI's rendering method -->
-    <navigation-menu-content
-        v-bind="$attrs"
-        class="es-mobile-nav-content bg-white pb-50 px-50"
-        @focus-outside="focusOutside"
-        @interact-outside.prevent.stop
-        @pointer-down-outside.prevent.stop>
-        <div
-            class="es-mobile-nav-content-header align-items-center d-flex justify-content-center position-relative w-100">
-            <!-- back button -->
-            <es-button
-                class="es-mobile-nav-back-button p-50 position-absolute text-blue-900"
-                :class="{ hide: currentDepth === 0 }"
-                inline
-                variant="link"
-                @click="goBack">
-                <icon-arrow-left />
-                <span class="sr-only">back</span>
-            </es-button>
+    <!-- teleported to body to escape any ancestor stacking context (e.g. es-sticky-bar) -->
+    <teleport to="body">
+        <navigation-menu-content
+            v-bind="$attrs"
+            ref="mobileNavParentElement"
+            class="es-mobile-nav-content bg-white pb-50 px-50"
+            :style="{
+                '--es-mobile-nav-animation-duration': animationDurationMs,
+                '--es-mobile-nav-closed-translate-x': menuClosedTranslateX,
+                '--es-mobile-nav-content-pane-transform-sm': contentPaneTransformSm,
+                '--es-mobile-nav-content-pane-transform-xs': contentPaneTransformXs,
+                '--es-mobile-nav-left': left,
+                '--es-mobile-nav-right': right,
+                '--es-mobile-nav-width': widthPx,
+            }"
+            @focus-outside="focusOutside"
+            @interact-outside.prevent.stop
+            @pointer-down-outside.prevent.stop>
+            <div
+                class="es-mobile-nav-content-header align-items-center d-flex justify-content-center position-relative w-100">
+                <!-- back button -->
+                <es-button
+                    class="es-mobile-nav-back-button p-50 position-absolute text-blue-900"
+                    :class="{ hide: currentDepth === 0 }"
+                    inline
+                    variant="link"
+                    @click="goBack">
+                    <icon-arrow-left />
+                    <span class="sr-only">back</span>
+                </es-button>
 
-            <!-- logo or subnav title, with smooth transition between them -->
-            <div class="es-mobile-nav-title-outer-container">
-                <transition :name="transitionName">
-                    <div
-                        :key="displayedName || 'logo'"
-                        class="es-mobile-nav-title-inner-container align-items-center d-flex justify-content-center">
+                <!-- logo or subnav title, with smooth transition between them -->
+                <div class="es-mobile-nav-title-outer-container">
+                    <transition :name="transitionName">
                         <div
-                            v-if="displayedName"
-                            class="font-weight-bolder">
-                            {{ displayedName }}
+                            :key="displayedName || 'logo'"
+                            class="es-mobile-nav-title-inner-container align-items-center d-flex justify-content-center">
+                            <div
+                                v-if="displayedName"
+                                class="font-weight-bolder">
+                                {{ displayedName }}
+                            </div>
+                            <es-logo
+                                v-else
+                                aria-hidden
+                                height="30px"
+                                width="135px" />
                         </div>
-                        <es-logo
-                            v-else
-                            aria-hidden
-                            height="30px"
-                            width="135px" />
-                    </div>
-                </transition>
-            </div>
+                    </transition>
+                </div>
 
-            <!-- close button -->
-            <es-button
-                class="es-mobile-nav-close-button p-50 position-absolute text-blue-900"
-                inline
-                variant="link"
-                @click="closeMenu">
-                <icon-x />
-                <span class="sr-only">close</span>
-            </es-button>
-        </div>
-        <div class="es-mobile-nav-content-pane position-relative">
-            <slot />
-        </div>
-    </navigation-menu-content>
+                <!-- close button -->
+                <es-button
+                    class="es-mobile-nav-close-button p-50 position-absolute text-blue-900"
+                    inline
+                    variant="link"
+                    @click="closeMenu">
+                    <icon-x />
+                    <span class="sr-only">close</span>
+                </es-button>
+            </div>
+            <div class="es-mobile-nav-content-pane position-relative">
+                <slot />
+            </div>
+        </navigation-menu-content>
+    </teleport>
 </template>
 
+<!-- unscoped: targets Reka UI-rendered elements that don't receive Vue's scoped attribute -->
+<style lang="scss">
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables';
+
+@keyframes esMobileNavOpen {
+    from {
+        transform: translateX(var(--es-mobile-nav-closed-translate-x));
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes esMobileNavClose {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(var(--es-mobile-nav-closed-translate-x));
+    }
+}
+
+.es-mobile-nav-content {
+    bottom: 0;
+    box-shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
+    left: 0;
+    overflow-x: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1020;
+
+    @media not (prefers-reduced-motion) {
+        &[data-state='open'] {
+            animation: esMobileNavOpen var(--es-mobile-nav-animation-duration) ease-out;
+        }
+
+        &[data-state='closed'] {
+            animation: esMobileNavClose var(--es-mobile-nav-animation-duration) ease-in;
+        }
+    }
+
+    @include breakpoints.media-breakpoint-up(sm) {
+        left: var(--es-mobile-nav-left);
+        right: var(--es-mobile-nav-right);
+        width: var(--es-mobile-nav-width);
+    }
+}
+
+.es-mobile-nav-content-header {
+    height: 88px;
+}
+
+.es-mobile-nav-back-button {
+    left: variables.$spacer * 0.5;
+    opacity: 1;
+    transform: translateY(-50%);
+    top: 50%;
+
+    @media not (prefers-reduced-motion) {
+        transition: opacity var(--es-mobile-nav-animation-duration) ease-in-out;
+    }
+
+    &.hide {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    svg {
+        height: 20px !important;
+        width: 20px !important;
+    }
+}
+
+.es-mobile-nav-close-button {
+    right: variables.$spacer;
+    transform: translateY(-50%);
+    top: 50%;
+
+    svg {
+        height: 20px !important;
+        width: 20px !important;
+    }
+}
+
+.es-mobile-nav-content-pane {
+    border-top: 1px solid variables.$gray-100;
+    transform: var(--es-mobile-nav-content-pane-transform-xs);
+
+    @media not (prefers-reduced-motion) {
+        transition: transform var(--es-mobile-nav-animation-duration) ease-in-out;
+    }
+
+    @include breakpoints.media-breakpoint-up(sm) {
+        transform: var(--es-mobile-nav-content-pane-transform-sm);
+    }
+}
+</style>
+
+<!-- scoped: targets native elements directly in this component's template -->
 <style lang="scss" scoped>
 .es-mobile-nav-title-outer-container {
     /* necessary to keep the logo/titles centered as they show/hide and animate */

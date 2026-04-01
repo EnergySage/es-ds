@@ -23,16 +23,8 @@ const depth = ref(0);
 const nameStack: Ref<string[]> = ref([]);
 const subNavCloseHandlers: Ref<Function[]> = ref([]);
 
-const contentPaneTransformXs = computed(() => `translateX(${depth.value * -100}vw)`);
-const contentPaneTransformSm = computed(() => `translateX(${depth.value * -1 * props.width}px)`);
 const displayedName = computed(() => (nameStack.value.length > 0 ? nameStack.value[nameStack.value.length - 1] : ''));
-const menuClosedTranslateX = computed(() => (props.from === 'right' ? '100%' : '-100%'));
-const mobileNavParentElement = useTemplateRef('mobileNavParentElement');
 const isScrollLocked = useScrollLock(import.meta.client ? document.body : null);
-
-// positioning and width of the mobile nav
-const left = computed(() => (props.from === 'left' ? '0' : 'auto'));
-const right = computed(() => (props.from === 'right' ? '0' : 'auto'));
 const widthPx = computed(() => `${props.width}px`);
 
 // closes the top-level menu
@@ -65,15 +57,6 @@ const increaseDepth = (name: string) => {
     depth.value += 1;
 };
 
-const isElementWithinMenu = (element: any) => {
-    if (!mobileNavParentElement?.value?.$el) {
-        return false;
-    }
-
-    const parent: Node = mobileNavParentElement.value.$el;
-    return parent.contains(element);
-};
-
 // provides the back button with a function to call in order to close the active submenu
 // (this is called by submenus when they are opened)
 const registerSubNavCloseHandler = (callback: Function) => subNavCloseHandlers.value.push(callback);
@@ -91,11 +74,12 @@ provide('closeMenu', closeMenu);
 provide('currentDepth', currentDepth);
 provide('decreaseDepth', decreaseDepth);
 provide('displayedName', displayedName);
+provide('from', toRef(props, 'from'));
 provide('goBack', goBack);
 provide('increaseDepth', increaseDepth);
-provide('isElementWithinMenu', isElementWithinMenu);
 provide('registerSubNavCloseHandler', registerSubNavCloseHandler);
 provide('waitForAnimationDuration', waitForAnimationDuration);
+provide('width', toRef(props, 'width'));
 provide('widthPx', widthPx);
 
 watch(activeMenuId, async (newVal: string, oldVal: string) => {
@@ -138,16 +122,15 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
         </teleport>
 
         <!-- since the first level is a single item, prevent it from being a <ul> and <li> -->
-
-            <navigation-menu-list
-                ref="mobileNavParentElement"
+        <navigation-menu-list
+            as="div"
+            class="es-mobile-nav-list d-flex">
+            <navigation-menu-item
                 as="div"
-                class="es-mobile-nav-list d-flex">
-                <navigation-menu-item
-                    as="div"
-                    class="d-flex">
-                    <slot />
-                </navigation-menu-item>
+                class="d-flex">
+                <slot />
+            </navigation-menu-item>
+
             </navigation-menu-list>
     </navigation-menu-root>
 </template>
@@ -158,27 +141,8 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
 
 $animation-duration: v-bind(ANIMATION_DURATION_MS);
 
-@keyframes menuOpen {
-    from {
-        transform: translateX(v-bind(menuClosedTranslateX));
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-@keyframes menuClose {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(v-bind(menuClosedTranslateX));
-    }
-}
-
 .es-mobile-nav {
     --mobile-nav-width: v-bind(widthPx);
-
 
     & > div {
         z-index: 2000;
@@ -226,82 +190,6 @@ $animation-duration: v-bind(ANIMATION_DURATION_MS);
         margin: 0;
         padding: 0 variables.$spacer;
         position: relative;
-    }
-
-    :deep(.es-mobile-nav-content) {
-        bottom: 0;
-        box-shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
-        left: 0;
-        overflow-x: hidden;
-        position: fixed;
-        right: 0;
-        top: 0;
-        z-index: 1020;
-
-        @media not (prefers-reduced-motion) {
-            &[data-state='open'] {
-                animation: menuOpen $animation-duration ease-out;
-            }
-
-            &[data-state='closed'] {
-                animation: menuClose $animation-duration ease-in;
-            }
-        }
-
-        @include breakpoints.media-breakpoint-up(sm) {
-            left: v-bind(left);
-            right: v-bind(right);
-            width: v-bind(widthPx);
-        }
-    }
-
-    :deep(.es-mobile-nav-content-header) {
-        height: 88px;
-    }
-
-    :deep(.es-mobile-nav-back-button) {
-        left: variables.$spacer * 0.5;
-        opacity: 1;
-        transform: translateY(-50%);
-        top: 50%;
-
-        @media not (prefers-reduced-motion) {
-            transition: opacity $animation-duration ease-in-out;
-        }
-
-        &.hide {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        svg {
-            height: 20px !important;
-            width: 20px !important;
-        }
-    }
-
-    :deep(.es-mobile-nav-close-button) {
-        right: variables.$spacer;
-        transform: translateY(-50%);
-        top: 50%;
-
-        svg {
-            height: 20px !important;
-            width: 20px !important;
-        }
-    }
-
-    :deep(.es-mobile-nav-content-pane) {
-        border-top: 1px solid variables.$gray-100;
-        transform: v-bind(contentPaneTransformXs);
-
-        @media not (prefers-reduced-motion) {
-            transition: transform $animation-duration ease-in-out;
-        }
-
-        @include breakpoints.media-breakpoint-up(sm) {
-            transform: v-bind(contentPaneTransformSm);
-        }
     }
 }
 </style>

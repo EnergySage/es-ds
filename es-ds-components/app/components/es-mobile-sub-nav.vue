@@ -24,6 +24,7 @@ const increaseDepth: (...args: any[]) => void = inject('increaseDepth', () => {}
 const isElementWithinMenu: (...args: any[]) => boolean = inject('isElementWithinMenu', () => true);
 const registerSubNavCloseHandler: Function | undefined = inject('registerSubNavCloseHandler');
 const waitForAnimationDuration = inject('waitForAnimationDuration', () => {});
+const widthPx = inject('widthPx', computed(() => '400px'));
 
 const escapeKeyDown = (e: any) => {
     // prevent the Esc key from immediately closing all submenus prior to the mobile nav animating closed
@@ -133,10 +134,6 @@ $transition-duration: 100ms;
         /* specify color here so it can be overridden in active state */
         color: variables.$dark-blue;
 
-        /*& > span > svg {
-            color: variables.$gray-400;
-        }*/
-
         @media not (prefers-reduced-motion) {
             transition:
                 border-color $transition-duration ease-in-out,
@@ -174,7 +171,7 @@ $transition-duration: 100ms;
         width: 100%;
 
         @include breakpoints.media-breakpoint-up(sm) {
-            left: var(--mobile-nav-width);
+            left: v-bind(widthPx);
         }
     }
 }
