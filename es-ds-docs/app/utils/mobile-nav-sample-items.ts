@@ -467,7 +467,7 @@ export const longListOfCompanies: EsMobileNavSampleItemInterface[] = [
         href: 'https://www.google.com',
     },
     {
-        name: 'Mercedez-Benz',
+        name: 'Mercedes-Benz',
         href: 'https://www.mbusa.com/',
     },
     {

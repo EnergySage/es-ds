@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { largeNestedMenuItems, longListOfCompanies, simpleMenuItems } from '@/utils/mobile-nav-sample-items';
+import { accountMenuItems, largeNestedMenuItems, longListOfCompanies } from '@/utils/mobile-nav-sample-items';
 
 const esMobileNavProps = [
     [
@@ -115,7 +115,7 @@ onMounted(async () => {
                 </es-mobile-nav-trigger>
                 <es-mobile-nav-content>
                     <template
-                        v-for="item in simpleMenuItems"
+                        v-for="item in accountMenuItems"
                         :key="item.name">
                         <es-mobile-nav-link
                             v-if="item.href"
@@ -137,7 +137,7 @@ onMounted(async () => {
                 </es-mobile-nav-trigger>
                 <es-mobile-nav-content>
                     <template
-                        v-for="item in simpleMenuItems"
+                        v-for="item in accountMenuItems"
                         :key="item.name">
                         <es-mobile-nav-link
                             v-if="item.href"
