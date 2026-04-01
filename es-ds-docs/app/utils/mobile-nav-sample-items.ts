@@ -4,6 +4,25 @@ export interface EsMobileNavSampleItemInterface {
     items?: EsMobileNavSampleItemInterface[];
 }
 
+export const accountMenuItems: EsMobileNavSampleItemInterface[] = [
+    {
+        name: 'Dashboard',
+        href: 'https://www.energysage.com',
+    },
+    {
+        name: 'Messages',
+        href: 'https://www.energysage.com',
+    },
+    {
+        name: 'Account',
+        href: 'https://www.energysage.com',
+    },
+    {
+        name: 'Sign out',
+        href: 'https://www.energysage.com',
+    },
+];
+
 export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
     {
         name: 'Home solar',
@@ -415,5 +434,103 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
                 ],
             },
         ],
+    },
+];
+
+export const longListOfCompanies: EsMobileNavSampleItemInterface[] = [
+    {
+        name: 'Adobe',
+        href: 'https://www.adobe.com',
+    },
+    {
+        name: 'Amazon',
+        href: 'https://www.amazon.com',
+    },
+    {
+        name: 'Apple',
+        href: 'https://www.apple.com',
+    },
+    {
+        name: 'Costco',
+        href: 'https://www.costco.com',
+    },
+    {
+        name: 'Ford',
+        href: 'https://www.ford.com',
+    },
+    {
+        name: 'General Motors',
+        href: 'https://www.gm.com/',
+    },
+    {
+        name: 'Google',
+        href: 'https://www.google.com',
+    },
+    {
+        name: 'Mercedez-Benz',
+        href: 'https://www.mbusa.com/',
+    },
+    {
+        name: 'Meta',
+        href: 'https://www.meta.com',
+    },
+    {
+        name: 'Microsoft',
+        href: 'https://www.microsoft.com',
+    },
+    {
+        name: 'Netflix',
+        href: 'https://www.netflix.com',
+    },
+    {
+        name: 'Nvidia',
+        href: 'https://www.nvidia.com/',
+    },
+    {
+        name: 'Oracle',
+        href: 'https://www.oracle.com',
+    },
+    {
+        name: 'Salesforce',
+        href: 'https://www.salesforce.com',
+    },
+    {
+        name: 'Samsung',
+        href: 'https://www.samsung.com',
+    },
+    {
+        name: 'Stellantis',
+        href: 'https://www.stellantis.com/',
+    },
+    {
+        name: 'Tesla',
+        href: 'https://www.tesla.com',
+    },
+    {
+        name: 'Toyota',
+        href: 'https://www.toyota.com',
+    },
+    {
+        name: 'Walmart',
+        href: 'https://www.walmart.com',
+    },
+];
+
+export const simpleMenuItems: EsMobileNavSampleItemInterface[] = [
+    {
+        name: 'Amazon',
+        href: 'https://www.amazon.com',
+    },
+    {
+        name: 'Apple',
+        href: 'https://www.apple.com',
+    },
+    {
+        name: 'Google',
+        href: 'https://www.google.com',
+    },
+    {
+        name: 'Microsoft',
+        href: 'https://www.microsoft.com',
     },
 ];

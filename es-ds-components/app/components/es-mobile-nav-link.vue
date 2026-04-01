@@ -2,13 +2,11 @@
 import { NavigationMenuItem, NavigationMenuLink } from 'reka-ui';
 
 interface IProps {
-    emphasize?: boolean;
     href: string;
     name: string;
     target?: string;
 }
 withDefaults(defineProps<IProps>(), {
-    emphasize: false,
     target: '_self',
 });
 </script>
@@ -20,17 +18,6 @@ withDefaults(defineProps<IProps>(), {
             as-child
             @select.prevent.stop>
             <a
-                v-if="emphasize"
-                class="es-mobile-nav-link es-mobile-nav-link-primary align-items-center d-flex font-weight-bolder justify-content-between p-100 rounded-sm"
-                :href="href"
-                :target="target">
-                {{ name }}
-                <icon-arrow-right
-                    height="20px"
-                    width="20px" />
-            </a>
-            <a
-                v-else
                 class="es-mobile-nav-link d-block font-size-75 font-weight-bolder"
                 :href="href"
                 :target="target">

@@ -1,56 +1,95 @@
 <script setup lang="ts">
-import { largeNestedMenuItems, type EsMobileNavSampleItemInterface } from '@/utils/mobile-nav-sample-items';
+import { largeNestedMenuItems, longListOfCompanies, simpleMenuItems } from '@/utils/mobile-nav-sample-items';
 
-const simpleMenuItems: EsMobileNavSampleItemInterface[] = [
-    {
-        name: 'Adobe',
-        href: 'https://www.adobe.com',
-    },
-    {
-        name: 'Amazon',
-        href: 'https://www.amazon.com',
-    },
-    {
-        name: 'Apple',
-        href: 'https://www.apple.com',
-    },
-    {
-        name: 'Google',
-        href: 'https://www.google.com',
-    },
-    {
-        name: 'Meta',
-        href: 'https://www.meta.com',
-    },
-    {
-        name: 'Microsoft',
-        href: 'https://www.microsoft.com',
-    },
-    {
-        name: 'Netflix',
-        href: 'https://www.netflix.com',
-    },
-    {
-        name: 'NVIDIA',
-        href: 'https://www.nvidia.com/',
-    },
-    {
-        name: 'Oracle',
-        href: 'https://www.oracle.com',
-    },
-    {
-        name: 'Salesforce',
-        href: 'https://www.salesforce.com',
-    },
-    {
-        name: 'Samsung',
-        href: 'https://www.samsung.com',
-    },
-    {
-        name: 'Tesla',
-        href: 'https://www.tesla.com',
-    },
+const esMobileNavProps = [
+    [
+        'from',
+        'string',
+        "'left'",
+        `
+        Indicates whether the mobile nav should open from the left side of the viewport or the right.
+        Can be 'left' or 'right'.
+        `,
+    ],
+    [
+        'width',
+        'number',
+        '400',
+        `
+        On extra small breakpoint, the mobile nav takes up the full viewport width. On small breakpoint
+        and above, the mobile nav will be set to this width and an overlay will appear beneath.
+        `,
+    ],
 ];
+
+const esMobileNavTriggerProps = [
+    [
+        'unstyled',
+        'boolean',
+        'false',
+        `
+        Set to true to disable default trigger button styling and allow full customization. By default,
+        the trigger button will have no background or border, dark blue text, padding, and a minimum
+        height of 40px.
+        `,
+    ],
+];
+
+const esMobileNavLinkProps = [
+    [
+        'href',
+        'string',
+        'n/a',
+        `
+        Required. The URL for the link.
+        `,
+    ],
+    [
+        'name',
+        'string',
+        'n/a',
+        `
+        Required. The text to display.
+        `,
+    ],
+    [
+        'target',
+        'string',
+        "'_self'",
+        `
+        Indicates whether the link should open in a new window or not. By default, the link
+        will open in the same window. Pass '_blank' to open in a new window.
+        `,
+    ],
+];
+
+const esMobileSubNavProps = [
+    [
+        'name',
+        'string',
+        'n/a',
+        `
+        Required. The name of the menu item that, when clicked, will drill down one level to show a
+        different list of menu items. This name will also appear in the mobile nav header when that
+        submenu is shown.
+        `,
+    ],
+];
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/app/components/es-mobile-nav.vue?raw');
+        const docSource = await import('./mobile-nav.vue?raw');
+
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
@@ -67,7 +106,7 @@ const simpleMenuItems: EsMobileNavSampleItemInterface[] = [
 
         <div class="my-300">
             <h2>Basic example</h2>
-            <p>The mobile nav, at its simplest, can display a list of links.</p>
+            <p>The mobile nav can display a list of links. By default, it opens from the left.</p>
             <es-mobile-nav>
                 <es-mobile-nav-trigger
                     class="btn btn-primary btn-md"
@@ -77,6 +116,50 @@ const simpleMenuItems: EsMobileNavSampleItemInterface[] = [
                 <es-mobile-nav-content>
                     <template
                         v-for="item in simpleMenuItems"
+                        :key="item.name">
+                        <es-mobile-nav-link
+                            v-if="item.href"
+                            :href="item.href"
+                            :name="item.name" />
+                    </template>
+                </es-mobile-nav-content>
+            </es-mobile-nav>
+        </div>
+
+        <div class="my-300">
+            <h2>Opening from the right</h2>
+            <p>Using the <code>from</code> prop, you can set the mobile nav to open from the right.</p>
+            <es-mobile-nav from="right">
+                <es-mobile-nav-trigger
+                    class="btn btn-primary btn-md"
+                    unstyled>
+                    Open example
+                </es-mobile-nav-trigger>
+                <es-mobile-nav-content>
+                    <template
+                        v-for="item in simpleMenuItems"
+                        :key="item.name">
+                        <es-mobile-nav-link
+                            v-if="item.href"
+                            :href="item.href"
+                            :name="item.name" />
+                    </template>
+                </es-mobile-nav-content>
+            </es-mobile-nav>
+        </div>
+
+        <div class="my-300">
+            <h2>Scrolling</h2>
+            <p>Long lists of links are scrollable within the mobile nav.</p>
+            <es-mobile-nav>
+                <es-mobile-nav-trigger
+                    class="btn btn-primary btn-md"
+                    unstyled>
+                    Open example
+                </es-mobile-nav-trigger>
+                <es-mobile-nav-content>
+                    <template
+                        v-for="item in longListOfCompanies"
                         :key="item.name">
                         <es-mobile-nav-link
                             v-if="item.href"
@@ -135,5 +218,31 @@ const simpleMenuItems: EsMobileNavSampleItemInterface[] = [
                 </es-mobile-nav-content>
             </es-mobile-nav>
         </div>
+
+        <div class="my-300">
+            <h2>EsMobileNav props</h2>
+            <ds-prop-table :rows="esMobileNavProps" />
+        </div>
+
+        <div class="my-300">
+            <h2>EsMobileNavTrigger props</h2>
+            <ds-prop-table :rows="esMobileNavTriggerProps" />
+        </div>
+
+        <div class="my-300">
+            <h2>EsMobileNavLink props</h2>
+            <ds-prop-table :rows="esMobileNavLinkProps" />
+        </div>
+
+        <div class="my-300">
+            <h2>EsMobileSubNav props</h2>
+            <ds-prop-table :rows="esMobileSubNavProps" />
+        </div>
+
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-mobile-nav.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/mobile-nav.vue" />
     </div>
 </template>
