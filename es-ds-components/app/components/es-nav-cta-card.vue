@@ -32,7 +32,7 @@ withDefaults(defineProps<Props>(), {
                 {{ heading }}
                 <icon-arrow-right
                     aria-hidden
-                    class="es-nav-cta-card-arrow ml-25" />
+                    class="es-nav-cta-card-arrow flex-shrink-0 ml-25" />
             </p>
             <p
                 v-if="subtitle"
