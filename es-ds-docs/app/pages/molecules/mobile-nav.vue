@@ -238,7 +238,10 @@ onMounted(async () => {
                             :name="item.name" />
                     </template>
                     <es-mobile-nav-custom-item>
-                        <es-button> test button </es-button>
+                        <es-button href="https://www.energysage.com" target="_blank"> Custom button #1 </es-button>
+                    </es-mobile-nav-custom-item>
+                    <es-mobile-nav-custom-item>
+                        <es-button href="https://www.energysage.com" target="_blank"> Custom button #2 </es-button>
                     </es-mobile-nav-custom-item>
                 </es-mobile-nav-content>
             </es-mobile-nav>
