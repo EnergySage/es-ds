@@ -65,7 +65,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
         <navigation-menu-content
             v-bind="$attrs"
             ref="mobileNavParentElement"
-            class="es-mobile-nav-content bg-white pb-50 position-fixed px-50"
+            class="es-mobile-nav-content bg-white d-flex flex-column pb-50 position-fixed px-50"
             :style="{
                 '--es-mobile-nav-animation-duration': animationDurationMs,
                 '--es-mobile-nav-closed-translate-x': menuClosedTranslateX,
@@ -79,7 +79,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
             @interact-outside.prevent.stop
             @pointer-down-outside.prevent.stop>
             <div
-                class="es-mobile-nav-content-header align-items-center bg-white d-flex justify-content-center position-sticky w-100">
+                class="es-mobile-nav-content-header align-items-center bg-white d-flex flex-shrink-0 justify-content-center position-sticky w-100">
                 <!-- back button -->
                 <transition name="es-mobile-nav-back">
                     <es-button
@@ -123,10 +123,14 @@ provide('isElementWithinMenu', isElementWithinMenu);
                     <span class="sr-only">close</span>
                 </es-button>
             </div>
-            <div class="es-mobile-nav-content-pane position-relative">
+            <div
+                class="es-mobile-nav-content-pane d-flex flex-column flex-grow-1 justify-content-between position-relative">
                 <navigation-menu-list class="list-unstyled">
                     <slot />
                 </navigation-menu-list>
+                <div class="es-mobile-nav-content-footer">
+                    <slot name="footer" />
+                </div>
             </div>
         </navigation-menu-content>
     </teleport>

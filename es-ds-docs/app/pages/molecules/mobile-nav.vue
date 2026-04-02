@@ -221,7 +221,10 @@ onMounted(async () => {
 
         <div class="my-300">
             <h2>Custom items</h2>
-            <p>You can also insert custom items into the mobile nav.</p>
+            <p>
+                You can insert custom items into the mobile nav that will appear just below the normal list of menu
+                items.
+            </p>
             <es-mobile-nav>
                 <es-mobile-nav-trigger
                     class="btn btn-primary btn-md"
@@ -238,11 +241,81 @@ onMounted(async () => {
                             :name="item.name" />
                     </template>
                     <es-mobile-nav-custom-item>
-                        <es-button href="https://www.energysage.com" target="_blank"> Custom button #1 </es-button>
+                        <es-card
+                            href="https://www.energysage.com"
+                            target="_blank"
+                            variant="interactive">
+                            Custom card #1
+                        </es-card>
                     </es-mobile-nav-custom-item>
                     <es-mobile-nav-custom-item>
-                        <es-button href="https://www.energysage.com" target="_blank"> Custom button #2 </es-button>
+                        <es-card
+                            href="https://www.energysage.com"
+                            target="_blank"
+                            variant="interactive">
+                            Custom card #2
+                        </es-card>
                     </es-mobile-nav-custom-item>
+                </es-mobile-nav-content>
+            </es-mobile-nav>
+        </div>
+
+        <div class="my-300">
+            <h2>Custom footer</h2>
+            <p>
+                You can specify a custom footer for the top level of the mobile nav (i.e. not submenus). It will
+                automatically stick to the bottom of the mobile nav content pane.
+            </p>
+            <es-mobile-nav>
+                <es-mobile-nav-trigger
+                    class="btn btn-primary btn-md"
+                    unstyled>
+                    Open example
+                </es-mobile-nav-trigger>
+                <es-mobile-nav-content>
+                    <template
+                        v-for="item in accountMenuItems"
+                        :key="item.name">
+                        <es-mobile-nav-link
+                            v-if="item.href"
+                            :href="item.href"
+                            :name="item.name" />
+                    </template>
+                    <template #footer>
+                        <div class="px-100 py-200">
+                            <es-button class="w-100"> Sign in </es-button>
+                        </div>
+                    </template>
+                </es-mobile-nav-content>
+            </es-mobile-nav>
+        </div>
+
+        <div class="my-300">
+            <h2>Scrolling with custom footer</h2>
+            <p>
+                If the list of menu items becomes long enough to go beyond the bottom edge, the custom footer will
+                scroll nicely along with the rest of the content pane.
+            </p>
+            <es-mobile-nav>
+                <es-mobile-nav-trigger
+                    class="btn btn-primary btn-md"
+                    unstyled>
+                    Open example
+                </es-mobile-nav-trigger>
+                <es-mobile-nav-content>
+                    <template
+                        v-for="item in longListOfCompanies"
+                        :key="item.name">
+                        <es-mobile-nav-link
+                            v-if="item.href"
+                            :href="item.href"
+                            :name="item.name" />
+                    </template>
+                    <template #footer>
+                        <div class="px-100 py-200">
+                            <es-button class="w-100"> Sign in </es-button>
+                        </div>
+                    </template>
                 </es-mobile-nav-content>
             </es-mobile-nav>
         </div>

@@ -3,6 +3,8 @@ import { useScrollLock } from '@vueuse/core';
 import { NavigationMenuItem, NavigationMenuList, NavigationMenuRoot } from 'reka-ui';
 
 // TODO: fix issue where going two levels down, switching to another window, then back to browser, closes all submenus
+// TODO: fix focus outline of first item going beneath content pane header
+// TODO: look at TODO below: "don't wait at all if animations are off due to prefers-reduced-motion"?
 
 interface IProps {
     from?: 'left' | 'right';

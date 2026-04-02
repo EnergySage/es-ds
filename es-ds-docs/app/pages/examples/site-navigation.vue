@@ -51,6 +51,15 @@ const samplePageContent = Array(10).fill('test content for scrolling');
                                 </template>
                             </es-mobile-sub-nav>
                         </template>
+                        <template #footer>
+                            <div class="px-100 py-200">
+                                <es-button
+                                    class="w-100"
+                                    href="https://accounts.energysage.com/login/">
+                                    Sign in
+                                </es-button>
+                            </div>
+                        </template>
                     </es-mobile-nav-content>
                 </es-mobile-nav>
 
