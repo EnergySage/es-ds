@@ -15,9 +15,7 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/app/components/es-sticky-bar.vue?raw');
-
-        // using the stickyBar layout here instead of the doc page because that's where we're using the component
-        const docSource = await import('../../layouts/stickyBar.vue?raw');
+        const docSource = await import('./sticky-bar.vue?raw');
 
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
