@@ -220,6 +220,31 @@ onMounted(async () => {
         </div>
 
         <div class="my-300">
+            <h2>Custom items</h2>
+            <p>You can also insert custom items into the mobile nav.</p>
+            <es-mobile-nav>
+                <es-mobile-nav-trigger
+                    class="btn btn-primary btn-md"
+                    unstyled>
+                    Open example
+                </es-mobile-nav-trigger>
+                <es-mobile-nav-content>
+                    <template
+                        v-for="item in accountMenuItems"
+                        :key="item.name">
+                        <es-mobile-nav-link
+                            v-if="item.href"
+                            :href="item.href"
+                            :name="item.name" />
+                    </template>
+                    <es-mobile-nav-custom-item>
+                        <es-button> test button </es-button>
+                    </es-mobile-nav-custom-item>
+                </es-mobile-nav-content>
+            </es-mobile-nav>
+        </div>
+
+        <div class="my-300">
             <h2>EsMobileNav props</h2>
             <ds-prop-table :rows="esMobileNavProps" />
         </div>
