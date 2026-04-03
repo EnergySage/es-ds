@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.0](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.3.4...es-ds-styles-v3.4.0) (2026-04-03)
+
+
+### Features
+
+* added EsNavCtaCard for use in mobile/desktop navs ([#1723](https://github.com/EnergySage/es-ds/issues/1723)) ([74b3bbd](https://github.com/EnergySage/es-ds/commit/74b3bbd68c293b9606f9012b5d94ba1c06c60f59))
+
 ## [3.3.4](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.3.3...es-ds-styles-v3.3.4) (2026-03-18)
 
 

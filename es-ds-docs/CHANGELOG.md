@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.3.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.2.0...es-ds-docs-v5.3.0) (2026-04-03)
+
+
+### Features
+
+* added EsNavCtaCard for use in mobile/desktop navs ([#1723](https://github.com/EnergySage/es-ds/issues/1723)) ([74b3bbd](https://github.com/EnergySage/es-ds/commit/74b3bbd68c293b9606f9012b5d94ba1c06c60f59))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.2.0 to ^5.3.0
+    * @energysage/es-ds-styles bumped from ^3.3.4 to ^3.4.0
+
 ## [5.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.1.0...es-ds-docs-v5.2.0) (2026-03-27)
 
 
