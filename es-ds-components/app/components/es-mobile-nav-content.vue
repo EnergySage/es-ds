@@ -97,7 +97,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
                         inline
                         variant="link"
                         @click="goBack">
-                        <icon-arrow-left aria-hidden />
+                        <icon-arrow-left aria-hidden="true" />
                         <span class="sr-only">back</span>
                     </es-button>
                 </transition>
@@ -115,7 +115,8 @@ provide('isElementWithinMenu', isElementWithinMenu);
                             </div>
                             <es-logo
                                 v-else
-                                aria-hidden
+                                alt=""
+                                aria-hidden="true"
                                 height="30px"
                                 width="135px" />
                         </div>

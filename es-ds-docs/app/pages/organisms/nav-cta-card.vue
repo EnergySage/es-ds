@@ -75,7 +75,7 @@ onMounted(async () => {
                         subtitle="Free, personalized solar quotes that’ll save you thousands"
                         target="_blank">
                         <template #icon>
-                            <icon-solar aria-hidden />
+                            <icon-solar aria-hidden="true" />
                         </template>
                     </es-nav-cta-card>
 
@@ -85,7 +85,7 @@ onMounted(async () => {
                         subtitle="See energy recommendations for your home with just an address"
                         target="_blank">
                         <template #icon>
-                            <icon-house-line aria-hidden />
+                            <icon-house-line aria-hidden="true" />
                         </template>
                     </es-nav-cta-card>
                 </es-col>
@@ -105,7 +105,7 @@ onMounted(async () => {
                         href="https://www.energysage.com"
                         target="_blank">
                         <template #icon>
-                            <icon-battery-charging-vertical aria-hidden />
+                            <icon-battery-charging-vertical aria-hidden="true" />
                         </template>
                     </es-nav-cta-card>
                 </es-col>

@@ -16,7 +16,7 @@ const samplePageContent = Array(10).fill('test content for scrolling');
                 <es-mobile-nav>
                     <es-mobile-nav-trigger>
                         <span class="sr-only">Open navigation menu</span>
-                        <icon-hamburger aria-hidden />
+                        <icon-hamburger aria-hidden="true" />
                     </es-mobile-nav-trigger>
                     <es-mobile-nav-content>
                         <template
@@ -59,16 +59,16 @@ const samplePageContent = Array(10).fill('test content for scrolling');
                                                     #icon>
                                                     <icon-battery-charging-vertical
                                                         v-if="item.cta.icon === 'battery-charging-vertical'"
-                                                        aria-hidden />
+                                                        aria-hidden="true" />
                                                     <icon-charging-station
                                                         v-else-if="item.cta.icon === 'charging-station'"
-                                                        aria-hidden />
+                                                        aria-hidden="true" />
                                                     <icon-house-line
                                                         v-else-if="item.cta.icon === 'house-line'"
-                                                        aria-hidden />
+                                                        aria-hidden="true" />
                                                     <icon-solar
                                                         v-else-if="item.cta.icon === 'solar'"
-                                                        aria-hidden />
+                                                        aria-hidden="true" />
                                                 </template>
                                             </es-nav-cta-card>
                                         </es-mobile-nav-custom-item>
@@ -86,16 +86,16 @@ const samplePageContent = Array(10).fill('test content for scrolling');
                                             #icon>
                                             <icon-battery-charging-vertical
                                                 v-if="item.cta.icon === 'battery-charging-vertical'"
-                                                aria-hidden />
+                                                aria-hidden="true" />
                                             <icon-charging-station
                                                 v-else-if="item.cta.icon === 'charging-station'"
-                                                aria-hidden />
+                                                aria-hidden="true" />
                                             <icon-house-line
                                                 v-else-if="item.cta.icon === 'house-line'"
-                                                aria-hidden />
+                                                aria-hidden="true" />
                                             <icon-solar
                                                 v-else-if="item.cta.icon === 'solar'"
-                                                aria-hidden />
+                                                aria-hidden="true" />
                                         </template>
                                     </es-nav-cta-card>
                                 </es-mobile-nav-custom-item>

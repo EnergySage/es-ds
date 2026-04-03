@@ -31,7 +31,7 @@ withDefaults(defineProps<Props>(), {
             <p class="align-items-center d-flex font-weight-bold mb-0 text-blue-600">
                 {{ heading }}
                 <icon-arrow-right
-                    aria-hidden
+                    aria-hidden="true"
                     class="es-nav-cta-card-arrow flex-shrink-0 ml-25" />
             </p>
             <p

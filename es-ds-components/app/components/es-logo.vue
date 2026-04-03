@@ -14,7 +14,6 @@ withDefaults(defineProps<IProps>(), {
 
 <template>
     <svg
-        :aria-labelledby="alt ? 'es-logo-label' : undefined"
         class="es-logo"
         :style="{
             height: height,
@@ -25,9 +24,7 @@ withDefaults(defineProps<IProps>(), {
         width="205"
         height="45"
         fill="none">
-        <title
-            v-if="alt"
-            id="es-logo-label">
+        <title v-if="alt">
             {{ alt }}
         </title>
         <!-- eslint-disable -->

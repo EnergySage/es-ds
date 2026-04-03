@@ -248,7 +248,7 @@ onMounted(async () => {
                             subtitle="Free, personalized solar quotes that’ll save you thousands"
                             target="_blank">
                             <template #icon>
-                                <icon-solar aria-hidden />
+                                <icon-solar aria-hidden="true" />
                             </template>
                         </es-nav-cta-card>
                     </es-mobile-nav-custom-item>
