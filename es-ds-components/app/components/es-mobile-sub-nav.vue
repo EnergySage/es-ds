@@ -37,7 +37,19 @@ const escapeKeyDown = (e: any) => {
     closeMenu();
 };
 
+let focusOutsideHandled = false;
+
 const focusOutside = (e: any) => {
+    // some browsers can cycle focus through body when shifting focus, causing
+    // this handler to be fired twice. to prevent goBack() from being called
+    // more times than we want, we have this guard to prevent focusOutside
+    // from being called more than once within the same tick
+    if (focusOutsideHandled) return;
+    focusOutsideHandled = true;
+    nextTick(() => {
+        focusOutsideHandled = false;
+    });
+
     // we only need to do anything with this submenu if it's actually open
     if (activeMenuId.value) {
         const classesOnTarget = [...e.target.classList];

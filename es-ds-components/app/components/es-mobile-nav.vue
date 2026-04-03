@@ -2,6 +2,8 @@
 import { useScrollLock } from '@vueuse/core';
 import { NavigationMenuItem, NavigationMenuList, NavigationMenuRoot } from 'reka-ui';
 
+// TODO: investigate hydration issue
+
 interface IProps {
     from?: 'left' | 'right';
     width?: number;
