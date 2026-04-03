@@ -191,7 +191,7 @@ onMounted(async () => {
                             :href="item.href"
                             :name="item.name" />
                         <es-mobile-sub-nav
-                            v-else
+                            v-else-if="item.items?.length"
                             :name="item.name">
                             <template
                                 v-for="subItem in item.items"
@@ -201,7 +201,7 @@ onMounted(async () => {
                                     :href="subItem.href"
                                     :name="subItem.name" />
                                 <es-mobile-sub-nav
-                                    v-else
+                                    v-else-if="subItem.items?.length"
                                     :name="subItem.name">
                                     <template
                                         v-for="subSubItem in subItem.items"
@@ -241,20 +241,16 @@ onMounted(async () => {
                             :name="item.name" />
                     </template>
                     <es-mobile-nav-custom-item>
-                        <es-card
+                        <es-nav-cta-card
+                            class="mb-100"
+                            heading="Get an instant quote"
                             href="https://www.energysage.com"
-                            target="_blank"
-                            variant="interactive">
-                            Custom card #1
-                        </es-card>
-                    </es-mobile-nav-custom-item>
-                    <es-mobile-nav-custom-item>
-                        <es-card
-                            href="https://www.energysage.com"
-                            target="_blank"
-                            variant="interactive">
-                            Custom card #2
-                        </es-card>
+                            subtitle="Free, personalized solar quotes that’ll save you thousands"
+                            target="_blank">
+                            <template #icon>
+                                <icon-solar aria-hidden />
+                            </template>
+                        </es-nav-cta-card>
                     </es-mobile-nav-custom-item>
                 </es-mobile-nav-content>
             </es-mobile-nav>

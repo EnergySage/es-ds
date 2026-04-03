@@ -37,7 +37,7 @@ const samplePageContent = Array(10).fill('test content for scrolling');
                                         :href="subItem.href"
                                         :name="subItem.name" />
                                     <es-mobile-sub-nav
-                                        v-else
+                                        v-else-if="subItem.items?.length"
                                         :name="subItem.name">
                                         <template
                                             v-for="subSubItem in subItem.items"
@@ -47,8 +47,58 @@ const samplePageContent = Array(10).fill('test content for scrolling');
                                                 :href="subSubItem.href"
                                                 :name="subSubItem.name" />
                                         </template>
+                                        <es-mobile-nav-custom-item v-if="item.cta?.href">
+                                            <es-nav-cta-card
+                                                class="mb-100"
+                                                :heading="item.cta.heading"
+                                                :href="item.cta.href"
+                                                :subtitle="item.cta.subtitle"
+                                                :target="item.cta.target">
+                                                <template
+                                                    v-if="item.cta.icon"
+                                                    #icon>
+                                                    <icon-battery-charging-vertical
+                                                        v-if="item.cta.icon === 'battery-charging-vertical'"
+                                                        aria-hidden />
+                                                    <icon-charging-station
+                                                        v-else-if="item.cta.icon === 'charging-station'"
+                                                        aria-hidden />
+                                                    <icon-house-line
+                                                        v-else-if="item.cta.icon === 'house-line'"
+                                                        aria-hidden />
+                                                    <icon-solar
+                                                        v-else-if="item.cta.icon === 'solar'"
+                                                        aria-hidden />
+                                                </template>
+                                            </es-nav-cta-card>
+                                        </es-mobile-nav-custom-item>
                                     </es-mobile-sub-nav>
                                 </template>
+                                <es-mobile-nav-custom-item v-if="item.cta?.href">
+                                    <es-nav-cta-card
+                                        class="mb-100"
+                                        :heading="item.cta.heading"
+                                        :href="item.cta.href"
+                                        :subtitle="item.cta.subtitle"
+                                        :target="item.cta.target">
+                                        <template
+                                            v-if="item.cta.icon"
+                                            #icon>
+                                            <icon-battery-charging-vertical
+                                                v-if="item.cta.icon === 'battery-charging-vertical'"
+                                                aria-hidden />
+                                            <icon-charging-station
+                                                v-else-if="item.cta.icon === 'charging-station'"
+                                                aria-hidden />
+                                            <icon-house-line
+                                                v-else-if="item.cta.icon === 'house-line'"
+                                                aria-hidden />
+                                            <icon-solar
+                                                v-else-if="item.cta.icon === 'solar'"
+                                                aria-hidden />
+                                        </template>
+                                    </es-nav-cta-card>
+                                </es-mobile-nav-custom-item>
                             </es-mobile-sub-nav>
                         </template>
                         <template #footer>

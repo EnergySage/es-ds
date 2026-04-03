@@ -1,7 +1,17 @@
+export interface EsMobileNavSampleCtaInterface {
+    icon?: string;
+    heading: string;
+    href?: string;
+    subtitle?: string;
+    target?: '_self' | '_blank';
+}
+
 export interface EsMobileNavSampleItemInterface {
+    cta?: EsMobileNavSampleCtaInterface;
     name: string;
     href?: string;
     items?: EsMobileNavSampleItemInterface[];
+    target?: '_self' | '_blank';
 }
 
 export const accountMenuItems: EsMobileNavSampleItemInterface[] = [
@@ -26,6 +36,13 @@ export const accountMenuItems: EsMobileNavSampleItemInterface[] = [
 export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
     {
         name: 'Home solar',
+        cta: {
+            heading: 'Get an instant quote',
+            href: 'https://www.energysage.com/onboarding/start/',
+            icon: 'solar',
+            subtitle: 'Free, personalized solar quotes that’ll save you thousands',
+            target: '_blank',
+        },
         items: [
             {
                 name: 'Getting started',
@@ -106,6 +123,13 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
     },
     {
         name: 'Home batteries',
+        cta: {
+            heading: 'Get an instant estimate',
+            href: 'https://www.energysage.com/onboarding/start/',
+            icon: 'battery-charging-vertical',
+            subtitle: 'Store energy and keep your home running during outages',
+            target: '_blank',
+        },
         items: [
             {
                 name: 'Getting started',
@@ -174,6 +198,13 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
     },
     {
         name: 'Heat pumps',
+        cta: {
+            heading: 'Get an instant estimate',
+            href: 'https://www.energysage.com/onboarding/start/',
+            icon: 'house-line',
+            subtitle: 'High-efficiency heat pumps, matched to your home and needs',
+            target: '_blank',
+        },
         items: [
             {
                 name: 'Getting started',
@@ -250,6 +281,13 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
     },
     {
         name: 'EV charging',
+        cta: {
+            heading: 'Get an instant estimate',
+            href: 'https://www.energysage.com/onboarding/start/',
+            icon: 'charging-station',
+            subtitle: 'Install a safe, reliable EV charger - handled end to end',
+            target: '_blank',
+        },
         items: [
             {
                 name: 'Getting started',
