@@ -9,5 +9,8 @@
         <li>
             <ds-link to="/examples/reordering-with-motion"> Reordering with motion </ds-link>
         </li>
+        <li>
+            <ds-link to="/examples/site-navigation"> Site navigation </ds-link>
+        </li>
     </ul>
 </template>
