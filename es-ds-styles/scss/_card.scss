@@ -289,9 +289,9 @@
     /* fix safari issue with drop-shadow buggy behavior */
     transform: translateZ(0);
 
-    @media not (prefers-reduced-motion) {
-      /* stylelint-disable-next-line property-disallowed-list */
-      transition: variables.$transition-base;
+    @media not (prefers-reduced-motion: reduce) {
+      /* itemize the transitions so it doesn't affect outline */
+      transition: color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
     }
 
     &:hover {
@@ -299,10 +299,9 @@
       text-decoration: none;
     }
 
-    &:focus {
-      border-color: variables.$card-interactive-focus-border-color;
-      box-shadow: 0 0 0 1px variables.$card-interactive-focus-border-color, variables.$card-interactive-shadow;
-      outline: none;
+    &:focus-visible {
+      outline: 2px solid variables.$dark-blue;
+      outline-offset: 1px;
     }
 
     &:active {

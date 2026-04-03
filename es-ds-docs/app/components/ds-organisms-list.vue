@@ -19,6 +19,9 @@
             <ds-link to="/organisms/form"> Form </ds-link>
         </li>
         <li>
+            <ds-link to="/organisms/nav-cta-card"> Nav CTA card </ds-link>
+        </li>
+        <li>
             <ds-link to="/organisms/reviews-io-card-carousel"> Reviews.io card carousel </ds-link>
         </li>
         <li>
