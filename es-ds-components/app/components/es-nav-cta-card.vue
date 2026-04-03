@@ -20,7 +20,9 @@ withDefaults(defineProps<Props>(), {
         :href="href"
         :target="target"
         variant="interactive">
-        <div v-if="$slots.icon" class="mr-100">
+        <div
+            v-if="$slots.icon"
+            class="mr-100">
             <div class="es-nav-cta-card-icon bg-blue-50 p-50 position-relative rounded-xs text-blue-600">
                 <slot name="icon" />
             </div>
