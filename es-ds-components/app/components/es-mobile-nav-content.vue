@@ -75,7 +75,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
                 '--es-mobile-nav-right': right,
                 '--es-mobile-nav-width': widthPx,
             }"
-            @focus-outside="focusOutside"
+            @focus-outside.prevent.stop="focusOutside"
             @interact-outside.prevent.stop
             @pointer-down-outside.prevent.stop>
             <div

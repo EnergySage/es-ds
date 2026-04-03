@@ -39,15 +39,23 @@ const escapeKeyDown = (e: any) => {
 };
 
 const focusOutside = (e: any) => {
-    const classesOnTarget = [...e.target.classList];
+    // we only need to do anything with this submenu if it's actually open
+    if (activeMenuId.value) {
+        const classesOnTarget = [...e.target.classList];
 
-    if (classesOnTarget.includes('es-mobile-sub-nav-item-trigger')) {
-        // if the user has moved focus outside of the active submenu and onto
-        // a parent submenu item, close the active submenu
-        goBack();
-    } else if (!isElementWithinMenu(e.target)) {
-        // if focus is on something outside of the overall menu, close it
-        closeMenu();
+        if (classesOnTarget.includes('es-mobile-sub-nav-item-trigger')) {
+            // if the user has moved focus outside of the active submenu and onto
+            // a parent submenu item other than the one that opened this menu,
+            // close the the active submenu
+            const triggerSubNav = e.target.closest('.es-mobile-sub-nav');
+            const thisSubNav = e.currentTarget?.closest('.es-mobile-sub-nav');
+            if (!triggerSubNav.contains(thisSubNav)) {
+                goBack();
+            }
+        } else if (!isElementWithinMenu(e.target)) {
+            // if focus is on something outside of the overall menu, close it
+            closeMenu();
+        }
     }
 };
 
@@ -97,7 +105,7 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
                 v-bind="$attrs"
                 class="es-mobile-sub-nav-item-content bg-white"
                 @escape-key-down="escapeKeyDown"
-                @focus-outside="focusOutside"
+                @focus-outside.prevent.stop="focusOutside"
                 @interact-outside.prevent.stop
                 @pointer-down-outside.prevent.stop>
                 <navigation-menu-list class="es-mobile-sub-nav-list list-unstyled m-0 p-0">
