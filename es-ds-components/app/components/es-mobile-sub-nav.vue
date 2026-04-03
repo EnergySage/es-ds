@@ -15,6 +15,8 @@ const props = withDefaults(defineProps<IProps>(), {
     defaultValue: '',
 });
 
+const subNavParentElement = useTemplateRef('subNavParentElement');
+
 const activeMenuId = ref('');
 
 const closeMenu: (...args: any[]) => void = inject('closeMenu', () => {});
@@ -44,12 +46,10 @@ const focusOutside = (e: any) => {
         const classesOnTarget = [...e.target.classList];
 
         if (classesOnTarget.includes('es-mobile-sub-nav-item-trigger')) {
-            // if the user has moved focus outside of the active submenu and onto
-            // a parent submenu item other than the one that opened this menu,
-            // close the the active submenu
+            // if the user has moved focus outside of the this submenu and onto
+            // another submenu trigger, close this submenu
             const triggerSubNav = e.target.closest('.es-mobile-sub-nav');
-            const thisSubNav = e.currentTarget?.closest('.es-mobile-sub-nav');
-            if (!triggerSubNav.contains(thisSubNav)) {
+            if (triggerSubNav !== subNavParentElement?.value?.$el) {
                 goBack();
             }
         } else if (!isElementWithinMenu(e.target)) {
@@ -87,6 +87,7 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
 <template>
     <navigation-menu-item>
         <navigation-menu-sub
+            ref="subNavParentElement"
             v-bind="$attrs"
             v-model="activeMenuId"
             class="es-mobile-sub-nav"
@@ -150,17 +151,17 @@ $transition-duration: 100ms;
                     transition: color $transition-duration ease-in-out;
                 }
             }
-        }
 
-        &[data-state='open'] {
-            border-bottom-color: transparent;
-            color: variables.$white;
+            &[data-state='open'] {
+                border-bottom-color: transparent;
+                color: variables.$white;
 
-            & > span {
-                background-color: variables.$dark-blue;
+                & > span {
+                    background-color: variables.$dark-blue;
 
-                & > svg {
-                    color: variables.$white;
+                    & > svg {
+                        color: variables.$white;
+                    }
                 }
             }
         }
