@@ -112,6 +112,28 @@ onMounted(async () => {
             </es-row>
         </div>
 
+        <div class="my-300">
+            <h2>No icon</h2>
+            <es-row>
+                <es-col
+                    sm="10"
+                    md="8"
+                    lg="6"
+                    xxl="5">
+                    <es-nav-cta-card
+                        class="mb-100"
+                        heading="Get an instant quote"
+                        href="https://www.energysage.com"
+                        subtitle="Free, personalized solar quotes that’ll save you thousands"
+                        target="_blank" />
+                    <es-nav-cta-card
+                        heading="Get an instant quote"
+                        href="https://www.energysage.com"
+                        target="_blank" />
+                </es-col>
+            </es-row>
+        </div>
+
         <div class="my-500">
             <h2>EsNavCtaCard props</h2>
             <ds-prop-table :rows="esNavCtaCardProps" />
