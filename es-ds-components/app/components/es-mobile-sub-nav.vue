@@ -8,12 +8,9 @@ import {
 } from 'reka-ui';
 
 interface IProps {
-    defaultValue?: string;
     name: string;
 }
-const props = withDefaults(defineProps<IProps>(), {
-    defaultValue: '',
-});
+const props = defineProps<IProps>();
 
 const subNavParentElement = useTemplateRef('subNavParentElement');
 
@@ -91,7 +88,6 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
             v-bind="$attrs"
             v-model="activeMenuId"
             class="es-mobile-sub-nav"
-            :default-value="defaultValue"
             orientation="vertical">
             <navigation-menu-trigger
                 class="es-mobile-sub-nav-item-trigger d-block font-size-75 font-weight-bolder m-0 p-0 text-left w-100">
