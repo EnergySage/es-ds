@@ -37,6 +37,14 @@ const escapeKeyDown = (e: any) => {
     closeMenu();
 };
 
+const handleTriggerClick = () => {
+    // if the menu was open and is being closed by clicking the trigger
+    // (which should only be possible via keyboard), close the menu
+    if (activeMenuId.value) {
+        decreaseDepth();
+    }
+};
+
 let focusOutsideHandled = false;
 
 const focusOutside = (e: any) => {
@@ -102,7 +110,8 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
             class="es-mobile-sub-nav"
             orientation="vertical">
             <navigation-menu-trigger
-                class="es-mobile-sub-nav-item-trigger d-block font-size-75 font-weight-bolder m-0 p-0 text-left w-100">
+                class="es-mobile-sub-nav-item-trigger d-block font-size-75 font-weight-bolder m-0 p-0 text-left w-100"
+                @click="handleTriggerClick">
                 <span class="d-flex justify-content-between p-100 rounded-sm w-100">
                     {{ name }}
                     <icon-chevron-right
