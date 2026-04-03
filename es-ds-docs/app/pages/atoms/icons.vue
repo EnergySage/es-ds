@@ -8,6 +8,7 @@ import IconArrowRight from '@energysage/es-ds-components/app/components/icon/arr
 import IconArrowUp from '@energysage/es-ds-components/app/components/icon/arrow-up.vue';
 import IconBank from '@energysage/es-ds-components/app/components/icon/bank.vue';
 import IconBattery from '@energysage/es-ds-components/app/components/icon/battery.vue';
+import IconBatteryChargingVertical from '@energysage/es-ds-components/app/components/icon/battery-charging-vertical.vue';
 import IconBell from '@energysage/es-ds-components/app/components/icon/bell.vue';
 import IconBlock from '@energysage/es-ds-components/app/components/icon/block.vue';
 import IconBluesky from '@energysage/es-ds-components/app/components/icon/bluesky.vue';
@@ -59,6 +60,7 @@ import IconGift from '@energysage/es-ds-components/app/components/icon/gift.vue'
 import IconHamburger from '@energysage/es-ds-components/app/components/icon/hamburger.vue';
 import IconHeart from '@energysage/es-ds-components/app/components/icon/heart.vue';
 import IconHeatPump from '@energysage/es-ds-components/app/components/icon/heat-pump.vue';
+import IconHouseLine from '@energysage/es-ds-components/app/components/icon/house-line.vue';
 import IconImage from '@energysage/es-ds-components/app/components/icon/image.vue';
 import IconInfo from '@energysage/es-ds-components/app/components/icon/info.vue';
 import IconInfoBlogPost from '@energysage/es-ds-components/app/components/icon/info-blog-post.vue';
@@ -205,6 +207,11 @@ const baseIcons = [
         phosphorName: 'arrow-up',
     },
     {
+        name: 'battery charging vertical',
+        component: IconBatteryChargingVertical,
+        phosphorName: 'battery-charging-vertical',
+    },
+    {
         name: 'bell',
         component: IconBell,
         phosphorName: 'bell',
@@ -235,12 +242,12 @@ const baseIcons = [
         phosphorName: 'shopping-cart-simple',
     },
     {
-        name: 'chat-bubble',
+        name: 'chat bubble',
         component: IconChatBubble,
         phosphorName: 'chat',
     },
     {
-        name: 'chat-dots',
+        name: 'chat dots',
         component: IconChatDots,
         phosphorName: 'chat-dots',
     },
@@ -368,6 +375,11 @@ const baseIcons = [
         name: 'heart',
         component: IconHeart,
         phosphorName: 'heart',
+    },
+    {
+        name: 'house line',
+        component: IconHouseLine,
+        phosphorName: 'house-line',
     },
     {
         name: 'image',
