@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { NavigationMenuContent, NavigationMenuList } from 'reka-ui';
+import type { ShallowRef } from 'vue';
 
 const mobileNavParentElement = useTemplateRef('mobileNavParentElement');
 
@@ -25,6 +26,9 @@ const contentPaneTransformXs = computed(() => `translateX(${currentDepth.value *
 const contentPaneTransformSm = computed(() => `translateX(${currentDepth.value * -1 * width.value}px)`);
 const left = computed(() => (from.value === 'left' ? '0' : 'auto'));
 const menuClosedTranslateX = computed(() => (from.value === 'right' ? '100%' : '-100%'));
+const registerScrollableContentArea = inject<
+    (areaTemplateRef: Readonly<ShallowRef<InstanceType<typeof NavigationMenuContent> | null>>) => void
+>('registerScrollableContentArea', () => {});
 const right = computed(() => (from.value === 'right' ? '0' : 'auto'));
 
 // directional animation of the submenu titles as you're going down and back up
@@ -55,6 +59,11 @@ const isElementWithinMenu = (element: any) => {
     const parent: Node = mobileNavParentElement.value.$el;
     return parent.contains(element);
 };
+
+onMounted(() => {
+    // give EsMobileNav a reference to the scrollable content area so it can set the scroll position
+    registerScrollableContentArea(mobileNavParentElement);
+});
 
 provide('isElementWithinMenu', isElementWithinMenu);
 </script>

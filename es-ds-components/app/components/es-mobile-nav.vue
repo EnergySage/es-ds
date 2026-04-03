@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useScrollLock } from '@vueuse/core';
-import { NavigationMenuItem, NavigationMenuList, NavigationMenuRoot } from 'reka-ui';
+import { type NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuRoot } from 'reka-ui';
+import type { ShallowRef } from 'vue';
 
 interface IProps {
     from?: 'left' | 'right';
@@ -17,6 +18,9 @@ const ANIMATION_DURATION_MS = `${ANIMATION_DURATION}ms`;
 const activeMenuId = ref('');
 const depth = ref(0);
 const nameStack: Ref<string[]> = ref([]);
+const scrollableContentAreaTemplateRef: Ref<Readonly<
+    ShallowRef<InstanceType<typeof NavigationMenuContent> | null>
+> | null> = ref(null);
 const subNavCloseHandlers: Ref<Function[]> = ref([]);
 
 const displayedName = computed(() => (nameStack.value.length > 0 ? nameStack.value[nameStack.value.length - 1] : ''));
@@ -44,6 +48,11 @@ const decreaseDepth = () => {
     if (depth.value > 0) {
         nameStack.value = nameStack.value.slice(0, nameStack.value.length - 1);
         depth.value -= 1;
+
+        // if we can, scroll to the top of the content area so the parent menu starts at the top
+        if (scrollableContentAreaTemplateRef.value?.value?.$el?.scrollTop) {
+            scrollableContentAreaTemplateRef.value.value.$el.scrollTop = 0;
+        }
     }
 };
 
@@ -51,6 +60,18 @@ const decreaseDepth = () => {
 const increaseDepth = (name: string) => {
     nameStack.value.push(name);
     depth.value += 1;
+
+    // if we can, scroll to the top of the content area so the submenu starts at the top
+    if (scrollableContentAreaTemplateRef.value?.value?.$el?.scrollTop) {
+        scrollableContentAreaTemplateRef.value.value.$el.scrollTop = 0;
+    }
+};
+
+// allows us to scroll the content area up to the top when opening a submenu
+const registerScrollableContentArea = (
+    areaTemplateRef: Readonly<ShallowRef<InstanceType<typeof NavigationMenuContent> | null>>,
+) => {
+    scrollableContentAreaTemplateRef.value = areaTemplateRef;
 };
 
 // provides the back button with a function to call in order to close the active submenu
@@ -72,6 +93,7 @@ provide('displayedName', displayedName);
 provide('from', toRef(props, 'from'));
 provide('goBack', goBack);
 provide('increaseDepth', increaseDepth);
+provide('registerScrollableContentArea', registerScrollableContentArea);
 provide('registerSubNavCloseHandler', registerSubNavCloseHandler);
 provide('waitForAnimationDuration', waitForAnimationDuration);
 provide('width', toRef(props, 'width'));
