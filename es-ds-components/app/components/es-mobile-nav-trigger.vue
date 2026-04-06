@@ -7,11 +7,21 @@ interface IProps {
 withDefaults(defineProps<IProps>(), {
     unstyled: false,
 });
+
+const triggerRef = useTemplateRef('triggerRef');
+const registerNavTrigger = inject<(el: HTMLElement) => void>('registerNavTrigger');
+
+onMounted(() => {
+    if (registerNavTrigger && triggerRef.value) {
+        registerNavTrigger((triggerRef.value as any).$el);
+    }
+});
 </script>
 
 <template>
     <!-- styles defined with :deep() in EsMobileNav due to Reka UI's rendering method -->
     <navigation-menu-trigger
+        ref="triggerRef"
         v-bind="$attrs"
         :class="{ 'es-mobile-nav-trigger': !unstyled }">
         <slot />

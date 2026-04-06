@@ -80,9 +80,9 @@ const focusOutside = (e: any) => {
 };
 
 const handleSrBackClick = () => {
-    // Explicitly focus the trigger before closing the submenu. Without this,
+    // explicitly focus the trigger before closing the submenu. without this,
     // assistive technologies (e.g. VoiceOver) lose focus when the submenu content
-    // — which contains the sr-only button — is removed from the DOM.
+    // (which contains the sr-only button) is removed from the DOM.
     (subNavTrigger.value as any)?.$el?.focus();
     goBack();
 };

@@ -17,6 +17,7 @@ const ANIMATION_DURATION_MS = `${ANIMATION_DURATION}ms`;
 
 const activeMenuId = ref('');
 const depth = ref(0);
+const navTriggerElement = ref<HTMLElement | null>(null);
 const nameStack: Ref<string[]> = ref([]);
 const scrollableContentAreaTemplateRef: Ref<Readonly<
     ShallowRef<InstanceType<typeof NavigationMenuContent> | null>
@@ -29,6 +30,11 @@ const widthPx = computed(() => `${props.width}px`);
 
 // closes the top-level menu
 const closeMenu = () => {
+    // focus the trigger before closing so assistive technologies (e.g. VoiceOver)
+    // don't lose focus when the menu content is removed from the DOM.
+    navTriggerElement.value?.focus();
+
+    // close the menu
     activeMenuId.value = '';
 };
 
@@ -67,6 +73,11 @@ const increaseDepth = (name: string) => {
     }
 };
 
+// allows the nav trigger to register itself so closeMenu can return focus to it
+const registerNavTrigger = (el: HTMLElement) => {
+    navTriggerElement.value = el;
+};
+
 // allows us to scroll the content area up to the top when opening a submenu
 const registerScrollableContentArea = (
     areaTemplateRef: Readonly<ShallowRef<InstanceType<typeof NavigationMenuContent> | null>>,
@@ -93,6 +104,7 @@ provide('displayedName', displayedName);
 provide('from', toRef(props, 'from'));
 provide('goBack', goBack);
 provide('increaseDepth', increaseDepth);
+provide('registerNavTrigger', registerNavTrigger);
 provide('registerScrollableContentArea', registerScrollableContentArea);
 provide('registerSubNavCloseHandler', registerSubNavCloseHandler);
 provide('waitForAnimationDuration', waitForAnimationDuration);
