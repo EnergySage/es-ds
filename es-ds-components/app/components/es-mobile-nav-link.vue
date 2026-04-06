@@ -37,14 +37,6 @@ $transition-duration: 100ms;
     /* specify color here so it can be overridden in active state */
     color: variables.$dark-blue;
 
-    &-primary {
-        background-color: variables.$gray-50;
-    }
-
-    &:not(&-primary) {
-        border-bottom: 1px solid variables.$gray-100;
-    }
-
     &:hover {
         text-decoration: none;
     }
@@ -65,10 +57,6 @@ $transition-duration: 100ms;
         & > span {
             background-color: variables.$dark-blue;
         }
-    }
-
-    &-primary:active {
-        background-color: variables.$dark-blue;
     }
 }
 </style>
