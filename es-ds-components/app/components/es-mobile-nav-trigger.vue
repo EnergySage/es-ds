@@ -8,12 +8,12 @@ withDefaults(defineProps<IProps>(), {
     unstyled: false,
 });
 
-const triggerRef = useTemplateRef('triggerRef');
+const triggerRef = useTemplateRef<InstanceType<typeof NavigationMenuTrigger>>('triggerRef');
 const registerNavTrigger = inject<(el: HTMLElement) => void>('registerNavTrigger');
 
 onMounted(() => {
     if (registerNavTrigger && triggerRef.value) {
-        registerNavTrigger((triggerRef.value as any).$el);
+        registerNavTrigger(triggerRef.value.$el);
     }
 });
 </script>
