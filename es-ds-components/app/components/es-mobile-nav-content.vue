@@ -301,8 +301,8 @@ provide('isElementWithinMenu', isElementWithinMenu);
     .es-mobile-nav-title-back-enter-active,
     .es-mobile-nav-title-back-leave-active {
         transition:
-            opacity 0.2s ease,
-            transform 0.2s ease;
+            opacity var(--es-mobile-nav-animation-duration) ease,
+            transform var(--es-mobile-nav-animation-duration) ease;
     }
 }
 </style>
