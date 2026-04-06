@@ -23,7 +23,7 @@ const scrollableContentAreaTemplateRef: Ref<Readonly<
 > | null> = ref(null);
 const subNavCloseHandlers: Ref<Function[]> = ref([]);
 
-const displayedName = computed(() => (nameStack.value.length > 0 ? nameStack.value[nameStack.value.length - 1] : ''));
+const displayedName = computed(() => nameStack.value.at(-1) ?? '');
 const isScrollLocked = useScrollLock(import.meta.client ? document.body : null);
 const widthPx = computed(() => `${props.width}px`);
 
