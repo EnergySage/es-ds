@@ -14,7 +14,6 @@ withDefaults(defineProps<IProps>(), {
 <template>
     <navigation-menu-item>
         <navigation-menu-link
-            v-if="href"
             as-child
             @select.prevent.stop>
             <a
