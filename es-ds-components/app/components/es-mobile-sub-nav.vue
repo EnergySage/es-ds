@@ -16,6 +16,8 @@ const subNavParentElement = useTemplateRef('subNavParentElement');
 
 const activeMenuId = ref('');
 
+const backButtonSimulatedFocus = inject('backButtonSimulatedFocus', ref(false));
+const closeButtonSimulatedFocus = inject('closeButtonSimulatedFocus', ref(false));
 const closeMenu: (...args: any[]) => void = inject('closeMenu', () => {});
 const decreaseDepth = inject('decreaseDepth', () => {});
 const goBack = inject('goBack', () => {});
@@ -129,6 +131,38 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
                 <navigation-menu-list class="es-mobile-sub-nav-list list-unstyled m-0 p-0">
                     <slot />
                 </navigation-menu-list>
+
+                <!--
+                    back button for keyboard / screen readers only,
+                    so you can go back when in this subnav's focus trap.
+                    when given focus, the visible back button in the
+                    nav content header will get a visible focus outline.
+                -->
+                <es-button
+                    class="sr-only"
+                    inline
+                    variant="link"
+                    @blur="backButtonSimulatedFocus = false"
+                    @click="goBack"
+                    @focus="backButtonSimulatedFocus = true">
+                    Back
+                </es-button>
+
+                <!--
+                    close button for keyboard / screen readers only,
+                    so you can go back when in this subnav's focus trap.
+                    when given focus, the visible close button in the
+                    nav content header will get a visible focus outline.
+                -->
+                <es-button
+                    class="sr-only"
+                    inline
+                    variant="link"
+                    @blur="closeButtonSimulatedFocus = false"
+                    @click="closeMenu"
+                    @focus="closeButtonSimulatedFocus = true">
+                    Close
+                </es-button>
             </navigation-menu-content>
         </navigation-menu-sub>
     </navigation-menu-item>

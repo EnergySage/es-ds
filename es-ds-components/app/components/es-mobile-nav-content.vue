@@ -4,6 +4,10 @@ import type { ShallowRef } from 'vue';
 
 const mobileNavParentElement = useTemplateRef('mobileNavParentElement');
 
+// reactive flags set by hidden sr-only buttons in submenus to simulate focus on visible header buttons
+const backButtonSimulatedFocus = ref(false);
+const closeButtonSimulatedFocus = ref(false);
+
 // injected variables provided from EsMobileNav
 const animationDuration = inject('animationDuration', 200);
 const closeMenu: (...args: any[]) => void = inject('closeMenu', () => {});
@@ -65,6 +69,8 @@ onMounted(() => {
     registerScrollableContentArea(mobileNavParentElement);
 });
 
+provide('backButtonSimulatedFocus', backButtonSimulatedFocus);
+provide('closeButtonSimulatedFocus', closeButtonSimulatedFocus);
 provide('isElementWithinMenu', isElementWithinMenu);
 </script>
 
@@ -94,6 +100,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
                     <es-button
                         v-if="currentDepth > 0"
                         class="es-mobile-nav-back-button p-50 position-absolute text-blue-900"
+                        :class="{ focus: backButtonSimulatedFocus }"
                         inline
                         variant="link"
                         @click="goBack">
@@ -126,6 +133,7 @@ provide('isElementWithinMenu', isElementWithinMenu);
                 <!-- close button -->
                 <es-button
                     class="es-mobile-nav-close-button p-50 position-absolute text-blue-900"
+                    :class="{ focus: closeButtonSimulatedFocus }"
                     inline
                     variant="link"
                     @click="closeMenu">
