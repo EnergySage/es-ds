@@ -16,7 +16,6 @@ const ANIMATION_DURATION = 200;
 const ANIMATION_DURATION_MS = `${ANIMATION_DURATION}ms`;
 
 const activeMenuId = ref('');
-const depth = ref(0);
 const navTriggerElement = ref<HTMLElement | null>(null);
 const nameStack: Ref<string[]> = ref([]);
 const scrollableContentAreaTemplateRef: Ref<Readonly<
@@ -39,7 +38,7 @@ const closeMenu = () => {
 };
 
 // provides a read-only variable indicating the current depth
-const currentDepth = computed(() => depth.value);
+const currentDepth = computed(() => nameStack.value.length);
 
 // closes the currently-visible menu
 const goBack = () => {
@@ -51,9 +50,8 @@ const goBack = () => {
 
 // animates up/back one level
 const decreaseDepth = () => {
-    if (depth.value > 0) {
+    if (currentDepth.value > 0) {
         nameStack.value = nameStack.value.slice(0, nameStack.value.length - 1);
-        depth.value -= 1;
 
         // if we can, scroll to the top of the content area so the parent menu starts at the top
         if (scrollableContentAreaTemplateRef.value?.value?.$el?.scrollTop) {
@@ -65,7 +63,6 @@ const decreaseDepth = () => {
 // animates down/forward one level
 const increaseDepth = (name: string) => {
     nameStack.value.push(name);
-    depth.value += 1;
 
     // if we can, scroll to the top of the content area so the submenu starts at the top
     if (scrollableContentAreaTemplateRef.value?.value?.$el?.scrollTop) {
@@ -127,8 +124,8 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
         // clear out all subnav close handlers since all of them are closed
         subNavCloseHandlers.value = [];
 
-        // set the animation "window" to first position
-        depth.value = 0;
+        // clear nameStack to set the animation "window" to first position
+        nameStack.value = [];
     }
 });
 </script>
