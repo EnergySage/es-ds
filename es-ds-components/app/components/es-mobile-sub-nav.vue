@@ -25,7 +25,7 @@ const goBack = inject('goBack', () => {});
 const increaseDepth: (...args: any[]) => void = inject('increaseDepth', () => {});
 const isElementWithinMenu: (...args: any[]) => boolean = inject('isElementWithinMenu', () => true);
 const registerSubNavCloseHandler: Function | undefined = inject('registerSubNavCloseHandler');
-const waitForAnimationDuration = inject('waitForAnimationDuration', () => {});
+const waitForAnimationDuration = inject('waitForAnimationDuration', () => Promise.resolve(true));
 const widthPx = inject(
     'widthPx',
     computed(() => '400px'),
