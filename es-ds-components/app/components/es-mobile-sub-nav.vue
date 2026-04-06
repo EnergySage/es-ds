@@ -13,6 +13,7 @@ interface IProps {
 const props = defineProps<IProps>();
 
 const subNavParentElement = useTemplateRef('subNavParentElement');
+const subNavTrigger = useTemplateRef('subNavTrigger');
 
 const activeMenuId = ref('');
 
@@ -78,6 +79,14 @@ const focusOutside = (e: any) => {
     }
 };
 
+const handleSrBackClick = () => {
+    // Explicitly focus the trigger before closing the submenu. Without this,
+    // assistive technologies (e.g. VoiceOver) lose focus when the submenu content
+    // — which contains the sr-only button — is removed from the DOM.
+    (subNavTrigger.value as any)?.$el?.focus();
+    goBack();
+};
+
 const subNavCloseMenu = async (waitForAnimation: boolean = true) => {
     // start animating up to the parent menu
     decreaseDepth();
@@ -112,6 +121,7 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
             class="es-mobile-sub-nav"
             orientation="vertical">
             <navigation-menu-trigger
+                ref="subNavTrigger"
                 class="es-mobile-sub-nav-item-trigger d-block font-size-75 font-weight-bolder m-0 p-0 text-left w-100"
                 @click="handleTriggerClick">
                 <span class="d-flex justify-content-between p-100 rounded-sm w-100">
@@ -143,7 +153,7 @@ watch(activeMenuId, (newVal: string, oldVal: string) => {
                     inline
                     variant="link"
                     @blur="backButtonSimulatedFocus = false"
-                    @click="goBack"
+                    @click="handleSrBackClick"
                     @focus="backButtonSimulatedFocus = true">
                     Back
                 </es-button>
