@@ -17,6 +17,7 @@ import IconBusiness from '@energysage/es-ds-components/app/components/icon/busin
 import IconCalculator from '@energysage/es-ds-components/app/components/icon/calculator.vue';
 import IconCalendar from '@energysage/es-ds-components/app/components/icon/calendar.vue';
 import IconCart from '@energysage/es-ds-components/app/components/icon/cart.vue';
+import IconChargingStation from '@energysage/es-ds-components/app/components/icon/charging-station.vue';
 import IconChatAdd from '@energysage/es-ds-components/app/components/icon/chat-add.vue';
 import IconChatApprove from '@energysage/es-ds-components/app/components/icon/chat-approve.vue';
 import IconChatBubble from '@energysage/es-ds-components/app/components/icon/chat-bubble.vue';
@@ -240,6 +241,11 @@ const baseIcons = [
         name: 'cart',
         component: IconCart,
         phosphorName: 'shopping-cart-simple',
+    },
+    {
+        name: 'charging station',
+        component: IconChargingStation,
+        phosphorName: 'charging-station',
     },
     {
         name: 'chat bubble',
