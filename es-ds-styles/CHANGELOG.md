@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.1](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.4.0...es-ds-styles-v3.4.1) (2026-04-07)
+
+
+### Bug Fixes
+
+* all current security vulnerabilities, increase node version, fix warnings ([#1728](https://github.com/EnergySage/es-ds/issues/1728)) ([8b4432a](https://github.com/EnergySage/es-ds/commit/8b4432ae1be67fb5e619ae9f011fd0bd3699540c))
+
 ## [3.4.0](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.3.4...es-ds-styles-v3.4.0) (2026-04-06)
 
 
