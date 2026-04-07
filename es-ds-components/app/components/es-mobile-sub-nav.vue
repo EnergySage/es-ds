@@ -66,12 +66,10 @@ const focusOutside = (e: any) => {
         const classesOnTarget = [...e.target.classList];
 
         if (classesOnTarget.includes('es-mobile-sub-nav-item-trigger')) {
-            // if the user has moved focus outside of the this submenu and onto
-            // another submenu trigger, close this submenu
-            const triggerSubNav = e.target.closest('.es-mobile-sub-nav');
-            if (triggerSubNav !== subNavParentElement?.value?.$el) {
-                goBack();
-            }
+            // if the user has moved focus outside of this submenu and onto
+            // a submenu trigger (even the one that triggered this submenu),
+            // close this submenu
+            goBack();
         } else if (!isElementWithinMenu(e.target)) {
             // if focus is on something outside of the overall menu, close it
             closeMenu();
