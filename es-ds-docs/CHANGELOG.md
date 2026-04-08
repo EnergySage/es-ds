@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.3.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.3.0...es-ds-docs-v5.3.1) (2026-04-07)
+
+
+### Bug Fixes
+
+* all current security vulnerabilities, increase node version, fix warnings ([#1728](https://github.com/EnergySage/es-ds/issues/1728)) ([8b4432a](https://github.com/EnergySage/es-ds/commit/8b4432ae1be67fb5e619ae9f011fd0bd3699540c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.3.0 to ^5.3.1
+    * @energysage/es-ds-styles bumped from ^3.4.0 to ^3.4.1
+
 ## [5.3.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.2.0...es-ds-docs-v5.3.0) (2026-04-06)
 
 
