@@ -37,6 +37,10 @@
   @include transition.transition(variables.$progress-bar-transition);
 }
 
+.progress-bar--with-glow {
+  box-shadow: variables.$warm-orange 0px 0px 4px, rgba(255, 145, 51, 0.5) 0px 0px 24px;
+}
+
 .progress-bar--with-circle {
   &::after {
     background: variables.$white;
