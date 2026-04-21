@@ -38,7 +38,7 @@
 }
 
 .progress-bar--with-glow {
-  box-shadow: variables.$warm-orange 0px 0px 4px, rgba(255, 145, 51, 0.5) 0px 0px 24px;
+  box-shadow: variables.$warm-orange 0 0 4px, rgba(255, 145, 51, 0.5) 0 0 24px;
 }
 
 .progress-bar--with-circle {
