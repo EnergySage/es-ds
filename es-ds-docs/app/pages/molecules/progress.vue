@@ -16,6 +16,7 @@ const propTableRows = [
     ],
     ['height', 'String', '0.125rem', 'Specifies height of the progress bar.'],
     ['showCircle', 'Boolean', 'true', 'Set to false to hide the indicator circle.'],
+    ['showGlow', 'Boolean', 'true', 'Set to false to hide the glow around the bar.'],
     ['showValue', 'Boolean', 'false', 'When present, it shows the progress bar value below the bar.'],
     ['value', 'Number', 'n/a', 'Required. A value between 0 and 100 representing the progress.'],
     ['valueClass', 'String', "''", 'Allows control of styling for the value displayed when showValue is set to true.'],
@@ -196,27 +197,31 @@ onMounted(async () => {
         </div>
 
         <div class="my-500">
-            <h2>Hide indicator circle</h2>
-            <p>This example shows how to hide the indicator circle for a simpler progress bar.</p>
+            <h2>Hide glow and indicator circle</h2>
+            <p>This example shows how to hide the glow and indicator circle for a simpler progress bar.</p>
             <es-progress
                 class="mb-200"
                 height="0.375rem"
                 :show-circle="false"
+                :show-glow="false"
                 :value="0" />
             <es-progress
                 class="mb-200"
                 height="0.375rem"
                 :show-circle="false"
+                :show-glow="false"
                 :value="33" />
             <es-progress
                 class="mb-200"
                 height="0.375rem"
                 :show-circle="false"
+                :show-glow="false"
                 :value="67" />
             <es-progress
                 class="mb-200"
                 height="0.375rem"
                 :show-circle="false"
+                :show-glow="false"
                 :value="100" />
         </div>
 

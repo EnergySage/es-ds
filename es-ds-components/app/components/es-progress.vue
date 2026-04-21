@@ -12,6 +12,7 @@ interface Props {
     formatter?: Function;
     height?: string;
     showCircle?: boolean;
+    showGlow?: boolean;
     showValue?: boolean;
     value: number;
     valueClass?: string;
@@ -21,6 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
     formatter: (val: number) => `${val}%`,
     height: '0.125rem',
     showCircle: true,
+    showGlow: true,
     showValue: false,
     valueClass: '',
 });
@@ -31,6 +33,7 @@ const progressBarPt = computed(() => ({
             'EsProgressValue progress-bar overflow-visible position-relative rounded-sm',
             {
                 'progress-bar--with-circle': props.showCircle,
+                'progress-bar--with-glow': props.showGlow,
             },
         ],
         style: {
