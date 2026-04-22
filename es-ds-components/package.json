@@ -1,6 +1,6 @@
 {
     "name": "@energysage/es-ds-components",
-    "version": "5.3.1",
+    "version": "5.4.0",
     "private": false,
     "type": "module",
     "description": "An EnergySage Vue component library",
@@ -17,7 +17,7 @@
     "author": "EnergySage",
     "license": "MIT",
     "dependencies": {
-        "@energysage/es-ds-styles": "^3.4.1",
+        "@energysage/es-ds-styles": "^3.5.0",
         "@nuxtjs/google-fonts": "^3.2.0",
         "@phosphor-icons/vue": "^2.2.1",
         "@vuelidate/core": "^2.0.3",

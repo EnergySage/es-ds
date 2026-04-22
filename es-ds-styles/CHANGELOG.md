@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.0](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.4.1...es-ds-styles-v3.5.0) (2026-04-21)
+
+
+### Features
+
+* added glow to progress bar to match designs ([#1732](https://github.com/EnergySage/es-ds/issues/1732)) ([a739702](https://github.com/EnergySage/es-ds/commit/a7397025c6cb0cfa742506227078753609ae57ab))
+
 ## [3.4.1](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.4.0...es-ds-styles-v3.4.1) (2026-04-07)
 
 
