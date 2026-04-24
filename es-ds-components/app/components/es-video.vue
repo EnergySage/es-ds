@@ -35,7 +35,15 @@ const embedUrlWithParams = computed(
             <iframe
                 :id="`youtube-video-${videoId}`"
                 class="embed-responsive-item"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                "
                 allowfullscreen
                 frameborder="0"
                 referrerpolicy="strict-origin-when-cross-origin"
