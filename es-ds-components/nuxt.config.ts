@@ -93,7 +93,6 @@ export default defineNuxtConfig({
                 'primevue/tooltip',
                 'reka-ui',
                 '@phosphor-icons/vue',
-                'maska/vue',
             ],
         },
         css: {
