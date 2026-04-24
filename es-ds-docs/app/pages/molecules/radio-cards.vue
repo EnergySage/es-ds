@@ -58,12 +58,10 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        const componentCodeRadioCardSource = await import(
-            '@energysage/es-ds-components/app/components/es-form-radio-card.vue?raw'
-        );
-        const componentCodeRadioCardsSource = await import(
-            '@energysage/es-ds-components/app/components/es-form-radio-cards.vue?raw'
-        );
+        const componentCodeRadioCardSource =
+            await import('@energysage/es-ds-components/app/components/es-form-radio-card.vue?raw');
+        const componentCodeRadioCardsSource =
+            await import('@energysage/es-ds-components/app/components/es-form-radio-cards.vue?raw');
         const docSource = await import('./radio-cards.vue?raw');
 
         componentCodeRadioCard.value = $prism.normalizeCode(componentCodeRadioCardSource.default);
