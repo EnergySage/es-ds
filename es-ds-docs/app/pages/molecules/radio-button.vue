@@ -50,13 +50,11 @@ const docCode = ref('');
 
 onMounted(async () => {
     if ($prism) {
-        const radioButtonComponentSource = await import(
-            '@energysage/es-ds-components/app/components/es-radio-button.vue?raw'
-        );
+        const radioButtonComponentSource =
+            await import('@energysage/es-ds-components/app/components/es-radio-button.vue?raw');
 
-        const radioButtonGroupComponentSource = await import(
-            '@energysage/es-ds-components/app/components/es-radio-button-group.vue?raw'
-        );
+        const radioButtonGroupComponentSource =
+            await import('@energysage/es-ds-components/app/components/es-radio-button-group.vue?raw');
         const docSource = await import('./radio-button.vue?raw');
 
         radioButtonComponentCode.value = $prism.normalizeCode(radioButtonComponentSource.default);

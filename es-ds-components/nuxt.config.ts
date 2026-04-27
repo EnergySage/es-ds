@@ -92,13 +92,14 @@ export default defineNuxtConfig({
                 'primevue/tabview',
                 'primevue/tooltip',
                 'reka-ui',
+                '@phosphor-icons/vue',
             ],
         },
         css: {
             preprocessorOptions: {
                 scss: {
                     // color functions will be deprecated in SASS 2.0: https://sass-lang.com/documentation/breaking-changes/color-functions/
-                    silenceDeprecations: ['color-functions'],
+                    silenceDeprecations: ['color-functions', 'if-function'],
                 },
             },
         },

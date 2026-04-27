@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     // https://nuxt.com/docs/getting-started/deployment#static-hosting
     ssr: true,
 
-    modules: ['./modules/auto-import-eslint.ts', '@nuxt/image', '@nuxt/eslint', 'motion-v/nuxt'],
+    modules: ['@nuxt/image', '@nuxt/eslint', 'motion-v/nuxt'],
 
     // Per suggestion from https://github.com/nuxt/nuxt/issues/26783#issuecomment-2058966800
     // See also:
