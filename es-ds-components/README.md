@@ -1,6 +1,6 @@
 # es-ds-components
 
-This is an EnergySage Nuxt layer with design system components.
+This is an EnergySage Nuxt layer with components for our design system.
 
 ## Usage
 
