@@ -224,7 +224,7 @@ jobs:
               working-directory: es-ds-components
               run: |
                 version=$(jq -r '.devDependencies["@energysage/es-ds-styles"]' package.json)
-                npm install @energysage/es-ds-styles@$version
+                npm install --save-dev @energysage/es-ds-styles@$version
 
             # Update es-ds-docs lock file if styles or components was released
             - name: Update es-ds-docs dependencies
