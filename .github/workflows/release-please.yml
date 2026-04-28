@@ -223,7 +223,7 @@ jobs:
               if: needs.release-please.outputs['es-ds-styles--release_created'] == 'true'
               working-directory: es-ds-components
               run: |
-                version=$(jq -r '.dependencies["@energysage/es-ds-styles"]' package.json)
+                version=$(jq -r '.devDependencies["@energysage/es-ds-styles"]' package.json)
                 npm install @energysage/es-ds-styles@$version
 
             # Update es-ds-docs lock file if styles or components was released
