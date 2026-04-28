@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.4.3](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.4.2...es-ds-components-v5.4.3) (2026-04-28)
+
+
+### Bug Fixes
+
+* more trivial changes, and update release-please-action ([#1739](https://github.com/EnergySage/es-ds/issues/1739)) ([261624a](https://github.com/EnergySage/es-ds/commit/261624a01d5ba9b86afc7ffa5407eda3794bfb4b))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^3.5.2 to ^3.5.3
+
 ## [5.4.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.4.1...es-ds-components-v5.4.2) (2026-04-27)
 
 
