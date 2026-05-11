@@ -83,6 +83,7 @@ import IconPencil from '@energysage/es-ds-components/app/components/icon/pencil.
 import IconPerson from '@energysage/es-ds-components/app/components/icon/person.vue';
 import IconPersonAdd from '@energysage/es-ds-components/app/components/icon/person-add.vue';
 import IconPersonCheck from '@energysage/es-ds-components/app/components/icon/person-check.vue';
+import IconPersonCircle from '@energysage/es-ds-components/app/components/icon/person-circle.vue';
 import IconPersonCross from '@energysage/es-ds-components/app/components/icon/person-cross.vue';
 import IconPhone from '@energysage/es-ds-components/app/components/icon/phone.vue';
 import IconPlay from '@energysage/es-ds-components/app/components/icon/play.vue';
@@ -461,6 +462,11 @@ const baseIcons = [
         name: 'person check',
         component: IconPersonCheck,
         phosphorName: 'user-check',
+    },
+    {
+        name: 'person circle',
+        component: IconPersonCircle,
+        phosphorName: 'user-circle',
     },
     {
         name: 'person cross',

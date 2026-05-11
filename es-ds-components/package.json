@@ -28,6 +28,7 @@
         "eslint-config-prettier": "^10.0.1",
         "html-truncate": "^1.2.2",
         "maska": "^3.2.0",
+        "mitt": "^3.0.1",
         "nuxt": "^4.3.1",
         "nuxt-primevue": "^3.0.0",
         "prettier": "^3.3.3",

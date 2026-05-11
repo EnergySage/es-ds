@@ -4,6 +4,20 @@ const LOREM_TEXT =
 
 const samplePageContent = Array(4).fill(LOREM_TEXT);
 
+const esStickyBarProps = [
+    [
+        'transparentOnDesktop',
+        'boolean',
+        'false',
+        `
+        If set to true, the sticky bar will have a transparent background when scrolled to the
+        top of the page on lg breakpoint and above. This enables the nav to appear seamlessly
+        integrated with a landing page hero section that has an image or background color other
+        than white.
+        `,
+    ],
+];
+
 definePageMeta({
     layout: 'minimal',
 });
@@ -76,6 +90,11 @@ onMounted(async () => {
                 :key="index">
                 {{ content }}
             </p>
+
+            <div class="my-300">
+                <h2>EsStickyBar props</h2>
+                <ds-prop-table :rows="esStickyBarProps" />
+            </div>
 
             <ds-doc-source
                 :comp-code="compCode"

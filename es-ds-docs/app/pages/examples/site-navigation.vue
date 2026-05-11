@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { accountMenuItems, menuBarSampleItems } from '@/utils/menu-bar-sample-items';
 import { largeNestedMenuItems } from '@/utils/mobile-nav-sample-items';
 
 definePageMeta({
@@ -10,10 +11,11 @@ const samplePageContent = Array(10).fill('test content for scrolling');
 
 <template>
     <div>
-        <es-sticky-bar>
-            <div class="site-navigation align-items-center d-flex position-relative">
+        <es-sticky-bar transparent-on-desktop>
+            <es-skip-to-content-link />
+            <div class="site-navigation align-items-center d-flex justify-content-lg-between position-relative px-md-150">
                 <!-- mobile nav -->
-                <es-mobile-nav>
+                <es-mobile-nav class="d-lg-none">
                     <es-mobile-nav-trigger>
                         <span class="sr-only">Open navigation menu</span>
                         <icon-hamburger aria-hidden="true" />
@@ -115,12 +117,88 @@ const samplePageContent = Array(10).fill('test content for scrolling');
 
                 <a
                     href="https://www.energysage.com"
-                    class="site-navigation-logo position-absolute">
+                    class="site-navigation-logo">
                     <es-logo
                         alt="EnergySage"
+                        class="d-lg-none"
                         height="30px"
                         width="135px" />
+                    <es-logo
+                        alt="EnergySage"
+                        class="d-none d-lg-block"
+                        height="45px"
+                        width="205px" />
                 </a>
+
+                <!-- desktop nav -->
+                <div class="d-flex flex-nowrap">
+                    <es-menu-bar
+                        class="d-none d-lg-block"
+                        full-width
+                        :height="88">
+                        <es-menu-bar-item
+                            v-for="item in menuBarSampleItems"
+                            :key="item.name">
+                            <es-menu-bar-trigger>
+                                {{ item.name }}
+                            </es-menu-bar-trigger>
+                            <es-menu-bar-content>
+                                <es-menu-bar-section v-if="item.cta?.href">
+                                    <es-nav-cta-card
+                                        class="mb-100"
+                                        :heading="item.cta.heading"
+                                        :href="item.cta.href"
+                                        :subtitle="item.cta.subtitle"
+                                        :target="item.cta.target">
+                                        <template
+                                            v-if="item.cta.icon"
+                                            #icon>
+                                            <icon-battery-charging-vertical
+                                                v-if="item.cta.icon === 'battery-charging-vertical'"
+                                                aria-hidden="true" />
+                                            <icon-charging-station
+                                                v-else-if="item.cta.icon === 'charging-station'"
+                                                aria-hidden="true" />
+                                            <icon-house-line
+                                                v-else-if="item.cta.icon === 'house-line'"
+                                                aria-hidden="true" />
+                                            <icon-solar
+                                                v-else-if="item.cta.icon === 'solar'"
+                                                aria-hidden="true" />
+                                        </template>
+                                    </es-nav-cta-card>
+                                </es-menu-bar-section>
+                                <es-menu-bar-section
+                                    v-for="section in item.items"
+                                    :key="section.name"
+                                    :heading="section.name">
+                                    <es-menu-bar-link
+                                        v-for="link in section.items"
+                                        :key="link.name"
+                                        :href="link.href || ''"
+                                        :name="link.name" />
+                                </es-menu-bar-section>
+                            </es-menu-bar-content>
+                        </es-menu-bar-item>
+                    </es-menu-bar>
+                    <es-menu-bar
+                        class="d-none d-lg-block ml-100"
+                        :height="88">
+                        <es-menu-bar-item>
+                            <es-menu-bar-trigger>
+                                <icon-person-circle class="mr-25" height="32px" width="32px" />
+                                Brittany
+                            </es-menu-bar-trigger>
+                            <es-menu-bar-content>
+                                <es-menu-bar-link
+                                        v-for="link in accountMenuItems"
+                                        :key="link.name"
+                                        :href="link.href || ''"
+                                        :name="link.name" />
+                            </es-menu-bar-content>
+                        </es-menu-bar-item>
+                    </es-menu-bar>
+                </div>
             </div>
         </es-sticky-bar>
         <ds-main-layout>
@@ -142,13 +220,23 @@ const samplePageContent = Array(10).fill('test content for scrolling');
 </template>
 
 <style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+
 :deep(.site-navigation) {
     height: 88px;
 }
 
 .site-navigation-logo {
     left: 50%;
+    position: absolute;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
+
+    @include breakpoints.media-breakpoint-up(lg) {
+        left: auto;
+        position: static;
+        top: auto;
+        transform: none;
+    }
 }
 </style>

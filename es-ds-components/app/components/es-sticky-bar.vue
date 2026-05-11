@@ -2,6 +2,13 @@
 // minimum scroll distance in a single direction before showing/hiding
 const SCROLL_THRESHOLD = 20;
 
+interface IProps {
+    transparentOnDesktop?: boolean;
+}
+const props = withDefaults(defineProps<IProps>(), {
+    transparentOnDesktop: false,
+});
+
 // bar states:
 // - static:        initial SSR state; bar is in normal document flow
 // - absolute:      after mount; bar is out of flow but scrolls away naturally with the page
@@ -22,6 +29,8 @@ let lastScrollY = 0;
 let scrollAnchor = 0; // position where the current scroll direction started
 let scrollDirection = 0; // positive = down, negative = up
 let ticking = false; // tracks whether a rAF is already queued
+
+const desktopBackgroundColorWhenAtScrollTop = computed(() => (props.transparentOnDesktop ? 'transparent' : '#ffffff'));
 
 // switches to fixed-hidden without triggering the CSS transition — used when the bar is already
 // off screen and we need to silently reposition it before the user scrolls back up
@@ -114,7 +123,7 @@ onUnmounted(() => {
 <template>
     <div
         ref="bar"
-        class="es-sticky-bar bg-white"
+        class="es-sticky-bar"
         :class="[`es-sticky-bar--${barState}`, { 'es-sticky-bar--no-transition': suppressTransition }]"
         v-bind="$attrs">
         <slot />
@@ -128,10 +137,12 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
 
 $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
 
 .es-sticky-bar {
+    background-color: variables.$white;
     box-shadow: $shadow;
     left: 0;
     right: 0;
@@ -139,6 +150,7 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     z-index: 1000;
 
     @include breakpoints.media-breakpoint-up(lg) {
+        background-color: v-bind(desktopBackgroundColorWhenAtScrollTop);
         box-shadow: none;
     }
 
@@ -152,6 +164,7 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
 
     &--fixed-visible,
     &--fixed-hidden {
+        background-color: variables.$white;
         box-shadow: $shadow;
         position: fixed;
 
