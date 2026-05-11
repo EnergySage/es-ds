@@ -22,7 +22,9 @@ withDefaults(defineProps<IProps>(), {
                     <div class="mb-100">
                         <ds-breadcrumbs />
                     </div>
-                    <div :id="mainContentId" class="mb-300">
+                    <div
+                        :id="mainContentId"
+                        class="mb-300">
                         <slot />
                     </div>
                 </es-col>

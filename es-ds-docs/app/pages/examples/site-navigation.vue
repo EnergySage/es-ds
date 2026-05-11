@@ -13,7 +13,8 @@ const samplePageContent = Array(10).fill('test content for scrolling');
     <div>
         <es-sticky-bar transparent-on-desktop>
             <es-skip-to-content-link />
-            <div class="site-navigation align-items-center d-flex justify-content-lg-between position-relative px-md-150">
+            <div
+                class="site-navigation align-items-center d-flex justify-content-lg-between position-relative px-md-150">
                 <!-- mobile nav -->
                 <es-mobile-nav class="d-lg-none">
                     <es-mobile-nav-trigger>
@@ -186,15 +187,18 @@ const samplePageContent = Array(10).fill('test content for scrolling');
                         :height="88">
                         <es-menu-bar-item>
                             <es-menu-bar-trigger>
-                                <icon-person-circle class="mr-25" height="32px" width="32px" />
+                                <icon-person-circle
+                                    class="mr-25"
+                                    height="32px"
+                                    width="32px" />
                                 Brittany
                             </es-menu-bar-trigger>
                             <es-menu-bar-content>
                                 <es-menu-bar-link
-                                        v-for="link in accountMenuItems"
-                                        :key="link.name"
-                                        :href="link.href || ''"
-                                        :name="link.name" />
+                                    v-for="link in accountMenuItems"
+                                    :key="link.name"
+                                    :href="link.href || ''"
+                                    :name="link.name" />
                             </es-menu-bar-content>
                         </es-menu-bar-item>
                     </es-menu-bar>

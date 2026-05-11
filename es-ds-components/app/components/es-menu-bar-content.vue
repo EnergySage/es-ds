@@ -50,5 +50,4 @@ const fullWidth = inject('fullWidth', false);
     /*position: absolute;
     z-index: 1000;*/
 }
-
 </style>

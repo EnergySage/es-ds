@@ -44,9 +44,7 @@ definePageMeta({
                     Reka UI NavigationMenu
                 </nuxt-link>
             </p>
-            <p class="mb-500">
-                The menu bar assumes it is at the top of the viewport
-            </p>
+            <p class="mb-500">The menu bar assumes it is at the top of the viewport</p>
 
             <div class="my-300">
                 <h2>Basic example</h2>

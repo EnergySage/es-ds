@@ -80,7 +80,9 @@ onUnmounted(() => {
                     'full-width': fullWidth,
                 }" />
         </navigation-menu-root>
-        <teleport v-if="showOverlayWhenOpen" to="body">
+        <teleport
+            v-if="showOverlayWhenOpen"
+            to="body">
             <transition name="es-menu-bar-overlay">
                 <div
                     v-if="activeMenuId"
@@ -334,7 +336,7 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                          * both parents are visible simultaneously next to each other
                          */
                         /*.es-menu-bar-item-content-pane {*/
-                            animation: exitToLeft $switch-menus-duration $switch-menus-timing-function;
+                        animation: exitToLeft $switch-menus-duration $switch-menus-timing-function;
                         /*}*/
                     }
 
@@ -343,7 +345,7 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                         /*animation: presenceExitAnimationForContent $switch-menus-duration $switch-menus-timing-function;*/
 
                         /*.es-menu-bar-item-content-pane {*/
-                            animation: exitToRight $switch-menus-duration $switch-menus-timing-function;
+                        animation: exitToRight $switch-menus-duration $switch-menus-timing-function;
                         /*}*/
                     }
                 }
@@ -358,7 +360,9 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             width: var(--reka-navigation-menu-viewport-width);
 
             @media not (prefers-reduced-motion) {
-                transition: height $switch-menus-duration $switch-menus-timing-function, left $switch-menus-duration $switch-menus-timing-function;
+                transition:
+                    height $switch-menus-duration $switch-menus-timing-function,
+                    left $switch-menus-duration $switch-menus-timing-function;
 
                 &[data-state='open'] {
                     animation: menuOpenWithShadow $open-close-duration $open-close-timing-function;
