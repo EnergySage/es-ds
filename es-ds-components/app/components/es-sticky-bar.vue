@@ -1,13 +1,13 @@
 <script setup lang="ts">
-// minimum scroll distance in a single direction before showing/hiding
-const SCROLL_THRESHOLD = 20;
-
 interface IProps {
     transparentOnDesktop?: boolean;
 }
 const props = withDefaults(defineProps<IProps>(), {
     transparentOnDesktop: false,
 });
+
+// minimum scroll distance in a single direction before showing/hiding
+const SCROLL_THRESHOLD = 20;
 
 const emitter = useEsdsEvents();
 
@@ -25,8 +25,11 @@ const bar = ref<HTMLElement | null>(null);
 const suppressTransition = ref(false);
 // updated on mount and whenever the bar resizes
 const barHeight = ref(0);
-// keep track of when EsMenuBar is open (assumes it's inside the sticky bar)
-const isMenuOpen = ref(false);
+// keep track of when the mouse is over the sticky bar (to change bg to white)
+const isHovered = ref(false);
+// number of EsMenuBars currently open inside this sticky bar; counting (rather than
+// a boolean) makes the state order-independent when one menu closes as another opens
+const openMenuCount = ref(0);
 
 // scroll state — all plain vars since they don't need to be reactive
 let lastScrollY = 0;
@@ -118,12 +121,12 @@ onMounted(() => {
         onUnmounted(() => resizeObserver.disconnect());
     }
 
-    emitter.on(ES_MENU_BAR_CLOSE_EVENT_NAME, () => {
-        isMenuOpen.value = false;
+    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, () => {
+        openMenuCount.value += 1;
     });
 
-    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, () => {
-        isMenuOpen.value = true;
+    emitter.on(ES_MENU_BAR_CLOSE_EVENT_NAME, () => {
+        openMenuCount.value = Math.max(0, openMenuCount.value - 1);
     });
 });
 
@@ -139,11 +142,16 @@ onUnmounted(() => {
     <div
         ref="bar"
         class="es-sticky-bar"
-        :class="[`es-sticky-bar--${barState}`, {
-            'es-sticky-bar--no-transition': suppressTransition,
-            'es-sticky-bar--menu-open': isMenuOpen,
-        }]"
-        v-bind="$attrs">
+        :class="[
+            `es-sticky-bar--${barState}`,
+            {
+                'es-sticky-bar--no-transition': suppressTransition,
+                'es-sticky-bar--active': isHovered || openMenuCount > 0,
+            },
+        ]"
+        v-bind="$attrs"
+        @mouseover="isHovered = true"
+        @mouseout="isHovered = false">
         <slot />
     </div>
     <!-- holds the bar's space in normal flow when the bar is absolutely or fixed positioned -->
@@ -173,7 +181,9 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     }
 
     @media not (prefers-reduced-motion) {
-        transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        transition:
+            background 0.2s ease-in-out,
+            box-shadow 0.2s ease-in-out;
     }
 
     &--absolute {
@@ -202,8 +212,9 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
         transition: none !important;
     }
 
-    &--menu-open {
+    &--active {
         background-color: variables.$white;
+        box-shadow: $shadow;
     }
 }
 </style>
