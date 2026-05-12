@@ -36,18 +36,3 @@ const fullWidth = inject('fullWidth', false);
             :height="8" />
     </navigation-menu-content>
 </template>
-
-<style lang="scss" scoped>
-@use '@energysage/es-ds-styles/scss/variables';
-
-.es-menu-bar-item-content-pane {
-    /*background: radial-gradient(
-        199.54% 139.89% at 0% 2.18%,
-        rgba(255, 255, 255, 0.95) 0%,
-        variables.$white 31.73%,
-        rgba(255, 255, 255, 0.9) 100%
-    );*/
-    /*position: absolute;
-    z-index: 1000;*/
-}
-</style>

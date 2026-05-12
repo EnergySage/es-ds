@@ -17,7 +17,7 @@ withDefaults(defineProps<IProps>(), {
             as-child
             @select.prevent.stop>
             <a
-                class="es-menu-bar-link d-block font-size-75 font-weight-normal text-dark-blue"
+                class="d-block font-size-75 font-weight-normal text-dark-blue"
                 :href="href"
                 :target="target">
                 <span class="d-block py-50 rounded-sm">
@@ -27,8 +27,3 @@ withDefaults(defineProps<IProps>(), {
         </navigation-menu-link>
     </navigation-menu-item>
 </template>
-
-<style lang="scss" scoped>
-.es-menu-bar-link {
-}
-</style>

@@ -103,6 +103,17 @@ function onScroll() {
     }
 }
 
+// defined at script scope so the same references can be passed to emitter.off() —
+// calling emitter.off(type) without a handler removes EVERY listener for that event,
+// including ones registered by other components
+const onMenuBarOpen = () => {
+    openMenuCount.value += 1;
+};
+
+const onMenuBarClose = () => {
+    openMenuCount.value = Math.max(0, openMenuCount.value - 1);
+};
+
 onMounted(() => {
     // measure height before switching position so the placeholder matches exactly
     barHeight.value = bar.value?.offsetHeight ?? 0;
@@ -121,20 +132,15 @@ onMounted(() => {
         onUnmounted(() => resizeObserver.disconnect());
     }
 
-    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, () => {
-        openMenuCount.value += 1;
-    });
-
-    emitter.on(ES_MENU_BAR_CLOSE_EVENT_NAME, () => {
-        openMenuCount.value = Math.max(0, openMenuCount.value - 1);
-    });
+    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, onMenuBarOpen);
+    emitter.on(ES_MENU_BAR_CLOSE_EVENT_NAME, onMenuBarClose);
 });
 
 onUnmounted(() => {
     window.removeEventListener('scroll', onScroll);
 
-    emitter.off(ES_MENU_BAR_CLOSE_EVENT_NAME);
-    emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME);
+    emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME, onMenuBarOpen);
+    emitter.off(ES_MENU_BAR_CLOSE_EVENT_NAME, onMenuBarClose);
 });
 </script>
 

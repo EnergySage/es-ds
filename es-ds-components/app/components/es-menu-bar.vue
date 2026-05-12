@@ -32,7 +32,6 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
     // lock page scrolling when menu is open, unless we're not showing the overlay
     isScrollLocked.value = props.showOverlayWhenOpen && !!newVal;
 
-
     if (!oldVal && newVal) {
         // if the menu is opening, emit event so:
         //  - any other EsMenuBars on the page can close (only an issue during keyboard navigation between menus)
@@ -46,21 +45,26 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
     }
 });
 
+// keep a reference to the handler so unmount can remove only this instance's listener —
+// emitter.off(type) without a handler wipes EVERY listener for that event, which would
+// break other components (e.g. EsStickyBar) that are also subscribed
+const handleMenuOpen = () => {
+    if (isOpening) {
+        // if we're opening our own menu, ignore the event
+        isOpening = false;
+    } else {
+        // if another menu just opened, close ours
+        // (this is only an issue during keyboard navigation between menus)
+        activeMenuId.value = '';
+    }
+};
+
 onMounted(() => {
-    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, () => {
-        if (isOpening) {
-            // if we're opening our own menu, ignore the event
-            isOpening = false;
-        } else {
-            // if another menu just opened, close ours
-            // (this is only an issue during keyboard navigation between menus)
-            activeMenuId.value = '';
-        }
-    });
+    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, handleMenuOpen);
 });
 
 onUnmounted(() => {
-    emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME);
+    emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME, handleMenuOpen);
 });
 </script>
 
@@ -98,6 +102,7 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables';
 
 $open-close-duration: 200ms;
@@ -225,7 +230,7 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     :deep(.es-menu-bar-list) {
         align-items: center;
         display: flex;
-        gap: variables.$spacer;
+        gap: variables.$spacer * 0.25;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -235,6 +240,10 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             down from underneath the menu without temporarily overlapping it
         */
         z-index: 1001;
+
+        @include breakpoints.media-breakpoint-up(xl) {
+            gap: variables.$spacer;
+        }
 
         li {
             margin: 0;
