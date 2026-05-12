@@ -9,6 +9,7 @@ withDefaults(defineProps<IProps>(), {
 
 <template>
     <div class="d-flex justify-content-center">
+        <es-skip-to-content-link />
         <es-container class="pt-100 mx-0">
             <es-row>
                 <es-col
