@@ -111,7 +111,12 @@ const onMenuBarOpen = () => {
 };
 
 const onMenuBarClose = () => {
-    openMenuCount.value = Math.max(0, openMenuCount.value - 1);
+    // delay turning off the active state until after the menu has finished closing
+    // so it can roll up into the bar, then the bar fades to transparent
+    // (rather than rolling up into nothingness due to the bar already having faded out)
+    setTimeout(() => {
+        openMenuCount.value = Math.max(0, openMenuCount.value - 1);
+    }, ES_MENU_BAR_OPEN_CLOSE_DURATION_MS);
 };
 
 onMounted(() => {

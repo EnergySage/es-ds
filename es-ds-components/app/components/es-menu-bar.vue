@@ -71,7 +71,8 @@ onUnmounted(() => {
 <template>
     <div
         class="es-menu-bar"
-        :class="[props.class]">
+        :class="[props.class]"
+        :style="{ '--es-menu-bar-open-close-duration': `${ES_MENU_BAR_OPEN_CLOSE_DURATION_MS}ms` }">
         <navigation-menu-root
             v-model="activeMenuId"
             v-bind="omit('class', $attrs)"
@@ -95,7 +96,10 @@ onUnmounted(() => {
                 <div
                     v-if="activeMenuId"
                     class="es-menu-bar-overlay"
-                    :style="{ '--menu-height': heightPx }"></div>
+                    :style="{
+                        '--es-menu-bar-height': heightPx,
+                        '--es-menu-bar-open-close-duration': `${ES_MENU_BAR_OPEN_CLOSE_DURATION_MS}ms`,
+                    }"></div>
             </transition>
         </teleport>
     </div>
@@ -105,7 +109,6 @@ onUnmounted(() => {
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables';
 
-$open-close-duration: 200ms;
 $open-close-timing-function: ease-in-out;
 
 $switch-menus-duration: 400ms;
@@ -272,7 +275,7 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             right: 0;
 
             @media not (prefers-reduced-motion) {
-                transition: opacity $open-close-duration ease-in-out;
+                transition: opacity var(--es-menu-bar-open-close-duration) ease-in-out;
             }
         }
 
@@ -297,11 +300,11 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             transition: height $switch-menus-duration $switch-menus-timing-function;
 
             &[data-state='open'] {
-                animation: menuOpen $open-close-duration $open-close-timing-function;
+                animation: menuOpen var(--es-menu-bar-open-close-duration) $open-close-timing-function;
             }
 
             &[data-state='closed'] {
-                animation: menuClose $open-close-duration $open-close-timing-function;
+                animation: menuClose var(--es-menu-bar-open-close-duration) $open-close-timing-function;
             }
         }
 
@@ -377,11 +380,11 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                     left $switch-menus-duration $switch-menus-timing-function;
 
                 &[data-state='open'] {
-                    animation: menuOpenWithShadow $open-close-duration $open-close-timing-function;
+                    animation: menuOpenWithShadow var(--es-menu-bar-open-close-duration) $open-close-timing-function;
                 }
 
                 &[data-state='closed'] {
-                    animation: menuCloseWithShadow $open-close-duration $open-close-timing-function;
+                    animation: menuCloseWithShadow var(--es-menu-bar-open-close-duration) $open-close-timing-function;
                 }
             }
 
@@ -441,13 +444,13 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     left: 0;
     opacity: 0.25;
     position: fixed;
-    top: var(--menu-height);
+    top: var(--es-menu-bar-height);
     width: 100vw;
     z-index: 999;
 
     &-enter-active,
     &-leave-active {
-        transition: opacity $open-close-duration $open-close-timing-function;
+        transition: opacity var(--es-menu-bar-open-close-duration) $open-close-timing-function;
     }
 
     &-enter-from,
