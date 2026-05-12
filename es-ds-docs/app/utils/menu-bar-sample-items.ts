@@ -16,7 +16,7 @@ export interface EsMenuBarSampleItemInterface {
 
 export const accountMenuItems: EsMobileNavSampleItemInterface[] = [
     {
-        name: 'Dashboard item with a really long text so the menu might grow really large but lets see',
+        name: 'Dashboard',
         href: 'https://www.energysage.com',
     },
     {
@@ -77,7 +77,7 @@ export const menuBarSampleItems: EsMenuBarSampleItemInterface[] = [
                         href: 'https://www.energysage.com/solar/best-solar-panels-complete-ranking/',
                     },
                     {
-                        name: 'Compare solar panels  with a really long text so the menu might grow really large but lets see',
+                        name: 'Compare solar panels',
                         href: 'https://www.energysage.com/solar-panels/',
                     },
                     {
