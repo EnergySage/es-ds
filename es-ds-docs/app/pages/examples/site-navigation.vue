@@ -10,7 +10,7 @@ const samplePageContent = Array(10).fill('test content for scrolling');
 </script>
 
 <template>
-    <div>
+    <div class="site-navigation-bg">
         <es-sticky-bar transparent-on-desktop>
             <es-skip-to-content-link />
             <div
@@ -209,7 +209,8 @@ const samplePageContent = Array(10).fill('test content for scrolling');
             <h1>Site navigation</h1>
             <p>
                 This page demonstrates how to use the
-                <nuxt-link to="/molecules/mobile-nav">mobile nav</nuxt-link> inside of a
+                <nuxt-link to="/molecules/mobile-nav">mobile nav</nuxt-link> and
+                <nuxt-link to="/molecules/menu-bar">menu bar</nuxt-link> inside of a
                 <nuxt-link to="/molecules/sticky-bar">sticky bar</nuxt-link>.
             </p>
 
@@ -225,9 +226,14 @@ const samplePageContent = Array(10).fill('test content for scrolling');
 
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
 
 :deep(.site-navigation) {
     height: 88px;
+}
+
+.site-navigation-bg {
+    background: linear-gradient(180deg, variables.$soft-blue, variables.$white 33%, variables.$white 100%);
 }
 
 .site-navigation-logo {

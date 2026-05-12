@@ -3,8 +3,6 @@ import { useScrollLock } from '@vueuse/core';
 import { NavigationMenuList, NavigationMenuRoot, NavigationMenuViewport } from 'reka-ui';
 import { omit } from '../utils/omit';
 
-const MENU_BAR_OPEN_EVENT_NAME = 'es-menu-bar-open';
-
 interface IProps {
     class?: string;
     fullWidth?: boolean;
@@ -34,16 +32,22 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
     // lock page scrolling when menu is open, unless we're not showing the overlay
     isScrollLocked.value = props.showOverlayWhenOpen && !!newVal;
 
-    // if the menu is opening, emit event so any other EsMenuBars on the page can close
-    // (this is only an issue during keyboard navigation between menus)
+
     if (!oldVal && newVal) {
+        // if the menu is opening, emit event so:
+        //  - any other EsMenuBars on the page can close (only an issue during keyboard navigation between menus)
+        //  - EsStickyBar can change from transparent to white background
         isOpening = true;
-        emitter.emit(MENU_BAR_OPEN_EVENT_NAME);
+        emitter.emit(ES_MENU_BAR_OPEN_EVENT_NAME);
+    } else if (oldVal && !newVal) {
+        // if the menu is closing, emit event so:
+        //  - EsStickyBar can change from white background back to transparent
+        emitter.emit(ES_MENU_BAR_CLOSE_EVENT_NAME);
     }
 });
 
 onMounted(() => {
-    emitter.on(MENU_BAR_OPEN_EVENT_NAME, () => {
+    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, () => {
         if (isOpening) {
             // if we're opening our own menu, ignore the event
             isOpening = false;
@@ -56,7 +60,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-    emitter.off(MENU_BAR_OPEN_EVENT_NAME);
+    emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME);
 });
 </script>
 
@@ -219,7 +223,6 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 .es-menu-bar {
     :deep(.es-menu-bar-list) {
-        background-color: #fff;
         align-items: center;
         display: flex;
         gap: variables.$spacer;

@@ -9,6 +9,8 @@ const props = withDefaults(defineProps<IProps>(), {
     transparentOnDesktop: false,
 });
 
+const emitter = useEsdsEvents();
+
 // bar states:
 // - static:        initial SSR state; bar is in normal document flow
 // - absolute:      after mount; bar is out of flow but scrolls away naturally with the page
@@ -23,6 +25,8 @@ const bar = ref<HTMLElement | null>(null);
 const suppressTransition = ref(false);
 // updated on mount and whenever the bar resizes
 const barHeight = ref(0);
+// keep track of when EsMenuBar is open (assumes it's inside the sticky bar)
+const isMenuOpen = ref(false);
 
 // scroll state — all plain vars since they don't need to be reactive
 let lastScrollY = 0;
@@ -113,10 +117,21 @@ onMounted(() => {
         resizeObserver.observe(bar.value);
         onUnmounted(() => resizeObserver.disconnect());
     }
+
+    emitter.on(ES_MENU_BAR_CLOSE_EVENT_NAME, () => {
+        isMenuOpen.value = false;
+    });
+
+    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, () => {
+        isMenuOpen.value = true;
+    });
 });
 
 onUnmounted(() => {
     window.removeEventListener('scroll', onScroll);
+
+    emitter.off(ES_MENU_BAR_CLOSE_EVENT_NAME);
+    emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME);
 });
 </script>
 
@@ -124,7 +139,10 @@ onUnmounted(() => {
     <div
         ref="bar"
         class="es-sticky-bar"
-        :class="[`es-sticky-bar--${barState}`, { 'es-sticky-bar--no-transition': suppressTransition }]"
+        :class="[`es-sticky-bar--${barState}`, {
+            'es-sticky-bar--no-transition': suppressTransition,
+            'es-sticky-bar--menu-open': isMenuOpen,
+        }]"
         v-bind="$attrs">
         <slot />
     </div>
@@ -155,7 +173,7 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     }
 
     @media not (prefers-reduced-motion) {
-        transition: box-shadow 0.2s ease-in-out;
+        transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
 
     &--absolute {
@@ -182,6 +200,10 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     // suppresses animation for silent state swaps (e.g. absolute → fixed-hidden when off screen)
     &--no-transition {
         transition: none !important;
+    }
+
+    &--menu-open {
+        background-color: variables.$white;
     }
 }
 </style>
