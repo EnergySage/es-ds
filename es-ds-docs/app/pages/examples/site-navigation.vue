@@ -16,8 +16,8 @@ const isSignedIn = ref(false);
         <es-sticky-bar transparent-on-desktop>
             <es-skip-to-content-link />
             <div
-                class="site-navigation align-items-center d-flex justify-content-lg-between mx-auto position-relative px-md-150">
-                <!-- mobile nav -->
+                class="site-navigation align-items-center d-flex justify-content-between mx-auto position-relative px-md-150">
+                <!-- mobile main nav -->
                 <es-mobile-nav class="d-lg-none">
                     <es-mobile-nav-trigger>
                         <span class="sr-only">Open navigation menu</span>
@@ -106,7 +106,9 @@ const isSignedIn = ref(false);
                                 </es-mobile-nav-custom-item>
                             </es-mobile-sub-nav>
                         </template>
-                        <template #footer>
+                        <template
+                            v-if="!isSignedIn"
+                            #footer>
                             <div class="px-100 py-200">
                                 <es-button
                                     class="w-100"
@@ -133,10 +135,30 @@ const isSignedIn = ref(false);
                         width="205px" />
                 </a>
 
+                <!-- mobile account nav -->
+                <es-mobile-nav
+                    v-if="isSignedIn"
+                    class="d-lg-none"
+                    from="right">
+                    <es-mobile-nav-trigger>
+                        <span class="sr-only">Open account menu</span>
+                        <icon-person-circle aria-hidden="true" />
+                    </es-mobile-nav-trigger>
+                    <es-mobile-nav-content>
+                        <template
+                            v-for="item in accountMenuItems"
+                            :key="item.name">
+                            <es-mobile-nav-link
+                                v-if="item.href"
+                                :href="item.href"
+                                :name="item.name" />
+                        </template>
+                    </es-mobile-nav-content>
+                </es-mobile-nav>
+
                 <!-- desktop nav -->
-                <div class="d-flex flex-nowrap">
+                <div class="d-none d-lg-flex flex-lg-nowrap">
                     <es-menu-bar
-                        class="d-none d-lg-block"
                         full-width
                         :height="88">
                         <es-menu-bar-item
@@ -145,8 +167,8 @@ const isSignedIn = ref(false);
                             <es-menu-bar-trigger class="font-size-75 font-size-xl-100">
                                 {{ item.name }}
                             </es-menu-bar-trigger>
-                            <es-menu-bar-content>
-                                <es-menu-bar-section v-if="item.cta?.href">
+                            <es-menu-bar-flyout>
+                                <es-menu-bar-flyout-column v-if="item.cta?.href">
                                     <es-nav-cta-card
                                         class="mb-100"
                                         :heading="item.cta.heading"
@@ -170,18 +192,29 @@ const isSignedIn = ref(false);
                                                 aria-hidden="true" />
                                         </template>
                                     </es-nav-cta-card>
-                                </es-menu-bar-section>
-                                <es-menu-bar-section
+                                </es-menu-bar-flyout-column>
+                                <es-menu-bar-flyout-column
                                     v-for="section in item.items"
                                     :key="section.name"
                                     :heading="section.name">
-                                    <es-menu-bar-link
+                                    <es-menu-bar-flyout-link
                                         v-for="link in section.items"
                                         :key="link.name"
                                         :href="link.href || ''"
                                         :name="link.name" />
-                                </es-menu-bar-section>
-                            </es-menu-bar-content>
+                                </es-menu-bar-flyout-column>
+                            </es-menu-bar-flyout>
+                        </es-menu-bar-item>
+                        <es-menu-bar-item v-if="!isSignedIn">
+                            <es-menu-bar-link
+                                class="font-size-75 font-size-xl-100"
+                                href="https://www.energysage.com/login/">
+                                <icon-person-circle
+                                    class="mr-25"
+                                    height="32px"
+                                    width="32px" />
+                                Sign in
+                            </es-menu-bar-link>
                         </es-menu-bar-item>
                     </es-menu-bar>
                     <es-menu-bar
@@ -196,13 +229,13 @@ const isSignedIn = ref(false);
                                     width="32px" />
                                 Brittany
                             </es-menu-bar-trigger>
-                            <es-menu-bar-content>
-                                <es-menu-bar-link
+                            <es-menu-bar-flyout>
+                                <es-menu-bar-flyout-link
                                     v-for="link in accountMenuItems"
                                     :key="link.name"
                                     :href="link.href || ''"
                                     :name="link.name" />
-                            </es-menu-bar-content>
+                            </es-menu-bar-flyout>
                         </es-menu-bar-item>
                     </es-menu-bar>
                 </div>
@@ -217,10 +250,14 @@ const isSignedIn = ref(false);
                 <nuxt-link to="/molecules/sticky-bar">sticky bar</nuxt-link>. It also shows the background behavior
                 when the sticky bar is set to be transparent on desktop.
             </p>
+            <p>
+                The mobile nav is displayed on xs, sm, and md breakpoints. The menu bar is displayed on lg, xl, and xxl
+                breakpoints.
+            </p>
             <div>
                 <es-radio-button-group
                     id="user-signed-in-radio-group"
-                    label="You can toggle between the two states of the site navigation below.">
+                    label="The nav content will be different depending on whether or not the user is signed in. You can toggle signed in state below to see each variation.">
                     <es-radio-button
                         id="signed-out"
                         v-model="isSignedIn"

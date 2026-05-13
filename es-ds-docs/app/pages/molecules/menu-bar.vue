@@ -19,8 +19,8 @@ definePageMeta({
                     <es-menu-bar-trigger>
                         {{ item.name }}
                     </es-menu-bar-trigger>
-                    <es-menu-bar-content>
-                        <es-menu-bar-section
+                    <es-menu-bar-flyout>
+                        <es-menu-bar-flyout-column
                             v-for="section in item.items"
                             :key="section.name"
                             :heading="section.name">
@@ -29,8 +29,8 @@ definePageMeta({
                                 :key="link.name"
                                 :href="link.href || ''"
                                 :name="link.name" />
-                        </es-menu-bar-section>
-                    </es-menu-bar-content>
+                        </es-menu-bar-flyout-column>
+                    </es-menu-bar-flyout>
                 </es-menu-bar-item>
             </es-menu-bar>
         </es-container>
@@ -70,13 +70,13 @@ definePageMeta({
                         <es-menu-bar-trigger>
                             {{ item.name }}
                         </es-menu-bar-trigger>
-                        <es-menu-bar-content>
-                            <es-menu-bar-link
+                        <es-menu-bar-flyout>
+                            <es-menu-bar-flyout-link
                                 v-for="link in item.items"
                                 :key="link.name"
                                 :href="link.href || ''"
                                 :name="link.name" />
-                        </es-menu-bar-content>
+                        </es-menu-bar-flyout>
                     </es-menu-bar-item>
                 </es-menu-bar>
             </div>

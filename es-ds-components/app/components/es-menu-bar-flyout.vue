@@ -15,8 +15,8 @@ const fullWidth = inject('fullWidth', false);
     <!-- classes on Reka UI elements defined with :deep() in EsMenuBar due to rendering method -->
     <navigation-menu-content
         v-bind="$attrs"
-        class="es-menu-bar-item-content">
-        <div class="es-menu-bar-item-content-pane">
+        class="es-menu-bar-flyout">
+        <div class="es-menu-bar-flyout-pane">
             <template v-if="fullWidth">
                 <div class="px-300 py-200">
                     <es-row class="justify-content-end">

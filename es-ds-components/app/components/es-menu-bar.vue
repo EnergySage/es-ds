@@ -253,14 +253,10 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
+    :deep(.es-menu-bar-link),
     :deep(.es-menu-bar-item-trigger) {
-        -webkit-appearance: none;
-        appearance: none;
-        background: transparent;
-        border: none;
         color: variables.$dark-blue;
         height: v-bind(heightPx);
-        margin: 0;
         padding: 0 variables.$spacer * 0.5;
         position: relative;
         white-space: nowrap;
@@ -279,14 +275,26 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             }
         }
 
+        @media (hover: hover) {
+            text-decoration: none;
+
+            &:hover {
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    :deep(.es-menu-bar-item-trigger) {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        border: none;
+        margin: 0;
+
         &[data-state='open']::after {
             opacity: 1;
-        }
-
-        @media (hover: hover) {
-            &:hover::after {
-                opacity: 1;
-            }
         }
     }
 
@@ -329,7 +337,7 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             left: 0;
             right: 0;
 
-            .es-menu-bar-item-content {
+            .es-menu-bar-flyout {
                 width: 100%;
 
                 /* in full width mode when switching menus, menu container stays in same position, content animates in/out */
@@ -343,25 +351,11 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                     }
 
                     &[data-motion='to-start'] {
-                        /* no-op animation needed so Reka UI persists the exiting menu, allowing the actual exit animation to show */
-                        /*animation: presenceExitAnimationForContent $switch-menus-duration $switch-menus-timing-function;*/
-
-                        /**
-                         * animation needs to be on the child to enable a smooth cross-fade, otherwise
-                         * both parents are visible simultaneously next to each other
-                         */
-                        /*.es-menu-bar-item-content-pane {*/
                         animation: exitToLeft $switch-menus-duration $switch-menus-timing-function;
-                        /*}*/
                     }
 
                     &[data-motion='to-end'] {
-                        /* no-op animation needed so Reka UI persists the exiting menu, allowing the actual exit animation to show */
-                        /*animation: presenceExitAnimationForContent $switch-menus-duration $switch-menus-timing-function;*/
-
-                        /*.es-menu-bar-item-content-pane {*/
                         animation: exitToRight $switch-menus-duration $switch-menus-timing-function;
-                        /*}*/
                     }
                 }
             }
@@ -388,14 +382,14 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                 }
             }
 
-            .es-menu-bar-item-content {
+            .es-menu-bar-flyout {
                 padding: variables.$spacer * 1.5;
                 width: 300px;
 
                 @media not (prefers-reduced-motion) {
                     &[data-motion='from-start'],
                     &[data-motion='from-end'] {
-                        .es-menu-bar-item-content-pane {
+                        .es-menu-bar-flyout-pane {
                             animation: fadeIn $switch-menus-duration $switch-menus-timing-function;
                         }
                     }
@@ -409,7 +403,7 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                          * animation needs to be on the child to enable a smooth cross-fade, otherwise
                          * both parents are visible simultaneously next to each other
                          */
-                        .es-menu-bar-item-content-pane {
+                        .es-menu-bar-flyout-pane {
                             animation: fadeOut $switch-menus-duration $switch-menus-timing-function;
                         }
                     }
@@ -418,7 +412,7 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
 
-    :deep(.es-menu-bar-item-content) {
+    :deep(.es-menu-bar-flyout) {
         left: 0;
         position: absolute;
         top: 0;
