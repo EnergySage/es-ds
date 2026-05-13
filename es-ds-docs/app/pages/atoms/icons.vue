@@ -50,6 +50,7 @@ import IconElectricVehicle from '@energysage/es-ds-components/app/components/ico
 import IconEnvelope from '@energysage/es-ds-components/app/components/icon/envelope.vue';
 import IconEsLeaf from '@energysage/es-ds-components/app/components/icon/es-leaf.vue';
 import IconEye from '@energysage/es-ds-components/app/components/icon/eye.vue';
+import IconFan from '@energysage/es-ds-components/app/components/icon/fan.vue';
 import IconFacebook from '@energysage/es-ds-components/app/components/icon/facebook.vue';
 import IconFileDoc from '@energysage/es-ds-components/app/components/icon/file-doc.vue';
 import IconFileDocx from '@energysage/es-ds-components/app/components/icon/file-docx.vue';
@@ -357,6 +358,11 @@ const baseIcons = [
         name: 'eye',
         component: IconEye,
         phosphorName: 'eye',
+    },
+    {
+        name: 'fan',
+        component: IconFan,
+        phosphorName: 'fan',
     },
     {
         name: 'folder',

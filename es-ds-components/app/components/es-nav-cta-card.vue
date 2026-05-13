@@ -36,7 +36,7 @@ withDefaults(defineProps<Props>(), {
             </p>
             <p
                 v-if="subtitle"
-                class="font-size-75 mb-0">
+                class="font-size-75 mb-0 mt-25">
                 {{ subtitle }}
             </p>
         </div>
