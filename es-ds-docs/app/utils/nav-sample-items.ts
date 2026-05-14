@@ -1,4 +1,4 @@
-export interface EsMobileNavSampleCtaInterface {
+export interface EsNavSampleCtaInterface {
     icon?: string;
     heading: string;
     href?: string;
@@ -6,15 +6,15 @@ export interface EsMobileNavSampleCtaInterface {
     target?: '_self' | '_blank';
 }
 
-export interface EsMobileNavSampleItemInterface {
-    cta?: EsMobileNavSampleCtaInterface;
+export interface EsNavSampleItemInterface {
+    cta?: EsNavSampleCtaInterface;
     name: string;
     href?: string;
-    items?: EsMobileNavSampleItemInterface[];
+    items?: EsNavSampleItemInterface[];
     target?: '_self' | '_blank';
 }
 
-export const accountMenuItems: EsMobileNavSampleItemInterface[] = [
+export const accountMenuItems: EsNavSampleItemInterface[] = [
     {
         name: 'Dashboard',
         href: 'https://www.energysage.com',
@@ -33,14 +33,14 @@ export const accountMenuItems: EsMobileNavSampleItemInterface[] = [
     },
 ];
 
-export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
+export const siteNavigationSampleItems: EsNavSampleItemInterface[] = [
     {
         name: 'Home solar',
         cta: {
-            heading: 'Get an instant quote',
+            heading: 'Get solar quotes from trusted installers',
             href: 'https://www.energysage.com/onboarding/start/',
             icon: 'solar',
-            subtitle: 'Free, personalized solar quotes that’ll save you thousands',
+            subtitle: 'We’ll help you compare your quotes and get the best deal.',
             target: '_blank',
         },
         items: [
@@ -124,10 +124,10 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
     {
         name: 'Home batteries',
         cta: {
-            heading: 'Get an instant estimate',
+            heading: 'Get a quote for a home battery',
             href: 'https://www.energysage.com/onboarding/start/',
             icon: 'battery-charging-vertical',
-            subtitle: 'Store energy and keep your home running during outages',
+            subtitle: 'We’ll help you choose the best battery for your home and find a trusted installer.',
             target: '_blank',
         },
         items: [
@@ -199,10 +199,11 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
     {
         name: 'Heat pumps',
         cta: {
-            heading: 'Get an instant estimate',
+            heading: 'Get heat pump quotes',
             href: 'https://www.energysage.com/onboarding/start/',
-            icon: 'house-line',
-            subtitle: 'High-efficiency heat pumps, matched to your home and needs',
+            icon: 'fan',
+            subtitle:
+                'Schedule consultations with installers we vetted for high-quality service and customer satisfaction.',
             target: '_blank',
         },
         items: [
@@ -355,10 +356,17 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
         ],
     },
     {
-        name: 'Other projects',
+        name: 'More projects',
         items: [
             {
                 name: 'Whole home electrification',
+                cta: {
+                    heading: 'Get a personalized plan',
+                    href: 'https://energysage.wattbuy.com/en/lp/energysage/?utm_source=energysage&utm_medium=header&utm_campaign=ppp_cta',
+                    icon: 'house-line',
+                    subtitle: 'See how you can lower your bills with home energy upgrades.',
+                    target: '_blank',
+                },
                 items: [
                     {
                         name: 'Your guide to home electrification',
@@ -372,16 +380,33 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
             },
             {
                 name: 'Electricity plans',
+                cta: {
+                    heading: 'Find a new electricity plan',
+                    href: 'https://energysage.wattbuy.com/en/?utm_medium=partner&utm_source=energysage&utm_campaign=nav',
+                    icon: 'bolt',
+                    subtitle: 'Compare energy plans and switch to a better rate.',
+                    target: '_blank',
+                },
                 items: [
                     {
                         name: 'Your guide to retail energy',
                         href: 'https://www.energysage.com/electricity/what-is-retail-energy/',
                     },
                     {
-                        name: 'Should you switch providers?',
+                        name: 'Should you switch electric providers?',
                         href: 'https://www.energysage.com/blog/power-to-choose-your-electricity-plan/',
                     },
                 ],
+            },
+            {
+                name: 'General home electrical work',
+                cta: {
+                    heading: 'Find an electrician',
+                    href: 'https://electrification.qmerit.com/',
+                    icon: 'light-bulb',
+                    subtitle: 'Tell us about your project to get a quote from a certified electrician.',
+                    target: '_blank',
+                },
             },
         ],
     },
@@ -472,103 +497,5 @@ export const largeNestedMenuItems: EsMobileNavSampleItemInterface[] = [
                 ],
             },
         ],
-    },
-];
-
-export const longListOfCompanies: EsMobileNavSampleItemInterface[] = [
-    {
-        name: 'Adobe',
-        href: 'https://www.adobe.com',
-    },
-    {
-        name: 'Amazon',
-        href: 'https://www.amazon.com',
-    },
-    {
-        name: 'Apple',
-        href: 'https://www.apple.com',
-    },
-    {
-        name: 'Costco',
-        href: 'https://www.costco.com',
-    },
-    {
-        name: 'Ford',
-        href: 'https://www.ford.com',
-    },
-    {
-        name: 'General Motors',
-        href: 'https://www.gm.com/',
-    },
-    {
-        name: 'Google',
-        href: 'https://www.google.com',
-    },
-    {
-        name: 'Mercedes-Benz',
-        href: 'https://www.mbusa.com/',
-    },
-    {
-        name: 'Meta',
-        href: 'https://www.meta.com',
-    },
-    {
-        name: 'Microsoft',
-        href: 'https://www.microsoft.com',
-    },
-    {
-        name: 'Netflix',
-        href: 'https://www.netflix.com',
-    },
-    {
-        name: 'Nvidia',
-        href: 'https://www.nvidia.com/',
-    },
-    {
-        name: 'Oracle',
-        href: 'https://www.oracle.com',
-    },
-    {
-        name: 'Salesforce',
-        href: 'https://www.salesforce.com',
-    },
-    {
-        name: 'Samsung',
-        href: 'https://www.samsung.com',
-    },
-    {
-        name: 'Stellantis',
-        href: 'https://www.stellantis.com/',
-    },
-    {
-        name: 'Tesla',
-        href: 'https://www.tesla.com',
-    },
-    {
-        name: 'Toyota',
-        href: 'https://www.toyota.com',
-    },
-    {
-        name: 'Walmart',
-        href: 'https://www.walmart.com',
-    },
-];
-
-export const simpleMenuItems: EsMobileNavSampleItemInterface[] = [
-    {
-        name: 'Amazon',
-        href: 'https://www.amazon.com',
-    },
-    {
-        name: 'Apple',
-        href: 'https://www.apple.com',
-    },
-    {
-        name: 'Google',
-        href: 'https://www.google.com',
-    },
-    {
-        name: 'Microsoft',
-        href: 'https://www.microsoft.com',
     },
 ];

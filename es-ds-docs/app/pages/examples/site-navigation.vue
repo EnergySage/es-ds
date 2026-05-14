@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { accountMenuItems, menuBarSampleItems } from '@/utils/menu-bar-sample-items';
-import { largeNestedMenuItems } from '@/utils/mobile-nav-sample-items';
+import { accountMenuItems, siteNavigationSampleItems } from '@/utils/nav-sample-items';
 
 definePageMeta({
     layout: 'minimal',
@@ -25,7 +24,7 @@ const isSignedIn = ref(false);
                     </es-mobile-nav-trigger>
                     <es-mobile-nav-content>
                         <template
-                            v-for="item in largeNestedMenuItems"
+                            v-for="item in siteNavigationSampleItems"
                             :key="item.name">
                             <es-mobile-nav-link
                                 v-if="item.href"
@@ -42,7 +41,7 @@ const isSignedIn = ref(false);
                                         :href="subItem.href"
                                         :name="subItem.name" />
                                     <es-mobile-sub-nav
-                                        v-else-if="subItem.items?.length"
+                                        v-else-if="subItem.items?.length || subItem.cta?.href"
                                         :name="subItem.name">
                                         <template
                                             v-for="subSubItem in subItem.items"
@@ -52,7 +51,21 @@ const isSignedIn = ref(false);
                                                 :href="subSubItem.href"
                                                 :name="subSubItem.name" />
                                         </template>
-                                        <es-mobile-nav-custom-item v-if="item.cta?.href">
+                                        <es-mobile-nav-custom-item v-if="subItem.cta?.href">
+                                            <es-nav-cta-card
+                                                class="mb-100"
+                                                :heading="subItem.cta.heading"
+                                                :href="subItem.cta.href"
+                                                :subtitle="subItem.cta.subtitle"
+                                                :target="subItem.cta.target">
+                                                <template
+                                                    v-if="subItem.cta.icon"
+                                                    #icon>
+                                                    <ds-site-navigation-icon :name="subItem.cta.icon" />
+                                                </template>
+                                            </es-nav-cta-card>
+                                        </es-mobile-nav-custom-item>
+                                        <es-mobile-nav-custom-item v-else-if="item.cta?.href">
                                             <es-nav-cta-card
                                                 class="mb-100"
                                                 :heading="item.cta.heading"
@@ -62,18 +75,7 @@ const isSignedIn = ref(false);
                                                 <template
                                                     v-if="item.cta.icon"
                                                     #icon>
-                                                    <icon-battery-charging-vertical
-                                                        v-if="item.cta.icon === 'battery-charging-vertical'"
-                                                        aria-hidden="true" />
-                                                    <icon-charging-station
-                                                        v-else-if="item.cta.icon === 'charging-station'"
-                                                        aria-hidden="true" />
-                                                    <icon-house-line
-                                                        v-else-if="item.cta.icon === 'house-line'"
-                                                        aria-hidden="true" />
-                                                    <icon-solar
-                                                        v-else-if="item.cta.icon === 'solar'"
-                                                        aria-hidden="true" />
+                                                    <ds-site-navigation-icon :name="item.cta.icon" />
                                                 </template>
                                             </es-nav-cta-card>
                                         </es-mobile-nav-custom-item>
@@ -89,18 +91,7 @@ const isSignedIn = ref(false);
                                         <template
                                             v-if="item.cta.icon"
                                             #icon>
-                                            <icon-battery-charging-vertical
-                                                v-if="item.cta.icon === 'battery-charging-vertical'"
-                                                aria-hidden="true" />
-                                            <icon-charging-station
-                                                v-else-if="item.cta.icon === 'charging-station'"
-                                                aria-hidden="true" />
-                                            <icon-house-line
-                                                v-else-if="item.cta.icon === 'house-line'"
-                                                aria-hidden="true" />
-                                            <icon-solar
-                                                v-else-if="item.cta.icon === 'solar'"
-                                                aria-hidden="true" />
+                                            <ds-site-navigation-icon :name="item.cta.icon" />
                                         </template>
                                     </es-nav-cta-card>
                                 </es-mobile-nav-custom-item>
@@ -162,7 +153,7 @@ const isSignedIn = ref(false);
                         full-width
                         :height="88">
                         <es-menu-bar-item
-                            v-for="item in menuBarSampleItems"
+                            v-for="item in siteNavigationSampleItems"
                             :key="item.name">
                             <es-menu-bar-trigger class="font-size-75 font-size-xl-100">
                                 {{ item.name }}
@@ -178,27 +169,7 @@ const isSignedIn = ref(false);
                                         <template
                                             v-if="item.cta.icon"
                                             #icon>
-                                            <icon-battery-charging-vertical
-                                                v-if="item.cta.icon === 'battery-charging-vertical'"
-                                                aria-hidden="true" />
-                                            <icon-bolt
-                                                v-else-if="item.cta.icon === 'bolt'"
-                                                aria-hidden="true" />
-                                            <icon-charging-station
-                                                v-else-if="item.cta.icon === 'charging-station'"
-                                                aria-hidden="true" />
-                                            <icon-fan
-                                                v-else-if="item.cta.icon === 'fan'"
-                                                aria-hidden="true" />
-                                            <icon-house-line
-                                                v-else-if="item.cta.icon === 'house-line'"
-                                                aria-hidden="true" />
-                                            <icon-light-bulb
-                                                v-else-if="item.cta.icon === 'light-bulb'"
-                                                aria-hidden="true" />
-                                            <icon-solar
-                                                v-else-if="item.cta.icon === 'solar'"
-                                                aria-hidden="true" />
+                                            <ds-site-navigation-icon :name="item.cta.icon" />
                                         </template>
                                     </es-nav-cta-card>
                                 </es-menu-bar-flyout-column>
@@ -221,27 +192,7 @@ const isSignedIn = ref(false);
                                             <template
                                                 v-if="section.cta.icon"
                                                 #icon>
-                                                <icon-battery-charging-vertical
-                                                    v-if="section.cta.icon === 'battery-charging-vertical'"
-                                                    aria-hidden="true" />
-                                                <icon-bolt
-                                                    v-else-if="section.cta.icon === 'bolt'"
-                                                    aria-hidden="true" />
-                                                <icon-charging-station
-                                                    v-else-if="section.cta.icon === 'charging-station'"
-                                                    aria-hidden="true" />
-                                                <icon-fan
-                                                    v-else-if="section.cta.icon === 'fan'"
-                                                    aria-hidden="true" />
-                                                <icon-house-line
-                                                    v-else-if="section.cta.icon === 'house-line'"
-                                                    aria-hidden="true" />
-                                                <icon-light-bulb
-                                                    v-else-if="section.cta.icon === 'light-bulb'"
-                                                    aria-hidden="true" />
-                                                <icon-solar
-                                                    v-else-if="section.cta.icon === 'solar'"
-                                                    aria-hidden="true" />
+                                                <ds-site-navigation-icon :name="section.cta.icon" />
                                             </template>
                                         </es-nav-cta-card>
                                     </es-menu-bar-flyout-custom-item>

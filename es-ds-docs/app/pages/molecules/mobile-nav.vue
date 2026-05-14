@@ -1,5 +1,90 @@
 <script setup lang="ts">
-import { accountMenuItems, largeNestedMenuItems, longListOfCompanies } from '@/utils/mobile-nav-sample-items';
+import { accountMenuItems, siteNavigationSampleItems } from '@/utils/nav-sample-items';
+
+interface EsMobileNavSampleItemInterface {
+    name: string;
+    href?: string;
+    target?: '_self' | '_blank';
+}
+
+const longListOfCompanies: EsMobileNavSampleItemInterface[] = [
+    {
+        name: 'Adobe',
+        href: 'https://www.adobe.com',
+    },
+    {
+        name: 'Amazon',
+        href: 'https://www.amazon.com',
+    },
+    {
+        name: 'Apple',
+        href: 'https://www.apple.com',
+    },
+    {
+        name: 'Costco',
+        href: 'https://www.costco.com',
+    },
+    {
+        name: 'Ford',
+        href: 'https://www.ford.com',
+    },
+    {
+        name: 'General Motors',
+        href: 'https://www.gm.com/',
+    },
+    {
+        name: 'Google',
+        href: 'https://www.google.com',
+    },
+    {
+        name: 'Mercedes-Benz',
+        href: 'https://www.mbusa.com/',
+    },
+    {
+        name: 'Meta',
+        href: 'https://www.meta.com',
+    },
+    {
+        name: 'Microsoft',
+        href: 'https://www.microsoft.com',
+    },
+    {
+        name: 'Netflix',
+        href: 'https://www.netflix.com',
+    },
+    {
+        name: 'Nvidia',
+        href: 'https://www.nvidia.com/',
+    },
+    {
+        name: 'Oracle',
+        href: 'https://www.oracle.com',
+    },
+    {
+        name: 'Salesforce',
+        href: 'https://www.salesforce.com',
+    },
+    {
+        name: 'Samsung',
+        href: 'https://www.samsung.com',
+    },
+    {
+        name: 'Stellantis',
+        href: 'https://www.stellantis.com/',
+    },
+    {
+        name: 'Tesla',
+        href: 'https://www.tesla.com',
+    },
+    {
+        name: 'Toyota',
+        href: 'https://www.toyota.com',
+    },
+    {
+        name: 'Walmart',
+        href: 'https://www.walmart.com',
+    },
+];
 
 const esMobileNavProps = [
     [
@@ -184,7 +269,7 @@ onMounted(async () => {
                 </es-mobile-nav-trigger>
                 <es-mobile-nav-content>
                     <template
-                        v-for="item in largeNestedMenuItems"
+                        v-for="item in siteNavigationSampleItems"
                         :key="item.name">
                         <es-mobile-nav-link
                             v-if="item.href"

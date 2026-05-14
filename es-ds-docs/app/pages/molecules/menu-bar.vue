@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { menuBarSampleItems } from '@/utils/menu-bar-sample-items';
+import { siteNavigationSampleItems } from '@/utils/nav-sample-items';
 
 definePageMeta({
     layout: 'minimal',
@@ -14,7 +14,7 @@ definePageMeta({
                 :height="88"
                 :show-overlay-when-open="false">
                 <es-menu-bar-item
-                    v-for="item in menuBarSampleItems"
+                    v-for="item in siteNavigationSampleItems"
                     :key="item.name">
                     <es-menu-bar-trigger>
                         {{ item.name }}
@@ -65,7 +65,7 @@ definePageMeta({
                 <h2>Not full width</h2>
                 <es-menu-bar :show-overlay-when-open="false">
                     <es-menu-bar-item
-                        v-for="item in menuBarSampleItems[0]!.items"
+                        v-for="item in siteNavigationSampleItems[0]!.items"
                         :key="item.name">
                         <es-menu-bar-trigger>
                             {{ item.name }}
