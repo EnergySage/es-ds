@@ -24,7 +24,7 @@ definePageMeta({
                             v-for="section in item.items"
                             :key="section.name"
                             :heading="section.name">
-                            <es-menu-bar-link
+                            <es-menu-bar-flyout-link
                                 v-for="link in section.items"
                                 :key="link.name"
                                 :href="link.href || ''"
