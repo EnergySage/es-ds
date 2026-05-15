@@ -366,22 +366,30 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                     --es-menu-bar-flyout-row-width: min(100%, #{map.get(variables.$container-max-widths, xxl)});
                 }
 
-                /* in full width mode when switching menus, menu container stays in same position, content animates in/out */
+                /* in full width mode when switching menus, the flyout (and its sibling color band) stays in place — only the pane slides. the no-op on the flyout itself keeps Reka UI from unmounting the exiting menu before the pane's exit animation finishes */
                 @media not (prefers-reduced-motion) {
-                    &[data-motion='from-start'] {
+                    &[data-motion='from-start'] .es-menu-bar-flyout-pane {
                         animation: enterFromLeft $switch-menus-duration $switch-menus-timing-function;
                     }
 
-                    &[data-motion='from-end'] {
+                    &[data-motion='from-end'] .es-menu-bar-flyout-pane {
                         animation: enterFromRight $switch-menus-duration $switch-menus-timing-function;
                     }
 
                     &[data-motion='to-start'] {
-                        animation: exitToLeft $switch-menus-duration $switch-menus-timing-function;
+                        animation: presenceExitAnimationForContent $switch-menus-duration $switch-menus-timing-function;
+
+                        .es-menu-bar-flyout-pane {
+                            animation: exitToLeft $switch-menus-duration $switch-menus-timing-function;
+                        }
                     }
 
                     &[data-motion='to-end'] {
-                        animation: exitToRight $switch-menus-duration $switch-menus-timing-function;
+                        animation: presenceExitAnimationForContent $switch-menus-duration $switch-menus-timing-function;
+
+                        .es-menu-bar-flyout-pane {
+                            animation: exitToRight $switch-menus-duration $switch-menus-timing-function;
+                        }
                     }
                 }
 
