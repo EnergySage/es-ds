@@ -499,14 +499,16 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     width: 100vw;
     z-index: 999;
 
-    &-enter-active,
-    &-leave-active {
-        transition: opacity var(--es-menu-bar-open-close-duration) $open-close-timing-function;
-    }
+    @media not (prefers-reduced-motion) {
+        &-enter-active,
+        &-leave-active {
+            transition: opacity var(--es-menu-bar-open-close-duration) $open-close-timing-function;
+        }
 
-    &-enter-from,
-    &-leave-to {
-        opacity: 0;
+        &-enter-from,
+        &-leave-to {
+            opacity: 0;
+        }
     }
 }
 </style>
