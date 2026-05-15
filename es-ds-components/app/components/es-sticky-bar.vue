@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useEsdsEvents } from '../composables/events';
+import { ES_MENU_BAR_CLOSE_EVENT_NAME, ES_MENU_BAR_OPEN_CLOSE_DURATION_MS, ES_MENU_BAR_OPEN_EVENT_NAME } from '../utils/menu-bar';
+
 interface IProps {
     transparentStartingAtBreakpoint?: 'lg' | 'xl' | 'xxl' | '';
 }
