@@ -261,11 +261,7 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         margin: 0;
         padding: 0;
         position: relative;
-        /*
-            put the menu bar and items above the menu itself, so it can slide
-            down from underneath the menu without temporarily overlapping it
-        */
-        z-index: 1001;
+        z-index: 999;
 
         @include breakpoints.media-breakpoint-up(xl) {
             gap: variables.$spacer;
