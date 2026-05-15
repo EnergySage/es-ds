@@ -30,8 +30,13 @@ jobs:
                 make install
                 make symlink
 
-            - name: Verify component symlink
-              run: ls -la es-ds-docs/node_modules/@energysage/es-ds-components
+            # `npm install` (in make install) triggers es-ds-docs' postinstall, which runs
+            # `nuxt prepare` against the published @energysage/es-ds-components from the lockfile —
+            # before `make symlink` swaps in the local layer. Re-prepare with a clean .nuxt so the
+            # auto-import types reflect the symlinked layer's current source.
+            - name: Re-prepare Nuxt against symlinked layer
+              working-directory: ./es-ds-docs
+              run: rm -rf .nuxt && npx nuxi prepare
 
             - name: Building
               run: make build
