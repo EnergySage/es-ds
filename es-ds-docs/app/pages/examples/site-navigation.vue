@@ -14,8 +14,7 @@ const isSignedIn = ref(false);
     <div class="site-navigation-container">
         <es-sticky-bar transparent-starting-at-breakpoint="xl">
             <es-skip-to-content-link />
-            <div
-                class="site-navigation align-items-center d-flex justify-content-between mx-auto px-md-150">
+            <div class="site-navigation align-items-center d-flex justify-content-between mx-auto px-md-150">
                 <!-- mobile main nav -->
                 <es-mobile-nav class="d-xl-none">
                     <es-mobile-nav-trigger>

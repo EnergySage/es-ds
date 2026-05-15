@@ -70,8 +70,8 @@ onMounted(async () => {
             <p>
                 On desktop, when scrolled to the top of the page, there is no shadow dividing the sticky bar from the
                 rest of the page content. As soon as the nav bar becomes floating, there is a shadow. On mobile, there
-                is always a shadow. This is because, in this example, we have set the <code>transparent-starting-at-breakpoint</code>
-                prop to a value of <code>'lg'</code>.
+                is always a shadow. This is because, in this example, we have set the
+                <code>transparent-starting-at-breakpoint</code> prop to a value of <code>'lg'</code>.
             </p>
 
             <h2 class="mt-300">Usage</h2>
@@ -94,10 +94,12 @@ onMounted(async () => {
 
             <div class="my-300">
                 <h2>EsStickyBar props</h2>
-                <ds-prop-table :rows="esStickyBarProps" :widths="{
-        md: ['3', '2', '2', '5'],
-        lg: ['3', '2', '1', '6'],
-    }" />
+                <ds-prop-table
+                    :rows="esStickyBarProps"
+                    :widths="{
+                        md: ['3', '2', '2', '5'],
+                        lg: ['3', '2', '1', '6'],
+                    }" />
             </div>
 
             <ds-doc-source
