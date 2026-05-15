@@ -116,12 +116,17 @@ const onMenuBarOpen = () => {
 };
 
 const onMenuBarClose = () => {
-    // delay turning off the active state until after the menu has finished closing
-    // so it can roll up into the bar, then the bar fades to transparent
-    // (rather than rolling up into nothingness due to the bar already having faded out)
-    setTimeout(() => {
+    const decrement = () => {
         openMenuCount.value = Math.max(0, openMenuCount.value - 1);
-    }, ES_MENU_BAR_OPEN_CLOSE_DURATION_MS);
+    };
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // close animation is disabled — turn off active state immediately
+        decrement();
+    } else {
+        // delay so the menu can roll up into the bar before the bar fades to transparent
+        // (rather than rolling up into nothingness due to the bar already having faded out)
+        setTimeout(decrement, ES_MENU_BAR_OPEN_CLOSE_DURATION_MS);
+    }
 };
 
 onMounted(() => {
