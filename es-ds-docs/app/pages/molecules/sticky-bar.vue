@@ -6,12 +6,12 @@ const samplePageContent = Array(4).fill(LOREM_TEXT);
 
 const esStickyBarProps = [
     [
-        'transparentOnDesktop',
-        'boolean',
-        'false',
+        'transparent-starting-at-breakpoint',
+        "'lg' or 'xl' or 'xxl' or ''",
+        "''",
         `
-        If set to true, the sticky bar will have a transparent background when scrolled to the
-        top of the page on lg breakpoint and above. This enables the nav to appear seamlessly
+        If set, the sticky bar will have a transparent background when scrolled to the
+        top of the page on the specified breakpoint and above. This enables the nav to appear seamlessly
         integrated with a landing page hero section that has an image or background color other
         than white.
         `,
@@ -40,7 +40,7 @@ onMounted(async () => {
 
 <template>
     <div>
-        <es-sticky-bar>
+        <es-sticky-bar transparent-starting-at-breakpoint="lg">
             <es-container>
                 <div class="d-flex justify-content-between py-100 py-lg-200">
                     <p class="mb-0">test content</p>
@@ -70,7 +70,8 @@ onMounted(async () => {
             <p>
                 On desktop, when scrolled to the top of the page, there is no shadow dividing the sticky bar from the
                 rest of the page content. As soon as the nav bar becomes floating, there is a shadow. On mobile, there
-                is always a shadow.
+                is always a shadow. This is because, in this example, we have set the <code>transparent-starting-at-breakpoint</code>
+                prop to a value of <code>'lg'</code>.
             </p>
 
             <h2 class="mt-300">Usage</h2>
@@ -93,7 +94,10 @@ onMounted(async () => {
 
             <div class="my-300">
                 <h2>EsStickyBar props</h2>
-                <ds-prop-table :rows="esStickyBarProps" />
+                <ds-prop-table :rows="esStickyBarProps" :widths="{
+        md: ['3', '2', '2', '5'],
+        lg: ['3', '2', '1', '6'],
+    }" />
             </div>
 
             <ds-doc-source
