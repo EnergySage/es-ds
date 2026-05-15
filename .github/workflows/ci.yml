@@ -30,6 +30,9 @@ jobs:
                 make install
                 make symlink
 
+            - name: Verify component symlink
+              run: ls -la es-ds-docs/node_modules/@energysage/es-ds-components
+
             - name: Building
               run: make build
 
