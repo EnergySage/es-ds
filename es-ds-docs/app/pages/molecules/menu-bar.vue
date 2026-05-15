@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { esMenuBarFlyoutDefaultAlign } from '#imports';
 import { siteNavigationSampleItems } from '@/utils/nav-sample-items';
 
 definePageMeta({
