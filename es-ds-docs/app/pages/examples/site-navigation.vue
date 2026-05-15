@@ -15,7 +15,7 @@ const isSignedIn = ref(false);
         <es-sticky-bar transparent-starting-at-breakpoint="xl">
             <es-skip-to-content-link />
             <div
-                class="site-navigation align-items-center d-flex justify-content-between mx-auto position-relative px-md-150">
+                class="site-navigation align-items-center d-flex justify-content-between mx-auto px-md-150">
                 <!-- mobile main nav -->
                 <es-mobile-nav class="d-xl-none">
                     <es-mobile-nav-trigger>
@@ -243,7 +243,7 @@ const isSignedIn = ref(false);
                 when the sticky bar is set to be transparent on desktop.
             </p>
             <p>
-                The mobile nav is displayed on xs, sm, and md breakpoints. The menu bar is displayed on lg, xl, and xxl
+                The mobile nav is displayed on xs, sm, md, and lg breakpoints. The menu bar is displayed on xl and xxl
                 breakpoints.
             </p>
             <div>
@@ -297,7 +297,7 @@ const isSignedIn = ref(false);
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
 
-    @include breakpoints.media-breakpoint-up(lg) {
+    @include breakpoints.media-breakpoint-up(xl) {
         left: auto;
         position: static;
         top: auto;

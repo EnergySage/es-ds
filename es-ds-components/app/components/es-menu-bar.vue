@@ -108,6 +108,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables';
+@use 'sass:map';
 
 $open-close-timing-function: ease-in-out;
 
@@ -357,6 +358,11 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                     &[data-motion='to-end'] {
                         animation: exitToRight $switch-menus-duration $switch-menus-timing-function;
                     }
+                }
+
+                .es-menu-bar-flyout-pane {
+                    margin: 0 auto;
+                    max-width: map.get(variables.$container-max-widths, xxl);
                 }
             }
         }
