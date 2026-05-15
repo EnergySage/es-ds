@@ -12,12 +12,12 @@ const isSignedIn = ref(false);
 
 <template>
     <div class="site-navigation-container">
-        <es-sticky-bar transparent-on-desktop>
+        <es-sticky-bar transparent-starting-at-breakpoint="xl">
             <es-skip-to-content-link />
             <div
                 class="site-navigation align-items-center d-flex justify-content-between mx-auto position-relative px-md-150">
                 <!-- mobile main nav -->
-                <es-mobile-nav class="d-lg-none">
+                <es-mobile-nav class="d-xl-none">
                     <es-mobile-nav-trigger>
                         <span class="sr-only">Open navigation menu</span>
                         <icon-hamburger aria-hidden="true" />
@@ -116,12 +116,12 @@ const isSignedIn = ref(false);
                     class="site-navigation-logo">
                     <es-logo
                         alt="EnergySage"
-                        class="d-lg-none"
+                        class="d-xl-none"
                         height="30px"
                         width="135px" />
                     <es-logo
                         alt="EnergySage"
-                        class="d-none d-lg-block"
+                        class="d-none d-xl-block"
                         height="45px"
                         width="205px" />
                 </a>
@@ -129,7 +129,7 @@ const isSignedIn = ref(false);
                 <!-- mobile account nav -->
                 <es-mobile-nav
                     v-if="isSignedIn"
-                    class="d-lg-none"
+                    class="d-xl-none"
                     from="right">
                     <es-mobile-nav-trigger>
                         <span class="sr-only">Open account menu</span>
@@ -148,14 +148,14 @@ const isSignedIn = ref(false);
                 </es-mobile-nav>
 
                 <!-- desktop nav -->
-                <div class="d-none d-lg-flex flex-lg-nowrap">
+                <div class="d-none d-xl-flex flex-xl-nowrap">
                     <es-menu-bar
                         full-width
                         :height="88">
                         <es-menu-bar-item
                             v-for="item in siteNavigationSampleItems"
                             :key="item.name">
-                            <es-menu-bar-trigger class="font-size-75 font-size-xl-100">
+                            <es-menu-bar-trigger>
                                 {{ item.name }}
                             </es-menu-bar-trigger>
                             <es-menu-bar-flyout>
@@ -200,9 +200,7 @@ const isSignedIn = ref(false);
                             </es-menu-bar-flyout>
                         </es-menu-bar-item>
                         <es-menu-bar-item v-if="!isSignedIn">
-                            <es-menu-bar-link
-                                class="font-size-75 font-size-xl-100"
-                                href="https://www.energysage.com/login/">
+                            <es-menu-bar-link href="https://www.energysage.com/login/">
                                 <icon-person-circle
                                     class="mr-25"
                                     height="32px"
@@ -213,10 +211,10 @@ const isSignedIn = ref(false);
                     </es-menu-bar>
                     <es-menu-bar
                         v-if="isSignedIn"
-                        class="d-none d-lg-block ml-lg-25 ml-xl-100"
+                        class="ml-100"
                         :height="88">
                         <es-menu-bar-item>
-                            <es-menu-bar-trigger class="font-size-75 font-size-xl-100">
+                            <es-menu-bar-trigger>
                                 <icon-person-circle
                                     class="mr-25"
                                     height="32px"

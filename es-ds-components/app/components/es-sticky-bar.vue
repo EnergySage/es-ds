@@ -1,9 +1,9 @@
 <script setup lang="ts">
 interface IProps {
-    transparentOnDesktop?: boolean;
+    transparentStartingAtBreakpoint?: 'lg' | 'xl' | 'xxl' | '';
 }
-const props = withDefaults(defineProps<IProps>(), {
-    transparentOnDesktop: false,
+withDefaults(defineProps<IProps>(), {
+    transparentStartingAtBreakpoint: '',
 });
 
 // minimum scroll distance in a single direction before showing/hiding
@@ -36,8 +36,6 @@ let lastScrollY = 0;
 let scrollAnchor = 0; // position where the current scroll direction started
 let scrollDirection = 0; // positive = down, negative = up
 let ticking = false; // tracks whether a rAF is already queued
-
-const desktopBackgroundColorWhenAtScrollTop = computed(() => (props.transparentOnDesktop ? 'transparent' : '#ffffff'));
 
 // switches to fixed-hidden without triggering the CSS transition — used when the bar is already
 // off screen and we need to silently reposition it before the user scrolls back up
@@ -155,6 +153,7 @@ onUnmounted(() => {
         class="es-sticky-bar"
         :class="[
             `es-sticky-bar--${barState}`,
+            transparentStartingAtBreakpoint && `es-sticky-bar--transparent-from-${transparentStartingAtBreakpoint}`,
             {
                 'es-sticky-bar--no-transition': suppressTransition,
                 'es-sticky-bar--active': isHovered || openMenuCount > 0,
@@ -186,9 +185,13 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     top: 0;
     z-index: 1000;
 
-    @include breakpoints.media-breakpoint-up(lg) {
-        background-color: v-bind(desktopBackgroundColorWhenAtScrollTop);
-        box-shadow: none;
+    @each $bp in (lg, xl, xxl) {
+        &--transparent-from-#{$bp} {
+            @include breakpoints.media-breakpoint-up($bp) {
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
     }
 
     @media not (prefers-reduced-motion) {
