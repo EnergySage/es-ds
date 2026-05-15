@@ -1,14 +1,5 @@
 <script setup lang="ts">
 import { NavigationMenuItem } from 'reka-ui';
-
-interface IProps {
-    fullWidth?: boolean;
-    position?: 'left' | 'center' | 'right';
-}
-withDefaults(defineProps<IProps>(), {
-    fullWidth: false,
-    position: 'center',
-});
 </script>
 
 <template>
