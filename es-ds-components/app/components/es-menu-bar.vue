@@ -2,9 +2,11 @@
 import { useScrollLock } from '@vueuse/core';
 import { NavigationMenuList, NavigationMenuRoot, NavigationMenuViewport } from 'reka-ui';
 import {
+    ES_MENU_BAR_ALIGNMENT_REGISTRY_KEY,
     ES_MENU_BAR_CLOSE_EVENT_NAME,
     ES_MENU_BAR_OPEN_CLOSE_DURATION_MS,
     ES_MENU_BAR_OPEN_EVENT_NAME,
+    type EsMenuBarFlyoutAlign,
 } from '../utils/menu-bar';
 import { omit } from '../utils/omit';
 import { useEsdsEvents } from '../composables/events';
@@ -33,6 +35,19 @@ const activeMenuId = ref('');
 const heightPx = computed(() => `${props.height}px`);
 
 provide('fullWidth', props.fullWidth);
+
+// each EsMenuBarFlyout registers its align preference here, keyed by its Reka item id;
+// the viewport's align is reactively driven by whichever menu is currently active
+const flyoutAlignments = reactive(new Map<string, EsMenuBarFlyoutAlign>());
+provide(ES_MENU_BAR_ALIGNMENT_REGISTRY_KEY, {
+    register: (id, align) => {
+        flyoutAlignments.set(id, align);
+    },
+    unregister: (id) => {
+        flyoutAlignments.delete(id);
+    },
+});
+const activeAlign = computed<EsMenuBarFlyoutAlign>(() => flyoutAlignments.get(activeMenuId.value) ?? 'center');
 
 watch(activeMenuId, async (newVal: string, oldVal: string) => {
     // lock page scrolling when menu is open, unless we're not showing the overlay
@@ -90,6 +105,7 @@ onUnmounted(() => {
                 <slot />
             </navigation-menu-list>
             <navigation-menu-viewport
+                :align="activeAlign"
                 class="es-menu-bar-viewport"
                 :class="{
                     'full-width': fullWidth,

@@ -65,12 +65,13 @@ definePageMeta({
                 <h2>Not full width</h2>
                 <es-menu-bar :show-overlay-when-open="false">
                     <es-menu-bar-item
-                        v-for="item in siteNavigationSampleItems[0]!.items"
+                        v-for="(item, index) in siteNavigationSampleItems[0]!.items"
                         :key="item.name">
                         <es-menu-bar-trigger>
                             {{ item.name }}
                         </es-menu-bar-trigger>
-                        <es-menu-bar-flyout>
+                        <es-menu-bar-flyout
+                            :align="esMenuBarFlyoutDefaultAlign(index, siteNavigationSampleItems[0]!.items)">
                             <es-menu-bar-flyout-link
                                 v-for="link in item.items"
                                 :key="link.name"

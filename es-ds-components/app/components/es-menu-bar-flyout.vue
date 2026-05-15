@@ -1,14 +1,32 @@
 <script setup lang="ts">
-import { NavigationMenuContent, NavigationMenuList } from 'reka-ui';
+import { injectNavigationMenuItemContext, NavigationMenuContent, NavigationMenuList } from 'reka-ui';
+import { ES_MENU_BAR_ALIGNMENT_REGISTRY_KEY, type EsMenuBarFlyoutAlign } from '../utils/menu-bar';
 
 interface IProps {
-    position?: 'left' | 'center' | 'right';
+    align?: EsMenuBarFlyoutAlign;
 }
-withDefaults(defineProps<IProps>(), {
-    position: 'center',
+const props = withDefaults(defineProps<IProps>(), {
+    align: 'center',
 });
 
 const fullWidth = inject('fullWidth', false);
+
+// register this flyout's align preference with the parent EsMenuBar so the shared
+// Reka viewport can switch align values as the active menu changes
+const itemContext = injectNavigationMenuItemContext();
+const registry = inject(ES_MENU_BAR_ALIGNMENT_REGISTRY_KEY, null);
+
+watch(
+    () => props.align,
+    (align) => {
+        registry?.register(itemContext.value, align);
+    },
+    { immediate: true },
+);
+
+onBeforeUnmount(() => {
+    registry?.unregister(itemContext.value);
+});
 </script>
 
 <template>

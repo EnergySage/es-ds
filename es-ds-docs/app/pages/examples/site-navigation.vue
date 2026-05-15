@@ -220,7 +220,7 @@ const isSignedIn = ref(false);
                                     width="32px" />
                                 Brittany
                             </es-menu-bar-trigger>
-                            <es-menu-bar-flyout>
+                            <es-menu-bar-flyout align="end">
                                 <es-menu-bar-flyout-link
                                     v-for="link in accountMenuItems"
                                     :key="link.name"
