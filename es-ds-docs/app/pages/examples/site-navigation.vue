@@ -218,12 +218,8 @@ const isSignedIn = ref(false);
                                     class="mr-25"
                                     height="32px"
                                     width="32px" />
-                                <span class="sr-only">
-                                    Account
-                                </span>
-                                <span aria-hidden="true">
-                                    Brittany
-                                </span>
+                                <span class="sr-only"> Account </span>
+                                <span aria-hidden="true"> Brittany </span>
                             </es-menu-bar-trigger>
                             <es-menu-bar-flyout align="end">
                                 <es-menu-bar-flyout-link
