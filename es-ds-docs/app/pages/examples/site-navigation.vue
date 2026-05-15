@@ -14,7 +14,7 @@ const isSignedIn = ref(false);
     <div class="site-navigation-container">
         <es-sticky-bar transparent-starting-at-breakpoint="xl">
             <es-skip-to-content-link />
-            <div class="site-navigation align-items-center d-flex justify-content-between mx-auto px-md-150">
+            <div class="site-navigation align-items-center d-flex justify-content-between mx-auto px-md-150 px-xxl-0">
                 <!-- mobile main nav -->
                 <es-mobile-nav class="d-xl-none">
                     <es-mobile-nav-trigger>
@@ -288,6 +288,12 @@ const isSignedIn = ref(false);
 .site-navigation {
     height: 88px;
     max-width: map.get(variables.$container-max-widths, xxl);
+
+    /* at xxl breakpoint only, match es-container padding */
+    @include breakpoints.media-breakpoint-up(xxl) {
+        padding-left: variables.$grid-gutter-width * 0.5 !important;
+        padding-right: variables.$grid-gutter-width * 0.5 !important;
+    }
 }
 
 .site-navigation-logo {

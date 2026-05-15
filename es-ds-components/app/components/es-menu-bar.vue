@@ -124,22 +124,22 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 @keyframes enterFromLeft {
     from {
         opacity: 0;
-        transform: translateX(-300px);
+        transform: translateX(calc(-1 * var(--es-menu-bar-flyout-translate)));
     }
     to {
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateX(0);
     }
 }
 
 @keyframes enterFromRight {
     from {
         opacity: 0;
-        transform: translateX(300px);
+        transform: translateX(var(--es-menu-bar-flyout-translate));
     }
     to {
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateX(0);
     }
 }
 
@@ -159,22 +159,22 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 @keyframes exitToLeft {
     from {
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateX(0);
     }
     to {
         opacity: 0;
-        transform: translateX(-300px);
+        transform: translateX(calc(-1 * var(--es-menu-bar-flyout-translate)));
     }
 }
 
 @keyframes exitToRight {
     from {
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateX(0);
     }
     to {
         opacity: 0;
-        transform: translateX(300px);
+        transform: translateX(var(--es-menu-bar-flyout-translate));
     }
 }
 
@@ -346,6 +346,25 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
             .es-menu-bar-flyout {
                 width: 100%;
+                /* row's content box = pane − 2·wrapper-padding + grid-gutter (row's negative margins). matches <es-col md="6" lg="4" xl="3"> in es-menu-bar-flyout-column so column text stays aligned during the cross-slide */
+                --es-menu-bar-flyout-row-width: calc(
+                    min(100%, #{map.get(variables.$container-max-widths, xxl)}) - 2 *
+                        #{map.get(variables.$spacers, 150)} + #{variables.$grid-gutter-width}
+                );
+                --es-menu-bar-flyout-translate: calc(var(--es-menu-bar-flyout-row-width) * 6 / 12);
+
+                @include breakpoints.media-breakpoint-up(lg) {
+                    --es-menu-bar-flyout-translate: calc(var(--es-menu-bar-flyout-row-width) * 4 / 12);
+                }
+
+                @include breakpoints.media-breakpoint-up(xl) {
+                    --es-menu-bar-flyout-translate: calc(var(--es-menu-bar-flyout-row-width) * 3 / 12);
+                }
+
+                @include breakpoints.media-breakpoint-up(xxl) {
+                    /* wrapper padding becomes 0 and pane's half-gutter padding cancels the row's negative margin → row width = pane */
+                    --es-menu-bar-flyout-row-width: min(100%, #{map.get(variables.$container-max-widths, xxl)});
+                }
 
                 /* in full width mode when switching menus, menu container stays in same position, content animates in/out */
                 @media not (prefers-reduced-motion) {
@@ -369,6 +388,12 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                 .es-menu-bar-flyout-pane {
                     margin: 0 auto;
                     max-width: map.get(variables.$container-max-widths, xxl);
+
+                    /* at xxl breakpoint only, match es-container padding */
+                    @include breakpoints.media-breakpoint-up(xxl) {
+                        padding-left: variables.$grid-gutter-width * 0.5 !important;
+                        padding-right: variables.$grid-gutter-width * 0.5 !important;
+                    }
                 }
             }
         }

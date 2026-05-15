@@ -18,7 +18,7 @@ const fullWidth = inject('fullWidth', false);
         class="es-menu-bar-flyout">
         <div class="es-menu-bar-flyout-pane">
             <template v-if="fullWidth">
-                <div class="px-300 py-200">
+                <div class="px-md-150 px-xxl-0 py-200">
                     <es-row class="justify-content-end">
                         <slot />
                     </es-row>
