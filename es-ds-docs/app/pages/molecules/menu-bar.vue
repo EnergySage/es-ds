@@ -267,7 +267,15 @@ onMounted(async () => {
                     Reka UI NavigationMenu
                 </nuxt-link>
             </p>
-            <p class="mb-500">The menu bar assumes it is at the top of the viewport</p>
+            <p>
+                The menu bar offers a horizontal menu of links or menu triggers that can open either a small flyout
+                containing a list of links, or a full-width flyout containing multiple columns of links.
+            </p>
+            <p>
+                By default, it will show a semi-transparent overlay when a menu flyout is open. The overlay assumes the
+                menu is positioned at the top of the viewport. If you need to use the menu in another position (i.e.
+                mid-page), be sure to disable the overlay.
+            </p>
 
             <div class="my-300">
                 <h2>Basic example</h2>
