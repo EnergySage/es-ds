@@ -1,5 +1,24 @@
 # Changelog
 
+## [5.5.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.4.4...es-ds-docs-v5.5.0) (2026-05-18)
+
+
+### Features
+
+* add EsMenuBar, EsSkipToContentLink, EsColorBand ([#1746](https://github.com/EnergySage/es-ds/issues/1746)) ([3654c21](https://github.com/EnergySage/es-ds/commit/3654c218bac408b2d93568a788d285b323e460db))
+
+
+### Bug Fixes
+
+* fresh es-ds-docs package-lock to maybe solve vite-plugin-checker issue ([#1743](https://github.com/EnergySage/es-ds/issues/1743)) ([0f3fed4](https://github.com/EnergySage/es-ds/commit/0f3fed490880a61cfe5c9ce8920e5ec522720a3c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.4.4 to ^5.5.0
+
 ## [5.4.4](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.4.3...es-ds-docs-v5.4.4) (2026-04-28)
 
 
