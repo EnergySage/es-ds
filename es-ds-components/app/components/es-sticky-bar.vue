@@ -1,6 +1,22 @@
 <script setup lang="ts">
+import { useEsdsEvents } from '../composables/events';
+import {
+    ES_MENU_BAR_CLOSE_EVENT_NAME,
+    ES_MENU_BAR_OPEN_CLOSE_DURATION_MS,
+    ES_MENU_BAR_OPEN_EVENT_NAME,
+} from '../utils/menu-bar';
+
+interface IProps {
+    transparentStartingAtBreakpoint?: 'lg' | 'xl' | 'xxl' | '';
+}
+withDefaults(defineProps<IProps>(), {
+    transparentStartingAtBreakpoint: '',
+});
+
 // minimum scroll distance in a single direction before showing/hiding
 const SCROLL_THRESHOLD = 20;
+
+const emitter = useEsdsEvents();
 
 // bar states:
 // - static:        initial SSR state; bar is in normal document flow
@@ -16,6 +32,11 @@ const bar = ref<HTMLElement | null>(null);
 const suppressTransition = ref(false);
 // updated on mount and whenever the bar resizes
 const barHeight = ref(0);
+// keep track of when the mouse is over the sticky bar (to change bg to white)
+const isHovered = ref(false);
+// number of EsMenuBars currently open inside this sticky bar; counting (rather than
+// a boolean) makes the state order-independent when one menu closes as another opens
+const openMenuCount = ref(0);
 
 // scroll state — all plain vars since they don't need to be reactive
 let lastScrollY = 0;
@@ -87,6 +108,27 @@ function onScroll() {
     }
 }
 
+// defined at script scope so the same references can be passed to emitter.off() —
+// calling emitter.off(type) without a handler removes EVERY listener for that event,
+// including ones registered by other components
+const onMenuBarOpen = () => {
+    openMenuCount.value += 1;
+};
+
+const onMenuBarClose = () => {
+    const decrement = () => {
+        openMenuCount.value = Math.max(0, openMenuCount.value - 1);
+    };
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // close animation is disabled — turn off active state immediately
+        decrement();
+    } else {
+        // delay so the menu can roll up into the bar before the bar fades to transparent
+        // (rather than rolling up into nothingness due to the bar already having faded out)
+        setTimeout(decrement, ES_MENU_BAR_OPEN_CLOSE_DURATION_MS);
+    }
+};
+
 onMounted(() => {
     // measure height before switching position so the placeholder matches exactly
     barHeight.value = bar.value?.offsetHeight ?? 0;
@@ -104,19 +146,34 @@ onMounted(() => {
         resizeObserver.observe(bar.value);
         onUnmounted(() => resizeObserver.disconnect());
     }
+
+    emitter.on(ES_MENU_BAR_OPEN_EVENT_NAME, onMenuBarOpen);
+    emitter.on(ES_MENU_BAR_CLOSE_EVENT_NAME, onMenuBarClose);
 });
 
 onUnmounted(() => {
     window.removeEventListener('scroll', onScroll);
+
+    emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME, onMenuBarOpen);
+    emitter.off(ES_MENU_BAR_CLOSE_EVENT_NAME, onMenuBarClose);
 });
 </script>
 
 <template>
     <div
         ref="bar"
-        class="es-sticky-bar bg-white"
-        :class="[`es-sticky-bar--${barState}`, { 'es-sticky-bar--no-transition': suppressTransition }]"
-        v-bind="$attrs">
+        class="es-sticky-bar"
+        :class="[
+            `es-sticky-bar--${barState}`,
+            transparentStartingAtBreakpoint && `es-sticky-bar--transparent-from-${transparentStartingAtBreakpoint}`,
+            {
+                'es-sticky-bar--no-transition': suppressTransition,
+                'es-sticky-bar--active': isHovered || openMenuCount > 0,
+            },
+        ]"
+        v-bind="$attrs"
+        @mouseover="isHovered = true"
+        @mouseout="isHovered = false">
         <slot />
     </div>
     <!-- holds the bar's space in normal flow when the bar is absolutely or fixed positioned -->
@@ -128,22 +185,31 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables' as variables;
 
 $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
 
 .es-sticky-bar {
+    background-color: variables.$white;
     box-shadow: $shadow;
     left: 0;
     right: 0;
     top: 0;
     z-index: 1000;
 
-    @include breakpoints.media-breakpoint-up(lg) {
-        box-shadow: none;
+    @each $bp in (lg, xl, xxl) {
+        &--transparent-from-#{$bp} {
+            @include breakpoints.media-breakpoint-up($bp) {
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
     }
 
     @media not (prefers-reduced-motion) {
-        transition: box-shadow 0.2s ease-in-out;
+        transition:
+            background 0.2s ease-in-out,
+            box-shadow 0.2s ease-in-out;
     }
 
     &--absolute {
@@ -152,6 +218,7 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
 
     &--fixed-visible,
     &--fixed-hidden {
+        background-color: variables.$white;
         box-shadow: $shadow;
         position: fixed;
 
@@ -169,6 +236,11 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     // suppresses animation for silent state swaps (e.g. absolute → fixed-hidden when off screen)
     &--no-transition {
         transition: none !important;
+    }
+
+    &--active {
+        background-color: variables.$white;
+        box-shadow: $shadow;
     }
 }
 </style>

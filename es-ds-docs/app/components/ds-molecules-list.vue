@@ -37,6 +37,9 @@
             <ds-link to="/molecules/form-message"> Form message </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/menu-bar"> Menu bar </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/mobile-nav"> Mobile nav </ds-link>
         </li>
         <li>
@@ -68,6 +71,9 @@
         </li>
         <li>
             <ds-link to="/molecules/skeleton"> Skeleton </ds-link>
+        </li>
+        <li>
+            <ds-link to="/molecules/skip-to-content-link"> Skip to content link </ds-link>
         </li>
         <li>
             <ds-link to="/molecules/slider"> Slider </ds-link>

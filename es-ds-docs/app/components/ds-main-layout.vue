@@ -1,5 +1,15 @@
+<script setup lang="ts">
+interface IProps {
+    mainContentId?: string;
+}
+withDefaults(defineProps<IProps>(), {
+    mainContentId: 'main-content',
+});
+</script>
+
 <template>
     <div class="d-flex justify-content-center">
+        <es-skip-to-content-link />
         <es-container class="pt-100 mx-0">
             <es-row>
                 <es-col
@@ -13,7 +23,9 @@
                     <div class="mb-100">
                         <ds-breadcrumbs />
                     </div>
-                    <div class="mb-300">
+                    <div
+                        :id="mainContentId"
+                        class="mb-300">
                         <slot />
                     </div>
                 </es-col>

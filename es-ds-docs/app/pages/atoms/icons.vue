@@ -50,6 +50,7 @@ import IconElectricVehicle from '@energysage/es-ds-components/app/components/ico
 import IconEnvelope from '@energysage/es-ds-components/app/components/icon/envelope.vue';
 import IconEsLeaf from '@energysage/es-ds-components/app/components/icon/es-leaf.vue';
 import IconEye from '@energysage/es-ds-components/app/components/icon/eye.vue';
+import IconFan from '@energysage/es-ds-components/app/components/icon/fan.vue';
 import IconFacebook from '@energysage/es-ds-components/app/components/icon/facebook.vue';
 import IconFileDoc from '@energysage/es-ds-components/app/components/icon/file-doc.vue';
 import IconFileDocx from '@energysage/es-ds-components/app/components/icon/file-docx.vue';
@@ -83,6 +84,7 @@ import IconPencil from '@energysage/es-ds-components/app/components/icon/pencil.
 import IconPerson from '@energysage/es-ds-components/app/components/icon/person.vue';
 import IconPersonAdd from '@energysage/es-ds-components/app/components/icon/person-add.vue';
 import IconPersonCheck from '@energysage/es-ds-components/app/components/icon/person-check.vue';
+import IconPersonCircle from '@energysage/es-ds-components/app/components/icon/person-circle.vue';
 import IconPersonCross from '@energysage/es-ds-components/app/components/icon/person-cross.vue';
 import IconPhone from '@energysage/es-ds-components/app/components/icon/phone.vue';
 import IconPlay from '@energysage/es-ds-components/app/components/icon/play.vue';
@@ -358,6 +360,11 @@ const baseIcons = [
         phosphorName: 'eye',
     },
     {
+        name: 'fan',
+        component: IconFan,
+        phosphorName: 'fan',
+    },
+    {
         name: 'folder',
         component: IconFolder,
         phosphorName: 'folder',
@@ -461,6 +468,11 @@ const baseIcons = [
         name: 'person check',
         component: IconPersonCheck,
         phosphorName: 'user-check',
+    },
+    {
+        name: 'person circle',
+        component: IconPersonCircle,
+        phosphorName: 'user-circle',
     },
     {
         name: 'person cross',
