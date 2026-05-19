@@ -34,6 +34,7 @@ withDefaults(defineProps<IProps>(), {
 $transition-duration: 100ms;
 
 .es-mobile-nav-link {
+    border-bottom: 1px solid variables.$gray-100;
     /* specify color here so it can be overridden in active state */
     color: variables.$dark-blue;
 
