@@ -391,6 +391,43 @@ onMounted(async () => {
             </div>
 
             <div class="my-300">
+                <h2>Links and icons</h2>
+                <p>
+                    In addition to menus, the menu bar also supports top-level links. Here's an example of a menu bar
+                    with three links. The height has also been customized and icons have been added to each link.
+                </p>
+                <es-menu-bar :height="60">
+                    <es-menu-bar-item>
+                        <es-menu-bar-link href="https://www.energysage.com/solar/">
+                            <icon-solar
+                                class="mr-50"
+                                height="28px"
+                                width="28px" />
+                            Home solar
+                        </es-menu-bar-link>
+                    </es-menu-bar-item>
+                    <es-menu-bar-item>
+                        <es-menu-bar-link href="https://www.energysage.com/energy-storage/">
+                            <icon-battery-charging-vertical
+                                class="mr-50"
+                                height="28px"
+                                width="28px" />
+                            Home batteries
+                        </es-menu-bar-link>
+                    </es-menu-bar-item>
+                    <es-menu-bar-item class="d-none d-sm-block">
+                        <es-menu-bar-link href="https://www.energysage.com/ev-charging/">
+                            <icon-charging-station
+                                class="mr-50"
+                                height="28px"
+                                width="28px" />
+                            EV charging
+                        </es-menu-bar-link>
+                    </es-menu-bar-item>
+                </es-menu-bar>
+            </div>
+
+            <div class="my-300">
                 <h2>Full width</h2>
                 <p>
                     The full width menu is best used with the semi-transparent overlay left on, which requires that the
