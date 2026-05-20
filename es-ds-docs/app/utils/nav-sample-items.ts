@@ -363,7 +363,6 @@ export const siteNavigationSampleItems: EsNavSampleItemInterface[] = [
                 cta: {
                     heading: 'Get a personalized plan',
                     href: 'https://energysage.wattbuy.com/en/lp/energysage/?utm_source=energysage&utm_medium=header&utm_campaign=ppp_cta',
-                    icon: 'house-line',
                     subtitle: 'See how you can lower your bills with home energy upgrades.',
                     target: '_blank',
                 },
@@ -383,7 +382,6 @@ export const siteNavigationSampleItems: EsNavSampleItemInterface[] = [
                 cta: {
                     heading: 'Find a new electricity plan',
                     href: 'https://energysage.wattbuy.com/en/?utm_medium=partner&utm_source=energysage&utm_campaign=nav',
-                    icon: 'bolt',
                     subtitle: 'Compare energy plans and switch to a better rate.',
                     target: '_blank',
                 },
@@ -403,7 +401,6 @@ export const siteNavigationSampleItems: EsNavSampleItemInterface[] = [
                 cta: {
                     heading: 'Find an electrician',
                     href: 'https://electrification.qmerit.com/',
-                    icon: 'light-bulb',
                     subtitle: 'Tell us about your project to get a quote from a certified electrician.',
                     target: '_blank',
                 },

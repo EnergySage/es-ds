@@ -159,18 +159,20 @@ const isSignedIn = ref(false);
                             </es-menu-bar-trigger>
                             <es-menu-bar-flyout>
                                 <es-menu-bar-flyout-column v-if="item.cta?.href">
-                                    <es-nav-cta-card
-                                        class="mb-100"
-                                        :heading="item.cta.heading"
-                                        :href="item.cta.href"
-                                        :subtitle="item.cta.subtitle"
-                                        :target="item.cta.target">
-                                        <template
-                                            v-if="item.cta.icon"
-                                            #icon>
-                                            <ds-site-navigation-icon :name="item.cta.icon" />
-                                        </template>
-                                    </es-nav-cta-card>
+                                    <es-menu-bar-flyout-custom-item class="pr-200">
+                                        <es-nav-cta-card
+                                            class="mb-100"
+                                            :heading="item.cta.heading"
+                                            :href="item.cta.href"
+                                            :subtitle="item.cta.subtitle"
+                                            :target="item.cta.target">
+                                            <template
+                                                v-if="item.cta.icon"
+                                                #icon>
+                                                <ds-site-navigation-icon :name="item.cta.icon" />
+                                            </template>
+                                        </es-nav-cta-card>
+                                    </es-menu-bar-flyout-custom-item>
                                 </es-menu-bar-flyout-column>
                                 <es-menu-bar-flyout-column
                                     v-for="section in item.items"
