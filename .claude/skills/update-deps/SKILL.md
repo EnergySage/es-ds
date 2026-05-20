@@ -25,6 +25,22 @@ Before touching anything, capture what "working" looks like *today* so you can c
 make install
 ```
 
+After install, snapshot the **actually-installed** versions of every direct dep across the three packages. This is your "before" — and it's the only honest one, because `^` ranges in `package.json` are floors, not the resolved version:
+
+```bash
+for pkg in es-ds-styles es-ds-components es-ds-docs; do
+  jq -r --arg pkg "$pkg" '
+    . as $root
+    | (.packages."".dependencies // {}) * (.packages."".devDependencies // {})
+    | to_entries[]
+    | [$pkg, .key, .value, ($root.packages["node_modules/" + .key].version // "?")]
+    | @tsv
+  ' "$pkg/package-lock.json"
+done > /tmp/deps-before.tsv
+```
+
+Columns are `<package>\t<name>\t<package.json-spec>\t<resolved-version>`. Spot-check the file has ~80 rows split across the three packages and no `?` in the resolved-version column before moving on. Keep `/tmp/deps-before.tsv` around — Step 4 reads it for real current versions, and Step 8 diffs it against the after-snapshot.
+
 Then start the dev server in the background and watch for it to come up on port 8500:
 
 ```bash
@@ -74,13 +90,26 @@ This is required — without it, `node` and `npm` will fail or silently resolve 
 
 ## Step 4: Find latest versions and propose bumps
 
-For each of the three `package.json` files, walk through `dependencies` and `devDependencies`. For each entry, get the latest published version:
+For each direct dep across the three packages, get the latest published version:
 
 ```bash
 npm view <package-name> version
 ```
 
 (Use `npm view <package-name> dist-tags --json` if you're unsure whether `latest` is a stable release vs. a prerelease.)
+
+### Don't edit `package.json` for in-range bumps — let the reinstall do it
+
+`package.json` declares a *range* (typically `^X.Y.Z`), not a pinned version. When Step 2 deletes the lockfile, the Step 5 reinstall will resolve every range to the latest matching version on its own. So a minor or patch bump within an existing `^` range happens automatically — touching `package.json` for those just adds churn to the diff and misleads anyone reading "X → Y" in the file as the actual installed version.
+
+**Only edit `package.json` when the existing specifier cannot reach the target version.** In practice:
+
+- `^X.Y.Z` (with X ≥ 1): edit only when crossing the major (e.g., `^1.x` → `^2.0.0`). Minor and patch bumps inside the range happen via reinstall, not via edit.
+- `^0.Y.Z`: edit when crossing the minor (e.g., `^0.43.1` → `^0.52.0`) — under `^`, pre-1.0 minors *are* breaking and the range doesn't span them.
+- `~X.Y.Z`: edit when crossing the `X.Y` minor.
+- Exact pin (`X.Y.Z` with no `^` or `~`): edit for any change you want.
+
+If the bump is in-range, leave `package.json` alone — the bump still happens at install time. The reinstalled lockfile is the artifact.
 
 ### Exclusions — do not bump these automatically
 
@@ -109,28 +138,25 @@ Patch and minor bumps don't need a breaking-change writeup — note them but don
 
 ### Present and confirm
 
-Present the proposed bumps to the user *before* editing anything, grouped by package and flagged for majors. Something like:
+Use `/tmp/deps-before.tsv` (real installed versions, from Step 1) as the "from" column — not whatever `package.json` says. Group by package and flag majors. Example:
 
 ```
 es-ds-styles
-  autoprefixer  10.4.20 → 10.4.21  (patch)
-  eslint         8.13.0 → 9.x      (MAJOR — flat config required)
-  ...
+  autoprefixer   10.4.20 → 10.5.0   (in-range; no package.json edit)
+  cross-env      7.0.3   → 10.1.0   (MAJOR — edit package.json; drops Node 18)
 
 es-ds-components
-  nuxt           4.3.1 → 5.0.0     (MAJOR — drops Node 20; pairs with docs)
-  reka-ui        2.8.0 → 3.0.0     (MAJOR — Menubar slot API renamed; pairs with docs)
-  ...
+  nuxt           4.4.4 → 4.4.6     (in-range; no package.json edit)
+  reka-ui        2.8.0 → 3.0.0     (MAJOR — edit package.json; Menubar slot API renamed; pairs with docs)
 
 es-ds-docs
-  nuxt           4.4.2 → 5.0.0     (MAJOR — must match components)
-  reka-ui        2.8.0 → 3.0.0     (MAJOR — must match components)
-  ...
+  nuxt           4.4.4 → 4.4.6     (in-range; no package.json edit)
+  reka-ui        2.8.0 → 3.0.0     (MAJOR — edit package.json; must match components)
 ```
 
-Wait for the user to approve, skip individual entries, or hold a package back to a lower major. Then apply the edits to all three `package.json` files. Keep the `^` (or whatever prefix the existing entry uses) — only the version number itself should change.
+Wait for the user to approve, skip individual entries, or hold a package back to a lower major. Then apply edits **only** to the rows marked as needing a `package.json` change. Keep the prefix the existing entry uses (`^`, `~`, or none) — only the version number itself should change. In-range bumps will be picked up automatically by the Step 5 reinstall.
 
-## Step 5: Reinstall
+## Step 5: Reinstall and snapshot the "after"
 
 ```bash
 make install
@@ -139,6 +165,22 @@ make install
 Watch the output. If install fails outright — unresolvable peer deps, registry errors, postinstall failures — that's the signal to **back off a version**, not to bypass the check. Go back to Step 4, drop the most suspect bump back to its previous major, and try again.
 
 **Do not use `--force` or `--legacy-peer-deps` to muscle through.** The whole point of this skill is to reduce friction, not hide it; a forced install today is a real install failure on someone else's machine next week.
+
+Once install succeeds, snapshot the freshly-resolved versions — same shape as `/tmp/deps-before.tsv`:
+
+```bash
+for pkg in es-ds-styles es-ds-components es-ds-docs; do
+  jq -r --arg pkg "$pkg" '
+    . as $root
+    | (.packages."".dependencies // {}) * (.packages."".devDependencies // {})
+    | to_entries[]
+    | [$pkg, .key, .value, ($root.packages["node_modules/" + .key].version // "?")]
+    | @tsv
+  ' "$pkg/package-lock.json"
+done > /tmp/deps-after.tsv
+```
+
+`/tmp/deps-after.tsv` paired with `/tmp/deps-before.tsv` is the source of truth for the Step 8 handoff.
 
 ## Step 6: Verify dev server matches baseline
 
@@ -179,12 +221,30 @@ make build      # sass dist build in styles + nuxt build in docs
 
 ## Step 8: Hand off
 
-Report to the user. Keep it concise and structured:
+Report to the user. Keep it concise and structured.
 
-- **Bumped:** final list of packages that landed at new versions
-- **Held back:** packages that were proposed but rolled back, with the one-line reason
-- **`.node-version`:** what it was, what it is now (or "unchanged")
-- **Warning diff vs. baseline:** what's new, what's gone, what's unchanged
-- **Manual smoke tests to run:** anything specific they should click through in the dev server given the majors that landed (e.g., "Reka 3 changed the Menubar slot API — please open the docs Menubar page and confirm it renders")
+**Use the lockfile snapshots as the source of truth for versions.** Diff `/tmp/deps-before.tsv` against `/tmp/deps-after.tsv` and report `<before> → <after>` for every direct dep whose resolved version changed. Do **not** report the floor from `package.json` — that's misleading because in-range bumps don't touch it.
+
+```bash
+diff <(sort /tmp/deps-before.tsv) <(sort /tmp/deps-after.tsv)
+```
+
+…or join them by `(package, name)` and emit only rows where the version column changed.
+
+Sections to include:
+
+- **Bumped:** every direct dep whose resolved version changed, grouped by package, formatted as `name  <before-lockfile-version> → <after-lockfile-version>`. Flag which ones required a `package.json` edit (major-crossing or out-of-range) vs which ones came along for the ride via the reinstall (in-range minor/patch).
+- **Held back:** packages that were proposed but rolled back, with the one-line reason.
+- **`.node-version`:** what it was, what it is now (or "unchanged").
+- **Warning diff vs. baseline:** what's new, what's gone, what's unchanged.
+- **Manual smoke tests to run:** anything specific they should click through in the dev server given the majors that landed (e.g., "Reka 3 changed the Menubar slot API — please open the docs Menubar page and confirm it renders").
 
 **Do not commit.** Leave the working tree dirty for the user to review the diff and commit themselves.
+
+Once the handoff is delivered, clean up the scratch files this skill created so they don't linger across runs:
+
+```bash
+rm -f /tmp/deps-before.tsv /tmp/deps-after.tsv
+```
+
+(Do this *after* you've written the handoff — if you wipe them earlier, you can't go back and double-check a version you reported.)
