@@ -6,17 +6,21 @@
             <a
                 href="https://getbootstrap.com/docs/4.6/getting-started/introduction/"
                 target="_blank">
-                Bootstrap 4
-            </a>
-            and
+                Bootstrap 4</a
+            >,
             <a
-                href="https://v3.primevue.org/introduction/"
+                href="https://reka-ui.com/"
                 target="_blank">
-                PrimeVue v3
-            </a>
+                Reka UI</a
+            >, and
+            <a
+                href="https://v3.primevue.org/"
+                target="_blank">
+                PrimeVue v3</a
+            >
             projects. If something is documented in Bootstrap but not here, it is still very likely you can use it in
-            our system. If a component does not exist here but exists in PrimeVue, you may use it, but it will not have
-            any styles.
+            our system. If a component does not exist here but exists in Reka UI or PrimeVue, you may use it, but it
+            will not have any styles.
         </p>
         <ul>
             <li>

@@ -63,7 +63,7 @@ in a future version.
 
 **es-ds-components**
 - [es-ds-components](./es-ds-components/) contains Vue 3 components for use in Nuxt 4 projects.
-It is primarily based on [PrimeVue](https://primevue.org/) and [Reka UI](https://reka-ui.com/), with some customizations specific to EnergySage.
+It is primarily based on [Reka UI](https://reka-ui.com/) and [PrimeVue v3](https://v3.primevue.org/), with some customizations specific to EnergySage.
 
 **es-ds-docs**
 - This is the design system documentation site powered by Nuxt 4.
