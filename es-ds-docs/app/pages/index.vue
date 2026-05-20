@@ -14,7 +14,7 @@
                 Reka UI</a
             >, and
             <a
-                href="https://v3.primevue.org/introduction/"
+                href="https://v3.primevue.org/"
                 target="_blank">
                 PrimeVue v3</a
             >
