@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.5.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.0...es-ds-docs-v5.5.1) (2026-05-21)
+
+
+### Bug Fixes
+
+* add li, increase cta spacing, remove more project cta icons ([#1751](https://github.com/EnergySage/es-ds/issues/1751)) ([7b8393d](https://github.com/EnergySage/es-ds/commit/7b8393d1b3e92d80706213524ab9ccdf3466a6da))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.5.0 to ^5.5.1
+    * @energysage/es-ds-styles bumped from ^3.5.4 to ^3.5.5
+
 ## [5.5.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.4.4...es-ds-docs-v5.5.0) (2026-05-18)
 
 
