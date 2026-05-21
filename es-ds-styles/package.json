@@ -1,7 +1,7 @@
 {
   "name": "@energysage/es-ds-styles",
   "description": "Base CSS for EnergySage design system based on Bootstrap",
-  "version": "3.5.4",
+  "version": "3.5.6",
   "keywords": [
     "css",
     "sass",
@@ -18,7 +18,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/EnergySage/es-ds.git"
+    "url": "git+ssh://git@github.com/EnergySage/es-ds.git",
+    "directory": "es-ds-styles"
   },
   "bugs": {
     "url": "https://github.com/EnergySage/es-ds/issues"

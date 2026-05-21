@@ -1,5 +1,34 @@
 # Changelog
 
+## [5.5.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.5.1...es-ds-components-v5.5.2) (2026-05-21)
+
+
+### Bug Fixes
+
+* provide repo information in es-ds-components ([#1754](https://github.com/EnergySage/es-ds/issues/1754)) ([dd6f807](https://github.com/EnergySage/es-ds/commit/dd6f807ec9a1537fec0f6ca53b69c0f938e74abb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^3.5.5 to ^3.5.6
+
+## [5.5.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.5.0...es-ds-components-v5.5.1) (2026-05-21)
+
+
+### Bug Fixes
+
+* missing border between mobile nav links ([#1747](https://github.com/EnergySage/es-ds/issues/1747)) ([d8e2b27](https://github.com/EnergySage/es-ds/commit/d8e2b2710c00ce2db6559156a6fc5c65fe028bb2))
+* switch to trusted publishing and introduce trivial changes ([#1752](https://github.com/EnergySage/es-ds/issues/1752)) ([366f926](https://github.com/EnergySage/es-ds/commit/366f9263b957a3c2d2ac069b4572c0967df0d2d2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^3.5.4 to ^3.5.5
+
 ## [5.5.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.4.4...es-ds-components-v5.5.0) (2026-05-18)
 
 

@@ -1,5 +1,36 @@
 # Changelog
 
+## [5.5.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.1...es-ds-docs-v5.5.2) (2026-05-21)
+
+
+### Bug Fixes
+
+* make local dev server fast again ([#1753](https://github.com/EnergySage/es-ds/issues/1753)) ([6892193](https://github.com/EnergySage/es-ds/commit/68921938e347fa71b4e18f2eb4c13cbac70ef6ec))
+* provide repo information in es-ds-components ([#1754](https://github.com/EnergySage/es-ds/issues/1754)) ([dd6f807](https://github.com/EnergySage/es-ds/commit/dd6f807ec9a1537fec0f6ca53b69c0f938e74abb))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.5.1 to ^5.5.2
+    * @energysage/es-ds-styles bumped from ^3.5.5 to ^3.5.6
+
+## [5.5.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.0...es-ds-docs-v5.5.1) (2026-05-21)
+
+
+### Bug Fixes
+
+* add li, increase cta spacing, remove more project cta icons ([#1751](https://github.com/EnergySage/es-ds/issues/1751)) ([7b8393d](https://github.com/EnergySage/es-ds/commit/7b8393d1b3e92d80706213524ab9ccdf3466a6da))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.5.0 to ^5.5.1
+    * @energysage/es-ds-styles bumped from ^3.5.4 to ^3.5.5
+
 ## [5.5.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.4.4...es-ds-docs-v5.5.0) (2026-05-18)
 
 

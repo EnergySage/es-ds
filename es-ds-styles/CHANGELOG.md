@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.5.6](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.5...es-ds-styles-v3.5.6) (2026-05-21)
+
+
+### Bug Fixes
+
+* provide repo information in es-ds-components ([#1754](https://github.com/EnergySage/es-ds/issues/1754)) ([dd6f807](https://github.com/EnergySage/es-ds/commit/dd6f807ec9a1537fec0f6ca53b69c0f938e74abb))
+
+## [3.5.5](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.4...es-ds-styles-v3.5.5) (2026-05-21)
+
+
+### Bug Fixes
+
+* switch to trusted publishing and introduce trivial changes ([#1752](https://github.com/EnergySage/es-ds/issues/1752)) ([366f926](https://github.com/EnergySage/es-ds/commit/366f9263b957a3c2d2ac069b4572c0967df0d2d2))
+
 ## [3.5.4](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.3...es-ds-styles-v3.5.4) (2026-04-28)
 
 
