@@ -1,0 +1,19 @@
+diff --git a/node_modules/impound/dist/index.mjs b/node_modules/impound/dist/index.mjs
+index 1d3223f..3f4f5ee 100644
+--- a/node_modules/impound/dist/index.mjs
++++ b/node_modules/impound/dist/index.mjs
+@@ -282,6 +282,14 @@ const ImpoundPlugin = createUnplugin((globalOptions) => {
+ 	});
+ 	if (traceEnabled) {
+ 		async function traceTransform(code, id, getCombinedSourcemap) {
++			// Dev-only short-circuit. See es-ds-docs/patches/impound-1.1.5-patch-investigation.md
++			// for the full investigation. Nuxt 4.4+ enables impound's trace pass
++			// (PR nuxt/nuxt#34454) with no opt-out config knob. On large auto-import
++			// surfaces, the BFS module-graph walk costs ~30s per .vue transform in dev.
++			// We gate on === 'development' (not !== 'production') so that any
++			// non-dev environment — production, staging, integration, test,
++			// or NODE_ENV unset — retains full import-protection reporting.
++			if (process.env.NODE_ENV === 'development') return;
+ 			await init;
+ 			let importMap = /* @__PURE__ */ new Map();
+ 			let originalCode;
