@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.5](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.4...es-ds-styles-v3.5.5) (2026-05-21)
+
+
+### Bug Fixes
+
+* switch to trusted publishing and introduce trivial changes ([#1752](https://github.com/EnergySage/es-ds/issues/1752)) ([366f926](https://github.com/EnergySage/es-ds/commit/366f9263b957a3c2d2ac069b4572c0967df0d2d2))
+
 ## [3.5.4](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.3...es-ds-styles-v3.5.4) (2026-04-28)
 
 
