@@ -117,6 +117,15 @@ If the bump is in-range, leave `package.json` alone — the bump still happens a
 - `nuxt-primevue`
 - `@energysage/es-ds-styles` and `@energysage/es-ds-components` — these are published from *this* repo; their specifiers are managed by the release-please workflow, not by this skill.
 
+### Version cap: `@types/node` must match the Node runtime major
+
+`@types/node`'s major version tracks the Node.js release line it provides types for. Bumping `@types/node` *past* the major declared in `.node-version` means TypeScript will surface APIs (new globals, new stdlib signatures) that don't exist at runtime — code typechecks, then crashes in dev/CI. So cap it:
+
+- Read the major from `.node-version` (e.g., `24.15.0` → major `24`).
+- Treat the highest `@types/node` version whose major matches that as "latest" for the purposes of this skill — don't propose anything higher, even if `npm view @types/node version` returns a newer major.
+- To find the right ceiling: `npm view @types/node@'<major>' version` (e.g., `npm view @types/node@'24' version`) and use the last entry.
+- If `.node-version` is bumped in Step 3 to a newer Node major, the `@types/node` ceiling moves with it — re-derive after that step.
+
 ### Shared-version guardrail (critical)
 
 `es-ds-docs` extends `es-ds-components` as a Nuxt layer. Any dep that appears in **both** `es-ds-components/package.json` and `es-ds-docs/package.json` must end up at the **same major.minor** in both. If they drift, `es-ds-components` may rely on functionality working differently than the installed version in `es-ds-docs` will provide.
