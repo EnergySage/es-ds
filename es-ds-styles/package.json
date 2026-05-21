@@ -18,7 +18,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/EnergySage/es-ds.git"
+    "url": "git+ssh://git@github.com/EnergySage/es-ds.git",
+    "directory": "es-ds-styles"
   },
   "bugs": {
     "url": "https://github.com/EnergySage/es-ds/issues"
