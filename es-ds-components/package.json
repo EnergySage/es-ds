@@ -4,6 +4,19 @@
     "private": false,
     "type": "module",
     "description": "An EnergySage Vue component library",
+    "homepage": "https://energysage.com/",
+    "author": "EnergySage",
+    "contributors": [
+        "EnergySage, Inc."
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/EnergySage/es-ds.git",
+        "directory": "es-ds-components"
+    },
+    "bugs": {
+        "url": "https://github.com/EnergySage/es-ds/issues"
+    },
     "main": "./nuxt.config.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +27,6 @@
         "format:eslint": "npm run lint:eslint -- --fix",
         "format": "npm run format:prettier && npm run format:eslint"
     },
-    "author": "EnergySage",
     "license": "MIT",
     "devDependencies": {
         "@energysage/es-ds-styles": "^3.5.5",
