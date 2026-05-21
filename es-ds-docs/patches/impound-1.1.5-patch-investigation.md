@@ -20,7 +20,7 @@
 **What this means in practice:**
 
 - **For `es-ds-docs`:** zero impact. It's a frontend-only docs site — no server code, no API routes, no secrets to leak. There is literally nothing for these guardrails to protect.
-- **For downstream EnergySage repos that DO have server code:** you trade an *immediate* dev-mode error for a *"your build broke right when you tried to deploy"* error. Both prevent the bad code from reaching users. The prod-build catch just feels later in your workflow — you might write a problematic import on Tuesday and only find out on Friday when you try to ship.
+- **For downstream EnergySage repos that DO have server code:** you trade an _immediate_ dev-mode error for a _"your build broke right when you tried to deploy"_ error. Both prevent the bad code from reaching users. The prod-build catch just feels later in your workflow — you might write a problematic import on Tuesday and only find out on Friday when you try to ship.
 
 The patch never lets dangerous code ship to production. It just lets it sit quietly in your dev environment without complaining, until the build tries to catch it.
 
@@ -36,7 +36,7 @@ Run `make dev` in `es-ds-docs`, then in the browser:
 
 ## Evidence trail
 
-Investigation proceeded by ruling out hypotheses with direct observation rather than plausibility arguments. Documenting the full trail because the dead ends are valuable: each one is a hypothesis that *seems* reasonable for a Nuxt/Vite dev-mode slowness report and would otherwise tempt re-investigation later.
+Investigation proceeded by ruling out hypotheses with direct observation rather than plausibility arguments. Documenting the full trail because the dead ends are valuable: each one is a hypothesis that _seems_ reasonable for a Nuxt/Vite dev-mode slowness report and would otherwise tempt re-investigation later.
 
 1. **No `[vite]`/`optimizeDeps`/reload messages in the dev server console during the slow nav.** The Vite on-demand `optimizeDeps` re-bundle pattern has a characteristic signature; it is absent here.
 2. **Page-agnostic second-nav timing.** Typography (no Reka, no PrimeVue, trivial markup), Segmented Control (PrimeVue, no Reka), and Site Navigation (heavy Reka) all take ~30–40s as the second nav.
@@ -48,24 +48,24 @@ Investigation proceeded by ruling out hypotheses with direct observation rather 
 8. **Removing all non-core modules (`@nuxt/image`, `@nuxt/eslint`, `motion-v/nuxt`) and disabling `devtools` did not help.** The cost is in Nuxt's core pipeline.
 9. **CPU profile is decisive.** `node --cpu-prof` capturing the slow nav shows `traceTransform` in `node_modules/impound/dist/index.mjs` consuming ~36 seconds of self time. Everything else is microseconds in comparison.
 
-Evidence #9 was the smoking gun. Once we had it, the remaining work was understanding *why* `traceTransform` ran, and how to disable it without losing legitimate functionality.
+Evidence #9 was the smoking gun. Once we had it, the remaining work was understanding _why_ `traceTransform` ran, and how to disable it without losing legitimate functionality.
 
 ## What we wrongly hypothesized along the way
 
 Before the CPU profile, the investigation pursued several plausible-but-wrong root cause theories. Documenting them so they're not re-litigated:
 
-| Wrong hypothesis | Evidence that ruled it out |
-|---|---|
-| Vite `optimizeDeps` re-bundle on second nav | No `optimizeDeps` console signature. |
-| Reka UI fan-out as universal primary cause | Typography (no Reka) was just as slow. |
-| PrimeVue tree-shaking quirks as primary | Typography (no PrimeVue) was just as slow. |
-| `typescript.typeCheck: true` gating second-nav | vue-tsc message appears only on first nav. Disabling typeCheck had no effect on second-nav. |
-| Prism client plugin re-init | Runtime cost too small; doesn't fit silent server. |
-| Browser-side dev module waterfall | 611 requests is moderate; one 28s server request dominates. |
-| Vite `server.warmup` to pre-transform pages at startup | Nuxt 4 ignores the legacy `vite.server.warmup` config — its Environment-API equivalent path is hard to mutate from `vite:extendConfig`. Even if we'd landed it, warming source `.vue` files wouldn't have addressed `impound`'s import-graph trace. |
-| Symlinked layer boundary slowing module resolution | `make unlink` did not improve second-nav. |
-| `@nuxt/eslint` / `@nuxt/image` / `motion-v/nuxt` / devtools running inline | Disabling them all simultaneously did not improve second-nav. |
-| "One-time TS Program init + per-page transform cost" composite theory | Looked correct from observable symptoms (page-agnostic 2nd nav + complexity-varying 3rd+ navs), but turned out to be impound's trace doing graph walks of different costs based on the importing module's transitive deps. |
+| Wrong hypothesis                                                           | Evidence that ruled it out                                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Vite `optimizeDeps` re-bundle on second nav                                | No `optimizeDeps` console signature.                                                                                                                                                                                                                |
+| Reka UI fan-out as universal primary cause                                 | Typography (no Reka) was just as slow.                                                                                                                                                                                                              |
+| PrimeVue tree-shaking quirks as primary                                    | Typography (no PrimeVue) was just as slow.                                                                                                                                                                                                          |
+| `typescript.typeCheck: true` gating second-nav                             | vue-tsc message appears only on first nav. Disabling typeCheck had no effect on second-nav.                                                                                                                                                         |
+| Prism client plugin re-init                                                | Runtime cost too small; doesn't fit silent server.                                                                                                                                                                                                  |
+| Browser-side dev module waterfall                                          | 611 requests is moderate; one 28s server request dominates.                                                                                                                                                                                         |
+| Vite `server.warmup` to pre-transform pages at startup                     | Nuxt 4 ignores the legacy `vite.server.warmup` config — its Environment-API equivalent path is hard to mutate from `vite:extendConfig`. Even if we'd landed it, warming source `.vue` files wouldn't have addressed `impound`'s import-graph trace. |
+| Symlinked layer boundary slowing module resolution                         | `make unlink` did not improve second-nav.                                                                                                                                                                                                           |
+| `@nuxt/eslint` / `@nuxt/image` / `motion-v/nuxt` / devtools running inline | Disabling them all simultaneously did not improve second-nav.                                                                                                                                                                                       |
+| "One-time TS Program init + per-page transform cost" composite theory      | Looked correct from observable symptoms (page-agnostic 2nd nav + complexity-varying 3rd+ navs), but turned out to be impound's trace doing graph walks of different costs based on the importing module's transitive deps.                          |
 
 The mitigation plan in earlier drafts of this doc (Vite `server.warmup`, drop `typescript.typeCheck`, drop server sourcemaps, expand `optimizeDeps.include` for Reka subpaths) was speculation based on those wrong hypotheses. None of those steps would have helped the actual root cause.
 
@@ -121,7 +121,9 @@ At the time `vite:extendConfig` fires in Nuxt 4.4, impound's plugins are not yet
 ## Follow-ups
 
 ### 1. File an upstream Nuxt issue
+
 There is currently no open issue about this performance regression. Worth filing at `nuxt/nuxt` requesting either:
+
 - A config option to disable the trace pass: `experimental.importProtectionTrace: false`, or
 - Making `trace: false` the default in dev with opt-in for the diagnostic detail.
 
@@ -130,13 +132,16 @@ There is currently no open issue about this performance regression. Worth filing
 Reference the CPU profile, link this doc, and link Nuxt PR #34454.
 
 ### 2. Re-evaluate when Nuxt or impound ships a fix
+
 Watch for:
+
 - A new Nuxt version that exposes a config knob for import-protection tracing.
 - A new `impound` version that adds an option to skip trace for specified paths/layers.
 
 When that lands, remove the patch.
 
 ### 3. Consider also patching `es-ds-components/node_modules/impound`
+
 The patch currently only covers `es-ds-docs/node_modules/impound` because that's where `make dev` runs. If `es-ds-components` ever gains its own dev server (e.g., a Storybook or component playground that runs Nuxt), it will need a similar patch.
 
 ## Critical files
