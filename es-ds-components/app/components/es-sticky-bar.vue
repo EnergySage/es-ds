@@ -193,6 +193,10 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     background-color: variables.$white;
     box-shadow: $shadow;
     left: 0;
+    /* prevents scrollbar on/off from shifting the contents */
+    padding-right: var(--scrollbar-width);
+    /* allows interaction when EsMenuBar is open */
+    pointer-events: auto;
     right: 0;
     top: 0;
     z-index: 1000;

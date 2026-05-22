@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useScrollLock } from '@vueuse/core';
-import { NavigationMenuList, NavigationMenuRoot, NavigationMenuViewport } from 'reka-ui';
+import { NavigationMenuList, NavigationMenuRoot, NavigationMenuViewport, useBodyScrollLock } from 'reka-ui';
 import {
     ES_MENU_BAR_ALIGNMENT_REGISTRY_KEY,
     ES_MENU_BAR_CLOSE_EVENT_NAME,
@@ -28,7 +27,7 @@ const props = withDefaults(defineProps<IProps>(), {
 let isOpening = false;
 
 const emitter = useEsdsEvents();
-const isScrollLocked = useScrollLock(import.meta.client ? document.body : null);
+const isScrollLocked = useBodyScrollLock(false);
 
 const activeMenuId = ref('');
 
@@ -355,8 +354,10 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         &.full-width {
             left: 0;
             right: 0;
+            width: 100%;
 
             .es-menu-bar-flyout {
+                padding-right: var(--scrollbar-width);
                 width: 100%;
                 /* row's content box = pane − 2·wrapper-padding + grid-gutter (row's negative margins). matches <es-col md="6" lg="4" xl="3"> in es-menu-bar-flyout-column so column text stays aligned during the cross-slide */
                 --es-menu-bar-flyout-row-width: calc(

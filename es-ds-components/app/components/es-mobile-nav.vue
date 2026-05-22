@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { useScrollLock } from '@vueuse/core';
-import { type NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuRoot } from 'reka-ui';
+import {
+    type NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuList,
+    NavigationMenuRoot,
+    useBodyScrollLock,
+} from 'reka-ui';
 import type { ShallowRef } from 'vue';
 
 interface IProps {
@@ -24,7 +29,7 @@ const scrollableContentAreaTemplateRef: Ref<Readonly<
 const subNavCloseHandlers: Ref<Function[]> = ref([]);
 
 const displayedName = computed(() => nameStack.value.at(-1) ?? '');
-const isScrollLocked = useScrollLock(import.meta.client ? document.body : null);
+const isScrollLocked = useBodyScrollLock(false);
 const widthPx = computed(() => `${props.width}px`);
 
 // closes the top-level menu
