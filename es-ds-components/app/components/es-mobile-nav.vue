@@ -120,8 +120,12 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
 
     // if the menu is closing
     if (!newVal && oldVal) {
-        // wait until the mobile nav closing animation is complete
-        await waitForAnimationDuration();
+        // wait until the mobile nav closing animation is complete; with reduced motion
+        // there is no animation, so skip the await entirely and run synchronously
+        const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReducedMotion) {
+            await waitForAnimationDuration();
+        }
 
         // release scroll lock now that the close animation is done, so --scrollbar-width
         // stayed populated through the animation and the panel didn't jump inward as the
