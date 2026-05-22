@@ -174,10 +174,7 @@ onUnmounted(() => {
         v-bind="$attrs"
         @mouseover="isHovered = true"
         @mouseout="isHovered = false">
-        <!-- prevent absolutely-positioned elements within sticky bar from shifting on scrollbar on/off -->
-        <div class="position-relative">
-            <slot />
-        </div>
+        <slot />
     </div>
     <!-- holds the bar's space in normal flow when the bar is absolutely or fixed positioned -->
     <div
