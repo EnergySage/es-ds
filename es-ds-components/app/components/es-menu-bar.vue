@@ -26,6 +26,10 @@ const props = withDefaults(defineProps<IProps>(), {
 // used to ensure we don't close our menu when emitting our own menu open event
 let isOpening = false;
 
+// held until the close animation finishes so --scrollbar-width stays on <html> for the
+// duration — otherwise the scrollbar reappears mid-close and EsColorBand shifts inward
+let releaseScrollLockTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
 const emitter = useEsdsEvents();
 const isScrollLocked = useBodyScrollLock(false);
 
@@ -49,8 +53,29 @@ provide(ES_MENU_BAR_ALIGNMENT_REGISTRY_KEY, {
 const activeAlign = computed<EsMenuBarFlyoutAlign>(() => flyoutAlignments.get(activeMenuId.value) ?? 'center');
 
 watch(activeMenuId, async (newVal: string, oldVal: string) => {
-    // lock page scrolling when menu is open, unless we're not showing the overlay
-    isScrollLocked.value = props.showOverlayWhenOpen && !!newVal;
+    if (releaseScrollLockTimeoutId) {
+        clearTimeout(releaseScrollLockTimeoutId);
+        releaseScrollLockTimeoutId = null;
+    }
+
+    if (newVal) {
+        // lock page scrolling when menu is open, unless we're not showing the overlay
+        isScrollLocked.value = props.showOverlayWhenOpen;
+    } else if (oldVal) {
+        // defer scroll lock release until the close animation finishes so --scrollbar-width
+        // stays populated; skip the delay when reduced motion is on (no animation to cover)
+        const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            isScrollLocked.value = false;
+        } else {
+            releaseScrollLockTimeoutId = setTimeout(() => {
+                releaseScrollLockTimeoutId = null;
+                if (!activeMenuId.value) {
+                    isScrollLocked.value = false;
+                }
+            }, ES_MENU_BAR_OPEN_CLOSE_DURATION_MS);
+        }
+    }
 
     if (!oldVal && newVal) {
         // if the menu is opening, emit event so:
@@ -84,6 +109,10 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+    if (releaseScrollLockTimeoutId) {
+        clearTimeout(releaseScrollLockTimeoutId);
+        releaseScrollLockTimeoutId = null;
+    }
     emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME, handleMenuOpen);
 });
 </script>
@@ -331,6 +360,11 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
             &[data-state='closed'] {
                 animation: menuClose var(--es-menu-bar-open-close-duration) $open-close-timing-function;
+
+                /* prevent color band from shifting on scrollbar on/off */
+                .es-menu-bar-color-band {
+                    right: min(0px, calc(-1 * var(--scrollbar-width)));
+                }
             }
         }
 
