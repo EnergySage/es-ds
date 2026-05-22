@@ -281,6 +281,9 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .es-menu-bar {
+    /* allows interaction when EsMenuBar is open */
+    pointer-events: auto;
+
     :deep(.es-menu-bar-list) {
         align-items: center;
         display: flex;
