@@ -16,6 +16,9 @@ The repository consists of 3 main packages:
 
 ## Development Commands
 
+**Node version:**
+The repo uses [`nodenv`](https://github.com/nodenv/nodenv) to manage Node versions, reading the pinned version from `.node-version` at the repo root. Any time `.node-version` changes, run `nodenv install` to install the declared version before `make install`, otherwise `node`/`npm` may fail or resolve to the wrong version.
+
 **Setup and Installation:**
 ```bash
 make install && make symlink  # Install deps and link local packages
