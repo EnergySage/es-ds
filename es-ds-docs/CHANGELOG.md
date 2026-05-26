@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.5.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.2...es-ds-docs-v5.5.3) (2026-05-26)
+
+
+### Bug Fixes
+
+* agentic dependency bump ([#1757](https://github.com/EnergySage/es-ds/issues/1757)) ([f416a1c](https://github.com/EnergySage/es-ds/commit/f416a1cdf74c5bf841577f3fd0f5b12ff382d53c))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.5.2 to ^5.5.3
+    * @energysage/es-ds-styles bumped from ^3.5.6 to ^3.5.7
+
 ## [5.5.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.1...es-ds-docs-v5.5.2) (2026-05-21)
 
 
