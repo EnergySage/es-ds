@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.5.4](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.3...es-ds-docs-v5.5.4) (2026-05-26)
+
+
+### Bug Fixes
+
+* menu bar no longer causes page shift when mouse/scrollbar is present ([#1756](https://github.com/EnergySage/es-ds/issues/1756)) ([310adce](https://github.com/EnergySage/es-ds/commit/310adced23e3f1bb580e4177e2727ef1304fb7ce))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.5.3 to ^5.5.4
+
 ## [5.5.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.2...es-ds-docs-v5.5.3) (2026-05-26)
 
 
