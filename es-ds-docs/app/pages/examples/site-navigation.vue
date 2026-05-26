@@ -291,6 +291,19 @@ const isSignedIn = ref(false);
 .site-navigation {
     height: 88px;
     max-width: map.get(variables.$container-max-widths, xxl);
+    /**
+     * prevent centered ES logo from shifting on scrollbar on/off
+     * and from starting mid-page outside the sticky bar pre-mount
+     */
+    position: relative;
+
+    /**
+     * allow EsMenuBar full-width flyout to go full width rather than
+     * being pushed to the left by the scrollbar-width padding right
+     */
+    @include breakpoints.media-breakpoint-up(xl) {
+        position: static;
+    }
 
     /* at xxl breakpoint only, match es-container padding */
     @include breakpoints.media-breakpoint-up(xxl) {

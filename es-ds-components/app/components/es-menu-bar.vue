@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useScrollLock } from '@vueuse/core';
-import { NavigationMenuList, NavigationMenuRoot, NavigationMenuViewport } from 'reka-ui';
+import { NavigationMenuList, NavigationMenuRoot, NavigationMenuViewport, useBodyScrollLock } from 'reka-ui';
 import {
     ES_MENU_BAR_ALIGNMENT_REGISTRY_KEY,
     ES_MENU_BAR_CLOSE_EVENT_NAME,
@@ -27,8 +26,12 @@ const props = withDefaults(defineProps<IProps>(), {
 // used to ensure we don't close our menu when emitting our own menu open event
 let isOpening = false;
 
+// held until the close animation finishes so --scrollbar-width stays on <html> for the
+// duration — otherwise the scrollbar reappears mid-close and EsColorBand shifts inward
+let releaseScrollLockTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
 const emitter = useEsdsEvents();
-const isScrollLocked = useScrollLock(import.meta.client ? document.body : null);
+const isScrollLocked = useBodyScrollLock(false);
 
 const activeMenuId = ref('');
 
@@ -50,8 +53,29 @@ provide(ES_MENU_BAR_ALIGNMENT_REGISTRY_KEY, {
 const activeAlign = computed<EsMenuBarFlyoutAlign>(() => flyoutAlignments.get(activeMenuId.value) ?? 'center');
 
 watch(activeMenuId, async (newVal: string, oldVal: string) => {
-    // lock page scrolling when menu is open, unless we're not showing the overlay
-    isScrollLocked.value = props.showOverlayWhenOpen && !!newVal;
+    if (releaseScrollLockTimeoutId) {
+        clearTimeout(releaseScrollLockTimeoutId);
+        releaseScrollLockTimeoutId = null;
+    }
+
+    if (newVal) {
+        // lock page scrolling when menu is open, unless we're not showing the overlay
+        isScrollLocked.value = props.showOverlayWhenOpen;
+    } else if (oldVal) {
+        // defer scroll lock release until the close animation finishes so --scrollbar-width
+        // stays populated; skip the delay when reduced motion is on (no animation to cover)
+        const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            isScrollLocked.value = false;
+        } else {
+            releaseScrollLockTimeoutId = setTimeout(() => {
+                releaseScrollLockTimeoutId = null;
+                if (!activeMenuId.value) {
+                    isScrollLocked.value = false;
+                }
+            }, ES_MENU_BAR_OPEN_CLOSE_DURATION_MS);
+        }
+    }
 
     if (!oldVal && newVal) {
         // if the menu is opening, emit event so:
@@ -85,6 +109,10 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+    if (releaseScrollLockTimeoutId) {
+        clearTimeout(releaseScrollLockTimeoutId);
+        releaseScrollLockTimeoutId = null;
+    }
     emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME, handleMenuOpen);
 });
 </script>
@@ -253,6 +281,9 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .es-menu-bar {
+    /* allows interaction when EsMenuBar is open */
+    pointer-events: auto;
+
     :deep(.es-menu-bar-list) {
         align-items: center;
         display: flex;
@@ -332,6 +363,11 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
             &[data-state='closed'] {
                 animation: menuClose var(--es-menu-bar-open-close-duration) $open-close-timing-function;
+
+                /* prevent color band from shifting on scrollbar on/off */
+                .es-menu-bar-color-band {
+                    right: min(0px, calc(-1 * var(--scrollbar-width)));
+                }
             }
         }
 
@@ -355,8 +391,10 @@ $switch-menus-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         &.full-width {
             left: 0;
             right: 0;
+            width: 100%;
 
             .es-menu-bar-flyout {
+                padding-right: var(--scrollbar-width);
                 width: 100%;
                 /* row's content box = pane − 2·wrapper-padding + grid-gutter (row's negative margins). matches <es-col md="6" lg="4" xl="3"> in es-menu-bar-flyout-column so column text stays aligned during the cross-slide */
                 --es-menu-bar-flyout-row-width: calc(

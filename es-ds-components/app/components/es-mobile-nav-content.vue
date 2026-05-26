@@ -179,6 +179,8 @@ provide('isElementWithinMenu', isElementWithinMenu);
 
 .es-mobile-nav-content {
     --es-mobile-nav-header-height: 88px;
+    /* allows interaction when nav is is open */
+    pointer-events: auto;
 
     bottom: 0;
     box-shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
