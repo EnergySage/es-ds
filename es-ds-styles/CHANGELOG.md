@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.7](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.6...es-ds-styles-v3.5.7) (2026-05-26)
+
+
+### Bug Fixes
+
+* agentic dependency bump ([#1757](https://github.com/EnergySage/es-ds/issues/1757)) ([f416a1c](https://github.com/EnergySage/es-ds/commit/f416a1cdf74c5bf841577f3fd0f5b12ff382d53c))
+
 ## [3.5.6](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.5...es-ds-styles-v3.5.6) (2026-05-21)
 
 
