@@ -139,19 +139,28 @@ onUnmounted(() => {
                     'full-width': fullWidth,
                 }" />
         </navigation-menu-root>
-        <teleport
-            v-if="showOverlayWhenOpen"
-            to="body">
-            <transition name="es-menu-bar-overlay">
-                <div
-                    v-if="activeMenuId"
-                    class="es-menu-bar-overlay"
-                    :style="{
-                        '--es-menu-bar-height': heightPx,
-                        '--es-menu-bar-open-close-duration': `${ES_MENU_BAR_OPEN_CLOSE_DURATION_MS}ms`,
-                    }"></div>
-            </transition>
-        </teleport>
+
+        <!--
+            teleported to body to escape any ancestor stacking context (e.g. es-sticky-bar).
+            wrapped in <client-only> because <teleport to="body"> is position-sensitive during
+            hydration: any third-party script that injects a node into <body> before Vue
+            hydrates will desynchronize the teleport anchor and produce a hydration mismatch.
+        -->
+        <client-only>
+            <teleport
+                v-if="showOverlayWhenOpen"
+                to="body">
+                <transition name="es-menu-bar-overlay">
+                    <div
+                        v-if="activeMenuId"
+                        class="es-menu-bar-overlay"
+                        :style="{
+                            '--es-menu-bar-height': heightPx,
+                            '--es-menu-bar-open-close-duration': `${ES_MENU_BAR_OPEN_CLOSE_DURATION_MS}ms`,
+                        }"></div>
+                </transition>
+            </teleport>
+        </client-only>
     </div>
 </template>
 
