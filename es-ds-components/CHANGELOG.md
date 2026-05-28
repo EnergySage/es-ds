@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.5.5](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.5.4...es-ds-components-v5.5.5) (2026-05-28)
+
+
+### Bug Fixes
+
+* mobile nav hydration issue ([#1760](https://github.com/EnergySage/es-ds/issues/1760)) ([677f043](https://github.com/EnergySage/es-ds/commit/677f0430d82c0732a95811e9cdf7cf2806d8ba03))
+
 ## [5.5.4](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.5.3...es-ds-components-v5.5.4) (2026-05-26)
 
 

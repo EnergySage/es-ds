@@ -1,5 +1,14 @@
 # Changelog
 
+## [5.5.5](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.4...es-ds-docs-v5.5.5) (2026-05-28)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.5.4 to ^5.5.5
+
 ## [5.5.4](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.3...es-ds-docs-v5.5.4) (2026-05-26)
 
 
