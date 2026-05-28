@@ -155,16 +155,6 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
         class="es-mobile-nav d-flex"
         disable-hover-trigger
         disable-pointer-leave-close>
-        <!-- overlay -->
-        <teleport to="body">
-            <div
-                class="es-mobile-nav-overlay position-fixed"
-                :class="{
-                    active: !!activeMenuId,
-                }"
-                @click="activeMenuId = ''" />
-        </teleport>
-
         <!--
             since the first level is a single item - the trigger to open the mobile nav -
             prevent it from being a <ul> and <li>
@@ -179,39 +169,54 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
             </navigation-menu-item>
         </navigation-menu-list>
     </navigation-menu-root>
+
+    <!--
+        overlay teleport needs to live outside NavigationMenuRoot to prevent
+        a hydration issue caused by NavigationMenuRoot traversing its slot children
+    -->
+    <teleport to="body">
+        <transition name="es-mobile-nav-overlay">
+            <div
+                v-if="activeMenuId"
+                class="es-mobile-nav-overlay position-fixed"
+                :style="{ '--es-mobile-nav-animation-duration': ANIMATION_DURATION_MS }"
+                @click="activeMenuId = ''" />
+        </transition>
+    </teleport>
 </template>
 
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables';
 
-$animation-duration: v-bind(ANIMATION_DURATION_MS);
+.es-mobile-nav-overlay {
+    opacity: 0.3;
+    pointer-events: all;
+
+    @include breakpoints.media-breakpoint-up(sm) {
+        background-color: variables.$gray-900;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1010;
+    }
+
+    @media not (prefers-reduced-motion) {
+        &-enter-active,
+        &-leave-active {
+            transition: opacity var(--es-mobile-nav-animation-duration) ease-in-out;
+        }
+
+        &-enter-from,
+        &-leave-to {
+            opacity: 0;
+        }
+    }
+}
 
 .es-mobile-nav {
     --mobile-nav-width: v-bind(widthPx);
-
-    &-overlay {
-        opacity: 0;
-        pointer-events: none;
-
-        &.active {
-            opacity: 0.3;
-            pointer-events: all;
-        }
-
-        @include breakpoints.media-breakpoint-up(sm) {
-            background-color: variables.$gray-900;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            top: 0;
-            z-index: 1010;
-
-            @media not (prefers-reduced-motion) {
-                transition: opacity $animation-duration ease-in-out;
-            }
-        }
-    }
 
     :deep(> div) {
         /* ensure the button is full-height with the rest of the nav bar items */
