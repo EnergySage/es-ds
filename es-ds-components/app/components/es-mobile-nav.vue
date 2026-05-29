@@ -32,6 +32,12 @@ const displayedName = computed(() => nameStack.value.at(-1) ?? '');
 const isScrollLocked = useBodyScrollLock(false);
 const widthPx = computed(() => `${props.width}px`);
 
+// gates the body teleport — see the v-if on the <teleport> in the template
+const isMounted = ref(false);
+onMounted(() => {
+    isMounted.value = true;
+});
+
 // closes the top-level menu
 const closeMenu = () => {
     // focus the trigger before closing so assistive technologies (e.g. VoiceOver)
@@ -171,10 +177,21 @@ watch(activeMenuId, async (newVal: string, oldVal: string) => {
     </navigation-menu-root>
 
     <!--
-        overlay teleport needs to live outside NavigationMenuRoot to prevent
-        a hydration issue caused by NavigationMenuRoot traversing its slot children
+        teleported to body to prevent a hydration issue caused by NavigationMenuRoot
+        traversing its slot children, and to escape any ancestor stacking context.
+
+        gated by v-if="isMounted" rather than <client-only> for two reasons:
+          1. <teleport to="body"> is position-sensitive during hydration — any third-party
+             script that injects a node into <body> before Vue hydrates would
+             desynchronize the teleport anchor and cause a mismatch.
+          2. <client-only> always emits an empty <span> fallback during SSR. As a second
+             root of this multi-root template, that span becomes a sibling flex item in
+             the consuming navbar and disrupts justify-content layout until hydration
+             completes. v-if emits only a comment marker, which is not a flex item.
     -->
-    <teleport to="body">
+    <teleport
+        v-if="isMounted"
+        to="body">
         <transition name="es-mobile-nav-overlay">
             <div
                 v-if="activeMenuId"

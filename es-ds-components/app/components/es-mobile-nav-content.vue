@@ -64,9 +64,13 @@ const isElementWithinMenu = (element: any) => {
     return parent.contains(element);
 };
 
+// gates the body teleport — see the v-if on the <teleport> in the template
+const isMounted = ref(false);
+
 onMounted(() => {
     // give EsMobileNav a reference to the scrollable content area so it can set the scroll position
     registerScrollableContentArea(mobileNavParentElement);
+    isMounted.value = true;
 });
 
 provide('backButtonSimulatedFocus', backButtonSimulatedFocus);
@@ -75,8 +79,21 @@ provide('isElementWithinMenu', isElementWithinMenu);
 </script>
 
 <template>
-    <!-- teleported to body to escape any ancestor stacking context (e.g. es-sticky-bar) -->
-    <teleport to="body">
+    <!--
+        teleported to body to escape any ancestor stacking context (e.g. es-sticky-bar).
+        gated by v-if="isMounted" rather than <client-only> for two reasons:
+          1. <teleport to="body"> is position-sensitive during hydration — any third-party
+             script that injects a node into <body> before Vue hydrates would
+             desynchronize the teleport anchor and cause a mismatch.
+          2. <client-only> always emits an empty <span> fallback during SSR. Used as a
+             template root, that span gets the component's scope and any v-bind() CSS
+             variables, becomes a sibling flex item in the consuming layout, and disrupts
+             positioning until hydration completes. v-if emits only a comment marker,
+             which is not a flex item.
+    -->
+    <teleport
+        v-if="isMounted"
+        to="body">
         <navigation-menu-content
             v-bind="$attrs"
             ref="mobileNavParentElement"
