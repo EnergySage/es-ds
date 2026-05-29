@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.5.6](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.5.5...es-ds-components-v5.5.6) (2026-05-29)
+
+
+### Bug Fixes
+
+* EsMenuBar and EsMobileNav now only teleport to body on client ([#1762](https://github.com/EnergySage/es-ds/issues/1762)) ([f8ce8ff](https://github.com/EnergySage/es-ds/commit/f8ce8ff04bf82be664d4d9849a627a11565055ab))
+
 ## [5.5.5](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.5.4...es-ds-components-v5.5.5) (2026-05-28)
 
 
