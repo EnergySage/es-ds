@@ -141,8 +141,8 @@ const onMenuBarClose = () => {
     }
 };
 
-// expose barHeight to other fixed-position elements via a CSS variable on <html> so they can
-// position themselves relative to the bar without subscribing to size changes
+// expose barHeight to other fixed position elements via a CSS variable on <html> so they can
+// position themselves relative to the bar
 watch(barHeight, (height) => {
     document.documentElement.style.setProperty('--es-sticky-bar-height', `${height}px`);
 });
