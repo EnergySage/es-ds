@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.6.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.6...es-ds-docs-v5.6.0) (2026-06-01)
+
+
+### Features
+
+* sticky bar now coordinates with other fixed position elements ([#1764](https://github.com/EnergySage/es-ds/issues/1764)) ([3d250de](https://github.com/EnergySage/es-ds/commit/3d250de895097cce81ca1c624ef0306229ebcf97))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.5.6 to ^5.6.0
+
 ## [5.5.6](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.5...es-ds-docs-v5.5.6) (2026-05-29)
 
 
