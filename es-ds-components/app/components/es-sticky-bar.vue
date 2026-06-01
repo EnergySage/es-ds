@@ -77,9 +77,15 @@ function updateVisibility() {
     if (currentScrollY <= 0) {
         // back at the very top: switch to absolute so bar scrolls away naturally on next scroll down
         barState.value = 'absolute';
+
+        // emit event notifying other fixed position elements of the change
+        emitter.emit(ES_STICKY_BAR_FIXED_HIDE_EVENT_NAME);
     } else if (barState.value === 'absolute' && currentScrollY >= barHeight.value) {
         // bar has scrolled fully off screen: reposition to fixed-hidden while invisible
         hideWithoutAnimation();
+
+        // emit event notifying other fixed position elements of the change
+        emitter.emit(ES_STICKY_BAR_FIXED_HIDE_EVENT_NAME);
     } else if (
         barState.value === 'fixed-hidden' &&
         scrollDirection < 0 &&
@@ -87,6 +93,9 @@ function updateVisibility() {
     ) {
         // scrolling up far enough: slide bar into view
         barState.value = 'fixed-visible';
+
+        // emit event notifying other fixed position elements of the change
+        emitter.emit(ES_STICKY_BAR_FIXED_SHOW_EVENT_NAME);
     } else if (
         barState.value === 'fixed-visible' &&
         scrollDirection > 0 &&
@@ -94,6 +103,9 @@ function updateVisibility() {
     ) {
         // scrolling down far enough: slide bar off screen
         barState.value = 'fixed-hidden';
+
+        // emit event notifying other fixed position elements of the change
+        emitter.emit(ES_STICKY_BAR_FIXED_HIDE_EVENT_NAME);
     }
 
     lastScrollY = currentScrollY;
@@ -129,6 +141,12 @@ const onMenuBarClose = () => {
     }
 };
 
+// expose barHeight to other fixed position elements via a CSS variable on <html> so they can
+// position themselves relative to the bar
+watch(barHeight, (height) => {
+    document.documentElement.style.setProperty('--es-sticky-bar-height', `${height}px`);
+});
+
 onMounted(() => {
     // measure height before switching position so the placeholder matches exactly
     barHeight.value = bar.value?.offsetHeight ?? 0;
@@ -153,6 +171,8 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener('scroll', onScroll);
+
+    document.documentElement.style.removeProperty('--es-sticky-bar-height');
 
     emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME, onMenuBarOpen);
     emitter.off(ES_MENU_BAR_CLOSE_EVENT_NAME, onMenuBarClose);

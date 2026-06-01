@@ -49,6 +49,11 @@ const esMenuBarProps = [
     ],
 ];
 
+const esMenuBarEvents = [
+    [ES_MENU_BAR_CLOSE_EVENT_NAME, 'none', 'Fires when a submenu is closed.'],
+    [ES_MENU_BAR_OPEN_EVENT_NAME, 'none', 'Fires when a submenu is opened.'],
+];
+
 const esMenuBarLinkProps = [
     [
         'href',
@@ -456,6 +461,25 @@ onMounted(async () => {
                     component.
                 </p>
                 <ds-prop-table :rows="esMenuBarProps" />
+            </div>
+
+            <div class="my-300">
+                <h2>EsMenuBar global events</h2>
+                <p>
+                    These events are not emitted directly by the component, but are instead transmitted via the
+                    <code>useEsdsEvents</code> composable and can be subscribed to via <code>on()</code> and
+                    <code>off()</code> methods.
+                </p>
+                <p>
+                    <nuxt-link to="/molecules/sticky-bar">Sticky bar</nuxt-link> consumes these events in order to wait
+                    for the menu to be closed before it changes its background from white to transparent.
+                </p>
+                <ds-prop-table
+                    :columns="['Name', 'Payload', 'Description']"
+                    :rows="esMenuBarEvents"
+                    :widths="{
+                        md: ['4', '2', '6'],
+                    }" />
             </div>
 
             <div class="my-300">
