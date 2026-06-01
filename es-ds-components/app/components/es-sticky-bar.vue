@@ -141,6 +141,12 @@ const onMenuBarClose = () => {
     }
 };
 
+// expose barHeight to other fixed-position elements via a CSS variable on <html> so they can
+// position themselves relative to the bar without subscribing to size changes
+watch(barHeight, (height) => {
+    document.documentElement.style.setProperty('--es-sticky-bar-height', `${height}px`);
+});
+
 onMounted(() => {
     // measure height before switching position so the placeholder matches exactly
     barHeight.value = bar.value?.offsetHeight ?? 0;
@@ -165,6 +171,8 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener('scroll', onScroll);
+
+    document.documentElement.style.removeProperty('--es-sticky-bar-height');
 
     emitter.off(ES_MENU_BAR_OPEN_EVENT_NAME, onMenuBarOpen);
     emitter.off(ES_MENU_BAR_CLOSE_EVENT_NAME, onMenuBarClose);

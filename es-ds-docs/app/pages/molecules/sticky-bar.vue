@@ -24,6 +24,11 @@ const esStickyBarProps = [
     ],
 ];
 
+const esStickyBarEvents = [
+    [ES_STICKY_BAR_FIXED_HIDE_EVENT_NAME, 'none', 'Fires when the fixed state of the sticky bar is hidden.'],
+    [ES_STICKY_BAR_FIXED_SHOW_EVENT_NAME, 'none', 'Fires when the fixed state of the sticky bar is shown.'],
+];
+
 const isFixedStateShown = ref(false);
 
 const handleFixedStateHidden = () => (isFixedStateShown.value = false);
@@ -100,17 +105,31 @@ onUnmounted(() => {
                 positioning accordingly.
             </p>
 
-            <h2 class="mt-300">Global events</h2>
+            <h2 class="mt-300">Coordination with other fixed position elements</h2>
             <p>
-                To coordinate with other fixed or sticky elements that may be at the top of the viewport and need to
-                adjust their position when the sticky bar is shown or hidden, the sticky bar emits global events
-                through the <code>useEsdsEvents</code> composable when its fixed position state is shown or hidden. The
-                text below is an example powered by these events and describes the current state. Try scrolling up and
-                down and see how the text changes.
+                If there are other elements on a page that also need to be fixed to the top of the viewport, in order
+                to prevent overlap with the sticky bar, they need to know two things: (1) whether the sticky bar is
+                shown or hidden, and (2) the height of the sticky bar.
             </p>
-            <p class="font-weight-semibold">
-                {{ `(fixed sticky bar ${isFixedStateShown ? 'shown' : 'hidden'})` }}
+            <p>
+                Visibility is communicated via global events emitted through the <code>useEsdsEvents</code> composable.
+                The text below is an example powered by these events and describes the current state. Try scrolling up
+                and down and see how the text changes.
             </p>
+            <p
+                class="font-weight-semibold p-100 rounded-lg"
+                :class="{ 'bg-success-50': isFixedStateShown, 'bg-gray-50': !isFixedStateShown }">
+                {{ `fixed sticky bar is ${isFixedStateShown ? 'shown' : 'hidden'}` }}
+            </p>
+            <p>
+                The height is communicated via the CSS variable <code>--es-sticky-bar-height</code> made available on
+                the <code>&lt;html&gt;</code> tag. It will update dynamically on resize. The box below is an example
+                that uses this CSS variable to exactly match the height of the sticky bar. Try switching between mobile
+                and desktop breakpoints and see how the height changes.
+            </p>
+            <div
+                class="bg-soft-blue font-size-75 p-100 rounded-lg"
+                :style="{ height: 'var(--es-sticky-bar-height)' }"></div>
 
             <h2 class="mt-300">Additional sample paragraphs to test scrolling behavior</h2>
             <p
@@ -126,6 +145,21 @@ onUnmounted(() => {
                     :widths="{
                         md: ['3', '2', '2', '5'],
                         lg: ['3', '2', '1', '6'],
+                    }" />
+            </div>
+
+            <div class="my-300">
+                <h2>EsStickyBar global events</h2>
+                <p>
+                    These events are not emitted directly by the component, but are instead transmitted via the
+                    <code>useEsdsEvents</code> composable and can be subscribed to via <code>on()</code> and
+                    <code>off()</code> methods.
+                </p>
+                <ds-prop-table
+                    :columns="['Name', 'Payload', 'Description']"
+                    :rows="esStickyBarEvents"
+                    :widths="{
+                        md: ['4', '2', '6'],
                     }" />
             </div>
 
