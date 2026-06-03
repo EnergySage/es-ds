@@ -294,9 +294,12 @@
       transition: color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
     }
 
-    &:hover {
-      border-color: variables.$card-interactive-hover-border-color;
-      text-decoration: none;
+    /* only apply a hover state if the device supports mouse hover */
+    @media (hover) {
+      &:hover {
+        border-color: variables.$card-interactive-hover-border-color;
+        text-decoration: none;
+      }
     }
 
     &:focus-visible {
