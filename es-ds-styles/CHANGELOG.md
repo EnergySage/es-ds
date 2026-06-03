@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.8](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.7...es-ds-styles-v3.5.8) (2026-06-03)
+
+
+### Bug Fixes
+
+* arrow and hover fixes for EsNavCtaCard ([#1766](https://github.com/EnergySage/es-ds/issues/1766)) ([bd65830](https://github.com/EnergySage/es-ds/commit/bd658300c5404520d838545efaa377268ce8e6f2))
+
 ## [3.5.7](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.6...es-ds-styles-v3.5.7) (2026-05-26)
 
 

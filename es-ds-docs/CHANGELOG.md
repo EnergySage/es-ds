@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.6.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.6.0...es-ds-docs-v5.6.1) (2026-06-03)
+
+
+### Bug Fixes
+
+* arrow and hover fixes for EsNavCtaCard ([#1766](https://github.com/EnergySage/es-ds/issues/1766)) ([bd65830](https://github.com/EnergySage/es-ds/commit/bd658300c5404520d838545efaa377268ce8e6f2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.6.0 to ^5.6.1
+    * @energysage/es-ds-styles bumped from ^3.5.7 to ^3.5.8
+
 ## [5.6.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.5.6...es-ds-docs-v5.6.0) (2026-06-01)
 
 

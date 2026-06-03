@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.6.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.6.0...es-ds-components-v5.6.1) (2026-06-03)
+
+
+### Bug Fixes
+
+* arrow and hover fixes for EsNavCtaCard ([#1766](https://github.com/EnergySage/es-ds/issues/1766)) ([bd65830](https://github.com/EnergySage/es-ds/commit/bd658300c5404520d838545efaa377268ce8e6f2))
+* EsMobileNav highlighted item color and back/close button feedback ([#1767](https://github.com/EnergySage/es-ds/issues/1767)) ([291c334](https://github.com/EnergySage/es-ds/commit/291c3348bcffd10f0757f6858490badcdc1d1429))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^3.5.7 to ^3.5.8
+
 ## [5.6.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.5.6...es-ds-components-v5.6.0) (2026-06-01)
 
 
