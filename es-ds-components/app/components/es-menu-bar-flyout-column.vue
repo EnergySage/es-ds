@@ -16,7 +16,7 @@ withDefaults(defineProps<IProps>(), {
         xl="3">
         <h2
             v-if="heading"
-            class="eyebrow">
+            class="es-menu-bar-flyout-column-heading eyebrow pb-50 position-relative">
             {{ heading }}
         </h2>
         <navigation-menu-list class="list-unstyled">
@@ -24,3 +24,19 @@ withDefaults(defineProps<IProps>(), {
         </navigation-menu-list>
     </es-col>
 </template>
+
+<style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/variables';
+
+.es-menu-bar-flyout-column-heading {
+    &::after {
+        background-color: variables.$warm-orange;
+        bottom: 0;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        width: 64px;
+    }
+}
+</style>
