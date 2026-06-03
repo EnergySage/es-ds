@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.6.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.6.1...es-ds-components-v5.6.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* add missing orange line below EsMenuBar desktop flyout column headers ([#1769](https://github.com/EnergySage/es-ds/issues/1769)) ([1c91cda](https://github.com/EnergySage/es-ds/commit/1c91cda4d4b9a441bedebe977ffbd3113a850999))
+
 ## [5.6.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.6.0...es-ds-components-v5.6.1) (2026-06-03)
 
 
