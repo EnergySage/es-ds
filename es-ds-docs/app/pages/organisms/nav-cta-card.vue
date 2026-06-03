@@ -70,22 +70,22 @@ onMounted(async () => {
                     xxl="5">
                     <es-nav-cta-card
                         class="mb-100"
-                        heading="Get an instant quote"
-                        href="https://www.energysage.com"
-                        subtitle="Free, personalized solar quotes that’ll save you thousands"
-                        target="_blank">
-                        <template #icon>
-                            <icon-solar aria-hidden="true" />
-                        </template>
-                    </es-nav-cta-card>
-
-                    <es-nav-cta-card
                         heading="Plan energy recommendations"
                         href="https://www.energysage.com"
                         subtitle="See energy recommendations for your home with just an address"
                         target="_blank">
                         <template #icon>
                             <icon-house-line aria-hidden="true" />
+                        </template>
+                    </es-nav-cta-card>
+
+                    <es-nav-cta-card
+                        heading="Get solar quotes from trusted installers"
+                        href="https://www.energysage.com"
+                        subtitle="Free, personalized solar quotes that’ll save you thousands"
+                        target="_blank">
+                        <template #icon>
+                            <icon-solar aria-hidden="true" />
                         </template>
                     </es-nav-cta-card>
                 </es-col>

@@ -5,10 +5,17 @@ interface Props {
     subtitle?: string;
     target?: string;
 }
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     subtitle: '',
     target: '_self',
 });
+
+const headingPartOne = computed(() => {
+    const arr = props.heading.split(' ');
+    arr.pop();
+    return arr.join(' ');
+});
+const headingPartTwo = computed(() => props.heading.split(' ').pop());
 </script>
 
 <template>
@@ -28,11 +35,14 @@ withDefaults(defineProps<Props>(), {
             </div>
         </div>
         <div>
-            <p class="align-items-center d-flex font-weight-bold mb-0 text-blue-600">
-                {{ heading }}
-                <icon-arrow-right
-                    aria-hidden="true"
-                    class="es-nav-cta-card-arrow flex-shrink-0 ml-25" />
+            <p class="font-weight-bold mb-0 text-blue-600">
+                {{ headingPartOne }}
+                <span class="text-nowrap">
+                    {{ headingPartTwo }}
+                    <icon-arrow-right
+                        aria-hidden="true"
+                        class="es-nav-cta-card-arrow flex-shrink-0 position-relative" />
+                </span>
             </p>
             <p
                 v-if="subtitle"
@@ -50,6 +60,12 @@ withDefaults(defineProps<Props>(), {
 .es-nav-cta-card {
     border-width: 1px;
 
+    /* override EsCard active state */
+    &:active {
+        border-color: variables.$blue-600;
+        box-shadow: 0 0 0 1px variables.$blue-600;
+    }
+
     /* only apply a hover state if the device supports mouse hover */
     @media (hover) {
         &:hover {
@@ -63,9 +79,19 @@ withDefaults(defineProps<Props>(), {
                 }
             }
 
+            /* move the arrow slightly to the right on hover */
             .es-nav-cta-card-arrow {
-                margin-left: 0.75rem !important;
+                transform: translateX(0.25rem);
             }
+        }
+    }
+
+    &-arrow {
+        /* vertically center the icon relative to the text */
+        top: -2px;
+
+        @media not (prefers-reduced-motion) {
+            transition: variables.$transition-base;
         }
     }
 
@@ -99,12 +125,6 @@ withDefaults(defineProps<Props>(), {
             z-index: 3;
         }
 
-        @media not (prefers-reduced-motion) {
-            transition: variables.$transition-base;
-        }
-    }
-
-    &-arrow {
         @media not (prefers-reduced-motion) {
             transition: variables.$transition-base;
         }
