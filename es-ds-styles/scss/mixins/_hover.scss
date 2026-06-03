@@ -10,7 +10,10 @@
 // Issue: https://github.com/twbs/bootstrap/issues/25195
 
 @mixin hover() {
-  &:hover { @content; }
+  /* only apply a hover state if the device supports mouse hover */
+  @media (hover) {
+    &:hover { @content; }
+  }
 }
 
 @mixin hover-focus() {
