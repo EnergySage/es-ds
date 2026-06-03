@@ -239,6 +239,11 @@ provide('isElementWithinMenu', isElementWithinMenu);
     transform: translateY(-50%);
     top: 50%;
 
+    /* give feedback on tap/click press down */
+    &:active {
+        transform: translateY(calc(-50% + 1px));
+    }
+
     svg {
         height: 20px !important;
         width: 20px !important;
@@ -249,6 +254,11 @@ provide('isElementWithinMenu', isElementWithinMenu);
     right: variables.$spacer;
     transform: translateY(-50%);
     top: 50%;
+
+    /* give feedback on tap/click press down */
+    &:active {
+        transform: translateY(calc(-50% + 1px));
+    }
 
     svg {
         height: 20px !important;
