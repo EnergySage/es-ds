@@ -215,14 +215,9 @@ $transition-duration: 100ms;
 
             &[data-state='open'] {
                 border-bottom-color: transparent;
-                color: variables.$white;
 
                 & > span {
-                    background-color: variables.$dark-blue;
-
-                    & > svg {
-                        color: variables.$white;
-                    }
+                    background-color: variables.$blue-100;
                 }
             }
         }

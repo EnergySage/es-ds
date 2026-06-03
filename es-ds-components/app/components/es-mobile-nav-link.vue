@@ -53,10 +53,8 @@ $transition-duration: 100ms;
     }
 
     &:active {
-        color: variables.$white;
-
         & > span {
-            background-color: variables.$dark-blue;
+            background-color: variables.$blue-100;
         }
     }
 }
