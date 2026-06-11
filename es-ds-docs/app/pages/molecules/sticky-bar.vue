@@ -18,17 +18,17 @@ const esStickyBarProps = [
         `
         The default behavior will keep the nav as part of the normal page flow. Set it to 'absolute'
         if you want to float the nav on top of other page content.
-        `
+        `,
     ],
     [
         'transparent-color',
-        "string",
+        'string',
         "'transparent'",
         `
         If transparent-starting-at-breakpoint is set, this will be the transparent color used.
         Defaults to fully transparent, but use this to pass in a semi-transparent rgba() value
         if desired.
-        `
+        `,
     ],
     [
         'transparent-starting-at-breakpoint',

@@ -12,7 +12,9 @@ const isSignedIn = ref(false);
 
 <template>
     <div class="site-navigation-container">
-        <es-sticky-bar transparent-color="rgba(255, 255, 255, 0.3)" transparent-starting-at-breakpoint="xl">
+        <es-sticky-bar
+            transparent-color="rgba(255, 255, 255, 0.3)"
+            transparent-starting-at-breakpoint="xl">
             <es-skip-to-content-link />
             <div class="site-navigation align-items-center d-flex justify-content-between mx-auto px-md-150 px-xxl-0">
                 <!-- mobile main nav -->
