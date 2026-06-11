@@ -12,7 +12,7 @@ const isSignedIn = ref(false);
 
 <template>
     <div class="site-navigation-container">
-        <es-sticky-bar transparent-starting-at-breakpoint="xl">
+        <es-sticky-bar transparent-color="rgba(255, 255, 255, 0.3)" transparent-starting-at-breakpoint="xl">
             <es-skip-to-content-link />
             <div class="site-navigation align-items-center d-flex justify-content-between mx-auto px-md-150 px-xxl-0">
                 <!-- mobile main nav -->
@@ -242,7 +242,7 @@ const isSignedIn = ref(false);
                 <nuxt-link to="/molecules/mobile-nav">mobile nav</nuxt-link> and
                 <nuxt-link to="/molecules/menu-bar">menu bar</nuxt-link> inside of a
                 <nuxt-link to="/molecules/sticky-bar">sticky bar</nuxt-link>. It also shows the background behavior
-                when the sticky bar is set to be transparent on desktop.
+                when the sticky bar is set to be transparent on desktop and a semi-transparent color is provided.
             </p>
             <p>
                 The mobile nav is displayed on xs, sm, md, and lg breakpoints. The menu bar is displayed on xl and xxl

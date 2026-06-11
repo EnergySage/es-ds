@@ -7,9 +7,13 @@ import {
 } from '../utils/menu-bar';
 
 interface IProps {
+    initialState?: 'static' | 'absolute';
+    transparentColor?: string;
     transparentStartingAtBreakpoint?: 'lg' | 'xl' | 'xxl' | '';
 }
-withDefaults(defineProps<IProps>(), {
+const props = withDefaults(defineProps<IProps>(), {
+    initialState: 'static',
+    transparentColor: 'transparent',
     transparentStartingAtBreakpoint: '',
 });
 
@@ -24,7 +28,7 @@ const emitter = useEsdsEvents();
 // - fixed-visible: bar is pinned to the top of the viewport, visible
 // - fixed-hidden:  bar is pinned but translated off screen above the viewport
 type BarState = 'static' | 'absolute' | 'fixed-visible' | 'fixed-hidden';
-const barState = ref<BarState>('static');
+const barState = ref<BarState>(props.initialState);
 
 // ref to the bar element, used to read its rendered height
 const bar = ref<HTMLElement | null>(null);
@@ -148,6 +152,7 @@ watch(barHeight, (height) => {
 });
 
 onMounted(() => {
+    console.log('initial state', props.initialState);
     // measure height before switching position so the placeholder matches exactly
     barHeight.value = bar.value?.offsetHeight ?? 0;
 
@@ -199,6 +204,7 @@ onUnmounted(() => {
     <!-- holds the bar's space in normal flow when the bar is absolutely or fixed positioned -->
     <div
         v-if="barState !== 'static'"
+        :class="{ 'd-xl-none': initialState !== 'static' }"
         :style="{ height: `${barHeight}px` }"
         aria-hidden="true" />
 </template>
@@ -224,7 +230,7 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
     @each $bp in (lg, xl, xxl) {
         &--transparent-from-#{$bp} {
             @include breakpoints.media-breakpoint-up($bp) {
-                background-color: transparent;
+                background-color: v-bind(transparentColor);
                 box-shadow: none;
             }
         }
