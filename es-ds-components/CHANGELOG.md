@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.6.2...es-ds-components-v5.7.0) (2026-06-11)
+
+
+### Features
+
+* enable EsStickyBar to float above page content ([#1771](https://github.com/EnergySage/es-ds/issues/1771)) ([08a420c](https://github.com/EnergySage/es-ds/commit/08a420c2d95ed52328c991346217b2955fe88995))
+
 ## [5.6.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.6.1...es-ds-components-v5.6.2) (2026-06-03)
 
 
