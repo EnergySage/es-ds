@@ -152,7 +152,6 @@ watch(barHeight, (height) => {
 });
 
 onMounted(() => {
-    console.log('initial state', props.initialState);
     // measure height before switching position so the placeholder matches exactly
     barHeight.value = bar.value?.offsetHeight ?? 0;
 
