@@ -12,12 +12,15 @@ const samplePageContent = Array(4).fill(LOREM_TEXT);
 
 const esStickyBarProps = [
     [
-        'initial-state',
-        "'static' or 'absolute'",
-        "'static'",
+        'float-starting-at-breakpoint',
+        "'lg' or 'xl' or 'xxl' or ''",
+        "''",
         `
-        The default behavior will keep the nav as part of the normal page flow. Set it to 'absolute'
-        if you want to float the nav on top of other page content.
+        If set, the sticky bar will float on top of other page content on the specified breakpoint
+        and above, with no space reserved for it in the normal page flow. Below the breakpoint,
+        the bar occupies normal page flow as usual. Operates independently of
+        transparent-starting-at-breakpoint, since a transparent bar doesn't necessarily need to
+        overlap page content (e.g. when shown over a body background color).
         `,
     ],
     [
