@@ -7,12 +7,12 @@ import {
 } from '../utils/menu-bar';
 
 interface IProps {
-    initialState?: 'static' | 'absolute';
+    floatStartingAtBreakpoint?: 'lg' | 'xl' | 'xxl' | '';
     transparentColor?: string;
     transparentStartingAtBreakpoint?: 'lg' | 'xl' | 'xxl' | '';
 }
-const props = withDefaults(defineProps<IProps>(), {
-    initialState: 'static',
+withDefaults(defineProps<IProps>(), {
+    floatStartingAtBreakpoint: '',
     transparentColor: 'transparent',
     transparentStartingAtBreakpoint: '',
 });
@@ -28,7 +28,7 @@ const emitter = useEsdsEvents();
 // - fixed-visible: bar is pinned to the top of the viewport, visible
 // - fixed-hidden:  bar is pinned but translated off screen above the viewport
 type BarState = 'static' | 'absolute' | 'fixed-visible' | 'fixed-hidden';
-const barState = ref<BarState>(props.initialState);
+const barState = ref<BarState>('static');
 
 // ref to the bar element, used to read its rendered height
 const bar = ref<HTMLElement | null>(null);
@@ -189,6 +189,7 @@ onUnmounted(() => {
         class="es-sticky-bar"
         :class="[
             `es-sticky-bar--${barState}`,
+            floatStartingAtBreakpoint && `es-sticky-bar--float-from-${floatStartingAtBreakpoint}`,
             transparentStartingAtBreakpoint && `es-sticky-bar--transparent-from-${transparentStartingAtBreakpoint}`,
             {
                 'es-sticky-bar--no-transition': suppressTransition,
@@ -200,10 +201,11 @@ onUnmounted(() => {
         @mouseout="isHovered = false">
         <slot />
     </div>
-    <!-- holds the bar's space in normal flow when the bar is absolutely or fixed positioned -->
+    <!-- holds the bar's space in normal flow when the bar is absolutely or fixed positioned;
+         hidden at/above the float breakpoint, where the bar overlaps page content instead -->
     <div
         v-if="barState !== 'static'"
-        :class="{ 'd-xl-none': initialState !== 'static' }"
+        :class="floatStartingAtBreakpoint && `d-${floatStartingAtBreakpoint}-none`"
         :style="{ height: `${barHeight}px` }"
         aria-hidden="true" />
 </template>
@@ -231,6 +233,17 @@ $shadow: 0 0 6px 0 rgba(34, 38, 51, 0.2);
             @include breakpoints.media-breakpoint-up($bp) {
                 background-color: v-bind(transparentColor);
                 box-shadow: none;
+            }
+        }
+    }
+
+    // while still in the pre-mount static state, take the bar out of flow at/above the float
+    // breakpoint so it overlaps page content from the first paint; below the breakpoint the
+    // bar stays in flow until mount (when the spacer appears), avoiding a layout shift
+    @each $bp in (lg, xl, xxl) {
+        &--float-from-#{$bp}.es-sticky-bar--static {
+            @include breakpoints.media-breakpoint-up($bp) {
+                position: absolute;
             }
         }
     }
