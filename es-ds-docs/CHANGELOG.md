@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.7.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.0...es-ds-docs-v5.7.1) (2026-06-12)
+
+
+### Bug Fixes
+
+* floating sticky bar no longer causes mobile layout shift ([#1773](https://github.com/EnergySage/es-ds/issues/1773)) ([077eb77](https://github.com/EnergySage/es-ds/commit/077eb77f062df07a2e8714e8146c842e11c1b2db))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.7.0 to ^5.7.1
+
 ## [5.7.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.6.2...es-ds-docs-v5.7.0) (2026-06-11)
 
 
