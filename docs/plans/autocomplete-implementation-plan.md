@@ -41,14 +41,27 @@ Implement against this spec; ask before deviating from a decision recorded here.
 - Props/emits follow existing form-component patterns (`es-form-input`,
   `es-dropdown-select`): typed `defineProps` with `withDefaults`, `defineModel` for
   `v-model`, explicit typed `defineEmits`.
+- **Form-API parity (decision 2026-07-02):** match the other es-ds form inputs —
+  `label`, `required`, `state` (true/false/null) and an `errorMessage` slot, per the
+  `es-form-input`/`es-dropdown-select` patterns. Additionally support hiding the label
+  (e.g. a `hideLabel` prop that renders it `sr-only`) so the autocomplete can stand on
+  its own with only placeholder text describing it visually — the label still exists
+  for screen readers.
+- **Two `AutocompleteRoot`s (decision 2026-07-02):** Reka expects one input per root,
+  and the mobile input lives inside the Dialog — so each shell gets its own
+  `AutocompleteRoot`, both bound to the same `v-model` string and `suggestions` prop.
+  Only one is interactive at a time (the other's trigger is CSS-hidden, §1a below).
+  Give each shell distinct element ids/labels so the always-rendered markup never
+  duplicates ids.
 - Breakpoint switching is split by whether the element is visible before interaction —
   the rule is **zero visual shift between SSR HTML load and JS hydration**:
   - **Visible pre-interaction (CSS-only swap):** everything on the page at load — the
     desktop `AutocompleteInput` and the mobile fake-search-field button (§4b) — is
     **always rendered in the SSR HTML** and shown/hidden purely with CSS media queries
-    (e.g. `d-none d-lg-block` / `d-lg-none` utilities). No `v-if` on a JS breakpoint
-    check for these, so a mobile page never flashes the desktop input and then snaps to
-    the mobile one when hydration completes.
+    (`d-none d-md-block` / `d-md-none` utilities; takeover below `md` — decision
+    2026-07-02). No `v-if` on a JS breakpoint check for these, so a mobile page never
+    flashes the desktop input and then snaps to the mobile one when hydration
+    completes.
   - **Not visible pre-interaction (JS swap allowed):** the popover panel vs. the Dialog
     takeover only exist after the user interacts, so the existing
     `useBreakpointChecks()` composable
@@ -67,8 +80,8 @@ Implement against this spec; ask before deviating from a decision recorded here.
 | 3 | Highlight the **predictive** portion, not the typed portion | Typed prefix rendered regular weight; the completed/predictive remainder rendered **bold**. (This is the inverse of most libraries' defaults — implement in our item renderer, do not use any built-in match highlighting.) |
 | 4 | Avoid scrollbars | Never set `overflow: auto` on the suggestion list. Overflow is prevented by the fit-to-viewport trim (§3): we only render items that fully fit. |
 | 5 | Reduce visual noise | Suggestions only. No trending searches, product cards, images, or promos inside the panel. Minimal separators. |
-| 6 | Highlight active suggestion + keyboard nav | Reka provides arrow-key nav, looping, Enter-to-submit, `aria-activedescendant`. Style the highlighted item via its `data-highlighted` attribute (background shading) and `cursor: pointer` on items. **Verify:** arrow-key focus must copy the suggestion text into the input (Google-style) so users can extend the query before submitting. If Reka's Autocomplete does not do this out of the box, wire it: on highlight change, set the input value to the highlighted item's text (preserve the user's original typed query to restore on Escape/blur past the list ends). |
-| 7 | Visual depth (desktop) | When the popover is open, dim the page behind it (fixed inset-0 overlay, ~40% black, below the popover's z-index). Border + shadow on the panel. |
+| 6 | Highlight active suggestion + keyboard nav | Reka provides arrow-key nav, looping, Enter-to-submit, `aria-activedescendant`. Style the highlighted item via its `data-highlighted` attribute (background shading) and `cursor: pointer` on items. **Decision (2026-07-02):** we deliberately SKIP the Google-style "arrow key copies suggestion text into the input" behavior. Primary use cases are selection-oriented (e.g. address entry) where users pick a whole suggestion rather than building a query from pieces. Arrow keys move the highlight only; the typed input is unchanged; Enter selects the highlighted suggestion. (Verified against installed reka-ui 2.9.7 that this is also Reka's default behavior — no extra wiring needed.) |
+| 7 | Visual depth (desktop) | When the popover is open, dim the page behind it with an overlay matching the existing `.es-menu-bar-overlay` treatment in `es-menu-bar.vue`: fixed, `variables.$black` at 0.25 opacity, `z-index: 999`, below the popover's z-index. Blur/tap-away closes the popover (as it does the menu bar flyouts), so the two overlays are never active simultaneously. Border + shadow on the panel. |
 | 8 | No competing external elements (mobile) | Solved structurally by the full-screen Dialog takeover (§4) — nothing else is on screen. |
 | 9 | Adequate spacing/tap targets (mobile) | Min 44px row height (content may wrap to more), ≥16px font on mobile, generous horizontal padding, title-case suggestion text. |
 
@@ -79,8 +92,11 @@ measure-then-trim:
 
 1. Render up to the cap (10 desktop / 8 mobile) into the list container.
 2. Container has `overflow: hidden` and a max-height:
-   - Desktop popover: `max-height: var(--reka-autocomplete-content-available-height)`
-     (exposed by Reka's popper positioning when `position="popper"`).
+   - Desktop popover: `max-height: var(--reka-combobox-content-available-height)`
+     (exposed by Reka's popper positioning when `position="popper"`; note the
+     **combobox** naming — the `Autocomplete*` content components are re-exported
+     Combobox internals in the installed reka-ui 2.9.x, and no `--reka-autocomplete-*`
+     variables exist).
    - Mobile takeover: container height = visual viewport height minus the input bar
      (see §4 keyboard handling).
 3. After render (`nextTick`), walk children: count items where
@@ -121,16 +137,19 @@ users compare) is at the end of the string. Wrapping is preferred over truncatio
 ## 4. Two layouts, one core
 
 Build one core suggestion component (input wiring + item rendering + trim logic) and two
-shells: takeover below `lg`, popover at `lg` and up. Pre-interaction elements of both
-shells are always SSR-rendered and swapped via CSS media queries; only the
-post-interaction behavior (which shell opens) switches on `useBreakpointChecks()` —
-see §1a. Shared query state.
+shells: **takeover below `md`, popover at `md` and up** (decision 2026-07-02 — phones
+get the takeover; tablets get the popover). Pre-interaction elements of both shells are
+always SSR-rendered and swapped via CSS media queries; only the post-interaction
+behavior (which shell opens) switches on `useBreakpointChecks()`'s `isMobile` (true
+below `md`) — see §1a. Each shell has its own `AutocompleteRoot` (§1a); query state is
+shared via the same `v-model`.
 
 ### 4a. Desktop: anchored popover
 - `AutocompleteRoot` → `AutocompleteInput` + `AutocompletePortal` → `AutocompleteContent
   position="popper"`.
-- Panel width: `min-width: var(--reka-autocomplete-trigger-width)` plus a comfortable
-  `max-width` — the panel MAY be wider than a narrow input (reduces wrapping).
+- Panel width: `min-width: var(--reka-combobox-trigger-width)` (combobox naming — see
+  §3) plus a comfortable `max-width` — the panel MAY be wider than a narrow input
+  (reduces wrapping).
 - Page-dim overlay while open (req #7).
 
 ### 4b. Mobile: full-screen Dialog takeover
@@ -147,12 +166,21 @@ see §1a. Shared query state.
   equivalent) — the dialog IS the open state.
 - Dialog gives us for free: focus trap, body scroll lock, Escape handling, `aria-modal`.
 
+Closing the takeover (decision 2026-07-02):
+- **No Android back-button/history handling** — pushing history state risks conflicts
+  with vue-router in consuming Nuxt apps. Skipped for now; revisit only if user testing
+  shows back-button abandonment.
+- Instead, ensure a **clear, always-visible close affordance**: the `DialogClose`
+  ("Cancel") text button in the top bar next to the input. A text button deliberately
+  avoids visual conflict with a possible future X-in-the-input to **clear the field**
+  (Reka ships `AutocompleteCancel` for exactly that — worth considering as an
+  iteration, but if added, close-takeover and clear-input must remain visually
+  distinct). Escape also closes (Dialog default).
+
 Mobile gotchas (all required):
 - **Keyboard vs viewport:** `100dvh` does not shrink when the iOS keyboard opens. Use
   `visualViewport.height` for the trim-limit calculation and listen to its `resize`.
 - **Input font-size ≥ 16px** or iOS Safari auto-zooms on focus.
-- **Android back button:** push a history state on open; close the dialog on `popstate`
-  instead of navigating away.
 
 ## 5. Suggestion data model
 
@@ -179,6 +207,10 @@ AutoComplete contract that `ZipOrAddressInput` consumes:
 
 - `v-model` — the input string.
 - `suggestions: EsAutocompleteSuggestion[]` prop — the current list.
+- `minChars` prop, **default 1** (decision 2026-07-02, per UX guidelines) — no
+  `@complete` emitted below this length. `ZipOrAddressInput`'s 2-character minimum was
+  a Google Places quota/usefulness concern, which is app-level: address-entry consumers
+  can pass `:min-chars="2"`.
 - `@complete(query)` — emitted (debounced via a `delay` prop, default ~300ms) when the
   app should fetch/filter new suggestions.
 - `@select(suggestion)` — a suggestion was chosen (click or Enter on highlighted item).
@@ -221,12 +253,14 @@ es-ds-styles tokens. Port the visual treatment, not the PrimeVue plumbing:
 - Full keyboard: ArrowUp/Down navigates and **loops**; Enter submits the highlighted
   suggestion (or the raw input if none highlighted); Escape closes (desktop) / closes
   the takeover (mobile); Tab behaves sanely.
-- Arrow navigation copies suggestion text into the input (see table row #6).
+- Arrow navigation moves the highlight only — the typed input is unchanged (see table
+  row #6); Enter selects the highlighted suggestion.
 - Highlighted item visually distinct via `data-highlighted` styling.
-- Screen reader: list changes announced; item count communicated; label the input
-  (visually or via Reka's Label) — do not rely on placeholder alone. Follow
-  `ZipOrAddressInput`'s pattern of an `sr-only` label plus `aria-describedby` help text
-  ("Type your search and select from dropdown suggestions.").
+- Screen reader: list changes announced; item count communicated; the input always has
+  a label — visible by default (form-API parity, §1a), rendered `sr-only` when
+  `hideLabel` is set, so placeholder-only presentations still label the control. Also
+  provide `aria-describedby` help text as `ZipOrAddressInput` does ("Type your search
+  and select from dropdown suggestions.").
 - Touch targets ≥ 44px; text ≥ 16px on mobile.
 
 ## 7. File layout
@@ -308,7 +342,8 @@ On the docs page at `http://localhost:8500/molecules/autocomplete`:
       identical before and after hydration — no desktop-input flash (§1a)
 - [ ] Desktop: ≤10 suggestions, no scrollbar at any viewport height, dim overlay,
       hover + keyboard highlight, hand cursor
-- [ ] Arrow keys copy suggestion into input; Enter submits it; list loops
+- [ ] Arrow keys move the highlight without changing the typed input; Enter selects
+      the highlighted suggestion; list loops
 - [ ] Predictive portion bolded; typed prefix regular; scoped suggestions styled
       distinctly with separator
 - [ ] Visual parity with `ZipOrAddressInput` styling (§5b): focus ring, panel
@@ -316,7 +351,7 @@ On the docs page at `http://localhost:8500/molecules/autocomplete`:
 - [ ] Mobile (devtools emulation + at least one real iOS device): tap fake field →
       full-screen takeover opens with keyboard up in one tap
 - [ ] Mobile: suggestions never hidden behind the on-screen keyboard (rotate + small
-      devices tested); Android back closes takeover; no iOS focus zoom
+      devices tested); Cancel button and Escape close the takeover; no iOS focus zoom
 - [ ] Wrapped (2-line) suggestions are never clipped mid-item
 - [ ] axe/lighthouse a11y pass on both layouts; VoiceOver + TalkBack smoke test
 - [ ] Docs page renders correctly: examples, prop table, highlighted source via
@@ -328,3 +363,28 @@ Per the repo's publishing workflow: bump `es-ds-components` version (minor — n
 component), update its `CHANGELOG.md` (keepachangelog format), publish styles first if
 it also changed. PR title must be conventional-commit format, e.g.
 `feat: add EsAutocomplete component and docs page`.
+
+## 9. Decision log (resolved 2026-07-02)
+
+Open questions raised during planning, with the decisions now reflected inline above:
+
+1. **No Google-style copy-on-highlight** (req #6): arrow keys move the highlight only.
+   Primary use cases (e.g. address entry) are selection-oriented — users pick a whole
+   suggestion, they don't compose queries from suggestion fragments.
+2. **Two `AutocompleteRoot`s**, one per shell, sharing `v-model`/`suggestions` (§1a) —
+   matches Reka's one-input-per-root expectation.
+3. **Takeover breakpoint: below `md`** (§4) — phones get the takeover, tablets the
+   popover.
+4. **Form-API parity** with es-ds inputs (`label`, `required`, `state`, `errorMessage`)
+   plus `hideLabel` for placeholder-only presentation (§1a, §6).
+5. **Desktop dim overlay matches `.es-menu-bar-overlay`** (`$black` @ 0.25,
+   `z-index: 999`) (req #7). Blur closes the popover, so the menu bar and autocomplete
+   overlays are never active at once.
+6. **`minChars` defaults to 1** (§5a) — ZipOrAddressInput's 2-char minimum was a Google
+   Places quota concern, which stays app-level.
+7. **No Android back-button/history handling** (§4b) — router-conflict risk; the
+   takeover instead has an always-visible Cancel button (+ Escape). A clear-input X
+   (Reka `AutocompleteCancel`) is a possible iteration and must stay visually distinct
+   from Cancel.
+8. **Title-casing is the consumer's data responsibility** — the component renders
+   suggestion text as given; document this on the docs page.
