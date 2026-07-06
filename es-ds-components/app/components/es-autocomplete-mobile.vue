@@ -134,13 +134,20 @@ function onOpenAutoFocus(event: Event) {
 
 // runs in the capture phase on the anchor, ahead of Reka's input-level handler
 function onEnterKey(event: KeyboardEvent) {
+    // the Enter that commits an IME composition (Japanese/Chinese/Korean input)
+    // is not a submit
+    if (event.isComposing) {
+        return;
+    }
     // highlight checked via the DOM rather than Reka's exposed highlightedElement,
     // which can hold a stale (detached) element after the list re-renders
     if (userHighlighted.value && contentEl.value?.querySelector('[data-highlighted]')) {
         // let the event through to Reka, which selects the highlighted item
         return;
     }
-    // keep Reka from selecting an auto-highlighted item the user never chose
+    // keep Reka from selecting an auto-highlighted item the user never chose, and
+    // keep a surrounding <form> from natively submitting
+    event.preventDefault();
     event.stopPropagation();
     takeoverOpen.value = false;
     emit('submit', model.value ?? '');
