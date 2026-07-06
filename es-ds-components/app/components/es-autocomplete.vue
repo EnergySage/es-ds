@@ -49,13 +49,29 @@ const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId
 
 // pass an empty list below minChars so no suggestions show for too-short queries
 const effectiveSuggestions = computed(() => {
-    if ((model.value ?? '').trim().length < props.minChars) {
+    if (model.value.trim().length < props.minChars) {
         return [];
     }
     return props.suggestions;
 });
 
+// one cancellable handle for the debounced 'complete': every terminal path
+// (selection, submit, short query, unmount) cancels through the same place so
+// a late-arriving response can never reopen the panel
 let searchTimeout: ReturnType<typeof setTimeout> | null = null;
+function cancelPendingComplete() {
+    if (searchTimeout) {
+        clearTimeout(searchTimeout);
+        searchTimeout = null;
+    }
+}
+function scheduleComplete(query: string) {
+    cancelPendingComplete();
+    searchTimeout = setTimeout(() => {
+        emit('complete', query);
+    }, props.delay);
+}
+
 let lastSelectedText: string | null = null;
 
 // whether the app's most recent suggestions update was empty — this is what
@@ -81,10 +97,7 @@ const panelMessage = computed(() => {
 });
 
 watch(model, (newValue) => {
-    if (searchTimeout) {
-        clearTimeout(searchTimeout);
-        searchTimeout = null;
-    }
+    cancelPendingComplete();
     // selecting a suggestion copies its text into the input; that change is
     // terminal and must not trigger another fetch
     if (lastSelectedText !== null && newValue === lastSelectedText) {
@@ -92,7 +105,7 @@ watch(model, (newValue) => {
         return;
     }
     lastSelectedText = null;
-    const query = (newValue ?? '').trim();
+    const query = newValue.trim();
     if (query.length < props.minChars) {
         // a fresh (or cleared) query starts from the prompt state, not a stale
         // "no results" from the previous query
@@ -102,16 +115,10 @@ watch(model, (newValue) => {
     // the edited query's search is now pending: show promptText, not the previous
     // query's "no results", until the app answers via the suggestions prop
     noResults.value = false;
-    searchTimeout = setTimeout(() => {
-        emit('complete', query);
-    }, props.delay);
+    scheduleComplete(query);
 });
 
-onUnmounted(() => {
-    if (searchTimeout) {
-        clearTimeout(searchTimeout);
-    }
-});
+onUnmounted(cancelPendingComplete);
 
 function onSelect(suggestion: EsAutocompleteSuggestion) {
     lastSelectedText = suggestion.text;
@@ -119,12 +126,8 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
 }
 
 function onSubmit(query: string) {
-    // submitting is terminal for this query: cancel any pending 'complete' so
-    // late-arriving suggestions don't reopen the panel
-    if (searchTimeout) {
-        clearTimeout(searchTimeout);
-        searchTimeout = null;
-    }
+    // submitting is terminal for this query
+    cancelPendingComplete();
     emit('submit', query);
 }
 </script>

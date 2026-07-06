@@ -9,7 +9,7 @@ interface AutocompleteShellOptions {
     emitSelect: (suggestion: EsAutocompleteSuggestion) => void;
     emitSubmit: (query: string) => void;
     inputRef: Ref<ComponentPublicInstance | null>;
-    model: Ref<string | undefined>;
+    model: Ref<string>;
     suggestions: () => EsAutocompleteSuggestion[];
 }
 
@@ -73,7 +73,7 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
         event.preventDefault();
         event.stopPropagation();
         options.close();
-        options.emitSubmit(options.model.value ?? '');
+        options.emitSubmit(options.model.value);
     }
 
     function onSelect(suggestion: EsAutocompleteSuggestion) {

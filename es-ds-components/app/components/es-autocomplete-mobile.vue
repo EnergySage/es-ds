@@ -177,7 +177,7 @@ function onOpenAutoFocus(event: Event) {
                             <es-autocomplete-item
                                 v-for="suggestion in visibleSuggestions"
                                 :key="suggestion.id"
-                                :query="model ?? ''"
+                                :query="model"
                                 :suggestion="suggestion"
                                 @select="onSelect">
                                 <template
