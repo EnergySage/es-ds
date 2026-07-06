@@ -88,6 +88,9 @@ watch(model, (newValue) => {
         noResults.value = false;
         return;
     }
+    // the edited query's search is now pending: show promptText, not the previous
+    // query's "no results", until the app answers via the suggestions prop
+    noResults.value = false;
     searchTimeout = setTimeout(() => {
         emit('complete', query);
     }, props.delay);
