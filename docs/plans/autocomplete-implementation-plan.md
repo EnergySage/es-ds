@@ -211,6 +211,13 @@ AutoComplete contract that `ZipOrAddressInput` consumes:
   `@complete` emitted below this length. `ZipOrAddressInput`'s 2-character minimum was
   a Google Places quota/usefulness concern, which is app-level: address-entry consumers
   can pass `:min-chars="2"`.
+- `noResultsText` prop, default "No results found" (decision 2026-07-02, superseding
+  the earlier closed-when-empty behavior): once suggestions have been shown, a search
+  that comes back empty keeps the panel and overlay open and shows this message —
+  closing them mid-typing was a jarring flicker. The message never shows while the
+  first search is still in flight (an empty list then just means "no answer yet"), and
+  the panel still closes when the query drops below `minChars`, on Escape, tap-away,
+  select, or submit.
 - `@complete(query)` — emitted (debounced via a `delay` prop, default ~300ms) when the
   app should fetch/filter new suggestions.
 - `@select(suggestion)` — a suggestion was chosen (click or Enter on highlighted item).
@@ -388,3 +395,6 @@ Open questions raised during planning, with the decisions now reflected inline a
    from Cancel.
 8. **Title-casing is the consumer's data responsibility** — the component renders
    suggestion text as given; document this on the docs page.
+9. **Empty results keep the panel open** (§5a, `noResultsText`) — supersedes the
+   original closed-when-empty behavior after it proved to be a jarring overlay flicker
+   when a longer query stopped matching mid-typing.
