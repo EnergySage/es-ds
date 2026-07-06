@@ -262,11 +262,8 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
     z-index: 1050;
 }
 
-.es-autocomplete-field:focus-within {
-    border-color: variables.$blue-600;
-    outline: 0.125rem solid variables.$blue-600;
-    outline-offset: 0.125rem;
-}
+// deliberately no focus styling on the field: the full-screen takeover itself is
+// the focus indicator (see es-autocomplete-desktop.vue for the fuller rationale)
 
 .es-autocomplete-input {
     background: transparent;

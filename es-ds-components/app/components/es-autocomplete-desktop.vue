@@ -221,11 +221,10 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-.es-autocomplete-field:focus-within {
-    border-color: variables.$blue-600;
-    outline: 0.125rem solid variables.$blue-600;
-    outline-offset: 0.125rem;
-}
+// deliberately no focus styling on the field: the page-dim overlay appearing on
+// focus is the focus indicator. (es-form-input's lighter :focus border reads as
+// the border disappearing against the dimmed page, and a :focus-visible ring is
+// not an option — browsers match :focus-visible on ANY focus of a text field.)
 
 // while the panel is open, lift the input above the page-dim overlay so it
 // stays fully visible and interactive
