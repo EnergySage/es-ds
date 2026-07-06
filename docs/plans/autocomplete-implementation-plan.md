@@ -411,3 +411,10 @@ Open questions raised during planning, with the decisions now reflected inline a
    shows mid-flight), it displays `noResultsText` — including for a first query that
    never matches anything. The mobile takeover shows the same prompt/no-results
    messages in its list area.
+10. **Selection-required use cases (e.g. address validation) stay app-level**
+    (2026-07-06): the component deliberately has no `requireSelection` mode. Per the
+    §5a data-ownership split, the app tracks the last `select`-ed suggestion,
+    invalidates it when the input text no longer matches it, and treats the `submit`
+    event as a validation trigger (`state=false` + `errorMessage`) instead of a
+    search. Demonstrated in the docs page's "Requiring a selection" example; this is
+    the same pattern `ZipOrAddressInput` uses around PrimeVue today.
