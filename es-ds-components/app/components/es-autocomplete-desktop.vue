@@ -95,10 +95,31 @@ function onFocusIn() {
 }
 
 function onFocusOut(event: FocusEvent) {
-    // ignore focus moves within the field (input <-> clear button)
     const field = event.currentTarget as HTMLElement;
-    if (!event.relatedTarget || !field.contains(event.relatedTarget as Node)) {
-        open.value = false;
+    const related = event.relatedTarget as Node | null;
+    // ignore focus moves within the field (input <-> clear button) or into the
+    // panel (interactive elements a consumer renders in the item slot)
+    if (related && (field.contains(related) || contentEl.value?.contains(related))) {
+        return;
+    }
+    // ignore the window itself losing focus (alt-tab, devtools) — the input is
+    // still the active element and the interaction resumes when the user returns
+    if (!related && !document.hasFocus()) {
+        return;
+    }
+    open.value = false;
+}
+
+// keep the input focused while clicking in the panel: without this, the click
+// blurs the input, whose focusout closes the panel before the click can select.
+// Interactive elements a consumer renders in the item slot are exempt so they
+// remain focusable (suggestion items themselves have tabindex="-1").
+function onPanelMousedown(event: MouseEvent) {
+    const target = event.target as HTMLElement | null;
+    const interactive =
+        'a[href], button, input, select, textarea, [contenteditable="true"], [tabindex]:not([tabindex="-1"])';
+    if (!target?.closest(interactive)) {
+        event.preventDefault();
     }
 }
 
@@ -192,9 +213,6 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
             </autocomplete-cancel>
         </autocomplete-anchor>
         <autocomplete-portal>
-            <!-- mousedown.prevent keeps the input focused while clicking in the panel:
-                 without it, the click blurs the input, whose focusout closes the panel
-                 before the click can select (Reka items select on click, not mousedown) -->
             <autocomplete-content
                 ref="contentRef"
                 align="start"
@@ -204,7 +222,7 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                     { 'es-autocomplete-panel--measuring': !measured },
                 ]"
                 :side-offset="4"
-                @mousedown.prevent
+                @mousedown="onPanelMousedown"
                 @pointermove="userHighlighted = true">
                 <es-autocomplete-item
                     v-for="suggestion in visibleSuggestions"
