@@ -54,11 +54,24 @@ const model = defineModel<string>({ default: '' });
 const open = ref(false);
 const contentRef = ref<ComponentPublicInstance | null>(null);
 
+// Reka auto-highlights the first item whenever results arrive from an empty list,
+// which is NOT a user choice — Enter must submit the typed query then, not select.
+// Only a highlight the user created (arrow keys or pointer movement over the panel)
+// makes Enter select. Reset whenever the list content changes or the panel reopens.
+const userHighlighted = ref(false);
+watch(
+    () => props.suggestions.map((suggestion) => suggestion.id).join('\n'),
+    () => {
+        userHighlighted.value = false;
+    },
+);
+
 // $el is not reactive (and is a placeholder comment node while the panel is
 // closed), so resolve the panel element after open/close has taken effect in
 // the DOM instead of computing from $el directly
 const contentEl = ref<HTMLElement | null>(null);
 watch(open, async (isOpen) => {
+    userHighlighted.value = false;
     await nextTick();
     const el = contentRef.value?.$el as Node | undefined;
     contentEl.value = isOpen && el && el.nodeType === Node.ELEMENT_NODE ? (el as HTMLElement) : null;
@@ -99,15 +112,18 @@ const panelMessage = computed(() => {
     return props.noResults && queryLongEnough.value ? props.noResultsText : props.promptText;
 });
 
-function onEnterKey() {
-    // Enter with a highlighted suggestion is handled by Reka (selection); Enter
-    // without one submits the raw query. Checked via the DOM rather than Reka's
-    // exposed highlightedElement, which can hold a stale (detached) element after
-    // a previous selection re-renders the list.
-    if (!contentEl.value?.querySelector('[data-highlighted]')) {
-        open.value = false;
-        emit('submit', model.value ?? '');
+// runs in the capture phase on the anchor, ahead of Reka's input-level handler
+function onEnterKey(event: KeyboardEvent) {
+    // highlight checked via the DOM rather than Reka's exposed highlightedElement,
+    // which can hold a stale (detached) element after the list re-renders
+    if (userHighlighted.value && contentEl.value?.querySelector('[data-highlighted]')) {
+        // let the event through to Reka, which selects the highlighted item
+        return;
     }
+    // keep Reka from selecting an auto-highlighted item the user never chose
+    event.stopPropagation();
+    open.value = false;
+    emit('submit', model.value ?? '');
 }
 
 function onSelect(suggestion: EsAutocompleteSuggestion) {
@@ -145,7 +161,8 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                 'es-autocomplete-field--disabled': disabled,
             }"
             @focusin="onFocusIn"
-            @focusout="onFocusOut">
+            @focusout="onFocusOut"
+            @keydown.capture.enter="onEnterKey">
             <autocomplete-input
                 :id="id"
                 class="es-autocomplete-input h-100 w-100 px-100"
@@ -154,7 +171,8 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :required="required"
-                @keydown.enter="onEnterKey" />
+                @keydown.down="userHighlighted = true"
+                @keydown.up="userHighlighted = true" />
             <!-- tabindex overrides the -1 Reka renders, so keyboard users can reach the button -->
             <autocomplete-cancel
                 v-if="model && !disabled"
@@ -179,7 +197,8 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                     { 'es-autocomplete-panel--measuring': !measured },
                 ]"
                 :side-offset="4"
-                @mousedown.prevent>
+                @mousedown.prevent
+                @pointermove="userHighlighted = true">
                 <es-autocomplete-item
                     v-for="suggestion in visibleSuggestions"
                     :key="suggestion.id"

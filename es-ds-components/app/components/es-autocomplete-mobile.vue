@@ -74,6 +74,18 @@ const { measured, visibleSuggestions } = useFitToViewport(contentEl, suggestions
 
 const queryLongEnough = computed(() => (model.value ?? '').trim().length >= props.minChars);
 
+// Reka auto-highlights the first item whenever results arrive from an empty list,
+// which is NOT a user choice — Enter must submit the typed query then, not select.
+// Only a highlight the user created (arrow keys or pointer movement over the list)
+// makes Enter select. Reset whenever the list content changes or the takeover opens.
+const userHighlighted = ref(false);
+watch(
+    () => props.suggestions.map((suggestion) => suggestion.id).join('\n'),
+    () => {
+        userHighlighted.value = false;
+    },
+);
+
 // what the list shows when there are no suggestions to render: the no-results
 // message once a search has actually come back empty (per the parent), otherwise
 // the prompt (nothing searched yet, or the query is below minChars)
@@ -98,6 +110,7 @@ function updateListHeight() {
 }
 
 watch(takeoverOpen, async (isOpen) => {
+    userHighlighted.value = false;
     const viewport = window.visualViewport;
     if (isOpen) {
         await nextTick();
@@ -119,15 +132,18 @@ function onOpenAutoFocus(event: Event) {
     (inputRef.value?.$el as HTMLElement | undefined)?.focus();
 }
 
-function onEnterKey() {
-    // Enter with a highlighted suggestion is handled by Reka (selection); Enter
-    // without one submits the raw query. Checked via the DOM rather than Reka's
-    // exposed highlightedElement, which can hold a stale (detached) element after
-    // a previous selection re-renders the list.
-    if (!contentEl.value?.querySelector('[data-highlighted]')) {
-        takeoverOpen.value = false;
-        emit('submit', model.value ?? '');
+// runs in the capture phase on the anchor, ahead of Reka's input-level handler
+function onEnterKey(event: KeyboardEvent) {
+    // highlight checked via the DOM rather than Reka's exposed highlightedElement,
+    // which can hold a stale (detached) element after the list re-renders
+    if (userHighlighted.value && contentEl.value?.querySelector('[data-highlighted]')) {
+        // let the event through to Reka, which selects the highlighted item
+        return;
     }
+    // keep Reka from selecting an auto-highlighted item the user never chose
+    event.stopPropagation();
+    takeoverOpen.value = false;
+    emit('submit', model.value ?? '');
 }
 
 function onSelect(suggestion: EsAutocompleteSuggestion) {
@@ -186,13 +202,15 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                         open>
                         <div class="align-items-center d-flex p-100">
                             <autocomplete-anchor
-                                class="es-autocomplete-field es-form-input form-control align-items-center d-flex flex-grow-1 p-0">
+                                class="es-autocomplete-field es-form-input form-control align-items-center d-flex flex-grow-1 p-0"
+                                @keydown.capture.enter="onEnterKey">
                                 <autocomplete-input
                                     ref="inputRef"
                                     class="es-autocomplete-input h-100 w-100 px-100"
                                     :aria-label="label"
                                     :placeholder="placeholder"
-                                    @keydown.enter="onEnterKey" />
+                                    @keydown.down="userHighlighted = true"
+                                    @keydown.up="userHighlighted = true" />
                                 <!-- tabindex overrides the -1 Reka renders, so keyboard users can reach the button -->
                                 <autocomplete-cancel
                                     v-if="model"
@@ -213,7 +231,8 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                             :class="[
                                 'es-autocomplete-takeover-list text-left',
                                 { 'es-autocomplete-takeover-list--measuring': !measured },
-                            ]">
+                            ]"
+                            @pointermove="userHighlighted = true">
                             <es-autocomplete-item
                                 v-for="suggestion in visibleSuggestions"
                                 :key="suggestion.id"
