@@ -70,7 +70,7 @@ const contentEl = computed<HTMLElement | null>(() => {
     return el && el.nodeType === Node.ELEMENT_NODE ? (el as HTMLElement) : null;
 });
 const suggestionsRef = computed(() => props.suggestions);
-const { measured, visibleSuggestions } = useFitToViewport(contentEl, suggestionsRef, MAX_VISIBLE);
+const { measured, remeasure, visibleSuggestions } = useFitToViewport(contentEl, suggestionsRef, MAX_VISIBLE);
 
 const queryLongEnough = computed(() => (model.value ?? '').trim().length >= props.minChars);
 
@@ -98,7 +98,7 @@ const panelMessage = computed(() => {
 
 // 100dvh does not shrink when the iOS keyboard opens, so the list height is
 // derived from the visual viewport instead; the keyboard opening/closing is
-// just a resize event. The ResizeObserver in useFitToViewport re-trims.
+// just a resize event. Re-trim after every height change.
 function updateListHeight() {
     const el = contentEl.value;
     const viewport = window.visualViewport;
@@ -107,6 +107,7 @@ function updateListHeight() {
     }
     const top = el.getBoundingClientRect().top;
     el.style.height = `${Math.max(viewport.offsetTop + viewport.height - top, 0)}px`;
+    remeasure();
 }
 
 watch(takeoverOpen, async (isOpen) => {
