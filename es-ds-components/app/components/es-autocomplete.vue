@@ -47,17 +47,12 @@ const helpId = computed(() => `${props.id}-help`);
 const showError = computed(() => props.state === false && (!!slots.errorMessage || props.required));
 const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId.value}` : helpId.value));
 
-// unscoped suggestions render first, then category-scoped ones (stable within each
-// group, separated visually by the shells); an empty list closes the panel, which
-// also covers queries shorter than minChars
-const orderedSuggestions = computed(() => {
+// pass an empty list below minChars so no suggestions show for too-short queries
+const effectiveSuggestions = computed(() => {
     if ((model.value ?? '').trim().length < props.minChars) {
         return [];
     }
-    return [
-        ...props.suggestions.filter((suggestion) => !suggestion.scope),
-        ...props.suggestions.filter((suggestion) => suggestion.scope),
-    ];
+    return props.suggestions;
 });
 
 let searchTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -137,7 +132,7 @@ function onSubmit(query: string) {
             :prompt-text="promptText"
             :required="required"
             :state="state"
-            :suggestions="orderedSuggestions"
+            :suggestions="effectiveSuggestions"
             @select="onSelect"
             @submit="onSubmit">
             <template
@@ -164,7 +159,7 @@ function onSubmit(query: string) {
             :prompt-text="promptText"
             :required="required"
             :state="state"
-            :suggestions="orderedSuggestions"
+            :suggestions="effectiveSuggestions"
             @select="onSelect"
             @submit="onSubmit">
             <template

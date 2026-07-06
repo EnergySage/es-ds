@@ -16,9 +16,6 @@ onMounted(async () => {
 interface DocSuggestion {
     id: string;
     text: string;
-    scope?: {
-        label: string;
-    };
     value?: unknown;
 }
 
@@ -55,21 +52,6 @@ const onBasicSelect = (suggestion: DocSuggestion) => {
 };
 const onBasicSubmit = (query: string) => {
     basicResult.value = `submitted "${query}"`;
-};
-
-// Scoped suggestions example
-const scopedQuery = ref('');
-const scopedSuggestions = ref<DocSuggestion[]>([]);
-const onScopedComplete = (query: string) => {
-    const matches = filterTerms(query);
-    scopedSuggestions.value = [
-        ...matches,
-        ...matches.slice(0, 2).map((match) => ({
-            id: `${match.id}-articles`,
-            text: match.text,
-            scope: { label: 'in Articles' },
-        })),
-    ];
 };
 
 // Hidden label example
@@ -325,9 +307,8 @@ const autocompleteSlots = [
         'suggestion, query',
         `
         Custom renderer for each suggestion. When not provided, the suggestion text is rendered with the
-        predictive portion bolded, plus the scope label if present. Use the EsAutocompleteSuggestionText
-        component to apply the same predictive bolding to your own text (see the custom item rendering
-        example).
+        predictive portion bolded. Use the EsAutocompleteSuggestionText component to apply the same
+        predictive bolding to your own text (see the custom item rendering example).
         `,
     ],
     [
@@ -380,10 +361,6 @@ const autocompleteSlots = [
             <ul>
                 <li><code>id</code> (string, required): unique key</li>
                 <li><code>text</code> (string, required): the full suggested query</li>
-                <li>
-                    <code>scope</code> (object, optional): <code>{ label }</code> for category-scoped suggestions,
-                    rendered in muted italics and separated from unscoped suggestions
-                </li>
                 <li><code>value</code> (any, optional): app payload, returned untouched on select</li>
             </ul>
             <p>
@@ -411,25 +388,6 @@ const autocompleteSlots = [
                         @select="onBasicSelect"
                         @submit="onBasicSubmit" />
                     <p class="text-muted">{{ basicResult || 'Nothing selected or submitted yet' }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-500">
-            <h2>Scoped suggestions</h2>
-            <p>
-                Suggestions with a <code>scope</code> are styled differently and separated from unscoped suggestions,
-                so users understand they search within a category.
-            </p>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-autocomplete
-                        id="autocomplete-scoped"
-                        v-model="scopedQuery"
-                        label="Search"
-                        placeholder="Search for a topic"
-                        :suggestions="scopedSuggestions"
-                        @complete="onScopedComplete" />
                 </div>
             </div>
         </div>

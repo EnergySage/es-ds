@@ -76,7 +76,7 @@ Implement against this spec; ask before deviating from a decision recorded here.
 | # | Requirement | How we implement it |
 |---|------------|---------------------|
 | 1 | Keep list manageable (≤10 desktop, 4–8 mobile) | Hard cap constant `MAX_DESKTOP = 10`, `MAX_MOBILE = 8`, further reduced by fit-to-viewport trim (§3) |
-| 2 | Style category-scope suggestions differently | Suggestion model has a `scope?` field; scope text rendered in muted color + italic within the item, after the query text. Horizontal separator between unscoped and scoped groups. |
+| 2 | Style category-scope suggestions differently | **Descoped (2026-07-06, decision 12):** no current EnergySage use case has category-scoped suggestions, so the `scope` field, its styling, and the group separator were removed. Apps that ever need scope-style rendering can build it with the `item` slot + `value` payload. |
 | 3 | Highlight the **predictive** portion, not the typed portion | Typed prefix rendered regular weight; the completed/predictive remainder rendered **bold**. (This is the inverse of most libraries' defaults — implement in our item renderer, do not use any built-in match highlighting.) |
 | 4 | Avoid scrollbars | Never set `overflow: auto` on the suggestion list. Overflow is prevented by the fit-to-viewport trim (§3): we only render items that fully fit. |
 | 5 | Reduce visual noise | Suggestions only. No trending searches, product cards, images, or promos inside the panel. Minimal separators. |
@@ -189,14 +189,11 @@ Mobile gotchas (all required):
 interface EsAutocompleteSuggestion {
   id: string
   text: string          // full suggested query, e.g. "backpack rain cover"
-  scope?: {             // present only for category-scoped suggestions (req #2)
-    label: string       // e.g. "in Outdoor Gear"
-  }
   value?: unknown       // opaque app payload, returned untouched on select
 }
 ```
-Consuming apps pass at most 10; the component trims further per §3. Order: unscoped
-suggestions first, then scoped, separated visually.
+Consuming apps pass at most 10; the component trims further per §3. (A `scope` field
+for category-scoped suggestions existed here originally — removed per decision 12.)
 
 ### 5a. Data ownership (presentational component)
 
@@ -278,7 +275,7 @@ es-ds-components/app/
     es-autocomplete.vue           # public component; breakpoint switch (§1a) between shells
     es-autocomplete-desktop.vue   # popover shell (§4a) + dim overlay
     es-autocomplete-mobile.vue    # Dialog takeover shell (§4b)
-    es-autocomplete-item.vue      # item renderer: predictive bolding + scope styling
+    es-autocomplete-item.vue      # item renderer: predictive bolding
     es-autocomplete-suggestion-text.vue  # public inline renderer of predictive-bolding
                                   # segments; takes text+query, or pre-computed segments
                                   # (from splitAutocompleteTextLines or API match offsets)
@@ -309,7 +306,7 @@ doc-page pattern (see `pages/molecules/dropdown-select.vue`):
 - `<h1>Autocomplete</h1>` + intro line "Extended from" linking to
   https://reka-ui.com/docs/components/autocomplete.
 - Example sections (each an `<h2>` in a `div.mb-500`, demos in `div.row > div.col-md-6`):
-  basic usage (static client-filtered list), scoped suggestions with separator,
+  basic usage (static client-filtered list),
   predictive-portion bolding, custom item slot (two-line, address-style), disabled
   state, and a note + demo for the mobile takeover (resize/emulate below `lg`).
 - Props documented via `<ds-prop-table :rows="autocompleteProps" />` (rows array of
@@ -360,8 +357,7 @@ On the docs page at `http://localhost:8500/molecules/autocomplete`:
       hover + keyboard highlight, hand cursor
 - [ ] Arrow keys move the highlight without changing the typed input; Enter selects
       the highlighted suggestion; list loops
-- [ ] Predictive portion bolded; typed prefix regular; scoped suggestions styled
-      distinctly with separator
+- [ ] Predictive portion bolded; typed/matched portions regular
 - [ ] Visual parity with `ZipOrAddressInput` styling (§5b): focus ring, panel
       border/shadow, item hover/active colors
 - [ ] Mobile (devtools emulation + at least one real iOS device): tap fake field →
@@ -446,3 +442,10 @@ Open questions raised during planning, with the decisions now reflected inline a
     API-specific helpers (e.g. for Google Places `matched_substrings` offsets): apps
     whose search API returns match offsets build their own segments in a custom
     `item` slot renderer.
+12. **Category-scope suggestions removed** (2026-07-06, supersedes req #2): the
+    `scope` field, its muted-italic styling, the unscoped-before-scoped ordering, and
+    the group separator were all removed — Baymard's recommendation applies to
+    category-scoped search results, and no current EnergySage use case has them. If
+    one appears, scope-style rendering can be built entirely app-side with the `item`
+    slot and the `value` payload, or the feature can be reintroduced from this plan's
+    history.

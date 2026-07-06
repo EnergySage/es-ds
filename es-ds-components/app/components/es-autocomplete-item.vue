@@ -29,11 +29,6 @@ const emit = defineEmits<{
             <es-autocomplete-suggestion-text
                 :query="query"
                 :text="suggestion.text" />
-            <span
-                v-if="suggestion.scope"
-                class="es-autocomplete-item-scope text-gray-700">
-                {{ suggestion.scope.label }}
-            </span>
         </slot>
     </autocomplete-item>
 </template>
@@ -54,10 +49,5 @@ const emit = defineEmits<{
     &:active {
         background-color: variables.$blue-100;
     }
-}
-
-.es-autocomplete-item-scope {
-    font-style: italic;
-    margin-left: 0.25rem;
 }
 </style>

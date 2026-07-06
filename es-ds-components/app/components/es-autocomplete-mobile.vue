@@ -5,7 +5,6 @@ import {
     AutocompleteContent,
     AutocompleteInput,
     AutocompleteRoot,
-    AutocompleteSeparator,
     DialogClose,
     DialogContent,
     DialogDescription,
@@ -215,25 +214,20 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                                 'es-autocomplete-takeover-list text-left',
                                 { 'es-autocomplete-takeover-list--measuring': !measured },
                             ]">
-                            <template
-                                v-for="(suggestion, index) in visibleSuggestions"
-                                :key="suggestion.id">
-                                <autocomplete-separator
-                                    v-if="index > 0 && suggestion.scope && !visibleSuggestions[index - 1]?.scope"
-                                    class="es-autocomplete-separator" />
-                                <es-autocomplete-item
-                                    :query="model ?? ''"
-                                    :suggestion="suggestion"
-                                    @select="onSelect">
-                                    <template
-                                        v-if="$slots.item"
-                                        #default="slotProps">
-                                        <slot
-                                            name="item"
-                                            v-bind="slotProps" />
-                                    </template>
-                                </es-autocomplete-item>
-                            </template>
+                            <es-autocomplete-item
+                                v-for="suggestion in visibleSuggestions"
+                                :key="suggestion.id"
+                                :query="model ?? ''"
+                                :suggestion="suggestion"
+                                @select="onSelect">
+                                <template
+                                    v-if="$slots.item"
+                                    #default="slotProps">
+                                    <slot
+                                        name="item"
+                                        v-bind="slotProps" />
+                                </template>
+                            </es-autocomplete-item>
                             <div
                                 v-if="panelMessage"
                                 class="es-autocomplete-no-results px-100 py-50 text-gray-700">
@@ -317,11 +311,5 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
     .es-autocomplete-no-results {
         font-size: 1rem;
     }
-}
-
-.es-autocomplete-separator {
-    background-color: variables.$gray-200;
-    height: variables.$border-width;
-    margin: 0.25rem 0;
 }
 </style>
