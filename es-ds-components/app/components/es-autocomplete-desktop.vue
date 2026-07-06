@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
     AutocompleteAnchor,
-    AutocompleteCancel,
     AutocompleteContent,
     AutocompleteInput,
     AutocompletePortal,
@@ -53,6 +52,7 @@ const model = defineModel<string>({ default: '' });
 
 const open = ref(false);
 const contentRef = ref<ComponentPublicInstance | null>(null);
+const inputRef = ref<ComponentPublicInstance | null>(null);
 
 // Reka auto-highlights the first item whenever results arrive from an empty list,
 // which is NOT a user choice — Enter must submit the typed query then, not select.
@@ -66,15 +66,9 @@ watch(
     },
 );
 
-// $el is not reactive (and is a placeholder comment node while the panel is
-// closed), so resolve the panel element after open/close has taken effect in
-// the DOM instead of computing from $el directly
-const contentEl = ref<HTMLElement | null>(null);
-watch(open, async (isOpen) => {
+const contentEl = useAutocompleteContentEl(contentRef, open);
+watch(open, () => {
     userHighlighted.value = false;
-    await nextTick();
-    const el = contentRef.value?.$el as Node | undefined;
-    contentEl.value = isOpen && el && el.nodeType === Node.ELEMENT_NODE ? (el as HTMLElement) : null;
 });
 const suggestionsRef = computed(() => props.suggestions);
 const { measured, visibleSuggestions } = useFitToViewport(contentEl, suggestionsRef, MAX_VISIBLE);
@@ -135,6 +129,11 @@ const panelMessage = computed(() => {
 
 // runs in the capture phase on the anchor, ahead of Reka's input-level handler
 function onEnterKey(event: KeyboardEvent) {
+    // only Enter from the input itself submits — Enter on the clear button (also
+    // inside the anchor) is a click and must reach the button
+    if (event.target !== inputRef.value?.$el) {
+        return;
+    }
     // the Enter that commits an IME composition (Japanese/Chinese/Korean input)
     // is not a submit
     if (event.isComposing) {
@@ -157,6 +156,11 @@ function onEnterKey(event: KeyboardEvent) {
 function onSelect(suggestion: EsAutocompleteSuggestion) {
     open.value = false;
     emit('select', suggestion);
+}
+
+function onClear() {
+    model.value = '';
+    (inputRef.value?.$el as HTMLElement | undefined)?.focus();
 }
 </script>
 
@@ -193,6 +197,7 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
             @keydown.capture.enter="onEnterKey">
             <autocomplete-input
                 :id="id"
+                ref="inputRef"
                 class="es-autocomplete-input h-100 w-100 px-100"
                 :aria-describedby="describedBy"
                 :aria-invalid="state === false ? true : undefined"
@@ -201,16 +206,16 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                 :required="required"
                 @keydown.down="userHighlighted = true"
                 @keydown.up="userHighlighted = true" />
-            <!-- tabindex overrides the -1 Reka renders, so keyboard users can reach the button -->
-            <autocomplete-cancel
+            <button
                 v-if="model && !disabled"
                 class="es-autocomplete-clear align-items-center bg-transparent border-0 d-flex flex-shrink-0 h-100 justify-content-center p-0 text-gray-700"
-                tabindex="0"
-                :aria-label="clearText">
+                type="button"
+                :aria-label="clearText"
+                @click="onClear">
                 <icon-x
                     height="20px"
                     width="20px" />
-            </autocomplete-cancel>
+            </button>
         </autocomplete-anchor>
         <autocomplete-portal>
             <autocomplete-content

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
     AutocompleteAnchor,
-    AutocompleteCancel,
     AutocompleteContent,
     AutocompleteInput,
     AutocompleteRoot,
@@ -64,11 +63,7 @@ const triggerId = computed(() => `${props.id}-trigger`);
 const inputRef = ref<ComponentPublicInstance | null>(null);
 const contentRef = ref<ComponentPublicInstance | null>(null);
 
-// when the panel is closed, $el is a placeholder comment node, not an element
-const contentEl = computed<HTMLElement | null>(() => {
-    const el = contentRef.value?.$el as Node | undefined;
-    return el && el.nodeType === Node.ELEMENT_NODE ? (el as HTMLElement) : null;
-});
+const contentEl = useAutocompleteContentEl(contentRef, takeoverOpen);
 const suggestionsRef = computed(() => props.suggestions);
 const { measured, remeasure, visibleSuggestions } = useFitToViewport(contentEl, suggestionsRef, MAX_VISIBLE);
 
@@ -135,6 +130,11 @@ function onOpenAutoFocus(event: Event) {
 
 // runs in the capture phase on the anchor, ahead of Reka's input-level handler
 function onEnterKey(event: KeyboardEvent) {
+    // only Enter from the input itself submits — Enter on the clear button (also
+    // inside the anchor) is a click and must reach the button
+    if (event.target !== inputRef.value?.$el) {
+        return;
+    }
     // the Enter that commits an IME composition (Japanese/Chinese/Korean input)
     // is not a submit
     if (event.isComposing) {
@@ -157,6 +157,11 @@ function onEnterKey(event: KeyboardEvent) {
 function onSelect(suggestion: EsAutocompleteSuggestion) {
     takeoverOpen.value = false;
     emit('select', suggestion);
+}
+
+function onClear() {
+    model.value = '';
+    (inputRef.value?.$el as HTMLElement | undefined)?.focus();
 }
 </script>
 
@@ -219,16 +224,16 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                                     :placeholder="placeholder"
                                     @keydown.down="userHighlighted = true"
                                     @keydown.up="userHighlighted = true" />
-                                <!-- tabindex overrides the -1 Reka renders, so keyboard users can reach the button -->
-                                <autocomplete-cancel
+                                <button
                                     v-if="model"
                                     class="es-autocomplete-clear align-items-center bg-transparent border-0 d-flex flex-shrink-0 h-100 justify-content-center p-0 text-gray-700"
-                                    tabindex="0"
-                                    :aria-label="clearText">
+                                    type="button"
+                                    :aria-label="clearText"
+                                    @click="onClear">
                                     <icon-x
                                         height="20px"
                                         width="20px" />
-                                </autocomplete-cancel>
+                                </button>
                             </autocomplete-anchor>
                             <dialog-close class="es-autocomplete-cancel bg-transparent border-0 flex-shrink-0 ml-100">
                                 {{ cancelText }}
