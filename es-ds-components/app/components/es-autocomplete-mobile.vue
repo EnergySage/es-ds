@@ -82,20 +82,36 @@ function updateListHeight() {
     remeasure();
 }
 
+// the keyboard open/close animation emits a burst of visualViewport resizes;
+// coalesce to one layout read + height write per frame
+let listHeightFrame: number | null = null;
+function onViewportResize() {
+    if (listHeightFrame !== null) {
+        cancelAnimationFrame(listHeightFrame);
+    }
+    listHeightFrame = requestAnimationFrame(() => {
+        listHeightFrame = null;
+        updateListHeight();
+    });
+}
+
 watch(takeoverOpen, async (isOpen) => {
     resetUserHighlight();
     const viewport = window.visualViewport;
     if (isOpen) {
         await nextTick();
         updateListHeight();
-        viewport?.addEventListener('resize', updateListHeight);
+        viewport?.addEventListener('resize', onViewportResize);
     } else {
-        viewport?.removeEventListener('resize', updateListHeight);
+        viewport?.removeEventListener('resize', onViewportResize);
     }
 });
 
 onBeforeUnmount(() => {
-    window.visualViewport?.removeEventListener('resize', updateListHeight);
+    window.visualViewport?.removeEventListener('resize', onViewportResize);
+    if (listHeightFrame !== null) {
+        cancelAnimationFrame(listHeightFrame);
+    }
 });
 
 // iOS only shows the keyboard when focus happens inside the tap's event chain,

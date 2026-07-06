@@ -150,6 +150,7 @@ const onErrorComplete = (query: string) => {
 const disabledQuery = ref('');
 
 const autocompleteProps = [
+    ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the query text to a data property.'],
     [
         'cancelText',
         'String',

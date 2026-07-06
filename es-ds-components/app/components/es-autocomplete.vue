@@ -47,10 +47,13 @@ const helpId = computed(() => `${props.id}-help`);
 const showError = computed(() => props.state === false && (!!slots.errorMessage || props.required));
 const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId.value}` : helpId.value));
 
-// pass an empty list below minChars so no suggestions show for too-short queries
+// pass an empty list below minChars so no suggestions show for too-short queries;
+// the shared constant keeps the computed referentially stable across keystrokes,
+// so downstream watchers don't re-fire for an unchanged empty list
+const EMPTY_SUGGESTIONS: EsAutocompleteSuggestion[] = [];
 const effectiveSuggestions = computed(() => {
     if (model.value.trim().length < props.minChars) {
-        return [];
+        return EMPTY_SUGGESTIONS;
     }
     return props.suggestions;
 });
@@ -83,6 +86,8 @@ watch(
     (list) => {
         noResults.value = list.length === 0;
     },
+    // depth 1 so apps that mutate the array in place (push/splice) are seen too
+    { deep: 1 },
 );
 
 // what an open panel shows when there are no suggestions to render: the

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { EsAutocompleteTextSegment } from '../types';
+import { splitAutocompleteText } from '../utils/autocomplete';
 
 interface Props {
     query?: string;

@@ -62,11 +62,16 @@ export function useFitToViewport(
         }
     });
 
-    watch(suggestions, () => {
-        if (contentEl.value) {
-            remeasure();
-        }
-    });
+    watch(
+        suggestions,
+        () => {
+            if (contentEl.value) {
+                remeasure();
+            }
+        },
+        // depth 1 so apps that mutate the array in place (push/splice) are seen too
+        { deep: 1 },
+    );
 
     // available height tracks the viewport; re-measure when it changes, deferred a
     // frame so the popper's own resize handling updates the max-height constraint

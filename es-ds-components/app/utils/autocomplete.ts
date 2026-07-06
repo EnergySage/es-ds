@@ -66,7 +66,12 @@ export function splitAutocompleteTextLines(lines: string[], query: string): EsAu
 
 /** [start, end) ranges where the token occurs within the text */
 function findTokenRanges(text: string, token: string, wordStartsOnly: boolean): Array<[number, number]> {
-    const textLower = text.toLowerCase();
+    // lowercasing can change string length for rare characters (e.g. İ, which
+    // lowercases to two code units), which would misalign match offsets against
+    // the original text — fall back to case-sensitive matching rather than
+    // mis-slice the segments
+    const lowered = text.toLowerCase();
+    const textLower = lowered.length === text.length ? lowered : text;
     const isWordChar = (character: string | undefined) => !!character && /[\p{L}\p{N}]/u.test(character);
 
     const ranges: Array<[number, number]> = [];
