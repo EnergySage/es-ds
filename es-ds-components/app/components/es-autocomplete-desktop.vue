@@ -168,6 +168,9 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
             </autocomplete-cancel>
         </autocomplete-anchor>
         <autocomplete-portal>
+            <!-- mousedown.prevent keeps the input focused while clicking in the panel:
+                 without it, the click blurs the input, whose focusout closes the panel
+                 before the click can select (Reka items select on click, not mousedown) -->
             <autocomplete-content
                 ref="contentRef"
                 align="start"
@@ -176,7 +179,8 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                     'es-autocomplete-panel bg-white rounded-xs text-gray-900 font-size-75 text-left',
                     { 'es-autocomplete-panel--measuring': !measured },
                 ]"
-                :side-offset="4">
+                :side-offset="4"
+                @mousedown.prevent>
                 <template
                     v-for="(suggestion, index) in visibleSuggestions"
                     :key="suggestion.id">
