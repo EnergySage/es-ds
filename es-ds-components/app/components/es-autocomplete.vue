@@ -3,6 +3,7 @@ import type { EsAutocompleteSuggestion } from '../types';
 
 interface Props {
     cancelText?: string;
+    clearText?: string;
     delay?: number;
     disabled?: boolean;
     id: string;
@@ -18,6 +19,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
     cancelText: 'Cancel',
+    clearText: 'Clear',
     delay: 300,
     disabled: false,
     labelSrOnly: false,
@@ -107,6 +109,7 @@ function onSubmit(query: string) {
         <es-autocomplete-desktop
             :id="id"
             v-model="model"
+            :clear-text="clearText"
             :described-by="describedBy"
             :disabled="disabled"
             :label="label"
@@ -131,6 +134,7 @@ function onSubmit(query: string) {
             :id="id"
             v-model="model"
             :cancel-text="cancelText"
+            :clear-text="clearText"
             :described-by="describedBy"
             :disabled="disabled"
             :label="label"

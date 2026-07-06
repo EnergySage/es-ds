@@ -128,6 +128,14 @@ const autocompleteProps = [
         `,
     ],
     [
+        'clearText',
+        'String',
+        'Clear',
+        `
+        Accessible label for the X button that clears the input. The button appears whenever the input has text.
+        `,
+    ],
+    [
         'delay',
         'Number',
         '300',

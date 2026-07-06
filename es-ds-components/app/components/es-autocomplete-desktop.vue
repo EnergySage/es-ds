@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
     AutocompleteAnchor,
+    AutocompleteCancel,
     AutocompleteContent,
     AutocompleteInput,
     AutocompletePortal,
@@ -15,6 +16,7 @@ import type { EsAutocompleteSuggestion } from '../types';
 const MAX_VISIBLE = 10;
 
 interface Props {
+    clearText?: string;
     describedBy: string;
     disabled?: boolean;
     id: string;
@@ -29,6 +31,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    clearText: 'Clear',
     disabled: false,
     labelSrOnly: false,
     minChars: 1,
@@ -154,6 +157,16 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                 @blur="inputHasFocus = false"
                 @focus="inputHasFocus = true"
                 @keydown.enter="onEnterKey" />
+            <!-- tabindex overrides the -1 Reka renders, so keyboard users can reach the button -->
+            <autocomplete-cancel
+                v-if="model && !disabled"
+                class="es-autocomplete-clear align-items-center bg-transparent border-0 d-flex flex-shrink-0 h-100 justify-content-center p-0 text-gray-700"
+                tabindex="0"
+                :aria-label="clearText">
+                <icon-x
+                    height="20px"
+                    width="20px" />
+            </autocomplete-cancel>
         </autocomplete-anchor>
         <autocomplete-portal>
             <autocomplete-content
@@ -242,6 +255,22 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
 
     &::placeholder {
         color: variables.$input-color-placeholder;
+    }
+}
+
+// ≥44px square so it is comfortably tappable; a flex sibling of the input, so
+// it can never overlap the entered text
+.es-autocomplete-clear {
+    cursor: pointer;
+    width: 2.75rem;
+
+    &:hover {
+        color: variables.$gray-900;
+    }
+
+    &:focus-visible {
+        outline: 0.125rem solid variables.$blue-600;
+        outline-offset: -0.25rem;
     }
 }
 

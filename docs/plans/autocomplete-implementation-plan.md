@@ -391,8 +391,12 @@ Open questions raised during planning, with the decisions now reflected inline a
    Places quota concern, which stays app-level.
 7. **No Android back-button/history handling** (§4b) — router-conflict risk; the
    takeover instead has an always-visible Cancel button (+ Escape). A clear-input X
-   (Reka `AutocompleteCancel`) is a possible iteration and must stay visually distinct
-   from Cancel.
+   (Reka `AutocompleteCancel`) was added 2026-07-06 (per Baymard's clear-button
+   examples): an `icon-x` button inside the right edge of the input, shown only when
+   the input has text, ≥44px tap target, rendered as a flex sibling so it can never
+   overlap the entered text, with an i18n-able `clearText` aria-label. It clears the
+   value and refocuses the input. Visually distinct from the takeover's Cancel text
+   button, as required.
 8. **Title-casing is the consumer's data responsibility** — the component renders
    suggestion text as given; document this on the docs page.
 9. **Empty results keep the panel open** (§5a, `noResultsText`) — supersedes the
