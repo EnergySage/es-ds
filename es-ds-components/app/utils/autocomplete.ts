@@ -4,9 +4,10 @@ import type { EsAutocompleteTextSegment } from '../types';
  * Split a line of text into segments for predictive bolding, the same way the
  * default EsAutocomplete item renderer does. Matching is token-based, as in most
  * typeahead libraries: the query is split on whitespace and every token is matched
- * case-insensitively at word starts (all occurrences), so query terms may appear in
- * any order — "boston main" highlights both "Main" in "123 Main St" and "Boston" in
- * "Boston, MA 02108".
+ * case-insensitively (all occurrences), so query terms may appear in any order —
+ * "boston main" highlights both "Main" in "123 Main St" and "Boston" in
+ * "Boston, MA 02108". Word-start matches are preferred; a token that never matches
+ * at a word start falls back to matching anywhere ("3" highlights within "123").
  *
  * Matched portions are non-predictive (render them regular — the user typed them);
  * everything else is predictive (render it bold — what selecting would add):
@@ -39,10 +40,23 @@ export function splitAutocompleteText(text: string, query: string): EsAutocomple
  */
 export function splitAutocompleteTextLines(lines: string[], query: string): EsAutocompleteTextSegment[][] {
     const tokens = [...new Set(query.trim().toLowerCase().split(/\s+/).filter(Boolean))];
-    const rangesPerLine = lines.map((line) => findTokenRanges(line, tokens));
-    const anyLineMatches = rangesPerLine.some((ranges) => ranges.length > 0);
+
+    // per token: prefer word-start matches ("st" matches the "St" in "Beacon St",
+    // not "Boston"); only when a token never matches at any word start, fall back
+    // to matching it anywhere (so "3" still highlights within "123")
+    const rangesPerLine: Array<Array<[number, number]>> = lines.map(() => []);
+    for (const token of tokens) {
+        const wordStartRanges = lines.map((line) => findTokenRanges(line, token, true));
+        const chosenRanges = wordStartRanges.some((ranges) => ranges.length > 0)
+            ? wordStartRanges
+            : lines.map((line) => findTokenRanges(line, token, false));
+        chosenRanges.forEach((ranges, lineIndex) => rangesPerLine[lineIndex]!.push(...ranges));
+    }
+
+    const mergedPerLine = rangesPerLine.map(mergeRanges);
+    const anyLineMatches = mergedPerLine.some((ranges) => ranges.length > 0);
     return lines.map((line, lineIndex) => {
-        const ranges = rangesPerLine[lineIndex]!;
+        const ranges = mergedPerLine[lineIndex]!;
         if (!ranges.length) {
             return [{ predictive: anyLineMatches, text: line }];
         }
@@ -50,23 +64,23 @@ export function splitAutocompleteTextLines(lines: string[], query: string): EsAu
     });
 }
 
-/** merged [start, end) ranges of all word-start token matches within the text */
-function findTokenRanges(text: string, tokens: string[]): Array<[number, number]> {
+/** [start, end) ranges where the token occurs within the text */
+function findTokenRanges(text: string, token: string, wordStartsOnly: boolean): Array<[number, number]> {
     const textLower = text.toLowerCase();
     const isWordChar = (character: string | undefined) => !!character && /[\p{L}\p{N}]/u.test(character);
 
     const ranges: Array<[number, number]> = [];
-    for (const token of tokens) {
-        let index = textLower.indexOf(token);
-        while (index !== -1) {
-            // word starts only: "st" matches the "St" in "Beacon St", not "Boston"
-            if (!isWordChar(textLower[index - 1])) {
-                ranges.push([index, index + token.length]);
-            }
-            index = textLower.indexOf(token, index + 1);
+    let index = textLower.indexOf(token);
+    while (index !== -1) {
+        if (!wordStartsOnly || !isWordChar(textLower[index - 1])) {
+            ranges.push([index, index + token.length]);
         }
+        index = textLower.indexOf(token, index + 1);
     }
+    return ranges;
+}
 
+function mergeRanges(ranges: Array<[number, number]>): Array<[number, number]> {
     ranges.sort((a, b) => a[0] - b[0]);
     const merged: Array<[number, number]> = [];
     for (const range of ranges) {

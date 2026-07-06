@@ -279,6 +279,9 @@ es-ds-components/app/
     es-autocomplete-desktop.vue   # popover shell (§4a) + dim overlay
     es-autocomplete-mobile.vue    # Dialog takeover shell (§4b)
     es-autocomplete-item.vue      # item renderer: predictive bolding + scope styling
+    es-autocomplete-suggestion-text.vue  # public inline renderer of predictive-bolding
+                                  # segments; takes text+query, or pre-computed segments
+                                  # (from splitAutocompleteTextLines or API match offsets)
   composables/
     fit-to-viewport.ts            # measure-then-trim (§3), visualViewport-aware
   utils/
@@ -426,14 +429,20 @@ Open questions raised during planning, with the decisions now reflected inline a
     the same pattern `ZipOrAddressInput` uses around PrimeVue today.
 11. **Predictive bolding is token-based and presentation-only** (2026-07-06): the
     `splitAutocompleteText` utility (also used by the default item renderer) splits
-    the query on whitespace and matches each token case-insensitively at word starts,
-    so query terms highlight in any order ("boston main"). It never decides what
+    the query on whitespace and matches each token case-insensitively, preferring
+    word starts ("st" matches "St", not the middle of "Boston") and falling back to
+    anywhere for tokens with no word-start match ("3" highlights within "123"), so
+    query terms highlight in any order ("boston main"). It never decides what
     matches — the app's suggestion source already did — so a backend match it cannot
     see (typo tolerance, synonyms) benignly renders regular rather than wrongly bold.
     For suggestions rendered as multiple lines, `splitAutocompleteTextLines` decides
     bolding across all lines together: a line without its own token match still
     renders fully bold when another line matched, since it is part of what selecting
-    adds (no match anywhere → everything regular). The DS deliberately ships no
+    adds (no match anywhere → everything regular). The `EsAutocompleteSuggestionText`
+    component (also used by the default item renderer) renders the segments so apps
+    don't hand-roll the span loop: pass `text` + `query` for a single string, or
+    pre-computed `segments` (from `splitAutocompleteTextLines` or from API match
+    offsets), with app classes applied directly to it. The DS deliberately ships no
     API-specific helpers (e.g. for Google Places `matched_substrings` offsets): apps
     whose search API returns match offsets build their own segments in a custom
     `item` slot renderer.

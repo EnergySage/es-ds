@@ -7,16 +7,11 @@ interface Props {
     suggestion: EsAutocompleteSuggestion;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
 const emit = defineEmits<{
     select: [suggestion: EsAutocompleteSuggestion];
 }>();
-
-// the query-matching portion renders regular weight and the predictive portions
-// render bold, so users scan what would be ADDED to their query (the inverse of
-// most libraries); custom item renderers can reuse splitAutocompleteText directly
-const segments = computed(() => splitAutocompleteText(props.suggestion.text, props.query));
 </script>
 
 <template>
@@ -28,14 +23,12 @@ const segments = computed(() => splitAutocompleteText(props.suggestion.text, pro
         <slot
             :query="query"
             :suggestion="suggestion">
-            <span>
-                <span
-                    v-for="(segment, index) in segments"
-                    :key="index"
-                    :class="{ 'font-weight-bold': segment.predictive }"
-                    >{{ segment.text }}</span
-                >
-            </span>
+            <!-- the query-matching portions render regular weight and the predictive
+                 portions render bold, so users scan what would be ADDED to their
+                 query (the inverse of most libraries) -->
+            <es-autocomplete-suggestion-text
+                :query="query"
+                :text="suggestion.text" />
             <span
                 v-if="suggestion.scope"
                 class="es-autocomplete-item-scope text-gray-700">

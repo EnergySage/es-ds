@@ -325,8 +325,9 @@ const autocompleteSlots = [
         'suggestion, query',
         `
         Custom renderer for each suggestion. When not provided, the suggestion text is rendered with the
-        predictive portion bolded, plus the scope label if present. Use the splitAutocompleteText utility
-        to apply the same predictive bolding to your own text (see the custom item rendering example).
+        predictive portion bolded, plus the scope label if present. Use the EsAutocompleteSuggestionText
+        component to apply the same predictive bolding to your own text (see the custom item rendering
+        example).
         `,
     ],
     [
@@ -457,16 +458,17 @@ const autocompleteSlots = [
             <h2>Custom item rendering</h2>
             <p>
                 Use the <code>item</code> slot to control how each suggestion renders, e.g. a two-line address
-                suggestion. To reproduce the predictive-portion bolding of the default renderer, call the
-                <code>splitAutocompleteText(text, query)</code> utility (auto-imported from
-                <code>es-ds-components</code>) on a line of text — or
-                <code>splitAutocompleteTextLines(lines, query)</code> when several lines form one suggestion, so a line
-                without its own match still renders bold when another line matched. Matching is token by token at word
-                starts, in any order; both utilities return segments with a <code>predictive</code> flag telling you
-                which portions to bold. Try typing <code>main</code>, <code>boston main</code> (out of order), or
-                <code>beacon</code> (second line bolds as part of the suggestion). If your search API returns its own
-                match offsets (e.g. Google Places matched substrings), build the segments from those offsets here
-                instead.
+                suggestion. To reproduce the predictive-portion bolding of the default renderer, render a line of text
+                with <code>&lt;es-autocomplete-suggestion-text :text="line" :query="query" /&gt;</code> — put your own
+                classes (font size, etc.) directly on it. Matching is token by token, in any order, preferring word
+                starts and falling back to in-word matches when a term only occurs mid-word (try <code>3</code>). When
+                several lines form one suggestion, compute all lines at once with the
+                <code>splitAutocompleteTextLines(lines, query)</code> utility (auto-imported from
+                <code>es-ds-components</code>) and pass each line's result via the <code>segments</code> prop, so a
+                line without its own match still renders bold when another line matched — that's what this example
+                does. Try typing <code>main</code>, <code>boston main</code> (out of order), or <code>beacon</code>
+                (second line bolds as part of the suggestion). If your search API returns its own match offsets (e.g.
+                Google Places matched substrings), build the segments from those offsets and pass them the same way.
             </p>
             <div class="row">
                 <div class="col-md-6">
@@ -479,18 +481,12 @@ const autocompleteSlots = [
                         @complete="onAddressComplete"
                         @select="onAddressSelect">
                         <template #item="{ suggestion, query }">
-                            <span
+                            <es-autocomplete-suggestion-text
                                 v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"
                                 :key="lineIndex"
                                 class="d-block"
-                                :class="{ 'font-size-50': lineIndex === 1 }">
-                                <span
-                                    v-for="(segment, index) in lineSegments"
-                                    :key="index"
-                                    :class="{ 'font-weight-bold': segment.predictive }"
-                                    >{{ segment.text }}</span
-                                >
-                            </span>
+                                :class="{ 'font-size-50': lineIndex === 1 }"
+                                :segments="lineSegments" />
                         </template>
                     </es-autocomplete>
                     <p class="text-muted">Selected: {{ selectedAddress || 'None' }}</p>
