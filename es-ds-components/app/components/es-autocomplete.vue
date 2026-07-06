@@ -58,9 +58,9 @@ const effectiveSuggestions = computed(() => {
 let searchTimeout: ReturnType<typeof setTimeout> | null = null;
 let lastSelectedText: string | null = null;
 
-// whether the app's most recent suggestions update was empty — this is what lets
-// the shells distinguish "search found nothing" (show noResultsText) from "no
-// search has answered yet" (show promptText)
+// whether the app's most recent suggestions update was empty — this is what
+// distinguishes "search found nothing" (show noResultsText) from "no search has
+// answered yet" (show promptText)
 const noResults = ref(false);
 watch(
     () => props.suggestions,
@@ -68,6 +68,17 @@ watch(
         noResults.value = list.length === 0;
     },
 );
+
+// what an open panel shows when there are no suggestions to render: the
+// no-results message once a search has actually come back empty, otherwise
+// the prompt (nothing searched yet, or the query is below minChars)
+const queryLongEnough = computed(() => model.value.trim().length >= props.minChars);
+const panelMessage = computed(() => {
+    if (effectiveSuggestions.value.length) {
+        return '';
+    }
+    return noResults.value && queryLongEnough.value ? props.noResultsText : props.promptText;
+});
 
 watch(model, (newValue) => {
     if (searchTimeout) {
@@ -128,11 +139,8 @@ function onSubmit(query: string) {
             :disabled="disabled"
             :label="label"
             :label-sr-only="labelSrOnly"
-            :min-chars="minChars"
-            :no-results="noResults"
-            :no-results-text="noResultsText"
+            :panel-message="panelMessage"
             :placeholder="placeholder"
-            :prompt-text="promptText"
             :required="required"
             :state="state"
             :suggestions="effectiveSuggestions"
@@ -155,11 +163,8 @@ function onSubmit(query: string) {
             :disabled="disabled"
             :label="label"
             :label-sr-only="labelSrOnly"
-            :min-chars="minChars"
-            :no-results="noResults"
-            :no-results-text="noResultsText"
+            :panel-message="panelMessage"
             :placeholder="placeholder"
-            :prompt-text="promptText"
             :required="required"
             :state="state"
             :suggestions="effectiveSuggestions"

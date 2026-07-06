@@ -13,6 +13,8 @@ import type { EsAutocompleteSuggestion } from '../types';
 // further reduced by the fit-to-viewport trim
 const MAX_VISIBLE = 10;
 
+// defaults live on the public es-autocomplete.vue wrapper, which always binds
+// every prop; declaring them again here would be dead code that could drift
 interface Props {
     clearText?: string;
     describedBy: string;
@@ -20,28 +22,14 @@ interface Props {
     id: string;
     label: string;
     labelSrOnly?: boolean;
-    minChars?: number;
-    noResults?: boolean;
-    noResultsText?: string;
+    panelMessage: string;
     placeholder?: string;
-    promptText?: string;
     required?: boolean;
     state?: boolean | null;
     suggestions: EsAutocompleteSuggestion[];
 }
 
-const props = withDefaults(defineProps<Props>(), {
-    clearText: 'Clear',
-    disabled: false,
-    labelSrOnly: false,
-    minChars: 1,
-    noResults: false,
-    noResultsText: 'No results found',
-    placeholder: '',
-    promptText: 'Type for suggestions',
-    required: false,
-    state: null,
-});
+const props = defineProps<Props>();
 
 const emit = defineEmits<{
     select: [suggestion: EsAutocompleteSuggestion];
@@ -53,27 +41,21 @@ const model = defineModel<string>({ default: '' });
 const open = ref(false);
 const contentRef = ref<ComponentPublicInstance | null>(null);
 const inputRef = ref<ComponentPublicInstance | null>(null);
-
-// Reka auto-highlights the first item whenever results arrive from an empty list,
-// which is NOT a user choice — Enter must submit the typed query then, not select.
-// Only a highlight the user created (arrow keys or pointer movement over the panel)
-// makes Enter select. Reset whenever the list content changes or the panel reopens.
-const userHighlighted = ref(false);
-watch(
-    () => props.suggestions.map((suggestion) => suggestion.id).join('\n'),
-    () => {
-        userHighlighted.value = false;
-    },
-);
-
 const contentEl = useAutocompleteContentEl(contentRef, open);
-watch(open, () => {
-    userHighlighted.value = false;
-});
-const suggestionsRef = computed(() => props.suggestions);
-const { measured, visibleSuggestions } = useFitToViewport(contentEl, suggestionsRef, MAX_VISIBLE);
+const { measured, visibleSuggestions } = useFitToViewport(contentEl, toRef(props, 'suggestions'), MAX_VISIBLE);
 
-const queryLongEnough = computed(() => (model.value ?? '').trim().length >= props.minChars);
+const { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight } = useAutocompleteShell({
+    close: () => {
+        open.value = false;
+    },
+    contentEl,
+    emitSelect: (suggestion) => emit('select', suggestion),
+    emitSubmit: (query) => emit('submit', query),
+    inputRef,
+    model,
+    suggestions: () => props.suggestions,
+});
+watch(open, resetUserHighlight);
 
 // The panel and overlay stay up for the entire interaction: they open when the
 // field gains focus and close when focus leaves it (or on Escape/select/submit).
@@ -116,52 +98,6 @@ function onPanelMousedown(event: MouseEvent) {
         event.preventDefault();
     }
 }
-
-// what the open panel shows when there are no suggestions to render: the
-// no-results message once a search has actually come back empty, otherwise
-// the prompt (nothing searched yet, or the query is below minChars)
-const panelMessage = computed(() => {
-    if (props.suggestions.length) {
-        return '';
-    }
-    return props.noResults && queryLongEnough.value ? props.noResultsText : props.promptText;
-});
-
-// runs in the capture phase on the anchor, ahead of Reka's input-level handler
-function onEnterKey(event: KeyboardEvent) {
-    // only Enter from the input itself submits — Enter on the clear button (also
-    // inside the anchor) is a click and must reach the button
-    if (event.target !== inputRef.value?.$el) {
-        return;
-    }
-    // the Enter that commits an IME composition (Japanese/Chinese/Korean input)
-    // is not a submit
-    if (event.isComposing) {
-        return;
-    }
-    // highlight checked via the DOM rather than Reka's exposed highlightedElement,
-    // which can hold a stale (detached) element after the list re-renders
-    if (userHighlighted.value && contentEl.value?.querySelector('[data-highlighted]')) {
-        // let the event through to Reka, which selects the highlighted item
-        return;
-    }
-    // keep Reka from selecting an auto-highlighted item the user never chose, and
-    // keep a surrounding <form> from natively submitting
-    event.preventDefault();
-    event.stopPropagation();
-    open.value = false;
-    emit('submit', model.value ?? '');
-}
-
-function onSelect(suggestion: EsAutocompleteSuggestion) {
-    open.value = false;
-    emit('select', suggestion);
-}
-
-function onClear() {
-    model.value = '';
-    (inputRef.value?.$el as HTMLElement | undefined)?.focus();
-}
 </script>
 
 <template>
@@ -173,18 +109,11 @@ function onClear() {
         :disabled="disabled"
         :open="open"
         @update:open="onOpenChange">
-        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
-        <label
-            class="label justify-content-start"
-            :class="{ 'sr-only': labelSrOnly }"
-            :for="id">
-            {{ label }}
-            <span
-                v-if="required"
-                class="text-danger">
-                *
-            </span>
-        </label>
+        <es-autocomplete-label
+            :html-for="id"
+            :label="label"
+            :label-sr-only="labelSrOnly"
+            :required="required" />
         <autocomplete-anchor
             class="es-autocomplete-field es-form-input form-control align-items-center d-flex p-0"
             :class="{
@@ -204,18 +133,12 @@ function onClear() {
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :required="required"
-                @keydown.down="userHighlighted = true"
-                @keydown.up="userHighlighted = true" />
-            <button
+                @keydown.down="markUserHighlight"
+                @keydown.up="markUserHighlight" />
+            <es-autocomplete-clear-button
                 v-if="model && !disabled"
-                class="es-autocomplete-clear align-items-center bg-transparent border-0 d-flex flex-shrink-0 h-100 justify-content-center p-0 text-gray-700"
-                type="button"
-                :aria-label="clearText"
-                @click="onClear">
-                <icon-x
-                    height="20px"
-                    width="20px" />
-            </button>
+                :clear-text="clearText"
+                @clear="onClear" />
         </autocomplete-anchor>
         <autocomplete-portal>
             <autocomplete-content
@@ -228,7 +151,7 @@ function onClear() {
                 ]"
                 :side-offset="4"
                 @mousedown="onPanelMousedown"
-                @pointermove="userHighlighted = true">
+                @pointermove="markUserHighlight">
                 <es-autocomplete-item
                     v-for="suggestion in visibleSuggestions"
                     :key="suggestion.id"
@@ -300,22 +223,6 @@ function onClear() {
 
     &::placeholder {
         color: variables.$input-color-placeholder;
-    }
-}
-
-// ≥44px square so it is comfortably tappable; a flex sibling of the input, so
-// it can never overlap the entered text
-.es-autocomplete-clear {
-    cursor: pointer;
-    width: 2.75rem;
-
-    &:hover {
-        color: variables.$gray-900;
-    }
-
-    &:focus-visible {
-        outline: 0.125rem solid variables.$blue-600;
-        outline-offset: -0.25rem;
     }
 }
 
