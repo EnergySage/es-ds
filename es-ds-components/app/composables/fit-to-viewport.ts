@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
 /**
@@ -88,7 +88,33 @@ export function useFitToViewport(
         }
     });
 
+    // the ResizeObserver watches the container, whose height the trim itself
+    // controls — so when the available height GROWS, a trimmed container never
+    // resizes and the observer stays silent. Window resizes re-measure directly
+    // so the list can grow back after the viewport gets taller.
+    let resizeFrame: number | null = null;
+    function onWindowResize() {
+        if (!contentEl.value) {
+            return;
+        }
+        if (resizeFrame !== null) {
+            cancelAnimationFrame(resizeFrame);
+        }
+        // wait a frame so the popper's own resize handling has updated the
+        // available-height constraint before we measure against it (also
+        // coalesces resize-event bursts to one measure per frame)
+        resizeFrame = requestAnimationFrame(() => {
+            resizeFrame = null;
+            remeasure();
+        });
+    }
+
+    onMounted(() => {
+        window.addEventListener('resize', onWindowResize);
+    });
+
     onBeforeUnmount(() => {
+        window.removeEventListener('resize', onWindowResize);
         resizeObserver?.disconnect();
         resizeObserver = null;
     });
