@@ -190,8 +190,8 @@ const autocompleteProps = [
         'String',
         'No results found',
         `
-        Message shown inside the suggestions panel when a search returns no suggestions. Only shown after
-        suggestions have appeared at least once, so it never flashes while the first search is in flight.
+        Message shown inside the suggestions panel once a search has come back with no suggestions. Never
+        shown while a search is still in flight (promptText shows instead).
         `,
     ],
     [
@@ -200,6 +200,15 @@ const autocompleteProps = [
         'n/a',
         `
         Text to display inside the input when it is empty.
+        `,
+    ],
+    [
+        'promptText',
+        'String',
+        'Type for suggestions',
+        `
+        Message shown inside the suggestions panel when there is nothing else to show: before typing begins,
+        below minChars, or while the first search is in flight.
         `,
     ],
     [
@@ -306,6 +315,11 @@ const autocompleteSlots = [
                 filtering. Listen for the <code>complete</code> event, then update the <code>suggestions</code> prop
                 with at most 10 items. The component further trims the list so it always fits on screen without
                 scrolling, and it renders the <em>predictive</em> portion of each suggestion in bold.
+            </p>
+            <p>
+                On desktop, the suggestions panel and page-dim overlay open when the input gains focus and close when
+                it loses focus, staying up for the entire interaction. Before there is anything to show, the panel
+                displays <code>promptText</code>; a search that comes back empty displays <code>noResultsText</code>.
             </p>
             <p>
                 On viewports below the <code>md</code> breakpoint, tapping the input opens a full-screen takeover with

@@ -23,8 +23,10 @@ interface Props {
     label: string;
     labelSrOnly?: boolean;
     minChars?: number;
+    noResults?: boolean;
     noResultsText?: string;
     placeholder?: string;
+    promptText?: string;
     required?: boolean;
     state?: boolean | null;
     suggestions: EsAutocompleteSuggestion[];
@@ -35,8 +37,10 @@ const props = withDefaults(defineProps<Props>(), {
     disabled: false,
     labelSrOnly: false,
     minChars: 1,
+    noResults: false,
     noResultsText: 'No results found',
     placeholder: '',
+    promptText: 'Type for suggestions',
     required: false,
     state: null,
 });
@@ -49,7 +53,6 @@ const emit = defineEmits<{
 const model = defineModel<string>({ default: '' });
 
 const open = ref(false);
-const inputHasFocus = ref(false);
 const contentRef = ref<ComponentPublicInstance | null>(null);
 
 // $el is not reactive (and is a placeholder comment node while the panel is
@@ -66,41 +69,36 @@ const { measured, visibleSuggestions } = useFitToViewport(contentEl, suggestions
 
 const queryLongEnough = computed(() => (model.value ?? '').trim().length >= props.minChars);
 
-// Reka opens on typing regardless of whether there is anything to show; keep the
-// panel closed until the app has provided suggestions. Once open, it may stay open
-// with an empty list (the no-results message) so the overlay doesn't flicker.
+// The panel and overlay stay up for the entire interaction: they open when the
+// field gains focus and close when focus leaves it (or on Escape/select/submit).
+// Suggestion changes never open or close the panel — they only swap its content.
 function onOpenChange(value: boolean) {
-    open.value = value && (props.suggestions.length > 0 || (open.value && queryLongEnough.value));
+    open.value = value;
 }
 
-const showNoResults = computed(() => !props.suggestions.length && queryLongEnough.value);
+function onFocusIn() {
+    if (!props.disabled) {
+        open.value = true;
+    }
+}
 
-// clearing the input below minChars must close the panel even when the suggestion
-// ids don't change (e.g. from the no-results state, where the list is already empty)
-watch(queryLongEnough, (longEnough) => {
-    if (!longEnough && !props.suggestions.length) {
+function onFocusOut(event: FocusEvent) {
+    // ignore focus moves within the field (input <-> clear button)
+    const field = event.currentTarget as HTMLElement;
+    if (!event.relatedTarget || !field.contains(event.relatedTarget as Node)) {
         open.value = false;
     }
-});
+}
 
-// watch the suggestion ids, not the array identity: the parent recomputes the array
-// on every model change (including selection), and reopening on identity alone would
-// pop the panel back open right after a suggestion is chosen
-watch(
-    () => props.suggestions.map((suggestion) => suggestion.id).join('\n'),
-    () => {
-        if (!props.suggestions.length) {
-            // a search came back empty: keep the panel (and overlay) up and show
-            // the no-results message instead of flickering closed — unless the
-            // query dropped below the minimum, which is not a "no results" case
-            if (!queryLongEnough.value) {
-                open.value = false;
-            }
-        } else if (inputHasFocus.value) {
-            open.value = true;
-        }
-    },
-);
+// what the open panel shows when there are no suggestions to render: the
+// no-results message once a search has actually come back empty, otherwise
+// the prompt (nothing searched yet, or the query is below minChars)
+const panelMessage = computed(() => {
+    if (props.suggestions.length) {
+        return '';
+    }
+    return props.noResults && queryLongEnough.value ? props.noResultsText : props.promptText;
+});
 
 function onEnterKey() {
     // Enter with a highlighted suggestion is handled by Reka (selection); Enter
@@ -124,6 +122,7 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
         v-model="model"
         class="d-none d-md-block"
         ignore-filter
+        open-on-click
         :disabled="disabled"
         :open="open"
         @update:open="onOpenChange">
@@ -145,7 +144,9 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                 'is-invalid': state === false,
                 'es-autocomplete-field--raised': open,
                 'es-autocomplete-field--disabled': disabled,
-            }">
+            }"
+            @focusin="onFocusIn"
+            @focusout="onFocusOut">
             <autocomplete-input
                 :id="id"
                 class="es-autocomplete-input h-100 w-100 px-100"
@@ -154,8 +155,6 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :required="required"
-                @blur="inputHasFocus = false"
-                @focus="inputHasFocus = true"
                 @keydown.enter="onEnterKey" />
             <!-- tabindex overrides the -1 Reka renders, so keyboard users can reach the button -->
             <autocomplete-cancel
@@ -198,9 +197,9 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                     </es-autocomplete-item>
                 </template>
                 <div
-                    v-if="showNoResults"
+                    v-if="panelMessage"
                     class="es-autocomplete-no-results px-100 py-50 text-gray-700">
-                    {{ noResultsText }}
+                    {{ panelMessage }}
                 </div>
             </autocomplete-content>
         </autocomplete-portal>

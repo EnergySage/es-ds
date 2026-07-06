@@ -12,6 +12,7 @@ interface Props {
     minChars?: number;
     noResultsText?: string;
     placeholder?: string;
+    promptText?: string;
     required?: boolean;
     state?: boolean | null;
     suggestions: EsAutocompleteSuggestion[];
@@ -26,6 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
     minChars: 1,
     noResultsText: 'No results found',
     placeholder: '',
+    promptText: 'Type for suggestions',
     required: false,
     state: null,
 });
@@ -61,6 +63,17 @@ const orderedSuggestions = computed(() => {
 let searchTimeout: ReturnType<typeof setTimeout> | null = null;
 let lastSelectedText: string | null = null;
 
+// whether the app's most recent suggestions update was empty — this is what lets
+// the shells distinguish "search found nothing" (show noResultsText) from "no
+// search has answered yet" (show promptText)
+const noResults = ref(false);
+watch(
+    () => props.suggestions,
+    (list) => {
+        noResults.value = list.length === 0;
+    },
+);
+
 watch(model, (newValue) => {
     if (searchTimeout) {
         clearTimeout(searchTimeout);
@@ -75,6 +88,9 @@ watch(model, (newValue) => {
     lastSelectedText = null;
     const query = (newValue ?? '').trim();
     if (query.length < props.minChars) {
+        // a fresh (or cleared) query starts from the prompt state, not a stale
+        // "no results" from the previous query
+        noResults.value = false;
         return;
     }
     searchTimeout = setTimeout(() => {
@@ -115,8 +131,10 @@ function onSubmit(query: string) {
             :label="label"
             :label-sr-only="labelSrOnly"
             :min-chars="minChars"
+            :no-results="noResults"
             :no-results-text="noResultsText"
             :placeholder="placeholder"
+            :prompt-text="promptText"
             :required="required"
             :state="state"
             :suggestions="orderedSuggestions"
@@ -140,8 +158,10 @@ function onSubmit(query: string) {
             :label="label"
             :label-sr-only="labelSrOnly"
             :min-chars="minChars"
+            :no-results="noResults"
             :no-results-text="noResultsText"
             :placeholder="placeholder"
+            :prompt-text="promptText"
             :required="required"
             :state="state"
             :suggestions="orderedSuggestions"

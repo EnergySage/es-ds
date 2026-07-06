@@ -402,3 +402,12 @@ Open questions raised during planning, with the decisions now reflected inline a
 9. **Empty results keep the panel open** (§5a, `noResultsText`) — supersedes the
    original closed-when-empty behavior after it proved to be a jarring overlay flicker
    when a longer query stopped matching mid-typing.
+   **Revised 2026-07-06 (e-commerce-style focus model):** on desktop the panel and
+   overlay now open on input focus and close on blur (or Escape/select/submit),
+   staying up for the entire interaction — suggestion changes only swap the panel's
+   content, never open or close it. With nothing to show, the panel displays a
+   `promptText` message (default "Type for suggestions"); once a search has actually
+   come back empty (tracked by the parent from suggestions-prop updates, so it never
+   shows mid-flight), it displays `noResultsText` — including for a first query that
+   never matches anything. The mobile takeover shows the same prompt/no-results
+   messages in its list area.

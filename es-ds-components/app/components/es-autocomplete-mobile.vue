@@ -30,8 +30,10 @@ interface Props {
     label: string;
     labelSrOnly?: boolean;
     minChars?: number;
+    noResults?: boolean;
     noResultsText?: string;
     placeholder?: string;
+    promptText?: string;
     required?: boolean;
     state?: boolean | null;
     suggestions: EsAutocompleteSuggestion[];
@@ -43,8 +45,10 @@ const props = withDefaults(defineProps<Props>(), {
     disabled: false,
     labelSrOnly: false,
     minChars: 1,
+    noResults: false,
     noResultsText: 'No results found',
     placeholder: '',
+    promptText: 'Type for suggestions',
     required: false,
     state: null,
 });
@@ -69,20 +73,17 @@ const contentEl = computed<HTMLElement | null>(() => {
 const suggestionsRef = computed(() => props.suggestions);
 const { measured, visibleSuggestions } = useFitToViewport(contentEl, suggestionsRef, MAX_VISIBLE);
 
-// show "no results" only after a search in this takeover session has returned
-// results at least once — never during the first fetch, when an empty list just
-// means the app hasn't answered yet
-const hadResults = ref(false);
 const queryLongEnough = computed(() => (model.value ?? '').trim().length >= props.minChars);
-const showNoResults = computed(() => hadResults.value && queryLongEnough.value && !props.suggestions.length);
-watch(
-    () => props.suggestions.length,
-    (length) => {
-        if (length) {
-            hadResults.value = true;
-        }
-    },
-);
+
+// what the list shows when there are no suggestions to render: the no-results
+// message once a search has actually come back empty (per the parent), otherwise
+// the prompt (nothing searched yet, or the query is below minChars)
+const panelMessage = computed(() => {
+    if (props.suggestions.length) {
+        return '';
+    }
+    return props.noResults && queryLongEnough.value ? props.noResultsText : props.promptText;
+});
 
 // 100dvh does not shrink when the iOS keyboard opens, so the list height is
 // derived from the visual viewport instead; the keyboard opening/closing is
@@ -100,7 +101,6 @@ function updateListHeight() {
 watch(takeoverOpen, async (isOpen) => {
     const viewport = window.visualViewport;
     if (isOpen) {
-        hadResults.value = props.suggestions.length > 0;
         await nextTick();
         updateListHeight();
         viewport?.addEventListener('resize', updateListHeight);
@@ -235,9 +235,9 @@ function onSelect(suggestion: EsAutocompleteSuggestion) {
                                 </es-autocomplete-item>
                             </template>
                             <div
-                                v-if="showNoResults"
+                                v-if="panelMessage"
                                 class="es-autocomplete-no-results px-100 py-50 text-gray-700">
-                                {{ noResultsText }}
+                                {{ panelMessage }}
                             </div>
                         </autocomplete-content>
                     </autocomplete-root>
