@@ -281,8 +281,14 @@ es-ds-components/app/
     es-autocomplete-item.vue      # item renderer: predictive bolding + scope styling
   composables/
     fit-to-viewport.ts            # measure-then-trim (§3), visualViewport-aware
+  utils/
+    autocomplete.ts               # splitAutocompleteText — token-based predictive-bolding
+                                  # segments (req #3), used by the default item renderer and
+                                  # exported for custom item slot renderers (auto-imported in
+                                  # consuming apps)
   types/
-    es-autocomplete.ts            # EsAutocompleteSuggestion (§5); re-export from types/index.ts
+    es-autocomplete.ts            # EsAutocompleteSuggestion + EsAutocompleteTextSegment (§5);
+                                  # re-export from types/index.ts
 
 es-ds-docs/app/
   pages/molecules/autocomplete.vue      # docs page (§7a)
@@ -418,3 +424,16 @@ Open questions raised during planning, with the decisions now reflected inline a
     event as a validation trigger (`state=false` + `errorMessage`) instead of a
     search. Demonstrated in the docs page's "Requiring a selection" example; this is
     the same pattern `ZipOrAddressInput` uses around PrimeVue today.
+11. **Predictive bolding is token-based and presentation-only** (2026-07-06): the
+    `splitAutocompleteText` utility (also used by the default item renderer) splits
+    the query on whitespace and matches each token case-insensitively at word starts,
+    so query terms highlight in any order ("boston main"). It never decides what
+    matches — the app's suggestion source already did — so a backend match it cannot
+    see (typo tolerance, synonyms) benignly renders regular rather than wrongly bold.
+    For suggestions rendered as multiple lines, `splitAutocompleteTextLines` decides
+    bolding across all lines together: a line without its own token match still
+    renders fully bold when another line matched, since it is part of what selecting
+    adds (no match anywhere → everything regular). The DS deliberately ships no
+    API-specific helpers (e.g. for Google Places `matched_substrings` offsets): apps
+    whose search API returns match offsets build their own segments in a custom
+    `item` slot renderer.

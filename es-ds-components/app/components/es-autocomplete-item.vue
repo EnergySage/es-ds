@@ -13,15 +13,10 @@ const emit = defineEmits<{
     select: [suggestion: EsAutocompleteSuggestion];
 }>();
 
-// the typed prefix renders regular weight and the predictive remainder renders bold,
-// so users scan what would be ADDED to their query (the inverse of most libraries)
-const typedLength = computed(() => {
-    const query = props.query.trim();
-    if (query && props.suggestion.text.toLowerCase().startsWith(query.toLowerCase())) {
-        return query.length;
-    }
-    return props.suggestion.text.length;
-});
+// the query-matching portion renders regular weight and the predictive portions
+// render bold, so users scan what would be ADDED to their query (the inverse of
+// most libraries); custom item renderers can reuse splitAutocompleteText directly
+const segments = computed(() => splitAutocompleteText(props.suggestion.text, props.query));
 </script>
 
 <template>
@@ -34,8 +29,12 @@ const typedLength = computed(() => {
             :query="query"
             :suggestion="suggestion">
             <span>
-                <span>{{ suggestion.text.slice(0, typedLength) }}</span>
-                <span class="font-weight-bold">{{ suggestion.text.slice(typedLength) }}</span>
+                <span
+                    v-for="(segment, index) in segments"
+                    :key="index"
+                    :class="{ 'font-weight-bold': segment.predictive }"
+                    >{{ segment.text }}</span
+                >
             </span>
             <span
                 v-if="suggestion.scope"
