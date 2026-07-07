@@ -339,6 +339,24 @@ wired into `make test` and therefore the ci.yml PR workflow):**
   (submit vs select vs ignore: auto-highlight vs user highlight, IME composition,
   Enter from the clear button) plus select/clear behavior. These encode the two
   Enter regressions found during the code review.
+- `app/composables/autocomplete-search.test.ts` — the debounced `complete`
+  contract: one emission per typing pause with the trimmed query, minChars gating,
+  suppression after selection, cancellation on submit/unmount so a late response
+  can never reopen the panel, and the prompt → results → no-results →
+  prompt-while-pending message lifecycle. Made unit-testable by extracting the
+  parent's search state into `useAutocompleteSearch` (2026-07-07), which removed
+  the need for the @nuxt/test-utils component test previously deferred below.
+- `app/composables/autocomplete-content-el.test.ts` — panel-element resolution:
+  resolves only real elements (never Reka's placeholder comment node), clears on
+  deactivate, re-resolves a swapped `$el`. Encodes the two `$el` bugs found during
+  development (ResizeObserver crash; panel stuck invisible).
+- `app/composables/fit-to-viewport.test.ts` — the trim counting/limit logic with
+  mocked geometry: only fully-fitting items count, non-item children consume space
+  but aren't counted, the min-1 floor, resolved max-height preferred over
+  content-sized clientHeight (the grow-back regression), clientHeight fallback for
+  the mobile list, re-measure on suggestion change. NOTE: happy-dom has no real
+  layout, so this covers the logic only — real-browser behavior belongs to the
+  deferred Playwright specs below.
 
 **Deferred — Playwright end-to-end specs (docs site as fixture).** Deliberately NOT
 built yet: the docs page is due a complete manual overhaul (examples are
@@ -362,12 +380,11 @@ docs site:
    closes. Optionally add an @axe-core/playwright scan of both layouts as an
    a11y smoke test.
 
-**Deferred — component test (Vitest + @nuxt/test-utils runtime environment).** The
-parent emit contract with fake timers: `complete` debounced to one emission per
-pause, suppressed after selection, and cancelled by submit/select so a late
-response cannot reopen the panel. Deferred with the Playwright work for the same
-reason (its observable behavior will ride along in e2e spec 1) and because
-@nuxt/test-utils is the one genuinely new piece of test infrastructure it needs.
+**No longer deferred — the component test.** The parent emit contract (debounce,
+suppression, cancellation) was originally deferred because testing it required
+mounting the SFC under @nuxt/test-utils; extracting the logic into
+`useAutocompleteSearch` (2026-07-07) made it a plain Vitest with fake timers
+instead — see `autocomplete-search.test.ts` above. No @nuxt/test-utils needed.
 
 ### 8b. Repo quality gates (must pass)
 

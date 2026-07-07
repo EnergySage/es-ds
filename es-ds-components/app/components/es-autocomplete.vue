@@ -47,94 +47,19 @@ const helpId = computed(() => `${props.id}-help`);
 const showError = computed(() => props.state === false && (!!slots.errorMessage || props.required));
 const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId.value}` : helpId.value));
 
-// pass an empty list below minChars so no suggestions show for too-short queries;
-// the shared constant keeps the computed referentially stable across keystrokes,
-// so downstream watchers don't re-fire for an unchanged empty list
-const EMPTY_SUGGESTIONS: EsAutocompleteSuggestion[] = [];
-const effectiveSuggestions = computed(() => {
-    if (model.value.trim().length < props.minChars) {
-        return EMPTY_SUGGESTIONS;
-    }
-    return props.suggestions;
+// the debounced 'complete' contract, minChars gating, and prompt/no-results
+// messaging live in useAutocompleteSearch so the contract is unit-testable
+const { effectiveSuggestions, onSelect, onSubmit, panelMessage } = useAutocompleteSearch({
+    delay: () => props.delay,
+    emitComplete: (query) => emit('complete', query),
+    emitSelect: (suggestion) => emit('select', suggestion),
+    emitSubmit: (query) => emit('submit', query),
+    minChars: () => props.minChars,
+    model,
+    noResultsText: () => props.noResultsText,
+    promptText: () => props.promptText,
+    suggestions: () => props.suggestions,
 });
-
-// one cancellable handle for the debounced 'complete': every terminal path
-// (selection, submit, short query, unmount) cancels through the same place so
-// a late-arriving response can never reopen the panel
-let searchTimeout: ReturnType<typeof setTimeout> | null = null;
-function cancelPendingComplete() {
-    if (searchTimeout) {
-        clearTimeout(searchTimeout);
-        searchTimeout = null;
-    }
-}
-function scheduleComplete(query: string) {
-    cancelPendingComplete();
-    searchTimeout = setTimeout(() => {
-        emit('complete', query);
-    }, props.delay);
-}
-
-let lastSelectedText: string | null = null;
-
-// whether the app's most recent suggestions update was empty — this is what
-// distinguishes "search found nothing" (show noResultsText) from "no search has
-// answered yet" (show promptText)
-const noResults = ref(false);
-watch(
-    () => props.suggestions,
-    (list) => {
-        noResults.value = list.length === 0;
-    },
-    // depth 1 so apps that mutate the array in place (push/splice) are seen too
-    { deep: 1 },
-);
-
-// what an open panel shows when there are no suggestions to render: the
-// no-results message once a search has actually come back empty, otherwise
-// the prompt (nothing searched yet, or the query is below minChars)
-const queryLongEnough = computed(() => model.value.trim().length >= props.minChars);
-const panelMessage = computed(() => {
-    if (effectiveSuggestions.value.length) {
-        return '';
-    }
-    return noResults.value && queryLongEnough.value ? props.noResultsText : props.promptText;
-});
-
-watch(model, (newValue) => {
-    cancelPendingComplete();
-    // selecting a suggestion copies its text into the input; that change is
-    // terminal and must not trigger another fetch
-    if (lastSelectedText !== null && newValue === lastSelectedText) {
-        lastSelectedText = null;
-        return;
-    }
-    lastSelectedText = null;
-    const query = newValue.trim();
-    if (query.length < props.minChars) {
-        // a fresh (or cleared) query starts from the prompt state, not a stale
-        // "no results" from the previous query
-        noResults.value = false;
-        return;
-    }
-    // the edited query's search is now pending: show promptText, not the previous
-    // query's "no results", until the app answers via the suggestions prop
-    noResults.value = false;
-    scheduleComplete(query);
-});
-
-onUnmounted(cancelPendingComplete);
-
-function onSelect(suggestion: EsAutocompleteSuggestion) {
-    lastSelectedText = suggestion.text;
-    emit('select', suggestion);
-}
-
-function onSubmit(query: string) {
-    // submitting is terminal for this query
-    cancelPendingComplete();
-    emit('submit', query);
-}
 </script>
 
 <template>
