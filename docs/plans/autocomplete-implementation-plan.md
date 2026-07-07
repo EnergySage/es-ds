@@ -321,12 +321,55 @@ doc-page pattern (see `pages/molecules/dropdown-select.vue`):
 
 ## 8. Testing & verification plan (adapted to es-ds)
 
-There is currently **no unit-test infrastructure** for `es-ds-components` (its `npm test`
-is a stub; the root `Makefile` has a TODO to add it). Do not build one as part of this
-work. Verification is via the repo's quality gates plus manual/browser checks against
-the docs page.
+Unit tests now exist for `es-ds-components` (Vitest, added 2026-07-07 — see §8a);
+end-to-end and component tests are documented below but deliberately deferred until
+after the planned docs-page overhaul. Beyond the automated tests, verification is
+via the repo's quality gates plus manual/browser checks against the docs page.
 
-### 8a. Repo quality gates (must pass)
+### 8a. Automated tests (partially implemented 2026-07-07)
+
+**Implemented — unit tests (Vitest, run by `npm --prefix es-ds-components run test`,
+wired into `make test` and therefore the ci.yml PR workflow):**
+
+- `app/utils/autocomplete.test.ts` — the predictive-bolding utilities: prefix and
+  out-of-order token matching, word-start preference with mid-word fallback,
+  no-match renders regular, cross-line bolding mode, and the invariant that
+  segments always reconstruct the input text exactly.
+- `app/composables/autocomplete-shell.test.ts` — the Enter-key decision matrix
+  (submit vs select vs ignore: auto-highlight vs user highlight, IME composition,
+  Enter from the clear button) plus select/clear behavior. These encode the two
+  Enter regressions found during the code review.
+
+**Deferred — Playwright end-to-end specs (docs site as fixture).** Deliberately NOT
+built yet: the docs page is due a complete manual overhaul (examples are
+inconsistent with each other and with other docs pages, and downstream integration
+of EsAutocomplete may reshape the examples toward real-world use), and these specs
+would assert against exactly those examples. Build them once the docs page is
+stable, in es-ds-docs with @playwright/test and a webServer config pointing at the
+docs site:
+
+1. Focus-model choreography: focus → panel + overlay + promptText; type → items;
+   empty response → stays open with noResultsText (promptText mid-flight); clear →
+   stays open with promptText; blur/tap-away → closes; select → closes and
+   populates v-model.
+2. Fit-to-viewport trim: at a short viewport only fully-fitting items render (no
+   clipping, no scrollbars), and the list grows back when the window grows
+   (regression for review finding 3). Layout-dependent — cannot be tested in
+   jsdom/happy-dom, must be a real browser.
+3. Mobile takeover (390px viewport): tap the fake field → dialog opens with the
+   real input already focused (the one-tap iOS keyboard prerequisite), trimmed
+   suggestions render, tap-select closes and updates the fake field, Cancel
+   closes. Optionally add an @axe-core/playwright scan of both layouts as an
+   a11y smoke test.
+
+**Deferred — component test (Vitest + @nuxt/test-utils runtime environment).** The
+parent emit contract with fake timers: `complete` debounced to one emission per
+pause, suppressed after selection, and cancelled by submit/select so a late
+response cannot reopen the panel. Deferred with the Playwright work for the same
+reason (its observable behavior will ride along in e2e spec 1) and because
+@nuxt/test-utils is the one genuinely new piece of test infrastructure it needs.
+
+### 8b. Repo quality gates (must pass)
 
 ```bash
 make install && make symlink   # once; symlinks local packages into es-ds-docs
@@ -345,7 +388,7 @@ hydration (§1a). Check with devtools mobile emulation + network throttling (slo
 hydration makes any pre-hydration flash obvious); any `v-if` on a JS breakpoint check
 for pre-interaction markup is the likely offender.
 
-### 8b. Manual verification checklist (definition of done)
+### 8c. Manual verification checklist (definition of done)
 
 On the docs page at `http://localhost:8500/molecules/autocomplete`:
 
@@ -369,7 +412,7 @@ On the docs page at `http://localhost:8500/molecules/autocomplete`:
 - [ ] Docs page renders correctly: examples, prop table, highlighted source via
       `ds-doc-source`, and the new nav link in `ds-molecules-list.vue`
 
-### 8c. Release notes (post-merge, when publishing)
+### 8d. Release notes (post-merge, when publishing)
 
 Per the repo's publishing workflow: bump `es-ds-components` version (minor — new
 component), update its `CHANGELOG.md` (keepachangelog format), publish styles first if
