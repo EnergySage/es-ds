@@ -56,17 +56,19 @@ const { measured, remeasure, visibleSuggestions } = useFitToViewport(
     MAX_VISIBLE,
 );
 
-const { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight } = useAutocompleteShell({
-    close: () => {
-        takeoverOpen.value = false;
+const { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight, userHighlighted } = useAutocompleteShell(
+    {
+        close: () => {
+            takeoverOpen.value = false;
+        },
+        contentEl,
+        emitSelect: (suggestion) => emit('select', suggestion),
+        emitSubmit: (query) => emit('submit', query),
+        inputRef,
+        model,
+        suggestions: () => props.suggestions,
     },
-    contentEl,
-    emitSelect: (suggestion) => emit('select', suggestion),
-    emitSubmit: (query) => emit('submit', query),
-    inputRef,
-    model,
-    suggestions: () => props.suggestions,
-});
+);
 
 // 100dvh does not shrink when the iOS keyboard opens, so the list height is
 // derived from the visual viewport instead; the keyboard opening/closing is
@@ -163,6 +165,7 @@ function onOpenAutoFocus(event: Event) {
                         class="d-flex flex-column flex-grow-1"
                         ignore-filter
                         open>
+                        <es-autocomplete-highlight-guard :user-highlighted="userHighlighted" />
                         <div class="align-items-center d-flex p-100">
                             <autocomplete-anchor
                                 class="es-autocomplete-field es-form-input form-control align-items-center d-flex flex-grow-1 p-0"

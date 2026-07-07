@@ -44,17 +44,19 @@ const inputRef = ref<ComponentPublicInstance | null>(null);
 const contentEl = useAutocompleteContentEl(contentRef, open);
 const { measured, visibleSuggestions } = useFitToViewport(contentEl, toRef(props, 'suggestions'), MAX_VISIBLE);
 
-const { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight } = useAutocompleteShell({
-    close: () => {
-        open.value = false;
+const { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight, userHighlighted } = useAutocompleteShell(
+    {
+        close: () => {
+            open.value = false;
+        },
+        contentEl,
+        emitSelect: (suggestion) => emit('select', suggestion),
+        emitSubmit: (query) => emit('submit', query),
+        inputRef,
+        model,
+        suggestions: () => props.suggestions,
     },
-    contentEl,
-    emitSelect: (suggestion) => emit('select', suggestion),
-    emitSubmit: (query) => emit('submit', query),
-    inputRef,
-    model,
-    suggestions: () => props.suggestions,
-});
+);
 watch(open, resetUserHighlight);
 
 // The panel and overlay stay up for the entire interaction: they open when the
@@ -109,6 +111,7 @@ function onPanelMousedown(event: MouseEvent) {
         :disabled="disabled"
         :open="open"
         @update:open="onOpenChange">
+        <es-autocomplete-highlight-guard :user-highlighted="userHighlighted" />
         <es-autocomplete-label
             :html-for="id"
             :label="label"

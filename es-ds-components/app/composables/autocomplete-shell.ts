@@ -86,5 +86,5 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
         focusInput();
     }
 
-    return { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight };
+    return { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight, userHighlighted };
 }
