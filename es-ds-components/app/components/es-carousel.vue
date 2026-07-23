@@ -128,14 +128,22 @@ const slidesToScrollBreakpoints = computed<EmblaOptionsType['breakpoints']>(() =
     [`(min-width: ${BREAKPOINTS.XXL}px)`]: { slidesToScroll: numScrollXxl.value },
 }));
 
-const emblaOptions = computed<EmblaOptionsType>(() => ({
-    align: 'start',
-    containScroll: 'trimSnaps',
-    duration: prefersReducedMotion.value ? 0 : undefined,
-    loop: props.circular,
-    slidesToScroll: numScrollXs.value,
-    breakpoints: slidesToScrollBreakpoints.value,
-}));
+const emblaOptions = computed<EmblaOptionsType>(() => {
+    const options: EmblaOptionsType = {
+        align: 'start',
+        containScroll: 'trimSnaps',
+        loop: props.circular,
+        slidesToScroll: numScrollXs.value,
+        breakpoints: slidesToScrollBreakpoints.value,
+    };
+    // only set `duration` when reducing motion (instant transition); otherwise omit the key
+    // entirely so Embla uses its default scroll animation. Passing `duration: undefined` would
+    // override that default with undefined and collapse the tween to an instant jump.
+    if (prefersReducedMotion.value) {
+        options.duration = 0;
+    }
+    return options;
+});
 
 // autoplay is a plugin; it's only added when the autoPlay prop is set. stopOnInteraction is false
 // so it matches the previous behavior of running until the user presses Esc.
