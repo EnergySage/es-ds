@@ -65,8 +65,8 @@ const propTableRows = [
     [
         'circular',
         'Boolean',
-        'true',
-        'Whether the carousel should stop paging at either end or start over from the beginning.',
+        'false',
+        'Whether the carousel should loop back to the beginning after reaching the end, instead of stopping at either end.',
     ],
     [
         'controlGap',
@@ -122,11 +122,11 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
     <div>
         <h1>Carousel</h1>
         <p class="mb-500">
-            Extended from
+            Built on
             <a
-                href="https://v3.primevue.org/carousel/"
+                href="https://www.embla-carousel.com/"
                 target="_blank">
-                PrimeVue Carousel
+                Embla Carousel
             </a>
         </p>
 
@@ -235,9 +235,8 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 the dots when the circular setting is enabled so the user knows when the end of the list is reached.
             </p>
             <p class="mb-200">
-                Unless paging is done in a rapid-fire succession (the carousel needs a split second to add more hidden
-                items after a page transition completes), the next set of items will always appear to come from the
-                same direction as all previous items, even when circling back to the beginning of the list.
+                The next set of items always appears to come from the same direction as all previous items, even when
+                circling back to the beginning of the list.
             </p>
             <es-carousel
                 :breakpoints="{
@@ -265,10 +264,14 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             <h2>Autoplay with circular behavior</h2>
             <p>This example shows autoplay behavior with circular mode enabled, to show a slideshow of images.</p>
             <p class="mb-200">
-                Pressing the Esc key will stop the autoplay and reset the carousel to the first item. This is an
-                important accessibility feature for screen readers, because the contents of each new slide brought into
-                view by autoplay are automatically read aloud, no matter where the user is on the page, which can be
-                distracting while trying to read through another part of the page.
+                Pressing the Esc key stops the autoplay. This is an important accessibility feature: it gives users a
+                way to stop the moving content (per
+                <a
+                    href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
+                    target="_blank">
+                    WCAG 2.2.2 </a
+                >). Note that a visible pause/play button is still needed so the control is reachable in mobile screen
+                readers; that's a follow-up pending a design pass.
             </p>
             <es-carousel
                 auto-play

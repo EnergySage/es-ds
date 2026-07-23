@@ -68,7 +68,6 @@ export default defineNuxtConfig({
                 'primevue/badgedirective',
                 'primevue/breadcrumb',
                 'primevue/button',
-                'primevue/carousel',
                 'primevue/column',
                 'primevue/datatable',
                 'primevue/dialog',
