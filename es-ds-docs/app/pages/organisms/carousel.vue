@@ -151,6 +151,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
+                            alt=""
                             class="mb-50 w-100"
                             :src="item.url" />
                         <p class="font-weight-semibold mb-0">
@@ -182,6 +183,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
+                            alt=""
                             class="mb-50 w-100"
                             :src="item.url" />
                         <p class="font-weight-semibold mb-0">
@@ -217,6 +219,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
+                            alt=""
                             class="mb-50 w-100"
                             :src="item.url" />
                         <p class="font-weight-semibold mb-0">
@@ -250,6 +253,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
+                            alt=""
                             class="mb-50 w-100"
                             :src="item.url" />
                         <p class="font-weight-semibold mb-0">
