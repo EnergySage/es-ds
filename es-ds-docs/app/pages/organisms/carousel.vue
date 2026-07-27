@@ -195,6 +195,40 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
         </div>
 
         <div class="my-500">
+            <h2>No arrows</h2>
+            <p class="mb-200">
+                When the arrows are turned off, the dots remain below the carousel and can still be clicked or tapped
+                to jump to a specific set of cards. Readers can also swipe or drag the cards themselves to move between
+                them.
+            </p>
+            <es-carousel
+                :breakpoints="{
+                    sm: {
+                        numScroll: 2,
+                        numVisible: 2,
+                    },
+                    lg: {
+                        numScroll: 3,
+                        numVisible: 3,
+                    },
+                }"
+                :items="basicExampleItems"
+                :show-arrows="false">
+                <template #item="{ item }">
+                    <es-card class="text-center">
+                        <nuxt-img
+                            alt=""
+                            class="mb-50 w-100"
+                            :src="item.url" />
+                        <p class="font-weight-semibold mb-0">
+                            {{ item.heading }}
+                        </p>
+                    </es-card>
+                </template>
+            </es-carousel>
+        </div>
+
+        <div class="my-500">
             <h2>Customization</h2>
             <p class="mb-200">
                 This example shows the ability to customize the gap between slides, the gap between the slides and the
