@@ -21,7 +21,7 @@ import type { EsCarouselBreakpointsInterface } from '../types';
 // defined as a constant here so we can easily change it if we need to
 const BASE_FONT_SIZE = 16;
 
-// constants that contribute to dots and controls sizing/spacing
+// constants that contribute to dots and control sizing/spacing
 const DOT_SIZE = 14;
 const DOT_SPACING = 16;
 const ARROW_BUTTON_PADDING = 8;
@@ -110,9 +110,6 @@ const controlsMarginTop = computed(() => `${props.controlGap / BASE_FONT_SIZE}re
 const arrowSize = computed(() => (props.arrowSize === 'lg' ? 32 : 24));
 const arrowSizePx = computed(() => `${arrowSize.value}px`);
 const arrowPadding = `${ARROW_BUTTON_PADDING / BASE_FONT_SIZE}rem`;
-
-// reserve vertical space for the controls row so dots appearing after hydration don't shift layout
-const controlsMinHeight = computed(() => `${Math.max(DOT_SIZE, arrowSize.value + ARROW_BUTTON_PADDING * 2)}px`);
 
 // whether the user prefers reduced motion; when true we make transitions instant
 const prefersReducedMotion = ref(false);
@@ -433,7 +430,6 @@ $num-dots-supported: 12;
 .es-carousel__controls {
     gap: v-bind(dotSpacing);
     margin-top: v-bind(controlsMarginTop);
-    min-height: v-bind(controlsMinHeight);
 }
 
 /* keeps the arrows a sensible distance apart when there are no dots between them */
