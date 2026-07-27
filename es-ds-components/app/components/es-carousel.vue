@@ -201,11 +201,42 @@ const onEscapeKeyup = (e: KeyboardEvent) => {
     }
 };
 
+// dots come from Embla's measured scroll-snap list, which only exists after the carousel initializes
+// on the client. to keep the dots (and the arrow spacing) from popping in after hydration, we render
+// an estimated dot count during SSR / before mount using the same math Embla uses, then reconcile
+// with the real snap list once mounted. per-breakpoint estimates are handed to CSS (see the
+// `.before-mount` rules below) so the count is already correct at every breakpoint before hydration.
+const isMounted = ref(false);
+
+const estimateSnaps = (visible: number, scroll: number) =>
+    Math.max(1, Math.ceil((props.items.length - visible) / scroll) + 1);
+const estSnapsXs = computed(() => estimateSnaps(numVisibleXs.value, numScrollXs.value));
+const estSnapsSm = computed(() => estimateSnaps(numVisibleSm.value, numScrollSm.value));
+const estSnapsMd = computed(() => estimateSnaps(numVisibleMd.value, numScrollMd.value));
+const estSnapsLg = computed(() => estimateSnaps(numVisibleLg.value, numScrollLg.value));
+const estSnapsXl = computed(() => estimateSnaps(numVisibleXl.value, numScrollXl.value));
+const estSnapsXxl = computed(() => estimateSnaps(numVisibleXxl.value, numScrollXxl.value));
+const maxEstimatedSnaps = computed(() =>
+    Math.max(
+        estSnapsXs.value,
+        estSnapsSm.value,
+        estSnapsMd.value,
+        estSnapsLg.value,
+        estSnapsXl.value,
+        estSnapsXxl.value,
+    ),
+);
+
+// number of dots to render: the measured snap count once mounted, otherwise the (max) estimate
+const dotCount = computed(() => (isMounted.value ? scrollSnaps.value.length : maxEstimatedSnaps.value));
+const dotIndices = computed(() => Array.from({ length: dotCount.value }, (_, i) => i));
+
 // show the controls row when there's something to put in it
-const showDotsRow = computed(() => props.showDots && scrollSnaps.value.length > 1);
+const showDotsRow = computed(() => props.showDots && dotCount.value > 1);
 const showControls = computed(() => props.showArrows || showDotsRow.value);
 
 onMounted(() => {
+    isMounted.value = true;
     prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const api = emblaApi.value;
@@ -239,7 +270,19 @@ watch(emblaOptions, (options) => {
 <template>
     <div
         class="es-carousel"
-        :class="{ 'es-carousel--brand': variant === 'brand' }"
+        :class="[
+            { 'es-carousel--brand': variant === 'brand', 'before-mount': !isMounted },
+            !isMounted
+                ? [
+                      `num-dots-${estSnapsXs}`,
+                      `num-dots-sm-${estSnapsSm}`,
+                      `num-dots-md-${estSnapsMd}`,
+                      `num-dots-lg-${estSnapsLg}`,
+                      `num-dots-xl-${estSnapsXl}`,
+                      `num-dots-xxl-${estSnapsXxl}`,
+                  ]
+                : [],
+        ]"
         role="region"
         aria-roledescription="carousel"
         aria-label="Carousel"
@@ -281,7 +324,7 @@ watch(emblaOptions, (options) => {
                 v-if="showDotsRow"
                 class="es-carousel__dots d-flex align-items-center">
                 <li
-                    v-for="(_snap, index) in scrollSnaps"
+                    v-for="index in dotIndices"
                     :key="index"
                     class="es-carousel__dot">
                     <button
@@ -312,8 +355,28 @@ watch(emblaOptions, (options) => {
 </template>
 
 <style lang="scss" scoped>
+@use 'sass:map';
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+
+/*
+    Before hydration we render the (max) estimated number of dots and hide the surplus at each
+    breakpoint, so the correct count shows at every breakpoint until Embla's measured snap list takes
+    over on mount. The `num-dots{infix}-{n}` class carries each breakpoint's estimated count.
+*/
+$num-dots-supported: 12;
+.es-carousel.before-mount {
+    @each $breakpoint in map.keys(variables.$grid-breakpoints) {
+        @include breakpoints.media-breakpoint-up($breakpoint) {
+            $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
+            @for $i from 1 through $num-dots-supported {
+                &.num-dots#{$infix}-#{$i} .es-carousel__dot:nth-child(#{$i}) ~ .es-carousel__dot {
+                    display: none;
+                }
+            }
+        }
+    }
+}
 
 /* the viewport clips the slides; negative margins pull its edges back out to align with page content */
 .es-carousel__viewport {
