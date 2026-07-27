@@ -48,7 +48,7 @@ const propTableRows = [
         'autoPlay',
         'Boolean',
         'false',
-        'If true, the carousel will automatically go to the next page after a set interval, determined by autoPlayInterval. The autoplay functionality can be stopped by pressing the Esc key.',
+        'If true, the carousel will automatically go to the next page after a set interval, determined by autoPlayInterval. The autoplay functionality can be stopped by pressing the Esc key, and does not run at all for readers who have asked their device to reduce motion.',
     ],
     [
         'autoPlayInterval',
@@ -308,7 +308,8 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                     href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
                     target="_blank">
                     WCAG 2.2.2 </a
-                >).
+                >). Readers who have asked their device to reduce motion don't see autoplay at all; the carousel
+                simply waits for them to page through it themselves.
             </p>
             <es-carousel
                 auto-play

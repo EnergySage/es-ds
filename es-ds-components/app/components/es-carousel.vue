@@ -111,8 +111,15 @@ const arrowSize = computed(() => (props.arrowSize === 'lg' ? 32 : 24));
 const arrowSizePx = computed(() => `${arrowSize.value}px`);
 const arrowPadding = `${ARROW_BUTTON_PADDING / BASE_FONT_SIZE}rem`;
 
-// whether the user prefers reduced motion; when true we make transitions instant
+/*
+    Whether the user prefers reduced motion. Read during setup rather than on mount, because it
+    gates the autoplay plugin below, which is created before the component mounts. The server can't
+    know the preference, so it renders as though there is none and the client settles it on load.
+*/
 const prefersReducedMotion = ref(false);
+if (import.meta.client) {
+    prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 // build Embla's per-breakpoint slidesToScroll overrides from the resolved numScroll values.
 // entries are keyed by min-width media queries, so the largest matching query wins at any width,
@@ -142,9 +149,16 @@ const emblaOptions = computed<EmblaOptionsType>(() => {
     return options;
 });
 
-// autoplay is a plugin; it's only added when the autoPlay prop is set. stopOnInteraction is false
-// so it matches the previous behavior of running until the user presses Esc.
-const autoplayPlugins = props.autoPlay ? [Autoplay({ delay: props.autoPlayInterval, stopOnInteraction: false })] : [];
+/*
+    Autoplay runs only when it is asked for AND the user has not requested reduced motion:
+    auto-advancing content is motion in its own right, so the preference should stop it entirely
+    rather than merely removing the slide animation. (Manual paging stays instant via `duration`.)
+
+    It is a plugin, added at creation time. stopOnInteraction is false so it matches the previous
+    behavior of running until the user presses Esc.
+*/
+const autoplayEnabled = props.autoPlay && !prefersReducedMotion.value;
+const autoplayPlugins = autoplayEnabled ? [Autoplay({ delay: props.autoPlayInterval, stopOnInteraction: false })] : [];
 
 const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions.value, autoplayPlugins);
 
@@ -263,7 +277,6 @@ const onDotsKeydown = (e: KeyboardEvent) => {
 
 onMounted(() => {
     isMounted.value = true;
-    prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const api = emblaApi.value;
     if (api) {
@@ -272,7 +285,7 @@ onMounted(() => {
         api.on('reInit', onReInit);
     }
 
-    if (props.autoPlay) {
+    if (autoplayEnabled) {
         document.addEventListener('keyup', onEscapeKeyup);
     }
 });
