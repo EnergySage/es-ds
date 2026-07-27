@@ -195,14 +195,6 @@ const stopAutoplay = () => {
     emblaApi.value?.plugins()?.autoplay?.stop();
 };
 
-const onRootKeydown = (e: KeyboardEvent) => {
-    if (e.key === 'ArrowLeft') {
-        scrollPrev();
-    } else if (e.key === 'ArrowRight') {
-        scrollNext();
-    }
-};
-
 const onEscapeKeyup = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
         stopAutoplay();
@@ -293,8 +285,7 @@ watch(emblaOptions, (options) => {
         ]"
         role="region"
         aria-roledescription="carousel"
-        aria-label="Carousel"
-        @keydown="onRootKeydown">
+        aria-label="Carousel">
         <div
             ref="emblaRef"
             class="es-carousel__viewport">
