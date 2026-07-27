@@ -274,8 +274,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                     href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
                     target="_blank">
                     WCAG 2.2.2 </a
-                >). Note that a visible pause/play button is still needed so the control is reachable in mobile screen
-                readers; that's a follow-up pending a design pass.
+                >). A visible pause/play button is still pending for mobile screen readers.
             </p>
             <es-carousel
                 auto-play
