@@ -154,6 +154,9 @@ const selectedIndex = ref(0);
 const canScrollPrev = ref(false);
 const canScrollNext = ref(false);
 
+// remembers that the user explicitly stopped autoplay, so that it stays stopped across reinits
+const autoplayStopped = ref(false);
+
 const updateNavState = () => {
     const api = emblaApi.value;
     if (!api) return;
@@ -172,6 +175,13 @@ const onReInit = () => {
     if (!api) return;
     scrollSnaps.value = api.scrollSnapList();
     updateNavState();
+
+    // Embla re-creates and restarts its plugins on every reInit, which it does on its own whenever
+    // one of the `breakpoints` media queries changes (a phone rotating, a window resize across a
+    // breakpoint). Without this, motion the user deliberately stopped would silently resume.
+    if (autoplayStopped.value) {
+        api.plugins()?.autoplay?.stop();
+    }
 };
 
 const scrollPrev = () => emblaApi.value?.scrollPrev();
@@ -181,6 +191,7 @@ const scrollTo = (index: number) => emblaApi.value?.scrollTo(index);
 const stopAutoplay = () => {
     // stop carousel when user presses Escape key, in lieu of a pause button
     // https://www.w3.org/WAI/WCAG22/Techniques/general/G187.html
+    autoplayStopped.value = true;
     emblaApi.value?.plugins()?.autoplay?.stop();
 };
 
