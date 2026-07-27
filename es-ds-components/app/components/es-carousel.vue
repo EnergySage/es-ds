@@ -12,7 +12,6 @@
 */
 
 import emblaCarouselVue from 'embla-carousel-vue';
-import Autoplay from 'embla-carousel-autoplay';
 import type { EmblaOptionsType } from 'embla-carousel';
 import sassBreakpoints from '@energysage/es-ds-styles/scss/modules/breakpoints.module.scss';
 import type { EsCarouselBreakpointsInterface } from '../types';
@@ -114,8 +113,15 @@ const arrowPadding = `${ARROW_BUTTON_PADDING / BASE_FONT_SIZE}rem`;
 // reserve vertical space for the controls row so dots appearing after hydration don't shift layout
 const controlsMinHeight = computed(() => `${Math.max(DOT_SIZE, arrowSize.value + ARROW_BUTTON_PADDING * 2)}px`);
 
-// whether the user prefers reduced motion; when true we make transitions instant
+// whether the user prefers reduced motion. detected synchronously on the client so it can gate
+// autoplay creation below; when true we make transitions instant AND disable autoplay entirely.
 const prefersReducedMotion = ref(false);
+if (import.meta.client) {
+    prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+// autoplay is only actually active when it's requested AND motion is allowed
+const autoplayEnabled = computed(() => props.autoPlay && !prefersReducedMotion.value);
 
 // build Embla's per-breakpoint slidesToScroll overrides from the resolved numScroll values.
 // entries are keyed by min-width media queries, so the largest matching query wins at any width,
@@ -145,11 +151,11 @@ const emblaOptions = computed<EmblaOptionsType>(() => {
     return options;
 });
 
-// autoplay is a plugin; it's only added when the autoPlay prop is set. stopOnInteraction is false
-// so it matches the previous behavior of running until the user presses Esc.
-const autoplayPlugins = props.autoPlay ? [Autoplay({ delay: props.autoPlayInterval, stopOnInteraction: false })] : [];
+// autoplay is only wired up when it's actually enabled (requested + motion allowed)
+const autoplayShouldRun = autoplayEnabled.value;
 
-const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions.value, autoplayPlugins);
+const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions.value);
+const rootEl = ref<HTMLElement | null>(null);
 
 // reactive state derived from the Embla API
 const scrollSnaps = ref<number[]>([]);
@@ -181,10 +187,103 @@ const scrollPrev = () => emblaApi.value?.scrollPrev();
 const scrollNext = () => emblaApi.value?.scrollNext();
 const scrollTo = (index: number) => emblaApi.value?.scrollTo(index);
 
-const stopAutoplay = () => {
-    // stop carousel when user presses Escape key, in lieu of a pause button
-    // https://www.w3.org/WAI/WCAG22/Techniques/general/G187.html
-    emblaApi.value?.plugins()?.autoplay?.stop();
+/* ---- autoplay control ----------------------------------------------------
+
+    Autoplay is managed here with a small timestamp-based scheduler rather than Embla's Autoplay
+    plugin, so a temporary hover/focus pause can resume from exactly where it left off (the plugin's
+    play() always restarts the full interval). All of this lives in the component, so hover/focus
+    pausing works whether or not an external play/pause button is wired up.
+*/
+
+// user-facing autoplay state: `isPlaying` is the play/pause mode (stays true through a temporary
+// hover/focus pause)
+const isPlaying = ref(false);
+// remembers an explicit stop (Esc or the play/pause button) so hover/focus don't auto-resume it
+const userStopped = ref(false);
+let hovered = false;
+let focused = false;
+
+// scheduler internals
+let timerId: ReturnType<typeof setTimeout> | undefined;
+let segmentStart = 0; // performance.now() when the current running segment began
+let elapsedBeforeSegment = 0; // ms already elapsed in the current cycle, before this segment
+const isCounting = () => timerId !== undefined;
+
+const clearTimer = () => {
+    if (timerId !== undefined) clearTimeout(timerId);
+    timerId = undefined;
+};
+
+// advance to the next slide/page, wrapping to the start for a non-circular autoplay
+const advance = () => {
+    const api = emblaApi.value;
+    if (!api) return;
+    if (props.circular || api.canScrollNext()) {
+        api.scrollNext();
+    } else {
+        api.scrollTo(0);
+    }
+};
+
+// wait `duration` ms until the next advance, then continue at the full interval
+const startCountdown = (duration: number) => {
+    if (!import.meta.client) return;
+    clearTimer();
+    segmentStart = performance.now();
+    timerId = setTimeout(() => {
+        advance();
+        elapsedBeforeSegment = 0;
+        startCountdown(props.autoPlayInterval);
+    }, duration);
+};
+
+// explicit play/pause, driven by the play/pause button or the Esc key
+const play = () => {
+    if (!autoplayShouldRun || isCounting()) return;
+    userStopped.value = false;
+    isPlaying.value = true;
+    elapsedBeforeSegment = 0;
+    startCountdown(props.autoPlayInterval);
+};
+const pause = () => {
+    // stops autoplay, per WCAG 2.2.2 (https://www.w3.org/WAI/WCAG22/Techniques/general/G187.html)
+    clearTimer();
+    isPlaying.value = false;
+    userStopped.value = true;
+    elapsedBeforeSegment = 0;
+};
+const toggleAutoplay = () => (isPlaying.value ? pause() : play());
+
+// temporary pause/resume for hover and focus — does NOT count as an explicit stop, so autoplay
+// resumes from where it left off once the pointer leaves and focus moves out.
+const pauseTemporarily = () => {
+    if (!isPlaying.value || userStopped.value || !isCounting()) return;
+    // bank the elapsed time in this segment so we can resume from the same point
+    elapsedBeforeSegment += performance.now() - segmentStart;
+    clearTimer();
+};
+const resumeIfIdle = () => {
+    if (!isPlaying.value || userStopped.value || hovered || focused || isCounting()) return;
+    const remaining = Math.max(0, props.autoPlayInterval - elapsedBeforeSegment);
+    startCountdown(remaining);
+};
+const onMouseEnter = () => {
+    hovered = true;
+    pauseTemporarily();
+};
+const onMouseLeave = () => {
+    hovered = false;
+    resumeIfIdle();
+};
+const onFocusIn = () => {
+    focused = true;
+    pauseTemporarily();
+};
+const onFocusOut = (e: FocusEvent) => {
+    // ignore focus moving between elements inside the carousel
+    if (rootEl.value && e.relatedTarget instanceof Node && rootEl.value.contains(e.relatedTarget)) return;
+    focused = false;
+    resumeIfIdle();
 };
 
 const onRootKeydown = (e: KeyboardEvent) => {
@@ -197,7 +296,7 @@ const onRootKeydown = (e: KeyboardEvent) => {
 
 const onEscapeKeyup = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-        stopAutoplay();
+        pause();
     }
 };
 
@@ -206,8 +305,6 @@ const showDotsRow = computed(() => props.showDots && scrollSnaps.value.length > 
 const showControls = computed(() => props.showArrows || showDotsRow.value);
 
 onMounted(() => {
-    prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const api = emblaApi.value;
     if (api) {
         onReInit();
@@ -215,7 +312,8 @@ onMounted(() => {
         api.on('reInit', onReInit);
     }
 
-    if (props.autoPlay) {
+    if (autoplayShouldRun) {
+        play();
         document.addEventListener('keyup', onEscapeKeyup);
     }
 });
@@ -226,6 +324,7 @@ onBeforeUnmount(() => {
         api.off('select', onSelect);
         api.off('reInit', onReInit);
     }
+    clearTimer();
     document.removeEventListener('keyup', onEscapeKeyup);
 });
 
@@ -234,22 +333,43 @@ onBeforeUnmount(() => {
 watch(emblaOptions, (options) => {
     emblaApi.value?.reInit(options);
 });
+
+// exposed so downstream repos can wire an external <es-carousel-play-pause> button, placed wherever
+// their layout dictates (typically next to a section heading).
+defineExpose({
+    // autoplay state (reactive)
+    isPlaying,
+    autoplayEnabled,
+    // autoplay controls
+    play,
+    pause,
+    toggle: toggleAutoplay,
+    // imperative navigation, exposed for convenience
+    scrollNext,
+    scrollPrev,
+    scrollTo,
+});
 </script>
 
 <template>
     <div
+        ref="rootEl"
         class="es-carousel"
         :class="{ 'es-carousel--brand': variant === 'brand' }"
         role="region"
         aria-roledescription="carousel"
         aria-label="Carousel"
-        @keydown="onRootKeydown">
+        @keydown="onRootKeydown"
+        @mouseenter="onMouseEnter"
+        @mouseleave="onMouseLeave"
+        @focusin="onFocusIn"
+        @focusout="onFocusOut">
         <div
             ref="emblaRef"
             class="es-carousel__viewport">
             <div
                 class="es-carousel__container d-flex"
-                :aria-live="autoPlay ? 'off' : 'polite'">
+                :aria-live="isPlaying ? 'off' : 'polite'">
                 <div
                     v-for="(item, index) in items"
                     :key="index"

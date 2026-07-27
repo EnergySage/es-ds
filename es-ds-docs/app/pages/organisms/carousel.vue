@@ -116,6 +116,27 @@ const propTableRows = [
 ];
 
 const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible page of the carousel changes.']];
+
+const exposedTableRows = [
+    ['isPlaying', 'Ref<boolean>', 'Whether autoplay is currently in its playing state.'],
+    [
+        'autoplayEnabled',
+        'Ref<boolean>',
+        'Whether autoplay is active at all (autoPlay is set AND the user does not prefer reduced motion). Use this to conditionally render the play/pause control.',
+    ],
+    ['play() / pause() / toggle()', 'Functions', 'Imperatively control autoplay.'],
+    ['scrollNext() / scrollPrev() / scrollTo(i)', 'Functions', 'Imperatively navigate the carousel.'],
+];
+
+// references to the autoplaying carousels, to wire up their external play/pause controls
+const slideshowCarousel = useTemplateRef('slideshowCarousel');
+const autoplayCarousel = useTemplateRef('autoplayCarousel');
+
+const playPausePropTableRows = [
+    ['playing', 'Boolean', '—', 'Required. Whether to show the pause state (playing) or play state (paused).'],
+    ['size', 'Number', '40', 'Diameter of the button in pixels.'],
+    ['variant', 'String', '"default"', 'Takes "default" (gray) or "brand" (blue), matching EsCarousel.'],
+];
 </script>
 
 <template>
@@ -268,16 +289,25 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             <h2>Autoplay with circular behavior</h2>
             <p>This example shows autoplay behavior with circular mode enabled, to show a slideshow of images.</p>
             <p class="mb-200">
-                Pressing the Esc key stops the autoplay. This is an important accessibility feature: it gives users a
-                way to stop the moving content (per
+                Autoplay pauses while the pointer is over the carousel and while any element inside it has keyboard
+                focus, then resumes when you leave. Pressing the Esc key stops it entirely. If the user prefers reduced
+                motion, autoplay is disabled outright. For a visible, always-available stop control (needed for mobile
+                screen readers per
                 <a
                     href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
                     target="_blank">
                     WCAG 2.2.2 </a
-                >). Note that a visible pause/play button is still needed so the control is reachable in mobile screen
-                readers; that's a follow-up pending a design pass.
+                >), pair it with an <code>EsCarouselPlayPause</code> control, as shown here and in the next example.
             </p>
+            <div class="d-flex justify-content-between align-items-center mb-100">
+                <h3 class="mb-0">Slideshow</h3>
+                <es-carousel-play-pause
+                    v-if="slideshowCarousel?.autoplayEnabled"
+                    :playing="slideshowCarousel?.isPlaying ?? false"
+                    @toggle="slideshowCarousel?.toggle()" />
+            </div>
             <es-carousel
+                ref="slideshowCarousel"
                 auto-play
                 circular
                 :items="slideShowItems"
@@ -288,6 +318,53 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                         :alt="item.heading"
                         class="mb-50 w-100"
                         :src="item.url" />
+                </template>
+            </es-carousel>
+        </div>
+
+        <div class="my-500">
+            <h2>Autoplay with a play/pause control</h2>
+            <p class="mb-200">
+                <code>EsCarouselPlayPause</code> is a standalone control that pairs with an autoplaying carousel.
+                Because downstream repos own the section heading and layout, it is a separate component you position
+                wherever makes sense — typically next to the heading. Wire it up by giving the carousel a
+                <code>ref</code> and binding the control to the carousel's exposed autoplay state (see the
+                <em>EsCarousel exposed API</em> table below). It shows a play/pause state and swaps its accessible
+                label between "Start" and "Pause automatic slide show".
+            </p>
+            <div class="d-flex justify-content-between align-items-center mb-100">
+                <h3 class="mb-0">Featured articles</h3>
+                <es-carousel-play-pause
+                    v-if="autoplayCarousel?.autoplayEnabled"
+                    :playing="autoplayCarousel?.isPlaying ?? false"
+                    @toggle="autoplayCarousel?.toggle()" />
+            </div>
+            <es-carousel
+                ref="autoplayCarousel"
+                auto-play
+                :auto-play-interval="5000"
+                :breakpoints="{
+                    sm: {
+                        numScroll: 2,
+                        numVisible: 2,
+                    },
+                    lg: {
+                        numScroll: 3,
+                        numVisible: 3,
+                    },
+                }"
+                circular
+                :items="basicExampleItems">
+                <template #item="{ item }">
+                    <es-card class="text-center">
+                        <nuxt-img
+                            alt=""
+                            class="mb-50 w-100"
+                            :src="item.url" />
+                        <p class="font-weight-semibold mb-0">
+                            {{ item.heading }}
+                        </p>
+                    </es-card>
                 </template>
             </es-carousel>
         </div>
@@ -305,6 +382,25 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 :widths="{
                     md: ['3', '4', '5'],
                 }" />
+        </div>
+
+        <div class="mb-500">
+            <h2>EsCarousel exposed API</h2>
+            <p class="mb-200">
+                Accessible via a template <code>ref</code>. Intended for wiring up an external
+                <code>EsCarouselPlayPause</code> control.
+            </p>
+            <ds-prop-table
+                :columns="['Name', 'Type', 'Description']"
+                :rows="exposedTableRows"
+                :widths="{
+                    md: ['4', '3', '5'],
+                }" />
+        </div>
+
+        <div class="mb-500">
+            <h2>EsCarouselPlayPause props</h2>
+            <ds-prop-table :rows="playPausePropTableRows" />
         </div>
 
         <ds-doc-source
