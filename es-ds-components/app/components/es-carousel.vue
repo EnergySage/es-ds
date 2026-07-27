@@ -235,6 +235,32 @@ const dotIndices = computed(() => Array.from({ length: dotCount.value }, (_, i) 
 const showDotsRow = computed(() => props.showDots && dotCount.value > 1);
 const showControls = computed(() => props.showArrows || showDotsRow.value);
 
+/*
+    The dots are a single tab stop, with the arrow keys moving between them (the roving tabindex
+    approach from the ARIA APG tabs pattern). This is bound to the dots list rather than the
+    carousel as a whole, so it can never intercept arrow keys meant for content inside a slide.
+*/
+const onDotsKeydown = (e: KeyboardEvent) => {
+    let target: number;
+    if (e.key === 'ArrowRight') {
+        target = selectedIndex.value + 1;
+    } else if (e.key === 'ArrowLeft') {
+        target = selectedIndex.value - 1;
+    } else if (e.key === 'Home') {
+        target = 0;
+    } else if (e.key === 'End') {
+        target = dotCount.value - 1;
+    } else {
+        return;
+    }
+
+    e.preventDefault();
+    // clamp rather than wrap, so the carousel doesn't jump end-to-end on a single keypress
+    const index = Math.min(dotCount.value - 1, Math.max(0, target));
+    scrollTo(index);
+    (e.currentTarget as HTMLElement).querySelectorAll('button')[index]?.focus();
+};
+
 onMounted(() => {
     isMounted.value = true;
     prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -321,7 +347,8 @@ watch(emblaOptions, (options) => {
 
             <ul
                 v-if="showDotsRow"
-                class="es-carousel__dots d-flex align-items-center">
+                class="es-carousel__dots d-flex align-items-center"
+                @keydown="onDotsKeydown">
                 <li
                     v-for="index in dotIndices"
                     :key="index"
@@ -330,6 +357,7 @@ watch(emblaOptions, (options) => {
                         type="button"
                         class="d-block"
                         :class="{ 'es-carousel__dot--active': index === selectedIndex }"
+                        :tabindex="index === selectedIndex ? 0 : -1"
                         :aria-label="`Go to slide ${index + 1}`"
                         :aria-current="index === selectedIndex ? 'true' : undefined"
                         @click="scrollTo(index)" />
