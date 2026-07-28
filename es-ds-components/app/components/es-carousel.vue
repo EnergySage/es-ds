@@ -57,7 +57,6 @@ const props = withDefaults(defineProps<IProps>(), {
     breakpoints: () => ({}),
     circular: false,
     controlGap: 24,
-    items: () => [],
     numScroll: 1,
     numVisible: 1,
     peekDesktop: '',
@@ -238,8 +237,11 @@ const onEscapeKeyup = (e: KeyboardEvent) => {
 */
 const isMounted = ref(false);
 
+// `items` is a required prop, so it has no default. it is still read defensively here because this
+// runs during setup, where a consumer that omitted it (from JS, or a dynamic component) would
+// otherwise throw before Vue's "missing required prop" warning is any help.
 const estimateSnaps = (visible: number, scroll: number) =>
-    Math.max(1, Math.ceil((props.items.length - visible) / scroll) + 1);
+    Math.max(1, Math.ceil(((props.items?.length ?? 0) - visible) / scroll) + 1);
 const estSnapsXs = computed(() => estimateSnaps(numVisibleXs.value, numScrollXs.value));
 const estSnapsSm = computed(() => estimateSnaps(numVisibleSm.value, numScrollSm.value));
 const estSnapsMd = computed(() => estimateSnaps(numVisibleMd.value, numScrollMd.value));

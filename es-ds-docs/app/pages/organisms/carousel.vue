@@ -83,7 +83,7 @@ const propTableRows = [
     [
         'items',
         'Array',
-        '[]',
+        'n/a',
         'Required. The items to display in the carousel. Use the template #item to style the items.',
     ],
     [
