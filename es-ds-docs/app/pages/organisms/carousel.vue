@@ -313,14 +313,15 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             <h2>Autoplay with circular behavior</h2>
             <p>This example shows autoplay behavior with circular mode enabled, to show a slideshow of images.</p>
             <p class="mb-200">
-                Pressing the Esc key stops the autoplay. This is an important accessibility feature: it gives users a
-                way to stop the moving content (per
+                Pressing the Esc key stops the autoplay. This matters for accessibility, because
                 <a
                     href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
                     target="_blank">
-                    WCAG 2.2.2 </a
-                >). Readers who have asked their device to reduce motion don't see autoplay at all; the carousel simply
-                waits for them to page through it themselves.
+                    WCAG 2.2.2</a
+                >
+                requires that readers have a way to stop content that moves on its own. Readers who have asked their
+                device to reduce motion don't see autoplay at all; the carousel simply waits for them to page through
+                it themselves.
             </p>
             <es-carousel
                 aria-label="Autoplay slideshow example"

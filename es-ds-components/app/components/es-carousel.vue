@@ -84,7 +84,9 @@ const BREAKPOINTS = {
 
 // lower breakpoint values propagate to higher breakpoints unless overridden.
 // numVisible controls the slide width via CSS (flex-basis), see the style block below.
-const numVisibleXs = computed(() => props.numVisible);
+// the base value is floored at 1 because it is used as a divisor; the per-breakpoint values below
+// don't need the same treatment, since a zero there falls through to the next-lowest breakpoint.
+const numVisibleXs = computed(() => Math.max(1, props.numVisible));
 const numVisibleSm = computed(() => props.breakpoints?.sm?.numVisible || numVisibleXs.value);
 const numVisibleMd = computed(() => props.breakpoints?.md?.numVisible || numVisibleSm.value);
 const numVisibleLg = computed(() => props.breakpoints?.lg?.numVisible || numVisibleMd.value);
@@ -92,8 +94,9 @@ const numVisibleXl = computed(() => props.breakpoints?.xl?.numVisible || numVisi
 const numVisibleXxl = computed(() => props.breakpoints?.xxl?.numVisible || numVisibleXl.value);
 
 // lower breakpoint values propagate to higher breakpoints unless overridden.
-// numScroll drives Embla's `slidesToScroll` option per breakpoint.
-const numScrollXs = computed(() => props.numScroll);
+// numScroll drives Embla's `slidesToScroll` option per breakpoint. floored at 1 for the same
+// reason as numVisible above: it is a divisor when estimating the number of dots.
+const numScrollXs = computed(() => Math.max(1, props.numScroll));
 const numScrollSm = computed(() => props.breakpoints?.sm?.numScroll || numScrollXs.value);
 const numScrollMd = computed(() => props.breakpoints?.md?.numScroll || numScrollSm.value);
 const numScrollLg = computed(() => props.breakpoints?.lg?.numScroll || numScrollMd.value);
@@ -141,7 +144,6 @@ const slidesToScrollBreakpoints = computed<EmblaOptionsType['breakpoints']>(() =
 const emblaOptions = computed<EmblaOptionsType>(() => {
     const options: EmblaOptionsType = {
         align: 'start',
-        containScroll: 'trimSnaps',
         loop: props.circular,
         slidesToScroll: numScrollXs.value,
         breakpoints: slidesToScrollBreakpoints.value,
@@ -221,11 +223,19 @@ const onEscapeKeyup = (e: KeyboardEvent) => {
     }
 };
 
-// dots come from Embla's measured scroll-snap list, which only exists after the carousel initializes
-// on the client. to keep the dots (and the arrow spacing) from popping in after hydration, we render
-// an estimated dot count during SSR / before mount using the same math Embla uses, then reconcile
-// with the real snap list once mounted. per-breakpoint estimates are handed to CSS (see the
-// `.before-mount` rules below) so the count is already correct at every breakpoint before hydration.
+/*
+    Dots come from Embla's measured scroll-snap list, which only exists after the carousel
+    initializes on the client. To keep the dots (and the arrow spacing) from popping in after
+    hydration, we render an estimated dot count during SSR / before mount using the same math Embla
+    uses, then reconcile with the real snap list once mounted. Per-breakpoint estimates are handed
+    to CSS (see the `.before-mount` rules below) so the count is already correct at every breakpoint
+    before hydration.
+
+    That CSS can only hide surplus dots up to `$num-dots-supported` in the style block. Beyond that
+    a breakpoint would briefly show the largest breakpoint's dot count until hydration corrects it.
+    The limit is set well past what this component should ever show — more than a handful of dots is
+    an anti-pattern — so in practice it isn't reachable.
+*/
 const isMounted = ref(false);
 
 const estimateSnaps = (visible: number, scroll: number) =>
@@ -411,7 +421,8 @@ watch(emblaOptions, (options) => {
     breakpoint, so the correct count shows at every breakpoint until Embla's measured snap list takes
     over on mount. The `num-dots{infix}-{n}` class carries each breakpoint's estimated count.
 */
-$num-dots-supported: 12;
+/* keep in sync with the note on the dot estimate in the script block above */
+$num-dots-supported: 20;
 .es-carousel.before-mount {
     @each $breakpoint in map.keys(variables.$grid-breakpoints) {
         @include breakpoints.media-breakpoint-up($breakpoint) {
