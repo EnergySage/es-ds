@@ -27,6 +27,11 @@ const DOT_SPACING = 16;
 const ARROW_BUTTON_PADDING = 8;
 
 interface IProps {
+    /**
+     * The accessible name of the carousel, announced by screen readers. Give each carousel on a
+     * page its own name (e.g. "Featured articles") so they can be told apart.
+     */
+    ariaLabel?: string;
     arrowSize?: 'sm' | 'lg';
     autoPlay?: boolean;
     autoPlayInterval?: number;
@@ -45,6 +50,7 @@ interface IProps {
     variant?: 'default' | 'brand';
 }
 const props = withDefaults(defineProps<IProps>(), {
+    ariaLabel: 'Carousel',
     arrowSize: 'sm',
     autoPlay: false,
     autoPlayInterval: 4000,
@@ -324,7 +330,7 @@ watch(emblaOptions, (options) => {
         ]"
         role="region"
         aria-roledescription="carousel"
-        aria-label="Carousel">
+        :aria-label="ariaLabel">
         <div
             ref="emblaRef"
             class="es-carousel__viewport">
@@ -361,6 +367,7 @@ watch(emblaOptions, (options) => {
             <ul
                 v-if="showDotsRow"
                 class="es-carousel__dots d-flex align-items-center"
+                role="list"
                 @keydown="onDotsKeydown">
                 <li
                     v-for="index in dotIndices"
@@ -423,6 +430,15 @@ $num-dots-supported: 12;
     overflow: hidden;
     margin-left: v-bind(negativeMargin);
     margin-right: v-bind(negativeMargin);
+
+    /* peek: reveal a cut-off of the next slide by padding the viewport's right edge */
+    @include breakpoints.media-breakpoint-down(sm) {
+        padding-right: v-bind(peekMobile);
+    }
+
+    @include breakpoints.media-breakpoint-up(lg) {
+        padding-right: v-bind(peekDesktop);
+    }
 }
 
 /* the flex track that Embla translates */
@@ -458,17 +474,6 @@ $num-dots-supported: 12;
     }
 }
 
-/* peek: reveal a cut-off of the next slide by padding the viewport's right edge */
-.es-carousel__viewport {
-    @include breakpoints.media-breakpoint-down(sm) {
-        padding-right: v-bind(peekMobile);
-    }
-
-    @include breakpoints.media-breakpoint-up(lg) {
-        padding-right: v-bind(peekDesktop);
-    }
-}
-
 /* controls row: prev arrow | dots | next arrow, centered below the carousel */
 .es-carousel__controls {
     gap: v-bind(dotSpacing);
@@ -494,7 +499,8 @@ $num-dots-supported: 12;
         color: variables.$gray-700;
     }
     &:focus-visible {
-        color: variables.$gray-900;
+        outline: 2px solid variables.$blue-600;
+        outline-offset: 2px;
     }
     &:not(:disabled):active {
         color: variables.$gray-700;
@@ -549,6 +555,11 @@ $num-dots-supported: 12;
 
         &:hover {
             opacity: 0.8;
+        }
+        /* the arrow keys move focus between the dots, so the focused dot has to be obvious */
+        &:focus-visible {
+            outline: 2px solid variables.$blue-600;
+            outline-offset: 2px;
         }
     }
 

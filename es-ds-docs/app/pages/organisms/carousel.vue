@@ -43,6 +43,12 @@ onMounted(async () => {
 });
 
 const propTableRows = [
+    [
+        'ariaLabel',
+        'String',
+        '"Carousel"',
+        'The name screen readers announce for the carousel. When a page has more than one carousel, give each its own name (such as "Featured articles") so they can be told apart.',
+    ],
     ['arrowSize', 'String', '"sm"', 'Takes either "sm" or "lg". Small size is 24px, large size is 32px.'],
     [
         'autoPlay',
@@ -137,6 +143,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 Mobile sees one card at a time, which then increases to two and three as the viewport width increases.
             </p>
             <es-carousel
+                aria-label="Basic example"
                 :breakpoints="{
                     sm: {
                         numScroll: 2,
@@ -168,6 +175,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 When dots are turned off, the arrows are spaced out more but still appear below the carousel.
             </p>
             <es-carousel
+                aria-label="Example with no dots"
                 :breakpoints="{
                     sm: {
                         numScroll: 2,
@@ -202,6 +210,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 them.
             </p>
             <es-carousel
+                aria-label="Example with no arrows"
                 :breakpoints="{
                     sm: {
                         numScroll: 2,
@@ -236,6 +245,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 icons.
             </p>
             <es-carousel
+                aria-label="Customization example"
                 arrow-size="lg"
                 :breakpoints="{
                     sm: {
@@ -276,6 +286,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 circling back to the beginning of the list.
             </p>
             <es-carousel
+                aria-label="Circular behavior example"
                 :breakpoints="{
                     sm: {
                         numScroll: 2,
@@ -308,10 +319,11 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                     href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
                     target="_blank">
                     WCAG 2.2.2 </a
-                >). Readers who have asked their device to reduce motion don't see autoplay at all; the carousel
-                simply waits for them to page through it themselves.
+                >). Readers who have asked their device to reduce motion don't see autoplay at all; the carousel simply
+                waits for them to page through it themselves.
             </p>
             <es-carousel
+                aria-label="Autoplay slideshow example"
                 auto-play
                 circular
                 :items="slideShowItems"
