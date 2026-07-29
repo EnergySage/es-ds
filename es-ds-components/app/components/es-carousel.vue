@@ -8,7 +8,6 @@
      - Add a visible pause/play button when `autoPlay` is on. Today autoplay can only be
        stopped via the Esc key, which is not reachable in mobile screen readers. A visible
        control satisfies WCAG 2.2.2, but where it lives and how it looks needs a design pass.
-       Iterating on that with design is out of scope for this ticket (CEO-676).
 */
 
 import emblaCarouselVue from 'embla-carousel-vue';
@@ -27,10 +26,6 @@ const DOT_SPACING = 16;
 const ARROW_BUTTON_PADDING = 8;
 
 interface IProps {
-    /**
-     * The accessible name of the carousel, announced by screen readers. Give each carousel on a
-     * page its own name (e.g. "Featured articles") so they can be told apart.
-     */
     ariaLabel?: string;
     arrowSize?: 'sm' | 'lg';
     autoPlay?: boolean;
@@ -210,12 +205,12 @@ const scrollNext = () => emblaApi.value?.scrollNext();
 const scrollTo = (index: number) => emblaApi.value?.scrollTo(index);
 
 const stopAutoplay = () => {
-    // stop carousel when user presses Escape key, in lieu of a pause button
-    // https://www.w3.org/WAI/WCAG22/Techniques/general/G187.html
     autoplayStopped.value = true;
     emblaApi.value?.plugins()?.autoplay?.stop();
 };
 
+// stop carousel when user presses Escape key, in lieu of a pause button
+// https://www.w3.org/WAI/WCAG22/Techniques/general/G187.html
 const onEscapeKeyup = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
         stopAutoplay();
