@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.9](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.8...es-ds-styles-v3.5.9) (2026-07-29)
+
+
+### Bug Fixes
+
+* critical, high, and moderate vulnerabilities ([#1775](https://github.com/EnergySage/es-ds/issues/1775)) ([5453306](https://github.com/EnergySage/es-ds/commit/54533067655059bba89ece29613af3846ea058f7))
+
 ## [3.5.8](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.7...es-ds-styles-v3.5.8) (2026-06-03)
 
 

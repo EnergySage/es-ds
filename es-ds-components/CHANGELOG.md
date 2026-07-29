@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.7.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.7.1...es-ds-components-v5.7.2) (2026-07-29)
+
+
+### Bug Fixes
+
+* critical, high, and moderate vulnerabilities ([#1775](https://github.com/EnergySage/es-ds/issues/1775)) ([5453306](https://github.com/EnergySage/es-ds/commit/54533067655059bba89ece29613af3846ea058f7))
+* EsCarousel autoplay no longer interrupts screen readers ([#1778](https://github.com/EnergySage/es-ds/issues/1778)) ([666ecf0](https://github.com/EnergySage/es-ds/commit/666ecf02383db3728195d8a6a44655d6fba1536a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^3.5.8 to ^3.5.9
+
 ## [5.7.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v5.7.0...es-ds-components-v5.7.1) (2026-06-12)
 
 
