@@ -1,13 +1,18 @@
 <script setup lang="ts">
 /*
-    TODO:
-     - circular has quirky behavior when numVisible doesn't match numScroll
-        - you can see this in the circular autoplay example
-        - i'm not sure if this is fixable
-     - prop to position the arrows at the bottom two corners of a full-width slide, like homepage
+    EsCarousel is built on Embla Carousel (https://www.embla-carousel.com/), replacing the
+    previous PrimeVue implementation. Embla is SSR-friendly and gives us full control over
+    the markup, which lets us make the component fully accessible.
+
+    TODO (design):
+     - Add a visible pause/play button when `autoPlay` is on. Today autoplay can only be
+       stopped via the Esc key, which is not reachable in mobile screen readers. A visible
+       control satisfies WCAG 2.2.2, but where it lives and how it looks needs a design pass.
 */
 
-import Carousel from 'primevue/carousel';
+import emblaCarouselVue from 'embla-carousel-vue';
+import Autoplay from 'embla-carousel-autoplay';
+import type { EmblaOptionsType } from 'embla-carousel';
 import sassBreakpoints from '@energysage/es-ds-styles/scss/modules/breakpoints.module.scss';
 import type { EsCarouselBreakpointsInterface } from '../types';
 
@@ -15,15 +20,13 @@ import type { EsCarouselBreakpointsInterface } from '../types';
 // defined as a constant here so we can easily change it if we need to
 const BASE_FONT_SIZE = 16;
 
-// constants that contribute to dots and arrows positioning
+// constants that contribute to dots and control sizing/spacing
 const DOT_SIZE = 14;
 const DOT_SPACING = 16;
 const ARROW_BUTTON_PADDING = 8;
 
-// the number of "dots" apart the arrows should be when dots are hidden
-const ARROW_SPACING_WHEN_NO_DOTS = 1;
-
 interface IProps {
+    ariaLabel?: string;
     arrowSize?: 'sm' | 'lg';
     autoPlay?: boolean;
     autoPlayInterval?: number;
@@ -42,13 +45,13 @@ interface IProps {
     variant?: 'default' | 'brand';
 }
 const props = withDefaults(defineProps<IProps>(), {
+    ariaLabel: 'Carousel',
     arrowSize: 'sm',
     autoPlay: false,
     autoPlayInterval: 4000,
     breakpoints: () => ({}),
     circular: false,
     controlGap: 24,
-    items: () => [],
     numScroll: 1,
     numVisible: 1,
     peekDesktop: '',
@@ -73,297 +76,352 @@ const BREAKPOINTS = {
     XXL: parseSassBreakpoint(sassBreakpoints.xxl!),
 };
 
-// lower breakpoint values propagate to higher breakpoints unless overridden
-const numVisibleXs = computed(() => props.numVisible);
+// lower breakpoint values propagate to higher breakpoints unless overridden.
+// numVisible controls the slide width via CSS (flex-basis), see the style block below.
+// the base value is floored at 1 because it is used as a divisor; the per-breakpoint values below
+// don't need the same treatment, since a zero there falls through to the next-lowest breakpoint.
+const numVisibleXs = computed(() => Math.max(1, props.numVisible));
 const numVisibleSm = computed(() => props.breakpoints?.sm?.numVisible || numVisibleXs.value);
 const numVisibleMd = computed(() => props.breakpoints?.md?.numVisible || numVisibleSm.value);
 const numVisibleLg = computed(() => props.breakpoints?.lg?.numVisible || numVisibleMd.value);
 const numVisibleXl = computed(() => props.breakpoints?.xl?.numVisible || numVisibleLg.value);
 const numVisibleXxl = computed(() => props.breakpoints?.xxl?.numVisible || numVisibleXl.value);
 
-// lower breakpoint values propagate to higher breakpoints unless overridden
-const numScrollXs = computed(() => props.numScroll);
+// lower breakpoint values propagate to higher breakpoints unless overridden.
+// numScroll drives Embla's `slidesToScroll` option per breakpoint. floored at 1 for the same
+// reason as numVisible above: it is a divisor when estimating the number of dots.
+const numScrollXs = computed(() => Math.max(1, props.numScroll));
 const numScrollSm = computed(() => props.breakpoints?.sm?.numScroll || numScrollXs.value);
 const numScrollMd = computed(() => props.breakpoints?.md?.numScroll || numScrollSm.value);
 const numScrollLg = computed(() => props.breakpoints?.lg?.numScroll || numScrollMd.value);
 const numScrollXl = computed(() => props.breakpoints?.xl?.numScroll || numScrollLg.value);
 const numScrollXxl = computed(() => props.breakpoints?.xxl?.numScroll || numScrollXl.value);
 
-// allow customizable spacing between slides
-// but since that's done as side padding around each slide, which moves them in from the container edge
-// to get slides to left and right align with page content
-// we apply a negative margin to either side to bring the container edges back out to match
+// allow customizable spacing between slides.
+// this is done as side padding around each slide, which moves them in from the container edge,
+// so we apply a negative margin to either side to bring the container edges back out to match
+// the surrounding page content.
 const sidePadding = computed(() => `${props.slideGap / 2 / BASE_FONT_SIZE}rem`);
 const negativeMargin = computed(() => `-${sidePadding.value}`);
 
-// size of dots and spacing between dots
+// size of dots and spacing between dots/controls
 const dotSize = `${DOT_SIZE / BASE_FONT_SIZE}rem`;
 const dotSpacing = `${DOT_SPACING / BASE_FONT_SIZE}rem`;
+const controlsMarginTop = computed(() => `${props.controlGap / BASE_FONT_SIZE}rem`);
 
-// arrow padding
-const arrowPadding = `${ARROW_BUTTON_PADDING / BASE_FONT_SIZE}rem`;
-
-// arrow size
+// arrow icon size and padding
 const arrowSize = computed(() => (props.arrowSize === 'lg' ? 32 : 24));
 const arrowSizePx = computed(() => `${arrowSize.value}px`);
-const arrowButtonSize = computed(() => arrowSize.value + ARROW_BUTTON_PADDING * 2);
+const arrowPadding = `${ARROW_BUTTON_PADDING / BASE_FONT_SIZE}rem`;
 
-// vertical positioning for the arrows
-const distanceFromCarouselBottomToCenterOfDots = computed(() => props.controlGap + DOT_SIZE / 2);
-const arrowPositionBottom = computed(
-    () => `-${distanceFromCarouselBottomToCenterOfDots.value + arrowButtonSize.value / 2}px`,
-);
-const dotsMarginTop = computed(() => `${props.controlGap / BASE_FONT_SIZE}rem`);
+/*
+    Whether the user prefers reduced motion. Read during setup rather than on mount, because it
+    gates the autoplay plugin below, which is created before the component mounts. The server can't
+    know the preference, so it renders as though there is none and the client settles it on load.
+*/
+const prefersReducedMotion = ref(false);
+if (import.meta.client) {
+    prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
-// the number of dots visible at each breakpoint
-const numDotsXs = computed(() =>
-    props.showDots
-        ? Math.ceil((props.items.length - numVisibleXs.value) / numScrollXs.value) + 1
-        : ARROW_SPACING_WHEN_NO_DOTS,
-);
-const numDotsSm = computed(() =>
-    props.showDots
-        ? Math.ceil((props.items.length - numVisibleSm.value) / numScrollSm.value) + 1
-        : ARROW_SPACING_WHEN_NO_DOTS,
-);
-const numDotsMd = computed(() =>
-    props.showDots
-        ? Math.ceil((props.items.length - numVisibleMd.value) / numScrollMd.value) + 1
-        : ARROW_SPACING_WHEN_NO_DOTS,
-);
-const numDotsLg = computed(() =>
-    props.showDots
-        ? Math.ceil((props.items.length - numVisibleLg.value) / numScrollLg.value) + 1
-        : ARROW_SPACING_WHEN_NO_DOTS,
-);
-const numDotsXl = computed(() =>
-    props.showDots
-        ? Math.ceil((props.items.length - numVisibleXl.value) / numScrollXl.value) + 1
-        : ARROW_SPACING_WHEN_NO_DOTS,
-);
-const numDotsXxl = computed(() =>
-    props.showDots
-        ? Math.ceil((props.items.length - numVisibleXxl.value) / numScrollXxl.value) + 1
-        : ARROW_SPACING_WHEN_NO_DOTS,
-);
+// build Embla's per-breakpoint slidesToScroll overrides from the resolved numScroll values.
+// entries are keyed by min-width media queries, so the largest matching query wins at any width,
+// which reproduces the "lower breakpoint propagates upward unless overridden" behavior.
+const slidesToScrollBreakpoints = computed<EmblaOptionsType['breakpoints']>(() => ({
+    [`(min-width: ${BREAKPOINTS.SM}px)`]: { slidesToScroll: numScrollSm.value },
+    [`(min-width: ${BREAKPOINTS.MD}px)`]: { slidesToScroll: numScrollMd.value },
+    [`(min-width: ${BREAKPOINTS.LG}px)`]: { slidesToScroll: numScrollLg.value },
+    [`(min-width: ${BREAKPOINTS.XL}px)`]: { slidesToScroll: numScrollXl.value },
+    [`(min-width: ${BREAKPOINTS.XXL}px)`]: { slidesToScroll: numScrollXxl.value },
+}));
 
-// calculate the arrow position from center based on the number of dots
-const calculateArrowPosition = (numDots: number): number =>
-    (numDots * DOT_SIZE) / 2 + (numDots * DOT_SPACING) / 2 + DOT_SPACING;
-
-// determine how much from center we need to move the arrow buttons, based on how many dots there are
-const arrowPositionXs = computed(() => calculateArrowPosition(numDotsXs.value));
-const arrowPositionSm = computed(() => calculateArrowPosition(numDotsSm.value));
-const arrowPositionMd = computed(() => calculateArrowPosition(numDotsMd.value));
-const arrowPositionLg = computed(() => calculateArrowPosition(numDotsLg.value));
-const arrowPositionXl = computed(() => calculateArrowPosition(numDotsXl.value));
-const arrowPositionXxl = computed(() => calculateArrowPosition(numDotsXxl.value));
-
-// prev button horizontal position
-const prevArrowTranslateXs = computed(() => `-${arrowPositionXs.value + arrowButtonSize.value}px`);
-const prevArrowTranslateSm = computed(() => `-${arrowPositionSm.value + arrowButtonSize.value}px`);
-const prevArrowTranslateMd = computed(() => `-${arrowPositionMd.value + arrowButtonSize.value}px`);
-const prevArrowTranslateLg = computed(() => `-${arrowPositionLg.value + arrowButtonSize.value}px`);
-const prevArrowTranslateXl = computed(() => `-${arrowPositionXl.value + arrowButtonSize.value}px`);
-const prevArrowTranslateXxl = computed(() => `-${arrowPositionXxl.value + arrowButtonSize.value}px`);
-
-// next arrow horizontal position
-const nextArrowTranslateXs = computed(() => `${arrowPositionXs.value}px`);
-const nextArrowTranslateSm = computed(() => `${arrowPositionSm.value}px`);
-const nextArrowTranslateMd = computed(() => `${arrowPositionMd.value}px`);
-const nextArrowTranslateLg = computed(() => `${arrowPositionLg.value}px`);
-const nextArrowTranslateXl = computed(() => `${arrowPositionXl.value}px`);
-const nextArrowTranslateXxl = computed(() => `${arrowPositionXxl.value}px`);
-
-// extra space to add below the carousel for the arrows when arrows are on but dots are off
-const arrowsOnlyBottomSpacing = computed(() => `${props.controlGap + arrowButtonSize.value}px`);
-
-const responsiveOptions = computed(() => {
-    // if no special breakpoints are defined, don't pass in any responsive options
-    if (!Object.keys(props.breakpoints).length) {
-        return undefined;
+const emblaOptions = computed<EmblaOptionsType>(() => {
+    const options: EmblaOptionsType = {
+        align: 'start',
+        loop: props.circular,
+        slidesToScroll: numScrollXs.value,
+        breakpoints: slidesToScrollBreakpoints.value,
+    };
+    // only set `duration` when reducing motion (instant transition); otherwise omit the key
+    // entirely so Embla uses its default scroll animation. Passing `duration: undefined` would
+    // override that default with undefined and collapse the tween to an instant jump.
+    if (prefersReducedMotion.value) {
+        options.duration = 0;
     }
-
-    return [
-        // XXL breakpoint
-        {
-            // max width of XXL is infinite, so let's use 9999px
-            breakpoint: '9999px',
-            numScroll: numScrollXxl.value,
-            numVisible: numVisibleXxl.value,
-        },
-        // XL breakpoint
-        {
-            // max width of XL is XXL minus one
-            breakpoint: `${BREAKPOINTS.XXL - 1}px`,
-            numScroll: numScrollXl.value,
-            numVisible: numVisibleXl.value,
-        },
-        // LG breakpoint
-        {
-            // max width of LG is XL minus one
-            breakpoint: `${BREAKPOINTS.XL - 1}px`,
-            numScroll: numScrollLg.value,
-            numVisible: numVisibleLg.value,
-        },
-        // MD breakpoint
-        {
-            // max width of MD is LG minus one
-            breakpoint: `${BREAKPOINTS.LG - 1}px`,
-            numScroll: numScrollMd.value,
-            numVisible: numVisibleMd.value,
-        },
-        // SM breakpoint
-        {
-            // max width of SM is MD minus one
-            breakpoint: `${BREAKPOINTS.MD - 1}px`,
-            numScroll: numScrollSm.value,
-            numVisible: numVisibleSm.value,
-        },
-        // XS breakpoint
-        // (this is necessary to avoid weird behavior on mobile)
-        {
-            // max width of XS is SM minus one
-            breakpoint: `${BREAKPOINTS.SM - 1}px`,
-            numScroll: props.numScroll,
-            numVisible: props.numVisible,
-        },
-    ];
+    return options;
 });
 
-const autoplayInterval = ref(props.autoPlay ? props.autoPlayInterval : 0);
-const isMounted = ref(false);
-const key = ref('');
+/*
+    Autoplay runs only when it is asked for AND the user has not requested reduced motion:
+    auto-advancing content is motion in its own right, so the preference should stop it entirely
+    rather than merely removing the slide animation. (Manual paging stays instant via `duration`.)
 
-const stopAutoplay = () => {
-    if (autoplayInterval.value > 0) {
-        autoplayInterval.value = 0;
-        key.value = 'stopAutoplay';
+    It is a plugin, added at creation time. stopOnInteraction is false so it matches the previous
+    behavior of running until the user presses Esc.
+*/
+const autoplayEnabled = props.autoPlay && !prefersReducedMotion.value;
+const autoplayPlugins = autoplayEnabled ? [Autoplay({ delay: props.autoPlayInterval, stopOnInteraction: false })] : [];
+
+// `emblaOptions` is passed as a ref, not unwrapped: the composable then watches it and reinitializes
+// the carousel itself when the options change, skipping the work when the new options are equivalent.
+const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, autoplayPlugins);
+
+// reactive state derived from the Embla API
+const scrollSnaps = ref<number[]>([]);
+const selectedIndex = ref(0);
+const canScrollPrev = ref(false);
+const canScrollNext = ref(false);
+
+// remembers that the user explicitly stopped autoplay, so that it stays stopped across reinits
+const autoplayStopped = ref(false);
+
+const updateNavState = () => {
+    const api = emblaApi.value;
+    if (!api) return;
+    selectedIndex.value = api.selectedScrollSnap();
+    canScrollPrev.value = api.canScrollPrev();
+    canScrollNext.value = api.canScrollNext();
+};
+
+const onSelect = () => {
+    updateNavState();
+    emit('update', selectedIndex.value);
+};
+
+const onReInit = () => {
+    const api = emblaApi.value;
+    if (!api) return;
+    scrollSnaps.value = api.scrollSnapList();
+    updateNavState();
+
+    // Embla re-creates and restarts its plugins on every reInit, which it does on its own whenever
+    // one of the `breakpoints` media queries changes (a phone rotating, a window resize across a
+    // breakpoint). Without this, motion the user deliberately stopped would silently resume.
+    if (autoplayStopped.value) {
+        api.plugins()?.autoplay?.stop();
     }
 };
 
+const scrollPrev = () => emblaApi.value?.scrollPrev();
+const scrollNext = () => emblaApi.value?.scrollNext();
+const scrollTo = (index: number) => emblaApi.value?.scrollTo(index);
+
+const stopAutoplay = () => {
+    autoplayStopped.value = true;
+    emblaApi.value?.plugins()?.autoplay?.stop();
+};
+
+// stop carousel when user presses Escape key, in lieu of a pause button
+// https://www.w3.org/WAI/WCAG22/Techniques/general/G187.html
+const onEscapeKeyup = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+        stopAutoplay();
+    }
+};
+
+/*
+    Dots come from Embla's measured scroll-snap list, which only exists after the carousel
+    initializes on the client. To keep the dots (and the arrow spacing) from popping in after
+    hydration, we render an estimated dot count during SSR / before mount using the same math Embla
+    uses, then reconcile with the real snap list once mounted. Per-breakpoint estimates are handed
+    to CSS (see the `.before-mount` rules below) so the count is already correct at every breakpoint
+    before hydration.
+
+    That CSS can only hide surplus dots up to `$num-dots-supported` in the style block. Beyond that
+    a breakpoint would briefly show the largest breakpoint's dot count until hydration corrects it.
+    The limit is set well past what this component should ever show — more than a handful of dots is
+    an anti-pattern — so in practice it isn't reachable.
+*/
+const isMounted = ref(false);
+
+// `items` is a required prop, so it has no default. it is still read defensively here because this
+// runs during setup, where a consumer that omitted it (from JS, or a dynamic component) would
+// otherwise throw before Vue's "missing required prop" warning is any help.
+const estimateSnaps = (visible: number, scroll: number) =>
+    Math.max(1, Math.ceil(((props.items?.length ?? 0) - visible) / scroll) + 1);
+const estSnapsXs = computed(() => estimateSnaps(numVisibleXs.value, numScrollXs.value));
+const estSnapsSm = computed(() => estimateSnaps(numVisibleSm.value, numScrollSm.value));
+const estSnapsMd = computed(() => estimateSnaps(numVisibleMd.value, numScrollMd.value));
+const estSnapsLg = computed(() => estimateSnaps(numVisibleLg.value, numScrollLg.value));
+const estSnapsXl = computed(() => estimateSnaps(numVisibleXl.value, numScrollXl.value));
+const estSnapsXxl = computed(() => estimateSnaps(numVisibleXxl.value, numScrollXxl.value));
+const maxEstimatedSnaps = computed(() =>
+    Math.max(
+        estSnapsXs.value,
+        estSnapsSm.value,
+        estSnapsMd.value,
+        estSnapsLg.value,
+        estSnapsXl.value,
+        estSnapsXxl.value,
+    ),
+);
+
+// number of dots to render: the measured snap count once mounted, otherwise the (max) estimate
+const dotCount = computed(() => (isMounted.value ? scrollSnaps.value.length : maxEstimatedSnaps.value));
+const dotIndices = computed(() => Array.from({ length: dotCount.value }, (_, i) => i));
+
+// show the controls row when there's something to put in it
+const showDotsRow = computed(() => props.showDots && dotCount.value > 1);
+const showControls = computed(() => props.showArrows || showDotsRow.value);
+
+/*
+    The dots are a single tab stop, with the arrow keys moving between them (the roving tabindex
+    approach from the ARIA APG tabs pattern). This is bound to the dots list rather than the
+    carousel as a whole, so it can never intercept arrow keys meant for content inside a slide.
+*/
+const onDotsKeydown = (e: KeyboardEvent) => {
+    let target: number;
+    if (e.key === 'ArrowRight') {
+        target = selectedIndex.value + 1;
+    } else if (e.key === 'ArrowLeft') {
+        target = selectedIndex.value - 1;
+    } else if (e.key === 'Home') {
+        target = 0;
+    } else if (e.key === 'End') {
+        target = dotCount.value - 1;
+    } else {
+        return;
+    }
+
+    e.preventDefault();
+    // clamp rather than wrap, so the carousel doesn't jump end-to-end on a single keypress
+    const index = Math.min(dotCount.value - 1, Math.max(0, target));
+    scrollTo(index);
+    (e.currentTarget as HTMLElement).querySelectorAll('button')[index]?.focus();
+};
+
 onMounted(() => {
-    /**
-     * avoids an unavoidable SSR issue with responsive carousels (SSR can't know the breakpoint
-     * and therefore how many items need to be displayed per page) where circular carousels have
-     * their last few items cloned and inserted before the first item in the list, meaning on initial
-     * page render, you see those cloned last items listed first rather than the first item.
-     *
-     * then, upon hydration, the items change and the first item is then listed first.
-     *
-     * this workaround disables circular functionality for SSR, and swaps to the user-provided
-     * setting for it on mount.
-     *
-     * this flag is also used to hide the extra dots from the mobile view on larger breakpoints
-     * before hydration occurs and the number of dots is adjusted to the breakpoint.
-     */
     isMounted.value = true;
 
-    document.addEventListener('keyup', (e) => {
-        if (e.key === 'Escape') {
-            // Stop carousel when user presses Escape key, in lieu of pause button
-            // https://www.w3.org/WAI/WCAG22/Techniques/general/G187.html
-            stopAutoplay();
-        }
-    });
+    const api = emblaApi.value;
+    if (api) {
+        onReInit();
+        api.on('select', onSelect);
+        api.on('reInit', onReInit);
+    }
+
+    if (autoplayEnabled) {
+        document.addEventListener('keyup', onEscapeKeyup);
+    }
+});
+
+onBeforeUnmount(() => {
+    const api = emblaApi.value;
+    if (api) {
+        api.off('select', onSelect);
+        api.off('reInit', onReInit);
+    }
+    document.removeEventListener('keyup', onEscapeKeyup);
 });
 </script>
 
 <template>
-    <carousel
-        :key="key"
-        :autoplay-interval="autoplayInterval"
-        :circular="isMounted && circular"
+    <div
         class="es-carousel"
-        :class="{
-            'es-carousel--brand': variant === 'brand',
-            'arrows-only': showArrows && !showDots,
-            'before-mount': !isMounted,
-            circular: circular,
-            dots: showDots,
-            [`num-dots-sm-${numDotsSm}`]: true,
-            [`num-dots-md-${numDotsMd}`]: true,
-            [`num-dots-lg-${numDotsLg}`]: true,
-            [`num-dots-xl-${numDotsXl}`]: true,
-            [`num-dots-xxl-${numDotsXxl}`]: true,
-        }"
-        :num-scroll="numScroll"
-        :num-visible="numVisible"
-        :responsive-options="responsiveOptions"
-        :show-indicators="showDots"
-        :show-navigators="showArrows"
-        :value="items"
-        :pt="{
-            container: {
-                class: 'es-carousel-container d-flex position-relative',
-            },
-            indicator: {
-                class: 'es-carousel-dot',
-            },
-            indicators: {
-                class: 'es-carousel-dots d-flex justify-content-center',
-            },
-            indicatorButton: {
-                class: 'd-block',
-            },
-            itemsContent: {
-                class: [
-                    'w-100 overflow-hidden',
-                    {
-                        'es-carousel-peek-desktop': peekDesktop,
-                        'es-carousel-peek-mobile': peekMobile,
-                    },
-                ],
-            },
-            itemsContainer: {
-                class: 'd-flex',
-            },
-            item: {
-                class: 'es-carousel-item',
-            },
-            itemCloned: {
-                class: 'es-carousel-item',
-            },
-            previousButton: {
-                class: 'es-carousel-arrow es-carousel-prev-arrow btn btn-outline-primary position-absolute px-sm-50',
-            },
-            nextButton: {
-                class: 'es-carousel-arrow es-carousel-next-arrow btn btn-outline-primary position-absolute px-sm-50',
-            },
-        }"
-        @update:page="(value: number) => emit('update', value)">
-        <template #item="item">
-            <slot
-                name="item"
-                :item="item.data" />
-        </template>
-        <template #previousicon>
-            <icon-chevron-left />
-        </template>
-        <template #nexticon>
-            <icon-chevron-right />
-        </template>
-    </carousel>
+        :class="[
+            { 'es-carousel--brand': variant === 'brand', 'before-mount': !isMounted },
+            !isMounted
+                ? [
+                      `num-dots-${estSnapsXs}`,
+                      `num-dots-sm-${estSnapsSm}`,
+                      `num-dots-md-${estSnapsMd}`,
+                      `num-dots-lg-${estSnapsLg}`,
+                      `num-dots-xl-${estSnapsXl}`,
+                      `num-dots-xxl-${estSnapsXxl}`,
+                  ]
+                : [],
+        ]"
+        role="region"
+        aria-roledescription="carousel"
+        :aria-label="ariaLabel">
+        <div
+            ref="emblaRef"
+            class="es-carousel__viewport">
+            <div
+                class="es-carousel__container d-flex"
+                :aria-live="autoPlay ? 'off' : 'polite'">
+                <div
+                    v-for="(item, index) in items"
+                    :key="index"
+                    class="es-carousel__slide"
+                    role="group"
+                    aria-roledescription="slide"
+                    :aria-label="`${index + 1} of ${items.length}`">
+                    <slot
+                        name="item"
+                        :item="item" />
+                </div>
+            </div>
+        </div>
+
+        <div
+            v-if="showControls"
+            class="es-carousel__controls d-flex align-items-center justify-content-center">
+            <button
+                v-if="showArrows"
+                type="button"
+                class="es-carousel__arrow es-carousel__arrow--prev"
+                aria-label="Previous slide"
+                :disabled="!canScrollPrev"
+                @click="scrollPrev">
+                <icon-chevron-left />
+            </button>
+
+            <ul
+                v-if="showDotsRow"
+                class="es-carousel__dots d-flex align-items-center"
+                role="list"
+                @keydown="onDotsKeydown">
+                <li
+                    v-for="index in dotIndices"
+                    :key="index"
+                    class="es-carousel__dot">
+                    <button
+                        type="button"
+                        class="d-block"
+                        :class="{ 'es-carousel__dot--active': index === selectedIndex }"
+                        :tabindex="index === selectedIndex ? 0 : -1"
+                        :aria-label="`Go to slide ${index + 1}`"
+                        :aria-current="index === selectedIndex ? 'true' : undefined"
+                        @click="scrollTo(index)" />
+                </li>
+            </ul>
+            <span
+                v-else-if="showArrows"
+                class="es-carousel__arrow-spacer"
+                aria-hidden="true" />
+
+            <button
+                v-if="showArrows"
+                type="button"
+                class="es-carousel__arrow es-carousel__arrow--next"
+                aria-label="Next slide"
+                :disabled="!canScrollNext"
+                @click="scrollNext">
+                <icon-chevron-right />
+            </button>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
+@use 'sass:map';
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
-@use 'sass:map';
 
-/**
-    solution for PrimeVue initially displaying the mobile breakpoint's number of dots on page load
-    until hydration, when it then adjusts to the actual breakpoint and corrects the number of dots
-
-    generate CSS classes for each breakpoint that hide the dots that should be hidden before mount
+/*
+    Before hydration we render the (max) estimated number of dots and hide the surplus at each
+    breakpoint, so the correct count shows at every breakpoint until Embla's measured snap list takes
+    over on mount. The `num-dots{infix}-{n}` class carries each breakpoint's estimated count.
 */
-$num-dots-supported: 8;
+/* keep in sync with the note on the dot estimate in the script block above */
+$num-dots-supported: 20;
 .es-carousel.before-mount {
     @each $breakpoint in map.keys(variables.$grid-breakpoints) {
         @include breakpoints.media-breakpoint-up($breakpoint) {
             $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
             @for $i from 1 through $num-dots-supported {
-                &.num-dots#{$infix}-#{$i} :deep(.es-carousel-dot:nth-child(#{$i}) ~ .es-carousel-dot) {
+                &.num-dots#{$infix}-#{$i} .es-carousel__dot:nth-child(#{$i}) ~ .es-carousel__dot {
                     display: none;
                 }
             }
@@ -371,192 +429,91 @@ $num-dots-supported: 8;
     }
 }
 
-/* prevent the prev arrow from looking disabled on circular carousels on first paint */
-.es-carousel.before-mount.circular :deep(.es-carousel-prev-arrow:disabled) {
-    color: variables.$gray-900;
-}
-.es-carousel.es-carousel--brand.before-mount.circular :deep(.es-carousel-prev-arrow:disabled) {
-    color: variables.$blue-900;
-}
-
-/* arrows are positioned absolutely, so when arrows are shown but dots are not, we need to reserve space for them */
-.es-carousel.arrows-only {
-    padding-bottom: v-bind(arrowsOnlyBottomSpacing);
-}
-
-/* ensure there's enough space between the dots (when present) and the next content on the page */
-.es-carousel.dots {
-    padding-bottom: 0.25rem;
-}
-
-/* make the carousel card edges align with page content */
-:deep(.es-carousel-container) {
+/* the viewport clips the slides; negative margins pull its edges back out to align with page content */
+.es-carousel__viewport {
+    overflow: hidden;
     margin-left: v-bind(negativeMargin);
     margin-right: v-bind(negativeMargin);
 
-    > div.es-carousel-peek-desktop {
-        @include breakpoints.media-breakpoint-up(lg) {
-            padding-right: v-bind(peekDesktop);
-        }
+    /* peek: reveal a cut-off of the next slide by padding the viewport's right edge */
+    @include breakpoints.media-breakpoint-down(sm) {
+        padding-right: v-bind(peekMobile);
     }
 
-    > div.es-carousel-peek-mobile {
-        @include breakpoints.media-breakpoint-down(sm) {
-            padding-right: v-bind(peekMobile);
-        }
+    @include breakpoints.media-breakpoint-up(lg) {
+        padding-right: v-bind(peekDesktop);
     }
 }
 
-/* card sizing, based on num visible at each breakpoint */
-:deep(.es-carousel-item) {
-    flex: 1 0 calc(100% / v-bind(numVisibleXs));
+/* the flex track that Embla translates */
+.es-carousel__container {
+    /* allow vertical page scroll to pass through when dragging horizontally */
+    touch-action: pan-y pinch-zoom;
+}
+
+/* each slide: width is driven by numVisible at each breakpoint; side padding creates the slide gap */
+.es-carousel__slide {
+    flex: 0 0 calc(100% / v-bind(numVisibleXs));
+    min-width: 0;
     padding: 0 v-bind(sidePadding);
 
     @include breakpoints.media-breakpoint-up(sm) {
-        flex: 1 0 calc(100% / v-bind(numVisibleSm));
+        flex: 0 0 calc(100% / v-bind(numVisibleSm));
     }
 
     @include breakpoints.media-breakpoint-up(md) {
-        flex: 1 0 calc(100% / v-bind(numVisibleMd));
+        flex: 0 0 calc(100% / v-bind(numVisibleMd));
     }
 
     @include breakpoints.media-breakpoint-up(lg) {
-        flex: 1 0 calc(100% / v-bind(numVisibleLg));
+        flex: 0 0 calc(100% / v-bind(numVisibleLg));
     }
 
     @include breakpoints.media-breakpoint-up(xl) {
-        flex: 1 0 calc(100% / v-bind(numVisibleXl));
+        flex: 0 0 calc(100% / v-bind(numVisibleXl));
     }
 
     @include breakpoints.media-breakpoint-up(xxl) {
-        flex: 1 0 calc(100% / v-bind(numVisibleXxl));
+        flex: 0 0 calc(100% / v-bind(numVisibleXxl));
     }
 }
 
-/* previous arrow horizontal positioning at each breakpoint */
-:deep(.es-carousel-prev-arrow) {
-    transform: translateX(v-bind(prevArrowTranslateXs));
-
-    /* keep the "shift 1px down on click" transform from removing our transform */
-    &:not(:disabled):not(.disabled):active {
-        transform: translateX(v-bind(prevArrowTranslateXs)) translateY(1px);
-    }
-
-    @include breakpoints.media-breakpoint-up(sm) {
-        transform: translateX(v-bind(prevArrowTranslateSm));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(prevArrowTranslateSm)) translateY(1px);
-        }
-    }
-
-    @include breakpoints.media-breakpoint-up(md) {
-        transform: translateX(v-bind(prevArrowTranslateMd));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(prevArrowTranslateMd)) translateY(1px);
-        }
-    }
-
-    @include breakpoints.media-breakpoint-up(lg) {
-        transform: translateX(v-bind(prevArrowTranslateLg));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(prevArrowTranslateLg)) translateY(1px);
-        }
-    }
-
-    @include breakpoints.media-breakpoint-up(xl) {
-        transform: translateX(v-bind(prevArrowTranslateXl));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(prevArrowTranslateXl)) translateY(1px);
-        }
-    }
-
-    @include breakpoints.media-breakpoint-up(xxl) {
-        transform: translateX(v-bind(prevArrowTranslateXxl));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(prevArrowTranslateXxl)) translateY(1px);
-        }
-    }
+/* controls row: prev arrow | dots | next arrow, centered below the carousel */
+.es-carousel__controls {
+    gap: v-bind(dotSpacing);
+    margin-top: v-bind(controlsMarginTop);
 }
 
-/* next arrow horizontal positioning at each breakpoint */
-:deep(.es-carousel-next-arrow) {
-    transform: translateX(v-bind(nextArrowTranslateXs));
-
-    /* keep the "shift 1px down on click" transform from removing our transform */
-    &:not(:disabled):not(.disabled):active {
-        transform: translateX(v-bind(nextArrowTranslateXs)) translateY(1px);
-    }
-
-    @include breakpoints.media-breakpoint-up(sm) {
-        transform: translateX(v-bind(nextArrowTranslateSm));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(nextArrowTranslateSm)) translateY(1px);
-        }
-    }
-
-    @include breakpoints.media-breakpoint-up(md) {
-        transform: translateX(v-bind(nextArrowTranslateMd));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(nextArrowTranslateMd)) translateY(1px);
-        }
-    }
-
-    @include breakpoints.media-breakpoint-up(lg) {
-        transform: translateX(v-bind(nextArrowTranslateLg));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(nextArrowTranslateLg)) translateY(1px);
-        }
-    }
-
-    @include breakpoints.media-breakpoint-up(xl) {
-        transform: translateX(v-bind(nextArrowTranslateXl));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(nextArrowTranslateXl)) translateY(1px);
-        }
-    }
-
-    @include breakpoints.media-breakpoint-up(xxl) {
-        transform: translateX(v-bind(nextArrowTranslateXxl));
-
-        &:not(:disabled):not(.disabled):active {
-            transform: translateX(v-bind(nextArrowTranslateXxl)) translateY(1px);
-        }
-    }
+/* keeps the arrows a sensible distance apart when there are no dots between them */
+.es-carousel__arrow-spacer {
+    display: inline-block;
+    width: 2rem;
 }
 
-/* prev/next arrow button styling */
-:deep(.es-carousel-arrow) {
-    background: unset;
-    border: unset;
-    bottom: v-bind(arrowPositionBottom);
+/* prev/next arrow buttons */
+.es-carousel__arrow {
+    background: none;
+    border: none;
     box-shadow: none;
     color: variables.$gray-900;
-    height: auto;
-    left: 50%;
+    line-height: 0;
     padding: v-bind(arrowPadding);
 
     &:hover {
         color: variables.$gray-700;
     }
-    &:focus {
-        color: variables.$gray-900;
+    &:focus-visible {
+        outline: 2px solid variables.$blue-600;
+        outline-offset: 2px;
     }
-    &:not(:disabled):not(.disabled):active {
-        background: unset;
-        box-shadow: none;
+    &:not(:disabled):active {
         color: variables.$gray-700;
+        /* keep the subtle "press" shift used elsewhere in the design system */
+        transform: translateY(1px);
     }
     &:disabled {
         color: variables.$gray-400;
+        cursor: default;
     }
 
     svg {
@@ -566,38 +523,31 @@ $num-dots-supported: 8;
     }
 }
 
-/* prev/next arrow button styling for the "brand" variant */
-.es-carousel--brand {
-    :deep(.es-carousel-arrow) {
-        color: variables.$blue-600;
+/* brand variant: blue arrows */
+.es-carousel--brand .es-carousel__arrow {
+    color: variables.$blue-600;
 
-        &:hover {
-            color: variables.$blue-700;
-        }
-        &:not(:disabled):not(.disabled):active {
-            color: variables.$blue-800;
-        }
-        &:disabled {
-            color: variables.$gray-400;
-        }
+    &:hover {
+        color: variables.$blue-700;
+    }
+    &:not(:disabled):active {
+        color: variables.$blue-800;
+    }
+    &:disabled {
+        color: variables.$gray-400;
     }
 }
 
-/* dots container */
-:deep(.es-carousel-dots) {
+/* dots */
+.es-carousel__dots {
     gap: v-bind(dotSpacing);
+    list-style: none;
+    margin-bottom: 0;
     padding-left: 0;
-    margin-top: v-bind(dotsMarginTop);
 }
 
-/* each individual dot */
-:deep(.es-carousel-dot) {
-    list-style-type: none;
+.es-carousel__dot {
     margin-bottom: 0;
-
-    &[data-p-highlight='true'] button {
-        background-color: variables.$orange-800;
-    }
 
     button {
         background-color: variables.$gray-100;
@@ -610,6 +560,15 @@ $num-dots-supported: 8;
         &:hover {
             opacity: 0.8;
         }
+        /* the arrow keys move focus between the dots, so the focused dot has to be obvious */
+        &:focus-visible {
+            outline: 2px solid variables.$blue-600;
+            outline-offset: 2px;
+        }
+    }
+
+    button.es-carousel__dot--active {
+        background-color: variables.$orange-800;
     }
 }
 </style>

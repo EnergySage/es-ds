@@ -43,12 +43,18 @@ onMounted(async () => {
 });
 
 const propTableRows = [
+    [
+        'ariaLabel',
+        'String',
+        '"Carousel"',
+        'The name screen readers announce for the carousel. When a page has more than one carousel, give each its own name (such as "Featured articles") so they can be told apart.',
+    ],
     ['arrowSize', 'String', '"sm"', 'Takes either "sm" or "lg". Small size is 24px, large size is 32px.'],
     [
         'autoPlay',
         'Boolean',
         'false',
-        'If true, the carousel will automatically go to the next page after a set interval, determined by autoPlayInterval. The autoplay functionality can be stopped by pressing the Esc key.',
+        'If true, the carousel will automatically go to the next page after a set interval, determined by autoPlayInterval. The autoplay functionality can be stopped by pressing the Esc key, and does not run at all for readers who have asked their device to reduce motion.',
     ],
     [
         'autoPlayInterval',
@@ -65,8 +71,8 @@ const propTableRows = [
     [
         'circular',
         'Boolean',
-        'true',
-        'Whether the carousel should stop paging at either end or start over from the beginning.',
+        'false',
+        'Whether the carousel should loop back to the beginning after reaching the end, instead of stopping at either end.',
     ],
     [
         'controlGap',
@@ -77,7 +83,7 @@ const propTableRows = [
     [
         'items',
         'Array',
-        '[]',
+        'n/a',
         'Required. The items to display in the carousel. Use the template #item to style the items.',
     ],
     [
@@ -122,11 +128,11 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
     <div>
         <h1>Carousel</h1>
         <p class="mb-500">
-            Extended from
+            Built on
             <a
-                href="https://v3.primevue.org/carousel/"
+                href="https://www.embla-carousel.com/"
                 target="_blank">
-                PrimeVue Carousel
+                Embla Carousel
             </a>
         </p>
 
@@ -137,6 +143,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 Mobile sees one card at a time, which then increases to two and three as the viewport width increases.
             </p>
             <es-carousel
+                aria-label="Basic example"
                 :breakpoints="{
                     sm: {
                         numScroll: 2,
@@ -151,6 +158,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
+                            alt=""
                             class="mb-50 w-100"
                             :src="item.url" />
                         <p class="font-weight-semibold mb-0">
@@ -167,6 +175,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 When dots are turned off, the arrows are spaced out more but still appear below the carousel.
             </p>
             <es-carousel
+                aria-label="Example with no dots"
                 :breakpoints="{
                     sm: {
                         numScroll: 2,
@@ -182,6 +191,42 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
+                            alt=""
+                            class="mb-50 w-100"
+                            :src="item.url" />
+                        <p class="font-weight-semibold mb-0">
+                            {{ item.heading }}
+                        </p>
+                    </es-card>
+                </template>
+            </es-carousel>
+        </div>
+
+        <div class="my-500">
+            <h2>No arrows</h2>
+            <p class="mb-200">
+                When the arrows are turned off, the dots remain below the carousel and can still be clicked or tapped
+                to jump to a specific set of cards. Readers can also swipe or drag the cards themselves to move between
+                them.
+            </p>
+            <es-carousel
+                aria-label="Example with no arrows"
+                :breakpoints="{
+                    sm: {
+                        numScroll: 2,
+                        numVisible: 2,
+                    },
+                    lg: {
+                        numScroll: 3,
+                        numVisible: 3,
+                    },
+                }"
+                :items="basicExampleItems"
+                :show-arrows="false">
+                <template #item="{ item }">
+                    <es-card class="text-center">
+                        <nuxt-img
+                            alt=""
                             class="mb-50 w-100"
                             :src="item.url" />
                         <p class="font-weight-semibold mb-0">
@@ -200,6 +245,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 icons.
             </p>
             <es-carousel
+                aria-label="Customization example"
                 arrow-size="lg"
                 :breakpoints="{
                     sm: {
@@ -217,6 +263,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
+                            alt=""
                             class="mb-50 w-100"
                             :src="item.url" />
                         <p class="font-weight-semibold mb-0">
@@ -235,11 +282,11 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 the dots when the circular setting is enabled so the user knows when the end of the list is reached.
             </p>
             <p class="mb-200">
-                Unless paging is done in a rapid-fire succession (the carousel needs a split second to add more hidden
-                items after a page transition completes), the next set of items will always appear to come from the
-                same direction as all previous items, even when circling back to the beginning of the list.
+                The next set of items always appears to come from the same direction as all previous items, even when
+                circling back to the beginning of the list.
             </p>
             <es-carousel
+                aria-label="Circular behavior example"
                 :breakpoints="{
                     sm: {
                         numScroll: 2,
@@ -251,6 +298,7 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
                 <template #item="{ item }">
                     <es-card class="text-center">
                         <nuxt-img
+                            alt=""
                             class="mb-50 w-100"
                             :src="item.url" />
                         <p class="font-weight-semibold mb-0">
@@ -265,12 +313,18 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             <h2>Autoplay with circular behavior</h2>
             <p>This example shows autoplay behavior with circular mode enabled, to show a slideshow of images.</p>
             <p class="mb-200">
-                Pressing the Esc key will stop the autoplay and reset the carousel to the first item. This is an
-                important accessibility feature for screen readers, because the contents of each new slide brought into
-                view by autoplay are automatically read aloud, no matter where the user is on the page, which can be
-                distracting while trying to read through another part of the page.
+                Pressing the Esc key stops the autoplay. This matters for accessibility, because
+                <a
+                    href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
+                    target="_blank">
+                    WCAG 2.2.2</a
+                >
+                requires that readers have a way to stop content that moves on its own. Readers who have asked their
+                device to reduce motion don't see autoplay at all; the carousel simply waits for them to page through
+                it themselves.
             </p>
             <es-carousel
+                aria-label="Autoplay slideshow example"
                 auto-play
                 circular
                 :items="slideShowItems"
@@ -307,10 +361,3 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             doc-source="es-ds-docs/pages/organisms/carousel.vue" />
     </div>
 </template>
-<style lang="scss" scoped>
-.product-image {
-    aspect-ratio: 1;
-    margin-bottom: 0.75rem;
-    object-fit: cover;
-}
-</style>
