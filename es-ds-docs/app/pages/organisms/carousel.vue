@@ -361,10 +361,3 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             doc-source="es-ds-docs/pages/organisms/carousel.vue" />
     </div>
 </template>
-<style lang="scss" scoped>
-.product-image {
-    aspect-ratio: 1;
-    margin-bottom: 0.75rem;
-    object-fit: cover;
-}
-</style>
