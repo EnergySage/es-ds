@@ -162,7 +162,9 @@ const emblaOptions = computed<EmblaOptionsType>(() => {
 const autoplayEnabled = props.autoPlay && !prefersReducedMotion.value;
 const autoplayPlugins = autoplayEnabled ? [Autoplay({ delay: props.autoPlayInterval, stopOnInteraction: false })] : [];
 
-const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions.value, autoplayPlugins);
+// `emblaOptions` is passed as a ref, not unwrapped: the composable then watches it and reinitializes
+// the carousel itself when the options change, skipping the work when the new options are equivalent.
+const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, autoplayPlugins);
 
 // reactive state derived from the Embla API
 const scrollSnaps = ref<number[]>([]);
@@ -310,12 +312,6 @@ onBeforeUnmount(() => {
         api.off('reInit', onReInit);
     }
     document.removeEventListener('keyup', onEscapeKeyup);
-});
-
-// re-initialize Embla whenever the options (numScroll, loop, reduced-motion, breakpoints) change.
-// slide-width changes from numVisible are picked up automatically by Embla's ResizeObserver.
-watch(emblaOptions, (options) => {
-    emblaApi.value?.reInit(options);
 });
 </script>
 
