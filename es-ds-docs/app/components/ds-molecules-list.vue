@@ -4,6 +4,9 @@
             <ds-link to="/molecules/accordion"> Accordion </ds-link>
         </li>
         <li>
+            <ds-link to="/molecules/autocomplete"> Autocomplete </ds-link>
+        </li>
+        <li>
             <ds-link to="/molecules/badge"> Badge </ds-link>
         </li>
         <li>
