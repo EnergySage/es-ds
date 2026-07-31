@@ -54,7 +54,7 @@ const propTableRows = [
         'autoPlay',
         'Boolean',
         'false',
-        'If true, the carousel will automatically go to the next page after a set interval, determined by autoPlayInterval. The autoplay functionality can be stopped by pressing the Esc key, and does not run at all for readers who have asked their device to reduce motion.',
+        'If true, the carousel will automatically go to the next page after a set interval, determined by autoPlayInterval. Autoplay stops as soon as the reader pages the carousel themselves, whether by arrow, dot, drag, or swipe, and can also be stopped by pressing the Esc key. It does not run at all for readers who have asked their device to reduce motion.',
     ],
     [
         'autoPlayInterval',
@@ -313,7 +313,8 @@ const eventTableRows = [['update', 'value (Number)', 'Emitted when the visible p
             <h2>Autoplay with circular behavior</h2>
             <p>This example shows autoplay behavior with circular mode enabled, to show a slideshow of images.</p>
             <p class="mb-200">
-                Pressing the Esc key stops the autoplay. This matters for accessibility, because
+                Autoplay stops as soon as the reader pages the carousel themselves, whether by arrow, dot, drag, or
+                swipe, and it stays stopped. Pressing the Esc key stops it too. This matters for accessibility, because
                 <a
                     href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html"
                     target="_blank">
