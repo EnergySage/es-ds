@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.7.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.2...es-ds-docs-v5.7.3) (2026-07-31)
+
+
+### Bug Fixes
+
+* make EsCarousel autoplay stop upon interaction ([#1780](https://github.com/EnergySage/es-ds/issues/1780)) ([e5acf03](https://github.com/EnergySage/es-ds/commit/e5acf034f1af59d2ff25b5f50873c8a4312a1f5e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.7.2 to ^5.7.3
+
 ## [5.7.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.1...es-ds-docs-v5.7.2) (2026-07-29)
 
 
