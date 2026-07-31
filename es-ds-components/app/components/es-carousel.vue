@@ -156,11 +156,14 @@ const emblaOptions = computed<EmblaOptionsType>(() => {
     auto-advancing content is motion in its own right, so the preference should stop it entirely
     rather than merely removing the slide animation. (Manual paging stays instant via `duration`.)
 
-    It is a plugin, added at creation time. stopOnInteraction is false so it matches the previous
-    behavior of running until the user presses Esc.
+    It is a plugin, added at creation time. `stopOnInteraction` is on so that dragging the slides
+    stops autoplay and leaves it stopped — with it off, the plugin restarts the timer on pointer-up.
+    The plugin's own stop doesn't record anything on our side though, so we listen for the same
+    events (see onMounted) and route them through `stopAutoplay`, which remembers the stop and keeps
+    it from being undone by a reinitialization.
 */
 const autoplayEnabled = props.autoPlay && !prefersReducedMotion.value;
-const autoplayPlugins = autoplayEnabled ? [Autoplay({ delay: props.autoPlayInterval, stopOnInteraction: false })] : [];
+const autoplayPlugins = autoplayEnabled ? [Autoplay({ delay: props.autoPlayInterval, stopOnInteraction: true })] : [];
 
 // `emblaOptions` is passed as a ref, not unwrapped: the composable then watches it and reinitializes
 // the carousel itself when the options change, skipping the work when the new options are equivalent.
@@ -202,13 +205,29 @@ const onReInit = () => {
     }
 };
 
-const scrollPrev = () => emblaApi.value?.scrollPrev();
-const scrollNext = () => emblaApi.value?.scrollNext();
-const scrollTo = (index: number) => emblaApi.value?.scrollTo(index);
-
 const stopAutoplay = () => {
     autoplayStopped.value = true;
     emblaApi.value?.plugins()?.autoplay?.stop();
+};
+
+/*
+    Paging the carousel yourself stops autoplay for good. Once someone has taken control, having the
+    carousel keep moving under them fights whatever they were trying to look at.
+
+    These three cover the arrows and the dots. Dragging and swiping are handled separately, by the
+    `pointerDown` listener in onMounted, since those never come through here.
+*/
+const scrollPrev = () => {
+    stopAutoplay();
+    emblaApi.value?.scrollPrev();
+};
+const scrollNext = () => {
+    stopAutoplay();
+    emblaApi.value?.scrollNext();
+};
+const scrollTo = (index: number) => {
+    stopAutoplay();
+    emblaApi.value?.scrollTo(index);
 };
 
 // stop carousel when user presses Escape key, in lieu of a pause button
@@ -298,6 +317,16 @@ onMounted(() => {
         onReInit();
         api.on('select', onSelect);
         api.on('reInit', onReInit);
+        /*
+            The autoplay plugin stops itself on these two, but doesn't tell us, so a later
+            reinitialization would start it up again. Running our own handler on the same events
+            records the stop and keeps it stopped. Dragging and swiping arrive as `pointerDown`;
+            `slideFocusStart` is a slide receiving focus.
+        */
+        if (autoplayEnabled) {
+            api.on('pointerDown', stopAutoplay);
+            api.on('slideFocusStart', stopAutoplay);
+        }
     }
 
     if (autoplayEnabled) {
@@ -310,6 +339,8 @@ onBeforeUnmount(() => {
     if (api) {
         api.off('select', onSelect);
         api.off('reInit', onReInit);
+        api.off('pointerDown', stopAutoplay);
+        api.off('slideFocusStart', stopAutoplay);
     }
     document.removeEventListener('keyup', onEscapeKeyup);
 });
