@@ -20,3 +20,6 @@ cdk.out
 .npmrc
 
 stats-*.html
+
+# Playwright MCP browser-session artifacts
+.playwright-mcp/
