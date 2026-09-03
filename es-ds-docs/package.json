@@ -52,5 +52,13 @@
         "sass": "^1.77.8",
         "typescript": "^6.0.3",
         "vue-tsc": "^3.0.8"
+    },
+    "allowScripts": {
+        "vue-demi@0.14.10": true,
+        "vue-demi@0.13.11": true,
+        "esbuild@0.28.2": true,
+        "fsevents@2.3.3": true,
+        "unrs-resolver@1.12.2": true,
+        "@parcel/watcher@2.6.0": true
     }
 }
