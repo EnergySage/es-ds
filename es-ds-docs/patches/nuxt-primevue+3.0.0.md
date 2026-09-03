@@ -33,16 +33,6 @@ error TS2339: Property 'normalizeCode' does not exist on type '{}'.
 
 The patch adds a `plugin.client.d.mts` that types the default export as Nuxt's `Plugin`, and a `plugin.server.d.mts` copied from the existing server declaration. With these in place the injection types resolve and the typecheck passes.
 
-## Known remaining warning
-
-`nuxi typecheck` and `nuxi prepare` print five `NUXT_B6005` warnings such as:
-
-```
-WARN  [NUXT_B6005] Could not resolve primevue/config used by the auto-import usePrimeVue.
-```
-
-The module registers auto-imports for `usePrimeVue`, `useStyle`, `useConfirm`, `useToast` and `useDialog` from `primevue/*` subpaths. PrimeVue 3 has no `exports` map, and the resolver Nuxt 4.5 uses for this check does not follow directory `package.json` `main` fields. The auto-imports are skipped. Nothing in this repo uses those composables, so the warnings are noise.
-
 ## Updating
 
 If `nuxt-primevue` is bumped, `patch-package` will fail to apply. Re-create the patch:
