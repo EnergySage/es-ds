@@ -1,9 +1,9 @@
+<!--
+    use this layout only for components that are meant to appear at full page width,
+    and therefore need more horizontal space than 9 columns on large desktop
+    to showcase what it will look like on a real page
+-->
 <template>
-    <!--
-        use this layout only for components that are meant to appear at full page width,
-        and therefore need more horizontal space than 9 columns on large desktop
-        to showcase what it will look like on a real page
-    -->
     <div>
         <div class="d-flex justify-content-center">
             <div class="ds-side-nav d-none d-xl-block flex-shrink-0 p-100">
