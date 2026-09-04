@@ -15,7 +15,7 @@ export function useEsForms<T extends { [key in keyof Vargs]: any }, Vargs extend
     const isSubmitInProgress = computed(() => submitInProgress.value);
 
     const getFields = (obj: any, valueKey = 'obj') => {
-        let objKeys = null;
+        let objKeys;
         try {
             objKeys = Object.keys(obj);
 
