@@ -1,5 +1,24 @@
 # Changelog
 
+## [6.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.3...es-ds-docs-v6.0.0) (2026-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* dependency updates ([#1782](https://github.com/EnergySage/es-ds/issues/1782))
+
+### Features
+
+* dependency updates ([#1782](https://github.com/EnergySage/es-ds/issues/1782)) ([a0cdac3](https://github.com/EnergySage/es-ds/commit/a0cdac3e425d38b6636e631a380a362ffe7fb9bc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.7.3 to ^6.0.0
+    * @energysage/es-ds-styles bumped from ^3.5.9 to ^4.0.0
+
 ## [5.7.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.2...es-ds-docs-v5.7.3) (2026-07-31)
 
 
