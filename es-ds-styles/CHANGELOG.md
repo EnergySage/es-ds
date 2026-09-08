@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.9...es-ds-styles-v4.0.0) (2026-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* dependency updates ([#1782](https://github.com/EnergySage/es-ds/issues/1782))
+
+### Features
+
+* dependency updates ([#1782](https://github.com/EnergySage/es-ds/issues/1782)) ([a0cdac3](https://github.com/EnergySage/es-ds/commit/a0cdac3e425d38b6636e631a380a362ffe7fb9bc))
+
 ## [3.5.9](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.8...es-ds-styles-v3.5.9) (2026-07-29)
 
 
