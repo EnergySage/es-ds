@@ -1,5 +1,54 @@
 # Changelog
 
+## [6.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.3...es-ds-docs-v6.0.0) (2026-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* dependency updates ([#1782](https://github.com/EnergySage/es-ds/issues/1782))
+
+### Features
+
+* dependency updates ([#1782](https://github.com/EnergySage/es-ds/issues/1782)) ([a0cdac3](https://github.com/EnergySage/es-ds/commit/a0cdac3e425d38b6636e631a380a362ffe7fb9bc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.7.3 to ^6.0.0
+    * @energysage/es-ds-styles bumped from ^3.5.9 to ^4.0.0
+
+## [5.7.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.2...es-ds-docs-v5.7.3) (2026-07-31)
+
+
+### Bug Fixes
+
+* make EsCarousel autoplay stop upon interaction ([#1780](https://github.com/EnergySage/es-ds/issues/1780)) ([e5acf03](https://github.com/EnergySage/es-ds/commit/e5acf034f1af59d2ff25b5f50873c8a4312a1f5e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.7.2 to ^5.7.3
+
+## [5.7.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.1...es-ds-docs-v5.7.2) (2026-07-29)
+
+
+### Bug Fixes
+
+* critical, high, and moderate vulnerabilities ([#1775](https://github.com/EnergySage/es-ds/issues/1775)) ([5453306](https://github.com/EnergySage/es-ds/commit/54533067655059bba89ece29613af3846ea058f7))
+* EsCarousel autoplay no longer interrupts screen readers ([#1778](https://github.com/EnergySage/es-ds/issues/1778)) ([666ecf0](https://github.com/EnergySage/es-ds/commit/666ecf02383db3728195d8a6a44655d6fba1536a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^5.7.1 to ^5.7.2
+    * @energysage/es-ds-styles bumped from ^3.5.8 to ^3.5.9
+
 ## [5.7.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.0...es-ds-docs-v5.7.1) (2026-06-12)
 
 

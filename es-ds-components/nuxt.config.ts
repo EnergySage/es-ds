@@ -39,6 +39,12 @@ export default defineNuxtConfig({
         components: {
             include: [],
         },
+        // None of the PrimeVue composables (usePrimeVue, useStyle, useConfirm, useToast, useDialog)
+        // are used. Their auto-import presets also fail Nuxt's NUXT_B6005 resolution check because
+        // PrimeVue 3 has no `exports` map, so leave them out entirely.
+        composables: {
+            include: [],
+        },
         options: {
             unstyled: true,
         },
@@ -68,7 +74,6 @@ export default defineNuxtConfig({
                 'primevue/badgedirective',
                 'primevue/breadcrumb',
                 'primevue/button',
-                'primevue/carousel',
                 'primevue/column',
                 'primevue/datatable',
                 'primevue/dialog',
