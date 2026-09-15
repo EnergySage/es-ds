@@ -1,0 +1,52 @@
+export interface SampleAutocompleteAddress {
+    street: string;
+    cityStateZip: string;
+}
+
+// Sample data for the EsAutocomplete docs examples: street numbers cover every
+// leading digit and cities span the US, so any digits a visitor starts typing
+// are likely to match several addresses. Typing "12" matches more addresses
+// than the component will show, exercising the 10-item cap and the
+// fit-to-viewport trim.
+export const SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES: SampleAutocompleteAddress[] = [
+    { street: '12 Maple Ave', cityStateZip: 'Cambridge, MA 02138' },
+    { street: '15 Harbor Dr', cityStateZip: 'Salem, MA 01970' },
+    { street: '18 Orchard Rd', cityStateZip: 'Providence, RI 02906' },
+    { street: '22 Bayview Ter', cityStateZip: 'Portland, ME 04101' },
+    { street: '34 Prospect St', cityStateZip: 'New Haven, CT 06511' },
+    { street: '41 Franklin Ave', cityStateZip: 'Brooklyn, NY 11205' },
+    { street: '55 Jefferson St', cityStateZip: 'Richmond, VA 23219' },
+    { street: '62 Grove St', cityStateZip: 'Burlington, VT 05401' },
+    { street: '71 Magazine St', cityStateZip: 'New Orleans, LA 70130' },
+    { street: '89 Dogwood Cir', cityStateZip: 'Charlotte, NC 28205' },
+    { street: '93 Sycamore St', cityStateZip: 'Columbus, OH 43206' },
+    { street: '120 Elm St', cityStateZip: 'Manchester, NH 03101' },
+    { street: '123 Main St', cityStateZip: 'Boston, MA 02108' },
+    { street: '125 Main St', cityStateZip: 'Boston, MA 02108' },
+    { street: '128 Chestnut St', cityStateZip: 'Philadelphia, PA 19106' },
+    { street: '145 Highland Ave', cityStateZip: 'Somerville, MA 02143' },
+    { street: '240 Walnut St', cityStateZip: 'Cincinnati, OH 45202' },
+    { street: '312 Juniper Way', cityStateZip: 'Boulder, CO 80302' },
+    { street: '355 Cedar Ct', cityStateZip: 'Madison, WI 53703' },
+    { street: '460 Birch Ter', cityStateZip: 'Minneapolis, MN 55408' },
+    { street: '512 Congress Ave', cityStateZip: 'Austin, TX 78701' },
+    { street: '530 Palm Dr', cityStateZip: 'Miami, FL 33139' },
+    { street: '575 Canyon Rd', cityStateZip: 'Santa Fe, NM 87501' },
+    { street: '640 Aspen Way', cityStateZip: 'Denver, CO 80209' },
+    { street: '725 Cherry Ln', cityStateZip: 'Salt Lake City, UT 84102' },
+    { street: '812 Willow Ln', cityStateZip: 'Nashville, TN 37206' },
+    { street: '845 Vine St', cityStateZip: 'Kansas City, MO 64106' },
+    { street: '910 Bluff Rd', cityStateZip: 'Sioux Falls, SD 57105' },
+    { street: '1024 Grand Ave', cityStateZip: 'St. Louis, MO 63106' },
+    { street: '1200 Beacon St', cityStateZip: 'Brookline, MA 02446' },
+    { street: '1215 Magnolia Ave', cityStateZip: 'Savannah, GA 31404' },
+    { street: '1250 Lakeview Dr', cityStateZip: 'Chicago, IL 60614' },
+    { street: '2124 Pine Rd', cityStateZip: 'Portland, OR 97205' },
+    { street: '2650 Peachtree Rd', cityStateZip: 'Atlanta, GA 30305' },
+    { street: '3050 Frontier Ave', cityStateZip: 'Boise, ID 83702' },
+    { street: '4120 Sunset Blvd', cityStateZip: 'Los Angeles, CA 90029' },
+    { street: '4700 Rainier Ave', cityStateZip: 'Seattle, WA 98118' },
+    { street: '6800 Ocean View Blvd', cityStateZip: 'San Diego, CA 92109' },
+    { street: '7400 Mesa Trl', cityStateZip: 'Phoenix, AZ 85018' },
+    { street: '9500 Desert Willow Dr', cityStateZip: 'Las Vegas, NV 89134' },
+];

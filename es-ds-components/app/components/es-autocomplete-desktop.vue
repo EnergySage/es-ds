@@ -25,6 +25,7 @@ interface Props {
     panelMessage: string;
     placeholder?: string;
     required?: boolean;
+    showOverlayOnFocus?: boolean;
     state?: boolean | null;
     suggestions: EsAutocompleteSuggestion[];
 }
@@ -59,9 +60,10 @@ const { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight, us
 );
 watch(open, resetUserHighlight);
 
-// The panel and overlay stay up for the entire interaction: they open when the
-// field gains focus and close when focus leaves it (or on Escape/select/submit).
-// Suggestion changes never open or close the panel — they only swap its content.
+// The panel (and, with showOverlayOnFocus, the page-dim overlay) stays up for
+// the entire interaction: it opens when the field gains focus and closes when
+// focus leaves it (or on Escape/select/submit). Suggestion changes never open
+// or close the panel — they only swap its content.
 function onOpenChange(value: boolean) {
     open.value = value;
 }
@@ -121,7 +123,8 @@ function onPanelMousedown(event: MouseEvent) {
             class="es-autocomplete-field es-form-input form-control align-items-center d-flex p-0"
             :class="{
                 'is-invalid': state === false,
-                'es-autocomplete-field--raised': open,
+                'es-autocomplete-field--focus-bordered': !showOverlayOnFocus,
+                'es-autocomplete-field--raised': open && showOverlayOnFocus,
                 'es-autocomplete-field--disabled': disabled,
             }"
             @focusin="onFocusIn"
@@ -180,7 +183,7 @@ function onPanelMousedown(event: MouseEvent) {
     <teleport to="body">
         <transition name="es-autocomplete-overlay">
             <div
-                v-if="open"
+                v-if="open && showOverlayOnFocus"
                 aria-hidden="true"
                 class="es-autocomplete-overlay d-none d-md-block" />
         </transition>
@@ -190,10 +193,19 @@ function onPanelMousedown(event: MouseEvent) {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-// deliberately no focus styling on the field: the page-dim overlay appearing on
-// focus is the focus indicator. (es-form-input's lighter :focus border reads as
-// the border disappearing against the dimmed page, and a :focus-visible ring is
-// not an option — browsers match :focus-visible on ANY focus of a text field.)
+// without the overlay, the field indicates focus the way es-form-input does:
+// the focus border color. :focus-within stands in for form-control's :focus
+// because the form-control class sits on this wrapper while focus lands on the
+// input (or clear button) inside it.
+.es-autocomplete-field--focus-bordered:focus-within {
+    border-color: variables.$input-focus-border-color;
+}
+
+// with showOverlayOnFocus, there is deliberately no focus styling on the field:
+// the page-dim overlay appearing on focus is the focus indicator. (es-form-input's
+// lighter :focus border reads as the border disappearing against the dimmed page,
+// and a :focus-visible ring is not an option — browsers match :focus-visible on
+// ANY focus of a text field.)
 
 // while the panel is open, lift the input above the page-dim overlay so it
 // stays fully visible and interactive

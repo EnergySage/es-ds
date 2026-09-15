@@ -81,7 +81,7 @@ Implement against this spec; ask before deviating from a decision recorded here.
 | 4 | Avoid scrollbars | Never set `overflow: auto` on the suggestion list. Overflow is prevented by the fit-to-viewport trim (§3): we only render items that fully fit. |
 | 5 | Reduce visual noise | Suggestions only. No trending searches, product cards, images, or promos inside the panel. Minimal separators. |
 | 6 | Highlight active suggestion + keyboard nav | Reka provides arrow-key nav, looping, Enter-to-submit, `aria-activedescendant`. Style the highlighted item via its `data-highlighted` attribute (background shading) and `cursor: pointer` on items. **Decision (2026-07-02):** we deliberately SKIP the Google-style "arrow key copies suggestion text into the input" behavior. Primary use cases are selection-oriented (e.g. address entry) where users pick a whole suggestion rather than building a query from pieces. Arrow keys move the highlight only; the typed input is unchanged; Enter selects the highlighted suggestion. (Verified against installed reka-ui 2.9.7 that this is also Reka's default behavior — no extra wiring needed.) |
-| 7 | Visual depth (desktop) | When the popover is open, dim the page behind it with an overlay matching the existing `.es-menu-bar-overlay` treatment in `es-menu-bar.vue`: fixed, `variables.$black` at 0.25 opacity, `z-index: 999`, below the popover's z-index. Blur/tap-away closes the popover (as it does the menu bar flyouts), so the two overlays are never active simultaneously. Border + shadow on the panel. |
+| 7 | Visual depth (desktop) | When the popover is open with `showOverlayOnFocus` (opt-in, decision #13), dim the page behind it with an overlay matching the existing `.es-menu-bar-overlay` treatment in `es-menu-bar.vue`: fixed, `variables.$black` at 0.25 opacity, `z-index: 999`, below the popover's z-index. Blur/tap-away closes the popover (as it does the menu bar flyouts), so the two overlays are never active simultaneously. Border + shadow on the panel. |
 | 8 | No competing external elements (mobile) | Solved structurally by the full-screen Dialog takeover (§4) — nothing else is on screen. |
 | 9 | Adequate spacing/tap targets (mobile) | Min 44px row height (content may wrap to more), ≥16px font on mobile, generous horizontal padding, title-case suggestion text. |
 
@@ -150,7 +150,7 @@ shared via the same `v-model`.
 - Panel width: `min-width: var(--reka-combobox-trigger-width)` (combobox naming — see
   §3) plus a comfortable `max-width` — the panel MAY be wider than a narrow input
   (reduces wrapping).
-- Page-dim overlay while open (req #7).
+- Page-dim overlay while open, when `showOverlayOnFocus` is set (req #7, decision #13).
 
 ### 4b. Mobile: full-screen Dialog takeover
 - On-page trigger is a **fake search field** (a `<button>` styled as an input). Tapping
@@ -210,7 +210,7 @@ AutoComplete contract that `ZipOrAddressInput` consumes:
   can pass `:min-chars="2"`.
 - `noResultsText` prop, default "No results found" (decision 2026-07-02, superseding
   the earlier closed-when-empty behavior): once suggestions have been shown, a search
-  that comes back empty keeps the panel and overlay open and shows this message —
+  that comes back empty keeps the panel (and any overlay) open and shows this message —
   closing them mid-typing was a jarring flicker. The message never shows while the
   first search is still in flight (an empty list then just means "no answer yet"), and
   the panel still closes when the query drops below `minChars`, on Escape, tap-away,
@@ -366,7 +366,8 @@ would assert against exactly those examples. Build them once the docs page is
 stable, in es-ds-docs with @playwright/test and a webServer config pointing at the
 docs site:
 
-1. Focus-model choreography: focus → panel + overlay + promptText; type → items;
+1. Focus-model choreography: focus → panel + promptText (+ overlay with
+   showOverlayOnFocus); type → items;
    empty response → stays open with noResultsText (promptText mid-flight); clear →
    stays open with promptText; blur/tap-away → closes; select → closes and
    populates v-model.
@@ -413,8 +414,9 @@ On the docs page at `http://localhost:8500/molecules/autocomplete`:
 - [ ] SSR: no hydration warnings on page load (desktop and emulated mobile)
 - [ ] Zero visual shift at load: on mobile (throttled network), the input area looks
       identical before and after hydration — no desktop-input flash (§1a)
-- [ ] Desktop: ≤10 suggestions, no scrollbar at any viewport height, dim overlay,
-      hover + keyboard highlight, hand cursor
+- [ ] Desktop: ≤10 suggestions, no scrollbar at any viewport height, dim overlay
+      with showOverlayOnFocus (focus border without it), hover + keyboard highlight,
+      hand cursor
 - [ ] Arrow keys move the highlight without changing the typed input; Enter selects
       the highlighted suggestion; list loops
 - [ ] Predictive portion bolded; typed/matched portions regular
@@ -509,3 +511,15 @@ Open questions raised during planning, with the decisions now reflected inline a
     one appears, scope-style rendering can be built entirely app-side with the `item`
     slot and the `value` payload, or the feature can be reintroduced from this plan's
     history.
+13. **Desktop dim overlay is opt-in via `showOverlayOnFocus` (default false)**
+    (2026-09-15, refines #5): Baymard's page-dim pattern suits a standalone primary
+    search (e.g. site search in a sticky header), but most EnergySage uses are a field
+    within a larger form, where (a) no sibling field behaves that way and (b) the
+    overlay obscures the rest of the form. With the overlay off, the field indicates
+    focus the way es-form-input does (the `$input-focus-border-color` border, via
+    `:focus-within` since `form-control` sits on the wrapper while focus lands on the
+    inner input); with it on, the field keeps its deliberate no-focus-border styling
+    (decision history: the lighter focus border read as the border disappearing
+    against the dimmed page) and the `--raised` z-index lift applies only in this
+    mode. The overlay markup, `.es-autocomplete-overlay` styling, and z-index layering
+    from #5 are unchanged when enabled.

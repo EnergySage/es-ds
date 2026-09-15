@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SampleAutocompleteAddress } from '~/utils/autocomplete-sample-items';
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -62,18 +64,7 @@ const onHiddenLabelComplete = (query: string) => {
 };
 
 // Custom item slot example
-interface AddressValue {
-    street: string;
-    cityStateZip: string;
-}
-const ADDRESSES: AddressValue[] = [
-    { street: '123 Main St', cityStateZip: 'Boston, MA 02108' },
-    { street: '125 Main St', cityStateZip: 'Boston, MA 02108' },
-    { street: '12 Maple Ave', cityStateZip: 'Cambridge, MA 02138' },
-    { street: '1200 Beacon St', cityStateZip: 'Brookline, MA 02446' },
-    { street: '15 Harbor Dr', cityStateZip: 'Salem, MA 01970' },
-];
-const asAddress = (value: unknown) => value as AddressValue;
+const asAddress = (value: unknown) => value as SampleAutocompleteAddress;
 // the two lines form one suggestion, so bolding is decided across both: a line
 // without its own token match still renders bold when the other line matched
 const splitAddressLines = (suggestion: DocSuggestion, query: string) => {
@@ -84,7 +75,7 @@ const splitAddressLines = (suggestion: DocSuggestion, query: string) => {
 // so terms can be typed in any order, e.g. "boston main"
 const filterAddresses = (query: string) => {
     const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    return ADDRESSES.filter((address) => {
+    return SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES.filter((address) => {
         const joined = `${address.street} ${address.cityStateZip}`.toLowerCase();
         return tokens.every((token) => joined.includes(token));
     }).map((address) => ({
@@ -252,6 +243,16 @@ const autocompleteProps = [
         `,
     ],
     [
+        'showOverlayOnFocus',
+        'Boolean',
+        'false',
+        `
+        On desktop, dims the rest of the page with an overlay while the input has focus. Suits a standalone
+        primary search (e.g. site search in a sticky header); leave off for a field within a larger form,
+        where the overlay would obscure sibling fields.
+        `,
+    ],
+    [
         'state',
         'Boolean | null',
         'null',
@@ -350,9 +351,11 @@ const autocompleteSlots = [
                 scrolling, and it renders the <em>predictive</em> portion of each suggestion in bold.
             </p>
             <p>
-                On desktop, the suggestions panel and page-dim overlay open when the input gains focus and close when
-                it loses focus, staying up for the entire interaction. Before there is anything to show, the panel
-                displays <code>promptText</code>; a search that comes back empty displays <code>noResultsText</code>.
+                On desktop, the suggestions panel opens when the input gains focus and closes when it loses focus,
+                staying up for the entire interaction. Before there is anything to show, the panel displays
+                <code>promptText</code>; a search that comes back empty displays <code>noResultsText</code>. For a
+                standalone primary search, <code>showOverlayOnFocus</code> additionally dims the rest of the page while
+                the input has focus.
             </p>
             <p>
                 On viewports below the <code>md</code> breakpoint, tapping the input opens a full-screen takeover with
@@ -397,7 +400,9 @@ const autocompleteSlots = [
             <h2>Hidden label</h2>
             <p>
                 Use <code>labelSrOnly</code> when the autocomplete should stand on its own, described only by its
-                placeholder. The label is still announced to screen readers.
+                placeholder. The label is still announced to screen readers. This example also enables
+                <code>showOverlayOnFocus</code>, which suits this kind of standalone primary search: on desktop, the
+                rest of the page dims while the input has focus.
             </p>
             <div class="row">
                 <div class="col-md-6">
@@ -407,6 +412,7 @@ const autocompleteSlots = [
                         label="Search"
                         label-sr-only
                         placeholder="Search for a topic"
+                        show-overlay-on-focus
                         :suggestions="hiddenLabelSuggestions"
                         @complete="onHiddenLabelComplete" />
                 </div>
@@ -425,9 +431,11 @@ const autocompleteSlots = [
                 <code>splitAutocompleteTextLines(lines, query)</code> utility (auto-imported from
                 <code>es-ds-components</code>) and pass each line's result via the <code>segments</code> prop, so a
                 line without its own match still renders bold when another line matched — that's what this example
-                does. Try typing <code>main</code>, <code>boston main</code> (out of order), or <code>beacon</code>
-                (second line bolds as part of the suggestion). If your search API returns its own match offsets (e.g.
-                Google Places matched substrings), build the segments from those offsets and pass them the same way.
+                does. Try typing <code>main</code>, <code>boston main</code> (out of order), or
+                <code>beacon</code> (second line bolds as part of the suggestion); <code>12</code> matches more
+                addresses than fit, showing the component cap the list. If your search API returns its own match
+                offsets (e.g. Google Places matched substrings), build the segments from those offsets and pass them
+                the same way.
             </p>
             <div class="row">
                 <div class="col-md-6">

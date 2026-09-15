@@ -14,6 +14,7 @@ interface Props {
     placeholder?: string;
     promptText?: string;
     required?: boolean;
+    showOverlayOnFocus?: boolean;
     state?: boolean | null;
     suggestions: EsAutocompleteSuggestion[];
 }
@@ -29,6 +30,10 @@ const props = withDefaults(defineProps<Props>(), {
     placeholder: '',
     promptText: 'Type for suggestions',
     required: false,
+    // most uses are a field within a larger form, where dimming the rest of the
+    // page would obscure sibling fields; the overlay suits a standalone primary
+    // search (e.g. site search in a sticky header)
+    showOverlayOnFocus: false,
     state: null,
 });
 
@@ -75,6 +80,7 @@ const { effectiveSuggestions, onSelect, onSubmit, panelMessage } = useAutocomple
             :panel-message="panelMessage"
             :placeholder="placeholder"
             :required="required"
+            :show-overlay-on-focus="showOverlayOnFocus"
             :state="state"
             :suggestions="effectiveSuggestions"
             @select="onSelect"
