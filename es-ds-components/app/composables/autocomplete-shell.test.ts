@@ -162,6 +162,46 @@ describe('useAutocompleteShell keyboard-highlight mirroring', () => {
         expect(shell.displayText.value).toBe('solar');
     });
 
+    it('typing ends keyboard navigation: the highlight Reka re-creates after the model change is neither mirrored nor user-made', async () => {
+        const { model, shell } = makeShell();
+        shell.onArrowDown();
+        shell.onHighlight({ value: '41 Franklin Ave' });
+        await nextTick();
+        expect(shell.displayText.value).toBe('41 Franklin Ave');
+
+        // the user types a character: the input event fires before Reka reacts
+        // to the model change by highlighting the first item again
+        shell.onUserInput();
+        shell.onHighlight({ value: '12 Maple Ave' });
+        await nextTick();
+        expect(shell.displayText.value).toBe('41 Franklin Ave'); // not overwritten by the system highlight
+        expect(shell.userHighlighted.value).toBe(false); // so the highlight guard clears it
+        expect(model.value).toBe('solar');
+    });
+
+    it('the field ring yields to the option ring only while a keyboard highlight is active', async () => {
+        const { shell } = makeShell();
+        expect(shell.keyboardHighlightActive.value).toBe(false);
+
+        // arrows with nothing highlighted yet: the field keeps its ring
+        shell.onArrowDown();
+        expect(shell.keyboardHighlightActive.value).toBe(false);
+
+        shell.onHighlight({ value: 'solar batteries' });
+        await nextTick();
+        expect(shell.keyboardHighlightActive.value).toBe(true);
+
+        // typing hands the ring back to the field
+        shell.onUserInput();
+        expect(shell.keyboardHighlightActive.value).toBe(false);
+
+        // pointer highlights never take the ring from the field
+        shell.markPointerHighlight();
+        shell.onHighlight({ value: 'solar batteries' });
+        await nextTick();
+        expect(shell.keyboardHighlightActive.value).toBe(false);
+    });
+
     it('ArrowUp from the first suggestion returns to the input: highlight cleared, text restored', async () => {
         const { clearHighlight, contentEl, shell } = makeShell();
         const item = appendItem(contentEl, false);

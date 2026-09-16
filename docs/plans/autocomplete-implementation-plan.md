@@ -80,7 +80,7 @@ Implement against this spec; ask before deviating from a decision recorded here.
 | 3 | Highlight the **predictive** portion, not the typed portion | Typed prefix rendered regular weight; the completed/predictive remainder rendered **bold**. (This is the inverse of most libraries' defaults — implement in our item renderer, do not use any built-in match highlighting.) |
 | 4 | Avoid scrollbars | Never set `overflow: auto` on the suggestion list. Overflow is prevented by the fit-to-viewport trim (§3): we only render items that fully fit. |
 | 5 | Reduce visual noise | Suggestions only. No trending searches, product cards, images, or promos inside the panel. Minimal separators. |
-| 6 | Highlight active suggestion + keyboard nav | Reka provides arrow-key nav, Enter-to-select, `aria-activedescendant`. Style the highlighted item via its `data-highlighted` attribute (background shading) and `cursor: pointer` on items. Keyboard navigation also copies the highlighted suggestion's text into the input display, restoring the typed text when the highlight ends without a selection (decision #16, superseding the original decision to skip this). |
+| 6 | Highlight active suggestion + keyboard nav | Reka provides arrow-key nav, Enter-to-select, `aria-activedescendant`. Style the highlighted item via its `data-highlighted` attribute (background shading) and `cursor: pointer` on items. Keyboard navigation also copies the highlighted suggestion's text into the input display, restoring the typed text when the highlight ends without a selection (decision #17, superseding the original decision to skip this). The keyboard-highlighted item also shows a focus-visible ring (decision #16). |
 | 7 | Visual depth (desktop) | When the popover is open with `showOverlayOnFocus` (opt-in, decision #13), dim the page behind it with an overlay matching the existing `.es-menu-bar-overlay` treatment in `es-menu-bar.vue`: fixed, `variables.$black` at 0.25 opacity, `z-index: 999`, below the popover's z-index. Blur/tap-away closes the popover (as it does the menu bar flyouts), so the two overlays are never active simultaneously. Border + shadow on the panel. |
 | 8 | No competing external elements (mobile) | Solved structurally by the full-screen Dialog takeover (§4) — nothing else is on screen. |
 | 9 | Adequate spacing/tap targets (mobile) | Min 44px row height (content may wrap to more), ≥16px font on mobile, generous horizontal padding, title-case suggestion text. |
@@ -338,7 +338,7 @@ wired into `make test` and therefore the ci.yml PR workflow):**
 - `app/composables/autocomplete-shell.test.ts` — the Enter-key decision matrix
   (submit vs select vs ignore: auto-highlight vs user highlight, IME composition,
   Enter from the clear button), select/clear behavior, and the copy-on-highlight
-  mirroring (decision #16): keyboard highlights mirror into the display without
+  mirroring (decision #17): keyboard highlights mirror into the display without
   touching the model, pointer and auto-highlights don't, and the typed text is
   restored on ArrowUp-from-first, list changes, and shell resets. These encode
   the two Enter regressions found during the code review.
@@ -452,7 +452,7 @@ Open questions raised during planning, with the decisions now reflected inline a
 1. **No Google-style copy-on-highlight** (req #6): arrow keys move the highlight only.
    Primary use cases (e.g. address entry) are selection-oriented — users pick a whole
    suggestion, they don't compose queries from suggestion fragments.
-   **SUPERSEDED by decision #16** — copy-on-highlight is implemented.
+   **SUPERSEDED by decision #17** — copy-on-highlight is implemented.
 2. **Two `AutocompleteRoot`s**, one per shell, sharing `v-model`/`suggestions` (§1a) —
    matches Reka's one-input-per-root expectation.
 3. **Takeover breakpoint: below `md`** (§4) — phones get the takeover, tablets the
@@ -553,7 +553,30 @@ Open questions raised during planning, with the decisions now reflected inline a
 15. **Cap lowered to 5 suggestions in both shells** (2026-09-16, refines req #1's
     original ≤10 desktop / ≤8 mobile): one consistent `MAX_VISIBLE = 5`, still
     further reduced by the fit-to-viewport trim.
-16. **Copy-on-highlight implemented** (2026-09-16, supersedes decision #1, closing
+16. **Focus-visible states mirror es-dropdown-select** (2026-09-16, revising #13's
+    focus indicator): without the overlay, the focused field shows
+    es-dropdown-select's focus ring (`$blue-600` border plus a `0.125rem`
+    `$blue-600` outline offset `0.125rem`) — es-form-input's lighter focus
+    border lacks the contrast change accessibility asks of a focus state
+    (es-form-input to be fixed separately). Applied on `:focus-within` (the
+    form-control class sits on the wrapper while focus lands on the inner
+    input), which for a text input equals the browser's native `:focus-visible`
+    behavior: the ring also shows on mouse click, since browsers match
+    `:focus-visible` on any focus of an editable field — accepted as the normal
+    platform behavior rather than tracking focus modality by hand. The
+    keyboard-highlighted suggestion likewise gets es-dropdown-select's option
+    ring — an `::after` border inset `0.125rem`, rounded to the panel's
+    `$border-radius-xs` — and while that option ring is showing, the field hides
+    its own ring (the focus indicator moves with the navigation, as Google
+    Places does); pointer (hover) highlights keep the background shading only,
+    the same keyboard/pointer split es-dropdown-select's options make (driven by
+    the shell's reactive highlight source). Typing ends keyboard navigation and
+    hands the ring back to the field: the input's `input` event resets the
+    highlight state, which also keeps Reka's post-typing re-highlight of the
+    first item from surviving the guard or being mirrored over the text just
+    typed. Overlay mode and the mobile takeover still deliberately show no
+    field focus styling — the overlay/takeover is the indicator there.
+17. **Copy-on-highlight implemented** (2026-09-16, supersedes decision #1, closing
     the UX audit's requirement 14): keyboard navigation mirrors the highlighted
     suggestion's text into the input, so less-experienced users see exactly what
     selecting will enter. Mechanics (in `useAutocompleteShell`): the input's

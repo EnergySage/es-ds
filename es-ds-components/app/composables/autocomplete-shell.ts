@@ -1,5 +1,5 @@
 import type { ComponentPublicInstance, Ref } from 'vue';
-import { nextTick, ref, watch } from 'vue';
+import { computed, nextTick, ref, watch } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
 interface AutocompleteShellOptions {
@@ -39,12 +39,34 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
     // highlight goes away without a selection: arrowing past either end of the
     // list (back to the input), the list changing, or the shell closing.
     const displayText = ref(options.model.value);
-    let highlightSource: 'keyboard' | 'pointer' | null = null;
+    const highlightSource = ref<'keyboard' | 'pointer' | null>(null);
+    const highlightPresent = ref(false);
+
+    // drives the focus-visible ring on the highlighted suggestion: keyboard
+    // navigation shows it, hovering shows only the background shading (the same
+    // split es-dropdown-select makes)
+    const keyboardNav = computed(() => highlightSource.value === 'keyboard');
+
+    // while a keyboard-highlighted suggestion carries the focus-visible ring,
+    // the field hides its own ring — the indicator moves with the navigation
+    const keyboardHighlightActive = computed(() => keyboardNav.value && highlightPresent.value);
 
     function resetUserHighlight() {
         userHighlighted.value = false;
-        highlightSource = null;
+        highlightSource.value = null;
+        highlightPresent.value = false;
         displayText.value = options.model.value;
+    }
+
+    // typing means the user is editing the query, not navigating: whatever
+    // highlight state existed is over. Reka reacts to the model change by
+    // re-highlighting the first item — without this reset that system highlight
+    // would count as user-made (surviving the highlight guard) and, worse, get
+    // mirrored into the input over the text just typed.
+    function onUserInput() {
+        userHighlighted.value = false;
+        highlightSource.value = null;
+        highlightPresent.value = false;
     }
 
     watch(() => {
@@ -56,12 +78,12 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
 
     function markKeyboardHighlight() {
         userHighlighted.value = true;
-        highlightSource = 'keyboard';
+        highlightSource.value = 'keyboard';
     }
 
     function markPointerHighlight() {
         userHighlighted.value = true;
-        highlightSource = 'pointer';
+        highlightSource.value = 'pointer';
     }
 
     function firstItem() {
@@ -112,7 +134,8 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
         // deferred a microtask so the arrow-key handlers of this same keydown
         // have recorded the highlight source first
         void nextTick(() => {
-            if (highlightSource === 'keyboard' && text !== null) {
+            highlightPresent.value = true;
+            if (highlightSource.value === 'keyboard' && text !== null) {
                 displayText.value = text;
             }
         });
@@ -161,6 +184,8 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
 
     return {
         displayText,
+        keyboardHighlightActive,
+        keyboardNav,
         markPointerHighlight,
         onArrowDown,
         onArrowUp,
@@ -168,6 +193,7 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
         onEnterKey,
         onHighlight,
         onSelect,
+        onUserInput,
         resetUserHighlight,
         userHighlighted,
     };

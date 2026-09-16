@@ -59,6 +59,7 @@ const { measured, remeasure, visibleSuggestions } = useFitToViewport(
 
 const {
     displayText,
+    keyboardNav,
     markPointerHighlight,
     onArrowDown,
     onArrowUp,
@@ -66,6 +67,7 @@ const {
     onEnterKey,
     onHighlight,
     onSelect,
+    onUserInput,
     resetUserHighlight,
     userHighlighted,
 } = useAutocompleteShell({
@@ -193,6 +195,7 @@ function onOpenAutoFocus(event: Event) {
                                     :aria-label="label"
                                     :placeholder="placeholder"
                                     :required="required"
+                                    @input="onUserInput"
                                     @keydown.down="onArrowDown"
                                     @keydown.up="onArrowUp" />
                                 <es-autocomplete-clear-button
@@ -214,6 +217,7 @@ function onOpenAutoFocus(event: Event) {
                             <es-autocomplete-item
                                 v-for="suggestion in visibleSuggestions"
                                 :key="suggestion.id"
+                                :keyboard-nav="keyboardNav"
                                 :query="model"
                                 :suggestion="suggestion"
                                 @select="onSelect">

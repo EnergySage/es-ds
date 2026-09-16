@@ -48,6 +48,8 @@ const { measured, visibleSuggestions } = useFitToViewport(contentEl, toRef(props
 
 const {
     displayText,
+    keyboardHighlightActive,
+    keyboardNav,
     markPointerHighlight,
     onArrowDown,
     onArrowUp,
@@ -55,6 +57,7 @@ const {
     onEnterKey,
     onHighlight,
     onSelect,
+    onUserInput,
     resetUserHighlight,
     userHighlighted,
 } = useAutocompleteShell({
@@ -137,7 +140,7 @@ function onPanelMousedown(event: MouseEvent) {
             class="es-autocomplete-field es-form-input form-control align-items-center d-flex p-0"
             :class="{
                 'is-invalid': state === false,
-                'es-autocomplete-field--focus-bordered': !showOverlayOnFocus,
+                'es-autocomplete-field--focus-ring': !showOverlayOnFocus && !keyboardHighlightActive,
                 'es-autocomplete-field--raised': open && showOverlayOnFocus,
                 'es-autocomplete-field--disabled': disabled,
             }"
@@ -154,6 +157,7 @@ function onPanelMousedown(event: MouseEvent) {
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :required="required"
+                @input="onUserInput"
                 @keydown.down="onArrowDown"
                 @keydown.up="onArrowUp" />
             <es-autocomplete-clear-button
@@ -176,6 +180,7 @@ function onPanelMousedown(event: MouseEvent) {
                 <es-autocomplete-item
                     v-for="suggestion in visibleSuggestions"
                     :key="suggestion.id"
+                    :keyboard-nav="keyboardNav"
                     :query="model"
                     :suggestion="suggestion"
                     @select="onSelect">
@@ -208,12 +213,17 @@ function onPanelMousedown(event: MouseEvent) {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-// without the overlay, the field indicates focus the way es-form-input does:
-// the focus border color. :focus-within stands in for form-control's :focus
-// because the form-control class sits on this wrapper while focus lands on the
-// input (or clear button) inside it.
-.es-autocomplete-field--focus-bordered:focus-within {
-    border-color: variables.$input-focus-border-color;
+// without the overlay, the focused field shows es-dropdown-select's focus ring
+// (es-form-input's lighter focus border lacks the contrast change accessibility
+// asks of a focus state). :focus-within stands in for the input's own
+// :focus-visible — for a text input the two match identically (browsers match
+// :focus-visible on any focus of an editable field, mouse clicks included) and
+// the form-control class sits on this wrapper while focus lands inside it. The
+// class gate hands the ring to the highlighted option during keyboard navigation.
+.es-autocomplete-field--focus-ring:focus-within {
+    border-color: variables.$blue-600;
+    outline: 0.125rem solid variables.$blue-600;
+    outline-offset: 0.125rem;
 }
 
 // with showOverlayOnFocus, there is deliberately no focus styling on the field:

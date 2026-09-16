@@ -3,6 +3,8 @@ import { AutocompleteItem } from 'reka-ui';
 import type { EsAutocompleteSuggestion } from '../types';
 
 interface Props {
+    /** whether the current highlight comes from keyboard navigation (focus-visible ring) */
+    keyboardNav?: boolean;
     query: string;
     suggestion: EsAutocompleteSuggestion;
 }
@@ -17,6 +19,7 @@ const emit = defineEmits<{
 <template>
     <autocomplete-item
         class="es-autocomplete-item d-block px-100 py-50"
+        :class="{ 'es-autocomplete-item--keyboard-nav': keyboardNav }"
         data-es-autocomplete-item
         :value="suggestion.text"
         @select="emit('select', suggestion)">
@@ -52,6 +55,22 @@ const emit = defineEmits<{
     // hover and keyboard navigation both surface as data-highlighted
     &[data-highlighted] {
         background-color: variables.$blue-50;
+    }
+
+    // focus-visible ring for the keyboard-highlighted suggestion, mirroring
+    // es-dropdown-select's option ring; drawn inset (within the panel's
+    // overflow: hidden edge) and rounded to match the panel's border radius
+    &--keyboard-nav[data-highlighted] {
+        position: relative;
+
+        &::after {
+            border: 0.125rem solid variables.$blue-600;
+            border-radius: variables.$border-radius-xs;
+            content: '';
+            inset: 0.125rem;
+            pointer-events: none;
+            position: absolute;
+        }
     }
 
     &:active {

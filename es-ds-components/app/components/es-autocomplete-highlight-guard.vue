@@ -18,14 +18,15 @@ const props = defineProps<Props>();
 //
 // This component must render inside AutocompleteRoot so the inject resolves.
 const listbox = injectListboxRootContext();
-watch(
-    () => listbox.highlightedElement.value,
-    (element) => {
-        if (element && !props.userHighlighted) {
-            listbox.highlightedElement.value = null;
-        }
-    },
-);
+// also watches userHighlighted itself: when it drops (e.g. typing ends keyboard
+// navigation) while the highlight is already on the element Reka would
+// re-highlight, the element ref never changes, so only the flag flip reveals
+// that the highlight is no longer user-made
+watch([() => listbox.highlightedElement.value, () => props.userHighlighted], ([element, userHighlighted]) => {
+    if (element && !userHighlighted) {
+        listbox.highlightedElement.value = null;
+    }
+});
 
 // the shells' return-to-input handling (ArrowUp from the first suggestion) needs
 // to drop the highlight, and this component is the shells' only line into the
