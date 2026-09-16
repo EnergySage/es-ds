@@ -9,9 +9,9 @@ import {
 import type { ComponentPublicInstance } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
-// Baymard: keep the list manageable — at most 10 suggestions on desktop,
+// Baymard: keep the list manageable — at most 5 suggestions,
 // further reduced by the fit-to-viewport trim
-const MAX_VISIBLE = 10;
+const MAX_VISIBLE = 5;
 
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift

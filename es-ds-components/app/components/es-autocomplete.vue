@@ -16,6 +16,7 @@ interface Props {
     required?: boolean;
     showOverlayOnFocus?: boolean;
     state?: boolean | null;
+    suggestionCountText?: (count: number) => string;
     suggestions: EsAutocompleteSuggestion[];
 }
 
@@ -35,6 +36,8 @@ const props = withDefaults(defineProps<Props>(), {
     // search (e.g. site search in a sticky header)
     showOverlayOnFocus: false,
     state: null,
+    suggestionCountText: (count: number) =>
+        count === 1 ? '1 suggestion available' : `${count} suggestions available`,
 });
 
 const emit = defineEmits<{
@@ -54,7 +57,7 @@ const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId
 
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
 // messaging live in useAutocompleteSearch so the contract is unit-testable
-const { effectiveSuggestions, onSelect, onSubmit, panelMessage } = useAutocompleteSearch({
+const { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage } = useAutocompleteSearch({
     delay: () => props.delay,
     emitComplete: (query) => emit('complete', query),
     emitSelect: (suggestion) => emit('select', suggestion),
@@ -63,6 +66,7 @@ const { effectiveSuggestions, onSelect, onSubmit, panelMessage } = useAutocomple
     model,
     noResultsText: () => props.noResultsText,
     promptText: () => props.promptText,
+    suggestionCountText: (count) => props.suggestionCountText(count),
     suggestions: () => props.suggestions,
 });
 </script>
@@ -137,6 +141,12 @@ const { effectiveSuggestions, onSelect, onSubmit, panelMessage } = useAutocomple
             :id="helpId"
             class="sr-only">
             Type your search and select from dropdown suggestions.
+        </div>
+        <div
+            aria-live="polite"
+            class="sr-only"
+            role="status">
+            {{ liveAnnouncement }}
         </div>
     </div>
 </template>

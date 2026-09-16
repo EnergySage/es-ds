@@ -75,7 +75,7 @@ Implement against this spec; ask before deviating from a decision recorded here.
 
 | # | Requirement | How we implement it |
 |---|------------|---------------------|
-| 1 | Keep list manageable (≤10 desktop, 4–8 mobile) | Hard cap constant `MAX_DESKTOP = 10`, `MAX_MOBILE = 8`, further reduced by fit-to-viewport trim (§3) |
+| 1 | Keep list manageable | Hard cap `MAX_VISIBLE = 5` in both shells (decision #15), further reduced by fit-to-viewport trim (§3) |
 | 2 | Style category-scope suggestions differently | **Descoped (2026-07-06, decision 12):** no current EnergySage use case has category-scoped suggestions, so the `scope` field, its styling, and the group separator were removed. Apps that ever need scope-style rendering can build it with the `item` slot + `value` payload. |
 | 3 | Highlight the **predictive** portion, not the typed portion | Typed prefix rendered regular weight; the completed/predictive remainder rendered **bold**. (This is the inverse of most libraries' defaults — implement in our item renderer, do not use any built-in match highlighting.) |
 | 4 | Avoid scrollbars | Never set `overflow: auto` on the suggestion list. Overflow is prevented by the fit-to-viewport trim (§3): we only render items that fully fit. |
@@ -90,7 +90,7 @@ Implement against this spec; ask before deviating from a decision recorded here.
 Rows may **wrap** (panels can be narrow), so row height is not fixed. Use
 measure-then-trim:
 
-1. Render up to the cap (10 desktop / 8 mobile) into the list container.
+1. Render up to the cap (5, both shells) into the list container.
 2. Container has `overflow: hidden` and a max-height:
    - Desktop popover: `max-height: var(--reka-combobox-content-available-height)`
      (exposed by Reka's popper positioning when `position="popper"`; note the
@@ -192,7 +192,7 @@ interface EsAutocompleteSuggestion {
   value?: unknown       // opaque app payload, returned untouched on select
 }
 ```
-Consuming apps pass at most 10; the component trims further per §3. (A `scope` field
+Consuming apps pass at most 5; the component trims further per §3. (A `scope` field
 for category-scoped suggestions existed here originally — removed per decision 12.)
 
 ### 5a. Data ownership (presentational component)
@@ -416,7 +416,7 @@ On the docs page at `http://localhost:8500/molecules/autocomplete`:
 - [ ] SSR: no hydration warnings on page load (desktop and emulated mobile)
 - [ ] Zero visual shift at load: on mobile (throttled network), the input area looks
       identical before and after hydration — no desktop-input flash (§1a)
-- [ ] Desktop: ≤10 suggestions, no scrollbar at any viewport height, dim overlay
+- [ ] Desktop: ≤5 suggestions, no scrollbar at any viewport height, dim overlay
       with showOverlayOnFocus (focus border without it), hover + keyboard highlight,
       hand cursor
 - [ ] Arrow keys move the highlight without changing the typed input; Enter selects
@@ -525,3 +525,25 @@ Open questions raised during planning, with the decisions now reflected inline a
     against the dimmed page) and the `--raised` z-index lift applies only in this
     mode. The overlay markup, `.es-autocomplete-overlay` styling, and z-index layering
     from #5 are unchanged when enabled.
+14. **UX-requirements audit fixes** (2026-09-16, from a 17-point Baymard-derived
+    requirements review): the fit-to-viewport trim also re-measures on scroll
+    (capture-phase listener — the popper tracks its anchor while the page scrolls,
+    changing the panel's available height); an sr-only `aria-live="polite"` region
+    in the parent announces results arriving (via the `suggestionCountText` prop,
+    default "N suggestions available" / "1 suggestion available") and the no-results
+    state — the prompt is guidance, not a state change, so it is not announced; the
+    takeover's real input carries `aria-describedby`/`aria-invalid`/`required` like
+    the desktop input; the suggestion-row highlight transition is guarded by
+    `prefers-reduced-motion`; and rows are a uniform ≥48px tall (padding inclusive,
+    no margins) on the shared item component, so the desktop popover (which tablets
+    at ≥`md` also get on touch) meets the tap-target floor, not just the takeover.
+    Revised same day: the trim computes whole rows from the uniform row height
+    (available height ÷ one rendered row) instead of walking per-item geometry —
+    the walk's reset-render-clip-trim cycle visibly compressed rows every frame
+    while scrolling with the panel open. Uniform row height per list is now a
+    documented assumption of the trim. The audit's one open feature
+    gap — copy-on-highlight during keyboard navigation with original-text restore —
+    remains excluded per decision #1, pending a reversal decision.
+15. **Cap lowered to 5 suggestions in both shells** (2026-09-16, refines req #1's
+    original ≤10 desktop / ≤8 mobile): one consistent `MAX_VISIBLE = 5`, still
+    further reduced by the fit-to-viewport trim.

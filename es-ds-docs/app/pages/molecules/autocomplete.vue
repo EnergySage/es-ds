@@ -261,6 +261,15 @@ const autocompleteProps = [
         `,
     ],
     [
+        'suggestionCountText',
+        'Function',
+        "(count) => '{count} suggestions available'",
+        `
+        Builds the screen-reader announcement made when suggestions arrive, given the suggestion count.
+        An empty result announces noResultsText instead.
+        `,
+    ],
+    [
         'suggestions',
         'Array',
         'n/a',
@@ -347,7 +356,7 @@ const autocompleteSlots = [
             <p>
                 <code>EsAutocomplete</code> is a presentational search-suggestions input: your app owns fetching and
                 filtering. Listen for the <code>complete</code> event, then update the <code>suggestions</code> prop
-                with at most 10 items. The component further trims the list so it always fits on screen without
+                with at most 5 items. The component further trims the list so it always fits on screen without
                 scrolling, and it renders the <em>predictive</em> portion of each suggestion in bold.
             </p>
             <p>

@@ -3,20 +3,19 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { EsAutocompleteSuggestion } from '../types';
 
 /**
- * Measure-then-trim: render up to `cap` suggestions, then trim the list to only the
- * items that fully fit within the container, so the list never scrolls and never
- * clips an item mid-row. Items may wrap to multiple lines, so heights are measured,
- * not assumed.
+ * Fit-to-viewport trimming: suggestions render as uniform-height rows (the
+ * es-autocomplete-item min-height plus padding from its own content; rows have no
+ * margins), so the number that fits is the available height divided by one
+ * rendered row's height. Whole rows are added or removed as the available height
+ * changes — the list never scrolls, and a row is never partially shown.
  *
- * The container must be `position: relative` with `overflow: hidden` — item fit is
- * computed from `offsetTop`, which must be relative to the container. The height
- * limit is read from the container's resolved max-height (the desktop popover) or
- * its explicit height (the mobile takeover list); both are stable while items
- * render, so measuring is idempotent and needs no re-entrancy guards.
- *
- * Re-measures on suggestion changes and window resizes; callers whose container
- * height changes by other means (e.g. the mobile visualViewport keyboard handling)
- * call the returned `remeasure` themselves.
+ * The height limit is read from the container's resolved max-height (the desktop
+ * popover, where the popper maintains the available-height constraint) or its
+ * explicit height (the mobile takeover list). Re-computes on suggestion changes,
+ * window resizes, and scrolls (the popper tracks its anchor while the page
+ * scrolls, shrinking or growing the panel's available height); callers whose
+ * container height changes by other means (e.g. the mobile visualViewport
+ * keyboard handling) call the returned `remeasure` themselves.
  */
 export function useFitToViewport(
     contentEl: Ref<HTMLElement | null>,
@@ -28,29 +27,31 @@ export function useFitToViewport(
 
     function heightLimit(element: HTMLElement): number {
         const maxHeight = Number.parseFloat(getComputedStyle(element).maxHeight);
-        return Number.isFinite(maxHeight) ? maxHeight : element.clientHeight;
+        if (Number.isFinite(maxHeight)) {
+            // max-height is border-box; the rows fit inside the border
+            return maxHeight - Math.max(element.offsetHeight - element.clientHeight, 0);
+        }
+        return element.clientHeight;
     }
 
     async function remeasure() {
-        visibleCount.value = cap;
+        // let any pending render flush so the measured row reflects current content
         await nextTick();
         const element = contentEl.value;
         if (!element) {
             measured.value = false;
             return;
         }
-        const limit = heightLimit(element);
-        let fits = 0;
-        for (const child of Array.from(element.children) as HTMLElement[]) {
-            // stop at the first child that does not fully fit
-            if (child.offsetTop + child.offsetHeight > limit) {
-                break;
-            }
-            if ('esAutocompleteItem' in child.dataset) {
-                fits += 1;
-            }
+        // visibleCount never drops below 1, so whenever there are suggestions a
+        // row is rendered to measure; without one (a message-only panel showing
+        // the prompt or no-results text) there is nothing to trim
+        const row = element.querySelector<HTMLElement>('[data-es-autocomplete-item]');
+        if (row) {
+            const fits = Math.floor(heightLimit(element) / row.offsetHeight);
+            visibleCount.value = Math.min(Math.max(fits, 1), cap);
+        } else {
+            visibleCount.value = cap;
         }
-        visibleCount.value = Math.max(fits, 1);
         measured.value = true;
     }
 
@@ -74,30 +75,34 @@ export function useFitToViewport(
     );
 
     // available height tracks the viewport; re-measure when it changes, deferred a
-    // frame so the popper's own resize handling updates the max-height constraint
-    // first (also coalesces resize-event bursts to one measure per frame)
-    let resizeFrame: number | null = null;
-    function onWindowResize() {
+    // frame so the popper's own reposition handling updates the max-height
+    // constraint first (also coalesces resize/scroll bursts to one measure per frame)
+    let viewportFrame: number | null = null;
+    function onViewportChange() {
         if (!contentEl.value) {
             return;
         }
-        if (resizeFrame !== null) {
-            cancelAnimationFrame(resizeFrame);
+        if (viewportFrame !== null) {
+            cancelAnimationFrame(viewportFrame);
         }
-        resizeFrame = requestAnimationFrame(() => {
-            resizeFrame = null;
+        viewportFrame = requestAnimationFrame(() => {
+            viewportFrame = null;
             remeasure();
         });
     }
 
     onMounted(() => {
-        window.addEventListener('resize', onWindowResize);
+        window.addEventListener('resize', onViewportChange);
+        // capture because scroll events do not bubble: this hears scrolls of any
+        // scrollable ancestor, not just the document
+        window.addEventListener('scroll', onViewportChange, { capture: true, passive: true });
     });
 
     onBeforeUnmount(() => {
-        window.removeEventListener('resize', onWindowResize);
-        if (resizeFrame !== null) {
-            cancelAnimationFrame(resizeFrame);
+        window.removeEventListener('resize', onViewportChange);
+        window.removeEventListener('scroll', onViewportChange, { capture: true });
+        if (viewportFrame !== null) {
+            cancelAnimationFrame(viewportFrame);
         }
     });
 

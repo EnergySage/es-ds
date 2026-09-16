@@ -11,6 +11,7 @@ interface AutocompleteSearchOptions {
     model: Ref<string>;
     noResultsText: () => string;
     promptText: () => string;
+    suggestionCountText: (count: number) => string;
     suggestions: () => EsAutocompleteSuggestion[];
 }
 
@@ -88,6 +89,17 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         return noResults.value && queryLongEnough.value ? options.noResultsText() : options.promptText();
     });
 
+    // rendered into an sr-only aria-live region by the parent, so screen readers
+    // hear results arriving and the no-results state, which are otherwise only
+    // visual. The prompt is guidance rather than a state change, so it is not
+    // announced (the input's aria-describedby hint covers it).
+    const liveAnnouncement = computed(() => {
+        if (effectiveSuggestions.value.length) {
+            return options.suggestionCountText(effectiveSuggestions.value.length);
+        }
+        return noResults.value && queryLongEnough.value ? options.noResultsText() : '';
+    });
+
     watch(model, (newValue) => {
         cancelPendingComplete();
         // selecting a suggestion copies its text into the input; that change is
@@ -128,5 +140,5 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         options.emitSubmit(query);
     }
 
-    return { effectiveSuggestions, onSelect, onSubmit, panelMessage };
+    return { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage };
 }

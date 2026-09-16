@@ -37,11 +37,19 @@ const emit = defineEmits<{
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .es-autocomplete-item {
+    // ≥48px rows, padding inclusive (rows have no margins): an adequate tap
+    // target on any touch device — tablets (≥md) get the desktop popover, not
+    // the takeover. Rows share one uniform height per list; the fit-to-viewport
+    // trim divides the available height by it to add/remove whole rows.
+    align-content: center;
     cursor: pointer;
-    transition: background-color 0.15s ease-in-out;
+    min-height: 3rem;
 
-    // highlightOnHover is enabled on the root, so hover and keyboard
-    // navigation both surface as data-highlighted
+    @media not (prefers-reduced-motion) {
+        transition: background-color 0.15s ease-in-out;
+    }
+
+    // hover and keyboard navigation both surface as data-highlighted
     &[data-highlighted] {
         background-color: variables.$blue-50;
     }

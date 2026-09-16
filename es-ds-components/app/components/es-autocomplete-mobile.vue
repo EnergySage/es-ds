@@ -15,9 +15,9 @@ import {
 import type { ComponentPublicInstance } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
-// Baymard: keep the list manageable — at most 8 suggestions on mobile,
+// Baymard: keep the list manageable — at most 5 suggestions,
 // further reduced by the fit-to-viewport trim
-const MAX_VISIBLE = 8;
+const MAX_VISIBLE = 5;
 
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift
@@ -173,8 +173,11 @@ function onOpenAutoFocus(event: Event) {
                                 <autocomplete-input
                                     ref="inputRef"
                                     class="es-autocomplete-input h-100 w-100 px-100"
+                                    :aria-describedby="describedBy"
+                                    :aria-invalid="state === false ? true : undefined"
                                     :aria-label="label"
                                     :placeholder="placeholder"
+                                    :required="required"
                                     @keydown.down="markUserHighlight"
                                     @keydown.up="markUserHighlight" />
                                 <es-autocomplete-clear-button
@@ -268,11 +271,10 @@ function onOpenAutoFocus(event: Event) {
         visibility: hidden;
     }
 
-    // adequate tap targets: ≥44px rows and ≥16px text
+    // ≥16px text for readability; the ≥48px row height comes from the shared
+    // es-autocomplete-item styles
     .es-autocomplete-item {
-        align-content: center;
         font-size: 1rem;
-        min-height: 2.75rem;
     }
 
     .es-autocomplete-no-results {
