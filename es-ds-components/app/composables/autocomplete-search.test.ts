@@ -133,6 +133,59 @@ describe('useAutocompleteSearch panel message and suggestion gating', () => {
         expect(search.panelMessage.value).toBe('Type for suggestions');
     });
 
+    it('holds back the stale list after a selection until the app answers again', async () => {
+        const { search, suggestions, type } = makeSearch();
+        await type('12');
+        suggestions.value = [
+            { id: 'a', text: '12 Maple Ave, Cambridge, MA 02138' },
+            { id: 'b', text: '123 Main St, Boston, MA 02108' },
+        ];
+        await nextTick();
+        expect(search.effectiveSuggestions.value).toHaveLength(2);
+
+        // selection fills the input with the full text; the app's list matched
+        // "12", not that text, so a refocused panel shows the prompt instead
+        search.onSelect({ id: 'b', text: '123 Main St, Boston, MA 02108' });
+        await type('123 Main St, Boston, MA 02108');
+        expect(search.effectiveSuggestions.value).toHaveLength(0);
+        expect(search.panelMessage.value).toBe('Type for suggestions');
+
+        // editing fetches again, and the app's answer clears the staleness
+        await type('123 Main St B');
+        vi.advanceTimersByTime(DELAY);
+        suggestions.value = [{ id: 'b', text: '123 Main St, Boston, MA 02108' }];
+        await nextTick();
+        expect(search.effectiveSuggestions.value).toHaveLength(1);
+        expect(search.panelMessage.value).toBe('');
+    });
+
+    it('shows suggestions an app refreshes in its own select handler', async () => {
+        const { search, suggestions, type } = makeSearch();
+        await type('12');
+        suggestions.value = [{ id: 'a', text: '12 Maple Ave, Cambridge, MA 02138' }];
+        await nextTick();
+
+        // the app's select handler runs inside the select emit, before the
+        // model picks up the chosen text
+        search.onSelect({ id: 'a', text: '12 Maple Ave, Cambridge, MA 02138' });
+        suggestions.value = [{ id: 'b', text: '12 Maple Ave rear unit, Cambridge, MA 02138' }];
+        await type('12 Maple Ave, Cambridge, MA 02138');
+        expect(search.effectiveSuggestions.value).toHaveLength(1);
+    });
+
+    it('shows the prompt, not no-results, when the app clears its list on select', async () => {
+        const { search, suggestions, type } = makeSearch();
+        await type('12');
+        suggestions.value = [{ id: 'a', text: '12 Maple Ave, Cambridge, MA 02138' }];
+        await nextTick();
+
+        search.onSelect({ id: 'a', text: '12 Maple Ave, Cambridge, MA 02138' });
+        suggestions.value = [];
+        await type('12 Maple Ave, Cambridge, MA 02138');
+        expect(search.effectiveSuggestions.value).toHaveLength(0);
+        expect(search.panelMessage.value).toBe('Type for suggestions');
+    });
+
     it('gates suggestions below minChars with a referentially stable empty list', async () => {
         const { search, suggestions, type } = makeSearch({ minChars: 3 });
         suggestions.value = [{ id: 'a', text: 'solar batteries' }];

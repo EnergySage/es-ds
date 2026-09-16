@@ -342,7 +342,9 @@ wired into `make test` and therefore the ci.yml PR workflow):**
 - `app/composables/autocomplete-search.test.ts` — the debounced `complete`
   contract: one emission per typing pause with the trimmed query, minChars gating,
   suppression after selection, cancellation on submit/unmount so a late response
-  can never reopen the panel, and the prompt → results → no-results →
+  can never reopen the panel, post-selection staleness (the app's list matched the
+  typed query, not the selection-filled text, so a refocused panel shows the
+  prompt until the app answers again), and the prompt → results → no-results →
   prompt-while-pending message lifecycle. Made unit-testable by extracting the
   parent's search state into `useAutocompleteSearch` (2026-07-07), which removed
   the need for the @nuxt/test-utils component test previously deferred below.

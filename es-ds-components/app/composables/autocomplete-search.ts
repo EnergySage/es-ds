@@ -23,15 +23,23 @@ const EMPTY_SUGGESTIONS: EsAutocompleteSuggestion[] = [];
  * The search state behind es-autocomplete.vue: the debounced 'complete' contract
  * (one emission per typing pause, suppressed after selection, cancelled by every
  * terminal path so a late-arriving response can never reopen the panel), the
- * minChars gate, and the prompt/no-results empty-state messaging. Extracted from
- * the component so this contract is unit-testable without a component mount.
+ * minChars gate, the post-selection staleness of the app's list, and the
+ * prompt/no-results empty-state messaging. Extracted from the component so this
+ * contract is unit-testable without a component mount.
  */
 export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
     const { model } = options;
 
+    // a selection makes the app's list stale: it matched the query the user
+    // typed, not the full text the selection filled in — and since selection
+    // deliberately emits no 'complete', the app is never prompted to refresh it.
+    // Hold the stale list back (a refocused panel shows promptText instead)
+    // until the app next updates the suggestions prop.
+    const suggestionsStale = ref(false);
+
     // pass an empty list below minChars so no suggestions show for too-short queries
     const effectiveSuggestions = computed(() => {
-        if (model.value.trim().length < options.minChars()) {
+        if (suggestionsStale.value || model.value.trim().length < options.minChars()) {
             return EMPTY_SUGGESTIONS;
         }
         return options.suggestions();
@@ -63,6 +71,7 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         options.suggestions,
         (list) => {
             noResults.value = list.length === 0;
+            suggestionsStale.value = false;
         },
         // depth 1 so apps that mutate the array in place (push/splice) are seen too
         { deep: 1 },
@@ -85,6 +94,9 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         // terminal and must not trigger another fetch
         if (lastSelectedText !== null && newValue === lastSelectedText) {
             lastSelectedText = null;
+            // after a selection the empty state is the prompt, even for an app
+            // that clears its suggestions in its own select handler
+            noResults.value = false;
             return;
         }
         lastSelectedText = null;
@@ -106,6 +118,7 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
 
     function onSelect(suggestion: EsAutocompleteSuggestion) {
         lastSelectedText = suggestion.text;
+        suggestionsStale.value = true;
         options.emitSelect(suggestion);
     }
 
