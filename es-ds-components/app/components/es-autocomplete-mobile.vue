@@ -49,6 +49,7 @@ const takeoverOpen = ref(false);
 const triggerId = computed(() => `${props.id}-trigger`);
 const inputRef = ref<ComponentPublicInstance | null>(null);
 const contentRef = ref<ComponentPublicInstance | null>(null);
+const guardRef = ref<{ clearHighlight: () => void } | null>(null);
 const contentEl = useAutocompleteContentEl(contentRef, takeoverOpen);
 const { measured, remeasure, visibleSuggestions } = useFitToViewport(
     contentEl,
@@ -56,19 +57,29 @@ const { measured, remeasure, visibleSuggestions } = useFitToViewport(
     MAX_VISIBLE,
 );
 
-const { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight, userHighlighted } = useAutocompleteShell(
-    {
-        close: () => {
-            takeoverOpen.value = false;
-        },
-        contentEl,
-        emitSelect: (suggestion) => emit('select', suggestion),
-        emitSubmit: (query) => emit('submit', query),
-        inputRef,
-        model,
-        suggestions: () => props.suggestions,
+const {
+    displayText,
+    markPointerHighlight,
+    onArrowDown,
+    onArrowUp,
+    onClear,
+    onEnterKey,
+    onHighlight,
+    onSelect,
+    resetUserHighlight,
+    userHighlighted,
+} = useAutocompleteShell({
+    clearHighlight: () => guardRef.value?.clearHighlight(),
+    close: () => {
+        takeoverOpen.value = false;
     },
-);
+    contentEl,
+    emitSelect: (suggestion) => emit('select', suggestion),
+    emitSubmit: (query) => emit('submit', query),
+    inputRef,
+    model,
+    suggestions: () => props.suggestions,
+});
 
 // 100dvh does not shrink when the iOS keyboard opens, so the list height is
 // derived from the visual viewport instead; the keyboard opening/closing is
@@ -164,22 +175,26 @@ function onOpenAutoFocus(event: Event) {
                         v-model="model"
                         class="d-flex flex-column flex-grow-1"
                         ignore-filter
-                        open>
-                        <es-autocomplete-highlight-guard :user-highlighted="userHighlighted" />
+                        open
+                        @highlight="onHighlight">
+                        <es-autocomplete-highlight-guard
+                            ref="guardRef"
+                            :user-highlighted="userHighlighted" />
                         <div class="align-items-center d-flex p-100">
                             <autocomplete-anchor
                                 class="es-autocomplete-field es-form-input form-control align-items-center d-flex flex-grow-1 p-0"
                                 @keydown.capture.enter="onEnterKey">
                                 <autocomplete-input
                                     ref="inputRef"
+                                    v-model="displayText"
                                     class="es-autocomplete-input h-100 w-100 px-100"
                                     :aria-describedby="describedBy"
                                     :aria-invalid="state === false ? true : undefined"
                                     :aria-label="label"
                                     :placeholder="placeholder"
                                     :required="required"
-                                    @keydown.down="markUserHighlight"
-                                    @keydown.up="markUserHighlight" />
+                                    @keydown.down="onArrowDown"
+                                    @keydown.up="onArrowUp" />
                                 <es-autocomplete-clear-button
                                     v-if="model"
                                     :clear-text="clearText"
@@ -195,7 +210,7 @@ function onOpenAutoFocus(event: Event) {
                                 'es-autocomplete-takeover-list text-left',
                                 { 'es-autocomplete-takeover-list--measuring': !measured },
                             ]"
-                            @pointermove="markUserHighlight">
+                            @pointermove="markPointerHighlight">
                             <es-autocomplete-item
                                 v-for="suggestion in visibleSuggestions"
                                 :key="suggestion.id"

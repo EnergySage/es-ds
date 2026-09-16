@@ -377,6 +377,13 @@ const autocompleteSlots = [
                 <li><code>value</code> (any, optional): app payload, returned untouched on select</li>
             </ul>
             <p>
+                Navigating suggestions with the arrow keys copies the highlighted suggestion into the input, so it's
+                clear what selecting will enter. Navigation cycles through the full list in either direction, passing
+                through the input itself — where the typed text is restored — after either end. This is display-only:
+                the <code>complete</code> event and the bolding stay keyed to the typed query, and hovering with the
+                mouse never changes the input.
+            </p>
+            <p>
                 Submitting free text (Enter with no suggestion highlighted) is allowed by default, which suits search
                 use cases. For use cases that require choosing a suggestion (e.g. address validation), validate at the
                 app level — see the "Requiring a selection" example below.

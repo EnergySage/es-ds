@@ -42,22 +42,33 @@ const model = defineModel<string>({ default: '' });
 const open = ref(false);
 const contentRef = ref<ComponentPublicInstance | null>(null);
 const inputRef = ref<ComponentPublicInstance | null>(null);
+const guardRef = ref<{ clearHighlight: () => void } | null>(null);
 const contentEl = useAutocompleteContentEl(contentRef, open);
 const { measured, visibleSuggestions } = useFitToViewport(contentEl, toRef(props, 'suggestions'), MAX_VISIBLE);
 
-const { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight, userHighlighted } = useAutocompleteShell(
-    {
-        close: () => {
-            open.value = false;
-        },
-        contentEl,
-        emitSelect: (suggestion) => emit('select', suggestion),
-        emitSubmit: (query) => emit('submit', query),
-        inputRef,
-        model,
-        suggestions: () => props.suggestions,
+const {
+    displayText,
+    markPointerHighlight,
+    onArrowDown,
+    onArrowUp,
+    onClear,
+    onEnterKey,
+    onHighlight,
+    onSelect,
+    resetUserHighlight,
+    userHighlighted,
+} = useAutocompleteShell({
+    clearHighlight: () => guardRef.value?.clearHighlight(),
+    close: () => {
+        open.value = false;
     },
-);
+    contentEl,
+    emitSelect: (suggestion) => emit('select', suggestion),
+    emitSubmit: (query) => emit('submit', query),
+    inputRef,
+    model,
+    suggestions: () => props.suggestions,
+});
 watch(open, resetUserHighlight);
 
 // The panel (and, with showOverlayOnFocus, the page-dim overlay) stays up for
@@ -112,8 +123,11 @@ function onPanelMousedown(event: MouseEvent) {
         open-on-click
         :disabled="disabled"
         :open="open"
+        @highlight="onHighlight"
         @update:open="onOpenChange">
-        <es-autocomplete-highlight-guard :user-highlighted="userHighlighted" />
+        <es-autocomplete-highlight-guard
+            ref="guardRef"
+            :user-highlighted="userHighlighted" />
         <es-autocomplete-label
             :html-for="id"
             :label="label"
@@ -133,14 +147,15 @@ function onPanelMousedown(event: MouseEvent) {
             <autocomplete-input
                 :id="id"
                 ref="inputRef"
+                v-model="displayText"
                 class="es-autocomplete-input h-100 w-100 px-100"
                 :aria-describedby="describedBy"
                 :aria-invalid="state === false ? true : undefined"
                 :disabled="disabled"
                 :placeholder="placeholder"
                 :required="required"
-                @keydown.down="markUserHighlight"
-                @keydown.up="markUserHighlight" />
+                @keydown.down="onArrowDown"
+                @keydown.up="onArrowUp" />
             <es-autocomplete-clear-button
                 v-if="model && !disabled"
                 :clear-text="clearText"
@@ -157,7 +172,7 @@ function onPanelMousedown(event: MouseEvent) {
                 ]"
                 :side-offset="4"
                 @mousedown="onPanelMousedown"
-                @pointermove="markUserHighlight">
+                @pointermove="markPointerHighlight">
                 <es-autocomplete-item
                     v-for="suggestion in visibleSuggestions"
                     :key="suggestion.id"

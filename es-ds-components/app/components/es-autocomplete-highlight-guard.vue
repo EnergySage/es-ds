@@ -26,6 +26,15 @@ watch(
         }
     },
 );
+
+// the shells' return-to-input handling (ArrowUp from the first suggestion) needs
+// to drop the highlight, and this component is the shells' only line into the
+// Listbox context
+function clearHighlight() {
+    listbox.highlightedElement.value = null;
+}
+
+defineExpose({ clearHighlight });
 </script>
 
 <template>

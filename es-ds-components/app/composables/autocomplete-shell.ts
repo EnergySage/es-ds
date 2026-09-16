@@ -1,8 +1,10 @@
 import type { ComponentPublicInstance, Ref } from 'vue';
-import { ref, watch } from 'vue';
+import { nextTick, ref, watch } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
 interface AutocompleteShellOptions {
+    /** null Reka's highlighted element (lives in the highlight guard's listbox context) */
+    clearHighlight: () => void;
     /** close this shell's panel/takeover */
     close: () => void;
     contentEl: Ref<HTMLElement | null>;
@@ -15,8 +17,9 @@ interface AutocompleteShellOptions {
 
 /**
  * Interaction logic shared by the desktop popover and mobile takeover shells:
- * Enter-key semantics, selection, clearing, and tracking whether the current
- * highlight was created by the user.
+ * Enter-key semantics, selection, clearing, tracking whether the current
+ * highlight was created by the user, and mirroring keyboard-highlighted
+ * suggestions into the input display.
  */
 export function useAutocompleteShell(options: AutocompleteShellOptions) {
     // Reka auto-highlights the first item whenever results arrive from an empty
@@ -25,24 +28,94 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
     // movement over the list) makes Enter select. Reset whenever the list content
     // changes or the shell reopens (shells call resetUserHighlight for the latter).
     const userHighlighted = ref(false);
-    watch(
-        () => {
-            return options
-                .suggestions()
-                .map((suggestion) => suggestion.id)
-                .join('\n');
-        },
-        () => {
-            userHighlighted.value = false;
-        },
-    );
 
-    function markUserHighlight() {
-        userHighlighted.value = true;
-    }
+    // What the input DISPLAYS (bound to AutocompleteInput's own v-model, which
+    // Reka keeps in sync with the real model on typing and selection). During
+    // KEYBOARD navigation the highlighted suggestion is mirrored here without
+    // touching the model, so users see what selecting would enter while the app
+    // sees no query change — no 'complete' fires and the predictive bolding
+    // stays keyed to the typed text. Pointer highlights never mirror (hovering
+    // must not change the field). The typed text is restored whenever the
+    // highlight goes away without a selection: arrowing past either end of the
+    // list (back to the input), the list changing, or the shell closing.
+    const displayText = ref(options.model.value);
+    let highlightSource: 'keyboard' | 'pointer' | null = null;
 
     function resetUserHighlight() {
         userHighlighted.value = false;
+        highlightSource = null;
+        displayText.value = options.model.value;
+    }
+
+    watch(() => {
+        return options
+            .suggestions()
+            .map((suggestion) => suggestion.id)
+            .join('\n');
+    }, resetUserHighlight);
+
+    function markKeyboardHighlight() {
+        userHighlighted.value = true;
+        highlightSource = 'keyboard';
+    }
+
+    function markPointerHighlight() {
+        userHighlighted.value = true;
+        highlightSource = 'pointer';
+    }
+
+    function firstItem() {
+        return options.contentEl.value?.querySelector('[data-es-autocomplete-item]') ?? null;
+    }
+
+    function lastItem() {
+        const items = options.contentEl.value?.querySelectorAll('[data-es-autocomplete-item]');
+        return items?.length ? items[items.length - 1]! : null;
+    }
+
+    function highlightedItem() {
+        return options.contentEl.value?.querySelector('[data-highlighted]') ?? null;
+    }
+
+    // Arrowing past either end of the list returns to the input, making the
+    // navigation fully cyclic: input → first → … → last → input → first → …
+    // (upward likewise; Reka itself moves from the input to either end). Reka's
+    // own navigation does not wrap — the keydown is a no-op for it at the ends —
+    // so drop the highlight and restore the typed text. Deferred a microtask so
+    // it applies after every handler of this same keydown has run.
+    function returnToInputFrom(edgeItem: Element | null) {
+        if (!edgeItem || highlightedItem() !== edgeItem) {
+            return;
+        }
+        void nextTick(() => {
+            if (highlightedItem() === edgeItem) {
+                options.clearHighlight();
+                resetUserHighlight();
+            }
+        });
+    }
+
+    function onArrowDown() {
+        markKeyboardHighlight();
+        returnToInputFrom(lastItem());
+    }
+
+    function onArrowUp() {
+        markKeyboardHighlight();
+        returnToInputFrom(firstItem());
+    }
+
+    // AutocompleteRoot re-emits Reka's listbox highlight; the payload's value is
+    // the AutocompleteItem's :value, i.e. the suggestion text
+    function onHighlight(item?: { value?: unknown }) {
+        const text = typeof item?.value === 'string' ? item.value : null;
+        // deferred a microtask so the arrow-key handlers of this same keydown
+        // have recorded the highlight source first
+        void nextTick(() => {
+            if (highlightSource === 'keyboard' && text !== null) {
+                displayText.value = text;
+            }
+        });
     }
 
     function focusInput() {
@@ -64,7 +137,7 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
         // highlight checked via the DOM rather than Reka's exposed
         // highlightedElement, which can hold a stale (detached) element after
         // the list re-renders
-        if (userHighlighted.value && options.contentEl.value?.querySelector('[data-highlighted]')) {
+        if (userHighlighted.value && highlightedItem()) {
             // let the event through to Reka, which selects the highlighted item
             return;
         }
@@ -86,5 +159,16 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
         focusInput();
     }
 
-    return { markUserHighlight, onClear, onEnterKey, onSelect, resetUserHighlight, userHighlighted };
+    return {
+        displayText,
+        markPointerHighlight,
+        onArrowDown,
+        onArrowUp,
+        onClear,
+        onEnterKey,
+        onHighlight,
+        onSelect,
+        resetUserHighlight,
+        userHighlighted,
+    };
 }
