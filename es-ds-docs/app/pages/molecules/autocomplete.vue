@@ -63,13 +63,14 @@ const splitAddressLines = (suggestion: DocSuggestion, query: string) => {
     const address = asAddress(suggestion.value);
     return splitAutocompleteTextLines([address.street, address.cityStateZip], query);
 };
-// token-based filtering (every query term must appear somewhere in the address),
-// so terms can be typed in any order, e.g. "boston main"
+// token-based filtering: every query term must start some word of the address
+// ("2" matches "240 Walnut St" but not "12" or "02138"), and terms can be typed
+// in any order, e.g. "boston main"
 const filterAddresses = (query: string) => {
-    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const queryTokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
     return SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES.filter((address) => {
-        const joined = `${address.street} ${address.cityStateZip}`.toLowerCase();
-        return tokens.every((token) => joined.includes(token));
+        const words = `${address.street} ${address.cityStateZip}`.toLowerCase().split(/[^a-z0-9]+/);
+        return queryTokens.every((token) => words.some((word) => word.startsWith(token)));
     }).map((address) => ({
         id: address.street,
         text: `${address.street}, ${address.cityStateZip}`,
@@ -405,32 +406,20 @@ const autocompleteSlots = [
 
         <div class="mb-500">
             <h2>Limited width</h2>
-            <p>
-                In some cases, an autocomplete may appear in a width-constrained layout.
-            </p>
+            <p>In some cases, an autocomplete may appear in a narrow width layout. The suggestions list, however, is not constrained by this. Try searching for "solar" or "heat pump".</p>
             <es-row>
-                <es-col md="3">
+                <es-col md="6" class="d-flex">
                     <es-autocomplete
-                        v-model="addressQuery"
-                        label="Address"
+                        v-model="basicQuery"
+                        class="flex-grow-1"
+                        label="Search"
                         label-sr-only
-                        placeholder="Enter your address"
-                        :suggestions="addressSuggestions"
-                        @complete="onAddressComplete">
-                        <template #item="{ suggestion, query }">
-                            <es-autocomplete-suggestion-text
-                                v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"
-                                :key="lineIndex"
-                                class="d-block"
-                                :class="{ 'font-size-50': lineIndex === 1 }"
-                                :segments="lineSegments" />
-                        </template>
-                    </es-autocomplete>
-                </es-col>
-                <es-col md="3">
-                    <es-button class="w-100">
-                        Continue
-                    </es-button>
+                        placeholder="Search for a topic"
+                        :suggestions="basicSuggestions"
+                        @complete="onBasicComplete"
+                        @select="onBasicSelect"
+                        @submit="onBasicSubmit" />
+                    <es-button class="ml-100 px-300"> Search </es-button>
                 </es-col>
             </es-row>
         </div>
@@ -525,9 +514,9 @@ const autocompleteSlots = [
                 Use the <code>item</code> slot to control how each suggestion renders, e.g. a two-line address
                 suggestion. To reproduce the predictive-portion bolding of the default renderer, render a line of text
                 with <code>&lt;es-autocomplete-suggestion-text :text="line" :query="query" /&gt;</code> — put your own
-                classes (font size, etc.) directly on it. Matching is token by token, in any order, preferring word
-                starts and falling back to in-word matches when a term only occurs mid-word (try <code>3</code>). When
-                several lines form one suggestion, compute all lines at once with the
+                classes (font size, etc.) directly on it. Bolding is token by token, in any order, preferring word
+                starts (with an in-word fallback for search backends that match mid-word). When several lines form one
+                suggestion, compute all lines at once with the
                 <code>splitAutocompleteTextLines(lines, query)</code> utility (auto-imported from
                 <code>es-ds-components</code>) and pass each line's result via the <code>segments</code> prop, so a
                 line without its own match still renders bold when another line matched — that's what this example
