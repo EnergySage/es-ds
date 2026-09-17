@@ -40,7 +40,6 @@ const open = ref(false);
 // hears the input's own name/role/description uninterrupted on focus, and
 // hears "expanded" exactly when a list exists — per the combobox pattern.
 const listboxOpen = computed(() => open.value && props.suggestions.length > 0);
-const rootRef = ref<ComponentPublicInstance | null>(null);
 const anchorRef = ref<ComponentPublicInstance | null>(null);
 const contentRef = ref<ComponentPublicInstance | null>(null);
 const inputRef = ref<ComponentPublicInstance | null>(null);
@@ -169,10 +168,13 @@ function onFieldTab(event: KeyboardEvent) {
 
 // clicks outside the widget close it. Blur cannot be relied on for this (see
 // onFieldTab), and Reka's own dismiss layer exists only while the listbox is
-// mounted — not in the message-only state.
+// mounted — not in the message-only state. This instance's root element is
+// resolved by walking up from the input: AutocompleteRoot renders through a
+// renderless Popper root, so a template ref's $el does not land on the root div.
 function onDocumentPointerdown(event: Event) {
     const target = event.target as Node | null;
-    const rootEl = rootRef.value?.$el as HTMLElement | undefined;
+    const inputEl = inputRef.value?.$el as HTMLElement | undefined;
+    const rootEl = inputEl?.closest('[data-es-autocomplete-root]');
     if (!target || rootEl?.contains(target) || contentEl.value?.contains(target)) {
         return;
     }
@@ -207,9 +209,9 @@ function onPanelMousedown(event: MouseEvent) {
 
 <template>
     <autocomplete-root
-        ref="rootRef"
         v-model="model"
         class="d-none d-md-block position-relative"
+        data-es-autocomplete-root
         ignore-filter
         open-on-click
         :disabled="disabled"
