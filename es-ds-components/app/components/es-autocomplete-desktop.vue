@@ -111,6 +111,7 @@ const {
     onSelect,
     onUserInput,
     resetUserHighlight,
+    revealCaretOnFocus,
     userHighlighted,
 } = useAutocompleteShell({
     clearHighlight: () => guardRef.value?.clearHighlight(),
@@ -138,6 +139,7 @@ function onFocusIn() {
     if (!props.disabled) {
         open.value = true;
     }
+    revealCaretOnFocus();
 }
 
 // Reka's listbox root clears the highlight when a focusout inside it targets

@@ -146,6 +146,45 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
         (options.inputRef.value?.$el as HTMLElement | undefined)?.focus();
     }
 
+    // Browsers scroll the caret into view when the selection changes or the
+    // user types — never on focus itself, and Safari scrolls a field back to
+    // its start on blur. So a refocused field whose caret is restored beyond
+    // the visible text (after selecting a suggestion longer than the field)
+    // shows the text's start with the caret out of view. Measure the caret's
+    // horizontal position and bring it into view; a non-collapsed selection
+    // (Tab's select-all) is left to the browser.
+    let caretContext: CanvasRenderingContext2D | null | undefined;
+    function revealCaretOnFocus() {
+        // deferred a frame so the browser's own focus handling (caret restore,
+        // a click's caret placement, Tab's select-all) settles first
+        requestAnimationFrame(() => {
+            const el = options.inputRef.value?.$el as HTMLInputElement | undefined;
+            if (!el || document.activeElement !== el || el.scrollWidth <= el.clientWidth) {
+                return;
+            }
+            const caret = el.selectionStart;
+            if (caret === null || caret !== el.selectionEnd) {
+                return;
+            }
+            const context = (caretContext ??= document.createElement('canvas').getContext('2d'));
+            if (!context) {
+                return;
+            }
+            const style = getComputedStyle(el);
+            context.font = style.font || `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+            const caretX = context.measureText(el.value.slice(0, caret)).width;
+            const viewWidth =
+                el.clientWidth -
+                (Number.parseFloat(style.paddingLeft) || 0) -
+                (Number.parseFloat(style.paddingRight) || 0);
+            if (caretX < el.scrollLeft) {
+                el.scrollLeft = caretX;
+            } else if (caretX > el.scrollLeft + viewWidth) {
+                el.scrollLeft = caretX - viewWidth;
+            }
+        });
+    }
+
     // When text is written into the input programmatically (a selection filling
     // in the suggestion, or keyboard navigation mirroring one), the browser
     // leaves the caret at the end but the field scrolled to the start — a value
@@ -216,6 +255,7 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
         onSelect,
         onUserInput,
         resetUserHighlight,
+        revealCaretOnFocus,
         userHighlighted,
     };
 }

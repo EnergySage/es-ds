@@ -69,6 +69,7 @@ const {
     onSelect,
     onUserInput,
     resetUserHighlight,
+    revealCaretOnFocus,
     userHighlighted,
 } = useAutocompleteShell({
     clearHighlight: () => guardRef.value?.clearHighlight(),
@@ -134,6 +135,7 @@ onBeforeUnmount(() => {
 function onOpenAutoFocus(event: Event) {
     event.preventDefault();
     (inputRef.value?.$el as HTMLElement | undefined)?.focus();
+    revealCaretOnFocus();
 }
 </script>
 
