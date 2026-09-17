@@ -7,7 +7,6 @@ const docCode = ref('');
 onMounted(async () => {
     if ($prism) {
         const compSource = await import('@energysage/es-ds-components/app/components/es-autocomplete.vue?raw');
-
         const docSource = await import('./autocomplete.vue?raw');
         compCode.value = $prism.normalizeCode(compSource.default);
         docCode.value = $prism.normalizeCode(docSource.default);
@@ -21,23 +20,21 @@ interface DocSuggestion {
     value?: unknown;
 }
 
-const SEARCH_TERMS = [
-    'heat pump cost',
-    'heat pump installation',
-    'heat pump rebates',
-    'heat pump water heater',
-    'heat pumps',
-    'solar batteries',
-    'solar financing',
-    'solar installers near me',
-    'solar panel cost',
-    'solar panel installation',
-    'solar panels',
-    'solar rebates and incentives',
-];
+const fruitQuery = ref('');
+const fruitSuggestions = ref<DocSuggestion[]>([]);
+const fruitResult = ref('');
+const onFruitComplete = (query: string) => {
+    fruitSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_FRUIT);
+};
+const onFruitSelect = (suggestion: DocSuggestion) => {
+    fruitResult.value = `selected "${suggestion.text}"`;
+};
+const onFruitSubmit = (query: string) => {
+    fruitResult.value = `submitted "${query}"`;
+};
 
-const filterTerms = (query: string) =>
-    SEARCH_TERMS.filter((term) => term.toLowerCase().startsWith(query.toLowerCase())).map((term) => ({
+const filterTerms = (query: string, terms: string[]) =>
+    terms.filter((term) => term.toLowerCase().startsWith(query.toLowerCase())).map((term) => ({
         id: term,
         text: term,
     }));
@@ -47,7 +44,7 @@ const basicQuery = ref('');
 const basicSuggestions = ref<DocSuggestion[]>([]);
 const basicResult = ref('');
 const onBasicComplete = (query: string) => {
-    basicSuggestions.value = filterTerms(query);
+    basicSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
 };
 const onBasicSelect = (suggestion: DocSuggestion) => {
     basicResult.value = `selected "${suggestion.text}"`;
@@ -60,7 +57,7 @@ const onBasicSubmit = (query: string) => {
 const hiddenLabelQuery = ref('');
 const hiddenLabelSuggestions = ref<DocSuggestion[]>([]);
 const onHiddenLabelComplete = (query: string) => {
-    hiddenLabelSuggestions.value = filterTerms(query);
+    hiddenLabelSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
 };
 
 // Custom item slot example
@@ -134,7 +131,7 @@ const onRequiredSubmit = () => {
 const errorQuery = ref('');
 const errorSuggestions = ref<DocSuggestion[]>([]);
 const onErrorComplete = (query: string) => {
-    errorSuggestions.value = filterTerms(query);
+    errorSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
 };
 
 // Disabled example
@@ -350,6 +347,19 @@ const autocompleteSlots = [
                 Reka UI Autocomplete
             </nuxt-link>
         </p>
+
+        <div class="mb-500">
+            <h2>Basic example</h2>
+            <es-autocomplete
+                id="autocomplete-fruit"
+                v-model="fruitQuery"
+                label="Favorite fruit"
+                placeholder="Search for a fruit"
+                :suggestions="fruitSuggestions"
+                @complete="onFruitComplete"
+                @select="onFruitSelect"
+                @submit="onFruitSubmit" />
+        </div>
 
         <div class="mb-500">
             <h2>Overview</h2>
