@@ -341,23 +341,23 @@ const autocompleteSlots = [
                 This example asks you to select your favorite fruit and provides suggestions as you type. By default,
                 the autocomplete allows free text entry and does not force the user to choose from the list of options.
             </p>
-            <div class="row">
-                <div class="col-md-6">
+            <es-row>
+                <es-col md="6">
                     <es-autocomplete
                         v-model="fruitQuery"
                         label="Favorite fruit"
                         placeholder="Search for a fruit"
                         :suggestions="fruitSuggestions"
                         @complete="onFruitComplete" />
-                </div>
-            </div>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="mb-500">
             <h2>Hidden label</h2>
             <p>Here the label is hidden visually, but will still be announced by screen readers.</p>
-            <div class="row">
-                <div class="col-md-6">
+            <es-row>
+                <es-col md="6">
                     <es-autocomplete
                         v-model="fruitQuery"
                         label="Favorite fruit"
@@ -365,8 +365,8 @@ const autocompleteSlots = [
                         placeholder="Search for a fruit"
                         :suggestions="fruitSuggestions"
                         @complete="onFruitComplete" />
-                </div>
-            </div>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="mb-500">
@@ -382,8 +382,8 @@ const autocompleteSlots = [
                 To avoid overwhelming the user with choices, the number of suggestions displayed is limited to five
                 items.
             </p>
-            <div class="row">
-                <div class="col-md-6">
+            <es-row>
+                <es-col md="6">
                     <es-autocomplete
                         v-model="addressQuery"
                         label="Address"
@@ -399,8 +399,40 @@ const autocompleteSlots = [
                                 :segments="lineSegments" />
                         </template>
                     </es-autocomplete>
-                </div>
-            </div>
+                </es-col>
+            </es-row>
+        </div>
+
+        <div class="mb-500">
+            <h2>Limited width</h2>
+            <p>
+                In some cases, an autocomplete may appear in a width-constrained layout.
+            </p>
+            <es-row>
+                <es-col md="3">
+                    <es-autocomplete
+                        v-model="addressQuery"
+                        label="Address"
+                        label-sr-only
+                        placeholder="Enter your address"
+                        :suggestions="addressSuggestions"
+                        @complete="onAddressComplete">
+                        <template #item="{ suggestion, query }">
+                            <es-autocomplete-suggestion-text
+                                v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"
+                                :key="lineIndex"
+                                class="d-block"
+                                :class="{ 'font-size-50': lineIndex === 1 }"
+                                :segments="lineSegments" />
+                        </template>
+                    </es-autocomplete>
+                </es-col>
+                <es-col md="3">
+                    <es-button class="w-100">
+                        Continue
+                    </es-button>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="mb-500">
