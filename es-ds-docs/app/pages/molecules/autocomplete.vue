@@ -406,9 +406,14 @@ const autocompleteSlots = [
 
         <div class="mb-500">
             <h2>Limited width</h2>
-            <p>In some cases, an autocomplete may appear in a narrow width layout. The suggestions list, however, is not constrained by this. Try searching for "solar" or "heat pump".</p>
+            <p>
+                In some cases, an autocomplete may appear in a narrow width layout. The suggestions list on desktop,
+                however, is not constrained by this. Try searching for "solar" or "heat pump".
+            </p>
             <es-row>
-                <es-col md="6" class="d-flex">
+                <es-col
+                    md="6"
+                    class="d-flex">
                     <es-autocomplete
                         v-model="basicQuery"
                         class="flex-grow-1"

@@ -156,12 +156,12 @@ function onOpenAutoFocus(event: Event) {
                 :disabled="disabled">
                 <span
                     v-if="model"
-                    class="text-truncate">
+                    class="es-autocomplete-fake-field-text">
                     {{ model }}
                 </span>
                 <span
                     v-else
-                    class="es-autocomplete-fake-field-placeholder text-truncate">
+                    class="es-autocomplete-fake-field-text es-autocomplete-fake-field-placeholder">
                     {{ placeholder }}
                 </span>
             </dialog-trigger>
@@ -249,6 +249,22 @@ function onOpenAutoFocus(event: Event) {
 
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
+
+/* a button's intrinsic width grows with its text (unlike an input, whose
+ * intrinsic width ignores its value), so a long selected value would widen any
+ * content-sized ancestor — e.g. a flex layout — past the viewport. Inline-size
+ * containment makes the button's intrinsic width independent of its contents;
+ * its width comes from the layout alone and the value truncates inside it. */
+.es-autocomplete-fake-field {
+    contain: inline-size;
+}
+
+/* overflowing text clips at the edge (text-overflow's default) the way an input
+ * clips its value, rather than ellipsizing — the fake field should read as an input */
+.es-autocomplete-fake-field-text {
+    overflow: hidden;
+    white-space: nowrap;
+}
 
 .es-autocomplete-fake-field-placeholder {
     color: variables.$input-color-placeholder;
