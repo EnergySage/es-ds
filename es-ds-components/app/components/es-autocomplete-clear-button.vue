@@ -12,7 +12,7 @@ const emit = defineEmits<{
 
 <template>
     <button
-        class="es-autocomplete-clear align-items-center bg-transparent border-0 d-flex flex-shrink-0 h-100 justify-content-center p-0 text-gray-700"
+        class="es-autocomplete-clear align-items-center bg-transparent border-0 d-flex flex-shrink-0 h-100 justify-content-center p-0 rounded-xs text-gray-700"
         type="button"
         :aria-label="clearText"
         @click="emit('clear')">

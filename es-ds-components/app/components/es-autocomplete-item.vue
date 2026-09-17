@@ -40,34 +40,34 @@ const emit = defineEmits<{
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .es-autocomplete-item {
-    // ≥48px rows, padding inclusive (rows have no margins): an adequate tap
-    // target on any touch device — tablets (≥md) get the desktop popover, not
-    // the takeover. Rows share one uniform height per list; the fit-to-viewport
-    // trim divides the available height by it to add/remove whole rows.
+    /* 48px and higher rows, padding inclusive (rows have no margins): an adequate tap
+     * target on any touch device — tablets (≥md) get the desktop popover, not
+     * the takeover. Rows share one uniform height per list; the fit-to-viewport
+     * trim divides the available height by it to add/remove whole rows. */
     align-content: center;
     cursor: pointer;
     min-height: 3rem;
 
     @media not (prefers-reduced-motion) {
-        transition: background-color 0.15s ease-in-out;
+        transition: background-color 0.05s ease-in-out;
     }
 
-    // hover and keyboard navigation both surface as data-highlighted
+    /* hover and keyboard navigation both surface as data-highlighted */
     &[data-highlighted] {
         background-color: variables.$blue-50;
     }
 
-    // focus-visible ring for the keyboard-highlighted suggestion, mirroring
-    // es-dropdown-select's option ring; drawn inset (within the panel's
-    // overflow: hidden edge) and rounded to match the panel's border radius
+    /* focus-visible ring for the keyboard-highlighted suggestion, mirroring
+     * es-dropdown-select's option ring; drawn inset (within the panel's
+     * overflow: hidden edge) and rounded to match the panel's border radius */
     &--keyboard-nav[data-highlighted] {
         position: relative;
 
         &::after {
             border: 0.125rem solid variables.$blue-600;
-            border-radius: variables.$border-radius-xs;
+            border-radius: 2px;
             content: '';
-            inset: 0.125rem;
+            inset: 0;
             pointer-events: none;
             position: absolute;
         }

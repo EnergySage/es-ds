@@ -6,7 +6,6 @@ interface Props {
     clearText?: string;
     delay?: number;
     disabled?: boolean;
-    id: string;
     label: string;
     labelSrOnly?: boolean;
     minChars?: number;
@@ -50,8 +49,9 @@ const model = defineModel<string>({ default: '' });
 
 const slots = useSlots();
 
-const errorId = computed(() => `${props.id}-error`);
-const helpId = computed(() => `${props.id}-help`);
+const id = useId();
+const errorId = computed(() => `${id}-error`);
+const helpId = computed(() => `${id}-help`);
 const showError = computed(() => props.state === false && (!!slots.errorMessage || props.required));
 const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId.value}` : helpId.value));
 
@@ -150,3 +150,12 @@ const { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage
         </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/variables' as variables;
+
+.es-autocomplete {
+    /* match EsFormInput, but allow override by utility classes */
+    margin-bottom: variables.$spacer;
+}
+</style>

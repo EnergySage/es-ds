@@ -22,22 +22,17 @@ interface DocSuggestion {
 
 const fruitQuery = ref('');
 const fruitSuggestions = ref<DocSuggestion[]>([]);
-const fruitResult = ref('');
 const onFruitComplete = (query: string) => {
     fruitSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_FRUIT);
 };
-const onFruitSelect = (suggestion: DocSuggestion) => {
-    fruitResult.value = `selected "${suggestion.text}"`;
-};
-const onFruitSubmit = (query: string) => {
-    fruitResult.value = `submitted "${query}"`;
-};
 
 const filterTerms = (query: string, terms: string[]) =>
-    terms.filter((term) => term.toLowerCase().startsWith(query.toLowerCase())).map((term) => ({
-        id: term,
-        text: term,
-    }));
+    terms
+        .filter((term) => term.toLowerCase().startsWith(query.toLowerCase()))
+        .map((term) => ({
+            id: term,
+            text: term,
+        }));
 
 // Basic example
 const basicQuery = ref('');
@@ -169,14 +164,6 @@ const autocompleteProps = [
         'false',
         `
         When disabled, the input has a gray background and cannot be interacted with.
-        `,
-    ],
-    [
-        'id',
-        'String',
-        'n/a',
-        `
-        Required. Used for the input id and to associate the label, help text, and error message for accessibility.
         `,
     ],
     [
@@ -350,15 +337,71 @@ const autocompleteSlots = [
 
         <div class="mb-500">
             <h2>Basic example</h2>
-            <es-autocomplete
-                id="autocomplete-fruit"
-                v-model="fruitQuery"
-                label="Favorite fruit"
-                placeholder="Search for a fruit"
-                :suggestions="fruitSuggestions"
-                @complete="onFruitComplete"
-                @select="onFruitSelect"
-                @submit="onFruitSubmit" />
+            <p>
+                This example asks you to select your favorite fruit and provides suggestions as you type. By default,
+                the autocomplete allows free text entry and does not force the user to choose from the list of options.
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-autocomplete
+                        v-model="fruitQuery"
+                        label="Favorite fruit"
+                        placeholder="Search for a fruit"
+                        :suggestions="fruitSuggestions"
+                        @complete="onFruitComplete" />
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>Hidden label</h2>
+            <p>Here the label is hidden visually, but will still be announced by screen readers.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-autocomplete
+                        v-model="fruitQuery"
+                        label="Favorite fruit"
+                        label-sr-only
+                        placeholder="Search for a fruit"
+                        :suggestions="fruitSuggestions"
+                        @complete="onFruitComplete" />
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-500">
+            <h2>Custom item rendering</h2>
+            <p>
+                This autocomplete demonstrates customizing the display of suggestion items, in this case splitting an
+                address into two lines. Do so carefully. Each suggestion should differentiate between the user's typed
+                text and the additional suggested text, highlighting the latter for easy scanning. We provide an
+                autocomplete suggestion text component that handles this for you and can support multiple lines of
+                text.
+            </p>
+            <p>
+                To avoid overwhelming the user with choices, the number of suggestions displayed is limited to five
+                items.
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <es-autocomplete
+                        v-model="addressQuery"
+                        label="Address"
+                        placeholder="Enter your address"
+                        :suggestions="addressSuggestions"
+                        @complete="onAddressComplete"
+                        @select="onAddressSelect">
+                        <template #item="{ suggestion, query }">
+                            <es-autocomplete-suggestion-text
+                                v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"
+                                :key="lineIndex"
+                                class="d-block"
+                                :class="{ 'font-size-50': lineIndex === 1 }"
+                                :segments="lineSegments" />
+                        </template>
+                    </es-autocomplete>
+                </div>
+            </div>
         </div>
 
         <div class="mb-500">
