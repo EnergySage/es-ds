@@ -596,3 +596,42 @@ Open questions raised during planning, with the decisions now reflected inline a
     Editing a mirrored suggestion
     commits it as the new query, Google-style. Enter semantics are unchanged: a
     keyboard highlight selects, no highlight submits the typed text.
+18. **Semantic combobox expansion decoupled from the visual panel** (2026-09-17,
+    from VoiceOver testing): Reka's open state (`aria-expanded` + the listbox)
+    is gated on real suggestions existing, so a screen reader hears the input's
+    own name/role/description uninterrupted on focus and hears "expanded"
+    exactly when there is a list to browse — per the combobox pattern. The
+    prompt/no-results message renders in an `aria-hidden` lookalike panel
+    positioned below the field (not popper-mounted); screen readers get the
+    same guidance from the input's `aria-describedby` hint and the live-region
+    announcements, and the real listbox only ever contains options, carrying the
+    label as its accessible name (`aria-controls`/`id` linking stays Reka's —
+    its content id binding wins over fallthrough attrs, so overriding it only
+    dangles the reference). Blur never closes the widget: screen readers move
+    real DOM focus around it (VoiceOver's keyboard-focus-follows-cursor drags
+    focus to the highlighted option, the web area, or nowhere) with
+    unpredictable relatedTargets, so any focusout-based close breaks keyboard
+    navigation under a screen reader — this was VoiceOver problem (3). Closing
+    happens only on deterministic signals: Tab leaving the field (a keydown
+    check that knows the field's input → clear-button tab order), Escape,
+    select, submit, and a capture-phase document pointerdown listener for
+    outside clicks (which also covers the message-only state, where Reka's
+    dismiss layer is not mounted). The takeover's list message is likewise
+    `aria-hidden` (the dialog description covers it). A full VoiceOver re-test
+    is the user's next verification step; the deferred §8a axe scan remains the
+    regression gate.
+19. **Desktop listbox is not portaled** (2026-09-17, from VoiceOver testing,
+    matching the APG combobox examples): the AutocompletePortal wrapper was
+    removed, so the listbox sits in the DOM right after the field — a screen
+    reader's spatial navigation (e.g. VoiceOver's ctrl-option-shift-up out of
+    the list) lands back next to the input instead of at the end of `<body>`.
+    Popper positioning is kept, so flip-above and the available-height
+    constraint still work; the panel's z-index 1000 sits above the overlay from
+    within the page as it did from the portal. Trade-off: an ancestor with
+    `overflow: hidden` (or a transform) could clip or misplace the panel where
+    the portal was immune — none of our layouts do this, and the APG examples
+    accept the same constraint. The de-portaling also exposed an open-time race
+    in the fit-to-viewport trim: the measure on open ran before the popper's
+    first positioning wrote the available-height constraint, so a panel opening
+    into tight space rendered untrimmed for that open (fixed by deferring every
+    measure one frame, as the resize/scroll path already did).

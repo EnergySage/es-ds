@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import {
-    AutocompleteAnchor,
-    AutocompleteContent,
-    AutocompleteInput,
-    AutocompletePortal,
-    AutocompleteRoot,
-} from 'reka-ui';
+import { AutocompleteAnchor, AutocompleteContent, AutocompleteInput, AutocompleteRoot } from 'reka-ui';
 import type { ComponentPublicInstance } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
@@ -40,10 +34,17 @@ const emit = defineEmits<{
 const model = defineModel<string>({ default: '' });
 
 const open = ref(false);
+// The semantic combobox (Reka's open state: aria-expanded plus the listbox)
+// opens only when there are real suggestions to browse. The prompt/no-results
+// message shows in an aria-hidden lookalike panel instead, so a screen reader
+// hears the input's own name/role/description uninterrupted on focus, and
+// hears "expanded" exactly when a list exists — per the combobox pattern.
+const listboxOpen = computed(() => open.value && props.suggestions.length > 0);
+const rootRef = ref<ComponentPublicInstance | null>(null);
 const contentRef = ref<ComponentPublicInstance | null>(null);
 const inputRef = ref<ComponentPublicInstance | null>(null);
 const guardRef = ref<{ clearHighlight: () => void } | null>(null);
-const contentEl = useAutocompleteContentEl(contentRef, open);
+const contentEl = useAutocompleteContentEl(contentRef, listboxOpen);
 const { measured, visibleSuggestions } = useFitToViewport(contentEl, toRef(props, 'suggestions'), MAX_VISIBLE);
 
 const {
@@ -88,26 +89,60 @@ function onFocusIn() {
     }
 }
 
-function onFocusOut(event: FocusEvent) {
-    const field = event.currentTarget as HTMLElement;
-    const related = event.relatedTarget as Node | null;
-    // ignore focus moves within the field (input <-> clear button) or into the
-    // panel (interactive elements a consumer renders in the item slot)
-    if (related && (field.contains(related) || contentEl.value?.contains(related))) {
-        return;
+// Reka's listbox root clears the highlight when a focusout inside it targets
+// anything beyond the root element — such as the page body, where a screen
+// reader's focus can go mid-navigation. Blur carries no meaning in this shell
+// (see onFieldTab), so the field's focusout events stop here instead of
+// reaching that handler.
+function onFieldFocusout(event: FocusEvent) {
+    event.stopPropagation();
+}
+
+// Blur never closes the widget: screen readers move real DOM focus around it
+// (VoiceOver's keyboard-focus-follows-cursor drags focus to the highlighted
+// option, the web area, or nowhere) with unpredictable relatedTargets, so any
+// focusout-based close breaks keyboard navigation under a screen reader.
+// Closing happens only on deterministic signals: Tab leaving the field (here),
+// Escape, select, submit, and pointerdown outside (below).
+function onFieldTab(event: KeyboardEvent) {
+    const inputEl = inputRef.value?.$el as HTMLElement | undefined;
+    // Tab order inside the field is input -> clear button (when shown); any Tab
+    // that moves past either end leaves the field
+    const clearShown = !!model.value && !props.disabled;
+    const leaving = event.shiftKey ? event.target === inputEl : event.target !== inputEl || !clearShown;
+    if (leaving) {
+        open.value = false;
     }
-    // ignore the window itself losing focus (alt-tab, devtools) — the input is
-    // still the active element and the interaction resumes when the user returns
-    if (!related && !document.hasFocus()) {
+}
+
+// clicks outside the widget close it. Blur cannot be relied on for this (see
+// onFieldTab), and Reka's own dismiss layer exists only while the listbox is
+// mounted — not in the message-only state.
+function onDocumentPointerdown(event: Event) {
+    const target = event.target as Node | null;
+    const rootEl = rootRef.value?.$el as HTMLElement | undefined;
+    if (!target || rootEl?.contains(target) || contentEl.value?.contains(target)) {
         return;
     }
     open.value = false;
 }
 
-// keep the input focused while clicking in the panel: without this, the click
-// blurs the input, whose focusout closes the panel before the click can select.
-// Interactive elements a consumer renders in the item slot are exempt so they
-// remain focusable (suggestion items themselves have tabindex="-1").
+watch(open, (isOpen) => {
+    if (isOpen) {
+        document.addEventListener('pointerdown', onDocumentPointerdown, true);
+    } else {
+        document.removeEventListener('pointerdown', onDocumentPointerdown, true);
+    }
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('pointerdown', onDocumentPointerdown, true);
+});
+
+// keep the input focused while clicking in the panel, so focus and the text
+// caret are still in the field after selecting. Interactive elements a consumer
+// renders in the item slot are exempt so they remain focusable (suggestion
+// items themselves have tabindex="-1").
 function onPanelMousedown(event: MouseEvent) {
     const target = event.target as HTMLElement | null;
     const interactive =
@@ -120,12 +155,13 @@ function onPanelMousedown(event: MouseEvent) {
 
 <template>
     <autocomplete-root
+        ref="rootRef"
         v-model="model"
-        class="d-none d-md-block"
+        class="d-none d-md-block position-relative"
         ignore-filter
         open-on-click
         :disabled="disabled"
-        :open="open"
+        :open="listboxOpen"
         @highlight="onHighlight"
         @update:open="onOpenChange">
         <es-autocomplete-highlight-guard
@@ -145,8 +181,10 @@ function onPanelMousedown(event: MouseEvent) {
                 'es-autocomplete-field--disabled': disabled,
             }"
             @focusin="onFocusIn"
-            @focusout="onFocusOut"
-            @keydown.capture.enter="onEnterKey">
+            @focusout="onFieldFocusout"
+            @keydown.capture.enter="onEnterKey"
+            @keydown.esc="open = false"
+            @keydown.tab="onFieldTab">
             <autocomplete-input
                 :id="id"
                 ref="inputRef"
@@ -165,40 +203,48 @@ function onPanelMousedown(event: MouseEvent) {
                 :clear-text="clearText"
                 @clear="onClear" />
         </autocomplete-anchor>
-        <autocomplete-portal>
-            <autocomplete-content
-                ref="contentRef"
-                align="start"
-                position="popper"
-                :class="[
-                    'es-autocomplete-panel bg-white rounded-xs text-gray-900 font-size-75 text-left',
-                    { 'es-autocomplete-panel--measuring': !measured },
-                ]"
-                :side-offset="4"
-                @mousedown="onPanelMousedown"
-                @pointermove="markPointerHighlight">
-                <es-autocomplete-item
-                    v-for="suggestion in visibleSuggestions"
-                    :key="suggestion.id"
-                    :keyboard-nav="keyboardNav"
-                    :query="model"
-                    :suggestion="suggestion"
-                    @select="onSelect">
-                    <template
-                        v-if="$slots.item"
-                        #default="slotProps">
-                        <slot
-                            name="item"
-                            v-bind="slotProps" />
-                    </template>
-                </es-autocomplete-item>
-                <div
-                    v-if="panelMessage"
-                    class="es-autocomplete-no-results px-100 py-50 text-gray-700">
-                    {{ panelMessage }}
-                </div>
-            </autocomplete-content>
-        </autocomplete-portal>
+        <!-- the prompt/no-results message is presentation only: screen readers get
+             the same guidance from the input's description and the live region, so
+             this panel is hidden from them and the combobox stays collapsed -->
+        <div
+            v-if="open && !suggestions.length && panelMessage"
+            aria-hidden="true"
+            class="es-autocomplete-panel es-autocomplete-panel--static bg-white rounded-xs text-gray-900 font-size-75 text-left">
+            <div class="es-autocomplete-no-results px-100 py-50 text-gray-700">
+                {{ panelMessage }}
+            </div>
+        </div>
+        <!-- deliberately NOT portaled: the listbox sits in the DOM right after the
+             field (as in the APG combobox examples), so a screen reader's spatial
+             navigation lands back near the input when leaving the list -->
+        <autocomplete-content
+            ref="contentRef"
+            align="start"
+            :aria-label="label"
+            position="popper"
+            :class="[
+                'es-autocomplete-panel bg-white rounded-xs text-gray-900 font-size-75 text-left',
+                { 'es-autocomplete-panel--measuring': !measured },
+            ]"
+            :side-offset="4"
+            @mousedown="onPanelMousedown"
+            @pointermove="markPointerHighlight">
+            <es-autocomplete-item
+                v-for="suggestion in visibleSuggestions"
+                :key="suggestion.id"
+                :keyboard-nav="keyboardNav"
+                :query="model"
+                :suggestion="suggestion"
+                @select="onSelect">
+                <template
+                    v-if="$slots.item"
+                    #default="slotProps">
+                    <slot
+                        name="item"
+                        v-bind="slotProps" />
+                </template>
+            </es-autocomplete-item>
+        </autocomplete-content>
     </autocomplete-root>
     <teleport to="body">
         <transition name="es-autocomplete-overlay">
@@ -266,9 +312,9 @@ function onPanelMousedown(event: MouseEvent) {
     }
 }
 
-// the panel is portaled to <body> and Reka's popper wrapper strips the scope
-// attribute from the content root, so target it with :deep() through the popper
-// wrapper element, which keeps the scope attribute (same pattern as es-popover)
+// Reka's popper wrapper strips the scope attribute from the content root, so
+// target it with :deep() through a scope-carrying ancestor (same pattern as
+// es-popover)
 :deep(.es-autocomplete-panel) {
     border: variables.$border-width solid variables.$gray-500;
     box-shadow: variables.$popover-box-shadow;
@@ -285,6 +331,19 @@ function onPanelMousedown(event: MouseEvent) {
     &.es-autocomplete-panel--measuring {
         visibility: hidden;
     }
+}
+
+// the aria-hidden prompt/no-results panel is not popper-positioned: it sits
+// below the field (the root is position-relative and the anchor its last child),
+// sized like the real panel. Placed after the :deep block so its positioning
+// wins over that block's position: relative.
+.es-autocomplete-panel--static {
+    left: 0;
+    max-width: min(90vw, 30rem);
+    min-width: 100%;
+    position: absolute;
+    top: calc(100% + 0.25rem);
+    width: max-content;
 }
 
 .es-autocomplete-overlay {

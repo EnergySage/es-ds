@@ -55,9 +55,23 @@ export function useFitToViewport(
         measured.value = true;
     }
 
+    // deferred a frame so the popper's positioning (initial placement on open,
+    // reposition on viewport changes) has updated the max-height constraint
+    // before it is read; also coalesces event bursts to one measure per frame
+    let measureFrame: number | null = null;
+    function scheduleRemeasure() {
+        if (measureFrame !== null) {
+            cancelAnimationFrame(measureFrame);
+        }
+        measureFrame = requestAnimationFrame(() => {
+            measureFrame = null;
+            remeasure();
+        });
+    }
+
     watch(contentEl, (element) => {
         if (element) {
-            remeasure();
+            scheduleRemeasure();
         } else {
             measured.value = false;
         }
@@ -74,21 +88,12 @@ export function useFitToViewport(
         { deep: 1 },
     );
 
-    // available height tracks the viewport; re-measure when it changes, deferred a
-    // frame so the popper's own reposition handling updates the max-height
-    // constraint first (also coalesces resize/scroll bursts to one measure per frame)
-    let viewportFrame: number | null = null;
+    // available height tracks the viewport; re-measure when it changes
     function onViewportChange() {
         if (!contentEl.value) {
             return;
         }
-        if (viewportFrame !== null) {
-            cancelAnimationFrame(viewportFrame);
-        }
-        viewportFrame = requestAnimationFrame(() => {
-            viewportFrame = null;
-            remeasure();
-        });
+        scheduleRemeasure();
     }
 
     onMounted(() => {
@@ -101,8 +106,8 @@ export function useFitToViewport(
     onBeforeUnmount(() => {
         window.removeEventListener('resize', onViewportChange);
         window.removeEventListener('scroll', onViewportChange, { capture: true });
-        if (viewportFrame !== null) {
-            cancelAnimationFrame(viewportFrame);
+        if (measureFrame !== null) {
+            cancelAnimationFrame(measureFrame);
         }
     });
 

@@ -9,7 +9,10 @@ import { nextTick, ref, watch } from 'vue';
  * element is re-resolved whenever `active` (the open state that mounts the panel)
  * changes and the DOM has settled. Both autocomplete shells share this.
  */
-export function useAutocompleteContentEl(contentRef: Ref<ComponentPublicInstance | null>, active: Ref<boolean>) {
+export function useAutocompleteContentEl(
+    contentRef: Ref<ComponentPublicInstance | null>,
+    active: Readonly<Ref<boolean>>,
+) {
     const contentEl = ref<HTMLElement | null>(null);
     watch(active, async (isActive) => {
         await nextTick();

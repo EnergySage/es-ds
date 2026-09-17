@@ -229,8 +229,11 @@ function onOpenAutoFocus(event: Event) {
                                         v-bind="slotProps" />
                                 </template>
                             </es-autocomplete-item>
+                            <!-- presentation only: screen readers get the same guidance
+                                 from the dialog description and the live region -->
                             <div
                                 v-if="panelMessage"
+                                aria-hidden="true"
                                 class="es-autocomplete-no-results px-100 py-50 text-gray-700">
                                 {{ panelMessage }}
                             </div>

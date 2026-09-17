@@ -156,6 +156,7 @@ describe('useFitToViewport', () => {
 
         contentEl.value = makeContainer({ count: 3, height: 30 }, { maxHeight: 100 });
         await nextTick(); // the watcher fires
+        await new Promise((resolve) => requestAnimationFrame(resolve)); // the measure's deferred frame
         await nextTick(); // remeasure's internal tick
         expect(fit.measured.value).toBe(true);
         expect(fit.visibleSuggestions.value).toHaveLength(3);
