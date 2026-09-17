@@ -323,42 +323,42 @@ function onPanelMousedown(event: MouseEvent) {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-// without the overlay, the focused field shows es-dropdown-select's focus ring
-// (es-form-input's lighter focus border lacks the contrast change accessibility
-// asks of a focus state). :focus-within stands in for the input's own
-// :focus-visible — for a text input the two match identically (browsers match
-// :focus-visible on any focus of an editable field, mouse clicks included) and
-// the form-control class sits on this wrapper while focus lands inside it. The
-// class gate hands the ring to the highlighted option during keyboard navigation.
+/* without the overlay, the focused field shows es-dropdown-select's focus ring
+ * (es-form-input's lighter focus border lacks the contrast change accessibility
+ * asks of a focus state). :focus-within stands in for the input's own
+ * :focus-visible — for a text input the two match identically (browsers match
+ * :focus-visible on any focus of an editable field, mouse clicks included) and
+ * the form-control class sits on this wrapper while focus lands inside it. The
+ * class gate hands the ring to the highlighted option during keyboard navigation. */
 .es-autocomplete-field--focus-ring:focus-within {
     border-color: variables.$blue-600;
     outline: 0.125rem solid variables.$blue-600;
     outline-offset: 0.125rem;
 }
 
-// with showOverlayOnFocus, there is deliberately no focus styling on the field:
-// the page-dim overlay appearing on focus is the focus indicator. (es-form-input's
-// lighter :focus border reads as the border disappearing against the dimmed page,
-// and a :focus-visible ring is not an option — browsers match :focus-visible on
-// ANY focus of a text field.)
+/* with showOverlayOnFocus, there is deliberately no focus styling on the field:
+ * the page-dim overlay appearing on focus is the focus indicator. (es-form-input's
+ * lighter :focus border reads as the border disappearing against the dimmed page,
+ * and a :focus-visible ring is not an option — browsers match :focus-visible on
+ * ANY focus of a text field.) */
 
-// while the panel is open, lift the input above the page-dim overlay so it
-// stays fully visible and interactive
+/* while the panel is open, lift the input above the page-dim overlay so it
+ * stays fully visible and interactive */
 .es-autocomplete-field--raised {
     position: relative;
     z-index: 1000;
 }
 
-// match the disabled styling of es-form-input: the :disabled rules in es-ds-styles
-// target the element carrying form-control, which here is this wrapper div rather
-// than the real (disabled) input inside it
+/* match the disabled styling of es-form-input: the :disabled rules in es-ds-styles
+ * target the element carrying form-control, which here is this wrapper div rather
+ * than the real (disabled) input inside it */
 .es-autocomplete-field--disabled {
     background-color: variables.$input-disabled-bg;
     border: 0;
 
     .es-autocomplete-input {
         color: variables.$input-disabled-color;
-        // iOS fix for unreadable disabled content, as in es-ds-styles' form-control rule
+        /* iOS fix for unreadable disabled content, as in es-ds-styles' form-control rule */
         opacity: 1;
     }
 }
@@ -376,18 +376,18 @@ function onPanelMousedown(event: MouseEvent) {
     }
 }
 
-// plain scoped selectors: with position="inline" the content element itself is
-// the component root Reka renders for us, so it carries this component's scope
-// attribute directly (no popper wrapper in between). max-height is set inline
-// by positionPanel from the space around the field; the fit-to-viewport trim
-// divides the same number into whole rows, so nothing is ever partially
-// visible behind the overflow.
+/* plain scoped selectors: with position="inline" the content element itself is
+ * the component root Reka renders for us, so it carries this component's scope
+ * attribute directly (no popper wrapper in between). max-height is set inline
+ * by positionPanel from the space around the field; the fit-to-viewport trim
+ * divides the same number into whole rows, so nothing is ever partially
+ * visible behind the overflow. */
 .es-autocomplete-panel {
     border: variables.$border-width solid variables.$gray-500;
     box-shadow: variables.$popover-box-shadow;
     max-width: min(90vw, 30rem);
     overflow: hidden;
-    // above .es-autocomplete-overlay when not in the top layer
+    /* above .es-autocomplete-overlay when not in the top layer */
     z-index: 1000;
 
     &--measuring {
@@ -395,11 +395,11 @@ function onPanelMousedown(event: MouseEvent) {
     }
 }
 
-// glued to the field with CSS anchor positioning and rendered in the top layer
-// via popover="manual" (shown from script), so ancestor overflow, transforms,
-// and z-index cannot clip or cover it; the browser keeps it attached to the
-// field between the script's re-measures. inset/margin/padding clear the UA's
-// centered [popover] defaults (rows carry their own padding).
+/* glued to the field with CSS anchor positioning and rendered in the top layer
+ * via popover="manual" (shown from script), so ancestor overflow, transforms,
+ * and z-index cannot clip or cover it; the browser keeps it attached to the
+ * field between the script's re-measures. inset/margin/padding clear the UA's
+ * centered [popover] defaults (rows carry their own padding). */
 .es-autocomplete-panel--anchored {
     inset: auto;
     left: anchor(left);
@@ -411,15 +411,15 @@ function onPanelMousedown(event: MouseEvent) {
     width: max-content;
 }
 
-// the flip side, chosen by positionPanel when the natural list only fits above
+/* the flip side, chosen by positionPanel when the natural list only fits above */
 .es-autocomplete-panel--above {
     bottom: calc(anchor(top) + 0.25rem);
     top: auto;
 }
 
-// fallback for browsers without anchor positioning: in-page placement below the
-// field (the root is position-relative and the anchor its last field element),
-// with no flip — still trimmed, never clipped by the viewport bottom
+/* fallback for browsers without anchor positioning: in-page placement below the
+ * field (the root is position-relative and the anchor its last field element),
+ * with no flip — still trimmed, never clipped by the viewport bottom */
 .es-autocomplete-panel--static {
     left: 0;
     min-width: 100%;
@@ -433,7 +433,7 @@ function onPanelMousedown(event: MouseEvent) {
     inset: 0;
     opacity: 0.25;
     position: fixed;
-    // matches .es-menu-bar-overlay in es-menu-bar; the two are never open at once
+    /* matches .es-menu-bar-overlay in es-menu-bar; the two are never open at once */
     z-index: 999;
 
     @media not (prefers-reduced-motion) {

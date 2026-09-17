@@ -25,8 +25,8 @@ const emit = defineEmits<{
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-// ≥44px square so it is comfortably tappable; a flex sibling of the input, so
-// it can never overlap the entered text
+/* ≥44px square so it is comfortably tappable; a flex sibling of the input, so
+ * it can never overlap the entered text */
 .es-autocomplete-clear {
     cursor: pointer;
     width: 2.75rem;

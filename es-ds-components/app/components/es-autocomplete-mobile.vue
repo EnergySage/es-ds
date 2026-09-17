@@ -256,17 +256,17 @@ function onOpenAutoFocus(event: Event) {
     height: 100dvh;
     inset: 0;
     position: fixed;
-    // above the page and any menu bar (1000); same layer as modals
+    /* above the page and any menu bar (1000); same layer as modals */
     z-index: 1050;
 }
 
-// deliberately no focus styling on the field: the full-screen takeover itself is
-// the focus indicator (see es-autocomplete-desktop.vue for the fuller rationale)
+/* deliberately no focus styling on the field: the full-screen takeover itself is
+ * the focus indicator (see es-autocomplete-desktop.vue for the fuller rationale) */
 
 .es-autocomplete-input {
     background: transparent;
     border: none;
-    // ≥16px or iOS Safari auto-zooms on focus
+    /* ≥16px or iOS Safari auto-zooms on focus */
     font-size: 1rem;
 
     &:focus-visible {
@@ -284,17 +284,16 @@ function onOpenAutoFocus(event: Event) {
 }
 
 .es-autocomplete-takeover-list {
-    // no scrolling by design: the fit-to-viewport trim only renders items that fit
+    /* no scrolling by design: the fit-to-viewport trim only renders items that fit */
     overflow: hidden;
-    // required by useFitToViewport: item offsetTop must be relative to this container
     position: relative;
 
     &--measuring {
         visibility: hidden;
     }
 
-    // ≥16px text for readability; the ≥48px row height comes from the shared
-    // es-autocomplete-item styles
+    /* ≥16px text for readability; the ≥48px row height comes from the shared
+     * es-autocomplete-item styles */
     .es-autocomplete-item {
         font-size: 1rem;
     }
