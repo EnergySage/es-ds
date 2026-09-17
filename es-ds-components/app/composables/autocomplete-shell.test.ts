@@ -258,6 +258,20 @@ describe('useAutocompleteShell selection and clearing', () => {
         expect(emitSelect).toHaveBeenCalledWith(suggestion);
     });
 
+    it('selection reveals the caret at the end of the filled-in text', async () => {
+        const { inputEl, shell } = makeShell();
+        inputEl.focus();
+        // the selection writes a long value into the input; the browser leaves
+        // the field scrolled to the start
+        const text = '18 Narragansett Boulevard, Unit B, Providence, RI 02906';
+        shell.onSelect({ id: 'a', text });
+        inputEl.value = text;
+        await nextTick();
+        await nextTick();
+        expect(inputEl.selectionStart).toBe(text.length);
+        expect(inputEl.selectionEnd).toBe(text.length);
+    });
+
     it('onClear empties the model and refocuses the input', () => {
         const { inputEl, model, shell } = makeShell();
         shell.onClear();

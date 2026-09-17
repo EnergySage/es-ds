@@ -6,12 +6,12 @@ export interface SampleAutocompleteAddress {
 // Sample data for the EsAutocomplete docs examples: street numbers cover every
 // leading digit and cities span the US, so any digits a visitor starts typing
 // are likely to match several addresses. Typing "12" matches more addresses
-// than the component will show, exercising the 10-item cap and the
-// fit-to-viewport trim.
+// than the component will show, exercising the item cap and the fit-to-viewport
+// trim, and a few street lines run long for variety in suggestion width.
 export const SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES: SampleAutocompleteAddress[] = [
     { street: '12 Maple Ave', cityStateZip: 'Cambridge, MA 02138' },
     { street: '15 Harbor Dr', cityStateZip: 'Salem, MA 01970' },
-    { street: '18 Orchard Rd', cityStateZip: 'Providence, RI 02906' },
+    { street: '18 Narragansett Boulevard, Unit B', cityStateZip: 'Providence, RI 02906' },
     { street: '22 Bayview Ter', cityStateZip: 'Portland, ME 04101' },
     { street: '34 Prospect St', cityStateZip: 'New Haven, CT 06511' },
     { street: '41 Franklin Ave', cityStateZip: 'Brooklyn, NY 11205' },
@@ -33,7 +33,7 @@ export const SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES: SampleAutocompleteAddress[] 
     { street: '530 Palm Dr', cityStateZip: 'Miami, FL 33139' },
     { street: '575 Canyon Rd', cityStateZip: 'Santa Fe, NM 87501' },
     { street: '640 Aspen Way', cityStateZip: 'Denver, CO 80209' },
-    { street: '725 Cherry Ln', cityStateZip: 'Salt Lake City, UT 84102' },
+    { street: '725 Little Cottonwood Canyon Rd', cityStateZip: 'Salt Lake City, UT 84102' },
     { street: '812 Willow Ln', cityStateZip: 'Nashville, TN 37206' },
     { street: '845 Vine St', cityStateZip: 'Kansas City, MO 64106' },
     { street: '910 Bluff Rd', cityStateZip: 'Sioux Falls, SD 57105' },
@@ -42,10 +42,10 @@ export const SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES: SampleAutocompleteAddress[] 
     { street: '1215 Magnolia Ave', cityStateZip: 'Savannah, GA 31404' },
     { street: '1250 Lakeview Dr', cityStateZip: 'Chicago, IL 60614' },
     { street: '2124 Pine Rd', cityStateZip: 'Portland, OR 97205' },
-    { street: '2650 Peachtree Rd', cityStateZip: 'Atlanta, GA 30305' },
+    { street: '2650 Peachtree Industrial Blvd NE', cityStateZip: 'Atlanta, GA 30305' },
     { street: '3050 Frontier Ave', cityStateZip: 'Boise, ID 83702' },
     { street: '4120 Sunset Blvd', cityStateZip: 'Los Angeles, CA 90029' },
-    { street: '4700 Rainier Ave', cityStateZip: 'Seattle, WA 98118' },
+    { street: '4700 Martin Luther King Jr Way S', cityStateZip: 'Seattle, WA 98118' },
     { street: '6800 Ocean View Blvd', cityStateZip: 'San Diego, CA 92109' },
     { street: '7400 Mesa Trl', cityStateZip: 'Phoenix, AZ 85018' },
     { street: '9500 Desert Willow Dr', cityStateZip: 'Las Vegas, NV 89134' },

@@ -389,8 +389,7 @@ const autocompleteSlots = [
                         label="Address"
                         placeholder="Enter your address"
                         :suggestions="addressSuggestions"
-                        @complete="onAddressComplete"
-                        @select="onAddressSelect">
+                        @complete="onAddressComplete">
                         <template #item="{ suggestion, query }">
                             <es-autocomplete-suggestion-text
                                 v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"

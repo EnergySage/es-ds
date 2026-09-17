@@ -137,12 +137,32 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
             highlightPresent.value = true;
             if (highlightSource.value === 'keyboard' && text !== null) {
                 displayText.value = text;
+                void revealCaretAtEnd();
             }
         });
     }
 
     function focusInput() {
         (options.inputRef.value?.$el as HTMLElement | undefined)?.focus();
+    }
+
+    // When text is written into the input programmatically (a selection filling
+    // in the suggestion, or keyboard navigation mirroring one), the browser
+    // leaves the caret at the end but the field scrolled to the start — a value
+    // wider than the field shows its beginning with the caret out of view.
+    // Reveal the caret once the written value has reached the DOM.
+    async function revealCaretAtEnd() {
+        // two ticks: the first flushes the ref/model watchers, the second the
+        // render patch that writes the input's DOM value
+        await nextTick();
+        await nextTick();
+        const el = options.inputRef.value?.$el as HTMLInputElement | undefined;
+        if (!el || document.activeElement !== el) {
+            return;
+        }
+        const end = el.value.length;
+        el.setSelectionRange(end, end);
+        el.scrollLeft = el.scrollWidth;
     }
 
     // runs in the capture phase on the anchor, ahead of Reka's input-level handler
@@ -175,6 +195,7 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
     function onSelect(suggestion: EsAutocompleteSuggestion) {
         options.close();
         options.emitSelect(suggestion);
+        void revealCaretAtEnd();
     }
 
     function onClear() {
