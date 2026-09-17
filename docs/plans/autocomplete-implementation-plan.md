@@ -635,3 +635,28 @@ Open questions raised during planning, with the decisions now reflected inline a
     first positioning wrote the available-height constraint, so a panel opening
     into tight space rendered untrimmed for that open (fixed by deferring every
     measure one frame, as the resize/scroll path already did).
+20. **Desktop panels use the native top layer and CSS anchor positioning; Reka's
+    popper layer removed** (2026-09-17, native-first architecture decision):
+    both desktop panels — the listbox (`AutocompleteContent position="inline"`)
+    and the aria-hidden message panel — carry `popover="manual"` (shown from
+    script; manual because auto's light-dismiss would treat clicks on our own
+    input as outside) and are glued to the field with `anchor-name` /
+    `position-anchor` + `anchor()`/`anchor-size()`. Top-layer rendering makes
+    them immune to ancestor `overflow: hidden`, transforms, and z-index while
+    keeping them in the DOM next to the field (decision #19's screen-reader
+    adjacency). The side choice and the row count come from one synchronous
+    computation: `positionPanel` (run as the trim's `beforeMeasure` hook)
+    compares the natural list height against the space around the field, picks
+    below-unless-only-above-fits (the usual popper policy), and writes the
+    panel's max-height — which the fit-to-viewport trim then divides into whole
+    rows. This deletes the popper's async CSS-variable coupling (the source of
+    the open-time race in #19) and the floating-ui dependency for this
+    component; the browser tracks the anchor between re-measures (scroll/resize
+    listeners re-run the side/limit/count). Anchor positioning is Baseline
+    (Chrome/Edge 125, Safari 26, Firefox 147); browsers without it fall back via
+    a `CSS.supports` check to in-page absolute placement below the field — no
+    popover, no flip, still trimmed and fully functional. Reka is retained
+    where it earns its keep: combobox ARIA (roles, ids, aria-activedescendant,
+    expanded), the keyboard highlight engine and item collection, selection
+    plumbing, and the mobile Dialog. The behavioral policy layer (open model,
+    Enter semantics, mirroring, dismissal, trim) is deliberately ours.

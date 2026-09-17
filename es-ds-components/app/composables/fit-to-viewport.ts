@@ -10,17 +10,20 @@ import type { EsAutocompleteSuggestion } from '../types';
  * changes — the list never scrolls, and a row is never partially shown.
  *
  * The height limit is read from the container's resolved max-height (the desktop
- * popover, where the popper maintains the available-height constraint) or its
+ * panel, whose positioning sets it from the space around the field) or its
  * explicit height (the mobile takeover list). Re-computes on suggestion changes,
- * window resizes, and scrolls (the popper tracks its anchor while the page
- * scrolls, shrinking or growing the panel's available height); callers whose
- * container height changes by other means (e.g. the mobile visualViewport
- * keyboard handling) call the returned `remeasure` themselves.
+ * window resizes, and scrolls (the panel is anchored to the field, so scrolling
+ * shrinks or grows its available height); callers whose container height changes
+ * by other means (e.g. the mobile visualViewport keyboard handling) call the
+ * returned `remeasure` themselves. `beforeMeasure` runs at the start of every
+ * measure pass, so a caller that positions the container (choosing the side and
+ * writing the max-height) does it from the same numbers the row count uses.
  */
 export function useFitToViewport(
     contentEl: Ref<HTMLElement | null>,
     suggestions: Ref<EsAutocompleteSuggestion[]>,
     cap: number,
+    options: { beforeMeasure?: () => void } = {},
 ) {
     const visibleCount = ref(cap);
     const measured = ref(false);
@@ -42,6 +45,7 @@ export function useFitToViewport(
             measured.value = false;
             return;
         }
+        options.beforeMeasure?.();
         // visibleCount never drops below 1, so whenever there are suggestions a
         // row is rendered to measure; without one (a message-only panel showing
         // the prompt or no-results text) there is nothing to trim
@@ -55,9 +59,7 @@ export function useFitToViewport(
         measured.value = true;
     }
 
-    // deferred a frame so the popper's positioning (initial placement on open,
-    // reposition on viewport changes) has updated the max-height constraint
-    // before it is read; also coalesces event bursts to one measure per frame
+    // deferred a frame to coalesce event bursts to one measure per frame
     let measureFrame: number | null = null;
     function scheduleRemeasure() {
         if (measureFrame !== null) {

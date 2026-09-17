@@ -41,11 +41,63 @@ const open = ref(false);
 // hears "expanded" exactly when a list exists — per the combobox pattern.
 const listboxOpen = computed(() => open.value && props.suggestions.length > 0);
 const rootRef = ref<ComponentPublicInstance | null>(null);
+const anchorRef = ref<ComponentPublicInstance | null>(null);
 const contentRef = ref<ComponentPublicInstance | null>(null);
 const inputRef = ref<ComponentPublicInstance | null>(null);
 const guardRef = ref<{ clearHighlight: () => void } | null>(null);
 const contentEl = useAutocompleteContentEl(contentRef, listboxOpen);
-const { measured, visibleSuggestions } = useFitToViewport(contentEl, toRef(props, 'suggestions'), MAX_VISIBLE);
+
+// The panels render in the browser's top layer (popover="manual" — manual, so
+// no light-dismiss: it would treat clicks on our own input as outside) and are
+// glued to the field with CSS anchor positioning, immune to ancestor
+// overflow/z-index while staying in the DOM right next to the field. Browsers
+// without anchor positioning fall back to in-page absolute placement below the
+// field (no popover, no flip); the check is false during SSR, where neither
+// panel renders anyway.
+const supportsAnchor = typeof CSS !== 'undefined' && CSS.supports('anchor-name: --a');
+const anchorName = `--es-autocomplete-${props.id}`;
+const panelAbove = ref(false);
+
+// Chooses the panel's side and writes its max-height from the space around the
+// field — the same numbers the fit-to-viewport trim divides into rows, so the
+// side choice and the row count can never disagree. Mirrors the usual popper
+// policy: below unless the natural (untrimmed) list only fits above.
+function positionPanel() {
+    const panel = contentEl.value;
+    const anchor = anchorRef.value?.$el as HTMLElement | undefined;
+    if (!panel || !anchor) {
+        return;
+    }
+    const offset = 4; // matches the anchored CSS's 0.25rem gap
+    const anchorRect = anchor.getBoundingClientRect();
+    const spaceBelow = window.innerHeight - anchorRect.bottom - offset;
+    const spaceAbove = anchorRect.top - offset;
+    const rowHeight = panel.querySelector<HTMLElement>('[data-es-autocomplete-item]')?.offsetHeight ?? 0;
+    const borders = Math.max(panel.offsetHeight - panel.clientHeight, 0);
+    const natural = rowHeight * Math.min(props.suggestions.length, MAX_VISIBLE) + borders;
+    const above = supportsAnchor && natural > spaceBelow && natural <= spaceAbove;
+    panelAbove.value = above;
+    panel.style.maxHeight = `${Math.max(above ? spaceAbove : spaceBelow, 0)}px`;
+}
+
+const { measured, visibleSuggestions } = useFitToViewport(contentEl, toRef(props, 'suggestions'), MAX_VISIBLE, {
+    beforeMeasure: positionPanel,
+});
+
+// a [popover] element displays only once shown; manual popovers never light-dismiss
+function showAsPopover(el: HTMLElement | null) {
+    if (el && supportsAnchor) {
+        try {
+            el.showPopover();
+        } catch {
+            // already shown, or not a popover in this browser
+        }
+    }
+}
+watch(contentEl, showAsPopover);
+
+const promptPanelRef = ref<HTMLElement | null>(null);
+watch(promptPanelRef, showAsPopover);
 
 const {
     displayText,
@@ -173,7 +225,9 @@ function onPanelMousedown(event: MouseEvent) {
             :label-sr-only="labelSrOnly"
             :required="required" />
         <autocomplete-anchor
+            ref="anchorRef"
             class="es-autocomplete-field es-form-input form-control align-items-center d-flex p-0"
+            :style="{ anchorName }"
             :class="{
                 'is-invalid': state === false,
                 'es-autocomplete-field--focus-ring': !showOverlayOnFocus && !keyboardHighlightActive,
@@ -208,8 +262,12 @@ function onPanelMousedown(event: MouseEvent) {
              this panel is hidden from them and the combobox stays collapsed -->
         <div
             v-if="open && !suggestions.length && panelMessage"
+            ref="promptPanelRef"
             aria-hidden="true"
-            class="es-autocomplete-panel es-autocomplete-panel--static bg-white rounded-xs text-gray-900 font-size-75 text-left">
+            class="es-autocomplete-panel bg-white rounded-xs text-gray-900 font-size-75 text-left"
+            :class="supportsAnchor ? 'es-autocomplete-panel--anchored' : 'es-autocomplete-panel--static'"
+            :popover="supportsAnchor ? 'manual' : undefined"
+            :style="supportsAnchor ? { positionAnchor: anchorName } : undefined">
             <div class="es-autocomplete-no-results px-100 py-50 text-gray-700">
                 {{ panelMessage }}
             </div>
@@ -219,14 +277,18 @@ function onPanelMousedown(event: MouseEvent) {
              navigation lands back near the input when leaving the list -->
         <autocomplete-content
             ref="contentRef"
-            align="start"
             :aria-label="label"
-            position="popper"
+            position="inline"
             :class="[
                 'es-autocomplete-panel bg-white rounded-xs text-gray-900 font-size-75 text-left',
-                { 'es-autocomplete-panel--measuring': !measured },
+                supportsAnchor ? 'es-autocomplete-panel--anchored' : 'es-autocomplete-panel--static',
+                {
+                    'es-autocomplete-panel--above': panelAbove,
+                    'es-autocomplete-panel--measuring': !measured,
+                },
             ]"
-            :side-offset="4"
+            :popover="supportsAnchor ? 'manual' : undefined"
+            :style="supportsAnchor ? { positionAnchor: anchorName } : undefined"
             @mousedown="onPanelMousedown"
             @pointermove="markPointerHighlight">
             <es-autocomplete-item
@@ -312,34 +374,52 @@ function onPanelMousedown(event: MouseEvent) {
     }
 }
 
-// Reka's popper wrapper strips the scope attribute from the content root, so
-// target it with :deep() through a scope-carrying ancestor (same pattern as
-// es-popover)
-:deep(.es-autocomplete-panel) {
+// plain scoped selectors: with position="inline" the content element itself is
+// the component root Reka renders for us, so it carries this component's scope
+// attribute directly (no popper wrapper in between). max-height is set inline
+// by positionPanel from the space around the field; the fit-to-viewport trim
+// divides the same number into whole rows, so nothing is ever partially
+// visible behind the overflow.
+.es-autocomplete-panel {
     border: variables.$border-width solid variables.$gray-500;
     box-shadow: variables.$popover-box-shadow;
-    // the fit-to-viewport trim guarantees no partially-visible items behind this
-    max-height: var(--reka-combobox-content-available-height);
     max-width: min(90vw, 30rem);
-    min-width: var(--reka-combobox-trigger-width);
     overflow: hidden;
-    // required by useFitToViewport: item offsetTop must be relative to this panel
-    position: relative;
-    // above .es-autocomplete-overlay; Reka copies this onto its popper wrapper
+    // above .es-autocomplete-overlay when not in the top layer
     z-index: 1000;
 
-    &.es-autocomplete-panel--measuring {
+    &--measuring {
         visibility: hidden;
     }
 }
 
-// the aria-hidden prompt/no-results panel is not popper-positioned: it sits
-// below the field (the root is position-relative and the anchor its last child),
-// sized like the real panel. Placed after the :deep block so its positioning
-// wins over that block's position: relative.
+// glued to the field with CSS anchor positioning and rendered in the top layer
+// via popover="manual" (shown from script), so ancestor overflow, transforms,
+// and z-index cannot clip or cover it; the browser keeps it attached to the
+// field between the script's re-measures. inset/margin/padding clear the UA's
+// centered [popover] defaults (rows carry their own padding).
+.es-autocomplete-panel--anchored {
+    inset: auto;
+    left: anchor(left);
+    margin: 0;
+    min-width: anchor-size(width);
+    padding: 0;
+    position: fixed;
+    top: calc(anchor(bottom) + 0.25rem);
+    width: max-content;
+}
+
+// the flip side, chosen by positionPanel when the natural list only fits above
+.es-autocomplete-panel--above {
+    bottom: calc(anchor(top) + 0.25rem);
+    top: auto;
+}
+
+// fallback for browsers without anchor positioning: in-page placement below the
+// field (the root is position-relative and the anchor its last field element),
+// with no flip — still trimmed, never clipped by the viewport bottom
 .es-autocomplete-panel--static {
     left: 0;
-    max-width: min(90vw, 30rem);
     min-width: 100%;
     position: absolute;
     top: calc(100% + 0.25rem);

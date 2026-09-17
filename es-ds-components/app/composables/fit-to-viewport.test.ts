@@ -148,6 +148,23 @@ describe('useFitToViewport', () => {
         expect(fit.visibleSuggestions.value).toHaveLength(4);
     });
 
+    it('beforeMeasure runs in the same pass, so a limit it writes drives that count', async () => {
+        const container = makeContainer({ count: 7, height: 30 }, {});
+        const contentEl = ref<HTMLElement | null>(container);
+        const suggestions = ref(suggestionList(7));
+        // the caller positions the container and writes its max-height (the
+        // desktop shell's positionPanel) right before each measurement
+        const fit = withSetup(() =>
+            useFitToViewport(contentEl, suggestions, 10, {
+                beforeMeasure: () => {
+                    container.style.maxHeight = '70px';
+                },
+            }),
+        );
+        await fit.remeasure();
+        expect(fit.visibleSuggestions.value).toHaveLength(2);
+    });
+
     it('is unmeasured (list hidden) until a container exists', async () => {
         const contentEl = ref<HTMLElement | null>(null);
         const suggestions = ref(suggestionList(3));
