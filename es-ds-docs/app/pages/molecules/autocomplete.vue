@@ -374,7 +374,10 @@ const autocompleteSlots = [
             <h2>Custom item rendering</h2>
             <p>
                 This autocomplete demonstrates customizing the display of suggestion items, in this case splitting an
-                address into two lines. Do so carefully. Each suggestion should differentiate between the user's typed
+                address into two lines.
+            </p>
+            <p>
+                When using this feature, be sure that each suggestion differentiates between the user's typed
                 text and the additional suggested text, highlighting the latter for easy scanning. We provide an
                 autocomplete suggestion text component that handles this for you and can support multiple lines of
                 text.
