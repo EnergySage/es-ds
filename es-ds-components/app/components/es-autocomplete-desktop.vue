@@ -184,11 +184,16 @@ function onFieldTab(event: KeyboardEvent) {
 // mounted — not in the message-only state. This instance's root element is
 // resolved by walking up from the input: AutocompleteRoot renders through a
 // renderless Popper root, so a template ref's $el does not land on the root div.
+// Only the widget's working parts count as inside: the field, the panels, and
+// the label (whose click hands focus back to the input). The root's own dead
+// space — e.g. beside the label — is not focusable, so a click there blurs the
+// input and must close the panel with it.
 function onDocumentPointerdown(event: Event) {
-    const target = event.target as Node | null;
+    const target = event.target instanceof Element ? event.target : null;
     const inputEl = inputRef.value?.$el as HTMLElement | undefined;
     const rootEl = inputEl?.closest('[data-es-autocomplete-root]');
-    if (!target || rootEl?.contains(target) || contentEl.value?.contains(target)) {
+    const part = target?.closest('.es-autocomplete-field, .es-autocomplete-panel, label');
+    if (part && rootEl?.contains(part)) {
         return;
     }
     open.value = false;

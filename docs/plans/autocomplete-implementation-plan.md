@@ -621,7 +621,12 @@ Open questions raised during planning, with the decisions now reflected inline a
     check that knows the field's input → clear-button tab order), Escape,
     select, submit, and a capture-phase document pointerdown listener for
     outside clicks (which also covers the message-only state, where Reka's
-    dismiss layer is not mounted). The takeover's list message is likewise
+    dismiss layer is not mounted). "Outside" means outside the widget's working
+    parts — the field, the panels, and the label (whose click hands focus back
+    to the input) — not merely outside the root element: the root's own dead
+    space (e.g. beside the label) is not focusable, so a click there blurs the
+    input and must close the panel with it rather than strand an open list on
+    an unfocused field. The takeover's list message is likewise
     `aria-hidden` (the dialog description covers it). A full VoiceOver re-test
     is the user's next verification step; the deferred §8a axe scan remains the
     regression gate.
