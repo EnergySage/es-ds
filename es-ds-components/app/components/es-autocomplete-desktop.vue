@@ -16,11 +16,13 @@ interface Props {
     id: string;
     label: string;
     labelSrOnly?: boolean;
+    noResultsAnnouncement: string;
     panelMessage: string;
     placeholder?: string;
     required?: boolean;
     showOverlayOnFocus?: boolean;
     state?: boolean | null;
+    suggestionCountText: (count: number) => string;
     suggestions: EsAutocompleteSuggestion[];
 }
 
@@ -82,6 +84,15 @@ function positionPanel() {
 const { measured, visibleSuggestions } = useFitToViewport(contentEl, toRef(props, 'suggestions'), MAX_VISIBLE, {
     beforeMeasure: positionPanel,
 });
+
+// announces the number of suggestions actually DISPLAYED (after the cap and the
+// fit-to-viewport trim), or the no-results state. Each shell owns its own live
+// region: the inactive shell's sits under display: none, which silences it.
+const liveAnnouncement = computed(() =>
+    visibleSuggestions.value.length
+        ? props.suggestionCountText(visibleSuggestions.value.length)
+        : props.noResultsAnnouncement,
+);
 
 // a [popover] element displays only once shown; manual popovers never light-dismiss
 function showAsPopover(el: HTMLElement | null) {
@@ -311,6 +322,12 @@ function onPanelMousedown(event: MouseEvent) {
                 </template>
             </es-autocomplete-item>
         </autocomplete-content>
+        <div
+            aria-live="polite"
+            class="sr-only"
+            role="status">
+            {{ liveAnnouncement }}
+        </div>
     </autocomplete-root>
     <teleport to="body">
         <transition name="es-autocomplete-overlay">

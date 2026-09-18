@@ -681,3 +681,14 @@ Open questions raised during planning, with the decisions now reflected inline a
     `prefers-reduced-motion`, or a browser without `Element.animate`, gets the
     instant behavior. The flight and fades are manual/§8c verification;
     the timeout-recovery path is what a frozen page exercises.
+22. **Live announcements count displayed suggestions, per shell** (2026-09-18,
+    from mobile VoiceOver testing): announcing the app's list length said
+    "8 suggestions available" while the cap and fit-to-viewport trim displayed
+    5. Each shell now owns its sr-only live region and announces its own
+    `visibleSuggestions` count (or the no-results message, which the search
+    composable exposes as `noResultsAnnouncement`); the inactive shell's region
+    sits under `display: none`, which silences a live region. The takeover's
+    listbox is also `aria-hidden` while it holds no real options, mirroring
+    decision #18's desktop semantics, so VoiceOver's dialog summary ("dialog,
+    with N items" — its enumeration of the dialog's accessible children: field,
+    clear button, Cancel, list) does not count an empty list.

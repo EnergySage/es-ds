@@ -29,10 +29,12 @@ interface Props {
     id: string;
     label: string;
     labelSrOnly?: boolean;
+    noResultsAnnouncement: string;
     panelMessage: string;
     placeholder?: string;
     required?: boolean;
     state?: boolean | null;
+    suggestionCountText: (count: number) => string;
     suggestions: EsAutocompleteSuggestion[];
 }
 
@@ -55,6 +57,15 @@ const { measured, remeasure, visibleSuggestions } = useFitToViewport(
     contentEl,
     toRef(props, 'suggestions'),
     MAX_VISIBLE,
+);
+
+// announces the number of suggestions actually DISPLAYED (after the cap and the
+// fit-to-viewport trim), or the no-results state. Each shell owns its own live
+// region: the inactive shell's sits under display: none, which silences it.
+const liveAnnouncement = computed(() =>
+    visibleSuggestions.value.length
+        ? props.suggestionCountText(visibleSuggestions.value.length)
+        : props.noResultsAnnouncement,
 );
 
 const {
@@ -354,11 +365,16 @@ function onTakeoverOpenChange(value: boolean) {
             :open="takeoverOpen"
             @update:open="onTakeoverOpenChange">
             <!-- fake search field: tapping it opens the takeover with the real input focused -->
+            <!-- the label association names this button, which suppresses its text
+                 content in the accessible name — so a held value (unlike an input's,
+                 which has a value slot of its own) must be folded into the name for
+                 screen readers to announce it -->
             <dialog-trigger
                 :id="triggerId"
                 class="es-autocomplete-fake-field es-form-input form-control align-items-center d-flex px-100 text-left w-100"
                 :class="{ 'is-invalid': state === false }"
                 :aria-describedby="describedBy"
+                :aria-label="model ? `${label}, ${model}` : undefined"
                 :disabled="disabled">
                 <span
                     v-if="model"
@@ -417,6 +433,7 @@ function onTakeoverOpenChange(value: boolean) {
                         </div>
                         <autocomplete-content
                             ref="contentRef"
+                            :aria-hidden="visibleSuggestions.length === 0 ? 'true' : undefined"
                             :class="[
                                 'es-autocomplete-takeover-list text-left',
                                 { 'es-autocomplete-takeover-list--measuring': !measured },
@@ -446,6 +463,12 @@ function onTakeoverOpenChange(value: boolean) {
                                 {{ panelMessage }}
                             </div>
                         </autocomplete-content>
+                        <div
+                            aria-live="polite"
+                            class="sr-only"
+                            role="status">
+                            {{ liveAnnouncement }}
+                        </div>
                     </autocomplete-root>
                 </dialog-content>
             </dialog-portal>

@@ -57,7 +57,7 @@ const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId
 
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
 // messaging live in useAutocompleteSearch so the contract is unit-testable
-const { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage } = useAutocompleteSearch({
+const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMessage } = useAutocompleteSearch({
     delay: () => props.delay,
     emitComplete: (query) => emit('complete', query),
     emitSelect: (suggestion) => emit('select', suggestion),
@@ -66,7 +66,6 @@ const { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage
     model,
     noResultsText: () => props.noResultsText,
     promptText: () => props.promptText,
-    suggestionCountText: (count) => props.suggestionCountText(count),
     suggestions: () => props.suggestions,
 });
 </script>
@@ -81,11 +80,13 @@ const { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage
             :disabled="disabled"
             :label="label"
             :label-sr-only="labelSrOnly"
+            :no-results-announcement="noResultsAnnouncement"
             :panel-message="panelMessage"
             :placeholder="placeholder"
             :required="required"
             :show-overlay-on-focus="showOverlayOnFocus"
             :state="state"
+            :suggestion-count-text="suggestionCountText"
             :suggestions="effectiveSuggestions"
             @select="onSelect"
             @submit="onSubmit">
@@ -106,10 +107,12 @@ const { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage
             :disabled="disabled"
             :label="label"
             :label-sr-only="labelSrOnly"
+            :no-results-announcement="noResultsAnnouncement"
             :panel-message="panelMessage"
             :placeholder="placeholder"
             :required="required"
             :state="state"
+            :suggestion-count-text="suggestionCountText"
             :suggestions="effectiveSuggestions"
             @select="onSelect"
             @submit="onSubmit">
@@ -141,12 +144,6 @@ const { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage
             :id="helpId"
             class="sr-only">
             Type your search and select from dropdown suggestions.
-        </div>
-        <div
-            aria-live="polite"
-            class="sr-only"
-            role="status">
-            {{ liveAnnouncement }}
         </div>
     </div>
 </template>

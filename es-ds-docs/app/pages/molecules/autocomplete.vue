@@ -250,8 +250,9 @@ const autocompleteProps = [
         'Function',
         "(count) => '{count} suggestions available'",
         `
-        Builds the screen-reader announcement made when suggestions arrive, given the suggestion count.
-        An empty result announces noResultsText instead.
+        Builds the screen-reader announcement made when suggestions arrive, given the number of
+        suggestions displayed (after the display cap and fit-to-viewport trim). An empty result
+        announces noResultsText instead.
         `,
     ],
     [

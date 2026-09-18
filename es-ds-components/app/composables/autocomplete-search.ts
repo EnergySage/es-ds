@@ -11,7 +11,6 @@ interface AutocompleteSearchOptions {
     model: Ref<string>;
     noResultsText: () => string;
     promptText: () => string;
-    suggestionCountText: (count: number) => string;
     suggestions: () => EsAutocompleteSuggestion[];
 }
 
@@ -89,16 +88,14 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         return noResults.value && queryLongEnough.value ? options.noResultsText() : options.promptText();
     });
 
-    // rendered into an sr-only aria-live region by the parent, so screen readers
-    // hear results arriving and the no-results state, which are otherwise only
-    // visual. The prompt is guidance rather than a state change, so it is not
-    // announced (the input's aria-describedby hint covers it).
-    const liveAnnouncement = computed(() => {
-        if (effectiveSuggestions.value.length) {
-            return options.suggestionCountText(effectiveSuggestions.value.length);
-        }
-        return noResults.value && queryLongEnough.value ? options.noResultsText() : '';
-    });
+    // rendered into the shells' sr-only live regions when nothing is displayed,
+    // so screen readers hear that a search came back empty (the shells announce
+    // the count of DISPLAYED suggestions themselves — the app's list is capped
+    // and trimmed per shell). The prompt is guidance rather than a state change,
+    // so it is never announced (the input's aria-describedby hint covers it).
+    const noResultsAnnouncement = computed(() =>
+        noResults.value && queryLongEnough.value ? options.noResultsText() : '',
+    );
 
     watch(model, (newValue) => {
         cancelPendingComplete();
@@ -140,5 +137,5 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         options.emitSubmit(query);
     }
 
-    return { effectiveSuggestions, liveAnnouncement, onSelect, onSubmit, panelMessage };
+    return { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMessage };
 }

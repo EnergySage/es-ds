@@ -47,8 +47,6 @@ function makeSearch(overrides: { minChars?: number } = {}) {
             model,
             noResultsText: () => 'No results found',
             promptText: () => 'Type for suggestions',
-            suggestionCountText: (count) =>
-                count === 1 ? '1 suggestion available' : `${count} suggestions available`,
             suggestions: () => suggestions.value,
         }),
     );
@@ -135,32 +133,26 @@ describe('useAutocompleteSearch panel message and suggestion gating', () => {
         expect(search.panelMessage.value).toBe('Type for suggestions');
     });
 
-    it('announces arriving results and the no-results state to the live region', async () => {
+    it('exposes the no-results announcement exactly when a search came back empty', async () => {
         const { search, suggestions, type } = makeSearch();
-        expect(search.liveAnnouncement.value).toBe('');
+        // nothing searched yet: nothing to announce
+        expect(search.noResultsAnnouncement.value).toBe('');
 
         await type('solar');
         suggestions.value = [{ id: 'a', text: 'solar batteries' }];
         await nextTick();
-        expect(search.liveAnnouncement.value).toBe('1 suggestion available');
-
-        suggestions.value = [
-            { id: 'a', text: 'solar batteries' },
-            { id: 'b', text: 'solar panels' },
-        ];
-        await nextTick();
-        expect(search.liveAnnouncement.value).toBe('2 suggestions available');
+        expect(search.noResultsAnnouncement.value).toBe('');
 
         // a search that came back empty announces the no-results message
         await type('solarx');
         suggestions.value = [];
         await nextTick();
-        expect(search.liveAnnouncement.value).toBe('No results found');
+        expect(search.noResultsAnnouncement.value).toBe('No results found');
 
         // a pending search announces nothing: the prompt is guidance, not a
         // state change
         await type('solarxy');
-        expect(search.liveAnnouncement.value).toBe('');
+        expect(search.noResultsAnnouncement.value).toBe('');
     });
 
     it('holds back the stale list after a selection until the app answers again', async () => {
