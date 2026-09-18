@@ -6,7 +6,6 @@ import {
     AutocompleteRoot,
     DialogClose,
     DialogContent,
-    DialogDescription,
     DialogOverlay,
     DialogPortal,
     DialogRoot,
@@ -394,15 +393,17 @@ function onTakeoverOpenChange(value: boolean) {
                      preventer, without which the page beneath still pans on iOS Safari
                      (overflow: hidden on body does not stop touch scrolling there) -->
                 <dialog-overlay class="es-autocomplete-takeover-overlay" />
+                <!-- aria-describedby="" (an empty idref list) overrides Reka's dialog-level
+                     description binding: iOS VoiceOver re-announces a dialog's description
+                     after EVERY element focused inside it, and the guidance belongs to the
+                     input alone, which carries the same text via its own aria-describedby -->
                 <dialog-content
+                    aria-describedby=""
                     class="es-autocomplete-takeover bg-white d-flex flex-column"
                     @open-auto-focus="onOpenAutoFocus">
                     <dialog-title class="sr-only">
                         {{ label }}
                     </dialog-title>
-                    <dialog-description class="sr-only">
-                        Type your search and select from dropdown suggestions.
-                    </dialog-description>
                     <autocomplete-root
                         v-model="model"
                         class="d-flex flex-column flex-grow-1"

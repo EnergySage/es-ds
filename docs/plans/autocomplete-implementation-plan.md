@@ -632,9 +632,14 @@ Open questions raised during planning, with the decisions now reflected inline a
     space (e.g. beside the label) is not focusable, so a click there blurs the
     input and must close the panel with it rather than strand an open list on
     an unfocused field. The takeover's list message is likewise
-    `aria-hidden` (the dialog description covers it). A full VoiceOver re-test
-    is the user's next verification step; the deferred §8a axe scan remains the
-    regression gate.
+    `aria-hidden` (the input's description covers it). The takeover deliberately
+    has NO dialog-level description: iOS VoiceOver re-announces a dialog's
+    `aria-describedby` after every element focused inside it, so the guidance
+    text rides only on the input's own `aria-describedby` and the dialog's
+    binding is neutralized with `aria-describedby=""` (an empty idref list,
+    which also satisfies Reka's missing-description dev warning). A full
+    VoiceOver re-test is the user's next verification step; the deferred §8a
+    axe scan remains the regression gate.
 19. **Desktop listbox is not portaled** (2026-09-17, from VoiceOver testing,
     matching the APG combobox examples): the AutocompletePortal wrapper was
     removed, so the listbox sits in the DOM right after the field — a screen
