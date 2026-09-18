@@ -2,8 +2,8 @@
 import type { EsAutocompleteSuggestion } from '../types';
 
 interface Props {
-    cancelText?: string;
     clearText?: string;
+    closeText?: string;
     delay?: number;
     disabled?: boolean;
     label: string;
@@ -20,8 +20,10 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    cancelText: 'Cancel',
     clearText: 'Clear',
+    // 'Close', not 'Cancel': dismissing the takeover keeps whatever is in the
+    // input — the takeover is just a full-screen way of editing the value
+    closeText: 'Close',
     delay: 300,
     disabled: false,
     labelSrOnly: false,
@@ -101,8 +103,8 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
         <es-autocomplete-mobile
             :id="id"
             v-model="model"
-            :cancel-text="cancelText"
             :clear-text="clearText"
+            :close-text="closeText"
             :described-by="describedBy"
             :disabled="disabled"
             :label="label"

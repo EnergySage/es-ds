@@ -22,8 +22,8 @@ const MAX_VISIBLE = 5;
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift
 interface Props {
-    cancelText?: string;
     clearText?: string;
+    closeText?: string;
     describedBy: string;
     disabled?: boolean;
     id: string;
@@ -341,8 +341,8 @@ async function closeTakeover(selectedText?: string) {
     exiting = false;
 }
 
-// every close path — Cancel (DialogClose), Escape, and selection/submit via the
-// shell's close — routes through closeTakeover so they all animate
+// every close path — the Close button (DialogClose), Escape, and selection/submit
+// via the shell's close — routes through closeTakeover so they all animate
 function onTakeoverOpenChange(value: boolean) {
     if (value) {
         takeoverOpen.value = true;
@@ -427,8 +427,10 @@ function onTakeoverOpenChange(value: boolean) {
                                     :clear-text="clearText"
                                     @clear="onClear" />
                             </autocomplete-anchor>
-                            <dialog-close class="es-autocomplete-cancel bg-transparent border-0 flex-shrink-0 ml-100">
-                                {{ cancelText }}
+                            <!-- 'Close', not 'Cancel': dismissing keeps whatever is in the
+                                 input — the takeover is just a full-screen way of editing it -->
+                            <dialog-close class="es-autocomplete-close bg-transparent border-0 flex-shrink-0 ml-100">
+                                {{ closeText }}
                             </dialog-close>
                         </div>
                         <autocomplete-content
@@ -525,7 +527,7 @@ function onTakeoverOpenChange(value: boolean) {
     }
 }
 
-.es-autocomplete-cancel {
+.es-autocomplete-close {
     color: variables.$blue-600;
     font-weight: variables.$font-weight-semibold;
 }

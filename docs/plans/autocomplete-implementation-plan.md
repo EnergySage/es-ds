@@ -159,7 +159,7 @@ shared via the same `v-model`.
   `DialogContent`'s `@open-auto-focus` to redirect initial focus to the input.
 - Structure: `DialogRoot` → `DialogPortal` → `DialogContent` (fixed inset-0, flex column,
   `height: 100dvh`) containing:
-  - top bar: `AutocompleteInput` (full width, flex-1) + `DialogClose` ("Cancel")
+  - top bar: `AutocompleteInput` (full width, flex-1) + `DialogClose` ("Close")
   - below: `AutocompleteContent` rendered **inline** (default positioning — no Portal,
     no `position="popper"`), `flex-1`, `overflow: hidden`, trim logic from §3.
 - Keep the autocomplete open state pinned while the dialog is open (`:open="true"` or
@@ -171,7 +171,7 @@ Closing the takeover (decision 2026-07-02):
   with vue-router in consuming Nuxt apps. Skipped for now; revisit only if user testing
   shows back-button abandonment.
 - Instead, ensure a **clear, always-visible close affordance**: the `DialogClose`
-  ("Cancel") text button in the top bar next to the input. A text button deliberately
+  ("Close") text button in the top bar next to the input. A text button deliberately
   avoids visual conflict with a possible future X-in-the-input to **clear the field**
   (Reka ships `AutocompleteCancel` for exactly that — worth considering as an
   iteration, but if added, close-takeover and clear-input must remain visually
@@ -382,8 +382,8 @@ docs site:
    jsdom/happy-dom, must be a real browser.
 3. Mobile takeover (390px viewport): tap the fake field → dialog opens with the
    real input already focused (the one-tap iOS keyboard prerequisite), trimmed
-   suggestions render, tap-select closes and updates the fake field, Cancel
-   closes. Optionally add an @axe-core/playwright scan of both layouts as an
+   suggestions render, tap-select closes and updates the fake field, the Close
+   button closes. Optionally add an @axe-core/playwright scan of both layouts as an
    a11y smoke test.
 
 **No longer deferred — the component test.** The parent emit contract (debounce,
@@ -433,11 +433,11 @@ On the docs page at `http://localhost:8500/molecules/autocomplete`:
       full-screen takeover opens with keyboard up in one tap
 - [ ] Mobile: takeover choreography (decision #21) — the field ghost flies from the
       fake field to the takeover input while the takeover fades in; every close path
-      (Cancel, Escape, selection, submit) flies it back while the takeover fades out,
+      (Close, Escape, selection, submit) flies it back while the takeover fades out,
       landing on the fake field showing the final text; keyboard timing doesn't
       misplace the flight on a real iOS device; prefers-reduced-motion is instant
 - [ ] Mobile: suggestions never hidden behind the on-screen keyboard (rotate + small
-      devices tested); Cancel button and Escape close the takeover; no iOS focus zoom
+      devices tested); Close button and Escape close the takeover; no iOS focus zoom
 - [ ] Wrapped (2-line) suggestions are never clipped mid-item
 - [ ] axe/lighthouse a11y pass on both layouts; VoiceOver + TalkBack smoke test
 - [ ] Docs page renders correctly: examples, prop table, highlighted source via
@@ -470,12 +470,13 @@ Open questions raised during planning, with the decisions now reflected inline a
 6. **`minChars` defaults to 1** (§5a) — ZipOrAddressInput's 2-char minimum was a Google
    Places quota concern, which stays app-level.
 7. **No Android back-button/history handling** (§4b) — router-conflict risk; the
-   takeover instead has an always-visible Cancel button (+ Escape). A clear-input X
+   takeover instead has an always-visible close button (+ Escape; labeled per
+   decision #23). A clear-input X
    (Reka `AutocompleteCancel`) was added 2026-07-06 (per Baymard's clear-button
    examples): an `icon-x` button inside the right edge of the input, shown only when
    the input has text, ≥44px tap target, rendered as a flex sibling so it can never
    overlap the entered text, with an i18n-able `clearText` aria-label. It clears the
-   value and refocuses the input. Visually distinct from the takeover's Cancel text
+   value and refocuses the input. Visually distinct from the takeover's close text
    button, as required.
 8. **Title-casing is the consumer's data responsibility** — the component renders
    suggestion text as given; document this on the docs page.
@@ -676,7 +677,7 @@ Open questions raised during planning, with the decisions now reflected inline a
     takeover comes from and returns to. The ghost is an inert clone of the fake
     field animated with the Web Animations API, so the real input keeps its
     synchronous in-tap-chain focus (what makes iOS show the keyboard) and the
-    animation is purely presentational. Every close path — Cancel, Escape,
+    animation is purely presentational. Every close path — the Close button, Escape,
     selection, submit — routes through one animated close that delays the
     actual dialog unmount until the flight lands; the exit ghost carries the
     fake field's look and current (post-selection) text, so it lands exactly as
@@ -696,4 +697,10 @@ Open questions raised during planning, with the decisions now reflected inline a
     listbox is also `aria-hidden` while it holds no real options, mirroring
     decision #18's desktop semantics, so VoiceOver's dialog summary ("dialog,
     with N items" — its enumeration of the dialog's accessible children: field,
-    clear button, Cancel, list) does not count an empty list.
+    clear button, Close button, list) does not count an empty list.
+23. **The takeover's dismiss button says "Close", not "Cancel"** (2026-09-18):
+    dismissing the takeover keeps whatever is in the input — the takeover is
+    just a full-screen way of editing the value, so clearing a selection and
+    typing a few characters before dismissing leaves those characters as the
+    value. That is the intended behavior; "Cancel" would promise a revert that
+    never happens. The prop is `closeText` (default `'Close'`).

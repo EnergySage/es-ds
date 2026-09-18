@@ -136,19 +136,19 @@ const disabledQuery = ref('');
 const autocompleteProps = [
     ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the query text to a data property.'],
     [
-        'cancelText',
-        'String',
-        'Cancel',
-        `
-        Text for the button that closes the full-screen takeover on mobile.
-        `,
-    ],
-    [
         'clearText',
         'String',
         'Clear',
         `
         Accessible label for the X button that clears the input. The button appears whenever the input has text.
+        `,
+    ],
+    [
+        'closeText',
+        'String',
+        'Close',
+        `
+        Text for the button that closes the full-screen takeover on mobile, keeping whatever is in the input.
         `,
     ],
     [
@@ -449,7 +449,7 @@ const autocompleteSlots = [
             </p>
             <p>
                 On viewports below the <code>md</code> breakpoint, tapping the input opens a full-screen takeover with
-                its own input and cancel button. Resize your browser to try it.
+                its own input and close button. Resize your browser to try it.
             </p>
             <p>Each suggestion is an object with the following shape:</p>
             <ul>
