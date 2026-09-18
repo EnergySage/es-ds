@@ -159,7 +159,7 @@ function onOpenAutoFocus(event: Event) {
 // Exit runs the same flight in reverse — the ghost carries the fake field's
 // look and current text, so it lands exactly as the page will render — and the
 // actual close waits for the animation.
-const TRANSITION_MS = 200;
+const TRANSITION_MS = 300;
 const mobileRootEl = ref<HTMLElement | null>(null);
 
 function transitionsDisabled() {
