@@ -54,8 +54,14 @@ const slots = useSlots();
 const id = useId();
 const errorId = computed(() => `${id}-error`);
 const helpId = computed(() => `${id}-help`);
+const triggerHelpId = computed(() => `${id}-trigger-help`);
 const showError = computed(() => props.state === false && (!!slots.errorMessage || props.required));
 const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId.value}` : helpId.value));
+// the mobile fake field gets its own hint: a button's description should say what
+// activating it does, while the input's says what to do once it has focus
+const triggerDescribedBy = computed(() =>
+    showError.value ? `${triggerHelpId.value} ${errorId.value}` : triggerHelpId.value,
+);
 
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
 // messaging live in useAutocompleteSearch so the contract is unit-testable
@@ -116,6 +122,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
             :state="state"
             :suggestion-count-text="suggestionCountText"
             :suggestions="effectiveSuggestions"
+            :trigger-described-by="triggerDescribedBy"
             @select="onSelect"
             @submit="onSubmit">
             <template
@@ -142,10 +149,20 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
             class="text-muted">
             <slot name="message" />
         </small>
+        <!-- aria-hidden keeps these hints out of a screen reader's reading order —
+             they exist only to be resolved through aria-describedby on focus, and
+             the accessible-name computation includes referenced hidden elements -->
         <div
             :id="helpId"
+            aria-hidden="true"
             class="sr-only">
             Type your search and select from dropdown suggestions.
+        </div>
+        <div
+            :id="triggerHelpId"
+            aria-hidden="true"
+            class="sr-only">
+            Opens a search with suggestions as you type.
         </div>
     </div>
 </template>

@@ -637,7 +637,10 @@ Open questions raised during planning, with the decisions now reflected inline a
     `aria-describedby` after every element focused inside it, so the guidance
     text rides only on the input's own `aria-describedby` and the dialog's
     binding is neutralized with `aria-describedby=""` (an empty idref list,
-    which also satisfies Reka's missing-description dev warning). A full
+    which also satisfies Reka's missing-description dev warning). The fake
+    field's description is its own, distinct text ("Opens a search with
+    suggestions as you type."): a button's hint says what activating it does,
+    while the input's says what to do once it has focus. A full
     VoiceOver re-test is the user's next verification step; the deferred §8a
     axe scan remains the regression gate.
 19. **Desktop listbox is not portaled** (2026-09-17, from VoiceOver testing,

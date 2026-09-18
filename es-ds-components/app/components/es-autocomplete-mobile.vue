@@ -36,6 +36,7 @@ interface Props {
     state?: boolean | null;
     suggestionCountText: (count: number) => string;
     suggestions: EsAutocompleteSuggestion[];
+    triggerDescribedBy: string;
 }
 
 const props = defineProps<Props>();
@@ -373,7 +374,7 @@ function onTakeoverOpenChange(value: boolean) {
                 :id="triggerId"
                 class="es-autocomplete-fake-field es-form-input form-control align-items-center d-flex px-100 text-left w-100"
                 :class="{ 'is-invalid': state === false }"
-                :aria-describedby="describedBy"
+                :aria-describedby="triggerDescribedBy"
                 :aria-label="model ? `${label}, ${model}` : undefined"
                 :disabled="disabled">
                 <span
