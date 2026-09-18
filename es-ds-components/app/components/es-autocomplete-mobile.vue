@@ -7,6 +7,7 @@ import {
     DialogClose,
     DialogContent,
     DialogDescription,
+    DialogOverlay,
     DialogPortal,
     DialogRoot,
     DialogTitle,
@@ -388,6 +389,11 @@ function onTakeoverOpenChange(value: boolean) {
                 </span>
             </dialog-trigger>
             <dialog-portal>
+                <!-- invisible behind the opaque takeover, but load-bearing: Reka's body
+                     scroll lock lives in the overlay — including the iOS touchmove
+                     preventer, without which the page beneath still pans on iOS Safari
+                     (overflow: hidden on body does not stop touch scrolling there) -->
+                <dialog-overlay class="es-autocomplete-takeover-overlay" />
                 <dialog-content
                     class="es-autocomplete-takeover bg-white d-flex flex-column"
                     @open-auto-focus="onOpenAutoFocus">
@@ -499,6 +505,14 @@ function onTakeoverOpenChange(value: boolean) {
 
 .es-autocomplete-fake-field-placeholder {
     color: variables.$input-color-placeholder;
+}
+
+/* transparent: it exists for the scroll lock, and any tint would show through the
+ * takeover's cross-fade. Sits under the takeover by DOM order at the same level. */
+.es-autocomplete-takeover-overlay {
+    inset: 0;
+    position: fixed;
+    z-index: 1050;
 }
 
 .es-autocomplete-takeover {

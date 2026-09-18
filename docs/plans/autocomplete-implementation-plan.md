@@ -164,7 +164,11 @@ shared via the same `v-model`.
     no `position="popper"`), `flex-1`, `overflow: hidden`, trim logic from §3.
 - Keep the autocomplete open state pinned while the dialog is open (`:open="true"` or
   equivalent) — the dialog IS the open state.
-- Dialog gives us for free: focus trap, body scroll lock, Escape handling, `aria-modal`.
+- Dialog gives us for free: focus trap, Escape handling, `aria-modal` — and body
+  scroll lock, but only via `DialogOverlay` (that's where Reka's `useBodyScrollLock`
+  lives, including the iOS `touchmove` preventer; `overflow: hidden` on body does not
+  stop touch scrolling on iOS Safari). The takeover therefore renders a transparent
+  overlay behind its opaque content purely to engage the lock.
 
 Closing the takeover (decision 2026-07-02):
 - **No Android back-button/history handling** — pushing history state risks conflicts
