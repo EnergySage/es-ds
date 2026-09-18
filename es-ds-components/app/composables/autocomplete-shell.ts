@@ -5,8 +5,12 @@ import type { EsAutocompleteSuggestion } from '../types';
 interface AutocompleteShellOptions {
     /** null Reka's highlighted element (lives in the highlight guard's listbox context) */
     clearHighlight: () => void;
-    /** close this shell's panel/takeover */
-    close: () => void;
+    /**
+     * close this shell's panel/takeover. A selection passes its text, which the
+     * model will hold once Reka's write lands — the close runs first, so a shell
+     * that renders the final text (the takeover's exit ghost) takes it from here
+     */
+    close: (selectedText?: string) => void;
     contentEl: Ref<HTMLElement | null>;
     emitSelect: (suggestion: EsAutocompleteSuggestion) => void;
     emitSubmit: (query: string) => void;
@@ -232,7 +236,7 @@ export function useAutocompleteShell(options: AutocompleteShellOptions) {
     }
 
     function onSelect(suggestion: EsAutocompleteSuggestion) {
-        options.close();
+        options.close(suggestion.text);
         options.emitSelect(suggestion);
         void revealCaretAtEnd();
     }

@@ -431,6 +431,11 @@ On the docs page at `http://localhost:8500/molecules/autocomplete`:
       border/shadow, item hover/active colors
 - [ ] Mobile (devtools emulation + at least one real iOS device): tap fake field →
       full-screen takeover opens with keyboard up in one tap
+- [ ] Mobile: takeover choreography (decision #21) — the field ghost flies from the
+      fake field to the takeover input while the takeover fades in; every close path
+      (Cancel, Escape, selection, submit) flies it back while the takeover fades out,
+      landing on the fake field showing the final text; keyboard timing doesn't
+      misplace the flight on a real iOS device; prefers-reduced-motion is instant
 - [ ] Mobile: suggestions never hidden behind the on-screen keyboard (rotate + small
       devices tested); Cancel button and Escape close the takeover; no iOS focus zoom
 - [ ] Wrapped (2-line) suggestions are never clipped mid-item
@@ -660,3 +665,19 @@ Open questions raised during planning, with the decisions now reflected inline a
     expanded), the keyboard highlight engine and item collection, selection
     plumbing, and the mobile Dialog. The behavioral policy layer (open model,
     Enter semantics, mirroring, dismissal, trim) is deliberately ours.
+21. **Takeover enter/exit choreography** (2026-09-18): the takeover cross-fades
+    (~200ms) while a "ghost" of the field flies between the fake field's place
+    on the page and the real field's place in the takeover, showing where the
+    takeover comes from and returns to. The ghost is an inert clone of the fake
+    field animated with the Web Animations API, so the real input keeps its
+    synchronous in-tap-chain focus (what makes iOS show the keyboard) and the
+    animation is purely presentational. Every close path — Cancel, Escape,
+    selection, submit — routes through one animated close that delays the
+    actual dialog unmount until the flight lands; the exit ghost carries the
+    fake field's look and current (post-selection) text, so it lands exactly as
+    the page renders it. Every animation is raced against a short timeout that
+    cancels it — a page whose rendering is frozen (hidden or backgrounded tab)
+    never advances its animation timeline, and the close must not hang on it.
+    `prefers-reduced-motion`, or a browser without `Element.animate`, gets the
+    instant behavior. The flight and fades are manual/§8c verification;
+    the timeout-recovery path is what a frozen page exercises.

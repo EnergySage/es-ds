@@ -250,11 +250,13 @@ describe('useAutocompleteShell keyboard-highlight mirroring', () => {
 });
 
 describe('useAutocompleteShell selection and clearing', () => {
-    it('onSelect closes the shell and emits the full suggestion', () => {
+    it('onSelect closes the shell (handing it the selected text) and emits the full suggestion', () => {
         const { close, emitSelect, shell } = makeShell();
         const suggestion = { id: 'a', text: 'solar batteries', value: { anything: true } };
         shell.onSelect(suggestion);
-        expect(close).toHaveBeenCalled();
+        // the model does not hold the text yet at close time; a shell that
+        // renders the final text takes it from this argument
+        expect(close).toHaveBeenCalledWith('solar batteries');
         expect(emitSelect).toHaveBeenCalledWith(suggestion);
     });
 

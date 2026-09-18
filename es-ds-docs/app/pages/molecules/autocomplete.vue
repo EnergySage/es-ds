@@ -377,10 +377,9 @@ const autocompleteSlots = [
                 address into two lines.
             </p>
             <p>
-                When using this feature, be sure that each suggestion differentiates between the user's typed
-                text and the additional suggested text, highlighting the latter for easy scanning. We provide an
-                autocomplete suggestion text component that handles this for you and can support multiple lines of
-                text.
+                When using this feature, be sure that each suggestion differentiates between the user's typed text and
+                the additional suggested text, highlighting the latter for easy scanning. We provide an autocomplete
+                suggestion text component that handles this for you and can support multiple lines of text.
             </p>
             <p>
                 To avoid overwhelming the user with choices, the number of suggestions displayed is limited to five
