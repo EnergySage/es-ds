@@ -716,3 +716,44 @@ Open questions raised during planning, with the decisions now reflected inline a
     typing a few characters before dismissing leaves those characters as the
     value. That is the intended behavior; "Cancel" would promise a revert that
     never happens. The prop is `closeText` (default `'Close'`).
+24. **Suggestion options are not focusable, and the takeover's Close button
+    follows the list in the DOM** (2026-09-19, from VoiceOver testing on both
+    platforms). Reka hardcodes `tabindex="-1"` on options (its internal binding
+    beats fallthrough attrs), which makes them programmatically focusable —
+    VoiceOver's keyboard-focus-follows-cursor then drags real focus off the
+    input onto the highlighted option after the first ArrowDown, and the input
+    stops receiving arrow keys (Google's and Amazon's comboboxes avoid this by
+    leaving options with no tabindex at all). `es-autocomplete-item` strips the
+    attribute with a local directive (mounted + updated), so focus can never
+    leave the input during navigation and the full cyclic arrow behavior works
+    identically under VoiceOver. Safe because `AutocompleteInput` sets the
+    listbox non-focusable: Reka moves the highlight via `aria-activedescendant`
+    and selects via `click()`, never by focusing items. Even then VoiceOver's
+    cursor followed `aria-activedescendant` out to the options — after the
+    first ArrowDown, further arrows became VoiceOver commands instead of
+    reaching the input. An isolation lab (five bare comboboxes at
+    `/sandbox/vo-arrows`, one ingredient apiece, VoiceOver-tested by hand)
+    pinned the decisive ingredient: **the value rewrite**. When the field's
+    value changes together with `aria-activedescendant`, VoiceOver treats the
+    arrow press as in-field autocomplete navigation and stays anchored in text
+    entry (the classic APG pattern without a rewrite fails this VoiceOver
+    workflow outright; even options with `tabindex="-1"` pass once the rewrite
+    is there). Google and Amazon both rewrite the value, which is why they
+    work. Our copy-on-highlight already rewrote it — but a microtask too late:
+    the mirror deferred through nextTick and a two-component v-model chain, so
+    activedescendant patched one flush before the value, and VoiceOver read
+    that first flush as "cursor left the field". The fix makes the mirror
+    atomic with the highlight: the shells' arrow handlers moved to the anchor's
+    capture phase (they must record the highlight source before Reka's own
+    input-level handler moves the highlight — Reka's runs first at the target),
+    and onHighlight writes the input's DOM value synchronously in the same
+    keydown, so value and activedescendant always change in one flush. The
+    input also declares `aria-autocomplete="both"` (the semantic for exactly
+    this rewriting behavior, as Google declares), and the cyclic
+    return-to-input blur/refocuses the already-focused input as a safety net
+    that re-arms text entry if an AT's cursor wandered anyway; sighted users
+    see nothing from either. Separately, the
+    takeover's DOM order is field → list → Close button, so a screen reader's
+    linear navigation reaches the suggestions right after the clear button; the
+    root is a wrapping flex row whose `order` classes keep the Close button
+    visually beside the field with the list on the line below.

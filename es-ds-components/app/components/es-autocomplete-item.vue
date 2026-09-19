@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { AutocompleteItem } from 'reka-ui';
 import type { EsAutocompleteSuggestion } from '../types';
 
+/**
+ * One suggestion row. Deliberately NOT focusable (no tabindex): the combobox
+ * pattern keeps real focus in the input and points aria-activedescendant here,
+ * so no assistive tech can drag focus off the field while navigating (as on
+ * Google's and Amazon's comboboxes). aria-selected tracks the highlight, per
+ * the APG combobox examples.
+ */
 interface Props {
+    /** whether this row is the highlighted one (aria-activedescendant target) */
+    highlighted?: boolean;
     /** whether the current highlight comes from keyboard navigation (focus-visible ring) */
     keyboardNav?: boolean;
+    optionId: string;
     query: string;
     suggestion: EsAutocompleteSuggestion;
 }
@@ -12,17 +21,22 @@ interface Props {
 defineProps<Props>();
 
 const emit = defineEmits<{
-    select: [suggestion: EsAutocompleteSuggestion];
+    pointermove: [];
+    select: [];
 }>();
 </script>
 
 <template>
-    <autocomplete-item
+    <div
+        :id="optionId"
         class="es-autocomplete-item d-block px-100 py-50"
         :class="{ 'es-autocomplete-item--keyboard-nav': keyboardNav }"
         data-es-autocomplete-item
-        :value="suggestion.text"
-        @select="emit('select', suggestion)">
+        role="option"
+        :aria-selected="highlighted"
+        :data-highlighted="highlighted ? '' : undefined"
+        @click="emit('select')"
+        @pointermove="emit('pointermove')">
         <slot
             :query="query"
             :suggestion="suggestion">
@@ -33,7 +47,7 @@ const emit = defineEmits<{
                 :query="query"
                 :text="suggestion.text" />
         </slot>
-    </autocomplete-item>
+    </div>
 </template>
 
 <style lang="scss" scoped>
