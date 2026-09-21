@@ -716,6 +716,56 @@ Open questions raised during planning, with the decisions now reflected inline a
     typing a few characters before dismissing leaves those characters as the
     value. That is the intended behavior; "Cancel" would promise a revert that
     never happens. The prop is `closeText` (default `'Close'`).
+25. **The Reka Autocomplete layer is replaced by an owned combobox core**
+    (2026-09-20, per docs/plans/autocomplete-code-review.md). Reka's
+    Autocomplete is alpha-tier, and our integration had accumulated ~12
+    workarounds — several depending on Reka internals (an injected context,
+    handler order, hardcoded attributes stripped post-render) across an
+    uncontrolled `^2.8.0` version range in a source-shipped package.
+    `useAutocompleteCombobox` (~200 lines) now owns highlight state,
+    aria-activedescendant wiring over non-focusable options, fully cyclic
+    navigation, copy-on-highlight (atomic with the activedescendant change, by
+    construction — one state, one flush), Enter's submit-vs-select, selection,
+    clearing, focus retention, and the caret reveals. `es-autocomplete-field`
+    is the shared input+clear component; the choreography moved to
+    `autocomplete-choreography.ts` (with `settleAnimation` shared in
+    `animation.ts`). Deleted outright: the highlight guard, the content-el
+    resolver, the tabindex-stripping directive, the capture-phase ordering
+    hacks, the blur/refocus net, and the `$el`/`closest` workarounds. The
+    highlighted option now also carries `aria-selected="true"` (the APG/lab
+    pattern Reka could not express). Reka remains only for the takeover's
+    Dialog (stable-tier: focus trap, portal, aria-modal, Escape).
+26. **The desktop panel is a drawer** (2026-09-20): it slides out from
+    underneath the field — the edge nearest the user appears first and reveals
+    the rest — and retracts back behind it on close (unmount waits for the
+    retract; the closing panel is aria-hidden). Structure: an invisible clip
+    wrapper owns the anchored/popover positioning and crops ONLY at the field's
+    edge via clip-path with negative insets on the other three sides (so the
+    panel's shadow survives), while the visual panel inside translates — a
+    compositor-animated transform, unlike a height animation. The wrapper hosts
+    whichever of the two panels applies, so the prompt/no-results message
+    slides exactly like the listbox, and swapping between message and list
+    morphs the wrapper's height (a ResizeObserver on the panel — the one
+    remaining layout-driven animation, also used when the trim renders more or
+    fewer rows; on the flipped side the panel pins to the wrapper's bottom via
+    block align-content so the morph reveals rows from the top). Web Animations
+    API with the shared frozen-page settle guard; prefers-reduced-motion (or no
+    Element.animate) gets the instant behavior. Typing never plays the retract:
+    the search composable holds the previous list until the app answers.
+27. **Desktop dismissal is one focusout handler** (2026-09-21, superseding
+    decision #18's list of close signals): the panel closes when focus leaves
+    the root — a focusout whose relatedTarget is null or outside it — plus
+    Escape, select, and submit. This one handler replaces the Tab-order keydown
+    check and the capture-phase document pointerdown listener (a click on
+    non-focusable page space blurs the input with a null relatedTarget, which
+    counts as leaving — that null must close, or a dead-space click strands an
+    open panel on an unfocused field). Safe under screen readers only because
+    of decision #25's architecture: nothing inside the widget except the input
+    and clear button is focusable, so VoiceOver's arrow navigation over the
+    options never moves real focus and no focusout fires mid-interaction —
+    while its linear navigation past the widget now closes the panel like Tab
+    does. relatedTarget behavior under VoiceOver is empirical territory; this
+    belongs in the next VoiceOver pass.
 24. **Suggestion options are not focusable, and the takeover's Close button
     follows the list in the DOM** (2026-09-19, from VoiceOver testing on both
     platforms). Reka hardcodes `tabindex="-1"` on options (its internal binding

@@ -32,22 +32,8 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         );
     }
 
-    // resolves when the animation finishes — or cancels it and resolves after a
-    // timeout, because a page whose rendering is frozen (a hidden or backgrounded
-    // tab) never advances its animation timeline, and the close must not hang on it
     function settle(animation: Animation) {
-        return new Promise<void>((resolve) => {
-            const timer = setTimeout(() => {
-                animation.cancel();
-                resolve();
-            }, TRANSITION_MS + 150);
-            animation.finished
-                .catch(() => undefined)
-                .then(() => {
-                    clearTimeout(timer);
-                    resolve();
-                });
-        });
+        return settleAnimation(animation, TRANSITION_MS + 150);
     }
 
     function flyGhost(trigger: HTMLElement, from: DOMRect, to: DOMRect, decorate?: (ghost: HTMLElement) => void) {
