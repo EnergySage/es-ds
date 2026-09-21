@@ -430,6 +430,10 @@ onBeforeUnmount(() => {
     min-width: 100%;
     overflow: visible;
     padding: 0;
+    /* never a hit target: the wrapper is an always-shown popover, and a
+     * top-layer element swallows clicks over its whole box even when fully
+     * transparent — only the open panel inside may take pointer events */
+    pointer-events: none;
     position: absolute;
     top: 100%;
     width: max-content;
@@ -483,6 +487,9 @@ onBeforeUnmount(() => {
     max-width: 100%;
     min-width: 100%;
     overflow: hidden;
+    /* clicks pass through except while open — so a closed (or retracting)
+     * panel can never block the field or the page beneath it */
+    pointer-events: none;
     transform: translateY(calc(-100% - 0.25rem));
     visibility: hidden;
 
@@ -502,6 +509,7 @@ onBeforeUnmount(() => {
     /* declared after the --above override so the open state wins on both sides */
     .es-autocomplete-clip--open & {
         box-shadow: variables.$popover-box-shadow;
+        pointer-events: auto;
         transform: translateY(0);
         visibility: visible;
     }

@@ -770,7 +770,14 @@ Open questions raised during planning, with the decisions now reflected inline a
     popover attribute and position-anchor style are unconditional (inert where
     unsupported — the popover is only ever shown, from script, where anchor
     positioning exists; an author display rule beats the UA's [popover]
-    display: none for the fallback).
+    display: none for the fallback). An always-shown popover is also an
+    always-present top-layer HIT TARGET: a fully transparent top-layer element
+    swallows clicks over its whole box, silently blocking whatever page content
+    (or, with certain viewport geometry, the field itself) sits beneath it. The
+    wrapper is therefore pointer-events: none permanently, and the panel takes
+    pointer events only in the --open state — which also lets clicks reach the
+    field through a still-retracting panel. Hiding the popover instead would
+    display: none it mid-retract and reintroduce script-driven exit timing.
 27. **Desktop dismissal is one focusout handler** (2026-09-21, superseding
     decision #18's list of close signals): the panel closes when focus leaves
     the root — a focusout whose relatedTarget is null or outside it — plus
