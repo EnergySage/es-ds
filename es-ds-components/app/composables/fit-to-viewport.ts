@@ -2,6 +2,10 @@ import type { Ref } from 'vue';
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
+// Baymard: keep the list manageable — at most this many suggestions, further
+// reduced by the fit-to-viewport trim. Shared by both shells.
+export const MAX_VISIBLE_SUGGESTIONS = 5;
+
 /**
  * Fit-to-viewport trimming: suggestions render as uniform-height rows (the
  * es-autocomplete-item min-height plus padding from its own content; rows have no
@@ -18,12 +22,14 @@ import type { EsAutocompleteSuggestion } from '../types';
  * returned `remeasure` themselves. `beforeMeasure` runs at the start of every
  * measure pass, so a caller that positions the container (choosing the side and
  * writing the max-height) does it from the same numbers the row count uses.
+ * `active` gates the viewport-event remeasures: a shell whose container stays
+ * mounted while closed would otherwise re-measure on every page scroll.
  */
 export function useFitToViewport(
     contentEl: Ref<HTMLElement | null>,
     suggestions: Ref<EsAutocompleteSuggestion[]>,
     cap: number,
-    options: { beforeMeasure?: () => void } = {},
+    options: { active?: () => boolean; beforeMeasure?: () => void } = {},
 ) {
     const visibleCount = ref(cap);
     const measured = ref(false);
@@ -92,7 +98,7 @@ export function useFitToViewport(
 
     // available height tracks the viewport; re-measure when it changes
     function onViewportChange() {
-        if (!contentEl.value) {
+        if (!contentEl.value || options.active?.() === false) {
             return;
         }
         scheduleRemeasure();

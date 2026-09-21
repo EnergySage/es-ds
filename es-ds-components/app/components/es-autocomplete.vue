@@ -52,16 +52,14 @@ const model = defineModel<string>({ default: '' });
 const slots = useSlots();
 
 const id = useId();
-const errorId = computed(() => `${id}-error`);
-const helpId = computed(() => `${id}-help`);
-const triggerHelpId = computed(() => `${id}-trigger-help`);
+const errorId = `${id}-error`;
+const helpId = `${id}-help`;
+const triggerHelpId = `${id}-trigger-help`;
 const showError = computed(() => props.state === false && (!!slots.errorMessage || props.required));
-const describedBy = computed(() => (showError.value ? `${helpId.value} ${errorId.value}` : helpId.value));
+const describedBy = computed(() => (showError.value ? `${helpId} ${errorId}` : helpId));
 // the mobile fake field gets its own hint: a button's description should say what
 // activating it does, while the input's says what to do once it has focus
-const triggerDescribedBy = computed(() =>
-    showError.value ? `${triggerHelpId.value} ${errorId.value}` : triggerHelpId.value,
-);
+const triggerDescribedBy = computed(() => (showError.value ? `${triggerHelpId} ${errorId}` : triggerHelpId));
 
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
 // messaging live in useAutocompleteSearch so the contract is unit-testable

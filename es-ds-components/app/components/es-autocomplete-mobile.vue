@@ -11,10 +11,6 @@ import {
 import type { ComponentPublicInstance } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
-// Baymard: keep the list manageable — at most 5 suggestions,
-// further reduced by the fit-to-viewport trim
-const MAX_VISIBLE = 5;
-
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift
 interface Props {
@@ -45,13 +41,20 @@ const emit = defineEmits<{
 const model = defineModel<string>({ default: '' });
 
 const takeoverOpen = ref(false);
-const triggerId = computed(() => `${props.id}-trigger`);
+const triggerId = `${props.id}-trigger`;
 const mobileRootEl = ref<HTMLElement | null>(null);
 const fieldRef = ref<(ComponentPublicInstance & { inputEl: HTMLInputElement | null }) | null>(null);
 const inputEl = computed(() => fieldRef.value?.inputEl ?? null);
 const listEl = ref<HTMLElement | null>(null);
 
-const { measured, remeasure, visibleSuggestions } = useFitToViewport(listEl, toRef(props, 'suggestions'), MAX_VISIBLE);
+const { measured, remeasure, visibleSuggestions } = useFitToViewport(
+    listEl,
+    toRef(props, 'suggestions'),
+    MAX_VISIBLE_SUGGESTIONS,
+    // the takeover sizes its list itself (visualViewport); viewport events are
+    // only relevant while it is open
+    { active: () => takeoverOpen.value },
+);
 
 const { closeTakeover, enterTransition } = useTakeoverChoreography({
     isOpen: () => takeoverOpen.value,

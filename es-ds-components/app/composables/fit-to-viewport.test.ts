@@ -148,6 +148,32 @@ describe('useFitToViewport', () => {
         expect(fit.visibleSuggestions.value).toHaveLength(4);
     });
 
+    it('ignores viewport events while inactive: a closed, still-mounted panel never re-measures on scroll', async () => {
+        const container = makeContainer({ count: 2, height: 30 }, { maxHeight: 70 });
+        const contentEl = ref<HTMLElement | null>(container);
+        const suggestions = ref(suggestionList(7));
+        const active = ref(true);
+        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10, { active: () => active.value }));
+        await fit.remeasure();
+        expect(fit.visibleSuggestions.value).toHaveLength(2);
+
+        active.value = false;
+        container.style.maxHeight = '130px';
+        window.dispatchEvent(new Event('scroll'));
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        await nextTick();
+        await nextTick();
+        expect(fit.visibleSuggestions.value).toHaveLength(2);
+
+        // reactivating restores the viewport tracking
+        active.value = true;
+        window.dispatchEvent(new Event('scroll'));
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        await nextTick();
+        await nextTick();
+        expect(fit.visibleSuggestions.value).toHaveLength(4);
+    });
+
     it('beforeMeasure runs in the same pass, so a limit it writes drives that count', async () => {
         const container = makeContainer({ count: 7, height: 30 }, {});
         const contentEl = ref<HTMLElement | null>(container);

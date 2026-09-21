@@ -2,10 +2,6 @@
 import type { ComponentPublicInstance } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
 
-// Baymard: keep the list manageable — at most 5 suggestions,
-// further reduced by the fit-to-viewport trim
-const MAX_VISIBLE = 5;
-
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift
 interface Props {
@@ -41,6 +37,10 @@ const open = ref(false);
 // focus, and hears "expanded" exactly when a list exists — per the combobox
 // pattern
 const listboxOpen = computed(() => open.value && props.suggestions.length > 0);
+// the visible panel hosts whichever of the two applies — the listbox or the
+// prompt/no-results message — so the message slides like the listbox and
+// swapping between them morphs the height
+const panelOpen = computed(() => open.value && (props.suggestions.length > 0 || props.panelMessage !== ''));
 
 const rootEl = ref<HTMLElement | null>(null);
 const fieldRef = ref<(ComponentPublicInstance & { inputEl: HTMLInputElement | null }) | null>(null);
@@ -81,17 +81,19 @@ function positionPanel() {
     const spaceAbove = anchorRect.top - offset;
     const rowHeight = panel.querySelector<HTMLElement>('[data-es-autocomplete-item]')?.offsetHeight ?? 0;
     const borders = Math.max(panel.offsetHeight - panel.clientHeight, 0);
-    const natural = rowHeight * Math.min(props.suggestions.length, MAX_VISIBLE) + borders;
+    const natural = rowHeight * Math.min(props.suggestions.length, MAX_VISIBLE_SUGGESTIONS) + borders;
     const above = supportsAnchor.value && natural > spaceBelow && natural <= spaceAbove;
     panelAbove.value = above;
     panel.style.maxHeight = `${Math.max(above ? spaceAbove : spaceBelow, 0)}px`;
 }
 
-const { measured, remeasure, visibleSuggestions } = useFitToViewport(
+const { remeasure, visibleSuggestions } = useFitToViewport(
     panelEl,
     toRef(props, 'suggestions'),
-    MAX_VISIBLE,
+    MAX_VISIBLE_SUGGESTIONS,
     {
+        // the always-mounted panel must not re-measure on every page scroll while closed
+        active: () => panelOpen.value,
         beforeMeasure: positionPanel,
     },
 );
@@ -129,7 +131,6 @@ function showAsPopover(el: HTMLElement | null) {
         }
     }
 }
-// the popover attribute lives on the clip wrapper (declared with the drawer below)
 
 // The panel (and, with showOverlayOnFocus, the page-dim overlay) stays up for
 // the entire interaction: it opens when the field gains focus (or is clicked or
@@ -170,26 +171,19 @@ function onRootFocusout(event: FocusEvent) {
 // and the --open class transitions the panel's transform/shadow/visibility (see
 // the styles below), so interruption, reversal, reduced motion, and frozen-tab
 // recovery all come from the platform. Script remains for what CSS cannot do:
-// showing the popover, re-positioning on reopen, and animating the wrapper's
+// showing the popover, re-positioning on reopen, and animating the panel's
 // height when the trim renders more or fewer rows or the content swaps between
 // the message and the list (a content-driven auto-height change, which CSS
 // cannot transition).
 const PANEL_SLIDE_MS = 200;
 
-function slideDisabled() {
+function morphDisabled() {
     return (
         typeof matchMedia === 'undefined' ||
         matchMedia('(prefers-reduced-motion: reduce)').matches ||
         !('animate' in Element.prototype)
     );
 }
-
-// one wrapper hosts whichever of the two panels applies, so the message panel
-// slides like the listbox and swapping between them morphs the height
-const panelOpen = computed(() => open.value && (props.suggestions.length > 0 || props.panelMessage !== ''));
-// shown once the fit measure has run; until then the panel sits in its hidden
-// resting state, measurable but invisible
-const panelShown = computed(() => panelOpen.value && measured.value);
 
 const wrapperEl = ref<HTMLElement | null>(null);
 // the popover attribute only appears once the post-mount upgrade lands, so the
@@ -238,7 +232,7 @@ watch(panelContentEl, (el) => {
         const natural = panel.getBoundingClientRect().height;
         const from = wasMidMorph ? rendered : lastPanelHeight;
         lastPanelHeight = natural;
-        if (from === null || !panelShown.value || slideDisabled() || Math.abs(natural - from) < 1) {
+        if (from === null || !panelOpen.value || morphDisabled() || Math.abs(natural - from) < 1) {
             return;
         }
         const animation = panel.animate([{ height: `${from}px` }, { height: `${natural}px` }], {
@@ -306,13 +300,13 @@ onBeforeUnmount(() => {
              @supports block, so server and client render identical markup -->
         <div
             ref="wrapperEl"
-            :aria-hidden="panelShown ? undefined : 'true'"
+            :aria-hidden="panelOpen ? undefined : 'true'"
             popover="manual"
             :class="[
                 'es-autocomplete-clip',
                 {
                     'es-autocomplete-clip--above': panelAbove,
-                    'es-autocomplete-clip--open': panelShown,
+                    'es-autocomplete-clip--open': panelOpen,
                 },
             ]"
             :style="{ positionAnchor: anchorName }">
@@ -484,8 +478,6 @@ onBeforeUnmount(() => {
     border: variables.$border-width solid variables.$gray-500;
     box-shadow: none;
     margin-top: 0.25rem;
-    max-width: 100%;
-    min-width: 100%;
     overflow: hidden;
     /* clicks pass through except while open — so a closed (or retracting)
      * panel can never block the field or the page beneath it */
