@@ -748,10 +748,24 @@ Open questions raised during planning, with the decisions now reflected inline a
     morphs the wrapper's height (a ResizeObserver on the panel — the one
     remaining layout-driven animation, also used when the trim renders more or
     fewer rows; on the flipped side the panel pins to the wrapper's bottom via
-    block align-content so the morph reveals rows from the top). Web Animations
-    API with the shared frozen-page settle guard; prefers-reduced-motion (or no
-    Element.animate) gets the instant behavior. Typing never plays the retract:
-    the search composable holds the previous list until the app answers.
+    block align-content so the morph reveals rows from the top).
+    prefers-reduced-motion gets the instant behavior. Typing never plays the
+    retract: the search composable holds the previous list until the app
+    answers. The slides are pure CSS (2026-09-21): the wrapper stays mounted
+    and an --open class transitions the panel's transform, box-shadow, and
+    visibility — visibility discretely via transition-behavior: allow-discrete,
+    flipping visible at the start of the slide-out and hidden at the end of the
+    retract — so interruption/reversal, reduced motion, and frozen-tab recovery
+    come from the platform, and only the height morph (a content-driven
+    auto-height change CSS cannot transition) remains scripted via
+    ResizeObserver + Web Animations with the shared settle guard. The
+    always-mounted wrapper is server-rendered, so nothing in its markup may
+    branch on client-only capability checks: the anchored-vs-fallback
+    positioning split lives in a CSS @supports (anchor-name) block, and the
+    popover attribute and position-anchor style are unconditional (inert where
+    unsupported — the popover is only ever shown, from script, where anchor
+    positioning exists; an author display rule beats the UA's [popover]
+    display: none for the fallback).
 27. **Desktop dismissal is one focusout handler** (2026-09-21, superseding
     decision #18's list of close signals): the panel closes when focus leaves
     the root — a focusout whose relatedTarget is null or outside it — plus

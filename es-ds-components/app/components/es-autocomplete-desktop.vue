@@ -49,14 +49,19 @@ const fieldEl = computed(() => (fieldRef.value?.$el as HTMLElement | undefined) 
 const inputEl = computed(() => fieldRef.value?.inputEl ?? null);
 const panelEl = ref<HTMLElement | null>(null);
 
-// The panels render in the browser's top layer (popover="manual" — manual, so
-// no light-dismiss: it would treat clicks on our own input as outside) and are
+// The panel renders in the browser's top layer (popover="manual" — manual, so
+// no light-dismiss: it would treat clicks on our own input as outside) and is
 // glued to the field with CSS anchor positioning, immune to ancestor
 // overflow/z-index while staying in the DOM right next to the field. Browsers
 // without anchor positioning fall back to in-page absolute placement below the
-// field (no popover, no flip); the check is false during SSR, where neither
-// panel renders anyway.
-const supportsAnchor = typeof CSS !== 'undefined' && CSS.supports('anchor-name: --a');
+// field (no popover shown, no flip) via the @supports block in the styles.
+// This check steers only script (showing the popover, allowing the flip) and is
+// decided after mount: the always-mounted panel is server-rendered, so nothing
+// in its markup may branch on client-only capability checks.
+const supportsAnchor = ref(false);
+onMounted(() => {
+    supportsAnchor.value = typeof CSS !== 'undefined' && CSS.supports('anchor-name: --a');
+});
 const anchorName = `--es-autocomplete-${props.id}`;
 const panelAbove = ref(false);
 
@@ -77,14 +82,19 @@ function positionPanel() {
     const rowHeight = panel.querySelector<HTMLElement>('[data-es-autocomplete-item]')?.offsetHeight ?? 0;
     const borders = Math.max(panel.offsetHeight - panel.clientHeight, 0);
     const natural = rowHeight * Math.min(props.suggestions.length, MAX_VISIBLE) + borders;
-    const above = supportsAnchor && natural > spaceBelow && natural <= spaceAbove;
+    const above = supportsAnchor.value && natural > spaceBelow && natural <= spaceAbove;
     panelAbove.value = above;
     panel.style.maxHeight = `${Math.max(above ? spaceAbove : spaceBelow, 0)}px`;
 }
 
-const { measured, visibleSuggestions } = useFitToViewport(panelEl, toRef(props, 'suggestions'), MAX_VISIBLE, {
-    beforeMeasure: positionPanel,
-});
+const { measured, remeasure, visibleSuggestions } = useFitToViewport(
+    panelEl,
+    toRef(props, 'suggestions'),
+    MAX_VISIBLE,
+    {
+        beforeMeasure: positionPanel,
+    },
+);
 
 const combobox = useAutocompleteCombobox({
     close: () => {
@@ -111,7 +121,7 @@ const liveAnnouncement = computed(() =>
 
 // a [popover] element displays only once shown; manual popovers never light-dismiss
 function showAsPopover(el: HTMLElement | null) {
-    if (el && supportsAnchor) {
+    if (el && supportsAnchor.value) {
         try {
             el.showPopover();
         } catch {
@@ -154,11 +164,16 @@ function onRootFocusout(event: FocusEvent) {
 // The panel slides out from underneath the field like a drawer: an invisible
 // clip wrapper sits at the panel's final place while the visual panel inside it
 // translates from fully-behind-the-field to rest — the edge nearest the user
-// appears first and reveals the rest. translateY is compositor-animated; the
-// wrapper's clip-path crops only at the field's edge (negative insets on the
-// other three sides leave the panel's shadow uncropped). When the trim renders
-// more or fewer rows — or the content swaps between the message and the list —
-// the wrapper's height animates between the two sizes instead.
+// appears first and reveals the rest. The wrapper's clip-path crops only at the
+// field's edge (negative insets on the other three sides leave the panel's
+// shadow uncropped). The slide itself is pure CSS: the wrapper stays mounted
+// and the --open class transitions the panel's transform/shadow/visibility (see
+// the styles below), so interruption, reversal, reduced motion, and frozen-tab
+// recovery all come from the platform. Script remains for what CSS cannot do:
+// showing the popover, re-positioning on reopen, and animating the wrapper's
+// height when the trim renders more or fewer rows or the content swaps between
+// the message and the list (a content-driven auto-height change, which CSS
+// cannot transition).
 const PANEL_SLIDE_MS = 200;
 
 function slideDisabled() {
@@ -172,97 +187,26 @@ function slideDisabled() {
 // one wrapper hosts whichever of the two panels applies, so the message panel
 // slides like the listbox and swapping between them morphs the height
 const panelOpen = computed(() => open.value && (props.suggestions.length > 0 || props.panelMessage !== ''));
-// keeps the panel rendered while the retract animation plays out
-const panelClosing = ref(false);
-const panelMounted = computed(() => panelOpen.value || panelClosing.value);
-// the panel is ready to show (and to animate) once the fit measure has run
-const panelReady = computed(() => panelOpen.value && measured.value);
+// shown once the fit measure has run; until then the panel sits in its hidden
+// resting state, measurable but invisible
+const panelShown = computed(() => panelOpen.value && measured.value);
 
 const wrapperEl = ref<HTMLElement | null>(null);
-watch(wrapperEl, showAsPopover);
+// the popover attribute only appears once the post-mount upgrade lands, so the
+// show re-runs when supportsAnchor flips — and post-flush, after the attribute
+// itself is in the DOM (showPopover throws on a non-popover element)
+watch([wrapperEl, supportsAnchor], () => showAsPopover(wrapperEl.value), { flush: 'post' });
 
-let slideAnimation: Animation | null = null;
-let heightAnimation: Animation | null = null;
-let lastPanelHeight: number | null = null;
-
-// hidden position: fully behind the field, on whichever side the panel opens
-// from — the extra 0.25rem covers the panel's margin inside the clip wrapper,
-// whose crop edge sits flush against the field
-function drawerOffset() {
-    return panelAbove.value ? 'calc(100% + 0.25rem)' : 'calc(-100% - 0.25rem)';
-}
-
-function currentTranslateY(el: HTMLElement) {
-    const transform = getComputedStyle(el).transform;
-    return !transform || transform === 'none' ? null : new DOMMatrixReadOnly(transform).m42;
-}
-
-// The shadow bleeds past the clip on the sides that leave room for it, so a
-// sliding panel's shadow would give away that nothing is really behind the
-// field — it fades with the slide instead, in the same animation so the two
-// can never drift. 'none' interpolates as the transparent shadow.
-function runDrawerSlide(el: HTMLElement, options: { hide: boolean; onSettle?: () => void }) {
-    // read the in-flight position/shadow before cancelling, so a reversal
-    // continues from wherever the previous slide reached
-    const midY = currentTranslateY(el);
-    const midShadow = slideAnimation ? getComputedStyle(el).boxShadow : null;
-    slideAnimation?.cancel();
-    // with no animation applying, the computed shadow is the design's full one
-    const fullShadow = getComputedStyle(el).boxShadow;
-    const hidden = `translateY(${drawerOffset()})`;
-    const from = {
-        boxShadow: midShadow ?? (options.hide ? fullShadow : 'none'),
-        transform: midY === null ? (options.hide ? 'translateY(0)' : hidden) : `translateY(${midY}px)`,
-    };
-    const to = options.hide
-        ? { boxShadow: 'none', transform: hidden }
-        : { boxShadow: fullShadow, transform: 'translateY(0)' };
-    const animation = el.animate([from, to], {
-        duration: PANEL_SLIDE_MS,
-        easing: 'cubic-bezier(0.2, 0, 0, 1)',
-        // hiding holds the end position until the wrapper unmounts; revealing
-        // ends at the base style, so the finished animation is dropped
-        fill: options.hide ? 'forwards' : 'both',
-    });
-    slideAnimation = animation;
-    void settleAnimation(animation, PANEL_SLIDE_MS + 150).then(() => {
-        // a superseding slide owns the state
-        if (slideAnimation === animation) {
-            slideAnimation = null;
-            if (!options.hide) {
-                animation.cancel();
-            }
-            options.onSettle?.();
-        }
-    });
-}
-
-watch(panelReady, (ready) => {
-    const el = panelEl.value;
-    if (!ready || !el || slideDisabled()) {
-        panelClosing.value = false;
-        return;
-    }
-    panelClosing.value = false;
-    runDrawerSlide(el, { hide: false });
-});
-
+// the always-mounted panel keeps its last measure, so a reopen re-derives the
+// side and max-height from wherever the field sits now
 watch(panelOpen, (isOpen) => {
     if (isOpen) {
-        return;
+        void remeasure();
     }
-    const el = panelEl.value;
-    if (!el || !measured.value || slideDisabled()) {
-        return;
-    }
-    panelClosing.value = true;
-    runDrawerSlide(el, {
-        hide: true,
-        onSettle: () => {
-            panelClosing.value = false;
-        },
-    });
 });
+
+let heightAnimation: Animation | null = null;
+let lastPanelHeight: number | null = null;
 
 // translateY leaves getBoundingClientRect's height alone, so the panel's height
 // reads true even mid-slide
@@ -288,8 +232,7 @@ watch(panelEl, (el) => {
         }
         if (
             lastPanelHeight === null ||
-            !panelReady.value ||
-            slideAnimation !== null ||
+            !panelShown.value ||
             slideDisabled() ||
             Math.abs(height - lastPanelHeight) < 1
         ) {
@@ -355,20 +298,22 @@ onBeforeUnmount(() => {
              back near the input when leaving the list. The outer div is the
              invisible clip wrapper the drawer slides within; the inner div is
              the visual panel that translates. -->
+        <!-- popover and position-anchor are unconditional (inert where
+             unsupported — the popover is only ever SHOWN when anchor positioning
+             exists), and the anchored/fallback positioning split lives in a CSS
+             @supports block, so server and client render identical markup -->
         <div
-            v-if="panelMounted"
             ref="wrapperEl"
-            :aria-hidden="panelClosing ? 'true' : undefined"
+            :aria-hidden="panelShown ? undefined : 'true'"
+            popover="manual"
             :class="[
                 'es-autocomplete-clip',
-                supportsAnchor ? 'es-autocomplete-clip--anchored' : 'es-autocomplete-clip--static',
                 {
                     'es-autocomplete-clip--above': panelAbove,
-                    'es-autocomplete-clip--measuring': !measured,
+                    'es-autocomplete-clip--open': panelShown,
                 },
             ]"
-            :popover="supportsAnchor ? 'manual' : undefined"
-            :style="supportsAnchor ? { positionAnchor: anchorName } : undefined">
+            :style="{ positionAnchor: anchorName }">
             <div
                 ref="panelEl"
                 class="es-autocomplete-panel bg-white rounded-xs text-gray-900 font-size-75 text-left"
@@ -459,12 +404,29 @@ onBeforeUnmount(() => {
  * and crops the panel ONLY at the field's edge — the negative insets on the
  * other three sides leave room for the panel's shadow. It auto-sizes to the
  * panel, so animating its height (the more/fewer-rows morph) clips whole rows
- * against the field edge. */
+ * against the field edge.
+ *
+ * Base placement is the fallback for browsers without anchor positioning:
+ * in-page absolute below the field (the root is position-relative and the field
+ * its last element before the panel), no flip. Its popover attribute is never
+ * shown there, so the author display beats the UA's [popover] display: none.
+ * background/border/inset/margin/padding clear the UA's [popover] defaults (the
+ * visual panel inside carries its own). */
 .es-autocomplete-clip {
+    background: transparent;
     border: 0;
     clip-path: inset(0 -2rem -2rem -2rem);
+    display: block;
+    inset: auto;
+    left: 0;
+    margin: 0;
     max-width: min(90vw, 30rem);
+    min-width: 100%;
     overflow: visible;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    width: max-content;
     /* above .es-autocomplete-overlay when not in the top layer */
     z-index: 1000;
 
@@ -476,62 +438,66 @@ onBeforeUnmount(() => {
         clip-path: inset(-2rem -2rem 0 -2rem);
     }
 
-    &--measuring {
-        visibility: hidden;
+    /* glued to the field with CSS anchor positioning and rendered in the top
+     * layer via popover="manual" (shown from script), so ancestor overflow,
+     * transforms, and z-index cannot clip or cover it; the browser keeps it
+     * attached to the field between the script's re-measures. Flush against the
+     * field, so the crop edge sits exactly where the drawer disappears behind
+     * it; the visible 0.25rem gap is the panel's own margin. */
+    @supports (anchor-name: --a) {
+        left: anchor(left);
+        min-width: anchor-size(width);
+        position: fixed;
+        top: anchor(bottom);
+
+        &.es-autocomplete-clip--above {
+            bottom: anchor(top);
+            top: auto;
+        }
     }
 }
 
-/* glued to the field with CSS anchor positioning and rendered in the top layer
- * via popover="manual" (shown from script), so ancestor overflow, transforms,
- * and z-index cannot clip or cover it; the browser keeps it attached to the
- * field between the script's re-measures. inset/margin/padding/background clear
- * the UA's [popover] defaults (the visual panel inside carries its own). */
-.es-autocomplete-clip--anchored {
-    background: transparent;
-    inset: auto;
-    left: anchor(left);
-    margin: 0;
-    min-width: anchor-size(width);
-    padding: 0;
-    position: fixed;
-    /* flush against the field, so the crop edge sits exactly where the drawer
-     * disappears behind it; the visible 0.25rem gap is the panel's own margin */
-    top: anchor(bottom);
-    width: max-content;
-
-    &.es-autocomplete-clip--above {
-        bottom: anchor(top);
-        top: auto;
-    }
-}
-
-/* fallback for browsers without anchor positioning: in-page placement below the
- * field (the root is position-relative and the field its last element before the
- * panel), with no flip — still trimmed, never clipped by the viewport bottom */
-.es-autocomplete-clip--static {
-    left: 0;
-    min-width: 100%;
-    position: absolute;
-    top: 100%;
-    width: max-content;
-}
-
-/* the visual panel that slides. The margin is the field-to-panel gap, kept
+/* The visual panel that slides. The margin is the field-to-panel gap, kept
  * INSIDE the clip so the crop edge stays flush with the field. max-height is
  * set inline by positionPanel from the space around the field; the
  * fit-to-viewport trim divides the same number into whole rows, so nothing is
- * ever partially visible behind the overflow. */
+ * ever partially visible behind the overflow.
+ *
+ * The drawer states are declarative: at rest the panel is parked behind the
+ * field with its shadow faded (a visible sliding shadow past the clip would
+ * give away that nothing is really behind the field) and hidden; the wrapper's
+ * --open class transitions it out. visibility is discrete — it flips visible at
+ * the START of the slide out and back to hidden at the END of the retract, so
+ * the browser runs the whole exit with nothing holding the element from
+ * script, and an interrupted slide reverses from wherever it was. */
 .es-autocomplete-panel {
     border: variables.$border-width solid variables.$gray-500;
-    box-shadow: variables.$popover-box-shadow;
+    box-shadow: none;
     margin-top: 0.25rem;
     max-width: 100%;
     min-width: 100%;
     overflow: hidden;
+    transform: translateY(calc(-100% - 0.25rem));
+    visibility: hidden;
+
+    @media not (prefers-reduced-motion) {
+        transition:
+            box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1),
+            transform 0.2s cubic-bezier(0.2, 0, 0, 1),
+            visibility 0.2s allow-discrete;
+    }
 
     .es-autocomplete-clip--above & {
         margin-bottom: 0.25rem;
         margin-top: 0;
+        transform: translateY(calc(100% + 0.25rem));
+    }
+
+    /* declared after the --above override so the open state wins on both sides */
+    .es-autocomplete-clip--open & {
+        box-shadow: variables.$popover-box-shadow;
+        transform: translateY(0);
+        visibility: visible;
     }
 }
 
