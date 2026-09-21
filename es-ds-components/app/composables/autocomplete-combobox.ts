@@ -108,10 +108,27 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
         void revealCaretAtEnd();
     }
 
+    // A screen reader can answer the arrows' value rewrite by moving its cursor
+    // — and with it real DOM focus — off the input. That move is Safari's
+    // accessibility sync, so it lands within a frame or two of the keypress,
+    // while a human answering the spoken suggestion cannot press anything for
+    // the length of the announcement. So each arrow press marks the moment and
+    // the first blur to ask consumes the mark: a blur inside the window is the
+    // rewrite's echo, and anything later is the user (or their screen reader's
+    // own navigation) genuinely leaving the field.
+    const ARROW_BLUR_WINDOW_MS = 250;
+    let arrowPressedAt = 0;
+    function consumeArrowBlur() {
+        const pressedAt = arrowPressedAt;
+        arrowPressedAt = 0;
+        return pressedAt !== 0 && performance.now() - pressedAt < ARROW_BLUR_WINDOW_MS;
+    }
+
     function onKeydown(event: KeyboardEvent) {
         if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
             // keep the caret from jumping to the text's start/end
             event.preventDefault();
+            arrowPressedAt = performance.now();
             moveHighlight(event.key === 'ArrowDown' ? 1 : -1);
             return;
         }
@@ -232,6 +249,7 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
 
     return {
         activeDescendant,
+        consumeArrowBlur,
         displayValue,
         highlightIndex,
         keyboardHighlightActive,

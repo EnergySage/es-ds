@@ -212,3 +212,27 @@ describe('useAutocompleteCombobox selection, clearing, and focus retention', () 
         expect(interactive.defaultPrevented).toBe(false);
     });
 });
+
+describe('useAutocompleteCombobox arrow-driven blur window', () => {
+    it('claims the blur a screen reader makes in answer to an arrow press', () => {
+        const { combobox } = makeCombobox(THREE);
+        combobox.onKeydown(keydown('ArrowDown'));
+        expect(combobox.consumeArrowBlur()).toBe(true);
+    });
+
+    it('claims it once, so a later blur reads as the user leaving the field', () => {
+        const { combobox } = makeCombobox(THREE);
+        combobox.onKeydown(keydown('ArrowDown'));
+        expect(combobox.consumeArrowBlur()).toBe(true);
+        expect(combobox.consumeArrowBlur()).toBe(false);
+    });
+
+    it('claims nothing once the window has passed, or without an arrow press', () => {
+        const { combobox } = makeCombobox(THREE);
+        expect(combobox.consumeArrowBlur()).toBe(false);
+        combobox.onKeydown(keydown('ArrowDown'));
+        vi.spyOn(performance, 'now').mockReturnValue(performance.now() + 1_000);
+        expect(combobox.consumeArrowBlur()).toBe(false);
+        vi.restoreAllMocks();
+    });
+});

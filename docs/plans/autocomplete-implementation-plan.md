@@ -778,20 +778,46 @@ Open questions raised during planning, with the decisions now reflected inline a
     pointer events only in the --open state — which also lets clicks reach the
     field through a still-retracting panel. Hiding the popover instead would
     display: none it mid-retract and reintroduce script-driven exit timing.
-27. **Desktop dismissal is one focusout handler** (2026-09-21, superseding
-    decision #18's list of close signals): the panel closes when focus leaves
-    the root — a focusout whose relatedTarget is null or outside it — plus
-    Escape, select, and submit. This one handler replaces the Tab-order keydown
-    check and the capture-phase document pointerdown listener (a click on
-    non-focusable page space blurs the input with a null relatedTarget, which
-    counts as leaving — that null must close, or a dead-space click strands an
-    open panel on an unfocused field). Safe under screen readers only because
-    of decision #25's architecture: nothing inside the widget except the input
-    and clear button is focusable, so VoiceOver's arrow navigation over the
-    options never moves real focus and no focusout fires mid-interaction —
-    while its linear navigation past the widget now closes the panel like Tab
-    does. relatedTarget behavior under VoiceOver is empirical territory; this
-    belongs in the next VoiceOver pass.
+27. **Desktop dismissal reads focus moves, never a bare blur** (2026-09-21,
+    refining decision #18's list of close signals): the panel closes on
+    Escape, select, submit, a focusout that names a control outside the root
+    (Tab, or a screen reader's linear navigation past the widget — this part
+    replaces the Tab-order keydown check), and a capture-phase document
+    pointerdown outside the widget's working parts (the field, the panel, and
+    the label, per decision #18 — the root's own dead space beside the label
+    must close rather than strand an open list on an unfocused field).
+    A focusout that names NO control — a null relatedTarget, or the document
+    standing in for one as VoiceOver's "web area" — is a focus collapse, not
+    the user leaving, and never closes: decision #24's mechanism still applies
+    with the options non-focusable, because VoiceOver's
+    keyboard-focus-follows-cursor can drag real focus off the input on the
+    first ArrowDown anyway, and closing on that ends the interaction mid-navigation
+    (the symptom decision #18 originally recorded as VoiceOver problem (3)).
+    An outside click blurs the input into the same indistinguishable collapse,
+    which is why the pointerdown listener stays: it closes from the pointer
+    event, before any focus handling runs. The window itself losing focus
+    (alt-tab, devtools) also collapses focus and also needs nothing — the
+    interaction resumes on return, per the ignore-window-blur rule.
+28. **Only the arrows' own echo gets focus back, and entering the field clears
+    the highlight** (2026-09-21, from VoiceOver testing): the collapse of
+    decision #27 has two causes that look identical in the event, so the arrow
+    handler marks each press (`consumeArrowBlur`, a 250ms one-shot window — the
+    accessibility sync lands within a frame or two of the keypress, while a
+    human cannot answer the spoken suggestion that fast). A collapse inside the
+    window is the rewrite's echo and hands focus back to the input, re-arming
+    text entry so the arrows keep walking the list. Every other collapse
+    belongs to the user: their VoiceOver cursor is exploring the page, DOM focus
+    is left exactly where it went, and chasing it would drag them back into the
+    widget — the cursor does not follow, so the field would silently reclaim
+    focus behind them. Then `focusin` at the field clears the highlight,
+    because arriving at the input is a fresh interaction from the typed text: a
+    highlight surviving the excursion keeps `aria-activedescendant` pointed into
+    the list, and VoiceOver landing on the input follows it straight back out to
+    the active option. Without that reset, stepping out of the listbox by hand
+    (ctrl-option-shift-up) and walking back two items to the field bounced
+    focus onto the first suggestion every time, so the input could never be
+    rested on. Our own restore is exempt: it continues the navigation the
+    collapse interrupted rather than beginning one.
 24. **Suggestion options are not focusable, and the takeover's Close button
     follows the list in the DOM** (2026-09-19, from VoiceOver testing on both
     platforms). Reka hardcodes `tabindex="-1"` on options (its internal binding

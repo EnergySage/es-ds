@@ -134,32 +134,114 @@ function showAsPopover(el: HTMLElement | null) {
 
 // The panel (and, with showOverlayOnFocus, the page-dim overlay) stays up for
 // the entire interaction: it opens when the field gains focus (or is clicked or
-// typed into while closed after an Escape) and closes when focus leaves the
-// widget (plus Escape, select, and submit). One focusout handler covers Tab,
-// clicks elsewhere (a click on non-focusable page space blurs the input with a
-// null relatedTarget, which counts as leaving), and a screen reader's linear
-// navigation moving on. Safe under screen readers because nothing inside the
-// widget except the input and clear button is focusable — VoiceOver's arrow
-// navigation over the options never moves real focus, so no focusout fires
-// mid-interaction. Clicks on the panel itself keep focus in the input (the
-// list's mousedown is prevented), so they never read as leaving.
+// typed into while closed after an Escape) and closes on Escape, select,
+// submit, focus moving to another control (Tab, or a screen reader's linear
+// navigation past the widget), and a pointerdown outside the widget's working
+// parts. Clicks on the panel itself keep focus in the input (the list's
+// mousedown is prevented), so they never read as leaving.
+//
+// Dismissal never reads a bare blur. A screen reader moves real DOM focus
+// around the widget on its own: VoiceOver's keyboard-focus-follows-cursor drags
+// it off the input — to the web area, or to nowhere — while the arrows walk the
+// options, and that arrives as a focusout naming no new control. Treating it as
+// the user leaving ends the interaction on the first ArrowDown, so a collapse
+// the arrows caused (combobox.consumeArrowBlur) hands focus back to the input,
+// which re-arms text entry. Every other collapse belongs to the user: their
+// screen reader's cursor is exploring, and chasing it would drag them back into
+// the widget, so focus is left exactly where it went. A click on non-focusable
+// page space blurs the input the same indistinguishable way; that case closes
+// the panel from its pointerdown, before any focus handling runs.
 function onFieldActivity() {
     if (!props.disabled) {
         open.value = true;
     }
 }
 
+// our own restore after an arrow-driven collapse continues the navigation it
+// interrupted, so it is not an entry into the field (see onFocusIn)
+let restoringFocus = false;
+
 function onFocusIn() {
+    // Entering the field starts a fresh interaction, from the typed text. A
+    // highlight left over from earlier arrow navigation would keep
+    // aria-activedescendant pointed into the list, and a screen reader arriving
+    // at the input follows that straight back out to the active option — so
+    // after stepping out of the listbox by hand (VoiceOver's
+    // ctrl-option-shift-up) and walking back to the field, the user could never
+    // rest on it.
+    if (!restoringFocus) {
+        combobox.resetHighlight();
+    }
     onFieldActivity();
     combobox.revealCaretOnFocus();
 }
 
+// focus went nowhere rather than to another control: no relatedTarget at all,
+// or the document standing in for one (a screen reader's "web area")
+function isFocusCollapse(next: Node | null) {
+    return !next || next === document.body || next === document.documentElement;
+}
+
 function onRootFocusout(event: FocusEvent) {
     const next = event.relatedTarget as Node | null;
-    if (!next || !rootEl.value?.contains(next)) {
+    if (isFocusCollapse(next)) {
+        if (combobox.consumeArrowBlur()) {
+            restoreCollapsedFocus();
+        }
+        return;
+    }
+    if (!rootEl.value?.contains(next)) {
         open.value = false;
     }
 }
+
+// deferred a frame, so the collapse is only answered once the browser has
+// settled: an outside pointerdown has closed the panel by then, and a focus
+// move the browser was still making has landed somewhere real. The window
+// itself losing focus (alt-tab, devtools) leaves the input active and the
+// interaction resumes on return, so it needs nothing.
+function restoreCollapsedFocus() {
+    requestAnimationFrame(() => {
+        const el = inputEl.value;
+        const active = document.activeElement;
+        if (!open.value || !el || !document.hasFocus()) {
+            return;
+        }
+        if (!active || active === document.body || active === document.documentElement) {
+            restoringFocus = true;
+            el.focus();
+            restoringFocus = false;
+        }
+    });
+}
+
+// clicks outside close the widget: the blur they cause is the same
+// nothing-focused collapse a screen reader produces, so the pointer event is
+// what distinguishes them. Only the widget's working parts count as inside —
+// the field, the panel, and the label (whose click hands focus back to the
+// input) — not merely the root element: the root's own dead space, e.g. beside
+// the label, is not focusable, so a click there must close the panel rather
+// than strand an open list on an unfocused field.
+function onDocumentPointerdown(event: Event) {
+    const target = event.target instanceof Element ? event.target : null;
+    const part = target?.closest('.es-autocomplete-field, .es-autocomplete-panel, label');
+    if (part && rootEl.value?.contains(part)) {
+        return;
+    }
+    open.value = false;
+}
+
+watch(open, (isOpen) => {
+    if (isOpen) {
+        document.addEventListener('pointerdown', onDocumentPointerdown, true);
+    } else {
+        document.removeEventListener('pointerdown', onDocumentPointerdown, true);
+    }
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('pointerdown', onDocumentPointerdown, true);
+});
 
 // --- panel drawer ------------------------------------------------------------
 // The panel slides out from underneath the field like a drawer: an invisible
