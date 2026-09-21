@@ -136,6 +136,16 @@ const disabledQuery = ref('');
 const autocompleteProps = [
     ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the query text to a data property.'],
     [
+        'autocomplete',
+        'String',
+        'off',
+        `
+        The input's autocomplete token. 'off' keeps the browser's own saved-value dropdown from competing with
+        the suggestion list. A field that maps to a real autofill token — 'street-address', 'name', 'email' —
+        can set it to trade the other way and let the browser offer a saved value.
+        `,
+    ],
+    [
         'clearText',
         'String',
         'Clear',
@@ -449,10 +459,12 @@ const autocompleteSlots = [
             </p>
             <p>
                 On touch devices below the <code>md</code> breakpoint, tapping the field opens a full-screen takeover
-                with its own input and close button. The switch is CSS alone — the breakpoint paired with
-                <code>(hover: none)</code> — so a desktop page zoomed past <code>md</code> keeps the popover its user
-                knows. Narrowing a desktop browser therefore will not show the takeover: use the device emulation in
-                your browser's dev tools, or a real phone.
+                with its own input and close button. The resting field there is a readonly combobox input rather than a
+                button, so it carries a label, a value, and required/invalid state the way any form field does;
+                readonly is what keeps the on-screen keyboard from opening on it instead of in the takeover. The switch
+                is CSS alone — the breakpoint paired with <code>(hover: none)</code> — so a desktop page zoomed past
+                <code>md</code> keeps the popover its user knows. Narrowing a desktop browser therefore will not show
+                the takeover: use the device emulation in your browser's dev tools, or a real phone.
             </p>
             <p>Each suggestion is an object with the following shape:</p>
             <ul>

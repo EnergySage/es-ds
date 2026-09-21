@@ -798,6 +798,79 @@ Open questions raised during planning, with the decisions now reflected inline a
     event, before any focus handling runs. The window itself losing focus
     (alt-tab, devtools) also collapses focus and also needs nothing — the
     interaction resumes on return, per the ignore-window-blur rule.
+30. **The mobile trigger is a readonly combobox input, not a button**
+    (2026-09-21, superseding decision #24's "fake field" button): a button
+    cannot be a form field, and every gap that followed came from that. It
+    could carry no value of its own, so the value had to be folded into its
+    accessible name (`aria-label="{label}, {value}"`), which then also discarded
+    the label's required marker — so `required` was announced on desktop and,
+    once the field held a value, nowhere on mobile. `aria-required` and
+    `aria-invalid` are not supported on `role="button"` either, leaving the
+    error state to `aria-describedby` alone. A readonly `<input role="combobox"`
+    fixes all of it at once: the label names it, the value is a value
+    (`combobox "Favorite fruit": papaya`, where the button read
+    `button "Favorite fruit, papaya"`), and both states apply. `readonly` is
+    what makes the tap safe — it denies typing and with it the on-screen
+    keyboard, which would otherwise open on the trigger and again in the
+    takeover — and it costs native constraint validation, which a readonly
+    field is barred from; blocking submit stays the app's job on mobile, as the
+    docs say. `role="combobox"` with a dialog popup is the shape APG's combobox
+    pattern describes ("the popup may be a listbox, grid, tree, or dialog") and
+    its date-picker example implements; Reka's DialogTrigger renders it via
+    `as="input"` and supplies aria-haspopup, aria-expanded, aria-controls and
+    the opening click, while the keys that activate a button (Enter, Space)
+    and the combobox's ArrowDown are bound on the element, which a button got
+    from the browser. Three knock-ons: es-ds-styles paints `[readonly]` exactly
+    like `:disabled` (gray, borderless, `color` with `!important`), so the
+    resting field re-asserts the normal field look for the non-disabled case;
+    the ghost clone now carries `value` by hand, since an input's value is a
+    property that `cloneNode` does not copy; and the ghost is a wrapper around
+    that clone rather than the clone itself, because the clear button's clone
+    has to render inside it and an `<input>` cannot have rendered children —
+    appended to the input it was simply invisible, so the real button appeared
+    to pop in when the takeover was revealed. `aria-readonly="false"` corrects what the HTML attribute says
+    about the widget: the value cannot be typed over, but the user does change
+    it, in the takeover the field opens.
+
+    Positioning a long value took two tries. Predicting it — measure the landing
+    input, then `text-align: right` — was wrong twice over: `scrollWidth`
+    exceeds `clientWidth` by a sub-pixel rounding artifact even for an EMPTY
+    input, so the test was always true, and `text-align` does nothing on an
+    input once its value overflows, which is the only case it was meant for. So
+    short values jumped to the right edge and long ones still showed their
+    start. The fix stops predicting: the ghost is held at its own scroll end for
+    the flight (a frame loop, because the flight animates the box's width and
+    the browser re-clamps `scrollLeft` against it). That reproduces both cases
+    without asking which one it is — a value that fits clamps to zero and stays
+    start-anchored — and the end is where both real fields leave a long value,
+    the takeover's input because the caret is there, the resting field because
+    it holds focus after the close and the browser keeps that caret in view.
+
+    What that end is measured FROM is the second half: the two fields reserve
+    different space for their text, because only the takeover's carries a clear
+    button. `textInsets` reads each end's real padding and real button width
+    (never a hardcoded `2.75rem`, which was off by the button's true 44px) and
+    the flight animates the clone's padding between them, over the same 300ms
+    the button clone spends fading in. So the reserved space arrives gradually
+    and the scroll hold slides the value's end along with it — measured across
+    an enter flight, the text's right edge runs 359px → 268 → 253 against a
+    landing field at 252, where before it sat at 297 and stepped 45px on
+    handoff. Two catches worth remembering. `px-100` (and the clear button's
+    `h-100`) is `!important`, and an important declaration outranks an
+    animation, so the clone drops those classes for the animated padding and
+    insets to apply at all. And the button clone is pinned inside the field's
+    BORDER — the real field lays its button out in its content box, so an inset
+    of zero put the clone a border's width too far out and 2px too tall, which
+    showed as the button stepping 1px left on handoff.
+31. **`autocomplete` is a prop, defaulting to 'off'** (2026-09-21): the token
+    rides on the real input in both shells (the trigger stays 'off' — browsers
+    skip readonly fields, and the token belongs where text is really entered).
+    'off' remains the default because the browser's own saved-value dropdown
+    competes with the suggestion list; a field that maps to a real autofill
+    token (an address, a name) can trade the other way and get the browser's
+    saved value, which is the more valuable side of that trade for an address
+    form. Any interference between the two dropdowns is left to be seen in
+    practice.
 29. **The shell switch is the breakpoint AND `(hover: none)`** (2026-09-21):
     the takeover is for small TOUCH screens, so the width test alone was the
     wrong question — a desktop page zoomed to 200-400% (WCAG 1.4.10 reflow)

@@ -5,6 +5,7 @@ import type { EsAutocompleteSuggestion } from '../types';
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift
 interface Props {
+    autocomplete: string;
     clearText?: string;
     describedBy: string;
     disabled?: boolean;
@@ -356,6 +357,7 @@ onBeforeUnmount(() => {
                 'es-autocomplete-field--focus-ring': !showOverlayOnFocus && !combobox.keyboardHighlightActive.value,
                 'es-autocomplete-field--raised': open && showOverlayOnFocus,
             }"
+            :autocomplete="autocomplete"
             :clear-text="clearText"
             :combobox="combobox"
             :described-by="describedBy"

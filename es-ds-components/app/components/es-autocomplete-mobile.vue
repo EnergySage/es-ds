@@ -14,6 +14,7 @@ import type { EsAutocompleteSuggestion } from '../types';
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift
 interface Props {
+    autocomplete: string;
     clearText?: string;
     closeText?: string;
     describedBy: string;
@@ -61,7 +62,7 @@ const { closeTakeover, enterTransition } = useTakeoverChoreography({
     parts: () => ({
         field: (fieldRef.value?.$el as HTMLElement | undefined) ?? null,
         takeover: (inputEl.value?.closest('.es-autocomplete-takeover') as HTMLElement | null) ?? null,
-        trigger: mobileRootEl.value?.querySelector<HTMLElement>('.es-autocomplete-fake-field') ?? null,
+        trigger: mobileRootEl.value?.querySelector<HTMLInputElement>('.es-autocomplete-trigger') ?? null,
     }),
     setOpen: (value) => {
         takeoverOpen.value = value;
@@ -148,6 +149,15 @@ function onOpenAutoFocus(event: Event) {
     combobox.revealCaretOnFocus();
 }
 
+// Reka's trigger opens on click, which both a tap and a screen reader's
+// activation produce; the keys that activate a button do nothing on an input, so
+// the combobox's own opening keys are bound on the element
+function openTakeover() {
+    if (!props.disabled) {
+        takeoverOpen.value = true;
+    }
+}
+
 // every close path — the Close button (DialogClose), Escape, and selection/submit
 // via the combobox's close — routes through closeTakeover so they all animate
 function onTakeoverOpenChange(value: boolean) {
@@ -169,29 +179,40 @@ function onTakeoverOpenChange(value: boolean) {
         <dialog-root
             :open="takeoverOpen"
             @update:open="onTakeoverOpenChange">
-            <!-- fake search field: tapping it opens the takeover with the real input focused -->
-            <!-- the label association names this button, which suppresses its text
-                 content in the accessible name — so a held value (unlike an input's,
-                 which has a value slot of its own) must be folded into the name for
-                 screen readers to announce it -->
+            <!-- The resting field, which opens the takeover with the real input
+                 focused. A readonly input rather than a button, so it is a form
+                 field: the label names it, its value is a value instead of being
+                 folded into its name, and aria-required/aria-invalid apply —
+                 none of which a button can carry. readonly is what makes the tap
+                 safe: it denies typing and with it the on-screen keyboard, which
+                 would otherwise open here and again in the takeover.
+                 role="combobox" with a dialog popup is the APG date-picker
+                 shape; Reka supplies aria-haspopup, aria-expanded, aria-controls
+                 and the click that opens. aria-readonly="false" corrects what
+                 the HTML attribute would otherwise say about the widget: the
+                 value cannot be typed over, but the user does change it, in the
+                 takeover this opens. autocomplete stays 'off' here whatever
+                 the consumer asked for: browsers skip readonly fields anyway,
+                 and the token belongs on the input that is really filled in. -->
             <dialog-trigger
                 :id="triggerId"
-                class="es-autocomplete-fake-field es-form-input form-control align-items-center d-flex px-100 text-left w-100"
-                :class="{ 'is-invalid': state === false }"
+                as="input"
+                autocomplete="off"
+                class="es-autocomplete-trigger es-form-input form-control px-100 w-100"
+                readonly
+                role="combobox"
+                type="text"
+                aria-readonly="false"
                 :aria-describedby="triggerDescribedBy"
-                :aria-label="model ? `${label}, ${model}` : undefined"
-                :disabled="disabled">
-                <span
-                    v-if="model"
-                    class="es-autocomplete-fake-field-text">
-                    {{ model }}
-                </span>
-                <span
-                    v-else
-                    class="es-autocomplete-fake-field-text es-autocomplete-fake-field-placeholder">
-                    {{ placeholder }}
-                </span>
-            </dialog-trigger>
+                :aria-invalid="state === false ? true : undefined"
+                :aria-required="required ? true : undefined"
+                :class="{ 'is-invalid': state === false }"
+                :disabled="disabled"
+                :placeholder="placeholder"
+                :value="model"
+                @keydown.down.prevent="openTakeover"
+                @keydown.enter.prevent="openTakeover"
+                @keydown.space.prevent="openTakeover" />
             <dialog-portal>
                 <!-- invisible behind the opaque takeover, but load-bearing: Reka's body
                      scroll lock lives in the overlay — including the iOS touchmove
@@ -218,6 +239,7 @@ function onTakeoverOpenChange(value: boolean) {
                             <es-autocomplete-field
                                 ref="fieldRef"
                                 :aria-label="label"
+                                :autocomplete="autocomplete"
                                 :clear-text="clearText"
                                 :combobox="combobox"
                                 :described-by="describedBy"
@@ -290,24 +312,37 @@ function onTakeoverOpenChange(value: boolean) {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-/* a button's intrinsic width grows with its text (unlike an input, whose
- * intrinsic width ignores its value), so a long selected value would widen any
- * content-sized ancestor — e.g. a flex layout — past the viewport. Inline-size
- * containment makes the button's intrinsic width independent of its contents;
- * its width comes from the layout alone and the value truncates inside it. */
-.es-autocomplete-fake-field {
-    contain: inline-size;
+.es-autocomplete-trigger {
+    /* an input's intrinsic width comes from its size attribute and ignores its
+     * value, so a long value cannot widen a content-sized ancestor — but a flex
+     * item's automatic minimum IS that intrinsic width, which would stop the
+     * field shrinking into a narrow column */
+    min-width: 0;
+
+    &::placeholder {
+        color: variables.$input-color-placeholder;
+    }
 }
 
-/* overflowing text clips at the edge (text-overflow's default) the way an input
- * clips its value, rather than ellipsizing — the fake field should read as an input */
-.es-autocomplete-fake-field-text {
-    overflow: hidden;
-    white-space: nowrap;
-}
+/* The base field look, re-asserted: es-ds-styles paints [readonly] exactly like
+ * :disabled — gray background, gray text (with !important), no border at all.
+ * That is right for a field whose value cannot be changed; here readonly is only
+ * how the on-screen keyboard is kept out of the way, and the field is otherwise
+ * a normal, interactive one. A disabled field is excluded so it still reads as
+ * disabled. Of the borders only the normal color is restored: the invalid one
+ * already survives that rule, so .is-invalid re-states it at this specificity
+ * rather than losing to it. */
+input.es-autocomplete-trigger:not(:disabled) {
+    background-color: variables.$input-bg;
+    border: variables.$input-border-width solid variables.$input-border-color;
+    color: variables.$input-color !important;
+    /* activating it opens the takeover, so it takes the pointer of the control it
+     * is, not a text caret it would never place */
+    cursor: pointer;
 
-.es-autocomplete-fake-field-placeholder {
-    color: variables.$input-color-placeholder;
+    &.is-invalid {
+        border-color: variables.$form-feedback-invalid-color;
+    }
 }
 
 /* transparent: it exists for the scroll lock, and any tint would show through the

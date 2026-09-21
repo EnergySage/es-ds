@@ -10,6 +10,12 @@ import type { AutocompleteCombobox } from '../composables/autocomplete-combobox'
 interface Props {
     /** names the takeover's input, which has no visible label of its own */
     ariaLabel?: string;
+    /**
+     * the input's autocomplete token: 'off' keeps the browser's own dropdown out
+     * of the way of the suggestion list, and a field token (e.g. 'street-address')
+     * trades that for the browser's saved-value autofill
+     */
+    autocomplete: string;
     clearText?: string;
     combobox: AutocompleteCombobox;
     describedBy: string;
@@ -42,11 +48,11 @@ defineExpose({ inputEl });
             :id="inputId"
             ref="inputEl"
             aria-autocomplete="both"
-            autocomplete="off"
             class="es-autocomplete-input h-100 w-100 px-100"
             role="combobox"
             type="text"
             :aria-activedescendant="combobox.activeDescendant.value"
+            :autocomplete="autocomplete"
             :aria-controls="combobox.listboxId"
             :aria-describedby="describedBy"
             :aria-expanded="listboxOpen"

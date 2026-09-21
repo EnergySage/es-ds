@@ -2,6 +2,7 @@
 import type { EsAutocompleteSuggestion } from '../types';
 
 interface Props {
+    autocomplete?: string;
     clearText?: string;
     closeText?: string;
     delay?: number;
@@ -20,6 +21,10 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    // 'off' by default: the browser's own saved-value dropdown would compete with
+    // the suggestion list. A consumer whose field maps to a real autofill token
+    // (an address, a name) can trade that back the other way.
+    autocomplete: 'off',
     clearText: 'Clear',
     // 'Close', not 'Cancel': dismissing the takeover keeps whatever is in the
     // input — the takeover is just a full-screen way of editing the value
@@ -57,8 +62,8 @@ const helpId = `${id}-help`;
 const triggerHelpId = `${id}-trigger-help`;
 const showError = computed(() => props.state === false && (!!slots.errorMessage || props.required));
 const describedBy = computed(() => (showError.value ? `${helpId} ${errorId}` : helpId));
-// the mobile fake field gets its own hint: a button's description should say what
-// activating it does, while the input's says what to do once it has focus
+// the mobile trigger gets its own hint: it says what activating the field does,
+// while the takeover input's says what to do once it has focus
 const triggerDescribedBy = computed(() => (showError.value ? `${triggerHelpId} ${errorId}` : triggerHelpId));
 
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
@@ -84,6 +89,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
             <es-autocomplete-desktop
                 :id="id"
                 v-model="model"
+                :autocomplete="autocomplete"
                 :clear-text="clearText"
                 :described-by="describedBy"
                 :disabled="disabled"
@@ -112,6 +118,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
             <es-autocomplete-mobile
                 :id="id"
                 v-model="model"
+                :autocomplete="autocomplete"
                 :clear-text="clearText"
                 :close-text="closeText"
                 :described-by="describedBy"
