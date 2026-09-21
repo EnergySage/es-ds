@@ -745,10 +745,15 @@ Open questions raised during planning, with the decisions now reflected inline a
     compositor-animated transform, unlike a height animation. The wrapper hosts
     whichever of the two panels applies, so the prompt/no-results message
     slides exactly like the listbox, and swapping between message and list
-    morphs the wrapper's height (a ResizeObserver on the panel — the one
-    remaining layout-driven animation, also used when the trim renders more or
-    fewer rows; on the flipped side the panel pins to the wrapper's bottom via
-    block align-content so the morph reveals rows from the top).
+    morphs the PANEL's height (the visible bordered box, so shrinking animates
+    too — animating the transparent wrapper only shows on growth, where its
+    crop reveals the taller panel). A ResizeObserver watches the panel's inner
+    content, which the panel's own height keyframes never resize, so every
+    event is a real content change and one landing mid-morph retargets from the
+    rendered height; this is the one remaining scripted animation, also used
+    when the trim renders more or fewer rows. On the flipped side the panel
+    pins to the wrapper's bottom via block align-content so the morph reveals
+    rows from the top.
     prefers-reduced-motion gets the instant behavior. Typing never plays the
     retract: the search composable holds the previous list until the app
     answers. The slides are pure CSS (2026-09-21): the wrapper stays mounted

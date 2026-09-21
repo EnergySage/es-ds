@@ -205,13 +205,18 @@ watch(panelOpen, (isOpen) => {
     }
 });
 
+// The height morph animates the PANEL itself (the visible bordered box, whose
+// overflow: hidden clips the rows), so both directions show: growing reveals
+// the new rows, shrinking pulls the bottom edge back up. The observer watches
+// the panel's inner content — its size never changes from the panel's own
+// height keyframes, so every event is a real content change (rows added or
+// removed, or the message/list swap), including one that lands mid-morph,
+// which retargets from wherever the morph reached.
+const panelContentEl = ref<HTMLElement | null>(null);
 let heightAnimation: Animation | null = null;
 let lastPanelHeight: number | null = null;
-
-// translateY leaves getBoundingClientRect's height alone, so the panel's height
-// reads true even mid-slide
 let panelResizeObserver: ResizeObserver | null = null;
-watch(panelEl, (el) => {
+watch(panelContentEl, (el) => {
     panelResizeObserver?.disconnect();
     panelResizeObserver = null;
     lastPanelHeight = null;
@@ -219,28 +224,24 @@ watch(panelEl, (el) => {
         return;
     }
     panelResizeObserver = new ResizeObserver(() => {
-        const wrapper = wrapperEl.value;
-        if (!wrapper) {
+        const panel = panelEl.value;
+        if (!panel) {
             return;
         }
-        // the wrapper's height (the panel plus its margin) is what animates
-        const height = wrapper.getBoundingClientRect().height;
-        // height changes seen while an animation is in flight are not new
-        // targets to chase
-        if (heightAnimation) {
+        // mid-morph, the rendered height is wherever the keyframes are; idle,
+        // it is already the NEW natural height, so the old one comes from the
+        // previous observation
+        const wasMidMorph = heightAnimation !== null;
+        const rendered = panel.getBoundingClientRect().height;
+        heightAnimation?.cancel();
+        heightAnimation = null;
+        const natural = panel.getBoundingClientRect().height;
+        const from = wasMidMorph ? rendered : lastPanelHeight;
+        lastPanelHeight = natural;
+        if (from === null || !panelShown.value || slideDisabled() || Math.abs(natural - from) < 1) {
             return;
         }
-        if (
-            lastPanelHeight === null ||
-            !panelShown.value ||
-            slideDisabled() ||
-            Math.abs(height - lastPanelHeight) < 1
-        ) {
-            lastPanelHeight = height;
-            return;
-        }
-        const from = lastPanelHeight;
-        const animation = wrapper.animate([{ height: `${from}px` }, { height: `${height}px` }], {
+        const animation = panel.animate([{ height: `${from}px` }, { height: `${natural}px` }], {
             duration: PANEL_SLIDE_MS,
             easing: 'cubic-bezier(0.2, 0, 0, 1)',
             fill: 'both',
@@ -249,7 +250,8 @@ watch(panelEl, (el) => {
         void settleAnimation(animation, PANEL_SLIDE_MS + 150).then(() => {
             if (heightAnimation === animation) {
                 heightAnimation = null;
-                lastPanelHeight = height;
+                // the natural height equals the end keyframe, so dropping the
+                // finished animation leaves no jump
                 animation.cancel();
             }
         });
@@ -318,38 +320,42 @@ onBeforeUnmount(() => {
                 ref="panelEl"
                 class="es-autocomplete-panel bg-white rounded-xs text-gray-900 font-size-75 text-left"
                 @mousedown="combobox.onListMousedown">
-                <div
-                    v-if="visibleSuggestions.length"
-                    :id="combobox.listboxId"
-                    :aria-label="label"
-                    role="listbox">
-                    <es-autocomplete-item
-                        v-for="(suggestion, index) in visibleSuggestions"
-                        :key="suggestion.id"
-                        :highlighted="combobox.highlightIndex.value === index"
-                        :keyboard-nav="combobox.keyboardNav.value"
-                        :option-id="combobox.optionId(index)"
-                        :query="model"
-                        :suggestion="suggestion"
-                        @pointermove="combobox.onOptionPointermove(index)"
-                        @select="combobox.onOptionClick(index)">
-                        <template
-                            v-if="$slots.item"
-                            #default="slotProps">
-                            <slot
-                                name="item"
-                                v-bind="slotProps" />
-                        </template>
-                    </es-autocomplete-item>
-                </div>
-                <!-- the prompt/no-results message is presentation only: screen
-                     readers get the same guidance from the input's description and
-                     the live region, so it is hidden and the combobox stays collapsed -->
-                <div
-                    v-else-if="panelMessage"
-                    aria-hidden="true"
-                    class="es-autocomplete-no-results px-100 py-50 text-gray-700">
-                    {{ panelMessage }}
+                <!-- persistent inner box: the height-morph observer watches it,
+                     so the panel's own height animation cannot feed back into it -->
+                <div ref="panelContentEl">
+                    <div
+                        v-if="visibleSuggestions.length"
+                        :id="combobox.listboxId"
+                        :aria-label="label"
+                        role="listbox">
+                        <es-autocomplete-item
+                            v-for="(suggestion, index) in visibleSuggestions"
+                            :key="suggestion.id"
+                            :highlighted="combobox.highlightIndex.value === index"
+                            :keyboard-nav="combobox.keyboardNav.value"
+                            :option-id="combobox.optionId(index)"
+                            :query="model"
+                            :suggestion="suggestion"
+                            @pointermove="combobox.onOptionPointermove(index)"
+                            @select="combobox.onOptionClick(index)">
+                            <template
+                                v-if="$slots.item"
+                                #default="slotProps">
+                                <slot
+                                    name="item"
+                                    v-bind="slotProps" />
+                            </template>
+                        </es-autocomplete-item>
+                    </div>
+                    <!-- the prompt/no-results message is presentation only: screen
+                         readers get the same guidance from the input's description and
+                         the live region, so it is hidden and the combobox stays collapsed -->
+                    <div
+                        v-else-if="panelMessage"
+                        aria-hidden="true"
+                        class="es-autocomplete-no-results px-100 py-50 text-gray-700">
+                        {{ panelMessage }}
+                    </div>
                 </div>
             </div>
         </div>
