@@ -160,9 +160,7 @@ function onTakeoverOpenChange(value: boolean) {
 </script>
 
 <template>
-    <div
-        ref="mobileRootEl"
-        class="d-md-none">
+    <div ref="mobileRootEl">
         <es-autocomplete-label
             :html-for="triggerId"
             :label="label"

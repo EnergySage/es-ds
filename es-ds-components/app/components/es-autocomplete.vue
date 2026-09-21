@@ -78,59 +78,65 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
 
 <template>
     <div class="es-autocomplete">
-        <es-autocomplete-desktop
-            :id="id"
-            v-model="model"
-            :clear-text="clearText"
-            :described-by="describedBy"
-            :disabled="disabled"
-            :label="label"
-            :label-sr-only="labelSrOnly"
-            :no-results-announcement="noResultsAnnouncement"
-            :panel-message="panelMessage"
-            :placeholder="placeholder"
-            :required="required"
-            :show-overlay-on-focus="showOverlayOnFocus"
-            :state="state"
-            :suggestion-count-text="suggestionCountText"
-            :suggestions="effectiveSuggestions"
-            @select="onSelect"
-            @submit="onSubmit">
-            <template
-                v-if="$slots.item"
-                #item="slotProps">
-                <slot
-                    name="item"
-                    v-bind="slotProps" />
-            </template>
-        </es-autocomplete-desktop>
-        <es-autocomplete-mobile
-            :id="id"
-            v-model="model"
-            :clear-text="clearText"
-            :close-text="closeText"
-            :described-by="describedBy"
-            :disabled="disabled"
-            :label="label"
-            :label-sr-only="labelSrOnly"
-            :no-results-announcement="noResultsAnnouncement"
-            :panel-message="panelMessage"
-            :placeholder="placeholder"
-            :required="required"
-            :state="state"
-            :suggestion-count-text="suggestionCountText"
-            :suggestions="effectiveSuggestions"
-            :trigger-described-by="triggerDescribedBy"
-            @select="onSelect"
-            @submit="onSubmit">
-            <template
-                v-if="$slots.item"
-                #item="slotProps">
-                <slot
-                    name="item"
-                    v-bind="slotProps" />
-            </template>
-        </es-autocomplete-mobile>
+        <!-- which shell this viewport gets is decided here, once, so neither
+             shell knows or cares whether it is the one on screen -->
+        <div class="es-autocomplete-shell-desktop">
+            <es-autocomplete-desktop
+                :id="id"
+                v-model="model"
+                :clear-text="clearText"
+                :described-by="describedBy"
+                :disabled="disabled"
+                :label="label"
+                :label-sr-only="labelSrOnly"
+                :no-results-announcement="noResultsAnnouncement"
+                :panel-message="panelMessage"
+                :placeholder="placeholder"
+                :required="required"
+                :show-overlay-on-focus="showOverlayOnFocus"
+                :state="state"
+                :suggestion-count-text="suggestionCountText"
+                :suggestions="effectiveSuggestions"
+                @select="onSelect"
+                @submit="onSubmit">
+                <template
+                    v-if="$slots.item"
+                    #item="slotProps">
+                    <slot
+                        name="item"
+                        v-bind="slotProps" />
+                </template>
+            </es-autocomplete-desktop>
+        </div>
+        <div class="es-autocomplete-shell-mobile">
+            <es-autocomplete-mobile
+                :id="id"
+                v-model="model"
+                :clear-text="clearText"
+                :close-text="closeText"
+                :described-by="describedBy"
+                :disabled="disabled"
+                :label="label"
+                :label-sr-only="labelSrOnly"
+                :no-results-announcement="noResultsAnnouncement"
+                :panel-message="panelMessage"
+                :placeholder="placeholder"
+                :required="required"
+                :state="state"
+                :suggestion-count-text="suggestionCountText"
+                :suggestions="effectiveSuggestions"
+                :trigger-described-by="triggerDescribedBy"
+                @select="onSelect"
+                @submit="onSubmit">
+                <template
+                    v-if="$slots.item"
+                    #item="slotProps">
+                    <slot
+                        name="item"
+                        v-bind="slotProps" />
+                </template>
+            </es-autocomplete-mobile>
+        </div>
         <small
             v-if="showError"
             :id="errorId"
@@ -166,10 +172,39 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
 </template>
 
 <style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .es-autocomplete {
     /* match EsFormInput, but allow override by utility classes */
     margin-bottom: variables.$spacer;
+}
+
+/* Which shell a viewport gets, decided in CSS alone: both are server-rendered
+ * with one under display: none, so there is no capability check to hydrate and
+ * no flash of the wrong shell.
+ *
+ * The takeover is for small TOUCH screens, so width is only half the question —
+ * on its own it hands a desktop page zoomed to 200-400% (WCAG reflow) a
+ * tap-to-open dialog, where that user's habits (click the field, type, arrow)
+ * stop working. Pairing the breakpoint with the primary input's hover
+ * capability keeps them on the popover. Hover is the whole test: requiring
+ * pointer: coarse as well would only add a second way to be wrong, and a touch
+ * device that misreports hover keeps the popover, which a finger operates
+ * fine — the safe direction for the failure. */
+.es-autocomplete-shell-mobile {
+    display: none;
+}
+
+@include breakpoints.media-breakpoint-down(sm) {
+    @media (hover: none) {
+        .es-autocomplete-shell-desktop {
+            display: none;
+        }
+
+        .es-autocomplete-shell-mobile {
+            display: block;
+        }
+    }
 }
 </style>

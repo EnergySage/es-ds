@@ -798,6 +798,24 @@ Open questions raised during planning, with the decisions now reflected inline a
     event, before any focus handling runs. The window itself losing focus
     (alt-tab, devtools) also collapses focus and also needs nothing — the
     interaction resumes on return, per the ignore-window-blur rule.
+29. **The shell switch is the breakpoint AND `(hover: none)`** (2026-09-21):
+    the takeover is for small TOUCH screens, so the width test alone was the
+    wrong question — a desktop page zoomed to 200-400% (WCAG 1.4.10 reflow)
+    narrows past `md` and handed a mouse-and-keyboard user a tap-to-open
+    dialog, where clicking the field and typing no longer works. Pairing the
+    breakpoint with the primary input's hover capability keeps that user on the
+    popover. The query lives in the public wrapper, not in the two shells: one
+    rule decides both, so neither shell knows or cares whether it is the one on
+    screen. It stays pure CSS because both shells are server-rendered with one
+    under `display: none` — there is no capability check to hydrate and no
+    flash of the wrong shell, which is why this is not a `matchMedia` ref. The
+    desktop overlay, teleported to the body and so outside the wrapper, needs
+    no gate of its own: it renders only while that shell is open, which it
+    cannot be while hidden. A touch device
+    that misreports hover keeps the popover, which a finger operates fine; that
+    is the safer way for the query to be wrong. Cost: narrowing a desktop
+    browser no longer shows the takeover, so the docs point at device emulation
+    instead.
 28. **Only the arrows' own echo gets focus back, and entering the field clears
     the highlight** (2026-09-21, from VoiceOver testing): the collapse of
     decision #27 has two causes that look identical in the event, so the arrow

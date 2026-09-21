@@ -343,7 +343,7 @@ onBeforeUnmount(() => {
 <template>
     <div
         ref="rootEl"
-        class="d-none d-md-block position-relative"
+        class="position-relative"
         @focusout="onRootFocusout">
         <es-autocomplete-label
             :html-for="id"
@@ -444,10 +444,12 @@ onBeforeUnmount(() => {
     </div>
     <teleport to="body">
         <transition name="es-autocomplete-overlay">
+            <!-- no shell gate of its own: the overlay exists only while this shell
+                 is open, which it cannot be while the wrapper hides it -->
             <div
                 v-if="open && showOverlayOnFocus"
                 aria-hidden="true"
-                class="es-autocomplete-overlay d-none d-md-block" />
+                class="es-autocomplete-overlay" />
         </transition>
     </teleport>
 </template>

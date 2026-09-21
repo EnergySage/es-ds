@@ -448,8 +448,11 @@ const autocompleteSlots = [
                 the input has focus.
             </p>
             <p>
-                On viewports below the <code>md</code> breakpoint, tapping the input opens a full-screen takeover with
-                its own input and close button. Resize your browser to try it.
+                On touch devices below the <code>md</code> breakpoint, tapping the field opens a full-screen takeover
+                with its own input and close button. The switch is CSS alone — the breakpoint paired with
+                <code>(hover: none)</code> — so a desktop page zoomed past <code>md</code> keeps the popover its user
+                knows. Narrowing a desktop browser therefore will not show the takeover: use the device emulation in
+                your browser's dev tools, or a real phone.
             </p>
             <p>Each suggestion is an object with the following shape:</p>
             <ul>
