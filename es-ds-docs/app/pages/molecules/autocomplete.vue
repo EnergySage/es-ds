@@ -497,6 +497,31 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
+            <h2>Focus overlay</h2>
+            <p>
+                When the autocomplete is being used as a navigation tool, for example in a site search,
+                it can be helpful to minimize other distractions on the page to allow the user to focus
+                on selecting the right option. This focus overlay accomplishes that by dimming the rest
+                of the page when the autocomplete is open.
+            </p>
+            <es-row>
+                <es-col md="6">
+                    <es-autocomplete
+                        v-model="longTextQuery"
+                        label="Search"
+                        label-sr-only
+                        placeholder="Search for a topic"
+                        show-overlay-on-focus
+                        :suggestions="longTextSuggestions"
+                        @complete="handleLongTextComplete"/>
+                </es-col>
+            </es-row>
+            <p class="text-muted">
+                {{ `value: ${longTextQuery || '[empty]'}` }}
+            </p>
+        </div>
+
+        <div class="mb-500">
             <h2>EsAutocomplete props</h2>
             <h3>Required</h3>
             <ds-prop-table :rows="autocompleteRequiredProps" />
