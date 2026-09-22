@@ -7,6 +7,7 @@ interface Props {
     closeText?: string;
     delay?: number;
     disabled?: boolean;
+    helpText?: string;
     label: string;
     labelSrOnly?: boolean;
     minChars?: number;
@@ -18,6 +19,7 @@ interface Props {
     state?: boolean | null;
     suggestionCountText?: (count: number) => string;
     suggestions: EsAutocompleteSuggestion[];
+    triggerHelpText?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -28,6 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
     closeText: 'Close',
     delay: 300,
     disabled: false,
+    helpText: 'Type your search and select from dropdown suggestions.',
     labelSrOnly: false,
     minChars: 1,
     noResultsText: 'No results found',
@@ -38,6 +41,7 @@ const props = withDefaults(defineProps<Props>(), {
     state: null,
     suggestionCountText: (count: number) =>
         count === 1 ? '1 suggestion available' : `${count} suggestions available`,
+    triggerHelpText: 'Opens a search with suggestions as you type.',
 });
 
 const emit = defineEmits<{
@@ -159,13 +163,13 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
             :id="helpId"
             aria-hidden="true"
             class="sr-only">
-            Type your search and select from dropdown suggestions.
+            {{ helpText }}
         </div>
         <div
             :id="triggerHelpId"
             aria-hidden="true"
             class="sr-only">
-            Opens a search with suggestions as you type.
+            {{ triggerHelpText }}
         </div>
     </div>
 </template>

@@ -170,6 +170,39 @@ describe('useAutocompleteSearch panel message and suggestion gating', () => {
         expect(search.panelMessage.value).toBe('');
     });
 
+    it('fills again after a selection even when the app answers with the same array', async () => {
+        // an app that memoises per query hands back the identical array, so the
+        // suggestions watcher never fires and only the edit can end the staleness
+        const CACHED = [{ id: 'a', text: 'apple' }];
+        const model = ref('');
+        const search = withSetup(() =>
+            useAutocompleteSearch({
+                delay: () => DELAY,
+                emitComplete: () => undefined,
+                emitSelect: () => undefined,
+                minChars: () => 1,
+                model,
+                noResultsText: () => 'No results found',
+                promptText: () => 'Type for suggestions',
+                suggestions: () => CACHED,
+            }),
+        ).result;
+
+        model.value = 'app';
+        await nextTick();
+        expect(search.effectiveSuggestions.value).toHaveLength(1);
+
+        search.onSelect(CACHED[0]!);
+        model.value = 'apple';
+        await nextTick();
+        expect(search.effectiveSuggestions.value).toHaveLength(0);
+
+        // searching again returns the very same array the app cached
+        model.value = 'app';
+        await nextTick();
+        expect(search.effectiveSuggestions.value).toHaveLength(1);
+    });
+
     it('shows suggestions an app refreshes in its own select handler', async () => {
         const { search, suggestions, type } = makeSearch();
         await type('12');

@@ -798,6 +798,28 @@ Open questions raised during planning, with the decisions now reflected inline a
     event, before any focus handling runs. The window itself losing focus
     (alt-tab, devtools) also collapses focus and also needs nothing — the
     interaction resumes on return, per the ignore-window-blur rule.
+34. **Review fixes before the PR** (2026-09-22, from a full-branch review):
+    four corrections and one documented limitation.
+    - the post-selection staleness now ends on the next edit, not on the next
+      change to the `suggestions` prop. an app that memoises per query hands back
+      the same array, which the watcher cannot see, and the panel then showed
+      promptText forever — covered by a regression test.
+    - Escape stops propagating when it dismisses the panel, so the field can sit
+      in a dialog without one keypress closing both; with the panel already down
+      the key passes through untouched.
+    - the two screen-reader hints are the `helpText` and `triggerHelpText` props,
+      like every other string a user hears. they were the only hard-coded English
+      left, and the only part of the component that solely screen-reader users
+      perceive.
+    - the required asterisk is `aria-hidden`: the field carries `required` or
+      `aria-required` already, so it was only read out as "star" on top of it.
+    - a native modal `<dialog>` paints above a `popover="manual"` whatever the
+      order or nesting (measured in Chromium: showing the panel after the dialog,
+      and nesting it inside, both lose). so this field inside a NATIVE modal shows
+      its panel behind the dialog. es-modal (PrimeVue) and Reka's Dialog both
+      portal a plain div, which the top layer clears, so the design system's own
+      modals are unaffected; the alternative, `popover="auto"`, would bring the
+      light-dismiss decision #26 rejected.
 33. **Enter belongs to the page unless a suggestion is highlighted**
     (2026-09-22, superseding decision #20's Enter semantics and removing the
     `submit` event): a form field submits its form on Enter, and this one is a

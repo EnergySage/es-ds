@@ -114,7 +114,11 @@ const liveAnnouncement = computed(() =>
         : props.noResultsAnnouncement,
 );
 
-// a popover element displays only once shown; manual popovers never light-dismiss
+// a popover element displays only once shown; manual popovers never light-dismiss.
+//
+// one limitation comes with using a popover: if a modal <dialog> is ever used for
+// EsModal, the popover suggestion pane of an autocomplete within it will not be
+// visible, as it will be underneath the <dialog>.
 function showAsPopover(el: HTMLElement | null) {
     if (el && supportsAnchor.value) {
         try {
@@ -123,6 +127,16 @@ function showAsPopover(el: HTMLElement | null) {
             // already shown, or not a popover in this browser
         }
     }
+}
+
+// Escape belongs to the panel only while the panel is up: dismissing it must not
+// also reach a dialog the field sits in, and a closed field must let it through
+function onEscape(event: KeyboardEvent) {
+    if (!open.value) {
+        return;
+    }
+    event.stopPropagation();
+    open.value = false;
 }
 
 // each side parks the closed panel differently, so the side is settled before
@@ -372,7 +386,7 @@ onBeforeUnmount(() => {
             @click="onFieldActivity"
             @focusin="onFocusIn"
             @input="onFieldActivity"
-            @keydown.esc="open = false" />
+            @keydown.esc="onEscape" />
         <!-- the panel sits right after the field in the DOM, as the APG combobox
              examples do, so a screen reader leaving the list lands back near the
              input. the outer div is the clip wrapper the drawer slides within,

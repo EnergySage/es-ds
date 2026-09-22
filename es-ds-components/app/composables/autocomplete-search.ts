@@ -28,7 +28,7 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
 
     // a selection makes the app's list stale: it matched the typed query, not the
     // text just filled in, and no 'complete' fires to refresh it. hold it back —
-    // a refocused panel shows promptText — until the app updates the prop.
+    // a refocused panel shows promptText — until the app answers the next edit.
     const suggestionsStale = ref(false);
 
     // pass an empty list below minChars so no suggestions show for too-short queries
@@ -99,6 +99,10 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
             return;
         }
         lastSelectedText = null;
+        // an edit ends the staleness, whatever the app answers with: waiting for
+        // the suggestions prop to change would strand a memoised list that comes
+        // back as the same array, and the panel would never fill again
+        suggestionsStale.value = false;
         const query = newValue.trim();
         if (query.length < options.minChars()) {
             // a fresh (or cleared) query starts from the prompt state, not a stale

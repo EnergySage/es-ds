@@ -16,8 +16,11 @@ defineProps<Props>();
         :class="{ 'sr-only': labelSrOnly }"
         :for="htmlFor">
         {{ label }}
+        <!-- decoration: the field itself carries required/aria-required, so the
+             asterisk would only be read out as "star" on top of it -->
         <span
             v-if="required"
+            aria-hidden="true"
             class="text-danger">
             *
         </span>

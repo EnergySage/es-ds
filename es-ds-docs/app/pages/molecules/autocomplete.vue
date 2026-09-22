@@ -152,6 +152,14 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
+        'helpText',
+        'String',
+        'Type your search and select from dropdown suggestions.',
+        `
+        Hint read out by screen readers when the input takes focus.
+        `,
+    ],
+    [
         'labelSrOnly',
         'Boolean',
         'false',
@@ -229,6 +237,15 @@ const autocompleteOptionalProps = [
         Builds the screen-reader announcement made when suggestions arrive, given the number of
         suggestions displayed (after the display cap and the row trim). An empty result
         announces noResultsText instead.
+        `,
+    ],
+    [
+        'triggerHelpText',
+        'String',
+        'Opens a search with suggestions as you type.',
+        `
+        Hint read out by screen readers for the trigger field on mobile (which opens the full screen
+        takeover on tap rather than taking text directly).
         `,
     ],
 ];
