@@ -798,6 +798,25 @@ Open questions raised during planning, with the decisions now reflected inline a
     event, before any focus handling runs. The window itself losing focus
     (alt-tab, devtools) also collapses focus and also needs nothing — the
     interaction resumes on return, per the ignore-window-blur rule.
+32. **`blur` is the field being left, not the input losing focus**
+    (2026-09-22): forms validate on blur, so the component emits one — but a
+    raw blur would fire constantly here. Focus moves to the clear button, into
+    the takeover, and (under a screen reader) off the input entirely while the
+    list is being read, none of which is the user leaving. So `blur` is emitted
+    on exactly the departures the dismissal rules already recognise: focus
+    moving to a control outside the widget, and a focus collapse that has not
+    come back once the panel is down — the click on non-focusable space that
+    decision #27's pointerdown listener dismisses. Escape, select and submit
+    never emit: each leaves focus in the input and the interaction continues.
+    Nor does a collapse while the panel is still up, which is decision #28's
+    VoiceOver excursion — validating there would flag a field the user is in
+    the middle of filling. On mobile the same rule reads off the takeover:
+    focus leaving the resting field is a blur unless the takeover is open (the
+    focus is moving into it, and the takeover is portaled out of the shell's
+    root, so its input reads as somewhere else) — the focus Reka hands back on
+    close arrives from outside that root and never bubbles through it. One
+    emit per visit, so the two paths that can each notice the same departure
+    cannot announce it twice.
 30. **The mobile trigger is a readonly combobox input, not a button**
     (2026-09-21, superseding decision #24's "fake field" button): a button
     cannot be a form field, and every gap that followed came from that. It

@@ -47,6 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
+    blur: [];
     complete: [query: string];
     select: [suggestion: EsAutocompleteSuggestion];
     submit: [query: string];
@@ -103,6 +104,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
                 :state="state"
                 :suggestion-count-text="suggestionCountText"
                 :suggestions="effectiveSuggestions"
+                @blur="emit('blur')"
                 @select="onSelect"
                 @submit="onSubmit">
                 <template
@@ -133,6 +135,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
                 :suggestion-count-text="suggestionCountText"
                 :suggestions="effectiveSuggestions"
                 :trigger-described-by="triggerDescribedBy"
+                @blur="emit('blur')"
                 @select="onSelect"
                 @submit="onSubmit">
                 <template

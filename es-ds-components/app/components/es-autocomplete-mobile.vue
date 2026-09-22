@@ -35,6 +35,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
+    blur: [];
     select: [suggestion: EsAutocompleteSuggestion];
     submit: [query: string];
 }>();
@@ -149,6 +150,19 @@ function onOpenAutoFocus(event: Event) {
     combobox.revealCaretOnFocus();
 }
 
+// The user is done with the field: the app hears about it so a form can validate
+// the way it does on any other field's blur. Focus moving INTO the takeover is
+// not leaving — the takeover is portaled out of this root, so its input reads as
+// somewhere else — and neither is the focus Reka hands back to the resting field
+// on close, which arrives from outside the root and never bubbles through here.
+function onRootFocusout(event: FocusEvent) {
+    const next = event.relatedTarget as Node | null;
+    if (takeoverOpen.value || (next && mobileRootEl.value?.contains(next))) {
+        return;
+    }
+    emit('blur');
+}
+
 // Reka's trigger opens on click, which both a tap and a screen reader's
 // activation produce; the keys that activate a button do nothing on an input, so
 // the combobox's own opening keys are bound on the element
@@ -170,7 +184,9 @@ function onTakeoverOpenChange(value: boolean) {
 </script>
 
 <template>
-    <div ref="mobileRootEl">
+    <div
+        ref="mobileRootEl"
+        @focusout="onRootFocusout">
         <es-autocomplete-label
             :html-for="triggerId"
             :label="label"

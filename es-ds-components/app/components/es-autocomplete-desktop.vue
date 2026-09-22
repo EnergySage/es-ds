@@ -25,6 +25,7 @@ interface Props {
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
+    blur: [];
     select: [suggestion: EsAutocompleteSuggestion];
     submit: [query: string];
 }>();
@@ -192,6 +193,9 @@ async function onFieldActivity() {
 // our own restore after an arrow-driven collapse continues the navigation it
 // interrupted, so it is not an entry into the field (see onFocusIn)
 let restoringFocus = false;
+// blur is reported once per visit, so the paths that can each notice the same
+// departure do not announce it twice
+let visiting = false;
 
 function onFocusIn() {
     // Entering the field starts a fresh interaction, from the typed text. A
@@ -204,8 +208,21 @@ function onFocusIn() {
     if (!restoringFocus) {
         combobox.resetHighlight();
     }
+    visiting = true;
     onFieldActivity();
     combobox.revealCaretOnFocus();
+}
+
+// The user is done with the field: the panel goes down and the app hears about
+// it, so a form can validate the way it does on any other field's blur. Escape,
+// select and submit are NOT this — each leaves focus in the input, and the
+// interaction continues.
+function leaveField() {
+    open.value = false;
+    if (visiting) {
+        visiting = false;
+        emit('blur');
+    }
 }
 
 // focus went nowhere rather than to another control: no relatedTarget at all,
@@ -216,33 +233,43 @@ function isFocusCollapse(next: Node | null) {
 
 function onRootFocusout(event: FocusEvent) {
     const next = event.relatedTarget as Node | null;
-    if (isFocusCollapse(next)) {
-        if (combobox.consumeArrowBlur()) {
-            restoreCollapsedFocus();
+    if (!isFocusCollapse(next)) {
+        if (!rootEl.value?.contains(next)) {
+            leaveField();
         }
         return;
     }
-    if (!rootEl.value?.contains(next)) {
-        open.value = false;
-    }
+    // a collapse says nothing on its own — the arrows' echo, a click on
+    // non-focusable space and a screen reader's cursor moving off all look
+    // alike here, so the answer waits for what the browser settles on
+    answerFocusCollapse(combobox.consumeArrowBlur());
 }
 
-// deferred a frame, so the collapse is only answered once the browser has
-// settled: an outside pointerdown has closed the panel by then, and a focus
-// move the browser was still making has landed somewhere real. The window
+// deferred a frame: by then an outside pointerdown has closed the panel, and a
+// focus move the browser was still making has landed somewhere real. The window
 // itself losing focus (alt-tab, devtools) leaves the input active and the
 // interaction resumes on return, so it needs nothing.
-function restoreCollapsedFocus() {
+function answerFocusCollapse(followsArrowKey: boolean) {
     requestAnimationFrame(() => {
         const el = inputEl.value;
         const active = document.activeElement;
-        if (!open.value || !el || !document.hasFocus()) {
+        const stillNowhere = !active || active === document.body || active === document.documentElement;
+        if (!document.hasFocus() || !stillNowhere) {
             return;
         }
-        if (!active || active === document.body || active === document.documentElement) {
+        if (followsArrowKey && open.value && el) {
             restoringFocus = true;
             el.focus();
             restoringFocus = false;
+            return;
+        }
+        // While the panel is up the widget is still in use: a screen reader's
+        // cursor walks the list with real focus left behind, and reporting a
+        // blur there would validate the field mid-interaction. Once the panel
+        // is down — Escape, or the pointerdown that dismissed it — focus that
+        // has not come back means the user has moved on.
+        if (!open.value) {
+            leaveField();
         }
     });
 }

@@ -54,20 +54,32 @@ const handleAddressComplete = (query: string) => {
 // set up form and validation for required selection address example
 const requiredAddressSelection = ref<EsAutocompleteSuggestion | null>(null);
 const requiredAddressState = ref<boolean | null>(null);
-const handleRequiredAddressBlur = () => {
-
-};
-const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
-    requiredAddressSelection.value = suggestion || null;
-    requiredAddressState.value = null;
-};
-const handleRequiredAddressSubmit = async () => {
+const validateRequiredAddress = () => {
     if (requiredAddressSelection.value) {
         requiredAddressState.value = null;
     } else {
         requiredAddressState.value = false;
     }
 };
+watch(addressQuery, (query) => {
+    // if the query has changed, clear out any previously selected value
+    if (requiredAddressSelection.value && query !== requiredAddressSelection.value.text) {
+        requiredAddressSelection.value = null;
+    }
+
+    // if the field was previously invalid, clear the invalid state
+    if (requiredAddressState.value === false) {
+        requiredAddressState.value = null;
+    }
+});
+const handleRequiredAddressBlur = () => validateRequiredAddress();
+const handleRequiredAddressSubmit = () => validateRequiredAddress();
+const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
+    requiredAddressSelection.value = suggestion || null;
+    requiredAddressState.value = null;
+};
+
+
 
 
 // Requiring a selection example (e.g. address validation)
@@ -259,6 +271,16 @@ const autocompleteProps = [
 ];
 
 const autocompleteEvents = [
+    [
+        'blur',
+        '—',
+        `
+        Emitted when the user leaves the field — focus moving to another control, or a click outside — so a form
+        can validate on blur as it does for any other field. Not emitted for Escape, selecting a suggestion, or
+        submitting, which all leave focus in the input, nor while a screen reader's cursor moves off an open
+        suggestion list.
+        `,
+    ],
     [
         'complete',
         'query: string',
@@ -465,6 +487,7 @@ onMounted(async () => {
                             required
                             :state="requiredAddressState"
                             :suggestions="addressSuggestions"
+                            @blur="handleRequiredAddressBlur"
                             @complete="handleAddressComplete"
                             @select="handleRequiredAddressSelect">
                             <template #errorMessage> Please select an address from the suggestions. </template>
