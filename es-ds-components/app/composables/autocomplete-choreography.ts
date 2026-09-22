@@ -134,6 +134,13 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
             field.value = text;
         }
         holdScrolledToEnd(field);
+        if (direction === 'in') {
+            // the takeover shows no validation, so a ghost flying into it must not
+            // either — the cloned trigger's icon would appear for the flight and
+            // vanish on landing. it also frees the insets below: the icon's room is
+            // reserved with !important, which an animation cannot outrank.
+            field.classList.remove('is-invalid');
+        }
         if (clearButton) {
             const clone = clearButton.cloneNode(true) as HTMLElement;
             // pinned inside the field's border, where the real field lays the

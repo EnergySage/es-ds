@@ -94,6 +94,10 @@ defineExpose({ inputEl });
 .es-autocomplete-input {
     background: transparent;
     border: none;
+    /* a flex item's automatic minimum is its content's width, and WebKit measures
+     * an input's from its value — so without this a long value stops the input
+     * shrinking and widens the field past the room it has */
+    min-width: 0;
 
     &:focus-visible {
         outline: none;

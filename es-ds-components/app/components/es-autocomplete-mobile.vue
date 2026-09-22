@@ -245,7 +245,7 @@ function onTakeoverOpenChange(value: boolean) {
                          suggestions right after the field, while visually the Close
                          button stays beside the field and the list fills the line below -->
                     <div class="align-content-start d-flex flex-grow-1 flex-wrap">
-                        <div class="order-1 flex-grow-1 py-100 pl-100">
+                        <div class="es-autocomplete-takeover-field order-1 flex-grow-1 py-100 pl-100">
                             <es-autocomplete-field
                                 ref="fieldRef"
                                 :aria-label="label"
@@ -381,11 +381,30 @@ input.es-autocomplete-trigger:not(:disabled) {
     :deep(.es-autocomplete-input) {
         font-size: 1rem;
     }
+
+    /* the takeover carries no validation: the message stays on the page behind it,
+     * so the invalid look would be unexplained here — and the padding Bootstrap
+     * reserves for the icon widens the field's minimum, pushing Close off screen */
+    :deep(.es-autocomplete-field.is-invalid) {
+        background-image: none;
+        border-color: variables.$input-border-color;
+        /* es-ds-styles reserves the icon's room with !important, so taking the
+         * room back needs the same weight */
+        padding-right: 0 !important; // stylelint-disable-line declaration-no-important
+    }
 }
 
 .es-autocomplete-close {
     color: variables.$blue-600;
     font-weight: variables.$font-weight-semibold;
+}
+
+/*
+ * updates the flex item's min width from content width to zero so it
+ * doesn't push the Close button off the screen when content is long
+ */
+.es-autocomplete-takeover-field {
+    min-width: 0;
 }
 
 .es-autocomplete-takeover-list {

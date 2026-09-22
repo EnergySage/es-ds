@@ -345,7 +345,7 @@ onMounted(async () => {
                         @complete="handleFruitComplete" />
                 </es-col>
             </es-row>
-            <p class="text-muted">
+            <p class="text-break text-muted">
                 {{ `value: ${fruitQuery || '[empty]'}` }}
             </p>
         </div>
@@ -384,7 +384,7 @@ onMounted(async () => {
                     </es-autocomplete>
                 </es-col>
             </es-row>
-            <p class="text-muted">
+            <p class="text-break text-muted">
                 {{ `value: ${addressQuery || '[empty]'}` }}
             </p>
         </div>
@@ -423,7 +423,7 @@ onMounted(async () => {
                     </es-col>
                 </es-row>
             </es-form>
-            <p class="text-muted">
+            <p class="text-break text-muted">
                 {{ `value: ${requiredAddressSelection ? requiredAddressSelection.text : '[empty]'}` }}
             </p>
         </div>
@@ -456,7 +456,7 @@ onMounted(async () => {
                     </es-button>
                 </es-col>
             </es-row>
-            <p class="text-muted">
+            <p class="text-break text-muted">
                 {{ `value: ${longTextQuery || '[empty]'}` }}
             </p>
         </div>
@@ -494,7 +494,7 @@ onMounted(async () => {
                     </es-autocomplete>
                 </es-col>
             </es-row>
-            <p class="text-muted">
+            <p class="text-break text-muted">
                 {{ `value: ${fruitQuery || '[empty]'}` }}
             </p>
         </div>
@@ -534,7 +534,7 @@ onMounted(async () => {
                         @complete="handleLongTextComplete" />
                 </es-col>
             </es-row>
-            <p class="text-muted">
+            <p class="text-break text-muted">
                 {{ `value: ${longTextQuery || '[empty]'}` }}
             </p>
         </div>

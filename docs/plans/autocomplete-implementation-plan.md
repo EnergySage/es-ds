@@ -798,6 +798,27 @@ Open questions raised during planning, with the decisions now reflected inline a
     event, before any focus handling runs. The window itself losing focus
     (alt-tab, devtools) also collapses focus and also needs nothing — the
     interaction resumes on return, per the ignore-window-blur rule.
+35. **The takeover shows no validation styling** (2026-09-22, from device
+    testing): the error message stays on the page behind the takeover, so the
+    invalid look inside it was unexplained — and Bootstrap reserves room for the
+    icon with `padding-right: … !important`, which also widens the field's
+    automatic minimum as a flex item, pushing the Close button off a narrow
+    screen. The takeover neutralises `.is-invalid` (icon, border, and that
+    padding, matched `!important` for `!important`), and the field's column
+    takes `min-width: 0` so nothing else can push Close off either. The resting
+    field keeps its icon, red border, `aria-invalid` and error message, and the
+    takeover's input keeps `aria-invalid` and the error in its description — the
+    state is still exposed, just not painted where the reason is not visible.
+    The inbound ghost drops `.is-invalid` with it, or the icon would ride the
+    flight in and vanish on landing; the outbound one keeps it, since it lands on
+    the resting field that has it. Dropping the class also frees the flight's
+    animated insets, which the icon's `!important` padding otherwise outranks.
+    Shrinking is guarded at the element WebKit measures: `.es-autocomplete-input`
+    takes `min-width: 0`, because a flex item's automatic minimum is its
+    content's width and WebKit derives an input's from its value — so a long
+    value would otherwise stop the input shrinking and widen the field past its
+    room. Chromium sizes inputs from the `size` attribute instead, which is why
+    the same value leaves its layout untouched there.
 34. **Review fixes before the PR** (2026-09-22, from a full-branch review):
     four corrections and one documented limitation.
     - the post-selection staleness now ends on the next edit, not on the next
