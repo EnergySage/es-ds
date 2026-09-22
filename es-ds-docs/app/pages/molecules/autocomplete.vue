@@ -79,9 +79,6 @@ const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
     requiredAddressState.value = null;
 };
 
-
-
-
 // Requiring a selection example (e.g. address validation)
 const requiredQuery = ref('');
 const requiredSuggestions = ref<EsAutocompleteSuggestion[]>([]);
@@ -463,7 +460,9 @@ onMounted(async () => {
                         placeholder="Search for a topic"
                         :suggestions="longTextSuggestions"
                         @complete="handleLongTextComplete" />
-                    <es-button class="ml-100 px-md-300 px-xl-200 px-xxl-400 text-nowrap w-50 w-md-auto"> Shop local offers </es-button>
+                    <es-button class="ml-100 px-md-300 px-xl-200 px-xxl-400 text-nowrap w-50 w-md-auto">
+                        Shop local offers
+                    </es-button>
                 </es-col>
             </es-row>
             <p class="text-muted">
@@ -474,10 +473,12 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>Requiring a selection</h2>
             <p>
-                In some cases, we want to require the user to select from the provided list of suggestions rather
-                than allowing free text entry.
+                In some cases, we want to require the user to select from the provided list of suggestions rather than
+                allowing free text entry.
             </p>
-            <es-form @submit.stop.prevent="handleRequiredAddressSubmit">
+            <es-form
+                novalidate
+                @submit.stop.prevent="handleRequiredAddressSubmit">
                 <es-row>
                     <es-col md="6">
                         <es-autocomplete
