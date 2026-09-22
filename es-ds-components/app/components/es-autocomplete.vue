@@ -26,8 +26,6 @@ const props = withDefaults(defineProps<Props>(), {
     // (an address, a name) can trade that back the other way.
     autocomplete: 'off',
     clearText: 'Clear',
-    // 'Close', not 'Cancel': dismissing the takeover keeps whatever is in the
-    // input — the takeover is just a full-screen way of editing the value
     closeText: 'Close',
     delay: 300,
     disabled: false,
