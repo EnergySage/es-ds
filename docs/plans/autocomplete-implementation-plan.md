@@ -828,9 +828,16 @@ Open questions raised during planning, with the decisions now reflected inline a
     that clone rather than the clone itself, because the clear button's clone
     has to render inside it and an `<input>` cannot have rendered children —
     appended to the input it was simply invisible, so the real button appeared
-    to pop in when the takeover was revealed. `aria-readonly="false"` corrects what the HTML attribute says
-    about the widget: the value cannot be typed over, but the user does change
-    it, in the takeover the field opens.
+    to pop in when the takeover was revealed. `aria-readonly="false"` states what the HTML attribute cannot:
+    the value is not typed over, but the user does change it, in the takeover
+    the field opens. iOS VoiceOver announces "read only" anyway (device-tested
+    2026-09-21) — WebKit maps the native attribute straight to the AX trait and
+    ARIA does not override it there — and then offers "double tap to edit",
+    which is the action that works, so the pair reads as contradictory but
+    actionable. The alternative, dropping `readonly` for `inputmode="none"`,
+    would trade a wording quirk for a keyboard that opens on the trigger and
+    again in the takeover wherever iOS ignores that value, plus keystrokes to
+    intercept for anyone on a Bluetooth keyboard; the attribute stays.
 
     Positioning a long value took two tries. Predicting it — measure the landing
     input, then `text-align: right` — was wrong twice over: `scrollWidth`

@@ -188,10 +188,13 @@ function onTakeoverOpenChange(value: boolean) {
                  would otherwise open here and again in the takeover.
                  role="combobox" with a dialog popup is the APG date-picker
                  shape; Reka supplies aria-haspopup, aria-expanded, aria-controls
-                 and the click that opens. aria-readonly="false" corrects what
-                 the HTML attribute would otherwise say about the widget: the
-                 value cannot be typed over, but the user does change it, in the
-                 takeover this opens. autocomplete stays 'off' here whatever
+                 and the click that opens. aria-readonly="false" states what
+                 the HTML attribute cannot: the value is not typed over, but the
+                 user does change it, in the takeover this field opens. iOS
+                 VoiceOver announces "read only" regardless — WebKit maps the
+                 native attribute straight to the trait — and follows it with
+                 "double tap to edit", which is the action that works; the ARIA
+                 attribute stands for the engines that do honor it. autocomplete stays 'off' here whatever
                  the consumer asked for: browsers skip readonly fields anyway,
                  and the token belongs on the input that is really filled in. -->
             <dialog-trigger

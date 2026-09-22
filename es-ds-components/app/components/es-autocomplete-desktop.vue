@@ -152,10 +152,41 @@ function showAsPopover(el: HTMLElement | null) {
 // the widget, so focus is left exactly where it went. A click on non-focusable
 // page space blurs the input the same indistinguishable way; that case closes
 // the panel from its pointerdown, before any focus handling runs.
-function onFieldActivity() {
-    if (!props.disabled) {
-        open.value = true;
+// The drawer slides out of wherever the closed panel is parked, and the park is
+// side-specific: behind the field's bottom edge below it, behind its top edge
+// above it. The always-mounted panel measures once on mount, where a field
+// still below the fold reports negative space beneath it and so parks above —
+// which the open then corrects in the same frame the slide begins, and a
+// transition starts from the value BEFORE that frame's change. The result is a
+// panel that slides the right way only after its first open. So the side is
+// settled before the open, and a re-park is applied with transitions off:
+// animated, the park would itself become the slide's starting point, halfway
+// between the two sides.
+async function parkPanel() {
+    const wasAbove = panelAbove.value;
+    positionPanel();
+    if (panelAbove.value === wasAbove) {
+        return;
     }
+    await nextTick();
+    const panel = panelEl.value;
+    if (!panel) {
+        return;
+    }
+    panel.style.transition = 'none';
+    // forces the new park into the DOM before the transition comes back
+    void panel.offsetHeight;
+    panel.style.transition = '';
+}
+
+async function onFieldActivity() {
+    if (props.disabled) {
+        return;
+    }
+    if (!open.value) {
+        await parkPanel();
+    }
+    open.value = true;
 }
 
 // our own restore after an arrow-driven collapse continues the navigation it
