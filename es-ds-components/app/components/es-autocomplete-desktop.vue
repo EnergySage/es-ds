@@ -66,9 +66,9 @@ onMounted(() => {
 const anchorName = `--es-autocomplete-${props.id}`;
 const panelAbove = ref(false);
 
-// Chooses the panel's side and writes its max-height from the space around the
+// chooses the panel's side and writes its max-height from the space around the
 // field — the same numbers the fit-to-viewport trim divides into rows, so the
-// side choice and the row count can never disagree. Mirrors the usual popper
+// side choice and the row count can never disagree. mirrors the usual popper
 // policy: below unless the natural (untrimmed) list only fits above.
 function positionPanel() {
     const panel = panelEl.value;
@@ -112,8 +112,8 @@ const combobox = useAutocompleteCombobox({
 });
 watch(open, combobox.resetHighlight);
 
-// announces the number of suggestions actually DISPLAYED (after the cap and the
-// fit-to-viewport trim), or the no-results state. Each shell owns its own live
+// announces the number of suggestions actually displayed (after the cap and the
+// fit-to-viewport trim), or the no results state. each shell owns its own live
 // region: the inactive shell's sits under display: none, which silences it.
 const liveAnnouncement = computed(() =>
     visibleSuggestions.value.length
@@ -121,7 +121,7 @@ const liveAnnouncement = computed(() =>
         : props.noResultsAnnouncement,
 );
 
-// a [popover] element displays only once shown; manual popovers never light-dismiss
+// a popover element displays only once shown; manual popovers never light-dismiss
 function showAsPopover(el: HTMLElement | null) {
     if (el && supportsAnchor.value) {
         try {
