@@ -21,9 +21,8 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    // 'off' by default: the browser's own saved-value dropdown would compete with
-    // the suggestion list. A consumer whose field maps to a real autofill token
-    // (an address, a name) can trade that back the other way.
+    // keeps browser autofill from competing with our
+    // suggestions list, but can be overridden if necessary
     autocomplete: 'off',
     clearText: 'Clear',
     closeText: 'Close',
@@ -35,9 +34,6 @@ const props = withDefaults(defineProps<Props>(), {
     placeholder: '',
     promptText: 'Type for suggestions',
     required: false,
-    // most uses are a field within a larger form, where dimming the rest of the
-    // page would obscure sibling fields; the overlay suits a standalone primary
-    // search (e.g. site search in a sticky header)
     showOverlayOnFocus: false,
     state: null,
     suggestionCountText: (count: number) =>
@@ -80,8 +76,6 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
 
 <template>
     <div class="es-autocomplete">
-        <!-- which shell this viewport gets is decided here, once, so neither
-             shell knows or cares whether it is the one on screen -->
         <div class="es-autocomplete-shell-desktop">
             <es-autocomplete-desktop
                 :id="id"
@@ -158,8 +152,9 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
             <slot name="message" />
         </small>
         <!-- aria-hidden keeps these hints out of a screen reader's reading order —
-             they exist only to be resolved through aria-describedby on focus, and
-             the accessible-name computation includes referenced hidden elements -->
+             they exist only to be resolved through aria-describedby on focus.
+             kept as separate elements so their IDs can be listed along with the
+             error message ID, when applicable. -->
         <div
             :id="helpId"
             aria-hidden="true"
@@ -184,22 +179,12 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
     margin-bottom: variables.$spacer;
 }
 
-/* Which shell a viewport gets, decided in CSS alone: both are server-rendered
- * with one under display: none, so there is no capability check to hydrate and
- * no flash of the wrong shell.
- *
- * The takeover is for small TOUCH screens, so width is only half the question —
- * on its own it hands a desktop page zoomed to 200-400% (WCAG reflow) a
- * tap-to-open dialog, where that user's habits (click the field, type, arrow)
- * stop working. Pairing the breakpoint with the primary input's hover
- * capability keeps them on the popover. Hover is the whole test: requiring
- * pointer: coarse as well would only add a second way to be wrong, and a touch
- * device that misreports hover keeps the popover, which a finger operates
- * fine — the safe direction for the failure. */
+/* show the desktop autocomplete by default */
 .es-autocomplete-shell-mobile {
     display: none;
 }
 
+/* show the mobile fullscreen takeover experience only on small touch devices */
 @include breakpoints.media-breakpoint-down(sm) {
     @media (hover: none) {
         .es-autocomplete-shell-desktop {

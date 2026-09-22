@@ -50,15 +50,15 @@ const fieldEl = computed(() => (fieldRef.value?.$el as HTMLElement | undefined) 
 const inputEl = computed(() => fieldRef.value?.inputEl ?? null);
 const panelEl = ref<HTMLElement | null>(null);
 
-// The panel renders in the browser's top layer (popover="manual" — manual, so
-// no light-dismiss: it would treat clicks on our own input as outside) and is
-// glued to the field with CSS anchor positioning, immune to ancestor
-// overflow/z-index while staying in the DOM right next to the field. Browsers
-// without anchor positioning fall back to in-page absolute placement below the
-// field (no popover shown, no flip) via the @supports block in the styles.
-// This check steers only script (showing the popover, allowing the flip) and is
-// decided after mount: the always-mounted panel is server-rendered, so nothing
-// in its markup may branch on client-only capability checks.
+// if the browser has anchor positioning, the panel is rendered as the browser's
+// own popover in manual mode, anchored to the field. the top layer puts it out
+// of reach of any ancestor's overflow or z-index, and using manual mode keeps the
+// browser's light-dismiss from counting a click on our own input as reason to close
+// the pane (which we don't want). If the browser does not support anchor positioning,
+// the styles place it below the field the simple way, and our script doesn't activate
+// the popover functionality.
+//
+// this check runs after mount, not in setup, to avoid hydration errors.
 const supportsAnchor = ref(false);
 onMounted(() => {
     supportsAnchor.value = typeof CSS !== 'undefined' && CSS.supports('anchor-name: --a');
@@ -132,25 +132,6 @@ function showAsPopover(el: HTMLElement | null) {
     }
 }
 
-// The panel (and, with showOverlayOnFocus, the page-dim overlay) stays up for
-// the entire interaction: it opens when the field gains focus (or is clicked or
-// typed into while closed after an Escape) and closes on Escape, select,
-// submit, focus moving to another control (Tab, or a screen reader's linear
-// navigation past the widget), and a pointerdown outside the widget's working
-// parts. Clicks on the panel itself keep focus in the input (the list's
-// mousedown is prevented), so they never read as leaving.
-//
-// Dismissal never reads a bare blur. A screen reader moves real DOM focus
-// around the widget on its own: VoiceOver's keyboard-focus-follows-cursor drags
-// it off the input — to the web area, or to nowhere — while the arrows walk the
-// options, and that arrives as a focusout naming no new control. Treating it as
-// the user leaving ends the interaction on the first ArrowDown, so a collapse
-// the arrows caused (combobox.consumeArrowBlur) hands focus back to the input,
-// which re-arms text entry. Every other collapse belongs to the user: their
-// screen reader's cursor is exploring, and chasing it would drag them back into
-// the widget, so focus is left exactly where it went. A click on non-focusable
-// page space blurs the input the same indistinguishable way; that case closes
-// the panel from its pointerdown, before any focus handling runs.
 // The drawer slides out of wherever the closed panel is parked, and the park is
 // side-specific: behind the field's bottom edge below it, behind its top edge
 // above it. The always-mounted panel measures once on mount, where a field
@@ -178,6 +159,26 @@ async function parkPanel() {
     panel.style.transition = '';
 }
 
+// The panel (and, with showOverlayOnFocus, the page-dim overlay) stays up for
+// the entire interaction: it opens when the field gains focus (or is clicked or
+// typed into while closed after an Escape) and closes on Escape, on choosing a
+// suggestion, on the Enter that commits the typed query, on focus moving to
+// another control (Tab, or a screen reader's linear navigation past the
+// widget), and on a pointerdown outside the widget's working parts. Clicks on
+// the panel itself keep focus in the input (the list's mousedown is prevented),
+// so they never read as leaving.
+//
+// Dismissal never reads a bare blur. A screen reader moves real DOM focus
+// around the widget on its own: VoiceOver's keyboard-focus-follows-cursor drags
+// it off the input — to the web area, or to nowhere — while the arrows walk the
+// options, and that arrives as a focusout naming no new control. Treating it as
+// the user leaving ends the interaction on the first ArrowDown, so a collapse
+// the arrows caused (combobox.consumeArrowBlur) hands focus back to the input,
+// which re-arms text entry. Every other collapse belongs to the user: their
+// screen reader's cursor is exploring, and chasing it would drag them back into
+// the widget, so focus is left exactly where it went. A click on non-focusable
+// page space blurs the input the same indistinguishable way; that case closes
+// the panel from its pointerdown, before any focus handling runs.
 async function onFieldActivity() {
     if (props.disabled) {
         return;
