@@ -84,18 +84,17 @@ const combobox = useAutocompleteCombobox({
 // the takeover's input announces "expanded" exactly when a list exists
 const listboxOpen = computed(() => visibleSuggestions.value.length > 0);
 
-// announces the number of suggestions actually DISPLAYED (after the cap and the
-// fit-to-viewport trim), or the no-results state. Each shell owns its own live
-// region: the inactive shell's sits under display: none, which silences it.
+// announces how many suggestions are actually displayed, after the cap and the
+// trim, or the no-results state. the inactive shell's region sits under
+// display: none, which silences it.
 const liveAnnouncement = computed(() =>
     visibleSuggestions.value.length
         ? props.suggestionCountText(visibleSuggestions.value.length)
         : props.noResultsAnnouncement,
 );
 
-// 100dvh does not shrink when the iOS keyboard opens, so the list height is
-// derived from the visual viewport instead; the keyboard opening/closing is
-// just a resize event. Re-trim after every height change.
+// 100dvh does not shrink when the iOS keyboard opens, so the list height comes
+// from the visual viewport instead, where the keyboard is just a resize event
 function updateListHeight() {
     const el = listEl.value;
     const viewport = window.visualViewport;
@@ -148,11 +147,9 @@ function onOpenAutoFocus(event: Event) {
     combobox.revealCaretOnFocus();
 }
 
-// The user is done with the field: the app hears about it so a form can validate
-// the way it does on any other field's blur. Focus moving INTO the takeover is
-// not leaving — the takeover is portaled out of this root, so its input reads as
-// somewhere else — and neither is the focus Reka hands back to the resting field
-// on close, which arrives from outside the root and never bubbles through here.
+// the user is done with the field, so the app hears a blur it can validate on.
+// focus moving into the takeover is not leaving, though the portal puts it
+// outside this root; nor is the focus Reka hands back on close.
 function onRootFocusout(event: FocusEvent) {
     const next = event.relatedTarget as Node | null;
     if (takeoverOpen.value || (next && mobileRootEl.value?.contains(next))) {
@@ -161,9 +158,9 @@ function onRootFocusout(event: FocusEvent) {
     emit('blur');
 }
 
-// Reka's trigger opens on click, which both a tap and a screen reader's
-// activation produce; the keys that activate a button do nothing on an input, so
-// the combobox's own opening keys are bound on the element
+// Reka's trigger opens on click, which a tap and a screen reader's activation
+// both produce; a button's Enter and Space do nothing on an input, so the
+// combobox's own opening keys are bound on the element
 function openTakeover() {
     if (!props.disabled) {
         takeoverOpen.value = true;
@@ -193,24 +190,20 @@ function onTakeoverOpenChange(value: boolean) {
         <dialog-root
             :open="takeoverOpen"
             @update:open="onTakeoverOpenChange">
-            <!-- The resting field, which opens the takeover with the real input
-                 focused. A readonly input rather than a button, so it is a form
-                 field: the label names it, its value is a value instead of being
-                 folded into its name, and aria-required/aria-invalid apply —
-                 none of which a button can carry. readonly is what makes the tap
-                 safe: it denies typing and with it the on-screen keyboard, which
-                 would otherwise open here and again in the takeover.
-                 role="combobox" with a dialog popup is the APG date-picker
-                 shape; Reka supplies aria-haspopup, aria-expanded, aria-controls
-                 and the click that opens. aria-readonly="false" states what
-                 the HTML attribute cannot: the value is not typed over, but the
-                 user does change it, in the takeover this field opens. iOS
-                 VoiceOver announces "read only" regardless — WebKit maps the
-                 native attribute straight to the trait — and follows it with
-                 "double tap to edit", which is the action that works; the ARIA
-                 attribute stands for the engines that do honor it. autocomplete stays 'off' here whatever
-                 the consumer asked for: browsers skip readonly fields anyway,
-                 and the token belongs on the input that is really filled in. -->
+            <!-- the resting field, which opens the takeover with the real input
+                 focused. a readonly input rather than a button, so it is a form
+                 field: the label names it, its value stays a value, and
+                 aria-required/aria-invalid apply, none of which a button carries.
+                 readonly is what keeps the on-screen keyboard from opening here
+                 and again in the takeover -->
+            <!-- role="combobox" with a dialog popup is the APG date-picker shape,
+                 and Reka supplies aria-haspopup, aria-expanded, aria-controls and
+                 the click. aria-readonly="false" says what the HTML attribute
+                 cannot, that the user does change this value; iOS VoiceOver
+                 announces "read only" anyway, then "double tap to edit" -->
+            <!-- autocomplete stays 'off' whatever the consumer asked for:
+                 browsers skip readonly fields, and the token belongs on the
+                 input that is really filled in -->
             <dialog-trigger
                 :id="triggerId"
                 as="input"
@@ -330,10 +323,9 @@ function onTakeoverOpenChange(value: boolean) {
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .es-autocomplete-trigger {
-    /* an input's intrinsic width comes from its size attribute and ignores its
-     * value, so a long value cannot widen a content-sized ancestor — but a flex
-     * item's automatic minimum IS that intrinsic width, which would stop the
-     * field shrinking into a narrow column */
+    /* an input's intrinsic width ignores its value, so a long one cannot widen a
+     * content-sized ancestor — but that width is also a flex item's automatic
+     * minimum, which would stop the field shrinking into a narrow column */
     min-width: 0;
 
     &::placeholder {
@@ -341,10 +333,9 @@ function onTakeoverOpenChange(value: boolean) {
     }
 }
 
-/* the disabled colors es-autocomplete-field sets by hand, matched here, where
- * es-ds-styles paints them directly — the trigger carries form-control itself,
- * so its $input-disabled-color ($gray-500, 2.93:1 against the disabled
- * background) applies and has to be answered at the same weight it is written */
+/* the disabled colors es-autocomplete-field sets by hand, matched here: this
+ * trigger carries form-control itself, so es-ds-styles paints it $gray-500
+ * (2.93:1), and !important because that rule is written that way */
 input.es-autocomplete-trigger:disabled {
     color: variables.$gray-600 !important;
 
@@ -353,20 +344,14 @@ input.es-autocomplete-trigger:disabled {
     }
 }
 
-/* The base field look, re-asserted: es-ds-styles paints [readonly] exactly like
- * :disabled — gray background, gray text (with !important), no border at all.
- * That is right for a field whose value cannot be changed; here readonly is only
- * how the on-screen keyboard is kept out of the way, and the field is otherwise
- * a normal, interactive one. A disabled field is excluded so it still reads as
- * disabled. Of the borders only the normal color is restored: the invalid one
- * already survives that rule, so .is-invalid re-states it at this specificity
- * rather than losing to it. */
+/* the base field look, re-asserted: es-ds-styles paints [readonly] like
+ * :disabled, but here it only keeps the keyboard away. a disabled field is
+ * excluded, and .is-invalid re-states its border color to keep it. */
 input.es-autocomplete-trigger:not(:disabled) {
     background-color: variables.$input-bg;
     border: variables.$input-border-width solid variables.$input-border-color;
     color: variables.$input-color !important;
-    /* activating it opens the takeover, so it takes the pointer of the control it
-     * is, not a text caret it would never place */
+    /* it opens the takeover, so it takes a pointer rather than a text caret */
     cursor: pointer;
 
     &.is-invalid {
@@ -374,8 +359,8 @@ input.es-autocomplete-trigger:not(:disabled) {
     }
 }
 
-/* transparent: it exists for the scroll lock, and any tint would show through the
- * takeover's cross-fade. Sits under the takeover by DOM order at the same level. */
+/* transparent: it exists for the scroll lock, and any tint would show through
+ * the takeover's cross-fade. DOM order puts it under the takeover. */
 .es-autocomplete-takeover-overlay {
     inset: 0;
     position: fixed;

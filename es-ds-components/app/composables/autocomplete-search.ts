@@ -19,21 +19,16 @@ interface AutocompleteSearchOptions {
 const EMPTY_SUGGESTIONS: EsAutocompleteSuggestion[] = [];
 
 /**
- * The search state behind es-autocomplete.vue: the debounced 'complete' contract
- * (one emission per typing pause, suppressed after selection, cancelled by every
- * terminal path so a late-arriving response can never reopen the panel), the
- * minChars gate, the post-selection staleness of the app's list, and the
- * prompt/no-results empty-state messaging. Extracted from the component so this
- * contract is unit-testable without a component mount.
+ * the search state behind es-autocomplete.vue: the debounced 'complete' contract,
+ * the minChars gate, the staleness of the app's list after a selection, and the
+ * empty-state messaging. here so it is unit-testable without a mount.
  */
 export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
     const { model } = options;
 
-    // a selection makes the app's list stale: it matched the query the user
-    // typed, not the full text the selection filled in — and since selection
-    // deliberately emits no 'complete', the app is never prompted to refresh it.
-    // Hold the stale list back (a refocused panel shows promptText instead)
-    // until the app next updates the suggestions prop.
+    // a selection makes the app's list stale: it matched the typed query, not the
+    // text just filled in, and no 'complete' fires to refresh it. hold it back —
+    // a refocused panel shows promptText — until the app updates the prop.
     const suggestionsStale = ref(false);
 
     // pass an empty list below minChars so no suggestions show for too-short queries
@@ -62,9 +57,8 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
 
     let lastSelectedText: string | null = null;
 
-    // whether the app's most recent suggestions update was empty — this is what
-    // distinguishes "search found nothing" (show noResultsText) from "no search
-    // has answered yet" (show promptText)
+    // whether the app's last update was empty, which tells "search found nothing"
+    // (noResultsText) from "nothing has answered yet" (promptText)
     const noResults = ref(false);
     watch(
         options.suggestions,
@@ -76,9 +70,8 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         { deep: 1 },
     );
 
-    // what an open panel shows when there are no suggestions to render: the
-    // no-results message once a search has actually come back empty, otherwise
-    // the prompt (nothing searched yet, or the query is below minChars)
+    // what an open panel shows with nothing to render: the no-results message once
+    // a search has come back empty, otherwise the prompt
     const queryLongEnough = computed(() => model.value.trim().length >= options.minChars());
     const panelMessage = computed(() => {
         if (effectiveSuggestions.value.length) {
@@ -87,11 +80,9 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         return noResults.value && queryLongEnough.value ? options.noResultsText() : options.promptText();
     });
 
-    // rendered into the shells' sr-only live regions when nothing is displayed,
-    // so screen readers hear that a search came back empty (the shells announce
-    // the count of DISPLAYED suggestions themselves — the app's list is capped
-    // and trimmed per shell). The prompt is guidance rather than a state change,
-    // so it is never announced (the input's aria-describedby hint covers it).
+    // rendered into the shells' live regions when nothing is displayed, so screen
+    // readers hear that a search came back empty; each shell announces its own
+    // displayed count. the prompt is guidance, so it is never announced.
     const noResultsAnnouncement = computed(() =>
         noResults.value && queryLongEnough.value ? options.noResultsText() : '',
     );
@@ -115,9 +106,8 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
             noResults.value = false;
             return;
         }
-        // the edited query's search is now pending: show promptText, not the
-        // previous query's "no results", until the app answers via the
-        // suggestions prop
+        // the edited query's search is pending: show promptText, not the previous
+        // query's "no results", until the app answers
         noResults.value = false;
         scheduleComplete(query);
     });

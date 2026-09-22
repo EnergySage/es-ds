@@ -5,9 +5,8 @@ import { splitAutocompleteText } from '../utils/autocomplete';
 interface Props {
     query?: string;
     /**
-     * Pre-computed segments — e.g. from splitAutocompleteTextLines when several
-     * lines form one suggestion, or built from a search API's own match offsets.
-     * When provided, text/query are ignored.
+     * pre-computed segments, e.g. from splitAutocompleteTextLines or a search
+     * API's own match offsets. when provided, text/query are ignored.
      */
     segments?: EsAutocompleteTextSegment[] | null;
     text?: string;

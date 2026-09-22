@@ -4,9 +4,8 @@ import type { EsAutocompleteSuggestion } from '../types';
 
 interface AutocompleteComboboxOptions {
     /**
-     * close this shell's panel/takeover. A selection passes its text so a shell
-     * that renders the final text before the next patch (the takeover's exit
-     * ghost clones the trigger mid-close) doesn't read a stale DOM.
+     * close this shell's panel/takeover. a selection passes its text, so a shell
+     * that reads the DOM mid-close (the takeover's exit ghost) is not stale.
      */
     close: (selectedText?: string) => void;
     emitSelect: (suggestion: EsAutocompleteSuggestion) => void;
@@ -15,31 +14,23 @@ interface AutocompleteComboboxOptions {
     inputEl: Ref<HTMLInputElement | null>;
     model: Ref<string>;
     /**
-     * the suggestions the arrows navigate: the DISPLAYED list (after the cap and
-     * fit-to-viewport trim), empty while the shell's panel is closed so keys
-     * cannot navigate an invisible list
+     * the suggestions the arrows navigate: the displayed list, after the cap and
+     * the trim, and empty while closed so keys cannot walk an invisible list
      */
     suggestions: () => EsAutocompleteSuggestion[];
 }
 
 /**
- * The combobox core both shells share: highlight state, ARIA wiring
- * (aria-activedescendant over non-focusable options), fully cyclic arrow
- * navigation (input → first → … → last → input → …), Google-style
- * copy-on-highlight, and Enter's select-or-stand-aside decision.
- *
- * The input renders `displayValue` and options render from the same highlight
- * index, so the value rewrite and the aria-activedescendant change always land
- * in one render flush — VoiceOver reads simultaneous changes as in-field
- * autocomplete navigation and keeps its cursor (and text entry) anchored in the
- * field. Options are never focusable, so no assistive tech can drag real focus
- * off the input while navigating (both per the Google/Amazon pattern).
+ * the combobox core both shells share: highlight state, aria-activedescendant
+ * over non-focusable options, cyclic arrows, copy-on-highlight, and Enter's
+ * select-or-stand-aside. value and activedescendant come from one index, so they
+ * land together, which is what VoiceOver stays anchored for.
  */
 export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
     // -1 is the input itself (no option highlighted)
     const highlightIndex = ref(-1);
-    // Only a highlight the user created makes Enter select — and only keyboard
-    // navigation mirrors into the input (hovering must not change the field).
+    // only a highlight the user created makes Enter select, and only keyboard
+    // navigation mirrors into the input: hovering must not change the field
     const highlightSource = ref<'keyboard' | 'pointer' | null>(null);
 
     const highlighted = computed(() => options.suggestions()[highlightIndex.value] ?? null);
@@ -53,10 +44,9 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
     // the field hides its own ring — the indicator moves with the navigation
     const keyboardHighlightActive = computed(() => keyboardNav.value && highlightIndex.value >= 0);
 
-    // What the input DISPLAYS: the typed query, or — during keyboard navigation —
-    // the highlighted suggestion, so users see what selecting would enter while
-    // the app sees no query change (no 'complete' fires and the predictive
-    // bolding stays keyed to the typed text).
+    // what the input displays: the typed query, or the highlighted suggestion
+    // while arrowing, so users see what selecting would enter while the app sees
+    // no query change — no 'complete' fires and the bolding stays keyed to it
     const displayValue = computed(() =>
         keyboardNav.value && highlighted.value ? highlighted.value.text : options.model.value,
     );
@@ -84,9 +74,8 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
         () => resetHighlight(),
     );
 
-    // typing means the user is editing the query, not navigating. The edit
-    // applies to what the field currently shows (a mirrored suggestion is
-    // editable, as on Google), so the model takes the input's resulting value.
+    // typing means editing the query, not navigating, and it applies to whatever
+    // the field shows — a mirrored suggestion is editable, as on Google
     function onInput(event: Event) {
         const value = (event.target as HTMLInputElement).value;
         highlightIndex.value = -1;
@@ -107,14 +96,9 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
         void revealCaretAtEnd();
     }
 
-    // A screen reader can answer the arrows' value rewrite by moving its cursor
-    // — and with it real DOM focus — off the input. That move is Safari's
-    // accessibility sync, so it lands within a frame or two of the keypress,
-    // while a human answering the spoken suggestion cannot press anything for
-    // the length of the announcement. So each arrow press marks the moment and
-    // the first blur to ask consumes the mark: a blur inside the window is the
-    // rewrite's echo, and anything later is the user (or their screen reader's
-    // own navigation) genuinely leaving the field.
+    // a screen reader can answer the arrows' value rewrite by moving DOM focus off
+    // the input, within a frame or two — sooner than a human can. so each press
+    // marks the moment: a blur inside the window is that echo, a later one is not.
     const ARROW_BLUR_WINDOW_MS = 250;
     let arrowPressedAt = 0;
     function consumeArrowBlur() {
@@ -144,9 +128,9 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
                 select(highlighted.value);
                 return;
             }
-            // Nothing is chosen, so the key is not ours: it reaches the page as
-            // it would from any other field, and a surrounding form submits
-            // implicitly. The panel closes because the query is committed.
+            // nothing is chosen, so the key is not ours: it reaches the page as
+            // from any other field, and a form submits implicitly. the panel
+            // closes because the query is committed.
             options.close();
         }
     }
@@ -173,9 +157,9 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
         }
     }
 
-    // keep the input focused while clicking in the panel, so focus and the text
-    // caret are still in the field after selecting. Interactive elements a
-    // consumer renders in the item slot are exempt so they remain focusable.
+    // keep the input focused while clicking in the panel, so focus and the caret
+    // are still there after selecting. interactive elements in a consumer's item
+    // slot are exempt, so they stay focusable.
     function onListMousedown(event: MouseEvent) {
         const target = event.target as HTMLElement | null;
         const interactive =
@@ -191,13 +175,9 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
         options.inputEl.value?.focus();
     }
 
-    // Browsers scroll the caret into view when the selection changes or the
-    // user types — never on focus itself, and Safari scrolls a field back to
-    // its start on blur. So a refocused field whose caret is restored beyond
-    // the visible text (after selecting a suggestion longer than the field)
-    // shows the text's start with the caret out of view. Measure the caret's
-    // horizontal position and bring it into view; a non-collapsed selection
-    // (Tab's select-all) is left to the browser.
+    // browsers scroll the caret into view when the selection changes, never on
+    // focus itself, so a refocused field shows its start with the restored caret
+    // out of view. measure where that caret is and bring it in.
     let caretContext: CanvasRenderingContext2D | null | undefined;
     function revealCaretOnFocus() {
         // deferred a frame so the browser's own focus handling (caret restore,
@@ -230,11 +210,9 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
         });
     }
 
-    // When text is written into the input programmatically (a selection filling
-    // in the suggestion, or keyboard navigation mirroring one), the browser
-    // leaves the caret at the end but the field scrolled to the start — a value
-    // wider than the field shows its beginning with the caret out of view.
-    // Reveal the caret once the written value has reached the DOM.
+    // text written programmatically leaves the caret at the end but the field
+    // scrolled to the start, so a value wider than the field shows its beginning.
+    // reveal the caret once the written value has reached the DOM.
     async function revealCaretAtEnd() {
         // two ticks: the first flushes the ref watchers, the second the render
         // patch that writes the input's DOM value

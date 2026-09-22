@@ -2,10 +2,9 @@
 import type { AutocompleteCombobox } from '../composables/autocomplete-combobox';
 
 /**
- * The field both shells share: the combobox input plus its clear button, with
- * all ARIA wiring driven by the combobox core. The shells add their own
- * surroundings (popover panel vs takeover) and their own listeners via
- * fallthrough attrs on this component's root.
+ * the field both shells share: the combobox input plus its clear button, with
+ * the ARIA wiring driven by the combobox core. each shell adds its own
+ * surroundings and its own listeners, through fallthrough attrs on the root.
  */
 interface Props {
     /** names the takeover's input, which has no visible label of its own */
@@ -74,16 +73,9 @@ defineExpose({ inputEl });
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-/* The disabled styling of es-form-input, applied here by hand: the :disabled
- * rules in es-ds-styles target the element carrying form-control, which here is
- * this wrapper div rather than the real (disabled) input inside it.
- *
- * One deliberate difference: $gray-600 rather than es-form-input's
- * $input-disabled-color ($gray-500), which reaches only 2.93:1 against the
- * disabled background — $gray-600 clears AA at 4.76:1. It covers the value and
- * the placeholder both, so an empty disabled field and a filled one read alike;
- * without the second rule the placeholder below wins here and renders darker
- * than the value it stands in for. */
+/* es-form-input's disabled styling by hand, since its :disabled rules target
+ * form-control — here the wrapper, not the input. $gray-600 because
+ * $input-disabled-color reaches 2.93:1, and the placeholder takes it too. */
 .es-autocomplete-field--disabled {
     background-color: variables.$input-disabled-bg;
     border: 0;

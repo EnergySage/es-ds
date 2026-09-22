@@ -3,27 +3,19 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { EsAutocompleteSuggestion } from '../types';
 
 // Baymard: keep the list manageable — at most this many suggestions, further
-// reduced by the fit-to-viewport trim. Shared by both shells.
+// reduced by the fit-to-viewport trim. shared by both shells.
+// https://baymard.com/research-articles/autocomplete-design
 export const MAX_VISIBLE_SUGGESTIONS = 5;
 
 /**
- * Fit-to-viewport trimming: suggestions render as uniform-height rows (the
- * es-autocomplete-item min-height plus padding from its own content; rows have no
- * margins), so the number that fits is the available height divided by one
- * rendered row's height. Whole rows are added or removed as the available height
- * changes — the list never scrolls, and a row is never partially shown.
+ * fit-to-viewport trimming: rows are uniform height, so the number that fits is
+ * the available height over one rendered row's, and whole rows come and go as
+ * that height changes — the list never scrolls and no row is half shown.
  *
- * The height limit is read from the container's resolved max-height (the desktop
- * panel, whose positioning sets it from the space around the field) or its
- * explicit height (the mobile takeover list). Re-computes on suggestion changes,
- * window resizes, and scrolls (the panel is anchored to the field, so scrolling
- * shrinks or grows its available height); callers whose container height changes
- * by other means (e.g. the mobile visualViewport keyboard handling) call the
- * returned `remeasure` themselves. `beforeMeasure` runs at the start of every
- * measure pass, so a caller that positions the container (choosing the side and
- * writing the max-height) does it from the same numbers the row count uses.
- * `active` gates the viewport-event remeasures: a shell whose container stays
- * mounted while closed would otherwise re-measure on every page scroll.
+ * the limit comes from the container's max-height or explicit height, re-read on
+ * suggestion changes, resizes and scrolls; anything else calls `remeasure`.
+ * `beforeMeasure` runs first, so a caller positioning the container works from
+ * the same numbers, and `active` gates remeasures while a shell is closed.
  */
 export function useFitToViewport(
     contentEl: Ref<HTMLElement | null>,
@@ -52,9 +44,8 @@ export function useFitToViewport(
             return;
         }
         options.beforeMeasure?.();
-        // visibleCount never drops below 1, so whenever there are suggestions a
-        // row is rendered to measure; without one (a message-only panel showing
-        // the prompt or no-results text) there is nothing to trim
+        // visibleCount never drops below 1, so a row is always rendered to measure
+        // whenever there are suggestions; a message-only panel has none to trim
         const row = element.querySelector<HTMLElement>('[data-es-autocomplete-item]');
         if (row) {
             const fits = Math.floor(heightLimit(element) / row.offsetHeight);

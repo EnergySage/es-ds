@@ -14,15 +14,9 @@ interface TakeoverChoreographyOptions {
 const TRANSITION_MS = 300;
 
 /**
- * The takeover's enter/exit choreography: the takeover cross-fades while a
- * "ghost" of the field flies between the resting field's place on the page and
- * the real field's place in the takeover, showing where the takeover comes from
- * and returns to. The ghost is an inert clone of the resting field, so the real
- * input keeps its synchronous focus (which is what makes iOS show the keyboard)
- * and the animation stays purely presentational. Exit runs the same flight in
- * reverse — the ghost carries the resting field's look and current text, so it
- * lands exactly as the page will render — and the actual close waits for the
- * animation.
+ * the takeover's enter/exit choreography: it cross-fades while a "ghost" of the
+ * field flies between the resting field and the one inside it. the ghost is an
+ * inert clone, so the real input keeps the focus iOS needs to show the keyboard.
  */
 export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
     function transitionsDisabled() {
@@ -38,9 +32,9 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
     }
 
     /**
-     * Where a field keeps its text: the gaps from its own box to the text
-     * region. Measured, never assumed — the clear button's width is the
-     * takeover field's alone, and it reserves that space over its padding.
+     * where a field keeps its text: the gaps from its own box to the text region.
+     * measured, never assumed — only the takeover's field has a clear button,
+     * and it reserves that width over its padding.
      */
     function textInsets(input: HTMLInputElement, clearButton: HTMLElement | null) {
         const style = getComputedStyle(input);
@@ -62,11 +56,9 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         to: FlightEnd,
         decorate?: (ghost: HTMLElement, field: HTMLInputElement) => void,
     ) {
-        // The flying element is a wrapper around the cloned field, because the
-        // clear button's clone has to render inside the ghost and an <input>
-        // cannot have rendered children. The clone fills the wrapper, so the
-        // wrapper's animated box is the field's box and the field's own border
-        // and background are what the flight shows.
+        // the flying element wraps the cloned field, because the clear button's
+        // clone must render inside the ghost and an <input> cannot have children.
+        // the clone fills the wrapper, so its own border and background fly.
         const ghost = document.createElement('div');
         ghost.setAttribute('aria-hidden', 'true');
         ghost.style.cssText = 'margin: 0; overflow: hidden; pointer-events: none; position: fixed; z-index: 1060;';
@@ -97,10 +89,9 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
             })),
             timing,
         );
-        // The text region travels with the box: it widens or narrows by the
-        // clear button's width across the same 300ms the button clone spends
-        // fading, so a value pinned to its end slides to its landing place
-        // instead of stepping there when the real field is revealed.
+        // the text region travels with the box, widening or narrowing by the clear
+        // button's width over the same 300ms the clone spends fading, so a value
+        // pinned to its end slides to its landing place instead of stepping
         field.animate(
             [from, to].map((end) => ({
                 paddingLeft: `${end.insets.left}px`,
@@ -112,16 +103,9 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         return settle(flight).finally(() => ghost.remove());
     }
 
-    // An input's own scroll offset is the only thing that positions a value too
-    // long to fit: text-align does nothing once the value overflows, and stops
-    // matching the field the moment it does not. So the ghost is held at its
-    // scroll end, which reproduces both cases without asking which one this is —
-    // a value that overflows shows its end and one that fits clamps to zero and
-    // stays start-anchored. The end is where both real fields leave a long
-    // value: the takeover's input has the caret there, and the resting field
-    // holds focus after the close, so the browser keeps that same caret in view.
-    // Holding takes a frame loop because the flight animates the box's width and
-    // the browser re-clamps scrollLeft against it.
+    // only an input's scroll offset positions a value too long to fit, and held at
+    // the end — where both real fields leave the caret — one that fits clamps to
+    // zero anyway. the frame loop is because the flight re-clamps scrollLeft.
     function holdScrolledToEnd(field: HTMLInputElement) {
         const hold = () => {
             if (!field.isConnected) {
@@ -133,9 +117,9 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         hold();
     }
 
-    // What the flight's endpoints do not share: the clear button, which only the
-    // takeover's field carries. A clone of it fades in toward the takeover and
-    // out toward the page, over the space the animated insets are reserving.
+    // what the endpoints do not share: the clear button, which only the takeover's
+    // field carries. a clone fades in toward the takeover and out toward the
+    // page, over the space the animated insets reserve.
     function decorateGhost(
         ghost: HTMLElement,
         field: HTMLInputElement,
@@ -152,13 +136,9 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         holdScrolledToEnd(field);
         if (clearButton) {
             const clone = clearButton.cloneNode(true) as HTMLElement;
-            // Pinned inside the field's border, which is where the real field
-            // lays the button out: its own box is the field's content box (p-0),
-            // so insetting the clone by the border's width lands it exactly
-            // there rather than a border's width further out. h-100 comes off
-            // for the same reason it goes on the field's padding — it is
-            // !important, and would hold the clone to the full border-box
-            // height instead of the insets' own.
+            // pinned inside the field's border, where the real field lays the
+            // button out in its content box. h-100 comes off for the same reason
+            // px-100 does on the field: !important would beat the insets.
             const fieldStyle = getComputedStyle(field);
             const borderY = Number.parseFloat(fieldStyle.borderTopWidth) || 0;
             const borderX = Number.parseFloat(fieldStyle.borderRightWidth) || 0;
@@ -181,11 +161,9 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         if (!field || !takeover || !trigger) {
             return;
         }
-        // hide both real elements while the ghost flies, so it reads as ONE element
-        // leaving its place and arriving — opacity, not visibility, because the
-        // field holds focus and hiding a focused element can blur it (losing the
-        // iOS keyboard). The trigger is revealed only once the flight settles, when
-        // the now-opaque takeover covers it.
+        // hide both real elements while the ghost flies, so it reads as one element
+        // leaving and arriving. opacity, not visibility: the field holds focus, and
+        // hiding a focused element can blur it and lose the iOS keyboard.
         field.style.opacity = '0';
         trigger.style.opacity = '0';
         const clearButton = field.querySelector<HTMLElement>('.es-autocomplete-clear');

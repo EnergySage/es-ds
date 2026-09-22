@@ -2,11 +2,9 @@
 import type { EsAutocompleteSuggestion } from '../types';
 
 /**
- * One suggestion row. Deliberately NOT focusable (no tabindex): the combobox
- * pattern keeps real focus in the input and points aria-activedescendant here,
- * so no assistive tech can drag focus off the field while navigating (as on
- * Google's and Amazon's comboboxes). aria-selected tracks the highlight, per
- * the APG combobox examples.
+ * one suggestion row, deliberately not focusable: the combobox pattern keeps
+ * real focus in the input and points aria-activedescendant here, so nothing can
+ * drag focus off the field while navigating. aria-selected tracks the highlight.
  */
 interface Props {
     /** whether this row is the highlighted one (aria-activedescendant target) */
@@ -54,10 +52,9 @@ const emit = defineEmits<{
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
 .es-autocomplete-item {
-    /* 48px and higher rows, padding inclusive (rows have no margins): an adequate tap
-     * target on any touch device — tablets (≥md) get the desktop popover, not
-     * the takeover. Rows share one uniform height per list; the fit-to-viewport
-     * trim divides the available height by it to add/remove whole rows. */
+    /* 48px and up, padding inclusive: an adequate tap target on any touch device.
+     * rows share one uniform height per list, which the fit-to-viewport trim
+     * divides the available height by to add or remove whole rows. */
     align-content: center;
     cursor: pointer;
     min-height: 3rem;
@@ -71,9 +68,8 @@ const emit = defineEmits<{
         background-color: variables.$blue-50;
     }
 
-    /* focus-visible ring for the keyboard-highlighted suggestion, mirroring
-     * es-dropdown-select's option ring; drawn inset (within the panel's
-     * overflow: hidden edge) and rounded to match the panel's border radius */
+    /* focus-visible ring for the keyboard-highlighted suggestion, as
+     * es-dropdown-select draws it: inset within the panel's overflow edge */
     &--keyboard-nav[data-highlighted] {
         position: relative;
 

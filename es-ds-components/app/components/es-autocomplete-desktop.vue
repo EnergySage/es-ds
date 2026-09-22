@@ -32,15 +32,12 @@ const emit = defineEmits<{
 const model = defineModel<string>({ default: '' });
 
 const open = ref(false);
-// the listbox renders only when there are real suggestions to browse; the
-// prompt/no-results message shows in an aria-hidden lookalike panel instead, so
-// a screen reader hears the input's own name/role/description uninterrupted on
-// focus, and hears "expanded" exactly when a list exists — per the combobox
-// pattern
+// the listbox renders only when there are suggestions to browse, so a screen
+// reader hears "expanded" exactly when there is a list; the prompt/no-results
+// message shows in an aria-hidden lookalike panel instead
 const listboxOpen = computed(() => open.value && props.suggestions.length > 0);
-// the visible panel hosts whichever of the two applies — the listbox or the
-// prompt/no-results message — so the message slides like the listbox and
-// swapping between them morphs the height
+// the visible panel hosts whichever applies, listbox or message, so the message
+// slides like the listbox and swapping between them morphs the height
 const panelOpen = computed(() => open.value && (props.suggestions.length > 0 || props.panelMessage !== ''));
 
 const rootEl = ref<HTMLElement | null>(null);
@@ -50,15 +47,12 @@ const fieldEl = computed(() => (fieldRef.value?.$el as HTMLElement | undefined) 
 const inputEl = computed(() => fieldRef.value?.inputEl ?? null);
 const panelEl = ref<HTMLElement | null>(null);
 
-// if the browser has anchor positioning, the panel is rendered as the browser's
-// own popover in manual mode, anchored to the field. the top layer puts it out
-// of reach of any ancestor's overflow or z-index, and using manual mode keeps the
-// browser's light-dismiss from counting a click on our own input as reason to close
-// the pane (which we don't want). If the browser does not support anchor positioning,
-// the styles place it below the field the simple way, and our script doesn't activate
-// the popover functionality.
+// with anchor positioning the panel is the browser's own popover, anchored to
+// the field: the top layer escapes any ancestor's overflow or z-index, and
+// manual mode keeps light-dismiss from closing it on a click in our own input.
+// without it the styles place the panel below the field and script stands down.
 //
-// this check runs after mount, not in setup, to avoid hydration errors.
+// checked after mount, not in setup, to avoid hydration errors.
 const supportsAnchor = ref(false);
 onMounted(() => {
     supportsAnchor.value = typeof CSS !== 'undefined' && CSS.supports('anchor-name: --a');
@@ -66,10 +60,9 @@ onMounted(() => {
 const anchorName = `--es-autocomplete-${props.id}`;
 const panelAbove = ref(false);
 
-// chooses the panel's side and writes its max-height from the space around the
-// field — the same numbers the fit-to-viewport trim divides into rows, so the
-// side choice and the row count can never disagree. mirrors the usual popper
-// policy: below unless the natural (untrimmed) list only fits above.
+// chooses the panel's side and max-height from the space around the field, from
+// the same numbers the fit-to-viewport trim divides into rows. below unless the
+// untrimmed list only fits above, as any popper would.
 function positionPanel() {
     const panel = panelEl.value;
     const anchor = fieldEl.value;
@@ -112,9 +105,9 @@ const combobox = useAutocompleteCombobox({
 });
 watch(open, combobox.resetHighlight);
 
-// announces the number of suggestions actually displayed (after the cap and the
-// fit-to-viewport trim), or the no results state. each shell owns its own live
-// region: the inactive shell's sits under display: none, which silences it.
+// announces how many suggestions are actually displayed, after the cap and the
+// trim, or the no results state. the inactive shell's region sits under
+// display: none, which silences it.
 const liveAnnouncement = computed(() =>
     visibleSuggestions.value.length
         ? props.suggestionCountText(visibleSuggestions.value.length)
@@ -132,16 +125,9 @@ function showAsPopover(el: HTMLElement | null) {
     }
 }
 
-// The drawer slides out of wherever the closed panel is parked, and the park is
-// side-specific: behind the field's bottom edge below it, behind its top edge
-// above it. The always-mounted panel measures once on mount, where a field
-// still below the fold reports negative space beneath it and so parks above —
-// which the open then corrects in the same frame the slide begins, and a
-// transition starts from the value BEFORE that frame's change. The result is a
-// panel that slides the right way only after its first open. So the side is
-// settled before the open, and a re-park is applied with transitions off:
-// animated, the park would itself become the slide's starting point, halfway
-// between the two sides.
+// each side parks the closed panel differently, so the side is settled before
+// the open: a transition reads the value from before the frame it starts in.
+// the re-park runs with transitions off, or it becomes the slide's start point.
 async function parkPanel() {
     const wasAbove = panelAbove.value;
     positionPanel();
@@ -159,26 +145,9 @@ async function parkPanel() {
     panel.style.transition = '';
 }
 
-// The panel (and, with showOverlayOnFocus, the page-dim overlay) stays up for
-// the entire interaction: it opens when the field gains focus (or is clicked or
-// typed into while closed after an Escape) and closes on Escape, on choosing a
-// suggestion, on the Enter that commits the typed query, on focus moving to
-// another control (Tab, or a screen reader's linear navigation past the
-// widget), and on a pointerdown outside the widget's working parts. Clicks on
-// the panel itself keep focus in the input (the list's mousedown is prevented),
-// so they never read as leaving.
-//
-// Dismissal never reads a bare blur. A screen reader moves real DOM focus
-// around the widget on its own: VoiceOver's keyboard-focus-follows-cursor drags
-// it off the input — to the web area, or to nowhere — while the arrows walk the
-// options, and that arrives as a focusout naming no new control. Treating it as
-// the user leaving ends the interaction on the first ArrowDown, so a collapse
-// the arrows caused (combobox.consumeArrowBlur) hands focus back to the input,
-// which re-arms text entry. Every other collapse belongs to the user: their
-// screen reader's cursor is exploring, and chasing it would drag them back into
-// the widget, so focus is left exactly where it went. A click on non-focusable
-// page space blurs the input the same indistinguishable way; that case closes
-// the panel from its pointerdown, before any focus handling runs.
+// the panel, and the overlay with showOverlayOnFocus, stays up for the whole
+// interaction: focus opens it; Escape, a selection, Enter, focus moving to
+// another control or a pointerdown outside closes it — never a bare blur.
 async function onFieldActivity() {
     if (props.disabled) {
         return;
@@ -197,13 +166,9 @@ let restoringFocus = false;
 let visiting = false;
 
 function onFocusIn() {
-    // Entering the field starts a fresh interaction, from the typed text. A
-    // highlight left over from earlier arrow navigation would keep
-    // aria-activedescendant pointed into the list, and a screen reader arriving
-    // at the input follows that straight back out to the active option — so
-    // after stepping out of the listbox by hand (VoiceOver's
-    // ctrl-option-shift-up) and walking back to the field, the user could never
-    // rest on it.
+    // entering the field starts a fresh interaction, from the typed text: a
+    // leftover highlight keeps aria-activedescendant pointed into the list, and
+    // a screen reader arriving here follows it straight back out to that option
     if (!restoringFocus) {
         combobox.resetHighlight();
     }
@@ -212,10 +177,9 @@ function onFocusIn() {
     combobox.revealCaretOnFocus();
 }
 
-// The user is done with the field: the panel goes down and the app hears about
-// it, so a form can validate the way it does on any other field's blur. Escape
-// and select are NOT this — each leaves focus in the input, and the interaction
-// continues.
+// the user is done with the field, so the panel goes down and the app hears a
+// blur it can validate on. Escape and select are not this — each leaves focus in
+// the input, and the interaction continues.
 function leaveField() {
     open.value = false;
     if (visiting) {
@@ -238,16 +202,15 @@ function onRootFocusout(event: FocusEvent) {
         }
         return;
     }
-    // a collapse says nothing on its own — the arrows' echo, a click on
-    // non-focusable space and a screen reader's cursor moving off all look
-    // alike here, so the answer waits for what the browser settles on
+    // a collapse says nothing on its own: the arrows' echo, a click on dead space
+    // and a screen reader's cursor moving off all look alike, so the answer waits
+    // for what the browser settles on
     answerFocusCollapse(combobox.consumeArrowBlur());
 }
 
 // deferred a frame: by then an outside pointerdown has closed the panel, and a
-// focus move the browser was still making has landed somewhere real. The window
-// itself losing focus (alt-tab, devtools) leaves the input active and the
-// interaction resumes on return, so it needs nothing.
+// focus move still in flight has landed somewhere real. the window losing focus
+// leaves the input active, so it needs nothing.
 function answerFocusCollapse(followsArrowKey: boolean) {
     requestAnimationFrame(() => {
         const el = inputEl.value;
@@ -262,24 +225,18 @@ function answerFocusCollapse(followsArrowKey: boolean) {
             restoringFocus = false;
             return;
         }
-        // While the panel is up the widget is still in use: a screen reader's
-        // cursor walks the list with real focus left behind, and reporting a
-        // blur there would validate the field mid-interaction. Once the panel
-        // is down — Escape, or the pointerdown that dismissed it — focus that
-        // has not come back means the user has moved on.
+        // while the panel is up the widget is still in use: a screen reader walks
+        // the list with real focus left behind, and a blur would validate the
+        // field mid-interaction. with it down, focus gone means the user has left
         if (!open.value) {
             leaveField();
         }
     });
 }
 
-// clicks outside close the widget: the blur they cause is the same
-// nothing-focused collapse a screen reader produces, so the pointer event is
-// what distinguishes them. Only the widget's working parts count as inside —
-// the field, the panel, and the label (whose click hands focus back to the
-// input) — not merely the root element: the root's own dead space, e.g. beside
-// the label, is not focusable, so a click there must close the panel rather
-// than strand an open list on an unfocused field.
+// clicks outside close the widget, and only the pointer event tells them from a
+// screen reader's identical collapse. inside means the working parts, not the
+// root: its dead space beside the label would otherwise strand an open list.
 function onDocumentPointerdown(event: Event) {
     const target = event.target instanceof Element ? event.target : null;
     const part = target?.closest('.es-autocomplete-field, .es-autocomplete-panel, label');
@@ -302,19 +259,9 @@ onBeforeUnmount(() => {
 });
 
 // --- panel drawer ------------------------------------------------------------
-// The panel slides out from underneath the field like a drawer: an invisible
-// clip wrapper sits at the panel's final place while the visual panel inside it
-// translates from fully-behind-the-field to rest — the edge nearest the user
-// appears first and reveals the rest. The wrapper's clip-path crops only at the
-// field's edge (negative insets on the other three sides leave the panel's
-// shadow uncropped). The slide itself is pure CSS: the wrapper stays mounted
-// and the --open class transitions the panel's transform/shadow/visibility (see
-// the styles below), so interruption, reversal, reduced motion, and frozen-tab
-// recovery all come from the platform. Script remains for what CSS cannot do:
-// showing the popover, re-positioning on reopen, and animating the panel's
-// height when the trim renders more or fewer rows or the content swaps between
-// the message and the list (a content-driven auto-height change, which CSS
-// cannot transition).
+// the slide is pure CSS on the --open class, so interruption, reversal and
+// reduced motion come from the platform; script shows the popover,
+// re-positions, and morphs the height.
 const PANEL_SLIDE_MS = 200;
 
 function morphDisabled() {
@@ -339,13 +286,9 @@ watch(panelOpen, (isOpen) => {
     }
 });
 
-// The height morph animates the PANEL itself (the visible bordered box, whose
-// overflow: hidden clips the rows), so both directions show: growing reveals
-// the new rows, shrinking pulls the bottom edge back up. The observer watches
-// the panel's inner content — its size never changes from the panel's own
-// height keyframes, so every event is a real content change (rows added or
-// removed, or the message/list swap), including one that lands mid-morph,
-// which retargets from wherever the morph reached.
+// the morph animates the panel itself, whose overflow: hidden clips the rows, so
+// growing reveals them and shrinking pulls the bottom edge up. the observer
+// watches the inner content, so every event is a real content change.
 const panelContentEl = ref<HTMLElement | null>(null);
 let heightAnimation: Animation | null = null;
 let lastPanelHeight: number | null = null;
@@ -430,15 +373,13 @@ onBeforeUnmount(() => {
             @focusin="onFocusIn"
             @input="onFieldActivity"
             @keydown.esc="open = false" />
-        <!-- the panel sits in the DOM right after the field (as in the APG
-             combobox examples), so a screen reader's spatial navigation lands
-             back near the input when leaving the list. The outer div is the
-             invisible clip wrapper the drawer slides within; the inner div is
-             the visual panel that translates. -->
-        <!-- popover and position-anchor are unconditional (inert where
-             unsupported — the popover is only ever SHOWN when anchor positioning
-             exists), and the anchored/fallback positioning split lives in a CSS
-             @supports block, so server and client render identical markup -->
+        <!-- the panel sits right after the field in the DOM, as the APG combobox
+             examples do, so a screen reader leaving the list lands back near the
+             input. the outer div is the clip wrapper the drawer slides within,
+             the inner one the panel that translates -->
+        <!-- popover and position-anchor are unconditional, and the
+             anchored/fallback split lives in a CSS @supports block, so server
+             and client render identical markup -->
         <div
             ref="wrapperEl"
             :aria-hidden="panelOpen ? undefined : 'true'"
@@ -482,9 +423,9 @@ onBeforeUnmount(() => {
                             </template>
                         </es-autocomplete-item>
                     </div>
-                    <!-- the prompt/no-results message is presentation only: screen
-                         readers get the same guidance from the input's description and
-                         the live region, so it is hidden and the combobox stays collapsed -->
+                    <!-- presentation only: screen readers get the same guidance from
+                         the input's description and the live region, so this is hidden
+                         and the combobox stays collapsed -->
                     <div
                         v-else-if="panelMessage"
                         aria-hidden="true"
@@ -516,25 +457,18 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-/* without the overlay, the focused field shows es-dropdown-select's focus ring
- * (es-form-input's lighter focus border lacks the contrast change accessibility
- * asks of a focus state). :focus-within stands in for the input's own
- * :focus-visible — for a text input the two match identically (browsers match
- * :focus-visible on any focus of an editable field, mouse clicks included) and
- * the form-control class sits on the field wrapper while focus lands inside it.
- * The class gate hands the ring to the highlighted option during keyboard
- * navigation. */
+/* without the overlay, the field takes es-dropdown-select's focus ring, whose
+ * contrast change es-form-input's lighter border lacks. the class gate hands
+ * that ring to the highlighted option during keyboard navigation. */
 .es-autocomplete-field--focus-ring:focus-within {
     border-color: variables.$blue-600;
     outline: 0.125rem solid variables.$blue-600;
     outline-offset: 0.125rem;
 }
 
-/* with showOverlayOnFocus, there is deliberately no focus styling on the field:
- * the page-dim overlay appearing on focus is the focus indicator. (es-form-input's
- * lighter :focus border reads as the border disappearing against the dimmed page,
- * and a :focus-visible ring is not an option — browsers match :focus-visible on
- * ANY focus of a text field.) */
+/* with showOverlayOnFocus the field has no focus styling of its own: the
+ * page-dim overlay is the focus indicator, and a lighter border would read as
+ * the border disappearing against the dimmed page */
 
 /* while the panel is open, lift the input above the page-dim overlay so it
  * stays fully visible and interactive */
@@ -543,18 +477,9 @@ onBeforeUnmount(() => {
     z-index: 1000;
 }
 
-/* The invisible clip wrapper the drawer slides within: it owns the positioning
- * and crops the panel ONLY at the field's edge — the negative insets on the
- * other three sides leave room for the panel's shadow. It auto-sizes to the
- * panel, so animating its height (the more/fewer-rows morph) clips whole rows
- * against the field edge.
- *
- * Base placement is the fallback for browsers without anchor positioning:
- * in-page absolute below the field (the root is position-relative and the field
- * its last element before the panel), no flip. Its popover attribute is never
- * shown there, so the author display beats the UA's [popover] display: none.
- * background/border/inset/margin/padding clear the UA's [popover] defaults (the
- * visual panel inside carries its own). */
+/* the invisible clip wrapper the drawer slides within, cropping the panel only
+ * at the field's edge. these base rules are the no-anchor fallback and clear the
+ * UA's [popover] defaults — the display among them shows an unshown popover. */
 .es-autocomplete-clip {
     background: transparent;
     border: 0;
@@ -567,9 +492,8 @@ onBeforeUnmount(() => {
     min-width: 100%;
     overflow: visible;
     padding: 0;
-    /* never a hit target: the wrapper is an always-shown popover, and a
-     * top-layer element swallows clicks over its whole box even when fully
-     * transparent — only the open panel inside may take pointer events */
+    /* never a hit target: a top-layer element swallows clicks over its whole box
+     * even when transparent, so only the open panel inside takes them */
     pointer-events: none;
     position: absolute;
     top: 100%;
@@ -577,20 +501,16 @@ onBeforeUnmount(() => {
     /* above .es-autocomplete-overlay when not in the top layer */
     z-index: 1000;
 
-    /* the flip side: the drawer emerges upward, so the crop moves to the bottom
-     * edge, and the panel pins to the wrapper's bottom so a height morph reveals
-     * rows from the top */
+    /* flipped: the drawer emerges upward, so the crop moves to the bottom edge
+     * and the panel pins there, revealing rows from the top */
     &--above {
         align-content: end;
         clip-path: inset(-2rem -2rem 0 -2rem);
     }
 
-    /* glued to the field with CSS anchor positioning and rendered in the top
-     * layer via popover="manual" (shown from script), so ancestor overflow,
-     * transforms, and z-index cannot clip or cover it; the browser keeps it
-     * attached to the field between the script's re-measures. Flush against the
-     * field, so the crop edge sits exactly where the drawer disappears behind
-     * it; the visible 0.25rem gap is the panel's own margin. */
+    /* glued to the field by anchor positioning, which keeps it attached between
+     * the script's re-measures. flush against the field, so the crop edge sits
+     * where the drawer disappears behind it; the gap is the panel's margin. */
     @supports (anchor-name: --a) {
         left: anchor(left);
         min-width: anchor-size(width);
@@ -604,26 +524,16 @@ onBeforeUnmount(() => {
     }
 }
 
-/* The visual panel that slides. The margin is the field-to-panel gap, kept
- * INSIDE the clip so the crop edge stays flush with the field. max-height is
- * set inline by positionPanel from the space around the field; the
- * fit-to-viewport trim divides the same number into whole rows, so nothing is
- * ever partially visible behind the overflow.
- *
- * The drawer states are declarative: at rest the panel is parked behind the
- * field with its shadow faded (a visible sliding shadow past the clip would
- * give away that nothing is really behind the field) and hidden; the wrapper's
- * --open class transitions it out. visibility is discrete — it flips visible at
- * the START of the slide out and back to hidden at the END of the retract, so
- * the browser runs the whole exit with nothing holding the element from
- * script, and an interrupted slide reverses from wherever it was. */
+/* the visual panel that slides, parked behind the field with its shadow faded
+ * until --open transitions it out. visibility flips discretely, at the slide's
+ * start and the retract's end, so the browser owns the whole exit. */
 .es-autocomplete-panel {
     border: variables.$border-width solid variables.$gray-500;
     box-shadow: none;
     margin-top: 0.25rem;
     overflow: hidden;
-    /* clicks pass through except while open — so a closed (or retracting)
-     * panel can never block the field or the page beneath it */
+    /* clicks pass through except while open, so a closed or retracting panel
+     * never blocks the field or the page beneath it */
     pointer-events: none;
     transform: translateY(calc(-100% - 0.25rem));
     visibility: hidden;

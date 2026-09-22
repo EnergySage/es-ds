@@ -1,16 +1,12 @@
 import type { EsAutocompleteTextSegment } from '../types';
 
 /**
- * Split a line of text into segments for predictive bolding, the same way the
- * default EsAutocomplete item renderer does. Matching is token-based, as in most
- * typeahead libraries: the query is split on whitespace and every token is matched
- * case-insensitively (all occurrences), so query terms may appear in any order —
- * "boston main" highlights both "Main" in "123 Main St" and "Boston" in
- * "Boston, MA 02108". Word-start matches are preferred; a token that never matches
- * at a word start falls back to matching anywhere ("3" highlights within "123").
- *
- * Matched portions are non-predictive (render them regular — the user typed them);
- * everything else is predictive (render it bold — what selecting would add):
+ * splits a line into segments for predictive bolding, as the default item
+ * renderer does: query tokens match case-insensitively in any order, preferring
+ * word starts, and what they match is non-predictive (regular — the user typed
+ * it) while the rest is predictive (bold — what selecting would add). a blank or
+ * unmatched query returns one non-predictive segment, so nothing renders fully
+ * bold.
  *
  *     <span
  *         v-for="(segment, index) in splitAutocompleteText(line, query)"
@@ -18,32 +14,25 @@ import type { EsAutocompleteTextSegment } from '../types';
  *         :class="{ 'font-weight-bold': segment.predictive }">
  *         {{ segment.text }}</span>
  *
- * When no token matches (or the query is blank), the whole text is returned as one
- * non-predictive segment, so unmatched text renders regular rather than fully bold.
- * This is presentation only — it never decides what matches, the app's suggestion
- * source already did — so a backend match it cannot see (typo tolerance, synonyms)
- * simply doesn't highlight. Apps whose search API returns its own match offsets
- * (e.g. Google Places matched substrings) should build segments from those offsets
- * in a custom `item` slot renderer instead.
+ * this is presentation only and never decides what matches, so a backend match
+ * it cannot see (typo tolerance, synonyms) simply does not highlight. an app
+ * whose API returns its own match offsets should build segments from those in a
+ * custom `item` slot instead.
  */
 export function splitAutocompleteText(text: string, query: string): EsAutocompleteTextSegment[] {
     return splitAutocompleteTextLines([text], query)[0]!;
 }
 
 /**
- * Multi-line variant of splitAutocompleteText for suggestions rendered as several
- * lines (or fields) that form one suggestion. Whether to bold is decided across all
- * lines together: when no line matches any query token, every line renders regular;
- * when any line matches, lines without a token match of their own are entirely
- * predictive (bold) — they are part of what selecting adds, matching how the
- * suggestion would render as a single joined string.
+ * multi-line variant, for a suggestion rendered as several lines. bolding is
+ * decided across them together: with no match anywhere every line renders
+ * regular, and once any line matches, the rest are entirely predictive.
  */
 export function splitAutocompleteTextLines(lines: string[], query: string): EsAutocompleteTextSegment[][] {
     const tokens = [...new Set(query.trim().toLowerCase().split(/\s+/).filter(Boolean))];
 
-    // per token: prefer word-start matches ("st" matches the "St" in "Beacon St",
-    // not "Boston"); only when a token never matches at any word start, fall back
-    // to matching it anywhere (so "3" still highlights within "123")
+    // per token, prefer word-start matches ("st" is the "St" in "Beacon St", not
+    // "Boston"), falling back to anywhere only when none match ("3" in "123")
     const rangesPerLine: Array<Array<[number, number]>> = lines.map(() => []);
     for (const token of tokens) {
         const wordStartRanges = lines.map((line) => findTokenRanges(line, token, true));
@@ -66,10 +55,9 @@ export function splitAutocompleteTextLines(lines: string[], query: string): EsAu
 
 /** [start, end) ranges where the token occurs within the text */
 function findTokenRanges(text: string, token: string, wordStartsOnly: boolean): Array<[number, number]> {
-    // lowercasing can change string length for rare characters (e.g. İ, which
-    // lowercases to two code units), which would misalign match offsets against
-    // the original text — fall back to case-sensitive matching rather than
-    // mis-slice the segments
+    // lowercasing can change a string's length (İ becomes two code units), which
+    // would misalign offsets against the original — match case-sensitively
+    // rather than mis-slice the segments
     const lowered = text.toLowerCase();
     const textLower = lowered.length === text.length ? lowered : text;
     const isWordChar = (character: string | undefined) => !!character && /[\p{L}\p{N}]/u.test(character);
