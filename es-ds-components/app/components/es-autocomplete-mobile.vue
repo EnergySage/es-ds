@@ -341,6 +341,18 @@ function onTakeoverOpenChange(value: boolean) {
     }
 }
 
+/* the disabled colors es-autocomplete-field sets by hand, matched here, where
+ * es-ds-styles paints them directly — the trigger carries form-control itself,
+ * so its $input-disabled-color ($gray-500, 2.93:1 against the disabled
+ * background) applies and has to be answered at the same weight it is written */
+input.es-autocomplete-trigger:disabled {
+    color: variables.$gray-600 !important;
+
+    &::placeholder {
+        color: variables.$gray-600;
+    }
+}
+
 /* The base field look, re-asserted: es-ds-styles paints [readonly] exactly like
  * :disabled — gray background, gray text (with !important), no border at all.
  * That is right for a field whose value cannot be changed; here readonly is only

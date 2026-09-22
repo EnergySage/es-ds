@@ -74,17 +74,28 @@ defineExpose({ inputEl });
 <style lang="scss" scoped>
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
-/* match the disabled styling of es-form-input: the :disabled rules in es-ds-styles
- * target the element carrying form-control, which here is this wrapper div rather
- * than the real (disabled) input inside it */
+/* The disabled styling of es-form-input, applied here by hand: the :disabled
+ * rules in es-ds-styles target the element carrying form-control, which here is
+ * this wrapper div rather than the real (disabled) input inside it.
+ *
+ * One deliberate difference: $gray-600 rather than es-form-input's
+ * $input-disabled-color ($gray-500), which reaches only 2.93:1 against the
+ * disabled background — $gray-600 clears AA at 4.76:1. It covers the value and
+ * the placeholder both, so an empty disabled field and a filled one read alike;
+ * without the second rule the placeholder below wins here and renders darker
+ * than the value it stands in for. */
 .es-autocomplete-field--disabled {
     background-color: variables.$input-disabled-bg;
     border: 0;
 
     .es-autocomplete-input {
-        color: variables.$input-disabled-color;
+        color: variables.$gray-600;
         /* iOS fix for unreadable disabled content, as in es-ds-styles' form-control rule */
         opacity: 1;
+
+        &::placeholder {
+            color: variables.$gray-600;
+        }
     }
 }
 

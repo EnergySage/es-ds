@@ -51,7 +51,7 @@ const handleAddressComplete = (query: string) => {
     addressSuggestions.value = filterAddresses(query);
 };
 
-// set up form and validation for required selection address example
+// set up state and validation for required selection address example
 const requiredAddressSelection = ref<EsAutocompleteSuggestion | null>(null);
 const requiredAddressState = ref<boolean | null>(null);
 const validateRequiredAddress = () => {
@@ -60,6 +60,12 @@ const validateRequiredAddress = () => {
     } else {
         requiredAddressState.value = false;
     }
+};
+const handleRequiredAddressBlur = () => validateRequiredAddress();
+const handleRequiredAddressSubmit = () => validateRequiredAddress();
+const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
+    requiredAddressSelection.value = suggestion || null;
+    requiredAddressState.value = null;
 };
 watch(addressQuery, (query) => {
     // if the query has changed, clear out any previously selected value
@@ -72,14 +78,8 @@ watch(addressQuery, (query) => {
         requiredAddressState.value = null;
     }
 });
-const handleRequiredAddressBlur = () => validateRequiredAddress();
-const handleRequiredAddressSubmit = () => validateRequiredAddress();
-const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
-    requiredAddressSelection.value = suggestion || null;
-    requiredAddressState.value = null;
-};
 
-// Error state example
+// error state example
 const errorQuery = ref('');
 const errorSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const onErrorComplete = (query: string) => {
@@ -89,8 +89,26 @@ const onErrorComplete = (query: string) => {
 // Disabled example
 const disabledQuery = ref('');
 
-const autocompleteProps = [
-    ['v-model', 'String', 'n/a', 'Required. The v-model directive binds the query text to a data property.'],
+const autocompleteRequiredProps = [
+    [
+        'label',
+        'String',
+        'n/a',
+        `
+        Required. Label text for the input. Also used as the accessible title of the mobile takeover.
+        `,
+    ],
+    [
+        'suggestions',
+        'Array',
+        'n/a',
+        `
+        Required. Array of suggestion objects to display, each with id and text keys and an optional value key.
+        `,
+    ],
+];
+
+const autocompleteOptionalProps = [
     [
         'autocomplete',
         'String',
@@ -131,14 +149,6 @@ const autocompleteProps = [
         'false',
         `
         When disabled, the input has a gray background and cannot be interacted with.
-        `,
-    ],
-    [
-        'label',
-        'String',
-        'n/a',
-        `
-        Required. Label text for the input. Also used as the accessible title of the mobile takeover.
         `,
     ],
     [
@@ -221,14 +231,6 @@ const autocompleteProps = [
         announces noResultsText instead.
         `,
     ],
-    [
-        'suggestions',
-        'Array',
-        'n/a',
-        `
-        Required. Array of suggestion objects to display. See the suggestion shape section above.
-        `,
-    ],
 ];
 
 const autocompleteEvents = [
@@ -236,9 +238,8 @@ const autocompleteEvents = [
         'blur',
         '—',
         `
-        Emitted when the user leaves the field — focus moving to another control, or a click outside — so a form
-        can validate on blur as it does for any other field. Not emitted for Escape or for selecting a suggestion,
-        which both leave focus in the input, nor while a screen reader's cursor moves off an open suggestion list.
+        Emitted when the user leaves the field (e.g. focus moving to another control, a click outside) so
+        form validation can occur.
         `,
     ],
     [
@@ -255,13 +256,6 @@ const autocompleteEvents = [
         `
         Emitted when a suggestion is chosen, by click/tap or by pressing Enter on a highlighted suggestion.
         The full suggestion object is passed, including its 'value' payload if provided.
-        `,
-    ],
-    [
-        'update:modelValue',
-        'value: string',
-        `
-        Emitted whenever the input text changes (v-model).
         `,
     ],
 ];
@@ -340,25 +334,6 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Hidden label</h2>
-            <p>Here the label is hidden visually, but will still be announced by screen readers.</p>
-            <es-row>
-                <es-col md="6">
-                    <es-autocomplete
-                        v-model="fruitQuery"
-                        label="Favorite fruit"
-                        label-sr-only
-                        placeholder="Search for a fruit"
-                        :suggestions="fruitSuggestions"
-                        @complete="handleFruitComplete" />
-                </es-col>
-            </es-row>
-            <p class="text-muted">
-                {{ `value: ${fruitQuery || '[empty]'}` }}
-            </p>
-        </div>
-
-        <div class="mb-500">
             <h2>Custom item rendering</h2>
             <p>
                 This autocomplete demonstrates customizing the display of suggestion items, in this case splitting an
@@ -398,42 +373,13 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Limited width</h2>
-            <p>
-                In some cases, an autocomplete may appear in a narrow width layout. The suggestions list on desktop,
-                however, is not constrained by this. Try searching for "solar" or "heat pump".
-            </p>
-            <es-row>
-                <es-col
-                    md="8"
-                    lg="6"
-                    class="d-flex">
-                    <es-autocomplete
-                        v-model="longTextQuery"
-                        class="flex-grow-1"
-                        label="Search"
-                        label-sr-only
-                        placeholder="Search for a topic"
-                        :suggestions="longTextSuggestions"
-                        @complete="handleLongTextComplete" />
-                    <es-button class="ml-100 px-md-300 px-xl-200 px-xxl-400 text-nowrap w-50 w-md-auto">
-                        Shop local offers
-                    </es-button>
-                </es-col>
-            </es-row>
-            <p class="text-muted">
-                {{ `value: ${longTextQuery || '[empty]'}` }}
-            </p>
-        </div>
-
-        <div class="mb-500">
             <h2>Requiring a selection</h2>
             <p>
                 In some cases, we want to require the user to select from the provided list of suggestions rather than
                 allowing free text entry.
             </p>
             <es-form
-                class="mb-100"
+                class="mb-100 mb-md-0"
                 novalidate
                 @submit.stop.prevent="handleRequiredAddressSubmit">
                 <es-row>
@@ -466,42 +412,96 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Required and error state</h2>
-            <div class="row">
-                <div class="col-md-6">
+            <h2>Hidden label and limited width</h2>
+            <p>
+                In some cases, an autocomplete may appear in a narrow width layout. The suggestions list on desktop,
+                however, is not constrained by this. Try searching for "solar" or "heat pump".
+            </p>
+            <p>The label for the autocomplete is also hidden visually here, but will still be announced by screen readers.</p>
+            <es-row>
+                <es-col
+                    md="8"
+                    lg="6"
+                    class="d-flex">
+                    <es-autocomplete
+                        v-model="longTextQuery"
+                        class="flex-grow-1"
+                        label="Search"
+                        label-sr-only
+                        placeholder="Search for a topic"
+                        :suggestions="longTextSuggestions"
+                        @complete="handleLongTextComplete" />
+                    <es-button class="ml-100 px-md-300 px-xl-200 px-xxl-400 text-nowrap w-50 w-md-auto">
+                        Shop local offers
+                    </es-button>
+                </es-col>
+            </es-row>
+            <p class="text-muted">
+                {{ `value: ${longTextQuery || '[empty]'}` }}
+            </p>
+        </div>
+
+        <div class="mb-500">
+            <h2>Error state</h2>
+            <es-row>
+                <es-col md="6">
                     <es-autocomplete
                         id="autocomplete-error"
                         v-model="errorQuery"
-                        label="Search"
-                        placeholder="Search for a topic"
+                        label="Favorite fruit"
+                        placeholder="Search for a fruit"
                         required
                         :state="errorQuery ? null : false"
                         :suggestions="errorSuggestions"
                         @complete="onErrorComplete">
                         <template #errorMessage> Please enter a search term. </template>
                     </es-autocomplete>
-                </div>
-            </div>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="mb-500">
-            <h2>Disabled</h2>
-            <div class="row">
-                <div class="col-md-6">
+            <h2>Message</h2>
+            <es-row>
+                <es-col md="6">
+                    <es-autocomplete
+                        v-model="fruitQuery"
+                        label="Favorite fruit"
+                        placeholder="Search for a fruit"
+                        :suggestions="fruitSuggestions"
+                        @complete="handleFruitComplete">
+                        <template #message>
+                            We will send you one of these every month.
+                        </template>
+                    </es-autocomplete>
+                </es-col>
+            </es-row>
+            <p class="text-muted">
+                {{ `value: ${fruitQuery || '[empty]'}` }}
+            </p>
+        </div>
+
+        <div class="mb-500">
+            <h2>Disabled state</h2>
+            <es-row>
+                <es-col md="6">
                     <es-autocomplete
                         id="autocomplete-disabled"
                         v-model="disabledQuery"
                         disabled
-                        label="Search"
-                        placeholder="This autocomplete is disabled"
+                        label="Favorite fruit"
+                        placeholder="Search for a fruit"
                         :suggestions="[]" />
-                </div>
-            </div>
+                </es-col>
+            </es-row>
         </div>
 
         <div class="mb-500">
             <h2>EsAutocomplete props</h2>
-            <ds-prop-table :rows="autocompleteProps" />
+            <h3>Required</h3>
+            <ds-prop-table :rows="autocompleteRequiredProps" />
+            <h3>Optional</h3>
+            <ds-prop-table :rows="autocompleteOptionalProps" />
         </div>
 
         <div class="mb-500">
