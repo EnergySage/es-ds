@@ -1,31 +1,7 @@
 <script setup lang="ts">
 import type { SampleAutocompleteAddress } from '~/utils/autocomplete-sample-items';
 
-const { $prism } = useNuxtApp();
-const compCode = ref('');
-const docCode = ref('');
-onMounted(async () => {
-    if ($prism) {
-        const compSource = await import('@energysage/es-ds-components/app/components/es-autocomplete.vue?raw');
-        const docSource = await import('./autocomplete.vue?raw');
-        compCode.value = $prism.normalizeCode(compSource.default);
-        docCode.value = $prism.normalizeCode(docSource.default);
-        $prism.highlight();
-    }
-});
-
-interface DocSuggestion {
-    id: string;
-    text: string;
-    value?: unknown;
-}
-
-const fruitQuery = ref('');
-const fruitSuggestions = ref<DocSuggestion[]>([]);
-const onFruitComplete = (query: string) => {
-    fruitSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_FRUIT);
-};
-
+// simple algorithm to match suggestions that start with the query string
 const filterTerms = (query: string, terms: string[]) =>
     terms
         .filter((term) => term.toLowerCase().startsWith(query.toLowerCase()))
@@ -34,38 +10,8 @@ const filterTerms = (query: string, terms: string[]) =>
             text: term,
         }));
 
-// Basic example
-const basicQuery = ref('');
-const basicSuggestions = ref<DocSuggestion[]>([]);
-const basicResult = ref('');
-const onBasicComplete = (query: string) => {
-    basicSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
-};
-const onBasicSelect = (suggestion: DocSuggestion) => {
-    basicResult.value = `selected "${suggestion.text}"`;
-};
-const onBasicSubmit = (query: string) => {
-    basicResult.value = `submitted "${query}"`;
-};
-
-// Hidden label example
-const hiddenLabelQuery = ref('');
-const hiddenLabelSuggestions = ref<DocSuggestion[]>([]);
-const onHiddenLabelComplete = (query: string) => {
-    hiddenLabelSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
-};
-
-// Custom item slot example
-const asAddress = (value: unknown) => value as SampleAutocompleteAddress;
-// the two lines form one suggestion, so bolding is decided across both: a line
-// without its own token match still renders bold when the other line matched
-const splitAddressLines = (suggestion: DocSuggestion, query: string) => {
-    const address = asAddress(suggestion.value);
-    return splitAutocompleteTextLines([address.street, address.cityStateZip], query);
-};
-// token-based filtering: every query term must start some word of the address
-// ("2" matches "240 Walnut St" but not "12" or "02138"), and terms can be typed
-// in any order, e.g. "boston main"
+// more complex algorithm to match addresses by matching start of query token
+// to start of address token, independent of token order
 const filterAddresses = (query: string) => {
     const queryTokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
     return SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES.filter((address) => {
@@ -77,26 +23,63 @@ const filterAddresses = (query: string) => {
         value: address,
     }));
 };
+
+// split the address into two lines to enable custom formatting
+const splitAddressLines = (suggestion: EsAutocompleteSuggestion, query: string) => {
+    const address = suggestion.value as unknown as SampleAutocompleteAddress;
+    return splitAutocompleteTextLines([address.street, address.cityStateZip], query);
+};
+
+// fruit examples
+const fruitQuery = ref('');
+const fruitSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const handleFruitComplete = (query: string) => {
+    fruitSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_FRUIT);
+};
+
+// long text examples
+const longTextQuery = ref('');
+const longTextSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const handleLongTextComplete = (query: string) => {
+    longTextSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
+};
+
+// address examples
 const addressQuery = ref('');
-const addressSuggestions = ref<DocSuggestion[]>([]);
-const selectedAddress = ref('');
-const onAddressComplete = (query: string) => {
+const addressSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const handleAddressComplete = (query: string) => {
     addressSuggestions.value = filterAddresses(query);
 };
-const onAddressSelect = (suggestion: DocSuggestion) => {
-    selectedAddress.value = suggestion.text;
+
+// set up form and validation for required selection address example
+const requiredAddressSelection = ref<EsAutocompleteSuggestion | null>(null);
+const requiredAddressState = ref<boolean | null>(null);
+const handleRequiredAddressBlur = () => {
+
 };
+const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
+    requiredAddressSelection.value = suggestion || null;
+    requiredAddressState.value = null;
+};
+const handleRequiredAddressSubmit = async () => {
+    if (requiredAddressSelection.value) {
+        requiredAddressState.value = null;
+    } else {
+        requiredAddressState.value = false;
+    }
+};
+
 
 // Requiring a selection example (e.g. address validation)
 const requiredQuery = ref('');
-const requiredSuggestions = ref<DocSuggestion[]>([]);
-const requiredSelection = ref<DocSuggestion | null>(null);
+const requiredSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const requiredSelection = ref<EsAutocompleteSuggestion | null>(null);
 const requiredState = ref<boolean | null>(null);
 const requiredResult = ref('');
 const onRequiredComplete = (query: string) => {
     requiredSuggestions.value = filterAddresses(query);
 };
-const onRequiredSelect = (suggestion: DocSuggestion) => {
+const onRequiredSelect = (suggestion: EsAutocompleteSuggestion) => {
     requiredSelection.value = suggestion;
     requiredState.value = null;
     requiredResult.value = '';
@@ -125,7 +108,7 @@ const onRequiredSubmit = () => {
 
 // Error state example
 const errorQuery = ref('');
-const errorSuggestions = ref<DocSuggestion[]>([]);
+const errorSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const onErrorComplete = (query: string) => {
     errorSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
 };
@@ -333,17 +316,30 @@ const autocompleteSlots = [
         `,
     ],
 ];
+
+const { $prism } = useNuxtApp();
+const compCode = ref('');
+const docCode = ref('');
+onMounted(async () => {
+    if ($prism) {
+        const compSource = await import('@energysage/es-ds-components/app/components/es-autocomplete.vue?raw');
+        const docSource = await import('./autocomplete.vue?raw');
+        compCode.value = $prism.normalizeCode(compSource.default);
+        docCode.value = $prism.normalizeCode(docSource.default);
+        $prism.highlight();
+    }
+});
 </script>
 
 <template>
     <div>
         <h1>Autocomplete</h1>
         <p class="mb-500">
-            Extended from
+            Makes use of
             <nuxt-link
-                to="https://reka-ui.com/docs/components/autocomplete"
+                to="https://reka-ui.com/docs/components/dialog"
                 target="_blank">
-                Reka UI Autocomplete
+                Reka UI Dialog
             </nuxt-link>
         </p>
 
@@ -360,9 +356,12 @@ const autocompleteSlots = [
                         label="Favorite fruit"
                         placeholder="Search for a fruit"
                         :suggestions="fruitSuggestions"
-                        @complete="onFruitComplete" />
+                        @complete="handleFruitComplete" />
                 </es-col>
             </es-row>
+            <p class="text-muted">
+                {{ `value: ${fruitQuery || '[empty]'}` }}
+            </p>
         </div>
 
         <div class="mb-500">
@@ -376,9 +375,12 @@ const autocompleteSlots = [
                         label-sr-only
                         placeholder="Search for a fruit"
                         :suggestions="fruitSuggestions"
-                        @complete="onFruitComplete" />
+                        @complete="handleFruitComplete" />
                 </es-col>
             </es-row>
+            <p class="text-muted">
+                {{ `value: ${fruitQuery || '[empty]'}` }}
+            </p>
         </div>
 
         <div class="mb-500">
@@ -403,7 +405,7 @@ const autocompleteSlots = [
                         label="Address"
                         placeholder="Enter your address"
                         :suggestions="addressSuggestions"
-                        @complete="onAddressComplete">
+                        @complete="handleAddressComplete">
                         <template #item="{ suggestion, query }">
                             <es-autocomplete-suggestion-text
                                 v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"
@@ -415,6 +417,9 @@ const autocompleteSlots = [
                     </es-autocomplete>
                 </es-col>
             </es-row>
+            <p class="text-muted">
+                {{ `value: ${addressQuery || '[empty]'}` }}
+            </p>
         </div>
 
         <div class="mb-500">
@@ -425,152 +430,58 @@ const autocompleteSlots = [
             </p>
             <es-row>
                 <es-col
-                    md="6"
+                    md="8"
+                    lg="6"
                     class="d-flex">
                     <es-autocomplete
-                        v-model="basicQuery"
+                        v-model="longTextQuery"
                         class="flex-grow-1"
                         label="Search"
                         label-sr-only
                         placeholder="Search for a topic"
-                        :suggestions="basicSuggestions"
-                        @complete="onBasicComplete"
-                        @select="onBasicSelect"
-                        @submit="onBasicSubmit" />
-                    <es-button class="ml-100 px-300"> Search </es-button>
+                        :suggestions="longTextSuggestions"
+                        @complete="handleLongTextComplete" />
+                    <es-button class="ml-100 px-md-300 px-xl-200 px-xxl-400 text-nowrap w-50 w-md-auto"> Shop local offers </es-button>
                 </es-col>
             </es-row>
-        </div>
-
-        <div class="mb-500">
-            <h2>Overview</h2>
-            <p>
-                <code>EsAutocomplete</code> is a presentational search-suggestions input: your app owns fetching and
-                filtering. Listen for the <code>complete</code> event, then update the <code>suggestions</code> prop
-                with at most 5 items. The component further trims the list so it always fits on screen without
-                scrolling, and it renders the <em>predictive</em> portion of each suggestion in bold.
-            </p>
-            <p>
-                On desktop, the suggestions panel opens when the input gains focus and closes when it loses focus,
-                staying up for the entire interaction. Before there is anything to show, the panel displays
-                <code>promptText</code>; a search that comes back empty displays <code>noResultsText</code>. For a
-                standalone primary search, <code>showOverlayOnFocus</code> additionally dims the rest of the page while
-                the input has focus.
-            </p>
-            <p>
-                On touch devices below the <code>md</code> breakpoint, tapping the field opens a full-screen takeover
-                with its own input and close button. The resting field there is a readonly combobox input rather than a
-                button, so it carries a label, a value, and required/invalid state the way any form field does;
-                readonly is what keeps the on-screen keyboard from opening on it instead of in the takeover. The switch
-                is CSS alone — the breakpoint paired with <code>(hover: none)</code> — so a desktop page zoomed past
-                <code>md</code> keeps the popover its user knows. Narrowing a desktop browser therefore will not show
-                the takeover: use the device emulation in your browser's dev tools, or a real phone.
-            </p>
-            <p>Each suggestion is an object with the following shape:</p>
-            <ul>
-                <li><code>id</code> (string, required): unique key</li>
-                <li><code>text</code> (string, required): the full suggested query</li>
-                <li><code>value</code> (any, optional): app payload, returned untouched on select</li>
-            </ul>
-            <p>
-                Navigating suggestions with the arrow keys copies the highlighted suggestion into the input, so it's
-                clear what selecting will enter. Navigation cycles through the full list in either direction, passing
-                through the input itself — where the typed text is restored — after either end. This is display-only:
-                the <code>complete</code> event and the bolding stay keyed to the typed query, and hovering with the
-                mouse never changes the input.
-            </p>
-            <p>
-                Submitting free text (Enter with no suggestion highlighted) is allowed by default, which suits search
-                use cases. For use cases that require choosing a suggestion (e.g. address validation), validate at the
-                app level — see the "Requiring a selection" example below.
+            <p class="text-muted">
+                {{ `value: ${longTextQuery || '[empty]'}` }}
             </p>
         </div>
 
         <div class="mb-500">
-            <h2>Basic example</h2>
+            <h2>Requiring a selection</h2>
             <p>
-                Try typing <code>solar</code> or <code>heat</code>. Keep typing past a match (e.g.
-                <code>solarium</code>) to see the no-results state — the panel stays open instead of flickering closed.
+                In some cases, we want to require the user to select from the provided list of suggestions rather
+                than allowing free text entry.
             </p>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-autocomplete
-                        id="autocomplete-basic"
-                        v-model="basicQuery"
-                        label="Search"
-                        placeholder="Search for a topic"
-                        :suggestions="basicSuggestions"
-                        @complete="onBasicComplete"
-                        @select="onBasicSelect"
-                        @submit="onBasicSubmit" />
-                    <p class="text-muted">{{ basicResult || 'Nothing selected or submitted yet' }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-500">
-            <h2>Hidden label</h2>
-            <p>
-                Use <code>labelSrOnly</code> when the autocomplete should stand on its own, described only by its
-                placeholder. The label is still announced to screen readers. This example also enables
-                <code>showOverlayOnFocus</code>, which suits this kind of standalone primary search: on desktop, the
-                rest of the page dims while the input has focus.
+            <es-form @submit.stop.prevent="handleRequiredAddressSubmit">
+                <es-row>
+                    <es-col md="6">
+                        <es-autocomplete
+                            v-model="addressQuery"
+                            label="Address"
+                            placeholder="Enter your address"
+                            required
+                            :state="requiredAddressState"
+                            :suggestions="addressSuggestions"
+                            @complete="handleAddressComplete"
+                            @select="handleRequiredAddressSelect">
+                            <template #errorMessage> Please select an address from the suggestions. </template>
+                        </es-autocomplete>
+                    </es-col>
+                    <es-col md="6">
+                        <es-button
+                            class="mt-100 mt-md-200 px-md-300 w-100 w-md-auto"
+                            type="submit">
+                            Submit
+                        </es-button>
+                    </es-col>
+                </es-row>
+            </es-form>
+            <p class="text-muted">
+                {{ `value: ${requiredAddressSelection ? requiredAddressSelection.text : '[empty]'}` }}
             </p>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-autocomplete
-                        id="autocomplete-hidden-label"
-                        v-model="hiddenLabelQuery"
-                        label="Search"
-                        label-sr-only
-                        placeholder="Search for a topic"
-                        show-overlay-on-focus
-                        :suggestions="hiddenLabelSuggestions"
-                        @complete="onHiddenLabelComplete" />
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-500">
-            <h2>Custom item rendering</h2>
-            <p>
-                Use the <code>item</code> slot to control how each suggestion renders, e.g. a two-line address
-                suggestion. To reproduce the predictive-portion bolding of the default renderer, render a line of text
-                with <code>&lt;es-autocomplete-suggestion-text :text="line" :query="query" /&gt;</code> — put your own
-                classes (font size, etc.) directly on it. Bolding is token by token, in any order, preferring word
-                starts (with an in-word fallback for search backends that match mid-word). When several lines form one
-                suggestion, compute all lines at once with the
-                <code>splitAutocompleteTextLines(lines, query)</code> utility (auto-imported from
-                <code>es-ds-components</code>) and pass each line's result via the <code>segments</code> prop, so a
-                line without its own match still renders bold when another line matched — that's what this example
-                does. Try typing <code>main</code>, <code>boston main</code> (out of order), or
-                <code>beacon</code> (second line bolds as part of the suggestion); <code>12</code> matches more
-                addresses than fit, showing the component cap the list. If your search API returns its own match
-                offsets (e.g. Google Places matched substrings), build the segments from those offsets and pass them
-                the same way.
-            </p>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-autocomplete
-                        id="autocomplete-address"
-                        v-model="addressQuery"
-                        label="Street address"
-                        placeholder="Enter your address"
-                        :suggestions="addressSuggestions"
-                        @complete="onAddressComplete"
-                        @select="onAddressSelect">
-                        <template #item="{ suggestion, query }">
-                            <es-autocomplete-suggestion-text
-                                v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"
-                                :key="lineIndex"
-                                class="d-block"
-                                :class="{ 'font-size-50': lineIndex === 1 }"
-                                :segments="lineSegments" />
-                        </template>
-                    </es-autocomplete>
-                    <p class="text-muted">Selected: {{ selectedAddress || 'None' }}</p>
-                </div>
-            </div>
         </div>
 
         <div class="mb-500">

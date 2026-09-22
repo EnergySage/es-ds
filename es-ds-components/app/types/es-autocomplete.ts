@@ -4,10 +4,10 @@ export interface EsAutocompleteTextSegment {
     text: string;
 }
 
-export interface EsAutocompleteSuggestion {
+export interface EsAutocompleteSuggestion<T = unknown> {
     id: string;
     /** full suggested query, e.g. "backpack rain cover" */
     text: string;
     /** opaque app payload, returned untouched on select */
-    value?: unknown;
+    value?: T;
 }
