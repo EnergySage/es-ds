@@ -73,46 +73,13 @@ watch(addressQuery, (query) => {
     }
 });
 const handleRequiredAddressBlur = () => validateRequiredAddress();
-const handleRequiredAddressSubmit = () => validateRequiredAddress();
+const handleRequiredAddressSubmit = () => {
+    validateRequiredAddress();
+    console.log('submit');
+};
 const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
     requiredAddressSelection.value = suggestion || null;
     requiredAddressState.value = null;
-};
-
-// Requiring a selection example (e.g. address validation)
-const requiredQuery = ref('');
-const requiredSuggestions = ref<EsAutocompleteSuggestion[]>([]);
-const requiredSelection = ref<EsAutocompleteSuggestion | null>(null);
-const requiredState = ref<boolean | null>(null);
-const requiredResult = ref('');
-const onRequiredComplete = (query: string) => {
-    requiredSuggestions.value = filterAddresses(query);
-};
-const onRequiredSelect = (suggestion: EsAutocompleteSuggestion) => {
-    requiredSelection.value = suggestion;
-    requiredState.value = null;
-    requiredResult.value = '';
-};
-// typing after selecting invalidates the selection: the text no longer matches
-// what was chosen from the list
-watch(requiredQuery, (query) => {
-    if (requiredSelection.value && query !== requiredSelection.value.text) {
-        requiredSelection.value = null;
-    }
-    if (requiredState.value === false) {
-        requiredState.value = null;
-    }
-});
-// called by the submit button AND by the component's own 'submit' event
-// (pressing Enter on free text), so both paths validate the same way
-const onRequiredSubmit = () => {
-    if (requiredSelection.value) {
-        requiredState.value = null;
-        requiredResult.value = `validated address: ${requiredSelection.value.text}`;
-    } else {
-        requiredState.value = false;
-        requiredResult.value = '';
-    }
 };
 
 // Error state example
@@ -273,9 +240,8 @@ const autocompleteEvents = [
         '—',
         `
         Emitted when the user leaves the field — focus moving to another control, or a click outside — so a form
-        can validate on blur as it does for any other field. Not emitted for Escape, selecting a suggestion, or
-        submitting, which all leave focus in the input, nor while a screen reader's cursor moves off an open
-        suggestion list.
+        can validate on blur as it does for any other field. Not emitted for Escape or for selecting a suggestion,
+        which both leave focus in the input, nor while a screen reader's cursor moves off an open suggestion list.
         `,
     ],
     [
@@ -292,13 +258,6 @@ const autocompleteEvents = [
         `
         Emitted when a suggestion is chosen, by click/tap or by pressing Enter on a highlighted suggestion.
         The full suggestion object is passed, including its 'value' payload if provided.
-        `,
-    ],
-    [
-        'submit',
-        'query: string',
-        `
-        Emitted when the user presses Enter with no suggestion highlighted, e.g. to submit a free-form search.
         `,
     ],
     [
@@ -477,6 +436,7 @@ onMounted(async () => {
                 allowing free text entry.
             </p>
             <es-form
+                class="mb-100"
                 novalidate
                 @submit.stop.prevent="handleRequiredAddressSubmit">
                 <es-row>
@@ -496,7 +456,7 @@ onMounted(async () => {
                     </es-col>
                     <es-col md="6">
                         <es-button
-                            class="mt-100 mt-md-200 px-md-300 w-100 w-md-auto"
+                            class="mt-md-200 px-md-300 w-100 w-md-auto"
                             type="submit">
                             Submit
                         </es-button>
@@ -506,45 +466,6 @@ onMounted(async () => {
             <p class="text-muted">
                 {{ `value: ${requiredAddressSelection ? requiredAddressSelection.text : '[empty]'}` }}
             </p>
-        </div>
-
-        <div class="mb-500">
-            <h2>Requiring a selection</h2>
-            <p>
-                For address validation and similar use cases, the user must pick a suggestion rather than submit free
-                text. The component stays presentational: the app tracks the last <code>select</code>-ed suggestion,
-                invalidates it when the text is edited afterward (compare the input text to the selection's
-                <code>text</code>), and treats the <code>submit</code> event as a validation trigger instead of a
-                search. Try typing <code>main</code>, then pressing Enter or the button without picking a suggestion.
-            </p>
-            <div class="row">
-                <div class="col-md-6">
-                    <es-autocomplete
-                        id="autocomplete-required-selection"
-                        v-model="requiredQuery"
-                        label="Street address"
-                        placeholder="Enter your address"
-                        required
-                        :state="requiredState"
-                        :suggestions="requiredSuggestions"
-                        @complete="onRequiredComplete"
-                        @select="onRequiredSelect"
-                        @submit="onRequiredSubmit">
-                        <template #errorMessage> Please select an address from the suggestions. </template>
-                    </es-autocomplete>
-                    <es-button
-                        class="mt-100"
-                        @click="onRequiredSubmit">
-                        Validate address
-                    </es-button>
-                    <p class="text-muted mt-100">
-                        {{
-                            requiredResult ||
-                            (requiredSelection ? `selected: ${requiredSelection.text}` : 'No valid selection yet')
-                        }}
-                    </p>
-                </div>
-            </div>
         </div>
 
         <div class="mb-500">

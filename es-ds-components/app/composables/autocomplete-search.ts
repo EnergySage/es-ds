@@ -6,7 +6,6 @@ interface AutocompleteSearchOptions {
     delay: () => number;
     emitComplete: (query: string) => void;
     emitSelect: (suggestion: EsAutocompleteSuggestion) => void;
-    emitSubmit: (query: string) => void;
     minChars: () => number;
     model: Ref<string>;
     noResultsText: () => string;
@@ -131,11 +130,5 @@ export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
         options.emitSelect(suggestion);
     }
 
-    function onSubmit(query: string) {
-        // submitting is terminal for this query
-        cancelPendingComplete();
-        options.emitSubmit(query);
-    }
-
-    return { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMessage };
+    return { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage };
 }

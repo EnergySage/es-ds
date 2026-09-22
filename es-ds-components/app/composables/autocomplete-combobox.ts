@@ -10,7 +10,6 @@ interface AutocompleteComboboxOptions {
      */
     close: (selectedText?: string) => void;
     emitSelect: (suggestion: EsAutocompleteSuggestion) => void;
-    emitSubmit: (query: string) => void;
     /** unique per shell instance: option ids derive from it */
     idPrefix: string;
     inputEl: Ref<HTMLInputElement | null>;
@@ -27,7 +26,7 @@ interface AutocompleteComboboxOptions {
  * The combobox core both shells share: highlight state, ARIA wiring
  * (aria-activedescendant over non-focusable options), fully cyclic arrow
  * navigation (input → first → … → last → input → …), Google-style
- * copy-on-highlight, and Enter's submit-vs-select decision.
+ * copy-on-highlight, and Enter's select-or-stand-aside decision.
  *
  * The input renders `displayValue` and options render from the same highlight
  * index, so the value rewrite and the aria-activedescendant change always land
@@ -134,18 +133,21 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
         }
         if (event.key === 'Enter') {
             // the Enter that commits an IME composition (Japanese/Chinese/Korean
-            // input) is neither a submit nor a selection
+            // input) chooses nothing
             if (event.isComposing) {
                 return;
             }
-            // handled here either way; a surrounding <form> must not submit
-            event.preventDefault();
             if (highlightSource.value !== null && highlighted.value) {
+                // choosing the highlighted suggestion is what this key does here,
+                // so a surrounding form must not also submit on it
+                event.preventDefault();
                 select(highlighted.value);
-            } else {
-                options.close();
-                options.emitSubmit(options.model.value);
+                return;
             }
+            // Nothing is chosen, so the key is not ours: it reaches the page as
+            // it would from any other field, and a surrounding form submits
+            // implicitly. The panel closes because the query is committed.
+            options.close();
         }
     }
 

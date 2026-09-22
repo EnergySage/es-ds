@@ -36,13 +36,11 @@ function makeSearch(overrides: { minChars?: number } = {}) {
     const suggestions = ref<EsAutocompleteSuggestion[]>([]);
     const emitComplete = vi.fn();
     const emitSelect = vi.fn();
-    const emitSubmit = vi.fn();
     const { app, result: search } = withSetup(() =>
         useAutocompleteSearch({
             delay: () => DELAY,
             emitComplete,
             emitSelect,
-            emitSubmit,
             minChars: () => overrides.minChars ?? 1,
             model,
             noResultsText: () => 'No results found',
@@ -55,7 +53,7 @@ function makeSearch(overrides: { minChars?: number } = {}) {
         model.value = value;
         await nextTick();
     }
-    return { app, emitComplete, emitSelect, emitSubmit, model, search, suggestions, type };
+    return { app, emitComplete, emitSelect, model, search, suggestions, type };
 }
 
 describe('useAutocompleteSearch complete debouncing', () => {
@@ -89,15 +87,6 @@ describe('useAutocompleteSearch complete debouncing', () => {
         await type('solar batteries plus');
         vi.advanceTimersByTime(DELAY);
         expect(emitComplete).toHaveBeenCalledWith('solar batteries plus');
-    });
-
-    it('submit cancels a pending complete so a late response cannot arrive after', async () => {
-        const { emitComplete, emitSubmit, search, type } = makeSearch();
-        await type('solar');
-        search.onSubmit('solar');
-        vi.advanceTimersByTime(DELAY * 2);
-        expect(emitSubmit).toHaveBeenCalledWith('solar');
-        expect(emitComplete).not.toHaveBeenCalled();
     });
 
     it('unmount cancels a pending complete', async () => {

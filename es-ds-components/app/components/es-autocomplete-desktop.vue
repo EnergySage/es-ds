@@ -27,7 +27,6 @@ const props = defineProps<Props>();
 const emit = defineEmits<{
     blur: [];
     select: [suggestion: EsAutocompleteSuggestion];
-    submit: [query: string];
 }>();
 
 const model = defineModel<string>({ default: '' });
@@ -105,7 +104,6 @@ const combobox = useAutocompleteCombobox({
         open.value = false;
     },
     emitSelect: (suggestion) => emit('select', suggestion),
-    emitSubmit: (query) => emit('submit', query),
     idPrefix: props.id,
     inputEl,
     model,
@@ -214,9 +212,9 @@ function onFocusIn() {
 }
 
 // The user is done with the field: the panel goes down and the app hears about
-// it, so a form can validate the way it does on any other field's blur. Escape,
-// select and submit are NOT this — each leaves focus in the input, and the
-// interaction continues.
+// it, so a form can validate the way it does on any other field's blur. Escape
+// and select are NOT this — each leaves focus in the input, and the interaction
+// continues.
 function leaveField() {
     open.value = false;
     if (visiting) {

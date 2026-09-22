@@ -37,7 +37,6 @@ const props = defineProps<Props>();
 const emit = defineEmits<{
     blur: [];
     select: [suggestion: EsAutocompleteSuggestion];
-    submit: [query: string];
 }>();
 
 const model = defineModel<string>({ default: '' });
@@ -75,7 +74,6 @@ const combobox = useAutocompleteCombobox({
         void closeTakeover(selectedText);
     },
     emitSelect: (suggestion) => emit('select', suggestion),
-    emitSubmit: (query) => emit('submit', query),
     idPrefix: `${props.id}-m`,
     inputEl,
     model,
@@ -172,8 +170,8 @@ function openTakeover() {
     }
 }
 
-// every close path — the Close button (DialogClose), Escape, and selection/submit
-// via the combobox's close — routes through closeTakeover so they all animate
+// every close path — the Close button (DialogClose), Escape, and the combobox's
+// own close on select or Enter — routes through closeTakeover so they all animate
 function onTakeoverOpenChange(value: boolean) {
     if (value) {
         takeoverOpen.value = true;

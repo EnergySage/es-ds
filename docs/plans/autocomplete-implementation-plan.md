@@ -798,6 +798,29 @@ Open questions raised during planning, with the decisions now reflected inline a
     event, before any focus handling runs. The window itself losing focus
     (alt-tab, devtools) also collapses focus and also needs nothing — the
     interaction resumes on return, per the ignore-window-blur rule.
+33. **Enter belongs to the page unless a suggestion is highlighted**
+    (2026-09-22, superseding decision #20's Enter semantics and removing the
+    `submit` event): a form field submits its form on Enter, and this one is a
+    form field like the others — wrapping it in a `<form>` with a
+    `type="submit"` button is the pattern, and none of the design system's other
+    fields intercept the key. So Enter now calls `preventDefault` only when it
+    has something to do: choosing the highlighted suggestion, which a form must
+    not also submit on. With nothing highlighted the key is left alone, implicit
+    form submission happens as it would from any input, and the panel closes
+    because the query is committed. The `submit` event is gone from the public
+    API, along with the search composable's `onSubmit` (whose only other job was
+    cancelling the pending debounce, which unmount already covers). Apps that
+    were listening for it wrap the field in a form instead.
+
+    Two consequences to know. A consumer with no surrounding form — the
+    standalone site-search case `showOverlayOnFocus` is meant for — gets nothing
+    from Enter but a closed panel, and must add the form. And on mobile the
+    takeover's input is portaled out of the consumer's form, so it has no form
+    owner (verified: `input.form` is null there): Enter commits the text and
+    closes the takeover, the visible submit button does the submitting, and the
+    on-screen keyboard shows a return key rather than Go. Associating it with
+    the form would mean writing an id onto the consumer's `<form>` and
+    submitting from under a full-screen dialog, which is why it does not.
 32. **`blur` is the field being left, not the input losing focus**
     (2026-09-22): forms validate on blur, so the component emits one — but a
     raw blur would fire constantly here. Focus moves to the clear button, into

@@ -50,7 +50,6 @@ const emit = defineEmits<{
     blur: [];
     complete: [query: string];
     select: [suggestion: EsAutocompleteSuggestion];
-    submit: [query: string];
 }>();
 
 const model = defineModel<string>({ default: '' });
@@ -69,11 +68,10 @@ const triggerDescribedBy = computed(() => (showError.value ? `${triggerHelpId} $
 
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
 // messaging live in useAutocompleteSearch so the contract is unit-testable
-const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMessage } = useAutocompleteSearch({
+const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = useAutocompleteSearch({
     delay: () => props.delay,
     emitComplete: (query) => emit('complete', query),
     emitSelect: (suggestion) => emit('select', suggestion),
-    emitSubmit: (query) => emit('submit', query),
     minChars: () => props.minChars,
     model,
     noResultsText: () => props.noResultsText,
@@ -105,8 +103,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
                 :suggestion-count-text="suggestionCountText"
                 :suggestions="effectiveSuggestions"
                 @blur="emit('blur')"
-                @select="onSelect"
-                @submit="onSubmit">
+                @select="onSelect">
                 <template
                     v-if="$slots.item"
                     #item="slotProps">
@@ -136,8 +133,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, onSubmit, panelMe
                 :suggestions="effectiveSuggestions"
                 :trigger-described-by="triggerDescribedBy"
                 @blur="emit('blur')"
-                @select="onSelect"
-                @submit="onSubmit">
+                @select="onSelect">
                 <template
                     v-if="$slots.item"
                     #item="slotProps">

@@ -25,19 +25,17 @@ function makeCombobox(initialSuggestions: EsAutocompleteSuggestion[] = [{ id: 'a
     const suggestions = ref(initialSuggestions);
     const close = vi.fn();
     const emitSelect = vi.fn();
-    const emitSubmit = vi.fn();
     const { result: combobox } = withSetup(() =>
         useAutocompleteCombobox({
             close,
             emitSelect,
-            emitSubmit,
             idPrefix: 'test',
             inputEl: ref(inputEl),
             model,
             suggestions: () => suggestions.value,
         }),
     );
-    return { close, combobox, emitSelect, emitSubmit, inputEl, model, suggestions };
+    return { close, combobox, emitSelect, inputEl, model, suggestions };
 }
 
 function keydown(key: string, init: { isComposing?: boolean } = {}) {
@@ -134,22 +132,23 @@ describe('useAutocompleteCombobox arrow navigation and mirroring', () => {
 });
 
 describe('useAutocompleteCombobox Enter semantics', () => {
-    it('submits the typed query and closes when nothing is highlighted', () => {
-        const { close, combobox, emitSubmit } = makeCombobox();
+    it('closes and leaves the key to the page when nothing is highlighted', () => {
+        const { close, combobox, emitSelect } = makeCombobox();
         const event = keydown('Enter');
         combobox.onKeydown(event);
-        expect(emitSubmit).toHaveBeenCalledWith('solar');
+        expect(emitSelect).not.toHaveBeenCalled();
         expect(close).toHaveBeenCalled();
-        // keeps a surrounding <form> from natively submitting
-        expect(event.defaultPrevented).toBe(true);
+        // a surrounding <form> submits implicitly, as from any other field
+        expect(event.defaultPrevented).toBe(false);
     });
 
-    it('selects a keyboard-highlighted suggestion', () => {
-        const { close, combobox, emitSelect, emitSubmit, model } = makeCombobox();
+    it('selects a keyboard-highlighted suggestion instead of submitting a form', () => {
+        const { close, combobox, emitSelect, model } = makeCombobox();
         combobox.onKeydown(keydown('ArrowDown'));
-        combobox.onKeydown(keydown('Enter'));
+        const event = keydown('Enter');
+        combobox.onKeydown(event);
         expect(emitSelect).toHaveBeenCalledWith({ id: 'a', text: 'solar batteries' });
-        expect(emitSubmit).not.toHaveBeenCalled();
+        expect(event.defaultPrevented).toBe(true);
         expect(model.value).toBe('solar batteries');
         // a shell that renders the final text mid-close takes it from this argument
         expect(close).toHaveBeenCalledWith('solar batteries');
@@ -163,20 +162,21 @@ describe('useAutocompleteCombobox Enter semantics', () => {
     });
 
     it('ignores the Enter that commits an IME composition', () => {
-        const { combobox, emitSelect, emitSubmit } = makeCombobox();
+        const { close, combobox, emitSelect } = makeCombobox();
         combobox.onKeydown(keydown('Enter', { isComposing: true }));
-        expect(emitSubmit).not.toHaveBeenCalled();
         expect(emitSelect).not.toHaveBeenCalled();
+        expect(close).not.toHaveBeenCalled();
     });
 
-    it('submits, not selects, after a list change reset the highlight', async () => {
-        const { combobox, emitSelect, emitSubmit, suggestions } = makeCombobox(THREE);
+    it('selects nothing after a list change reset the highlight', async () => {
+        const { combobox, emitSelect, suggestions } = makeCombobox(THREE);
         combobox.onKeydown(keydown('ArrowDown'));
         suggestions.value = [{ id: 'z', text: 'banana' }];
         await nextTick();
-        combobox.onKeydown(keydown('Enter'));
-        expect(emitSubmit).toHaveBeenCalled();
+        const event = keydown('Enter');
+        combobox.onKeydown(event);
         expect(emitSelect).not.toHaveBeenCalled();
+        expect(event.defaultPrevented).toBe(false);
     });
 });
 
