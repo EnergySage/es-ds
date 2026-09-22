@@ -61,7 +61,7 @@ const anchorName = `--es-autocomplete-${props.id}`;
 const panelAbove = ref(false);
 
 // chooses the panel's side and max-height from the space around the field, from
-// the same numbers the fit-to-viewport trim divides into rows. below unless the
+// the same numbers the row trim divides into rows. below unless the
 // untrimmed list only fits above, as any popper would.
 function positionPanel() {
     const panel = panelEl.value;
@@ -81,7 +81,7 @@ function positionPanel() {
     panel.style.maxHeight = `${Math.max(above ? spaceAbove : spaceBelow, 0)}px`;
 }
 
-const { remeasure, visibleSuggestions } = useFitToViewport(
+const { remeasure, visibleSuggestions } = useAutocompleteVisibleRows(
     panelEl,
     toRef(props, 'suggestions'),
     MAX_VISIBLE_SUGGESTIONS,
@@ -324,7 +324,7 @@ watch(panelContentEl, (el) => {
             fill: 'both',
         });
         heightAnimation = animation;
-        void settleAnimation(animation, PANEL_SLIDE_MS + 150).then(() => {
+        void awaitAnimationOrTimeout(animation, PANEL_SLIDE_MS).then(() => {
             if (heightAnimation === animation) {
                 heightAnimation = null;
                 // the natural height equals the end keyframe, so dropping the

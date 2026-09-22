@@ -3,21 +3,21 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { EsAutocompleteSuggestion } from '../types';
 
 // Baymard: keep the list manageable — at most this many suggestions, further
-// reduced by the fit-to-viewport trim. shared by both shells.
+// reduced by the row trim. shared by both shells.
 // https://baymard.com/research-articles/autocomplete-design
 export const MAX_VISIBLE_SUGGESTIONS = 5;
 
 /**
- * fit-to-viewport trimming: rows are uniform height, so the number that fits is
- * the available height over one rendered row's, and whole rows come and go as
- * that height changes — the list never scrolls and no row is half shown.
+ * how many suggestion rows fit the space the shell gives them: rows are uniform
+ * height, so the count is the available height over one rendered row's, and
+ * whole rows come and go as that height changes — never a scrollbar or half row.
  *
  * the limit comes from the container's max-height or explicit height, re-read on
  * suggestion changes, resizes and scrolls; anything else calls `remeasure`.
  * `beforeMeasure` runs first, so a caller positioning the container works from
  * the same numbers, and `active` gates remeasures while a shell is closed.
  */
-export function useFitToViewport(
+export function useAutocompleteVisibleRows(
     contentEl: Ref<HTMLElement | null>,
     suggestions: Ref<EsAutocompleteSuggestion[]>,
     cap: number,

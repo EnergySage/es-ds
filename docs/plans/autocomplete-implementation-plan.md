@@ -728,7 +728,7 @@ Open questions raised during planning, with the decisions now reflected inline a
     construction — one state, one flush), Enter's submit-vs-select, selection,
     clearing, focus retention, and the caret reveals. `es-autocomplete-field`
     is the shared input+clear component; the choreography moved to
-    `autocomplete-choreography.ts` (with `settleAnimation` shared in
+    `autocomplete-choreography.ts` (with `awaitAnimationOrTimeout` shared in
     `animation.ts`). Deleted outright: the highlight guard, the content-el
     resolver, the tabindex-stripping directive, the capture-phase ordering
     hacks, the blur/refocus net, and the `$el`/`closest` workarounds. The

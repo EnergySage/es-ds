@@ -53,7 +53,7 @@ const emit = defineEmits<{
 
 .es-autocomplete-item {
     /* 48px and up, padding inclusive: an adequate tap target on any touch device.
-     * rows share one uniform height per list, which the fit-to-viewport trim
+     * rows share one uniform height per list, which the row trim
      * divides the available height by to add or remove whole rows. */
     align-content: center;
     cursor: pointer;

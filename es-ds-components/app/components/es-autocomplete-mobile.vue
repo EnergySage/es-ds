@@ -48,7 +48,7 @@ const fieldRef = ref<(ComponentPublicInstance & { inputEl: HTMLInputElement | nu
 const inputEl = computed(() => fieldRef.value?.inputEl ?? null);
 const listEl = ref<HTMLElement | null>(null);
 
-const { measured, remeasure, visibleSuggestions } = useFitToViewport(
+const { measured, remeasure, visibleSuggestions } = useAutocompleteVisibleRows(
     listEl,
     toRef(props, 'suggestions'),
     MAX_VISIBLE_SUGGESTIONS,
@@ -389,7 +389,7 @@ input.es-autocomplete-trigger:not(:disabled) {
 }
 
 .es-autocomplete-takeover-list {
-    /* no scrolling by design: the fit-to-viewport trim only renders items that fit */
+    /* no scrolling by design: the row trim only renders items that fit */
     overflow: hidden;
     position: relative;
 

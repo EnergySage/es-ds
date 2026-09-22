@@ -28,7 +28,7 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
     }
 
     function settle(animation: Animation) {
-        return settleAnimation(animation, TRANSITION_MS + 150);
+        return awaitAnimationOrTimeout(animation, TRANSITION_MS);
     }
 
     /**

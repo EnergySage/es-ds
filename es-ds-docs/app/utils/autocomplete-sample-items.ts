@@ -6,8 +6,8 @@ export interface SampleAutocompleteAddress {
 // Sample data for the EsAutocomplete docs examples: street numbers cover every
 // leading digit and cities span the US, so any digits a visitor starts typing
 // are likely to match several addresses. Typing "12" matches more addresses
-// than the component will show, exercising the item cap and the fit-to-viewport
-// trim, and a few street lines run long for variety in suggestion width.
+// than the component will show, exercising the item cap and the row trim, and a
+// few street lines run long for variety in suggestion width.
 export const SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES: SampleAutocompleteAddress[] = [
     { street: '12 Maple Ave', cityStateZip: 'Cambridge, MA 02138' },
     { street: '15 Harbor Dr', cityStateZip: 'Salem, MA 01970' },

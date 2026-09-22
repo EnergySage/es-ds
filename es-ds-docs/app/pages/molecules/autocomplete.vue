@@ -227,7 +227,7 @@ const autocompleteOptionalProps = [
         "(count) => '{count} suggestions available'",
         `
         Builds the screen-reader announcement made when suggestions arrive, given the number of
-        suggestions displayed (after the display cap and fit-to-viewport trim). An empty result
+        suggestions displayed (after the display cap and the row trim). An empty result
         announces noResultsText instead.
         `,
     ],
@@ -417,7 +417,10 @@ onMounted(async () => {
                 In some cases, an autocomplete may appear in a narrow width layout. The suggestions list on desktop,
                 however, is not constrained by this. Try searching for "solar" or "heat pump".
             </p>
-            <p>The label for the autocomplete is also hidden visually here, but will still be announced by screen readers.</p>
+            <p>
+                The label for the autocomplete is also hidden visually here, but will still be announced by screen
+                readers.
+            </p>
             <es-row>
                 <es-col
                     md="8"
@@ -470,9 +473,7 @@ onMounted(async () => {
                         placeholder="Search for a fruit"
                         :suggestions="fruitSuggestions"
                         @complete="handleFruitComplete">
-                        <template #message>
-                            We will send you one of these every month.
-                        </template>
+                        <template #message> We will send you one of these every month. </template>
                     </es-autocomplete>
                 </es-col>
             </es-row>
@@ -499,10 +500,10 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>Focus overlay</h2>
             <p>
-                When the autocomplete is being used as a navigation tool, for example in a site search,
-                it can be helpful to minimize other distractions on the page to allow the user to focus
-                on selecting the right option. This focus overlay accomplishes that by dimming the rest
-                of the page when the autocomplete is open.
+                When the autocomplete is being used as a navigation tool, for example in a site search, it can be
+                helpful to minimize other distractions on the page to allow the user to focus on selecting the right
+                option. This focus overlay accomplishes that by dimming the rest of the page when the autocomplete is
+                open.
             </p>
             <es-row>
                 <es-col md="6">
@@ -513,7 +514,7 @@ onMounted(async () => {
                         placeholder="Search for a topic"
                         show-overlay-on-focus
                         :suggestions="longTextSuggestions"
-                        @complete="handleLongTextComplete"/>
+                        @complete="handleLongTextComplete" />
                 </es-col>
             </es-row>
             <p class="text-muted">

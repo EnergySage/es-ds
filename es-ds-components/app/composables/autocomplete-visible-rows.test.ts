@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import type { App } from 'vue';
 import { createApp, nextTick, ref } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
-import { useFitToViewport } from './fit-to-viewport';
+import { useAutocompleteVisibleRows } from './autocomplete-visible-rows';
 
 // NOTE: happy-dom has no real layout, so element geometry (offsetHeight,
 // clientHeight) is mocked per element. These tests cover the counting/limit
@@ -66,11 +66,11 @@ function makeContainer(
     return container;
 }
 
-describe('useFitToViewport', () => {
+describe('useAutocompleteVisibleRows', () => {
     it('renders the number of whole rows that fit the height limit', async () => {
         const contentEl = ref<HTMLElement | null>(makeContainer({ count: 7, height: 30 }, { maxHeight: 100 }));
         const suggestions = ref(suggestionList(7));
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10));
+        const fit = withSetup(() => useAutocompleteVisibleRows(contentEl, suggestions, 10));
         await fit.remeasure();
         // floor(100 / 30) = 3 whole rows; the fourth would be partially shown
         expect(fit.visibleSuggestions.value).toHaveLength(3);
@@ -80,7 +80,7 @@ describe('useFitToViewport', () => {
     it('never trims below one row, even when none fully fits', async () => {
         const contentEl = ref<HTMLElement | null>(makeContainer({ count: 1, height: 200 }, { maxHeight: 100 }));
         const suggestions = ref(suggestionList(5));
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10));
+        const fit = withSetup(() => useAutocompleteVisibleRows(contentEl, suggestions, 10));
         await fit.remeasure();
         expect(fit.visibleSuggestions.value).toHaveLength(1);
     });
@@ -90,7 +90,7 @@ describe('useFitToViewport', () => {
             makeContainer({ count: 0, height: 0 }, { maxHeight: 100 }, { messageOnly: true }),
         );
         const suggestions = ref<EsAutocompleteSuggestion[]>([]);
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10));
+        const fit = withSetup(() => useAutocompleteVisibleRows(contentEl, suggestions, 10));
         await fit.remeasure();
         expect(fit.measured.value).toBe(true);
     });
@@ -102,7 +102,7 @@ describe('useFitToViewport', () => {
             makeContainer({ count: 5, height: 30 }, { clientHeight: 40, maxHeight: 100 }),
         );
         const suggestions = ref(suggestionList(5));
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10));
+        const fit = withSetup(() => useAutocompleteVisibleRows(contentEl, suggestions, 10));
         await fit.remeasure();
         expect(fit.visibleSuggestions.value).toHaveLength(3);
     });
@@ -110,7 +110,7 @@ describe('useFitToViewport', () => {
     it('falls back to clientHeight when there is no max-height (the mobile takeover list)', async () => {
         const contentEl = ref<HTMLElement | null>(makeContainer({ count: 5, height: 30 }, { clientHeight: 70 }));
         const suggestions = ref(suggestionList(5));
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10));
+        const fit = withSetup(() => useAutocompleteVisibleRows(contentEl, suggestions, 10));
         await fit.remeasure();
         expect(fit.visibleSuggestions.value).toHaveLength(2);
     });
@@ -119,7 +119,7 @@ describe('useFitToViewport', () => {
         const container = makeContainer({ count: 7, height: 30 }, { maxHeight: 100 });
         const contentEl = ref<HTMLElement | null>(container);
         const suggestions = ref(suggestionList(7));
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10));
+        const fit = withSetup(() => useAutocompleteVisibleRows(contentEl, suggestions, 10));
         await fit.remeasure();
         expect(fit.visibleSuggestions.value).toHaveLength(3);
 
@@ -134,7 +134,7 @@ describe('useFitToViewport', () => {
         const container = makeContainer({ count: 2, height: 30 }, { maxHeight: 70 });
         const contentEl = ref<HTMLElement | null>(container);
         const suggestions = ref(suggestionList(7));
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10));
+        const fit = withSetup(() => useAutocompleteVisibleRows(contentEl, suggestions, 10));
         await fit.remeasure();
         expect(fit.visibleSuggestions.value).toHaveLength(2);
 
@@ -153,7 +153,9 @@ describe('useFitToViewport', () => {
         const contentEl = ref<HTMLElement | null>(container);
         const suggestions = ref(suggestionList(7));
         const active = ref(true);
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10, { active: () => active.value }));
+        const fit = withSetup(() =>
+            useAutocompleteVisibleRows(contentEl, suggestions, 10, { active: () => active.value }),
+        );
         await fit.remeasure();
         expect(fit.visibleSuggestions.value).toHaveLength(2);
 
@@ -181,7 +183,7 @@ describe('useFitToViewport', () => {
         // the caller positions the container and writes its max-height (the
         // desktop shell's positionPanel) right before each measurement
         const fit = withSetup(() =>
-            useFitToViewport(contentEl, suggestions, 10, {
+            useAutocompleteVisibleRows(contentEl, suggestions, 10, {
                 beforeMeasure: () => {
                     container.style.maxHeight = '70px';
                 },
@@ -194,7 +196,7 @@ describe('useFitToViewport', () => {
     it('is unmeasured (list hidden) until a container exists', async () => {
         const contentEl = ref<HTMLElement | null>(null);
         const suggestions = ref(suggestionList(3));
-        const fit = withSetup(() => useFitToViewport(contentEl, suggestions, 10));
+        const fit = withSetup(() => useAutocompleteVisibleRows(contentEl, suggestions, 10));
         expect(fit.measured.value).toBe(false);
 
         contentEl.value = makeContainer({ count: 3, height: 30 }, { maxHeight: 100 });
