@@ -73,10 +73,7 @@ watch(addressQuery, (query) => {
     }
 });
 const handleRequiredAddressBlur = () => validateRequiredAddress();
-const handleRequiredAddressSubmit = () => {
-    validateRequiredAddress();
-    console.log('submit');
-};
+const handleRequiredAddressSubmit = () => validateRequiredAddress();
 const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
     requiredAddressSelection.value = suggestion || null;
     requiredAddressState.value = null;
