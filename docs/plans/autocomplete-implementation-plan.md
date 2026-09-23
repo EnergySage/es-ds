@@ -282,11 +282,11 @@ es-ds-components/app/
     es-autocomplete-item.vue      # item renderer: predictive bolding
     es-autocomplete-suggestion-text.vue  # public inline renderer of predictive-bolding
                                   # segments; takes text+query, or pre-computed segments
-                                  # (from splitAutocompleteTextLines or API match offsets)
+                                  # (from splitEsAutocompleteTextLines or API match offsets)
   composables/
     fit-to-viewport.ts            # measure-then-trim (§3), visualViewport-aware
   utils/
-    autocomplete.ts               # splitAutocompleteText — token-based predictive-bolding
+    autocomplete.ts               # splitEsAutocompleteText — token-based predictive-bolding
                                   # segments (req #3), used by the default item renderer and
                                   # exported for custom item slot renderers (auto-imported in
                                   # consuming apps)
@@ -353,7 +353,7 @@ wired into `make test` and therefore the ci.yml PR workflow):**
   typed query, not the selection-filled text, so a refocused panel shows the
   prompt until the app answers again), and the prompt → results → no-results →
   prompt-while-pending message lifecycle. Made unit-testable by extracting the
-  parent's search state into `useAutocompleteSearch` (2026-07-07), which removed
+  parent's search state into `useEsAutocompleteSearch` (2026-07-07), which removed
   the need for the @nuxt/test-utils component test previously deferred below.
 - `app/composables/autocomplete-content-el.test.ts` — panel-element resolution:
   resolves only real elements (never Reka's placeholder comment node), clears on
@@ -393,7 +393,7 @@ docs site:
 **No longer deferred — the component test.** The parent emit contract (debounce,
 suppression, cancellation) was originally deferred because testing it required
 mounting the SFC under @nuxt/test-utils; extracting the logic into
-`useAutocompleteSearch` (2026-07-07) made it a plain Vitest with fake timers
+`useEsAutocompleteSearch` (2026-07-07) made it a plain Vitest with fake timers
 instead — see `autocomplete-search.test.ts` above. No @nuxt/test-utils needed.
 
 ### 8b. Repo quality gates (must pass)
@@ -504,20 +504,20 @@ Open questions raised during planning, with the decisions now reflected inline a
     search. Demonstrated in the docs page's "Requiring a selection" example; this is
     the same pattern `ZipOrAddressInput` uses around PrimeVue today.
 11. **Predictive bolding is token-based and presentation-only** (2026-07-06): the
-    `splitAutocompleteText` utility (also used by the default item renderer) splits
+    `splitEsAutocompleteText` utility (also used by the default item renderer) splits
     the query on whitespace and matches each token case-insensitively, preferring
     word starts ("st" matches "St", not the middle of "Boston") and falling back to
     anywhere for tokens with no word-start match ("3" highlights within "123"), so
     query terms highlight in any order ("boston main"). It never decides what
     matches — the app's suggestion source already did — so a backend match it cannot
     see (typo tolerance, synonyms) benignly renders regular rather than wrongly bold.
-    For suggestions rendered as multiple lines, `splitAutocompleteTextLines` decides
+    For suggestions rendered as multiple lines, `splitEsAutocompleteTextLines` decides
     bolding across all lines together: a line without its own token match still
     renders fully bold when another line matched, since it is part of what selecting
     adds (no match anywhere → everything regular). The `EsAutocompleteSuggestionText`
     component (also used by the default item renderer) renders the segments so apps
     don't hand-roll the span loop: pass `text` + `query` for a single string, or
-    pre-computed `segments` (from `splitAutocompleteTextLines` or from API match
+    pre-computed `segments` (from `splitEsAutocompleteTextLines` or from API match
     offsets), with app classes applied directly to it. The DS deliberately ships no
     API-specific helpers (e.g. for Google Places `matched_substrings` offsets): apps
     whose search API returns match offsets build their own segments in a custom
@@ -722,7 +722,7 @@ Open questions raised during planning, with the decisions now reflected inline a
     workarounds — several depending on Reka internals (an injected context,
     handler order, hardcoded attributes stripped post-render) across an
     uncontrolled `^2.8.0` version range in a source-shipped package.
-    `useAutocompleteCombobox` (~200 lines) now owns highlight state,
+    `useEsAutocompleteCombobox` (~200 lines) now owns highlight state,
     aria-activedescendant wiring over non-focusable options, fully cyclic
     navigation, copy-on-highlight (atomic with the activedescendant change, by
     construction — one state, one flush), Enter's submit-vs-select, selection,
@@ -798,6 +798,19 @@ Open questions raised during planning, with the decisions now reflected inline a
     event, before any focus handling runs. The window itself losing focus
     (alt-tab, devtools) also collapses focus and also needs nothing — the
     interaction resumes on return, per the ignore-window-blur rule.
+37. **Every exported name carries the `Es` prefix** (2026-09-23): the layer's
+    `imports.dirs` puts all of `composables/`, `utils/` and `types/` into every
+    consuming app's namespace, with no per-file opt-out — the generated
+    `.nuxt/imports.d.ts` of a consuming app is the way to see exactly what that
+    is. So the composables read `useEsAutocompleteCombobox`, `…Search`,
+    `…VisibleRows` and `…Choreography`, the shared type is
+    `EsAutocompleteCombobox`, the text helpers are `splitEsAutocompleteText`
+    and `splitEsAutocompleteTextLines`, and the cap is
+    `ES_AUTOCOMPLETE_MAX_VISIBLE_SUGGESTIONS`, matching the `ES_MENU_BAR_*`
+    constants already exported. Module-private interfaces keep their plain names:
+    they never reach the namespace. Keeping the internals unexported would mean
+    moving them out of the scanned directories, which is a layout precedent this
+    package has not set; the prefix removes the collision risk without it.
 36. **The takeover falls back to the label as its placeholder** (2026-09-23):
     it covers the page, and the label with it, so a field the consumer gave no
     placeholder sits there with nothing saying what it takes — the dialog's title

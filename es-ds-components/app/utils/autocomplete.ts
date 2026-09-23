@@ -9,7 +9,7 @@ import type { EsAutocompleteTextSegment } from '../types';
  * bold.
  *
  *     <span
- *         v-for="(segment, index) in splitAutocompleteText(line, query)"
+ *         v-for="(segment, index) in splitEsAutocompleteText(line, query)"
  *         :key="index"
  *         :class="{ 'font-weight-bold': segment.predictive }">
  *         {{ segment.text }}</span>
@@ -19,8 +19,8 @@ import type { EsAutocompleteTextSegment } from '../types';
  * whose API returns its own match offsets should build segments from those in a
  * custom `item` slot instead.
  */
-export function splitAutocompleteText(text: string, query: string): EsAutocompleteTextSegment[] {
-    return splitAutocompleteTextLines([text], query)[0]!;
+export function splitEsAutocompleteText(text: string, query: string): EsAutocompleteTextSegment[] {
+    return splitEsAutocompleteTextLines([text], query)[0]!;
 }
 
 /**
@@ -28,7 +28,7 @@ export function splitAutocompleteText(text: string, query: string): EsAutocomple
  * decided across them together: with no match anywhere every line renders
  * regular, and once any line matches, the rest are entirely predictive.
  */
-export function splitAutocompleteTextLines(lines: string[], query: string): EsAutocompleteTextSegment[][] {
+export function splitEsAutocompleteTextLines(lines: string[], query: string): EsAutocompleteTextSegment[][] {
     const tokens = [...new Set(query.trim().toLowerCase().split(/\s+/).filter(Boolean))];
 
     // per token, prefer word-start matches ("st" is the "St" in "Beacon St", not

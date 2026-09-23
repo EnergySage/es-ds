@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import type { App } from 'vue';
 import { createApp, nextTick, ref } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
-import { useAutocompleteCombobox } from './autocomplete-combobox';
+import { useEsAutocompleteCombobox } from './autocomplete-combobox';
 
 /** run the composable inside a real component so watchers are scoped */
 function withSetup<T>(composable: () => T): { app: App; result: T } {
@@ -26,7 +26,7 @@ function makeCombobox(initialSuggestions: EsAutocompleteSuggestion[] = [{ id: 'a
     const close = vi.fn();
     const emitSelect = vi.fn();
     const { result: combobox } = withSetup(() =>
-        useAutocompleteCombobox({
+        useEsAutocompleteCombobox({
             close,
             emitSelect,
             idPrefix: 'test',
@@ -52,7 +52,7 @@ const THREE = [
     { id: 'c', text: 'avocado' },
 ];
 
-describe('useAutocompleteCombobox arrow navigation and mirroring', () => {
+describe('useEsAutocompleteCombobox arrow navigation and mirroring', () => {
     it('cycles down through every suggestion, back to the input, and around again', () => {
         const { combobox, model } = makeCombobox(THREE);
         model.value = 'a';
@@ -131,7 +131,7 @@ describe('useAutocompleteCombobox arrow navigation and mirroring', () => {
     });
 });
 
-describe('useAutocompleteCombobox Enter semantics', () => {
+describe('useEsAutocompleteCombobox Enter semantics', () => {
     it('closes and leaves the key to the page when nothing is highlighted', () => {
         const { close, combobox, emitSelect } = makeCombobox();
         const event = keydown('Enter');
@@ -180,7 +180,7 @@ describe('useAutocompleteCombobox Enter semantics', () => {
     });
 });
 
-describe('useAutocompleteCombobox selection, clearing, and focus retention', () => {
+describe('useEsAutocompleteCombobox selection, clearing, and focus retention', () => {
     it('onOptionClick writes the model, closes with the text, and emits the suggestion', () => {
         const { close, combobox, emitSelect, model } = makeCombobox(THREE);
         combobox.onOptionClick(1);
@@ -213,7 +213,7 @@ describe('useAutocompleteCombobox selection, clearing, and focus retention', () 
     });
 });
 
-describe('useAutocompleteCombobox arrow-driven blur window', () => {
+describe('useEsAutocompleteCombobox arrow-driven blur window', () => {
     it('claims the blur a screen reader makes in answer to an arrow press', () => {
         const { combobox } = makeCombobox(THREE);
         combobox.onKeydown(keydown('ArrowDown'));

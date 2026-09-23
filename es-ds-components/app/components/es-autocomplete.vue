@@ -65,8 +65,8 @@ const describedBy = computed(() => (showError.value ? `${helpId} ${errorId}` : h
 const triggerDescribedBy = computed(() => (showError.value ? `${triggerHelpId} ${errorId}` : triggerHelpId));
 
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
-// messaging live in useAutocompleteSearch so the contract is unit-testable
-const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = useAutocompleteSearch({
+// messaging live in useEsAutocompleteSearch so the contract is unit-testable
+const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = useEsAutocompleteSearch({
     delay: () => props.delay,
     emitComplete: (query) => emit('complete', query),
     emitSelect: (suggestion) => emit('select', suggestion),

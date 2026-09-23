@@ -75,16 +75,16 @@ function positionPanel() {
     const spaceAbove = anchorRect.top - offset;
     const rowHeight = panel.querySelector<HTMLElement>('[data-es-autocomplete-item]')?.offsetHeight ?? 0;
     const borders = Math.max(panel.offsetHeight - panel.clientHeight, 0);
-    const natural = rowHeight * Math.min(props.suggestions.length, MAX_VISIBLE_SUGGESTIONS) + borders;
+    const natural = rowHeight * Math.min(props.suggestions.length, ES_AUTOCOMPLETE_MAX_VISIBLE_SUGGESTIONS) + borders;
     const above = supportsAnchor.value && natural > spaceBelow && natural <= spaceAbove;
     panelAbove.value = above;
     panel.style.maxHeight = `${Math.max(above ? spaceAbove : spaceBelow, 0)}px`;
 }
 
-const { remeasure, visibleSuggestions } = useAutocompleteVisibleRows(
+const { remeasure, visibleSuggestions } = useEsAutocompleteVisibleRows(
     panelEl,
     toRef(props, 'suggestions'),
-    MAX_VISIBLE_SUGGESTIONS,
+    ES_AUTOCOMPLETE_MAX_VISIBLE_SUGGESTIONS,
     {
         // the always-mounted panel must not re-measure on every page scroll while closed
         active: () => panelOpen.value,
@@ -92,7 +92,7 @@ const { remeasure, visibleSuggestions } = useAutocompleteVisibleRows(
     },
 );
 
-const combobox = useAutocompleteCombobox({
+const combobox = useEsAutocompleteCombobox({
     close: () => {
         open.value = false;
     },

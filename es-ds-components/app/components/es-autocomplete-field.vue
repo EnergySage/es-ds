@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AutocompleteCombobox } from '../composables/autocomplete-combobox';
+import type { EsAutocompleteCombobox } from '../composables/autocomplete-combobox';
 
 /**
  * the field both shells share: the combobox input plus its clear button, with
@@ -16,7 +16,7 @@ interface Props {
      */
     autocomplete: string;
     clearText?: string;
-    combobox: AutocompleteCombobox;
+    combobox: EsAutocompleteCombobox;
     describedBy: string;
     disabled?: boolean;
     /** the input's id, linked from the shell's label; the takeover input has none */

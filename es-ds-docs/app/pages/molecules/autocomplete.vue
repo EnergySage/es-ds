@@ -18,7 +18,7 @@ const filterAddresses = (query: string) => {
 // split the address into two lines to enable custom formatting
 const splitAddressLines = (suggestion: EsAutocompleteSuggestion, query: string) => {
     const address = suggestion.value as unknown as SampleAutocompleteAddress;
-    return splitAutocompleteTextLines([address.street, address.cityStateZip], query);
+    return splitEsAutocompleteTextLines([address.street, address.cityStateZip], query);
 };
 
 // fruit examples

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { EsAutocompleteTextSegment } from '../types';
-import { splitAutocompleteText } from '../utils/autocomplete';
+import { splitEsAutocompleteText } from '../utils/autocomplete';
 
 interface Props {
     query?: string;
     /**
-     * pre-computed segments, e.g. from splitAutocompleteTextLines or a search
+     * pre-computed segments, e.g. from splitEsAutocompleteTextLines or a search
      * API's own match offsets. when provided, text/query are ignored.
      */
     segments?: EsAutocompleteTextSegment[] | null;
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
     text: '',
 });
 
-const resolvedSegments = computed(() => props.segments ?? splitAutocompleteText(props.text, props.query));
+const resolvedSegments = computed(() => props.segments ?? splitEsAutocompleteText(props.text, props.query));
 </script>
 
 <template>

@@ -26,7 +26,7 @@ interface AutocompleteComboboxOptions {
  * select-or-stand-aside. value and activedescendant come from one index, so they
  * land together, which is what VoiceOver stays anchored for.
  */
-export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
+export function useEsAutocompleteCombobox(options: AutocompleteComboboxOptions) {
     // -1 is the input itself (no option highlighted)
     const highlightIndex = ref(-1);
     // only a highlight the user created makes Enter select, and only keyboard
@@ -247,4 +247,4 @@ export function useAutocompleteCombobox(options: AutocompleteComboboxOptions) {
     };
 }
 
-export type AutocompleteCombobox = ReturnType<typeof useAutocompleteCombobox>;
+export type EsAutocompleteCombobox = ReturnType<typeof useEsAutocompleteCombobox>;

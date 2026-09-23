@@ -48,16 +48,16 @@ const fieldRef = ref<(ComponentPublicInstance & { inputEl: HTMLInputElement | nu
 const inputEl = computed(() => fieldRef.value?.inputEl ?? null);
 const listEl = ref<HTMLElement | null>(null);
 
-const { measured, remeasure, visibleSuggestions } = useAutocompleteVisibleRows(
+const { measured, remeasure, visibleSuggestions } = useEsAutocompleteVisibleRows(
     listEl,
     toRef(props, 'suggestions'),
-    MAX_VISIBLE_SUGGESTIONS,
+    ES_AUTOCOMPLETE_MAX_VISIBLE_SUGGESTIONS,
     // the takeover sizes its list itself (visualViewport); viewport events are
     // only relevant while it is open
     { active: () => takeoverOpen.value },
 );
 
-const { closeTakeover, enterTransition } = useTakeoverChoreography({
+const { closeTakeover, enterTransition } = useEsAutocompleteChoreography({
     isOpen: () => takeoverOpen.value,
     parts: () => ({
         field: (fieldRef.value?.$el as HTMLElement | undefined) ?? null,
@@ -69,7 +69,7 @@ const { closeTakeover, enterTransition } = useTakeoverChoreography({
     },
 });
 
-const combobox = useAutocompleteCombobox({
+const combobox = useEsAutocompleteCombobox({
     close: (selectedText) => {
         void closeTakeover(selectedText);
     },

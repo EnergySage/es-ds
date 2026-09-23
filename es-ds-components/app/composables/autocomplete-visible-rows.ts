@@ -5,7 +5,7 @@ import type { EsAutocompleteSuggestion } from '../types';
 // Baymard: keep the list manageable — at most this many suggestions, further
 // reduced by the row trim. shared by both shells.
 // https://baymard.com/research-articles/autocomplete-design
-export const MAX_VISIBLE_SUGGESTIONS = 5;
+export const ES_AUTOCOMPLETE_MAX_VISIBLE_SUGGESTIONS = 5;
 
 /**
  * how many suggestion rows fit the space the shell gives them: rows are uniform
@@ -17,7 +17,7 @@ export const MAX_VISIBLE_SUGGESTIONS = 5;
  * `beforeMeasure` runs first, so a caller positioning the container works from
  * the same numbers, and `active` gates remeasures while a shell is closed.
  */
-export function useAutocompleteVisibleRows(
+export function useEsAutocompleteVisibleRows(
     contentEl: Ref<HTMLElement | null>,
     suggestions: Ref<EsAutocompleteSuggestion[]>,
     cap: number,

@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { App } from 'vue';
 import { createApp, nextTick, ref } from 'vue';
 import type { EsAutocompleteSuggestion } from '../types';
-import { useAutocompleteSearch } from './autocomplete-search';
+import { useEsAutocompleteSearch } from './autocomplete-search';
 
 const DELAY = 300;
 
@@ -37,7 +37,7 @@ function makeSearch(overrides: { minChars?: number } = {}) {
     const emitComplete = vi.fn();
     const emitSelect = vi.fn();
     const { app, result: search } = withSetup(() =>
-        useAutocompleteSearch({
+        useEsAutocompleteSearch({
             delay: () => DELAY,
             emitComplete,
             emitSelect,
@@ -56,7 +56,7 @@ function makeSearch(overrides: { minChars?: number } = {}) {
     return { app, emitComplete, emitSelect, model, search, suggestions, type };
 }
 
-describe('useAutocompleteSearch complete debouncing', () => {
+describe('useEsAutocompleteSearch complete debouncing', () => {
     it('emits complete once per typing pause, with the trimmed query', async () => {
         const { emitComplete, type } = makeSearch();
         await type('s');
@@ -98,7 +98,7 @@ describe('useAutocompleteSearch complete debouncing', () => {
     });
 });
 
-describe('useAutocompleteSearch panel message and suggestion gating', () => {
+describe('useEsAutocompleteSearch panel message and suggestion gating', () => {
     it('walks prompt → results → no-results → prompt-while-pending correctly', async () => {
         const { search, suggestions, type } = makeSearch();
         // nothing searched yet
@@ -176,7 +176,7 @@ describe('useAutocompleteSearch panel message and suggestion gating', () => {
         const CACHED = [{ id: 'a', text: 'apple' }];
         const model = ref('');
         const search = withSetup(() =>
-            useAutocompleteSearch({
+            useEsAutocompleteSearch({
                 delay: () => DELAY,
                 emitComplete: () => undefined,
                 emitSelect: () => undefined,

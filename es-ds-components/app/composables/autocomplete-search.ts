@@ -23,7 +23,7 @@ const EMPTY_SUGGESTIONS: EsAutocompleteSuggestion[] = [];
  * the minChars gate, the staleness of the app's list after a selection, and the
  * empty-state messaging. here so it is unit-testable without a mount.
  */
-export function useAutocompleteSearch(options: AutocompleteSearchOptions) {
+export function useEsAutocompleteSearch(options: AutocompleteSearchOptions) {
     const { model } = options;
 
     // a selection makes the app's list stale: it matched the typed query, not the

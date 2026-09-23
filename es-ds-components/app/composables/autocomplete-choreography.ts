@@ -18,7 +18,7 @@ const TRANSITION_MS = 300;
  * field flies between the resting field and the one inside it. the ghost is an
  * inert clone, so the real input keeps the focus iOS needs to show the keyboard.
  */
-export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
+export function useEsAutocompleteChoreography(options: TakeoverChoreographyOptions) {
     function transitionsDisabled() {
         return (
             typeof matchMedia === 'undefined' ||
