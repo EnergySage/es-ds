@@ -991,9 +991,17 @@ Open questions raised during planning, with the decisions now reflected inline a
     narrows past `md` and handed a mouse-and-keyboard user a tap-to-open
     dialog, where clicking the field and typing no longer works. Pairing the
     breakpoint with the primary input's hover capability keeps that user on the
-    popover. The query lives in the public wrapper, not in the two shells: one
-    rule decides both, so neither shell knows or cares whether it is the one on
-    screen. It stays pure CSS because both shells are server-rendered with one
+    popover. Hover alone was not enough: every Samsung Android device since 2015
+    reports a hovering pointer, its touchscreen firmware describing itself as a
+    touchpad, which left them all on the desktop popover (Firefox discards that
+    firmware claim; Chromium, Samsung Internet and Edge trust it, and there is no
+    fix in sight because S Pen and DeX depend on the current behaviour). So the
+    gate asks for `(hover: none)` OR `(pointer: coarse)` — pointer being the
+    signal Samsung reports correctly — emitted as two blocks rather than one `or`
+    condition. A zoomed desktop is hovering AND fine, so it matches neither and
+    keeps the popover, which is what the capability test is for. The query lives
+    in the public wrapper, not in the two shells: one rule decides both, so
+    neither shell knows or cares whether it is the one on screen. It stays pure CSS because both shells are server-rendered with one
     under `display: none` — there is no capability check to hydrate and no
     flash of the wrong shell, which is why this is not a `matchMedia` ref. The
     desktop overlay, teleported to the body and so outside the wrapper, needs

@@ -183,21 +183,34 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
     margin-bottom: variables.$spacer;
 }
 
+/* ensures that the given rules are applied at XS breakpoint on touch devices.
+ * "hover: none" covers most touch devices except Samsung (which has a bug),
+ * so we also apply them on "pointer: coarse" to catch Samsung devices. */
+@mixin small-touch-screen {
+    @include breakpoints.media-breakpoint-down(sm) {
+        @media (hover: none) {
+            @content;
+        }
+
+        @media (pointer: coarse) {
+            @content;
+        }
+    }
+}
+
 /* show the desktop autocomplete by default */
 .es-autocomplete-shell-mobile {
     display: none;
 }
 
 /* show the mobile fullscreen takeover experience only on small touch devices */
-@include breakpoints.media-breakpoint-down(sm) {
-    @media (hover: none) {
-        .es-autocomplete-shell-desktop {
-            display: none;
-        }
+@include small-touch-screen {
+    .es-autocomplete-shell-desktop {
+        display: none;
+    }
 
-        .es-autocomplete-shell-mobile {
-            display: block;
-        }
+    .es-autocomplete-shell-mobile {
+        display: block;
     }
 }
 </style>
