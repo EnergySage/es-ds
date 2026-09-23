@@ -34,8 +34,8 @@ format:
 .PHONY: test
 test:
 	npm --prefix es-ds-styles run test
-# TODO: set up testing for es-ds-components and es-ds-docs
-#	npm --prefix es-ds-components run test
+	npm --prefix es-ds-components run test
+# TODO: set up testing for es-ds-docs
 #	npm --prefix es-ds-docs run test
 
 .PHONY: build
