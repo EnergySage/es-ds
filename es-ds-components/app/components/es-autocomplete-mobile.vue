@@ -84,6 +84,11 @@ const combobox = useAutocompleteCombobox({
 // the takeover's input announces "expanded" exactly when a list exists
 const listboxOpen = computed(() => visibleSuggestions.value.length > 0);
 
+// the takeover covers the page, and with it the label: a field with no
+// placeholder would sit there with nothing to say what it takes, so the label
+// stands in as one. the resting field keeps the consumer's intent.
+const takeoverPlaceholder = computed(() => props.placeholder || props.label);
+
 // announces how many suggestions are actually displayed, after the cap and the
 // trim, or the no-results state. the inactive shell's region sits under
 // display: none, which silences it.
@@ -255,7 +260,7 @@ function onTakeoverOpenChange(value: boolean) {
                                 :described-by="describedBy"
                                 :listbox-open="listboxOpen"
                                 :model="model"
-                                :placeholder="placeholder"
+                                :placeholder="takeoverPlaceholder"
                                 :required="required"
                                 :state="state" />
                         </div>

@@ -798,6 +798,15 @@ Open questions raised during planning, with the decisions now reflected inline a
     event, before any focus handling runs. The window itself losing focus
     (alt-tab, devtools) also collapses focus and also needs nothing — the
     interaction resumes on return, per the ignore-window-blur rule.
+36. **The takeover falls back to the label as its placeholder** (2026-09-23):
+    it covers the page, and the label with it, so a field the consumer gave no
+    placeholder sits there with nothing saying what it takes — the dialog's title
+    and the input's aria-label cover screen readers, but nothing covers sight.
+    `placeholder || label` applies inside the takeover only; the resting field
+    shows what the consumer asked for, which is nothing. The flying ghost takes
+    the placeholder of the end it is heading to, the same rule it already follows
+    for the clear button and the text insets, so the words do not appear only
+    once the flight lands.
 35. **The takeover shows no validation styling** (2026-09-22, from device
     testing): the error message stays on the page behind the takeover, so the
     invalid look inside it was unexplained — and Bootstrap reserves room for the

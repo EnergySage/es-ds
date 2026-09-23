@@ -44,9 +44,10 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         };
     }
 
-    /** one end of a flight: where the field sits, and where it keeps its text */
+    /** one end of a flight: where the field sits, and what it shows there */
     interface FlightEnd {
         insets: { left: number; right: number };
+        placeholder: string;
         rect: DOMRect;
     }
 
@@ -68,6 +69,9 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         field.value = trigger.value;
         // never a tab stop, and never a second field for an assistive technology
         field.tabIndex = -1;
+        // an empty field shows the placeholder of wherever it is going, not the
+        // one it came from: the takeover's stands in for the label it covers
+        field.placeholder = to.placeholder;
         // px-100 is !important, and an important declaration outranks an
         // animation — the animated insets below own the field's padding
         field.classList.remove('px-100');
@@ -180,9 +184,14 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
         );
         void flyGhost(
             trigger,
-            { insets: textInsets(trigger, null), rect: trigger.getBoundingClientRect() },
+            {
+                insets: textInsets(trigger, null),
+                placeholder: trigger.placeholder,
+                rect: trigger.getBoundingClientRect(),
+            },
             {
                 insets: textInsets(landingInput ?? trigger, clearButton),
+                placeholder: landingInput?.placeholder ?? trigger.placeholder,
                 rect: field.getBoundingClientRect(),
             },
             (ghost, ghostField) => decorateGhost(ghost, ghostField, clearButton, 'in'),
@@ -227,9 +236,14 @@ export function useTakeoverChoreography(options: TakeoverChoreographyOptions) {
                 trigger,
                 {
                     insets: textInsets(landingInput ?? trigger, clearButton),
+                    placeholder: landingInput?.placeholder ?? trigger.placeholder,
                     rect: field.getBoundingClientRect(),
                 },
-                { insets: textInsets(trigger, null), rect: trigger.getBoundingClientRect() },
+                {
+                    insets: textInsets(trigger, null),
+                    placeholder: trigger.placeholder,
+                    rect: trigger.getBoundingClientRect(),
+                },
                 (ghost, ghostField) => decorateGhost(ghost, ghostField, clearButton, 'out', selectedText),
             ),
             settle(fade),
