@@ -1,15 +1,6 @@
 <script setup lang="ts">
 import type { SampleAutocompleteAddress } from '~/utils/autocomplete-sample-items';
 
-// simple algorithm to match suggestions that start with the query string
-const filterTerms = (query: string, terms: string[]) =>
-    terms
-        .filter((term) => term.toLowerCase().startsWith(query.toLowerCase()))
-        .map((term) => ({
-            id: term,
-            text: term,
-        }));
-
 // more complex algorithm to match addresses by matching start of query token
 // to start of address token, independent of token order
 const filterAddresses = (query: string) => {
@@ -34,14 +25,14 @@ const splitAddressLines = (suggestion: EsAutocompleteSuggestion, query: string) 
 const fruitQuery = ref('');
 const fruitSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const handleFruitComplete = (query: string) => {
-    fruitSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_FRUIT);
+    fruitSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_FRUIT);
 };
 
 // long text examples
 const longTextQuery = ref('');
 const longTextSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const handleLongTextComplete = (query: string) => {
-    longTextSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
+    longTextSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_SEARCH_TERMS);
 };
 
 // address examples
@@ -83,7 +74,7 @@ watch(addressQuery, (query) => {
 const errorQuery = ref('');
 const errorSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const onErrorComplete = (query: string) => {
-    errorSuggestions.value = filterTerms(query, SAMPLE_LIST_OF_SEARCH_TERMS);
+    errorSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_SEARCH_TERMS);
 };
 
 // Disabled example

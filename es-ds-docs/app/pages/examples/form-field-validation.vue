@@ -2,6 +2,7 @@
 const state = reactive({
     form: {
         email: '',
+        favoriteFruit: '',
         password: '',
         phone: '',
         maskedPhoneNumber: '',
@@ -9,6 +10,11 @@ const state = reactive({
         notes: '',
     },
 });
+
+const fruitSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const handleFruitComplete = (query: string) => {
+    fruitSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_FRUIT);
+};
 
 const rules = {
     form: {
@@ -19,6 +25,9 @@ const rules = {
         email: {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
             [vuelidateKeys.EMAIL]: vuelidateEmail,
+        },
+        favoriteFruit: {
+            [vuelidateKeys.REQUIRED]: vuelidateRequired,
         },
         notes: {
             [vuelidateKeys.REQUIRED]: vuelidateRequired,
@@ -172,6 +181,16 @@ onMounted(async () => {
                         <template #label> Masked phone number </template>
                         <template #errorMessage> Please enter a valid phone number. </template>
                     </es-form-input>
+                    <es-autocomplete
+                        v-model="state.form.favoriteFruit"
+                        label="Favorite fruit"
+                        required
+                        :state="validateState('form.favoriteFruit')"
+                        :suggestions="fruitSuggestions"
+                        @blur="v$.form.favoriteFruit.$touch"
+                        @complete="handleFruitComplete">
+                        <template #errorMessage> Please enter your favorite fruit. </template>
+                    </es-autocomplete>
                     <es-dropdown-select
                         v-model="state.form.contactMethod"
                         label="Preferred contact method"
