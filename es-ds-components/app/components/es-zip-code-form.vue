@@ -1,65 +1,39 @@
 <script setup lang="ts">
-const props = defineProps({
-    constrained: {
-        type: Boolean,
-        default: false,
-    },
-    contextMessage: {
-        type: String,
-        default: '',
-    },
-    dark: {
-        type: Boolean,
-        default: false,
-    },
-    fieldName: {
-        type: String,
-        default: 'zip_code',
-    },
-    inputId: {
-        type: String,
-        required: true,
-    },
-    newTab: {
-        type: Boolean,
-        default: false,
-    },
-    placeholder: {
-        type: String,
-        default: 'ZIP code',
-    },
-    privacyPolicyLink: {
-        type: String,
-        default: '',
-    },
-    privacyPolicyNewTab: {
-        type: Boolean,
-        default: false,
-    },
-    replaceFieldNameInUrl: {
-        type: Boolean,
-        default: false,
-    },
-    selectedProduct: {
-        type: String,
-        default: '',
-    },
-    showPrivacySection: {
-        type: Boolean,
-        default: true,
-    },
-    stackUntil: {
-        type: String,
-        default: '',
-    },
-    url: {
-        type: String,
-        required: true,
-    },
-    zipCodeValue: {
-        type: String,
-        default: '',
-    },
+interface IProps {
+    align?: 'left' | 'center' | 'right';
+    constrained?: boolean;
+    contextMessage?: string;
+    dark?: boolean;
+    fieldName?: string;
+    inputId?: string;
+    newTab?: boolean;
+    placeholder?: string;
+    privacyPolicyLink?: string;
+    privacyPolicyNewTab?: boolean;
+    replaceFieldNameInUrl?: boolean;
+    selectedProduct?: string;
+    showPrivacySection?: boolean;
+    stackUntil?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | '';
+    url: string;
+    zipCodeValue?: string;
+}
+
+const props = withDefaults(defineProps<IProps>(), {
+    align: 'left',
+    constrained: false,
+    contextMessage: '',
+    dark: false,
+    fieldName: 'zip_code',
+    inputId: useId(),
+    newTab: false,
+    placeholder: 'ZIP code',
+    privacyPolicyLink: '',
+    privacyPolicyNewTab: false,
+    replaceFieldNameInUrl: false,
+    selectedProduct: '',
+    showPrivacySection: true,
+    stackUntil: '',
+    zipCodeValue: '',
 });
 
 const state = reactive({
@@ -189,18 +163,28 @@ const handleSubmit = () => {
             </form>
             <div
                 v-if="showPrivacySection"
-                class="d-flex text-left"
-                :class="{ 'font-size-75': constrained }">
+                class="d-md-flex"
+                :class="{
+                    'font-size-75': constrained,
+                    [`text-${align}`]: true,
+                    'd-flex justify-content-start': align === 'left',
+                    'justify-content-center': align === 'center',
+                    'justify-content-end': align === 'right',
+                }">
                 <icon-lock-on
                     aria-hidden="true"
                     class="privacy-lock-icon flex-shrink-0 mr-50 position-relative"
-                    :class="{ 'mt-25': !constrained }"
+                    :class="{
+                        'mt-md-25': !constrained,
+                        'mt-25': !constrained && align === 'left',
+                    }"
                     height="1.125rem"
                     width="1.125rem" />
-                <div>
+                <span>
                     <span>
-                        <slot name="privacyExplanation"> Your information is safe with us. </slot>
+                        <slot name="privacyExplanation">Your information is safe with us.</slot>
                     </span>
+                    {{ ' ' }}
                     <nuxt-link
                         v-if="privacyPolicyLink"
                         :href="privacyPolicyLink"
@@ -209,7 +193,7 @@ const handleSubmit = () => {
                         :target="privacyPolicyNewTab ? '_blank' : '_self'">
                         <slot name="privacyPolicyLinkText">Privacy Policy</slot>
                     </nuxt-link>
-                </div>
+                </span>
             </div>
         </div>
     </div>
