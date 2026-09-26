@@ -16,7 +16,8 @@ import utilityClasses from '~/data/utility-classes.json';
             <div
                 v-for="category in utilityClasses.categories"
                 :key="category.name">
-                <h2 class="category-heading bg-soft-blue font-size-75 mb-0 ml-n50 position-sticky px-50 py-25 rounded">
+                <h2
+                    class="category-heading bg-soft-blue font-size-100 mb-25 ml-n50 position-sticky px-50 py-25 rounded">
                     {{ category.name }}
                 </h2>
                 <ul class="category-classes font-size-75 list-unstyled">
@@ -37,16 +38,17 @@ import utilityClasses from '~/data/utility-classes.json';
             <div
                 v-for="category in utilityClasses.deprecated"
                 :key="category.name">
-                <h3 class="category-heading bg-soft-blue font-size-75 mb-0 px-50 py-25 rounded">
-                    {{ category.name }}
+                <h3 class="category-heading bg-soft-blue font-size-100 mb-0 position-sticky px-100 py-25 rounded-top">
+                    {{ `${category.name} (deprecated)` }}
                 </h3>
                 <es-data-table-simple
-                    table-class="font-size-75"
+                    table-class="deprecated-table font-size-75"
+                    reverse-stripes
                     striped>
                     <thead>
                         <tr>
-                            <th class="py-50">Class name</th>
-                            <th class="py-50">Replace with</th>
+                            <th class="deprecated-table-heading bg-soft-blue position-sticky py-25">Class name</th>
+                            <th class="deprecated-table-heading bg-soft-blue position-sticky py-25">Replace with</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,6 +66,7 @@ import utilityClasses from '~/data/utility-classes.json';
 </template>
 
 <style lang="scss" scoped>
+@use 'sass:map';
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables' as variables;
 
@@ -93,6 +96,26 @@ import utilityClasses from '~/data/utility-classes.json';
 
     @include breakpoints.media-breakpoint-up(xxl) {
         columns: 5;
+    }
+}
+
+/* the table-responsive wrapper can scroll horizontally, which would trap the sticky header row
+ * inside it, so we prevent that. these two-column tables never need to scroll horizontally.
+ */
+.deprecated-table {
+    overflow-x: visible;
+}
+
+.deprecated-table-heading {
+    /* match the exact height of the header above it */
+    top: calc(#{map.get(variables.$line-heights, '75')} + #{map.get(variables.$spacers, 25)} * 2);
+
+    &:first-child {
+        border-bottom-left-radius: variables.$border-radius-lg;
+    }
+
+    &:last-child {
+        border-bottom-right-radius: variables.$border-radius-lg;
     }
 }
 </style>

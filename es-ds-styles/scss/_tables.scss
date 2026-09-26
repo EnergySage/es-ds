@@ -84,6 +84,12 @@
   }
 }
 
+.table-striped-reverse {
+  tbody tr:nth-of-type(#{variables.$table-striped-order-reverse}) {
+    background-color: variables.$table-accent-bg;
+  }
+}
+
 
 // Hover effect
 //

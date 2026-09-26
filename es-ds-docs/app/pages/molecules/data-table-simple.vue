@@ -5,11 +5,12 @@ const propTableColumns = ['Name', 'Type', 'Default', 'Description'];
 const propTableRows = [
     ['fields', 'Array', 'null', 'List of strings to use as field names.'],
     ['items', 'Array', '[]', 'List of values to display.'],
-    ['tableClass', 'Array|String', 'null', 'CSS class (or classes) to apply to the table element.'],
-    ['striped', 'Boolean', 'false', 'Add zebra-striping to the table rows.'],
+    ['table-class', 'Array|String', 'null', 'CSS class (or classes) to apply to the table element.'],
+    ['reverse-stripes', 'Boolean', 'false', 'Reverse the zebra striping so it applies to even-numbered table rows.'],
+    ['striped', 'Boolean', 'false', 'Add zebra striping to odd-numbered table rows.'],
 ];
 
-const propTableWidths = { md: ['2', '2', '2', '6'] };
+const propTableWidths = { md: ['3', '2', '2', '5'] };
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');

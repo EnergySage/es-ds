@@ -803,6 +803,7 @@ $table-dark-hover-bg:         rgba($white, .075) !default;
 $table-dark-border-color:     color.adjust($table-dark-bg, $lightness: 7.5%) !default;
 
 $table-striped-order:         odd !default;
+$table-striped-order-reverse: even !default;
 
 $table-caption-color:         $text-muted !default;
 
