@@ -11,8 +11,8 @@ import utilityClasses from '~/data/utility-classes.json';
             CSS that ships with an app from scaling with each new feature added.
         </p>
         <p>
-            Other globally available classes that support component styling are not listed here, as we recommend using the
-            actual components instead.
+            Other globally available classes that support component styling are not listed here, as we recommend using
+            the actual components instead.
         </p>
 
         <div class="my-400">
