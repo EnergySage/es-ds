@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import sassDeprecated from '@energysage/es-ds-styles/scss/modules/deprecated.module.scss';
 import sassSpacers from '@energysage/es-ds-styles/scss/modules/spacers.module.scss';
 
-const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450];
+const DEPRECATED_SPACERS = sassDeprecated.spacers!.split(' ').map(Number);
 const generateAlias = (key: any) => `p-${key} m-${key}`;
 
 const convertSpacerVariablesToTableEntries = (vars: any) =>
@@ -25,13 +26,13 @@ const spacers = computed(() => tableEntries.value.filter((spacer) => !DEPRECATED
 const deprecatedSpacers = computed(() =>
     tableEntries.value // filter out updated spacers
         .filter((spacer) => DEPRECATED_SPACERS.includes(spacer.key))
-        // find the equivalent spacer from the updated naming scheme
+        // each replacement comes from es-ds-styles, which omits spacers with no current equivalent
         .map((entry) => {
-            const newSpacer = spacers.value.find((spacer) => spacer.px === entry.px);
+            const newKey = sassDeprecated[`spacers-${entry.key}`];
             return {
                 ...entry,
-                newKey: newSpacer ? newSpacer.key : 'n/a',
-                newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
+                newKey: newKey ? Number(newKey) : 'n/a',
+                newAlias: newKey ? generateAlias(newKey) : 'n/a',
             };
         })
 

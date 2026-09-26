@@ -72,7 +72,7 @@ const onClick = (value: boolean) => {
                 <icon-chevron-down class="es-collapse-icon" />
             </div>
         </collapsible-trigger>
-        <collapsible-content class="es-collapse-content overflow-hidden">
+        <collapsible-content class="es-collapse-content">
             <slot />
         </collapsible-content>
     </collapsible-root>
@@ -131,6 +131,11 @@ $easing-function: cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 .es-collapse-content {
+    /* kept as a fallback for pre-2022 browsers that don't support clip */
+    overflow: hidden;
+    /* allows position sticky within the collapse to work */
+    overflow: clip;
+
     @media not (prefers-reduced-motion) {
         &[data-state='closed'] {
             animation: slideUp $animation-duration $easing-function;

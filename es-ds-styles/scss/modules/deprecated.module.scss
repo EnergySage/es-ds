@@ -1,0 +1,19 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@use "sass:list";
+@use "sass:map";
+@use "../deprecated";
+
+// Each map exports its keys as a space-separated string, e.g. `spacers: 1 2 3 4 5 6 450`, and each non-null
+// replacement under `<map>-<key>`, e.g. `spacers-1: 25` or `colors-secondary: body gray-900`.
+:export {
+  @each $name, $replacements in (spacers: deprecated.$spacers, font-sizes: deprecated.$font-sizes, colors: deprecated.$colors, classes: deprecated.$classes) {
+    #{$name}: #{list.join(map.keys($replacements), (), $separator: space)};
+
+    @each $key, $replacement in $replacements {
+      @if $replacement {
+        #{$name}-#{$key}: #{list.join($replacement, (), $separator: space)};
+      }
+    }
+  }
+}

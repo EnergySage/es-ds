@@ -12,6 +12,10 @@ const props = defineProps({
         type: [Array, String],
         default: null,
     },
+    reverseStripes: {
+        type: Boolean,
+        default: false,
+    },
     striped: {
         type: Boolean,
         default: false,
@@ -41,7 +45,10 @@ const computedItems: ComputedRef<any[]> = computed(() => {
         <table
             v-if="$slots.default || items.length"
             class="table table-borderless"
-            :class="{ 'table-striped': striped }">
+            :class="{
+                'table-striped': striped && !reverseStripes,
+                'table-striped-reverse': striped && reverseStripes,
+            }">
             <template v-if="$slots.default">
                 <slot />
             </template>

@@ -1,0 +1,85 @@
+// Deprecated tokens and classes. They still compile, but should be avoided in new code and will be removed in a
+// future version. The es-ds-docs Spacing, Typography, and Colors pages and its utility class list all read these
+// maps, through modules/deprecated.module.scss, so this file is the only place deprecation is defined.
+//
+// Each key is deprecated and its value is the replacement with the least visual change; null means none matches.
+
+// Keys of $spacers mapped to the key of the same size, or the next size up for 72px, which has no current equivalent;
+// covers every margin and padding utility built from them, e.g. `m-3` becomes `m-100` and `mt-md-n2` becomes `mt-md-n50`.
+$spacers: (1: 25, 2: 50, 3: 100, 4: 200, 5: 500, 6: 800, 450: 500);
+
+// Keys of $font-sizes mapped to the key of the same size; covers the `font-size-*` utilities built from them.
+$font-sizes: (xl: 400, xxl: 500);
+
+// Color names as used by the `text-*`, `bg-*`, and `border-*` utilities, mapped to a current color of the same value.
+// Names are quoted so Sass keeps them as strings rather than reading `cyan` or `red` as color values.
+// A list gives replacements in order of preference; each utility takes the first one it has a class for, e.g.
+// `text-secondary` becomes `text-body` while `bg-secondary`, lacking `bg-body`, becomes `bg-gray-900`.
+$colors: (
+  // brand colors with their tints and shades
+  "cyan": "dark-blue",
+  "cyan-100": "blue-50",
+  "cyan-200": "blue-100",
+  "cyan-300": "blue-200",
+  "cyan-400": "blue-500",
+  "cyan-500": "blue-600",
+  "cyan-600": "blue-700",
+  "cyan-700": "blue-800",
+  "cyan-800": "blue-900",
+  "pink": "warm-orange",
+  "pink-100": "orange-50",
+  "pink-200": "orange-200",
+  "pink-300": "orange-400",
+  "pink-400": "orange-500",
+  "pink-500": "orange-900",
+  "pink-600": "orange-900",
+  "pink-700": "orange-900",
+  "pink-800": "orange-900",
+  "teal": "medium-blue",
+  "teal-100": "blue-50",
+  "teal-200": "blue-200",
+  "teal-300": "blue-300",
+  "teal-400": "blue-400",
+  "teal-500": "blue-400",
+  "teal-600": "blue-600",
+  "teal-700": "blue-800",
+  "teal-800": "blue-900",
+  "yellow": "warm-orange",
+  "yellow-100": "orange-50",
+  "yellow-200": "orange-200",
+  "yellow-300": "orange-400",
+  "yellow-400": "orange-600",
+  "yellow-500": "orange-700",
+  "yellow-600": "orange-900",
+  "yellow-700": "orange-900",
+  "yellow-800": "orange-900",
+  "gray": "gray-900",
+  "gray-1000": "gray-900",
+  "gray-1100": "gray-900",
+  "gray-1200": "gray-900",
+  "orange": "warm-orange",
+  // product colors
+  "primary": "dark-blue",
+  "secondary": ("body", "gray-900"),
+  "success": "success-900",
+  "info": "medium-blue",
+  "warning": "warning-900",
+  "danger": "error-900",
+  "light": "gray-200",
+  "dark": ("body", "gray-900"),
+  // earlier palette
+  "gray-blue": "soft-blue",
+  "gray-dark": "gray-800",
+  "green": "success-900",
+  "highlight": "blue-700",
+  "highlight-dark": "blue-600",
+  "indigo": "blue-700",
+  "light-blue": "blue-200",
+  "mid": "gray-300",
+  "mid-dark": ("muted", "gray-600"),
+  "purple": "blue-600",
+  "red": "error-900",
+);
+
+// Standalone classes not generated from one of the maps above, mapped to the closest current class.
+$classes: (display-1: post1, display-2: post2, display-3: post3, display-4: h1);

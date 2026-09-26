@@ -5,8 +5,6 @@
 
 :export {
   s0: map.get(variables.$spacers, 0);
-
-  // deprecated
   s1: map.get(variables.$spacers, 1);
   s2: map.get(variables.$spacers, 2);
   s3: map.get(variables.$spacers, 3);
@@ -14,8 +12,6 @@
   s5: map.get(variables.$spacers, 5);
   s6: map.get(variables.$spacers, 6);
   s450: map.get(variables.$spacers, 450);
-
-  // standard
   s25: map.get(variables.$spacers, 25);
   s50: map.get(variables.$spacers, 50);
   s100: map.get(variables.$spacers, 100);

@@ -17,6 +17,7 @@ import sassPinks from '@energysage/es-ds-styles/scss/modules/pinks.module.scss';
 import sassTeals from '@energysage/es-ds-styles/scss/modules/teals.module.scss';
 import sassYellows from '@energysage/es-ds-styles/scss/modules/yellows.module.scss';
 import sassVariants from '@energysage/es-ds-styles/scss/modules/variants.module.scss';
+import sassDeprecated from '@energysage/es-ds-styles/scss/modules/deprecated.module.scss';
 
 // utility functions
 const prepareColors = (colors: any) => Object.entries(colors).reverse() as unknown as [string, string][];
@@ -27,8 +28,15 @@ const slice = (colors: Record<string, any>, tokens: string[]): Record<string, st
     });
     return result;
 };
+// Legacy sections choose grouping and order; es-ds-styles decides which colors are deprecated.
+const deprecatedColors = sassDeprecated.colors!.split(' ');
+const deprecatedSlice = (colors: Record<string, any>, tokens: string[] = Object.keys(colors)) =>
+    slice(
+        colors,
+        tokens.filter((token) => deprecatedColors.includes(token)),
+    );
 
-const brandColors = sassBrandColors;
+const brandColors = deprecatedSlice(sassBrandColors);
 const brandColorNames = {
     cyan: 'ES Blue',
     gray: 'ES Slate',
@@ -66,26 +74,26 @@ const coreColorNames = {
     'warm-orange': 'ES warm orange',
 };
 const errorColors = prepareColors(sassErrorColors);
-const grays = sassGrays;
-const neutrals = prepareColors(sassNeutrals);
+const neutrals: [string, string][] = [
+    ['black', sassGrays['black'] || ''],
+    ...prepareColors(sassNeutrals),
+    ['white', sassGrays['white'] || ''],
+];
 const oranges = prepareColors(sassOranges);
 const successColors = prepareColors(sassSuccessColors);
-const variants = sassVariants;
+const variants = deprecatedSlice(sassVariants);
 const warningColors = prepareColors(sassWarningColors);
 
-// const cyan = slice(sassCyans, ['cyan-500']);
-const cyanShades = slice(sassCyans, ['cyan-600', 'cyan-700', 'cyan-800']);
-const cyanTints = slice(sassCyans, ['cyan-400', 'cyan-300', 'cyan-200', 'cyan-100']);
-const orangeTints = slice(sassOranges, ['orange-400', 'orange-300', 'orange-200', 'orange-100']);
-const pinkShades = slice(sassPinks, ['pink-600', 'pink-700', 'pink-800']);
-const pinkTints = slice(sassPinks, ['pink-400', 'pink-300', 'pink-200', 'pink-100']);
-// const gray = slice(sassGrays, ['gray-900']);
-const grayShades = slice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200']);
-const grayTints = slice(sassGrays, ['gray-800', 'gray-700', 'gray-600', 'gray-500']);
-const tealShades = slice(sassTeals, ['teal-600', 'teal-700', 'teal-800']);
-const tealTints = slice(sassTeals, ['teal-400', 'teal-300', 'teal-200', 'teal-100']);
-const yellowShades = slice(sassYellows, ['yellow-600', 'yellow-700', 'yellow-800']);
-const yellowTints = slice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200', 'yellow-100']);
+const cyanShades = deprecatedSlice(sassCyans, ['cyan-600', 'cyan-700', 'cyan-800']);
+const cyanTints = deprecatedSlice(sassCyans, ['cyan-400', 'cyan-300', 'cyan-200', 'cyan-100']);
+const pinkShades = deprecatedSlice(sassPinks, ['pink-600', 'pink-700', 'pink-800']);
+const pinkTints = deprecatedSlice(sassPinks, ['pink-400', 'pink-300', 'pink-200', 'pink-100']);
+const grayShades = deprecatedSlice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200']);
+const tealShades = deprecatedSlice(sassTeals, ['teal-600', 'teal-700', 'teal-800']);
+const tealTints = deprecatedSlice(sassTeals, ['teal-400', 'teal-300', 'teal-200', 'teal-100']);
+const yellowShades = deprecatedSlice(sassYellows, ['yellow-600', 'yellow-700', 'yellow-800']);
+const yellowTints = deprecatedSlice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200', 'yellow-100']);
+const deprecatedGrays = deprecatedSlice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200']);
 
 const { $prism } = useNuxtApp();
 const docCode = ref('');
@@ -191,10 +199,12 @@ onMounted(async () => {
                     class="mb-100 text-center">
                     <ds-color-swatch
                         :is-light="
-                            ['gray-50', 'gray-100', 'gray-200', 'gray-300', 'gray-400', 'gray-500'].includes(alias)
+                            ['gray-50', 'gray-100', 'gray-200', 'gray-300', 'gray-400', 'gray-500', 'white'].includes(
+                                alias,
+                            )
                         "
                         :hex="value"
-                        :show-border="['gray-50', 'gray-100'].includes(alias)"
+                        :show-border="['gray-50', 'gray-100', 'white'].includes(alias)"
                         :token="alias" />
                 </es-col>
             </es-row>
@@ -359,21 +369,6 @@ onMounted(async () => {
                             :token="alias" />
                     </es-col>
                 </es-row>
-                <es-row class="mb-200">
-                    <es-col
-                        v-for="(value, alias) in grayTints"
-                        :key="alias"
-                        cols="6"
-                        sm="4"
-                        md="3"
-                        lg="2"
-                        class="mb-200">
-                        <ds-color-swatch
-                            :is-light="['gray-500'].includes(alias)"
-                            :hex="value"
-                            :token="alias" />
-                    </es-col>
-                </es-row>
             </div>
 
             <div class="my-200">
@@ -423,22 +418,6 @@ onMounted(async () => {
                             is-light
                             :hex="value"
                             :show-border="['yellow-100'].includes(alias)"
-                            :token="alias" />
-                    </es-col>
-                </es-row>
-                <es-row>
-                    <es-col
-                        v-for="(value, alias) in orangeTints"
-                        :key="alias"
-                        cols="6"
-                        sm="4"
-                        md="3"
-                        lg="2"
-                        class="mb-200">
-                        <ds-color-swatch
-                            is-light
-                            :hex="value"
-                            :show-border="['orange-100'].includes(alias)"
                             :token="alias" />
                     </es-col>
                 </es-row>
@@ -528,7 +507,7 @@ onMounted(async () => {
                 <h3>Grayscale</h3>
                 <es-row>
                     <es-col
-                        v-for="(value, alias) in grays"
+                        v-for="(value, alias) in deprecatedGrays"
                         :key="alias"
                         cols="6"
                         sm="4"
