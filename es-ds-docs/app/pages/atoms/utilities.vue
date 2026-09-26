@@ -8,8 +8,11 @@ import utilityClasses from '~/data/utility-classes.json';
         <p>
             Utility classes are single-purpose CSS classes that provide a simple way to style an element without having
             to write custom CSS. They hook into our predefined spacing, sizing, and color scales, and they prevent the
-            CSS that ships with an app from scaling with each new feature added. Here is a full list utility classes
-            available.
+            CSS that ships with an app from scaling with each new feature added.
+        </p>
+        <p>
+            Other globally available classes that support component styling are not listed here, as we recommend using the
+            actual components instead.
         </p>
 
         <div class="my-400">
