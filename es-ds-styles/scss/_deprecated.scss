@@ -1,0 +1,28 @@
+// Deprecated tokens and classes. They still compile, but should be avoided in new code and will be removed in a
+// future version. The es-ds-docs Spacing, Typography, and Colors pages and its utility class list all read these
+// lists, through modules/deprecated.module.scss, so this file is the only place deprecation is defined.
+
+// Keys of $spacers; covers every margin and padding utility built from them, e.g. `m-3`, `px-450`, `mt-md-n2`.
+$spacers: (1, 2, 3, 4, 5, 6, 450);
+
+// Keys of $font-sizes; covers the `font-size-*` utilities built from them.
+$font-sizes: (xl, xxl);
+
+// Color names as used by the `text-*`, `bg-*`, and `border-*` utilities.
+$colors: (
+  // brand colors with their tints and shades
+  cyan, cyan-100, cyan-200, cyan-300, cyan-400, cyan-500, cyan-600, cyan-700, cyan-800,
+  pink, pink-100, pink-200, pink-300, pink-400, pink-500, pink-600, pink-700, pink-800,
+  teal, teal-100, teal-200, teal-300, teal-400, teal-500, teal-600, teal-700, teal-800,
+  yellow, yellow-100, yellow-200, yellow-300, yellow-400, yellow-500, yellow-600, yellow-700, yellow-800,
+  gray, gray-1000, gray-1100, gray-1200,
+  orange,
+  black,
+  // product colors
+  primary, secondary, success, info, warning, danger, light, dark,
+  // earlier palette
+  gray-blue, gray-dark, green, highlight, highlight-dark, indigo, light-blue, mid, mid-dark, purple, red,
+);
+
+// Standalone classes not generated from one of the lists above.
+$classes: (display-1, display-2, display-3, display-4);

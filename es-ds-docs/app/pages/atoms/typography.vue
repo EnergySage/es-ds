@@ -14,9 +14,10 @@ import sassPostGeneral from '@energysage/es-ds-styles/scss/modules/post-general.
 import sassPostLineHeightsDesktop from '@energysage/es-ds-styles/scss/modules/post-line-heights-desktop.module.scss';
 import sassPostLineHeightsMobile from '@energysage/es-ds-styles/scss/modules/post-line-heights-mobile.module.scss';
 import sassType from '@energysage/es-ds-styles/scss/modules/type.module.scss';
+import sassDeprecated from '@energysage/es-ds-styles/scss/modules/deprecated.module.scss';
 
-const deprecatedFontSizes = ['xl', 'xxl'];
-const excludedFontSizes = ['xs', 'sm', 'base', 'lg', 'xl', 'xxl'];
+const deprecatedFontSizes = sassDeprecated['font-sizes']!.split(' ');
+const excludedFontSizes = ['xs', 'sm', 'base', 'lg', ...deprecatedFontSizes];
 
 const BASE_FONT_SIZE_PX = 16;
 
@@ -95,19 +96,15 @@ const bodyExamples: ComputedRef<any[]> = computed(() => {
     }, []);
 }, {});
 
-const displayExamples = computed(() => {
-    const result = [];
-
-    // display-1 through display-4
-    for (let i = 1; i <= 4; i += 1) {
-        result.push({
-            class: `display-${i}`,
-            name: `Display ${i}`,
-        });
-    }
-
-    return result;
-}, {});
+const displayExamples = computed(() =>
+    sassDeprecated
+        .classes!.split(' ')
+        .filter((className) => className.startsWith('display-'))
+        .map((className) => ({
+            class: className,
+            name: `Display ${className.replace('display-', '')}`,
+        })),
+);
 
 const createHeadingExample = (
     identifier: string,

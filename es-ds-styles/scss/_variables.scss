@@ -413,7 +413,6 @@ $spacers: () !default;
 $spacers: map.merge(
   (
     0:    0,
-    // deprecated
     1:   ($spacer * .25), // 4
     2:   ($spacer * .5),  // 8
     3:    $spacer,        // 16
@@ -421,7 +420,6 @@ $spacers: map.merge(
     5:   ($spacer * 4.5), // 72
     6:   ($spacer * 8),   // 128
     450: ($spacer * 4.5), // 72
-    // standard
     25:  ($spacer * .25), // 4
     50:  ($spacer * .5),  // 8
     100:  $spacer,        // 16
@@ -489,7 +487,6 @@ $font-size-xs:                $font-size-50 !default;            // 12px
 $font-size-sm:                $font-size-75 !default;            // 14px
 $font-size-lg:                $font-size-300 !default;           // 20px
 
-// deprecated
 $font-size-xl:                $font-size-400 !default;           // 24px
 $font-size-xxl:               $font-size-500 !default;           // 30px
 
@@ -511,7 +508,6 @@ $font-sizes: (
   "sm":   $font-size-sm,
   "base": $font-size-base,
   "lg":   $font-size-lg,
-  // deprecated
   "xl":   $font-size-xl,
   "xxl":  $font-size-xxl,
 );
@@ -533,7 +529,6 @@ $line-heights: (
   "sm":   $line-height-75,
   "base": $line-height-100,
   "lg":   $line-height-300,
-  // deprecated
   "xl":   $line-height-400,
   "xxl":  $line-height-500,
 );
@@ -679,7 +674,6 @@ $h2-font-size:                $font-size-300 !default;
 $h3-font-size:                $font-size-200 !default;
 $h4-font-size:                $font-size-100 !default;
 $h5-font-size:                $font-size-75 !default;
-// deprecated
 $h6-font-size:                $font-size-75 !default;
 
 $h1-line-height:              $line-height-400 !default;
@@ -687,7 +681,6 @@ $h2-line-height:              $line-height-300 !default;
 $h3-line-height:              $line-height-200 !default;
 $h4-line-height:              $line-height-100 !default;
 $h5-line-height:              $line-height-75 !default;
-// deprecated
 $h6-line-height:              $line-height-75 !default;
 
 $h1-font-size-desktop:        $font-size-600 !default;
@@ -695,7 +688,6 @@ $h2-font-size-desktop:        $font-size-500 !default;
 $h3-font-size-desktop:        $font-size-400 !default;
 $h4-font-size-desktop:        $font-size-300 !default;
 $h5-font-size-desktop:        $font-size-100 !default;
-// deprecated
 $h6-font-size-desktop:        $font-size-100 !default;
 
 $h1-line-height-desktop:      $line-height-600 !default;
@@ -703,7 +695,6 @@ $h2-line-height-desktop:      $line-height-500 !default;
 $h3-line-height-desktop:      $line-height-400 !default;
 $h4-line-height-desktop:      $line-height-300 !default;
 $h5-line-height-desktop:      $line-height-100 !default;
-// deprecated
 $h6-line-height-desktop:      $line-height-100 !default;
 
 $headings-margin-bottom:      1rem !default;
@@ -742,7 +733,7 @@ $eyebrow-margin-bottom:       0.5rem !default;
 $eyebrow-font-weight:         $font-weight-bold !default;
 $eyebrow-letter-spacing:      0.08rem !default;
 
-// deprecated "display" type sizing
+// "display" type sizing
 $display1-size:               5rem !default;
 $display2-size:               4.5rem !default;
 $display3-size:               4rem !default;

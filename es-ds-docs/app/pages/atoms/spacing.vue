@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import sassDeprecated from '@energysage/es-ds-styles/scss/modules/deprecated.module.scss';
 import sassSpacers from '@energysage/es-ds-styles/scss/modules/spacers.module.scss';
 
-const DEPRECATED_SPACERS = [1, 2, 3, 4, 5, 6, 450];
+const DEPRECATED_SPACERS = sassDeprecated.spacers!.split(' ').map(Number);
 const generateAlias = (key: any) => `p-${key} m-${key}`;
 
 const convertSpacerVariablesToTableEntries = (vars: any) =>

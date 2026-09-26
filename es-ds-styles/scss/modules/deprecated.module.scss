@@ -1,0 +1,12 @@
+/* stylelint-disable selector-pseudo-class-no-unknown, property-no-unknown */
+
+@use "sass:list";
+@use "../deprecated";
+
+// Each list exports as a space-separated string, e.g. `spacers: 1 2 3 4 5 6 450`.
+:export {
+  spacers: list.join(deprecated.$spacers, (), $separator: space);
+  font-sizes: list.join(deprecated.$font-sizes, (), $separator: space);
+  colors: list.join(deprecated.$colors, (), $separator: space);
+  classes: list.join(deprecated.$classes, (), $separator: space);
+}

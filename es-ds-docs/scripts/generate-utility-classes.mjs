@@ -165,15 +165,47 @@ const partialCategories = [...utilitySources, ...EXTRA_SOURCES].flatMap(({ name,
     }
     return groups.map(({ category }) => category);
 });
-const categories = partialCategories
-    .map(({ name, source, classes }) => ({
-        // Names double as display labels, so partial names like `stretched-link` read as `stretched link`.
-        name: name.replaceAll('-', ' '),
-        source,
-        allClassesUseImportant: classes.every((entry) => entry.important),
-        classes,
-    }))
-    .sort((a, b) => nameCollator.compare(a.name, b.name));
+
+// Deprecation is defined once, in es-ds-styles' scss/_deprecated.scss; the docs pages read this same export.
+const deprecatedLists = {};
+postcss.parse(compile(join(scssRoot, 'modules/deprecated.module.scss'))).walkDecls((decl) => {
+    deprecatedLists[decl.prop] = decl.value.split(/\s+/);
+});
+// Maps an item from each list to the base class names it produces; breakpoint variants follow their base class.
+const DEPRECATED_CLASS_PATTERNS = {
+    spacers: (key) => new RegExp(`^[mp][trblxy]?-n?${key}$`),
+    'font-sizes': (key) => new RegExp(`^font-size-${key}$`),
+    colors: (color) => new RegExp(`^(text|bg|border)-${color}$`),
+    classes: (className) => new RegExp(`^${className}$`),
+};
+const deprecatedPatterns = Object.entries(deprecatedLists).flatMap(([list, items]) => {
+    const toPattern = DEPRECATED_CLASS_PATTERNS[list];
+    if (!toPattern) throw new Error(`utility-classes: no class pattern for deprecated list \`${list}\``);
+    return items.map((item) => ({ list, item, pattern: toPattern(item) }));
+});
+// An item matching nothing is a typo or a removed class, either of which would silently shrink the deprecated list.
+const allClassNames = partialCategories.flatMap((category) => category.classes.map((entry) => entry.name));
+for (const { list, item, pattern } of deprecatedPatterns) {
+    if (!allClassNames.some((className) => pattern.test(className))) {
+        throw new Error(`utility-classes: deprecated ${list} item \`${item}\` matches no utility class`);
+    }
+}
+const isDeprecated = (entry) => deprecatedPatterns.some(({ pattern }) => pattern.test(entry.name));
+
+const buildCategories = (includeEntry) =>
+    partialCategories
+        .map(({ name, source, classes }) => ({ name, source, classes: classes.filter(includeEntry) }))
+        .filter(({ classes }) => classes.length)
+        .map(({ name, source, classes }) => ({
+            // Names double as display labels, so partial names like `stretched-link` read as `stretched link`.
+            name: name.replaceAll('-', ' '),
+            source,
+            allClassesUseImportant: classes.every((entry) => entry.important),
+            classes,
+        }))
+        .sort((a, b) => nameCollator.compare(a.name, b.name));
+const categories = buildCategories((entry) => !isDeprecated(entry));
+const deprecated = buildCategories(isDeprecated);
 
 // Pages import from this module rather than the JSON. The interfaces describe the objects built above and must be
 // edited alongside them; the typed assignment at the end makes `make typecheck` fail if the two drift apart.
@@ -217,18 +249,27 @@ export interface UtilityClassData {
     version: string;
     /** \`$grid-breakpoints\` from es-ds-styles, smallest first, e.g. \`{ xs: '0', sm: '576px' }\`. */
     breakpoints: Record<string, string>;
+    /** Classes that are not deprecated. */
     categories: UtilityClassCategory[];
+    /** Deprecated classes, grouped the same way; defined in es-ds-styles' \`scss/_deprecated.scss\`. */
+    deprecated: UtilityClassCategory[];
 }
 
 export const utilityClassData: UtilityClassData = data;
 `;
 
 mkdirSync(dirname(jsonPath), { recursive: true });
-writeFileSync(jsonPath, `${JSON.stringify({ package: PACKAGE_NAME, version, breakpoints, categories }, null, 4)}\n`);
+writeFileSync(
+    jsonPath,
+    `${JSON.stringify({ package: PACKAGE_NAME, version, breakpoints, categories, deprecated }, null, 4)}\n`,
+);
 writeFileSync(modulePath, typedModule);
 
-const allEntries = categories.flatMap((category) => category.classes);
-const variantCount = allEntries.reduce((total, entry) => total + (entry.variants?.length ?? 0), 0);
+const countClasses = (list) => {
+    const entries = list.flatMap((category) => category.classes);
+    const variantCount = entries.reduce((total, entry) => total + (entry.variants?.length ?? 0), 0);
+    return `${entries.length} (+${variantCount} breakpoint variants)`;
+};
 console.log(
-    `utility-classes: ${allEntries.length} classes (+${variantCount} breakpoint variants) in ${categories.length} categories from ${PACKAGE_NAME}@${version} → ${relative(docsRoot, dirname(jsonPath))}`,
+    `utility-classes: ${countClasses(categories)} classes and ${countClasses(deprecated)} deprecated from ${PACKAGE_NAME}@${version} → ${relative(docsRoot, dirname(jsonPath))}`,
 );
