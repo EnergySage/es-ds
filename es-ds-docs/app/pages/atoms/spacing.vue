@@ -26,13 +26,13 @@ const spacers = computed(() => tableEntries.value.filter((spacer) => !DEPRECATED
 const deprecatedSpacers = computed(() =>
     tableEntries.value // filter out updated spacers
         .filter((spacer) => DEPRECATED_SPACERS.includes(spacer.key))
-        // find the equivalent spacer from the updated naming scheme
+        // each replacement comes from es-ds-styles, which omits spacers with no current equivalent
         .map((entry) => {
-            const newSpacer = spacers.value.find((spacer) => spacer.px === entry.px);
+            const newKey = sassDeprecated[`spacers-${entry.key}`];
             return {
                 ...entry,
-                newKey: newSpacer ? newSpacer.key : 'n/a',
-                newAlias: newSpacer ? generateAlias(newSpacer.key) : 'n/a',
+                newKey: newKey ? Number(newKey) : 'n/a',
+                newAlias: newKey ? generateAlias(newKey) : 'n/a',
             };
         })
 

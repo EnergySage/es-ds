@@ -167,34 +167,75 @@ const partialCategories = [...utilitySources, ...EXTRA_SOURCES].flatMap(({ name,
 });
 
 // Deprecation is defined once, in es-ds-styles' scss/_deprecated.scss; the docs pages read this same export.
-const deprecatedLists = {};
+const deprecatedExport = {};
 postcss.parse(compile(join(scssRoot, 'modules/deprecated.module.scss'))).walkDecls((decl) => {
-    deprecatedLists[decl.prop] = decl.value.split(/\s+/);
+    deprecatedExport[decl.prop] = decl.value.split(/\s+/);
 });
-// Maps an item from each list to the base class names it produces; breakpoint variants follow their base class.
-const DEPRECATED_CLASS_PATTERNS = {
-    spacers: (key) => new RegExp(`^[mp][trblxy]?-n?${key}$`),
-    'font-sizes': (key) => new RegExp(`^font-size-${key}$`),
-    colors: (color) => new RegExp(`^(text|bg|border)-${color}$`),
-    classes: (className) => new RegExp(`^${className}$`),
+// Each deprecated key produces base class names from one of these prefixes followed by the key, and its replacement
+// swaps the key for the replacement key under the same prefix; breakpoint variants follow their base class.
+const DEPRECATED_CLASS_PREFIXES = {
+    spacers: '[mp][trblxy]?-n?',
+    'font-sizes': 'font-size-',
+    colors: '(?:text|bg|border)-',
+    classes: '',
 };
-const deprecatedPatterns = Object.entries(deprecatedLists).flatMap(([list, items]) => {
-    const toPattern = DEPRECATED_CLASS_PATTERNS[list];
-    if (!toPattern) throw new Error(`utility-classes: no class pattern for deprecated list \`${list}\``);
-    return items.map((item) => ({ list, item, pattern: toPattern(item) }));
+const deprecatedItems = Object.entries(DEPRECATED_CLASS_PREFIXES).flatMap(([map, prefix]) => {
+    if (!deprecatedExport[map]) throw new Error(`utility-classes: deprecated.module.scss has no \`${map}\` export`);
+    return deprecatedExport[map].map((key) => ({
+        map,
+        key,
+        pattern: new RegExp(`^(${prefix})${key}$`),
+        replacementKeys: deprecatedExport[`${map}-${key}`] ?? [],
+        usedReplacementKeys: new Set(),
+    }));
 });
-// An item matching nothing is a typo or a removed class, either of which would silently shrink the deprecated list.
-const allClassNames = partialCategories.flatMap((category) => category.classes.map((entry) => entry.name));
-for (const { list, item, pattern } of deprecatedPatterns) {
-    if (!allClassNames.some((className) => pattern.test(className))) {
-        throw new Error(`utility-classes: deprecated ${list} item \`${item}\` matches no utility class`);
+const exportedProps = new Set(deprecatedItems.flatMap(({ map, key }) => [map, `${map}-${key}`]));
+for (const prop of Object.keys(deprecatedExport)) {
+    if (!exportedProps.has(prop))
+        throw new Error(`utility-classes: no class prefix for deprecated export \`${prop}\``);
+}
+const findDeprecatedItem = (entry) => deprecatedItems.find(({ pattern }) => pattern.test(entry.name));
+const isDeprecated = (entry) => Boolean(findDeprecatedItem(entry));
+
+// A key matching nothing is a typo or a removed class, either of which would silently shrink the deprecated list.
+const allEntries = partialCategories.flatMap((category) => category.classes);
+for (const { map, key, pattern } of deprecatedItems) {
+    if (!allEntries.some((entry) => pattern.test(entry.name))) {
+        throw new Error(`utility-classes: deprecated ${map} key \`${key}\` matches no utility class`);
     }
 }
-const isDeprecated = (entry) => deprecatedPatterns.some(({ pattern }) => pattern.test(entry.name));
 
-const buildCategories = (includeEntry) =>
+const currentEntries = new Map(allEntries.filter((entry) => !isDeprecated(entry)).map((entry) => [entry.name, entry]));
+// Takes the first replacement key with a current class under the same prefix, e.g. `text-secondary` finds
+// `text-body` while `bg-secondary` falls through to `bg-gray-900`.
+const withReplacement = (entry) => {
+    const item = findDeprecatedItem(entry);
+    const [, prefix] = entry.name.match(item.pattern);
+    const replacementKey = item.replacementKeys.find((key) => currentEntries.has(`${prefix}${key}`));
+    if (!replacementKey) return entry;
+    item.usedReplacementKeys.add(replacementKey);
+    const replacement = currentEntries.get(`${prefix}${replacementKey}`);
+    if ((entry.variants?.length ?? 0) !== (replacement.variants?.length ?? 0)) {
+        throw new Error(
+            `utility-classes: \`${entry.name}\` and its replacement \`${replacement.name}\` differ in variants`,
+        );
+    }
+    const { rules, ...rest } = entry;
+    return {
+        ...rest,
+        replaceWith: replacement.name,
+        ...(replacement.display && { replaceWithDisplay: replacement.display }),
+        rules,
+    };
+};
+
+const buildCategories = (includeEntry, transformEntry = (entry) => entry) =>
     partialCategories
-        .map(({ name, source, classes }) => ({ name, source, classes: classes.filter(includeEntry) }))
+        .map(({ name, source, classes }) => ({
+            name,
+            source,
+            classes: classes.filter(includeEntry).map(transformEntry),
+        }))
         .filter(({ classes }) => classes.length)
         .map(({ name, source, classes }) => ({
             // Names double as display labels, so partial names like `stretched-link` read as `stretched link`.
@@ -205,7 +246,15 @@ const buildCategories = (includeEntry) =>
         }))
         .sort((a, b) => nameCollator.compare(a.name, b.name));
 const categories = buildCategories((entry) => !isDeprecated(entry));
-const deprecated = buildCategories(isDeprecated);
+const deprecated = buildCategories(isDeprecated, withReplacement);
+
+// A replacement key no class resolves to is a typo, since the class it names would otherwise never be suggested.
+for (const { map, key, replacementKeys, usedReplacementKeys } of deprecatedItems) {
+    const unused = replacementKeys.filter((replacementKey) => !usedReplacementKeys.has(replacementKey));
+    if (unused.length) {
+        throw new Error(`utility-classes: deprecated ${map} key \`${key}\` has replacements no class uses: ${unused}`);
+    }
+}
 
 // Pages import from this module rather than the JSON. The interfaces describe the objects built above and must be
 // edited alongside them; the typed assignment at the end makes `make typecheck` fail if the two drift apart.
@@ -229,6 +278,10 @@ export interface UtilityClass {
     variants?: string[];
     /** Whether the declarations use \`!important\`; no class mixes important and plain declarations. */
     important: boolean;
+    /** Deprecated classes only: the current class to use instead, when one matches, e.g. \`m-100\` for \`m-3\`. */
+    replaceWith?: string;
+    /** \`display\` of the replacement, present when the replacement has breakpoint variants, e.g. \`m-*-100\`. */
+    replaceWithDisplay?: string;
     /** Rules for the base class only; each variant repeats them inside its breakpoint's media query. */
     rules: UtilityClassRule[];
 }
@@ -270,6 +323,7 @@ const countClasses = (list) => {
     const variantCount = entries.reduce((total, entry) => total + (entry.variants?.length ?? 0), 0);
     return `${entries.length} (+${variantCount} breakpoint variants)`;
 };
+const withoutReplacement = deprecated.flatMap((category) => category.classes).filter((entry) => !entry.replaceWith);
 console.log(
-    `utility-classes: ${countClasses(categories)} classes and ${countClasses(deprecated)} deprecated from ${PACKAGE_NAME}@${version} → ${relative(docsRoot, dirname(jsonPath))}`,
+    `utility-classes: ${countClasses(categories)} classes and ${countClasses(deprecated)} deprecated (${withoutReplacement.length} without a replacement) from ${PACKAGE_NAME}@${version} → ${relative(docsRoot, dirname(jsonPath))}`,
 );

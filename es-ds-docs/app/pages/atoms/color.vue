@@ -74,7 +74,11 @@ const coreColorNames = {
     'warm-orange': 'ES warm orange',
 };
 const errorColors = prepareColors(sassErrorColors);
-const neutrals: [string, string][] = [...prepareColors(sassNeutrals), ['white', sassGrays['white'] || '']];
+const neutrals: [string, string][] = [
+    ['black', sassGrays['black'] || ''],
+    ...prepareColors(sassNeutrals),
+    ['white', sassGrays['white'] || ''],
+];
 const oranges = prepareColors(sassOranges);
 const successColors = prepareColors(sassSuccessColors);
 const variants = deprecatedSlice(sassVariants);
@@ -89,7 +93,7 @@ const tealShades = deprecatedSlice(sassTeals, ['teal-600', 'teal-700', 'teal-800
 const tealTints = deprecatedSlice(sassTeals, ['teal-400', 'teal-300', 'teal-200', 'teal-100']);
 const yellowShades = deprecatedSlice(sassYellows, ['yellow-600', 'yellow-700', 'yellow-800']);
 const yellowTints = deprecatedSlice(sassYellows, ['yellow-400', 'yellow-300', 'yellow-200', 'yellow-100']);
-const deprecatedGrays = deprecatedSlice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200', 'black']);
+const deprecatedGrays = deprecatedSlice(sassGrays, ['gray-1000', 'gray-1100', 'gray-1200']);
 
 const { $prism } = useNuxtApp();
 const docCode = ref('');
