@@ -1,5 +1,19 @@
 # Changelog
 
+## [6.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.0.0...es-ds-docs-v6.1.0) (2026-09-28)
+
+
+### Features
+
+* allow centering of zip code form and add missing space ([#1786](https://github.com/EnergySage/es-ds/issues/1786)) ([595c59e](https://github.com/EnergySage/es-ds/commit/595c59ebba727bba829c99a4b0a32c98c018f23d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^6.0.0 to ^6.1.0
+
 ## [6.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.3...es-ds-docs-v6.0.0) (2026-09-08)
 
 
