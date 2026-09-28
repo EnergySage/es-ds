@@ -17,6 +17,12 @@ onMounted(async () => {
 
 const propTableRows = [
     [
+        'align',
+        "'left' or 'center' or 'right'",
+        "'left'",
+        'Controls alignment of the privacy policy text relative to the zip code form.',
+    ],
+    [
         'constrained',
         'Boolean',
         'false',
@@ -26,7 +32,7 @@ const propTableRows = [
     ['contextMessage', 'String', "''", 'Optional message to display above the ZIP code input field.'],
     ['dark', 'Boolean', 'false', 'Renders the CTA with white text (suitable for display on a dark background).'],
     ['fieldName', 'String', "'zip_code'", 'The name to use when submitting the ZIP code to the provided url.'],
-    ['inputId', 'String', 'n/a', 'Required. The id for the zip entry. Must be unique on the page.'],
+    ['inputId', 'String', 'n/a', 'The id for the zip entry. Must be unique on the page.'],
     ['newTab', 'Boolean', 'false', 'Whether to open the URL in the url prop in a new tab.'],
     [
         'placeholder',
@@ -62,7 +68,7 @@ const propTableRows = [
             which point they will appear side by side. If no breakpoint is provided, the form will
             remain stacked on all breakpoints.`,
     ],
-    ['url', 'String', 'n/a', 'URL to which the form will submit the provided zip code value.'],
+    ['url', 'String', 'n/a', 'Required. URL to which the form will submit the provided zip code value.'],
     ['zipCodeValue', 'String', "''", 'The default zipcode value if passed to the zip code form'],
 ];
 
@@ -88,13 +94,11 @@ const slotTableRows = [
 <template>
     <div>
         <h1>Zip code form</h1>
-        <!-- TODO uncomment when these components exist in new DS -->
-        <!-- <p class="mb-500">
-            Intended for use inside
-            <b-link to="/organisms/es-cta-banner">EsCtaBanner</b-link>,
-            <b-link to="/organisms/es-cta-card">EsCtaCard</b-link>,
-            and hero modules.
-        </p> -->
+        <p class="mb-500">
+            Can be used in
+            <nuxt-link to="/organisms/cta-banner">CTA banner</nuxt-link> and
+            <nuxt-link to="/organisms/cta-card">CTA card</nuxt-link>.
+        </p>
         <p class="mb-500"></p>
 
         <div class="mb-500">
@@ -110,7 +114,28 @@ const slotTableRows = [
                     sm="10"
                     md="8">
                     <es-zip-code-form
-                        input-id="hero-example"
+                        privacy-policy-link="https://www.energysage.com/privacy-policy/"
+                        stack-until="lg"
+                        url="https://www.energysage.com/market/start/">
+                        <template #buttonText> See local offers </template>
+                    </es-zip-code-form>
+                </es-col>
+            </es-row>
+        </div>
+
+        <div class="mb-500">
+            <h2>Center alignment</h2>
+            <p class="mb-200">
+                You can control the alignment of the privacy policy text relative to the zip code form with the
+                <code>align</code> prop.
+            </p>
+            <es-row class="justify-content-center">
+                <es-col
+                    class="d-flex justify-content-center"
+                    sm="10"
+                    md="8">
+                    <es-zip-code-form
+                        align="center"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
                         url="https://www.energysage.com/market/start/">
@@ -134,7 +159,6 @@ const slotTableRows = [
                     sm="10"
                     md="8">
                     <es-zip-code-form
-                        input-id="prepopulate-hero-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
                         zip-code-value="02150"
@@ -159,7 +183,6 @@ const slotTableRows = [
                         md="8">
                         <es-zip-code-form
                             dark
-                            input-id="dark-hero-example"
                             privacy-policy-link="https://www.energysage.com/privacy-policy/"
                             stack-until="lg"
                             url="https://www.energysage.com/market/start/">
@@ -188,7 +211,6 @@ const slotTableRows = [
                     xxl="4">
                     <es-zip-code-form
                         constrained
-                        input-id="hero-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="sm"
                         url="https://www.energysage.com/market/start/">
@@ -211,7 +233,6 @@ const slotTableRows = [
                     md="8">
                     <es-zip-code-form
                         constrained
-                        input-id="side-by-side-example"
                         stack-until="xs"
                         :show-privacy-section="false"
                         url="https://www.energysage.com/market/start/">
@@ -236,7 +257,6 @@ const slotTableRows = [
                     xxl="3">
                     <es-zip-code-form
                         constrained
-                        input-id="narrow-card-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         url="https://www.energysage.com/market/start/">
                         <template #buttonText> See local offers </template>
@@ -257,7 +277,6 @@ const slotTableRows = [
                     sm="10"
                     md="8">
                     <es-zip-code-form
-                        input-id="hero-example"
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
                         url="https://www.energysage.com/onboarding/start/"
@@ -280,7 +299,6 @@ const slotTableRows = [
                     sm="10"
                     md="8">
                     <es-zip-code-form
-                        input-id="context-message-example"
                         context-message="Enter your ZIP code to get started."
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         stack-until="lg"
@@ -305,7 +323,6 @@ const slotTableRows = [
                     sm="10"
                     md="8">
                     <es-zip-code-form
-                        input-id="replace-in-URL-example"
                         new-tab
                         privacy-policy-link="https://www.energysage.com/privacy-policy/"
                         replace-field-name-in-url
