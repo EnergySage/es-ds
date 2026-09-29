@@ -5,7 +5,6 @@ interface IProps {
     contextMessage?: string;
     dark?: boolean;
     fieldName?: string;
-    inputId?: string;
     newTab?: boolean;
     placeholder?: string;
     privacyPolicyLink?: string;
@@ -24,7 +23,6 @@ const props = withDefaults(defineProps<IProps>(), {
     contextMessage: '',
     dark: false,
     fieldName: 'zip_code',
-    inputId: useId(),
     newTab: false,
     placeholder: 'ZIP code',
     privacyPolicyLink: '',
@@ -35,6 +33,8 @@ const props = withDefaults(defineProps<IProps>(), {
     stackUntil: '',
     zipCodeValue: '',
 });
+
+const inputId = useId();
 
 const state = reactive({
     zipCode: props.zipCodeValue,
