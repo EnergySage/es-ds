@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.1.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.1.0...es-ds-components-v6.1.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* correct usage of useId() in EsZipCodeForm ([#1790](https://github.com/EnergySage/es-ds/issues/1790)) ([c4c30f4](https://github.com/EnergySage/es-ds/commit/c4c30f4b693c9e5343462146f659d099ad4ab0d8))
+
 ## [6.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.0.0...es-ds-components-v6.1.0) (2026-09-28)
 
 
