@@ -70,6 +70,11 @@ jobs:
                   npm run build
                   npm publish
 
+            # Downstream jobs install this version immediately; wait until the registry serves its tarball.
+            - name: Wait for registry availability
+              working-directory: es-ds-styles
+              run: ../.github/scripts/wait-for-npm-publish.sh
+
     release-es-ds-components:
         permissions:
             contents: write
@@ -123,6 +128,11 @@ jobs:
               id: publish-packages
               run: |
                   npm publish
+
+            # Downstream jobs install this version immediately; wait until the registry serves its tarball.
+            - name: Wait for registry availability
+              working-directory: es-ds-components
+              run: ../.github/scripts/wait-for-npm-publish.sh
 
     release-es-ds-docs:
         permissions:
