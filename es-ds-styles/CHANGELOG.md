@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v4.0.0...es-ds-styles-v4.1.0) (2026-10-02)
+
+
+### Features
+
+* add Utilities docs page, small enhancements to EsCollapse and EsDataTableSimple ([#1787](https://github.com/EnergySage/es-ds/issues/1787)) ([39770f6](https://github.com/EnergySage/es-ds/commit/39770f67a7bdd18a2a541a9279ae0209607c9c8a))
+
 ## [4.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v3.5.9...es-ds-styles-v4.0.0) (2026-09-08)
 
 
