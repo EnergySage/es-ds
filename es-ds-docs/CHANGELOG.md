@@ -1,5 +1,20 @@
 # Changelog
 
+## [6.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.1.1...es-ds-docs-v6.2.0) (2026-10-02)
+
+
+### Features
+
+* add Utilities docs page, small enhancements to EsCollapse and EsDataTableSimple ([#1787](https://github.com/EnergySage/es-ds/issues/1787)) ([39770f6](https://github.com/EnergySage/es-ds/commit/39770f67a7bdd18a2a541a9279ae0209607c9c8a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^6.1.1 to ^6.2.0
+    * @energysage/es-ds-styles bumped from ^4.0.0 to ^4.1.0
+
 ## [6.1.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.1.0...es-ds-docs-v6.1.1) (2026-09-29)
 
 
