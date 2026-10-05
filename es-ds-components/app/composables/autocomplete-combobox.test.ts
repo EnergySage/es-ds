@@ -18,7 +18,10 @@ function withSetup<T>(composable: () => T): { app: App; result: T } {
     return { app, result };
 }
 
-function makeCombobox(initialSuggestions: EsAutocompleteSuggestion[] = [{ id: 'a', text: 'solar batteries' }]) {
+function makeCombobox(
+    initialSuggestions: EsAutocompleteSuggestion[] = [{ id: 'a', text: 'solar batteries' }],
+    { autoSelect = false } = {},
+) {
     const inputEl = document.createElement('input');
     document.body.append(inputEl);
     const model = ref('solar');
@@ -27,6 +30,7 @@ function makeCombobox(initialSuggestions: EsAutocompleteSuggestion[] = [{ id: 'a
     const emitSelect = vi.fn();
     const { result: combobox } = withSetup(() =>
         useEsAutocompleteCombobox({
+            autoSelect: () => autoSelect,
             close,
             emitSelect,
             idPrefix: 'test',
@@ -91,6 +95,18 @@ describe('useEsAutocompleteCombobox arrow navigation and mirroring', () => {
         expect(combobox.displayValue.value).toBe('a');
         expect(combobox.activeDescendant.value).toBe('test-option-1');
         expect(combobox.keyboardNav.value).toBe(false);
+    });
+
+    it("holds the arrows' highlight while the pointer passes over the list", () => {
+        const { combobox, model } = makeCombobox(THREE);
+        model.value = 'a';
+        combobox.onKeydown(keydown('ArrowDown'));
+        expect(combobox.displayValue.value).toBe('apple');
+        // a panel opens under a resting cursor, so this is a twitch, not a choice
+        combobox.onOptionPointermove(2);
+        expect(combobox.selectedIndex.value).toBe(0);
+        expect(combobox.activeDescendant.value).toBe('test-option-0');
+        expect(combobox.displayValue.value).toBe('apple');
     });
 
     it('arrows are a no-op while there is nothing displayed', () => {
@@ -217,22 +233,201 @@ describe('useEsAutocompleteCombobox arrow-driven blur window', () => {
     it('claims the blur a screen reader makes in answer to an arrow press', () => {
         const { combobox } = makeCombobox(THREE);
         combobox.onKeydown(keydown('ArrowDown'));
-        expect(combobox.consumeArrowBlur()).toBe(true);
+        expect(combobox.consumeRewriteBlur()).toBe(true);
     });
 
     it('claims it once, so a later blur reads as the user leaving the field', () => {
         const { combobox } = makeCombobox(THREE);
         combobox.onKeydown(keydown('ArrowDown'));
-        expect(combobox.consumeArrowBlur()).toBe(true);
-        expect(combobox.consumeArrowBlur()).toBe(false);
+        expect(combobox.consumeRewriteBlur()).toBe(true);
+        expect(combobox.consumeRewriteBlur()).toBe(false);
     });
 
     it('claims nothing once the window has passed, or without an arrow press', () => {
         const { combobox } = makeCombobox(THREE);
-        expect(combobox.consumeArrowBlur()).toBe(false);
+        expect(combobox.consumeRewriteBlur()).toBe(false);
         combobox.onKeydown(keydown('ArrowDown'));
         vi.spyOn(performance, 'now').mockReturnValue(performance.now() + 1_000);
-        expect(combobox.consumeArrowBlur()).toBe(false);
+        expect(combobox.consumeRewriteBlur()).toBe(false);
         vi.restoreAllMocks();
+    });
+});
+
+describe('useEsAutocompleteCombobox automatic selection', () => {
+    it('selects the first suggestion as the list arrives', () => {
+        const { combobox, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'a';
+        expect(combobox.selectedIndex.value).toBe(0);
+    });
+
+    it('leaves aria-activedescendant to the user, so a screen reader cursor stays in the field', () => {
+        const { combobox, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'a';
+        expect(combobox.activeDescendant.value).toBeUndefined();
+        combobox.onKeydown(keydown('ArrowDown'));
+        expect(combobox.activeDescendant.value).toBe('test-option-1');
+    });
+
+    it('selects nothing in the default mode', () => {
+        const { combobox, model } = makeCombobox(THREE);
+        model.value = 'a';
+        expect(combobox.selectedIndex.value).toBe(-1);
+        expect(combobox.activeDescendant.value).toBeUndefined();
+    });
+
+    it('completes the typed text inline when the suggestion continues it', () => {
+        const { combobox, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'ap';
+        expect(combobox.displayValue.value).toBe('apple');
+    });
+
+    it('selects without completing when the suggestion matches some other way', () => {
+        const { combobox, model } = makeCombobox([{ id: 'a', text: '12 Maple Ave' }], { autoSelect: true });
+        model.value = 'maple';
+        expect(combobox.selectedIndex.value).toBe(0);
+        expect(combobox.displayValue.value).toBe('maple');
+    });
+
+    it('leaves a deletion alone rather than putting the character back', () => {
+        const { combobox, inputEl, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'ap';
+        expect(combobox.displayValue.value).toBe('apple');
+        inputEl.value = 'a';
+        combobox.onInput({ inputType: 'deleteContentBackward', target: inputEl } as unknown as Event);
+        expect(combobox.displayValue.value).toBe('a');
+    });
+
+    it('keeps the completion remainder selected as the typed text grows', async () => {
+        const { combobox, inputEl, model } = makeCombobox(THREE, { autoSelect: true });
+        inputEl.focus();
+        model.value = 'ap';
+        // the value the shell renders from displayValue, which the selection follows
+        inputEl.value = combobox.displayValue.value;
+        await nextTick();
+        expect([inputEl.selectionStart, inputEl.selectionEnd]).toEqual([2, 5]);
+        // typing over the remainder leaves the same suggestion completing the
+        // longer text, so the remainder has to be selected again
+        model.value = 'app';
+        inputEl.value = combobox.displayValue.value;
+        await nextTick();
+        expect([inputEl.selectionStart, inputEl.selectionEnd]).toEqual([3, 5]);
+    });
+
+    it('claims a rewrite for the completion it writes, never for the typing over it', async () => {
+        const { combobox, inputEl, model } = makeCombobox(THREE, { autoSelect: true });
+        inputEl.focus();
+        model.value = 'ap';
+        inputEl.value = combobox.displayValue.value;
+        await nextTick();
+        expect(combobox.consumeRewriteBlur()).toBe(true);
+        model.value = 'app';
+        inputEl.value = combobox.displayValue.value;
+        await nextTick();
+        expect(combobox.consumeRewriteBlur()).toBe(false);
+    });
+
+    it('names the selected suggestion for the shell to announce', () => {
+        const { combobox } = makeCombobox(THREE, { autoSelect: true });
+        expect(combobox.autoSelectedText.value).toBe('apple');
+        const { combobox: off } = makeCombobox(THREE);
+        expect(off.autoSelectedText.value).toBe('');
+    });
+
+    it('keeps the completion while the pointer passes over the list', () => {
+        const { combobox, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'ap';
+        expect(combobox.displayValue.value).toBe('apple');
+        combobox.onOptionPointermove(2);
+        // the pointer highlights what it is over, and the field keeps its proposal
+        expect(combobox.selectedIndex.value).toBe(2);
+        expect(combobox.displayValue.value).toBe('apple');
+    });
+
+    it('restores the completion, still selected, when the arrows come back to the input', async () => {
+        const { combobox, inputEl, model } = makeCombobox(THREE, { autoSelect: true });
+        inputEl.focus();
+        model.value = 'ap';
+        const down = () => combobox.onKeydown(keydown('ArrowDown'));
+        down();
+        expect(combobox.displayValue.value).toBe('apricot');
+        down();
+        down();
+        expect(combobox.selectedIndex.value).toBe(0);
+        expect(combobox.displayValue.value).toBe('apple');
+        inputEl.value = combobox.displayValue.value;
+        // three ticks: the completion's own flush, then the two the caret-to-end
+        // move would have taken had the arrows still claimed the field
+        await nextTick();
+        await nextTick();
+        await nextTick();
+        expect([inputEl.selectionStart, inputEl.selectionEnd]).toEqual([2, 5]);
+    });
+
+    it("holds the arrows' highlight while the pointer passes over the list", () => {
+        const { combobox, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'ap';
+        combobox.onKeydown(keydown('ArrowDown'));
+        expect(combobox.selectedIndex.value).toBe(1);
+        combobox.onOptionPointermove(2);
+        expect(combobox.selectedIndex.value).toBe(1);
+        expect(combobox.displayValue.value).toBe('apricot');
+    });
+
+    it('Enter chooses the automatically selected suggestion', () => {
+        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'a';
+        const event = keydown('Enter');
+        combobox.onKeydown(event);
+        expect(event.defaultPrevented).toBe(true);
+        expect(emitSelect).toHaveBeenCalledWith(THREE[0]);
+    });
+
+    it('arrows carry on from the automatic selection rather than restarting', () => {
+        const { combobox, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'a';
+        combobox.onKeydown(keydown('ArrowDown'));
+        expect(combobox.displayValue.value).toBe('apricot');
+    });
+
+    it('commits the selection on the way out', () => {
+        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'a';
+        expect(combobox.commitAutoSelection()).toBe(true);
+        expect(emitSelect).toHaveBeenCalledWith(THREE[0]);
+        expect(model.value).toBe('apple');
+    });
+
+    it('commits the suggestion the arrows moved to, not the one it started on', () => {
+        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'a';
+        combobox.onKeydown(keydown('ArrowDown'));
+        combobox.onKeydown(keydown('ArrowDown'));
+        expect(combobox.commitAutoSelection()).toBe(true);
+        expect(emitSelect).toHaveBeenCalledWith(THREE[2]);
+        expect(model.value).toBe('avocado');
+    });
+
+    it('commits the held suggestion when a pointer merely rests over another', () => {
+        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'a';
+        combobox.onOptionPointermove(2);
+        expect(combobox.commitAutoSelection()).toBe(true);
+        expect(emitSelect).toHaveBeenCalledWith(THREE[0]);
+    });
+
+    it('commits nothing in the default mode, whatever the arrows reached', () => {
+        const { combobox, emitSelect, model } = makeCombobox(THREE);
+        model.value = 'a';
+        combobox.onKeydown(keydown('ArrowDown'));
+        expect(combobox.commitAutoSelection()).toBe(false);
+        expect(emitSelect).not.toHaveBeenCalled();
+    });
+
+    it('commits nothing with no list displayed, or in the default mode', () => {
+        const { combobox: empty } = makeCombobox([], { autoSelect: true });
+        expect(empty.commitAutoSelection()).toBe(false);
+        const { combobox, emitSelect } = makeCombobox(THREE);
+        expect(combobox.commitAutoSelection()).toBe(false);
+        expect(emitSelect).not.toHaveBeenCalled();
     });
 });

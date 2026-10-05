@@ -70,6 +70,35 @@ watch(addressQuery, (query) => {
     }
 });
 
+// set up state and validation for the automatic selection address example
+const autoAddressQuery = ref('');
+const autoAddressSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const autoAddressSelection = ref<EsAutocompleteSuggestion | null>(null);
+const autoAddressState = ref<boolean | null>(null);
+const handleAutoAddressComplete = (query: string) => {
+    autoAddressSuggestions.value = filterAddresses(query);
+};
+const validateAutoAddress = () => {
+    autoAddressState.value = autoAddressSelection.value ? null : false;
+};
+const handleAutoAddressBlur = () => validateAutoAddress();
+const handleAutoAddressSubmit = () => validateAutoAddress();
+const handleAutoAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
+    autoAddressSelection.value = suggestion || null;
+    autoAddressState.value = null;
+};
+watch(autoAddressQuery, (query) => {
+    // if the query has changed, clear out any previously selected value
+    if (autoAddressSelection.value && query !== autoAddressSelection.value.text) {
+        autoAddressSelection.value = null;
+    }
+
+    // if the field was previously invalid, clear the invalid state
+    if (autoAddressState.value === false) {
+        autoAddressState.value = null;
+    }
+});
+
 // error state example
 const errorQuery = ref('');
 const errorSuggestions = ref<EsAutocompleteSuggestion[]>([]);
@@ -101,6 +130,17 @@ const autocompleteRequiredProps = [
 
 const autocompleteOptionalProps = [
     [
+        'autoSelect',
+        'Boolean',
+        'false',
+        `
+        Keeps the first suggestion selected as the user types, completing it inline in the field, and accepts it
+        as the value when the field is left. Follows the APG combobox pattern's "list with automatic selection"
+        behavior. Searches wait longer for a pause in typing in this mode, so each suggestion is not announced
+        on every keystroke.
+        `,
+    ],
+    [
         'autocomplete',
         'String',
         'off',
@@ -129,7 +169,7 @@ const autocompleteOptionalProps = [
     [
         'delay',
         'Number',
-        '300',
+        '300 (700 with autoSelect)',
         `
         Milliseconds to debounce typing before the 'complete' event is emitted.
         `,
@@ -416,6 +456,48 @@ onMounted(async () => {
             </es-form>
             <p class="text-break text-muted">
                 {{ `value: ${requiredAddressSelection ? requiredAddressSelection.text : '[empty]'}` }}
+            </p>
+        </div>
+
+        <div class="mb-500">
+            <h2>Selecting a suggestion automatically</h2>
+            <p>
+                Where a selection is required, navigating the list to make one can be frustrating, particularly for
+                screen reader users. The autoSelect prop keeps the first suggestion selected as the user types,
+                completing it in the field, and accepts it when they leave. Try typing "12" and then clicking elsewhere
+                on the page.
+            </p>
+            <es-form
+                class="mb-100 mb-md-0"
+                novalidate
+                @submit.stop.prevent="handleAutoAddressSubmit">
+                <es-row>
+                    <es-col md="6">
+                        <es-autocomplete
+                            v-model="autoAddressQuery"
+                            auto-select
+                            label="Address"
+                            placeholder="Enter your address"
+                            required
+                            :state="autoAddressState"
+                            :suggestions="autoAddressSuggestions"
+                            @blur="handleAutoAddressBlur"
+                            @complete="handleAutoAddressComplete"
+                            @select="handleAutoAddressSelect">
+                            <template #errorMessage> Please select an address from the suggestions. </template>
+                        </es-autocomplete>
+                    </es-col>
+                    <es-col md="6">
+                        <es-button
+                            class="mt-md-200 px-md-300 w-100 w-md-auto"
+                            type="submit">
+                            Submit
+                        </es-button>
+                    </es-col>
+                </es-row>
+            </es-form>
+            <p class="text-break text-muted">
+                {{ `value: ${autoAddressSelection ? autoAddressSelection.text : '[empty]'}` }}
             </p>
         </div>
 

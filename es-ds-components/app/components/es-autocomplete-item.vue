@@ -63,9 +63,20 @@ const emit = defineEmits<{
         transition: background-color 0.05s ease-in-out;
     }
 
-    /* hover and keyboard navigation both surface as data-highlighted */
+    /* the highlight, placed by the pointer or by the arrows */
     &[data-highlighted] {
         background-color: variables.$blue-50;
+    }
+
+    /* a row under the pointer shades whether or not it holds the highlight,
+     * since clicking it chooses it either way. the arrows keep the highlight
+     * while they are navigating, and their focus ring is what tells the two
+     * apart. asked of pointer as well as hover, as Samsung's Android devices
+     * claim to hover and would otherwise shade a row until the next tap. */
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: variables.$blue-50;
+        }
     }
 
     /* focus-visible ring for the keyboard-highlighted suggestion, as

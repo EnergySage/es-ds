@@ -5,6 +5,7 @@ import type { EsAutocompleteSuggestion } from '../types';
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift
 interface Props {
+    autoSelect: boolean;
     autocomplete: string;
     clearText?: string;
     describedBy: string;
@@ -93,6 +94,7 @@ const { remeasure, visibleSuggestions } = useEsAutocompleteVisibleRows(
 );
 
 const combobox = useEsAutocompleteCombobox({
+    autoSelect: () => props.autoSelect,
     close: () => {
         open.value = false;
     },
@@ -108,11 +110,16 @@ watch(open, combobox.resetHighlight);
 // announces how many suggestions are actually displayed, after the cap and the
 // trim, or the no results state. the inactive shell's region sits under
 // display: none, which silences it.
-const liveAnnouncement = computed(() =>
-    visibleSuggestions.value.length
-        ? props.suggestionCountText(visibleSuggestions.value.length)
-        : props.noResultsAnnouncement,
-);
+const liveAnnouncement = computed(() => {
+    if (!visibleSuggestions.value.length) {
+        return props.noResultsAnnouncement;
+    }
+    const count = props.suggestionCountText(visibleSuggestions.value.length);
+    // named from the list rather than the live highlight, so arrowing through the
+    // suggestions — which a screen reader reads from the field's own value — does
+    // not rewrite this region and have it read a second time
+    return combobox.autoSelectedText.value ? `${combobox.autoSelectedText.value}, ${count}` : count;
+});
 
 // a popover element displays only once shown; manual popovers never light-dismiss.
 //
@@ -195,11 +202,16 @@ function onFocusIn() {
 // blur it can validate on. Escape and select are not this — each leaves focus in
 // the input, and the interaction continues.
 function leaveField() {
-    open.value = false;
     if (visiting) {
         visiting = false;
+        // an automatic selection commits on the way out, so the app validates
+        // the value the field was already showing selected
+        combobox.commitAutoSelection();
+        open.value = false;
         emit('blur');
+        return;
     }
+    open.value = false;
 }
 
 // focus went nowhere rather than to another control: no relatedTarget at all,
@@ -219,7 +231,7 @@ function onRootFocusout(event: FocusEvent) {
     // a collapse says nothing on its own: the arrows' echo, a click on dead space
     // and a screen reader's cursor moving off all look alike, so the answer waits
     // for what the browser settles on
-    answerFocusCollapse(combobox.consumeArrowBlur());
+    answerFocusCollapse(combobox.consumeRewriteBlur());
 }
 
 // deferred a frame: by then an outside pointerdown has closed the panel, and a
@@ -257,6 +269,9 @@ function onDocumentPointerdown(event: Event) {
     if (part && rootEl.value?.contains(part)) {
         return;
     }
+    // a press outside is the user leaving, so an automatic selection commits
+    // here, while the list is still up: focusout arrives once it is down
+    combobox.commitAutoSelection();
     open.value = false;
 }
 
@@ -421,7 +436,7 @@ onBeforeUnmount(() => {
                         <es-autocomplete-item
                             v-for="(suggestion, index) in visibleSuggestions"
                             :key="suggestion.id"
-                            :highlighted="combobox.highlightIndex.value === index"
+                            :highlighted="combobox.selectedIndex.value === index"
                             :keyboard-nav="combobox.keyboardNav.value"
                             :option-id="combobox.optionId(index)"
                             :query="model"

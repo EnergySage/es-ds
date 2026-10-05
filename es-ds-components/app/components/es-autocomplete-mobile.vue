@@ -14,6 +14,7 @@ import type { EsAutocompleteSuggestion } from '../types';
 // defaults live on the public es-autocomplete.vue wrapper, which always binds
 // every prop; declaring them again here would be dead code that could drift
 interface Props {
+    autoSelect: boolean;
     autocomplete: string;
     clearText?: string;
     closeText?: string;
@@ -70,6 +71,7 @@ const { closeTakeover, enterTransition } = useEsAutocompleteChoreography({
 });
 
 const combobox = useEsAutocompleteCombobox({
+    autoSelect: () => props.autoSelect,
     close: (selectedText) => {
         void closeTakeover(selectedText);
     },
@@ -92,11 +94,16 @@ const takeoverPlaceholder = computed(() => props.placeholder || props.label);
 // announces how many suggestions are actually displayed, after the cap and the
 // trim, or the no-results state. the inactive shell's region sits under
 // display: none, which silences it.
-const liveAnnouncement = computed(() =>
-    visibleSuggestions.value.length
-        ? props.suggestionCountText(visibleSuggestions.value.length)
-        : props.noResultsAnnouncement,
-);
+const liveAnnouncement = computed(() => {
+    if (!visibleSuggestions.value.length) {
+        return props.noResultsAnnouncement;
+    }
+    const count = props.suggestionCountText(visibleSuggestions.value.length);
+    // named from the list rather than the live highlight, so arrowing through the
+    // suggestions — which a screen reader reads from the field's own value — does
+    // not rewrite this region and have it read a second time
+    return combobox.autoSelectedText.value ? `${combobox.autoSelectedText.value}, ${count}` : count;
+});
 
 // 100dvh does not shrink when the iOS keyboard opens, so the list height comes
 // from the visual viewport instead, where the keyboard is just a resize event
@@ -177,7 +184,11 @@ function openTakeover() {
 function onTakeoverOpenChange(value: boolean) {
     if (value) {
         takeoverOpen.value = true;
-    } else {
+        return;
+    }
+    // an automatic selection commits as the takeover closes, and closes it
+    // itself with the chosen text, so the exit animation reads the new value
+    if (!combobox.commitAutoSelection()) {
         void closeTakeover();
     }
 }
@@ -278,7 +289,7 @@ function onTakeoverOpenChange(value: boolean) {
                             <es-autocomplete-item
                                 v-for="(suggestion, index) in visibleSuggestions"
                                 :key="suggestion.id"
-                                :highlighted="combobox.highlightIndex.value === index"
+                                :highlighted="combobox.selectedIndex.value === index"
                                 :keyboard-nav="combobox.keyboardNav.value"
                                 :option-id="combobox.optionId(index)"
                                 :query="model"
