@@ -11,8 +11,13 @@ const emit = defineEmits<{
 </script>
 
 <template>
+    <!-- out of the tab order, not out of the accessibility tree: a screen reader
+         cursor, click, or tap still work, while a keyboard user can use select-all
+         and delete to clear the text and doesn't have tabbing to the next field impeded
+         by the clear button -->
     <button
         class="es-autocomplete-clear align-items-center bg-transparent border-0 d-flex flex-shrink-0 h-100 justify-content-center p-0 rounded-xs text-gray-700"
+        tabindex="-1"
         type="button"
         :aria-label="clearText"
         @click="emit('clear')">
