@@ -469,7 +469,6 @@ onBeforeUnmount(() => {
             </div>
         </div>
         <div
-            aria-live="polite"
             class="sr-only"
             role="status">
             {{ announcement }}

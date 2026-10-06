@@ -327,7 +327,6 @@ function onTakeoverOpenChange(value: boolean) {
                             {{ closeText }}
                         </dialog-close>
                         <div
-                            aria-live="polite"
                             class="sr-only"
                             role="status">
                             {{ announcement }}
