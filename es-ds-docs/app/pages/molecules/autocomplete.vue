@@ -187,7 +187,7 @@ const autocompleteOptionalProps = [
     [
         'delay',
         'Number',
-        '300 (700 with autoSelect)',
+        '300',
         `
         Milliseconds to debounce typing before the 'complete' event is emitted.
         `,
@@ -527,6 +527,7 @@ onMounted(async () => {
                             v-model="moleculeQuery"
                             auto-select
                             class="flex-grow-1"
+                            :delay="0"
                             label="Search components"
                             label-sr-only
                             placeholder="Search for a component"

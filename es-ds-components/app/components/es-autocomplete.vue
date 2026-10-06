@@ -30,8 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
     autocomplete: 'off',
     clearText: 'Clear',
     closeText: 'Close',
-    // resolved below, where the default depends on autoSelect
-    delay: undefined,
+    delay: 300,
     disabled: false,
     helpText: 'Type your search and select from dropdown suggestions.',
     labelSrOnly: false,
@@ -46,12 +45,6 @@ const props = withDefaults(defineProps<Props>(), {
         count === 1 ? '1 suggestion available' : `${count} suggestions available`,
     triggerHelpText: 'Opens a search with suggestions as you type.',
 });
-
-// automatic selection announces each suggestion it lands on, so its searches
-// wait for a pause in typing rather than following every keystroke
-const SEARCH_DELAY_MS = 300;
-const AUTO_SELECT_SEARCH_DELAY_MS = 700;
-const searchDelay = computed(() => props.delay ?? (props.autoSelect ? AUTO_SELECT_SEARCH_DELAY_MS : SEARCH_DELAY_MS));
 
 const emit = defineEmits<{
     blur: [];
@@ -76,7 +69,7 @@ const triggerDescribedBy = computed(() => (showError.value ? `${triggerHelpId} $
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
 // messaging live in useEsAutocompleteSearch so the contract is unit-testable
 const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = useEsAutocompleteSearch({
-    delay: () => searchDelay.value,
+    delay: () => props.delay,
     emitComplete: (query) => emit('complete', query),
     emitSelect: (suggestion) => emit('select', suggestion),
     minChars: () => props.minChars,
