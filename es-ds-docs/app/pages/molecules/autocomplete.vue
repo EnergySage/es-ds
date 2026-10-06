@@ -72,6 +72,35 @@ const splitAddressLines = (suggestion: EsAutocompleteSuggestion, query: string) 
     return splitEsAutocompleteTextLines([address.street, address.cityStateZip], query);
 };
 
+// molecule search example
+const moleculeQuery = ref('');
+const moleculeSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const filterMolecules = (query: string) => {
+    const search = query.trim().toLowerCase();
+    if (!search) {
+        return [];
+    }
+    return DS_MOLECULES_LIST.filter((molecule) => molecule.name.toLowerCase().includes(search)).map((molecule) => ({
+        id: molecule.path,
+        text: molecule.name,
+        value: molecule,
+    }));
+};
+const handleMoleculeComplete = (query: string) => {
+    moleculeSuggestions.value = filterMolecules(query);
+};
+const handleMoleculeSelect = (suggestion: EsAutocompleteSuggestion) => {
+    void navigateTo((suggestion.value as DsMolecule).path);
+};
+// submitting without having chosen a suggestion goes to the closest match for
+// the text, which is what a search field is expected to do with what was typed
+const handleMoleculeSubmit = () => {
+    const [closest] = filterMolecules(moleculeQuery.value);
+    if (closest) {
+        void navigateTo((closest.value as DsMolecule).path);
+    }
+};
+
 // long text example
 const longTextQuery = ref('');
 const longTextSuggestions = ref<EsAutocompleteSuggestion[]>([]);
@@ -97,7 +126,7 @@ const errorWithValueErrorMessage = computed(() => {
 });
 const errorWithValueState = computed(() => (errorWithValueErrorMessage.value ? false : null));
 
-// Disabled example
+// disabled example
 const disabledQuery = ref('');
 
 const autocompleteRequiredProps = [
@@ -470,6 +499,44 @@ onMounted(async () => {
             <p class="text-break text-muted">
                 {{ `value: ${addressSelection ? addressSelection.text : '[empty]'}` }}
             </p>
+        </div>
+
+        <div class="mb-500">
+            <h2>Searching and navigating</h2>
+            <p>
+                An autocomplete can act as a search field, where choosing a suggestion takes the user somewhere rather
+                than filling in a value. The suggestions here are the molecules in this documentation: choose one to go
+                to its page, or submit to go to the closest match for what you typed.
+            </p>
+            <p>
+                When the autocomplete is being used as a navigation tool, for example in a site search, it can be
+                helpful to minimize other distractions on the page to allow the user to focus on selecting the right
+                option. This focus overlay accomplishes that by dimming the rest of the page when the autocomplete is
+                open.
+            </p>
+            <es-form
+                class="mb-100 mb-md-0"
+                novalidate
+                @submit.stop.prevent="handleMoleculeSubmit">
+                <es-row>
+                    <es-col
+                        md="8"
+                        lg="6"
+                        class="d-flex">
+                        <es-autocomplete
+                            v-model="moleculeQuery"
+                            auto-select
+                            class="flex-grow-1"
+                            label="Search components"
+                            label-sr-only
+                            placeholder="Search for a component"
+                            show-overlay-on-focus
+                            :suggestions="moleculeSuggestions"
+                            @complete="handleMoleculeComplete"
+                            @select="handleMoleculeSelect" />
+                    </es-col>
+                </es-row>
+            </es-form>
         </div>
 
         <div class="mb-500">
