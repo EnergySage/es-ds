@@ -80,7 +80,10 @@ const filterMolecules = (query: string) => {
     if (!search) {
         return [];
     }
-    return DS_MOLECULES_LIST.filter((molecule) => molecule.name.toLowerCase().includes(search)).map((molecule) => ({
+    return DS_MOLECULES_LIST.filter((molecule) => {
+        const name = molecule.name.toLowerCase();
+        return name.startsWith(search) || name.includes(` ${search}`);
+    }).map((molecule) => ({
         id: molecule.path,
         text: molecule.name,
         value: molecule,
