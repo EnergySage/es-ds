@@ -28,6 +28,21 @@ const handleFruitComplete = (query: string) => {
     fruitSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_FRUIT);
 };
 
+// icon examples
+const iconQuery = ref('');
+const iconSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const iconLookup: Record<string, IconMetadata> = BASE_ICONS.reduce(
+    (result: Record<string, IconMetadata>, iconData: IconMetadata) => {
+        result[iconData.name] = iconData;
+        return result;
+    },
+    {},
+);
+const iconNames: string[] = BASE_ICONS.map((iconData: IconMetadata) => iconData.name);
+const handleIconComplete = (query: string) => {
+    iconSuggestions.value = autocompleteFilterTermsSimple(query, iconNames);
+};
+
 // long text examples
 const longTextQuery = ref('');
 const longTextSuggestions = ref<EsAutocompleteSuggestion[]>([]);
@@ -37,74 +52,49 @@ const handleLongTextComplete = (query: string) => {
 
 // address examples
 const addressQuery = ref('');
+const addressSelection = ref<EsAutocompleteSuggestion | null>(null);
+const addressState = ref<boolean | null>(null);
 const addressSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const handleAddressComplete = (query: string) => {
     addressSuggestions.value = filterAddresses(query);
 };
-
-// set up state and validation for required selection address example
-const requiredAddressSelection = ref<EsAutocompleteSuggestion | null>(null);
-const requiredAddressState = ref<boolean | null>(null);
-const validateRequiredAddress = () => {
-    if (requiredAddressSelection.value) {
-        requiredAddressState.value = null;
-    } else {
-        requiredAddressState.value = false;
-    }
+const validateAddress = () => {
+    addressState.value = addressSelection.value ? null : false;
 };
-const handleRequiredAddressBlur = () => validateRequiredAddress();
-const handleRequiredAddressSubmit = () => validateRequiredAddress();
-const handleRequiredAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
-    requiredAddressSelection.value = suggestion || null;
-    requiredAddressState.value = null;
+const handleAddressBlur = () => validateAddress();
+const handleAddressSubmit = () => validateAddress();
+const handleAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
+    addressSelection.value = suggestion || null;
+    addressState.value = null;
 };
 watch(addressQuery, (query) => {
     // if the query has changed, clear out any previously selected value
-    if (requiredAddressSelection.value && query !== requiredAddressSelection.value.text) {
-        requiredAddressSelection.value = null;
+    if (addressSelection.value && query !== addressSelection.value.text) {
+        addressSelection.value = null;
     }
 
     // if the field was previously invalid, clear the invalid state
-    if (requiredAddressState.value === false) {
-        requiredAddressState.value = null;
-    }
-});
-
-// set up state and validation for the automatic selection address example
-const autoAddressQuery = ref('');
-const autoAddressSuggestions = ref<EsAutocompleteSuggestion[]>([]);
-const autoAddressSelection = ref<EsAutocompleteSuggestion | null>(null);
-const autoAddressState = ref<boolean | null>(null);
-const handleAutoAddressComplete = (query: string) => {
-    autoAddressSuggestions.value = filterAddresses(query);
-};
-const validateAutoAddress = () => {
-    autoAddressState.value = autoAddressSelection.value ? null : false;
-};
-const handleAutoAddressBlur = () => validateAutoAddress();
-const handleAutoAddressSubmit = () => validateAutoAddress();
-const handleAutoAddressSelect = (suggestion: EsAutocompleteSuggestion) => {
-    autoAddressSelection.value = suggestion || null;
-    autoAddressState.value = null;
-};
-watch(autoAddressQuery, (query) => {
-    // if the query has changed, clear out any previously selected value
-    if (autoAddressSelection.value && query !== autoAddressSelection.value.text) {
-        autoAddressSelection.value = null;
-    }
-
-    // if the field was previously invalid, clear the invalid state
-    if (autoAddressState.value === false) {
-        autoAddressState.value = null;
+    if (addressState.value === false) {
+        addressState.value = null;
     }
 });
 
 // error state example
 const errorQuery = ref('');
+const errorQueryWithValue = ref('banana');
 const errorSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const onErrorComplete = (query: string) => {
     errorSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_SEARCH_TERMS);
 };
+const errorFruitSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const onErrorFruitComplete = (query: string) => {
+    errorFruitSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_FRUIT);
+};
+// the message names the one value this field rejects, so the state reads the
+// value itself: clearing the field and choosing again asks the question afresh
+const errorWithValueState = computed(() =>
+    errorQueryWithValue.value.trim().toLowerCase() === 'banana' ? false : null,
+);
 
 // Disabled example
 const disabledQuery = ref('');
@@ -363,15 +353,22 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>Basic example</h2>
             <p>
-                This example asks you to select your favorite fruit and provides suggestions as you type. By default,
-                the autocomplete allows free text entry and does not force the user to choose from the list of options.
+                This example asks you to select your favorite fruit and provides suggestions as you type. You can enter
+                any fruit, but the suggestions give you optional assistance for faster text entry.
+            </p>
+            <p>
+                Note that the suggested completion text (e.g. "anana" in "banana" if you type "b") is bolded in the
+                list of suggestions, making it easy to scan the list for the completion you want.
+            </p>
+            <p>
+                To avoid overwhelming you with options, the autocomplete displays a maximum of five suggestions at a
+                time. If you type "p", you won't initially see "pomegranate" listed, but if you type "po", you will.
             </p>
             <es-row>
                 <es-col md="6">
                     <es-autocomplete
                         v-model="fruitQuery"
                         label="Favorite fruit"
-                        placeholder="Search for a fruit"
                         :suggestions="fruitSuggestions"
                         @complete="handleFruitComplete" />
                 </es-col>
@@ -382,108 +379,83 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Custom item rendering</h2>
+            <h2>Custom rendering</h2>
             <p>
-                This autocomplete demonstrates customizing the display of suggestion items, in this case splitting an
-                address into two lines.
+                It's often important to be able to display more than just text for each suggestion. In this case, since
+                the suggestions are names of icons, it's useful to display the icon next to the name.
             </p>
             <p>
-                When using this feature, be sure that each suggestion differentiates between the user's typed text and
-                the additional suggested text, highlighting the latter for easy scanning. We provide an autocomplete
-                suggestion text component that handles this for you and can support multiple lines of text.
-            </p>
-            <p>
-                To avoid overwhelming the user with choices, the number of suggestions displayed is limited to five
-                items.
+                To give you this control but still make the completion text bold for easy scanning, we provide a
+                component that handles the bolding for you. It's recommended to use this component whenever displaying
+                suggestion text.
             </p>
             <es-row>
                 <es-col md="6">
                     <es-autocomplete
-                        v-model="addressQuery"
-                        label="Address"
-                        placeholder="Enter your address"
-                        :suggestions="addressSuggestions"
-                        @complete="handleAddressComplete">
+                        v-model="iconQuery"
+                        label="Favorite icon name"
+                        :suggestions="iconSuggestions"
+                        @complete="handleIconComplete">
                         <template #item="{ suggestion, query }">
-                            <es-autocomplete-suggestion-text
-                                v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"
-                                :key="lineIndex"
-                                class="d-block"
-                                :class="{ 'font-size-50': lineIndex === 1 }"
-                                :segments="lineSegments" />
+                            <div class="align-items-center d-flex">
+                                <component
+                                    :is="iconLookup[suggestion.text]?.component"
+                                    class="mr-50" />
+                                <es-autocomplete-suggestion-text
+                                    :text="suggestion.text"
+                                    :query="query" />
+                            </div>
                         </template>
                     </es-autocomplete>
                 </es-col>
             </es-row>
             <p class="text-break text-muted">
-                {{ `value: ${addressQuery || '[empty]'}` }}
+                {{ `value: ${iconQuery || '[empty]'}` }}
             </p>
         </div>
 
         <div class="mb-500">
-            <h2>Requiring a selection</h2>
+            <h2>Requiring a selection from the list</h2>
             <p>
-                In some cases, we want to require the user to select from the provided list of suggestions rather than
-                allowing free text entry.
+                When you need one of the suggestions to be chosen (e.g. to guarantee only a validated address gets
+                submitted), it's recommended to mark the autocomplete as required and enable auto-select. You can also
+                take full control of validation to show an error exactly when needed.
+            </p>
+            <p>
+                With auto-select, the top suggestion becomes active and auto-fills into the input as you type. If you
+                leave the input, the active suggestion is automatically accepted and becomes the value of the input
+                field.
+            </p>
+            <p>
+                In most cases, especially for screen readers, this can facilitate easier address entry. In the rare
+                case where the wrong suggestion is chosen, you have a chance to review and correct the selection before
+                submitting the form.
             </p>
             <es-form
                 class="mb-100 mb-md-0"
                 novalidate
-                @submit.stop.prevent="handleRequiredAddressSubmit">
+                @submit.stop.prevent="handleAddressSubmit">
                 <es-row>
                     <es-col md="6">
                         <es-autocomplete
                             v-model="addressQuery"
-                            label="Address"
-                            placeholder="Enter your address"
-                            required
-                            :state="requiredAddressState"
-                            :suggestions="addressSuggestions"
-                            @blur="handleRequiredAddressBlur"
-                            @complete="handleAddressComplete"
-                            @select="handleRequiredAddressSelect">
-                            <template #errorMessage> Please select an address from the suggestions. </template>
-                        </es-autocomplete>
-                    </es-col>
-                    <es-col md="6">
-                        <es-button
-                            class="mt-md-200 px-md-300 w-100 w-md-auto"
-                            type="submit">
-                            Submit
-                        </es-button>
-                    </es-col>
-                </es-row>
-            </es-form>
-            <p class="text-break text-muted">
-                {{ `value: ${requiredAddressSelection ? requiredAddressSelection.text : '[empty]'}` }}
-            </p>
-        </div>
-
-        <div class="mb-500">
-            <h2>Selecting a suggestion automatically</h2>
-            <p>
-                Where a selection is required, navigating the list to make one can be frustrating, particularly for
-                screen reader users. The autoSelect prop keeps the first suggestion selected as the user types,
-                completing it in the field, and accepts it when they leave. Try typing "12" and then clicking elsewhere
-                on the page.
-            </p>
-            <es-form
-                class="mb-100 mb-md-0"
-                novalidate
-                @submit.stop.prevent="handleAutoAddressSubmit">
-                <es-row>
-                    <es-col md="6">
-                        <es-autocomplete
-                            v-model="autoAddressQuery"
                             auto-select
                             label="Address"
-                            placeholder="Enter your address"
+                            placeholder="Search for your address"
                             required
-                            :state="autoAddressState"
-                            :suggestions="autoAddressSuggestions"
-                            @blur="handleAutoAddressBlur"
-                            @complete="handleAutoAddressComplete"
-                            @select="handleAutoAddressSelect">
+                            :state="addressState"
+                            :suggestions="addressSuggestions"
+                            @blur="handleAddressBlur"
+                            @complete="handleAddressComplete"
+                            @select="handleAddressSelect">
+                            <template #item="{ suggestion, query }">
+                                <es-autocomplete-suggestion-text
+                                    v-for="(lineSegments, lineIndex) in splitAddressLines(suggestion, query)"
+                                    :key="lineIndex"
+                                    class="d-block"
+                                    :class="{ 'font-size-50': lineIndex === 1 }"
+                                    :segments="lineSegments" />
+                            </template>
                             <template #errorMessage> Please select an address from the suggestions. </template>
                         </es-autocomplete>
                     </es-col>
@@ -497,7 +469,7 @@ onMounted(async () => {
                 </es-row>
             </es-form>
             <p class="text-break text-muted">
-                {{ `value: ${autoAddressSelection ? autoAddressSelection.text : '[empty]'}` }}
+                {{ `value: ${addressSelection ? addressSelection.text : '[empty]'}` }}
             </p>
         </div>
 
@@ -505,7 +477,7 @@ onMounted(async () => {
             <h2>Hidden label and limited width</h2>
             <p>
                 In some cases, an autocomplete may appear in a narrow width layout. The suggestions list on desktop,
-                however, is not constrained by this. Try searching for "solar" or "heat pump".
+                however, is not constrained by this width. Try searching for "solar" or "heat pump".
             </p>
             <p>
                 The label for the autocomplete is also hidden visually here, but will still be announced by screen
@@ -548,6 +520,17 @@ onMounted(async () => {
                         :suggestions="errorSuggestions"
                         @complete="onErrorComplete">
                         <template #errorMessage> Please enter a search term. </template>
+                    </es-autocomplete>
+                    <es-autocomplete
+                        id="autocomplete-error-with-value"
+                        v-model="errorQueryWithValue"
+                        label="Favorite fruit"
+                        placeholder="Search for a fruit"
+                        required
+                        :state="errorWithValueState"
+                        :suggestions="errorFruitSuggestions"
+                        @complete="onErrorFruitComplete">
+                        <template #errorMessage> Please select something other than banana. </template>
                     </es-autocomplete>
                 </es-col>
             </es-row>
