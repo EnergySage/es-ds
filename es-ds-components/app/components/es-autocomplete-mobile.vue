@@ -98,12 +98,16 @@ const liveAnnouncement = computed(() => {
     if (!visibleSuggestions.value.length) {
         return props.noResultsAnnouncement;
     }
-    const count = props.suggestionCountText(visibleSuggestions.value.length);
-    // named from the list rather than the live highlight, so arrowing through the
-    // suggestions — which a screen reader reads from the field's own value — does
-    // not rewrite this region and have it read a second time
-    return combobox.autoSelectedText.value ? `${combobox.autoSelectedText.value}, ${count}` : count;
+    // automatic selection's choice is the one thing a screen reader has no other
+    // way to learn — the count it works out from the listbox itself. named from
+    // the list rather than the live highlight, so arrowing through the
+    // suggestions, which it reads from the field's own value, does not rewrite
+    // this region and have it read a second time.
+    return combobox.autoSelectedText.value || props.suggestionCountText(visibleSuggestions.value.length);
 });
+// a screen reader meets the opening listbox with announcements of its own, which
+// cut each other off; this text waits for them rather than being lost among them
+const announcement = useEsAutocompleteAnnouncer(() => liveAnnouncement.value);
 
 // 100dvh does not shrink when the iOS keyboard opens, so the list height comes
 // from the visual viewport instead, where the keyboard is just a resize event
@@ -326,7 +330,7 @@ function onTakeoverOpenChange(value: boolean) {
                             aria-live="polite"
                             class="sr-only"
                             role="status">
-                            {{ liveAnnouncement }}
+                            {{ announcement }}
                         </div>
                     </div>
                 </dialog-content>
