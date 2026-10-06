@@ -1,34 +1,14 @@
 <script setup lang="ts">
 import type { SampleAutocompleteAddress } from '~/utils/autocomplete-sample-items';
 
-// more complex algorithm to match addresses by matching start of query token
-// to start of address token, independent of token order
-const filterAddresses = (query: string) => {
-    const queryTokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    return SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES.filter((address) => {
-        const words = `${address.street} ${address.cityStateZip}`.toLowerCase().split(/[^a-z0-9]+/);
-        return queryTokens.every((token) => words.some((word) => word.startsWith(token)));
-    }).map((address) => ({
-        id: address.street,
-        text: `${address.street}, ${address.cityStateZip}`,
-        value: address,
-    }));
-};
-
-// split the address into two lines to enable custom formatting
-const splitAddressLines = (suggestion: EsAutocompleteSuggestion, query: string) => {
-    const address = suggestion.value as unknown as SampleAutocompleteAddress;
-    return splitEsAutocompleteTextLines([address.street, address.cityStateZip], query);
-};
-
-// fruit examples
+// fruit example
 const fruitQuery = ref('');
 const fruitSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const handleFruitComplete = (query: string) => {
     fruitSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_FRUIT);
 };
 
-// icon examples
+// icon example
 const iconQuery = ref('');
 const iconSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const iconLookup: Record<string, IconMetadata> = BASE_ICONS.reduce(
@@ -43,14 +23,7 @@ const handleIconComplete = (query: string) => {
     iconSuggestions.value = autocompleteFilterTermsSimple(query, iconNames);
 };
 
-// long text examples
-const longTextQuery = ref('');
-const longTextSuggestions = ref<EsAutocompleteSuggestion[]>([]);
-const handleLongTextComplete = (query: string) => {
-    longTextSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_SEARCH_TERMS);
-};
-
-// address examples
+// address example
 const addressQuery = ref('');
 const addressSelection = ref<EsAutocompleteSuggestion | null>(null);
 const addressState = ref<boolean | null>(null);
@@ -79,22 +52,50 @@ watch(addressQuery, (query) => {
     }
 });
 
+// more complex algorithm to match addresses by matching start of query token
+// to start of address token, independent of token order
+const filterAddresses = (query: string) => {
+    const queryTokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    return SAMPLE_LIST_OF_AUTOCOMPLETE_ADDRESSES.filter((address) => {
+        const words = `${address.street} ${address.cityStateZip}`.toLowerCase().split(/[^a-z0-9]+/);
+        return queryTokens.every((token) => words.some((word) => word.startsWith(token)));
+    }).map((address) => ({
+        id: address.street,
+        text: `${address.street}, ${address.cityStateZip}`,
+        value: address,
+    }));
+};
+
+// split the address into two lines to enable custom formatting
+const splitAddressLines = (suggestion: EsAutocompleteSuggestion, query: string) => {
+    const address = suggestion.value as unknown as SampleAutocompleteAddress;
+    return splitEsAutocompleteTextLines([address.street, address.cityStateZip], query);
+};
+
+// long text example
+const longTextQuery = ref('');
+const longTextSuggestions = ref<EsAutocompleteSuggestion[]>([]);
+const handleLongTextComplete = (query: string) => {
+    longTextSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_SEARCH_TERMS);
+};
+
 // error state example
 const errorQuery = ref('');
 const errorQueryWithValue = ref('banana');
 const errorSuggestions = ref<EsAutocompleteSuggestion[]>([]);
 const onErrorComplete = (query: string) => {
-    errorSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_SEARCH_TERMS);
+    errorSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_FRUIT);
 };
-const errorFruitSuggestions = ref<EsAutocompleteSuggestion[]>([]);
-const onErrorFruitComplete = (query: string) => {
-    errorFruitSuggestions.value = autocompleteFilterTermsSimple(query, SAMPLE_LIST_OF_FRUIT);
-};
-// the message names the one value this field rejects, so the state reads the
-// value itself: clearing the field and choosing again asks the question afresh
-const errorWithValueState = computed(() =>
-    errorQueryWithValue.value.trim().toLowerCase() === 'banana' ? false : null,
-);
+const errorWithValueErrorMessage = computed(() => {
+    if (!errorQueryWithValue.value) {
+        return 'Please enter a value.';
+    }
+    if (errorQueryWithValue.value.trim().toLowerCase() === 'banana') {
+        return 'Please enter something other than banana.';
+    }
+    return '';
+});
+const errorWithValueState = computed(() => (errorWithValueErrorMessage.value ? false : null));
 
 // Disabled example
 const disabledQuery = ref('');
@@ -124,10 +125,8 @@ const autocompleteOptionalProps = [
         'Boolean',
         'false',
         `
-        Keeps the first suggestion selected as the user types, completing it inline in the field, and accepts it
-        as the value when the field is left. Follows the APG combobox pattern's "list with automatic selection"
-        behavior. Searches wait longer for a pause in typing in this mode, so each suggestion is not announced
-        on every keystroke.
+        Makes the top suggestion active and auto-fills it into the input as the user types. The active suggestion
+        is accepted as the value when they leave the field.
         `,
     ],
     [
@@ -428,8 +427,8 @@ onMounted(async () => {
             </p>
             <p>
                 In most cases, especially for screen readers, this can facilitate easier address entry. In the rare
-                case where the wrong suggestion is chosen, you have a chance to review and correct the selection before
-                submitting the form.
+                case where the wrong suggestion is chosen based on the text you've entered, you have a chance to review
+                and correct the selection before submitting the form.
             </p>
             <es-form
                 class="mb-100 mb-md-0"
@@ -528,9 +527,9 @@ onMounted(async () => {
                         placeholder="Search for a fruit"
                         required
                         :state="errorWithValueState"
-                        :suggestions="errorFruitSuggestions"
-                        @complete="onErrorFruitComplete">
-                        <template #errorMessage> Please select something other than banana. </template>
+                        :suggestions="errorSuggestions"
+                        @complete="onErrorComplete">
+                        <template #errorMessage> {{ errorWithValueErrorMessage }} </template>
                     </es-autocomplete>
                 </es-col>
             </es-row>
