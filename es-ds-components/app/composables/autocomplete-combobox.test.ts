@@ -281,6 +281,21 @@ describe('useEsAutocompleteCombobox automatic selection', () => {
         expect(combobox.displayValue.value).toBe('apple');
     });
 
+    it('adds only the untyped remainder, leaving the typed characters alone', () => {
+        const { combobox, model } = makeCombobox([{ id: 'p', text: 'Pagination' }], { autoSelect: true });
+        model.value = 'p';
+        expect(combobox.displayValue.value).toBe('pagination');
+        model.value = 'pAg';
+        expect(combobox.displayValue.value).toBe('pAgination');
+    });
+
+    it("takes the suggestion's own text as the value once it is chosen", () => {
+        const { combobox, model } = makeCombobox([{ id: 'p', text: 'Pagination' }], { autoSelect: true });
+        model.value = 'p';
+        expect(combobox.commitAutoSelection()).toBe(true);
+        expect(model.value).toBe('Pagination');
+    });
+
     it('selects without completing when the suggestion matches some other way', () => {
         const { combobox, model } = makeCombobox([{ id: 'a', text: '12 Maple Ave' }], { autoSelect: true });
         model.value = 'maple';

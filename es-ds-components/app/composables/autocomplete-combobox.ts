@@ -67,13 +67,19 @@ export function useEsAutocompleteCombobox(options: AutocompleteComboboxOptions) 
     // automatic selection's inline completion: the selected suggestion continues
     // the typed text, so the untyped remainder can stand in the field as a
     // proposal. a suggestion matching some other way is selected but not written.
+    //
+    // only that remainder is added. the typed characters stay exactly as they
+    // were typed, so a capital in the suggestion never rewrites a keystroke —
+    // the chosen suggestion's own text becomes the value on selection.
     const autoCompletion = computed(() => {
         const typed = options.model.value;
         const suggestion = autoSelectedSuggestion.value;
         if (!completionAllowed.value || !typed || !suggestion || suggestion.text.length <= typed.length) {
             return null;
         }
-        return suggestion.text.toLowerCase().startsWith(typed.toLowerCase()) ? suggestion.text : null;
+        return suggestion.text.toLowerCase().startsWith(typed.toLowerCase())
+            ? typed + suggestion.text.slice(typed.length)
+            : null;
     });
 
     // what the input displays: the typed query, the highlighted suggestion while
