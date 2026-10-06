@@ -16,6 +16,7 @@ interface Props {
     placeholder?: string;
     promptText?: string;
     required?: boolean;
+    selectOnBlur?: boolean;
     showOverlayOnFocus?: boolean;
     state?: boolean | null;
     suggestionCountText?: (count: number) => string;
@@ -39,6 +40,7 @@ const props = withDefaults(defineProps<Props>(), {
     placeholder: '',
     promptText: 'Type for suggestions',
     required: false,
+    selectOnBlur: false,
     showOverlayOnFocus: false,
     state: null,
     suggestionCountText: (count: number) =>
@@ -97,6 +99,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
                 :panel-message="panelMessage"
                 :placeholder="placeholder"
                 :required="required"
+                :select-on-blur="selectOnBlur"
                 :show-overlay-on-focus="showOverlayOnFocus"
                 :state="state"
                 :suggestion-count-text="suggestionCountText"
@@ -128,6 +131,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
                 :panel-message="panelMessage"
                 :placeholder="placeholder"
                 :required="required"
+                :select-on-blur="selectOnBlur"
                 :state="state"
                 :suggestion-count-text="suggestionCountText"
                 :suggestions="effectiveSuggestions"

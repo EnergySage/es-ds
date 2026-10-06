@@ -20,7 +20,7 @@ function withSetup<T>(composable: () => T): { app: App; result: T } {
 
 function makeCombobox(
     initialSuggestions: EsAutocompleteSuggestion[] = [{ id: 'a', text: 'solar batteries' }],
-    { autoSelect = false } = {},
+    { autoSelect = false, selectOnBlur = false } = {},
 ) {
     const inputEl = document.createElement('input');
     document.body.append(inputEl);
@@ -31,6 +31,7 @@ function makeCombobox(
     const { result: combobox } = withSetup(() =>
         useEsAutocompleteCombobox({
             autoSelect: () => autoSelect,
+            selectOnBlur: () => selectOnBlur,
             close,
             emitSelect,
             idPrefix: 'test',
@@ -290,7 +291,10 @@ describe('useEsAutocompleteCombobox automatic selection', () => {
     });
 
     it("takes the suggestion's own text as the value once it is chosen", () => {
-        const { combobox, model } = makeCombobox([{ id: 'p', text: 'Pagination' }], { autoSelect: true });
+        const { combobox, model } = makeCombobox([{ id: 'p', text: 'Pagination' }], {
+            autoSelect: true,
+            selectOnBlur: true,
+        });
         model.value = 'p';
         expect(combobox.commitAutoSelection()).toBe(true);
         expect(model.value).toBe('Pagination');
@@ -405,7 +409,7 @@ describe('useEsAutocompleteCombobox automatic selection', () => {
     });
 
     it('commits the selection on the way out', () => {
-        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true });
+        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true, selectOnBlur: true });
         model.value = 'a';
         expect(combobox.commitAutoSelection()).toBe(true);
         expect(emitSelect).toHaveBeenCalledWith(THREE[0]);
@@ -413,7 +417,7 @@ describe('useEsAutocompleteCombobox automatic selection', () => {
     });
 
     it('commits the suggestion the arrows moved to, not the one it started on', () => {
-        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true });
+        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true, selectOnBlur: true });
         model.value = 'a';
         combobox.onKeydown(keydown('ArrowDown'));
         combobox.onKeydown(keydown('ArrowDown'));
@@ -423,7 +427,7 @@ describe('useEsAutocompleteCombobox automatic selection', () => {
     });
 
     it('commits the held suggestion when a pointer merely rests over another', () => {
-        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true });
+        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true, selectOnBlur: true });
         model.value = 'a';
         combobox.onOptionPointermove(2);
         expect(combobox.commitAutoSelection()).toBe(true);
@@ -438,8 +442,20 @@ describe('useEsAutocompleteCombobox automatic selection', () => {
         expect(emitSelect).not.toHaveBeenCalled();
     });
 
+    it('commits nothing on the way out unless the field is asked to take a value', () => {
+        const { combobox, emitSelect, model } = makeCombobox(THREE, { autoSelect: true });
+        model.value = 'a';
+        // the suggestion is still active, and still what Enter would choose
+        expect(combobox.selectedIndex.value).toBe(0);
+        expect(combobox.displayValue.value).toBe('apple');
+        expect(combobox.commitAutoSelection()).toBe(false);
+        expect(emitSelect).not.toHaveBeenCalled();
+        combobox.onKeydown(keydown('Enter'));
+        expect(emitSelect).toHaveBeenCalledWith(THREE[0]);
+    });
+
     it('commits nothing with no list displayed, or in the default mode', () => {
-        const { combobox: empty } = makeCombobox([], { autoSelect: true });
+        const { combobox: empty } = makeCombobox([], { autoSelect: true, selectOnBlur: true });
         expect(empty.commitAutoSelection()).toBe(false);
         const { combobox, emitSelect } = makeCombobox(THREE);
         expect(combobox.commitAutoSelection()).toBe(false);

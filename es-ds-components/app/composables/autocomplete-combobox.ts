@@ -19,6 +19,12 @@ interface AutocompleteComboboxOptions {
     inputEl: Ref<HTMLInputElement | null>;
     model: Ref<string>;
     /**
+     * whether leaving the field takes automatic selection's choice as the value.
+     * a field holding a value wants that; one that acts on a choice — a search
+     * that navigates — would be acting on merely having been left
+     */
+    selectOnBlur: () => boolean;
+    /**
      * the suggestions the arrows navigate: the displayed list, after the cap and
      * the trim, and empty while closed so keys cannot walk an invisible list
      */
@@ -205,7 +211,7 @@ export function useEsAutocompleteCombobox(options: AutocompleteComboboxOptions) 
     // selection holds; a pointer resting over a row is not a choice, so it
     // leaves the held one to be taken.
     function commitAutoSelection() {
-        if (!options.autoSelect()) {
+        if (!options.autoSelect() || !options.selectOnBlur()) {
             return false;
         }
         const suggestion = keyboardNav.value ? highlighted.value : autoSelectedSuggestion.value;

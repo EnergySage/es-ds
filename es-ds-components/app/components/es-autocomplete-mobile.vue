@@ -15,6 +15,7 @@ import type { EsAutocompleteSuggestion } from '../types';
 // every prop; declaring them again here would be dead code that could drift
 interface Props {
     autoSelect: boolean;
+    selectOnBlur: boolean;
     autocomplete: string;
     clearText?: string;
     closeText?: string;
@@ -72,6 +73,7 @@ const { closeTakeover, enterTransition } = useEsAutocompleteChoreography({
 
 const combobox = useEsAutocompleteCombobox({
     autoSelect: () => props.autoSelect,
+    selectOnBlur: () => props.selectOnBlur,
     close: (selectedText) => {
         void closeTakeover(selectedText);
     },

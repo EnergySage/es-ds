@@ -95,8 +95,6 @@ const handleMoleculeComplete = (query: string) => {
 const handleMoleculeSelect = (suggestion: EsAutocompleteSuggestion) => {
     void navigateTo((suggestion.value as DsMolecule).path);
 };
-// submitting without having chosen a suggestion goes to the closest match for
-// the text, which is what a search field is expected to do with what was typed
 const handleMoleculeSubmit = () => {
     const [closest] = filterMolecules(moleculeQuery.value);
     if (closest) {
@@ -261,6 +259,16 @@ const autocompleteOptionalProps = [
         'false',
         `
         When true, a red asterisk is displayed next to the label and a default error message is available.
+        `,
+    ],
+    [
+        'selectOnBlur',
+        'Boolean',
+        'false',
+        `
+        Takes the active suggestion as the value when the user leaves the field. Only applies with autoSelect
+        enabled. Suited to a field that holds a value, such as an address; leave it off where choosing a
+        suggestion does something instead, since a search that navigates would then navigate on being left.
         `,
     ],
     [
@@ -449,18 +457,15 @@ onMounted(async () => {
             <h2>Requiring a selection from the list</h2>
             <p>
                 When you need one of the suggestions to be chosen (e.g. to guarantee only a validated address gets
-                submitted), it's recommended to mark the autocomplete as required and enable auto-select. You can also
-                take full control of validation to show an error exactly when needed.
+                submitted), it's recommended to mark the autocomplete as required, enable auto-select, and enable
+                selection on blur. You can also take full control of validation to show an error exactly when needed.
             </p>
+            <p>With auto-select, the top suggestion becomes active and auto-fills into the input as you type.</p>
             <p>
-                With auto-select, the top suggestion becomes active and auto-fills into the input as you type. If you
-                leave the input, the active suggestion is automatically accepted and becomes the value of the input
-                field.
-            </p>
-            <p>
-                In most cases, especially for screen readers, this can facilitate easier address entry. In the rare
-                case where the wrong suggestion is chosen based on the text you've entered, you have a chance to review
-                and correct the selection before submitting the form.
+                With selection on blur, if you leave the input, the active suggestion is automatically accepted and
+                becomes the value of the input field. In most cases, especially for screen readers, this can facilitate
+                easier address selection. In the rare case where the wrong suggestion is chosen based on the text
+                you've entered, you have a chance to review and correct the selection before submitting the form.
             </p>
             <es-form
                 class="mb-100 mb-md-0"
@@ -471,6 +476,7 @@ onMounted(async () => {
                         <es-autocomplete
                             v-model="addressQuery"
                             auto-select
+                            select-on-blur
                             label="Address"
                             placeholder="Search for your address"
                             required
@@ -505,17 +511,16 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Searching and navigating</h2>
+            <h2>Search and navigation</h2>
             <p>
-                An autocomplete can act as a search field, where choosing a suggestion takes the user somewhere rather
-                than filling in a value. The suggestions here are the molecules in this documentation: choose one to go
-                to its page, or submit to go to the closest match for what you typed.
+                This example allows you to search for the name of a component in this design system and navigate to its
+                documentation page. With a site search, it is recommended to use auto-select and show an overlay on
+                focus.
             </p>
+            <p>With auto-select, the top suggestion becomes active and auto-fills into the input as you type.</p>
             <p>
-                When the autocomplete is being used as a navigation tool, for example in a site search, it can be
-                helpful to minimize other distractions on the page to allow the user to focus on selecting the right
-                option. This focus overlay accomplishes that by dimming the rest of the page when the autocomplete is
-                open.
+                Showing an overlay on focus dims the rest of the page when the autocomplete is open. This minimizes
+                other distractions on the page and allows the user to focus on selecting the right option.
             </p>
             <es-form
                 class="mb-100 mb-md-0"
@@ -638,31 +643,6 @@ onMounted(async () => {
                         :suggestions="[]" />
                 </es-col>
             </es-row>
-        </div>
-
-        <div class="mb-500">
-            <h2>Focus overlay</h2>
-            <p>
-                When the autocomplete is being used as a navigation tool, for example in a site search, it can be
-                helpful to minimize other distractions on the page to allow the user to focus on selecting the right
-                option. This focus overlay accomplishes that by dimming the rest of the page when the autocomplete is
-                open.
-            </p>
-            <es-row>
-                <es-col md="6">
-                    <es-autocomplete
-                        v-model="longTextQuery"
-                        label="Search"
-                        label-sr-only
-                        placeholder="Search for a topic"
-                        show-overlay-on-focus
-                        :suggestions="longTextSuggestions"
-                        @complete="handleLongTextComplete" />
-                </es-col>
-            </es-row>
-            <p class="text-break text-muted">
-                {{ `value: ${longTextQuery || '[empty]'}` }}
-            </p>
         </div>
 
         <div class="mb-500">
