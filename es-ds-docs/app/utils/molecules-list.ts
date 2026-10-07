@@ -8,7 +8,7 @@ export interface DsMolecule {
 // molecule added here appears in both.
 export const DS_MOLECULES_LIST: DsMolecule[] = [
     { name: 'Accordion', path: '/molecules/accordion' },
-    { name: 'Autocomplete', path: '/molecules/autocomplete' },
+    //{ name: 'Autocomplete', path: '/molecules/autocomplete' },
     { name: 'Badge', path: '/molecules/badge' },
     { name: 'Breadcrumbs', path: '/molecules/breadcrumbs' },
     { name: 'Button', path: '/molecules/button' },
