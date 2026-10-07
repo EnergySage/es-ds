@@ -116,12 +116,14 @@ const liveAnnouncement = computed(() => {
     if (!visibleSuggestions.value.length) {
         return props.noResultsAnnouncement;
     }
-    // automatic selection's choice is the one thing a screen reader has no other
-    // way to learn — the count it works out from the listbox itself. named from
-    // the list rather than the live highlight, so arrowing through the
-    // suggestions, which it reads from the field's own value, does not rewrite
-    // this region and have it read a second time.
-    return combobox.autoSelectedText.value || props.suggestionCountText(visibleSuggestions.value.length);
+    const count = props.suggestionCountText(visibleSuggestions.value.length);
+    // automatic selection's choice leads, being the one thing a screen reader has
+    // no other way to learn, and the count follows it: only VoiceOver on the desk
+    // works the count out from the listbox itself, so the others would hear none.
+    // named from the list rather than the live highlight, so arrowing through the
+    // suggestions, which a screen reader reads from the field's own value, does
+    // not rewrite this region and have it read a second time.
+    return combobox.autoSelectedText.value ? `${combobox.autoSelectedText.value}, ${count}` : count;
 });
 // a screen reader meets the opening listbox with announcements of its own, which
 // cut each other off; this text waits for them rather than being lost among them
