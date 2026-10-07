@@ -1,7 +1,8 @@
 import { onUnmounted, ref, watch } from 'vue';
 
-// long enough for an opening listbox's own changes to have been taken in, short
-// enough that the text still belongs to the keystroke that asked for it
+// long enough that the changes to the autocomplete have already been read out by
+// screen reader, short enough that the announcement we want (e.g. the
+// auto-selected value and/or number of suggestions) is read out immediately afterward
 const ANNOUNCE_DELAY_MS = 250;
 
 /**
