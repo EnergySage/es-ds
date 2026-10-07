@@ -1,5 +1,19 @@
 # Changelog
 
+## [6.3.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.2.0...es-ds-docs-v6.3.0) (2026-10-07)
+
+
+### Features
+
+* added EsAutocomplete ([#1777](https://github.com/EnergySage/es-ds/issues/1777)) ([2bf3f1e](https://github.com/EnergySage/es-ds/commit/2bf3f1ec79a1af24c96508cdb3662b5503f64700))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^6.2.0 to ^6.3.0
+
 ## [6.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.1.1...es-ds-docs-v6.2.0) (2026-10-02)
 
 
