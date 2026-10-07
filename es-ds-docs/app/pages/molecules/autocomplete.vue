@@ -151,7 +151,7 @@ const autocompleteRequiredProps = [
 
 const autocompleteOptionalProps = [
     [
-        'autoSelect',
+        'auto-select',
         'Boolean',
         'false',
         `
@@ -164,13 +164,12 @@ const autocompleteOptionalProps = [
         'String',
         'off',
         `
-        The input's autocomplete token. 'off' keeps the browser's own saved-value dropdown from competing with
-        the suggestion list. A field that maps to a real autofill token — 'street-address', 'name', 'email' —
-        can set it to trade the other way and let the browser offer a saved value.
+        Passed directly to the autocomplete attribute on the HTML input element. The default, 'off', keeps the browser's own saved-value dropdown from competing with
+        the suggestion list, which is appropriate in most cases, but this prop allows you to override that behavior.
         `,
     ],
     [
-        'clearText',
+        'clear-text',
         'String',
         'Clear',
         `
@@ -178,7 +177,7 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
-        'closeText',
+        'close-text',
         'String',
         'Close',
         `
@@ -202,7 +201,7 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
-        'helpText',
+        'help-text',
         'String',
         'Type your search and select from dropdown suggestions.',
         `
@@ -210,7 +209,7 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
-        'labelSrOnly',
+        'label-sr-only',
         'Boolean',
         'false',
         `
@@ -219,7 +218,7 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
-        'minChars',
+        'min-chars',
         'Number',
         '1',
         `
@@ -228,12 +227,12 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
-        'noResultsText',
+        'no-results-text',
         'String',
         'No results found',
         `
         Message shown inside the suggestions panel once a search has come back with no suggestions. Never
-        shown while a search is still in flight (promptText shows instead).
+        shown while a search is still in flight (prompt-text shows instead).
         `,
     ],
     [
@@ -245,12 +244,12 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
-        'promptText',
+        'prompt-text',
         'String',
         'Type for suggestions',
         `
         Message shown inside the suggestions panel when there is nothing else to show: before typing begins,
-        below minChars, or while the first search is in flight.
+        below min-chars, or while the first search is in flight.
         `,
     ],
     [
@@ -262,22 +261,22 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
-        'selectOnBlur',
+        'select-on-blur',
         'Boolean',
         'false',
         `
-        Takes the active suggestion as the value when the user leaves the field. Only applies with autoSelect
+        Takes the active suggestion as the value when the user leaves the field. Only applies with auto-select
         enabled. Suited to a field that holds a value, such as an address; leave it off where choosing a
         suggestion does something instead, since a search that navigates would then navigate on being left.
         `,
     ],
     [
-        'showOverlayOnFocus',
+        'show-overlay-on-focus',
         'Boolean',
         'false',
         `
         On desktop, dims the rest of the page with an overlay while the input has focus. Suits a standalone
-        primary search (e.g. site search in a sticky header); leave off for a field within a larger form,
+        primary search (e.g. site search in a sticky bar). Leave this as false for an autocomplete within a larger form,
         where the overlay would obscure sibling fields.
         `,
     ],
@@ -290,17 +289,17 @@ const autocompleteOptionalProps = [
         `,
     ],
     [
-        'suggestionCountText',
+        'suggestion-count-text',
         'Function',
         "(count) => '{count} suggestions available'",
         `
         Builds the screen-reader announcement made when suggestions arrive, given the number of
         suggestions displayed (after the display cap and the row trim). An empty result
-        announces noResultsText instead.
+        announces no-results-text instead.
         `,
     ],
     [
-        'triggerHelpText',
+        'trigger-help-text',
         'String',
         'Opens a search with suggestions as you type.',
         `
@@ -323,7 +322,7 @@ const autocompleteEvents = [
         'complete',
         'query: string',
         `
-        Emitted (debounced) when the user has typed at least minChars characters. Fetch or filter your
+        Emitted (debounced) when the user has typed at least min-chars characters. Fetch or filter your
         suggestions in response and update the 'suggestions' prop.
         `,
     ],
@@ -515,12 +514,13 @@ onMounted(async () => {
             <p>
                 This example allows you to search for the name of a component in this design system and navigate to its
                 documentation page. With a site search, it is recommended to use auto-select and show an overlay on
-                focus.
+                focus. It's often useful to hide the label, as shown here.
             </p>
             <p>With auto-select, the top suggestion becomes active and auto-fills into the input as you type.</p>
             <p>
-                Showing an overlay on focus dims the rest of the page when the autocomplete is open. This minimizes
-                other distractions on the page and allows the user to focus on selecting the right option.
+                Showing an overlay on focus dims the rest of the page when the autocomplete is open. This is most
+                appropriate when the autocomplete is prominently placed in a sticky bar at the top of the page, and
+                serves to minimize distractions so the user can focus on selecting the right option.
             </p>
             <es-form
                 class="mb-100 mb-md-0"
@@ -549,14 +549,12 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Hidden label and limited width</h2>
+            <h2>Limited width</h2>
             <p>
-                In some cases, an autocomplete may appear in a narrow width layout. The suggestions list on desktop,
-                however, is not constrained by this width. Try searching for "solar" or "heat pump".
-            </p>
-            <p>
-                The label for the autocomplete is also hidden visually here, but will still be announced by screen
-                readers.
+                On mobile touch devices, interacting with the autocomplete opens a fullscreen takeover to ensure the
+                full list of suggestions can be seen and interacted with. On desktop, the autocomplete may appear with
+                its width limited by the page layout. In this case, the suggestions pane will expand in width as
+                necessary to show the full list of suggestions. Try searching for "solar" or "heat pump".
             </p>
             <es-row>
                 <es-col
