@@ -1,0 +1,11 @@
+{
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "name": "es-ds-docs",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["--prefix", "es-ds-docs", "run", "dev"],
+            "port": 8500
+        }
+    ]
+}
