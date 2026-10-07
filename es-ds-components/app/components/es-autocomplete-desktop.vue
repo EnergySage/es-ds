@@ -236,16 +236,16 @@ function onRootFocusout(event: FocusEvent) {
         }
         return;
     }
-    // a collapse says nothing on its own: the arrows' echo, a click on dead space
-    // and a screen reader's cursor moving off all look alike, so the answer waits
-    // for what the browser settles on
+    // a collapse says nothing on its own: a screen reader echoing a value this
+    // component wrote, a click on dead space and its cursor simply moving off all
+    // look alike, so the answer waits for what the browser settles on
     answerFocusCollapse(combobox.consumeRewriteBlur());
 }
 
 // deferred a frame: by then an outside pointerdown has closed the panel, and a
 // focus move still in flight has landed somewhere real. the window losing focus
 // leaves the input active, so it needs nothing.
-function answerFocusCollapse(followsArrowKey: boolean) {
+function answerFocusCollapse(followsValueRewrite: boolean) {
     requestAnimationFrame(() => {
         const el = inputEl.value;
         const active = document.activeElement;
@@ -253,7 +253,7 @@ function answerFocusCollapse(followsArrowKey: boolean) {
         if (!document.hasFocus() || !stillNowhere) {
             return;
         }
-        if (followsArrowKey && open.value && el) {
+        if (followsValueRewrite && open.value && el) {
             restoringFocus = true;
             el.focus();
             restoringFocus = false;

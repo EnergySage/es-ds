@@ -163,15 +163,22 @@ export function useEsAutocompleteCombobox(options: AutocompleteComboboxOptions) 
         void revealCaretAtEnd();
     }
 
-    // a screen reader can answer a rewrite of the field's value by moving DOM
-    // focus off the input, within a frame or two — sooner than a human can. so
-    // each rewrite, whether an arrow's or a completion's, marks the moment: a
-    // blur inside the window is that echo, a later one is not.
+    // arrowing onto a suggestion copies it into the field, and automatic selection
+    // completes what was typed: both write the value from script. VoiceOver answers
+    // such a write by moving its cursor off the input, which fires a focusout that
+    // looks exactly like the user leaving — and taking it as one would close the
+    // panel mid-navigation. so the component notes the time of each write, and
+    // counts a collapse that follows within this window as that echo, not a
+    // departure.
     const REWRITE_BLUR_WINDOW_MS = 250;
     let rewrittenAt = 0;
     function markValueRewrite() {
         rewrittenAt = performance.now();
     }
+    // whether the collapse that just happened is one of those echoes. reading
+    // forgets the write, so one write accounts for one collapse and a later one is
+    // the user. a time rather than a flag, which would stay set with no echo to
+    // answer it and go on to mistake a real departure for one.
     function consumeRewriteBlur() {
         const at = rewrittenAt;
         rewrittenAt = 0;
