@@ -569,8 +569,8 @@ onMounted(async () => {
                         placeholder="Search for a topic"
                         :suggestions="longTextSuggestions"
                         @complete="handleLongTextComplete" />
-                    <es-button class="ml-100 px-md-300 px-xl-200 px-xxl-400 text-nowrap w-50 w-md-auto">
-                        Shop local offers
+                    <es-button class="flex-shrink-0 ml-100 px-md-300 px-xl-200 px-xxl-400 text-nowrap w-50 w-md-auto">
+                        View related articles
                     </es-button>
                 </es-col>
             </es-row>
