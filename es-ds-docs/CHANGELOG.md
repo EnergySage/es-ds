@@ -1,5 +1,48 @@
 # Changelog
 
+## [6.2.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.1.1...es-ds-docs-v6.2.0) (2026-10-02)
+
+
+### Features
+
+* add Utilities docs page, small enhancements to EsCollapse and EsDataTableSimple ([#1787](https://github.com/EnergySage/es-ds/issues/1787)) ([39770f6](https://github.com/EnergySage/es-ds/commit/39770f67a7bdd18a2a541a9279ae0209607c9c8a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^6.1.1 to ^6.2.0
+    * @energysage/es-ds-styles bumped from ^4.0.0 to ^4.1.0
+
+## [6.1.1](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.1.0...es-ds-docs-v6.1.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* correct usage of useId() in EsZipCodeForm ([#1790](https://github.com/EnergySage/es-ds/issues/1790)) ([c4c30f4](https://github.com/EnergySage/es-ds/commit/c4c30f4b693c9e5343462146f659d099ad4ab0d8))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^6.1.0 to ^6.1.1
+
+## [6.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.0.0...es-ds-docs-v6.1.0) (2026-09-28)
+
+
+### Features
+
+* allow centering of zip code form and add missing space ([#1786](https://github.com/EnergySage/es-ds/issues/1786)) ([595c59e](https://github.com/EnergySage/es-ds/commit/595c59ebba727bba829c99a4b0a32c98c018f23d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^6.0.0 to ^6.1.0
+
 ## [6.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v5.7.3...es-ds-docs-v6.0.0) (2026-09-08)
 
 

@@ -18,5 +18,8 @@
         <li>
             <ds-link to="/atoms/typography"> Typography </ds-link>
         </li>
+        <li>
+            <ds-link to="/atoms/utilities"> Utilities </ds-link>
+        </li>
     </ul>
 </template>

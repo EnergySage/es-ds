@@ -1,13 +1,15 @@
 {
     "name": "es-ds-docs",
-    "version": "6.0.0",
+    "version": "6.2.0",
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "nuxt build",
-        "dev": "nuxt dev --port 8500",
-        "generate": "nuxt generate",
+        "build": "npm run utility-classes && nuxt build",
+        "dev": "npm run utility-classes && nuxt dev --port 8500",
+        "generate": "npm run utility-classes && nuxt generate",
         "preview": "nuxt preview",
+        "typecheck": "npm run utility-classes && nuxi typecheck",
+        "utility-classes": "node scripts/generate-utility-classes.mjs",
         "postinstall": "patch-package && nuxt prepare",
         "lint:eslint": "eslint .",
         "lint:prettier": "prettier --check .",
@@ -17,8 +19,8 @@
         "format": "npm run format:prettier && npm run format:eslint"
     },
     "dependencies": {
-        "@energysage/es-ds-components": "^6.0.0",
-        "@energysage/es-ds-styles": "^4.0.0",
+        "@energysage/es-ds-components": "^6.2.0",
+        "@energysage/es-ds-styles": "^4.1.0",
         "@nuxt/image": "^2.0.0",
         "@nuxt/kit": "^4.4.2",
         "@nuxtjs/google-fonts": "^3.2.0",
@@ -48,6 +50,7 @@
         "eslint-config-prettier": "^10.0.1",
         "nuxt-primevue": "^3.0.0",
         "patch-package": "^8.0.0",
+        "postcss": "^8.5.0",
         "prettier": "^3.3.3",
         "sass": "^1.77.8",
         "typescript": "^6.0.3",

@@ -46,12 +46,6 @@ jobs:
             - name: Log into aws dev 🔑
               uses: ./.github/actions/login-dev-deploy
 
-            - name: Log into CodeArtifact 🗝️
-              working-directory: ./es-ds-docs
-              shell: bash
-              run: |
-                  aws codeartifact login --tool npm --domain energysage --domain-owner 659694780082 --repository cloud-engineering
-
             # Get the node version from .node-version
             - name: Get nodenv version 🔌
               id: nodenv
@@ -110,6 +104,14 @@ jobs:
               shell: bash
               run: |
                   CI="1" npm run generate
+
+            # Only the CDK app needs private packages (es-cdk). `codeartifact login` rewrites the global
+            # npm registry, so it must run after the public docs install or npm reroutes those tarballs too.
+            - name: Log into CodeArtifact 🗝️
+              working-directory: ./es-ds-docs/aws
+              shell: bash
+              run: |
+                  aws codeartifact login --tool npm --domain energysage --domain-owner 659694780082 --repository cloud-engineering
 
             - name: Install aws dependencies 👩‍💻
               working-directory: ./es-ds-docs/aws

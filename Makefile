@@ -46,7 +46,7 @@ build:
 
 .PHONY: typecheck
 typecheck:
-	cd es-ds-docs && npx nuxi typecheck
+	npm --prefix es-ds-docs run typecheck
 
 # Sometimes Called
 
