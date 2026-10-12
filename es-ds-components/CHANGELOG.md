@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.3.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.0...es-ds-components-v6.3.1) (2026-10-12)
+
+
+### Bug Fixes
+
+* EsAutocomplete now works in Safari inside a position fixed container with transform ([#1794](https://github.com/EnergySage/es-ds/issues/1794)) ([233fa49](https://github.com/EnergySage/es-ds/commit/233fa49838d3abf9fb956317c73ef920c5862c11))
+
 ## [6.3.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.2.0...es-ds-components-v6.3.0) (2026-10-07)
 
 
