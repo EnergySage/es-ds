@@ -81,6 +81,40 @@ function positionPanel() {
     const above = supportsAnchor.value && natural > spaceBelow && natural <= spaceAbove;
     panelAbove.value = above;
     panel.style.maxHeight = `${Math.max(above ? spaceAbove : spaceBelow, 0)}px`;
+    alignPanel();
+}
+
+// engines disagree on where an anchor inside a transformed or fixed ancestor
+// sits: Safari and Firefox resolve anchor() without the ancestor's transform, so
+// a field in a fixed banner slid down by translateY gets its panel at the
+// untransformed spot, over the field. the clip is checked against the field's
+// real box and shifted by any difference, which is zero where anchor() is right.
+let panelShift = { x: 0, y: 0 };
+function alignPanel() {
+    const clip = wrapperEl.value;
+    const anchor = fieldEl.value;
+    if (!clip || !anchor || !supportsAnchor.value) {
+        return;
+    }
+    const anchorRect = anchor.getBoundingClientRect();
+    const clipRect = clip.getBoundingClientRect();
+    // the side as rendered, which can trail panelAbove until the next render; the
+    // error is a translation, so either edge pairing yields the same shift
+    const above = clip.classList.contains('es-autocomplete-clip--above');
+    const anchoredEdge = above ? clipRect.bottom : clipRect.top;
+    const x = anchorRect.left - (clipRect.left - panelShift.x);
+    const y = (above ? anchorRect.top : anchorRect.bottom) - (anchoredEdge - panelShift.y);
+    panelShift = Math.abs(x) < 0.5 && Math.abs(y) < 0.5 ? { x: 0, y: 0 } : { x, y };
+    clip.style.translate = panelShift.x || panelShift.y ? `${panelShift.x}px ${panelShift.y}px` : '';
+}
+
+// an ancestor's transition moves the field without a scroll or resize, as the
+// banner sliding under a returning nav bar does, so its end re-aligns the panel
+function onAncestorTransitionEnd(event: Event) {
+    const field = fieldEl.value;
+    if (field && event.target instanceof Node && event.target !== field && event.target.contains(field)) {
+        alignPanel();
+    }
 }
 
 const { remeasure, visibleSuggestions } = useEsAutocompleteVisibleRows(
@@ -286,13 +320,16 @@ function onDocumentPointerdown(event: Event) {
 watch(open, (isOpen) => {
     if (isOpen) {
         document.addEventListener('pointerdown', onDocumentPointerdown, true);
+        document.addEventListener('transitionend', onAncestorTransitionEnd, true);
     } else {
         document.removeEventListener('pointerdown', onDocumentPointerdown, true);
+        document.removeEventListener('transitionend', onAncestorTransitionEnd, true);
     }
 });
 
 onBeforeUnmount(() => {
     document.removeEventListener('pointerdown', onDocumentPointerdown, true);
+    document.removeEventListener('transitionend', onAncestorTransitionEnd, true);
 });
 
 // --- panel drawer ------------------------------------------------------------
