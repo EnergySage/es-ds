@@ -70,16 +70,17 @@ const triggerDescribedBy = computed(() => (showError.value ? `${triggerHelpId} $
 
 // the debounced 'complete' contract, minChars gating, and prompt/no-results
 // messaging live in useEsAutocompleteSearch so the contract is unit-testable
-const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = useEsAutocompleteSearch({
-    delay: () => props.delay,
-    emitComplete: (query) => emit('complete', query),
-    emitSelect: (suggestion) => emit('select', suggestion),
-    minChars: () => props.minChars,
-    model,
-    noResultsText: () => props.noResultsText,
-    promptText: () => props.promptText,
-    suggestions: () => props.suggestions,
-});
+const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage, suggestionsPending } =
+    useEsAutocompleteSearch({
+        delay: () => props.delay,
+        emitComplete: (query) => emit('complete', query),
+        emitSelect: (suggestion) => emit('select', suggestion),
+        minChars: () => props.minChars,
+        model,
+        noResultsText: () => props.noResultsText,
+        promptText: () => props.promptText,
+        suggestions: () => props.suggestions,
+    });
 </script>
 
 <template>
@@ -104,6 +105,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
                 :state="state"
                 :suggestion-count-text="suggestionCountText"
                 :suggestions="effectiveSuggestions"
+                :suggestions-pending="suggestionsPending"
                 @blur="emit('blur')"
                 @select="onSelect">
                 <template
@@ -135,6 +137,7 @@ const { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage } = 
                 :state="state"
                 :suggestion-count-text="suggestionCountText"
                 :suggestions="effectiveSuggestions"
+                :suggestions-pending="suggestionsPending"
                 :trigger-described-by="triggerDescribedBy"
                 @blur="emit('blur')"
                 @select="onSelect">

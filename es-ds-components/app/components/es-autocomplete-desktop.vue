@@ -22,6 +22,7 @@ interface Props {
     state?: boolean | null;
     suggestionCountText: (count: number) => string;
     suggestions: EsAutocompleteSuggestion[];
+    suggestionsPending: boolean;
 }
 
 const props = defineProps<Props>();
@@ -140,6 +141,7 @@ const combobox = useEsAutocompleteCombobox({
     model,
     // arrows navigate exactly what is displayed; nothing while the panel is closed
     suggestions: () => (listboxOpen.value ? visibleSuggestions.value : []),
+    suggestionsPending: () => props.suggestionsPending,
 });
 watch(open, combobox.resetHighlight);
 

@@ -323,7 +323,9 @@ const autocompleteEvents = [
         'query: string',
         `
         Emitted (debounced) when the user has typed at least min-chars characters. Fetch or filter your
-        suggestions in response and update the 'suggestions' prop.
+        suggestions in response and update the 'suggestions' prop. If fetching, ignore a response that
+        arrives after a newer query has been emitted: each update is taken as the answer to the latest query,
+        and with auto-select its top suggestion becomes what Enter or leaving the field chooses.
         `,
     ],
     [
