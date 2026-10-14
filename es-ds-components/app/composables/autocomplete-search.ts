@@ -20,8 +20,9 @@ const EMPTY_SUGGESTIONS: EsAutocompleteSuggestion[] = [];
 
 /**
  * the search state behind es-autocomplete.vue: the debounced 'complete' contract,
- * the minChars gate, the staleness of the app's list after a selection, and the
- * empty-state messaging. here so it is unit-testable without a mount.
+ * the minChars gate, the staleness of the app's list after a selection, which
+ * query that list answers, and the empty-state messaging. here so it is
+ * unit-testable without a mount.
  */
 export function useEsAutocompleteSearch(options: AutocompleteSearchOptions) {
     const { model } = options;
@@ -48,9 +49,13 @@ export function useEsAutocompleteSearch(options: AutocompleteSearchOptions) {
             searchTimeout = null;
         }
     }
+    // the query last sent out, recorded before the emit so an app that answers
+    // synchronously inside its handler is credited with answering it
+    let lastCompletedQuery: string | null = null;
     function scheduleComplete(query: string) {
         cancelPendingComplete();
         searchTimeout = setTimeout(() => {
+            lastCompletedQuery = query;
             options.emitComplete(query);
         }, options.delay());
     }
@@ -60,11 +65,16 @@ export function useEsAutocompleteSearch(options: AutocompleteSearchOptions) {
     // whether the app's last update was empty, which tells "search found nothing"
     // (noResultsText) from "nothing has answered yet" (promptText)
     const noResults = ref(false);
+    // the query the app's list answers: the last one sent out when the list
+    // arrived. an app is expected to drop a response to an earlier query that
+    // arrives late, since nothing here can tell it apart
+    const answeredQuery = ref<string | null>(null);
     watch(
         options.suggestions,
         (list) => {
             noResults.value = list.length === 0;
             suggestionsStale.value = false;
+            answeredQuery.value = lastCompletedQuery;
         },
         // depth 1 so apps that mutate the array in place (push/splice) are seen too
         { deep: 1 },
@@ -73,6 +83,11 @@ export function useEsAutocompleteSearch(options: AutocompleteSearchOptions) {
     // what an open panel shows with nothing to render: the no-results message once
     // a search has come back empty, otherwise the prompt
     const queryLongEnough = computed(() => model.value.trim().length >= options.minChars());
+
+    // the typed query has moved past what the list answers, and its own search
+    // is still debouncing or in flight. the list stays on screen meanwhile, but
+    // automatic selection must not commit from it (see useEsAutocompleteCombobox)
+    const suggestionsPending = computed(() => queryLongEnough.value && model.value.trim() !== answeredQuery.value);
     const panelMessage = computed(() => {
         if (effectiveSuggestions.value.length) {
             return '';
@@ -124,5 +139,5 @@ export function useEsAutocompleteSearch(options: AutocompleteSearchOptions) {
         options.emitSelect(suggestion);
     }
 
-    return { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage };
+    return { effectiveSuggestions, noResultsAnnouncement, onSelect, panelMessage, suggestionsPending };
 }

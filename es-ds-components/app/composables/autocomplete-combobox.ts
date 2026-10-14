@@ -29,6 +29,11 @@ interface AutocompleteComboboxOptions {
      * the trim, and empty while closed so keys cannot walk an invisible list
      */
     suggestions: () => EsAutocompleteSuggestion[];
+    /**
+     * whether the list answers an earlier query than the one typed, because the
+     * app has yet to answer the latest edit
+     */
+    suggestionsPending: () => boolean;
 }
 
 /**
@@ -49,12 +54,28 @@ export function useEsAutocompleteCombobox(options: AutocompleteComboboxOptions) 
     // split es-dropdown-select makes)
     const keyboardNav = computed(() => highlightSource.value === 'keyboard');
 
-    // the suggestion the field itself follows under automatic selection: the
-    // first, and only arrowing takes the field off it. a pointer passing over the
-    // list highlights what it is over without touching what the field proposes
-    const autoSelectedSuggestion = computed(() =>
-        options.autoSelect() && !keyboardNav.value ? (options.suggestions()[0] ?? null) : null,
-    );
+    // whether the suggestion's text begins with what is typed, so the field can
+    // show it as the typed text with a remainder after it
+    function continuesTyped(suggestion: EsAutocompleteSuggestion) {
+        const typed = options.model.value;
+        return !!typed && suggestion.text.toLowerCase().startsWith(typed.toLowerCase());
+    }
+
+    // automatic selection's choice: the first suggestion. a list answering an
+    // earlier query keeps it only while it continues the typed text, so Enter or
+    // leaving the field never commits a suggestion the user has typed past
+    const heldSuggestion = computed(() => {
+        const first = options.autoSelect() ? options.suggestions()[0] : undefined;
+        if (!first) {
+            return null;
+        }
+        return !options.suggestionsPending() || continuesTyped(first) ? first : null;
+    });
+
+    // the suggestion the field itself follows under automatic selection, until
+    // arrowing takes the field off it. a pointer passing over the list
+    // highlights what it is over without touching what the field proposes
+    const autoSelectedSuggestion = computed(() => (keyboardNav.value ? null : heldSuggestion.value));
     // automatic selection also holds the highlight, until the user takes it
     const autoHighlighted = computed(() => autoSelectedSuggestion.value !== null && highlightIndex.value < 0);
     // where the highlight actually sits: the user's, or automatic selection's
@@ -80,12 +101,10 @@ export function useEsAutocompleteCombobox(options: AutocompleteComboboxOptions) 
     const autoCompletion = computed(() => {
         const typed = options.model.value;
         const suggestion = autoSelectedSuggestion.value;
-        if (!completionAllowed.value || !typed || !suggestion || suggestion.text.length <= typed.length) {
+        if (!completionAllowed.value || !suggestion || suggestion.text.length <= typed.length) {
             return null;
         }
-        return suggestion.text.toLowerCase().startsWith(typed.toLowerCase())
-            ? typed + suggestion.text.slice(typed.length)
-            : null;
+        return continuesTyped(suggestion) ? typed + suggestion.text.slice(typed.length) : null;
     });
 
     // what the input displays: the typed query, the highlighted suggestion while
@@ -103,7 +122,7 @@ export function useEsAutocompleteCombobox(options: AutocompleteComboboxOptions) 
     // suggestion that does not complete the typed text changes nothing on screen,
     // and an aria-activedescendant change alone is not reliably spoken, so
     // without this a screen reader hears no selection at all
-    const autoSelectedText = computed(() => (options.autoSelect() ? (options.suggestions()[0]?.text ?? '') : ''));
+    const autoSelectedText = computed(() => heldSuggestion.value?.text ?? '');
 
     const listboxId = `${options.idPrefix}-listbox`;
     function optionId(index: number) {

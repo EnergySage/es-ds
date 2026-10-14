@@ -26,6 +26,7 @@ function makeCombobox(
     document.body.append(inputEl);
     const model = ref('solar');
     const suggestions = ref(initialSuggestions);
+    const suggestionsPending = ref(false);
     const close = vi.fn();
     const emitSelect = vi.fn();
     const { result: combobox } = withSetup(() =>
@@ -38,9 +39,10 @@ function makeCombobox(
             inputEl: ref(inputEl),
             model,
             suggestions: () => suggestions.value,
+            suggestionsPending: () => suggestionsPending.value,
         }),
     );
-    return { close, combobox, emitSelect, inputEl, model, suggestions };
+    return { close, combobox, emitSelect, inputEl, model, suggestions, suggestionsPending };
 }
 
 function keydown(key: string, init: { isComposing?: boolean } = {}) {
@@ -460,5 +462,62 @@ describe('useEsAutocompleteCombobox automatic selection', () => {
         const { combobox, emitSelect } = makeCombobox(THREE);
         expect(combobox.commitAutoSelection()).toBe(false);
         expect(emitSelect).not.toHaveBeenCalled();
+    });
+});
+
+describe('useEsAutocompleteCombobox automatic selection from a list answering an earlier query', () => {
+    const BEACON = [
+        { id: 'c', text: '1 Beacon Street, Cambridge, MA, USA' },
+        { id: 'b', text: '1 Beacon Street, Boston, MA, USA' },
+    ];
+
+    it('takes nothing on Enter or on the way out once the typing has moved past the list', () => {
+        const { close, combobox, emitSelect, model, suggestionsPending } = makeCombobox(BEACON, {
+            autoSelect: true,
+            selectOnBlur: true,
+        });
+        model.value = '02108';
+        suggestionsPending.value = true;
+        expect(combobox.selectedIndex.value).toBe(-1);
+        expect(combobox.autoSelectedText.value).toBe('');
+        expect(combobox.commitAutoSelection()).toBe(false);
+        const event = keydown('Enter');
+        combobox.onKeydown(event);
+        expect(event.defaultPrevented).toBe(false);
+        expect(close).toHaveBeenCalled();
+        expect(emitSelect).not.toHaveBeenCalled();
+        expect(model.value).toBe('02108');
+    });
+
+    it('keeps holding the first suggestion while it still continues the typed text', () => {
+        const { combobox, emitSelect, model, suggestionsPending } = makeCombobox(BEACON, {
+            autoSelect: true,
+            selectOnBlur: true,
+        });
+        model.value = '1 Beacon Street, Ca';
+        suggestionsPending.value = true;
+        // the field shows exactly what leaving it would take
+        expect(combobox.displayValue.value).toBe('1 Beacon Street, Cambridge, MA, USA');
+        expect(combobox.commitAutoSelection()).toBe(true);
+        expect(emitSelect).toHaveBeenCalledWith(BEACON[0]);
+    });
+
+    it('selects again once the app answers the typed query', () => {
+        const { combobox, model, suggestionsPending } = makeCombobox(BEACON, { autoSelect: true });
+        model.value = '1 Beacon St Bos';
+        suggestionsPending.value = true;
+        expect(combobox.selectedIndex.value).toBe(-1);
+        suggestionsPending.value = false;
+        expect(combobox.selectedIndex.value).toBe(0);
+    });
+
+    it('still lets the user choose from the list explicitly', () => {
+        const { combobox, emitSelect, model, suggestionsPending } = makeCombobox(BEACON, { autoSelect: true });
+        model.value = '1 Beacon St Bos';
+        suggestionsPending.value = true;
+        combobox.onKeydown(keydown('ArrowDown'));
+        combobox.onKeydown(keydown('ArrowDown'));
+        combobox.onKeydown(keydown('Enter'));
+        expect(emitSelect).toHaveBeenCalledWith(BEACON[1]);
     });
 });

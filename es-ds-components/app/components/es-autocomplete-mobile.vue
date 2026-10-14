@@ -31,6 +31,7 @@ interface Props {
     state?: boolean | null;
     suggestionCountText: (count: number) => string;
     suggestions: EsAutocompleteSuggestion[];
+    suggestionsPending: boolean;
     triggerDescribedBy: string;
 }
 
@@ -83,6 +84,7 @@ const combobox = useEsAutocompleteCombobox({
     model,
     // arrows navigate exactly what is displayed
     suggestions: () => (takeoverOpen.value ? visibleSuggestions.value : []),
+    suggestionsPending: () => props.suggestionsPending,
 });
 
 // the takeover's input announces "expanded" exactly when a list exists

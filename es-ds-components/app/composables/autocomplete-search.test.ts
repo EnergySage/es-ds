@@ -230,6 +230,72 @@ describe('useEsAutocompleteSearch panel message and suggestion gating', () => {
         expect(search.panelMessage.value).toBe('Type for suggestions');
     });
 
+    it('marks the list pending from an edit until the app answers the typed query', async () => {
+        const { search, suggestions, type } = makeSearch();
+        await type('1 Beacon St');
+        expect(search.suggestionsPending.value).toBe(true);
+        vi.advanceTimersByTime(DELAY);
+        suggestions.value = [{ id: 'a', text: '1 Beacon Street, Cambridge, MA, USA' }];
+        await nextTick();
+        expect(search.suggestionsPending.value).toBe(false);
+
+        // typing past the answered query leaves the list on screen, but pending
+        await type('1 Beacon St Melrose');
+        expect(search.effectiveSuggestions.value).toHaveLength(1);
+        expect(search.suggestionsPending.value).toBe(true);
+
+        // whitespace the trimmed query ignores leaves it answered
+        await type('1 Beacon St ');
+        expect(search.suggestionsPending.value).toBe(false);
+    });
+
+    it('keeps a list pending when it answers a search the typing has already moved past', async () => {
+        const { emitComplete, search, suggestions, type } = makeSearch();
+        await type('1 Beacon');
+        vi.advanceTimersByTime(DELAY);
+        // the answer to "1 Beacon" lands while "1 Beacon St" is still debouncing
+        await type('1 Beacon St');
+        suggestions.value = [{ id: 'a', text: '1 Beacon Street, Cambridge, MA, USA' }];
+        await nextTick();
+        expect(search.suggestionsPending.value).toBe(true);
+
+        vi.advanceTimersByTime(DELAY);
+        expect(emitComplete).toHaveBeenLastCalledWith('1 Beacon St');
+        suggestions.value = [{ id: 'b', text: '1 Beacon Street, Boston, MA, USA' }];
+        await nextTick();
+        expect(search.suggestionsPending.value).toBe(false);
+    });
+
+    it('credits an app that answers synchronously inside its complete handler', async () => {
+        const model = ref('');
+        const suggestions = ref<EsAutocompleteSuggestion[]>([]);
+        const search = withSetup(() =>
+            useEsAutocompleteSearch({
+                delay: () => DELAY,
+                emitComplete: (query) => {
+                    suggestions.value = [{ id: query, text: `${query} batteries` }];
+                },
+                emitSelect: () => undefined,
+                minChars: () => 1,
+                model,
+                noResultsText: () => 'No results found',
+                promptText: () => 'Type for suggestions',
+                suggestions: () => suggestions.value,
+            }),
+        ).result;
+        model.value = 'solar';
+        await nextTick();
+        vi.advanceTimersByTime(DELAY);
+        await nextTick();
+        expect(search.suggestionsPending.value).toBe(false);
+    });
+
+    it('is never pending below minChars, where no list shows', async () => {
+        const { search, type } = makeSearch({ minChars: 3 });
+        await type('so');
+        expect(search.suggestionsPending.value).toBe(false);
+    });
+
     it('gates suggestions below minChars with a referentially stable empty list', async () => {
         const { search, suggestions, type } = makeSearch({ minChars: 3 });
         suggestions.value = [{ id: 'a', text: 'solar batteries' }];
