@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.3.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.1...es-ds-components-v6.3.2) (2026-10-14)
+
+
+### Bug Fixes
+
+* EsAutocomplete auto-select no longer selects from a stale list ([#1796](https://github.com/EnergySage/es-ds/issues/1796)) ([b680b58](https://github.com/EnergySage/es-ds/commit/b680b58d90ddae913c4c7e715f63d412cd0c4b4f))
+
 ## [6.3.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.0...es-ds-components-v6.3.1) (2026-10-12)
 
 
