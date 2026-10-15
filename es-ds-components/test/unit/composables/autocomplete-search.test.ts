@@ -2,8 +2,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { App } from 'vue';
 import { createApp, nextTick, ref } from 'vue';
-import type { EsAutocompleteSuggestion } from '../types';
-import { useEsAutocompleteSearch } from './autocomplete-search';
+import type { EsAutocompleteSuggestion } from '../../../app/types';
+import { useEsAutocompleteSearch } from '../../../app/composables/autocomplete-search';
 
 const DELAY = 300;
 
