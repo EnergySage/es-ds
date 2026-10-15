@@ -2,8 +2,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import type { App } from 'vue';
 import { createApp, nextTick, ref } from 'vue';
-import type { EsAutocompleteSuggestion } from '../types';
-import { useEsAutocompleteCombobox } from './autocomplete-combobox';
+import type { EsAutocompleteSuggestion } from '../../../app/types';
+import { useEsAutocompleteCombobox } from '../../../app/composables/autocomplete-combobox';
 
 /** run the composable inside a real component so watchers are scoped */
 function withSetup<T>(composable: () => T): { app: App; result: T } {
