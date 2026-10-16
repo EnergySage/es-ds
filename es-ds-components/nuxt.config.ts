@@ -109,6 +109,15 @@ export default defineNuxtConfig({
             },
         },
     },
+
+    vue: {
+        compilerOptions: {
+            // prevents hydration warnings due to Vue not yet knowing this is a native HTML element
+            // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/selectedcontent
+            isCustomElement: (tag) => tag === 'selectedcontent',
+        },
+    },
+
     typescript: {
         typeCheck: true,
     },
