@@ -18,6 +18,13 @@
         "url": "https://github.com/EnergySage/es-ds/issues"
     },
     "main": "./nuxt.config.ts",
+    "files": [
+        "app",
+        "nuxt.config.ts",
+        "CHANGELOG.md",
+        "README.md",
+        "!**/*.test.ts"
+    ],
     "scripts": {
         "test": "vitest run",
         "lint:eslint": "eslint .",
