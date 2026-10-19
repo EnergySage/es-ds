@@ -22,6 +22,7 @@
         "app",
         "nuxt.config.ts",
         "CHANGELOG.md",
+        "README.md",
         "!**/*.test.ts"
     ],
     "scripts": {
