@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.3.3](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.2...es-ds-components-v6.3.3) (2026-10-19)
+
+
+### Bug Fixes
+
+* exclude tests from package to prevent downstream type errors ([#1798](https://github.com/EnergySage/es-ds/issues/1798)) ([07723a3](https://github.com/EnergySage/es-ds/commit/07723a36cefd46a8eacbc2c63413a753702aa34c))
+
 ## [6.3.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.1...es-ds-components-v6.3.2) (2026-10-14)
 
 

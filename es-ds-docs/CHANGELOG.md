@@ -1,5 +1,14 @@
 # Changelog
 
+## [6.3.3](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.3.2...es-ds-docs-v6.3.3) (2026-10-19)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @energysage/es-ds-components bumped from ^6.3.2 to ^6.3.3
+
 ## [6.3.2](https://github.com/EnergySage/es-ds/compare/es-ds-docs-v6.3.1...es-ds-docs-v6.3.2) (2026-10-14)
 
 
