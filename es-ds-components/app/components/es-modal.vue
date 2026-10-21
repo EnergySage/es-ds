@@ -84,9 +84,17 @@ const getSizeClass = computed(() => {
         <template
             v-if="slots['modal-title']"
             #header>
+            <!--
+                PrimeVue focuses the first [autofocus] element on open. Focusing the heading
+                instead makes screen readers announce the modal's title first. tabindex="-1"
+                puts the tab cursor in the modal.
+            -->
             <h5
                 :id="`${id}_header`"
-                class="modal-title h2">
+                autofocus
+                class="modal-title h2"
+                tabindex="-1"
+            >
                 <slot name="modal-title" />
             </h5>
         </template>
@@ -107,3 +115,9 @@ const getSizeClass = computed(() => {
         </template>
     </prime-dialog>
 </template>
+
+<style lang="scss" scoped>
+.modal-title:focus {
+    outline: none;
+}
+</style>
