@@ -5,6 +5,7 @@ interface Props {
     bodyClass?: string;
     closable?: boolean;
     hideFooter?: boolean;
+    hideTitle?: boolean;
     id: string;
     showFooterSeparator?: boolean;
     size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -13,6 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
     bodyClass: '',
     closable: true,
     hideFooter: false,
+    hideTitle: false,
     showFooterSeparator: true,
     size: 'md',
 });
@@ -24,7 +26,7 @@ const modalPt = {
         class: 'modal-dialog modal-dialog-scrollable modal-content',
     },
     header: {
-        class: slots['modal-title'] ? 'modal-header' : '',
+        class: slots['modal-title'] && !props.hideTitle ? 'modal-header' : '',
     },
     title: {
         class: 'modal-title',
@@ -93,8 +95,8 @@ const getSizeClass = computed(() => {
                 :id="`${id}_header`"
                 autofocus
                 class="modal-title h2"
-                tabindex="-1"
-            >
+                :class="{ 'sr-only': hideTitle }"
+                tabindex="-1">
                 <slot name="modal-title" />
             </h5>
         </template>
