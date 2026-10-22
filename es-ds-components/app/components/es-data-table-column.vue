@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ES_DATA_TABLE_CELL_CONTEXT_KEY } from '../utils/data-table';
+import { ES_DATA_TABLE_CELL_CONTEXT_KEY, ES_DATA_TABLE_SORT_KEY } from '../utils/data-table';
 
 interface Props {
     field?: string;
@@ -7,13 +7,32 @@ interface Props {
     sortable?: boolean;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     field: '',
     header: '',
     sortable: false,
 });
 
 const cellContext = inject(ES_DATA_TABLE_CELL_CONTEXT_KEY);
+const sortContext = inject(ES_DATA_TABLE_SORT_KEY);
+
+// provide misconfiguration warnings in the console on local dev
+if (import.meta.dev && cellContext?.value.type === 'header') {
+    const warnings: string[] = [];
+    if (props.sortable && !props.field) {
+        warnings.push('`sortable` requires `field`, which identifies the column for sorting.');
+    }
+    warnings.forEach((warning) => console.warn(`EsDataTableColumn: ${warning}`));
+}
+
+// field identifies the column for sorting, so a sortable column without one renders as non-sortable
+const isSortable = computed(() => props.sortable && !!props.field);
+
+// keeps track of this column's sort direction, or null when sort is off or on another column
+const columnSortOrder = computed(() => {
+    const sortState = sortContext?.sortState.value;
+    return sortState?.field === props.field ? sortState.order : null;
+});
 </script>
 
 <template>
@@ -22,12 +41,12 @@ const cellContext = inject(ES_DATA_TABLE_CELL_CONTEXT_KEY);
         scope="col"
         class="es-data-table-column-th">
         <button
-            v-if="sortable"
+            v-if="isSortable"
             class="table-sort-button data-table-flex-header"
             title="Toggle sort direction for column"
-            @click="() => toggleSort(index)">
-            text
-            <template v-if="index === sortHeaderIndex && sortHeaderDirection === 'asc'">
+            @click="sortContext?.toggleSort(field)">
+            {{ header }}
+            <template v-if="columnSortOrder === 1">
                 <span
                     class="sort-direction-arrow"
                     aria-hidden="true">
@@ -35,7 +54,7 @@ const cellContext = inject(ES_DATA_TABLE_CELL_CONTEXT_KEY);
                 </span>
                 <span class="sr-only"> Sorted ascending </span>
             </template>
-            <template v-else-if="index === sortHeaderIndex && sortHeaderDirection === 'desc'">
+            <template v-else-if="columnSortOrder === -1">
                 <span
                     class="sort-direction-arrow"
                     aria-hidden="true">
@@ -56,31 +75,12 @@ const cellContext = inject(ES_DATA_TABLE_CELL_CONTEXT_KEY);
         button, the size of the header will not adjust to longer headers. -->
         <!-- When the column is not sortable, the div just holds the text and doesn't have anything
         special about it. -->
-        <div
-            v-bind="
-                isSortActiveForColumn(index, sortable, sortableColumnNumbers)
-                    ? { class: 'invisible-text data-table-flex-header', 'aria-hidden': true }
-                    : {}
-            ">
-            <rich-text-component
-                :allow-data-tokens="allowDataTokens"
-                :content="{
-                    type: 'doc',
-                    content: item.value,
-                }"
-                strip-tables />
+        <div v-bind="isSortable ? { class: 'invisible-text data-table-flex-header', 'aria-hidden': true } : {}">
+            {{ header }}
         </div>
     </th>
-    <td
-        v-else-if="cellContext?.type === 'body'"
-        :class="{ 'sticky-column': stickyFirstColumn && cellIndex === 0 }">
-        <rich-text-component
-            :allow-data-tokens="allowDataTokens"
-            :content="{
-                type: 'doc',
-                content: cell.value,
-            }"
-            strip-tables />
+    <td v-else-if="cellContext?.type === 'body'">
+        {{ cellContext.row[field] }}
     </td>
 </template>
 

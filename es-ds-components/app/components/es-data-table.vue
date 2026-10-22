@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
-import { ES_DATA_TABLE_CELL_CONTEXT_KEY, type EsDataTableCellContext } from '../utils/data-table';
+import type { EsDataTableSortEvent, EsDataTableSortOrder, EsDataTableSortState } from '../types';
+import {
+    ES_DATA_TABLE_CELL_CONTEXT_KEY,
+    ES_DATA_TABLE_SORT_KEY,
+    type EsDataTableCellContext,
+} from '../utils/data-table';
 
 interface Props {
     freezeFirstColumn?: boolean;
     freezeHeaders?: boolean;
     items: any[];
+    /** the field of the column the table is initially sorted by; later changes are ignored */
     sortField?: string;
-    sortOrder?: 1 | -1;
+    /** the direction the table is initially sorted in; later changes are ignored */
+    sortOrder?: EsDataTableSortOrder;
     useInternalSorting?: boolean;
 }
 
@@ -19,8 +26,31 @@ const props = withDefaults(defineProps<Props>(), {
     useInternalSorting: true,
 });
 
+const emit = defineEmits<{
+    sort: [event: EsDataTableSortEvent];
+}>();
+
+// source of truth for which column is sorted and in which direction
+const sortState = ref<EsDataTableSortState>(
+    props.sortField ? { field: props.sortField, order: props.sortOrder } : null,
+);
+
+// toggles a column between ascending and descending, starting with ascending
+const toggleSort = (field: string) => {
+    // field is required to enable sorting, so the internal sort knows what to sort on, and so
+    // external sort knows which column to sort
+    if (!field) {
+        return;
+    }
+    const order = sortState.value?.field === field && sortState.value.order === 1 ? -1 : 1;
+    sortState.value = { field, order };
+    emit('sort', { sortField: field, sortOrder: order });
+};
+
+provide(ES_DATA_TABLE_SORT_KEY, { sortState: readonly(sortState), toggleSort });
+
 const sortedItems = computed(() => props.items);
-const rowsToRender = computed(() => props.useInternalSorting ? sortedItems.value : props.items);
+const rowsToRender = computed(() => (props.useInternalSorting ? sortedItems.value : props.items));
 
 // defined inline rather than as its own file so Nuxt doesn't auto-register it as a public component;
 // the context stays reactive because rows are keyed by index and reuse instances when the row changes
