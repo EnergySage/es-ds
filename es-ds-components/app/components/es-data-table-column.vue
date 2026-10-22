@@ -39,16 +39,16 @@ const columnSortOrder = computed(() => {
     <th
         v-if="cellContext?.type === 'header'"
         scope="col"
-        class="es-data-table-column-th">
+        class="position-relative">
         <button
             v-if="isSortable"
-            class="table-sort-button data-table-flex-header"
+            class="es-data-table-column-sort-button align-items-end d-flex justify-between h-100 position-absolute pr-200 text-left w-100"
             title="Toggle sort direction for column"
             @click="sortContext?.toggleSort(field)">
             {{ header }}
             <template v-if="columnSortOrder === 1">
                 <span
-                    class="sort-direction-arrow"
+                    class="es-data-table-column-sort-direction-arrow position-absolute"
                     aria-hidden="true">
                     ↑
                 </span>
@@ -56,7 +56,7 @@ const columnSortOrder = computed(() => {
             </template>
             <template v-else-if="columnSortOrder === -1">
                 <span
-                    class="sort-direction-arrow"
+                    class="es-data-table-column-sort-direction-arrow position-absolute"
                     aria-hidden="true">
                     ↓
                 </span>
@@ -64,7 +64,7 @@ const columnSortOrder = computed(() => {
             </template>
             <template v-else>
                 <span
-                    class="sort-direction-arrow"
+                    class="es-data-table-column-sort-direction-arrow position-absolute"
                     aria-hidden="true">
                     ↕
                 </span>
@@ -75,7 +75,15 @@ const columnSortOrder = computed(() => {
         button, the size of the header will not adjust to longer headers. -->
         <!-- When the column is not sortable, the div just holds the text and doesn't have anything
         special about it. -->
-        <div v-bind="isSortable ? { class: 'invisible-text data-table-flex-header', 'aria-hidden': true } : {}">
+        <div
+            v-bind="
+                isSortable
+                    ? {
+                          class: 'es-data-table-column-invisible-text align-items-end d-flex h-100 justify-between pr-200 w-100',
+                          'aria-hidden': true,
+                      }
+                    : {}
+            ">
             {{ header }}
         </div>
     </th>
@@ -88,7 +96,29 @@ const columnSortOrder = computed(() => {
 @use 'sass:map';
 @use '@energysage/es-ds-styles/scss/variables';
 
-.es-data-table-column-th {
-    position: relative;
+.es-data-table-column {
+    &-sort-button {
+        background: none;
+        border: none;
+        color: variables.$body-color;
+        padding: variables.$table-cell-padding;
+        padding-block: map.get(variables.$spacers, 50);
+        font: inherit;
+        top: 0;
+        left: 0;
+
+        &:hover {
+            background-color: variables.$blue-200;
+        }
+    }
+
+    &-sort-direction-arrow {
+        bottom: 0.5rem;
+        right: 1rem;
+    }
+
+    &-invisible-text {
+        color: transparent;
+    }
 }
 </style>

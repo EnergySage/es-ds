@@ -96,13 +96,23 @@ const CellContext = defineComponent({
 </template>
 
 <style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/variables';
+
 .es-data-table {
     &--freeze-first-column {
-        thead th:first-child,
-        tbody td:first-child {
+        thead :deep(th:first-child),
+        tbody :deep(td:first-child) {
             position: sticky;
             left: 0;
             z-index: 1;
+        }
+
+        thead :deep(th) {
+            background: variables.$soft-blue; // keep in sync with the table header background
+        }
+
+        tbody :deep(td) {
+            background: inherit; // preserve row striping
         }
     }
 }

@@ -182,5 +182,104 @@ onMounted(async () => {
             </es-data-table>
         </div>
 
+        <div class="mb-500">
+            <h2 class="mb-200">Empty example</h2>
+            <es-data-table :items="[]">
+                <es-data-table-column
+                    field="advantages"
+                    header="Advantages" />
+                <es-data-table-column
+                    field="disadvantages"
+                    header="Disadvantages" />
+                <template #empty>
+                    <div class="text-center p-4">No data found</div>
+                </template>
+            </es-data-table>
+        </div>
+
+        <div class="mb-500">
+            <h2 class="mb-200">Custom rendering</h2>
+            <es-data-table :items="averageCostTable">
+                <es-data-table-column>
+                    <template #body="slotProps">
+                        <nuxt-link :to="slotProps.data.url">{{ slotProps.data.incentive }}</nuxt-link>
+                    </template>
+                </es-data-table-column>
+                <es-data-table-column header="Cost before">
+                    <template #body="slotProps">
+                        {{ usDollarNumberFormat.format(slotProps.data.costBefore) }}
+                    </template>
+                </es-data-table-column>
+                <es-data-table-column header="Cost after">
+                    <template #body="slotProps">
+                        {{ usDollarNumberFormat.format(slotProps.data.costAfter) }}
+                    </template>
+                </es-data-table-column>
+            </es-data-table>
+        </div>
+
+        <div class="mb-500">
+            <h2>Sortable</h2>
+            <p class="mb-200">
+                Apply the <code>sortable</code> prop to a column to indicate that the user should be able to change the
+                sort order of the rows based on that column's data. To set the initial state of the table to be sorted
+                by a particular column, use the <code>sortField</code> and <code>sortOrder</code> props of the data
+                table.
+            </p>
+            <es-data-table
+                :items="stateInfoTable"
+                sort-field="name"
+                :sort-order="1">
+                <es-data-table-column
+                    field="name"
+                    header="Name"
+                    sortable />
+                <es-data-table-column
+                    field="abbreviation"
+                    header="Abbreviation"
+                    sortable />
+                <es-data-table-column
+                    field="capital"
+                    header="Capital"
+                    sortable />
+                <es-data-table-column
+                    field="yearAdmitted"
+                    header="Year admitted"
+                    sortable />
+            </es-data-table>
+        </div>
+
+        <div class="mb-500">
+            <h2>Freeze one column</h2>
+            <p class="mb-200">
+                This example shows how to use the <code>frozen</code> prop on a column to ensure it stays visible while
+                scrolling the table contents horizontally. This feature is especially useful on mobile when the first
+                column contains primary information that is important to reference when reading the contents of the
+                subsequent columns.
+            </p>
+            <es-row>
+                <es-col
+                    sm="8"
+                    md="6"
+                    lg="5">
+                    <es-data-table
+                        freeze-first-column
+                        :items="stateInfoTable">
+                        <es-data-table-column
+                            field="name"
+                            header="Name" />
+                        <es-data-table-column
+                            field="abbreviation"
+                            header="Abbreviation" />
+                        <es-data-table-column
+                            field="capital"
+                            header="Capital" />
+                        <es-data-table-column
+                            field="yearAdmitted"
+                            header="Year admitted" />
+                    </es-data-table>
+                </es-col>
+            </es-row>
+        </div>
     </div>
 </template>
