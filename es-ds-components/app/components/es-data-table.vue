@@ -1,78 +1,57 @@
 <script setup lang="ts">
-import DataTable from 'primevue/datatable';
+interface Props {
+    freezeFirstColumn?: boolean;
+    freezeHeaders?: boolean;
+    items: any[];
+    sortField?: string;
+    sortOrder?: 1 | -1;
+    useInternalSorting?: boolean;
+}
 
-const props = defineProps({
-    items: {
-        type: Array,
-        required: true,
-    },
-    scrollable: {
-        type: Boolean,
-        default: false,
-    },
-    scrollHeight: {
-        type: String,
-        default: '',
-    },
+const props = withDefaults(defineProps<Props>(), {
+    freezeFirstColumn: false,
+    freezeHeaders: false,
+    sortField: '',
+    sortOrder: 1,
+    useInternalSorting: true,
 });
 
-// avoid passing in default scrollHeight value when scrollable is false
-// otherwise it will limit the height when we don't want it to
-const defaultScrollHeight = computed(() => {
-    if (props.scrollable) {
-        return props.scrollHeight || '305px';
-    }
-
-    return '';
-});
+const sortedItems = computed(() => props.items);
+const rowsToRender = computed(() => props.useInternalSorting ? sortedItems : props.items);
 </script>
 
 <template>
-    <data-table
-        class="border table__data-table table-spacing table"
-        :pt="{
-            table: {
-                class: 'font-size-75 font-size-md-100 w-100',
-                style: 'border-collapse: separate; border-spacing: 0;',
-            },
-            wrapper: {
-                style: 'border-radius: inherit',
-            },
-            thead: {
-                style: 'top: 0px; z-index: 2',
-            },
-        }"
-        :scrollable="scrollable"
-        :scroll-height="defaultScrollHeight"
-        :value="items">
-        <slot />
-        <template #empty>
-            <slot name="empty" />
-        </template>
-    </data-table>
+    <div class="border table__data-table mb-200 table-responsive">
+        <table
+            class="es-data-table table b-table font-size-75 font-size-md-100 b-table-no-border-collapse"
+            :class="{
+                'es-data-table--freeze-first-column': freezeFirstColumn,
+            }">
+            <thead class="thead">
+                <tr>
+                    <slot />
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    v-for="(row, rowIndex) in rowsToRender"
+                    :key="rowIndex">
+                    <slot />
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
 
-<style scoped lang="scss">
-:deep(th[data-p-sortable-column='true']) {
-    cursor: pointer;
-    user-select: none;
-
-    div[data-pc-section='headercontent'] {
-        align-items: center;
-        display: flex;
+<style lang="scss" scoped>
+.es-data-table {
+    &--freeze-first-column {
+        thead th:first-child,
+        tbody td:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+        }
     }
-    span[data-pc-section='sort'] {
-        display: inline-block;
-        margin-left: 0.5rem;
-    }
-}
-
-:deep(td[data-p-frozen-column='true']),
-:deep(th[data-p-frozen-column='true']) {
-    position: sticky !important;
-}
-
-:deep(td[data-p-frozen-column='true']) {
-    background: inherit;
 }
 </style>
