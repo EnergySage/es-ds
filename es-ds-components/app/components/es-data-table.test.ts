@@ -40,7 +40,7 @@ const headerCell = (wrapper: VueWrapper, header: string) => {
 /** the sort arrow a header shows, or null when the header isn't sortable */
 const arrow = (wrapper: VueWrapper, header: string) => {
     const button = headerCell(wrapper, header).find('button');
-    return button.exists() ? button.find('.sort-direction-arrow').text() : null;
+    return button.exists() ? button.find('.es-data-table-column-sort-direction-arrow').text() : null;
 };
 
 const clickHeader = (wrapper: VueWrapper, header: string) =>
@@ -145,6 +145,86 @@ describe('EsDataTable sort props', () => {
         await wrapper.setProps({ sortField: 'name', sortOrder: -1 });
         expect(arrow(wrapper, 'Name')).toBe('↕');
         expect(arrow(wrapper, 'Capital')).toBe('↑');
+    });
+});
+
+// ranks where string order (10, 100, 9) differs from numeric order (9, 10, 100)
+const RANKED_ITEMS = [
+    { name: 'Ohio', rank: 10 },
+    { name: 'Maine', rank: 9 },
+    { name: 'Texas', rank: 100 },
+];
+
+const RANKED_COLUMNS: ColumnProps[] = [
+    { field: 'name', header: 'Name', sortable: true },
+    { field: 'rank', header: 'Rank', sortable: true },
+];
+
+const mountRankedTable = (tableProps: Record<string, unknown> = {}) =>
+    mountTable({ items: RANKED_ITEMS, ...tableProps }, RANKED_COLUMNS);
+
+/** the rendered name of each row, top to bottom */
+const renderedNames = (wrapper: VueWrapper) => wrapper.findAll('tbody tr').map((tr) => tr.find('td').text());
+
+describe('EsDataTable internal sorting', () => {
+    it('renders items in the order given while unsorted', async () => {
+        const wrapper = await mountRankedTable();
+        expect(renderedNames(wrapper)).toEqual(['Ohio', 'Maine', 'Texas']);
+    });
+
+    it('sorts by the initial sortField and sortOrder', async () => {
+        const wrapper = await mountRankedTable({ sortField: 'name', sortOrder: -1 });
+        expect(renderedNames(wrapper)).toEqual(['Texas', 'Ohio', 'Maine']);
+    });
+
+    it('sorts strings ascending, then descending', async () => {
+        const wrapper = await mountRankedTable();
+        await clickHeader(wrapper, 'Name');
+        expect(renderedNames(wrapper)).toEqual(['Maine', 'Ohio', 'Texas']);
+        await clickHeader(wrapper, 'Name');
+        expect(renderedNames(wrapper)).toEqual(['Texas', 'Ohio', 'Maine']);
+    });
+
+    it('sorts numbers numerically rather than as strings', async () => {
+        const wrapper = await mountRankedTable();
+        await clickHeader(wrapper, 'Rank');
+        expect(renderedNames(wrapper)).toEqual(['Maine', 'Ohio', 'Texas']);
+        await clickHeader(wrapper, 'Rank');
+        expect(renderedNames(wrapper)).toEqual(['Texas', 'Ohio', 'Maine']);
+    });
+
+    it('re-sorts when the parent replaces items', async () => {
+        const wrapper = await mountRankedTable({ sortField: 'name' });
+        await wrapper.setProps({ items: [...RANKED_ITEMS, { name: 'Alaska', rank: 50 }] });
+        expect(renderedNames(wrapper)).toEqual(['Alaska', 'Maine', 'Ohio', 'Texas']);
+    });
+
+    it("doesn't reorder the parent's items array", async () => {
+        const items = [...RANKED_ITEMS];
+        const wrapper = await mountRankedTable({ items });
+        await clickHeader(wrapper, 'Name');
+        expect(items).toEqual(RANKED_ITEMS);
+    });
+});
+
+describe('EsDataTable external sorting', () => {
+    it('renders items in the order given, even when sorted', async () => {
+        const wrapper = await mountRankedTable({ sortField: 'name', useInternalSorting: false });
+        expect(renderedNames(wrapper)).toEqual(['Ohio', 'Maine', 'Texas']);
+        await clickHeader(wrapper, 'Rank');
+        expect(arrow(wrapper, 'Rank')).toBe('↑');
+        expect(renderedNames(wrapper)).toEqual(['Ohio', 'Maine', 'Texas']);
+        expect(wrapper.emitted('sort')).toEqual([[{ sortField: 'rank', sortOrder: 1 }]]);
+    });
+
+    it('renders the items the parent passes in response to the sort event', async () => {
+        const wrapper = await mountRankedTable({
+            useInternalSorting: false,
+            // sorts by name length, which internal sorting would never produce
+            onSort: () => wrapper.setProps({ items: [...RANKED_ITEMS].sort((a, b) => a.name.length - b.name.length) }),
+        });
+        await clickHeader(wrapper, 'Name');
+        expect(renderedNames(wrapper)).toEqual(['Ohio', 'Maine', 'Texas']);
     });
 });
 

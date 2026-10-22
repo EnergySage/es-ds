@@ -49,8 +49,19 @@ const toggleSort = (field: string) => {
 
 provide(ES_DATA_TABLE_SORT_KEY, { sortState: readonly(sortState), toggleSort });
 
-const sortedItems = computed(() => props.items);
-const rowsToRender = computed(() => (props.useInternalSorting ? sortedItems.value : props.items));
+// numbers compare numerically; everything else compares as strings
+const compareValues = (a: unknown, b: unknown) =>
+    typeof a === 'number' && typeof b === 'number' ? a - b : String(a ?? '').localeCompare(String(b ?? ''));
+
+// with internal sorting off, the parent sorts items itself in response to the sort event
+const rowsToRender = computed(() => {
+    const sort = sortState.value;
+    if (!props.useInternalSorting || !sort) {
+        return props.items;
+    }
+    // copied so sorting never mutates the parent's array
+    return [...props.items].sort((a, b) => compareValues(a[sort.field], b[sort.field]) * sort.order);
+});
 
 // defined inline rather than as its own file so Nuxt doesn't auto-register it as a public component;
 // the context stays reactive because rows are keyed by index and reuse instances when the row changes

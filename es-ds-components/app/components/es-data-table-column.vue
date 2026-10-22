@@ -39,7 +39,7 @@ const columnSortOrder = computed(() => {
     <th
         v-if="cellContext?.type === 'header'"
         scope="col"
-        class="position-relative">
+        class="es-data-table-column-header">
         <button
             v-if="isSortable"
             class="es-data-table-column-sort-button align-items-end d-flex justify-between h-100 position-absolute pr-200 text-left w-100"
@@ -97,6 +97,11 @@ const columnSortOrder = computed(() => {
 @use '@energysage/es-ds-styles/scss/variables';
 
 .es-data-table-column {
+    &-header {
+        /* defined here so parent can override if first column is frozen */
+        position: relative;
+    }
+
     &-sort-button {
         background: none;
         border: none;
