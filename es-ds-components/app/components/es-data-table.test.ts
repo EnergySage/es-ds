@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import type { VueWrapper } from '@vue/test-utils';
 import { afterEach, describe, expect, it, type MockInstance, vi } from 'vitest';
-import { h } from 'vue';
+import { h, type VNodeChild } from 'vue';
 import EsDataTable from './es-data-table.vue';
 import EsDataTableColumn from './es-data-table-column.vue';
 
@@ -10,22 +10,26 @@ const ITEMS = [
     { name: 'Ohio', capital: 'Columbus', abbreviation: 'OH' },
 ];
 
-interface ColumnProps {
+/** EsDataTableColumn props, plus an optional body slot */
+interface ColumnConfig {
     field?: string;
     header?: string;
     sortable?: boolean;
+    body?: (slotProps: { data: any; index: number }) => VNodeChild;
 }
 
-const COLUMNS: ColumnProps[] = [
+const COLUMNS: ColumnConfig[] = [
     { field: 'name', header: 'Name', sortable: true },
     { field: 'capital', header: 'Capital', sortable: true },
     { field: 'abbreviation', header: 'Abbreviation' },
 ];
 
-function mountTable(tableProps: Record<string, unknown> = {}, columns: ColumnProps[] = COLUMNS) {
+function mountTable(tableProps: Record<string, unknown> = {}, columns: ColumnConfig[] = COLUMNS) {
     return mountSuspended(EsDataTable, {
         props: { items: ITEMS, ...tableProps },
-        slots: { default: () => columns.map((column) => h(EsDataTableColumn, column)) },
+        slots: {
+            default: () => columns.map(({ body, ...column }) => h(EsDataTableColumn, column, body ? { body } : {})),
+        },
     });
 }
 
@@ -67,6 +71,46 @@ describe('EsDataTable cell rendering', () => {
             ['Ohio', 'Columbus', 'OH'],
         ]);
         expect(wrapper.find('tbody th').exists()).toBe(false);
+    });
+
+    it('renders the body slot with the row as data in place of the field value', async () => {
+        const wrapper = await mountTable({}, [
+            {
+                header: 'State',
+                body: ({ data }) => h('a', { href: `/states/${data.abbreviation}` }, data.name),
+            },
+            { field: 'capital', header: 'Capital' },
+        ]);
+        expect(wrapper.findAll('thead th').map((th) => th.text())).toEqual(['State', 'Capital']);
+        const links = wrapper.findAll('tbody td a');
+        expect(links.map((a) => [a.attributes('href'), a.text()])).toEqual([
+            ['/states/ME', 'Maine'],
+            ['/states/OH', 'Ohio'],
+        ]);
+        expect(wrapper.findAll('tbody tr').map((tr) => tr.findAll('td')[1]!.text())).toEqual(['Augusta', 'Columbus']);
+    });
+
+    it('renders the body slot instead of the field value when a column has both', async () => {
+        const wrapper = await mountTable({}, [
+            { field: 'name', header: 'Name', body: ({ data }) => data.name.toUpperCase() },
+        ]);
+        expect(wrapper.findAll('tbody td').map((td) => td.text())).toEqual(['MAINE', 'OHIO']);
+    });
+
+    it('passes each row its rendered position as index', async () => {
+        const wrapper = await mountTable({ sortField: 'name', sortOrder: -1 }, [
+            { field: 'name', header: 'Name', body: ({ data, index }) => `${index}: ${data.name}` },
+        ]);
+        expect(wrapper.findAll('tbody td').map((td) => td.text())).toEqual(['0: Ohio', '1: Maine']);
+    });
+
+    it('sorts a body slot column by its field rather than its rendered content', async () => {
+        // rendered as "#9", "#10", "#100", which would sort differently as strings
+        const wrapper = await mountTable({ items: RANKED_ITEMS }, [
+            { field: 'rank', header: 'Rank', sortable: true, body: ({ data }) => `#${data.rank}` },
+        ]);
+        await clickHeader(wrapper, 'Rank');
+        expect(wrapper.findAll('tbody td').map((td) => td.text())).toEqual(['#9', '#10', '#100']);
     });
 
     it('renders nothing for a column outside a table', async () => {
@@ -155,7 +199,7 @@ const RANKED_ITEMS = [
     { name: 'Texas', rank: 100 },
 ];
 
-const RANKED_COLUMNS: ColumnProps[] = [
+const RANKED_COLUMNS: ColumnConfig[] = [
     { field: 'name', header: 'Name', sortable: true },
     { field: 'rank', header: 'Rank', sortable: true },
 ];

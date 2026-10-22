@@ -150,6 +150,12 @@ const stateInfoTable = [
     },
 ];
 
+const usDollarNumberFormat = new Intl.NumberFormat('en-US', {
+    currency: 'USD',
+    style: 'currency',
+    maximumFractionDigits: 0,
+});
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');

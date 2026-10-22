@@ -88,7 +88,12 @@ const columnSortOrder = computed(() => {
         </div>
     </th>
     <td v-else-if="cellContext?.type === 'body'">
-        {{ cellContext.row[field] }}
+        <slot
+            name="body"
+            :data="cellContext.row"
+            :index="cellContext.rowIndex">
+            {{ cellContext.row[field] }}
+        </slot>
     </td>
 </template>
 
