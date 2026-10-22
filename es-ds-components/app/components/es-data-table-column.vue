@@ -66,6 +66,16 @@ withDefaults(defineProps<Props>(), {
                 strip-tables />
         </div>
     </th>
+    <td
+        :class="{ 'sticky-column': stickyFirstColumn && cellIndex === 0 }">
+        <rich-text-component
+            :allow-data-tokens="allowDataTokens"
+            :content="{
+                type: 'doc',
+                content: cell.value,
+            }"
+            strip-tables />
+    </td>
 </template>
 
 <style lang="scss" scoped>
