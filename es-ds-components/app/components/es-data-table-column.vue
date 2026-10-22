@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ES_DATA_TABLE_CELL_CONTEXT_KEY } from '../utils/data-table';
+
 interface Props {
     field?: string;
     header?: string;
@@ -10,10 +12,13 @@ withDefaults(defineProps<Props>(), {
     header: '',
     sortable: false,
 });
+
+const cellContext = inject(ES_DATA_TABLE_CELL_CONTEXT_KEY);
 </script>
 
 <template>
     <th
+        v-if="cellContext?.type === 'header'"
         scope="col"
         class="es-data-table-column-th">
         <button
@@ -67,6 +72,7 @@ withDefaults(defineProps<Props>(), {
         </div>
     </th>
     <td
+        v-else-if="cellContext?.type === 'body'"
         :class="{ 'sticky-column': stickyFirstColumn && cellIndex === 0 }">
         <rich-text-component
             :allow-data-tokens="allowDataTokens"

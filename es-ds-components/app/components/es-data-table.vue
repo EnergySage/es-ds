@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { PropType } from 'vue';
+import { ES_DATA_TABLE_CELL_CONTEXT_KEY, type EsDataTableCellContext } from '../utils/data-table';
+
 interface Props {
     freezeFirstColumn?: boolean;
     freezeHeaders?: boolean;
@@ -17,7 +20,22 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const sortedItems = computed(() => props.items);
-const rowsToRender = computed(() => props.useInternalSorting ? sortedItems : props.items);
+const rowsToRender = computed(() => props.useInternalSorting ? sortedItems.value : props.items);
+
+// defined inline rather than as its own file so Nuxt doesn't auto-register it as a public component;
+// the context stays reactive because rows are keyed by index and reuse instances when the row changes
+const CellContext = defineComponent({
+    props: {
+        context: {
+            type: Object as PropType<EsDataTableCellContext>,
+            required: true,
+        },
+    },
+    setup(cellContextProps, { slots }) {
+        provide(ES_DATA_TABLE_CELL_CONTEXT_KEY, toRef(cellContextProps, 'context'));
+        return () => slots.default?.();
+    },
+});
 </script>
 
 <template>
@@ -29,14 +47,18 @@ const rowsToRender = computed(() => props.useInternalSorting ? sortedItems : pro
             }">
             <thead class="thead">
                 <tr>
-                    <slot />
+                    <cell-context :context="{ type: 'header' }">
+                        <slot />
+                    </cell-context>
                 </tr>
             </thead>
             <tbody>
                 <tr
                     v-for="(row, rowIndex) in rowsToRender"
                     :key="rowIndex">
-                    <slot />
+                    <cell-context :context="{ type: 'body', row, rowIndex }">
+                        <slot />
+                    </cell-context>
                 </tr>
             </tbody>
         </table>
