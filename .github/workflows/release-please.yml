@@ -37,9 +37,10 @@ jobs:
               id: 'release'
 
             # release-please can only put a version in a grouped PR title when there is a root package, so the shared version is added here.
-            # The title pattern in release-please-config.json parses with or without it, so releases never depend on this step.
+            # The title pattern in release-please-config.json parses with or without it, and continue-on-error keeps a failure here from skipping the publish jobs.
             - name: Add version to release PR title
               if: steps.release.outputs.prs_created == 'true'
+              continue-on-error: true
               env:
                   GH_TOKEN: ${{ github.token }}
                   PR: ${{ steps.release.outputs.pr }}
