@@ -14,6 +14,18 @@ jobs:
             - name: Checkout 🛎
               uses: actions/checkout@v4
 
+            # Downstream apps must install the exact Nuxt version es-ds-components lists as a peer, so it is
+            # pinned to that same version everywhere here; the docs release install fails with ERESOLVE otherwise.
+            - name: Check Nuxt version pins match
+              run: |
+                  peer=$(jq -r '.peerDependencies.nuxt' es-ds-components/package.json)
+                  dev=$(jq -r '.devDependencies.nuxt' es-ds-components/package.json)
+                  docs=$(jq -r '.dependencies.nuxt' es-ds-docs/package.json)
+                  if ! [[ "$peer" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || [ "$dev" != "$peer" ] || [ "$docs" != "$peer" ]; then
+                      echo "::error::nuxt must be the same exact version in es-ds-components peerDependencies ($peer), es-ds-components devDependencies ($dev) and es-ds-docs dependencies ($docs)"
+                      exit 1
+                  fi
+
             - name: Get nodenv version 🔌
               id: nodenv
               shell: bash
