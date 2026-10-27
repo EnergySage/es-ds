@@ -294,7 +294,7 @@ jobs:
             - release-es-ds-components
             - release-es-ds-docs
             - update-lock-files
-        if: always() && !cancelled() && !failure() && (needs.release-please.outputs['es-ds-styles--release_created'] == 'true' || needs.release-please.outputs['es-ds-components--release_created'] == 'true' || needs.release-please.outputs['es-ds-docs--release_created'] == 'true' || needs.release-please.outputs.docs_changed == 'true')
+        if: always() && !cancelled() && !failure() && (needs.release-please.outputs.releases_created == 'true' || needs.release-please.outputs.docs_changed == 'true')
         secrets: inherit
         with:
             environment: int
