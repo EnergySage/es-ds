@@ -74,16 +74,20 @@ make build                    # Build all packages
 
 ## Key Dependencies
 
-- Vue 3.5+, Nuxt 4.1+
+- Vue 3.5+
+- Nuxt pinned to one exact version (see below)
 - PrimeVue 3.53 (unstyled components)
 - Reka UI 2.2 (headless components)
 - Vuelidate 2.x (form validation)
 - SASS 1.77+ with modern API
 
+**Nuxt is pinned exactly, with no range.** `es-ds-components` lists that version in `peerDependencies`, so downstream apps must install the same one. The `nuxt` spec in `es-ds-components` `peerDependencies`, `es-ds-components` `devDependencies` and `es-ds-docs` `dependencies` must always match (CI checks this). Bump all three together, and only as a deliberate change, since it forces every downstream app to move too.
+
 ## Publishing Workflow
 
-This is a public MIT-licensed repository. When publishing:
-1. Update package.json versions in both es-ds-styles and es-ds-components
-2. Run `make build && make lint && make typecheck && make test`
-3. Publish to NPM manually in correct order (styles first, then components)
-4. Update CHANGELOG.md following keepachangelog.com format
+This is a public MIT-licensed repository. Versioning, changelogs and npm publishing are fully automated by release-please (`release-please-config.json`, `.github/workflows/release-please.yml`). Never edit package versions, `.release-please-manifest.json` or the `CHANGELOG.md` files by hand, and never publish manually.
+
+- PR titles must follow conventional commits; the type (`feat`, `fix`, etc.) decides the version bump.
+- Merging to `main` opens or updates a release PR titled `chore: release es-ds-styles and es-ds-components <version>`. Merging that PR publishes the release.
+- es-ds-styles, es-ds-components and es-ds-docs always release together with the same version, and `es-ds-components` requires the exact matching `es-ds-styles` version as a peer dependency.
+- Changes that only touch `es-ds-docs` never release; they deploy the docs site on merge.
