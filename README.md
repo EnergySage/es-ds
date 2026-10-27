@@ -85,7 +85,7 @@ pairs with `es-ds-components` 5.7.2 or 5.7.3, not with 3.7.7.
 | --- | --- |
 | 3.0.0 – 3.2.3 | **Shared version numbers.** `es-ds-styles` was only published when it changed, so some numbers (e.g. 3.0.1) exist only for `es-ds-components`. |
 | `es-ds-styles` 3.3.0 – 4.1.0<br>`es-ds-components` 3.3.1 – 6.3.3 | **Diverged.** Starting with the adoption of release-please on 2025-07-23, each package was versioned independently and the numbers stopped lining up. Use the table below. |
-| 6.4.0 and later | **Lockstep.** Every release publishes both packages with the same version, whether or not both changed. Install matching versions. |
+| 7.0.0 and later | **Lockstep.** Every release publishes both packages with the same version, whether or not both changed. Install matching versions. |
 
 ### Compatible pairings
 
@@ -93,7 +93,7 @@ Any `es-ds-components` version in a row works with that row's `es-ds-styles` ver
 
 | es-ds-styles | es-ds-components |
 | --- | --- |
-| 6.4.0 and later | Same version as `es-ds-styles` |
+| 7.0.0 and later | Same version as `es-ds-styles` |
 | 4.1.0 | 6.2.0, 6.3.0, 6.3.1, 6.3.2, 6.3.3 |
 | 4.0.0 | 6.0.0, 6.1.0, 6.1.1 |
 | 3.5.9 | 5.7.2, 5.7.3 |

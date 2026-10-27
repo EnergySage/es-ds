@@ -6,7 +6,7 @@ An EnergySage-branded fork of Bootstrap 4 styling.
 
 `npm install @energysage/es-ds-styles`
 
-Install the `@energysage/es-ds-components` version that matches this package. Starting with 6.4.0 both packages
+Install the `@energysage/es-ds-components` version that matches this package. Starting with 7.0.0 both packages
 share a version; for earlier releases, see the
 [compatibility table](https://github.com/EnergySage/es-ds#version-compatibility).
 
