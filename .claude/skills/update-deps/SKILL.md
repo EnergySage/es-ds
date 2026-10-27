@@ -16,6 +16,8 @@ Every dep in `package.json` is declared as a range like `^X.Y.Z`. The actual ins
 
 Crossing a major (e.g. `^3.x` → `^4.x`) requires a deliberate `package.json` edit. **The skill does not do that as part of a refresh.** Every major bump is a breaking-change decision that deserves its own PR and its own verification — not a hidden line in a "deps refresh" commit. This applies uniformly: `nuxt`, `vue`, `primevue`, `eslint`, `@types/node`, everything. Drift is expected and acceptable — under this policy, deps will fall behind their absolute latest. That's the trade.
 
+**Nuxt is the exception: it is pinned to one exact version, with no range.** `es-ds-components` declares that exact version as a peer dependency, so every downstream app must install the same one. Nuxt has shipped breaking changes in minor releases, so a Nuxt bump is never part of a refresh, and the exact spec keeps the resolver from moving it. A deliberate Nuxt bump changes all three in one PR: `nuxt` in `es-ds-components` `devDependencies`, `nuxt` in `es-ds-components` `peerDependencies`, and `nuxt` in `es-ds-docs` `dependencies`. It also forces every downstream app to move to that exact version, so call it out to the user as a breaking change.
+
 The same logic applies to `.node-version`: stay within the major that's currently pinned. Don't cross to a newer Active LTS major even if one exists.
 
 ## The two exceptions

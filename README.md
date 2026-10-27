@@ -73,11 +73,16 @@ how to integrate `es-ds` packages into a Nuxt 4 project.
 
 ## Version compatibility
 
-Each `es-ds-components` release is built and tested against one specific `es-ds-styles` release, and npm
-does not enforce that pairing: `es-ds-components` lists `es-ds-styles` only as a dev dependency (or, before 5.4.3,
-as a `^` dependency that accepts any newer 3.x release). **When upgrading, always move both packages to a pairing
-listed below.** Installing the newest version of each within a major is not safe. For example, `es-ds-styles` 3.5.9
-pairs with `es-ds-components` 5.7.2 or 5.7.3, not with 3.7.7.
+Each `es-ds-components` release is built and tested against one specific `es-ds-styles` release and one specific
+Nuxt version. Starting with 7.0.0, `es-ds-components` lists both as exact peer dependencies, so `npm install` fails
+with an `ERESOLVE` error when your app's `es-ds-styles` or `nuxt` version doesn't match. If your app's `nuxt` is a
+range (e.g. `^4.3.1`), npm instead moves Nuxt to the required version, so check your lockfile after upgrading. To see
+the versions a release requires, run `npm view @energysage/es-ds-components@<version> peerDependencies`.
+
+Releases before 7.0.0 don't enforce the pairing: `es-ds-components` lists `es-ds-styles` only as a dev dependency
+(or, before 5.4.3, as a `^` dependency that accepts any newer 3.x release). **When upgrading to a release before
+7.0.0, always move both packages to a pairing listed below.** Installing the newest version of each within a major
+is not safe. For example, `es-ds-styles` 3.5.9 pairs with `es-ds-components` 5.7.2 or 5.7.3, not with 3.7.7.
 
 ### Versioning history
 

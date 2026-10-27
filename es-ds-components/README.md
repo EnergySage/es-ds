@@ -12,6 +12,9 @@ Install the `@energysage/es-ds-styles` version that matches this package. Starti
 share a version; for earlier releases, see the
 [compatibility table](https://github.com/EnergySage/es-ds#version-compatibility).
 
+This package also requires one exact Nuxt version, listed in its `peerDependencies`; `npm install` fails if your
+app's `nuxt` version doesn't match.
+
 Once the package is installed, you will need to add a reference to it in your nuxt.config.ts:
 
 ```
