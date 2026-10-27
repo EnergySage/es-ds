@@ -198,9 +198,10 @@ Upon merging to `main`, a release-please PR titled
 with your changes in the description. Merging this release-please PR will create a
 release automatically, and also deploy to the documentation site.
 
-`es-ds-styles`, `es-ds-components` and `es-ds-docs` are always released together with the same
-version, even when only one of them changed. This is handled by release-please's `linked-versions`
-plugin in [release-please-config.json](./release-please-config.json); see
+A release is triggered by changes to `es-ds-styles` or `es-ds-components`. Every release bumps
+`es-ds-styles`, `es-ds-components` and `es-ds-docs` to the same version, even if only one of the
+first two changed. This is handled by release-please's `linked-versions` plugin in
+[release-please-config.json](./release-please-config.json); see
 [Version compatibility](#version-compatibility) for why it matters.
 
 Changes that only touch `es-ds-docs` never trigger a release, since there is nothing to publish to npm.
