@@ -9,7 +9,7 @@ This skill performs a **routine refresh**. It is not for upgrading to new majors
 
 ## The mental model
 
-Every dep in `package.json` is declared as a range like `^X.Y.Z`. The actual installed version comes from the lockfile, not the spec — and `npm install` against a missing lockfile resolves each range to the highest matching published version. So:
+Every dep in `package.json` except `nuxt` (see below) is declared as a range like `^X.Y.Z`. The actual installed version comes from the lockfile, not the spec — and `npm install` against a missing lockfile resolves each range to the highest matching published version. So:
 
 - A refresh is: wipe the lockfile, run `npm install`, let the resolver pick up every in-range minor/patch.
 - No `package.json` edits. No `npm view` queries. No changelog scans. No "which deps should we bump" deliberation.
@@ -31,7 +31,7 @@ For either exception, the rest of the refresh still runs as normal — but the h
 
 ## Shared-version guardrail
 
-`es-ds-docs` extends `es-ds-components` as a Nuxt layer. Shared deps must resolve to the same major.minor in both, or layer resolution can quietly pull two different copies. Under in-range-only this is normally self-enforcing — both `package.json`s declare the same `^` range, the resolver picks the same version — but verify after the install by comparing resolved versions in the after-snapshot. If a shared dep drifted, something is wrong with the specifiers (likely a hand-edit out of sync) and you should reconcile before continuing.
+`es-ds-docs` extends `es-ds-components` as a Nuxt layer. Shared deps must resolve to the same major.minor in both, or layer resolution can quietly pull two different copies. Under in-range-only this is normally self-enforcing — both `package.json`s declare the same `^` range (or, for `nuxt`, the same exact version), the resolver picks the same version — but verify after the install by comparing resolved versions in the after-snapshot. If a shared dep drifted, something is wrong with the specifiers (likely a hand-edit out of sync) and you should reconcile before continuing.
 
 Don't hardcode the overlap list — re-derive it from the current `package.json` files. As of the most recent check it included `nuxt`, `vue`, `vue-tsc`, `typescript`, `sass`, `@nuxt/eslint`, `@nuxtjs/google-fonts`, `@phosphor-icons/vue`, `@vuelidate/core`, `@vuelidate/validators`, `@vueuse/core`, `eslint`, `eslint-config-prettier`, `prettier`, `html-truncate`, `maska`, `mitt`, `prismjs`, `reka-ui`.
 
