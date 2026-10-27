@@ -178,11 +178,12 @@ These commands will:
 
 ### Updating the changelog
 
-The changelog no longer needs to be updated manually, as it will be managed automatically by release-please,
-based on the pull request titles. See the individual changelogs:
+Changelogs are managed automatically by release-please, based on the pull request titles. See the individual changelogs:
 - [es-ds-styles](./es-ds-styles/CHANGELOG.md)
 - [es-ds-components](./es-ds-components/CHANGELOG.md)
-- [es-ds-docs](./es-ds-docs/CHANGELOG.md)
+
+`es-ds-docs` has no changelog of its own; see the
+[commit history of its folder](https://github.com/EnergySage/es-ds/commits/main/es-ds-docs) instead.
 
 ### Publishing and Versioning
 
@@ -196,3 +197,6 @@ release automatically, and also deploy to the documentation site.
 version, even when only one of them changed. This is handled by release-please's `linked-versions`
 plugin in [release-please-config.json](./release-please-config.json); see
 [Version compatibility](#version-compatibility) for why it matters.
+
+Changes that only touch `es-ds-docs` never trigger a release, since there is nothing to publish to npm.
+Instead, they deploy to the documentation site as soon as they are merged to `main`.

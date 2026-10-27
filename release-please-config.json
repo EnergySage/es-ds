@@ -3,7 +3,10 @@
     "packages": {
         "es-ds-styles": {},
         "es-ds-components": {},
-        "es-ds-docs": {}
+        "es-ds-docs": {
+            "exclude-paths": ["es-ds-docs"],
+            "skip-changelog": true
+        }
     },
     "plugins": [
         {

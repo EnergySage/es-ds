@@ -31,6 +31,7 @@ jobs:
             es-ds-components--release_created: ${{ steps.release.outputs.es-ds-components--release_created }}
             es-ds-docs--version: ${{ steps.release.outputs.es-ds-docs--version }}
             es-ds-docs--release_created: ${{ steps.release.outputs.es-ds-docs--release_created }}
+            docs_changed: ${{ steps.docs.outputs.changed }}
         steps:
             - uses: googleapis/release-please-action@v5
               id: 'release'
@@ -47,6 +48,21 @@ jobs:
                   branch=$(jq -r '.headBranchName' <<< "$PR")
                   version=$(gh api -H 'Accept: application/vnd.github.raw' "repos/${{ github.repository }}/contents/.release-please-manifest.json?ref=$branch" | jq -r '."es-ds-components"')
                   gh api -X PATCH "repos/${{ github.repository }}/pulls/$number" -f title="chore: release es-ds-styles and es-ds-components $version" > /dev/null
+
+            # release-please ignores es-ds-docs changes (exclude-paths), so the deploy job uses this to ship them without a release.
+            # Lockfile-only changes are skipped so the post-release lockfile commit doesn't deploy again; failures here never block releases.
+            - name: Check for docs site changes
+              id: docs
+              continue-on-error: true
+              env:
+                  GH_TOKEN: ${{ github.token }}
+              run: |
+                  files=$(gh api "repos/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}" --jq '.files[].filename')
+                  if grep '^es-ds-docs/' <<< "$files" | grep -qv '/package-lock\.json$'; then
+                      echo "changed=true" >> "$GITHUB_OUTPUT"
+                  else
+                      echo "changed=false" >> "$GITHUB_OUTPUT"
+                  fi
 
     release-es-ds-styles:
         permissions:
@@ -270,8 +286,8 @@ jobs:
             - release-es-ds-components
             - release-es-ds-docs
             - update-lock-files
-        if: always() && !cancelled() && !failure() && (needs.release-please.outputs['es-ds-styles--release_created'] == 'true' || needs.release-please.outputs['es-ds-components--release_created'] == 'true' || needs.release-please.outputs['es-ds-docs--release_created'] == 'true')
+        if: always() && !cancelled() && !failure() && (needs.release-please.outputs['es-ds-styles--release_created'] == 'true' || needs.release-please.outputs['es-ds-components--release_created'] == 'true' || needs.release-please.outputs['es-ds-docs--release_created'] == 'true' || needs.release-please.outputs.docs_changed == 'true')
         secrets: inherit
         with:
             environment: int
-            trigger: automated release
+            trigger: ${{ needs.release-please.outputs.releases_created == 'true' && 'automated release' || 'docs site change' }}
