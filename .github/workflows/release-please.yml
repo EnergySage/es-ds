@@ -59,7 +59,11 @@ jobs:
               env:
                   GH_TOKEN: ${{ github.token }}
               run: |
-                  files=$(gh api "repos/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}" --jq '.files[].filename | select(endswith("package-lock.json") | not)')
+                  if ! files=$(gh api "repos/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}" --jq '.files[].filename | select(endswith("package-lock.json") | not)'); then
+                      echo "::warning title=Docs deploy check failed::Could not list the files changed by this push, so docs-only changes were not deployed. Run the deploy workflow manually if this push changed es-ds-docs."
+                      echo "changed=false" >> "$GITHUB_OUTPUT"
+                      exit 0
+                  fi
                   docs=$(grep -c '^es-ds-docs/' <<< "$files" || true)
                   packages=$(grep -cE '^es-ds-(styles|components)/' <<< "$files" || true)
                   if [ "$docs" -gt 0 ] && [ "$packages" -eq 0 ]; then
