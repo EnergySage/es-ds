@@ -50,15 +50,18 @@ jobs:
                   gh api -X PATCH "repos/${{ github.repository }}/pulls/$number" -f title="chore: release es-ds-styles and es-ds-components $version" > /dev/null
 
             # release-please ignores es-ds-docs changes (exclude-paths), so the deploy job uses this to ship them without a release.
-            # Lockfile-only changes are skipped so the post-release lockfile commit doesn't deploy again; failures here never block releases.
-            - name: Check for docs site changes
+            # The docs build installs the published packages, so pushes that also change es-ds-styles or es-ds-components wait for their release deploy.
+            # Lockfiles are ignored so the post-release lockfile commit doesn't deploy again; failures here never block releases.
+            - name: Check for docs-only changes
               id: docs
               continue-on-error: true
               env:
                   GH_TOKEN: ${{ github.token }}
               run: |
-                  files=$(gh api "repos/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}" --jq '.files[].filename')
-                  if grep '^es-ds-docs/' <<< "$files" | grep -qv '/package-lock\.json$'; then
+                  files=$(gh api "repos/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}" --jq '.files[].filename | select(endswith("package-lock.json") | not)')
+                  docs=$(grep -c '^es-ds-docs/' <<< "$files" || true)
+                  packages=$(grep -cE '^es-ds-(styles|components)/' <<< "$files" || true)
+                  if [ "$docs" -gt 0 ] && [ "$packages" -eq 0 ]; then
                       echo "changed=true" >> "$GITHUB_OUTPUT"
                   else
                       echo "changed=false" >> "$GITHUB_OUTPUT"
