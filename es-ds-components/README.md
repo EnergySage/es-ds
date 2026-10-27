@@ -8,6 +8,10 @@ An EnergySage Nuxt layer, with components for our design system.
 npm install @energysage/es-ds-components
 ```
 
+Install the `@energysage/es-ds-styles` version that matches this package. Starting with 6.4.0 both packages
+share a version; for earlier releases, see the
+[compatibility table](https://github.com/EnergySage/es-ds#version-compatibility).
+
 Once the package is installed, you will need to add a reference to it in your nuxt.config.ts:
 
 ```

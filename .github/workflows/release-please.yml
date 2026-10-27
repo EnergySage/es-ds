@@ -35,6 +35,19 @@ jobs:
             - uses: googleapis/release-please-action@v5
               id: 'release'
 
+            # release-please can only put a version in a grouped PR title when there is a root package, so the shared version is added here.
+            # The title pattern in release-please-config.json parses with or without it, so releases never depend on this step.
+            - name: Add version to release PR title
+              if: steps.release.outputs.prs_created == 'true'
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  PR: ${{ steps.release.outputs.pr }}
+              run: |
+                  number=$(jq -r '.number' <<< "$PR")
+                  branch=$(jq -r '.headBranchName' <<< "$PR")
+                  version=$(gh api -H 'Accept: application/vnd.github.raw' "repos/${{ github.repository }}/contents/.release-please-manifest.json?ref=$branch" | jq -r '."es-ds-components"')
+                  gh api -X PATCH "repos/${{ github.repository }}/pulls/$number" -f title="chore: release es-ds-styles and es-ds-components $version" > /dev/null
+
     release-es-ds-styles:
         permissions:
             contents: read
