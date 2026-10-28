@@ -462,9 +462,9 @@ describe('EsDataTable initial row limit', () => {
         expect(showMoreButton(wrapper).exists()).toBe(false);
     });
 
-    it('renders the first 20 rows by default and offers the rest behind Show more', async () => {
+    it('renders the first 10 rows by default and offers the rest behind Show more', async () => {
         const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true });
-        expect(renderedNumbers(wrapper)).toEqual(NUMBERED_ITEMS.slice(0, 20).map(({ number }) => number));
+        expect(renderedNumbers(wrapper)).toEqual(NUMBERED_ITEMS.slice(0, 10).map(({ number }) => number));
         expect(showMoreButton(wrapper).text()).toBe('Show more');
     });
 
