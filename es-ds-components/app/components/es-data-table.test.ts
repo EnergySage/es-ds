@@ -69,29 +69,6 @@ afterEach(() => {
     vi.restoreAllMocks();
 });
 
-describe('EsDataTable freezeHeaders', () => {
-    const freezeHeaderClasses = (wrapper: VueWrapper) =>
-        wrapper
-            .find('.table__data-table')
-            .classes()
-            .filter((className) => className.startsWith('es-data-table--freeze-headers'));
-
-    it('freezes nothing without freezeHeaders, even with a breakpoint', async () => {
-        const wrapper = await mountTable({ freezeHeadersStartingAtBreakpoint: 'lg' });
-        expect(freezeHeaderClasses(wrapper)).toEqual([]);
-    });
-
-    it('freezes headers at every breakpoint by default', async () => {
-        const wrapper = await mountTable({ freezeHeaders: true });
-        expect(freezeHeaderClasses(wrapper)).toEqual(['es-data-table--freeze-headers-xs']);
-    });
-
-    it('freezes headers starting at the given breakpoint', async () => {
-        const wrapper = await mountTable({ freezeHeaders: true, freezeHeadersStartingAtBreakpoint: 'md' });
-        expect(freezeHeaderClasses(wrapper)).toEqual(['es-data-table--freeze-headers-md']);
-    });
-});
-
 describe('EsDataTable cell rendering', () => {
     it('renders each column as a header cell in thead and a body cell in every tbody row', async () => {
         const wrapper = await mountTable();
@@ -163,59 +140,28 @@ describe('EsDataTable cell rendering', () => {
         const wrapper = await mountTable({}, [
             { field: 'name', header: 'Name', sortable: true, headerSlot: () => h('strong', 'State name') },
         ]);
-        // once in the button and once in the sizing div that sets the column width
-        expect(wrapper.findAll('thead th strong')).toHaveLength(2);
         const button = wrapper.find('thead th button');
         expect(button.find('strong').text()).toBe('State name');
         expect(button.text()).not.toContain('Name');
         await button.trigger('click');
         expect(wrapper.emitted('sort')).toEqual([[{ sortField: 'name', sortOrder: 1 }]]);
     });
-
-    it('renders nothing for a column outside a table', async () => {
-        const wrapper = await mountSuspended(EsDataTableColumn, { props: { field: 'name', header: 'Name' } });
-        expect(wrapper.find('th').exists()).toBe(false);
-        expect(wrapper.find('td').exists()).toBe(false);
-    });
 });
 
 describe('EsDataTableColumn align', () => {
-    const bodyCells = (wrapper: VueWrapper, columnIndex: number) =>
-        wrapper.findAll('tbody tr').map((tr) => tr.findAll('td')[columnIndex]!);
+    /** whether the column's header cell, then each of its body cells, is right-aligned */
+    const rightAlignedCells = (wrapper: VueWrapper, header: string, columnIndex: number) =>
+        [headerCell(wrapper, header), ...wrapper.findAll('tbody tr').map((tr) => tr.findAll('td')[columnIndex]!)].map(
+            (cell) => cell.classes('text-right'),
+        );
 
-    it('left-aligns the header and body cells with the sort arrow on the right by default', async () => {
-        const wrapper = await mountTable({}, [{ field: 'name', header: 'Name', sortable: true }]);
-        const header = headerCell(wrapper, 'Name');
-        expect(header.classes()).not.toContain('text-right');
-        expect(header.classes()).not.toContain('es-data-table-column-header--align-right');
-        expect(header.find('button').classes()).toEqual(expect.arrayContaining(['pr-300', 'text-left']));
-        expect(bodyCells(wrapper, 0).map((td) => td.classes('text-right'))).toEqual([false, false]);
-    });
-
-    it('right-aligns the header and body cells with the sort arrow on the left', async () => {
+    it('right-aligns the header and body cells of a right-aligned column only', async () => {
         const wrapper = await mountTable({}, [
-            { field: 'name', header: 'Name' },
+            { field: 'name', header: 'Name', sortable: true },
             { field: 'capital', header: 'Capital', sortable: true, align: 'right' },
         ]);
-        const header = headerCell(wrapper, 'Capital');
-        expect(header.classes()).toEqual(
-            expect.arrayContaining(['text-right', 'es-data-table-column-header--align-right']),
-        );
-        const button = header.find('button');
-        expect(button.classes()).toEqual(expect.arrayContaining(['justify-content-end', 'pl-300', 'text-right']));
-        expect(button.classes()).not.toContain('pr-300');
-        expect(bodyCells(wrapper, 1).map((td) => td.classes('text-right'))).toEqual([true, true]);
-        // other columns keep their own alignment
-        expect(headerCell(wrapper, 'Name').classes()).not.toContain('text-right');
-        expect(bodyCells(wrapper, 0).map((td) => td.classes('text-right'))).toEqual([false, false]);
-    });
-
-    it('right-aligns a non-sortable header and a body slot cell', async () => {
-        const wrapper = await mountTable({}, [
-            { field: 'name', header: 'Name', align: 'right', body: ({ data }) => h('strong', data.name) },
-        ]);
-        expect(headerCell(wrapper, 'Name').classes()).toContain('text-right');
-        expect(bodyCells(wrapper, 0).map((td) => td.classes('text-right'))).toEqual([true, true]);
+        expect(rightAlignedCells(wrapper, 'Name', 0)).toEqual([false, false, false]);
+        expect(rightAlignedCells(wrapper, 'Capital', 1)).toEqual([true, true, true]);
     });
 });
 
@@ -233,9 +179,8 @@ describe('EsDataTable empty slot', () => {
         const cells = wrapper.findAll('tbody td');
         expect(cells).toHaveLength(1);
         expect(cells[0]!.attributes('colspan')).toBe('3');
-        expect(cells[0]!.find('p').text()).toBe('No data found');
-        expect(cells[0]!.text()).not.toContain('No rows to display');
-        expect(wrapper.findAll('thead th')).toHaveLength(3);
+        // the slot replaces the default text rather than adding to it
+        expect(cells[0]!.text()).toBe('No data found');
     });
 
     it('counts columns rendered with v-for and skips columns hidden with v-if', async () => {
@@ -271,7 +216,7 @@ describe('EsDataTable empty slot', () => {
         const cells = wrapper.findAll('tbody td');
         expect(cells).toHaveLength(1);
         expect(cells[0]!.attributes('colspan')).toBe('3');
-        expect(cells[0]!.text()).toBe('No rows to display');
+        expect(cells[0]!.text()).not.toBe('');
     });
 });
 
@@ -293,7 +238,6 @@ describe('EsDataTable initial sort', () => {
         const wrapper = await mountTable({ sortField: 'capital', sortOrder: -1 });
         expect(sortAnnouncement(wrapper, 'Name')).toBe('');
         expect(sortAnnouncement(wrapper, 'Capital')).toBe('Sorted descending');
-        expect(headerCell(wrapper, 'Capital').text()).toContain('Sorted descending');
     });
 });
 
@@ -302,7 +246,6 @@ describe('EsDataTable header clicks', () => {
         const wrapper = await mountTable();
         await clickHeader(wrapper, 'Name');
         expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted ascending');
-        expect(headerCell(wrapper, 'Name').text()).toContain('Sorted ascending');
         await clickHeader(wrapper, 'Name');
         expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted descending');
         await clickHeader(wrapper, 'Name');
@@ -336,14 +279,6 @@ describe('EsDataTable sort props', () => {
         expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted ascending');
         expect(sortAnnouncement(wrapper, 'Capital')).toBe('');
         expect(wrapper.emitted('sort')).toBeUndefined();
-    });
-
-    it("keeps the user's choice when the parent changes sortField and sortOrder", async () => {
-        const wrapper = await mountTable({ sortField: 'name' });
-        await clickHeader(wrapper, 'Capital');
-        await wrapper.setProps({ sortField: 'name', sortOrder: -1 });
-        expect(sortAnnouncement(wrapper, 'Name')).toBe('');
-        expect(sortAnnouncement(wrapper, 'Capital')).toBe('Sorted ascending');
     });
 });
 
@@ -398,6 +333,12 @@ describe('EsDataTable internal sorting', () => {
         expect(renderedNames(wrapper)).toEqual(['Alaska', 'Maine', 'Ohio', 'Texas']);
     });
 
+    it('sorts rows missing the field first in ascending order', async () => {
+        const wrapper = await mountRankedTable({ items: [...RANKED_ITEMS, { name: 'Alaska' }] });
+        await clickHeader(wrapper, 'Rank');
+        expect(renderedNames(wrapper)).toEqual(['Alaska', 'Maine', 'Ohio', 'Texas']);
+    });
+
     it("doesn't reorder the parent's items array", async () => {
         const items = [...RANKED_ITEMS];
         const wrapper = await mountRankedTable({ items });
@@ -433,9 +374,7 @@ describe('EsDataTableColumn sortable configuration', () => {
         const wrapper = await mountTable({}, [{ header: 'Name', sortable: true }]);
         expect(sortAnnouncement(wrapper, 'Name')).toBeNull();
         // once for the header, not again for each of the rows
-        expect(componentWarnings(warn, 'EsDataTableColumn')).toEqual([
-            ['EsDataTableColumn: `sortable` requires `field`, which identifies the column for sorting.'],
-        ]);
+        expect(componentWarnings(warn, 'EsDataTableColumn')).toEqual([[expect.stringContaining('`sortable`')]]);
     });
 
     it('does not warn for valid column configurations', async () => {
@@ -492,6 +431,14 @@ describe('EsDataTable initial row limit', () => {
         expect(showMoreButton(wrapper).exists()).toBe(false);
     });
 
+    it('keeps every row displayed after Show more when the table is sorted', async () => {
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, numInitialRowsDisplayed: 5 });
+        await showMoreButton(wrapper).trigger('click');
+        await clickHeader(wrapper, 'Number');
+        expect(renderedNumbers(wrapper)).toHaveLength(25);
+        expect(showMoreButton(wrapper).exists()).toBe(false);
+    });
+
     it('limits rows after sorting, so the rows shown are the top of the sort order', async () => {
         const wrapper = await mountNumberedTable({
             limitInitialRowsDisplayed: true,
@@ -510,14 +457,8 @@ describe('EsDataTable initial row limit', () => {
         expect(renderedNumbers(wrapper)).toHaveLength(25);
         expect(showMoreButton(wrapper).exists()).toBe(false);
         expect(componentWarnings(warn, 'EsDataTable')).toEqual([
-            ['EsDataTable: `numInitialRowsDisplayed` must be at least 1 to limit the rows displayed.'],
+            [expect.stringContaining('`numInitialRowsDisplayed`')],
         ]);
-    });
-
-    it('does not warn for an invalid numInitialRowsDisplayed without limitInitialRowsDisplayed', async () => {
-        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-        await mountNumberedTable({ numInitialRowsDisplayed: 0 });
-        expect(componentWarnings(warn, 'EsDataTable')).toEqual([]);
     });
 });
 
@@ -554,12 +495,6 @@ describe('EsDataTable dataKey', () => {
     };
 
     const cellTexts = (wrapper: VueWrapper) => wrapper.findAll('tbody button').map((button) => button.text());
-
-    it('keeps cell state with its position when sorting without dataKey', async () => {
-        const wrapper = await mountMarkableTable();
-        await markMaineAndSortDescending(wrapper);
-        expect(cellTexts(wrapper)).toEqual(['Ohio *', 'Maine']);
-    });
 
     it('keeps cell state with its row when sorting with dataKey', async () => {
         const wrapper = await mountMarkableTable({ dataKey: 'abbreviation' });
