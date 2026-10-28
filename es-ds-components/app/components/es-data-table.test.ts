@@ -4,9 +4,6 @@ import { afterEach, describe, expect, it, type MockInstance, vi } from 'vitest';
 import { h, type VNodeChild } from 'vue';
 import EsDataTable from './es-data-table.vue';
 import EsDataTableColumn from './es-data-table-column.vue';
-import IconArrowDown from './icon/arrow-down.vue';
-import IconArrowUp from './icon/arrow-up.vue';
-import IconArrowsDownUp from './icon/arrows-down-up.vue';
 
 const ITEMS = [
     { name: 'Maine', capital: 'Augusta', abbreviation: 'ME' },
@@ -52,18 +49,14 @@ const headerCell = (wrapper: VueWrapper, header: string) => {
     return cell;
 };
 
-/** the sort arrow icon a header shows as ↑, ↓ or ↕, or null when the header isn't sortable */
-const arrow = (wrapper: VueWrapper, header: string) => {
+/** the sort direction a header's button announces to screen readers, '' when unsorted, or null when the header isn't sortable */
+const sortAnnouncement = (wrapper: VueWrapper, header: string) => {
     const button = headerCell(wrapper, header).find('button');
     if (!button.exists()) {
         return null;
     }
-    const icons = [
-        [IconArrowUp, '↑'],
-        [IconArrowDown, '↓'],
-        [IconArrowsDownUp, '↕'],
-    ] as const;
-    return icons.find(([icon]) => button.findComponent(icon).exists())?.[1];
+    const announcement = button.find('.sr-only');
+    return announcement.exists() ? announcement.text() : '';
 };
 
 const clickHeader = (wrapper: VueWrapper, header: string) =>
@@ -282,21 +275,21 @@ describe('EsDataTable empty slot', () => {
 describe('EsDataTable initial sort', () => {
     it('shows every sortable column as unsorted without a sortField', async () => {
         const wrapper = await mountTable();
-        expect(arrow(wrapper, 'Name')).toBe('↕');
-        expect(arrow(wrapper, 'Capital')).toBe('↕');
-        expect(arrow(wrapper, 'Abbreviation')).toBeNull();
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('');
+        expect(sortAnnouncement(wrapper, 'Capital')).toBe('');
+        expect(sortAnnouncement(wrapper, 'Abbreviation')).toBeNull();
     });
 
     it('stays unsorted without a sortField even when sortOrder is set', async () => {
         const wrapper = await mountTable({ sortOrder: -1 });
-        expect(arrow(wrapper, 'Name')).toBe('↕');
-        expect(arrow(wrapper, 'Capital')).toBe('↕');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('');
+        expect(sortAnnouncement(wrapper, 'Capital')).toBe('');
     });
 
     it('marks the sortField column in sortOrder', async () => {
         const wrapper = await mountTable({ sortField: 'capital', sortOrder: -1 });
-        expect(arrow(wrapper, 'Name')).toBe('↕');
-        expect(arrow(wrapper, 'Capital')).toBe('↓');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('');
+        expect(sortAnnouncement(wrapper, 'Capital')).toBe('Sorted descending');
         expect(headerCell(wrapper, 'Capital').text()).toContain('Sorted descending');
     });
 });
@@ -305,12 +298,12 @@ describe('EsDataTable header clicks', () => {
     it('toggles a column between ascending and descending', async () => {
         const wrapper = await mountTable();
         await clickHeader(wrapper, 'Name');
-        expect(arrow(wrapper, 'Name')).toBe('↑');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted ascending');
         expect(headerCell(wrapper, 'Name').text()).toContain('Sorted ascending');
         await clickHeader(wrapper, 'Name');
-        expect(arrow(wrapper, 'Name')).toBe('↓');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted descending');
         await clickHeader(wrapper, 'Name');
-        expect(arrow(wrapper, 'Name')).toBe('↑');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted ascending');
         expect(wrapper.emitted('sort')).toEqual([
             [{ sortField: 'name', sortOrder: 1 }],
             [{ sortField: 'name', sortOrder: -1 }],
@@ -321,14 +314,14 @@ describe('EsDataTable header clicks', () => {
     it('toggles from the initial sortField and sortOrder', async () => {
         const wrapper = await mountTable({ sortField: 'name', sortOrder: -1 });
         await clickHeader(wrapper, 'Name');
-        expect(arrow(wrapper, 'Name')).toBe('↑');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted ascending');
     });
 
     it('starts a different column at ascending and clears the previous one', async () => {
         const wrapper = await mountTable({ sortField: 'name', sortOrder: -1 });
         await clickHeader(wrapper, 'Capital');
-        expect(arrow(wrapper, 'Name')).toBe('↕');
-        expect(arrow(wrapper, 'Capital')).toBe('↑');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('');
+        expect(sortAnnouncement(wrapper, 'Capital')).toBe('Sorted ascending');
         expect(wrapper.emitted('sort')).toEqual([[{ sortField: 'capital', sortOrder: 1 }]]);
     });
 });
@@ -337,8 +330,8 @@ describe('EsDataTable sort props', () => {
     it('ignores changes to sortField and sortOrder after mounting', async () => {
         const wrapper = await mountTable({ sortField: 'name' });
         await wrapper.setProps({ sortField: 'capital', sortOrder: -1 });
-        expect(arrow(wrapper, 'Name')).toBe('↑');
-        expect(arrow(wrapper, 'Capital')).toBe('↕');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted ascending');
+        expect(sortAnnouncement(wrapper, 'Capital')).toBe('');
         expect(wrapper.emitted('sort')).toBeUndefined();
     });
 
@@ -346,8 +339,8 @@ describe('EsDataTable sort props', () => {
         const wrapper = await mountTable({ sortField: 'name' });
         await clickHeader(wrapper, 'Capital');
         await wrapper.setProps({ sortField: 'name', sortOrder: -1 });
-        expect(arrow(wrapper, 'Name')).toBe('↕');
-        expect(arrow(wrapper, 'Capital')).toBe('↑');
+        expect(sortAnnouncement(wrapper, 'Name')).toBe('');
+        expect(sortAnnouncement(wrapper, 'Capital')).toBe('Sorted ascending');
     });
 });
 
@@ -415,7 +408,7 @@ describe('EsDataTable external sorting', () => {
         const wrapper = await mountRankedTable({ sortField: 'name', useInternalSorting: false });
         expect(renderedNames(wrapper)).toEqual(['Ohio', 'Maine', 'Texas']);
         await clickHeader(wrapper, 'Rank');
-        expect(arrow(wrapper, 'Rank')).toBe('↑');
+        expect(sortAnnouncement(wrapper, 'Rank')).toBe('Sorted ascending');
         expect(renderedNames(wrapper)).toEqual(['Ohio', 'Maine', 'Texas']);
         expect(wrapper.emitted('sort')).toEqual([[{ sortField: 'rank', sortOrder: 1 }]]);
     });
@@ -435,7 +428,7 @@ describe('EsDataTableColumn sortable configuration', () => {
     it('renders a sortable column without a field as a plain header and warns once', async () => {
         const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
         const wrapper = await mountTable({}, [{ header: 'Name', sortable: true }]);
-        expect(arrow(wrapper, 'Name')).toBeNull();
+        expect(sortAnnouncement(wrapper, 'Name')).toBeNull();
         // once for the header, not again for each of the rows
         expect(columnWarnings(warn)).toEqual([
             ['EsDataTableColumn: `sortable` requires `field`, which identifies the column for sorting.'],
