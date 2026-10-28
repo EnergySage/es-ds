@@ -16,7 +16,6 @@ export const DS_MOLECULES_LIST: DsMolecule[] = [
     { name: 'Checkbox', path: '/molecules/checkbox' },
     { name: 'Collapse', path: '/molecules/collapse' },
     { name: 'Data table', path: '/molecules/data-table' },
-    { name: 'Data table (old)', path: '/molecules/data-table-old' },
     { name: 'Data table simple', path: '/molecules/data-table-simple' },
     { name: 'Dropdown select', path: '/molecules/dropdown-select' },
     { name: 'File input', path: '/molecules/file-input' },
