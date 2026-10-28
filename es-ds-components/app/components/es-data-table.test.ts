@@ -171,6 +171,62 @@ describe('EsDataTable cell rendering', () => {
     });
 });
 
+describe('EsDataTable empty slot', () => {
+    const emptySlot = () => h('p', 'No data found');
+
+    it('renders the empty slot in one cell spanning every column when there are no items', async () => {
+        const wrapper = await mountSuspended(EsDataTable, {
+            props: { items: [] },
+            slots: {
+                default: () => COLUMNS.map((column) => h(EsDataTableColumn, column)),
+                empty: emptySlot,
+            },
+        });
+        const cells = wrapper.findAll('tbody td');
+        expect(cells).toHaveLength(1);
+        expect(cells[0]!.attributes('colspan')).toBe('3');
+        expect(cells[0]!.find('p').text()).toBe('No data found');
+        expect(cells[0]!.text()).not.toContain('No data to display');
+        expect(wrapper.findAll('thead th')).toHaveLength(3);
+    });
+
+    it('counts columns rendered with v-for and skips columns hidden with v-if', async () => {
+        const wrapper = await mountSuspended(EsDataTable, {
+            props: { items: [] },
+            slots: {
+                // an array child becomes a v-for fragment, and null becomes a false v-if's comment
+                default: () => [
+                    h(EsDataTableColumn, COLUMNS[0]),
+                    COLUMNS.slice(1).map((column) => h(EsDataTableColumn, column)),
+                    null,
+                ],
+                empty: emptySlot,
+            },
+        });
+        expect(wrapper.find('tbody td').attributes('colspan')).toBe('3');
+    });
+
+    it('renders no empty row when there are items', async () => {
+        const wrapper = await mountSuspended(EsDataTable, {
+            props: { items: ITEMS },
+            slots: {
+                default: () => COLUMNS.map((column) => h(EsDataTableColumn, column)),
+                empty: emptySlot,
+            },
+        });
+        expect(wrapper.find('tbody p').exists()).toBe(false);
+        expect(wrapper.findAll('tbody tr')).toHaveLength(ITEMS.length);
+    });
+
+    it('renders default text spanning every column without the empty slot', async () => {
+        const wrapper = await mountTable({ items: [] });
+        const cells = wrapper.findAll('tbody td');
+        expect(cells).toHaveLength(1);
+        expect(cells[0]!.attributes('colspan')).toBe('3');
+        expect(cells[0]!.text()).toBe('No data to display');
+    });
+});
+
 describe('EsDataTable initial sort', () => {
     it('shows every sortable column as unsorted without a sortField', async () => {
         const wrapper = await mountTable();

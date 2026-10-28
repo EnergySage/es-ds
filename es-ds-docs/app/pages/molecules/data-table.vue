@@ -24,12 +24,20 @@ const esDataTableProps = [
     ],
 ];
 
+const esDataTableSlots = [
+    [
+        'empty',
+        "'No rows to display'",
+        'Allows you to customize the contents of the table body when there are no items to display.',
+    ],
+];
+
 const esDataTableColumnProps = [
     [
         'field',
         'String',
         "''",
-        'Determines which key of the row object to render in the column. Optional, as you can use the body slot to turn on custom rendering for this column instead. Needed in order to enable sorting on a column, regardless of rendering mode.',
+        'Determines which key of the items object to render in this column. Optional, as you can use the body slot to turn on custom rendering for this column instead. Needed in order to enable sorting on a column, regardless of rendering mode.',
     ],
     [
         'header',
@@ -229,16 +237,28 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">Empty example</h2>
+            <h2>Empty example</h2>
+            <p class="mb-200">
+                When there are no rows to display, the table will show a message to make it clear the table is empty.
+            </p>
             <es-data-table :items="[]">
-                <es-data-table-column
-                    field="advantages"
-                    header="Advantages" />
-                <es-data-table-column
-                    field="disadvantages"
-                    header="Disadvantages" />
+                <es-data-table-column header="Name" />
+                <es-data-table-column header="Upfront cost" />
+                <es-data-table-column header="25 year savings" />
+            </es-data-table>
+            <p class="mb-200">You can also customize how the empty state looks.</p>
+            <es-data-table :items="[]">
+                <es-data-table-column header="Name" />
+                <es-data-table-column header="Upfront cost" />
+                <es-data-table-column header="25 year savings" />
                 <template #empty>
-                    <div class="text-center p-4">No data found</div>
+                    <div class="align-items-center d-flex flex-column p-200 text-center">
+                        <icon-rooftop-solar
+                            class="mb-50"
+                            height="64px"
+                            width="64px" />
+                        Installers are working on custom quotes based on your needs.
+                    </div>
                 </template>
             </es-data-table>
         </div>
@@ -416,6 +436,16 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>EsDataTable props</h2>
             <ds-prop-table :rows="esDataTableProps" />
+        </div>
+
+        <div class="mb-500">
+            <h2>EsDataTable slots</h2>
+            <ds-prop-table
+                :columns="['Name', 'Default', 'Description']"
+                :rows="esDataTableSlots"
+                :widths="{
+                    md: ['3', '4', '5'],
+                }" />
         </div>
 
         <div class="mb-500">

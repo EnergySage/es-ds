@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PropType } from 'vue';
+import { Comment, Fragment, Text, type PropType, type VNode } from 'vue';
 import type { EsDataTableSortEvent, EsDataTableSortOrder, EsDataTableSortState } from '../types';
 import {
     ES_DATA_TABLE_CELL_CONTEXT_KEY,
@@ -65,6 +65,18 @@ const rowsToRender = computed(() => {
     return [...props.items].sort((a, b) => compareValues(a[sort.field], b[sort.field]) * sort.order);
 });
 
+const slots = useSlots();
+
+// the empty row's cell spans every column, so it counts the columns in the default slot,
+// looking inside the fragments v-for creates and skipping the comments a false v-if leaves
+const countColumns = (vnodes: VNode[] = slots.default?.() ?? []): number =>
+    vnodes.reduce((count, vnode) => {
+        if (vnode.type === Fragment) {
+            return count + countColumns(vnode.children as VNode[]);
+        }
+        return vnode.type === Comment || vnode.type === Text ? count : count + 1;
+    }, 0);
+
 // defined inline rather than as its own file so Nuxt doesn't auto-register it as a public component;
 // the context stays reactive because rows are keyed by index and reuse instances when the row changes
 const CellContext = defineComponent({
@@ -97,6 +109,13 @@ const CellContext = defineComponent({
                 </tr>
             </thead>
             <tbody>
+                <tr v-if="!rowsToRender.length">
+                    <td :colspan="countColumns()">
+                        <slot name="empty">
+                            <div class="text-center p-100">No rows to display</div>
+                        </slot>
+                    </td>
+                </tr>
                 <tr
                     v-for="(row, rowIndex) in rowsToRender"
                     :key="rowIndex">
