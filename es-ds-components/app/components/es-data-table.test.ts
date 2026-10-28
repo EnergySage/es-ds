@@ -10,6 +10,13 @@ const ITEMS = [
     { name: 'Ohio', capital: 'Columbus', abbreviation: 'OH' },
 ];
 
+// ranks where string order (10, 100, 9) differs from numeric order (9, 10, 100)
+const RANKED_ITEMS = [
+    { name: 'Ohio', rank: 10 },
+    { name: 'Maine', rank: 9 },
+    { name: 'Texas', rank: 100 },
+];
+
 /** EsDataTableColumn props, plus optional header and body slots */
 interface ColumnConfig {
     align?: 'left' | 'right';
@@ -281,13 +288,6 @@ describe('EsDataTable sort props', () => {
         expect(wrapper.emitted('sort')).toBeUndefined();
     });
 });
-
-// ranks where string order (10, 100, 9) differs from numeric order (9, 10, 100)
-const RANKED_ITEMS = [
-    { name: 'Ohio', rank: 10 },
-    { name: 'Maine', rank: 9 },
-    { name: 'Texas', rank: 100 },
-];
 
 const RANKED_COLUMNS: ColumnConfig[] = [
     { field: 'name', header: 'Name', sortable: true },
