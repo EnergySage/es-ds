@@ -16,6 +16,24 @@ const esDataTableProps = [
         'The smallest breakpoint (xs, sm, md, lg, xl, or xxl) at which freeze-headers applies. Frozen headers prevent horizontal scrolling, so below this breakpoint the table scrolls horizontally instead and its headers are not frozen.',
     ],
     ['items', 'Array', 'n/a', 'Required. An array of objects to display.'],
+    [
+        'limit-initial-rows-displayed',
+        'Boolean',
+        'false',
+        'If true, only the first rows are displayed, with a "Show more" button to display the rest.',
+    ],
+    [
+        'num-initial-rows-displayed',
+        'Number',
+        '10',
+        'The maximum number of rows to display before the "Show more" button. Only used when limit-initial-rows-displayed is true.',
+    ],
+    [
+        'show-more-button-text',
+        'String',
+        "'Show more'",
+        'The text of the button that displays the rest of the rows. Only used when limit-initial-rows-displayed is true.',
+    ],
     ['sort-field', 'String', "''", 'If provided, sets the initial column that should start with sorting applied.'],
     ['sort-order', '-1 or 1', '1', 'Sets the initial sort order, with 1 for ascending and -1 for descending.'],
     [
@@ -565,6 +583,33 @@ onMounted(async () => {
                 freeze-headers
                 freeze-headers-starting-at-breakpoint="sm"
                 :items="stateInfoTable">
+                <es-data-table-column
+                    field="name"
+                    header="Name" />
+                <es-data-table-column
+                    field="abbreviation"
+                    header="Abbreviation" />
+                <es-data-table-column
+                    field="capital"
+                    header="Capital" />
+                <es-data-table-column
+                    field="yearAdmitted"
+                    header="Year admitted" />
+            </es-data-table>
+        </div>
+
+        <div class="mb-500">
+            <h2>Limiting initial rows</h2>
+            <p class="mb-200">
+                Long tables can start with only their first rows displayed, with a "Show more" button to display the
+                rest. Once all rows are displayed, they stay displayed, similar to a "Load more" button in a list of
+                results.
+            </p>
+            <es-data-table
+                freeze-first-column
+                :items="stateInfoTable"
+                limit-initial-rows-displayed
+                :num-initial-rows-displayed="10">
                 <es-data-table-column
                     field="name"
                     header="Name" />

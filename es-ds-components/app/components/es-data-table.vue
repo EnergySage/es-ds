@@ -12,6 +12,10 @@ interface Props {
     freezeHeaders?: boolean;
     freezeHeadersStartingAtBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
     items: any[];
+    limitInitialRowsDisplayed?: boolean;
+    /** the most rows shown before "Show more"; only used with limitInitialRowsDisplayed */
+    numInitialRowsDisplayed?: number;
+    showMoreButtonText?: string;
     /** the field of the column the table is initially sorted by; later changes are ignored */
     sortField?: string;
     /** the direction the table is initially sorted in; later changes are ignored */
@@ -24,6 +28,9 @@ const props = withDefaults(defineProps<Props>(), {
     freezeFirstColumn: false,
     freezeHeaders: false,
     freezeHeadersStartingAtBreakpoint: 'xs',
+    limitInitialRowsDisplayed: false,
+    numInitialRowsDisplayed: 10,
+    showMoreButtonText: 'Show more',
     sortField: '',
     sortOrder: 1,
     useInternalSorting: true,
@@ -58,7 +65,7 @@ const compareValues = (a: unknown, b: unknown) =>
     typeof a === 'number' && typeof b === 'number' ? a - b : String(a ?? '').localeCompare(String(b ?? ''));
 
 // with internal sorting off, the parent sorts items itself in response to the sort event
-const rowsToRender = computed(() => {
+const sortedRows = computed(() => {
     const sort = sortState.value;
     if (!props.useInternalSorting || !sort) {
         return props.items;
@@ -66,6 +73,20 @@ const rowsToRender = computed(() => {
     // copied so sorting never mutates the parent's array
     return [...props.items].sort((a, b) => compareValues(a[sort.field], b[sort.field]) * sort.order);
 });
+
+const isShowingAllRows = ref(false);
+
+const hasHiddenRows = computed(
+    () =>
+        props.limitInitialRowsDisplayed &&
+        !isShowingAllRows.value &&
+        sortedRows.value.length > props.numInitialRowsDisplayed,
+);
+
+// the limit applies after sorting, so the rows shown are the top of the current sort order
+const rowsToRender = computed(() =>
+    hasHiddenRows.value ? sortedRows.value.slice(0, props.numInitialRowsDisplayed) : sortedRows.value,
+);
 
 const slots = useSlots();
 
@@ -96,38 +117,51 @@ const CellContext = defineComponent({
 </script>
 
 <template>
-    <div
-        class="border table__data-table mb-200 table-responsive"
-        :class="{
-            'es-data-table--freeze-first-column': freezeFirstColumn,
-            [`es-data-table--freeze-headers-${freezeHeadersStartingAtBreakpoint}`]: freezeHeaders,
-            'es-data-table--angled-corners': !useRoundedCorners,
-        }">
-        <table class="es-data-table table b-table font-size-75 font-size-md-100 b-table-no-border-collapse">
-            <thead class="thead">
-                <tr>
-                    <cell-context :context="{ type: 'header' }">
-                        <slot />
-                    </cell-context>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-if="!rowsToRender.length">
-                    <td :colspan="countColumns()">
-                        <slot name="empty">
-                            <div class="text-center p-100">No rows to display</div>
-                        </slot>
-                    </td>
-                </tr>
-                <tr
-                    v-for="(row, rowIndex) in rowsToRender"
-                    :key="rowIndex">
-                    <cell-context :context="{ type: 'body', row, rowIndex }">
-                        <slot />
-                    </cell-context>
-                </tr>
-            </tbody>
-        </table>
+    <!-- positions the show more overlay over the bottom of the table, outside the horizontal scroll -->
+    <div class="mb-200 position-relative">
+        <div
+            class="border table__data-table table-responsive"
+            :class="{
+                'es-data-table--freeze-first-column': freezeFirstColumn,
+                [`es-data-table--freeze-headers-${freezeHeadersStartingAtBreakpoint}`]: freezeHeaders,
+                'es-data-table--angled-corners': !useRoundedCorners,
+            }">
+            <table class="es-data-table table b-table font-size-75 font-size-md-100 b-table-no-border-collapse">
+                <thead class="thead">
+                    <tr>
+                        <cell-context :context="{ type: 'header' }">
+                            <slot />
+                        </cell-context>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-if="!rowsToRender.length">
+                        <td :colspan="countColumns()">
+                            <slot name="empty">
+                                <div class="text-center p-100">No rows to display</div>
+                            </slot>
+                        </td>
+                    </tr>
+                    <tr
+                        v-for="(row, rowIndex) in rowsToRender"
+                        :key="rowIndex">
+                        <cell-context :context="{ type: 'body', row, rowIndex }">
+                            <slot />
+                        </cell-context>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div
+            v-if="hasHiddenRows"
+            class="es-data-table-show-more align-items-end d-flex justify-content-center pb-200 position-absolute w-100">
+            <es-button
+                outline
+                size="sm"
+                @click="isShowingAllRows = true">
+                {{ showMoreButtonText }}
+            </es-button>
+        </div>
     </div>
 </template>
 
@@ -176,6 +210,20 @@ const CellContext = defineComponent({
 
     &--angled-corners {
         border-radius: 0;
+    }
+
+    &-show-more {
+        background: linear-gradient(rgba(variables.$white, 0), variables.$white 75%);
+        bottom: 0;
+        height: 8rem;
+        left: 0;
+        // lets clicks through the gradient reach the rows it partially covers
+        pointer-events: none;
+        z-index: 3; // above the frozen first column and headers
+
+        > * {
+            pointer-events: auto;
+        }
     }
 }
 </style>

@@ -71,7 +71,10 @@ afterEach(() => {
 
 describe('EsDataTable freezeHeaders', () => {
     const freezeHeaderClasses = (wrapper: VueWrapper) =>
-        wrapper.classes().filter((className) => className.startsWith('es-data-table--freeze-headers'));
+        wrapper
+            .find('.table__data-table')
+            .classes()
+            .filter((className) => className.startsWith('es-data-table--freeze-headers'));
 
     it('freezes nothing without freezeHeaders, even with a breakpoint', async () => {
         const wrapper = await mountTable({ freezeHeadersStartingAtBreakpoint: 'lg' });
@@ -439,5 +442,65 @@ describe('EsDataTableColumn sortable configuration', () => {
         const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
         await mountTable({}, [...COLUMNS, { header: 'Custom' }]);
         expect(columnWarnings(warn)).toEqual([]);
+    });
+});
+
+describe('EsDataTable initial row limit', () => {
+    const NUMBERED_ITEMS = Array.from({ length: 25 }, (_, index) => ({ number: index + 1 }));
+    const NUMBERED_COLUMNS: ColumnConfig[] = [{ field: 'number', header: 'Number', sortable: true }];
+
+    const mountNumberedTable = (tableProps: Record<string, unknown> = {}) =>
+        mountTable({ items: NUMBERED_ITEMS, ...tableProps }, NUMBERED_COLUMNS);
+
+    const renderedNumbers = (wrapper: VueWrapper) => wrapper.findAll('tbody td').map((td) => Number(td.text()));
+
+    const showMoreButton = (wrapper: VueWrapper) => wrapper.find('.es-data-table-show-more button');
+
+    it('renders every row without limitInitialRowsDisplayed', async () => {
+        const wrapper = await mountNumberedTable({ numInitialRowsDisplayed: 5 });
+        expect(renderedNumbers(wrapper)).toHaveLength(25);
+        expect(showMoreButton(wrapper).exists()).toBe(false);
+    });
+
+    it('renders the first 20 rows by default and offers the rest behind Show more', async () => {
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true });
+        expect(renderedNumbers(wrapper)).toEqual(NUMBERED_ITEMS.slice(0, 20).map(({ number }) => number));
+        expect(showMoreButton(wrapper).text()).toBe('Show more');
+    });
+
+    it('renders the first numInitialRowsDisplayed rows', async () => {
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, numInitialRowsDisplayed: 5 });
+        expect(renderedNumbers(wrapper)).toEqual([1, 2, 3, 4, 5]);
+        expect(showMoreButton(wrapper).exists()).toBe(true);
+    });
+
+    it('labels the button with showMoreButtonText', async () => {
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, showMoreButtonText: 'Show all' });
+        expect(showMoreButton(wrapper).text()).toBe('Show all');
+    });
+
+    it('renders every row without Show more when the rows fit within the limit', async () => {
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, numInitialRowsDisplayed: 25 });
+        expect(renderedNumbers(wrapper)).toHaveLength(25);
+        expect(showMoreButton(wrapper).exists()).toBe(false);
+    });
+
+    it('renders every row and removes Show more once it is clicked', async () => {
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, numInitialRowsDisplayed: 5 });
+        await showMoreButton(wrapper).trigger('click');
+        expect(renderedNumbers(wrapper)).toHaveLength(25);
+        expect(showMoreButton(wrapper).exists()).toBe(false);
+    });
+
+    it('limits rows after sorting, so the rows shown are the top of the sort order', async () => {
+        const wrapper = await mountNumberedTable({
+            limitInitialRowsDisplayed: true,
+            numInitialRowsDisplayed: 3,
+            sortField: 'number',
+            sortOrder: -1,
+        });
+        expect(renderedNumbers(wrapper)).toEqual([25, 24, 23]);
+        await clickHeader(wrapper, 'Number');
+        expect(renderedNumbers(wrapper)).toEqual([1, 2, 3]);
     });
 });
