@@ -10,6 +10,7 @@ import {
 interface Props {
     freezeFirstColumn?: boolean;
     freezeHeaders?: boolean;
+    freezeHeadersStartingAtBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
     items: any[];
     /** the field of the column the table is initially sorted by; later changes are ignored */
     sortField?: string;
@@ -21,6 +22,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     freezeFirstColumn: false,
     freezeHeaders: false,
+    freezeHeadersStartingAtBreakpoint: 'xs',
     sortField: '',
     sortOrder: 1,
     useInternalSorting: true,
@@ -80,12 +82,13 @@ const CellContext = defineComponent({
 </script>
 
 <template>
-    <div class="border table__data-table mb-200 table-responsive">
-        <table
-            class="es-data-table table b-table font-size-75 font-size-md-100 b-table-no-border-collapse"
-            :class="{
-                'es-data-table--freeze-first-column': freezeFirstColumn,
-            }">
+    <div
+        class="border table__data-table mb-200 table-responsive"
+        :class="{
+            'es-data-table--freeze-first-column': freezeFirstColumn,
+            [`es-data-table--freeze-headers-${freezeHeadersStartingAtBreakpoint}`]: freezeHeaders,
+        }">
+        <table class="es-data-table table b-table font-size-75 font-size-md-100 b-table-no-border-collapse">
             <thead class="thead">
                 <tr>
                     <cell-context :context="{ type: 'header' }">
@@ -107,7 +110,9 @@ const CellContext = defineComponent({
 </template>
 
 <style lang="scss" scoped>
+@use 'sass:map';
 @use '@energysage/es-ds-styles/scss/variables';
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints';
 
 .es-data-table {
     &--freeze-first-column {
@@ -118,12 +123,32 @@ const CellContext = defineComponent({
             z-index: 1;
         }
 
+        thead :deep(th:first-child) {
+            z-index: 2;
+        }
+
         thead :deep(th) {
             background: variables.$soft-blue; // keep in sync with the table header background
         }
 
         tbody :deep(td) {
             background: inherit; // preserve row striping
+        }
+    }
+
+    // named by breakpoint rather than infix, since the xs infix is empty
+    @each $breakpoint in map.keys(variables.$grid-breakpoints) {
+        &--freeze-headers-#{$breakpoint} {
+            @include breakpoints.media-breakpoint-up($breakpoint) {
+                // clips to the rounded corners without becoming the container sticky headers stick within
+                overflow: clip;
+
+                thead :deep(th) {
+                    position: sticky;
+                    top: 0;
+                    z-index: 1;
+                }
+            }
         }
     }
 }

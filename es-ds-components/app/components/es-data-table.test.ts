@@ -57,6 +57,26 @@ afterEach(() => {
     vi.restoreAllMocks();
 });
 
+describe('EsDataTable freezeHeaders', () => {
+    const freezeHeaderClasses = (wrapper: VueWrapper) =>
+        wrapper.classes().filter((className) => className.startsWith('es-data-table--freeze-headers'));
+
+    it('freezes nothing without freezeHeaders, even with a breakpoint', async () => {
+        const wrapper = await mountTable({ freezeHeadersStartingAtBreakpoint: 'lg' });
+        expect(freezeHeaderClasses(wrapper)).toEqual([]);
+    });
+
+    it('freezes headers starting at sm by default', async () => {
+        const wrapper = await mountTable({ freezeHeaders: true });
+        expect(freezeHeaderClasses(wrapper)).toEqual(['es-data-table--freeze-headers-sm']);
+    });
+
+    it('freezes headers starting at the given breakpoint', async () => {
+        const wrapper = await mountTable({ freezeHeaders: true, freezeHeadersStartingAtBreakpoint: 'xs' });
+        expect(freezeHeaderClasses(wrapper)).toEqual(['es-data-table--freeze-headers-xs']);
+    });
+});
+
 describe('EsDataTable cell rendering', () => {
     it('renders each column as a header cell in thead and a body cell in every tbody row', async () => {
         const wrapper = await mountTable();

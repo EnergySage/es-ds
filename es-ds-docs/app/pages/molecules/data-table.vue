@@ -1,8 +1,43 @@
 <script setup lang="ts">
-const propTableRows = [
+const esDataTablePropTableRows = [
+    [
+        'freeze-first-column',
+        'Boolean',
+        'false',
+        'If true, allows the other columns to scroll horizontally while keeping the first column visible.',
+    ],
+    ['freeze-headers', 'Boolean', 'false', 'If true, the table header will stay visible while scrolling the page.'],
+    [
+        'freeze-headers-starting-at-breakpoint',
+        'String',
+        'sm',
+        'The smallest breakpoint (xs, sm, md, lg, xl, or xxl) at which freeze-headers applies. Frozen headers prevent horizontal scrolling, so below this breakpoint the table scrolls horizontally instead and its headers are not frozen.',
+    ],
     ['items', 'Array', 'n/a', 'Required. An array of objects to display.'],
-    ['scrollable', 'Boolean', 'false', 'When specified, limits the height of the table and enables scrolling.'],
-    ['scrollHeight', 'String', '305px', 'Height of the scrollable table. Only applies when scrollable is true.'],
+    ['sort-field', 'String', "''", 'If provided, sets the initial column that should start with sorting applied.'],
+    ['sort-order', '-1 or 1', '1', 'Sets the initial sort order, with 1 for ascending and -1 for descending.'],
+    [
+        'use-internal-sorting',
+        'Boolean',
+        'true',
+        'Uses a simple number and string sorting algorithm by default. Set to false if you need to use a more complex sorting algorithm.',
+    ],
+];
+
+const esDataTableColumnPropTableRows = [
+    [
+        'field',
+        'String',
+        "''",
+        'Determines which key of the row object to render in the column. Optional, as you can use the body slot to turn on custom rendering for this column instead. Needed in order to enable sorting on a column, regardless of rendering mode.',
+    ],
+    [
+        'header',
+        'String',
+        "''",
+        'The text to display in the column header. Optional, as you can use the header slot to turn on custom rendering for this column instead.',
+    ],
+    ['sortable', 'Boolean', 'false', 'If true and field is provided, enables sorting for this column.'],
 ];
 
 const prosConsTable = [
@@ -256,12 +291,11 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Freeze one column</h2>
+            <h2>Freeze first column</h2>
             <p class="mb-200">
-                This example shows how to use the <code>frozen</code> prop on a column to ensure it stays visible while
-                scrolling the table contents horizontally. This feature is especially useful on mobile when the first
-                column contains primary information that is important to reference when reading the contents of the
-                subsequent columns.
+                Freezing the first column ensures it stays visible while scrolling the table contents horizontally.
+                This feature is especially useful on mobile when the first column contains primary information that is
+                important to reference when reading the contents of the subsequent columns.
             </p>
             <es-row>
                 <es-col
@@ -287,5 +321,58 @@ onMounted(async () => {
                 </es-col>
             </es-row>
         </div>
+
+        <div class="mb-500">
+            <h2>Freeze headers</h2>
+            <p>
+                Freezing the headers keeps them visible as you scroll down the page so you can reference the column
+                headers as you browse the table content.
+            </p>
+            <p>
+                <strong>Important:</strong> due to browser limitations, this will disable horizontal scrolling on the
+                table, impacting both the "freeze first column" functionality and the automatic horizontal scroll when
+                there isn't enough page width to show the full table, so use this feature carefully.
+            </p>
+            <p class="mb-200">
+                The example below has been configured to start freezing the headers at the <code>sm</code> breakpoint,
+                so the horizontal scroll and the "freeze first column" functionality will work on mobile. Choose the
+                appropriate breakpoint for your table by observing when the full table contents can be viewed without
+                needing a horizontal scroll.
+            </p>
+            <es-data-table
+                freeze-first-column
+                freeze-headers
+                freeze-headers-starting-at-breakpoint="sm"
+                :items="stateInfoTable">
+                <es-data-table-column
+                    field="name"
+                    header="Name" />
+                <es-data-table-column
+                    field="abbreviation"
+                    header="Abbreviation" />
+                <es-data-table-column
+                    field="capital"
+                    header="Capital" />
+                <es-data-table-column
+                    field="yearAdmitted"
+                    header="Year admitted" />
+            </es-data-table>
+        </div>
+
+        <div class="mb-500">
+            <h2>EsDataTable props</h2>
+            <ds-prop-table :rows="esDataTablePropTableRows" />
+        </div>
+
+        <div class="mb-500">
+            <h2>EsDataTableColumn props</h2>
+            <ds-prop-table :rows="esDataTableColumnPropTableRows" />
+        </div>
+
+        <ds-doc-source
+            :comp-code="compCode"
+            comp-source="es-ds-components/components/es-data-table.vue"
+            :doc-code="docCode"
+            doc-source="es-ds-docs/pages/molecules/data-table.vue" />
     </div>
 </template>
