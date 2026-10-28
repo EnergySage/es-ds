@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const esDataTablePropTableRows = [
+const esDataTableProps = [
     [
         'freeze-first-column',
         'Boolean',
@@ -10,7 +10,7 @@ const esDataTablePropTableRows = [
     [
         'freeze-headers-starting-at-breakpoint',
         'String',
-        'sm',
+        'xs',
         'The smallest breakpoint (xs, sm, md, lg, xl, or xxl) at which freeze-headers applies. Frozen headers prevent horizontal scrolling, so below this breakpoint the table scrolls horizontally instead and its headers are not frozen.',
     ],
     ['items', 'Array', 'n/a', 'Required. An array of objects to display.'],
@@ -24,7 +24,7 @@ const esDataTablePropTableRows = [
     ],
 ];
 
-const esDataTableColumnPropTableRows = [
+const esDataTableColumnProps = [
     [
         'field',
         'String',
@@ -38,6 +38,11 @@ const esDataTableColumnPropTableRows = [
         'The text to display in the column header. Optional, as you can use the header slot to turn on custom rendering for this column instead.',
     ],
     ['sortable', 'Boolean', 'false', 'If true and field is provided, enables sorting for this column.'],
+];
+
+const esDataTableColumnSlots = [
+    ['header', 'n/a', 'Allows you to customize the contents of the column header.'],
+    ['body', 'n/a', 'Allows you to customize the contents of the table cells in that column.'],
 ];
 
 const prosConsTable = [
@@ -239,19 +244,68 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2 class="mb-200">Custom rendering</h2>
+            <h2>Custom rendering</h2>
+            <p>
+                You can customize the rendering of both column headers and table cells. This is most commonly done to
+                support bold text, italic text, or links.
+            </p>
+            <p class="mb-200">
+                <strong>Important:</strong> if you enable sorting on a column, that will turn the column header into an
+                interactive button. If you customize the headers on a sortable column, be sure NOT to include anything
+                interactive (like a link or button), as having a link or button within a button can lead to unexpected
+                behavior.
+            </p>
             <es-data-table :items="averageCostTable">
                 <es-data-table-column>
+                    <template #header>
+                        <span class="align-items-center d-flex">
+                            Incentive
+                            <es-tooltip trigger-class="ml-25">
+                                <template #trigger>
+                                    <icon-info
+                                        width="20px"
+                                        height="20px" />
+                                </template>
+                                <p class="mb-0">Additional information about incentives</p>
+                            </es-tooltip>
+                        </span>
+                    </template>
                     <template #body="slotProps">
                         <nuxt-link :to="slotProps.data.url">{{ slotProps.data.incentive }}</nuxt-link>
                     </template>
                 </es-data-table-column>
-                <es-data-table-column header="Cost before">
+                <es-data-table-column>
+                    <template #header>
+                        <span class="align-items-center d-flex">
+                            Cost before
+                            <es-tooltip trigger-class="ml-25">
+                                <template #trigger>
+                                    <icon-info
+                                        width="20px"
+                                        height="20px" />
+                                </template>
+                                <p class="mb-0">Additional information about upfront cost</p>
+                            </es-tooltip>
+                        </span>
+                    </template>
                     <template #body="slotProps">
                         {{ usDollarNumberFormat.format(slotProps.data.costBefore) }}
                     </template>
                 </es-data-table-column>
                 <es-data-table-column header="Cost after">
+                    <template #header>
+                        <span class="align-items-center d-flex">
+                            Cost after
+                            <es-tooltip trigger-class="ml-25">
+                                <template #trigger>
+                                    <icon-info
+                                        width="20px"
+                                        height="20px" />
+                                </template>
+                                <p class="mb-0">Additional information about how you can realize the savings</p>
+                            </es-tooltip>
+                        </span>
+                    </template>
                     <template #body="slotProps">
                         {{ usDollarNumberFormat.format(slotProps.data.costAfter) }}
                     </template>
@@ -361,12 +415,22 @@ onMounted(async () => {
 
         <div class="mb-500">
             <h2>EsDataTable props</h2>
-            <ds-prop-table :rows="esDataTablePropTableRows" />
+            <ds-prop-table :rows="esDataTableProps" />
         </div>
 
         <div class="mb-500">
             <h2>EsDataTableColumn props</h2>
-            <ds-prop-table :rows="esDataTableColumnPropTableRows" />
+            <ds-prop-table :rows="esDataTableColumnProps" />
+        </div>
+
+        <div class="mb-500">
+            <h2>EsDataTableColumn slots</h2>
+            <ds-prop-table
+                :columns="['Name', 'Default', 'Description']"
+                :rows="esDataTableColumnSlots"
+                :widths="{
+                    md: ['3', '4', '5'],
+                }" />
         </div>
 
         <ds-doc-source

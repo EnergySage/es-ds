@@ -45,7 +45,8 @@ const columnSortOrder = computed(() => {
             class="es-data-table-column-sort-button align-items-end d-flex justify-between h-100 position-absolute pr-200 text-left w-100"
             title="Toggle sort direction for column"
             @click="sortContext?.toggleSort(field)">
-            {{ header }}
+            <!-- a sortable header renders this slot here and in the sizing div below, so it must be plain, non-interactive content -->
+            <slot name="header">{{ header }}</slot>
             <template v-if="columnSortOrder === 1">
                 <span
                     class="es-data-table-column-sort-direction-arrow position-absolute"
@@ -84,7 +85,7 @@ const columnSortOrder = computed(() => {
                       }
                     : {}
             ">
-            {{ header }}
+            <slot name="header">{{ header }}</slot>
         </div>
     </th>
     <td v-else-if="cellContext?.type === 'body'">

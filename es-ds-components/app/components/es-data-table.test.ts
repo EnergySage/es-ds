@@ -10,12 +10,13 @@ const ITEMS = [
     { name: 'Ohio', capital: 'Columbus', abbreviation: 'OH' },
 ];
 
-/** EsDataTableColumn props, plus an optional body slot */
+/** EsDataTableColumn props, plus optional header and body slots */
 interface ColumnConfig {
     field?: string;
     header?: string;
     sortable?: boolean;
     body?: (slotProps: { data: any; index: number }) => VNodeChild;
+    headerSlot?: () => VNodeChild;
 }
 
 const COLUMNS: ColumnConfig[] = [
@@ -28,7 +29,13 @@ function mountTable(tableProps: Record<string, unknown> = {}, columns: ColumnCon
     return mountSuspended(EsDataTable, {
         props: { items: ITEMS, ...tableProps },
         slots: {
-            default: () => columns.map(({ body, ...column }) => h(EsDataTableColumn, column, body ? { body } : {})),
+            default: () =>
+                columns.map(({ body, headerSlot, ...column }) =>
+                    h(EsDataTableColumn, column, {
+                        ...(body && { body }),
+                        ...(headerSlot && { header: headerSlot }),
+                    }),
+                ),
         },
     });
 }
@@ -66,14 +73,14 @@ describe('EsDataTable freezeHeaders', () => {
         expect(freezeHeaderClasses(wrapper)).toEqual([]);
     });
 
-    it('freezes headers starting at sm by default', async () => {
+    it('freezes headers at every breakpoint by default', async () => {
         const wrapper = await mountTable({ freezeHeaders: true });
-        expect(freezeHeaderClasses(wrapper)).toEqual(['es-data-table--freeze-headers-sm']);
+        expect(freezeHeaderClasses(wrapper)).toEqual(['es-data-table--freeze-headers-xs']);
     });
 
     it('freezes headers starting at the given breakpoint', async () => {
-        const wrapper = await mountTable({ freezeHeaders: true, freezeHeadersStartingAtBreakpoint: 'xs' });
-        expect(freezeHeaderClasses(wrapper)).toEqual(['es-data-table--freeze-headers-xs']);
+        const wrapper = await mountTable({ freezeHeaders: true, freezeHeadersStartingAtBreakpoint: 'md' });
+        expect(freezeHeaderClasses(wrapper)).toEqual(['es-data-table--freeze-headers-md']);
     });
 });
 
@@ -131,6 +138,30 @@ describe('EsDataTable cell rendering', () => {
         ]);
         await clickHeader(wrapper, 'Rank');
         expect(wrapper.findAll('tbody td').map((td) => td.text())).toEqual(['#9', '#10', '#100']);
+    });
+
+    it('renders the header slot in place of the header prop', async () => {
+        const wrapper = await mountTable({}, [
+            { field: 'name', header: 'Name', headerSlot: () => h('strong', 'State name') },
+            { field: 'capital', header: 'Capital' },
+        ]);
+        const [custom, plain] = wrapper.findAll('thead th');
+        expect(custom!.find('strong').text()).toBe('State name');
+        expect(custom!.text()).toBe('State name');
+        expect(plain!.text()).toBe('Capital');
+    });
+
+    it('renders the header slot in a sortable header that still toggles sorting', async () => {
+        const wrapper = await mountTable({}, [
+            { field: 'name', header: 'Name', sortable: true, headerSlot: () => h('strong', 'State name') },
+        ]);
+        // once in the button and once in the sizing div that sets the column width
+        expect(wrapper.findAll('thead th strong')).toHaveLength(2);
+        const button = wrapper.find('thead th button');
+        expect(button.find('strong').text()).toBe('State name');
+        expect(button.text()).not.toContain('Name');
+        await button.trigger('click');
+        expect(wrapper.emitted('sort')).toEqual([[{ sortField: 'name', sortOrder: 1 }]]);
     });
 
     it('renders nothing for a column outside a table', async () => {
