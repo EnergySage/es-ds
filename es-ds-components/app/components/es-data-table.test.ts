@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import type { VueWrapper } from '@vue/test-utils';
 import { afterEach, describe, expect, it, type MockInstance, vi } from 'vitest';
-import { h, type VNodeChild } from 'vue';
+import { defineComponent, h, ref, type VNodeChild } from 'vue';
 import EsDataTable from './es-data-table.vue';
 import EsDataTableColumn from './es-data-table-column.vue';
 
@@ -518,5 +518,61 @@ describe('EsDataTable initial row limit', () => {
         const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
         await mountNumberedTable({ numInitialRowsDisplayed: 0 });
         expect(componentWarnings(warn, 'EsDataTable')).toEqual([]);
+    });
+});
+
+describe('EsDataTable dataKey', () => {
+    /** a body cell that holds its own state: clicking it marks it with a trailing * */
+    const MarkableCell = defineComponent({
+        props: { label: { type: String, required: true } },
+        setup(cellProps) {
+            const isMarked = ref(false);
+            return () =>
+                h(
+                    'button',
+                    { onClick: () => (isMarked.value = true) },
+                    `${cellProps.label}${isMarked.value ? ' *' : ''}`,
+                );
+        },
+    });
+
+    const mountMarkableTable = (tableProps: Record<string, unknown> = {}) =>
+        mountTable(tableProps, [
+            {
+                field: 'name',
+                header: 'Name',
+                sortable: true,
+                body: ({ data }) => h(MarkableCell, { label: data.name }),
+            },
+        ]);
+
+    /** marks Maine, the first row, then sorts descending so Ohio moves above it */
+    const markMaineAndSortDescending = async (wrapper: VueWrapper) => {
+        await wrapper.find('tbody button').trigger('click');
+        await clickHeader(wrapper, 'Name');
+        await clickHeader(wrapper, 'Name');
+    };
+
+    const cellTexts = (wrapper: VueWrapper) => wrapper.findAll('tbody button').map((button) => button.text());
+
+    it('keeps cell state with its position when sorting without dataKey', async () => {
+        const wrapper = await mountMarkableTable();
+        await markMaineAndSortDescending(wrapper);
+        expect(cellTexts(wrapper)).toEqual(['Ohio *', 'Maine']);
+    });
+
+    it('keeps cell state with its row when sorting with dataKey', async () => {
+        const wrapper = await mountMarkableTable({ dataKey: 'abbreviation' });
+        await markMaineAndSortDescending(wrapper);
+        expect(cellTexts(wrapper)).toEqual(['Ohio', 'Maine *']);
+    });
+
+    it('identifies rows by a nested field with a dot-separated dataKey', async () => {
+        const wrapper = await mountMarkableTable({
+            dataKey: 'meta.id',
+            items: ITEMS.map((item, index) => ({ ...item, meta: { id: index } })),
+        });
+        await markMaineAndSortDescending(wrapper);
+        expect(cellTexts(wrapper)).toEqual(['Ohio', 'Maine *']);
     });
 });

@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import type { EsDataTableSortEvent, EsDataTableSortOrder } from '@energysage/es-ds-components/app/types';
 
-const esDataTableProps = [
+const esDataTableRequiredProps = [['items', 'Array', 'n/a', 'Required. An array of objects to display.']];
+
+const esDataTableOptionalProps = [
+    [
+        'data-key',
+        'String',
+        "''",
+        'Only necessary when a table row can be reordered and contains a component that keeps track of its own state (e.g. expanded, collapsed). In that case, if you don\'t provide a data key, that component state may get applied to the wrong row. Reference a field or a nested path (e.g. "user.id") that will provide a unique identifier for the row object.',
+    ],
     [
         'freeze-first-column',
         'Boolean',
@@ -12,10 +20,9 @@ const esDataTableProps = [
     [
         'freeze-headers-starting-at-breakpoint',
         'String',
-        'xs',
+        "'xs'",
         'The smallest breakpoint (xs, sm, md, lg, xl, or xxl) at which freeze-headers applies. Frozen headers prevent horizontal scrolling, so below this breakpoint the table scrolls horizontally instead and its headers are not frozen.',
     ],
-    ['items', 'Array', 'n/a', 'Required. An array of objects to display.'],
     [
         'limit-initial-rows-displayed',
         'Boolean',
@@ -94,7 +101,11 @@ const esDataTableColumnProps = [
 
 const esDataTableColumnSlots = [
     ['header', 'n/a', 'Allows you to customize the contents of the column header.'],
-    ['body', 'n/a', 'Allows you to customize the contents of the table cells in that column.'],
+    [
+        'body',
+        'n/a',
+        'Allows you to customize the contents of the table cells in that column. If the contents hold their own state, set data-key on EsDataTable.',
+    ],
 ];
 
 const prosConsTable = [
@@ -601,9 +612,8 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>Limiting initial rows</h2>
             <p class="mb-200">
-                Long tables can start with only their first rows displayed, with a "Show more" button to display the
-                rest. Once all rows are displayed, they stay displayed, similar to a "Load more" button in a list of
-                results.
+                To help increase readability of a page, long tables can start out displaying only some of their rows,
+                with a "Show more" button that will display the rest. Once all rows are displayed, they stay visible.
             </p>
             <es-data-table
                 freeze-first-column
@@ -709,7 +719,10 @@ onMounted(async () => {
 
         <div class="mb-500">
             <h2>EsDataTable props</h2>
-            <ds-prop-table :rows="esDataTableProps" />
+            <h3>Required</h3>
+            <ds-prop-table :rows="esDataTableRequiredProps" />
+            <h3 class="mt-100">Optional</h3>
+            <ds-prop-table :rows="esDataTableOptionalProps" />
         </div>
 
         <div class="mb-500">

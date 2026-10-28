@@ -8,6 +8,8 @@ import {
 } from '../utils/data-table';
 
 interface Props {
+    /** the field, or dot-separated path like 'user.id', that uniquely identifies each row */
+    dataKey?: string;
     freezeFirstColumn?: boolean;
     freezeHeaders?: boolean;
     freezeHeadersStartingAtBreakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
@@ -25,6 +27,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    dataKey: '',
     freezeFirstColumn: false,
     freezeHeaders: false,
     freezeHeadersStartingAtBreakpoint: 'xs',
@@ -99,6 +102,11 @@ const rowsToRender = computed(() =>
     hasHiddenRows.value ? sortedRows.value.slice(0, props.numInitialRowsDisplayed) : sortedRows.value,
 );
 
+// a row keyed by dataKey keeps its cells' component state when sorting moves it;
+// without dataKey, rows are keyed by position
+const rowKey = (row: any, rowIndex: number) =>
+    props.dataKey ? props.dataKey.split('.').reduce((value, key) => value?.[key], row) : rowIndex;
+
 const slots = useSlots();
 
 // the empty row's cell spans every column, so it counts the columns in the default slot,
@@ -112,7 +120,7 @@ const countColumns = (vnodes: VNode[] = slots.default?.() ?? []): number =>
     }, 0);
 
 // defined inline rather than as its own file so Nuxt doesn't auto-register it as a public component;
-// the context stays reactive because rows are keyed by index and reuse instances when the row changes
+// the context stays reactive because rows keyed by index reuse instances when the row at that index changes
 const CellContext = defineComponent({
     props: {
         context: {
@@ -155,7 +163,7 @@ const CellContext = defineComponent({
                     </tr>
                     <tr
                         v-for="(row, rowIndex) in rowsToRender"
-                        :key="rowIndex">
+                        :key="rowKey(row, rowIndex)">
                         <cell-context :context="{ type: 'body', row, rowIndex }">
                             <slot />
                         </cell-context>
