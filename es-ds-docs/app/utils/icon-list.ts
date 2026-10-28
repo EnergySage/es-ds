@@ -5,6 +5,7 @@ import IconArrowDown from '@energysage/es-ds-components/app/components/icon/arro
 import IconArrowLeft from '@energysage/es-ds-components/app/components/icon/arrow-left.vue';
 import IconArrowRight from '@energysage/es-ds-components/app/components/icon/arrow-right.vue';
 import IconArrowUp from '@energysage/es-ds-components/app/components/icon/arrow-up.vue';
+import IconArrowsDownUp from '@energysage/es-ds-components/app/components/icon/arrows-down-up.vue';
 import IconBank from '@energysage/es-ds-components/app/components/icon/bank.vue';
 import IconBattery from '@energysage/es-ds-components/app/components/icon/battery.vue';
 import IconBatteryChargingVertical from '@energysage/es-ds-components/app/components/icon/battery-charging-vertical.vue';
@@ -210,6 +211,11 @@ export const BASE_ICONS: IconMetadata[] = [
         name: 'arrow up',
         component: IconArrowUp,
         phosphorName: 'arrow-up',
+    },
+    {
+        name: 'arrows down up',
+        component: IconArrowsDownUp,
+        phosphorName: 'arrows-down-up',
     },
     {
         name: 'battery charging vertical',

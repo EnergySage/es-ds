@@ -42,7 +42,7 @@ const columnSortOrder = computed(() => {
         class="es-data-table-column-header">
         <button
             v-if="isSortable"
-            class="es-data-table-column-sort-button align-items-end d-flex justify-between h-100 position-absolute pr-200 text-left w-100"
+            class="es-data-table-column-sort-button align-items-end d-flex justify-between h-100 position-absolute pr-300 text-left w-100"
             title="Toggle sort direction for column"
             @click="sortContext?.toggleSort(field)">
             <!-- a sortable header renders this slot here and in the sizing div below, so it must be plain, non-interactive content -->
@@ -51,7 +51,7 @@ const columnSortOrder = computed(() => {
                 <span
                     class="es-data-table-column-sort-direction-arrow position-absolute"
                     aria-hidden="true">
-                    ↑
+                    <icon-arrow-up />
                 </span>
                 <span class="sr-only"> Sorted ascending </span>
             </template>
@@ -59,7 +59,7 @@ const columnSortOrder = computed(() => {
                 <span
                     class="es-data-table-column-sort-direction-arrow position-absolute"
                     aria-hidden="true">
-                    ↓
+                    <icon-arrow-down />
                 </span>
                 <span class="sr-only"> Sorted descending </span>
             </template>
@@ -67,7 +67,7 @@ const columnSortOrder = computed(() => {
                 <span
                     class="es-data-table-column-sort-direction-arrow position-absolute"
                     aria-hidden="true">
-                    ↕
+                    <icon-arrows-down-up />
                 </span>
             </template>
         </button>
@@ -80,7 +80,7 @@ const columnSortOrder = computed(() => {
             v-bind="
                 isSortable
                     ? {
-                          class: 'es-data-table-column-invisible-text align-items-end d-flex h-100 justify-between pr-100 w-100',
+                          class: 'es-data-table-column-invisible-text align-items-end d-flex h-100 justify-between pr-200 w-100',
                           'aria-hidden': true,
                       }
                     : {}
@@ -100,6 +100,7 @@ const columnSortOrder = computed(() => {
 
 <style lang="scss" scoped>
 @use 'sass:map';
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables';
 
 .es-data-table-column {
@@ -126,6 +127,16 @@ const columnSortOrder = computed(() => {
     &-sort-direction-arrow {
         bottom: 0.5rem;
         right: 1rem;
+
+        :deep(svg) {
+            height: 20px;
+            width: 20px;
+
+            @include breakpoints.media-breakpoint-up(md) {
+                height: 24px;
+                width: 24px;
+            }
+        }
     }
 
     &-invisible-text {

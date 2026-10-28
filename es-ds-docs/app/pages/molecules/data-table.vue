@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { EsDataTableSortEvent, EsDataTableSortOrder } from '@energysage/es-ds-components/app/types';
+
 const esDataTableProps = [
     [
         'freeze-first-column',
@@ -22,7 +24,24 @@ const esDataTableProps = [
         'true',
         'Uses a simple number and string sorting algorithm by default. Set to false if you need to use a more complex sorting algorithm.',
     ],
-    ['use-rounded-corners', 'Boolean', 'true', 'By default, the corners of the data table are rounded to match other elements in the design system. Use this to turn it off in special cases.'],
+    [
+        'use-rounded-corners',
+        'Boolean',
+        'true',
+        'By default, the corners of the data table are rounded to match other elements in the design system. Use this to turn it off in special cases.',
+    ],
+];
+
+const esDataTableEvents = [
+    [
+        'sort',
+        '{ sortField, sortOrder }',
+        `
+        Emitted when the user clicks a sortable column header. sortField is the field of that column, and
+        sortOrder is its new direction, with 1 for ascending and -1 for descending. Intended for use with internal
+        sorting off to implement a custom sort algorithm and update the items array.
+        `,
+    ],
 ];
 
 const esDataTableSlots = [
@@ -91,6 +110,81 @@ const averageCostTable = [
         costBefore: 30000,
         incentive: 'Larger state tax credit',
         url: '/atoms/typography',
+    },
+];
+
+const costRangeTableSortField = ref('range');
+const costRangeTableSortOrder = ref<EsDataTableSortOrder>(1);
+const costRangeTable = [
+    {
+        costRangeHighEnd: 24000,
+        costRangeLowEnd: 18000,
+        state: 'California',
+    },
+    {
+        costRangeHighEnd: 37000,
+        costRangeLowEnd: 27000,
+        state: 'Connecticut',
+    },
+    {
+        costRangeHighEnd: 35000,
+        costRangeLowEnd: 26000,
+        state: 'Florida',
+    },
+    {
+        costRangeHighEnd: 39000,
+        costRangeLowEnd: 29000,
+        state: 'Illinois',
+    },
+    {
+        costRangeHighEnd: 39000,
+        costRangeLowEnd: 29000,
+        state: 'Maryland',
+    },
+    {
+        costRangeHighEnd: 37000,
+        costRangeLowEnd: 27000,
+        state: 'Massachusetts',
+    },
+    {
+        costRangeHighEnd: 37000,
+        costRangeLowEnd: 27000,
+        state: 'New Jersey',
+    },
+    {
+        costRangeHighEnd: 38000,
+        costRangeLowEnd: 28000,
+        state: 'New York',
+    },
+    {
+        costRangeHighEnd: 29000,
+        costRangeLowEnd: 22000,
+        state: 'New Mexico',
+    },
+    {
+        costRangeHighEnd: 37000,
+        costRangeLowEnd: 28000,
+        state: 'Pennsylvania',
+    },
+    {
+        costRangeHighEnd: 38000,
+        costRangeLowEnd: 28000,
+        state: 'Rhode Island',
+    },
+    {
+        costRangeHighEnd: 34000,
+        costRangeLowEnd: 25000,
+        state: 'Texas',
+    },
+    {
+        costRangeHighEnd: 41000,
+        costRangeLowEnd: 30000,
+        state: 'Virginia',
+    },
+    {
+        costRangeHighEnd: 35000,
+        costRangeLowEnd: 26000,
+        state: 'Washington D.C.',
     },
 ];
 
@@ -243,6 +337,27 @@ const usDollarNumberFormat = new Intl.NumberFormat('en-US', {
     maximumFractionDigits: 0,
 });
 
+const sortedCostRangeTable = computed(() => {
+    if (costRangeTableSortField.value === 'state') {
+        return costRangeTable.slice().sort((a, b) => a.state.localeCompare(b.state) * costRangeTableSortOrder.value);
+    } else {
+        // ranges with the same low end are ordered by their high end, and identical ranges by state
+        return costRangeTable
+            .slice()
+            .sort(
+                (a, b) =>
+                    (a.costRangeLowEnd - b.costRangeLowEnd ||
+                        a.costRangeHighEnd - b.costRangeHighEnd ||
+                        a.state.localeCompare(b.state)) * costRangeTableSortOrder.value,
+            );
+    }
+});
+
+const handleSortCostRangeTable = ({ sortField, sortOrder }: EsDataTableSortEvent) => {
+    costRangeTableSortField.value = sortField;
+    costRangeTableSortOrder.value = sortOrder;
+};
+
 const { $prism } = useNuxtApp();
 const compCode = ref('');
 const docCode = ref('');
@@ -278,8 +393,8 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>Custom rendering</h2>
             <p>
-                You can customize the rendering of both column headers and table cells. This is most commonly done to
-                support bold text, italic text, or links.
+                You can customize the rendering of both column headers and table cells. This allows you to render bold
+                text, italic text, links, and more.
             </p>
             <p class="mb-200">
                 <strong>Important:</strong> if you enable sorting on a column, that will turn the column header into an
@@ -333,17 +448,15 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Sortable</h2>
+            <h2>Sorting</h2>
             <p class="mb-200">
-                Apply the <code>sortable</code> prop to a column to indicate that the user should be able to change the
-                sort order of the rows based on that column's data. To set the initial state of the table to be sorted
-                by a particular column, use the <code>sortField</code> and <code>sortOrder</code> props of the data
-                table.
+                Individual columns can be marked as sortable to activate sorting on them. If you want the initial state
+                of the table to be sorted, you can also specify which column and which sort direction should be used to
+                run the initial sort.
             </p>
             <es-data-table
-                :items="stateInfoTable"
-                sort-field="name"
-                :sort-order="1">
+                :items="stateInfoTable.slice(0, 5)"
+                sort-field="name">
                 <es-data-table-column
                     field="name"
                     header="Name"
@@ -361,6 +474,35 @@ onMounted(async () => {
                     header="Year admitted"
                     sortable />
             </es-data-table>
+            <p>
+                By default, the table will use a simple internal sorting algorithm, which can handle basic numbers and
+                strings. If you need a more complex sort, you can make use of the <code>@sort</code> event to implement
+                your own algorithm and update the list of items passed into the table.
+            </p>
+            <p class="mb-200">
+                This example shows a custom sort that first sorts by the low end of the cost range, then if there's a
+                tie, the high end of the cost range, then if there's still a tie, the state name.
+            </p>
+            <es-data-table
+                :items="sortedCostRangeTable"
+                sort-field="range"
+                :use-internal-sorting="false"
+                @sort="handleSortCostRangeTable">
+                <es-data-table-column
+                    field="state"
+                    header="State"
+                    sortable />
+                <es-data-table-column
+                    field="range"
+                    header="Cost range"
+                    sortable>
+                    <template #body="slotProps">
+                        {{
+                            `${usDollarNumberFormat.format(slotProps.data.costRangeLowEnd)} - ${usDollarNumberFormat.format(slotProps.data.costRangeHighEnd)}`
+                        }}
+                    </template>
+                </es-data-table-column>
+            </es-data-table>
         </div>
 
         <div class="mb-500">
@@ -377,7 +519,7 @@ onMounted(async () => {
                     lg="5">
                     <es-data-table
                         freeze-first-column
-                        :items="stateInfoTable">
+                        :items="stateInfoTable.slice(5, 10)">
                         <es-data-table-column
                             field="name"
                             header="Name" />
@@ -434,10 +576,13 @@ onMounted(async () => {
 
         <div class="mb-500">
             <h2>Turning off rounded corners</h2>
-            <p class="mb-200">
+            <p>
                 Rounded corners should be used in most cases to match other elements in the design system, but can be
                 turned off to reduce clutter on denser, more interactive screens, especially when the table itself
                 contains rounded elements.
+            </p>
+            <p class="mb-200">
+                This example also shows how to use custom header and body cell rendering to right-align a column.
             </p>
             <es-data-table
                 freeze-first-column
@@ -523,12 +668,20 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
+            <h2>EsDataTable events</h2>
+            <ds-prop-table
+                :columns="['Name', 'Payload', 'Description']"
+                :rows="esDataTableEvents"
+                :widths="{ md: ['2', '4', '6'] }" />
+        </div>
+
+        <div class="mb-500">
             <h2>EsDataTable slots</h2>
             <ds-prop-table
                 :columns="['Name', 'Default', 'Description']"
                 :rows="esDataTableSlots"
                 :widths="{
-                    md: ['3', '4', '5'],
+                    md: ['2', '4', '6'],
                 }" />
         </div>
 
