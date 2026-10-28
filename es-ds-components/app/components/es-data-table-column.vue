@@ -2,12 +2,14 @@
 import { ES_DATA_TABLE_CELL_CONTEXT_KEY, ES_DATA_TABLE_SORT_KEY } from '../utils/data-table';
 
 interface Props {
+    align?: 'left' | 'right';
     field?: string;
     header?: string;
     sortable?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    align: 'left',
     field: '',
     header: '',
     sortable: false,
@@ -39,10 +41,13 @@ const columnSortOrder = computed(() => {
     <th
         v-if="cellContext?.type === 'header'"
         scope="col"
-        class="es-data-table-column-header">
+        class="es-data-table-column-header"
+        :class="{ 'es-data-table-column-header--align-right text-right': align === 'right' }">
+        <!-- the sort arrow sits on the side opposite the text, so right-aligned text lines up with the cells below -->
         <button
             v-if="isSortable"
-            class="es-data-table-column-sort-button align-items-end d-flex justify-between h-100 position-absolute pr-300 text-left w-100"
+            class="es-data-table-column-sort-button align-items-end d-flex justify-between h-100 position-absolute w-100"
+            :class="align === 'right' ? 'justify-content-end pl-300 text-right' : 'pr-300 text-left'"
             title="Toggle sort direction for column"
             @click="sortContext?.toggleSort(field)">
             <!-- a sortable header renders this slot here and in the sizing div below, so it must be plain, non-interactive content -->
@@ -88,7 +93,9 @@ const columnSortOrder = computed(() => {
             <slot name="header">{{ header }}</slot>
         </div>
     </th>
-    <td v-else-if="cellContext?.type === 'body'">
+    <td
+        v-else-if="cellContext?.type === 'body'"
+        :class="{ 'text-right': align === 'right' }">
         <slot
             name="body"
             :data="cellContext.row"
@@ -137,6 +144,12 @@ const columnSortOrder = computed(() => {
                 width: 24px;
             }
         }
+    }
+
+    /* flip sort direction arrow to other side when text is aligned right */
+    &-header--align-right &-sort-direction-arrow {
+        left: 1rem;
+        right: auto;
     }
 
     &-invisible-text {

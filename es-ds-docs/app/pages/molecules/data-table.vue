@@ -54,6 +54,12 @@ const esDataTableSlots = [
 
 const esDataTableColumnProps = [
     [
+        'align',
+        "'left' or 'right'",
+        "'left'",
+        'Aligns the column header and table cells. Right alignment, typically used for numbers, also moves the sort arrow to the left of the header text.',
+    ],
+    [
         'field',
         'String',
         "''",
@@ -582,7 +588,8 @@ onMounted(async () => {
                 contains rounded elements.
             </p>
             <p class="mb-200">
-                This example also shows how to use custom header and body cell rendering to right-align a column.
+                This example also shows how to right-align a column, which is typical for numbers. The sort indicator
+                arrow will appear on the left side of the column header in this case.
             </p>
             <es-data-table
                 freeze-first-column
@@ -597,17 +604,10 @@ onMounted(async () => {
                     header="City"
                     sortable />
                 <es-data-table-column
+                    align="right"
                     field="systemSize"
-                    sortable>
-                    <template #header>
-                        <span class="text-right w-100"> System size (kW) </span>
-                    </template>
-                    <template #body="slotProps">
-                        <div class="text-right">
-                            {{ slotProps.data.systemSize }}
-                        </div>
-                    </template>
-                </es-data-table-column>
+                    header="System size (kW)"
+                    sortable />
                 <es-data-table-column
                     field="status"
                     header="Status"

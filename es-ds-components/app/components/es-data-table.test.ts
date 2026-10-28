@@ -4,6 +4,9 @@ import { afterEach, describe, expect, it, type MockInstance, vi } from 'vitest';
 import { h, type VNodeChild } from 'vue';
 import EsDataTable from './es-data-table.vue';
 import EsDataTableColumn from './es-data-table-column.vue';
+import IconArrowDown from './icon/arrow-down.vue';
+import IconArrowUp from './icon/arrow-up.vue';
+import IconArrowsDownUp from './icon/arrows-down-up.vue';
 
 const ITEMS = [
     { name: 'Maine', capital: 'Augusta', abbreviation: 'ME' },
@@ -12,6 +15,7 @@ const ITEMS = [
 
 /** EsDataTableColumn props, plus optional header and body slots */
 interface ColumnConfig {
+    align?: 'left' | 'right';
     field?: string;
     header?: string;
     sortable?: boolean;
@@ -48,10 +52,18 @@ const headerCell = (wrapper: VueWrapper, header: string) => {
     return cell;
 };
 
-/** the sort arrow a header shows, or null when the header isn't sortable */
+/** the sort arrow icon a header shows as ↑, ↓ or ↕, or null when the header isn't sortable */
 const arrow = (wrapper: VueWrapper, header: string) => {
     const button = headerCell(wrapper, header).find('button');
-    return button.exists() ? button.find('.es-data-table-column-sort-direction-arrow').text() : null;
+    if (!button.exists()) {
+        return null;
+    }
+    const icons = [
+        [IconArrowUp, '↑'],
+        [IconArrowDown, '↓'],
+        [IconArrowsDownUp, '↕'],
+    ] as const;
+    return icons.find(([icon]) => button.findComponent(icon).exists())?.[1];
 };
 
 const clickHeader = (wrapper: VueWrapper, header: string) =>
@@ -171,6 +183,46 @@ describe('EsDataTable cell rendering', () => {
     });
 });
 
+describe('EsDataTableColumn align', () => {
+    const bodyCells = (wrapper: VueWrapper, columnIndex: number) =>
+        wrapper.findAll('tbody tr').map((tr) => tr.findAll('td')[columnIndex]!);
+
+    it('left-aligns the header and body cells with the sort arrow on the right by default', async () => {
+        const wrapper = await mountTable({}, [{ field: 'name', header: 'Name', sortable: true }]);
+        const header = headerCell(wrapper, 'Name');
+        expect(header.classes()).not.toContain('text-right');
+        expect(header.classes()).not.toContain('es-data-table-column-header--align-right');
+        expect(header.find('button').classes()).toEqual(expect.arrayContaining(['pr-300', 'text-left']));
+        expect(bodyCells(wrapper, 0).map((td) => td.classes('text-right'))).toEqual([false, false]);
+    });
+
+    it('right-aligns the header and body cells with the sort arrow on the left', async () => {
+        const wrapper = await mountTable({}, [
+            { field: 'name', header: 'Name' },
+            { field: 'capital', header: 'Capital', sortable: true, align: 'right' },
+        ]);
+        const header = headerCell(wrapper, 'Capital');
+        expect(header.classes()).toEqual(
+            expect.arrayContaining(['text-right', 'es-data-table-column-header--align-right']),
+        );
+        const button = header.find('button');
+        expect(button.classes()).toEqual(expect.arrayContaining(['justify-content-end', 'pl-300', 'text-right']));
+        expect(button.classes()).not.toContain('pr-300');
+        expect(bodyCells(wrapper, 1).map((td) => td.classes('text-right'))).toEqual([true, true]);
+        // other columns keep their own alignment
+        expect(headerCell(wrapper, 'Name').classes()).not.toContain('text-right');
+        expect(bodyCells(wrapper, 0).map((td) => td.classes('text-right'))).toEqual([false, false]);
+    });
+
+    it('right-aligns a non-sortable header and a body slot cell', async () => {
+        const wrapper = await mountTable({}, [
+            { field: 'name', header: 'Name', align: 'right', body: ({ data }) => h('strong', data.name) },
+        ]);
+        expect(headerCell(wrapper, 'Name').classes()).toContain('text-right');
+        expect(bodyCells(wrapper, 0).map((td) => td.classes('text-right'))).toEqual([true, true]);
+    });
+});
+
 describe('EsDataTable empty slot', () => {
     const emptySlot = () => h('p', 'No data found');
 
@@ -186,7 +238,7 @@ describe('EsDataTable empty slot', () => {
         expect(cells).toHaveLength(1);
         expect(cells[0]!.attributes('colspan')).toBe('3');
         expect(cells[0]!.find('p').text()).toBe('No data found');
-        expect(cells[0]!.text()).not.toContain('No data to display');
+        expect(cells[0]!.text()).not.toContain('No rows to display');
         expect(wrapper.findAll('thead th')).toHaveLength(3);
     });
 
@@ -223,7 +275,7 @@ describe('EsDataTable empty slot', () => {
         const cells = wrapper.findAll('tbody td');
         expect(cells).toHaveLength(1);
         expect(cells[0]!.attributes('colspan')).toBe('3');
-        expect(cells[0]!.text()).toBe('No data to display');
+        expect(cells[0]!.text()).toBe('No rows to display');
     });
 });
 
