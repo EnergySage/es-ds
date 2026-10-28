@@ -35,6 +35,14 @@ const columnSortOrder = computed(() => {
     const sortState = sortContext?.sortState.value;
     return sortState?.field === props.field ? sortState.order : null;
 });
+
+// set only on the sorted column, since ARIA expects one sorted header at a time
+const ariaSort = computed(() => {
+    if (columnSortOrder.value === 1) {
+        return 'ascending';
+    }
+    return columnSortOrder.value === -1 ? 'descending' : undefined;
+});
 </script>
 
 <template>
@@ -42,12 +50,14 @@ const columnSortOrder = computed(() => {
         v-if="cellContext?.type === 'header'"
         scope="col"
         class="es-data-table-column-header"
-        :class="{ 'es-data-table-column-header--align-right text-right': align === 'right' }">
+        :class="{ 'es-data-table-column-header--align-right text-right': align === 'right' }"
+        :aria-sort="ariaSort">
         <!-- the sort arrow sits on the side opposite the text, so right-aligned text lines up with the cells below -->
         <button
             v-if="isSortable"
             class="es-data-table-column-sort-button align-items-end d-flex h-100 position-absolute w-100"
             :class="align === 'right' ? 'justify-content-end pl-300 text-right' : 'pr-300 text-left'"
+            type="button"
             title="Toggle sort direction for column"
             @click="sortContext?.toggleSort(field)">
             <!-- a sortable header renders this slot here and in the sizing div below, so it must be plain, non-interactive content -->

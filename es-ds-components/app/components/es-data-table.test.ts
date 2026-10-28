@@ -1,5 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
-import type { VueWrapper } from '@vue/test-utils';
+import { flushPromises, type VueWrapper } from '@vue/test-utils';
 import { afterEach, describe, expect, it, type MockInstance, vi } from 'vitest';
 import { defineComponent, h, ref, type VNodeChild } from 'vue';
 import EsDataTable from './es-data-table.vue';
@@ -270,6 +270,20 @@ describe('EsDataTable header clicks', () => {
         expect(sortAnnouncement(wrapper, 'Name')).toBe('Sorted ascending');
     });
 
+    it("doesn't submit an enclosing form", async () => {
+        const wrapper = await mountTable();
+        expect(headerCell(wrapper, 'Name').find('button').attributes('type')).toBe('button');
+    });
+
+    it('marks only the sorted header with aria-sort', async () => {
+        const wrapper = await mountTable({ sortField: 'name', sortOrder: -1 });
+        expect(headerCell(wrapper, 'Name').attributes('aria-sort')).toBe('descending');
+        expect(headerCell(wrapper, 'Capital').attributes('aria-sort')).toBeUndefined();
+        await clickHeader(wrapper, 'Capital');
+        expect(headerCell(wrapper, 'Name').attributes('aria-sort')).toBeUndefined();
+        expect(headerCell(wrapper, 'Capital').attributes('aria-sort')).toBe('ascending');
+    });
+
     it('starts a different column at ascending and clears the previous one', async () => {
         const wrapper = await mountTable({ sortField: 'name', sortOrder: -1 });
         await clickHeader(wrapper, 'Capital');
@@ -429,6 +443,19 @@ describe('EsDataTable initial row limit', () => {
         await showMoreButton(wrapper).trigger('click');
         expect(renderedNumbers(wrapper)).toHaveLength(25);
         expect(showMoreButton(wrapper).exists()).toBe(false);
+    });
+
+    it('moves focus to the first revealed row when Show more is clicked', async () => {
+        // attached so focus can move within the document
+        const wrapper = await mountSuspended(EsDataTable, {
+            attachTo: document.body,
+            props: { items: NUMBERED_ITEMS, limitInitialRowsDisplayed: true, numInitialRowsDisplayed: 5 },
+            slots: { default: () => NUMBERED_COLUMNS.map((column) => h(EsDataTableColumn, column)) },
+        });
+        await showMoreButton(wrapper).trigger('click');
+        await flushPromises();
+        expect(document.activeElement).toBe(wrapper.findAll('tbody tr')[5]!.element);
+        wrapper.unmount();
     });
 
     it('keeps every row displayed after Show more when the table is sorted', async () => {

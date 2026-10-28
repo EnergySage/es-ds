@@ -88,6 +88,18 @@ if (import.meta.dev) {
 
 const isShowingAllRows = ref(false);
 
+const tableBody = useTemplateRef<HTMLTableSectionElement>('tableBody');
+
+// the first row Show more reveals, which takes focus because the button it replaces leaves the page
+const firstRevealedRowIndex = ref<number | null>(null);
+
+const showAllRows = async () => {
+    firstRevealedRowIndex.value = props.numInitialRowsDisplayed;
+    isShowingAllRows.value = true;
+    await nextTick();
+    (tableBody.value?.children[firstRevealedRowIndex.value] as HTMLElement | undefined)?.focus();
+};
+
 // a limit below 1 would hide every row, so it falls back to displaying all of them
 const hasHiddenRows = computed(
     () =>
@@ -153,7 +165,7 @@ const CellContext = defineComponent({
                         </cell-context>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody ref="tableBody">
                     <tr v-if="!rowsToRender.length">
                         <td :colspan="countColumns()">
                             <slot name="empty">
@@ -163,7 +175,8 @@ const CellContext = defineComponent({
                     </tr>
                     <tr
                         v-for="(row, rowIndex) in rowsToRender"
-                        :key="rowKey(row, rowIndex)">
+                        :key="rowKey(row, rowIndex)"
+                        :tabindex="rowIndex === firstRevealedRowIndex ? -1 : undefined">
                         <cell-context :context="{ type: 'body', row, rowIndex }">
                             <slot />
                         </cell-context>
@@ -177,7 +190,7 @@ const CellContext = defineComponent({
             <es-button
                 outline
                 size="sm"
-                @click="isShowingAllRows = true">
+                @click="showAllRows">
                 {{ showMoreButtonText }}
             </es-button>
         </div>
