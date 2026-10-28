@@ -80,7 +80,7 @@ const columnSortOrder = computed(() => {
             v-bind="
                 isSortable
                     ? {
-                          class: 'es-data-table-column-invisible-text align-items-end d-flex h-100 justify-between pr-200 w-100',
+                          class: 'es-data-table-column-invisible-text align-items-end d-flex h-100 justify-between pr-100 w-100',
                           'aria-hidden': true,
                       }
                     : {}

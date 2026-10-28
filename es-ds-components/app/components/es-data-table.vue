@@ -17,6 +17,7 @@ interface Props {
     /** the direction the table is initially sorted in; later changes are ignored */
     sortOrder?: EsDataTableSortOrder;
     useInternalSorting?: boolean;
+    useRoundedCorners?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -26,6 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
     sortField: '',
     sortOrder: 1,
     useInternalSorting: true,
+    useRoundedCorners: true,
 });
 
 const emit = defineEmits<{
@@ -99,6 +101,7 @@ const CellContext = defineComponent({
         :class="{
             'es-data-table--freeze-first-column': freezeFirstColumn,
             [`es-data-table--freeze-headers-${freezeHeadersStartingAtBreakpoint}`]: freezeHeaders,
+            'es-data-table--angled-corners': !useRoundedCorners,
         }">
         <table class="es-data-table table b-table font-size-75 font-size-md-100 b-table-no-border-collapse">
             <thead class="thead">
@@ -169,6 +172,10 @@ const CellContext = defineComponent({
                 }
             }
         }
+    }
+
+    &--angled-corners {
+        border-radius: 0;
     }
 }
 </style>

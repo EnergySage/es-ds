@@ -22,6 +22,7 @@ const esDataTableProps = [
         'true',
         'Uses a simple number and string sorting algorithm by default. Set to false if you need to use a more complex sorting algorithm.',
     ],
+    ['use-rounded-corners', 'Boolean', 'true', 'By default, the corners of the data table are rounded to match other elements in the design system. Use this to turn it off in special cases.'],
 ];
 
 const esDataTableSlots = [
@@ -198,6 +199,44 @@ const stateInfoTable = [
     },
 ];
 
+const customerTable = [
+    {
+        city: 'Boston, MA',
+        name: 'Avery Johnson',
+        quoteUrl: '/atoms/color',
+        status: 'Installed',
+        systemSize: 7.2,
+    },
+    {
+        city: 'Austin, TX',
+        name: 'Jordan Lee',
+        quoteUrl: '/atoms/corners',
+        status: 'Pending',
+        systemSize: 10.4,
+    },
+    {
+        city: 'Denver, CO',
+        name: 'Sam Rivera',
+        quoteUrl: '/atoms/icons',
+        status: 'Cancelled',
+        systemSize: 5.8,
+    },
+    {
+        city: 'Phoenix, AZ',
+        name: 'Taylor Kim',
+        quoteUrl: '/atoms/layout',
+        status: 'Installed',
+        systemSize: 12.1,
+    },
+    {
+        city: 'Portland, OR',
+        name: 'Morgan Patel',
+        quoteUrl: '/atoms/spacing',
+        status: 'Pending',
+        systemSize: 8.6,
+    },
+];
+
 const usDollarNumberFormat = new Intl.NumberFormat('en-US', {
     currency: 'USD',
     style: 'currency',
@@ -237,33 +276,6 @@ onMounted(async () => {
         </div>
 
         <div class="mb-500">
-            <h2>Empty example</h2>
-            <p class="mb-200">
-                When there are no rows to display, the table will show a message to make it clear the table is empty.
-            </p>
-            <es-data-table :items="[]">
-                <es-data-table-column header="Name" />
-                <es-data-table-column header="Upfront cost" />
-                <es-data-table-column header="25 year savings" />
-            </es-data-table>
-            <p class="mb-200">You can also customize how the empty state looks.</p>
-            <es-data-table :items="[]">
-                <es-data-table-column header="Name" />
-                <es-data-table-column header="Upfront cost" />
-                <es-data-table-column header="25 year savings" />
-                <template #empty>
-                    <div class="align-items-center d-flex flex-column p-200 text-center">
-                        <icon-rooftop-solar
-                            class="mb-50"
-                            height="64px"
-                            width="64px" />
-                        Installers are working on custom quotes based on your needs.
-                    </div>
-                </template>
-            </es-data-table>
-        </div>
-
-        <div class="mb-500">
             <h2>Custom rendering</h2>
             <p>
                 You can customize the rendering of both column headers and table cells. This is most commonly done to
@@ -276,20 +288,7 @@ onMounted(async () => {
                 behavior.
             </p>
             <es-data-table :items="averageCostTable">
-                <es-data-table-column>
-                    <template #header>
-                        <span class="align-items-center d-flex">
-                            Incentive
-                            <es-tooltip trigger-class="ml-25">
-                                <template #trigger>
-                                    <icon-info
-                                        width="20px"
-                                        height="20px" />
-                                </template>
-                                <p class="mb-0">Additional information about incentives</p>
-                            </es-tooltip>
-                        </span>
-                    </template>
+                <es-data-table-column header="Incentive">
                     <template #body="slotProps">
                         <nuxt-link :to="slotProps.data.url">{{ slotProps.data.incentive }}</nuxt-link>
                     </template>
@@ -430,6 +429,91 @@ onMounted(async () => {
                 <es-data-table-column
                     field="yearAdmitted"
                     header="Year admitted" />
+            </es-data-table>
+        </div>
+
+        <div class="mb-500">
+            <h2>Turning off rounded corners</h2>
+            <p class="mb-200">
+                Rounded corners should be used in most cases to match other elements in the design system, but can be
+                turned off to reduce clutter on denser, more interactive screens, especially when the table itself
+                contains rounded elements.
+            </p>
+            <es-data-table
+                freeze-first-column
+                :items="customerTable"
+                :use-rounded-corners="false">
+                <es-data-table-column
+                    field="name"
+                    header="Customer"
+                    sortable />
+                <es-data-table-column
+                    field="city"
+                    header="City"
+                    sortable />
+                <es-data-table-column
+                    field="systemSize"
+                    sortable>
+                    <template #header>
+                        <span class="text-right w-100"> System size (kW) </span>
+                    </template>
+                    <template #body="slotProps">
+                        <div class="text-right">
+                            {{ slotProps.data.systemSize }}
+                        </div>
+                    </template>
+                </es-data-table-column>
+                <es-data-table-column
+                    field="status"
+                    header="Status"
+                    sortable>
+                    <template #body="slotProps">
+                        <es-badge
+                            :variant="
+                                slotProps.data.status === 'Success'
+                                    ? 'success'
+                                    : slotProps.data.status === 'Pending'
+                                      ? 'warning'
+                                      : slotProps.data.status === 'Cancelled'
+                                        ? 'danger'
+                                        : 'primary'
+                            ">
+                            {{ slotProps.data.status }}
+                        </es-badge>
+                    </template>
+                </es-data-table-column>
+                <es-data-table-column header="Quote">
+                    <template #body="slotProps">
+                        <nuxt-link :to="slotProps.data.quoteUrl"> View quote </nuxt-link>
+                    </template>
+                </es-data-table-column>
+            </es-data-table>
+        </div>
+
+        <div class="mb-500">
+            <h2>Empty example</h2>
+            <p class="mb-200">
+                When there are no rows to display, the table will show a message to make it clear the table is empty.
+            </p>
+            <es-data-table :items="[]">
+                <es-data-table-column header="Name" />
+                <es-data-table-column header="Upfront cost" />
+                <es-data-table-column header="25 year savings" />
+            </es-data-table>
+            <p class="mb-200">You can also customize how the empty state looks.</p>
+            <es-data-table :items="[]">
+                <es-data-table-column header="Name" />
+                <es-data-table-column header="Upfront cost" />
+                <es-data-table-column header="25 year savings" />
+                <template #empty>
+                    <div class="align-items-center d-flex flex-column p-200 text-center">
+                        <icon-rooftop-solar
+                            class="mb-50"
+                            height="64px"
+                            width="64px" />
+                        Installers are working on custom quotes based on your needs.
+                    </div>
+                </template>
             </es-data-table>
         </div>
 
