@@ -46,7 +46,7 @@ const columnSortOrder = computed(() => {
         <!-- the sort arrow sits on the side opposite the text, so right-aligned text lines up with the cells below -->
         <button
             v-if="isSortable"
-            class="es-data-table-column-sort-button align-items-end d-flex justify-between h-100 position-absolute w-100"
+            class="es-data-table-column-sort-button align-items-end d-flex h-100 position-absolute w-100"
             :class="align === 'right' ? 'justify-content-end pl-300 text-right' : 'pr-300 text-left'"
             title="Toggle sort direction for column"
             @click="sortContext?.toggleSort(field)">
