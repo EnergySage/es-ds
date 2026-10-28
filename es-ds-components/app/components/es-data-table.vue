@@ -74,11 +74,22 @@ const sortedRows = computed(() => {
     return [...props.items].sort((a, b) => compareValues(a[sort.field], b[sort.field]) * sort.order);
 });
 
+// provide misconfiguration warnings in the console on local dev
+if (import.meta.dev) {
+    const warnings: string[] = [];
+    if (props.limitInitialRowsDisplayed && props.numInitialRowsDisplayed < 1) {
+        warnings.push('`numInitialRowsDisplayed` must be at least 1 to limit the rows displayed.');
+    }
+    warnings.forEach((warning) => console.warn(`EsDataTable: ${warning}`));
+}
+
 const isShowingAllRows = ref(false);
 
+// a limit below 1 would hide every row, so it falls back to displaying all of them
 const hasHiddenRows = computed(
     () =>
         props.limitInitialRowsDisplayed &&
+        props.numInitialRowsDisplayed >= 1 &&
         !isShowingAllRows.value &&
         sortedRows.value.length > props.numInitialRowsDisplayed,
 );
@@ -184,19 +195,19 @@ const CellContext = defineComponent({
         }
 
         thead :deep(th) {
-            background: variables.$soft-blue; // keep in sync with the table header background
+            background: variables.$soft-blue; /* keep in sync with the table header background */
         }
 
         tbody :deep(td) {
-            background: inherit; // preserve row striping
+            background: inherit; /* preserve row striping */
         }
     }
 
-    // named by breakpoint rather than infix, since the xs infix is empty
+    /* named by breakpoint rather than infix, since the xs infix is empty */
     @each $breakpoint in map.keys(variables.$grid-breakpoints) {
         &--freeze-headers-#{$breakpoint} {
             @include breakpoints.media-breakpoint-up($breakpoint) {
-                // clips to the rounded corners without becoming the container sticky headers stick within
+                /* clips to the rounded corners without becoming the container sticky headers stick within */
                 overflow: clip;
 
                 thead :deep(th) {
@@ -217,9 +228,9 @@ const CellContext = defineComponent({
         bottom: 0;
         height: 8rem;
         left: 0;
-        // lets clicks through the gradient reach the rows it partially covers
+        /* lets clicks through the gradient reach the rows it partially covers */
         pointer-events: none;
-        z-index: 3; // above the frozen first column and headers
+        z-index: 3; /* above the frozen first column and headers */
 
         > * {
             pointer-events: auto;

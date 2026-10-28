@@ -62,8 +62,8 @@ const sortAnnouncement = (wrapper: VueWrapper, header: string) => {
 const clickHeader = (wrapper: VueWrapper, header: string) =>
     headerCell(wrapper, header).find('button').trigger('click');
 
-const columnWarnings = (warn: MockInstance<typeof console.warn>) =>
-    warn.mock.calls.filter(([message]) => String(message).startsWith('EsDataTableColumn:'));
+const componentWarnings = (warn: MockInstance<typeof console.warn>, component: 'EsDataTable' | 'EsDataTableColumn') =>
+    warn.mock.calls.filter(([message]) => String(message).startsWith(`${component}:`));
 
 afterEach(() => {
     vi.restoreAllMocks();
@@ -159,7 +159,7 @@ describe('EsDataTable cell rendering', () => {
         expect(plain!.text()).toBe('Capital');
     });
 
-    it('renders the header slot in a sortable header that still toggles sorting', async () => {
+    it('renders the header slot in a sortable header that toggles sorting', async () => {
         const wrapper = await mountTable({}, [
             { field: 'name', header: 'Name', sortable: true, headerSlot: () => h('strong', 'State name') },
         ]);
@@ -433,7 +433,7 @@ describe('EsDataTableColumn sortable configuration', () => {
         const wrapper = await mountTable({}, [{ header: 'Name', sortable: true }]);
         expect(sortAnnouncement(wrapper, 'Name')).toBeNull();
         // once for the header, not again for each of the rows
-        expect(columnWarnings(warn)).toEqual([
+        expect(componentWarnings(warn, 'EsDataTableColumn')).toEqual([
             ['EsDataTableColumn: `sortable` requires `field`, which identifies the column for sorting.'],
         ]);
     });
@@ -441,7 +441,7 @@ describe('EsDataTableColumn sortable configuration', () => {
     it('does not warn for valid column configurations', async () => {
         const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
         await mountTable({}, [...COLUMNS, { header: 'Custom' }]);
-        expect(columnWarnings(warn)).toEqual([]);
+        expect(componentWarnings(warn, 'EsDataTableColumn')).toEqual([]);
     });
 });
 
@@ -502,5 +502,21 @@ describe('EsDataTable initial row limit', () => {
         expect(renderedNumbers(wrapper)).toEqual([25, 24, 23]);
         await clickHeader(wrapper, 'Number');
         expect(renderedNumbers(wrapper)).toEqual([1, 2, 3]);
+    });
+
+    it.each([0, -1])('renders every row and warns when numInitialRowsDisplayed is %i', async (limit) => {
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, numInitialRowsDisplayed: limit });
+        expect(renderedNumbers(wrapper)).toHaveLength(25);
+        expect(showMoreButton(wrapper).exists()).toBe(false);
+        expect(componentWarnings(warn, 'EsDataTable')).toEqual([
+            ['EsDataTable: `numInitialRowsDisplayed` must be at least 1 to limit the rows displayed.'],
+        ]);
+    });
+
+    it('does not warn for an invalid numInitialRowsDisplayed without limitInitialRowsDisplayed', async () => {
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+        await mountNumberedTable({ numInitialRowsDisplayed: 0 });
+        expect(componentWarnings(warn, 'EsDataTable')).toEqual([]);
     });
 });
