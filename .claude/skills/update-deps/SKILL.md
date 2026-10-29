@@ -9,12 +9,14 @@ This skill performs a **routine refresh**. It is not for upgrading to new majors
 
 ## The mental model
 
-Every dep in `package.json` is declared as a range like `^X.Y.Z`. The actual installed version comes from the lockfile, not the spec — and `npm install` against a missing lockfile resolves each range to the highest matching published version. So:
+Every dep in `package.json` except `nuxt` (see below) is declared as a range like `^X.Y.Z`. The actual installed version comes from the lockfile, not the spec — and `npm install` against a missing lockfile resolves each range to the highest matching published version. So:
 
 - A refresh is: wipe the lockfile, run `npm install`, let the resolver pick up every in-range minor/patch.
 - No `package.json` edits. No `npm view` queries. No changelog scans. No "which deps should we bump" deliberation.
 
 Crossing a major (e.g. `^3.x` → `^4.x`) requires a deliberate `package.json` edit. **The skill does not do that as part of a refresh.** Every major bump is a breaking-change decision that deserves its own PR and its own verification — not a hidden line in a "deps refresh" commit. This applies uniformly: `nuxt`, `vue`, `primevue`, `eslint`, `@types/node`, everything. Drift is expected and acceptable — under this policy, deps will fall behind their absolute latest. That's the trade.
+
+**Nuxt is the exception: it is pinned to one exact version, with no range.** `es-ds-components` declares that exact version as a peer dependency, so every downstream app must install the same one. Nuxt has shipped breaking changes in minor releases, which is why it's pinned. The exact spec keeps the resolver from moving it, so a refresh bumps it explicitly (Step 3) to the latest version within the current major, changing all three specs together: `nuxt` in `es-ds-components` `devDependencies`, `nuxt` in `es-ds-components` `peerDependencies`, and `nuxt` in `es-ds-docs` `dependencies` (CI fails if they differ). A Nuxt bump forces every downstream app to move to that exact version, so call it out in the handoff as a breaking change for consumers.
 
 The same logic applies to `.node-version`: stay within the major that's currently pinned. Don't cross to a newer Active LTS major even if one exists.
 
@@ -29,7 +31,7 @@ For either exception, the rest of the refresh still runs as normal — but the h
 
 ## Shared-version guardrail
 
-`es-ds-docs` extends `es-ds-components` as a Nuxt layer. Shared deps must resolve to the same major.minor in both, or layer resolution can quietly pull two different copies. Under in-range-only this is normally self-enforcing — both `package.json`s declare the same `^` range, the resolver picks the same version — but verify after the install by comparing resolved versions in the after-snapshot. If a shared dep drifted, something is wrong with the specifiers (likely a hand-edit out of sync) and you should reconcile before continuing.
+`es-ds-docs` extends `es-ds-components` as a Nuxt layer. Shared deps must resolve to the same major.minor in both, or layer resolution can quietly pull two different copies. Under in-range-only this is normally self-enforcing — both `package.json`s declare the same `^` range (or, for `nuxt`, the same exact version), the resolver picks the same version — but verify after the install by comparing resolved versions in the after-snapshot. If a shared dep drifted, something is wrong with the specifiers (likely a hand-edit out of sync) and you should reconcile before continuing.
 
 Don't hardcode the overlap list — re-derive it from the current `package.json` files. As of the most recent check it included `nuxt`, `vue`, `vue-tsc`, `typescript`, `sass`, `@nuxt/eslint`, `@nuxtjs/google-fonts`, `@phosphor-icons/vue`, `@vuelidate/core`, `@vuelidate/validators`, `@vueuse/core`, `eslint`, `eslint-config-prettier`, `prettier`, `html-truncate`, `maska`, `mitt`, `prismjs`, `reka-ui`.
 
@@ -117,6 +119,14 @@ If that errors with "definition not found" for a version that should exist, run 
 
 ## Step 3: Refresh
 
+Bump the Nuxt pin first, since the resolver can't move an exact spec. Find the latest published version within the current major:
+
+```bash
+npm view "nuxt@^$(jq -r '.peerDependencies.nuxt | split(".")[0]' es-ds-components/package.json)" version --json | jq -r 'if type == "array" then .[-1] else . end'
+```
+
+If it's newer than the current pin, set it as the exact version (no `^`) in all three places listed above. If verification in Step 4 traces a regression to the Nuxt bump, roll all three back to the previous pin together.
+
 Wipe install artifacts so the resolver picks fresh in-range versions instead of reusing whatever's already locked:
 
 ```bash
@@ -194,7 +204,7 @@ diff <(sort /tmp/deps-before.tsv) <(sort /tmp/deps-after.tsv)
 
 Sections to include:
 
-- **Bumped:** every direct dep whose resolved version changed, grouped by package, formatted as `name  <before> → <after>`. Under the default flow these are all in-range minor/patch; you don't need to flag anything as "major" because none of them are.
+- **Bumped:** every direct dep whose resolved version changed, grouped by package, formatted as `name  <before> → <after>`. Under the default flow these are all in-range minor/patch; you don't need to flag anything as "major" because none of them are. If the Nuxt pin moved, list it first and flag it as a breaking change for downstream apps, which must install that exact version.
 - **Held back:** in-range bumps that were rolled back because they broke verification, with the one-line reason.
 - **`.node-version`:** what it was, what it is now (or "unchanged"). Always within the same major.
 - **Security advisories:** baseline count vs. after-install count. If any remain unresolved, list them with severity and the source dep. If any required a major-bump exception, name the dep and the new spec.
