@@ -81,7 +81,7 @@ make build                    # Build all packages
 - Vuelidate 2.x (form validation)
 - SASS 1.77+ with modern API
 
-**Nuxt is pinned exactly, with no range.** `es-ds-components` lists that version in `peerDependencies`, so downstream apps must install the same one. The `nuxt` spec in `es-ds-components` `peerDependencies`, `es-ds-components` `devDependencies` and `es-ds-docs` `dependencies` must always match (CI checks this). Bump all three together, and only as a deliberate change, since it forces every downstream app to move too.
+**Nuxt is pinned exactly, with no range.** `es-ds-components` lists that version in `peerDependencies`, so downstream apps must install the same one. The `nuxt` spec in `es-ds-components` `peerDependencies`, `es-ds-components` `devDependencies` and `es-ds-docs` `dependencies` must always match (CI checks this). Bump all three together (the `update-deps` skill does this as part of a refresh), and flag the bump as a breaking change for downstream apps, since they must move to the same exact version.
 
 ## Publishing Workflow
 

@@ -16,7 +16,7 @@ Every dep in `package.json` except `nuxt` (see below) is declared as a range lik
 
 Crossing a major (e.g. `^3.x` → `^4.x`) requires a deliberate `package.json` edit. **The skill does not do that as part of a refresh.** Every major bump is a breaking-change decision that deserves its own PR and its own verification — not a hidden line in a "deps refresh" commit. This applies uniformly: `nuxt`, `vue`, `primevue`, `eslint`, `@types/node`, everything. Drift is expected and acceptable — under this policy, deps will fall behind their absolute latest. That's the trade.
 
-**Nuxt is the exception: it is pinned to one exact version, with no range.** `es-ds-components` declares that exact version as a peer dependency, so every downstream app must install the same one. Nuxt has shipped breaking changes in minor releases, so a Nuxt bump is never part of a refresh, and the exact spec keeps the resolver from moving it. A deliberate Nuxt bump changes all three in one PR: `nuxt` in `es-ds-components` `devDependencies`, `nuxt` in `es-ds-components` `peerDependencies`, and `nuxt` in `es-ds-docs` `dependencies`. It also forces every downstream app to move to that exact version, so call it out to the user as a breaking change.
+**Nuxt is the exception: it is pinned to one exact version, with no range.** `es-ds-components` declares that exact version as a peer dependency, so every downstream app must install the same one. Nuxt has shipped breaking changes in minor releases, which is why it's pinned. The exact spec keeps the resolver from moving it, so a refresh bumps it explicitly (Step 3) to the latest version within the current major, changing all three specs together: `nuxt` in `es-ds-components` `devDependencies`, `nuxt` in `es-ds-components` `peerDependencies`, and `nuxt` in `es-ds-docs` `dependencies` (CI fails if they differ). A Nuxt bump forces every downstream app to move to that exact version, so call it out in the handoff as a breaking change for consumers.
 
 The same logic applies to `.node-version`: stay within the major that's currently pinned. Don't cross to a newer Active LTS major even if one exists.
 
@@ -119,6 +119,14 @@ If that errors with "definition not found" for a version that should exist, run 
 
 ## Step 3: Refresh
 
+Bump the Nuxt pin first, since the resolver can't move an exact spec. Find the latest published version within the current major:
+
+```bash
+npm view "nuxt@^$(jq -r '.peerDependencies.nuxt | split(".")[0]' es-ds-components/package.json)" version --json | jq -r 'if type == "array" then .[-1] else . end'
+```
+
+If it's newer than the current pin, set it as the exact version (no `^`) in all three places listed above. If verification in Step 4 traces a regression to the Nuxt bump, roll all three back to the previous pin together.
+
 Wipe install artifacts so the resolver picks fresh in-range versions instead of reusing whatever's already locked:
 
 ```bash
@@ -196,7 +204,7 @@ diff <(sort /tmp/deps-before.tsv) <(sort /tmp/deps-after.tsv)
 
 Sections to include:
 
-- **Bumped:** every direct dep whose resolved version changed, grouped by package, formatted as `name  <before> → <after>`. Under the default flow these are all in-range minor/patch; you don't need to flag anything as "major" because none of them are.
+- **Bumped:** every direct dep whose resolved version changed, grouped by package, formatted as `name  <before> → <after>`. Under the default flow these are all in-range minor/patch; you don't need to flag anything as "major" because none of them are. If the Nuxt pin moved, list it first and flag it as a breaking change for downstream apps, which must install that exact version.
 - **Held back:** in-range bumps that were rolled back because they broke verification, with the one-line reason.
 - **`.node-version`:** what it was, what it is now (or "unchanged"). Always within the same major.
 - **Security advisories:** baseline count vs. after-install count. If any remain unresolved, list them with severity and the source dep. If any required a major-bump exception, name the dep and the new spec.
