@@ -157,7 +157,7 @@ const CellContext = defineComponent({
                 [`es-data-table--freeze-headers-${freezeHeadersStartingAtBreakpoint}`]: freezeHeaders,
                 'es-data-table--angled-corners': !useRoundedCorners,
             }">
-            <table class="es-data-table table b-table font-size-75 font-size-md-100 b-table-no-border-collapse">
+            <table class="es-data-table table font-size-75 font-size-md-100">
                 <thead class="thead">
                     <tr>
                         <cell-context :context="{ type: 'header' }">
@@ -203,6 +203,10 @@ const CellContext = defineComponent({
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints';
 
 .es-data-table {
+    /* collapsed borders would detach from sticky header and first-column cells as they scroll */
+    border-collapse: separate;
+    border-spacing: 0;
+
     &--freeze-first-column {
         thead :deep(th:first-child),
         tbody :deep(td:first-child) {
