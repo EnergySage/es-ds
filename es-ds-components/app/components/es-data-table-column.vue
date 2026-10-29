@@ -56,7 +56,7 @@ const ariaSort = computed(() => {
         <button
             v-if="isSortable"
             class="es-data-table-column-sort-button align-items-end d-flex h-100 position-absolute w-100"
-            :class="align === 'right' ? 'justify-content-end pl-300 text-right' : 'pr-300 text-left'"
+            :class="align === 'right' ? 'justify-content-end pl-200 text-right' : 'pr-200 text-left'"
             type="button"
             title="Toggle sort direction for column"
             @click="sortContext?.toggleSort(field)">
@@ -95,7 +95,10 @@ const ariaSort = computed(() => {
             v-bind="
                 isSortable
                     ? {
-                          class: 'es-data-table-column-invisible-text align-items-end d-flex h-100 pr-200 w-100',
+                          class: [
+                            'es-data-table-column-invisible-text align-items-end d-flex h-100 w-100',
+                            align === 'right' ? 'pl-100' : 'pr-100',
+                          ],
                           'aria-hidden': true,
                       }
                     : {}
@@ -143,22 +146,26 @@ const ariaSort = computed(() => {
 
     &-sort-direction-arrow {
         bottom: 0.5rem;
-        right: 1rem;
+        right: 0.5rem;
+
+        @include breakpoints.media-breakpoint-up(md) {
+            bottom: 0.6rem;
+        }
 
         :deep(svg) {
-            height: 20px;
-            width: 20px;
+            height: 18px;
+            width: 18px;
 
             @include breakpoints.media-breakpoint-up(md) {
-                height: 24px;
-                width: 24px;
+                height: 20px;
+                width: 20px;
             }
         }
     }
 
     /* flip sort direction arrow to other side when text is aligned right */
     &-header--align-right &-sort-direction-arrow {
-        left: 1rem;
+        left: 0.5rem;
         right: auto;
     }
 
