@@ -1,6 +1,6 @@
 {
     "name": "@energysage/es-ds-components",
-    "version": "6.3.3",
+    "version": "7.0.0",
     "private": false,
     "type": "module",
     "description": "An EnergySage Vue component library",
@@ -36,11 +36,11 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@energysage/es-ds-styles": "4.1.0",
+        "@energysage/es-ds-styles": "7.0.0",
         "nuxt": "4.5.2"
     },
     "devDependencies": {
-        "@energysage/es-ds-styles": "^4.1.0",
+        "@energysage/es-ds-styles": "^7.0.0",
         "@nuxt/eslint": "^1.14.0",
         "@nuxtjs/google-fonts": "^3.2.0",
         "@phosphor-icons/vue": "^2.2.1",

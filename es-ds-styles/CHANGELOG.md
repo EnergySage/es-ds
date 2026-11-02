@@ -1,5 +1,16 @@
 # Changelog
 
+## [7.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v4.1.0...es-ds-styles-v7.0.0) (2026-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* release es-ds-styles and es-ds-components with a shared 7.0.0 version, require exact Nuxt version when installing ([#1802](https://github.com/EnergySage/es-ds/issues/1802))
+
+### Features
+
+* release es-ds-styles and es-ds-components with a shared 7.0.0 version, require exact Nuxt version when installing ([#1802](https://github.com/EnergySage/es-ds/issues/1802)) ([9c7017d](https://github.com/EnergySage/es-ds/commit/9c7017dd0011aec14e0f158d0372c342916780f6))
+
 ## [4.1.0](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v4.0.0...es-ds-styles-v4.1.0) (2026-10-02)
 
 
