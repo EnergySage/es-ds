@@ -108,6 +108,7 @@ export default defineNuxtConfig({
             },
         },
     },
+    // Applies to all consuming apps too, since layer config merges into theirs
     typescript: {
         typeCheck: true,
     },

@@ -31,9 +31,46 @@ jobs:
             es-ds-components--release_created: ${{ steps.release.outputs.es-ds-components--release_created }}
             es-ds-docs--version: ${{ steps.release.outputs.es-ds-docs--version }}
             es-ds-docs--release_created: ${{ steps.release.outputs.es-ds-docs--release_created }}
+            docs_changed: ${{ steps.docs.outputs.changed }}
         steps:
             - uses: googleapis/release-please-action@v5
               id: 'release'
+
+            # release-please can only put a version in a grouped PR title when there is a root package, so the shared version is added here.
+            # The title pattern in release-please-config.json parses with or without it, and continue-on-error keeps a failure here from skipping the publish jobs.
+            - name: Add version to release PR title
+              if: steps.release.outputs.prs_created == 'true'
+              continue-on-error: true
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  PR: ${{ steps.release.outputs.pr }}
+              run: |
+                  number=$(jq -r '.number' <<< "$PR")
+                  branch=$(jq -r '.headBranchName' <<< "$PR")
+                  version=$(gh api -H 'Accept: application/vnd.github.raw' "repos/${{ github.repository }}/contents/.release-please-manifest.json?ref=$branch" | jq -r '."es-ds-components"')
+                  gh api -X PATCH "repos/${{ github.repository }}/pulls/$number" -f title="chore: release es-ds-styles and es-ds-components $version" > /dev/null
+
+            # release-please ignores es-ds-docs changes (exclude-paths), so the deploy job uses this to ship them without a release.
+            # The docs build installs the published packages, so pushes that also change es-ds-styles or es-ds-components wait for their release deploy.
+            # Lockfiles are ignored so the post-release lockfile commit doesn't deploy again; failures here never block releases.
+            - name: Check for docs-only changes
+              id: docs
+              continue-on-error: true
+              env:
+                  GH_TOKEN: ${{ github.token }}
+              run: |
+                  if ! files=$(gh api "repos/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}" --jq '.files[].filename | select(endswith("package-lock.json") | not)'); then
+                      echo "::warning title=Docs deploy check failed::Could not list the files changed by this push, so docs-only changes were not deployed. Run the deploy workflow manually if this push changed es-ds-docs."
+                      echo "changed=false" >> "$GITHUB_OUTPUT"
+                      exit 0
+                  fi
+                  docs=$(grep -c '^es-ds-docs/' <<< "$files" || true)
+                  packages=$(grep -cE '^es-ds-(styles|components)/' <<< "$files" || true)
+                  if [ "$docs" -gt 0 ] && [ "$packages" -eq 0 ]; then
+                      echo "changed=true" >> "$GITHUB_OUTPUT"
+                  else
+                      echo "changed=false" >> "$GITHUB_OUTPUT"
+                  fi
 
     release-es-ds-styles:
         permissions:
@@ -257,8 +294,8 @@ jobs:
             - release-es-ds-components
             - release-es-ds-docs
             - update-lock-files
-        if: always() && !cancelled() && !failure() && (needs.release-please.outputs['es-ds-styles--release_created'] == 'true' || needs.release-please.outputs['es-ds-components--release_created'] == 'true' || needs.release-please.outputs['es-ds-docs--release_created'] == 'true')
+        if: always() && !cancelled() && !failure() && (needs.release-please.outputs.releases_created == 'true' || needs.release-please.outputs.docs_changed == 'true')
         secrets: inherit
         with:
             environment: int
-            trigger: automated release
+            trigger: ${{ needs.release-please.outputs.releases_created == 'true' && 'automated release' || 'docs site change' }}

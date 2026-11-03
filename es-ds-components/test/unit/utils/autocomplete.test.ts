@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { EsAutocompleteTextSegment } from '../types';
-import { splitEsAutocompleteText, splitEsAutocompleteTextLines } from './autocomplete';
+import type { EsAutocompleteTextSegment } from '../../../app/types';
+import { splitEsAutocompleteText, splitEsAutocompleteTextLines } from '../../../app/utils/autocomplete';
 
 // matched (typed) portions render regular; predictive portions render bold
 const regular = (text: string): EsAutocompleteTextSegment => ({ predictive: false, text });

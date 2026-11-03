@@ -1,5 +1,32 @@
 # Changelog
 
+## [7.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.3...es-ds-components-v7.0.0) (2026-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* release es-ds-styles and es-ds-components with a shared 7.0.0 version, require exact Nuxt version when installing ([#1802](https://github.com/EnergySage/es-ds/issues/1802))
+
+### Features
+
+* release es-ds-styles and es-ds-components with a shared 7.0.0 version, require exact Nuxt version when installing ([#1802](https://github.com/EnergySage/es-ds/issues/1802)) ([9c7017d](https://github.com/EnergySage/es-ds/commit/9c7017dd0011aec14e0f158d0372c342916780f6))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^4.1.0 to ^7.0.0
+  * peerDependencies
+    * @energysage/es-ds-styles bumped from 4.1.0 to 7.0.0
+
+## [6.3.3](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.2...es-ds-components-v6.3.3) (2026-10-19)
+
+
+### Bug Fixes
+
+* exclude tests from package to prevent downstream type errors ([#1798](https://github.com/EnergySage/es-ds/issues/1798)) ([07723a3](https://github.com/EnergySage/es-ds/commit/07723a36cefd46a8eacbc2c63413a753702aa34c))
+
 ## [6.3.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.1...es-ds-components-v6.3.2) (2026-10-14)
 
 

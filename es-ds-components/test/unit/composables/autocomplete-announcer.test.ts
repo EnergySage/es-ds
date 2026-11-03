@@ -2,7 +2,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { App } from 'vue';
 import { createApp, nextTick, ref } from 'vue';
-import { useEsAutocompleteAnnouncer } from './autocomplete-announcer';
+import { useEsAutocompleteAnnouncer } from '../../../app/composables/autocomplete-announcer';
 
 /** run the composable inside a real component so watchers are scoped */
 function withSetup<T>(composable: () => T): { app: App; result: T } {

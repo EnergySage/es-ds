@@ -1,6 +1,6 @@
 {
     "name": "@energysage/es-ds-components",
-    "version": "6.3.2",
+    "version": "7.0.0",
     "private": false,
     "type": "module",
     "description": "An EnergySage Vue component library",
@@ -18,6 +18,13 @@
         "url": "https://github.com/EnergySage/es-ds/issues"
     },
     "main": "./nuxt.config.ts",
+    "files": [
+        "app",
+        "nuxt.config.ts",
+        "CHANGELOG.md",
+        "README.md",
+        "!**/*.test.ts"
+    ],
     "scripts": {
         "test": "vitest run",
         "lint:eslint": "eslint .",
@@ -28,8 +35,12 @@
         "format": "npm run format:prettier && npm run format:eslint"
     },
     "license": "MIT",
+    "peerDependencies": {
+        "@energysage/es-ds-styles": "7.0.0",
+        "nuxt": "4.5.2"
+    },
     "devDependencies": {
-        "@energysage/es-ds-styles": "^4.1.0",
+        "@energysage/es-ds-styles": "^7.0.0",
         "@nuxt/eslint": "^1.14.0",
         "@nuxt/test-utils": "^4.3.4",
         "@nuxtjs/google-fonts": "^3.2.0",
@@ -47,7 +58,7 @@
         "html-truncate": "^1.2.2",
         "maska": "^3.2.0",
         "mitt": "^3.0.1",
-        "nuxt": "^4.3.1",
+        "nuxt": "4.5.2",
         "nuxt-primevue": "^3.0.0",
         "prettier": "^3.3.3",
         "primevue": "^3.53.0",

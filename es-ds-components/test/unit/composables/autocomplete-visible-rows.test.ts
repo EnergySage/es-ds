@@ -2,8 +2,8 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import type { App } from 'vue';
 import { createApp, nextTick, ref } from 'vue';
-import type { EsAutocompleteSuggestion } from '../types';
-import { useEsAutocompleteVisibleRows } from './autocomplete-visible-rows';
+import type { EsAutocompleteSuggestion } from '../../../app/types';
+import { useEsAutocompleteVisibleRows } from '../../../app/composables/autocomplete-visible-rows';
 
 // NOTE: happy-dom has no real layout, so element geometry (offsetHeight,
 // clientHeight) is mocked per element. These tests cover the counting/limit
