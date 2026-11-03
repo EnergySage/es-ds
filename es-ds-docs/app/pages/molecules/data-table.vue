@@ -432,10 +432,9 @@ onMounted(async () => {
                 text, italic text, links, and more.
             </p>
             <p class="mb-200">
-                <strong>Important:</strong> if you enable sorting on a column, that will turn the column header into an
-                interactive button. If you customize the headers on a sortable column, be sure NOT to include anything
-                interactive (like a link or button), as having a link or button within a button can lead to unexpected
-                behavior.
+                <strong>Important:</strong> use caution when customizing the headers of a sortable column. Sortable
+                column headers render as buttons, so do not include anything clickable inside of that button like a
+                link or another button, as unexpected behavior may occur.
             </p>
             <es-data-table :items="averageCostTable">
                 <es-data-table-column header="Incentive">

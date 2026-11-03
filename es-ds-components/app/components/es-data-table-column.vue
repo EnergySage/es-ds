@@ -96,8 +96,8 @@ const ariaSort = computed(() => {
                 isSortable
                     ? {
                           class: [
-                            'es-data-table-column-invisible-text align-items-end d-flex h-100 w-100',
-                            align === 'right' ? 'pl-100' : 'pr-100',
+                              'es-data-table-column-invisible-text align-items-end d-flex h-100 w-100',
+                              align === 'right' ? 'pl-100' : 'pr-100',
                           ],
                           'aria-hidden': true,
                       }
