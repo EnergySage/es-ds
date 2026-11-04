@@ -546,6 +546,10 @@ onMounted(async () => {
 
         <div class="mb-500">
             <h2>Tables with many columns</h2>
+            <p>
+                When a table is wider than the space available, it scrolls horizontally. A shadow appears on any edge
+                with columns hidden past it, and keyboard users can focus the table to scroll it with the arrow keys.
+            </p>
             <p class="mb-200">
                 Freezing the first column ensures it stays visible while scrolling the table contents horizontally.
                 This feature is especially useful on mobile when the first column contains primary information that is

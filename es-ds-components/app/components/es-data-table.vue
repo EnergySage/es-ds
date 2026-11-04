@@ -119,6 +119,56 @@ const rowsToRender = computed(() =>
 const rowKey = (row: any, rowIndex: number) =>
     props.dataKey ? props.dataKey.split('.').reduce((value, key) => value?.[key], row) : rowIndex;
 
+const scrollContainer = useTemplateRef<HTMLDivElement>('scrollContainer');
+
+// whether the table scrolls horizontally, and whether columns are hidden past either edge
+const horizontalOverflow = ref({ isScrollable: false, hasHiddenLeft: false, hasHiddenRight: false });
+
+// where the edge shadows sit, inside the container's border and above its horizontal scrollbar
+const edgeShadowBounds = ref({ top: 0, height: 0, left: 0, right: 0 });
+
+const updateHorizontalOverflow = () => {
+    const container = scrollContainer.value;
+    if (!container) {
+        return;
+    }
+    const { clientHeight, clientLeft, clientTop, clientWidth, offsetWidth, scrollLeft, scrollWidth } = container;
+    // frozen headers clip the table instead of scrolling it from their breakpoint up
+    const isScrollable = scrollWidth > clientWidth && getComputedStyle(container).overflowX !== 'clip';
+    horizontalOverflow.value = {
+        isScrollable,
+        // a pixel of tolerance absorbs subpixel scroll positions at either end
+        hasHiddenLeft: isScrollable && scrollLeft > 1,
+        hasHiddenRight: isScrollable && scrollLeft + clientWidth < scrollWidth - 1,
+    };
+    // a frozen first column never scrolls, so the left shadow starts at its right edge
+    const frozenColumnWidth = props.freezeFirstColumn ? (container.querySelector('th')?.offsetWidth ?? 0) : 0;
+    edgeShadowBounds.value = {
+        top: clientTop,
+        height: clientHeight,
+        left: clientLeft + frozenColumnWidth,
+        right: offsetWidth - clientLeft - clientWidth,
+    };
+};
+
+let resizeObserver: ResizeObserver | undefined;
+
+onMounted(() => {
+    updateHorizontalOverflow();
+    // the overflow can start or end without a scroll, when the container resizes or the table's contents change
+    resizeObserver = new ResizeObserver(updateHorizontalOverflow);
+    const container = scrollContainer.value;
+    if (container) {
+        resizeObserver.observe(container);
+        const table = container.querySelector('table');
+        if (table) {
+            resizeObserver.observe(table);
+        }
+    }
+});
+
+onBeforeUnmount(() => resizeObserver?.disconnect());
+
 const slots = useSlots();
 
 // the empty row's cell spans every column, so it counts the columns in the default slot,
@@ -148,15 +198,23 @@ const CellContext = defineComponent({
 </script>
 
 <template>
-    <!-- positions the show more overlay over the bottom of the table, outside the horizontal scroll -->
+    <!-- positions the show more overlay and edge shadows over the table, outside the horizontal scroll -->
     <div class="mb-200 position-relative">
+        <!-- keyboard users scroll the table by focusing it, so it's focusable only while there's something to scroll -->
         <div
+            ref="scrollContainer"
             class="border table__data-table table-responsive"
             :class="{
                 'es-data-table--freeze-first-column': freezeFirstColumn,
                 [`es-data-table--freeze-headers-${freezeHeadersStartingAtBreakpoint}`]: freezeHeaders,
                 'es-data-table--angled-corners': !useRoundedCorners,
-            }">
+            }"
+            v-bind="
+                horizontalOverflow.isScrollable
+                    ? { tabindex: 0, role: 'region', 'aria-label': 'Scrollable table' }
+                    : {}
+            "
+            @scroll="updateHorizontalOverflow">
             <table class="es-data-table table font-size-75 font-size-md-100">
                 <thead class="thead">
                     <tr>
@@ -184,6 +242,22 @@ const CellContext = defineComponent({
                 </tbody>
             </table>
         </div>
+        <div
+            v-if="horizontalOverflow.hasHiddenLeft"
+            class="es-data-table-edge-shadow es-data-table-edge-shadow--left position-absolute"
+            :style="{
+                top: `${edgeShadowBounds.top}px`,
+                height: `${edgeShadowBounds.height}px`,
+                left: `${edgeShadowBounds.left}px`,
+            }" />
+        <div
+            v-if="horizontalOverflow.hasHiddenRight"
+            class="es-data-table-edge-shadow es-data-table-edge-shadow--right position-absolute"
+            :style="{
+                top: `${edgeShadowBounds.top}px`,
+                height: `${edgeShadowBounds.height}px`,
+                right: `${edgeShadowBounds.right}px`,
+            }" />
         <div
             v-if="hasHiddenRows"
             class="es-data-table-show-more align-items-end d-flex justify-content-center pb-200 position-absolute w-100">
@@ -245,6 +319,33 @@ const CellContext = defineComponent({
     }
 
     &--angled-corners {
+        border-radius: 0;
+    }
+
+    /* EsStickyBar's shadow color and blur, cast inward from the edge; the negative spread
+    keeps it off the top and bottom edges */
+    &-edge-shadow {
+        pointer-events: none;
+        width: 1rem;
+        z-index: 3; /* above the frozen first column and headers */
+
+        /* matches the container's inner corners, which sit inside its 1px border */
+        &--left {
+            box-shadow: inset 6px 0 6px -3px rgba(variables.$gray-900, 0.2);
+            border-radius: calc(#{variables.$table-border-radius} - 1px) 0 0
+                calc(#{variables.$table-border-radius} - 1px);
+        }
+
+        &--right {
+            box-shadow: inset -6px 0 6px -3px rgba(variables.$gray-900, 0.2);
+            border-radius: 0 calc(#{variables.$table-border-radius} - 1px)
+                calc(#{variables.$table-border-radius} - 1px) 0;
+        }
+    }
+
+    /* square corners, and a left shadow that starts at the frozen column rather than the container's corner */
+    &--angled-corners ~ &-edge-shadow,
+    &--freeze-first-column ~ &-edge-shadow--left {
         border-radius: 0;
     }
 

@@ -538,3 +538,47 @@ describe('EsDataTable dataKey', () => {
         expect(cellTexts(wrapper)).toEqual(['Ohio', 'Maine *']);
     });
 });
+
+describe('EsDataTable horizontal overflow', () => {
+    /** gives the scroll container the measurements a browser would lay out, then scrolls it */
+    const scrollTo = async (
+        wrapper: VueWrapper,
+        { scrollLeft, scrollWidth, clientWidth }: { scrollLeft: number; scrollWidth: number; clientWidth: number },
+    ) => {
+        const container = wrapper.find('.table-responsive');
+        Object.defineProperties(container.element, {
+            scrollLeft: { value: scrollLeft, configurable: true },
+            scrollWidth: { value: scrollWidth, configurable: true },
+            clientWidth: { value: clientWidth, configurable: true },
+        });
+        await container.trigger('scroll');
+        return container;
+    };
+
+    const edgeShadows = (wrapper: VueWrapper) => ({
+        left: wrapper.find('.es-data-table-edge-shadow--left').exists(),
+        right: wrapper.find('.es-data-table-edge-shadow--right').exists(),
+    });
+
+    it('shadows the edge past which columns are hidden', async () => {
+        const wrapper = await mountTable();
+        await scrollTo(wrapper, { scrollLeft: 0, scrollWidth: 1000, clientWidth: 400 });
+        expect(edgeShadows(wrapper)).toEqual({ left: false, right: true });
+        await scrollTo(wrapper, { scrollLeft: 300, scrollWidth: 1000, clientWidth: 400 });
+        expect(edgeShadows(wrapper)).toEqual({ left: true, right: true });
+        await scrollTo(wrapper, { scrollLeft: 600, scrollWidth: 1000, clientWidth: 400 });
+        expect(edgeShadows(wrapper)).toEqual({ left: true, right: false });
+    });
+
+    it('makes the table a focusable, labeled region only while it scrolls', async () => {
+        const wrapper = await mountTable();
+        const container = await scrollTo(wrapper, { scrollLeft: 0, scrollWidth: 1000, clientWidth: 400 });
+        expect(container.attributes('tabindex')).toBe('0');
+        expect(container.attributes('role')).toBe('region');
+        expect(container.attributes('aria-label')).toBeTruthy();
+        await scrollTo(wrapper, { scrollLeft: 0, scrollWidth: 400, clientWidth: 400 });
+        expect(container.attributes('tabindex')).toBeUndefined();
+        expect(container.attributes('role')).toBeUndefined();
+        expect(edgeShadows(wrapper)).toEqual({ left: false, right: false });
+    });
+});
