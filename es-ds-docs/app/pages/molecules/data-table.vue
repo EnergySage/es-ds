@@ -278,7 +278,7 @@ const stateInfoTable = [
 ];
 
 const stateMoreDataInfoTable = [
-        {
+    {
         abbreviation: 'CO',
         area: '104,185 sq mi',
         capital: 'Denver',
@@ -435,7 +435,8 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>Sorting</h2>
             <p class="mb-200">
-                Individual columns can be marked as sortable to allow sorting on them, and you can specify a column and direction for an initial sort.
+                Individual columns can be marked as sortable to allow sorting on them, and you can specify a column and
+                direction for an initial sort.
             </p>
             <es-data-table
                 :items="stateInfoTable.slice(0, 5)"
@@ -460,8 +461,9 @@ onMounted(async () => {
             <p class="mb-200">
                 By default, the table will use a simple internal sorting algorithm, which can handle basic numbers and
                 strings. If you need a more complex sort, you can make use of the <code>@sort</code> event to implement
-                your own algorithm and update the list of items passed into the table. This example shows a custom sort that first sorts by the low end of the cost range, then if there's a
-                tie, the high end of the cost range, then if there's still a tie, the state name.
+                your own algorithm and update the list of items passed into the table. This example shows a custom sort
+                that first sorts by the low end of the cost range, then if there's a tie, the high end of the cost
+                range, then if there's still a tie, the state name.
             </p>
             <es-data-table
                 :items="sortedCostRangeTable"
@@ -488,8 +490,9 @@ onMounted(async () => {
         <div class="mb-500">
             <h2>Custom rendering</h2>
             <p>
-                You can fully customize the rendering of both column headers and table cells, and can even right-align an entire column. This allows you to render bold
-                text, links, and more. Avoid putting links or buttons in the header of a sortable column.
+                You can fully customize the rendering of both column headers and table cells, and can even right-align
+                an entire column. This allows you to render bold text, links, and more. Avoid putting links or buttons
+                in the header of a sortable column.
             </p>
             <p>
                 Rounded corners should be used in most cases to match other elements in the design system, but can be
@@ -533,10 +536,7 @@ onMounted(async () => {
                     </template>
                 </es-data-table-column>
                 <es-data-table-column>
-                    <template #header>
-                        Quote
-                        (<nuxt-link to="/atoms/utilities">view all</nuxt-link>)
-                    </template>
+                    <template #header> Quote (<nuxt-link to="/atoms/utilities">view all</nuxt-link>) </template>
                     <template #body="slotProps">
                         <nuxt-link :to="slotProps.data.quoteUrl"> View quote </nuxt-link>
                     </template>
@@ -556,51 +556,59 @@ onMounted(async () => {
                     sm="8"
                     md="6"
                     lg="5">-->
-                    <es-data-table
-                        freeze-first-column
-                        :items="stateMoreDataInfoTable">
-                        <es-data-table-column
-                            field="name"
-                            header="Name" />
-                        <es-data-table-column
-                            field="abbreviation"
-                            header="Abbreviation" />
-                        <es-data-table-column
-                            field="capital"
-                            header="Capital" />
-                        <es-data-table-column
-                            field="yearAdmitted"
-                            header="Year admitted" />
-                        <es-data-table-column
-                            field="area"
-                            header="Area" />
-                        <es-data-table-column
-                            field="nickname"
-                            header="Nickname" />
-                        <es-data-table-column
-                            field="stateBird"
-                            header="State bird" />
-                        <es-data-table-column
-                            field="stateFlower"
-                            header="State flower" />
-                        <es-data-table-column
-                            field="stateTree"
-                            header="State tree" />
-                    </es-data-table>
-                <!--</es-col>
+            <es-data-table
+                freeze-first-column
+                :items="stateMoreDataInfoTable">
+                <es-data-table-column
+                    field="name"
+                    header="Name" />
+                <es-data-table-column
+                    field="abbreviation"
+                    header="Abbreviation" />
+                <es-data-table-column
+                    field="capital"
+                    header="Capital" />
+                <es-data-table-column
+                    field="yearAdmitted"
+                    header="Year admitted" />
+                <es-data-table-column
+                    field="area"
+                    header="Area" />
+                <es-data-table-column
+                    field="nickname"
+                    header="Nickname" />
+                <es-data-table-column
+                    field="stateBird"
+                    header="State bird" />
+                <es-data-table-column
+                    field="stateFlower"
+                    header="State flower" />
+                <es-data-table-column
+                    field="stateTree"
+                    header="State tree" />
+            </es-data-table>
+            <!--</es-col>
             </es-row>-->
         </div>
 
         <div class="mb-500">
             <h2>Tables with many rows</h2>
             <p>
-                Two features can help increase the readability of your page and your table when there are many rows that the user must scroll in order to see: frozen headers and limiting the initial number of rows displayed.
+                Two features can help increase the readability of your page and your table when there are many rows
+                that the user must scroll in order to see: frozen headers and limiting the initial number of rows
+                displayed.
             </p>
             <p>
-                Freezing the column headers keeps them visible for reference when scrolling down. Due to browser limitations, this will disable the automatic horizontal scroll when there are more columns than can fit. For this table, all columns are visible starting at the <code>sm</code> breakpoint, so we start the header freezing there.
+                Freezing the column headers keeps them visible for reference when scrolling down. Due to browser
+                limitations, this will disable the automatic horizontal scroll when there are more columns than can
+                fit. For this table, all columns are visible starting at the <code>sm</code> breakpoint, so we start
+                the header freezing there.
             </p>
             <p>
-                Limiting the number of rows that are initially displayed can help when a table is embedded within long-form content, so that the user can still continue to read the rest of article without having to scroll through the entire table to get there. If they want to see the whole table, it's an easy one click to expand.
+                Limiting the number of rows that are initially displayed can help when a table is embedded within
+                long-form content, so that the user can still continue to read the rest of article without having to
+                scroll through the entire table to get there. If they want to see the whole table, it's an easy one
+                click to expand.
             </p>
             <es-data-table
                 freeze-first-column
