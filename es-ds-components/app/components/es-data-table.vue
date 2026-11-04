@@ -141,8 +141,11 @@ const updateHorizontalOverflow = () => {
         hasHiddenLeft: isScrollable && scrollLeft > 1,
         hasHiddenRight: isScrollable && scrollLeft + clientWidth < scrollWidth - 1,
     };
-    // a frozen first column never scrolls, so the left shadow starts at its right edge
-    const frozenColumnWidth = props.freezeFirstColumn ? (container.querySelector('th')?.offsetWidth ?? 0) : 0;
+    // a frozen first column never scrolls, so the left shadow starts at its right edge, measured unrounded since
+    // column widths are often fractional and a rounded width leaves a visible gap on high-density screens
+    const frozenColumnWidth = props.freezeFirstColumn
+        ? (container.querySelector('th')?.getBoundingClientRect().width ?? 0)
+        : 0;
     edgeShadowBounds.value = {
         top: clientTop,
         height: clientHeight,
@@ -203,7 +206,7 @@ const CellContext = defineComponent({
         <!-- keyboard users scroll the table by focusing it, so it's focusable only while there's something to scroll -->
         <div
             ref="scrollContainer"
-            class="border table__data-table table-responsive"
+            class="border es-data-table-scroll-container table__data-table table-responsive"
             :class="{
                 'es-data-table--freeze-first-column': freezeFirstColumn,
                 [`es-data-table--freeze-headers-${freezeHeadersStartingAtBreakpoint}`]: freezeHeaders,
@@ -280,6 +283,12 @@ const CellContext = defineComponent({
     /* collapsed borders would detach from sticky header and first-column cells as they scroll */
     border-collapse: separate;
     border-spacing: 0;
+
+    /* an overscroll bounce would carry the frozen first column away from the left edge shadow,
+    which sits outside the scroll */
+    &-scroll-container {
+        overscroll-behavior-x: none;
+    }
 
     &--freeze-first-column {
         thead :deep(th:first-child),
