@@ -124,10 +124,10 @@ const rowKey = (row: any, rowIndex: number) =>
 const scrollContainer = useTemplateRef<HTMLDivElement>('scrollContainer');
 
 // whether the table scrolls horizontally, and whether columns are hidden past either edge
-const horizontalOverflow = ref({ isScrollable: false, hasHiddenLeft: false, hasHiddenRight: false });
+const horizontalOverflow = reactive({ isScrollable: false, hasHiddenLeft: false, hasHiddenRight: false });
 
 // where the edge shadows sit, inside the container's border and above its horizontal scrollbar
-const edgeShadowBounds = ref({ top: 0, height: 0, left: 0, right: 0 });
+const edgeShadowBounds = reactive({ top: 0, height: 0, left: 0, right: 0 });
 
 const updateHorizontalOverflow = () => {
     const container = scrollContainer.value;
@@ -137,23 +137,24 @@ const updateHorizontalOverflow = () => {
     const { clientHeight, clientLeft, clientTop, clientWidth, offsetWidth, scrollLeft, scrollWidth } = container;
     // frozen headers clip the table instead of scrolling it from their breakpoint up
     const isScrollable = scrollWidth > clientWidth && getComputedStyle(container).overflowX !== 'clip';
-    horizontalOverflow.value = {
+    // assigned key by key, so a scroll that changes no value skips re-rendering the table and every cell in it
+    Object.assign(horizontalOverflow, {
         isScrollable,
         // a pixel of tolerance absorbs subpixel scroll positions at either end
         hasHiddenLeft: isScrollable && scrollLeft > 1,
         hasHiddenRight: isScrollable && scrollLeft + clientWidth < scrollWidth - 1,
-    };
+    });
     // a frozen first column never scrolls, so the left shadow starts at its right edge, measured unrounded since
     // column widths are often fractional and a rounded width leaves a visible gap on high-density screens
     const frozenColumnWidth = props.freezeFirstColumn
         ? (container.querySelector('th')?.getBoundingClientRect().width ?? 0)
         : 0;
-    edgeShadowBounds.value = {
+    Object.assign(edgeShadowBounds, {
         top: clientTop,
         height: clientHeight,
         left: clientLeft + frozenColumnWidth,
         right: offsetWidth - clientLeft - clientWidth,
-    };
+    });
 };
 
 let resizeObserver: ResizeObserver | undefined;

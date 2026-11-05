@@ -599,4 +599,13 @@ describe('EsDataTable horizontal overflow', () => {
         expect(container.attributes('role')).toBeUndefined();
         expect(edgeShadows(wrapper)).toEqual({ left: false, right: false });
     });
+
+    it("doesn't re-render cells on a scroll that leaves the edge shadows unchanged", async () => {
+        const body = vi.fn(({ data }) => data.name);
+        const wrapper = await mountTable({}, [{ field: 'name', header: 'Name', body }]);
+        await scrollTo(wrapper, { scrollLeft: 300, scrollWidth: 1000, clientWidth: 400 });
+        body.mockClear();
+        await scrollTo(wrapper, { scrollLeft: 350, scrollWidth: 1000, clientWidth: 400 });
+        expect(body).not.toHaveBeenCalled();
+    });
 });
