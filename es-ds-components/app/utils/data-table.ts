@@ -13,3 +13,8 @@ export const ES_DATA_TABLE_SORT_KEY: InjectionKey<{
     sortState: Readonly<Ref<EsDataTableSortState>>;
     toggleSort: (field: string) => void;
 }> = Symbol('esDataTableSort');
+
+// resolves a column field or dataKey, which can be a dot-separated path like 'user.name' into nested objects;
+// named for the data table since Nuxt auto-imports every util into consuming apps
+export const resolveEsDataTableField = (row: any, field: string) =>
+    field.split('.').reduce((value, key) => value?.[key], row);

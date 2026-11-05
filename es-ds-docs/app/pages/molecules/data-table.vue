@@ -94,7 +94,7 @@ const esDataTableColumnProps = [
         'field',
         'String',
         "''",
-        'Determines which key of the items object to render in this column. Optional, as you can use the body slot to turn on custom rendering for this column instead. Needed in order to enable sorting on a column, regardless of rendering mode.',
+        'Determines which key of the items object to render in this column, or a nested path (e.g. "user.name") for a value inside a nested object. Optional, as you can use the body slot to turn on custom rendering for this column instead. Needed in order to enable sorting on a column, regardless of rendering mode.',
     ],
     [
         'header',

@@ -4,6 +4,7 @@ import type { EsDataTableSortEvent, EsDataTableSortOrder, EsDataTableSortState }
 import {
     ES_DATA_TABLE_CELL_CONTEXT_KEY,
     ES_DATA_TABLE_SORT_KEY,
+    resolveEsDataTableField,
     type EsDataTableCellContext,
 } from '../utils/data-table';
 
@@ -77,7 +78,10 @@ const sortedRows = computed(() => {
         return props.items;
     }
     // copied so sorting never mutates the parent's array
-    return [...props.items].sort((a, b) => compareValues(a[sort.field], b[sort.field]) * sort.order);
+    return [...props.items].sort(
+        (a, b) =>
+            compareValues(resolveEsDataTableField(a, sort.field), resolveEsDataTableField(b, sort.field)) * sort.order,
+    );
 });
 
 // provide misconfiguration warnings in the console on local dev
@@ -122,7 +126,7 @@ const hiddenRowCount = computed(() => sortedRows.value.length - rowsToRender.val
 // a row keyed by dataKey keeps its cells' component state when sorting moves it;
 // without dataKey, rows are keyed by position
 const rowKey = (row: any, rowIndex: number) =>
-    props.dataKey ? props.dataKey.split('.').reduce((value, key) => value?.[key], row) : rowIndex;
+    props.dataKey ? resolveEsDataTableField(row, props.dataKey) : rowIndex;
 
 // rows missing the dataKey get no key and quietly fall back to being matched by position, so local dev warns;
 // it watches items because rows often arrive after the table mounts

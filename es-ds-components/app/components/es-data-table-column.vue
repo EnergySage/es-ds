@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ES_DATA_TABLE_CELL_CONTEXT_KEY, ES_DATA_TABLE_SORT_KEY } from '../utils/data-table';
+import { ES_DATA_TABLE_CELL_CONTEXT_KEY, ES_DATA_TABLE_SORT_KEY, resolveEsDataTableField } from '../utils/data-table';
 
 interface Props {
     align?: 'left' | 'right';
+    /** the key, or dot-separated path like 'user.name', of the value the column renders and sorts by */
     field?: string;
     header?: string;
     sortable?: boolean;
@@ -115,7 +116,7 @@ const ariaSort = computed(() => {
             name="body"
             :data="cellContext.row"
             :index="cellContext.rowIndex">
-            {{ cellContext.row[field] }}
+            {{ resolveEsDataTableField(cellContext.row, field) }}
         </slot>
     </td>
 </template>

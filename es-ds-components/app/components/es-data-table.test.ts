@@ -341,6 +341,19 @@ describe('EsDataTable internal sorting', () => {
         expect(renderedNames(wrapper)).toEqual(['Texas', 'Ohio', 'Maine']);
     });
 
+    it('renders and sorts a column by a nested field with a dot-separated field', async () => {
+        const wrapper = await mountTable(
+            { items: RANKED_ITEMS.map(({ name, rank }) => ({ name, stats: { rank } })) },
+            [
+                { field: 'name', header: 'Name' },
+                { field: 'stats.rank', header: 'Rank', sortable: true },
+            ],
+        );
+        expect(wrapper.findAll('tbody td:nth-child(2)').map((td) => td.text())).toEqual(['10', '9', '100']);
+        await clickHeader(wrapper, 'Rank');
+        expect(renderedNames(wrapper)).toEqual(['Maine', 'Ohio', 'Texas']);
+    });
+
     it('re-sorts when the parent replaces items', async () => {
         const wrapper = await mountRankedTable({ sortField: 'name' });
         await wrapper.setProps({ items: [...RANKED_ITEMS, { name: 'Alaska', rank: 50 }] });
