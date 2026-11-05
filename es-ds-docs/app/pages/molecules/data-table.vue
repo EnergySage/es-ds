@@ -5,6 +5,12 @@ const esDataTableRequiredProps = [['items', 'Array', 'n/a', 'Required. An array 
 
 const esDataTableOptionalProps = [
     [
+        'aria-label',
+        'String',
+        "''",
+        'Names the table for screen reader users, who can use it to tell tables apart on the page. A table that scrolls horizontally also becomes a focusable region with this name, or "Scrollable table" if none is provided.',
+    ],
+    [
         'data-key',
         'String',
         "''",
@@ -427,7 +433,9 @@ onMounted(async () => {
 
         <div class="mb-500">
             <h2 class="mb-200">Basic example</h2>
-            <es-data-table :items="prosConsTable">
+            <es-data-table
+                aria-label="Solar lease pros and cons"
+                :items="prosConsTable">
                 <es-data-table-column
                     field="advantages"
                     header="Advantages" />
@@ -444,6 +452,7 @@ onMounted(async () => {
                 direction for an initial sort.
             </p>
             <es-data-table
+                aria-label="State details"
                 :items="stateInfoTable.slice(0, 5)"
                 sort-field="name">
                 <es-data-table-column
@@ -471,6 +480,7 @@ onMounted(async () => {
                 range, then if there's still a tie, the state name.
             </p>
             <es-data-table
+                aria-label="Solar cost ranges by state"
                 :items="sortedCostRangeTable"
                 sort-field="range"
                 :use-internal-sorting="false"
@@ -505,6 +515,7 @@ onMounted(async () => {
                 contains rounded elements.
             </p>
             <es-data-table
+                aria-label="Customers"
                 :items="customerTable"
                 :use-rounded-corners="false">
                 <es-data-table-column
@@ -553,6 +564,7 @@ onMounted(async () => {
             <p>
                 When a table is wider than the space available, it scrolls horizontally. A shadow appears on any edge
                 with columns hidden past it, and keyboard users can focus the table to scroll it with the arrow keys.
+                Give the table an <code>aria-label</code> so screen reader users know which table they've focused.
             </p>
             <p class="mb-200">
                 Freezing the first column ensures it stays visible while scrolling the table contents horizontally.
@@ -560,6 +572,7 @@ onMounted(async () => {
                 important to reference when reading the contents of the subsequent columns.
             </p>
             <es-data-table
+                aria-label="State facts"
                 freeze-first-column
                 :items="stateMoreDataInfoTable">
                 <es-data-table-column
@@ -615,6 +628,7 @@ onMounted(async () => {
                 click to expand.
             </p>
             <es-data-table
+                aria-label="State capitals"
                 freeze-first-column
                 freeze-headers
                 freeze-headers-starting-at-breakpoint="sm"
@@ -640,13 +654,17 @@ onMounted(async () => {
             <p class="mb-200">
                 When there are no rows to display, the table will show a message to make it clear the table is empty.
             </p>
-            <es-data-table :items="[]">
+            <es-data-table
+                aria-label="Quotes"
+                :items="[]">
                 <es-data-table-column header="Name" />
                 <es-data-table-column header="Upfront cost" />
                 <es-data-table-column header="25 year savings" />
             </es-data-table>
             <p class="mb-200">You can also customize how the empty state looks.</p>
-            <es-data-table :items="[]">
+            <es-data-table
+                aria-label="Pending quotes"
+                :items="[]">
                 <es-data-table-column header="Name" />
                 <es-data-table-column header="Upfront cost" />
                 <es-data-table-column header="25 year savings" />

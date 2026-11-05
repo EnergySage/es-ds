@@ -600,6 +600,13 @@ describe('EsDataTable horizontal overflow', () => {
         expect(edgeShadows(wrapper)).toEqual({ left: false, right: false });
     });
 
+    it('names the table and its scrollable region with ariaLabel', async () => {
+        const wrapper = await mountTable({ ariaLabel: 'State capitals' });
+        const container = await scrollTo(wrapper, { scrollLeft: 0, scrollWidth: 1000, clientWidth: 400 });
+        expect(wrapper.find('table').attributes('aria-label')).toBe('State capitals');
+        expect(container.attributes('aria-label')).toBe('State capitals');
+    });
+
     it("doesn't re-render cells on a scroll that leaves the edge shadows unchanged", async () => {
         const body = vi.fn(({ data }) => data.name);
         const wrapper = await mountTable({}, [{ field: 'name', header: 'Name', body }]);

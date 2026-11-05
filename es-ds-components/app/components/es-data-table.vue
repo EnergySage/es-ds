@@ -8,6 +8,8 @@ import {
 } from '../utils/data-table';
 
 interface Props {
+    /** names the table for screen readers, and the scrollable region around it when it scrolls horizontally */
+    ariaLabel?: string;
     /** the field, or dot-separated path like 'user.id', that uniquely identifies each row */
     dataKey?: string;
     freezeFirstColumn?: boolean;
@@ -27,6 +29,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    ariaLabel: '',
     dataKey: '',
     freezeFirstColumn: false,
     freezeHeaders: false,
@@ -217,7 +220,7 @@ const CellContext = defineComponent({
             }"
             v-bind="
                 horizontalOverflow.isScrollable
-                    ? { tabindex: 0, role: 'region', 'aria-label': 'Scrollable table' }
+                    ? { tabindex: 0, role: 'region', 'aria-label': ariaLabel || 'Scrollable table' }
                     : {}
             "
             @scroll="updateHorizontalOverflow">
@@ -225,6 +228,7 @@ const CellContext = defineComponent({
             size, counting the header row, and aria-rowindex places each rendered row within it -->
             <table
                 class="es-data-table table font-size-75 font-size-md-100"
+                :aria-label="ariaLabel || undefined"
                 :aria-rowcount="hasHiddenRows ? sortedRows.length + 1 : undefined">
                 <thead class="thead">
                     <tr :aria-rowindex="hasHiddenRows ? 1 : undefined">
