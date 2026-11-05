@@ -555,6 +555,20 @@ describe('EsDataTable dataKey', () => {
         await markMaineAndSortDescending(wrapper);
         expect(cellTexts(wrapper)).toEqual(['Ohio', 'Maine *']);
     });
+
+    it("doesn't warn when every row has the dataKey", async () => {
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+        await mountTable({ dataKey: 'abbreviation' });
+        expect(componentWarnings(warn, 'EsDataTable')).toEqual([]);
+    });
+
+    it('warns when rows arriving after mount are missing the dataKey', async () => {
+        const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+        const wrapper = await mountTable({ dataKey: 'id', items: [] });
+        expect(componentWarnings(warn, 'EsDataTable')).toEqual([]);
+        await wrapper.setProps({ items: ITEMS });
+        expect(componentWarnings(warn, 'EsDataTable')).toEqual([[expect.stringContaining('`dataKey`')]]);
+    });
 });
 
 describe('EsDataTable horizontal overflow', () => {

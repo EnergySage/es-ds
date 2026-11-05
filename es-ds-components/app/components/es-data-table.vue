@@ -124,6 +124,25 @@ const hiddenRowCount = computed(() => sortedRows.value.length - rowsToRender.val
 const rowKey = (row: any, rowIndex: number) =>
     props.dataKey ? props.dataKey.split('.').reduce((value, key) => value?.[key], row) : rowIndex;
 
+// rows missing the dataKey get no key and quietly fall back to being matched by position, so local dev warns;
+// it watches items because rows often arrive after the table mounts
+if (import.meta.dev) {
+    watch(
+        () => props.items,
+        (items) => {
+            const missingIndex = props.dataKey
+                ? items.findIndex((row, rowIndex) => rowKey(row, rowIndex) == null)
+                : -1;
+            if (missingIndex !== -1) {
+                console.warn(
+                    `EsDataTable: \`dataKey\` "${props.dataKey}" is missing from the row at index ${missingIndex}.`,
+                );
+            }
+        },
+        { immediate: true },
+    );
+}
+
 const scrollContainer = useTemplateRef<HTMLDivElement>('scrollContainer');
 
 // whether the table scrolls horizontally, and whether columns are hidden past either edge
