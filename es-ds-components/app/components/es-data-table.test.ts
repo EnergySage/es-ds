@@ -148,6 +148,7 @@ describe('EsDataTable cell rendering', () => {
             { field: 'name', header: 'Name', sortable: true, headerSlot: () => h('strong', 'State name') },
         ]);
         const button = wrapper.find('thead th button');
+        expect(wrapper.findAll('thead th strong')).toHaveLength(1);
         expect(button.find('strong').text()).toBe('State name');
         expect(button.text()).not.toContain('Name');
         await button.trigger('click');

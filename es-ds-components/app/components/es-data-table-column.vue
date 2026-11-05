@@ -53,15 +53,16 @@ const ariaSort = computed(() => {
         class="es-data-table-column-header"
         :class="{ 'es-data-table-column-header--align-right text-right': align === 'right' }"
         :aria-sort="ariaSort">
-        <!-- the sort arrow sits on the side opposite the text, so right-aligned text lines up with the cells below -->
+        <!-- the button's text sizes the column, and its ::after stretches its click, hover and focus area over the
+        whole cell; the sort arrow sits on the side opposite the text, so right-aligned text lines up with the cells below -->
         <button
             v-if="isSortable"
-            class="es-data-table-column-sort-button align-items-end d-flex h-100 position-absolute w-100"
-            :class="align === 'right' ? 'justify-content-end pl-200 text-right' : 'pr-200 text-left'"
+            class="es-data-table-column-sort-button d-block w-100"
+            :class="align === 'right' ? 'pl-100' : 'pr-100'"
             type="button"
             title="Toggle sort direction for column"
             @click="sortContext?.toggleSort(field)">
-            <!-- a sortable header renders this slot here and in the sizing div below, so it must be plain, non-interactive content -->
+            <!-- interactive content inside a button is invalid HTML, so a sortable header must be plain content -->
             <slot name="header">{{ header }}</slot>
             <template v-if="columnSortOrder === 1">
                 <span
@@ -89,25 +90,11 @@ const ariaSort = computed(() => {
                 </span>
             </template>
         </button>
-        <!-- This invisible-text code is a somewhat hacky way to force the table columns
-        to be the right width. Otherwise, when the header is an absolutely positioned
-        button, the size of the header will not adjust to longer headers. -->
-        <!-- When the column is not sortable, the div just holds the text and doesn't have anything
-        special about it. -->
-        <div
-            v-bind="
-                isSortable
-                    ? {
-                          class: [
-                              'es-data-table-column-invisible-text align-items-end d-flex h-100 w-100',
-                              align === 'right' ? 'pl-100' : 'pr-100',
-                          ],
-                          'aria-hidden': true,
-                      }
-                    : {}
-            ">
-            <slot name="header">{{ header }}</slot>
-        </div>
+        <slot
+            v-else
+            name="header">
+            {{ header }}
+        </slot>
     </th>
     <td
         v-else-if="cellContext?.type === 'body'"
@@ -122,7 +109,6 @@ const ariaSort = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@use 'sass:map';
 @use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
 @use '@energysage/es-ds-styles/scss/variables';
 
@@ -130,20 +116,35 @@ const ariaSort = computed(() => {
     &-header {
         /* defined here so parent can override if first column is frozen */
         position: relative;
+        /* puts the sort button's hover fill above the cell's background and below its text */
+        isolation: isolate;
     }
 
     &-sort-button {
         background: none;
         border: none;
         color: variables.$body-color;
-        padding: variables.$table-cell-padding;
-        padding-block: map.get(variables.$spacers, 50);
         font: inherit;
-        top: 0;
-        left: 0;
+        padding: 0;
+        text-align: inherit;
 
-        &:hover {
+        &::after {
+            content: '';
+            inset: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        &:hover::after {
             background-color: variables.$blue-200;
+        }
+
+        &:focus-visible {
+            outline: none;
+
+            &::after {
+                outline: auto;
+            }
         }
     }
 
@@ -170,10 +171,6 @@ const ariaSort = computed(() => {
     &-header--align-right &-sort-direction-arrow {
         left: 0.5rem;
         right: auto;
-    }
-
-    &-invisible-text {
-        color: transparent;
     }
 }
 </style>

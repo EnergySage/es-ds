@@ -106,7 +106,11 @@ const esDataTableColumnProps = [
 ];
 
 const esDataTableColumnSlots = [
-    ['header', 'n/a', 'Allows you to customize the contents of the column header.'],
+    [
+        'header',
+        'n/a',
+        'Allows you to customize the contents of the column header. In a sortable column, the header sits inside the sort button, so avoid links or buttons.',
+    ],
     [
         'body',
         'n/a',
