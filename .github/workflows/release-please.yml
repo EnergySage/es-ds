@@ -33,7 +33,7 @@ jobs:
             es-ds-docs--release_created: ${{ steps.release.outputs.es-ds-docs--release_created }}
             docs_changed: ${{ steps.docs.outputs.changed }}
         steps:
-            - uses: googleapis/release-please-action@v5
+            - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
               id: 'release'
 
             # release-please can only put a version in a grouped PR title when there is a root package, so the shared version is added here.
@@ -81,7 +81,7 @@ jobs:
         if: needs.release-please.outputs['es-ds-styles--release_created'] == 'true'
         steps:
             - name: Check out repository code
-              uses: actions/checkout@v4
+              uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
 
             - name: Get nodenv version 🔌
               id: nodenv
@@ -89,7 +89,7 @@ jobs:
               run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
 
             - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   registry-url: 'https://registry.npmjs.org'
@@ -123,14 +123,14 @@ jobs:
         if: always() && !cancelled() && !failure() && needs.release-please.outputs['es-ds-components--release_created'] == 'true'
         steps:
             # Uses an app with elevated permissions to bypass required checks when pushing to main
-            - uses: actions/create-github-app-token@v2
+            - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
               id: app-token
               with:
                 app-id: ${{ vars.VERSION_BUMPER_APPID }}
                 private-key: ${{ secrets.VERSION_BUMPER_SECRET }}
 
             - name: Check out repository code
-              uses: actions/checkout@v4
+              uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
               with:
                   ref: ${{ github.head_ref }}
                   fetch-depth: 0
@@ -142,7 +142,7 @@ jobs:
               run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
 
             - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   registry-url: 'https://registry.npmjs.org'
@@ -182,14 +182,14 @@ jobs:
         if: always() && !cancelled() && !failure() && needs.release-please.outputs['es-ds-docs--release_created'] == 'true'
         steps:
             # Uses an app with elevated permissions to bypass required checks when pushing to main
-            - uses: actions/create-github-app-token@v2
+            - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
               id: app-token
               with:
                 app-id: ${{ vars.VERSION_BUMPER_APPID }}
                 private-key: ${{ secrets.VERSION_BUMPER_SECRET }}
 
             - name: Check out repository code
-              uses: actions/checkout@v4
+              uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
               with:
                   ref: ${{ github.head_ref }}
                   fetch-depth: 0
@@ -201,7 +201,7 @@ jobs:
               run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
 
             - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   registry-url: 'https://registry.npmjs.org'
@@ -237,14 +237,14 @@ jobs:
         if: always() && !cancelled() && !failure() && needs.release-please.outputs['releases_created'] == 'true'
         steps:
             # Uses an app with elevated permissions to bypass required checks when pushing to main
-            - uses: actions/create-github-app-token@v2
+            - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
               id: app-token
               with:
                 app-id: ${{ vars.VERSION_BUMPER_APPID }}
                 private-key: ${{ secrets.VERSION_BUMPER_SECRET }}
 
             - name: Check out repository code
-              uses: actions/checkout@v4
+              uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
               with:
                   ref: main
                   fetch-depth: 0
@@ -256,7 +256,7 @@ jobs:
               run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
 
             - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   registry-url: 'https://registry.npmjs.org'
@@ -281,7 +281,7 @@ jobs:
                 npm install @energysage/es-ds-styles@$styles_version @energysage/es-ds-components@$components_version
 
             - name: Commit package-lock.json changes
-              uses: stefanzweifel/git-auto-commit-action@v6
+              uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7.2.1
               with:
                   commit_message: "chore: update package-lock.json files"
                   file_pattern: '**/package-lock.json'
