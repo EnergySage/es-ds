@@ -19,8 +19,12 @@ export default defineConfig({
                     environment: 'nuxt',
                     environmentOptions: {
                         nuxt: {
-                            // dev mode keeps import.meta.dev warnings, which tests assert on
-                            overrides: { dev: true },
+                            overrides: {
+                                // dev mode keeps import.meta.dev warnings, which tests assert on
+                                dev: true,
+                                // dev mode never writes the app manifest file, so it's mocked instead
+                                experimental: { appManifest: false },
+                            },
                         },
                     },
                 },
