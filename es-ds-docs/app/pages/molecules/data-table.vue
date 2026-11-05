@@ -187,7 +187,7 @@ const stateInfoTable = [
     },
     {
         abbreviation: 'AZ',
-        capital: 'Phoeniz',
+        capital: 'Phoenix',
         name: 'Arizona',
         yearAdmitted: '1912',
     },
