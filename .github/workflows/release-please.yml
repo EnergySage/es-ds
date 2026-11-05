@@ -93,8 +93,8 @@ jobs:
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   registry-url: 'https://registry.npmjs.org'
-                  cache: npm
-                  cache-dependency-path: '**/package-lock.json'
+                  # A release job must not restore a dependency cache another workflow could have poisoned
+                  package-manager-cache: false
 
             - name: Install dependencies
               working-directory: es-ds-styles
@@ -146,8 +146,8 @@ jobs:
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   registry-url: 'https://registry.npmjs.org'
-                  cache: npm
-                  cache-dependency-path: '**/package-lock.json'
+                  # A release job must not restore a dependency cache another workflow could have poisoned
+                  package-manager-cache: false
 
             # release-please increments the version in some places but not everywhere due to inherent limitations.
             # Obtaining the new version number is needed to explicitly install it.
@@ -205,8 +205,8 @@ jobs:
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   registry-url: 'https://registry.npmjs.org'
-                  cache: npm
-                  cache-dependency-path: '**/package-lock.json'
+                  # A release job must not restore a dependency cache another workflow could have poisoned
+                  package-manager-cache: false
 
             # release-please increments the version in some places but not everywhere due to inherent limitations.
             # Obtaining the new version number is needed to explicitly install it.
@@ -260,8 +260,8 @@ jobs:
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   registry-url: 'https://registry.npmjs.org'
-                  cache: npm
-                  cache-dependency-path: '**/package-lock.json'
+                  # A release job must not restore a dependency cache another workflow could have poisoned
+                  package-manager-cache: false
 
             # Update es-ds-components lock file if styles was released
             - name: Update es-ds-components dependencies
