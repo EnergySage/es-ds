@@ -66,7 +66,8 @@ const ariaSort = computed(() => {
                 <span
                     class="es-data-table-column-sort-direction-arrow position-absolute"
                     aria-hidden="true">
-                    <icon-arrow-up />
+                    <icon-sort-ascending-left v-if="align === 'right'" />
+                    <icon-sort-ascending-right v-else />
                 </span>
                 <span class="sr-only"> Sorted ascending </span>
             </template>
@@ -74,7 +75,8 @@ const ariaSort = computed(() => {
                 <span
                     class="es-data-table-column-sort-direction-arrow position-absolute"
                     aria-hidden="true">
-                    <icon-arrow-down />
+                    <icon-sort-descending-left v-if="align === 'right'" />
+                    <icon-sort-descending-right v-else />
                 </span>
                 <span class="sr-only"> Sorted descending </span>
             </template>

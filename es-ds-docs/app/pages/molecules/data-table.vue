@@ -284,10 +284,11 @@ const stateMoreDataInfoTable = [
         capital: 'Denver',
         name: 'Colorado',
         nickname: 'The centennial state',
-        yearAdmitted: '1876',
+        population: '6,012,561',
         stateBird: 'Lark bunting',
         stateFlower: 'Colorado blue columbine',
         stateTree: 'Colorado blue spruce',
+        yearAdmitted: '1876',
     },
     {
         abbreviation: 'CT',
@@ -295,10 +296,11 @@ const stateMoreDataInfoTable = [
         capital: 'Hartford',
         name: 'Connecticut',
         nickname: 'The constitution state',
-        yearAdmitted: '1788',
+        population: '3,688,496',
         stateBird: 'American robin',
         stateFlower: 'Mountain laurel',
         stateTree: 'White oak',
+        yearAdmitted: '1788',
     },
     {
         abbreviation: 'DE',
@@ -306,10 +308,11 @@ const stateMoreDataInfoTable = [
         capital: 'Dover',
         name: 'Delaware',
         nickname: 'The first state',
-        yearAdmitted: '1787',
+        population: '1,059,952',
         stateBird: 'Blue hen chicken',
         stateFlower: 'Peach blossom',
         stateTree: 'American holly',
+        yearAdmitted: '1787',
     },
     {
         abbreviation: 'FL',
@@ -317,10 +320,11 @@ const stateMoreDataInfoTable = [
         capital: 'Tallahassee',
         name: 'Florida',
         nickname: 'The sunshine state',
-        yearAdmitted: '1845',
+        population: '23,462,518',
         stateBird: 'Northern mockingbird',
         stateFlower: 'Orange blossom',
         stateTree: 'Sabal palm',
+        yearAdmitted: '1845',
     },
     {
         abbreviation: 'GA',
@@ -328,10 +332,11 @@ const stateMoreDataInfoTable = [
         capital: 'Atlanta',
         name: 'Georgia',
         nickname: 'The peach state',
-        yearAdmitted: '1788',
+        population: '11,302,748',
         stateBird: 'Brown thrasher',
         stateFlower: 'Sweetbay magnolia',
         stateTree: 'Southern live oak',
+        yearAdmitted: '1788',
     },
 ];
 
@@ -555,11 +560,6 @@ onMounted(async () => {
                 This feature is especially useful on mobile when the first column contains primary information that is
                 important to reference when reading the contents of the subsequent columns.
             </p>
-            <!--<es-row>
-                <es-col
-                    sm="8"
-                    md="6"
-                    lg="5">-->
             <es-data-table
                 freeze-first-column
                 :items="stateMoreDataInfoTable">
@@ -576,6 +576,9 @@ onMounted(async () => {
                     field="yearAdmitted"
                     header="Year admitted" />
                 <es-data-table-column
+                    field="population"
+                    header="Population" />
+                <es-data-table-column
                     field="area"
                     header="Area" />
                 <es-data-table-column
@@ -591,8 +594,6 @@ onMounted(async () => {
                     field="stateTree"
                     header="State tree" />
             </es-data-table>
-            <!--</es-col>
-            </es-row>-->
         </div>
 
         <div class="mb-500">

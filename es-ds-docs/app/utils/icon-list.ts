@@ -99,6 +99,10 @@ import IconShield from '@energysage/es-ds-components/app/components/icon/shield.
 import IconShieldWithCheck from '@energysage/es-ds-components/app/components/icon/shield-with-check.vue';
 import IconShoppingBag from '@energysage/es-ds-components/app/components/icon/shopping-bag.vue';
 import IconSolar from '@energysage/es-ds-components/app/components/icon/solar.vue';
+import IconSortAscendingLeft from '@energysage/es-ds-components/app/components/icon/sort-ascending-left.vue';
+import IconSortAscendingRight from '@energysage/es-ds-components/app/components/icon/sort-ascending-right.vue';
+import IconSortDescendingLeft from '@energysage/es-ds-components/app/components/icon/sort-descending-left.vue';
+import IconSortDescendingRight from '@energysage/es-ds-components/app/components/icon/sort-descending-right.vue';
 import IconSoundDown from '@energysage/es-ds-components/app/components/icon/sound-down.vue';
 import IconSoundOff from '@energysage/es-ds-components/app/components/icon/sound-off.vue';
 import IconSoundOn from '@energysage/es-ds-components/app/components/icon/sound-on.vue';
@@ -598,6 +602,25 @@ export const BASE_ICONS: IconMetadata[] = [
         phosphorName: 'x',
     },
 ].sort((a, b) => a.name.localeCompare(b.name));
+
+export const BASE_ICONS_IN_THE_STYLE_OF_PHOSPOR: IconMetadata[] = [
+    {
+        name: 'sort ascending left',
+        component: IconSortAscendingLeft,
+    },
+    {
+        name: 'sort ascending right',
+        component: IconSortAscendingRight,
+    },
+    {
+        name: 'sort descending left',
+        component: IconSortDescendingLeft,
+    },
+    {
+        name: 'sort descending right',
+        component: IconSortDescendingRight,
+    },
+];
 
 export const BASE_ICONS_NOT_PHOSPHOR: IconMetadata[] = [
     {
