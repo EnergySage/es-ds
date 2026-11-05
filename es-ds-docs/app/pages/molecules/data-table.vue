@@ -505,7 +505,6 @@ onMounted(async () => {
                 contains rounded elements.
             </p>
             <es-data-table
-                freeze-first-column
                 :items="customerTable"
                 :use-rounded-corners="false">
                 <es-data-table-column
