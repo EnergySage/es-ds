@@ -423,7 +423,7 @@ onMounted(async () => {
 
 <template>
     <div>
-        <h1>Data table</h1>
+        <h1 class="mb-500">Data table</h1>
 
         <div class="mb-500">
             <h2 class="mb-200">Basic example</h2>
