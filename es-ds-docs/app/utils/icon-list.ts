@@ -603,7 +603,7 @@ export const BASE_ICONS: IconMetadata[] = [
     },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
-export const BASE_ICONS_IN_THE_STYLE_OF_PHOSPOR: IconMetadata[] = [
+export const BASE_ICONS_IN_THE_STYLE_OF_PHOSPHOR: IconMetadata[] = [
     {
         name: 'sort ascending left',
         component: IconSortAscendingLeft,

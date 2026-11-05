@@ -56,7 +56,7 @@ onMounted(async () => {
                 These were created by our design team in cases where the actual Phosphor icons did not meet our needs.
             </p>
             <ds-icon-list
-                :icons="BASE_ICONS_IN_THE_STYLE_OF_PHOSPOR"
+                :icons="BASE_ICONS_IN_THE_STYLE_OF_PHOSPHOR"
                 :is-dark-background-active="isDarkBackgroundActive"
                 :show-phosphor-name="showPhosphorName" />
         </div>
