@@ -114,6 +114,8 @@ const rowsToRender = computed(() =>
     hasHiddenRows.value ? sortedRows.value.slice(0, props.numInitialRowsDisplayed) : sortedRows.value,
 );
 
+const hiddenRowCount = computed(() => sortedRows.value.length - rowsToRender.value.length);
+
 // a row keyed by dataKey keeps its cells' component state when sorting moves it;
 // without dataKey, rows are keyed by position
 const rowKey = (row: any, rowIndex: number) =>
@@ -218,9 +220,13 @@ const CellContext = defineComponent({
                     : {}
             "
             @scroll="updateHorizontalOverflow">
-            <table class="es-data-table table font-size-75 font-size-md-100">
+            <!-- while rows are hidden, screen readers that support aria-rowcount announce the full table's
+            size, counting the header row, and aria-rowindex places each rendered row within it -->
+            <table
+                class="es-data-table table font-size-75 font-size-md-100"
+                :aria-rowcount="hasHiddenRows ? sortedRows.length + 1 : undefined">
                 <thead class="thead">
-                    <tr>
+                    <tr :aria-rowindex="hasHiddenRows ? 1 : undefined">
                         <cell-context :context="{ type: 'header' }">
                             <slot />
                         </cell-context>
@@ -237,7 +243,8 @@ const CellContext = defineComponent({
                     <tr
                         v-for="(row, rowIndex) in rowsToRender"
                         :key="rowKey(row, rowIndex)"
-                        :tabindex="rowIndex === firstRevealedRowIndex ? -1 : undefined">
+                        :tabindex="rowIndex === firstRevealedRowIndex ? -1 : undefined"
+                        :aria-rowindex="hasHiddenRows ? rowIndex + 2 : undefined">
                         <cell-context :context="{ type: 'body', row, rowIndex }">
                             <slot />
                         </cell-context>
@@ -264,11 +271,13 @@ const CellContext = defineComponent({
         <div
             v-if="hasHiddenRows"
             class="es-data-table-show-more align-items-end d-flex justify-content-center pb-200 position-absolute w-100">
+            <!-- the collapsed state is announced here, since screen readers don't all support aria-rowcount -->
             <es-button
                 outline
                 size="sm"
                 @click="showAllRows">
-                {{ showMoreButtonText }}
+                {{ showMoreButtonText
+                }}<span class="sr-only">, {{ hiddenRowCount }} more {{ hiddenRowCount === 1 ? 'row' : 'rows' }}</span>
             </es-button>
         </div>
     </div>

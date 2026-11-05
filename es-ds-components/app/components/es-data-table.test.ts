@@ -418,7 +418,7 @@ describe('EsDataTable initial row limit', () => {
     it('renders the first 10 rows by default and offers the rest behind Show more', async () => {
         const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true });
         expect(renderedNumbers(wrapper)).toEqual(NUMBERED_ITEMS.slice(0, 10).map(({ number }) => number));
-        expect(showMoreButton(wrapper).text()).toBe('Show more');
+        expect(showMoreButton(wrapper).text()).toContain('Show more');
     });
 
     it('renders the first numInitialRowsDisplayed rows', async () => {
@@ -429,7 +429,25 @@ describe('EsDataTable initial row limit', () => {
 
     it('labels the button with showMoreButtonText', async () => {
         const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, showMoreButtonText: 'Show all' });
-        expect(showMoreButton(wrapper).text()).toBe('Show all');
+        expect(showMoreButton(wrapper).text()).toContain('Show all');
+    });
+
+    it.each([
+        [5, /\b20 more rows$/],
+        [24, /\b1 more row$/],
+    ])('tells screen readers how many rows Show more reveals with %i rows displayed', async (limit, announcement) => {
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, numInitialRowsDisplayed: limit });
+        expect(showMoreButton(wrapper).find('.sr-only').text()).toMatch(announcement);
+    });
+
+    it('gives the table its full row count and each row its position while rows are hidden', async () => {
+        const wrapper = await mountNumberedTable({ limitInitialRowsDisplayed: true, numInitialRowsDisplayed: 3 });
+        // 25 rows plus the header row
+        expect(wrapper.find('table').attributes('aria-rowcount')).toBe('26');
+        expect(wrapper.findAll('tr').map((tr) => tr.attributes('aria-rowindex'))).toEqual(['1', '2', '3', '4']);
+        await showMoreButton(wrapper).trigger('click');
+        expect(wrapper.find('table').attributes('aria-rowcount')).toBeUndefined();
+        expect(wrapper.find('tbody tr').attributes('aria-rowindex')).toBeUndefined();
     });
 
     it('renders every row without Show more when the rows fit within the limit', async () => {
