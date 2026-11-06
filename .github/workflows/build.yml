@@ -38,7 +38,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout 🛎
-              uses: actions/checkout@v4
+              uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
               with:
                   fetch-depth: 0 # Fetches all history for all branches and tags
                   ref: ${{ github.ref }}
@@ -53,14 +53,14 @@ jobs:
               run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
 
             - name: Set up Node@${{ steps.nodenv.outputs.node-version }} 🏗
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   cache: npm
                   cache-dependency-path: '**/package-lock.json'
 
             - name: Cache node_modules 📦
-              uses: actions/cache@v4
+              uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5.1.0
               with:
                   path: ~/.npm
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -136,7 +136,7 @@ jobs:
                   npx cdk diff '${{ steps.deployEnv.outputs.deployEnv }}' --app cdk.out
 
             - name: Cache build 🗃️
-              uses: actions/cache/save@v4
+              uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # v5.1.0
               with:
                   path: |
                       ./
