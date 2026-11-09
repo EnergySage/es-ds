@@ -1,21 +1,176 @@
 <script setup lang="ts">
-import Column from 'primevue/column';
-import type { ComponentOptionsMixin } from 'vue';
+import { ES_DATA_TABLE_CELL_CONTEXT_KEY, ES_DATA_TABLE_SORT_KEY, resolveEsDataTableField } from '../utils/data-table';
 
-// magic solution for wrapping Column successfully
-// https://www.reddit.com/r/vuejs/comments/1g17u7u/comment/lvjv91h/
-defineOptions({
-    // eslint-disable-next-line vue/multi-word-component-names
-    name: 'Column',
-    extends: (Column as unknown as ComponentOptionsMixin).extends,
-    inheritAttrs: false,
+interface Props {
+    align?: 'left' | 'right';
+    /** the key, or dot-separated path like 'user.name', of the value the column renders and sorts by */
+    field?: string;
+    header?: string;
+    sortable?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    align: 'left',
+    field: '',
+    header: '',
+    sortable: false,
+});
+
+const cellContext = inject(ES_DATA_TABLE_CELL_CONTEXT_KEY);
+const sortContext = inject(ES_DATA_TABLE_SORT_KEY);
+
+// provide misconfiguration warnings in the console on local dev
+if (import.meta.dev && cellContext?.value.type === 'header') {
+    const warnings: string[] = [];
+    if (props.sortable && !props.field) {
+        warnings.push('`sortable` requires `field`, which identifies the column for sorting.');
+    }
+    warnings.forEach((warning) => console.warn(`EsDataTableColumn: ${warning}`));
+}
+
+// field identifies the column for sorting, so a sortable column without one renders as non-sortable
+const isSortable = computed(() => props.sortable && !!props.field);
+
+// keeps track of this column's sort direction, or null when sort is off or on another column
+const columnSortOrder = computed(() => {
+    const sortState = sortContext?.sortState.value;
+    return sortState?.field === props.field ? sortState.order : null;
+});
+
+// set only on the sorted column, since ARIA expects one sorted header at a time
+const ariaSort = computed(() => {
+    if (columnSortOrder.value === 1) {
+        return 'ascending';
+    }
+    return columnSortOrder.value === -1 ? 'descending' : undefined;
 });
 </script>
 
-<!-- eslint-disable vue/valid-template-root -->
 <template>
-    <!--
-    While this file needs to exist to keep Nuxt happy, it doesn't actually do anything.
-    Instances of es-data-table-column are placed inside es-data-table, and es-data-table handles their display.
-    -->
+    <th
+        v-if="cellContext?.type === 'header'"
+        scope="col"
+        class="es-data-table-column-header"
+        :class="{ 'es-data-table-column-header--align-right text-right': align === 'right' }"
+        :aria-sort="ariaSort">
+        <!-- the button's text sizes the column, and its ::after stretches its click, hover and focus area over the
+        whole cell; the sort arrow sits on the side opposite the text, so right-aligned text lines up with the cells below -->
+        <button
+            v-if="isSortable"
+            class="es-data-table-column-sort-button d-block w-100"
+            :class="align === 'right' ? 'pl-100' : 'pr-100'"
+            type="button"
+            title="Toggle sort direction for column"
+            @click="sortContext?.toggleSort(field)">
+            <!-- interactive content inside a button is invalid HTML, so a sortable header must be plain content -->
+            <slot name="header">{{ header }}</slot>
+            <template v-if="columnSortOrder === 1">
+                <span
+                    class="es-data-table-column-sort-direction-arrow position-absolute"
+                    aria-hidden="true">
+                    <icon-sort-ascending-left v-if="align === 'right'" />
+                    <icon-sort-ascending-right v-else />
+                </span>
+                <span class="sr-only"> Sorted ascending </span>
+            </template>
+            <template v-else-if="columnSortOrder === -1">
+                <span
+                    class="es-data-table-column-sort-direction-arrow position-absolute"
+                    aria-hidden="true">
+                    <icon-sort-descending-left v-if="align === 'right'" />
+                    <icon-sort-descending-right v-else />
+                </span>
+                <span class="sr-only"> Sorted descending </span>
+            </template>
+            <template v-else>
+                <span
+                    class="es-data-table-column-sort-direction-arrow position-absolute"
+                    aria-hidden="true">
+                    <icon-arrows-down-up />
+                </span>
+            </template>
+        </button>
+        <slot
+            v-else
+            name="header">
+            {{ header }}
+        </slot>
+    </th>
+    <td
+        v-else-if="cellContext?.type === 'body'"
+        :class="{ 'text-right': align === 'right' }">
+        <slot
+            name="body"
+            :data="cellContext.row"
+            :index="cellContext.rowIndex">
+            {{ resolveEsDataTableField(cellContext.row, field) }}
+        </slot>
+    </td>
 </template>
+
+<style lang="scss" scoped>
+@use '@energysage/es-ds-styles/scss/mixins/breakpoints' as breakpoints;
+@use '@energysage/es-ds-styles/scss/variables';
+
+.es-data-table-column {
+    &-header {
+        /* defined here so parent can override if first column is frozen */
+        position: relative;
+        /* puts the sort button's hover fill above the cell's background and below its text */
+        isolation: isolate;
+    }
+
+    &-sort-button {
+        background: none;
+        border: none;
+        color: variables.$body-color;
+        font: inherit;
+        padding: 0;
+        text-align: inherit;
+
+        &::after {
+            content: '';
+            inset: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        &:hover::after {
+            background-color: variables.$blue-200;
+        }
+
+        &:focus-visible {
+            outline: none;
+
+            &::after {
+                outline: auto;
+            }
+        }
+    }
+
+    &-sort-direction-arrow {
+        bottom: 0.5rem;
+        right: 0.5rem;
+
+        @include breakpoints.media-breakpoint-up(md) {
+            bottom: 0.6rem;
+        }
+
+        :deep(svg) {
+            height: 18px;
+            width: 18px;
+
+            @include breakpoints.media-breakpoint-up(md) {
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
+
+    /* flip sort direction arrow to other side when text is aligned right */
+    &-header--align-right &-sort-direction-arrow {
+        left: 0.5rem;
+        right: auto;
+    }
+}
+</style>

@@ -75,7 +75,6 @@ export default defineNuxtConfig({
                 'primevue/breadcrumb',
                 'primevue/button',
                 'primevue/column',
-                'primevue/datatable',
                 'primevue/dialog',
                 'primevue/dropdown',
                 'primevue/focustrap',
