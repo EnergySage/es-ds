@@ -1,5 +1,25 @@
 # Changelog
 
+## [8.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v7.0.0...es-ds-components-v8.0.0) (2026-11-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace SSG-broken PrimeVue EsDataTable with improved implementation ([#1803](https://github.com/EnergySage/es-ds/issues/1803))
+
+### Bug Fixes
+
+* replace SSG-broken PrimeVue EsDataTable with improved implementation ([#1803](https://github.com/EnergySage/es-ds/issues/1803)) ([23751ae](https://github.com/EnergySage/es-ds/commit/23751ae2a369cac769d8f5d1ee615c3ede71f85a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^7.0.0 to ^8.0.0
+  * peerDependencies
+    * @energysage/es-ds-styles bumped from 7.0.0 to 8.0.0
+
 ## [7.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v6.3.3...es-ds-components-v7.0.0) (2026-11-02)
 
 
