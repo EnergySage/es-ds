@@ -1,8 +1,8 @@
 _**Note: This file is no longer being updated as a result of the adoption of release-please.
 Instead, the changelogs within each package are being updated automatically by release-please.
-See the changelogs for [es-ds-styles](./es-ds-styles/CHANGELOG.md), 
-[es-ds-components](./es-ds-components/CHANGELOG.md), and 
-[es-ds-docs](./es-ds-docs/CHANGELOG.md).**_
+See the changelogs for [es-ds-styles](./es-ds-styles/CHANGELOG.md) and
+[es-ds-components](./es-ds-components/CHANGELOG.md). es-ds-docs has no changelog; see the
+[commit history of its folder](https://github.com/EnergySage/es-ds/commits/main/es-ds-docs).**_
 
 # Changelog
 

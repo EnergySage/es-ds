@@ -5,6 +5,7 @@ import IconArrowDown from '@energysage/es-ds-components/app/components/icon/arro
 import IconArrowLeft from '@energysage/es-ds-components/app/components/icon/arrow-left.vue';
 import IconArrowRight from '@energysage/es-ds-components/app/components/icon/arrow-right.vue';
 import IconArrowUp from '@energysage/es-ds-components/app/components/icon/arrow-up.vue';
+import IconArrowsDownUp from '@energysage/es-ds-components/app/components/icon/arrows-down-up.vue';
 import IconBank from '@energysage/es-ds-components/app/components/icon/bank.vue';
 import IconBattery from '@energysage/es-ds-components/app/components/icon/battery.vue';
 import IconBatteryChargingVertical from '@energysage/es-ds-components/app/components/icon/battery-charging-vertical.vue';
@@ -98,6 +99,10 @@ import IconShield from '@energysage/es-ds-components/app/components/icon/shield.
 import IconShieldWithCheck from '@energysage/es-ds-components/app/components/icon/shield-with-check.vue';
 import IconShoppingBag from '@energysage/es-ds-components/app/components/icon/shopping-bag.vue';
 import IconSolar from '@energysage/es-ds-components/app/components/icon/solar.vue';
+import IconSortAscendingLeft from '@energysage/es-ds-components/app/components/icon/sort-ascending-left.vue';
+import IconSortAscendingRight from '@energysage/es-ds-components/app/components/icon/sort-ascending-right.vue';
+import IconSortDescendingLeft from '@energysage/es-ds-components/app/components/icon/sort-descending-left.vue';
+import IconSortDescendingRight from '@energysage/es-ds-components/app/components/icon/sort-descending-right.vue';
 import IconSoundDown from '@energysage/es-ds-components/app/components/icon/sound-down.vue';
 import IconSoundOff from '@energysage/es-ds-components/app/components/icon/sound-off.vue';
 import IconSoundOn from '@energysage/es-ds-components/app/components/icon/sound-on.vue';
@@ -210,6 +215,11 @@ export const BASE_ICONS: IconMetadata[] = [
         name: 'arrow up',
         component: IconArrowUp,
         phosphorName: 'arrow-up',
+    },
+    {
+        name: 'arrows down up',
+        component: IconArrowsDownUp,
+        phosphorName: 'arrows-down-up',
     },
     {
         name: 'battery charging vertical',
@@ -592,6 +602,25 @@ export const BASE_ICONS: IconMetadata[] = [
         phosphorName: 'x',
     },
 ].sort((a, b) => a.name.localeCompare(b.name));
+
+export const BASE_ICONS_IN_THE_STYLE_OF_PHOSPHOR: IconMetadata[] = [
+    {
+        name: 'sort ascending left',
+        component: IconSortAscendingLeft,
+    },
+    {
+        name: 'sort ascending right',
+        component: IconSortAscendingRight,
+    },
+    {
+        name: 'sort descending left',
+        component: IconSortDescendingLeft,
+    },
+    {
+        name: 'sort descending right',
+        component: IconSortDescendingRight,
+    },
+];
 
 export const BASE_ICONS_NOT_PHOSPHOR: IconMetadata[] = [
     {

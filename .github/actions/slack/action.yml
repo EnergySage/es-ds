@@ -6,7 +6,7 @@ inputs:
         required: true
         default: ''
     slack-token:
-        description: Slack webhook token
+        description: Slack bot token
         required: true
         default: ''
     slack-message:
@@ -19,9 +19,12 @@ runs:
     steps:
         - name: Post to a Slack channel
           id: slack
-          uses: slackapi/slack-github-action@v1.25.0
+          uses: slackapi/slack-github-action@45a88b9581bfab2566dc881e2cd66d334e621e2c # v3.0.3
           with:
-              channel-id: ${{ inputs.slack-channel }}
-              slack-message: ${{ inputs.slack-message }}
-          env:
-              SLACK_BOT_TOKEN: ${{ inputs.slack-token }}
+              method: chat.postMessage
+              token: ${{ inputs.slack-token }}
+              # toJSON quotes the values; an unquoted channel like "#foo" would
+              # otherwise parse as a YAML comment, sending channel: null
+              payload: |
+                  channel: ${{ toJSON(inputs.slack-channel) }}
+                  text: ${{ toJSON(inputs.slack-message) }}

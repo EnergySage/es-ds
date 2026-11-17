@@ -51,6 +51,17 @@ onMounted(async () => {
         </div>
 
         <div class="mb-300">
+            <h3 class="mt-300">Base icons in the style of Phosphor</h3>
+            <p>
+                These were created by our design team in cases where the actual Phosphor icons did not meet our needs.
+            </p>
+            <ds-icon-list
+                :icons="BASE_ICONS_IN_THE_STYLE_OF_PHOSPHOR"
+                :is-dark-background-active="isDarkBackgroundActive"
+                :show-phosphor-name="showPhosphorName" />
+        </div>
+
+        <div class="mb-300">
             <h3 class="mt-300">Base icons not yet transitioned to Phosphor</h3>
             <p>These are candidates for removal and are the subject of active conversations on the design team.</p>
             <ds-icon-list

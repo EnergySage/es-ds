@@ -9,6 +9,12 @@ inputs:
 runs:
     using: composite
     steps:
+        # Without this the CDK CLI runs on the runner image's default Node, not the pinned one
+        - name: Set up Node from .node-version 🏗
+          uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+          with:
+              node-version-file: .node-version
+
         - name: Setting clean name 🧹
           id: deployEnv
           shell: bash

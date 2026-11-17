@@ -12,7 +12,19 @@ jobs:
 
         steps:
             - name: Checkout 🛎
-              uses: actions/checkout@v4
+              uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+
+            # Downstream apps must install the exact Nuxt version es-ds-components lists as a peer, so it is
+            # pinned to that same version everywhere here; the docs release install fails with ERESOLVE otherwise.
+            - name: Check Nuxt version pins match
+              run: |
+                  peer=$(jq -r '.peerDependencies.nuxt' es-ds-components/package.json)
+                  dev=$(jq -r '.devDependencies.nuxt' es-ds-components/package.json)
+                  docs=$(jq -r '.dependencies.nuxt' es-ds-docs/package.json)
+                  if ! [[ "$peer" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || [ "$dev" != "$peer" ] || [ "$docs" != "$peer" ]; then
+                      echo "::error::nuxt must be the same exact version in es-ds-components peerDependencies ($peer), es-ds-components devDependencies ($dev) and es-ds-docs dependencies ($docs)"
+                      exit 1
+                  fi
 
             - name: Get nodenv version 🔌
               id: nodenv
@@ -20,7 +32,7 @@ jobs:
               run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
 
             - name: Setup node env 🏗
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   check-latest: true
