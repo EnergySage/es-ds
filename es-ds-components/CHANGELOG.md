@@ -1,5 +1,21 @@
 # Changelog
 
+## [8.0.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v8.0.0...es-ds-components-v8.0.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* CEO-1002: accessibility issue with modal focus  ([#1801](https://github.com/EnergySage/es-ds/issues/1801)) ([b992b66](https://github.com/EnergySage/es-ds/commit/b992b66664e6d4c047564a96df1d1dae360d2f66))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^8.0.0 to ^8.0.1
+  * peerDependencies
+    * @energysage/es-ds-styles bumped from 8.0.0 to 8.0.1
+
 ## [8.0.0](https://github.com/EnergySage/es-ds/compare/es-ds-components-v7.0.0...es-ds-components-v8.0.0) (2026-11-10)
 
 
