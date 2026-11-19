@@ -7,6 +7,12 @@ const propTableRows = [
     ['bodyClass', 'String', "''", 'Additional classes to add to the modal-body'],
     ['closable', 'Boolean', 'true', 'Whether the close button should appear in the top right corner.'],
     ['hideFooter', 'Boolean', 'false', 'Whether to show the modal footer.'],
+    [
+        'hideTitle',
+        'Boolean',
+        'false',
+        'Visually hides the modal title while keeping it available to screen readers. Always provide a modal-title so the modal has an ARIA label and is announced to screen readers.',
+    ],
     ['id', 'String', 'n/a', 'Required. Provide a unique id for the modal for accessibility purposes.'],
     [
         'showFooterSeparator',
@@ -125,9 +131,11 @@ onMounted(async () => {
                 :visible="noHeaderModalVisible"
                 class="px-200 py-150"
                 :closable="false"
+                hide-title
                 :show-footer-separator="false"
                 size="lg"
                 @hidden="noHeaderModalVisible = false">
+                <template #modal-title> Arcadia Reviews </template>
                 <template #default>
                     <p
                         id="lorem-ipsum"
