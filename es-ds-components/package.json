@@ -37,7 +37,7 @@
     "license": "MIT",
     "peerDependencies": {
         "@energysage/es-ds-styles": "8.0.1",
-        "nuxt": "4.5.2"
+        "nuxt": "4.6.3"
     },
     "devDependencies": {
         "@energysage/es-ds-styles": "^8.0.1",
@@ -58,7 +58,7 @@
         "html-truncate": "^1.2.2",
         "maska": "^3.2.0",
         "mitt": "^3.0.1",
-        "nuxt": "4.5.2",
+        "nuxt": "4.6.3",
         "nuxt-primevue": "^3.0.0",
         "prettier": "^3.3.3",
         "primevue": "^3.53.0",
