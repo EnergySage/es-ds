@@ -54,7 +54,7 @@
         "prettier": "^3.3.3",
         "sass": "^1.77.8",
         "typescript": "^6.0.3",
-        "vue-tsc": "^3.0.8"
+        "vue-tsc": "3.3.11"
     },
     "allowScripts": {
         "vue-demi@0.14.10": true,
