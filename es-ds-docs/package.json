@@ -36,7 +36,7 @@
         "maska": "^3.2.0",
         "mitt": "^3.0.1",
         "motion-v": "^1.7.1",
-        "nuxt": "4.5.2",
+        "nuxt": "4.6.3",
         "nuxt-primevue": "^3.0.0",
         "primevue": "^3.53.0",
         "prismjs": "^1.30.0",
@@ -54,7 +54,7 @@
         "prettier": "^3.3.3",
         "sass": "^1.77.8",
         "typescript": "^6.0.3",
-        "vue-tsc": "^3.0.8"
+        "vue-tsc": "3.3.11"
     },
     "allowScripts": {
         "vue-demi@0.14.10": true,
@@ -63,5 +63,10 @@
         "fsevents@2.3.3": true,
         "unrs-resolver@1.12.2": true,
         "@parcel/watcher@2.6.0": true
+    },
+    "overrides": {
+        "@energysage/es-ds-components": {
+            "nuxt": "$nuxt"
+        }
     }
 }
