@@ -83,7 +83,7 @@ make build                    # Build all packages
 
 **Nuxt is pinned to one exact version for development.** The `nuxt` spec in `es-ds-components` `devDependencies` and `es-ds-docs` `dependencies` must be the same exact version, and that version must satisfy the `nuxt` range in `es-ds-components` `peerDependencies` (CI checks both). Bump the two exact specs together.
 
-**The peer range is temporary.** `peerDependencies.nuxt` is currently `>=4.5.0 <4.7.0` rather than an exact version, so downstream apps already on Nuxt 4.6.x can install the current es-ds. Once the Nuxt 4.6 upgrade is made ([CEO-1032](https://energysage.atlassian.net/jira/browse/CEO-1032)), return to a single pinned 4.6.x version in all three places, or a peer range like `>=4.6.0 <4.7.0` if an explicit decision is made to keep a range. Any change that narrows the peer range or moves it to a new version is a breaking change for downstream apps; flag it as such.
+**The peer range is temporary.** `peerDependencies.nuxt` is currently `>=4.5.0 <4.7.0` rather than an exact version, so downstream apps already on Nuxt 4.6.x can install the current es-ds. Once the Nuxt 4.7 upgrade is made ([CEO-1032](https://energysage.atlassian.net/jira/browse/CEO-1032)), return to a single pinned 4.7.x version in all three places, or a peer range like `>=4.7.0 <4.8.0` if an explicit decision is made to keep a range. Any change that narrows the peer range or moves it to a new version is a breaking change for downstream apps; flag it as such.
 
 ## Publishing Workflow
 
