@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.0.2](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v8.0.1...es-ds-styles-v8.0.2) (2026-11-24)
+
+
+### Miscellaneous Chores
+
+* **es-ds-styles:** Synchronize es-ds versions
+
 ## [8.0.1](https://github.com/EnergySage/es-ds/compare/es-ds-styles-v8.0.0...es-ds-styles-v8.0.1) (2026-11-19)
 
 
