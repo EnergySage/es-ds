@@ -1,5 +1,21 @@
 # Changelog
 
+## [8.0.2](https://github.com/EnergySage/es-ds/compare/es-ds-components-v8.0.1...es-ds-components-v8.0.2) (2026-11-24)
+
+
+### Bug Fixes
+
+* update nuxt to 4.6.3 ([#1809](https://github.com/EnergySage/es-ds/issues/1809)) ([26456fe](https://github.com/EnergySage/es-ds/commit/26456fe2363a2e8edb5374c1dde2b4ae0b0db239))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @energysage/es-ds-styles bumped from ^8.0.1 to ^8.0.2
+  * peerDependencies
+    * @energysage/es-ds-styles bumped from 8.0.1 to 8.0.2
+
 ## [8.0.1](https://github.com/EnergySage/es-ds/compare/es-ds-components-v8.0.0...es-ds-components-v8.0.1) (2026-11-19)
 
 
