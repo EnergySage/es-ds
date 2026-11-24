@@ -75,13 +75,15 @@ make build                    # Build all packages
 ## Key Dependencies
 
 - Vue 3.5+
-- Nuxt pinned to one exact version (see below)
+- Nuxt pinned to one exact version for development, with a temporary peer range until [CEO-1032](https://energysage.atlassian.net/jira/browse/CEO-1032) (see below)
 - PrimeVue 3.53 (unstyled components)
 - Reka UI 2.2 (headless components)
 - Vuelidate 2.x (form validation)
 - SASS 1.77+ with modern API
 
-**Nuxt is pinned exactly, with no range.** `es-ds-components` lists that version in `peerDependencies`, so downstream apps must install the same one. The `nuxt` spec in `es-ds-components` `peerDependencies`, `es-ds-components` `devDependencies` and `es-ds-docs` `dependencies` must always match (CI checks this). Bump all three together (the `update-deps` skill does this as part of a refresh), and flag the bump as a breaking change for downstream apps, since they must move to the same exact version.
+**Nuxt is pinned to one exact version for development.** The `nuxt` spec in `es-ds-components` `devDependencies` and `es-ds-docs` `dependencies` must be the same exact version, and that version must satisfy the `nuxt` range in `es-ds-components` `peerDependencies` (CI checks both). Bump the two exact specs together.
+
+**The peer range is temporary.** `peerDependencies.nuxt` is currently `>=4.5.0 <4.7.0` rather than an exact version, so downstream apps already on Nuxt 4.6.x can install the current es-ds. Once the Nuxt 4.6 upgrade is made ([CEO-1032](https://energysage.atlassian.net/jira/browse/CEO-1032)), return to a single pinned 4.6.x version in all three places, or a peer range like `>=4.6.0 <4.7.0` if an explicit decision is made to keep a range. Any change that narrows the peer range or moves it to a new version is a breaking change for downstream apps; flag it as such.
 
 ## Publishing Workflow
 
