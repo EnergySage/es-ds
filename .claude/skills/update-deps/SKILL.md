@@ -122,7 +122,7 @@ If that errors with "definition not found" for a version that should exist, run 
 Bump the Nuxt pin first, since the resolver can't move an exact spec. Find the latest published version within the current major:
 
 ```bash
-npm view "nuxt@^$(jq -r '.peerDependencies.nuxt | split(".")[0]' es-ds-components/package.json)" version --json | jq -r 'if type == "array" then .[-1] else . end'
+npm view "nuxt@^$(jq -r '.devDependencies.nuxt | split(".")[0]' es-ds-components/package.json)" version --json | jq -r 'if type == "array" then .[-1] else . end'
 ```
 
 If it's newer than the current pin, set it as the exact version (no `^`) in all three places listed above. If verification in Step 4 traces a regression to the Nuxt bump, roll all three back to the previous pin together.

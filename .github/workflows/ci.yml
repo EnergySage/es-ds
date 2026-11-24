@@ -14,18 +14,6 @@ jobs:
             - name: Checkout 🛎
               uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
 
-            # Downstream apps must install the exact Nuxt version es-ds-components lists as a peer, so it is
-            # pinned to that same version everywhere here; the docs release install fails with ERESOLVE otherwise.
-            - name: Check Nuxt version pins match
-              run: |
-                  peer=$(jq -r '.peerDependencies.nuxt' es-ds-components/package.json)
-                  dev=$(jq -r '.devDependencies.nuxt' es-ds-components/package.json)
-                  docs=$(jq -r '.dependencies.nuxt' es-ds-docs/package.json)
-                  if ! [[ "$peer" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || [ "$dev" != "$peer" ] || [ "$docs" != "$peer" ]; then
-                      echo "::error::nuxt must be the same exact version in es-ds-components peerDependencies ($peer), es-ds-components devDependencies ($dev) and es-ds-docs dependencies ($docs)"
-                      exit 1
-                  fi
-
             - name: Get nodenv version 🔌
               id: nodenv
               shell: bash
@@ -36,6 +24,19 @@ jobs:
               with:
                   node-version: '${{ steps.nodenv.outputs.node-version }}'
                   check-latest: true
+
+            # es-ds-components and es-ds-docs develop against one exact Nuxt version, which must satisfy the
+            # es-ds-components peer range; the docs release install fails with ERESOLVE otherwise. The peer is
+            # temporarily a range so downstream apps already on Nuxt 4.6.x can install es-ds.
+            - name: Check Nuxt versions match
+              run: |
+                  peer=$(jq -r '.peerDependencies.nuxt' es-ds-components/package.json)
+                  dev=$(jq -r '.devDependencies.nuxt' es-ds-components/package.json)
+                  docs=$(jq -r '.dependencies.nuxt' es-ds-docs/package.json)
+                  if [ "$dev" != "$docs" ] || ! npx semver@7.8.6 -r "$peer" "$dev" > /dev/null; then
+                      echo "::error::nuxt must be the same exact version in es-ds-components devDependencies ($dev) and es-ds-docs dependencies ($docs), and satisfy es-ds-components peerDependencies ($peer)"
+                      exit 1
+                  fi
 
             - name: Install dependencies 👨🏻‍💻
               run: |
