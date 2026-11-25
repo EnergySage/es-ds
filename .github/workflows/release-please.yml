@@ -2,6 +2,8 @@ on:
     push:
         branches:
             - main
+    # Publishes and deploys the versions already on main without running release-please, to finish a release that stopped partway.
+    workflow_dispatch:
 
 permissions:
     contents: write
@@ -23,18 +25,27 @@ jobs:
             issues: write
         runs-on: ubuntu-latest
         needs: ci
+        # Manual runs publish whatever the selected branch holds, so they are limited to main.
+        if: github.event_name == 'push' || github.ref == 'refs/heads/main'
         outputs:
-            releases_created: ${{ steps.release.outputs.releases_created }}
+            releases_created: ${{ steps.release.outputs.releases_created || steps.republish.outputs.release_created }}
             es-ds-styles--version: ${{ steps.release.outputs.es-ds-styles--version }}
-            es-ds-styles--release_created: ${{ steps.release.outputs.es-ds-styles--release_created }}
+            es-ds-styles--release_created: ${{ steps.release.outputs.es-ds-styles--release_created || steps.republish.outputs.release_created }}
             es-ds-components--version: ${{ steps.release.outputs.es-ds-components--version }}
-            es-ds-components--release_created: ${{ steps.release.outputs.es-ds-components--release_created }}
+            es-ds-components--release_created: ${{ steps.release.outputs.es-ds-components--release_created || steps.republish.outputs.release_created }}
             es-ds-docs--version: ${{ steps.release.outputs.es-ds-docs--version }}
-            es-ds-docs--release_created: ${{ steps.release.outputs.es-ds-docs--release_created }}
+            es-ds-docs--release_created: ${{ steps.release.outputs.es-ds-docs--release_created || steps.republish.outputs.release_created }}
             docs_changed: ${{ steps.docs.outputs.changed }}
         steps:
             - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+              if: github.event_name == 'push'
               id: 'release'
+
+            # A manual run treats every package as released; the publish jobs skip versions npm already has.
+            - name: Republish the versions on main
+              if: github.event_name == 'workflow_dispatch'
+              id: republish
+              run: echo "release_created=true" >> "$GITHUB_OUTPUT"
 
             # release-please can only put a version in a grouped PR title when there is a root package, so the shared version is added here.
             # The title pattern in release-please-config.json parses with or without it, and continue-on-error keeps a failure here from skipping the publish jobs.
@@ -54,6 +65,7 @@ jobs:
             # The docs build installs the published packages, so pushes that also change es-ds-styles or es-ds-components wait for their release deploy.
             # Lockfiles are ignored so the post-release lockfile commit doesn't deploy again; failures here never block releases.
             - name: Check for docs-only changes
+              if: github.event_name == 'push'
               id: docs
               continue-on-error: true
               env:
@@ -297,4 +309,4 @@ jobs:
         secrets: inherit
         with:
             environment: int
-            trigger: ${{ needs.release-please.outputs.releases_created == 'true' && 'automated release' || 'docs site change' }}
+            trigger: ${{ github.event_name == 'workflow_dispatch' && 'manual republish' || needs.release-please.outputs.releases_created == 'true' && 'automated release' || 'docs site change' }}

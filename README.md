@@ -207,3 +207,9 @@ first two changed. This is handled by release-please's `linked-versions` plugin 
 
 Changes that only touch `es-ds-docs` never trigger a release, since there is nothing to publish to npm.
 Instead, they deploy to the documentation site as soon as they are merged to `main`.
+
+If a release stops partway, for example after publishing `es-ds-styles` but not `es-ds-components`,
+finish it by running the [release-please workflow](https://github.com/EnergySage/es-ds/actions/workflows/release-please.yml)
+manually on `main` (**Run workflow**). A manual run skips release-please, publishes any version on `main`
+that npm doesn't have yet, then updates the lockfiles and deploys the documentation site.
+The GitHub releases and tags must already exist, so create any missing ones before running it.
