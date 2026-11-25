@@ -87,7 +87,7 @@ make build                    # Build all packages
 
 ## Publishing Workflow
 
-This is a public MIT-licensed repository. Versioning, changelogs and npm publishing are fully automated by release-please (`release-please-config.json`, `.github/workflows/release-please.yml`). Never edit package versions, `.release-please-manifest.json` or the `CHANGELOG.md` files by hand, and never publish manually.
+This is a public MIT-licensed repository. Versioning, changelogs and npm publishing are fully automated by release-please (`release-please-config.json`, `.github/workflows/release-please.yml`). Never edit package versions, `.release-please-manifest.json` or the `CHANGELOG.md` files by hand, and never publish manually. To finish a release that stopped partway, run the release-please workflow manually on `main`; it skips release-please and publishes only the versions npm doesn't have yet.
 
 - PR titles must follow conventional commits; the type (`feat`, `fix`, etc.) decides the version bump.
 - Merging to `main` opens or updates a release PR titled `chore: release es-ds-styles and es-ds-components <version>`. Merging that PR publishes the release.
