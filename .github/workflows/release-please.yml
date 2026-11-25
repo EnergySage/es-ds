@@ -105,7 +105,7 @@ jobs:
               id: publish-packages
               run: |
                   npm run build
-                  npm publish
+                  ../.github/scripts/publish-to-npm.sh
 
             # Downstream jobs install this version immediately; wait until the registry serves its tarball.
             - name: Wait for registry availability
@@ -163,8 +163,7 @@ jobs:
             - name: Publish Packages
               working-directory: es-ds-components
               id: publish-packages
-              run: |
-                  npm publish
+              run: ../.github/scripts/publish-to-npm.sh
 
             # Downstream jobs install this version immediately; wait until the registry serves its tarball.
             - name: Wait for registry availability
